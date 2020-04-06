@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Self Serve Rogers Tests" parallel="tests" thread-count="1">
+<parameter name="strBrowser" value="chrome"/>
+<parameter name="strLanguage" value="en"/>
+
+<listeners>
+      <listener class-name="com.rogers.selfserve.test.listeners.AnnotationTransformer"/>
+</listeners> 		
+
+
+
+<test name="RogersSS_TC_061_ValidateDataUsageDisplayRunningLow_postpaid_SE_AddData">
+<classes>				             
+<class name="com.rogers.selfserve.test.wldb.RogersSS_TC_061_ValidateDataUsageDisplayRunningLow_postpaid_SE_AddData"></class>
+</classes>          																					
+</test>
+
+
+
+<!-- 
+
+<test name="RogersSS_TC_052_ValidateBrightstarLinkInWirelessDashbard_postpaidConsumerRegularAccount">
+<classes>				             
+<class name="com.rogers.selfserve.test.wldb.RogersSS_TC_052_ValidateBrightstarLinkInWirelessDashbard_postpaidConsumerRegularAccount"></class>
+</classes>          																					
+</test>
+
+
+<test name="RogersSS_TC_039_AssociateWirelessPostpaidBANWithHyphenTest">
+<classes>				             
+<class name="com.rogers.selfserve.test.tests.RogersSS_TC_039_AssociateWirelessPostpaidBANWithHyphenTest"></class>
+</classes>          																					
+</test>	
+ 
+ 
+ 
+
+
+
+<test name="RogersSS_TC_050_ChangeIDForSECustomerTest">
+<classes>				             
+<class name="com.rogers.selfserve.test.wldb.RogersSS_TC_050_ChangeIDForSECustomerTest"></class>
+</classes>          																					
+</test>
+
+
+
+
+
+<test name="RogersSS_TC_036_WirelessPostpaidOverviewViewBillTest">
+<classes>				             
+<class name="com.rogers.selfserve.test.tests.RogersSS_TC_036_WirelessPostpaidOverviewViewBillTest"></class>
+</classes>          																					
+</test>
+
+
+
+ -->
+							
+</suite>

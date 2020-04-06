@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Self Serve Rogers.com Tests" parallel="tests" thread-count="2">
+<parameter name="strBrowser" value="gridchrome"/>
+<parameter name="strLanguage" value="en"/>
+<parameter name="strType" value="seq"/>
+<listeners>
+      <listener class-name="com.rogers.selfserve.test.listeners.AnnotationTransformer"/>
+</listeners>     
+
+
+<test name="RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest">
+<classes>				             
+<class name="com.rogers.selfserve.test.tests.RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest"></class>
+</classes>          																					
+</test>
+
+ 
+<test name="RogersSS_TC_031_Postpaid_ChangeContactInfo">
+<classes>				             
+<class name="com.rogers.selfserve.test.tests.RogersSS_TC_031_Postpaid_ChangeContactInfo"></class>
+</classes>          																					
+</test>
+
+
+<test name="RogersSS_TC_032_Postpaid_ChangeBillingAddress">
+<classes>				             
+<class name="com.rogers.selfserve.test.tests.RogersSS_TC_032_Postpaid_ChangeBillingAddress"></class>
+</classes>          																					
+</test>
+
+ 
+<test name="RogersSS_TC_051_ChangePassword">
+<classes>				             
+<class name="com.rogers.selfserve.test.tests.RogersSS_TC_051_ChangePassword"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaymentMethodPACToCC_EN_AUTO">
+<classes>				             
+<class name="com.rogers.selfserve.test.tests.RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaymentMethodPACToCC_EN_AUTO"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest">
+<classes>				             
+<class name="com.rogers.selfserve.test.tests.RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest"></class>
+</classes>          																					
+</test>
+
+
+<test name="RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage">
+<classes>				             
+<class name="com.rogers.selfserve.test.wldb.RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC_057_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDataUnlimitedTalkTextPlan">
+<classes>				             
+<class name="com.rogers.selfserve.test.wldb.RogersSS_TC_057_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDataUnlimitedTalkTextPlan"></class>
+</classes>          																					
+</test>
+ 						
+</suite>

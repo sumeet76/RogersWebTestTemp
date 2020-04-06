@@ -1,0 +1,104 @@
+package com.rogers.test.commonbusinessfunctions;
+
+import org.testng.annotations.Listeners;
+
+import com.rogers.test.base.BaseTestClass;
+
+
+@Listeners ({com.rogers.test.listeners.TestListener.class ,
+	com.rogers.test.listeners.AnnotationTransformer.class ,
+	com.rogers.test.listeners.TestListener.class })
+
+
+public class CommonBusinessFlows {
+		
+	BaseTestClass baseTestClass; 
+	public CommonBusinessFlows(BaseTestClass baseTestClass) {
+		this.baseTestClass = baseTestClass;
+	}
+	
+	public void launchAndLoginApplication(String strUserName, String strPassword, String strAccount) {
+		baseTestClass.rogers_home_page.clkSignIn();    
+		baseTestClass.rogers_login_page.switchToSignInIFrame();
+		loginApplication(strUserName,strPassword); 
+		baseTestClass.rogers_login_page.clkSkipIFrame();
+		baseTestClass.rogers_login_page.switchOutOfSignInIFrame();
+		 if (baseTestClass.rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+	        	baseTestClass.reporter.reportLogWithScreenshot("Select an account.");
+	        	baseTestClass.rogers_account_overview_page.selectAccount(strAccount);
+	        }
+		 baseTestClass.reporter.reportLogWithScreenshot("Account overview page."); 
+	}
+
+	/**
+	 * 
+	 * @param strUsername
+	 * @param strPassword
+	 */
+	public void loginApplication(String strUsername, String strPassword) {
+		baseTestClass.rogers_login_page.setUsernameIFrame(strUsername);           	
+		baseTestClass.rogers_login_page.setPasswordIFrame(strPassword);
+		baseTestClass.reporter.reportLogWithScreenshot("Login Credential is entered: UserName :- "+strUsername+" Password:- "+strPassword);
+		baseTestClass.rogers_login_page.clkSignInIFrame();
+		
+
+	}
+
+	/**
+	 * Resets the password back from the profile and setting page
+	 * @param oldPassword
+	 * @param newPassword
+	 * @author Mirza.Kamran
+	 */
+	public void resetPasswordBack(String oldPassword, String newPassword) {
+		baseTestClass.rogers_account_overview_page.clkLnkProfileNSettings();
+		baseTestClass.rogers_profile_and_settings_page.clkLnkChangePassword();
+		//verify the change password overlay is displayed or not
+		baseTestClass.reporter.hardAssert(baseTestClass.rogers_profile_and_settings_page.isOverlayChangePasswordDisplayed(),
+							"Change password process ready to set new password.",
+							"Change password overlay didn't present.");
+		baseTestClass.rogers_profile_and_settings_page.setCurrentPassword(oldPassword);
+		baseTestClass.rogers_profile_and_settings_page.setNewPassword(newPassword);
+		baseTestClass.rogers_profile_and_settings_page.setConfirmPassword(newPassword);
+		baseTestClass.reporter.reportLogWithScreenshot("New password is entered.");
+		baseTestClass.rogers_profile_and_settings_page.clkBtnChangePasswordSubmit();
+		//verify success message --
+		baseTestClass.reporter.hardAssert(baseTestClass.rogers_profile_and_settings_page.verifyChangePasswordSuccessMsg(), 
+        						"Successfully changed password.", 
+        						"Change password failed.");
+        baseTestClass.rogers_profile_and_settings_page.clkBtnChangePasswordDone();
+	}
+	
+	/**
+	 * Add speed pass flow, limit reached scenario is also checked here.
+	 * @return integer, the times speed pass was added.
+	 * @author ning.xue
+	 */
+	public int addSpeedPass() {
+		int intAddedSpeedPassRecord = 0;
+		if (baseTestClass.rogers_speed_pass_page.verifySpeedPassPopupIsDisplayed()) {
+			baseTestClass.reporter.hardAssert(baseTestClass.rogers_speed_pass_page.verifySpeedPassPopupIsDisplayed(),
+					"Speed Pass popup is displayed", "Speed Pass popup is NOT displayed");
+			baseTestClass.rogers_speed_pass_page.clkMaxSpeedDataInSpeedPassPopup();
+			baseTestClass.reporter.reportLogWithScreenshot("Select Add on option");  
+			baseTestClass.rogers_speed_pass_page.clkBtnContinueInSpeedPassPopup();
+			baseTestClass.reporter.hardAssert(baseTestClass.rogers_speed_pass_page.verifyHeaderConfirmPurchaseIsDisplayed(),
+					"Confirm Purchase is displayed", "Confirm Purchase is NOT displayed");
+			baseTestClass.reporter.reportLogWithScreenshot("Add speed pass confirm page."); 
+			baseTestClass.rogers_speed_pass_page.clkBtnPurchaseInSpeedPassPopup();
+			baseTestClass.reporter.hardAssert(baseTestClass.rogers_speed_pass_page.verifyMsgSuccessAddedSpeedPassIsDisplayed(),
+					"Message of success added speed pass is displayed",
+					"Message of success added speed pass is NOT displayed");
+			baseTestClass.reporter.reportLogWithScreenshot("Add speed pass purchase is clicked."); 
+			intAddedSpeedPassRecord++;
+
+		} else if (baseTestClass.rogers_speed_pass_page.verifyCannotAddSpeedPassHeaderIsDisplayed()) {
+			baseTestClass.reporter.reportLogWithScreenshot("Add Speed Pass limit reached popup is displayed");
+		}
+		baseTestClass.rogers_speed_pass_page.clkBtnCloseInSpeedPassPopup();
+
+		return intAddedSpeedPassRecord;
+
+	}
+
+}

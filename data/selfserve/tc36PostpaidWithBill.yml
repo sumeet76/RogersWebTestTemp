@@ -1,0 +1,10 @@
+   # Account Details account has to have a bill
+---
+username: demodata015@yahoo.com
+password: DigiAuto@123
+accountDetails:
+   ban: 925441172
+   ctn: 4163057236
+   contactemail: Haveabill@yahoo.com   
+   postalcode: L6T0C1   
+...
