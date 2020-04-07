@@ -73,7 +73,7 @@ public class RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE e
 			"'Data details' page is displayed after click on view details link", 
 			"'Data details' page is NOT displayed after click on view details link");  
 	    //- Plan data: should be displayed (shared data across all lines)
-		reporter.hardAssert(rogers_wireless_dashboard_page.validatePlanDataIsDisplayed(), 
+		reporter.hardAssert(rogers_wireless_dashboard_page.verifyPlanDataIsDisplayed(), 
 				"Plan data is displayed", 
 				"Plan data is NOT displayed");
 		int totalSharedDataDisplayedInPlanDataSection = rogers_wireless_dashboard_page.getTotalPlanData();

@@ -54,13 +54,10 @@ public class RogersSS_TC_061_ValidateDataUsageDisplayRunningLow_postpaid_SE_AddD
     	rogers_account_overview_page.clkSubMenuWirelessUsage();
         
         rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyRunningLowStateInTheUsageBar(),
-        		"Data running low is displayed for 10% or less data",
-        		"It seems the data running low state is not yet reached for this acccount, please decrease the data usage and re validate");
-         reporter.softAssert(rogers_wireless_dashboard_page.verifyCallOutMessageToAddDataIsDisplayed(),
-        		 "Call out message to add data is displayed",
-        		 "Call out message to add data is not displayed");
-        reporter.reportLogWithScreenshot("Wireless dashboard page."); 
+        String strCtn1 = TestDataHandler.tc61.getAccountDetails().getCtn1();
+        String strCtn2 = TestDataHandler.tc61.getAccountDetails().getCtn2();
+        this.verifyRunningLowTagForCtn(strCtn1);
+        this.verifyRunningLowTagForCtn(strCtn2);
         reporter.softAssert(rogers_wireless_dashboard_page.verifyAddDataButtonIsDisplayed(), 
 							"Add the Data top-up button is displayed", 
 							"Add the Data top-up  button is NOT displayed."); 
@@ -133,14 +130,23 @@ public class RogersSS_TC_061_ValidateDataUsageDisplayRunningLow_postpaid_SE_AddD
 		reporter.softAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesOnTotalDataBelowUsageBarRightSide(), 
 			"All MB amounts converted in GB up to 2 decimal points Total Data Below UsageBar RightSide", 
 			"MB amounts converted in GB up to 2 decimal points NOT validated Total Data Below UsageBar RightSide, please investigate");                              
-        
+
 		rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
         reporter.reportLogWithScreenshot("Middle of Wireless dashboard page.");        
         rogers_wireless_dashboard_page.scrollToBottomOfPage();
         reporter.reportLogWithScreenshot("Bottom of Wireless dashboard page.");
     }
     
-    
+    private void verifyRunningLowTagForCtn(String strCtn) {
+        rogers_wireless_dashboard_page.clkCtnTab(strCtn);
+        reporter.softAssert(rogers_wireless_dashboard_page.verifyRunningLowStateInTheUsageBar(),
+        		"Data running low is displayed for 10% or less data",
+        		"It seems the data running low state is not yet reached for this acccount, please decrease the data usage and re validate");
+         reporter.softAssert(rogers_wireless_dashboard_page.verifyCallOutMessageToAddDataIsDisplayed(),
+        		 "Call out message to add data is displayed",
+        		 "Call out message to add data is not displayed");
+        reporter.reportLogWithScreenshot("Wireless dashboard page for CTN: " + strCtn); 
+    }
     
 
 }

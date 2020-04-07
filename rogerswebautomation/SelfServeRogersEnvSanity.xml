@@ -8,11 +8,15 @@
       <listener class-name="com.rogers.test.listeners.AnnotationTransformer"/>
 </listeners> 		
 
-
-
-<test name="RogersSS_TC_061_ValidateDataUsageDisplayRunningLow_postpaid_SE_AddData">
+<test name="RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_061_ValidateDataUsageDisplayRunningLow_postpaid_SE_AddData"></class>
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE"></class>
 </classes>          																					
 </test>
 

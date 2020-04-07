@@ -4,6 +4,8 @@ public class AccountDetails {
 	
 	private String ban;
 	private String ctn;
+	private String ctn1;
+	private String ctn2;
 	private String postalcode;	
 	private String recoveryNumber;
 	private String newBan;
@@ -148,6 +150,30 @@ public class AccountDetails {
 	 */
 	public void setRecoveryNumber(String recoveryNumber) {
 		this.recoveryNumber = recoveryNumber;
+	}
+	/**
+	 * @return the ctn1
+	 */
+	public String getCtn1() {
+		return ctn1;
+	}
+	/**
+	 * @param ctn1 the ctn1 to set
+	 */
+	public void setCtn1(String ctn1) {
+		this.ctn1 = ctn1;
+	}
+	/**
+	 * @return the ctn2
+	 */
+	public String getCtn2() {
+		return ctn2;
+	}
+	/**
+	 * @param ctn2 the ctn2 to set
+	 */
+	public void setCtn2(String ctn2) {
+		this.ctn2 = ctn2;
 	}
 
 

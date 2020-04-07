@@ -8,6 +8,7 @@ import java.util.ListIterator;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -408,6 +409,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	
 	@FindBy(xpath = "//p[contains(text(),' Speed Pass') or contains(text(),'Accès Rapido de')]")
 	WebElement lblSpeedPassInTotalData;
+	
 	
 	/**
 	 * To click the link of lost or stolen device on wireless dashboard page
@@ -1560,7 +1562,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @return true if the elements exists else false
 	 * @author Mirza.Kamran
 	 */
-	public boolean validatePlanDataIsDisplayed() {
+	public boolean verifyPlanDataIsDisplayed() {
 		return (reusableActions.isDisplayed(headerPlanDataOnDataDetailsPage)
 				&& reusableActions.isDisplayed(headerUnlimitedDataInYourPlanOnDataDetailsPage));
 	} 
@@ -1603,6 +1605,32 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	public void clkAddData() {
 		reusableActions.clickWhenReady(lnkAddDataTopUp);			
 	}
+	
+	/**
+	 * To get the value of usage in the given single CTN
+	 * @param strCtn, the CTN number
+	 * @return double, the value of usage
+	 * @author ning.xue
+	 */
+	public double getSingleLineUsage(String strCtn) {
+		
+		String strLast4Digit = strCtn.substring(strCtn.length()-5);
+		String strUsageInCtn = reusableActions.getWhenReady(By.xpath("//span[contains(text(),'" + strLast4Digit 
+									+ "')]/parent::span/following-sibling::span/span"), 20).getText();
+		return Double.parseDouble(strUsageInCtn.substring(0, strUsageInCtn.lastIndexOf("GB")-2).trim());
+	}
+	
+	/**
+	 * Click the CTN tab in wireless dash board
+	 * @param strCtn, the CTN number
+	 * @author ning.xue
+	 */
+	public void clkCtnTab(String strCtn) {
+		
+		String strLast4Digit = strCtn.substring(strCtn.length()-5);
+		reusableActions.getWhenReady(By.xpath("//span[contains(text(),'" + strLast4Digit), 20).click();
+	}
+
 
 	
 }
