@@ -37,9 +37,10 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	 */
 	public void clkSolarisRHPBadge(String strBrowser ) {
 		//check for presence of other element
+		reusableActions.staticWait(1000);
 		if (strBrowser.equalsIgnoreCase("chrome"))
 		{
-		reusableActions.clickAndHoldFor(btnSolarisrhpBadge, 30);		
+		reusableActions.getWhenReady(btnSolarisrhpBadge, 30).click();		
 		}else
 		{
 			reusableActions.clickWhenReady(btnSolarisrhpBadge, 60);

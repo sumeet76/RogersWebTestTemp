@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Cable Rogers Tests" parallel="tests" thread-count="1">
+<parameter name="strBrowser" value="chrome"/>
+<parameter name="strLanguage" value="en"/>
+<parameter name="strGroupName" value="connectedhome_login"/>
+
+<listeners>
+      <listener class-name="com.rogers.test.listeners.AnnotationTransformer"/>
+</listeners> 		
+
+<test name="Ignite RHP Validation Test">
+<classes>				             
+<class name="com.rogers.test.tests.connectedhome.RogersCH_TC_024_IgniteRHP_ValidateRHPDasboardTest"></class>
+</classes>          																					
+</test>
+				
+</suite>

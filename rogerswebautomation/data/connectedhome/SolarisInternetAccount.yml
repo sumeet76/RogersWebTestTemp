@@ -1,0 +1,13 @@
+# Account Details 
+---
+name: SolarisInternetAccount
+username: CHapr1f101@yahoo.com
+password: DigiAuto@123 
+accountDetails:
+   type: Internet
+   ban: 930650148
+   upgradePlan: Ignite Internet Gigabit
+   downgradePlanEn: Ignite Internet 150u 
+   internetBundle:  150u
+   phoneNumber: 921577623
+...

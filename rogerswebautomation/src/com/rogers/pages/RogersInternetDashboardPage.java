@@ -44,6 +44,10 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@id='terms-conditions']")
 	WebElement infoAgreement;
 	
+	@FindBy(xpath = "//a[@class='btn ute-btn-primary btn-block-xs ute-sm custom-modal-button']")
+	WebElement btnInternetChangeOK;
+	
+	
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
 
@@ -79,10 +83,10 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSolarisInternetBadge(String strBrowser) {
+	  //TODO validate for both the browsers
 		if (strBrowser.equalsIgnoreCase("chrome"))
 		{
-		reusableActions.getWhenReady(btnSolarisInternetBadge,90).click();
-			
+		reusableActions.getWhenReady(btnSolarisInternetBadge,90).click();			
 		}
 		else 
 		{
@@ -130,7 +134,16 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSolChangeInternetPackage() {		
-		reusableActions.clickWhenReady(btnSolChangeInternetPackage, 60);
+		reusableActions.clickWhenReady(btnSolChangeInternetPackage, 120);
+
+	}
+	
+	/**
+	 * Click the Change Internet Package OK button on Solaris Internet dash board
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkInternetChangeOK() {		
+		reusableActions.clickWhenReady(btnInternetChangeOK, 120);
 
 	}
 	
@@ -149,17 +162,9 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectSolarisInternetPackage(String strPackageName) {
-		By packageNameLocator = By.xpath("//span[contains(normalize-space(text()),'" + strPackageName+ "') or contains(normalize-space(text()),'" + strPackageName +"')]/ancestor::div[@class='owl-item active']//ins[@translate='global.cta.select']");
+		By btnPackageSelection = By.xpath("//span[contains(normalize-space(text()),'" + strPackageName+ "') or contains(normalize-space(text()),'" + strPackageName +"')]/ancestor::div[@class='owl-item active']//ins[@translate='global.cta.select']");
 		reusableActions.javascriptScrollToMiddleOfPage();
-    	for (int iteration = 0 ; iteration < 2 ;  iteration++ )
-		{                  
-    	 if(reusableActions.isElementVisible(packageNameLocator, 60)) 
-    	 {
-    	  reusableActions.getWhenReady(packageNameLocator, 20).click();
-    	  reusableActions.waitForElementInvisibility(popupLoadingFingers,120);
-         }  	  
-	   }
-    	reusableActions.waitForElementVisibility(infoAgreement, 60);
+		reusableActions.getWhenReady(btnPackageSelection, 120).click();	
 	}
 	
 	/**

@@ -4,8 +4,7 @@ import com.rogers.yaml.pojo.AccountData;
 import com.rogers.yaml.pojo.Config;
 import com.rogers.yaml.pojo.PaymentDetails;
 
-public class TestDataHandler {
-	
+public class TestDataHandler {	
 	public static Config config;
 	public static PaymentDetails paymentInfo;
 	public static AccountData tc013132;
@@ -35,10 +34,41 @@ public class TestDataHandler {
 	public static AccountData tc03;
 	public static AccountData tc61;
 	public static AccountData tc67;
+	public static Config rogersConfig;
+	public static AccountData digitalTVAccount;
+	public static AccountData solarisInternetAccount;
+	public static AccountData igniteTVAccount;
+	public static PaymentDetails rogersPaymentInfo;
+	public static AccountData solarisTVAccount;
+	public static AccountData standaloneInternetAccountWithUsage;
+	public static AccountData legacyRHP;
+	public static AccountData igniteRHP;
+	public static AccountData solarisInternetAccountWithUsage;
+	public static AccountData solarisInternetAccountForUpgrade;
+	public static AccountData solarisTVAccountForUpgrade;
+	public static AccountData solarisTVAccountForUpgradeON;
+	public static AccountData solarisTVAccountForUpgradeNL;
+	public static AccountData solarisTVAccountForUpgradeNB;
+	public static AccountData internetAccountUpgrade;
+	public static AccountData digitalTVAccountUpgradePackage;
+	public static AccountData  legacyInternetAccount;
+	public static AccountData legacyInternetAccountUpgrade;
+	public static AccountData solarisPortinFlows;
+	public static AccountData digitalTVUpgradeToIgnite;
+	public static AccountData  solarisInternetOldConstructor;
+	public static AccountData solarisTVOldConstructor;
+	public static AccountData noPortInAbondoneFlows;
+	public static AccountData solarisInternetPackageChange;
+	public static AccountData solarisTVAccountPackageUpgrade;
+	public static AccountData solarisMultipleSubscriptions;
+	public static AccountData solarisChangeTVPackageAdd4KChannelsAndThemePack;
+	public static AccountData solarisChangeTVManageChannels;
+	public static AccountData solarisChangeTVManageThemePacks;
+	public static AccountData solarisInternetAccountWithUsageAndPackageUpgrade;
 
 	public static void dataInit (String strApplicationType) {	    	
     	if(strApplicationType.toUpperCase().trim().endsWith("CH")) {	    	
-    		//HSI Fido Data files
+    		//cable Data files
     		connectedHomeDataInit();            
     	} else if(strApplicationType.toUpperCase().trim().endsWith("SS")) {
 	    	//Self-Service Data files
@@ -56,6 +86,49 @@ public class TestDataHandler {
 	}
 	
 	private static void connectedHomeDataInit() {
+		rogersConfig =  YamlHandler.getCableConfig();
+      	rogersPaymentInfo = YamlHandler.getCablePaymentDetails();
+      	              	
+      	//Digital TV test data
+    	digitalTVAccount = YamlHandler.getCableAccountData("DigitalTVAccount");
+    	digitalTVUpgradeToIgnite = YamlHandler.getCableAccountData("DigitalTVUpgradeToIgnite");
+    	digitalTVAccountUpgradePackage = YamlHandler.getCableAccountData("DigitalTVAccountUpgradePackage");
+    	noPortInAbondoneFlows = YamlHandler.getCableAccountData("NoPortInAbondoneFlows");
+    	
+    	
+    	//Legacy Internet test data
+    	legacyInternetAccount = YamlHandler.getCableAccountData("LegacyInternetAccount"); 
+    	legacyInternetAccountUpgrade = YamlHandler.getCableAccountData("LegacyInternetAccountUpgrade");
+    	
+    	//RHP test data
+    	legacyRHP = YamlHandler.getCableAccountData("LegacyRHP");
+    	igniteRHP = YamlHandler.getCableAccountData("IgniteRHP");
+    	solarisMultipleSubscriptions = YamlHandler.getCableAccountData("SolarisMultipleSubscriptions");
+    	
+    	//Ignite Internet test data
+    	solarisInternetAccount = YamlHandler.getCableAccountData("SolarisInternetAccount");
+    	internetAccountUpgrade   = YamlHandler.getCableAccountData("InternetAccountUpgrade");
+    	solarisInternetAccountWithUsage = YamlHandler.getCableAccountData("SolarisInternetAccountWithUsage");
+    	solarisInternetAccountForUpgrade = YamlHandler.getCableAccountData("SolarisInternetAccountForUpgrade");
+    	standaloneInternetAccountWithUsage = YamlHandler.getCableAccountData("StandaloneInternetAccountWithUsage");
+    	solarisInternetOldConstructor  = YamlHandler.getCableAccountData("SolarisInternetOldConstructor");
+    	solarisInternetPackageChange = YamlHandler.getCableAccountData("SolarisInternetPackageChange");
+    	solarisInternetAccountWithUsageAndPackageUpgrade = YamlHandler.getCableAccountData("SolarisInternetAccountWithUsageAndPackageUpgrade");
+
+    	//Ignite TV test data
+    	igniteTVAccount = YamlHandler.getCableAccountData("IgniteTVAccount");
+    	solarisTVAccount = YamlHandler.getCableAccountData("SolarisTVAccount");
+    	solarisPortinFlows = YamlHandler.getCableAccountData("SolarisPortinFlows");
+    	solarisTVAccountForUpgrade = YamlHandler.getCableAccountData("SolarisTVAccountForUpgrade");
+    	solarisTVAccountForUpgradeON = YamlHandler.getCableAccountData("SolarisTVAccountForUpgradeON");
+    	solarisTVAccountForUpgradeNL = YamlHandler.getCableAccountData("SolarisTVAccountForUpgradeNL");
+    	solarisTVAccountForUpgradeNB = YamlHandler.getCableAccountData("SolarisTVAccountForUpgradeNB"); 
+    	solarisTVOldConstructor = YamlHandler.getCableAccountData("SolarisTVOldConstructor");
+    	solarisTVAccountForUpgradeNB = YamlHandler.getCableAccountData("SolarisTVAccountForUpgradeNB");
+    	solarisTVAccountPackageUpgrade = YamlHandler.getCableAccountData("SolarisTVPackageChange");
+    	solarisChangeTVPackageAdd4KChannelsAndThemePack = YamlHandler.getCableAccountData("SolarisChangeTVPackageAdd4KChannelsAndThemePack");
+    	solarisChangeTVManageChannels = YamlHandler.getCableAccountData("SolarisChangeTVManageChannels");
+    	solarisChangeTVManageThemePacks = YamlHandler.getCableAccountData("SolarisChangeTVManageThemePacks");
 
 	}
 	
@@ -92,7 +165,7 @@ public class TestDataHandler {
 	}
 	
 	private static void buyFlowsDataInit() {
-
+		
 	}
 
 }

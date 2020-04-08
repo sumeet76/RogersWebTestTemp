@@ -2,14 +2,10 @@ package com.rogers.test.base;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.http.NameValuePair;
@@ -18,23 +14,37 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
-import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Listeners;
 
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
 import com.rogers.pages.RogersAccountOverviewPage;
 import com.rogers.pages.RogersAddDataPage;
 import com.rogers.pages.RogersBillingPage;
+import com.rogers.pages.RogersBuyPage;
 import com.rogers.pages.RogersChangeMyCallerIdPage;
 import com.rogers.pages.RogersChangePaymentMethodPage;
+import com.rogers.pages.RogersDigitalTVDashboardPage;
+import com.rogers.pages.RogersDigitalTVPackageSelectionPage;
 import com.rogers.pages.RogersHomePage;
+import com.rogers.pages.RogersHomePhonePortInPage;
+import com.rogers.pages.RogersHomePhoneSelectionPage;
+import com.rogers.pages.RogersIgniteTVBuyPage;
+import com.rogers.pages.RogersIgniteTVCreditCheckPage;
+import com.rogers.pages.RogersIgniteTVProfileCreationPage;
+import com.rogers.pages.RogersInternetDashboardPage;
+import com.rogers.pages.RogersInternetPackageSelectionPage;
+import com.rogers.pages.RogersInternetUsagePage;
+import com.rogers.pages.RogersLegacyBundleBuyPage;
 import com.rogers.pages.RogersLinkAccountPage;
 import com.rogers.pages.RogersLoginPage;
 import com.rogers.pages.RogersMakePaymentPage;
 import com.rogers.pages.RogersManageDataPage;
+import com.rogers.pages.RogersOrderConfirmationPage;
+import com.rogers.pages.RogersOrderReviewPage;
+import com.rogers.pages.RogersOrderSummaryPage;
 import com.rogers.pages.RogersPaymentOptionsPage;
 import com.rogers.pages.RogersProfileAndSettingsPage;
 import com.rogers.pages.RogersRecoverPassOrNamePage;
@@ -42,7 +52,11 @@ import com.rogers.pages.RogersRegisterPage;
 import com.rogers.pages.RogersSecurePaymentPage;
 import com.rogers.pages.RogersSetPasswordPage;
 import com.rogers.pages.RogersShareEverythingPage;
+import com.rogers.pages.RogersSolarisRHPDashboardPage;
+import com.rogers.pages.RogersSolarisTVChannelsAndThemepacksPage;
+import com.rogers.pages.RogersSolarisTVDashboardPage;
 import com.rogers.pages.RogersSpeedPassPage;
+import com.rogers.pages.RogersTechInstallPage;
 import com.rogers.pages.RogersWirelessDashboardPage;
 import com.rogers.pages.ens.EnsHomePage;
 import com.rogers.pages.ens.EnsNotificationViewPage;
@@ -94,6 +108,28 @@ public class BaseTestClass {
 	protected RogersSetPasswordPage rogers_set_password_page;
 	protected RogersRecoverPassOrNamePage rogers_recover_pass_or_name;
 	protected BrowserDrivers browserdriver;
+	public static ExtentReports report;
+	public static ExtentTest logger;
+	protected RogersInternetDashboardPage rogers_internet_dashboard_page;
+	protected RogersInternetPackageSelectionPage rogers_internet_package_selection_page;
+	protected RogersDigitalTVDashboardPage rogers_digital_tv_dashboard_page;
+	protected RogersDigitalTVPackageSelectionPage rogers_digital_tv_package_selection_page;
+	protected RogersSolarisTVDashboardPage rogers_solaris_tv_dashboard_page;
+	protected RogersBuyPage rogers_buy_page;
+	protected RogersSolarisRHPDashboardPage rogers_solaris_rhp_dashboard_validation_page;
+	protected RogersOrderSummaryPage rogers_order_summary_page;
+	protected RogersOrderConfirmationPage rogers_order_confirmation_page;
+	protected RogersIgniteTVBuyPage rogers_igniteTV_buy_page;
+	protected RogersOrderReviewPage rogers_order_review_page;
+	protected RogersIgniteTVProfileCreationPage rogers_igniteTV_profile_creation_page;
+	protected RogersIgniteTVCreditCheckPage rogers_igniteTV_credit_check_page;
+	protected RogersHomePhoneSelectionPage rogers_home_phone_selection_page;
+	protected RogersLegacyBundleBuyPage rogers_legacy_bundle_buy_page;
+	protected RogersTechInstallPage rogers_tech_install_page;
+	protected RogersSolarisTVChannelsAndThemepacksPage rogers_solaris_tv_channels_and_themepacks_page;
+	protected RogersHomePhonePortInPage rogers_home_phone_port_in_page;
+	protected RogersInternetUsagePage rogers_internet_usage_page;
+	public RogersBillingPage rogersBillingPage;
 		
 		private CaptchaBypassHandlers captcha_bypass_handlers;
 		
@@ -101,34 +137,6 @@ public class BaseTestClass {
 			 browserdriver =  new BrowserDrivers();
 			 
 		}
-	
-	private void init() {
-		
-		rogers_home_page = new RogersHomePage(driver);
-		rogers_login_page = new RogersLoginPage(driver);
-		rogers_account_overview_page = new RogersAccountOverviewPage(driver);
-		rogers_share_everything_page = new RogersShareEverythingPage(driver);
-		rogers_change_my_caller_id_page = new RogersChangeMyCallerIdPage(driver);
-		rogers_wireless_dashboard_page = new RogersWirelessDashboardPage(driver);
-		rogers_add_data_page = new RogersAddDataPage(driver);
-		rogers_manage_data_page = new RogersManageDataPage(driver);
-		rogers_speed_pass_page = new RogersSpeedPassPage(driver);
-		rogers_register_page = new RogersRegisterPage(driver);
-		rogers_link_account_page = new RogersLinkAccountPage(driver);
-		rogers_billing_page = new RogersBillingPage(driver);
-		rogers_change_payment_method_page = new RogersChangePaymentMethodPage(driver);
-		rogers_secure_payment_page = new RogersSecurePaymentPage(driver);
-		rogers_profile_and_settings_page = new RogersProfileAndSettingsPage(driver);
-		rogers_payment_options_page = new RogersPaymentOptionsPage(driver);
-		rogers_make_payment_page = new RogersMakePaymentPage(driver);
-		reporter = new ExtentTestManager(driver);
-		common_business_flows = new CommonBusinessFlows(this);
-		ensHomePage = new EnsHomePage(getDriver());
-		ensNoteViewPage = new EnsNotificationViewPage(getDriver());
-		ensVerifications = new VerifyInEns(this);
-		rogers_set_password_page = new RogersSetPasswordPage(getDriver());
-		rogers_recover_pass_or_name = new RogersRecoverPassOrNamePage(getDriver());
-	}
 
 
 	 /* To start a session using given url, browser, language and test case group name.
@@ -140,8 +148,54 @@ public class BaseTestClass {
 	 * @throws ClientProtocolException   org.apache.http.client.ClientProtocolException, Signals an error in the HTTP protocol.
 	 * @throws IOException               java.io.IOException, Signals that an I/O exception of some sort has occurred, produced by failed or interrupted I/O operations.
 	 */
-	public void startSession(String strUrl, String strBrowser,  String strLanguage, RogersEnums.GroupName enumGroupName, Method currentTestMethodName) throws ClientProtocolException, IOException {
-		this.driver = browserdriver.driverInit(strBrowser, currentTestMethodName, enumGroupName.toString());
+	public void startSession(String strUrl, String strBrowser,  String strLanguage, String strGroupName , Method currentTestMethodName) throws ClientProtocolException, IOException {
+		this.driver = browserdriver.driverInit(strBrowser, currentTestMethodName, strGroupName);
+		System.out.println(strUrl + "----------------------------------------------------------------------------");
+		captcha_bypass_handlers = new CaptchaBypassHandlers(getDriver());
+		switch(strGroupName.toLowerCase().trim()) {			
+		case "selfserve":
+		case "selfserve_login":
+			captcha_bypass_handlers.captchaBypassURLSelfserveFlows(strUrl, strLanguage);
+			break;
+			
+		case "connectedhome_LegacyAnonymous":				
+			captcha_bypass_handlers.captchaBypassURLLegacyAnonymousBuyFlows(strUrl, strLanguage); 
+			break;	
+			
+		case "connectedhome_IgniteAnonymous":				
+			captcha_bypass_handlers.captchaBypassURLIgniteAnonymousBuyFlows(strUrl, strLanguage); 
+			break;
+			
+		case "connectedhome_LegacyLogin":
+			captcha_bypass_handlers.captchaBypassURLLegacyLoginFlows(strUrl, strLanguage);
+			break; 
+
+		case "connectedhome_IgniteLogin":
+			captcha_bypass_handlers.captchaBypassURLIgniteLoginFlows(strUrl, strLanguage);
+			break; 
+			
+		case "connectedhome_login":
+			captcha_bypass_handlers.captchaBypassURLLoginFlows(strUrl, strLanguage);
+			break; 
+			
+ 		default :
+ 			captcha_bypass_handlers.captchaBypassURLLoginFlows(strUrl, strLanguage);
+		}
+	    setImplicitWait(getDriver(), 10);
+	    init(strGroupName);
+ }
+		
+	 /* To start a session using given url, browser, language and test case group name.
+	 * @param strUrl                     string of test url
+	 * @param strBrowser                 string of browser name
+	 * @param strLanguage                string of language to use
+	 * @param enumGroupName               string of group name of the test case
+	 * @param currentTestMethodName 
+	 * @throws ClientProtocolException   org.apache.http.client.ClientProtocolException, Signals an error in the HTTP protocol.
+	 * @throws IOException               java.io.IOException, Signals that an I/O exception of some sort has occurred, produced by failed or interrupted I/O operations.
+	 */
+	public void startSession(String strUrl, String strBrowser,  String strLanguage, RogersEnums.GroupName enumGroupName , Method currentTestMethodName) throws ClientProtocolException, IOException {
+		this.driver = browserdriver.driverInit(strBrowser, currentTestMethodName,  enumGroupName.toString());
 		System.out.println(strUrl + "----------------------------------------------------------------------------");
 		captcha_bypass_handlers = new CaptchaBypassHandlers(getDriver());
 		switch(enumGroupName.toString().toLowerCase().trim()) {			
@@ -149,109 +203,211 @@ public class BaseTestClass {
 		case "selfserve_login":
 			captcha_bypass_handlers.captchaBypassURLSelfserveFlows(strUrl, strLanguage);
 			break;
+			
+		case "connectedhome_LegacyAnonymous":				
+			captcha_bypass_handlers.captchaBypassURLLegacyAnonymousBuyFlows(strUrl, strLanguage); 
+			break;	
+			
+		case "connectedhome_IgniteAnonymous":				
+			captcha_bypass_handlers.captchaBypassURLIgniteAnonymousBuyFlows(strUrl, strLanguage); 
+			break;
+			
+		case "connectedhome_LegacyLogin":
+			captcha_bypass_handlers.captchaBypassURLLegacyLoginFlows(strUrl, strLanguage);
+			break; 
 
- 		default :
- 			captcha_bypass_handlers.captchaBypassURLLoginFlows(strUrl, strLanguage);
+		case "connectedhome_IgniteLogin":
+			captcha_bypass_handlers.captchaBypassURLIgniteLoginFlows(strUrl, strLanguage);
+			break; 
+			
+		case "connectedhome_login":
+			captcha_bypass_handlers.captchaBypassURLLoginFlows(strUrl, strLanguage);
+			break; 
+			
+		default :
+			captcha_bypass_handlers.captchaBypassURLLoginFlows(strUrl, strLanguage);
 		}
 	    setImplicitWait(getDriver(), 10);
-	    init();
- }
+	    init(enumGroupName.toString().toLowerCase().trim());
+}	
 
-	
-	
-	
 	/**
-	 * gets the OS type
-	 * @return enum containing OS value
-	 * @author Mirza.Kamran
+	 * To initiate the page objects based on test case group, will read group name from xml file.
+	 * @param strGroupName string of group name.
 	 */
-	  public static OS getOS() {
-	        if (os == null) {
-	            String operSys = System.getProperty("os.name").toLowerCase();
-	            if (operSys.contains("win")) {
-	                os = OS.WIN;
-	            } else if (operSys.contains("nix") || operSys.contains("nux")
-	                    || operSys.contains("aix")) {
-	                os = OS.LIN;
-	            } else if (operSys.contains("mac")) {
-	                os = OS.MAC;
-	            }
-	        }
-	        return os;
-	    }
-	
-	/**
-	 * This method will set up the sauce capabilities and initiate run
-	 * @param strTestName name of the test method
-	 * @param strJobName The sauce Job name
-	 * @param strBrowser browser name
-	 * @throws MalformedURLException exception thrown on malformed url
-	 * @author Mirza.Kamran
-	 */
-	private void setupSauce(String strTestName,String strJobName,String strBrowser) throws MalformedURLException {
-        
-        String sauceURL ="http://"+System.getenv("SAUCE_USERNAME")+":"+System.getenv("SAUCE_ACCESS_KEY")+"@ondemand.saucelabs.com:80/wd/hub";
-                
-        //String sauceURL = "https://ondemand.saucelabs.com/wd/hub";	
-        MutableCapabilities sauceOpts = new MutableCapabilities();
-        //sauceOpts.setCapability("username", sauceUserName);
-        //sauceOpts.setCapability("accessKey", sauceAccessKey);        
-        sauceOpts.setCapability("seleniumVersion", "3.141.59");
-        sauceOpts.setCapability("name", strTestName);
-        List<String> tags = Arrays.asList("Fido", "SelfServe", "module4");
-        sauceOpts.setCapability("tags", tags);		 		       
-        sauceOpts.setCapability("maxDuration", 3600);//test run timeout
-        sauceOpts.setCapability("commandTimeout", 600); //selenium command timeout
-        sauceOpts.setCapability("idleTimeout", 1000);	       
-        sauceOpts.setCapability("build", strJobName);
-        ChromeOptions chromeOpts = new ChromeOptions();
-        MutableCapabilities capabilities = new MutableCapabilities();
-        capabilities.setCapability("sauce:options", sauceOpts);
-        switch (strBrowser) {
-		case "firefox":
-			capabilities.setCapability("browserName", "firefox");
+	private void init(String strGroupName) {
+		reporter = new ExtentTestManager(getDriver());	
+		common_business_flows = new CommonBusinessFlows(this);
+		switch(strGroupName) {
+		
+		case "selfserve":
+			
+			rogers_home_page = new RogersHomePage(driver);
+			rogers_login_page = new RogersLoginPage(driver);
+			rogers_account_overview_page = new RogersAccountOverviewPage(driver);
+			rogers_share_everything_page = new RogersShareEverythingPage(driver);
+			rogers_change_my_caller_id_page = new RogersChangeMyCallerIdPage(driver);
+			rogers_wireless_dashboard_page = new RogersWirelessDashboardPage(driver);
+			rogers_add_data_page = new RogersAddDataPage(driver);
+			rogers_manage_data_page = new RogersManageDataPage(driver);
+			rogers_speed_pass_page = new RogersSpeedPassPage(driver);
+			rogers_register_page = new RogersRegisterPage(driver);
+			rogers_link_account_page = new RogersLinkAccountPage(driver);
+			rogers_billing_page = new RogersBillingPage(driver);
+			rogers_change_payment_method_page = new RogersChangePaymentMethodPage(driver);
+			rogers_secure_payment_page = new RogersSecurePaymentPage(driver);
+			rogers_profile_and_settings_page = new RogersProfileAndSettingsPage(driver);
+			rogers_payment_options_page = new RogersPaymentOptionsPage(driver);
+			rogers_make_payment_page = new RogersMakePaymentPage(driver);
+			reporter = new ExtentTestManager(driver);
+			common_business_flows = new CommonBusinessFlows(this);
+			ensHomePage = new EnsHomePage(getDriver());
+			ensNoteViewPage = new EnsNotificationViewPage(getDriver());
+			ensVerifications = new VerifyInEns(this);
+			rogers_set_password_page = new RogersSetPasswordPage(getDriver());
+			rogers_recover_pass_or_name = new RogersRecoverPassOrNamePage(getDriver());
 			break;
-		case "chrome":			
-	        chromeOpts.setExperimentalOption("w3c", true);
-	        capabilities.setCapability("goog:chromeOptions", chromeOpts);
-	        capabilities.setCapability("browserName", "chrome");
+			
+		case "connectedhome_LegacyAnonymous":
+			
+			rogers_home_page = new RogersHomePage(driver);
+			rogers_buy_page = new RogersBuyPage(driver);
+			rogers_login_page = new RogersLoginPage(driver);
+			rogers_internet_package_selection_page = new RogersInternetPackageSelectionPage(driver);
+			rogers_digital_tv_dashboard_page = new RogersDigitalTVDashboardPage(driver);
+			rogers_digital_tv_package_selection_page = new RogersDigitalTVPackageSelectionPage(driver);
+			rogers_order_summary_page = new RogersOrderSummaryPage(driver);
+			rogers_order_confirmation_page = new RogersOrderConfirmationPage(driver);
+			rogers_order_review_page = new RogersOrderReviewPage(driver);
+			rogers_legacy_bundle_buy_page = new RogersLegacyBundleBuyPage(driver);
+			rogers_payment_options_page = new RogersPaymentOptionsPage(driver);
 			break;
-		case "safari":
-			capabilities.setCapability("browserName", "safari");
-			break;	
+			
+		case "connectedhome_IgniteAnonymous":
+			
+			rogers_home_page = new RogersHomePage(driver);
+			rogers_buy_page = new RogersBuyPage(driver);
+			rogers_login_page = new RogersLoginPage(driver);
+			rogers_internet_package_selection_page = new RogersInternetPackageSelectionPage(driver);
+			rogers_order_summary_page = new RogersOrderSummaryPage(driver);
+			rogers_order_confirmation_page = new RogersOrderConfirmationPage(driver);
+			rogers_igniteTV_buy_page = new RogersIgniteTVBuyPage(driver);
+			rogers_order_review_page = new RogersOrderReviewPage(driver);
+			rogers_igniteTV_profile_creation_page = new RogersIgniteTVProfileCreationPage(driver);
+			rogers_igniteTV_credit_check_page = new RogersIgniteTVCreditCheckPage(driver);
+			rogers_home_phone_selection_page = new RogersHomePhoneSelectionPage(driver);
+			rogers_tech_install_page = new RogersTechInstallPage(driver);
+			rogers_payment_options_page = new RogersPaymentOptionsPage(driver);
+			rogers_solaris_tv_channels_and_themepacks_page = new RogersSolarisTVChannelsAndThemepacksPage(driver);
+			rogers_register_page = new RogersRegisterPage(driver);
+			rogers_home_phone_port_in_page = new RogersHomePhonePortInPage(driver);
+			break;
+			
+		case "connectedhome_LegacyLogin":
+			
+			rogers_home_page = new RogersHomePage(driver);
+			rogers_buy_page = new RogersBuyPage(driver);
+			rogers_login_page = new RogersLoginPage(driver);
+			rogers_account_overview_page = new RogersAccountOverviewPage(driver);
+			rogers_internet_dashboard_page = new RogersInternetDashboardPage(driver);
+			rogers_internet_package_selection_page = new RogersInternetPackageSelectionPage(driver);
+			rogers_digital_tv_dashboard_page = new RogersDigitalTVDashboardPage(driver);
+			rogers_digital_tv_package_selection_page = new RogersDigitalTVPackageSelectionPage(driver);
+			rogers_order_summary_page = new RogersOrderSummaryPage(driver);
+			rogers_order_confirmation_page = new RogersOrderConfirmationPage(driver);
+			rogers_order_review_page = new RogersOrderReviewPage(driver);
+			rogers_home_phone_selection_page = new RogersHomePhoneSelectionPage(driver);
+			rogers_legacy_bundle_buy_page = new RogersLegacyBundleBuyPage(driver);
+			rogers_tech_install_page = new RogersTechInstallPage(driver);
+			rogers_payment_options_page = new RogersPaymentOptionsPage(driver);
+			
+		case "connectedhome_IgniteLogin":
+			
+			rogers_home_page = new RogersHomePage(driver);
+			rogers_buy_page = new RogersBuyPage(driver);
+			rogers_login_page = new RogersLoginPage(driver);
+			rogers_account_overview_page = new RogersAccountOverviewPage(driver);
+			rogers_internet_dashboard_page = new RogersInternetDashboardPage(driver);
+			rogers_internet_package_selection_page = new RogersInternetPackageSelectionPage(driver);
+			rogers_digital_tv_dashboard_page = new RogersDigitalTVDashboardPage(driver);
+			rogers_digital_tv_package_selection_page = new RogersDigitalTVPackageSelectionPage(driver);
+			rogers_solaris_tv_dashboard_page = new RogersSolarisTVDashboardPage(driver);
+			rogers_order_summary_page = new RogersOrderSummaryPage(driver);
+			rogers_order_confirmation_page = new RogersOrderConfirmationPage(driver);
+			rogers_igniteTV_buy_page = new RogersIgniteTVBuyPage(driver);
+			rogers_order_review_page = new RogersOrderReviewPage(driver);
+			rogers_igniteTV_profile_creation_page = new RogersIgniteTVProfileCreationPage(driver);
+			rogers_igniteTV_credit_check_page = new RogersIgniteTVCreditCheckPage(driver);
+			rogers_home_phone_selection_page = new RogersHomePhoneSelectionPage(driver);
+			rogers_tech_install_page = new RogersTechInstallPage(driver);
+			rogers_payment_options_page = new RogersPaymentOptionsPage(driver);
+			rogers_register_page = new RogersRegisterPage(driver);
+			rogers_home_phone_port_in_page = new RogersHomePhonePortInPage(driver);
+			break;
+			
+		case "connectedhome_login":
+			
+			rogers_home_page = new RogersHomePage(driver);
+			rogers_buy_page = new RogersBuyPage(driver);
+			rogers_login_page = new RogersLoginPage(driver);
+			rogers_account_overview_page = new RogersAccountOverviewPage(driver);
+			rogers_internet_dashboard_page = new RogersInternetDashboardPage(driver);
+			rogers_internet_package_selection_page = new RogersInternetPackageSelectionPage(driver);
+			rogers_digital_tv_dashboard_page = new RogersDigitalTVDashboardPage(driver);
+			rogers_digital_tv_package_selection_page = new RogersDigitalTVPackageSelectionPage(driver);
+			rogers_solaris_tv_dashboard_page = new RogersSolarisTVDashboardPage(getDriver());
+			rogers_solaris_rhp_dashboard_validation_page = new RogersSolarisRHPDashboardPage(driver);
+			rogers_order_summary_page = new RogersOrderSummaryPage(driver);
+			rogers_order_confirmation_page = new RogersOrderConfirmationPage(driver);
+			rogers_igniteTV_buy_page = new RogersIgniteTVBuyPage(driver);
+			rogers_order_review_page = new RogersOrderReviewPage(driver);
+			rogers_solaris_tv_channels_and_themepacks_page = new RogersSolarisTVChannelsAndThemepacksPage(driver);
+			rogers_register_page = new RogersRegisterPage(driver);
+			rogers_internet_usage_page = new RogersInternetUsagePage(driver);
+			rogersBillingPage = new RogersBillingPage(driver);
+			break;
+			
+		case "buyflow":
+			
+			break;
 		default:
-			break;
-		}                                
-        capabilities.setCapability("platformVersion", "Windows 10");
-        capabilities.setCapability("browserVersion", "latest");		 
-        driver = new RemoteWebDriver(new URL(sauceURL), capabilities);						
+			
+
+		}	
+		
+		
+	}
+	/**
+	 * To close session, quit driver and close every associated windows.
+	 */
+	public void closeSession() {			
+		getDriver().quit();		
 	}
 
 	/**
-	 * This method will set up the browser stack capabilities
-	 * @author Mirza.Kamran
-	 * @throws MalformedURLException 
+	 * To set implicit wait for the test.
+	 * @param driver   the web driver
+	 * @param seconds  wait time by seconds
 	 */
-	private void setupBrowserStack(String strTestName) throws MalformedURLException {
-		  String username = "Mirza.Kamran";
-		  String automateKey = "dacb41bf-f530-437e-8d75-4b0e1e9670b9";
-		  String url = "https://" + username + ":" + automateKey + "@hub-cloud.browserstack.com/wd/hub";		  
-		    DesiredCapabilities caps = new DesiredCapabilities();
-		    caps.setCapability("os", "Windows");
-		    caps.setCapability("os_version", "10");
-		    caps.setCapability("browser", "Chrome");
-		    caps.setCapability("browser_version", "77.0");
-		    caps.setCapability("resolution", "1920x1080");
-		    caps.setCapability("project", "Self-Serve Test");
-		    caps.setCapability("name", strTestName);
-		    caps.setCapability("browserstack.local", "true");
-		    caps.setCapability("browserstack.console", "verbose");
-		    caps.setCapability("browserstack.debug", "true");
-		    caps.setCapability("idleTimeout", "200");
-//		    caps.setCapability("browserstack.networkLogs", "true");
+	public void setImplicitWait(WebDriver driver, long seconds) {
+		driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
+	}
 
-		    driver = new RemoteWebDriver(new URL(url), caps);
-		    driver.manage().window().maximize();
+	/**
+	 * To get the web driver in use.
+	 * @return driver, WebDriver which is using
+	 */
+	public WebDriver getDriver() {
+		return this.driver;
+	}
+	
+	
+	/**
+	 * To get parameters from XML file, it is called in TestListener.
+	 * @return HashMap of test parameters
+	 */
+	public HashMap<String, String> getXMLParameters() {
+		return xmlTestParameters;
 	}
 	
 	/**
@@ -263,45 +419,13 @@ public class BaseTestClass {
 	 */
 	public void mark(String strStatus) throws ClientProtocolException, IOException, URISyntaxException  {
 		  URI uri = new URI("https://ning28:pgaiJjgQMZERUe51d4ky@api.browserstack.com/automate/sessions/"
-				  			+ ((RemoteWebDriver)getDriver()).getSessionId() + ".json");
+		  			+ ((RemoteWebDriver)driver).getSessionId() + ".json");
 		  HttpPut putRequest = new HttpPut(uri);
 		  ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 		  nameValuePairs.add((new BasicNameValuePair("status", strStatus)));
 		  nameValuePairs.add((new BasicNameValuePair("reason", "")));
 		  putRequest.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 		  HttpClientBuilder.create().build().execute(putRequest);
-	}
-
-	public void closeSession() {
-
-		getDriver().quit();
-	}
-
-	/**
-	 * To set implicit wait for the test.
-	 * @param driver   the web driver
-	 * @param seconds  wait time by seconds
-	 */
-	public void setImplicitWait(WebDriver driver, long seconds) {
-		driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
-	}
+		}
 	
-	public WebDriver getDriver() {
-		return driver;
-	}
-
-	public void setDriver(WebDriver driver) {
-		this.driver = driver;
-	}
-	
-	/**
-	 * To get parameters from XML file, it is called in TestListener.
-	 * @return HashMap of test parameters
-	 */
-	public HashMap<String, String> getXMLParameters() {
-		return xmlTestParameters;
-	}
-		
-
-
 }

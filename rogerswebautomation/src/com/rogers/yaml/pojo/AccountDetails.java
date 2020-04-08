@@ -1,5 +1,7 @@
 package com.rogers.yaml.pojo;
 
+import java.util.Map;
+
 public class AccountDetails {
 	
 	private String ban;
@@ -16,8 +18,32 @@ public class AccountDetails {
 	private String voicemailPassword;
 	private String newpassword;
 	
+	private String type;
+	private String upgradePlan;
+	private String downgradePlanEn;
+	private String downgradePlanFr;
+	private String upgradePlanEn;
+	private String upgradePlanFr;
+	private String upgradeBundle;
+	private String downgradeBundle;
+	private String[] swapinChannel;
+	private String[] swapoutChannel;
+	private String postalCode;
+	private String payment;
+	private Map<String, String> address;
+	private String internetBundle;
+	private String phoneNumber;
+	private String swapInChannelOne;
+	private String swapInChannelTwo;
+	private String swapInChannelThree;
+	private String year;
+	private String date;
+	private String month;
 	
-
+	
+	public AccountDetails() {
+		
+	}
 	/**
 	 * @return the ban
 	 */
@@ -175,6 +201,260 @@ public class AccountDetails {
 	public void setCtn2(String ctn2) {
 		this.ctn2 = ctn2;
 	}
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return type;
+	}
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(String type) {
+		this.type = type;
+	}
+	/**
+	 * @return the upgradePlan
+	 */
+	public String getUpgradePlan() {
+		return upgradePlan;
+	}
+	/**
+	 * @param upgradePlan the upgradePlan to set
+	 */
+	public void setUpgradePlan(String upgradePlan) {
+		this.upgradePlan = upgradePlan;
+	}
+	/**
+	 * @return the upgradePlan
+	 */
+	public String getUpgradeBundle() {
+		return upgradeBundle;
+	}
+	/**
+	 * @param upgradePlan the upgradePlan to set
+	 */
+	public void setUpgradeBundle(String upgradeBundle) {
+		this.upgradeBundle = upgradeBundle;
+	}
+	/**
+	 * @return the downgradePlan
+	 */
+	public String getDowngradePlanEn() {
+		return downgradePlanEn;
+	}
+	/**
+	 * @param downgradePlan the downgradePlan to set
+	 */
+	public void setDowngradePlanEn(String downgradePlanEn) {
+		this.downgradePlanEn = downgradePlanEn;
+	}
+	/**
+	 * @return the downgradePlan
+	 */
+	public String getDowngradePlanFr() {
+		return downgradePlanFr;
+	}
+	/**
+	 * @param downgradePlan the downgradePlan to set
+	 */
+	public void setDowngradePlanFr(String downgradePlanFr) {
+		this.downgradePlanFr = downgradePlanFr;
+	}
 
+	/**
+	 * @return the upgradePlan
+	 */
+	public String getUpgradePlanEn() {
+		return upgradePlanEn;
+	}
+	/**
+	 * @param upgradePlan the downgradePlan to set
+	 */
+	public void setUpgradePlanEn(String upgradePlanEn) {
+		this.upgradePlanEn = upgradePlanEn;
+	}
+	/**
+	 * @return the upgradePlan
+	 */
+	public String getUpgradePlanFr() {
+		return upgradePlanFr;
+	}
+	/**
+	 * @param downgradePlan the downgradePlan to set
+	 */
+	public void setUpgradePlanFr(String upgradePlanFr) {
+		this.upgradePlanFr = upgradePlanFr;
+	}
+		/**
+	 * @return the downgradePlan
+	 */
+	public String getDowngradeBundle() {
+		return downgradeBundle;
+	}
+	/**
+	 * @param downgradePlan the downgradePlan to set
+	 */
+	public void setDowngradeBundle(String downgradeBundle) {
+		this.downgradeBundle = downgradeBundle;
+	}
+	/**
+	 * @return 
+	 */
+
+	/**
+	 * @return the swapinChannel
+	 */
+	public String[] getSwapinChannel() {
+		return swapinChannel;
+	}
+	/**
+	 * @param swapinChannel the swapinChannel to set
+	 */
+	public void setSwapinChannel(String[] swapinChannel) {
+		this.swapinChannel = swapinChannel;
+	}	
+		
+
+	/**
+	 * @return the SwapoutChannel
+	 */
+	public String[] getSwapoutChannel() {
+		return swapoutChannel;
+	}
+	/**
+	 * @param SwapoutChannel the SwapoutChannel to set
+	 */
+	public void setSwapoutChannel(String[] swapoutChannel) {
+		this.swapoutChannel = swapoutChannel;
+	}
+
+	public String getPostalCode() {
+		return postalCode;
+	}
+	/**
+	 * @param SwapoutChannel the SwapoutChannel to set
+	 */
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+	
+	
+	public String getPayment() {
+		return payment;
+	}
+	/**
+	 * @param SwapoutChannel the SwapoutChannel to set
+	 */
+	public void setPayment(String payment) {
+		this.payment = payment;
+	}
+	/**
+	 * @return the address
+	 */
+    public Map<String, String> getAddress() {
+        return address;
+    }
+    
+	/**
+	 * @param address the address to set
+	 */
+    public void setAddress(Map<String, String> address) {
+        this.address = address;
+    }
+    
+	/**
+	 * @return the InternetBundle
+	 */
+	public String getInternetBundle() {
+		return internetBundle;
+	}
+	/**
+	 * @param InternetBundle  the InternetBundle to set
+	 */
+	public void setInternetBundle(String internetBundle) {
+		this.internetBundle = internetBundle;
+	}
+	
+	/**
+	 * @return the PhoneNumber
+	 */
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	/**
+	 * @param PhoneNumber  the PhoneNumber to set
+	 */
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	
+	/**
+	 * @return the swapInChannelOne
+	 */
+	public String getSwapInChannelOne() {
+		return swapInChannelOne;
+	}
+	/**
+	 * @param swapInChannelOne  the swapInChannelOne to set
+	 */
+	public void setSwapInChannelOne(String swapInChannelOne) {
+		this.swapInChannelOne = swapInChannelOne;
+	}
+	
+	/**
+	 * @return the swapInChannelTwo
+	 */
+	public String getSwapInChannelTwo() {
+		return swapInChannelTwo;
+	}
+	/**
+	 * @param swapInChannelTwo  the swapInChannelTwo to set
+	 */
+	public void setSwapInChannelTwo(String swapInChannelTwo) {
+		this.swapInChannelTwo = swapInChannelTwo;
+	}
+	/**
+	 * @return the swapInChannelThree
+	 */
+	public String getSwapInChannelThree() {
+		return swapInChannelThree;
+	}
+	/**
+	 * @param swapInChannelThree  the swapInChannelThree to set
+	 */
+	public void setSwapInChannelThree(String swapInChannelThree) {
+		this.swapInChannelThree = swapInChannelThree;
+	}
+	
+	public String getYear() {
+		return year;
+	}
+	/**
+	 * @param year the year to set
+	 */
+	public void setYear(String year) {
+		this.year = year;
+	}
+	
+	public String getMonth() {
+		return month;
+	}
+	/**
+	 * @param month the month to set
+	 */
+	public void setMonth(String month) {
+		this.month = month;
+	}
+	
+	public String getDate() {
+		return date;
+	}
+	/**
+	 * @param date the date to set
+	 */
+	public void setDate(String date) {
+		this.date = date;
+	}
 
 }

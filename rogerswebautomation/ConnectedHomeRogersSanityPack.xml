@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Cable Rogers Tests" parallel="tests" thread-count="1">
+	<parameter name="strBrowser" value="chrome" />
+	<parameter name="strLanguage" value="en" />
+	<parameter name="strGroupName" value="connectedhome_login" />
+
+	<listeners>
+		<listener
+			class-name="com.rogers.test.listeners.AnnotationTransformer" />
+	</listeners>
+
+	<test name="Cable rogers Sanity">
+		<classes>
+			<class
+				name="com.rogers.test.tests.connectedhome.RogersCH_TC_001_IginteTV_BuyBundleTest"></class>
+			<class
+				name="com.rogers.test.tests.connectedhome.RogersCH_TC_004_LegacyBundle_BuyBundleOfferTest"></class>
+			<class
+				name="com.rogers.test.tests.connectedhome.RogersCH_TC_003_LegacyInternet_BuyInternetOfferTest"></class>
+			<class
+				name="com.rogers.test.tests.connectedhome.RogersCH_TC_007_IginteTV_ValidateTVDashboardTest"></class>
+			<class
+				name="com.rogers.test.tests.connectedhome.RogersCH_TC_008_IginteInternet_InternetPackageDowngradeTest"></class>
+			<class
+				name="com.rogers.test.tests.connectedhome.RogersCH_TC_018_LegacyInternet_ValidateInternetUsageTest"></class>
+			<class
+				name="com.rogers.test.tests.connectedhome.RogersCH_TC_019_DigitalTV_ValidateTVDashboardTest"></class>
+			<class
+				name="com.rogers.test.tests.connectedhome.RogersCH_TC_022_DigitalTV_TVPackageDowngradeTest"></class>
+			<class
+				name="com.rogers.test.tests.connectedhome.RogersCH_TC_023_LegacyRHP_ValidateRHPDashboardTest"></class>
+			<class
+				name="com.rogers.test.tests.connectedhome.RogersCH_TC_024_IgniteRHP_ValidateRHPDasboardTest"></class>
+		</classes>
+	</test>
+
+</suite>

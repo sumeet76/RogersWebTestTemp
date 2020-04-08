@@ -1,0 +1,9 @@
+# Account Details 
+---
+name: StandaloneInternetAccount
+username: march4CN028@yahoo.com 
+password: DigiAuto@123
+accountDetails:
+   type: Internet
+   ban:  925453938
+...

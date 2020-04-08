@@ -124,6 +124,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[@class='modal-content']//ins[@translate='global.cta.yesResetPinNumber']")
 	WebElement btnContinueParentalControlAndPinReset;	
+
 	
 	/**
 	 * Click on Reset Parental controls And Pin link
@@ -222,9 +223,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkViewfelxChannels() {
-		reusableActions.waitForElementInvisibility(lstChannelList, 60);
-		reusableActions.staticWait(2000);
-		reusableActions.waitForElementVisibility(lnkViewfelxChannels, 60);
+		reusableActions.waitForElementInvisibility(lstChannelList, 180);
+		reusableActions.waitForElementVisibility(lnkViewfelxChannels, 180);
 		reusableActions.getWhenReady(lnkViewfelxChannels,60).click();		
 	}
 
@@ -258,8 +258,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkChangeFlexChannels() {
-		reusableActions.waitForElementInvisibility(By.className("QSIPopOverShadowBox"),2);
-		reusableActions.clickWhenReady(infoChangeFlexChannels, 180);
+		reusableActions.waitForElementInvisibility(By.className("QSIPopOverShadowBox"),20);
+		reusableActions.getWhenReady(infoChangeFlexChannels, 240).click();
 	}
 
 	/**
@@ -269,7 +269,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 */
 	public void selectSolarisTVPackage1(String strPackageName) {
 		By packageNameLocator = By.xpath("//h4[contains(normalize-space(.),'" + strPackageName + "') or contains(normalize-space(.),'" + strPackageName + "')]/ancestor::div[contains(@class,'owl-item')]//ins[@translate='global.cta.select']");
-		reusableActions.staticWait(1000);
+		reusableActions.waitForElementInvisibility(popupLoadingFingers,180);
 		reusableActions.getWhenReady(packageNameLocator, 60).click();
 	}
 
@@ -280,7 +280,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 */
 	public void selectSolarisTVPackage(String strPackageName) {
 		By packageNameLocator = By.xpath("//h4[contains(normalize-space(.),'" + strPackageName + "') or contains(normalize-space(.),'" + strPackageName + "')]/ancestor::div[contains(@class,'owl-item')]//ins[@translate='global.cta.select']");
-		reusableActions.staticWait(1000);
+		reusableActions.waitForElementInvisibility(popupLoadingFingers,180);
 		reusableActions.getWhenReady(packageNameLocator, 90).click();
 	}
 	/**
@@ -314,7 +314,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifySuccessIcon() {		
-		return reusableActions.isElementVisible(infoSuccessIcon, 90);
+		return reusableActions.isElementVisible(infoSuccessIcon, 180);
 	}
 	
 	/**
@@ -337,8 +337,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 			reusableActions.getWhenReady(infoChannelSwapinSeach, 180).clear();
 			reusableActions.getWhenReady(infoChannelSwapinSeach, 10).sendKeys(channel);
 			By channelLocator = By.xpath("//a[@title='" + channel + "']");
-			reusableActions.staticWait(1000);
-			reusableActions.getWhenReady(channelLocator, 30).click();
+			reusableActions.getWhenReady(channelLocator, 120).click();
 			By btnChannelLocator = By.xpath("//a[@title='" + channel
 					+ "']/ancestor::li[@class='tv-channel-li']//button[@class='select-channel-btn']");
 			reusableActions.getWhenReady(btnChannelLocator, 10).click();
@@ -378,8 +377,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * Click the cross button to cancel the channel 
 	 * @author chinnarao.vattam
 	 */
-	public void clkOutChannelOne() {		
-		reusableActions.clickWhenReady(btnSelectChannelOne, 120);
+	public void clkOutChannelOne() {
+				reusableActions.clickWhenReady(btnSelectChannelOne, 120);
 	}
 	
 	/**
@@ -406,17 +405,14 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	public void swapChannelIn(String[] strInChannellist) {
 		String strInChannel[] = strInChannellist;
 		for (String channel : strInChannel) {			
-		reusableActions.getWhenReady(txtEnterChannelToSerach, 30).clear();
+		reusableActions.getWhenReady(txtEnterChannelToSerach, 180).clear();
 		reusableActions.getWhenReady(txtEnterChannelToSerach, 10).sendKeys(channel);
 		reusableActions.getWhenReady(btnSearchChannel, 30).click();
-		reusableActions.staticWait(1000);
-		reusableActions.waitForElementVisibility(btnSelectChannel, 90);
+		reusableActions.waitForElementVisibility(btnSelectChannel, 120);
 		reusableActions.scrollToElement(btnSelectChannel);
 		reusableActions.getWhenReady(btnSelectChannel, 90).click();	
 		reusableActions.getWhenReady(btnConfirmSelectedChannel, 60).click();
-		reusableActions.staticWait(1000);
-		reusableActions.getWhenReady(btnClearSerachResults, 90).click();
-		reusableActions.staticWait(1000);
+		reusableActions.getWhenReady(btnClearSerachResults, 180).click();
 		}
 	}
 
@@ -428,10 +424,12 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	public void swapChannelIn(String strInChannel) {		
 		reusableActions.getWhenReady(txtEnterChannelToSerach, 60).clear();
 		reusableActions.getWhenReady(txtEnterChannelToSerach, 60).sendKeys(strInChannel);
-		reusableActions.getWhenReady(btnSearchChannel, 60).click();
-		reusableActions.waitForElementVisibility(btnSelectChannel, 90);
+		reusableActions.staticWait(1000);
+		reusableActions.executeJavaScriptClick(btnSearchChannel);
+		reusableActions.waitForElementVisibility(btnSelectChannel, 120);
+		reusableActions.staticWait(1000);
 		reusableActions.scrollToElement(btnSelectChannel);
-		reusableActions.getWhenReady(btnSelectChannel, 90).click();	
+		reusableActions.getWhenReady(btnSelectChannel, 120).click();	
 	}
 	
 	/**
@@ -463,15 +461,18 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkConfirmSwap() {		
-		reusableActions.getWhenReady(btnConfirmSwap, 30).click();
+		reusableActions.getWhenReady(btnConfirmSwap, 180).click();
+		reusableActions.waitForElementInvisibility(popupLoadingFingers,220);
+		
 	}
 	
 	/**
 	 * Click the continue channel swap 
 	 * @author chinnarao.vattam
 	 */
-	public void clkContinueSwap() {		
-		reusableActions.getWhenReady(btnContinueSwap, 30).click();
+	public void clkSuccessSwap() {	
+		reusableActions.waitForElementVisibility(btnContinueSwap, 180);
+		reusableActions.getWhenReady(btnContinueSwap, 180).click();
 	}
 	
 	/**

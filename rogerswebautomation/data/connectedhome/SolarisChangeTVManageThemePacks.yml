@@ -1,0 +1,10 @@
+# Account Details 
+---
+name: DigitalTVAccount
+username: solarisconsumer1-rogers17@yahoo.com
+password: Rogers123
+accountDetails:
+   type: Digital TV
+   ban: 227642766  
+   downgradePlanEn: Popular
+   downgradePlanFr: Popular

@@ -28,7 +28,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	WebElement clkChangeAcceptCheckbox;
 
 	@FindBy(xpath = "//input[@class='ute-btn-primary']")
-	WebElement clkChangeSubmit;
+	WebElement clkSubmit;
 	
 	@FindBy(xpath = "//label[@for='shieldTermsCheckbox']")
 	WebElement chbShieldTerms;
@@ -89,10 +89,8 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * Click on the Submit button on the order review page
 	 * @author chinnarao.vattam
 	 */
-	public void clkChangeSubmit() {
-		reusableActions.clickIfAvailable(clkChangeSubmit, 200);
-		reusableActions.waitForElementInvisibility(popupLoadingFingers, 200);		
-		reusableActions.clickIfAvailable(clkChangeSubmit, 200);
+	public void clkSubmit() {
+		reusableActions.getWhenReady(clkSubmit, 200).click();
 	}
 	
 	/**

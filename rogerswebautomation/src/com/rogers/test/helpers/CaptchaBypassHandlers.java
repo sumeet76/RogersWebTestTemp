@@ -1,12 +1,10 @@
 package com.rogers.test.helpers;
 
 import java.io.IOException;
-
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 
 import com.rogers.testdatamanagement.TestDataHandler;
-
 import utils.CookieFetcher;
 
 public class CaptchaBypassHandlers {
@@ -41,22 +39,32 @@ public class CaptchaBypassHandlers {
     }
 	
 	/**
-	 * To Bypass Captcha for Anonymous Buy Flows
+	 * To Bypass Captcha for Legacy Anonymous Buy Flows
 	 * @param strUrl                     string of test url
 	 * @param strLanguage                string of language to use
 	 */
-	public void captchaBypassURLAnonymousBuyFlows(String strUrl, String strLanguage) throws IOException {
-				driver.get(strUrl+"/pages/api/selfserve/bypassrecaptcha");
+	public void captchaBypassURLLegacyAnonymousBuyFlows(String strUrl, String strLanguage) throws IOException {
+				driver.get(strUrl+"/web/totes/api/v1/bypassCaptchaAuth");
 				driver.get(strUrl+"?setLanguage="+ strLanguage );
         }
 
 	/**
-	 * To Bypass Captcha for login Flows
+	 * To Bypass Captcha for Ignite Anonymous Buy Flows
 	 * @param strUrl                     string of test url
 	 * @param strLanguage                string of language to use
 	 */
-	public void captchaBypassURLLoginFlows(String strUrl, String strLanguage) throws IOException {
-		driver.get(strUrl+"/pages/api/selfserve/bypassrecaptcha");		
+	public void captchaBypassURLIgniteAnonymousBuyFlows(String strUrl, String strLanguage) throws IOException {
+				driver.get(strUrl+"/web/totes/browsebuy/v1/byPassCaptcha");
+				driver.get(strUrl+"?setLanguage="+ strLanguage );
+        }
+	
+	/**
+	 * To Bypass Captcha for Legacy login Flows
+	 * @param strUrl                     string of test url
+	 * @param strLanguage                string of language to use
+	 */
+	public void captchaBypassURLLegacyLoginFlows(String strUrl, String strLanguage) throws IOException {
+		driver.get(strUrl+"/web/totes/api/v1/bypassCaptchaAuth");		
 		driver.get(strUrl+"?setLanguage="+ strLanguage );
 		String strCookieUserName= TestDataHandler.config.getCookieUserName();
 		String strCookieUserPassword= TestDataHandler.config.getCookieUserPassword();			
@@ -64,4 +72,32 @@ public class CaptchaBypassHandlers {
 		driver.manage().addCookie(captchBypass);
   }
 	
+	/**
+	 * To Bypass Captcha for Ignite login Flows
+	 * @param strUrl                     string of test url
+	 * @param strLanguage                string of language to use
+	 */
+	public void captchaBypassURLIgniteLoginFlows(String strUrl, String strLanguage) throws IOException {
+		driver.get(strUrl+"/web/totes/browsebuy/v1/byPassCaptcha");		
+		driver.get(strUrl+"?setLanguage="+ strLanguage );
+		String strCookieUserName= TestDataHandler.config.getCookieUserName();
+		String strCookieUserPassword= TestDataHandler.config.getCookieUserPassword();			
+		Cookie captchBypass = new Cookie ("temp_token_r",CookieFetcher.setAndFetchCookie(strCookieUserName, strCookieUserPassword, strUrl));
+		driver.manage().addCookie(captchBypass);
+  }
+	
+	/**
+	 * To Bypass Captcha for login Flows
+	 * @param strUrl                     string of test url
+	 * @param strLanguage                string of language to use
+	 */
+	public void captchaBypassURLLoginFlows(String strUrl, String strLanguage) throws IOException {
+		driver.get(strUrl);		
+		driver.get(strUrl+"?setLanguage="+ strLanguage );
+		String strCookieUserName= TestDataHandler.config.getCookieUserName();
+		String strCookieUserPassword= TestDataHandler.config.getCookieUserPassword();			
+		Cookie captchBypass = new Cookie ("temp_token_r",CookieFetcher.setAndFetchCookie(strCookieUserName, strCookieUserPassword, strUrl));
+		driver.manage().addCookie(captchBypass);
+  }
+
 }

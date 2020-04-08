@@ -75,7 +75,10 @@ public class RogersHomePage extends BasePageClass {
 	
 	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c21-20')]//div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement txaIgniteAddressContainer;	
-	//div[contains(@class,'ds-formField__inputContainer')]
+	
+	@FindBy(xpath = "//div[contains(@class,'ds-formField__inputContainer')]")
+	WebElement txaIgniteAddressContainerExisting;
+	
 	
 	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c15-0 ds-formField__typeds-input')]")
 	WebElement txaIgniteLookup;
@@ -276,7 +279,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @param strAddress address to check the service availability 
 	 * @author chinnarao.vattam
 	 */
-	public void setIgniteAddressLookup(String strAddress) {
+	public void setIgniteAddressLookupCovid(String strAddress) {
 		reusableActions.waitForElementVisibility(txaIgniteAddressContainer, 120);
 		reusableActions.getWhenReady(txaIgniteAddressContainer, 3).click();
 		reusableActions.getWhenReady(txaIgniteAddressLookup, 3).clear();
@@ -287,6 +290,16 @@ public class RogersHomePage extends BasePageClass {
 		reusableActions.getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
 	}
 	
+	public void setIgniteAddressLookup(String strAddress) {
+		reusableActions.waitForElementVisibility(txaIgniteAddressContainerExisting, 120);
+		reusableActions.getWhenReady(txaIgniteAddressContainerExisting, 3).click();
+		reusableActions.getWhenReady(txaIgniteAddressLookup, 3).clear();
+		reusableActions.getWhenReady(txaIgniteAddressLookup, 3).sendKeys(strAddress);
+		reusableActions.getWhenVisible(txaIgniteAddressLookup, 10).sendKeys(Keys.ARROW_DOWN);
+		reusableActions.getWhenVisible(txaIgniteAddressLookup, 10).sendKeys(Keys.ARROW_DOWN);
+		reusableActions.getWhenVisible(txaIgniteAddressLookup, 10).sendKeys(Keys.ARROW_DOWN);
+		reusableActions.getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
+	}
 	
 	/**
 	 * Click the Lookup Submit button to check service availability

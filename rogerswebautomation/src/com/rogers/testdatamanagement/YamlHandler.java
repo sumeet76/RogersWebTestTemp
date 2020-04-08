@@ -60,5 +60,50 @@ public class YamlHandler {
 
 	}
 
+	public static AccountData getCableAccountData(String accountName) {
+		Yaml yaml = new Yaml(new Constructor(AccountData.class));
+		InputStream inputStream;
+		try {
+			inputStream = new FileInputStream(
+					new File(System.getProperty("user.dir") + "/data/connectedhome/" + accountName + ".yml"));
+			AccountData account = yaml.load(inputStream);
+			return account;
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public static Config getCableConfig() {
+		Yaml yaml = new Yaml(new Constructor(Config.class));
+		InputStream inputStream;
+		try {
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/connectedhome/RogersConfig.yml"));
+			Config config = yaml.load(inputStream);
+			return config;
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+	
+	
+	public static PaymentDetails getCablePaymentDetails() {
+		Yaml yaml = new Yaml(new Constructor(PaymentDetails.class));
+		InputStream inputStream;
+		try {
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/connectedhome/RogersPaymentInfo.yml"));
+			PaymentDetails paymentDetails = yaml.load(inputStream);
+			return paymentDetails;
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 }
 

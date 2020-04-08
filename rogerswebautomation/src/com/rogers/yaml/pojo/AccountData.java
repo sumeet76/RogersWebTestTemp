@@ -6,7 +6,8 @@ public class AccountData {
 	private String password;
 	private String newUsername;
 	private String newpassword;
-	private AccountDetails accountDetails;	
+	public AccountDetails accountDetails;
+	public String name;
 
 	/**
 	 * @return the accountDetails
@@ -68,5 +69,23 @@ public class AccountData {
 	public void setNewUsername(String newUsername) {
 		this.newUsername = newUsername;
 	}
-	
+
+	/**
+	 * @return the accountDetails
+	 */
+	public AccountDetails getCableAccountDetails() {
+		return accountDetails;
+	}
+	/**
+	 * @param accountDetails the accountDetails to set
+	 */
+	public void setCableAccountDetails(AccountDetails accountDetails) {
+		this.accountDetails = accountDetails;
+	}
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
 }

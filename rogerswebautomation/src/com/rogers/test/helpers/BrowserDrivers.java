@@ -338,7 +338,6 @@ public class BrowserDrivers {
 		  HttpClientBuilder.create().build().execute(putRequest);
 		}
 	
-	
 	/**
 	 * To set the web driver
 	 * @param driver WebDriver

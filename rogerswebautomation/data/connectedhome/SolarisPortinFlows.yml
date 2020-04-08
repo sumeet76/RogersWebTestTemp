@@ -1,0 +1,13 @@
+# Account Details 
+---
+name: SolarisInternetAccount
+username: March11CNS213@yahoo.com
+password: DigiAuto@123
+accountDetails:
+   type: Internet
+   ban: 925479115
+   phoneNumber: 9057931001
+   address:
+     line1: 706-10 Lisa St
+     line2: BRAMPTON ON L6T 4N4
+...
