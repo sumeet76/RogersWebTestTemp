@@ -50,7 +50,7 @@ public class RogersCH_TC_005_IginteInternet_ValidateInternetDashboardUsageTest e
                     rogers_account_overview_page.selectAccount((TestDataHandler.solarisInternetAccountWithUsage.accountDetails.getBan()));
             		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
                     reporter.reportLogWithScreenshot("Launched the Account Page");
-                    rogers_internet_dashboard_page.clkSolarisInternetBadge(TestDataHandler.rogersConfig.getBrowser());
+                    rogers_internet_dashboard_page.clkSolarisInternetBadge();
                     rogers_internet_dashboard_page.clkInternetPopup();
                     reporter.reportLogWithScreenshot("Launched the Interent dashboard");
             		reporter.softAssert(rogers_internet_dashboard_page.verifyInternet(), "Verified the Internet page", "Internet page verification failed");
@@ -62,10 +62,10 @@ public class RogersCH_TC_005_IginteInternet_ValidateInternetDashboardUsageTest e
                     reporter.reportLogWithScreenshot("Daily Breakdown details");
                     reporter.softAssert(rogers_internet_usage_page.verifyDailyBreakdownTable(), "Verified the daily usage", "Daily usage deatils are not present");
                     rogers_internet_usage_page.clkMonthlyUsage();
-                    //rogers_internet_usage_page.verifyMonthlyBreakdown();  
+                    rogers_internet_usage_page.verifyMonthlyBreakdown();  
                     reporter.reportLogWithScreenshot("Monthly Breakdown details");
                     rogers_internet_usage_page.verifyMonthlyBreakdownTable();
-                    //reporter.softAssert(rogers_internet_usage_page.verifyMonthlyBreakdownTable(),"Verified the monthly usage", "Monthly usage deatils are not present");
+                    reporter.softAssert(rogers_internet_usage_page.verifyMonthlyBreakdownTable(),"Verified the monthly usage", "Monthly usage deatils are not present");
                     rogers_internet_usage_page.clkUsageAlerts();
  
     }

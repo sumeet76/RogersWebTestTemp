@@ -144,16 +144,10 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	
 	/**
 	 * Click the TV badge on  account details page
-	 * @param strBrowser - Browser
 	 * @author Chinnarao.Vattam
 	 */
-	public void clkTVBadge(String strBrowser) {
-		if (strBrowser.equalsIgnoreCase("chrome"))
-		{
+	public void clkTVBadge() {
 		reusableActions.getWhenReady(btnSolaristvBadge,90).click();
-		}else {
-			reusableActions.clickIfAvailable(btnSolaristvBadge,90);
-		}
 	}
 
 	/**
@@ -192,11 +186,13 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		reusableActions.getWhenReady(lnkViewAsPDF,60).click();
 		reusableActions.waitForNumberOfWindowsToBe(2);
 		reusableActions.switchToNewWindow(mainWindow);
-		reusableActions.staticWait(3000);
+		//the page is moving to new window
+		reusableActions.staticWait(1000);
 		reusableActions.isElementVisible(lnkPDFPage);
 		reusableActions.closeCurrentWindow();
 		reusableActions.switchToMainWindow(mainWindow);
-		reusableActions.staticWait(3000);
+		//the page is moving to original window
+		reusableActions.staticWait(1000);
 		reusableActions.waitForNumberOfWindowsToBe(1);		
 		return true;
 	}
@@ -424,10 +420,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	public void swapChannelIn(String strInChannel) {		
 		reusableActions.getWhenReady(txtEnterChannelToSerach, 60).clear();
 		reusableActions.getWhenReady(txtEnterChannelToSerach, 60).sendKeys(strInChannel);
-		reusableActions.staticWait(1000);
+		reusableActions.waitForElementVisibility(btnSearchChannel,180);
 		reusableActions.executeJavaScriptClick(btnSearchChannel);
-		reusableActions.waitForElementVisibility(btnSelectChannel, 120);
-		reusableActions.staticWait(1000);
+		reusableActions.waitForElementVisibility(btnSelectChannel, 180);
 		reusableActions.scrollToElement(btnSelectChannel);
 		reusableActions.getWhenReady(btnSelectChannel, 120).click();	
 	}

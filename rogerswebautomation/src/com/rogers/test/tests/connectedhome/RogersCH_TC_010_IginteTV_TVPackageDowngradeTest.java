@@ -47,7 +47,7 @@ public class RogersCH_TC_010_IginteTV_TVPackageDowngradeTest extends BaseTestCla
         rogers_account_overview_page.selectAccount((TestDataHandler.solarisTVAccount.accountDetails.getBan()));
         reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
-        rogers_solaris_tv_dashboard_page.clkTVBadge(TestDataHandler.rogersConfig.getBrowser());
+        rogers_solaris_tv_dashboard_page.clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         rogers_solaris_tv_dashboard_page.clkChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the TV packages page");

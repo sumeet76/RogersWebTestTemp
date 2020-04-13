@@ -54,7 +54,7 @@ public class RogersCH_TC_016_IginteTV_TVChannelsSwapTest extends BaseTestClass {
     rogers_account_overview_page.selectAccount(TestDataHandler.igniteTVAccount.accountDetails.getBan());
     reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
     reporter.reportLogWithScreenshot("Launched the Account Page");               
-    rogers_solaris_tv_dashboard_page.clkTVBadge(TestDataHandler.rogersConfig.getBrowser());
+    rogers_solaris_tv_dashboard_page.clkTVBadge();
     reporter.reportLogWithScreenshot("Launched the TV dash board");
     rogers_solaris_tv_dashboard_page.clkChangeFlexChannels();  
     reporter.reportLogWithScreenshot("TV channels pannel has displayed");

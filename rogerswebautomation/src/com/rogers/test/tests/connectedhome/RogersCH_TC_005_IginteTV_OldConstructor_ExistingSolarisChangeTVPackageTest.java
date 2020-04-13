@@ -53,7 +53,7 @@ public class RogersCH_TC_005_IginteTV_OldConstructor_ExistingSolarisChangeTVPack
         rogers_account_overview_page.selectAccount(TestDataHandler.solarisTVOldConstructor.accountDetails.getBan());
         reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");                
-        rogers_solaris_tv_dashboard_page.clkTVBadge(TestDataHandler.rogersConfig.getBrowser());
+        rogers_solaris_tv_dashboard_page.clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         rogers_solaris_tv_dashboard_page.clkChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the TV packages page");

@@ -50,7 +50,7 @@ public class RogersCH_TC_026_LegacyInternet_InternetPackageDowngradeTest extends
 		rogers_account_overview_page.clkLegacyInternetBadge(TestDataHandler.rogersConfig.getBrowser());
 		reporter.reportLogWithScreenshot("Launched the Internet Dashboard Page");
 		rogers_account_overview_page.clkInternetPopup(TestDataHandler.rogersConfig.getBrowser()); 
-		rogers_internet_dashboard_page.clkChangeInternetPackage(TestDataHandler.rogersConfig.getBrowser());
+		rogers_internet_dashboard_page.clkChangeInternetPackage();
 		reporter.reportLogWithScreenshot("Launched the Internet package Page");
 		rogers_internet_package_selection_page.selectInternetPackage(TestDataHandler.legacyInternetAccount.getAccountDetails().getDowngradePlanEn(),TestDataHandler.legacyInternetAccount.getAccountDetails().getDowngradePlanFr(), TestDataHandler.rogersConfig.getLanguage());
 		reporter.hardAssert(rogers_internet_package_selection_page.verifyDowngradeWaysToBuyBox(), "Downgrade ways popup has launched", "Downgrade has failed");

@@ -8,7 +8,7 @@ accountDetails:
    ban: 230376010100
    downgradePlanFr: Élan Internet 150i
    downgradePlanEn: Ignite Internet 150u
-   internetBundle: 150
+   internetBundle: 100
    downgradeBundle: Select
    address:
      line1: 67 Pickett Pl

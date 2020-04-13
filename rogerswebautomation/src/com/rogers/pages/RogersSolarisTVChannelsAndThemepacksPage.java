@@ -151,7 +151,6 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkExchangeLater() {
-		//reusableActions.waitForElementInvisibility(popupLoadingFingers, 90);
 		reusableActions.clickWhenReady(btnExchangeLater, 120);
 	}
 	

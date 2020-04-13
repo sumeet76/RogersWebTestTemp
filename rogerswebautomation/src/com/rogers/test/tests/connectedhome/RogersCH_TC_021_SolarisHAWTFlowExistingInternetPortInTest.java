@@ -29,7 +29,7 @@ public class RogersCH_TC_021_SolarisHAWTFlowExistingInternetPortInTest extends B
 		rogers_login_page.switchOutOfSignInIFrame();
 		rogers_account_overview_page.selectAccount(TestDataHandler.solarisPortinFlows.getAccountDetails().getBan());
 		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed");
-		rogers_internet_dashboard_page.clkSolarisInternetBadge(TestDataHandler.rogersConfig.getBrowser());
+		rogers_internet_dashboard_page.clkSolarisInternetBadge();
 		rogers_internet_dashboard_page.clkInternetPopup();
         rogers_home_page.clkShop(); 
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");

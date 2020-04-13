@@ -49,7 +49,7 @@ public class RogersCH_TC_006_IginteInternet_ValidateStandaloneInternetDashboardU
         rogers_account_overview_page.selectAccount((TestDataHandler.standaloneInternetAccountWithUsage.accountDetails.getBan()));
 		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
-        rogers_internet_dashboard_page.clkSolarisInternetBadge(TestDataHandler.rogersConfig.getBrowser());
+        rogers_internet_dashboard_page.clkSolarisInternetBadge();
         rogers_internet_dashboard_page.clkInternetPopup();
         reporter.reportLogWithScreenshot("Launched the Interent dashboard");
 		reporter.softAssert(rogers_internet_dashboard_page.verifyInternet(), "Verified the Internet page", "Internet page verification failed");

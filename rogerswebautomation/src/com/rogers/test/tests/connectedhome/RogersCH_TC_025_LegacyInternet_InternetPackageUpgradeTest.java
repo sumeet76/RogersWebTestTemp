@@ -50,11 +50,11 @@ public class RogersCH_TC_025_LegacyInternet_InternetPackageUpgradeTest extends B
 		rogers_account_overview_page.clkLegacyInternetBadge(TestDataHandler.rogersConfig.getBrowser());
 		reporter.reportLogWithScreenshot("Launched the Internet Dashboard Page");
 		rogers_account_overview_page.clkInternetPopup(TestDataHandler.rogersConfig.getBrowser()); 
-		rogers_internet_dashboard_page.clkChangeInternetPackage(TestDataHandler.rogersConfig.getBrowser());
+		rogers_internet_dashboard_page.clkChangeInternetPackage();
 		reporter.reportLogWithScreenshot("Launched the Internet package Page");
 		rogers_internet_package_selection_page.selectInternetPackage(TestDataHandler.legacyInternetAccountUpgrade.getAccountDetails().getUpgradePlanEn(),TestDataHandler.legacyInternetAccountUpgrade.getAccountDetails().getUpgradePlanFr(), TestDataHandler.rogersConfig.getLanguage());
 		reporter.reportLogWithScreenshot("Launched the upgrade modem popup");
-		/*rogers_internet_package_selection_page.clkUpgradeContinue();		
+		rogers_internet_package_selection_page.clkUpgradeContinue();		
 		rogers_internet_package_selection_page.clkCheckout();		
 		reporter.reportLogWithScreenshot("Launched the Internet checkout Page");
 		rogers_order_confirmation_page.clkUpgradeCartCheckOutButton();		
@@ -64,7 +64,7 @@ public class RogersCH_TC_025_LegacyInternet_InternetPackageUpgradeTest extends B
     	reporter.reportLogWithScreenshot("Consent Check Done");
     	rogers_order_summary_page.clkOrderSubmit();
     	reporter.reportLogWithScreenshot("order confirmation page");
-    	reporter.hardAssert(rogers_order_confirmation_page.verifyLegacyUpgardeOrderConfirmation(),"Order has created", "Order hasn't created");*/
+    	reporter.hardAssert(rogers_order_confirmation_page.verifyLegacyUpgardeOrderConfirmation(),"Order has created", "Order hasn't created");
     	reporter.hardAssert(rogers_internet_package_selection_page.verifyDowngradeWaysToBuyBox(), "upgardeways popup has launched", "upgarde has failed");
 	}
 

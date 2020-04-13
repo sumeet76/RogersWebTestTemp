@@ -62,36 +62,18 @@ public class RogersInternetDashboardPage extends BasePageClass {
 
 	/**
 	 * Verify the Internet usage on the Internet dash board page
-	 * @param strBrowser - Browser
 	 * @author Chinnarao.Vattam
 	 */
-	public void clkChangeInternetPackage(String strBrowser) {
-		if (strBrowser.equalsIgnoreCase("chrome"))
-		{
-		reusableActions.waitForElementVisibility(btnChangeInternetPackage,120);
-		reusableActions.scrollToElement(btnChangeInternetPackage);
-		reusableActions.getWhenReady(btnChangeInternetPackage,90).click();
-		}else
-		{
+	public void clkChangeInternetPackage() {
 			reusableActions.getWhenReady(btnChangeInternetPackage,90).click();
-		}
 	}
 	
 	/**
 	 * Click the Solaris Internet Badge on the Solaris account page
-	 * @param strBrowser - Browser
 	 * @author Chinnarao.Vattam
 	 */
-	public void clkSolarisInternetBadge(String strBrowser) {
-	  //TODO validate for both the browsers
-		if (strBrowser.equalsIgnoreCase("chrome"))
-		{
+	public void clkSolarisInternetBadge() {
 		reusableActions.getWhenReady(btnSolarisInternetBadge,90).click();			
-		}
-		else 
-		{
-		reusableActions.clickWhenReady(btnSolarisInternetBadge,40);
-		}
 	}
 
 	/**

@@ -68,7 +68,7 @@ public class RogersCH_TC_014_InternetPackageUpgradeToSolarisFromShopOptionTest e
 		rogers_login_page.switchOutOfSignInIFrame();
 		rogers_account_overview_page.selectAccount((TestDataHandler.internetAccountUpgrade.accountDetails.getBan()));
 		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed");
-		rogers_internet_dashboard_page.clkSolarisInternetBadge(TestDataHandler.rogersConfig.getBrowser());
+		rogers_internet_dashboard_page.clkSolarisInternetBadge();
         rogers_internet_dashboard_page.clkInternetPopup();
 	    reporter.reportLogWithScreenshot("Launched the Interent dashboard");
         rogers_home_page.clkShop(); 

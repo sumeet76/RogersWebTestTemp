@@ -254,8 +254,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		 * strAccountNumber + "']")), 20);
 		 */
 		if(reusableActions.isElementVisible(popUpMultipleAccounts, 20))
-				reusableActions.clickIfAvailable((By.xpath("//span[@class='account-number-txt']/span[text()='" + strAccountNumber + "']")), 20);
-		
+		reusableActions.clickIfAvailable((By.xpath("//span[@class='account-number-txt']/span[text()='" + strAccountNumber + "']")), 20);
 		/*
 		 * reusableActions.clickIfAvailable( (By.
 		 * xpath("//button[@class='md-button md-ink-ripple']//span[@data-translate='\" + strAccountNumber + \"']"
