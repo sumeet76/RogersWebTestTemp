@@ -77,8 +77,9 @@ public class RogersCH_TC_031_IginteTV_TVPackagesOntarioTest extends BaseTestClas
         rogers_order_review_page.clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
         rogers_order_review_page.clkSubmit();
-        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
+        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
+        reporter.reportLogWithScreenshot("Verified the Confirmation page");
         
     }
 

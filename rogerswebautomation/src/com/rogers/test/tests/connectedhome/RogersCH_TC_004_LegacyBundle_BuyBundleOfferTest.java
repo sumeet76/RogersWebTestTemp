@@ -96,11 +96,11 @@ public class RogersCH_TC_004_LegacyBundle_BuyBundleOfferTest extends BaseTestCla
     	rogers_order_summary_page.clkConsentCheckboxBundleflow();
     	reporter.reportLogWithScreenshot("Consent Check Done");
     	rogers_order_summary_page.clkSubmit();  
-    	//reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has careted", "Order hasn't careted");
+    	reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created", "Order hasn't careted");
     	}
     	else
     	{
-    	//reporter.hardAssert(rogers_legacy_bundle_buy_page.verifyContactCustomercareForLegacyBundleBuy(),"Order has careted", "Order hasn't careted");
+    	reporter.hardAssert(rogers_legacy_bundle_buy_page.verifyContactCustomercareForLegacyBundleBuy(),"Order has created", "Order hasn't careted");
     	}
         }
 
