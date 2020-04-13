@@ -57,8 +57,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//label[@for='have4K-yes']")
 	WebElement rdo4KTV;
 	
-	@FindBy(xpath = "//button[@class='mr-24 cart-summary-checkout ds-button ds-focus ds-active -primary -large']")
-	WebElement btnCheckout;
+	@FindBy(xpath = "//span[@translate='global.cta.checkout']")
+	WebElement btnCheckout;	
+	//button[@class='mr-24 cart-summary-checkout ds-button ds-focus ds-active -primary -large']
 	
 	@FindBy(xpath ="//div[@class='mt-auto w-100']//button[@aria-label='Order Rogers Ignite Starter online now']")
 	WebElement btnSolarisStarterPackageServiceability;	
@@ -283,11 +284,11 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public void clkCheckout() {
 		reusableActions.waitForElementInvisibility(popupLoadingFingersciam,200);		
-		reusableActions.getWhenReady(btnCheckout, 150);
+		reusableActions.getWhenReady(btnCheckout, 180);
 		reusableActions.javascriptScrollToBottomOfPage();
 		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(btnCheckout, 150);
-		reusableActions.getWhenReady(btnCheckout, 150).click();
+		reusableActions.getWhenReady(btnCheckout, 180).click();
+		reusableActions.waitForElementInvisibility(popupLoadingFingersciam,200);
 	}
 	
 	/**

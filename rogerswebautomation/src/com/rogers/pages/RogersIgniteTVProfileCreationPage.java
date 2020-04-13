@@ -53,7 +53,6 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyProfilePage() {
-		reusableActions.waitForElementInvisibility(popupLoadingFingers,180);
 		return reusableActions.isElementVisible(txtEmail);
 	}
 	
@@ -62,7 +61,6 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void setEmail() {
-		reusableActions.waitForElementInvisibility(popupLoadingFingers);
 		String strEmail = FormFiller.generateEmail();
 		reusableActions.getWhenReady(txtEmail, 60).clear();
 		reusableActions.getWhenReady(txtEmail,10).sendKeys(strEmail);
