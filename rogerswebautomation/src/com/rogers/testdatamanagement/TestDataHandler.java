@@ -70,6 +70,10 @@ public class TestDataHandler {
 	public static AccountData solarisChangeTVManageChannels;
 	public static AccountData solarisChangeTVManageThemePacks;
 	public static AccountData solarisInternetAccountWithUsageAndPackageUpgrade;
+	public static AccountData solarisConsumerNoPortinCartAbandon;
+	public static AccountData solarisConsumerPortInCartAbandon;
+	public static AccountData solarisConsumerGWPDigitalTV;
+	public static AccountData solarisHTOMigrationSignIn;
 	public static AALData testCase01;
 	public static AALData testCase02;
 	public static PPCData testCase03;
@@ -79,7 +83,6 @@ public class TestDataHandler {
 	public static HUPData testCase07;
 	public static PPCData testCase08;
 	public static HUPData testCase09;
-
 
 	public static void dataInit (String strApplicationType) {	    	
     	if(strApplicationType.toUpperCase().trim().endsWith("CH")) {	    	
@@ -109,7 +112,9 @@ public class TestDataHandler {
     	digitalTVUpgradeToIgnite = YamlHandler.getCableAccountData("DigitalTVUpgradeToIgnite");
     	digitalTVAccountUpgradePackage = YamlHandler.getCableAccountData("DigitalTVAccountUpgradePackage");
     	noPortInAbondoneFlows = YamlHandler.getCableAccountData("NoPortInAbondoneFlows");
-    	
+    	solarisConsumerNoPortinCartAbandon= YamlHandler.getCableAccountData("SolarisConsumerNoPortinCartAbandon");
+		solarisConsumerPortInCartAbandon=YamlHandler.getCableAccountData("SolarisConsumerPortInCartAbandon");
+		solarisConsumerGWPDigitalTV=YamlHandler.getCableAccountData("solarisConsumerGWPDigitalTV");
     	
     	//Legacy Internet test data
     	legacyInternetAccount = YamlHandler.getCableAccountData("LegacyInternetAccount"); 
@@ -144,7 +149,7 @@ public class TestDataHandler {
     	solarisChangeTVPackageAdd4KChannelsAndThemePack = YamlHandler.getCableAccountData("SolarisChangeTVPackageAdd4KChannelsAndThemePack");
     	solarisChangeTVManageChannels = YamlHandler.getCableAccountData("SolarisChangeTVManageChannels");
     	solarisChangeTVManageThemePacks = YamlHandler.getCableAccountData("SolarisChangeTVManageThemePacks");
-
+    	solarisHTOMigrationSignIn = YamlHandler.getCableAccountData("SolarisHTOMigrationSignIn");
 	}
 	
 	private static void selfserveDataInit() {

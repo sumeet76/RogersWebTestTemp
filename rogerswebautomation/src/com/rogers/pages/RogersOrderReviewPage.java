@@ -1,5 +1,6 @@
 package com.rogers.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -57,6 +58,42 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//span[@checkout-res='checkout_step_pay']")
 	WebElement lblPaymentStep;
 	
+	@FindBy(xpath = "//input[@id='birthDate']//following-sibling::div//span")
+	WebElement clkDateOfBirthCalendarIcon;
+
+	@FindBy(xpath = "//div[@class='owl-dt-calendar-main']")
+	WebElement clkMainMenuCalendarYearChange;
+
+	@FindBy(xpath = "//table[@class='owl-dt-calendar-table owl-dt-calendar-multi-year-table']//preceding-sibling::button//span")
+	WebElement clkLeftControlButtonOnCalendar;	
+
+	@FindBy(xpath = "//i[@class='glyphicon glyphicon-chevron-right']")
+	WebElement clkChevron;
+
+	@FindBy(xpath = "//button[@data-target='#miniCollapse']")
+	WebElement downChevronYourCart;
+
+	@FindBy(xpath = "//div[@class='mini-body']//tr[@class='cms-promotions-gwp ng-tns-c46-27 ng-star-inserted']")
+	WebElement gwpYourCart;
+
+	
+	/**
+	 * Enter date of birth	
+	 * @author Saurav.Goyal
+	 * @param dateOfBirth date to be selected
+	 */
+	public void enterDateOfbirth(String dateOfBirth) {
+		reusableActions.staticWait(10000);
+		reusableActions.waitForElementVisibility(clkDateOfBirthCalendarIcon,20); 
+		reusableActions.getWhenReady(clkDateOfBirthCalendarIcon, 20).click();
+		reusableActions.waitForElementVisibility(clkMainMenuCalendarYearChange,20); 
+		reusableActions.getWhenReady(clkMainMenuCalendarYearChange, 20).click();
+		if(!reusableActions.isElementVisible(By.xpath("//table[@class='owl-dt-calendar-table owl-dt-calendar-multi-year-table']//span[text()='1987']")))
+		{
+			reusableActions.waitForElementVisibility(clkLeftControlButtonOnCalendar,20); 
+			reusableActions.getWhenReady(clkLeftControlButtonOnCalendar, 20).click();
+		}
+	}
 	/**
 	 * Verify the order review page
 	 * @return true if the Agreement is present on the order review page, else false

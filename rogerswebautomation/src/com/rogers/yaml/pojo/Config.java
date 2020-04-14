@@ -17,9 +17,37 @@ public class Config {
 	private String ensPassword;
 	private String phoneRepairUrl;
 	private String repairClaimUrl;
+	private String solarisPath;
+	private String loginFlow;
 	private String hupURL;
 	private String legacyPath;
 	private String solarisPath;
+	
+	/**
+	 * @return the rogersURL
+	 */
+	public String getLoginFlow() {
+		return loginFlow;
+	}
+	/**
+	 * @param rogersURL the rogersURL to set
+	 */
+	public void setLoginFlow(String loginFlow) {
+		this.loginFlow = loginFlow;
+	}
+	
+	/**
+	 * @return the rogersURL
+	 */
+	public String getSolarisPath() {
+		return solarisPath;
+	}
+	/**
+	 * @param rogersURL the rogersURL to set
+	 */
+	public void setSolarisPath(String solarisPath) {
+		this.solarisPath = solarisPath;
+	}
 	
 	/**
 	 * @return the language
