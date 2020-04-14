@@ -54,10 +54,10 @@ public class RogersSS_TC_061_ValidateDataUsageDisplayRunningLow_postpaid_SE_AddD
     	rogers_account_overview_page.clkSubMenuWirelessUsage();
         
         rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
-        String strCtn1 = TestDataHandler.tc61.getAccountDetails().getCtn1();
-        String strCtn2 = TestDataHandler.tc61.getAccountDetails().getCtn2();
-        this.verifyRunningLowTagForCtn(strCtn1);
-        this.verifyRunningLowTagForCtn(strCtn2);
+//        String strCtn1 = TestDataHandler.tc61.getAccountDetails().getCtn1();
+//        String strCtn2 = TestDataHandler.tc61.getAccountDetails().getCtn2();
+//        this.verifyRunningLowTagForCtn(strCtn1);
+//        this.verifyRunningLowTagForCtn(strCtn2);
         reporter.softAssert(rogers_wireless_dashboard_page.verifyAddDataButtonIsDisplayed(), 
 							"Add the Data top-up button is displayed", 
 							"Add the Data top-up  button is NOT displayed."); 
