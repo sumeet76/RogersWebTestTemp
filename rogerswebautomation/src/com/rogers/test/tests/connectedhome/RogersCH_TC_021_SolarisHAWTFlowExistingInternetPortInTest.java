@@ -84,7 +84,7 @@ public class RogersCH_TC_021_SolarisHAWTFlowExistingInternetPortInTest extends B
         rogers_order_review_page.clkSubmit();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");       
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");
+        reporter.reportLogWithScreenshot("Verified the Confirmation page");
     }
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})

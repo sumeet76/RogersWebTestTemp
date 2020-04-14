@@ -147,8 +147,9 @@ public class RogersCH_TC_003_CartAbandon_NoPortinExistingLegacySignedinfromMyRog
         rogers_order_review_page.clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
         rogers_order_review_page.clkSubmit();
-        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");  
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
+        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");  
+        reporter.reportLogWithScreenshot("Verified the Confirmation page");
 	}
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})
