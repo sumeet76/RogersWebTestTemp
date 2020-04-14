@@ -1627,8 +1627,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public void clkCtnTab(String strCtn) {
 		
-		String strLast4Digit = strCtn.substring(strCtn.length()-5);
-		reusableActions.getWhenReady(By.xpath("//span[contains(text(),'" + strLast4Digit), 20).click();
+		String strLast4Digit = strCtn.substring(strCtn.length()-4);
+		reusableActions.getWhenReady(By.xpath("//span[contains(text(),'" + strLast4Digit + "')]"), 20).click();
 	}
 
 

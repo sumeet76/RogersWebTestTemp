@@ -54,13 +54,8 @@ public class RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE e
         reporter.reportLogWithScreenshot("Account overview page.");   
         rogers_account_overview_page.clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
-        String strAccountNum = TestDataHandler.tc6269.getAccountDetails().getCtn();        
-        String strLast4DigitAccount = strAccountNum.substring(strAccountNum.length()-4);
-        if (rogers_account_overview_page.isAccountShowInDropDown(strLast4DigitAccount)) {
-            rogers_account_overview_page.clkDropDownAccount(strLast4DigitAccount);
-        } else {
-        	rogers_account_overview_page.clkSubMenuWirelessUsage();
-        }
+    	rogers_account_overview_page.clkSubMenuWirelessUsage();
+
         rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
          
         //  - Added Data: should be included all Speed passes added for current bill cycle
@@ -80,10 +75,10 @@ public class RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE e
 		int countOfExistSpeedPass = rogers_manage_data_page.getAllExistingSpeedPassCount();		
 		reporter.reportLogWithScreenshot("Speed passes");
 		
-		rogers_manage_data_page.clkBackOnManageDataUsagePage();		
+		rogers_manage_data_page.clkBackOnManageDataUsagePage();	
+		
 		int totalAddedSpeedPass = common_business_flows.addSpeedPass();	
-		
-		
+
 		reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(), 
 				"'Data details' page is displayed after click on view details link", 
 				"'Data details' page is NOT displayed after click on view details link"); 
@@ -99,6 +94,6 @@ public class RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE e
 						"Total Data: displays data plan on Max speed AND total added speed passes separately ", 
 						"Total Data: NOT displays data plan on Max speed AND total added speed passes separately ");	
 
-}
+    }
 
 }

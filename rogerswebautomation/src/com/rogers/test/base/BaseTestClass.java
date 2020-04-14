@@ -108,7 +108,7 @@ public class BaseTestClass {
 	protected HashMap<String,String> xmlTestParameters;
 	protected RogersShareEverythingPage rogers_share_everything_page;
 	protected RogersChangeMyCallerIdPage rogers_change_my_caller_id_page;
-	protected RogersWirelessDashboardPage rogers_wireless_dashboard_page;
+	public RogersWirelessDashboardPage rogers_wireless_dashboard_page;
 	protected RogersRegisterPage rogers_register_page;
 	protected RogersLinkAccountPage rogers_link_account_page;
 	protected RogersBillingPage rogers_billing_page;
