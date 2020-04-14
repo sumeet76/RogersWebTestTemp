@@ -36,7 +36,6 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSolarisRHPBadge(String strBrowser ) {
-		//check for presence of other element
 		reusableActions.staticWait(1000);
 		if (strBrowser.equalsIgnoreCase("chrome"))
 		{
@@ -45,7 +44,6 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 		{
 			reusableActions.clickWhenReady(btnSolarisrhpBadge, 60);
 		}
-		
 	}
 
 	/**
