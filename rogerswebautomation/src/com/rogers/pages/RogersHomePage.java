@@ -113,6 +113,17 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//a[@data-option='bring-your-own-phone']")
 	WebElement lnkBringMyOwnPhone;
 	
+	@FindBy(xpath = "//span[@translate='EOP.CTAS.PROMOTION_OFFER_BADGE.LABEL']")
+	WebElement lnkPromotionOfferBadge;
+	
+	/**
+	 * To Click the Promotion offer badge
+	 * @author Saurav.Goyal 
+	 */
+	public void clkPromotionOfferBadge() {		
+		reusableActions.getWhenVisible(lnkPromotionOfferBadge, 30).click();
+	}
+	
 	/**
 	 * Click the SignIn button from the top tile bar 
 	 * @author chinnarao.vattam 

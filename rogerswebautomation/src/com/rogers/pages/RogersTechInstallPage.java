@@ -45,6 +45,81 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
 	
+	@FindBy(xpath = "//input[@name='preferredDatesFirst']")
+	WebElement prefferedDates;
+
+	@FindBy(xpath = "//i[@class='glyphicon glyphicon-chevron-right']")
+	WebElement clkChevron;
+
+	@FindBy(xpath = "//label[@class='ute-label-text']")
+	WebElement clkIUnderStand;
+
+	@FindBy(xpath = "//span[@class='ute-icon-calendar-icon']")
+	WebElement clkCalendarIcon;
+
+	@FindBy(xpath = "//button[@data-target='#miniCollapse']")
+	WebElement downChevronYourCart;
+
+	@FindBy(xpath = "//div[@class='mini-body']//tr[@class='cms-promotions-gwp ng-tns-c46-27 ng-star-inserted']")
+	WebElement gwpYourCart;
+	
+	/**
+	 * To click on the chevron on the tech Install page
+	 * @author Saurav.Goyal
+	 */
+	public void clkChevronYourCart() {
+		reusableActions.getWhenReady(downChevronYourCart, 60).click();
+	}
+
+	/**
+	 * To verify gwp promotion in the tech install page
+	 * @return true if the promotion is available else return false
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyGWPYourCartPromotion() {
+		reusableActions.waitForElementVisibility(gwpYourCart, 120);
+		return	reusableActions.isElementVisible(gwpYourCart);
+	}
+
+	/**
+	 * Select Self install date and time
+	 * @author Saurav.Goyal
+	 */
+	public void selSelffinstallDateAndTime() {
+		reusableActions.staticWait(10000);
+		reusableActions.waitForElementVisibility(clkCalendarIcon,20); 
+		reusableActions.getWhenReady(clkCalendarIcon, 20).click();
+		Calendar calendar = Calendar.getInstance();
+		int intDate = calendar.get(Calendar.DATE);
+		int startDate = intDate + 20; 
+		//If startDate > 29 , 29 being the number of days in the month
+		if(startDate>29) {
+			reusableActions.getWhenReady(clkChevron, 60).click();
+			startDate = startDate - 29;
+		}
+		String strStartDate= Integer.toString(startDate);
+		By selStartDate = By.xpath("//button[@class='btn btn-default btn-sm']//span[contains(text(),'" + strStartDate + "')]");
+		reusableActions.getWhenReady(selStartDate, 20).click();
+	}
+
+	/**
+	 * Select checkbox for I understand
+	 * @author Saurav.Goyal
+	 */
+	public void clkIUnderStand() {
+		reusableActions.getWhenReady(clkIUnderStand, 60).click();
+	}
+
+	/**
+	 * Select slot from the available list of slots from installation page
+	 * @author Saurav.Goyal
+	 * @param date which date to be entered
+	 */
+	public void selectPrefferedDates(String date) {
+		reusableActions.getWhenReady(prefferedDates, 180).sendKeys(date);;
+	}
+
+	
 	/**
 	 * To verify the launch of Technical  Install Page
 	 * @return true if the TechInstallSlot ratio has available, else false 

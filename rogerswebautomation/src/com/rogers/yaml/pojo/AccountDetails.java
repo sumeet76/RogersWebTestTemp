@@ -39,8 +39,24 @@ public class AccountDetails {
 	private String year;
 	private String date;
 	private String month;
+	private String imeiNumber;
+	private String dateOfBirth;
 	
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
 	
+	public String getImeiNumber() {
+		return imeiNumber;
+	}
+	
+	public void setImeiNumber(String imeiNumber) {
+		this.imeiNumber = imeiNumber;
+	}
 	public AccountDetails() {
 		
 	}

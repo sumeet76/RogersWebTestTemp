@@ -65,7 +65,11 @@ public class TestDataHandler {
 	public static AccountData solarisChangeTVManageChannels;
 	public static AccountData solarisChangeTVManageThemePacks;
 	public static AccountData solarisInternetAccountWithUsageAndPackageUpgrade;
-
+	public static AccountData solarisConsumerNoPortinCartAbandon;
+	public static AccountData solarisConsumerPortInCartAbandon;
+	public static AccountData solarisConsumerGWPDigitalTV;
+	public static AccountData solarisHTOMigrationSignIn;
+	
 	public static void dataInit (String strApplicationType) {	    	
     	if(strApplicationType.toUpperCase().trim().endsWith("CH")) {	    	
     		//cable Data files
@@ -94,7 +98,9 @@ public class TestDataHandler {
     	digitalTVUpgradeToIgnite = YamlHandler.getCableAccountData("DigitalTVUpgradeToIgnite");
     	digitalTVAccountUpgradePackage = YamlHandler.getCableAccountData("DigitalTVAccountUpgradePackage");
     	noPortInAbondoneFlows = YamlHandler.getCableAccountData("NoPortInAbondoneFlows");
-    	
+    	solarisConsumerNoPortinCartAbandon= YamlHandler.getCableAccountData("SolarisConsumerNoPortinCartAbandon");
+		solarisConsumerPortInCartAbandon=YamlHandler.getCableAccountData("SolarisConsumerPortInCartAbandon");
+		solarisConsumerGWPDigitalTV=YamlHandler.getCableAccountData("solarisConsumerGWPDigitalTV");
     	
     	//Legacy Internet test data
     	legacyInternetAccount = YamlHandler.getCableAccountData("LegacyInternetAccount"); 
@@ -129,7 +135,7 @@ public class TestDataHandler {
     	solarisChangeTVPackageAdd4KChannelsAndThemePack = YamlHandler.getCableAccountData("SolarisChangeTVPackageAdd4KChannelsAndThemePack");
     	solarisChangeTVManageChannels = YamlHandler.getCableAccountData("SolarisChangeTVManageChannels");
     	solarisChangeTVManageThemePacks = YamlHandler.getCableAccountData("SolarisChangeTVManageThemePacks");
-
+    	solarisHTOMigrationSignIn = YamlHandler.getCableAccountData("SolarisHTOMigrationSignIn");
 	}
 	
 	private static void selfserveDataInit() {
