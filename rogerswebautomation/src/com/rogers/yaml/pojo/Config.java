@@ -19,6 +19,7 @@ public class Config {
 	private String repairClaimUrl;
 	private String solarisPath;
 	private String loginFlow;
+	private String hupURL;
 	
 	/**
 	 * @return the rogersURL
@@ -227,5 +228,17 @@ public class Config {
 	 */
 	public void setEnsURL04(String ensURL04) {
 		this.ensURL04 = ensURL04;
+	}
+	/**
+	 * @return the hupURL
+	 */
+	public String getHupURL() {
+		return hupURL;
+	}
+	/**
+	 * @param hupURL the hupURL to set
+	 */
+	public void setHupURL(String hupURL) {
+		this.hupURL = hupURL;
 	}
 }

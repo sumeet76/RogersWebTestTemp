@@ -78,7 +78,7 @@
 				</configuration>
 				<version>${maven-compiler-plugin.version}</version>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
@@ -97,132 +97,157 @@
 					</execution>
 				</executions>
 			</plugin>
-					
+
 		</plugins>
-		
+
 	</build>
 
-<profiles>
-        <profile>
-            <id>single</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
+	<profiles>
+		<profile>
+			<id>single</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-surefire-plugin</artifactId>
 						<version>3.0.0-M4</version>
 						<configuration>
-						<suiteXmlFiles> 
-						<suiteXmlFile>SingleRunner.xml</suiteXmlFile> 
-						</suiteXmlFiles>
+							<suiteXmlFiles>
+								 
+								<suiteXmlFile>SingleRunner.xml</suiteXmlFile>
+								 
+							</suiteXmlFiles>
 						</configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 
-        <profile>
-            <id>sanity</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.0.0-M4</version>
-                        <configuration>
-                            <suiteXmlFiles>
-                                <suiteXmlFile>SelfServeRogersSanityPack.xml</suiteXmlFile>
-                            </suiteXmlFiles>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>completesuite</id>        
- 		 <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.0.0-M4</version>
-                        <configuration>
-                            <suiteXmlFiles>
-                                <suiteXmlFile>SelfServeRogersCompleteSuite.xml</suiteXmlFile>
-                            </suiteXmlFiles>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>singleCH</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
+		<profile>
+			<id>sanity</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-surefire-plugin</artifactId>
 						<version>3.0.0-M4</version>
 						<configuration>
-						<suiteXmlFiles> 
-						<suiteXmlFile>SingleRunner.xml</suiteXmlFile> 
-						</suiteXmlFiles>
+							<suiteXmlFiles>
+								<suiteXmlFile>SelfServeRogersSanityPack.xml</suiteXmlFile>
+							</suiteXmlFiles>
 						</configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>completesuite</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>3.0.0-M4</version>
+						<configuration>
+							<suiteXmlFiles>
+								<suiteXmlFile>SelfServeRogersCompleteSuite.xml</suiteXmlFile>
+							</suiteXmlFiles>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>singleCH</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>3.0.0-M4</version>
+						<configuration>
+							<suiteXmlFiles>
+								 
+								<suiteXmlFile>SingleRunner.xml</suiteXmlFile>
+								 
+							</suiteXmlFiles>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 
-        <profile>
-            <id>sanityCH</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.0.0-M4</version>
-                        <configuration>
-                            <suiteXmlFiles>
-                                <suiteXmlFile>ConnectedHomeSanityPack.xml</suiteXmlFile>
-                            </suiteXmlFiles>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-         <id>completesuiteCH</id>        
- 		 <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.0.0-M4</version>
-                        <configuration>
-                            <suiteXmlFiles>
-                                <suiteXmlFile>ConnectedHomeCompleteSuite.xml</suiteXmlFile>
-                            </suiteXmlFiles>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-         <profile>
-         <id>completesuiteCHSC</id>        
- 		 <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.0.0-M4</version>
-                        <configuration>
-                            <suiteXmlFiles>
-                                <suiteXmlFile>ConnectedHomeRogersSolarisConsumerCompleteSuite.xml</suiteXmlFile>
-                            </suiteXmlFiles>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-   </profiles>   
+		<profile>
+			<id>sanityCH</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>3.0.0-M4</version>
+						<configuration>
+							<suiteXmlFiles>
+								<suiteXmlFile>ConnectedHomeSanityPack.xml</suiteXmlFile>
+							</suiteXmlFiles>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>completesuiteCH</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>3.0.0-M4</version>
+						<configuration>
+							<suiteXmlFiles>
+								<suiteXmlFile>ConnectedHomeCompleteSuite.xml</suiteXmlFile>
+							</suiteXmlFiles>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		
+		<profile>
+			<id>completesuiteCHSC</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>3.0.0-M4</version>
+						<configuration>
+							<suiteXmlFiles>
+								<suiteXmlFile>ConnectedHomeRogersSolarisConsumerCompleteSuite.xml</suiteXmlFile>
+							</suiteXmlFiles>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		
+		<profile>
+			<id>completeSuiteBFA</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>3.0.0-M4</version>
+						<configuration>
+							<suiteXmlFiles>
+								<suiteXmlFile>RogersBFATests.xml</suiteXmlFile>
+							</suiteXmlFiles>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+	</profiles>
 </project>
