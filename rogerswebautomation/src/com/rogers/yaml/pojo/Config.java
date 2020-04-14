@@ -18,6 +18,8 @@ public class Config {
 	private String phoneRepairUrl;
 	private String repairClaimUrl;
 	private String hupURL;
+	private String legacyPath;
+	private String solarisPath;
 	
 	/**
 	 * @return the language
@@ -212,5 +214,29 @@ public class Config {
 	 */
 	public void setHupURL(String hupURL) {
 		this.hupURL = hupURL;
+	}
+	/**
+	 * @return the legacyPath
+	 */
+	public String getLegacyPath() {
+		return legacyPath;
+	}
+	/**
+	 * @param legacyPath the legacyPath to set
+	 */
+	public void setLegacyPath(String legacyPath) {
+		this.legacyPath = legacyPath;
+	}
+	/**
+	 * @return the solarisPath
+	 */
+	public String getSolarisPath() {
+		return solarisPath;
+	}
+	/**
+	 * @param solarisPath the solarisPath to set
+	 */
+	public void setSolarisPath(String solarisPath) {
+		this.solarisPath = solarisPath;
 	}
 }
