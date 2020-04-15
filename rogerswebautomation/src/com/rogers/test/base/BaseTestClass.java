@@ -104,6 +104,7 @@ public class BaseTestClass {
 	public RogersProfileAndSettingsPage rogers_profile_and_settings_page;
 	public RogersWirelessDashboardPage rogers_wireless_dashboard_page;
 	public RogersSpeedPassPage rogers_speed_pass_page;
+	public RogersAddDataPage rogers_add_data_page;
 	public EnsHomePage ensHomePage;
 	public EnsNotificationViewPage ensNoteViewPage;
 	protected HashMap<String,String> xmlTestParameters;
@@ -116,7 +117,6 @@ public class BaseTestClass {
 	protected RogersSecurePaymentPage rogers_secure_payment_page;
 	protected RogersPaymentOptionsPage rogers_payment_options_page;
 	protected RogersMakePaymentPage rogers_make_payment_page;
-	protected RogersAddDataPage rogers_add_data_page;
 	protected RogersManageDataPage rogers_manage_data_page;
 	protected CommonBusinessFlows common_business_flows; 
 	protected VerifyInEns ensVerifications;

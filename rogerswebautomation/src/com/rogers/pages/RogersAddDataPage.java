@@ -2,7 +2,6 @@ package com.rogers.pages;
 
 import java.util.List;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,7 +28,9 @@ public class RogersAddDataPage extends BasePageClass {
 	
 	@FindBy (xpath = "//rss-add-data//button[@title='Close' or @title='Fermer']")
 	WebElement btnCloseAddData;	
-
+	
+	@FindBy (xpath = "//h2[@class='add-data-modal-title error-title']")
+	WebElement msgError;	
 
 	/**
 	 * Verifies if Add data overlay displayed
@@ -68,26 +69,32 @@ public class RogersAddDataPage extends BasePageClass {
 		reusableActions.staticWait(3000);//buffer for sync
 		
 	}
-
+	
 	/**
-	 * clicks on close button add data overlay 
-	 * @author Mirza.Kamran
-	 * @return true if add data succeed, otherwise false.
+	 * Check if add data success message is displayed
+	 * @return true if the message is displayed, otherwise false.
+	 * @author ning.xue
 	 */
-	public boolean clkCloseAddDataIfSuccessful() {
-		boolean status = false;
-		if(reusableActions.isElementVisible(lblAddDataSuccess))
-		{
-			reusableActions.clickWhenReady(btnCloseAddData, 30);
-			status = true;
-		}else if(reusableActions.isElementVisible(By.xpath("//h2[@class='add-data-modal-title error-title']")))
-		{
-			System.out.print("Limit reached");
-			reusableActions.clickWhenReady(btnCloseAddData, 30);
-			status = false;
-		}
-		return status;
-		
+	public boolean verifyAddDataSuccessMsgIsDisplayed() {
+		return reusableActions.isElementVisible(lblAddDataSuccess);
 	}
+	
+	/**
+	 * Check if the error message displayed after click "Purchase" button
+	 * @return true if the error message displayed, otherwise false.
+	 * @author ning.xue
+	 */
+	public boolean verifyErrorMsgIsDisplayed() {
+		return reusableActions.isElementVisible(msgError);
+	}
+	
+	/**
+	 * To click the close button on add data overlay.
+	 * @author ning.xue
+	 */
+	public void clkCloseOnAddDataOverlay() {
+		reusableActions.clickWhenReady(btnCloseAddData, 30);
+	}
+
 }
 
