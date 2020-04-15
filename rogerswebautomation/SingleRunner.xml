@@ -3,18 +3,78 @@
 <suite name="Self Serve Rogers Tests" parallel="tests" thread-count="1">
 <parameter name="strBrowser" value="chrome"/>
 <parameter name="strLanguage" value="en"/>
-
+<parameter name="strType" value="seq"/>
 <listeners>
       <listener class-name="com.rogers.test.listeners.AnnotationTransformer"/>
 </listeners> 		
 
 
 
-<test name="RogersSS_TC_061_ValidateDataUsageDisplayRunningLow_postpaid_SE_AddData">
+<test name="RogersSS_TC_02_AccountRegistration">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_061_ValidateDataUsageDisplayRunningLow_postpaid_SE_AddData"></class>
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_02_AccountRegistration"></class>
+</classes></test>
+<!--
+
+<test name="RogersSS_TC_071_Validate3rdPartyBrightstarPage">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_071_Validate3rdPartyBrightstarPage"></class>
 </classes>          																					
 </test>
 
-							
+ --> 
+ 	
+
+<!-- defecect raised
+<test name="RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE"></class>
+</classes>          																					
+</test>
+ -->
+
+<!-- 
+<test name="RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurchasedSpeedPass">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurchasedSpeedPass"></class>
+</classes>          																					
+</test>
+ -->
+ 
+ <!-- defecect raised
+<test name="RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE"></class>
+</classes>          																					
+</test>
+
+-->
+
+<!-- 
+<test name="RogersSS_TC_039_AssociateWirelessPostpaidBANWithHyphenTest">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_039_AssociateWirelessPostpaidBANWithHyphenTest"></class>
+</classes>          																					
+</test>	
+
+
+
+<test name="RogersSS_TC_050_ChangeIDForSECustomerTest">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_050_ChangeIDForSECustomerTest"></class>
+</classes>          																					
+</test>
+
+
+  -->
+<!-- data not linked
+
+<test name="RogersSS_TC_074_ValidateLiveChatLinkInChangeCallerIdLimitExceedModal_SEInfinite">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_074_ValidateLiveChatLinkInChangeCallerIdLimitExceedModal_SEInfinite"></class>
+</classes>          																					
+</test>
+-->
+
+					
 </suite>

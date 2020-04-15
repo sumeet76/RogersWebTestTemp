@@ -34,6 +34,7 @@ public class RogersSS_TC_071_Validate3rdPartyBrightstarPage extends BaseTestClas
 	
     @Test
     public void validate3rdPartyBrightstarPage() {
+    	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc495271.getUsername();
     	String strPassword = TestDataHandler.tc495271.getPassword();
         String strUrlExpected = TestDataHandler.config.getPhoneRepairUrl();

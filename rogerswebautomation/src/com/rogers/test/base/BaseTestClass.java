@@ -241,6 +241,7 @@ public class BaseTestClass {
 		switch(strGroupName) {
 		
 		case "selfserve":
+		case "selfserve_login":
 			
 			rogers_home_page = new RogersHomePage(driver);
 			rogers_login_page = new RogersLoginPage(driver);
