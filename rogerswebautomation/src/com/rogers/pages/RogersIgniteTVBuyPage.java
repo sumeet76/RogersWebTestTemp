@@ -127,6 +127,134 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	
 	@FindBy(xpath = "//ngx-smart-modal[@id='loadingModal']")
 	WebElement popupLoadingFingersciam;
+	
+	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -tertiary -large -hasDsIcon']//following-sibling::button")
+	WebElement buttonUpgradeNow;
+	
+	@FindBy(xpath = "//button[contains(@class,'stb-button increment')]//span[@class='ds-button__copy w-100']")
+	WebElement buttonAddIgniteTVBoxes;
+	
+	@FindBy(xpath = "//span[@translate='global.cta.updateCart']")
+	WebElement buttonUpdateCart;
+	
+	@FindBy(xpath = "//ds-modal-container[contains(@id,'ds-modal-container')]")
+	WebElement modalUpgradingToIgnitebundels;
+	
+	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -primary -large']//span[@class='ds-button__copy w-100']")
+	WebElement okayUpgradingToIgnitebundelsModal;
+	
+	@FindBy(xpath = "//button[contains(@aria-label,'Starter Bundle to cart')]//ancestor::div[contains(@class,'d-flex')]/preceding-sibling::section//h2[@class='gwp-header']")
+	WebElement gwpHeader;
+	
+	@FindBy(xpath = "//i[@class='ng-tns-c46-26 rch-icon-chevron-down']")
+	WebElement downChevronCartSummary;
+	
+	@FindBy(xpath = "//div[contains(@class,'mini-cart-ss__body')]//tr[@class='cms-promotions-gwp ng-tns-c46-27 ng-star-inserted']")
+	WebElement gwpYourCart;
+	
+	@FindBy(xpath ="//button[contains(@aria-label,'Starter Bundle')]//ancestor::div[@class='row']//following-sibling::div[contains(@class,'dsa-rate-card__detail')]//span[@class='ds-icon rds-icon-chevron-down']")
+	WebElement chevronSolarisStarterPackageNew;	
+	
+	@FindBy(xpath ="//input[contains(@id,'messageForExistingNumber')]//following-sibling::label")
+	WebElement rdoKeepExistingPhoneNumber;
+	
+	/**
+	 * To click on the chevron of your cart
+	 * @author Saurav.Goyal
+	 */
+	public void clkChevronYourCart() {
+		reusableActions.getWhenReady(downChevronCartSummary, 60).click();
+	}
+	
+	/**
+	 * To verify gwp promotion in the cart summary
+	 * @return true if the promotion is available else return false
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyGWPYourCartPromotion() {
+			reusableActions.waitForElementVisibility(gwpYourCart, 120);
+			return	reusableActions.isElementVisible(gwpYourCart);
+	}
+	
+	/**
+	 * To verify Upgrading To Ignite bundels Modal
+	 * @return true if the modal is available else return false
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyGWPForStarterPackage() {
+			reusableActions.waitForElementVisibility(gwpHeader, 120);
+			return	reusableActions.isElementVisible(gwpHeader);
+	}
+		
+	/**
+	 * To click on the chevron of the starter bundel package
+	 * @author Saurav.Goyal
+	 */
+	public void clkChevronSolarisStarterPackageNew() {
+		reusableActions.getWhenReady(chevronSolarisStarterPackageNew, 60).click();
+	}
+	
+	
+	/**
+	 * To verify Upgrading To Ignite bundels Modal
+	 * @return true if the modal is available else return false
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyUpgradingToIgnitebundelsModal() {
+			reusableActions.waitForElementVisibility(modalUpgradingToIgnitebundels, 120);
+			return	reusableActions.isElementVisible(modalUpgradingToIgnitebundels);
+	}
+	
+	/**
+	 * To click okay on the modal Upgrading To Ignite bundels
+	 * @author Saurav.Goyal
+	 */
+	public void clkOkayUpgradingToIgnitebundelsModal() {
+		reusableActions.getWhenReady(okayUpgradingToIgnitebundelsModal, 60).click();
+	}
+	
+	
+	/**
+	 * Click keep my existing phone number radio button
+	 * @author Saurav.Goyal
+	 */
+	public void clkRadioOptKeepMyExistingPhoneNumber() {
+		reusableActions.getWhenReady(rdoKeepExistingPhoneNumber, 60).click();
+	}
+	
+	/**
+	 * Click + to add STB ignite TV boxes
+	 * @author Saurav.Goyal
+	 */
+	public void clkPlusAddIgniteTVBoxes() {
+		reusableActions.getWhenReady(buttonAddIgniteTVBoxes, 30).click();
+	}
+	
+	/**
+	 * To Click Update cart button
+	 * @author Saurav.Goyal
+	 */
+	public void clkUpdateCart() {
+		reusableActions.getWhenReady(buttonUpdateCart, 30).click();
+	}
+	
+	/**
+	 * Verify visibility of upgrade now button
+	 * @return	boolean true if the element is present else false
+	 * @author Saurav.Goyal 
+	 */
+	public boolean verifyButtonUpgradeNow() {		
+		reusableActions.waitForElementVisibility(buttonUpgradeNow, 120);
+		return	reusableActions.isElementVisible(buttonUpgradeNow);
+	}
+	
+	/**
+	 * click upgrade now button
+	 * @author Saurav.Goyal 
+	 */
+	public void clkButtonUpgradeNow() {		
+		reusableActions.getWhenReady(buttonUpgradeNow, 120).click();
+	}
 
 	/**
 	 * To set the Lookup address on the service availability  Lookup popup

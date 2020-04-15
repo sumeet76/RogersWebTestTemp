@@ -1,12 +1,17 @@
 package com.rogers.testdatamanagement;
 
+import com.rogers.yaml.pojo.AALData;
 import com.rogers.yaml.pojo.AccountData;
 import com.rogers.yaml.pojo.Config;
+import com.rogers.yaml.pojo.HUPData;
+import com.rogers.yaml.pojo.PPCData;
 import com.rogers.yaml.pojo.PaymentDetails;
 
 public class TestDataHandler {	
 	public static Config config;
 	public static PaymentDetails paymentInfo;
+	public static Config bfaConfig;
+	public static PaymentDetails bfaPaymentInfo;
 	public static AccountData tc013132;
 	public static AccountData tc0224;
 	public static AccountData tc041139;
@@ -65,6 +70,19 @@ public class TestDataHandler {
 	public static AccountData solarisChangeTVManageChannels;
 	public static AccountData solarisChangeTVManageThemePacks;
 	public static AccountData solarisInternetAccountWithUsageAndPackageUpgrade;
+	public static AccountData solarisConsumerNoPortinCartAbandon;
+	public static AccountData solarisConsumerPortInCartAbandon;
+	public static AccountData solarisConsumerGWPDigitalTV;
+	public static AccountData solarisHTOMigrationSignIn;
+	public static AALData testCase01;
+	public static AALData testCase02;
+	public static PPCData testCase03;
+	public static HUPData testCase04;
+	public static HUPData testCase05;
+	public static HUPData testCase06;
+	public static HUPData testCase07;
+	public static PPCData testCase08;
+	public static HUPData testCase09;
 
 	public static void dataInit (String strApplicationType) {	    	
     	if(strApplicationType.toUpperCase().trim().endsWith("CH")) {	    	
@@ -94,7 +112,9 @@ public class TestDataHandler {
     	digitalTVUpgradeToIgnite = YamlHandler.getCableAccountData("DigitalTVUpgradeToIgnite");
     	digitalTVAccountUpgradePackage = YamlHandler.getCableAccountData("DigitalTVAccountUpgradePackage");
     	noPortInAbondoneFlows = YamlHandler.getCableAccountData("NoPortInAbondoneFlows");
-    	
+    	solarisConsumerNoPortinCartAbandon= YamlHandler.getCableAccountData("SolarisConsumerNoPortinCartAbandon");
+		solarisConsumerPortInCartAbandon=YamlHandler.getCableAccountData("SolarisConsumerPortInCartAbandon");
+		solarisConsumerGWPDigitalTV=YamlHandler.getCableAccountData("solarisConsumerGWPDigitalTV");
     	
     	//Legacy Internet test data
     	legacyInternetAccount = YamlHandler.getCableAccountData("LegacyInternetAccount"); 
@@ -129,7 +149,7 @@ public class TestDataHandler {
     	solarisChangeTVPackageAdd4KChannelsAndThemePack = YamlHandler.getCableAccountData("SolarisChangeTVPackageAdd4KChannelsAndThemePack");
     	solarisChangeTVManageChannels = YamlHandler.getCableAccountData("SolarisChangeTVManageChannels");
     	solarisChangeTVManageThemePacks = YamlHandler.getCableAccountData("SolarisChangeTVManageThemePacks");
-
+    	solarisHTOMigrationSignIn = YamlHandler.getCableAccountData("SolarisHTOMigrationSignIn");
 	}
 	
 	private static void selfserveDataInit() {
@@ -165,7 +185,17 @@ public class TestDataHandler {
 	}
 	
 	private static void buyFlowsDataInit() {
-		
+		bfaConfig =  YamlHandler.getBFAConfig();
+		bfaPaymentInfo = YamlHandler.getBFAPaymentDetails();
+    	testCase01 = YamlHandler.getAALdata("tc01AAL");
+    	testCase02 = YamlHandler.getAALdata("tc02AAL");
+    	testCase03 = YamlHandler.getPPCdata("tc03PPC");
+    	testCase04 = YamlHandler.getHUPdata("tc04HUP");
+    	testCase05 = YamlHandler.getHUPdata("tc05HUP");
+    	testCase06 = YamlHandler.getHUPdata("tc06HUP");
+    	testCase07 = YamlHandler.getHUPdata("tc07HUP");
+    	testCase08 = YamlHandler.getPPCdata("tc08PPC");
+    	testCase09 = YamlHandler.getHUPdata("tc09HUP");
 	}
 
 }

@@ -23,9 +23,17 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.rogers.pages.RogersAccountOverviewPage;
 import com.rogers.pages.RogersAddDataPage;
 import com.rogers.pages.RogersBillingPage;
+import com.rogers.pages.RogersBuildPlanPage;
 import com.rogers.pages.RogersBuyPage;
+import com.rogers.pages.RogersCartSummaryPage;
 import com.rogers.pages.RogersChangeMyCallerIdPage;
 import com.rogers.pages.RogersChangePaymentMethodPage;
+import com.rogers.pages.RogersChangePlanPage;
+import com.rogers.pages.RogersChangeSEPlanPage;
+import com.rogers.pages.RogersChooseAddonsPage;
+import com.rogers.pages.RogersChooseNumberPage;
+import com.rogers.pages.RogersChoosePhonePage;
+import com.rogers.pages.RogersChoosePlanPage;
 import com.rogers.pages.RogersDigitalTVDashboardPage;
 import com.rogers.pages.RogersDigitalTVPackageSelectionPage;
 import com.rogers.pages.RogersHomePage;
@@ -46,18 +54,23 @@ import com.rogers.pages.RogersOrderConfirmationPage;
 import com.rogers.pages.RogersOrderReviewPage;
 import com.rogers.pages.RogersOrderSummaryPage;
 import com.rogers.pages.RogersPaymentOptionsPage;
+import com.rogers.pages.RogersPaymentPage;
 import com.rogers.pages.RogersProfileAndSettingsPage;
 import com.rogers.pages.RogersRecoverPassOrNamePage;
 import com.rogers.pages.RogersRegisterPage;
 import com.rogers.pages.RogersSecurePaymentPage;
 import com.rogers.pages.RogersSetPasswordPage;
 import com.rogers.pages.RogersShareEverythingPage;
+import com.rogers.pages.RogersShippingPage;
 import com.rogers.pages.RogersSolarisRHPDashboardPage;
 import com.rogers.pages.RogersSolarisTVChannelsAndThemepacksPage;
 import com.rogers.pages.RogersSolarisTVDashboardPage;
 import com.rogers.pages.RogersSpeedPassPage;
 import com.rogers.pages.RogersTechInstallPage;
+import com.rogers.pages.RogersWirelessCreditEvaluationPage;
 import com.rogers.pages.RogersWirelessDashboardPage;
+import com.rogers.pages.RogersWirelessDetailsPage;
+import com.rogers.pages.RogersWirelessProfileCreationPage;
 import com.rogers.pages.ens.EnsHomePage;
 import com.rogers.pages.ens.EnsNotificationViewPage;
 import com.rogers.test.commonbusinessfunctions.CommonBusinessFlows;
@@ -80,36 +93,36 @@ public class BaseTestClass {
 	public enum OS {
         WIN, LIN, MAC
     };// Operating systems.
-    private static OS os = null;
+
 	private WebDriver driver;
-	protected HashMap<String,String> xmlTestParameters;
+	public static ExtentReports report;
+	public static ExtentTest logger;
+	public Reporter reporter;
 	public RogersHomePage rogers_home_page;
 	public RogersLoginPage rogers_login_page;
 	public RogersAccountOverviewPage rogers_account_overview_page;
+	public RogersProfileAndSettingsPage rogers_profile_and_settings_page;
+	public RogersWirelessDashboardPage rogers_wireless_dashboard_page;
+	public RogersSpeedPassPage rogers_speed_pass_page;
+	public EnsHomePage ensHomePage;
+	public EnsNotificationViewPage ensNoteViewPage;
+	protected HashMap<String,String> xmlTestParameters;
 	protected RogersShareEverythingPage rogers_share_everything_page;
 	protected RogersChangeMyCallerIdPage rogers_change_my_caller_id_page;
-	protected RogersWirelessDashboardPage rogers_wireless_dashboard_page;
 	protected RogersRegisterPage rogers_register_page;
 	protected RogersLinkAccountPage rogers_link_account_page;
 	protected RogersBillingPage rogers_billing_page;
 	protected RogersChangePaymentMethodPage rogers_change_payment_method_page;
 	protected RogersSecurePaymentPage rogers_secure_payment_page;
-	public RogersProfileAndSettingsPage rogers_profile_and_settings_page;
 	protected RogersPaymentOptionsPage rogers_payment_options_page;
 	protected RogersMakePaymentPage rogers_make_payment_page;
 	protected RogersAddDataPage rogers_add_data_page;
 	protected RogersManageDataPage rogers_manage_data_page;
-	public RogersSpeedPassPage rogers_speed_pass_page;
-	public Reporter reporter;
 	protected CommonBusinessFlows common_business_flows; 
-	public EnsHomePage ensHomePage;
-	public EnsNotificationViewPage ensNoteViewPage;
 	protected VerifyInEns ensVerifications;
 	protected RogersSetPasswordPage rogers_set_password_page;
 	protected RogersRecoverPassOrNamePage rogers_recover_pass_or_name;
 	protected BrowserDrivers browserdriver;
-	public static ExtentReports report;
-	public static ExtentTest logger;
 	protected RogersInternetDashboardPage rogers_internet_dashboard_page;
 	protected RogersInternetPackageSelectionPage rogers_internet_package_selection_page;
 	protected RogersDigitalTVDashboardPage rogers_digital_tv_dashboard_page;
@@ -129,7 +142,20 @@ public class BaseTestClass {
 	protected RogersSolarisTVChannelsAndThemepacksPage rogers_solaris_tv_channels_and_themepacks_page;
 	protected RogersHomePhonePortInPage rogers_home_phone_port_in_page;
 	protected RogersInternetUsagePage rogers_internet_usage_page;
-	public RogersBillingPage rogersBillingPage;
+	protected RogersBillingPage rogersBillingPage;
+	protected RogersWirelessDetailsPage rogers_wireless_details_page;
+	protected RogersChangeSEPlanPage rogers_change_se_plan_page;
+	protected RogersChangePlanPage rogers_change_plan_page;
+	protected RogersChoosePhonePage rogers_choose_phone_page;
+	protected RogersBuildPlanPage rogers_build_plan_page;
+	protected RogersChooseAddonsPage rogers_choose_addons_page;
+	protected RogersCartSummaryPage rogers_cart_summary_page;
+	protected RogersWirelessProfileCreationPage rogers_wireless_profile_creation_page;
+	protected RogersWirelessCreditEvaluationPage rogers_wireless_credit_evaluation_page;
+	protected RogersShippingPage rogers_shipping_page;
+	protected RogersChooseNumberPage rogers_choose_number_page;
+	protected RogersPaymentPage rogers_payment_page;
+	protected RogersChoosePlanPage rogers_choose_plan_page;
 		
 		private CaptchaBypassHandlers captcha_bypass_handlers;
 		
@@ -195,41 +221,8 @@ public class BaseTestClass {
 	 * @throws IOException               java.io.IOException, Signals that an I/O exception of some sort has occurred, produced by failed or interrupted I/O operations.
 	 */
 	public void startSession(String strUrl, String strBrowser,  String strLanguage, RogersEnums.GroupName enumGroupName , Method currentTestMethodName) throws ClientProtocolException, IOException {
-		this.driver = browserdriver.driverInit(strBrowser, currentTestMethodName,  enumGroupName.toString());
-		System.out.println(strUrl + "----------------------------------------------------------------------------");
-		captcha_bypass_handlers = new CaptchaBypassHandlers(getDriver());
-		switch(enumGroupName.toString().toLowerCase().trim()) {			
-		case "selfserve":
-		case "selfserve_login":
-			captcha_bypass_handlers.captchaBypassURLSelfserveFlows(strUrl, strLanguage);
-			break;
-			
-		case "connectedhome_LegacyAnonymous":				
-			captcha_bypass_handlers.captchaBypassURLLegacyAnonymousBuyFlows(strUrl, strLanguage); 
-			break;	
-			
-		case "connectedhome_IgniteAnonymous":				
-			captcha_bypass_handlers.captchaBypassURLIgniteAnonymousBuyFlows(strUrl, strLanguage); 
-			break;
-			
-		case "connectedhome_LegacyLogin":
-			captcha_bypass_handlers.captchaBypassURLLegacyLoginFlows(strUrl, strLanguage);
-			break; 
-
-		case "connectedhome_IgniteLogin":
-			captcha_bypass_handlers.captchaBypassURLIgniteLoginFlows(strUrl, strLanguage);
-			break; 
-			
-		case "connectedhome_login":
-			captcha_bypass_handlers.captchaBypassURLLoginFlows(strUrl, strLanguage);
-			break; 
-			
-		default :
-			captcha_bypass_handlers.captchaBypassURLLoginFlows(strUrl, strLanguage);
-		}
-	    setImplicitWait(getDriver(), 10);
-	    init(enumGroupName.toString().toLowerCase().trim());
-}	
+		startSession(strUrl, strBrowser, strLanguage, enumGroupName.toString().toLowerCase().trim(), currentTestMethodName);
+	}	
 
 	/**
 	 * To initiate the page objects based on test case group, will read group name from xml file.
@@ -368,14 +361,33 @@ public class BaseTestClass {
 			rogersBillingPage = new RogersBillingPage(driver);
 			break;
 			
-		case "buyflow":
+		case "buyflows":
 			
+			rogers_home_page = new RogersHomePage(getDriver());
+			rogers_login_page = new RogersLoginPage(getDriver());
+			rogers_account_overview_page = new RogersAccountOverviewPage(getDriver());
+			rogers_share_everything_page = new RogersShareEverythingPage(getDriver());
+			rogers_wireless_details_page = new RogersWirelessDetailsPage(getDriver());
+			rogers_change_se_plan_page = new RogersChangeSEPlanPage(getDriver());
+			rogers_choose_phone_page = new RogersChoosePhonePage(getDriver());
+			rogers_build_plan_page = new RogersBuildPlanPage(getDriver());
+			rogers_choose_addons_page = new RogersChooseAddonsPage(getDriver());
+			rogers_cart_summary_page = new RogersCartSummaryPage(getDriver());
+			rogers_wireless_profile_creation_page = new RogersWirelessProfileCreationPage(getDriver());
+			rogers_wireless_credit_evaluation_page = new RogersWirelessCreditEvaluationPage(getDriver());
+			rogers_shipping_page = new RogersShippingPage(getDriver());
+			rogers_choose_number_page = new RogersChooseNumberPage(getDriver());
+			rogers_order_review_page = new RogersOrderReviewPage(getDriver());
+			rogers_order_confirmation_page = new RogersOrderConfirmationPage(getDriver());
+			rogers_payment_options_page = new RogersPaymentOptionsPage(getDriver());
+			rogers_payment_page = new RogersPaymentPage(getDriver());
+			rogers_choose_plan_page = new RogersChoosePlanPage(getDriver());
+			rogers_change_plan_page = new RogersChangePlanPage(getDriver());
 			break;
+			
 		default:
 			
-
 		}	
-		
 		
 	}
 	/**

@@ -1,0 +1,22 @@
+# Account Details 
+---
+name: DigitalTVAccount
+username: Autodatar320ss098@mailinator.com
+password: DigiAuto@123
+accountDetails:
+   type: Digital TV
+   ban: 233746302703
+   phoneNumber: 9055982762
+   imeiNumber: 123456789012345
+   year: 1994
+   month: 4
+   date: 14
+   address:
+     line1: 706-10 LISA St
+     line2: BRAMPTON ON L6T 4N4
+     streetNumber: 239
+     streetName: Bartsview Cir
+     city: STOUFFVILLE
+     Province: ON
+     PostalCode: L6T 4N4
+...

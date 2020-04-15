@@ -47,6 +47,12 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
 	
+	@FindBy(xpath = "//button[@data-target='#miniCollapse']")
+	WebElement downChevronYourCart;
+
+	@FindBy(xpath = "//div[@class='mini-body']//tr[@class='cms-promotions-gwp ng-tns-c46-27 ng-star-inserted']")
+	WebElement gwpYourCart;
+	
 	/**
 	 * To verify the launch of Profile Page
 	 * @return true if the email text box has available, else false 
@@ -96,6 +102,24 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 		String strPhoneNumber = FormFiller.generatePhoneNumber();
 		reusableActions.getWhenReady(btnPhone, 3).clear();
 		reusableActions.getWhenReady(btnPhone,3).sendKeys(strPhoneNumber);
+	}
+	
+	/**
+	 * To click on the chevron on the profile creation page
+	 * @author Saurav.Goyal
+	 */
+	public void clkChevronYourCart() {
+		reusableActions.getWhenReady(downChevronYourCart, 60).click();
+	}
+
+	/**
+	 * To verify gwp promotion in the profile creation page
+	 * @return true if the promotion is available else return false
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyGWPYourCartPromotion() {
+		reusableActions.waitForElementVisibility(gwpYourCart, 120);
+		return	reusableActions.isElementVisible(gwpYourCart);
 	}
 	
 	/**

@@ -51,14 +51,9 @@ public class RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE extends B
         }
         reporter.reportLogWithScreenshot("Account overview page.");     
        rogers_account_overview_page.clkMenuUsageAndService();
-       reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
-       String strAccountNum = TestDataHandler.tc6269.getAccountDetails().getCtn();
-       String strLast4Digit = strAccountNum.substring(strAccountNum.length()-4);
-       if (rogers_account_overview_page.isAccountShowInDropDown(strLast4Digit)) {
-           rogers_account_overview_page.clkDropDownAccount(strLast4Digit);
-       } else {
-       	rogers_account_overview_page.clkSubMenuWirelessUsage();
-       }
+       //For demo-line data, the sub-menu shows as "Wireless Usage"
+   		rogers_account_overview_page.clkSubMenuWirelessUsage();
+
        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();  
               
        //5. Usage bar displayed with the usage 
@@ -76,12 +71,12 @@ public class RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE extends B
 		 reporter.softAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded(),
 	        		"All amounts are coverted to GB For Total Data Displayed Below Label Total Data Plus Plan Added",
 	        		"it seems amount is not convertd to GB For Total Data Displayed Below Label Total Data Plus Plan Added, please investigate");
-	        reporter.softAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForLabelDataRemaining(),
-	        		"All amounts are coverted to GB For Label Data Remaining",
-	        		"it seems amount is not convertd to GB For Label Data Remaining, please investigate");
-	        reporter.softAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForlabelTotalDataDisplayedBelowBarRightSide(),
-	        		"All amounts are coverted to GB label Total Data Displayed Below Bar RightSide",
-	        		"it seems amount is not convertd to GB label Total Data Displayed Below Bar RightSide, please investigate");
+        reporter.softAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForLabelDataRemaining(),
+        		"All amounts are coverted to GB For Label Data Remaining",
+        		"it seems amount is not convertd to GB For Label Data Remaining, please investigate");
+        reporter.softAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForlabelTotalDataDisplayedBelowBarRightSide(),
+        		"All amounts are coverted to GB label Total Data Displayed Below Bar RightSide",
+        		"it seems amount is not convertd to GB label Total Data Displayed Below Bar RightSide, please investigate");
 		
 		 reporter.softAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesForTotalDataPlusAddedPlan(), 
 					"All MB amounts converted in GB up to 2 decimal points For Total Data Plus Added Plan", 
@@ -110,8 +105,10 @@ public class RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE extends B
 						"Data delayed 12 hours message doesn't display, please check.");  
 		//9. Add Speed pass flow page displayed successfully
 		rogers_wireless_dashboard_page.clkBtnSpeedPass();
-		common_business_flows.addSpeedPass();
-		
+		reporter.softAssert(rogers_speed_pass_page.verifySpeedPassPopupIsDisplayed(), 
+				"Add speed pass overlay openned successfully.", 
+				"Add speed pass overlay failed.");  
+		rogers_speed_pass_page.clkBtnCloseInSpeedPassPopup();
 		rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
 		reporter.reportLogWithScreenshot("Middle of Wireless dashboard page.");        
 		rogers_wireless_dashboard_page.scrollToBottomOfPage();

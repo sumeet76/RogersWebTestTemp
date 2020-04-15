@@ -55,6 +55,30 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
 	
+	@FindBy(xpath = "//button[@data-target='#miniCollapse']")
+	WebElement downChevronYourCart;
+
+	@FindBy(xpath = "//div[@class='mini-body']//tr[@class='cms-promotions-gwp ng-tns-c46-27 ng-star-inserted']")
+	WebElement gwpYourCart;
+
+	/**
+	 * To click on the chevron on the payment page
+	 * @author Saurav.Goyal
+	 */
+	public void clkChevronYourCart() {
+		reusableActions.getWhenReady(downChevronYourCart, 60).click();
+	}
+
+	/**
+	 * To verify gwp promotion in the payment page
+	 * @return true if the promotion is available else return false
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyGWPYourCartPromotion() {
+		reusableActions.waitForElementVisibility(gwpYourCart, 120);
+		return	reusableActions.isElementVisible(gwpYourCart);
+	}
+	
 	/**
 	 * Verify the Payment Modes page
 	 * @return true if the Payment Mode drop down list is present, else false
