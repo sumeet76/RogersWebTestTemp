@@ -9,14 +9,13 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.testdatamanagement.TestDataHandler;
 
 /**
  * This class contains the test method to test the IgniteTV buy flow for Rogers.com   
  * 
- * @author chinnarao.vattam
+ * @author Saurav.Goyal
  * 
  * Test steps:
  *
@@ -50,7 +49,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *
  **/
 
-public class RogersCH_TC_034_IginteTV_DoublePlayBuyTest extends BaseTestClass {
+public class RogersCH_TC_006_IginteTV_BuySolarisDoublePlayChangeInstallationDateMonthlyBillTest extends BaseTestClass {
 
     @Test
     public void checkBuyDigitalTVOffer() {
@@ -70,11 +69,19 @@ public class RogersCH_TC_034_IginteTV_DoublePlayBuyTest extends BaseTestClass {
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
+        rogers_igniteTV_buy_page.verifyOptNewPhone();
+        reporter.reportLogWithScreenshot("Launched the port-in popup");
+        rogers_igniteTV_buy_page.selectOptNewPhone();
+        rogers_igniteTV_buy_page.clickOptPhone();
+        rogers_igniteTV_buy_page.verifyHomePhone();
+        reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
+        rogers_igniteTV_buy_page.clkHomePhone();
         rogers_igniteTV_buy_page.verify4KTV();
         reporter.reportLogWithScreenshot("Launched the cart summary page");
         rogers_igniteTV_buy_page.set4KTV();
         reporter.reportLogWithScreenshot("4k TV selected");
         rogers_igniteTV_buy_page.clkCheckout();
+        rogers_igniteTV_profile_creation_page.verifyProfilePage();
         reporter.reportLogWithScreenshot("Launched the create profile page");
         rogers_igniteTV_profile_creation_page.setEmail();
         rogers_igniteTV_profile_creation_page.setFirstname();
@@ -88,11 +95,11 @@ public class RogersCH_TC_034_IginteTV_DoublePlayBuyTest extends BaseTestClass {
         rogers_igniteTV_credit_check_page.selectDOBDay();
         reporter.reportLogWithScreenshot("Entered DOB details");
         rogers_igniteTV_credit_check_page.selectFirstID("2");
-        rogers_igniteTV_credit_check_page.selectProvince("ON");
+        rogers_igniteTV_credit_check_page.selectProvince("BC");
         rogers_igniteTV_credit_check_page.selectExpiryYearwithSpace();
         rogers_igniteTV_credit_check_page.selectExpiryMonth();
         rogers_igniteTV_credit_check_page.selectExpiryDay();
-        rogers_igniteTV_credit_check_page.setDrivingLicenseNumber("ONTARIO");
+        rogers_igniteTV_credit_check_page.setDrivingLicenseNumber("ON");
         reporter.reportLogWithScreenshot("Driving License Details");
         rogers_igniteTV_credit_check_page.selectSecondIDOption("4");
         rogers_igniteTV_credit_check_page.setPassportNumber();
@@ -102,8 +109,15 @@ public class RogersCH_TC_034_IginteTV_DoublePlayBuyTest extends BaseTestClass {
         rogers_igniteTV_credit_check_page.clkCreditConsent();
         reporter.reportLogWithScreenshot("Passport Details");
         rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
+        rogers_home_phone_selection_page.verifyPhoneNumberPage();
+        reporter.reportLogWithScreenshot("Launched the home phone selection page");
+        rogers_home_phone_selection_page.clkPhoneNumberGenerator(); 
+        rogers_home_phone_selection_page.clkChosePhoneNumber(); 
+        rogers_home_phone_selection_page.clkContinueHomePhoneSelection(); 
+        rogers_tech_install_page.verifyTechInstallPage(); 
         reporter.reportLogWithScreenshot("Launched the tech install page");
-        rogers_tech_install_page.clkTechInstalConsent();
+        rogers_tech_install_page.clkTechInstallSlot();
+        reporter.reportLogWithScreenshot("tech install details");
         rogers_tech_install_page.clkTechInstallContinue();
         rogers_payment_options_page.verifyPaymentModepage();
         reporter.reportLogWithScreenshot("Launched the payment options page");
@@ -124,12 +138,11 @@ public class RogersCH_TC_034_IginteTV_DoublePlayBuyTest extends BaseTestClass {
         rogers_order_review_page.clkSubmit();
         rogers_order_confirmation_page.verifyOrderConfirmation();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");  
-        reporter.reportLogWithScreenshot("Verified the Confirmation page");
+        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");       
     }
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})
-	//IgniteAnonymous
+    @BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})
+	//IgniteLogin
 	public void beforeTest(String strBrowser, String strLanguage, String strGroupName,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
 		startSession(TestDataHandler.rogersConfig.getRogersURL(),  strBrowser,strLanguage,strGroupName, method);
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
