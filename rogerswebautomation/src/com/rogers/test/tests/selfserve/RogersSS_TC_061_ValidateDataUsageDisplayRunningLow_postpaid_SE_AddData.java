@@ -52,8 +52,10 @@ public class RogersSS_TC_061_ValidateDataUsageDisplayRunningLow_postpaid_SE_AddD
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
 
     	rogers_account_overview_page.clkSubMenuWirelessUsage();
-        
         rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
+        
+        double origTotalData = rogers_wireless_dashboard_page.getTotalDataVolume();
+        double addedData = 0;
         String strCtn1 = TestDataHandler.tc61.getAccountDetails().getCtn1();
         String strCtn2 = TestDataHandler.tc61.getAccountDetails().getCtn2();
         this.verifyRunningLowTagForCtn(strCtn1);
@@ -65,6 +67,7 @@ public class RogersSS_TC_061_ValidateDataUsageDisplayRunningLow_postpaid_SE_AddD
         common_business_flows.addDataFlow();
         if(rogers_add_data_page.verifyAddDataSuccessMsgIsDisplayed())
         {
+        	addedData = rogers_add_data_page.getAddedDataVolume();
         	rogers_add_data_page.clkCloseOnAddDataOverlay();
         	//Sign out and re sign in to verify if added data reflected.
 	        reporter.reportLogWithScreenshot("Wireless dashboard page.");  
@@ -83,15 +86,18 @@ public class RogersSS_TC_061_ValidateDataUsageDisplayRunningLow_postpaid_SE_AddD
 	        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");        
 	        rogers_account_overview_page.clkSubMenuWirelessUsage();
 	        reporter.reportLogWithScreenshot("Wireless dashboard page.");
-	        
+	        reporter.softAssert(!rogers_wireless_dashboard_page.verifyRunningLowStateInTheUsageBar(),
+	        		"Data running low is disappeared",
+	        		"It seems the data running low state is still displayed, please add more data and re validate");
+	        reporter.softAssert(rogers_wireless_dashboard_page.verifyAddedDataReflectedInTotalDataBucket(origTotalData, addedData), 
+								"Added data is reflected in total data bucket.", 
+								"Added data didn't reflect in total data bucket.");
+	     	        
         } else if (rogers_add_data_page.verifyErrorMsgIsDisplayed()) {
         	reporter.reportLogWithScreenshot("Add data purchase got error, please check if limit is reached.");
         	rogers_add_data_page.clkCloseOnAddDataOverlay();
         }
-     
-        reporter.softAssert(rogers_wireless_dashboard_page.validateTotalDataBucket(), 
-							"Total data bucket includes plan, paid OTTs, paid MDTs, promotional (zero-rated) bonus OTT and MDTs info should be displayed", 
-							"Total data bucket includes plan, paid OTTs, paid MDTs, promotional (zero-rated) bonus OTT and MDTs info NOT displayed");
+       
         //Validate view details link
         reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(), 
 							"'Manage Data' page is displayed after click on view details link", 

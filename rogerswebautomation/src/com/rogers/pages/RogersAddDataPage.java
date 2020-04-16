@@ -26,6 +26,9 @@ public class RogersAddDataPage extends BasePageClass {
 	@FindBy (xpath = "//h2[@class='add-data-modal-title success-title']")
 	WebElement lblAddDataSuccess;
 	
+	@FindBy (xpath = "//span[contains(text(),'added!') or contains(text(),'ajout!')]")
+	WebElement msgDataAddedVolume;
+	
 	@FindBy (xpath = "//rss-add-data//button[@title='Close' or @title='Fermer']")
 	WebElement btnCloseAddData;	
 	
@@ -77,6 +80,25 @@ public class RogersAddDataPage extends BasePageClass {
 	 */
 	public boolean verifyAddDataSuccessMsgIsDisplayed() {
 		return reusableActions.isElementVisible(lblAddDataSuccess);
+	}
+	
+	/**
+	 * Get the added data volume from success message.
+	 * @return double, the value of added data.
+	 */
+	public double getAddedDataVolume() {
+		String strMsgAddedData = reusableActions.getWhenReady(msgDataAddedVolume, 20).getText();
+
+		double addedDataVolume = 0;
+		if (strMsgAddedData.contains("GB")||strMsgAddedData.contains("Go")) {
+			String strVolume = strMsgAddedData.substring(0, strMsgAddedData.indexOf("G")-1).trim();
+			addedDataVolume = Double.parseDouble(strVolume);
+		}
+		if (strMsgAddedData.contains("MB")||strMsgAddedData.contains("Mo")) {
+			String strVolume = strMsgAddedData.substring(0, strMsgAddedData.indexOf("M")-1).trim();
+			addedDataVolume = Double.parseDouble(strVolume)/1000;
+		}
+		return addedDataVolume;
 	}
 	
 	/**

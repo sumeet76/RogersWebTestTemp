@@ -37,6 +37,9 @@ public class RogersManageDataPage extends BasePageClass {
 	@FindBy (xpath = "//a[@title='Back to usage dashboard' or @title='Retour au tableau de bord']")
 	WebElement btnBackFromManageUsers;
 
+	@FindBy (xpath = "//p[@class='text-md text-semi add-title mt-15']")
+	WebElement addedDataInDataManagePage;
+
 
 	/**
 	 * Verifies View Details link 

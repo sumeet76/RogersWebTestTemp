@@ -69,7 +69,7 @@ public class RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE_Add
         					"Data delayed by 12 hours message is displayed", 
         					"Data delayed by 12 hours message is NOT displayed");
         reporter.reportLogWithScreenshot("Wireless dashboard page."); 
-        reporter.softAssert(rogers_wireless_dashboard_page.validateTotalDataBucket(), 
+        reporter.softAssert(rogers_wireless_dashboard_page.verifyTotalDataBucket(), 
 							"Total data bucket includes plan, paid OTTs, paid MDTs, promotional (zero-rated) bonus OTT and MDTs info should be displayed", 
 							"Total data bucket includes plan, paid OTTs, paid MDTs, promotional (zero-rated) bonus OTT and MDTs info NOT displayed");
         reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(), 
