@@ -50,7 +50,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *
  **/
 
-public class RogersCH_TC_034_IginteTV_DoublePlayBuyTest extends BaseTestClass {
+public class RogersCH_TC_001_IginteTV_DoublePlayBuyTest extends BaseTestClass {
 
     @Test
     public void checkBuyDigitalTVOffer() {
