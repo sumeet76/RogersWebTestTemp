@@ -71,7 +71,7 @@ public class RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurcha
 		reporter.reportLogWithScreenshot("Speed passes");
 		rogers_manage_data_page.clkBackOnManageDataUsagePage();
 		
-		rogers_wireless_dashboard_page.clkBtnSpeedPass();
+		
 		int totalAddedSpeedPass = common_business_flows.addSpeedPass();
 
 		reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(),

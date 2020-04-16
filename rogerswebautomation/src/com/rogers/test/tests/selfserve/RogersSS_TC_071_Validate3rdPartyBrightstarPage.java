@@ -21,7 +21,7 @@ public class RogersSS_TC_071_Validate3rdPartyBrightstarPage extends BaseTestClas
     
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.config.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			startSession(TestDataHandler.config.getRogersURL()+TestDataHandler.config.getRepairClaimUrl(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
 			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
 		}
 	   	
@@ -33,8 +33,7 @@ public class RogersSS_TC_071_Validate3rdPartyBrightstarPage extends BaseTestClas
 	
 	
     @Test
-    public void validate3rdPartyBrightstarPage() {
-    	rogers_home_page.clkSignIn();
+    public void validate3rdPartyBrightstarPage() {    
     	String strUsername = TestDataHandler.tc495271.getUsername();
     	String strPassword = TestDataHandler.tc495271.getPassword();
         String strUrlExpected = TestDataHandler.config.getPhoneRepairUrl();

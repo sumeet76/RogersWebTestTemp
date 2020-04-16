@@ -64,8 +64,8 @@ public class RogersManageDataPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyAddedDataInDataDetails(int listAddedData, int intCountOfSpeedPassBefore) {
-		int totalSpeedPass = getAllExistingSpeedPassCount();
-		return totalSpeedPass == listAddedData + intCountOfSpeedPassBefore;
+		int totalSpeedPass1 = getAllExistingSpeedPassCount();
+		return totalSpeedPass1 == listAddedData + intCountOfSpeedPassBefore;
 		
 	}
 
