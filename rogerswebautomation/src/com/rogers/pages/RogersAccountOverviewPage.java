@@ -130,6 +130,19 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@id,'menu_container_0')]//button")
 	List<WebElement> lstAccountBans;
 
+	@FindBy(xpath = "//div[@class='account-ctn']")
+	List<WebElement> lstAccountInPopUp;
+	
+
+	/**
+	 * Checks if more than one ban present in the pop up window, the count will be more than 1
+	 * @return true if more than one ban present else false
+	 * @author Saurav.Goyal
+	 */
+	public boolean isMoreThanOneBanPresentInThePopUp() {
+		return (lstAccountInPopUp.size()>1);
+	} 
+	
 	/**
 	 * To remove cookie after login successfully
 	 * @param cookieName, string cookie name;
@@ -247,20 +260,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void selectAccount(String strAccountNumber) {
-		//TODO
-		/*
-		 * reusableActions.clickIfAvailable(
-		 * (By.xpath("//button[@class='ute-secondLevelNav-bar-txt']//span[text()='" +
-		 * strAccountNumber + "']")), 20);
-		 */
-		if(reusableActions.isElementVisible(popUpMultipleAccounts, 20))
-		reusableActions.clickIfAvailable((By.xpath("//span[@class='account-number-txt']/span[text()='" + strAccountNumber + "']")), 20);
-		/*
-		 * reusableActions.clickIfAvailable( (By.
-		 * xpath("//button[@class='md-button md-ink-ripple']//span[@data-translate='\" + strAccountNumber + \"']"
-		 * )), 20); //button[@class='md-button
-		 * md-ink-ripple']//span[@data-translate='930681739']
-		 */	
+			reusableActions.clickIfAvailable((By.xpath("//span[@class='account-number-txt']/span[text()='" + strAccountNumber + "']")), 20);
 	}
 	
 	/**

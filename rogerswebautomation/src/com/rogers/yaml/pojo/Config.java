@@ -20,6 +20,7 @@ public class Config {
 	private String solarisPath;
 	private String loginFlow;
 	private String hupURL;
+	private String legacyPath;
 	
 	/**
 	 * @return the rogersURL
@@ -33,20 +34,7 @@ public class Config {
 	public void setLoginFlow(String loginFlow) {
 		this.loginFlow = loginFlow;
 	}
-	
-	/**
-	 * @return the rogersURL
-	 */
-	public String getSolarisPath() {
-		return solarisPath;
-	}
-	/**
-	 * @param rogersURL the rogersURL to set
-	 */
-	public void setSolarisPath(String solarisPath) {
-		this.solarisPath = solarisPath;
-	}
-	
+		
 	/**
 	 * @return the language
 	 */
@@ -240,5 +228,29 @@ public class Config {
 	 */
 	public void setHupURL(String hupURL) {
 		this.hupURL = hupURL;
+	}
+	/**
+	 * @return the legacyPath
+	 */
+	public String getLegacyPath() {
+		return legacyPath;
+	}
+	/**
+	 * @param legacyPath the legacyPath to set
+	 */
+	public void setLegacyPath(String legacyPath) {
+		this.legacyPath = legacyPath;
+	}
+	/**
+	 * @return the solarisPath
+	 */
+	public String getSolarisPath() {
+		return solarisPath;
+	}
+	/**
+	 * @param solarisPath the solarisPath to set
+	 */
+	public void setSolarisPath(String solarisPath) {
+		this.solarisPath = solarisPath;
 	}
 }

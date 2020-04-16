@@ -11,7 +11,7 @@
 	<test name="TC01-Validate user able to perform AAL on SL with Fin offer" enabled="false">
 	<classes>
 			<class
-				name="com.rogers.buyflow.test.tests.RogersBFA_TC01_AAL_SingleLine_FinancePlan_Test">
+				name="com.rogers.test.tests.buyflows.RogersBFA_TC01_AAL_SingleLine_FinancePlan_Test">
 			</class>
 		</classes>
 	</test>
@@ -19,7 +19,7 @@
 	<test name="TC02-Validate user able to perform AAL on ML with Fin offer" enabled="false">
 	<classes>
 			<class
-				name="com.rogers.buyflow.test.tests.RogersBFA_TC02_AAL_MultiLine_FinancePlan_Test">
+				name="com.rogers.test.tests.buyflows.RogersBFA_TC02_AAL_MultiLine_FinancePlan_Test">
 			</class>
 		</classes>
 	</test>
@@ -27,7 +27,7 @@
 	<test name="TC03-Validate user able to perform Main line PPC on Existing Finance account" enabled="false">
 	<classes>
 			<class
-				name="com.rogers.buyflow.test.tests.RogersBFA_TC03_PPC_onMainLine_FinanceAccount_Test">
+				name="com.rogers.test.tests.buyflows.RogersBFA_TC03_PPC_onMainLine_FinanceAccount_Test">
 			</class>
 		</classes>
 	</test>
@@ -35,7 +35,7 @@
 	<test name="TC04-Validate user able to perform HUP with PPC on main line (finance offers) keep existing plan" enabled="false">
 	<classes>
 			<class
-				name="com.rogers.buyflow.test.tests.RogersBFA_TC04_HUP_onMainLine_KeepExistingPlan_Test">
+				name="com.rogers.test.tests.buyflows.RogersBFA_TC04_HUP_onMainLine_KeepExistingPlan_Test">
 			</class>
 		</classes>
 	</test>
@@ -43,7 +43,7 @@
 	<test name="TC05-Validate user able to perform HUP with PPC for an existing account with device balance using financial offers (fin to fin) for 24 months with $0 upfront" enabled="false">
 	<classes>
 			<class
-				name="com.rogers.buyflow.test.tests.RogersBFA_TC05_HUP_withDeviceBalance_FinToFin_24Months0Upfront_Test">
+				name="com.rogers.test.tests.buyflows.RogersBFA_TC05_HUP_withDeviceBalance_FinToFin_24Months0Upfront_Test">
 			</class>
 		</classes>
 	</test>
@@ -51,7 +51,7 @@
 	<test name="TC06-Validate user able to perform Deeplink HUP for Keep existing plan" enabled="false">
 	<classes>
 			<class
-				name="com.rogers.buyflow.test.tests.RogersBFA_TC06_HUP_Deeplink_FinanceAmount_KeepExistingPlan_Test">
+				name="com.rogers.test.tests.buyflows.RogersBFA_TC06_HUP_Deeplink_FinanceAmount_KeepExistingPlan_Test">
 			</class>
 		</classes>
 	</test>
@@ -59,15 +59,15 @@
 	<test name="TC07-Validate user able to perform HUP with PPC for an existing account (Edge to Fin Offer )" enabled="false">
 	<classes>
 			<class
-				name="com.rogers.buyflow.test.tests.RogersBFA_TC07_HUP_withPPC_EdgeToFin_Test">
+				name="com.rogers.test.tests.buyflows.RogersBFA_TC07_HUP_withPPC_EdgeToFin_Test">
 			</class>
 		</classes>
 	</test>
 		
-	<test name="TC08-Validate user able to perform PPC on Additional line  - Existing Finance Account" enabled="true">
+	<test name="TC08-Validate user able to perform PPC on Additional line  - Existing Finance Account" enabled="false">
 	<classes>
 			<class
-				name="com.rogers.buyflow.test.tests.RogersBFA_TC08_PPC_onAdditionalLine_FinanceAccount_Test">
+				name="com.rogers.test.tests.buyflows.RogersBFA_TC08_PPC_onAdditionalLine_FinanceAccount_Test">
 			</class>
 		</classes>
 	</test>
@@ -75,7 +75,7 @@
 	<test name="TC09-Validate user able to perform HUP with PPC on Additional line - Existing account (Edge to Fin Offer)" enabled="false">
 	<classes>
 			<class
-				name="com.rogers.buyflow.test.tests.RogersBFA_TC09_HUP_onAdditionalLine_EdgeToFin_Test">
+				name="com.rogers.test.tests.buyflows.RogersBFA_TC09_HUP_onAdditionalLine_EdgeToFin_Test">
 			</class>
 		</classes>
 	</test>

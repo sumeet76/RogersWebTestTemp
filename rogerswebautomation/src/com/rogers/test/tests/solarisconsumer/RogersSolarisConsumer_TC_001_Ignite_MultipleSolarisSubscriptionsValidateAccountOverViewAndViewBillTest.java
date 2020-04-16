@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 
 import org.apache.http.client.ClientProtocolException;
+import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -32,7 +33,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersSolarisConsumer_TC_001_Ignite_MultipleSolarisSubscriptionsValidateAccountOverViewAndViewBillTest extends BaseTestClass {
 
-    @Test
+	@Test
     public void validateMultipleServicesAndViewBill() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
@@ -45,17 +46,21 @@ public class RogersSolarisConsumer_TC_001_Ignite_MultipleSolarisSubscriptionsVal
  		reporter.reportLogWithScreenshot("Skip popup");
  		rogers_login_page.clkSkipIFrame();
  		rogers_login_page.switchOutOfSignInIFrame();
+ 		Assert.assertTrue(rogers_account_overview_page.isMoreThanOneBanPresentInThePopUp(), "More than one Ban is not displayed in the pop up");
+ 		reporter.reportLogWithScreenshot("Two subscriptions(Multiple Services)are shown up");
  		rogers_account_overview_page.selectAccount(TestDataHandler.solarisMultipleSubscriptions.accountDetails.getBan());
 		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.clickAccount();
-        reporter.reportLogWithScreenshot("Account overlay is displayed");
-        reporter.softAssert(rogers_account_overview_page.isMoreThanOneBanPresent(), 
-                             "More than one Ban is present", 
-                             "More than one Ban not displayed in the Account Submenu");
-        reporter.reportLogWithScreenshot("Two subscriptions(Multiple Services)are shown up");
-        rogers_account_overview_page.selectAnAccountFromTheAccountDropDown();
-        rogers_account_overview_page.clickOverview();
+		/*
+		 * rogers_account_overview_page.clickAccount();
+		 * reporter.reportLogWithScreenshot("Account overlay is displayed");
+		 * reporter.softAssert(rogers_account_overview_page.isMoreThanOneBanPresent(),
+		 * "More than one Ban is present",
+		 * "More than one Ban not displayed in the Account Submenu"); reporter.
+		 * reportLogWithScreenshot("Two subscriptions(Multiple Services)are shown up");
+		 * rogers_account_overview_page.selectAnAccountFromTheAccountDropDown();
+		 * rogers_account_overview_page.clickOverview();
+		 */
 		rogers_account_overview_page.clickViewYourBill();
 		reporter.reportLogWithScreenshot("Billing and payment page.");
 		if (!rogersBillingPage.verifyIfAccountHasNoBill()) {

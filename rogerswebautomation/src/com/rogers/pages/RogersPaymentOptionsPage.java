@@ -227,9 +227,9 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	/**
 	 * click on  the payment confirmation button
 	 * @author chinnarao.vattam
+	 * Updated by saurav.goyal as per discussion with chinnarao.vattam
 	 */
 	public void clkPaymentConfirm() {
-		reusableActions.waitForElementTobeClickable(btnPaymentConfirm, 180);
 		reusableActions.getWhenReady(btnPaymentConfirm, 180).click();
 	}
 	
