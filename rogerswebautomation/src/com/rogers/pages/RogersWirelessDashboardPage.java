@@ -204,17 +204,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy (xpath = "//div[@class='add-data']")
 	WebElement lnkAddDataTopUp;
 	
-	@FindBy (xpath = "//select[@formcontrolname='selectedDataTopup']/parent::div")
-	WebElement divSelectAddDataOpt;
-		
-	@FindBy (xpath = "//span[@translate='purchaseData.purchasingPlansConfirmationModal.title']")
-	WebElement lblConfirmDataPurchaseTitle;
-	
 	@FindBy(xpath = "//ins[@translate='plans.addOns']")
 	WebElement divAddOns;
-		
-	@FindBy(xpath = "//div[@class='addon-list']")
-	WebElement divAddOnsList;
 	
 	@FindBy(xpath = "//span[@class='textRight']")
 	WebElement lbltotalDataDisplayedBelowBarRightSide;
@@ -272,12 +263,6 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	
 	@FindBy (xpath = "//div[@class='add-data']/span[contains(text(),'Speed Pass') or contains(text(),'Accès Rapido')]")
 	WebElement btnSpeedPass;
-	
-	@FindBy (xpath = "//div[@class='selected-plan-details-item selected']/div")
-	WebElement maxSpeedDataToBeAdded;
-	
-	@FindBy (xpath = "//p[@class='text-md text-semi add-title mt-15']")
-	WebElement addedDataInDataManagePage;
 
 	@FindBy(xpath = "//h2[contains(text(),'My Device') or contains(text(),'Mon appareil')]")
 	WebElement headerMyDevice;
@@ -992,9 +977,31 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @return true if element is displayed else false
 	 * @author Mirza.Kamran
 	 */
-	public boolean validateTotalDataBucket() {
+	public boolean verifyTotalDataBucket() {
 	
 		return reusableActions.isElementVisible(lblTotalDataBucket, 30);
+	}
+	
+	/**
+	 * verify the added data is reflected in total data volume after successfully add data.
+	 * @param origDataVolume, the total data volume before add data.
+	 * @param addedDataVolume, the added data volume
+	 * @return true if the added data is reflected in total data volume
+	 * @author ning.xue
+	 */
+	public boolean verifyAddedDataReflectedInTotalDataBucket(double origDataVolume, double addedDataVolume) {
+		double newTotalDataVolume = this.getTotalDataVolume();
+		return newTotalDataVolume == origDataVolume + addedDataVolume;
+	}
+	
+	/**
+	 * To get the total data volume in total data bucket for SE accounts.
+	 * @return double, the value of total data.
+	 * @author ning.xue
+	 */
+	public double getTotalDataVolume() {
+		String strTotalData = reusableActions.getWhenReady(lblTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded, 30).getText().trim();
+		return Double.parseDouble(strTotalData.substring(0, strTotalData.length()-2).trim());
 	}
 
 	/**
@@ -1588,7 +1595,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	}
 
 	/**
-	 * Gets the total plan data
+	 * Gets the total plan data for Infinite plan.
 	 * @return int value of total shared data
 	 * @author Mirza.Kamran
 	 */

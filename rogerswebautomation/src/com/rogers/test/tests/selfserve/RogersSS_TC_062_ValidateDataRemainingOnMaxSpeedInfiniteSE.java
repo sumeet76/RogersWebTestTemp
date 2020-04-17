@@ -63,7 +63,7 @@ public class RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE extends B
        reporter.softAssert(rogers_wireless_dashboard_page.verifyDataRemainingOutOfTotalDataBucket(), 
 				"Data remaining out of Total data bucket info should be displayed", 
 				"Data remaining out of Total data bucket info is not displayed.");
-		reporter.softAssert(rogers_wireless_dashboard_page.validateTotalDataBucket(), 
+		reporter.softAssert(rogers_wireless_dashboard_page.verifyTotalDataBucket(), 
 						"Max Speed data remaining is displayed with the total data remaining included (Speed pass) if any", 
 						"Max Speed data remaining seems NOT displayed with the total data remaining included (Speed pass)");
 		//6. Total data should be displayed with GB

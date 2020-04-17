@@ -64,7 +64,7 @@ public class RogersSS_TC_057_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDa
 		reporter.softAssert(rogers_wireless_dashboard_page.verifyDataRemainingOutOfTotalDataBucket(), 
 						"Data remaining out of Total data bucket info should be displayed", 
 						"Data remaining out of Total data bucket info is not displayed.");
-		reporter.softAssert(rogers_wireless_dashboard_page.validateTotalDataBucket(), 
+		reporter.softAssert(rogers_wireless_dashboard_page.verifyTotalDataBucket(), 
 						"Total data bucket includes plan, paid OTTs, paid MDTs, promotional (zero-rated) bonus OTT and MDTs info should be displayed", 
 						"Total data bucket includes plan, paid OTTs, paid MDTs, promotional (zero-rated) bonus OTT and MDTs info NOT displayed");
 
