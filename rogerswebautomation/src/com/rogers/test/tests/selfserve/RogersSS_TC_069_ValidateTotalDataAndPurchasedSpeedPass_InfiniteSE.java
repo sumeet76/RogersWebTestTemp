@@ -68,10 +68,10 @@ public class RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE e
 			"'Data details' page is displayed after click on view details link", 
 			"'Data details' page is NOT displayed after click on view details link");  
 	    //- Plan data: should be displayed (shared data across all lines)
-		reporter.hardAssert(rogers_wireless_dashboard_page.verifyPlanDataIsDisplayed(), 
+		reporter.hardAssert(rogers_manage_data_page.verifyPlanDataIsDisplayed(), 
 				"Plan data is displayed", 
 				"Plan data is NOT displayed");
-		int totalSharedDataDisplayedInPlanDataSection = rogers_wireless_dashboard_page.getTotalPlanData();
+		int totalSharedDataDisplayedInPlanDataSection = rogers_manage_data_page.getTotalPlanData();
 		int countOfExistSpeedPass = rogers_manage_data_page.getAllExistingSpeedPassCount();		
 		reporter.reportLogWithScreenshot("Speed passes");
 		
@@ -90,7 +90,7 @@ public class RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE e
 		int countOfExistSpeedPassTotalGB = rogers_manage_data_page.getAllExistingSpeedPassTotalGB();	
 		rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
 		reporter.reportLogWithScreenshot("Total data view");
-		reporter.softAssert(rogers_wireless_dashboard_page.verifyTotalDataInDataDetailsWithMaxSpeedAndTotalOfSpeedPasses(countOfExistSpeedPassTotalGB,totalSharedDataDisplayedInPlanDataSection), 
+		reporter.softAssert(rogers_manage_data_page.verifyTotalDataInDataDetailsWithMaxSpeedAndTotalOfSpeedPasses(countOfExistSpeedPassTotalGB,totalSharedDataDisplayedInPlanDataSection), 
 						"Total Data: displays data plan on Max speed AND total added speed passes separately ", 
 						"Total Data: NOT displays data plan on Max speed AND total added speed passes separately ");	
 
