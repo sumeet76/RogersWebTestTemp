@@ -185,6 +185,7 @@ public class TestDataHandler {
 	}
 	
 	private static void buyFlowsDataInit() {
+		config =  YamlHandler.getBFAConfig();
 		bfaConfig =  YamlHandler.getBFAConfig();
 		bfaPaymentInfo = YamlHandler.getBFAPaymentDetails();
     	testCase01 = YamlHandler.getAALdata("tc01AAL");
