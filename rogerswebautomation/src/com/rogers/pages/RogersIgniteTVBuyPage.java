@@ -1,5 +1,6 @@
 package com.rogers.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -51,7 +52,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='buttons-block hidden-xs']//ins[@translate='global.modals.rhpSplitterModal.portMyNumber']")
 	WebElement btnKeepMyNumber;
 	
-	@FindBy(xpath = "//button[@class='continue-addon ds-button ds-focus ds-active -primary -large']")
+	//@FindBy(xpath = "//button[@class='continue-addon ds-button ds-focus ds-active -primary -large']")
+	@FindBy(xpath = "//button[contains(@class,'continue-addon ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large')]")
 	WebElement btnHomePhoneContinue;
 	
 	@FindBy(xpath = "//label[@for='have4K-yes']")
@@ -67,10 +69,11 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath ="//div[@class='mt-auto w-100']//button[@aria-label='Add Rogers Ignite Starter Bundle to cart']//span[@translate='global.cta.addToCart']")
 	WebElement btnSolarisStarterPackageNew;	
 	
-	@FindBy(xpath = "//p[@id='ds-modal-title-1']")
+	@FindBy(xpath = "//p[contains(@id,'ds-modal-title')]")
 	WebElement popImportantInformation;
 	   
-	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -primary -large']")
+	//@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -primary -large']")
+	@FindBy(xpath = "//div[contains(@class,'ds-modal__footer mb-24 mb-sm-40')]//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
 	WebElement btnIUnderstand;	  
 	
 	@FindBy(xpath ="//label[contains(@for,'global.modals.activateIgniteHomePhoneModal.messageForNewNumber')]")
@@ -80,7 +83,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath ="(//div[@class='a-radio'])[2]//span")
 	WebElement rdoOptNewPhoneEnable;
 	
-	@FindBy(xpath ="//button[@class='ds-button ds-focus ds-active -primary -large']")
+	//@FindBy(xpath ="//button[@class='ds-button ds-focus ds-active -primary -large']")
+	@FindBy(xpath ="//div[@class='ds-modal__footer mb-24 mb-sm-40']//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
 	WebElement btnOptPhone;
 	
 	@FindBy(xpath ="//h2[@ute-content-source='atg']//span[contains(normalize-space(.),'Ignite Starter') or contains(normalize-space(.),'Élan Découverte')]/ancestor::div[@class='bundle-offer__tile']")
@@ -143,27 +147,43 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -primary -large']//span[@class='ds-button__copy w-100']")
 	WebElement okayUpgradingToIgnitebundelsModal;
 	
-	@FindBy(xpath = "//button[contains(@aria-label,'Starter Bundle to cart')]//ancestor::div[contains(@class,'d-flex')]/preceding-sibling::section//h2[@class='gwp-header']")
-	WebElement gwpHeader;
-	
-	@FindBy(xpath = "//i[@class='ng-tns-c46-26 rch-icon-chevron-down']")
+	@FindBy(xpath = "//i[contains(@class,'rch-icon-chevron-down')]")
 	WebElement downChevronCartSummary;
 	
-	@FindBy(xpath = "//div[contains(@class,'mini-cart-ss__body')]//tr[@class='cms-promotions-gwp ng-tns-c46-27 ng-star-inserted']")
-	WebElement gwpYourCart;
+	@FindBy(xpath = "//i[contains(@class,'rch-icon-chevron-up')]")
+	WebElement upChevronCartSummary;
 	
-	@FindBy(xpath ="//button[contains(@aria-label,'Starter Bundle')]//ancestor::div[@class='row']//following-sibling::div[contains(@class,'dsa-rate-card__detail')]//span[@class='ds-icon rds-icon-chevron-down']")
-	WebElement chevronSolarisStarterPackageNew;	
+	@FindBy(xpath = "//div[contains(@class,'mini-cart-ss__body')]//tr[contains(@class,'cms-promotions-gwp ng-tns-c')]")
+	WebElement gwpYourCart;
 	
 	@FindBy(xpath ="//input[contains(@id,'messageForExistingNumber')]//following-sibling::label")
 	WebElement rdoKeepExistingPhoneNumber;
 	
 	/**
+	 * Click Starter package button for anonymous customer
+	 * @param	bundleName : name of the bundle package
+	 * @author Saurav.Goyal
+	 */
+	public void selectSolarisBundlePackage(String bundleName) {
+		String xpathBundlePackage="//div[@class='mt-auto w-100']//button[contains(@aria-label,'"+ bundleName +"')]//span[@translate='global.cta.addToCart']";
+		reusableActions.clickWhenReady(By.xpath(xpathBundlePackage), 120);
+	}
+	
+	/**
 	 * To click on the chevron of your cart
 	 * @author Saurav.Goyal
 	 */
-	public void clkChevronYourCart() {
-		reusableActions.getWhenReady(downChevronCartSummary, 60).click();
+	public void clkChevronDownYourCart() {
+		reusableActions.waitForElementVisibility(downChevronCartSummary, 120);
+		reusableActions.clickWhenReady(downChevronCartSummary, 120);
+	}
+	
+	/**
+	 * To click on the chevron of your cart
+	 * @author Saurav.Goyal
+	 */
+	public void clkChevronUpYourCart() {
+		reusableActions.getWhenReady(upChevronCartSummary, 120).click();
 	}
 	
 	/**
@@ -178,22 +198,34 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	
 	/**
 	 * To verify Upgrading To Ignite bundels Modal
+	 * @param	bundleName : name of the bundle package
 	 * @return true if the modal is available else return false
 	 * @author Saurav.Goyal
 	 */
-	public boolean verifyGWPForStarterPackage() {
-			reusableActions.waitForElementVisibility(gwpHeader, 120);
-			return	reusableActions.isElementVisible(gwpHeader);
+	public boolean verifyGWPForStarterPackage(String bundleName) {
+		String xpathBundlePackage = "//button[contains(@aria-label,'"+ bundleName +"')]//ancestor::div[contains(@class,'d-flex')]/preceding-sibling::section//p";
+		return	reusableActions.isElementVisible(By.xpath(xpathBundlePackage), 120);
 	}
 		
 	/**
 	 * To click on the chevron of the starter bundel package
+	 * @param	bundleName : name of the bundle package
 	 * @author Saurav.Goyal
 	 */
-	public void clkChevronSolarisStarterPackageNew() {
-		reusableActions.getWhenReady(chevronSolarisStarterPackageNew, 60).click();
+	public void clkChevronSolarisStarterPackageNew(String bundleName) {
+		String xpathBundlePackage = "//button[contains(@aria-label,'"+ bundleName +"')]//ancestor::div[@class='row']//following-sibling::div[contains(@class,'dsa-rate-card__detail')]//span[@class='ds-icon rds-icon-chevron-down']";
+		reusableActions.getWhenReady(By.xpath(xpathBundlePackage), 120).click();
 	}
 	
+	/**
+	 * To click on the chevron of any given bundle package
+	 * @param	bundleName : give the name of the bundle as parameter
+	 * @author Saurav.Goyal
+	 */
+	public void clkChevronForBundle(String bundleName) {
+		String bundleXpath = "//button[contains(@aria-label,'"+ bundleName +"')]//ancestor::div[@class='row']//following-sibling::div[contains(@class,'dsa-rate-card__detail')]//span[@class='ds-icon rds-icon-chevron-down']";
+		reusableActions.getWhenReady(By.xpath(bundleXpath), 120).click();
+	}
 	
 	/**
 	 * To verify Upgrading To Ignite bundels Modal
@@ -210,7 +242,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkOkayUpgradingToIgnitebundelsModal() {
-		reusableActions.getWhenReady(okayUpgradingToIgnitebundelsModal, 60).click();
+		reusableActions.getWhenReady(okayUpgradingToIgnitebundelsModal, 120).click();
 	}
 	
 	
@@ -468,7 +500,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clickOptPhone() {
-		reusableActions.clickWhenReady(btnOptPhone, 20);
+		reusableActions.clickWhenReady(btnOptPhone, 120);
 	}
 	
 	public void clickChannels() {

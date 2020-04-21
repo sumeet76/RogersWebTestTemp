@@ -16,7 +16,9 @@
 			<!-- <class
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_014_IgniteTV_AnonymousCustomerTriplePlayPortInTest"></class>
 			<class
-				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_013_IginteTV_AnonymousCustomer_BuyingSolarisTriplePlayNativeOldToOldConstructTest"></class> -->
+				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_013_IginteTV_AnonymousCustomer_BuyingSolarisTriplePlayNativeOldToOldConstructTest"></class> 
+			<class
+				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_001_HTOMigrationSignInTest"></class> -->
 			<class
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_011_IgniteRHP_ValidateRHPDasboardAndLinksTest"></class>
 			<class
@@ -41,12 +43,16 @@
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_004_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest"></class>
 			<class
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_006_IginteTV_ExistingCustomerBuySolarisDoublePlayChangeInstallationDateMonthlyBillTest"></class>
-			<!-- <class
-				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_001_HTOMigrationSignInTest"></class> -->
 			<class
-				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_004_ExistingLegacyCustomer_PortIn_CartAbandonTest"></class>
+				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_004_ExistingLegacyCustomer_PortIn_CartAbandonTest"></class> 
 			<class
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_001_GWP_ExistingLegacyCustomer_DTVCustomer_SameServiceAndBrowserProvinceAddressTest"></class>
+			<class
+				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_002_GWP_ExistingLegacyCustomer_InternetDTVCustomer_SameServiceAndBrowserProvinceAddressTest"></class>
+			<class
+				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_003_GWP_ExistingLegacyCustomer_SHMDTVCustomer_SameServiceAndBrowserProvinceAddressTest"></class>
+			<class
+				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_004_GWP_ExistingLegacyCustomer_DTVRHPCustomer_SameServiceAndBrowserProvinceAddressTest"></class>
 		</classes>
 	</test>
 
@@ -59,7 +65,9 @@
 			<!-- <class
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_014_IgniteTV_AnonymousCustomerTriplePlayPortInTest"></class>
 			<class
-				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_013_IginteTV_AnonymousCustomer_BuyingSolarisTriplePlayNativeOldToOldConstructTest"></class> -->
+				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_013_IginteTV_AnonymousCustomer_BuyingSolarisTriplePlayNativeOldToOldConstructTest"></class> 
+			<class
+				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_001_HTOMigrationSignInTest"></class> -->
 			<class
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_011_IgniteRHP_ValidateRHPDasboardAndLinksTest"></class>
 			<class
@@ -84,12 +92,16 @@
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_004_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest"></class>
 			<class
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_006_IginteTV_ExistingCustomerBuySolarisDoublePlayChangeInstallationDateMonthlyBillTest"></class>
-			<!-- <class
-				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_001_HTOMigrationSignInTest"></class> -->
 			<class
-				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_004_ExistingLegacyCustomer_PortIn_CartAbandonTest"></class>
+				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_004_ExistingLegacyCustomer_PortIn_CartAbandonTest"></class> 
 			<class
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_001_GWP_ExistingLegacyCustomer_DTVCustomer_SameServiceAndBrowserProvinceAddressTest"></class>
+			<class
+				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_002_GWP_ExistingLegacyCustomer_InternetDTVCustomer_SameServiceAndBrowserProvinceAddressTest"></class>
+			<class
+				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_003_GWP_ExistingLegacyCustomer_SHMDTVCustomer_SameServiceAndBrowserProvinceAddressTest"></class>
+			<class
+				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_004_GWP_ExistingLegacyCustomer_DTVRHPCustomer_SameServiceAndBrowserProvinceAddressTest"></class>
 		</classes>
 	</test>
 </suite>

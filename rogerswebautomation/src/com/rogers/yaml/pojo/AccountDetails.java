@@ -41,7 +41,26 @@ public class AccountDetails {
 	private String month;
 	private String imeiNumber;
 	private String dateOfBirth;
+	private String bundelPackageNameFr;
+	private String bundelPackageNameEn;
 	
+	
+	public String getBundelPackageNameFr() {
+		return bundelPackageNameFr;
+	}
+
+	public void setBundelPackageNameFr(String bundelPackageNameFr) {
+		this.bundelPackageNameFr = bundelPackageNameFr;
+	}
+
+	public String getBundelPackageNameEn() {
+		return bundelPackageNameEn;
+	}
+
+	public void setBundelPackageNameEn(String bundelPackageNameEn) {
+		this.bundelPackageNameEn = bundelPackageNameEn;
+	}
+
 	public String getDateOfBirth() {
 		return dateOfBirth;
 	}

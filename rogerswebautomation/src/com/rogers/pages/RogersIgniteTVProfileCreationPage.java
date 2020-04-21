@@ -49,8 +49,8 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	
 	@FindBy(xpath = "//button[@data-target='#miniCollapse']")
 	WebElement downChevronYourCart;
-
-	@FindBy(xpath = "//div[@class='mini-body']//tr[@class='cms-promotions-gwp ng-tns-c46-27 ng-star-inserted']")
+	
+	@FindBy(xpath = "//div[@class='mini-body']//div[contains(@ng-bind-html,'$root.gwpDetails')]")
 	WebElement gwpYourCart;
 	
 	/**
@@ -105,11 +105,12 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	}
 	
 	/**
-	 * To click on the chevron on the profile creation page
+	 * To click on the chevron on the TV profile creation page
 	 * @author Saurav.Goyal
 	 */
 	public void clkChevronYourCart() {
-		reusableActions.getWhenReady(downChevronYourCart, 60).click();
+		reusableActions.waitForElementVisibility(downChevronYourCart, 120);
+		reusableActions.getWhenReady(downChevronYourCart, 120).click();
 	}
 
 	/**

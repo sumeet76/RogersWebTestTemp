@@ -313,6 +313,7 @@ public class BaseTestClass {
 			rogers_legacy_bundle_buy_page = new RogersLegacyBundleBuyPage(driver);
 			rogers_tech_install_page = new RogersTechInstallPage(driver);
 			rogers_payment_options_page = new RogersPaymentOptionsPage(driver);
+			rogers_igniteTV_credit_check_page = new RogersIgniteTVCreditCheckPage(driver);
 			
 		case "connectedhome_IgniteLogin":
 			
@@ -356,8 +357,13 @@ public class BaseTestClass {
 			rogers_order_review_page = new RogersOrderReviewPage(driver);
 			rogers_solaris_tv_channels_and_themepacks_page = new RogersSolarisTVChannelsAndThemepacksPage(driver);
 			rogers_register_page = new RogersRegisterPage(driver);
+			rogers_igniteTV_profile_creation_page = new RogersIgniteTVProfileCreationPage(driver);
 			rogers_internet_usage_page = new RogersInternetUsagePage(driver);
 			rogersBillingPage = new RogersBillingPage(driver);
+			rogers_tech_install_page = new RogersTechInstallPage(driver);
+			rogers_payment_options_page = new RogersPaymentOptionsPage(driver);
+			rogers_igniteTV_credit_check_page = new RogersIgniteTVCreditCheckPage(driver);
+			rogers_home_phone_selection_page = new RogersHomePhoneSelectionPage(driver);
 			break;
 			
 		case "buyflows":

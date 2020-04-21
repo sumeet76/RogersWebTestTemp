@@ -39,7 +39,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath ="//div[@class='self-install-concern']//input[@name='consent']")
 	WebElement chkTechInstalConsent;
 		
-	@FindBy(xpath ="//button[@class='ute-btn-primary']")
+	@FindBy(xpath ="//div[@class='buttons-block hidden-xs']//button[@class='ute-btn-primary']")
 	WebElement btnTechInstallContinue;
 	
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
@@ -57,10 +57,10 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ute-icon-calendar-icon']")
 	WebElement clkCalendarIcon;
 
-	@FindBy(xpath = "//button[@data-target='#miniCollapse']")
+	@FindBy(xpath = "//button[@class='knob collapsed']")
 	WebElement downChevronYourCart;
 
-	@FindBy(xpath = "//div[@class='mini-body']//tr[@class='cms-promotions-gwp ng-tns-c46-27 ng-star-inserted']")
+	@FindBy(xpath = "//div[@class='mini-body']//div[contains(@ng-bind-html,'$root.gwpDetails')]")
 	WebElement gwpYourCart;
 	
 	/**
@@ -68,7 +68,8 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkChevronYourCart() {
-		reusableActions.getWhenReady(downChevronYourCart, 60).click();
+		reusableActions.waitForElementVisibility(downChevronYourCart, 120);
+		reusableActions.getWhenReady(downChevronYourCart, 120).click();
 	}
 
 	/**
