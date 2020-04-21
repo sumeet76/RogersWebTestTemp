@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Cable Rogers Tests" parallel="tests" thread-count="1">
-	<parameter name="strBrowser" value="chrome" />
-	<parameter name="strLanguage" value="en" />
-	<parameter name="strGroupName" value="connectedhome_login" />
 	<listeners>
 		<listener
 			class-name="com.rogers.test.listeners.AnnotationTransformer" />
 	</listeners>
 
 	<test name="Cable rogers full suite">
+	<parameter name="strBrowser" value="chrome" />
+	<parameter name="strLanguage" value="en" />
+	<parameter name="strGroupName" value="connectedhome_login" />
 		<classes>
-			<class
+ 			<class
 				name="com.rogers.test.tests.connectedhome.RogersCH_TC_001_IginteTV_BuyBundleTest"></class>
 			<class
 				name="com.rogers.test.tests.connectedhome.RogersCH_TC_003_LegacyInternet_BuyInternetOfferTest"></class>
@@ -59,9 +59,9 @@
 				name="com.rogers.test.tests.connectedhome.RogersCH_TC_027_DigitalTV_TVPackageUpgradeTest"></class>
 			<class
 				name="com.rogers.test.tests.connectedhome.RogersCH_TC_028_IginteTV_ExistingSolarisCustomerBuyBundleWithNewAddressTest"></class>
-			<class
+			 <class
 				name="com.rogers.test.tests.connectedhome.RogersCH_TC_030_IginteTV_BuyIgniteStarterBundleTest"></class>
-			<class
+<!-- 			<class
 				name="com.rogers.test.tests.connectedhome.RogersCH_TC_031_IginteTV_TVPackagesOntarioTest"></class>
 			<class
 				name="com.rogers.test.tests.connectedhome.RogersCH_TC_032_IginteTV_TVPackagesNewBrunswickFootprintTest"></class>
@@ -74,7 +74,7 @@
 			<class
 				name="com.rogers.test.tests.connectedhome.RogersCH_TC_005_IginteTV_OldConstructor_ExistingSolarisChangeTVPackageTest"></class>
 			<class
-				name="com.rogers.test.tests.connectedhome.RogersCH_TC_006_IginteInternet_OldConstructor_ExistingSolarisChangeInternetPackageTest"></class>
+				name="com.rogers.test.tests.connectedhome.RogersCH_TC_006_IginteInternet_OldConstructor_ExistingSolarisChangeInternetPackageTest"></class> -->
 		    </classes>
 	   </test>
 

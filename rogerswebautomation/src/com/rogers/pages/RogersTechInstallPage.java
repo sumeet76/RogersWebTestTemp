@@ -193,7 +193,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkTechInstalConsent() {		
-		reusableActions.waitForElementInvisibility(popupLoadingFingers,120);
+		//reusableActions.waitForElementInvisibility(popupLoadingFingers,120);
 		reusableActions.javascriptScrollToBottomOfPage();
 		reusableActions.executeJavaScriptClick(chkTechInstalConsent);
 	}
@@ -205,6 +205,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 */
 	public void clkTechInstallContinue() {   
 		reusableActions.waitForElementTobeClickable(btnTechInstallContinue, 120);
+		reusableActions.javascriptScrollByVisibleElement(btnTechInstallContinue);
 		reusableActions.getWhenReady(btnTechInstallContinue, 120).click();
 	}
 

@@ -73,7 +73,7 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//label[contains(@class,'ds-formField_label')] ")
 	WebElement txaIgniteAddressLable;
 	
-	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c21-20')]//div[contains(@class,'ds-formField__inputContainer')]")
+	@FindBy(xpath = "//div[@class='input-search']//div[contains(@class,'ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white')]")
 	WebElement txaIgniteAddressContainer;	
 	
 	@FindBy(xpath = "//div[contains(@class,'ds-formField__inputContainer')]")
@@ -302,8 +302,8 @@ public class RogersHomePage extends BasePageClass {
 	 * @param strAddress address to check the service availability 
 	 * @author chinnarao.vattam
 	 */
-	public void setIgniteAddressLookupCovid(String strAddress) {
-		reusableActions.waitForElementVisibility(txaIgniteAddressContainer, 120);
+	public void setIgniteAddressLookupLearn(String strAddress) {
+		reusableActions.waitForElementVisibility(txaIgniteAddressContainer, 240);
 		reusableActions.getWhenReady(txaIgniteAddressContainer, 3).click();
 		reusableActions.getWhenReady(txaIgniteAddressLookup, 3).clear();
 		reusableActions.getWhenReady(txaIgniteAddressLookup, 3).sendKeys(strAddress);

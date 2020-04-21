@@ -84,7 +84,7 @@ public class RogersBFA_TC05_HUP_withDeviceBalance_FinToFin_24Months0Upfront_Test
 	@BeforeTest @Parameters({ "strBrowser", "strLanguage","strGroupName"})
 	public void beforeTest(String strBrowser, String strLanguage, String strGroupName,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.bfaConfig.getRogersURL(), TestDataHandler.bfaConfig.getBrowser(),TestDataHandler.bfaConfig.getLanguage(),strGroupName, method);
+		startSession(TestDataHandler.bfaConfig.getRogersURL(), strBrowser, strLanguage, strGroupName, method);
 	}
 
     @AfterTest(alwaysRun = true)

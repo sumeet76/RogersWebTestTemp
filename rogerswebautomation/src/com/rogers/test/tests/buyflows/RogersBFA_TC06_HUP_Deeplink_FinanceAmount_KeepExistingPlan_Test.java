@@ -76,7 +76,7 @@ public class RogersBFA_TC06_HUP_Deeplink_FinanceAmount_KeepExistingPlan_Test ext
 	@BeforeTest @Parameters({ "strBrowser", "strLanguage","strGroupName"})
 	public void beforeTest(String strBrowser, String strLanguage, String strGroupName,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.bfaConfig.getBrowser(), TestDataHandler.bfaConfig.getBrowser(),TestDataHandler.bfaConfig.getLanguage(),strGroupName, method);
+		startSession(TestDataHandler.bfaConfig.getRogersURL(), strBrowser, strLanguage, strGroupName, method);
 	}
 
     @AfterTest(alwaysRun = true)

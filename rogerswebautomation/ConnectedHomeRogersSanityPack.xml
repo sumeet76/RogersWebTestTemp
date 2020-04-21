@@ -14,7 +14,7 @@
 		<classes>
 			<class
 				name="com.rogers.test.tests.connectedhome.RogersCH_TC_001_IginteTV_BuyBundleTest"></class>
-			<class
+			<!-- <class
 				name="com.rogers.test.tests.connectedhome.RogersCH_TC_004_LegacyBundle_BuyBundleOfferTest"></class>
 			<class
 				name="com.rogers.test.tests.connectedhome.RogersCH_TC_003_LegacyInternet_BuyInternetOfferTest"></class>
@@ -32,7 +32,7 @@
 				name="com.rogers.test.tests.connectedhome.RogersCH_TC_023_LegacyRHP_ValidateRHPDashboardTest"></class>
 			<class
 				name="com.rogers.test.tests.connectedhome.RogersCH_TC_024_IgniteRHP_ValidateRHPDasboardTest"></class>
-		</classes>
+		 --></classes>
 	</test>
 
 </suite>
