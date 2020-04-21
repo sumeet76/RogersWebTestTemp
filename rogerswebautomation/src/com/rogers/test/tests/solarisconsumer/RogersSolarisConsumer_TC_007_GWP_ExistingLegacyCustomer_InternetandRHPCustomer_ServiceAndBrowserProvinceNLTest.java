@@ -52,8 +52,8 @@ import org.testng.annotations.Parameters;
 
 public class RogersSolarisConsumer_TC_007_GWP_ExistingLegacyCustomer_InternetandRHPCustomer_ServiceAndBrowserProvinceNLTest extends BaseTestClass {
 
-	@Test
-	public void checkCartAbandonNoPortinExistingLegacySignedinfromMyRogersTest() {
+	@Test @Parameters({"strLanguage"})
+	public void checkCartAbandonNoPortinExistingLegacySignedinfromMyRogersTest(String strLanguage) {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
@@ -75,16 +75,25 @@ public class RogersSolarisConsumer_TC_007_GWP_ExistingLegacyCustomer_Internetand
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");    
 		rogers_home_page.clkUseThisAddress();
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-		rogers_igniteTV_buy_page.clkChevronSolarisStarterPackageNew();
-		Assert.assertTrue(rogers_igniteTV_buy_page.verifyGWPForStarterPackage(), "GWP offer on starter package is not available");
-		rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
+		if(strLanguage.equalsIgnoreCase("fr")) {
+			rogers_igniteTV_buy_page.clkChevronForBundle(TestDataHandler.solarisConsumerGWPDigitalTV.getAccountDetails().getBundelPackageNameFr());
+			Assert.assertTrue(rogers_igniteTV_buy_page.verifyGWPForStarterPackage(TestDataHandler.solarisConsumerGWPDigitalTV.getAccountDetails().getBundelPackageNameFr()), "GWP offer on starter package is not available");
+			reporter.reportLogWithScreenshot("GWP promotion verified successfully in the cart");
+			rogers_igniteTV_buy_page.selectSolarisBundlePackage(TestDataHandler.solarisConsumerGWPDigitalTV.getAccountDetails().getBundelPackageNameFr());
+		}
+		else {
+			rogers_igniteTV_buy_page.clkChevronForBundle(TestDataHandler.solarisConsumerGWPDigitalTV.getAccountDetails().getBundelPackageNameEn());
+			Assert.assertTrue(rogers_igniteTV_buy_page.verifyGWPForStarterPackage(TestDataHandler.solarisConsumerGWPDigitalTV.getAccountDetails().getBundelPackageNameEn()), "GWP offer on starter package is not available");
+			reporter.reportLogWithScreenshot("GWP promotion verified successfully in the cart");
+			rogers_igniteTV_buy_page.selectSolarisBundlePackage(TestDataHandler.solarisConsumerGWPDigitalTV.getAccountDetails().getBundelPackageNameEn());
+		}
 		reporter.reportLogWithScreenshot("Launched the information popup");
 		rogers_igniteTV_buy_page.verifyImportantInformation();
 		rogers_igniteTV_buy_page.clkIUnderstand();
 		reporter.reportLogWithScreenshot("Launched the port-in popup");
 		rogers_igniteTV_buy_page.clkConfirmActivateLater();
 		reporter.reportLogWithScreenshot("Launched the cart summary page");
-		rogers_igniteTV_buy_page.clkChevronYourCart();
+		rogers_igniteTV_buy_page.clkChevronDownYourCart();
 		reporter.reportLogWithScreenshot("Clicked chevron");
 		Assert.assertTrue(rogers_igniteTV_buy_page.verifyGWPYourCartPromotion(), "GWP promotion on your cart is not available");
 		rogers_igniteTV_buy_page.set4KTV(); 
