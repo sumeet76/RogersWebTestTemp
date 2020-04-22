@@ -13,13 +13,18 @@
 		<parameter name="strLanguage" value="EN" />
 		<parameter name="strGroupName" value="connectedhome_login" />
 		<classes>
-			<!-- <class
+			 <class
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_014_IgniteTV_AnonymousCustomerTriplePlayPortInTest"></class>
 			<class
+
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_013_IginteTV_AnonymousCustomer_BuyingSolarisTriplePlayNativeOldToOldConstructTest"></class> 
 			<class
-				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_001_HTOMigrationSignInTest"></class> -->
+				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_001_HTOMigrationSignInTest"></class> 
 			<class
+
+				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_013_IginteTV_AnonymousCustomer_BuyingSolarisTriplePlayNativeOldToOldConstructTest"></class> 
+			<class
+
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_011_IgniteRHP_ValidateRHPDasboardAndLinksTest"></class>
 			<class
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_003_ExistingSolarisCustomer_ResetParentalControlsAndPin"></class>
@@ -44,7 +49,12 @@
 			<class
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_006_IginteTV_ExistingCustomerBuySolarisDoublePlayChangeInstallationDateMonthlyBillTest"></class>
 			<class
+
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_004_ExistingLegacyCustomer_PortIn_CartAbandonTest"></class> 
+
+	<class
+				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_004_ExistingLegacyCustomer_PortIn_CartAbandonTest"></class> 
+
 			<class
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_001_GWP_ExistingLegacyCustomer_DTVCustomer_SameServiceAndBrowserProvinceAddressTest"></class>
 			<class
@@ -55,19 +65,20 @@
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_004_GWP_ExistingLegacyCustomer_DTVRHPCustomer_SameServiceAndBrowserProvinceAddressTest"></class>
 		</classes>
 	</test>
-
+ 
 	<test
 		name="Rogers connected home Solaris Consumer Tests chrome - French">
 		<parameter name="strBrowser" value="chrome" />
 		<parameter name="strLanguage" value="fr" />
 		<parameter name="strGroupName" value="connectedhome_login" />
 		<classes>
-			<!-- <class
+			<class
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_014_IgniteTV_AnonymousCustomerTriplePlayPortInTest"></class>
 			<class
+
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_013_IginteTV_AnonymousCustomer_BuyingSolarisTriplePlayNativeOldToOldConstructTest"></class> 
 			<class
-				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_001_HTOMigrationSignInTest"></class> -->
+				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_001_HTOMigrationSignInTest"></class> 
 			<class
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_011_IgniteRHP_ValidateRHPDasboardAndLinksTest"></class>
 			<class
@@ -93,6 +104,8 @@
 			<class
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_006_IginteTV_ExistingCustomerBuySolarisDoublePlayChangeInstallationDateMonthlyBillTest"></class>
 			<class
+				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_001_HTOMigrationSignInTest"></class>
+			<class
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_004_ExistingLegacyCustomer_PortIn_CartAbandonTest"></class> 
 			<class
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_001_GWP_ExistingLegacyCustomer_DTVCustomer_SameServiceAndBrowserProvinceAddressTest"></class>
@@ -103,5 +116,5 @@
 			<class
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_004_GWP_ExistingLegacyCustomer_DTVRHPCustomer_SameServiceAndBrowserProvinceAddressTest"></class>
 		</classes>
-	</test>
+	</test> 
 </suite>

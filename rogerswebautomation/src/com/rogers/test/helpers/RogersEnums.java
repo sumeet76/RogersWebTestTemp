@@ -13,7 +13,10 @@ public class RogersEnums {
 	  };
 	  
 	public enum GroupName {
-		connectedhome_anonymous,
+		connectedhome_legacyanonymous,
+		connectedhome_igniteanonymous,
+		connectedhome_legacylogin,
+		connectedhome_ignitelogin,
 		connectedhome_login,
 		selfserve_login,
 		selfserve

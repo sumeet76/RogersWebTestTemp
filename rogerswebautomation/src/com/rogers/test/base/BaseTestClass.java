@@ -184,19 +184,19 @@ public class BaseTestClass {
 			captcha_bypass_handlers.captchaBypassURLSelfserveFlows(strUrl, strLanguage);
 			break;
 			
-		case "connectedhome_LegacyAnonymous":				
+		case "connectedhome_legacyanonymous":				
 			captcha_bypass_handlers.captchaBypassURLLegacyAnonymousBuyFlows(strUrl, strLanguage); 
 			break;	
 			
-		case "connectedhome_IgniteAnonymous":				
+		case "connectedhome_igniteanonymous":				
 			captcha_bypass_handlers.captchaBypassURLIgniteAnonymousBuyFlows(strUrl, strLanguage); 
 			break;
 			
-		case "connectedhome_LegacyLogin":
+		case "connectedhome_legacylogin":
 			captcha_bypass_handlers.captchaBypassURLLegacyLoginFlows(strUrl, strLanguage);
 			break; 
 
-		case "connectedhome_IgniteLogin":
+		case "connectedhome_ignitelogin":
 			captcha_bypass_handlers.captchaBypassURLIgniteLoginFlows(strUrl, strLanguage);
 			break; 
 			
@@ -261,7 +261,7 @@ public class BaseTestClass {
 			rogers_recover_pass_or_name = new RogersRecoverPassOrNamePage(getDriver());
 			break;
 			
-		case "connectedhome_LegacyAnonymous":
+		case "connectedhome_legacyanonymous":
 			
 			rogers_home_page = new RogersHomePage(driver);
 			rogers_buy_page = new RogersBuyPage(driver);
@@ -276,7 +276,7 @@ public class BaseTestClass {
 			rogers_payment_options_page = new RogersPaymentOptionsPage(driver);
 			break;
 			
-		case "connectedhome_IgniteAnonymous":
+		case "connectedhome_igniteanonymous":
 			
 			rogers_home_page = new RogersHomePage(driver);
 			rogers_buy_page = new RogersBuyPage(driver);
@@ -296,7 +296,7 @@ public class BaseTestClass {
 			rogers_home_phone_port_in_page = new RogersHomePhonePortInPage(driver);
 			break;
 			
-		case "connectedhome_LegacyLogin":
+		case "connectedhome_legacylogin":
 			
 			rogers_home_page = new RogersHomePage(driver);
 			rogers_buy_page = new RogersBuyPage(driver);
@@ -315,7 +315,7 @@ public class BaseTestClass {
 			rogers_payment_options_page = new RogersPaymentOptionsPage(driver);
 			rogers_igniteTV_credit_check_page = new RogersIgniteTVCreditCheckPage(driver);
 			
-		case "connectedhome_IgniteLogin":
+		case "connectedhome_ignitelogin":
 			
 			rogers_home_page = new RogersHomePage(driver);
 			rogers_buy_page = new RogersBuyPage(driver);

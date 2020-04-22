@@ -14,6 +14,10 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	public RogersIgniteTVProfileCreationPage(WebDriver driver) {
 		super(driver);
 	}
+	
+	@FindBy(xpath = "//ins[@translate='global.label.createProfile']")
+	WebElement txtProfile;
+	
 	@FindBy(xpath = "//input[@id='email1']")
 	WebElement txtEmail;
 	
@@ -59,14 +63,15 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyProfilePage() {
-		return reusableActions.isElementVisible(txtEmail);
+		//reusableActions.waitForElementInvisibility(popupLoadingFingers,100);
+		return reusableActions.isElementVisible(txtProfile);
 	}
 	
 	/**
 	 * Set dynamic email and confirm email on profile page
 	 * @author Chinnarao.Vattam
 	 */
-	public void setEmail() {
+	public void setEmail() {		
 		String strEmail = FormFiller.generateEmail();
 		reusableActions.getWhenReady(txtEmail, 60).clear();
 		reusableActions.getWhenReady(txtEmail,10).sendKeys(strEmail);

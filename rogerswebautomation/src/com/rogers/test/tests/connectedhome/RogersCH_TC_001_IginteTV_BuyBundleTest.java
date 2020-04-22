@@ -70,13 +70,13 @@ public class RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
-        rogers_igniteTV_buy_page.verifyOptNewPhone();
+ /*       rogers_igniteTV_buy_page.verifyOptNewPhone();
         reporter.reportLogWithScreenshot("Launched the port-in popup");
         rogers_igniteTV_buy_page.selectOptNewPhone();
         rogers_igniteTV_buy_page.clickOptPhone();
         rogers_igniteTV_buy_page.verifyHomePhone();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
-        rogers_igniteTV_buy_page.clkHomePhone();
+        rogers_igniteTV_buy_page.clkHomePhone();*/
         rogers_igniteTV_buy_page.verify4KTV();
         reporter.reportLogWithScreenshot("Launched the cart summary page");
         rogers_igniteTV_buy_page.set4KTV();
@@ -110,11 +110,11 @@ public class RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
         rogers_igniteTV_credit_check_page.clkCreditConsent();
         reporter.reportLogWithScreenshot("Passport Details");
        rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
-             rogers_home_phone_selection_page.verifyPhoneNumberPage();
+/*      rogers_home_phone_selection_page.verifyPhoneNumberPage();
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
         rogers_home_phone_selection_page.clkPhoneNumberGenerator(); 
         rogers_home_phone_selection_page.clkChosePhoneNumber(); 
-        rogers_home_phone_selection_page.clkContinueHomePhoneSelection(); 
+        rogers_home_phone_selection_page.clkContinueHomePhoneSelection(); */
         rogers_tech_install_page.verifyTechInstallPage(); 
         reporter.reportLogWithScreenshot("Launched the tech install page");
         rogers_tech_install_page.clkTechInstallSlot();
@@ -125,7 +125,7 @@ public class RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
         reporter.reportLogWithScreenshot("Launched the payment options page");
         rogers_payment_options_page.selectPaymentMode("pacc");
         rogers_payment_options_page.switchToCreditCardIFrame();
-        rogers_payment_options_page.setCreditCardNumberIFrame(TestDataHandler.rogersPaymentInfo.getCreditCardDetails().getNumber());
+        rogers_payment_options_page.setCreditCardNumberIFrame(TestDataHandler.paymentInfo.getCreditCardDetails().getNumber());
         rogers_payment_options_page.switchOutOfCreditCardIFrame();
         rogers_payment_options_page.setCVV();
         rogers_payment_options_page.selectExpiryMonth();
@@ -162,13 +162,13 @@ public class RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
-        rogers_igniteTV_buy_page.verifyOptNewPhone();
+/*        rogers_igniteTV_buy_page.verifyOptNewPhone();
         reporter.reportLogWithScreenshot("Launched the port-in popup");
         rogers_igniteTV_buy_page.selectOptNewPhone();
         rogers_igniteTV_buy_page.clickOptPhone();
         rogers_igniteTV_buy_page.verifyHomePhone();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
-        rogers_igniteTV_buy_page.clkHomePhone();
+        rogers_igniteTV_buy_page.clkHomePhone();*/
         rogers_igniteTV_buy_page.verify4KTV();
         reporter.reportLogWithScreenshot("Launched the cart summary page");
         rogers_igniteTV_buy_page.set4KTV();
@@ -204,9 +204,9 @@ public class RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
         rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
         rogers_home_phone_selection_page.verifyPhoneNumberPage();
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        rogers_home_phone_selection_page.clkPhoneNumberGenerator(); 
+   /*     rogers_home_phone_selection_page.clkPhoneNumberGenerator(); 
         rogers_home_phone_selection_page.clkChosePhoneNumber(); 
-        rogers_home_phone_selection_page.clkContinueHomePhoneSelection();
+        rogers_home_phone_selection_page.clkContinueHomePhoneSelection();*/
         rogers_tech_install_page.verifyTechInstallPage(); 
         reporter.reportLogWithScreenshot("Launched the tech install page");
         rogers_tech_install_page.clkTechInstallSlot();
@@ -216,7 +216,7 @@ public class RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
         reporter.reportLogWithScreenshot("Launched the payment options page");
         rogers_payment_options_page.selectPaymentMode("pacc");
         rogers_payment_options_page.switchToCreditCardIFrame();
-        rogers_payment_options_page.setCreditCardNumberIFrame(TestDataHandler.rogersPaymentInfo.getCreditCardDetails().getNumber());
+        rogers_payment_options_page.setCreditCardNumberIFrame(TestDataHandler.paymentInfo.getCreditCardDetails().getNumber());
         rogers_payment_options_page.switchOutOfCreditCardIFrame();
         rogers_payment_options_page.setCVV();
         rogers_payment_options_page.selectExpiryMonth();

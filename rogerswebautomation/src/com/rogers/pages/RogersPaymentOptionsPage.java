@@ -113,8 +113,8 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void setCreditCardNumberIFrame(String strAccountNumber) {
-		reusableActions.clickWhenVisible(txtCardNumber);
-		reusableActions.getWhenReady(txtCardNumber).sendKeys(strAccountNumber);
+		reusableActions.getWhenReady(txtCardNumber,90);
+		reusableActions.getWhenReady(txtCardNumber,30).sendKeys(strAccountNumber);
 	}
 	
 	/**

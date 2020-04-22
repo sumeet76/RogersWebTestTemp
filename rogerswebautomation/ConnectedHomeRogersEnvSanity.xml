@@ -3,7 +3,7 @@
 <suite name="Cable Rogers Tests" parallel="tests" thread-count="1">
 <parameter name="strBrowser" value="chrome"/>
 <parameter name="strLanguage" value="en"/>
-<parameter name="strGroupName" value="connectedhome_login"/>
+<parameter name="strGroupName" value="connectedhome_igniteanonymous"/>
 
 <listeners>
       <listener class-name="com.rogers.test.listeners.AnnotationTransformer"/>
@@ -11,7 +11,7 @@
 
 <test name="Ignite RHP Validation Test">
 <classes>				             
-<class name="com.rogers.test.tests.connectedhome.RogersCH_TC_024_IgniteRHP_ValidateRHPDasboardTest"></class>
+<class name="com.rogers.test.tests.connectedhome.RogersCH_TC_034_IginteTV_DoublePlayBuyTest"></class>
 </classes>          																					
 </test>
 				
