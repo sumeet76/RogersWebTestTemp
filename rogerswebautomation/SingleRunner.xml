@@ -8,23 +8,18 @@
       <listener class-name="com.rogers.test.listeners.AnnotationTransformer"/>
 </listeners> 		
 
-
-
-
-
+<!--  
 <test name="RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurchasedSpeedPass">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurchasedSpeedPass"></class>
 </classes>          																					
 </test>
+-->
 
-
-<!-- 
-<test name="RogersSS_TC_071_Validate3rdPartyBrightstarPage">
+<test name="RogersSS_TC_067_ValidateDataUsageInfiniteSEReducedSpeeds">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_071_Validate3rdPartyBrightstarPage"></class>
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_067_ValidateDataUsageInfiniteSEReducedSpeeds"></class>
 </classes>          																					
 </test>
- -->
-					
+				
 </suite>
