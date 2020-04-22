@@ -74,8 +74,14 @@ public class TestDataHandler {
 	public static AccountData solarisConsumerPortInCartAbandon;
 	public static AccountData solarisConsumerGWPDigitalTV;
 	public static AccountData solarisConsumerGWPInternetDTV;
-	public static AccountData solarisConsumerGWPRhpDtv;
+	public static AccountData solarisConsumerGWPRhpDtv ;
 	public static AccountData solarisConsumerGWPShmDtv;
+	public static AccountData solarisConsumerGWPDtvandWireless;
+	public static AccountData solarisConsumerGWPLegacyInternet;
+	public static AccountData solarisConsumerGWPInternetandRHP;
+	public static AccountData solarisConsumerGWPInternetSHM;
+	public static AccountData solarisConsumerGWPRhp;
+	public static AccountData solarisConsumerGWPRhpShm;
 	public static AccountData solarisHTOMigrationSignIn;
 	public static AALData testCase01;
 	public static AALData testCase02;
@@ -121,6 +127,12 @@ public class TestDataHandler {
 		solarisConsumerGWPInternetDTV=YamlHandler.getCableAccountData("solarisConsumerGWPInternetDTV");
 		solarisConsumerGWPShmDtv = YamlHandler.getCableAccountData("solarisConsumerGWPDTVSHM");
 		solarisConsumerGWPRhpDtv = YamlHandler.getCableAccountData("solarisConsumerGWPDTVRHP");
+		solarisConsumerGWPDtvandWireless = YamlHandler.getCableAccountData("solarisConsumerGWPDtvandWireless");
+		solarisConsumerGWPLegacyInternet = YamlHandler.getCableAccountData("solarisConsumerGWPLegacyInternet");
+		solarisConsumerGWPInternetandRHP = YamlHandler.getCableAccountData("solarisConsumerGWPInternetandRHP");
+		solarisConsumerGWPInternetSHM = YamlHandler.getCableAccountData("solarisConsumerGWPInternetSHM");
+		solarisConsumerGWPRhp = YamlHandler.getCableAccountData("solarisConsumerGWPRhp");
+		solarisConsumerGWPRhpShm = YamlHandler.getCableAccountData("solarisConsumerGWPRhpShm");
 		
     	//Legacy Internet test data
     	legacyInternetAccount = YamlHandler.getCableAccountData("LegacyInternetAccount"); 
