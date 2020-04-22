@@ -375,27 +375,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='data-usage-bar-background']")
 	WebElement divUsageBar;
 	
-	//SE infinite view details page
-	
-	@FindBy(xpath = "//p[text()=' Plan Data ' or contains(text(),'Données du forfait')]")
-	WebElement headerPlanDataOnDataDetailsPage;
-	
-	@FindBy(xpath = "//p[text()=' Unlimited data in your plan ' or contains(text(),'Données illimitées avec votre forfait')]")
-	WebElement headerUnlimitedDataInYourPlanOnDataDetailsPage;
-	
-	@FindBy(xpath = "//p[text()='Reduced speeds thereafter' or text()='La vitesse est réduite ensuite']/ancestor::td")
-	WebElement lblShareableMaxSpeedData;
-	
-	@FindBy(xpath = "//p[text()=' Total Data ' or contains(text(),'Données totales')]")
-	WebElement headerTotalDataViewDataDetails;
-	
-	@FindBy(xpath = "//span[text()=' shareable max speed data ' or contains(text(),'de données à vitesse maximale à partager')]/ancestor::p")
-	WebElement lblTotalDataMessageInViewDetails;
-	
-	@FindBy(xpath = "//p[contains(text(),' Speed Pass') or contains(text(),'Accès Rapido de')]")
-	WebElement lblSpeedPassInTotalData;
-	
-	
+
 	/**
 	 * To click the link of lost or stolen device on wireless dashboard page
 	 * @author ning.xue
@@ -1565,47 +1545,6 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	}
 
 	/**
-	 * Verifies if the Plan data is displayed (shared data across all lines)
-	 * @return true if the elements exists else false
-	 * @author Mirza.Kamran
-	 */
-	public boolean verifyPlanDataIsDisplayed() {
-		return (reusableActions.isDisplayed(headerPlanDataOnDataDetailsPage)
-				&& reusableActions.isDisplayed(headerUnlimitedDataInYourPlanOnDataDetailsPage));
-	} 
-
-	/**
-	 * Verifies if the total data is displayed in data details
-	 * @return true if element is displayed else false
-	 * @param countOfExistSpeedPassTotalGB int, value for total gb added
-	 * @param totalSharedDataDisplayedInPlanDataSection, int, the value of total shared data
-	 * @author ning.xue
-	 */
-	public boolean verifyTotalDataInDataDetailsWithMaxSpeedAndTotalOfSpeedPasses(int countOfExistSpeedPassTotalGB, int totalSharedDataDisplayedInPlanDataSection) {
-		String strtotalShared = reusableActions.getWhenReady(lblTotalDataMessageInViewDetails).getText().split("GB|Go")[0].replace(",", ".");		
-		if (!reusableActions.isElementVisible(lblSpeedPassInTotalData, 10)) {
-			return false;
-		} else {
-			String strSpeedPassTotal = reusableActions.getWhenReady(lblSpeedPassInTotalData).getText();
-			String strTotalSpeedPass= strSpeedPassTotal.replaceAll("[^0-9]", "");
-			return (((int)Double.parseDouble(strtotalShared) == totalSharedDataDisplayedInPlanDataSection)
-					&& (Integer.parseInt(strTotalSpeedPass) == countOfExistSpeedPassTotalGB));
-		}
-
-	}
-
-	/**
-	 * Gets the total plan data for Infinite plan.
-	 * @return int value of total shared data
-	 * @author Mirza.Kamran
-	 */
-	public int getTotalPlanData() {	
-		String str = reusableActions.getWhenReady(lblShareableMaxSpeedData).getText().split("GB|Go")[0].replace(",", ".");
-		String numberOnly= str.replaceAll("[^0-9]", "");
-		return Integer.parseInt(numberOnly);
-	}
-	
-	/**
 	 * Clicks on Add Data
 	 * @author Mirza.Kamran
 	 */
@@ -1637,7 +1576,5 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		String strLast4Digit = strCtn.substring(strCtn.length()-4);
 		reusableActions.getWhenReady(By.xpath("//span[contains(text(),'" + strLast4Digit + "')]"), 20).click();
 	}
-
-
 	
 }

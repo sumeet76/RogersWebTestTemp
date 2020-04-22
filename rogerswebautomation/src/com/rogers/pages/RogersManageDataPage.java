@@ -17,7 +17,6 @@ public class RogersManageDataPage extends BasePageClass {
 
 	@FindBy (xpath = "//a[@title='View data details' or @title='Afficher les détails des données']")
 	WebElement lnkViewDetails;
-
 	
 	@FindBy (xpath = "//*[contains(text(),'Your data details') or contains(text(),'Détails de vos données')]")
 	WebElement headerYourDataDetails;
@@ -32,14 +31,34 @@ public class RogersManageDataPage extends BasePageClass {
 	List<WebElement> rowsAddedData;
 	
 	@FindBy (xpath = "//p[contains(text(),'Total Data') or contains(text(),'Données totales')]")
-	WebElement totalDataInDataDetail;
+	WebElement lblTotalDataInDataDetail;
 	
 	@FindBy (xpath = "//a[@title='Back to usage dashboard' or @title='Retour au tableau de bord']")
 	WebElement btnBackFromManageUsers;
 
 	@FindBy (xpath = "//p[@class='text-md text-semi add-title mt-15']")
-	WebElement addedDataInDataManagePage;
+	WebElement lblAddedDataInDataManagePage;	
 
+	//SE infinite view details page
+	
+	@FindBy(xpath = "//p[contains(text(),' Speed Pass') or contains(text(),'Accès Rapido de')]")
+	WebElement lblSpeedPassInTotalData;
+	
+	@FindBy(xpath = "//p[text()=' Plan Data ' or contains(text(),'Données du forfait')]")
+	WebElement headerPlanDataOnDataDetailsPage;
+	
+	@FindBy(xpath = "//p[text()=' Unlimited data in your plan ' or contains(text(),'Données illimitées avec votre forfait')]")
+	WebElement headerUnlimitedDataInYourPlanOnDataDetailsPage;
+	
+	@FindBy(xpath = "//p[text()='Reduced speeds thereafter' or text()='La vitesse est réduite ensuite']/ancestor::td")
+	WebElement lblShareableMaxSpeedData;
+	
+	@FindBy(xpath = "//p[text()=' Total Data ' or contains(text(),'Données totales')]")
+	WebElement headerTotalDataViewDataDetails;
+	
+	@FindBy(xpath = "//span[text()=' shareable max speed data ' or contains(text(),'de données à vitesse maximale à partager')]/ancestor::p")
+	WebElement lblTotalDataMessageInViewDetails;
+	
 
 	/**
 	 * Verifies View Details link 
@@ -103,7 +122,7 @@ public class RogersManageDataPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyTotalDataInDataDetails() {		
-		return reusableActions.isElementVisible(totalDataInDataDetail, 30);
+		return reusableActions.isElementVisible(lblTotalDataInDataDetail, 30);
 	}
 	
 
@@ -114,5 +133,47 @@ public class RogersManageDataPage extends BasePageClass {
 	public void clkBackOnManageDataUsagePage() {
 		reusableActions.clickWhenReady(btnBackFromManageUsers, 60);		
 	}
+	
+	/**
+	 * Verifies if the total data is displayed in data details
+	 * @return true if element is displayed else false
+	 * @param countOfExistSpeedPassTotalGB int, value for total gb added
+	 * @param totalSharedDataDisplayedInPlanDataSection, int, the value of total shared data
+	 * @author ning.xue
+	 */
+	public boolean verifyTotalDataInDataDetailsWithMaxSpeedAndTotalOfSpeedPasses(int countOfExistSpeedPassTotalGB, int totalSharedDataDisplayedInPlanDataSection) {
+		String strtotalShared = reusableActions.getWhenReady(lblTotalDataMessageInViewDetails).getText().split("GB|Go")[0].replace(",", ".");		
+		if (!reusableActions.isElementVisible(lblSpeedPassInTotalData, 10)) {
+			return false;
+		} else {
+			String strSpeedPassTotal = reusableActions.getWhenReady(lblSpeedPassInTotalData).getText();
+			String strTotalSpeedPass= strSpeedPassTotal.replaceAll("[^0-9]", "");
+			return (((int)Double.parseDouble(strtotalShared) == totalSharedDataDisplayedInPlanDataSection)
+					&& (Integer.parseInt(strTotalSpeedPass) == countOfExistSpeedPassTotalGB));
+		}
+
+	}
+
+	/**
+	 * Verifies if the Plan data is displayed (shared data across all lines)
+	 * @return true if the elements exists else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyPlanDataIsDisplayed() {
+		return (reusableActions.isDisplayed(headerPlanDataOnDataDetailsPage)
+				&& reusableActions.isDisplayed(headerUnlimitedDataInYourPlanOnDataDetailsPage));
+	} 
+
+	/**
+	 * Gets the total plan data for Infinite plan.
+	 * @return int value of total shared data
+	 * @author Mirza.Kamran
+	 */
+	public int getTotalPlanData() {	
+		String str = reusableActions.getWhenReady(lblShareableMaxSpeedData).getText().split("GB|Go")[0].replace(",", ".");
+		String numberOnly= str.replaceAll("[^0-9]", "");
+		return Integer.parseInt(numberOnly);
+	}
+	
 }
 
