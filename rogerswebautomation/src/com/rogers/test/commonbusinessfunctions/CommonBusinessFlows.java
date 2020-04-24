@@ -117,4 +117,18 @@ public class CommonBusinessFlows {
 
 	}
 
+	public void scrollToMiddleOfWebPage() {
+		baseTestClass.rogers_account_overview_page.scrollToMiddleOfPage();
+	}
+	
+
+	public void scrollToTopOfWebPage() {
+		baseTestClass.rogers_account_overview_page.scrollToTopOfPage();
+	}
+	
+
+	public void scrollToBottomOfWebPage() {
+		baseTestClass.rogers_account_overview_page.scrollToBottomOfPage();
+	}
+
 }

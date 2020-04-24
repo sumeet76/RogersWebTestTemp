@@ -25,6 +25,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy (xpath ="//div[@class='ute-dataManager-badgeList-individualBadge']")
 	WebElement btnCtnBadge;
 	
+	@FindBy (xpath ="//div[@class='ute-dataManager-badgeList-individualBadge']")
+	List<WebElement> lstCtnBadges;
+	
+	
 	@FindBy(xpath = "//div[@class='row modal-content-header']//button[@class='close']")
 	WebElement popUpInternetPopup;
 
@@ -622,5 +626,41 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void selectAnAccountFromTheAccountDropDown() {
 		reusableActions.getWhenReady(lstAccountBans.get(1), 120).click();
-	} 
+	}
+
+	/**
+	 * Checks if the no of CTNS are more than 5
+	 * @return true if the no of CTNS are more than 5
+	 * @author Mirza.Kamran
+	 */
+	public boolean isCTNMoreThanSix() {		
+		return lstCtnBadges.size()>5;
+	}
+
+	/**
+	 * Scroll to middle of page
+	 * @author Mirza.Kamran
+	 */
+	public void scrollToMiddleOfPage() {
+		reusableActions.javascriptScrollToMiddleOfPage();
+		
+	}
+
+	/**
+	 * Scroll to bottom of page
+	 * @author Mirza.Kamran
+	 */
+	public void scrollToBottomOfPage() {
+		reusableActions.javascriptScrollToBottomOfPage();
+		
+		
+	}
+
+	/**
+	 * Scroll to bottom of page
+	 * @author Mirza.Kamran
+	 */
+	public void scrollToTopOfPage() {
+		reusableActions.javascriptScrollToTopOfPage();
+	}
 }

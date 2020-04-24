@@ -374,8 +374,18 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//div[@class='data-usage-bar-background']")
 	WebElement divUsageBar;
-	
 
+	@FindBy(xpath = "//a[contains(@class,'btn_prev')]")
+	WebElement btnLeftScrollCTN;
+
+	@FindBy(xpath = "//a[contains(@class,'btn_next')]")
+	WebElement btnRightScrollCTN;
+	
+	@FindBy(xpath = "//span[@class='cta_no']/parent::span/parent::div")
+	List<WebElement> lstOfCTNBadgesOnDashboardPage;
+
+	
+	
 	/**
 	 * To click the link of lost or stolen device on wireless dashboard page
 	 * @author ning.xue
@@ -1575,6 +1585,52 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		
 		String strLast4Digit = strCtn.substring(strCtn.length()-4);
 		reusableActions.getWhenReady(By.xpath("//span[contains(text(),'" + strLast4Digit + "')]"), 20).click();
+	}
+
+	/**
+	 * The scrolls for CTNs is present
+	 * @return true if the scroll bar is present else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isScrollForCTNsPresent() {		
+		return (reusableActions.isElementVisible(btnLeftScrollCTN)
+				&& reusableActions.isElementVisible(btnRightScrollCTN));
+	}
+
+	/**
+	 * Clicks on the Next CTN scroll
+	 * @author Mirza.Kamran
+	 */
+	public void clkNextCTNScrollArrow() {
+		reusableActions.clickWhenReady(btnRightScrollCTN);
+		
+	}
+
+	/**
+	 * Checks if the 6th CTN badge is visible before we have scrolled right
+	 * @return true if not visible else false 
+	 * @author Mirza.Kamran
+	 */
+	public boolean isSixthCTNBadgeInVisibleBeforeScrollingOnDashBoard() {		
+		return !reusableActions.isElementVisible(lstOfCTNBadgesOnDashboardPage.get(5));
+	}
+
+	/**
+	 * Checks if the 6th CTN badge is visible after scrolled right
+	 * @return true if visible else false 
+	 * @author Mirza.Kamran
+	 */
+	public boolean isSixthCTNVisible() {		
+		return reusableActions.isElementVisible(lstOfCTNBadgesOnDashboardPage.get(5));
+	}
+
+	/**
+	 * Clicks the 6th CTN on dashboard page
+	 * @author Mirza.Kamran
+	 */
+	public void clkTheSixthCTN() {
+		reusableActions.clickWhenReady(lstOfCTNBadgesOnDashboardPage.get(5));
+		
 	}
 	
 }

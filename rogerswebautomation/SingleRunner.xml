@@ -8,18 +8,29 @@
       <listener class-name="com.rogers.test.listeners.AnnotationTransformer"/>
 </listeners> 		
 
-<!--  
+  
+
+<test name="RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhenCxHasMoreThan5CTN_SE">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhenCxHasMoreThan5CTN_SE"></class>
+</classes>          																					
+</test>
+
+
+
+<!-- 
+
+<test name="RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE"></class>
+</classes>          																					
+</test>
+	
 <test name="RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurchasedSpeedPass">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurchasedSpeedPass"></class>
 </classes>          																					
 </test>
--->
-
-<test name="RogersSS_TC_067_ValidateDataUsageInfiniteSEReducedSpeeds">
-<classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_067_ValidateDataUsageInfiniteSEReducedSpeeds"></class>
-</classes>          																					
-</test>
+	 -->
 				
 </suite>
