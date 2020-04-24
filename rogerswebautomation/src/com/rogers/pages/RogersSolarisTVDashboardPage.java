@@ -275,6 +275,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisTVPackage(String strPackageName) {
+		//TODO next logic
 		By packageNameLocator = By.xpath("//h4[contains(normalize-space(.),'" + strPackageName + "') or contains(normalize-space(.),'" + strPackageName + "')]/ancestor::div[contains(@class,'owl-item')]//ins[@translate='global.cta.select']");
 		reusableActions.waitForElementInvisibility(popupLoadingFingers,180);
 		reusableActions.getWhenReady(packageNameLocator, 90).click();

@@ -17,7 +17,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 
 /**
- * This class contains the test method to verify the gwp promotion for the legacy DTV customer on Rogers.com  
+ * This class contains the test method to verify the gwp promotion for the legacy internet and DTV  customer on Rogers.com  
  * 
  * @author Saurav.Goyal
  *
@@ -27,16 +27,16 @@ import org.testng.annotations.Parameters;
  *
  **/
 
-public class RogersSolarisConsumer_TC_001_GWP_ExistingLegacyCustomer_DTVCustomer_SameServiceAndBrowserProvinceAddressTest extends BaseTestClass {
+public class RogersSolarisConsumer_TC_002_GWP_ExistingLegacyCustomer_InternetDTVCustomer_SameServiceAndBrowserProvinceAddressTest extends BaseTestClass {
 
 	@Test @Parameters({"strLanguage"})
-	public void gwpTestDtvCustomer(String strLanguage) {
+	public void gwpTestInternetDTV(String strLanguage) {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setUsernameIFrame(TestDataHandler.solarisConsumerGWPDigitalTV.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.solarisConsumerGWPDigitalTV.getPassword());
+		rogers_login_page.setUsernameIFrame(TestDataHandler.solarisConsumerGWPInternetDTV.getUsername());
+		rogers_login_page.setPasswordIFrame(TestDataHandler.solarisConsumerGWPInternetDTV.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
 		reporter.reportLogWithScreenshot("Skip popup");
@@ -55,16 +55,16 @@ public class RogersSolarisConsumer_TC_001_GWP_ExistingLegacyCustomer_DTVCustomer
 		//rogers_home_page.clkUseThisAddress();
 		//rogers_home_page.clkNoThanks();
 		if(strLanguage.equalsIgnoreCase("fr")) {
-			rogers_igniteTV_buy_page.clkChevronForBundle(TestDataHandler.solarisConsumerGWPDigitalTV.getAccountDetails().getBundelPackageNameFr());
-			Assert.assertTrue(rogers_igniteTV_buy_page.verifyGWPForStarterPackage(TestDataHandler.solarisConsumerGWPDigitalTV.getAccountDetails().getBundelPackageNameFr()), "GWP offer on starter package is not available");
+			rogers_igniteTV_buy_page.clkChevronForBundle(TestDataHandler.solarisConsumerGWPInternetDTV.getAccountDetails().getBundelPackageNameFr());
+			Assert.assertTrue(rogers_igniteTV_buy_page.verifyGWPForStarterPackage(TestDataHandler.solarisConsumerGWPInternetDTV.getAccountDetails().getBundelPackageNameFr()), "GWP offer on starter package is not available");
 			reporter.reportLogWithScreenshot("GWP promotion verified successfully in the cart");
-			rogers_igniteTV_buy_page.selectSolarisBundlePackage(TestDataHandler.solarisConsumerGWPDigitalTV.getAccountDetails().getBundelPackageNameFr());
+			rogers_igniteTV_buy_page.selectSolarisBundlePackage(TestDataHandler.solarisConsumerGWPInternetDTV.getAccountDetails().getBundelPackageNameFr());
 		}
 		else {
-			rogers_igniteTV_buy_page.clkChevronForBundle(TestDataHandler.solarisConsumerGWPDigitalTV.getAccountDetails().getBundelPackageNameEn());
-			Assert.assertTrue(rogers_igniteTV_buy_page.verifyGWPForStarterPackage(TestDataHandler.solarisConsumerGWPDigitalTV.getAccountDetails().getBundelPackageNameEn()), "GWP offer on starter package is not available");
+			rogers_igniteTV_buy_page.clkChevronForBundle(TestDataHandler.solarisConsumerGWPInternetDTV.getAccountDetails().getBundelPackageNameEn());
+			Assert.assertTrue(rogers_igniteTV_buy_page.verifyGWPForStarterPackage(TestDataHandler.solarisConsumerGWPInternetDTV.getAccountDetails().getBundelPackageNameEn()), "GWP offer on starter package is not available");
 			reporter.reportLogWithScreenshot("GWP promotion verified successfully in the cart");
-			rogers_igniteTV_buy_page.selectSolarisBundlePackage(TestDataHandler.solarisConsumerGWPDigitalTV.getAccountDetails().getBundelPackageNameEn());
+			rogers_igniteTV_buy_page.selectSolarisBundlePackage(TestDataHandler.solarisConsumerGWPInternetDTV.getAccountDetails().getBundelPackageNameEn());
 		}
 		//rogers_igniteTV_buy_page.clkChevronForBundle("Ignite Flex 5");
 		reporter.reportLogWithScreenshot("Launched the information popup");
@@ -86,7 +86,7 @@ public class RogersSolarisConsumer_TC_001_GWP_ExistingLegacyCustomer_DTVCustomer
 		Assert.assertTrue(rogers_igniteTV_profile_creation_page.verifyGWPYourCartPromotion(), "GWP promotion on your cart is not available");
 		reporter.reportLogWithScreenshot("GWP promotion verified successfully in the cart");
 		rogers_igniteTV_profile_creation_page.clkChevronYourCart();
-		rogers_igniteTV_profile_creation_page.clkSubmitProfile();  
+		rogers_igniteTV_profile_creation_page.clkSubmitProfile();   
 		rogers_igniteTV_credit_check_page.verifyCreditEvalutionPage();
 		reporter.reportLogWithScreenshot("Launched the credit evalution page");
 		rogers_igniteTV_credit_check_page.clkChevronYourCart();
@@ -94,9 +94,9 @@ public class RogersSolarisConsumer_TC_001_GWP_ExistingLegacyCustomer_DTVCustomer
 		Assert.assertTrue(rogers_igniteTV_credit_check_page.verifyGWPYourCartPromotion(), "GWP promotion on your cart is not available");
 		reporter.reportLogWithScreenshot("GWP promotion verified successfully in the cart");
 		rogers_igniteTV_credit_check_page.clkChevronYourCart();
-		rogers_igniteTV_credit_check_page.selectDOBYearExistingCustomer(TestDataHandler.solarisConsumerGWPDigitalTV.getAccountDetails().getYear());
-		rogers_igniteTV_credit_check_page.selectDOBMonthExistingCustomer(TestDataHandler.solarisConsumerGWPDigitalTV.getAccountDetails().getMonth());
-		rogers_igniteTV_credit_check_page.selectDOBDayExistingCustomer(TestDataHandler.solarisConsumerGWPDigitalTV.getAccountDetails().getDate());
+		rogers_igniteTV_credit_check_page.selectDOBYearExistingCustomer(TestDataHandler.solarisConsumerGWPInternetDTV.getAccountDetails().getYear());
+		rogers_igniteTV_credit_check_page.selectDOBMonthExistingCustomer(TestDataHandler.solarisConsumerGWPInternetDTV.getAccountDetails().getMonth());
+		rogers_igniteTV_credit_check_page.selectDOBDayExistingCustomer(TestDataHandler.solarisConsumerGWPInternetDTV.getAccountDetails().getDate());
 		reporter.reportLogWithScreenshot("Entered the DOB details");
 		rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
 		reporter.reportLogWithScreenshot("Launched the tech install page");

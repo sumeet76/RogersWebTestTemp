@@ -27,6 +27,31 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
 	
+	@FindBy(xpath = "//button[@data-target='#miniCollapse']")
+	WebElement downChevronYourCart;
+
+	@FindBy(xpath = "//div[@class='mini-body']//div[contains(@ng-bind-html,'$root.gwpDetails')]")
+	WebElement gwpYourCart;
+
+	/**
+	 * To click on the chevron on the credit check page
+	 * @author Saurav.Goyal
+	 */
+	public void clkChevronYourCart() {
+		reusableActions.waitForElementVisibility(downChevronYourCart, 120);
+		reusableActions.getWhenReady(downChevronYourCart, 120).click();
+	}
+
+	/**
+	 * To verify gwp promotion in the credit check page
+	 * @return true if the promotion is available else return false
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyGWPYourCartPromotion() {
+		reusableActions.waitForElementVisibility(gwpYourCart, 120);
+		return	reusableActions.isElementVisible(gwpYourCart);
+	}
+	
 /**
  * To set a number to have phone number consisting the given number
  * @param strChosePhoneNumber a digit to get the phone number with the digit
