@@ -102,6 +102,11 @@ public class CommonBusinessFlows {
 
 	}
 	
+	/**
+	 * Add data flow, it will complete the flow from click "add data" button to click "purchase" button, 
+	 * but will not verify after click purchase.
+	 * @author ning.xue
+	 */
 	public void addDataFlow() {
 		baseTestClass.rogers_wireless_dashboard_page.clkAddData();
 		baseTestClass.reporter.hardAssert(baseTestClass.rogers_add_data_page.verifyAddDataOverlayIsDisplayed(), 

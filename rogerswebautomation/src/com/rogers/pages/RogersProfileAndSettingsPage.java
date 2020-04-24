@@ -102,8 +102,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	
 	@FindBy (xpath = "//strong")
 	WebElement btnChangePassSubmit;
-	
-	//TODO: xpath will add French later
+
 	@FindBy (xpath = "//p[contains(text(),'Password changed') or contains(text(),'mot de passe a été modifié')]")
 	WebElement lblChangePassSucMsg;
 	

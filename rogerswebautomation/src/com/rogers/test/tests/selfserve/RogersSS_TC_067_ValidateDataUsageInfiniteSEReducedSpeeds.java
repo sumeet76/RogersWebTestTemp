@@ -54,18 +54,16 @@ public class RogersSS_TC_067_ValidateDataUsageInfiniteSEReducedSpeeds extends Ba
 		
         if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc6269.getAccountDetails().getBan());
+            rogers_account_overview_page.selectAccount(TestDataHandler.tc67.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");     
        rogers_account_overview_page.clkMenuUsageAndService();
        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
        String strAccountNum = TestDataHandler.tc67.getAccountDetails().getCtn();
        String strLast4Digit = strAccountNum.substring(strAccountNum.length()-4);
-       if (rogers_account_overview_page.isAccountShowInDropDown(strLast4Digit)) {
-           rogers_account_overview_page.clkDropDownAccount(strLast4Digit);
-       } else {
+
        	rogers_account_overview_page.clkSubMenuWirelessUsage();
-       }
+
        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();  
                            
 		reporter.softAssert(rogers_wireless_dashboard_page.verifySpeedReducedMsg(),
