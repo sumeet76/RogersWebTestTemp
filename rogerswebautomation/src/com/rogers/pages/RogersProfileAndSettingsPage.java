@@ -33,7 +33,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//button[@class='primary-button state-btn state-btn-active']")
 	WebElement btnVerifyMe;
 	
-	@FindBy (xpath = "//button[contains(text(),'Continue to MyRogers')]")
+	@FindBy (xpath = "//button[contains(text(),'Continue to MyRogers') or contains(text(),'Continuer dans MonRogers')]")
 	WebElement btnContinueToMyRogers;
 	
 	@FindBy (xpath = "//div[@class='link-account ds-color-link']")
@@ -48,7 +48,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//rss-unlink-account//span[text()=' Unlink this account ' or text()=' Dissocier ce compte ']")
 	WebElement btnUnlinkThisAcct;
 
-	@FindBy (xpath = "//span[contains(text(),'Done') or contains(text(),'Terminer')]") 
+	@FindBy (xpath = "//span[contains(text(),'Done') or contains(text(),'Termin')]") 
 	WebElement btnUnlinkDone;
 	
 	@FindBy (xpath = "//a[@translate='nav.overview.header']")
@@ -70,10 +70,10 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	WebElement btnChangeUsernameSubmit;
 	
 	//TODO: xpath will add French
-	@FindBy (xpath = "//span[contains(text(),'Username changed')]")
+	@FindBy (xpath = "//span[contains(text(),'Username changed') or contains(text(),'Nom d’utilisateur modifié')]")
 	WebElement lblChangeUsernameSucMsg;
 	
-	@FindBy (xpath = "//button[@title='Done']")
+	@FindBy (xpath = "//button[@title='Done' or @title='Terminé']")
 	WebElement btnChangeUsernameDone;
 	
 	@FindBy (xpath = "//button[@title='Change password' or @title='Changer le mot de passe']")
@@ -142,7 +142,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//button[@title='Submit' or @title='Soumettre']")
 	WebElement btnAddContactEmailSubmit;
 	
-	@FindBy (xpath = "//div[@footer]//span[contains(text(),'Done') or contains(text(),'Terminer')]")
+	@FindBy (xpath = "//div[@footer]//span[contains(text(),'Done') or contains(text(),'Termin')]")
 	WebElement btnAddContactEmailDone;
 	
 	@FindBy (xpath = "//input[@id='homePhone']//parent::div")
@@ -157,7 +157,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//button[@title='Submit' or @title='Soumettre']")
 	WebElement btnUpdateHomeNumberSubmit;
 	
-	@FindBy (xpath = "//div[@footer]//span[contains(text(),'Done') or contains(text(),'Terminer')]")
+	@FindBy (xpath = "//div[@footer]//span[contains(text(),'Done') or contains(text(),'Termin')]")
 	WebElement btnUpdateHomeNumberDone;  
 	
 	@FindBy (xpath = "//input[@id='businessPhone']//parent::div")
@@ -172,10 +172,10 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//button[@title='Submit' or @title='Soumettre']")
 	WebElement btnAddBusinessNumberSubmit;
 	
-	@FindBy (xpath = "//div[@footer]//span[contains(text(),'Done') or contains(text(),'Terminer')]")
+	@FindBy (xpath = "//div[@footer]//span[contains(text(),'Done') or contains(text(),'Termin')]")
 	WebElement btnAddBusinessNumberDone;
 	
-	@FindBy (xpath = "//div[@footer]//span[contains(text(),'Done') or contains(text(),'Terminer')]")
+	@FindBy (xpath = "//div[@footer]//span[contains(text(),'Done') or contains(text(),'Termin')]")
 	WebElement btnChangeLanguageDone;
 
 	@FindBy(xpath = "//button[@title='Close' or @title='Fermer']")
@@ -217,7 +217,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy(xpath = "//button//span[text()=' Submit ']")
 	WebElement btnSubmit;
 
-	@FindBy(xpath ="//button/span/span[contains(text(),'Done') or contains(text(),'Terminer')]")
+	@FindBy(xpath ="//button/span/span[contains(text(),'Done') or contains(text(),'Termin')]")
 	WebElement btnChangeAddressDone;
 
 	@FindBy(xpath = "//div[text()='Billing address:' or text()='Adresse de facturation :']/parent::div/following-sibling::div[1]")

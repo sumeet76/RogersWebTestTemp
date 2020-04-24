@@ -125,10 +125,10 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy (xpath = "//img[@src='./assets/images/widget-loader.gif']")
 	WebElement imgLoading;
 	
-	@FindBy(xpath = "//p[contains(text(),'been updated.')]")
+	@FindBy(xpath = "//p[contains(text(),'been updated.') or contains(text(),'vocale a été modifié')]")
 	WebElement msgResetVoicemailPwdSuccess;
 	
-	@FindBy (xpath = "//span[contains(text(),'Done')]")
+	@FindBy (xpath = "//span[contains(text(),'Done') or contains(text(),'Termin')]")
 	WebElement btnResetVMPwdDone;
 	
 	@FindBy(xpath = "//button/span[@translate='internet_change']")
@@ -143,7 +143,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy (xpath = "//span[contains(text(),'phone repair claim') or contains(text(),'réparation de téléphone')]")
 	WebElement lnkTrackRepairClaim;
 	
-	@FindBy (xpath = "//button[@title='Continue to the site'] | //span[@translate='global.cta.continue']")
+	@FindBy (xpath = "//button[@title='Continue to the site' or contains(@title,'Continuer')] | //span[@translate='global.cta.continue']")
 	WebElement btnHlpYrPhoneContinue;
 	
 	@FindBy (xpath = "//ds-modal-container")

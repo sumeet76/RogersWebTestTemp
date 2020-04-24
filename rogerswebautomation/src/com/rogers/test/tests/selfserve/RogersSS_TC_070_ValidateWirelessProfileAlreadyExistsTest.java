@@ -26,17 +26,19 @@ public class RogersSS_TC_070_ValidateWirelessProfileAlreadyExistsTest extends Ba
                 	String strBan = TestDataHandler.tc040609.getAccountDetails().getBan();
                 	String strPostalCode = TestDataHandler.tc040609.getAccountDetails().getPostalcode();    	
             		rogers_login_page.switchToSignInIFrame();
-            		rogers_login_page.clickRegister();
-            		reporter.reportLogWithScreenshot("Register Now");
-            		
-            		/*=== commenting due  to changes in story DC-3077 
             		try {
-	            		rogers_register_page.clickRegisterNow();	                	
+            		rogers_login_page.clickRegister();            		
+            		reporter.reportLogWithScreenshot("Wireless Or Resedential Services");
+            		/*=== commenting due  to changes in story DC-3077 
+            		
+	            		rogers_register_page.clickRegisterNow();	
+	            		
+	            		                	*/
             		}catch (Exception e) {
 						//supressing firefox dead object error
 					}
-					*/
-            		reporter.reportLogWithScreenshot("Wireless Or Resedential Services");
+					
+            		
             		rogers_register_page.clickWirelessOrResidentialServices();
             		reporter.reportLogWithScreenshot("Set account number and Postal code");
             		rogers_register_page.setAccountNumber(strBan);

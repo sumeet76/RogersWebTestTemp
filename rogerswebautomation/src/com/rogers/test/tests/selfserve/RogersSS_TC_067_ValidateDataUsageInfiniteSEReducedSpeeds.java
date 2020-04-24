@@ -42,10 +42,10 @@ public class RogersSS_TC_067_ValidateDataUsageInfiniteSEReducedSpeeds extends Ba
     @Test
     public void validateDataUsageInfiniteSEReducedSpeeds() {
     	rogers_home_page.clkSignIn();
-    	String strUsername = TestDataHandler.tc67.getUsername();
+    	String strUsername = TestDataHandler.tc6269.getUsername();
     	rogers_login_page.switchToSignInIFrame();
         rogers_login_page.setUsernameIFrame(strUsername);
-        String strPassword = TestDataHandler.tc67.getPassword();    	
+        String strPassword = TestDataHandler.tc6269.getPassword();    	
         rogers_login_page.setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();

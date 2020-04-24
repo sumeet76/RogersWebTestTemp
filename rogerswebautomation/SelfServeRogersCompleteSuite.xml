@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Self Serve Rogers Tests" parallel="tests" thread-count="3">
-<parameter name="strBrowser" value="remotechrome"/>
-<parameter name="strLanguage" value="en"/>
+<parameter name="strBrowser" value="firefox"/>
+<parameter name="strLanguage" value="fr"/>
 <parameter name="strType" value="seq"/>
 <listeners>
       <listener class-name="com.rogers.test.listeners.AnnotationTransformer"/>
@@ -13,6 +13,38 @@
 <class name="com.rogers.test.tests.selfserve.RogersSS_TC_009_UserSetMobileNumForSMSRecovery"></class>
 </classes>          																					
 </test>  
+
+
+<test name="RogersSS_TC_02_AccountRegistration">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_02_AccountRegistration"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC_03_UserValidateRecoverUsernameUsingEmailID">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_03_UserValidateRecoverUsernameUsingEmailID"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC_04_ValidateRecoverUsernameUsingSMSVerificationCode">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_04_ValidateRecoverUsernameUsingSMSVerificationCode"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC_06_ValidateRecoverPasswordUsingSMSVerificationCode">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_06_ValidateRecoverPasswordUsingSMSVerificationCode"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC_08_ValidateRecoverBothUsernameAndPasswordUsingTextMessageWhileEnteringTheAccountNumber">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_08_ValidateRecoverBothUsernameAndPasswordUsingTextMessageWhileEnteringTheAccountNumber"></class>
+</classes>          																					
+</test>
+
 <!--
 <test name="RogersSS_TC_001_ChangeContactInfoChangeBillingAddress">
 <classes>				             
@@ -199,6 +231,11 @@
 </classes>          																					
 </test>
 
+<test name="RogersSS_TC_070_ValidateWirelessProfileAlreadyExistsTest">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_070_ValidateWirelessProfileAlreadyExistsTest"></class>
+</classes>          																					
+</test>
 
 <test name="RogersSS_TC_071_Validate3rdPartyBrightstarPage">
 <classes>				             
