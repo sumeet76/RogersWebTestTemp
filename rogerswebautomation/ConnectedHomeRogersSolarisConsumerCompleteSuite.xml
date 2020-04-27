@@ -64,21 +64,21 @@
 			<class
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_004_GWP_ExistingLegacyCustomer_DTVRHPCustomer_SameServiceAndBrowserProvinceAddressTest"></class> 		
 			<class
-				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_005_GWP_ExistingLegacyCustomer_DTVandWirelessCustomer_ServiceAndBrowserProvinceONTest"></class>
-			<class
-				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_006_GWP_ExistingLegacyCustomer_InternetCustomer_ServiceAndBrowserProvinceNBTest"></class>
-			<class
+				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_005_GWP_ExistingLegacyCustomer_DTVandWirelessCustomer_ServiceAndBrowserProvinceONTest"></class> 
+ 			<class
+				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_006_GWP_ExistingLegacyCustomer_InternetCustomer_ServiceAndBrowserProvinceNBTest"></class> 
+ 			<class
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_007_GWP_ExistingLegacyCustomer_InternetandRHPCustomer_ServiceAndBrowserProvinceNLTest"></class>
-			<class
+		<class
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_008_GWP_ExistingLegacyCustomer_InternetAndSHMCustomer_ServiceAndBrowserProvinceNBTest"></class>
-		    <class
-				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_010_GWP_ExistingLegacyCustomer_RHPCustomer_ServiceAndBrowserProvinceONTest"></class>
+			    <class
+				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_010_GWP_ExistingLegacyCustomer_RHPCustomer_ServiceAndBrowserProvinceONTest"></class> 
 			<class
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_011_GWP_ExistingLegacyCustomer_RHPandSHMCustomer_ServiceAndBrowserProvinceNLTest"></class>
 		</classes>
 	</test>
  
-	<test
+<!-- 	<test
 		name="Rogers connected home Solaris Consumer Tests chrome - French">
 		<parameter name="strBrowser" value="chrome" />
 		<parameter name="strLanguage" value="fr" />
@@ -128,5 +128,5 @@
 			<class
 				name="com.rogers.test.tests.solarisconsumer.RogersSolarisConsumer_TC_004_GWP_ExistingLegacyCustomer_DTVRHPCustomer_SameServiceAndBrowserProvinceAddressTest"></class>
 		</classes> 
-	</test>
+	</test> -->
 </suite>

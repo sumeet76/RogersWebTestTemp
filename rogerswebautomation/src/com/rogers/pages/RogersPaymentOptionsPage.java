@@ -66,7 +66,8 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkChevronYourCart() {
-		reusableActions.waitForElementVisibility(downChevronYourCart, 120);
+		reusableActions.waitForElementVisibility(downChevronYourCart, 200);
+		reusableActions.javascriptScrollToTopOfPage();
 		reusableActions.getWhenReady(downChevronYourCart, 120).click();
 	}
 
@@ -90,6 +91,15 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 		return	reusableActions.isElementVisible(ddlPaymentMode, 20);
 	}
 	
+	/**
+	 * Verify the Payment Modes page
+	 * @return true if the Payment Mode drop down list is present, else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyPaymentModepageMigration() {
+		reusableActions.waitForElementVisibility(btnPaymentConfirm, 200);
+		return	reusableActions.isElementVisible(btnPaymentConfirm, 20);
+	}
 	/**
 	 * Selects the payment modes (pac, pacc, invoice) on the payment options page
 	 * @param strPaymentMode payment modes for the payment for the purchase of Rogers offers
@@ -240,9 +250,11 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 */
 	public void clkPaymentConfirmExistingCustomer() {
 		//reusableActions.waitForElementInvisibility(popupLoadingFingers, 180);
+		reusableActions.waitForElementTobeClickable(btnPaymentConfirm, 180);	
 		reusableActions.waitForElementTobeClickable(btnPaymentConfirm, 180);
-		reusableActions.getWhenReady(btnPaymentConfirm, 180).click();
+		reusableActions.executeJavaScriptClick(btnPaymentConfirm);
 	}
+	
 	/**
 	 * Selects the Payment Method as 'Invoive (manual payments)'
 	 * @author rajesh.varalli1

@@ -186,18 +186,16 @@ public class RogersTechInstallPage extends BasePageClass {
 		if(iDate >= 30) {
 		reusableActions.waitForElementVisibility(clkNext, 60);
 		reusableActions.getWhenReady(clkNext, 60).click();		
-		int selDate = intDate - 10 ;
-		String strStartDate= Integer.toString(selDate);		
-		String startDateDD= dform.format(strStartDate);		
-		By selStartDate = By.xpath("//button[@class='btn btn-default btn-sm']//span[contains(text(),'" + startDateDD + "')]");
-		reusableActions.getWhenReady(selStartDate, 30).click();
+		int selDate = intDate - 14 ;
+		String strStartDate= Integer.toString(selDate);	
+		By selStartDate = By.xpath("//button[@class='btn btn-default btn-sm']//span[contains(text(),'" + strStartDate + "')]");
+		reusableActions.getWhenReady(selStartDate, 60).click();
 		}
 		else
 		{
 			String strStartDate= Integer.toString(intDate);
-			String startDateDD= dform.format(strStartDate);	
-			By selStartDate = By.xpath("//button[@class='btn btn-default btn-sm']//span[contains(text(),'" + startDateDD + "')]");
-			reusableActions.getWhenReady(selStartDate, 30).click();
+			By selStartDate = By.xpath("//button[@class='btn btn-default btn-sm']//span[contains(text(),'" + strStartDate + "')]");
+			reusableActions.getWhenReady(selStartDate, 60).click();
 		}
 	}
 	
@@ -214,7 +212,7 @@ public class RogersTechInstallPage extends BasePageClass {
 		if(iDate >= 30) {
 		reusableActions.waitForElementVisibility(clkNext, 60);
 		reusableActions.getWhenReady(clkNext, 60).click();
-		int selDate = intDate - 5 ;
+		int selDate = intDate - 6 ;
 		String strEndDate= Integer.toString(selDate);
 		By selEndDate = By.xpath("//button[@class='btn btn-default btn-sm']//span[contains(text(),'" + strEndDate + "')]");
 		reusableActions.getWhenReady(selEndDate, 30).click();

@@ -120,12 +120,15 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@class,'ds-modal')]//button[@variant='tertiary']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']")
 	WebElement btnNoThanks;
 	
+	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -tertiary -large ng-star-inserted']")
+	WebElement btnNoThnx;
+	
 	/**
 	 * To Click No thanks on welcome back page
 	 * @author Saurav.Goyal 
 	 */
 	public void clkNoThanks() {	
-		reusableActions.clickIfAvailable(btnNoThanks, 30);
+		reusableActions.clickIfAvailable(btnNoThanks, 90);
 	}
 	
 	/**
@@ -267,8 +270,16 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkServiceabilityMigration() {		
-		reusableActions.waitForElementInvisibility(popupLoadingFingersciam, 120);
+		reusableActions.waitForElementInvisibility(popupLoadingFingersciam, 180);
 		reusableActions.getWhenReady(btnServiceability, 120).click();
+	}
+	
+	/**
+	 * To Click No thanks on welcome back page
+	 * @author chinnarao.vattam 
+	 */
+	public void clkNoThnx() {	
+		reusableActions.clickIfAvailable(btnNoThnx, 90);
 	}
 	
 	/**
