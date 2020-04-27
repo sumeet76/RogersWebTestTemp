@@ -1,0 +1,9 @@
+# Config
+---
+url: http://qa3respesb.rci.rogers.com/EnterpriseSecurityFrameworkWeb/SecurityServlet?
+browser: chrome
+language: en
+loginID: 12011032
+usrID: harpartap.virk
+oneViewenv: OVO-QA05
+... 

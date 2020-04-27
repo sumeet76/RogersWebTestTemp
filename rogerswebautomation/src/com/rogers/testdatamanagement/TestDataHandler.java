@@ -1,11 +1,14 @@
 package com.rogers.testdatamanagement;
 
+import com.rogers.yaml.pojo.CHOneViewConfig;
+import com.rogers.yaml.pojo.MigrationData;
 import com.rogers.yaml.pojo.AALData;
 import com.rogers.yaml.pojo.AccountData;
 import com.rogers.yaml.pojo.Config;
 import com.rogers.yaml.pojo.HUPData;
 import com.rogers.yaml.pojo.PPCData;
 import com.rogers.yaml.pojo.PaymentDetails;
+import com.rogers.yaml.pojo.ContactData;
 
 public class TestDataHandler {	
 	public static Config config;
@@ -76,7 +79,7 @@ public class TestDataHandler {
 	public static AccountData solarisConsumerGWPInternetDTV;
 	public static AccountData solarisConsumerGWPRhpDtv ;
 	public static AccountData solarisConsumerGWPShmDtv;
-	public static AccountData solarisConsumerGWPDtvandWireless;
+	public static AccountData solarisConsumerGWPDtvWireless;
 	public static AccountData solarisConsumerGWPLegacyInternet;
 	public static AccountData solarisConsumerGWPInternetandRHP;
 	public static AccountData solarisConsumerGWPInternetSHM;
@@ -92,6 +95,13 @@ public class TestDataHandler {
 	public static HUPData testCase07;
 	public static PPCData testCase08;
 	public static HUPData testCase09;
+	public static CHOneViewConfig chOneViewConfig;
+	public static AccountData igniteTVParentalcontrols;
+	public static AccountData solarisAccount;
+	public static AccountData solarisTV;
+	public static ContactData anonymousData;
+	public static MigrationData migrationData;
+	public static PaymentDetails ovPaymentInfo;
 
 	public static void dataInit (String strApplicationType) {	    	
     	if(strApplicationType.toUpperCase().trim().endsWith("CH")) {	    	
@@ -103,11 +113,16 @@ public class TestDataHandler {
     	} else if(strApplicationType.toUpperCase().trim().endsWith("BFA")) {
     		//Buy-Flows Data files
     		buyFlowsDataInit();
-    	} else {
+    	} else if(strApplicationType.toUpperCase().trim().endsWith("COV")) {
+    		//ch oneview  Data files
+    		chOneViewDataInit();
+    	}
+    	else {
     		//All Data files
     		connectedHomeDataInit(); 
     		selfserveDataInit();
     		buyFlowsDataInit();
+    		chOneViewDataInit();
     	}
 	
 	}
@@ -127,7 +142,7 @@ public class TestDataHandler {
 		solarisConsumerGWPInternetDTV=YamlHandler.getCableAccountData("solarisConsumerGWPInternetDTV");
 		solarisConsumerGWPShmDtv = YamlHandler.getCableAccountData("solarisConsumerGWPDTVSHM");
 		solarisConsumerGWPRhpDtv = YamlHandler.getCableAccountData("solarisConsumerGWPDTVRHP");
-		solarisConsumerGWPDtvandWireless = YamlHandler.getCableAccountData("solarisConsumerGWPDtvandWireless");
+		solarisConsumerGWPDtvWireless = YamlHandler.getCableAccountData("solarisConsumerGWPDtvWireless");
 		solarisConsumerGWPLegacyInternet = YamlHandler.getCableAccountData("solarisConsumerGWPLegacyInternet");
 		solarisConsumerGWPInternetandRHP = YamlHandler.getCableAccountData("solarisConsumerGWPInternetandRHP");
 		solarisConsumerGWPInternetSHM = YamlHandler.getCableAccountData("solarisConsumerGWPInternetSHM");
@@ -215,6 +230,16 @@ public class TestDataHandler {
     	testCase07 = YamlHandler.getHUPdata("tc07HUP");
     	testCase08 = YamlHandler.getPPCdata("tc08PPC");
     	testCase09 = YamlHandler.getHUPdata("tc09HUP");
+	}
+	
+	private static void chOneViewDataInit() {
+     	chOneViewConfig =  YamlHandler.getCHOneViewConfig();
+    	ovPaymentInfo=YamlHandler.getOVPaymentDetails();
+      	igniteTVParentalcontrols = YamlHandler.getOVAccountData("IgniteTVParentalcontrols");
+      	solarisAccount = YamlHandler.getOVAccountData("SolarisAccount");
+      	solarisTV = YamlHandler.getOVAccountData("SolarisTV");
+      	anonymousData=YamlHandler.getContactData("AnonymousData");
+      	migrationData=YamlHandler.getMigrationData("MigrationData");      
 	}
 
 }

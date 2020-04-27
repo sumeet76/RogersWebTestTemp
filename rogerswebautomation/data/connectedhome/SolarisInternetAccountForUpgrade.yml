@@ -7,5 +7,6 @@ accountDetails:
    type: Internet
    ban: 932841281  
    upgradePlan: Ignite Internet Gigabit
-   upgradeBundle: Ignite TV Popular
+   upgradePlanEn: Ignite TV Premier
+   upgradePlanFr: Télé Élan Premier
    phoneNumber: 4168777624

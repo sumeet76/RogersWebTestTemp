@@ -8,18 +8,14 @@ public class AccountData {
 	private String newpassword;
 	public AccountDetails accountDetails;
 	public String name;
+	private String dealerCode;
+	
 
 	/**
 	 * @return the accountDetails
 	 */
 	public AccountDetails getAccountDetails() {
 		return accountDetails;
-	}
-	/**
-	 * @param accountDetails the accountDetails to set
-	 */
-	public void setAccountDetails(AccountDetails accountDetails) {
-		this.accountDetails = accountDetails;
 	}
 	/**
 	 * @return the username
@@ -44,6 +40,18 @@ public class AccountData {
 	 */
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	/**
+	 * @return the dealerCode
+	 */
+	public String getDealercode() {
+		return dealerCode;
+	}
+	/**
+	 * @param dealerCode the dealerCode to set
+	 */
+	public void setDealerCode(String dealerCode) {
+		this.dealerCode = dealerCode;
 	}
 	/**
 	 * @return the newpassword
@@ -87,5 +95,11 @@ public class AccountData {
 	 */
 	public String getName() {
 		return name;
+	}
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 }

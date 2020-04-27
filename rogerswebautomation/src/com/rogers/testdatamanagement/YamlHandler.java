@@ -9,8 +9,11 @@ import org.yaml.snakeyaml.constructor.Constructor;
 
 import com.rogers.yaml.pojo.AALData;
 import com.rogers.yaml.pojo.AccountData;
+import com.rogers.yaml.pojo.CHOneViewConfig;
 import com.rogers.yaml.pojo.Config;
+import com.rogers.yaml.pojo.ContactData;
 import com.rogers.yaml.pojo.HUPData;
+import com.rogers.yaml.pojo.MigrationData;
 import com.rogers.yaml.pojo.NACData;
 import com.rogers.yaml.pojo.PPCData;
 import com.rogers.yaml.pojo.PaymentDetails;
@@ -34,6 +37,36 @@ public class YamlHandler {
 		}
 	}
 
+	public static AccountData getCableAccountData(String accountName) {
+		Yaml yaml = new Yaml(new Constructor(AccountData.class));
+		InputStream inputStream;
+		try {
+			inputStream = new FileInputStream(
+					new File(System.getProperty("user.dir") + "/data/connectedhome/" + accountName + ".yml"));
+			AccountData account = yaml.load(inputStream);
+			return account;
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public static AccountData getOVAccountData(String accountName) {
+		Yaml yaml = new Yaml(new Constructor(AccountData.class));
+		InputStream inputStream;
+		try {
+			inputStream = new FileInputStream(
+					new File(System.getProperty("user.dir") + "/data/choneview/" + accountName + ".yml"));
+			AccountData account = yaml.load(inputStream);
+			return account;
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	public static Config getConfig() {
 		Yaml yaml = new Yaml(new Constructor(Config.class));
 		InputStream inputStream;
@@ -49,6 +82,50 @@ public class YamlHandler {
 
 	}
 	
+	public static Config getCableConfig() {
+		Yaml yaml = new Yaml(new Constructor(Config.class));
+		InputStream inputStream;
+		try {
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/connectedhome/RogersConfig.yml"));
+			Config config = yaml.load(inputStream);
+			return config;
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+	
+	public static Config getBFAConfig() {
+		Yaml yaml = new Yaml(new Constructor(Config.class));
+		InputStream inputStream;
+		try {
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/buyflows/Config.yml"));
+			Config config = yaml.load(inputStream);
+			return config;
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+	
+	public static CHOneViewConfig getCHOneViewConfig() {
+		Yaml yaml = new Yaml(new Constructor(CHOneViewConfig.class));
+		InputStream inputStream;
+		try {
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/choneview/CHOneViewConfig.yml"));
+			CHOneViewConfig config = yaml.load(inputStream);
+			return config;
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 	
 	public static PaymentDetails getPaymentDetails() {
 		Yaml yaml = new Yaml(new Constructor(PaymentDetails.class));
@@ -65,37 +142,7 @@ public class YamlHandler {
 
 	}
 
-	public static AccountData getCableAccountData(String accountName) {
-		Yaml yaml = new Yaml(new Constructor(AccountData.class));
-		InputStream inputStream;
-		try {
-			inputStream = new FileInputStream(
-					new File(System.getProperty("user.dir") + "/data/connectedhome/" + accountName + ".yml"));
-			AccountData account = yaml.load(inputStream);
-			return account;
-		} catch (FileNotFoundException e) {
 
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	public static Config getCableConfig() {
-		Yaml yaml = new Yaml(new Constructor(Config.class));
-		InputStream inputStream;
-		try {
-			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/connectedhome/RogersConfig.yml"));
-			Config config = yaml.load(inputStream);
-			return config;
-		} catch (FileNotFoundException e) {
-
-			e.printStackTrace();
-			return null;
-		}
-
-	}
-	
-	
 	public static PaymentDetails getCablePaymentDetails() {
 		Yaml yaml = new Yaml(new Constructor(PaymentDetails.class));
 		InputStream inputStream;
@@ -111,6 +158,34 @@ public class YamlHandler {
 
 	}
 	
+	public static PaymentDetails getBFAPaymentDetails() {
+		Yaml yaml = new Yaml(new Constructor(PaymentDetails.class));
+		InputStream inputStream;
+		try {
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/buyflows/RogersPaymentInfo.yml"));
+			PaymentDetails paymentDetails = yaml.load(inputStream);
+			return paymentDetails;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+
+	public static PaymentDetails getOVPaymentDetails() {
+		Yaml yaml = new Yaml(new Constructor(PaymentDetails.class));
+		InputStream inputStream;
+		try {
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/choneview/OVPaymentInfo.yml"));
+			PaymentDetails paymentDetails = yaml.load(inputStream);
+			return paymentDetails;
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 	public static NACData getNACData(String dataFileName) {
 		Yaml yaml = new Yaml(new Constructor(NACData.class));
 		InputStream inputStream;
@@ -163,13 +238,14 @@ public class YamlHandler {
 		}
 	}
 
-	public static Config getBFAConfig() {
-		Yaml yaml = new Yaml(new Constructor(Config.class));
+
+	public static ContactData getContactData(String accountName) {
+		Yaml yaml = new Yaml(new Constructor(ContactData.class));
 		InputStream inputStream;
 		try {
-			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/buyflows/Config.yml"));
-			Config config = yaml.load(inputStream);
-			return config;
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/choneview/" + accountName + ".yml"));
+			ContactData contactDetails = yaml.load(inputStream);
+			return contactDetails;
 		} catch (FileNotFoundException e) {
 
 			e.printStackTrace();
@@ -177,18 +253,19 @@ public class YamlHandler {
 		}
 
 	}
-
-	public static PaymentDetails getBFAPaymentDetails() {
-		Yaml yaml = new Yaml(new Constructor(PaymentDetails.class));
+	public static MigrationData getMigrationData(String accountName) {
+		Yaml yaml = new Yaml(new Constructor(MigrationData.class));
 		InputStream inputStream;
 		try {
-			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/buyflows/PaymentInfo.yml"));
-			PaymentDetails paymentDetails = yaml.load(inputStream);
-			return paymentDetails;
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/choneview/" + accountName + ".yml"));
+			MigrationData migrationData = yaml.load(inputStream);
+			return migrationData;
 		} catch (FileNotFoundException e) {
+
 			e.printStackTrace();
 			return null;
 		}
+
 	}
 	
 }

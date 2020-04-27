@@ -59,7 +59,7 @@ public class RogersCH_TC_006_IginteInternet_OldConstructor_ExistingSolarisChange
         reporter.reportLogWithScreenshot("Launched the Interent dashboard");
         rogers_internet_dashboard_page.clkSolChangeInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Interent packages page");
-        rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.solarisInternetOldConstructor.getAccountDetails().getUpgradePlan());
+        rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.solarisInternetOldConstructor.getAccountDetails().getUpgradePlanEn(),TestDataHandler.solarisInternetOldConstructor.getAccountDetails().getUpgradePlanFr());
         reporter.reportLogWithScreenshot("Launched the Interent packages confirm OK popup"); 
         rogers_internet_dashboard_page.clkInternetChangeOK();
         reporter.reportLogWithScreenshot("Launched the agreement page"); 

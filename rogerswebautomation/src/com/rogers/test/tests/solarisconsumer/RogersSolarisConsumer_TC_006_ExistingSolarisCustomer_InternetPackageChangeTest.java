@@ -54,7 +54,7 @@ public class RogersSolarisConsumer_TC_006_ExistingSolarisCustomer_InternetPackag
         reporter.reportLogWithScreenshot("Launched the Interent dashboard");
         rogers_internet_dashboard_page.clkSolChangeInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Interent packages page");
-        rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.solarisInternetPackageChange.getAccountDetails().getUpgradePlan());
+        rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.solarisInternetPackageChange.getAccountDetails().getUpgradePlanEn(),TestDataHandler.solarisInternetPackageChange.getAccountDetails().getUpgradePlanFr());
         reporter.reportLogWithScreenshot("Launched the agreement page"); 
         rogers_order_review_page.verifyAgreementPage();
         reporter.reportLogWithScreenshot("Launched the order review page");

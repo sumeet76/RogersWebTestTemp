@@ -6,6 +6,7 @@ password: DigiAuto@123
 accountDetails:
    type: Internet
    ban: 932841307
-   upgradePlan: Ignite TV Premier
+   upgradePlanEn: Ignite TV Premier
+   upgradePlanFr: Télé Élan Premier
    downgradeBundle: Select
 ...

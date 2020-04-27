@@ -239,7 +239,7 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkPaymentConfirmExistingCustomer() {
-		reusableActions.waitForElementInvisibility(popupLoadingFingers, 180);
+		//reusableActions.waitForElementInvisibility(popupLoadingFingers, 180);
 		reusableActions.waitForElementTobeClickable(btnPaymentConfirm, 180);
 		reusableActions.getWhenReady(btnPaymentConfirm, 180).click();
 	}

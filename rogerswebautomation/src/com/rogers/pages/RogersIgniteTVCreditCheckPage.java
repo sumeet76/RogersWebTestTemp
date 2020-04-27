@@ -131,7 +131,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectDOBYearExistingCustomer(String strDOBYear) {
-		reusableActions.waitForElementInvisibility(popupLoadingFingers);
+		//reusableActions.waitForElementInvisibility(popupLoadingFingers);
 		reusableActions.waitForElementVisibility(ddlCreditCheckYear,20);
 		reusableActions.selectWhenReady(ddlCreditCheckYear, strDOBYear);
 	}

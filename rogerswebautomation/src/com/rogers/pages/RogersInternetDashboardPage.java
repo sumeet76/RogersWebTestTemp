@@ -47,6 +47,11 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//a[@class='btn ute-btn-primary btn-block-xs ute-sm custom-modal-button']")
 	WebElement btnInternetChangeOK;
 	
+	@FindBy(xpath = "//i[@class='ute-icon-button-right']")
+	WebElement imgNext;
+	
+	@FindBy(xpath = "//i[@class='ute-icon-button-left']")
+	WebElement imgPrevious;
 	
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
@@ -143,10 +148,19 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @param strPackageName Internet package to be selected
 	 * @author Chinnarao.Vattam
 	 */
-	public void selectSolarisInternetPackage(String strPackageName) {
-		By btnPackageSelection = By.xpath("//span[contains(normalize-space(text()),'" + strPackageName+ "') or contains(normalize-space(text()),'" + strPackageName +"')]/ancestor::div[@class='owl-item active']//ins[@translate='global.cta.select']");
-		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(btnPackageSelection, 120).click();	
+	public void selectSolarisInternetPackage(String strPackageNameEn,String strPackageNameFr) {
+		By btnPackageSelection = By.xpath("//span[contains(normalize-space(text()),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='owl-item active']//ins[@translate='global.cta.select']");
+		reusableActions.javascriptScrollToMiddleOfPage();		
+		if(reusableActions.isElementVisible(btnPackageSelection, 120))
+		{		
+	    reusableActions.getWhenReady(btnPackageSelection, 120).click();	
+		 }
+	   else
+		{
+	    reusableActions.getWhenReady(imgNext, 180).click();  
+	    reusableActions.isElementVisible(btnPackageSelection, 120);
+	    reusableActions.getWhenReady(btnPackageSelection, 120).click();	
+		}
 	}
 	
 	/**

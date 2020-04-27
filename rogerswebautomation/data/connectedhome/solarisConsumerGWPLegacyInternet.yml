@@ -1,24 +1,16 @@
 # Account Details 
 ---
 name: DigitalTVAccount
-username: Autodatar320c03@yahoo.com
+username: Autodatar320c10@yahoo.com
 password: DigiAuto@123
 accountDetails:
    type: Digital TV
-   ban: 930693262 
+   ban: 260112800203 
    downgradePlanEn: Select
    downgradePlanFr: Sélection
    bundelPackageNameFr: Flex 5
    bundelPackageNameEn: Flex 5
-   year: 1993
+   year: 1995
    month: 4
-   date: 22
-   address:
-     line1: 24 Abbeywood Trail
-     line2: NORTH YORK ON M3B 3B3
-     streetNumber: 24
-     streetName: Abbeywood Trail
-     city: NORTH YORK
-     Province: ON
-     PostalCode: M3B 3B3
+   date: 20
 ...
