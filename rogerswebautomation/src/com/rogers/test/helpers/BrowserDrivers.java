@@ -75,11 +75,21 @@ public class BrowserDrivers {
 			msEdgeInit(strBrowser);
 	        break;    
 			
-	 case "sauce" :
-     {                               
-    	 sauceInit(strBrowser, currentTestMethodName) ;          
-      break;
-     }
+		 case "saucechrome" :
+	     {                               
+	    	 sauceInit(strBrowser, currentTestMethodName) ;          
+	      break;
+	     }
+		 case "sauceedge" :
+	     {                               
+	    	 sauceedgeInit(strBrowser, currentTestMethodName) ;          
+	      break;
+	     }
+		 case "saucefirefox" :
+	     {                               
+	    	 saucefirefoxInit(strBrowser, currentTestMethodName) ;          
+	      break;
+	     }
 
 		default :
 			WebDriverManager.chromedriver().setup();
@@ -88,6 +98,73 @@ public class BrowserDrivers {
 		
 		return driver;
 	}
+
+	
+	
+	private void saucefirefoxInit(String strBrowser, Method currentTestMethodName) throws MalformedURLException {
+		String sauceUserName =  TestDataHandler.config.getSauceUser();
+	       String sauceAccessKey = TestDataHandler.config.getSauceKey();       
+	       String sauceURL = "https://ondemand.saucelabs.com/wd/hub";       
+	       MutableCapabilities sauceOpts = new MutableCapabilities();
+	       sauceOpts.setCapability("username", sauceUserName);
+	       sauceOpts.setCapability("accessKey", sauceAccessKey);
+	       sauceOpts.setCapability("seleniumVersion", "3.141.59");
+	       sauceOpts.setCapability("name", currentTestMethodName.getName());
+	                   
+	      List<String> tags = Arrays.asList("sauceDemo", "demoTest", "module4");
+	      sauceOpts.setCapability("tags", tags);                             
+	      sauceOpts.setCapability("maxDuration", 3600);               
+	      sauceOpts.setCapability("commandTimeout", 600);
+	      sauceOpts.setCapability("idleTimeout", 1000);       
+	      sauceOpts.setCapability("build", "sample POC with TestNG selenium");          
+	      ChromeOptions chromeOpts = new ChromeOptions();
+	      chromeOpts.setExperimentalOption("w3c", true);  
+	      chromeOpts.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+	      chromeOpts.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true); 
+	      MutableCapabilities sCapabilities = new MutableCapabilities();
+	      sCapabilities.setCapability("sauce:options", sauceOpts);
+	      sCapabilities.setCapability("chrome.switches", Arrays.asList("--ignore-certificate-errors"));
+	      sCapabilities.setCapability("goog:chromeOptions", chromeOpts);
+	      sCapabilities.setCapability("browserName", "firefix");
+	      sCapabilities.setCapability("platformVersion", "Windows 10");
+	      sCapabilities.setCapability("browserVersion", "latest");         
+	      driver = new RemoteWebDriver(new URL(sauceURL), sCapabilities); 
+		
+	}
+
+
+
+	private void sauceedgeInit(String strBrowser, Method currentTestMethodName) throws MalformedURLException {
+		String sauceUserName =  TestDataHandler.config.getSauceUser();
+	       String sauceAccessKey = TestDataHandler.config.getSauceKey();       
+	       String sauceURL = "https://ondemand.saucelabs.com/wd/hub";       
+	       MutableCapabilities sauceOpts = new MutableCapabilities();
+	       sauceOpts.setCapability("username", sauceUserName);
+	       sauceOpts.setCapability("accessKey", sauceAccessKey);
+	       sauceOpts.setCapability("seleniumVersion", "3.141.59");
+	       sauceOpts.setCapability("name", currentTestMethodName.getName());
+	                   
+	      List<String> tags = Arrays.asList("sauceDemo", "demoTest", "module4");
+	      sauceOpts.setCapability("tags", tags);                             
+	      sauceOpts.setCapability("maxDuration", 3600);               
+	      sauceOpts.setCapability("commandTimeout", 600);
+	      sauceOpts.setCapability("idleTimeout", 1000);       
+	      sauceOpts.setCapability("build", "sample POC with TestNG selenium");          
+	      ChromeOptions chromeOpts = new ChromeOptions();
+	      chromeOpts.setExperimentalOption("w3c", true);  
+	      chromeOpts.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+	      chromeOpts.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true); 
+	      MutableCapabilities sCapabilities = new MutableCapabilities();
+	      sCapabilities.setCapability("sauce:options", sauceOpts);
+	      sCapabilities.setCapability("chrome.switches", Arrays.asList("--ignore-certificate-errors"));
+	      sCapabilities.setCapability("goog:chromeOptions", chromeOpts);
+	      sCapabilities.setCapability("browserName", "microsoftedge");
+	      sCapabilities.setCapability("platformVersion", "Windows 10");
+	      sCapabilities.setCapability("browserVersion", "latest");         
+	      driver = new RemoteWebDriver(new URL(sauceURL), sCapabilities); 
+		
+	}
+
 
 	
 	
