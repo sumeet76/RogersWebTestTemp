@@ -13,6 +13,6 @@ ensURL03: http://ensqa3.rogers.com/ENS/notificationsViewer.action
 ensURL04: http://ensqa4.rogers.com/ENS/notificationsViewer.action
 repairClaimUrl: /consumer/self-serve/repair-claim
 phoneRepairUrl: https://stage-onlineportal-ca.brightstar.com/rogers/login
-sauceUser: Mirza.Kamran
-sauceKey: dacb41bf-f530-437e-8d75-4b0e1e9670b9
+sauceUser: Rogers.Automation
+sauceKey: 7ca3d84c-9043-4cd1-b9b2-8a09709bd6f1
 ...

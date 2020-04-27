@@ -74,7 +74,7 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
      Object testClass = iTestResult.getInstance();
      WebDriver driver = ((BaseTestClass) testClass).getDriver();        
      HashMap<String, String> xmlTestParameters = ((BaseTestClass) testClass).getXMLParameters();
-     if(xmlTestParameters.get("strBrowser").equals("sauce"))
+     if(xmlTestParameters.get("strBrowser").contains("sauce"))
      {    	 
 	 	((JavascriptExecutor) driver).executeScript("sauce:job-result=" + "passed");
      } else if (xmlTestParameters.get("strBrowser").equalsIgnoreCase("browserstack")) {
@@ -99,7 +99,7 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
     	 webDriver = ((BaseTestClass) testClass).getDriver();
      	Object xmlTestParams = iTestResult.getInstance();
          HashMap<String, String> xmlTestParameters = ((BaseTestClass) xmlTestParams).getXMLParameters();
-         if(xmlTestParameters.get("strBrowser").equals("sauce"))
+         if(xmlTestParameters.get("strBrowser").contains("sauce"))
          {
 	     	((JavascriptExecutor) webDriver).executeScript("sauce:job-result=" + "failed");
          }else if (xmlTestParameters.get("strBrowser").equalsIgnoreCase("browserstack")) {
@@ -140,7 +140,7 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
 			Object xmlTestParams = iTestResult.getInstance();
          HashMap<String, String> xmlTestParameters = ((BaseTestClass) xmlTestParams).getXMLParameters();
 
-         if(xmlTestParameters.get("strBrowser").equals("sauce"))
+         if(xmlTestParameters.get("strBrowser").contains("sauce"))
          {
         	 ((JavascriptExecutor) webDriver).executeScript("sauce:job-result=" + "skipped");
          }else if (xmlTestParameters.get("strBrowser").equalsIgnoreCase("browserstack")) {

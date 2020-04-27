@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Self Serve Rogers.com Tests SS" parallel="tests" thread-count="3">
+<parameter name="strBrowser" value="sauceedge"/>
+<parameter name="strLanguage" value="en"/>
+<parameter name="strType" value="seq"/>
+<listeners>
+      <listener class-name="com.rogers.test.listeners.AnnotationTransformer"/>
+</listeners> 	  
+
+<test name="RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest"></class>
+</classes>          																					
+</test>
+ 
+
+<test name="RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaymentMethodPACToCC_EN_AUTO">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaymentMethodPACToCC_EN_AUTO"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest"></class>
+</classes>          																					
+</test>
+
+ 						
+</suite>

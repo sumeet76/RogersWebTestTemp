@@ -124,8 +124,8 @@ public class BrowserDrivers {
 	      MutableCapabilities sCapabilities = new MutableCapabilities();
 	      sCapabilities.setCapability("sauce:options", sauceOpts);
 	      sCapabilities.setCapability("chrome.switches", Arrays.asList("--ignore-certificate-errors"));
-	      sCapabilities.setCapability("goog:chromeOptions", chromeOpts);
-	      sCapabilities.setCapability("browserName", "firefix");
+	      //sCapabilities.setCapability("goog:chromeOptions", chromeOpts);
+	      sCapabilities.setCapability("browserName", "firefox");
 	      sCapabilities.setCapability("platformVersion", "Windows 10");
 	      sCapabilities.setCapability("browserVersion", "latest");         
 	      driver = new RemoteWebDriver(new URL(sauceURL), sCapabilities); 
