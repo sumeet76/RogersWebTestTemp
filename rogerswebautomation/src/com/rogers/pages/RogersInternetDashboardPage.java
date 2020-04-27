@@ -145,7 +145,8 @@ public class RogersInternetDashboardPage extends BasePageClass {
 
 	/**
 	 * Select the  Internet Package on change Internet package page
-	 * @param strPackageName Internet package to be selected
+	 * @param strPackageNameEn Internet package to be selected
+	 * @param strPackageNameFr Internet package to be selected
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectSolarisInternetPackage(String strPackageNameEn,String strPackageNameFr) {

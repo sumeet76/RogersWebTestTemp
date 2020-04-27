@@ -278,7 +278,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 
 	/**
 	 * Selects the solaris tv package name to be upgrade or downgrade 
-	 * @param strPackageName solaris tv package name to be upgrade or downgrade  
+	 * @param strPackageNameEn solaris tv package name to be upgrade or downgrade
+	 * @param strPackageNameFr solaris tv package name to be upgrade or downgrade  
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
