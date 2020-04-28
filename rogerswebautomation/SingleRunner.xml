@@ -8,15 +8,16 @@
       <listener class-name="com.rogers.test.listeners.AnnotationTransformer"/>
 </listeners> 		
 
- <test thread-count="3" name="RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE(failed)(failed)" parallel="tests">
+<test thread-count="1" name="RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage(failed)(failed)" parallel="tests">
     <classes>
-      <class name="com.rogers.test.tests.selfserve.RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE">
+      <class name="com.rogers.test.tests.selfserve.RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage">
         <methods>
-          <include name="afterTest"/>
-          <include name="validateDataRemainingOnMaxSpeedInfiniteSE"/>
+          <include name="validateSuspendUsage"/>
+          <include name="validateReactivateService"/>
           <include name="beforeTest"/>
+          <include name="afterTest"/>
         </methods>
-      </class> <!-- com.rogers.test.tests.selfserve.RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE -->
+      </class> <!-- com.rogers.test.tests.selfserve.RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage -->
     </classes>
-  </test> <!-- RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE(failed)(failed) --><!-- RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage(failed)(failed) -->			
+  </test> <!-- RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage(failed)(failed) -->			
 </suite>

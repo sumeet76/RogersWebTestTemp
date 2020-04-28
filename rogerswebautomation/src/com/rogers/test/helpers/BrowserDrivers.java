@@ -212,7 +212,7 @@ public class BrowserDrivers {
 	       sauceOpts.setCapability("name", currentTestMethodName.getName());	 		
 		   sauceOpts.setCapability("browserName", TestDataHandler.sauceSettings.getBrowserName());
 		   sauceOpts.setCapability("browserVersion", TestDataHandler.sauceSettings.getBrowserVersion());  				       
-	       sauceOpts.setCapability("platformVersion", TestDataHandler.sauceSettings.getPlatform());	         
+	       sauceOpts.setCapability("platformVersion", TestDataHandler.sauceSettings.getPlatform().trim());	         
 	       driver = new RemoteWebDriver(new URL(sauceURL), sauceOpts);	       	       	      
 	}
 	
