@@ -76,8 +76,8 @@ public class BrowserDrivers {
 	        break;    
 			
 		 case "saucechrome" :
-	     {                               
-	    	 sauceInit(strBrowser, currentTestMethodName) ;          
+	     {    
+	    	 sauceInit(strBrowser,browserType,browserVersion,platform,currentTestMethodName)	    	         
 	      break;
 	     }
 		 case "sauceedge" :
@@ -102,7 +102,7 @@ public class BrowserDrivers {
 	
 	
 	private void saucefirefoxInit(String strBrowser, Method currentTestMethodName) throws MalformedURLException {
-		String sauceUserName =  TestDataHandler.config.getSauceUser();
+		   String sauceUserName =  TestDataHandler.config.getSauceUser();
 	       String sauceAccessKey = TestDataHandler.config.getSauceKey();       
 	       String sauceURL = "https://ondemand.saucelabs.com/wd/hub";       
 	       MutableCapabilities sauceOpts = new MutableCapabilities();
@@ -110,25 +110,10 @@ public class BrowserDrivers {
 	       sauceOpts.setCapability("accessKey", sauceAccessKey);
 	       sauceOpts.setCapability("seleniumVersion", "3.141.59");
 	       sauceOpts.setCapability("name", currentTestMethodName.getName());
-	                   
-	      List<String> tags = Arrays.asList("sauceDemo", "demoTest", "module4");
-	      sauceOpts.setCapability("tags", tags);                             
-	      sauceOpts.setCapability("maxDuration", 3600);               
-	      sauceOpts.setCapability("commandTimeout", 600);
-	      sauceOpts.setCapability("idleTimeout", 1000);       
-	      sauceOpts.setCapability("build", "sample POC with TestNG selenium");          
-	      ChromeOptions chromeOpts = new ChromeOptions();
-	      chromeOpts.setExperimentalOption("w3c", true);  
-	      chromeOpts.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-	      chromeOpts.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true); 
-	      MutableCapabilities sCapabilities = new MutableCapabilities();
-	      sCapabilities.setCapability("sauce:options", sauceOpts);
-	      sCapabilities.setCapability("chrome.switches", Arrays.asList("--ignore-certificate-errors"));
-	      //sCapabilities.setCapability("goog:chromeOptions", chromeOpts);
-	      sCapabilities.setCapability("browserName", "firefox");
-	      sCapabilities.setCapability("platformVersion", "Windows 10");
-	      sCapabilities.setCapability("browserVersion", "latest");         
-	      driver = new RemoteWebDriver(new URL(sauceURL), sCapabilities); 
+	       sauceOpts.setCapability("browserName", "firefox");
+	       sauceOpts.setCapability("platformVersion", "Windows 10");
+	       sauceOpts.setCapability("browserVersion", "latest");                  
+	       driver = new RemoteWebDriver(new URL(sauceURL), sauceOpts); 
 		
 	}
 
@@ -143,25 +128,10 @@ public class BrowserDrivers {
 	       sauceOpts.setCapability("accessKey", sauceAccessKey);
 	       sauceOpts.setCapability("seleniumVersion", "3.141.59");
 	       sauceOpts.setCapability("name", currentTestMethodName.getName());
-	                   
-	      List<String> tags = Arrays.asList("sauceDemo", "demoTest", "module4");
-	      sauceOpts.setCapability("tags", tags);                             
-	      sauceOpts.setCapability("maxDuration", 3600);               
-	      sauceOpts.setCapability("commandTimeout", 600);
-	      sauceOpts.setCapability("idleTimeout", 1000);       
-	      sauceOpts.setCapability("build", "sample POC with TestNG selenium");          
-	      ChromeOptions chromeOpts = new ChromeOptions();
-	      chromeOpts.setExperimentalOption("w3c", true);  
-	      chromeOpts.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-	      chromeOpts.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true); 
-	      MutableCapabilities sCapabilities = new MutableCapabilities();
-	      sCapabilities.setCapability("sauce:options", sauceOpts);
-	      sCapabilities.setCapability("chrome.switches", Arrays.asList("--ignore-certificate-errors"));
-	      sCapabilities.setCapability("goog:chromeOptions", chromeOpts);
-	      sCapabilities.setCapability("browserName", "microsoftedge");
-	      sCapabilities.setCapability("platformVersion", "Windows 10");
-	      sCapabilities.setCapability("browserVersion", "latest");         
-	      driver = new RemoteWebDriver(new URL(sauceURL), sCapabilities); 
+	       sauceOpts.setCapability("browserName", "microsoftedge");
+	       sauceOpts.setCapability("platformVersion", "Windows 10");
+	       sauceOpts.setCapability("browserVersion", "latest");                  
+	       driver = new RemoteWebDriver(new URL(sauceURL), sauceOpts); 	       
 		
 	}
 
@@ -268,40 +238,36 @@ public class BrowserDrivers {
 	 * @throws ClientProtocolException   org.apache.http.client.ClientProtocolException, Signals an error in the HTTP protocol.
 	 * @throws IOException               java.io.IOException, Signals that an I/O exception of some sort has occurred, produced by failed or interrupted I/O operations.
 	 */
-	private void sauceInit(String strBrowser, Method currentTestMethodName) throws ClientProtocolException, IOException {
-                            
-       String sauceUserName =  "Rogers.Automation";//System.getenv("SAUCE_USERNAME");
-       String sauceAccessKey = "7ca3d84c-9043-4cd1-b9b2-8a09709bd6f1";//System.getenv("SAUCE_ACCESS_KEY");
-       //String sauceURL = "https://"+"System.getenv(\"SAUCE_USERNAME\")"+":"+"System.getenv(\"SAUCE_ACCESS_KEY\")@ondemand.saucelabs.com:80/wd/hub";
-       String sauceURL = "https://ondemand.saucelabs.com/wd/hub";
-       
-      MutableCapabilities sauceOpts = new MutableCapabilities();
-       sauceOpts.setCapability("username", sauceUserName);
-       sauceOpts.setCapability("accessKey", sauceAccessKey);
-       sauceOpts.setCapability("seleniumVersion", "3.141.59");
-       sauceOpts.setCapability("name", currentTestMethodName.getName());
-                   
-      List<String> tags = Arrays.asList("sauceDemo", "demoTest", "module4");
-      sauceOpts.setCapability("tags", tags);                             
-      sauceOpts.setCapability("maxDuration", 3600);               
-      sauceOpts.setCapability("commandTimeout", 600);
-      sauceOpts.setCapability("idleTimeout", 1000);       
-      sauceOpts.setCapability("build", "sample POC with TestNG selenium");          
-      ChromeOptions chromeOpts = new ChromeOptions();
-      chromeOpts.setExperimentalOption("w3c", true);  
-      chromeOpts.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-      chromeOpts.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true); 
-      MutableCapabilities sCapabilities = new MutableCapabilities();
-      sCapabilities.setCapability("sauce:options", sauceOpts);
-      sCapabilities.setCapability("chrome.switches", Arrays.asList("--ignore-certificate-errors"));
-      sCapabilities.setCapability("goog:chromeOptions", chromeOpts);
-      sCapabilities.setCapability("browserName", "chrome");
-      sCapabilities.setCapability("platformVersion", "Windows 10");
-      sCapabilities.setCapability("browserVersion", "latest");         
-      driver = new RemoteWebDriver(new URL(sauceURL), sCapabilities);  
-      //driver =  new RemoteWebDriver(new URL("http://"+System.getenv("SAUCE_USERNAME")+":"+System.getenv("SAUCE_ACCESS_KEY")+"@ondemand.saucelabs.com:80/wd/hub", sCapabilities) ;                      
+	private void sauceInit(String strBrowser,String browserType,String browserVersion,String platform, Method currentTestMethodName) throws ClientProtocolException, IOException {                            
+		   String sauceUserName =  TestDataHandler.config.getSauceUser();
+	       String sauceAccessKey = TestDataHandler.config.getSauceKey();       
+	       String sauceURL = "https://ondemand.saucelabs.com/wd/hub";       
+	       MutableCapabilities sauceOpts = new MutableCapabilities();
+	       sauceOpts.setCapability("username", sauceUserName);
+	       sauceOpts.setCapability("accessKey", sauceAccessKey);
+	       sauceOpts.setCapability("seleniumVersion", "3.141.59");
+	       sauceOpts.setCapability("name", currentTestMethodName.getName());
+	       switch (strBrowser) {
+			case "chrome":
+				sauceOpts.setCapability("browserName", browserType);
+				sauceOpts.setCapability("browserVersion", browserVersion);  
+				break;
+			case "firefox":
+				sauceOpts.setCapability("browserName", "chrome");
+				sauceOpts.setCapability("browserVersion", "latest");  
+				break;
+			case "edge":
+				sauceOpts.setCapability("browserName", "chrome");
+				sauceOpts.setCapability("browserVersion", "latest");  
+				break;	
+			default:
+				break;
+			}	       
+	       sauceOpts.setCapability("platformVersion", platform);	         
+	       driver = new RemoteWebDriver(new URL(sauceURL), sauceOpts);	       	       	      
 	}
-		/**
+	
+	/**
 	 * gets the OS type
 	 * @return enum containing OS value
 	 * @author Mirza.Kamran

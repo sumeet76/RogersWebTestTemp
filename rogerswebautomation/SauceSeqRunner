@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Self Serve Rogers.com Tests SS" parallel="tests" thread-count="1">
-<parameter name="strBrowser" value="saucefirefox"/>
+<parameter name="strBrowser" value="sauce"/>
+<parameter name="browserType" value="chrome"/>
+<parameter name="browserVersion" value="latest"/>
+<parameter name="platform" value="Windows 10"/>
 <parameter name="strLanguage" value="en"/>
-<parameter name="strType" value="seq"/>
+<parameter name="strType" value="sequential"/>
+
 <listeners>
       <listener class-name="com.rogers.test.listeners.AnnotationTransformer"/>
 </listeners> 	  
