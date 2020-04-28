@@ -62,7 +62,7 @@ public class RogersSS_TC_056_ValidateDataUsageDesplayWithinLimit_postpaid_NSEDat
         reporter.softAssert(rogers_wireless_dashboard_page.verifyDataRemainingOutOfTotalDataBucket(), 
 							"Data remaining out of Total data bucket info should be displayed", 
 							"Data remaining out of Total data bucket info is not displayed.");
-        reporter.softAssert(rogers_wireless_dashboard_page.validateTotalDataBucket(), 
+        reporter.softAssert(rogers_wireless_dashboard_page.verifyTotalDataBucket(), 
 							"Total data bucket includes plan, paid OTTs, paid MDTs, promotional (zero-rated) bonus OTT and MDTs info should be displayed", 
 							"Total data bucket includes plan, paid OTTs, paid MDTs, promotional (zero-rated) bonus OTT and MDTs info NOT displayed");
         reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(), 
@@ -74,19 +74,10 @@ public class RogersSS_TC_056_ValidateDataUsageDesplayWithinLimit_postpaid_NSEDat
         reporter.softAssert(rogers_wireless_dashboard_page.verifyDaysRemainingInTheBillCycleIsDisplayed(), 
 							"Days left remaining in the bill cycle is displayed", 
 							"Days left remaining in the bill cycle is NOT displayed"); 
-        rogers_wireless_dashboard_page.clkAddData();
-        reporter.softAssert(rogers_add_data_page.verifyAddDataOverlayIsDisplayed(), 
-							"Add the Data top-up  window should be displayed. (completd an MDT add on)", 
-							"Add the Data top-up  window is NOT displayed.");        
-        reporter.reportLogWithScreenshot("Add Data Add on");  
-        rogers_add_data_page.selectFirstDataAddOnOption();
-        reporter.reportLogWithScreenshot("Select Add on option");  
-        rogers_add_data_page.clkContinue();
-        reporter.reportLogWithScreenshot("Select Purchase");  
-        rogers_add_data_page.clkPurchase();
-        reporter.reportLogWithScreenshot("Purchase status");  
-        if(rogers_add_data_page.clkCloseAddDataIfSuccessful())
+        common_business_flows.addDataFlow();
+        if(rogers_add_data_page.verifyAddDataSuccessMsgIsDisplayed())
         {
+        	rogers_add_data_page.clkCloseOnAddDataOverlay();
         	//Sign out and re sign in to verify if added data reflected.
 	        reporter.reportLogWithScreenshot("Wireless dashboard page.");  
 	        rogers_login_page.clickSignOut();
@@ -105,6 +96,9 @@ public class RogersSS_TC_056_ValidateDataUsageDesplayWithinLimit_postpaid_NSEDat
 	        rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
 	        reporter.reportLogWithScreenshot("Wireless dashboard page.");
 	        
+        } else if (rogers_add_data_page.verifyErrorMsgIsDisplayed()) {
+        	reporter.reportLogWithScreenshot("Add data purchase got error, please check if limit is reached.");
+        	rogers_add_data_page.clkCloseOnAddDataOverlay();
         }
         reporter.reportLogWithScreenshot("Navigated back to dashboard after resign in");  
         reporter.softAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded(),

@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Rogers Complete RT Suite - BFA" parallel="none" thread-count="10">
-	<parameter name="strBrowser" value="chrome" />
-	<parameter name="strLanguage" value="en" />
-	<parameter name="strGroupName" value="buyflows" />
-	
+<suite name="Rogers Buyflow RT Suite" parallel="none" thread-count="10">
 	<listeners>
 		<listener
-			class-name="com.rogers.test.listeners.TestListener" />
+			class-name="com.rogers.buyflow.test.listeners.TestListener" />
 		<listener
-			class-name="com.rogers.test.listeners.AnnotationTransformer" />
+			class-name="com.rogers.buyflow.test.listeners.AnnotationTransformer" />
 	</listeners>
 	
-	<test name="TC01-Validate user able to perform AAL on SL with Fin offer" enabled="true">
+	<test name="TC01-Validate user able to perform AAL on SL with Fin offer" enabled="false">
 	<classes>
 			<class
 				name="com.rogers.test.tests.buyflows.RogersBFA_TC01_AAL_SingleLine_FinancePlan_Test">

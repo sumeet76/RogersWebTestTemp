@@ -83,7 +83,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	@FindBy(xpath = "//button[@data-target='#miniCollapse']")
 	WebElement downChevronYourCart;
 
-	@FindBy(xpath = "//div[@class='mini-body']//div[contains(@ng-bind-html,'$root.gwpDetails')]")
+	@FindBy(xpath = "//div[@class='mini-body']//tr[@class='cms-promotions-gwp ng-tns-c46-27 ng-star-inserted']")
 	WebElement gwpYourCart;
 
 	/**
@@ -91,8 +91,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkChevronYourCart() {
-		reusableActions.waitForElementVisibility(downChevronYourCart, 120);
-		reusableActions.getWhenReady(downChevronYourCart, 120).click();
+		reusableActions.getWhenReady(downChevronYourCart, 60).click();
 	}
 
 	/**
@@ -131,7 +130,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectDOBYearExistingCustomer(String strDOBYear) {
-		//reusableActions.waitForElementInvisibility(popupLoadingFingers);
+		reusableActions.waitForElementInvisibility(popupLoadingFingers);
 		reusableActions.waitForElementVisibility(ddlCreditCheckYear,20);
 		reusableActions.selectWhenReady(ddlCreditCheckYear, strDOBYear);
 	}

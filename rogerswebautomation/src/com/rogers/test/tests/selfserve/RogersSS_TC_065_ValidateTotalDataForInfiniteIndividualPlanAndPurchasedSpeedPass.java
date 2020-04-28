@@ -71,6 +71,7 @@ public class RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurcha
 		reporter.reportLogWithScreenshot("Speed passes");
 		rogers_manage_data_page.clkBackOnManageDataUsagePage();
 		
+		
 		int totalAddedSpeedPass = common_business_flows.addSpeedPass();
 
 		reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(),
@@ -88,6 +89,8 @@ public class RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurcha
 		rogers_manage_data_page.clkBackOnManageDataUsagePage();
 
 	}
+	
+
 
 
 }

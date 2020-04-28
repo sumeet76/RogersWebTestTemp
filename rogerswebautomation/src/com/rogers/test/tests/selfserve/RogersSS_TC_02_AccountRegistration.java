@@ -42,7 +42,8 @@ public class RogersSS_TC_02_AccountRegistration extends BaseTestClass {
 		rogers_login_page.switchToSignInIFrame();
 		rogers_login_page.clickRegister();
 		reporter.reportLogWithScreenshot("Register Now");
-		rogers_register_page.clickRegisterNow();
+		//=== commenting due  to changes in story DC-3077 		
+		//rogers_register_page.clickRegisterNow();
 		reporter.reportLogWithScreenshot("Wireless Or Resedential Services");
 		rogers_register_page.clickWirelessOrResidentialServices();
 		reporter.reportLogWithScreenshot("Set account number and Postal code");

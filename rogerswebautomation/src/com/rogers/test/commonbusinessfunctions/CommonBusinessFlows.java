@@ -101,5 +101,34 @@ public class CommonBusinessFlows {
 		return intAddedSpeedPassRecord;
 
 	}
+	
+	public void addDataFlow() {
+		baseTestClass.rogers_wireless_dashboard_page.clkAddData();
+		baseTestClass.reporter.hardAssert(baseTestClass.rogers_add_data_page.verifyAddDataOverlayIsDisplayed(), 
+							"Add the Data top-up  window should be displayed. (completd an MDT add on)", 
+							"Add the Data top-up  window is NOT displayed.");        
+		baseTestClass.reporter.reportLogWithScreenshot("Add Data Add on");  
+		baseTestClass.rogers_add_data_page.selectFirstDataAddOnOption();
+		baseTestClass.reporter.reportLogWithScreenshot("Select Add on option");  
+		baseTestClass.rogers_add_data_page.clkContinue();
+		baseTestClass.reporter.reportLogWithScreenshot("Select Purchase");  
+		baseTestClass.rogers_add_data_page.clkPurchase();
+		baseTestClass.reporter.reportLogWithScreenshot("Purchase status");  
+
+	}
+
+	public void scrollToMiddleOfWebPage() {
+		baseTestClass.rogers_account_overview_page.scrollToMiddleOfPage();
+	}
+	
+
+	public void scrollToTopOfWebPage() {
+		baseTestClass.rogers_account_overview_page.scrollToTopOfPage();
+	}
+	
+
+	public void scrollToBottomOfWebPage() {
+		baseTestClass.rogers_account_overview_page.scrollToBottomOfPage();
+	}
 
 }

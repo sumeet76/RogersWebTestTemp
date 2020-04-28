@@ -54,7 +54,7 @@ public class RogersSolarisConsumer_TC_005_ExistingSolarisCustomer_TVPackageChang
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         rogers_solaris_tv_dashboard_page.clkChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the TV packages page");
-        rogers_solaris_tv_dashboard_page.selectSolarisTVPackage(TestDataHandler.solarisTVAccountPackageUpgrade.accountDetails.getDowngradePlanEn(),TestDataHandler.solarisTVAccountPackageUpgrade.accountDetails.getDowngradePlanFr());
+        rogers_solaris_tv_dashboard_page.selectSolarisTVPackage(TestDataHandler.solarisTVAccountPackageUpgrade.accountDetails.getDowngradePlanEn());
         rogers_solaris_tv_dashboard_page.clkPopupChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the personalize channel page");
         rogers_solaris_tv_channels_and_themepacks_page.clkExchangeLater(); 

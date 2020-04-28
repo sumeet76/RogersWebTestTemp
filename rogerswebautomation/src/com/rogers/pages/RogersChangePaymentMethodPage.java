@@ -28,7 +28,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@translate,'pm_invoice_yes')]")
 	WebElement btnCancelAutomaticPayments;
 
-	@FindBy(xpath = "//div[text()='Success! Your payment method has been changed.']")
+	@FindBy(xpath = "//div[text()='Success! Your payment method has been changed.' or contains(text(),'est fait! Votre mode de paiement a été modifié')]")
 	WebElement lblChangePaymentMethodSuccess;
 	
 	@FindBy(xpath = "//div[@class='current-pm']//div[@class='current-pm-value']/span")
@@ -130,8 +130,9 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyChangePaymentMethodToManual() {
-		return (reusableActions.isElementVisible(lblChangePaymentMethodSuccess, 60) &&
-				lblCurrentPaymentMethod.getText().equals("Manual payments"));
+		return (reusableActions.isElementVisible(lblChangePaymentMethodSuccess, 60) &&(
+				lblCurrentPaymentMethod.getText().equals("Manual payments")
+				|| lblCurrentPaymentMethod.getText().equals("Paiements manuels")));
 	}
 
 	/**

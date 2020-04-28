@@ -40,6 +40,9 @@ public class RogersSpeedPassPage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[@class='selected-plan-details']")
 	WebElement divAddSpeedPassSelectPlan;
+		
+	@FindBy (xpath = "//div[@class='selected-plan-details-item selected']/div")
+	WebElement maxSpeedDataToBeAdded;
 	
 	/**
 	 * To verify if the speed pass pop up display in wireless dashboard page

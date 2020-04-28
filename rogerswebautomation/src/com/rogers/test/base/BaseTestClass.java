@@ -7,6 +7,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -16,24 +17,9 @@ import org.apache.http.message.BasicNameValuePair;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Listeners;
+
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
-import com.rogers.oneview.pages.AccountOverViewPage;
-import com.rogers.oneview.pages.ChannelsAndThemePacksPage;
-import com.rogers.oneview.pages.CreditCheckPage;
-import com.rogers.oneview.pages.CustomerProfilePage;
-import com.rogers.oneview.pages.EnvironmentSelectionPage;
-import com.rogers.oneview.pages.FulfillmentPage;
-import com.rogers.oneview.pages.HomePhoneAddonsPage;
-import com.rogers.oneview.pages.HomePhoneSelectionPage;
-import com.rogers.oneview.pages.HomePhonedashboard;
-import com.rogers.oneview.pages.InternetDashboardPage;
-import com.rogers.oneview.pages.OrderConfirmationPage;
-import com.rogers.oneview.pages.OrderReviewPage;
-import com.rogers.oneview.pages.PaymentOptionsPage;
-import com.rogers.oneview.pages.RogersIgniteBundlesPage;
-import com.rogers.oneview.pages.RogersInternetUsageOVPage;
-import com.rogers.oneview.pages.TVDashboardPage;
 import com.rogers.pages.RogersAccountOverviewPage;
 import com.rogers.pages.RogersAddDataPage;
 import com.rogers.pages.RogersBillingPage;
@@ -94,7 +80,6 @@ import com.rogers.test.helpers.CaptchaBypassHandlers;
 import com.rogers.test.helpers.RogersEnums;
 
 import extentreport.ExtentTestManager;
-import utils.AppiumServerJava;
 import utils.Reporter;
 
 
@@ -108,6 +93,7 @@ public class BaseTestClass {
 	public enum OS {
         WIN, LIN, MAC
     };// Operating systems.
+
 	private WebDriver driver;
 	public static ExtentReports report;
 	public static ExtentTest logger;
@@ -118,6 +104,7 @@ public class BaseTestClass {
 	public RogersProfileAndSettingsPage rogers_profile_and_settings_page;
 	public RogersWirelessDashboardPage rogers_wireless_dashboard_page;
 	public RogersSpeedPassPage rogers_speed_pass_page;
+	public RogersAddDataPage rogers_add_data_page;
 	public EnsHomePage ensHomePage;
 	public EnsNotificationViewPage ensNoteViewPage;
 	protected HashMap<String,String> xmlTestParameters;
@@ -130,7 +117,6 @@ public class BaseTestClass {
 	protected RogersSecurePaymentPage rogers_secure_payment_page;
 	protected RogersPaymentOptionsPage rogers_payment_options_page;
 	protected RogersMakePaymentPage rogers_make_payment_page;
-	protected RogersAddDataPage rogers_add_data_page;
 	protected RogersManageDataPage rogers_manage_data_page;
 	protected CommonBusinessFlows common_business_flows; 
 	protected VerifyInEns ensVerifications;
@@ -170,26 +156,8 @@ public class BaseTestClass {
 	protected RogersChooseNumberPage rogers_choose_number_page;
 	protected RogersPaymentPage rogers_payment_page;
 	protected RogersChoosePlanPage rogers_choose_plan_page;
-	protected EnvironmentSelectionPage environment_selection_page; 
-	protected AccountOverViewPage account_over_view_page;
-	protected TVDashboardPage tv_dashboard_page;
-	protected InternetDashboardPage internet_dashboard_page;
-	protected RogersInternetUsageOVPage rogers_internet_usage_ov_page;
-	protected HomePhonedashboard home_phone_dashboard;
-	protected RogersIgniteBundlesPage rogers_ignite_bundles_page;
-	protected CustomerProfilePage customer_Profile_Page;
-	protected CreditCheckPage credit_Check_Page;
-	protected HomePhoneSelectionPage home_Phone_Selection_Page;
-	protected FulfillmentPage fulfillment_Page;
-	protected PaymentOptionsPage payment_Options_Page;
-	protected OrderReviewPage order_Review_Page;
-	protected OrderConfirmationPage order_Confirmation_Page;
-	protected ChannelsAndThemePacksPage channels_Theme_Packs_Page;
-	protected HomePhoneAddonsPage home_Phone_Addons_Page;
-	AppiumServerJava appiumServer = new AppiumServerJava();	
-	//int port = 4723;
-	
-	private CaptchaBypassHandlers captcha_bypass_handlers;
+		
+		private CaptchaBypassHandlers captcha_bypass_handlers;
 		
 		public BaseTestClass() {
 			 browserdriver =  new BrowserDrivers();
@@ -216,19 +184,19 @@ public class BaseTestClass {
 			captcha_bypass_handlers.captchaBypassURLSelfserveFlows(strUrl, strLanguage);
 			break;
 			
-		case "connectedhome_legacyanonymous":				
+		case "connectedhome_LegacyAnonymous":				
 			captcha_bypass_handlers.captchaBypassURLLegacyAnonymousBuyFlows(strUrl, strLanguage); 
 			break;	
 			
-		case "connectedhome_igniteanonymous":				
+		case "connectedhome_IgniteAnonymous":				
 			captcha_bypass_handlers.captchaBypassURLIgniteAnonymousBuyFlows(strUrl, strLanguage); 
 			break;
 			
-		case "connectedhome_legacylogin":
+		case "connectedhome_LegacyLogin":
 			captcha_bypass_handlers.captchaBypassURLLegacyLoginFlows(strUrl, strLanguage);
 			break; 
 
-		case "connectedhome_ignitelogin":
+		case "connectedhome_IgniteLogin":
 			captcha_bypass_handlers.captchaBypassURLIgniteLoginFlows(strUrl, strLanguage);
 			break; 
 			
@@ -256,23 +224,6 @@ public class BaseTestClass {
 		startSession(strUrl, strBrowser, strLanguage, enumGroupName.toString().toLowerCase().trim(), currentTestMethodName);
 	}	
 
-	 /* To start a session using given url, browser, language and test case group name.
-	 * @param strUrl                     string of test url
-	 * @param strBrowser                 string of browser name
-	 * @param strLanguage                string of language to use
-	 * @param enumGroupName               string of group name of the test case
-	 * @param currentTestMethodName 
-	 * @throws ClientProtocolException   org.apache.http.client.ClientProtocolException, Signals an error in the HTTP protocol.
-	 * @throws IOException               java.io.IOException, Signals that an I/O exception of some sort has occurred, produced by failed or interrupted I/O operations.
-	 */
-	public void startOVSession(String strUrl,  String strBrowser,  String strLanguage, String strGroupName, String strContactID,String strAccNo, String strLoginID,  String strLanID,  Method currentTestMethodName ) throws ClientProtocolException, IOException {
-		this.driver = browserdriver.driverInit(strBrowser, currentTestMethodName, strGroupName);
-		System.out.println(strUrl + "----------------------------------------------------------------------------");
-		captcha_bypass_handlers = new CaptchaBypassHandlers(getDriver());
-		captcha_bypass_handlers.chOnewviewFlows(strUrl, strAccNo, strLoginID, strLanID, strLanguage,strBrowser,  currentTestMethodName ,strContactID);
-		   setImplicitWait(getDriver(), 10);
-		    init(strGroupName);
-}
 	/**
 	 * To initiate the page objects based on test case group, will read group name from xml file.
 	 * @param strGroupName string of group name.
@@ -283,6 +234,7 @@ public class BaseTestClass {
 		switch(strGroupName) {
 		
 		case "selfserve":
+		case "selfserve_login":
 			
 			rogers_home_page = new RogersHomePage(driver);
 			rogers_login_page = new RogersLoginPage(driver);
@@ -310,7 +262,7 @@ public class BaseTestClass {
 			rogers_recover_pass_or_name = new RogersRecoverPassOrNamePage(getDriver());
 			break;
 			
-		case "connectedhome_legacyanonymous":
+		case "connectedhome_LegacyAnonymous":
 			
 			rogers_home_page = new RogersHomePage(driver);
 			rogers_buy_page = new RogersBuyPage(driver);
@@ -325,7 +277,7 @@ public class BaseTestClass {
 			rogers_payment_options_page = new RogersPaymentOptionsPage(driver);
 			break;
 			
-		case "connectedhome_igniteanonymous":
+		case "connectedhome_IgniteAnonymous":
 			
 			rogers_home_page = new RogersHomePage(driver);
 			rogers_buy_page = new RogersBuyPage(driver);
@@ -345,7 +297,7 @@ public class BaseTestClass {
 			rogers_home_phone_port_in_page = new RogersHomePhonePortInPage(driver);
 			break;
 			
-		case "connectedhome_legacylogin":
+		case "connectedhome_LegacyLogin":
 			
 			rogers_home_page = new RogersHomePage(driver);
 			rogers_buy_page = new RogersBuyPage(driver);
@@ -362,9 +314,8 @@ public class BaseTestClass {
 			rogers_legacy_bundle_buy_page = new RogersLegacyBundleBuyPage(driver);
 			rogers_tech_install_page = new RogersTechInstallPage(driver);
 			rogers_payment_options_page = new RogersPaymentOptionsPage(driver);
-			rogers_igniteTV_credit_check_page = new RogersIgniteTVCreditCheckPage(driver);
 			
-		case "connectedhome_ignitelogin":
+		case "connectedhome_IgniteLogin":
 			
 			rogers_home_page = new RogersHomePage(driver);
 			rogers_buy_page = new RogersBuyPage(driver);
@@ -406,13 +357,8 @@ public class BaseTestClass {
 			rogers_order_review_page = new RogersOrderReviewPage(driver);
 			rogers_solaris_tv_channels_and_themepacks_page = new RogersSolarisTVChannelsAndThemepacksPage(driver);
 			rogers_register_page = new RogersRegisterPage(driver);
-			rogers_igniteTV_profile_creation_page = new RogersIgniteTVProfileCreationPage(driver);
 			rogers_internet_usage_page = new RogersInternetUsagePage(driver);
 			rogersBillingPage = new RogersBillingPage(driver);
-			rogers_tech_install_page = new RogersTechInstallPage(driver);
-			rogers_payment_options_page = new RogersPaymentOptionsPage(driver);
-			rogers_igniteTV_credit_check_page = new RogersIgniteTVCreditCheckPage(driver);
-			rogers_home_phone_selection_page = new RogersHomePhoneSelectionPage(driver);
 			break;
 			
 		case "buyflows":
@@ -437,26 +383,6 @@ public class BaseTestClass {
 			rogers_payment_page = new RogersPaymentPage(getDriver());
 			rogers_choose_plan_page = new RogersChoosePlanPage(getDriver());
 			rogers_change_plan_page = new RogersChangePlanPage(getDriver());
-			break;
-			
-		case "choneview":
-			
-			environment_selection_page = new EnvironmentSelectionPage(getDriver());
-			account_over_view_page= new AccountOverViewPage(getDriver());
-			tv_dashboard_page= new TVDashboardPage(getDriver());
-			internet_dashboard_page = new InternetDashboardPage(getDriver());
-			rogers_internet_usage_page = new RogersInternetUsagePage(getDriver());
-			home_phone_dashboard = new HomePhonedashboard(getDriver());
-			rogers_ignite_bundles_page=new  RogersIgniteBundlesPage(getDriver());
-			customer_Profile_Page=new CustomerProfilePage(getDriver());
-			credit_Check_Page=new CreditCheckPage(getDriver());
-			home_Phone_Selection_Page=new HomePhoneSelectionPage(getDriver());
-			fulfillment_Page=new FulfillmentPage(getDriver());
-			payment_Options_Page=new PaymentOptionsPage(getDriver());
-			order_Review_Page=new OrderReviewPage(getDriver());
-			order_Confirmation_Page=new OrderConfirmationPage(getDriver());
-			channels_Theme_Packs_Page=new ChannelsAndThemePacksPage(getDriver());
-			home_Phone_Addons_Page=new HomePhoneAddonsPage(getDriver());
 			break;
 			
 		default:

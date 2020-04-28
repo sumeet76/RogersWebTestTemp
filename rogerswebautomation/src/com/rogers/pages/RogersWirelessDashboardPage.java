@@ -125,10 +125,10 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy (xpath = "//img[@src='./assets/images/widget-loader.gif']")
 	WebElement imgLoading;
 	
-	@FindBy(xpath = "//p[contains(text(),'been updated.')]")
+	@FindBy(xpath = "//p[contains(text(),'been updated.') or contains(text(),'vocale a été modifié')]")
 	WebElement msgResetVoicemailPwdSuccess;
 	
-	@FindBy (xpath = "//span[contains(text(),'Done')]")
+	@FindBy (xpath = "//span[contains(text(),'Done') or contains(text(),'Termin')]")
 	WebElement btnResetVMPwdDone;
 	
 	@FindBy(xpath = "//button/span[@translate='internet_change']")
@@ -143,7 +143,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy (xpath = "//span[contains(text(),'phone repair claim') or contains(text(),'réparation de téléphone')]")
 	WebElement lnkTrackRepairClaim;
 	
-	@FindBy (xpath = "//button[@title='Continue to the site'] | //span[@translate='global.cta.continue']")
+	@FindBy (xpath = "//button[@title='Continue to the site' or contains(@title,'Continuer')] | //span[@translate='global.cta.continue']")
 	WebElement btnHlpYrPhoneContinue;
 	
 	@FindBy (xpath = "//ds-modal-container")
@@ -204,17 +204,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy (xpath = "//div[@class='add-data']")
 	WebElement lnkAddDataTopUp;
 	
-	@FindBy (xpath = "//select[@formcontrolname='selectedDataTopup']/parent::div")
-	WebElement divSelectAddDataOpt;
-		
-	@FindBy (xpath = "//span[@translate='purchaseData.purchasingPlansConfirmationModal.title']")
-	WebElement lblConfirmDataPurchaseTitle;
-	
 	@FindBy(xpath = "//ins[@translate='plans.addOns']")
 	WebElement divAddOns;
-		
-	@FindBy(xpath = "//div[@class='addon-list']")
-	WebElement divAddOnsList;
 	
 	@FindBy(xpath = "//span[@class='textRight']")
 	WebElement lbltotalDataDisplayedBelowBarRightSide;
@@ -272,12 +263,6 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	
 	@FindBy (xpath = "//div[@class='add-data']/span[contains(text(),'Speed Pass') or contains(text(),'Accès Rapido')]")
 	WebElement btnSpeedPass;
-	
-	@FindBy (xpath = "//div[@class='selected-plan-details-item selected']/div")
-	WebElement maxSpeedDataToBeAdded;
-	
-	@FindBy (xpath = "//p[@class='text-md text-semi add-title mt-15']")
-	WebElement addedDataInDataManagePage;
 
 	@FindBy(xpath = "//h2[contains(text(),'My Device') or contains(text(),'Mon appareil')]")
 	WebElement headerMyDevice;
@@ -389,26 +374,16 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//div[@class='data-usage-bar-background']")
 	WebElement divUsageBar;
+
+	@FindBy(xpath = "//a[contains(@class,'btn_prev')]")
+	WebElement btnLeftScrollCTN;
+
+	@FindBy(xpath = "//a[contains(@class,'btn_next')]")
+	WebElement btnRightScrollCTN;
 	
-	//SE infinite view details page
-	
-	@FindBy(xpath = "//p[text()=' Plan Data ' or contains(text(),'Données du forfait')]")
-	WebElement headerPlanDataOnDataDetailsPage;
-	
-	@FindBy(xpath = "//p[text()=' Unlimited data in your plan ' or contains(text(),'Données illimitées avec votre forfait')]")
-	WebElement headerUnlimitedDataInYourPlanOnDataDetailsPage;
-	
-	@FindBy(xpath = "//p[text()='Reduced speeds thereafter' or text()='La vitesse est réduite ensuite']/ancestor::td")
-	WebElement lblShareableMaxSpeedData;
-	
-	@FindBy(xpath = "//p[text()=' Total Data ' or contains(text(),'Données totales')]")
-	WebElement headerTotalDataViewDataDetails;
-	
-	@FindBy(xpath = "//span[text()=' shareable max speed data ' or contains(text(),'de données à vitesse maximale à partager')]/ancestor::p")
-	WebElement lblTotalDataMessageInViewDetails;
-	
-	@FindBy(xpath = "//p[contains(text(),' Speed Pass') or contains(text(),'Accès Rapido de')]")
-	WebElement lblSpeedPassInTotalData;
+	@FindBy(xpath = "//span[@class='cta_no']/parent::span/parent::div")
+	List<WebElement> lstOfCTNBadgesOnDashboardPage;
+
 	
 	
 	/**
@@ -992,9 +967,31 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @return true if element is displayed else false
 	 * @author Mirza.Kamran
 	 */
-	public boolean validateTotalDataBucket() {
+	public boolean verifyTotalDataBucket() {
 	
 		return reusableActions.isElementVisible(lblTotalDataBucket, 30);
+	}
+	
+	/**
+	 * verify the added data is reflected in total data volume after successfully add data.
+	 * @param origDataVolume, the total data volume before add data.
+	 * @param addedDataVolume, the added data volume
+	 * @return true if the added data is reflected in total data volume
+	 * @author ning.xue
+	 */
+	public boolean verifyAddedDataReflectedInTotalDataBucket(double origDataVolume, double addedDataVolume) {
+		double newTotalDataVolume = this.getTotalDataVolume();
+		return newTotalDataVolume == origDataVolume + addedDataVolume;
+	}
+	
+	/**
+	 * To get the total data volume in total data bucket for SE accounts.
+	 * @return double, the value of total data.
+	 * @author ning.xue
+	 */
+	public double getTotalDataVolume() {
+		String strTotalData = reusableActions.getWhenReady(lblTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded, 30).getText().trim();
+		return Double.parseDouble(strTotalData.substring(0, strTotalData.length()-2).trim());
 	}
 
 	/**
@@ -1558,47 +1555,6 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	}
 
 	/**
-	 * Verifies if the Plan data is displayed (shared data across all lines)
-	 * @return true if the elements exists else false
-	 * @author Mirza.Kamran
-	 */
-	public boolean verifyPlanDataIsDisplayed() {
-		return (reusableActions.isDisplayed(headerPlanDataOnDataDetailsPage)
-				&& reusableActions.isDisplayed(headerUnlimitedDataInYourPlanOnDataDetailsPage));
-	} 
-
-	/**
-	 * Verifies if the total data is displayed in data details
-	 * @return true if element is displayed else false
-	 * @param countOfExistSpeedPassTotalGB int, value for total gb added
-	 * @param totalSharedDataDisplayedInPlanDataSection, int, the value of total shared data
-	 * @author ning.xue
-	 */
-	public boolean verifyTotalDataInDataDetailsWithMaxSpeedAndTotalOfSpeedPasses(int countOfExistSpeedPassTotalGB, int totalSharedDataDisplayedInPlanDataSection) {
-		String strtotalShared = reusableActions.getWhenReady(lblTotalDataMessageInViewDetails).getText().split("GB|Go")[0].replace(",", ".");		
-		if (!reusableActions.isElementVisible(lblSpeedPassInTotalData, 10)) {
-			return false;
-		} else {
-			String strSpeedPassTotal = reusableActions.getWhenReady(lblSpeedPassInTotalData).getText();
-			String strTotalSpeedPass= strSpeedPassTotal.replaceAll("[^0-9]", "");
-			return (((int)Double.parseDouble(strtotalShared) == totalSharedDataDisplayedInPlanDataSection)
-					&& (Integer.parseInt(strTotalSpeedPass) == countOfExistSpeedPassTotalGB));
-		}
-
-	}
-
-	/**
-	 * Gets the total plan data
-	 * @return int value of total shared data
-	 * @author Mirza.Kamran
-	 */
-	public int getTotalPlanData() {	
-		String str = reusableActions.getWhenReady(lblShareableMaxSpeedData).getText().split("GB|Go")[0].replace(",", ".");
-		String numberOnly= str.replaceAll("[^0-9]", "");
-		return Integer.parseInt(numberOnly);
-	}
-	
-	/**
 	 * Clicks on Add Data
 	 * @author Mirza.Kamran
 	 */
@@ -1631,6 +1587,50 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		reusableActions.getWhenReady(By.xpath("//span[contains(text(),'" + strLast4Digit + "')]"), 20).click();
 	}
 
+	/**
+	 * The scrolls for CTNs is present
+	 * @return true if the scroll bar is present else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isScrollForCTNsPresent() {		
+		return (reusableActions.isElementVisible(btnLeftScrollCTN)
+				&& reusableActions.isElementVisible(btnRightScrollCTN));
+	}
 
+	/**
+	 * Clicks on the Next CTN scroll
+	 * @author Mirza.Kamran
+	 */
+	public void clkNextCTNScrollArrow() {
+		reusableActions.clickWhenReady(btnRightScrollCTN);
+		
+	}
+
+	/**
+	 * Checks if the 6th CTN badge is visible before we have scrolled right
+	 * @return true if not visible else false 
+	 * @author Mirza.Kamran
+	 */
+	public boolean isSixthCTNBadgeInVisibleBeforeScrollingOnDashBoard() {		
+		return !reusableActions.isElementVisible(lstOfCTNBadgesOnDashboardPage.get(5));
+	}
+
+	/**
+	 * Checks if the 6th CTN badge is visible after scrolled right
+	 * @return true if visible else false 
+	 * @author Mirza.Kamran
+	 */
+	public boolean isSixthCTNVisible() {		
+		return reusableActions.isElementVisible(lstOfCTNBadgesOnDashboardPage.get(5));
+	}
+
+	/**
+	 * Clicks the 6th CTN on dashboard page
+	 * @author Mirza.Kamran
+	 */
+	public void clkTheSixthCTN() {
+		reusableActions.clickWhenReady(lstOfCTNBadgesOnDashboardPage.get(5));
+		
+	}
 	
 }

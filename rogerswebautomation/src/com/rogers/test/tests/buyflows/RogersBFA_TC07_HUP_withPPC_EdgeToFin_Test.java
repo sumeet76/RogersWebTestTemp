@@ -83,7 +83,7 @@ public class RogersBFA_TC07_HUP_withPPC_EdgeToFin_Test extends BaseTestClass {
 	@BeforeTest @Parameters({ "strBrowser", "strLanguage","strGroupName"})
 	public void beforeTest(String strBrowser, String strLanguage, String strGroupName,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.bfaConfig.getRogersURL(), strBrowser, strLanguage, strGroupName, method);
+		startSession(TestDataHandler.bfaConfig.getBrowser(), TestDataHandler.bfaConfig.getBrowser(),TestDataHandler.bfaConfig.getLanguage(),strGroupName, method);
 	}
 
     @AfterTest(alwaysRun = true)

@@ -1,8 +1,10 @@
 package com.rogers.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -62,9 +64,15 @@ public class RogersRegisterPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickWirelessOrResidentialServices() {
+		 Capabilities cap = ((RemoteWebDriver)getDriver()).getCapabilities();
+		if(cap.getBrowserName().toLowerCase().contains("firefox")) {
 		reusableActions.getDriver().switchTo().defaultContent();//added for firefox dead object issue handling
 		reusableActions.waitForElementTobeClickable(btnWirelessResidentialServices, 30);
 		reusableActions.executeJavaScriptClick(btnWirelessResidentialServices);
+		}else
+		{
+			reusableActions.clickWhenReady(btnWirelessResidentialServices);
+		}
 	}
 	
 	/**
