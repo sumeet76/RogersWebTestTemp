@@ -14,6 +14,10 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	public RogersIgniteTVProfileCreationPage(WebDriver driver) {
 		super(driver);
 	}
+	
+	@FindBy(xpath = "//ins[@translate='global.label.createProfile']")
+	WebElement txtProfile;
+	
 	@FindBy(xpath = "//input[@id='email1']")
 	WebElement txtEmail;
 	
@@ -47,20 +51,27 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
 	
+	@FindBy(xpath = "//button[@data-target='#miniCollapse']")
+	WebElement downChevronYourCart;
+	
+	@FindBy(xpath = "//div[@class='mini-body']//div[contains(@ng-bind-html,'$root.gwpDetails')]")
+	WebElement gwpYourCart;
+	
 	/**
 	 * To verify the launch of Profile Page
 	 * @return true if the email text box has available, else false 
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyProfilePage() {
-		return reusableActions.isElementVisible(txtEmail);
+		//reusableActions.waitForElementInvisibility(popupLoadingFingers,100);
+		return reusableActions.isElementVisible(txtProfile);
 	}
 	
 	/**
 	 * Set dynamic email and confirm email on profile page
 	 * @author Chinnarao.Vattam
 	 */
-	public void setEmail() {
+	public void setEmail() {		
 		String strEmail = FormFiller.generateEmail();
 		reusableActions.getWhenReady(txtEmail, 60).clear();
 		reusableActions.getWhenReady(txtEmail,10).sendKeys(strEmail);
@@ -99,11 +110,30 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	}
 	
 	/**
+	 * To click on the chevron on the TV profile creation page
+	 * @author Saurav.Goyal
+	 */
+	public void clkChevronYourCart() {
+		reusableActions.waitForElementVisibility(downChevronYourCart, 120);
+		reusableActions.getWhenReady(downChevronYourCart, 120).click();
+	}
+
+	/**
+	 * To verify gwp promotion in the profile creation page
+	 * @return true if the promotion is available else return false
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyGWPYourCartPromotion() {
+		reusableActions.waitForElementVisibility(gwpYourCart, 120);
+		return	reusableActions.isElementVisible(gwpYourCart);
+	}
+	
+	/**
 	 * Click the Submit button on the profile page
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSubmitProfile() {
-		reusableActions.clickWhenReady(btnProfielSubmit, 60);
+		reusableActions.getWhenReady(btnProfielSubmit, 120).click();
 	}
 
 	/**

@@ -79,6 +79,32 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement popupLoadingFingersnew;
 	
+
+	@FindBy(xpath = "//button[@data-target='#miniCollapse']")
+	WebElement downChevronYourCart;
+
+	@FindBy(xpath = "//div[@class='mini-body']//div[contains(@ng-bind-html,'$root.gwpDetails')]")
+	WebElement gwpYourCart;
+
+	/**
+	 * To click on the chevron on the credit check page
+	 * @author Saurav.Goyal
+	 */
+	public void clkChevronYourCart() {
+		reusableActions.waitForElementVisibility(downChevronYourCart, 120);
+		reusableActions.getWhenReady(downChevronYourCart, 120).click();
+	}
+
+	/**
+	 * To verify gwp promotion in the credit check page
+	 * @return true if the promotion is available else return false
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyGWPYourCartPromotion() {
+		reusableActions.waitForElementVisibility(gwpYourCart, 120);
+		return	reusableActions.isElementVisible(gwpYourCart);
+	}
+	
 	/**
 	 * To verify the Credit Check Year drop down to verify the Credit Evalution Page
 	 * @return true if it the credit check page displays the Credit Check Year drop down, else false
@@ -105,7 +131,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectDOBYearExistingCustomer(String strDOBYear) {
-		reusableActions.waitForElementInvisibility(popupLoadingFingers);
+		//reusableActions.waitForElementInvisibility(popupLoadingFingers);
 		reusableActions.waitForElementVisibility(ddlCreditCheckYear,20);
 		reusableActions.selectWhenReady(ddlCreditCheckYear, strDOBYear);
 	}

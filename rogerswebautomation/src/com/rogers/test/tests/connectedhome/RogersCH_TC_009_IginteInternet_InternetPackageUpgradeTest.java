@@ -59,7 +59,7 @@ public class RogersCH_TC_009_IginteInternet_InternetPackageUpgradeTest extends B
         reporter.reportLogWithScreenshot("Launched the Interent dashboard");
         rogers_internet_dashboard_page.clkSolChangeInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Interent packages page");
-        rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.solarisInternetAccount.getAccountDetails().getUpgradePlan());
+        rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.solarisInternetAccount.getAccountDetails().getUpgradePlanEn(),TestDataHandler.solarisInternetPackageChange.getAccountDetails().getUpgradePlanFr());
         reporter.reportLogWithScreenshot("Launched the Interent packages confirm OK popup"); 
         rogers_internet_dashboard_page.clkInternetChangeOK();
         reporter.reportLogWithScreenshot("Launched the agreement page");

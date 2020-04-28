@@ -28,7 +28,8 @@ public class PaymentDetails {
 	public void setBankDetails(BankDetails bankDetails) {
 		this.bankDetails = bankDetails;
 	}
-	public Object getPaymentDetails() {
+
+	public CreditCardDetails getCablePaymentDetails() {
 		// TODO Auto-generated method stub
 		return null;
 	}

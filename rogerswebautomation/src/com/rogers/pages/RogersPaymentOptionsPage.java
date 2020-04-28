@@ -55,6 +55,32 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
 	
+	@FindBy(xpath = "//button[@data-target='#miniCollapse']")
+	WebElement downChevronYourCart;
+
+	@FindBy(xpath = "//div[@class='mini-body']//div[contains(@ng-bind-html,'$root.gwpDetails')]")
+	WebElement gwpYourCart;
+
+	/**
+	 * To click on the chevron on the payment page
+	 * @author Saurav.Goyal
+	 */
+	public void clkChevronYourCart() {
+		reusableActions.waitForElementVisibility(downChevronYourCart, 200);
+		reusableActions.javascriptScrollToTopOfPage();
+		reusableActions.getWhenReady(downChevronYourCart, 120).click();
+	}
+
+	/**
+	 * To verify gwp promotion in the payment page
+	 * @return true if the promotion is available else return false
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyGWPYourCartPromotion() {
+		reusableActions.waitForElementVisibility(gwpYourCart, 120);
+		return	reusableActions.isElementVisible(gwpYourCart);
+	}
+	
 	/**
 	 * Verify the Payment Modes page
 	 * @return true if the Payment Mode drop down list is present, else false
@@ -65,6 +91,15 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 		return	reusableActions.isElementVisible(ddlPaymentMode, 20);
 	}
 	
+	/**
+	 * Verify the Payment Modes page
+	 * @return true if the Payment Mode drop down list is present, else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyPaymentModepageMigration() {
+		reusableActions.waitForElementVisibility(btnPaymentConfirm, 200);
+		return	reusableActions.isElementVisible(btnPaymentConfirm, 20);
+	}
 	/**
 	 * Selects the payment modes (pac, pacc, invoice) on the payment options page
 	 * @param strPaymentMode payment modes for the payment for the purchase of Rogers offers
@@ -88,8 +123,8 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void setCreditCardNumberIFrame(String strAccountNumber) {
-		reusableActions.clickWhenVisible(txtCardNumber);
-		reusableActions.getWhenReady(txtCardNumber).sendKeys(strAccountNumber);
+		reusableActions.getWhenReady(txtCardNumber,90);
+		reusableActions.getWhenReady(txtCardNumber,30).sendKeys(strAccountNumber);
 	}
 	
 	/**
@@ -203,9 +238,9 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	/**
 	 * click on  the payment confirmation button
 	 * @author chinnarao.vattam
+	 * Updated by saurav.goyal as per discussion with chinnarao.vattam
 	 */
 	public void clkPaymentConfirm() {
-		reusableActions.waitForElementTobeClickable(btnPaymentConfirm, 180);
 		reusableActions.getWhenReady(btnPaymentConfirm, 180).click();
 	}
 	
@@ -214,10 +249,12 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkPaymentConfirmExistingCustomer() {
-		reusableActions.waitForElementInvisibility(popupLoadingFingers, 180);
+		//reusableActions.waitForElementInvisibility(popupLoadingFingers, 180);
+		reusableActions.waitForElementTobeClickable(btnPaymentConfirm, 180);	
 		reusableActions.waitForElementTobeClickable(btnPaymentConfirm, 180);
-		reusableActions.getWhenReady(btnPaymentConfirm, 180).click();
+		reusableActions.executeJavaScriptClick(btnPaymentConfirm);
 	}
+	
 	/**
 	 * Selects the Payment Method as 'Invoive (manual payments)'
 	 * @author rajesh.varalli1

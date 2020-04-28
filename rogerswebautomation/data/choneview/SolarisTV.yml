@@ -1,0 +1,10 @@
+# Account Details 
+---
+name: solarisTVAccount
+dealerCode: FDBAC
+accountDetails:
+   type: TV
+   ban:  930687728
+   downgradeBan: 930674387
+...
+

@@ -125,6 +125,13 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='modal-content']//ins[@translate='global.cta.yesResetPinNumber']")
 	WebElement btnContinueParentalControlAndPinReset;	
 
+	@FindBy(xpath = "//i[@class='ute-icon-button-right']")
+	WebElement imgNext;
+	
+	@FindBy(xpath = "//i[@class='ute-icon-button-left']")
+	WebElement imgPrevious;
+
+	  
 	
 	/**
 	 * Click on Reset Parental controls And Pin link
@@ -271,14 +278,25 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 
 	/**
 	 * Selects the solaris tv package name to be upgrade or downgrade 
-	 * @param strPackageName solaris tv package name to be upgrade or downgrade  
+	 * @param strPackageNameEn solaris tv package name to be upgrade or downgrade
+	 * @param strPackageNameFr solaris tv package name to be upgrade or downgrade  
 	 * @author chinnarao.vattam
 	 */
-	public void selectSolarisTVPackage(String strPackageName) {
-		By packageNameLocator = By.xpath("//h4[contains(normalize-space(.),'" + strPackageName + "') or contains(normalize-space(.),'" + strPackageName + "')]/ancestor::div[contains(@class,'owl-item')]//ins[@translate='global.cta.select']");
-		reusableActions.waitForElementInvisibility(popupLoadingFingers,180);
+	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
+		By packageNameLocator = By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'owl-item')]//ins[@translate='global.cta.select']");
+		//reusableActions.waitForElementInvisibility(popupLoadingFingers,180);
+		if(reusableActions.isElementVisible(packageNameLocator,180))
+		{		
 		reusableActions.getWhenReady(packageNameLocator, 90).click();
+		 }
+	   else
+		{
+	    reusableActions.getWhenReady(imgNext, 180).click();  
+	    reusableActions.isElementVisible(packageNameLocator,180);
+		reusableActions.getWhenReady(packageNameLocator, 90).click();
+		}
 	}
+
 	/**
 	 * Click the ChangeTV Package button on solaris TV dashboard page
 	 * @author chinnarao.vattam

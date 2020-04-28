@@ -1,0 +1,9 @@
+# Config
+---
+rogersURL: https://qa05-ciam.rogers.com
+solarisPath: /web/totes/browsebuy/v1/byPassCaptcha
+legacyPath: /web/totes/api/v1/bypassCaptchaAuth
+hupURL: "https://qa05-ciam.rogers.com/web/totes/upgrade/#/choose-phone"
+cookieUserName: testautorogers99@mailinator.com
+cookieUserPassword: rogers123
+... 

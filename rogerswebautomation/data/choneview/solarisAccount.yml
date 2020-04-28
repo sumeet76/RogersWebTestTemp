@@ -1,0 +1,9 @@
+# Account Details 
+---
+name: IgniteTVAccount
+dealerCode: FDBAC
+accountDetails:
+   type: TV
+   ban:  930691381
+...
+

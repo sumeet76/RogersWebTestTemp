@@ -37,7 +37,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_005_IginteTV_OldConstructor_ExistingSolarisChangeTVPackageTest extends BaseTestClass {
 
-    @Test
+    @Test 
     public void checkIginteTVOldConstructorExistingSolarisChangeTVPackageTest() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();
@@ -57,7 +57,7 @@ public class RogersCH_TC_005_IginteTV_OldConstructor_ExistingSolarisChangeTVPack
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         rogers_solaris_tv_dashboard_page.clkChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the TV packages page");
-        rogers_solaris_tv_dashboard_page.selectSolarisTVPackage(TestDataHandler.solarisTVOldConstructor.getAccountDetails().getUpgradePlan());
+        rogers_solaris_tv_dashboard_page.selectSolarisTVPackage(TestDataHandler.solarisTVOldConstructor.getAccountDetails().getUpgradePlanEn(),TestDataHandler.solarisTVOldConstructor.getAccountDetails().getUpgradePlanEn());
         rogers_solaris_tv_dashboard_page.clkPopupChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the personalize channel page");
         rogers_solaris_tv_channels_and_themepacks_page.clkExchangeLater(); 

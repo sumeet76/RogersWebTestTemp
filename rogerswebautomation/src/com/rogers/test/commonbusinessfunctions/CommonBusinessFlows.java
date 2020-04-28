@@ -75,6 +75,7 @@ public class CommonBusinessFlows {
 	 * @author ning.xue
 	 */
 	public int addSpeedPass() {
+		baseTestClass.rogers_wireless_dashboard_page.clkBtnSpeedPass();
 		int intAddedSpeedPassRecord = 0;
 		if (baseTestClass.rogers_speed_pass_page.verifySpeedPassPopupIsDisplayed()) {
 			baseTestClass.reporter.hardAssert(baseTestClass.rogers_speed_pass_page.verifySpeedPassPopupIsDisplayed(),

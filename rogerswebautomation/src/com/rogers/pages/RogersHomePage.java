@@ -49,7 +49,7 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='rch-modal']//button[@class='ds-button ds-focus ds-active -primary -large']//span[@class='ds-button__copy w-100']")
 	WebElement continueBtnIgniteMultipleAddressLookupSubmit;
 
-	@FindBy(xpath = "	//a[contains(@title,'See available Ignite Bundles') or  contains(@title,'Voyez les offres groupées Élan accessibles')]")
+	@FindBy(xpath = "//a[contains(@title,'See available Ignite Bundles') or  contains(@title,'Voyez les offres groupées Élan accessibles')]")
 	WebElement btnServiceability;
 	//a[@title='Check if Ignite Bundles are available in your area' or @title='Vérifiez si les offres groupées Élan sont disponibles dans votre secteur.']
 	
@@ -73,7 +73,7 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//label[contains(@class,'ds-formField_label')] ")
 	WebElement txaIgniteAddressLable;
 	
-	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c21-20')]//div[contains(@class,'ds-formField__inputContainer')]")
+	@FindBy(xpath = "//div[@class='input-search']//div[contains(@class,'ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white')]")
 	WebElement txaIgniteAddressContainer;	
 	
 	@FindBy(xpath = "//div[contains(@class,'ds-formField__inputContainer')]")
@@ -86,7 +86,8 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//li[@class='dds_o-navLinkList__item']//a[@title='MyRogers']")
 	WebElement lnkMyRogers;
 	
-	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -secondary -large']")
+	//@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -secondary -large']")
+	@FindBy(xpath = "//button[contains(@class,'-secondary -large')]")
 	WebElement btnUseThisAddress;
 		
 	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -primary -large']")
@@ -112,6 +113,31 @@ public class RogersHomePage extends BasePageClass {
 	
 	@FindBy(xpath = "//a[@data-option='bring-your-own-phone']")
 	WebElement lnkBringMyOwnPhone;
+	
+	@FindBy(xpath = "//span[@translate='EOP.CTAS.PROMOTION_OFFER_BADGE.LABEL']")
+	WebElement lnkPromotionOfferBadge;
+	
+	@FindBy(xpath = "//div[contains(@class,'ds-modal')]//button[@variant='tertiary']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']")
+	WebElement btnNoThanks;
+	
+	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -tertiary -large ng-star-inserted']")
+	WebElement btnNoThnx;
+	
+	/**
+	 * To Click No thanks on welcome back page
+	 * @author Saurav.Goyal 
+	 */
+	public void clkNoThanks() {	
+		reusableActions.clickIfAvailable(btnNoThanks, 90);
+	}
+	
+	/**
+	 * To Click the Promotion offer badge
+	 * @author Saurav.Goyal 
+	 */
+	public void clkPromotionOfferBadge() {		
+		reusableActions.getWhenVisible(lnkPromotionOfferBadge, 30).click();
+	}
 	
 	/**
 	 * Click the SignIn button from the top tile bar 
@@ -244,8 +270,16 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkServiceabilityMigration() {		
-		reusableActions.waitForElementInvisibility(popupLoadingFingersciam, 120);
+		reusableActions.waitForElementInvisibility(popupLoadingFingersciam, 180);
 		reusableActions.getWhenReady(btnServiceability, 120).click();
+	}
+	
+	/**
+	 * To Click No thanks on welcome back page
+	 * @author chinnarao.vattam 
+	 */
+	public void clkNoThnx() {	
+		reusableActions.clickIfAvailable(btnNoThnx, 90);
 	}
 	
 	/**
@@ -279,8 +313,8 @@ public class RogersHomePage extends BasePageClass {
 	 * @param strAddress address to check the service availability 
 	 * @author chinnarao.vattam
 	 */
-	public void setIgniteAddressLookupCovid(String strAddress) {
-		reusableActions.waitForElementVisibility(txaIgniteAddressContainer, 120);
+	public void setIgniteAddressLookupLearn(String strAddress) {
+		reusableActions.waitForElementVisibility(txaIgniteAddressContainer, 240);
 		reusableActions.getWhenReady(txaIgniteAddressContainer, 3).click();
 		reusableActions.getWhenReady(txaIgniteAddressLookup, 3).clear();
 		reusableActions.getWhenReady(txaIgniteAddressLookup, 3).sendKeys(strAddress);

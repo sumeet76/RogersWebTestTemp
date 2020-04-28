@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="conected home OneView Automation Tests COV">
+  <listeners>
+    <listener class-name="com.rogers.test.listeners.AnnotationTransformer"/>
+  </listeners>
+  <test name="choneview Tests">
+    <parameter name="strBrowser" value="chrome"/>
+    <parameter name="strLanguage" value="en"/> 
+    <parameter name="strGroupName" value="choneview"/>
+    <classes> 
+    <class name="com.rogers.test.tests.choneview.OneViewCH_TC_017_TV_ResetParentalControlsAndRestartBoxTest"/> 
+     <class name="com.rogers.test.tests.choneview.OneViewCH_TC_018a_TV_HeaderFooterUserForgotPurchasePinTest"/> 
+    <class name="com.rogers.test.tests.choneview.OneViewCH_TC_018b_Internet_HeaderFooterUsageTest"/>         
+     <class name="com.rogers.test.tests.choneview.OneViewCH_TC_018c_HomePhone_HeaderFooterResetVoiceMailTest"/>
+    <class name="com.rogers.test.tests.choneview.OneViewCH_TC_018d_Internet_DashboardSupportLinksAvailabilityTest"/>
+    <class name="com.rogers.test.tests.choneview.OneViewCH_TC_018e_TV_DashboardSupportLinksAvailabilityTest"/>
+    <class name="com.rogers.test.tests.choneview.OneViewCH_TC_018f_TV_ChannelLineupViewPDFTest"/>
+    <class name="com.rogers.test.tests.choneview.OneViewCH_TC_020_TV_ChannelSwapTest"/>  
+   	<class name="com.rogers.test.tests.choneview.OneViewCH_TC_025_EndtoEndFlowAnonymousCustomerTriplePlayTest"/> 
+    <class name="com.rogers.test.tests.choneview.OneViewCH_TC_003_IgniteNACDualPlayWithout4KTVExpressCheckout"/>
+   	<class name="com.rogers.test.tests.choneview.OneViewCH_TC_004_MigrationTriplePlayON"/>
+   	<class name="com.rogers.test.tests.choneview.OneViewCH_TC_003_IgniteNACDualPlayWithout4KTVExpressCheckout"/>
+    <class name="com.rogers.test.tests.choneview.OneViewCH_TC_022_TV_PackageDowngradeTest"/> 
+   </classes>
+  </test>
+</suite>
