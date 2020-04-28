@@ -222,7 +222,7 @@ public class BaseTestClass {
 	 */
 	public void startSession(String strUrl, String strBrowser,  String strLanguage, RogersEnums.GroupName enumGroupName , Method currentTestMethodName) throws ClientProtocolException, IOException {
 		startSession(strUrl, strBrowser, strLanguage, enumGroupName.toString().toLowerCase().trim(), currentTestMethodName);
-	}	
+	}		
 
 	/**
 	 * To initiate the page objects based on test case group, will read group name from xml file.

@@ -1,30 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Self Serve Rogers Tests SS" parallel="tests" thread-count="1">
-<parameter name="strBrowser" value="firefox"/>
+<parameter name="strBrowser" value="chrome"/>
 <parameter name="strLanguage" value="en"/>
 <parameter name="strType" value="seq"/>
 <listeners>
       <listener class-name="com.rogers.test.listeners.AnnotationTransformer"/>
 </listeners> 		
 
-<test name="RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurchasedSpeedPass">
-<classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurchasedSpeedPass"></class>
-</classes>          																					
-</test>
-
-<!-- 
-
-<test name="RogersSS_TC_031_Postpaid_ChangeContactInfo">
-<classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_031_Postpaid_ChangeContactInfo"></class>
-</classes>          																					
-</test>
-  
- 
-
-
--->
-				
+ <test thread-count="3" name="RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE(failed)(failed)" parallel="tests">
+    <classes>
+      <class name="com.rogers.test.tests.selfserve.RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE">
+        <methods>
+          <include name="afterTest"/>
+          <include name="validateDataRemainingOnMaxSpeedInfiniteSE"/>
+          <include name="beforeTest"/>
+        </methods>
+      </class> <!-- com.rogers.test.tests.selfserve.RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE -->
+    </classes>
+  </test> <!-- RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE(failed)(failed) --><!-- RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage(failed)(failed) -->			
 </suite>

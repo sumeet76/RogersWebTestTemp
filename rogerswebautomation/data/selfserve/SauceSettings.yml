@@ -1,8 +1,8 @@
-# SauceConfig
+# sauce capabilities
 ---
 sauceUser: Rogers.Automation
 sauceKey: 7ca3d84c-9043-4cd1-b9b2-8a09709bd6f1
-browserName: chrome
+browserName: firefox
 browserVersion: latest
 platform: Windows 10
 ...

@@ -14,7 +14,8 @@ import com.rogers.yaml.pojo.HUPData;
 import com.rogers.yaml.pojo.NACData;
 import com.rogers.yaml.pojo.PPCData;
 import com.rogers.yaml.pojo.PaymentDetails;
-import com.rogers.yaml.pojo.SauceConfig;
+import com.rogers.yaml.pojo.SauceSettings;
+
 
 
 
@@ -35,6 +36,8 @@ public class YamlHandler {
 		}
 	}
 
+	
+	
 	public static Config getConfig() {
 		Yaml yaml = new Yaml(new Constructor(Config.class));
 		InputStream inputStream;
@@ -50,13 +53,13 @@ public class YamlHandler {
 
 	}
 	
-	public static SauceConfig getSauceConfig() {
-		Yaml yaml = new Yaml(new Constructor(Config.class));
+	public static SauceSettings getSauceSettings() {
+		Yaml yaml = new Yaml(new Constructor(SauceSettings.class));
 		InputStream inputStream;
 		try {
-			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/selfserve/SauceConfig.yml"));
-			SauceConfig sauceconfig = yaml.load(inputStream);
-			return sauceconfig;
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/selfserve/SauceSettings.yml"));
+			SauceSettings sauceSettings = yaml.load(inputStream);
+			return sauceSettings;
 		} catch (FileNotFoundException e) {
 
 			e.printStackTrace();

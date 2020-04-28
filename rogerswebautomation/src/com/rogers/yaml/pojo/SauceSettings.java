@@ -1,6 +1,6 @@
 package com.rogers.yaml.pojo;
 
-public class SauceConfig {
+public class SauceSettings {
 		
 	private String sauceUser;
 	private String sauceKey;

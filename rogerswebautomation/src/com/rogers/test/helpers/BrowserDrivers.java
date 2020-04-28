@@ -7,9 +7,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -31,10 +29,8 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
 import com.rogers.test.helpers.RogersEnums.OS;
 import com.rogers.testdatamanagement.TestDataHandler;
-
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -43,7 +39,7 @@ public class BrowserDrivers {
 
     private static OS os = null;
     private WebDriver driver;
-	private HashMap<String, String> xmlTestParameters;
+
 	/*
 	 * To initiate the driver
 	 * @param strBrowser                 string of browser name
@@ -82,7 +78,8 @@ public class BrowserDrivers {
 	     {    
 	    	 sauceInit(currentTestMethodName);	    	         
 	      break;
-	     }		 
+	     }
+		 
 
 		default :
 			WebDriverManager.chromedriver().setup();
@@ -92,6 +89,16 @@ public class BrowserDrivers {
 		return driver;
 	}
 
+	
+	
+	
+
+
+
+	
+
+
+	
 	
 	/**
 	 * To initiate the firefox driver
@@ -194,20 +201,19 @@ public class BrowserDrivers {
 	 * @throws IOException               java.io.IOException, Signals that an I/O exception of some sort has occurred, produced by failed or interrupted I/O operations.
 	 */
 	private void sauceInit(Method currentTestMethodName) throws ClientProtocolException, IOException {
-		 /*  SauceConfig sauceCfg = TestDataHandler.sacueConfig;
-		   String sauceUserName =  sauceCfg.getSauceUser();
-	       String sauceAccessKey = sauceCfg.getSauceKey();       
+		   
+		   String sauceUserName =  TestDataHandler.sauceSettings.getSauceUser();
+	       String sauceAccessKey = TestDataHandler.sauceSettings.getSauceKey();       
 	       String sauceURL = "https://ondemand.saucelabs.com/wd/hub";       
 	       MutableCapabilities sauceOpts = new MutableCapabilities();
 	       sauceOpts.setCapability("username", sauceUserName);
 	       sauceOpts.setCapability("accessKey", sauceAccessKey);
 	       sauceOpts.setCapability("seleniumVersion", "3.141.59");
 	       sauceOpts.setCapability("name", currentTestMethodName.getName());	 		
-		   sauceOpts.setCapability("browserName", sauceCfg.getBrowserName());
-		   sauceOpts.setCapability("browserVersion", sauceCfg.getBrowserVersion());  				       
-	       sauceOpts.setCapability("platformVersion", sauceCfg.getPlatform());	         
-	       driver = new RemoteWebDriver(new URL(sauceURL), sauceOpts);	    
-	       */   	       	      
+		   sauceOpts.setCapability("browserName", TestDataHandler.sauceSettings.getBrowserName());
+		   sauceOpts.setCapability("browserVersion", TestDataHandler.sauceSettings.getBrowserVersion());  				       
+	       sauceOpts.setCapability("platformVersion", TestDataHandler.sauceSettings.getPlatform());	         
+	       driver = new RemoteWebDriver(new URL(sauceURL), sauceOpts);	       	       	      
 	}
 	
 	/**
@@ -230,54 +236,7 @@ public class BrowserDrivers {
 	        return os;
 	    }
 	
-	/**
-	 * This method will set up the sauce capabilities and initiate run
-	 * @param strTestName name of the test method
-	 * @param strJobName The sauce Job name
-	 * @param strBrowser browser name
-	 * @throws MalformedURLException exception thrown on malformed url
-	 * @author Mirza.Kamran
-	 */
-	public void setupSauce(String strTestName,String strJobName,String strBrowser) throws MalformedURLException {
-		String sauceUserName = TestDataHandler.config.getSauceUser();
-        String sauceAccessKey = TestDataHandler.config.getSauceKey();
-        
-        String sauceURL ="http://"+ sauceUserName + ":" + sauceAccessKey + "@ondemand.saucelabs.com:80/wd/hub";
-                
-        //String sauceURL = "https://ondemand.saucelabs.com/wd/hub";	
-        MutableCapabilities sauceOpts = new MutableCapabilities();
-        //sauceOpts.setCapability("username", sauceUserName);
-        //sauceOpts.setCapability("accessKey", sauceAccessKey);        
-        sauceOpts.setCapability("seleniumVersion", "3.141.59");
-        sauceOpts.setCapability("name", strTestName);
-        List<String> tags = Arrays.asList("Fido", "SelfServe", "module4");
-        sauceOpts.setCapability("tags", tags);		 		       
-        sauceOpts.setCapability("maxDuration", 3600);//test run timeout
-        sauceOpts.setCapability("commandTimeout", 600); //selenium command timeout
-        sauceOpts.setCapability("idleTimeout", 1000);	       
-        sauceOpts.setCapability("build", strJobName);
-        ChromeOptions chromeOpts = new ChromeOptions();
-        MutableCapabilities capabilities = new MutableCapabilities();
-        capabilities.setCapability("sauce:options", sauceOpts);
-        switch (strBrowser) {
-		case "firefox":
-			capabilities.setCapability("browserName", "firefox");
-			break;
-		case "chrome":			
-	        chromeOpts.setExperimentalOption("w3c", true);
-	        capabilities.setCapability("goog:chromeOptions", chromeOpts);
-	        capabilities.setCapability("browserName", "chrome");
-			break;
-		case "safari":
-			capabilities.setCapability("browserName", "safari");
-			break;	
-		default:
-			break;
-		}                                
-        capabilities.setCapability("platformVersion", "Windows 10");
-        capabilities.setCapability("browserVersion", "latest");		 
-        driver = new RemoteWebDriver(new URL(sauceURL), capabilities);						
-	}
+	
 
 	/**
 	 * This method will set up the browser stack

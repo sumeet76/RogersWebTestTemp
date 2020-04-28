@@ -6,7 +6,7 @@ public class AccountData {
 	private String password;
 	private String newUsername;
 	private String newpassword;
-	public AccountDetails accountDetails;
+	public AccountDetails accountDetails;	
 	public String name;
 
 	/**

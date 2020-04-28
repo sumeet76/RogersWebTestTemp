@@ -6,6 +6,8 @@ import com.rogers.yaml.pojo.Config;
 import com.rogers.yaml.pojo.HUPData;
 import com.rogers.yaml.pojo.PPCData;
 import com.rogers.yaml.pojo.PaymentDetails;
+import com.rogers.yaml.pojo.SauceSettings;
+
 
 public class TestDataHandler {	
 	public static Config config;
@@ -83,7 +85,7 @@ public class TestDataHandler {
 	public static HUPData testCase07;
 	public static PPCData testCase08;
 	public static HUPData testCase09;
-	//public static SauceConfig sacueConfig;
+	public static SauceSettings sauceSettings;
 
 	public static void dataInit (String strApplicationType) {	    	
     	if(strApplicationType.toUpperCase().trim().endsWith("CH")) {	    	
@@ -155,7 +157,7 @@ public class TestDataHandler {
 	
 	private static void selfserveDataInit() {
     	config =  YamlHandler.getConfig();
-    	//sacueConfig = YamlHandler.getSauceConfig();
+    	sauceSettings = YamlHandler.getSauceSettings();
     	paymentInfo = YamlHandler.getPaymentDetails();
     	tc013132 = YamlHandler.getAccountData("tc01_31_32Postpaid");
     	tc0224 = YamlHandler.getAccountData("tc02_24PostpaidLostStolen");
@@ -183,12 +185,11 @@ public class TestDataHandler {
     	tc727375 = YamlHandler.getAccountData("tc72_73_75NSE");
     	tc02 = YamlHandler.getAccountData("tc02_PreRegister");
     	tc03 = YamlHandler.getAccountData("tc03RecoverUsernameByEmail");
-    	tc67 = YamlHandler.getAccountData("tc67InfiniteSEReducedSpeed(Demoline)");	    		    	 
+    	tc67 = YamlHandler.getAccountData("tc67InfiniteSEReducedSpeed(Demoline)");    	
 	}
 	
 	private static void buyFlowsDataInit() {
 		bfaConfig =  YamlHandler.getBFAConfig();
-		//sacueConfig = YamlHandler.getSauceConfig();
 		bfaPaymentInfo = YamlHandler.getBFAPaymentDetails();
     	testCase01 = YamlHandler.getAALdata("tc01AAL");
     	testCase02 = YamlHandler.getAALdata("tc02AAL");
