@@ -83,6 +83,7 @@ public class TestDataHandler {
 	public static HUPData testCase07;
 	public static PPCData testCase08;
 	public static HUPData testCase09;
+	//public static SauceConfig sacueConfig;
 
 	public static void dataInit (String strApplicationType) {	    	
     	if(strApplicationType.toUpperCase().trim().endsWith("CH")) {	    	
@@ -106,7 +107,7 @@ public class TestDataHandler {
 	private static void connectedHomeDataInit() {
 		rogersConfig =  YamlHandler.getCableConfig();
       	rogersPaymentInfo = YamlHandler.getCablePaymentDetails();
-      	              	
+      	//sacueConfig = YamlHandler.getSauceConfig();              	
       	//Digital TV test data
     	digitalTVAccount = YamlHandler.getCableAccountData("DigitalTVAccount");
     	digitalTVUpgradeToIgnite = YamlHandler.getCableAccountData("DigitalTVUpgradeToIgnite");
@@ -154,6 +155,7 @@ public class TestDataHandler {
 	
 	private static void selfserveDataInit() {
     	config =  YamlHandler.getConfig();
+    	//sacueConfig = YamlHandler.getSauceConfig();
     	paymentInfo = YamlHandler.getPaymentDetails();
     	tc013132 = YamlHandler.getAccountData("tc01_31_32Postpaid");
     	tc0224 = YamlHandler.getAccountData("tc02_24PostpaidLostStolen");
@@ -186,6 +188,7 @@ public class TestDataHandler {
 	
 	private static void buyFlowsDataInit() {
 		bfaConfig =  YamlHandler.getBFAConfig();
+		//sacueConfig = YamlHandler.getSauceConfig();
 		bfaPaymentInfo = YamlHandler.getBFAPaymentDetails();
     	testCase01 = YamlHandler.getAALdata("tc01AAL");
     	testCase02 = YamlHandler.getAALdata("tc02AAL");
