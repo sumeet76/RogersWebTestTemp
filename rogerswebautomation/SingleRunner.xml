@@ -8,16 +8,10 @@
       <listener class-name="com.rogers.test.listeners.AnnotationTransformer"/>
 </listeners> 		
 
-<test thread-count="1" name="RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage(failed)(failed)" parallel="tests">
-    <classes>
-      <class name="com.rogers.test.tests.selfserve.RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage">
-        <methods>
-          <include name="validateSuspendUsage"/>
-          <include name="validateReactivateService"/>
-          <include name="beforeTest"/>
-          <include name="afterTest"/>
-        </methods>
-      </class> <!-- com.rogers.test.tests.selfserve.RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage -->
-    </classes>
-  </test> <!-- RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage(failed)(failed) -->			
+<test name="RogersSS_TC_031_Postpaid_ChangeContactInfo">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_031_Postpaid_ChangeContactInfo"></class>
+</classes>          																					
+</test>
+		
 </suite>
