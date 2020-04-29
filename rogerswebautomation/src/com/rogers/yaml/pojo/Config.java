@@ -11,8 +11,6 @@ public class Config {
 	private String ensURL01;	
 	private String ensURL03;
 	private String rogersCIAMUrl;
-	private String sauceUser;
-	private String sauceKey;
 	private String ensLoginEmail;
 	private String ensPassword;
 	private String phoneRepairUrl;
@@ -21,6 +19,7 @@ public class Config {
 	private String loginFlow;
 	private String hupURL;
 	private String legacyPath;
+	private SauceSettings sauceCapabilities;
 	
 	/**
 	 * @return the rogersURL
@@ -121,30 +120,7 @@ public class Config {
 	public void setRogersCIAMUrl(String rogersCIAMUrl) {
 		this.rogersCIAMUrl = rogersCIAMUrl;
 	}
-	/**
-	 * @return the sauceUser
-	 */
-	public String getSauceUser() {
-		return sauceUser;
-	}
-	/**
-	 * @param sauceUser the sauceUser to set
-	 */
-	public void setSauceUser(String sauceUser) {
-		this.sauceUser = sauceUser;
-	}
-	/**
-	 * @return the sauceKey
-	 */
-	public String getSauceKey() {
-		return sauceKey;
-	}
-	/**
-	 * @param sauceKey the sauceKey to set
-	 */
-	public void setSauceKey(String sauceKey) {
-		this.sauceKey = sauceKey;
-	}
+	
 	/**
 	 * @return the ensLoginEmail
 	 */
@@ -252,5 +228,17 @@ public class Config {
 	 */
 	public void setSolarisPath(String solarisPath) {
 		this.solarisPath = solarisPath;
+	}
+	/**
+	 * @return the sauceCapabilities
+	 */
+	public SauceSettings getSauceCapabilities() {
+		return sauceCapabilities;
+	}
+	/**
+	 * @param sauceCapabilities the sauceCapabilities to set
+	 */
+	public void setSauceCapabilities(SauceSettings sauceCapabilities) {
+		this.sauceCapabilities = sauceCapabilities;
 	}
 }
