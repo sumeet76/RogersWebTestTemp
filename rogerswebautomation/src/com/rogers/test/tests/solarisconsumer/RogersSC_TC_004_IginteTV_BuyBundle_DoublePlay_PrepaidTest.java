@@ -49,7 +49,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *
  **/
 
-public class RogersSolarisConsumer_TC_004_IginteTV_BuyBundle_DoublePlay_PrepaidTest extends BaseTestClass {
+public class RogersSC_TC_004_IginteTV_BuyBundle_DoublePlay_PrepaidTest extends BaseTestClass {
 
     @Test
     public void checkBuyDigitalTVOffer() {

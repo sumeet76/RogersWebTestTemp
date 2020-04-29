@@ -24,7 +24,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *3. Scroll down to Ignite TV bundlessection and select one of available Bundle, click Add to Cart
  **/
 
-public class RogersSolarisConsumer_TC_001_HTOMigrationSignInTest extends BaseTestClass {
+public class RogersSC_TC_001_HTOMigrationSignInTest extends BaseTestClass {
 
     @Test
     public void checkHTOMigrationSignInFlow() {

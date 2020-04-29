@@ -50,10 +50,10 @@ import org.testng.annotations.Parameters;
  *
  **/
 
-public class RogersSolarisConsumer_TC_011_GWP_ExistingLegacyCustomer_RHPandSHMCustomer_ServiceAndBrowserProvinceNLTest extends BaseTestClass {
+public class RogersSC_TC_010_GWP_ExistingLegacyCustomer_RHPCustomer_ServiceAndBrowserProvinceONTest extends BaseTestClass {
 
 	@Test @Parameters({"strLanguage"})
-	public void checkGWPRhpShmTest(String strLanguage) {
+	public void checkGWPRhpTest(String strLanguage) {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
@@ -109,7 +109,7 @@ public class RogersSolarisConsumer_TC_011_GWP_ExistingLegacyCustomer_RHPandSHMCu
 	        rogers_igniteTV_buy_page.clkHomePhone();
 	        rogers_igniteTV_buy_page.verify4KTV();
 	        
-		reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
+	    reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
 		rogers_igniteTV_buy_page.clkChevronDownYourCart();
 		reporter.reportLogWithScreenshot("Clicked chevron");
 		Assert.assertTrue(rogers_igniteTV_buy_page.verifyGWPYourCartPromotion(), "GWP promotion on your cart is not available");

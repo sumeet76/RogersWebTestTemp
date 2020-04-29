@@ -32,7 +32,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *
  **/
 
-public class RogersSolarisConsumer_TC_002_IgniteInternet_ValidateInternetDashboardUsageAndPackageUpgradeTest extends BaseTestClass {
+public class RogersSC_TC_002_IgniteInternet_ValidateInternetDashboardUsageAndPackageUpgradeTest extends BaseTestClass {
 
 	@Test
 	public void checkInternetDashboardUsageAndPackageUpgrade() {

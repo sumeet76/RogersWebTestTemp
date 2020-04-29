@@ -50,10 +50,10 @@ import org.testng.annotations.Parameters;
  *
  **/
 
-public class RogersSolarisConsumer_TC_006_GWP_ExistingLegacyCustomer_InternetCustomer_ServiceAndBrowserProvinceNBTest extends BaseTestClass {
+public class RogersSC_TC_011_GWP_ExistingLegacyCustomer_RHPandSHMCustomer_ServiceAndBrowserProvinceNLTest extends BaseTestClass {
 
 	@Test @Parameters({"strLanguage"})
-	public void checkGWPLegacyInternetTest(String strLanguage) {
+	public void checkGWPRhpShmTest(String strLanguage) {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();

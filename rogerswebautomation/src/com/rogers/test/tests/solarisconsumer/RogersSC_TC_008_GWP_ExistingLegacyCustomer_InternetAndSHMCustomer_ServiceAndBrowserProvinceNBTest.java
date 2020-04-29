@@ -50,10 +50,10 @@ import org.testng.annotations.Parameters;
  *
  **/
 
-public class RogersSolarisConsumer_TC_007_GWP_ExistingLegacyCustomer_InternetandRHPCustomer_ServiceAndBrowserProvinceNLTest extends BaseTestClass {
+public class RogersSC_TC_008_GWP_ExistingLegacyCustomer_InternetAndSHMCustomer_ServiceAndBrowserProvinceNBTest extends BaseTestClass {
 
 	@Test @Parameters({"strLanguage"})
-	public void checkGWPInternetandRHPTest(String strLanguage) {
+	public void checkGWPInternetAndSHMTest(String strLanguage) {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
@@ -70,7 +70,7 @@ public class RogersSolarisConsumer_TC_007_GWP_ExistingLegacyCustomer_Internetand
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
 		rogers_home_page.clkIgniteTVExistingCustomer();
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-		rogers_home_page.clkNoThnx();
+		//rogers_home_page.clkNoThnx();
 		
 		rogers_home_page.clkServiceabilityMigration(); 
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability"); 
@@ -79,7 +79,7 @@ public class RogersSolarisConsumer_TC_007_GWP_ExistingLegacyCustomer_Internetand
 		
 		//Have to remove below navigation once actual flow will work properly
 		getDriver().get("https://ecidbrt:ecidbrt@qa02-ciam.rogers.com/web/brt-consumer/ignite-bundles/get-iptv");
-		rogers_home_page.clkNoThanks();
+		//rogers_home_page.clkNoThanks();
 		
 		if(strLanguage.equalsIgnoreCase("fr")) {
 			rogers_igniteTV_buy_page.clkChevronForBundle(TestDataHandler.solarisConsumerGWPLegacyInternet.getAccountDetails().getBundelPackageNameFr());
@@ -132,7 +132,7 @@ public class RogersSolarisConsumer_TC_007_GWP_ExistingLegacyCustomer_Internetand
 		Assert.assertTrue(rogers_igniteTV_profile_creation_page.verifyGWPYourCartPromotion(), "GWP promotion on your cart is not available");
 		reporter.reportLogWithScreenshot("GWP promotion verified successfully in the cart");
 		rogers_igniteTV_profile_creation_page.clkChevronYourCart();
-		rogers_igniteTV_profile_creation_page.clkSubmitProfile();  
+		rogers_igniteTV_profile_creation_page.clkSubmitProfile(); 
 		rogers_igniteTV_credit_check_page.verifyCreditEvalutionPage();
 		reporter.reportLogWithScreenshot("Launched the credit evalution page");
 		rogers_igniteTV_credit_check_page.clkChevronYourCart();

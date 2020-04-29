@@ -36,7 +36,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *15. Click accept the agreement and Submit the order
  **/
 
-public class RogersSolarisConsumer_TC_008_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannelsAndThemePackTest extends BaseTestClass {
+public class RogersSC_TC_008_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannelsAndThemePackTest extends BaseTestClass {
 
     @Test
     public void checkSolarisChangeTVPackageAdd4KChannelsAndThemePackFlow() {       
