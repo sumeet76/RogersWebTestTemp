@@ -8,9 +8,9 @@
       <listener class-name="com.rogers.test.listeners.AnnotationTransformer"/>
 </listeners> 		
 
-<test name="RogersSS_TC_031_Postpaid_ChangeContactInfo">
+<test name="RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_031_Postpaid_ChangeContactInfo"></class>
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs"></class>
 </classes>          																					
 </test>
 		

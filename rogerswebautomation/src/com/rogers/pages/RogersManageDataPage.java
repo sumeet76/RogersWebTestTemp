@@ -1,7 +1,7 @@
 package com.rogers.pages;
 
+import java.util.HashMap;
 import java.util.List;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -58,7 +58,23 @@ public class RogersManageDataPage extends BasePageClass {
 	
 	@FindBy(xpath = "//span[text()=' shareable max speed data ' or contains(text(),'de données à vitesse maximale à partager')]/ancestor::p")
 	WebElement lblTotalDataMessageInViewDetails;
+
+	@FindBy(xpath = "//p[text()=' Data added to your plan 'or contains(text(),'Données ajoutées à votre forfait')]/ancestor::div[@class='row']//table[contains(@class,'top-ups-details-table')]//tr//a[@title='Cancel this add-on']")
+	List<WebElement> tableRowsAddDataWithCancel;
+
+	@FindBy (xpath = "//a[@title='Cancel this add-on' or contains(@title,'Annuler')]")
+	WebElement lnkCancel;
 	
+	@FindBy (xpath = "//button//span[text()='Yes, cancel' or text()='Oui, Annuler']")
+	WebElement btnYesCancel;
+
+	@FindBy(xpath = "//p[text()='Add-on cancelled' or contains(text(),'OPTION ANNUL')]")
+	WebElement titleAddOnCancelled;
+	
+	@FindBy(xpath = "//button[@title='Close' or @title='FERMER']//span[contains(text(),'FERMER') or contains(text(),'Close')]/parent::span/parent::button")
+	WebElement btnCloseAddOnCancelled;
+
+
 
 	/**
 	 * Verifies View Details link 
@@ -173,6 +189,93 @@ public class RogersManageDataPage extends BasePageClass {
 		String str = reusableActions.getWhenReady(lblShareableMaxSpeedData).getText().split("GB|Go")[0].replace(",", ".");
 		String numberOnly= str.replaceAll("[^0-9]", "");
 		return Integer.parseInt(numberOnly);
+	}
+
+
+	/**
+	 * This method gets all the existing added data records.
+	 * @return int count of all speed pass
+	 * @author Mirza.Kamran
+	 */
+	public HashMap<String, Integer> getAllExistingAddDataCountCancelledAndActive() {
+		int active=0;
+		int cancelled=0;
+		int nonMTT=0;
+		HashMap<String, Integer> addData = new HashMap<String, Integer>();
+		for(WebElement row:rowsAddedData)
+		{
+			if(row.getText().toLowerCase().contains("cancel") ||row.getText().toLowerCase().contains("annuler"))
+			{
+				active++;
+				
+			}else if(row.getText().toLowerCase().contains("expires") || row.getText().toLowerCase().contains("prend"))
+			{
+				cancelled++;
+			}else
+			{
+				nonMTT++;
+			}
+		}
+		
+		addData.put("active", active);
+		addData.put("cancelled", cancelled);
+		addData.put("nonMTT", nonMTT);
+		return addData;
+	}
+	
+	/**
+	 * Clicks on the cancel MDT link
+	 * @author Mirza.Kamran
+	 */
+	public void clkCancelMDTLink() {
+		Boolean found = false;
+		for(WebElement row : tableRowsAddDataWithCancel) {
+			if(found ==false 
+				&&	(row.getText().toLowerCase().contains("cancel")
+				|| row.getText().toLowerCase().contains("annuler"))) {
+				lnkCancel.click();
+				found = true;
+				break;
+			}
+		}
+		
+	}
+
+	/**
+	 * Clicks on Yes cancel on Overlay
+	 * @author Mirza.Kamran
+	 */
+	public void clkYesRemoveTopUpButton() {
+		reusableActions.clickIfAvailable(btnYesCancel);		
+	}
+
+	/**
+	 * Verify if the canceled MDT is showing as canceled in manage data page.
+	 * @param countOfNewlyCancelled, the number of records for newly canceled MDT.
+	 * @param countOfPreviousCancelled, the number of records for previous canceled MDT.
+	 * @return true if the count match else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyCancelledMDTInManageData(int countOfNewlyCancelled, int countOfPreviousCancelled) {
+		int cancelled= getAllExistingAddDataCountCancelledAndActive().get("cancelled");
+		return (cancelled==(countOfNewlyCancelled+countOfPreviousCancelled));
+	}
+
+	/**
+	 * Clicks on the close overlay
+	 * @author Mirza.Kamran
+	 */
+	public void clkCloseButtonOnCancelSuccessOverlay() {
+		reusableActions.getWhenReady(btnCloseAddOnCancelled).click();
+	}
+
+	/**
+	 * Check if  MDT is cancelled successfully.
+	 * @return true if the cancelled is successful
+	 * @author Mirza.Kamran
+	 */
+	public boolean isCancelSuccessdisplayed() {		
+		return reusableActions.isElementVisible(titleAddOnCancelled,30);
 	}
 	
 }
