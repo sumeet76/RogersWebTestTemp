@@ -32,7 +32,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *
  **/
 
-public class RogersSolarisConsumer_TC_002_IgniteInternet_ValidateInternetDashboardUsageAndPackageUpgradeTest extends BaseTestClass {
+public class RogersSC_TC_002_IgniteInternet_ValidateInternetDashboardUsageAndPackageUpgradeTest extends BaseTestClass {
 
 	@Test
 	public void checkInternetDashboardUsageAndPackageUpgrade() {
@@ -68,7 +68,7 @@ public class RogersSolarisConsumer_TC_002_IgniteInternet_ValidateInternetDashboa
 		reporter.reportLogWithScreenshot("Launched the Interent dashboard");
 		rogers_internet_dashboard_page.clkSolChangeInternetPackage();
 		reporter.reportLogWithScreenshot("Launched the Interent packages page");
-		rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.solarisInternetAccount.getAccountDetails().getUpgradePlan());
+		rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.solarisInternetAccount.getAccountDetails().getUpgradePlanEn(),TestDataHandler.solarisInternetAccount.getAccountDetails().getUpgradePlanFr());
 		reporter.reportLogWithScreenshot("Launched the agreement page"); 
 		rogers_order_review_page.verifyAgreementPage();
 		reporter.reportLogWithScreenshot("Launched the order review page");

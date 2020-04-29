@@ -41,7 +41,28 @@ public class AccountDetails {
 	private String month;
 	private String imeiNumber;
 	private String dateOfBirth;
+	private String bundelPackageNameFr;
+	private String bundelPackageNameEn;
+	private String downgradeBan;
+	private String dealerCode;
+
 	
+	public String getBundelPackageNameFr() {
+		return bundelPackageNameFr;
+	}
+
+	public void setBundelPackageNameFr(String bundelPackageNameFr) {
+		this.bundelPackageNameFr = bundelPackageNameFr;
+	}
+
+	public String getBundelPackageNameEn() {
+		return bundelPackageNameEn;
+	}
+
+	public void setBundelPackageNameEn(String bundelPackageNameEn) {
+		this.bundelPackageNameEn = bundelPackageNameEn;
+	}
+
 	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
@@ -472,5 +493,28 @@ public class AccountDetails {
 	public void setDate(String date) {
 		this.date = date;
 	}
-
+	/**
+	 * @return the ban
+	 */
+	public String getdowngradeBan() {
+		return downgradeBan;
+	}
+	/**
+	 * @param ban the ban to set
+	 */
+	public void setdowngradeBan(String downgradeBan) {
+		this.downgradeBan = downgradeBan;
+	}
+	/**
+	 * @return the dealerCode
+	 */
+	public String getDealercode() {
+		return dealerCode;
+	}
+	/**
+	 * @param dealerCode the dealerCode to set
+	 */
+	public void setDealerCode(String dealerCode) {
+		this.dealerCode = dealerCode;
+	}
 }

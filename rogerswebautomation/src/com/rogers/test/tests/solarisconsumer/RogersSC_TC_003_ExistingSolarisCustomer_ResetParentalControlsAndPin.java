@@ -28,7 +28,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *
  **/
 
-public class RogersSolarisConsumer_TC_003_ExistingSolarisCustomer_ResetParentalControlsAndPin extends BaseTestClass {
+public class RogersSC_TC_003_ExistingSolarisCustomer_ResetParentalControlsAndPin extends BaseTestClass {
 
     @Test
     public void checkSolarisTVResetParentalControlsAndPinFlow() {       

@@ -14,6 +14,10 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	public RogersIgniteTVProfileCreationPage(WebDriver driver) {
 		super(driver);
 	}
+	
+	@FindBy(xpath = "//ins[@translate='global.label.createProfile']")
+	WebElement txtProfile;
+	
 	@FindBy(xpath = "//input[@id='email1']")
 	WebElement txtEmail;
 	
@@ -49,8 +53,8 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	
 	@FindBy(xpath = "//button[@data-target='#miniCollapse']")
 	WebElement downChevronYourCart;
-
-	@FindBy(xpath = "//div[@class='mini-body']//tr[@class='cms-promotions-gwp ng-tns-c46-27 ng-star-inserted']")
+	
+	@FindBy(xpath = "//div[@class='mini-body']//div[contains(@ng-bind-html,'$root.gwpDetails')]")
 	WebElement gwpYourCart;
 	
 	/**
@@ -59,14 +63,15 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyProfilePage() {
-		return reusableActions.isElementVisible(txtEmail);
+		//reusableActions.waitForElementInvisibility(popupLoadingFingers,100);
+		return reusableActions.isElementVisible(txtProfile);
 	}
 	
 	/**
 	 * Set dynamic email and confirm email on profile page
 	 * @author Chinnarao.Vattam
 	 */
-	public void setEmail() {
+	public void setEmail() {		
 		String strEmail = FormFiller.generateEmail();
 		reusableActions.getWhenReady(txtEmail, 60).clear();
 		reusableActions.getWhenReady(txtEmail,10).sendKeys(strEmail);
@@ -105,11 +110,12 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	}
 	
 	/**
-	 * To click on the chevron on the profile creation page
+	 * To click on the chevron on the TV profile creation page
 	 * @author Saurav.Goyal
 	 */
 	public void clkChevronYourCart() {
-		reusableActions.getWhenReady(downChevronYourCart, 60).click();
+		reusableActions.waitForElementVisibility(downChevronYourCart, 120);
+		reusableActions.getWhenReady(downChevronYourCart, 120).click();
 	}
 
 	/**
@@ -127,7 +133,7 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSubmitProfile() {
-		reusableActions.clickWhenReady(btnProfielSubmit, 60);
+		reusableActions.getWhenReady(btnProfielSubmit, 120).click();
 	}
 
 	/**

@@ -31,7 +31,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  **/
 
 
-public class RogersSolarisConsumer_TC_011_IgniteRHP_ValidateRHPDasboardAndLinksTest extends BaseTestClass {
+public class RogersSC_TC_011_IgniteRHP_ValidateRHPDasboardAndLinksTest extends BaseTestClass {
 
     @Test
     public void checkSolarisConsumerRHPDasboardAndLinks() {

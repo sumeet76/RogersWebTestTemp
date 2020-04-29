@@ -47,7 +47,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *
  **/
 
-public class RogersSolarisConsumer_TC_014_IgniteTV_AnonymousCustomerTriplePlayPortInTest extends BaseTestClass {
+public class RogersSC_TC_014_IgniteTV_AnonymousCustomerTriplePlayPortInTest extends BaseTestClass {
 
     @Test
     public void checkBuyIginteTVOffer() {

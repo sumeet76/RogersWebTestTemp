@@ -1,4 +1,2 @@
-[0415/125616.979:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
-[0415/125616.981:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
-[0415/125616.981:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
-[0415/125616.981:ERROR:exception_snapshot_win.cc(98)] thread ID 7456 not found in process
+[0414/130526.036:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[0414/130526.039:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)

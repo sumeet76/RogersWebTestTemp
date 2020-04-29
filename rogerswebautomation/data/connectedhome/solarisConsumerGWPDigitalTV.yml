@@ -8,6 +8,8 @@ accountDetails:
    ban: 265047472201 
    downgradePlanEn: Select
    downgradePlanFr: Sélection
+   bundelPackageNameFr: Flex 5
+   bundelPackageNameEn: Flex 5
    year: 1996
    month: 4
    date: 24
