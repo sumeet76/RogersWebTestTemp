@@ -270,4 +270,20 @@ public class YamlHandler {
 
 	}
 	
+	public static SauceSettings getSauceSettings() {
+		Yaml yaml = new Yaml(new Constructor(SauceSettings.class));
+		InputStream inputStream;
+		try {
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/connectedhome/SauceSettings.yml"));
+			SauceSettings sauceSettings = yaml.load(inputStream);
+			return sauceSettings;
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
+	
 }
