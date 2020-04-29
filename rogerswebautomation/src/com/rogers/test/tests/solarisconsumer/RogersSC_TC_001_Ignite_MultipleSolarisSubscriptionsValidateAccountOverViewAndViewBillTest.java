@@ -31,7 +31,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  **/
 
 
-public class RogersSolarisConsumer_TC_001_Ignite_MultipleSolarisSubscriptionsValidateAccountOverViewAndViewBillTest extends BaseTestClass {
+public class RogersSC_TC_001_Ignite_MultipleSolarisSubscriptionsValidateAccountOverViewAndViewBillTest extends BaseTestClass {
 
 	@Test
     public void validateMultipleServicesAndViewBill() {

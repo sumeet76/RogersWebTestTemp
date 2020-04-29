@@ -1,5 +1,7 @@
 package com.rogers.pages;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -39,7 +41,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath ="//div[@class='self-install-concern']//input[@name='consent']")
 	WebElement chkTechInstalConsent;
 		
-	@FindBy(xpath ="//button[@class='ute-btn-primary']")
+	@FindBy(xpath ="//div[@class='buttons-block hidden-xs']//button[@class='ute-btn-primary']")
 	WebElement btnTechInstallContinue;
 	
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
@@ -47,7 +49,10 @@ public class RogersTechInstallPage extends BasePageClass {
 	
 	@FindBy(xpath = "//input[@name='preferredDatesFirst']")
 	WebElement prefferedDates;
-
+	
+	@FindBy(xpath = "//i[@class='glyphicon glyphicon-chevron-right']")
+	WebElement clkNext;
+	
 	@FindBy(xpath = "//i[@class='glyphicon glyphicon-chevron-right']")
 	WebElement clkChevron;
 
@@ -57,10 +62,10 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ute-icon-calendar-icon']")
 	WebElement clkCalendarIcon;
 
-	@FindBy(xpath = "//button[@data-target='#miniCollapse']")
+	@FindBy(xpath = "//button[@class='knob collapsed']")
 	WebElement downChevronYourCart;
 
-	@FindBy(xpath = "//div[@class='mini-body']//tr[@class='cms-promotions-gwp ng-tns-c46-27 ng-star-inserted']")
+	@FindBy(xpath = "//div[@class='mini-body']//div[contains(@ng-bind-html,'$root.gwpDetails')]")
 	WebElement gwpYourCart;
 	
 	/**
@@ -68,8 +73,10 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkChevronYourCart() {
-		reusableActions.getWhenReady(downChevronYourCart, 60).click();
+		reusableActions.waitForElementVisibility(downChevronYourCart, 120);
+		reusableActions.getWhenReady(downChevronYourCart, 120).click();
 	}
+
 
 	/**
 	 * To verify gwp promotion in the tech install page
@@ -130,6 +137,14 @@ public class RogersTechInstallPage extends BasePageClass {
 	}
 	
 	/**
+	 * To verify the launch of Technical  Install Page
+	 * @return true if the TechInstallSlot ratio has available, else false 
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyTechInstallCalendar() {	
+		return	reusableActions.isElementVisible(imgStartingTechInstallSlot, 180);
+	}
+	/**
 	 * Select the slot from the available list of slots from installation page
 	 * @author Chinnarao.Vattam
 	 */
@@ -162,14 +177,26 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selTechInstalStartDate() {
-		reusableActions.waitForElementVisibility(imgStartingTechInstallSlot,20); 
+		reusableActions.waitForElementVisibility(imgStartingTechInstallSlot,60); 
 		reusableActions.getWhenReady(imgStartingTechInstallSlot, 20).click();
+		DateFormat dform = new SimpleDateFormat("dd-MM-yyyy");
 		Calendar calendar = Calendar.getInstance();
 		int intDate = calendar.get(Calendar.DATE);
-		int startDate = intDate + 9; 
-		String strStartDate= Integer.toString(startDate);
+		int iDate = intDate + 10; 
+		if(iDate >= 30) {
+		reusableActions.waitForElementVisibility(clkNext, 60);
+		reusableActions.getWhenReady(clkNext, 60).click();		
+		int selDate = intDate - 14 ;
+		String strStartDate= Integer.toString(selDate);	
 		By selStartDate = By.xpath("//button[@class='btn btn-default btn-sm']//span[contains(text(),'" + strStartDate + "')]");
-		reusableActions.getWhenReady(selStartDate, 20).click();
+		reusableActions.getWhenReady(selStartDate, 60).click();
+		}
+		else
+		{
+			String strStartDate= Integer.toString(intDate);
+			By selStartDate = By.xpath("//button[@class='btn btn-default btn-sm']//span[contains(text(),'" + strStartDate + "')]");
+			reusableActions.getWhenReady(selStartDate, 60).click();
+		}
 	}
 	
 	/**
@@ -177,14 +204,28 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selTechInstalEndDate() {
-		reusableActions.waitForElementVisibility(imgEndingTechInstallSlot,20); 
+		reusableActions.waitForElementVisibility(imgEndingTechInstallSlot,60); 
 		reusableActions.getWhenReady(imgEndingTechInstallSlot, 20).click();
 		Calendar calendar = Calendar.getInstance();
-		int intDate = calendar.get(Calendar.DATE);
-		int endDate = intDate + 13; 
-		String strEndDate= Integer.toString(endDate);
-		By selStartDate = By.xpath("//button[@class='btn btn-default btn-sm']//span[contains(text(),'" + strEndDate + "')]");
-		reusableActions.getWhenReady(selStartDate, 20).click();
+		int intDate = calendar.get(Calendar.DATE);	
+		int iDate = intDate + 10; 
+		if(iDate >= 30) {
+		reusableActions.waitForElementVisibility(clkNext, 60);
+		reusableActions.getWhenReady(clkNext, 60).click();
+		int selDate = intDate - 6 ;
+		String strEndDate= Integer.toString(selDate);
+		By selEndDate = By.xpath("//button[@class='btn btn-default btn-sm']//span[contains(text(),'" + strEndDate + "')]");
+		reusableActions.getWhenReady(selEndDate, 30).click();
+		}
+		else
+		{
+			int endDate = intDate + 5;
+			String strEndDate= Integer.toString(endDate);
+			By selEndDate = By.xpath("//button[@class='btn btn-default btn-sm']//span[contains(text(),'" + strEndDate + "')]");
+			reusableActions.getWhenReady(selEndDate, 30).click();
+		}
+		
+
 	}
 	
 	/**
@@ -192,7 +233,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkTechInstalConsent() {		
-		reusableActions.waitForElementInvisibility(popupLoadingFingers,120);
+		//reusableActions.waitForElementInvisibility(popupLoadingFingers,120);
 		reusableActions.javascriptScrollToBottomOfPage();
 		reusableActions.executeJavaScriptClick(chkTechInstalConsent);
 	}
@@ -203,7 +244,9 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkTechInstallContinue() {   
-		reusableActions.waitForElementTobeClickable(btnTechInstallContinue, 120);
+		reusableActions.waitForElementTobeClickable(btnTechInstallContinue, 150);
+		reusableActions.javascriptScrollToBottomOfPage();
+		reusableActions.javascriptScrollToMiddleOfPage();
 		reusableActions.getWhenReady(btnTechInstallContinue, 120).click();
 	}
 

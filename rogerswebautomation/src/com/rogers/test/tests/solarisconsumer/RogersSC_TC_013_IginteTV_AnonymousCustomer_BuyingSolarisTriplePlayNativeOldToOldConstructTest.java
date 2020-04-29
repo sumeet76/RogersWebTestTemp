@@ -13,7 +13,7 @@ import com.rogers.test.base.BaseTestClass;
 import com.rogers.testdatamanagement.TestDataHandler;
 
 /**
- * This class contains the test method to test the IgniteTV buy flow for Rogers.com   
+ * This class contains the test method to test the IgniteTV buy flow with anonymous customer buying solaris triple play bundle with old To old construct for Rogers.com   
  * 
  * @author Saurav.Goyal
  * 
@@ -25,7 +25,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *4. Enter home address to validate the serviceability and click on Check Availability
  *5. Click on Continue
  *6. Click "No thanks Continue"
- *7. Click on Continue in Home phone add ons page
+ *7. Select any triple play bundle and Click on Continue
  *8. Select one option for   'Do you have a 4K TV'
  *9. Click “checkout” button on cart summary page.
  *10. Enter all personal information on user profile creation page - 1) Profile step
@@ -49,10 +49,10 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *
  **/
 
-public class RogersSolarisConsumer_TC_006_IginteTV_BuySolarisDoublePlayChangeInstallationDateMonthlyBillTest extends BaseTestClass {
+public class RogersSC_TC_013_IginteTV_AnonymousCustomer_BuyingSolarisTriplePlayNativeOldToOldConstructTest extends BaseTestClass {
 
     @Test
-    public void checkBuyDigitalTVOffer() {
+    public void checkBuyDigitalTVWithTriplePlayBundleOldToOldConstruct() {
     	reporter.reportLogWithScreenshot("Launched the Home Page");
     	rogers_home_page.clkShop(); 
     	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
@@ -65,8 +65,15 @@ public class RogersSolarisConsumer_TC_006_IginteTV_BuySolarisDoublePlayChangeIns
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line2");
-        rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        rogers_home_page.setIgniteAddressLookup(strAddressLine1+", " + strAddressLine2 + ", CANADA");
         rogers_home_page.clkIgniteAddressLookupSubmit();
+        try {
+			Thread.sleep(20000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        rogers_home_page.clkContinueIgniteMultipleAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
         rogers_igniteTV_buy_page.verifyOptNewPhone();
@@ -95,11 +102,11 @@ public class RogersSolarisConsumer_TC_006_IginteTV_BuySolarisDoublePlayChangeIns
         rogers_igniteTV_credit_check_page.selectDOBDay();
         reporter.reportLogWithScreenshot("Entered DOB details");
         rogers_igniteTV_credit_check_page.selectFirstID("2");
-        rogers_igniteTV_credit_check_page.selectProvince("BC");
+        rogers_igniteTV_credit_check_page.selectProvince("ON");
         rogers_igniteTV_credit_check_page.selectExpiryYearwithSpace();
         rogers_igniteTV_credit_check_page.selectExpiryMonth();
         rogers_igniteTV_credit_check_page.selectExpiryDay();
-        rogers_igniteTV_credit_check_page.setDrivingLicenseNumber("ON");
+        rogers_igniteTV_credit_check_page.setDrivingLicenseNumber("ONTARIO");
         reporter.reportLogWithScreenshot("Driving License Details");
         rogers_igniteTV_credit_check_page.selectSecondIDOption("4");
         rogers_igniteTV_credit_check_page.setPassportNumber();
