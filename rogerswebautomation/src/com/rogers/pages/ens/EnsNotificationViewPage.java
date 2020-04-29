@@ -121,7 +121,7 @@ public class EnsNotificationViewPage extends BasePageClass {
 	
 	/**
      * Sets the email id
-     * @param strEmail email
+     * @param strEmail, email string.
      */
     public void setEmailId(String strEmail) {
     	reusableActions.getWhenReady(txtContactEmail).sendKeys(strEmail);
