@@ -8,10 +8,9 @@
       <listener class-name="com.rogers.test.listeners.AnnotationTransformer"/>
 </listeners> 		
 
-<test name="RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs">
+<test name="RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs"></class>
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE"></class>
 </classes>          																					
-</test>
-		
+</test>	
 </suite>

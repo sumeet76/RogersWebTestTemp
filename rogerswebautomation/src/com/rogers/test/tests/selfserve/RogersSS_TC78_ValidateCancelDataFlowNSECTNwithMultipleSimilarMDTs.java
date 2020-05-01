@@ -4,14 +4,12 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
@@ -36,8 +34,8 @@ public class RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs e
     @Test
     public void validateMyWirelessPlanSectionInTheWirelessDashboardNSE() {
     	rogers_home_page.clkSignIn();
-    	String strUsername = TestDataHandler.tc59.getUsername();
-    	String strPassword = TestDataHandler.tc59.getPassword();
+    	String strUsername = TestDataHandler.tc78.getUsername();
+    	String strPassword = TestDataHandler.tc78.getPassword();
     	rogers_login_page.switchToSignInIFrame();
         rogers_login_page.setUsernameIFrame(strUsername);
         rogers_login_page.setPasswordIFrame(strPassword);
@@ -98,17 +96,7 @@ public class RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs e
 			common_business_flows.scrollToTopOfWebPage();
 			rogers_manage_data_page.clkBackOnManageDataUsagePage();
 			reporter.reportLogWithScreenshot("Back on dashboard");
-			reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(),
-					"'Data details' page is displayed after click on view details link",
-					"'Data details' page is NOT displayed after click on view details link");
-			//7. Verify that MDT is cancelled
-			//7. Expires MMM DD - is displayed next to the cancelled MDT in manage data page and plan section
-			reporter.softAssert(rogers_manage_data_page.verifyCancelledMDTInManageData(1,countOfActiveAndCancelledAddData.get("cancelled")),
-					"Expires MMM DD - is displayed next to the cancelled MDT in manage data page",
-					"Expires MMM DD - is NOT displayed next to the cancelled MDT in manage data page, plase investigate");	
-											
-			rogers_manage_data_page.clkBackOnManageDataUsagePage();
-			reporter.reportLogWithScreenshot("Back on dashboard");
+			
 			rogers_login_page.clickSignOut();
 			reporter.reportLogWithScreenshot("Sign out done");
 			rogers_login_page.clkSignInAs();
@@ -143,6 +131,14 @@ public class RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs e
 				reporter.softAssert(rogers_wireless_dashboard_page.verifyCancelledAddedDataInMyPlan(1, countOfActiveAndCancelledAddDataOnMyPlan.get("cancelled"))
 						,"Expires MMM DD - is displayed next to the cancelled MDT in plan section",
 						"Expires MMM DD - is NOT displayed next to the cancelled MDT in plan section");
+				
+				rogers_wireless_dashboard_page.scrollToTopOfDasboardPage();
+				reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(),
+						"'Data details' page is displayed after click on view details link",
+						"'Data details' page is NOT displayed after click on view details link");					
+				reporter.softAssert(rogers_manage_data_page.verifyCancelledMDTInManageData(1,countOfActiveAndCancelledAddData.get("cancelled")),
+						"Expires MMM DD - is displayed next to the cancelled MDT in manage data page",
+						"Expires MMM DD - is NOT displayed next to the cancelled MDT in manage data page, plase investigate");	
 				
 			}
 				

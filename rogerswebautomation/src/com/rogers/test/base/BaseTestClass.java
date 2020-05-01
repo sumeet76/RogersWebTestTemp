@@ -240,7 +240,7 @@ public class BaseTestClass {
  			captcha_bypass_handlers.captchaBypassURLLoginFlows(strUrl, strLanguage);
 		}
 	    setImplicitWait(getDriver(), 10);
-	    init(strGroupName);
+	    init(strGroupName);	 
  }
 		
 	 /* To start a session using given url, browser, language and test case group name.

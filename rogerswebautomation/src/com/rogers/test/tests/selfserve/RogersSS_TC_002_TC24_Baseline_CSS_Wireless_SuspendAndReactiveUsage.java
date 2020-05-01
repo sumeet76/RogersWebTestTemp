@@ -72,7 +72,7 @@ public class RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage 
         rogers_account_overview_page.clkMenuUsageAndService();
         String strAccountNum = TestDataHandler.tc0224.getAccountDetails().getCtn();
         rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
-		reporter.hardAssert(!rogers_wireless_dashboard_page.verifyToReactivateServiceMsgDisplayed(),
+        reporter.hardAssert(!rogers_wireless_dashboard_page.verifyToReactivateServiceMsgDisplayed(),
 				"Service is successfully resumed.",
 				"Reactivate service message still display in wireless dashboard page.");	
 		

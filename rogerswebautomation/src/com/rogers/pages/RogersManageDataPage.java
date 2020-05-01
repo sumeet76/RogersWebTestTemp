@@ -59,19 +59,19 @@ public class RogersManageDataPage extends BasePageClass {
 	@FindBy(xpath = "//span[text()=' shareable max speed data ' or contains(text(),'de données à vitesse maximale à partager')]/ancestor::p")
 	WebElement lblTotalDataMessageInViewDetails;
 
-	@FindBy(xpath = "//p[text()=' Data added to your plan 'or contains(text(),'Données ajoutées à votre forfait')]/ancestor::div[@class='row']//table[contains(@class,'top-ups-details-table')]//tr//a[@title='Cancel this add-on']")
+	@FindBy(xpath = "//p[text()=' Data added to your plan 'or contains(text(),'Données ajoutées à votre forfait')]/ancestor::div[@class='row']//table[contains(@class,'top-ups-details-table')]//tr//a[@title='Cancel this add-on' or @title='Annuler cette option']")
 	List<WebElement> tableRowsAddDataWithCancel;
 
-	@FindBy (xpath = "//a[@title='Cancel this add-on' or contains(@title,'Annuler')]")
+	@FindBy (xpath = "//a[@title='Cancel this add-on' or contains(@title,'Annuler cette option')]")
 	WebElement lnkCancel;
 	
-	@FindBy (xpath = "//button//span[text()='Yes, cancel' or text()='Oui, Annuler']")
+	@FindBy (xpath = "//button//span[text()='Yes, cancel' or text()='Oui, annuler']")
 	WebElement btnYesCancel;
 
-	@FindBy(xpath = "//p[text()='Add-on cancelled' or contains(text(),'OPTION ANNUL')]")
+	@FindBy(xpath = "//p[text()='Add-on cancelled' or contains(text(),'Option annulée')]")
 	WebElement titleAddOnCancelled;
 	
-	@FindBy(xpath = "//button[@title='Close' or @title='FERMER']//span[contains(text(),'FERMER') or contains(text(),'Close')]/parent::span/parent::button")
+	@FindBy(xpath = "//button[@title='Close' or @title='Fermer']//span[contains(text(),'Fermer') or contains(text(),'Close')]/parent::span/parent::button")
 	WebElement btnCloseAddOnCancelled;
 
 

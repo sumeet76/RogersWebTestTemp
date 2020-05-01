@@ -384,7 +384,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='cta_no']/parent::span/parent::div")
 	List<WebElement> lstOfCTNBadgesOnDashboardPage;
 
-	@FindBy(xpath = "//div[@class='postpaid-addons']//div[@class='addon-description']")
+	@FindBy(xpath = "//ancestor::div[contains(@class,'postpaid-addons')]//div[@class='addon-description' or @class='addon-description ng-star-inserted']")
 	List<WebElement> lstMyPlanAddOns;
 
 		
@@ -1648,12 +1648,12 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		for(WebElement row:lstMyPlanAddOns)
 		{
 			if((row.getText().toLowerCase().contains("monthly data")&& row.getText().toLowerCase().contains("expires"))
-				||(row.getText().toLowerCase().contains("mensuel")&& row.getText().toLowerCase().contains("expiration")))
+				||(row.getText().toLowerCase().contains("mensuel")&& row.getText().toLowerCase().contains("prend fin")))
 			{
 				cancelled++;
 				
 			}else if((row.getText().toLowerCase().contains("monthly data")&& !row.getText().toLowerCase().contains("expires"))
-					||(row.getText().toLowerCase().contains("mensuel")&& !row.getText().toLowerCase().contains("expiration")))
+					||(row.getText().toLowerCase().contains("mensuel")&& !row.getText().toLowerCase().contains("prend fin")))
 			{
 				active++;
 			}else
