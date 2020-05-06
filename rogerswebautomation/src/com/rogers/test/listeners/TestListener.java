@@ -61,9 +61,8 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
    //Get XMLTest Parameters from BaseTest and assign to local webdriver variable.
      Object xmlTestParams = iTestResult.getInstance();
      HashMap<String, String> xmlTestParameters = ((BaseTestClass) xmlTestParams).getXMLParameters();
-     String testClassName = fullTestClassName[fullTestClassName.length-1] +"_" + xmlTestParameters.get("strBrowser") +"_" + xmlTestParameters.get("strLanguage")+"_"+xmlTestParameters.get("strType");
-    
-		ExtentTestManager.startTest(testClassName,iTestResult.getName());
+     String testClassName = fullTestClassName[fullTestClassName.length-1] +"_" + xmlTestParameters.get("strBrowser") +"_" + xmlTestParameters.get("strLanguage")+"_"+xmlTestParameters.get("strType");    
+	 ExtentTestManager.startTest(testClassName,iTestResult.getName());	 
 	
  }
 

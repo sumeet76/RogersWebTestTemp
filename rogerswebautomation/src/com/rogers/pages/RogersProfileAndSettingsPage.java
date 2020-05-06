@@ -602,7 +602,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkLnkUpdateHomeNumber() {
-		reusableActions.clickWhenReady(lnkUpdateHomeNumber, 30);
+		reusableActions.clickWhenReady(By.xpath("//span[contains(text(),'home contact number') or contains(text(),'home number') or contains(text(),'numéro à la maison')]"), 30);
 	}
 	
 	/**

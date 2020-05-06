@@ -44,6 +44,8 @@ public class TestDataHandler {
 	public static AccountData tc03;
 	public static AccountData tc61;
 	public static AccountData tc67;
+	public static AccountData tc78;
+	public static AccountData tc79;
 	public static Config rogersConfig;
 	public static AccountData digitalTVAccount;
 	public static AccountData solarisInternetAccount;
@@ -218,7 +220,9 @@ public class TestDataHandler {
     	tc727375 = YamlHandler.getAccountData("tc72_73_75NSE");
     	tc02 = YamlHandler.getAccountData("tc02_PreRegister");
     	tc03 = YamlHandler.getAccountData("tc03RecoverUsernameByEmail");
-    	tc67 = YamlHandler.getAccountData("tc67InfiniteSEReducedSpeed(Demoline)");    	
+    	tc67 = YamlHandler.getAccountData("tc67InfiniteSEReducedSpeed(Demoline)");    
+    	tc78 = YamlHandler.getAccountData("tc78NSE_CTNsWithMultipleSimilarMDTs");
+    	tc79 = YamlHandler.getAccountData("tc79NSE_CTNWithSingleRegularMDTs");
 	}
 	
 	private static void buyFlowsDataInit() {

@@ -3,11 +3,11 @@ package com.rogers.pages;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Locale;
 import java.util.regex.Pattern;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
@@ -384,8 +384,10 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='cta_no']/parent::span/parent::div")
 	List<WebElement> lstOfCTNBadgesOnDashboardPage;
 
-	
-	
+	@FindBy(xpath = "//ancestor::div[contains(@class,'postpaid-addons')]//div[@class='addon-description' or @class='addon-description ng-star-inserted']")
+	List<WebElement> lstMyPlanAddOns;
+
+		
 	/**
 	 * To click the link of lost or stolen device on wireless dashboard page
 	 * @author ning.xue
@@ -1632,5 +1634,52 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		reusableActions.clickWhenReady(lstOfCTNBadgesOnDashboardPage.get(5));
 		
 	}
+
+	/**
+	 * To get total number of all added data including canceled and active ones in my plan section.
+	 * @return HasMap of active and canceled MDT records and nonMDT records.
+	 * @author Mirza.Kamran
+	 */
+	public HashMap<String, Integer> getAllExistingAddDataCountCancelledAndActiveOnMyPlanSection() {				
+		int active=0;
+		int cancelled=0;
+		int nonMDT=0;
+		HashMap<String, Integer> addData = new HashMap<String, Integer>();
+		for(WebElement row:lstMyPlanAddOns)
+		{
+			if((row.getText().toLowerCase().contains("monthly data")&& row.getText().toLowerCase().contains("expires"))
+				||(row.getText().toLowerCase().contains("mensuel")&& row.getText().toLowerCase().contains("prend fin")))
+			{
+				cancelled++;
+				
+			}else if((row.getText().toLowerCase().contains("monthly data")&& !row.getText().toLowerCase().contains("expires"))
+					||(row.getText().toLowerCase().contains("mensuel")&& !row.getText().toLowerCase().contains("prend fin")))
+			{
+				active++;
+			}else
+			{
+				nonMDT++;
+			}
+		}
+		
+		addData.put("active", active);
+		addData.put("cancelled", cancelled);
+		addData.put("nonMDT", nonMDT);
+		return addData;		
+	}
+
+	/**
+	 * Verify the record of canceled MDT in my plan section.
+	 * @param countOfNewlyCancelled, the record of newly canceled MDT in this run.
+	 * @param countOfPreviousCancelled, the record of previous canceled MDT before run.
+	 * @return true if the newly canceled MDT id included in the record.
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyCancelledAddedDataInMyPlan(int countOfNewlyCancelled, int countOfPreviousCancelled) {
+		int cancelled= getAllExistingAddDataCountCancelledAndActiveOnMyPlanSection().get("cancelled");
+		return (cancelled==(countOfNewlyCancelled+countOfPreviousCancelled));
+	}
+
+	
 	
 }
