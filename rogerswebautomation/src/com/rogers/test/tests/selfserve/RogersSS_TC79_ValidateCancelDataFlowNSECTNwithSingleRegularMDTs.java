@@ -36,8 +36,8 @@ public class RogersSS_TC79_ValidateCancelDataFlowNSECTNwithSingleRegularMDTs ext
     @Test
     public void validateMyWirelessPlanSectionInTheWirelessDashboardNSE() {
     	rogers_home_page.clkSignIn();
-    	String strUsername = TestDataHandler.tc79.getUsername();
-    	String strPassword = TestDataHandler.tc79.getPassword();
+    	String strUsername = TestDataHandler.tc59.getUsername();
+    	String strPassword = TestDataHandler.tc59.getPassword();
     	rogers_login_page.switchToSignInIFrame();
         rogers_login_page.setUsernameIFrame(strUsername);
         rogers_login_page.setPasswordIFrame(strPassword);
@@ -100,7 +100,7 @@ public class RogersSS_TC79_ValidateCancelDataFlowNSECTNwithSingleRegularMDTs ext
 			reporter.reportLogWithScreenshot("Back on dashboard");
 			
 			rogers_login_page.clickSignOut();
-			reporter.reportLogWithScreenshot("Sign out done");
+			reporter.reportLogWithScreenshot("Sign out is clicked");
 			rogers_login_page.clkSignInAs();
 			reporter.reportLogWithScreenshot("Click Re Sign In");
 			rogers_login_page.switchToSignInIFrame();	        
@@ -146,7 +146,7 @@ public class RogersSS_TC79_ValidateCancelDataFlowNSECTNwithSingleRegularMDTs ext
 				
 		}else
 		{
-			reporter.reportLogFail("No MDT to cancel, please add mtt and rerun the script");
+			reporter.reportLogFail("No MDT to cancel, please add MDT and rerun the script");
 		}
 							
 

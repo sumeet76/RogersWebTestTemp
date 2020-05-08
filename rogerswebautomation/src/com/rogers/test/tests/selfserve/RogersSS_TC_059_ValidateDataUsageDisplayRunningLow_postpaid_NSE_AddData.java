@@ -85,16 +85,41 @@ public class RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE_Add
         reporter.softAssert(rogers_wireless_dashboard_page.verifyAddDataButtonIsDisplayed(), 
 							"Add the Data top-up button is displayed", 
 							"Add the Data top-up  button is NOT displayed."); 
-        rogers_wireless_dashboard_page.clkAddData();
-        reporter.softAssert(rogers_add_data_page.verifyAddDataOverlayIsDisplayed(), 
-							"Add the Data top-up  window should be displayed. (completd an MDT add on)", 
-							"Add the Data top-up  window is NOT displayed.");   
-        reporter.reportLogWithScreenshot("Add Data Add on");  
-        rogers_add_data_page.selectFirstDataAddOnOption();
-        reporter.reportLogWithScreenshot("Select Add on option");  
-        rogers_add_data_page.clkContinue();
-        reporter.reportLogWithScreenshot("Select Purchase"); 
-        rogers_speed_pass_page.clkBtnCloseInSpeedPassPopup();
+        double origTotalData = rogers_wireless_dashboard_page.getTotalDataVolume();
+        double addedData = 0;
+        common_business_flows.addDataFlow();
+        if(rogers_add_data_page.verifyAddDataSuccessMsgIsDisplayed())
+        {
+        	addedData = rogers_add_data_page.getAddedDataVolume();
+        	rogers_add_data_page.clkCloseOnAddDataOverlay();
+        	//Sign out and re sign in to verify if added data reflected.
+	        reporter.reportLogWithScreenshot("Wireless dashboard page.");  
+	        rogers_login_page.clickSignOut();
+	        reporter.reportLogWithScreenshot("Sign Out clicked");  
+	        rogers_login_page.clkSignInAs();
+	        reporter.reportLogWithScreenshot("Re sign In");  
+	        rogers_login_page.switchToSignInIFrame();
+	                   
+	        rogers_login_page.setPasswordIFrame(strPassword);
+	        reporter.reportLogWithScreenshot("Login Credential is entered.");
+			rogers_login_page.clkSignInIFrame();		
+			rogers_login_page.switchOutOfSignInIFrame();		       
+	        reporter.reportLogWithScreenshot("Account overview page.");        
+	        rogers_account_overview_page.clkMenuUsageAndService();
+	        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");        
+	        rogers_account_overview_page.clkSubMenuWirelessUsage();
+	        reporter.reportLogWithScreenshot("Wireless dashboard page.");
+	        reporter.softAssert(!rogers_wireless_dashboard_page.verifyRunningLowStateInTheUsageBar(),
+	        		"Data running low is disappeared",
+	        		"It seems the data running low state is still displayed, please add more data and re validate");
+	        reporter.softAssert(rogers_wireless_dashboard_page.verifyAddedDataReflectedInTotalDataBucket(origTotalData, addedData), 
+								"Added data is reflected in total data bucket.", 
+								"Added data didn't reflect in total data bucket.");
+	     	        
+        } else if (rogers_add_data_page.verifyErrorMsgIsDisplayed()) {
+        	reporter.reportLogWithScreenshot("Add data purchase got error, please check if limit is reached.");
+        	rogers_add_data_page.clkCloseOnAddDataOverlay();
+        }
         
         reporter.softAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded(),
         		"All amounts are coverted to GB For Total Data Displayed Below Label Total Data Plus Plan Added",
