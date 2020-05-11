@@ -143,8 +143,9 @@ public class RogersAddDataPage extends BasePageClass {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * verifies if Label limit reached is displayed
+	 * @return true if the lable is visible else false
+	 * @author Mirza.Kamran
 	 */
 	public boolean verifyAddDataLimitReachedIsDisplayed() {
 		

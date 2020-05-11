@@ -1690,16 +1690,18 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * verifies if the overages charges div is displayed
+	 * @return true if the div for overage is displayed else false
+	 * @author Mirza.Kamran
 	 */
 	public boolean verifyOverageChargesInTheUsageBar() {
 		return reusableActions.isElementVisible(divOverageLowInUsageBar);	
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Verifies the overage call out pop 
+	 * @return true if the pop out is displayed
+	 * @author Mirza.Kamran
 	 */
 	public boolean verifyCallOutMessageToAddDataDueToOverageIsDisplayed() {
 		

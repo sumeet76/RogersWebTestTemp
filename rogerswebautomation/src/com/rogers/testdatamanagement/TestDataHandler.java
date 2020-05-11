@@ -43,8 +43,7 @@ public class TestDataHandler {
 	public static AccountData tc02;
 	public static AccountData tc03;
 	public static AccountData tc61;
-	public static AccountData tc67;
-	public static AccountData tc76;
+	public static AccountData tc67;	
 	public static AccountData tc78;
 	public static AccountData tc79;
 	public static AccountData tc76;

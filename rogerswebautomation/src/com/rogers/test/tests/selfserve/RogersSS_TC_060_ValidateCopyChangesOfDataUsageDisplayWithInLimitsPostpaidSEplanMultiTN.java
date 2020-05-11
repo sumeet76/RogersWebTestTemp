@@ -37,10 +37,10 @@ public class RogersSS_TC_060_ValidateCopyChangesOfDataUsageDisplayWithInLimitsPo
     @Test
     public void validateDataRemainingOnMaxSpeedInfiniteSE() {
     	rogers_home_page.clkSignIn();
-    	String strUsername = TestDataHandler.tc6269.getUsername();
+    	String strUsername = TestDataHandler.tc626982.getUsername();
     	rogers_login_page.switchToSignInIFrame();
         rogers_login_page.setUsernameIFrame(strUsername);
-        String strPassword = TestDataHandler.tc6269.getPassword();    	
+        String strPassword = TestDataHandler.tc626982.getPassword();    	
         rogers_login_page.setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
@@ -49,7 +49,7 @@ public class RogersSS_TC_060_ValidateCopyChangesOfDataUsageDisplayWithInLimitsPo
 		
         if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc6269.getAccountDetails().getBan());
+            rogers_account_overview_page.selectAccount(TestDataHandler.tc626982.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");     
        rogers_account_overview_page.clkMenuUsageAndService();

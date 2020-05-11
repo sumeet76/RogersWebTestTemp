@@ -319,8 +319,9 @@ public class RogersManageDataPage extends BasePageClass {
 
 
 	/**
-	 * 
-	 * @return
+	 * Gets the count of all previously added data
+	 * @return int count value of added data
+	 * @author Mirza.Kamran
 	 */
 	public int getAllExistingAddedDataCount() {
 		return rowsAddedData.size();
