@@ -35,7 +35,7 @@ public class TestDataHandler {
 	public static AccountData tc57;
 	public static AccountData tc58;
 	public static AccountData tc59;
-	public static AccountData tc6269;
+	public static AccountData tc626982;
 	public static AccountData tc63;
 	public static AccountData tc64;
 	public static AccountData tc6577;
@@ -44,6 +44,7 @@ public class TestDataHandler {
 	public static AccountData tc03;
 	public static AccountData tc61;
 	public static AccountData tc67;
+	public static AccountData tc76;
 	public static AccountData tc78;
 	public static AccountData tc79;
 	public static AccountData tc76;
@@ -215,15 +216,15 @@ public class TestDataHandler {
     	tc58 = YamlHandler.getAccountData("tc58NSEwDataLimitedTTPlan");
     	tc59 = YamlHandler.getAccountData("tc59NSEwDataUnlimitedTTPlanRunningLow");
     	tc61 = YamlHandler.getAccountData("tc61SEPlanRunningLow(Demoline)");
-    	tc6269 = YamlHandler.getAccountData("tc62_69InfiniteSE(Demoline)");
+    	tc626982 = YamlHandler.getAccountData("tc62_69_82InfiniteSE(Demoline)");
     	tc63 = YamlHandler.getAccountData("tc63NSEindividualRunningLow");
     	tc64 = YamlHandler.getAccountData("tc64InfiniteNSEReducedSpeed");
     	tc6577 = YamlHandler.getAccountData("tc65_77InfiniteNSE");
     	tc727375 = YamlHandler.getAccountData("tc72_73_75NSE");
     	tc02 = YamlHandler.getAccountData("tc02_PreRegister");
     	tc03 = YamlHandler.getAccountData("tc03RecoverUsernameByEmail");
-    	tc67 = YamlHandler.getAccountData("tc67InfiniteSEReducedSpeed(Demoline)"); 
-    	tc76 = YamlHandler.getAccountData("tc76InfiniteSE(Demoline)");
+    	tc67 = YamlHandler.getAccountData("tc67InfiniteSEReducedSpeed(Demoline)");    
+    	tc76 = YamlHandler.getAccountData("tc76SEPlanWith6Ctns(Demoline)"); 
     	tc78 = YamlHandler.getAccountData("tc78NSE_CTNsWithMultipleSimilarMDTs");
     	tc79 = YamlHandler.getAccountData("tc79NSE_CTNWithSingleRegularMDTs");
     	tc81 = YamlHandler.getAccountData("tc81postpaidSE");

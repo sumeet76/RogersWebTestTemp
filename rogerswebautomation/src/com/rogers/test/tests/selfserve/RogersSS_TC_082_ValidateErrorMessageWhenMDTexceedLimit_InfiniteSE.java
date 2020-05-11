@@ -18,7 +18,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 
 
-public class RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE extends BaseTestClass {	
+public class RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE extends BaseTestClass {	
    	
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
@@ -35,7 +35,7 @@ public class RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE e
 	
 	
     @Test
-    public void validateTotalDataForInfiniteSEIndividualPlan() {
+    public void validateErrorMessageWhenExceedLimitForInfiniteSEPlan() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc626982.getUsername();
     	rogers_login_page.switchToSignInIFrame();
@@ -67,32 +67,20 @@ public class RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE e
 		reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(), 
 			"'Data details' page is displayed after click on view details link", 
 			"'Data details' page is NOT displayed after click on view details link");  
-	    //- Plan data: should be displayed (shared data across all lines)
-		reporter.hardAssert(rogers_manage_data_page.verifyPlanDataIsDisplayed(), 
-				"Plan data is displayed", 
-				"Plan data is NOT displayed");
-		int totalSharedDataDisplayedInPlanDataSection = rogers_manage_data_page.getTotalPlanData();
 		int countOfExistSpeedPass = rogers_manage_data_page.getAllExistingSpeedPassCount();		
-		reporter.reportLogWithScreenshot("Speed passes");
-		
+		reporter.reportLogWithScreenshot("Manage data page.");		
 		rogers_manage_data_page.clkBackOnManageDataUsagePage();	
-		
-		int totalAddedSpeedPass = common_business_flows.addSpeedPass();	
+		//Add speed pass to reach limit 10
+		for (int counter = 0; counter + countOfExistSpeedPass < 10; counter++) {
+			common_business_flows.addSpeedPass();	
+		}
+		rogers_wireless_dashboard_page.clkBtnSpeedPass();
+		reporter.softAssert(rogers_speed_pass_page.verifyCannotAddSpeedPassHeaderIsDisplayed(), 
+				"Add Speed Pass limit reached error message is displayed", 
+				"Add Speed Pass limit reached error message is not displayed");  
 
-		reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(), 
-				"'Data details' page is displayed after click on view details link", 
-				"'Data details' page is NOT displayed after click on view details link"); 
-		reporter.reportLogWithScreenshot("Manage data page view after we click on view details"); 
-		reporter.softAssert(rogers_manage_data_page.verifyAddedDataInDataDetails(totalAddedSpeedPass,countOfExistSpeedPass), 
-						"Added data section is verified in 'Data details' page,"
-						+ " multiple speed passes of same size displayed individually.", 
-						"Added data section in 'Data details' page is not verified successfully.");  
-		int countOfExistSpeedPassTotalGB = rogers_manage_data_page.getAllExistingSpeedPassTotalGB();	
-		rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
-		reporter.reportLogWithScreenshot("Total data view");
-		reporter.softAssert(rogers_manage_data_page.verifyTotalDataInDataDetailsWithMaxSpeedAndTotalOfSpeedPasses(countOfExistSpeedPassTotalGB,totalSharedDataDisplayedInPlanDataSection), 
-						"Total Data: displays data plan on Max speed AND total added speed passes separately ", 
-						"Total Data: NOT displays data plan on Max speed AND total added speed passes separately ");	
+		reporter.reportLogWithScreenshot("Error message");
+
 
     }
 

@@ -35,10 +35,10 @@ public class RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE extends B
     @Test
     public void validateDataRemainingOnMaxSpeedInfiniteSE() {
     	rogers_home_page.clkSignIn();
-    	String strUsername = TestDataHandler.tc6269.getUsername();
+    	String strUsername = TestDataHandler.tc626982.getUsername();
     	rogers_login_page.switchToSignInIFrame();
         rogers_login_page.setUsernameIFrame(strUsername);
-        String strPassword = TestDataHandler.tc6269.getPassword();    	
+        String strPassword = TestDataHandler.tc626982.getPassword();    	
         rogers_login_page.setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
@@ -47,7 +47,7 @@ public class RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE extends B
 		
         if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc6269.getAccountDetails().getBan());
+            rogers_account_overview_page.selectAccount(TestDataHandler.tc626982.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");     
        rogers_account_overview_page.clkMenuUsageAndService();
@@ -67,7 +67,7 @@ public class RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE extends B
 						"Max Speed data remaining is displayed with the total data remaining included (Speed pass) if any", 
 						"Max Speed data remaining seems NOT displayed with the total data remaining included (Speed pass)");
 		//6. Total data should be displayed with GB
-		reporter.reportLogWithScreenshot("Navigated back to dashboard after resign in");  
+		reporter.reportLogWithScreenshot("Wireless dashboard of Infinite SE data.");  
 		 reporter.softAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded(),
 	        		"All amounts are coverted to GB For Total Data Displayed Below Label Total Data Plus Plan Added",
 	        		"it seems amount is not convertd to GB For Total Data Displayed Below Label Total Data Plus Plan Added, please investigate");
