@@ -45,10 +45,10 @@ public class VerifyInEns{
 	 */
 	private void loginToEns() {
 		baseTestClass.reporter.reportLogWithScreenshot("Ens Login Window");
-		baseTestClass.ensHomePage.setEmail(TestDataHandler.config.getEnsLoginEmail());
+		baseTestClass.ensHomePage.setEmail(System.getenv("ENS_USERNAME"));
 		baseTestClass.reporter.reportLogWithScreenshot("Set ENS Login details");
 		baseTestClass.ensHomePage.clkBtnNext();		
-		baseTestClass.ensHomePage.setPassword(TestDataHandler.config.getEnsPassword());
+		baseTestClass.ensHomePage.setPassword(System.getenv("ENS_PASSWORD"));
 		baseTestClass.ensHomePage.clkBtnSignIn();
 	}
 

@@ -16,6 +16,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 import com.rogers.pages.base.BasePageClass;
 
+
 /**
  * @author rajesh.varalli1
  *
@@ -98,7 +99,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//h2[contains(text(),'My Wireless Usage') or contains(text(),'Mon utilisation des')]")
 	WebElement lblMyWlsUsage;
 
-	@FindBy(xpath = "//a/span[contains(text(),'Change my Caller ID') or contains(text(),'pour l’Affichage des appels')]")
+	@FindBy(xpath = "//*[contains(text(),'Change my Caller ID') or contains(text(),'pour l’Affichage des appels')]")
 	WebElement lnkChangeMyCallerId;
 		
 	@FindBy(xpath = "//div[@class='ute-secondLevelNav-bar-text']/span[@data-translate='ute.common.label.overview'] | //a[@translate='nav.overview.header']")
@@ -152,7 +153,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy (xpath = "//dsa-radio")
 	List<WebElement> radiosOfMultiCtnRepairClaim;
 	
-	@FindBy (xpath = "//a/span[text()='Change my SIM' or text()='Changer ma carte SIM']")
+	@FindBy (xpath = "//*[text()='Change my SIM' or text()='Changer ma carte SIM']")
 	WebElement lnkChangeMySIM;
 
 	@FindBy (id = "currentSim")
@@ -210,7 +211,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='textRight']")
 	WebElement lbltotalDataDisplayedBelowBarRightSide;
 	
-	@FindBy (xpath = "//a[@title='View Talk and Text details' or @title='Voir les détails des appels et messages texte']/span[contains(text(),'View details') or contains(text(),'Afficher les détails')]")
+	@FindBy (xpath = "//a[@title='View Talk and Text details' or @title='Voir les détails des appels et messages texte']//span[contains(text(),'View details') or contains(text(),'Afficher les détails')]")
 	WebElement viewDetailTalkText;
 	
 	@FindBy (xpath = "//ds-modal[contains(@class,'talkTextDetailsModal')]")
@@ -335,11 +336,19 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[text()='You’re running low!' or text()='Il en reste peu!']")
 	WebElement divRunningLowInUsageBar;
+	
+	@FindBy(xpath = "//span[text()='You have overage charges' or text()='Vous avez des frais d’utilisation excédentaire']")
+	WebElement divOverageLowInUsageBar;
+	
 	@FindBy(xpath = "//div[@class='account-supports']")
 	WebElement supportSection;
 	
 	@FindBy(xpath = "//div[@class='popover_holder']//div[@class='add-data-btn']")
 	WebElement divCallOutMsgToAddData;
+	
+	
+	@FindBy(xpath = "//span[text()='Add data to avoid further overage charges.' or text()='Ajoutez des données pour éviter les frais d’utilisation excédentaire']")
+	WebElement divCallOutMsgToAddDataForOverage;
 	
 	@FindBy(xpath = "//span[@class='infinite_text']")
 	WebElement lblUnlimitdeData;
@@ -1679,6 +1688,24 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		int cancelled= getAllExistingAddDataCountCancelledAndActiveOnMyPlanSection().get("cancelled");
 		return (cancelled==(countOfNewlyCancelled+countOfPreviousCancelled));
 	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean verifyOverageChargesInTheUsageBar() {
+		return reusableActions.isElementVisible(divOverageLowInUsageBar);	
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean verifyCallOutMessageToAddDataDueToOverageIsDisplayed() {
+		
+		return reusableActions.isElementVisible(divCallOutMsgToAddDataForOverage);
+	}
+
 
 	
 	

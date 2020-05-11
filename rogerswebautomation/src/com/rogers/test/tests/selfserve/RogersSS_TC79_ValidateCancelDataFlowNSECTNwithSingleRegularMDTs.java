@@ -32,6 +32,7 @@ public class RogersSS_TC79_ValidateCancelDataFlowNSECTNwithSingleRegularMDTs ext
 		closeSession();
 	}
 	
+	//TODO merge with TC59
 	
     @Test
     public void validateMyWirelessPlanSectionInTheWirelessDashboardNSE() {
@@ -48,13 +49,13 @@ public class RogersSS_TC79_ValidateCancelDataFlowNSECTNwithSingleRegularMDTs ext
 		
         if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc59.getAccountDetails().getBan());
+            rogers_account_overview_page.selectAccount(TestDataHandler.tc79.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");
         
         rogers_account_overview_page.clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
-        String strAccountNum = TestDataHandler.tc59.getAccountDetails().getCtn();
+        String strAccountNum = TestDataHandler.tc79.getAccountDetails().getCtn();
         if (rogers_account_overview_page.isAccountShowInDropDown(strAccountNum.substring(strAccountNum.length()-4))) {
             rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
         } else {

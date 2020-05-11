@@ -8,9 +8,44 @@
       <listener class-name="com.rogers.test.listeners.AnnotationTransformer"/>
 </listeners> 		
 
-<test name="RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE">
+
+<test name="RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhenCxHasMoreThan5CTN_SE">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE"></class>
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhenCxHasMoreThan5CTN_SE"></class>
 </classes>          																					
-</test>	
+</test>
+
+
+<!-- 
+
+
+  
+
+<test name="RogersSS_TC_050_ChangeIDForSECustomerTest">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_050_ChangeIDForSECustomerTest"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC_060_ValidateCopyChangesOfDataUsageDisplayWithInLimitsPostpaidSEplanMultiTN">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_060_ValidateCopyChangesOfDataUsageDisplayWithInLimitsPostpaidSEplanMultiTN"></class>
+</classes>          																					
+</test>
+ 
+<test name="RogersSS_TC_063_ValidateDataUsageRunningLowOnMaxSpeedDataInfiniteIndividualPlan">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_063_ValidateDataUsageRunningLowOnMaxSpeedDataInfiniteIndividualPlan"></class>
+</classes>          																					
+</test>
+
+
+<test name="RogersSS_TC_064_ValidateDataUsage_InfiniteIndividualPlanReducedSpeeds">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_064_ValidateDataUsage_InfiniteIndividualPlanReducedSpeeds"></class>
+</classes>          																					
+</test>
+
+-->
+
 </suite>

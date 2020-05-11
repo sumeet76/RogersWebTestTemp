@@ -8,7 +8,6 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 
-
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -74,9 +73,20 @@ public class BrowserDrivers {
 			msEdgeInit(strBrowser);
 	        break;    
 			
-		 case "sauce" :
+		 case "saucechrome" :
 	     {    
-	    	 sauceInit(currentTestMethodName);	    	         
+	    	 sauceInit("chrome",currentTestMethodName);	    	         
+	      break;
+	     }
+		 case "saucefirefox" :
+	     {    
+	    	 sauceInit("firefox",currentTestMethodName);	    	         
+	      break;
+	     }
+	     
+		 case "sauceedge" :
+	     {    
+	    	 sauceInit("microsoftedge",currentTestMethodName);	    	         
 	      break;
 	     }
 		 
@@ -200,21 +210,41 @@ public class BrowserDrivers {
 	 * @throws ClientProtocolException   org.apache.http.client.ClientProtocolException, Signals an error in the HTTP protocol.
 	 * @throws IOException               java.io.IOException, Signals that an I/O exception of some sort has occurred, produced by failed or interrupted I/O operations.
 	 */
-	private void sauceInit(Method currentTestMethodName) throws ClientProtocolException, IOException {
+	private void sauceInit(String strBrowserName,Method currentTestMethodName) throws ClientProtocolException, IOException {
 		   
-		   String sauceUserName =  TestDataHandler.sauceSettings.getSauceUser();
-	       String sauceAccessKey = TestDataHandler.sauceSettings.getSauceKey();       
+		   String sauceUserName = System.getenv("SAUCE_USERNAME");// TestDataHandler.sauceSettings.getSauceUser();
+	       String sauceAccessKey = System.getenv("SAUCE_ACCESS_KEY");// TestDataHandler.sauceSettings.getSauceKey();       
 	       String sauceURL = "https://ondemand.saucelabs.com/wd/hub";       
 	       MutableCapabilities sauceOpts = new MutableCapabilities();
 	       sauceOpts.setCapability("username", sauceUserName);
 	       sauceOpts.setCapability("accessKey", sauceAccessKey);
-	       sauceOpts.setCapability("seleniumVersion", "3.141.59");
-	       sauceOpts.setCapability("name", currentTestMethodName.getName());	 		
-		   sauceOpts.setCapability("browserName", TestDataHandler.sauceSettings.getBrowserName());
-		   sauceOpts.setCapability("browserVersion", TestDataHandler.sauceSettings.getBrowserVersion());  				       
-	       sauceOpts.setCapability("platformVersion", TestDataHandler.sauceSettings.getPlatform().trim());	         
+	       sauceOpts.setCapability("seleniumVersion", TestDataHandler.sauceSettings.getSauceOptions().getSeleniumVersion());
+	       sauceOpts.setCapability("name", currentTestMethodName.getName());	                               
+	       sauceOpts.setCapability("maxDuration", TestDataHandler.sauceSettings.getSauceOptions().getMaxDuration());               
+	       sauceOpts.setCapability("commandTimeout", TestDataHandler.sauceSettings.getSauceOptions().getCommandTimeout());
+	       sauceOpts.setCapability("idleTimeout", TestDataHandler.sauceSettings.getSauceOptions().getIdleTimeout());       
+	       sauceOpts.setCapability("build", TestDataHandler.sauceSettings.getSauceOptions().getBuild());  
+		   sauceOpts.setCapability("browserName", strBrowserName);
+		   switch (strBrowserName.toLowerCase()) {
+			case "chrome":							    
+			     sauceOpts.setCapability("browserVersion", TestDataHandler.sauceSettings.getMutableChromeCapabilities().getBrowserVersion());  				       
+			     sauceOpts.setCapability("platformVersion", TestDataHandler.sauceSettings.getMutableChromeCapabilities().getPlatformVersion());
+				break;
+			case "firefox":
+				 sauceOpts.setCapability("browserVersion", TestDataHandler.sauceSettings.getMutableFireFoxCapabilities().getBrowserVersion());  				       
+			     sauceOpts.setCapability("platformVersion", TestDataHandler.sauceSettings.getMutableFireFoxCapabilities().getPlatformVersion());		
+				break;
+			case "microsoftedge":
+				 sauceOpts.setCapability("browserVersion", TestDataHandler.sauceSettings.getMutableEdgeCapabilities().getBrowserVersion());  				       
+			     sauceOpts.setCapability("platformVersion", TestDataHandler.sauceSettings.getMutableEdgeCapabilities().getPlatformVersion());
+				break;
+		
+		}
+		             
 	       driver = new RemoteWebDriver(new URL(sauceURL), sauceOpts);	       	       	      
 	}
+	
+	
 	
 	/**
 	 * gets the OS type

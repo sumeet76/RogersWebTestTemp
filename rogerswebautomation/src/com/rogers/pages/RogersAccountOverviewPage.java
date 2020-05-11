@@ -25,7 +25,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy (xpath ="//div[@class='ute-dataManager-badgeList-individualBadge']")
 	WebElement btnCtnBadge;
 	
-	@FindBy (xpath ="//div[@class='ute-dataManager-badgeList-individualBadge']")
+	@FindBy (xpath ="//div[@class='ute-dataManager-badgeList-individualBadge']//div[@class='ute-dataManager-badgeList-individualBadgeInfo']")
 	List<WebElement> lstCtnBadges;
 	
 	
@@ -113,7 +113,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath="//*[@id='paymentAmount']")
 	WebElement txtAmount;
 	
-	@FindBy(xpath = "//div[@class='myServiceName']/div[2]/span[2]")
+	@FindBy(xpath = "//div[@class='ute-dataManager-badgeList-individualBadge']//div[@class='ute-dataManager-badgeList-individualBadgeInfo']")
 	WebElement lblCTNWirelessName;
 	
 	@FindBy (xpath = "//span[@data-translate='ute.common.second.level.navigation.wireless.phone']")
@@ -443,7 +443,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean verifyWirelessCallerIdCTNBadgeName(String strFirstName) {
 		
-		return reusableActions.getWhenReady(lblCTNWirelessName,20).getText().trim().contains(strFirstName);		
+		return reusableActions.getWhenReady(lblCTNWirelessName,20).getText().trim().toLowerCase().contains(strFirstName.toLowerCase());		
 	}
 	
 	/**

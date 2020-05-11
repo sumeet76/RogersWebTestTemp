@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Self Serve Rogers Tests" parallel="tests" thread-count="3">
-<parameter name="strBrowser" value="firefox"/>
-<parameter name="strLanguage" value="fr"/>
+<suite name="Self Serve Rogers Tests SS" parallel="tests" thread-count="1">
+<parameter name="strBrowser" value="chrome"/>
+<parameter name="strLanguage" value="en"/>
 <parameter name="strType" value="seq"/>
 <listeners>
       <listener class-name="com.rogers.test.listeners.AnnotationTransformer"/>

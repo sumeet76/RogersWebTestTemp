@@ -274,7 +274,7 @@ public class YamlHandler {
 		Yaml yaml = new Yaml(new Constructor(SauceSettings.class));
 		InputStream inputStream;
 		try {
-			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/connectedhome/SauceSettings.yml"));
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/selfserve/SauceSettings.yml"));
 			SauceSettings sauceSettings = yaml.load(inputStream);
 			return sauceSettings;
 		} catch (FileNotFoundException e) {

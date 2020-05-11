@@ -2,6 +2,10 @@ package com.rogers.pages;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -276,6 +280,51 @@ public class RogersManageDataPage extends BasePageClass {
 	 */
 	public boolean isCancelSuccessdisplayed() {		
 		return reusableActions.isElementVisible(titleAddOnCancelled,30);
+	}
+
+
+	public Map<String, Integer> getCountOfAllExistingAddedDataValues() {
+		HashMap<String, Integer> addedDataValues = new HashMap<String, Integer>();
+		for(WebElement row:rowsAddedData)
+		{		
+			int addedValueCount=0;
+			String strAddedValue = getNumbersFromString(row.getText());
+			if(addedDataValues.containsKey(strAddedValue))
+			{
+				addedValueCount =	addedDataValues.get(strAddedValue);
+				addedValueCount++;
+				addedDataValues.put(strAddedValue, addedValueCount);
+			}else
+			{
+				addedDataValues.put(strAddedValue, 1);
+			}
+			
+		}
+		
+	
+		return addedDataValues;
+	}
+	
+	/**
+	 * This will extract the numbers from string
+	 * @param strMatch complete string to be matched
+	 * @return String number
+	 */
+	public String getNumbersFromString(String strMatch) {
+		Pattern pattern = Pattern.compile("[0-9]+([,.][0-9]{1,2})?");
+        Matcher match = pattern.matcher(strMatch);  
+        match.find();
+        return match.group();
+	}
+
+
+	/**
+	 * 
+	 * @return
+	 */
+	public int getAllExistingAddedDataCount() {
+		return rowsAddedData.size();
+		
 	}
 	
 }

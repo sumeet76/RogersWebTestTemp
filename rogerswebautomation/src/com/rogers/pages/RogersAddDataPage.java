@@ -1,6 +1,10 @@
 package com.rogers.pages;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -33,7 +37,10 @@ public class RogersAddDataPage extends BasePageClass {
 	WebElement btnCloseAddData;	
 	
 	@FindBy (xpath = "//h2[@class='add-data-modal-title error-title']")
-	WebElement msgError;	
+	WebElement msgError;
+
+	@FindBy (xpath = "//h2[text()='Limit reached' or text()='Limite atteinte']")
+	WebElement lblLimitReached;	
 
 	/**
 	 * Verifies if Add data overlay displayed
@@ -50,6 +57,23 @@ public class RogersAddDataPage extends BasePageClass {
 	 */
 	public void selectFirstDataAddOnOption() {
 		reusableActions.clickWhenReady(divListAddDataOpt.get(1), 60);
+		
+	}
+	
+	/**
+	 * Selctes an add data option
+	 * @param strAddOn string add on value
+	 * @author Mirza.Kamran
+	 */
+	public void selectAddOnOption(String strAddOn) {
+		for(WebElement element:divListAddDataOpt)
+		{
+			if(getNumbersFromString(element.getText()).equals(strAddOn))
+			{
+				element.click();
+				break;
+			}
+		}	
 		
 	}
 	
@@ -117,6 +141,76 @@ public class RogersAddDataPage extends BasePageClass {
 	public void clkCloseOnAddDataOverlay() {
 		reusableActions.clickWhenReady(btnCloseAddData, 30);
 	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean verifyAddDataLimitReachedIsDisplayed() {
+		
+		return reusableActions.isElementVisible(lblLimitReached);
+	}
+
+		public boolean clkTheDataAddOnWhichAreNotAddedMoreThanThreeTime(Map<String, Integer> mapcountOfAlreadyAddedData) {
+		boolean foundLessThanThree = false;
+		reusableActions.waitForElementVisibility(divListAddDataOpt.get(1), 60);
+		for(WebElement btn: divListAddDataOpt)
+		{
+			String addedvalue = getNumbersFromString(btn.getText());
+			if(mapcountOfAlreadyAddedData.containsKey(addedvalue))
+			{
+				if(mapcountOfAlreadyAddedData.get(addedvalue)<3)
+				{
+					btn.click();
+					foundLessThanThree = true;
+					break;
+				}
+			
+			}else
+			{
+				btn.click();
+				foundLessThanThree = true;
+				break;
+			}
+		}
+		return foundLessThanThree;
+	}
+
+
+		/**
+		 * This will extract the numbers from string
+		 * @param strMatch complete string to be matched
+		 * @return String number
+		 */
+		public static String getNumbersFromString(String strMatch) {
+			Pattern pattern = Pattern.compile("[0-9]+([,.][0-9]{1,2})?");
+	        Matcher match = pattern.matcher(strMatch);  
+	        match.find();
+	        try {
+	        return match.group();
+	        }catch (Exception e) {
+	        	return "";
+			}
+		}
+
+		public boolean addDataThreeTimes(Map<String, Integer> countOfAlreadyAddedData) {
+		
+			return false;
+		}
+
+		
+
+		public List<String> getAllAddDataOptions() {
+			Integer count = divListAddDataOpt.size();
+			List<String> values = new ArrayList<String>();
+			for(int itr=1;itr<=count-1;itr++) 
+			{
+				values.add(getNumbersFromString(divListAddDataOpt.get(itr).getText()));
+			}
+								
+			return values;
+		}
+
 
 }
 
