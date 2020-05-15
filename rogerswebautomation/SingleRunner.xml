@@ -9,9 +9,9 @@
 </listeners> 		
 
 
-<test name="RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhenCxHasMoreThan5CTN_SE">
+<test name="RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhenCxHasMoreThan5CTN_SE"></class>
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE"></class>
 </classes>          																					
 </test>
 

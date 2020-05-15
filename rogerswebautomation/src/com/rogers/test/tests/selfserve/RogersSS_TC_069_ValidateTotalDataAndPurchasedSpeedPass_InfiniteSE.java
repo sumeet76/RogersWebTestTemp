@@ -22,7 +22,7 @@ public class RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE e
    	
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.config.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
 			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
 		}
 	   	
@@ -37,10 +37,10 @@ public class RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE e
     @Test
     public void validateTotalDataForInfiniteSEIndividualPlan() {
     	rogers_home_page.clkSignIn();
-    	String strUsername = TestDataHandler.tc626982.getUsername();
+    	String strUsername = TestDataHandler.tc6269.getUsername();
     	rogers_login_page.switchToSignInIFrame();
         rogers_login_page.setUsernameIFrame(strUsername);
-        String strPassword = TestDataHandler.tc626982.getPassword();    	
+        String strPassword = TestDataHandler.tc6269.getPassword();    	
         rogers_login_page.setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
@@ -49,7 +49,7 @@ public class RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE e
 		
         if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc626982.getAccountDetails().getBan());
+            rogers_account_overview_page.selectAccount(TestDataHandler.tc6269.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");   
         rogers_account_overview_page.clkMenuUsageAndService();

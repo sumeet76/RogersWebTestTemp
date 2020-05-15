@@ -152,7 +152,7 @@ public class RogersAddDataPage extends BasePageClass {
 		return reusableActions.isElementVisible(lblLimitReached);
 	}
 
-		public boolean clkTheDataAddOnWhichAreNotAddedMoreThanThreeTime(Map<String, Integer> mapcountOfAlreadyAddedData) {
+	public boolean clkTheDataAddOnWhichAreNotAddedMoreThanThreeTime(Map<String, Integer> mapcountOfAlreadyAddedData) {
 		boolean foundLessThanThree = false;
 		reusableActions.waitForElementVisibility(divListAddDataOpt.get(1), 60);
 		for(WebElement btn: divListAddDataOpt)
@@ -178,39 +178,39 @@ public class RogersAddDataPage extends BasePageClass {
 	}
 
 
-		/**
-		 * This will extract the numbers from string
-		 * @param strMatch complete string to be matched
-		 * @return String number
-		 */
-		public static String getNumbersFromString(String strMatch) {
-			Pattern pattern = Pattern.compile("[0-9]+([,.][0-9]{1,2})?");
-	        Matcher match = pattern.matcher(strMatch);  
-	        match.find();
-	        try {
-	        return match.group();
-	        }catch (Exception e) {
-	        	return "";
-			}
+	/**
+	 * This will extract the numbers from string
+	 * @param strMatch complete string to be matched
+	 * @return String number
+	 */
+	public static String getNumbersFromString(String strMatch) {
+		Pattern pattern = Pattern.compile("[0-9]+([,.][0-9]{1,2})?");
+        Matcher match = pattern.matcher(strMatch);  
+        match.find();
+        try {
+        	return match.group();
+        }catch (Exception e) {
+        	return "";
 		}
+	}
 
-		public boolean addDataThreeTimes(Map<String, Integer> countOfAlreadyAddedData) {
-		
-			return false;
+	public boolean addDataThreeTimes(Map<String, Integer> countOfAlreadyAddedData) {
+	
+		return false;
+	}
+
+	
+
+	public List<String> getAllAddDataOptions() {
+		Integer count = divListAddDataOpt.size();
+		List<String> values = new ArrayList<String>();
+		for(int itr=1;itr<=count-1;itr++) 
+		{
+			values.add(getNumbersFromString(divListAddDataOpt.get(itr).getText()));
 		}
-
-		
-
-		public List<String> getAllAddDataOptions() {
-			Integer count = divListAddDataOpt.size();
-			List<String> values = new ArrayList<String>();
-			for(int itr=1;itr<=count-1;itr++) 
-			{
-				values.add(getNumbersFromString(divListAddDataOpt.get(itr).getText()));
-			}
-								
-			return values;
-		}
+							
+		return values;
+	}
 
 
 }

@@ -20,7 +20,7 @@ public class RogersSS_TC_061_ValidateDataUsageDisplayRunningLow_postpaid_SE_AddD
    	
 	@BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.config.getRogersURL(),strBrowser,strLanguage,GroupName.selfserve, method);
+		startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,GroupName.selfserve, method);
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
 	}
 		

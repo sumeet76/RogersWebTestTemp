@@ -21,7 +21,7 @@ public class RogersSS_TC_03_UserValidateRecoverUsernameUsingEmailID extends Base
 
 	@BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.config.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve_login,method);
+		startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve_login,method);
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
 	}
 	 
@@ -59,7 +59,7 @@ public class RogersSS_TC_03_UserValidateRecoverUsernameUsingEmailID extends Base
 		reporter.reportLogWithScreenshot("Get recovered username page.");
 		rogers_recover_pass_or_name.clkBtnReturnToSignin();	
 		rogers_recover_pass_or_name.switchToSigninPage(3);
-		rogers_home_page.launchHomePage(TestDataHandler.config.getRogersURL());
+		rogers_home_page.launchHomePage(TestDataHandler.ssConfig.getRogersURL());
 		rogers_home_page.clkSignIn(); 
 		rogers_login_page.switchToSignInIFrame();
         rogers_login_page.setUsernameIFrame(strUsername);

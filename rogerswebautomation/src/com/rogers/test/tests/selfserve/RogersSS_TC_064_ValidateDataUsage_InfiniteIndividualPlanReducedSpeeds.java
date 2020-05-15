@@ -20,7 +20,7 @@ public class RogersSS_TC_064_ValidateDataUsage_InfiniteIndividualPlanReducedSpee
    	
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.config.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
 			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
 		}
 	   	
@@ -75,6 +75,7 @@ public class RogersSS_TC_064_ValidateDataUsage_InfiniteIndividualPlanReducedSpee
         reporter.softAssert(rogers_wireless_dashboard_page.verifyCallOutMsgToAddSpeedPassIsDisplayed(),
 						"Call out message to Add speed pass is displayed",
 						"call out message to add speed pass is not displayed");
+        reporter.reportLogWithScreenshot("Dashboard page of reduced speed.");          
         rogers_wireless_dashboard_page.clkCloseCallOutMsg();
         reporter.softAssert(rogers_wireless_dashboard_page.validateCloseCallOutIsClosed(),
 						"Click on close call out message successful",
