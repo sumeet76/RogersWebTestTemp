@@ -63,6 +63,9 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//input[@id='username']")
 	WebElement inputNewUsername;
 	
+	@FindBy(xpath = "//span[@class='badge-ind-wireless-name']")
+	WebElement inputInnerNewUserName;
+	
 	@FindBy (xpath = "//span[contains(text(),'Continue') or contains(text(),'Continuer')]")
 	WebElement btnChangeUsernameContinue;
 	
@@ -434,7 +437,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void setNewUsername(String strNewUsername) {
 		reusableActions.getWhenReady(labelNewUsername,20).click();
-		reusableActions.getWhenReady(inputNewUsername,10).clear();
+		//reusableActions.getWhenReady(inputNewUsername,10).clear();
 		reusableActions.getWhenReady(inputNewUsername,2).sendKeys(strNewUsername);
 	}
 	
@@ -514,7 +517,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	public void setCurrentPassword(String strCurrentPass) {
 		
 		reusableActions.getWhenReady(divCurrentPassword,30).click();
-		reusableActions.getWhenReady(inputCurrentPassword,2).clear();
+		//reusableActions.getWhenReady(inputCurrentPassword,2).clear();
 		reusableActions.getWhenReady(inputCurrentPassword,2).sendKeys(strCurrentPass);
 	}
 	
@@ -525,7 +528,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void setNewPassword(String strNewPass) {
 		reusableActions.getWhenReady(divNewPassword,30).click();
-		reusableActions.getWhenReady(inputNewPassword,10).clear();
+		//reusableActions.getWhenReady(inputNewPassword,10).clear();
 		reusableActions.getWhenReady(inputNewPassword,2).sendKeys(strNewPass);
 	}
 	
@@ -536,7 +539,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void setConfirmPassword(String strConfirmPass) {
 		reusableActions.getWhenReady(divConfirmPassword,30).click();
-		reusableActions.getWhenReady(inputConfirmPassword,10).clear();
+		//reusableActions.getWhenReady(inputConfirmPassword,10).clear();
 		reusableActions.getWhenReady(inputConfirmPassword,2).sendKeys(strConfirmPass);
 	}
 	

@@ -152,7 +152,13 @@ public class RogersAddDataPage extends BasePageClass {
 		return reusableActions.isElementVisible(lblLimitReached);
 	}
 
-		public boolean clkTheDataAddOnWhichAreNotAddedMoreThanThreeTime(Map<String, Integer> mapcountOfAlreadyAddedData) {
+	/**
+	 * select and click on the Add on data which is not added more than three times
+	 * @param mapcountOfAlreadyAddedData count of data 
+	 * @return true if less than 3 times added data is found else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean clkTheDataAddOnWhichAreNotAddedMoreThanThreeTime(Map<String, Integer> mapcountOfAlreadyAddedData) {
 		boolean foundLessThanThree = false;
 		reusableActions.waitForElementVisibility(divListAddDataOpt.get(1), 60);
 		for(WebElement btn: divListAddDataOpt)
@@ -194,13 +200,12 @@ public class RogersAddDataPage extends BasePageClass {
 			}
 		}
 
-		public boolean addDataThreeTimes(Map<String, Integer> countOfAlreadyAddedData) {
 		
-			return false;
-		}
-
-		
-
+		/**
+		 * Gets all the add data options
+		 * @return list of all the add data values
+		 * @author Mirza.Kamran
+		 */
 		public List<String> getAllAddDataOptions() {
 			Integer count = divListAddDataOpt.size();
 			List<String> values = new ArrayList<String>();

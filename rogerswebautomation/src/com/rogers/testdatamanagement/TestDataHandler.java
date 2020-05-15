@@ -109,6 +109,7 @@ public class TestDataHandler {
 	public static ContactData anonymousData;
 	public static MigrationData migrationData;
 	public static PaymentDetails ovPaymentInfo;
+	public static AccountData tc60;
 
 	public static void dataInit (String strApplicationType) {	    	
     	if(strApplicationType.toUpperCase().trim().endsWith("CH")) {	    	
@@ -227,6 +228,7 @@ public class TestDataHandler {
     	tc78 = YamlHandler.getAccountData("tc78NSE_CTNsWithMultipleSimilarMDTs");
     	tc79 = YamlHandler.getAccountData("tc79NSE_CTNWithSingleRegularMDTs");
     	tc81 = YamlHandler.getAccountData("tc81postpaidSE");
+    	tc60 = YamlHandler.getAccountData("tc60SEMultipleCTN");
 	}
 	
 	private static void buyFlowsDataInit() {

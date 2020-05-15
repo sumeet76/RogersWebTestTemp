@@ -230,9 +230,11 @@ public class BrowserDrivers {
 			     sauceOpts.setCapability("browserVersion", TestDataHandler.sauceSettings.getMutableChromeCapabilities().getBrowserVersion());  				       
 			     sauceOpts.setCapability("platformVersion", TestDataHandler.sauceSettings.getMutableChromeCapabilities().getPlatformVersion());
 				break;
-			case "firefox":
-				 sauceOpts.setCapability("browserVersion", TestDataHandler.sauceSettings.getMutableFireFoxCapabilities().getBrowserVersion());  				       
-			     sauceOpts.setCapability("platformVersion", TestDataHandler.sauceSettings.getMutableFireFoxCapabilities().getPlatformVersion());		
+			case "firefox":										
+				FirefoxOptions browserOptions = new FirefoxOptions(); 
+				browserOptions.setCapability("platformName", TestDataHandler.sauceSettings.getMutableFireFoxCapabilities().getPlatformVersion()); 
+				browserOptions.setCapability("browserVersion", TestDataHandler.sauceSettings.getMutableFireFoxCapabilities().getBrowserVersion()); 
+				browserOptions.setCapability("sauce:options", sauceOpts);	
 				break;
 			case "microsoftedge":
 				 sauceOpts.setCapability("browserVersion", TestDataHandler.sauceSettings.getMutableEdgeCapabilities().getBrowserVersion());  				       

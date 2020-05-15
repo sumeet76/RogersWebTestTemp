@@ -1,9 +1,5 @@
 # sauce capabilities, microsoftedge
 ---
-sauceUser: Rogers.Automation
-sauceKey: 7ca3d84c-9043-4cd1-b9b2-8a09709bd6f1
-browserVersion: latest
-platform: Windows 10
 sauceOptions:
    seleniumVersion: 3.141.59
    name: Fido - Self Serve Job
@@ -11,8 +7,8 @@ sauceOptions:
    commandTimeout: 600
    idleTimeout: 1000
    build: Onboarding Sample App - Java-TestNG 
-mutableFireFoxCapabilities:   
-   platformVersion: macOS 10.13
+mutableFireFoxCapabilities:  
+   platformVersion: Windows 10
    browserVersion: latest
 mutableChromeCapabilities:   
    platformVersion: Windows 10

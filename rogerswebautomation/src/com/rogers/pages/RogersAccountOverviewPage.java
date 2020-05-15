@@ -638,6 +638,15 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	}
 
 	/**
+	 * retruns total no of CTNS
+	 * @return int value total no of CTNs
+	 * @author Mirza.Kamran
+	 */
+	public int getTotalCTN() {		
+		return lstCtnBadges.size();
+	}
+	
+	/**
 	 * Scroll to middle of page
 	 * @author Mirza.Kamran
 	 */

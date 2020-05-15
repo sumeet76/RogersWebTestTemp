@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Self Serve Rogers Tests SS" parallel="tests" thread-count="1">
-<parameter name="strBrowser" value="chrome"/>
-<parameter name="strLanguage" value="en"/>
+<parameter name="strBrowser" value="saucefirefox"/>
+<parameter name="strLanguage" value="fr"/>
 <parameter name="strType" value="seq"/>
 <listeners>
       <listener class-name="com.rogers.test.listeners.AnnotationTransformer"/>
 </listeners> 		
+
+
 
 <test name="RogersSS_TC_009_UserSetMobileNumForSMSRecovery">
 <classes>				             
@@ -273,5 +275,24 @@
 <class name="com.rogers.test.tests.selfserve.RogersSS_TC_077_ValidateSupportSectionInWirelessDasboard_NSEInfinite"></class>
 </classes>          																					
 </test>
-							
+			
+<test name="RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhenCxHasMoreThan5CTN_SE">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhenCxHasMoreThan5CTN_SE"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs"></class>
+</classes>          																					
+</test>
+
+
+<test name="RogersSS_TC79_ValidateCancelDataFlowNSECTNwithSingleRegularMDTs">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC79_ValidateCancelDataFlowNSECTNwithSingleRegularMDTs"></class>
+</classes>          																					
+</test>
+					
 </suite>
