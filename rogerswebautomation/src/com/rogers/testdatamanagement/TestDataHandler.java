@@ -224,10 +224,9 @@ public class TestDataHandler {
     	tc02 = YamlHandler.getAccountData("tc02_PreRegister");
     	tc03 = YamlHandler.getAccountData("tc03RecoverUsernameByEmail");
     	tc67 = YamlHandler.getAccountData("tc67InfiniteSEReducedSpeed(Demoline)");    
-    	tc76 = YamlHandler.getAccountData("tc76SEPlanWith6Ctns(Demoline)"); 
+    	tc7681 = YamlHandler.getAccountData("tc76_81SEPlanWith6Ctns(Demoline)"); 
     	tc78 = YamlHandler.getAccountData("tc78NSE_CTNsWithMultipleSimilarMDTs");
-    	tc79 = YamlHandler.getAccountData("tc79NSE_CTNWithSingleRegularMDTs");
-    	tc81 = YamlHandler.getAccountData("tc81postpaidSE");
+    	tc79 = YamlHandler.getAccountData("tc79NSE_CTNWithSingleRegularMDTs");    	
     	tc60 = YamlHandler.getAccountData("tc60SEMultipleCTN");
     	tc82 = YamlHandler.getAccountData("tc82InfiniteSE");
 	}
