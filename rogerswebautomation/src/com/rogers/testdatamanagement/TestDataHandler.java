@@ -13,7 +13,7 @@ import com.rogers.yaml.pojo.SauceSettings;
 import com.rogers.yaml.pojo.ContactData;
 
 public class TestDataHandler {	
-	public static Config config;
+	public static Config ssConfig;
 	public static PaymentDetails paymentInfo;
 	public static Config bfaConfig;
 	public static PaymentDetails bfaPaymentInfo;
@@ -35,7 +35,7 @@ public class TestDataHandler {
 	public static AccountData tc57;
 	public static AccountData tc58;
 	public static AccountData tc59;
-	public static AccountData tc626982;
+	public static AccountData tc6269;
 	public static AccountData tc63;
 	public static AccountData tc64;
 	public static AccountData tc6577;
@@ -46,8 +46,8 @@ public class TestDataHandler {
 	public static AccountData tc67;	
 	public static AccountData tc78;
 	public static AccountData tc79;
-	public static AccountData tc76;
-	public static AccountData tc81;
+	public static AccountData tc7681;
+	public static AccountData tc82;
 	public static Config rogersConfig;
 	public static AccountData digitalTVAccount;
 	public static AccountData solarisInternetAccount;
@@ -194,7 +194,7 @@ public class TestDataHandler {
 	}
 	
 	private static void selfserveDataInit() {
-    	config =  YamlHandler.getConfig();
+    	ssConfig =  YamlHandler.getConfig();
     	sauceSettings = YamlHandler.getSauceSettings();
     	paymentInfo = YamlHandler.getPaymentDetails();
     	tc013132 = YamlHandler.getAccountData("tc01_31_32Postpaid");
@@ -216,7 +216,7 @@ public class TestDataHandler {
     	tc58 = YamlHandler.getAccountData("tc58NSEwDataLimitedTTPlan");
     	tc59 = YamlHandler.getAccountData("tc59NSEwDataUnlimitedTTPlanRunningLow");
     	tc61 = YamlHandler.getAccountData("tc61SEPlanRunningLow(Demoline)");
-    	tc626982 = YamlHandler.getAccountData("tc62_69_82InfiniteSE(Demoline)");
+    	tc6269 = YamlHandler.getAccountData("tc62_69InfiniteSE(Demoline)");
     	tc63 = YamlHandler.getAccountData("tc63NSEindividualRunningLow");
     	tc64 = YamlHandler.getAccountData("tc64InfiniteNSEReducedSpeed");
     	tc6577 = YamlHandler.getAccountData("tc65_77InfiniteNSE");
@@ -229,10 +229,11 @@ public class TestDataHandler {
     	tc79 = YamlHandler.getAccountData("tc79NSE_CTNWithSingleRegularMDTs");
     	tc81 = YamlHandler.getAccountData("tc81postpaidSE");
     	tc60 = YamlHandler.getAccountData("tc60SEMultipleCTN");
+    	tc82 = YamlHandler.getAccountData("tc82InfiniteSE");
 	}
 	
 	private static void buyFlowsDataInit() {
-		config =  YamlHandler.getBFAConfig();
+		ssConfig =  YamlHandler.getBFAConfig();
 		bfaConfig =  YamlHandler.getBFAConfig();
 		bfaPaymentInfo = YamlHandler.getBFAPaymentDetails();
     	testCase01 = YamlHandler.getAALdata("tc01AAL");

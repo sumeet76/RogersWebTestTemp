@@ -21,7 +21,7 @@ public class RogersSS_TC_053_ValidateBrightstarLinkInWirelessDashbard_prepaidCon
     
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.config.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
 			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
 		}
 	   	
@@ -67,7 +67,7 @@ public class RogersSS_TC_053_ValidateBrightstarLinkInWirelessDashbard_prepaidCon
         reporter.reportLogWithScreenshot("Link start or track a phone repair claim is clicked.");
         rogers_wireless_dashboard_page.clkBtnHelpYourPhoneContinue();
         reporter.reportLogWithScreenshot("Button continue in help out on your phone is clicked.");
-        String strUrlExpected = TestDataHandler.config.getPhoneRepairUrl();
+        String strUrlExpected = TestDataHandler.ssConfig.getPhoneRepairUrl();
         reporter.softAssert(rogers_wireless_dashboard_page.verifyBrightstarLinkOpenSuccessfully(strUrlExpected), 
 				"Brightstar link opened successfully.", 
 				"Brightstar link didn't redirect to expected url.");

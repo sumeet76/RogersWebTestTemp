@@ -184,21 +184,21 @@ public class RogersAddDataPage extends BasePageClass {
 	}
 
 
-		/**
-		 * This will extract the numbers from string
-		 * @param strMatch complete string to be matched
-		 * @return String number
-		 */
-		public static String getNumbersFromString(String strMatch) {
-			Pattern pattern = Pattern.compile("[0-9]+([,.][0-9]{1,2})?");
-	        Matcher match = pattern.matcher(strMatch);  
-	        match.find();
-	        try {
-	        return match.group();
-	        }catch (Exception e) {
-	        	return "";
-			}
+	/**
+	 * This will extract the numbers from string
+	 * @param strMatch complete string to be matched
+	 * @return String number
+	 */
+	public static String getNumbersFromString(String strMatch) {
+		Pattern pattern = Pattern.compile("[0-9]+([,.][0-9]{1,2})?");
+        Matcher match = pattern.matcher(strMatch);  
+        match.find();
+        try {
+        	return match.group();
+        }catch (Exception e) {
+        	return "";
 		}
+	}
 
 		
 		/**

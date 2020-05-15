@@ -21,21 +21,7 @@ public class VerifyInEns{
 	 */
 	private void startVerify() {
 
-		String strEnsUrl = "";
-		if (TestDataHandler.config.getRogersURL().contains("qa06")
-				||TestDataHandler.config.getRogersURL().contains("qa01"))
-		{
-			strEnsUrl = TestDataHandler.config.getEnsURL04();
-		}else if(TestDataHandler.config.getRogersURL().contains("qa05")
-				|| TestDataHandler.config.getRogersURL().contains("qa02"))
-		{
-			strEnsUrl = TestDataHandler.config.getEnsURL03();
-		}else if(TestDataHandler.config.getRogersURL().contains("qa07"))
-		{
-			strEnsUrl = TestDataHandler.config.getEnsURL01();
-		}
-
-		baseTestClass.ensHomePage.openNewTabForEns(strEnsUrl);
+		baseTestClass.ensHomePage.openNewTabForEns(TestDataHandler.ssConfig.getEnsURL());
 		baseTestClass.reporter.reportLogWithScreenshot("Ens Window");
 	}
 	

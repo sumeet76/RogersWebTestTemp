@@ -22,7 +22,7 @@ public class RogersSS_TC79_ValidateCancelDataFlowNSECTNwithSingleRegularMDTs ext
     
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.config.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
 			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
 		}
 	   	
@@ -32,13 +32,13 @@ public class RogersSS_TC79_ValidateCancelDataFlowNSECTNwithSingleRegularMDTs ext
 		closeSession();
 	}
 	
-	//TODO merge with TC59
+	//TODO: call add data flow 1 time
 	
     @Test
-    public void validateMyWirelessPlanSectionInTheWirelessDashboardNSE() {
+    public void validateCancelSingleMDTFlowNSEWithMultiline() {
     	rogers_home_page.clkSignIn();
-    	String strUsername = TestDataHandler.tc59.getUsername();
-    	String strPassword = TestDataHandler.tc59.getPassword();
+    	String strUsername = TestDataHandler.tc79.getUsername();
+    	String strPassword = TestDataHandler.tc79.getPassword();
     	rogers_login_page.switchToSignInIFrame();
         rogers_login_page.setUsernameIFrame(strUsername);
         rogers_login_page.setPasswordIFrame(strPassword);
