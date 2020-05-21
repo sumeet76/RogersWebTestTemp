@@ -45,7 +45,7 @@ public class RogersSS_Batch_AccountRegistrations extends BaseTestClass {
 	
 	
 	@Test(dataProvider = "AccountRegistrationData")
-	public void validateUserChangeContactInformationAndBillingAddress(String strBan, String strPostalCode, String strEmail,String strPassword) {
+	public void rogersSS_Batch_AccountRegistrations(String strBan, String strPostalCode, String strEmail,String strPassword) {
 		System.out.print(System.getenv());
 		
 		reporter.reportLogWithScreenshot("Rogers Launch page");
@@ -55,7 +55,7 @@ public class RogersSS_Batch_AccountRegistrations extends BaseTestClass {
 		rogers_login_page.clickRegister();
 		reporter.reportLogWithScreenshot("Register Now");
 		//=== commenting due  to changes in story DC-3077 		
-		//rogers_register_page.clickRegisterNow();
+		rogers_register_page.clickRegisterNow();
 		reporter.reportLogWithScreenshot("Wireless Or Resedential Services");
 		rogers_register_page.clickWirelessOrResidentialServices();
 		reporter.reportLog("Registering account with Ban : "+strBan+
@@ -119,6 +119,13 @@ public class RogersSS_Batch_AccountRegistrations extends BaseTestClass {
 	}
 	
 	
+	/**
+	 * This method will parse CSV for DataProvider
+	 * @param fileName String file name with complete location
+	 * @return Iterator array object with parsed CSV data
+	 * @throws IOException
+	 * @author Mirza.Kamran
+	 */
 	private Iterator<Object[]> parseCsvData(String fileName) throws IOException
 	{
 	  BufferedReader input = null;

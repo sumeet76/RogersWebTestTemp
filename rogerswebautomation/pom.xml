@@ -24,8 +24,7 @@
 		</pluginRepository>
 	</pluginRepositories>
 	<properties>
-		<src.dir>src</src.dir>
-		<webdrivermanager.version>3.3.0</webdrivermanager.version>
+		<src.dir>src</src.dir>		
 		<extent.version>2.41.2</extent.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -54,12 +53,7 @@
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>${testng.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.github.bonigarcia</groupId>
-			<artifactId>webdrivermanager</artifactId>
-			<version>${webdrivermanager.version}</version>
-		</dependency>
+		</dependency>		
 		<dependency>
 			<groupId>automation-utils</groupId>
 			<artifactId>common-utils</artifactId>

@@ -49,9 +49,6 @@ public class RogersSS_TC_064_ValidateDataUsage_InfiniteIndividualPlanReducedSpee
             rogers_account_overview_page.selectAccount(TestDataHandler.tc64.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");  
-//      String strAccountNum = TestDataHandler.rogersProfileWithNSEInfinitePlanData.getAccountDetails().getTc64ctn();
-//      String last4Digit = strAccountNum.substring(strAccountNum.length()-4);
-//        rogers_account_overview_page.clkCtnBadge(last4Digit);
         rogers_account_overview_page.clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
         String strAccountNum = TestDataHandler.tc64.getAccountDetails().getCtn();
