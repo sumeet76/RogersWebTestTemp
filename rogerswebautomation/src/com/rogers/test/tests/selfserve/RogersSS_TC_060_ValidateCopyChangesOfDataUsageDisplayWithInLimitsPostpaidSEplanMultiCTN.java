@@ -18,7 +18,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 
 
-public class RogersSS_TC_060_ValidateCopyChangesOfDataUsageDisplayWithInLimitsPostpaidSEplanMultiTN extends BaseTestClass {	
+public class RogersSS_TC_060_ValidateCopyChangesOfDataUsageDisplayWithInLimitsPostpaidSEplanMultiCTN extends BaseTestClass {	
    	
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
@@ -35,7 +35,7 @@ public class RogersSS_TC_060_ValidateCopyChangesOfDataUsageDisplayWithInLimitsPo
 	
 	
     @Test
-    public void validateDataRemainingOnMaxSpeedInfiniteSE() {
+    public void validateCopyChangesOfDataUsageDisplayWithInLimitsPostpaidSEplanMultiCTN() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc60.getUsername();
     	rogers_login_page.switchToSignInIFrame();

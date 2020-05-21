@@ -45,9 +45,9 @@ public class TestDataHandler {
 	public static AccountData tc61;
 	public static AccountData tc67;	
 	public static AccountData tc78;
-	public static AccountData tc79;
 	public static AccountData tc7681;
 	public static AccountData tc82;
+	public static AccountData tc80;
 	public static Config rogersConfig;
 	public static AccountData digitalTVAccount;
 	public static AccountData solarisInternetAccount;
@@ -195,7 +195,7 @@ public class TestDataHandler {
 	
 	private static void selfserveDataInit() {
     	ssConfig =  YamlHandler.getConfig();
-    	sauceSettings = YamlHandler.getSauceSettings();
+    	sauceSettings = YamlHandler.getSauceSettings("/data/selfserve/SauceSettings.yml");
     	paymentInfo = YamlHandler.getPaymentDetails();
     	tc013132 = YamlHandler.getAccountData("tc01_31_32Postpaid");
     	tc0224 = YamlHandler.getAccountData("tc02_24PostpaidLostStolen");
@@ -225,9 +225,9 @@ public class TestDataHandler {
     	tc03 = YamlHandler.getAccountData("tc03RecoverUsernameByEmail");
     	tc67 = YamlHandler.getAccountData("tc67InfiniteSEReducedSpeed(Demoline)");    
     	tc7681 = YamlHandler.getAccountData("tc76_81SEPlanWith6Ctns(Demoline)"); 
-    	tc78 = YamlHandler.getAccountData("tc78NSE_CTNsWithMultipleSimilarMDTs");
-    	tc79 = YamlHandler.getAccountData("tc79NSE_CTNWithSingleRegularMDTs");    	
+    	tc78 = YamlHandler.getAccountData("tc78NSESingleLine");    	    	
     	tc60 = YamlHandler.getAccountData("tc60SEMultipleCTN");
+    	tc80 = YamlHandler.getAccountData("TC80NSEwOverage");
     	tc82 = YamlHandler.getAccountData("tc82InfiniteSE");
 	}
 	

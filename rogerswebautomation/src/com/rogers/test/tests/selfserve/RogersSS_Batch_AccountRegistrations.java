@@ -46,6 +46,8 @@ public class RogersSS_Batch_AccountRegistrations extends BaseTestClass {
 	
 	@Test(dataProvider = "AccountRegistrationData")
 	public void validateUserChangeContactInformationAndBillingAddress(String strBan, String strPostalCode, String strEmail,String strPassword) {
+		System.out.print(System.getenv());
+		
 		reporter.reportLogWithScreenshot("Rogers Launch page");
     	rogers_home_page.clkSignIn();    	 
     	reporter.reportLogWithScreenshot("Sign in overlay");    		
@@ -65,7 +67,7 @@ public class RogersSS_Batch_AccountRegistrations extends BaseTestClass {
 		rogers_register_page.setPostalCode(strPostalCode);
 		reporter.reportLogWithScreenshot("Account number and postal code ");		
 		reporter.hardAssert(rogers_register_page.clickContinue(), 
-				"The band and account found", 
+				"The BAN and postcode found", 
 				"Ban and account not found");
 		if(!rogers_register_page.isProfileAlreadyStarted())
 		{
@@ -125,13 +127,13 @@ public class RogersSS_Batch_AccountRegistrations extends BaseTestClass {
 	  String line = null;
 	  ArrayList<Object[]> data = new ArrayList<Object[]>();
 	  while ((line = input.readLine()) != null)
-	  {
+	  {		
 	    String in = line.trim();
 	    String[] strTempArray = in.split(",");
 	    List<Object> arrray = new ArrayList<Object>();
 	    for(String strValue : strTempArray)
-	    {
-	      arrray.add(strValue);
+	    {	    	
+	          arrray.add(strValue);	    
 	    }
 	    data.add(arrray.toArray());
 	  }

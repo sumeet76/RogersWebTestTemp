@@ -106,8 +106,6 @@ public class RogersRegisterPage extends BasePageClass {
 		int count=0;
 		while (count<=2 && !clickSuccess) {
 			System.out.println("Attempt: "+(count+1)+" Trying to find Ban and postcode");
-//			// buffer static wait added to handle anomalies on firefox
-//			reusableActions.staticWait(4000);
 			reusableActions.clickIfAvailable(btnContinue);			
 			if(reusableActions.isElementVisible(lblUnableToFindAccount, 10))
 			{				

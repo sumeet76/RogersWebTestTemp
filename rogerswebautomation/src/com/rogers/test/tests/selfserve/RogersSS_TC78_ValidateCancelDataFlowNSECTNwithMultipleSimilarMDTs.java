@@ -78,8 +78,9 @@ public class RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs e
 							&& countOfActiveAndCancelledAddDataOnMyPlan.get("active")==countOfActiveAndCancelledAddData.get("active"))
 				, "The number of cancelled and active add on macth on my plans and manage data page", 
 				"The number of cancelled and active add on does not macth on my plans and manage data page");
+				
+		//TODO add mutiple similar MDT's
 		
-		//TODO add single regular MDT data 3 times
 		
 		if((countOfActiveAndCancelledAddData.get("active")>=1))
 		{

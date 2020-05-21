@@ -55,13 +55,7 @@ public class RogersSS_TC_081_ValidateErrorMessageWhenMDTandProfileMaximumLimitFo
         reporter.reportLogWithScreenshot("Account overview page.");   
         rogers_account_overview_page.clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
-        String strAccountNum = TestDataHandler.tc7681.getAccountDetails().getCtn();        
-        if (rogers_account_overview_page.isAccountShowInDropDown(strAccountNum.substring(strAccountNum.length()-4))) {
-            rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
-        } else {
-        	rogers_account_overview_page.clkSubMenuWirelessUsage();
-        }
-        
+        rogers_account_overview_page.clkSubMenuWirelessUsage();        
         rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
         
         reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(), 
@@ -82,10 +76,10 @@ public class RogersSS_TC_081_ValidateErrorMessageWhenMDTandProfileMaximumLimitFo
         reporter.softAssert(rogers_add_data_page.verifyAddDataOverlayIsDisplayed(), 
 							"Add the Data top-up  window should be displayed. (completd an MDT add on)", 
 							"Add the Data top-up  window is NOT displayed.");          
-        List<String> allData =rogers_add_data_page.getAllAddDataOptions();         
+        List<String> allMDTValues =rogers_add_data_page.getAllAddDataOptions();         
         rogers_speed_pass_page.clkBtnCloseInSpeedPassPopup();
         
-		addThreeTimesEachData(allData,countOfAlreadyAddedData);        		
+		addThreeTimesEachData(allMDTValues,countOfAlreadyAddedData);        		
         }else
         {
         	reporter.hardAssert(rogers_add_data_page.verifyAddDataLimitReachedIsDisplayed(), 
@@ -97,7 +91,12 @@ public class RogersSS_TC_081_ValidateErrorMessageWhenMDTandProfileMaximumLimitFo
                                                
     }
     
-    private void addDataForMaxThreeTimesEach(Integer intMaxNumberOfTimesToAdd,String strData) {
+    /**
+     * This methods will try to add MDT value for the specified number of times
+     * @param intMaxNumberOfTimesToAdd The number of times to add a particular MDT
+     * @param strMDT The MDT data value to add
+     */
+    private void addMDTForGivenNumberOfTimes(Integer intMaxNumberOfTimesToAdd,String strMDT) {
     	for(int itr=1;itr<=intMaxNumberOfTimesToAdd+1;itr++)
     	{
     		 rogers_wireless_dashboard_page.clkAddData();
@@ -105,7 +104,7 @@ public class RogersSS_TC_081_ValidateErrorMessageWhenMDTandProfileMaximumLimitFo
      							"Add the Data top-up  window should be displayed. (completd an MDT add on)", 
      							"Add the Data top-up  window is NOT displayed.");   
              reporter.reportLogWithScreenshot("Add Data Add on");  
-             rogers_add_data_page.selectAddOnOption(strData);
+             rogers_add_data_page.selectAddOnOption(strMDT);
              reporter.reportLogWithScreenshot("Select Add on option");  
              rogers_add_data_page.clkContinue();
              reporter.reportLogWithScreenshot("Select Purchase"); 
@@ -131,23 +130,28 @@ public class RogersSS_TC_081_ValidateErrorMessageWhenMDTandProfileMaximumLimitFo
     	    	        
     }
     
-    private void addThreeTimesEachData(List<String> allData, Map<String, Integer> countOfAlreadyAddedData) {
-    	for(String data: allData)
+    /**
+     * This method will try to add each MDT's 3 times if its not already added
+     * @param allMDT List of all the MDT values available for the account
+     * @param countOfAlreadyAddedData Map containing the count of already added MDT's 
+     */
+    private void addThreeTimesEachData(List<String> allMDT, Map<String, Integer> countOfAlreadyAddedData) {
+    	for(String mdt: allMDT)
     	{
     		if(counterOfAddedData==10) {break;}
     		
-    		if(countOfAlreadyAddedData.containsKey(data)  && countOfAlreadyAddedData.get(data)<3)
+    		if(countOfAlreadyAddedData.containsKey(mdt)  && countOfAlreadyAddedData.get(mdt)<3)
     		{
-    			reporter.reportLog("The Add on data :"+data+" needs to be added "+(countOfAlreadyAddedData.get(data)-3)+" times and one extra attempt to check Limit reached");
-    			addDataForMaxThreeTimesEach(countOfAlreadyAddedData.get(data)-3,data);
-    		}else if(!countOfAlreadyAddedData.containsKey(data))
+    			reporter.reportLog("The Add on data :"+mdt+" needs to be added "+(3-countOfAlreadyAddedData.get(mdt))+" times and one extra attempt to check Limit reached");
+    			addMDTForGivenNumberOfTimes(3-countOfAlreadyAddedData.get(mdt),mdt);
+    		}else if(!countOfAlreadyAddedData.containsKey(mdt))
     		{
-    			reporter.reportLog("The Add on data :"+data+" is not added , will add it 3 times and one extra attempt to check Limit reached");
-    			addDataForMaxThreeTimesEach(3,data);
-    		}else if(countOfAlreadyAddedData.get(data)==3)
+    			reporter.reportLog("The Add on data :"+mdt+" is not added , will add it 3 times and one extra attempt to check Limit reached");
+    			addMDTForGivenNumberOfTimes(3,mdt);
+    		}else if(countOfAlreadyAddedData.get(mdt)==3)
     		{
-    			reporter.reportLog("The Add on data :"+data+" is already added 3 times");
-    			addDataForMaxThreeTimesEach(0,data);
+    			reporter.reportLog("The Add on data :"+mdt+" is already added 3 times");
+    			addMDTForGivenNumberOfTimes(0,mdt);
     		}
     	}
     }

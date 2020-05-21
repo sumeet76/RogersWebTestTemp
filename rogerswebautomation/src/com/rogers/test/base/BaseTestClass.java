@@ -6,6 +6,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -89,12 +90,14 @@ import com.rogers.pages.ens.EnsHomePage;
 import com.rogers.pages.ens.EnsNotificationViewPage;
 import com.rogers.test.commonbusinessfunctions.CommonBusinessFlows;
 import com.rogers.test.commonbusinessfunctions.VerifyInEns;
-import com.rogers.test.helpers.BrowserDrivers;
 import com.rogers.test.helpers.CaptchaBypassHandlers;
 import com.rogers.test.helpers.RogersEnums;
+import com.rogers.test.helpers.RogersEnums.SauceCapabilities;
+import com.rogers.testdatamanagement.TestDataHandler;
 
 import extentreport.ExtentTestManager;
 import utils.AppiumServerJava;
+import utils.BrowserDrivers;
 import utils.Reporter;
 
 
@@ -190,6 +193,7 @@ public class BaseTestClass {
 	//int port = 4723;
 	
 	private CaptchaBypassHandlers captcha_bypass_handlers;
+	private Map<String, String> sauceParameters;
 		
 		public BaseTestClass() {
 			 browserdriver =  new BrowserDrivers();
@@ -207,7 +211,11 @@ public class BaseTestClass {
 	 * @throws IOException               java.io.IOException, Signals that an I/O exception of some sort has occurred, produced by failed or interrupted I/O operations.
 	 */
 	public void startSession(String strUrl, String strBrowser,  String strLanguage, String strGroupName , Method currentTestMethodName) throws ClientProtocolException, IOException {
-		this.driver = browserdriver.driverInit(strBrowser, currentTestMethodName, strGroupName);
+		if(strBrowser.contains("sauce"))
+		{
+			sauceParameters = initializeSauceParamsMap(strBrowser);
+		}
+		this.driver = browserdriver.driverInit(strBrowser, sauceParameters, currentTestMethodName, strGroupName);
 		System.out.println(strUrl + "----------------------------------------------------------------------------");
 		captcha_bypass_handlers = new CaptchaBypassHandlers(getDriver());
 		switch(strGroupName.toLowerCase().trim()) {			
@@ -243,7 +251,41 @@ public class BaseTestClass {
 	    init(strGroupName);	 
  }
 		
-	 /* To start a session using given url, browser, language and test case group name.
+	/**
+	 * This method will initialize a hash map with the sauce parameters
+	 * @param strBrowser string containing the browser name for sauce
+	 * @return hashmap with sauce capabilities
+	 * @author Mirza.Kamran
+	 */
+	 private Map<String, String> initializeSauceParamsMap(String strBrowser) {
+		
+		 Map<String,String> sauceOptions = new HashMap<String, String>();
+		 sauceOptions.put(SauceCapabilities.seleniumVersion.toString(), TestDataHandler.sauceSettings.getSauceOptions().getSeleniumVersion());
+		 sauceOptions.put(SauceCapabilities.maxDuration.toString(), TestDataHandler.sauceSettings.getSauceOptions().getMaxDuration());
+		 sauceOptions.put(SauceCapabilities.commandTimeout.toString(), TestDataHandler.sauceSettings.getSauceOptions().getCommandTimeout());
+		 sauceOptions.put(SauceCapabilities.idleTimeout.toString(), TestDataHandler.sauceSettings.getSauceOptions().getIdleTimeout());
+		 sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getSauceOptions().getBuild());
+		 switch (strBrowser.toLowerCase()) {
+			case "saucechrome":							    
+				sauceOptions.put(SauceCapabilities.platformVersion.toString(), TestDataHandler.sauceSettings.getMutableChromeCapabilities().getBrowserVersion());  				       
+				sauceOptions.put(SauceCapabilities.browserVersion.toString(), TestDataHandler.sauceSettings.getMutableChromeCapabilities().getPlatformVersion());
+				break;
+			case "saucefirefox":										
+				sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getMutableFireFoxCapabilities().getPlatformVersion());  				       
+				sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getMutableFireFoxCapabilities().getBrowserVersion());
+				break;
+			case "sauceedge":
+				sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getMutableEdgeCapabilities().getBrowserVersion());  				       
+				sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getMutableEdgeCapabilities().getPlatformVersion());
+				break;
+		
+		}
+			 			  		        		
+		return sauceOptions;
+	}
+
+
+	/* To start a session using given url, browser, language and test case group name.
 	 * @param strUrl                     string of test url
 	 * @param strBrowser                 string of browser name
 	 * @param strLanguage                string of language to use
@@ -266,7 +308,11 @@ public class BaseTestClass {
 	 * @throws IOException               java.io.IOException, Signals that an I/O exception of some sort has occurred, produced by failed or interrupted I/O operations.
 	 */
 	public void startOVSession(String strUrl,  String strBrowser,  String strLanguage, String strGroupName, String strContactID,String strAccNo, String strLoginID,  String strLanID,  Method currentTestMethodName ) throws ClientProtocolException, IOException {
-		this.driver = browserdriver.driverInit(strBrowser, currentTestMethodName, strGroupName);
+		if(strBrowser.contains("sauce"))
+		{
+			sauceParameters = initializeSauceParamsMap(strBrowser);
+		}
+		this.driver = browserdriver.driverInit(strBrowser,sauceParameters, currentTestMethodName, strGroupName);
 		System.out.println(strUrl + "----------------------------------------------------------------------------");
 		captcha_bypass_handlers = new CaptchaBypassHandlers(getDriver());
 		captcha_bypass_handlers.chOnewviewFlows(strUrl, strAccNo, strLoginID, strLanID, strLanguage,strBrowser,  currentTestMethodName ,strContactID);
@@ -515,5 +561,6 @@ public class BaseTestClass {
 		  putRequest.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 		  HttpClientBuilder.create().build().execute(putRequest);
 		}
+	
 	
 }

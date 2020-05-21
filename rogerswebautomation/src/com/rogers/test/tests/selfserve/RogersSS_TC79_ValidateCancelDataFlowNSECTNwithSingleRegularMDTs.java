@@ -32,13 +32,13 @@ public class RogersSS_TC79_ValidateCancelDataFlowNSECTNwithSingleRegularMDTs ext
 		closeSession();
 	}
 	
-	//TODO: call add data flow 1 time
+	//TODO: put as dependant on 59 in the testNG xml
 	
     @Test
     public void validateCancelSingleMDTFlowNSEWithMultiline() {
     	rogers_home_page.clkSignIn();
-    	String strUsername = TestDataHandler.tc79.getUsername();
-    	String strPassword = TestDataHandler.tc79.getPassword();
+    	String strUsername = TestDataHandler.tc59.getUsername();
+    	String strPassword = TestDataHandler.tc59.getPassword();
     	rogers_login_page.switchToSignInIFrame();
         rogers_login_page.setUsernameIFrame(strUsername);
         rogers_login_page.setPasswordIFrame(strPassword);
