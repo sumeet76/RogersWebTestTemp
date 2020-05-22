@@ -27,7 +27,7 @@ public class RogersCartSummaryPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkContinue() {
-		reusableActions.clickWhenReady(btnContinue);
+		reusableActions.clickWhenReady(btnContinue,60);
 	}
 	
 	/**
@@ -35,7 +35,7 @@ public class RogersCartSummaryPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkAddAnotherLine() {
-		reusableActions.clickWhenReady(lnkAddAnotherLine);
+		reusableActions.clickWhenReady(lnkAddAnotherLine,60);
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -21,52 +22,55 @@ public class RogersBuildPlanPage extends BasePageClass {
 
 	@FindBy(xpath = "//button[@res='_add']")
 	List<WebElement> btnAdd;
-	
-	@FindBy(xpath = "//p[@res='_continue']")
+
+	@FindAll({
+		@FindBy(xpath = "//p[@res='_continue']"),
+		@FindBy(xpath = "//span[@class='col-sm-6 pull-right btn button-continue ng-scope']")
+	})
 	WebElement btnContinue;
-	
+
 	@FindBy(xpath = "//span[contains(@class,'ui-slider-handle')]")
 	WebElement planSlider;
-	
+
 	@FindBy(xpath = "//div[@res='Category-EDGEFIN3TAB']")
 	WebElement lblEdge40;
-	
+
 	@FindBy(xpath = "//span[contains(@translate-values, 'month:') and contains(@translate-values, '24')]")
 	WebElement lblfin;
-	
+
 	@FindBy(xpath = "//span[@translate='Okay']/parent::button")
 	WebElement btnOkay;
-	
+
 	@FindBy(xpath = "//button[@res='_remove']")
 	WebElement btnRemove;
-	
+
 	@FindBy(xpath = "//span[@res='get_this_offer']/parent::button")
 	WebElement btnGetThisOffer;
-	
+
 	@FindBy(xpath = "//span[@translate='see.add_line']")
 	WebElement lnkAddALine;
-	
+
 	@FindBy(xpath = "//span[@res='_continue']/parent::button")
 	WebElement btnOverlayContinue;
-	
+
 	@FindBy(xpath = "//p[@res='_select']")
 	WebElement btnSelect;
-	
+
 	@FindBy(xpath = "//div[contains(@class,'current-balance-container')]//span[contains(@data-ng-bind-html,'planMSFValue')]/span")
 	WebElement lblCurrentPlanValue;
-	
+
 	@FindBy(xpath = "//div[contains(@class,'current-balance-container')]//div[@class='balance-view balance-today']")
 	WebElement lblCurrentPlanName;
-	
+
 	@FindBy(xpath = "//button[@res='_add']/../..//span[@class='priceValue']")
 	List<WebElement> lblPlanValue;
-	
+
 	@FindBy(xpath = "//a[@res='keep-existing']")
 	WebElement lnkKeepExisting;
-	
+
 	@FindBy(xpath = "//span[@res='select_existing_plan']/parent::button")
 	WebElement btnSelectExistingPlan;
-	
+
 	/**
 	 * Clicks on the 'Add' button against the first available price plan
 	 * @author rajesh.varalli1
@@ -76,7 +80,7 @@ public class RogersBuildPlanPage extends BasePageClass {
 		reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(btnAdd.get(0), 30));
 		reusableActions.staticWait(2000);
 	}
-	
+
 	/**
 	 * Handles the Today's Offer overlay by clicking on 'Get this offer' button and 
 	 * clicking on 'Continue to Addons' button after.
@@ -92,25 +96,26 @@ public class RogersBuildPlanPage extends BasePageClass {
 			return true;
 		}
 	}
-	
+
 	/**
 	 * Clicks on the 'Continue' button at the bottom of the page
 	 * @author rajesh.varalli1
 	 */
 	public void clkContinue() {
 		if(handleTodayOfferOverlay()) {
-			reusableActions.clickWhenReady(btnContinue);			
+			reusableActions.clickWhenReady(btnContinue,120);			
 		}
-		
+
 		if(reusableActions.isElementVisible(By.xpath("//span[@res='_upfront_amount']"),2)) {
 			reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(By.xpath("//div[@class='upfront-popup-button']/a[@translate='new_Confirm']")));
 		}
-		
+
 		if(reusableActions.isElementVisible(planSlider, 2)) {
 			reusableActions.waitForElementVisibility(planSlider, 60);
+			//reusableActions.clickIfAvailable(btnContinue, 120);		
 		}
 	}
-	
+
 	/**
 	 * Selects the plan type category by moving the Slider bar
 	 * @param planCat Type of the plan
@@ -118,7 +123,7 @@ public class RogersBuildPlanPage extends BasePageClass {
 	 */
 	public void selectPlanCategory(String planCat) {
 		String strTermMonths = null;
-		
+
 		switch (planCat.trim().toUpperCase()) {
 		case "EDGE FIN 24":
 		case "EDGE FINANCING 24":
@@ -156,14 +161,14 @@ public class RogersBuildPlanPage extends BasePageClass {
 			planCat = "";
 			break;
 		}
-		
+
 		reusableActions.dragAndDrop(planSlider, reusableActions.getWhenReady(By.xpath("//div[@res='Category-" + planCat + "']"),60));
 		reusableActions.dragAndDrop(planSlider, reusableActions.getWhenReady(By.xpath("//div[@res='Category-" + planCat + "']")));
 		if(planCat.contains("FIN")) {
 			reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(By.xpath("//span[contains(@translate-values, 'month:') and contains(@translate-values, '" + strTermMonths.trim() + "')]")));
 		}
 	}
-	
+
 	/**
 	 * Selects the Edge Financing plan type and sets the term of the plan
 	 * @param strTermMonths Term for the Financing plan in months like 24, 36
@@ -173,7 +178,7 @@ public class RogersBuildPlanPage extends BasePageClass {
 		selectPlanCategory("EDGE FIN");
 		reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(By.xpath("//span[contains(@translate-values, 'month:') and contains(@translate-values, '" + strTermMonths.trim() + "')]")));
 	}
-	
+
 	/**
 	 * Clicks on the 'Okay' button in the calling options overlay
 	 * @author rajesh.varalli1
@@ -183,7 +188,7 @@ public class RogersBuildPlanPage extends BasePageClass {
 		reusableActions.clickWhenReady(btnOkay);
 		reusableActions.staticWait(5000);
 	}
-	
+
 	/**
 	 * Clicks on the 'Add a line' link
 	 * @author rajesh.varalli1
@@ -191,7 +196,7 @@ public class RogersBuildPlanPage extends BasePageClass {
 	public void clkAddALine() {
 		reusableActions.clickWhenReady(lnkAddALine);
 	}
-	
+
 	/**
 	 * Clicks on the 'Continue' button on the overlay
 	 * @author rajesh.varalli1
@@ -199,7 +204,7 @@ public class RogersBuildPlanPage extends BasePageClass {
 	public void clkOverlayContinue() {
 		reusableActions.clickWhenReady(btnOverlayContinue);
 	}
-	
+
 	/**
 	 * Clicks on the 'Select' button in the Add a line section
 	 * @author rajesh.varalli1
@@ -207,7 +212,7 @@ public class RogersBuildPlanPage extends BasePageClass {
 	public void clkSelect() {
 		reusableActions.executeJavaScriptClick(btnSelect);
 	}
-	
+
 	/**
 	 * Captures and returns the current plan monthly value
 	 * @return plan value per month
@@ -216,7 +221,7 @@ public class RogersBuildPlanPage extends BasePageClass {
 	public double getCurrentPlanValue() {
 		return Double.parseDouble(lblCurrentPlanValue.getText().replace("/mo", "").replace("$", "").trim());
 	}
-	
+
 	/**
 	 * Captures and returns the current plan tier name
 	 * @return current plan tier name
@@ -225,7 +230,7 @@ public class RogersBuildPlanPage extends BasePageClass {
 	public String getCurrentPlanCategory() {
 		return lblCurrentPlanName.getText();
 	}
-	
+
 	/**
 	 * Selects the next low tier price plan than the current price plan.
 	 * If the current plan is in the lowest tier, then a lower cost price plan in the same tier gets selected.
@@ -236,7 +241,7 @@ public class RogersBuildPlanPage extends BasePageClass {
 		String newPlan = null;
 		String strCurPln = getCurrentPlanCategory().toUpperCase();
 		double dblCurPlnVal = getCurrentPlanValue();
-		
+
 		if(strCurPln.contains("EDGE FIN")) {
 			newPlan = "EDGE 40";
 		} else if (strCurPln.contains("EDGE 40")) {
@@ -246,9 +251,9 @@ public class RogersBuildPlanPage extends BasePageClass {
 		} else {
 			newPlan = "TALK AND TEXT";
 		}
-		
+
 		selectPlanCategory(newPlan);
-		
+
 		for (int index=0; index<lblPlanValue.size(); index++) {
 			if(Double.parseDouble(reusableActions.getWhenReady(lblPlanValue.get(index),30).getText().replace("$", "").trim()) < dblCurPlnVal) {
 				reusableActions.executeJavaScriptClick(btnAdd.get(index));
@@ -256,7 +261,7 @@ public class RogersBuildPlanPage extends BasePageClass {
 			}
 		}
 	}
-	
+
 	/**
 	 * Selects the next high tier price plan than the current price plan.
 	 * If the current plan is in the highest tier, then a higher cost price plan in the same tier gets selected.
@@ -267,7 +272,7 @@ public class RogersBuildPlanPage extends BasePageClass {
 		String newPlan = null;
 		String strCurPln = getCurrentPlanCategory().toUpperCase();
 		double dblCurPlnVal = getCurrentPlanValue();
-		
+
 		if(strCurPln.contains("TALK AND TEXT")) {
 			newPlan = "EDGE 20";
 		} else if (strCurPln.contains("EDGE 20")) {
@@ -277,9 +282,9 @@ public class RogersBuildPlanPage extends BasePageClass {
 		} else {
 			newPlan = "EDGE FIN";
 		}
-		
+
 		selectPlanCategory(newPlan);
-		
+
 		for (int index=0; index<lblPlanValue.size(); index++) {
 			if(Double.parseDouble(reusableActions.getWhenReady(lblPlanValue.get(index),30).getText().replace("$", "").trim()) > dblCurPlnVal) {
 				reusableActions.executeJavaScriptClick(btnAdd.get(index));
@@ -287,7 +292,7 @@ public class RogersBuildPlanPage extends BasePageClass {
 			}
 		}
 	}
-	
+
 	/**
 	 * Selects the Existing Plan
 	 * @author rajesh.varalli1
@@ -296,5 +301,5 @@ public class RogersBuildPlanPage extends BasePageClass {
 		reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(lnkKeepExisting, 40));
 		reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(btnSelectExistingPlan, 30));
 	}
-	
+
 }

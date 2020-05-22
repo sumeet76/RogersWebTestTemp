@@ -40,7 +40,7 @@ public class RogersBFA_TC06_HUP_Deeplink_FinanceAmount_KeepExistingPlan_Test ext
         rogers_login_page.clkSignInIFrame();
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
-        rogers_choose_phone_page.selectLineForUpgrade(TestDataHandler.testCase06.getCtn());
+        //rogers_choose_phone_page.selectLineForUpgrade(TestDataHandler.testCase06.getCtn());
         rogers_choose_phone_page.searchDevice(TestDataHandler.testCase06.getNewDevice());
         reporter.reportLogWithScreenshot("Rogers Choose Phone page");
         rogers_choose_phone_page.selectFirstAvailableDevice();
@@ -50,6 +50,11 @@ public class RogersBFA_TC06_HUP_Deeplink_FinanceAmount_KeepExistingPlan_Test ext
         reporter.reportLogWithScreenshot("Rogers Choose Addons page");
         rogers_choose_addons_page.clkContinueHUP();
         reporter.reportLogWithScreenshot("Rogers Shipping page");
+        rogers_shipping_page.setEmailID();
+        rogers_shipping_page.clkSaveEmail();
+        rogers_shipping_page.clkSelectAvailableTime();
+        rogers_shipping_page.clkReserve();
+        reporter.reportLogWithScreenshot("Rogers Shipping Page before clicking continue");
         rogers_shipping_page.clkContinue();
         rogers_order_review_page.clkTermsAgreementCheckbox();
         rogers_order_review_page.clkShieldAgreementCheckbox();
