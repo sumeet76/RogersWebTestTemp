@@ -58,12 +58,16 @@ public class RogersBFA_TC07_HUP_withPPC_EdgeToFin_Test extends BaseTestClass {
         reporter.reportLogWithScreenshot("Rogers Choose Addons Page");
         rogers_choose_addons_page.clkContinueHUP();
         reporter.reportLogWithScreenshot("Rogers Shipping Page");
+        rogers_shipping_page.setEmailID();
+        rogers_shipping_page.clkSaveEmail();
+        rogers_shipping_page.clkSelectAvailableTime();
+        rogers_shipping_page.clkReserve();
         rogers_shipping_page.clkContinue();
+        reporter.reportLogWithScreenshot("Rogers Review Page");
         rogers_order_review_page.clkTermsAgreementCheckbox();
         rogers_order_review_page.clkShieldAgreementCheckbox();
         rogers_order_review_page.clkUpfrontTermsCheckbox();
         rogers_order_review_page.selectEmailDigitalCopy(TestDataHandler.testCase07.getUsername());
-        reporter.reportLogWithScreenshot("Rogers Order Review Page");
         if(rogers_order_review_page.isPaymentRequired()) {
         	rogers_order_review_page.clkContinue();
         	rogers_payment_page.setCreditCardDetails(TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getNumber(), 

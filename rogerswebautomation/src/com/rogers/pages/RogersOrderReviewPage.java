@@ -43,7 +43,9 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
 
-	@FindBy(xpath = "//input[@id='digital-copy']/../label")
+	//@FindBy(xpath = "//input[@id='digital-copy']/../label")
+	@FindBy(xpath = "//input[@id='cxEmail']/../label")
+	//@FindBy(xpath = "//label[@for='cxEmail']")
 	WebElement rdbtnEmail;
 	
 	@FindBy(xpath = "//button[@data-dtname='reviewOrder-submit']")
@@ -155,7 +157,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkShieldAgreementCheckbox() {
-		reusableActions.clickIfAvailable(chbShieldTerms,2);
+		reusableActions.clickIfAvailable(chbShieldTerms,60);
 	}
 
 	/**
@@ -164,7 +166,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 */
 	public void clkTermsAgreementCheckbox() {
 		reusableActions.waitForElementVisibility(chbTerms, 100);
-		reusableActions.clickWhenReady(chbTerms);
+		reusableActions.clickWhenReady(chbTerms,100);
 	}
 
 	/**
@@ -172,7 +174,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkUpfrontTermsCheckbox() {
-		reusableActions.clickIfAvailable(chbUpfrontTerms,2);
+		reusableActions.clickIfAvailable(chbUpfrontTerms,60);
 	}
 
 	/**
@@ -180,7 +182,9 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkEmailDigitalCopy() {
-		reusableActions.clickWhenVisible(rdbtnEmail);
+		reusableActions.staticWait(3000);
+		reusableActions.waitForElementVisibility(rdbtnEmail,60);
+		reusableActions.clickWhenVisible(rdbtnEmail,60);
 	}
 	
 	/**
@@ -189,7 +193,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @param strEmail string email
 	 */
 	public void selectEmailDigitalCopy(String strEmail) {
-		reusableActions.clickWhenVisible(rdbtnEmail);
+		reusableActions.clickWhenVisible(rdbtnEmail,30);
 		if(reusableActions.isElementVisible(txtCustomerEmail)) {
 			txtCustomerEmail.sendKeys(strEmail);
 		}
@@ -200,7 +204,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkSubmitOrder() {
-		reusableActions.clickWhenVisible(btnSubmitOrder);
+		reusableActions.clickWhenVisible(btnSubmitOrder,60);
 	}
 	
 	/**
@@ -208,7 +212,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkContinue() {
-		reusableActions.clickWhenReady(btnContinue);
+		reusableActions.clickWhenReady(btnContinue,60);
 	}
 	
 	/**
@@ -217,6 +221,6 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean isPaymentRequired() {
-		return reusableActions.isElementVisible(lblPaymentStep, 1);
+		return reusableActions.isElementVisible(lblPaymentStep, 30);
 	}
 }

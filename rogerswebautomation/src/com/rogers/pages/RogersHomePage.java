@@ -43,7 +43,7 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/wireless']")
 	WebElement lnkWireless;
 	
-	@FindBy(xpath = "//span[text()='View all devices']")
+	@FindBy(xpath = "//a[@class='rui-cta-badge pull-left']//span")
 	WebElement btnViewAllDevices;
 	
 	@FindBy(xpath = "//div[@class='rch-modal']//button[@class='ds-button ds-focus ds-active -primary -large']//span[@class='ds-button__copy w-100']")
@@ -122,6 +122,30 @@ public class RogersHomePage extends BasePageClass {
 	
 	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -tertiary -large ng-star-inserted']")
 	WebElement btnNoThnx;
+	
+	@FindBy(xpath = "//button[@class='btn btn-lg btn-red']")
+	WebElement btnAddNow;
+	
+	@FindBy(xpath = "//div[@class='line-icon line-shared-icon']")
+	WebElement btnToSharedPlan;
+	
+	/**
+	 * click button add device to a shared plan
+	 * @author Saurav.Goyal 
+	 */
+	public void clkAddDeviceToSharedPlan() {	
+		reusableActions.clickIfAvailable(btnToSharedPlan, 90);
+	}
+	
+	
+	/**
+	 * click Add a line to my account add now
+	 * @author Saurav.Goyal 
+	 */
+	public void clkAddNow() {	
+		reusableActions.clickIfAvailable(btnAddNow, 90);
+	}
+	
 	
 	/**
 	 * To Click No thanks on welcome back page

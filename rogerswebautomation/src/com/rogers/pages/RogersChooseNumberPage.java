@@ -48,7 +48,8 @@ public class RogersChooseNumberPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkSelectNewNumber() {
-		reusableActions.clickWhenReady(btnSelectNewNumber.get(0));
+		reusableActions.staticWait(2000);
+		reusableActions.clickWhenReady(btnSelectNewNumber.get(0),60);
 		reusableActions.staticWait(2000);
 	}
 	

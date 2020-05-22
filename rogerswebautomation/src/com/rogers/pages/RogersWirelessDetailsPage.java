@@ -46,6 +46,7 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='mppc_entry_1_change_current_plan']")
 	WebElement lnkChangeCurrentPlan;
 	
+	//@FindBy(xpath = "//span[@class='plan-cta-text']")
 	@FindBy(xpath = "//button[@title='Changer mon appareil pour un nouveau' or @title='Upgrade my device to a new one']")
 	WebElement btnUpgradeMyDevice;
 	

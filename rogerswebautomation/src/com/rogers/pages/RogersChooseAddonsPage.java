@@ -3,6 +3,7 @@ package com.rogers.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -17,7 +18,11 @@ public class RogersChooseAddonsPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//p[@res='_continue']")
+	
+	@FindAll({
+		@FindBy(xpath = "//p[@res='_continue']"),
+		@FindBy(xpath = "//span[@checkout-res='checkout_continue_lbl']")
+	})
 	WebElement btnContinue;
 	
 	@FindBy(xpath = "//section[contains(@class,'summary-section')]//span/span/span[@res='_continue']")

@@ -5,6 +5,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -37,7 +38,11 @@ public class RogersChoosePhonePage extends BasePageClass {
 	@FindBy(xpath = "//input[@id='searchBar']/../span")
 	WebElement imgSearch;
 	
-	@FindBy(xpath = "//div[@res='_add']")
+	@FindAll({
+		@FindBy(xpath = "//div[@res='_add']"),
+		@FindBy(xpath = "//span[text()='$0' or text()='0']/ancestor::section[@class='phoneModel']//div[@res='details_devicemodel' or @res='upgrade']"),
+		@FindBy(xpath = "//span[text()='$0' or text()='0']/ancestor::section[@class='phoneModel']//div[@res='_add']")
+	})
 	WebElement btnAdd;
 	
 	@FindBy(xpath = "//span[text()='$0' or text()='0']/ancestor::section[@class='phoneModel']//div[@res='details_devicemodel' or @res='upgrade']")
@@ -95,7 +100,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void searchDevice(String strDeviceName) {
-		reusableActions.getWhenReady(txtSearch, 40).sendKeys(strDeviceName);
+		reusableActions.getWhenReady(txtSearch, 80).sendKeys(strDeviceName);
 		reusableActions.executeJavaScriptClick(imgSearch);
 	}
 	

@@ -7,6 +7,21 @@ public class AALData {
 	private String username;
 	private String password;
 	private String ctnCity;
+	private String ctn;
+	
+	/**
+	 * @return the ctn
+	 */
+	public String getCtn() {
+		return ctn;
+	}
+	
+	/**
+	 * @param ctn of the existing device
+	 */
+	public void setCtn(String ctn) {
+		this.ctn = ctn;
+	}
 	/**
 	 * @return the newDevice
 	 */
