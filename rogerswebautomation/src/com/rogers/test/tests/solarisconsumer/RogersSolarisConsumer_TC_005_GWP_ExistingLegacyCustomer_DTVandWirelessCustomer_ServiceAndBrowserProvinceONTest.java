@@ -70,7 +70,7 @@ public class RogersSolarisConsumer_TC_005_GWP_ExistingLegacyCustomer_DTVandWirel
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
 		rogers_home_page.clkIgniteTVExistingCustomer();
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-		//rogers_home_page.clkNoThnx();
+		rogers_home_page.clkNoThnx();
 		
 		rogers_home_page.clkServiceabilityMigration(); 
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability"); 

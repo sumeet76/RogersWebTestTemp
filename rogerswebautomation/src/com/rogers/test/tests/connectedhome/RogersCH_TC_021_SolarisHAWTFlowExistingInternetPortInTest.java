@@ -29,8 +29,6 @@ public class RogersCH_TC_021_SolarisHAWTFlowExistingInternetPortInTest extends B
 		rogers_login_page.switchOutOfSignInIFrame();
 		rogers_account_overview_page.selectAccount(TestDataHandler.solarisPortinFlows.getAccountDetails().getBan());
 		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed");
-		rogers_internet_dashboard_page.clkSolarisInternetBadge();
-		rogers_internet_dashboard_page.clkInternetPopup();
         rogers_home_page.clkShop(); 
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
      	rogers_home_page.clkIgniteTV();
@@ -39,8 +37,8 @@ public class RogersCH_TC_021_SolarisHAWTFlowExistingInternetPortInTest extends B
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
     	String  strAddressLine1=(String) TestDataHandler.solarisPortinFlows.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=(String) TestDataHandler.solarisPortinFlows.getAccountDetails().getAddress().get("line2");
-        rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
-        rogers_home_page.clkIgniteAddressLookupSubmit();
+       /* rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        rogers_home_page.clkIgniteAddressLookupSubmit();*/
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
         reporter.reportLogWithScreenshot("Launched the port-in popup");

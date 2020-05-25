@@ -91,22 +91,24 @@ public class RogersCH_TC_004_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest e
 		rogers_igniteTV_profile_creation_page.verifyProfilePage();
 		reporter.reportLogWithScreenshot("Launched the create profile page");
 		rogers_igniteTV_profile_creation_page.clkSubmitProfile();
+        rogers_tech_install_page.verifyTechInstallPage(); 
+		reporter.reportLogWithScreenshot("tech install page launched");
+        //rogers_tech_install_page.clkPersonalizedInstall();
 		rogers_tech_install_page.selSelffinstallDateAndTime(); 
 		rogers_tech_install_page.clkTechInstallSlot(); 
+		rogers_tech_install_page.clkTechInstalConsent();
 		reporter.reportLogWithScreenshot("tech install date selected");
-		rogers_tech_install_page.clkIUnderStand();
-		reporter.reportLogWithScreenshot("clicked I Understand condition");
 		rogers_tech_install_page.clkTechInstallContinue();
 		rogers_order_review_page.verifyAgreementPage();
-		reporter.reportLogWithScreenshot("Launched the order review page");
-		rogers_order_review_page.verifyAgreement();
-		rogers_order_review_page.clkAcceptenceCheckbox();
-		reporter.reportLogWithScreenshot("Agreement details");
-		rogers_order_review_page.clkSubmit();
-		rogers_order_confirmation_page.verifyOrderConfirmation();
-		reporter.reportLogWithScreenshot("Launched the Confirmation page");
-		reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");
-	}
+        reporter.reportLogWithScreenshot("Launched the order review page");
+        rogers_order_review_page.verifyAgreement();
+        rogers_order_review_page.clkAcceptenceCheckbox();
+        reporter.reportLogWithScreenshot("Agreement details");
+        rogers_order_review_page.clkSubmit();
+        reporter.reportLogWithScreenshot("Launched the Confirmation page");
+        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");      
+        reporter.reportLogWithScreenshot("Launched the Confirmation page");
+        }
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})
 	//IgniteLogin

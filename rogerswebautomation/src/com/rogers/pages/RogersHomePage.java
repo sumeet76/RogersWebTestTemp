@@ -90,8 +90,11 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@class,'-secondary -large')]")
 	WebElement btnUseThisAddress;
 		
-	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -primary -large']")
-	WebElement btnIgniteAddressLookupSubmit;
+	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
+	WebElement btnIgniteAddressLookupSubmit;		
+	//button[@class='a-btnPrimary']
+	//button[@class='ds-button ds-focus ds-active -primary -large']
+	
 	
 	@FindBy(xpath = "//ngx-smart-modal[@id='loadingModal']")
 	WebElement popupLoadingFingersciam;

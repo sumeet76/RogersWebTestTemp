@@ -135,8 +135,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -tertiary -large -hasDsIcon']//following-sibling::button")
 	WebElement buttonUpgradeNow;
 	
-	@FindBy(xpath = "//button[contains(@class,'stb-button increment')]//span[@class='ds-button__copy w-100']")
+	@FindBy(xpath = "//button[contains(@class,'stb-button increment')]//span[@class='ds-button__wrapper d-flex justify-content-center align-items-center']")
 	WebElement buttonAddIgniteTVBoxes;
+	//button[contains(@class,'stb-button increment')]//span[@class='ds-button__copy w-100']
+	
 	
 	@FindBy(xpath = "//span[@translate='global.cta.updateCart']")
 	WebElement buttonUpdateCart;
@@ -259,6 +261,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkPlusAddIgniteTVBoxes() {
+		reusableActions.waitForElementVisibility(buttonAddIgniteTVBoxes, 60);
 		reusableActions.getWhenReady(buttonAddIgniteTVBoxes, 30).click();
 	}
 	
@@ -267,7 +270,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkUpdateCart() {
-		reusableActions.getWhenReady(buttonUpdateCart, 30).click();
+		reusableActions.getWhenReady(buttonUpdateCart, 60).click();
 	}
 	
 	/**

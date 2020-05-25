@@ -38,11 +38,14 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath ="//input[@id='enRouteEmail']")
 	WebElement txtEmail;
 	
-	@FindBy(xpath ="//div[@class='self-install-concern']//input[@name='consent']")
+	@FindBy(xpath ="//label[@for='deliveryConcern']")
 	WebElement chkTechInstalConsent;
+	//div[@class='self-install-concern']//input[@name='consent']
+	//input[@id='deliveryConcern']
 		
-	@FindBy(xpath ="//div[@class='buttons-block hidden-xs']//button[@class='ute-btn-primary']")
+	@FindBy(xpath ="//button[@class='ute-btn-primary']")
 	WebElement btnTechInstallContinue;
+	//div[@class='buttons-block hidden-xs']//button[@class='ute-btn-primary']")
 	
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
@@ -67,6 +70,12 @@ public class RogersTechInstallPage extends BasePageClass {
 
 	@FindBy(xpath = "//div[@class='mini-body']//div[contains(@ng-bind-html,'$root.gwpDetails')]")
 	WebElement gwpYourCart;
+	
+	@FindBy(xpath ="//label[@for='tech-install-option']//span[@class='ute-icon-check']")
+	WebElement chkPersonalizedInstall;
+	
+	@FindBy(xpath ="//ins[@translate='global.label.personalizedInstallation']")
+	WebElement txtTechInstalpage;
 	
 	/**
 	 * To click on the chevron on the tech Install page
@@ -133,7 +142,13 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyTechInstallPage() {
-		return	reusableActions.isElementVisible(rdoTechInstallSlot, 180);
+		return	reusableActions.isElementVisible(txtTechInstalpage, 180);
+	}
+	
+	
+	public void clkPersonalizedInstall() {
+		reusableActions.waitForElementVisibility(chkPersonalizedInstall, 180);
+		reusableActions.getWhenReady(chkPersonalizedInstall, 180).click();
 	}
 	
 	/**
@@ -243,8 +258,8 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * Click the continue button to continue the TechInstall on installation page
 	 * @author Chinnarao.Vattam
 	 */
-	public void clkTechInstallContinue() {   
-		reusableActions.waitForElementTobeClickable(btnTechInstallContinue, 150);
+	public void clkTechInstallContinue() {  
+		reusableActions.waitForElementTobeClickable(btnTechInstallContinue, 240);
 		reusableActions.javascriptScrollToBottomOfPage();
 		reusableActions.javascriptScrollToMiddleOfPage();
 		reusableActions.getWhenReady(btnTechInstallContinue, 120).click();
