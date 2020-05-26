@@ -355,6 +355,12 @@ public class BaseTestClass {
 			ensVerifications = new VerifyInEns(this);
 			rogers_set_password_page = new RogersSetPasswordPage(getDriver());
 			rogers_recover_pass_or_name = new RogersRecoverPassOrNamePage(getDriver());
+			rogers_solaris_rhp_dashboard_validation_page = new RogersSolarisRHPDashboardPage(driver);
+			rogers_internet_dashboard_page = new RogersInternetDashboardPage(driver);
+			rogers_internet_usage_page = new RogersInternetUsagePage(driver);
+			rogers_solaris_tv_dashboard_page = new RogersSolarisTVDashboardPage(driver);
+			rogers_digital_tv_dashboard_page = new RogersDigitalTVDashboardPage(driver);
+			rogers_account_overview_page = new RogersAccountOverviewPage(driver);						
 			break;
 			
 		case "connectedhome_legacyanonymous":
