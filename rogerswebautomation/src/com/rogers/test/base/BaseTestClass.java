@@ -250,39 +250,6 @@ public class BaseTestClass {
 	    setImplicitWait(getDriver(), 10);
 	    init(strGroupName);	 
  }
-		
-	/**
-	 * This method will initialize a hash map with the sauce parameters
-	 * @param strBrowser string containing the browser name for sauce
-	 * @return hashmap with sauce capabilities
-	 * @author Mirza.Kamran
-	 */
-	 private Map<String, String> initializeSauceParamsMap(String strBrowser) {
-		
-		 Map<String,String> sauceOptions = new HashMap<String, String>();
-		 sauceOptions.put(SauceCapabilities.seleniumVersion.toString(), TestDataHandler.sauceSettings.getSauceOptions().getSeleniumVersion());
-		 sauceOptions.put(SauceCapabilities.maxDuration.toString(), TestDataHandler.sauceSettings.getSauceOptions().getMaxDuration());
-		 sauceOptions.put(SauceCapabilities.commandTimeout.toString(), TestDataHandler.sauceSettings.getSauceOptions().getCommandTimeout());
-		 sauceOptions.put(SauceCapabilities.idleTimeout.toString(), TestDataHandler.sauceSettings.getSauceOptions().getIdleTimeout());
-		 sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getSauceOptions().getBuild());
-		 switch (strBrowser.toLowerCase()) {
-			case "saucechrome":							    
-				sauceOptions.put(SauceCapabilities.platformVersion.toString(), TestDataHandler.sauceSettings.getMutableChromeCapabilities().getBrowserVersion());  				       
-				sauceOptions.put(SauceCapabilities.browserVersion.toString(), TestDataHandler.sauceSettings.getMutableChromeCapabilities().getPlatformVersion());
-				break;
-			case "saucefirefox":										
-				sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getMutableFireFoxCapabilities().getPlatformVersion());  				       
-				sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getMutableFireFoxCapabilities().getBrowserVersion());
-				break;
-			case "sauceedge":
-				sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getMutableEdgeCapabilities().getBrowserVersion());  				       
-				sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getMutableEdgeCapabilities().getPlatformVersion());
-				break;
-		
-		}
-			 			  		        		
-		return sauceOptions;
-	}
 
 
 	/* To start a session using given url, browser, language and test case group name.
@@ -566,4 +533,37 @@ public class BaseTestClass {
 		}
 	
 	
+/**
+ * This method will initialize a hash map with the sauce parameters
+ * @param strBrowser string containing the browser name for sauce
+ * @return hashmap with sauce capabilities
+ * @author Mirza.Kamran
+ */
+ private Map<String, String> initializeSauceParamsMap(String strBrowser) {
+	
+	 Map<String,String> sauceOptions = new HashMap<String, String>();
+	 sauceOptions.put(SauceCapabilities.seleniumVersion.toString(), TestDataHandler.sauceSettings.getSauceOptions().getSeleniumVersion());
+	 sauceOptions.put(SauceCapabilities.maxDuration.toString(), TestDataHandler.sauceSettings.getSauceOptions().getMaxDuration());
+	 sauceOptions.put(SauceCapabilities.commandTimeout.toString(), TestDataHandler.sauceSettings.getSauceOptions().getCommandTimeout());
+	 sauceOptions.put(SauceCapabilities.idleTimeout.toString(), TestDataHandler.sauceSettings.getSauceOptions().getIdleTimeout());
+	 sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getSauceOptions().getBuild());
+	 switch (strBrowser.toLowerCase()) {
+		case "saucechrome":							    
+			sauceOptions.put(SauceCapabilities.platformVersion.toString(), TestDataHandler.sauceSettings.getMutableChromeCapabilities().getBrowserVersion());  				       
+			sauceOptions.put(SauceCapabilities.browserVersion.toString(), TestDataHandler.sauceSettings.getMutableChromeCapabilities().getPlatformVersion());
+			break;
+		case "saucefirefox":										
+			sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getMutableFireFoxCapabilities().getPlatformVersion());  				       
+			sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getMutableFireFoxCapabilities().getBrowserVersion());
+			break;
+		case "sauceedge":
+			sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getMutableEdgeCapabilities().getBrowserVersion());  				       
+			sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getMutableEdgeCapabilities().getPlatformVersion());
+			break;
+	
+	}
+		 			  		        		
+	return sauceOptions;
+}
+
 }

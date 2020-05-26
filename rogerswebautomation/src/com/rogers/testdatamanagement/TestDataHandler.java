@@ -138,6 +138,7 @@ public class TestDataHandler {
 	private static void connectedHomeDataInit() {
 		rogersConfig =  YamlHandler.getCableConfig();
       	rogersPaymentInfo = YamlHandler.getCablePaymentDetails();
+      	sauceSettings = YamlHandler.getSauceSettings("/data/connectedhome/SauceSettings.yml");
       	//sacueConfig = YamlHandler.getSauceConfig();              	
       	//Digital TV test data
     	digitalTVAccount = YamlHandler.getCableAccountData("DigitalTVAccount");

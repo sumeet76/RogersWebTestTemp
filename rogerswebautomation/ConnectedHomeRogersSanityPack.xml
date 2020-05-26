@@ -7,7 +7,7 @@
 	</listeners>
 
 	<test name="Cable rogers Sanity LegacyAnonymous">
-		<parameter name="strBrowser" value="chrome" />
+		<parameter name="strBrowser" value="saucechrome" />
 		<parameter name="strLanguage" value="en" />
 		<parameter name="strGroupName" value="connectedhome_legacyanonymous" />
 		<classes>
@@ -17,7 +17,7 @@
 	</test>
 
 	<test name="Cable rogers Sanity LegacyLogin">
-		<parameter name="strBrowser" value="chrome" />
+		<parameter name="strBrowser" value="saucechrome" />
 		<parameter name="strLanguage" value="en" />
 		<parameter name="strGroupName"  value="connectedhome_legacylogin" />
 		<classes>
@@ -29,7 +29,7 @@
 	</test>
 
 	<test name="Cable rogers Sanity IgniteLogin">
-		<parameter name="strBrowser" value="chrome" />
+		<parameter name="strBrowser" value="saucechrome" />
 		<parameter name="strLanguage" value="en" />
 		<parameter name="strGroupName"  value="connectedhome_ignitelogin" />
 		<classes>
@@ -41,7 +41,7 @@
 	
 	
 	<test name="Cable rogers Sanity IgniteAnonymous">
-		<parameter name="strBrowser" value="chrome" />
+		<parameter name="strBrowser" value="saucechrome" />
 		<parameter name="strLanguage" value="en" />
 		<parameter name="strGroupName" value="connectedhome_igniteanonymous"/>
 		<classes>

@@ -1,0 +1,19 @@
+# sauce capabilities, microsoftedge
+---
+sauceOptions:
+   seleniumVersion: 3.141.59
+   name: Rogers - Connected Home Job
+   maxDuration: 600
+   commandTimeout: 600
+   idleTimeout: 1000
+   build: June 3rd Release regression 
+mutableFireFoxCapabilities:  
+   platformVersion: Windows 10
+   browserVersion: latest
+mutableChromeCapabilities:   
+   platformVersion: Windows 10
+   browserVersion: latest
+mutableEdgeCapabilities:   
+   platformVersion: Windows 10
+   browserVersion: latest   
+...
