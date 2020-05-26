@@ -1,13 +1,20 @@
 package com.rogers.test.tests.selfserve;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -16,7 +23,7 @@ import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 
 
-public class RogersSS_TC_02_AccountRegistration extends BaseTestClass {
+public class RogersSS_Batch_AccountRegistrations extends BaseTestClass {
 	
 
 	@BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
@@ -30,27 +37,38 @@ public class RogersSS_TC_02_AccountRegistration extends BaseTestClass {
 		closeSession();
 	}
 	
-	@Test
-	public void validateUserChangeContactInformationAndBillingAddress() {
+	@DataProvider(name = "AccountRegistrationData")
+	public Iterator<Object[]> testData() throws IOException
+	{
+	  return parseCsvData(System.getProperty("user.dir") + "/data/selfserve/AccountRegistration.csv");
+	}
+	
+	
+	@Test(dataProvider = "AccountRegistrationData")
+	public void rogersSS_Batch_AccountRegistrations(String strBan, String strPostalCode, String strEmail,String strPassword) {
+		System.out.print(System.getenv());
+		
 		reporter.reportLogWithScreenshot("Rogers Launch page");
     	rogers_home_page.clkSignIn();    	 
-    	reporter.reportLogWithScreenshot("Sign in overlay");
-    	String strPassword = TestDataHandler.tc02.getPassword();
-    	String strBan = TestDataHandler.tc02.getAccountDetails().getBan();
-    	String strEmail = TestDataHandler.tc02.getUsername();
-    	String strPostalCode = TestDataHandler.tc02.getAccountDetails().getPostalcode();    	
+    	reporter.reportLogWithScreenshot("Sign in overlay");    		
 		rogers_login_page.switchToSignInIFrame();
 		rogers_login_page.clickRegister();
 		reporter.reportLogWithScreenshot("Register Now");
 		//=== commenting due  to changes in story DC-3077 		
-		//rogers_register_page.clickRegisterNow();
+		rogers_register_page.clickRegisterNow();
 		reporter.reportLogWithScreenshot("Wireless Or Resedential Services");
 		rogers_register_page.clickWirelessOrResidentialServices();
+		reporter.reportLog("Registering account with Ban : "+strBan+
+				  " PostCode : "+strPostalCode+
+				  " Email "+strEmail+
+				  " Password "+strPassword);
 		reporter.reportLogWithScreenshot("Set account number and Postal code");
 		rogers_register_page.setAccountNumber(strBan);
 		rogers_register_page.setPostalCode(strPostalCode);
-		reporter.reportLogWithScreenshot("Account number and postal code ");
-		rogers_register_page.clickContinue();
+		reporter.reportLogWithScreenshot("Account number and postal code ");		
+		reporter.hardAssert(rogers_register_page.clickContinue(), 
+				"The BAN and postcode found", 
+				"Ban and account not found");
 		if(!rogers_register_page.isProfileAlreadyStarted())
 		{
 			rogers_register_page.setEmail(strEmail);
@@ -98,6 +116,36 @@ public class RogersSS_TC_02_AccountRegistration extends BaseTestClass {
 		}
 
 						
+	}
+	
+	
+	/**
+	 * This method will parse CSV for DataProvider
+	 * @param fileName String file name with complete location
+	 * @return Iterator array object with parsed CSV data
+	 * @throws IOException
+	 * @author Mirza.Kamran
+	 */
+	private Iterator<Object[]> parseCsvData(String fileName) throws IOException
+	{
+	  BufferedReader input = null;
+	  File file = new File(fileName);
+	  input = new BufferedReader(new FileReader(file));
+	  String line = null;
+	  ArrayList<Object[]> data = new ArrayList<Object[]>();
+	  while ((line = input.readLine()) != null)
+	  {		
+	    String in = line.trim();
+	    String[] strTempArray = in.split(",");
+	    List<Object> arrray = new ArrayList<Object>();
+	    for(String strValue : strTempArray)
+	    {	    	
+	          arrray.add(strValue);	    
+	    }
+	    data.add(arrray.toArray());
+	  }
+	  input.close();
+	  return data.iterator();
 	}
 
 }

@@ -7,12 +7,8 @@ public class Config {
 	private String language;
 	private String cookieUserName;
 	private String cookieUserPassword;
-	private String ensURL04;
-	private String ensURL01;	
-	private String ensURL03;
+	private String ensURL;
 	private String rogersCIAMUrl;
-	private String ensLoginEmail;
-	private String ensPassword;
 	private String phoneRepairUrl;
 	private String repairClaimUrl;
 	private String solarisPath;
@@ -96,18 +92,7 @@ public class Config {
 	public void setCookieUserPassword(String cookieUserPassword) {
 		this.cookieUserPassword = cookieUserPassword;
 	}
-	/**
-	 * @return the ensURL01
-	 */
-	public String getEnsURL01() {
-		return ensURL01;
-	}
-	/**
-	 * @param ensURL01 the ensURL01 to set
-	 */
-	public void setEnsURL01(String ensURL01) {
-		this.ensURL01 = ensURL01;
-	}
+
 	/**
 	 * @return the rogersCIAMUrl
 	 */
@@ -120,31 +105,7 @@ public class Config {
 	public void setRogersCIAMUrl(String rogersCIAMUrl) {
 		this.rogersCIAMUrl = rogersCIAMUrl;
 	}
-	
-	/**
-	 * @return the ensLoginEmail
-	 */
-	public String getEnsLoginEmail() {
-		return ensLoginEmail;
-	}
-	/**
-	 * @param ensLoginEmail the ensLoginEmail to set
-	 */
-	public void setEnsLoginEmail(String ensLoginEmail) {
-		this.ensLoginEmail = ensLoginEmail;
-	}
-	/**
-	 * @return the ensPassword
-	 */
-	public String getEnsPassword() {
-		return ensPassword;
-	}
-	/**
-	 * @param ensPassword the ensPassword to set
-	 */
-	public void setEnsPassword(String ensPassword) {
-		this.ensPassword = ensPassword;
-	}
+
 	/**
 	 * @return the phoneRepairUrl
 	 */
@@ -169,30 +130,7 @@ public class Config {
 	public void setRepairClaimUrl(String repairClaimUrl) {
 		this.repairClaimUrl = repairClaimUrl;
 	}
-	/**
-	 * @return the ensURL03
-	 */
-	public String getEnsURL03() {
-		return ensURL03;
-	}
-	/**
-	 * @param ensURL03 the ensURL03 to set
-	 */
-	public void setEnsURL03(String ensURL03) {
-		this.ensURL03 = ensURL03;
-	}
-	/**
-	 * @return the ensURL04
-	 */
-	public String getEnsURL04() {
-		return ensURL04;
-	}
-	/**
-	 * @param ensURL04 the ensURL04 to set
-	 */
-	public void setEnsURL04(String ensURL04) {
-		this.ensURL04 = ensURL04;
-	}
+
 	/**
 	 * @return the hupURL
 	 */
@@ -240,5 +178,17 @@ public class Config {
 	 */
 	public void setSauceCapabilities(SauceSettings sauceCapabilities) {
 		this.sauceCapabilities = sauceCapabilities;
+	}
+	/**
+	 * @return the ensURL
+	 */
+	public String getEnsURL() {
+		return ensURL;
+	}
+	/**
+	 * @param ensURL the ensURL to set
+	 */
+	public void setEnsURL(String ensURL) {
+		this.ensURL = ensURL;
 	}
 }

@@ -20,7 +20,7 @@ public class RogersSS_TC_077_ValidateSupportSectionInWirelessDasboard_NSEInfinit
    	
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.config.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
 			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
 		}
 	   	
@@ -65,7 +65,7 @@ public class RogersSS_TC_077_ValidateSupportSectionInWirelessDasboard_NSEInfinit
         reporter.softAssert(rogers_wireless_dashboard_page.verifySupportSection(), 
         					"Support section is loaded in wireless dashboard page", 
         					"Support section is NOT loaded in wireless dashboard page");
-        String strBaseUrl = TestDataHandler.config.getRogersURL();
+        String strBaseUrl = TestDataHandler.ssConfig.getRogersURL();
         reporter.softAssert(rogers_wireless_dashboard_page.verifyLinkFaqUnlockDevice(strBaseUrl), 
 				"FAQ: Unlocking Device link in Support section is validated successfully.", 
 				"Something wrong with FAQ: Unlocking Device link in Support section.");

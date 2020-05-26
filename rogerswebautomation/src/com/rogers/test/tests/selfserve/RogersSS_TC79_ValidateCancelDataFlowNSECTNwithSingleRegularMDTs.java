@@ -22,7 +22,7 @@ public class RogersSS_TC79_ValidateCancelDataFlowNSECTNwithSingleRegularMDTs ext
     
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.config.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
 			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
 		}
 	   	
@@ -32,10 +32,10 @@ public class RogersSS_TC79_ValidateCancelDataFlowNSECTNwithSingleRegularMDTs ext
 		closeSession();
 	}
 	
-	//TODO merge with TC59
+	//TODO: put as dependant on 59 in the testNG xml
 	
     @Test
-    public void validateMyWirelessPlanSectionInTheWirelessDashboardNSE() {
+    public void validateCancelSingleMDTFlowNSEWithMultiline() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc59.getUsername();
     	String strPassword = TestDataHandler.tc59.getPassword();
@@ -49,13 +49,13 @@ public class RogersSS_TC79_ValidateCancelDataFlowNSECTNwithSingleRegularMDTs ext
 		
         if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc79.getAccountDetails().getBan());
+            rogers_account_overview_page.selectAccount(TestDataHandler.tc59.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");
         
         rogers_account_overview_page.clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
-        String strAccountNum = TestDataHandler.tc79.getAccountDetails().getCtn();
+        String strAccountNum = TestDataHandler.tc59.getAccountDetails().getCtn();
         if (rogers_account_overview_page.isAccountShowInDropDown(strAccountNum.substring(strAccountNum.length()-4))) {
             rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
         } else {

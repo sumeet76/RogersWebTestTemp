@@ -115,7 +115,8 @@ public class RogersSetPasswordPage extends BasePageClass {
 	 */
 	public boolean verifyMsgReigistrationCompleteIsDisplayed() {
 		//msgRegistrationComplete				
-		return reusableActions.isElementVisible(msgRegistrationComplete,100);
+		return (reusableActions.isElementVisible(msgRegistrationComplete,100)
+				|| reusableActions.isElementVisible(btnSignIn,30));
 	}
 	
 	/**

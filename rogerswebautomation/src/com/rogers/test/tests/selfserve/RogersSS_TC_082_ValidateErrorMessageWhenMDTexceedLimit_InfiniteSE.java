@@ -22,7 +22,7 @@ public class RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE e
    	
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.config.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
 			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
 		}
 	   	
@@ -33,14 +33,13 @@ public class RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE e
 	}
 	
 	
-	
     @Test
     public void validateErrorMessageWhenExceedLimitForInfiniteSEPlan() {
     	rogers_home_page.clkSignIn();
-    	String strUsername = TestDataHandler.tc626982.getUsername();
+    	String strUsername = TestDataHandler.tc82.getUsername();
     	rogers_login_page.switchToSignInIFrame();
         rogers_login_page.setUsernameIFrame(strUsername);
-        String strPassword = TestDataHandler.tc626982.getPassword();    	
+        String strPassword = TestDataHandler.tc82.getPassword();    	
         rogers_login_page.setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
@@ -49,7 +48,7 @@ public class RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE e
 		
         if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc626982.getAccountDetails().getBan());
+            rogers_account_overview_page.selectAccount(TestDataHandler.tc82.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");   
         rogers_account_overview_page.clkMenuUsageAndService();
@@ -71,13 +70,15 @@ public class RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE e
 		reporter.reportLogWithScreenshot("Manage data page.");		
 		rogers_manage_data_page.clkBackOnManageDataUsagePage();	
 		//Add speed pass to reach limit 10
-		for (int counter = 0; counter + countOfExistSpeedPass < 10; counter++) {
-			common_business_flows.addSpeedPass();	
+		if (countOfExistSpeedPass < 10) {
+			for (int counter = 0; counter + countOfExistSpeedPass < 10; counter++) {
+				common_business_flows.addSpeedPass();	
+			}
 		}
 		rogers_wireless_dashboard_page.clkBtnSpeedPass();
 		reporter.softAssert(rogers_speed_pass_page.verifyCannotAddSpeedPassHeaderIsDisplayed(), 
-				"Add Speed Pass limit reached error message is displayed", 
-				"Add Speed Pass limit reached error message is not displayed");  
+				"Cannot Add Speed Pass error message is displayed", 
+				"Cannot Add Speed Pass error message is not displayed");  
 
 		reporter.reportLogWithScreenshot("Error message");
 

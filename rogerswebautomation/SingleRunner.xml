@@ -9,43 +9,12 @@
 </listeners> 		
 
 
-<test name="RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhenCxHasMoreThan5CTN_SE">
+<test name="RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhenCxHasMoreThan5CTN_SE"></class>
+<class name="com.rogers.test.tests.selfserve.RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest"></class>
 </classes>          																					
 </test>
 
 
-<!-- 
-
-
-  
-
-<test name="RogersSS_TC_050_ChangeIDForSECustomerTest">
-<classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_050_ChangeIDForSECustomerTest"></class>
-</classes>          																					
-</test>
-
-<test name="RogersSS_TC_060_ValidateCopyChangesOfDataUsageDisplayWithInLimitsPostpaidSEplanMultiTN">
-<classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_060_ValidateCopyChangesOfDataUsageDisplayWithInLimitsPostpaidSEplanMultiTN"></class>
-</classes>          																					
-</test>
- 
-<test name="RogersSS_TC_063_ValidateDataUsageRunningLowOnMaxSpeedDataInfiniteIndividualPlan">
-<classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_063_ValidateDataUsageRunningLowOnMaxSpeedDataInfiniteIndividualPlan"></class>
-</classes>          																					
-</test>
-
-
-<test name="RogersSS_TC_064_ValidateDataUsage_InfiniteIndividualPlanReducedSpeeds">
-<classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_064_ValidateDataUsage_InfiniteIndividualPlanReducedSpeeds"></class>
-</classes>          																					
-</test>
-
--->
-
+					
 </suite>

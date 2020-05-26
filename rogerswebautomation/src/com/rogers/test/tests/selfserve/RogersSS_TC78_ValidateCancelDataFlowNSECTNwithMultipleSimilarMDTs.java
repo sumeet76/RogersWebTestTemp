@@ -20,7 +20,7 @@ public class RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs e
     
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.config.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
 			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
 		}
 	   	
@@ -32,7 +32,7 @@ public class RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs e
 	
 	
     @Test
-    public void validateMyWirelessPlanSectionInTheWirelessDashboardNSE() {
+    public void validateCancelMDTFlowNSEWithMultipleMDT() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc78.getUsername();
     	String strPassword = TestDataHandler.tc78.getPassword();
@@ -78,8 +78,9 @@ public class RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs e
 							&& countOfActiveAndCancelledAddDataOnMyPlan.get("active")==countOfActiveAndCancelledAddData.get("active"))
 				, "The number of cancelled and active add on macth on my plans and manage data page", 
 				"The number of cancelled and active add on does not macth on my plans and manage data page");
+				
+		//TODO add mutiple similar MDT's
 		
-		//TODO add single regular MDT data 3 times
 		
 		if((countOfActiveAndCancelledAddData.get("active")>=1))
 		{

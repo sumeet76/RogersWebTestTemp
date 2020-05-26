@@ -189,6 +189,10 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy (xpath = "//div[@class='data-balance-info']")
 	WebElement lblDataRemaining;
 	
+	@FindBy (xpath = "//div[@class='data-balance-info']/strong")
+	WebElement lblDataRemainingValue;
+	
+	
 	//@FindBy (xpath = "//div[@class='data-container data-section-only']")
 	@FindBy(xpath = "//div[contains(@class,'data-container')]")
 	WebElement lblTotalDataBucket;
@@ -971,14 +975,35 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public boolean verifyDataRemainingOutOfTotalDataBucket() {		
 		return reusableActions.isElementVisible(lblDataRemainingOutOfTotalDataBucket, 30);
+		
 	}
 
+	/**
+	 * gets the data remaining out of total data bucket is displayed
+	 * @return returns the data remaining
+	 * @author Mirza.Kamran
+	 */
+	public double getDataRemainingOutOfTotalDataBucket() {				
+		String strTotalData = reusableActions.getWhenReady(lblDataRemainingValue, 30).getText().replaceAll(",", ".").trim();
+		return Double.parseDouble(strTotalData.substring(0, strTotalData.length()-2).trim());
+	}
+	
 	/**
 	 * Verifies if total data bucket is displayed
 	 * @return true if element is displayed else false
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyTotalDataBucket() {
+	
+		return reusableActions.isElementVisible(lblTotalDataBucket, 30);
+	}
+	
+	/**
+	 * Verifies if total data bucket is displayed
+	 * @return true if element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean getTotalDataBucket() {
 	
 		return reusableActions.isElementVisible(lblTotalDataBucket, 30);
 	}
@@ -1001,7 +1026,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public double getTotalDataVolume() {
-		String strTotalData = reusableActions.getWhenReady(lblTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded, 30).getText().trim();
+		String strTotalData = reusableActions.getWhenReady(lblTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded, 30).getText().trim().replaceAll(",", ".");
 		return Double.parseDouble(strTotalData.substring(0, strTotalData.length()-2).trim());
 	}
 
@@ -1644,6 +1669,16 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		
 	}
 
+/**
+ * Clicks on the CTN widget on dashboard page
+ * @param intCtnNumber CTN badge number
+ * @author Mirza.Kamran
+ */
+	public void clkTheNthCTNOnDashboardPage(int intCtnNumber) {
+		reusableActions.clickWhenReady(lstOfCTNBadgesOnDashboardPage.get(intCtnNumber-1));
+		
+	}
+	
 	/**
 	 * To get total number of all added data including canceled and active ones in my plan section.
 	 * @return HasMap of active and canceled MDT records and nonMDT records.

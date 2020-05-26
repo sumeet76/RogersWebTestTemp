@@ -25,8 +25,8 @@ public class CaptchaBypassHandlers {
 		public void captchaBypassURLSelfserveFlows(String strUrl, String strLanguage) throws IOException {
 			driver.get(strUrl+"?setLanguage="+ strLanguage );
 		
-		String strCookieUserName= TestDataHandler.config.getCookieUserName();
-		String strCookieUserPassword= TestDataHandler.config.getCookieUserPassword();
+		String strCookieUserName= TestDataHandler.ssConfig.getCookieUserName();
+		String strCookieUserPassword= TestDataHandler.ssConfig.getCookieUserPassword();
 		
 		String strBaseUrl = "";
 		if(strUrl.substring(strUrl.length()-3).equalsIgnoreCase("com")) {
@@ -68,8 +68,8 @@ public class CaptchaBypassHandlers {
 	public void captchaBypassURLLegacyLoginFlows(String strUrl, String strLanguage) throws IOException {
 		driver.get(strUrl+"/web/totes/api/v1/bypassCaptchaAuth");		
 		driver.get(strUrl+"?setLanguage="+ strLanguage );
-		String strCookieUserName= TestDataHandler.config.getCookieUserName();
-		String strCookieUserPassword= TestDataHandler.config.getCookieUserPassword();			
+		String strCookieUserName= TestDataHandler.ssConfig.getCookieUserName();
+		String strCookieUserPassword= TestDataHandler.ssConfig.getCookieUserPassword();			
 		Cookie captchBypass = new Cookie ("temp_token_r",CookieFetcher.setAndFetchCookie(strCookieUserName, strCookieUserPassword, strUrl));
 		driver.manage().addCookie(captchBypass);
   }
@@ -82,8 +82,8 @@ public class CaptchaBypassHandlers {
 	public void captchaBypassURLIgniteLoginFlows(String strUrl, String strLanguage) throws IOException {
 		driver.get(strUrl+"/web/totes/browsebuy/v1/byPassCaptcha");		
 		driver.get(strUrl+"?setLanguage="+ strLanguage );
-		String strCookieUserName= TestDataHandler.config.getCookieUserName();
-		String strCookieUserPassword= TestDataHandler.config.getCookieUserPassword();			
+		String strCookieUserName= TestDataHandler.ssConfig.getCookieUserName();
+		String strCookieUserPassword= TestDataHandler.ssConfig.getCookieUserPassword();			
 		Cookie captchBypass = new Cookie ("temp_token_r",CookieFetcher.setAndFetchCookie(strCookieUserName, strCookieUserPassword, strUrl));
 		driver.manage().addCookie(captchBypass);
   }
@@ -96,8 +96,8 @@ public class CaptchaBypassHandlers {
 	public void captchaBypassURLLoginFlows(String strUrl, String strLanguage) throws IOException {
 		driver.get(strUrl);		
 		driver.get(strUrl+"?setLanguage="+ strLanguage );
-		String strCookieUserName= TestDataHandler.config.getCookieUserName();
-		String strCookieUserPassword= TestDataHandler.config.getCookieUserPassword();			
+		String strCookieUserName= TestDataHandler.ssConfig.getCookieUserName();
+		String strCookieUserPassword= TestDataHandler.ssConfig.getCookieUserPassword();			
 		Cookie captchBypass = new Cookie ("temp_token_r",CookieFetcher.setAndFetchCookie(strCookieUserName, strCookieUserPassword, strUrl));
 		driver.manage().addCookie(captchBypass);
   }

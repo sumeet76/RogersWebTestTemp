@@ -22,5 +22,13 @@ public class RogersEnums {
 		selfserve
 		  } ;
     
-    
+    public enum SauceCapabilities{
+    	seleniumVersion,
+    	maxDuration,
+    	commandTimeout,
+    	idleTimeout,
+    	build,
+    	browserVersion,
+    	platformVersion	       
+    };
 }

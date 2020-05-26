@@ -59,6 +59,9 @@ public class RogersRegisterPage extends BasePageClass {
 	
 	@FindBy(xpath = "//span[contains(text(),'This account is registered to:') or contains(text(),'compte est inscrit à l’adresse suivante')]")
 	WebElement lblProfileAlready;
+	
+	@FindBy(xpath = "//span[contains(text(),'able to find that account and/or postal code') or contains(text(),'avons pas trouvé ce compte ou ce code postal.')]")
+	WebElement lblUnableToFindAccount;
 	/**
 	 * Clicks on the 'Wireless/Residential Services' button
 	 * @author rajesh.varalli1
@@ -95,10 +98,26 @@ public class RogersRegisterPage extends BasePageClass {
 	
 	/**
 	 * Clicks on the 'Continue' button
+	 * @return true if acoount found else false
 	 * @author rajesh.varalli1
 	 */
-	public void clickContinue() {
-		reusableActions.clickIfAvailable(btnContinue);
+	public boolean clickContinue() {
+		boolean clickSuccess=false;
+		int count=0;
+		while (count<=2 && !clickSuccess) {
+			System.out.println("Attempt: "+(count+1)+" Trying to find Ban and postcode");
+			reusableActions.clickIfAvailable(btnContinue);			
+			if(reusableActions.isElementVisible(lblUnableToFindAccount, 10))
+			{				
+				count++;
+			}else {				
+				clickSuccess=true;				
+				break;
+			}
+			
+		}
+		return clickSuccess;
+		
 	}
 	
 	/**

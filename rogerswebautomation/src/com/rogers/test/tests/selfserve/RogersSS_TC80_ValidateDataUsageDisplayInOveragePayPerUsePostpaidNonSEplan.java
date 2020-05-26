@@ -20,7 +20,7 @@ public class RogersSS_TC80_ValidateDataUsageDisplayInOveragePayPerUsePostpaidNon
    	
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.config.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
 			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
 		}
 	   	
@@ -32,12 +32,12 @@ public class RogersSS_TC80_ValidateDataUsageDisplayInOveragePayPerUsePostpaidNon
 	
 	
     @Test
-    public void validateDataUsageDisplayForRunningLowAndAddData() {
+    public void validateDataUsageDisplayInOverageForNSE() {
     	rogers_home_page.clkSignIn();
-    	String strUsername = TestDataHandler.tc1314.getUsername();
+    	String strUsername = TestDataHandler.tc80.getUsername();
     	rogers_login_page.switchToSignInIFrame();
         rogers_login_page.setUsernameIFrame(strUsername);
-        String strPassword = TestDataHandler.tc1314.getPassword();    	
+        String strPassword = TestDataHandler.tc80.getPassword();    	
         rogers_login_page.setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
@@ -46,20 +46,19 @@ public class RogersSS_TC80_ValidateDataUsageDisplayInOveragePayPerUsePostpaidNon
 		
         if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc1314.getAccountDetails().getBan());
+            rogers_account_overview_page.selectAccount(TestDataHandler.tc80.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");   
         rogers_account_overview_page.clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
-        String strAccountNum = TestDataHandler.tc59.getAccountDetails().getCtn();        
+        String strAccountNum = TestDataHandler.tc80.getAccountDetails().getCtn();        
         if (rogers_account_overview_page.isAccountShowInDropDown(strAccountNum.substring(strAccountNum.length()-4))) {
             rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
         } else {
         	rogers_account_overview_page.clkSubMenuWirelessUsage();
         }
         
-        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
-        reporter.reportLogWithScreenshot("Wireless dashboard page.");
+        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();        
         reporter.softAssert(rogers_wireless_dashboard_page.verifyOverageChargesInTheUsageBar(),
         		"You have overage charge is displayed",
         		"You have overage charge is NOT displayed, please decrease the data usage and re validate");       
