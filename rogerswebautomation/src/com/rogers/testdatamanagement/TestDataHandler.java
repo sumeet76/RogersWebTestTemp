@@ -229,6 +229,13 @@ public class TestDataHandler {
     	tc60 = YamlHandler.getAccountData("tc60SEMultipleCTN");
     	tc80 = YamlHandler.getAccountData("TC80NSEwOverage");
     	tc82 = YamlHandler.getAccountData("tc82InfiniteSE");
+    	
+    	//================ Connected home =========================
+    	igniteRHP = YamlHandler.getCableAccountData("IgniteRHP");
+    	solarisInternetAccountWithUsage = YamlHandler.getCableAccountData("SolarisInternetAccountWithUsage");
+    	igniteTVAccount = YamlHandler.getCableAccountData("IgniteTVAccount");
+    	digitalTVAccount = YamlHandler.getCableAccountData("DigitalTVAccount");
+    	legacyRHP = YamlHandler.getCableAccountData("LegacyRHP");
 	}
 	
 	private static void buyFlowsDataInit() {

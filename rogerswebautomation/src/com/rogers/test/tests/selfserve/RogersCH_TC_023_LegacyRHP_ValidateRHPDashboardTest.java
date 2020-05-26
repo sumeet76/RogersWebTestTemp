@@ -12,12 +12,12 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.rogers.test.base.BaseTestClass;
+import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 
 /**
  * This class contains the test method to validate the Legacy home phone dashboard for Rogers.com   
  * 
- * @author chinnarao.vattam
  * 
  * Test steps:
  *
@@ -46,20 +46,21 @@ public class RogersCH_TC_023_LegacyRHP_ValidateRHPDashboardTest extends BaseTest
 		rogers_account_overview_page.selectAccount(TestDataHandler.legacyRHP.getAccountDetails().getBan());
 		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.clkRHPBadge(TestDataHandler.rogersConfig.getBrowser());
+		rogers_account_overview_page.clkRHPBadge(TestDataHandler.ssConfig.getBrowser());
 		reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");
 		//reporter.hardAssert(rogers_account_overview_page.verifyRHPBanner(),"Verifed the RHP dashboard","RHP dashboard Verification has failed");
 		//reporter.hardAssert(rogers_account_overview_page.verfyContactUsToManageFeaturess(),"Contact Us To Manage Featuress link has present on RHP dashboard","Contact Us To Manage Featuress link has not present on RHP dashboard");		
 	}
 
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})
-	//login flow
-	public void beforeTest(String strBrowser, String strLanguage, String strGroupName, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.rogersConfig.getRogersURL(), strBrowser,strLanguage,strGroupName, method);
-	}
-
+	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
+		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+		   xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+					
+		}
+	   	
+		
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {

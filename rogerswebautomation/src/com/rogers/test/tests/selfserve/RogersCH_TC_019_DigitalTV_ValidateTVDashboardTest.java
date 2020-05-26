@@ -12,13 +12,13 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.rogers.test.base.BaseTestClass;
+import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 
 
 /**
  * This class contains the test method to validate Digital TV Dashboard for Rogers.com  
  * 
- * @author chinnarao.vattam
  * 
  * Test steps:
  *
@@ -48,19 +48,21 @@ public class RogersCH_TC_019_DigitalTV_ValidateTVDashboardTest extends BaseTestC
 		rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVAccount.getAccountDetails().getBan());
 		getDriver().switchTo().defaultContent();
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.clkTVBadge(TestDataHandler.rogersConfig.getBrowser());
+		rogers_account_overview_page.clkTVBadge(TestDataHandler.ssConfig.getBrowser());
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
 		reporter.hardAssert(rogers_digital_tv_dashboard_page.verifyChangeMyPackage(),"Verifed the TV dashboard","TV dashboard Verification has failed");
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
 	}
 
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})
-	//login flow
-	public void beforeTest(String strBrowser, String strLanguage, String strGroupName, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.rogersConfig.getRogersURL(), strBrowser,strLanguage,strGroupName, method);
-	}
+	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
+		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+		   xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+					
+		}
+	   	
+		
 
 	
 	@AfterMethod(alwaysRun = true)

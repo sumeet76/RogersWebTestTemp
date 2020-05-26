@@ -11,13 +11,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
+import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 
 
 /**
  * This class contains the test method to validate the Solaris home phone dashboard for Rogers.com   
- * 
- * @author chinnarao.vattam
  * 
  * Test steps:
  *
@@ -46,19 +45,23 @@ public class RogersCH_TC_024_IgniteRHP_ValidateRHPDasboardTest extends BaseTestC
         rogers_account_overview_page.selectAccount(TestDataHandler.igniteRHP.accountDetails.getBan()); 
 		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-        rogers_solaris_rhp_dashboard_validation_page.clkSolarisRHPBadge(TestDataHandler.rogersConfig.getBrowser()); 
+        rogers_solaris_rhp_dashboard_validation_page.clkSolarisRHPBadge(TestDataHandler.ssConfig.getBrowser()); 
         reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");
         reporter.softAssert(rogers_solaris_rhp_dashboard_validation_page.verifyConfigureYourCurrentFeatures(),"Verification of Configure Your Current Features link is success","Verification of Configure Your Current Features link is Failed");
         reporter.softAssert(rogers_solaris_rhp_dashboard_validation_page.verfyAccessYourVoicemailSettings(),"Verification of Access Your Voicemail Settings link is success","Verification of Access Your Voicemail Settings link is successFailed");
         reporter.softAssert(rogers_solaris_rhp_dashboard_validation_page.verfyResetYourVoicemailPassword(),"Verification of Reset Your Voicemail Password link is success","Verification of Reset Your Voicemail Password link is success Failed");
     }
-
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})
-	//login flow
-	public void beforeTest(String strBrowser, String strLanguage, String strGroupName, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.rogersConfig.getRogersURL(), strBrowser,strLanguage,strGroupName, method);
+    
+    @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
+	public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+	   xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+		startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+				
 	}
+   	
+	
+   	
+	
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
