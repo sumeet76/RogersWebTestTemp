@@ -108,12 +108,13 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	public void selectPaymentMode(String strPaymentMode) {
 		reusableActions.selectWhenReady(ddlPaymentMode, strPaymentMode);
 	}
-
+	
 	/**
 	 * To switch to the iframe
 	 * @author chinnarao.vattam
 	 */
 	public void switchToCreditCardIFrame() {
+		reusableActions.waitForElementVisibility(fraSemaphone,60);
 		driver.switchTo().frame(reusableActions.getWhenVisible(fraSemaphone));
 	}
 	

@@ -50,14 +50,13 @@ public class RogersDigitalTVDashboardPage extends BasePageClass {
 		if (strBrowser.equalsIgnoreCase("chrome"))
 		{
 		reusableActions.isElementVisible(btnChangeMyPackage,120);
-		reusableActions.scrollToElement(btnChangeMyPackage);
 		reusableActions.getWhenReady(btnChangeMyPackage,60).click();
 		}else
 		{
 			reusableActions.isElementVisible(btnChangeMyPackage,60);
 			reusableActions.clickIfAvailable(btnChangeMyPackage,30);
 		}
-		
+		reusableActions.staticWait(2000);
 	}
 	
 	/**

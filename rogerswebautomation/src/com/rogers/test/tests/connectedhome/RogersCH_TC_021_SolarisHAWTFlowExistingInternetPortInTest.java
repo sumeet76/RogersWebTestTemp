@@ -34,14 +34,16 @@ public class RogersCH_TC_021_SolarisHAWTFlowExistingInternetPortInTest extends B
      	rogers_home_page.clkIgniteTV();
     	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	rogers_home_page.clkServiceability();
+    	rogers_home_page.clkUseThisAddress();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
     	String  strAddressLine1=(String) TestDataHandler.solarisPortinFlows.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=(String) TestDataHandler.solarisPortinFlows.getAccountDetails().getAddress().get("line2");
-       /* rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
-        rogers_home_page.clkIgniteAddressLookupSubmit();*/
+        rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
         reporter.reportLogWithScreenshot("Launched the port-in popup");
+        rogers_igniteTV_buy_page.clkKeepMyNumber();
         rogers_igniteTV_buy_page.clickOptPhone();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
         rogers_home_phone_port_in_page.setHomePhoneNumber(TestDataHandler.solarisPortinFlows.getAccountDetails().getPhoneNumber());
@@ -53,6 +55,7 @@ public class RogersCH_TC_021_SolarisHAWTFlowExistingInternetPortInTest extends B
         rogers_home_phone_port_in_page.setInvoiceAddress(strAddressLine1+", "+strAddressLine2+", CANADA");
         rogers_home_phone_port_in_page.setCurrentPhoneNumber(); 
         reporter.reportLogWithScreenshot("Port-in details set");
+        rogers_home_phone_port_in_page.setAccountNumberOrIMEI("357207092904291") ;
         rogers_home_phone_port_in_page.clkPhoneCheck();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
         rogers_igniteTV_buy_page.clkHomePhone();
@@ -82,7 +85,7 @@ public class RogersCH_TC_021_SolarisHAWTFlowExistingInternetPortInTest extends B
         rogers_order_review_page.clkSubmit();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");       
-        reporter.reportLogWithScreenshot("Verified the Confirmation page");
+        reporter.reportLogWithScreenshot("Launched the Confirmation page");
     }
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})

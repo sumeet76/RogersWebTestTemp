@@ -68,8 +68,8 @@ public class RogersCH_TC_014_InternetPackageUpgradeToSolarisFromShopOptionTest e
 		rogers_login_page.switchOutOfSignInIFrame();
 		rogers_account_overview_page.selectAccount((TestDataHandler.internetAccountUpgrade.accountDetails.getBan()));
 		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed");
-		rogers_internet_dashboard_page.clkSolarisInternetBadge();
-        rogers_internet_dashboard_page.clkInternetPopup();
+		//rogers_internet_dashboard_page.clkSolarisInternetBadge(TestDataHandler.rogersConfig.getBrowser());
+        //rogers_internet_dashboard_page.clkInternetPopup();
 	    reporter.reportLogWithScreenshot("Launched the Interent dashboard");
         rogers_home_page.clkShop(); 
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
@@ -84,7 +84,7 @@ public class RogersCH_TC_014_InternetPackageUpgradeToSolarisFromShopOptionTest e
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
-/*        rogers_igniteTV_buy_page.verifyOptNewPhone();
+    /*  rogers_igniteTV_buy_page.verifyOptNewPhone();
         reporter.reportLogWithScreenshot("Launched the port-in popup");
         rogers_igniteTV_buy_page.selectOptNewPhone();
         rogers_igniteTV_buy_page.clickOptPhone();
@@ -117,20 +117,25 @@ public class RogersCH_TC_014_InternetPackageUpgradeToSolarisFromShopOptionTest e
 	        rogers_igniteTV_credit_check_page.selectPassportExpiryDay();
 	        rogers_igniteTV_credit_check_page.clkCreditConsent();
 	        rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();*/
-	     /*   reporter.reportLogWithScreenshot("Launched the home phone selection page");
+	  /*      reporter.reportLogWithScreenshot("Launched the home phone selection page");
 	        rogers_home_phone_selection_page.clkPhoneNumberGenerator(); 
 	        rogers_home_phone_selection_page.clkChosePhoneNumber(); 
-	        rogers_home_phone_selection_page.clkContinueHomePhoneSelection();*/ 
+	        rogers_home_phone_selection_page.clkContinueHomePhoneSelection();*/     
+	        rogers_tech_install_page.verifyTechInstallPage(); 
+	        //rogers_tech_install_page.clkPersonalizedInstall();
+	        rogers_tech_install_page.selTechInstal();
 	        reporter.reportLogWithScreenshot("Launched the tech install page");
 	        rogers_tech_install_page.clkTechInstallSlot();
-	        rogers_tech_install_page.clkTechInstallContinue();
+	        reporter.reportLogWithScreenshot("tech install details");
+	        rogers_tech_install_page.clkTechInstalConsent();
+	        rogers_tech_install_page.clkTechInstallContinue();      
 /*	        reporter.reportLogWithScreenshot("Launched the payment options page");
 	        rogers_payment_options_page.selectPaymentMode("pacc");
 	        rogers_payment_options_page.setCreditCardNumberIFrame(TestDataHandler.rogersPaymentInfo .getCreditCardDetails().getNumber());
 	        rogers_payment_options_page.setCVV();
 	        rogers_payment_options_page.selectExpiryMonth();
 	        rogers_payment_options_page.selectExpiryYear();	  */      
-	        reporter.reportLogWithScreenshot("Payment options Details");
+	        //reporter.reportLogWithScreenshot("Payment options Details");
 	        //rogers_payment_options_page.clkPaymentConfirmExistingCustomer();
 	        rogers_order_review_page.verifyAgreementPage();
 	        reporter.reportLogWithScreenshot("Launched the order review page");
@@ -138,9 +143,8 @@ public class RogersCH_TC_014_InternetPackageUpgradeToSolarisFromShopOptionTest e
 	        rogers_order_review_page.clkAcceptenceCheckbox();
 	        reporter.reportLogWithScreenshot("Agreement details");
 	        rogers_order_review_page.clkSubmit();
-	        reporter.reportLogWithScreenshot("Launched the Confirmation page");
 	        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");
-	        reporter.reportLogWithScreenshot("Verified the Confirmation page");
+	        reporter.reportLogWithScreenshot("Launched the Confirmation page");
 	}
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})

@@ -272,7 +272,6 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 */
 	public void selectSolarisTVPackage1(String strPackageName) {
 		By packageNameLocator = By.xpath("//h4[contains(normalize-space(.),'" + strPackageName + "') or contains(normalize-space(.),'" + strPackageName + "')]/ancestor::div[contains(@class,'owl-item')]//ins[@translate='global.cta.select']");
-		reusableActions.waitForElementInvisibility(popupLoadingFingers,180);
 		reusableActions.getWhenReady(packageNameLocator, 60).click();
 	}
 
@@ -457,7 +456,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * Click the Serach Results on flex channels page
 	 * @author chinnarao.vattam
 	 */
-	public void btnClearSerachResults() {		
+	public void btnClearSerachResults() {	
+		reusableActions.javascriptScrollByVisibleElement(btnClearSerachResults);
 		reusableActions.getWhenReady(btnClearSerachResults, 90).click();
 	}
 	

@@ -59,8 +59,8 @@ public class RogersCH_TC_031_IginteTV_TVPackagesOntarioTest extends BaseTestClas
         reporter.reportLogWithScreenshot("Launched the TV packages page");
         reporter.softAssert(rogers_solaris_tv_dashboard_page.verifyIgniteTVStarterPackage(),"Ignite TV Starter Package is available for the Ontario footprint","Ignite TV Starter Package is not available for the Ontario footprint");
         reporter.softAssert(rogers_solaris_tv_dashboard_page.verifyIgniteTVPremierPackage(),"Ignite TV Premier Package is available for the Ontario footprint","Ignite TV Premier Package is not available for the Ontario footprint");
-        reporter.softAssert(!rogers_solaris_tv_dashboard_page.verifyIgniteFlex5Package(),"Ignite Flex 5 Package is not  available for the Ontario footprint","Ignite Flex 5 Package is available for the Ontario footprint");
-        reporter.softAssert(!rogers_solaris_tv_dashboard_page.verifyIgniteFlex10Package(),"Ignite Flex 10 Package is not available for the Ontario footprint","Ignite Flex 10 Package is available for the Ontario footprint");
+        //reporter.softAssert(!rogers_solaris_tv_dashboard_page.verifyIgniteFlex5Package(),"Ignite Flex 5 Package is not  available for the Ontario footprint","Ignite Flex 5 Package is available for the Ontario footprint");
+        //reporter.softAssert(!rogers_solaris_tv_dashboard_page.verifyIgniteFlex10Package(),"Ignite Flex 10 Package is not available for the Ontario footprint","Ignite Flex 10 Package is available for the Ontario footprint");
         rogers_solaris_tv_dashboard_page.selectSolarisTVPackage(TestDataHandler.solarisChangeTVPackageAdd4KChannelsAndThemePack.accountDetails.getDowngradePlanEn(),TestDataHandler.solarisChangeTVPackageAdd4KChannelsAndThemePack.accountDetails.getDowngradePlanFr());
         rogers_solaris_tv_dashboard_page.clkPopupChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the personalize channel page");

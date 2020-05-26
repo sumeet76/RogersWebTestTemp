@@ -79,7 +79,6 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement popupLoadingFingersnew;
 	
-
 	@FindBy(xpath = "//button[@data-target='#miniCollapse']")
 	WebElement downChevronYourCart;
 

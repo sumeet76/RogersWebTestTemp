@@ -34,7 +34,9 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	WebElement btnPhone;
 		
 	@FindBy(xpath = "//input[@class='ute-btn-primary profile-submit-button']")
-	WebElement btnProfielSubmit;
+	WebElement btnProfielSubmit;	
+	//input[@class='ute-btn-primary profile-submit-button']
+	//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']
 	
 	@FindBy(xpath = "//label[@class='ute-label-text anotherAddress']")
 	WebElement rdoUseAnotherAddress;
@@ -71,10 +73,13 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * Set dynamic email and confirm email on profile page
 	 * @author Chinnarao.Vattam
 	 */
-	public void setEmail() {		
+	public void setEmail() {
 		String strEmail = FormFiller.generateEmail();
-		reusableActions.getWhenReady(txtEmail, 60).clear();
+		reusableActions.waitForElementVisibility(txtEmail,180);
+		reusableActions.executeJavaScriptClick(txtEmail);
+		reusableActions.getWhenReady(txtEmail, 180).clear();
 		reusableActions.getWhenReady(txtEmail,10).sendKeys(strEmail);
+		reusableActions.executeJavaScriptClick(txtConfirmEmail);
 		reusableActions.getWhenReady(txtConfirmEmail, 10).clear();
 		reusableActions.getWhenReady(txtConfirmEmail,3).sendKeys(strEmail);
 	}
@@ -85,6 +90,7 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 */
 	public void setFirstname() {
 		String strName = FormFiller.generateRandomName();
+		reusableActions.executeJavaScriptClick(txtFirstName);
 		reusableActions.getWhenReady(txtFirstName, 3).clear();
 		reusableActions.getWhenReady(txtFirstName,3).sendKeys(strName);
 	}
@@ -95,6 +101,7 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 */
 	public void setLastName() {
 		String strName = FormFiller.generateRandomName();
+		reusableActions.executeJavaScriptClick(txtLastName);
 		reusableActions.getWhenReady(txtLastName, 3).clear();
 		reusableActions.getWhenReady(txtLastName,3).sendKeys(strName);
 	}
@@ -104,7 +111,9 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void setPhone() {
-		String strPhoneNumber = FormFiller.generatePhoneNumber();
+		//String strPhoneNumber = FormFiller.generatePhoneNumber();
+		String strPhoneNumber ="1010000062";
+		reusableActions.executeJavaScriptClick(btnPhone);
 		reusableActions.getWhenReady(btnPhone, 3).clear();
 		reusableActions.getWhenReady(btnPhone,3).sendKeys(strPhoneNumber);
 	}

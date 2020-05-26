@@ -76,12 +76,15 @@ public class RogersCH_TC_015_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
      	rogers_home_page.clkIgniteTV();
     	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+    	rogers_home_page.clkNoThnx();
     	rogers_home_page.clkServiceability();
     	//rogers_home_page.clkServiceabilityMigration();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");    	
         rogers_home_page.clkUseThisAddress();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
+        reporter.reportLogWithScreenshot("Launched the information popup");
+        rogers_igniteTV_buy_page.clkIUnderstand();
         reporter.reportLogWithScreenshot("Launched the port-in popup");
         rogers_igniteTV_buy_page.selectOptNewPhone();
         rogers_igniteTV_buy_page.clickOptPhone();
@@ -93,17 +96,13 @@ public class RogersCH_TC_015_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
         reporter.reportLogWithScreenshot("Launched the create profile page");
         rogers_igniteTV_profile_creation_page.clkSubmitProfile();   
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
-        reporter.reportLogWithScreenshot("Launched the credit evalution page");
         rogers_igniteTV_credit_check_page.selectDOBYearExistingCustomer(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getYear());
         rogers_igniteTV_credit_check_page.selectDOBMonthExistingCustomer(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getMonth());
         rogers_igniteTV_credit_check_page.selectDOBDayExistingCustomer(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getDate());
         reporter.reportLogWithScreenshot("Entered the DOB details");
         rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        rogers_home_phone_selection_page.clkPhoneNumberGenerator(); 
-        rogers_home_phone_selection_page.clkChosePhoneNumber(); 
         rogers_home_phone_selection_page.clkContinueHomePhoneSelection();  
-        rogers_tech_install_page.verifyTechInstallPage(); 
         reporter.reportLogWithScreenshot("Launched the tech install page");
         rogers_tech_install_page.selTechInstalStartDate();
         reporter.reportLogWithScreenshot("Selected Start date for Installation slot");
@@ -120,9 +119,8 @@ public class RogersCH_TC_015_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
         rogers_order_review_page.clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
         rogers_order_review_page.clkSubmit();
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");  
-        reporter.reportLogWithScreenshot("Verified the Confirmation page");
+        reporter.reportLogWithScreenshot("Launched the Confirmation page");
 	}
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})

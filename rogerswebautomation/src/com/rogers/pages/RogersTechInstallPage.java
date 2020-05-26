@@ -34,7 +34,6 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath ="//div[contains(@class,'col-sm-6 margin-bottom-0')]//span[@class='ute-icon-calendar-icon']")
 	WebElement imgEndingTechInstallSlot;
 	
-	
 	@FindBy(xpath ="//input[@id='enRouteEmail']")
 	WebElement txtEmail;
 	
@@ -65,6 +64,9 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ute-icon-calendar-icon']")
 	WebElement clkCalendarIcon;
 
+	@FindBy(xpath ="//span[@class='ute-icon-calendar-icon']")
+	WebElement imgTechInstallSlot;
+	
 	@FindBy(xpath = "//button[@class='knob collapsed']")
 	WebElement downChevronYourCart;
 
@@ -159,12 +161,30 @@ public class RogersTechInstallPage extends BasePageClass {
 	public boolean verifyTechInstallCalendar() {	
 		return	reusableActions.isElementVisible(imgStartingTechInstallSlot, 180);
 	}
+	
+	/**
+	 * To select the Technical Installation Start Date
+	 * @author chinnarao.vattam
+	 */
+	public void selTechInstal() {
+		reusableActions.waitForElementVisibility(imgTechInstallSlot,180); 
+		reusableActions.scrollToElement(imgTechInstallSlot); 
+		reusableActions.getWhenReady(imgTechInstallSlot, 20).click();
+		Calendar calendar = Calendar.getInstance();
+		int intDate = calendar.get(Calendar.DATE);
+		int startDate = intDate + 5; 
+		String strStartDate= Integer.toString(startDate);
+		By selStartDate = By.xpath("//button[@class='btn btn-default btn-sm']//span[contains(text(),'" + strStartDate + "')]");
+		reusableActions.getWhenReady(selStartDate, 20).click();
+	}
+	
 	/**
 	 * Select the slot from the available list of slots from installation page
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkTechInstallSlot() {
-		reusableActions.getWhenReady(rdoTechInstallSlot, 60).click();
+		reusableActions.waitForElementVisibility(rdoTechInstallSlot, 180);
+		reusableActions.getWhenReady(rdoTechInstallSlot, 180).click();
 	}
 	
 	/**
@@ -247,9 +267,9 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * To Click the Technical Install Consent check box
 	 * @author chinnarao.vattam
 	 */
-	public void clkTechInstalConsent() {		
-		//reusableActions.waitForElementInvisibility(popupLoadingFingers,120);
-		reusableActions.javascriptScrollToBottomOfPage();
+	public void clkTechInstalConsent() {
+		reusableActions.waitForElementVisibility(chkTechInstalConsent, 180);
+		reusableActions.javascriptScrollByVisibleElement(chkTechInstalConsent);
 		reusableActions.executeJavaScriptClick(chkTechInstalConsent);
 	}
 	
@@ -258,9 +278,8 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * Click the continue button to continue the TechInstall on installation page
 	 * @author Chinnarao.Vattam
 	 */
-	public void clkTechInstallContinue() {  
-		reusableActions.waitForElementTobeClickable(btnTechInstallContinue, 240);
-		reusableActions.javascriptScrollToBottomOfPage();
+	public void clkTechInstallContinue() {
+		reusableActions.waitForElementTobeClickable(btnTechInstallContinue, 180);
 		reusableActions.javascriptScrollToMiddleOfPage();
 		reusableActions.getWhenReady(btnTechInstallContinue, 120).click();
 	}

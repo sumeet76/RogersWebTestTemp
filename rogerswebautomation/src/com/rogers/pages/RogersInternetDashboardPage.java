@@ -95,8 +95,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkInternetUsageAlerts() {		
-		reusableActions.clickWhenReady(lnkInternetUsageAlerts,40);
-
+		reusableActions.getWhenReady(lnkInternetUsageAlerts,90).click();
 	}
 
 	/**
@@ -130,7 +129,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkInternetChangeOK() {		
-		reusableActions.clickWhenReady(btnInternetChangeOK, 120);
+		reusableActions.clickIfAvailable(btnInternetChangeOK, 120);
 
 	}
 	

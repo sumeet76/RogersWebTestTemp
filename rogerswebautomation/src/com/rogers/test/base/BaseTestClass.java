@@ -379,6 +379,7 @@ public class BaseTestClass {
 			rogers_order_summary_page = new RogersOrderSummaryPage(driver);
 			rogers_order_confirmation_page = new RogersOrderConfirmationPage(driver);
 			rogers_igniteTV_buy_page = new RogersIgniteTVBuyPage(driver);
+			rogers_internet_usage_page = new RogersInternetUsagePage(driver);
 			rogers_order_review_page = new RogersOrderReviewPage(driver);
 			rogers_igniteTV_profile_creation_page = new RogersIgniteTVProfileCreationPage(driver);
 			rogers_igniteTV_credit_check_page = new RogersIgniteTVCreditCheckPage(driver);
