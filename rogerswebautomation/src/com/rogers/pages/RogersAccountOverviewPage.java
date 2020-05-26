@@ -226,7 +226,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public void clkTVBadge(String strBrowser ) {
 		if (strBrowser.equalsIgnoreCase("chrome"))
 		{		
-		reusableActions.clickAndHoldFor(btnTVBadge, 120);		
+		reusableActions.getWhenReady(btnTVBadge, 120).click();
 		}else
 		{
 			reusableActions.clickIfAvailable(btnTVBadge,120);
@@ -241,7 +241,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public void clkRHPBadge(String strBrowser) {
 		if (strBrowser.equalsIgnoreCase("chrome"))
 		{
-		reusableActions.clickAndHoldFor(btnRHPBadge, 120);
+		reusableActions.getWhenReady(btnRHPBadge, 120).click();;
 		}else {
 			reusableActions.clickIfAvailable(btnRHPBadge, 120);
 			}

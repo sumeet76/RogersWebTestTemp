@@ -50,8 +50,8 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOrderConfirmation() {
-		reusableActions.waitForElementInvisibility(popupLoadingFingers,180);
-		return reusableActions.isElementVisible(infoSubmit, 60);
+		reusableActions.waitForElementVisibility(infoChangeOrderConfirmation,180);
+		return reusableActions.isElementVisible(infoChangeOrderConfirmation, 60);
 	}
 	
 	/**

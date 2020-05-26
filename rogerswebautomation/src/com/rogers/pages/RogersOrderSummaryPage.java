@@ -479,12 +479,10 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * Click on the Consent check box for bundle flow
 	 * @author chinnarao.vattam
 	 */
-	public void clkConsentCheckboxBundleflow() {
-		reusableActions.waitForElementVisibility(chkConsentCheckboxBundleflow,120);
-		reusableActions.getWhenReady(chkConsentCheckboxBundleflow, 90);
-		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.javascriptScrollToBottomOfPage();
-		reusableActions.getWhenReady(chkConsentCheckboxBundleflow, 90).click();
+	public void clkConsentCheckboxBundleflow() {	
+		reusableActions.isElementVisible(lnkWebsiteBundleflow, 50);
+		reusableActions.scrollToElement(lnkWebsiteBundleflow);	
+		reusableActions.clickWhenReady(chkConsentCheckboxBundleflow, 90);
 	}
 	
 	/**

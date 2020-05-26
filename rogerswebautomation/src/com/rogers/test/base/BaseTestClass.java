@@ -388,6 +388,7 @@ public class BaseTestClass {
 			rogers_payment_options_page = new RogersPaymentOptionsPage(driver);
 			rogers_register_page = new RogersRegisterPage(driver);
 			rogers_home_phone_port_in_page = new RogersHomePhonePortInPage(driver);
+			rogers_solaris_rhp_dashboard_validation_page = new RogersSolarisRHPDashboardPage(driver);
 			rogers_solaris_tv_channels_and_themepacks_page = new RogersSolarisTVChannelsAndThemepacksPage(driver); 
 			break;
 			

@@ -154,7 +154,7 @@ public class RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
     	rogers_home_page.clkIgniteTV();
     	rogers_home_page.verifyIgnitepage();
     	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-    	getDriver().get("https://qa05-ciam.rogers.com/web/consumer/ignite-bundles/learn");
+    	getDriver().get(TestDataHandler.rogersConfig.getRogersURL()+"/web/consumer/ignite-bundles/learn");
     	rogers_home_page.clkServiceability();
     	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
     	rogers_igniteTV_buy_page.selectSolarisStarterPackageServiceability();
