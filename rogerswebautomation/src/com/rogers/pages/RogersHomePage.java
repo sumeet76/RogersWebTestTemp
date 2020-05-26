@@ -27,7 +27,7 @@ public class RogersHomePage extends BasePageClass {
 
 	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/web/consumer/ignite-bundles/tv-internet']")
 	WebElement lnkIgniteTV;
-
+	
 	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/internet']")
 	WebElement lnkInternet;
 
@@ -49,7 +49,7 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='rch-modal']//button[@class='ds-button ds-focus ds-active -primary -large']//span[@class='ds-button__copy w-100']")
 	WebElement continueBtnIgniteMultipleAddressLookupSubmit;
 
-	@FindBy(xpath = "//a[contains(@title,'See available Ignite Bundles') or  contains(@title,'Voyez les offres groupées Élan accessibles')]")
+	@FindBy(xpath = "	//a[contains(@title,'See available Ignite Bundles') or  contains(@title,'Voyez les offres groupées Élan accessibles')]")
 	WebElement btnServiceability;
 	//a[@title='Check if Ignite Bundles are available in your area' or @title='Vérifiez si les offres groupées Élan sont disponibles dans votre secteur.']
 	
@@ -57,8 +57,10 @@ public class RogersHomePage extends BasePageClass {
 	WebElement btnWelcomeback;	
 	//a[@title='Check if Ignite Bundles are available in your area']
 		
-	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -secondary -large']")
-	WebElement btnAddress;
+	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large']")
+	WebElement btnAddress;	
+	//button[@class='a-btnSecondary']
+	//button[@class='ds-button ds-focus ds-active -secondary -large']
 	
 	@FindBy(xpath = "//button[@class='a-btnPrimary']")
 	WebElement btnAddressValidation;
@@ -66,6 +68,8 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//input[contains(@id,'canada-post-address-complete')]")
 	WebElement txaIgniteAddressLookup;		
 	//input[contains(@class,'cdk-text-field-autofill-monitored')]
+	//span[contains(@class,'ds-formField__labelWrapper position-absolute')]
+	//input[contains(@id,'canada-post-address-complete')]
 	
 	@FindBy(xpath = "//span[contains(@class,'ds-formField__labelWrapper')]")
 	WebElement txaIgniteAddressLookupLable;
@@ -86,12 +90,14 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//li[@class='dds_o-navLinkList__item']//a[@title='MyRogers']")
 	WebElement lnkMyRogers;
 	
-	//@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -secondary -large']")
-	@FindBy(xpath = "//button[contains(@class,'-secondary -large')]")
+	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large']")
 	WebElement btnUseThisAddress;
-		
-	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -primary -large']")
-	WebElement btnIgniteAddressLookupSubmit;
+	//button[@class='ds-button ds-focus ds-active -secondary -large']
+	
+	
+	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
+	WebElement btnIgniteAddressLookupSubmit;		
+	//button[@class='a-btnPrimary']	
 	
 	@FindBy(xpath = "//ngx-smart-modal[@id='loadingModal']")
 	WebElement popupLoadingFingersciam;
@@ -122,6 +128,30 @@ public class RogersHomePage extends BasePageClass {
 	
 	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -tertiary -large ng-star-inserted']")
 	WebElement btnNoThnx;
+	
+	@FindBy(xpath = "//button[@class='btn btn-lg btn-red']")
+	WebElement btnAddNow;
+	
+	@FindBy(xpath = "//div[@class='line-icon line-shared-icon']")
+	WebElement btnToSharedPlan;
+	
+	/**
+	 * click button add device to a shared plan
+	 * @author Saurav.Goyal 
+	 */
+	public void clkAddDeviceToSharedPlan() {	
+		reusableActions.clickIfAvailable(btnToSharedPlan, 90);
+	}
+	
+	
+	/**
+	 * click Add a line to my account add now
+	 * @author Saurav.Goyal 
+	 */
+	public void clkAddNow() {	
+		reusableActions.clickIfAvailable(btnAddNow, 90);
+	}
+	
 	
 	/**
 	 * To Click No thanks on welcome back page
@@ -160,7 +190,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkShop() {
-		reusableActions.getWhenReady(btnShop, 60).click();				
+		reusableActions.getWhenReady(btnShop, 90).click();				
 	}
 
 	
@@ -172,6 +202,13 @@ public class RogersHomePage extends BasePageClass {
 		reusableActions.getWhenReady(lnkMyRogers, 60).click();
 	}
 	
+	/**
+	 * To Click No thanks on welcome back page
+	 * @author chinnarao.vattam 
+	 */
+	public void clkNoThnx() {	
+		reusableActions.clickIfAvailable(btnNoThnx, 90);
+	}
 	
 	/**
 	 * Click the Digital TV option from shop dropdown list
@@ -272,14 +309,6 @@ public class RogersHomePage extends BasePageClass {
 	public void clkServiceabilityMigration() {		
 		reusableActions.waitForElementInvisibility(popupLoadingFingersciam, 180);
 		reusableActions.getWhenReady(btnServiceability, 120).click();
-	}
-	
-	/**
-	 * To Click No thanks on welcome back page
-	 * @author chinnarao.vattam 
-	 */
-	public void clkNoThnx() {	
-		reusableActions.clickIfAvailable(btnNoThnx, 90);
 	}
 	
 	/**

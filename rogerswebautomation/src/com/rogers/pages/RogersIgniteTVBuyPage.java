@@ -52,40 +52,40 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='buttons-block hidden-xs']//ins[@translate='global.modals.rhpSplitterModal.portMyNumber']")
 	WebElement btnKeepMyNumber;
 	
-	//@FindBy(xpath = "//button[@class='continue-addon ds-button ds-focus ds-active -primary -large']")
-	@FindBy(xpath = "//button[contains(@class,'continue-addon ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large')]")
+	@FindBy(xpath = "//button[@class='continue-addon ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
 	WebElement btnHomePhoneContinue;
+	//button[@class='continue-addon ds-button ds-focus ds-active -primary -large']
 	
 	@FindBy(xpath = "//label[@for='have4K-yes']")
 	WebElement rdo4KTV;
 	
-	@FindBy(xpath = "//span[@translate='global.cta.checkout']")
-	WebElement btnCheckout;	
+	@FindBy(xpath = "//button[@class='mr-24 cart-summary-checkout ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
+	WebElement btnCheckout;
 	//button[@class='mr-24 cart-summary-checkout ds-button ds-focus ds-active -primary -large']
-
-	@FindBy(xpath ="//div[@class='mt-auto w-100']//button[@aria-label='Order Rogers Ignite Starter online now']")
+	
+	@FindBy(xpath ="//div[@class='mt-auto w-100']//button[@aria-label='Order Rogers Ignite Starter online now' or @aria-label='Commandez Élan Découverte maintenant'] ")
 	WebElement btnSolarisStarterPackageServiceability;	
 	
 	@FindBy(xpath ="//div[@class='mt-auto w-100']//button[@aria-label='Add Rogers Ignite Starter Bundle to cart']//span[@translate='global.cta.addToCart']")
 	WebElement btnSolarisStarterPackageNew;	
 	
-	@FindBy(xpath = "//p[contains(@id,'ds-modal-title')]")
+	@FindBy(xpath = "//p[@id='ds-modal-title-1']")
 	WebElement popImportantInformation;
 	   
-	//@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -primary -large']")
-	@FindBy(xpath = "//div[contains(@class,'ds-modal__footer mb-24 mb-sm-40')]//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
+	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -primary -large']")
 	WebElement btnIUnderstand;	  
 	
 	@FindBy(xpath ="//label[contains(@for,'global.modals.activateIgniteHomePhoneModal.messageForNewNumber')]")
 	WebElement rdoOptNewPhone;
 	////(//div[@class='a-radio'])[2]//label[contains(@for,'global.modals.activateIgniteHomePhoneModal.messageForNewNumber')]
 	
-	@FindBy(xpath ="(//div[@class='a-radio'])[2]//span")
+	@FindBy(xpath ="//label[contains(@for,'global.modals.activateIgniteHomePhoneModal.messageForExistingNumber')]")
 	WebElement rdoOptNewPhoneEnable;
 	
-	//@FindBy(xpath ="//button[@class='ds-button ds-focus ds-active -primary -large']")
-	@FindBy(xpath ="//div[@class='ds-modal__footer mb-24 mb-sm-40']//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
+	@FindBy(xpath ="//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
 	WebElement btnOptPhone;
+	//button[@class='ds-button ds-focus ds-active -primary -large']
+	
 	
 	@FindBy(xpath ="//h2[@ute-content-source='atg']//span[contains(normalize-space(.),'Ignite Starter') or contains(normalize-space(.),'Élan Découverte')]/ancestor::div[@class='bundle-offer__tile']")
 	WebElement elmStarterRatecard;
@@ -135,9 +135,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -tertiary -large -hasDsIcon']//following-sibling::button")
 	WebElement buttonUpgradeNow;
 	
-	@FindBy(xpath = "//button[contains(@class,'stb-button increment')]//span[@class='ds-button__copy w-100']")
+	@FindBy(xpath = "//button[contains(@class,'stb-button increment')]//span[@class='ds-button__wrapper d-flex justify-content-center align-items-center']")
 	WebElement buttonAddIgniteTVBoxes;
-	
+	//button[contains(@class,'stb-button increment')]//span[@class='ds-button__copy w-100']
+		
 	@FindBy(xpath = "//span[@translate='global.cta.updateCart']")
 	WebElement buttonUpdateCart;
 	
@@ -259,6 +260,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkPlusAddIgniteTVBoxes() {
+		reusableActions.waitForElementVisibility(buttonAddIgniteTVBoxes, 60);
 		reusableActions.getWhenReady(buttonAddIgniteTVBoxes, 30).click();
 	}
 	
@@ -267,7 +269,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkUpdateCart() {
-		reusableActions.getWhenReady(buttonUpdateCart, 30).click();
+		reusableActions.getWhenReady(buttonUpdateCart, 60).click();
 	}
 	
 	/**

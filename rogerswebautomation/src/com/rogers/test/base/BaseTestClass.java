@@ -431,6 +431,7 @@ public class BaseTestClass {
 			rogers_order_summary_page = new RogersOrderSummaryPage(driver);
 			rogers_order_confirmation_page = new RogersOrderConfirmationPage(driver);
 			rogers_igniteTV_buy_page = new RogersIgniteTVBuyPage(driver);
+			rogers_internet_usage_page = new RogersInternetUsagePage(driver);
 			rogers_order_review_page = new RogersOrderReviewPage(driver);
 			rogers_igniteTV_profile_creation_page = new RogersIgniteTVProfileCreationPage(driver);
 			rogers_igniteTV_credit_check_page = new RogersIgniteTVCreditCheckPage(driver);
@@ -439,6 +440,8 @@ public class BaseTestClass {
 			rogers_payment_options_page = new RogersPaymentOptionsPage(driver);
 			rogers_register_page = new RogersRegisterPage(driver);
 			rogers_home_phone_port_in_page = new RogersHomePhonePortInPage(driver);
+			rogers_solaris_rhp_dashboard_validation_page = new RogersSolarisRHPDashboardPage(driver);
+			rogers_solaris_tv_channels_and_themepacks_page = new RogersSolarisTVChannelsAndThemepacksPage(driver); 
 			break;
 			
 		case "connectedhome_login":

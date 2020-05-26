@@ -54,7 +54,7 @@ public class RogersCH_TC_030_IginteTV_BuyIgniteStarterBundleTest extends BaseTes
 
 	   @Test
 	    public void checkBuyDigitalTVOffer() {
-	    	reporter.reportLogWithScreenshot("Launched the Home Page");
+		   	reporter.reportLogWithScreenshot("Launched the Home Page");
 	    	rogers_home_page.clkShop(); 
 	    	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
 	    	rogers_home_page.clkIgniteTV();
@@ -116,6 +116,8 @@ public class RogersCH_TC_030_IginteTV_BuyIgniteStarterBundleTest extends BaseTes
 	        rogers_home_phone_selection_page.clkChosePhoneNumber(); 
 	        rogers_home_phone_selection_page.clkContinueHomePhoneSelection(); */
 	        rogers_tech_install_page.verifyTechInstallPage(); 
+	        //rogers_tech_install_page.clkPersonalizedInstall();
+	        rogers_tech_install_page.selTechInstal();
 	        reporter.reportLogWithScreenshot("Launched the tech install page");
 	        rogers_tech_install_page.clkTechInstallSlot();
 	        reporter.reportLogWithScreenshot("tech install details");
@@ -140,7 +142,7 @@ public class RogersCH_TC_030_IginteTV_BuyIgniteStarterBundleTest extends BaseTes
 	        rogers_order_review_page.clkSubmit();
 	        reporter.reportLogWithScreenshot("Launched the Confirmation page");
 	        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");      
-	        reporter.reportLogWithScreenshot("Verified the Confirmation page");
+	        reporter.reportLogWithScreenshot("Launched the Confirmation page");
 	    }
 	   
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})

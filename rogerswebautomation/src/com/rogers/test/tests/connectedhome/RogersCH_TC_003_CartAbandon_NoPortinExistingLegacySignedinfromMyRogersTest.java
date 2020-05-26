@@ -74,6 +74,7 @@ public class RogersCH_TC_003_CartAbandon_NoPortinExistingLegacySignedinfromMyRog
         rogers_home_page.clkShop(); 
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
      	rogers_home_page.clkIgniteTVExistingCustomer();
+     	rogers_home_page.clkNoThnx();
     	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	rogers_home_page.clkServiceabilityMigration();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");    	
@@ -81,7 +82,7 @@ public class RogersCH_TC_003_CartAbandon_NoPortinExistingLegacySignedinfromMyRog
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
         reporter.reportLogWithScreenshot("Launched the information popup");
-        rogers_igniteTV_buy_page.verifyImportantInformation();
+        //rogers_igniteTV_buy_page.verifyImportantInformation();
         rogers_igniteTV_buy_page.clkIUnderstand();
         reporter.reportLogWithScreenshot("Launched the port-in popup");
         rogers_igniteTV_buy_page.selectOptNewPhone();
@@ -93,8 +94,6 @@ public class RogersCH_TC_003_CartAbandon_NoPortinExistingLegacySignedinfromMyRog
         rogers_igniteTV_buy_page.clkCheckout();
         reporter.reportLogWithScreenshot("Launched the create profile page");
         rogers_igniteTV_profile_creation_page.clkSubmitProfile();   
-        reporter.reportLogWithScreenshot("Launched the credit evalution page");
-        rogers_igniteTV_credit_check_page.verifyCreditEvalutionPage();
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
         rogers_home_page.clkMyRogers(); 
         reporter.reportLogWithScreenshot("Launched the Cart Abandonment Form popup");
@@ -133,11 +132,14 @@ public class RogersCH_TC_003_CartAbandon_NoPortinExistingLegacySignedinfromMyRog
         reporter.reportLogWithScreenshot("Entered the DOB details");
         rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        rogers_home_phone_selection_page.clkPhoneNumberGenerator(); 
-        rogers_home_phone_selection_page.clkChosePhoneNumber(); 
         rogers_home_phone_selection_page.clkContinueHomePhoneSelection();  
         reporter.reportLogWithScreenshot("Launched the tech install page");
-        rogers_tech_install_page.clkTechInstallSlot();
+        rogers_tech_install_page.selTechInstalStartDate();
+        reporter.reportLogWithScreenshot("Selected Start date for Installation slot");
+        rogers_tech_install_page.selTechInstalEndDate();
+        reporter.reportLogWithScreenshot("Selected End date for Installation slot");
+        rogers_tech_install_page.setEmail(); 
+        reporter.reportLogWithScreenshot("tech install details");
         rogers_tech_install_page.clkTechInstallContinue();
         reporter.reportLogWithScreenshot("Launched the payment options page");
         rogers_payment_options_page.clkPaymentConfirmExistingCustomer();
@@ -147,9 +149,8 @@ public class RogersCH_TC_003_CartAbandon_NoPortinExistingLegacySignedinfromMyRog
         rogers_order_review_page.clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
         rogers_order_review_page.clkSubmit();
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");  
-        reporter.reportLogWithScreenshot("Verified the Confirmation page");
+        reporter.reportLogWithScreenshot("Launched the Confirmation page");
 	}
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})

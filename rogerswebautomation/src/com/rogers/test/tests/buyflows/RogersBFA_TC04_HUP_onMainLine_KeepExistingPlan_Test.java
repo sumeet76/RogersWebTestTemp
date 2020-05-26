@@ -48,8 +48,8 @@ public class RogersBFA_TC04_HUP_onMainLine_KeepExistingPlan_Test extends BaseTes
         reporter.hardAssert(rogers_account_overview_page.verifyAndClickWirelessCTN(TestDataHandler.testCase04.getCtn()),"CTN Found","CTN Not Found");
         reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
         rogers_wireless_details_page.clkUpgradeMyDevice();
-        rogers_choose_phone_page.searchDevice(TestDataHandler.testCase04.getNewDevice());
         reporter.reportLogWithScreenshot("Rogers Choose Phone Page");
+        rogers_choose_phone_page.searchDevice(TestDataHandler.testCase04.getNewDevice());
         rogers_choose_phone_page.selectFirstAvailableDevice();
         rogers_build_plan_page.selectExistingPlan();
         reporter.reportLogWithScreenshot("Rogers Build Plan Page");
@@ -57,7 +57,13 @@ public class RogersBFA_TC04_HUP_onMainLine_KeepExistingPlan_Test extends BaseTes
         reporter.reportLogWithScreenshot("Rogers Choose Addons Page");
         rogers_choose_addons_page.clkContinueHUP();
         reporter.reportLogWithScreenshot("Rogers Shipping Page");
+        rogers_shipping_page.setEmailID();
+        rogers_shipping_page.clkSaveEmail();
+        rogers_shipping_page.clkSelectAvailableTime();
+        rogers_shipping_page.clkReserve();
+        reporter.reportLogWithScreenshot("Rogers Shipping Page before clicking continue");
         rogers_shipping_page.clkContinue();
+        reporter.reportLogWithScreenshot("Rogers review page");
         rogers_order_review_page.clkTermsAgreementCheckbox();
         rogers_order_review_page.clkShieldAgreementCheckbox();
         rogers_order_review_page.clkUpfrontTermsCheckbox();

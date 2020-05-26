@@ -57,7 +57,7 @@ public class RogersCH_TC_005_IginteTV_OldConstructor_ExistingSolarisChangeTVPack
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         rogers_solaris_tv_dashboard_page.clkChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the TV packages page");
-        rogers_solaris_tv_dashboard_page.selectSolarisTVPackage(TestDataHandler.solarisTVOldConstructor.getAccountDetails().getUpgradePlanEn(),TestDataHandler.solarisTVOldConstructor.getAccountDetails().getUpgradePlanEn());
+        rogers_solaris_tv_dashboard_page.selectSolarisTVPackage(TestDataHandler.solarisTVOldConstructor.getAccountDetails().getUpgradePlanEn(),TestDataHandler.solarisTVOldConstructor.getAccountDetails().getUpgradePlanFr());
         rogers_solaris_tv_dashboard_page.clkPopupChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the personalize channel page");
         rogers_solaris_tv_channels_and_themepacks_page.clkExchangeLater(); 
@@ -73,9 +73,8 @@ public class RogersCH_TC_005_IginteTV_OldConstructor_ExistingSolarisChangeTVPack
         rogers_order_review_page.clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
         rogers_order_review_page.clkSubmit();
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
-        reporter.reportLogWithScreenshot("Verified the Confirmation page");
+        reporter.reportLogWithScreenshot("Launched the Confirmation page");
     }
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})

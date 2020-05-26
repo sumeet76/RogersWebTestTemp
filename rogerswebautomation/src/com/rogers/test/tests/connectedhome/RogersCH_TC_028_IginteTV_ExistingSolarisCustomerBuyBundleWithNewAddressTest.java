@@ -79,26 +79,41 @@ public class RogersCH_TC_028_IginteTV_ExistingSolarisCustomerBuyBundleWithNewAdd
         rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-        rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
-        rogers_igniteTV_buy_page.verify4KTV();
-        reporter.reportLogWithScreenshot("Launched the cart summary page");
-        rogers_igniteTV_buy_page.set4KTV();
-        reporter.reportLogWithScreenshot("4k TV selected");
-        rogers_igniteTV_buy_page.clkCheckout();
-        rogers_igniteTV_profile_creation_page.verifyProfilePage();
-        reporter.reportLogWithScreenshot("Launched the create profile page");
-        rogers_igniteTV_profile_creation_page.clkSubmitProfile();
-        reporter.reportLogWithScreenshot("Launched the tech install page");
-        rogers_tech_install_page.clkTechInstallSlot();
-        rogers_tech_install_page.clkTechInstallContinue();
+        rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();        
+  /*      rogers_igniteTV_buy_page.verifyOptNewPhone();
+        reporter.reportLogWithScreenshot("Launched the port-in popup");
+        rogers_igniteTV_buy_page.selectOptNewPhone();
+        rogers_igniteTV_buy_page.clickOptPhone();
+        rogers_igniteTV_buy_page.verifyHomePhone();
+	        reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
+	        rogers_igniteTV_buy_page.clkHomePhone();*/
+	        rogers_igniteTV_buy_page.verify4KTV();
+	        reporter.reportLogWithScreenshot("Launched the cart summary page");
+	        rogers_igniteTV_buy_page.set4KTV(); 
+	        rogers_igniteTV_buy_page.verify4KTVSelection();
+	        reporter.reportLogWithScreenshot("4k TV selected");
+	        rogers_igniteTV_buy_page.clkCheckout();
+	        reporter.reportLogWithScreenshot("Launched the create profile page");
+	        rogers_igniteTV_profile_creation_page.clkSubmitProfile(); 
+	        reporter.reportLogWithScreenshot("Launched the home phone selection page");
+	/*        rogers_home_phone_selection_page.clkPhoneNumberGenerator(); 
+	        rogers_home_phone_selection_page.clkChosePhoneNumber(); 
+	        rogers_home_phone_selection_page.clkContinueHomePhoneSelection();*/ 
+	        rogers_tech_install_page.verifyTechInstallPage(); 
+	        //rogers_tech_install_page.clkPersonalizedInstall();
+	        rogers_tech_install_page.selTechInstal();
+	        reporter.reportLogWithScreenshot("Launched the tech install page");
+	        rogers_tech_install_page.clkTechInstallSlot();
+	        reporter.reportLogWithScreenshot("tech install details");
+	        rogers_tech_install_page.clkTechInstalConsent();
+	        rogers_tech_install_page.clkTechInstallContinue();
         reporter.reportLogWithScreenshot("Launched the order review page");
         rogers_order_review_page.verifyAgreement();
         rogers_order_review_page.clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
         rogers_order_review_page.clkSubmit();
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");       
-        reporter.reportLogWithScreenshot("Verified the Confirmation page");
+        reporter.reportLogWithScreenshot("Launched the Confirmation page");
     }
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})

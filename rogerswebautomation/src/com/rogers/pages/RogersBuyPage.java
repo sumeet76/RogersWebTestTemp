@@ -13,8 +13,7 @@ public class RogersBuyPage extends BasePageClass {
 	public RogersBuyPage(WebDriver driver) {
 		super(driver);
 	}
-
-	@FindBy(xpath = "(//button[@class='change-button ds-button ds-focus ds-active -secondary -large ng-star-inserted'])[1]")
+	@FindBy(xpath = "(//button[@class='change-button ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large ng-star-inserted'])[1]")
 	WebElement btnIgniteInternetSpeed;	
 	//button[@translate='global.modals.serviceability.changeTVPackage']
 	
@@ -122,7 +121,7 @@ public class RogersBuyPage extends BasePageClass {
 	public void selectInternetPackage(String strInternetBundle) {
 		WebElement  bundleLocator = (WebElement)driver.findElement(By.xpath("//p[@class='rate-card-data desktop-rate-details']/strong[contains(text(),'"+ strInternetBundle+ "')]/ancestor::div[@id='main-box']//a[@class='btn ways-to-buy']"));
 		reusableActions.waitForElementVisibility(bundleLocator,30);
-		reusableActions.executeJavaScriptClick(bundleLocator);
+		reusableActions.executeJavaScriptClick(bundleLocator);	
 	}	
 	//p[@class='rate-card-data desktop-rate-details']/strong[contains(text(),'150')]/ancestor::div[@id='main-box']//a[@class='btn ways-to-buy']
 	

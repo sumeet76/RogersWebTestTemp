@@ -226,7 +226,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public void clkTVBadge(String strBrowser ) {
 		if (strBrowser.equalsIgnoreCase("chrome"))
 		{		
-		reusableActions.clickAndHoldFor(btnTVBadge, 120);		
+		reusableActions.getWhenReady(btnTVBadge, 120).click();
 		}else
 		{
 			reusableActions.clickIfAvailable(btnTVBadge,120);
@@ -241,7 +241,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public void clkRHPBadge(String strBrowser) {
 		if (strBrowser.equalsIgnoreCase("chrome"))
 		{
-		reusableActions.clickAndHoldFor(btnRHPBadge, 120);
+		reusableActions.getWhenReady(btnRHPBadge, 120).click();;
 		}else {
 			reusableActions.clickIfAvailable(btnRHPBadge, 120);
 			}
@@ -367,7 +367,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifySuccessfulLogin() {
-		return reusableActions.isElementVisible(infoBalanceLable,30);
+		return reusableActions.isElementVisible(infoBalanceLable,60);
 	}
 
 	/**
@@ -427,7 +427,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		strCTN = strCTN.substring(0, 3) + "-" + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);		
 		String strCTNXpath = "//div[@class='myServiceName']//div[contains(text(),'" + strCTN + "')]";		
 		if(reusableActions.isElementVisible(By.xpath(strCTNXpath))) {
-			reusableActions.scrollToElementAndClick(reusableActions.getWhenReady(By.xpath(strCTNXpath)));
+			reusableActions.scrollToElement(reusableActions.getWhenReady(By.xpath(strCTNXpath)));
+			//reusableActions.javascriptScrollByVisibleElement(reusableActions.getWhenReady(By.xpath(strCTNXpath)));
+			reusableActions.clickWhenReady(By.xpath(strCTNXpath), 120);
+			//reusableActions.scrollToElementAndClick(reusableActions.getWhenReady(By.xpath(strCTNXpath)));
 			return true;
 		} else if (verifyAndClickShareEverythingCTN(strCTN)) {
 			return true;

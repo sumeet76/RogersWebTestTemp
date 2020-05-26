@@ -6,15 +6,6 @@
 			class-name="com.rogers.test.listeners.AnnotationTransformer" />
 	</listeners>
 
-	<test name="Cable rogers Sanity IgniteAnonymous">
-		<parameter name="strBrowser" value="chrome" />
-		<parameter name="strLanguage" value="en" />
-		<parameter name="strGroupName" value="connectedhome_igniteanonymous"/>
-		<classes>
-		<class name="com.rogers.test.tests.connectedhome.RogersCH_TC_001_IginteTV_BuyBundleTest"></class>
-		</classes>
-	</test>
- 
 	<test name="Cable rogers Sanity LegacyAnonymous">
 		<parameter name="strBrowser" value="chrome" />
 		<parameter name="strLanguage" value="en" />
@@ -45,6 +36,16 @@
 			<class name="com.rogers.test.tests.connectedhome.RogersCH_TC_007_IginteTV_ValidateTVDashboardTest"></class>
 			<class name="com.rogers.test.tests.connectedhome.RogersCH_TC_008_IginteInternet_InternetPackageDowngradeTest"></class>
 			<class name="com.rogers.test.tests.connectedhome.RogersCH_TC_024_IgniteRHP_ValidateRHPDasboardTest"></class>
+		</classes>
+	</test>
+	
+	
+	<test name="Cable rogers Sanity IgniteAnonymous">
+		<parameter name="strBrowser" value="chrome" />
+		<parameter name="strLanguage" value="en" />
+		<parameter name="strGroupName" value="connectedhome_igniteanonymous"/>
+		<classes>
+		<class name="com.rogers.test.tests.connectedhome.RogersCH_TC_001_IginteTV_BuyBundleTest"></class>
 		</classes>
 	</test>
 </suite>

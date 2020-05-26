@@ -2,6 +2,7 @@ package com.rogers.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -22,7 +23,10 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	@FindBy(xpath = "//ins[@translate='global.message.orderConfirmationThanksV3']")
 	WebElement infoChangeOrderConfirmation;
 	
-	@FindBy(xpath = "//span[@class='thank-you']")
+	@FindAll({
+		@FindBy(xpath = "//span[@class='thank-you']"),
+		@FindBy(xpath = "//span[@class='UConfirmationHeading']")
+	})	
 	WebElement lblThankYou;
 	
 	@FindBy(xpath = "//span[@checkout-res='checkout_order_confirmation']")
@@ -46,8 +50,8 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOrderConfirmation() {
-		reusableActions.waitForElementInvisibility(popupLoadingFingers,180);
-		return reusableActions.isElementVisible(infoSubmit, 60);
+		reusableActions.waitForElementVisibility(infoChangeOrderConfirmation,180);
+		return reusableActions.isElementVisible(infoChangeOrderConfirmation, 60);
 	}
 	
 	/**
@@ -71,9 +75,10 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	/**
 	 * Validates if the 'Thank You' message id displayed
 	 * @return true if displayed; else false
+	 * @author Saurav.Goyal
 	 */
 	public boolean verifyThankYouDisplayed() {
-		return reusableActions.isElementVisible(lblThankYou);
+		return reusableActions.isElementVisible(lblThankYou,60);
 	}
 	
 	/**

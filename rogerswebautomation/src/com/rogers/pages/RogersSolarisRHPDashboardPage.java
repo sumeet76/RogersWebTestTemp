@@ -36,7 +36,6 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSolarisRHPBadge(String strBrowser ) {
-		reusableActions.staticWait(1000);
 		if (strBrowser.equalsIgnoreCase("chrome"))
 		{
 		reusableActions.getWhenReady(btnSolarisrhpBadge, 30).click();		

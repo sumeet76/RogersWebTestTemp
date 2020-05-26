@@ -34,15 +34,17 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath ="//div[contains(@class,'col-sm-6 margin-bottom-0')]//span[@class='ute-icon-calendar-icon']")
 	WebElement imgEndingTechInstallSlot;
 	
-	
 	@FindBy(xpath ="//input[@id='enRouteEmail']")
 	WebElement txtEmail;
 	
-	@FindBy(xpath ="//div[@class='self-install-concern']//input[@name='consent']")
+	@FindBy(xpath ="//label[@for='deliveryConcern']")
 	WebElement chkTechInstalConsent;
+	//div[@class='self-install-concern']//input[@name='consent']
+	//input[@id='deliveryConcern']
 		
-	@FindBy(xpath ="//div[@class='buttons-block hidden-xs']//button[@class='ute-btn-primary']")
+	@FindBy(xpath ="//button[@class='ute-btn-primary']")
 	WebElement btnTechInstallContinue;
+	//div[@class='buttons-block hidden-xs']//button[@class='ute-btn-primary']")
 	
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
@@ -62,11 +64,20 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ute-icon-calendar-icon']")
 	WebElement clkCalendarIcon;
 
+	@FindBy(xpath ="//span[@class='ute-icon-calendar-icon']")
+	WebElement imgTechInstallSlot;
+	
 	@FindBy(xpath = "//button[@class='knob collapsed']")
 	WebElement downChevronYourCart;
 
 	@FindBy(xpath = "//div[@class='mini-body']//div[contains(@ng-bind-html,'$root.gwpDetails')]")
 	WebElement gwpYourCart;
+	
+	@FindBy(xpath ="//label[@for='tech-install-option']//span[@class='ute-icon-check']")
+	WebElement chkPersonalizedInstall;
+	
+	@FindBy(xpath ="//ins[@translate='global.label.personalizedInstallation']")
+	WebElement txtTechInstalpage;
 	
 	/**
 	 * To click on the chevron on the tech Install page
@@ -133,7 +144,13 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyTechInstallPage() {
-		return	reusableActions.isElementVisible(rdoTechInstallSlot, 180);
+		return	reusableActions.isElementVisible(txtTechInstalpage, 180);
+	}
+	
+	
+	public void clkPersonalizedInstall() {
+		reusableActions.waitForElementVisibility(chkPersonalizedInstall, 180);
+		reusableActions.getWhenReady(chkPersonalizedInstall, 180).click();
 	}
 	
 	/**
@@ -144,12 +161,30 @@ public class RogersTechInstallPage extends BasePageClass {
 	public boolean verifyTechInstallCalendar() {	
 		return	reusableActions.isElementVisible(imgStartingTechInstallSlot, 180);
 	}
+	
+	/**
+	 * To select the Technical Installation Start Date
+	 * @author chinnarao.vattam
+	 */
+	public void selTechInstal() {
+		reusableActions.waitForElementVisibility(imgTechInstallSlot,180); 
+		reusableActions.scrollToElement(imgTechInstallSlot); 
+		reusableActions.getWhenReady(imgTechInstallSlot, 20).click();
+		Calendar calendar = Calendar.getInstance();
+		int intDate = calendar.get(Calendar.DATE);
+		int startDate = intDate + 5; 
+		String strStartDate= Integer.toString(startDate);
+		By selStartDate = By.xpath("//button[@class='btn btn-default btn-sm']//span[contains(text(),'" + strStartDate + "')]");
+		reusableActions.getWhenReady(selStartDate, 20).click();
+	}
+	
 	/**
 	 * Select the slot from the available list of slots from installation page
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkTechInstallSlot() {
-		reusableActions.getWhenReady(rdoTechInstallSlot, 60).click();
+		reusableActions.waitForElementVisibility(rdoTechInstallSlot, 180);
+		reusableActions.getWhenReady(rdoTechInstallSlot, 180).click();
 	}
 	
 	/**
@@ -232,9 +267,9 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * To Click the Technical Install Consent check box
 	 * @author chinnarao.vattam
 	 */
-	public void clkTechInstalConsent() {		
-		//reusableActions.waitForElementInvisibility(popupLoadingFingers,120);
-		reusableActions.javascriptScrollToBottomOfPage();
+	public void clkTechInstalConsent() {
+		reusableActions.waitForElementVisibility(chkTechInstalConsent, 180);
+		reusableActions.javascriptScrollByVisibleElement(chkTechInstalConsent);
 		reusableActions.executeJavaScriptClick(chkTechInstalConsent);
 	}
 	
@@ -243,9 +278,8 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * Click the continue button to continue the TechInstall on installation page
 	 * @author Chinnarao.Vattam
 	 */
-	public void clkTechInstallContinue() {   
-		reusableActions.waitForElementTobeClickable(btnTechInstallContinue, 150);
-		reusableActions.javascriptScrollToBottomOfPage();
+	public void clkTechInstallContinue() {
+		reusableActions.waitForElementTobeClickable(btnTechInstallContinue, 180);
 		reusableActions.javascriptScrollToMiddleOfPage();
 		reusableActions.getWhenReady(btnTechInstallContinue, 120).click();
 	}

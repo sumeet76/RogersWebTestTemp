@@ -54,7 +54,84 @@ public class RogersChoosePlanPage extends BasePageClass {
 	
 	@FindBy(xpath = "//span[@translate='mppc.summary.continue_button']/../parent::div[contains(@class,'summary-strip-section')]/button")
 	WebElement btnContinue;
+	
+	@FindBy(xpath = "//input[@value='createSharedGroup']//parent::label//span[@class='dsa-selection__caption text-center']")
+	WebElement lblCreateSharedPlan;
 
+	@FindBy(xpath = "//button[contains(@class,'d-inline-block -primary -large')]")
+	WebElement btnModalContinue;
+	
+	@FindBy(xpath = "//div[contains(@class,'ds-checkbox__box my-12')]")
+	WebElement chkboxOnMultiLineSelect;
+	
+	@FindBy(xpath = "//button[contains(@class,'-primary -large')]")
+	WebElement btnAddOnMultiLineSelect;
+
+	@FindBy(xpath = "//div[@class='d-flex flex-column ds-border-xs-bottom p-xs-16']//div[@class='ds-radioButton__outerCircle my-12']")
+	WebElement rdoSelectPrimaryLine;
+	
+	@FindBy(xpath = "//button[contains(@class,'-primary -large')]")
+	WebElement btnContinuePrimaryLine;
+	
+	@FindBy(xpath = "//input[@value='changeCurrentPlan']//parent::label//span[@class='dsa-selection__caption text-center']")
+	WebElement lblChangesToExistingPlan;
+	
+	/**
+	 * Clicks on label make Change to existing plan
+	 * @author Saurav.Goyal
+	 */
+	public void clkMakeChangesToExistingPlan() {
+		reusableActions.clickWhenReady(lblChangesToExistingPlan,60);
+	}
+	
+	/**
+	 * Clicks on radio button select a primary line for your new share plan 
+	 * @author Saurav.Goyal
+	 */
+	public void clkRadioSelectPrimaryLine() {
+		reusableActions.clickWhenReady(rdoSelectPrimaryLine,60);
+	}
+	
+	/**
+	 * Clicks add on Share everything plan modal
+	 * @author Saurav.Goyal
+	 */
+	public void clkContinueOnSelectPrimaryShareEveryThing() {
+		reusableActions.clickWhenReady(btnContinuePrimaryLine,60);
+	}
+	
+	/**
+	 * Clicks on check box to select a phone on multi line select modal window 
+	 * @author Saurav.Goyal
+	 */
+	public void clkCheckBoxSelectAPhone() {
+		reusableActions.clickWhenReady(chkboxOnMultiLineSelect,60);
+	}
+	
+	/**
+	 * Clicks on label make Change to existing plan
+	 * @author Saurav.Goyal
+	 */
+	public void clkCreateSharedPlanWithOtherLines() {
+		reusableActions.clickWhenReady(lblCreateSharedPlan,60);
+	}
+	
+	/**
+	 * Clicks add on Share everything plan modal
+	 * @author Saurav.Goyal
+	 */
+	public void clkAddOnShareEveryThingModal() {
+		reusableActions.clickWhenReady(btnAddOnMultiLineSelect,60);
+	}
+	
+	/**
+	 * Clicks on continue button on the modal window
+	 * @author Saurav.Goyal
+	 */
+	public void clkButtonModalContinue() {
+		reusableActions.clickWhenReady(btnModalContinue,60);
+	}
+	
 	/**
 	 * Clicks on the 'No Tab' plan type
 	 * @author rajesh.varalli1
@@ -116,7 +193,6 @@ public class RogersChoosePlanPage extends BasePageClass {
 			strPlanCat = "no tab";
 			break;
 		}
-		
 		reusableActions.clickWhenReady(icnPlanCategory, 60);		
 		reusableActions.clickWhenReady(By.xpath("//md-option[@value='" + strPlanCat +"']"));
 		reusableActions.staticWait(3000);
