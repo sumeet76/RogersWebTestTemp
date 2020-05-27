@@ -29,6 +29,10 @@ public class RogersEnums {
     	idleTimeout,
     	build,
     	browserVersion,
-    	platformVersion	       
+    	platformName,
+    	platformVersion,
+    	appiumVersion,
+    	deviceName,
+    	deviceOrientation
     };
 }
