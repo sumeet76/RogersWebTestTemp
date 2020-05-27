@@ -135,6 +135,12 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='line-icon line-shared-icon']")
 	WebElement btnToSharedPlan;
 	
+	@FindBy(xpath = "//div[@class='dds-header-hamburger-nav']")
+	WebElement lnkHamburgerMobile;
+	
+	@FindBy (xpath = "//span[@class='dds_m-mobileNavLink__caption' and text()='Sign in']")
+	WebElement lnkSignInMobile;
+	
 	/**
 	 * click button add device to a shared plan
 	 * @author Saurav.Goyal 
@@ -439,6 +445,21 @@ public class RogersHomePage extends BasePageClass {
 		reusableActions.getWhenReady(btnUseThisAddress, 120).click();
 		}
 	
+	/**
+	 * Click the hamburger from the top right corner on the page 
+	 * @author ning.xue
+	 */
+	public void clkHamburgerMobile() {		
+		reusableActions.getWhenVisible(lnkHamburgerMobile, 30).click();
+	}
+	
+	/**
+	 * Click the link "Sign in" on the page 
+	 * @author ning.xue
+	 */
+	public void clkSignInMobile() {		
+		reusableActions.getWhenVisible(lnkSignInMobile, 30).click();
+	}
 	
 }
 
