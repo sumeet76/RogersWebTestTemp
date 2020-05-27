@@ -103,7 +103,6 @@ import utils.AppiumServerJava;
 import utils.BrowserDrivers;
 import utils.Reporter;
 
-
 @Listeners ({com.rogers.test.listeners.TestListener.class ,
 	com.rogers.test.listeners.AnnotationTransformer.class ,
 	com.rogers.test.listeners.TestListener.class })
@@ -372,7 +371,7 @@ public class BaseTestClass {
 			rogers_internet_usage_page = new RogersInternetUsagePage(driver);
 			rogers_solaris_tv_dashboard_page = new RogersSolarisTVDashboardPage(driver);
 			rogers_digital_tv_dashboard_page = new RogersDigitalTVDashboardPage(driver);
-			rogers_account_overview_page = new RogersAccountOverviewPage(driver);						
+			rogers_account_overview_page = new RogersAccountOverviewPage(driver);	
 			break;
 			
 		case "connectedhome_legacyanonymous":
