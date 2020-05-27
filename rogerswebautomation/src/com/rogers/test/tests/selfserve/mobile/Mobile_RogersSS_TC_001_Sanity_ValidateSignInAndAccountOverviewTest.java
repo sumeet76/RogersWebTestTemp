@@ -5,7 +5,6 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 
 import org.apache.http.client.ClientProtocolException;
-import org.openqa.selenium.By;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -24,8 +23,7 @@ public class Mobile_RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest 
 	@BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
 		   xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
-					
+			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.mobile_selfserve,method);					
 		}
 	   	
 		
@@ -39,29 +37,24 @@ public class Mobile_RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest 
 	
 	
     @Test
-    public void validateSignInAndAccountOverview() {
-    	
-        getDriver().findElement(By.xpath("//a[@data-navid='main']")).click();
-        getDriver().findElement(By.xpath("//a[@class='signin-interceptor dds_m-mobileNavLink -login test-anon']")).click();
-
-
+    public void validateSignInAndAccountOverview() {    	        
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
-    	rogers_home_page.clkSignIn();
-		rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(TestDataHandler.tc013132.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.tc013132.getPassword());
+    	mobile_rogers_home_page.clkSignIn();
+    	mobile_rogers_login_page.switchToSignInIFrame();
+    	mobile_rogers_login_page.setUsernameIFrame(TestDataHandler.tc013132.getUsername());
+    	mobile_rogers_login_page.setPasswordIFrame(TestDataHandler.tc013132.getPassword());
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-        rogers_login_page.clkSignInIFrame();
-        rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+        mobile_rogers_login_page.clkSignInIFrame();
+        mobile_rogers_login_page.clkSkipIFrame();
+        mobile_rogers_login_page.switchOutOfSignInIFrame();
 
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (mobile_rogers_account_overview_Page.isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-        	rogers_account_overview_page.selectAccount(TestDataHandler.tc013132.getAccountDetails().getBan());       
+        	mobile_rogers_account_overview_Page.selectAccount(TestDataHandler.tc013132.getAccountDetails().getBan());       
         }
         reporter.reportLogWithScreenshot("Account overview page.");
-        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Passed", "Login Failed");
+        reporter.hardAssert(mobile_rogers_account_overview_Page.verifySuccessfulLogin(), "Login Passed", "Login Failed");
     }
 
   

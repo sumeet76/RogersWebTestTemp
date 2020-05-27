@@ -88,6 +88,9 @@ import com.rogers.pages.RogersWirelessDetailsPage;
 import com.rogers.pages.RogersWirelessProfileCreationPage;
 import com.rogers.pages.ens.EnsHomePage;
 import com.rogers.pages.ens.EnsNotificationViewPage;
+import com.rogers.pages.mobile.MobileRogersAccountOverviewPage;
+import com.rogers.pages.mobile.MobileRogersHomePage;
+import com.rogers.pages.mobile.MobileRogersLoginPage;
 import com.rogers.test.commonbusinessfunctions.CommonBusinessFlows;
 import com.rogers.test.commonbusinessfunctions.VerifyInEns;
 import com.rogers.test.helpers.CaptchaBypassHandlers;
@@ -190,10 +193,12 @@ public class BaseTestClass {
 	protected ChannelsAndThemePacksPage channels_Theme_Packs_Page;
 	protected HomePhoneAddonsPage home_Phone_Addons_Page;
 	AppiumServerJava appiumServer = new AppiumServerJava();	
-	//int port = 4723;
-	
+	//int port = 4723;	
 	private CaptchaBypassHandlers captcha_bypass_handlers;
 	private Map<String, String> sauceParameters;
+	protected MobileRogersAccountOverviewPage mobile_rogers_account_overview_Page;
+	protected MobileRogersHomePage mobile_rogers_home_page;
+	protected MobileRogersLoginPage mobile_rogers_login_page;
 		
 		public BaseTestClass() {
 			 browserdriver =  new BrowserDrivers();
@@ -221,6 +226,7 @@ public class BaseTestClass {
 		switch(strGroupName.toLowerCase().trim()) {			
 		case "selfserve":
 		case "selfserve_login":
+		case "mobile_selfserve":
 			captcha_bypass_handlers.captchaBypassURLSelfserveFlows(strUrl, strLanguage);
 			break;
 			
@@ -520,7 +526,10 @@ public class BaseTestClass {
 			channels_Theme_Packs_Page=new ChannelsAndThemePacksPage(getDriver());
 			home_Phone_Addons_Page=new HomePhoneAddonsPage(getDriver());
 			break;
-			
+		case "mobile_selfserve":
+			mobile_rogers_account_overview_Page = new MobileRogersAccountOverviewPage(driver);
+			mobile_rogers_home_page = new MobileRogersHomePage(driver);
+			mobile_rogers_login_page = new MobileRogersLoginPage(driver);
 		default:
 			
 		}	
