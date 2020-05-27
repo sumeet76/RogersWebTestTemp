@@ -6,11 +6,11 @@ public class SauceSettings {
 	private String sauceKey;
 	private String browserName;
 	private String browserVersion;
-	private String platform;
 	private SauceOptions sauceOptions;
 	private MutableCapabilities mutableFireFoxCapabilities;
 	private MutableCapabilities mutableChromeCapabilities;
 	private MutableCapabilities mutableEdgeCapabilities;
+	private AndroidCapabilities androidChromeCapabilities;	
 	/**
 	 * @return the sauceUser
 	 */
@@ -22,18 +22,6 @@ public class SauceSettings {
 	 */
 	public void setSauceUser(String sauceUser) {
 		this.sauceUser = sauceUser;
-	}
-	/**
-	 * @return the platform
-	 */
-	public String getPlatform() {
-		return platform;
-	}
-	/**
-	 * @param platform the platform to set
-	 */
-	public void setPlatform(String platform) {
-		this.platform = platform;
 	}
 	/**
 	 * @return the browserVersion
@@ -119,6 +107,18 @@ public class SauceSettings {
 	public void setMutableEdgeCapabilities(MutableCapabilities mutableEdgeCapabilities) {
 		this.mutableEdgeCapabilities = mutableEdgeCapabilities;
 	}
-	
-	
+	/**
+	 * @return the androidChromeCapabilities
+	 */
+	public AndroidCapabilities getAndroidChromeCapabilities() {
+		return androidChromeCapabilities;
+	}
+	/**
+	 * @param androidChromeCapabilities the androidChromeCapabilities to set
+	 */
+	public void setAndroidChromeCapabilities(AndroidCapabilities androidChromeCapabilities) {
+		this.androidChromeCapabilities = androidChromeCapabilities;
+	}
+
+
 }
