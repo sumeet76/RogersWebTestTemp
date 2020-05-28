@@ -59,9 +59,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//label[@for='have4K-yes']")
 	WebElement rdo4KTV;
 	
-	@FindBy(xpath = "//button[@class='mr-24 cart-summary-checkout ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
+	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
 	WebElement btnCheckout;
 	//button[@class='mr-24 cart-summary-checkout ds-button ds-focus ds-active -primary -large']
+	//button[@class='mr-24 cart-summary-checkout ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']
 	
 	@FindBy(xpath ="//div[@class='mt-auto w-100']//button[@aria-label='Order Rogers Ignite Starter online now' or @aria-label='Commandez Élan Découverte maintenant'] ")
 	WebElement btnSolarisStarterPackageServiceability;	
@@ -445,11 +446,13 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkCheckout() {
-		reusableActions.waitForElementInvisibility(popupLoadingFingersciam,200);		
+		reusableActions.waitForElementInvisibility(popupLoadingFingersciam,200);	
+	/*	reusableActions.javascriptScrollToBottomOfPage();
+		reusableActions.javascriptScrollToMiddleOfPage();
 		reusableActions.getWhenReady(btnCheckout, 150);
-		reusableActions.getWhenReady(btnCheckout, 30).click();	
-		reusableActions.clickIfAvailable(btnCheckout, 60);
-		reusableActions.clickIfAvailable(btnCheckout, 60);
+		reusableActions.getWhenReady(btnCheckout, 150);*/
+		reusableActions.getWhenReady(btnCheckout, 150).click();
+		reusableActions.waitForElementInvisibility(popupLoadingFingersciam,200);
 	}
 	
 	/**

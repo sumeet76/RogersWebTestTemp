@@ -148,21 +148,26 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @param strPackageNameFr Internet package to be selected
 	 * @author Chinnarao.Vattam
 	 */
-	public void selectSolarisInternetPackage(String strPackageNameEn,String strPackageNameFr) {
+/*	public void selectSolarisInternetPackage(String strPackageNameEn,String strPackageNameFr) {
 		By btnPackageSelection = By.xpath("//span[contains(normalize-space(text()),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='owl-item active']//ins[@translate='global.cta.select']");
-		reusableActions.javascriptScrollToMiddleOfPage();		
-		if(reusableActions.isElementVisible(btnPackageSelection, 120))
+		reusableActions.javascriptScrollToMiddleOfPage();
+		if(reusableActions.isElementVisible(btnPackageSelection, 60))
 		{		
-	    reusableActions.getWhenReady(btnPackageSelection, 120).click();	
+	    reusableActions.getWhenReady(btnPackageSelection, 30).click();	
 		 }
 	   else
 		{
-	    reusableActions.getWhenReady(imgNext, 180).click();  
-	    reusableActions.isElementVisible(btnPackageSelection, 120);
-	    reusableActions.getWhenReady(btnPackageSelection, 120).click();	
+	    reusableActions.getWhenReady(imgNext, 90).click();  
+	    reusableActions.isElementVisible(btnPackageSelection, 60);
+	    reusableActions.getWhenReady(btnPackageSelection, 30).click();	
 		}
-	}
+	}*/
 	
+	public void selectSolarisInternetPackage(String strPackageNameEn, String strPackageNameFr ) {
+        By packageNameLocator = By.xpath("//span[contains(normalize-space(text()),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr+ "')]/ancestor::div[@class='owl-item active']//ins[@translate='global.cta.select']");
+        reusableActions.staticWait(2000);
+		//reusableActions.getWhenReady(packageNameLocator, 120).click();	
+	}
 	/**
 	 * Select the  Internet Package on change Internet package page for migration flow
 	 * @param strPackageName Internet package to be selected

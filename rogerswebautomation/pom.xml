@@ -282,7 +282,7 @@
 			</build>
 		</profile>
 		<profile>
-			<id>completesuiteCHSC</id>
+			<id>completesuiteSS</id>
 			<build>
 				<plugins>
 					<plugin>
@@ -291,7 +291,7 @@
 						<version>3.0.0-M4</version>
 						<configuration>
 							<suiteXmlFiles>
-								<suiteXmlFile>ConnectedHomeRogersSolarisConsumerCompleteSuite.xml</suiteXmlFile>
+								<suiteXmlFile>SolarisConsumerCompleteSuite.xml</suiteXmlFile>
 							</suiteXmlFiles>
 						</configuration>
 					</plugin>

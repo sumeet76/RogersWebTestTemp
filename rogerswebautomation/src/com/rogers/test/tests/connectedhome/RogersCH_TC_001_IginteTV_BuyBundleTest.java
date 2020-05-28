@@ -146,9 +146,9 @@ public class RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
     }
     
-    @Test
-    public void checkBuyDigitalTVOfferlearn() {
-    	reporter.reportLogWithScreenshot("Launched the Home Page");
+ /*   @Test
+    public void checkBuyDigitalTVOfferlearn() {*/
+    	/*reporter.reportLogWithScreenshot("Launched the Home Page");
     	rogers_home_page.clkShop(); 
     	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
     	rogers_home_page.clkIgniteTV();
@@ -164,7 +164,7 @@ public class RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
         rogers_home_page.setIgniteAddressLookupLearn(strAddressLine1+", "+strAddressLine2+", CANADA");
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-        rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
+        rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();*/
 /*        rogers_igniteTV_buy_page.verifyOptNewPhone();
         reporter.reportLogWithScreenshot("Launched the port-in popup");
         rogers_igniteTV_buy_page.selectOptNewPhone();
@@ -172,7 +172,7 @@ public class RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
         rogers_igniteTV_buy_page.verifyHomePhone();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
         rogers_igniteTV_buy_page.clkHomePhone();*/
-        rogers_igniteTV_buy_page.verify4KTV();
+        /*rogers_igniteTV_buy_page.verify4KTV();
         reporter.reportLogWithScreenshot("Launched the cart summary page");
         rogers_igniteTV_buy_page.set4KTV();
         reporter.reportLogWithScreenshot("4k TV selected");
@@ -206,14 +206,15 @@ public class RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
         reporter.reportLogWithScreenshot("Passport Details");
         rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
         rogers_home_phone_selection_page.verifyPhoneNumberPage();
-        reporter.reportLogWithScreenshot("Launched the home phone selection page");
+        reporter.reportLogWithScreenshot("Launched the home phone selection page");*/
    /*     rogers_home_phone_selection_page.clkPhoneNumberGenerator(); 
         rogers_home_phone_selection_page.clkChosePhoneNumber(); 
         rogers_home_phone_selection_page.clkContinueHomePhoneSelection();*/
-        rogers_tech_install_page.verifyTechInstallPage(); 
-        reporter.reportLogWithScreenshot("Launched the tech install page");
+  /*      rogers_tech_install_page.verifyTechInstallPage(); 
+        reporter.reportLogWithScreenshot("Launched the tech install page");*/
+       
         //rogers_tech_install_page.clkPersonalizedInstall();
-        rogers_tech_install_page.selTechInstal();
+        /*rogers_tech_install_page.selTechInstal();
         reporter.reportLogWithScreenshot("Launched the tech install page");
         rogers_tech_install_page.clkTechInstallSlot();
         reporter.reportLogWithScreenshot("tech install details");
@@ -238,8 +239,8 @@ public class RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
         rogers_order_review_page.clkSubmit();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");      
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");
-    }
+        reporter.reportLogWithScreenshot("Launched the Confirmation page");*/
+    /*}*/
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})
 	//IgniteAnonymous

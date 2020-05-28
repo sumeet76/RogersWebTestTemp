@@ -6,9 +6,9 @@ password: DigiAuto@123
 accountDetails:
    type: TV
    ban: 932525512
-   swapInChannelOne: max 
-   swapInChannelTwo: spark
-   swapInChannelThree: hifi 
+   swapInChannelOne: spark
+   swapInChannelTwo: hifi 
+   swapInChannelThree: max
    address:
      line1: 706-10 Lisa St
      line2: BRAMPTON ON L6T 4N4

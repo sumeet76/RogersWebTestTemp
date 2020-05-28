@@ -17,6 +17,10 @@ public class RogersBuyPage extends BasePageClass {
 	WebElement btnIgniteInternetSpeed;	
 	//button[@translate='global.modals.serviceability.changeTVPackage']
 	
+	@FindBy(xpath = "(//button[@class='change-button ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large ng-star-inserted'])[3]")
+	WebElement btnExchangeFlexChannel;	
+	//button[@translate='global.modals.serviceability.changeTVPackage']
+	
 	@FindBy(xpath = "//label[@for='existingActiveAddress-1']")
 	WebElement rdoSecondAddress;
 
@@ -71,6 +75,15 @@ public class RogersBuyPage extends BasePageClass {
 			reusableActions.clickWhenReady(btnIgniteInternetSpeed, 40);
 	}
 
+	/**
+	 * To select the Exchange Flex Channel from Ignite bundle package
+	 * @author chinnarao.vattam 
+	 */
+	public void clkExchangeFlexChannel() {
+			reusableActions.clickWhenReady(btnExchangeFlexChannel, 40);
+	}
+	
+	
 	/**
 	 * To select the DTV Package from the shop menu
 	 * @author chinnarao.vattam 

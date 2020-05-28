@@ -281,7 +281,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @param strPackageNameFr solaris tv package name to be upgrade or downgrade  
 	 * @author chinnarao.vattam
 	 */
-	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
+/*	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
 		By packageNameLocator = By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'owl-item')]//ins[@translate='global.cta.select']");
 		//reusableActions.waitForElementInvisibility(popupLoadingFingers,180);
 		if(reusableActions.isElementVisible(packageNameLocator,180))
@@ -294,8 +294,15 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	    reusableActions.isElementVisible(packageNameLocator,180);
 		reusableActions.getWhenReady(packageNameLocator, 90).click();
 		}
-	}
+	}*/
 
+	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
+		By packageNameLocator = By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'owl-item')]//ins[@translate='global.cta.select']");
+		//reusableActions.waitForElementInvisibility(popupLoadingFingers,180);
+		reusableActions.staticWait(2000);
+		//reusableActions.getWhenReady(packageNameLocator, 90).click();
+	}
+	
 	/**
 	 * Click the ChangeTV Package button on solaris TV dashboard page
 	 * @author chinnarao.vattam
@@ -434,15 +441,16 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @param strInChannel  are channels 
 	 * @author chinnarao.vattam
 	 */
-	public void swapChannelIn(String strInChannel) {		
-		reusableActions.getWhenReady(txtEnterChannelToSerach, 60).clear();
-		reusableActions.getWhenReady(txtEnterChannelToSerach, 60).sendKeys(strInChannel);
-		reusableActions.waitForElementVisibility(btnSearchChannel,180);
-		reusableActions.executeJavaScriptClick(btnSearchChannel);
-		reusableActions.waitForElementVisibility(btnSelectChannel, 180);
-		reusableActions.scrollToElement(btnSelectChannel);
-		reusableActions.getWhenReady(btnSelectChannel, 120).click();	
-	}
+	public void swapChannelIn(String strInChannel) {
+			reusableActions.getWhenReady(txtEnterChannelToSerach, 60).clear();
+			reusableActions.getWhenReady(txtEnterChannelToSerach, 60).sendKeys(strInChannel);
+			reusableActions.staticWait(1000);
+			reusableActions.executeJavaScriptClick(btnSearchChannel);
+			reusableActions.waitForElementVisibility(btnSelectChannel, 120);
+			reusableActions.staticWait(1000);
+			reusableActions.scrollToElement(btnSelectChannel);
+			reusableActions.getWhenReady(btnSelectChannel, 120).click();	
+		}
 	
 	/**
 	 * Click the Channel Add button 
@@ -456,10 +464,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * Click the Serach Results on flex channels page
 	 * @author chinnarao.vattam
 	 */
-	public void btnClearSerachResults() {	
-		reusableActions.javascriptScrollByVisibleElement(btnClearSerachResults);
-		reusableActions.getWhenReady(btnClearSerachResults, 90).click();
-	}
+		public void btnClearSerachResults() {		
+			reusableActions.getWhenReady(btnClearSerachResults, 90).click();
+		}
 	
 	/**
 	 * Click the confirm channel list for swap 

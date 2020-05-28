@@ -36,14 +36,14 @@ public class RogersCH_TC_003_ExistingSolarisCustomer_ResetParentalControlsAndPin
         rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        rogers_login_page.setUsernameIFrame(TestDataHandler.solarisTVAccountPackageUpgrade.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.solarisTVAccountPackageUpgrade.getPassword());
+        rogers_login_page.setUsernameIFrame(TestDataHandler.igniteTVAccount.getUsername());
+        rogers_login_page.setPasswordIFrame(TestDataHandler.igniteTVAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         rogers_login_page.clkSignInIFrame();
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount((TestDataHandler.solarisTVAccountPackageUpgrade.accountDetails.getBan()));
+        rogers_account_overview_page.selectAccount((TestDataHandler.igniteTVAccount.accountDetails.getBan()));
         reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_solaris_tv_dashboard_page.clkTVBadge();
