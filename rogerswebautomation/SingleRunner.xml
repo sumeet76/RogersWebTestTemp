@@ -1,19 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Self Serve Rogers Tests SS" parallel="tests" thread-count="1">
-<parameter name="strBrowser" value="chrome"/>
+<parameter name="strBrowser" value="firefox"/>
 <parameter name="strLanguage" value="en"/>
 <parameter name="strType" value="seq"/>
-<listeners>
-      <listener class-name="com.rogers.test.listeners.AnnotationTransformer"/>
-</listeners> 		
+		
 
 
-<test name="RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest">
+<test name="Mobile_RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest" enabled="false">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest"></class>
+<class name="com.rogers.test.tests.selfserve.mobile.Mobile_RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest"></class>
 </classes>          																					
 </test>
+
+
+
+<test name="RogersCH_TC_041_IginteTV_ValidateTVDashboardTest" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersCH_TC_041_IginteTV_ValidateTVDashboardTest"></class>
+</classes>          																					
+</test>
+
+
+<test name="RogersCH_TC_042_IginteInternet_ValidateInternetDashboardUsageTest" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersCH_TC_042_IginteInternet_ValidateInternetDashboardUsageTest"></class>
+</classes>          																					
+</test>
+
+<test name="RogersCH_TC_043_IgniteRHP_ValidateRHPDasboardTest" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersCH_TC_043_IgniteRHP_ValidateRHPDasboardTest"></class>
+</classes>          																					
+</test>
+
+<test name="RogersCH_TC_044_DigitalTV_ValidateTVDashboardTest" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersCH_TC_044_DigitalTV_ValidateTVDashboardTest"></class>
+</classes>          																					
+</test>
+
+<test name="RogersCH_TC_046_LegacyRHP_ValidateRHPDashboardTest" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersCH_TC_046_LegacyRHP_ValidateRHPDashboardTest"></class>
+</classes>          																					
+</test>
+
 
 
 					

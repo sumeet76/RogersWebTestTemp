@@ -243,6 +243,12 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 
 	@FindBy(xpath = "//input[@title='Enter apartment number' or @title='Entrer le numéro d’appartement']/parent::div")
 	WebElement lblApartmentNumber;
+	
+	@FindBy (xpath = "//div[contains(text(),'Email') or contains(text(),'adresse courriel')]/following-sibling::div")
+	WebElement btnChangeEmailMobile;
+	
+	@FindBy (xpath = "//div[contains(text(),'Email') or contains(text(),'adresse courriel')]/following-sibling::div/button")
+	WebElement btnAddEmailMobile;
 		
 	/**
 	 * Click on setup recovery number link
@@ -1008,6 +1014,24 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void clkSubmit() {
 		reusableActions.clickWhenReady(btnSubmit);
+		
+	}
+	
+	/**
+	 * Clicks on the Change button beside Email
+	 * @author ning.xue
+	 */
+	public void clkBtnChangeEmailMobile() {
+		reusableActions.clickWhenReady(btnChangeEmailMobile);
+		
+	}
+	
+	/**
+	 * Clicks on the Add button beside Email
+	 * @author ning.xue
+	 */
+	public void clkBtnAddEmailMobile() {
+		reusableActions.clickWhenReady(btnAddEmailMobile);
 		
 	}
 }

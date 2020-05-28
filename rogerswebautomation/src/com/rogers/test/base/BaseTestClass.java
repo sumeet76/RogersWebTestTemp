@@ -100,7 +100,6 @@ import utils.AppiumServerJava;
 import utils.BrowserDrivers;
 import utils.Reporter;
 
-
 @Listeners ({com.rogers.test.listeners.TestListener.class ,
 	com.rogers.test.listeners.AnnotationTransformer.class ,
 	com.rogers.test.listeners.TestListener.class })
@@ -190,8 +189,7 @@ public class BaseTestClass {
 	protected ChannelsAndThemePacksPage channels_Theme_Packs_Page;
 	protected HomePhoneAddonsPage home_Phone_Addons_Page;
 	AppiumServerJava appiumServer = new AppiumServerJava();	
-	//int port = 4723;
-	
+	//int port = 4723;	
 	private CaptchaBypassHandlers captcha_bypass_handlers;
 	private Map<String, String> sauceParameters;
 		
@@ -221,6 +219,7 @@ public class BaseTestClass {
 		switch(strGroupName.toLowerCase().trim()) {			
 		case "selfserve":
 		case "selfserve_login":
+		case "mobile_selfserve":
 			captcha_bypass_handlers.captchaBypassURLSelfserveFlows(strUrl, strLanguage);
 			break;
 			
@@ -250,6 +249,45 @@ public class BaseTestClass {
 	    setImplicitWait(getDriver(), 10);
 	    init(strGroupName);	 
  }
+		
+	/**
+	 * This method will initialize a hash map with the sauce parameters
+	 * @param strBrowser string containing the browser name for sauce
+	 * @return hashmap with sauce capabilities
+	 * @author Mirza.Kamran
+	 */
+	 private Map<String, String> initializeSauceParamsMap(String strBrowser) {
+		
+		 Map<String,String> sauceOptions = new HashMap<String, String>();
+		 sauceOptions.put(SauceCapabilities.seleniumVersion.toString(), TestDataHandler.sauceSettings.getSauceOptions().getSeleniumVersion());
+		 sauceOptions.put(SauceCapabilities.maxDuration.toString(), TestDataHandler.sauceSettings.getSauceOptions().getMaxDuration());
+		 sauceOptions.put(SauceCapabilities.commandTimeout.toString(), TestDataHandler.sauceSettings.getSauceOptions().getCommandTimeout());
+		 sauceOptions.put(SauceCapabilities.idleTimeout.toString(), TestDataHandler.sauceSettings.getSauceOptions().getIdleTimeout());
+		 sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getSauceOptions().getBuild());
+		 switch (strBrowser.toLowerCase()) {
+			case "saucechrome":							    
+				sauceOptions.put(SauceCapabilities.platformVersion.toString(), TestDataHandler.sauceSettings.getMutableChromeCapabilities().getPlatformVersion());  				       
+				sauceOptions.put(SauceCapabilities.browserVersion.toString(), TestDataHandler.sauceSettings.getMutableChromeCapabilities().getBrowserVersion());
+				break;
+			case "saucefirefox":										
+				sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getMutableFireFoxCapabilities().getPlatformVersion());  				       
+				sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getMutableFireFoxCapabilities().getBrowserVersion());
+				break;
+			case "sauceedge":
+				sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getMutableEdgeCapabilities().getBrowserVersion());  				       
+				sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getMutableEdgeCapabilities().getPlatformVersion());
+				break;
+			case "sauceandroidchrome":
+				sauceOptions.put(SauceCapabilities.platformName.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getPlatformName()); 
+				sauceOptions.put(SauceCapabilities.platformVersion.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getPlatformVersion()); 
+				sauceOptions.put(SauceCapabilities.appiumVersion.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getAppiumVersion()); 
+				sauceOptions.put(SauceCapabilities.deviceName.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getDeviceName()); 
+				sauceOptions.put(SauceCapabilities.deviceOrientation.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getDeviceOrientation()); 
+				break;
+		}
+			 			  		        		
+		return sauceOptions;
+	}
 
 
 	/* To start a session using given url, browser, language and test case group name.
@@ -322,6 +360,12 @@ public class BaseTestClass {
 			ensVerifications = new VerifyInEns(this);
 			rogers_set_password_page = new RogersSetPasswordPage(getDriver());
 			rogers_recover_pass_or_name = new RogersRecoverPassOrNamePage(getDriver());
+			rogers_solaris_rhp_dashboard_validation_page = new RogersSolarisRHPDashboardPage(driver);
+			rogers_internet_dashboard_page = new RogersInternetDashboardPage(driver);
+			rogers_internet_usage_page = new RogersInternetUsagePage(driver);
+			rogers_solaris_tv_dashboard_page = new RogersSolarisTVDashboardPage(driver);
+			rogers_digital_tv_dashboard_page = new RogersDigitalTVDashboardPage(driver);
+			rogers_account_overview_page = new RogersAccountOverviewPage(driver);	
 			break;
 			
 		case "connectedhome_legacyanonymous":
@@ -474,8 +518,7 @@ public class BaseTestClass {
 			order_Confirmation_Page=new OrderConfirmationPage(getDriver());
 			channels_Theme_Packs_Page=new ChannelsAndThemePacksPage(getDriver());
 			home_Phone_Addons_Page=new HomePhoneAddonsPage(getDriver());
-			break;
-			
+			break;		
 		default:
 			
 		}	
@@ -531,39 +574,4 @@ public class BaseTestClass {
 		  putRequest.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 		  HttpClientBuilder.create().build().execute(putRequest);
 		}
-	
-	
-/**
- * This method will initialize a hash map with the sauce parameters
- * @param strBrowser string containing the browser name for sauce
- * @return hashmap with sauce capabilities
- * @author Mirza.Kamran
- */
- private Map<String, String> initializeSauceParamsMap(String strBrowser) {
-	
-	 Map<String,String> sauceOptions = new HashMap<String, String>();
-	 sauceOptions.put(SauceCapabilities.seleniumVersion.toString(), TestDataHandler.sauceSettings.getSauceOptions().getSeleniumVersion());
-	 sauceOptions.put(SauceCapabilities.maxDuration.toString(), TestDataHandler.sauceSettings.getSauceOptions().getMaxDuration());
-	 sauceOptions.put(SauceCapabilities.commandTimeout.toString(), TestDataHandler.sauceSettings.getSauceOptions().getCommandTimeout());
-	 sauceOptions.put(SauceCapabilities.idleTimeout.toString(), TestDataHandler.sauceSettings.getSauceOptions().getIdleTimeout());
-	 sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getSauceOptions().getBuild());
-	 switch (strBrowser.toLowerCase()) {
-		case "saucechrome":							    
-			sauceOptions.put(SauceCapabilities.platformVersion.toString(), TestDataHandler.sauceSettings.getMutableChromeCapabilities().getBrowserVersion());  				       
-			sauceOptions.put(SauceCapabilities.browserVersion.toString(), TestDataHandler.sauceSettings.getMutableChromeCapabilities().getPlatformVersion());
-			break;
-		case "saucefirefox":										
-			sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getMutableFireFoxCapabilities().getPlatformVersion());  				       
-			sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getMutableFireFoxCapabilities().getBrowserVersion());
-			break;
-		case "sauceedge":
-			sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getMutableEdgeCapabilities().getBrowserVersion());  				       
-			sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getMutableEdgeCapabilities().getPlatformVersion());
-			break;
-	
-	}
-		 			  		        		
-	return sauceOptions;
-}
-
 }

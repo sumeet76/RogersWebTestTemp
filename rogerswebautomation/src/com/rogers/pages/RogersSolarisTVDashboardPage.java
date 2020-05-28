@@ -534,4 +534,22 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		return reusableActions.isElementVisible(txtIgniteFlex10);
 	}
 
+	/**
+	 * Checks if view my channel line up is displayed
+	 * @return treu if link displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyViewMyChannelLineUpDisplayed() {		
+		return reusableActions.isElementVisible(lnkViewMyChannelLineup,30);
+	}
+
+	/**
+	 * Checks if view my flex channel  is displayed
+	 * @return treu if link displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyViewFlexChannelsDisplayed() {		
+		return reusableActions.isElementVisible(lnkViewfelxChannels,30);
+	}
+
 }

@@ -19,7 +19,8 @@ public class RogersEnums {
 		connectedhome_ignitelogin,
 		connectedhome_login,
 		selfserve_login,
-		selfserve
+		selfserve,
+		mobile_selfserve
 		  } ;
     
     public enum SauceCapabilities{
@@ -29,6 +30,10 @@ public class RogersEnums {
     	idleTimeout,
     	build,
     	browserVersion,
-    	platformVersion	       
+    	platformName,
+    	platformVersion,
+    	appiumVersion,
+    	deviceName,
+    	deviceOrientation
     };
 }
