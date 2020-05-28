@@ -189,8 +189,7 @@ public class BaseTestClass {
 	protected ChannelsAndThemePacksPage channels_Theme_Packs_Page;
 	protected HomePhoneAddonsPage home_Phone_Addons_Page;
 	AppiumServerJava appiumServer = new AppiumServerJava();	
-	//int port = 4723;
-	
+	//int port = 4723;	
 	private CaptchaBypassHandlers captcha_bypass_handlers;
 	private Map<String, String> sauceParameters;
 		
@@ -220,6 +219,7 @@ public class BaseTestClass {
 		switch(strGroupName.toLowerCase().trim()) {			
 		case "selfserve":
 		case "selfserve_login":
+		case "mobile_selfserve":
 			captcha_bypass_handlers.captchaBypassURLSelfserveFlows(strUrl, strLanguage);
 			break;
 			
@@ -518,8 +518,7 @@ public class BaseTestClass {
 			order_Confirmation_Page=new OrderConfirmationPage(getDriver());
 			channels_Theme_Packs_Page=new ChannelsAndThemePacksPage(getDriver());
 			home_Phone_Addons_Page=new HomePhoneAddonsPage(getDriver());
-			break;
-			
+			break;		
 		default:
 			
 		}	
