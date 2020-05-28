@@ -27,13 +27,16 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *2. Click on Sign in button and login with valid details.
  *3. Login with valid credentials
  *4. Click on Internet badge.
- *5. Validate the data displayed in Dial and Graph
- *6. Click View usage history link
- *7. Validate montly , daily usage section.
+ *
+Expected:
+1.Rogers.com landing page is opened successfully
+2. Sign in popup is displayed
+3. Account overview page displayed
+4. IgniteInternet dashboard page should be opened"
  *
  **/
 
-public class RogersCH_TC_005_IginteInternet_ValidateInternetDashboardUsageTest extends BaseTestClass {
+public class RogersCH_TC_042_IginteInternet_ValidateInternetDashboardUsageTest extends BaseTestClass {
 
     @Test
     public void checkInternetDashboard() {
@@ -53,22 +56,14 @@ public class RogersCH_TC_005_IginteInternet_ValidateInternetDashboardUsageTest e
                     reporter.reportLogWithScreenshot("Launched the Account Page");
                     rogers_internet_dashboard_page.clkSolarisInternetBadge();
                     rogers_internet_dashboard_page.clkInternetPopup();
-                    reporter.reportLogWithScreenshot("Launched the Interent dashboard");
+                    reporter.reportLogWithScreenshot("Clicked on Internet badge");                   
             		reporter.softAssert(rogers_internet_dashboard_page.verifyInternet(), "Verified the Internet page", "Internet page verification failed");
             		reporter.softAssert(rogers_internet_dashboard_page.verifyUsageAndAlerts(), "Usage and Alerts link present on the internet dash page", "Usage and Alerts link is not present on the internet page");                
-                    rogers_internet_dashboard_page.clkInternetUsageAlerts(); 
-                    reporter.reportLogWithScreenshot("Launched the UsageAlerts page");
-                    rogers_internet_usage_page.verifyDailyBreakdown();  
-                    rogers_internet_usage_page.verifyDailyBreakdownTable(); 
-                    reporter.reportLogWithScreenshot("Daily Breakdown details");
-                    reporter.softAssert(rogers_internet_usage_page.verifyDailyBreakdownTable(), "Verified the daily usage", "Daily usage deatils are not present");
-                    rogers_internet_usage_page.clkMonthlyUsage();
-                    rogers_internet_usage_page.verifyMonthlyBreakdown();  
-                    reporter.reportLogWithScreenshot("Monthly Breakdown details");
-                    rogers_internet_usage_page.verifyMonthlyBreakdownTable();
-                    reporter.softAssert(rogers_internet_usage_page.verifyMonthlyBreakdownTable(),"Verified the monthly usage", "Monthly usage deatils are not present");
-                    rogers_internet_usage_page.clkUsageAlerts();
- 
+            		reporter.reportLogWithScreenshot("Ignite Internet dashboard is opened");
+            		common_business_flows.scrollToMiddleOfWebPage();
+            		reporter.reportLogWithScreenshot("Mid page view");
+            		common_business_flows.scrollToBottomOfWebPage();
+            		reporter.reportLogWithScreenshot("Bottom View");
     }
 
     @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})

@@ -22,17 +22,14 @@ import com.rogers.testdatamanagement.TestDataHandler;
  * 
  * Test steps:
  *
- *1. Launch the Rogers.com url.
- *2. Login with valid credentials.
- *3. Click on the TV badge.
- *4. Click on View 'My channel Line Up' link below the Channels at the top left.
- *5. Click on the link to view as pdf and open the pdf.
- *6. Click on 'View My Flex channel' link below the Channels in the top left.
- *7. Click on the link to view as pdf and open the pdf.
+1.Rogers.com landing page is opened successfully
+2. Sign in popup is displayed
+3. Account overview page displayed
+4. Ignite TV dashboard page should be opened
  *
  **/
 
-public class RogersCH_TC_007_IginteTV_ValidateTVDashboardTest extends BaseTestClass {
+public class RogersCH_TC_041_IginteTV_ValidateTVDashboardTest extends BaseTestClass {
 
     @Test
     public void checkTVDashboard() {
@@ -51,22 +48,17 @@ public class RogersCH_TC_007_IginteTV_ValidateTVDashboardTest extends BaseTestCl
         reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_solaris_tv_dashboard_page.clkTVBadge();
-        reporter.reportLogWithScreenshot("Launched the TV dashboard Page");          
+             
+        reporter.softAssert(rogers_solaris_tv_dashboard_page.verifyViewMyChannelLineUpDisplayed()
+        		&& rogers_solaris_tv_dashboard_page.verifyViewFlexChannelsDisplayed(), "Ignite TV dashboard page is displayed", "Ignite TV dashboard page NOT displayed correctly please investigate");
         
-        //Verifying the My Channel Line up
-        rogers_solaris_tv_dashboard_page.clkViewMyChannelLineup();
-        reporter.reportLogWithScreenshot("Displayed the available channels"); 
-        reporter.softAssert(rogers_solaris_tv_dashboard_page.verifyChannelList(),"Channels are avilable","None of the Channels are avialabe");
-        reporter.softAssert(rogers_solaris_tv_dashboard_page.clklAndVerifyViewPDF(),"all the channels are displayed in PDF","PDF is not displying");                                       
-        rogers_solaris_tv_dashboard_page.clkCloseChannelsPopup();
-                    
-        //Verifying the Flexchannels                     
-        rogers_solaris_tv_dashboard_page.clkViewfelxChannels();
-        reporter.reportLogWithScreenshot("Displayed the available flex channels"); 
-        reporter.softAssert(rogers_solaris_tv_dashboard_page.verifyChannelList(),"flex channels are avilable","There are no felx channels");
-        reporter.softAssert(rogers_solaris_tv_dashboard_page.clklAndVerifyViewPDF(),"all the flex channels are displayed in PDF","PDF is not displying");                  
-        rogers_solaris_tv_dashboard_page.clkCloseChannelsPopup();                                 
-                
+        reporter.reportLogWithScreenshot("Launched the Ignite TV dashboard Page");     
+        common_business_flows.scrollToMiddleOfWebPage();
+		reporter.reportLogWithScreenshot("Mid page view");
+		common_business_flows.scrollToBottomOfWebPage();
+		reporter.reportLogWithScreenshot("Bottom View");
+        
+        
     }
 
     @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})

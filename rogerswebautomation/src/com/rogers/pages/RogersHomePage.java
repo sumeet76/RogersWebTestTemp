@@ -462,7 +462,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkSignInMobile() {		
-		//reusableActions.getWhenVisible(lnkViewNavigationMobile,20).click();
+		reusableActions.getWhenVisible(lnkViewNavigationMobile,30).click();
 		reusableActions.getWhenVisible(lnkSignInMobile, 30).click();
 	}
 	

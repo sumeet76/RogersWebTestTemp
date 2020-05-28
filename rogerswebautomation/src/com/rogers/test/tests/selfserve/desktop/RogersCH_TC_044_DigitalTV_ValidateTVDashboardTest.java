@@ -24,12 +24,17 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *
  *1. Launch Rogers.com
  *2. Login with valid credentails
- *3. In Account Overview Page, Click on the TV Badge.
- *4. Valided
+ *3. In Account Overview Page,
+ *4. Click on the DTV Badge.
  *
+ *"Expected:
+1.Rogers.com landing page is opened successfully
+2. Sign in popup is displayed
+3. Account overview page displayed
+4. Ignite RHP dashboard page should be opened"
  **/
 
-public class RogersCH_TC_019_DigitalTV_ValidateTVDashboardTest extends BaseTestClass {
+public class RogersCH_TC_044_DigitalTV_ValidateTVDashboardTest extends BaseTestClass {
 
 
 	@Test
@@ -49,9 +54,13 @@ public class RogersCH_TC_019_DigitalTV_ValidateTVDashboardTest extends BaseTestC
 		getDriver().switchTo().defaultContent();
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		rogers_account_overview_page.clkTVBadge(TestDataHandler.ssConfig.getBrowser());
-		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
+		reporter.reportLogWithScreenshot("Clicked  the DTV badge");
 		reporter.hardAssert(rogers_digital_tv_dashboard_page.verifyChangeMyPackage(),"Verifed the TV dashboard","TV dashboard Verification has failed");
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
+		common_business_flows.scrollToMiddleOfWebPage();
+		reporter.reportLogWithScreenshot("Mid page view");
+		common_business_flows.scrollToBottomOfWebPage();
+		reporter.reportLogWithScreenshot("Bottom View");
 	}
 
 

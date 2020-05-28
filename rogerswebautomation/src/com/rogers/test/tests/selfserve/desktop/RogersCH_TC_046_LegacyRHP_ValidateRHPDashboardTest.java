@@ -19,19 +19,25 @@ import com.rogers.testdatamanagement.TestDataHandler;
  * This class contains the test method to validate the Legacy home phone dashboard for Rogers.com   
  * 
  * 
- * Test steps:
+Steps:
+1. Navigate to Rogers.com
+2. Click on sign in
+3. Login with valid credentials 
+4.  Click on Legacy RHP badge
  *
- *1. Launch the Rogers.com url.
- *2. Login with valid credentials.
- *3. Click on the Homephone badge.
  *
+ *"Expected:
+1.Rogers.com landing page is opened successfully
+2. Sign in popup is displayed
+3. Account overview page displayed
+4. Legacy RHP dashboard page should be opened"
  **/
 
-public class RogersCH_TC_023_LegacyRHP_ValidateRHPDashboardTest extends BaseTestClass {
+public class RogersCH_TC_046_LegacyRHP_ValidateRHPDashboardTest extends BaseTestClass {
 
 
 	@Test
-	public void checkLegacyRHPDashboard () {
+	public void checkLegacyRHPDashboard () throws InterruptedException {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
@@ -47,7 +53,13 @@ public class RogersCH_TC_023_LegacyRHP_ValidateRHPDashboardTest extends BaseTest
 		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		rogers_account_overview_page.clkRHPBadge(TestDataHandler.ssConfig.getBrowser());
+		reporter.reportLogWithScreenshot("Click RHP Badge");
+		Thread.sleep(7000);
 		reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");
+		common_business_flows.scrollToMiddleOfWebPage();
+		reporter.reportLogWithScreenshot("Mid page view");
+		common_business_flows.scrollToBottomOfWebPage();
+		reporter.reportLogWithScreenshot("Bottom View");
 		//reporter.hardAssert(rogers_account_overview_page.verifyRHPBanner(),"Verifed the RHP dashboard","RHP dashboard Verification has failed");
 		//reporter.hardAssert(rogers_account_overview_page.verfyContactUsToManageFeaturess(),"Contact Us To Manage Featuress link has present on RHP dashboard","Contact Us To Manage Featuress link has not present on RHP dashboard");		
 	}
