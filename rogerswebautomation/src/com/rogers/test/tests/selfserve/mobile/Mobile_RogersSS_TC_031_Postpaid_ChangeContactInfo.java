@@ -35,7 +35,7 @@ public class Mobile_RogersSS_TC_031_Postpaid_ChangeContactInfo extends BaseTestC
 	}
 	
 	@Test
-	public void validateUserChangeContactInformationAndBillingAddress() {
+	public void validateUserChangeContactInformation() {
 		rogers_home_page.clkHamburgerMobile();
 		rogers_home_page.clkSignInMobile();
     	String strUsername = TestDataHandler.tc013132.getUsername();
@@ -56,21 +56,22 @@ public class Mobile_RogersSS_TC_031_Postpaid_ChangeContactInfo extends BaseTestC
             rogers_account_overview_page.selectAccount(strBan);
         }
 		reporter.reportLogWithScreenshot("Account overveiew page");
-    	rogers_account_overview_page.clkLnkProfileNSettings();
+    	rogers_account_overview_page.clkBtnNavigationMobile();
+    	rogers_account_overview_page.clkBtnProfileSettingsMobile();
 		reporter.reportLogWithScreenshot("Profile & Settings page");
     	rogers_profile_and_settings_page.clkBtnContactInfomation();
     	
     	//Add Contact email, can't be the same as user name!!!
+		rogers_profile_and_settings_page.clkBtnChangeEmailMobile();
+		rogers_profile_and_settings_page.clkBtnAddEmailMobile();
     	String strNewEmail="";
     	if(rogers_profile_and_settings_page.getContactEmail().contains(strEmail))
     	{
-    		rogers_profile_and_settings_page.clkLnkAddContactEmail();
         	rogers_profile_and_settings_page.setContactEmail(strAltEmail);
         	strNewEmail=strAltEmail;
      
     	}else
     	{
-    		rogers_profile_and_settings_page.clkLnkAddContactEmail();
         	rogers_profile_and_settings_page.setContactEmail(strEmail);
         	strNewEmail=strEmail;
     	}

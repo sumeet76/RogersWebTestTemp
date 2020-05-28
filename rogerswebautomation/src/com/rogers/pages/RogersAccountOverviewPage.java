@@ -137,6 +137,11 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='account-ctn']")
 	List<WebElement> lstAccountInPopUp;
 	
+	@FindBy(xpath = "//span[@data-translate='ute.common.label.overview']/ancestor::button[@ng-click='navigationBar.MobileViewOnClick(nav)']")
+	WebElement btnNavigationBarMobile;
+	
+	@FindBy (xpath = "//button[@aria-label='ute.common.label.profileAndSetting']")
+	WebElement btnProfileSettingsMobile;
 
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
@@ -647,6 +652,22 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public int getTotalCTN() {		
 		return lstCtnBadges.size();
+	}
+	
+	/**
+	 * Click the overview navigation button on the page 
+	 * @author ning.xue
+	 */
+	public void clkBtnNavigationMobile() {		
+		reusableActions.getWhenVisible(btnNavigationBarMobile, 30).click();
+	}
+	
+	/**
+	 * Click the Profile & Settings button on the page 
+	 * @author ning.xue
+	 */
+	public void clkBtnProfileSettingsMobile() {		
+		reusableActions.getWhenVisible(btnProfileSettingsMobile, 30).click();
 	}
 	
 	/**
