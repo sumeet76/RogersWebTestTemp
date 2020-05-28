@@ -29,7 +29,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *
  **/
 
-public class RogersCH_TC_041_IginteTV_ValidateTVDashboardTest extends BaseTestClass {
+public class RogersSS_TC_041_AO_ValidateCHaccountBadge_IginteTV extends BaseTestClass {
 
     @Test
     public void checkTVDashboard() {

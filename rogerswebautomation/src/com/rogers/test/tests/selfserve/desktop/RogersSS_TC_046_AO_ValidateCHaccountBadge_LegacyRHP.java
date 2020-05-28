@@ -15,52 +15,53 @@ import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 
-
 /**
- * This class contains the test method to validate Digital TV Dashboard for Rogers.com  
+ * This class contains the test method to validate the Legacy home phone dashboard for Rogers.com   
  * 
  * 
- * Test steps:
+Steps:
+1. Navigate to Rogers.com
+2. Click on sign in
+3. Login with valid credentials 
+4.  Click on Legacy RHP badge
  *
- *1. Launch Rogers.com
- *2. Login with valid credentails
- *3. In Account Overview Page,
- *4. Click on the DTV Badge.
  *
  *"Expected:
 1.Rogers.com landing page is opened successfully
 2. Sign in popup is displayed
 3. Account overview page displayed
-4. Ignite RHP dashboard page should be opened"
+4. Legacy RHP dashboard page should be opened"
  **/
 
-public class RogersCH_TC_044_DigitalTV_ValidateTVDashboardTest extends BaseTestClass {
+public class RogersSS_TC_046_AO_ValidateCHaccountBadge_LegacyRHP extends BaseTestClass {
 
 
 	@Test
-	public void checkLegacyTVDashboard () {
+	public void checkLegacyRHPDashboard () throws InterruptedException {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setUsernameIFrame(TestDataHandler.digitalTVAccount.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.digitalTVAccount.getPassword());
+		rogers_login_page.setUsernameIFrame(TestDataHandler.legacyRHP.getUsername());
+		rogers_login_page.setPasswordIFrame(TestDataHandler.legacyRHP.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
 		reporter.reportLogWithScreenshot("Skip popup");
-		rogers_login_page.clkSkipIFrame();	
+		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
-		rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVAccount.getAccountDetails().getBan());
-		getDriver().switchTo().defaultContent();
+		rogers_account_overview_page.selectAccount(TestDataHandler.legacyRHP.getAccountDetails().getBan());
+		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.clkTVBadge(TestDataHandler.ssConfig.getBrowser());
-		reporter.reportLogWithScreenshot("Clicked  the DTV badge");
-		reporter.hardAssert(rogers_digital_tv_dashboard_page.verifyChangeMyPackage(),"Verifed the TV dashboard","TV dashboard Verification has failed");
-		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
+		rogers_account_overview_page.clkRHPBadge(TestDataHandler.ssConfig.getBrowser());
+		reporter.reportLogWithScreenshot("Click RHP Badge");
+		Thread.sleep(7000);
+		reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");
 		common_business_flows.scrollToMiddleOfWebPage();
 		reporter.reportLogWithScreenshot("Mid page view");
 		common_business_flows.scrollToBottomOfWebPage();
 		reporter.reportLogWithScreenshot("Bottom View");
+		//reporter.hardAssert(rogers_account_overview_page.verifyRHPBanner(),"Verifed the RHP dashboard","RHP dashboard Verification has failed");
+		//reporter.hardAssert(rogers_account_overview_page.verfyContactUsToManageFeaturess(),"Contact Us To Manage Featuress link has present on RHP dashboard","Contact Us To Manage Featuress link has not present on RHP dashboard");		
 	}
 
 
@@ -73,7 +74,6 @@ public class RogersCH_TC_044_DigitalTV_ValidateTVDashboardTest extends BaseTestC
 	   	
 		
 
-	
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
 		closeSession();

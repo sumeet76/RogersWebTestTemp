@@ -33,7 +33,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  **/
 
 
-public class RogersCH_TC_043_IgniteRHP_ValidateRHPDasboardTest extends BaseTestClass {
+public class RogersSS_TC_043_AO_ValidateCHaccountBadge_IgniteRHP extends BaseTestClass {
 
     @Test
     public void checkSolarisRHPDasboard() {

@@ -36,7 +36,7 @@ Expected:
  *
  **/
 
-public class RogersCH_TC_042_IginteInternet_ValidateInternetDashboardUsageTest extends BaseTestClass {
+public class RogersSS_TC_042_AO_ValidateCHaccountBadge_IginteInternet extends BaseTestClass {
 
     @Test
     public void checkInternetDashboard() {
