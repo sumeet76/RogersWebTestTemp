@@ -663,7 +663,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	}
 	
 	/**
-	 * Click the Profile & Settings button on the page 
+	 * Clicks on Profile and settings button on mobile
 	 * @author ning.xue
 	 */
 	public void clkBtnProfileSettingsMobile() {		
