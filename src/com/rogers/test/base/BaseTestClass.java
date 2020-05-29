@@ -16,7 +16,6 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.Listeners;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.rogers.oneview.pages.AccountOverViewPage;
@@ -100,9 +99,9 @@ import utils.AppiumServerJava;
 import utils.BrowserDrivers;
 import utils.Reporter;
 
-@Listeners ({com.rogers.test.listeners.TestListener.class ,
-	com.rogers.test.listeners.AnnotationTransformer.class ,
-	com.rogers.test.listeners.TestListener.class })
+//@Listeners ({com.rogers.test.listeners.TestListener.class ,
+//	com.rogers.test.listeners.AnnotationTransformer.class ,
+//	com.rogers.test.listeners.TestListener.class })
 
 
 public class BaseTestClass {
