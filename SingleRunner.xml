@@ -4,7 +4,9 @@
 <parameter name="strBrowser" value="firefox"/>
 <parameter name="strLanguage" value="en"/>
 <parameter name="strType" value="seq"/>
-		
+  <listeners>
+    <listener class-name="com.rogers.test.listeners.AnnotationTransformer"/>
+  </listeners>		
 
 
 <test name="Mobile_RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest" enabled="false">
