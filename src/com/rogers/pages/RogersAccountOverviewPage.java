@@ -128,7 +128,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='ute-dataManager-badgeList-individualBadge']//div[@class='ute-dataManager-badgeList-individualBadgeInfo']")
 	WebElement lblCTNWirelessName;
 	
-	@FindBy (xpath = "//span[@data-translate='ute.common.second.level.navigation.wireless.phone']")
+	@FindAll({
+		@FindBy (xpath = "//a[@class='c-dropdown-item']"),
+		@FindBy (xpath = "//span[@data-translate='ute.common.second.level.navigation.wireless.phone']")
+	})
 	WebElement subMenuUsageDropDown;
 	
 	@FindBy (xpath = "//div[@class='account-number-ctn']")
