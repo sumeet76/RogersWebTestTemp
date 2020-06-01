@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Self Serve Rogers.com Tests SS" parallel="tests" thread-count="2">
+<suite name="Self Serve Rogers.com Tests SS" parallel="tests" thread-count="3">
 <parameter name="strBrowser" value="saucechrome"/>
 <parameter name="strLanguage" value="en"/>
 <parameter name="strType" value="seq"/>
@@ -11,58 +11,58 @@
 			class-name="com.rogers.test.listeners.AnnotationTransformer" />
 </listeners> 
 
-<test name="RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest">
+<test name="RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest" enabled="false">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest"></class>
 </classes>          																					
 </test>
  
-<test name="RogersSS_TC_031_Postpaid_ChangeContactInfo">
+<test name="RogersSS_TC_031_Postpaid_ChangeContactInfo" enabled="true">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_031_Postpaid_ChangeContactInfo"></class>
 </classes>          																					
 </test>
 
 
-<test name="RogersSS_TC_032_Postpaid_ChangeBillingAddress">
+<test name="RogersSS_TC_032_Postpaid_ChangeBillingAddress" enabled="false">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_032_Postpaid_ChangeBillingAddress"></class>
 </classes>          																					
 </test>
 
  
-<test name="RogersSS_TC_051_ChangePassword">
+<test name="RogersSS_TC_051_ChangePassword" enabled="false">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_051_ChangePassword"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaymentMethodPACToCC_EN_AUTO">
+<test name="RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaymentMethodPACToCC_EN_AUTO" enabled="true">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaymentMethodPACToCC_EN_AUTO"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest">
+<test name="RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest" enabled="true">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest"></class>
 </classes>          																					
 </test>
 
 
-<test name="RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage">
+<test name="RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage" enabled="true">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_057_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDataUnlimitedTalkTextPlan">
+<test name="RogersSS_TC_057_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDataUnlimitedTalkTextPlan" enabled="true">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_057_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDataUnlimitedTalkTextPlan"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE">
+<test name="RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE" enabled="true">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE"></class>
 </classes>          																					

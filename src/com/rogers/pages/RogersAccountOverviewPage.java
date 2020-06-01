@@ -107,7 +107,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.makePayment']")
 	WebElement lnkMakePayment;
 	
-	@FindBy (xpath = "//span[@data-translate='ute.common.label.myServices']")
+
+	@FindAll({
+        @FindBy(xpath = "//a[text()='Usage & Services ' or text()='Utilisation et services']"),
+        @FindBy(xpath = "//span[@data-translate='ute.common.label.myServices']")})	
 	WebElement menuUsageAndService;
 	
 	@FindBy (xpath = "//span[contains(text(),'Wireless Usage') or contains(text(),'Utilisation sans-fil')]")
@@ -125,7 +128,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='ute-dataManager-badgeList-individualBadge']//div[@class='ute-dataManager-badgeList-individualBadgeInfo']")
 	WebElement lblCTNWirelessName;
 	
-	@FindBy (xpath = "//span[@data-translate='ute.common.second.level.navigation.wireless.phone']")
+
+	@FindAll({
+        @FindBy(xpath = "//div[@class='c-dropdown-menu-holder']/a"),
+        @FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.wireless.phone']")})	
 	WebElement subMenuUsageDropDown;
 	
 	@FindBy (xpath = "//div[@class='account-number-ctn']")

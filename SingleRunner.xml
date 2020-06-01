@@ -11,11 +11,11 @@
 			class-name="com.rogers.test.listeners.AnnotationTransformer" />
 	</listeners>	
 
-<test name="RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest">
+ 
+<test name="RogersSS_TC_031_Postpaid_ChangeContactInfo" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_031_Postpaid_ChangeContactInfo"></class>
 </classes>          																					
 </test>
-
 					
 </suite>
