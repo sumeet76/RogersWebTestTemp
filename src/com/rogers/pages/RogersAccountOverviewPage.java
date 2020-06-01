@@ -107,7 +107,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.makePayment']")
 	WebElement lnkMakePayment;
 	
-	@FindBy (xpath = "//span[@data-translate='ute.common.label.myServices']")
+	@FindAll({
+		@FindBy (xpath = "//a[text()='Usage & Services ' or text()='Utilisation et services ']"),
+		@FindBy (xpath = "//span[@data-translate='ute.common.label.myServices']")
+	})
 	WebElement menuUsageAndService;
 	
 	@FindBy (xpath = "//span[contains(text(),'Wireless Usage') or contains(text(),'Utilisation sans-fil')]")
@@ -345,7 +348,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void clkDropDownAccount(String strLast4DigAcctNum) {
 		reusableActions.getWhenReady(
-				(By.xpath("//span[@data-translate='ute.common.second.level.navigation.wireless.phone' and contains(text(),'" + strLast4DigAcctNum + "')]")), 
+				(By.xpath("//a[@class='c-dropdown-item']/span[contains(text(),'" + strLast4DigAcctNum + "')]")), 
 				10).click();
 
 	}
