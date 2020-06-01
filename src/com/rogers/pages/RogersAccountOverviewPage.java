@@ -351,7 +351,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void clkDropDownAccount(String strLast4DigAcctNum) {
 		reusableActions.getWhenReady(
-				(By.xpath("//a[@class='c-dropdown-item']/span[contains(text(),'" + strLast4DigAcctNum + "')]")), 
+				(By.xpath("//span[contains(text(),'" + strLast4DigAcctNum + "')]")), 
 				10).click();
 
 	}

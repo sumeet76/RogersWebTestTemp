@@ -637,7 +637,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void setContactEmail(String strContactEmail) {
 		reusableActions.getWhenReady(lblContactEmail,30).click();
-		reusableActions.getWhenReady(inputContactEmail,20).clear();
+		//reusableActions.getWhenReady(inputContactEmail,20).clear();
 		reusableActions.getWhenReady(inputContactEmail,2).sendKeys(strContactEmail);
 	}
 	
@@ -691,7 +691,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void setHomePhone(String strHomePhone) {
 		reusableActions.getWhenReady(lblHomePhone,30).click();
-		reusableActions.getWhenReady(inputHomePhone,20).clear();
+		//reusableActions.getWhenReady(inputHomePhone,20).clear();
 		reusableActions.getWhenReady(inputHomePhone,2).sendKeys(strHomePhone);
 	}
 	
@@ -744,7 +744,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void setBusinessPhone(String strBusinessPhone) {
 		reusableActions.getWhenReady(lblBusinessPhone,30).click();
-		reusableActions.getWhenReady(inputBusinessPhone,20).clear();
+		//reusableActions.getWhenReady(inputBusinessPhone,20).clear();
 		reusableActions.getWhenReady(inputBusinessPhone,2).sendKeys(strBusinessPhone);
 	}
 	
