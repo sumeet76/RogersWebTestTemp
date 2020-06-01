@@ -7,6 +7,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindAll;
 
 import com.rogers.pages.base.BasePageClass;
 
@@ -41,7 +42,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[@linkurl='tvdashboard']/parent::div")
 	WebElement btnTVBadgeConsolidated;
 
-	@FindBy(xpath = "//span[@translate='ute.rogers.account.balance.total_balance']")
+	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.total_balance' or text()='Total balance' or text()='Total du solde']")
 	WebElement infoBalanceLable;
 
 	@FindBy(xpath = "//span[@translate='ute.rogers.rhpDashboard.homePhone']")
@@ -62,13 +63,18 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(@class,'arrow-down-account')]")
 	WebElement lnkAccountdropdown;
 	
-	@FindBy(xpath = "//span[@data-translate='ute.common.label.billAndPayment']")
+	
+	@FindAll({
+        @FindBy(xpath = "//a[contains(text(),'Billing & Payment') or contains(text(),'Facturation et paiement')]"),
+        @FindBy(xpath = "//span[@data-translate='ute.common.label.billAndPayment']")})	
 	WebElement lnkBillingAndPayment;
 	
 	@FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.changePaymentMethod']")
 	WebElement lnkChangePaymentMethod;
-	
-	@FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.setUpAutomaticPayments']")
+		
+	@FindAll({
+        @FindBy(xpath = "//rss-billing-widget//span[contains(text(),'Set up automatic payments') or contains(text(),'Établir les paiements automat.')]"),
+        @FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.setUpAutomaticPayments']")})	
 	WebElement lnkSetUpAutomaticPaymentMethod;
 	
 	@FindBy(xpath = "//button/span[@translate='ute.rogers.account.balance.make_a_payment']")
@@ -77,8 +83,11 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[@ng-show='loadingImg']")
 	WebElement imgLoadingFingers;
 	
-	@FindBy (xpath = "//span[@data-translate='ute.common.label.profileAndSetting']")
-	WebElement menuProfileNSettings;
+	@FindAll({
+        @FindBy(xpath = "//a[text()='Profile & Settings' or text()='Profil et paramètres']"),
+        @FindBy(xpath = "//span[@data-translate='ute.common.label.profileAndSetting']")})
+    WebElement menuProfileNSettings;
+
 	
 	@FindBy (xpath = "//h3[@translate='acc_overview_which_account']")
 	WebElement headerAccountSelect;
