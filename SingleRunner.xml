@@ -8,47 +8,11 @@
     <listener class-name="com.rogers.test.listeners.AnnotationTransformer"/>
   </listeners>		
 
-
-<test name="Mobile_RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest" enabled="false">
+<test name="RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.mobile.Mobile_RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest"></class>
 </classes>          																					
 </test>
-
-
-
-<test name="RogersCH_TC_041_IginteTV_ValidateTVDashboardTest" enabled="true">
-<classes>				             
-<class name="com.rogers.test.tests.selfserve.desktop.RogersCH_TC_041_IginteTV_ValidateTVDashboardTest"></class>
-</classes>          																					
-</test>
-
-
-<test name="RogersCH_TC_042_IginteInternet_ValidateInternetDashboardUsageTest" enabled="true">
-<classes>				             
-<class name="com.rogers.test.tests.selfserve.desktop.RogersCH_TC_042_IginteInternet_ValidateInternetDashboardUsageTest"></class>
-</classes>          																					
-</test>
-
-<test name="RogersCH_TC_043_IgniteRHP_ValidateRHPDasboardTest" enabled="true">
-<classes>				             
-<class name="com.rogers.test.tests.selfserve.desktop.RogersCH_TC_043_IgniteRHP_ValidateRHPDasboardTest"></class>
-</classes>          																					
-</test>
-
-<test name="RogersCH_TC_044_DigitalTV_ValidateTVDashboardTest" enabled="true">
-<classes>				             
-<class name="com.rogers.test.tests.selfserve.desktop.RogersCH_TC_044_DigitalTV_ValidateTVDashboardTest"></class>
-</classes>          																					
-</test>
-
-<test name="RogersCH_TC_046_LegacyRHP_ValidateRHPDashboardTest" enabled="true">
-<classes>				             
-<class name="com.rogers.test.tests.selfserve.desktop.RogersCH_TC_046_LegacyRHP_ValidateRHPDashboardTest"></class>
-</classes>          																					
-</test>
-
-
 
 					
 </suite>
