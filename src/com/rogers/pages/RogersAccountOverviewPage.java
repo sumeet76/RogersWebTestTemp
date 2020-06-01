@@ -128,10 +128,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='ute-dataManager-badgeList-individualBadge']//div[@class='ute-dataManager-badgeList-individualBadgeInfo']")
 	WebElement lblCTNWirelessName;
 	
+
 	@FindAll({
-		@FindBy (xpath = "//a[@class='c-dropdown-item']"),
-		@FindBy (xpath = "//span[@data-translate='ute.common.second.level.navigation.wireless.phone']")
-	})
+        @FindBy(xpath = "//div[@class='c-dropdown-menu-holder']/a"),
+        @FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.wireless.phone']")})	
 	WebElement subMenuUsageDropDown;
 	
 	@FindBy (xpath = "//div[@class='account-number-ctn']")
@@ -351,7 +351,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void clkDropDownAccount(String strLast4DigAcctNum) {
 		reusableActions.getWhenReady(
-				(By.xpath("//a[@class='c-dropdown-item']/span[contains(text(),'" + strLast4DigAcctNum + "')]")), 
+				(By.xpath("//span[contains(text(),'" + strLast4DigAcctNum + "')]")), 
 				10).click();
 
 	}

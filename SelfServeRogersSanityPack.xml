@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
 <suite name="Self Serve Rogers.com Tests SS" parallel="classes" thread-count="2">
 <parameter name="strBrowser" value="saucechrome"/>
 <parameter name="strLanguage" value="en"/>
@@ -11,7 +12,7 @@
 			class-name="com.rogers.test.listeners.AnnotationTransformer" />
 </listeners> 
 
-<test name="RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest">
+<test name="RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest" enabled="false">
 <classes>				             
 	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest"></class>
 	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_031_Postpaid_ChangeContactInfo"></class>
@@ -20,7 +21,9 @@
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_032_Postpaid_ChangeBillingAddress">
+
+
+<test name="RogersSS_TC_032_Postpaid_ChangeBillingAddress" enabled="false">
 <classes>				             
 	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_032_Postpaid_ChangeBillingAddress"></class>
 	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_051_ChangePassword"></class>
