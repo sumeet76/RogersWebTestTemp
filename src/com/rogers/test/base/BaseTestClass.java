@@ -245,7 +245,7 @@ public class BaseTestClass {
  		default :
  			captcha_bypass_handlers.captchaBypassURLLoginFlows(strUrl, strLanguage);
 		}
-	    setImplicitWait(getDriver(), 10);
+	    setImplicitWait(getDriver(), 120);
 	    init(strGroupName);	 
  }
 		
