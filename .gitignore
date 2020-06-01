@@ -12,3 +12,4 @@ ExtentReports/
 rogers_property.dat
 .checkstyle
 msedgedriver
+*.orig
