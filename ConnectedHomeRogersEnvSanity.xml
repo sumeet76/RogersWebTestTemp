@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Cable Rogers Tests" parallel="tests" thread-count="1">
+ 	<listener
+			class-name="com.rogers.test.listeners.AnnotationTransformer" />
+		<listener class-name="com.rogers.test.listeners.TestListener" />
+	</listeners>
 <parameter name="strBrowser" value="saucechrome"/>
 <parameter name="strLanguage" value="en"/>
 <parameter name="strGroupName" value="connectedhome_igniteanonymous"/>
 
-<listeners>
-      <listener class-name="com.rogers.test.listeners.AnnotationTransformer"/>
-</listeners> 		
 
 <test name="Ignite RHP Validation Test">
 <classes>				             
