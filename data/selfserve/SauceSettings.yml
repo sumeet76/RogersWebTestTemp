@@ -4,8 +4,8 @@ sauceOptions:
    seleniumVersion: 3.141.59
    name: Rogers - Self Serve Job
    maxDuration: 600
-   commandTimeout: 600
-   idleTimeout: 1000
+   commandTimeout: 300
+   idleTimeout: 120
    build: Rogers-Sanity Run 520
 mutableFireFoxCapabilities:  
    platformVersion: Windows 10
