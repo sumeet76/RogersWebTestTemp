@@ -547,7 +547,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyViewMyChannelLineUpDisplayed() {		
-		return reusableActions.isElementVisible(lnkViewMyChannelLineup,30);
+		return reusableActions.isElementVisible(lnkViewMyChannelLineup,60);
 	}
 
 	/**
@@ -556,7 +556,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyViewFlexChannelsDisplayed() {		
-		return reusableActions.isElementVisible(lnkViewfelxChannels,30);
+		return reusableActions.isElementVisible(lnkViewfelxChannels,60);
 	}
 
 }

@@ -138,7 +138,7 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='dds-header-hamburger-nav']")
 	WebElement lnkHamburgerMobile;
 	
-	@FindBy (xpath = "//span[@class='dds_m-mobileNavLink__caption' and text()='Sign in']")
+	@FindBy (xpath = "//span[@class='dds_m-mobileNavLink__caption' and (text()='Sign in' or text()='Connexion')]")
 	WebElement lnkSignInMobile;
 	
 	@FindBy(xpath = "//a[@aria-label='View navigation']")

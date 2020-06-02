@@ -180,7 +180,7 @@
 	</build>
 	<profiles>
 		<profile>
-			<id>single</id>
+			<id>RogersSingleSS</id>
 			<build>
 				<plugins>
 					<plugin>
@@ -197,7 +197,7 @@
 			</build>
 		</profile>
 		<profile>
-			<id>sanity</id>
+			<id>RogersSanitySS</id>
 			<build>
 				<plugins>
 					<plugin>
@@ -282,7 +282,7 @@
 			</build>
 		</profile>
 		<profile>
-			<id>completesuiteSS</id>
+			<id>RogersCompletesuiteSS</id>
 			<build>
 				<plugins>
 					<plugin>
