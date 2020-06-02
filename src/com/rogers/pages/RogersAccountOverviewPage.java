@@ -101,7 +101,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[@translate='ute.payment.method.account_prefix']")
 	WebElement lblAutoPaymentAccountPreFix;
 
-	@FindBy(xpath = "//div[@class='cc-image']")
+	@FindBy(xpath = "//div[contains(@class,'cc-image')]")
 	WebElement imgCC;
 
 	@FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.makePayment']")
