@@ -17,7 +17,7 @@
 		</classes>
 	</test>
 
-	<test name="Cable rogers Sanity LegacyLogin">
+<!-- 	<test name="Cable rogers Sanity LegacyLogin">
 		<parameter name="strBrowser" value="saucechrome" />
 		<parameter name="strLanguage" value="en" />
 		<classes>
@@ -26,9 +26,9 @@
 			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_022_DigitalTV_TVPackageDowngradeTest"></class>
 			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_023_LegacyRHP_ValidateRHPDashboardTest"></class>
 		</classes>
-	</test>
+	</test> -->
 
-	<test name="Cable rogers Sanity IgniteLogin">
+<!-- 	<test name="Cable rogers Sanity IgniteLogin">
 		<parameter name="strBrowser" value="saucechrome" />
 		<parameter name="strLanguage" value="en" />
 		<classes>
@@ -45,5 +45,5 @@
 		<classes>
 		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_001_IginteTV_BuyBundleTest"></class>
 		</classes>
-	</test>
+	</test> -->
 </suite>
