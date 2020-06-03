@@ -3,6 +3,7 @@ package com.rogers.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -44,8 +45,10 @@ public class RogersOrderReviewPage extends BasePageClass {
 	WebElement popupLoadingFingers;
 
 	//@FindBy(xpath = "//input[@id='digital-copy']/../label")
-	@FindBy(xpath = "//input[@id='cxEmail']/../label")
 	//@FindBy(xpath = "//label[@for='cxEmail']")
+	@FindAll({
+		@FindBy(xpath = "//input[@id='cxEmail']/../label"),
+		@FindBy(xpath = "//input[@id='digital-copy']/../label")})
 	WebElement rdbtnEmail;
 	
 	@FindBy(xpath = "//button[@data-dtname='reviewOrder-submit']")

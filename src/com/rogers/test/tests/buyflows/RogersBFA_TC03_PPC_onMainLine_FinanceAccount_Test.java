@@ -7,11 +7,12 @@ import java.util.HashMap;
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.rogers.test.base.BaseTestClass;
+import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 
 /**
@@ -76,10 +77,10 @@ public class RogersBFA_TC03_PPC_onMainLine_FinanceAccount_Test extends BaseTestC
         reporter.reportLogWithScreenshot("Order Confirmation page");
    }
 
-	@BeforeTest @Parameters({ "strBrowser", "strLanguage","strGroupName"})
-	public void beforeTest(String strBrowser, String strLanguage, String strGroupName,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.bfaConfig.getRogersURL(), strBrowser, strLanguage, strGroupName, method);
+		startSession(TestDataHandler.bfaConfig.getRogersURL(), strBrowser, strLanguage, RogersEnums.GroupName.buyflows , method);
 	}
     
     @AfterTest(alwaysRun = true)

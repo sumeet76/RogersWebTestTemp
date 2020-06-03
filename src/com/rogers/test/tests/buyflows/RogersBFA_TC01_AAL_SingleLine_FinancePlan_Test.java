@@ -7,11 +7,12 @@ import java.util.HashMap;
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.rogers.test.base.BaseTestClass;
+import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 
 /**
@@ -69,12 +70,12 @@ public class RogersBFA_TC01_AAL_SingleLine_FinancePlan_Test extends BaseTestClas
         reporter.reportLogWithScreenshot("Rogers Cart Summary page");
         rogers_cart_summary_page.clkContinue();
         reporter.reportLogWithScreenshot("Rogers Shipping page");
-        rogers_shipping_page.setPhoneNumber();
-        rogers_shipping_page.clkSaveNumber();
-        rogers_shipping_page.setEmailID();
-        rogers_shipping_page.clkSaveEmail();
-        rogers_shipping_page.clkSelectAvailableTime();
-        rogers_shipping_page.clkReserve();
+		/*
+		 * rogers_shipping_page.setPhoneNumber(); rogers_shipping_page.clkSaveNumber();
+		 * rogers_shipping_page.setEmailID(); rogers_shipping_page.clkSaveEmail();
+		 * rogers_shipping_page.clkSelectAvailableTime();
+		 * rogers_shipping_page.clkReserve();
+		 */
         rogers_shipping_page.clkContinue();
         reporter.reportLogWithScreenshot("Rogers Choose Number page");
         rogers_choose_number_page.clkSelectNewNumber();
@@ -85,10 +86,11 @@ public class RogersBFA_TC01_AAL_SingleLine_FinancePlan_Test extends BaseTestClas
         reporter.reportLogWithScreenshot("Rogers Choose Number page");
         rogers_choose_number_page.clkContinue();
         reporter.reportLogWithScreenshot("Rogers Order Review page");
-        rogers_order_review_page.clkEmailDigitalCopy();
+        //rogers_order_review_page.clkEmailDigitalCopy();
         rogers_order_review_page.clkTermsAgreementCheckbox();
         rogers_order_review_page.clkShieldAgreementCheckbox();
         rogers_order_review_page.clkUpfrontTermsCheckbox();
+        rogers_order_review_page.selectEmailDigitalCopy(TestDataHandler.testCase01.getUsername());
         reporter.reportLogWithScreenshot("Rogers Order Review page");
         if(rogers_order_review_page.isPaymentRequired()) {
         	rogers_order_review_page.clkContinue();
@@ -106,10 +108,10 @@ public class RogersBFA_TC01_AAL_SingleLine_FinancePlan_Test extends BaseTestClas
         reporter.reportLogWithScreenshot("Rogers Order Confirmation page");
     }
 
-	@BeforeTest @Parameters({ "strBrowser", "strLanguage","strGroupName"})
-	public void beforeTest(String strBrowser, String strLanguage, String strGroupName,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+	@BeforeMethod @Parameters({"strBrowser", "strLanguage"})
+	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.bfaConfig.getRogersURL(), strBrowser, strLanguage, strGroupName, method);
+		startSession(TestDataHandler.bfaConfig.getRogersURL(), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
 	}
     
     @AfterTest(alwaysRun = true)
