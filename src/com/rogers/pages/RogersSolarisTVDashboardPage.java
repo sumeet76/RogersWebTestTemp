@@ -131,7 +131,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//i[@class='ute-icon-button-left']")
 	WebElement imgPrevious;
 
-	  
+	@FindBy(xpath = "//span[contains(text(),'Home Monitoring') or contains(text(),'Système domotique')]/ancestor::div[@class='subscription-detail']")
+	WebElement btnSHMBadge;
 	
 	/**
 	 * Click on Reset Parental controls And Pin link
@@ -557,6 +558,43 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 */
 	public boolean verifyViewFlexChannelsDisplayed() {		
 		return reusableActions.isElementVisible(lnkViewfelxChannels,60);
+	}
+
+	/**
+	 * Clicks on SHM Badge
+	 * @author Mirza.Kamran
+	 */
+	public void clkSHMBadge() {		
+		reusableActions.getWhenReady(btnSHMBadge).click();
+	}
+
+	/**
+	 * Clicks on Tupelo entertainment badge
+	 * @author Mirza.Kamran
+	 */
+	public void clkEntertainmentBadge() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * verifies if the Tupelo Dashboard is displayed
+	 * @return true if displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifySmartScreenTupeloDashbaordIsDisplayed() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean verifySmartScreenBoxlsDisplayed() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean verifySmartScreenBoxSettingslsDisplayed() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

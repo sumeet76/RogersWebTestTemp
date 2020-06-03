@@ -88,6 +88,11 @@ public class RogersAccountOverviewPage extends BasePageClass {
         @FindBy(xpath = "//span[@data-translate='ute.common.label.profileAndSetting']")})
     WebElement menuProfileNSettings;
 
+	@FindBy(xpath = "//a/span[text()='Profile & Settings' or text()='Profil et paramètres']")
+	WebElement menuProfileAndSettingsMobile;
+	
+	@FindBy(xpath = "//button[contains(text(),'Overview') or contains(text(),'Survol')]")
+	WebElement btnOverViewMobile;
 	
 	@FindBy (xpath = "//h3[@translate='acc_overview_which_account']")
 	WebElement headerAccountSelect;
@@ -195,7 +200,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkLegacyInternetBadge(String strBrowser) {
-		if (strBrowser.equalsIgnoreCase("chrome"))
+		if (strBrowser.toLowerCase().contains("chrome"))
 		{
 		reusableActions.getWhenReady(btnLegacyInternetBadge, 120).click();
 		}else {
@@ -379,6 +384,18 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			}
 			count++;
 		}
+	}
+	
+	/**
+	 * Click on menu Profile and Settings on Mobile
+	 * @author Mirza.Kamran
+	 */
+	public void clkLnkProfileNSettingsMobile() {
+		
+		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
+		reusableActions.getWhenReady(menuProfileAndSettingsMobile,30).click();			
+		reusableActions.waitForElementVisibility(headerProfileNSettings,60);
+					
 	}
 	
 	/**
