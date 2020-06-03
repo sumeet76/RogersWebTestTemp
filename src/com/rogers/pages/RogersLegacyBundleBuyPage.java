@@ -103,7 +103,7 @@ public class RogersLegacyBundleBuyPage extends BasePageClass {
 	 * @return true, if the Contact Customer care pop up For legacy bundle buy French language else false
 	 * @author chinnarao.vattam 
 	 */
-	public boolean verifyContactCustomercareForLegacyBundleBuy() {
+	public boolean verifyServiceabilitySuccess() {
 		return reusableActions.isElementVisible(popupContactCustomercareForLegacyBundleBuy,30);
 	}
 }

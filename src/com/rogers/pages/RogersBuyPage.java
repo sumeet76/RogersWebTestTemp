@@ -44,6 +44,10 @@ public class RogersBuyPage extends BasePageClass {
 	// rogers-internet
 	@FindBy(xpath = "//a[@class='contact-online-link ways-to-change-cta']")
 	WebElement btnBuyOnline;
+	
+	@FindBy(xpath = "(//div//a[@class='rogers-btn-solid'])[4]")
+	WebElement btnControlPackage;
+	
 		
 	/**
 	 * To select the solaris bundle package
@@ -142,10 +146,10 @@ public class RogersBuyPage extends BasePageClass {
 	 * @param strHomeMonitering Home Monitering bundle to be select to buy
 	 * @author chinnarao.vattam 
 	 */
-	public void selectHomeMoniteringPackage(String strHomeMonitering) {
-		WebElement  bundleLocator = (WebElement)driver.findElement(By.xpath("//p[@class='rate-card-data desktop-rate-details']/strong[contains(text(),'"+ strHomeMonitering+ "')]/ancestor::div[@id='main-box']//a[@class='btn ways-to-buy']"));
-		reusableActions.waitForElementVisibility(bundleLocator,30);
-		reusableActions.executeJavaScriptClick(bundleLocator);	
+	public void selectHomeMoniteringPackage() {
+		//WebElement  bundleLocator = (WebElement)driver.findElement(By.xpath("//p[@class='rate-card-data desktop-rate-details']/strong[contains(text(),'"+ strHomeMonitering+ "')]/ancestor::div[@id='main-box']//a[@class='btn ways-to-buy']"));
+		reusableActions.waitForElementVisibility(btnControlPackage,30);
+		reusableActions.executeJavaScriptClick(btnControlPackage);	
 	}
 	
 	/**

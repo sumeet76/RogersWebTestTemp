@@ -13,14 +13,15 @@
 		<parameter name="strBrowser" value="chrome" />
 		<parameter name="strLanguage" value="en" />
 		<classes>
-		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_001_IginteTV_BuyBundleTest"></class> 
+		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_003_SHM_ServicabilityCheckTest"></class> 
+ 		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_001_IginteTV_BuyBundleTest"></class> 
   	 	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_020_IgniteTV_SolarisHAWTFlowPortInwithExistingLineTest"></class> 
 	    <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_030_IginteTV_BuyIgniteStarterBundleTest"></class>
-	    <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_034_IginteTV_DoublePlayBuyTest"></class> 
+	    <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_034_IginteTV_DoublePlayBuyTest"></class> --> 
 		</classes>
 	</test> 
 
- 	<test name="Cable rogers Sanity LegacyAnonymous">
+ <test name="Cable rogers Sanity LegacyAnonymous">
 		<parameter name="strBrowser" value="chrome" />
 		<parameter name="strLanguage" value="en" />
 		<classes>

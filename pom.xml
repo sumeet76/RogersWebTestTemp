@@ -240,7 +240,7 @@
 						<version>3.0.0-M4</version>
 						<configuration>
 							<suiteXmlFiles>
-								<suiteXmlFile>SingleRunner.xml</suiteXmlFile>
+								<suiteXmlFile>ConnectedHomeRogersEnvSanity.xml</suiteXmlFile>
 							</suiteXmlFiles>
 						</configuration>
 					</plugin>
@@ -257,7 +257,7 @@
 						<version>3.0.0-M4</version>
 						<configuration>
 							<suiteXmlFiles>
-								<suiteXmlFile>ConnectedHomeSanityPack.xml</suiteXmlFile>
+								<suiteXmlFile>ConnectedHomeRogersSanityPack.xml</suiteXmlFile>
 							</suiteXmlFiles>
 						</configuration>
 					</plugin>
@@ -274,7 +274,7 @@
 						<version>3.0.0-M4</version>
 						<configuration>
 							<suiteXmlFiles>
-								<suiteXmlFile>ConnectedHomeCompleteSuite.xml</suiteXmlFile>
+								<suiteXmlFile>ConnectedHomeRogersCompleteSuite.xml</suiteXmlFile>
 							</suiteXmlFiles>
 						</configuration>
 					</plugin>
