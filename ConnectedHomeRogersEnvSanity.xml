@@ -7,12 +7,10 @@
 	</listeners>
 <parameter name="strBrowser" value="saucechrome"/>
 <parameter name="strLanguage" value="en"/>
-<parameter name="strGroupName" value="connectedhome_igniteanonymous"/>
-
 
 <test name="Ignite RHP Validation Test">
 <classes>				             
-<class name="com.rogers.test.tests.connectedhome.RogersCH_TC_034_IginteTV_DoublePlayBuyTest"></class>
+<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_034_IginteTV_DoublePlayBuyTest"></class>
 </classes>          																					
 </test>
 				
