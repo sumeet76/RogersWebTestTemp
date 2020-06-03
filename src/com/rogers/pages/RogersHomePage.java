@@ -31,6 +31,9 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/internet']")
 	WebElement lnkInternet;
 
+	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/home-monitoring']")
+	WebElement lnkHomeMonitering;
+	
 	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/bundles']")
 	WebElement lnkBundle;
 	
@@ -254,6 +257,15 @@ public class RogersHomePage extends BasePageClass {
 		reusableActions.getWhenVisible(lnkInternet, 60).click();
 	}
 
+	/**
+	 * Click the Home Monitering option from shop dropdown list
+	 * @author chinnarao.vattam 
+	 */
+	public void clkHomeMonitering() {		
+		reusableActions.getWhenVisible(lnkHomeMonitering, 60).click();
+	}
+	
+	
 	/**
 	 * Click the Bundle option from shop dropdown list
 	 * @author chinnarao.vattam 
