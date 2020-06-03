@@ -241,6 +241,9 @@ public class BaseTestClass {
 		case "connectedhome_login":
 			captcha_bypass_handlers.captchaBypassURLLoginFlows(strUrl, strLanguage);
 			break; 
+		
+		case "buyflows": driver.get(strUrl);
+			break; 
 			
  		default :
  			captcha_bypass_handlers.captchaBypassURLLoginFlows(strUrl, strLanguage);

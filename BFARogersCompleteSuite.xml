@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Rogers Complete RT Suite - BFA" parallel="none" thread-count="10">
+	<parameter name="strBrowser" value="saucechrome" />
+	<parameter name="strLanguage" value="en" />
+		
+	<listeners>
+		<listener
+			class-name="com.rogers.test.listeners.TestListener" />
+		<listener
+			class-name="com.rogers.test.listeners.AnnotationTransformer" />
+	</listeners>
+	
+	<test name="TC01-Rogers AAL e2e" enabled="true">
+	<classes>
+			<class
+				name="com.rogers.test.tests.buyflows.RogersBFA_TC01_AAL_SingleLine_FinancePlan_Test">
+			</class>
+		</classes>
+	</test>
+		
+	<test name="TC03-PPC e2e" enabled="true">
+	<classes>
+			<class
+				name="com.rogers.test.tests.buyflows.RogersBFA_TC03_PPC_onMainLine_FinanceAccount_Test">
+			</class>
+		</classes>
+	</test>
+		
+	<test name="TC04-HUP e2e" enabled="true">
+	<classes>
+			<class
+				name="com.rogers.test.tests.buyflows.RogersBFA_TC04_HUP_onMainLine_KeepExistingPlan_Test">
+			</class>
+		</classes>
+	</test>
+		
+</suite>

@@ -58,7 +58,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	@FindBy(xpath = "//input[@value='createSharedGroup']//parent::label//span[@class='dsa-selection__caption text-center']")
 	WebElement lblCreateSharedPlan;
 
-	@FindBy(xpath = "//button[contains(@class,'d-inline-block -primary -large')]")
+	@FindBy(xpath = "//button[contains(@class,'-primary -large')]")
 	WebElement btnModalContinue;
 	
 	@FindBy(xpath = "//div[contains(@class,'ds-checkbox__box my-12')]")
