@@ -49,7 +49,7 @@ public class RogersCH_TC_004_LegacyBundle_BuyBundleOfferTest extends BaseTestCla
     	rogers_legacy_bundle_buy_page.clkSelectBundle();
         String  strAddressLine1=(String) TestDataHandler.digitalTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=(String) TestDataHandler.digitalTVAccount.getAccountDetails().getAddress().get("line2");
-        rogers_legacy_bundle_buy_page.setAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        rogers_legacy_bundle_buy_page.setAddressLookup(strAddressLine1+", "+strAddressLine2);
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         rogers_legacy_bundle_buy_page.clkAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Good News for the Service availability");
