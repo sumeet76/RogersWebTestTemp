@@ -1,9 +1,9 @@
 package com.rogers.pages;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -134,7 +134,15 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//span[contains(text(),'Home Monitoring') or contains(text(),'Système domotique')]/ancestor::div[@class='subscription-detail']")
 	WebElement btnSHMBadge;
-	
+
+	@FindBy(xpath = "//ins[@usertype-translate='global.dashboard.tv.digitalBoxes']")
+	WebElement lblBoxHeader;
+
+	@FindBy(xpath = "//ins[@translate='global.dashboard.tv.digitalBoxSettings']")
+	WebElement lblBoxSettings;
+
+	@FindBy(xpath = "//ins[@translate='global.label.tv']")
+	WebElement lblHeaderTV;
 
 	
 	/**
@@ -578,19 +586,26 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @return true if displayed else false
 	 * @author Mirza.Kamran
 	 */
-	public boolean verifySmartScreenTupeloDashbaordIsDisplayed() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean verifyTupeloDashbaordIsDisplayed() {
+		return reusableActions.isElementVisible(lblHeaderTV);
+		
 	}
 
-	public boolean verifySmartScreenBoxlsDisplayed() {
-		// TODO Auto-generated method stub
-		return false;
+	/**
+	 * Verifies if the smart screen box is displayed
+	 * @return true if the box is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyBoxCountIsDisplayed() {		
+		return reusableActions.isElementVisible(lblBoxHeader);
 	}
 
-	public boolean verifySmartScreenBoxSettingslsDisplayed() {
-		// TODO Auto-generated method stub
-		return false;
+	/**
+	 * Smart screen box settings is displayed
+	 * @return true if the box settings is displayed
+	 */
+	public boolean verifyBoxSettingslsDisplayed() {		
+		return reusableActions.isElementVisible(lblBoxSettings);
 	}
 
 }

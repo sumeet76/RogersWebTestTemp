@@ -45,9 +45,9 @@ public class RogersSS_TC_047_AO_ValidateCHaccountBadge_Tupelo extends BaseTestCl
         reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_account_overview_page.clkEntertainmentBadge();             
-        reporter.softAssert(rogers_solaris_tv_dashboard_page.verifySmartScreenTupeloDashbaordIsDisplayed()
-        		&& rogers_solaris_tv_dashboard_page.verifySmartScreenBoxlsDisplayed()
-        		&& rogers_solaris_tv_dashboard_page.verifySmartScreenBoxSettingslsDisplayed(),"Tupelo dashboard page is displayed", "Tupelo dashboard page NOT displayed correctly please investigate");        
+        reporter.softAssert(rogers_solaris_tv_dashboard_page.verifyTupeloDashbaordIsDisplayed()
+        		&& rogers_solaris_tv_dashboard_page.verifyBoxCountIsDisplayed()
+        		&& rogers_solaris_tv_dashboard_page.verifyBoxSettingslsDisplayed(),"Tupelo dashboard page is displayed", "Tupelo dashboard page NOT displayed correctly please investigate");        
         reporter.reportLogWithScreenshot("Tupelo dashboard Page");     
         common_business_flows.scrollToMiddleOfWebPage();
 		reporter.reportLogWithScreenshot("Mid page view");
@@ -60,7 +60,7 @@ public class RogersSS_TC_047_AO_ValidateCHaccountBadge_Tupelo extends BaseTestCl
     @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
 	   xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+		startSession("https://qa03-ciam.rogers.com",strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
 				
 	}
    	

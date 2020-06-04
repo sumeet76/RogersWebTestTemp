@@ -400,7 +400,39 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//ancestor::div[contains(@class,'postpaid-addons')]//div[@class='addon-description' or @class='addon-description ng-star-inserted']")
 	List<WebElement> lstMyPlanAddOns;
 
+	@FindBy(xpath = "//a[@title='Change the Data Manager for this account' or @title='Change the Data Manager for this account']")
+	WebElement btnAddDataManager;
+
+	@FindBy(xpath = "//p[text()='Choose a Data Manager' or text()='Choose a Data Manager']")
+	WebElement titleChooseDataManager;
+	
+	@FindBy(xpath = "//select[@formcontrolname='phoneNumber']")
+	WebElement selectDataManager;
 		
+	@FindBy(xpath = "//button//span[contains(text(),'Save') or contains(text(),'Enregistrer')]")
+	WebElement btnSaveDataManager;
+
+	@FindBy(xpath = "//div[@class='data-control']//a//span[contains(text(),'Set') or contains(text(),'Configurer')]")
+	WebElement btnSetDataAlert;
+
+	@FindBy(xpath = "//ds-switch[@title='Data Alert setting' or @title='Configuration d’alertes de données']//div[@class='ds-toggleArea__label']//span[text()='OFF' or text()='NON']")
+	WebElement btnSetAlertOn;
+
+	@FindBy(xpath = "//p[contains(text(),'Set a Data Alert for') or contains(text(),'Configurer une alerte de données pour')]")
+	WebElement titleSetDataAlert;
+	
+	@FindBy(xpath = "//div[contains(@class,'alert_amount_holder')]/ds-form-field")
+	WebElement lblSetDataAlert;
+	
+	@FindBy(xpath = "//div[contains(@class,'alert_amount_holder')]/ds-form-field//input")
+	WebElement txtSetDataAlert;
+
+	@FindBy(xpath = "//button//span[contains(text(),'Save') or contains(text(),'Enregistrer')]")
+	WebElement btnSaveDataAlert;
+
+	@FindBy(xpath = "//span[contains(@class,'data-alert-value')]")
+	WebElement lblDataAlertSetValue;
+	
 	/**
 	 * To click the link of lost or stolen device on wireless dashboard page
 	 * @author ning.xue
@@ -1741,6 +1773,111 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	public boolean verifyCallOutMessageToAddDataDueToOverageIsDisplayed() {
 		
 		return reusableActions.isElementVisible(divCallOutMsgToAddDataForOverage);
+	}
+	
+	
+	/**
+	 * Validates if the data manager is available
+	 * @return true if the data manager is available else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isAddDataManagerDisplayed() {
+		return reusableActions.isElementVisible(btnAddDataManager,60);
+	}
+
+	/**
+	 * Clicks on Add data manager
+	 * @author Mirza.Kamran
+	 */
+	public void clkAddDataManager() {
+		reusableActions.clickWhenReady(btnAddDataManager);
+		
+	}
+
+	/**
+	 * Checks if the data manager overlay is displayed
+	 * @return true if the data manager overlay is displayed
+	 * @author Mirza.Kamran
+	 */
+	public boolean isChooseDataManagerOverlayDisplayed() {		
+		return reusableActions.isElementVisible(titleChooseDataManager);
+	}
+
+	/**
+	 * Selects the data manager
+	 * @author Mirza.Kamran
+	 */
+	public void selectDataManager() {
+		reusableActions.selectWhenReady(selectDataManager, 0);
+		
+	}
+
+	/**
+	 * Clicks on save data manager
+	 * @author Mirza.Kamran
+	 */
+	public void saveDataManager() {	
+		reusableActions.clickWhenReady(btnSaveDataManager);
+		reusableActions.staticWait(10000);
+	}
+
+	/**
+	 * Checks if the set data alert button is displayed
+	 * @return
+	 */
+	public boolean isSetDataAlertDisplayed() {		
+		return reusableActions.isElementVisible(btnSetDataAlert);
+	}
+
+	/**
+	 * Clicks on set data alert
+	 * @author Mirza.Kamran
+	 */
+	public void clkSetDataAlert() {
+		reusableActions.clickWhenReady(btnSetDataAlert);
+	}
+
+	/**
+	 * Sets Alert On
+	 * @author Mirza.Kamran
+	 */
+	public void setAlertOn() {
+		reusableActions.clickWhenReady(btnSetAlertOn);
+
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean isSetDataAlertOverlayDisplayed() {		
+		return reusableActions.isElementVisible(titleSetDataAlert);		
+	}
+
+	/**
+	 * Sets the data alert value
+	 * @author Mirza.Kamran
+	 */
+	public void setDataAlert(String strDataAlertValue) {				
+		reusableActions.clickWhenReady(lblSetDataAlert);
+		reusableActions.getWhenReady(txtSetDataAlert).sendKeys(strDataAlertValue);		
+	}
+
+	/**
+	 * Clicks on save data alert
+	 * @author Mirza.Kamran
+	 */
+	public void saveDataAlert() {
+		reusableActions.clickWhenReady(btnSaveDataAlert);				
+	}
+	
+	/**
+	 * Checks the data alert value set
+	 * @return true if the value is set else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isSetDataAlertCorrectlySet(String strDataAlert) {
+		return reusableActions.getWhenReady(lblDataAlertSetValue).getText().trim().replaceAll(",", ".").contains(strDataAlert);
 	}
 
 
