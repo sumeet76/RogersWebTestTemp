@@ -162,6 +162,11 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	
 	@FindBy (xpath = "//button[@aria-label='ute.common.label.profileAndSetting']")
 	WebElement btnProfileSettingsMobile;
+	
+	@FindAll({
+		@FindBy(xpath = "//span[contains(text(),'Entertainment') or contains(text(),'')]/ancestor::div[@class='subscription-detail']"),
+        @FindBy(xpath = "//span[@translate='ute.subscriptionBadge.smartStream']")})	
+	WebElement btnEntertainmentBadge;
 
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
@@ -727,5 +732,14 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void scrollToTopOfPage() {
 		reusableActions.javascriptScrollToTopOfPage();
+	}
+	
+	/**
+	 * Clicks on Tupelo entertainment badge
+	 * @author Mirza.Kamran
+	 */
+	public void clkEntertainmentBadge() {
+		reusableActions.getWhenReady(btnEntertainmentBadge).click();
+		
 	}
 }

@@ -3,6 +3,7 @@ package com.rogers.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -133,6 +134,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//span[contains(text(),'Home Monitoring') or contains(text(),'Système domotique')]/ancestor::div[@class='subscription-detail']")
 	WebElement btnSHMBadge;
+	
+
 	
 	/**
 	 * Click on Reset Parental controls And Pin link
@@ -568,14 +571,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		reusableActions.getWhenReady(btnSHMBadge).click();
 	}
 
-	/**
-	 * Clicks on Tupelo entertainment badge
-	 * @author Mirza.Kamran
-	 */
-	public void clkEntertainmentBadge() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	/**
 	 * verifies if the Tupelo Dashboard is displayed
