@@ -6,18 +6,11 @@ password: DigiAuto@123
 accountDetails:
    type: TV
    ban: 932525512
+   rhmPackageEn: Control Package
+   rhmPackageFr: Forfait Contrôle
    swapInChannelOne: spark
    swapInChannelTwo: hifi 
    swapInChannelThree: max
    address:
      line1: 706-10 Lisa St
-     line2: BRAMPTON ON L6T 4N4
-     streetNumber: 67
-     streetName: Pickett Pl
-     city: Cambridge
-     Province: ON
-     PostalCode: N3E 0B4         
-   swapinChannel:           
-           - comedy
-           - CBC news
-           - Get Fit
+     line2: BRAMPTON ON L6T 4N4       

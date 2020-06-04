@@ -146,10 +146,10 @@ public class RogersBuyPage extends BasePageClass {
 	 * @param strHomeMonitering Home Monitering bundle to be select to buy
 	 * @author chinnarao.vattam 
 	 */
-	public void selectHomeMoniteringPackage(String strHomeMonitering) {
-		//WebElement  bundleLocator = (WebElement)driver.findElement(By.xpath("//p[@class='rate-card-data desktop-rate-details']/strong[contains(text(),'"+ strHomeMonitering+ "')]/ancestor::div[@id='main-box']//a[@class='btn ways-to-buy']"));
-		reusableActions.waitForElementVisibility(btnControlPackage,30);
-		reusableActions.executeJavaScriptClick(btnControlPackage);	
+	public void selectHomeMoniteringPackage(String strHomeMoniteringEn, String strHomeMoniteringFr ) {
+		WebElement  RhmLocator = (WebElement)driver.findElement(By.xpath("//h3[contains(text(),'"+strHomeMoniteringEn+ "') or contains(text(),'"+ strHomeMoniteringFr+ "')]/ancestor::div[@class='package-tile']//div[@class='how-to-get-it']//a[@class='rogers-btn-solid']"));
+		reusableActions.waitForElementVisibility(RhmLocator,30);
+		reusableActions.executeJavaScriptClick(RhmLocator);	
 	}
 	
 	/**

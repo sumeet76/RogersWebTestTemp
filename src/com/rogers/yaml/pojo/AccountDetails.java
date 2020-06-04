@@ -45,8 +45,23 @@ public class AccountDetails {
 	private String bundelPackageNameEn;
 	private String downgradeBan;
 	private String dealerCode;
-
+	private String rhmPackageEn;
+	private String rhmPackageFr;
 	
+	public String getRhmPackageEn() {
+		return rhmPackageEn;
+	}
+
+	public void setRhmPackageEn(String rhmPackageEn) {
+		this.rhmPackageEn = rhmPackageEn;
+	}
+	public String getRhmPackageFr() {
+		return rhmPackageFr;
+	}
+
+	public void setRhmPackageFr(String rhmPackageFr) {
+		this.rhmPackageFr = rhmPackageFr;
+	}
 	public String getBundelPackageNameFr() {
 		return bundelPackageNameFr;
 	}
@@ -62,7 +77,6 @@ public class AccountDetails {
 	public void setBundelPackageNameEn(String bundelPackageNameEn) {
 		this.bundelPackageNameEn = bundelPackageNameEn;
 	}
-
 	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
