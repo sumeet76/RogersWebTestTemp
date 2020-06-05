@@ -46,9 +46,9 @@ public class RogersCH_TC_003_SHM_ServicabilityCheckTest extends BaseTestClass {
         rogers_buy_page.setAddressLookup(strAddressLine1+", "+strAddressLine2);
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
     	rogers_buy_page.clkAddressLookupSubmit(); 
-    	reporter.reportLogWithScreenshot("Customer care contact popup has displayed");
     	reporter.hardAssert(rogers_legacy_bundle_buy_page.verifyServiceabilitySuccess(),"Displayed the serviceabilty sucess popup for RHM", "RHM is not serviceble in the given address");
-    	}
+    	reporter.reportLogWithScreenshot("Serviceability Success popup");
+    }
 
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})

@@ -104,13 +104,12 @@ public class RogersBuyPage extends BasePageClass {
  * @author chinnarao.vattam
  */
 	public void setAddressLookup(String strAddress) {
-		reusableActions.getWhenReady(txtAddressLookup, 3).clear();
-		reusableActions.getWhenReady(txtAddressLookup).sendKeys(strAddress);
+		reusableActions.getWhenReady(txtAddressLookup,20).clear();
+		reusableActions.getWhenReady(txtAddressLookup, 20).sendKeys(strAddress);
 		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.TAB);
-		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.TAB);
-		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.ARROW_DOWN);		
 		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(txtAddressLookup ).sendKeys(Keys.ARROW_DOWN);
+		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.ARROW_DOWN);
+		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.ARROW_DOWN);
 		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.ENTER);
 	}
 	
