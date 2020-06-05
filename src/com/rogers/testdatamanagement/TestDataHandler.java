@@ -8,6 +8,8 @@ import com.rogers.yaml.pojo.Config;
 import com.rogers.yaml.pojo.HUPData;
 import com.rogers.yaml.pojo.PPCData;
 import com.rogers.yaml.pojo.PaymentDetails;
+import com.rogers.yaml.pojo.RedesignConfig;
+import com.rogers.yaml.pojo.RedesignRpotgData;
 import com.rogers.yaml.pojo.SauceSettings;
 
 import com.rogers.yaml.pojo.ContactData;
@@ -110,6 +112,8 @@ public class TestDataHandler {
 	public static MigrationData migrationData;
 	public static PaymentDetails ovPaymentInfo;
 	public static AccountData tc60;
+	public static RedesignConfig redesignConfig;
+	public static RedesignRpotgData redesignRpotgData;
 
 	public static void dataInit (String strApplicationType) {	    	
     	if(strApplicationType.toUpperCase().trim().endsWith("CH")) {	    	
@@ -124,6 +128,9 @@ public class TestDataHandler {
     	} else if(strApplicationType.toUpperCase().trim().endsWith("COV")) {
     		//ch oneview  Data files
     		chOneViewDataInit();
+    	} else if(strApplicationType.toUpperCase().trim().endsWith("NAC"))
+    	{
+    		reDesignDataInit();
     	}
     	else {
     		//All Data files
@@ -131,6 +138,7 @@ public class TestDataHandler {
     		selfserveDataInit();
     		buyFlowsDataInit();
     		chOneViewDataInit();
+    		reDesignDataInit();
     	}
 	
 	}
@@ -263,6 +271,12 @@ public class TestDataHandler {
       	solarisTV = YamlHandler.getOVAccountData("SolarisTV");
       	anonymousData=YamlHandler.getContactData("AnonymousData");
       	migrationData=YamlHandler.getMigrationData("MigrationData");      
+	}
+
+	private static void reDesignDataInit(){
+		redesignConfig=YamlHandler.getRedesignConfig();
+		sauceSettings = YamlHandler.getSauceSettings("/data/redesignrogersNAC/SauceSettings.yml");
+		redesignRpotgData=YamlHandler.getRedesignRpotgData();
 	}
 
 }

@@ -1,0 +1,22 @@
+
+# Config
+---
+url: https://rcom2.qa01.eks.rogers.com/phones/
+#url: https://rcom2.qa01.eks.rogers.com/phones/samsung-galaxy-s20-plus-5g/build-plan?tierType=upfrontEdge&upfrontEdge=true&flowType=nac&sku=S20PL128BLU&step=5&tier=EDGEFIN2TAB&data=f4047&talk=sku_plan_sku1310410_sku1310410&addons=NOPROTECTION
+#url: https://staging.rogers.com/phones/
+browser: chrome
+language: en
+#titleEN: en
+#titleFR: fr
+#homePageURL: https://www.rogers.com/contentful/private/rogers/qa
+#homePageURL: https://www.rogers.com/app/promotions/bundles/qa/
+#homePageURL: https://www.rogers.com/consumer/home
+#homePageURL: https://cexqa.rogers.com/phones/
+#homePageURL: https://staging.rogers.com/phones/
+#homePageURL: https://www.rogers.com/phones
+#homePageURL: https://rdqa1ngxunivrsl.rogers.com/phones/
+#homePageURL:  https://rdqa1ngxunivrsl.rogers.com/phones/
+#homePageURL:  https://rcom1.qa01.aws.rogers.com/phones/
+
+...
+

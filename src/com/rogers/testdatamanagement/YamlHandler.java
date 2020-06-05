@@ -17,6 +17,8 @@ import com.rogers.yaml.pojo.MigrationData;
 import com.rogers.yaml.pojo.NACData;
 import com.rogers.yaml.pojo.PPCData;
 import com.rogers.yaml.pojo.PaymentDetails;
+import com.rogers.yaml.pojo.RedesignConfig;
+import com.rogers.yaml.pojo.RedesignRpotgData;
 import com.rogers.yaml.pojo.SauceSettings;
 
 
@@ -285,5 +287,35 @@ public class YamlHandler {
 
 	}
 
+	public static RedesignConfig getRedesignConfig() {
+		Yaml yaml = new Yaml(new Constructor(RedesignConfig.class));
+		InputStream inputStream;
+		try {
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/redesignrogersNAC/RedesignRogersConfig.yml"));
+			RedesignConfig redesignconfig = yaml.load(inputStream);
+			return redesignconfig;
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
+
+	public static RedesignRpotgData getRedesignRpotgData() {
+		Yaml yaml = new Yaml(new Constructor(RedesignRpotgData.class));
+		InputStream inputStream;
+		try {
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/redesignrogersNAC/RedesignRpotgTestData.yml"));
+			RedesignRpotgData redesignRpotgData = yaml.load(inputStream);
+			return redesignRpotgData;
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 	
 }

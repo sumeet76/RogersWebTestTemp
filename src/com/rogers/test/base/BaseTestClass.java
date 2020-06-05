@@ -44,10 +44,13 @@ import com.rogers.pages.RogersChangeMyCallerIdPage;
 import com.rogers.pages.RogersChangePaymentMethodPage;
 import com.rogers.pages.RogersChangePlanPage;
 import com.rogers.pages.RogersChangeSEPlanPage;
+import com.rogers.pages.RogersCheckoutPage;
 import com.rogers.pages.RogersChooseAddonsPage;
 import com.rogers.pages.RogersChooseNumberPage;
 import com.rogers.pages.RogersChoosePhonePage;
 import com.rogers.pages.RogersChoosePlanPage;
+import com.rogers.pages.RogersDeviceCataloguePage;
+import com.rogers.pages.RogersDeviceConfigPage;
 import com.rogers.pages.RogersDigitalTVDashboardPage;
 import com.rogers.pages.RogersDigitalTVPackageSelectionPage;
 import com.rogers.pages.RogersHomePage;
@@ -64,14 +67,17 @@ import com.rogers.pages.RogersLinkAccountPage;
 import com.rogers.pages.RogersLoginPage;
 import com.rogers.pages.RogersMakePaymentPage;
 import com.rogers.pages.RogersManageDataPage;
+import com.rogers.pages.RogersNACOrderConfirmationPage;
 import com.rogers.pages.RogersOrderConfirmationPage;
 import com.rogers.pages.RogersOrderReviewPage;
 import com.rogers.pages.RogersOrderSummaryPage;
 import com.rogers.pages.RogersPaymentOptionsPage;
 import com.rogers.pages.RogersPaymentPage;
+import com.rogers.pages.RogersPlanConfigPage;
 import com.rogers.pages.RogersProfileAndSettingsPage;
 import com.rogers.pages.RogersRecoverPassOrNamePage;
 import com.rogers.pages.RogersRegisterPage;
+import com.rogers.pages.RogersReviewOrderPage;
 import com.rogers.pages.RogersSecurePaymentPage;
 import com.rogers.pages.RogersSetPasswordPage;
 import com.rogers.pages.RogersShareEverythingPage;
@@ -93,7 +99,6 @@ import com.rogers.test.helpers.CaptchaBypassHandlers;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.test.helpers.RogersEnums.SauceCapabilities;
 import com.rogers.testdatamanagement.TestDataHandler;
-
 import extentreport.ExtentTestManager;
 import utils.AppiumServerJava;
 import utils.BrowserDrivers;
@@ -191,6 +196,12 @@ public class BaseTestClass {
 	//int port = 4723;	
 	private CaptchaBypassHandlers captcha_bypass_handlers;
 	private Map<String, String> sauceParameters;
+	protected RogersDeviceCataloguePage rogers_device_catalogue_page;
+	protected RogersDeviceConfigPage rogers_device_config_page;
+	protected RogersPlanConfigPage rogers_plan_config_page;
+	protected RogersCheckoutPage rogers_checkout_page;
+	protected RogersReviewOrderPage rogers_review_order_page;
+	protected RogersNACOrderConfirmationPage rogers_NAC_order_confirmation_page;
 		
 		public BaseTestClass() {
 			 browserdriver =  new BrowserDrivers();
@@ -246,7 +257,8 @@ public class BaseTestClass {
 			break; 
 			
  		default :
- 			captcha_bypass_handlers.captchaBypassURLLoginFlows(strUrl, strLanguage);
+ 			driver.get(strUrl);
+ 			break;
 		}
 	    setImplicitWait(getDriver(), 10);
 	    init(strGroupName);	 
@@ -521,6 +533,14 @@ public class BaseTestClass {
 			channels_Theme_Packs_Page=new ChannelsAndThemePacksPage(getDriver());
 			home_Phone_Addons_Page=new HomePhoneAddonsPage(getDriver());
 			break;		
+			
+		case "redesignrogers":
+			rogers_device_catalogue_page=new RogersDeviceCataloguePage(getDriver());
+			rogers_device_config_page=new RogersDeviceConfigPage(getDriver());
+			rogers_plan_config_page=new RogersPlanConfigPage(getDriver());
+			rogers_checkout_page=new RogersCheckoutPage(getDriver());
+			rogers_review_order_page=new RogersReviewOrderPage(getDriver());
+			rogers_NAC_order_confirmation_page=new RogersNACOrderConfirmationPage(getDriver());
 		default:
 			
 		}	

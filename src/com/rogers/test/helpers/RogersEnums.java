@@ -21,7 +21,8 @@ public class RogersEnums {
 		selfserve_login,
 		selfserve,
 		mobile_selfserve,
-		buyflows
+		buyflows,
+		redesignrogers
 		  } ;
     
     public enum SauceCapabilities{
