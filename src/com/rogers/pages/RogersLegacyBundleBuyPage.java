@@ -29,8 +29,11 @@ public class RogersLegacyBundleBuyPage extends BasePageClass {
 	@FindBy(xpath = "//a[@href='/consumer/shop/ordersummary/checkout']")
 	WebElement btnCheckout;
 	
-	@FindBy(xpath = "//div[@class='modal-content active']")
-	WebElement popupContactCustomercareForLegacyBundleBuy;
+	@FindBy(xpath = "//div[contains(@class,'preloader')]")
+	WebElement popupLoadingFingers;
+	
+	@FindBy(xpath = "//div[@class='modal-content active']//i[@class='rui-icon-success']")
+	WebElement popupServiceabilitySuccess;
 	
 	@FindBy(xpath = "//div[@data-screen-name='retryServiceability']")
 	WebElement popupMultipleAddress;
@@ -54,12 +57,9 @@ public class RogersLegacyBundleBuyPage extends BasePageClass {
 	 */
 	public void setAddressLookup(String strAddress) {
 		reusableActions.getWhenReady(txtAddressLookup,60).clear();
-		reusableActions.getWhenReady(txtAddressLookup).sendKeys(strAddress);
-		reusableActions.staticWait(100);
-		reusableActions.getWhenVisible(txtAddressLookup ).sendKeys(Keys.SPACE);
-		reusableActions.staticWait(100);
-		reusableActions.getWhenVisible(txtAddressLookup ).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.staticWait(100);
+		reusableActions.getWhenReady(txtAddressLookup,20).sendKeys(strAddress);
+		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.SPACE);
+		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.ARROW_DOWN);
 		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.ENTER);
 	}
 	
@@ -104,6 +104,7 @@ public class RogersLegacyBundleBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public boolean verifyServiceabilitySuccess() {
-		return reusableActions.isElementVisible(popupContactCustomercareForLegacyBundleBuy,30);
+		reusableActions.waitForElementVisibility(popupServiceabilitySuccess,60);
+		return reusableActions.isElementVisible(popupServiceabilitySuccess,20);
 	}
 }
