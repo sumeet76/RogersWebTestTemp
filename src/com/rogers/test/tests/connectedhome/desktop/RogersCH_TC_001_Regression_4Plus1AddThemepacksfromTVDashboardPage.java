@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
+import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 
 /**
@@ -37,14 +38,14 @@ public class RogersCH_TC_001_Regression_4Plus1AddThemepacksfromTVDashboardPage e
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setUsernameIFrame(TestDataHandler.solarisChangeTVManageThemePacks.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.solarisChangeTVManageThemePacks.getPassword());
+		rogers_login_page.setUsernameIFrame(TestDataHandler.igniteTVAccount.getUsername());
+		rogers_login_page.setPasswordIFrame(TestDataHandler.igniteTVAccount.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
 		reporter.reportLogWithScreenshot("Skip popup");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
-		rogers_account_overview_page.selectAccount((TestDataHandler.solarisChangeTVManageThemePacks.accountDetails.getBan()));
+		rogers_account_overview_page.selectAccount((TestDataHandler.igniteTVAccount.accountDetails.getBan()));
 		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		rogers_solaris_tv_dashboard_page.clkTVBadge();
@@ -67,16 +68,14 @@ public class RogersCH_TC_001_Regression_4Plus1AddThemepacksfromTVDashboardPage e
 		rogers_order_review_page.clkAcceptenceCheckbox();
 		reporter.reportLogWithScreenshot("Agreement details");
 		rogers_order_review_page.clkSubmit();
-		rogers_order_confirmation_page.verifyOrderConfirmation();
-		reporter.reportLogWithScreenshot("Launched the Confirmation page");
 		reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
 		reporter.reportLogWithScreenshot("Launched the Confirmation page");
 	}
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})
+	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
-	public void beforeTest(String strBrowser, String strLanguage, String strGroupName,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.rogersConfig.getRogersURL(),  strBrowser,strLanguage,strGroupName, method);
+	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+		startSession(TestDataHandler.rogersConfig.getRogersURL(),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 

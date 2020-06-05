@@ -44,7 +44,7 @@ public class RogersLegacyBundleBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSelectBundle() {
-		reusableActions.getWhenReady(btnSelectBundle).click();
+		reusableActions.getWhenReady(btnSelectBundle,60).click();
 	}
 	
 	/**
@@ -53,7 +53,7 @@ public class RogersLegacyBundleBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void setAddressLookup(String strAddress) {
-		reusableActions.getWhenReady(txtAddressLookup,3 ).clear();
+		reusableActions.getWhenReady(txtAddressLookup,60).clear();
 		reusableActions.getWhenReady(txtAddressLookup).sendKeys(strAddress);
 		reusableActions.staticWait(100);
 		reusableActions.getWhenVisible(txtAddressLookup ).sendKeys(Keys.SPACE);

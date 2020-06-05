@@ -3,7 +3,7 @@
 
 <suite name="Self Serve Rogers.com Tests SS" parallel="classes" thread-count="2">
 
-<parameter name="strBrowser" value="chrome"/>
+<parameter name="strBrowser" value="saucechrome"/>
 <parameter name="strLanguage" value="en"/>
 <parameter name="strType" value="seq"/>
 <listeners>
