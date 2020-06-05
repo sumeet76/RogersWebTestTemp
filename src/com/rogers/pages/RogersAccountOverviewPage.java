@@ -50,9 +50,11 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	
 	@FindBy(xpath = "//span[@translate='ute.rogers.rhpDashboard.contactMangerFeatures']")
 	WebElement lnkContactUsToManageFeaturess;
-	
-	@FindBy(xpath = "//span[@translate='ute.rogers.account.balance.view_your_bill']")
-	WebElement btnViewYourBill;
+		
+	@FindAll({
+        @FindBy(xpath = "//span[text()=' View your bill ' or text()=' Afficher votre facture ']"),
+        @FindBy(xpath = "//span[@translate='ute.rogers.account.balance.view_your_bill']")})
+    WebElement btnViewYourBill;
 
 	@FindBy(xpath = "//span[contains(@data-translate,'linkAnotherAccount')]")
 	WebElement lnkLinkAnotherAccount;
@@ -88,6 +90,11 @@ public class RogersAccountOverviewPage extends BasePageClass {
         @FindBy(xpath = "//span[@data-translate='ute.common.label.profileAndSetting']")})
     WebElement menuProfileNSettings;
 
+	@FindBy(xpath = "//a/span[text()='Profile & Settings' or text()='Profil et paramètres']")
+	WebElement menuProfileAndSettingsMobile;
+	
+	@FindBy(xpath = "//button[contains(text(),'Overview') or contains(text(),'Survol')]")
+	WebElement btnOverViewMobile;
 	
 	@FindBy (xpath = "//h3[@translate='acc_overview_which_account']")
 	WebElement headerAccountSelect;
@@ -157,6 +164,11 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	
 	@FindBy (xpath = "//button[@aria-label='ute.common.label.profileAndSetting']")
 	WebElement btnProfileSettingsMobile;
+	
+	@FindAll({
+		@FindBy(xpath = "//span[contains(text(),'Entertainment') or contains(text(),'')]/ancestor::div[@class='subscription-detail']"),
+        @FindBy(xpath = "//span[@translate='ute.subscriptionBadge.smartStream']")})	
+	WebElement btnEntertainmentBadge;
 
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
@@ -195,7 +207,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkLegacyInternetBadge(String strBrowser) {
-		if (strBrowser.equalsIgnoreCase("chrome"))
+		if (strBrowser.toLowerCase().contains("chrome"))
 		{
 		reusableActions.getWhenReady(btnLegacyInternetBadge, 120).click();
 		}else {
@@ -379,6 +391,18 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			}
 			count++;
 		}
+	}
+	
+	/**
+	 * Click on menu Profile and Settings on Mobile
+	 * @author Mirza.Kamran
+	 */
+	public void clkLnkProfileNSettingsMobile() {
+		
+		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
+		reusableActions.getWhenReady(menuProfileAndSettingsMobile,30).click();			
+		reusableActions.waitForElementVisibility(headerProfileNSettings,60);
+					
 	}
 	
 	/**
@@ -710,5 +734,19 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void scrollToTopOfPage() {
 		reusableActions.javascriptScrollToTopOfPage();
+	}
+	
+	/**
+	 * Clicks on Tupelo entertainment badge
+	 * @author Mirza.Kamran
+	 */
+	public void clkEntertainmentBadge() {
+		reusableActions.getWhenReady(btnEntertainmentBadge).click();
+		
+	}
+
+	public void clkViewBill() {
+	reusableActions.clickIfAvailable(btnViewYourBill);
+		
 	}
 }

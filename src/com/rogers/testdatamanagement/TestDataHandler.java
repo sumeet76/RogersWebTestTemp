@@ -2,6 +2,8 @@ package com.rogers.testdatamanagement;
 
 import com.rogers.yaml.pojo.CHOneViewConfig;
 import com.rogers.yaml.pojo.MigrationData;
+
+
 import com.rogers.yaml.pojo.AALData;
 import com.rogers.yaml.pojo.AccountData;
 import com.rogers.yaml.pojo.Config;
@@ -110,6 +112,8 @@ public class TestDataHandler {
 	public static MigrationData migrationData;
 	public static PaymentDetails ovPaymentInfo;
 	public static AccountData tc60;
+	public static AccountData shmAccount;
+	public static AccountData tupeloAccount;
 
 	public static void dataInit (String strApplicationType) {	    	
     	if(strApplicationType.toUpperCase().trim().endsWith("CH")) {	    	
@@ -232,11 +236,14 @@ public class TestDataHandler {
     	tc82 = YamlHandler.getAccountData("tc82InfiniteSE");
     	
     	//================ Connected home =========================
-    	igniteRHP = YamlHandler.getCableAccountData("IgniteRHP");
-    	solarisInternetAccountWithUsage = YamlHandler.getCableAccountData("SolarisInternetAccountWithUsage");
-    	igniteTVAccount = YamlHandler.getCableAccountData("IgniteTVAccount");
-    	digitalTVAccount = YamlHandler.getCableAccountData("DigitalTVAccount");
-    	legacyRHP = YamlHandler.getCableAccountData("LegacyRHP");
+    	igniteRHP = YamlHandler.getAccountData("IgniteRHP");
+    	solarisInternetAccountWithUsage = YamlHandler.getAccountData("SolarisInternetAccountWithUsage");
+    	igniteTVAccount = YamlHandler.getAccountData("IgniteTVAccount");
+    	digitalTVAccount = YamlHandler.getAccountData("DigitalTVAccount");
+    	legacyRHP = YamlHandler.getAccountData("LegacyRHP");
+    	legacyInternetAccount = YamlHandler.getAccountData("LegacyInternetAccount");
+    	shmAccount = YamlHandler.getAccountData("SHMAccount");
+    	tupeloAccount = YamlHandler.getAccountData("TupeloAccount");
 	}
 	
 	private static void buyFlowsDataInit() {

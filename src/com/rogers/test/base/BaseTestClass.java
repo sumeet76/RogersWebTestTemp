@@ -72,6 +72,7 @@ import com.rogers.pages.RogersPaymentPage;
 import com.rogers.pages.RogersProfileAndSettingsPage;
 import com.rogers.pages.RogersRecoverPassOrNamePage;
 import com.rogers.pages.RogersRegisterPage;
+import com.rogers.pages.RogersSHMDashboardPage;
 import com.rogers.pages.RogersSecurePaymentPage;
 import com.rogers.pages.RogersSetPasswordPage;
 import com.rogers.pages.RogersShareEverythingPage;
@@ -187,6 +188,7 @@ public class BaseTestClass {
 	protected OrderConfirmationPage order_Confirmation_Page;
 	protected ChannelsAndThemePacksPage channels_Theme_Packs_Page;
 	protected HomePhoneAddonsPage home_Phone_Addons_Page;
+	protected RogersSHMDashboardPage rogers_shm_dashboard_page;
 	AppiumServerJava appiumServer = new AppiumServerJava();	
 	//int port = 4723;	
 	private CaptchaBypassHandlers captcha_bypass_handlers;
@@ -368,6 +370,7 @@ public class BaseTestClass {
 			rogers_solaris_tv_dashboard_page = new RogersSolarisTVDashboardPage(driver);
 			rogers_digital_tv_dashboard_page = new RogersDigitalTVDashboardPage(driver);
 			rogers_account_overview_page = new RogersAccountOverviewPage(driver);	
+			rogers_shm_dashboard_page =  new RogersSHMDashboardPage(driver);
 			break;
 			
 		case "connectedhome_legacyanonymous":

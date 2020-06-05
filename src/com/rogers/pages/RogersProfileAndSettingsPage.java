@@ -124,6 +124,9 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//span[contains(text(),'Change billing address') or contains(text(),'Changer l’adresse de facturation')]")
 	WebElement lnkChangeBillingAddress;
 	
+	@FindBy(xpath = "//button[@title='Change billing address' or @title='Changer l’adresse de facturation']")
+	WebElement lnkChangeBillingAddressMobile;
+	
 	@FindBy (xpath = "//span[contains(text(),'home number') or contains(text(),'numéro à la maison')]")
 	WebElement lnkUpdateHomeNumber;
 	
@@ -249,6 +252,9 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	
 	@FindBy (xpath = "//div[contains(text(),'Email') or contains(text(),'adresse courriel')]/following-sibling::div/button")
 	WebElement btnAddEmailMobile;
+	
+	@FindBy(xpath = "//div[contains(@class,'QSISlider')]/div/following-sibling::div//img")
+	WebElement btnCloseFeedbackMobile;
 		
 	/**
 	 * Click on setup recovery number link
@@ -604,6 +610,14 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void clkLnkChangeBillingAddress() {
 		reusableActions.clickWhenReady(lnkChangeBillingAddress, 30);
+	}
+	
+	/**
+	 * Click the link Add Contact Email in Contact Information section
+	 * @author Mirza.Kamran
+	 */
+	public void clkLnkChangeBillingAddressMobile() {
+		reusableActions.clickWhenReady(lnkChangeBillingAddressMobile, 30);
 	}
 	
 	/**
@@ -1033,5 +1047,13 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	public void clkBtnAddEmailMobile() {
 		reusableActions.clickWhenReady(btnAddEmailMobile);
 		
+	}
+	
+	/**
+	 * Will close the feedback bar if available on mobile
+	 * @author Mirza.Kamran
+	 */
+	public void clkCloseFeedbackIfAvailableMobile() {
+		reusableActions.clickIfAvailable(btnCloseFeedbackMobile);
 	}
 }

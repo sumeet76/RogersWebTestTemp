@@ -33,6 +33,7 @@ public class RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest extends Base
         reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),
 			        		"Login successful",
 			        		"Login Error. Refer screenshot");
+        rogers_account_overview_page.clkViewBill();
         rogers_account_overview_page.clickMakePayment();
 		reporter.reportLogWithScreenshot("Make Payment button is clicked.");
         reporter.hardAssert(rogers_secure_payment_page.verifySecurePaymentLoad(),

@@ -1,5 +1,6 @@
 package com.rogers.pages;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -131,7 +132,18 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//i[@class='ute-icon-button-left']")
 	WebElement imgPrevious;
 
-	  
+	@FindBy(xpath = "//span[contains(text(),'Home Monitoring') or contains(text(),'Système domotique')]/ancestor::div[@class='subscription-detail']")
+	WebElement btnSHMBadge;
+
+	@FindBy(xpath = "//ins[@usertype-translate='global.dashboard.tv.digitalBoxes']")
+	WebElement lblBoxHeader;
+
+	@FindBy(xpath = "//ins[@translate='global.dashboard.tv.digitalBoxSettings']")
+	WebElement lblBoxSettings;
+
+	@FindBy(xpath = "//ins[@translate='global.label.tv']")
+	WebElement lblHeaderTV;
+
 	
 	/**
 	 * Click on Reset Parental controls And Pin link
@@ -549,6 +561,43 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 */
 	public boolean verifyViewFlexChannelsDisplayed() {		
 		return reusableActions.isElementVisible(lnkViewfelxChannels,60);
+	}
+
+	/**
+	 * Clicks on SHM Badge
+	 * @author Mirza.Kamran
+	 */
+	public void clkSHMBadge() {		
+		reusableActions.getWhenReady(btnSHMBadge).click();
+	}
+
+	
+
+	/**
+	 * verifies if the Tupelo Dashboard is displayed
+	 * @return true if displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyTupeloDashbaordIsDisplayed() {
+		return reusableActions.isElementVisible(lblHeaderTV);
+		
+	}
+
+	/**
+	 * Verifies if the smart screen box is displayed
+	 * @return true if the box is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyBoxCountIsDisplayed() {		
+		return reusableActions.isElementVisible(lblBoxHeader);
+	}
+
+	/**
+	 * Smart screen box settings is displayed
+	 * @return true if the box settings is displayed
+	 */
+	public boolean verifyBoxSettingslsDisplayed() {		
+		return reusableActions.isElementVisible(lblBoxSettings);
 	}
 
 }
