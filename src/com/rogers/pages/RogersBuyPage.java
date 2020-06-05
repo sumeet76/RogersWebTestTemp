@@ -84,7 +84,9 @@ public class RogersBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkExchangeFlexChannel() {
-			reusableActions.clickWhenReady(btnExchangeFlexChannel, 40);
+		reusableActions.clickWhenReady(btnExchangeFlexChannel, 60);
+		//for Prod issue, click the same link second time
+		reusableActions.clickIfAvailable(btnExchangeFlexChannel, 60);
 	}
 	
 	

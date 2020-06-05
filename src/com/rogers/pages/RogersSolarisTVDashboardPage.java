@@ -281,9 +281,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @param strPackageNameFr solaris tv package name to be upgrade or downgrade  
 	 * @author chinnarao.vattam
 	 */
-/*	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
+	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
 		By packageNameLocator = By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'owl-item')]//ins[@translate='global.cta.select']");
-		//reusableActions.waitForElementInvisibility(popupLoadingFingers,180);
 		if(reusableActions.isElementVisible(packageNameLocator,180))
 		{		
 		reusableActions.getWhenReady(packageNameLocator, 90).click();
@@ -294,14 +293,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	    reusableActions.isElementVisible(packageNameLocator,180);
 		reusableActions.getWhenReady(packageNameLocator, 90).click();
 		}
-	}*/
-
-	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
-		By packageNameLocator = By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'owl-item')]//ins[@translate='global.cta.select']");
-		//reusableActions.waitForElementInvisibility(popupLoadingFingers,180);
-		reusableActions.staticWait(2000);
-		//reusableActions.getWhenReady(packageNameLocator, 90).click();
 	}
+
 	
 	/**
 	 * Click the ChangeTV Package button on solaris TV dashboard page
@@ -444,10 +437,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	public void swapChannelIn(String strInChannel) {
 			reusableActions.getWhenReady(txtEnterChannelToSerach, 60).clear();
 			reusableActions.getWhenReady(txtEnterChannelToSerach, 60).sendKeys(strInChannel);
-			reusableActions.staticWait(1000);
+			reusableActions.waitForElementVisibility(btnSearchChannel, 90);
 			reusableActions.executeJavaScriptClick(btnSearchChannel);
 			reusableActions.waitForElementVisibility(btnSelectChannel, 120);
-			reusableActions.staticWait(1000);
 			reusableActions.scrollToElement(btnSelectChannel);
 			reusableActions.getWhenReady(btnSelectChannel, 120).click();	
 		}

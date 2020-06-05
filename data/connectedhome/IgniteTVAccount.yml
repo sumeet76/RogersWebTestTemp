@@ -8,9 +8,9 @@ accountDetails:
    ban: 932525512
    rhmPackageEn: Control Package
    rhmPackageFr: Forfait Contrôle
-   swapInChannelOne: spark
-   swapInChannelTwo: hifi 
-   swapInChannelThree: max
+   swapInChannelOne: AMC
+   swapInChannelTwo: DejaView 
+   swapInChannelThree: game
    address:
      line1: 706-10 Lisa St
      line2: BRAMPTON ON L6T 4N4       
