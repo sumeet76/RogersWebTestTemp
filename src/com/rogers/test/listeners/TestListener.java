@@ -13,6 +13,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.IInvokedMethod;
 import org.testng.IInvokedMethodListener;
 import org.testng.ISuite;
@@ -56,7 +57,12 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
 		Object xmlTestParams = iTestResult.getInstance();
 		HashMap<String, String> xmlTestParameters = ((BaseTestClass) xmlTestParams).getXMLParameters();
 		String testClassName = fullTestClassName[fullTestClassName.length-1] +"_" + xmlTestParameters.get("strBrowser") +"_" + xmlTestParameters.get("strLanguage")+"_"+xmlTestParameters.get("strType");    
-		ExtentTestManager.startTest(testClassName,iTestResult.getName());	 
+		ExtentTestManager.startTest(testClassName,iTestResult.getName());	
+		Object testClass = iTestResult.getInstance();
+		WebDriver driver = ((BaseTestClass) testClass).getDriver(); 
+		String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s",
+	    		    (((RemoteWebDriver) driver).getSessionId()).toString(), getTestMethodName(iTestResult));
+	    		    System.out.println(message);
 
 	}
 
