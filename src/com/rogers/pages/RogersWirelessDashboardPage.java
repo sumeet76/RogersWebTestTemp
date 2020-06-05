@@ -1823,7 +1823,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 
 	/**
 	 * Checks if the set data alert button is displayed
-	 * @return
+	 * @return true if element displayed else false
+	 * @author Mirza.Kamran
 	 */
 	public boolean isSetDataAlertDisplayed() {		
 		return reusableActions.isElementVisible(btnSetDataAlert);
@@ -1847,8 +1848,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Checks if the data alert overlay is displayed
+	 * @return true if the set data alert overlay is displayed else false
+	 * @author Mirza.Kamran
 	 */
 	public boolean isSetDataAlertOverlayDisplayed() {		
 		return reusableActions.isElementVisible(titleSetDataAlert);		
@@ -1856,6 +1858,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 
 	/**
 	 * Sets the data alert value
+	 * @param strDataAlertValue data alert value
 	 * @author Mirza.Kamran
 	 */
 	public void setDataAlert(String strDataAlertValue) {				
@@ -1872,9 +1875,10 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	}
 	
 	/**
-	 * Checks the data alert value set
+	 *  Checks the data alert value set
 	 * @return true if the value is set else false
-	 * @author Mirza.Kamran
+	 * @param strDataAlert data alert value
+	 * @return
 	 */
 	public boolean isSetDataAlertCorrectlySet(String strDataAlert) {
 		return reusableActions.getWhenReady(lblDataAlertSetValue).getText().trim().replaceAll(",", ".").contains(strDataAlert);

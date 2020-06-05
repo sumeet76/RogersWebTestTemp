@@ -50,9 +50,11 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	
 	@FindBy(xpath = "//span[@translate='ute.rogers.rhpDashboard.contactMangerFeatures']")
 	WebElement lnkContactUsToManageFeaturess;
-	
-	@FindBy(xpath = "//span[@translate='ute.rogers.account.balance.view_your_bill']")
-	WebElement btnViewYourBill;
+		
+	@FindAll({
+        @FindBy(xpath = "//span[text()=' View your bill ' or text()=' Afficher votre facture ']"),
+        @FindBy(xpath = "//span[@translate='ute.rogers.account.balance.view_your_bill']")})
+    WebElement btnViewYourBill;
 
 	@FindBy(xpath = "//span[contains(@data-translate,'linkAnotherAccount')]")
 	WebElement lnkLinkAnotherAccount;
@@ -740,6 +742,11 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void clkEntertainmentBadge() {
 		reusableActions.getWhenReady(btnEntertainmentBadge).click();
+		
+	}
+
+	public void clkViewBill() {
+	reusableActions.clickIfAvailable(btnViewYourBill);
 		
 	}
 }

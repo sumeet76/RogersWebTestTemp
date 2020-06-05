@@ -49,6 +49,7 @@ public class RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaymentMeth
     	String strPassword = TestDataHandler.tc1920.getPassword();		
 		tryLogin(strUsername, strPassword);
 		reporter.reportLogWithScreenshot("Account overveiew page");
+		rogers_account_overview_page.clkViewBill();
 		if(!rogers_account_overview_page.isSetAutoPaymentDisplayed())
 		{
 			reporter.reportLogWithScreenshot("Automatic payment is already set, trying to switch to manual");
