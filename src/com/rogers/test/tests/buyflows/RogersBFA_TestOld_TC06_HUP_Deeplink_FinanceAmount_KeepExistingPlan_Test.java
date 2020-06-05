@@ -29,7 +29,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  * @author rajesh.varalli1
  *
  */
-public class RogersBFA_TC06_HUP_Deeplink_FinanceAmount_KeepExistingPlan_Test extends BaseTestClass {
+public class RogersBFA_TestOld_TC06_HUP_Deeplink_FinanceAmount_KeepExistingPlan_Test extends BaseTestClass {
 
 	@Test
     public void validateSignInAndAccountOverview() {

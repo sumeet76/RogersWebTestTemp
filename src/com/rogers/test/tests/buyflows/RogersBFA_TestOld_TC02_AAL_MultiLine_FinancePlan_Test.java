@@ -34,7 +34,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  * @author rajesh.varalli1
  *
  */
-public class RogersBFA_TC02_AAL_MultiLine_FinancePlan_Test extends BaseTestClass {
+public class RogersBFA_TestOld_TC02_AAL_MultiLine_FinancePlan_Test extends BaseTestClass {
 
 	@Test
     public void performAALMultiLine() {

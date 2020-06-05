@@ -33,10 +33,10 @@ import com.rogers.testdatamanagement.TestDataHandler;
  * @author rajesh.varalli1
  *
  */
-public class RogersBFA_TC01_AAL_SingleLine_FinancePlan_Test extends BaseTestClass {
+public class RogersBFA_TC07_AAL_Test extends BaseTestClass {
 
 	@Test
-    public void performSingleLineAAL() {
+    public void aalFlowTest() {
 		reporter.reportLogWithScreenshot("Home Page");
 		rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();

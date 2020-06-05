@@ -30,7 +30,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  * @author rajesh.varalli1
  *
  */
-public class RogersBFA_TC08_PPC_onAdditionalLine_FinanceAccount_Test extends BaseTestClass {
+public class RogersBFA_TestOld_TC08_PPC_onAdditionalLine_FinanceAccount_Test extends BaseTestClass {
 
 	@Test
     public void performPPCOnAdditionalLine() {

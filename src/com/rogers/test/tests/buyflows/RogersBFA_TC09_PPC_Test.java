@@ -29,10 +29,10 @@ import com.rogers.testdatamanagement.TestDataHandler;
  * @author rajesh.varalli1
  *
  */
-public class RogersBFA_TC03_PPC_onMainLine_FinanceAccount_Test extends BaseTestClass {
+public class RogersBFA_TC09_PPC_Test extends BaseTestClass {
 
 	@Test
-    public void performPPCOnMainline() {
+    public void ppcFlowTest() {
 		reporter.reportLogWithScreenshot("Home Page");
 		rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();

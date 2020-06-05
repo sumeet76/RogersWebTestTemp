@@ -11,26 +11,26 @@
 			class-name="com.rogers.test.listeners.AnnotationTransformer" />
 	</listeners>
 	
-	<test name="TC01-Rogers AAL e2e" enabled="true">
+	<test name="TC07 - Rogers - Regression - Perform Rogers AAL - e2e" enabled="true">
 	<classes>
 			<class
-				name="com.rogers.test.tests.buyflows.RogersBFA_TC01_AAL_SingleLine_FinancePlan_Test">
+				name="com.rogers.test.tests.buyflows.RogersBFA_TC07_AAL_Test">
 			</class>
 		</classes>
 	</test>
-		
-	<test name="TC03-PPC e2e" enabled="true">
+
+	<test name="TC08 - Rogers - Regression - Perform Rogers HUP - e2e" enabled="true">
 	<classes>
 			<class
-				name="com.rogers.test.tests.buyflows.RogersBFA_TC03_PPC_onMainLine_FinanceAccount_Test">
+				name="com.rogers.test.tests.buyflows.RogersBFA_TC08_HUP_Test">
 			</class>
 		</classes>
 	</test>
-		
-	<test name="TC04-HUP e2e" enabled="true">
+			
+	<test name="TC09 - Rogers - Regression - Perform Rogers PPC - e2e" enabled="true">
 	<classes>
 			<class
-				name="com.rogers.test.tests.buyflows.RogersBFA_TC04_HUP_onMainLine_KeepExistingPlan_Test">
+				name="com.rogers.test.tests.buyflows.RogersBFA_TC09_PPC_Test">
 			</class>
 		</classes>
 	</test>
