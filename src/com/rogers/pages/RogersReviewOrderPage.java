@@ -226,7 +226,7 @@ public class RogersReviewOrderPage extends BasePageClass {
      */
     public void clkSubmitOrderBtn() {
         reusableActions.clickIfAvailable(submitOrderBtn,2);
-        reusableActions.staticWait(7000);
+        reusableActions.staticWait(9000);
     }
 
 }

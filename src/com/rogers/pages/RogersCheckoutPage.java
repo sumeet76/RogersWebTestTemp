@@ -37,37 +37,37 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "(//div[contains(.,'E-mail Address')])[11]")
 	WebElement emailCreateProfile;
 
-	@FindBy(xpath = "//input[@id='ds-form-input-id-0']")
+	@FindBy(xpath = "//input[@formcontrolname='email']")
 	WebElement inputEmail;
 
 	@FindBy(xpath = "(//div[contains(.,'Confirm E-mail Address')])[11]")
 	WebElement confirmEmailCreateProfile;
 
-	@FindBy(xpath = "//input[@id='ds-form-input-id-1']")
+	@FindBy(xpath = "//input[@formcontrolname='confirmEmail']")
 	WebElement inputConfirmEmail;
 
 	@FindBy(xpath = "(//div[contains(.,'First Name')])[11]")
 	WebElement firstNameCreateProfile;
 
-	@FindBy(xpath = "//input[@id='ds-form-input-id-2']")
+	@FindBy(xpath = "//input[@formcontrolname='firstName']")
 	WebElement inputFirstName;
 
 	@FindBy(xpath = "(//div[contains(.,'Last Name')])[11]")
 	WebElement lastNameCreateProfile;
 
-	@FindBy(xpath = "//input[@id='ds-form-input-id-3']")
+	@FindBy(xpath = "//input[@formcontrolname='lastName']")
 	WebElement inputLastName;
 
 	@FindBy(xpath = "(//div[contains(.,'Contact Number')])[11]")
 	WebElement contactNumberCreateProfile;
 
-	@FindBy(xpath = "//input[@id='ds-form-input-id-4']")
+	@FindBy(xpath = "//input[@formcontrolname='contact']")
 	WebElement inputContactNumber;
 
 	@FindBy(xpath = "(//div[contains(.,'Billing Address')])[13]")
 	WebElement billingAddressCreateProfile;
 
-	@FindBy(xpath = "//input[@id='ds-form-input-id-9']")
+	@FindBy(xpath = "(//div[contains(.,'Billing Address')])[13]/input")
 	WebElement inputBillingAddress;
 
 	@FindBy(xpath = "//div[contains(@class,'auto-suggest-list ng-star-inserted')]")
@@ -528,8 +528,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void setExpiryDate(String strExpiryDate) {
+		reusableActions.staticWait(4000);
 		reusableActions.getWhenReady(txtExpiryDate).click();
-		reusableActions.staticWait(3000);
 		reusableActions.getWhenReady(inputExpiryDate, 10).sendKeys(strExpiryDate);
 	}
 
