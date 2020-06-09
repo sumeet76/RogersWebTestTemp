@@ -7,12 +7,12 @@
 			class-name="com.rogers.test.listeners.AnnotationTransformer" />
 		<listener class-name="com.rogers.test.listeners.TestListener" />
 	</listeners>
-<parameter name="strBrowser" value="chrome"/>
+<parameter name="strBrowser" value="saucechrome"/>
 <parameter name="strLanguage" value="en"/>
 
 <test name="Ignite RHP Validation Test">
 <classes>				             
-	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_001_IginteTV_BuyBundleTest"></class> 
+<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_023_LegacyRHP_ValidateRHPDashboardTest"></class>  
 </classes>          																					
 </test>
 				
