@@ -60,6 +60,7 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
 		ExtentTestManager.startTest(testClassName,iTestResult.getName());	
 		Object testClass = iTestResult.getInstance();
 		WebDriver driver = ((BaseTestClass) testClass).getDriver(); 
+		((JavascriptExecutor)driver).executeScript("sauce:job-name="+getTestMethodName(iTestResult)); 
 		String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s",
 	    		    (((RemoteWebDriver) driver).getSessionId()).toString(), getTestMethodName(iTestResult));
 	    		    System.out.println(message);
