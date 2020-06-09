@@ -60,9 +60,7 @@ public class RogersCH_TC_001_IginteTV_TVChannelsSwapFromAddressmodalTest extends
     reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 	rogers_home_page.clkServiceabilityMigration();  
     reporter.reportLogWithScreenshot("Address confirmation popup has lanched to select Ignite Internet speed button"); 
-    rogers_buy_page.clkExchangeFlexChannel(); 
-    reporter.reportLogWithScreenshot("Launched the TV dash board");
-    rogers_solaris_tv_dashboard_page.clkChangeFlexChannels();  
+    rogers_buy_page.clkExchangeFlexChannel();  
     reporter.reportLogWithScreenshot("TV channels pannel has displayed");
     rogers_solaris_tv_dashboard_page.clkOutChannelOne();
     rogers_solaris_tv_dashboard_page.clkOutChannelTwo();

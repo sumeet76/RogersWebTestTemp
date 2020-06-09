@@ -123,7 +123,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='digital-box-settings']//ins[@translate='global.cta.resetParentalControlsPIN']")
 	WebElement lnkResetParentalConrolsAndPin;
 	
-	@FindBy(xpath = "//div[@class='modal-content']//ins[@translate='global.cta.yesResetPinNumber']")
+	@FindBy(xpath = "//div[@class='modal-content']//ins[contains(@ng-bind,'global.cta.yesResetPinNumber')]")
 	WebElement btnContinueParentalControlAndPinReset;	
 
 	@FindBy(xpath = "//i[@class='ute-icon-button-right']")
@@ -147,7 +147,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	
 	/**
 	 * Click on Reset Parental controls And Pin link
-	 * @author Saurav.Goyal
+	 * @author chinnarao.vattam
 	 */
 	public void clkResetParentalConrolsAndPin() {
 		reusableActions.clickWhenReady(lnkResetParentalConrolsAndPin,40);
@@ -155,10 +155,10 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	
 	/**
 	 * Click on continue button on the Parental controls And Pin reset alert window
-	 * @author Saurav.Goyal
+	 * @author chinnarao.vattam
 	 */
 	public void clkContinueParentalControlAndPinReset() {
-		reusableActions.clickWhenReady(btnContinueParentalControlAndPinReset,40);
+		reusableActions.clickWhenReady(btnContinueParentalControlAndPinReset,90);
 	}
 	
 	/**
@@ -262,7 +262,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	
 	/**
 	 * Click the Manage Channels And Theme Packs link on solaris TV dashboard page
-	 * @author Saurav.Goyal
+	 * @author chinnarao.vattam
 	 */
 	public void clkManageChannelsAndThemePacks() {
 		reusableActions.clickWhenReady(btnManageChannelsAndThemePacks, 90);
@@ -274,7 +274,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 */
 	public void clkChangeFlexChannels() {
 		reusableActions.waitForElementInvisibility(By.className("QSIPopOverShadowBox"),20);
-		reusableActions.getWhenReady(infoChangeFlexChannels, 240).click();
+		reusableActions.getWhenReady(infoChangeFlexChannels, 120).click();
 	}
 
 	/**
@@ -345,7 +345,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	/**
 	 * Verify successful reset message of the Parental Controls And Pin
 	 * @return true if success message is displayed successfully, else false
-	 * @author saurav.goyal
+	 * @author chinnarao.vattam
 	 */
 	public boolean verifyResetParentalControlsAndPinSuccess() {		
 		return reusableActions.isElementVisible(successMessageParentalControlAndPinReset, 90);
@@ -403,7 +403,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkOutChannelOne() {
-				reusableActions.clickWhenReady(btnSelectChannelOne, 120);
+		reusableActions.clickWhenReady(btnSelectChannelOne, 120);
 	}
 	
 	/**
@@ -447,14 +447,14 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void swapChannelIn(String strInChannel) {
-			reusableActions.getWhenReady(txtEnterChannelToSerach, 60).clear();
-			reusableActions.getWhenReady(txtEnterChannelToSerach, 60).sendKeys(strInChannel);
-			reusableActions.waitForElementVisibility(btnSearchChannel, 90);
-			reusableActions.executeJavaScriptClick(btnSearchChannel);
-			reusableActions.waitForElementVisibility(btnSelectChannel, 120);
-			reusableActions.scrollToElement(btnSelectChannel);
-			reusableActions.getWhenReady(btnSelectChannel, 120).click();	
-		}
+			reusableActions.getWhenReady(txtEnterChannelToSerach, 120).clear();
+			reusableActions.getWhenReady(txtEnterChannelToSerach, 30).sendKeys(strInChannel);
+			reusableActions.waitForElementVisibility(btnSearchChannel,60);
+			reusableActions.executeJavaScriptClick(btnSearchChannel);			
+			By imgChannel = By.xpath("//div[@class='channel-title' and contains(text(), '"+ strInChannel+"')]/ancestor::div[@class='genre-channel']//span[@class='ute-icon-info']");
+			reusableActions.waitForElementVisibility(btnSearchChannel,120);
+			reusableActions.getWhenReady(imgChannel, 30).click();	
+	}
 	
 	/**
 	 * Click the Channel Add button 
@@ -468,8 +468,10 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * Click the Serach Results on flex channels page
 	 * @author chinnarao.vattam
 	 */
-		public void btnClearSerachResults() {		
-			reusableActions.getWhenReady(btnClearSerachResults, 90).click();
+		public void btnClearSerachResults() {	
+			reusableActions.waitForElementVisibility(btnClearSerachResults, 60);
+			reusableActions.scrollToElement(btnClearSerachResults);
+			reusableActions.executeJavaScriptClick(btnClearSerachResults);
 		}
 	
 	/**

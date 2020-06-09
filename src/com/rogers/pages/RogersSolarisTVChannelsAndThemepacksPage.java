@@ -51,7 +51,6 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	@FindBy(xpath = "//button[@id='add-themepack-button']")
 	List<WebElement> addThemePackListOnManageChannelsAndThemePacks;
 	
-	
 	@FindBy(xpath = "//button[@class='ute-btn-primary ute-md']")
 	WebElement yesContinueOnExistingChannelAlert;
 	
@@ -64,10 +63,10 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	
 	/**
 	 * Click on add button of the first pack in theme pack in manage channels and theme pack
-	 * @author Saurav.Goyal	 
+	 * @author chinnarao.vattam	 
 	 */
 	public void clkAddButtonOnThemePackListOnManageChannelsAndThemePacks() {
-		reusableActions.clickWhenReady(addThemePackListOnManageChannelsAndThemePacks.get(0), 120);
+		reusableActions.clickWhenReady(addThemePackListOnManageChannelsAndThemePacks.get(0), 180);
 	}		
 	
 	/**
@@ -81,7 +80,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	
 	/**
 	 * Click on Confirm changes While adding channels in Manage channels and theme packs
-	 * @author Saurav.Goyal	 
+	 * @author chinnarao.vattam	 
 	 */
 	public void clkConfirmChangesOnManageChannelsAndThemePacks() {
 		reusableActions.clickWhenReady(clkConfirmChangesOnManageChannelsAndThemePacks, 120);
@@ -124,7 +123,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	
 	/**
 	 * Click theme pack tab
-	 * @author Saurav.Goyal	 
+	 * @author chinnarao.vattam	 
 	 */
 	public void clkThemePacks() {
 		reusableActions.clickWhenReady(tabThemePacks, 120);
@@ -140,13 +139,12 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	
 	/**
 	 * Click continue on existing channel alert window
-	 * @author Saurav.Goyal	 
+	 * @author chinnarao.vattam	 
 	 */
 	public void clkContinueOnExistingChannelAlertWindow() {
 		reusableActions.clickWhenReady(yesContinueOnExistingChannelAlert, 120);
 	}	
-	
-	
+		
 	/**
 	 * Click on the ExchangeLater button 
 	 * @author chinnarao.vattam

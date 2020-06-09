@@ -8,9 +8,9 @@ accountDetails:
    ban: 934232620
    rhmPackageEn: Control Package
    rhmPackageFr: Forfait Contrôle
-   swapInChannelOne: AMC
+   swapInChannelOne: OUTtv
    swapInChannelTwo: DejaView 
-   swapInChannelThree: game
+   swapInChannelThree: LCN
    address:
      line1: 706-10 Lisa St
      line2: BRAMPTON ON L6T 4N4       
