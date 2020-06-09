@@ -419,6 +419,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @return true if the package name is Home Phone ; else false
 	 * @author chinnarao.vattam
 	 */
+	//TODO please move this to dashboard page
 	public boolean verifyRHPBanner() {
 		return reusableActions.isElementVisible(infoLegacyrhpDashboard, 20);
 	}

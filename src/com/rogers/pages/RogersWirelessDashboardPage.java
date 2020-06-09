@@ -1816,7 +1816,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * Clicks on save data manager
 	 * @author Mirza.Kamran
 	 */
-	public void saveDataManager() {	
+	public void clkSaveButtonOnDataManager() {	
 		reusableActions.clickWhenReady(btnSaveDataManager);
 		reusableActions.staticWait(10000);
 	}
@@ -1861,7 +1861,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @param strDataAlertValue data alert value
 	 * @author Mirza.Kamran
 	 */
-	public void setDataAlert(String strDataAlertValue) {				
+	public void setDataAlertValue(String strDataAlertValue) {				
 		reusableActions.clickWhenReady(lblSetDataAlert);
 		reusableActions.getWhenReady(txtSetDataAlert).sendKeys(strDataAlertValue);		
 	}
@@ -1870,7 +1870,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * Clicks on save data alert
 	 * @author Mirza.Kamran
 	 */
-	public void saveDataAlert() {
+	public void clkSaveButtonOnDataAlertOverlay() {
 		reusableActions.clickWhenReady(btnSaveDataAlert);				
 	}
 	
@@ -1880,7 +1880,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @param strDataAlert data alert value
 	 * @return
 	 */
-	public boolean isSetDataAlertCorrectlySet(String strDataAlert) {
+	public boolean isDataAlertCorrectlySet(String strDataAlert) {
 		return reusableActions.getWhenReady(lblDataAlertSetValue).getText().trim().replaceAll(",", ".").contains(strDataAlert);
 	}
 
