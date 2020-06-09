@@ -31,15 +31,6 @@ public class RogersRedesign_TC_01_NonRpotgTest extends BaseTestClass {
     @Test
     public void redesignRogersRpotg() throws InterruptedException {
 
-//        rogers_device_catalogue_page.clkRpotgBannerLearnMore();
-//        Assert.assertTrue(rogers_device_catalogue_page.isModalDisplayed(),"Learn More Modal is not present");
-//        reporter.reportLogPass("RPOTG LearnMore Modal is displayed");
-//        rogers_device_catalogue_page.clickCloseButtonOnModal();
-
-        //rogers_device_catalogue_page.clkCheckEligibilityRpotgBanner();
-        //rogers_device_catalogue_page.validateRpotgPostalCode("L5N2M3");
-
-
         deviceName=TestDataHandler.redesignRpotgData.getDeviceName();
         reporter.reportLogPass("Device name" + "--->" + deviceName);
         //rogers_device_catalogue_page.getRpotgLabelCataloguePage(deviceName);
@@ -58,7 +49,6 @@ public class RogersRedesign_TC_01_NonRpotgTest extends BaseTestClass {
 
         rogers_device_catalogue_page.clickDeviceTileCTAButton(deviceName);
         reporter.reportLogPass("CTA Button for Device " + deviceName + "  clicked successfully");
-
 
         Assert.assertTrue(rogers_device_catalogue_page.isModalDisplayed(), "Modal element is not present on the screen");
         reporter.reportLogPass("Modal window displayed");
@@ -110,7 +100,7 @@ public class RogersRedesign_TC_01_NonRpotgTest extends BaseTestClass {
         Assert.assertTrue(rogers_plan_config_page.verifyDefaultPrice(fullPriceValueCataloguePage), "Default price is not same as it is shown in device catalogue page");
         reporter.reportLogPass("Default  price is same as it is shown in device catalogue & Config page page");
 //        rogers_plan_config_page.selectDeviceCost(deviceName);
-//        reporter.reportLogPass("Plan config page Device cost selected");
+        reporter.reportLogPass("Plan config page Device cost selected");
         rogers_plan_config_page.clickPreCartSummaryContinueButton();
       //Assert.assertEquals(promoBlockInformation, rogers_plan_config_page.getPromoBlockText());
 //        reporter.reportLogPass("Device config promo block carried to plan config promo block validated");

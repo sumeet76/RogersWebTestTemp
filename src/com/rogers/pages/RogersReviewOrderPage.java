@@ -63,8 +63,9 @@ public class RogersReviewOrderPage extends BasePageClass {
     		
     WebElement chUpfrontConsent;
     
-    @FindBy(xpath ="//input[@id='ds-checkbox-id-11']/..")
+    @FindBy(xpath ="//ds-checkbox[@name='credit-check']")
     WebElement chEmailConsent;
+
     
 	 @FindBy(xpath ="//button[@title='Submit order - test1']")
 	 WebElement submitOrderBtn;

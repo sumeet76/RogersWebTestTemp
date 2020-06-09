@@ -122,7 +122,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//*[@id='step-2-open']/form//p[contains(text(),'ID')]")
 	WebElement idLabel;
 
-	@FindBy(xpath = "//select[@id='ds-form-input-id-10']")
+	@FindBy(xpath = "//option[@value='PASSPORT']/..")
 	WebElement dropdownidclick;
 
 	@FindBy(xpath = "//input[@formcontrolname='passport']/..")
@@ -157,7 +157,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//button[@id='ds-tabs-2-tab-1']")
 	WebElement useAnExistingNumberTab;
 
-	@FindBy(xpath = "//select[@id='ds-form-input-id-13']")
+	//@FindBy(xpath = "//select[@id='ds-form-input-id-13']")
+	@FindBy(xpath = "//ds-form-field[@data-test='choose-number-city']//select")
 	WebElement cityDropdown;
 
 	@FindBy(xpath = "//label[@for='ds-radio-input-id-13']//div[@class='ds-radioButton__outerCircle my-12']")
@@ -178,25 +179,25 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//h2[contains(@data-test,'payment-method-title')]")
 	WebElement billingOptionsTitle;
 
-	@FindBy(xpath = "//select[@id='ds-form-input-id-8']")
+	@FindBy(xpath = "//select[@formcontrolname='method']")
 	WebElement drpSelectPaymentMethod;
 
-	@FindBy(xpath = "//input[@id='ds-form-input-id-15']/..")
+	@FindBy(xpath = "//input[@formcontrolname='name']/..")
 	WebElement txtNameOnCard;
 
-	@FindBy(xpath = "//input[@id='ds-form-input-id-15']")
+	@FindBy(xpath = "//input[@formcontrolname='name']")
 	WebElement inputNameOnCard;
 
-	@FindBy(xpath = "//input[@id='ds-form-input-id-16']/..")
+	@FindBy(xpath = "//input[@formcontrolname='expiryDate']/..")
 	WebElement txtBillingExpiryDate;
 
-	@FindBy(xpath = "//input[@id='ds-form-input-id-16']")
+	@FindBy(xpath = "//input[@formcontrolname='expiryDate']")
 	WebElement inputBillingExpiryDate;
 
-	@FindBy(xpath = "//input[@id='ds-form-input-id-17']/..")
+	@FindBy(xpath = "//input[@formcontrolname='cvv']/..")
 	WebElement txtCVVNumber;
 
-	@FindBy(xpath = "//input[@id='ds-form-input-id-17']")
+	@FindBy(xpath = "//input[@formcontrolname='cvv']")
 	WebElement inputCVVNumber;
 
 	@FindBy(xpath = "//button[@data-test='add-card-btn']")
