@@ -21,12 +21,20 @@ public class RogersHomePage extends BasePageClass {
 	
 	@FindBy(xpath = "//li[@class='dds_o-navLinkList__item']/a[contains(@class,'dds_m-navLink dropdown-hide')]")
 	WebElement btnShop;
+	
+	@FindBy(xpath = "//a[@class='m-navLink']//span[@class='m-navLink__chevron rds-icon-expand']")
+	WebElement btnExistingCustomerShop;
+	
 
 	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/tv']")
 	WebElement lnkDTV;
 
 	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/web/consumer/ignite-bundles/tv-internet']")
 	WebElement lnkIgniteTV;
+	
+	@FindBy(xpath = "//a[@class='m-navLink -dropdown' and contains(text(),'TV Bundles')]")
+	WebElement lnkExistingCustomerIgniteTV;
+	
 	
 	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/internet']")
 	WebElement lnkInternet;
@@ -206,6 +214,14 @@ public class RogersHomePage extends BasePageClass {
 		reusableActions.getWhenReady(btnShop, 90).click();				
 	}
 
+	/**
+	 * Click the shop dropdown list from the top tile bar on Home page
+	 * @author chinnarao.vattam 
+	 */
+	public void clkExistingCustomerShop() {
+		reusableActions.getWhenReady(btnExistingCustomerShop, 90).click();				
+	}
+	
 	
 	/**
 	 * Click My Rogers button from the top tile bar
@@ -245,8 +261,8 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkIgniteTVExistingCustomer() {
-		reusableActions.waitForElementVisibility(lnkIgniteTV, 30);
-		reusableActions.executeJavaScriptClick(lnkIgniteTV);
+		reusableActions.waitForElementVisibility(lnkExistingCustomerIgniteTV, 30);
+		reusableActions.executeJavaScriptClick(lnkExistingCustomerIgniteTV);
 	}
 
 	/**

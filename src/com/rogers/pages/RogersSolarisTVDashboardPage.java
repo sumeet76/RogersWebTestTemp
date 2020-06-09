@@ -14,9 +14,10 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//span[@class='ute-icon-tv']")
-	WebElement btnSolaristvBadge;
-
+	@FindBy(xpath = "//span[@class='ds-icon rds-icon-tv']")
+	WebElement btnSolaristvBadge;	
+	//span[@class='ute-icon-tv']
+	
 	@FindBy(xpath = "//ins[@usertype-translate='global.dashboard.tv.viewMyChannelLineup']")
 	WebElement lnkViewMyChannelLineup;
 
