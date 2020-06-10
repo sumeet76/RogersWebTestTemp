@@ -23,6 +23,9 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	@FindBy(xpath = "//ins[@translate='global.message.orderConfirmationThanksV3']")
 	WebElement infoChangeOrderConfirmation;
 	
+	@FindBy(xpath = "//ins[@translate='global.message.orderConfirmationThanksV2']")
+	WebElement infoOrderConfirmation;
+	
 	@FindAll({
 		@FindBy(xpath = "//span[@class='thank-you']"),
 		@FindBy(xpath = "//span[@class='UConfirmationHeading']")
@@ -53,6 +56,17 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 		reusableActions.waitForElementVisibility(infoChangeOrderConfirmation,180);
 		return reusableActions.isElementVisible(infoChangeOrderConfirmation, 60);
 	}
+	
+	/**
+	 * Verify the the yellow banner with order success information
+	 * @return true if the page display the yellow banner with order success information , else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyOrderSuccess() {
+		reusableActions.waitForElementVisibility(infoOrderConfirmation,180);
+		return reusableActions.isElementVisible(infoOrderConfirmation, 60);
+	}
+	
 	
 	/**
 	 * Verify the Continue Shopping button on order confirmation page

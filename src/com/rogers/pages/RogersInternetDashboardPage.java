@@ -20,7 +20,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[@data-test-id='myr-internetMyPackage-managePackage']")
 	WebElement btnChangeInternetPackage;
 
-	@FindBy(xpath = "//span[@class='ute-icon-internet']")
+	@FindBy(xpath = "//span[@class='ds-icon rds-icon-internet']")
 	WebElement btnSolarisInternetBadge;
 
 	@FindBy(xpath = "//ins[@translate='global.label.internet']")

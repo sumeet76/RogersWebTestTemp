@@ -6,7 +6,7 @@ password: DigiAuto@123
 accountDetails:
    type: Internet
    ban: 934232679
-   upgradePlan: Ignite Internet Gigabit
+   upgradePlanEn: Ignite Internet Gigabit
    upgradePlanFr: Élan Internet gigabit
    downgradePlanEn: Ignite Internet 150u
    downgradePlanFr: Élan Internet 150i

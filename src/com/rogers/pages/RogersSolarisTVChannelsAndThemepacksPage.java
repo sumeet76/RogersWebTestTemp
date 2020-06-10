@@ -56,8 +56,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	
 	@FindBy(xpath = "//ins[@usertype-translate='global.cta.confirmChanges']")
 	WebElement clkConfirmChangesOnManageChannelsAndThemePacks;
-	
-	//@FindBy(xpath = "//ins[@translate='global.cta.remove']")
+
 	@FindBy(xpath = "//div[@class='tv-channel-body']//ins[@translate='global.cta.remove']")
 	WebElement btnRemoveFromYourChanges;
 	
@@ -66,7 +65,8 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam	 
 	 */
 	public void clkAddButtonOnThemePackListOnManageChannelsAndThemePacks() {
-		reusableActions.clickWhenReady(addThemePackListOnManageChannelsAndThemePacks.get(0), 180);
+		reusableActions.waitForElementVisibility(addThemePackListOnManageChannelsAndThemePacks.get(0), 180);
+		reusableActions.getWhenReady(addThemePackListOnManageChannelsAndThemePacks.get(0), 60).click();
 	}		
 	
 	/**

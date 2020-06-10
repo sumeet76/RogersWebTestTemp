@@ -12,7 +12,7 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//span[@class='ute-icon-home-phone']")
+	@FindBy(xpath = "//span[@class='ds-icon rds-icon-home-phone']")
 	WebElement btnSolarisrhpBadge;
 
 	@FindBy(xpath = "//ins[@translate='global.label.homePhoneDashboard']")

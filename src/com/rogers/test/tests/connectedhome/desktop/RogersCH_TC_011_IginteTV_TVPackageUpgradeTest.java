@@ -58,7 +58,7 @@ public class RogersCH_TC_011_IginteTV_TVPackageUpgradeTest extends BaseTestClass
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         rogers_solaris_tv_dashboard_page.clkChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the TV packages page");
-        rogers_solaris_tv_dashboard_page.selectSolarisTVPackage(TestDataHandler.solarisChangeTVPackageAdd4KChannelsAndThemePack.accountDetails.getDowngradePlanEn(),TestDataHandler.solarisChangeTVPackageAdd4KChannelsAndThemePack.accountDetails.getDowngradePlanFr());
+        rogers_solaris_tv_dashboard_page.selectSolarisTVPackage(TestDataHandler.solarisTVAccountForUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.solarisTVAccountForUpgrade.accountDetails.getUpgradePlanFr());
         rogers_solaris_tv_dashboard_page.clkPopupChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the personalize channel page");
         rogers_solaris_tv_channels_and_themepacks_page.clkExchangeLater(); 
@@ -88,7 +88,7 @@ public class RogersCH_TC_011_IginteTV_TVPackageUpgradeTest extends BaseTestClass
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 

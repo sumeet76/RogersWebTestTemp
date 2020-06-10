@@ -296,14 +296,14 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 */
 	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
 		By packageNameLocator = By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'owl-item')]//ins[@translate='global.cta.select']");
-		if(reusableActions.isElementVisible(packageNameLocator,180))
+		if(reusableActions.isElementVisible(packageNameLocator,120))
 		{		
 		reusableActions.getWhenReady(packageNameLocator, 90).click();
 		 }
 	   else
 		{
-	    reusableActions.getWhenReady(imgNext, 180).click();  
-	    reusableActions.isElementVisible(packageNameLocator,180);
+	    reusableActions.getWhenReady(imgNext, 90).click();  
+	    reusableActions.isElementVisible(packageNameLocator,90);
 		reusableActions.getWhenReady(packageNameLocator, 90).click();
 		}
 	}
