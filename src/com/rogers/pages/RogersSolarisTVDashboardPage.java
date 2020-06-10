@@ -141,7 +141,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//ins[@translate='global.dashboard.tv.digitalBoxSettings']")
 	WebElement lblBoxSettings;
 
-	@FindBy(xpath = "//ins[@translate='global.label.tv']")
+	@FindBy(xpath = "//h1[@class='tv-dashboard-hdr']")
 	WebElement lblHeaderTV;
 
 	
