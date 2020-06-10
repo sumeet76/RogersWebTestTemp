@@ -35,8 +35,7 @@ public class Mobile_RogersSS_TC_031_Postpaid_ChangeContactInfo extends BaseTestC
 	}
 	
 	@Test
-	public void validateUserChangeContactInformation() {
-		rogers_home_page.clkHamburgerMobile();
+	public void validateUserChangeContactInformation() {		
 		rogers_home_page.clkSignInMobile();
     	String strUsername = TestDataHandler.tc013132.getUsername();
     	String strPassword = TestDataHandler.tc013132.getPassword();
@@ -55,10 +54,11 @@ public class Mobile_RogersSS_TC_031_Postpaid_ChangeContactInfo extends BaseTestC
         	reporter.reportLogWithScreenshot("Select BAN.");
             rogers_account_overview_page.selectAccount(strBan);
         }
-		reporter.reportLogWithScreenshot("Account overveiew page");
-    	rogers_account_overview_page.clkBtnNavigationMobile();
+		reporter.reportLogWithScreenshot("Account overveiew page");    	
     	rogers_account_overview_page.clkBtnProfileSettingsMobile();
 		reporter.reportLogWithScreenshot("Profile & Settings page");
+		
+		rogers_profile_and_settings_page.clkCloseFeedbackIfAvailableMobile();
     	rogers_profile_and_settings_page.clkBtnContactInfomation();
     	
     	//Add Contact email, can't be the same as user name!!!

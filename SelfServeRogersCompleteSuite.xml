@@ -79,7 +79,7 @@
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_014_BaselineUpdateEmailAddress" enabled="true">
+<test name="RogersSS_TC_014_BaselineUpdateEmailAddress" enabled="false">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_014_BaselineUpdateEmailAddress"></class>
 </classes>          																					
@@ -190,13 +190,13 @@
 </test>	
 
 
-<test name="RogersSS_TC_049_ChangeIDForNonSECustomerTest" enabled="true">
+<test name="RogersSS_TC_049_ChangeIDForNonSECustomerTest" enabled="false">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_049_ChangeIDForNonSECustomerTest"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_050_ChangeIDForSECustomerTest" enabled="true">
+<test name="RogersSS_TC_050_ChangeIDForSECustomerTest" enabled="false">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_050_ChangeIDForSECustomerTest"></class>
 </classes>          																					
