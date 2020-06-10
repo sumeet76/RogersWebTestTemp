@@ -1,5 +1,5 @@
 # Config
-rogersURL: https://qa05-ciam.rogers.com
+rogersURL: https://qa04-ciam.rogers.com
 solarisPath: /web/totes/browsebuy/v1/byPassCaptcha
 legacyPath: /web/totes/api/v1/bypassCaptchaAuth
 hupURL: "https://qa05-ciam.rogers.com/web/totes/upgrade/#/choose-phone"

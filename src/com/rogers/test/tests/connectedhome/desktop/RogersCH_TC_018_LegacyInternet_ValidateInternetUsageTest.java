@@ -55,9 +55,9 @@ public class RogersCH_TC_018_LegacyInternet_ValidateInternetUsageTest extends Ba
 
 	}
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})
+	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
-	public void beforeTest(String strBrowser, String strLanguage, String strGroupName, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 		startSession(TestDataHandler.rogersConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacylogin, method);
 	}

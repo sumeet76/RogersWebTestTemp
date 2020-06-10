@@ -15,25 +15,25 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 		super(driver);
 	}
 	
-	@FindBy(xpath = "//ins[@translate='global.label.createProfile']")
+	@FindBy(xpath = "//h4[@translate='global.checkout.profile.createProfile']")
 	WebElement txtProfile;
 	
-	@FindBy(xpath = "//input[@id='email1']")
+	@FindBy(xpath = "//input[@id='ds-form-input-id-14']")
 	WebElement txtEmail;
 	
-	@FindBy(xpath = "//input[@id='emailAlt1']")
+	@FindBy(xpath = "//input[@id='ds-form-input-id-15']")
 	WebElement txtConfirmEmail;
 	
-	@FindBy(xpath = "//input[@id='firstName1']")
+	@FindBy(xpath = "//input[@id='ds-form-input-id-9']")
 	WebElement txtFirstName;
 	
-	@FindBy(xpath = "//input[@id='lastName1']")
+	@FindBy(xpath = "//input[@id='ds-form-input-id-10']")
 	WebElement txtLastName;
 	
-	@FindBy(xpath = "//input[@id='phone1']")
+	@FindBy(xpath = "//input[@id='ds-form-input-id-12']")
 	WebElement btnPhone;
 		
-	@FindBy(xpath = "//input[@class='ute-btn-primary profile-submit-button']")
+	@FindBy(xpath = "//span[@translate='global.cta.continue']")
 	WebElement btnProfielSubmit;	
 	//input[@class='ute-btn-primary profile-submit-button']
 	//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']

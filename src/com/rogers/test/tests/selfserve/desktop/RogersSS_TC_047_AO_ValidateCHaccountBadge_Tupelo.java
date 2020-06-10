@@ -44,10 +44,10 @@ public class RogersSS_TC_047_AO_ValidateCHaccountBadge_Tupelo extends BaseTestCl
         rogers_account_overview_page.selectAccount(TestDataHandler.tc47TupeloAccount.accountDetails.getBan());                    
         reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
+        rogers_account_overview_page.scrollToMiddleOfPage();
+        reporter.reportLogWithScreenshot("Middle of Account Overview Page");
         rogers_account_overview_page.clkEntertainmentBadge();             
-        reporter.softAssert(rogers_solaris_tv_dashboard_page.verifyTupeloDashbaordIsDisplayed()
-        		&& rogers_solaris_tv_dashboard_page.verifyBoxCountIsDisplayed()
-        		&& rogers_solaris_tv_dashboard_page.verifyBoxSettingslsDisplayed(),
+        reporter.softAssert(rogers_solaris_tv_dashboard_page.verifyTupeloDashbaordIsDisplayed(),
         		"Tupelo dashboard page is displayed", 
         		"Tupelo dashboard page NOT displayed correctly please investigate");        
         reporter.reportLogWithScreenshot("Tupelo dashboard Page");     

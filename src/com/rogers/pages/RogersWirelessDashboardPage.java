@@ -1882,7 +1882,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 *  Checks the data alert value set
 	 * @return true if the value is set else false
 	 * @param strDataAlert data alert value
-	 * @return
+	 * @return true if the Data Alert is correctly set, otherwise false.
 	 */
 	public boolean isDataAlertCorrectlySet(String strDataAlert) {
 		return reusableActions.getWhenReady(lblDataAlertSetValue).getText().trim().replaceAll(",", ".").contains(strDataAlert);

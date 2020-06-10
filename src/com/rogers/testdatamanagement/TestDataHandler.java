@@ -256,6 +256,7 @@ public class TestDataHandler {
 	private static void buyFlowsDataInit() {
 		ssConfig =  YamlHandler.getBFAConfig();
 		bfaConfig =  YamlHandler.getBFAConfig();
+		sauceSettings = YamlHandler.getSauceSettings("/data/buyflows/SauceSettings.yml");
 		bfaPaymentInfo = YamlHandler.getBFAPaymentDetails();
     	testCase01 = YamlHandler.getAALdata("tc01AAL");
     	testCase02 = YamlHandler.getAALdata("tc02AAL");

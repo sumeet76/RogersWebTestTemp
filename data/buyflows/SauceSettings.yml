@@ -2,11 +2,11 @@
 ---
 sauceOptions:
    seleniumVersion: 3.141.59
-   name: Fido - Connected home Job
-   maxDuration: 800
+   name: Rogers - BFA
+   maxDuration: 600
    commandTimeout: 600
-   idleTimeout: 180
-   build: June 24th Agile Release Sanity -CHRogers
+   idleTimeout: 1000
+   build: Rogers - BFA Release June 3rd 
 mutableFireFoxCapabilities:  
    platformVersion: Windows 10
    browserVersion: latest

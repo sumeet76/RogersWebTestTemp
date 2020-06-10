@@ -20,7 +20,8 @@ public class RogersEnums {
 		connectedhome_login,
 		selfserve_login,
 		selfserve,
-		mobile_selfserve
+		mobile_selfserve,
+		buyflows
 		  } ;
     
     public enum SauceCapabilities{

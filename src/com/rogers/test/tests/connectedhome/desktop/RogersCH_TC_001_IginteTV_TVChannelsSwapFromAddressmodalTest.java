@@ -86,34 +86,6 @@ public class RogersCH_TC_001_IginteTV_TVChannelsSwapFromAddressmodalTest extends
     reporter.reportLogWithScreenshot("Swap success");         
     }
 	
-/*  @Test	
-    public void checkSolarisTVSwapChannelsReverse() {               
-	    reporter.reportLogWithScreenshot("Launched the Home Page");
-	    rogers_home_page.clkSignIn();
-	    rogers_login_page.switchToSignInIFrame();
-	    reporter.reportLogWithScreenshot("Launched the SignIn popup");
-	    rogers_login_page.setUsernameIFrame(TestDataHandler.solarisTVAccount.getUsername());
-	    rogers_login_page.setPasswordIFrame(TestDataHandler.solarisTVAccount.getPassword());
-	    reporter.reportLogWithScreenshot("Enter the account credentails");
-	    rogers_login_page.clkSignInIFrame();
-	    reporter.reportLogWithScreenshot("Skip popup");
-	    rogers_login_page.clkSkipIFrame();
-	    rogers_login_page.switchOutOfSignInIFrame();
-	    rogers_account_overview_page.selectAccount(TestDataHandler.igniteTVAccount.accountDetails.getBan());
-	    reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
-	    reporter.reportLogWithScreenshot("Launched the Account Page");               
-	    rogers_solaris_tv_dashboard_page.clkTVBadge(TestDataHandler.rogersConfig.getBrowser());
-	    reporter.reportLogWithScreenshot("Launched the TV dash board");
-	    rogers_solaris_tv_dashboard_page.clkChangeFlexChannels();                    
-        rogers_solaris_tv_dashboard_page.swapInChannel(TestDataHandler.igniteTVAccount.accountDetails.getSwapoutChannel());
-        reporter.reportLogWithScreenshot("Selceted the Swap-in Channel");
-        rogers_solaris_tv_dashboard_page.swapOutChannel(TestDataHandler.igniteTVAccount.accountDetails.getSwapinChannel());                  
-        rogers_solaris_tv_dashboard_page.clkConfirmExchange();
-        reporter.softAssert(rogers_solaris_tv_dashboard_page.verifySuccessIcon(), "Channels swap success","Channels swap failed");
-        rogers_solaris_tv_dashboard_page.clkOkButton();
-                
-    }
-*/
 
 @BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 //login flow
@@ -124,7 +96,7 @@ public void beforeTest(String strBrowser, String strLanguage,  ITestContext test
 
 @AfterMethod(alwaysRun = true)
 public void afterTest() {
-	closeSession();
+	//closeSession();
 }
 
 

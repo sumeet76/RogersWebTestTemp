@@ -43,11 +43,11 @@ public class RogersCH_TC_003_LegacyInternet_BuyInternetOfferTest extends BaseTes
     	rogers_buy_page.selectInternetPackage(TestDataHandler.legacyInternetAccount.getAccountDetails().getInternetBundle());
         String  strAddressLine1=(String) TestDataHandler.legacyInternetAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=(String) TestDataHandler.legacyInternetAccount.getAccountDetails().getAddress().get("line2");
-        rogers_buy_page.setAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        rogers_buy_page.setAddressLookup(strAddressLine1+", "+strAddressLine2);
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
     	rogers_buy_page.clkAddressLookupSubmit(); 
     	reporter.reportLogWithScreenshot("Customer care contact popup has displayed");
-    	reporter.hardAssert(rogers_legacy_bundle_buy_page.verifyContactCustomercareForLegacyBundleBuy(),"Displayed the popup for Contact Customer care For Legacy Internet Bundle Buy", "Customer care popup hasn't dispaly");
+    	reporter.hardAssert(rogers_legacy_bundle_buy_page.verifyServiceabilitySuccess(),"Displayed the popup for Contact Customer care For Legacy Internet Bundle Buy", "Customer care popup hasn't dispaly");
     	}
 
 

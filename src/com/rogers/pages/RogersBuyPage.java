@@ -44,6 +44,10 @@ public class RogersBuyPage extends BasePageClass {
 	// rogers-internet
 	@FindBy(xpath = "//a[@class='contact-online-link ways-to-change-cta']")
 	WebElement btnBuyOnline;
+	
+	@FindBy(xpath = "(//div//a[@class='rogers-btn-solid'])[4]")
+	WebElement btnControlPackage;
+	
 		
 	/**
 	 * To select the solaris bundle package
@@ -80,7 +84,9 @@ public class RogersBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkExchangeFlexChannel() {
-			reusableActions.clickWhenReady(btnExchangeFlexChannel, 40);
+		reusableActions.clickWhenReady(btnExchangeFlexChannel, 60);
+		//for Prod issue, click the same link second time
+		reusableActions.clickIfAvailable(btnExchangeFlexChannel, 60);
 	}
 	
 	
@@ -98,13 +104,12 @@ public class RogersBuyPage extends BasePageClass {
  * @author chinnarao.vattam
  */
 	public void setAddressLookup(String strAddress) {
-		reusableActions.getWhenReady(txtAddressLookup, 3).clear();
-		reusableActions.getWhenReady(txtAddressLookup).sendKeys(strAddress);
+		reusableActions.getWhenReady(txtAddressLookup,20).clear();
+		reusableActions.getWhenReady(txtAddressLookup, 20).sendKeys(strAddress);
 		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.TAB);
-		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.TAB);
-		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.ARROW_DOWN);		
 		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(txtAddressLookup ).sendKeys(Keys.ARROW_DOWN);
+		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.ARROW_DOWN);
+		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.ARROW_DOWN);
 		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.ENTER);
 	}
 	
@@ -139,13 +144,14 @@ public class RogersBuyPage extends BasePageClass {
 	
 	/**
 	 * To select the Home Monitering package on the Internet buy page
-	 * @param strHomeMonitering Home Monitering bundle to be select to buy
+	 * @param strHomeMoniteringEn Home Monitering bundle to be select to buy
+	 * @param strHomeMoniteringFr Home Monitering bundle to be select to buy
 	 * @author chinnarao.vattam 
 	 */
-	public void selectHomeMoniteringPackage(String strHomeMonitering) {
-		WebElement  bundleLocator = (WebElement)driver.findElement(By.xpath("//p[@class='rate-card-data desktop-rate-details']/strong[contains(text(),'"+ strHomeMonitering+ "')]/ancestor::div[@id='main-box']//a[@class='btn ways-to-buy']"));
-		reusableActions.waitForElementVisibility(bundleLocator,30);
-		reusableActions.executeJavaScriptClick(bundleLocator);	
+	public void selectHomeMoniteringPackage(String strHomeMoniteringEn, String strHomeMoniteringFr ) {
+		WebElement  rhmLocator = (WebElement)driver.findElement(By.xpath("//h3[contains(text(),'"+strHomeMoniteringEn+ "') or contains(text(),'"+ strHomeMoniteringFr+ "')]/ancestor::div[@class='package-tile']//div[@class='how-to-get-it']//a[@class='rogers-btn-solid']"));
+		reusableActions.waitForElementVisibility(rhmLocator,30);
+		reusableActions.executeJavaScriptClick(rhmLocator);	
 	}
 	
 	/**
