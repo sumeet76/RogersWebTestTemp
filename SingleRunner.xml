@@ -13,9 +13,16 @@
 	
 	
 
-<test name="RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaymentMethodPACToCC_EN_AUTO" enabled="true">
+<test name="CH Test on Account Overview" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaymentMethodPACToCC_EN_AUTO"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_040_AO_ValidateCHaccountBadge_SHM"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_041_AO_ValidateCHaccountBadge_IginteTV"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_042_AO_ValidateCHaccountBadge_IginteInternet"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_043_AO_ValidateCHaccountBadge_IgniteRHP"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_044_AO_ValidateCHaccountBadge_DigitalTV"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_045_AO_ValidateCHAccountBadge_LegacyInternet"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_046_AO_ValidateCHaccountBadge_LegacyRHP"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_047_AO_ValidateCHaccountBadge_Tupelo"></class>
 </classes>          																					
 </test>
 
