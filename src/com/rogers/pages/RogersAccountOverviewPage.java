@@ -25,8 +25,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	
 	@FindBy (xpath ="//div[@class='ute-dataManager-badgeList-individualBadge']")
 	WebElement btnCtnBadge;
-	
-	@FindBy (xpath ="//div[@class='ute-dataManager-badgeList-individualBadge']//div[@class='ute-dataManager-badgeList-individualBadgeInfo']")
+			
+	@FindAll({
+        @FindBy(xpath = "//div[@class='subscription-detail']//rss-subscription-detail//a"),
+        @FindBy (xpath ="//div[@class='ute-dataManager-badgeList-individualBadge']//div[@class='ute-dataManager-badgeList-individualBadgeInfo']")})
 	List<WebElement> lstCtnBadges;
 	
 	
@@ -350,7 +352,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean isAccountShowInDropDown(String strLast4DigAcctNum) {
 		return reusableActions.isElementVisible(
-				(By.xpath("//span[contains(@data-translate-values,'" + strLast4DigAcctNum + "')]")), 
+				(By.xpath("//span[contains(@data-translate-values,'" + strLast4DigAcctNum + "') or contains(text(),'" + strLast4DigAcctNum + "')]")), 
 				10);
 	}
 	
@@ -361,7 +363,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void clkDropDownAccount(String strLast4DigAcctNum) {
 		reusableActions.getWhenReady(
-				(By.xpath("//span[contains(text(),'" + strLast4DigAcctNum + "')]")), 
+				(By.xpath("//span[contains(text(),'" + strLast4DigAcctNum + "')or contains(text(),'" + strLast4DigAcctNum + "')]")), 
 				10).click();
 
 	}
@@ -417,6 +419,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @return true if the package name is Home Phone ; else false
 	 * @author chinnarao.vattam
 	 */
+	//TODO please move this to dashboard page
 	public boolean verifyRHPBanner() {
 		return reusableActions.isElementVisible(infoLegacyrhpDashboard, 20);
 	}

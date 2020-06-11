@@ -34,14 +34,14 @@ public class RogersSS_TC_047_AO_ValidateCHaccountBadge_Tupelo extends BaseTestCl
         rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        rogers_login_page.setUsernameIFrame(TestDataHandler.tupeloAccount.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.tupeloAccount.getPassword());
+        rogers_login_page.setUsernameIFrame(TestDataHandler.tc47TupeloAccount.getUsername());
+        rogers_login_page.setPasswordIFrame(TestDataHandler.tc47TupeloAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         rogers_login_page.clkSignInIFrame();
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame(); 
         rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount(TestDataHandler.tupeloAccount.accountDetails.getBan());                    
+        rogers_account_overview_page.selectAccount(TestDataHandler.tc47TupeloAccount.accountDetails.getBan());                    
         reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_account_overview_page.scrollToMiddleOfPage();

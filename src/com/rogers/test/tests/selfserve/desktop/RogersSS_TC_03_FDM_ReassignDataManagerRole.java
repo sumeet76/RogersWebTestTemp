@@ -16,7 +16,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 
 
-public class RogersSS_TC_01_FDM_AssignDMRoleViaOverlayForFirstTimeLogin extends BaseTestClass {	
+public class RogersSS_TC_03_FDM_ReassignDataManagerRole extends BaseTestClass {	
    	
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {

@@ -4,6 +4,7 @@ package com.rogers.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -131,9 +132,12 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	
 	@FindBy(xpath = "//i[@class='ute-icon-button-left']")
 	WebElement imgPrevious;
-
-	@FindBy(xpath = "//span[contains(text(),'Home Monitoring') or contains(text(),'Système domotique')]/ancestor::div[@class='subscription-detail']")
+		
+	@FindAll({
+        @FindBy(xpath = "//span[@translate='myaccoverview_home_monotoring']"),
+        @FindBy(xpath = "//span[contains(text(),'Home Monitoring') or contains(text(),'Système domotique')]/ancestor::div[@class='subscription-detail']")})
 	WebElement btnSHMBadge;
+	
 
 	@FindBy(xpath = "//ins[@usertype-translate='global.dashboard.tv.digitalBoxes']")
 	WebElement lblBoxHeader;

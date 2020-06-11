@@ -42,26 +42,27 @@ public class RogersSS_TC_046_AO_ValidateCHaccountBadge_LegacyRHP extends BaseTes
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setUsernameIFrame(TestDataHandler.legacyRHP.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.legacyRHP.getPassword());
+		rogers_login_page.setUsernameIFrame(TestDataHandler.tc46LegacyRHP.getUsername());
+		rogers_login_page.setPasswordIFrame(TestDataHandler.tc46LegacyRHP.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
 		reporter.reportLogWithScreenshot("Skip popup");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
-		rogers_account_overview_page.selectAccount(TestDataHandler.legacyRHP.getAccountDetails().getBan());
+		rogers_account_overview_page.selectAccount(TestDataHandler.tc46LegacyRHP.getAccountDetails().getBan());
 		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.clkRHPBadge(TestDataHandler.ssConfig.getBrowser());
+		rogers_account_overview_page.clkRHPBadge(xmlTestParameters.get("strBrowser"));
 		reporter.reportLogWithScreenshot("Click RHP Badge");
 		Thread.sleep(7000);
+		reporter.hardAssert(rogers_account_overview_page.verifyRHPBanner(),"Verifed the RHP dashboard",
+				"RHP dashboard Verification has failed");		
 		reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");
 		common_business_flows.scrollToMiddleOfWebPage();
 		reporter.reportLogWithScreenshot("Mid page view");
 		common_business_flows.scrollToBottomOfWebPage();
 		reporter.reportLogWithScreenshot("Bottom View");
-		//reporter.hardAssert(rogers_account_overview_page.verifyRHPBanner(),"Verifed the RHP dashboard","RHP dashboard Verification has failed");
-		//reporter.hardAssert(rogers_account_overview_page.verfyContactUsToManageFeaturess(),"Contact Us To Manage Featuress link has present on RHP dashboard","Contact Us To Manage Featuress link has not present on RHP dashboard");		
+				
 	}
 
 

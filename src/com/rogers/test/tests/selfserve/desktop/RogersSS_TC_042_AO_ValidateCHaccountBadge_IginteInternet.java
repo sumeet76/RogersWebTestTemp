@@ -44,21 +44,26 @@ public class RogersSS_TC_042_AO_ValidateCHaccountBadge_IginteInternet extends Ba
                     rogers_home_page.clkSignIn();
                     rogers_login_page.switchToSignInIFrame();
                     reporter.reportLogWithScreenshot("Launched the SignIn popup");
-                    rogers_login_page.setUsernameIFrame(TestDataHandler.solarisInternetAccountWithUsage.getUsername());
-                    rogers_login_page.setPasswordIFrame(TestDataHandler.solarisInternetAccountWithUsage.getPassword());
+                    rogers_login_page.setUsernameIFrame(TestDataHandler.tc42SolarisInternetAccountWithUsage.getUsername());
+                    rogers_login_page.setPasswordIFrame(TestDataHandler.tc42SolarisInternetAccountWithUsage.getPassword());
                     reporter.reportLogWithScreenshot("Enter the account credentails");
                     rogers_login_page.clkSignInIFrame();
                     reporter.reportLogWithScreenshot("Skip popup");
                     rogers_login_page.clkSkipIFrame();  
                     rogers_login_page.switchOutOfSignInIFrame();
-                    rogers_account_overview_page.selectAccount((TestDataHandler.solarisInternetAccountWithUsage.accountDetails.getBan()));
-            		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+                    rogers_account_overview_page.selectAccount((TestDataHandler.tc42SolarisInternetAccountWithUsage.accountDetails.getBan()));
+            		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), 
+            				"Logged in successfully", "Login failed");
                     reporter.reportLogWithScreenshot("Launched the Account Page");
                     rogers_internet_dashboard_page.clkSolarisInternetBadge();
                     rogers_internet_dashboard_page.clkInternetPopup();
                     reporter.reportLogWithScreenshot("Clicked on Internet badge");                   
-            		reporter.softAssert(rogers_internet_dashboard_page.verifyInternet(), "Verified the Internet page", "Internet page verification failed");
-            		reporter.softAssert(rogers_internet_dashboard_page.verifyUsageAndAlerts(), "Usage and Alerts link present on the internet dash page", "Usage and Alerts link is not present on the internet page");                
+            		reporter.softAssert(rogers_internet_dashboard_page.verifyInternet(), 
+            				"Verified the Internet page",
+            				"Internet page verification failed");
+            		reporter.softAssert(rogers_internet_dashboard_page.verifyUsageAndAlerts(),
+            				"Usage and Alerts link present on the internet dash page",
+            				"Usage and Alerts link is not present on the internet page");                
             		reporter.reportLogWithScreenshot("Ignite Internet dashboard is opened");
             		common_business_flows.scrollToMiddleOfWebPage();
             		reporter.reportLogWithScreenshot("Mid page view");

@@ -438,7 +438,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public Boolean verifyCurrentUsername(String strUsername) {
-		return reusableActions.isElementVisible(By.xpath("//span[contains(text(),'" + strUsername + "')]"), 30);
+		return reusableActions.isElementVisible(By.xpath("//span[text()='Current username: ']/following-sibling::span[contains(text(),'" + strUsername + "')]"), 30);
 		
 	}
 	
@@ -468,7 +468,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public Boolean verifyChangeUsernameConfirmMsg(String strNewUsername) {
-		return 	reusableActions.isElementVisible(By.xpath("//span[contains(text(),'" + strNewUsername + "')]"), 30);
+		return 	reusableActions.isElementVisible(By.xpath("//span[text()='New username will be: ']/following-sibling::span[contains(text(),'" + strNewUsername + "')]"), 30);
 	}
 	
 	/**

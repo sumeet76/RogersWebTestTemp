@@ -13,6 +13,7 @@ import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import com.rogers.pages.base.BasePageClass;
 
@@ -101,9 +102,12 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//*[contains(text(),'Change my Caller ID') or contains(text(),'pour l’Affichage des appels')]")
 	WebElement lnkChangeMyCallerId;
-		
-	@FindBy(xpath = "//div[@class='ute-secondLevelNav-bar-text']/span[@data-translate='ute.common.label.overview'] | //a[@translate='nav.overview.header']")
-	WebElement lnkOverview;
+	
+	
+	@FindAll({
+        @FindBy(xpath = "//a[text()='Overview' or text()='Overview']"),
+        @FindBy(xpath = "//div[@class='ute-secondLevelNav-bar-text']/span[@data-translate='ute.common.label.overview'] | //a[@translate='nav.overview.header']")})
+    WebElement lnkOverview;
 	
 	@FindBy(xpath = "//span[contains(text(),'Voicemail password') or contains(text(),'de passe de la Messagerie vocale')]")
 	WebElement lnkUpdateMyVoicemailPwd;
@@ -1816,7 +1820,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * Clicks on save data manager
 	 * @author Mirza.Kamran
 	 */
-	public void saveDataManager() {	
+	public void clkSaveButtonOnDataManager() {	
 		reusableActions.clickWhenReady(btnSaveDataManager);
 		reusableActions.staticWait(10000);
 	}
@@ -1861,7 +1865,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @param strDataAlertValue data alert value
 	 * @author Mirza.Kamran
 	 */
-	public void setDataAlert(String strDataAlertValue) {				
+	public void setDataAlertValue(String strDataAlertValue) {				
 		reusableActions.clickWhenReady(lblSetDataAlert);
 		reusableActions.getWhenReady(txtSetDataAlert).sendKeys(strDataAlertValue);		
 	}
@@ -1870,7 +1874,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * Clicks on save data alert
 	 * @author Mirza.Kamran
 	 */
-	public void saveDataAlert() {
+	public void clkSaveButtonOnDataAlertOverlay() {
 		reusableActions.clickWhenReady(btnSaveDataAlert);				
 	}
 	
@@ -1880,7 +1884,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @param strDataAlert data alert value
 	 * @return true if the Data Alert is correctly set, otherwise false.
 	 */
-	public boolean isSetDataAlertCorrectlySet(String strDataAlert) {
+	public boolean isDataAlertCorrectlySet(String strDataAlert) {
 		return reusableActions.getWhenReady(lblDataAlertSetValue).getText().trim().replaceAll(",", ".").contains(strDataAlert);
 	}
 
