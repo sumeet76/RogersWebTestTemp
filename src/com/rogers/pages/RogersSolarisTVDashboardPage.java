@@ -1,6 +1,8 @@
 package com.rogers.pages;
 
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,7 +17,10 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//span[@class='ute-icon-tv']")
+		
+	@FindAll({
+        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'TV')]"),
+        @FindBy(xpath = "//span[@class='ute-icon-tv']")})
 	WebElement btnSolaristvBadge;
 
 	@FindBy(xpath = "//ins[@usertype-translate='global.dashboard.tv.viewMyChannelLineup']")

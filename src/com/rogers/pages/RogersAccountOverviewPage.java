@@ -19,8 +19,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	@FindBy(xpath = "//span[@class='ute-icon-internet']")
 	WebElement btnInternetBadge;
-	
-	@FindBy(xpath = "//span[contains(@class,'rui-icon-internet icon')]/ancestor::div[@role='button']")
+			
+	@FindAll({
+        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'Internet')]"),
+        @FindBy(xpath = "//span[contains(@class,'rui-icon-internet icon')]/ancestor::div[@role='button']")})
 	WebElement btnLegacyInternetBadge;
 	
 	@FindBy (xpath ="//div[@class='ute-dataManager-badgeList-individualBadge']")
@@ -35,10 +37,15 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='row modal-content-header']//button[@class='close']")
 	WebElement popUpInternetPopup;
 
-	@FindBy(xpath = "//span[contains(@class,'rui-icon-tv icon')]/ancestor::div[@role='button']")
+	
+	@FindAll({
+        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'TV')]"),
+        @FindBy(xpath = "//span[contains(@class,'rui-icon-tv icon')]/ancestor::div[@role='button']")})
 	WebElement btnTVBadge;
 
-	@FindBy(xpath = "//span[contains(@class,'rui-icon-home-phone icon')]/ancestor::div[@role='button']")
+	@FindAll({
+        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'Home Phone')]"),
+        @FindBy(xpath = "//span[contains(@class,'rui-icon-home-phone icon')]/ancestor::div[@role='button']")})
 	WebElement btnRHPBadge;
 
 	@FindBy(xpath = "//div[@linkurl='tvdashboard']/parent::div")

@@ -231,6 +231,10 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	
 	@FindBy(xpath = "//rss-contact-info//div")
 	WebElement lblContactsDetailsSection;
+	
+	
+	@FindBy(xpath = "//div[text()='Language:']/parent::div/following-sibling::div")
+	WebElement lblContactsDetailsSectionMobile;
 
 	@FindBy(xpath = "//input[@title='Enter street number' or @title='Entrer le numéro municipal']/parent::div")
 	WebElement lblStreetNumber;
@@ -255,6 +259,18 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[contains(@class,'QSISlider')]/div/following-sibling::div//img")
 	WebElement btnCloseFeedbackMobile;
+
+	@FindBy(xpath = "//span[contains(text(),'Current contact email: ')]/following-sibling::span")
+	WebElement lblContactEmailOnChgeContactEmailOverlay;
+
+	@FindBy(xpath = "//div[contains(text(),'Home number') or contains(text(),'home number') or contains(text(),'numéro à la maison')]/parent::div/parent::div//span[text()=' Update ']")
+	WebElement btnUpdateHomeNumberMobile;
+	
+	@FindBy (xpath = "//div[contains(text(),'Business number:') or contains(text(),'home number') or contains(text(),'numéro à la maison')]/parent::div/parent::div//span[text()=' Update ']")
+	WebElement lnkAddBusinessNumberMobile;
+	
+	@FindBy (xpath = "//div[contains(text(),'Language:') or contains(text(),'home number') or contains(text(),'numéro à la maison')]/parent::div/parent::div//span[text()=' Change ']")
+	WebElement lnkChangeLanguageMobile;
 		
 	/**
 	 * Click on setup recovery number link
@@ -637,6 +653,15 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	}
 	
 	/**
+	 * Click the link Add Business Number in Contact Information section
+	 * @author Mirza.Kamran
+	 */
+	public void clkLnkAddBusinessNumberMobile() {
+		reusableActions.clickWhenReady(lnkAddBusinessNumberMobile, 30);
+	}
+	
+	
+	/**
 	 * Click the link Change Contact Language in Contact Information section
 	 * @author ning.xue
 	 */
@@ -645,14 +670,24 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	}
 	
 	/**
+	 * Click the link Change Contact Language in Contact Information section
+	 * @author Mirza.Kamran
+	 */
+	public void clkLnkChangeContactLanguageMobile() {
+		reusableActions.clickWhenReady(lnkChangeLanguageMobile, 30);
+	}
+	
+	/**
 	 * Set contact email for add contact email flow.
 	 * @param strContactEmail String, string of contact email
 	 * @author ning.xue
 	 */
 	public void setContactEmail(String strContactEmail) {
-		reusableActions.getWhenReady(lblContactEmail,30).click();
+		reusableActions.getWhenReady(lblContactEmail).click();
 		//reusableActions.getWhenReady(inputContactEmail,20).clear();
-		reusableActions.getWhenReady(inputContactEmail,2).sendKeys(strContactEmail);
+		reusableActions.getWhenReady(lblContactEmail).click();
+		reusableActions.getWhenReady(inputContactEmail).sendKeys(strContactEmail);
+		
 	}
 	
 	/**
@@ -994,6 +1029,15 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	}
 
 	/**
+	 * gets the existing language
+	 * @return string language name
+	 * @author Mirza.Kamran
+	 */
+	public String getExistingLanguageMobile() {		
+		return reusableActions.getWhenReady(lblContactsDetailsSectionMobile).getText();
+	}
+	
+	/**
 	 * Clicks on the language radio button
 	 * @param strlanguage language name
 	 * @author Mirza.Kamran
@@ -1055,5 +1099,52 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void clkCloseFeedbackIfAvailableMobile() {
 		reusableActions.clickIfAvailable(btnCloseFeedbackMobile);
+	}
+
+	/**
+	 * Gets the contact email
+	 * @return string value containing contact email
+	 * @author Mirza.Kamran
+	 */
+	public String getContactEmailMobile() {		
+		return reusableActions.getWhenReady(lblContactEmailOnChgeContactEmailOverlay).getText().toLowerCase();
+	}
+
+	public void setContactEmailMobile(String strAltEmail) {
+		reusableActions.getWhenReady(lblContactEmail).click();
+		//reusableActions.getWhenReady(inputContactEmail,20).clear();
+		reusableActions.clickIfAvailable(lblContactEmail);
+		reusableActions.getWhenReady(inputContactEmail).sendKeys(strAltEmail);
+		
+	}
+
+	/**
+	 * 
+	 */
+	public void clkLnkUpdateHomeNumberMobile() {
+		reusableActions.getWhenReady(btnUpdateHomeNumberMobile).click();
+		
+	}
+	
+	/**
+	 * Set home phone for update home number flow.
+	 * @param strHomePhone String, string of home phone
+	 * @author Mirza.Kamran
+	 */
+	public void setHomePhoneMobile(String strHomePhone) {
+		reusableActions.getWhenReady(lblHomePhone,30).click();
+		reusableActions.clickIfAvailable(lblHomePhone);
+		reusableActions.getWhenReady(inputHomePhone,2).sendKeys(strHomePhone);
+	}
+	
+	/**
+	 * Set business phone for Add business number flow.
+	 * @param strBusinessPhone String, string of business phone
+	 * @author Mirza.Kamran
+	 */
+	public void setBusinessPhoneMobile(String strBusinessPhone) {
+		reusableActions.getWhenReady(lblBusinessPhone,30).click();
+		reusableActions.clickIfAvailable(lblBusinessPhone);
+		reusableActions.getWhenReady(inputBusinessPhone,2).sendKeys(strBusinessPhone);
 	}
 }
