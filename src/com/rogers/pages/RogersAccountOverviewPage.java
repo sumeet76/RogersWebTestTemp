@@ -693,6 +693,14 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	}
 
 	/**
+	 * Checks if the no of CTNS are more than 1
+	 * @return true if the no of CTNS are more than 5
+	 * @author Mirza.Kamran
+	 */
+	public boolean isCTNMoreThanOne() {		
+		return lstCtnBadges.size()>1;
+	}
+	/**
 	 * retruns total no of CTNS
 	 * @return int value total no of CTNs
 	 * @author Mirza.Kamran

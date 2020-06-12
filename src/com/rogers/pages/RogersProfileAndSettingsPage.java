@@ -151,7 +151,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//div[@footer]//span[contains(text(),'Done') or contains(text(),'Termin')]")
 	WebElement btnAddContactEmailDone;
 	
-	@FindBy (xpath = "//input[@id='homePhone']//parent::div")
+	@FindBy (xpath = "//input[@id='homePhone' or @id='mobilePhone']//parent::div")
 	WebElement lblHomePhone;
 	
 	@FindBy (xpath = "//input[@id='homePhone']")
@@ -251,25 +251,25 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy(xpath = "//input[@title='Enter apartment number' or @title='Entrer le numéro d’appartement']/parent::div")
 	WebElement lblApartmentNumber;
 	
-	@FindBy (xpath = "//div[contains(text(),'Email') or contains(text(),'adresse courriel')]/following-sibling::div")
+	@FindBy (xpath = "//div[contains(text(),'Email') or contains(text(),'Adresse courriel :')]/following-sibling::div")
 	WebElement btnChangeEmailMobile;
 	
-	@FindBy (xpath = "//div[contains(text(),'Email') or contains(text(),'adresse courriel')]/following-sibling::div/button")
+	@FindBy (xpath = "//div[contains(text(),'Email') or contains(text(),'Adresse courriel :')]/following-sibling::div/button")
 	WebElement btnAddEmailMobile;
 	
 	@FindBy(xpath = "//div[contains(@class,'QSISlider')]/div/following-sibling::div//img")
 	WebElement btnCloseFeedbackMobile;
 
-	@FindBy(xpath = "//span[contains(text(),'Current contact email: ')]/following-sibling::span")
+	@FindBy(xpath = "//span[contains(text(),'Current contact email: ') or contains(text(),'Adresse courriel actuelle : ')]/following-sibling::span")
 	WebElement lblContactEmailOnChgeContactEmailOverlay;
 
-	@FindBy(xpath = "//div[contains(text(),'Home number') or contains(text(),'home number') or contains(text(),'numéro à la maison')]/parent::div/parent::div//span[text()=' Update ']")
+	@FindBy(xpath = "//div[contains(text(),'Home number') or contains(text(),'Numéro de sans-fil :') or contains(text(),'numéro à la maison')]/parent::div/parent::div//span[text()=' Update ' or text()=' Mettre à jour ' or text()=' Ajouter ']")
 	WebElement btnUpdateHomeNumberMobile;
 	
-	@FindBy (xpath = "//div[contains(text(),'Business number:') or contains(text(),'home number') or contains(text(),'numéro à la maison')]/parent::div/parent::div//span[text()=' Update ']")
+	@FindBy (xpath = "//div[contains(text(),'Business number:') or contains(text(),'Numéro de téléphone au travail :') or contains(text(),'numéro à la maison')]/parent::div/parent::div//span[text()=' Update ' or text()=' Mettre à jour ' or text()=' Ajouter ']")
 	WebElement lnkAddBusinessNumberMobile;
 	
-	@FindBy (xpath = "//div[contains(text(),'Language:') or contains(text(),'home number') or contains(text(),'numéro à la maison')]/parent::div/parent::div//span[text()=' Change ']")
+	@FindBy (xpath = "//div[contains(text(),'Language:') or contains(text(),'Langue :') or contains(text(),'numéro à la maison')]/parent::div/parent::div//span[text()=' Change ' or text()=' Changer ' or text()=' Ajouter ']")
 	WebElement lnkChangeLanguageMobile;
 		
 	/**

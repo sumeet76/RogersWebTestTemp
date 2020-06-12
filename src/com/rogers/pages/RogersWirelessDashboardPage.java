@@ -407,7 +407,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//a[@title='Change the Data Manager for this account' or @title='Change the Data Manager for this account']")
 	WebElement btnAddDataManager;
 
-	@FindBy(xpath = "//p[text()='Choose a Data Manager' or text()='Choose a Data Manager']")
+	@FindBy(xpath = "//p[text()='Choose a Data Manager' or text()='Choisir un gestionnaire de données']")
 	WebElement titleChooseDataManager;
 	
 	@FindBy(xpath = "//select[@formcontrolname='phoneNumber']")
@@ -436,6 +436,12 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//span[contains(@class,'data-alert-value')]")
 	WebElement lblDataAlertSetValue;
+
+	@FindBy(xpath = "//a[@title='Change the Data Manager for this account' or @title='Changer le gestionnaire de données pour ce compte']")
+	WebElement btnChangeDataManager;
+
+	@FindBy(xpath = "//span[@translate='fdmModule.fdm.dataManager']")
+	WebElement btnDataManagerCTN;
 	
 	/**
 	 * To click the link of lost or stolen device on wireless dashboard page
@@ -1799,6 +1805,15 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	}
 
 	/**
+	 * Clicks on Change data manager
+	 * @author Mirza.Kamran
+	 */
+	public void clkChangeDataManager() {
+		reusableActions.clickWhenReady(btnChangeDataManager);
+		
+	}
+	
+	/**
 	 * Checks if the data manager overlay is displayed
 	 * @return true if the data manager overlay is displayed
 	 * @author Mirza.Kamran
@@ -1815,6 +1830,17 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		reusableActions.selectWhenReady(selectDataManager, 0);
 		
 	}
+	
+	/**
+	 * Selects the data manager
+	 * @author Mirza.Kamran
+	 * @param strCTNValue
+	 */
+	public void changeDataManager(String strCTNValue) {
+		reusableActions.selectWhenReady(selectDataManager,strCTNValue.replaceAll(" ", "").replaceAll("-", ""));
+		
+	}
+
 
 	/**
 	 * Clicks on save data manager
@@ -1886,6 +1912,72 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public boolean isDataAlertCorrectlySet(String strDataAlert) {
 		return reusableActions.getWhenReady(lblDataAlertSetValue).getText().trim().replaceAll(",", ".").contains(strDataAlert);
+	}
+
+	/**
+	 * Checks if the Change Data Manager is displayed
+	 * @return true if the chnage data manager is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isAddChangeDataManagerDisplayed() {		
+		return reusableActions.isElementVisible(btnChangeDataManager);
+	}
+	
+	/**
+	 * Gets the Data Manager CTN
+	 * @return string value containing the data manager CTN 
+	 * @author Mirza.Kamran
+	 */
+	public String getDataManagerCTN() {	
+		if(lstOfCTNBadgesOnDashboardPage.get(0).getText().toLowerCase().contains("data manager")
+				|| lstOfCTNBadgesOnDashboardPage.get(0).getText().toLowerCase().contains("gestionnaire de données"))
+		{
+			return lstOfCTNBadgesOnDashboardPage.get(0).findElement(By.className("cta_no")).getText().trim();
+		}else
+		{
+			return null;
+		}
+		 
+	}
+
+	/**
+	 * Gets the Data Manager CTN
+	 * @return string value containing the NON data manager CTN 
+	 * @author Mirza.Kamran
+	 */
+	public String getNonDataManagerCTN() {
+		if(!lstOfCTNBadgesOnDashboardPage.get(1).getText().toLowerCase().contains("data danager")
+				|| !lstOfCTNBadgesOnDashboardPage.get(1).getText().toLowerCase().contains("gestionnaire de données"))
+		{
+			return lstOfCTNBadgesOnDashboardPage.get(1).findElement(By.className("cta_no")).getText().trim();
+		}else
+		{
+			return null;
+		}		
+	}
+
+	/**
+	 * verifies if the Change Data Manager successful
+	 * @param strDataManagerCTN
+	 * @return true if the value matches else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isChangeDataManagerSuccessful(String strDataManagerCTN) {
+		if((lstOfCTNBadgesOnDashboardPage.get(0).getText().toLowerCase().contains("data manager") ||
+				lstOfCTNBadgesOnDashboardPage.get(0).getText().toLowerCase().contains("gestionnaire de données"))
+			&& 	lstOfCTNBadgesOnDashboardPage.get(0).getText().toLowerCase().contains(strDataManagerCTN))
+		{
+			return true;
+		}		
+		return false;		
+	}
+
+	/**
+	 * Clicks on Data Manager CTN
+	 */
+	public void clkDataManagerCTN() {
+		reusableActions.clickWhenReady(btnDataManagerCTN,30);
+		
 	}
 
 
