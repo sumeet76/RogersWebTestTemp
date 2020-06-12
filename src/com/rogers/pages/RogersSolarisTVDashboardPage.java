@@ -266,7 +266,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkManageChannelsAndThemePacks() {
-		reusableActions.clickWhenReady(btnManageChannelsAndThemePacks, 90);
+		reusableActions.getWhenReady(btnManageChannelsAndThemePacks, 90).click();
 	}
 
 	/**
@@ -314,7 +314,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkPopupChangeTVPackage() {
-		reusableActions.clickWhenReady(popupChangeTVPackage, 60);
+		reusableActions.getWhenReady(popupChangeTVPackage, 60).click();
 	}
 	
 	/**

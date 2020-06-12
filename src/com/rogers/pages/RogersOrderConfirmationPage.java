@@ -19,9 +19,10 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	@FindBy(xpath = "//a[@href='/consumer/rogers-internet' and @class='rui-cta-button']")
 	WebElement btnContinueShopping;
 	
-	// Thanks! We received your order.
-	@FindBy(xpath = "//ins[@translate='global.message.orderConfirmationThanksV3']")
+	// Thanks! We received your order. 
+	@FindBy(xpath = "//div[@class='confirmation-bubble']")
 	WebElement infoChangeOrderConfirmation;
+	//ins[@translate='global.message.orderConfirmationThanksV3']
 	
 	@FindBy(xpath = "//ins[@translate='global.message.orderConfirmationThanksV2']")
 	WebElement infoOrderConfirmation;

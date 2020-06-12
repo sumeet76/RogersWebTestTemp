@@ -24,8 +24,15 @@ public class RogersOrderReviewPage extends BasePageClass {
 	WebElement infoAgreement;
 
 	@FindBy(xpath = "//li[contains(text(),'819 994 6591')]")
-	WebElement lnkAgreementToEnd;
+	WebElement lnkAgreementToEnd;	
+	//p[contains(text(),'06/')]
+	
+/*	@FindBy(xpath = "//label[@for='ds-checkbox-id-3']")
+	WebElement clkChangeAcceptCheckbox;
 
+	@FindBy(xpath = "//span[@translate='global.cta.submit']")
+	WebElement clkSubmit;*/
+	
 	@FindBy(xpath = "//label[@for='tos_consent']")
 	WebElement clkChangeAcceptCheckbox;
 
@@ -144,6 +151,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	public void clkAcceptenceCheckbox() {
 		reusableActions.isElementVisible(lnkAgreementToEnd, 50);
 		reusableActions.scrollToElement(lnkAgreementToEnd);	
+		reusableActions.staticWait(5000);
 		reusableActions.clickWhenReady(clkChangeAcceptCheckbox, 90);
 	}
 
