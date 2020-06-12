@@ -36,7 +36,10 @@ public class RogersDigitalTVPackageSelectionPage extends BasePageClass {
 	 */
 	public void selectPackage(String strPackageNameEn, String strPackageNameFr, String strLang) {	
 	    By packageNameLocator = By.xpath("//div[contains(normalize-space(@class),'pkgTitle_pkg') and text()='"+ strPackageNameEn+ "']/ancestor::div[@class='justForBorderStyle_pkg']//a[@class='redAddtocart_pkg']/parent::div");
-		reusableActions.waitForElementInvisibility(packageLoader, 120);
+		reusableActions.waitForElementInvisibility(packageLoader, 180);
+		WebElement pkg = driver.findElement(packageNameLocator);
+		reusableActions.waitForElementVisibility(pkg, 180);
+		reusableActions.scrollToElement(pkg);
 		reusableActions.getWhenReady(packageNameLocator, 90).click();
 	}
 	
