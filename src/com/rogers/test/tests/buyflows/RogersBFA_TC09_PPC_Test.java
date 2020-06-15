@@ -49,8 +49,8 @@ public class RogersBFA_TC09_PPC_Test extends BaseTestClass {
         reporter.reportLogWithScreenshot("Wireless Dashboard Page");
         rogers_wireless_details_page.clickChangePlanButton();
         reporter.reportLogWithScreenshot("Modal window appeared for change your plan");
-        rogers_choose_plan_page.clkMakeChangesToExistingPlan();
-        rogers_choose_plan_page.clkButtonModalContinue();
+        //rogers_choose_plan_page.clkMakeChangesToExistingPlan();
+        //rogers_choose_plan_page.clkButtonModalContinue();
         reporter.reportLogWithScreenshot("Choose Plan page");
         rogers_choose_plan_page.selectPlanType("");
         rogers_choose_plan_page.selectPlanCategory(TestDataHandler.testCase03.getNewPlanCategory());

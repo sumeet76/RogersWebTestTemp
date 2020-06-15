@@ -76,6 +76,7 @@ public class RogersBFA_TC07_AAL_Test extends BaseTestClass {
 		 * rogers_shipping_page.clkSelectAvailableTime();
 		 * rogers_shipping_page.clkReserve();
 		 */
+        //add standard delivery
         rogers_shipping_page.clkContinue();
         reporter.reportLogWithScreenshot("Rogers Choose Number page");
         rogers_choose_number_page.clkSelectNewNumber();

@@ -58,10 +58,11 @@ public class RogersBFA_TC08_HUP_Test extends BaseTestClass {
         reporter.reportLogWithScreenshot("Rogers Choose Addons Page");
         rogers_choose_addons_page.clkContinueHUP();
         reporter.reportLogWithScreenshot("Rogers Shipping Page");
-        rogers_shipping_page.setEmailID();
-        rogers_shipping_page.clkSaveEmail();
-        rogers_shipping_page.clkSelectAvailableTime();
-        rogers_shipping_page.clkReserve();
+        //Check with manual team , now asking standard delivery - fee
+        //rogers_shipping_page.setEmailID();
+        //rogers_shipping_page.clkSaveEmail();
+        //rogers_shipping_page.clkSelectAvailableTime();
+        //rogers_shipping_page.clkReserve();
         reporter.reportLogWithScreenshot("Rogers Shipping Page before clicking continue");
         rogers_shipping_page.clkContinue();
         reporter.reportLogWithScreenshot("Rogers review page");
