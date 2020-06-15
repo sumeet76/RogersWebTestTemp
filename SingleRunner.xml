@@ -12,19 +12,32 @@
 	</listeners>	
 
 
-<test name="RogersSS_TC_060_ValidateCopyChangesOfDataUsageDisplayWithInLimitsPostpaidSEplanMultiCTN" enabled="false">
+<test name="RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE_AddData" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_060_ValidateCopyChangesOfDataUsageDisplayWithInLimitsPostpaidSEplanMultiCTN"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE_AddData"></class>
 </classes>          																					
 </test>
 
 
 
-<test name="RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurchasedSpeedPass" enabled="true">
+<test name="RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurchasedSpeedPass" enabled="false">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurchasedSpeedPass"></class>
 </classes>          																					
 </test>
 
+	
+<test name="RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhenCxHasMoreThan5CTN_SE" enabled="false">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhenCxHasMoreThan5CTN_SE"></class>
+</classes>          																					
+</test>
+	
+<test name="RogersSS_TC79_ValidateCancelDataFlowNSECTNwithSingleRegularMDTs" enabled="false">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC79_ValidateCancelDataFlowNSECTNwithSingleRegularMDTs"></class>
+</classes>          																					
+</test>
+		
 			 
 </suite>
