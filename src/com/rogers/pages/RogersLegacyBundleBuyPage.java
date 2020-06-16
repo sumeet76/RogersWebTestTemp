@@ -104,7 +104,6 @@ public class RogersLegacyBundleBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public boolean verifyServiceabilitySuccess() {
-		reusableActions.waitForElementVisibility(popupServiceabilitySuccess,60);
-		return reusableActions.isElementVisible(popupServiceabilitySuccess,20);
+		return reusableActions.isElementVisible(popupServiceabilitySuccess,90);
 	}
 }

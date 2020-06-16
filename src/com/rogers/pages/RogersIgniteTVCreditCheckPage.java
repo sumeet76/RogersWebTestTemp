@@ -16,53 +16,55 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 		super(driver);
 	}
 	
-	@FindBy(xpath = "//select[@id='creditCheckYear']")
+	@FindBy(xpath = "//select[@id='ds-form-input-id-18']")
 	WebElement ddlCreditCheckYear;
 	
-	@FindBy(xpath = "//select[@id='creditCheckMonth']")
+	@FindBy(xpath = "//select[@id='ds-form-input-id-19']")
 	WebElement ddlCreditCheckMonth;
 	
-	@FindBy(xpath = "//select[@id='creditCheckDay']")
+	@FindBy(xpath = "//select[@id='ds-form-input-id-20']")
 	WebElement ddlCreditCheckDay;
 	
-	@FindBy(xpath = "//select[@id='firstIdOption']")
+	@FindBy(xpath = "//select[@id='ds-form-input-id-21']")
 	WebElement ddlFirstID;
 	
-	@FindBy(xpath = "//select[@name='dlProvince']")
+	@FindBy(xpath = "//select[@id='ds-form-input-id-24']")
 	WebElement ddlProvince;
 		
-	@FindBy(xpath = "//select[@name='dlExpiryYear']")
+	@FindBy(xpath = "//select[@id='ds-form-input-id-25']")
 	WebElement ddlExpiryYear;
 	
-	@FindBy(xpath = "//select[@name='dlExpiryMonth']")
+	@FindBy(xpath = "//select[@id='ds-form-input-id-26']")
 	WebElement ddlExpiryMonth;
 
-	@FindBy(xpath = "//select[@name='dlExpiryDay']")
+	@FindBy(xpath = "//select[@id='ds-form-input-id-27']")
 	WebElement ddlExpiryDay;
 		
-	@FindBy(xpath = "//input[@id='dlLicenseNumber']")
+	@FindBy(xpath = "//input[@id='ds-form-input-id-23']")
 	WebElement txtLicenseNumber;
 	  	
-	@FindBy(xpath = "//select[@id='secondIdOption']")
+	@FindBy(xpath = "//select[@id='ds-form-input-id-22']")
 	WebElement ddlSecondIdOption;
 	
-	@FindBy(xpath = "//input[@id='ppNumber']")
+	@FindBy(xpath = "//input[@id='ds-form-input-id-28']")
 	WebElement txtPasportNumber;
 		
-	@FindBy(xpath = "//select[@name='ppExpiryYear']")
+	@FindBy(xpath = "//select[@id='ds-form-input-id-29']")
 	WebElement ddlPassportExpiryYear;
 		
-	@FindBy(xpath = "//select[@name='ppExpiryMonth']")
+	@FindBy(xpath = "//select[@id='ds-form-input-id-30']")
 	WebElement ddlPassportExpiryMonth;
 	
-	@FindBy(xpath = "//select[@name='ppExpiryDay']")
+	@FindBy(xpath = "//select[@id='ds-form-input-id-31']")
 	WebElement ddlPassportExpiryDay;
 		
-	@FindBy(xpath = "//label[@for='credit_check_consent']")
+	@FindBy(xpath = "//label[@for='ds-checkbox-id-0']")
 	WebElement chkConsent;
-	
-	@FindBy(xpath = "//button[@class='ute-btn-primary']")
+	//label[@for='credit_check_consent']
+		
+	@FindBy(xpath = "//button[contains(@class,'-primary -large')]")
 	WebElement btnCreditCheckSubmit;
+	//button[@class='ute-btn-primary']
 	
 	@FindBy(xpath = "//form[@name='cartAbandonmentForm']")
 	WebElement popCartAbandonmentForm;
@@ -121,7 +123,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	public void selectDOBYear() {
 		reusableActions.waitForElementVisibility(ddlCreditCheckYear,20);
 		String strDOBYear = FormFiller.generateDOBYear();
-		reusableActions.selectWhenReady(ddlCreditCheckYear, strDOBYear);
+		reusableActions.selectWhenReadyByVisibleText(ddlCreditCheckYear, strDOBYear);
 	}
 	
 	/**
@@ -132,7 +134,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	public void selectDOBYearExistingCustomer(String strDOBYear) {
 		//reusableActions.waitForElementInvisibility(popupLoadingFingers);
 		reusableActions.waitForElementVisibility(ddlCreditCheckYear,20);
-		reusableActions.selectWhenReady(ddlCreditCheckYear, strDOBYear);
+		reusableActions.selectWhenReadyByVisibleText(ddlCreditCheckYear, strDOBYear);
 	}
 	
 	/**
@@ -140,8 +142,8 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectDOBMonth() {
-		String strDOBMonth = FormFiller.generateMonth();
-		reusableActions.selectWhenReady(ddlCreditCheckMonth, strDOBMonth);
+		String strDOBMonth = FormFiller.generateNameOfMonth();
+		reusableActions.selectWhenReadyByVisibleText(ddlCreditCheckMonth, strDOBMonth);
 	}
 	
 	/**
@@ -150,7 +152,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectDOBMonthExistingCustomer(String strDOBMonth) {
-		reusableActions.selectWhenReady(ddlCreditCheckMonth, strDOBMonth);
+		reusableActions.selectWhenReadyByVisibleText(ddlCreditCheckMonth, strDOBMonth);
 	}
 	
 	/**
@@ -159,7 +161,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void selectDOBDay() {
 		String strDOBDay = FormFiller.generateCalendarDay();
-		reusableActions.selectWhenReady(ddlCreditCheckDay, strDOBDay);
+		reusableActions.selectWhenReadyByVisibleText(ddlCreditCheckDay, strDOBDay);
 	}
 	
 	/**
@@ -177,7 +179,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectFirstID(String strFirstID) {
-		reusableActions.selectWhenReady(ddlFirstID, strFirstID);
+		reusableActions.selectWhenReadyByVisibleText(ddlFirstID, strFirstID);
 	}
 	
 	/**
@@ -186,7 +188,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectProvince(String strProvince) {
-		reusableActions.selectWhenReady(ddlProvince, strProvince);
+		reusableActions.selectWhenReadyByVisibleText(ddlProvince, strProvince);
 	}
 	
 	/**
@@ -195,7 +197,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void selectExpiryYear() {
 		String strYYYY = FormFiller.generateExpiryYear();
-		reusableActions.selectWhenReady(ddlExpiryYear,strYYYY);
+		reusableActions.selectWhenReadyByVisibleText(ddlExpiryYear,strYYYY);
 	}
 	
 	/**
@@ -214,7 +216,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectExpiryYearYYYY(String strYYYY) {
-		reusableActions.selectWhenReady(ddlExpiryYear, strYYYY);
+		reusableActions.selectWhenReadyByVisibleText(ddlExpiryYear, strYYYY);
 	}
 	
 	/**
@@ -222,8 +224,8 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectExpiryMonth() {
-		String strMM = FormFiller.generateMonth();
-		reusableActions.selectWhenReady(ddlExpiryMonth, strMM);
+		String strMM = FormFiller.generateNameOfMonth();
+		reusableActions.selectWhenReadyByVisibleText(ddlExpiryMonth, strMM);
 	}
 	
 	/**
@@ -232,7 +234,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void selectExpiryDay() {
 		String strDD = FormFiller.generateCalendarDay();
-		reusableActions.selectWhenReady(ddlExpiryDay, strDD);
+		reusableActions.selectWhenReadyByVisibleText(ddlExpiryDay, strDD);
 	}
 	
 	/**
@@ -253,7 +255,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void selectSecondIDOption(String strSecondIDOption) {
 		reusableActions.waitForElementVisibility(ddlSecondIdOption, 20);
-		reusableActions.selectWhenReady(ddlSecondIdOption, strSecondIDOption);
+		reusableActions.selectWhenReadyByVisibleText(ddlSecondIdOption, strSecondIDOption);
 	}
 	 
 	/**
@@ -272,7 +274,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void selectPassportExpiryYear() {
 		String strYYYY = FormFiller.generateExpiryYear();
-		reusableActions.selectWhenReady(ddlPassportExpiryYear, strYYYY);
+		reusableActions.selectWhenReadyByVisibleText(ddlPassportExpiryYear, strYYYY);
 	}
 	
 	/**
@@ -280,8 +282,8 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectPassportExpiryMonth() {
-		String strMM = FormFiller.generateMonth();
-		reusableActions.selectWhenReady(ddlPassportExpiryMonth, strMM);
+		String strMM = FormFiller.generateNameOfMonth();
+		reusableActions.selectWhenReadyByVisibleText(ddlPassportExpiryMonth, strMM);
 	}
 	
 	/**
@@ -290,7 +292,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void selectPassportExpiryDay() {
 		String strDD = FormFiller.generateCalendarDay();
-		reusableActions.selectWhenReady(ddlPassportExpiryDay, strDD);
+		reusableActions.selectWhenReadyByVisibleText(ddlPassportExpiryDay, strDD);
 	}
 	
 	/**

@@ -24,7 +24,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 		
 	@FindAll({
         @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'Internet')]"),
-        @FindBy(xpath = "//span[@class='ute-icon-internet']")})
+        @FindBy(xpath = "//span[@class='ds-icon rds-icon-internet']")})	
 	WebElement btnSolarisInternetBadge;
 
 	@FindBy(xpath = "//ins[@translate='global.label.internet']")

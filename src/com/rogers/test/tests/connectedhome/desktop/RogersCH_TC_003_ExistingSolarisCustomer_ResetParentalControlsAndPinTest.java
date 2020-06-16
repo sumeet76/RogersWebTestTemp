@@ -16,7 +16,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 /**
  * This class contains the test method to test the Reset parental controls and pin functionality in change tv buy flow for Rogers.com   
  * 
- * @author Saurav.Goyal
+ * @author chinnarao.vattam
  * 
  * Test steps:
  *

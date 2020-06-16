@@ -18,7 +18,10 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	@FindBy(xpath = "//h4[@translate='global.checkout.profile.createProfile']")
 	WebElement txtProfile;
 	
-	@FindBy(xpath = "//input[@id='ds-form-input-id-14']")
+	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-bgcolor-errorField b-2 ds-brcolor-error']")
+	WebElement txtContainerEmail;
+	
+		@FindBy(xpath = "//input[@id='ds-form-input-id-14']")
 	WebElement txtEmail;
 	
 	@FindBy(xpath = "//input[@id='ds-form-input-id-15']")
@@ -75,9 +78,9 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 */
 	public void setEmail() {
 		String strEmail = FormFiller.generateEmail();
-		reusableActions.waitForElementVisibility(txtEmail,180);
-		reusableActions.executeJavaScriptClick(txtEmail);
-		reusableActions.getWhenReady(txtEmail, 180).clear();
+		reusableActions.waitForElementVisibility(txtContainerEmail,180);
+		reusableActions.getWhenReady(txtContainerEmail,10).click();
+		reusableActions.getWhenReady(txtEmail, 30).clear();
 		reusableActions.getWhenReady(txtEmail,10).sendKeys(strEmail);
 		reusableActions.executeJavaScriptClick(txtConfirmEmail);
 		reusableActions.getWhenReady(txtConfirmEmail, 10).clear();

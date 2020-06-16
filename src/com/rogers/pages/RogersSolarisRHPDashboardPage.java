@@ -16,7 +16,7 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	
 	@FindAll({
         @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'Home Phone')]"),
-        @FindBy(xpath = "//span[@class='ute-icon-home-phone']")})
+        @FindBy(xpath = "//span[@class='ds-icon rds-icon-home-phone']})
 	WebElement btnSolarisrhpBadge;
 
 	@FindBy(xpath = "//ins[@translate='global.label.homePhoneDashboard']")

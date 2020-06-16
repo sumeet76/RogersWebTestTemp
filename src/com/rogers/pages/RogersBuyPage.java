@@ -84,9 +84,9 @@ public class RogersBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkExchangeFlexChannel() {
-		reusableActions.clickWhenReady(btnExchangeFlexChannel, 60);
-		//for Prod issue, click the same link second time
-		reusableActions.clickIfAvailable(btnExchangeFlexChannel, 60);
+		reusableActions.getWhenReady(btnExchangeFlexChannel, 60).click();
+		//for Prod issue, will be removing once the issue got fixed
+		//reusableActions.getWhenReady(btnExchangeFlexChannel, 60).click();
 	}
 	
 	
@@ -151,7 +151,7 @@ public class RogersBuyPage extends BasePageClass {
 	public void selectHomeMoniteringPackage(String strHomeMoniteringEn, String strHomeMoniteringFr ) {
 		WebElement  rhmLocator = (WebElement)driver.findElement(By.xpath("//h3[contains(text(),'"+strHomeMoniteringEn+ "') or contains(text(),'"+ strHomeMoniteringFr+ "')]/ancestor::div[@class='package-tile']//div[@class='how-to-get-it']//a[@class='rogers-btn-solid']"));
 		reusableActions.waitForElementVisibility(rhmLocator,30);
-		reusableActions.executeJavaScriptClick(rhmLocator);	
+		reusableActions.getWhenReady(rhmLocator,90).click();	
 	}
 	
 	/**

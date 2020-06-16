@@ -16,7 +16,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 /**
  * This class contains the test method to test the Manage theme packs functionality in TV buy flow for Rogers.com   
  * 
- * @author Saurav.Goyal
+ * @author chinnarao.vattam
  * 
  * Test steps:
  *
@@ -55,11 +55,9 @@ public class RogersCH_TC_001_Regression_4Plus1AddThemepacksfromTVDashboardPage e
 		rogers_solaris_tv_channels_and_themepacks_page.clkThemePacks();
 		reporter.reportLogWithScreenshot("Clicked on themepack tab");
 		rogers_solaris_tv_channels_and_themepacks_page.clkAddButtonOnThemePackListOnManageChannelsAndThemePacks();
+		reporter.reportLogWithScreenshot("Clicked on confirm button");
+		rogers_solaris_tv_channels_and_themepacks_page.clkContinueOnExistingChannelAlertWindow(); 
 		reporter.reportLogWithScreenshot("ThemePack added");    
-		rogers_solaris_tv_channels_and_themepacks_page.clkRemoveFromYourChanges();
-		reporter.reportLogWithScreenshot("Clicked on remove from your changes");
-		rogers_solaris_tv_channels_and_themepacks_page.clkAddButtonOnThemePackListOnManageChannelsAndThemePacks();
-		reporter.reportLogWithScreenshot("ThemePack added"); 
 		rogers_solaris_tv_channels_and_themepacks_page.clkConfirmChangesOnManageChannelsAndThemePacks();
 		reporter.reportLogWithScreenshot("Clicked in confirm changes on manage channels and theme packs");
 		rogers_order_review_page.verifyAgreementPage();
@@ -68,7 +66,7 @@ public class RogersCH_TC_001_Regression_4Plus1AddThemepacksfromTVDashboardPage e
 		rogers_order_review_page.clkAcceptenceCheckbox();
 		reporter.reportLogWithScreenshot("Agreement details");
 		rogers_order_review_page.clkSubmit();
-		reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
+		reporter.softAssert(rogers_order_confirmation_page.verifyOrderSuccess(),"Update order completed","Update order Failed");
 		reporter.reportLogWithScreenshot("Launched the Confirmation page");
 	}
 
@@ -81,7 +79,7 @@ public class RogersCH_TC_001_Regression_4Plus1AddThemepacksfromTVDashboardPage e
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+	closeSession();
 	}
 
 

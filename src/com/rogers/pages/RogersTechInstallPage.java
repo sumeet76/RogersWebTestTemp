@@ -22,29 +22,35 @@ public class RogersTechInstallPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath ="//label[@for='slot-13']/ancestor::td[@class='monday']")
+	@FindBy(xpath ="//input[@id='26']/ancestor::label[@class='a-radio']")
 	WebElement rdoTechInstallSlot;
+	//label[@for='slot-13']/ancestor::td[@class='monday']
 	
-	@FindBy(xpath ="//input[@id='enrouteMobile']")
-	WebElement txtMobielNumber;
-	
+		@FindBy(xpath ="//input[@id='ds-form-input-id-34']")
+	WebElement txtMobielNumber;		
+		//input[@id='enrouteMobile']
+		
 	@FindBy(xpath ="//div[@class='col-sm-6']//span[@class='ute-icon-calendar-icon']")
 	WebElement imgStartingTechInstallSlot;
 	
 	@FindBy(xpath ="//div[contains(@class,'col-sm-6 margin-bottom-0')]//span[@class='ute-icon-calendar-icon']")
 	WebElement imgEndingTechInstallSlot;
 	
-	@FindBy(xpath ="//input[@id='enRouteEmail']")
+	@FindBy(xpath ="//input[@id='ds-form-input-id-35']")
 	WebElement txtEmail;
+	//input[@id='enRouteEmail']
 	
-	@FindBy(xpath ="//label[@for='deliveryConcern']")
+	@FindBy(xpath ="//label[@for='ds-checkbox-id-1']")
 	WebElement chkTechInstalConsent;
 	//div[@class='self-install-concern']//input[@name='consent']
 	//input[@id='deliveryConcern']
-		
-	@FindBy(xpath ="//button[@class='ute-btn-primary']")
+	//label[@for='deliveryConcern']
+	//input[@id='ds-checkbox-id-1']
+	
+	@FindBy(xpath ="//span[@translate='global.checkout.fulfillment.confirm']")
 	WebElement btnTechInstallContinue;
 	//div[@class='buttons-block hidden-xs']//button[@class='ute-btn-primary']")
+	//button[@class='ute-btn-primary']
 	
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
@@ -55,16 +61,18 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath = "//i[@class='glyphicon glyphicon-chevron-right']")
 	WebElement clkNext;
 	
-	@FindBy(xpath = "//i[@class='glyphicon glyphicon-chevron-right']")
+	@FindBy(xpath = "(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[3]")
 	WebElement clkChevron;
-
+	//i[@class='glyphicon glyphicon-chevron-right']
+	
 	@FindBy(xpath = "//label[@class='ute-label-text']")
 	WebElement clkIUnderStand;
 
-	@FindBy(xpath = "//span[@class='ute-icon-calendar-icon']")
+	@FindBy(xpath = "//i[@class='rch-icon-calendar']")
 	WebElement clkCalendarIcon;
-
-	@FindBy(xpath ="//span[@class='ute-icon-calendar-icon']")
+	//span[@class='ute-icon-calendar-icon']
+	
+	@FindBy(xpath ="//i[@class='rch-icon-calendar']")
 	WebElement imgTechInstallSlot;
 	
 	@FindBy(xpath = "//button[@class='knob collapsed']")
@@ -76,8 +84,9 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath ="//label[@for='tech-install-option']//span[@class='ute-icon-check']")
 	WebElement chkPersonalizedInstall;
 	
-	@FindBy(xpath ="//ins[@translate='global.label.personalizedInstallation']")
+	@FindBy(xpath ="//h2[@translate='global.checkout.fulfillment.title']")
 	WebElement txtTechInstalpage;
+	//ins[@translate='global.label.personalizedInstallation']
 	
 	/**
 	 * To click on the chevron on the tech Install page
@@ -97,27 +106,6 @@ public class RogersTechInstallPage extends BasePageClass {
 	public boolean verifyGWPYourCartPromotion() {
 		reusableActions.waitForElementVisibility(gwpYourCart, 120);
 		return	reusableActions.isElementVisible(gwpYourCart);
-	}
-
-	/**
-	 * Select Self install date and time
-	 * @author Saurav.Goyal
-	 */
-	public void selSelffinstallDateAndTime() {
-		reusableActions.staticWait(10000);
-		reusableActions.waitForElementVisibility(clkCalendarIcon,20); 
-		reusableActions.getWhenReady(clkCalendarIcon, 20).click();
-		Calendar calendar = Calendar.getInstance();
-		int intDate = calendar.get(Calendar.DATE);
-		int startDate = intDate + 20; 
-		//If startDate > 29 , 29 being the number of days in the month
-		if(startDate>29) {
-			reusableActions.getWhenReady(clkChevron, 60).click();
-			startDate = startDate - 29;
-		}
-		String strStartDate= Integer.toString(startDate);
-		By selStartDate = By.xpath("//button[@class='btn btn-default btn-sm']//span[contains(text(),'" + strStartDate + "')]");
-		reusableActions.getWhenReady(selStartDate, 20).click();
 	}
 
 	/**
@@ -174,7 +162,28 @@ public class RogersTechInstallPage extends BasePageClass {
 		int intDate = calendar.get(Calendar.DATE);
 		int startDate = intDate + 5; 
 		String strStartDate= Integer.toString(startDate);
-		By selStartDate = By.xpath("//button[@class='btn btn-default btn-sm']//span[contains(text(),'" + strStartDate + "')]");
+		By selStartDate = By.xpath("//span[contains(text(),'" + strStartDate + "') and @class='owl-dt-calendar-cell-content']");
+		reusableActions.getWhenReady(selStartDate, 20).click();
+		//button[@class='btn btn-default btn-sm']//span[contains(text(),'" + strStartDate + "')]
+	}
+	
+	/**
+	 * Select Self install date and time
+	 * @author Saurav.Goyal
+	 */
+	public void selSelffinstallDateAndTime() {
+		reusableActions.waitForElementVisibility(clkCalendarIcon,20); 
+		reusableActions.getWhenReady(clkCalendarIcon, 20).click();
+		Calendar calendar = Calendar.getInstance();
+		int intDate = calendar.get(Calendar.DATE);
+		int startDate = intDate + 20; 
+		//If startDate > 29 , 29 being the number of days in the month
+		if(startDate>29) {
+			reusableActions.getWhenReady(clkChevron, 60).click();
+			startDate = startDate - 29;
+		}
+		String strStartDate= Integer.toString(startDate);
+		By selStartDate = By.xpath("//span[contains(text(),'" + strStartDate + "') and @class='owl-dt-calendar-cell-content']");
 		reusableActions.getWhenReady(selStartDate, 20).click();
 	}
 	
