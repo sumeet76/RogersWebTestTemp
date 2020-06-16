@@ -3,6 +3,7 @@ package com.rogers.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 
@@ -20,7 +21,10 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[@data-test-id='myr-internetMyPackage-managePackage']")
 	WebElement btnChangeInternetPackage;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-internet']")
+		
+	@FindAll({
+        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'Internet')]"),
+        @FindBy(xpath = "//span[@class='ds-icon rds-icon-internet']")})	
 	WebElement btnSolarisInternetBadge;
 
 	@FindBy(xpath = "//ins[@translate='global.label.internet']")

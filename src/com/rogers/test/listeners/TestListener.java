@@ -230,18 +230,18 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
 	 */
 	@Override
 	public void onFinish(ISuite suite) {
-		String strResFile;
+
 		try {
-				strResFile = FileUpload.extentReportsUpload();
-	        	SendEmail.sendEmail(suite.getName(),strResFile);
-				
+
+			String strResPath= FileUpload.extentReportsUpload();
+			SendEmail.sendEmail(suite.getName(), strResPath);
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
+		}
 	}
 
 }

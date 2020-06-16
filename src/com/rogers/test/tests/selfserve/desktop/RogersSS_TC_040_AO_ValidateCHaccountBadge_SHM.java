@@ -37,14 +37,14 @@ public class RogersSS_TC_040_AO_ValidateCHaccountBadge_SHM extends BaseTestClass
         rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        rogers_login_page.setUsernameIFrame(TestDataHandler.shmAccount.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.shmAccount.getPassword());
+        rogers_login_page.setUsernameIFrame(TestDataHandler.tc40SHMAccount.getUsername());
+        rogers_login_page.setPasswordIFrame(TestDataHandler.tc40SHMAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         rogers_login_page.clkSignInIFrame();
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame(); 
         rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount(TestDataHandler.shmAccount.accountDetails.getBan());                    
+        rogers_account_overview_page.selectAccount(TestDataHandler.tc40SHMAccount.accountDetails.getBan());                    
         reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),
         		"Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
