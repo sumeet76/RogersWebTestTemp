@@ -5,6 +5,8 @@ import com.rogers.testdatamanagement.TestDataHandler;
 import extentreport.ExtentManager;
 import extentreport.ExtentTestManager;
 import extentreport.FileUpload;
+import extentreport.SendEmail;
+
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.HashMap;
@@ -226,8 +228,12 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
 
 		try {
 
-			FileUpload.extentReportsUpload();
+			String strResPath= FileUpload.extentReportsUpload();
+			SendEmail.sendEmail(suite.getName(), strResPath);
 		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

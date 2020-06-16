@@ -13,6 +13,7 @@ import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import com.rogers.pages.base.BasePageClass;
 
@@ -101,9 +102,12 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//*[contains(text(),'Change my Caller ID') or contains(text(),'pour l’Affichage des appels')]")
 	WebElement lnkChangeMyCallerId;
-		
-	@FindBy(xpath = "//div[@class='ute-secondLevelNav-bar-text']/span[@data-translate='ute.common.label.overview'] | //a[@translate='nav.overview.header']")
-	WebElement lnkOverview;
+	
+	
+	@FindAll({
+        @FindBy(xpath = "//a[text()='Overview' or text()='Overview']"),
+        @FindBy(xpath = "//div[@class='ute-secondLevelNav-bar-text']/span[@data-translate='ute.common.label.overview'] | //a[@translate='nav.overview.header']")})
+    WebElement lnkOverview;
 	
 	@FindBy(xpath = "//span[contains(text(),'Voicemail password') or contains(text(),'de passe de la Messagerie vocale')]")
 	WebElement lnkUpdateMyVoicemailPwd;
@@ -403,7 +407,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//a[@title='Change the Data Manager for this account' or @title='Change the Data Manager for this account']")
 	WebElement btnAddDataManager;
 
-	@FindBy(xpath = "//p[text()='Choose a Data Manager' or text()='Choose a Data Manager']")
+	@FindBy(xpath = "//p[text()='Choose a Data Manager' or text()='Choisir un gestionnaire de données']")
 	WebElement titleChooseDataManager;
 	
 	@FindBy(xpath = "//select[@formcontrolname='phoneNumber']")
@@ -432,6 +436,12 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//span[contains(@class,'data-alert-value')]")
 	WebElement lblDataAlertSetValue;
+
+	@FindBy(xpath = "//a[@title='Change the Data Manager for this account' or @title='Changer le gestionnaire de données pour ce compte']")
+	WebElement btnChangeDataManager;
+
+	@FindBy(xpath = "//span[@translate='fdmModule.fdm.dataManager']")
+	WebElement btnDataManagerCTN;
 	
 	/**
 	 * To click the link of lost or stolen device on wireless dashboard page
@@ -1795,6 +1805,15 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	}
 
 	/**
+	 * Clicks on Change data manager
+	 * @author Mirza.Kamran
+	 */
+	public void clkChangeDataManager() {
+		reusableActions.clickWhenReady(btnChangeDataManager);
+		
+	}
+	
+	/**
 	 * Checks if the data manager overlay is displayed
 	 * @return true if the data manager overlay is displayed
 	 * @author Mirza.Kamran
@@ -1811,12 +1830,23 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		reusableActions.selectWhenReady(selectDataManager, 0);
 		
 	}
+	
+	/**
+	 * Selects the data manager
+	 * @author Mirza.Kamran
+	 * @param strCTNValue
+	 */
+	public void changeDataManager(String strCTNValue) {
+		reusableActions.selectWhenReady(selectDataManager,strCTNValue.replaceAll(" ", "").replaceAll("-", ""));
+		
+	}
+
 
 	/**
 	 * Clicks on save data manager
 	 * @author Mirza.Kamran
 	 */
-	public void saveDataManager() {	
+	public void clkSaveButtonOnDataManager() {	
 		reusableActions.clickWhenReady(btnSaveDataManager);
 		reusableActions.staticWait(10000);
 	}
@@ -1861,7 +1891,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @param strDataAlertValue data alert value
 	 * @author Mirza.Kamran
 	 */
-	public void setDataAlert(String strDataAlertValue) {				
+	public void setDataAlertValue(String strDataAlertValue) {				
 		reusableActions.clickWhenReady(lblSetDataAlert);
 		reusableActions.getWhenReady(txtSetDataAlert).sendKeys(strDataAlertValue);		
 	}
@@ -1870,7 +1900,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * Clicks on save data alert
 	 * @author Mirza.Kamran
 	 */
-	public void saveDataAlert() {
+	public void clkSaveButtonOnDataAlertOverlay() {
 		reusableActions.clickWhenReady(btnSaveDataAlert);				
 	}
 	
@@ -1880,8 +1910,74 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @param strDataAlert data alert value
 	 * @return true if the Data Alert is correctly set, otherwise false.
 	 */
-	public boolean isSetDataAlertCorrectlySet(String strDataAlert) {
+	public boolean isDataAlertCorrectlySet(String strDataAlert) {
 		return reusableActions.getWhenReady(lblDataAlertSetValue).getText().trim().replaceAll(",", ".").contains(strDataAlert);
+	}
+
+	/**
+	 * Checks if the Change Data Manager is displayed
+	 * @return true if the chnage data manager is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isAddChangeDataManagerDisplayed() {		
+		return reusableActions.isElementVisible(btnChangeDataManager);
+	}
+	
+	/**
+	 * Gets the Data Manager CTN
+	 * @return string value containing the data manager CTN 
+	 * @author Mirza.Kamran
+	 */
+	public String getDataManagerCTN() {	
+		if(lstOfCTNBadgesOnDashboardPage.get(0).getText().toLowerCase().contains("data manager")
+				|| lstOfCTNBadgesOnDashboardPage.get(0).getText().toLowerCase().contains("gestionnaire de données"))
+		{
+			return lstOfCTNBadgesOnDashboardPage.get(0).findElement(By.className("cta_no")).getText().trim();
+		}else
+		{
+			return null;
+		}
+		 
+	}
+
+	/**
+	 * Gets the Data Manager CTN
+	 * @return string value containing the NON data manager CTN 
+	 * @author Mirza.Kamran
+	 */
+	public String getNonDataManagerCTN() {
+		if(!lstOfCTNBadgesOnDashboardPage.get(1).getText().toLowerCase().contains("data danager")
+				|| !lstOfCTNBadgesOnDashboardPage.get(1).getText().toLowerCase().contains("gestionnaire de données"))
+		{
+			return lstOfCTNBadgesOnDashboardPage.get(1).findElement(By.className("cta_no")).getText().trim();
+		}else
+		{
+			return null;
+		}		
+	}
+
+	/**
+	 * verifies if the Change Data Manager successful
+	 * @param strDataManagerCTN
+	 * @return true if the value matches else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isChangeDataManagerSuccessful(String strDataManagerCTN) {
+		if((lstOfCTNBadgesOnDashboardPage.get(0).getText().toLowerCase().contains("data manager") ||
+				lstOfCTNBadgesOnDashboardPage.get(0).getText().toLowerCase().contains("gestionnaire de données"))
+			&& 	lstOfCTNBadgesOnDashboardPage.get(0).getText().toLowerCase().contains(strDataManagerCTN))
+		{
+			return true;
+		}		
+		return false;		
+	}
+
+	/**
+	 * Clicks on Data Manager CTN
+	 */
+	public void clkDataManagerCTN() {
+		reusableActions.clickWhenReady(btnDataManagerCTN,30);
+		
 	}
 
 

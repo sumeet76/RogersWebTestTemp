@@ -6,7 +6,7 @@ sauceOptions:
    maxDuration: 600
    commandTimeout: 300
    idleTimeout: 120
-   build: Rogers-Sanity Run 520
+   build: Rogers-AOTest-R520
 mutableFireFoxCapabilities:  
    platformVersion: Windows 10
    browserVersion: latest
