@@ -1834,7 +1834,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	/**
 	 * Selects the data manager
 	 * @author Mirza.Kamran
-	 * @param strCTNValue
+	 * @param strCTNValue string value for CTN
 	 */
 	public void changeDataManager(String strCTNValue) {
 		reusableActions.selectWhenReady(selectDataManager,strCTNValue.replaceAll(" ", "").replaceAll("-", ""));
@@ -1958,7 +1958,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 
 	/**
 	 * verifies if the Change Data Manager successful
-	 * @param strDataManagerCTN
+	 * @param strDataManagerCTN String CTN value
 	 * @return true if the value matches else false
 	 * @author Mirza.Kamran
 	 */
