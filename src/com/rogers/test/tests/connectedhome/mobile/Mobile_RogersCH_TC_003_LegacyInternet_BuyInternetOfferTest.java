@@ -34,15 +34,16 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class Mobile_RogersCH_TC_003_LegacyInternet_BuyInternetOfferTest extends BaseTestClass {
 
     @Test
-    public void checkBuyInternetOffer() throws InterruptedException {
+    public void checkBuyInternetOfferMobile() throws InterruptedException {
     	reporter.reportLogWithScreenshot("Launched the Home Page");
-    	rogers_home_page.clkShop(); 
+    	rogers_home_page.clkShopMobile(); 
     	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
-    	rogers_home_page.clkInternet();
-    	reporter.reportLogWithScreenshot("Launched the legacy Internet packages page");
+    	rogers_home_page.clkInternetMobile();
+    	rogers_buy_page.verifyInternetMenuMobile();    	
+    	reporter.reportLogWithScreenshot("Launched the legacy Internet packages page");    	
     	rogers_buy_page.selectInternetPackage(TestDataHandler.legacyInternetAccount.getAccountDetails().getInternetBundle());
         String  strAddressLine1=(String) TestDataHandler.legacyInternetAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=(String) TestDataHandler.legacyInternetAccount.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine2=(String) TestDataHandler.legacyInternetAccount.getAccountDetails().getAddress().get("line2");        
         rogers_buy_page.setAddressLookup(strAddressLine1+", "+strAddressLine2);
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
     	rogers_buy_page.clkAddressLookupSubmit(); 

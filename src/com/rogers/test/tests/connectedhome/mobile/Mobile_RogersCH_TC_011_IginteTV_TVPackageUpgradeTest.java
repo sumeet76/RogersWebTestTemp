@@ -39,25 +39,30 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class Mobile_RogersCH_TC_011_IginteTV_TVPackageUpgradeTest extends BaseTestClass {
 
     @Test
-    public void checkSolarisTVPackageUpgrade() {
-        reporter.reportLogWithScreenshot("Launched the Home Page");
-        rogers_home_page.clkSignIn();
-        rogers_login_page.switchToSignInIFrame();
-        reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        rogers_login_page.setUsernameIFrame(TestDataHandler.solarisTVAccountForUpgrade.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.solarisTVAccountForUpgrade.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+    public void checkSolarisTVPackageUpgradeMobile() {
+        reporter.reportLogWithScreenshot("Home Page");
+        reporter.reportLog("Home Page Launched");
+    	rogers_home_page.clkSignInMobile();
+    	rogers_login_page.switchToSignInIFrame();
+    	rogers_login_page.setUsernameIFrame(TestDataHandler.tc013132.getUsername());
+    	rogers_login_page.setPasswordIFrame(TestDataHandler.tc013132.getPassword());
+        reporter.reportLogWithScreenshot("Login Credential is entered.");
         rogers_login_page.clkSignInIFrame();
-        reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount(TestDataHandler.solarisTVAccountForUpgrade.accountDetails.getBan());
-        reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
-        reporter.reportLogWithScreenshot("Launched the Account Page");                
+        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        	reporter.reportLogWithScreenshot("Select an account.");
+        	rogers_account_overview_page.selectAccount(TestDataHandler.tc013132.getAccountDetails().getBan());       
+        }
+        reporter.reportLogWithScreenshot("Account overview page.");
+        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Passed", "Login Failed");   
         rogers_solaris_tv_dashboard_page.clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         rogers_solaris_tv_dashboard_page.clkChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the TV packages page");
+        
+        
+        
         rogers_solaris_tv_dashboard_page.selectSolarisTVPackage(TestDataHandler.solarisTVAccountForUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.solarisTVAccountForUpgrade.accountDetails.getUpgradePlanFr());
         rogers_solaris_tv_dashboard_page.clkPopupChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the personalize channel page");

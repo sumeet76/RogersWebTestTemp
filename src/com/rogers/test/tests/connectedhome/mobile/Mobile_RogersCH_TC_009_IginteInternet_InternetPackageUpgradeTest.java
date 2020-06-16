@@ -40,28 +40,31 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class Mobile_RogersCH_TC_009_IginteInternet_InternetPackageUpgradeTest extends BaseTestClass {
 
     @Test
-    public void checkInternetPackageUpgrade() {
-        reporter.reportLogWithScreenshot("Launched the Home Page");
-        rogers_home_page.clkSignIn();
-        rogers_login_page.switchToSignInIFrame();
-        reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        rogers_login_page.setUsernameIFrame(TestDataHandler.solarisInternetAccount.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.solarisInternetAccount.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+    public void checkInternetPackageUpgradeMobile() {
+        reporter.reportLogWithScreenshot("Home Page");
+        reporter.reportLog("Home Page Launched");
+    	rogers_home_page.clkSignInMobile();
+    	rogers_login_page.switchToSignInIFrame();
+    	rogers_login_page.setUsernameIFrame(TestDataHandler.tc013132.getUsername());
+    	rogers_login_page.setPasswordIFrame(TestDataHandler.tc013132.getPassword());
+        reporter.reportLogWithScreenshot("Login Credential is entered.");
         rogers_login_page.clkSignInIFrame();
-        reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount((TestDataHandler.solarisInternetAccount.accountDetails.getBan()));
-        reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
-        reporter.reportLogWithScreenshot("Launched the Account Page");
-        rogers_internet_dashboard_page.clkSolarisInternetBadge();
-        rogers_internet_dashboard_page.clkInternetPopup();
-        reporter.reportLogWithScreenshot("Launched the Interent dashboard");
+        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        	reporter.reportLogWithScreenshot("Select an account.");
+        	rogers_account_overview_page.selectAccount(TestDataHandler.tc013132.getAccountDetails().getBan());       
+        }
+        reporter.reportLogWithScreenshot("Account overview page.");
+        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Passed", "Login Failed");       
+        rogers_internet_dashboard_page.clkSolarisInternetBadge();       
+        reporter.reportLogWithScreenshot("Launched the Interent dashboard");       
         rogers_internet_dashboard_page.clkSolChangeInternetPackage();
-        reporter.reportLogWithScreenshot("Launched the Interent packages page");
-        rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.solarisInternetAccount.getAccountDetails().getUpgradePlanEn(),TestDataHandler.solarisInternetPackageChange.getAccountDetails().getUpgradePlanFr());
+        reporter.reportLogWithScreenshot("Launched the Interent packages page");        
+        rogers_internet_dashboard_page.selectSolarisInternetPackageMobile(TestDataHandler.solarisInternetAccount.getAccountDetails().getUpgradePlanEn(),TestDataHandler.solarisInternetPackageChange.getAccountDetails().getUpgradePlanFr());
         reporter.reportLogWithScreenshot("Launched the Interent packages confirm OK popup"); 
+        
+        
         rogers_internet_dashboard_page.clkInternetChangeOK();
         reporter.reportLogWithScreenshot("Launched the agreement page");
         rogers_order_review_page.verifyAgreementPage();

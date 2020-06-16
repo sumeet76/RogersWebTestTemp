@@ -68,7 +68,7 @@ public class RogersCH_TC_005_IginteInternet_ValidateInternetDashboardUsageTest e
                     rogers_internet_usage_page.verifyMonthlyBreakdownTable();
                     reporter.softAssert(rogers_internet_usage_page.verifyMonthlyBreakdownTable(),"Verified the monthly usage", "Monthly usage deatils are not present");
                     rogers_internet_usage_page.clkUsageAlerts();
- 
+                    reporter.reportLogWithScreenshot("Usage and Alerts details");
     }
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})

@@ -55,6 +55,13 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
+	
+	@FindBy(xpath = "//div[@class='preloader loading-secondary']")
+	WebElement popupLoadingFingersMobile;
+	
+	@FindBy(xpath = "//div[@class='owl-item active']//ins[@translate='global.cta.select']")
+	WebElement btnSelectInternetPackageMobile;
+	
 
 	/**
 	 * Verify the Internet usage on the Internet dash board page
@@ -163,6 +170,28 @@ public class RogersInternetDashboardPage extends BasePageClass {
 		}
 	}
 
+	/**
+	 * Select the  Internet Package on change Internet package page
+	 * @param strPackageNameEn Internet package to be selected
+	 * @param strPackageNameFr Internet package to be selected
+	 * @author Chinnarao.Vattam
+	 */
+	public void selectSolarisInternetPackageMobile(String strPackageNameEn,String strPackageNameFr) {
+		reusableActions.waitForElementInvisibility(popupLoadingFingersMobile,120);
+		By btnPackageSelection = By.xpath("//span[contains(normalize-space(text()),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]");
+		if(reusableActions.isElementVisible(btnPackageSelection, 60))
+		{		
+	    reusableActions.getWhenReady(btnSelectInternetPackageMobile, 30).click();	
+		 }
+	   else
+		{
+	    reusableActions.getWhenReady(imgNext, 90).click();  
+	    reusableActions.isElementVisible(btnPackageSelection, 60);
+	    reusableActions.getWhenReady(btnSelectInternetPackageMobile, 30).click();	
+		}
+		reusableActions.waitForElementInvisibility(popupLoadingFingersMobile,120);
+	}
+	
 	/**
 	 * Select the  Internet Package on change Internet package page for migration flow
 	 * @param strPackageName Internet package to be selected

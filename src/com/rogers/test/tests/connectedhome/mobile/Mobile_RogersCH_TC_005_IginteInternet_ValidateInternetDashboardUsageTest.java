@@ -36,39 +36,40 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class Mobile_RogersCH_TC_005_IginteInternet_ValidateInternetDashboardUsageTest extends BaseTestClass {
 
     @Test
-    public void checkInternetDashboard() {
-    	            reporter.reportLogWithScreenshot("Launched the Home Page");
-                    rogers_home_page.clkSignIn();
-                    rogers_login_page.switchToSignInIFrame();
-                    reporter.reportLogWithScreenshot("Launched the SignIn popup");
-                    rogers_login_page.setUsernameIFrame(TestDataHandler.solarisInternetAccountWithUsage.getUsername());
-                    rogers_login_page.setPasswordIFrame(TestDataHandler.solarisInternetAccountWithUsage.getPassword());
-                    reporter.reportLogWithScreenshot("Enter the account credentails");
-                    rogers_login_page.clkSignInIFrame();
-                    reporter.reportLogWithScreenshot("Skip popup");
-                    rogers_login_page.clkSkipIFrame();  
-                    rogers_login_page.switchOutOfSignInIFrame();
-                    rogers_account_overview_page.selectAccount((TestDataHandler.solarisInternetAccountWithUsage.accountDetails.getBan()));
-            		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
-                    reporter.reportLogWithScreenshot("Launched the Account Page");
-                    rogers_internet_dashboard_page.clkSolarisInternetBadge();
-                    rogers_internet_dashboard_page.clkInternetPopup();
-                    reporter.reportLogWithScreenshot("Launched the Interent dashboard");
-            		reporter.softAssert(rogers_internet_dashboard_page.verifyInternet(), "Verified the Internet page", "Internet page verification failed");
-            		reporter.softAssert(rogers_internet_dashboard_page.verifyUsageAndAlerts(), "Usage and Alerts link present on the internet dash page", "Usage and Alerts link is not present on the internet page");                
-                    rogers_internet_dashboard_page.clkInternetUsageAlerts(); 
-                    reporter.reportLogWithScreenshot("Launched the UsageAlerts page");
-                    rogers_internet_usage_page.verifyDailyBreakdown();  
-                    rogers_internet_usage_page.verifyDailyBreakdownTable(); 
-                    reporter.reportLogWithScreenshot("Daily Breakdown details");
-                    reporter.softAssert(rogers_internet_usage_page.verifyDailyBreakdownTable(), "Verified the daily usage", "Daily usage deatils are not present");
-                    rogers_internet_usage_page.clkMonthlyUsage();
-                    rogers_internet_usage_page.verifyMonthlyBreakdown();  
-                    reporter.reportLogWithScreenshot("Monthly Breakdown details");
-                    rogers_internet_usage_page.verifyMonthlyBreakdownTable();
-                    reporter.softAssert(rogers_internet_usage_page.verifyMonthlyBreakdownTable(),"Verified the monthly usage", "Monthly usage deatils are not present");
-                    rogers_internet_usage_page.clkUsageAlerts();
- 
+    public void checkInternetDashboardMobile() {
+        reporter.reportLogWithScreenshot("Home Page");
+        reporter.reportLog("Home Page Launched");
+    	rogers_home_page.clkSignInMobile();
+    	rogers_login_page.switchToSignInIFrame();
+    	rogers_login_page.setUsernameIFrame(TestDataHandler.solarisInternetAccountWithUsage.getUsername());
+    	rogers_login_page.setPasswordIFrame(TestDataHandler.solarisInternetAccountWithUsage.getPassword());
+        reporter.reportLogWithScreenshot("Login Credential is entered.");
+        rogers_login_page.clkSignInIFrame();
+        rogers_login_page.clkSkipIFrame();
+        rogers_login_page.switchOutOfSignInIFrame();
+        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        	reporter.reportLogWithScreenshot("Select an account.");
+        	rogers_account_overview_page.selectAccount(TestDataHandler.solarisInternetAccountWithUsage.getAccountDetails().getBan());       
+        }
+        reporter.reportLogWithScreenshot("Account overview page.");
+        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Passed", "Login Failed");
+        rogers_internet_dashboard_page.clkSolarisInternetBadge();
+        reporter.reportLogWithScreenshot("Launched the Interent dashboard");
+        reporter.softAssert(rogers_internet_dashboard_page.verifyInternet(), "Verified the Internet page", "Internet page verification failed");
+        reporter.softAssert(rogers_internet_dashboard_page.verifyUsageAndAlerts(), "Usage and Alerts link present on the internet dash page", "Usage and Alerts link is not present on the internet page");                
+        rogers_internet_dashboard_page.clkInternetUsageAlerts(); 
+        reporter.reportLogWithScreenshot("Launched the UsageAlerts page");
+        rogers_internet_usage_page.verifyDailyBreakdown();  
+        rogers_internet_usage_page.verifyDailyBreakdownTableMobile(); 
+        reporter.reportLogWithScreenshot("Daily Breakdown details");
+        reporter.softAssert(rogers_internet_usage_page.verifyDailyBreakdownTableMobile(), "Verified the daily usage", "Daily usage deatils are not present");
+        rogers_internet_usage_page.clkMonthlyUsage();
+        rogers_internet_usage_page.verifyMonthlyBreakdown();  
+        reporter.reportLogWithScreenshot("Monthly Breakdown details");
+        rogers_internet_usage_page.verifyMonthlyBreakdownTableMobile();
+        reporter.softAssert(rogers_internet_usage_page.verifyMonthlyBreakdownTableMobile(),"Verified the monthly usage", "Monthly usage deatils are not present");
+        rogers_internet_usage_page.clkUsageAlerts();
+        reporter.reportLogWithScreenshot("Usage and Alerts details");
     }
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
