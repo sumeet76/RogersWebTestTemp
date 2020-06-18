@@ -45,7 +45,6 @@ public class RogersTechInstallPage extends BasePageClass {
 	//div[@class='self-install-concern']//input[@name='consent']
 	//input[@id='deliveryConcern']
 	//label[@for='deliveryConcern']
-	//input[@id='ds-checkbox-id-1']
 	
 	@FindBy(xpath ="//span[@translate='global.checkout.fulfillment.confirm']")
 	WebElement btnTechInstallContinue;

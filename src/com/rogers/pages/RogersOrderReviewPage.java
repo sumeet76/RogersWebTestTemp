@@ -27,17 +27,17 @@ public class RogersOrderReviewPage extends BasePageClass {
 	WebElement lnkAgreementToEnd;	
 	//p[contains(text(),'06/')]
 	
-/*	@FindBy(xpath = "//label[@for='ds-checkbox-id-3']")
+	@FindBy(xpath = "//label[@for='ds-checkbox-id-3']")
 	WebElement clkChangeAcceptCheckbox;
 
 	@FindBy(xpath = "//span[@translate='global.cta.submit']")
-	WebElement clkSubmit;*/
+	WebElement clkSubmit;
 	
-	@FindBy(xpath = "//label[@for='tos_consent']")
+/*	@FindBy(xpath = "//label[@for='tos_consent']")
 	WebElement clkChangeAcceptCheckbox;
 
 	@FindBy(xpath = "//input[@class='ute-btn-primary']")
-	WebElement clkSubmit;
+	WebElement clkSubmit;*/
 	
 	@FindBy(xpath = "//label[@for='shieldTermsCheckbox']")
 	WebElement chbShieldTerms;
