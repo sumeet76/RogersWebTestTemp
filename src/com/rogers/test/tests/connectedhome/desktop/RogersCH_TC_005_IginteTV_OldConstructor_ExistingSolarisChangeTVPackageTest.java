@@ -71,9 +71,9 @@ public class RogersCH_TC_005_IginteTV_OldConstructor_ExistingSolarisChangeTVPack
         rogers_order_review_page.verifyAgreementPage();
         reporter.reportLogWithScreenshot("Launched the order review page");
         rogers_order_review_page.verifyAgreement();
-        rogers_order_review_page.clkAcceptenceCheckbox();
+        rogers_order_review_page.clkAcceptenceCheckboxUpdate();
         reporter.reportLogWithScreenshot("Agreement details");
-        rogers_order_review_page.clkSubmit();
+        rogers_order_review_page.clkSubmitUpdate();
         reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
     }

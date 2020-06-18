@@ -147,6 +147,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam	 
 	 */
 	public void clkContinueOnExistingChannelAlertWindow() {
+		reusableActions.waitForElementVisibility(yesContinueOnExistingChannelAlert, 120);
 		reusableActions.getWhenReady(yesContinueOnExistingChannelAlert, 120).click();
 	}	
 		
