@@ -60,33 +60,34 @@ public class RogersSS_TC_01_FDM_AssignDMRoleViaOverlayForFirstTimeLogin extends 
        String strDataAlert = Double.toString(dataAlert).replaceAll(",", ".");
        //common_business_flows.scrollToMiddleOfWebPage();
        reporter.hardAssert(rogers_wireless_dashboard_page.isAddDataManagerDisplayed(),
-                        		   "Add data manager is not displayed for this account", "Add data manager available for this account");
+    		   "Add data manager available for this account","Add data manager is not displayed for this account");
        rogers_wireless_dashboard_page.clkAddDataManager();
-       reporter.reportLogWithScreenshot("Add data amanger button clicked");
+       reporter.reportLogWithScreenshot("Add data manger button clicked");
        reporter.softAssert(rogers_wireless_dashboard_page.isChooseDataManagerOverlayDisplayed(),
-        		   "Add data manager is not displayed for this account", "Add data manager available for this account");
+        		   "Choose data manager overlay is displayed for this account", 
+        		   "Choose data manager overlay is NOT available for this account");
        reporter.reportLogWithScreenshot("Add data manager overlay displayed");
        rogers_wireless_dashboard_page.selectDataManager();
        reporter.reportLogWithScreenshot("Data manager selected");
-       rogers_wireless_dashboard_page.saveDataManager();
+       rogers_wireless_dashboard_page.clkSaveButtonOnDataManager();
        reporter.reportLogWithScreenshot("Save data manager clicked");
        reporter.softAssert(!rogers_wireless_dashboard_page.isAddDataManagerDisplayed(),
     		   "Data manager set successfully", "Data manager is not set for this account yet");
        reporter.reportLogWithScreenshot("Data manager is set");
        reporter.hardAssert(rogers_wireless_dashboard_page.isSetDataAlertDisplayed(),
-    		   "Set data alert is not displayed for this account", "Set data alert is not available for this account");       
+    		   "Set data alert is displayed for this account", "Set data alert is not available for this account");       
        rogers_wireless_dashboard_page.clkSetDataAlert();
        reporter.reportLogWithScreenshot("Set data alert");
        reporter.softAssert(rogers_wireless_dashboard_page.isSetDataAlertOverlayDisplayed(),
-    		   "Set Data alert is  displayed for this account", "Add data manager is not available for this account");
+    		   "Set Data alert overlay is  displayed for this account", "Set Data alert overlay is not available for this account");
 	   rogers_wireless_dashboard_page.setAlertOn();
 	   reporter.reportLogWithScreenshot("Set Alert ON");
-	   rogers_wireless_dashboard_page.setDataAlert(strDataAlert);
+	   rogers_wireless_dashboard_page.setDataAlertValue(strDataAlert);
 	   reporter.reportLogWithScreenshot("Set data alert value");
-	   rogers_wireless_dashboard_page.saveDataAlert();
+	   rogers_wireless_dashboard_page.clkSaveButtonOnDataAlertOverlay();
 	   reporter.reportLogWithScreenshot("Save data alert");
-	   reporter.softAssert(rogers_wireless_dashboard_page.isSetDataAlertCorrectlySet(strDataAlert),
-    		   "Set Data alert is  set correctly for this account", "Set data alert is not available for this account");
+	   reporter.softAssert(rogers_wireless_dashboard_page.isDataAlertCorrectlySet(strDataAlert),
+    		   "Set Data alert is  set correctly for this account", "Set data alert is not set correctly for this account");
 	   reporter.reportLogWithScreenshot("Set data alert");
     }
 

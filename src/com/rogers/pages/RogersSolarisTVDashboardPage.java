@@ -4,6 +4,7 @@ package com.rogers.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -14,10 +15,12 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-tv']")
-	WebElement btnSolaristvBadge;	
-	//span[@class='ute-icon-tv']
-	
+		
+	@FindAll({
+        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'TV')]"),
+        @FindBy(xpath = "//span[@class='ds-icon rds-icon-tv']")})
+	WebElement btnSolaristvBadge;
+
 	@FindBy(xpath = "//ins[@usertype-translate='global.dashboard.tv.viewMyChannelLineup']")
 	WebElement lnkViewMyChannelLineup;
 
@@ -132,9 +135,12 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	
 	@FindBy(xpath = "//i[@class='ute-icon-button-left']")
 	WebElement imgPrevious;
-
-	@FindBy(xpath = "//span[contains(text(),'Home Monitoring') or contains(text(),'Système domotique')]/ancestor::div[@class='subscription-detail']")
+		
+	@FindAll({
+        @FindBy(xpath = "//span[@translate='myaccoverview_home_monotoring']"),
+        @FindBy(xpath = "//span[contains(text(),'Home Monitoring') or contains(text(),'Système domotique')]/ancestor::div[@class='subscription-detail']")})
 	WebElement btnSHMBadge;
+	
 
 	@FindBy(xpath = "//ins[@usertype-translate='global.dashboard.tv.digitalBoxes']")
 	WebElement lblBoxHeader;
@@ -142,7 +148,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//ins[@translate='global.dashboard.tv.digitalBoxSettings']")
 	WebElement lblBoxSettings;
 
-	@FindBy(xpath = "//ins[@translate='global.label.tv']")
+	@FindBy(xpath = "//h1[@class='tv-dashboard-hdr']")
 	WebElement lblHeaderTV;
 
 	

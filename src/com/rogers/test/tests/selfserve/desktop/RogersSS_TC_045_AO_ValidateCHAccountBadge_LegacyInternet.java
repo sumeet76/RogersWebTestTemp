@@ -38,15 +38,15 @@ public class RogersSS_TC_045_AO_ValidateCHAccountBadge_LegacyInternet extends Ba
 		rogers_home_page.clkSignIn();
 		 rogers_login_page.switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setUsernameIFrame(TestDataHandler.legacyInternetAccount.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.legacyInternetAccount.getPassword());
+		rogers_login_page.setUsernameIFrame(TestDataHandler.tc45LegacyInternetAccount.getUsername());
+		rogers_login_page.setPasswordIFrame(TestDataHandler.tc45LegacyInternetAccount.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
 		reporter.reportLogWithScreenshot("Skip popup");
 		rogers_login_page.clkSkipIFrame();
 		 rogers_login_page.switchOutOfSignInIFrame();
 		rogers_account_overview_page
-				.selectAccount(TestDataHandler.legacyInternetAccount.getAccountDetails().getBan());
+				.selectAccount(TestDataHandler.tc45LegacyInternetAccount.getAccountDetails().getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Overview Page");
 		rogers_account_overview_page.clkLegacyInternetBadge(xmlTestParameters.get("strBrowser"));
 		reporter.reportLogWithScreenshot("Launched the Internet Dashboard Page");

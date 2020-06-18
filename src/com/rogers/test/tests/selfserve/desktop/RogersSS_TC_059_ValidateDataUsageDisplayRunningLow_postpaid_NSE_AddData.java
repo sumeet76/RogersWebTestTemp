@@ -107,7 +107,11 @@ public class RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE_Add
 	        reporter.reportLogWithScreenshot("Account overview page.");        
 	        rogers_account_overview_page.clkMenuUsageAndService();
 	        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");        
-	        rogers_account_overview_page.clkSubMenuWirelessUsage();
+	        if (rogers_account_overview_page.isAccountShowInDropDown(strAccountNum.substring(strAccountNum.length()-4))) {
+	            rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
+	        } else {
+	        	rogers_account_overview_page.clkSubMenuWirelessUsage();
+	        }
 	        reporter.reportLogWithScreenshot("Wireless dashboard page.");
 	        reporter.softAssert(!rogers_wireless_dashboard_page.verifyRunningLowStateInTheUsageBar(),
 	        		"Data running low is disappeared",

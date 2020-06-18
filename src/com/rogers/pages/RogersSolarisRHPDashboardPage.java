@@ -2,6 +2,7 @@ package com.rogers.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -12,7 +13,10 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-home-phone']")
+	
+	@FindAll({
+        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'Home Phone')]"),
+        @FindBy(xpath = "//span[@class='ds-icon rds-icon-home-phone']")})
 	WebElement btnSolarisrhpBadge;
 
 	@FindBy(xpath = "//ins[@translate='global.label.homePhoneDashboard']")

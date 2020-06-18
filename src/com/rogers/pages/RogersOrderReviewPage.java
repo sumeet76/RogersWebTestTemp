@@ -27,17 +27,20 @@ public class RogersOrderReviewPage extends BasePageClass {
 	WebElement lnkAgreementToEnd;	
 	//p[contains(text(),'06/')]
 	
-/*	@FindBy(xpath = "//label[@for='ds-checkbox-id-3']")
+	@FindBy(xpath = "//label[@for='ds-checkbox-id-3']")
 	WebElement clkChangeAcceptCheckbox;
 
-	@FindBy(xpath = "//span[@translate='global.cta.submit']")
-	WebElement clkSubmit;*/
+	@FindBy(xpath = "//label[@for='ds-checkbox-id-1']")
+	WebElement clkChangeAcceptCheckboxExistingCustomer;
 	
-	@FindBy(xpath = "//label[@for='tos_consent']")
+	@FindBy(xpath = "//span[@translate='global.cta.submit']")
+	WebElement clkSubmit;
+	
+/*	@FindBy(xpath = "//label[@for='tos_consent']")
 	WebElement clkChangeAcceptCheckbox;
 
 	@FindBy(xpath = "//input[@class='ute-btn-primary']")
-	WebElement clkSubmit;
+	WebElement clkSubmit;*/
 	
 	@FindBy(xpath = "//label[@for='shieldTermsCheckbox']")
 	WebElement chbShieldTerms;
@@ -152,9 +155,22 @@ public class RogersOrderReviewPage extends BasePageClass {
 		reusableActions.isElementVisible(lnkAgreementToEnd, 50);
 		reusableActions.scrollToElement(lnkAgreementToEnd);	
 		reusableActions.staticWait(5000);
-		reusableActions.clickWhenReady(clkChangeAcceptCheckbox, 90);
+		reusableActions.getWhenReady(clkChangeAcceptCheckbox, 90).click();
+		reusableActions.staticWait(4000);
 	}
 
+	/**
+	 * Click on the Consent check box on the order review page
+	 * @author chinnarao.vattam
+	 */
+	public void clkAcceptenceCheckboxExistingCustomer() {
+		reusableActions.isElementVisible(lnkAgreementToEnd, 50);
+		reusableActions.scrollToElement(lnkAgreementToEnd);	
+		reusableActions.staticWait(5000);
+		reusableActions.getWhenReady(clkChangeAcceptCheckboxExistingCustomer, 90).click();
+		reusableActions.staticWait(4000);
+	}
+	
 	/**
 	 * Click on the Submit button on the order review page
 	 * @author chinnarao.vattam

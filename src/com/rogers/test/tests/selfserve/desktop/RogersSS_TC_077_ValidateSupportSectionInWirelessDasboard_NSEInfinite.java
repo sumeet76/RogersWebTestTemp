@@ -60,7 +60,7 @@ public class RogersSS_TC_077_ValidateSupportSectionInWirelessDasboard_NSEInfinit
         }
         rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
                        
-        rogers_wireless_dashboard_page.scrollToBottomOfPage();
+        //rogers_wireless_dashboard_page.scrollToBottomOfPage();
         reporter.reportLogWithScreenshot("Bottom of Wireless dashboard page."); 
         reporter.softAssert(rogers_wireless_dashboard_page.verifySupportSection(), 
         					"Support section is loaded in wireless dashboard page", 

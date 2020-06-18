@@ -19,25 +19,33 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	@FindBy(xpath = "//span[@class='ute-icon-internet']")
 	WebElement btnInternetBadge;
-	
-	@FindBy(xpath = "//span[contains(@class,'ds-icon rds-icon-internet')]")
-	WebElement btnLegacyInternetBadge;	
-	//span[contains(@class,'rui-icon-internet icon')]/ancestor::div[@role='button']
+			
+	@FindAll({
+        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'Internet')]"),
+        @FindBy(xpath = "//span[contains(@class,'rui-icon-internet icon')]/ancestor::div[@role='button']")})
+	WebElement btnLegacyInternetBadge;
 	
 	@FindBy (xpath ="//div[@class='ute-dataManager-badgeList-individualBadge']")
 	WebElement btnCtnBadge;
-	
-	@FindBy (xpath ="//div[@class='ute-dataManager-badgeList-individualBadge']//div[@class='ute-dataManager-badgeList-individualBadgeInfo']")
+			
+	@FindAll({
+        @FindBy(xpath = "//div[@class='subscription-detail']//rss-subscription-detail//a"),
+        @FindBy (xpath ="//div[@class='ute-dataManager-badgeList-individualBadge']//div[@class='ute-dataManager-badgeList-individualBadgeInfo']")})
 	List<WebElement> lstCtnBadges;
 	
 	
 	@FindBy(xpath = "//div[@class='row modal-content-header']//button[@class='close']")
 	WebElement popUpInternetPopup;
 
-	@FindBy(xpath = "//span[contains(@class,'ds-icon rds-icon-tv')]")
+	
+	@FindAll({
+        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'TV')]"),
+        @FindBy(xpath = "//span[contains(@class,'rui-icon-tv icon')]/ancestor::div[@role='button']")})
 	WebElement btnTVBadge;
 
-	@FindBy(xpath = "//span[contains(@class,'ds-icon rds-icon-home-phone')]")
+	@FindAll({
+        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'Home Phone')]"),
+        @FindBy(xpath = "//span[contains(@class,'rui-icon-home-phone icon')]/ancestor::div[@role='button']")})
 	WebElement btnRHPBadge;
 
 	@FindBy(xpath = "//div[@linkurl='tvdashboard']/parent::div")
@@ -217,6 +225,15 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	}
 	
 	/**
+	 * Clicks on the Legacy 'InternetBadge' option on the dash board
+	 * @author chinnarao.vattam
+	 */
+	public void clkLegacyInternetBadge() {
+		reusableActions.getWhenReady(btnLegacyInternetBadge, 120).click();
+	}
+	
+
+	/**
 	 * To click on the CTN badge in account overview page
 	 * @param strLast4DigitCtn, String, last 4 digit of the CTN
 	 * @author ning.xue 
@@ -267,6 +284,14 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	}
 
 	/**
+	 * Clicks on the 'TV Badge' option on the dash board
+	 * @author chinnarao.vattam
+	 */
+	public void clkTVBadge() {	
+		reusableActions.getWhenReady(btnTVBadge, 120).click();	
+	}
+	
+	/**
 	 * Clicks on the 'RHP Badge' option on the dash board
 	 * @param strBrowser- strBrowser
 	 * @author chinnarao.vattam
@@ -280,7 +305,13 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			}
 		}
 	
-
+	/**
+	 * Clicks on the 'RHP Badge' option on the dash board
+	 * @author chinnarao.vattam
+	 */
+	public void clkRHPBadge() {
+		reusableActions.getWhenReady(btnRHPBadge, 120).click();;
+		}
 	
 	/**
 	 * Check if the account selection header display or not
@@ -353,7 +384,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean isAccountShowInDropDown(String strLast4DigAcctNum) {
 		return reusableActions.isElementVisible(
-				(By.xpath("//span[contains(@data-translate-values,'" + strLast4DigAcctNum + "')]")), 
+				(By.xpath("//span[contains(@data-translate-values,'" + strLast4DigAcctNum + "') or contains(text(),'" + strLast4DigAcctNum + "')]")), 
 				10);
 	}
 	
@@ -364,7 +395,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void clkDropDownAccount(String strLast4DigAcctNum) {
 		reusableActions.getWhenReady(
-				(By.xpath("//span[contains(text(),'" + strLast4DigAcctNum + "')]")), 
+				(By.xpath("//span[contains(text(),'" + strLast4DigAcctNum + "')or contains(text(),'" + strLast4DigAcctNum + "')]")), 
 				10).click();
 
 	}
@@ -420,6 +451,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @return true if the package name is Home Phone ; else false
 	 * @author chinnarao.vattam
 	 */
+	//TODO please move this to dashboard page
 	public boolean verifyRHPBanner() {
 		return reusableActions.isElementVisible(infoLegacyrhpDashboard, 20);
 	}
@@ -685,6 +717,14 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		return lstCtnBadges.size()>5;
 	}
 
+	/**
+	 * Checks if the no of CTNS are more than 1
+	 * @return true if the no of CTNS are more than 5
+	 * @author Mirza.Kamran
+	 */
+	public boolean isCTNMoreThanOne() {		
+		return lstCtnBadges.size()>1;
+	}
 	/**
 	 * retruns total no of CTNS
 	 * @return int value total no of CTNs

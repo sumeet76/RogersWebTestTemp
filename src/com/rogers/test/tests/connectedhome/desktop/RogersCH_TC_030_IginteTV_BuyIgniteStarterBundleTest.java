@@ -146,7 +146,7 @@ public class RogersCH_TC_030_IginteTV_BuyIgniteStarterBundleTest extends BaseTes
 	        reporter.reportLogWithScreenshot("Agreement details");
 	        rogers_order_review_page.clkSubmit();
 	        reporter.reportLogWithScreenshot("Launched the Confirmation page");
-	        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");      
+	        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");      
 	        reporter.reportLogWithScreenshot("Launched the Confirmation page");
 	    }
 	   
