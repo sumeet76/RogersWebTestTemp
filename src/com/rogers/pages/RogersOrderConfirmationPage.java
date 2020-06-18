@@ -66,6 +66,15 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @return true if the page display the yellow banner with order success information , else false
 	 * @author chinnarao.vattam
 	 */
+	public boolean verifyOrderConfirmationNew() {
+		reusableActions.waitForElementVisibility(infoChangeOrderConfirmationnew,180);
+		return reusableActions.isElementVisible(infoChangeOrderConfirmationnew, 60);
+	}
+	/**
+	 * Verify the the yellow banner with order success information
+	 * @return true if the page display the yellow banner with order success information , else false
+	 * @author chinnarao.vattam
+	 */
 	public boolean verifyOrderSuccess() {
 		reusableActions.waitForElementVisibility(infoOrderConfirmation,180);
 		return reusableActions.isElementVisible(infoOrderConfirmation, 60);

@@ -30,6 +30,10 @@ public class RogersTechInstallPage extends BasePageClass {
 	WebElement txtMobielNumber;		
 		//input[@id='enrouteMobile']
 		
+	@FindBy(xpath ="//input[@id='ds-form-input-id-21']")
+	WebElement txtMobielNumberExistingCustomer;	
+		
+		
 	@FindBy(xpath ="//div[@class='col-sm-6']//span[@class='ute-icon-calendar-icon']")
 	WebElement imgStartingTechInstallSlot;
 	
@@ -40,11 +44,17 @@ public class RogersTechInstallPage extends BasePageClass {
 	WebElement txtEmail;
 	//input[@id='enRouteEmail']
 	
+	@FindBy(xpath ="//input[@id='ds-form-input-id-22']")
+	WebElement txtEmailExistingCustomer;		
+	
 	@FindBy(xpath ="//label[@for='ds-checkbox-id-1']")
 	WebElement chkTechInstalConsent;
 	//div[@class='self-install-concern']//input[@name='consent']
 	//input[@id='deliveryConcern']
 	//label[@for='deliveryConcern']
+	
+	@FindBy(xpath ="//label[@for='ds-checkbox-id-0']")
+	WebElement chkTechInstalConsentExistingCustomer;
 	
 	@FindBy(xpath ="//span[@translate='global.checkout.fulfillment.confirm']")
 	WebElement btnTechInstallContinue;
@@ -216,6 +226,25 @@ public class RogersTechInstallPage extends BasePageClass {
 	}
 	
 	/**
+	 * Set dynamic mobile number on the Order Summary Page
+	 * @author Chinnarao.Vattam
+	 */
+	public void setMobielNumberExistingCustomer() {
+		String strPhoneNumber = FormFiller.generatePhoneNumber();
+		reusableActions.getWhenReady(txtMobielNumberExistingCustomer, 30).clear();
+		reusableActions.getWhenReady(txtMobielNumberExistingCustomer, 3).sendKeys(strPhoneNumber);
+	}
+	
+	/**
+	 * Set dynamic email on the Order Summary Page
+	 * @author Chinnarao.Vattam
+	 */
+	public void setEmailExistingCustomer() {
+		String strEmail = FormFiller.generateEmail();
+		reusableActions.getWhenReady(txtEmailExistingCustomer, 30).clear();
+		reusableActions.getWhenReady(txtEmailExistingCustomer, 3).sendKeys(strEmail);
+	}
+	/**
 	 * To select the Technical Installation Start Date
 	 * @author chinnarao.vattam
 	 */
@@ -281,6 +310,15 @@ public class RogersTechInstallPage extends BasePageClass {
 		reusableActions.executeJavaScriptClick(chkTechInstalConsent);
 	}
 	
+	/**
+	 * To Click the Technical Install Consent check box
+	 * @author chinnarao.vattam
+	 */
+	public void clkTechInstalConsentExistingCustomer() {
+		reusableActions.waitForElementVisibility(chkTechInstalConsentExistingCustomer, 180);
+		reusableActions.javascriptScrollByVisibleElement(chkTechInstalConsentExistingCustomer);
+		reusableActions.executeJavaScriptClick(chkTechInstalConsentExistingCustomer);
+	}
 	
 	/**
 	 * Click the continue button to continue the TechInstall on installation page
