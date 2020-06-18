@@ -17,14 +17,20 @@ public class RogersInternetUsagePage extends BasePageClass {
 	@FindBy(xpath = "//table[@class='table ute-table table-centred ng-table']")
 	WebElement tblDailyBreakdown;
 
+	@FindBy(xpath = "//table[@class='table  table-centred ng-table']")
+	WebElement tblDailyBreakdownMobile;
+		
 	@FindBy(xpath = "//ins[@translate='global.label.monthlyUsage']")
 	WebElement lnkMonthlyUsage;
 
 	@FindBy(xpath = "//ins[@translate='global.label.monthlyBreakdown']")
 	WebElement infoMonthlyBreakdown;
-
+	
 	@FindBy(xpath = "//table[@class='table ute-table table-centred table-no-filter ng-table']")
 	WebElement tblMonthlyBreakdown;
+	
+	@FindBy(xpath = "//table[@class='table  table-centred table-no-filter ng-table']")
+	WebElement tblMonthlyBreakdownMobile;
 
 	@FindBy(xpath = "//ins[@translate='global.label.usageAlerts']")
 	WebElement btnUsageAlerts;
@@ -49,6 +55,15 @@ public class RogersInternetUsagePage extends BasePageClass {
 	}
 
 	/**
+	 * Verify the Internet Daily Breakdown table on solaris Internet usage page
+	 * @return true if the Internet Daily Breakdown content displayed; else false
+	 * @author Chinnarao.Vattam
+	 */
+	public boolean verifyDailyBreakdownTableMobile() {		
+		return reusableActions.isElementVisible(tblDailyBreakdownMobile,20);
+	}
+	
+	/**
 	 * Click on the Internet Monthly usage link on solaris Internet usage page
 	 * @author Chinnarao.Vattam
 	 */
@@ -62,9 +77,10 @@ public class RogersInternetUsagePage extends BasePageClass {
 	 * @return true if the Internet Monthly Breakdown table heading displayed; else false
 	 * @author Chinnarao.Vattam
 	 */
-	public boolean verifyMonthlyBreakdown() {		
+	public boolean verifyMonthlyBreakdown() {		 
 		return reusableActions.isElementVisible(infoMonthlyBreakdown);
 	}
+	
 
 	/**
 	 * Verify the Internet Monthly Breakdown table on Solaris Internet usage page
@@ -73,6 +89,16 @@ public class RogersInternetUsagePage extends BasePageClass {
 	 */
 	public boolean verifyMonthlyBreakdownTable() {		
 		return reusableActions.isElementVisible(tblMonthlyBreakdown,40);
+	}
+	
+	
+	/**
+	 * Verify the Internet Monthly Breakdown table heading text on solaris Internet usage page
+	 * @return true if the Internet Monthly Breakdown table heading displayed; else false
+	 * @author Chinnarao.Vattam
+	 */
+	public boolean verifyMonthlyBreakdownTableMobile() {		 
+		return reusableActions.isElementVisible(tblMonthlyBreakdownMobile);
 	}
 	
 	/**

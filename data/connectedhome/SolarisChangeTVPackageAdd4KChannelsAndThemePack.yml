@@ -6,5 +6,6 @@ password: DigiAuto@123
 accountDetails:
    type: Digital TV
    ban: 934234956  
-   downgradePlanEn: Popular
-   downgradePlanFr: Popular
+   upgradePlanEn: Ignite TV Premier
+   upgradePlanFr: Élan TV Premier
+   upgradeBundle: Ignite TV  Popular

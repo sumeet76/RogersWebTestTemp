@@ -1,4 +1,4 @@
-package com.rogers.test.tests.connectedhome.desktop;
+package com.rogers.test.tests.connectedhome.mobile;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -9,6 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
@@ -16,7 +17,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 /**
  * This class contains the test method to test the IgniteTV buy flow for Rogers.com   
  * 
- * @author Saurav.Goyal
+ * @author chinnarao.vattam
  * 
  * Test steps:
  *
@@ -50,13 +51,14 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *
  **/
 
-public class RogersCH_TC_004_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest extends BaseTestClass {
+public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
 
-	@Test
-	public void checkBuyDigitalTVOffer() {
-		reporter.reportLogWithScreenshot("Launched the Home Page");
-    	rogers_home_page.clkShop(); 
-    	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+    @Test
+    public void checkBuyDigitalTVOffer() {
+    	reporter.reportLogWithScreenshot("Launched the Home Page");
+    	rogers_home_page.clkShopMobile(); 
+    	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
+    	
     	rogers_home_page.clkIgniteTV();
     	rogers_home_page.verifyIgnitepage();
     	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
@@ -70,19 +72,11 @@ public class RogersCH_TC_004_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest e
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
-        /*rogers_igniteTV_buy_page.verifyOptNewPhone();
-        reporter.reportLogWithScreenshot("Launched the port-in popup");
-        rogers_igniteTV_buy_page.selectOptNewPhone();
-        rogers_igniteTV_buy_page.clickOptPhone();
-        rogers_igniteTV_buy_page.verifyHomePhone();
-        reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
-        rogers_igniteTV_buy_page.clkHomePhone();*/
         rogers_igniteTV_buy_page.verify4KTV();
         reporter.reportLogWithScreenshot("Launched the cart summary page");
         rogers_igniteTV_buy_page.set4KTV();
-		rogers_igniteTV_buy_page.clkPlusAddIgniteTVBoxes(); 
-		rogers_igniteTV_buy_page.clkUpdateCart();
-		rogers_igniteTV_buy_page.clkCheckout();
+        reporter.reportLogWithScreenshot("4k TV selected");
+        rogers_igniteTV_buy_page.clkCheckout();
         rogers_igniteTV_profile_creation_page.verifyProfilePage();
         reporter.reportLogWithScreenshot("Launched the create profile page");
         rogers_igniteTV_profile_creation_page.setEmail();
@@ -111,14 +105,8 @@ public class RogersCH_TC_004_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest e
         rogers_igniteTV_credit_check_page.clkCreditConsent();
         reporter.reportLogWithScreenshot("Passport Details");
        rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
-/*        rogers_home_phone_selection_page.verifyPhoneNumberPage();
-        reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        rogers_home_phone_selection_page.clkPhoneNumberGenerator(); 
-        rogers_home_phone_selection_page.clkChosePhoneNumber(); 
-        rogers_home_phone_selection_page.clkContinueHomePhoneSelection();*/ 
        rogers_tech_install_page.verifyTechInstallPage(); 
        reporter.reportLogWithScreenshot("Launched the tech install page");
-       //rogers_tech_install_page.clkPersonalizedInstall();
        rogers_tech_install_page.selSelffinstallDateAndTime();
        reporter.reportLogWithScreenshot("Launched the tech install page");
        rogers_tech_install_page.clkTechInstallSlot();
@@ -146,10 +134,10 @@ public class RogersCH_TC_004_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest e
         reporter.reportLogWithScreenshot("Agreement details");
         rogers_order_review_page.clkSubmit();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");      
+        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");      
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
     }
-	
+    
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteAnonymous
 	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
@@ -159,8 +147,10 @@ public class RogersCH_TC_004_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest e
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
+
+
 
 }
 

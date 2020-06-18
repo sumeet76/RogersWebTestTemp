@@ -22,6 +22,9 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//li[@class='dds_o-navLinkList__item']/a[contains(@class,'dds_m-navLink dropdown-hide')]")
 	WebElement btnShop;
 	
+	@FindBy(xpath = "//li[@id='Shop-mobileDropdown']")
+	WebElement btnShopMobile;	
+	
 	@FindBy(xpath = "//a[@class='m-navLink']//span[@class='m-navLink__chevron rds-icon-expand']")
 	WebElement btnExistingCustomerShop;
 	
@@ -32,13 +35,18 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/web/consumer/ignite-bundles/tv-internet']")
 	WebElement lnkIgniteTV;
 	
+	@FindBy(xpath = "//li[@class='dds_o-mobileNavDropdown__item']/a[@href='/web/consumer/ignite-bundles/tv-internet']")
+	WebElement lnkIgniteTVMobile;
+	
 	@FindBy(xpath = "//a[@class='m-navLink -dropdown' and contains(text(),'TV Bundles')]")
 	WebElement lnkExistingCustomerIgniteTV;
-	
-	
+		
 	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/internet']")
 	WebElement lnkInternet;
-
+	
+	@FindBy(xpath = "//li[@class='dds_o-mobileNavDropdown__item']/a[@href='/consumer/internet']")
+	WebElement lnkInternetMobile;
+	
 	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/home-monitoring']")
 	WebElement lnkHomeMonitering;
 	
@@ -213,6 +221,15 @@ public class RogersHomePage extends BasePageClass {
 	public void clkShop() {
 		reusableActions.getWhenReady(btnShop, 90).click();				
 	}
+	
+	/**
+	 * Click the shop dropdown list from the top tile bar on Home page
+	 * @author chinnarao.vattam 
+	 */
+	public void clkShopMobile() {
+		reusableActions.getWhenReady(btnShopMobile, 90).click();				
+	}
+	
 
 	/**
 	 * Click the shop dropdown list from the top tile bar on Home page
@@ -273,6 +290,14 @@ public class RogersHomePage extends BasePageClass {
 		reusableActions.getWhenVisible(lnkInternet, 60).click();
 	}
 
+	/**
+	 * Click the Internet option from shop dropdown list
+	 * @author chinnarao.vattam 
+	 */
+	public void clkInternetMobile() {		
+		reusableActions.getWhenVisible(lnkInternetMobile, 60).click();
+	}
+	
 	/**
 	 * Click the Home Monitering option from shop dropdown list
 	 * @author chinnarao.vattam 

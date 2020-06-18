@@ -59,19 +59,23 @@ public class RogersCH_TC_008_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannel
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         rogers_solaris_tv_dashboard_page.clkChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the TV packages page");
-        rogers_solaris_tv_dashboard_page.selectSolarisTVPackage(TestDataHandler.solarisChangeTVPackageAdd4KChannelsAndThemePack.accountDetails.getDowngradePlanEn(),TestDataHandler.solarisChangeTVPackageAdd4KChannelsAndThemePack.accountDetails.getDowngradePlanFr());
+        rogers_solaris_tv_dashboard_page.selectSolarisTVPackage(TestDataHandler.solarisChangeTVPackageAdd4KChannelsAndThemePack.accountDetails.getUpgradePlanEn(),TestDataHandler.solarisChangeTVPackageAdd4KChannelsAndThemePack.accountDetails.getUpgradePlanFr());
         rogers_solaris_tv_dashboard_page.clkPopupChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the personalize channel page");
         rogers_solaris_tv_channels_and_themepacks_page.clkExchangeLater(); 
         reporter.reportLogWithScreenshot("Launched the channels and themepacks page");
         rogers_solaris_tv_channels_and_themepacks_page.addChannel();
         reporter.reportLogWithScreenshot("Channel added");
+/*        rogers_solaris_tv_channels_and_themepacks_page.removeChannel();
+        reporter.reportLogWithScreenshot("Channel removed");
+        rogers_solaris_tv_channels_and_themepacks_page.clkButtonRemoveChannelFromAlert();
+        reporter.reportLogWithScreenshot("Clicked on button to Remove channel in the alert");*/
+        rogers_solaris_tv_channels_and_themepacks_page.addChannel();
+        reporter.reportLogWithScreenshot("Channel again added");
         rogers_solaris_tv_channels_and_themepacks_page.removeChannel();
         reporter.reportLogWithScreenshot("Channel removed");
         rogers_solaris_tv_channels_and_themepacks_page.clkButtonRemoveChannelFromAlert();
         reporter.reportLogWithScreenshot("Clicked on button to Remove channel in the alert");
-        rogers_solaris_tv_channels_and_themepacks_page.addChannel();
-        reporter.reportLogWithScreenshot("Channel again added");
         rogers_solaris_tv_channels_and_themepacks_page.clkThemePacks();
         reporter.reportLogWithScreenshot("Clicked on themepack tab");
         rogers_solaris_tv_channels_and_themepacks_page.addThemePacks();
@@ -89,8 +93,6 @@ public class RogersCH_TC_008_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannel
         rogers_order_review_page.clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
         rogers_order_review_page.clkSubmit();
-		rogers_order_confirmation_page.verifyOrderConfirmation();
-		reporter.reportLogWithScreenshot("Launched the Confirmation page");
 		reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
     }

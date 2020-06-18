@@ -21,8 +21,11 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	
 	// Thanks! We received your order. 
 	@FindBy(xpath = "//div[@class='confirmation-bubble']")
+	WebElement infoChangeOrderConfirmationnew;
+	
+	@FindBy(xpath = "//ins[@translate='global.message.orderConfirmationThanksV3']")
 	WebElement infoChangeOrderConfirmation;
-	//ins[@translate='global.message.orderConfirmationThanksV3']
+	
 	
 	@FindBy(xpath = "//ins[@translate='global.message.orderConfirmationThanksV2']")
 	WebElement infoOrderConfirmation;
@@ -58,6 +61,15 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 		return reusableActions.isElementVisible(infoChangeOrderConfirmation, 60);
 	}
 	
+	/**
+	 * Verify the the yellow banner with order success information
+	 * @return true if the page display the yellow banner with order success information , else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyOrderConfirmationNew() {
+		reusableActions.waitForElementVisibility(infoChangeOrderConfirmationnew,180);
+		return reusableActions.isElementVisible(infoChangeOrderConfirmationnew, 60);
+	}
 	/**
 	 * Verify the the yellow banner with order success information
 	 * @return true if the page display the yellow banner with order success information , else false
