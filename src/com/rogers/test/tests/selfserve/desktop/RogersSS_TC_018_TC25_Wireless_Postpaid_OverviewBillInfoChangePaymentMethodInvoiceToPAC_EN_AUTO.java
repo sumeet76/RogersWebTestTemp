@@ -39,6 +39,7 @@ public class RogersSS_TC_018_TC25_Wireless_Postpaid_OverviewBillInfoChangePaymen
     	String strPassword = TestDataHandler.tc161825.getPassword();		
 		tryLogin(strUsername, strPassword);
 		reporter.reportLogWithScreenshot("Account overveiew page");
+		rogers_account_overview_page.clkViewBill();
 		if(!rogers_account_overview_page.isSetAutoPaymentDisplayed())
 		{
 			reporter.reportLogWithScreenshot("Automatic payment is already set, trying to switch to manual");
@@ -91,9 +92,9 @@ public class RogersSS_TC_018_TC25_Wireless_Postpaid_OverviewBillInfoChangePaymen
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc161825.getUsername();
     	String strPassword = TestDataHandler.tc161825.getPassword();		
-		tryLogin(strUsername, strPassword);
+		tryLogin(strUsername, strPassword);		
 		reporter.reportLogWithScreenshot("Account overveiew page");
-
+		rogers_account_overview_page.clkViewBill();
 		if(!rogers_account_overview_page.isSetAutoPaymentDisplayed())
 		{
 			reporter.reportLogWithScreenshot("Automatic payment is already set, trying to switch to manual");

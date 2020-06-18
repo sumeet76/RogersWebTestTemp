@@ -39,12 +39,12 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	
 	@FindAll({
-        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'TV')]"),
+        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'TV') or contains(text(),'Télévision')]"),
         @FindBy(xpath = "//span[contains(@class,'rui-icon-tv icon')]/ancestor::div[@role='button']")})
 	WebElement btnTVBadge;
 
 	@FindAll({
-        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'Home Phone')]"),
+        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'Home Phone') or contains(text(),'Téléphonie résidentielle')]"),
         @FindBy(xpath = "//span[contains(@class,'rui-icon-home-phone icon')]/ancestor::div[@role='button']")})
 	WebElement btnRHPBadge;
 
@@ -65,13 +65,21 @@ public class RogersAccountOverviewPage extends BasePageClass {
         @FindBy(xpath = "//span[@translate='ute.rogers.account.balance.view_your_bill']")})
     WebElement btnViewYourBill;
 
+
+	@FindAll({
+	@FindBy(xpath = "//div[@class='rogers-self-serve-nav']//div[@class='c-dropdown-menu-holder']//span[text()='Lier un autre compte' or text()='Link another account']"),
 	@FindBy(xpath = "//span[contains(@data-translate,'linkAnotherAccount')]")
+	})
 	WebElement lnkLinkAnotherAccount;
 	
 	@FindBy(xpath = "//div[@translate='linked_acc_success']")
 	WebElement lblLinkAccountSuccess;
 	
-	@FindBy(xpath = "//span[contains(@class,'arrow-down-account')]")
+	
+	
+	@FindAll({
+	@FindBy(xpath = "//div[@class='account']//a[@class='dropdown-toggle menu-click']"),
+	@FindBy(xpath = "//span[contains(@class,'arrow-down-account')]")})
 	WebElement lnkAccountdropdown;
 	
 	
@@ -105,7 +113,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(text(),'Overview') or contains(text(),'Survol')]")
 	WebElement btnOverViewMobile;
 	
-	@FindBy (xpath = "//h3[@translate='acc_overview_which_account']")
+	@FindAll({
+		@FindBy (xpath = "//p[text()='Quel compte souhaitez-vous consulter?' or text()='Which account would you like to view today?']"),
+		@FindBy (xpath = "//h3[@translate='acc_overview_which_account']")
+	})	
 	WebElement headerAccountSelect;
 	
 	@FindBy (xpath = "//h1[@class='profile-header']")
@@ -141,7 +152,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath="//*[@id='paymentAmount']")
 	WebElement txtAmount;
 	
-	@FindBy(xpath = "//div[@class='ute-dataManager-badgeList-individualBadge']//div[@class='ute-dataManager-badgeList-individualBadgeInfo']")
+	@FindAll({
+        @FindBy(xpath = "//span[contains(@class,'subscription-name')]"),
+        @FindBy(xpath = "//div[@class='ute-dataManager-badgeList-individualBadge']//div[@class='ute-dataManager-badgeList-individualBadgeInfo']")})	
 	WebElement lblCTNWirelessName;
 	
 
@@ -175,7 +188,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	WebElement btnProfileSettingsMobile;
 	
 	@FindAll({
-		@FindBy(xpath = "//span[contains(text(),'Entertainment') or contains(text(),'')]/ancestor::div[@class='subscription-detail']"),
+		@FindBy(xpath = "//span[contains(text(),'Entertainment') or contains(text(),'Entertainment')]/ancestor::div[@class='subscription-detail']"),
         @FindBy(xpath = "//span[@translate='ute.subscriptionBadge.smartStream']")})	
 	WebElement btnEntertainmentBadge;
 
@@ -305,7 +318,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void selectAccount(String strAccountNumber) {
-			reusableActions.clickIfAvailable((By.xpath("//span[@class='account-number-txt']/span[text()='" + strAccountNumber + "']")), 20);
+			reusableActions.clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 20);
 	}
 	
 	/**
@@ -316,7 +329,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public Boolean isAccountLinked(String strAccountNumber) {
 		return reusableActions.isElementVisible(
-				(By.xpath("//span[@class='account-number-txt']/span[text()='" + strAccountNumber + "']")), 
+				(By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 
 				20);
 	}
 	

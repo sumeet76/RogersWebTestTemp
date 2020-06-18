@@ -43,7 +43,7 @@ public class RogersSetPasswordPage extends BasePageClass {
 	@FindBy(xpath = "//button[text()='Sign In' or text()='Ouvrez une session']")
 	WebElement btnSignIn;
 	
-	@FindBy (xpath = "//img[@alt='Set password']")
+	@FindBy (xpath = "//img[@alt='Set password' or @alt='Enregister le mot de passe']")
 	WebElement btnSetPasswordInEmail;
 	
 	/**
@@ -51,7 +51,7 @@ public class RogersSetPasswordPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnSetPasswordInEmail() {
-		reusableActions.clickWhenReady(btnSetPasswordInEmail, 30);
+		reusableActions.clickWhenReady(btnSetPasswordInEmail, 30);		
 	}
 	
 	/**
