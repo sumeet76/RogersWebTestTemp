@@ -29,7 +29,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	@FindBy (xpath = "//input[@formcontrolname='emailAddress']")
 	WebElement txtEmailAddress;
 	
-	@FindBy (xpath = "//button[@class='primary-button state-btn']")
+	@FindBy (xpath = "//button[@class='primary-button state-btn state-btn-active']")
 	WebElement btnContinue;
 	
 	@FindBy (xpath = "//div[@class='email-recovery-method']/button")
