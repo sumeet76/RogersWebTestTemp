@@ -555,7 +555,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	public void setCurrentPassword(String strCurrentPass) {
 		
 		reusableActions.getWhenReady(divCurrentPassword,30).click();
-		//reusableActions.getWhenReady(inputCurrentPassword,2).clear();
+		reusableActions.getWhenReady(divCurrentPassword,30).click();
 		reusableActions.getWhenReady(inputCurrentPassword,2).sendKeys(strCurrentPass);
 	}
 	
@@ -566,7 +566,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void setNewPassword(String strNewPass) {
 		reusableActions.getWhenReady(divNewPassword,30).click();
-		//reusableActions.getWhenReady(inputNewPassword,10).clear();
+		reusableActions.getWhenReady(divNewPassword,30).click();
 		reusableActions.getWhenReady(inputNewPassword,2).sendKeys(strNewPass);
 	}
 	
@@ -577,7 +577,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void setConfirmPassword(String strConfirmPass) {
 		reusableActions.getWhenReady(divConfirmPassword,30).click();
-		//reusableActions.getWhenReady(inputConfirmPassword,10).clear();
+		reusableActions.getWhenReady(divConfirmPassword,30).click();
 		reusableActions.getWhenReady(inputConfirmPassword,2).sendKeys(strConfirmPass);
 	}
 	

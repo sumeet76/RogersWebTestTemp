@@ -16,7 +16,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 
 
-public class RogersSS_TC06_CtnDashboardWithAccountDetails_GUI extends BaseTestClass {	
+public class RogersSS_TC06_FDM_CtnDashboardWithAccountDetails_GUI extends BaseTestClass {	
    	
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {

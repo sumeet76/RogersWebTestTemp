@@ -61,6 +61,7 @@ public class Mobile_RogersSS_TC_051_ChangePassword extends BaseTestClass {
         reporter.reportLogWithScreenshot("Account overview page.");
 		rogers_account_overview_page.clkLnkProfileNSettingsMobile();
 		reporter.reportLogWithScreenshot("Profile & Settings page.");
+		rogers_profile_and_settings_page.clkCloseFeedbackIfAvailableMobile();
 		changePassword(strPassword, strNewPassword);
 		reporter.reportLogWithScreenshot("Change password is done.");
         if (rogers_profile_and_settings_page.verifyUsername(strUsername)) {
