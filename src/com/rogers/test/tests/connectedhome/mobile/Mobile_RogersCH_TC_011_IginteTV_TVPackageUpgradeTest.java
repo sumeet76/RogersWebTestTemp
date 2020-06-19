@@ -1,4 +1,4 @@
-package com.rogers.test.tests.connectedhome.desktop;
+package com.rogers.test.tests.connectedhome.mobile;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -36,29 +36,34 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *
  **/
 
-public class RogersCH_TC_005_IginteTV_OldConstructor_ExistingSolarisChangeTVPackageTest extends BaseTestClass {
+public class Mobile_RogersCH_TC_011_IginteTV_TVPackageUpgradeTest extends BaseTestClass {
 
-    @Test 
-    public void checkIginteTVOldConstructorExistingSolarisChangeTVPackageTest() {
-        reporter.reportLogWithScreenshot("Launched the Home Page");
-        rogers_home_page.clkSignIn();
-        rogers_login_page.switchToSignInIFrame();
-        reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        rogers_login_page.setUsernameIFrame(TestDataHandler.solarisTVOldConstructor.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.solarisTVOldConstructor.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+    @Test
+    public void checkSolarisTVPackageUpgradeMobile() {
+        reporter.reportLogWithScreenshot("Home Page");
+        reporter.reportLog("Home Page Launched");
+    	rogers_home_page.clkSignInMobile();
+    	rogers_login_page.switchToSignInIFrame();
+    	rogers_login_page.setUsernameIFrame(TestDataHandler.tc013132.getUsername());
+    	rogers_login_page.setPasswordIFrame(TestDataHandler.tc013132.getPassword());
+        reporter.reportLogWithScreenshot("Login Credential is entered.");
         rogers_login_page.clkSignInIFrame();
-        reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount(TestDataHandler.solarisTVOldConstructor.accountDetails.getBan());
-        reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
-        reporter.reportLogWithScreenshot("Launched the Account Page");                
+        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        	reporter.reportLogWithScreenshot("Select an account.");
+        	rogers_account_overview_page.selectAccount(TestDataHandler.tc013132.getAccountDetails().getBan());       
+        }
+        reporter.reportLogWithScreenshot("Account overview page.");
+        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Passed", "Login Failed");   
         rogers_solaris_tv_dashboard_page.clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         rogers_solaris_tv_dashboard_page.clkChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the TV packages page");
-        rogers_solaris_tv_dashboard_page.selectSolarisTVPackage(TestDataHandler.solarisTVOldConstructor.getAccountDetails().getUpgradePlanEn(),TestDataHandler.solarisTVOldConstructor.getAccountDetails().getUpgradePlanFr());
+        
+        
+        
+        rogers_solaris_tv_dashboard_page.selectSolarisTVPackage(TestDataHandler.solarisTVAccountForUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.solarisTVAccountForUpgrade.accountDetails.getUpgradePlanFr());
         rogers_solaris_tv_dashboard_page.clkPopupChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the personalize channel page");
         rogers_solaris_tv_channels_and_themepacks_page.clkExchangeLater(); 
@@ -71,23 +76,24 @@ public class RogersCH_TC_005_IginteTV_OldConstructor_ExistingSolarisChangeTVPack
         rogers_order_review_page.verifyAgreementPage();
         reporter.reportLogWithScreenshot("Launched the order review page");
         rogers_order_review_page.verifyAgreement();
-        rogers_order_review_page.clkAcceptenceCheckboxUpdate();
+        rogers_order_review_page.clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
-        rogers_order_review_page.clkSubmitUpdate();
-        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
+        rogers_order_review_page.clkSubmit();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
+        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
+        reporter.reportLogWithScreenshot("Verified the Confirmation page");
     }
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
-	public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.rogersConfig.getRogersURL(),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
+	public void beforeTest(String strBrowser, String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+		startSession(TestDataHandler.rogersConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
 	}
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 

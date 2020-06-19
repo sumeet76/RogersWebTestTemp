@@ -67,9 +67,10 @@ public class RogersCH_TC_006_IginteTV_BuySolarisDoublePlayChangeInstallationDate
 		rogers_login_page.switchOutOfSignInIFrame();
 		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_home_page.clkShop(); 
+		//rogers_home_page.clkShop(); 
+		 rogers_home_page.clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-		rogers_home_page.clkIgniteTV();
+		 rogers_home_page.clkIgniteTVExistingCustomer();
 		rogers_home_page.verifyIgnitepage();
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 		rogers_home_page.clkServiceability();
@@ -96,18 +97,22 @@ public class RogersCH_TC_006_IginteTV_BuySolarisDoublePlayChangeInstallationDate
 		reporter.reportLogWithScreenshot("tech install page launched");
         //rogers_tech_install_page.clkPersonalizedInstall();
 		rogers_tech_install_page.selSelffinstallDateAndTime(); 
-		rogers_tech_install_page.clkTechInstallSlot(); 
-		rogers_tech_install_page.clkTechInstalConsent();
-		reporter.reportLogWithScreenshot("tech install date selected");
-		rogers_tech_install_page.clkTechInstallContinue();
+	       reporter.reportLogWithScreenshot("Launched the tech install page");
+	       rogers_tech_install_page.clkTechInstallSlot();
+	       reporter.reportLogWithScreenshot("tech install details");
+	       rogers_tech_install_page.setMobielNumberExistingCustomer();
+	       rogers_tech_install_page.setEmailExistingCustomer();
+	       rogers_tech_install_page.clkTechInstalConsentExistingCustomer();
+	       reporter.reportLogWithScreenshot("tech install details");
+	       rogers_tech_install_page.clkTechInstallContinue();
 		rogers_order_review_page.verifyAgreementPage();
         reporter.reportLogWithScreenshot("Launched the order review page");
         rogers_order_review_page.verifyAgreement();
-        rogers_order_review_page.clkAcceptenceCheckbox();
+        rogers_order_review_page.clkAcceptenceCheckboxExistingCustomer();
         reporter.reportLogWithScreenshot("Agreement details");
         rogers_order_review_page.clkSubmit();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");      
+        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");      
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         }
 

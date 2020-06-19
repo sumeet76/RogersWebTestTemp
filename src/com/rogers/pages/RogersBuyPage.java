@@ -48,6 +48,10 @@ public class RogersBuyPage extends BasePageClass {
 	@FindBy(xpath = "(//div//a[@class='rogers-btn-solid'])[4]")
 	WebElement btnControlPackage;
 	
+	@FindBy(xpath = "//button[@id='inpage-nav-button']")
+	WebElement btnInternetMenuMobile;
+	
+	
 		
 	/**
 	 * To select the solaris bundle package
@@ -131,6 +135,15 @@ public class RogersBuyPage extends BasePageClass {
 		return reusableActions.isElementVisible(infoDTVAvailabilitySuccess, 90);
 	}
 
+	/**
+	 * To verify the  Internet Menu for Mobile
+	 * @return true if the Availability of Internet Menu is displayed; else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyInternetMenuMobile() {
+		return reusableActions.isElementVisible(btnInternetMenuMobile, 90);
+	}
+	
 	/**
 	 * To select the Internet package on the Internet buy page
 	 * @param strInternetBundle internet bundle to be select to buy

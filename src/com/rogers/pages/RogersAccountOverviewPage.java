@@ -187,7 +187,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy (xpath = "//button[@aria-label='ute.common.label.profileAndSetting']")
 	WebElement btnProfileSettingsMobile;
 	
-	@FindBy(xpath = "//span[contains(text(),'Entertainment')]/ancestor::div[@class='subscription-detail']")
+	@FindAll({
+		@FindBy(xpath = "//span[contains(text(),'Entertainment')]/ancestor::div[@class='subscription-detail']"),
+        @FindBy(xpath = "//span[@translate='ute.subscriptionBadge.smartStream']")})	
 	WebElement btnEntertainmentBadge;
 
 	/**
@@ -235,6 +237,15 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		}
 	}
 	
+	/**
+	 * Clicks on the Legacy 'InternetBadge' option on the dash board
+	 * @author chinnarao.vattam
+	 */
+	public void clkLegacyInternetBadge() {
+		reusableActions.getWhenReady(btnLegacyInternetBadge, 120).click();
+	}
+	
+
 	/**
 	 * To click on the CTN badge in account overview page
 	 * @param strLast4DigitCtn, String, last 4 digit of the CTN
@@ -286,6 +297,14 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	}
 
 	/**
+	 * Clicks on the 'TV Badge' option on the dash board
+	 * @author chinnarao.vattam
+	 */
+	public void clkTVBadge() {	
+		reusableActions.getWhenReady(btnTVBadge, 120).click();	
+	}
+	
+	/**
 	 * Clicks on the 'RHP Badge' option on the dash board
 	 * @param strBrowser- strBrowser
 	 * @author chinnarao.vattam
@@ -299,7 +318,13 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			}
 		}
 	
-
+	/**
+	 * Clicks on the 'RHP Badge' option on the dash board
+	 * @author chinnarao.vattam
+	 */
+	public void clkRHPBadge() {
+		reusableActions.getWhenReady(btnRHPBadge, 120).click();;
+		}
 	
 	/**
 	 * Check if the account selection header display or not

@@ -51,7 +51,7 @@ public class RogersCH_TC_012_IginteInternet_InternetBundleofferChangePackageUpgr
         rogers_account_overview_page.selectAccount(TestDataHandler.solarisInternetAccountForUpgrade.accountDetails.getBan());
         reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
-        rogers_home_page.clkShop();
+        rogers_home_page.clkExistingCustomerShop();
         rogers_home_page.clkIgniteTVExistingCustomer();
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	rogers_home_page.clkServiceabilityMigration();  
@@ -65,9 +65,9 @@ public class RogersCH_TC_012_IginteInternet_InternetBundleofferChangePackageUpgr
         rogers_order_review_page.verifyAgreementPage();
         reporter.reportLogWithScreenshot("Launched the order review page");
         rogers_order_review_page.verifyAgreement();
-        rogers_order_review_page.clkAcceptenceCheckbox();
+        rogers_order_review_page.clkAcceptenceCheckboxUpdate();
         reporter.reportLogWithScreenshot("Agreement details");
-        rogers_order_review_page.clkSubmit();
+        rogers_order_review_page.clkSubmitUpdate();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
         reporter.reportLogWithScreenshot("Verified the Confirmation page"); 

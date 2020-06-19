@@ -8,7 +8,7 @@
 		<listener class-name="com.rogers.test.listeners.TestListener" />
 	</listeners>
 
-  	<test name="Cable rogers Sanity LegacyAnonymous">
+   	<test name="Cable rogers Sanity LegacyAnonymous">
 		<parameter name="strBrowser" value="saucechrome" />
 		<parameter name="strLanguage" value="en" />
 		<classes>
@@ -38,12 +38,12 @@
 		</classes>
 	</test> 
 	
-	
-<!-- 	<test name="Cable rogers Sanity IgniteAnonymous">
+<!-- 	
+ 	<test name="Cable rogers Sanity IgniteAnonymous">
 		<parameter name="strBrowser" value="saucechrome" />
 		<parameter name="strLanguage" value="en" />
 		<classes>
 		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_001_IginteTV_BuyBundleTest"></class>
-		</classes>
+		</classes> 
 	</test>  -->
 </suite>
