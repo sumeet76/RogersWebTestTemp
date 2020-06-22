@@ -12,6 +12,17 @@
 	</listeners>	
 
 
+ 
+
+
+<test name="RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage" >
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage"></class>
+</classes>          																					
+</test>
+
+
+
 <test name="RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE_AddData" enabled="false">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE_AddData"></class>
@@ -20,7 +31,7 @@
 
 
 
-<test name="RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurchasedSpeedPass" enabled="true">
+<test name="RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurchasedSpeedPass" enabled="false">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurchasedSpeedPass"></class>
 </classes>          																					

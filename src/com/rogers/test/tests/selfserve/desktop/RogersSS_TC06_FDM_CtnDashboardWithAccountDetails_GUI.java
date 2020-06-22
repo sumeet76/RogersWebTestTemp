@@ -57,11 +57,7 @@ button should be displayed n Share Everything Dashboard
         }
         
        common_business_flows.scrollToMiddleOfWebPage();
-	   reporter.reportLogWithScreenshot("Check the number of CTNs");
-	   reporter.hardAssert(rogers_account_overview_page.isCTNMoreThanOne(),
-				"The account has more than 1 CTNS",
-				"The account doesnt have more than 1 CTNs, please add more than 1 and rerun");
-	   common_business_flows.scrollToTopOfWebPage();
+	   reporter.reportLogWithScreenshot("Check the number of CTNs");	 
        reporter.reportLogWithScreenshot("Account overview page.");     
        rogers_account_overview_page.clkMenuUsageAndService();
        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
@@ -69,10 +65,11 @@ button should be displayed n Share Everything Dashboard
        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible(); 
               
        reporter.reportLogWithScreenshot("dashboard page displayed"); 
-       rogers_wireless_dashboard_page.clkDataManagerCTN();
-       reporter.reportLogWithScreenshot("Data Manager CTN clicked"); 
-       reporter.hardAssert(rogers_wireless_dashboard_page.isAddChangeDataManagerDisplayed(),
-    		   "Change data manager available for this account","Chnage data manager is not displayed for this account");
+       rogers_wireless_dashboard_page.clkTheNthCTNOnDashboardPage(1);
+       reporter.reportLogWithScreenshot("CTN clicked"); 
+      // reporter.hardAssert(rogers_wireless_dashboard_page.isChangePlanDisplayed(),
+    	//	   "Change plan button is displayed",
+    	//	   "Chnage plan button not displayed");
        String strDataManagerCTN = rogers_wireless_dashboard_page.getDataManagerCTN();
        reporter.reportLogWithScreenshot("Data manager CTN is : "+strDataManagerCTN); 
        String strNonDataManagerCTN = rogers_wireless_dashboard_page.getNonDataManagerCTN();
