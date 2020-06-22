@@ -175,7 +175,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	WebElement btnProfileSettingsMobile;
 	
 	@FindAll({
-		@FindBy(xpath = "//span[contains(text(),'Entertainment') or contains(text(),'')]/ancestor::div[@class='subscription-detail']"),
+		@FindBy(xpath = "//span[contains(text(),'Entertainment')]/ancestor::div[@class='subscription-detail']"),
         @FindBy(xpath = "//span[@translate='ute.subscriptionBadge.smartStream']")})	
 	WebElement btnEntertainmentBadge;
 

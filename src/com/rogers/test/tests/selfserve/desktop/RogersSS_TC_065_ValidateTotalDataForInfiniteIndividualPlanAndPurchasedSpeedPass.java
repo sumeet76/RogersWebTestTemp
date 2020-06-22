@@ -30,7 +30,7 @@ public class RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurcha
 	}
 
 	@Test
-	public void validateTotalDataForInfiniteIndividualPlan() {
+	public void validateTotalDataForInfiniteIndividualPlan() throws InterruptedException {
 		rogers_home_page.clkSignIn();
 		String strUsername = TestDataHandler.tc6577.getUsername();
 		rogers_login_page.switchToSignInIFrame();
@@ -73,7 +73,7 @@ public class RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurcha
 		
 		
 		int totalAddedSpeedPass = common_business_flows.addSpeedPass();
-
+		Thread.sleep(3000);
 		reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(),
 				"'Data details' page is displayed after click on view details link",
 				"'Data details' page is NOT displayed after click on view details link");
