@@ -66,16 +66,12 @@ public class RogersCH_TC_008_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannel
         reporter.reportLogWithScreenshot("Launched the channels and themepacks page");
         rogers_solaris_tv_channels_and_themepacks_page.addChannel();
         reporter.reportLogWithScreenshot("Channel added");
+        rogers_solaris_tv_channels_and_themepacks_page.addChannel();
+        reporter.reportLogWithScreenshot("Channel again added");
 /*        rogers_solaris_tv_channels_and_themepacks_page.removeChannel();
         reporter.reportLogWithScreenshot("Channel removed");
         rogers_solaris_tv_channels_and_themepacks_page.clkButtonRemoveChannelFromAlert();
         reporter.reportLogWithScreenshot("Clicked on button to Remove channel in the alert");*/
-        rogers_solaris_tv_channels_and_themepacks_page.addChannel();
-        reporter.reportLogWithScreenshot("Channel again added");
-        rogers_solaris_tv_channels_and_themepacks_page.removeChannel();
-        reporter.reportLogWithScreenshot("Channel removed");
-        rogers_solaris_tv_channels_and_themepacks_page.clkButtonRemoveChannelFromAlert();
-        reporter.reportLogWithScreenshot("Clicked on button to Remove channel in the alert");
         rogers_solaris_tv_channels_and_themepacks_page.clkThemePacks();
         reporter.reportLogWithScreenshot("Clicked on themepack tab");
         rogers_solaris_tv_channels_and_themepacks_page.addThemePacks();
@@ -90,9 +86,9 @@ public class RogersCH_TC_008_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannel
         rogers_order_review_page.verifyAgreementPage();
         reporter.reportLogWithScreenshot("Launched the order review page");
         rogers_order_review_page.verifyAgreement();
-        rogers_order_review_page.clkAcceptenceCheckbox();
+        rogers_order_review_page.clkAcceptenceCheckboxUpdate();
         reporter.reportLogWithScreenshot("Agreement details");
-        rogers_order_review_page.clkSubmit();
+        rogers_order_review_page.clkSubmitUpdate();
 		reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
     }

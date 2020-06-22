@@ -8,12 +8,12 @@
 		<listener class-name="com.rogers.test.listeners.TestListener" />
 	</listeners>
 
-   	<test name="Cable rogers Sanity LegacyAnonymous">
+    	<test name="Cable rogers Sanity LegacyAnonymous">
 		<parameter name="strBrowser" value="saucechrome" />
 		<parameter name="strLanguage" value="en" />
 		<classes>
-		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_003_LegacyInternet_BuyInternetOfferTest"></class>
-	    <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_004_LegacyBundle_BuyBundleOfferTest"></class> 
+		 <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_003_LegacyInternet_BuyInternetOfferTest"></class> 
+	     <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_004_LegacyBundle_BuyBundleOfferTest"></class>  
 		</classes>
 	</test>  
 
@@ -26,24 +26,24 @@
 			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_022_DigitalTV_TVPackageDowngradeTest"></class>
  			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_023_LegacyRHP_ValidateRHPDashboardTest"></class> 
 		</classes>
-	</test>  
+	</test>   
 
- 	<test name="Cable rogers Sanity IgniteLogin">
+  	<test name="Cable rogers Sanity IgniteLogin">
 		<parameter name="strBrowser" value="saucechrome" />
 		<parameter name="strLanguage" value="en" />
 		<classes>
-			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_007_IginteTV_ValidateTVDashboardTest"></class>
+			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_007_IginteTV_ValidateTVDashboardTest"></class> 
 			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_008_IginteInternet_InternetPackageDowngradeTest"></class>
-			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_024_IgniteRHP_ValidateRHPDasboardTest"></class>
+	 		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_024_IgniteRHP_ValidateRHPDasboardTest"></class> 
 		</classes>
-	</test> 
+	</test>  
 	
-<!-- 	
- 	<test name="Cable rogers Sanity IgniteAnonymous">
+ 	
+<!--  	<test name="Cable rogers Sanity IgniteAnonymous">
 		<parameter name="strBrowser" value="saucechrome" />
 		<parameter name="strLanguage" value="en" />
 		<classes>
 		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_001_IginteTV_BuyBundleTest"></class>
 		</classes> 
-	</test>  -->
+	</test> -->  
 </suite>

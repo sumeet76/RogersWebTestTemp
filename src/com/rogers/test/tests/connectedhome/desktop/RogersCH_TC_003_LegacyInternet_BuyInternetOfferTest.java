@@ -35,6 +35,8 @@ public class RogersCH_TC_003_LegacyInternet_BuyInternetOfferTest extends BaseTes
 
     @Test
     public void checkBuyInternetOffer() throws InterruptedException {
+	/*	reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();*/
     	reporter.reportLogWithScreenshot("Launched the Home Page");
     	rogers_home_page.clkShop(); 
     	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");

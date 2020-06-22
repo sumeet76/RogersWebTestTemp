@@ -34,6 +34,8 @@ public class RogersCH_TC_022_DigitalTV_TVPackageDowngradeTest extends BaseTestCl
 
 	@Test
 	public void checkTVPackageDowngrade() {
+	/*	reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();*/
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
