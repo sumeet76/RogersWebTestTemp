@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -29,7 +30,11 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	@FindBy (xpath = "//input[@formcontrolname='emailAddress']")
 	WebElement txtEmailAddress;
 	
-	@FindBy (xpath = "//button[@class='primary-button state-btn state-btn-active']")
+	
+	@FindAll({
+		@FindBy (xpath = "//button[contains(text(),'Continue') or contains(text(),'Continuer')]"),
+		@FindBy (xpath = "//button[@class='primary-button state-btn']")	
+	})	
 	WebElement btnContinue;
 	
 	@FindBy (xpath = "//div[@class='email-recovery-method']/button")

@@ -3,6 +3,7 @@ package com.rogers.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -24,7 +25,10 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//input[@formcontrolname='phoneNumber']")
 	WebElement inputPhoneNumber;
 	
-	@FindBy (xpath = "//button[@class='primary-button state-btn state-btn-active']")
+	@FindAll({
+		@FindBy (xpath = "//button[text()=' Continue ' or text()=' Continuer ']"),
+		@FindBy (xpath = "//button[@class='primary-button state-btn state-btn-active']")	
+	})		
 	WebElement btnContinue;	
 	
 	@FindBy (xpath = "//input[@formcontrolname='smsPin']")
@@ -51,7 +55,10 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//span[contains(text(),'Done') or contains(text(),'Termin')]") 
 	WebElement btnUnlinkDone;
 	
-	@FindBy (xpath = "//a[@translate='nav.overview.header']")
+	@FindAll({
+		@FindBy (xpath = "//a[contains(text(),'Survol') or contains(text(),'Overview')]"),
+		@FindBy (xpath = "//a[@translate='nav.overview.header']")
+	})	
 	WebElement menuOverview;
 	
 	@FindBy (xpath = "//button[@title='Change username' or @title='Changer le nom d’utilisateur']")
@@ -133,7 +140,10 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//span[contains(text(),'business number') or contains(text(),'téléphone au travail')]")
 	WebElement lnkAddBusinessNumber;
 	
-	@FindBy (xpath = "//span[contains(text(),'contact language') or contains(text(),'Changer la langue')]")
+	@FindAll({
+		@FindBy (xpath = "//button[@title='Change preferred contact language']"),
+		@FindBy (xpath = "//span[contains(text(),'contact language') or contains(text(),'Changer la langue')]")
+	})	
 	WebElement lnkChangeLanguage;
 	
 	@FindBy (xpath = "//input[@id='email']//parent::div")	
@@ -454,7 +464,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public Boolean verifyCurrentUsername(String strUsername) {
-		return reusableActions.isElementVisible(By.xpath("//span[text()='Current username: ']/following-sibling::span[contains(text(),'" + strUsername + "')]"), 30);
+		return reusableActions.isElementVisible(By.xpath("//span[text()='Current username: ' or contains(text(),'Nom d’utilisateur actuel:')]/following-sibling::span[contains(text(),'" + strUsername + "')]"), 30);
 		
 	}
 	
@@ -484,7 +494,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public Boolean verifyChangeUsernameConfirmMsg(String strNewUsername) {
-		return 	reusableActions.isElementVisible(By.xpath("//span[text()='New username will be: ']/following-sibling::span[contains(text(),'" + strNewUsername + "')]"), 30);
+		return 	reusableActions.isElementVisible(By.xpath("//span[text()='New username will be: ' or contains(text(),'Votre nouveau nom d')]/following-sibling::span[contains(text(),'" + strNewUsername + "')]"), 30);
 	}
 	
 	/**
@@ -545,7 +555,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	public void setCurrentPassword(String strCurrentPass) {
 		
 		reusableActions.getWhenReady(divCurrentPassword,30).click();
-		//reusableActions.getWhenReady(inputCurrentPassword,2).clear();
+		reusableActions.getWhenReady(divCurrentPassword,30).click();
 		reusableActions.getWhenReady(inputCurrentPassword,2).sendKeys(strCurrentPass);
 	}
 	
@@ -556,7 +566,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void setNewPassword(String strNewPass) {
 		reusableActions.getWhenReady(divNewPassword,30).click();
-		//reusableActions.getWhenReady(inputNewPassword,10).clear();
+		reusableActions.getWhenReady(divNewPassword,30).click();
 		reusableActions.getWhenReady(inputNewPassword,2).sendKeys(strNewPass);
 	}
 	
@@ -567,7 +577,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void setConfirmPassword(String strConfirmPass) {
 		reusableActions.getWhenReady(divConfirmPassword,30).click();
-		//reusableActions.getWhenReady(inputConfirmPassword,10).clear();
+		reusableActions.getWhenReady(divConfirmPassword,30).click();
 		reusableActions.getWhenReady(inputConfirmPassword,2).sendKeys(strConfirmPass);
 	}
 	
@@ -684,8 +694,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void setContactEmail(String strContactEmail) {
 		reusableActions.getWhenReady(lblContactEmail).click();
-		//reusableActions.getWhenReady(inputContactEmail,20).clear();
-		reusableActions.getWhenReady(lblContactEmail).click();
+		//reusableActions.getWhenReady(inputContactEmail,20).clear();		
 		reusableActions.getWhenReady(inputContactEmail).sendKeys(strContactEmail);
 		
 	}

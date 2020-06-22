@@ -131,7 +131,8 @@ public class RogersSS_TC_060_ValidateCopyChangesOfDataUsageDisplayWithInLimitsPo
     	            rogers_wireless_dashboard_page.clkAddData();      
     	            reporter.softAssert(rogers_add_data_page.verifyAddDataOverlayIsDisplayed(), 
     	    							"Add the Data top-up  window should be displayed. (completd an MDT add on)", 
-    	    							"Add the Data top-up  window is NOT displayed.");                           
+    	    							"Add the Data top-up  window is NOT displayed.");
+    	            reporter.reportLogWithScreenshot("Add Data Overlay"); 
     	            rogers_speed_pass_page.clkBtnCloseInSpeedPassPopup();
     	            if(ctnCount>1)
     	            {
