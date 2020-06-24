@@ -442,6 +442,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//span[@translate='fdmModule.fdm.dataManager']")
 	WebElement btnDataManagerCTN;
+
+	private By lblMyPlanDetails;
 	
 	/**
 	 * To click the link of lost or stolen device on wireless dashboard page
@@ -1980,7 +1982,30 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		
 	}
 
+	/**
+	 * Checks if the change plan button is displayed
+	 * @return true if the button is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyChangePlanButtonDisplayed() {		
+		return reusableActions.isElementVisible(btnChangePlan);
+	}
 
+	/**
+	 * Checks if the change plan button is displayed
+	 * @return true if the button is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyMyPlanDetailsDisplayed() {		
+		return reusableActions.isElementVisible(lblMyPlanDetails);
+	}
 	
-	
+	/**
+	 * Checks if the change plan button is displayed
+	 * @return true if the button is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyChangeMyNumberDisplayed() {		
+		return reusableActions.isElementVisible(lblMyPlanDetails);
+	}
 }

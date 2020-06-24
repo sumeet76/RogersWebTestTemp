@@ -41,10 +41,10 @@ button should be displayed n Share Everything Dashboard
     @Test
     public void validateDataUsageInfiniteSEReducedSpeeds() {
     	rogers_home_page.clkSignIn();
-    	String strUsername = TestDataHandler.tc7681.getUsername();
+    	String strUsername = TestDataHandler.tc67.getUsername();
     	rogers_login_page.switchToSignInIFrame();
         rogers_login_page.setUsernameIFrame(strUsername);
-        String strPassword = TestDataHandler.tc7681.getPassword();    	
+        String strPassword = TestDataHandler.tc67.getPassword();    	
         rogers_login_page.setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
@@ -53,7 +53,7 @@ button should be displayed n Share Everything Dashboard
 		
         if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc7681.getAccountDetails().getBan());
+            rogers_account_overview_page.selectAccount(TestDataHandler.tc67.getAccountDetails().getBan());
         }
         
        common_business_flows.scrollToMiddleOfWebPage();
@@ -67,32 +67,55 @@ button should be displayed n Share Everything Dashboard
        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
        rogers_account_overview_page.clkSubMenuWirelessUsage();
        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible(); 
-              
-       reporter.reportLogWithScreenshot("dashboard page displayed"); 
-       rogers_wireless_dashboard_page.clkDataManagerCTN();
-       reporter.reportLogWithScreenshot("Data Manager CTN clicked"); 
-       reporter.hardAssert(rogers_wireless_dashboard_page.isAddChangeDataManagerDisplayed(),
-    		   "Change data manager available for this account","Chnage data manager is not displayed for this account");
-       String strDataManagerCTN = rogers_wireless_dashboard_page.getDataManagerCTN();
-       reporter.reportLogWithScreenshot("Data manager CTN is : "+strDataManagerCTN); 
-       String strNonDataManagerCTN = rogers_wireless_dashboard_page.getNonDataManagerCTN();
-       reporter.reportLogWithScreenshot("Non Data manager CTN is : "+strNonDataManagerCTN); 
-       rogers_wireless_dashboard_page.clkChangeDataManager();
-       reporter.reportLogWithScreenshot("Change data manger button clicked");
-       reporter.softAssert(rogers_wireless_dashboard_page.isChooseDataManagerOverlayDisplayed(),
-        		   "Choose data manager overlay is displayed for this account", 
-        		   "Choose data manager overlay is NOT available for this account");
-       reporter.reportLogWithScreenshot("Choose data manager overlay displayed");       
-       rogers_wireless_dashboard_page.changeDataManager(strNonDataManagerCTN);
-       reporter.reportLogWithScreenshot("Data manager chnages to : "+strNonDataManagerCTN);
-       rogers_wireless_dashboard_page.clkSaveButtonOnDataManager();
-       reporter.reportLogWithScreenshot("Save data manager clicked");
-       rogers_wireless_dashboard_page.clkDataManagerCTN();
-       reporter.reportLogWithScreenshot("Data Manager CTN clicked"); 
-       reporter.softAssert(rogers_wireless_dashboard_page.isChangeDataManagerSuccessful(strNonDataManagerCTN),
-    		   "Data manager is changed successfully", "Data manager is not chnaged for this account yet");
-       reporter.reportLogWithScreenshot("Chnage Data manager is done successfully from "+strDataManagerCTN+" this to "+strNonDataManagerCTN);
+          
+      // Individual CTN bucket details, 
+       //Usage, Price Plan details along with Change Plan & Change number button should be displayed
+       //n Share Everything Dashboard
        
+       reporter.softAssert(rogers_wireless_dashboard_page.verifyHeaderOfDeviceSection(), 
+				"Header of Device section in wireless dashboard page verified successfully", 
+				"Header of device section in wireless dashboard page didn't show as expected.");
+		reporter.softAssert(rogers_wireless_dashboard_page.verifyDeviceBalanceOfDeviceSection(), 
+						"Device balance in wireless dashboard page verified successfully", 
+						"Device balance in wireless dashboard page didn't show as expected.");
+		//rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
+		reporter.reportLogWithScreenshot("Wireless dashboard page Device Section."); 
+		rogers_wireless_dashboard_page.clkLinkUpgradeMyDevice();
+		if (rogers_wireless_dashboard_page.isModalDeviceUpgradeAvailable()) {
+		reporter.softAssert(true, 
+							"The account is not eligible for device upgrade.", 
+							"."); 
+		reporter.reportLogWithScreenshot("Device Upgrade Modal opened.");
+		rogers_wireless_dashboard_page.clkCloseDeviceUpgradeModal();
+		} else {
+		reporter.softAssert(rogers_wireless_dashboard_page.verifyChoosePhonePage(), 
+							"Choose phone page opened successfully", 
+							"Choose phone page didn't open as expected.");       
+		reporter.reportLogWithScreenshot("Choose phone page opened.");
+		rogers_wireless_dashboard_page.navigateBacktoDashboardPage();
+		}
+		
+		if(rogers_wireless_dashboard_page.isDeviceClosingDateMsgAvailable()) {
+		
+		reporter.softAssert(rogers_wireless_dashboard_page.verifyDeviceClosingDateMsgIfAvailable(), 
+							"Device balance closing date message verified successfully", 
+							"Device balance closing date message didn't show as expected.");
+		reporter.softAssert(rogers_wireless_dashboard_page.verifyMyDeviceDetailsModalOfDeviceSection(), 
+							"View details modal verified successfully", 
+							"View details modal didn't show activation date and expire date as expected.");    
+		reporter.reportLogWithScreenshot("View details modal opened."); 
+		rogers_wireless_dashboard_page.clkCloseMyDeviceDetailsModal();
+		}else {
+		reporter.softAssert(rogers_wireless_dashboard_page.verifyLinkMyDeviceDetailsOfDeviceSection(), 
+							"View details modal opened successfully", 
+							"View details modal didn't open as expected.");       
+		rogers_wireless_dashboard_page.clkCloseMyDeviceDetailsModal();
+		}
+       
+		reporter.softAssert(rogers_wireless_dashboard_page.verifyChangePlanButtonDisplayed(), 
+				"Change Plan button is displayed", 
+				"Change plan button is not displayed");
+		
     }
 
 }
