@@ -6,6 +6,7 @@ import extentreport.ExtentManager;
 import extentreport.ExtentTestManager;
 import extentreport.FileUpload;
 import extentreport.SendEmail;
+import utils.SauceLabsUtils;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -49,30 +50,34 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
 
 	} 
 
-	@Override
-	public void onTestStart(ITestResult iTestResult) {
-		System.out.println(" in onTestStart method " +  getTestMethodName(iTestResult) + " start");
-		//Start operation for extentreports.
-		String fullTestClassName[] = iTestResult.getMethod().getTestClass().getName().split("\\.");
-
-		//Get XMLTest Parameters from BaseTest and assign to local webdriver variable.
-		Object xmlTestParams = iTestResult.getInstance();
-		HashMap<String, String> xmlTestParameters = ((BaseTestClass) xmlTestParams).getXMLParameters();
-		String testClassName = fullTestClassName[fullTestClassName.length-1] +"_" + xmlTestParameters.get("strBrowser") +"_" + xmlTestParameters.get("strLanguage")+"_"+xmlTestParameters.get("strType");    
-		ExtentTestManager.startTest(testClassName,iTestResult.getName());	
-		Object testClass = iTestResult.getInstance();
-		WebDriver driver = ((BaseTestClass) testClass).getDriver(); 
-		if(xmlTestParameters.get("strBrowser").contains("sauce"))
-		{
-		((JavascriptExecutor)driver).executeScript("sauce:job-name="+getTestMethodName(iTestResult)); 
-		}
-		
-		String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s",
-	    		    (((RemoteWebDriver) driver).getSessionId()).toString(), getTestMethodName(iTestResult));
-	    		    System.out.println(message);
-
-	}
-
+    @Override
+    public void onTestStart(ITestResult iTestResult) {
+    	String sauceSessionId;
+        System.out.println(" in onTestStart method " +  getTestMethodName(iTestResult) + " start");
+        //Start operation for extentreports.
+        String fullTestClassName[] = iTestResult.getMethod().getTestClass().getName().split("\\.");
+        //Get XMLTest Parameters from BaseTest and assign to local webdriver variable.
+  		Object xmlTestParams = iTestResult.getInstance();
+  		HashMap<String, String> xmlTestParameters = ((BaseTestClass) xmlTestParams).getXMLParameters();
+  		String testClassName = fullTestClassName[fullTestClassName.length-1] +"_" + xmlTestParameters.get("strBrowser") +"_" + xmlTestParameters.get("strLanguage").toUpperCase();
+  		if(xmlTestParameters.get("strExecutionType") != null) {
+  			testClassName += "_"+xmlTestParameters.get("strExecutionType");
+  		}
+  		ExtentTestManager.startTest(testClassName,iTestResult.getName());	
+  		Object testClass = iTestResult.getInstance();
+  		WebDriver driver = ((BaseTestClass) testClass).getDriver(); 
+  		if(xmlTestParameters.get("strBrowser").contains("sauce")) {
+  			((JavascriptExecutor)driver).executeScript("sauce:job-name="+getTestMethodName(iTestResult));
+  	  		sauceSessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
+  	  		String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", sauceSessionId, getTestMethodName(iTestResult));
+  	  	    System.out.println(message);
+  	  	    String[] strLinks = SauceLabsUtils.getSauceJobLinks(sauceSessionId);
+  	  	    ExtentTestManager.getTest().log(LogStatus.INFO, "Video Started", "<iframe width=\"597\" height=\"448\" src=\""+ strLinks[0] +"&width=597&height=448\">\r\n" + 
+           		"</iframe>");
+  	  	    ExtentTestManager.getTest().log(LogStatus.INFO, "", "<a href='"+ strLinks[1] +"' target='_blank'>Click here for Detailed SauceLabs report</a>");
+  		}
+    }
+	
 	@Override
 	public void onTestSuccess(ITestResult iTestResult) {
 		System.out.println(" in onTestSuccess method " +  getTestMethodName(iTestResult) + " succeed");

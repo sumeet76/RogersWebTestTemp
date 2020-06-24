@@ -33,6 +33,8 @@ public class RogersCH_TC_024_IgniteRHP_ValidateRHPDasboardTest extends BaseTestC
 
     @Test
     public void checkSolarisRHPDasboard() {
+	/*	reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();*/
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
@@ -45,7 +47,6 @@ public class RogersCH_TC_024_IgniteRHP_ValidateRHPDasboardTest extends BaseTestC
  		rogers_login_page.clkSkipIFrame();
  		rogers_login_page.switchOutOfSignInIFrame();
         rogers_account_overview_page.selectAccount(TestDataHandler.igniteRHP.accountDetails.getBan()); 
-		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_solaris_rhp_dashboard_validation_page.clkSolarisRHPBadge(TestDataHandler.rogersConfig.getBrowser()); 
         reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");

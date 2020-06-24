@@ -105,7 +105,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	
 	
 	@FindAll({
-        @FindBy(xpath = "//a[text()='Overview' or text()='Overview']"),
+        @FindBy(xpath = "//a[contains(text(),'Overview') or contains(text(),'Survol')]"),
         @FindBy(xpath = "//div[@class='ute-secondLevelNav-bar-text']/span[@data-translate='ute.common.label.overview'] | //a[@translate='nav.overview.header']")})
     WebElement lnkOverview;
 	
@@ -860,7 +860,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public void setNewVoicemailPassword(String strPassword) {
 		reusableActions.getWhenReady(divNewVoicemailPwd, 10).click();
-		reusableActions.getWhenReady(txtNewVoicemailPwd, 5).clear();
+		//reusableActions.getWhenReady(txtNewVoicemailPwd, 5).clear();
 		reusableActions.getWhenReady(txtNewVoicemailPwd, 5).sendKeys(strPassword);
 	}
 	
@@ -871,7 +871,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public void setConfirmVoicemailPassword(String strPassword) {
 		reusableActions.getWhenReady(divConfirmVoicemailPwd, 10).click();
-		reusableActions.getWhenReady(txtConfirmVoicemailPwd, 5).clear();
+		//reusableActions.getWhenReady(txtConfirmVoicemailPwd, 5).clear();
 		reusableActions.getWhenReady(txtConfirmVoicemailPwd, 5).sendKeys(strPassword);
 	}
 	

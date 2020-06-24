@@ -36,6 +36,8 @@ public class RogersCH_TC_007_IginteTV_ValidateTVDashboardTest extends BaseTestCl
 
     @Test
     public void checkTVDashboard() {
+		/*reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();*/
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();
