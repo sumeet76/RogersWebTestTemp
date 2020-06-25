@@ -9,40 +9,39 @@
 	</listeners>
 
 	<test name="Cable rogers IgniteAnonymous">
-		<parameter name="strBrowser" value="chrome" />
+		<parameter name="strBrowser" value="saucechrome" />
 		<parameter name="strLanguage" value="en" />
 		<classes>		 
- 	 	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_001_IginteTV_BuyBundleTest"></class>  
-     	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_003_SHM_ServicabilityCheckTest"></class> 
-  		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_004_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest"></class> 
+ 	 	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_001_IginteTV_BuyBundleTest"></class> 
+  	 	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_004_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest"></class> 
   	  	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_020_IgniteTV_SolarisHAWTFlowPortInwithExistingLineTest"></class> 
 	    <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_030_IginteTV_BuyIgniteStarterBundleTest"></class> 
-    <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_034_IginteTV_DoublePlayBuyTest"></class>  
+        <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_034_IginteTV_DoublePlayBuyTest"></class>  
 		</classes> 
 	</test>   
 
-    <test name="Cable rogers LegacyAnonymous">
+     <test name="Cable rogers LegacyAnonymous">
 		<parameter name="strBrowser" value="saucechrome" />
 		<parameter name="strLanguage" value="en" />
 		<classes>
-		 <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_003_LegacyInternet_BuyInternetOfferTest"></class> 
+		 <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_001_SHM_ServicabilityCheckTest"></class> 
 		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_004_LegacyBundle_BuyBundleOfferTest"></class>
 		</classes>
 	</test>  
 
-   	<test name="Cable rogers LegacyLogin">
+    	<test name="Cable rogers LegacyLogin">
 		<parameter name="strBrowser" value="saucechrome" />
 		<parameter name="strLanguage" value="en" />
 		<classes>
  			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_018_LegacyInternet_ValidateInternetUsageTest"></class>
  			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_019_DigitalTV_ValidateTVDashboardTest"></class>
 			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_022_DigitalTV_TVPackageDowngradeTest"></class>
-			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_023_LegacyRHP_ValidateRHPDashboardTest"></class>  -->
+			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_023_LegacyRHP_ValidateRHPDashboardTest"></class> 
 			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_027_DigitalTV_TVPackageUpgradeTest"></class>  
 		</classes>
-	</test>   
+	</test>    
 	
-	<test name="Cable rogers IgniteLogin">
+ 	<test name="Cable rogers IgniteLogin">
 		<parameter name="strBrowser" value="saucechrome" />
 		<parameter name="strLanguage" value="en" />
 		<classes>	
