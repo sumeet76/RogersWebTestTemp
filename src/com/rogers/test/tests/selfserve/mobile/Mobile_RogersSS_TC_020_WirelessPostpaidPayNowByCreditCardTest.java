@@ -61,10 +61,8 @@ public class Mobile_RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest exten
         					&& rogers_billing_page.getTransactionReferenceNumber().contains(strReferenceNumber)),
 			        		"Payment confirmation message displayed",
 			        		"Payment Confirmation message Error. Refer screenshot");
-        reporter.reportLogWithScreenshot("Payment Confirmation on account overview page");
-        
-        rogers_account_overview_page.clkViewBill();
-        rogers_billing_page.clkPaymentHistoryLink();
+        common_business_flows.scrollToMiddleOfWebPage();
+        reporter.reportLogWithScreenshot("Payment Confirmation on account overview page");        
         reporter.hardAssert(rogers_billing_page.verifyThePaymentHistoryRecordMobile(strReferenceNumber),
         					"The payment history record is created for the credit transaction"
         					,"The payment history is not created for the credit transaction, please investigate for ref  num :"+strReferenceNumber);

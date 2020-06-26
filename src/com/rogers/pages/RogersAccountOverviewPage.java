@@ -112,7 +112,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
         @FindBy(xpath = "//span[@data-translate='ute.common.label.profileAndSetting']")})
     WebElement menuProfileNSettings;
 
-	@FindBy(xpath = "//a/span[text()='Profile & Settings' or text()='Profil et paramètres']")
+	@FindAll({
+	@FindBy(xpath = "//button[@aria-label='ute.common.label.profileAndSetting']"),
+	@FindBy(xpath = "//span[text()='Profile & Settings' or text()='Profil et paramètres']/parent::a")})
 	WebElement menuProfileAndSettingsMobile;
 	
 	@FindAll({
@@ -213,6 +215,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	
 	@FindBy(xpath = "//*[@id='overview' or @id='survol']//md-list-item//span[@data-translate='ute.common.second.level.navigation.billing.setUpAutomaticPayments']/ancestor::h2/parent::div/parent::div/button")
 	WebElement submenuSetUpAutomaticPaymentMethodMobile;
+
+	@FindBy(xpath = "//div[contains(@translate,'makeAPayment')]")
+	WebElement lblMakeASecurePayment;
 
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
@@ -464,8 +469,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * Click on menu Profile and Settings on Mobile
 	 * @author Mirza.Kamran
 	 */
-	public void clkLnkProfileNSettingsMobile() {
-		
+	public void clkLnkProfileNSettingsMobile() {		
 		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
 		reusableActions.getWhenReady(menuProfileAndSettingsMobile,30).click();			
 		reusableActions.waitForElementVisibility(headerProfileNSettings,60);
@@ -645,7 +649,27 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickMakePayment() {
-		reusableActions.getWhenReady(btnMakeAPayment,10).click();
+		//reusableActions.waitForElementTobeClickable(btnMakeAPayment, 20);
+		//reusableActions.getWhenReady(btnMakeAPayment,10).click();
+		
+		
+		boolean clickSuccess=false;
+		int count=0;
+		while (count<=3 && !clickSuccess) {
+			System.out.println("Attempt: "+(count+1)+" Make payment button");
+
+			reusableActions.getWhenReady(btnMakeAPayment,30).click();			
+			reusableActions.waitForElementVisibility(lblMakeASecurePayment,10);
+			if(reusableActions.isDisplayed(lblMakeASecurePayment))
+			{
+				System.out.println("Make payment button clicked in attempt: "+(count+1));
+				clickSuccess=true;				
+				break;
+				
+			}
+			count++;
+		}
+		
 	}
 	
 	/**
