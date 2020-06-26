@@ -136,7 +136,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy (xpath = "//span[contains(text(),'Done') or contains(text(),'Termin')]")
 	WebElement btnResetVMPwdDone;
 	
-	@FindBy(xpath = "//button/span[@translate='internet_change']")
+	@FindAll({
+	@FindBy(xpath = "//ins[@translate='plans.btnText']"),
+	@FindBy(xpath = "//button/span[@translate='internet_change']")})
 	WebElement btnChangePlan;
 	
 	@FindBy(xpath = "//span[@translate='mppc_entry_1_change_current_plan']")
@@ -444,6 +446,21 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	WebElement btnDataManagerCTN;
 
 	private By lblMyPlanDetails;
+		
+	@FindBy(xpath = "//li/span[contains(text(),'Data Access:') or contains(text(),'Accès aux données :')]")
+	WebElement lblDataAccess;
+		
+	@FindBy(xpath = "//li/span[contains(text(),'Stream Saver:') or contains(text(),'Maximiseur de données :')]")
+	WebElement lblStreamSaver;
+		
+	@FindBy(xpath = "//li/span[contains(text(),'Data Alert:') or contains(text(),'Alertes de données :')]")
+	WebElement lblDataAlert;
+		
+	@FindBy(xpath = "//li/span[@translate='fdmModule.dataManager.dataManager']")
+	WebElement lbldataManager;
+
+	@FindBy(xpath = "//span[contains(text(),'Change my phone number') or contains(text(),'Changer mon numéro de téléphone')]")
+	WebElement lnkChangeMyPhoneNumber;
 	
 	/**
 	 * To click the link of lost or stolen device on wireless dashboard page
@@ -1372,6 +1389,15 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	}
 	
 	/**
+	 * Check link upgrade My device in device section
+	 * @author Mirza.Kamran
+	 * @return 
+	 */
+	public boolean verifyLinkUpgradeMyDevice() {
+		return reusableActions.isElementVisible(lnkUpgradeMyDevice);
+	}
+	
+	/**
 	 * Validates the link "Upgrade My Device", Choose phone page should display after click
 	 * @return true if Choose phone page is displayed; else false
 	 * @author ning.xue
@@ -2006,6 +2032,22 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyChangeMyNumberDisplayed() {		
-		return reusableActions.isElementVisible(lblMyPlanDetails);
+		return reusableActions.isElementVisible(lnkChangeMyPhoneNumber);
+	}
+
+	public boolean verifyStreamSaverDisplayed() {		
+		return reusableActions.isElementVisible(lblStreamSaver);
+	}
+
+	public boolean verifyDataAccessDisplayed() { 
+		return reusableActions.isElementVisible(lblDataAccess);
+	}
+
+	public boolean verifyDataAlertDisplayed() {
+		return reusableActions.isElementVisible(lblDataAlert);
+	}
+
+	public boolean verifyDataManagerDisplayed() {
+		return reusableActions.isElementVisible(lbldataManager);
 	}
 }
