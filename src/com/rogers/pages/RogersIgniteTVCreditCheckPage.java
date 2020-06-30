@@ -66,7 +66,13 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	WebElement btnCreditCheckSubmit;
 	//button[@class='ute-btn-primary']
 	
-	@FindBy(xpath = "//form[@name='cartAbandonmentForm']")
+	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	WebElement txtContainer;
+	
+	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
+	WebElement txtContainerPasportNumber;
+	
+		@FindBy(xpath = "//form[@name='cartAbandonmentForm']")
 	WebElement popCartAbandonmentForm;
 	
 	@FindBy(xpath = "//form[@name='cartAbandonmentForm']//button[@class='ute-btn-primary']")
@@ -244,6 +250,8 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void setDrivingLicenseNumber(String province) {
 		String strLicenseNumber = FormFiller.generateLicenseNumber(province);
+		reusableActions.waitForElementVisibility(txtContainer,180);
+		reusableActions.getWhenReady(txtContainer,10).click();		
 		reusableActions.getWhenReady(txtLicenseNumber, 30).clear();
 		reusableActions.getWhenReady(txtLicenseNumber, 3).sendKeys(strLicenseNumber);
 	}
@@ -264,7 +272,9 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void setPassportNumber() {
 		String strPasportNumber = FormFiller.generatePassportNumber();
-		reusableActions.getWhenReady(txtPasportNumber, 30).clear();
+		reusableActions.waitForElementVisibility(txtContainerPasportNumber,180);
+		reusableActions.getWhenReady(txtContainerPasportNumber,10).click();
+		reusableActions.getWhenReady(txtPasportNumber, 60).clear();
 		reusableActions.getWhenReady(txtPasportNumber, 3).sendKeys(strPasportNumber);
 	}
 

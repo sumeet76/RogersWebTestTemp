@@ -47,14 +47,14 @@ public class RogersCH_TC_027_DigitalTV_TVPackageUpgradeTest extends BaseTestClas
 		rogers_login_page.switchOutOfSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVAccountUpgradePackage.getAccountDetails().getBan());		
-		rogers_account_overview_page.clkTVBadge(TestDataHandler.rogersConfig.getBrowser());
+		rogers_account_overview_page.clkTVBadge();
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
-		rogers_digital_tv_dashboard_page.clkChangeMyPackage(TestDataHandler.rogersConfig.getBrowser());
+		rogers_digital_tv_dashboard_page.clkChangeMyPackage();
 		String strLanguage = TestDataHandler.rogersConfig.getLanguage();
 		if (strLanguage.equals("en"))
 		{
 		reporter.reportLogWithScreenshot("Launched the TV package Page");
-		rogers_digital_tv_package_selection_page.selectPackageUpgarde(TestDataHandler.digitalTVAccountUpgradePackage.getAccountDetails().getUpgradePlanEn(),TestDataHandler.digitalTVAccount.getAccountDetails().getUpgradePlanFr(), TestDataHandler.rogersConfig.getLanguage());
+		rogers_digital_tv_package_selection_page.selectPackageUpgarde(TestDataHandler.digitalTVAccountUpgradePackage.getAccountDetails().getUpgradePlanEn(),TestDataHandler.digitalTVAccount.getAccountDetails().getUpgradePlanFr());
 		rogers_digital_tv_package_selection_page.clkCheckout();
 		reporter.reportLogWithScreenshot("Launched the TV checkout Page");
 		rogers_order_confirmation_page.clkUpgradeCartCheckOutButton();

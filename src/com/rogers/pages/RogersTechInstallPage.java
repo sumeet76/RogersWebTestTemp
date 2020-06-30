@@ -26,6 +26,12 @@ public class RogersTechInstallPage extends BasePageClass {
 	WebElement rdoTechInstallSlot;
 	//label[@for='slot-13']/ancestor::td[@class='monday']
 	
+	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-52')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	WebElement txtContainerMobile;
+	
+	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-53')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	WebElement txtContainerEmail;
+	
 		@FindBy(xpath ="//input[@id='ds-form-input-id-34']")
 	WebElement txtMobielNumber;		
 		//input[@id='enrouteMobile']
@@ -211,6 +217,8 @@ public class RogersTechInstallPage extends BasePageClass {
 	 */
 	public void setMobielNumber() {
 		String strPhoneNumber = FormFiller.generatePhoneNumber();
+		reusableActions.waitForElementVisibility(txtContainerMobile,180);
+		reusableActions.getWhenReady(txtContainerMobile,10).click();
 		reusableActions.getWhenReady(txtMobielNumber, 30).clear();
 		reusableActions.getWhenReady(txtMobielNumber, 3).sendKeys(strPhoneNumber);
 	}
@@ -221,8 +229,10 @@ public class RogersTechInstallPage extends BasePageClass {
 	 */
 	public void setEmail() {
 		String strEmail = FormFiller.generateEmail();
+		reusableActions.waitForElementVisibility(txtContainerEmail,180);
+		reusableActions.getWhenReady(txtContainerEmail,10).click();
 		reusableActions.getWhenReady(txtEmail, 30).clear();
-		reusableActions.getWhenReady(txtEmail, 3).sendKeys(strEmail);
+		reusableActions.getWhenReady(txtEmail,10).sendKeys(strEmail);
 	}
 	
 	/**

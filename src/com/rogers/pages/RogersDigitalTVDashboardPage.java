@@ -43,19 +43,11 @@ public class RogersDigitalTVDashboardPage extends BasePageClass {
 
 	/**
 	 * Click on the  the change package button on the legacy TV dash board 
-	 * @param strBrowser - Browser
 	 * @author chinnarao.vattam 
 	 */	
-	public void clkChangeMyPackage(String strBrowser) {
-		if (strBrowser.equalsIgnoreCase("chrome"))
-		{
-		reusableActions.isElementVisible(btnChangeMyPackage,120);
-		reusableActions.getWhenReady(btnChangeMyPackage,60).click();
-		}else
-		{
-			reusableActions.isElementVisible(btnChangeMyPackage,60);
-			reusableActions.clickIfAvailable(btnChangeMyPackage,30);
-		}
+	public void clkChangeMyPackage() {
+		reusableActions.isElementVisible(btnChangeMyPackage,180);
+		reusableActions.getWhenReady(btnChangeMyPackage,180).click();
 	}
 	
 	/**
