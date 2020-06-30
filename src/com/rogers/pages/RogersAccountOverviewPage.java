@@ -51,7 +51,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[@linkurl='tvdashboard']/parent::div")
 	WebElement btnTVBadgeConsolidated;
 
-	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.total_balance' or text()='Total balance' or text()='Total du solde']")
+	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.total_balance' or text()='Total balance' or text()='Total du solde'  or text()='Total Balance']")
 	WebElement infoBalanceLable;
 
 	@FindBy(xpath = "//span[@translate='ute.rogers.rhpDashboard.homePhone']")
@@ -514,8 +514,11 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean verifyAndClickWirelessCTN(String strCTN) {
 		strCTN = strCTN.replace("-", "").replace(" ", "");
-		strCTN = strCTN.substring(0, 3) + "-" + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);		
-		String strCTNXpath = "//div[@class='myServiceName']//div[contains(text(),'" + strCTN + "')]";		
+		//strCTN = strCTN.substring(0, 3) + "-" + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);
+		strCTN = strCTN.substring(0, 3) + " " + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);		
+		//String strCTNXpath = "//div[@class='myServiceName']//div[contains(text(),'" + strCTN + "')]";
+		String strCTNXpath = "//div[@class='service-container mt-24']//span[contains(text(),'" + strCTN + "')]";
+		//div[@class='service-container mt-24']//span[contains(text(),'416 726-2315')]
 		if(reusableActions.isElementVisible(By.xpath(strCTNXpath))) {
 			reusableActions.scrollToElement(reusableActions.getWhenReady(By.xpath(strCTNXpath)));
 			//reusableActions.javascriptScrollByVisibleElement(reusableActions.getWhenReady(By.xpath(strCTNXpath)));

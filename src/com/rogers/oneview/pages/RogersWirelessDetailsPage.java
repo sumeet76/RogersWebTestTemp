@@ -1,10 +1,9 @@
-package com.rogers.pages;
+package com.rogers.oneview.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-
 import com.rogers.pages.base.BasePageClass;
 
 /**
@@ -42,7 +41,8 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='ute.voicemail.resetPassword.responseMessage.successMessage']")
 	WebElement lblResetVoicemailPwdSuccess;
 	
-	@FindBy(xpath = "//ins[@translate='plans.btnText']/ancestor::button")
+	//@FindBy(xpath = "//ins[@translate='plans.btnText']/ancestor::button")
+	@FindBy(xpath = "//div[@class='manage-plan']//preceding-sibling::div//button")
 	WebElement btnChangePlan;
 	
 	@FindBy(xpath = "//span[@translate='mppc_entry_1_change_current_plan']")

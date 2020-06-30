@@ -1,4 +1,4 @@
-package com.rogers.pages;
+package com.rogers.oneview.pages;
 
 import java.util.List;
 

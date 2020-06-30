@@ -27,7 +27,6 @@ public class EnvironmentSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='ute-dc-padding-zero col-xs-8']//button[@translate='ute.rogers.captureDealerCode.submit']")
 	WebElement btnSubmit;
 	
-	
 	/**
 	 * Selects the first identification on Credit check page
 	 * @param env to select on oneview portal
@@ -56,5 +55,21 @@ public class EnvironmentSelectionPage extends BasePageClass {
 	 */
 	public void submitDealerCode() {
 		reusableActions.getWhenReady(btnSubmit, 30).click();
+	}
+	
+	/**
+	 * Click on go button
+	 * @author Saurav.Goyal
+	 */
+	public void clkGo() {
+		reusableActions.clickWhenReady(btnGo , 30);
+	}
+	
+	/**
+	 * Check the presence of the go button
+	 * @author Saurav.Goyal
+	 */
+	public void presenceOfTheGoButton() {
+		reusableActions.isElementVisible(btnGo, 10);
 	}
 }

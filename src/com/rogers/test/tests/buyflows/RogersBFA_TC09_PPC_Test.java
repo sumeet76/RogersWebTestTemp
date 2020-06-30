@@ -3,14 +3,12 @@ package com.rogers.test.tests.buyflows;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
-
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
@@ -33,6 +31,7 @@ public class RogersBFA_TC09_PPC_Test extends BaseTestClass {
 
 	@Test
     public void ppcFlowTest() {
+		//getDriver().findElement(By.xpath("//a[@href='/consumer/wireless']")).click();
 		reporter.reportLogWithScreenshot("Home Page");
 		rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();
@@ -49,8 +48,8 @@ public class RogersBFA_TC09_PPC_Test extends BaseTestClass {
         reporter.reportLogWithScreenshot("Wireless Dashboard Page");
         rogers_wireless_details_page.clickChangePlanButton();
         reporter.reportLogWithScreenshot("Modal window appeared for change your plan");
-        //rogers_choose_plan_page.clkMakeChangesToExistingPlan();
-        //rogers_choose_plan_page.clkButtonModalContinue();
+        rogers_choose_plan_page.clkMakeChangesToExistingPlan();
+        rogers_choose_plan_page.clkButtonModalContinue();
         reporter.reportLogWithScreenshot("Choose Plan page");
         rogers_choose_plan_page.selectPlanType("");
         rogers_choose_plan_page.selectPlanCategory(TestDataHandler.testCase03.getNewPlanCategory());

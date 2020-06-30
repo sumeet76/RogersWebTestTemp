@@ -105,6 +105,13 @@ public class TestDataHandler {
 	public static HUPData testCase07;
 	public static PPCData testCase08;
 	public static HUPData testCase09;
+	public static HUPData buyFlowsOVtestCase01;
+	public static HUPData buyFlowsOVtestCase02;
+	public static HUPData buyFlowsOVtestCase05;
+	public static HUPData buyFlowsOVtestCase06;
+	public static PPCData buyFlowsOVtestCase03;
+	public static PPCData buyFlowsOVtestCase04;
+	public static PPCData buyFlowsOVtestCase07;
 	public static SauceSettings sauceSettings;
 	public static CHOneViewConfig chOneViewConfig;
 	public static AccountData igniteTVParentalcontrols;
@@ -120,6 +127,10 @@ public class TestDataHandler {
 	public static AccountData tc44DigitalTVAccount;
 	public static AccountData tc45LegacyInternetAccount;
 	public static AccountData tc46LegacyRHP;
+	public static AccountData shmAccount;
+	public static AccountData tupeloAccount;
+	public static Config bfaOneViewConfig;
+	public static PaymentDetails bfaOneViewPaymentInfo;
 
 	public static void dataInit (String strApplicationType) {	    	
     	if(strApplicationType.toUpperCase().trim().endsWith("CH")) {	    	
@@ -132,6 +143,9 @@ public class TestDataHandler {
     	} else if(strApplicationType.toUpperCase().trim().endsWith("BFA")) {
     		//Buy-Flows Data files
     		buyFlowsDataInit();
+    	} else if(strApplicationType.toUpperCase().trim().endsWith("BFAONEVIEW")) {
+        		//Buy-Flows Data files
+    		buyFlowsOneViewDataInit();
     	} else if(strApplicationType.toUpperCase().trim().endsWith("COV")) {
     		//ch oneview  Data files
     		chOneViewDataInit();
@@ -254,7 +268,7 @@ public class TestDataHandler {
 	}
 	
 	private static void buyFlowsDataInit() {
-		ssConfig =  YamlHandler.getBFAConfig();
+		rogersConfig = YamlHandler.getBFAConfig();
 		bfaConfig =  YamlHandler.getBFAConfig();
 		sauceSettings = YamlHandler.getSauceSettings("/data/buyflows/SauceSettings.yml");
 		bfaPaymentInfo = YamlHandler.getBFAPaymentDetails();
@@ -267,6 +281,19 @@ public class TestDataHandler {
     	testCase07 = YamlHandler.getHUPdata("tc07HUP");
     	testCase08 = YamlHandler.getPPCdata("tc08PPC");
     	testCase09 = YamlHandler.getHUPdata("tc09HUP");
+	}
+	
+	private static void buyFlowsOneViewDataInit() {
+		bfaOneViewConfig =  YamlHandler.getBFAOneViewConfig();
+		sauceSettings = YamlHandler.getSauceSettings("/data/buyflows/SauceSettings.yml");
+		bfaOneViewPaymentInfo = YamlHandler.getBFAOneViewPaymentDetails();
+		buyFlowsOVtestCase01 = YamlHandler.getHUPdataOneView("tc01OVHUPWithPPCMultilineAccount");
+		buyFlowsOVtestCase02 = YamlHandler.getHUPdataOneView("tc02OVHUPExistingPlanMultilineAccount");
+		buyFlowsOVtestCase03 = YamlHandler.getPPCdataOneView("tc03OVPPCMultilineAccountForBothLines");
+		buyFlowsOVtestCase04 = YamlHandler.getPPCdataOneView("tc04OVPPCMultilineAccount");
+		buyFlowsOVtestCase05 = YamlHandler.getHUPdataOneView("tc05OVHUPWithPPCSinglelineAccount");
+		buyFlowsOVtestCase06 = YamlHandler.getHUPdataOneView("tc06OVHUPExistingPlanSinglelineAccount");
+		buyFlowsOVtestCase07 = YamlHandler.getPPCdataOneView("tc07OVPPCSinglelineAccount");		
 	}
 	
 	private static void chOneViewDataInit() {

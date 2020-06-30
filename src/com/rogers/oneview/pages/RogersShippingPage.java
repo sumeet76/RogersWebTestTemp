@@ -1,4 +1,4 @@
-package com.rogers.pages;
+package com.rogers.oneview.pages;
 
 import java.util.List;
 
@@ -50,7 +50,7 @@ public class RogersShippingPage extends BasePageClass {
 	@FindBy(xpath = "//button[@class='__rdButton size-sm -mb-5']")
 	WebElement btnSaveNumber;
 	
-	@FindBy(xpath = "//div[@class='__normalDeliveryMethod']/..")
+	@FindBy(xpath = "//div[@class='__normalDeliveryMethod']")
 	WebElement rdoNormalDelivery;
 	
 	

@@ -3,14 +3,12 @@ package com.rogers.test.tests.buyflows;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
-
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
@@ -35,6 +33,7 @@ public class RogersBFA_TC08_HUP_Test extends BaseTestClass {
 
 	@Test
     public void hupFlowTest() {
+		//getDriver().findElement(By.xpath("//a[@href='/consumer/wireless']")).click();
 		reporter.reportLogWithScreenshot("Rogers Home Page");
 		rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();
@@ -42,8 +41,9 @@ public class RogersBFA_TC08_HUP_Test extends BaseTestClass {
         rogers_login_page.setPasswordIFrame(TestDataHandler.testCase04.getPassword());
         reporter.reportLogWithScreenshot("Rogers Login Page");
         rogers_login_page.clkSignInIFrame();
-        rogers_login_page.clkSkipIFrame();
+        //rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
+        //uncommentbelow lines
         reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");
         reporter.hardAssert(rogers_account_overview_page.verifyAndClickWirelessCTN(TestDataHandler.testCase04.getCtn()),"CTN Found","CTN Not Found");
@@ -58,11 +58,12 @@ public class RogersBFA_TC08_HUP_Test extends BaseTestClass {
         reporter.reportLogWithScreenshot("Rogers Choose Addons Page");
         rogers_choose_addons_page.clkContinueHUP();
         reporter.reportLogWithScreenshot("Rogers Shipping Page");
+        //rogers_shipping_page.clkRadioNormalDelivery();
         //Check with manual team , now asking standard delivery - fee
         //rogers_shipping_page.setEmailID();
         //rogers_shipping_page.clkSaveEmail();
-        //rogers_shipping_page.clkSelectAvailableTime();
-        //rogers_shipping_page.clkReserve();
+        rogers_shipping_page.clkSelectAvailableTime();
+        rogers_shipping_page.clkReserve();
         reporter.reportLogWithScreenshot("Rogers Shipping Page before clicking continue");
         rogers_shipping_page.clkContinue();
         reporter.reportLogWithScreenshot("Rogers review page");

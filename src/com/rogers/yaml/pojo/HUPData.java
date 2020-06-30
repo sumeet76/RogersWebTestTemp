@@ -7,6 +7,21 @@ public class HUPData {
 	private String username;
 	private String password;
 	private String ctn;
+	private String contactID;
+	private String banNo;
+	
+	public String getBanNo() {
+		return banNo;
+	}
+	public void setBanNo(String banNo) {
+		this.banNo = banNo;
+	}
+	public String getContactID() {
+		return contactID;
+	}
+	public void setContactID(String contactID) {
+		this.contactID = contactID;
+	}
 	/**
 	 * @return the newDevice
 	 */

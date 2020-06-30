@@ -1,6 +1,9 @@
 package com.rogers.oneview.pages;
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import com.rogers.pages.base.BasePageClass;
 
@@ -9,6 +12,8 @@ public class OrderReviewPage  extends BasePageClass {
 	public OrderReviewPage(WebDriver driver) {
 		super(driver);
 	}
+	@FindBy(xpath = "//label[@for='shieldTermsCheckbox']")
+	WebElement chbShieldTerms;
 	
 	@FindBy(xpath = "//*[text()='Monthly Bill' or text()='Facture mensuelle']/ancestor::button")
 	WebElement monthlyBill;
@@ -33,6 +38,35 @@ public class OrderReviewPage  extends BasePageClass {
 	
 	@FindBy(xpath = "//*[@translate='global.selfServe.reviewConfirm.totalMonthlyFees']/parent::div")
 	WebElement totalMonthlyFees;
+	
+	@FindBy(xpath = "//label[@for='termsCheckbox']")
+	WebElement chbTerms;
+	
+	@FindBy(xpath = "//label[@for='upfrontTermsCheckbox']")
+	WebElement chbUpfrontTerms;
+	
+	@FindBy(xpath = "//input[@name='customerEmail']")
+	WebElement txtCustomerEmail;
+	
+	@FindBy(xpath = "//label[@class='check-label']")
+	List<WebElement> termsCheckBoxes;
+	
+	@FindAll({
+		@FindBy(xpath = "//input[@id='cxEmail']/../label"),
+		@FindBy(xpath = "//input[@id='digital-copy']/../label")})
+	WebElement rdbtnEmail;
+	
+	@FindBy(xpath = "//span[@checkout-res='checkout_step_pay']")
+	WebElement lblPaymentStep;
+	
+	@FindBy(xpath = "//span[@checkout-res='checkout_continue_lbl']/parent::button")
+	WebElement btnContinue;
+	
+	////span[@checkout-res='checkout_submit_order']/parent::button
+	//button[@data-dtname='reviewOrder-submit']
+	@FindBy(xpath = "//span[@checkout-res='checkout_submit_order']/parent::button")
+	WebElement btnSubmitOrder;
+	
 	/**
 	 * Expand Monthly Bill
 	 * @author Harpartap.Virk
@@ -73,6 +107,80 @@ public class OrderReviewPage  extends BasePageClass {
 	}else
 		return false;
 	
+	}
+	
+	/**
+	 * Clicks on all 'Terms and Agreement' checkbox
+	 * @author Saurav.Goyal
+	 */
+	public void clkAllTermsAgreementCheckboxs() {
+		reusableActions.waitForAllElementsVisible(termsCheckBoxes, 60);
+		for(WebElement element:termsCheckBoxes) {
+			reusableActions.waitForElementVisibility(element, 100);
+			reusableActions.clickWhenReady(element,100);
+		}
+	}
+	
+	/**
+	 * Clicks on the 'Terms and Agreement' checkbox
+	 * @author rajesh.varalli1
+	 */
+	public void clkTermsAgreementCheckbox() {
+		reusableActions.waitForElementVisibility(chbTerms, 100);
+		reusableActions.clickWhenReady(chbTerms,100);
+	}
+	
+	/**
+	 * Clicks on the 'Device Financing Agreement' checkbox
+	 * @author rajesh.varalli1
+	 */
+	public void clkShieldAgreementCheckbox() {
+		reusableActions.clickIfAvailable(chbShieldTerms,60);
+	}
+	
+	/**
+	 * Clicks on the 'Upfront Terms' checkbox
+	 * @author rajesh.varalli1
+	 */
+	public void clkUpfrontTermsCheckbox() {
+		reusableActions.clickIfAvailable(chbUpfrontTerms,60);
+	}
+	
+	/**
+	 * Clicks on the 'Email a Digital Copy' radio button
+	 * @author rajesh.varalli1
+	 * @param strEmail string email
+	 */
+	public void selectEmailDigitalCopy(String strEmail) {
+		reusableActions.clickWhenVisible(rdbtnEmail,30);
+		if(reusableActions.isElementVisible(txtCustomerEmail)) {
+			txtCustomerEmail.sendKeys(strEmail);
+		}
+	}
+	
+	/**
+	 * Determines if payment is required or not
+	 * @return true if 'Payment' appears in the Steps above; else false
+	 * @author rajesh.varalli1
+	 */
+	public boolean isPaymentRequired() {
+		return reusableActions.isElementVisible(lblPaymentStep, 30);
+	}
+	
+	/**
+	 * Clicks on the 'Continue' button
+	 * @author rajesh.varalli1
+	 */
+	public void clkContinue() {
+		reusableActions.clickWhenReady(btnContinue,60);
+	}
+	
+	/**
+	 * Clicks on the 'Submit Order' button
+	 * @author rajesh.varalli1
+	 */
+	public void clkSubmitOrder() {
+		reusableActions.clickWhenVisible(btnSubmitOrder,60);
 	}
 }
 

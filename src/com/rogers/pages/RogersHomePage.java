@@ -3,6 +3,7 @@ package com.rogers.pages;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -22,7 +23,10 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//ul[@class='dds_o-headerNavDropdown -navbar']//a[@href='/web/preLogout.jsp']")
 	WebElement lnkSignOut;
 	
-	@FindBy(xpath = "//li[@class='dds_o-navLinkList__item']/a[contains(@class,'dds_m-navLink dropdown-hide')]")
+	@FindAll({
+	@FindBy(xpath = "//li[@class='dds_o-navLinkList__item']/a[contains(@class,'dds_m-navLink dropdown-hide')]"),
+	@FindBy(xpath = "//div[@class='rcl-navmain']//li[@class='o-navLinkList__item nav-list-active']//a[@class='m-navLink']//Span[@class='m-navLink__caption']"),
+	@FindBy(xpath = "//a[@class='m-navLink']//span[@class='m-navLink__chevron rds-icon-expand']")})
 	WebElement btnShop;
 	
 	@FindBy(xpath = "//li[@id='Shop-mobileDropdown']")
@@ -62,7 +66,11 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//a[@href='/web/totes/#/easylogin/main']")
 	WebElement btnRegisterNowFromMyRogers;
 	
-	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/wireless']")
+	//@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/wireless']")
+	@FindAll({
+		@FindBy(xpath = "(//li[@class='o-headerNavDropdown__item'])[1]//a"),
+		@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/wireless']")
+	})
 	WebElement lnkWireless;
 	
 	@FindBy(xpath = "//span[text()='View all devices']")

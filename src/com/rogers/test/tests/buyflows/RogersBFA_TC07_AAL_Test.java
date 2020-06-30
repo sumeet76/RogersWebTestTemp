@@ -3,7 +3,6 @@ package com.rogers.test.tests.buyflows;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
-
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterTest;
@@ -37,6 +36,7 @@ public class RogersBFA_TC07_AAL_Test extends BaseTestClass {
 
 	@Test
     public void aalFlowTest() {
+		//getDriver().findElement(By.xpath("//a[@href='/consumer/wireless']")).click();
 		reporter.reportLogWithScreenshot("Home Page");
 		rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();
@@ -49,7 +49,8 @@ public class RogersBFA_TC07_AAL_Test extends BaseTestClass {
         rogers_login_page.switchOutOfSignInIFrame();
         //Assert.assertTrue(rogers_account_overview_page.isMoreThanOneBanPresentInThePopUp(), "More than one Ban is not displayed in the pop up");
  		//reporter.reportLogWithScreenshot("Two subscriptions(Multiple Services)are shown up");
- 		rogers_account_overview_page.selectAccount(TestDataHandler.testCase01.getCtn());
+ 		//rogers_account_overview_page.selectAccount(TestDataHandler.testCase01.getCtn());
+        //uncomment
         reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page");
         rogers_home_page.clkShop();
@@ -70,12 +71,13 @@ public class RogersBFA_TC07_AAL_Test extends BaseTestClass {
         reporter.reportLogWithScreenshot("Rogers Cart Summary page");
         rogers_cart_summary_page.clkContinue();
         reporter.reportLogWithScreenshot("Rogers Shipping page");
-		/*
-		 * rogers_shipping_page.setPhoneNumber(); rogers_shipping_page.clkSaveNumber();
-		 * rogers_shipping_page.setEmailID(); rogers_shipping_page.clkSaveEmail();
-		 * rogers_shipping_page.clkSelectAvailableTime();
-		 * rogers_shipping_page.clkReserve();
-		 */
+        //rogers_shipping_page.clkRadioNormalDelivery();
+		  rogers_shipping_page.setPhoneNumber(); 
+		  rogers_shipping_page.clkSaveNumber();
+		  //rogers_shipping_page.setEmailID(); 
+		  //rogers_shipping_page.clkSaveEmail();
+		  rogers_shipping_page.clkSelectAvailableTime();
+		  rogers_shipping_page.clkReserve();
         //add standard delivery
         rogers_shipping_page.clkContinue();
         reporter.reportLogWithScreenshot("Rogers Choose Number page");

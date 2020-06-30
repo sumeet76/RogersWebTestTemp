@@ -16,6 +16,54 @@ public class Config {
 	private String hupURL;
 	private String legacyPath;
 	private SauceSettings sauceCapabilities;
+	private String rogersOVUrl;
+	private String environmentName;
+	private String loginID;
+	private String usrID;
+	
+	public String getLoginID() {
+		return loginID;
+	}
+
+	public void setLoginID(String loginID) {
+		this.loginID = loginID;
+	}
+
+	public String getUsrID() {
+		return usrID;
+	}
+
+	public void setUsrID(String usrID) {
+		this.usrID = usrID;
+	}	
+	
+	/**
+	 * @return the environmentName
+	 */
+	public String getEnvironmentName() {
+		return environmentName;
+	}
+
+	/**
+	 * @param environmentName the environmentName which needs to set
+	 */
+	public void setEnvironmentName(String environmentName) {
+		this.environmentName = environmentName;
+	}
+
+	/**
+	 * @return the rogersOVUrl
+	 */
+	public String getRogersOVUrl() {
+		return rogersOVUrl;
+	}
+	
+	/**
+	 * @param rogersOVUrl the rogersOVUrl to set
+	 */
+	public void setRogersOVUrl(String rogersOVUrl) {
+		this.rogersOVUrl = rogersOVUrl;
+	}
 	
 	/**
 	 * @return the rogersURL
@@ -23,6 +71,7 @@ public class Config {
 	public String getLoginFlow() {
 		return loginFlow;
 	}
+	
 	/**
 	 * @param rogersURL the rogersURL to set
 	 */

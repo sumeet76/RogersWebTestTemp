@@ -47,6 +47,7 @@ import com.rogers.pages.RogersChangeSEPlanPage;
 import com.rogers.pages.RogersChooseAddonsPage;
 import com.rogers.pages.RogersChooseNumberPage;
 import com.rogers.pages.RogersChoosePhonePage;
+import com.rogers.pages.RogersShippingPage;
 import com.rogers.pages.RogersChoosePlanPage;
 import com.rogers.pages.RogersDigitalTVDashboardPage;
 import com.rogers.pages.RogersDigitalTVPackageSelectionPage;
@@ -189,6 +190,13 @@ public class BaseTestClass {
 	protected ChannelsAndThemePacksPage channels_Theme_Packs_Page;
 	protected HomePhoneAddonsPage home_Phone_Addons_Page;
 	protected RogersSHMDashboardPage rogers_shm_dashboard_page;
+	protected com.rogers.oneview.pages.RogersWirelessDetailsPage rogersOV_wireless_details_page;
+	protected com.rogers.oneview.pages.RogersChoosePhonePage rogersOV_choose_phone_page;
+	protected com.rogers.oneview.pages.RogersBuildPlanPage rogersOV_build_plan_page;
+	protected com.rogers.oneview.pages.RogersChooseAddonsPage rogersOV_choose_addons_page;
+	protected com.rogers.oneview.pages.RogersShippingPage rogersOV_shipping_page;
+	protected com.rogers.oneview.pages.RogersPaymentPage rogersOV_payment_page;
+	protected com.rogers.oneview.pages.RogersChoosePlanPage rogersOV_ChoosePlan_page;
 	AppiumServerJava appiumServer = new AppiumServerJava();	
 	//int port = 4723;	
 	private CaptchaBypassHandlers captcha_bypass_handlers;
@@ -244,9 +252,13 @@ public class BaseTestClass {
 			captcha_bypass_handlers.captchaBypassURLLoginFlows(strUrl, strLanguage);
 			break; 
 		
-		case "buyflows": driver.get(strUrl);
-			break; 
+		case "buyflows": 
+			captcha_bypass_handlers.captchaBypassURLLoginFlows(strUrl, strLanguage);
+			break;
 			
+		case "buyflowsoneview": driver.get(strUrl);
+			break; 
+		
  		default :
  			captcha_bypass_handlers.captchaBypassURLLoginFlows(strUrl, strLanguage);
 		}
@@ -524,6 +536,22 @@ public class BaseTestClass {
 			channels_Theme_Packs_Page=new ChannelsAndThemePacksPage(getDriver());
 			home_Phone_Addons_Page=new HomePhoneAddonsPage(getDriver());
 			break;		
+		
+		case "buyflowsoneview":
+			
+			environment_selection_page = new EnvironmentSelectionPage(getDriver());
+			account_over_view_page= new AccountOverViewPage(getDriver());
+			order_Confirmation_Page = new OrderConfirmationPage(getDriver());
+			order_Review_Page = new OrderReviewPage(getDriver());
+			rogersOV_wireless_details_page = new com.rogers.oneview.pages.RogersWirelessDetailsPage(getDriver());
+			rogersOV_choose_phone_page = new com.rogers.oneview.pages.RogersChoosePhonePage(getDriver());
+			rogersOV_build_plan_page = new com.rogers.oneview.pages.RogersBuildPlanPage(getDriver());
+			rogersOV_choose_addons_page = new com.rogers.oneview.pages.RogersChooseAddonsPage(getDriver());
+			rogersOV_shipping_page = new com.rogers.oneview.pages.RogersShippingPage(getDriver());
+			rogersOV_payment_page = new com.rogers.oneview.pages.RogersPaymentPage(getDriver());
+			rogersOV_ChoosePlan_page = new com.rogers.oneview.pages.RogersChoosePlanPage(getDriver());
+			break;
+			
 		default:
 			
 		}	

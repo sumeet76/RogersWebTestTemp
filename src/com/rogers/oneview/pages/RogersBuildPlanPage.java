@@ -1,4 +1,4 @@
-package com.rogers.pages;
+package com.rogers.oneview.pages;
 
 import java.util.List;
 
@@ -20,11 +20,17 @@ public class RogersBuildPlanPage extends BasePageClass {
 		super(driver);
 	}
 
+	
 	@FindBy(xpath = "//button[@res='_add']")
 	List<WebElement> btnAdd;
+	
+	@FindBy(xpath = "//div[@class='planContentContainer col-xs-12']//div[@class='features-section ']")
+	List<WebElement> addPlan;
+	
+	@FindBy(xpath = "//span[@res='DATA']")
+	WebElement lblData;
 
 	@FindAll({
-		@FindBy(xpath = "//span[@class='col-sm-6 pull-right btn button-continue ng-scope']"),
 		@FindBy(xpath = "//p[@res='_continue']")
 	})
 	WebElement btnContinue;
@@ -73,10 +79,22 @@ public class RogersBuildPlanPage extends BasePageClass {
 
 	/**
 	 * Clicks on the 'Add' button against the first available price plan
+	 * @author Saurav.Goyal
+	 */
+	public void selectFirstPlanInPickNewPlan() {
+		reusableActions.waitForPageLoad();
+		reusableActions.javascriptScrollByVisibleElement(lblData);
+		reusableActions.clickWhenReady(addPlan.get(0), 30);
+		reusableActions.staticWait(2000);
+	}
+	
+	/**
+	 * Clicks on the 'Add' button against the first available price plan
 	 * @author rajesh.varalli1
 	 */
 	public void selectFirstAvailablePlan() {
 		reusableActions.waitForPageLoad();
+		reusableActions.clickWhenReady(btnAdd.get(0), 30);
 		reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(btnAdd.get(0), 30));
 		reusableActions.staticWait(2000);
 	}
