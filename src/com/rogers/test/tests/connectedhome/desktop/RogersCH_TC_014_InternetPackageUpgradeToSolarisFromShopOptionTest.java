@@ -134,14 +134,6 @@ public class RogersCH_TC_014_InternetPackageUpgradeToSolarisFromShopOptionTest e
 		       rogers_tech_install_page.clkTechInstalConsentExistingCustomer();
 		       reporter.reportLogWithScreenshot("tech install details");
 		       rogers_tech_install_page.clkTechInstallContinue();     
-/*	        reporter.reportLogWithScreenshot("Launched the payment options page");
-	        rogers_payment_options_page.selectPaymentMode("pacc");
-	        rogers_payment_options_page.setCreditCardNumberIFrame(TestDataHandler.rogersPaymentInfo .getCreditCardDetails().getNumber());
-	        rogers_payment_options_page.setCVV();
-	        rogers_payment_options_page.selectExpiryMonth();
-	        rogers_payment_options_page.selectExpiryYear();	  */      
-	        //reporter.reportLogWithScreenshot("Payment options Details");
-	        //rogers_payment_options_page.clkPaymentConfirmExistingCustomer();
 	        rogers_order_review_page.verifyAgreementPage();
 	        reporter.reportLogWithScreenshot("Launched the order review page");
 	        rogers_order_review_page.verifyAgreement();

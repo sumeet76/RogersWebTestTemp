@@ -65,6 +65,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam	 
 	 */
 	public void clkAddButtonOnThemePackListOnManageChannelsAndThemePacks() {
+		reusableActions.staticWait(10000);
 		reusableActions.waitForElementVisibility(addThemePackListOnManageChannelsAndThemePacks.get(0), 240);
 		reusableActions.getWhenReady(addThemePackListOnManageChannelsAndThemePacks.get(0), 60).click();
 	}		
@@ -91,7 +92,6 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author Saurav.Goyal	 
 	 */
 	public void addChannel() {
-		reusableActions.staticWait(5000);
 		reusableActions.waitForElementVisibility(addParticularChannelToCart.get(0), 240);
 		reusableActions.getWhenReady(addParticularChannelToCart.get(0), 90).click();
 	}	
@@ -156,7 +156,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkExchangeLater() {
-		reusableActions.getWhenReady(btnExchangeLater, 120).click();
+		reusableActions.getWhenReady(btnExchangeLater, 180).click();
 	}
 	
 	/**
@@ -164,7 +164,9 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkContinueFromThemepacks() {
-		reusableActions.getWhenReady(btnContinueFromThemepacks, 30).click();
+		reusableActions.staticWait(7000);
+/*		reusableActions.waitForElementVisibility(addParticularChannelToCart.get(0), 240);*/
+		reusableActions.getWhenReady(btnContinueFromThemepacks, 120).click();
 	}
 	
 	/**
@@ -172,7 +174,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkYesIHave4K() {
-		reusableActions.getWhenReady(btnYesIHave4K, 30).click();
+		reusableActions.getWhenReady(btnYesIHave4K, 90).click();
 	}
 	
 	/**
@@ -180,7 +182,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clk4KContent() {
-		reusableActions.getWhenReady(btn4KContent, 120).click();
+		reusableActions.getWhenReady(btn4KContent, 180).click();
 	}
 	
 }

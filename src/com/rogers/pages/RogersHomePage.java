@@ -230,6 +230,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkShop() {
+		//reusableActions.staticWait(30000);
 		reusableActions.getWhenReady(btnShop, 90).click();				
 	}
 	

@@ -47,7 +47,7 @@ public class RogersCH_TC_006_IginteInternet_ValidateStandaloneInternetDashboardU
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();  
         rogers_login_page.switchOutOfSignInIFrame();           
-        rogers_account_overview_page.selectAccount((TestDataHandler.standaloneInternetAccountWithUsage.accountDetails.getBan()));
+        rogers_account_overview_page.selectAccount(TestDataHandler.standaloneInternetAccountWithUsage.accountDetails.getBan());
 		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_internet_dashboard_page.clkSolarisInternetBadge();

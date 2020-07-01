@@ -73,7 +73,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//p[@id='ds-modal-title-1']")
 	WebElement popImportantInformation;
 	   
-	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -primary -large']")
+	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
 	WebElement btnIUnderstand;	  
 	
 	@FindBy(xpath ="//label[contains(@for,'global.modals.activateIgniteHomePhoneModal.messageForNewNumber')]")
@@ -261,8 +261,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkPlusAddIgniteTVBoxes() {
-		reusableActions.waitForElementVisibility(buttonAddIgniteTVBoxes, 60);
-		reusableActions.getWhenReady(buttonAddIgniteTVBoxes, 30).click();
+		reusableActions.waitForElementVisibility(buttonAddIgniteTVBoxes, 180);
+		reusableActions.staticWait(7000);
+		reusableActions.getWhenReady(buttonAddIgniteTVBoxes, 90).click();
 	}
 	
 	/**

@@ -104,7 +104,7 @@ public class RogersCH_TC_028_IginteTV_ExistingSolarisCustomerBuyBundleWithNewAdd
 	        rogers_tech_install_page.verifyTechInstallPage(); 
 	        //rogers_tech_install_page.clkPersonalizedInstall();
 	    	rogers_tech_install_page.selSelffinstallDateAndTime(); 
-	        reporter.reportLogWithScreenshot("Launched the tech install page");
+	        reporter.reportLogWithScreenshot("Launched the tech install page");	        
 	        rogers_tech_install_page.clkTechInstallSlot();
 	        reporter.reportLogWithScreenshot("tech install details");
 	        rogers_tech_install_page.setMobielNumberExistingCustomer();

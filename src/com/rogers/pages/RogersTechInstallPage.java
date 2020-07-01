@@ -26,32 +26,56 @@ public class RogersTechInstallPage extends BasePageClass {
 	WebElement rdoTechInstallSlot;
 	//label[@for='slot-13']/ancestor::td[@class='monday']
 	
+	@FindBy(xpath ="//select[@id='preferredTimeSlot']")
+	WebElement selPreferredTimeSlot;
+	
+	@FindBy(xpath ="//select[@id='backupTimeSlot']")
+	WebElement selBackupTimeSlot;
+	
 	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-52')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
 	WebElement txtContainerMobile;
+	
+	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-38')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	WebElement txtContainerMobileExistingCustomer;
+	
+	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-47')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	WebElement txtContainerMobileMigration;
 	
 	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-53')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
 	WebElement txtContainerEmail;
 	
-		@FindBy(xpath ="//input[@id='ds-form-input-id-34']")
+	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-39')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	WebElement txtContainerEmailExistingCustomer;
+	
+	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-48')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	WebElement txtContainerEmailMigration;
+	
+    @FindBy(xpath ="//input[@id='ds-form-input-id-34']")
 	WebElement txtMobielNumber;		
 		//input[@id='enrouteMobile']
+    
+    @FindBy(xpath ="//input[@id='ds-form-input-id-28']")
+	WebElement txtMobielNumberMigration;	
 		
 	@FindBy(xpath ="//input[@id='ds-form-input-id-21']")
 	WebElement txtMobielNumberExistingCustomer;	
 		
 		
-	@FindBy(xpath ="//div[@class='col-sm-6']//span[@class='ute-icon-calendar-icon']")
+	@FindBy(xpath ="(//span[@class='ds-icon rds-icon-calendar'])[1]")
 	WebElement imgStartingTechInstallSlot;
-	
-	@FindBy(xpath ="//div[contains(@class,'col-sm-6 margin-bottom-0')]//span[@class='ute-icon-calendar-icon']")
+			
+	@FindBy(xpath ="(//span[@class='ds-icon rds-icon-calendar'])[2]")
 	WebElement imgEndingTechInstallSlot;
 	
 	@FindBy(xpath ="//input[@id='ds-form-input-id-35']")
 	WebElement txtEmail;
 	//input[@id='enRouteEmail']
 	
+	@FindBy(xpath ="//input[@id='ds-form-input-id-29']")
+	WebElement txtEmailMigration;		
+	
 	@FindBy(xpath ="//input[@id='ds-form-input-id-22']")
-	WebElement txtEmailExistingCustomer;		
+	WebElement txtEmailExistingCustomer;
 	
 	@FindBy(xpath ="//label[@for='ds-checkbox-id-1']")
 	WebElement chkTechInstalConsent;
@@ -140,6 +164,23 @@ public class RogersTechInstallPage extends BasePageClass {
 		reusableActions.getWhenReady(prefferedDates, 180).sendKeys(date);;
 	}
 
+	/**
+	 * Select slot from the available list of slots from installation page
+	 * @author chinnarao.vattam
+	 * @param slot which slot to be entered
+	 */
+	public void selectPreferredTimeSlot(String slot) {
+		reusableActions.getWhenReady(selPreferredTimeSlot, 180).sendKeys(slot);;
+	}
+	
+	/**
+	 * Select slot from the available list of slots from installation page
+	 * @author chinnarao.vattam
+	 * @param slot which slot to be entered
+	 */
+	public void selectBackupTimeSlot(String slot) {
+		reusableActions.getWhenReady(selBackupTimeSlot, 180).sendKeys(slot);;
+	}
 	
 	/**
 	 * To verify the launch of Technical  Install Page
@@ -224,6 +265,17 @@ public class RogersTechInstallPage extends BasePageClass {
 	}
 	
 	/**
+	 * Set dynamic mobile number on the Order Summary Page
+	 * @author Chinnarao.Vattam
+	 */
+	public void setMobielNumberMigration() {
+		String strPhoneNumber = FormFiller.generatePhoneNumber();
+		reusableActions.waitForElementVisibility(txtContainerMobileMigration,180);
+		reusableActions.getWhenReady(txtContainerMobileMigration,10).click();
+		reusableActions.getWhenReady(txtMobielNumberMigration, 30).clear();
+		reusableActions.getWhenReady(txtMobielNumberMigration, 3).sendKeys(strPhoneNumber);
+	}
+	/**
 	 * Set dynamic email on the Order Summary Page
 	 * @author Chinnarao.Vattam
 	 */
@@ -236,11 +288,25 @@ public class RogersTechInstallPage extends BasePageClass {
 	}
 	
 	/**
+	 * Set dynamic email on the Order Summary Page
+	 * @author Chinnarao.Vattam
+	 */
+	public void setEmailMigration() {
+		String strEmail = FormFiller.generateEmail();
+		reusableActions.waitForElementVisibility(txtContainerEmailMigration,180);
+		reusableActions.getWhenReady(txtContainerEmailMigration,10).click();
+		reusableActions.getWhenReady(txtEmailMigration, 30).clear();
+		reusableActions.getWhenReady(txtEmailMigration,10).sendKeys(strEmail);
+	}
+	
+	/**
 	 * Set dynamic mobile number on the Order Summary Page
 	 * @author Chinnarao.Vattam
 	 */
 	public void setMobielNumberExistingCustomer() {
 		String strPhoneNumber = FormFiller.generatePhoneNumber();
+		reusableActions.waitForElementVisibility(txtContainerMobileExistingCustomer,180);
+		reusableActions.getWhenReady(txtContainerMobileExistingCustomer,10).click();
 		reusableActions.getWhenReady(txtMobielNumberExistingCustomer, 30).clear();
 		reusableActions.getWhenReady(txtMobielNumberExistingCustomer, 3).sendKeys(strPhoneNumber);
 	}
@@ -251,6 +317,8 @@ public class RogersTechInstallPage extends BasePageClass {
 	 */
 	public void setEmailExistingCustomer() {
 		String strEmail = FormFiller.generateEmail();
+		reusableActions.waitForElementVisibility(txtContainerEmailExistingCustomer,180);
+		reusableActions.getWhenReady(txtContainerEmailExistingCustomer,10).click();
 		reusableActions.getWhenReady(txtEmailExistingCustomer, 30).clear();
 		reusableActions.getWhenReady(txtEmailExistingCustomer, 3).sendKeys(strEmail);
 	}
@@ -259,24 +327,24 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selTechInstalStartDate() {
-		reusableActions.waitForElementVisibility(imgStartingTechInstallSlot,60); 
+		reusableActions.waitForElementVisibility(imgStartingTechInstallSlot,180); 
 		reusableActions.getWhenReady(imgStartingTechInstallSlot, 20).click();
 		DateFormat dform = new SimpleDateFormat("dd-MM-yyyy");
 		Calendar calendar = Calendar.getInstance();
 		int intDate = calendar.get(Calendar.DATE);
 		int iDate = intDate + 10; 
 		if(iDate >= 30) {
-		reusableActions.waitForElementVisibility(clkNext, 60);
-		reusableActions.getWhenReady(clkNext, 60).click();		
+		reusableActions.waitForElementVisibility(clkChevron, 60);
+		reusableActions.getWhenReady(clkChevron, 60).click();		
 		int selDate = intDate - 14 ;
 		String strStartDate= Integer.toString(selDate);	
-		By selStartDate = By.xpath("//button[@class='btn btn-default btn-sm']//span[contains(text(),'" + strStartDate + "')]");
+		By selStartDate = By.xpath("//tr[@class='ng-star-inserted']//td//span[contains(text(),'" + strStartDate + "')]");
 		reusableActions.getWhenReady(selStartDate, 60).click();
 		}
 		else
 		{
 			String strStartDate= Integer.toString(intDate);
-			By selStartDate = By.xpath("//button[@class='btn btn-default btn-sm']//span[contains(text(),'" + strStartDate + "')]");
+			By selStartDate = By.xpath("//tr[@class='ng-star-inserted']//td//span[contains(text(),'" + strStartDate + "')]");
 			reusableActions.getWhenReady(selStartDate, 60).click();
 		}
 	}
@@ -292,18 +360,18 @@ public class RogersTechInstallPage extends BasePageClass {
 		int intDate = calendar.get(Calendar.DATE);	
 		int iDate = intDate + 10; 
 		if(iDate >= 30) {
-		reusableActions.waitForElementVisibility(clkNext, 60);
-		reusableActions.getWhenReady(clkNext, 60).click();
+		reusableActions.waitForElementVisibility(clkChevron, 60);
+		reusableActions.getWhenReady(clkChevron, 60).click();
 		int selDate = intDate - 6 ;
 		String strEndDate= Integer.toString(selDate);
-		By selEndDate = By.xpath("//button[@class='btn btn-default btn-sm']//span[contains(text(),'" + strEndDate + "')]");
+		By selEndDate = By.xpath("//tr[@class='ng-star-inserted']//td//span[contains(text(),'" + strEndDate + "')]");
 		reusableActions.getWhenReady(selEndDate, 30).click();
 		}
 		else
 		{
 			int endDate = intDate + 5;
 			String strEndDate= Integer.toString(endDate);
-			By selEndDate = By.xpath("//button[@class='btn btn-default btn-sm']//span[contains(text(),'" + strEndDate + "')]");
+			By selEndDate = By.xpath("//tr[@class='ng-star-inserted']//td//span[contains(text(),'" + strEndDate + "')]");
 			reusableActions.getWhenReady(selEndDate, 30).click();
 		}
 		
