@@ -391,7 +391,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 			reusableActions.getWhenReady(infoChannelSwapoutSeach, 10).sendKeys(channel);
 			//By channelLocator = By.xpath("//a[@title='" + channel + "']");
 			reusableActions.waitForElementStaleness(driver.findElement( By.xpath("//a[@title='" + channel + "']")),3);
-			reusableActions.getWhenReady(driver.findElement( By.xpath("//a[@title='" + channel + "']")), 20).click();
+			reusableActions.getWhenReady(By.xpath("//a[@title='" + channel + "']"), 20).click();
 			
 			By btnChannelLocator = By.xpath("//a[@title='" + channel
 					+ "']/ancestor::li[@class='tv-channel-li']//button[@class='select-channel-btn']");
