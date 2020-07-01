@@ -349,15 +349,32 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkCreditConsent() {
-		reusableActions.clickWhenReady(chkConsent, 120);
+		reusableActions.getWhenReady(chkConsent, 120).click();
 	}
 
+	/**
+	 * Click the Credit check Consent check box on Credit check page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkCreditConsentMobile() {
+		reusableActions.executeJavaScriptClick(chkConsent);
+	}
+	
 	/**
 	 * Click the Submit button on Credit check page
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkCreditConsentSubmit() {
-		reusableActions.getWhenReady(btnCreditCheckSubmit, 120).click();
+		reusableActions.executeJavaScriptClick(chkConsent);
+	}
+	
+	/**
+	 * Click the Submit button on Credit check page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkCreditConsentSubmitMobile() {
+		reusableActions.getWhenReady(btnCreditCheckSubmit, 30);
+		reusableActions.executeJavaScriptClick(btnCreditCheckSubmit);
 	}
 
 	/**

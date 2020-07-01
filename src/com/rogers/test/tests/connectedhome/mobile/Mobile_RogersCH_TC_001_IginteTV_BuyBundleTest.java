@@ -54,12 +54,13 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
 
     @Test
-    public void checkBuyDigitalTVOffer() {
-    	reporter.reportLogWithScreenshot("Launched the Home Page");
+    public void checkBuyIgniteTVOfferMobile() {
+		reporter.reportLogWithScreenshot("Launched the Home Page");
+		rogers_home_page.clkNavMobile();
+		reporter.reportLogWithScreenshot("Launched the Navgation card");
     	rogers_home_page.clkShopMobile(); 
-    	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
-    	
-    	rogers_home_page.clkIgniteTV();
+    	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");    	
+    	rogers_home_page.clkIgniteTVMobile();
     	rogers_home_page.verifyIgnitepage();
     	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	rogers_home_page.clkServiceability();
@@ -69,21 +70,22 @@ public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass
         String  strAddressLine1=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line2");
         rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
-        rogers_home_page.clkIgniteAddressLookupSubmit();
+        reporter.reportLogWithScreenshot("Availability check button enabled");
+        rogers_home_page.clkIgniteAddressLookupSubmitMobile();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-        rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
+        rogers_igniteTV_buy_page.selectSolarisStarterPackageMobile();
         rogers_igniteTV_buy_page.verify4KTV();
         reporter.reportLogWithScreenshot("Launched the cart summary page");
-        rogers_igniteTV_buy_page.set4KTV();
+        rogers_igniteTV_buy_page.set4KTVMobile();
         reporter.reportLogWithScreenshot("4k TV selected");
-        rogers_igniteTV_buy_page.clkCheckout();
+        rogers_igniteTV_buy_page.clkCheckoutMobile();
         rogers_igniteTV_profile_creation_page.verifyProfilePage();
         reporter.reportLogWithScreenshot("Launched the create profile page");
         rogers_igniteTV_profile_creation_page.setEmail();
         rogers_igniteTV_profile_creation_page.setFirstname();
         rogers_igniteTV_profile_creation_page.setLastName();
         rogers_igniteTV_profile_creation_page.setPhone();
-        rogers_igniteTV_profile_creation_page.clkSubmitProfile();
+        rogers_igniteTV_profile_creation_page.clkSubmitProfileMobile();
         rogers_igniteTV_credit_check_page.verifyCreditEvalutionPage();
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
         rogers_igniteTV_credit_check_page.selectDOBYear();
@@ -102,14 +104,14 @@ public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass
         rogers_igniteTV_credit_check_page.selectPassportExpiryYear();
         rogers_igniteTV_credit_check_page.selectPassportExpiryMonth();
         rogers_igniteTV_credit_check_page.selectPassportExpiryDay();
-        rogers_igniteTV_credit_check_page.clkCreditConsent();
+        rogers_igniteTV_credit_check_page.clkCreditConsentMobile();
         reporter.reportLogWithScreenshot("Passport Details");
-       rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
+       rogers_igniteTV_credit_check_page.clkCreditConsentSubmitMobile();
        rogers_tech_install_page.verifyTechInstallPage(); 
        reporter.reportLogWithScreenshot("Launched the tech install page");
-       rogers_tech_install_page.selSelffinstallDateAndTime();
+       rogers_tech_install_page.selSelffinstallDateAndTimeMobile();
        reporter.reportLogWithScreenshot("Launched the tech install page");
-       rogers_tech_install_page.clkTechInstallSlot();
+       rogers_tech_install_page.clkTechInstallSlotMobile();
        reporter.reportLogWithScreenshot("tech install details");
        rogers_tech_install_page.setMobielNumber();
        rogers_tech_install_page.setEmail();

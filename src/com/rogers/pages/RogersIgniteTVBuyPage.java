@@ -56,8 +56,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	WebElement btnHomePhoneContinue;
 	//button[@class='continue-addon ds-button ds-focus ds-active -primary -large']
 	
-	@FindBy(xpath = "//label[@for='have4K-yes']")
+	@FindBy(xpath = "//input[@id='have4K-yes']")
 	WebElement rdo4KTV;
+	//label[@for='have4K-yes']
+	
 	
 	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
 	WebElement btnCheckout;
@@ -69,6 +71,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	
 	@FindBy(xpath ="//div[@class='mt-auto w-100']//button[@aria-label='Add Rogers Ignite Starter Bundle to cart']//span[@translate='global.cta.addToCart']")
 	WebElement btnSolarisStarterPackageNew;	
+	
+	@FindBy(xpath ="//div[@class='mt-auto w-100']//button[@aria-label='Add Rogers Ignite Starter Bundle to cart']")
+	WebElement btnSolarisStarterPackageMobile;	
 	
 	@FindBy(xpath = "//p[@id='ds-modal-title-1']")
 	WebElement popImportantInformation;
@@ -434,6 +439,14 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	
 	/**
 	 * Click 4K TV radio button on Ignite-bundles/tv-internet page
+	 * @author chinnarao.vattam
+	 */
+	public void set4KTVMobile() {		
+		reusableActions.executeJavaScriptClick(rdo4KTV);
+	}
+	
+	/**
+	 * Click 4K TV radio button on Ignite-bundles/tv-internet page
 	 * @return true if the 4K TV ratio has available, else false 
 	 * @author chinnarao.vattam
 	 */
@@ -448,11 +461,17 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public void clkCheckout() {
 		reusableActions.waitForElementInvisibility(popupLoadingFingersciam,200);	
-	/*	reusableActions.javascriptScrollToBottomOfPage();
-		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(btnCheckout, 150);
-		reusableActions.getWhenReady(btnCheckout, 150);*/
 		reusableActions.getWhenReady(btnCheckout, 150).click();
+		reusableActions.waitForElementInvisibility(popupLoadingFingersciam,200);
+	}
+	
+	/**
+	 * Click checkout button on Ignite-bundles/tv-internet page
+	 * @author chinnarao.vattam
+	 */
+	public void clkCheckoutMobile() {
+		reusableActions.waitForElementInvisibility(popupLoadingFingersciam,200);	
+		reusableActions.executeJavaScriptClick(btnCheckout);
 		reusableActions.waitForElementInvisibility(popupLoadingFingersciam,200);
 	}
 	
@@ -461,9 +480,16 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisStarterPackageNew() {
-		reusableActions.clickWhenReady(btnSolarisStarterPackageNew, 120);
+		reusableActions.getWhenReady(btnSolarisStarterPackageNew, 120).click();
 	}
 	
+	/**
+	 * Click Starter package button for anonymous customer
+	 * @author chinnarao.vattam
+	 */
+	public void selectSolarisStarterPackageMobile() {
+		reusableActions.getWhenReady(btnSolarisStarterPackageMobile, 180).click();
+	}
 	/**
 	 * Click Starter package to check Service ability for Starter package
 	 * @author chinnarao.vattam

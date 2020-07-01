@@ -225,7 +225,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	
 	/**
 	 * Select Self install date and time
-	 * @author Saurav.Goyal
+	 * @author chinnarao.vattam
 	 */
 	public void selSelffinstallDateAndTime() {
 		reusableActions.waitForElementVisibility(clkCalendarIcon,20); 
@@ -244,6 +244,28 @@ public class RogersTechInstallPage extends BasePageClass {
 	}
 	
 	/**
+	 * Select Self install date and time
+	 * @author chinnarao.vattam
+	 */
+	public void selSelffinstallDateAndTimeMobile() {
+		reusableActions.waitForElementVisibility(clkCalendarIcon,20); 
+		reusableActions.executeJavaScriptClick(clkCalendarIcon);
+		Calendar calendar = Calendar.getInstance();
+		int intDate = calendar.get(Calendar.DATE);
+		int startDate = intDate + 20; 
+		//If startDate > 29 , 29 being the number of days in the month
+		if(startDate>29) {
+			reusableActions.getWhenReady(clkChevron, 60);
+			reusableActions.executeJavaScriptClick(clkChevron);
+			startDate = startDate - 29;
+		}
+		String strStartDate= Integer.toString(startDate);
+		By selStartDate = By.xpath("//span[contains(text(),'" + strStartDate + "') and @class='owl-dt-calendar-cell-content']");
+		WebElement date = driver.findElement(selStartDate);
+		reusableActions.executeJavaScriptClick(date);
+	}
+
+	/**
 	 * Select the slot from the available list of slots from installation page
 	 * @author Chinnarao.Vattam
 	 */
@@ -253,13 +275,22 @@ public class RogersTechInstallPage extends BasePageClass {
 	}
 	
 	/**
+	 * Select the slot from the available list of slots from installation page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkTechInstallSlotMobile() {
+		reusableActions.waitForElementVisibility(rdoTechInstallSlot, 180);
+		reusableActions.executeJavaScriptClick(rdoTechInstallSlot);
+	}
+	
+	/**
 	 * Set dynamic mobile number on the Order Summary Page
 	 * @author Chinnarao.Vattam
 	 */
 	public void setMobielNumber() {
 		String strPhoneNumber = FormFiller.generatePhoneNumber();
 		reusableActions.waitForElementVisibility(txtContainerMobile,180);
-		reusableActions.getWhenReady(txtContainerMobile,10).click();
+		reusableActions.getWhenReady(txtContainerMobile,30).click();
 		reusableActions.getWhenReady(txtMobielNumber, 30).clear();
 		reusableActions.getWhenReady(txtMobielNumber, 3).sendKeys(strPhoneNumber);
 	}
