@@ -32,6 +32,9 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//li[@id='Shop-mobileDropdown']")
 	WebElement btnShopMobile;	
 	
+	@FindBy(xpath="//a[@class='dds-header-mobilenav']")
+	WebElement lnkNavMobile;
+	
 	@FindBy(xpath = "//a[@class='m-navLink']//span[@class='m-navLink__chevron rds-icon-expand']")
 	WebElement btnExistingCustomerShop;
 	
@@ -41,6 +44,9 @@ public class RogersHomePage extends BasePageClass {
 
 	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/web/consumer/ignite-bundles/tv-internet']")
 	WebElement lnkIgniteTV;
+	
+	@FindBy(xpath = "//li[@class='dds_o-mobileNavDropdown__item']//a[@href='/web/consumer/ignite-bundles/tv-internet']")
+	WebElement lnkgniteTVMobile;	
 	
 	@FindBy(xpath = "//li[@class='dds_o-mobileNavDropdown__item']/a[@href='/web/consumer/ignite-bundles/tv-internet']")
 	WebElement lnkIgniteTVMobile;
@@ -79,7 +85,7 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='rch-modal']//button[@class='ds-button ds-focus ds-active -primary -large']//span[@class='ds-button__copy w-100']")
 	WebElement continueBtnIgniteMultipleAddressLookupSubmit;
 
-	@FindBy(xpath = "	//a[contains(@title,'See available Ignite Bundles') or  contains(@title,'Voyez les offres groupées Élan accessibles')]")
+	@FindBy(xpath = "//a[contains(@title,'See available Ignite Bundles') or  contains(@title,'Voyez les offres groupées Élan accessibles')]")
 	WebElement btnServiceability;
 	//a[@title='Check if Ignite Bundles are available in your area' or @title='Vérifiez si les offres groupées Élan sont disponibles dans votre secteur.']
 	
@@ -191,6 +197,13 @@ public class RogersHomePage extends BasePageClass {
 		reusableActions.clickIfAvailable(btnAddNow, 90);
 	}
 	
+	/**
+	 * Click on myAccount button on the home page
+	 * @author chinnarao.vattam
+	 */	
+	public void clkNavMobile() {
+		reusableActions.getWhenReady(lnkNavMobile,20).click();
+	}
 	
 	/**
 	 * To Click No thanks on welcome back page
@@ -238,6 +251,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkShop() {
+		//reusableActions.staticWait(30000);
 		reusableActions.getWhenReady(btnShop, 90).click();				
 	}
 	
@@ -290,6 +304,14 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public void clkIgniteTV() {
 		reusableActions.getWhenReady(lnkIgniteTV, 30).click();
+	}
+	
+	/**
+	 * Click the Ignite TV option from shop dropdown list
+	 * @author chinnarao.vattam 
+	 */
+	public void clkIgniteTVMobile() {
+		reusableActions.getWhenReady(lnkIgniteTVMobile, 30).click();
 	}
 	
 	/**
@@ -452,6 +474,15 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public void clkIgniteAddressLookupSubmit() {
 		reusableActions.getWhenReady(btnIgniteAddressLookupSubmit, 120).click();
+	}
+	
+	/**
+	 * Click the Lookup Submit button to check service availability
+	 * @author chinnarao.vattam
+	 */
+	public void clkIgniteAddressLookupSubmitMobile() {
+		reusableActions.waitForElementVisibility(btnIgniteAddressLookupSubmit,60);
+		reusableActions.executeJavaScriptClick(btnIgniteAddressLookupSubmit);
 	}
 	
 	/**

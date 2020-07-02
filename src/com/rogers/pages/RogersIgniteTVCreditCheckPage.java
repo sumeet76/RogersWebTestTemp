@@ -20,10 +20,19 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	WebElement ddlCreditCheckYear;
 	
 	@FindBy(xpath = "//select[@id='ds-form-input-id-19']")
+	WebElement ddlCreditCheckYearMigration;
+		
+	@FindBy(xpath = "//select[@id='ds-form-input-id-19']")
 	WebElement ddlCreditCheckMonth;
 	
 	@FindBy(xpath = "//select[@id='ds-form-input-id-20']")
+	WebElement ddlCreditCheckMonthMigration;
+	
+	@FindBy(xpath = "//select[@id='ds-form-input-id-20']")
 	WebElement ddlCreditCheckDay;
+	
+	@FindBy(xpath = "//select[@id='ds-form-input-id-21']")
+	WebElement ddlCreditCheckDayMigration;
 	
 	@FindBy(xpath = "//select[@id='ds-form-input-id-21']")
 	WebElement ddlFirstID;
@@ -144,6 +153,17 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	}
 	
 	/**
+	 * Set dynamic date of birth year on Credit check page for an existing customer
+	 * @param strDOBYear year of birth
+	 * @author Chinnarao.Vattam
+	 */
+	public void selectDOBYearExistingCustomerMigration(String strDOBYear) {
+		//reusableActions.waitForElementInvisibility(popupLoadingFingers);
+		reusableActions.waitForElementVisibility(ddlCreditCheckYearMigration,20);
+		reusableActions.selectWhenReadyByVisibleText(ddlCreditCheckYearMigration, strDOBYear);
+	}
+	
+	/**
 	 * Set dynamic date of birth Month on Credit check page
 	 * @author Chinnarao.Vattam
 	 */
@@ -162,6 +182,16 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	}
 	
 	/**
+	 * Set dynamic date of birth Month on Credit check page
+	 * @param strDOBMonth month of birth
+	 * @author Chinnarao.Vattam
+	 */
+	public void selectDOBMonthExistingCustomerMigration(String strDOBMonth) {
+		String dOBMonth = strDOBMonth+": Object";
+		reusableActions.selectWhenReady(ddlCreditCheckMonthMigration, dOBMonth);
+	}
+	
+	/**
 	 * Set dynamic date of birth date on Credit check page
 	 * @author Chinnarao.Vattam
 	 */
@@ -177,6 +207,15 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void selectDOBDayExistingCustomer(String strDOBDay) {
 		reusableActions.selectWhenReady(ddlCreditCheckDay, strDOBDay);
+	}
+	
+	/**
+	 * Set dynamic date of birth date on Credit check page
+	 * @param strDOBDay date of birth
+	 * @author Chinnarao.Vattam
+	 */
+	public void selectDOBDayExistingCustomerMigration(String strDOBDay) {
+		reusableActions.selectWhenReadyByVisibleText(ddlCreditCheckDayMigration, strDOBDay);
 	}
 	
 	/**
@@ -310,15 +349,32 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkCreditConsent() {
-		reusableActions.clickWhenReady(chkConsent, 120);
+		reusableActions.getWhenReady(chkConsent, 120).click();
 	}
 
+	/**
+	 * Click the Credit check Consent check box on Credit check page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkCreditConsentMobile() {
+		reusableActions.executeJavaScriptClick(chkConsent);
+	}
+	
 	/**
 	 * Click the Submit button on Credit check page
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkCreditConsentSubmit() {
-		reusableActions.getWhenReady(btnCreditCheckSubmit, 120).click();
+		reusableActions.executeJavaScriptClick(chkConsent);
+	}
+	
+	/**
+	 * Click the Submit button on Credit check page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkCreditConsentSubmitMobile() {
+		reusableActions.getWhenReady(btnCreditCheckSubmit, 30);
+		reusableActions.executeJavaScriptClick(btnCreditCheckSubmit);
 	}
 
 	/**

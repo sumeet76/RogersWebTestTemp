@@ -94,7 +94,7 @@ public void beforeTest(String strBrowser, String strLanguage,  ITestContext test
 
 @AfterMethod(alwaysRun = true)
 public void afterTest() {
-	//closeSession();
+	closeSession();
 }
 
 
