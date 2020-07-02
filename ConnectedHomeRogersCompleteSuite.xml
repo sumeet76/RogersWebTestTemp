@@ -77,5 +77,5 @@
 		<classes>
     	    <class name="com.rogers.test.tests.connectedhome.mobile.Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest"></class>
 		</classes>
-	</test>  
+	</test> 
 </suite>

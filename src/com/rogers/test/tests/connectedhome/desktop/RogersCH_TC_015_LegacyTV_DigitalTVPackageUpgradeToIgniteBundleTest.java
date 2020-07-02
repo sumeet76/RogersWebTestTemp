@@ -118,14 +118,12 @@ public class RogersCH_TC_015_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
         rogers_tech_install_page.setEmailMigration();        
         reporter.reportLogWithScreenshot("tech install details");
         rogers_tech_install_page.clkTechInstallContinue();
-        reporter.reportLogWithScreenshot("Launched the payment options page");
-        
-        rogers_payment_options_page.clkPaymentConfirmExistingCustomer();
-        
+        reporter.reportLogWithScreenshot("Launched the payment options page");        
+        rogers_payment_options_page.clkPaymentConfirmExistingCustomer();        
         rogers_order_review_page.verifyAgreementPage();
         reporter.reportLogWithScreenshot("Launched the order review page");
         rogers_order_review_page.verifyAgreement();
-        rogers_order_review_page.clkAcceptenceCheckbox();
+        rogers_order_review_page.clkAcceptenceCheckboxMigration();
         reporter.reportLogWithScreenshot("Agreement details");
         rogers_order_review_page.clkSubmit();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");

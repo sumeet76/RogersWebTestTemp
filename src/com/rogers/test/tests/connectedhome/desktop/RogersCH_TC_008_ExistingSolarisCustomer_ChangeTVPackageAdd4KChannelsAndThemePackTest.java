@@ -66,12 +66,6 @@ public class RogersCH_TC_008_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannel
         reporter.reportLogWithScreenshot("Launched the channels and themepacks page");
         rogers_solaris_tv_channels_and_themepacks_page.addChannel();
         reporter.reportLogWithScreenshot("Channel added");
-        rogers_solaris_tv_channels_and_themepacks_page.addChannel();
-        reporter.reportLogWithScreenshot("Channel again added");
-/*        rogers_solaris_tv_channels_and_themepacks_page.removeChannel();
-        reporter.reportLogWithScreenshot("Channel removed");
-        rogers_solaris_tv_channels_and_themepacks_page.clkButtonRemoveChannelFromAlert();
-        reporter.reportLogWithScreenshot("Clicked on button to Remove channel in the alert");*/
         rogers_solaris_tv_channels_and_themepacks_page.clkThemePacks();
         reporter.reportLogWithScreenshot("Clicked on themepack tab");
         rogers_solaris_tv_channels_and_themepacks_page.addThemePacks();

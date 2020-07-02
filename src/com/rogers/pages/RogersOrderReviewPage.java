@@ -33,6 +33,10 @@ public class RogersOrderReviewPage extends BasePageClass {
 	
 	@FindBy(xpath = "//label[@for='ds-checkbox-id-3']")
 	WebElement clkChangeAcceptCheckbox;
+	
+	@FindBy(xpath = "//label[@for='ds-checkbox-id-0']")
+	WebElement clkChangeAcceptCheckboxMigration;
+	
 
 	@FindBy(xpath = "//label[@for='ds-checkbox-id-1']")
 	WebElement clkChangeAcceptCheckboxExistingCustomer;
@@ -174,6 +178,19 @@ public class RogersOrderReviewPage extends BasePageClass {
 		reusableActions.getWhenReady(clkChangeAcceptCheckbox, 90).click();
 		reusableActions.staticWait(4000);
 	}
+	
+	/**
+	 * Click on the Consent check box on the order review page
+	 * @author chinnarao.vattam
+	 */
+	public void clkAcceptenceCheckboxMigration() {
+		reusableActions.isElementVisible(lnkAgreementToEnd, 50);
+		reusableActions.scrollToElement(lnkAgreementToEnd);	
+		reusableActions.staticWait(5000);
+		reusableActions.getWhenReady(clkChangeAcceptCheckboxMigration, 90).click();
+		reusableActions.staticWait(4000);
+	}
+	
 	/**
 	 * Click on the Consent check box on the order review page
 	 * @author chinnarao.vattam

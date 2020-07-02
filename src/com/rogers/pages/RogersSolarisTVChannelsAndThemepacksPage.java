@@ -65,8 +65,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam	 
 	 */
 	public void clkAddButtonOnThemePackListOnManageChannelsAndThemePacks() {
-		reusableActions.staticWait(10000);
-		reusableActions.waitForElementVisibility(addThemePackListOnManageChannelsAndThemePacks.get(0), 240);
+		reusableActions.waitForElementVisibility(addThemePackListOnManageChannelsAndThemePacks.get(0), 340);
 		reusableActions.getWhenReady(addThemePackListOnManageChannelsAndThemePacks.get(0), 60).click();
 	}		
 	
@@ -92,8 +91,8 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author Saurav.Goyal	 
 	 */
 	public void addChannel() {
-		reusableActions.waitForElementVisibility(addParticularChannelToCart.get(0), 240);
-		reusableActions.getWhenReady(addParticularChannelToCart.get(0), 90).click();
+		reusableActions.waitForElementVisibility(addParticularChannelToCart.get(0), 340);
+		reusableActions.getWhenReady(addParticularChannelToCart.get(0), 180).click();
 	}	
 	
 	/**

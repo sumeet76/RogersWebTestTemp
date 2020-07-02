@@ -56,7 +56,7 @@ public class RogersCH_TC_001_Regression_4Plus1AddThemepacksfromTVDashboardPage e
 		reporter.reportLogWithScreenshot("Clicked on themepack tab");
 		rogers_solaris_tv_channels_and_themepacks_page.clkAddButtonOnThemePackListOnManageChannelsAndThemePacks();
 		reporter.reportLogWithScreenshot("Clicked on confirm button");
-		//rogers_solaris_tv_channels_and_themepacks_page.clkContinueOnExistingChannelAlertWindow(); 
+		rogers_solaris_tv_channels_and_themepacks_page.clkContinueOnExistingChannelAlertWindow(); 
 		reporter.reportLogWithScreenshot("ThemePack added");    
 		rogers_solaris_tv_channels_and_themepacks_page.clkConfirmChangesOnManageChannelsAndThemePacks();
 		reporter.reportLogWithScreenshot("Clicked in confirm changes on manage channels and theme packs");
