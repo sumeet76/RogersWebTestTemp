@@ -1400,7 +1400,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	/**
 	 * Check link upgrade My device in device section
 	 * @author Mirza.Kamran
-	 * @return 
+	 * @return true if the element is visible else false
 	 */
 	public boolean verifyLinkUpgradeMyDevice() {
 		return reusableActions.isElementVisible(lnkUpgradeMyDevice);
