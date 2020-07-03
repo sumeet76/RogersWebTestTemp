@@ -301,7 +301,17 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkTVBadge() {	
-		reusableActions.getWhenReady(btnTVBadge, 180).click();	
+		reusableActions.getWhenReady(btnTVBadge, 180).click();
+		reusableActions.staticWait(10000);
+	}
+	
+	/**
+	 * Clicks on the 'TV Badge' option on the dash board
+	 * @author chinnarao.vattam
+	 */
+	public void clkTVBadgeMobile() {	
+		reusableActions.getWhenReady(btnTVBadge,180);
+		reusableActions.executeJavaScriptClick(btnTVBadge);
 	}
 	
 	/**
