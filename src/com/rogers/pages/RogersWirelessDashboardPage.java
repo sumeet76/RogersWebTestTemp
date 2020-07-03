@@ -464,10 +464,10 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Change my phone number') or contains(text(),'Changer mon numéro de téléphone')]")
 	WebElement lnkChangeMyPhoneNumber;
 
-	@FindBy(xpath = "//ds-switch[@title='Data access for DONOTUSE']//Span[text()='ON']")
+	@FindBy(xpath = "//ds-switch[@title='Data access for DONOTUSE' or @title='Accès aux données pour DONOTUSE']//Span[text()='ON' or text()='OUI']")
 	WebElement divDataAccessOn;
 	
-	@FindBy(xpath = "//ds-switch[@title='Data access for DONOTUSE']//Span[text()='OFF']")
+	@FindBy(xpath = "//ds-switch[@title='Data access for DONOTUSE' or @title='Accès aux données pour DONOTUSE']//Span[text()='OFF' or text()='NON']")
 	WebElement divDataAccessOFF;
 	
 	/**
@@ -2094,5 +2094,14 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	public void clkDataAccessOff() {
 		reusableActions.getWhenReady(divDataAccessOn).click();
 		
+	}
+
+	/**
+	 * Checks if the data access is displayed
+	 * @return true if the data access is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isDataAccessDisplayed() {
+		return reusableActions.isElementVisible(lblDataAccess);
 	}
 }

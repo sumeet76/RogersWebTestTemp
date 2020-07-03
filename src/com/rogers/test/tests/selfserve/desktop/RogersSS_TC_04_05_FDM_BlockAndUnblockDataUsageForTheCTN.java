@@ -16,7 +16,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 
 
-public class RogersSS_TC_04_FDM_BlockUsageForTheCTN extends BaseTestClass {	
+public class RogersSS_TC_04_05_FDM_BlockAndUnblockDataUsageForTheCTN extends BaseTestClass {	
    	
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
@@ -54,16 +54,38 @@ public class RogersSS_TC_04_FDM_BlockUsageForTheCTN extends BaseTestClass {
        rogers_account_overview_page.clkSubMenuWirelessUsage();
        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible(); 
      
-      
-       reporter.hardAssert(rogers_wireless_dashboard_page.isDataAccessOnDisplayed(),
+       reporter.reportLogWithScreenshot("Dashboard page");
+       common_business_flows.scrollToMiddleOfWebPage();
+       reporter.reportLogWithScreenshot("Middle view of Dashboard page");
+       common_business_flows.scrollToTopOfWebPage();
+    
+       reporter.hardAssert(rogers_wireless_dashboard_page.isDataAccessDisplayed(),
     		   "Data access ON is displayed",
     		   "Data access ON is not displayed");
-       rogers_wireless_dashboard_page.clkDataAccessOff();
-       reporter.hardAssert(rogers_wireless_dashboard_page.isDataAccessOFF(),
-    		   "Data access is switch off successfully",
-    		   "Data access didnt switch off successfuly , please investigate");       
-       reporter.reportLogWithScreenshot("Data access set to OFf");
-       rogers_wireless_dashboard_page.clkDataAccessOn();
+       if(rogers_wireless_dashboard_page.isDataAccessOnDisplayed())
+       {
+    	   reporter.reportLogWithScreenshot("Data access if set to ON");
+           rogers_wireless_dashboard_page.clkDataAccessOff();
+           reporter.hardAssert(rogers_wireless_dashboard_page.isDataAccessOFF(),
+        		   "Data access is switch off successfully",
+        		   "Data access didnt switch off successfuly , please investigate");       
+           reporter.reportLogWithScreenshot("Data access set to OFf");
+           rogers_wireless_dashboard_page.clkDataAccessOn();
+           reporter.reportLogWithScreenshot("Data access set to ON");
+       }else
+       {
+    	   reporter.reportLogWithScreenshot("Data access if set to OFF");
+           rogers_wireless_dashboard_page.clkDataAccessOn();
+           reporter.hardAssert(rogers_wireless_dashboard_page.isDataAccessOnDisplayed(),
+        		   "Data access is switch ON successfully",
+        		   "Data access didnt switch ON successfuly , please investigate");       
+           reporter.reportLogWithScreenshot("Data access set to ON");
+           rogers_wireless_dashboard_page.clkDataAccessOff();
+           reporter.reportLogWithScreenshot("Data access set to OFF");
+       }
+       
+      
+      
        
     }
 
