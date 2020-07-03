@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Self Serve Rogers Tests SS" parallel="tests" thread-count="1">
-<parameter name="strBrowser" value="sauceedge"/>
+<parameter name="strBrowser" value="chrome"/>
 <parameter name="strLanguage" value="en"/>
 <parameter name="strType" value="seq"/>
  <listeners>
@@ -15,9 +15,9 @@
  
 
 
-<test name="RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage" >
+<test name="RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE" >
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE"></class>
 </classes>          																					
 </test>
 
