@@ -34,7 +34,8 @@ public class RogersCH_TC_008_IginteInternet_InternetPackageDowngradeTest extends
 
     @Test
     public void checkInternetPackageDowngrade() {
-        reporter.reportLogWithScreenshot("Launched the Home Page");
+		/*reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();*/
         rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
@@ -69,7 +70,7 @@ public class RogersCH_TC_008_IginteInternet_InternetPackageDowngradeTest extends
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }

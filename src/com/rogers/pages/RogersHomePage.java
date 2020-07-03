@@ -12,7 +12,10 @@ public class RogersHomePage extends BasePageClass {
 	public RogersHomePage(WebDriver driver) {
 		super(driver);
 	}
-
+	 
+	@FindBy(xpath = "//a[@href='/consumer/easyloginriverpage']")
+	WebElement lnkEasyLogin;
+	
 	@FindBy(xpath = "//div[@class='dds-navbar-nav']//a[@aria-label='Sign in to My Rogers']//span[text()='Sign in'  or text()='Connexion']")
 	WebElement lnkSignIn;
 
@@ -203,6 +206,14 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public void clkSignIn() {		
 		reusableActions.getWhenVisible(lnkSignIn, 30).click();
+	}
+	
+	/**
+	 * Click the SignIn button from the top tile bar 
+	 * @author chinnarao.vattam 
+	 */
+	public void clkEasyLogin() {		
+		reusableActions.getWhenVisible(lnkEasyLogin, 30).click();
 	}
 	
 	

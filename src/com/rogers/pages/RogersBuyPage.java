@@ -108,7 +108,7 @@ public class RogersBuyPage extends BasePageClass {
  * @author chinnarao.vattam
  */
 	public void setAddressLookup(String strAddress) {
-		reusableActions.getWhenReady(txtAddressLookup,20).clear();
+		reusableActions.getWhenReady(txtAddressLookup,180).clear();
 		reusableActions.getWhenReady(txtAddressLookup, 20).sendKeys(strAddress);
 		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.TAB);
 		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.ARROW_DOWN);
@@ -162,9 +162,12 @@ public class RogersBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void selectHomeMoniteringPackage(String strHomeMoniteringEn, String strHomeMoniteringFr ) {
-		WebElement  rhmLocator = (WebElement)driver.findElement(By.xpath("//h3[contains(text(),'"+strHomeMoniteringEn+ "') or contains(text(),'"+ strHomeMoniteringFr+ "')]/ancestor::div[@class='package-tile']//div[@class='how-to-get-it']//a[@class='rogers-btn-solid']"));
-		reusableActions.waitForElementVisibility(rhmLocator,30);
-		reusableActions.getWhenReady(rhmLocator,90).click();	
+		By packageNameLocator = By.xpath("//h3[contains(text(),'"+strHomeMoniteringEn+ "') or contains(text(),'"+ strHomeMoniteringFr+ "')]/ancestor::div[@class='package-tile']//div[@class='how-to-get-it']//a[@class='rogers-btn-solid']");
+		WebElement pkg = driver.findElement(packageNameLocator);
+		reusableActions.waitForElementVisibility(pkg, 180);
+		reusableActions.javascriptScrollToMiddleOfPage();
+		reusableActions.getWhenReady(packageNameLocator, 180);
+		reusableActions.executeJavaScriptClick(pkg);
 	}
 	
 	/**

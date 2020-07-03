@@ -56,16 +56,16 @@ public class RogersCH_TC_001_Regression_4Plus1AddThemepacksfromTVDashboardPage e
 		reporter.reportLogWithScreenshot("Clicked on themepack tab");
 		rogers_solaris_tv_channels_and_themepacks_page.clkAddButtonOnThemePackListOnManageChannelsAndThemePacks();
 		reporter.reportLogWithScreenshot("Clicked on confirm button");
-		rogers_solaris_tv_channels_and_themepacks_page.clkContinueOnExistingChannelAlertWindow(); 
+		//rogers_solaris_tv_channels_and_themepacks_page.clkContinueOnExistingChannelAlertWindow(); 
 		reporter.reportLogWithScreenshot("ThemePack added");    
 		rogers_solaris_tv_channels_and_themepacks_page.clkConfirmChangesOnManageChannelsAndThemePacks();
 		reporter.reportLogWithScreenshot("Clicked in confirm changes on manage channels and theme packs");
 		rogers_order_review_page.verifyAgreementPage();
 		reporter.reportLogWithScreenshot("Launched the order review page");
 		rogers_order_review_page.verifyAgreement();
-		rogers_order_review_page.clkAcceptenceCheckbox();
+		rogers_order_review_page.clkAcceptenceCheckboxUpdate();
 		reporter.reportLogWithScreenshot("Agreement details");
-		rogers_order_review_page.clkSubmit();
+		rogers_order_review_page.clkSubmitUpdate();
 		reporter.softAssert(rogers_order_confirmation_page.verifyOrderSuccess(),"Update order completed","Update order Failed");
 		reporter.reportLogWithScreenshot("Launched the Confirmation page");
 	}

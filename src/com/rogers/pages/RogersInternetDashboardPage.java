@@ -38,6 +38,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//ins[@translate='global.cta.changeInternetPackage']")
 	WebElement btnSolChangeInternetPackage;
+	//span[@translate='global.dashboard.common.changeInternetPackage']
 
 	@FindBy(xpath = "//div[@class='live-support']")
 	WebElement popupContatUS;

@@ -34,6 +34,8 @@ public class RogersCH_TC_018_LegacyInternet_ValidateInternetUsageTest extends Ba
 	
 	@Test
 	public void checkLegacyInternetUsage() {
+		/*reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();*/
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
 		 rogers_login_page.switchToSignInIFrame();

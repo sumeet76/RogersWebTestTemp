@@ -328,7 +328,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkTVBadge() {	
-		reusableActions.getWhenReady(btnTVBadge, 120).click();	
+		reusableActions.getWhenReady(btnTVBadge, 180).click();	
 	}
 	
 	/**

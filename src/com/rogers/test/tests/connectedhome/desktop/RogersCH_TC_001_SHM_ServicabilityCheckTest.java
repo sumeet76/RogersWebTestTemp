@@ -31,7 +31,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *
  **/
 
-public class RogersCH_TC_003_SHM_ServicabilityCheckTest extends BaseTestClass {
+public class RogersCH_TC_001_SHM_ServicabilityCheckTest extends BaseTestClass {
 
     @Test
     public void checkServicabilityRHMTest() throws InterruptedException {
