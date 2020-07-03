@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Self Serve Rogers Tests SS" parallel="tests" thread-count="1">
+<parameter name="strBrowser" value="chrome"/>
+<parameter name="strLanguage" value="en"/>
 <parameter name="strType" value="seq"/>
  <listeners>
 		<listener
@@ -9,16 +11,11 @@
 			class-name="com.rogers.test.listeners.AnnotationTransformer" />
 	</listeners>	
 
+<test name="RogersSS_TC_063_ValidateDataUsageRunningLowOnMaxSpeedDataInfiniteIndividualPlan" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_063_ValidateDataUsageRunningLowOnMaxSpeedDataInfiniteIndividualPlan"></class>
+</classes>          																					
+</test>
 
 
-<test thread-count="1" name="RogersSS_TC06_TC10_FDM_CtnDashboardWithAccountDetails_GUI" enabled="true" >
-    <classes>
-      <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC06_TC10_FDM_CtnDashboardWithAccountDetails_GUI"></class>
-      <parameter name="strBrowser" value="firefox"/>
-	<parameter name="strLanguage" value="en"/>
-    </classes>
-  </test> <!-- Rogers self serve sanity test group1(failed)(failed) -->
-	
-
- 
 </suite>

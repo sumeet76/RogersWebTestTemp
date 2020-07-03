@@ -269,7 +269,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy (xpath = "//div[@class='floatingWirelessDashboard bcStatic']")
 	WebElement btnLiveChat;
 	
-	@FindBy (xpath = "//div[@class='bc-frame-title']")
+	@FindAll({
+	@FindBy (xpath = "//app-welcome-rogers"),
+	@FindBy (xpath = "//div[@class='bc-frame-title']")})
 	WebElement headerLiveChat;
 	
 	@FindBy (xpath = "//div[@class='add-data']/span[contains(text(),'Speed Pass') or contains(text(),'Accès Rapido')]")
@@ -560,7 +562,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(tabs.get(1));
 		String urlOpened = driver.getCurrentUrl();
-		return urlOpened.equals(expectedUrl);
+		return urlOpened.contains(expectedUrl);
 	} 
 	
 	/**
@@ -1254,7 +1256,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @return true if the overlay opened otherwise false
 	 * @author ning.xue
 	 */
-	public boolean verifyLiveChatOverlayOpened() {
+	public boolean verifyLiveChatOverlayOpened() {	
+		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(getDriver().findElement(By.xpath("//iframe[@id='va-iframe']")), 20);
 		return reusableActions.isElementVisible(headerLiveChat, 30);
 	} 
 	
