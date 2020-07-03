@@ -463,6 +463,12 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//span[contains(text(),'Change my phone number') or contains(text(),'Changer mon numéro de téléphone')]")
 	WebElement lnkChangeMyPhoneNumber;
+
+	@FindBy(xpath = "//ds-switch[@title='Data access for DONOTUSE']//Span[text()='ON']")
+	WebElement divDataAccessOn;
+	
+	@FindBy(xpath = "//ds-switch[@title='Data access for DONOTUSE']//Span[text()='OFF']")
+	WebElement divDataAccessOFF;
 	
 	/**
 	 * To click the link of lost or stolen device on wireless dashboard page
@@ -2052,5 +2058,41 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 
 	public boolean verifyDataManagerDisplayed() {
 		return reusableActions.isElementVisible(lbldataManager);
+	}
+
+	/**
+	 * Checks if the data manager ON is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isDataAccessOnDisplayed() {		
+		return reusableActions.isElementVisible(divDataAccessOn);
+	}
+
+	/**
+	 * Clicks on data access ON button
+	 * @author Mirza.Kamran
+	 */
+	public void clkDataAccessOn() {
+		reusableActions.getWhenReady(divDataAccessOFF).click();
+		
+	}
+
+	/**
+	 * Checks if the data manager OFF is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isDataAccessOFF() {
+		return reusableActions.isElementVisible(divDataAccessOFF);
+	}
+
+	/**
+	 * Clicks on data access OFF button
+	 * @author Mirza.Kamran
+	 */
+	public void clkDataAccessOff() {
+		reusableActions.getWhenReady(divDataAccessOn).click();
+		
 	}
 }
