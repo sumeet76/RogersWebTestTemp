@@ -435,8 +435,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public void set4KTV() {	
 		reusableActions.getWhenReady(rdo4KTV, 120);
-		reusableActions.scrollToElement(rdo4KTV);
-		reusableActions.getWhenReady(rdo4KTV, 120).click();
+		reusableActions.scrollToElement(rdo4KTV);		
+		reusableActions.executeJavaScriptClick(rdo4KTV);
 	}
 	
 	/**

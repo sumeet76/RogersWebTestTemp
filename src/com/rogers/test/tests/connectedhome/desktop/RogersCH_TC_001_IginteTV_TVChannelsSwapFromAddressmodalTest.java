@@ -49,6 +49,12 @@ public class RogersCH_TC_001_IginteTV_TVChannelsSwapFromAddressmodalTest extends
     rogers_login_page.setPasswordIFrame(TestDataHandler.igniteTVAccount.getPassword());
     reporter.reportLogWithScreenshot("Enter the account credentails");
     rogers_login_page.clkSignInIFrame();
+	if(rogers_login_page.verifyLoginFailMsgIframe())
+	{
+	reporter.reportLogWithScreenshot("Login Failed, Login Successful");			
+	}
+	else
+	{
     reporter.reportLogWithScreenshot("Skip popup");
     rogers_login_page.clkSkipIFrame();
     rogers_login_page.switchOutOfSignInIFrame();
@@ -81,7 +87,8 @@ public class RogersCH_TC_001_IginteTV_TVChannelsSwapFromAddressmodalTest extends
     rogers_solaris_tv_dashboard_page.clkConfirmSwap(); 
     reporter.reportLogWithScreenshot("Swap Success popup has launched");
     rogers_solaris_tv_dashboard_page.clkSuccessSwap();    
-    reporter.reportLogWithScreenshot("Swap success");         
+    reporter.reportLogWithScreenshot("Swap success");  
+    }
     }
 	
 
