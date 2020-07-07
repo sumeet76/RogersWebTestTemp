@@ -78,9 +78,9 @@ public class RogersSS_TC_057_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDa
         reporter.softAssert(rogers_wireless_dashboard_page.verifyFullPlanTalkTextUsageModuleIsDisplayed(), 
 				"Talk & Text usage module for full plan is displayed.", 
 				"Talk & Text usage module for full plan is not displayed.");
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyUnlimitedTalkMinutesIsDisplayed(), 
-				"Unlimited minutes for talk is displayed.", 
-				"Unlimited minutes for talk is not displayed.");
+       // reporter.softAssert(rogers_wireless_dashboard_page.verifyUnlimitedTalkMinutesIsDisplayed(), 
+       // "Unlimited minutes for talk is displayed.", 
+		//		"Unlimited minutes for talk is not displayed.");
         if(rogers_wireless_dashboard_page.verifyUnlimitedTextsIsDisplayed())
         {
         	reporter.reportLogPass("Unlimited text is displayed.");
