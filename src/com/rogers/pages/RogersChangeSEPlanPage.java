@@ -53,13 +53,15 @@ public class RogersChangeSEPlanPage extends BasePageClass {
 	 */
 	public void clickSpecificLineEdit(String ctn) {
 		List<WebElement> lines = new ArrayList<WebElement>();
+		WebElement tempElement;
 		lines = driver.findElements(By.xpath("//div[@class='line-details']"));
 		System.out.println("LINES - " + lines.size());
 		for (WebElement line : lines) {
 			System.out.println(line.getText().replaceAll("-", "").replaceAll(" ", ""));
 			System.out.println(ctn);
 			if(line.getText().replaceAll("-", "").replaceAll(" ", "").contains(ctn)) {
-				reusableActions.clickWhenReady(line.findElement(By.xpath("./..//button[text()='Edit' and @aria-hidden='false']")));
+				tempElement = line.findElement(By.xpath("./..//button[text()='Edit' and @aria-hidden='false']"));
+				reusableActions.clickWhenReady(tempElement);
 				System.out.println("HEREEEEEEEEEEEEEEEEEEEEE");
 			}
 		}

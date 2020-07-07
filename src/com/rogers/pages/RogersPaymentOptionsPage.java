@@ -45,6 +45,9 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	@FindBy(xpath = "//input[@id='ds-form-input-id-44']")
 	WebElement txtCVV;
 
+	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	WebElement txtContainerCVV;
+	
 	@FindBy(xpath = "//select[@id='ds-form-input-id-42']")
 	WebElement ddlExpiryMonth;
 
@@ -147,6 +150,8 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 */
 	public void setCVV() {
 		String strCVV = FormFiller.generateCVVNumber();
+		reusableActions.waitForElementVisibility(txtContainerCVV,180);
+		reusableActions.getWhenReady(txtContainerCVV,10).click();
 		reusableActions.clickWhenVisible(txtCVV);
 		reusableActions.getWhenReady(txtCVV).sendKeys(strCVV);
 	}

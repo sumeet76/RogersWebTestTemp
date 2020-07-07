@@ -59,9 +59,9 @@ public class Mobile_RogersSS_TC_051_ChangePassword extends BaseTestClass {
         	rogers_account_overview_page.selectAccount(TestDataHandler.tc2751.getAccountDetails().getBan());       
         }
         reporter.reportLogWithScreenshot("Account overview page.");
+        rogers_profile_and_settings_page.clkCloseFeedbackIfAvailableMobile();
 		rogers_account_overview_page.clkLnkProfileNSettingsMobile();
-		reporter.reportLogWithScreenshot("Profile & Settings page.");
-		rogers_profile_and_settings_page.clkCloseFeedbackIfAvailableMobile();
+		reporter.reportLogWithScreenshot("Profile & Settings page.");		
 		changePassword(strPassword, strNewPassword);
 		reporter.reportLogWithScreenshot("Change password is done.");
         if (rogers_profile_and_settings_page.verifyUsername(strUsername)) {
