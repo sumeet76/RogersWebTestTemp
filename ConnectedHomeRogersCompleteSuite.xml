@@ -7,8 +7,7 @@
 			class-name="com.rogers.test.listeners.AnnotationTransformer" />
 		<listener class-name="com.rogers.test.listeners.TestListener" />
 	</listeners>
-
-	<test name="Cable rogers IgniteAnonymous">
+ 	<test name="Cable rogers IgniteAnonymous">
 		<parameter name="strBrowser" value="saucechrome" />
 		<parameter name="strLanguage" value="en" />
 		<classes>		 
@@ -19,7 +18,6 @@
         <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_034_IginteTV_DoublePlayBuyTest"></class>  
 		</classes> 
 	</test>   
-
      <test name="Cable rogers LegacyAnonymous">
 		<parameter name="strBrowser" value="saucechrome" />
 		<parameter name="strLanguage" value="en" />
@@ -28,8 +26,7 @@
 		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_004_LegacyBundle_BuyBundleOfferTest"></class>
 		</classes>
 	</test>  
-
-    	<test name="Cable rogers LegacyLogin">
+    <test name="Cable rogers LegacyLogin">
 		<parameter name="strBrowser" value="saucechrome" />
 		<parameter name="strLanguage" value="en" />
 		<classes>
@@ -39,8 +36,7 @@
 			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_023_LegacyRHP_ValidateRHPDashboardTest"></class> 
 			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_027_DigitalTV_TVPackageUpgradeTest"></class>  
 		</classes>
-	</test>    
-	
+	</test>  	
  	<test name="Cable rogers IgniteLogin">
 		<parameter name="strBrowser" value="saucechrome" />
 		<parameter name="strLanguage" value="en" />
@@ -74,5 +70,12 @@
 			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_032_IginteTV_TVPackagesNewBrunswickFootprintTest"></class>
 			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_033_IginteTV_TVPackagesNewfoundlandFootprintTest"></class>    
 		</classes>
-	</test>  
+	</test>  	
+  	 <test name="Cable rogers LegacyAnonymous">
+		<parameter name="strBrowser" value="sauceandroidchrome" />
+		<parameter name="strLanguage" value="en" />
+		<classes>
+    	    <class name="com.rogers.test.tests.connectedhome.mobile.Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest"></class>
+		</classes>
+	</test> 
 </suite>

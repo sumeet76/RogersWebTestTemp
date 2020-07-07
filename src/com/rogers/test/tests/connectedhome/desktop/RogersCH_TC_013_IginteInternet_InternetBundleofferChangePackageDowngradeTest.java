@@ -43,6 +43,12 @@ public class RogersCH_TC_013_IginteInternet_InternetBundleofferChangePackageDown
         rogers_login_page.setPasswordIFrame(TestDataHandler.solarisInternetAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         rogers_login_page.clkSignInIFrame();
+    	if(rogers_login_page.verifyLoginFailMsgIframe())
+    	{
+    	reporter.reportLogWithScreenshot("Login Failed, Login Successful");			
+    	}
+    	else
+    	{
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
@@ -61,7 +67,7 @@ public class RogersCH_TC_013_IginteInternet_InternetBundleofferChangePackageDown
        rogers_internet_dashboard_page.clkInternetChangeOK();
        reporter.reportLogWithScreenshot("Displayed the contat US popup");
        reporter.hardAssert(rogers_internet_dashboard_page.verifycontatUSPopUp(),"Internet package downgrade is success","Internet package downgrade has failed");  
-                                
+    	}                        
     }
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})

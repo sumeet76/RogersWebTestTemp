@@ -34,8 +34,8 @@ public class RogersCH_TC_008_IginteInternet_InternetPackageDowngradeTest extends
 
     @Test
     public void checkInternetPackageDowngrade() {
-		/*reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		rogers_home_page.clkEasyLogin();*/
+		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();
         rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
@@ -43,6 +43,12 @@ public class RogersCH_TC_008_IginteInternet_InternetPackageDowngradeTest extends
         rogers_login_page.setPasswordIFrame(TestDataHandler.solarisInternetAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         rogers_login_page.clkSignInIFrame();
+    	if(rogers_login_page.verifyLoginFailMsgIframe())
+    	{
+    	reporter.reportLogWithScreenshot("Login Failed, Login Successful");			
+    	}
+    	else
+    	{
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
@@ -59,6 +65,7 @@ public class RogersCH_TC_008_IginteInternet_InternetPackageDowngradeTest extends
         rogers_internet_dashboard_page.clkInternetChangeOK();
         reporter.hardAssert(rogers_internet_dashboard_page.verifycontatUSPopUp(),"Displayed the contat US popup","Download package has failed");        
         reporter.reportLogWithScreenshot("Launched the Interent packages page");
+    	}
     }
 	
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})

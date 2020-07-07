@@ -42,10 +42,16 @@ public class RogersCH_TC_010_IginteTV_TVPackageDowngradeTest extends BaseTestCla
         rogers_login_page.setPasswordIFrame(TestDataHandler.solarisTVAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         rogers_login_page.clkSignInIFrame();
+    	if(rogers_login_page.verifyLoginFailMsgIframe())
+    	{
+    	reporter.reportLogWithScreenshot("Login Failed, Login Successful");			
+    	}
+    	else
+    	{
         reporter.reportLogWithScreenshot("Skip popup");
-        rogers_login_page.clkSkipIFrame(); 
+        rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount((TestDataHandler.solarisTVAccount.accountDetails.getBan()));
+        rogers_account_overview_page.selectAccount(TestDataHandler.solarisTVAccount.accountDetails.getBan());
         reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_solaris_tv_dashboard_page.clkTVBadge();
@@ -54,7 +60,8 @@ public class RogersCH_TC_010_IginteTV_TVPackageDowngradeTest extends BaseTestCla
         reporter.reportLogWithScreenshot("Launched the TV packages page");
         rogers_solaris_tv_dashboard_page.selectSolarisTVPackage1(TestDataHandler.solarisTVAccount.accountDetails.getDowngradePlanEn());
         reporter.softAssert(rogers_solaris_tv_dashboard_page.verifycontatUSPopUp(),"Displayed the contat US popup","Download package has failed");              
-        reporter.reportLogWithScreenshot("Launched the customer care popup");       
+        reporter.reportLogWithScreenshot("Launched the customer care popup");  
+    	}
     }
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})

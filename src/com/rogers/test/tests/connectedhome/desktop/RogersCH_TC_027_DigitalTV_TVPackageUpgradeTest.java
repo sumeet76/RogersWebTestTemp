@@ -42,11 +42,18 @@ public class RogersCH_TC_027_DigitalTV_TVPackageUpgradeTest extends BaseTestClas
 		rogers_login_page.setPasswordIFrame(TestDataHandler.digitalTVAccountUpgradePackage.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
-		reporter.reportLogWithScreenshot("Skip popup");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
-		reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVAccountUpgradePackage.getAccountDetails().getBan());		
+    	if(rogers_login_page.verifyLoginFailMsgIframe())
+    	{
+    	reporter.reportLogWithScreenshot("Login Failed, Login Successful");			
+    	}
+    	else
+    	{
+        reporter.reportLogWithScreenshot("Skip popup");
+        rogers_login_page.clkSkipIFrame();
+        rogers_login_page.switchOutOfSignInIFrame();
+        rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVAccountUpgradePackage.accountDetails.getBan());
+        reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+        reporter.reportLogWithScreenshot("Launched the Account Page");		
 		rogers_account_overview_page.clkTVBadge();
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
 		rogers_digital_tv_dashboard_page.clkChangeMyPackage();
@@ -70,7 +77,7 @@ public class RogersCH_TC_027_DigitalTV_TVPackageUpgradeTest extends BaseTestClas
 		{
 		reporter.hardAssert(rogers_digital_tv_dashboard_page.verifyContactCustomercarePopupForFr(),"Downgrade ways popup has launched", "Downgrade has failed");
 		}
-				
+    	}		
 	}
 
 

@@ -90,7 +90,7 @@ public class RogersBuyPage extends BasePageClass {
 	public void clkExchangeFlexChannel() {
 		reusableActions.getWhenReady(btnExchangeFlexChannel, 60).click();
 		//for Prod issue, will be removing once the issue got fixed
-		//reusableActions.getWhenReady(btnExchangeFlexChannel, 60).click();
+		reusableActions.clickIfAvailable(btnExchangeFlexChannel, 60);
 	}
 	
 	

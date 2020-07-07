@@ -10,9 +10,9 @@ import com.rogers.pages.base.BasePageClass;
 
 import utils.FormFiller;
 
-public class RogersIgniteTVCreditCheckPage extends BasePageClass {
+public class RogersInternetCreditCheckPage extends BasePageClass {
 
-	public RogersIgniteTVCreditCheckPage(WebDriver driver) {
+	public RogersInternetCreditCheckPage(WebDriver driver) {
 		super(driver);
 	}
 	

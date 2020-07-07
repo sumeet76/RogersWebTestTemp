@@ -48,12 +48,18 @@ public class RogersCH_TC_032_IginteTV_TVPackagesNewBrunswickFootprintTest extend
 	        rogers_login_page.setPasswordIFrame(TestDataHandler.solarisTVAccountForUpgradeNB.getPassword());
 	        reporter.reportLogWithScreenshot("Enter the account credentails");
 	        rogers_login_page.clkSignInIFrame();
-	        reporter.reportLogWithScreenshot("Skip popup");
-	        rogers_login_page.clkSkipIFrame();
-	        rogers_login_page.switchOutOfSignInIFrame();
-	        rogers_account_overview_page.selectAccount(TestDataHandler.solarisTVAccountForUpgradeNB.accountDetails.getBan());
-	        reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
-	        reporter.reportLogWithScreenshot("Launched the Account Page");                
+        	if(rogers_login_page.verifyLoginFailMsgIframe())
+        	{
+        	reporter.reportLogWithScreenshot("Login Failed, Login Successful");			
+        	}
+        	else
+        	{
+            reporter.reportLogWithScreenshot("Skip popup");
+            rogers_login_page.clkSkipIFrame();
+            rogers_login_page.switchOutOfSignInIFrame();
+            rogers_account_overview_page.selectAccount(TestDataHandler.solarisTVAccountForUpgradeNB.accountDetails.getBan());
+            reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+            reporter.reportLogWithScreenshot("Launched the Account Page");                
 	        rogers_solaris_tv_dashboard_page.clkTVBadge();
 	        reporter.reportLogWithScreenshot("Launched the TV dash board");
 	        rogers_solaris_tv_dashboard_page.clkChangeTVPackage();
@@ -80,6 +86,7 @@ public class RogersCH_TC_032_IginteTV_TVPackagesNewBrunswickFootprintTest extend
 	        reporter.reportLogWithScreenshot("Launched the Confirmation page");
 	        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
 	        reporter.reportLogWithScreenshot("Verified the Confirmation page");
+        	}
 	 }
 
 		@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})

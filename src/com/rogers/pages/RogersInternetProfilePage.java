@@ -4,17 +4,24 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import com.rogers.pages.base.BasePageClass;
 
 import utils.FormFiller;
 
-public class RogersIgniteTVProfileCreationPage extends BasePageClass {
+public class RogersInternetProfilePage extends BasePageClass {
 
-	public RogersIgniteTVProfileCreationPage(WebDriver driver) {
+	public RogersInternetProfilePage(WebDriver driver) {
 		super(driver);
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+
 	@FindBy(xpath = "//h4[@translate='global.checkout.profile.createProfile']")
 	WebElement txtProfile;
 	
@@ -71,6 +78,26 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 		//reusableActions.waitForElementInvisibility(popupLoadingFingers,100);
 		return reusableActions.isElementVisible(txtProfile);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/**
 	 * Set dynamic email and confirm email on profile page
@@ -195,5 +222,4 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 		reusableActions.getWhenVisible(txtAnotherAddress, 10).sendKeys(Keys.ARROW_DOWN);
 		reusableActions.getWhenVisible(txtAnotherAddress).sendKeys(Keys.ENTER);
 	}
-	
 }

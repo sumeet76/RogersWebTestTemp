@@ -62,12 +62,18 @@ public class RogersCH_TC_006_IginteTV_BuySolarisDoublePlayChangeInstallationDate
 		rogers_login_page.setPasswordIFrame(TestDataHandler.solarisInternetAccountWithUsageAndPackageUpgrade.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
-		reporter.reportLogWithScreenshot("Skip popup");
-		rogers_login_page.clkSkipIFrame();  
-		rogers_login_page.switchOutOfSignInIFrame();
-		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
-		reporter.reportLogWithScreenshot("Launched the Account Page");
-		//rogers_home_page.clkShop(); 
+    	if(rogers_login_page.verifyLoginFailMsgIframe())
+    	{
+    	reporter.reportLogWithScreenshot("Login Failed, Login Successful");			
+    	}
+    	else
+    	{
+        reporter.reportLogWithScreenshot("Skip popup");
+        rogers_login_page.clkSkipIFrame();
+        rogers_login_page.switchOutOfSignInIFrame();
+        rogers_account_overview_page.selectAccount(TestDataHandler.solarisInternetAccountWithUsageAndPackageUpgrade.accountDetails.getBan());
+        reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+        reporter.reportLogWithScreenshot("Launched the Account Page");
 		 rogers_home_page.clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
 		 rogers_home_page.clkIgniteTVExistingCustomer();
@@ -114,6 +120,7 @@ public class RogersCH_TC_006_IginteTV_BuySolarisDoublePlayChangeInstallationDate
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");      
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
+    	}
         }
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})

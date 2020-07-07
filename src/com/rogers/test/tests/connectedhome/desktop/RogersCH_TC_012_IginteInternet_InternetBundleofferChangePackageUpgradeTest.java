@@ -45,6 +45,12 @@ public class RogersCH_TC_012_IginteInternet_InternetBundleofferChangePackageUpgr
         rogers_login_page.setPasswordIFrame(TestDataHandler.solarisInternetAccountForUpgrade.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         rogers_login_page.clkSignInIFrame();
+    	if(rogers_login_page.verifyLoginFailMsgIframe())
+    	{
+    	reporter.reportLogWithScreenshot("Login Failed, Login Successful");			
+    	}
+    	else
+    	{
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
@@ -71,6 +77,7 @@ public class RogersCH_TC_012_IginteInternet_InternetBundleofferChangePackageUpgr
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
         reporter.reportLogWithScreenshot("Verified the Confirmation page"); 
+    	}
     }
 	
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
