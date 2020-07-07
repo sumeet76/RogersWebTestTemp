@@ -257,7 +257,7 @@ public class RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 
