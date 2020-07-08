@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Self Serve Rogers.com Tests SS" parallel="tests" thread-count="1">
+<suite name="Rogers.com ENV Sanity Tests SS" parallel="tests" thread-count="1">
 <parameter name="strBrowser" value="chrome"/>
 <parameter name="strLanguage" value="en"/>
+<parameter name="strType" value="seq"/>
 
 <listeners>
-      <listener class-name="com.rogers.test.listeners.AnnotationTransformer"/>
-</listeners> 		
+		<listener
+			class-name="com.rogers.test.listeners.TestListener" />
+		<listener
+			class-name="com.rogers.test.listeners.AnnotationTransformer" />
+</listeners> 	
 
 <test name="RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE"></class>
 </classes>          																					
 </test>
-<!-- 
+
 <test name="RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE"></class>
 </classes>          																					
 </test>
- -->
+
 							
 </suite>
