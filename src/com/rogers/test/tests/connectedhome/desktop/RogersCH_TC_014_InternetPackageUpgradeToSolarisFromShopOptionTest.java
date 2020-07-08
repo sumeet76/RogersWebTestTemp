@@ -66,7 +66,7 @@ public class RogersCH_TC_014_InternetPackageUpgradeToSolarisFromShopOptionTest e
 		rogers_login_page.clkSignInIFrame();
     	if(rogers_login_page.verifyLoginFailMsgIframe())
     	{
-    		reporter.reportLogFail("Login Faied",true) ;		
+    		reporter.reportLogFail("Login Failed",true) ;		
     	}
     	else
     	{

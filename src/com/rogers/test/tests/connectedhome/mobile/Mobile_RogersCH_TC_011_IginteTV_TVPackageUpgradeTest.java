@@ -52,7 +52,7 @@ public class Mobile_RogersCH_TC_011_IginteTV_TVPackageUpgradeTest extends BaseTe
         rogers_login_page.clkSignInIFrame();
     	if(rogers_login_page.verifyLoginFailMsgIframe())
     	{
-    		reporter.reportLogFail("Login Faied",true) ;			
+    		reporter.reportLogFail("Login Failed",true) ;			
     	}
     	else
     	{
