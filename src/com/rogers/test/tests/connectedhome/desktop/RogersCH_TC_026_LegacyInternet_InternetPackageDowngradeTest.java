@@ -44,7 +44,7 @@ public class RogersCH_TC_026_LegacyInternet_InternetPackageDowngradeTest extends
 		rogers_login_page.clkSignInIFrame();
     	if(rogers_login_page.verifyLoginFailMsgIframe())
     	{
-    	reporter.reportLogWithScreenshot("Login Failed, Login Successful");			
+    		reporter.reportLogFail("Login Faied",true) ;		
     	}
     	else
     	{
@@ -52,7 +52,7 @@ public class RogersCH_TC_026_LegacyInternet_InternetPackageDowngradeTest extends
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
         rogers_account_overview_page.selectAccount(TestDataHandler.legacyInternetAccount.accountDetails.getBan());
-        reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
 		rogers_account_overview_page.clkLegacyInternetBadge(TestDataHandler.rogersConfig.getBrowser());
 		reporter.reportLogWithScreenshot("Launched the Internet Dashboard Page");

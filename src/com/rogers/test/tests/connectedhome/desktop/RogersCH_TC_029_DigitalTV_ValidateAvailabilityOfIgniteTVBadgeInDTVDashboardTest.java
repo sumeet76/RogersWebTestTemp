@@ -44,7 +44,7 @@ public class RogersCH_TC_029_DigitalTV_ValidateAvailabilityOfIgniteTVBadgeInDTVD
 		rogers_login_page.clkSignInIFrame();
     	if(rogers_login_page.verifyLoginFailMsgIframe())
     	{
-    	reporter.reportLogWithScreenshot("Login Failed, Login Successful");			
+    		reporter.reportLogFail("Login Faied",true) ;			
     	}
     	else
     	{
@@ -52,20 +52,19 @@ public class RogersCH_TC_029_DigitalTV_ValidateAvailabilityOfIgniteTVBadgeInDTVD
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
         rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVAccount.accountDetails.getBan());
-        reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
 		rogers_account_overview_page.clkTVBadge(TestDataHandler.rogersConfig.getBrowser());		
-		rogers_digital_tv_dashboard_page.verifyBuyNowIgnite();
+
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
 		reporter.softAssert(rogers_digital_tv_dashboard_page.verifyBuyNowIgnite(),"Verifed the buy now option","TV dashboard Verification for buy now option has failed");
 		rogers_digital_tv_dashboard_page.clkBuyNowIgnite();
-		
-    	rogers_home_page.verifyIgnitepage();
+		    	
+    	reporter.hardAssert(rogers_home_page.verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
     	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	rogers_home_page.clkServiceability();
     	reporter.reportLogWithScreenshot("Launched the csutomer availability check popup");
 		
-		rogers_home_page.verifyServiceability();
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 		reporter.hardAssert(rogers_home_page.verifyServiceability(),"Verifed the buy now functionality","Inginte TV buy option has failed");
 	}

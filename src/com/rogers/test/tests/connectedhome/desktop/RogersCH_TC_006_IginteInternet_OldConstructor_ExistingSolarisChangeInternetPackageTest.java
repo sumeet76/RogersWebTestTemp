@@ -51,7 +51,7 @@ public class RogersCH_TC_006_IginteInternet_OldConstructor_ExistingSolarisChange
         rogers_login_page.clkSignInIFrame();
     	if(rogers_login_page.verifyLoginFailMsgIframe())
     	{
-    	reporter.reportLogWithScreenshot("Login Failed, Login Successful");			
+    		reporter.reportLogFail("Login Faied",true) ;			
     	}
     	else
     	{
@@ -59,7 +59,7 @@ public class RogersCH_TC_006_IginteInternet_OldConstructor_ExistingSolarisChange
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
         rogers_account_overview_page.selectAccount(TestDataHandler.solarisInternetOldConstructor.accountDetails.getBan());
-        reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_internet_dashboard_page.clkSolarisInternetBadge();
         rogers_internet_dashboard_page.clkInternetPopup();
@@ -67,17 +67,15 @@ public class RogersCH_TC_006_IginteInternet_OldConstructor_ExistingSolarisChange
         rogers_internet_dashboard_page.clkSolChangeInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Interent packages page");
         rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.solarisInternetOldConstructor.getAccountDetails().getUpgradePlanEn(),TestDataHandler.solarisInternetOldConstructor.getAccountDetails().getUpgradePlanFr());
-        reporter.reportLogWithScreenshot("Launched the Interent packages confirm OK popup"); 
-        rogers_internet_dashboard_page.clkInternetChangeOK();
         reporter.reportLogWithScreenshot("Launched the agreement page"); 
-        rogers_order_review_page.verifyAgreementPage();
+        reporter.hardAssert(rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
-        rogers_order_review_page.verifyAgreement();
+        reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
         rogers_order_review_page.clkAcceptenceCheckboxUpdate();
         reporter.reportLogWithScreenshot("Agreement details");
         rogers_order_review_page.clkSubmitUpdate();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");                             
+        reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");                             
         reporter.reportLogWithScreenshot("Verified the Confirmation page");
     	}
     }

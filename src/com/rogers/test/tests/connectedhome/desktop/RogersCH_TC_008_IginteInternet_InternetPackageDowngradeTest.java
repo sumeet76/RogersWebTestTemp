@@ -45,7 +45,7 @@ public class RogersCH_TC_008_IginteInternet_InternetPackageDowngradeTest extends
         rogers_login_page.clkSignInIFrame();
     	if(rogers_login_page.verifyLoginFailMsgIframe())
     	{
-    	reporter.reportLogWithScreenshot("Login Failed, Login Successful");			
+    		reporter.reportLogFail("Login Faied",true) ;			
     	}
     	else
     	{
@@ -53,16 +53,13 @@ public class RogersCH_TC_008_IginteInternet_InternetPackageDowngradeTest extends
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
         rogers_account_overview_page.selectAccount(TestDataHandler.solarisInternetAccount.accountDetails.getBan());
-        reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_internet_dashboard_page.clkSolarisInternetBadge();
-        //rogers_internet_dashboard_page.clkInternetPopup();
         reporter.reportLogWithScreenshot("Launched the Interent dashboard");
         rogers_internet_dashboard_page.clkSolChangeInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Interent packages page");        
         rogers_internet_dashboard_page.selectSolarisInternetPackage1(TestDataHandler.solarisInternetAccount.getAccountDetails().getDowngradePlanEn());
-        reporter.reportLogWithScreenshot("Launched the Interent packages confirm OK popup"); 
-        rogers_internet_dashboard_page.clkInternetChangeOK();
         reporter.hardAssert(rogers_internet_dashboard_page.verifycontatUSPopUp(),"Displayed the contat US popup","Download package has failed");        
         reporter.reportLogWithScreenshot("Launched the Interent packages page");
     	}

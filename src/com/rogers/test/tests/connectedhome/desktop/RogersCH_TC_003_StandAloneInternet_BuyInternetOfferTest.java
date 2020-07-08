@@ -36,7 +36,7 @@ public class RogersCH_TC_003_StandAloneInternet_BuyInternetOfferTest extends Bas
     @Test
     public void checkBuyInternetOffer() throws InterruptedException {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		//rogers_home_page.clkEasyLogin();
+		rogers_home_page.clkEasyLogin();
     	reporter.reportLogWithScreenshot("Launched the Home Page");
     	rogers_home_page.clkShop(); 
     	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
@@ -56,14 +56,16 @@ public class RogersCH_TC_003_StandAloneInternet_BuyInternetOfferTest extends Bas
         rogers_internet_package_selection_page.clkInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");         
         rogers_internet_package_selection_page.clkInternetBuyContinue();
-        rogers_ineternet_profile_page.verifyProfilePage();
+        
+        reporter.hardAssert(rogers_ineternet_profile_page.verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
         rogers_ineternet_profile_page.setEmail();
         rogers_ineternet_profile_page.setFirstname();
         rogers_ineternet_profile_page.setLastName();
         rogers_ineternet_profile_page.setPhone();
         rogers_ineternet_profile_page.clkSubmitProfile();
-        rogers_internet_credit_check_page.verifyCreditEvalutionPage();
+        
+        reporter.hardAssert(rogers_internet_credit_check_page.verifyCreditEvalutionPage(),"Credit Evalution page has Launched","Credit Evalution page has not Launched");
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
         rogers_internet_credit_check_page.selectDOBYear();
         rogers_internet_credit_check_page.selectDOBMonth();
@@ -84,9 +86,9 @@ public class RogersCH_TC_003_StandAloneInternet_BuyInternetOfferTest extends Bas
         rogers_internet_credit_check_page.clkCreditConsent();
         reporter.reportLogWithScreenshot("Passport Details");
         rogers_internet_credit_check_page.clkCreditConsentSubmit();
-       rogers_tech_install_page.verifyTechInstallPage(); 
+        
+       reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
        reporter.reportLogWithScreenshot("Launched the tech install page");
-       //rogers_tech_install_page.clkPersonalizedInstall();
        rogers_tech_install_page.selSelffinstallDateAndTime();
        reporter.reportLogWithScreenshot("Launched the tech install page");
        rogers_tech_install_page.clkTechInstallSlot();
@@ -96,7 +98,8 @@ public class RogersCH_TC_003_StandAloneInternet_BuyInternetOfferTest extends Bas
        rogers_tech_install_page.clkTechInstalConsent();
        reporter.reportLogWithScreenshot("tech install details");
        rogers_tech_install_page.clkTechInstallContinue();
-        rogers_payment_options_page.verifyPaymentModepage();
+        
+        reporter.hardAssert(rogers_payment_options_page.verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
         rogers_payment_options_page.selectPaymentMode("Pre-authorized Credit Card");
         rogers_payment_options_page.switchToCreditCardIFrame();
@@ -107,14 +110,16 @@ public class RogersCH_TC_003_StandAloneInternet_BuyInternetOfferTest extends Bas
         rogers_payment_options_page.selectExpiryYear(); 
         reporter.reportLogWithScreenshot("Payment options Details");
         rogers_payment_options_page.clkPaymentConfirm();
-        rogers_order_review_page.verifyAgreementPage();
+        
+        reporter.hardAssert(rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
-        rogers_order_review_page.verifyAgreement();
+
+        reporter.hardAssert( rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
         rogers_order_review_page.clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
         rogers_order_review_page.clkSubmit();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");      
+        reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");      
         reporter.reportLogWithScreenshot("Launched the Confirmation page");    
     }
 

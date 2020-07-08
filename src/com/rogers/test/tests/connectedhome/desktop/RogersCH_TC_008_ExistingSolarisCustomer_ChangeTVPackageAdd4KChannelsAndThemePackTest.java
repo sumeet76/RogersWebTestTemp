@@ -51,7 +51,7 @@ public class RogersCH_TC_008_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannel
         rogers_login_page.clkSignInIFrame();
     	if(rogers_login_page.verifyLoginFailMsgIframe())
     	{
-    	reporter.reportLogWithScreenshot("Login Failed, Login Successful");			
+    		reporter.reportLogFail("Login Faied",true) ;			
     	}
     	else
     	{
@@ -59,7 +59,7 @@ public class RogersCH_TC_008_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannel
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
         rogers_account_overview_page.selectAccount(TestDataHandler.solarisChangeTVPackageAdd4KChannelsAndThemePack.accountDetails.getBan());
-        reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_solaris_tv_dashboard_page.clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
@@ -83,13 +83,15 @@ public class RogersCH_TC_008_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannel
         rogers_solaris_tv_channels_and_themepacks_page.clkYesIHave4K();  
         reporter.reportLogWithScreenshot("Launched the 4K Content popup");
         rogers_solaris_tv_channels_and_themepacks_page.clk4KContent();
-        rogers_order_review_page.verifyAgreementPage();
+        
+        reporter.hardAssert(rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
-        rogers_order_review_page.verifyAgreement();
+        
+        reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
         rogers_order_review_page.clkAcceptenceCheckboxUpdate();
         reporter.reportLogWithScreenshot("Agreement details");
         rogers_order_review_page.clkSubmitUpdate();
-		reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
+		reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
     	}
     }

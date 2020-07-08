@@ -50,7 +50,7 @@ public class RogersCH_TC_032_IginteTV_TVPackagesNewBrunswickFootprintTest extend
 	        rogers_login_page.clkSignInIFrame();
         	if(rogers_login_page.verifyLoginFailMsgIframe())
         	{
-        	reporter.reportLogWithScreenshot("Login Failed, Login Successful");			
+        		reporter.reportLogFail("Login Faied",true) ;			
         	}
         	else
         	{
@@ -65,9 +65,8 @@ public class RogersCH_TC_032_IginteTV_TVPackagesNewBrunswickFootprintTest extend
 	        rogers_solaris_tv_dashboard_page.clkChangeTVPackage();
 	        reporter.reportLogWithScreenshot("Launched the TV packages page");
 	        reporter.softAssert(rogers_solaris_tv_dashboard_page.verifyIgniteTVStarterPackage(),"Ignite TV Starter Package is available for the Ontario footprint","Ignite TV Starter Package is not available for the Ontario footprint");
-	        reporter.softAssert(rogers_solaris_tv_dashboard_page.verifyIgniteTVPremierPackage(),"Ignite TV Premier Package is available for the Ontario footprint","Ignite TV Premier Package is not available for the Ontario footprint");
-	        //reporter.softAssert(!rogers_solaris_tv_dashboard_page.verifyIgniteFlex10Package(),"Ignite Flex 10 Package is available for the Ontario footprint","Ignite Flex 10 Package is not available for the Ontario footprint");
 	        rogers_solaris_tv_dashboard_page.selectSolarisTVPackage(TestDataHandler.solarisTVAccountForUpgradeNB.accountDetails.getUpgradePlanEn(),TestDataHandler.solarisTVAccountForUpgradeNB.accountDetails.getUpgradePlanFr());
+
 	        rogers_solaris_tv_dashboard_page.clkPopupChangeTVPackage();
 	        reporter.reportLogWithScreenshot("Launched the personalize channel page");
 	        rogers_solaris_tv_channels_and_themepacks_page.clkExchangeLater(); 
@@ -77,9 +76,10 @@ public class RogersCH_TC_032_IginteTV_TVPackagesNewBrunswickFootprintTest extend
 	        rogers_solaris_tv_channels_and_themepacks_page.clkYesIHave4K();  
 	        reporter.reportLogWithScreenshot("Launched the 4K Content popup");
 	        rogers_solaris_tv_channels_and_themepacks_page.clk4KContent();
-	        rogers_order_review_page.verifyAgreementPage();
-	        reporter.reportLogWithScreenshot("Launched the order review page");
-	        rogers_order_review_page.verifyAgreement();
+	    	reporter.hardAssert(rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
+			reporter.reportLogWithScreenshot("Launched the order review page");
+			
+			reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
 	        rogers_order_review_page.clkAcceptenceCheckboxUpdate();
 	        reporter.reportLogWithScreenshot("Agreement details");
 	        rogers_order_review_page.clkSubmitUpdate();

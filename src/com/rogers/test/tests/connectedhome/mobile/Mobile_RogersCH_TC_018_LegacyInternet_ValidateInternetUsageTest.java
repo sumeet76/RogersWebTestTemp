@@ -37,23 +37,31 @@ public class Mobile_RogersCH_TC_018_LegacyInternet_ValidateInternetUsageTest ext
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
     	rogers_home_page.clkSignInMobile();
-    	rogers_login_page.switchToSignInIFrame();
-    	rogers_login_page.setUsernameIFrame(TestDataHandler.legacyInternetAccount.getUsername());
-    	rogers_login_page.setPasswordIFrame(TestDataHandler.legacyInternetAccount.getPassword());
-        reporter.reportLogWithScreenshot("Login Credential is entered.");
-        rogers_login_page.clkSignInIFrame();
-        rogers_login_page.clkSkipIFrame();
-        rogers_login_page.switchOutOfSignInIFrame();
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
-        	reporter.reportLogWithScreenshot("Select an account.");
-        	rogers_account_overview_page.selectAccount(TestDataHandler.legacyInternetAccount.getAccountDetails().getBan());       
-        }
-        reporter.reportLogWithScreenshot("Account overview page.");
-        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Passed", "Login Failed");
-		rogers_account_overview_page.clkLegacyInternetBadge();
+    	
+		 rogers_login_page.switchToSignInIFrame();
+		reporter.reportLogWithScreenshot("Launched the SignIn popup");
+		rogers_login_page.setUsernameIFrame(TestDataHandler.legacyInternetAccount.getUsername());
+		rogers_login_page.setPasswordIFrame(TestDataHandler.legacyInternetAccount.getPassword());
+		reporter.reportLogWithScreenshot("Enter the account credentails");
+		rogers_login_page.clkSignInIFrame();
+   	if(rogers_login_page.verifyLoginFailMsgIframe())
+   	{
+   		reporter.reportLogFail("Login Faied",true) ;			
+   	}
+   	else
+   	{
+       reporter.reportLogWithScreenshot("Skip popup");
+       rogers_login_page.clkSkipIFrame();
+       rogers_login_page.switchOutOfSignInIFrame();
+       rogers_account_overview_page.selectAccount(TestDataHandler.legacyInternetAccount.accountDetails.getBan());
+       reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+       reporter.reportLogWithScreenshot("Launched the Account Page");
+		reporter.reportLogWithScreenshot("Launched the Account Page");
+		rogers_account_overview_page.clkLegacyInternetBadge(TestDataHandler.rogersConfig.getBrowser());
 		reporter.reportLogWithScreenshot("Launched the Internet Dashboard Page");
+		rogers_account_overview_page.clkInternetPopup(TestDataHandler.rogersConfig.getBrowser());
 		reporter.hardAssert(rogers_internet_dashboard_page.verifyInternetUsage(),"Verifed the Internet dashboard","Internet dashboard Verification has failed");
-
+   	}
 	}
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})

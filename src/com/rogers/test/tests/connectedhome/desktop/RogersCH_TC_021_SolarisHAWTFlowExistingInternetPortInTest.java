@@ -27,7 +27,7 @@ public class RogersCH_TC_021_SolarisHAWTFlowExistingInternetPortInTest extends B
 		rogers_login_page.clkSignInIFrame();
     	if(rogers_login_page.verifyLoginFailMsgIframe())
     	{
-    	reporter.reportLogWithScreenshot("Login Failed, Login Successful");			
+    		reporter.reportLogFail("Login Faied",true) ;			
     	}
     	else
     	{
@@ -35,7 +35,7 @@ public class RogersCH_TC_021_SolarisHAWTFlowExistingInternetPortInTest extends B
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
         rogers_account_overview_page.selectAccount(TestDataHandler.solarisPortinFlows.accountDetails.getBan());
-        reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_home_page.clkShop(); 
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
@@ -56,7 +56,8 @@ public class RogersCH_TC_021_SolarisHAWTFlowExistingInternetPortInTest extends B
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
         rogers_home_phone_port_in_page.setHomePhoneNumber(TestDataHandler.solarisPortinFlows.getAccountDetails().getPhoneNumber());
         rogers_home_phone_port_in_page.clkPhoneNumberEligibiltyCheck();
-        rogers_home_phone_port_in_page.verifyPhoneNumberSuccess();
+        
+        reporter.hardAssert(rogers_home_phone_port_in_page.verifyPhoneNumberSuccess(),"Port-in Number validation success","Port-in Number validation Failed");
         reporter.reportLogWithScreenshot("Port-in Number validation success");
         rogers_home_phone_port_in_page.setFirstName();
         rogers_home_phone_port_in_page.setLastName();
@@ -67,7 +68,8 @@ public class RogersCH_TC_021_SolarisHAWTFlowExistingInternetPortInTest extends B
         rogers_home_phone_port_in_page.clkPhoneCheck();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
         rogers_igniteTV_buy_page.clkHomePhone();
-        rogers_igniteTV_buy_page.verify4KTV();
+        
+        reporter.hardAssert(rogers_igniteTV_buy_page.verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
         rogers_igniteTV_buy_page.set4KTV();
         reporter.reportLogWithScreenshot("4k TV selected");
@@ -76,7 +78,8 @@ public class RogersCH_TC_021_SolarisHAWTFlowExistingInternetPortInTest extends B
         rogers_igniteTV_profile_creation_page.clkSubmitProfile();  
         reporter.reportLogWithScreenshot("Home Phone selection page has launched");
         rogers_home_phone_selection_page.clkContinueHomePhoneSelection();  
-        rogers_tech_install_page.verifyTechInstallPage(); 
+
+        reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
         rogers_tech_install_page.selTechInstalStartDate();
         reporter.reportLogWithScreenshot("Selected Start date for Installation slot");
@@ -85,14 +88,16 @@ public class RogersCH_TC_021_SolarisHAWTFlowExistingInternetPortInTest extends B
         rogers_tech_install_page.setEmail(); 
         reporter.reportLogWithScreenshot("tech install details");
         rogers_tech_install_page.clkTechInstallContinue();
-        rogers_order_review_page.verifyAgreementPage();
-        reporter.reportLogWithScreenshot("Launched the order review page");
-        rogers_order_review_page.verifyAgreement();
+    	reporter.hardAssert(rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
+		reporter.reportLogWithScreenshot("Launched the order review page");
+		
+		reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
+        
         rogers_order_review_page.clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
         rogers_order_review_page.clkSubmit();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");       
+        reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");       
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
     	}
     }

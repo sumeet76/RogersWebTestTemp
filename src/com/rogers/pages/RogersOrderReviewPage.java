@@ -174,9 +174,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	public void clkAcceptenceCheckbox() {
 		reusableActions.isElementVisible(lnkAgreementToEnd, 50);
 		reusableActions.scrollToElement(lnkAgreementToEnd);	
-		reusableActions.staticWait(5000);
 		reusableActions.getWhenReady(clkChangeAcceptCheckbox, 90).click();
-		reusableActions.staticWait(4000);
 	}
 	
 	/**
@@ -197,7 +195,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 */
 	public void clkAcceptenceCheckboxExistingCustomer() {
 		reusableActions.isElementVisible(lnkAgreementToEnd, 50);
-		reusableActions.scrollToElement(lnkAgreementToEnd);	
+		reusableActions.scrollToElement(lnkAgreementToEnd, 0,100);	
 		reusableActions.staticWait(5000);
 		reusableActions.getWhenReady(clkChangeAcceptCheckboxExistingCustomer, 90).click();
 		reusableActions.staticWait(4000);

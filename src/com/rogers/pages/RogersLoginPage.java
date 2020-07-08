@@ -96,7 +96,7 @@ public class RogersLoginPage extends BasePageClass {
 	 * @return true if login fail message is displayed, otherwise false.
 	 */
 	public Boolean verifyLoginFailMsgIframe() {
-		return reusableActions.isElementVisible(failLoginMsg, 30);
+		return reusableActions.isElementVisible(failLoginMsg, 10);
 	}
 
 	/**
