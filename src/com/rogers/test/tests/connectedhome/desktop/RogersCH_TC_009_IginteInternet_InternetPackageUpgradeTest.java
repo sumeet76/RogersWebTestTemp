@@ -53,7 +53,7 @@ public class RogersCH_TC_009_IginteInternet_InternetPackageUpgradeTest extends B
         rogers_login_page.clkSkipIFrame();
     	if(rogers_login_page.verifyLoginFailMsgIframe())
     	{
-    		reporter.reportLogFail("Login Faied",true) ;			
+    		reporter.reportLogFail("Login Failed",true) ;			
     	}
     	else
     	{

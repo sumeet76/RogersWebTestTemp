@@ -46,7 +46,7 @@ public class RogersCH_TC_009_01_SolarisCustomer_ManageChannelsAndThemePack_Manag
 		rogers_login_page.clkSkipIFrame();
     	if(rogers_login_page.verifyLoginFailMsgIframe())
     	{
-    		reporter.reportLogFail("Login Faied",true) ;			
+    		reporter.reportLogFail("Login Failed",true) ;			
     	}
     	else
     	{

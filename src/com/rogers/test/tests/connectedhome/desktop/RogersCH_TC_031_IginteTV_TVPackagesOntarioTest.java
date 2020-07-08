@@ -50,7 +50,7 @@ public class RogersCH_TC_031_IginteTV_TVPackagesOntarioTest extends BaseTestClas
         rogers_login_page.clkSignInIFrame();
     	if(rogers_login_page.verifyLoginFailMsgIframe())
     	{
-    		reporter.reportLogFail("Login Faied",true) ;			
+    		reporter.reportLogFail("Login Failed",true) ;			
     	}
     	else
     	{

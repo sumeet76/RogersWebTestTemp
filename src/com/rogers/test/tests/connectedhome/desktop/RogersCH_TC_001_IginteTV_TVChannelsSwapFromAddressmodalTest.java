@@ -51,7 +51,7 @@ public class RogersCH_TC_001_IginteTV_TVChannelsSwapFromAddressmodalTest extends
     rogers_login_page.clkSignInIFrame();
 	if(rogers_login_page.verifyLoginFailMsgIframe())
 	{
-	reporter.reportLogFail("Login Faied",true) ;	
+	reporter.reportLogFail("Login Failed",true) ;	
 	}
 	else
 	{

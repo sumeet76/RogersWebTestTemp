@@ -45,7 +45,7 @@ public class RogersCH_TC_024_IgniteRHP_ValidateRHPDasboardTest extends BaseTestC
  		rogers_login_page.clkSignInIFrame();
     	if(rogers_login_page.verifyLoginFailMsgIframe())
     	{
-    		reporter.reportLogFail("Login Faied",true) ;			
+    		reporter.reportLogFail("Login Failed",true) ;			
     	}
     	else
     	{
