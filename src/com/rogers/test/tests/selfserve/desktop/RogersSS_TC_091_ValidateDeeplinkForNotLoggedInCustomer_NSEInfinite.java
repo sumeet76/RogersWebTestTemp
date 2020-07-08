@@ -45,7 +45,7 @@ public class RogersSS_TC_091_ValidateDeeplinkForNotLoggedInCustomer_NSEInfinite 
     @Test
     public void validateDataUsageDisplayForRunningLowAndAddData() {
     	reporter.reportLogWithScreenshot("Rogers launhced");
-    	getDriver().get(TestDataHandler.ssConfig.getRogersURL().split(".com/")[0]+".com/web/totes/#/viewbill/payment-method");
+    	getDriver().get(TestDataHandler.ssConfig.getRogersURL().split(".com")[0]+".com/web/totes/#/viewbill/payment-method");
     	reporter.reportLogWithScreenshot("After setting the deeplink");
     	reporter.hardAssert(rogers_login_page.isSignInFrameDisplayed()
     	    		   , "When a user is not logged into an account and deep link URL is entered, it is asking the user to login first with login modal popping up"
