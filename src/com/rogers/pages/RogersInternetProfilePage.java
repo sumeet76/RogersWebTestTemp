@@ -1,6 +1,5 @@
 package com.rogers.pages;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,60 +13,35 @@ public class RogersInternetProfilePage extends BasePageClass {
 		super(driver);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-
 	@FindBy(xpath = "//h4[@translate='global.checkout.profile.createProfile']")
 	WebElement txtProfile;
 	
-	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-31')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
 	WebElement txtContainerEmail;
 	
-		@FindBy(xpath = "//input[@id='ds-form-input-id-14']")
+	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-32')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	WebElement txtContainerConfirmEmail;
+	
+		@FindBy(xpath = "//input[@id='ds-form-input-id-9']")
 	WebElement txtEmail;
 	
-	@FindBy(xpath = "//input[@id='ds-form-input-id-15']")
+	@FindBy(xpath = "//input[@id='ds-form-input-id-10']")
 	WebElement txtConfirmEmail;
 	
-	@FindBy(xpath = "//input[@id='ds-form-input-id-9']")
+	@FindBy(xpath = "//input[@id='ds-form-input-id-4']")
 	WebElement txtFirstName;
 	
-	@FindBy(xpath = "//input[@id='ds-form-input-id-10']")
+	@FindBy(xpath = "//input[@id='ds-form-input-id-5']")
 	WebElement txtLastName;
 	
-	@FindBy(xpath = "//input[@id='ds-form-input-id-12']")
+	@FindBy(xpath = "//input[@id='ds-form-input-id-7']")
 	WebElement btnPhone;
 		
 	@FindBy(xpath = "//span[@translate='global.cta.continue']")
 	WebElement btnProfielSubmit;	
-	//input[@class='ute-btn-primary profile-submit-button']
-	//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']
-	
-	@FindBy(xpath = "//label[@class='ute-label-text anotherAddress']")
-	WebElement rdoUseAnotherAddress;
-	
-	@FindBy(xpath = "//span[@translate='global.modals.migrationModal.title']")
-	WebElement popImportantInformation;
-	
-	@FindBy(xpath = "//button[@class='ute-btn-primary']")
-	WebElement btnIUnderstand;	
-	
-	@FindBy(xpath = "//input[@name='anotherBillingAddress']")
-	WebElement txtAnotherAddress;
 	
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
-	
-	@FindBy(xpath = "//button[@data-target='#miniCollapse']")
-	WebElement downChevronYourCart;
-	
-	@FindBy(xpath = "//div[@class='mini-body']//div[contains(@ng-bind-html,'$root.gwpDetails')]")
-	WebElement gwpYourCart;
 	
 	/**
 	 * To verify the launch of Profile Page
@@ -75,31 +49,10 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyProfilePage() {
-		//reusableActions.waitForElementInvisibility(popupLoadingFingers,100);
 		return reusableActions.isElementVisible(txtProfile);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/**
+		/**
 	 * Set dynamic email and confirm email on profile page
 	 * @author Chinnarao.Vattam
 	 */
@@ -149,25 +102,6 @@ public class RogersInternetProfilePage extends BasePageClass {
 	}
 	
 	/**
-	 * To click on the chevron on the TV profile creation page
-	 * @author Saurav.Goyal
-	 */
-	public void clkChevronYourCart() {
-		reusableActions.waitForElementVisibility(downChevronYourCart, 120);
-		reusableActions.getWhenReady(downChevronYourCart, 120).click();
-	}
-
-	/**
-	 * To verify gwp promotion in the profile creation page
-	 * @return true if the promotion is available else return false
-	 * @author Saurav.Goyal
-	 */
-	public boolean verifyGWPYourCartPromotion() {
-		reusableActions.waitForElementVisibility(gwpYourCart, 120);
-		return	reusableActions.isElementVisible(gwpYourCart);
-	}
-	
-	/**
 	 * Click the Submit button on the profile page
 	 * @author Chinnarao.Vattam
 	 */
@@ -184,42 +118,4 @@ public class RogersInternetProfilePage extends BasePageClass {
 		reusableActions.executeJavaScriptClick(btnProfielSubmit);
 	}
 
-	/**
-	 * To verify the abandon popup while leaving the flow 
-	 * @return true if the abandon  popup has available, else false 
-	 * @author chinnarao.vattam
-	 */
-	public boolean verifyImportantInformation() {
-		reusableActions.waitForElementVisibility(popImportantInformation, 120);
-		return	reusableActions.isElementVisible(popImportantInformation);
-	}
-	
-	/**
-	 * Click I understand button on abandon popup
-	 * @author chinnarao.vattam
-	 */
-	public void clkIUnderstand(){
-		reusableActions.getWhenReady(btnIUnderstand, 120).click();
-	}
-	
-	/**
-	 * Click the Use Another Address radio button on the profile page
-	 * @author Chinnarao.Vattam
-	 */
-	public void clkUseAnotherAddress() {
-		reusableActions.getWhenReady(rdoUseAnotherAddress, 30).click();
-	}
-
-	/**
-	 * Set the new address on the profile page
-	 * @author Chinnarao.Vattam
-	 * @param strAddress address string
-	 */
-	public void setNewAddress(String strAddress) {
-		reusableActions.getWhenReady(txtAnotherAddress, 3).click();
-		reusableActions.getWhenReady(txtAnotherAddress, 3).clear();
-		reusableActions.getWhenReady(txtAnotherAddress, 3).sendKeys(strAddress);
-		reusableActions.getWhenVisible(txtAnotherAddress, 10).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(txtAnotherAddress).sendKeys(Keys.ENTER);
-	}
 }

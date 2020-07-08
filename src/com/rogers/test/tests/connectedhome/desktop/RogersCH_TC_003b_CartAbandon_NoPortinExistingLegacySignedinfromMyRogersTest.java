@@ -69,7 +69,7 @@ public class RogersCH_TC_003b_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
 		rogers_login_page.clkSignInIFrame();
 		if(rogers_login_page.verifyLoginFailMsgIframe())
 		{
-			reporter.reportLogFail("Login Failed",true) ;		
+			reporter.reportLogFailWithScreenshot("Login Failed");		
 		}
 		else
 		{

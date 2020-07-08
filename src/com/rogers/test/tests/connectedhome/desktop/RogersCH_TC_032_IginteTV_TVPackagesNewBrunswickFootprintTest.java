@@ -50,7 +50,7 @@ public class RogersCH_TC_032_IginteTV_TVPackagesNewBrunswickFootprintTest extend
 	        rogers_login_page.clkSignInIFrame();
         	if(rogers_login_page.verifyLoginFailMsgIframe())
         	{
-        		reporter.reportLogFail("Login Failed",true) ;			
+        		reporter.reportLogFailWithScreenshot("Login Failed");		
         	}
         	else
         	{

@@ -31,7 +31,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *
  **/
 
-public class Mobile_RogersCH_TC_003_LegacyInternet_BuyInternetOfferTest extends BaseTestClass {
+public class Mobile_RogersCH_TC_003_Internet_BuyInternetOfferTest extends BaseTestClass {
 
     @Test
     public void checkBuyInternetOfferMobile() throws InterruptedException {
@@ -39,8 +39,7 @@ public class Mobile_RogersCH_TC_003_LegacyInternet_BuyInternetOfferTest extends 
     	rogers_home_page.clkShopMobile(); 
     	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
     	rogers_home_page.clkInternetMobile();
-    	rogers_buy_page.verifyInternetMenuMobile(); 
-    	
+    	rogers_buy_page.verifyInternetMenuMobile();     	
     	reporter.reportLogWithScreenshot("Launched the Internet packages page");
     	rogers_home_page.clkInternetAvailability();
     	reporter.reportLogWithScreenshot("Launched the customer availability check popup");

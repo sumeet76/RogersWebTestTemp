@@ -44,7 +44,7 @@ public class RogersCH_TC_025_LegacyInternet_InternetPackageUpgradeTest extends B
 		rogers_login_page.clkSignInIFrame();
     	if(rogers_login_page.verifyLoginFailMsgIframe())
     	{
-    		reporter.reportLogFail("Login Failed",true) ;		
+    		reporter.reportLogFailWithScreenshot("Login Failed");		
     	}
     	else
     	{

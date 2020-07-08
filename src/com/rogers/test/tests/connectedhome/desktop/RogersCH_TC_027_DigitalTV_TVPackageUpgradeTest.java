@@ -44,7 +44,7 @@ public class RogersCH_TC_027_DigitalTV_TVPackageUpgradeTest extends BaseTestClas
 		rogers_login_page.clkSignInIFrame();
     	if(rogers_login_page.verifyLoginFailMsgIframe())
     	{
-    		reporter.reportLogFail("Login Failed",true) ;		
+    		reporter.reportLogFailWithScreenshot("Login Failed");		
     	}
     	else
     	{

@@ -27,7 +27,7 @@ public class RogersCH_TC_021_SolarisHAWTFlowExistingInternetPortInTest extends B
 		rogers_login_page.clkSignInIFrame();
     	if(rogers_login_page.verifyLoginFailMsgIframe())
     	{
-    		reporter.reportLogFail("Login Failed",true) ;			
+    		reporter.reportLogFailWithScreenshot("Login Failed");			
     	}
     	else
     	{

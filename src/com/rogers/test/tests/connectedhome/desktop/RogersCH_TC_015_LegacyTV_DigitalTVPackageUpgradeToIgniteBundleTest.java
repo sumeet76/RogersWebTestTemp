@@ -68,7 +68,7 @@ public class RogersCH_TC_015_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
 		rogers_login_page.clkSignInIFrame();
     	if(rogers_login_page.verifyLoginFailMsgIframe())
     	{
-    		reporter.reportLogFail("Login Failed",true) ;		
+    		reporter.reportLogFailWithScreenshot("Login Failed");		
     	}
     	else
     	{

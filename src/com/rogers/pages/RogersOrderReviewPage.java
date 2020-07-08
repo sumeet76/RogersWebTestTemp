@@ -27,9 +27,9 @@ public class RogersOrderReviewPage extends BasePageClass {
 	WebElement lnkAgreementToEndExistingCustomer;	
 
 	
-	@FindBy(xpath = "//p[contains(text(),'06/')]")
+	@FindBy(xpath = "//li[contains(text(),'819 994 6591')]")
 	WebElement lnkAgreementToEnd;	
-	
+	//p[contains(text(),'06/')]
 	
 	@FindBy(xpath = "//label[@for='ds-checkbox-id-3']")
 	WebElement clkChangeAcceptCheckbox;
@@ -172,7 +172,8 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkAcceptenceCheckbox() {
-		reusableActions.isElementVisible(lnkAgreementToEnd, 50);
+		reusableActions.isElementVisible(lnkAgreementToEnd, 90);
+		reusableActions.scrollToElement(lnkAgreementToEnd, 0,100);
 		reusableActions.scrollToElement(lnkAgreementToEnd);	
 		reusableActions.getWhenReady(clkChangeAcceptCheckbox, 90).click();
 	}
@@ -184,9 +185,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	public void clkAcceptenceCheckboxMigration() {
 		reusableActions.isElementVisible(lnkAgreementToEnd, 50);
 		reusableActions.scrollToElement(lnkAgreementToEnd);	
-		reusableActions.staticWait(5000);
 		reusableActions.getWhenReady(clkChangeAcceptCheckboxMigration, 90).click();
-		reusableActions.staticWait(4000);
 	}
 	
 	/**
@@ -196,9 +195,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	public void clkAcceptenceCheckboxExistingCustomer() {
 		reusableActions.isElementVisible(lnkAgreementToEnd, 50);
 		reusableActions.scrollToElement(lnkAgreementToEnd, 0,100);	
-		reusableActions.staticWait(5000);
 		reusableActions.getWhenReady(clkChangeAcceptCheckboxExistingCustomer, 90).click();
-		reusableActions.staticWait(4000);
 	}
 
 	/**

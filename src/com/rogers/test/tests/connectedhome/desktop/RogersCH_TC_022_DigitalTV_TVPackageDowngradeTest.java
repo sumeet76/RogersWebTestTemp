@@ -46,7 +46,7 @@ public class RogersCH_TC_022_DigitalTV_TVPackageDowngradeTest extends BaseTestCl
 		rogers_login_page.clkSignInIFrame();
     	if(rogers_login_page.verifyLoginFailMsgIframe())
     	{
-    		reporter.reportLogFail("Login Failed",true) ;		
+    		reporter.reportLogFailWithScreenshot("Login Failed");		
     	}
     	else
     	{

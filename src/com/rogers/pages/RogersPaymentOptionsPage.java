@@ -252,7 +252,7 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 * Updated by saurav.goyal as per discussion with chinnarao.vattam
 	 */
 	public void clkPaymentConfirm() {
-		reusableActions.getWhenReady(btnPaymentConfirm, 180).click();
+		reusableActions.getWhenReady(btnPaymentConfirm, 90).click();
 	}
 	
 	/**
@@ -260,7 +260,6 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkPaymentConfirmExistingCustomer() {
-		reusableActions.waitForElementTobeClickable(btnPaymentConfirm, 180);	
 		reusableActions.waitForElementTobeClickable(btnPaymentConfirm, 180);
 		reusableActions.executeJavaScriptClick(btnPaymentConfirm);
 	}

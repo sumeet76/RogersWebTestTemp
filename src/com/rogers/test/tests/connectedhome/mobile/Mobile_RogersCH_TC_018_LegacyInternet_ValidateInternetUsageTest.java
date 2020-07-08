@@ -46,7 +46,7 @@ public class Mobile_RogersCH_TC_018_LegacyInternet_ValidateInternetUsageTest ext
 		rogers_login_page.clkSignInIFrame();
    	if(rogers_login_page.verifyLoginFailMsgIframe())
    	{
-   		reporter.reportLogFail("Login Failed",true) ;			
+   		reporter.reportLogFailWithScreenshot("Login Failed");		
    	}
    	else
    	{

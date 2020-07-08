@@ -55,7 +55,7 @@ public class Mobile_RogersCH_TC_009_IginteInternet_InternetPackageUpgradeTest ex
         rogers_login_page.clkSkipIFrame();
     	if(rogers_login_page.verifyLoginFailMsgIframe())
     	{
-    		reporter.reportLogFail("Login Failed",true) ;			
+    		reporter.reportLogFailWithScreenshot("Login Failed");			
     	}
     	else
     	{
