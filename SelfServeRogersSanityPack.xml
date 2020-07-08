@@ -22,7 +22,6 @@
 	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE"></class>
 </classes>          																					
 </test>
-
 <test name="Rogers self serve sanity test group2" enabled="true">
 <classes>				             
 	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_032_Postpaid_ChangeBillingAddress"></class>
