@@ -1,6 +1,6 @@
 # Config
 ---
-rogersURL: https://www.qa01.rogers.com/
+rogersURL: https://qa7.rogers.com/consumer/easyloginriverpage
 rogersCIAMUrl: https://qa06-ciam.rogers.com
 browser: chrome
 language: en

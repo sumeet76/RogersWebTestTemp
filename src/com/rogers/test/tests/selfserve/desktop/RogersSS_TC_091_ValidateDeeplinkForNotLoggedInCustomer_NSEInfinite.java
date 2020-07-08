@@ -30,7 +30,18 @@ public class RogersSS_TC_091_ValidateDeeplinkForNotLoggedInCustomer_NSEInfinite 
 		closeSession();
 	}
 	
-	
+/**
+ * "Description:
+1. Launch Rogers.com
+2. Enter the deeplink URL https://qa4.rogers.com/web/totes/#/viewbill/payment-method
+3. Login with valid credentials
+
+"	"1. Rogers.com up and running
+2. Sign-in pop-up should be displayed
+3. The MOP modal from view bill page should be opened successfully
+
+"	
+ */
     @Test
     public void validateDataUsageDisplayForRunningLowAndAddData() {
     	reporter.reportLogWithScreenshot("Rogers launhced");
