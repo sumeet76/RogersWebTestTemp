@@ -24,6 +24,10 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='buttons-block hidden-xs']//button[@class='ute-btn-primary']")
 	WebElement btnContinueHomePhoneSelection;
 	
+	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
+	WebElement btnContinueHomePhoneSelectionMigration;
+	
+	
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
 	
@@ -97,5 +101,16 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 		reusableActions.waitForElementVisibility(btnContinueHomePhoneSelection, 180);
 		reusableActions.clickWhenReady(btnContinueHomePhoneSelection, 90);
 	}
+	
+	/**
+	 *Click on Continue button after selecting the Phone number on the select phone number page 
+	 * @author chinnarao.vattam
+	 */
+	public void clkContinueHomePhoneSelectionMigration() {
+		reusableActions.waitForElementVisibility(btnContinueHomePhoneSelectionMigration, 180);
+		reusableActions.clickWhenReady(btnContinueHomePhoneSelectionMigration, 90);
+	}
+	
+	
 
 }

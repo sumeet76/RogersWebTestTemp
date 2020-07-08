@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Self Serve Rogers.com Tests SS" parallel="classes" thread-count="2">
+<suite name="Rogers.com Sanity Tests SS" parallel="classes" thread-count="2">
 <parameter name="strBrowser" value="saucechrome"/>
 <parameter name="strLanguage" value="en"/>
 <parameter name="strType" value="seq"/>

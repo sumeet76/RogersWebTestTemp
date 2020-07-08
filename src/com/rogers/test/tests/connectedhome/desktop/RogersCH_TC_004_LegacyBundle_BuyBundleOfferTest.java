@@ -41,8 +41,8 @@ public class RogersCH_TC_004_LegacyBundle_BuyBundleOfferTest extends BaseTestCla
 
     @Test
     public void checkLegacyBundleOffer() throws InterruptedException {
-		/*reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		rogers_home_page.clkEasyLogin();*/
+		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();
     	reporter.reportLogWithScreenshot("Launched the Home Page");
     	rogers_home_page.clkShop(); 
     	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy bundle");
@@ -99,7 +99,7 @@ public class RogersCH_TC_004_LegacyBundle_BuyBundleOfferTest extends BaseTestCla
     	reporter.reportLogWithScreenshot("Consent Check Done");
     	rogers_order_summary_page.clkSubmit();  
     	reporter.reportLogWithScreenshot("order info");
-  	    //reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created", "Order hasn't careted");
+  	    reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created", "Order hasn't careted");
     	}
     	else
     	{

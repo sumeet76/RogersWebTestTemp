@@ -67,11 +67,18 @@ public class RogersCH_TC_003a_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
 		rogers_login_page.setPasswordIFrame(TestDataHandler.noPortInAbondoneFlows.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
-		reporter.reportLogWithScreenshot("Skip popup");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
-		rogers_account_overview_page.selectAccount(TestDataHandler.noPortInAbondoneFlows.getAccountDetails().getBan());
-		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed"); 
+		if(rogers_login_page.verifyLoginFailMsgIframe())
+		{
+			reporter.reportLogFailWithScreenshot("Login Failed");			
+		}
+		else
+		{
+	    reporter.reportLogWithScreenshot("Skip popup");
+	    rogers_login_page.clkSkipIFrame();
+	    rogers_login_page.switchOutOfSignInIFrame();
+	    rogers_account_overview_page.selectAccount(TestDataHandler.noPortInAbondoneFlows.accountDetails.getBan());
+	    reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+	    reporter.reportLogWithScreenshot("Launched the Account Page"); 
         rogers_home_page.clkShop(); 
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
      	rogers_home_page.clkIgniteTVExistingCustomer();
@@ -83,7 +90,6 @@ public class RogersCH_TC_003a_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
         reporter.reportLogWithScreenshot("Launched the information popup");
-        //rogers_igniteTV_buy_page.verifyImportantInformation();
         rogers_igniteTV_buy_page.clkIUnderstand();
         reporter.reportLogWithScreenshot("Launched the port-in popup");
         rogers_igniteTV_buy_page.selectOptNewPhone();
@@ -98,12 +104,15 @@ public class RogersCH_TC_003a_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
         rogers_home_page.clkMyRogers(); 
         reporter.reportLogWithScreenshot("Launched the Cart Abandonment Form popup");
-        rogers_igniteTV_credit_check_page.verifyCartAbandonmentForm();
+        
+        reporter.hardAssert(rogers_igniteTV_credit_check_page.verifyCartAbandonmentForm(),"Cart Abandonment Form has Launched","Cart Abandonment Form has not Launched");
         rogers_igniteTV_credit_check_page.clkCartAbandonmentForm();
         reporter.reportLogWithScreenshot("Launched the Email sent success popup");
-        rogers_igniteTV_credit_check_page.verifyCartEmailSuccess();
+        
+        reporter.hardAssert(rogers_igniteTV_credit_check_page.verifyCartEmailSuccess(),"Cart Email Success popup has Launched","Cart Email Success popup has not Launched");
         rogers_igniteTV_credit_check_page.clkCartEmailSuccess();
-        reporter.reportLogWithScreenshot("Signout account");		
+        reporter.reportLogWithScreenshot("Signout account");	
+		}
 	}
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})

@@ -3,13 +3,13 @@ package com.rogers.test.tests.connectedhome.desktop;
 import org.testng.annotations.Test;
 
 import com.rogers.test.base.BaseTestClass;
+import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 
-import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -66,19 +66,24 @@ public class RogersCH_TC_015_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
 		rogers_login_page.setPasswordIFrame(TestDataHandler.digitalTVUpgradeToIgnite.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
-		reporter.reportLogWithScreenshot("Skip popup");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
-		rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getBan());
-		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed"); 
-		rogers_account_overview_page.clkTVBadge(TestDataHandler.rogersConfig.getBrowser());
+    	if(rogers_login_page.verifyLoginFailMsgIframe())
+    	{
+    		reporter.reportLogFailWithScreenshot("Login Failed");		
+    	}
+    	else
+    	{
+        reporter.reportLogWithScreenshot("Skip popup");
+        rogers_login_page.clkSkipIFrame();
+        rogers_login_page.switchOutOfSignInIFrame();
+        rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVUpgradeToIgnite.accountDetails.getBan());
+        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+        reporter.reportLogWithScreenshot("Launched the Account Page"); 
 		 rogers_home_page.clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
 		 rogers_home_page.clkIgniteTVExistingCustomer();
     	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	rogers_home_page.clkNoThnx();
     	rogers_home_page.clkServiceability();
-    	//rogers_home_page.clkServiceabilityMigration();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");    	
         rogers_home_page.clkUseThisAddress();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
@@ -96,43 +101,56 @@ public class RogersCH_TC_015_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
         reporter.reportLogWithScreenshot("Launched the create profile page");
         rogers_igniteTV_profile_creation_page.clkSubmitProfile();   
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
-        rogers_igniteTV_credit_check_page.selectDOBYearExistingCustomer(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getYear());
-        rogers_igniteTV_credit_check_page.selectDOBMonthExistingCustomer(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getMonth());
-        rogers_igniteTV_credit_check_page.selectDOBDayExistingCustomer(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getDate());
+        rogers_igniteTV_credit_check_page.selectDOBYearExistingCustomerMigration(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getYear());
+        rogers_igniteTV_credit_check_page.selectDOBMonthExistingCustomerMigration(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getMonth());
+        rogers_igniteTV_credit_check_page.selectDOBDayExistingCustomerMigration(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getDate());
         reporter.reportLogWithScreenshot("Entered the DOB details");
         rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        rogers_home_phone_selection_page.clkContinueHomePhoneSelection();  
+        rogers_home_phone_selection_page.clkContinueHomePhoneSelectionMigration(); 
+         
+        reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
         rogers_tech_install_page.selTechInstalStartDate();
+        reporter.reportLogWithScreenshot("Selected Start date for Installation");
+        rogers_tech_install_page.selectPreferredTimeSlot("1: AFT");
         reporter.reportLogWithScreenshot("Selected Start date for Installation slot");
         rogers_tech_install_page.selTechInstalEndDate();
+        reporter.reportLogWithScreenshot("Selected End date for Installation");
+        rogers_tech_install_page.selectBackupTimeSlot("1: AFT");
         reporter.reportLogWithScreenshot("Selected End date for Installation slot");
-        rogers_tech_install_page.setEmail(); 
+        rogers_tech_install_page.clkTechInstallSlot();
+        reporter.reportLogWithScreenshot("tech install details");
+        rogers_tech_install_page.setMobielNumberMigration();
+        rogers_tech_install_page.setEmailMigration();        
         reporter.reportLogWithScreenshot("tech install details");
         rogers_tech_install_page.clkTechInstallContinue();
-        reporter.reportLogWithScreenshot("Launched the payment options page");
-        rogers_payment_options_page.clkPaymentConfirmExistingCustomer();
-        rogers_order_review_page.verifyAgreementPage();
-        reporter.reportLogWithScreenshot("Launched the order review page");
-        rogers_order_review_page.verifyAgreement();
-        rogers_order_review_page.clkAcceptenceCheckbox();
+        reporter.reportLogWithScreenshot("Launched the payment options page");        
+        rogers_payment_options_page.clkPaymentConfirmExistingCustomer();        
+    	reporter.hardAssert(rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
+		reporter.reportLogWithScreenshot("Launched the order review page");
+		
+		reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
+        
+        rogers_order_review_page.clkAcceptenceCheckboxMigration();
         reporter.reportLogWithScreenshot("Agreement details");
         rogers_order_review_page.clkSubmit();
-        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");  
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
+        reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");      
+        reporter.reportLogWithScreenshot("Launched the Confirmation page");
+    	}
 	}
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})
+	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
-	public void beforeTest(String strBrowser, String strLanguage, String strGroupName,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.rogersConfig.getRogersURL(),  strBrowser,strLanguage,strGroupName, method);
+	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws  IOException {
+		startSession(TestDataHandler.rogersConfig.getRogersURL(),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }

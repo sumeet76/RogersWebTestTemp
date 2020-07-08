@@ -33,8 +33,8 @@ public class RogersCH_TC_024_IgniteRHP_ValidateRHPDasboardTest extends BaseTestC
 
     @Test
     public void checkSolarisRHPDasboard() {
-	/*	reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		rogers_home_page.clkEasyLogin();*/
+		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
@@ -43,17 +43,23 @@ public class RogersCH_TC_024_IgniteRHP_ValidateRHPDasboardTest extends BaseTestC
         rogers_login_page.setPasswordIFrame(TestDataHandler.igniteRHP.getPassword());
  		reporter.reportLogWithScreenshot("Enter the account credentails");
  		rogers_login_page.clkSignInIFrame();
- 		reporter.reportLogWithScreenshot("Skip popup");
- 		rogers_login_page.clkSkipIFrame();
- 		rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount(TestDataHandler.igniteRHP.accountDetails.getBan()); 
-		reporter.reportLogWithScreenshot("Launched the Account Page");
-        rogers_solaris_rhp_dashboard_validation_page.clkSolarisRHPBadge(TestDataHandler.rogersConfig.getBrowser()); 
+    	if(rogers_login_page.verifyLoginFailMsgIframe())
+    	{
+    		reporter.reportLogFailWithScreenshot("Login Failed");		
+    	}
+    	else
+    	{
+        reporter.reportLogWithScreenshot("Skip popup");
+        rogers_login_page.clkSkipIFrame();
+        rogers_login_page.switchOutOfSignInIFrame();
+        rogers_account_overview_page.selectAccount(TestDataHandler.solarisInternetAccountWithUsage.accountDetails.getBan());
+        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");
         reporter.softAssert(rogers_solaris_rhp_dashboard_validation_page.verifyConfigureYourCurrentFeatures(),"Verification of Configure Your Current Features link is success","Verification of Configure Your Current Features link is Failed");
         reporter.softAssert(rogers_solaris_rhp_dashboard_validation_page.verfyAccessYourVoicemailSettings(),"Verification of Access Your Voicemail Settings link is success","Verification of Access Your Voicemail Settings link is successFailed");
         reporter.softAssert(rogers_solaris_rhp_dashboard_validation_page.verfyResetYourVoicemailPassword(),"Verification of Reset Your Voicemail Password link is success","Verification of Reset Your Voicemail Password link is success Failed");
-    }
+    	}
+    	}
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//login flow

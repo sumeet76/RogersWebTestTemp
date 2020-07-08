@@ -28,6 +28,9 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//li[@id='Shop-mobileDropdown']")
 	WebElement btnShopMobile;	
 	
+	@FindBy(xpath="//a[@class='dds-header-mobilenav']")
+	WebElement lnkNavMobile;
+	
 	@FindBy(xpath = "//a[@class='m-navLink']//span[@class='m-navLink__chevron rds-icon-expand']")
 	WebElement btnExistingCustomerShop;
 	
@@ -38,13 +41,16 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/web/consumer/ignite-bundles/tv-internet']")
 	WebElement lnkIgniteTV;
 	
+	@FindBy(xpath = "//li[@class='dds_o-mobileNavDropdown__item']//a[@href='/web/consumer/ignite-bundles/tv-internet']")
+	WebElement lnkgniteTVMobile;	
+	
 	@FindBy(xpath = "//li[@class='dds_o-mobileNavDropdown__item']/a[@href='/web/consumer/ignite-bundles/tv-internet']")
 	WebElement lnkIgniteTVMobile;
 	
 	@FindBy(xpath = "//a[@class='m-navLink -dropdown' and contains(text(),'TV Bundles')]")
 	WebElement lnkExistingCustomerIgniteTV;
 		
-	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/internet']")
+	@FindBy(xpath = "//a[@href='/web/consumer/internet']")
 	WebElement lnkInternet;
 	
 	@FindBy(xpath = "//li[@class='dds_o-mobileNavDropdown__item']/a[@href='/consumer/internet']")
@@ -71,7 +77,7 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='rch-modal']//button[@class='ds-button ds-focus ds-active -primary -large']//span[@class='ds-button__copy w-100']")
 	WebElement continueBtnIgniteMultipleAddressLookupSubmit;
 
-	@FindBy(xpath = "	//a[contains(@title,'See available Ignite Bundles') or  contains(@title,'Voyez les offres groupées Élan accessibles')]")
+	@FindBy(xpath = "//a[contains(@title,'See available Ignite Bundles') or  contains(@title,'Voyez les offres groupées Élan accessibles')]")
 	WebElement btnServiceability;
 	//a[@title='Check if Ignite Bundles are available in your area' or @title='Vérifiez si les offres groupées Élan sont disponibles dans votre secteur.']
 	
@@ -121,6 +127,9 @@ public class RogersHomePage extends BasePageClass {
 	WebElement btnIgniteAddressLookupSubmit;		
 	//button[@class='a-btnPrimary']	
 	
+	@FindBy(xpath = "//a[@class='w-100 ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large ng-star-inserted']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']")
+	WebElement lnkOnlyInternet;		
+	
 	@FindBy(xpath = "//ngx-smart-modal[@id='loadingModal']")
 	WebElement popupLoadingFingersciam;
 	
@@ -166,6 +175,9 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='View navigation']")
 	WebElement lnkViewNavigationMobile;
 	
+	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet at your address']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']")
+	WebElement lnkInternetAvailability;
+	
 	/**
 	 * click button add device to a shared plan
 	 * @author Saurav.Goyal 
@@ -183,6 +195,13 @@ public class RogersHomePage extends BasePageClass {
 		reusableActions.clickIfAvailable(btnAddNow, 90);
 	}
 	
+	/**
+	 * Click on myAccount button on the home page
+	 * @author chinnarao.vattam
+	 */	
+	public void clkNavMobile() {
+		reusableActions.getWhenReady(lnkNavMobile,20).click();
+	}
 	
 	/**
 	 * To Click No thanks on welcome back page
@@ -232,6 +251,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkShop() {
+		//reusableActions.staticWait(30000);
 		reusableActions.getWhenReady(btnShop, 90).click();				
 	}
 	
@@ -284,6 +304,14 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public void clkIgniteTV() {
 		reusableActions.getWhenReady(lnkIgniteTV, 30).click();
+	}
+	
+	/**
+	 * Click the Ignite TV option from shop dropdown list
+	 * @author chinnarao.vattam 
+	 */
+	public void clkIgniteTVMobile() {
+		reusableActions.getWhenReady(lnkIgniteTVMobile, 30).click();
 	}
 	
 	/**
@@ -449,6 +477,24 @@ public class RogersHomePage extends BasePageClass {
 	}
 	
 	/**
+	 * Click the OnlyInternet lick to check service availability
+	 * @author chinnarao.vattam
+	 */
+	public void clkOnlyInternet() {
+		reusableActions.getWhenReady(lnkOnlyInternet, 120).click();
+	}
+	
+	
+	/**
+	 * Click the Lookup Submit button to check service availability
+	 * @author chinnarao.vattam
+	 */
+	public void clkIgniteAddressLookupSubmitMobile() {
+		reusableActions.waitForElementVisibility(btnIgniteAddressLookupSubmit,60);
+		reusableActions.executeJavaScriptClick(btnIgniteAddressLookupSubmit);
+	}
+	
+	/**
 	 * Clicks on the 'View Smartphones' button
 	 * @author rajesh.varalli1
 	 */
@@ -530,6 +576,15 @@ public class RogersHomePage extends BasePageClass {
 	public void clkSignInMobile() {		
 		reusableActions.getWhenVisible(lnkViewNavigationMobile,30).click();
 		reusableActions.getWhenVisible(lnkSignInMobile, 30).click();
+	}
+	
+	/**
+	 * Click the InternetAvailability link Internet on the page 
+	 * @author chinnarao.vattam
+	 */
+	public void clkInternetAvailability() {	
+		reusableActions.waitForElementVisibility(lnkInternetAvailability,90);
+		reusableActions.getWhenReady(lnkInternetAvailability,30).click();
 	}
 	
 }

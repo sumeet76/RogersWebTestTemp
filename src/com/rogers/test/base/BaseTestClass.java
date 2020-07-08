@@ -56,8 +56,10 @@ import com.rogers.pages.RogersHomePhoneSelectionPage;
 import com.rogers.pages.RogersIgniteTVBuyPage;
 import com.rogers.pages.RogersIgniteTVCreditCheckPage;
 import com.rogers.pages.RogersIgniteTVProfileCreationPage;
+import com.rogers.pages.RogersInternetCreditCheckPage;
 import com.rogers.pages.RogersInternetDashboardPage;
 import com.rogers.pages.RogersInternetPackageSelectionPage;
+import com.rogers.pages.RogersInternetProfilePage;
 import com.rogers.pages.RogersInternetUsagePage;
 import com.rogers.pages.RogersLegacyBundleBuyPage;
 import com.rogers.pages.RogersLinkAccountPage;
@@ -151,7 +153,9 @@ public class BaseTestClass {
 	protected RogersIgniteTVBuyPage rogers_igniteTV_buy_page;
 	protected RogersOrderReviewPage rogers_order_review_page;
 	protected RogersIgniteTVProfileCreationPage rogers_igniteTV_profile_creation_page;
+	protected RogersInternetProfilePage rogers_ineternet_profile_page;
 	protected RogersIgniteTVCreditCheckPage rogers_igniteTV_credit_check_page;
+	protected RogersInternetCreditCheckPage rogers_internet_credit_check_page;
 	protected RogersHomePhoneSelectionPage rogers_home_phone_selection_page;
 	protected RogersLegacyBundleBuyPage rogers_legacy_bundle_buy_page;
 	protected RogersTechInstallPage rogers_tech_install_page;
@@ -406,6 +410,8 @@ public class BaseTestClass {
 			rogers_solaris_tv_channels_and_themepacks_page = new RogersSolarisTVChannelsAndThemepacksPage(driver);
 			rogers_register_page = new RogersRegisterPage(driver);
 			rogers_home_phone_port_in_page = new RogersHomePhonePortInPage(driver);
+			rogers_ineternet_profile_page= new RogersInternetProfilePage(driver);
+			rogers_internet_credit_check_page= new RogersInternetCreditCheckPage(driver);
 			break;
 			
 		case "connectedhome_legacylogin":
