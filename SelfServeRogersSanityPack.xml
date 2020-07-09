@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="Self Serve Rogers.com Tests SS" parallel="classes" thread-count="1">
-<parameter name="strBrowser" value="saucechrome"/>
+<parameter name="strBrowser" value="chrome"/>
 <parameter name="strLanguage" value="en"/>
 <parameter name="strType" value="seq"/>
 <listeners>
