@@ -349,7 +349,17 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkTVBadge() {	
-		reusableActions.getWhenReady(btnTVBadge, 180).click();	
+		reusableActions.getWhenReady(btnTVBadge, 180).click();
+		reusableActions.staticWait(10000);
+	}
+	
+	/**
+	 * Clicks on the 'TV Badge' option on the dash board
+	 * @author chinnarao.vattam
+	 */
+	public void clkTVBadgeMobile() {	
+		reusableActions.getWhenReady(btnTVBadge,180);
+		reusableActions.executeJavaScriptClick(btnTVBadge);
 	}
 	
 	/**
@@ -389,7 +399,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void selectAccount(String strAccountNumber) {
-			reusableActions.clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 20);
+			reusableActions.clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 30);
 	}
 	
 	/**

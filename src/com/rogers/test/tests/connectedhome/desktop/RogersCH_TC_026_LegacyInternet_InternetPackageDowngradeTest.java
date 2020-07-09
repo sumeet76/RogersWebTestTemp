@@ -42,11 +42,18 @@ public class RogersCH_TC_026_LegacyInternet_InternetPackageDowngradeTest extends
 		rogers_login_page.setPasswordIFrame(TestDataHandler.legacyInternetAccount.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
-		reporter.reportLogWithScreenshot("Skip popup");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
-		reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.selectAccount(TestDataHandler.legacyInternetAccount.getAccountDetails().getBan());
+    	if(rogers_login_page.verifyLoginFailMsgIframe())
+    	{
+    		reporter.reportLogFailWithScreenshot("Login Failed");			
+    	}
+    	else
+    	{
+        reporter.reportLogWithScreenshot("Skip popup");
+        rogers_login_page.clkSkipIFrame();
+        rogers_login_page.switchOutOfSignInIFrame();
+        rogers_account_overview_page.selectAccount(TestDataHandler.legacyInternetAccount.accountDetails.getBan());
+        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+        reporter.reportLogWithScreenshot("Launched the Account Page");
 		rogers_account_overview_page.clkLegacyInternetBadge(TestDataHandler.rogersConfig.getBrowser());
 		reporter.reportLogWithScreenshot("Launched the Internet Dashboard Page");
 		rogers_account_overview_page.clkInternetPopup(TestDataHandler.rogersConfig.getBrowser()); 
@@ -55,6 +62,7 @@ public class RogersCH_TC_026_LegacyInternet_InternetPackageDowngradeTest extends
 		rogers_internet_package_selection_page.selectInternetPackage(TestDataHandler.legacyInternetAccount.getAccountDetails().getDowngradePlanEn(),TestDataHandler.legacyInternetAccount.getAccountDetails().getDowngradePlanFr(), TestDataHandler.rogersConfig.getLanguage());
 		reporter.hardAssert(rogers_internet_package_selection_page.verifyDowngradeWaysToBuyBox(), "Downgrade ways popup has launched", "Downgrade has failed");
 	}
+    	}
 
 	
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})

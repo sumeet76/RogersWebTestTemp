@@ -55,12 +55,15 @@ public class RogersCH_TC_034_IginteTV_DoublePlayBuyTest extends BaseTestClass {
 
     @Test
     public void checkBuyDigitalTVOffer() {
-       	reporter.reportLogWithScreenshot("Launched the Home Page");
+    	reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();
+    	reporter.reportLogWithScreenshot("Launched the Home Page");
     	rogers_home_page.clkShop(); 
     	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
     	rogers_home_page.clkIgniteTV();
-    	rogers_home_page.verifyIgnitepage();
-    	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+    	
+        reporter.hardAssert(rogers_home_page.verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
+       	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	rogers_home_page.clkServiceability();
     	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
     	rogers_home_page.clkAddressCheck();
@@ -71,26 +74,30 @@ public class RogersCH_TC_034_IginteTV_DoublePlayBuyTest extends BaseTestClass {
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
-        /*rogers_igniteTV_buy_page.verifyOptNewPhone();
+        
+        /*reporter.hardAssert(rogers_igniteTV_buy_page.verifyOptNewPhone(),"4KTV radio button is availabe","4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the port-in popup");
         rogers_igniteTV_buy_page.selectOptNewPhone();
         rogers_igniteTV_buy_page.clickOptPhone();
         rogers_igniteTV_buy_page.verifyHomePhone();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
         rogers_igniteTV_buy_page.clkHomePhone();*/
-        rogers_igniteTV_buy_page.verify4KTV();
+        
+        reporter.hardAssert(rogers_igniteTV_buy_page.verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
         rogers_igniteTV_buy_page.set4KTV();
         reporter.reportLogWithScreenshot("4k TV selected");
         rogers_igniteTV_buy_page.clkCheckout();
-        rogers_igniteTV_profile_creation_page.verifyProfilePage();
+        
+        reporter.hardAssert(rogers_igniteTV_profile_creation_page.verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
         rogers_igniteTV_profile_creation_page.setEmail();
         rogers_igniteTV_profile_creation_page.setFirstname();
         rogers_igniteTV_profile_creation_page.setLastName();
         rogers_igniteTV_profile_creation_page.setPhone();
         rogers_igniteTV_profile_creation_page.clkSubmitProfile();
-        rogers_igniteTV_credit_check_page.verifyCreditEvalutionPage();
+        
+        reporter.hardAssert(rogers_igniteTV_credit_check_page.verifyCreditEvalutionPage(),"Credit Evalution page has Launched","Credit Evalution page has not Launched");
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
         rogers_igniteTV_credit_check_page.selectDOBYear();
         rogers_igniteTV_credit_check_page.selectDOBMonth();
@@ -111,12 +118,13 @@ public class RogersCH_TC_034_IginteTV_DoublePlayBuyTest extends BaseTestClass {
         rogers_igniteTV_credit_check_page.clkCreditConsent();
         reporter.reportLogWithScreenshot("Passport Details");
        rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
-/*        rogers_home_phone_selection_page.verifyPhoneNumberPage();
+/*      reporter.hardAssert(rogers_home_phone_selection_page.verifyPhoneNumberPage(),"Ignite page has Launched","Ignite page has not Launched");
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
         rogers_home_phone_selection_page.clkPhoneNumberGenerator(); 
         rogers_home_phone_selection_page.clkChosePhoneNumber(); 
         rogers_home_phone_selection_page.clkContinueHomePhoneSelection();*/ 
-       rogers_tech_install_page.verifyTechInstallPage(); 
+       
+       reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
        reporter.reportLogWithScreenshot("Launched the tech install page");
        //rogers_tech_install_page.clkPersonalizedInstall();
        rogers_tech_install_page.selSelffinstallDateAndTime();
@@ -128,7 +136,8 @@ public class RogersCH_TC_034_IginteTV_DoublePlayBuyTest extends BaseTestClass {
        rogers_tech_install_page.clkTechInstalConsent();
        reporter.reportLogWithScreenshot("tech install details");
        rogers_tech_install_page.clkTechInstallContinue();
-        rogers_payment_options_page.verifyPaymentModepage();
+       
+        reporter.hardAssert( rogers_payment_options_page.verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
         rogers_payment_options_page.selectPaymentMode("Pre-authorized Credit Card");
         rogers_payment_options_page.switchToCreditCardIFrame();
@@ -139,14 +148,16 @@ public class RogersCH_TC_034_IginteTV_DoublePlayBuyTest extends BaseTestClass {
         rogers_payment_options_page.selectExpiryYear(); 
         reporter.reportLogWithScreenshot("Payment options Details");
         rogers_payment_options_page.clkPaymentConfirm();
-        rogers_order_review_page.verifyAgreementPage();
+       
+        reporter.hardAssert( rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
-        rogers_order_review_page.verifyAgreement();
+        
+        reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
         rogers_order_review_page.clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
         rogers_order_review_page.clkSubmit();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");      
+        reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");      
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
     }
 

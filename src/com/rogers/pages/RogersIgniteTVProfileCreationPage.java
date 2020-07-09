@@ -147,6 +147,15 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	public void clkSubmitProfile() {
 		reusableActions.getWhenReady(btnProfielSubmit, 120).click();
 	}
+	
+	/**
+	 * Click the Submit button on the profile page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkSubmitProfileMobile() {
+		reusableActions.waitForElementVisibility(btnProfielSubmit, 120);
+		reusableActions.executeJavaScriptClick(btnProfielSubmit);
+	}
 
 	/**
 	 * To verify the abandon popup while leaving the flow 
