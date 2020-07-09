@@ -35,7 +35,11 @@ public class Mobile_RogersCH_TC_003_Internet_BuyInternetOfferTest extends BaseTe
 
     @Test
     public void checkBuyInternetOfferMobile() throws InterruptedException {
-    	reporter.reportLogWithScreenshot("Launched the Home Page");
+		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();
+		reporter.reportLogWithScreenshot("Launched the Home Page");
+		rogers_home_page.clkNavMobile();
+		reporter.reportLogWithScreenshot("Launched the Navgation card");
     	rogers_home_page.clkShopMobile(); 
     	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
     	rogers_home_page.clkInternetMobile();
