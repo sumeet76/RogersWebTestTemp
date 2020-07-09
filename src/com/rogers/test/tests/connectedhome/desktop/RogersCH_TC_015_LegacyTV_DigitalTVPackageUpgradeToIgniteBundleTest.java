@@ -66,18 +66,24 @@ public class RogersCH_TC_015_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
 		rogers_login_page.setPasswordIFrame(TestDataHandler.digitalTVUpgradeToIgnite.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
-		reporter.reportLogWithScreenshot("Skip popup");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
-		rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getBan());
-		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed"); 
+    	if(rogers_login_page.verifyLoginFailMsgIframe())
+    	{
+    		reporter.reportLogFailWithScreenshot("Login Failed");		
+    	}
+    	else
+    	{
+        reporter.reportLogWithScreenshot("Skip popup");
+        rogers_login_page.clkSkipIFrame();
+        rogers_login_page.switchOutOfSignInIFrame();
+        rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVUpgradeToIgnite.accountDetails.getBan());
+        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+        reporter.reportLogWithScreenshot("Launched the Account Page"); 
 		 rogers_home_page.clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
 		 rogers_home_page.clkIgniteTVExistingCustomer();
     	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	rogers_home_page.clkNoThnx();
     	rogers_home_page.clkServiceability();
-    	//rogers_home_page.clkServiceabilityMigration();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");    	
         rogers_home_page.clkUseThisAddress();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
@@ -102,7 +108,8 @@ public class RogersCH_TC_015_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
         rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
         rogers_home_phone_selection_page.clkContinueHomePhoneSelectionMigration(); 
-        rogers_tech_install_page.verifyTechInstallPage(); 
+         
+        reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
         rogers_tech_install_page.selTechInstalStartDate();
         reporter.reportLogWithScreenshot("Selected Start date for Installation");
@@ -118,19 +125,20 @@ public class RogersCH_TC_015_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
         rogers_tech_install_page.setEmailMigration();        
         reporter.reportLogWithScreenshot("tech install details");
         rogers_tech_install_page.clkTechInstallContinue();
-        reporter.reportLogWithScreenshot("Launched the payment options page");
+        reporter.reportLogWithScreenshot("Launched the payment options page");        
+        rogers_payment_options_page.clkPaymentConfirmExistingCustomer();        
+    	reporter.hardAssert(rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
+		reporter.reportLogWithScreenshot("Launched the order review page");
+		
+		reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
         
-        rogers_payment_options_page.clkPaymentConfirmExistingCustomer();
-        
-        rogers_order_review_page.verifyAgreementPage();
-        reporter.reportLogWithScreenshot("Launched the order review page");
-        rogers_order_review_page.verifyAgreement();
-        rogers_order_review_page.clkAcceptenceCheckbox();
+        rogers_order_review_page.clkAcceptenceCheckboxMigration();
         reporter.reportLogWithScreenshot("Agreement details");
         rogers_order_review_page.clkSubmit();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");      
+        reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");      
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
+    	}
 	}
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})

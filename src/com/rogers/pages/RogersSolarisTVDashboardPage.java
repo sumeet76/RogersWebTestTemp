@@ -213,7 +213,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 */
 	public boolean clklAndVerifyViewPDF() {
 		String mainWindow = driver.getWindowHandle();
-		reusableActions.getWhenReady(lnkViewAsPDF,60).click();
+		reusableActions.getWhenReady(lnkViewAsPDF,90).click();
 		reusableActions.waitForNumberOfWindowsToBe(2);
 		reusableActions.switchToNewWindow(mainWindow);
 		//the page is moving to new window
@@ -306,18 +306,20 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 */
 	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
 		By packageNameLocator = By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'owl-item')]//ins[@translate='global.cta.select']");
+		WebElement pkg = driver.findElement(packageNameLocator);
 		if(reusableActions.isElementVisible(packageNameLocator,150))
 		{		
-		reusableActions.getWhenReady(packageNameLocator, 90).click();
+		reusableActions.getWhenReady(packageNameLocator, 120);
+		reusableActions.executeJavaScriptClick(pkg);
 		 }
 	   else
 		{
-	    reusableActions.getWhenReady(imgNext, 90).click();  
-	    reusableActions.isElementVisible(packageNameLocator,90);
-		reusableActions.getWhenReady(packageNameLocator, 90).click();
+	    reusableActions.getWhenReady(imgNext, 120);
+	    reusableActions.executeJavaScriptClick(imgNext);
+	    reusableActions.getWhenReady(pkg, 120);
+	    reusableActions.executeJavaScriptClick(pkg);
 		}
 	}
-
 	
 	/**
 	 * Click the ChangeTV Package button on solaris TV dashboard page
@@ -422,7 +424,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkOutChannelTwo() {		
-		reusableActions.getWhenReady(btnSelectChannelTwo, 60).click();
+		reusableActions.getWhenReady(btnSelectChannelTwo, 90).click();
 	}
 
 	/**

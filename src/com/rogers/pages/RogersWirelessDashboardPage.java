@@ -136,7 +136,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy (xpath = "//span[contains(text(),'Done') or contains(text(),'Termin')]")
 	WebElement btnResetVMPwdDone;
 	
-	@FindBy(xpath = "//button/span[@translate='internet_change']")
+	@FindAll({
+	@FindBy(xpath = "//ins[@translate='plans.btnText']"),
+	@FindBy(xpath = "//button/span[@translate='internet_change']")})
 	WebElement btnChangePlan;
 	
 	@FindBy(xpath = "//span[@translate='mppc_entry_1_change_current_plan']")
@@ -267,7 +269,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy (xpath = "//div[@class='floatingWirelessDashboard bcStatic']")
 	WebElement btnLiveChat;
 	
-	@FindBy (xpath = "//div[@class='bc-frame-title']")
+	@FindAll({
+	@FindBy (xpath = "//app-welcome-rogers"),
+	@FindBy (xpath = "//div[@class='bc-frame-title']")})
 	WebElement headerLiveChat;
 	
 	@FindBy (xpath = "//div[@class='add-data']/span[contains(text(),'Speed Pass') or contains(text(),'Accès Rapido')]")
@@ -442,6 +446,29 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//span[@translate='fdmModule.fdm.dataManager']")
 	WebElement btnDataManagerCTN;
+
+	private By lblMyPlanDetails;
+		
+	@FindBy(xpath = "//li/span[contains(text(),'Data Access:') or contains(text(),'Accès aux données :')]")
+	WebElement lblDataAccess;
+		
+	@FindBy(xpath = "//li/span[contains(text(),'Stream Saver:') or contains(text(),'Maximiseur de données :')]")
+	WebElement lblStreamSaver;
+		
+	@FindBy(xpath = "//li/span[contains(text(),'Data Alert:') or contains(text(),'Alertes de données :')]")
+	WebElement lblDataAlert;
+		
+	@FindBy(xpath = "//li/span[@translate='fdmModule.dataManager.dataManager']")
+	WebElement lbldataManager;
+
+	@FindBy(xpath = "//span[contains(text(),'Change my phone number') or contains(text(),'Changer mon numéro de téléphone')]")
+	WebElement lnkChangeMyPhoneNumber;
+
+	@FindBy(xpath = "//ds-switch[@title='Data access for DONOTUSE' or @title='Accès aux données pour DONOTUSE']//Span[text()='ON' or text()='OUI']")
+	WebElement divDataAccessOn;
+	
+	@FindBy(xpath = "//ds-switch[@title='Data access for DONOTUSE' or @title='Accès aux données pour DONOTUSE']//Span[text()='OFF' or text()='NON']")
+	WebElement divDataAccessOFF;
 	
 	/**
 	 * To click the link of lost or stolen device on wireless dashboard page
@@ -541,7 +568,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(tabs.get(1));
 		String urlOpened = driver.getCurrentUrl();
-		return urlOpened.equals(expectedUrl);
+		return urlOpened.contains(expectedUrl);
 	} 
 	
 	/**
@@ -1235,7 +1262,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @return true if the overlay opened otherwise false
 	 * @author ning.xue
 	 */
-	public boolean verifyLiveChatOverlayOpened() {
+	public boolean verifyLiveChatOverlayOpened() {	
+		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(getDriver().findElement(By.xpath("//iframe[@id='va-iframe']")), 20);
 		return reusableActions.isElementVisible(headerLiveChat, 30);
 	} 
 	
@@ -1367,6 +1395,15 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public void clkLinkUpgradeMyDevice() {
 		reusableActions.getWhenReady(lnkUpgradeMyDevice, 30).click();
+	}
+	
+	/**
+	 * Check link upgrade My device in device section
+	 * @author Mirza.Kamran
+	 * @return true if the element is visible else false
+	 */
+	public boolean verifyLinkUpgradeMyDevice() {
+		return reusableActions.isElementVisible(lnkUpgradeMyDevice);
 	}
 	
 	/**
@@ -1980,7 +2017,91 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		
 	}
 
+	/**
+	 * Checks if the change plan button is displayed
+	 * @return true if the button is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyChangePlanButtonDisplayed() {		
+		return reusableActions.isElementVisible(btnChangePlan);
+	}
 
+	/**
+	 * Checks if the change plan button is displayed
+	 * @return true if the button is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyMyPlanDetailsDisplayed() {		
+		return reusableActions.isElementVisible(lblMyPlanDetails);
+	}
 	
-	
+	/**
+	 * Checks if the change plan button is displayed
+	 * @return true if the button is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyChangeMyNumberDisplayed() {		
+		return reusableActions.isElementVisible(lnkChangeMyPhoneNumber);
+	}
+
+	public boolean verifyStreamSaverDisplayed() {		
+		return reusableActions.isElementVisible(lblStreamSaver);
+	}
+
+	public boolean verifyDataAccessDisplayed() { 
+		return reusableActions.isElementVisible(lblDataAccess);
+	}
+
+	public boolean verifyDataAlertDisplayed() {
+		return reusableActions.isElementVisible(lblDataAlert);
+	}
+
+	public boolean verifyDataManagerDisplayed() {
+		return reusableActions.isElementVisible(lbldataManager);
+	}
+
+	/**
+	 * Checks if the data manager ON is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isDataAccessOnDisplayed() {		
+		return reusableActions.isElementVisible(divDataAccessOn);
+	}
+
+	/**
+	 * Clicks on data access ON button
+	 * @author Mirza.Kamran
+	 */
+	public void clkDataAccessOn() {
+		reusableActions.getWhenReady(divDataAccessOFF).click();
+		
+	}
+
+	/**
+	 * Checks if the data manager OFF is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isDataAccessOFF() {
+		return reusableActions.isElementVisible(divDataAccessOFF);
+	}
+
+	/**
+	 * Clicks on data access OFF button
+	 * @author Mirza.Kamran
+	 */
+	public void clkDataAccessOff() {
+		reusableActions.getWhenReady(divDataAccessOn).click();
+		
+	}
+
+	/**
+	 * Checks if the data access is displayed
+	 * @return true if the data access is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isDataAccessDisplayed() {
+		return reusableActions.isElementVisible(lblDataAccess);
+	}
 }

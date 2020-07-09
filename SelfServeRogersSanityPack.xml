@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Self Serve Rogers.com Tests SS" parallel="classes" thread-count="2">
+<suite name="Rogers.com Sanity Tests SS" parallel="classes" thread-count="2">
 <parameter name="strBrowser" value="saucechrome"/>
 <parameter name="strLanguage" value="en"/>
 <parameter name="strType" value="seq"/>
@@ -22,7 +22,6 @@
 	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE"></class>
 </classes>          																					
 </test>
-
 <test name="Rogers self serve sanity test group2" enabled="true">
 <classes>				             
 	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_032_Postpaid_ChangeBillingAddress"></class>

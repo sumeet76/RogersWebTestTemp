@@ -28,7 +28,7 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(xpath = "//iframe[contains(@src,'/web/totes/easylogin/signin')]")
 	WebElement fraSignIn;
 	
-	@FindBy (xpath = "//span[contains(text(),'is not recognized') or contains(text(),'entré n’est pas reconnu')]")
+	@FindBy (xpath = "//img[@src='assets/images/error_warning.png']")
 	WebElement failLoginMsg;
 
 	@FindBy(xpath = "//button[text()='Skip' or text()='Continuer']")
@@ -61,6 +61,15 @@ public class RogersLoginPage extends BasePageClass {
 	public void switchToSignInIFrame() {
 		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraSignIn, 100);
 	}
+	
+	/**
+	 * Is sign in frame displayed
+	 * @return boolean, true if sign-in iframe is displayed, otherwise false.
+	 * @author Mirza.Kamran
+	 */
+	 public boolean isSignInFrameDisplayed() {
+		 return reusableActions.isElementVisible(fraSignIn);
+	 }
 	
 	/**
 	 * Enter the user name on Sign in frame
@@ -96,7 +105,7 @@ public class RogersLoginPage extends BasePageClass {
 	 * @return true if login fail message is displayed, otherwise false.
 	 */
 	public Boolean verifyLoginFailMsgIframe() {
-		return reusableActions.isElementVisible(failLoginMsg, 30);
+		return reusableActions.isElementVisible(failLoginMsg, 10);
 	}
 
 	/**

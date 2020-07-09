@@ -132,6 +132,7 @@ public class TestDataHandler {
 	public static AccountData tupeloAccount;
 	public static Config bfaOneViewConfig;
 	public static PaymentDetails bfaOneViewPaymentInfo;
+	public static AccountData tc0610;
 
 	public static void dataInit (String strApplicationType) {	    	
     	if(strApplicationType.toUpperCase().trim().endsWith("CH")) {	    	
@@ -266,6 +267,7 @@ public class TestDataHandler {
     	tc45LegacyInternetAccount = YamlHandler.getAccountData("tc45LegacyInternetAccount");
     	tc40SHMAccount = YamlHandler.getAccountData("tc40SHMAccount");
     	tc47TupeloAccount = YamlHandler.getAccountData("tc47TupeloAccount");
+    	tc0610 = YamlHandler.getAccountData("tc06_10DemolineSEPlanMultiLine");
 	}
 	
 	private static void buyFlowsDataInit() {

@@ -1,6 +1,7 @@
 package com.rogers.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -554,6 +555,23 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void setCurrentPassword(String strCurrentPass) {
 		
+		reusableActions.getWhenReady(divCurrentPassword,30).click();
+		//JavascriptExecutor jse = (JavascriptExecutor)getDriver();
+		//jse.executeScript("arguments[0].value='"+ strCurrentPass +"';", divCurrentPassword);
+		reusableActions.getWhenReady(divCurrentPassword,30).click();
+		reusableActions.getWhenReady(inputCurrentPassword,2).sendKeys(strCurrentPass);
+	}
+	
+	/**
+	 * Set current password for change password flow.
+	 * @param strCurrentPass String, string of current password
+	 * @author Mirza.Kamran
+	 */
+	public void setCurrentPasswordMobile(String strCurrentPass) {
+		//reusableActions.getWhenReady(divCurrentPassword,30);
+		JavascriptExecutor jse = (JavascriptExecutor)getDriver();
+		jse.executeScript("arguments[0].value='"+ strCurrentPass +"';", divCurrentPassword);
+		reusableActions.executeJavaScript("arguments[0].value='Test'");
 		reusableActions.getWhenReady(divCurrentPassword,30).click();
 		reusableActions.getWhenReady(divCurrentPassword,30).click();
 		reusableActions.getWhenReady(inputCurrentPassword,2).sendKeys(strCurrentPass);

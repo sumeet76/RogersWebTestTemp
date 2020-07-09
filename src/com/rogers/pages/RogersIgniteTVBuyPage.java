@@ -433,8 +433,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * Click 4K TV radio button on Ignite-bundles/tv-internet page
 	 * @author chinnarao.vattam
 	 */
-	public void set4KTV() {		
-		reusableActions.getWhenReady(rdo4KTV, 120).click();
+	public void set4KTV() {	
+		reusableActions.getWhenReady(rdo4KTV, 120);
+		reusableActions.scrollToElement(rdo4KTV);		
+		reusableActions.executeJavaScriptClick(rdo4KTV);
 	}
 	
 	/**

@@ -24,7 +24,6 @@ public class RogersTechInstallPage extends BasePageClass {
 
 	@FindBy(xpath ="//input[@id='26']/ancestor::label[@class='a-radio']")
 	WebElement rdoTechInstallSlot;
-	//label[@for='slot-13']/ancestor::td[@class='monday']
 	
 	@FindBy(xpath ="//select[@id='preferredTimeSlot']")
 	WebElement selPreferredTimeSlot;
@@ -79,17 +78,12 @@ public class RogersTechInstallPage extends BasePageClass {
 	
 	@FindBy(xpath ="//label[@for='ds-checkbox-id-1']")
 	WebElement chkTechInstalConsent;
-	//div[@class='self-install-concern']//input[@name='consent']
-	//input[@id='deliveryConcern']
-	//label[@for='deliveryConcern']
 	
 	@FindBy(xpath ="//label[@for='ds-checkbox-id-0']")
 	WebElement chkTechInstalConsentExistingCustomer;
 	
 	@FindBy(xpath ="//span[@translate='global.checkout.fulfillment.confirm']")
 	WebElement btnTechInstallContinue;
-	//div[@class='buttons-block hidden-xs']//button[@class='ute-btn-primary']")
-	//button[@class='ute-btn-primary']
 	
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
@@ -102,14 +96,12 @@ public class RogersTechInstallPage extends BasePageClass {
 	
 	@FindBy(xpath = "(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[3]")
 	WebElement clkChevron;
-	//i[@class='glyphicon glyphicon-chevron-right']
 	
 	@FindBy(xpath = "//label[@class='ute-label-text']")
 	WebElement clkIUnderStand;
 
 	@FindBy(xpath = "//i[@class='rch-icon-calendar']")
 	WebElement clkCalendarIcon;
-	//span[@class='ute-icon-calendar-icon']
 	
 	@FindBy(xpath ="//i[@class='rch-icon-calendar']")
 	WebElement imgTechInstallSlot;
@@ -125,7 +117,6 @@ public class RogersTechInstallPage extends BasePageClass {
 	
 	@FindBy(xpath ="//h2[@translate='global.checkout.fulfillment.title']")
 	WebElement txtTechInstalpage;
-	//ins[@translate='global.label.personalizedInstallation']
 	
 	/**
 	 * To click on the chevron on the tech Install page

@@ -107,7 +107,14 @@ public class RogersInternetUsagePage extends BasePageClass {
 	 */
 	public void clkUsageAlerts() {		
 		reusableActions.clickWhenReady(btnUsageAlerts,20);
-
 	}
 
+	/**
+	 * Click on the Usage Alerts link on Solaris Internet usage page
+	 * @return true if the Internet Usage Alerts heading displayed; else false
+	 * @author Chinnarao.Vattam
+	 */
+	public boolean  verifyUsageAlerts() {		
+		return reusableActions.isElementVisible(btnUsageAlerts,20);
+	}
 }

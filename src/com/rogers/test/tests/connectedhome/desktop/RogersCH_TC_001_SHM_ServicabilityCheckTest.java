@@ -33,6 +33,8 @@ public class RogersCH_TC_001_SHM_ServicabilityCheckTest extends BaseTestClass {
 
     @Test
     public void checkServicabilityRHMTest() throws InterruptedException {
+		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();
     	reporter.reportLogWithScreenshot("Launched the Home Page");
     	rogers_home_page.clkShop(); 
     	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Home Monitering");
