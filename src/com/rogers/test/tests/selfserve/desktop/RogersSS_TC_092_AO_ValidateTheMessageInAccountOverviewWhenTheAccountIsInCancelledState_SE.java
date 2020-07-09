@@ -31,14 +31,15 @@ public class RogersSS_TC_092_AO_ValidateTheMessageInAccountOverviewWhenTheAccoun
 		closeSession();
 	}
 	/**
-	 * "1. Launch Rogers.com
+1. Launch Rogers.com
 2. Click on Sign-in
 3. Sign-in with valid credentials
 4. Validate the message displayed at the top of the billing widget in the account overview page
 5. Validate the message links
 6. Validate the billing widget below the cancelled account message
 7. Validate the subsription widget 
-"	"1. Rogers.com up and running
+
+1. Rogers.com up and running
 2. Sign-in pop-up will be displayed
 3. Account overview page will be displayed
 4. Account cancelled message should be displayed as per mock screen
@@ -53,8 +54,8 @@ public class RogersSS_TC_092_AO_ValidateTheMessageInAccountOverviewWhenTheAccoun
         reporter.reportLog("Home Page Launched");
     	rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(TestDataHandler.tc013132.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.tc013132.getPassword());
+        rogers_login_page.setUsernameIFrame(TestDataHandler.tc6269.getUsername());
+        rogers_login_page.setPasswordIFrame(TestDataHandler.tc6269.getPassword());
         reporter.reportLogWithScreenshot("Login Credential is entered.");
         rogers_login_page.clkSignInIFrame();
         rogers_login_page.clkSkipIFrame();
@@ -65,7 +66,26 @@ public class RogersSS_TC_092_AO_ValidateTheMessageInAccountOverviewWhenTheAccoun
         	rogers_account_overview_page.selectAccount(TestDataHandler.tc013132.getAccountDetails().getBan());       
         }
         reporter.reportLogWithScreenshot("Account overview page.");
-        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Passed", "Login Failed");
+        reporter.hardAssert(rogers_account_overview_page.isAccountCancelledMessageDisplayed(),
+        		"The cancelled account message is displayed as expected above the billing widget",
+        		"The account cancelled message is NOT displayed ");
+        reporter.reportLogWithScreenshot("Account cancelled message");
+        reporter.softAssert((rogers_account_overview_page.isViewBillingAndPaymentHistoryDisplayedInsideAccountCancelledMessage()
+        		&& rogers_account_overview_page.isManageProfileLinkDisplayedInsideAccountCancelledMessage()),
+        		"The account cancelled message is displayed with “View Billing & Payment History” and “Manage Profile” as expected",
+        		"The account cancelled message is NOT displayed with “View Billing & Payment History” and “Manage Profile” as expected");
+        reporter.softAssert((rogers_account_overview_page.isViewBillDisplayed()
+        		&& rogers_account_overview_page.isLnkSetAutoPaymentDisplayed()
+        		&& rogers_account_overview_page.isLnkPaymentHistoryDisplayed()),
+        		"The View Bill, Payment history, set up autopayment links displayed",
+        		"The View Bill, Payment history, set up autopayment links  NOt displayed");
+        common_business_flows.scrollToBottomOfWebPage();
+        reporter.reportLogWithScreenshot("Checking CTN or other services");
+        reporter.softAssert(rogers_account_overview_page.isCTNNotDisplayed(),
+        		"The cancelled account has no ctns or services",
+        		"The cancelled account is showing ctn's please investigate");
+        
+        reporter.reportLogWithScreenshot("CTNs and other services not displayed");
     }
 
   

@@ -1956,7 +1956,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @return true if the chnage data manager is displayed else false
 	 * @author Mirza.Kamran
 	 */
-	public boolean isAddChangeDataManagerDisplayed() {		
+	public boolean isChangeDataManagerDisplayed() {		
 		return reusableActions.isElementVisible(btnChangeDataManager);
 	}
 	
