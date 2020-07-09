@@ -783,7 +783,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @return true if the CC payment option is displayed on account overview, else false
 	 * @author Mirza.Kamran
 	 */
-	public boolean IsCCIsDisplayedOnAccountOverViewPage() {		
+	public boolean isCCDisplayedOnAccountOverViewPage() {		
 		return (reusableActions.isDisplayed(lblAutoPayment)
 			 && reusableActions.isDisplayed(imgCC));
 	}
@@ -964,7 +964,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	/**
 	 * Clicks on view bill if available
 	 * @author Mirza.Kamran
-	 * @return 
+	 * @return true if the view bill is displayed else false
 	 */
 	public boolean isViewBillDisplayed() {
 	return reusableActions.isElementVisible(btnViewYourBill);
