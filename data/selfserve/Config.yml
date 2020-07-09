@@ -1,7 +1,7 @@
 # Config
 ---
-rogersURL: https://www.qa01.rogers.com/
-rogersCIAMUrl: https://qa06-ciam.rogers.com
+rogersURL: https://qa7.rogers.com/consumer/easyloginriverpage
+rogersCIAMUrl: https://qa7.rogers.com/consumer/easyloginriverpage
 browser: chrome
 language: en
 cookieUserName: orphanRegRog12@mailinator.com
