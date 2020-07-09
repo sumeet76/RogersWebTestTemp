@@ -11,7 +11,7 @@
 			class-name="com.rogers.test.listeners.AnnotationTransformer" />
 	</listeners>
 	
-	<test name="TC01-OV-HUP with PPC_Multiline Account_Validate if user is able to place an order in HUP flow and choose a different plan_EN" enabled="false">
+	<test name="TC01-OV-HUP with PPC_Multiline Account_Validate if user is able to place an order in HUP flow and choose a different plan_EN" enabled="true">
 	<classes>
 			<class
 				name="com.rogers.test.tests.buyflowsoneview.RogersBFA_OV_TC01_HUPWithPPCMultiLine_ChooseDifferentPlan_Test">
@@ -19,7 +19,7 @@
 		</classes>
 	</test>
 	
-	<test name="TC02-OV-HUP_Multiline Account_Validate if user is able to place an order in HUP flow with existing plan_EN" enabled="true">
+	<test name="TC02-OV-HUP_Multiline Account_Validate if user is able to place an order in HUP flow with existing plan_EN" enabled="false">
 	<classes>
 			<class
 				name="com.rogers.test.tests.buyflowsoneview.RogersBFA_OV_TC02_HUPMultiLine_ChooseExistingPlan_Test">
@@ -47,6 +47,14 @@
 	<classes>
 			<class
 				name="com.rogers.test.tests.buyflowsoneview.RogersBFA_OV_TC05_HUPWithPPCSingleLine_ChooseDifferentPlan_Test">
+			</class>
+		</classes>
+	</test>
+	
+	<test name="TC06-OV-HUP_Singleline Account_Validate if user is able to place an order in HUP flow with existing plan_EN" enabled="false">
+	<classes>
+			<class
+				name="com.rogers.test.tests.buyflowsoneview.RogersBFA_OV_TC06_HUPSingleLine_ChooseExistingPlan_Test">
 			</class>
 		</classes>
 	</test>

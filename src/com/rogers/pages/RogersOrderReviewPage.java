@@ -215,8 +215,8 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkTermsAgreementCheckbox() {
-		reusableActions.waitForElementVisibility(chbTerms, 100);
-		reusableActions.clickWhenReady(chbTerms,100);
+		reusableActions.waitForElementVisibility(chbTerms, 60);
+		reusableActions.clickIfAvailable(chbTerms,60);
 	}
 
 	/**

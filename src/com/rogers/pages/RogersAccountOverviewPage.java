@@ -514,18 +514,21 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean verifyAndClickWirelessCTN(String strCTN) {
 		strCTN = strCTN.replace("-", "").replace(" ", "");
-		//strCTN = strCTN.substring(0, 3) + "-" + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);
-		strCTN = strCTN.substring(0, 3) + " " + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);		
-		//String strCTNXpath = "//div[@class='myServiceName']//div[contains(text(),'" + strCTN + "')]";
-		String strCTNXpath = "//div[@class='service-container mt-24']//span[contains(text(),'" + strCTN + "')]";
-		//div[@class='service-container mt-24']//span[contains(text(),'416 726-2315')]
-		if(reusableActions.isElementVisible(By.xpath(strCTNXpath))) {
-			reusableActions.scrollToElement(reusableActions.getWhenReady(By.xpath(strCTNXpath)));
-			//reusableActions.javascriptScrollByVisibleElement(reusableActions.getWhenReady(By.xpath(strCTNXpath)));
-			reusableActions.clickWhenReady(By.xpath(strCTNXpath), 120);
-			//reusableActions.scrollToElementAndClick(reusableActions.getWhenReady(By.xpath(strCTNXpath)));
+		String strCTNWithUnderScore = strCTN.substring(0, 3) + "-" + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);	
+		String strCTNWithUnderScoreXpath = "//div[@class='myServiceName']//div[contains(text(),'" + strCTNWithUnderScore + "')]";
+		
+		String strCTNWithoutUnderScore = strCTN.substring(0, 3) + " " + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);	
+		String strCTNWithOutUnderScoreXpath = "//div[@class='service-container mt-24']//span[contains(text(),'" + strCTNWithoutUnderScore + "')]";
+		
+		if(reusableActions.isElementVisible(By.xpath(strCTNWithUnderScoreXpath))) {
+			reusableActions.scrollToElement(reusableActions.getWhenReady(By.xpath(strCTNWithUnderScoreXpath)));
+			reusableActions.clickWhenReady(By.xpath(strCTNWithUnderScoreXpath), 120);
 			return true;
-		} else if (verifyAndClickShareEverythingCTN(strCTN)) {
+		}else if(reusableActions.isElementVisible(By.xpath(strCTNWithOutUnderScoreXpath))){
+			reusableActions.scrollToElement(reusableActions.getWhenReady(By.xpath(strCTNWithOutUnderScoreXpath)));
+			reusableActions.clickWhenReady(By.xpath(strCTNWithOutUnderScoreXpath), 120);
+			return true;
+		}else if (verifyAndClickShareEverythingCTN(strCTN)) {
 			return true;
 		}
 		return false;

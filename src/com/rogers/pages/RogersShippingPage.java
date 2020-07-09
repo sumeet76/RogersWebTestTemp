@@ -98,6 +98,7 @@ public class RogersShippingPage extends BasePageClass {
 		String strEmail = FormFiller.generateEmail();
 		if(reusableActions.isElementVisible(lblMandatoryEmail,60)) {
 			reusableActions.clickWhenReady(lblMandatoryEmail,60);
+			inputEmail.clear();
 			inputEmail.sendKeys(strEmail);
 		}
 	}

@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-
 import com.rogers.pages.base.BasePageClass;
 
 /**
@@ -39,12 +38,16 @@ public class RogersChoosePhonePage extends BasePageClass {
 	WebElement imgSearch;
 	
 	//2nd findby: https://qa06-ciam.rogers.com/
+	//div[@class='uniEligibleDevice ng-scope']
 	@FindAll({
 		@FindBy(xpath = "//div[@res='_add']"),
 		@FindBy(xpath = "//span[text()='$0' or text()='0']/ancestor::section[@class='phoneModel']//div[@res='details_devicemodel' or @res='upgrade']"),
 		@FindBy(xpath = "//span[text()='$0' or text()='0']/ancestor::section[@class='phoneModel']//div[@res='_add']")
 	})
 	WebElement btnAdd;
+	
+	@FindBy(xpath = "//span[@class='-messageFont']")
+	WebElement lblProOntheGo;
 	
 	@FindBy(xpath = "//span[text()='$0' or text()='0']/ancestor::section[@class='phoneModel']//div[@res='details_devicemodel' or @res='upgrade']")
 	List<WebElement> btnZeroUpfrontDeviceDetails;
@@ -54,6 +57,10 @@ public class RogersChoosePhonePage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[@class='choose-ctn-modal']")
 	WebElement lblChooseALine;
+	
+	@FindBy(xpath = "//section[@class='phoneModel']")
+	List<WebElement> deviceModal;
+	
 	
 	/**
 	 * Clicks on the 'Details' button on the first available device
@@ -134,4 +141,27 @@ public class RogersChoosePhonePage extends BasePageClass {
 		}
 	}
 	
+	/**
+	 * This method will check whether the device is pro on the go or not
+	 * @return true if the device is pro on the go else false
+	 * @author Saurav.Goyal
+	 */
+	public boolean checkProOnTheGo() {
+		boolean detailButtonFlag; 
+		for(WebElement element: deviceModal) {
+			if(reusableActions.isElementVisible(element , 30))
+				try {
+					reusableActions.isElementVisible(element.findElement(By.xpath("//div[contains(@class,'button') and (@res='details_devicemodel' or @res='upgrade')]")));
+					detailButtonFlag = true;
+					//reusableActions.isElementVisible(element.findElement(By.xpath("//section[@class='phoneModel']//span[@res='device_eligible']")));
+					reusableActions.isElementVisible(element.findElement(By.xpath("//span[@class='-messageFont']")));
+					return detailButtonFlag;
+				} catch (Exception e) {
+					if(detailButtonFlag = true) {
+						return false;
+					}
+			}
+		}
+		return false;
+	}
 }

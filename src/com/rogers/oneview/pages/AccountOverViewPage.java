@@ -89,7 +89,7 @@ public class AccountOverViewPage  extends BasePageClass {
 	public boolean verifyAndClickWirelessCTN(String strCTN) {
 		strCTN = strCTN.replace("-", "").replace(" ", "");
 		strCTN = "(" + strCTN.substring(0, 3) + ") " + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);		
-		String strCTNXpath = "//div[@class='services-container ng-star-inserted']//div[contains(text(),'" + strCTN + "')]";
+		String strCTNXpath = "//*[contains(text(),'" + strCTN + "')]";
 		reusableActions.clickIfAvailable(By.xpath("//div[@class='rep-notifications permitted']//div[@class='blocker']"));
 		if(reusableActions.isElementVisible(By.xpath(strCTNXpath))) {
 			reusableActions.scrollToElement(reusableActions.getWhenReady(By.xpath(strCTNXpath)));

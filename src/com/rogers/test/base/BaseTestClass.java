@@ -77,7 +77,6 @@ import com.rogers.pages.RogersSHMDashboardPage;
 import com.rogers.pages.RogersSecurePaymentPage;
 import com.rogers.pages.RogersSetPasswordPage;
 import com.rogers.pages.RogersShareEverythingPage;
-import com.rogers.pages.RogersShippingPage;
 import com.rogers.pages.RogersSolarisRHPDashboardPage;
 import com.rogers.pages.RogersSolarisTVChannelsAndThemepacksPage;
 import com.rogers.pages.RogersSolarisTVDashboardPage;

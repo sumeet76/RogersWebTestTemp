@@ -96,15 +96,16 @@ public class TestDataHandler {
 	public static AccountData solarisConsumerGWPRhp;
 	public static AccountData solarisConsumerGWPRhpShm;
 	public static AccountData solarisHTOMigrationSignIn;
-	public static AALData testCase01;
+	public static AALData testCase7;
+	public static HUPData testCase8;
+	public static PPCData testCase9;
 	public static AALData testCase02;
-	public static PPCData testCase03;
-	public static HUPData testCase04;
 	public static HUPData testCase05;
 	public static HUPData testCase06;
 	public static HUPData testCase07;
 	public static PPCData testCase08;
 	public static HUPData testCase09;
+	public static HUPData testCase10;
 	public static HUPData buyFlowsOVtestCase01;
 	public static HUPData buyFlowsOVtestCase02;
 	public static HUPData buyFlowsOVtestCase05;
@@ -272,15 +273,14 @@ public class TestDataHandler {
 		bfaConfig =  YamlHandler.getBFAConfig();
 		sauceSettings = YamlHandler.getSauceSettings("/data/buyflows/SauceSettings.yml");
 		bfaPaymentInfo = YamlHandler.getBFAPaymentDetails();
-    	testCase01 = YamlHandler.getAALdata("tc01AAL");
+		testCase7 = YamlHandler.getAALdata("tc7AAL");
+		testCase8 = YamlHandler.getHUPdata("tc8HUP");
+    	testCase9 = YamlHandler.getPPCdata("tc9PPC");
     	testCase02 = YamlHandler.getAALdata("tc02AAL");
-    	testCase03 = YamlHandler.getPPCdata("tc03PPC");
-    	testCase04 = YamlHandler.getHUPdata("tc04HUP");
     	testCase05 = YamlHandler.getHUPdata("tc05HUP");
     	testCase06 = YamlHandler.getHUPdata("tc06HUP");
-    	testCase07 = YamlHandler.getHUPdata("tc07HUP");
-    	testCase08 = YamlHandler.getPPCdata("tc08PPC");
-    	testCase09 = YamlHandler.getHUPdata("tc09HUP");
+    	testCase10 = YamlHandler.getHUPdata("tc10HUP");
+    	testCase08 = YamlHandler.getPPCdata("tc08PPC");    	
 	}
 	
 	private static void buyFlowsOneViewDataInit() {

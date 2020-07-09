@@ -24,7 +24,7 @@ public class RogersBuildPlanPage extends BasePageClass {
 	List<WebElement> btnAdd;
 
 	@FindAll({
-		@FindBy(xpath = "//span[@class='col-sm-6 pull-right btn button-continue ng-scope']"),
+		//@FindBy(xpath = "//span[@class='col-sm-6 pull-right btn button-continue ng-scope']"),
 		@FindBy(xpath = "//p[@res='_continue']")
 	})
 	WebElement btnContinue;

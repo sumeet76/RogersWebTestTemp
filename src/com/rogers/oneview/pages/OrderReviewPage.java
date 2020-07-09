@@ -116,8 +116,8 @@ public class OrderReviewPage  extends BasePageClass {
 	public void clkAllTermsAgreementCheckboxs() {
 		reusableActions.waitForAllElementsVisible(termsCheckBoxes, 60);
 		for(WebElement element:termsCheckBoxes) {
-			reusableActions.waitForElementVisibility(element, 100);
-			reusableActions.clickWhenReady(element,100);
+			reusableActions.waitForElementVisibility(element, 60);
+			reusableActions.clickWhenReady(element,60);
 		}
 	}
 	

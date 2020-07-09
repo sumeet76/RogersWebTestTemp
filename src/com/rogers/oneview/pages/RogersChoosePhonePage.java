@@ -38,6 +38,9 @@ public class RogersChoosePhonePage extends BasePageClass {
 	@FindBy(xpath = "//input[@id='searchBar']/../span")
 	WebElement imgSearch;
 	
+	@FindBy(xpath = "//section[@class='phoneModel']")
+	List<WebElement> deviceModal;
+	
 	//2nd findby: https://qa06-ciam.rogers.com/
 	@FindAll({
 		@FindBy(xpath = "//div[@res='_add']"),
@@ -134,4 +137,26 @@ public class RogersChoosePhonePage extends BasePageClass {
 		}
 	}
 	
+	/**
+	 * This method will check whether the device is pro on the go or not
+	 * @return true if the device is pro on the go else false
+	 * @author Saurav.Goyal
+	 */
+	public boolean checkProOnTheGo() {
+		boolean detailButtonFlag; 
+		for(WebElement element: deviceModal) {
+			if(reusableActions.isElementVisible(element , 30))
+				try {
+					reusableActions.isElementVisible(element.findElement(By.xpath("//div[contains(@class,'button') and (@res='details_devicemodel' or @res='upgrade')]")));
+					detailButtonFlag = true;
+					reusableActions.isElementVisible(element.findElement(By.xpath("//section[@class='phoneModel']//span[@res='device_eligible']")));
+					return detailButtonFlag;
+				} catch (Exception e) {
+					if(detailButtonFlag = true) {
+						return false;
+					}
+			}
+		}
+		return false;
+	}
 }
