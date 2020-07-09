@@ -227,6 +227,8 @@ public class RogersHomePage extends BasePageClass {
 		reusableActions.getWhenVisible(lnkSignIn, 30).click();
 	}
 	
+	
+	
 	/**
 	 * Click the SignIn button from the top tile bar 
 	 * @author chinnarao.vattam 

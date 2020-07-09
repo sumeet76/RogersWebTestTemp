@@ -63,6 +63,15 @@ public class RogersLoginPage extends BasePageClass {
 	}
 	
 	/**
+	 * Is sign in frame displayed
+	 * @return boolean, true if sign-in iframe is displayed, otherwise false.
+	 * @author Mirza.Kamran
+	 */
+	 public boolean isSignInFrameDisplayed() {
+		 return reusableActions.isElementVisible(fraSignIn);
+	 }
+	
+	/**
 	 * Enter the user name on Sign in frame
 	 * @param strUsername user name to be login
 	 * @author chinnarao.vattam

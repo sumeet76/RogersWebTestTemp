@@ -82,6 +82,15 @@ public class RogersBillingPage extends BasePageClass {
 		
 	}
 	
+	/**
+	 * Verify if the account bill frame is displayed
+	 * @return true if the account has no bill, else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyIfViewBillFrameDisplayed() {
+		return reusableActions.isElementVisible(frameBillDetails, 20);
+
+	}
 	
 	/**
 	 * Validates that the Billing and Payment page is loaded successfully
