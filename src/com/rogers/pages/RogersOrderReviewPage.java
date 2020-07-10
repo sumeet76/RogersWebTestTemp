@@ -20,6 +20,9 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//ins[@translate='global.label.billingAddress']")
 	WebElement infoPackagechangeBillingAddress;
 
+	@FindBy(xpath = "//h1[@translate='global.label.OrderReview']")
+	WebElement txtAgreementPage;
+	
 	@FindBy(xpath = "//div[@id='terms-conditions']")
 	WebElement infoAgreement;
 
@@ -47,8 +50,14 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//label[@for='tos_consent']")
 	WebElement clkChangeAcceptCheckboxUpdate;
 
+	@FindBy(xpath = "//label[@class='ds-checkboxLabel d-inline-flex align-items-start']")
+	WebElement clkChangeAcceptCheckboxUpdateInternet;
+	
 	@FindBy(xpath = "//input[@class='ute-btn-primary']")
 	WebElement clkSubmitUpdate;
+	
+	@FindBy(xpath = "//span[@translate='global.cta.submit']")
+	WebElement clkSubmitUpdateInternet;
 	
 	@FindBy(xpath = "//label[@for='shieldTermsCheckbox']")
 	WebElement chbShieldTerms;
@@ -99,6 +108,9 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='mini-body']//div[contains(@ng-bind-html,'$root.gwpDetails')]")
 	WebElement gwpYourCart;
 
+	@FindBy(xpath = "//i[@class='li-loader']")
+	WebElement popupLoadingFingersInternet;	
+	
 	/**
 	 * To click on the chevron on the payment page
 	 * @author Saurav.Goyal
@@ -143,7 +155,8 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyAgreementPage() {
-		return	reusableActions.isElementVisible(infoAgreement, 150);
+		reusableActions.waitForElementInvisibility(popupLoadingFingersInternet, 180);
+		return	reusableActions.isElementVisible(txtAgreementPage, 150);
 	}
 	
 	/**
@@ -167,6 +180,16 @@ public class RogersOrderReviewPage extends BasePageClass {
 		reusableActions.staticWait(4000);
 	}
 
+	/**
+	 * Click on the Consent check box on the order review page
+	 * @author chinnarao.vattam
+	 */
+	public void clkAcceptenceCheckboxUpdateInternet() {
+		reusableActions.isElementVisible(lnkAgreementToEndExistingCustomer, 50);
+		reusableActions.scrollToElement(lnkAgreementToEndExistingCustomer);	
+		reusableActions.staticWait(4000);		
+		reusableActions.getWhenReady(clkChangeAcceptCheckboxUpdateInternet, 90).click();
+	}
 	/**
 	 * Click on the Consent check box on the order review page
 	 * @author chinnarao.vattam
@@ -212,6 +235,14 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 */
 	public void clkSubmitUpdate() {
 		reusableActions.getWhenReady(clkSubmitUpdate, 200).click();
+	}
+	
+	/**
+	 * Click on the Submit button on the order review page
+	 * @author chinnarao.vattam
+	 */
+	public void clkSubmitUpdateInternet() {
+		reusableActions.getWhenReady(clkSubmitUpdateInternet, 200).click();
 	}
 	
 	/**

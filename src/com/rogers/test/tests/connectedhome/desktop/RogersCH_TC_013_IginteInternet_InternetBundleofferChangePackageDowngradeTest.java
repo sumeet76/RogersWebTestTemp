@@ -57,11 +57,9 @@ public class RogersCH_TC_013_IginteInternet_InternetBundleofferChangePackageDown
         reporter.reportLogWithScreenshot("Address confirmation popup has lanched to select Ignite Internet speed button"); 
         rogers_buy_page.clkIgniteInternetSpeed();
         reporter.reportLogWithScreenshot("Launched the TV packge Page"); 
-       rogers_internet_dashboard_page.selectSolarisInternetPackage1(TestDataHandler.solarisInternetAccount.getAccountDetails().getDowngradePlanEn());
-       reporter.reportLogWithScreenshot("Launched the Interent packages confirm OK popup"); 
-       rogers_internet_dashboard_page.clkInternetChangeOK();
-       reporter.reportLogWithScreenshot("Displayed the contat US popup");
-       reporter.hardAssert(rogers_internet_dashboard_page.verifycontatUSPopUp(),"Internet package downgrade is success","Internet package downgrade has failed");  
+       rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.solarisInternetAccount.getAccountDetails().getDowngradePlanEn(),TestDataHandler.solarisInternetAccount.getAccountDetails().getDowngradePlanFr());
+       reporter.hardAssert(rogers_internet_dashboard_page.verifyContatUSInternetDowngarde(),"Displayed the contat US popup","Download package has failed");        
+       reporter.reportLogWithScreenshot("Launched the Interent packages page"); 
     	}                        
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
