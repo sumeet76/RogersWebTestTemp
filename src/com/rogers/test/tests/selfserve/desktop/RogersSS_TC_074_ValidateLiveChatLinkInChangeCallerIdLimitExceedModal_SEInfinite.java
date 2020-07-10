@@ -42,6 +42,7 @@ public class RogersSS_TC_074_ValidateLiveChatLinkInChangeCallerIdLimitExceedModa
 		rogers_login_page.setUsernameIFrame(TestDataHandler.tc5074.getUsername());
 		rogers_login_page.setPasswordIFrame(TestDataHandler.tc5074.getPassword());
 		rogers_login_page.clkSignInIFrame();
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 		 if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {

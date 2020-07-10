@@ -68,6 +68,7 @@ public class RogersSS_TC_016_Baseline_CSS_Wireless_Pay_Now_Through_Bank_AUTO ext
          rogers_login_page.setPasswordIFrame(strPassword);
   		 reporter.reportLogWithScreenshot("Login Credential is entered.");
          rogers_login_page.clkSignInIFrame();
+         reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
          rogers_login_page.clkSkipIFrame();      
          rogers_login_page.switchOutOfSignInIFrame();     
     }         

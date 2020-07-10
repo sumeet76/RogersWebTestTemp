@@ -44,6 +44,7 @@ public class RogersSS_TC_060_ValidateCopyChangesOfDataUsageDisplayWithInLimitsPo
         rogers_login_page.setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 		
@@ -130,8 +131,8 @@ public class RogersSS_TC_060_ValidateCopyChangesOfDataUsageDisplayWithInLimitsPo
     	    							"Add the Data top-up  button is NOT displayed.");        
     	            rogers_wireless_dashboard_page.clkAddData();      
     	            reporter.softAssert(rogers_add_data_page.verifyAddDataOverlayIsDisplayed(), 
-    	    							"Add the Data top-up  window should be displayed. (completd an MDT add on)", 
-    	    							"Add the Data top-up  window is NOT displayed.");
+    	    							"Add Data overlay is displayed", 
+    	    							"Add Data overlay is NOT displayed.");
     	            reporter.reportLogWithScreenshot("Add Data Overlay"); 
     	            rogers_speed_pass_page.clkBtnCloseInSpeedPassPopup();
     	            if(ctnCount>1)

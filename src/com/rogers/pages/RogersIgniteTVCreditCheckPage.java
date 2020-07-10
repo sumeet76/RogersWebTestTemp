@@ -20,10 +20,19 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	WebElement ddlCreditCheckYear;
 	
 	@FindBy(xpath = "//select[@id='ds-form-input-id-19']")
+	WebElement ddlCreditCheckYearMigration;
+		
+	@FindBy(xpath = "//select[@id='ds-form-input-id-19']")
 	WebElement ddlCreditCheckMonth;
 	
 	@FindBy(xpath = "//select[@id='ds-form-input-id-20']")
+	WebElement ddlCreditCheckMonthMigration;
+	
+	@FindBy(xpath = "//select[@id='ds-form-input-id-20']")
 	WebElement ddlCreditCheckDay;
+	
+	@FindBy(xpath = "//select[@id='ds-form-input-id-21']")
+	WebElement ddlCreditCheckDayMigration;
 	
 	@FindBy(xpath = "//select[@id='ds-form-input-id-21']")
 	WebElement ddlFirstID;
@@ -66,7 +75,13 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	WebElement btnCreditCheckSubmit;
 	//button[@class='ute-btn-primary']
 	
-	@FindBy(xpath = "//form[@name='cartAbandonmentForm']")
+	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	WebElement txtContainer;
+	
+	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
+	WebElement txtContainerPasportNumber;
+	
+		@FindBy(xpath = "//form[@name='cartAbandonmentForm']")
 	WebElement popCartAbandonmentForm;
 	
 	@FindBy(xpath = "//form[@name='cartAbandonmentForm']//button[@class='ute-btn-primary']")
@@ -138,6 +153,17 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	}
 	
 	/**
+	 * Set dynamic date of birth year on Credit check page for an existing customer
+	 * @param strDOBYear year of birth
+	 * @author Chinnarao.Vattam
+	 */
+	public void selectDOBYearExistingCustomerMigration(String strDOBYear) {
+		//reusableActions.waitForElementInvisibility(popupLoadingFingers);
+		reusableActions.waitForElementVisibility(ddlCreditCheckYearMigration,20);
+		reusableActions.selectWhenReadyByVisibleText(ddlCreditCheckYearMigration, strDOBYear);
+	}
+	
+	/**
 	 * Set dynamic date of birth Month on Credit check page
 	 * @author Chinnarao.Vattam
 	 */
@@ -156,6 +182,16 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	}
 	
 	/**
+	 * Set dynamic date of birth Month on Credit check page
+	 * @param strDOBMonth month of birth
+	 * @author Chinnarao.Vattam
+	 */
+	public void selectDOBMonthExistingCustomerMigration(String strDOBMonth) {
+		String dOBMonth = strDOBMonth+": Object";
+		reusableActions.selectWhenReady(ddlCreditCheckMonthMigration, dOBMonth);
+	}
+	
+	/**
 	 * Set dynamic date of birth date on Credit check page
 	 * @author Chinnarao.Vattam
 	 */
@@ -171,6 +207,15 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void selectDOBDayExistingCustomer(String strDOBDay) {
 		reusableActions.selectWhenReady(ddlCreditCheckDay, strDOBDay);
+	}
+	
+	/**
+	 * Set dynamic date of birth date on Credit check page
+	 * @param strDOBDay date of birth
+	 * @author Chinnarao.Vattam
+	 */
+	public void selectDOBDayExistingCustomerMigration(String strDOBDay) {
+		reusableActions.selectWhenReadyByVisibleText(ddlCreditCheckDayMigration, strDOBDay);
 	}
 	
 	/**
@@ -244,6 +289,8 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void setDrivingLicenseNumber(String province) {
 		String strLicenseNumber = FormFiller.generateLicenseNumber(province);
+		reusableActions.waitForElementVisibility(txtContainer,180);
+		reusableActions.getWhenReady(txtContainer,10).click();		
 		reusableActions.getWhenReady(txtLicenseNumber, 30).clear();
 		reusableActions.getWhenReady(txtLicenseNumber, 3).sendKeys(strLicenseNumber);
 	}
@@ -264,7 +311,9 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void setPassportNumber() {
 		String strPasportNumber = FormFiller.generatePassportNumber();
-		reusableActions.getWhenReady(txtPasportNumber, 30).clear();
+		reusableActions.waitForElementVisibility(txtContainerPasportNumber,180);
+		reusableActions.getWhenReady(txtContainerPasportNumber,10).click();
+		reusableActions.getWhenReady(txtPasportNumber, 60).clear();
 		reusableActions.getWhenReady(txtPasportNumber, 3).sendKeys(strPasportNumber);
 	}
 
@@ -300,15 +349,32 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkCreditConsent() {
-		reusableActions.clickWhenReady(chkConsent, 120);
+		reusableActions.getWhenReady(chkConsent, 120).click();
 	}
 
+	/**
+	 * Click the Credit check Consent check box on Credit check page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkCreditConsentMobile() {
+		reusableActions.executeJavaScriptClick(chkConsent);
+	}
+	
 	/**
 	 * Click the Submit button on Credit check page
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkCreditConsentSubmit() {
-		reusableActions.getWhenReady(btnCreditCheckSubmit, 120).click();
+		reusableActions.executeJavaScriptClick(chkConsent);
+	}
+	
+	/**
+	 * Click the Submit button on Credit check page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkCreditConsentSubmitMobile() {
+		reusableActions.getWhenReady(btnCreditCheckSubmit, 30);
+		reusableActions.executeJavaScriptClick(btnCreditCheckSubmit);
 	}
 
 	/**

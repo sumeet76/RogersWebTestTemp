@@ -36,6 +36,7 @@ public class RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaymentMeth
          rogers_login_page.setPasswordIFrame(strPassword);
  		reporter.reportLogWithScreenshot("Login Credential is entered.");
          rogers_login_page.clkSignInIFrame();
+         reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
          rogers_login_page.clkSkipIFrame();      
          rogers_login_page.switchOutOfSignInIFrame();
     }

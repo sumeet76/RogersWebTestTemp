@@ -1,6 +1,8 @@
 package com.rogers.pages;
 
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -43,7 +45,10 @@ public class RogersBillingPage extends BasePageClass {
 
 	@FindBy(xpath = "//div[@class='row pbm payment-item'][1]")
 	WebElement rowPaymentHistoryFirst;
-
+		
+	@FindBy(xpath = "//span[@translate='history_payment_amount']/ancestor::div[contains(@data-ng-repeat,'payment in histories')]")
+	List<WebElement> rowPaymentHistoryMobile;
+	
 	//@FindBy(xpath = "//*[@id='bb-bs-bill-total']//div[@class='text-right title-right-part']/bb-amount")
 	@FindBy(xpath = "//*[@id='bb-bs-bill-total']")
 	WebElement divBillValueNew;
@@ -53,6 +58,9 @@ public class RogersBillingPage extends BasePageClass {
 	
 	@FindBy (xpath = "//div[@translate='bb_error_message_no_bill']")
 	WebElement noBillNote;
+
+	@FindBy (xpath = "//span[@translate='ute.payment.method.history']")
+	WebElement lnkPaymentHistory;
 	
 	/**
 	 * Verify if the account has no bill.
@@ -74,6 +82,15 @@ public class RogersBillingPage extends BasePageClass {
 		
 	}
 	
+	/**
+	 * Verify if the account bill frame is displayed
+	 * @return true if the account has no bill, else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyIfViewBillFrameDisplayed() {
+		return reusableActions.isElementVisible(frameBillDetails, 20);
+
+	}
 	
 	/**
 	 * Validates that the Billing and Payment page is loaded successfully
@@ -145,10 +162,36 @@ public class RogersBillingPage extends BasePageClass {
 	}
 	
 	/**
+	 * Checks the payment history for reference number
+	 * @param strRefNumber Reference number string
+	 * @return true if reference matches else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyThePaymentHistoryRecordMobile(String strRefNumber) {
+		reusableActions.waitForElementTobeClickable(rowPaymentHistoryMobile.get(0), 30);
+		for (WebElement row : rowPaymentHistoryMobile) {
+			if(row.getText().contains(strRefNumber))
+			{
+				return true;				
+			}
+		}		
+		return false;
+	}
+	
+	
+	/**
 	 * This method is to switch out of the Bill view Iframe
 	 * @author Saurav.Goyal
 	 */
 	public void switchOutOfBillViewIframe() {
 	  	getDriver().switchTo().defaultContent();
   }
+
+	/**
+	 * Clicks on payment history link
+	 * @author Mirza.Kamran
+	 */
+	public void clkPaymentHistoryLink() {
+		reusableActions.getWhenReady(lnkPaymentHistory).click();
+	}
 }

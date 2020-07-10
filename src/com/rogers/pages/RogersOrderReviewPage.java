@@ -24,11 +24,19 @@ public class RogersOrderReviewPage extends BasePageClass {
 	WebElement infoAgreement;
 
 	@FindBy(xpath = "//li[contains(text(),'819 994 6591')]")
+	WebElement lnkAgreementToEndExistingCustomer;	
+
+	
+	@FindBy(xpath = "//li[contains(text(),'819 994 6591')]")
 	WebElement lnkAgreementToEnd;	
 	//p[contains(text(),'06/')]
 	
 	@FindBy(xpath = "//label[@for='ds-checkbox-id-3']")
 	WebElement clkChangeAcceptCheckbox;
+	
+	@FindBy(xpath = "//label[@for='ds-checkbox-id-0']")
+	WebElement clkChangeAcceptCheckboxMigration;
+	
 
 	@FindBy(xpath = "//label[@for='ds-checkbox-id-1']")
 	WebElement clkChangeAcceptCheckboxExistingCustomer;
@@ -135,7 +143,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyAgreementPage() {
-		return	reusableActions.isElementVisible(infoAgreement, 200);
+		return	reusableActions.isElementVisible(infoAgreement, 150);
 	}
 	
 	/**
@@ -144,7 +152,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyAgreement() {
-		return reusableActions.isElementVisible(infoAgreement, 50);
+		return reusableActions.isElementVisible(infoAgreement, 90);
 	}
 
 	/**
@@ -152,9 +160,9 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkAcceptenceCheckboxUpdate() {
-		reusableActions.isElementVisible(lnkAgreementToEnd, 50);
-		reusableActions.scrollToElement(lnkAgreementToEnd);	
-		reusableActions.staticWait(5000);
+		reusableActions.isElementVisible(lnkAgreementToEndExistingCustomer, 50);
+		reusableActions.scrollToElement(lnkAgreementToEndExistingCustomer);	
+		reusableActions.staticWait(4000);		
 		reusableActions.getWhenReady(clkChangeAcceptCheckboxUpdate, 90).click();
 		reusableActions.staticWait(4000);
 	}
@@ -164,24 +172,32 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkAcceptenceCheckbox() {
+		reusableActions.isElementVisible(lnkAgreementToEnd, 90);
+		reusableActions.scrollToElement(lnkAgreementToEnd, 0,100);
+		reusableActions.scrollToElement(lnkAgreementToEnd);	
+		reusableActions.getWhenReady(clkChangeAcceptCheckbox, 90).click();
+	}
+	
+	/**
+	 * Click on the Consent check box on the order review page
+	 * @author chinnarao.vattam
+	 */
+	public void clkAcceptenceCheckboxMigration() {
 		reusableActions.isElementVisible(lnkAgreementToEnd, 50);
 		reusableActions.scrollToElement(lnkAgreementToEnd);	
-		reusableActions.staticWait(5000);
-		reusableActions.getWhenReady(clkChangeAcceptCheckbox, 90).click();
-		reusableActions.staticWait(4000);
+		reusableActions.getWhenReady(clkChangeAcceptCheckboxMigration, 90).click();
 	}
+	
 	/**
 	 * Click on the Consent check box on the order review page
 	 * @author chinnarao.vattam
 	 */
 	public void clkAcceptenceCheckboxExistingCustomer() {
 		reusableActions.isElementVisible(lnkAgreementToEnd, 50);
-		reusableActions.scrollToElement(lnkAgreementToEnd);	
-		reusableActions.staticWait(5000);
+		reusableActions.scrollToElement(lnkAgreementToEnd, 0,100);	
 		reusableActions.getWhenReady(clkChangeAcceptCheckboxExistingCustomer, 90).click();
-		reusableActions.staticWait(4000);
 	}
-	
+
 	/**
 	 * Click on the Submit button on the order review page
 	 * @author chinnarao.vattam

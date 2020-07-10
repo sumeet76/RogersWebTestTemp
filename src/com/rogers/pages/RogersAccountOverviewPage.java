@@ -90,11 +90,19 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	
 	@FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.changePaymentMethod']")
 	WebElement lnkChangePaymentMethod;
+	
+	@FindBy(xpath = "//span[@translate='ute.payment.method.mop_title']")
+	WebElement lnkBelowCardChangePaymentMethod;
 		
 	@FindAll({
         @FindBy(xpath = "//rss-billing-widget//span[contains(text(),'Set up automatic payments') or contains(text(),'Établir les paiements automat.')]"),
         @FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.setUpAutomaticPayments']")})	
 	WebElement lnkSetUpAutomaticPaymentMethod;
+	
+	@FindAll({
+        @FindBy(xpath = "//*[@id='overview' or @id='survol']//md-list-item//span[@data-translate='ute.common.second.level.navigation.billing.setUpAutomaticPayments']"),
+        @FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.setUpAutomaticPayments']")})	
+	WebElement lnkSetUpAutomaticPaymentMethodMobile;
 	
 	@FindBy(xpath = "//button/span[@translate='ute.rogers.account.balance.make_a_payment']")
 	WebElement btnMakeAPayment;
@@ -107,11 +115,21 @@ public class RogersAccountOverviewPage extends BasePageClass {
         @FindBy(xpath = "//span[@data-translate='ute.common.label.profileAndSetting']")})
     WebElement menuProfileNSettings;
 
-	@FindBy(xpath = "//a/span[text()='Profile & Settings' or text()='Profil et paramètres']")
+	@FindAll({
+	@FindBy(xpath = "//button[@aria-label='ute.common.label.profileAndSetting']"),
+	@FindBy(xpath = "//span[text()='Profile & Settings' or text()='Profil et paramètres']/parent::a")})
 	WebElement menuProfileAndSettingsMobile;
 	
-	@FindBy(xpath = "//button[contains(text(),'Overview') or contains(text(),'Survol')]")
+	@FindAll({
+	@FindBy(xpath = " //div[@class='ute-secondLevelNav-bar-m']//button//span[@data-translate='ute.common.label.overview']"),
+	@FindBy(xpath = "//button[contains(text(),'Overview') or contains(text(),'Survol')]")})
 	WebElement btnOverViewMobile;
+	
+				
+	@FindAll({
+	@FindBy(xpath = "//div[@class='ute-secondLevelNav-bar-m']//button//span[@data-translate='ute.common.label.billAndPayment']"),
+	@FindBy(xpath = "//button[contains(text(),'Overview') or contains(text(),'Survol')]")})
+	WebElement btnBillingsAndPaymentsMobile;
 	
 	@FindAll({
 		@FindBy (xpath = "//p[text()='Quel compte souhaitez-vous consulter?' or text()='Which account would you like to view today?']"),
@@ -122,13 +140,13 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy (xpath = "//h1[@class='profile-header']")
 	WebElement headerProfileNSettings;
 	
-	@FindBy (xpath = "//div[@translate='ute.payment.method.payment_method' or @translate='ute.payment.method.will_auto_charge']")
+	@FindBy (xpath = "//*[@translate='ute.payment.method.payment_method' or @translate='ute.payment.method.will_auto_charge' or contains(text(),'Will be automatically charged to:') or contains(text(),'Mode de paiement:')]")
 	WebElement lblAutoPayment;
 	
 	@FindBy(xpath = "//div[@translate='ute.payment.method.account_prefix']")
 	WebElement lblAutoPaymentAccountPreFix;
 
-	@FindBy(xpath = "//div[contains(@class,'cc-image')]")
+	@FindBy(xpath = "//*[contains(@class,'cc-image') or contains(@class,'cc-icon')]")
 	WebElement imgCC;
 
 	@FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.makePayment']")
@@ -191,6 +209,36 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		@FindBy(xpath = "//span[contains(text(),'Entertainment')]/ancestor::div[@class='subscription-detail']"),
         @FindBy(xpath = "//span[@translate='ute.subscriptionBadge.smartStream']")})	
 	WebElement btnEntertainmentBadge;
+
+	@FindBy(xpath = "//button[@aria-label='ute.common.label.billAndPayment']")
+	WebElement menuBillingAndPaymentsMobile;
+
+	@FindBy(xpath = "//*[@id='overview' or @id='survol']//md-list-item//span[@data-translate='ute.common.second.level.navigation.billing.changePaymentMethod']/ancestor::h2/parent::div/parent::div/button")
+	WebElement submenuChangePaymentMethod;
+	
+	@FindBy(xpath = "//*[@id='overview' or @id='survol']//md-list-item//span[@data-translate='ute.common.second.level.navigation.billing.setUpAutomaticPayments']/ancestor::h2/parent::div/parent::div/button")
+	WebElement submenuSetUpAutomaticPaymentMethodMobile;
+
+	@FindBy(xpath = "//div[contains(@translate,'makeAPayment')]")
+	WebElement lblMakeASecurePayment;
+
+	@FindBy(xpath = "//span[@class='auto-payment-info']")
+	WebElement txtCC;
+
+	@FindBy(xpath = "//p[contains(text(),'This account has been cancelled, so your access to MyRogers') or contains(text(),'Ce compte a été fermé, votre accès à MonRogers')]") 
+	WebElement divAccountCancelled;
+	
+	@FindBy(xpath = "//span[text()=' - View billing and payment history' or contains(text(),'Consulter votre historique de facture et de paiement')]") 
+	WebElement lnkViewBillingAndPayment;
+	
+	@FindBy(xpath = "//span[contains(text(),'Manage Profile') or contains(text(),'Gérer votre profil')]") 
+	WebElement lnkManageProfile;
+
+	@FindBy(xpath = "//span[contains(text(),'Set up automatic payments') or contains(text(),'Configurer les paiements automatiques')]") 
+	WebElement lnkSetUpAutomaticPaymentMethodAOPage;
+
+	@FindBy(xpath = "//span[text()='Payment History' or text()='Historique de paiement']") 
+	WebElement lnkPaymentHistoryDisplayed;
 
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
@@ -301,7 +349,17 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkTVBadge() {	
-		reusableActions.getWhenReady(btnTVBadge, 120).click();	
+		reusableActions.getWhenReady(btnTVBadge, 180).click();
+		reusableActions.staticWait(10000);
+	}
+	
+	/**
+	 * Clicks on the 'TV Badge' option on the dash board
+	 * @author chinnarao.vattam
+	 */
+	public void clkTVBadgeMobile() {	
+		reusableActions.getWhenReady(btnTVBadge,180);
+		reusableActions.executeJavaScriptClick(btnTVBadge);
 	}
 	
 	/**
@@ -341,7 +399,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void selectAccount(String strAccountNumber) {
-			reusableActions.clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 20);
+			reusableActions.clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 30);
 	}
 	
 	/**
@@ -442,8 +500,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * Click on menu Profile and Settings on Mobile
 	 * @author Mirza.Kamran
 	 */
-	public void clkLnkProfileNSettingsMobile() {
-		
+	public void clkLnkProfileNSettingsMobile() {		
 		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
 		reusableActions.getWhenReady(menuProfileAndSettingsMobile,30).click();			
 		reusableActions.waitForElementVisibility(headerProfileNSettings,60);
@@ -568,6 +625,19 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		reusableActions.clickIfAvailable(lnkSetUpAutomaticPaymentMethod);
 	}
 	
+	
+	/**
+	 * Clicks on the 'Billing and Payment' then 'Set up automatic payment' option
+	 * @author Mirza.Kamran
+	 */
+	public void clkSetUpAutomaticPaymentMethodMobile() {
+		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
+		reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
+		reusableActions.staticWait(3000); //extra static buffers added for firefox	
+		reusableActions.waitForElementVisibility(submenuSetUpAutomaticPaymentMethodMobile);
+		reusableActions.getWhenReady(submenuSetUpAutomaticPaymentMethodMobile).click();	
+	}
+	
 	/**
 	 * Clicks on the submenu of 'Billing and Payment'  'Set up automatic payment' option
 	 * @author Mirza.Kamran
@@ -576,6 +646,17 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		reusableActions.waitForElementVisibility(lnkSetUpAutomaticPaymentMethod);		
 		reusableActions.clickIfAvailable(lnkSetUpAutomaticPaymentMethod);
 	}
+	
+	/**
+	 * Clicks on the submenu of 'Billing and Payment'  'Set up automatic payment' option
+	 * @author Mirza.Kamran
+	 */
+	public void clkBillngsAndPaymentsSubMenuSetUpAutomaticPaymentMethodMobile() {
+		reusableActions.waitForElementVisibility(submenuSetUpAutomaticPaymentMethodMobile);
+		reusableActions.getWhenReady(submenuSetUpAutomaticPaymentMethodMobile).click();		
+		//reusableActions.clickIfAvailable(submenuSetUpAutomaticPaymentMethodMobile);
+	}
+	
 	
 	/**
 	 * Clicks on the 'Billing and Payment' then 'Change Payment Method' option
@@ -599,7 +680,27 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickMakePayment() {
-		reusableActions.clickIfAvailable(btnMakeAPayment,10);
+		//reusableActions.waitForElementTobeClickable(btnMakeAPayment, 20);
+		//reusableActions.getWhenReady(btnMakeAPayment,10).click();
+		
+		
+		boolean clickSuccess=false;
+		int count=0;
+		while (count<=3 && !clickSuccess) {
+			System.out.println("Attempt: "+(count+1)+" Make payment button");
+
+			reusableActions.getWhenReady(btnMakeAPayment,30).click();			
+			reusableActions.waitForElementVisibility(lblMakeASecurePayment,10);
+			if(reusableActions.isDisplayed(lblMakeASecurePayment))
+			{
+				System.out.println("Make payment button clicked in attempt: "+(count+1));
+				clickSuccess=true;				
+				break;
+				
+			}
+			count++;
+		}
+		
 	}
 	
 	/**
@@ -621,6 +722,27 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		reusableActions.executeJavaScriptClick(lnkBillingAndPayment);
 		reusableActions.staticWait(3000); //extra static buffers added for firefox
 		return reusableActions.isDisplayed(lnkSetUpAutomaticPaymentMethod);
+	}
+	
+	/**
+	 * Checks if the auto payment is displayed
+	 * @return true if set automatic payment sub menu is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isLnkSetAutoPaymentDisplayed() {		
+		return reusableActions.isElementVisible(lnkSetUpAutomaticPaymentMethodAOPage);
+	}
+	
+	/**
+	 * Checks if the auto payment is set
+	 * @return true if set automatic payment sub menu is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isSetAutoPaymentDisplayedMobile() {
+		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
+		reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
+		reusableActions.staticWait(3000); //extra static buffers added for firefox
+		return reusableActions.isDisplayed(lnkSetUpAutomaticPaymentMethodMobile);
 	}
 
 	/**
@@ -645,6 +767,27 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			 && reusableActions.isDisplayed(imgCC));
 	}
 
+		
+	/**
+	 * Checks if the auto payment option is set successfully to CC
+	 * @return true if the payment option is set successfully
+	 * @param strCC string value of of containing cc
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyCCEndingWithIsDisplayedCorrectly(String strCC) {		
+		return reusableActions.getWhenReady(txtCC).getText().trim().endsWith(strCC.substring(strCC.length()-4));
+	}
+	
+	/**
+	 * Checks if the CC auto payment option is displayed on Account overview
+	 * @return true if the CC payment option is displayed on account overview, else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isCCDisplayedOnAccountOverViewPage() {		
+		return (reusableActions.isElementVisible(lblAutoPayment,30)
+			 && reusableActions.isDisplayed(imgCC));
+	}
+	
 	/**
 	 * Clicks on the menu Billing and Payments and selects the submenu Make Payment option
 	 * @author Mirza.Kamran
@@ -738,6 +881,16 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public boolean isCTNMoreThanOne() {		
 		return lstCtnBadges.size()>1;
 	}
+	
+	/**
+	 * Checks if the no CTNS are displayed
+	 * @return true if the no CTNS are displayed
+	 * @author Mirza.Kamran
+	 */
+	public boolean isCTNNotDisplayed() {		
+		return lstCtnBadges.size()==0;
+	}
+	
 	/**
 	 * retruns total no of CTNS
 	 * @return int value total no of CTNs
@@ -799,8 +952,81 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		
 	}
 
+	/**
+	 * Clicks on view bill if available
+	 * @author Mirza.Kamran
+	 */
 	public void clkViewBill() {
 	reusableActions.clickIfAvailable(btnViewYourBill);
 		
 	}
+
+	/**
+	 * Clicks on view bill if available
+	 * @author Mirza.Kamran
+	 * @return true if the view bill is displayed else false
+	 */
+	public boolean isViewBillDisplayed() {
+	return reusableActions.isElementVisible(btnViewYourBill);
+		
+	}
+	
+	/**
+	 * Clicks on Billings and payments sub menu change paymeny mobile
+	 * @author Mirza.Kamran
+	 */
+	public void clkBillingAndPaymentsSubMenuChangePaymentMethodMobile() {			
+		reusableActions.waitForElementVisibility(submenuChangePaymentMethod,60);
+		reusableActions.getWhenReady(submenuChangePaymentMethod).click();
+		
+	}
+
+	/**
+	 * Is Change payment method displayed
+	 * @return true if the change payment method is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isChangePaymentMethodDisplayed() {
+		return reusableActions.isElementVisible(lnkBelowCardChangePaymentMethod);
+	}
+
+	/**
+	 * The account is cancelled message is displayed
+	 * @author Mirza.Kamran
+	 * @return true if the message is displayed else false
+	 */
+	public boolean isAccountCancelledMessageDisplayed() {
+		return reusableActions.isElementVisible(divAccountCancelled);
+	}
+	
+	/**
+	 * The view billing and payment history is displayed inside account is cancelled message
+	 * @author Mirza.Kamran
+	 * @return true if the message is displayed else false
+	 */
+	public boolean isViewBillingAndPaymentHistoryDisplayedInsideAccountCancelledMessage() {
+		return reusableActions.isElementVisible(lnkViewBillingAndPayment);
+	}
+	
+	/**
+	 * The Manage Profile link is displayed inside account is cancelled message
+	 * @author Mirza.Kamran
+	 * @return true if the message is displayed else false
+	 */
+	public boolean isManageProfileLinkDisplayedInsideAccountCancelledMessage() {
+		return reusableActions.isElementVisible(lnkManageProfile);
+	}
+
+	/**
+	 * Payment history link is displayed
+	 * @return true if the payment history link is displayed on account overview page else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isLnkPaymentHistoryDisplayed() {
+		return reusableActions.isElementVisible(lnkPaymentHistoryDisplayed);
+	}
+	
+	
+	
+	
 }

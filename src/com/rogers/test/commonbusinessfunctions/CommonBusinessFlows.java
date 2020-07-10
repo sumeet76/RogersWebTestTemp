@@ -135,5 +135,13 @@ public class CommonBusinessFlows {
 	public void scrollToBottomOfWebPage() {
 		baseTestClass.rogers_account_overview_page.scrollToBottomOfPage();
 	}
+	
+	/**
+	 * Will close the feedback bar if available on mobile
+	 * @author Mirza.Kamran
+	 */
+	public void clkCloseFeedbackIfAvailableMobile() {
+		baseTestClass.rogers_profile_and_settings_page.clkCloseFeedbackIfAvailableMobile();
+	}
 
 }

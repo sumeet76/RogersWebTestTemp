@@ -18,7 +18,7 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	@FindBy(xpath = "//h4[@translate='global.checkout.profile.createProfile']")
 	WebElement txtProfile;
 	
-	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-bgcolor-errorField b-2 ds-brcolor-error']")
+	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
 	WebElement txtContainerEmail;
 	
 		@FindBy(xpath = "//input[@id='ds-form-input-id-14']")
@@ -146,6 +146,15 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 */
 	public void clkSubmitProfile() {
 		reusableActions.getWhenReady(btnProfielSubmit, 120).click();
+	}
+	
+	/**
+	 * Click the Submit button on the profile page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkSubmitProfileMobile() {
+		reusableActions.waitForElementVisibility(btnProfielSubmit, 120);
+		reusableActions.executeJavaScriptClick(btnProfielSubmit);
 	}
 
 	/**

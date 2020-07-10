@@ -35,6 +35,8 @@ public class RogersCH_TC_019_DigitalTV_ValidateTVDashboardTest extends BaseTestC
 
 	@Test
 	public void checkLegacyTVDashboard () {
+    	reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
@@ -43,16 +45,23 @@ public class RogersCH_TC_019_DigitalTV_ValidateTVDashboardTest extends BaseTestC
 		rogers_login_page.setPasswordIFrame(TestDataHandler.digitalTVAccount.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
-		reporter.reportLogWithScreenshot("Skip popup");
-		rogers_login_page.clkSkipIFrame();	
-		rogers_login_page.switchOutOfSignInIFrame();
-		rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVAccount.getAccountDetails().getBan());
-		getDriver().switchTo().defaultContent();
-		reporter.reportLogWithScreenshot("Launched the Account Page");
+    	if(rogers_login_page.verifyLoginFailMsgIframe())
+    	{
+    		reporter.reportLogFailWithScreenshot("Login Failed");			
+    	}
+    	else
+    	{
+        reporter.reportLogWithScreenshot("Skip popup");
+        rogers_login_page.clkSkipIFrame();
+        rogers_login_page.switchOutOfSignInIFrame();
+        rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVAccount.accountDetails.getBan());
+        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+        reporter.reportLogWithScreenshot("Launched the Account Page");
 		rogers_account_overview_page.clkTVBadge(TestDataHandler.rogersConfig.getBrowser());
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
 		reporter.hardAssert(rogers_digital_tv_dashboard_page.verifyChangeMyPackage(),"Verifed the TV dashboard","TV dashboard Verification has failed");
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
+    	}
 	}
 
 

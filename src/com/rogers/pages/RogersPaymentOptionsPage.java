@@ -45,6 +45,9 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	@FindBy(xpath = "//input[@id='ds-form-input-id-44']")
 	WebElement txtCVV;
 
+	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	WebElement txtContainerCVV;
+	
 	@FindBy(xpath = "//select[@id='ds-form-input-id-42']")
 	WebElement ddlExpiryMonth;
 
@@ -147,6 +150,8 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 */
 	public void setCVV() {
 		String strCVV = FormFiller.generateCVVNumber();
+		reusableActions.waitForElementVisibility(txtContainerCVV,180);
+		reusableActions.getWhenReady(txtContainerCVV,10).click();
 		reusableActions.clickWhenVisible(txtCVV);
 		reusableActions.getWhenReady(txtCVV).sendKeys(strCVV);
 	}
@@ -247,7 +252,7 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 * Updated by saurav.goyal as per discussion with chinnarao.vattam
 	 */
 	public void clkPaymentConfirm() {
-		reusableActions.getWhenReady(btnPaymentConfirm, 180).click();
+		reusableActions.getWhenReady(btnPaymentConfirm, 90).click();
 	}
 	
 	/**
@@ -255,8 +260,6 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkPaymentConfirmExistingCustomer() {
-		//reusableActions.waitForElementInvisibility(popupLoadingFingers, 180);
-		reusableActions.waitForElementTobeClickable(btnPaymentConfirm, 180);	
 		reusableActions.waitForElementTobeClickable(btnPaymentConfirm, 180);
 		reusableActions.executeJavaScriptClick(btnPaymentConfirm);
 	}

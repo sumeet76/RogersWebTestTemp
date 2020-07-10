@@ -36,23 +36,29 @@ public class Mobile_RogersCH_TC_023_LegacyRHP_ValidateRHPDashboardTest extends B
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
     	rogers_home_page.clkSignInMobile();
-    	rogers_login_page.switchToSignInIFrame();
-    	rogers_login_page.setUsernameIFrame(TestDataHandler.legacyRHP.getUsername());
-    	rogers_login_page.setPasswordIFrame(TestDataHandler.legacyRHP.getPassword());
-        reporter.reportLogWithScreenshot("Login Credential is entered.");
-        rogers_login_page.clkSignInIFrame();
+		rogers_login_page.switchToSignInIFrame();
+		reporter.reportLogWithScreenshot("Launched the SignIn popup");
+		rogers_login_page.setUsernameIFrame(TestDataHandler.legacyRHP.getUsername());
+		rogers_login_page.setPasswordIFrame(TestDataHandler.legacyRHP.getPassword());
+		reporter.reportLogWithScreenshot("Enter the account credentails");
+		rogers_login_page.clkSignInIFrame();
+    	if(rogers_login_page.verifyLoginFailMsgIframe())
+    	{
+    		reporter.reportLogFailWithScreenshot("Login Failed");			
+    	}
+    	else
+    	{
+        reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
-        	reporter.reportLogWithScreenshot("Select an account.");
-        	rogers_account_overview_page.selectAccount(TestDataHandler.legacyRHP.getAccountDetails().getBan());     
-        }
-        reporter.reportLogWithScreenshot("Account overview page.");
-        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Passed", "Login Failed");	
-		rogers_account_overview_page.clkRHPBadge();
+        rogers_account_overview_page.selectAccount(TestDataHandler.legacyRHP.accountDetails.getBan());
+        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+        reporter.reportLogWithScreenshot("Launched the Account Page");
+		rogers_account_overview_page.clkRHPBadge(TestDataHandler.rogersConfig.getBrowser());
 		reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");
 		reporter.hardAssert(rogers_account_overview_page.verifyRHPBanner(),"Verifed the RHP dashboard","RHP dashboard Verification has failed");
 		reporter.hardAssert(rogers_account_overview_page.verfyContactUsToManageFeaturess(),"Contact Us To Manage Featuress link has present on RHP dashboard","Contact Us To Manage Featuress link has not present on RHP dashboard");		
+	}
 	}
 
 

@@ -47,6 +47,11 @@ public class CaptchaBypassHandlers {
 	 */
 	public void captchaBypassURLLegacyAnonymousBuyFlows(String strUrl, String strLanguage) throws IOException {
 				driver.get(strUrl+"/web/totes/api/v1/bypassCaptchaAuth");
+				try {
+					Thread.sleep(20000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 				driver.get(strUrl+"?setLanguage="+ strLanguage );
         }
 

@@ -38,6 +38,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//ins[@translate='global.cta.changeInternetPackage']")
 	WebElement btnSolChangeInternetPackage;
+	//span[@translate='global.dashboard.common.changeInternetPackage']
 
 	@FindBy(xpath = "//div[@class='live-support']")
 	WebElement popupContatUS;
@@ -89,7 +90,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSolarisInternetBadge() {
-		reusableActions.getWhenReady(btnSolarisInternetBadge,90).click();			
+		reusableActions.getWhenReady(btnSolarisInternetBadge,120).click();			
 	}
 
 	/**
@@ -130,8 +131,9 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * Click the Change Internet Package button on Solaris Internet dash board
 	 * @author Chinnarao.Vattam
 	 */
-	public void clkSolChangeInternetPackage() {		
-		reusableActions.clickWhenReady(btnSolChangeInternetPackage, 120);
+	public void clkSolChangeInternetPackage() {	
+		reusableActions.waitForElementVisibility(btnSolChangeInternetPackage, 180);
+		reusableActions.getWhenReady(btnSolChangeInternetPackage, 180).click();
 
 	}
 	
