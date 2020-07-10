@@ -784,7 +784,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isCCDisplayedOnAccountOverViewPage() {		
-		return (reusableActions.isDisplayed(lblAutoPayment)
+		return (reusableActions.isElementVisible(lblAutoPayment,30)
 			 && reusableActions.isDisplayed(imgCC));
 	}
 	

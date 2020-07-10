@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="Self Serve Rogers.com Tests SS" parallel="classes" thread-count="1">
-<parameter name="strBrowser" value="chrome"/>
+<parameter name="strBrowser" value="saucechrome"/>
 <parameter name="strLanguage" value="en"/>
 <parameter name="strType" value="seq"/>
 <listeners>
@@ -12,9 +12,22 @@
 			class-name="com.rogers.test.listeners.AnnotationTransformer" />
 </listeners> 
 
+<test name="RogersSS_TC_091_ValidateDeeplinkForNotLoggedInCustomer_NSEInfinite">
+<classes>				             
+	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_091_ValidateDeeplinkForNotLoggedInCustomer_NSEInfinite"></class>	
+</classes>          																					
+</test> 	
+					
 <test name="RogersSS_TC_092_AO_ValidateTheMessageInAccountOverviewWhenTheAccountIsInCancelledState_SE">
 <classes>				             
 	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_092_AO_ValidateTheMessageInAccountOverviewWhenTheAccountIsInCancelledState_SE"></class>	
+</classes>          																					
+</test> 						
+
+
+<test name="RogersSS_TC_093_AO_ValidateAutomaticPaymentsCreditCardSEInfinite">
+<classes>				             
+	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_093_AO_ValidateAutomaticPaymentsCreditCardSEInfinite"></class>	
 </classes>          																					
 </test> 						
 </suite>

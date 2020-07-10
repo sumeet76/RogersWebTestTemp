@@ -40,31 +40,19 @@ public class RogersSS_TC_093_AO_ValidateAutomaticPaymentsCreditCardSEInfinite ex
          rogers_login_page.clkSkipIFrame();      
          rogers_login_page.switchOutOfSignInIFrame();
     }
-
-    
-    /**
-     * "1. Navigate to Rogers.com
-2. Sign in with proper credentials
-3. MOP Automatic Payments Credit Card
-"	"1. Navigate to Rogers.com
-2. Sign in with proper credentials
-3. MOP Automatic Payments Credit Card
-"
-     */
     
     @Test
-    public void overviewBillInfoChangePaymentMethodPAC_To_CC() {
+    public void validateAutomaticPaymentsCreditCardSEInfinite() {
 
     	rogers_home_page.clkSignIn();
-    	String strUsername = TestDataHandler.tc6269.getUsername();
-    	String strPassword = TestDataHandler.tc6269.getPassword();		
+    	String strUsername = TestDataHandler.tc63.getUsername();
+    	String strPassword = TestDataHandler.tc63.getPassword();		
 		tryLogin(strUsername, strPassword);
 		reporter.reportLogWithScreenshot("Account overveiew page");		
 		if(!rogers_account_overview_page.isCCDisplayedOnAccountOverViewPage())
 		{
 			if(!rogers_account_overview_page.isSetAutoPaymentDisplayed())
-			{
-				reporter.reportLogWithScreenshot("Automatic payment is already set, trying to switch to manual");
+			{				
 				rogers_account_overview_page.clkBillingAndPaymentsSubMenuChangePaymentMethod();				
 			}else
 			{

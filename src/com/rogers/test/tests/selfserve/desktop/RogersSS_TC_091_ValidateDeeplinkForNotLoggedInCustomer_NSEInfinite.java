@@ -43,7 +43,7 @@ public class RogersSS_TC_091_ValidateDeeplinkForNotLoggedInCustomer_NSEInfinite 
 "	
  */
     @Test
-    public void validateDataUsageDisplayForRunningLowAndAddData() {
+    public void validateDeeplinkForNotLoggedInCustomerNSEInfinite() {
     	reporter.reportLogWithScreenshot("Rogers launhced");
     	getDriver().get(TestDataHandler.ssConfig.getRogersURL().split(".com")[0]+".com/web/totes/#/viewbill/payment-method");
     	reporter.reportLogWithScreenshot("After setting the deeplink");
@@ -57,14 +57,15 @@ public class RogersSS_TC_091_ValidateDeeplinkForNotLoggedInCustomer_NSEInfinite 
         rogers_login_page.setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
-		
+		reporter.reportLogWithScreenshot("Rogers launhced");
 		reporter.hardAssert((rogers_change_payment_method_page.verifyChangePaymentMethodLoad() &&
 				rogers_billing_page.verifyIfViewBillFrameDisplayed())
-	    		   , "redirected to the view bill page from where the MOP modal pops up and is working as designed for not logged in user"
+	    		   , "Redirected to the view bill page from where the MOP modal pops up and is working as designed for not logged in user"
 	    		   , "Didnt redirect to the view bill page and the MOP modal pops up is not shown");
-		
+		reporter.reportLogWithScreenshot("The view bill page from where the MOP modal pops up");
             }
     
     

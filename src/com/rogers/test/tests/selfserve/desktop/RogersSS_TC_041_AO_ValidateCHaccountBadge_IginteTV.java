@@ -41,6 +41,7 @@ public class RogersSS_TC_041_AO_ValidateCHaccountBadge_IginteTV extends BaseTest
         rogers_login_page.setPasswordIFrame(TestDataHandler.tc41IgniteTVAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         rogers_login_page.clkSignInIFrame();
+        reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame(); 
         rogers_login_page.switchOutOfSignInIFrame();

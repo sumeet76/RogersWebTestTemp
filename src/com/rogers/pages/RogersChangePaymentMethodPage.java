@@ -19,7 +19,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//div[text()='Change payment method' or text()='Set up automatic payments']")
+	@FindBy(xpath = "//div[text()='Change payment method' or text()='Set up automatic payments' or contains(text(),'des paiements')]")
 	WebElement lblChangePaymentMethod;
 	
 	@FindBy(xpath = "//md-radio-button[@aria-label='Switch to manual payments' or @aria-label='Passer au paiement manuel']")

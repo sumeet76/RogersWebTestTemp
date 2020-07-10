@@ -28,6 +28,7 @@ public class RogersSS_TC_11_TC04_ValidateUserTryToLinkAccountToRegisteredProfile
 		rogers_login_page.setPasswordIFrame(TestDataHandler.tc041139.getPassword());
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 		String strNewBan = TestDataHandler.tc041139.getAccountDetails().getNewBan();

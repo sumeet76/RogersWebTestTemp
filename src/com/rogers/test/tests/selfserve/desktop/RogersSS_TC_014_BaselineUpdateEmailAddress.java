@@ -71,6 +71,7 @@ public class RogersSS_TC_014_BaselineUpdateEmailAddress extends BaseTestClass {
         rogers_login_page.setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
         rogers_login_page.clkSignInIFrame();
+        reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
     }
     
     private void changeUsername(String strUsername, String strNewUsername) {
