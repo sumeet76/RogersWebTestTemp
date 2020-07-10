@@ -83,11 +83,17 @@ public class RogersSS_TC_056_ValidateDataUsageDesplayWithinLimit_postpaid_NSEDat
 	        reporter.reportLogWithScreenshot("Wireless dashboard page.");  
 	        rogers_login_page.clickSignOut();
 	        reporter.reportLogWithScreenshot("Sign Out clicked");  
-	        rogers_login_page.clkSignInAs();
-	        reporter.reportLogWithScreenshot("Re sign In");  
-	        rogers_login_page.switchToSignInIFrame();
-	                   
+	        
+	       // rogers_login_page.clkSignInAs();
+	        getDriver().get(TestDataHandler.ssConfig.getRogersURL());
+	        rogers_home_page.clkSignIn();	    	
+	    	rogers_login_page.switchToSignInIFrame();
+	        rogers_login_page.setUsernameIFrame(strUsername);    	
 	        rogers_login_page.setPasswordIFrame(strPassword);
+	        reporter.reportLogWithScreenshot("Re sign In");  
+	        //rogers_login_page.switchToSignInIFrame();
+	                   
+	        //rogers_login_page.setPasswordIFrame(strPassword);
 	        reporter.reportLogWithScreenshot("Login Credential is entered.");
 			rogers_login_page.clkSignInIFrame();		
 			rogers_login_page.switchOutOfSignInIFrame();		       

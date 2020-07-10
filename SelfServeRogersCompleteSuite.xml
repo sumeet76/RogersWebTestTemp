@@ -368,6 +368,27 @@
 </classes>          																					
 </test>
 
+
+<test name="RogersSS_TC_091_ValidateDeeplinkForNotLoggedInCustomer_NSEInfinite" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_091_ValidateDeeplinkForNotLoggedInCustomer_NSEInfinite"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC_092_AO_ValidateTheMessageInAccountOverviewWhenTheAccountIsInCancelledState_SE" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_092_AO_ValidateTheMessageInAccountOverviewWhenTheAccountIsInCancelledState_SE"></class>
+</classes>          																					
+</test>
+
+
+<test name="RogersSS_TC_093_AO_ValidateAutomaticPaymentsCreditCardSEInfinite" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_093_AO_ValidateAutomaticPaymentsCreditCardSEInfinite"></class>
+</classes>          																					
+</test>
+
+
 <test thread-count="1" name="MobileTest" enabled="false" >
     <classes>
       <class name="com.rogers.test.tests.selfserve.mobile.Mobile_RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest"></class>
