@@ -51,17 +51,12 @@ public class RogersCH_TC_009_IginteInternet_InternetPackageUpgradeTest extends B
         rogers_login_page.clkSignInIFrame();
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
-    	if(rogers_login_page.verifyLoginFailMsgIframe())
-    	{
-    		reporter.reportLogFailWithScreenshot("Login Failed");			
-    	}
-    	else
-    	{
+    	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
         rogers_account_overview_page.selectAccount(TestDataHandler.solarisInternetAccount.accountDetails.getBan());
-        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+    	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_internet_dashboard_page.clkSolarisInternetBadge();
         rogers_internet_dashboard_page.clkInternetPopup();
@@ -85,7 +80,6 @@ public class RogersCH_TC_009_IginteInternet_InternetPackageUpgradeTest extends B
         reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");                             
         reporter.reportLogWithScreenshot("Verified the Confirmation page");
     	}
-    }
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//login flow

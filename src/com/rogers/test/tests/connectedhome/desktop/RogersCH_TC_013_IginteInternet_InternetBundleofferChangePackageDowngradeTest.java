@@ -43,17 +43,12 @@ public class RogersCH_TC_013_IginteInternet_InternetBundleofferChangePackageDown
         rogers_login_page.setPasswordIFrame(TestDataHandler.solarisInternetAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         rogers_login_page.clkSignInIFrame();
-    	if(rogers_login_page.verifyLoginFailMsgIframe())
-    	{
-    		reporter.reportLogFailWithScreenshot("Login Failed");			
-    	}
-    	else
-    	{
+    	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
         rogers_account_overview_page.selectAccount(TestDataHandler.solarisInternetAccount.accountDetails.getBan());
-        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+    	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_home_page.clkExistingCustomerShop();
         rogers_home_page.clkIgniteTVExistingCustomer();
@@ -68,7 +63,6 @@ public class RogersCH_TC_013_IginteInternet_InternetBundleofferChangePackageDown
        reporter.reportLogWithScreenshot("Displayed the contat US popup");
        reporter.hardAssert(rogers_internet_dashboard_page.verifycontatUSPopUp(),"Internet package downgrade is success","Internet package downgrade has failed");  
     	}                        
-    }
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//login flow

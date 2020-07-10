@@ -45,17 +45,12 @@ public class RogersCH_TC_012_IginteInternet_InternetBundleofferChangePackageUpgr
         rogers_login_page.setPasswordIFrame(TestDataHandler.solarisInternetAccountForUpgrade.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         rogers_login_page.clkSignInIFrame();
-    	if(rogers_login_page.verifyLoginFailMsgIframe())
-    	{
-    		reporter.reportLogFailWithScreenshot("Login Failed");		
-    	}
-    	else
-    	{
+    	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
         rogers_account_overview_page.selectAccount(TestDataHandler.solarisInternetAccountForUpgrade.accountDetails.getBan());
-        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+    	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_home_page.clkExistingCustomerShop();
         rogers_home_page.clkIgniteTVExistingCustomer();
@@ -79,7 +74,6 @@ public class RogersCH_TC_012_IginteInternet_InternetBundleofferChangePackageUpgr
         reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
         reporter.reportLogWithScreenshot("Verified the Confirmation page"); 
     	}
-    }
 	
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//login flow

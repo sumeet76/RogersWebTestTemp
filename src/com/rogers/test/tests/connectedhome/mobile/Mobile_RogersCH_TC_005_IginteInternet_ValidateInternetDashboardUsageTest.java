@@ -47,17 +47,12 @@ public class Mobile_RogersCH_TC_005_IginteInternet_ValidateInternetDashboardUsag
           rogers_login_page.setPasswordIFrame(TestDataHandler.solarisInternetAccountWithUsage.getPassword());
           reporter.reportLogWithScreenshot("Enter the account credentails");
           rogers_login_page.clkSignInIFrame();
-      	if(rogers_login_page.verifyLoginFailMsgIframe())
-      	{
-      		reporter.reportLogFailWithScreenshot("Login Failed");			
-      	}
-      	else
-      	{
-          reporter.reportLogWithScreenshot("Skip popup");
-          rogers_login_page.clkSkipIFrame();
-          rogers_login_page.switchOutOfSignInIFrame();
-          rogers_account_overview_page.selectAccount(TestDataHandler.solarisInternetAccountWithUsage.accountDetails.getBan());
-          reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+      	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        reporter.reportLogWithScreenshot("Skip popup");
+        rogers_login_page.clkSkipIFrame();
+        rogers_login_page.switchOutOfSignInIFrame();
+        rogers_account_overview_page.selectAccount(TestDataHandler.solarisInternetAccountWithUsage.accountDetails.getBan());
+    	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
           reporter.reportLogWithScreenshot("Launched the Account Page");
           rogers_internet_dashboard_page.clkSolarisInternetBadge();
           rogers_internet_dashboard_page.clkInternetPopup();
@@ -77,7 +72,6 @@ public class Mobile_RogersCH_TC_005_IginteInternet_ValidateInternetDashboardUsag
           reporter.softAssert(rogers_internet_usage_page.verifyUsageAlerts(),"Verified the Usage Alerts", "Usage Alerts are not present");
           reporter.reportLogWithScreenshot("Usage and Alerts details");
       	}
-    }
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
