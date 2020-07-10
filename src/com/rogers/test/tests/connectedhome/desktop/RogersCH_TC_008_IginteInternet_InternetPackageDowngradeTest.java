@@ -53,14 +53,14 @@ public class RogersCH_TC_008_IginteInternet_InternetPackageDowngradeTest extends
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
         rogers_account_overview_page.selectAccount(TestDataHandler.solarisInternetAccount.accountDetails.getBan());
-        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+        reporter.hardAssert(rogers_account_overview_page.verifyLoginSuccessWelcome(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_internet_dashboard_page.clkSolarisInternetBadge();
         reporter.reportLogWithScreenshot("Launched the Interent dashboard");
         rogers_internet_dashboard_page.clkSolChangeInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Interent packages page");        
         rogers_internet_dashboard_page.selectSolarisInternetPackage1(TestDataHandler.solarisInternetAccount.getAccountDetails().getDowngradePlanEn());
-        reporter.hardAssert(rogers_internet_dashboard_page.verifycontatUSPopUp(),"Displayed the contat US popup","Download package has failed");        
+        reporter.hardAssert(rogers_internet_dashboard_page.verifyContatUSInternetDowngarde(),"Displayed the contat US popup","Download package has failed");        
         reporter.reportLogWithScreenshot("Launched the Interent packages page");
     	}
     }
@@ -74,7 +74,7 @@ public class RogersCH_TC_008_IginteInternet_InternetPackageDowngradeTest extends
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 }
