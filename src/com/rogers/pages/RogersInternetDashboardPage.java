@@ -36,12 +36,14 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//ins[@usertype-translate='global.label.usageAndAlerts']")
 	WebElement infoUsageAndAlerts;
 
-	@FindBy(xpath = "//ins[@translate='global.cta.changeInternetPackage']")
+	@FindBy(xpath = "//span[@translate='global.dashboard.common.changeInternetPackage']")
 	WebElement btnSolChangeInternetPackage;
-	//span[@translate='global.dashboard.common.changeInternetPackage']
 
 	@FindBy(xpath = "//div[@class='live-support']")
 	WebElement popupContatUS;
+	
+	@FindBy(xpath = "//div[@class='popup-modal-body__content']")
+	WebElement popupContatUSInternetDowngarde;
 	
 	@FindBy(xpath = "//span[@class='ute-icon-circle-x']")
 	WebElement popUpInternetPopup;
@@ -60,6 +62,9 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
+	
+	@FindBy(xpath = "//i[@class='li-loader']")
+	WebElement popupLoadingFingersInternet;	
 	
 	@FindBy(xpath = "//div[@class='preloader loading-secondary']")
 	WebElement popupLoadingFingersMobile;
@@ -151,9 +156,22 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @return true when pop up contact us is visible else false
 	 * @author Chinnarao.Vattam
 	 */
-	public boolean verifycontatUSPopUp() {		
-		return reusableActions.isElementVisible(popupContatUS, 90);
+	public boolean verifycontatUSPopUp() {
+		reusableActions.waitForElementInvisibility(popupLoadingFingers, 60);		
+		return reusableActions.isElementVisible(popupContatUS, 20);
 	}
+	
+	/**
+	 * Checks if the pop up contact us is visible
+	 * @return true when pop up contact us is visible else false
+	 * @author Chinnarao.Vattam
+	 */
+	public boolean verifyContatUSInternetDowngarde() {
+		reusableActions.waitForElementInvisibility(popupLoadingFingersInternet, 60);		
+		return reusableActions.isElementVisible(popupContatUSInternetDowngarde, 20);
+	}
+	
+	
 
 	/**
 	 * Select the  Internet Package on change Internet package page
@@ -216,7 +234,8 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectSolarisInternetPackage1(String strPackageName) {		
-		By packageNameLocator = By.xpath("//span[contains(normalize-space(text()),'" + strPackageName+ "') or contains(normalize-space(text()),'Élan Internet 150i')]/ancestor::div[@class='owl-item active']//ins[@translate='global.cta.select']");
+		//By packageNameLocator = By.xpath("//span[contains(normalize-space(text()),'" + strPackageName+ "') or contains(normalize-space(text()),'Élan Internet 150i')]/ancestor::div[@class='owl-item active']//ins[@translate='global.cta.select']");
+		By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageName+ "')]/ancestor::div[@class='internet-bundle-tile__row']//button[@aria-label='Add Rogers Ignite Popular Bundle to your cart']");
 		reusableActions.getWhenReady(packageNameLocator, 180).click();
 	}
 }

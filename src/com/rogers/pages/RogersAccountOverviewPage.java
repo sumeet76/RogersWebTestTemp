@@ -54,6 +54,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.total_balance' or text()='Total balance' or text()='Total du solde']")
 	WebElement infoBalanceLable;
 
+	@FindBy(xpath = "//h1[@class='mt-24']")
+	WebElement infoWelcome;
+	
 	@FindBy(xpath = "//span[@translate='ute.rogers.rhpDashboard.homePhone']")
 	WebElement infoLegacyrhpDashboard;
 	
@@ -494,6 +497,16 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public boolean verifySuccessfulLogin() {
 		return reusableActions.isElementVisible(infoBalanceLable,60);
 	}
+	
+	/**
+	 * To verify the successful login
+	 * @return true if the balance label is present ; else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyLoginSuccessWelcome() {
+		return reusableActions.isElementVisible(infoWelcome,60);
+	}
+	
 
 	/**
 	 * To Verify the RHP Banner on the Legacy RHP dash board
