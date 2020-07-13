@@ -151,7 +151,7 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
 		Object testClass = iTestResult.getInstance();		
 		WebDriver webDriver = null; 
 
-		try {
+
 			webDriver = ((BaseTestClass) testClass).getDriver();
 			Object xmlTestParams = iTestResult.getInstance();
 			HashMap<String, String> xmlTestParameters = ((BaseTestClass) xmlTestParams).getXMLParameters();
@@ -179,13 +179,7 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
 						ExtentTestManager.getTest().addBase64ScreenShot(base64Screenshot)
 						+ "Exception occured: " + iTestResult.getThrowable().getMessage().split("Build")[0].replace("<", "&lt;").replace("\"", ""));
 			}
-		} catch (NullPointerException e) {
-			e.printStackTrace();
-			if(webDriver!= null)
-			{
-				webDriver.quit();
-			}			 
-		}
+
 	} 
 
 
@@ -214,6 +208,7 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
 			if(testResult.getStatus() == ITestResult.SUCCESS) {
 				if(ExtentTestManager.getFailFlag()) {
 					Reporter.getCurrentTestResult().setStatus(ITestResult.FAILURE);
+					Reporter.getCurrentTestResult().setThrowable(new AssertionError("Assertion Failed"));
 				}
 			}
 		}
