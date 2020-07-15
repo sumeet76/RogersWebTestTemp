@@ -31,6 +31,7 @@ public class RogersBFA_OV_TC02_HUPMultiLine_ChooseExistingPlan_Test extends Base
 		rogersOV_wireless_details_page.clkUpgradeMyDevice();
 		reporter.reportLogWithScreenshot("Rogers Choose Phone Page");
 		rogersOV_choose_phone_page.searchDevice(TestDataHandler.buyFlowsOVtestCase02.getNewDevice());
+		Boolean proOnTheGoFlag = rogersOV_choose_phone_page.checkProOnTheGo();
 		rogersOV_choose_phone_page.selectFirstAvailableDevice();
 		rogersOV_build_plan_page.selectExistingPlan();
 		reporter.reportLogWithScreenshot("Rogers Build Plan Page");
@@ -38,18 +39,18 @@ public class RogersBFA_OV_TC02_HUPMultiLine_ChooseExistingPlan_Test extends Base
 		reporter.reportLogWithScreenshot("Rogers Choose Addons Page");
 		rogersOV_choose_addons_page.clkContinueHUP();
 		reporter.reportLogWithScreenshot("Rogers Shipping Page");
-        //rogers_shipping_page.clkRadioNormalDelivery();
-        //Check with manual team , now asking standard delivery - fee
-        //rogers_shipping_page.setEmailID();
-        //rogers_shipping_page.clkSaveEmail();
-        //rogersOV_shipping_page.clkSelectAvailableTime();
-        //rogersOV_shipping_page.clkReserve();
+		if(proOnTheGoFlag) {
+	        rogers_shipping_page.setEmailID();
+	        rogers_shipping_page.clkSaveEmail();
+	        rogers_shipping_page.setPhoneNumber();
+	        rogers_shipping_page.clkSaveNumber();
+	        rogers_shipping_page.clkSelectAvailableTime();
+	        rogers_shipping_page.clkReserve();
+        }
         reporter.reportLogWithScreenshot("Rogers Shipping Page before clicking continue");
         rogersOV_shipping_page.clkContinue();
         reporter.reportLogWithScreenshot("Rogers review page");
-        order_Review_Page.clkTermsAgreementCheckbox();
-        order_Review_Page.clkShieldAgreementCheckbox();
-        order_Review_Page.clkUpfrontTermsCheckbox();
+        order_Review_Page.clkAllTermsAgreementCheckboxs();
         order_Review_Page.selectEmailDigitalCopy(TestDataHandler.buyFlowsOVtestCase02.getUsername());
         reporter.reportLogWithScreenshot("Rogers Order Review Page");
         if(order_Review_Page.isPaymentRequired()) {

@@ -34,7 +34,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	@FindBy(xpath = "//md-select[@ng-model='model.filterByType']//span[@class='md-select-icon']")
 	WebElement icnPlanType;
 	
-	@FindBy(xpath = "//span[@translate='ppc_checkout_review_checkout']/../parent::div[contains(@class,'summary')]")
+	@FindBy(xpath = "//span[contains(@translate,'ppc')]/parent::button/parent::div[contains(@class,'summary')]")
 	WebElement btnCheckout;
 	
 	@FindBy(xpath = "//div[@class='plan-socview']/span[@class='tabdata ng-scope']")
@@ -78,6 +78,28 @@ public class RogersChoosePlanPage extends BasePageClass {
 	
 	@FindBy(xpath = "//input[@value='todayDate']/ancestor::label//label")
 	WebElement rdoSelectTodaysDate;
+	
+	@FindBy(xpath = "//li[contains(@class,'line-tab ng-scope')]")
+	List<WebElement> linkLine;
+	
+	
+	/**
+	 * Click on shared line 1
+	 * @author Saurav.Goyal
+	 */
+	public void clkSharedLineOne() {
+		reusableActions.clickWhenReady(linkLine.get(0),30);
+		
+	}
+	
+	/**
+	 * Click on shared line 2
+	 * @author Saurav.Goyal
+	 */
+	public void clkSharedLineTwo() {
+		reusableActions.clickWhenReady(linkLine.get(1),30);
+		
+	}
 	
 	/**
 	 * Clicks on label make Change to existing plan
@@ -191,7 +213,11 @@ public class RogersChoosePlanPage extends BasePageClass {
 		case "EDGE 20 TAB":
 			strPlanCat = "edge 20 tab";
 			break;
-
+			
+		case "FINANCING":
+			strPlanCat = "financing";
+			break;
+			
 		default:
 			strPlanCat = "no tab";
 			break;

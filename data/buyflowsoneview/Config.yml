@@ -1,7 +1,7 @@
 # Config
 rogersURL: https://qa06-ciam.rogers.com
 rogersOVUrl: http://qa3respesb.rci.rogers.com/EnterpriseSecurityFrameworkWeb/SecurityServlet?
-environmentName: OVO-QA06
+environmentName: OVO-QA05
 solarisPath: /web/totes/browsebuy/v1/byPassCaptcha
 legacyPath: /web/totes/api/v1/bypassCaptchaAuth
 hupURL: "https://qa05-ciam.rogers.com/web/totes/upgrade/#/choose-phone"

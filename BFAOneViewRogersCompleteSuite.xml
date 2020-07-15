@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Rogers Complete RT Suite - BFAONEVIEW" parallel="none" thread-count="10">
-	<parameter name="strBrowser" value="chrome" />
+	<parameter name="strBrowser" value="saucechrome" />
 	<parameter name="strLanguage" value="en" />
 		
 	<listeners>
@@ -19,7 +19,7 @@
 		</classes>
 	</test>
 	
-	<test name="TC02-OV-HUP_Multiline Account_Validate if user is able to place an order in HUP flow with existing plan_EN" enabled="false">
+	<test name="TC02-OV-HUP_Multiline Account_Validate if user is able to place an order in HUP flow with existing plan_EN" enabled="true">
 	<classes>
 			<class
 				name="com.rogers.test.tests.buyflowsoneview.RogersBFA_OV_TC02_HUPMultiLine_ChooseExistingPlan_Test">
@@ -27,7 +27,7 @@
 		</classes>
 	</test>
 	
-	<test name="TC03-OV-PPC_Multiline Account_Validate if user is able to place an order in PPC flow for both lines_EN" enabled="false">
+	<test name="TC03-OV-PPC_Multiline Account_Validate if user is able to place an order in PPC flow for both lines_EN" enabled="true">
 	<classes>
 			<class
 				name="com.rogers.test.tests.buyflowsoneview.RogersBFA_OV_TC03_PPCOnMultiLine_Test">
@@ -35,7 +35,7 @@
 		</classes>
 	</test>
 	
-	<test name="TC04-OV-PPC_Multiline Account_Validate if user is able to place an order in PPC flow by keeping current plan on additional line_EN" enabled="false">
+	<test name="TC04-OV-PPC_Multiline Account_Validate if user is able to place an order in PPC flow by keeping current plan on additional line_EN" enabled="true">
 	<classes>
 			<class
 				name="com.rogers.test.tests.buyflowsoneview.RogersBFA_OV_TC04_PPCMultiLineKeepingSamePlanOnAdditionalLine_Test">
@@ -43,7 +43,7 @@
 		</classes>
 	</test>
 	
-	<test name="TC05-OV-HUP with PPC_Singleline Account_Validate if user is able to place an order in HUP flow and choose a different plan_EN" enabled="false">
+	<test name="TC05-OV-HUP with PPC_Singleline Account_Validate if user is able to place an order in HUP flow and choose a different plan_EN" enabled="true">
 	<classes>
 			<class
 				name="com.rogers.test.tests.buyflowsoneview.RogersBFA_OV_TC05_HUPWithPPCSingleLine_ChooseDifferentPlan_Test">
@@ -51,7 +51,7 @@
 		</classes>
 	</test>
 	
-	<test name="TC06-OV-HUP_Singleline Account_Validate if user is able to place an order in HUP flow with existing plan_EN" enabled="false">
+	<test name="TC06-OV-HUP_Singleline Account_Validate if user is able to place an order in HUP flow with existing plan_EN" enabled="true">
 	<classes>
 			<class
 				name="com.rogers.test.tests.buyflowsoneview.RogersBFA_OV_TC06_HUPSingleLine_ChooseExistingPlan_Test">
@@ -59,7 +59,7 @@
 		</classes>
 	</test>
 	
-	<test name="TC07-OV-PPC_Singleline Account_Validate if user is able to place an order in PPC flow_EN" enabled="false">
+	<test name="TC07-OV-PPC_Singleline Account_Validate if user is able to place an order in PPC flow_EN" enabled="true">
 	<classes>
 			<class
 				name="com.rogers.test.tests.buyflowsoneview.RogersBFA_OV_TC07_PPCSingleLine_Test">

@@ -25,24 +25,29 @@ public class RogersBFA_OV_TC03_PPCOnMultiLine_Test extends BaseTestClass {
 		environment_selection_page.presenceOfTheGoButton();
 		reporter.reportLogWithScreenshot("Rogers Choose Phone page");
 		environment_selection_page.selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
-		environment_selection_page.clkGo();
         reporter.hardAssert(account_over_view_page.verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page");
-        reporter.hardAssert(account_over_view_page.verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase07.getCtn()), "Select CTN Passed", "Select CTN Failed");
+        reporter.hardAssert(account_over_view_page.verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase03.getCtn()), "Select CTN Passed", "Select CTN Failed");
         reporter.reportLogWithScreenshot("Wireless Dashboard Page");
         rogersOV_wireless_details_page.clickChangePlanButton();
-        reporter.reportLogWithScreenshot("Modal window appeared for change your plan");
-        rogersOV_ChoosePlan_page.clkMakeChangesToExistingPlan();
-        //rogersOV_ChoosePlan_page.clkButtonModalContinue();
+        reporter.reportLogWithScreenshot("Change share plan page");
+        rogersOV_ChangeSharePlan_page.clickEditButton();
         reporter.reportLogWithScreenshot("Choose Plan page");
-        rogersOV_ChoosePlan_page.selectPlanCategory(TestDataHandler.buyFlowsOVtestCase07.getNewPlanCategory());
-        rogersOV_ChoosePlan_page.selectPlanType("");
+        rogersOV_ChoosePlan_page.clkSharedLineOne();
+        rogersOV_ChoosePlan_page.selectPlanCategory(TestDataHandler.buyFlowsOVtestCase03.getNewPlanCategory());
+        rogersOV_ChoosePlan_page.selectFirstAvailablePlan();
+        rogersOV_ChoosePlan_page.verifyAndClickDowngradeFeeContinue();
+        rogersOV_ChoosePlan_page.clkSharedLineTwo();
+        rogersOV_ChoosePlan_page.selectPlanCategory(TestDataHandler.buyFlowsOVtestCase03.getNewPlanCategory());
         rogersOV_ChoosePlan_page.selectFirstAvailablePlan();
         rogersOV_ChoosePlan_page.verifyAndClickDowngradeFeeContinue();
         rogersOV_ChoosePlan_page.clkCheckout();
+        reporter.reportLogWithScreenshot("Choose add ons page");
+        rogersOV_choose_addons_page.clkCheckout();
+        reporter.reportLogWithScreenshot("Order Review page");
         //order_Review_Page.clkTermsAgreementCheckbox();
         //rogers_order_review_page.clkShieldAgreementCheckbox();
-        order_Review_Page.selectEmailDigitalCopy(TestDataHandler.buyFlowsOVtestCase07.getUsername());
+        order_Review_Page.selectEmailDigitalCopy(TestDataHandler.buyFlowsOVtestCase03.getUsername());
         reporter.reportLogWithScreenshot("Order Review page");
         if(order_Review_Page.isPaymentRequired()) {
         	order_Review_Page.clkContinue();
@@ -63,7 +68,7 @@ public class RogersBFA_OV_TC03_PPCOnMultiLine_Test extends BaseTestClass {
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startOVSession(TestDataHandler.bfaOneViewConfig.getRogersOVUrl(),strBrowser, strLanguage,"buyflowsoneview", TestDataHandler.buyFlowsOVtestCase07.getContactID(),TestDataHandler.buyFlowsOVtestCase07.getBanNo(),TestDataHandler.bfaOneViewConfig.getUsrID(), TestDataHandler.bfaOneViewConfig.getLoginID(),  method);
+		startOVSession(TestDataHandler.bfaOneViewConfig.getRogersOVUrl(),strBrowser, strLanguage,"buyflowsoneview", TestDataHandler.buyFlowsOVtestCase03.getContactID(),TestDataHandler.buyFlowsOVtestCase03.getBanNo(),TestDataHandler.bfaOneViewConfig.getUsrID(), TestDataHandler.bfaOneViewConfig.getLoginID(),  method);
   	}
     
     @AfterTest(alwaysRun = true)

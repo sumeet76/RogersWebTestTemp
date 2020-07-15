@@ -194,6 +194,7 @@ public class BaseTestClass {
 	protected HomePhoneAddonsPage home_Phone_Addons_Page;
 	protected RogersSHMDashboardPage rogers_shm_dashboard_page;
 	protected com.rogers.oneview.pages.RogersWirelessDetailsPage rogersOV_wireless_details_page;
+	protected com.rogers.oneview.pages.RogersChangeSharePlanPage rogersOV_ChangeSharePlan_page;
 	protected com.rogers.oneview.pages.RogersChoosePhonePage rogersOV_choose_phone_page;
 	protected com.rogers.oneview.pages.RogersBuildPlanPage rogersOV_build_plan_page;
 	protected com.rogers.oneview.pages.RogersChooseAddonsPage rogersOV_choose_addons_page;
@@ -548,6 +549,7 @@ public class BaseTestClass {
 			account_over_view_page= new AccountOverViewPage(getDriver());
 			order_Confirmation_Page = new OrderConfirmationPage(getDriver());
 			order_Review_Page = new OrderReviewPage(getDriver());
+			rogersOV_ChangeSharePlan_page = new com.rogers.oneview.pages.RogersChangeSharePlanPage(getDriver());
 			rogersOV_wireless_details_page = new com.rogers.oneview.pages.RogersWirelessDetailsPage(getDriver());
 			rogersOV_choose_phone_page = new com.rogers.oneview.pages.RogersChoosePhonePage(getDriver());
 			rogersOV_build_plan_page = new com.rogers.oneview.pages.RogersBuildPlanPage(getDriver());

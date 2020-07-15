@@ -56,6 +56,7 @@ public class RogersBFA_TC09_PPC_Test extends BaseTestClass {
         rogers_choose_plan_page.selectFirstAvailablePlan();
         rogers_choose_plan_page.verifyAndClickDowngradeFeeContinue();
         rogers_choose_plan_page.clkCheckout();
+        reporter.reportLogWithScreenshot("Order review page");
         rogers_order_review_page.clkTermsAgreementCheckbox();
         //rogers_order_review_page.clkShieldAgreementCheckbox();
         rogers_order_review_page.selectEmailDigitalCopy(TestDataHandler.testCase9.getUsername());
