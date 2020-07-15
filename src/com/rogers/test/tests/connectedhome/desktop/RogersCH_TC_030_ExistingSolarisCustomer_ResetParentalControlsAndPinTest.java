@@ -16,7 +16,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 /**
  * This class contains the test method to test the Reset parental controls and pin functionality in change tv buy flow for Rogers.com   
  * 
- * @author Saurav.Goyal
+ * @author chinnarao.vattam
  * 
  * Test steps:
  *
@@ -29,7 +29,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *
  **/
 
-public class RogersCH_TC_003_ExistingSolarisCustomer_ResetParentalControlsAndPinTest extends BaseTestClass {
+public class RogersCH_TC_030_ExistingSolarisCustomer_ResetParentalControlsAndPinTest extends BaseTestClass {
 
     @Test
     public void checkSolarisTVResetParentalControlsAndPinFlow() {       
@@ -41,11 +41,12 @@ public class RogersCH_TC_003_ExistingSolarisCustomer_ResetParentalControlsAndPin
         rogers_login_page.setPasswordIFrame(TestDataHandler.igniteTVAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         rogers_login_page.clkSignInIFrame();
+    	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount((TestDataHandler.igniteTVAccount.accountDetails.getBan()));
-        reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+        rogers_account_overview_page.selectAccount(TestDataHandler.igniteTVAccount.accountDetails.getBan());
+    	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_solaris_tv_dashboard_page.clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
@@ -53,9 +54,9 @@ public class RogersCH_TC_003_ExistingSolarisCustomer_ResetParentalControlsAndPin
         reporter.reportLogWithScreenshot("Alert window with Reset your Controls and Pin will appear");
         rogers_solaris_tv_dashboard_page.clkContinueParentalControlAndPinReset();
         reporter.reportLogWithScreenshot("Clicked continue button on Reset your Controls and Pin Alert window");
-        reporter.softAssert(rogers_solaris_tv_dashboard_page.verifyResetParentalControlsAndPinSuccess(), "Parental Controls And Pin reset successfull","Parental Controls And Pin reset failed");
-        reporter.reportLogWithScreenshot("Success message verified");      
-    }
+        reporter.hardAssert(rogers_solaris_tv_dashboard_page.verifyResetParentalControlsAndPinSuccess(), "Parental Controls And Pin reset successfull","Parental Controls And Pin reset failed");
+        reporter.reportLogWithScreenshot("Success message verified");   
+    	}
 
     @BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin

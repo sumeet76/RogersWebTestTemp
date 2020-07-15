@@ -1,10 +1,11 @@
 # Account Details 
 ---
 name: DigitalTVAccount
-username: solarisconsumer1-rogers8@yahoo.com
-password: Rogers123
+username: Autodatar520sc03@yahoo.com
+password: DigiAuto@123
 accountDetails:
    type: Digital TV
-   ban: 227639549  
-   downgradePlanEn: Popular
-   downgradePlanFr: Popular
+   ban: 934270042  
+   upgradePlanEn: Ignite TV Premier
+   upgradePlanFr: Élan TV Premier
+   upgradeBundle: Ignite TV  Popular

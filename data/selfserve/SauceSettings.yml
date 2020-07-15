@@ -6,7 +6,7 @@ sauceOptions:
    maxDuration: 600
    commandTimeout: 300
    idleTimeout: 120
-   build: Rogers-Sanity Run 520
+   build: Rogers-AOTest-R520
 mutableFireFoxCapabilities:  
    platformVersion: Windows 10
    browserVersion: latest
@@ -18,8 +18,8 @@ mutableEdgeCapabilities:
    browserVersion: latest   
 androidChromeCapabilities:
    platformName: Android
-   platformVersion: 8.1
+   platformVersion: 10.0
    appiumVersion: 1.9.1
-   deviceName: Samsung Galaxy S7 GoogleAPI Emulator
+   deviceName: GoogleAPI Emulator
    deviceOrientation: portrait
 ...

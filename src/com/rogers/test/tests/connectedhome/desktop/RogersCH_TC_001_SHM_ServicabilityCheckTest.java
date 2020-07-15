@@ -2,8 +2,6 @@ package com.rogers.test.tests.connectedhome.desktop;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
-
-import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -31,10 +29,12 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *
  **/
 
-public class RogersCH_TC_003_SHM_ServicabilityCheckTest extends BaseTestClass {
+public class RogersCH_TC_001_SHM_ServicabilityCheckTest extends BaseTestClass {
 
     @Test
     public void checkServicabilityRHMTest() throws InterruptedException {
+		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();
     	reporter.reportLogWithScreenshot("Launched the Home Page");
     	rogers_home_page.clkShop(); 
     	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Home Monitering");
@@ -53,7 +53,7 @@ public class RogersCH_TC_003_SHM_ServicabilityCheckTest extends BaseTestClass {
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//legacyAnonymous
-	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws  IOException  {
 		startSession(TestDataHandler.rogersConfig.getRogersURL(),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacyanonymous, method);
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}

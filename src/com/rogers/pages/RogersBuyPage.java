@@ -48,6 +48,10 @@ public class RogersBuyPage extends BasePageClass {
 	@FindBy(xpath = "(//div//a[@class='rogers-btn-solid'])[4]")
 	WebElement btnControlPackage;
 	
+	@FindBy(xpath = "//button[@id='inpage-nav-button']")
+	WebElement btnInternetMenuMobile;
+	
+	
 		
 	/**
 	 * To select the solaris bundle package
@@ -84,8 +88,8 @@ public class RogersBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkExchangeFlexChannel() {
-		reusableActions.clickWhenReady(btnExchangeFlexChannel, 60);
-		//for Prod issue, click the same link second time
+		reusableActions.getWhenReady(btnExchangeFlexChannel, 60).click();
+		//for Prod issue, will be removing once the issue got fixed
 		reusableActions.clickIfAvailable(btnExchangeFlexChannel, 60);
 	}
 	
@@ -104,7 +108,7 @@ public class RogersBuyPage extends BasePageClass {
  * @author chinnarao.vattam
  */
 	public void setAddressLookup(String strAddress) {
-		reusableActions.getWhenReady(txtAddressLookup,20).clear();
+		reusableActions.getWhenReady(txtAddressLookup,180).clear();
 		reusableActions.getWhenReady(txtAddressLookup, 20).sendKeys(strAddress);
 		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.TAB);
 		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.ARROW_DOWN);
@@ -132,6 +136,15 @@ public class RogersBuyPage extends BasePageClass {
 	}
 
 	/**
+	 * To verify the  Internet Menu for Mobile
+	 * @return true if the Availability of Internet Menu is displayed; else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyInternetMenuMobile() {
+		return reusableActions.isElementVisible(btnInternetMenuMobile, 90);
+	}
+	
+	/**
 	 * To select the Internet package on the Internet buy page
 	 * @param strInternetBundle internet bundle to be select to buy
 	 * @author chinnarao.vattam 
@@ -149,9 +162,12 @@ public class RogersBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void selectHomeMoniteringPackage(String strHomeMoniteringEn, String strHomeMoniteringFr ) {
-		WebElement  rhmLocator = (WebElement)driver.findElement(By.xpath("//h3[contains(text(),'"+strHomeMoniteringEn+ "') or contains(text(),'"+ strHomeMoniteringFr+ "')]/ancestor::div[@class='package-tile']//div[@class='how-to-get-it']//a[@class='rogers-btn-solid']"));
-		reusableActions.waitForElementVisibility(rhmLocator,30);
-		reusableActions.executeJavaScriptClick(rhmLocator);	
+		By packageNameLocator = By.xpath("//h3[contains(text(),'"+strHomeMoniteringEn+ "') or contains(text(),'"+ strHomeMoniteringFr+ "')]/ancestor::div[@class='package-tile']//div[@class='how-to-get-it']//a[@class='rogers-btn-solid']");
+		WebElement pkg = driver.findElement(packageNameLocator);
+		reusableActions.waitForElementVisibility(pkg, 180);
+		reusableActions.javascriptScrollToMiddleOfPage();
+		reusableActions.getWhenReady(packageNameLocator, 180);
+		reusableActions.executeJavaScriptClick(pkg);
 	}
 	
 	/**

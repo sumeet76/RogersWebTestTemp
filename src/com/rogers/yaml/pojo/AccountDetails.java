@@ -283,7 +283,7 @@ public class AccountDetails {
 		return upgradeBundle;
 	}
 	/**
-	 * @param upgradePlan the upgradePlan to set
+	 * @param upgradeBundle the upgradeBundle to set
 	 */
 	public void setUpgradeBundle(String upgradeBundle) {
 		this.upgradeBundle = upgradeBundle;
@@ -295,7 +295,7 @@ public class AccountDetails {
 		return downgradePlanEn;
 	}
 	/**
-	 * @param downgradePlan the downgradePlan to set
+	 * @param downgradePlanEn the downgradePlanEn to set
 	 */
 	public void setDowngradePlanEn(String downgradePlanEn) {
 		this.downgradePlanEn = downgradePlanEn;
@@ -307,7 +307,7 @@ public class AccountDetails {
 		return downgradePlanFr;
 	}
 	/**
-	 * @param downgradePlan the downgradePlan to set
+	 * @param downgradePlanFr the downgradePlanFr to set
 	 */
 	public void setDowngradePlanFr(String downgradePlanFr) {
 		this.downgradePlanFr = downgradePlanFr;
@@ -320,7 +320,7 @@ public class AccountDetails {
 		return upgradePlanEn;
 	}
 	/**
-	 * @param upgradePlan the downgradePlan to set
+	 * @param upgradePlanEn the upgradePlanEn to set
 	 */
 	public void setUpgradePlanEn(String upgradePlanEn) {
 		this.upgradePlanEn = upgradePlanEn;
@@ -332,7 +332,7 @@ public class AccountDetails {
 		return upgradePlanFr;
 	}
 	/**
-	 * @param downgradePlan the downgradePlan to set
+	 * @param upgradePlanFr the upgradePlanFr to set
 	 */
 	public void setUpgradePlanFr(String upgradePlanFr) {
 		this.upgradePlanFr = upgradePlanFr;
@@ -344,7 +344,7 @@ public class AccountDetails {
 		return downgradeBundle;
 	}
 	/**
-	 * @param downgradePlan the downgradePlan to set
+	 * @param downgradeBundle the downgradeBundle to set
 	 */
 	public void setDowngradeBundle(String downgradeBundle) {
 		this.downgradeBundle = downgradeBundle;
@@ -374,7 +374,7 @@ public class AccountDetails {
 		return swapoutChannel;
 	}
 	/**
-	 * @param SwapoutChannel the SwapoutChannel to set
+	 * @param swapoutChannel the swapoutChannel to set
 	 */
 	public void setSwapoutChannel(String[] swapoutChannel) {
 		this.swapoutChannel = swapoutChannel;
@@ -384,7 +384,7 @@ public class AccountDetails {
 		return postalCode;
 	}
 	/**
-	 * @param SwapoutChannel the SwapoutChannel to set
+	 * @param postalCode the postalCode to set
 	 */
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
@@ -395,7 +395,7 @@ public class AccountDetails {
 		return payment;
 	}
 	/**
-	 * @param SwapoutChannel the SwapoutChannel to set
+	 * @param payment the payment to set
 	 */
 	public void setPayment(String payment) {
 		this.payment = payment;
@@ -421,7 +421,7 @@ public class AccountDetails {
 		return internetBundle;
 	}
 	/**
-	 * @param InternetBundle  the InternetBundle to set
+	 * @param internetBundle  the internetBundle to set
 	 */
 	public void setInternetBundle(String internetBundle) {
 		this.internetBundle = internetBundle;
@@ -434,7 +434,7 @@ public class AccountDetails {
 		return phoneNumber;
 	}
 	/**
-	 * @param PhoneNumber  the PhoneNumber to set
+	 * @param phoneNumber  the phoneNumber to set
 	 */
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
@@ -514,7 +514,7 @@ public class AccountDetails {
 		return downgradeBan;
 	}
 	/**
-	 * @param ban the ban to set
+	 * @param downgradeBan the downgradeBan to set
 	 */
 	public void setdowngradeBan(String downgradeBan) {
 		this.downgradeBan = downgradeBan;

@@ -66,7 +66,7 @@ public class RogersSS_TC_072_wldb_ValidateDetailsOfDeviceSection extends BaseTes
         reporter.softAssert(rogers_wireless_dashboard_page.verifyDeviceBalanceOfDeviceSection(), 
 							"Device balance in wireless dashboard page verified successfully", 
 							"Device balance in wireless dashboard page didn't show as expected.");
-    	rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
+    	//rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
         reporter.reportLogWithScreenshot("Wireless dashboard page Device Section."); 
         rogers_wireless_dashboard_page.clkLinkUpgradeMyDevice();
         if (rogers_wireless_dashboard_page.isModalDeviceUpgradeAvailable()) {

@@ -19,24 +19,33 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	@FindBy(xpath = "//span[@class='ute-icon-internet']")
 	WebElement btnInternetBadge;
-	
-	@FindBy(xpath = "//span[contains(@class,'rui-icon-internet icon')]/ancestor::div[@role='button']")
+			
+	@FindAll({
+        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'Internet')]"),
+        @FindBy(xpath = "//span[contains(@class,'rui-icon-internet icon')]/ancestor::div[@role='button']")})
 	WebElement btnLegacyInternetBadge;
 	
 	@FindBy (xpath ="//div[@class='ute-dataManager-badgeList-individualBadge']")
 	WebElement btnCtnBadge;
-	
-	@FindBy (xpath ="//div[@class='ute-dataManager-badgeList-individualBadge']//div[@class='ute-dataManager-badgeList-individualBadgeInfo']")
+			
+	@FindAll({
+        @FindBy(xpath = "//div[@class='subscription-detail']//rss-subscription-detail//a"),
+        @FindBy (xpath ="//div[@class='ute-dataManager-badgeList-individualBadge']//div[@class='ute-dataManager-badgeList-individualBadgeInfo']")})
 	List<WebElement> lstCtnBadges;
 	
 	
 	@FindBy(xpath = "//div[@class='row modal-content-header']//button[@class='close']")
 	WebElement popUpInternetPopup;
 
-	@FindBy(xpath = "//span[contains(@class,'rui-icon-tv icon')]/ancestor::div[@role='button']")
+	
+	@FindAll({
+        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'TV') or contains(text(),'Télévision')]"),
+        @FindBy(xpath = "//span[contains(@class,'rui-icon-tv icon')]/ancestor::div[@role='button']")})
 	WebElement btnTVBadge;
 
-	@FindBy(xpath = "//span[contains(@class,'rui-icon-home-phone icon')]/ancestor::div[@role='button']")
+	@FindAll({
+        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'Home Phone') or contains(text(),'Téléphonie résidentielle')]"),
+        @FindBy(xpath = "//span[contains(@class,'rui-icon-home-phone icon')]/ancestor::div[@role='button']")})
 	WebElement btnRHPBadge;
 
 	@FindBy(xpath = "//div[@linkurl='tvdashboard']/parent::div")
@@ -45,22 +54,35 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.total_balance' or text()='Total balance' or text()='Total du solde']")
 	WebElement infoBalanceLable;
 
+	@FindBy(xpath = "//h1[@class='mt-24']")
+	WebElement infoWelcome;
+	
 	@FindBy(xpath = "//span[@translate='ute.rogers.rhpDashboard.homePhone']")
 	WebElement infoLegacyrhpDashboard;
 	
 	@FindBy(xpath = "//span[@translate='ute.rogers.rhpDashboard.contactMangerFeatures']")
 	WebElement lnkContactUsToManageFeaturess;
-	
-	@FindBy(xpath = "//span[@translate='ute.rogers.account.balance.view_your_bill']")
-	WebElement btnViewYourBill;
+		
+	@FindAll({
+        @FindBy(xpath = "//span[text()=' View your bill ' or text()=' Afficher votre facture ']"),
+        @FindBy(xpath = "//span[@translate='ute.rogers.account.balance.view_your_bill']")})
+    WebElement btnViewYourBill;
 
+
+	@FindAll({
+	@FindBy(xpath = "//div[@class='rogers-self-serve-nav']//div[@class='c-dropdown-menu-holder']//span[text()='Lier un autre compte' or text()='Link another account']"),
 	@FindBy(xpath = "//span[contains(@data-translate,'linkAnotherAccount')]")
+	})
 	WebElement lnkLinkAnotherAccount;
 	
 	@FindBy(xpath = "//div[@translate='linked_acc_success']")
 	WebElement lblLinkAccountSuccess;
 	
-	@FindBy(xpath = "//span[contains(@class,'arrow-down-account')]")
+	
+	
+	@FindAll({
+	@FindBy(xpath = "//div[@class='account']//a[@class='dropdown-toggle menu-click']"),
+	@FindBy(xpath = "//span[contains(@class,'arrow-down-account')]")})
 	WebElement lnkAccountdropdown;
 	
 	
@@ -77,6 +99,11 @@ public class RogersAccountOverviewPage extends BasePageClass {
         @FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.setUpAutomaticPayments']")})	
 	WebElement lnkSetUpAutomaticPaymentMethod;
 	
+	@FindAll({
+        @FindBy(xpath = "//*[@id='overview' or @id='survol']//md-list-item//span[@data-translate='ute.common.second.level.navigation.billing.setUpAutomaticPayments']"),
+        @FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.setUpAutomaticPayments']")})	
+	WebElement lnkSetUpAutomaticPaymentMethodMobile;
+	
 	@FindBy(xpath = "//button/span[@translate='ute.rogers.account.balance.make_a_payment']")
 	WebElement btnMakeAPayment;
 	
@@ -88,8 +115,26 @@ public class RogersAccountOverviewPage extends BasePageClass {
         @FindBy(xpath = "//span[@data-translate='ute.common.label.profileAndSetting']")})
     WebElement menuProfileNSettings;
 
+	@FindAll({
+	@FindBy(xpath = "//button[@aria-label='ute.common.label.profileAndSetting']"),
+	@FindBy(xpath = "//span[text()='Profile & Settings' or text()='Profil et paramètres']/parent::a")})
+	WebElement menuProfileAndSettingsMobile;
 	
-	@FindBy (xpath = "//h3[@translate='acc_overview_which_account']")
+	@FindAll({
+	@FindBy(xpath = " //div[@class='ute-secondLevelNav-bar-m']//button//span[@data-translate='ute.common.label.overview']"),
+	@FindBy(xpath = "//button[contains(text(),'Overview') or contains(text(),'Survol')]")})
+	WebElement btnOverViewMobile;
+	
+				
+	@FindAll({
+	@FindBy(xpath = "//div[@class='ute-secondLevelNav-bar-m']//button//span[@data-translate='ute.common.label.billAndPayment']"),
+	@FindBy(xpath = "//button[contains(text(),'Overview') or contains(text(),'Survol')]")})
+	WebElement btnBillingsAndPaymentsMobile;
+	
+	@FindAll({
+		@FindBy (xpath = "//p[text()='Quel compte souhaitez-vous consulter?' or text()='Which account would you like to view today?']"),
+		@FindBy (xpath = "//h3[@translate='acc_overview_which_account']")
+	})	
 	WebElement headerAccountSelect;
 	
 	@FindBy (xpath = "//h1[@class='profile-header']")
@@ -125,7 +170,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath="//*[@id='paymentAmount']")
 	WebElement txtAmount;
 	
-	@FindBy(xpath = "//div[@class='ute-dataManager-badgeList-individualBadge']//div[@class='ute-dataManager-badgeList-individualBadgeInfo']")
+	@FindAll({
+        @FindBy(xpath = "//span[contains(@class,'subscription-name')]"),
+        @FindBy(xpath = "//div[@class='ute-dataManager-badgeList-individualBadge']//div[@class='ute-dataManager-badgeList-individualBadgeInfo']")})	
 	WebElement lblCTNWirelessName;
 	
 
@@ -157,6 +204,23 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	
 	@FindBy (xpath = "//button[@aria-label='ute.common.label.profileAndSetting']")
 	WebElement btnProfileSettingsMobile;
+	
+	@FindAll({
+		@FindBy(xpath = "//span[contains(text(),'Entertainment')]/ancestor::div[@class='subscription-detail']"),
+        @FindBy(xpath = "//span[@translate='ute.subscriptionBadge.smartStream']")})	
+	WebElement btnEntertainmentBadge;
+
+	@FindBy(xpath = "//button[@aria-label='ute.common.label.billAndPayment']")
+	WebElement menuBillingAndPaymentsMobile;
+
+	@FindBy(xpath = "//*[@id='overview' or @id='survol']//md-list-item//span[@data-translate='ute.common.second.level.navigation.billing.changePaymentMethod']/ancestor::h2/parent::div/parent::div/button")
+	WebElement submenuChangePaymentMethod;
+	
+	@FindBy(xpath = "//*[@id='overview' or @id='survol']//md-list-item//span[@data-translate='ute.common.second.level.navigation.billing.setUpAutomaticPayments']/ancestor::h2/parent::div/parent::div/button")
+	WebElement submenuSetUpAutomaticPaymentMethodMobile;
+
+	@FindBy(xpath = "//div[contains(@translate,'makeAPayment')]")
+	WebElement lblMakeASecurePayment;
 
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
@@ -195,7 +259,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkLegacyInternetBadge(String strBrowser) {
-		if (strBrowser.equalsIgnoreCase("chrome"))
+		if (strBrowser.toLowerCase().contains("chrome"))
 		{
 		reusableActions.getWhenReady(btnLegacyInternetBadge, 120).click();
 		}else {
@@ -203,6 +267,15 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		}
 	}
 	
+	/**
+	 * Clicks on the Legacy 'InternetBadge' option on the dash board
+	 * @author chinnarao.vattam
+	 */
+	public void clkLegacyInternetBadge() {
+		reusableActions.getWhenReady(btnLegacyInternetBadge, 120).click();
+	}
+	
+
 	/**
 	 * To click on the CTN badge in account overview page
 	 * @param strLast4DigitCtn, String, last 4 digit of the CTN
@@ -254,6 +327,24 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	}
 
 	/**
+	 * Clicks on the 'TV Badge' option on the dash board
+	 * @author chinnarao.vattam
+	 */
+	public void clkTVBadge() {	
+		reusableActions.getWhenReady(btnTVBadge, 180).click();
+		reusableActions.staticWait(10000);
+	}
+	
+	/**
+	 * Clicks on the 'TV Badge' option on the dash board
+	 * @author chinnarao.vattam
+	 */
+	public void clkTVBadgeMobile() {	
+		reusableActions.getWhenReady(btnTVBadge,180);
+		reusableActions.executeJavaScriptClick(btnTVBadge);
+	}
+	
+	/**
 	 * Clicks on the 'RHP Badge' option on the dash board
 	 * @param strBrowser- strBrowser
 	 * @author chinnarao.vattam
@@ -267,7 +358,13 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			}
 		}
 	
-
+	/**
+	 * Clicks on the 'RHP Badge' option on the dash board
+	 * @author chinnarao.vattam
+	 */
+	public void clkRHPBadge() {
+		reusableActions.getWhenReady(btnRHPBadge, 120).click();;
+		}
 	
 	/**
 	 * Check if the account selection header display or not
@@ -284,7 +381,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void selectAccount(String strAccountNumber) {
-			reusableActions.clickIfAvailable((By.xpath("//span[@class='account-number-txt']/span[text()='" + strAccountNumber + "']")), 20);
+			reusableActions.clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 30);
 	}
 	
 	/**
@@ -295,7 +392,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public Boolean isAccountLinked(String strAccountNumber) {
 		return reusableActions.isElementVisible(
-				(By.xpath("//span[@class='account-number-txt']/span[text()='" + strAccountNumber + "']")), 
+				(By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 
 				20);
 	}
 	
@@ -340,7 +437,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean isAccountShowInDropDown(String strLast4DigAcctNum) {
 		return reusableActions.isElementVisible(
-				(By.xpath("//span[contains(@data-translate-values,'" + strLast4DigAcctNum + "')]")), 
+				(By.xpath("//span[contains(@data-translate-values,'" + strLast4DigAcctNum + "') or contains(text(),'" + strLast4DigAcctNum + "')]")), 
 				10);
 	}
 	
@@ -351,7 +448,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void clkDropDownAccount(String strLast4DigAcctNum) {
 		reusableActions.getWhenReady(
-				(By.xpath("//span[contains(text(),'" + strLast4DigAcctNum + "')]")), 
+				(By.xpath("//span[contains(text(),'" + strLast4DigAcctNum + "')or contains(text(),'" + strLast4DigAcctNum + "')]")), 
 				10).click();
 
 	}
@@ -382,6 +479,17 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	}
 	
 	/**
+	 * Click on menu Profile and Settings on Mobile
+	 * @author Mirza.Kamran
+	 */
+	public void clkLnkProfileNSettingsMobile() {		
+		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
+		reusableActions.getWhenReady(menuProfileAndSettingsMobile,30).click();			
+		reusableActions.waitForElementVisibility(headerProfileNSettings,60);
+					
+	}
+	
+	/**
 	 * To verify the successful login
 	 * @return true if the balance label is present ; else false
 	 * @author chinnarao.vattam
@@ -389,12 +497,23 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public boolean verifySuccessfulLogin() {
 		return reusableActions.isElementVisible(infoBalanceLable,60);
 	}
+	
+	/**
+	 * To verify the successful login
+	 * @return true if the balance label is present ; else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyLoginSuccessWelcome() {
+		return reusableActions.isElementVisible(infoWelcome,60);
+	}
+	
 
 	/**
 	 * To Verify the RHP Banner on the Legacy RHP dash board
 	 * @return true if the package name is Home Phone ; else false
 	 * @author chinnarao.vattam
 	 */
+	//TODO please move this to dashboard page
 	public boolean verifyRHPBanner() {
 		return reusableActions.isElementVisible(infoLegacyrhpDashboard, 20);
 	}
@@ -498,6 +617,19 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		reusableActions.clickIfAvailable(lnkSetUpAutomaticPaymentMethod);
 	}
 	
+	
+	/**
+	 * Clicks on the 'Billing and Payment' then 'Set up automatic payment' option
+	 * @author Mirza.Kamran
+	 */
+	public void clkSetUpAutomaticPaymentMethodMobile() {
+		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
+		reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
+		reusableActions.staticWait(3000); //extra static buffers added for firefox	
+		reusableActions.waitForElementVisibility(submenuSetUpAutomaticPaymentMethodMobile);
+		reusableActions.getWhenReady(submenuSetUpAutomaticPaymentMethodMobile).click();	
+	}
+	
 	/**
 	 * Clicks on the submenu of 'Billing and Payment'  'Set up automatic payment' option
 	 * @author Mirza.Kamran
@@ -506,6 +638,17 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		reusableActions.waitForElementVisibility(lnkSetUpAutomaticPaymentMethod);		
 		reusableActions.clickIfAvailable(lnkSetUpAutomaticPaymentMethod);
 	}
+	
+	/**
+	 * Clicks on the submenu of 'Billing and Payment'  'Set up automatic payment' option
+	 * @author Mirza.Kamran
+	 */
+	public void clkBillngsAndPaymentsSubMenuSetUpAutomaticPaymentMethodMobile() {
+		reusableActions.waitForElementVisibility(submenuSetUpAutomaticPaymentMethodMobile);
+		reusableActions.getWhenReady(submenuSetUpAutomaticPaymentMethodMobile).click();		
+		//reusableActions.clickIfAvailable(submenuSetUpAutomaticPaymentMethodMobile);
+	}
+	
 	
 	/**
 	 * Clicks on the 'Billing and Payment' then 'Change Payment Method' option
@@ -529,7 +672,27 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickMakePayment() {
-		reusableActions.clickIfAvailable(btnMakeAPayment,10);
+		//reusableActions.waitForElementTobeClickable(btnMakeAPayment, 20);
+		//reusableActions.getWhenReady(btnMakeAPayment,10).click();
+		
+		
+		boolean clickSuccess=false;
+		int count=0;
+		while (count<=3 && !clickSuccess) {
+			System.out.println("Attempt: "+(count+1)+" Make payment button");
+
+			reusableActions.getWhenReady(btnMakeAPayment,30).click();			
+			reusableActions.waitForElementVisibility(lblMakeASecurePayment,10);
+			if(reusableActions.isDisplayed(lblMakeASecurePayment))
+			{
+				System.out.println("Make payment button clicked in attempt: "+(count+1));
+				clickSuccess=true;				
+				break;
+				
+			}
+			count++;
+		}
+		
 	}
 	
 	/**
@@ -551,6 +714,18 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		reusableActions.executeJavaScriptClick(lnkBillingAndPayment);
 		reusableActions.staticWait(3000); //extra static buffers added for firefox
 		return reusableActions.isDisplayed(lnkSetUpAutomaticPaymentMethod);
+	}
+	
+	/**
+	 * Checks if the auto payment is set
+	 * @return true if set automatic payment sub menu is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isSetAutoPaymentDisplayedMobile() {
+		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
+		reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
+		reusableActions.staticWait(3000); //extra static buffers added for firefox
+		return reusableActions.isDisplayed(lnkSetUpAutomaticPaymentMethodMobile);
 	}
 
 	/**
@@ -661,6 +836,14 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	}
 
 	/**
+	 * Checks if the no of CTNS are more than 1
+	 * @return true if the no of CTNS are more than 5
+	 * @author Mirza.Kamran
+	 */
+	public boolean isCTNMoreThanOne() {		
+		return lstCtnBadges.size()>1;
+	}
+	/**
 	 * retruns total no of CTNS
 	 * @return int value total no of CTNs
 	 * @author Mirza.Kamran
@@ -710,5 +893,33 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void scrollToTopOfPage() {
 		reusableActions.javascriptScrollToTopOfPage();
+	}
+	
+	/**
+	 * Clicks on Tupelo entertainment badge
+	 * @author Mirza.Kamran
+	 */
+	public void clkEntertainmentBadge() {
+		reusableActions.getWhenReady(btnEntertainmentBadge).click();
+		
+	}
+
+	/**
+	 * Clicks on view bill if available
+	 * @author Mirza.Kamran
+	 */
+	public void clkViewBill() {
+	reusableActions.clickIfAvailable(btnViewYourBill);
+		
+	}
+
+	/**
+	 * Clicks on Billings and payments sub menu change paymeny mobile
+	 * @author Mirza.Kamran
+	 */
+	public void clkBillingAndPaymentsSubMenuChangePaymentMethodMobile() {			
+		reusableActions.waitForElementVisibility(submenuChangePaymentMethod,60);
+		reusableActions.getWhenReady(submenuChangePaymentMethod).click();
+		
 	}
 }

@@ -2,6 +2,7 @@ package com.rogers.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -27,7 +28,7 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(xpath = "//iframe[contains(@src,'/web/totes/easylogin/signin')]")
 	WebElement fraSignIn;
 	
-	@FindBy (xpath = "//span[contains(text(),'is not recognized') or contains(text(),'entré n’est pas reconnu')]")
+	@FindBy (xpath = "//img[@src='assets/images/error_warning.png']")
 	WebElement failLoginMsg;
 
 	@FindBy(xpath = "//button[text()='Skip' or text()='Continuer']")
@@ -44,8 +45,10 @@ public class RogersLoginPage extends BasePageClass {
 
 	@FindBy(xpath = "//a[@title='Sign out' or @title='Fermer la session' and @tabindex='0']")
 	WebElement lnkSignOut;
-
-	@FindBy(xpath = "//a[contains(@class,'signin-interceptor dds_m-navLink -navbar -login dropdown-hide')]")
+		
+	@FindAll({
+        @FindBy(xpath = "//div[@class='dds-navbar-nav']//a[@aria-label='Sign in to My Rogers']//span[text()='Sign in'  or text()='Connexion']"),
+        @FindBy(xpath = "//a[contains(@class,'signin-interceptor dds_m-navLink -navbar -login dropdown-hide')]")})	
 	WebElement lnkReSignInAs;
 
 	@FindBy(xpath = "//a[text()='Forgot username and/or password?' or contains(text(),\"Nom d'utilisateur ou mot de passe oublié?\")]")
@@ -58,6 +61,15 @@ public class RogersLoginPage extends BasePageClass {
 	public void switchToSignInIFrame() {
 		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraSignIn, 100);
 	}
+	
+	/**
+	 * Is sign in frame displayed
+	 * @return boolean, true if sign-in iframe is displayed, otherwise false.
+	 * @author Mirza.Kamran
+	 */
+	 public boolean isSignInFrameDisplayed() {
+		 return reusableActions.isElementVisible(fraSignIn);
+	 }
 	
 	/**
 	 * Enter the user name on Sign in frame
@@ -93,7 +105,7 @@ public class RogersLoginPage extends BasePageClass {
 	 * @return true if login fail message is displayed, otherwise false.
 	 */
 	public Boolean verifyLoginFailMsgIframe() {
-		return reusableActions.isElementVisible(failLoginMsg, 30);
+		return reusableActions.isElementVisible(failLoginMsg, 10);
 	}
 
 	/**

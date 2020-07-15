@@ -49,20 +49,19 @@ public class RogersCH_TC_001_IginteTV_TVChannelsSwapFromAddressmodalTest extends
     rogers_login_page.setPasswordIFrame(TestDataHandler.igniteTVAccount.getPassword());
     reporter.reportLogWithScreenshot("Enter the account credentails");
     rogers_login_page.clkSignInIFrame();
+	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
     reporter.reportLogWithScreenshot("Skip popup");
     rogers_login_page.clkSkipIFrame();
     rogers_login_page.switchOutOfSignInIFrame();
     rogers_account_overview_page.selectAccount(TestDataHandler.igniteTVAccount.accountDetails.getBan());
-    reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
     reporter.reportLogWithScreenshot("Launched the Account Page");
-    rogers_home_page.clkShop();
+    rogers_home_page.clkExistingCustomerShop();
     rogers_home_page.clkIgniteTVExistingCustomer();
     reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 	rogers_home_page.clkServiceabilityMigration();  
     reporter.reportLogWithScreenshot("Address confirmation popup has lanched to select Ignite Internet speed button"); 
-    rogers_buy_page.clkExchangeFlexChannel(); 
-    reporter.reportLogWithScreenshot("Launched the TV dash board");
-    rogers_solaris_tv_dashboard_page.clkChangeFlexChannels();  
+    rogers_buy_page.clkExchangeFlexChannel();  
     reporter.reportLogWithScreenshot("TV channels pannel has displayed");
     rogers_solaris_tv_dashboard_page.clkOutChannelOne();
     rogers_solaris_tv_dashboard_page.clkOutChannelTwo();
@@ -83,7 +82,7 @@ public class RogersCH_TC_001_IginteTV_TVChannelsSwapFromAddressmodalTest extends
     rogers_solaris_tv_dashboard_page.clkConfirmSwap(); 
     reporter.reportLogWithScreenshot("Swap Success popup has launched");
     rogers_solaris_tv_dashboard_page.clkSuccessSwap();    
-    reporter.reportLogWithScreenshot("Swap success");         
+    reporter.reportLogWithScreenshot("Swap success");  
     }
 	
 
@@ -96,7 +95,7 @@ public void beforeTest(String strBrowser, String strLanguage,  ITestContext test
 
 @AfterMethod(alwaysRun = true)
 public void afterTest() {
-	//closeSession();
+	closeSession();
 }
 
 

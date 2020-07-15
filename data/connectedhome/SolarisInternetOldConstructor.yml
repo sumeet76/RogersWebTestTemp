@@ -1,13 +1,13 @@
 # Account Details 
 ---
 name: SolarisInternetAccount
-username: Autodatar420ss92@yahoo.com	
+username: Autodatar520sc02@yahoo.com	
 password: DigiAuto@123 
 accountDetails:
    type: Internet
-   ban: 932541444
-   upgradePlan: Ignite Internet Gigabit
-   downgradePlanEn: Ignite Internet 150u 
+   ban: 934270711
+   upgradePlanEn: Ignite Internet Gigabit
+   upgradePlanFr: Élan Internet gigabit
    internetBundle:  150u
-   phoneNumber: 921577623
+   phoneNumber: 934234683
 ...

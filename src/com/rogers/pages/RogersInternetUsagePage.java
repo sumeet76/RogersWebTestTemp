@@ -11,24 +11,33 @@ public class RogersInternetUsagePage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//ins[@translate='global.label.dailyBreakdown']")
+	@FindBy(xpath = "//x-chartist[@class='daily-usage-chart']")
 	WebElement infoDailyBreakdown;
 
-	@FindBy(xpath = "//table[@class='table ute-table table-centred ng-table']")
+	@FindBy(xpath = "//table[@class='usage-table__table ng-star-inserted']")
 	WebElement tblDailyBreakdown;
 
-	@FindBy(xpath = "//ins[@translate='global.label.monthlyUsage']")
+	@FindBy(xpath = "//table[@class='table  table-centred ng-table']")
+	WebElement tblDailyBreakdownMobile;
+		
+	@FindBy(xpath = "//h2[@id='internetUsage-monthly-tab']")
 	WebElement lnkMonthlyUsage;
 
-	@FindBy(xpath = "//ins[@translate='global.label.monthlyBreakdown']")
+	@FindBy(xpath = "//x-chartist[@class='monthlyUsage']")
 	WebElement infoMonthlyBreakdown;
-
-	@FindBy(xpath = "//table[@class='table ute-table table-centred table-no-filter ng-table']")
+	
+	@FindBy(xpath = "//table[@class='usage-table__table ng-star-inserted']")
 	WebElement tblMonthlyBreakdown;
+	
+	@FindBy(xpath = "//table[@class='table  table-centred table-no-filter ng-table']")
+	WebElement tblMonthlyBreakdownMobile;
 
-	@FindBy(xpath = "//ins[@translate='global.label.usageAlerts']")
+	@FindBy(xpath = "//h2[@id='internetUsage-alerts-tab']")
 	WebElement btnUsageAlerts;
 
+	@FindBy(xpath = "//div[@class='internet-usage-alerts-component']")
+	WebElement infoUsageAlerts;
+	
 
 	/**
 	 * Verify the Internet Daily Breakdown table heading text on solaris Internet usage page
@@ -49,6 +58,15 @@ public class RogersInternetUsagePage extends BasePageClass {
 	}
 
 	/**
+	 * Verify the Internet Daily Breakdown table on solaris Internet usage page
+	 * @return true if the Internet Daily Breakdown content displayed; else false
+	 * @author Chinnarao.Vattam
+	 */
+	public boolean verifyDailyBreakdownTableMobile() {		
+		return reusableActions.isElementVisible(tblDailyBreakdownMobile,20);
+	}
+	
+	/**
 	 * Click on the Internet Monthly usage link on solaris Internet usage page
 	 * @author Chinnarao.Vattam
 	 */
@@ -62,9 +80,10 @@ public class RogersInternetUsagePage extends BasePageClass {
 	 * @return true if the Internet Monthly Breakdown table heading displayed; else false
 	 * @author Chinnarao.Vattam
 	 */
-	public boolean verifyMonthlyBreakdown() {		
+	public boolean verifyMonthlyBreakdown() {		 
 		return reusableActions.isElementVisible(infoMonthlyBreakdown);
 	}
+	
 
 	/**
 	 * Verify the Internet Monthly Breakdown table on Solaris Internet usage page
@@ -75,13 +94,30 @@ public class RogersInternetUsagePage extends BasePageClass {
 		return reusableActions.isElementVisible(tblMonthlyBreakdown,40);
 	}
 	
+	
+	/**
+	 * Verify the Internet Monthly Breakdown table heading text on solaris Internet usage page
+	 * @return true if the Internet Monthly Breakdown table heading displayed; else false
+	 * @author Chinnarao.Vattam
+	 */
+	public boolean verifyMonthlyBreakdownTableMobile() {		 
+		return reusableActions.isElementVisible(tblMonthlyBreakdownMobile);
+	}
+	
 	/**
 	 * Click on the Usage Alerts link on Solaris Internet usage page
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkUsageAlerts() {		
 		reusableActions.clickWhenReady(btnUsageAlerts,20);
-
 	}
 
+	/**
+	 * Click on the Usage Alerts link on Solaris Internet usage page
+	 * @return true if the Internet Usage Alerts heading displayed; else false
+	 * @author Chinnarao.Vattam
+	 */
+	public boolean  verifyUsageAlerts() {		
+		return reusableActions.isElementVisible(infoUsageAlerts,20);
+	}
 }

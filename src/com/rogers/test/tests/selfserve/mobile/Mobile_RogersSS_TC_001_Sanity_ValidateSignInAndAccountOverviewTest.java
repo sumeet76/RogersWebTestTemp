@@ -17,8 +17,6 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class Mobile_RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest extends BaseTestClass {	
     
-	// private AndroidDriver<WebElement> Driver;
-
 
 	@BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {

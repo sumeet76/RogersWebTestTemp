@@ -19,9 +19,18 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	@FindBy(xpath = "//a[@href='/consumer/rogers-internet' and @class='rui-cta-button']")
 	WebElement btnContinueShopping;
 	
-	// Thanks! We received your order.
+	// Thanks! We received your order. 
+	@FindBy(xpath = "//div[@class='confirmation-bubble']")
+	WebElement infoChangeOrderConfirmationnew;
+	
 	@FindBy(xpath = "//ins[@translate='global.message.orderConfirmationThanksV3']")
-	WebElement infoChangeOrderConfirmation;
+	WebElement infoChangeOrderConfirmation;	
+	
+	@FindBy(xpath = "//img[@src='/cms/rogers/page-specific/shop/ordersummary/thankyou/images/thankyou-badge-desktop.png']")
+	WebElement infoChangeOrderConfirmationLegacy;
+	
+	@FindBy(xpath = "//ins[@translate='global.message.orderConfirmationThanksV2']")
+	WebElement infoOrderConfirmation;
 	
 	@FindAll({
 		@FindBy(xpath = "//span[@class='thank-you']"),
@@ -44,15 +53,48 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	@FindBy(xpath = "//ngx-smart-modal[@id='loadingModal']")
 	WebElement popupLoadingFingersciam;
 	
+	@FindBy(xpath = "//i[@class='li-loader']")
+	WebElement popupLoadingFingersInternet;	
+	
+	/**
+	 * Verify the the yellow banner with order success information
+	 * @return true if the page display the yellow banner with order success information , else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyOrderConfirmationLegacy() {
+		reusableActions.waitForElementVisibility(infoChangeOrderConfirmationLegacy,180);
+		return reusableActions.isElementVisible(infoChangeOrderConfirmationLegacy, 60);
+	}
+	
 	/**
 	 * Verify the the yellow banner with order success information
 	 * @return true if the page display the yellow banner with order success information , else false
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOrderConfirmation() {
-		reusableActions.waitForElementVisibility(infoChangeOrderConfirmation,180);
+		reusableActions.waitForElementInvisibility(popupLoadingFingersInternet, 180);
 		return reusableActions.isElementVisible(infoChangeOrderConfirmation, 60);
 	}
+	
+	/**
+	 * Verify the the yellow banner with order success information
+	 * @return true if the page display the yellow banner with order success information , else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyOrderConfirmationNew() {
+		reusableActions.waitForElementInvisibility(popupLoadingFingersInternet, 180);
+		return reusableActions.isElementVisible(infoChangeOrderConfirmationnew, 60);
+	}
+	/**
+	 * Verify the the yellow banner with order success information
+	 * @return true if the page display the yellow banner with order success information , else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyOrderSuccess() {
+		reusableActions.waitForElementVisibility(infoOrderConfirmation,180);
+		return reusableActions.isElementVisible(infoOrderConfirmation, 60);
+	}
+	
 	
 	/**
 	 * Verify the Continue Shopping button on order confirmation page

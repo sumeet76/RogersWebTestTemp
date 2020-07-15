@@ -26,13 +26,20 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(className = "bx-loading")
 	WebElement popupLoading;
 	
+	@FindBy(xpath = "//i[@class='li-loader']")
+	WebElement popUpLoading;
+	
 	@FindBy(id = "modemUpgradeContinue")
 	WebElement btnUpgradeContinue;
 	
 	@FindBy(xpath = "//input[@class='checkoutButton']")
 	WebElement btnCheckout;
 	
+	@FindBy(xpath = "//span[@translate='global.cta.continue']")
+	WebElement btnInternetBuyContinue;
 	
+	@FindBy(xpath = "//button[@aria-label='Add Ignite Internet 500u to your cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']")
+	WebElement btnInternetPackage;
 
 	/**
 	 * selects the Internet package if it visible and ready if not click on the next arrow to get the desired package
@@ -94,6 +101,15 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	public void clkUpgradeContinue() {
 		//reusableActions.waitForElementVisibility(btnUpgradeContinue, 90);
 		reusableActions.getWhenReady(btnUpgradeContinue, 90).click();
+	}
+	
+	public void clkInternetPackage() {
+		reusableActions.getWhenReady(btnInternetPackage, 90).click();
+	}
+		
+	public void clkInternetBuyContinue() {
+		reusableActions.waitForElementInvisibility(popUpLoading, 90);
+		reusableActions.getWhenReady(btnInternetBuyContinue, 90).click();
 	}
 	
 	public void clkCheckout() {

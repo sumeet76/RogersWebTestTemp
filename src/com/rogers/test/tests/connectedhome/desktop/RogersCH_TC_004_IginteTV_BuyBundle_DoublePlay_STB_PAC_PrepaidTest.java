@@ -53,68 +53,117 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class RogersCH_TC_004_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest extends BaseTestClass {
 
 	@Test
-	public void checkBuyDigitalTVOffer() {
-		reporter.reportLogWithScreenshot("Launched the Home Page");
-		rogers_home_page.clkSignIn();
-		rogers_login_page.switchToSignInIFrame();
-		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setUsernameIFrame(TestDataHandler.solarisInternetAccountWithUsageAndPackageUpgrade.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.solarisInternetAccountWithUsageAndPackageUpgrade.getPassword());
-		reporter.reportLogWithScreenshot("Enter the account credentails");
-		rogers_login_page.clkSignInIFrame();
-		reporter.reportLogWithScreenshot("Skip popup");
-		rogers_login_page.clkSkipIFrame();  
-		rogers_login_page.switchOutOfSignInIFrame();
-		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
-		reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_home_page.clkShop(); 
-		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-		rogers_home_page.clkIgniteTV();
-		rogers_home_page.verifyIgnitepage();
-		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-		rogers_home_page.clkServiceability();
-		reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-		String  strAddressLine1=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line1");
-		String  strAddressLine2=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line2");
-		rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
-		rogers_home_page.clkIgniteAddressLookupSubmit();
-		//rogers_home_page.clkContinueIgniteMultipleAddressLookupSubmit();
-		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-		rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
-		reporter.reportLogWithScreenshot("Launched the port-in popup");
-		rogers_igniteTV_buy_page.verify4KTV();
-		reporter.reportLogWithScreenshot("Launched the cart summary page");
-		rogers_igniteTV_buy_page.set4KTV();
-		reporter.reportLogWithScreenshot("4k TV selected");
-		rogers_igniteTV_buy_page.clkPlusAddIgniteTVBoxes(); 
-		rogers_igniteTV_buy_page.clkUpdateCart();
-		rogers_igniteTV_buy_page.clkCheckout();
-		rogers_igniteTV_profile_creation_page.verifyProfilePage();
-		reporter.reportLogWithScreenshot("Launched the create profile page");
-		rogers_igniteTV_profile_creation_page.clkSubmitProfile();
-        rogers_tech_install_page.verifyTechInstallPage(); 
-		reporter.reportLogWithScreenshot("tech install page launched");
-        //rogers_tech_install_page.clkPersonalizedInstall();
-		rogers_tech_install_page.selSelffinstallDateAndTime(); 
-		rogers_tech_install_page.clkTechInstallSlot(); 
-		rogers_tech_install_page.clkTechInstalConsent();
-		reporter.reportLogWithScreenshot("tech install date selected");
-		rogers_tech_install_page.clkTechInstallContinue();
-		rogers_order_review_page.verifyAgreementPage();
+	public void checkDoublePalyTVOffer() {
+		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();
+    	reporter.reportLogWithScreenshot("Launched the Home Page");
+    	rogers_home_page.clkShop(); 
+    	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+    	rogers_home_page.clkIgniteTV();
+    	
+        reporter.hardAssert(rogers_home_page.verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
+       	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+    	rogers_home_page.clkServiceability();
+    	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
+    	rogers_home_page.clkAddressCheck();
+    	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+        String  strAddressLine1=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line2");
+        rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        rogers_home_page.clkIgniteAddressLookupSubmit();
+        reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
+        rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
+        
+        /*reporter.hardAssert(rogers_igniteTV_buy_page.verifyOptNewPhone(),"4KTV radio button is availabe","4KTV radio button is not availabe");
+        reporter.reportLogWithScreenshot("Launched the port-in popup");
+        rogers_igniteTV_buy_page.selectOptNewPhone();
+        rogers_igniteTV_buy_page.clickOptPhone();
+        rogers_igniteTV_buy_page.verifyHomePhone();
+        reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
+        rogers_igniteTV_buy_page.clkHomePhone();*/
+        
+        reporter.hardAssert(rogers_igniteTV_buy_page.verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
+        reporter.reportLogWithScreenshot("Launched the cart summary page");
+        rogers_igniteTV_buy_page.set4KTV();
+        reporter.reportLogWithScreenshot("4k TV selected");
+        rogers_igniteTV_buy_page.clkCheckout();
+        
+        reporter.hardAssert(rogers_igniteTV_profile_creation_page.verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the create profile page");
+        rogers_igniteTV_profile_creation_page.setEmail();
+        rogers_igniteTV_profile_creation_page.setFirstname();
+        rogers_igniteTV_profile_creation_page.setLastName();
+        rogers_igniteTV_profile_creation_page.setPhone();
+        rogers_igniteTV_profile_creation_page.clkSubmitProfile();
+        
+        reporter.hardAssert(rogers_igniteTV_credit_check_page.verifyCreditEvalutionPage(),"Credit Evalution page has Launched","Credit Evalution page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the credit evalution page");
+        rogers_igniteTV_credit_check_page.selectDOBYear();
+        rogers_igniteTV_credit_check_page.selectDOBMonth();
+        rogers_igniteTV_credit_check_page.selectDOBDay();
+        reporter.reportLogWithScreenshot("Entered DOB details");
+        rogers_igniteTV_credit_check_page.selectFirstID("Driver's License");
+        rogers_igniteTV_credit_check_page.selectProvince("Ontario");
+        rogers_igniteTV_credit_check_page.selectExpiryYear();
+        rogers_igniteTV_credit_check_page.selectExpiryMonth();
+        rogers_igniteTV_credit_check_page.selectExpiryDay();
+        rogers_igniteTV_credit_check_page.setDrivingLicenseNumber("ONTARIO");
+        reporter.reportLogWithScreenshot("Driving License Details");
+        rogers_igniteTV_credit_check_page.selectSecondIDOption("Passport");
+        rogers_igniteTV_credit_check_page.setPassportNumber();
+        rogers_igniteTV_credit_check_page.selectPassportExpiryYear();
+        rogers_igniteTV_credit_check_page.selectPassportExpiryMonth();
+        rogers_igniteTV_credit_check_page.selectPassportExpiryDay();
+        rogers_igniteTV_credit_check_page.clkCreditConsent();
+        reporter.reportLogWithScreenshot("Passport Details");
+       rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
+/*      reporter.hardAssert(rogers_home_phone_selection_page.verifyPhoneNumberPage(),"Ignite page has Launched","Ignite page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the home phone selection page");
+        rogers_home_phone_selection_page.clkPhoneNumberGenerator(); 
+        rogers_home_phone_selection_page.clkChosePhoneNumber(); 
+        rogers_home_phone_selection_page.clkContinueHomePhoneSelection();*/ 
+       
+       reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
+       reporter.reportLogWithScreenshot("Launched the tech install page");
+       //rogers_tech_install_page.clkPersonalizedInstall();
+       rogers_tech_install_page.selSelffinstallDateAndTime();
+       reporter.reportLogWithScreenshot("Launched the tech install page");
+       rogers_tech_install_page.clkTechInstallSlot();
+       reporter.reportLogWithScreenshot("tech install details");
+       rogers_tech_install_page.setMobielNumber();
+       rogers_tech_install_page.setEmail();
+       rogers_tech_install_page.clkTechInstalConsent();
+       reporter.reportLogWithScreenshot("tech install details");
+       rogers_tech_install_page.clkTechInstallContinue();
+       
+        reporter.hardAssert( rogers_payment_options_page.verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the payment options page");
+        rogers_payment_options_page.selectPaymentMode("Pre-authorized Credit Card");
+        rogers_payment_options_page.switchToCreditCardIFrame();
+        rogers_payment_options_page.setCreditCardNumberIFrame(TestDataHandler.rogersPaymentInfo.getCreditCardDetails().getNumber());
+        rogers_payment_options_page.switchOutOfCreditCardIFrame();
+        rogers_payment_options_page.setCVV();
+        rogers_payment_options_page.selectExpiryMonth();
+        rogers_payment_options_page.selectExpiryYear(); 
+        reporter.reportLogWithScreenshot("Payment options Details");
+        rogers_payment_options_page.clkPaymentConfirm();
+       
+        reporter.hardAssert( rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
-        rogers_order_review_page.verifyAgreement();
+        
+        reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
         rogers_order_review_page.clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
         rogers_order_review_page.clkSubmit();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");      
+        reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");      
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        }
-
+    }
+	
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
-	//IgniteLogin
+	//IgniteAnonymous
 	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.rogersConfig.getRogersURL(),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
+		startSession(TestDataHandler.rogersConfig.getRogersURL(), strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_igniteanonymous, method);
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 
@@ -122,8 +171,6 @@ public class RogersCH_TC_004_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest e
 	public void afterTest() {
 		closeSession();
 	}
-
-
 
 }
 

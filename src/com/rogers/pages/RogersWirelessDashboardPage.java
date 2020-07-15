@@ -13,6 +13,7 @@ import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import com.rogers.pages.base.BasePageClass;
 
@@ -101,9 +102,12 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//*[contains(text(),'Change my Caller ID') or contains(text(),'pour l’Affichage des appels')]")
 	WebElement lnkChangeMyCallerId;
-		
-	@FindBy(xpath = "//div[@class='ute-secondLevelNav-bar-text']/span[@data-translate='ute.common.label.overview'] | //a[@translate='nav.overview.header']")
-	WebElement lnkOverview;
+	
+	
+	@FindAll({
+        @FindBy(xpath = "//a[contains(text(),'Overview') or contains(text(),'Survol')]"),
+        @FindBy(xpath = "//div[@class='ute-secondLevelNav-bar-text']/span[@data-translate='ute.common.label.overview'] | //a[@translate='nav.overview.header']")})
+    WebElement lnkOverview;
 	
 	@FindBy(xpath = "//span[contains(text(),'Voicemail password') or contains(text(),'de passe de la Messagerie vocale')]")
 	WebElement lnkUpdateMyVoicemailPwd;
@@ -132,7 +136,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy (xpath = "//span[contains(text(),'Done') or contains(text(),'Termin')]")
 	WebElement btnResetVMPwdDone;
 	
-	@FindBy(xpath = "//button/span[@translate='internet_change']")
+	@FindAll({
+	@FindBy(xpath = "//ins[@translate='plans.btnText']"),
+	@FindBy(xpath = "//button/span[@translate='internet_change']")})
 	WebElement btnChangePlan;
 	
 	@FindBy(xpath = "//span[@translate='mppc_entry_1_change_current_plan']")
@@ -263,7 +269,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy (xpath = "//div[@class='floatingWirelessDashboard bcStatic']")
 	WebElement btnLiveChat;
 	
-	@FindBy (xpath = "//div[@class='bc-frame-title']")
+	@FindAll({
+	@FindBy (xpath = "//app-welcome-rogers"),
+	@FindBy (xpath = "//div[@class='bc-frame-title']")})
 	WebElement headerLiveChat;
 	
 	@FindBy (xpath = "//div[@class='add-data']/span[contains(text(),'Speed Pass') or contains(text(),'Accès Rapido')]")
@@ -400,7 +408,68 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//ancestor::div[contains(@class,'postpaid-addons')]//div[@class='addon-description' or @class='addon-description ng-star-inserted']")
 	List<WebElement> lstMyPlanAddOns;
 
+	@FindBy(xpath = "//a[@title='Change the Data Manager for this account' or @title='Change the Data Manager for this account']")
+	WebElement btnAddDataManager;
+
+	@FindBy(xpath = "//p[text()='Choose a Data Manager' or text()='Choisir un gestionnaire de données']")
+	WebElement titleChooseDataManager;
+	
+	@FindBy(xpath = "//select[@formcontrolname='phoneNumber']")
+	WebElement selectDataManager;
 		
+	@FindBy(xpath = "//button//span[contains(text(),'Save') or contains(text(),'Enregistrer')]")
+	WebElement btnSaveDataManager;
+
+	@FindBy(xpath = "//div[@class='data-control']//a//span[contains(text(),'Set') or contains(text(),'Configurer')]")
+	WebElement btnSetDataAlert;
+
+	@FindBy(xpath = "//ds-switch[@title='Data Alert setting' or @title='Configuration d’alertes de données']//div[@class='ds-toggleArea__label']//span[text()='OFF' or text()='NON']")
+	WebElement btnSetAlertOn;
+
+	@FindBy(xpath = "//p[contains(text(),'Set a Data Alert for') or contains(text(),'Configurer une alerte de données pour')]")
+	WebElement titleSetDataAlert;
+	
+	@FindBy(xpath = "//div[contains(@class,'alert_amount_holder')]/ds-form-field")
+	WebElement lblSetDataAlert;
+	
+	@FindBy(xpath = "//div[contains(@class,'alert_amount_holder')]/ds-form-field//input")
+	WebElement txtSetDataAlert;
+
+	@FindBy(xpath = "//button//span[contains(text(),'Save') or contains(text(),'Enregistrer')]")
+	WebElement btnSaveDataAlert;
+
+	@FindBy(xpath = "//span[contains(@class,'data-alert-value')]")
+	WebElement lblDataAlertSetValue;
+
+	@FindBy(xpath = "//a[@title='Change the Data Manager for this account' or @title='Changer le gestionnaire de données pour ce compte']")
+	WebElement btnChangeDataManager;
+
+	@FindBy(xpath = "//span[@translate='fdmModule.fdm.dataManager']")
+	WebElement btnDataManagerCTN;
+
+	private By lblMyPlanDetails;
+		
+	@FindBy(xpath = "//li/span[contains(text(),'Data Access:') or contains(text(),'Accès aux données :')]")
+	WebElement lblDataAccess;
+		
+	@FindBy(xpath = "//li/span[contains(text(),'Stream Saver:') or contains(text(),'Maximiseur de données :')]")
+	WebElement lblStreamSaver;
+		
+	@FindBy(xpath = "//li/span[contains(text(),'Data Alert:') or contains(text(),'Alertes de données :')]")
+	WebElement lblDataAlert;
+		
+	@FindBy(xpath = "//li/span[@translate='fdmModule.dataManager.dataManager']")
+	WebElement lbldataManager;
+
+	@FindBy(xpath = "//span[contains(text(),'Change my phone number') or contains(text(),'Changer mon numéro de téléphone')]")
+	WebElement lnkChangeMyPhoneNumber;
+
+	@FindBy(xpath = "//ds-switch[@title='Data access for DONOTUSE' or @title='Accès aux données pour DONOTUSE']//Span[text()='ON' or text()='OUI']")
+	WebElement divDataAccessOn;
+	
+	@FindBy(xpath = "//ds-switch[@title='Data access for DONOTUSE' or @title='Accès aux données pour DONOTUSE']//Span[text()='OFF' or text()='NON']")
+	WebElement divDataAccessOFF;
+	
 	/**
 	 * To click the link of lost or stolen device on wireless dashboard page
 	 * @author ning.xue
@@ -499,7 +568,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(tabs.get(1));
 		String urlOpened = driver.getCurrentUrl();
-		return urlOpened.equals(expectedUrl);
+		return urlOpened.contains(expectedUrl);
 	} 
 	
 	/**
@@ -818,7 +887,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public void setNewVoicemailPassword(String strPassword) {
 		reusableActions.getWhenReady(divNewVoicemailPwd, 10).click();
-		reusableActions.getWhenReady(txtNewVoicemailPwd, 5).clear();
+		//reusableActions.getWhenReady(txtNewVoicemailPwd, 5).clear();
 		reusableActions.getWhenReady(txtNewVoicemailPwd, 5).sendKeys(strPassword);
 	}
 	
@@ -829,7 +898,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public void setConfirmVoicemailPassword(String strPassword) {
 		reusableActions.getWhenReady(divConfirmVoicemailPwd, 10).click();
-		reusableActions.getWhenReady(txtConfirmVoicemailPwd, 5).clear();
+		//reusableActions.getWhenReady(txtConfirmVoicemailPwd, 5).clear();
 		reusableActions.getWhenReady(txtConfirmVoicemailPwd, 5).sendKeys(strPassword);
 	}
 	
@@ -1193,7 +1262,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @return true if the overlay opened otherwise false
 	 * @author ning.xue
 	 */
-	public boolean verifyLiveChatOverlayOpened() {
+	public boolean verifyLiveChatOverlayOpened() {	
+		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(getDriver().findElement(By.xpath("//iframe[@id='va-iframe']")), 20);
 		return reusableActions.isElementVisible(headerLiveChat, 30);
 	} 
 	
@@ -1325,6 +1395,15 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public void clkLinkUpgradeMyDevice() {
 		reusableActions.getWhenReady(lnkUpgradeMyDevice, 30).click();
+	}
+	
+	/**
+	 * Check link upgrade My device in device section
+	 * @author Mirza.Kamran
+	 * @return true if the element is visible else false
+	 */
+	public boolean verifyLinkUpgradeMyDevice() {
+		return reusableActions.isElementVisible(lnkUpgradeMyDevice);
 	}
 	
 	/**
@@ -1742,8 +1821,287 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		
 		return reusableActions.isElementVisible(divCallOutMsgToAddDataForOverage);
 	}
-
-
 	
 	
+	/**
+	 * Validates if the data manager is available
+	 * @return true if the data manager is available else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isAddDataManagerDisplayed() {
+		return reusableActions.isElementVisible(btnAddDataManager,60);
+	}
+
+	/**
+	 * Clicks on Add data manager
+	 * @author Mirza.Kamran
+	 */
+	public void clkAddDataManager() {
+		reusableActions.clickWhenReady(btnAddDataManager);
+		
+	}
+
+	/**
+	 * Clicks on Change data manager
+	 * @author Mirza.Kamran
+	 */
+	public void clkChangeDataManager() {
+		reusableActions.clickWhenReady(btnChangeDataManager);
+		
+	}
+	
+	/**
+	 * Checks if the data manager overlay is displayed
+	 * @return true if the data manager overlay is displayed
+	 * @author Mirza.Kamran
+	 */
+	public boolean isChooseDataManagerOverlayDisplayed() {		
+		return reusableActions.isElementVisible(titleChooseDataManager);
+	}
+
+	/**
+	 * Selects the data manager
+	 * @author Mirza.Kamran
+	 */
+	public void selectDataManager() {
+		reusableActions.selectWhenReady(selectDataManager, 0);
+		
+	}
+	
+	/**
+	 * Selects the data manager
+	 * @author Mirza.Kamran
+	 * @param strCTNValue string value for CTN
+	 */
+	public void changeDataManager(String strCTNValue) {
+		reusableActions.selectWhenReady(selectDataManager,strCTNValue.replaceAll(" ", "").replaceAll("-", ""));
+		
+	}
+
+
+	/**
+	 * Clicks on save data manager
+	 * @author Mirza.Kamran
+	 */
+	public void clkSaveButtonOnDataManager() {	
+		reusableActions.clickWhenReady(btnSaveDataManager);
+		reusableActions.staticWait(10000);
+	}
+
+	/**
+	 * Checks if the set data alert button is displayed
+	 * @return true if element displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isSetDataAlertDisplayed() {		
+		return reusableActions.isElementVisible(btnSetDataAlert);
+	}
+
+	/**
+	 * Clicks on set data alert
+	 * @author Mirza.Kamran
+	 */
+	public void clkSetDataAlert() {
+		reusableActions.clickWhenReady(btnSetDataAlert);
+	}
+
+	/**
+	 * Sets Alert On
+	 * @author Mirza.Kamran
+	 */
+	public void setAlertOn() {
+		reusableActions.clickWhenReady(btnSetAlertOn);
+
+	}
+
+	/**
+	 * Checks if the data alert overlay is displayed
+	 * @return true if the set data alert overlay is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isSetDataAlertOverlayDisplayed() {		
+		return reusableActions.isElementVisible(titleSetDataAlert);		
+	}
+
+	/**
+	 * Sets the data alert value
+	 * @param strDataAlertValue data alert value
+	 * @author Mirza.Kamran
+	 */
+	public void setDataAlertValue(String strDataAlertValue) {				
+		reusableActions.clickWhenReady(lblSetDataAlert);
+		reusableActions.getWhenReady(txtSetDataAlert).sendKeys(strDataAlertValue);		
+	}
+
+	/**
+	 * Clicks on save data alert
+	 * @author Mirza.Kamran
+	 */
+	public void clkSaveButtonOnDataAlertOverlay() {
+		reusableActions.clickWhenReady(btnSaveDataAlert);				
+	}
+	
+	/**
+	 *  Checks the data alert value set
+	 * @return true if the value is set else false
+	 * @param strDataAlert data alert value
+	 * @return true if the Data Alert is correctly set, otherwise false.
+	 */
+	public boolean isDataAlertCorrectlySet(String strDataAlert) {
+		return reusableActions.getWhenReady(lblDataAlertSetValue).getText().trim().replaceAll(",", ".").contains(strDataAlert);
+	}
+
+	/**
+	 * Checks if the Change Data Manager is displayed
+	 * @return true if the chnage data manager is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isAddChangeDataManagerDisplayed() {		
+		return reusableActions.isElementVisible(btnChangeDataManager);
+	}
+	
+	/**
+	 * Gets the Data Manager CTN
+	 * @return string value containing the data manager CTN 
+	 * @author Mirza.Kamran
+	 */
+	public String getDataManagerCTN() {	
+		if(lstOfCTNBadgesOnDashboardPage.get(0).getText().toLowerCase().contains("data manager")
+				|| lstOfCTNBadgesOnDashboardPage.get(0).getText().toLowerCase().contains("gestionnaire de données"))
+		{
+			return lstOfCTNBadgesOnDashboardPage.get(0).findElement(By.className("cta_no")).getText().trim();
+		}else
+		{
+			return null;
+		}
+		 
+	}
+
+	/**
+	 * Gets the Data Manager CTN
+	 * @return string value containing the NON data manager CTN 
+	 * @author Mirza.Kamran
+	 */
+	public String getNonDataManagerCTN() {
+		if(!lstOfCTNBadgesOnDashboardPage.get(1).getText().toLowerCase().contains("data danager")
+				|| !lstOfCTNBadgesOnDashboardPage.get(1).getText().toLowerCase().contains("gestionnaire de données"))
+		{
+			return lstOfCTNBadgesOnDashboardPage.get(1).findElement(By.className("cta_no")).getText().trim();
+		}else
+		{
+			return null;
+		}		
+	}
+
+	/**
+	 * verifies if the Change Data Manager successful
+	 * @param strDataManagerCTN String CTN value
+	 * @return true if the value matches else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isChangeDataManagerSuccessful(String strDataManagerCTN) {
+		if((lstOfCTNBadgesOnDashboardPage.get(0).getText().toLowerCase().contains("data manager") ||
+				lstOfCTNBadgesOnDashboardPage.get(0).getText().toLowerCase().contains("gestionnaire de données"))
+			&& 	lstOfCTNBadgesOnDashboardPage.get(0).getText().toLowerCase().contains(strDataManagerCTN))
+		{
+			return true;
+		}		
+		return false;		
+	}
+
+	/**
+	 * Clicks on Data Manager CTN
+	 */
+	public void clkDataManagerCTN() {
+		reusableActions.clickWhenReady(btnDataManagerCTN,30);
+		
+	}
+
+	/**
+	 * Checks if the change plan button is displayed
+	 * @return true if the button is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyChangePlanButtonDisplayed() {		
+		return reusableActions.isElementVisible(btnChangePlan);
+	}
+
+	/**
+	 * Checks if the change plan button is displayed
+	 * @return true if the button is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyMyPlanDetailsDisplayed() {		
+		return reusableActions.isElementVisible(lblMyPlanDetails);
+	}
+	
+	/**
+	 * Checks if the change plan button is displayed
+	 * @return true if the button is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyChangeMyNumberDisplayed() {		
+		return reusableActions.isElementVisible(lnkChangeMyPhoneNumber);
+	}
+
+	public boolean verifyStreamSaverDisplayed() {		
+		return reusableActions.isElementVisible(lblStreamSaver);
+	}
+
+	public boolean verifyDataAccessDisplayed() { 
+		return reusableActions.isElementVisible(lblDataAccess);
+	}
+
+	public boolean verifyDataAlertDisplayed() {
+		return reusableActions.isElementVisible(lblDataAlert);
+	}
+
+	public boolean verifyDataManagerDisplayed() {
+		return reusableActions.isElementVisible(lbldataManager);
+	}
+
+	/**
+	 * Checks if the data manager ON is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isDataAccessOnDisplayed() {		
+		return reusableActions.isElementVisible(divDataAccessOn);
+	}
+
+	/**
+	 * Clicks on data access ON button
+	 * @author Mirza.Kamran
+	 */
+	public void clkDataAccessOn() {
+		reusableActions.getWhenReady(divDataAccessOFF).click();
+		
+	}
+
+	/**
+	 * Checks if the data manager OFF is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isDataAccessOFF() {
+		return reusableActions.isElementVisible(divDataAccessOFF);
+	}
+
+	/**
+	 * Clicks on data access OFF button
+	 * @author Mirza.Kamran
+	 */
+	public void clkDataAccessOff() {
+		reusableActions.getWhenReady(divDataAccessOn).click();
+		
+	}
+
+	/**
+	 * Checks if the data access is displayed
+	 * @return true if the data access is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isDataAccessDisplayed() {
+		return reusableActions.isElementVisible(lblDataAccess);
+	}
 }

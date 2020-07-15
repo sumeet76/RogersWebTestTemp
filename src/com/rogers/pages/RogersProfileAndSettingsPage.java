@@ -1,8 +1,10 @@
 package com.rogers.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -24,7 +26,10 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//input[@formcontrolname='phoneNumber']")
 	WebElement inputPhoneNumber;
 	
-	@FindBy (xpath = "//button[@class='primary-button state-btn state-btn-active']")
+	@FindAll({
+		@FindBy (xpath = "//button[text()=' Continue ' or text()=' Continuer ']"),
+		@FindBy (xpath = "//button[@class='primary-button state-btn state-btn-active']")	
+	})		
 	WebElement btnContinue;	
 	
 	@FindBy (xpath = "//input[@formcontrolname='smsPin']")
@@ -51,7 +56,10 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//span[contains(text(),'Done') or contains(text(),'Termin')]") 
 	WebElement btnUnlinkDone;
 	
-	@FindBy (xpath = "//a[@translate='nav.overview.header']")
+	@FindAll({
+		@FindBy (xpath = "//a[contains(text(),'Survol') or contains(text(),'Overview')]"),
+		@FindBy (xpath = "//a[@translate='nav.overview.header']")
+	})	
 	WebElement menuOverview;
 	
 	@FindBy (xpath = "//button[@title='Change username' or @title='Changer le nom d’utilisateur']")
@@ -124,13 +132,19 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//span[contains(text(),'Change billing address') or contains(text(),'Changer l’adresse de facturation')]")
 	WebElement lnkChangeBillingAddress;
 	
+	@FindBy(xpath = "//button[@title='Change billing address' or @title='Changer l’adresse de facturation']")
+	WebElement lnkChangeBillingAddressMobile;
+	
 	@FindBy (xpath = "//span[contains(text(),'home number') or contains(text(),'numéro à la maison')]")
 	WebElement lnkUpdateHomeNumber;
 	
 	@FindBy (xpath = "//span[contains(text(),'business number') or contains(text(),'téléphone au travail')]")
 	WebElement lnkAddBusinessNumber;
 	
-	@FindBy (xpath = "//span[contains(text(),'contact language') or contains(text(),'Changer la langue')]")
+	@FindAll({
+		@FindBy (xpath = "//button[@title='Change preferred contact language']"),
+		@FindBy (xpath = "//span[contains(text(),'contact language') or contains(text(),'Changer la langue')]")
+	})	
 	WebElement lnkChangeLanguage;
 	
 	@FindBy (xpath = "//input[@id='email']//parent::div")	
@@ -148,7 +162,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//div[@footer]//span[contains(text(),'Done') or contains(text(),'Termin')]")
 	WebElement btnAddContactEmailDone;
 	
-	@FindBy (xpath = "//input[@id='homePhone']//parent::div")
+	@FindBy (xpath = "//input[@id='homePhone' or @id='mobilePhone']//parent::div")
 	WebElement lblHomePhone;
 	
 	@FindBy (xpath = "//input[@id='homePhone']")
@@ -228,6 +242,10 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	
 	@FindBy(xpath = "//rss-contact-info//div")
 	WebElement lblContactsDetailsSection;
+	
+	
+	@FindBy(xpath = "//div[text()='Language:']/parent::div/following-sibling::div")
+	WebElement lblContactsDetailsSectionMobile;
 
 	@FindBy(xpath = "//input[@title='Enter street number' or @title='Entrer le numéro municipal']/parent::div")
 	WebElement lblStreetNumber;
@@ -244,11 +262,26 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy(xpath = "//input[@title='Enter apartment number' or @title='Entrer le numéro d’appartement']/parent::div")
 	WebElement lblApartmentNumber;
 	
-	@FindBy (xpath = "//div[contains(text(),'Email') or contains(text(),'adresse courriel')]/following-sibling::div")
+	@FindBy (xpath = "//div[contains(text(),'Email') or contains(text(),'Adresse courriel :')]/following-sibling::div")
 	WebElement btnChangeEmailMobile;
 	
-	@FindBy (xpath = "//div[contains(text(),'Email') or contains(text(),'adresse courriel')]/following-sibling::div/button")
+	@FindBy (xpath = "//div[contains(text(),'Email') or contains(text(),'Adresse courriel :')]/following-sibling::div/button")
 	WebElement btnAddEmailMobile;
+	
+	@FindBy(xpath = "//div[contains(@class,'QSISlider')]/div/following-sibling::div//img")
+	WebElement btnCloseFeedbackMobile;
+
+	@FindBy(xpath = "//span[contains(text(),'Current contact email: ') or contains(text(),'Adresse courriel actuelle : ')]/following-sibling::span")
+	WebElement lblContactEmailOnChgeContactEmailOverlay;
+
+	@FindBy(xpath = "//div[contains(text(),'Home number') or contains(text(),'Numéro de sans-fil :') or contains(text(),'numéro à la maison')]/parent::div/parent::div//span[text()=' Update ' or text()=' Mettre à jour ' or text()=' Ajouter ']")
+	WebElement btnUpdateHomeNumberMobile;
+	
+	@FindBy (xpath = "//div[contains(text(),'Business number:') or contains(text(),'Numéro de téléphone au travail :') or contains(text(),'numéro à la maison')]/parent::div/parent::div//span[text()=' Update ' or text()=' Mettre à jour ' or text()=' Ajouter ']")
+	WebElement lnkAddBusinessNumberMobile;
+	
+	@FindBy (xpath = "//div[contains(text(),'Language:') or contains(text(),'Langue :') or contains(text(),'numéro à la maison')]/parent::div/parent::div//span[text()=' Change ' or text()=' Changer ' or text()=' Ajouter ']")
+	WebElement lnkChangeLanguageMobile;
 		
 	/**
 	 * Click on setup recovery number link
@@ -432,7 +465,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public Boolean verifyCurrentUsername(String strUsername) {
-		return reusableActions.isElementVisible(By.xpath("//span[contains(text(),'" + strUsername + "')]"), 30);
+		return reusableActions.isElementVisible(By.xpath("//span[text()='Current username: ' or contains(text(),'Nom d’utilisateur actuel:')]/following-sibling::span[contains(text(),'" + strUsername + "')]"), 30);
 		
 	}
 	
@@ -462,7 +495,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public Boolean verifyChangeUsernameConfirmMsg(String strNewUsername) {
-		return 	reusableActions.isElementVisible(By.xpath("//span[contains(text(),'" + strNewUsername + "')]"), 30);
+		return 	reusableActions.isElementVisible(By.xpath("//span[text()='New username will be: ' or contains(text(),'Votre nouveau nom d')]/following-sibling::span[contains(text(),'" + strNewUsername + "')]"), 30);
 	}
 	
 	/**
@@ -523,7 +556,24 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	public void setCurrentPassword(String strCurrentPass) {
 		
 		reusableActions.getWhenReady(divCurrentPassword,30).click();
-		//reusableActions.getWhenReady(inputCurrentPassword,2).clear();
+		//JavascriptExecutor jse = (JavascriptExecutor)getDriver();
+		//jse.executeScript("arguments[0].value='"+ strCurrentPass +"';", divCurrentPassword);
+		reusableActions.getWhenReady(divCurrentPassword,30).click();
+		reusableActions.getWhenReady(inputCurrentPassword,2).sendKeys(strCurrentPass);
+	}
+	
+	/**
+	 * Set current password for change password flow.
+	 * @param strCurrentPass String, string of current password
+	 * @author Mirza.Kamran
+	 */
+	public void setCurrentPasswordMobile(String strCurrentPass) {
+		//reusableActions.getWhenReady(divCurrentPassword,30);
+		JavascriptExecutor jse = (JavascriptExecutor)getDriver();
+		jse.executeScript("arguments[0].value='"+ strCurrentPass +"';", divCurrentPassword);
+		reusableActions.executeJavaScript("arguments[0].value='Test'");
+		reusableActions.getWhenReady(divCurrentPassword,30).click();
+		reusableActions.getWhenReady(divCurrentPassword,30).click();
 		reusableActions.getWhenReady(inputCurrentPassword,2).sendKeys(strCurrentPass);
 	}
 	
@@ -534,7 +584,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void setNewPassword(String strNewPass) {
 		reusableActions.getWhenReady(divNewPassword,30).click();
-		//reusableActions.getWhenReady(inputNewPassword,10).clear();
+		reusableActions.getWhenReady(divNewPassword,30).click();
 		reusableActions.getWhenReady(inputNewPassword,2).sendKeys(strNewPass);
 	}
 	
@@ -545,7 +595,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void setConfirmPassword(String strConfirmPass) {
 		reusableActions.getWhenReady(divConfirmPassword,30).click();
-		//reusableActions.getWhenReady(inputConfirmPassword,10).clear();
+		reusableActions.getWhenReady(divConfirmPassword,30).click();
 		reusableActions.getWhenReady(inputConfirmPassword,2).sendKeys(strConfirmPass);
 	}
 	
@@ -607,6 +657,14 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	}
 	
 	/**
+	 * Click the link Add Contact Email in Contact Information section
+	 * @author Mirza.Kamran
+	 */
+	public void clkLnkChangeBillingAddressMobile() {
+		reusableActions.clickWhenReady(lnkChangeBillingAddressMobile, 30);
+	}
+	
+	/**
 	 * Click the link Update Home Number in Contact Information section
 	 * @author ning.xue
 	 */
@@ -623,6 +681,15 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	}
 	
 	/**
+	 * Click the link Add Business Number in Contact Information section
+	 * @author Mirza.Kamran
+	 */
+	public void clkLnkAddBusinessNumberMobile() {
+		reusableActions.clickWhenReady(lnkAddBusinessNumberMobile, 30);
+	}
+	
+	
+	/**
 	 * Click the link Change Contact Language in Contact Information section
 	 * @author ning.xue
 	 */
@@ -631,14 +698,23 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	}
 	
 	/**
+	 * Click the link Change Contact Language in Contact Information section
+	 * @author Mirza.Kamran
+	 */
+	public void clkLnkChangeContactLanguageMobile() {
+		reusableActions.clickWhenReady(lnkChangeLanguageMobile, 30);
+	}
+	
+	/**
 	 * Set contact email for add contact email flow.
 	 * @param strContactEmail String, string of contact email
 	 * @author ning.xue
 	 */
 	public void setContactEmail(String strContactEmail) {
-		reusableActions.getWhenReady(lblContactEmail,30).click();
-		//reusableActions.getWhenReady(inputContactEmail,20).clear();
-		reusableActions.getWhenReady(inputContactEmail,2).sendKeys(strContactEmail);
+		reusableActions.getWhenReady(lblContactEmail).click();
+		//reusableActions.getWhenReady(inputContactEmail,20).clear();		
+		reusableActions.getWhenReady(inputContactEmail).sendKeys(strContactEmail);
+		
 	}
 	
 	/**
@@ -980,6 +1056,15 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	}
 
 	/**
+	 * gets the existing language
+	 * @return string language name
+	 * @author Mirza.Kamran
+	 */
+	public String getExistingLanguageMobile() {		
+		return reusableActions.getWhenReady(lblContactsDetailsSectionMobile).getText();
+	}
+	
+	/**
 	 * Clicks on the language radio button
 	 * @param strlanguage language name
 	 * @author Mirza.Kamran
@@ -1033,5 +1118,60 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	public void clkBtnAddEmailMobile() {
 		reusableActions.clickWhenReady(btnAddEmailMobile);
 		
+	}
+	
+	/**
+	 * Will close the feedback bar if available on mobile
+	 * @author Mirza.Kamran
+	 */
+	public void clkCloseFeedbackIfAvailableMobile() {
+		reusableActions.clickIfAvailable(btnCloseFeedbackMobile);
+	}
+
+	/**
+	 * Gets the contact email
+	 * @return string value containing contact email
+	 * @author Mirza.Kamran
+	 */
+	public String getContactEmailMobile() {		
+		return reusableActions.getWhenReady(lblContactEmailOnChgeContactEmailOverlay).getText().toLowerCase();
+	}
+
+	public void setContactEmailMobile(String strAltEmail) {
+		reusableActions.getWhenReady(lblContactEmail).click();
+		//reusableActions.getWhenReady(inputContactEmail,20).clear();
+		reusableActions.clickIfAvailable(lblContactEmail);
+		reusableActions.getWhenReady(inputContactEmail).sendKeys(strAltEmail);
+		
+	}
+
+	/**
+	 * 
+	 */
+	public void clkLnkUpdateHomeNumberMobile() {
+		reusableActions.getWhenReady(btnUpdateHomeNumberMobile).click();
+		
+	}
+	
+	/**
+	 * Set home phone for update home number flow.
+	 * @param strHomePhone String, string of home phone
+	 * @author Mirza.Kamran
+	 */
+	public void setHomePhoneMobile(String strHomePhone) {
+		reusableActions.getWhenReady(lblHomePhone,30).click();
+		reusableActions.clickIfAvailable(lblHomePhone);
+		reusableActions.getWhenReady(inputHomePhone,2).sendKeys(strHomePhone);
+	}
+	
+	/**
+	 * Set business phone for Add business number flow.
+	 * @param strBusinessPhone String, string of business phone
+	 * @author Mirza.Kamran
+	 */
+	public void setBusinessPhoneMobile(String strBusinessPhone) {
+		reusableActions.getWhenReady(lblBusinessPhone,30).click();
+		reusableActions.clickIfAvailable(lblBusinessPhone);
+		reusableActions.getWhenReady(inputBusinessPhone,2).sendKeys(strBusinessPhone);
 	}
 }

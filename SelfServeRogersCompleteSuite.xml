@@ -1,298 +1,382 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Self Serve Rogers Tests SS" parallel="tests" thread-count="1">
-<parameter name="strBrowser" value="saucefirefox"/>
-<parameter name="strLanguage" value="fr"/>
+<parameter name="strBrowser" value="saucechrome"/>
+<parameter name="strLanguage" value="en"/>
 <parameter name="strType" value="seq"/>
 <listeners>
-      <listener class-name="com.rogers.test.listeners.AnnotationTransformer"/>
-</listeners> 		
+		<listener
+			class-name="com.rogers.test.listeners.TestListener" />
+		<listener
+			class-name="com.rogers.test.listeners.AnnotationTransformer" />
+</listeners> 
 
-
-
-<test name="RogersSS_TC_009_UserSetMobileNumForSMSRecovery">
+<test name="RogersSS_TC_009_UserSetMobileNumForSMSRecovery" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_009_UserSetMobileNumForSMSRecovery"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_009_UserSetMobileNumForSMSRecovery"></class>
 </classes>          																					
 </test>  
 
 
-<test name="RogersSS_TC_02_AccountRegistration">
+<test name="RogersSS_TC_02_AccountRegistration" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_02_AccountRegistration"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_02_AccountRegistration"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_03_UserValidateRecoverUsernameUsingEmailID">
+<test name="RogersSS_TC_03_UserValidateRecoverUsernameUsingEmailID" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_03_UserValidateRecoverUsernameUsingEmailID"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_03_UserValidateRecoverUsernameUsingEmailID"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_04_ValidateRecoverUsernameUsingSMSVerificationCode">
+<test name="RogersSS_TC_04_ValidateRecoverUsernameUsingSMSVerificationCode" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_04_ValidateRecoverUsernameUsingSMSVerificationCode"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_04_ValidateRecoverUsernameUsingSMSVerificationCode"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_06_ValidateRecoverPasswordUsingSMSVerificationCode">
+<test name="RogersSS_TC_06_ValidateRecoverPasswordUsingSMSVerificationCode" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_06_ValidateRecoverPasswordUsingSMSVerificationCode"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_06_ValidateRecoverPasswordUsingSMSVerificationCode"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_08_ValidateRecoverBothUsernameAndPasswordUsingTextMessageWhileEnteringTheAccountNumber">
+<test name="RogersSS_TC_08_ValidateRecoverBothUsernameAndPasswordUsingTextMessageWhileEnteringTheAccountNumber" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_08_ValidateRecoverBothUsernameAndPasswordUsingTextMessageWhileEnteringTheAccountNumber"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_08_ValidateRecoverBothUsernameAndPasswordUsingTextMessageWhileEnteringTheAccountNumber"></class>
 </classes>          																					
 </test>
 
 <!--
 <test name="RogersSS_TC_001_ChangeContactInfoChangeBillingAddress">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_001_ChangeContactInfoChangeBillingAddress"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_001_ChangeContactInfoChangeBillingAddress"></class>
 </classes>          																					
 </test>	   
 -->
-<test name="RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest">
+<test name="RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest"></class>
 </classes>          																					
 </test>	
 
-<test name="RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage">
+<test name="RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_11_TC04_ValidateUserTryToLinkAccountToRegisteredProfile">
+<test name="RogersSS_TC_11_TC04_ValidateUserTryToLinkAccountToRegisteredProfile" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_11_TC04_ValidateUserTryToLinkAccountToRegisteredProfile"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_11_TC04_ValidateUserTryToLinkAccountToRegisteredProfile"></class>
 </classes>          																					
 </test>	
 
-<test name="RogersSS_TC_013_Baseline_CSS_PostpaidWirelessChangeSIMAuto">
+<test name="RogersSS_TC_013_Baseline_CSS_PostpaidWirelessChangeSIMAuto" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_013_Baseline_CSS_PostpaidWirelessChangeSIMAuto"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_013_Baseline_CSS_PostpaidWirelessChangeSIMAuto"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_014_BaselineUpdateEmailAddress">
+<test name="RogersSS_TC_014_BaselineUpdateEmailAddress" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_014_BaselineUpdateEmailAddress"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_014_BaselineUpdateEmailAddress"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_016_Baseline_CSS_Wireless_Pay_Now_Through_Bank_AUTO">
+<test name="RogersSS_TC_016_Baseline_CSS_Wireless_Pay_Now_Through_Bank_AUTO" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_016_Baseline_CSS_Wireless_Pay_Now_Through_Bank_AUTO"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_016_Baseline_CSS_Wireless_Pay_Now_Through_Bank_AUTO"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_018_TC25_Wireless_Postpaid_OverviewBillInfoChangePaymentMethodInvoiceToPAC_EN_AUTO">
+<test name="RogersSS_TC_018_TC25_Wireless_Postpaid_OverviewBillInfoChangePaymentMethodInvoiceToPAC_EN_AUTO" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_018_TC25_Wireless_Postpaid_OverviewBillInfoChangePaymentMethodInvoiceToPAC_EN_AUTO"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_018_TC25_Wireless_Postpaid_OverviewBillInfoChangePaymentMethodInvoiceToPAC_EN_AUTO"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaymentMethodPACToCC_EN_AUTO">
+<test name="RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaymentMethodPACToCC_EN_AUTO" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaymentMethodPACToCC_EN_AUTO"> </class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaymentMethodPACToCC_EN_AUTO"> </class>
 </classes>          																					
 </test>			
 
-<test name="RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest">
+<test name="RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest"></class>
 </classes>          																					
 </test>	
 
-<test name="RogersSS_TC_027_UpdateVoicemailPasswordTest">
+<test name="RogersSS_TC_027_UpdateVoicemailPasswordTest" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_027_UpdateVoicemailPasswordTest"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_027_UpdateVoicemailPasswordTest"></class>
 </classes>          																					
 </test>
 
 
-<test name="RogersSS_TC_031_Postpaid_ChangeContactInfo">
+<test name="RogersSS_TC_031_Postpaid_ChangeContactInfo" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_031_Postpaid_ChangeContactInfo"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_031_Postpaid_ChangeContactInfo"></class>
 </classes>          																					
 </test>
 
 
-<test name="RogersSS_TC_032_Postpaid_ChangeBillingAddress">
+<test name="RogersSS_TC_032_Postpaid_ChangeBillingAddress" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_032_Postpaid_ChangeBillingAddress"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_032_Postpaid_ChangeBillingAddress"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_036_WirelessPostpaidOverviewViewBillTest">
+<test name="RogersSS_TC_036_WirelessPostpaidOverviewViewBillTest" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_036_WirelessPostpaidOverviewViewBillTest"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_036_WirelessPostpaidOverviewViewBillTest"></class>
 </classes>          																					
 </test>
 
 
-<test name="RogersSS_TC_039_AssociateWirelessPostpaidBANWithHyphenTest">
+<test name="RogersSS_TC_039_AssociateWirelessPostpaidBANWithHyphenTest" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_039_AssociateWirelessPostpaidBANWithHyphenTest"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_039_AssociateWirelessPostpaidBANWithHyphenTest"></class>
 </classes>          																					
 </test>	
 
-<test name="RogersSS_TC_049_ChangeIDForNonSECustomerTest">
+<test name="RogersSS_TC_040_AO_ValidateCHaccountBadge_SHM" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_049_ChangeIDForNonSECustomerTest"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_040_AO_ValidateCHaccountBadge_SHM"></class>
+</classes>          																					
+</test>	
+
+<test name="RogersSS_TC_041_AO_ValidateCHaccountBadge_IginteTV" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_041_AO_ValidateCHaccountBadge_IginteTV"></class>
+</classes>          																					
+</test>	
+<test name="RogersSS_TC_042_AO_ValidateCHaccountBadge_IginteInternet" enabled="false	">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_042_AO_ValidateCHaccountBadge_IginteInternet"></class>
+</classes>          																					
+</test>	
+
+<test name="RogersSS_TC_043_AO_ValidateCHaccountBadge_IgniteRHP" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_043_AO_ValidateCHaccountBadge_IgniteRHP"></class>
+</classes>          																					
+</test>	
+
+<test name="RogersSS_TC_044_AO_ValidateCHaccountBadge_DigitalTV" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_044_AO_ValidateCHaccountBadge_DigitalTV"></class>
+</classes>          																					
+</test>	
+
+<test name="RogersSS_TC_045_AO_ValidateCHAccountBadge_LegacyInternet" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_045_AO_ValidateCHAccountBadge_LegacyInternet"></class>
+</classes>          																					
+</test>	
+
+<test name="RogersSS_TC_046_AO_ValidateCHaccountBadge_LegacyRHP" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_046_AO_ValidateCHaccountBadge_LegacyRHP"></class>
+</classes>          																					
+</test>	
+
+<test name="RogersSS_TC_047_AO_ValidateCHaccountBadge_Tupelo" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_047_AO_ValidateCHaccountBadge_Tupelo"></class>
+</classes>          																					
+</test>	
+
+
+<test name="RogersSS_TC_049_ChangeIDForNonSECustomerTest" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_049_ChangeIDForNonSECustomerTest"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_050_ChangeIDForSECustomerTest">
+<test name="RogersSS_TC_050_ChangeIDForSECustomerTest" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_050_ChangeIDForSECustomerTest"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_050_ChangeIDForSECustomerTest"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_051_ChangePassword">
+<test name="RogersSS_TC_051_ChangePassword" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_051_ChangePassword"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_051_ChangePassword"></class>
 </classes>          																					
 </test>	
 		
 
-<test name="RogersSS_TC_052_ValidateBrightstarLinkInWirelessDashbard_postpaidConsumerRegularAccount">
+<test name="RogersSS_TC_052_ValidateBrightstarLinkInWirelessDashbard_postpaidConsumerRegularAccount" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_052_ValidateBrightstarLinkInWirelessDashbard_postpaidConsumerRegularAccount"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_052_ValidateBrightstarLinkInWirelessDashbard_postpaidConsumerRegularAccount"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_054_ValidateUsageDetails_postpaid_NSEwUnlimitedTalkTextOnlyPlan">
+<test name="RogersSS_TC_054_ValidateUsageDetails_postpaid_NSEwUnlimitedTalkTextOnlyPlan" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_054_ValidateUsageDetails_postpaid_NSEwUnlimitedTalkTextOnlyPlan"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_054_ValidateUsageDetails_postpaid_NSEwUnlimitedTalkTextOnlyPlan"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_055_ValidateUsageDetail_postpaid_NSEwLimitedTalkTextOnlyPlan">
+<test name="RogersSS_TC_055_ValidateUsageDetail_postpaid_NSEwLimitedTalkTextOnlyPlan" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_055_ValidateUsageDetail_postpaid_NSEwLimitedTalkTextOnlyPlan"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_055_ValidateUsageDetail_postpaid_NSEwLimitedTalkTextOnlyPlan"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_056_ValidateDataUsageDesplayWithinLimit_postpaid_NSEDataOnlyPlan">
+<test name="RogersSS_TC_056_ValidateDataUsageDesplayWithinLimit_postpaid_NSEDataOnlyPlan" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_056_ValidateDataUsageDesplayWithinLimit_postpaid_NSEDataOnlyPlan"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_056_ValidateDataUsageDesplayWithinLimit_postpaid_NSEDataOnlyPlan"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_057_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDataUnlimitedTalkTextPlan">
+<test name="RogersSS_TC_057_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDataUnlimitedTalkTextPlan" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_057_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDataUnlimitedTalkTextPlan"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_057_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDataUnlimitedTalkTextPlan"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_058_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDataLimitedTalkTextPlan">
+<test name="RogersSS_TC_058_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDataLimitedTalkTextPlan" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_058_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDataLimitedTalkTextPlan"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_058_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDataLimitedTalkTextPlan"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE_AddData">
+<test name="RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE_AddData" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE_AddData"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE_AddData"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE">
+<test name="RogersSS_TC_060_ValidateCopyChangesOfDataUsageDisplayWithInLimitsPostpaidSEplanMultiCTN" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_060_ValidateCopyChangesOfDataUsageDisplayWithInLimitsPostpaidSEplanMultiCTN"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_063_ValidateDataUsageRunningLowOnMaxSpeedDataInfiniteIndividualPlan">
+<test name="RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_063_ValidateDataUsageRunningLowOnMaxSpeedDataInfiniteIndividualPlan"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE"></class>
 </classes>          																					
 </test>
 
-
-<test name="RogersSS_TC_064_ValidateDataUsage_InfiniteIndividualPlanReducedSpeeds">
+<test name="RogersSS_TC_063_ValidateDataUsageRunningLowOnMaxSpeedDataInfiniteIndividualPlan" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_064_ValidateDataUsage_InfiniteIndividualPlanReducedSpeeds"></class>
-</classes>          																					
-</test>
-
-<test name="RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurchasedSpeedPass">
-<classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurchasedSpeedPass"></class>
-</classes>          																					
-</test>
-
-<test name="RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE">
-<classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE"></class>
-</classes>          																					
-</test>
-
-<test name="RogersSS_TC_070_ValidateWirelessProfileAlreadyExistsTest">
-<classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_070_ValidateWirelessProfileAlreadyExistsTest"></class>
-</classes>          																					
-</test>
-
-<test name="RogersSS_TC_071_Validate3rdPartyBrightstarPage">
-<classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_071_Validate3rdPartyBrightstarPage"></class>
-</classes>          																					
-</test>
-
-<test name="RogersSS_TC_072_wldb_ValidateDetailsOfDeviceSection">
-<classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_072_wldb_ValidateDetailsOfDeviceSection"></class>
-</classes>          																					
-</test>
-
-<test name="RogersSS_TC_073_ValidateMyWirelessPlanSectionInTheWirelessDashboardNSE">
-<classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_073_ValidateMyWirelessPlanSectionInTheWirelessDashboardNSE"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_063_ValidateDataUsageRunningLowOnMaxSpeedDataInfiniteIndividualPlan"></class>
 </classes>          																					
 </test>
 
 
-<test name="RogersSS_TC_074_ValidateLiveChatLinkInChangeCallerIdLimitExceedModal_SEInfinite">
+<test name="RogersSS_TC_064_ValidateDataUsage_InfiniteIndividualPlanReducedSpeeds" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_074_ValidateLiveChatLinkInChangeCallerIdLimitExceedModal_SEInfinite"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_064_ValidateDataUsage_InfiniteIndividualPlanReducedSpeeds"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_075_ValidateLiveChatBadgeOnWirelessDashboardPage">
+<test name="RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurchasedSpeedPass" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_075_ValidateLiveChatBadgeOnWirelessDashboardPage"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurchasedSpeedPass"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_077_ValidateSupportSectionInWirelessDasboard_NSEInfinite">
+<test name="RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_077_ValidateSupportSectionInWirelessDasboard_NSEInfinite"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC_070_ValidateWirelessProfileAlreadyExistsTest" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_070_ValidateWirelessProfileAlreadyExistsTest"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC_071_Validate3rdPartyBrightstarPage" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_071_Validate3rdPartyBrightstarPage"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC_072_wldb_ValidateDetailsOfDeviceSection" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_072_wldb_ValidateDetailsOfDeviceSection"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC_073_ValidateMyWirelessPlanSectionInTheWirelessDashboardNSE" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_073_ValidateMyWirelessPlanSectionInTheWirelessDashboardNSE"></class>
+</classes>          																					
+</test>
+
+
+<test name="RogersSS_TC_074_ValidateLiveChatLinkInChangeCallerIdLimitExceedModal_SEInfinite" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_074_ValidateLiveChatLinkInChangeCallerIdLimitExceedModal_SEInfinite"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC_075_ValidateLiveChatBadgeOnWirelessDashboardPage" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_075_ValidateLiveChatBadgeOnWirelessDashboardPage"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC_077_ValidateSupportSectionInWirelessDasboard_NSEInfinite" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_077_ValidateSupportSectionInWirelessDasboard_NSEInfinite"></class>
 </classes>          																					
 </test>
 			
-<test name="RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhenCxHasMoreThan5CTN_SE">
+<test name="RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhenCxHasMoreThan5CTN_SE" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhenCxHasMoreThan5CTN_SE"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhenCxHasMoreThan5CTN_SE"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs">
+<test name="RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs"></class>
 </classes>          																					
 </test>
 
 
-<test name="RogersSS_TC79_ValidateCancelDataFlowNSECTNwithSingleRegularMDTs">
+<test name="RogersSS_TC79_ValidateCancelDataFlowNSECTNwithSingleRegularMDTs" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.RogersSS_TC79_ValidateCancelDataFlowNSECTNwithSingleRegularMDTs"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC79_ValidateCancelDataFlowNSECTNwithSingleRegularMDTs"></class>
 </classes>          																					
 </test>
+
+<test name="RogersSS_TC80_ValidateDataUsageDisplayInOveragePayPerUsePostpaidNonSEplan" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC80_ValidateDataUsageDisplayInOveragePayPerUsePostpaidNonSEplan"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC_081_ValidateErrorMessageWhenMDTandProfileMaximumLimitForSE" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_081_ValidateErrorMessageWhenMDTandProfileMaximumLimitForSE"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE"></class>
+</classes>          																					
+</test>
+
+<test thread-count="1" name="MobileTest" enabled="false" >
+    <classes>
+      <class name="com.rogers.test.tests.selfserve.mobile.Mobile_RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest"></class>
+      <class name="com.rogers.test.tests.selfserve.mobile.Mobile_RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaymentMethodPACToCC_EN_AUTO"></class>
+      <class name="com.rogers.test.tests.selfserve.mobile.Mobile_RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest"></class>
+      <class name="com.rogers.test.tests.selfserve.mobile.Mobile_RogersSS_TC_031_Postpaid_ChangeContactInfo"></class>
+      <class name="com.rogers.test.tests.selfserve.mobile.Mobile_RogersSS_TC_032_Postpaid_ChangeBillingAddress"></class>
+      <class name="com.rogers.test.tests.selfserve.mobile.Mobile_RogersSS_TC_051_ChangePassword"></class>
+    </classes>
+  </test> 
 					
 </suite>

@@ -2,6 +2,8 @@ package com.rogers.testdatamanagement;
 
 import com.rogers.yaml.pojo.CHOneViewConfig;
 import com.rogers.yaml.pojo.MigrationData;
+
+
 import com.rogers.yaml.pojo.AALData;
 import com.rogers.yaml.pojo.AccountData;
 import com.rogers.yaml.pojo.Config;
@@ -54,12 +56,14 @@ public class TestDataHandler {
 	public static AccountData digitalTVAccount;
 	public static AccountData solarisInternetAccount;
 	public static AccountData igniteTVAccount;
+	public static AccountData tc41IgniteTVAccount;
 	public static PaymentDetails rogersPaymentInfo;
 	public static AccountData solarisTVAccount;
 	public static AccountData standaloneInternetAccountWithUsage;
 	public static AccountData legacyRHP;
 	public static AccountData igniteRHP;
 	public static AccountData solarisInternetAccountWithUsage;
+	public static AccountData tc42SolarisInternetAccountWithUsage;
 	public static AccountData solarisInternetAccountForUpgrade;
 	public static AccountData solarisTVAccountForUpgrade;
 	public static AccountData solarisTVAccountForUpgradeON;
@@ -114,12 +118,20 @@ public class TestDataHandler {
 	public static AccountData tc60;
 	public static RedesignConfig redesignConfig;
 	public static RedesignRpotgData redesignRpotgData;
+	public static AccountData tc40SHMAccount;
+	public static AccountData tc47TupeloAccount;
+	public static AccountData tc43IgniteRHP;
+	public static AccountData tc44DigitalTVAccount;
+	public static AccountData tc45LegacyInternetAccount;
+	public static AccountData tc46LegacyRHP;
+	public static AccountData tc0610;
 
 	public static void dataInit (String strApplicationType) {	    	
     	if(strApplicationType.toUpperCase().trim().endsWith("CH")) {	    	
     		//cable Data files
     		connectedHomeDataInit();            
-    	} else if(strApplicationType.toUpperCase().trim().endsWith("SS")) {
+    	} else if(strApplicationType.toUpperCase().trim().endsWith("SS")
+    			|| strApplicationType.toUpperCase().trim().endsWith("SS]")) {
 	    	//Self-Service Data files
     		selfserveDataInit();
     	} else if(strApplicationType.toUpperCase().trim().endsWith("BFA")) {
@@ -240,11 +252,15 @@ public class TestDataHandler {
     	tc82 = YamlHandler.getAccountData("tc82InfiniteSE");
     	
     	//================ Connected home =========================
-    	igniteRHP = YamlHandler.getCableAccountData("IgniteRHP");
-    	solarisInternetAccountWithUsage = YamlHandler.getCableAccountData("SolarisInternetAccountWithUsage");
-    	igniteTVAccount = YamlHandler.getCableAccountData("IgniteTVAccount");
-    	digitalTVAccount = YamlHandler.getCableAccountData("DigitalTVAccount");
-    	legacyRHP = YamlHandler.getCableAccountData("LegacyRHP");
+    	tc43IgniteRHP = YamlHandler.getAccountData("tc43IgniteRHP");
+    	tc42SolarisInternetAccountWithUsage = YamlHandler.getAccountData("tc42SolarisInternetAccountWithUsage");
+    	tc41IgniteTVAccount = YamlHandler.getAccountData("tc41IgniteTVAccount");
+    	tc44DigitalTVAccount = YamlHandler.getAccountData("tc44DigitalTVAccount");
+    	tc46LegacyRHP = YamlHandler.getAccountData("tc46LegacyRHP");
+    	tc45LegacyInternetAccount = YamlHandler.getAccountData("tc45LegacyInternetAccount");
+    	tc40SHMAccount = YamlHandler.getAccountData("tc40SHMAccount");
+    	tc47TupeloAccount = YamlHandler.getAccountData("tc47TupeloAccount");
+    	tc0610 = YamlHandler.getAccountData("tc06_10DemolineSEPlanMultiLine");
 	}
 	
 	private static void buyFlowsDataInit() {

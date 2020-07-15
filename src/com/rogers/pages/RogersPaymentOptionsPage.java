@@ -13,7 +13,11 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	public RogersPaymentOptionsPage(WebDriver driver) {
 		super(driver);
 	}
-	@FindBy(xpath = "//select[@id='paymentOptionsSelect' or @id='nacPaymentMethod']")
+	
+	@FindBy(xpath = "//h2[@translate='global.checkout.billingAndPayment.title']")
+	WebElement txtPaymentpage;
+	
+	@FindBy(xpath = "//select[@id='ds-form-input-id-38']")
 	WebElement ddlPaymentMode;
 
 	@FindBy(xpath = "//input[@id='transit-code']")
@@ -31,22 +35,26 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	@FindBy(xpath = "//label[@class='margin-0-mobile']")
 	WebElement chkCheckConsent;
 
-	@FindBy(xpath = "//div[@class='semafone-container']//descendant::iframe")
+	@FindBy(xpath = "//iframe[@class='credit-card-iframe ng-star-inserted']")
 	WebElement fraSemaphone;
-
+	//div[@class='semafone-container']//descendant::iframe
+	
 	@FindBy(xpath = "//input[@class='semafonemandatory']")
 	WebElement txtCardNumber;
-
-	@FindBy(id = "cvv")
+	
+	@FindBy(xpath = "//input[@id='ds-form-input-id-44']")
 	WebElement txtCVV;
 
-	@FindBy(xpath = "//select[@name='ccExpiryMonth']")
+	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	WebElement txtContainerCVV;
+	
+	@FindBy(xpath = "//select[@id='ds-form-input-id-42']")
 	WebElement ddlExpiryMonth;
 
-	@FindBy(xpath = "//select[@name='ccExpiryYear']")
+	@FindBy(xpath = "//select[@id='ds-form-input-id-43']")
 	WebElement ddlExpiryYear;
 	
-	@FindBy(xpath = "//button[@class='ute-btn-primary']")
+	@FindBy(xpath = "//span[@translate='global.cta.continue']")
 	WebElement btnPaymentConfirm;
 
 	@FindBy(xpath = "//span[@checkout-res='checkout_continue_lbl']/..")
@@ -87,8 +95,8 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPaymentModepage() {
-		reusableActions.waitForElementVisibility(ddlPaymentMode, 200);
-		return	reusableActions.isElementVisible(ddlPaymentMode, 20);
+		reusableActions.waitForElementVisibility(txtPaymentpage, 180);
+		return	reusableActions.isElementVisible(txtPaymentpage, 20);
 	}
 	
 	/**
@@ -106,7 +114,7 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectPaymentMode(String strPaymentMode) {
-		reusableActions.selectWhenReady(ddlPaymentMode, strPaymentMode);
+		reusableActions.selectWhenReadyByVisibleText(ddlPaymentMode, strPaymentMode);
 	}
 	
 	/**
@@ -142,6 +150,8 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 */
 	public void setCVV() {
 		String strCVV = FormFiller.generateCVVNumber();
+		reusableActions.waitForElementVisibility(txtContainerCVV,180);
+		reusableActions.getWhenReady(txtContainerCVV,10).click();
 		reusableActions.clickWhenVisible(txtCVV);
 		reusableActions.getWhenReady(txtCVV).sendKeys(strCVV);
 	}
@@ -151,8 +161,8 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectExpiryMonth() {
-		String strMM = "number:" + FormFiller.generateMonth();
-		reusableActions.selectWhenReady(ddlExpiryMonth, strMM);
+		String strMM = FormFiller.generateMonth();
+		reusableActions.selectWhenReadyByVisibleText(ddlExpiryMonth, strMM);
 	}
 
 	/**
@@ -160,8 +170,8 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectExpiryYear() {
-		String strYYYY = "number:" + FormFiller.generateExpiryYear();
-		reusableActions.selectWhenReady(ddlExpiryYear, strYYYY);
+		String strYYYY = FormFiller.generateExpiryYear();
+		reusableActions.selectWhenReadyByVisibleText(ddlExpiryYear, strYYYY);
 	}
 
 	/**
@@ -242,7 +252,7 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 * Updated by saurav.goyal as per discussion with chinnarao.vattam
 	 */
 	public void clkPaymentConfirm() {
-		reusableActions.getWhenReady(btnPaymentConfirm, 180).click();
+		reusableActions.getWhenReady(btnPaymentConfirm, 90).click();
 	}
 	
 	/**
@@ -250,8 +260,6 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkPaymentConfirmExistingCustomer() {
-		//reusableActions.waitForElementInvisibility(popupLoadingFingers, 180);
-		reusableActions.waitForElementTobeClickable(btnPaymentConfirm, 180);	
 		reusableActions.waitForElementTobeClickable(btnPaymentConfirm, 180);
 		reusableActions.executeJavaScriptClick(btnPaymentConfirm);
 	}

@@ -59,8 +59,10 @@ import com.rogers.pages.RogersHomePhoneSelectionPage;
 import com.rogers.pages.RogersIgniteTVBuyPage;
 import com.rogers.pages.RogersIgniteTVCreditCheckPage;
 import com.rogers.pages.RogersIgniteTVProfileCreationPage;
+import com.rogers.pages.RogersInternetCreditCheckPage;
 import com.rogers.pages.RogersInternetDashboardPage;
 import com.rogers.pages.RogersInternetPackageSelectionPage;
+import com.rogers.pages.RogersInternetProfilePage;
 import com.rogers.pages.RogersInternetUsagePage;
 import com.rogers.pages.RogersLegacyBundleBuyPage;
 import com.rogers.pages.RogersLinkAccountPage;
@@ -78,6 +80,7 @@ import com.rogers.pages.RogersProfileAndSettingsPage;
 import com.rogers.pages.RogersRecoverPassOrNamePage;
 import com.rogers.pages.RogersRegisterPage;
 import com.rogers.pages.RogersReviewOrderPage;
+import com.rogers.pages.RogersSHMDashboardPage;
 import com.rogers.pages.RogersSecurePaymentPage;
 import com.rogers.pages.RogersSetPasswordPage;
 import com.rogers.pages.RogersShareEverythingPage;
@@ -155,7 +158,9 @@ public class BaseTestClass {
 	protected RogersIgniteTVBuyPage rogers_igniteTV_buy_page;
 	protected RogersOrderReviewPage rogers_order_review_page;
 	protected RogersIgniteTVProfileCreationPage rogers_igniteTV_profile_creation_page;
+	protected RogersInternetProfilePage rogers_ineternet_profile_page;
 	protected RogersIgniteTVCreditCheckPage rogers_igniteTV_credit_check_page;
+	protected RogersInternetCreditCheckPage rogers_internet_credit_check_page;
 	protected RogersHomePhoneSelectionPage rogers_home_phone_selection_page;
 	protected RogersLegacyBundleBuyPage rogers_legacy_bundle_buy_page;
 	protected RogersTechInstallPage rogers_tech_install_page;
@@ -192,6 +197,7 @@ public class BaseTestClass {
 	protected OrderConfirmationPage order_Confirmation_Page;
 	protected ChannelsAndThemePacksPage channels_Theme_Packs_Page;
 	protected HomePhoneAddonsPage home_Phone_Addons_Page;
+	protected RogersSHMDashboardPage rogers_shm_dashboard_page;
 	AppiumServerJava appiumServer = new AppiumServerJava();	
 	//int port = 4723;	
 	private CaptchaBypassHandlers captcha_bypass_handlers;
@@ -380,6 +386,7 @@ public class BaseTestClass {
 			rogers_solaris_tv_dashboard_page = new RogersSolarisTVDashboardPage(driver);
 			rogers_digital_tv_dashboard_page = new RogersDigitalTVDashboardPage(driver);
 			rogers_account_overview_page = new RogersAccountOverviewPage(driver);	
+			rogers_shm_dashboard_page =  new RogersSHMDashboardPage(driver);
 			break;
 			
 		case "connectedhome_legacyanonymous":
@@ -415,6 +422,8 @@ public class BaseTestClass {
 			rogers_solaris_tv_channels_and_themepacks_page = new RogersSolarisTVChannelsAndThemepacksPage(driver);
 			rogers_register_page = new RogersRegisterPage(driver);
 			rogers_home_phone_port_in_page = new RogersHomePhonePortInPage(driver);
+			rogers_ineternet_profile_page= new RogersInternetProfilePage(driver);
+			rogers_internet_credit_check_page= new RogersInternetCreditCheckPage(driver);
 			break;
 			
 		case "connectedhome_legacylogin":

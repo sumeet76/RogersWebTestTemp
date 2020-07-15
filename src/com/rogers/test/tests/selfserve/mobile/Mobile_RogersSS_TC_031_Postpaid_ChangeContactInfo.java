@@ -35,8 +35,7 @@ public class Mobile_RogersSS_TC_031_Postpaid_ChangeContactInfo extends BaseTestC
 	}
 	
 	@Test
-	public void validateUserChangeContactInformation() {
-		rogers_home_page.clkHamburgerMobile();
+	public void validateUserChangeContactInformation() {		
 		rogers_home_page.clkSignInMobile();
     	String strUsername = TestDataHandler.tc013132.getUsername();
     	String strPassword = TestDataHandler.tc013132.getPassword();
@@ -55,24 +54,25 @@ public class Mobile_RogersSS_TC_031_Postpaid_ChangeContactInfo extends BaseTestC
         	reporter.reportLogWithScreenshot("Select BAN.");
             rogers_account_overview_page.selectAccount(strBan);
         }
-		reporter.reportLogWithScreenshot("Account overveiew page");
-    	rogers_account_overview_page.clkBtnNavigationMobile();
-    	rogers_account_overview_page.clkBtnProfileSettingsMobile();
+		reporter.reportLogWithScreenshot("Account overveiew page");    	
+		rogers_account_overview_page.clkLnkProfileNSettingsMobile();
 		reporter.reportLogWithScreenshot("Profile & Settings page");
+		common_business_flows.scrollToMiddleOfWebPage();
+		rogers_profile_and_settings_page.clkCloseFeedbackIfAvailableMobile();
     	rogers_profile_and_settings_page.clkBtnContactInfomation();
     	
     	//Add Contact email, can't be the same as user name!!!
 		rogers_profile_and_settings_page.clkBtnChangeEmailMobile();
-		rogers_profile_and_settings_page.clkBtnAddEmailMobile();
+		//rogers_profile_and_settings_page.clkBtnAddEmailMobile();
     	String strNewEmail="";
-    	if(rogers_profile_and_settings_page.getContactEmail().contains(strEmail))
+    	if(rogers_profile_and_settings_page.getContactEmailMobile().toLowerCase().contains(strEmail.toLowerCase()))
     	{
-        	rogers_profile_and_settings_page.setContactEmail(strAltEmail);
+        	rogers_profile_and_settings_page.setContactEmailMobile(strAltEmail);
         	strNewEmail=strAltEmail;
      
     	}else
     	{
-        	rogers_profile_and_settings_page.setContactEmail(strEmail);
+        	rogers_profile_and_settings_page.setContactEmailMobile(strEmail);
         	strNewEmail=strEmail;
     	}
     	reporter.reportLogWithScreenshot("Contact email information is entered.");
@@ -85,9 +85,9 @@ public class Mobile_RogersSS_TC_031_Postpaid_ChangeContactInfo extends BaseTestC
 				"Add contact email failed");	    
     	    	    
     	//Update home number, can't be the same as what it already has!!!
-    	rogers_profile_and_settings_page.clkLnkUpdateHomeNumber();
+    	rogers_profile_and_settings_page.clkLnkUpdateHomeNumberMobile();
     	String strHomePhoneNumer = FormFiller.generateRandomNumber(10);
-    	rogers_profile_and_settings_page.setHomePhone(strHomePhoneNumer);
+    	rogers_profile_and_settings_page.setHomePhoneMobile(strHomePhoneNumer);
     	reporter.reportLogWithScreenshot("Home phone number is entered.");
     	rogers_profile_and_settings_page.clkBtnUpdateHomeNumberContinue();
     	rogers_profile_and_settings_page.clkBtnUpdateHomeNumberSubmit();
@@ -98,9 +98,9 @@ public class Mobile_RogersSS_TC_031_Postpaid_ChangeContactInfo extends BaseTestC
     			"Update home phone number failed");    	
     	
     	//Add business number, can't be the same as what it already has!!!
-    	rogers_profile_and_settings_page.clkLnkAddBusinessNumber();
+    	rogers_profile_and_settings_page.clkLnkAddBusinessNumberMobile();
     	String strBusinessNumer = FormFiller.generateRandomNumber(10);
-    	rogers_profile_and_settings_page.setBusinessPhone(strBusinessNumer);
+    	rogers_profile_and_settings_page.setBusinessPhoneMobile(strBusinessNumer);
     	reporter.reportLogWithScreenshot("Business number is entered.");
     	rogers_profile_and_settings_page.clkBtnAddBusinessNumberContinue();
     	rogers_profile_and_settings_page.clkBtnAddBusinessNumberSubmit();  
@@ -112,18 +112,18 @@ public class Mobile_RogersSS_TC_031_Postpaid_ChangeContactInfo extends BaseTestC
     	
     	//Change contact language, have to change language!!!
     	String newLanguage="";
-    	String existingLanguage = rogers_profile_and_settings_page.getExistingLanguage();
+    	String existingLanguage = rogers_profile_and_settings_page.getExistingLanguageMobile();
     	if(existingLanguage.contains("English")
     	||existingLanguage.contains("Anglais"))
     	{
     		newLanguage = existingLanguage.contains("English") ? "French": "Français";
     		
-    		rogers_profile_and_settings_page.clkLnkChangeContactLanguage();
+    		rogers_profile_and_settings_page.clkLnkChangeContactLanguageMobile();
     		rogers_profile_and_settings_page.clkLanguage(newLanguage);
     	}else
     	{
     		newLanguage = existingLanguage.contains("French") ? "English": "Anglais";
-    		rogers_profile_and_settings_page.clkLnkChangeContactLanguage();
+    		rogers_profile_and_settings_page.clkLnkChangeContactLanguageMobile();
     		rogers_profile_and_settings_page.clkLanguage(newLanguage);
     	}    	    	
     	rogers_profile_and_settings_page.clkBtnChangelanguageSubmit();    	

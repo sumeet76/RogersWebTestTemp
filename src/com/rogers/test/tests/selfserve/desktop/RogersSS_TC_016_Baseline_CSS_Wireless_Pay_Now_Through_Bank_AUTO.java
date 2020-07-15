@@ -39,7 +39,7 @@ public class RogersSS_TC_016_Baseline_CSS_Wireless_Pay_Now_Through_Bank_AUTO ext
     	String strPassword = TestDataHandler.tc161825.getPassword();		
 		tryLogin(strUsername, strPassword);
 		reporter.reportLogWithScreenshot("Account overveiew page");
-				
+		rogers_account_overview_page.clkViewBill();	
 			rogers_account_overview_page.clkBillingAndPaymentsMakeAPayment();
 			String amountEntered = "0.1";
 			rogers_make_payment_page.setPaymentAmount(amountEntered);

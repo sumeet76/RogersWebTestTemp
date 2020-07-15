@@ -1,0 +1,21 @@
+# Account Details 
+---
+name: LegacyInternetAccountUsage
+username: Autodatar520ss21@yahoo.com        
+password: DigiAuto@123
+accountDetails:
+   type: Legacy Internet
+   ban: 934236175
+   downgradePlanFr: Élan Internet 150i
+   downgradePlanEn: Ignite Internet 150u
+   internetBundle: 150
+   downgradeBundle: Select
+   address:
+     line1: 706-10 Lisa St 
+     line2: BRAMPTON ON L6T 4N4, CANADA
+     streetNumber: 239
+     streetName: Bartsview Cir
+     city: STOUFFVILLE
+     Province: ON
+     PostalCode: L4A 0E6 
+...

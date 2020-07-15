@@ -16,7 +16,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 /**
  * This class contains the test method to test the Manage theme packs functionality in TV buy flow for Rogers.com   
  * 
- * @author Saurav.Goyal
+ * @author chinnarao.vattam
  * 
  * Test steps:
  *
@@ -42,11 +42,12 @@ public class RogersCH_TC_001_Regression_4Plus1AddThemepacksfromTVDashboardPage e
 		rogers_login_page.setPasswordIFrame(TestDataHandler.igniteTVAccount.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
-		reporter.reportLogWithScreenshot("Skip popup");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
-		rogers_account_overview_page.selectAccount((TestDataHandler.igniteTVAccount.accountDetails.getBan()));
-		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+	    reporter.reportLogWithScreenshot("Skip popup");
+	    rogers_login_page.clkSkipIFrame();
+	    rogers_login_page.switchOutOfSignInIFrame();
+	    rogers_account_overview_page.selectAccount(TestDataHandler.igniteTVAccount.accountDetails.getBan());
+		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		rogers_solaris_tv_dashboard_page.clkTVBadge();
 		reporter.reportLogWithScreenshot("Launched the TV dash board");
@@ -55,23 +56,22 @@ public class RogersCH_TC_001_Regression_4Plus1AddThemepacksfromTVDashboardPage e
 		rogers_solaris_tv_channels_and_themepacks_page.clkThemePacks();
 		reporter.reportLogWithScreenshot("Clicked on themepack tab");
 		rogers_solaris_tv_channels_and_themepacks_page.clkAddButtonOnThemePackListOnManageChannelsAndThemePacks();
+		reporter.reportLogWithScreenshot("Clicked on confirm button");
+		rogers_solaris_tv_channels_and_themepacks_page.clkContinueOnExistingChannelAlertWindow(); 
 		reporter.reportLogWithScreenshot("ThemePack added");    
-		rogers_solaris_tv_channels_and_themepacks_page.clkRemoveFromYourChanges();
-		reporter.reportLogWithScreenshot("Clicked on remove from your changes");
-		rogers_solaris_tv_channels_and_themepacks_page.clkAddButtonOnThemePackListOnManageChannelsAndThemePacks();
-		reporter.reportLogWithScreenshot("ThemePack added"); 
 		rogers_solaris_tv_channels_and_themepacks_page.clkConfirmChangesOnManageChannelsAndThemePacks();
 		reporter.reportLogWithScreenshot("Clicked in confirm changes on manage channels and theme packs");
-		rogers_order_review_page.verifyAgreementPage();
-		reporter.reportLogWithScreenshot("Launched the order review page");
-		rogers_order_review_page.verifyAgreement();
-		rogers_order_review_page.clkAcceptenceCheckbox();
-		reporter.reportLogWithScreenshot("Agreement details");
-		rogers_order_review_page.clkSubmit();
-		reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
-		reporter.reportLogWithScreenshot("Launched the Confirmation page");
-	}
 
+		reporter.hardAssert( rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
+		reporter.reportLogWithScreenshot("Launched the order review page");
+
+		reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
+		rogers_order_review_page.clkAcceptenceCheckboxUpdate();
+		reporter.reportLogWithScreenshot("Agreement details");
+		rogers_order_review_page.clkSubmitUpdate();
+		reporter.hardAssert(rogers_order_confirmation_page.verifyOrderSuccess(),"Update order completed","Update order Failed");
+		reporter.reportLogWithScreenshot("Launched the Confirmation page");
+		}
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
 	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
@@ -81,7 +81,7 @@ public class RogersCH_TC_001_Regression_4Plus1AddThemepacksfromTVDashboardPage e
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+	closeSession();
 	}
 
 

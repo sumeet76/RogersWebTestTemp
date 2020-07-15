@@ -55,7 +55,7 @@ import org.testng.annotations.Parameters;
  *
  **/
 
-public class RogersCH_TC_003_CartAbandon_NoPortinExistingLegacySignedinfromMyRogersTest extends BaseTestClass {
+public class RogersCH_TC_003b_CartAbandon_NoPortinExistingLegacySignedinfromMyRogersTest extends BaseTestClass {
 
 	@Test
 	public void checkCartAbandonNoPortinExistingLegacySignedinfromMyRogersTest() {
@@ -67,53 +67,13 @@ public class RogersCH_TC_003_CartAbandon_NoPortinExistingLegacySignedinfromMyRog
 		rogers_login_page.setPasswordIFrame(TestDataHandler.noPortInAbondoneFlows.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
-		reporter.reportLogWithScreenshot("Skip popup");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
-		rogers_account_overview_page.selectAccount(TestDataHandler.noPortInAbondoneFlows.getAccountDetails().getBan());
-		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed"); 
-        rogers_home_page.clkShop(); 
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-     	rogers_home_page.clkIgniteTVExistingCustomer();
-     	rogers_home_page.clkNoThnx();
-    	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-    	rogers_home_page.clkServiceabilityMigration();
-    	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");    	
-        rogers_home_page.clkUseThisAddress();
-        reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-        rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
-        reporter.reportLogWithScreenshot("Launched the information popup");
-        //rogers_igniteTV_buy_page.verifyImportantInformation();
-        rogers_igniteTV_buy_page.clkIUnderstand();
-        reporter.reportLogWithScreenshot("Launched the port-in popup");
-        rogers_igniteTV_buy_page.selectOptNewPhone();
-        rogers_igniteTV_buy_page.clickOptPhone();
-        reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
-        rogers_igniteTV_buy_page.clkHomePhone();
-        reporter.reportLogWithScreenshot("Launched the cart summary page");
-        rogers_igniteTV_buy_page.set4KTV(); 
-        rogers_igniteTV_buy_page.clkCheckout();
-        reporter.reportLogWithScreenshot("Launched the create profile page");
-        rogers_igniteTV_profile_creation_page.clkSubmitProfile();   
-        reporter.reportLogWithScreenshot("Launched the credit evalution page");
-        rogers_home_page.clkMyRogers(); 
-        reporter.reportLogWithScreenshot("Launched the Cart Abandonment Form popup");
-        rogers_igniteTV_credit_check_page.verifyCartAbandonmentForm();
-        rogers_igniteTV_credit_check_page.clkCartAbandonmentForm();
-        reporter.reportLogWithScreenshot("Launched the Email sent success popup");
-        rogers_igniteTV_credit_check_page.verifyCartEmailSuccess();
-        rogers_igniteTV_credit_check_page.clkCartEmailSuccess();
-        reporter.reportLogWithScreenshot("Signout account");
-		rogers_login_page.switchToSignInIFrame();
-		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setPasswordIFrame(TestDataHandler.noPortInAbondoneFlows.getPassword());
-		reporter.reportLogWithScreenshot("Enter the account credentails");
-		rogers_login_page.clkSignInIFrame();
-		reporter.reportLogWithScreenshot("Skip popup");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
-		rogers_account_overview_page.selectAccount(TestDataHandler.noPortInAbondoneFlows.getAccountDetails().getBan());
-		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed"); 
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+	    reporter.reportLogWithScreenshot("Skip popup");
+	    rogers_login_page.clkSkipIFrame();
+	    rogers_login_page.switchOutOfSignInIFrame();
+	    rogers_account_overview_page.selectAccount(TestDataHandler.noPortInAbondoneFlows.accountDetails.getBan());
+		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+	    reporter.reportLogWithScreenshot("Launched the Account Page"); 
         rogers_home_page.clkShop(); 
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
      	rogers_home_page.clkIgniteTV();
@@ -122,7 +82,8 @@ public class RogersCH_TC_003_CartAbandon_NoPortinExistingLegacySignedinfromMyRog
         reporter.reportLogWithScreenshot("Launched the cart summary page");
         rogers_igniteTV_buy_page.clkCheckout();
         reporter.reportLogWithScreenshot("Launched the information popup");
-        rogers_igniteTV_profile_creation_page.verifyImportantInformation();
+       
+        reporter.hardAssert( rogers_igniteTV_profile_creation_page.verifyImportantInformation(),"Important Information popup has Launched","Important Information popup has not Launched");
         rogers_igniteTV_profile_creation_page.clkIUnderstand();
         reporter.reportLogWithScreenshot("Launched the create profile page");
         rogers_igniteTV_profile_creation_page.clkSubmitProfile();   
@@ -144,15 +105,17 @@ public class RogersCH_TC_003_CartAbandon_NoPortinExistingLegacySignedinfromMyRog
         rogers_tech_install_page.clkTechInstallContinue();
         reporter.reportLogWithScreenshot("Launched the payment options page");
         rogers_payment_options_page.clkPaymentConfirmExistingCustomer();
-        rogers_order_review_page.verifyAgreementPage();
+        
+        reporter.hardAssert(rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
-        rogers_order_review_page.verifyAgreement();
+       
+        reporter.hardAssert( rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
         rogers_order_review_page.clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
         rogers_order_review_page.clkSubmit();
-        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");  
+        reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");  
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-	}
+		}
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin

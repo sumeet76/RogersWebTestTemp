@@ -30,7 +30,7 @@ public class RogersAddDataPage extends BasePageClass {
 	@FindBy (xpath = "//h2[@class='add-data-modal-title success-title']")
 	WebElement lblAddDataSuccess;
 	
-	@FindBy (xpath = "//span[contains(text(),'added!') or contains(text(),'ajout!')]")
+	@FindBy (xpath = "//span[contains(text(),'added!') or contains(text(),'ajout')]")
 	WebElement msgDataAddedVolume;
 	
 	@FindBy (xpath = "//rss-add-data//button[@title='Close' or @title='Fermer']")
@@ -56,7 +56,7 @@ public class RogersAddDataPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void selectFirstDataAddOnOption() {
-		reusableActions.clickWhenReady(divListAddDataOpt.get(1), 60);
+		reusableActions.clickWhenReady(divListAddDataOpt.get(2), 60);
 		
 	}
 	
