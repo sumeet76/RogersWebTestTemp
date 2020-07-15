@@ -30,9 +30,10 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//h1[@translate='global.label.internet']")
 	WebElement infoInternet;
 
-	@FindBy(xpath = "//a[contains(@class,'btn ute-btn-secondary')]")
+	@FindBy(xpath = "//span[@translate='global.dashboard.internetUsage.usageAndAlerts']")
 	WebElement lnkInternetUsageAlerts;
-
+	//a[contains(@class,'btn ute-btn-secondary')]
+	
 	@FindBy(xpath = "//span[@translate='global.dashboard.internetUsage.usageAndAlerts']")
 	WebElement infoUsageAndAlerts;
 
