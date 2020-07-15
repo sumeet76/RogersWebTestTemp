@@ -67,17 +67,12 @@ public class RogersCH_TC_003a_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
 		rogers_login_page.setPasswordIFrame(TestDataHandler.noPortInAbondoneFlows.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
-		if(rogers_login_page.verifyLoginFailMsgIframe())
-		{
-			reporter.reportLogFailWithScreenshot("Login Failed");			
-		}
-		else
-		{
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    reporter.reportLogWithScreenshot("Skip popup");
 	    rogers_login_page.clkSkipIFrame();
 	    rogers_login_page.switchOutOfSignInIFrame();
 	    rogers_account_overview_page.selectAccount(TestDataHandler.noPortInAbondoneFlows.accountDetails.getBan());
-	    reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 	    reporter.reportLogWithScreenshot("Launched the Account Page"); 
         rogers_home_page.clkShop(); 
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
@@ -113,7 +108,6 @@ public class RogersCH_TC_003a_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
         rogers_igniteTV_credit_check_page.clkCartEmailSuccess();
         reporter.reportLogWithScreenshot("Signout account");	
 		}
-	}
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin

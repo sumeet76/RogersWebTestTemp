@@ -6,10 +6,10 @@ password: DigiAuto@123
 accountDetails:
    type: Internet
    ban: 934642661
-   upgradePlanEn: Ignite Internet Gigabit
-   upgradePlanFr: Élan Internet gigabit
-   downgradePlanEn: 150
-   downgradePlanFr: 150
+   upgradePlanEn: 1 Gbps
+   upgradePlanFr: 1 Gbps
+   downgradePlanEn: 150 Mbps
+   downgradePlanFr: 150 Mbps
    internetBundle:  150u
    phoneNumber: 921577623
 ...

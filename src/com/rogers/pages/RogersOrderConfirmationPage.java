@@ -53,6 +53,9 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	@FindBy(xpath = "//ngx-smart-modal[@id='loadingModal']")
 	WebElement popupLoadingFingersciam;
 	
+	@FindBy(xpath = "//i[@class='li-loader']")
+	WebElement popupLoadingFingersInternet;	
+	
 	/**
 	 * Verify the the yellow banner with order success information
 	 * @return true if the page display the yellow banner with order success information , else false
@@ -69,7 +72,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOrderConfirmation() {
-		reusableActions.waitForElementVisibility(infoChangeOrderConfirmation,180);
+		reusableActions.waitForElementInvisibility(popupLoadingFingersInternet, 180);
 		return reusableActions.isElementVisible(infoChangeOrderConfirmation, 60);
 	}
 	
@@ -79,7 +82,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOrderConfirmationNew() {
-		reusableActions.waitForElementVisibility(infoChangeOrderConfirmationnew,180);
+		reusableActions.waitForElementInvisibility(popupLoadingFingersInternet, 180);
 		return reusableActions.isElementVisible(infoChangeOrderConfirmationnew, 60);
 	}
 	/**
