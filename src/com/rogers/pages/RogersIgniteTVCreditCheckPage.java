@@ -365,7 +365,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkCreditConsentSubmit() {
-		reusableActions.executeJavaScriptClick(chkConsent);
+		reusableActions.executeJavaScriptClick(btnCreditCheckSubmit);
 	}
 	
 	/**

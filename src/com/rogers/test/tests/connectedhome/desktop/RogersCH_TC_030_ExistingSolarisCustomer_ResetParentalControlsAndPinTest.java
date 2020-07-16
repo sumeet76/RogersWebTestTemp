@@ -32,7 +32,9 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class RogersCH_TC_030_ExistingSolarisCustomer_ResetParentalControlsAndPinTest extends BaseTestClass {
 
     @Test
-    public void checkSolarisTVResetParentalControlsAndPinFlow() {       
+    public void checkSolarisTVResetParentalControlsAndPinFlow() {  
+		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();

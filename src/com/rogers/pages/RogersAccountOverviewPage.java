@@ -332,7 +332,6 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void clkTVBadge() {	
 		reusableActions.getWhenReady(btnTVBadge, 180).click();
-		reusableActions.staticWait(10000);
 	}
 	
 	/**

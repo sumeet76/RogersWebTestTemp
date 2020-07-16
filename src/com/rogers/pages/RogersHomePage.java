@@ -38,8 +38,9 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/tv']")
 	WebElement lnkDTV;
 
-	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/web/consumer/ignite-bundles/tv-internet']")
+	@FindBy(xpath = "//a[@href='https://www.rogers.com/web/consumer/internet/offers']")
 	WebElement lnkIgniteTV;
+	//li[@class='dds_o-headerNavDropdown__item']/a[@href='/web/consumer/ignite-bundles/tv-internet']
 	
 	@FindBy(xpath = "//li[@class='dds_o-mobileNavDropdown__item']//a[@href='/web/consumer/ignite-bundles/tv-internet']")
 	WebElement lnkgniteTVMobile;	

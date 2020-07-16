@@ -23,6 +23,9 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//h1[@translate='global.label.OrderReview']")
 	WebElement txtAgreementPage;
 	
+	@FindBy(xpath = "//h3[@translate='global.label.OrderReview']")
+	WebElement txtAgreementPage1;
+	
 	@FindBy(xpath = "//div[@id='terms-conditions']")
 	WebElement infoAgreement;
 
@@ -155,8 +158,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyAgreementPage() {
-		reusableActions.waitForElementInvisibility(popupLoadingFingersInternet, 180);
-		return	reusableActions.isElementVisible(txtAgreementPage, 150);
+		return	reusableActions.isElementVisible(txtAgreementPage, 180);
 	}
 	
 	/**
@@ -165,7 +167,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyAgreement() {
-		return reusableActions.isElementVisible(infoAgreement, 90);
+		return reusableActions.isElementVisible(infoAgreement, 180);
 	}
 
 	/**
@@ -189,6 +191,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 		reusableActions.scrollToElement(lnkAgreementToEndExistingCustomer);	
 		reusableActions.staticWait(4000);		
 		reusableActions.getWhenReady(clkChangeAcceptCheckboxUpdateInternet, 90).click();
+		reusableActions.staticWait(4000);
 	}
 	/**
 	 * Click on the Consent check box on the order review page
@@ -198,6 +201,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 		reusableActions.isElementVisible(lnkAgreementToEnd, 90);
 		reusableActions.scrollToElement(lnkAgreementToEnd, 0,100);
 		reusableActions.scrollToElement(lnkAgreementToEnd);	
+		reusableActions.staticWait(7000);	
 		reusableActions.getWhenReady(clkChangeAcceptCheckbox, 90).click();
 	}
 	
