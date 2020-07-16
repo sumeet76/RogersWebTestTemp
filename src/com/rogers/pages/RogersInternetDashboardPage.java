@@ -27,13 +27,13 @@ public class RogersInternetDashboardPage extends BasePageClass {
         @FindBy(xpath = "//span[@class='ds-icon rds-icon-internet']")})	
 	WebElement btnSolarisInternetBadge;
 
-	@FindBy(xpath = "//ins[@translate='global.label.internet']")
+	@FindBy(xpath = "//*[@translate='global.label.internet']")
 	WebElement infoInternet;
 
 	@FindBy(xpath = "//a[contains(@class,'btn ute-btn-secondary')]")
 	WebElement lnkInternetUsageAlerts;
-
-	@FindBy(xpath = "//ins[@usertype-translate='global.label.usageAndAlerts']")
+	
+	@FindBy(xpath = "//*[@usertype-translate='global.label.usageAndAlerts' or @translate='global.dashboard.internet.usage']")
 	WebElement infoUsageAndAlerts;
 
 	@FindBy(xpath = "//ins[@translate='global.cta.changeInternetPackage']")

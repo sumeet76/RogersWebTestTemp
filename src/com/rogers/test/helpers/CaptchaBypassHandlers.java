@@ -23,7 +23,7 @@ public class CaptchaBypassHandlers {
 	 * @param strLanguage                string of language to use
 	 */
 		public void captchaBypassURLSelfserveFlows(String strUrl, String strLanguage) throws IOException {
-			driver.get(strUrl+"?setLanguage="+ strLanguage );
+		driver.get(strUrl+"?setLanguage="+ strLanguage );
 		
 		String strCookieUserName= TestDataHandler.ssConfig.getCookieUserName();
 		String strCookieUserPassword= TestDataHandler.ssConfig.getCookieUserPassword();

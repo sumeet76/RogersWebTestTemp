@@ -73,8 +73,8 @@ public class RogersSS_TC_092_AO_ValidateTheMessageInAccountOverviewWhenTheAccoun
         reporter.reportLogWithScreenshot("Account cancelled message");
         reporter.softAssert((rogers_account_overview_page.isViewBillingAndPaymentHistoryDisplayedInsideAccountCancelledMessage()
         		&& rogers_account_overview_page.isManageProfileLinkDisplayedInsideAccountCancelledMessage()),
-        		"The account cancelled message is displayed with “View Billing & Payment History” and “Manage Profile” as expected",
-        		"The account cancelled message is NOT displayed with “View Billing & Payment History” and “Manage Profile” as expected");
+        		"The account cancelled message is displayed with 'View Billing & Payment History' and 'Manage Profile' as expected",
+        		"The account cancelled message is NOT displayed with 'View Billing & Payment History' and 'Manage Profile' as expected");
         reporter.softAssert((rogers_account_overview_page.isViewBillDisplayed()
         		&& rogers_account_overview_page.isLnkSetAutoPaymentDisplayed()
         		&& rogers_account_overview_page.isLnkPaymentHistoryDisplayed()),

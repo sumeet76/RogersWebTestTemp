@@ -1263,7 +1263,10 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyLiveChatOverlayOpened() {	
+	  /*if(reusableActions.isElementVisible(getDriver().findElement(By.xpath("//iframe[@id='va-iframe']"))))
+		{
 		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(getDriver().findElement(By.xpath("//iframe[@id='va-iframe']")), 20);
+		} */
 		return reusableActions.isElementVisible(headerLiveChat, 30);
 	} 
 	
@@ -1536,7 +1539,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public boolean verifyLinkNetworkAid(String strBaseUrl) {
 		reusableActions.getWhenReady(lnkNetworkAid, 60).click();
-		return reusableActions.verifyUrls(strBaseUrl + "/customer/support/article/wireless-my-network");
+		//updated in july 24th release
+		///customer/support/article/wireless-my-network
+		return reusableActions.verifyUrls(strBaseUrl + "/consumer/wireless/my-network");
 	}
 	
 	/**
@@ -2103,5 +2108,13 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public boolean isDataAccessDisplayed() {
 		return reusableActions.isElementVisible(lblDataAccess);
+	}
+
+	/**
+	 * Click left CTN scroll arrow
+	 * @author Mirza.Kamran
+	 */
+	public void clkLeftCTNScrollArrow() {
+		reusableActions.clickIfAvailable(btnLeftScrollCTN);
 	}
 }

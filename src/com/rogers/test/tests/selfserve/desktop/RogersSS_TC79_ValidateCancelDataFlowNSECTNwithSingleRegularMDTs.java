@@ -103,6 +103,10 @@ public class RogersSS_TC79_ValidateCancelDataFlowNSECTNwithSingleRegularMDTs ext
 			
 			rogers_login_page.clickSignOut();
 			reporter.reportLogWithScreenshot("Sign out is clicked");
+			if(rogers_home_page.isContentFulURLDisplayed())
+			{
+				rogers_home_page.clkEasyLogin();
+			}
 			rogers_login_page.clkSignInAs();
 			reporter.reportLogWithScreenshot("Click Re Sign In");
 			rogers_login_page.switchToSignInIFrame();	        

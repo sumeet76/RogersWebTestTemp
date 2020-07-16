@@ -12,12 +12,16 @@
 	</listeners>	
 
 
-<test name="RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaymentMethodPACToCC_EN_AUTO" >
+<test name="RogersSS_TC80_ValidateDataUsageDisplayInOveragePayPerUsePostpaidNonSEplan" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaymentMethodPACToCC_EN_AUTO"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC80_ValidateDataUsageDisplayInOveragePayPerUsePostpaidNonSEplan"></class>
 </classes>          																					
 </test>
 
-		
-			 
-</suite>
+
+<test name="RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE_AddData">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE_AddData"></class>
+</classes>          																					
+</test>			 
+</suite>	

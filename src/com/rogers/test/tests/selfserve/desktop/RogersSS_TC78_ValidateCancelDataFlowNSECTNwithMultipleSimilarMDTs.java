@@ -103,6 +103,10 @@ public class RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs e
 			
 			rogers_login_page.clickSignOut();
 			reporter.reportLogWithScreenshot("Sign out done");
+			if(rogers_home_page.isContentFulURLDisplayed())
+			{
+				rogers_home_page.clkEasyLogin();
+			}			
 			rogers_login_page.clkSignInAs();
 			reporter.reportLogWithScreenshot("Click Re Sign In");
 			rogers_login_page.switchToSignInIFrame();	        
