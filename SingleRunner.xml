@@ -13,9 +13,9 @@
 
 
 
-<test name="RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest">
+<test name="RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE"></class>
 </classes>          																					
 </test>			 
 </suite>	
