@@ -11,17 +11,30 @@
 			class-name="com.rogers.test.listeners.AnnotationTransformer" />
 	</listeners>	
 
-
-<test name="RogersSS_TC80_ValidateDataUsageDisplayInOveragePayPerUsePostpaidNonSEplan" enabled="true">
+<test name="RogersSS_TC_01_FDM_AssignDMRoleViaOverlayForFirstTimeLogin" >
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC80_ValidateDataUsageDisplayInOveragePayPerUsePostpaidNonSEplan"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_01_FDM_AssignDMRoleViaOverlayForFirstTimeLogin"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC_03_FDM_ReassignDataManagerRole" >
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_03_FDM_ReassignDataManagerRole"></class>
 </classes>          																					
 </test>
 
 
-<test name="RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE_AddData">
+<test name="RogersSS_TC_04_05_FDM_BlockAndUnblockDataUsageForTheCTN" >
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE_AddData"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_04_05_FDM_BlockAndUnblockDataUsageForTheCTN"></class>
 </classes>          																					
-</test>			 
-</suite>	
+</test>
+
+<test name="RogersSS_TC06_TC10_FDM_CtnDashboardWithAccountDetails_GUI" enabled="false">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC06_TC10_FDM_CtnDashboardWithAccountDetails_GUIRogersSS_TC_009_UserSetMobileNumForSMSRecovery"></class>
+</classes>          																					
+</test>  
+		
+			 
+</suite>
