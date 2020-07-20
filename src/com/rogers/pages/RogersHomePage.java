@@ -16,6 +16,9 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//a[@href='/consumer/easyloginriverpage']")
 	WebElement lnkEasyLogin;
 	
+	@FindBy(xpath = "//a[@href='/web/consumer/ignite-bundles/tv-internet']")
+	WebElement lnkTVBundle;
+	
 	@FindBy(xpath = "//div[@class='dds-navbar-nav']//a[@aria-label='Sign in to My Rogers']//span[text()='Sign in'  or text()='Connexion']")
 	WebElement lnkSignIn;
 
@@ -227,7 +230,13 @@ public class RogersHomePage extends BasePageClass {
 		reusableActions.getWhenVisible(lnkSignIn, 30).click();
 	}
 	
-	
+	/**
+	 * Click the SignIn button from the top tile bar 
+	 * @author chinnarao.vattam 
+	 */
+	public void clkTVBundle() {		
+		reusableActions.getWhenVisible(lnkTVBundle, 30).click();
+	}
 	
 	/**
 	 * Click the SignIn button from the top tile bar 

@@ -1,6 +1,8 @@
 package com.rogers.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -24,18 +26,26 @@ public class RogersOrderReviewPage extends BasePageClass {
 	WebElement txtAgreementPageInternet;
 	
 	@FindBy(xpath = "//h3[@translate='global.label.OrderReview']")
-	WebElement txtAgreementPage;
+	WebElement txtAgreementPageBuy;
 	
 	@FindBy(xpath = "//div[@id='terms-conditions']")
 	WebElement infoAgreement;
 
 	@FindBy(xpath = "//li[contains(text(),'819 994 6591')]")
 	WebElement lnkAgreementToEndExistingCustomer;	
-
 	
 	@FindBy(xpath = "//li[contains(text(),'819 994 6591')]")
 	WebElement lnkAgreementToEnd;	
-	//p[contains(text(),'06/')]
+	
+	@FindBy(xpath = "//div[@class='agreement-container']")
+	WebElement lnkAgreementContainer;
+	
+	@FindBy(xpath = "//div[@class='additional-agreement-details__content']")
+	WebElement lnkAgreementContent;
+	
+	@FindBy(xpath = "//li[@id='headingDetails4']//button[@class='button-link']")
+	WebElement lnkAgreementPrivacyPolicy;
+	
 	
 	@FindBy(xpath = "//label[@for='ds-checkbox-id-3']")
 	WebElement clkChangeAcceptCheckbox;
@@ -158,7 +168,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyAgreementPage() {
-		return	reusableActions.isElementVisible(txtAgreementPage, 180);
+		return	reusableActions.isElementVisible(txtAgreementPageBuy, 180);
 	}
 	
 	/**
@@ -206,10 +216,12 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkAcceptenceCheckbox() {
-		reusableActions.isElementVisible(lnkAgreementToEnd, 90);
-		//reusableActions.scrollToElement(lnkAgreementToEnd, 0,100);
-		reusableActions.scrollToElement(lnkAgreementToEnd);	
-		reusableActions.staticWait(7000);	
+		reusableActions.isElementVisible(lnkAgreementPrivacyPolicy, 90);
+		reusableActions.getWhenReady(lnkAgreementPrivacyPolicy, 30).click();		
+		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 30).sendKeys(Keys.PAGE_DOWN);
+		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);	
+		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);	
+		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);		
 		reusableActions.getWhenReady(clkChangeAcceptCheckbox, 90).click();
 	}
 	
