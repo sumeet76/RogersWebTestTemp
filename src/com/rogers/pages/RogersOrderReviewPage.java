@@ -21,10 +21,10 @@ public class RogersOrderReviewPage extends BasePageClass {
 	WebElement infoPackagechangeBillingAddress;
 
 	@FindBy(xpath = "//h1[@translate='global.label.OrderReview']")
-	WebElement txtAgreementPage;
+	WebElement txtAgreementPageInternet;
 	
 	@FindBy(xpath = "//h3[@translate='global.label.OrderReview']")
-	WebElement txtAgreementPage1;
+	WebElement txtAgreementPage;
 	
 	@FindBy(xpath = "//div[@id='terms-conditions']")
 	WebElement infoAgreement;
@@ -162,6 +162,14 @@ public class RogersOrderReviewPage extends BasePageClass {
 	}
 	
 	/**
+	 * Verify the order review page
+	 * @return true if the Agreement is present on the order review page, else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyAgreementPageInternet() {
+		return	reusableActions.isElementVisible(txtAgreementPageInternet, 180);
+	}
+	/**
 	 * Verify the agreement block on the order review page
 	 * @return true if the page displays the agreement , else false
 	 * @author chinnarao.vattam
@@ -199,7 +207,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 */
 	public void clkAcceptenceCheckbox() {
 		reusableActions.isElementVisible(lnkAgreementToEnd, 90);
-		reusableActions.scrollToElement(lnkAgreementToEnd, 0,100);
+		//reusableActions.scrollToElement(lnkAgreementToEnd, 0,100);
 		reusableActions.scrollToElement(lnkAgreementToEnd);	
 		reusableActions.staticWait(7000);	
 		reusableActions.getWhenReady(clkChangeAcceptCheckbox, 90).click();

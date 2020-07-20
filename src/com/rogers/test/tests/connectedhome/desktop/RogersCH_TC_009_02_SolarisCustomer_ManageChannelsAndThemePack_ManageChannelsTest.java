@@ -33,7 +33,9 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class RogersCH_TC_009_02_SolarisCustomer_ManageChannelsAndThemePack_ManageChannelsTest extends BaseTestClass {
 
 	@Test
-	public void checkManageChannelsAndThemePack_ManageChannelsFlow() {       
+	public void checkManageChannelsAndThemePack_ManageChannelsFlow() {  
+		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
@@ -61,15 +63,12 @@ public class RogersCH_TC_009_02_SolarisCustomer_ManageChannelsAndThemePack_Manag
 		reporter.reportLogWithScreenshot("Channel again added");
 		rogers_solaris_tv_channels_and_themepacks_page.clkConfirmChangesOnManageChannelsAndThemePacks();
 		reporter.reportLogWithScreenshot("Clicked in confirm changes on manage channels and theme packs");
-		
-		reporter.hardAssert(rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
-		reporter.reportLogWithScreenshot("Launched the order review page");
-		
+	
 		reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
 		rogers_order_review_page.clkAcceptenceCheckboxUpdate();
 		reporter.reportLogWithScreenshot("Agreement details");
 		rogers_order_review_page.clkSubmitUpdate();
-		reporter.hardAssert(rogers_order_confirmation_page.verifyOrderSuccess(),"Update order completed","Update order Failed");
+        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
 		reporter.reportLogWithScreenshot("Launched the Confirmation page");
     	}
 

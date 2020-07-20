@@ -38,10 +38,9 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/tv']")
 	WebElement lnkDTV;
 
-	@FindBy(xpath = "//a[@href='https://www.rogers.com/web/consumer/internet/offers']")
+	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/web/consumer/ignite-bundles/tv-internet']")
 	WebElement lnkIgniteTV;
-	//li[@class='dds_o-headerNavDropdown__item']/a[@href='/web/consumer/ignite-bundles/tv-internet']
-	
+		
 	@FindBy(xpath = "//li[@class='dds_o-mobileNavDropdown__item']//a[@href='/web/consumer/ignite-bundles/tv-internet']")
 	WebElement lnkgniteTVMobile;	
 	
@@ -252,8 +251,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkShop() {
-		//reusableActions.staticWait(30000);
-		reusableActions.getWhenReady(btnShop, 90).click();				
+		reusableActions.getWhenReady(btnShop, 120).click();				
 	}
 	
 	/**
