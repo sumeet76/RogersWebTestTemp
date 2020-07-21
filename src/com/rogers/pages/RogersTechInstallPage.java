@@ -1,7 +1,5 @@
 package com.rogers.pages;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -360,7 +358,6 @@ public class RogersTechInstallPage extends BasePageClass {
 	public void selTechInstalStartDate() {
 		reusableActions.waitForElementVisibility(imgStartingTechInstallSlot,180); 
 		reusableActions.getWhenReady(imgStartingTechInstallSlot, 20).click();
-		DateFormat dform = new SimpleDateFormat("dd-MM-yyyy");
 		Calendar calendar = Calendar.getInstance();
 		int intDate = calendar.get(Calendar.DATE);
 		int iDate = intDate + 10; 
