@@ -58,14 +58,14 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	WebElement txtContainerCVV;
 	
 	@FindAll({
-		@FindBy(xpath = "//input[@id='ds-form-input-id-41']"),
-		@FindBy(xpath = "//input[@id='ds-form-input-id-42']")
+		@FindBy(xpath = "//select[@id='ds-form-input-id-41']"),
+		@FindBy(xpath = "//select[@id='ds-form-input-id-42']")
 	})
 	WebElement ddlExpiryMonth;
 
 	@FindAll({
-		@FindBy(xpath = "//input[@id='ds-form-input-id-42']"),
-		@FindBy(xpath = "//input[@id='ds-form-input-id-43']")
+		@FindBy(xpath = "//select[@id='ds-form-input-id-42']"),
+		@FindBy(xpath = "//select[@id='ds-form-input-id-43']")
 	})
 	WebElement ddlExpiryYear;
 	
@@ -178,7 +178,7 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 */
 	public void selectExpiryMonth() {
 		String strMM = FormFiller.generateMonth();
-		reusableActions.getWhenReady(ddlExpiryMonth,90);
+		reusableActions.getWhenReady(ddlExpiryMonth,30);
 		reusableActions.selectWhenReadyByVisibleText(ddlExpiryMonth, strMM);
 	}
 
@@ -188,7 +188,7 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 */
 	public void selectExpiryYear() {
 		String strYYYY = FormFiller.generateExpiryYear();
-		reusableActions.getWhenReady(ddlExpiryYear,90);
+		reusableActions.getWhenReady(ddlExpiryYear,30);
 		reusableActions.selectWhenReadyByVisibleText(ddlExpiryYear, strYYYY);
 	}
 
