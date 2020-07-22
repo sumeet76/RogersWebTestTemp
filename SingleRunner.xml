@@ -11,9 +11,9 @@
 			class-name="com.rogers.test.listeners.AnnotationTransformer" />
 	</listeners>	
 
-<test name="RogersSS_TC_01_FDM_AssignDMRoleViaOverlayForFirstTimeLogin" enabled="true">
+<test name="RogersSS_TC_050_ChangeIDForSECustomerTest" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_01_FDM_AssignDMRoleViaOverlayForFirstTimeLogin"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_050_ChangeIDForSECustomerTest"></class>
 </classes>          																					
 </test>
 
