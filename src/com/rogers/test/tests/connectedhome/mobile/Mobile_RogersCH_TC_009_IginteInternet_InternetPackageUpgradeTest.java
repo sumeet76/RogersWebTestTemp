@@ -52,8 +52,6 @@ public class Mobile_RogersCH_TC_009_IginteInternet_InternetPackageUpgradeTest ex
         rogers_login_page.setPasswordIFrame(TestDataHandler.solarisInternetAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         rogers_login_page.clkSignInIFrame();
-        reporter.reportLogWithScreenshot("Skip popup");
-        rogers_login_page.clkSkipIFrame();
     	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
