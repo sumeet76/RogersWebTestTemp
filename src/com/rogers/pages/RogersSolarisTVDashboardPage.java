@@ -406,8 +406,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * Click the cross button to cancel the channel 
 	 * @author chinnarao.vattam
 	 */
-	public void clkOutChannelOne() {
-		reusableActions.clickWhenReady(btnSelectChannelOne, 120);
+	public void clkOutChannelOne() {		
+		reusableActions.getWhenReady(btnSelectChannelOne, 150).click();
 	}
 	
 	/**

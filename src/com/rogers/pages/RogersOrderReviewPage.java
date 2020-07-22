@@ -204,11 +204,14 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkAcceptenceCheckboxUpdateInternet() {
-		reusableActions.isElementVisible(lnkAgreementToEndExistingCustomer, 50);
-		reusableActions.scrollToElement(lnkAgreementToEndExistingCustomer);	
-		reusableActions.staticWait(4000);		
+		reusableActions.isElementVisible(lnkAgreementPrivacyPolicy, 120);
+		reusableActions.getWhenReady(lnkAgreementPrivacyPolicy, 30).click();		
+		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 30).sendKeys(Keys.PAGE_DOWN);
+		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);	
+		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);	
+		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);	
+		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);	
 		reusableActions.getWhenReady(clkChangeAcceptCheckboxUpdateInternet, 90).click();
-		reusableActions.staticWait(4000);
 	}
 	/**
 	 * Click on the Consent check box on the order review page
@@ -220,7 +223,8 @@ public class RogersOrderReviewPage extends BasePageClass {
 		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 30).sendKeys(Keys.PAGE_DOWN);
 		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);	
 		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);	
-		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);		
+		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);	
+		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);	
 		reusableActions.getWhenReady(clkChangeAcceptCheckbox, 90).click();
 	}
 	

@@ -65,14 +65,14 @@ public class RogersCH_TC_006_IginteInternet_OldConstructor_ExistingSolarisChange
         reporter.reportLogWithScreenshot("Launched the Interent packages page");
         rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.solarisInternetOldConstructor.getAccountDetails().getUpgradePlanEn(),TestDataHandler.solarisInternetOldConstructor.getAccountDetails().getUpgradePlanFr());
         reporter.reportLogWithScreenshot("Launched the agreement page"); 
-        reporter.hardAssert(rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
+        reporter.hardAssert(rogers_order_review_page.verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
         reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
         rogers_order_review_page.clkAcceptenceCheckboxUpdateInternet();
         reporter.reportLogWithScreenshot("Agreement details");
         rogers_order_review_page.clkSubmitUpdateInternet();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        //reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");                             
+        reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmationNew(),"Update order completed","Update order Failed");                             
         reporter.reportLogWithScreenshot("Verified the Confirmation page");
     	}
 
@@ -85,7 +85,7 @@ public class RogersCH_TC_006_IginteInternet_OldConstructor_ExistingSolarisChange
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 
