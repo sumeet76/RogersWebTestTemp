@@ -30,6 +30,8 @@ public class RogersBFA_TC10_HUPOnAdditonalLine_Test extends BaseTestClass {
         rogers_login_page.setPasswordIFrame(TestDataHandler.testCase10.getPassword());
         reporter.reportLogWithScreenshot("Rogers Login Page");
         rogers_login_page.clkSignInIFrame();
+        reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
+        rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
         reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");

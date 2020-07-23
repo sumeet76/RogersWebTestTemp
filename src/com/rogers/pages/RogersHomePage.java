@@ -1,5 +1,7 @@
 package com.rogers.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -174,6 +176,9 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//button[@class='btn btn-lg btn-red']")
 	WebElement btnAddNow;
 	
+	@FindBy(xpath = "//div[@class='subscription-detail']")
+	List<WebElement> linkAddSecondLine;
+	
 	@FindBy(xpath = "//div[@class='line-icon line-shared-icon']")
 	WebElement btnToSharedPlan;
 	
@@ -188,6 +193,14 @@ public class RogersHomePage extends BasePageClass {
 	
 	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet at your address']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']")
 	WebElement lnkInternetAvailability;
+	
+	/**
+	 * Click on add link to add new line
+	 * @author Saurav.Goyal
+	 */
+	public void clkAddSecondLine() {
+		reusableActions.clickWhenVisible(linkAddSecondLine.get(linkAddSecondLine.size()-1) , 30);
+	}
 	
 	/**
 	 * click button add device to a shared plan

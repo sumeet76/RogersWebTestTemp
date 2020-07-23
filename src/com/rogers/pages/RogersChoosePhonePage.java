@@ -151,7 +151,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 		for(WebElement element: deviceModal) {
 			if(reusableActions.isElementVisible(element , 30))
 				try {
-					reusableActions.isElementVisible(element.findElement(By.xpath("//div[contains(@class,'button') and (@res='details_devicemodel' or @res='upgrade')]")));
+					reusableActions.isElementVisible(element.findElement(By.xpath("//div[contains(@class,'button') and (@res='details_devicemodel' or @res='upgrade' or @res='_add')]")));
 					detailButtonFlag = true;
 					//reusableActions.isElementVisible(element.findElement(By.xpath("//section[@class='phoneModel']//span[@res='device_eligible']")));
 					reusableActions.isElementVisible(element.findElement(By.xpath("//span[@class='-messageFont']")));

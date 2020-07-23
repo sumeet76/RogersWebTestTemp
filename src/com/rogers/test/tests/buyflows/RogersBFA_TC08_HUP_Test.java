@@ -35,12 +35,14 @@ public class RogersBFA_TC08_HUP_Test extends BaseTestClass {
     public void hupFlowTest() {
 		reporter.reportLogWithScreenshot("Rogers Home Page");
 		rogers_home_page.clkSignIn();
-        rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(TestDataHandler.testCase8.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.testCase8.getPassword());
-        reporter.reportLogWithScreenshot("Rogers Login Page");
-        rogers_login_page.clkSignInIFrame();
-        rogers_login_page.switchOutOfSignInIFrame();
+		rogers_login_page.switchToSignInIFrame();
+		rogers_login_page.setUsernameIFrame(TestDataHandler.testCase8.getUsername());
+		rogers_login_page.setPasswordIFrame(TestDataHandler.testCase8.getPassword());
+		reporter.reportLogWithScreenshot("Rogers Login Page");
+		rogers_login_page.clkSignInIFrame();
+		reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
+		rogers_login_page.clkSkipIFrame();
+		rogers_login_page.switchOutOfSignInIFrame();
         reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");
         reporter.hardAssert(rogers_account_overview_page.verifyAndClickWirelessCTN(TestDataHandler.testCase8.getCtn()),"CTN Found","CTN Not Found");
