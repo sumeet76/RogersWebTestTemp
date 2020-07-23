@@ -408,7 +408,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//ancestor::div[contains(@class,'postpaid-addons')]//div[@class='addon-description' or @class='addon-description ng-star-inserted']")
 	List<WebElement> lstMyPlanAddOns;
 
-	@FindBy(xpath = "//a[@title='Change the Data Manager for this account' or @title='Change the Data Manager for this account']")
+	@FindBy(xpath = "//a[@title='Change the Data Manager for this account' or @title='Change the Data Manager for this account']//span[contains(text(),'Add')]")
 	WebElement btnAddDataManager;
 
 	@FindBy(xpath = "//p[text()='Choose a Data Manager' or text()='Choisir un gestionnaire de données']")
@@ -1269,11 +1269,15 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyLiveChatOverlayOpened() {	
-	  /*if(reusableActions.isElementVisible(getDriver().findElement(By.xpath("//iframe[@id='va-iframe']"))))
+	  if(reusableActions.isElementVisible(getDriver().findElement(By.xpath("//iframe[@id='va-iframe']"))))
 		{
 		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(getDriver().findElement(By.xpath("//iframe[@id='va-iframe']")), 20);
-		} */
 		return reusableActions.isElementVisible(headerLiveChat, 30);
+		}else
+		{
+			return reusableActions.isElementVisible(headerLiveChat, 30);
+		}
+		
 	} 
 	
 	/**

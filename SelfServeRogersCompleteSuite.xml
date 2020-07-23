@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Self Serve Rogers Tests SS" parallel="tests" thread-count="1">
-<parameter name="strBrowser" value="chrome"/>
+<parameter name="strBrowser" value="sauceedge"/>
 <parameter name="strLanguage" value="en"/>
 <parameter name="strType" value="seq"/>
 <listeners>
@@ -30,19 +30,19 @@
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_04_ValidateRecoverUsernameUsingSMSVerificationCode" enabled="true">
+<test name="RogersSS_TC_04_ValidateRecoverUsernameUsingSMSVerificationCode" enabled="false">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_04_ValidateRecoverUsernameUsingSMSVerificationCode"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_06_ValidateRecoverPasswordUsingSMSVerificationCode" enabled="true">
+<test name="RogersSS_TC_06_ValidateRecoverPasswordUsingSMSVerificationCode" enabled="false">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_06_ValidateRecoverPasswordUsingSMSVerificationCode"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_08_ValidateRecoverBothUsernameAndPasswordUsingTextMessageWhileEnteringTheAccountNumber" enabled="true">
+<test name="RogersSS_TC_08_ValidateRecoverBothUsernameAndPasswordUsingTextMessageWhileEnteringTheAccountNumber" enabled="false">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_08_ValidateRecoverBothUsernameAndPasswordUsingTextMessageWhileEnteringTheAccountNumber"></class>
 </classes>          																					
@@ -61,7 +61,7 @@
 </classes>          																					
 </test>	
 
-<test name="RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage" enabled="true">
+<test name="RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage" enabled="false">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage"></class>
 </classes>          																					
@@ -153,7 +153,7 @@
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_041_AO_ValidateCHaccountBadge_IginteTV"></class>
 </classes>          																					
 </test>	
-<test name="RogersSS_TC_042_AO_ValidateCHaccountBadge_IginteInternet" enabled="false	">
+<test name="RogersSS_TC_042_AO_ValidateCHaccountBadge_IginteInternet" enabled="true">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_042_AO_ValidateCHaccountBadge_IginteInternet"></class>
 </classes>          																					
@@ -171,7 +171,7 @@
 </classes>          																					
 </test>	
 
-<test name="RogersSS_TC_045_AO_ValidateCHAccountBadge_LegacyInternet" enabled="true">
+<test name="RogersSS_TC_045_AO_ValidateCHAccountBadge_LegacyInternet" enabled="false">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_045_AO_ValidateCHAccountBadge_LegacyInternet"></class>
 </classes>          																					
@@ -183,7 +183,7 @@
 </classes>          																					
 </test>	
 
-<test name="RogersSS_TC_047_AO_ValidateCHaccountBadge_Tupelo" enabled="false">
+<test name="RogersSS_TC_047_AO_ValidateCHaccountBadge_Tupelo" enabled="true">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_047_AO_ValidateCHaccountBadge_Tupelo"></class>
 </classes>          																					
@@ -215,7 +215,7 @@
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_054_ValidateUsageDetails_postpaid_NSEwUnlimitedTalkTextOnlyPlan" enabled="true">
+<test name="RogersSS_TC_054_ValidateUsageDetails_postpaid_NSEwUnlimitedTalkTextOnlyPlan" enabled="false">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_054_ValidateUsageDetails_postpaid_NSEwUnlimitedTalkTextOnlyPlan"></class>
 </classes>          																					
@@ -233,13 +233,13 @@
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_057_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDataUnlimitedTalkTextPlan" enabled="false">
+<test name="RogersSS_TC_057_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDataUnlimitedTalkTextPlan" enabled="true">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_057_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDataUnlimitedTalkTextPlan"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_058_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDataLimitedTalkTextPlan" enabled="false">
+<test name="RogersSS_TC_058_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDataLimitedTalkTextPlan" enabled="true">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_058_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDataLimitedTalkTextPlan"></class>
 </classes>          																					
@@ -257,7 +257,7 @@
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE" enabled="true">
+<test name="RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE" enabled="false">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE"></class>
 </classes>          																					
@@ -282,13 +282,13 @@
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE" enabled="true">
+<test name="RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE" enabled="false">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_070_ValidateWirelessProfileAlreadyExistsTest" enabled="false">
+<test name="RogersSS_TC_070_ValidateWirelessProfileAlreadyExistsTest" enabled="true">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_070_ValidateWirelessProfileAlreadyExistsTest"></class>
 </classes>          																					
@@ -313,7 +313,7 @@
 </test>
 
 
-<test name="RogersSS_TC_074_ValidateLiveChatLinkInChangeCallerIdLimitExceedModal_SEInfinite" enabled="true">
+<test name="RogersSS_TC_074_ValidateLiveChatLinkInChangeCallerIdLimitExceedModal_SEInfinite" enabled="false">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_074_ValidateLiveChatLinkInChangeCallerIdLimitExceedModal_SEInfinite"></class>
 </classes>          																					
@@ -325,19 +325,19 @@
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_077_ValidateSupportSectionInWirelessDasboard_NSEInfinite" enabled="true">
+<test name="RogersSS_TC_077_ValidateSupportSectionInWirelessDasboard_NSEInfinite" enabled="false">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_077_ValidateSupportSectionInWirelessDasboard_NSEInfinite"></class>
 </classes>          																					
 </test>
 			
-<test name="RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhenCxHasMoreThan5CTN_SE" enabled="true">
+<test name="RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhenCxHasMoreThan5CTN_SE" enabled="false">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhenCxHasMoreThan5CTN_SE"></class>
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs" enabled="true">
+<test name="RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs" enabled="false">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs"></class>
 </classes>          																					
@@ -350,7 +350,7 @@
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC80_ValidateDataUsageDisplayInOveragePayPerUsePostpaidNonSEplan" enabled="true">
+<test name="RogersSS_TC80_ValidateDataUsageDisplayInOveragePayPerUsePostpaidNonSEplan" enabled="false">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC80_ValidateDataUsageDisplayInOveragePayPerUsePostpaidNonSEplan"></class>
 </classes>          																					
@@ -362,14 +362,14 @@
 </classes>          																					
 </test>
 
-<test name="RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE" enabled="false">
+<test name="RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE" enabled="true">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE"></class>
 </classes>          																					
 </test>
 
 
-<test name="RogersSS_TC_091_ValidateDeeplinkForNotLoggedInCustomer_NSEInfinite" enabled="false">
+<test name="RogersSS_TC_091_ValidateDeeplinkForNotLoggedInCustomer_NSEInfinite" enabled="true">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_091_ValidateDeeplinkForNotLoggedInCustomer_NSEInfinite"></class>
 </classes>          																					
@@ -387,6 +387,33 @@
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_093_AO_ValidateAutomaticPaymentsCreditCardSEInfinite"></class>
 </classes>          																					
 </test>
+
+
+<test name="RogersSS_TC_01_FDM_AssignDMRoleViaOverlayForFirstTimeLogin" enabled="true" >
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_01_FDM_AssignDMRoleViaOverlayForFirstTimeLogin"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC_03_FDM_ReassignDataManagerRole" enabled="false">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_03_FDM_ReassignDataManagerRole"></class>
+</classes>          																					
+</test>
+
+
+<test name="RogersSS_TC_04_05_FDM_BlockAndUnblockDataUsageForTheCTN" enabled="false">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_04_05_FDM_BlockAndUnblockDataUsageForTheCTN"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC06_TC10_FDM_CtnDashboardWithAccountDetails_GUI" enabled="false">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC06_TC10_FDM_CtnDashboardWithAccountDetails_GUI"></class>
+</classes>          																					
+</test>  
+		
 
 
 <test thread-count="1" name="MobileTest" enabled="false" >

@@ -1,12 +1,12 @@
    # Account Details, Data only plan 
 ---
-username: RogerSS720r11@mailinator.com
-password: DigiAuto123
+username: test.account720QA7July29thSet1@yahoo.com
+password: DigiAuto@123
 accountDetails:
-   ban: 934663907
-   ctn: 1010001239
+   ban: 934676099
+   ctn: 1010001910
    postalcode: M4L2Z8   
    recoveryNumber: 9876543210
-   contactemail: RogerSS720r11@mailinator.com
+   contactemail: test.account720QA7July29thSet1@yahoo.com
    newpassword: rogers123
 ...

@@ -11,11 +11,11 @@
 			class-name="com.rogers.test.listeners.AnnotationTransformer" />
 	</listeners>	
 
-
-
-<test name="RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE_AddData" enabled="false">
+<test name="RogersSS_TC_050_ChangeIDForSECustomerTest" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE_AddData"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_050_ChangeIDForSECustomerTest"></class>
 </classes>          																					
-</test>			 
-</suite>	
+</test>
+
+			 
+</suite>
