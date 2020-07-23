@@ -40,10 +40,11 @@ public class Mobile_RogersCH_TC_011_IginteTV_TVPackageUpgradeTest extends BaseTe
 
     @Test
     public void checkSolarisTVPackageUpgradeMobile() {
+		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
-    	rogers_home_page.clkSignInMobile();
-    	
+    	rogers_home_page.clkSignInMobile();    	
         rogers_login_page.switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         rogers_login_page.setUsernameIFrame(TestDataHandler.solarisTVAccountForUpgrade.getUsername());
@@ -56,7 +57,8 @@ public class Mobile_RogersCH_TC_011_IginteTV_TVPackageUpgradeTest extends BaseTe
         rogers_login_page.switchOutOfSignInIFrame();
         rogers_account_overview_page.selectAccount(TestDataHandler.solarisTVAccountForUpgrade.accountDetails.getBan());
     	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        reporter.reportLogWithScreenshot("Launched the Account Page");               
+        reporter.reportLogWithScreenshot("Launched the Account Page");
+        
         rogers_solaris_tv_dashboard_page.clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         rogers_solaris_tv_dashboard_page.clkChangeTVPackage();

@@ -168,7 +168,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyContatUSInternetDowngarde() {
-		reusableActions.waitForElementInvisibility(popupLoadingFingersInternet, 60);		
+		reusableActions.waitForElementInvisibility(popupLoadingFingersInternet, 90);		
 		return reusableActions.isElementVisible(popupContatUSInternetDowngarde, 20);
 	}
 	

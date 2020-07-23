@@ -72,8 +72,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOrderConfirmation() {
-		reusableActions.waitForElementInvisibility(popupLoadingFingersInternet, 180);
-		return reusableActions.isElementVisible(infoChangeOrderConfirmation, 60);
+		return reusableActions.isElementVisible(infoChangeOrderConfirmation, 180);
 	}
 	
 	/**
@@ -82,7 +81,6 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOrderConfirmationNew() {
-		reusableActions.waitForElementInvisibility(popupLoadingFingersInternet, 180);
 		return reusableActions.isElementVisible(infoChangeOrderConfirmationnew, 60);
 	}
 	/**

@@ -1,7 +1,5 @@
 package com.rogers.pages;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -219,6 +217,12 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selSelffinstallDateAndTime() {
+		if(reusableActions.isElementVisible(rdoTechInstallSlot, 90))
+		{
+		reusableActions.getWhenReady(rdoTechInstallSlot, 30).click();	
+		}
+		else
+		{	
 		reusableActions.waitForElementVisibility(clkCalendarIcon,20); 
 		reusableActions.getWhenReady(clkCalendarIcon, 20).click();
 		Calendar calendar = Calendar.getInstance();
@@ -232,6 +236,9 @@ public class RogersTechInstallPage extends BasePageClass {
 		String strStartDate= Integer.toString(startDate);
 		By selStartDate = By.xpath("//span[contains(text(),'" + strStartDate + "') and @class='owl-dt-calendar-cell-content']");
 		reusableActions.getWhenReady(selStartDate, 20).click();
+		reusableActions.waitForElementVisibility(rdoTechInstallSlot, 180);
+		reusableActions.getWhenReady(rdoTechInstallSlot, 90).click();
+		}
 	}
 	
 	/**
@@ -351,7 +358,6 @@ public class RogersTechInstallPage extends BasePageClass {
 	public void selTechInstalStartDate() {
 		reusableActions.waitForElementVisibility(imgStartingTechInstallSlot,180); 
 		reusableActions.getWhenReady(imgStartingTechInstallSlot, 20).click();
-		DateFormat dform = new SimpleDateFormat("dd-MM-yyyy");
 		Calendar calendar = Calendar.getInstance();
 		int intDate = calendar.get(Calendar.DATE);
 		int iDate = intDate + 10; 
