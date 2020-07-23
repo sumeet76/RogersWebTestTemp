@@ -1269,11 +1269,15 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyLiveChatOverlayOpened() {	
-	  /*if(reusableActions.isElementVisible(getDriver().findElement(By.xpath("//iframe[@id='va-iframe']"))))
+	  if(reusableActions.isElementVisible(getDriver().findElement(By.xpath("//iframe[@id='va-iframe']"))))
 		{
 		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(getDriver().findElement(By.xpath("//iframe[@id='va-iframe']")), 20);
-		} */
 		return reusableActions.isElementVisible(headerLiveChat, 30);
+		}else
+		{
+			return reusableActions.isElementVisible(headerLiveChat, 30);
+		}
+		
 	} 
 	
 	/**
