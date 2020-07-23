@@ -31,7 +31,6 @@ public class RogersBFA_TC09_PPC_Test extends BaseTestClass {
 
 	@Test
     public void ppcFlowTest() {
-		//getDriver().findElement(By.xpath("//a[@href='/consumer/wireless']")).click();
 		reporter.reportLogWithScreenshot("Home Page");
 		rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();

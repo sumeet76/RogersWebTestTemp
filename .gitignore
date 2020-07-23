@@ -14,3 +14,4 @@ rogers_property.dat
 msedgedriver
 *.orig
 .gradle
+.idea/

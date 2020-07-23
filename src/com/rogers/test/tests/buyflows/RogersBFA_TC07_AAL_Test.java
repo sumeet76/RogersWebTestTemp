@@ -36,7 +36,6 @@ public class RogersBFA_TC07_AAL_Test extends BaseTestClass {
 
 	@Test
 	public void aalFlowTest() {
-		//getDriver().findElement(By.xpath("//a[@href='/consumer/wireless']")).click();
 		reporter.reportLogWithScreenshot("Home Page");
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();

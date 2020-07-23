@@ -33,7 +33,6 @@ public class RogersBFA_TC08_HUP_Test extends BaseTestClass {
 
 	@Test
     public void hupFlowTest() {
-		//getDriver().findElement(By.xpath("//a[@href='/consumer/wireless']")).click();
 		reporter.reportLogWithScreenshot("Rogers Home Page");
 		rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();
