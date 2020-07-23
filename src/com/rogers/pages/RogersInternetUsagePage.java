@@ -11,30 +11,33 @@ public class RogersInternetUsagePage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//ins[@translate='global.label.dailyBreakdown']")
+	@FindBy(xpath = "//x-chartist[@class='daily-usage-chart']")
 	WebElement infoDailyBreakdown;
 
-	@FindBy(xpath = "//table[@class='table ute-table table-centred ng-table']")
+	@FindBy(xpath = "//table[@class='usage-table__table ng-star-inserted']")
 	WebElement tblDailyBreakdown;
 
 	@FindBy(xpath = "//table[@class='table  table-centred ng-table']")
 	WebElement tblDailyBreakdownMobile;
 		
-	@FindBy(xpath = "//ins[@translate='global.label.monthlyUsage']")
+	@FindBy(xpath = "//h2[@id='internetUsage-monthly-tab']")
 	WebElement lnkMonthlyUsage;
 
-	@FindBy(xpath = "//ins[@translate='global.label.monthlyBreakdown']")
+	@FindBy(xpath = "//x-chartist[@class='monthlyUsage']")
 	WebElement infoMonthlyBreakdown;
 	
-	@FindBy(xpath = "//table[@class='table ute-table table-centred table-no-filter ng-table']")
+	@FindBy(xpath = "//table[@class='usage-table__table ng-star-inserted']")
 	WebElement tblMonthlyBreakdown;
 	
 	@FindBy(xpath = "//table[@class='table  table-centred table-no-filter ng-table']")
 	WebElement tblMonthlyBreakdownMobile;
 
-	@FindBy(xpath = "//ins[@translate='global.label.usageAlerts']")
+	@FindBy(xpath = "//h2[@id='internetUsage-alerts-tab']")
 	WebElement btnUsageAlerts;
 
+	@FindBy(xpath = "//div[@class='internet-usage-alerts-component']")
+	WebElement infoUsageAlerts;
+	
 
 	/**
 	 * Verify the Internet Daily Breakdown table heading text on solaris Internet usage page
@@ -115,6 +118,6 @@ public class RogersInternetUsagePage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean  verifyUsageAlerts() {		
-		return reusableActions.isElementVisible(btnUsageAlerts,20);
+		return reusableActions.isElementVisible(infoUsageAlerts,20);
 	}
 }

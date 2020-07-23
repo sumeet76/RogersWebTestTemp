@@ -39,7 +39,10 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class RogersCH_TC_011_IginteTV_TVPackageUpgradeTest extends BaseTestClass {
 
     @Test
-    public void checkSolarisTVPackageUpgrade() {
+    public void checkSolarisTVPackageUpgrade() 
+    {
+		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();
@@ -48,17 +51,12 @@ public class RogersCH_TC_011_IginteTV_TVPackageUpgradeTest extends BaseTestClass
         rogers_login_page.setPasswordIFrame(TestDataHandler.solarisTVAccountForUpgrade.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         rogers_login_page.clkSignInIFrame();
-    	if(rogers_login_page.verifyLoginFailMsgIframe())
-    	{
-    		reporter.reportLogFailWithScreenshot("Login Failed");			
-    	}
-    	else
-    	{
+    	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
         rogers_account_overview_page.selectAccount(TestDataHandler.solarisTVAccountForUpgrade.accountDetails.getBan());
-        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+    	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");               
         rogers_solaris_tv_dashboard_page.clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
@@ -73,10 +71,7 @@ public class RogersCH_TC_011_IginteTV_TVPackageUpgradeTest extends BaseTestClass
         reporter.reportLogWithScreenshot("Launched the 4K enquiry popup");
         rogers_solaris_tv_channels_and_themepacks_page.clkYesIHave4K();  
         reporter.reportLogWithScreenshot("Launched the 4K Content popup");
-        rogers_solaris_tv_channels_and_themepacks_page.clk4KContent();
-    	reporter.hardAssert(rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
-		reporter.reportLogWithScreenshot("Launched the order review page");
-		
+        rogers_solaris_tv_channels_and_themepacks_page.clk4KContent();		
 		reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");;
         rogers_order_review_page.clkAcceptenceCheckboxUpdate();
         reporter.reportLogWithScreenshot("Agreement details");
@@ -85,7 +80,6 @@ public class RogersCH_TC_011_IginteTV_TVPackageUpgradeTest extends BaseTestClass
         reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
         reporter.reportLogWithScreenshot("Verified the Confirmation page");
     	}
-    }
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//login flow

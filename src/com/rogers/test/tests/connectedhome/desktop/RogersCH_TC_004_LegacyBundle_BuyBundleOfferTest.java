@@ -99,7 +99,7 @@ public class RogersCH_TC_004_LegacyBundle_BuyBundleOfferTest extends BaseTestCla
     	reporter.reportLogWithScreenshot("Consent Check Done");
     	rogers_order_summary_page.clkSubmit();  
     	reporter.reportLogWithScreenshot("order info");
-  	    reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created", "Order hasn't careted");
+  	    reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmationLegacy(),"Order has created", "Order hasn't careted");
     	}
     	else
     	{

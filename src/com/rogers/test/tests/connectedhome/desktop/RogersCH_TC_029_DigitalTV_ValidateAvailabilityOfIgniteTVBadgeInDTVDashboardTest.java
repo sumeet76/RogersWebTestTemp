@@ -42,17 +42,12 @@ public class RogersCH_TC_029_DigitalTV_ValidateAvailabilityOfIgniteTVBadgeInDTVD
 		rogers_login_page.setPasswordIFrame(TestDataHandler.digitalTVAccount.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
-    	if(rogers_login_page.verifyLoginFailMsgIframe())
-    	{
-    		reporter.reportLogFailWithScreenshot("Login Failed");			
-    	}
-    	else
-    	{
-        reporter.reportLogWithScreenshot("Skip popup");
-        rogers_login_page.clkSkipIFrame();
-        rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVAccount.accountDetails.getBan());
-        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+	    reporter.reportLogWithScreenshot("Skip popup");
+	    rogers_login_page.clkSkipIFrame();
+	    rogers_login_page.switchOutOfSignInIFrame();
+	    rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVAccount.accountDetails.getBan());
+		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
 		rogers_account_overview_page.clkTVBadge(TestDataHandler.rogersConfig.getBrowser());		
 
@@ -68,7 +63,6 @@ public class RogersCH_TC_029_DigitalTV_ValidateAvailabilityOfIgniteTVBadgeInDTVD
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 		reporter.hardAssert(rogers_home_page.verifyServiceability(),"Verifed the buy now functionality","Inginte TV buy option has failed");
 	}
-    	}
 
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})

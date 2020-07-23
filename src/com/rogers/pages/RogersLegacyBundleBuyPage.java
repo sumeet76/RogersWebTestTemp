@@ -76,14 +76,14 @@ public class RogersLegacyBundleBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkBuyOnline() {		
-			if (reusableActions.isElementVisible(btnBuyOnline,60))
+		if (reusableActions.isElementVisible(btnBuyOnline,60))
 			{
-				reusableActions.clickWhenReady(btnBuyOnline, 20);
-			}
+				reusableActions.getWhenReady(btnBuyOnline, 90).click();
+		}
 			else if (reusableActions.isElementVisible(popupMultipleAddress,30))
 			{
 				reusableActions.getWhenReady(btnOptionOneMultipleAddress, 30).click();
-				reusableActions.clickWhenReady(btnBuyOnline, 60);
+				reusableActions.getWhenReady(btnBuyOnline, 90).click();
 			} 		
 			else 		
 				throw new NoSuchElementException("Given Address dosen't have the service");	

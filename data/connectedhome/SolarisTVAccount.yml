@@ -1,12 +1,13 @@
 # Account Details 
 ---
 name: SolarisTVAccount
-username: Autodatar520ch82@yahoo.com     
+username: Autodatar720ch005@yahoo.com 
 password: DigiAuto@123
 accountDetails:
    type: TV
-   ban: 934265349
+   ban: 934642745
    downgradePlanEn: Ignite TV Starter
+   downgradePlanFr: Ignite TV Starter
    downgradeBundle: Select
    address:
      line1: 706-10 Lisa St

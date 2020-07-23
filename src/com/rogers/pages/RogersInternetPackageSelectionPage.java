@@ -40,7 +40,6 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	
 	@FindBy(xpath = "//button[@aria-label='Add Ignite Internet 500u to your cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']")
 	WebElement btnInternetPackage;
-	
 
 	/**
 	 * selects the Internet package if it visible and ready if not click on the next arrow to get the desired package

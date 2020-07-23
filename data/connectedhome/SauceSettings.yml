@@ -6,15 +6,15 @@ sauceOptions:
    maxDuration: 800
    commandTimeout: 600
    idleTimeout: 180
-   build: July 8th Agile Release -CHRogers
+   build: July 29th Agile Release -CHRogers
 mutableFireFoxCapabilities:  
-   platformVersion: Windows 10
+   platformName: Windows 10
    browserVersion: latest
 mutableChromeCapabilities:   
-   platformVersion: Windows 10
+   platformName: Windows 10
    browserVersion: latest
 mutableEdgeCapabilities:   
-   platformVersion: Windows 10
+   platformName: Windows 10
    browserVersion: latest   
 androidChromeCapabilities:
    platformName: Android

@@ -51,6 +51,10 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	@FindBy(xpath = "//button[@id='add-themepack-button']")
 	List<WebElement> addThemePackListOnManageChannelsAndThemePacks;
 	
+	@FindBy(xpath = "//h3[@class='header-1 font-regular margin-0' and contains(text(),'Classic TV & Movies')]/ancestor::div[@class='row theme-header']//button[@id='add-themepack-button']")
+	WebElement addThemePackClassicTVThemePacks;
+	
+	
 	@FindBy(xpath = "//button[@class='ute-btn-primary ute-md']")
 	WebElement yesContinueOnExistingChannelAlert;
 	
@@ -65,8 +69,9 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam	 
 	 */
 	public void clkAddButtonOnThemePackListOnManageChannelsAndThemePacks() {
-		reusableActions.waitForElementVisibility(addThemePackListOnManageChannelsAndThemePacks.get(0), 340);
-		reusableActions.getWhenReady(addThemePackListOnManageChannelsAndThemePacks.get(0), 60).click();
+/*		reusableActions.waitForElementVisibility(addThemePackListOnManageChannelsAndThemePacks.get(0), 340);
+		reusableActions.getWhenReady(addThemePackListOnManageChannelsAndThemePacks.get(0), 60).click();*/
+		reusableActions.getWhenReady(addThemePackClassicTVThemePacks, 240).click();		
 	}		
 	
 	/**
@@ -91,6 +96,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author Saurav.Goyal	 
 	 */
 	public void addChannel() {
+		reusableActions.staticWait(10000);
 		reusableActions.waitForElementVisibility(addParticularChannelToCart.get(0), 340);
 		reusableActions.getWhenReady(addParticularChannelToCart.get(0), 180).click();
 	}	

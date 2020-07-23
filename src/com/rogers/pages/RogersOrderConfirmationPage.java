@@ -24,8 +24,10 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	WebElement infoChangeOrderConfirmationnew;
 	
 	@FindBy(xpath = "//ins[@translate='global.message.orderConfirmationThanksV3']")
-	WebElement infoChangeOrderConfirmation;
+	WebElement infoChangeOrderConfirmation;	
 	
+	@FindBy(xpath = "//img[@src='/cms/rogers/page-specific/shop/ordersummary/thankyou/images/thankyou-badge-desktop.png']")
+	WebElement infoChangeOrderConfirmationLegacy;
 	
 	@FindBy(xpath = "//ins[@translate='global.message.orderConfirmationThanksV2']")
 	WebElement infoOrderConfirmation;
@@ -51,14 +53,26 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	@FindBy(xpath = "//ngx-smart-modal[@id='loadingModal']")
 	WebElement popupLoadingFingersciam;
 	
+	@FindBy(xpath = "//i[@class='li-loader']")
+	WebElement popupLoadingFingersInternet;	
+	
+	/**
+	 * Verify the the yellow banner with order success information
+	 * @return true if the page display the yellow banner with order success information , else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyOrderConfirmationLegacy() {
+		reusableActions.waitForElementVisibility(infoChangeOrderConfirmationLegacy,180);
+		return reusableActions.isElementVisible(infoChangeOrderConfirmationLegacy, 60);
+	}
+	
 	/**
 	 * Verify the the yellow banner with order success information
 	 * @return true if the page display the yellow banner with order success information , else false
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOrderConfirmation() {
-		reusableActions.waitForElementVisibility(infoChangeOrderConfirmation,180);
-		return reusableActions.isElementVisible(infoChangeOrderConfirmation, 60);
+		return reusableActions.isElementVisible(infoChangeOrderConfirmation, 180);
 	}
 	
 	/**
@@ -67,7 +81,6 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOrderConfirmationNew() {
-		reusableActions.waitForElementVisibility(infoChangeOrderConfirmationnew,180);
 		return reusableActions.isElementVisible(infoChangeOrderConfirmationnew, 60);
 	}
 	/**

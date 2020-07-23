@@ -40,28 +40,25 @@ public class Mobile_RogersCH_TC_011_IginteTV_TVPackageUpgradeTest extends BaseTe
 
     @Test
     public void checkSolarisTVPackageUpgradeMobile() {
+		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
-    	rogers_home_page.clkSignInMobile();
-    	
+    	rogers_home_page.clkSignInMobile();    	
         rogers_login_page.switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         rogers_login_page.setUsernameIFrame(TestDataHandler.solarisTVAccountForUpgrade.getUsername());
         rogers_login_page.setPasswordIFrame(TestDataHandler.solarisTVAccountForUpgrade.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         rogers_login_page.clkSignInIFrame();
-    	if(rogers_login_page.verifyLoginFailMsgIframe())
-    	{
-    		reporter.reportLogFailWithScreenshot("Login Failed");			
-    	}
-    	else
-    	{
+    	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
         rogers_account_overview_page.selectAccount(TestDataHandler.solarisTVAccountForUpgrade.accountDetails.getBan());
-        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
-        reporter.reportLogWithScreenshot("Launched the Account Page");               
+    	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+        reporter.reportLogWithScreenshot("Launched the Account Page");
+        
         rogers_solaris_tv_dashboard_page.clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         rogers_solaris_tv_dashboard_page.clkChangeTVPackage();
@@ -87,7 +84,6 @@ public class Mobile_RogersCH_TC_011_IginteTV_TVPackageUpgradeTest extends BaseTe
         reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
         reporter.reportLogWithScreenshot("Verified the Confirmation page");
     	}
-    }
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
