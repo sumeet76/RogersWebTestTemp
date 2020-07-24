@@ -54,7 +54,7 @@ public class RogersCH_TC_027_DigitalTV_TVPackageUpgradeTest extends BaseTestClas
 		rogers_account_overview_page.clkTVBadge();
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
 		rogers_digital_tv_dashboard_page.clkChangeMyPackage();
-		String strLanguage = TestDataHandler.rogersConfig.getLanguage();
+		String strLanguage = TestDataHandler.chConfig.getLanguage();
 		if (strLanguage.equals("en"))
 		{
 		reporter.reportLogWithScreenshot("Launched the TV package Page");
@@ -80,7 +80,7 @@ public class RogersCH_TC_027_DigitalTV_TVPackageUpgradeTest extends BaseTestClas
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
 	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.rogersConfig.getRogersURL(),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacylogin, method);
+		startSession(TestDataHandler.chConfig.getRogersURL(),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacylogin, method);
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 

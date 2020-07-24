@@ -49,7 +49,7 @@ public class RogersCH_TC_029_DigitalTV_ValidateAvailabilityOfIgniteTVBadgeInDTVD
 	    rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVAccount.accountDetails.getBan());
 		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.clkTVBadge(TestDataHandler.rogersConfig.getBrowser());		
+		rogers_account_overview_page.clkTVBadge(TestDataHandler.chConfig.getBrowser());		
 
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
 		reporter.softAssert(rogers_digital_tv_dashboard_page.verifyBuyNowIgnite(),"Verifed the buy now option","TV dashboard Verification for buy now option has failed");
@@ -68,7 +68,7 @@ public class RogersCH_TC_029_DigitalTV_ValidateAvailabilityOfIgniteTVBadgeInDTVD
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})
 	//login flow
 	public void beforeTest(String strBrowser, String strLanguage, String strGroupName,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.rogersConfig.getRogersURL(),  strBrowser,strLanguage,strGroupName, method);
+		startSession(TestDataHandler.chConfig.getRogersURL(),  strBrowser,strLanguage,strGroupName, method);
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 

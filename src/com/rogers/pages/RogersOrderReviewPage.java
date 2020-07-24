@@ -45,17 +45,15 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//li[@id='headingDetails4']//button[@class='button-link']")
 	WebElement lnkAgreementPrivacyPolicy;
 	
-	
-	@FindBy(xpath = "//label[@for='ds-checkbox-id-3']")
-	WebElement clkChangeAcceptCheckbox;
+    @FindAll(
+        	{@FindBy(xpath = "//label[@for='ds-checkbox-id-3']"),
+        		@FindBy(xpath = "//label[@for='ds-checkbox-id-1']")})
+		WebElement clkChangeAcceptCheckbox;
 	
 	@FindBy(xpath = "//label[@for='ds-checkbox-id-0']")
 	WebElement clkChangeAcceptCheckboxMigration;
 	
 
-	@FindBy(xpath = "//label[@for='ds-checkbox-id-1']")
-	WebElement clkChangeAcceptCheckboxExistingCustomer;
-	
 	@FindBy(xpath = "//span[@translate='global.cta.submit']")
 	WebElement clkSubmit;
 	
@@ -191,12 +189,10 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * Click on the Consent check box on the order review page
 	 * @author chinnarao.vattam
 	 */
-	public void clkAcceptenceCheckboxUpdate() {
+	public void clkAcceptenceCheckboxUpdate() {		
 		reusableActions.isElementVisible(lnkAgreementToEndExistingCustomer, 50);
-		reusableActions.scrollToElement(lnkAgreementToEndExistingCustomer);	
-		reusableActions.staticWait(4000);		
+		reusableActions.scrollToElement(lnkAgreementToEndExistingCustomer);		
 		reusableActions.getWhenReady(clkChangeAcceptCheckboxUpdate, 90).click();
-		reusableActions.staticWait(4000);
 	}
 
 	/**
@@ -238,16 +234,6 @@ public class RogersOrderReviewPage extends BasePageClass {
 		reusableActions.getWhenReady(clkChangeAcceptCheckboxMigration, 90).click();
 	}
 	
-	/**
-	 * Click on the Consent check box on the order review page
-	 * @author chinnarao.vattam
-	 */
-	public void clkAcceptenceCheckboxExistingCustomer() {
-		reusableActions.isElementVisible(lnkAgreementToEnd, 50);
-		reusableActions.scrollToElement(lnkAgreementToEnd, 0,100);	
-		reusableActions.getWhenReady(clkChangeAcceptCheckboxExistingCustomer, 90).click();
-	}
-
 	/**
 	 * Click on the Submit button on the order review page
 	 * @author chinnarao.vattam

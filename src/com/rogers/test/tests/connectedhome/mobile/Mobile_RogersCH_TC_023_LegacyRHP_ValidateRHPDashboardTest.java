@@ -49,7 +49,7 @@ public class Mobile_RogersCH_TC_023_LegacyRHP_ValidateRHPDashboardTest extends B
 	    rogers_account_overview_page.selectAccount(TestDataHandler.legacyRHP.accountDetails.getBan());
 		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.clkRHPBadge(TestDataHandler.rogersConfig.getBrowser());
+		rogers_account_overview_page.clkRHPBadge(TestDataHandler.chConfig.getBrowser());
 		reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");
 		reporter.hardAssert(rogers_account_overview_page.verifyRHPBanner(),"Verifed the RHP dashboard","RHP dashboard Verification has failed");
 		reporter.hardAssert(rogers_account_overview_page.verfyContactUsToManageFeaturess(),"Contact Us To Manage Featuress link has present on RHP dashboard","Contact Us To Manage Featuress link has not present on RHP dashboard");		
@@ -60,7 +60,7 @@ public class Mobile_RogersCH_TC_023_LegacyRHP_ValidateRHPDashboardTest extends B
 	//login flow
 	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.rogersConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacylogin, method);
+		startSession(TestDataHandler.chConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacylogin, method);
 	}
 
 

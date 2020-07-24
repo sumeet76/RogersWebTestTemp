@@ -57,15 +57,12 @@ public class RogersCH_TC_001_Regression_4Plus1AddThemepacksfromTVDashboardPage e
 		reporter.reportLogWithScreenshot("Clicked on Manage channels and theme packs");
 		rogers_solaris_tv_channels_and_themepacks_page.clkThemePacks();
 		reporter.reportLogWithScreenshot("Clicked on themepack tab");
-		rogers_solaris_tv_channels_and_themepacks_page.clkAddButtonOnThemePackListOnManageChannelsAndThemePacks();
+		rogers_solaris_tv_channels_and_themepacks_page.clkAddButtonOnThemePackListOnManageChannelsAndThemePacks4plus1();
 		reporter.reportLogWithScreenshot("Clicked on confirm button");
 		rogers_solaris_tv_channels_and_themepacks_page.clkContinueOnExistingChannelAlertWindow(); 
 		reporter.reportLogWithScreenshot("ThemePack added");    
 		rogers_solaris_tv_channels_and_themepacks_page.clkConfirmChangesOnManageChannelsAndThemePacks();
 		reporter.reportLogWithScreenshot("Clicked in confirm changes on manage channels and theme packs");
-
-		reporter.hardAssert( rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
-		reporter.reportLogWithScreenshot("Launched the order review page");
 
 		reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
 		rogers_order_review_page.clkAcceptenceCheckboxUpdate();
@@ -77,7 +74,7 @@ public class RogersCH_TC_001_Regression_4Plus1AddThemepacksfromTVDashboardPage e
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
 	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.rogersConfig.getRogersURL(),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
+		startSession(TestDataHandler.chConfig.getRogersURL(),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 

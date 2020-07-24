@@ -73,8 +73,8 @@ public class CaptchaBypassHandlers {
 	public void captchaBypassURLLegacyLoginFlows(String strUrl, String strLanguage) throws IOException {
 		driver.get(strUrl+"/web/totes/api/v1/bypassCaptchaAuth");		
 		driver.get(strUrl+"?setLanguage="+ strLanguage );
-		String strCookieUserName= TestDataHandler.rogersConfig.getCookieUserName();
-		String strCookieUserPassword= TestDataHandler.rogersConfig.getCookieUserPassword();			
+		String strCookieUserName= TestDataHandler.chConfig.getCookieUserName();
+		String strCookieUserPassword= TestDataHandler.chConfig.getCookieUserPassword();			
 		Cookie captchBypass = new Cookie ("temp_token_r",CookieFetcher.setAndFetchCookie(strCookieUserName, strCookieUserPassword, strUrl));
 		driver.manage().addCookie(captchBypass);
   }
@@ -87,8 +87,8 @@ public class CaptchaBypassHandlers {
 	public void captchaBypassURLIgniteLoginFlows(String strUrl, String strLanguage) throws IOException {
 		driver.get(strUrl+"/web/totes/browsebuy/v1/byPassCaptcha");		
 		driver.get(strUrl+"?setLanguage="+ strLanguage );
-		String strCookieUserName= TestDataHandler.rogersConfig.getCookieUserName();
-		String strCookieUserPassword= TestDataHandler.rogersConfig.getCookieUserPassword();			
+		String strCookieUserName= TestDataHandler.chConfig.getCookieUserName();
+		String strCookieUserPassword= TestDataHandler.chConfig.getCookieUserPassword();			
 		Cookie captchBypass = new Cookie ("temp_token_r",CookieFetcher.setAndFetchCookie(strCookieUserName, strCookieUserPassword, strUrl));
 		driver.manage().addCookie(captchBypass);
   }
@@ -101,8 +101,8 @@ public class CaptchaBypassHandlers {
 	public void captchaBypassURLLoginFlows(String strUrl, String strLanguage) throws IOException {
 		driver.get(strUrl);		
 		driver.get(strUrl+"?setLanguage="+ strLanguage );
-		String strCookieUserName= TestDataHandler.rogersConfig.getCookieUserName();
-		String strCookieUserPassword= TestDataHandler.rogersConfig.getCookieUserPassword();			
+		String strCookieUserName= TestDataHandler.chConfig.getCookieUserName();
+		String strCookieUserPassword= TestDataHandler.chConfig.getCookieUserPassword();			
 		Cookie captchBypass = new Cookie ("temp_token_r",CookieFetcher.setAndFetchCookie(strCookieUserName, strCookieUserPassword, strUrl));
 		driver.manage().addCookie(captchBypass);
   }

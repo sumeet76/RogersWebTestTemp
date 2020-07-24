@@ -19,9 +19,6 @@ import com.rogers.yaml.pojo.PPCData;
 import com.rogers.yaml.pojo.PaymentDetails;
 import com.rogers.yaml.pojo.SauceSettings;
 
-
-
-
 public class YamlHandler {
 
 	public static AccountData getAccountData(String accountName) {
@@ -88,7 +85,7 @@ public class YamlHandler {
 		Yaml yaml = new Yaml(new Constructor(Config.class));
 		InputStream inputStream;
 		try {
-			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/connectedhome/RogersConfig.yml"));
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/connectedhome/Config.yml"));
 			Config config = yaml.load(inputStream);
 			return config;
 		} catch (FileNotFoundException e) {
@@ -159,12 +156,11 @@ public class YamlHandler {
 
 	}
 
-
 	public static PaymentDetails getCablePaymentDetails() {
 		Yaml yaml = new Yaml(new Constructor(PaymentDetails.class));
 		InputStream inputStream;
 		try {
-			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/connectedhome/RogersPaymentInfo.yml"));
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/connectedhome/PaymentInfo.yml"));
 			PaymentDetails paymentDetails = yaml.load(inputStream);
 			return paymentDetails;
 		} catch (FileNotFoundException e) {
