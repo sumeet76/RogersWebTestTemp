@@ -136,7 +136,7 @@ public class RogersCH_TC_030_IginteTV_BuyIgniteStarterBundleTest extends BaseTes
 	        reporter.reportLogWithScreenshot("Launched the payment options page");
 	        rogers_payment_options_page.selectPaymentMode("Pre-authorized Credit Card");
 	        rogers_payment_options_page.switchToCreditCardIFrame();
-	        rogers_payment_options_page.setCreditCardNumberIFrame(TestDataHandler.rogersPaymentInfo.getCreditCardDetails().getNumber());
+	        rogers_payment_options_page.setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
 	        rogers_payment_options_page.switchOutOfCreditCardIFrame();
 	        rogers_payment_options_page.setCVV();
 	        rogers_payment_options_page.selectExpiryMonth();
@@ -159,7 +159,7 @@ public class RogersCH_TC_030_IginteTV_BuyIgniteStarterBundleTest extends BaseTes
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteAnonymous
 	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.rogersConfig.getRogersURL(),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_igniteanonymous, method);
+		startSession(TestDataHandler.chConfig.getRogersURL(),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_igniteanonymous, method);
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 

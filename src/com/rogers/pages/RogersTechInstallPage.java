@@ -32,7 +32,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-52')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
 	WebElement txtContainerMobile;
 	
-	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-38')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
 	WebElement txtContainerMobileExistingCustomer;
 	
 	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-47')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
@@ -41,7 +41,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-53')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
 	WebElement txtContainerEmail;
 	
-	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-39')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[3]")
 	WebElement txtContainerEmailExistingCustomer;
 	
 	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-48')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
@@ -53,8 +53,8 @@ public class RogersTechInstallPage extends BasePageClass {
     
     @FindBy(xpath ="//input[@id='ds-form-input-id-28']")
 	WebElement txtMobielNumberMigration;	
-		
-	@FindBy(xpath ="//input[@id='ds-form-input-id-21']")
+
+	@FindBy(xpath ="//input[@formcontrolname='enrouteMobileNumber']")  
 	WebElement txtMobielNumberExistingCustomer;	
 		
 		
@@ -71,7 +71,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath ="//input[@id='ds-form-input-id-29']")
 	WebElement txtEmailMigration;		
 	
-	@FindBy(xpath ="//input[@id='ds-form-input-id-22']")
+	@FindBy(xpath ="//input[@formcontrolname='enrouteEmail']")   
 	WebElement txtEmailExistingCustomer;
 	
 	@FindBy(xpath ="//label[@for='ds-checkbox-id-1']")
@@ -239,6 +239,24 @@ public class RogersTechInstallPage extends BasePageClass {
 		reusableActions.waitForElementVisibility(rdoTechInstallSlot, 180);
 		reusableActions.getWhenReady(rdoTechInstallSlot, 90).click();
 		}
+	}
+	
+	public void selSelffinstallDateAndTimeMigrartion() {
+		reusableActions.waitForElementVisibility(clkCalendarIcon,20); 
+		reusableActions.getWhenReady(clkCalendarIcon, 20).click();
+		Calendar calendar = Calendar.getInstance();
+		int intDate = calendar.get(Calendar.DATE);
+		int startDate = intDate + 20; 
+		//If startDate > 29 , 29 being the number of days in the month
+		if(startDate>29) {
+			reusableActions.getWhenReady(clkChevron, 60).click();
+			startDate = startDate - 29;
+		}
+		String strStartDate= Integer.toString(startDate);
+		By selStartDate = By.xpath("//span[contains(text(),'" + strStartDate + "') and @class='owl-dt-calendar-cell-content']");
+		reusableActions.getWhenReady(selStartDate, 20).click();
+		reusableActions.waitForElementVisibility(rdoTechInstallSlot, 180);
+		reusableActions.getWhenReady(rdoTechInstallSlot, 90).click();
 	}
 	
 	/**

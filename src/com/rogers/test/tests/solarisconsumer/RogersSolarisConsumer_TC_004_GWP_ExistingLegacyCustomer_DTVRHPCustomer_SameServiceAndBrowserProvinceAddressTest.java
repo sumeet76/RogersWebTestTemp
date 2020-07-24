@@ -148,7 +148,7 @@ public class RogersSolarisConsumer_TC_004_GWP_ExistingLegacyCustomer_DTVRHPCusto
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})
 	//IgniteLogin
 	public void beforeTest(String strBrowser, String strLanguage, String strGroupName,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.rogersConfig.getRogersURL(),  strBrowser,strLanguage,strGroupName, method);
+		startSession(TestDataHandler.chConfig.getRogersURL(),  strBrowser,strLanguage,strGroupName, method);
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 

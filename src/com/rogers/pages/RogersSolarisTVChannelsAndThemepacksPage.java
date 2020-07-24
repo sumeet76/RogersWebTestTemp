@@ -54,6 +54,9 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	@FindBy(xpath = "//h3[@class='header-1 font-regular margin-0' and contains(text(),'Classic TV & Movies')]/ancestor::div[@class='row theme-header']//button[@id='add-themepack-button']")
 	WebElement addThemePackClassicTVThemePacks;
 	
+	@FindBy(xpath = "//h3[@class='header-1 font-regular margin-0' and contains(text(),'Super Sports Pack (TP)')]/ancestor::div[@class='row theme-header']//button[@id='add-themepack-button']")
+	WebElement addThemePackClassicTVThemePacks4plus1;
+	
 	
 	@FindBy(xpath = "//button[@class='ute-btn-primary ute-md']")
 	WebElement yesContinueOnExistingChannelAlert;
@@ -62,8 +65,13 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	WebElement clkConfirmChangesOnManageChannelsAndThemePacks;
 
 	@FindBy(xpath = "//div[@class='tv-channel-body']//ins[@translate='global.cta.remove']")
-	WebElement btnRemoveFromYourChanges;
+	WebElement btnRemoveFromYourChanges;	
 	
+	@FindBy(xpath = "//div[@class='solaris-loader']")
+	WebElement ldrThemepackChannel;
+	
+	@FindBy(xpath = "//div[@class='preloader loading-secondary']")
+	WebElement ldrThemepack;
 	/**
 	 * Click on add button of the first pack in theme pack in manage channels and theme pack
 	 * @author chinnarao.vattam	 
@@ -74,6 +82,14 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 		reusableActions.getWhenReady(addThemePackClassicTVThemePacks, 240).click();		
 	}		
 	
+	/**
+	 * Click on add button of the first pack in theme pack in manage channels and theme pack
+	 * @author chinnarao.vattam	 
+	 */
+	public void clkAddButtonOnThemePackListOnManageChannelsAndThemePacks4plus1() {
+		reusableActions.waitForElementVisibility(addThemePackClassicTVThemePacks4plus1, 240);
+		reusableActions.executeJavaScriptClick(addThemePackClassicTVThemePacks4plus1);		
+	}
 	/**
 	 * Click on remove from your changes Manage channels and theme packs
 	 * @author Saurav.Goyal	 
@@ -96,10 +112,19 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author Saurav.Goyal	 
 	 */
 	public void addChannel() {
-		reusableActions.staticWait(10000);
 		reusableActions.waitForElementVisibility(addParticularChannelToCart.get(0), 340);
 		reusableActions.getWhenReady(addParticularChannelToCart.get(0), 180).click();
-	}	
+	}
+	
+	/**
+	 * Add first channel from the list
+	 * @author chinnarao.vattam	 
+	 */
+	public void addChannelThemepack() {
+		reusableActions.waitForElementInvisibility(ldrThemepack, 120);
+		reusableActions.waitForElementVisibility(addParticularChannelToCart.get(0), 340);
+		//reusableActions.getWhenReady(addParticularChannelToCart.get(0), 180).click();
+	}
 	
 	/**
 	 * Remove an added channel

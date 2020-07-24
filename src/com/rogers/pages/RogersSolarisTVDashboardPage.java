@@ -154,7 +154,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='col-md-12 loading']")
 	WebElement ldrTVdashboard;
 	
-
+	@FindBy(xpath = "//div[@class='loading']")
+	WebElement ldrThemepack2;
+	
 	
 	/**
 	 * Click on Reset Parental controls And Pin link
@@ -490,10 +492,10 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * Click the confirm channel swap 
 	 * @author chinnarao.vattam
 	 */
-	public void clkConfirmSwap() {		
-		reusableActions.getWhenReady(btnConfirmSwap, 180).click();
-		reusableActions.waitForElementInvisibility(popupLoadingFingers,220);
-		
+	public void clkConfirmSwap() {
+		reusableActions.waitForElementVisibility(btnConfirmSwap,90);
+		reusableActions.executeJavaScriptClick(btnConfirmSwap);
+		reusableActions.waitForElementInvisibility(popupLoadingFingers,220);		
 	}
 	
 	/**
