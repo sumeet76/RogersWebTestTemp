@@ -41,6 +41,7 @@ public class RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE_Add
         rogers_login_page.setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 		
@@ -59,7 +60,7 @@ public class RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE_Add
         }
         
         rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyRunningLowStateInTheUsageBar(),
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyRunningLowStateInTheUsageBar(),
         		"Data running low is displayed for 10% or less data",
         		"It seems the data running low state is not yet reached for this acccount, please decrease the data usage and re validate");
          reporter.softAssert(rogers_wireless_dashboard_page.verifyCallOutMessageToAddDataIsDisplayed(),
@@ -101,6 +102,12 @@ public class RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE_Add
 	        rogers_login_page.switchToSignInIFrame();
 	                   
 	        rogers_login_page.setPasswordIFrame(strPassword);
+	        //getDriver().get(TestDataHandler.ssConfig.getRogersURL());
+	        //rogers_home_page.clkSignIn();	    	
+	    	//rogers_login_page.switchToSignInIFrame();
+	        //rogers_login_page.setUsernameIFrame(strUsername);    	
+	        //rogers_login_page.setPasswordIFrame(strPassword);
+	        reporter.reportLogWithScreenshot("Re sign In");  
 	        reporter.reportLogWithScreenshot("Login Credential is entered.");
 			rogers_login_page.clkSignInIFrame();		
 			rogers_login_page.switchOutOfSignInIFrame();		       

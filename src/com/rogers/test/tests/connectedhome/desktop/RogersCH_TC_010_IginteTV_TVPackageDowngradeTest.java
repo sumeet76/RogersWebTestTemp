@@ -69,7 +69,7 @@ public class RogersCH_TC_010_IginteTV_TVPackageDowngradeTest extends BaseTestCla
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 

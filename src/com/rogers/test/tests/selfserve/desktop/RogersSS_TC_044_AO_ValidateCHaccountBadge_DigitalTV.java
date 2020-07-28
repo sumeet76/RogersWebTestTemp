@@ -47,6 +47,7 @@ public class RogersSS_TC_044_AO_ValidateCHaccountBadge_DigitalTV extends BaseTes
 		rogers_login_page.setPasswordIFrame(TestDataHandler.tc44DigitalTVAccount.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		reporter.reportLogWithScreenshot("Skip popup");
 		rogers_login_page.clkSkipIFrame();	
 		rogers_login_page.switchOutOfSignInIFrame();

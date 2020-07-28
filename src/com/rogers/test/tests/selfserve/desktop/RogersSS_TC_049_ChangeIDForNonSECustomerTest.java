@@ -29,6 +29,7 @@ public class RogersSS_TC_049_ChangeIDForNonSECustomerTest extends BaseTestClass 
 		rogers_login_page.setUsernameIFrame(TestDataHandler.tc495271.getUsername());
 		rogers_login_page.setPasswordIFrame(TestDataHandler.tc495271.getPassword());
 		rogers_login_page.clkSignInIFrame();
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 		 if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {

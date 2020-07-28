@@ -42,6 +42,7 @@ public class RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE extends B
         rogers_login_page.setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 		
@@ -54,10 +55,10 @@ public class RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE extends B
        //For demo-line data, the sub-menu shows as "Wireless Usage"
    		rogers_account_overview_page.clkSubMenuWirelessUsage();
 
-       rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();  
+       //rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();  
               
        //5. Usage bar displayed with the usage 
-       reporter.softAssert(rogers_wireless_dashboard_page.verifyUsageBarIsDisplayed(),
+       reporter.hardAssert(rogers_wireless_dashboard_page.verifyUsageBarIsDisplayed(),
        "Usage bar displayed with the usage ",
        "Usage bar seems not displayed, please investigate");
        reporter.softAssert(rogers_wireless_dashboard_page.verifyDataRemainingOutOfTotalDataBucket(), 
@@ -89,7 +90,7 @@ public class RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE extends B
 				"MB amounts converted in GB up to 2 decimal points NOT validated Total Data Below UsageBar RightSide, please investigate"); 
 		
 		//7. Manage Data page displayed successfully
-		reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(), 
+		reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(), 
 						"'Manage Data' page is displayed after click on view details link", 
 						"'Manage Data' page is NOT displayed after click on view details link");  
 		reporter.reportLogWithScreenshot("Manage data page view after we click on view details");  
@@ -105,7 +106,7 @@ public class RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE extends B
 						"Data delayed 12 hours message doesn't display, please check.");  
 		//9. Add Speed pass flow page displayed successfully
 		rogers_wireless_dashboard_page.clkBtnSpeedPass();
-		reporter.softAssert(rogers_speed_pass_page.verifySpeedPassPopupIsDisplayed(), 
+		reporter.hardAssert(rogers_speed_pass_page.verifySpeedPassPopupIsDisplayed(), 
 				"Add speed pass overlay openned successfully.", 
 				"Add speed pass overlay failed.");  
 		rogers_speed_pass_page.clkBtnCloseInSpeedPassPopup();

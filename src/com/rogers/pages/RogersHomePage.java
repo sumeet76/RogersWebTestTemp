@@ -243,6 +243,15 @@ public class RogersHomePage extends BasePageClass {
 		reusableActions.getWhenVisible(lnkEasyLogin, 30).click();
 	}
 	
+	/**
+	 * checks if the contenful url is displayed
+	 * @return true if the contentful url is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isContentFulURLDisplayed() {
+		return reusableActions.isElementVisible(lnkEasyLogin, 30);
+		
+	}
 	
 	/**
 	 * Click the Sign Out button from the top tile bar 

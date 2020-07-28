@@ -1,4 +1,4 @@
-package com.rogers.test.tests.selfserve.desktop;
+package com.rogers.test.tests.selfserve.mobile;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -16,11 +16,11 @@ import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 
 
-public class RogersSS_TC_036_WirelessPostpaidOverviewViewBillTest extends BaseTestClass {
+public class Mobile_RogersSS_TC_036_WirelessPostpaidOverviewViewBillTest extends BaseTestClass {
 
     @Test
     public void viewBillTest() {
-        rogers_home_page.clkSignIn();
+    	rogers_home_page.clkSignInMobile();
 		rogers_login_page.switchToSignInIFrame();
 		rogers_login_page.setUsernameIFrame(TestDataHandler.tc36.getUsername());
 		rogers_login_page.setPasswordIFrame(TestDataHandler.tc36.getPassword());

@@ -204,7 +204,7 @@ public class BaseTestClass {
 		}
 
 
-	 /* To start a session using given url, browser, language and test case group name.
+	 /** To start a session using given url, browser, language and test case group name.
 	 * @param strUrl                     string of test url
 	 * @param strBrowser                 string of browser name
 	 * @param strLanguage                string of language to use
@@ -225,7 +225,8 @@ public class BaseTestClass {
 		case "selfserve":
 		case "selfserve_login":
 		case "mobile_selfserve":
-			captcha_bypass_handlers.captchaBypassURLSelfserveFlows(strUrl, strLanguage);
+			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ strLanguage);
+			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
 			break;
 			
 		case "connectedhome_legacyanonymous":
@@ -240,15 +241,18 @@ public class BaseTestClass {
 			
 		case "connectedhome_legacylogin":
 			driver.get(strUrl+"/web/totes/api/v1/bypassCaptchaAuth");
+			driver.get(strUrl+"?setLanguage="+ strLanguage );
 			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
 			break; 
 
 		case "connectedhome_ignitelogin":
 			driver.get(strUrl+"/web/totes/browsebuy/v1/byPassCaptcha");	
+			driver.get(strUrl+"?setLanguage="+ strLanguage );
 			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
 			break; 
 			
 		case "connectedhome_login":
+			driver.get(strUrl+"?setLanguage="+ strLanguage );
 			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
 			break; 
 		
@@ -256,6 +260,7 @@ public class BaseTestClass {
 			break; 
 			
  		default :
+ 			driver.get(strUrl+"?setLanguage="+ strLanguage );
  			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
 		}
 	    setImplicitWait(getDriver(), 10);
@@ -302,7 +307,7 @@ public class BaseTestClass {
 	}
 
 
-	/* To start a session using given url, browser, language and test case group name.
+	/** To start a session using given url, browser, language and test case group name.
 	 * @param strUrl                     string of test url
 	 * @param strBrowser                 string of browser name
 	 * @param strLanguage                string of language to use
@@ -315,7 +320,7 @@ public class BaseTestClass {
 		startSession(strUrl, strBrowser, strLanguage, enumGroupName.toString().toLowerCase().trim(), currentTestMethodName);
 	}		
 
-	 /* To start a session using given url, browser, language and test case group name.
+	 /** To start a session using given url, browser, language and test case group name.
 	 * @param strUrl                     string of test url
 	 * @param strBrowser                 string of browser name
 	 * @param strLanguage                string of language to use

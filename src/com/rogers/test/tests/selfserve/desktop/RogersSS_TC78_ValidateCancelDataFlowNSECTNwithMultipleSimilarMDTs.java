@@ -41,6 +41,7 @@ public class RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs e
         rogers_login_page.setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 		
@@ -102,6 +103,10 @@ public class RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs e
 			
 			rogers_login_page.clickSignOut();
 			reporter.reportLogWithScreenshot("Sign out done");
+			if(rogers_home_page.isContentFulURLDisplayed())
+			{
+				rogers_home_page.clkEasyLogin();
+			}			
 			rogers_login_page.clkSignInAs();
 			reporter.reportLogWithScreenshot("Click Re Sign In");
 			rogers_login_page.switchToSignInIFrame();	        
