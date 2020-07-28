@@ -99,14 +99,12 @@ public class RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage 
             rogers_account_overview_page.selectAccount(TestDataHandler.tc0224.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");
-
-      //Click on the Wireless badge in account overview badge.
-      
+       //Click on the Wireless badge in account overview badge.      
         rogers_account_overview_page.clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
         String strAccountNum = TestDataHandler.tc0224.getAccountDetails().getCtn();
         rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
-        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
+        //rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
         reporter.reportLogWithScreenshot("Wireless dashboard page.");
         
     }

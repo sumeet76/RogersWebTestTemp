@@ -42,7 +42,7 @@ public class RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest extends
         rogers_login_page.setPasswordIFrame(TestDataHandler.tc013132.getPassword());
         reporter.reportLogWithScreenshot("Login Credential is entered.");
         rogers_login_page.clkSignInIFrame();
-        reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+        reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
         rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 
