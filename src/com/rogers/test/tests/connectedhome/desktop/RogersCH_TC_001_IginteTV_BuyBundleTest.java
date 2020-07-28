@@ -66,7 +66,7 @@ public class RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line2");
-        rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
@@ -136,7 +136,7 @@ public class RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
         reporter.reportLogWithScreenshot("Launched the payment options page");
         rogers_payment_options_page.selectPaymentMode("Pre-authorized Credit Card");
         rogers_payment_options_page.switchToCreditCardIFrame();
-        rogers_payment_options_page.setCreditCardNumberIFrame(TestDataHandler.rogersPaymentInfo.getCreditCardDetails().getNumber());
+        rogers_payment_options_page.setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
         rogers_payment_options_page.switchOutOfCreditCardIFrame();
         rogers_payment_options_page.setCVV();
         rogers_payment_options_page.selectExpiryMonth();
@@ -269,13 +269,13 @@ public class RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteAnonymous
 	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.rogersConfig.getRogersURL(), strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_igniteanonymous, method);
+		startSession(TestDataHandler.chConfig.getRogersURL(), strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_igniteanonymous, method);
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 

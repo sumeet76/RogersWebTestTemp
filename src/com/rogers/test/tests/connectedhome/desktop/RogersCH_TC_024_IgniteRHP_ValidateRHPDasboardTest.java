@@ -50,7 +50,7 @@ public class RogersCH_TC_024_IgniteRHP_ValidateRHPDasboardTest extends BaseTestC
  	    rogers_account_overview_page.selectAccount(TestDataHandler.igniteRHP.accountDetails.getBan());
  		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.clkRHPBadge(TestDataHandler.rogersConfig.getBrowser());
+		rogers_account_overview_page.clkRHPBadge(TestDataHandler.chConfig.getBrowser());
         reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");        
         reporter.softAssert(rogers_solaris_rhp_dashboard_validation_page.verifyConfigureYourCurrentFeatures(),"Verification of Configure Your Current Features link is success","Verification of Configure Your Current Features link is Failed");
         reporter.softAssert(rogers_solaris_rhp_dashboard_validation_page.verfyAccessYourVoicemailSettings(),"Verification of Access Your Voicemail Settings link is success","Verification of Access Your Voicemail Settings link is successFailed");
@@ -61,7 +61,7 @@ public class RogersCH_TC_024_IgniteRHP_ValidateRHPDasboardTest extends BaseTestC
 	//login flow
 	public void beforeTest(String strBrowser, String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.rogersConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
+		startSession(TestDataHandler.chConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
 	}
 
 	@AfterMethod(alwaysRun = true)

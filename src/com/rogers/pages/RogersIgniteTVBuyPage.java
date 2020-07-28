@@ -418,7 +418,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkHomePhone() {
-		reusableActions.getWhenReady(btnHomePhoneContinue, 120).click();
+		reusableActions.waitForElementVisibility(btnHomePhoneContinue, 180);
+		reusableActions.getWhenReady(btnHomePhoneContinue, 180).click();
 	}
 
 	/**

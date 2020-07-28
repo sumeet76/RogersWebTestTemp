@@ -130,7 +130,7 @@ public class RogersSC_TC_013_IginteTV_AnonymousCustomer_BuyingSolarisTriplePlayN
         reporter.reportLogWithScreenshot("Launched the payment options page");
         rogers_payment_options_page.selectPaymentMode("pacc");
         rogers_payment_options_page.switchToCreditCardIFrame();
-        rogers_payment_options_page.setCreditCardNumberIFrame(TestDataHandler.rogersPaymentInfo.getCreditCardDetails().getNumber());
+        rogers_payment_options_page.setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
         rogers_payment_options_page.switchOutOfCreditCardIFrame();
         rogers_payment_options_page.setCVV();
         rogers_payment_options_page.selectExpiryMonth();
@@ -151,7 +151,7 @@ public class RogersSC_TC_013_IginteTV_AnonymousCustomer_BuyingSolarisTriplePlayN
     @BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})
 	//IgniteLogin
 	public void beforeTest(String strBrowser, String strLanguage, String strGroupName,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.rogersConfig.getRogersURL(),  strBrowser,strLanguage,strGroupName, method);
+		startSession(TestDataHandler.chConfig.getRogersURL(),  strBrowser,strLanguage,strGroupName, method);
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 

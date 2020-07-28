@@ -108,7 +108,7 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 */
 	public void clkContinueHomePhoneSelectionMigration() {
 		reusableActions.waitForElementVisibility(btnContinueHomePhoneSelectionMigration, 180);
-		reusableActions.clickWhenReady(btnContinueHomePhoneSelectionMigration, 90);
+		reusableActions.getWhenReady(btnContinueHomePhoneSelectionMigration, 90).click();
 	}
 	
 	

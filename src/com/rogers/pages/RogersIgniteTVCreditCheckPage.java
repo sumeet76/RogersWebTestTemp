@@ -159,7 +159,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void selectDOBYearExistingCustomerMigration(String strDOBYear) {
 		//reusableActions.waitForElementInvisibility(popupLoadingFingers);
-		reusableActions.waitForElementVisibility(ddlCreditCheckYearMigration,20);
+		reusableActions.waitForElementVisibility(ddlCreditCheckYearMigration,120);
 		reusableActions.selectWhenReadyByVisibleText(ddlCreditCheckYearMigration, strDOBYear);
 	}
 	

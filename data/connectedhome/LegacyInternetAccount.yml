@@ -1,11 +1,11 @@
 # Account Details 
 ---
 name: LegacyInternetAccountUsage
-username: Autodatar720ch001@yahoo.com         
+username: Autodatar820ch001@yahoo.com         
 password: DigiAuto@123
 accountDetails:
    type: Legacy Internet
-   ban: 230377742601
+   ban: 230378171101
    downgradePlanFr: Élan Internet 150i
    downgradePlanEn: Ignite Internet 150u
    internetBundle: 150
