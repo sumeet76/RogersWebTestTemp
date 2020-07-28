@@ -11,10 +11,12 @@
 			class-name="com.rogers.test.listeners.AnnotationTransformer" />
 	</listeners>	
 <!--  -->
-<test name="RogersSS_TC80_ValidateDataUsageDisplayInOveragePayPerUsePostpaidNonSEplan" enabled="true" >
+
+<test name="RogersSS_TC_013_Baseline_CSS_PostpaidWirelessChangeSIMAuto" enabled="true">
 <classes>				             
-<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC80_ValidateDataUsageDisplayInOveragePayPerUsePostpaidNonSEplan"></class>
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_013_Baseline_CSS_PostpaidWirelessChangeSIMAuto"></class>
 </classes>          																					
 </test>
-			 
+
+	 
 </suite>
