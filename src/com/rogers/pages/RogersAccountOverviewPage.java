@@ -54,6 +54,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.total_balance' or text()='Total balance' or text()='Total du solde']")
 	WebElement infoBalanceLable;
 
+	@FindBy(xpath = "//h1[@class='mt-24']")
+	WebElement infoWelcome;
+	
 	@FindBy(xpath = "//span[@translate='ute.rogers.rhpDashboard.homePhone']")
 	WebElement infoLegacyrhpDashboard;
 	
@@ -239,7 +242,18 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	@FindBy(xpath = "//span[text()='Payment History' or text()='Historique de paiement']") 
 	WebElement lnkPaymentHistoryDisplayed;
+	
+	@FindBy (xpath = "//div[@class='floatingOverview bcStatic']")
+	WebElement btnLiveChat;
 
+	@FindBy(xpath = "//iframe[@id='va-iframe']")
+	WebElement fraLiveChat;
+	
+	@FindAll({
+		@FindBy (xpath = "//app-welcome-rogers"),
+		@FindBy (xpath = "//div[@class='bc-frame-title']")})
+		WebElement headerLiveChat;
+	
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
 	 * @return true if more than one ban present else false
@@ -350,7 +364,6 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void clkTVBadge() {	
 		reusableActions.getWhenReady(btnTVBadge, 180).click();
-		reusableActions.staticWait(10000);
 	}
 	
 	/**
@@ -515,6 +528,16 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public boolean verifySuccessfulLogin() {
 		return reusableActions.isElementVisible(infoBalanceLable,60);
 	}
+	
+	/**
+	 * To verify the successful login
+	 * @return true if the balance label is present ; else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyLoginSuccessWelcome() {
+		return reusableActions.isElementVisible(infoWelcome,60);
+	}
+	
 
 	/**
 	 * To Verify the RHP Banner on the Legacy RHP dash board
@@ -1025,6 +1048,41 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public boolean isLnkPaymentHistoryDisplayed() {
 		return reusableActions.isElementVisible(lnkPaymentHistoryDisplayed);
 	}
+
+	/**
+	 * To verify if the live chat button display in wireless dashboard page
+	 * @return true if the button displayed otherwise false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyLiveChatButtonIsDisplayed() {
+		return reusableActions.isElementVisible(btnLiveChat, 30);
+	}
+	
+	/**
+	 * Click the button Live chat in wireless dashboard page
+	 * @author Mirza.Kamran
+	 */
+	public void clkBtnLiveChat() {
+		reusableActions.getWhenReady(btnLiveChat, 20).click();
+	}
+	
+	/**
+	 * To verify if the live chat overlay opened in wireless dashboard page
+	 * @return true if the overlay opened otherwise false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyLiveChatOverlayOpened() {	
+	  if(reusableActions.isElementVisible(fraLiveChat))
+		{
+		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraLiveChat, 20);
+		return reusableActions.isElementVisible(headerLiveChat, 30);
+		}else
+		{
+			return reusableActions.isElementVisible(headerLiveChat, 30);
+		}
+		
+	} 
+	
 	
 	
 	

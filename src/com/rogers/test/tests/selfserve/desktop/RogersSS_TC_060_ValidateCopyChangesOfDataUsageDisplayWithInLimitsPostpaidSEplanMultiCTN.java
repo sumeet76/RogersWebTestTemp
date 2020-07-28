@@ -113,7 +113,8 @@ public class RogersSS_TC_060_ValidateCopyChangesOfDataUsageDisplayWithInLimitsPo
     	    		reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(), 
     	    						"'Manage Data' page is displayed after click on view details link", 
     	    						"'Manage Data' page is NOT displayed after click on view details link");  
-    	    		reporter.reportLogWithScreenshot("Manage data page view after we click on view details");  
+    	    		reporter.reportLogWithScreenshot("Manage data page view after we click on view details"); 
+    	    		common_business_flows.scrollToTopOfWebPage();
     	    		rogers_manage_data_page.clkBackOnManageDataUsagePage();
     	    		reporter.reportLogWithScreenshot("Navigated back to dashboard from manage data view"); 
     	    		

@@ -273,6 +273,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy (xpath = "//app-welcome-rogers"),
 	@FindBy (xpath = "//div[@class='bc-frame-title']")})
 	WebElement headerLiveChat;
+
+	@FindBy(xpath = "//iframe[@id='va-iframe']")
+	WebElement fraLiveChat;
 	
 	@FindBy (xpath = "//div[@class='add-data']/span[contains(text(),'Speed Pass') or contains(text(),'Accès Rapido')]")
 	WebElement btnSpeedPass;
@@ -408,7 +411,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//ancestor::div[contains(@class,'postpaid-addons')]//div[@class='addon-description' or @class='addon-description ng-star-inserted']")
 	List<WebElement> lstMyPlanAddOns;
 
-	@FindBy(xpath = "//a[@title='Change the Data Manager for this account' or @title='Change the Data Manager for this account']")
+	@FindBy(xpath = "//a[@title='Change the Data Manager for this account' or @title='Change the Data Manager for this account']//span[contains(text(),'Add')]")
 	WebElement btnAddDataManager;
 
 	@FindBy(xpath = "//p[text()='Choose a Data Manager' or text()='Choisir un gestionnaire de données']")
@@ -454,6 +457,12 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		
 	@FindBy(xpath = "//li/span[contains(text(),'Stream Saver:') or contains(text(),'Maximiseur de données :')]")
 	WebElement lblStreamSaver;
+	
+	@FindBy(xpath = "//ds-switch[@title='Stream Saver for DONOTUSE']//span[text()='OFF']")
+	WebElement btnStreamSaverSwitchOff;
+	
+	@FindBy(xpath = "//ds-switch[@title='Stream Saver for DONOTUSE']//span[text()='ON']")
+	WebElement btnStreamSaverSwitchON;
 		
 	@FindBy(xpath = "//li/span[contains(text(),'Data Alert:') or contains(text(),'Alertes de données :')]")
 	WebElement lblDataAlert;
@@ -1263,11 +1272,15 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyLiveChatOverlayOpened() {	
-	  /*if(reusableActions.isElementVisible(getDriver().findElement(By.xpath("//iframe[@id='va-iframe']"))))
+	  if(reusableActions.isElementVisible(fraLiveChat))
 		{
-		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(getDriver().findElement(By.xpath("//iframe[@id='va-iframe']")), 20);
-		} */
+		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraLiveChat, 20);
 		return reusableActions.isElementVisible(headerLiveChat, 30);
+		}else
+		{
+			return reusableActions.isElementVisible(headerLiveChat, 30);
+		}
+		
 	} 
 	
 	/**
@@ -2049,20 +2062,58 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		return reusableActions.isElementVisible(lnkChangeMyPhoneNumber);
 	}
 
+	/**
+	 * Verify if the screen saver displayed
+	 * @return true if the screen saver is displayed else false
+	 * @author Mirza.Kamran
+	 */
 	public boolean verifyStreamSaverDisplayed() {		
 		return reusableActions.isElementVisible(lblStreamSaver);
 	}
 
+	/**
+	 * Verify if the Data access is displayed
+	 * @return true if the data access is displayed else false
+	 * @author Mirza.Kamran
+	 */
 	public boolean verifyDataAccessDisplayed() { 
 		return reusableActions.isElementVisible(lblDataAccess);
 	}
 
+	/**
+	 * Verify if the Data alert is  displayed
+	 * @return true if the data alert is displayed else false
+	 * @author Mirza.Kamran
+	 */
 	public boolean verifyDataAlertDisplayed() {
 		return reusableActions.isElementVisible(lblDataAlert);
 	}
 
+	/**
+	 * Verify if the data manager displayed
+	 * @return true if the screen saver is displayed else false
+	 * @author Mirza.Kamran
+	 */
 	public boolean verifyDataManagerDisplayed() {
 		return reusableActions.isElementVisible(lbldataManager);
+	}
+
+	/**
+	 * Checks if the Stream Saver ON is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isStreamSaverONDisplayed() {		
+		return reusableActions.isElementVisible(btnStreamSaverSwitchON);
+	}
+
+	/**
+	 * Clicks on Stream Saver ON button
+	 * @author Mirza.Kamran
+	 */
+	public void clkStreamSaverOn() {
+		reusableActions.getWhenReady(divDataAccessOFF).click();
+		
 	}
 
 	/**
@@ -2083,6 +2134,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		
 	}
 
+	
+	
 	/**
 	 * Checks if the data manager OFF is displayed
 	 * @return true if the element is displayed else false
@@ -2101,6 +2154,26 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		
 	}
 
+	/**
+	 * Checks if the Stream Saver OFF is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isStreamSaverOFF() {
+		return reusableActions.isElementVisible(btnStreamSaverSwitchOff);
+	}
+
+	/**
+	 * Clicks on Stream Saver OFF button
+	 * @author Mirza.Kamran
+	 */
+	public void clkStreamSaverOff() {
+		reusableActions.getWhenReady(btnStreamSaverSwitchOff).click();
+		
+	}
+
+	
+	
 	/**
 	 * Checks if the data access is displayed
 	 * @return true if the data access is displayed else false

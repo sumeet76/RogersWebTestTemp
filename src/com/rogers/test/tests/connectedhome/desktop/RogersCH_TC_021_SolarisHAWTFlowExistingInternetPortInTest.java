@@ -25,17 +25,12 @@ public class RogersCH_TC_021_SolarisHAWTFlowExistingInternetPortInTest extends B
 		rogers_login_page.setPasswordIFrame(TestDataHandler.solarisPortinFlows.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
-    	if(rogers_login_page.verifyLoginFailMsgIframe())
-    	{
-    		reporter.reportLogFailWithScreenshot("Login Failed");			
-    	}
-    	else
-    	{
-        reporter.reportLogWithScreenshot("Skip popup");
-        rogers_login_page.clkSkipIFrame();
-        rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount(TestDataHandler.solarisPortinFlows.accountDetails.getBan());
-        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+	    reporter.reportLogWithScreenshot("Skip popup");
+	    rogers_login_page.clkSkipIFrame();
+	    rogers_login_page.switchOutOfSignInIFrame();
+	    rogers_account_overview_page.selectAccount(TestDataHandler.solarisPortinFlows.accountDetails.getBan());
+		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_home_page.clkShop(); 
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
@@ -100,7 +95,6 @@ public class RogersCH_TC_021_SolarisHAWTFlowExistingInternetPortInTest extends B
         reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");       
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
     	}
-    }
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin

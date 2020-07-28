@@ -290,21 +290,12 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 
 	/**
 	 * Selects the solaris tv package name to be upgrade or downgrade 
-	 * @param strPackageName solaris tv package name to be upgrade or downgrade  
-	 * @author chinnarao.vattam
-	 */
-	public void selectSolarisTVPackage1(String strPackageName) {
-		By packageNameLocator = By.xpath("//h4[contains(normalize-space(.),'" + strPackageName + "') or contains(normalize-space(.),'" + strPackageName + "')]/ancestor::div[contains(@class,'owl-item')]//ins[@translate='global.cta.select']");
-		reusableActions.getWhenReady(packageNameLocator, 60).click();
-	}
-
-	/**
-	 * Selects the solaris tv package name to be upgrade or downgrade 
 	 * @param strPackageNameEn solaris tv package name to be upgrade or downgrade
 	 * @param strPackageNameFr solaris tv package name to be upgrade or downgrade  
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
+		reusableActions.staticWait(3000);
 		By packageNameLocator = By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'owl-item')]//ins[@translate='global.cta.select']");
 		WebElement pkg = driver.findElement(packageNameLocator);
 		if(reusableActions.isElementVisible(packageNameLocator,150))
@@ -415,8 +406,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * Click the cross button to cancel the channel 
 	 * @author chinnarao.vattam
 	 */
-	public void clkOutChannelOne() {
-		reusableActions.clickWhenReady(btnSelectChannelOne, 120);
+	public void clkOutChannelOne() {		
+		reusableActions.getWhenReady(btnSelectChannelOne, 150).click();
 	}
 	
 	/**

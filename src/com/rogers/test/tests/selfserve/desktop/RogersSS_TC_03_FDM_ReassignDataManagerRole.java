@@ -32,7 +32,7 @@ public class RogersSS_TC_03_FDM_ReassignDataManagerRole extends BaseTestClass {
 	
 	
     @Test
-    public void validateDataUsageInfiniteSEReducedSpeeds() {
+    public void validateReassignDataManagerRole() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc7681.getUsername();
     	rogers_login_page.switchToSignInIFrame();

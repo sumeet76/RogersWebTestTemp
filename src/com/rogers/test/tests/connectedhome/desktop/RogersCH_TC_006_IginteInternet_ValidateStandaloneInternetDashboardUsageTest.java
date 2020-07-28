@@ -36,6 +36,8 @@ public class RogersCH_TC_006_IginteInternet_ValidateStandaloneInternetDashboardU
 
     @Test
     public void checkStandaloneInternetDashboard() {
+		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();
@@ -44,20 +46,14 @@ public class RogersCH_TC_006_IginteInternet_ValidateStandaloneInternetDashboardU
         rogers_login_page.setPasswordIFrame(TestDataHandler.standaloneInternetAccountWithUsage.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         rogers_login_page.clkSignInIFrame();
-    	if(rogers_login_page.verifyLoginFailMsgIframe())
-    	{
-    		reporter.reportLogFailWithScreenshot("Login Failed");			
-    	}
-    	else
-    	{
+    	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount(TestDataHandler.solarisInternetAccountWithUsage.accountDetails.getBan());
-        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+        rogers_account_overview_page.selectAccount(TestDataHandler.standaloneInternetAccountWithUsage.accountDetails.getBan());
+    	//reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_internet_dashboard_page.clkSolarisInternetBadge();
-        rogers_internet_dashboard_page.clkInternetPopup();
         reporter.reportLogWithScreenshot("Launched the Interent dashboard");
 		reporter.hardAssert(rogers_internet_dashboard_page.verifyInternet(), "Verified the Internet page", "Internet page verification failed");
 		reporter.hardAssert(rogers_internet_dashboard_page.verifyUsageAndAlerts(), "Usage and Alerts link present on the internet dash page", "Usage and Alerts link is not present on the internet page");                
@@ -74,7 +70,6 @@ public class RogersCH_TC_006_IginteInternet_ValidateStandaloneInternetDashboardU
         reporter.softAssert(rogers_internet_usage_page.verifyUsageAlerts(),"Verified the Usage Alerts", "Usage Alerts are not present");
         reporter.reportLogWithScreenshot("Usage and Alerts details");
     	}
-    }
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
