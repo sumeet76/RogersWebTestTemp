@@ -7,78 +7,70 @@
 			class-name="com.rogers.test.listeners.AnnotationTransformer" />
 		<listener class-name="com.rogers.test.listeners.TestListener" />
 	</listeners>
-  	<test name="Cable rogers IgniteAnonymous">
-		<parameter name="strBrowser" value="chrome" />
-		<parameter name="strLanguage" value="en" />
-		<classes>		 
- 	 	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_001_IginteTV_BuyBundleTest"></class> 
-  	 	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_004_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest"></class> 
-   	  	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_020_IgniteTV_SolarisHAWTFlowPortInwithExistingLineTest"></class> 
-	    <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_030_IginteTV_BuyIgniteStarterBundleTest"></class> 
-        <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_034_IginteTV_DoublePlayBuyTest"></class> -->  
-		</classes> 
-	</test>    
-     <test name="Cable rogers LegacyAnonymous">
-		<parameter name="strBrowser" value="saucechrome" />
-		<parameter name="strLanguage" value="en" />
-		<classes>
-		 <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_001_SHM_ServicabilityCheckTest"></class> 
-		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_004_LegacyBundle_BuyBundleOfferTest"></class>
-		</classes>
-	</test>   
-     <test name="Cable rogers LegacyLogin">
-		<parameter name="strBrowser" value="saucechrome" />
-		<parameter name="strLanguage" value="en" />
-		<classes>
- 			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_018_LegacyInternet_ValidateInternetUsageTest"></class>
- 			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_019_DigitalTV_ValidateTVDashboardTest"></class>
-			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_022_DigitalTV_TVPackageDowngradeTest"></class>
-			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_023_LegacyRHP_ValidateRHPDashboardTest"></class>  
- 			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_027_DigitalTV_TVPackageUpgradeTest"></class>   
-		</classes>
-	</test>   	
- 	<test name="Cable rogers IgniteLogin">
+   	<test name="Cable rogers IgniteAnonymous">
 		<parameter name="strBrowser" value="saucechrome" />
 		<parameter name="strLanguage" value="en" />
 		<classes>	
-  	    <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_001_IginteTV_TVChannelsSwapFromAddressmodalTest"></class>       	
-    	    <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_001_Regression_4Plus1AddThemepacksfromTVDashboardPage"></class> 
- 		    <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_003a_CartAbandon_NoPortinExistingLegacySignedinfromMyRogersTest"></class>
-	        <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_005_IginteInternet_ValidateInternetDashboardUsageTest"></class>
-	        <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_005_IginteTV_OldConstructor_ExistingSolarisChangeTVPackageTest"></class>  
- 	 		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_006_IginteInternet_ValidateStandaloneInternetDashboardUsageTest"></class>   
-	 		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_006_IginteInternet_OldConstructor_ExistingSolarisChangeInternetPackageTest"></class> 
- 	  	    <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_006_IginteTV_BuySolarisDoublePlayChangeInstallationDateMonthlyBillTest"></class>  
-		 	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_007_IginteTV_ValidateTVDashboardTest"></class>
-			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_008_IginteInternet_InternetPackageDowngradeTest"></class>	
-			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_008_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannelsAndThemePackTest"></class> 
-    		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_009_01_SolarisCustomer_ManageChannelsAndThemePack_ManageThemePacksTest"></class>
-	 		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_009_02_SolarisCustomer_ManageChannelsAndThemePack_ManageChannelsTest"></class> 
- 			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_009_IginteInternet_InternetPackageUpgradeTest"></class>   
-   		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_010_IginteTV_TVPackageDowngradeTest"></class>  
- 		    <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_011_IginteTV_TVPackageUpgradeTest"></class>  
- 		 	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_012_IginteInternet_InternetBundleofferChangePackageUpgradeTest"></class>   
- 			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_013_IginteInternet_InternetBundleofferChangePackageDowngradeTest"></class>    
-			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_014_InternetPackageUpgradeToSolarisFromShopOptionTest"></class>
-			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_015_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest"></class>  
-		    <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_016_IginteTV_TVChannelsSwapTest"></class>  
-			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_021_SolarisHAWTFlowExistingInternetPortInTest"></class>
-			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_024_IgniteRHP_ValidateRHPDasboardTest"></class> 
-			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_028_IginteTV_ExistingSolarisCustomerBuyBundleWithNewAddressTest"></class>
-		    <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_030_ExistingSolarisCustomer_ResetParentalControlsAndPinTest"></class>  
-	 		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_031_IginteTV_TVPackagesOntarioTest"></class>
-			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_032_IginteTV_TVPackagesNewBrunswickFootprintTest"></class>
-			<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_033_IginteTV_TVPackagesNewfoundlandFootprintTest"></class>   -->
-		</classes>
-	</test>   	
-  	 <test name="Cable rogers LegacyAnonymous">
+ 		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_001_SHM_ServicabilityCheckTest"></class> 
+		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_004_LegacyBundle_BuyBundleOfferTest"></class>
+		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_018_LegacyInternet_ValidateInternetUsageTest"></class>
+ 		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_019_DigitalTV_ValidateTVDashboardTest"></class>
+		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_022_DigitalTV_TVPackageDowngradeTest"></class>
+ 		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_023_LegacyRHP_ValidateRHPDashboardTest"></class> 	
+		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_005_IginteInternet_ValidateInternetDashboardUsageTest"></class>
+	    <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_006_IginteInternet_ValidateStandaloneInternetDashboardUsageTest"></class> 
+		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_007_IginteTV_ValidateTVDashboardTest"></class> 
+		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_008_IginteInternet_InternetPackageDowngradeTest"></class> 
+ 		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_010_IginteTV_TVPackageDowngradeTest"></class>
+ 		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_013_IginteInternet_InternetBundleofferChangePackageDowngradeTest"></class>
+		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_001_IginteTV_TVChannelsSwapFromAddressmodalTest"></class>
+		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_016_IginteTV_TVChannelsSwapTest"></class>
+		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_024_IgniteRHP_ValidateRHPDasboardTest"></class> 			        
+ 	 	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_001_IginteTV_BuyBundleTest"></class> 
+  	 	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_004_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest"></class> 
+ 	    <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_030_IginteTV_BuyIgniteStarterBundleTest"></class> 
+        <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_034_IginteTV_DoublePlayBuyTest"></class>
+ 		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_030_ExistingSolarisCustomer_ResetParentalControlsAndPinTest"></class> 
+ 		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_001_Regression_4Plus1AddThemepacksfromTVDashboardPage"></class>  
+ 		</classes>
+	</test> 
+  		
+ 	<test name="Cable rogers IgniteAnonymous">
+		<parameter name="strBrowser" value="saucechrome" />
+		<parameter name="strLanguage" value="en" />
+		<classes>
+ 		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_027_DigitalTV_TVPackageUpgradeTest"></class>
+	    <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_005_IginteTV_OldConstructor_ExistingSolarisChangeTVPackageTest"></class>  
+	 	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_011_IginteTV_TVPackageUpgradeTest"></class> 
+	 	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_031_IginteTV_TVPackagesOntarioTest"></class>
+		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_032_IginteTV_TVPackagesNewBrunswickFootprintTest"></class>
+		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_033_IginteTV_TVPackagesNewfoundlandFootprintTest"></class>
+	 	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_006_IginteInternet_OldConstructor_ExistingSolarisChangeInternetPackageTest"></class>  
+    	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_009_IginteInternet_InternetPackageUpgradeTest"></class>
+	 	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_012_IginteInternet_InternetBundleofferChangePackageUpgradeTest"></class> 
+	 	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_006_IginteTV_BuySolarisDoublePlayChangeInstallationDateMonthlyBillTest"></class>  
+	    <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_028_IginteTV_ExistingSolarisCustomerBuyBundleWithNewAddressTest"></class>
+		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_014_InternetPackageUpgradeToSolarisFromShopOptionTest"></class>
+		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_008_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannelsAndThemePackTest"></class>  
+    	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_009_01_SolarisCustomer_ManageChannelsAndThemePack_ManageThemePacksTest"></class>
+	 	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_009_02_SolarisCustomer_ManageChannelsAndThemePack_ManageChannelsTest"></class> 
+	 	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_003a_CartAbandon_NoPortinExistingLegacySignedinfromMyRogersTest"></class>
+ 		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_003b_CartAbandon_NoPortinExistingLegacySignedinfromMyRogersTest"></class>
+ 		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_015_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest"></class>  
+		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_020_IgniteTV_SolarisHAWTFlowPortInwithExistingLineTest"></class>
+		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_021_SolarisHAWTFlowExistingInternetPortInTest"></class>
+  		</classes>
+	</test>		   
+              		
+    <test name="Cable rogers LegacyAnonymous">
 		<parameter name="strBrowser" value="sauceandroidchrome" />
 		<parameter name="strLanguage" value="en" />
 		<classes>
-     	    <class name="com.rogers.test.tests.connectedhome.mobile.Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest"></class> 
-    	    <class name="com.rogers.test.tests.connectedhome.mobile.Mobile_RogersCH_TC_003_Internet_BuyInternetOfferTest"></class>
-    	    <class name="com.rogers.test.tests.connectedhome.mobile.Mobile_RogersCH_TC_009_IginteInternet_InternetPackageUpgradeTest"></class> 
-    	    <class name="com.rogers.test.tests.connectedhome.mobile.Mobile_RogersCH_TC_011_IginteTV_TVPackageUpgradeTest"></class>
+         	<class name="com.rogers.test.tests.connectedhome.mobile.Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest"></class>  
+      	    <class name="com.rogers.test.tests.connectedhome.mobile.Mobile_RogersCH_TC_003_Internet_BuyInternetOfferTest"></class> 
+    	    <class name="com.rogers.test.tests.connectedhome.mobile.Mobile_RogersCH_TC_009_IginteInternet_InternetPackageUpgradeTest"></class>   
+     	    <class name="com.rogers.test.tests.connectedhome.mobile.Mobile_RogersCH_TC_011_IginteTV_TVPackageUpgradeTest"></class>  
+     	    <class name="com.rogers.test.tests.connectedhome.mobile.Mobile_RogersCH_TC_016_IginteTV_TVChannelsSwapTest"></class> 
 		</classes>
-	</test>  
+	</test>   
 </suite>

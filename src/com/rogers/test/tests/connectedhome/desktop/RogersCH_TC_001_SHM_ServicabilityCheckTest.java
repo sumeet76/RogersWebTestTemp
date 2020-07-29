@@ -54,7 +54,7 @@ public class RogersCH_TC_001_SHM_ServicabilityCheckTest extends BaseTestClass {
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//legacyAnonymous
 	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws  IOException  {
-		startSession(TestDataHandler.rogersConfig.getRogersURL(),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacyanonymous, method);
+		startSession(TestDataHandler.chConfig.getRogersURL(),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacyanonymous, method);
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 	

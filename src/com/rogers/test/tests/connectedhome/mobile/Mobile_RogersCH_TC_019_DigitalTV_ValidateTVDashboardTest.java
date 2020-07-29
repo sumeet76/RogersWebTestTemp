@@ -52,7 +52,7 @@ public class Mobile_RogersCH_TC_019_DigitalTV_ValidateTVDashboardTest extends Ba
 	    rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVAccount.accountDetails.getBan());
 		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.clkTVBadge(TestDataHandler.rogersConfig.getBrowser());
+		rogers_account_overview_page.clkTVBadge(TestDataHandler.chConfig.getBrowser());
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
 		reporter.hardAssert(rogers_digital_tv_dashboard_page.verifyChangeMyPackage(),"Verifed the TV dashboard","TV dashboard Verification has failed");
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
@@ -63,7 +63,7 @@ public class Mobile_RogersCH_TC_019_DigitalTV_ValidateTVDashboardTest extends Ba
 	//login flow
 	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.rogersConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacylogin, method);
+		startSession(TestDataHandler.chConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacylogin, method);
 	}
 
 	

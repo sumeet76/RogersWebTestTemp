@@ -56,10 +56,10 @@ public class RogersSS_TC_057_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDa
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
         String strAccountNum = TestDataHandler.tc57.getAccountDetails().getCtn();
         rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
-        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
+        //rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
        
         //verify Data usage
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyDataDelayMessage(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyDataDelayMessage(), 
 				"Data delayed by 12 hours message is displayed", 
 				"Data delayed by 12 hours message is NOT displayed");
 		reporter.softAssert(rogers_wireless_dashboard_page.verifyDataRemainingOutOfTotalDataBucket(), 

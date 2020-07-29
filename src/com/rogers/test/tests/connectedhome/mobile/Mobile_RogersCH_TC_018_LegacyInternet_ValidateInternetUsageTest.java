@@ -52,9 +52,9 @@ public class Mobile_RogersCH_TC_018_LegacyInternet_ValidateInternetUsageTest ext
 		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
        reporter.reportLogWithScreenshot("Launched the Account Page");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.clkLegacyInternetBadge(TestDataHandler.rogersConfig.getBrowser());
+		rogers_account_overview_page.clkLegacyInternetBadge(TestDataHandler.chConfig.getBrowser());
 		reporter.reportLogWithScreenshot("Launched the Internet Dashboard Page");
-		rogers_account_overview_page.clkInternetPopup(TestDataHandler.rogersConfig.getBrowser());
+		rogers_account_overview_page.clkInternetPopup(TestDataHandler.chConfig.getBrowser());
 		reporter.hardAssert(rogers_internet_dashboard_page.verifyInternetUsage(),"Verifed the Internet dashboard","Internet dashboard Verification has failed");
    	}
 
@@ -62,7 +62,7 @@ public class Mobile_RogersCH_TC_018_LegacyInternet_ValidateInternetUsageTest ext
 	//login flow
 	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.rogersConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacylogin, method);
+		startSession(TestDataHandler.chConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacylogin, method);
 	}
 	
 	@AfterMethod(alwaysRun = true)

@@ -204,7 +204,7 @@ public class BaseTestClass {
 		}
 
 
-	 /* To start a session using given url, browser, language and test case group name.
+	 /** To start a session using given url, browser, language and test case group name.
 	 * @param strUrl                     string of test url
 	 * @param strBrowser                 string of browser name
 	 * @param strLanguage                string of language to use
@@ -225,34 +225,43 @@ public class BaseTestClass {
 		case "selfserve":
 		case "selfserve_login":
 		case "mobile_selfserve":
-			captcha_bypass_handlers.captchaBypassURLSelfserveFlows(strUrl, strLanguage);
+			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ strLanguage);
+			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
 			break;
 			
-		case "connectedhome_legacyanonymous":				
+		case "connectedhome_legacyanonymous":
+			driver.get(strUrl+"/web/totes/api/v1/bypassCaptchaAuth");
 			captcha_bypass_handlers.captchaBypassURLLegacyAnonymousBuyFlows(strUrl, strLanguage); 
 			break;	
 			
 		case "connectedhome_igniteanonymous":				
-			captcha_bypass_handlers.captchaBypassURLIgniteAnonymousBuyFlows(strUrl, strLanguage); 
+			driver.get(strUrl+"/web/totes/browsebuy/v1/byPassCaptcha");
+			driver.get(strUrl+"?setLanguage="+ strLanguage ); 
 			break;
 			
 		case "connectedhome_legacylogin":
-			captcha_bypass_handlers.captchaBypassURLLegacyLoginFlows(strUrl, strLanguage);
+			driver.get(strUrl+"/web/totes/api/v1/bypassCaptchaAuth");
+			driver.get(strUrl+"?setLanguage="+ strLanguage );
+			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
 			break; 
 
 		case "connectedhome_ignitelogin":
-			captcha_bypass_handlers.captchaBypassURLIgniteLoginFlows(strUrl, strLanguage);
+			driver.get(strUrl+"/web/totes/browsebuy/v1/byPassCaptcha");	
+			driver.get(strUrl+"?setLanguage="+ strLanguage );
+			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
 			break; 
 			
 		case "connectedhome_login":
-			captcha_bypass_handlers.captchaBypassURLLoginFlows(strUrl, strLanguage);
+			driver.get(strUrl+"?setLanguage="+ strLanguage );
+			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
 			break; 
 		
 		case "buyflows": driver.get(strUrl);
 			break; 
 			
  		default :
- 			captcha_bypass_handlers.captchaBypassURLLoginFlows(strUrl, strLanguage);
+ 			driver.get(strUrl+"?setLanguage="+ strLanguage );
+ 			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
 		}
 	    setImplicitWait(getDriver(), 10);
 	    init(strGroupName);	 
@@ -298,7 +307,7 @@ public class BaseTestClass {
 	}
 
 
-	/* To start a session using given url, browser, language and test case group name.
+	/** To start a session using given url, browser, language and test case group name.
 	 * @param strUrl                     string of test url
 	 * @param strBrowser                 string of browser name
 	 * @param strLanguage                string of language to use
@@ -311,7 +320,7 @@ public class BaseTestClass {
 		startSession(strUrl, strBrowser, strLanguage, enumGroupName.toString().toLowerCase().trim(), currentTestMethodName);
 	}		
 
-	 /* To start a session using given url, browser, language and test case group name.
+	 /** To start a session using given url, browser, language and test case group name.
 	 * @param strUrl                     string of test url
 	 * @param strBrowser                 string of browser name
 	 * @param strLanguage                string of language to use

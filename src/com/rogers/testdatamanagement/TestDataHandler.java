@@ -18,7 +18,10 @@ public class TestDataHandler {
 	public static Config ssConfig;
 	public static PaymentDetails paymentInfo;
 	public static Config bfaConfig;
+	public static Config chConfig;
+	public static CHOneViewConfig chOneViewConfig;
 	public static PaymentDetails bfaPaymentInfo;
+	public static PaymentDetails chPaymentInfo;	
 	public static AccountData tc013132;
 	public static AccountData tc0224;
 	public static AccountData tc041139;
@@ -50,12 +53,10 @@ public class TestDataHandler {
 	public static AccountData tc7681;
 	public static AccountData tc82;
 	public static AccountData tc80;
-	public static Config rogersConfig;
 	public static AccountData digitalTVAccount;
 	public static AccountData solarisInternetAccount;
 	public static AccountData igniteTVAccount;
 	public static AccountData tc41IgniteTVAccount;
-	public static PaymentDetails rogersPaymentInfo;
 	public static AccountData solarisTVAccount;
 	public static AccountData standaloneInternetAccountWithUsage;
 	public static AccountData legacyRHP;
@@ -106,7 +107,6 @@ public class TestDataHandler {
 	public static PPCData testCase08;
 	public static HUPData testCase09;
 	public static SauceSettings sauceSettings;
-	public static CHOneViewConfig chOneViewConfig;
 	public static AccountData igniteTVParentalcontrols;
 	public static AccountData solarisAccount;
 	public static AccountData solarisTV;
@@ -150,8 +150,8 @@ public class TestDataHandler {
 	}
 	
 	private static void connectedHomeDataInit() {
-		rogersConfig =  YamlHandler.getCableConfig();
-      	rogersPaymentInfo = YamlHandler.getCablePaymentDetails();
+		chConfig =  YamlHandler.getCableConfig();
+      	chPaymentInfo = YamlHandler.getCablePaymentDetails();
       	sauceSettings = YamlHandler.getSauceSettings("/data/connectedhome/SauceSettings.yml");
       	//sacueConfig = YamlHandler.getSauceConfig();              	
       	//Digital TV test data
