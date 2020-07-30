@@ -35,16 +35,16 @@ public class Mobile_RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiv
     public void validateSuspendUsage() {
     	this.loginAndNavToDashboard();
       //Click on 'Reactive' link in Services page.
+    	rogers_profile_and_settings_page.clkCloseFeedbackIfAvailableMobile();
     	if(rogers_wireless_dashboard_page.verifyToReactivateServiceMsgDisplayed()) {
     		rogers_wireless_dashboard_page.clkLnkReactivateService();
             reporter.reportLogWithScreenshot("Service suspended, Reactivate service link is clicked.");
     		reporter.hardAssert(rogers_wireless_dashboard_page.verifyServiceResumedMsgDisplayed(),
     				"Service resumed message displayed.",
     				"Service resumed message didn't display.");	
-            rogers_account_overview_page.clkMenuUsageAndService();
-            String strAccountNum = TestDataHandler.tc0224.getAccountDetails().getCtn();
-            rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
+            rogers_account_overview_page.clkbtnBackToDevices();           
     	}
+    	
         rogers_wireless_dashboard_page.clkLnkLostOrStolenDevice();
         reporter.reportLogWithScreenshot("Lost or stolen device link is clicked.");
         rogers_wireless_dashboard_page.clkBtnSwitchOffMyService();
@@ -59,6 +59,7 @@ public class Mobile_RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiv
     public void validateReactivateService() {
     	this.loginAndNavToDashboard();
       //Click on 'Reactive' link in Services page.
+    	rogers_profile_and_settings_page.clkCloseFeedbackIfAvailableMobile();
 		reporter.hardAssert(rogers_wireless_dashboard_page.verifyToReactivateServiceMsgDisplayed(),
 				"Reactivate service message didn't displayed on wireless dashboard page.",
 				"Reactivate service message didn't display.");	
@@ -69,9 +70,7 @@ public class Mobile_RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiv
 				"Service resumed message didn't display.");	
         reporter.reportLogWithScreenshot("Service resumed success message.");
 	     //Go back to wireless dashboard page to verify service resumed successfully
-        rogers_account_overview_page.clkMenuUsageAndService();
-        String strAccountNum = TestDataHandler.tc0224.getAccountDetails().getCtn();
-        rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
+        rogers_account_overview_page.clkbtnBackToDevices();
         reporter.hardAssert(!rogers_wireless_dashboard_page.verifyToReactivateServiceMsgDisplayed(),
 				"Service is successfully resumed.",
 				"Reactivate service message still display in wireless dashboard page.");	
@@ -82,7 +81,9 @@ public class Mobile_RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiv
     }
 
     public void loginAndNavToDashboard() {
-    	rogers_home_page.clkSignIn();
+    	reporter.reportLogWithScreenshot("Home Page");
+        reporter.reportLog("Home Page Launched");
+    	rogers_home_page.clkSignInMobile();
     	String strUsername = TestDataHandler.tc0224.getUsername();
     	String strPassword = TestDataHandler.tc0224.getPassword();
     	rogers_login_page.switchToSignInIFrame();
@@ -94,15 +95,11 @@ public class Mobile_RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiv
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 		
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
-        	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc0224.getAccountDetails().getBan());
-        }
+      
         reporter.reportLogWithScreenshot("Account overview page.");
 
-      //Click on the Wireless badge in account overview badge.
-      
-        rogers_account_overview_page.clkMenuUsageAndService();
+      //Click on the Wireless badge in account overview badge.        
+        rogers_account_overview_page.clkMenuUsageAndServiceMobile();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
         String strAccountNum = TestDataHandler.tc0224.getAccountDetails().getCtn();
         rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));

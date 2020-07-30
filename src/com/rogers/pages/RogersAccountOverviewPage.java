@@ -123,6 +123,14 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Profile & Settings' or text()='Profil et paramètres']/parent::a")})
 	WebElement menuProfileAndSettingsMobile;
 	
+	
+	
+	
+	@FindAll({
+		@FindBy(xpath = "//button[@aria-label='ute.common.label.profileAndSetting']"),
+		@FindBy(xpath = "//span[text()='Profile & Settings' or text()='Profil et paramètres']/parent::a")})
+		WebElement menuAndServices;
+	
 	@FindAll({
 	@FindBy(xpath = " //div[@class='ute-secondLevelNav-bar-m']//button//span[@data-translate='ute.common.label.overview']"),
 	@FindBy(xpath = "//button[contains(text(),'Overview') or contains(text(),'Survol')]")})
@@ -253,6 +261,13 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		@FindBy (xpath = "//app-welcome-rogers"),
 		@FindBy (xpath = "//div[@class='bc-frame-title']")})
 		WebElement headerLiveChat;
+	
+	@FindAll({		
+		@FindBy (xpath = "//span[text()='Usage & Services' or text()='Profil et paramètres']/parent::a")})
+	WebElement menuUsageAndServicesMobile;
+
+	@FindBy(xpath = "//a[@data-translate='ute.common.reactivate.ctn.backToDevice']")	
+	WebElement btnClickBackToDevice;
 	
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
@@ -517,6 +532,17 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
 		reusableActions.getWhenReady(menuProfileAndSettingsMobile,30).click();			
 		reusableActions.waitForElementVisibility(headerProfileNSettings,60);
+					
+	}
+	
+	/**
+	 * Click on menu  on Mobile
+	 * @author Mirza.Kamran
+	 */
+	public void clkMenuUsageAndServiceMobile() {		
+		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
+		reusableActions.getWhenReady(menuUsageAndServicesMobile,30).click();			
+		//reusableActions.waitForElementVisibility(headerProfileNSettings,60);
 					
 	}
 	
@@ -1081,6 +1107,14 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			return reusableActions.isElementVisible(headerLiveChat, 30);
 		}
 		
+	}
+
+	/**
+	 * Clicks on back to devices page
+	 * @author Mirza.Kamran
+	 */
+	public void clkbtnBackToDevices() {
+		reusableActions.clickWhenReady(btnClickBackToDevice);
 	} 
 	
 	
