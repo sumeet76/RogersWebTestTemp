@@ -32,7 +32,10 @@ public class RogersChooseAddonsPage extends BasePageClass {
 	})
 	WebElement btnContinueHUP;
 	
-	@FindBy(xpath = "//span[@translate='mppc.summary.checkout_button']/../parent::div[contains(@class,'summary-strip-section')]/button")
+	@FindAll({
+		//@FindBy(xpath = "//span[@translate='mppc.summary.continue_button']/../parent::div[contains(@class,'summary-strip-section')]/button"),
+		@FindBy(xpath = "//span[@translate='mppc.summary.checkout_button']/../parent::div[contains(@class,'summary-strip-section')]/button")
+	})
 	WebElement btnCheckout;
 	
 	@FindBy(xpath = "//div[contains(@data-ng-repeat,\"subscriber in vm.additionalSubscribers\")]//input[@type='checkbox']/..//label")
@@ -71,6 +74,6 @@ public class RogersChooseAddonsPage extends BasePageClass {
 	 */
 	public void clkCheckout() {
 		reusableActions.clickWhenReady(btnCheckout);
-		reusableActions.waitForElementVisibility(btnCheckout, 60);
+		//reusableActions.waitForElementVisibility(btnCheckout, 60);
 	}
 }

@@ -136,7 +136,7 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickChangePlanButton() {
-		reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(btnChangePlan, 100));
+		reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(btnChangePlan, 60));
 	}
 	
 	/**

@@ -49,8 +49,6 @@ public class RogersBFA_OV_TC03_PPCOnMultiLine_Test extends BaseTestClass {
         reporter.reportLogWithScreenshot("Choose add ons page");
         rogersOV_choose_addons_page.clkCheckout();
         reporter.reportLogWithScreenshot("Order Review page");
-        //order_Review_Page.clkTermsAgreementCheckbox();
-        //rogers_order_review_page.clkShieldAgreementCheckbox();
         order_Review_Page.selectEmailDigitalCopy(TestDataHandler.buyFlowsOVtestCase03.getUsername());
         reporter.reportLogWithScreenshot("Order Review page");
         if(order_Review_Page.isPaymentRequired()) {
