@@ -51,10 +51,7 @@ public class RogersHomePage extends BasePageClass {
 	WebElement lnkIgniteTV;
 		
 	@FindBy(xpath = "//li[@class='dds_o-mobileNavDropdown__item']//a[@href='/web/consumer/ignite-bundles/tv-internet']")
-	WebElement lnkgniteTVMobile;	
-	
-	@FindBy(xpath = "//li[@class='dds_o-mobileNavDropdown__item']/a[@href='/web/consumer/ignite-bundles/tv-internet']")
-	WebElement lnkIgniteTVMobile;
+	WebElement lnkIgniteTVMobile;	
 	
 	@FindBy(xpath = "//a[@class='m-navLink -dropdown' and contains(text(),'TV Bundles')]")
 	WebElement lnkExistingCustomerIgniteTV;
@@ -62,7 +59,7 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//a[@href='/web/consumer/internet']")
 	WebElement lnkInternet;
 	
-	@FindBy(xpath = "//li[@class='dds_o-mobileNavDropdown__item']/a[@href='/consumer/internet']")
+	@FindBy(xpath = "//li[@class='dds_o-mobileNavDropdown__item']/a[@href='/web/consumer/internet']")
 	WebElement lnkInternetMobile;
 	
 	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/home-monitoring']")
@@ -267,6 +264,15 @@ public class RogersHomePage extends BasePageClass {
 		reusableActions.getWhenVisible(lnkEasyLogin, 30).click();
 	}
 	
+	/**
+	 * checks if the contenful url is displayed
+	 * @return true if the contentful url is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isContentFulURLDisplayed() {
+		return reusableActions.isElementVisible(lnkEasyLogin, 30);
+		
+	}
 	
 	/**
 	 * Click the Sign Out button from the top tile bar 
@@ -340,7 +346,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkIgniteTVMobile() {
-		reusableActions.getWhenReady(lnkIgniteTVMobile, 30).click();
+		reusableActions.getWhenReady(lnkIgniteTVMobile, 90).click();
 	}
 	
 	/**
@@ -491,9 +497,10 @@ public class RogersHomePage extends BasePageClass {
 		reusableActions.getWhenReady(txaIgniteAddressContainerExisting, 3).click();
 		reusableActions.getWhenReady(txaIgniteAddressLookup, 3).clear();
 		reusableActions.getWhenReady(txaIgniteAddressLookup, 3).sendKeys(strAddress);
+		reusableActions.getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.TAB);
 		reusableActions.getWhenVisible(txaIgniteAddressLookup, 10).sendKeys(Keys.ARROW_DOWN);
 		reusableActions.getWhenVisible(txaIgniteAddressLookup, 10).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(txaIgniteAddressLookup, 10).sendKeys(Keys.ARROW_DOWN);
+		reusableActions.getWhenVisible(txaIgniteAddressLookup, 10).sendKeys(Keys.ARROW_DOWN);		
 		reusableActions.getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
 	}
 	
@@ -513,6 +520,14 @@ public class RogersHomePage extends BasePageClass {
 		reusableActions.getWhenReady(lnkOnlyInternet, 120).click();
 	}
 	
+	/**
+	 * Click the OnlyInternet lick to check service availability
+	 * @author chinnarao.vattam
+	 */
+	public void clkOnlyInternetMobile() {
+		reusableActions.waitForElementVisibility(lnkOnlyInternet, 120);
+		reusableActions.executeJavaScriptClick(lnkOnlyInternet);
+	}
 	
 	/**
 	 * Click the Lookup Submit button to check service availability

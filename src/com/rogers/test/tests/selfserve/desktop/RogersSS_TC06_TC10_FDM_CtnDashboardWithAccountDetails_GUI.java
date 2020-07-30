@@ -41,19 +41,20 @@ button should be displayed n Share Everything Dashboard
     @Test
     public void validateFdmCtnDashboardWithAccountDetails() {
     	rogers_home_page.clkSignIn();
-    	String strUsername = TestDataHandler.tc0610.getUsername();
+    	String strUsername = TestDataHandler.tc01030405.getUsername();
     	rogers_login_page.switchToSignInIFrame();
         rogers_login_page.setUsernameIFrame(strUsername);
-        String strPassword = TestDataHandler.tc0610.getPassword();    	
+        String strPassword = TestDataHandler.tc01030405.getPassword();    	
         rogers_login_page.setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 		
         if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc0610.getAccountDetails().getBan());
+            rogers_account_overview_page.selectAccount(TestDataHandler.tc01030405.getAccountDetails().getBan());
         }
         
        common_business_flows.scrollToMiddleOfWebPage();

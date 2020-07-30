@@ -173,6 +173,17 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	}
 
 	/**
+	 * Set the dynamic CVV for Pre-Auth credit card
+	 * @author chinnarao.vattam
+	 */
+	public void setCVVMobile() {
+		String strCVV = FormFiller.generateCVVNumber();
+		reusableActions.waitForElementVisibility(txtContainerCVV,180);
+		reusableActions.executeJavaScriptClick(txtContainerCVV);
+		reusableActions.getWhenReady(txtCVV, 30).clear();
+		reusableActions.getWhenReady(txtCVV,10).sendKeys(strCVV);
+	}
+	/**
 	 * Selects the credit card expire month for Pre-Auth credit card
 	 * @author chinnarao.vattam
 	 */
@@ -271,6 +282,16 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 */
 	public void clkPaymentConfirm() {
 		reusableActions.getWhenReady(btnPaymentConfirm, 90).click();
+	}
+	
+	/**
+	 * click on  the payment confirmation button
+	 * @author chinnarao.vattam
+	 * Updated by saurav.goyal as per discussion with chinnarao.vattam
+	 */
+	public void clkPaymentConfirmMobile() {
+		reusableActions.waitForElementVisibility(btnPaymentConfirm, 90);
+		reusableActions.executeJavaScriptClick(btnPaymentConfirm);
 	}
 	
 	/**

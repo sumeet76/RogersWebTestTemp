@@ -42,6 +42,7 @@ public class RogersSS_TC_057_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDa
         rogers_login_page.setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 		
@@ -55,10 +56,10 @@ public class RogersSS_TC_057_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDa
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
         String strAccountNum = TestDataHandler.tc57.getAccountDetails().getCtn();
         rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
-        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
+        //rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
        
         //verify Data usage
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyDataDelayMessage(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyDataDelayMessage(), 
 				"Data delayed by 12 hours message is displayed", 
 				"Data delayed by 12 hours message is NOT displayed");
 		reporter.softAssert(rogers_wireless_dashboard_page.verifyDataRemainingOutOfTotalDataBucket(), 
@@ -78,9 +79,9 @@ public class RogersSS_TC_057_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDa
         reporter.softAssert(rogers_wireless_dashboard_page.verifyFullPlanTalkTextUsageModuleIsDisplayed(), 
 				"Talk & Text usage module for full plan is displayed.", 
 				"Talk & Text usage module for full plan is not displayed.");
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyUnlimitedTalkMinutesIsDisplayed(), 
-				"Unlimited minutes for talk is displayed.", 
-				"Unlimited minutes for talk is not displayed.");
+       // reporter.softAssert(rogers_wireless_dashboard_page.verifyUnlimitedTalkMinutesIsDisplayed(), 
+       // "Unlimited minutes for talk is displayed.", 
+		//		"Unlimited minutes for talk is not displayed.");
         if(rogers_wireless_dashboard_page.verifyUnlimitedTextsIsDisplayed())
         {
         	reporter.reportLogPass("Unlimited text is displayed.");

@@ -27,14 +27,13 @@ public class RogersInternetDashboardPage extends BasePageClass {
         @FindBy(xpath = "//span[@class='ds-icon rds-icon-internet']")})	
 	WebElement btnSolarisInternetBadge;
 
-	@FindBy(xpath = "//h1[@translate='global.label.internet']")
+	@FindBy(xpath = "//*[@translate='global.label.internet']")
 	WebElement infoInternet;
 
 	@FindBy(xpath = "//span[@translate='global.dashboard.internetUsage.usageAndAlerts']")
 	WebElement lnkInternetUsageAlerts;
-	//a[contains(@class,'btn ute-btn-secondary')]
 	
-	@FindBy(xpath = "//span[@translate='global.dashboard.internetUsage.usageAndAlerts']")
+	@FindBy(xpath = "//*[@usertype-translate='global.label.usageAndAlerts' or @translate='global.dashboard.internet.usage']")
 	WebElement infoUsageAndAlerts;
 
 	@FindBy(xpath = "//span[@translate='global.dashboard.common.changeInternetPackage']")
@@ -241,5 +240,14 @@ public class RogersInternetDashboardPage extends BasePageClass {
 		reusableActions.waitForElementInvisibility(popupLoadingFingers,180);
 		reusableActions.getWhenReady(packageNameLocator, 120).click();
 	}
-
+	
+	/**
+	 * Select Solaris Internet Package
+	 * @param strPackageName package name
+	 * @author Chinnarao.Vattam
+	 */
+	public void selectSolarisInternetPackage1(String strPackageName) {		
+		By packageNameLocator = By.xpath("//span[contains(normalize-space(text()),'" + strPackageName+ "') or contains(normalize-space(text()),'Élan Internet 150i')]/ancestor::div[@class='owl-item active']//ins[@translate='global.cta.select']");
+		reusableActions.getWhenReady(packageNameLocator, 180).click();
+	}
 }

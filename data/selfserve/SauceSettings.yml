@@ -20,6 +20,6 @@ androidChromeCapabilities:
    platformName: Android
    platformVersion: 10.0
    appiumVersion: 1.9.1
-   deviceName: GoogleAPI Emulator
+   deviceName: Android GoogleAPI Emulator
    deviceOrientation: portrait
 ...

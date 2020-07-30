@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Self Serve Rogers Tests SS" parallel="tests" thread-count="1">
+<suite name="Self Serve Rogers Tests SS" parallel="tests" thread-count="3">
 <parameter name="strBrowser" value="saucechrome"/>
 <parameter name="strLanguage" value="en"/>
 <parameter name="strType" value="seq"/>
@@ -17,7 +17,7 @@
 </classes>          																					
 </test>  
 
-
+<!-- 
 <test name="RogersSS_TC_02_AccountRegistration" enabled="true">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_02_AccountRegistration"></class>
@@ -48,7 +48,6 @@
 </classes>          																					
 </test>
 
-<!--
 <test name="RogersSS_TC_001_ChangeContactInfoChangeBillingAddress">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_001_ChangeContactInfoChangeBillingAddress"></class>
@@ -153,7 +152,7 @@
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_041_AO_ValidateCHaccountBadge_IginteTV"></class>
 </classes>          																					
 </test>	
-<test name="RogersSS_TC_042_AO_ValidateCHaccountBadge_IginteInternet" enabled="false	">
+<test name="RogersSS_TC_042_AO_ValidateCHaccountBadge_IginteInternet" enabled="true">
 <classes>				             
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_042_AO_ValidateCHaccountBadge_IginteInternet"></class>
 </classes>          																					
@@ -367,6 +366,54 @@
 <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE"></class>
 </classes>          																					
 </test>
+
+
+<test name="RogersSS_TC_091_ValidateDeeplinkForNotLoggedInCustomer_NSEInfinite" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_091_ValidateDeeplinkForNotLoggedInCustomer_NSEInfinite"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC_092_AO_ValidateTheMessageInAccountOverviewWhenTheAccountIsInCancelledState_SE" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_092_AO_ValidateTheMessageInAccountOverviewWhenTheAccountIsInCancelledState_SE"></class>
+</classes>          																					
+</test>
+
+
+<test name="RogersSS_TC_093_AO_ValidateAutomaticPaymentsCreditCardSEInfinite" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_093_AO_ValidateAutomaticPaymentsCreditCardSEInfinite"></class>
+</classes>          																					
+</test>
+
+
+<test name="RogersSS_TC_01_FDM_AssignDMRoleViaOverlayForFirstTimeLogin" enabled="true" >
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_01_FDM_AssignDMRoleViaOverlayForFirstTimeLogin"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC_03_FDM_ReassignDataManagerRole" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_03_FDM_ReassignDataManagerRole"></class>
+</classes>          																					
+</test>
+
+
+<test name="RogersSS_TC_04_05_FDM_BlockAndUnblockDataUsageForTheCTN" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_04_05_FDM_BlockAndUnblockDataUsageForTheCTN"></class>
+</classes>          																					
+</test>
+
+<test name="RogersSS_TC06_TC10_FDM_CtnDashboardWithAccountDetails_GUI" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC06_TC10_FDM_CtnDashboardWithAccountDetails_GUI"></class>
+</classes>          																					
+</test>  
+		
+
 
 <test thread-count="1" name="MobileTest" enabled="false" >
     <classes>

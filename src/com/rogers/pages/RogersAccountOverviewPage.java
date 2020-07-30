@@ -93,6 +93,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	
 	@FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.changePaymentMethod']")
 	WebElement lnkChangePaymentMethod;
+	
+	@FindBy(xpath = "//span[@translate='ute.payment.method.mop_title']")
+	WebElement lnkBelowCardChangePaymentMethod;
 		
 	@FindAll({
         @FindBy(xpath = "//rss-billing-widget//span[contains(text(),'Set up automatic payments') or contains(text(),'Établir les paiements automat.')]"),
@@ -140,13 +143,13 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy (xpath = "//h1[@class='profile-header']")
 	WebElement headerProfileNSettings;
 	
-	@FindBy (xpath = "//div[@translate='ute.payment.method.payment_method' or @translate='ute.payment.method.will_auto_charge']")
+	@FindBy (xpath = "//*[@translate='ute.payment.method.payment_method' or @translate='ute.payment.method.will_auto_charge' or contains(text(),'Will be automatically charged to:') or contains(text(),'Mode de paiement:')]")
 	WebElement lblAutoPayment;
 	
 	@FindBy(xpath = "//div[@translate='ute.payment.method.account_prefix']")
 	WebElement lblAutoPaymentAccountPreFix;
 
-	@FindBy(xpath = "//div[contains(@class,'cc-image')]")
+	@FindBy(xpath = "//*[contains(@class,'cc-image') or contains(@class,'cc-icon')]")
 	WebElement imgCC;
 
 	@FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.makePayment']")
@@ -222,6 +225,35 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@translate,'makeAPayment')]")
 	WebElement lblMakeASecurePayment;
 
+	@FindBy(xpath = "//span[@class='auto-payment-info']")
+	WebElement txtCC;
+
+	@FindBy(xpath = "//p[contains(text(),'This account has been cancelled, so your access to MyRogers') or contains(text(),'Ce compte a été fermé, votre accès à MonRogers')]") 
+	WebElement divAccountCancelled;
+	
+	@FindBy(xpath = "//span[text()=' - View billing and payment history' or contains(text(),'Consulter votre historique de facture et de paiement')]") 
+	WebElement lnkViewBillingAndPayment;
+	
+	@FindBy(xpath = "//span[contains(text(),'Manage Profile') or contains(text(),'Gérer votre profil')]") 
+	WebElement lnkManageProfile;
+
+	@FindBy(xpath = "//span[contains(text(),'Set up automatic payments') or contains(text(),'Configurer les paiements automatiques')]") 
+	WebElement lnkSetUpAutomaticPaymentMethodAOPage;
+
+	@FindBy(xpath = "//span[text()='Payment History' or text()='Historique de paiement']") 
+	WebElement lnkPaymentHistoryDisplayed;
+	
+	@FindBy (xpath = "//div[@class='floatingOverview bcStatic']")
+	WebElement btnLiveChat;
+
+	@FindBy(xpath = "//iframe[@id='va-iframe']")
+	WebElement fraLiveChat;
+	
+	@FindAll({
+		@FindBy (xpath = "//app-welcome-rogers"),
+		@FindBy (xpath = "//div[@class='bc-frame-title']")})
+		WebElement headerLiveChat;
+	
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
 	 * @return true if more than one ban present else false
@@ -371,7 +403,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public Boolean isAccountSelectionPopupDisplayed() {
-		return reusableActions.isElementVisible(headerAccountSelect, 10);
+		return reusableActions.isElementVisible(headerAccountSelect);
 	}
 
 	/**
@@ -722,6 +754,15 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	}
 	
 	/**
+	 * Checks if the auto payment is displayed
+	 * @return true if set automatic payment sub menu is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isLnkSetAutoPaymentDisplayed() {		
+		return reusableActions.isElementVisible(lnkSetUpAutomaticPaymentMethodAOPage);
+	}
+	
+	/**
 	 * Checks if the auto payment is set
 	 * @return true if set automatic payment sub menu is displayed else false
 	 * @author Mirza.Kamran
@@ -755,6 +796,27 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			 && reusableActions.isDisplayed(imgCC));
 	}
 
+		
+	/**
+	 * Checks if the auto payment option is set successfully to CC
+	 * @return true if the payment option is set successfully
+	 * @param strCC string value of of containing cc
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyCCEndingWithIsDisplayedCorrectly(String strCC) {		
+		return reusableActions.getWhenReady(txtCC).getText().trim().endsWith(strCC.substring(strCC.length()-4));
+	}
+	
+	/**
+	 * Checks if the CC auto payment option is displayed on Account overview
+	 * @return true if the CC payment option is displayed on account overview, else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isCCDisplayedOnAccountOverViewPage() {		
+		return (reusableActions.isElementVisible(lblAutoPayment,30)
+			 && reusableActions.isDisplayed(imgCC));
+	}
+	
 	/**
 	 * Clicks on the menu Billing and Payments and selects the submenu Make Payment option
 	 * @author Mirza.Kamran
@@ -848,6 +910,16 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public boolean isCTNMoreThanOne() {		
 		return lstCtnBadges.size()>1;
 	}
+	
+	/**
+	 * Checks if the no CTNS are displayed
+	 * @return true if the no CTNS are displayed
+	 * @author Mirza.Kamran
+	 */
+	public boolean isCTNNotDisplayed() {		
+		return lstCtnBadges.size()==0;
+	}
+	
 	/**
 	 * retruns total no of CTNS
 	 * @return int value total no of CTNs
@@ -919,6 +991,16 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	}
 
 	/**
+	 * Clicks on view bill if available
+	 * @author Mirza.Kamran
+	 * @return true if the view bill is displayed else false
+	 */
+	public boolean isViewBillDisplayed() {
+	return reusableActions.isElementVisible(btnViewYourBill);
+		
+	}
+	
+	/**
 	 * Clicks on Billings and payments sub menu change paymeny mobile
 	 * @author Mirza.Kamran
 	 */
@@ -927,4 +1009,88 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		reusableActions.getWhenReady(submenuChangePaymentMethod).click();
 		
 	}
+
+	/**
+	 * Is Change payment method displayed
+	 * @return true if the change payment method is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isChangePaymentMethodDisplayed() {
+		return reusableActions.isElementVisible(lnkBelowCardChangePaymentMethod);
+	}
+
+	/**
+	 * The account is cancelled message is displayed
+	 * @author Mirza.Kamran
+	 * @return true if the message is displayed else false
+	 */
+	public boolean isAccountCancelledMessageDisplayed() {
+		return reusableActions.isElementVisible(divAccountCancelled);
+	}
+	
+	/**
+	 * The view billing and payment history is displayed inside account is cancelled message
+	 * @author Mirza.Kamran
+	 * @return true if the message is displayed else false
+	 */
+	public boolean isViewBillingAndPaymentHistoryDisplayedInsideAccountCancelledMessage() {
+		return reusableActions.isElementVisible(lnkViewBillingAndPayment);
+	}
+	
+	/**
+	 * The Manage Profile link is displayed inside account is cancelled message
+	 * @author Mirza.Kamran
+	 * @return true if the message is displayed else false
+	 */
+	public boolean isManageProfileLinkDisplayedInsideAccountCancelledMessage() {
+		return reusableActions.isElementVisible(lnkManageProfile);
+	}
+
+	/**
+	 * Payment history link is displayed
+	 * @return true if the payment history link is displayed on account overview page else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isLnkPaymentHistoryDisplayed() {
+		return reusableActions.isElementVisible(lnkPaymentHistoryDisplayed);
+	}
+
+	/**
+	 * To verify if the live chat button display in wireless dashboard page
+	 * @return true if the button displayed otherwise false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyLiveChatButtonIsDisplayed() {
+		return reusableActions.isElementVisible(btnLiveChat, 30);
+	}
+	
+	/**
+	 * Click the button Live chat in wireless dashboard page
+	 * @author Mirza.Kamran
+	 */
+	public void clkBtnLiveChat() {
+		reusableActions.getWhenReady(btnLiveChat, 20).click();
+	}
+	
+	/**
+	 * To verify if the live chat overlay opened in wireless dashboard page
+	 * @return true if the overlay opened otherwise false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyLiveChatOverlayOpened() {	
+	  if(reusableActions.isElementVisible(fraLiveChat))
+		{
+		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraLiveChat, 20);
+		return reusableActions.isElementVisible(headerLiveChat, 30);
+		}else
+		{
+			return reusableActions.isElementVisible(headerLiveChat, 30);
+		}
+		
+	} 
+	
+	
+	
+	
+	
 }
