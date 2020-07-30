@@ -51,10 +51,10 @@ public class Mobile_RogersCH_TC_003_Internet_BuyInternetOfferTest extends BaseTe
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line2");
-        rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
-        rogers_home_page.clkOnlyInternet();
+        rogers_home_page.clkOnlyInternetMobile();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");       
         rogers_internet_package_selection_page.clkInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");         

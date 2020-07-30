@@ -32,7 +32,7 @@ public class RogersSS_TC_03_FDM_ReassignDataManagerRole extends BaseTestClass {
 	
 	
     @Test
-    public void validateDataUsageInfiniteSEReducedSpeeds() {
+    public void validateReassignDataManagerRole() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc7681.getUsername();
     	rogers_login_page.switchToSignInIFrame();
@@ -41,6 +41,7 @@ public class RogersSS_TC_03_FDM_ReassignDataManagerRole extends BaseTestClass {
         rogers_login_page.setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 		
@@ -64,12 +65,12 @@ public class RogersSS_TC_03_FDM_ReassignDataManagerRole extends BaseTestClass {
        reporter.reportLogWithScreenshot("dashboard page displayed"); 
        rogers_wireless_dashboard_page.clkDataManagerCTN();
        reporter.reportLogWithScreenshot("Data Manager CTN clicked"); 
-       reporter.hardAssert(rogers_wireless_dashboard_page.isAddChangeDataManagerDisplayed(),
-    		   "Change data manager available for this account","Chnage data manager is not displayed for this account");
+       reporter.hardAssert(rogers_wireless_dashboard_page.isChangeDataManagerDisplayed(),
+    		   "Change data manager available for this account","Change data manager is not displayed for this account");
        String strDataManagerCTN = rogers_wireless_dashboard_page.getDataManagerCTN();
        reporter.reportLogWithScreenshot("Data manager CTN is : "+strDataManagerCTN); 
        String strNonDataManagerCTN = rogers_wireless_dashboard_page.getNonDataManagerCTN();
-       reporter.reportLogWithScreenshot("Non Data manager CTN is : "+strNonDataManagerCTN); 
+       reporter.reportLog("Non Data manager CTN is : "+strNonDataManagerCTN); 
        rogers_wireless_dashboard_page.clkChangeDataManager();
        reporter.reportLogWithScreenshot("Change data manger button clicked");
        reporter.softAssert(rogers_wireless_dashboard_page.isChooseDataManagerOverlayDisplayed(),
@@ -77,14 +78,14 @@ public class RogersSS_TC_03_FDM_ReassignDataManagerRole extends BaseTestClass {
         		   "Choose data manager overlay is NOT available for this account");
        reporter.reportLogWithScreenshot("Choose data manager overlay displayed");       
        rogers_wireless_dashboard_page.changeDataManager(strNonDataManagerCTN);
-       reporter.reportLogWithScreenshot("Data manager chnages to : "+strNonDataManagerCTN);
+       reporter.reportLogWithScreenshot("Data manager changes to : "+strNonDataManagerCTN);
        rogers_wireless_dashboard_page.clkSaveButtonOnDataManager();
        reporter.reportLogWithScreenshot("Save data manager clicked");
        rogers_wireless_dashboard_page.clkDataManagerCTN();
        reporter.reportLogWithScreenshot("Data Manager CTN clicked"); 
        reporter.softAssert(rogers_wireless_dashboard_page.isChangeDataManagerSuccessful(strNonDataManagerCTN),
-    		   "Data manager is changed successfully", "Data manager is not chnaged for this account yet");
-       reporter.reportLogWithScreenshot("Chnage Data manager is done successfully from "+strDataManagerCTN+" this to "+strNonDataManagerCTN);
+    		   "Data manager is changed successfully", "Data manager is not changed for this account yet");
+       reporter.reportLogWithScreenshot("Change Data manager is done successfully from "+strDataManagerCTN+" this to "+strNonDataManagerCTN);
        
     }
 

@@ -42,6 +42,7 @@ public class RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhe
         rogers_login_page.setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 		
@@ -65,6 +66,11 @@ public class RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhe
        reporter.hardAssert(rogers_wireless_dashboard_page.isScrollForCTNsPresent(),
     		   "The scroll for CTNS is present",
     		   "The scroll for CTNs not present");
+       rogers_wireless_dashboard_page.clkLeftCTNScrollArrow();
+       rogers_wireless_dashboard_page.clkLeftCTNScrollArrow();
+       reporter.reportLogWithScreenshot("Click on left scroll performed"); 
+       rogers_wireless_dashboard_page.clkTheNthCTNOnDashboardPage(1);
+       reporter.reportLogWithScreenshot("Click 1st CTN");
        reporter.softAssert(rogers_wireless_dashboard_page.isSixthCTNBadgeInVisibleBeforeScrollingOnDashBoard(),
     		   "6th CTN badge is not visible before scroll",
     		   "6th CTN is visible before scroll");

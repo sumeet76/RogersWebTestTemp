@@ -3,3 +3,5 @@
 [0415/125616.981:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
 [0415/125616.981:ERROR:exception_snapshot_win.cc(98)] thread ID 7456 not found in process
 [0506/191012.537:ERROR:file_io_win.cc(161)] CreateFile C:\Users\MIRZA~1.KAM\AppData\Local\Temp\scoped_dir23640_478557890\Crashpad\settings.dat: The system cannot find the file specified. (0x2)
+[0713/180548.295:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[0713/180548.297:ERROR:exception_snapshot_win.cc(98)] thread ID 11164 not found in process

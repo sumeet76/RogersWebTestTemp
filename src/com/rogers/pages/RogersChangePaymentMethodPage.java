@@ -19,7 +19,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//div[text()='Change payment method' or text()='Set up automatic payments']")
+	@FindBy(xpath = "//div[text()='Change payment method' or text()='Set up automatic payments' or contains(text(),'des paiements')]")
 	WebElement lblChangePaymentMethod;
 	
 	@FindBy(xpath = "//md-radio-button[@aria-label='Switch to manual payments' or @aria-label='Passer au paiement manuel']")
@@ -37,7 +37,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	@FindBy(xpath = "//md-radio-button[@aria-label='Use a bank account for automatic payments' or @aria-label='Effectuer des paiements automatiques à partir d’un compte bancaire']")
 	WebElement optBankAccount;
 	
-	@FindBy(xpath = "//md-radio-button[@aria-label='Use a credit card for automatic paymentsVisa Debit and Debit Mastercard are accepted' or contains(@aria-label,'Effectuer des paiements automatiques à partir d’un compte de carte')]")
+	@FindBy(xpath = "//md-radio-button[contains(@aria-label,'credit card for automatic paymentsVisa Debit and Debit Mastercard are accepted') or contains(@aria-label,'Effectuer des paiements automatiques à partir d’un compte de carte')]")
 	WebElement optCardAccount;
 	
 	@FindBy(xpath = "//md-radio-button[@aria-label='Switch to manual payments' or @aria-label='Passer au paiement manuel']")

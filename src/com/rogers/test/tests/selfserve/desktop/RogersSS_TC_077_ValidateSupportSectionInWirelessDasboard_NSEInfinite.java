@@ -41,6 +41,7 @@ public class RogersSS_TC_077_ValidateSupportSectionInWirelessDasboard_NSEInfinit
         rogers_login_page.setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 		
@@ -66,6 +67,7 @@ public class RogersSS_TC_077_ValidateSupportSectionInWirelessDasboard_NSEInfinit
         					"Support section is loaded in wireless dashboard page", 
         					"Support section is NOT loaded in wireless dashboard page");
         String strBaseUrl = TestDataHandler.ssConfig.getRogersURL();
+        strBaseUrl = strBaseUrl.substring(0, strBaseUrl.lastIndexOf("com")+3);
         reporter.softAssert(rogers_wireless_dashboard_page.verifyLinkFaqUnlockDevice(strBaseUrl), 
 				"FAQ: Unlocking Device link in Support section is validated successfully.", 
 				"Something wrong with FAQ: Unlocking Device link in Support section.");

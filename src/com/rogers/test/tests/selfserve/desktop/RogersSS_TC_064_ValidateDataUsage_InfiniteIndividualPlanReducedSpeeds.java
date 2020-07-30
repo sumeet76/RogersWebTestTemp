@@ -41,6 +41,7 @@ public class RogersSS_TC_064_ValidateDataUsage_InfiniteIndividualPlanReducedSpee
         rogers_login_page.setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 		
@@ -80,15 +81,21 @@ public class RogersSS_TC_064_ValidateDataUsage_InfiniteIndividualPlanReducedSpee
         reporter.reportLogWithScreenshot("Closed Call out message to Add speed pass on dashboard page.");  
 	    rogers_login_page.clickSignOut();
 	    reporter.reportLogWithScreenshot("Sign Out clicked");  
-	    rogers_login_page.clkSignInAs();
-	    reporter.reportLogWithScreenshot("Re sign In");  
-	    rogers_login_page.switchToSignInIFrame();
-	                   
-	        rogers_login_page.setPasswordIFrame(strPassword);
-	        reporter.reportLogWithScreenshot("Login Credential is entered.");
-			rogers_login_page.clkSignInIFrame();		
-			rogers_login_page.switchOutOfSignInIFrame();		       
-	        reporter.reportLogWithScreenshot("Account overview page.");      
+        rogers_login_page.clkSignInAs();
+        reporter.reportLogWithScreenshot("Re sign In");  
+        rogers_login_page.switchToSignInIFrame();
+                   
+        rogers_login_page.setPasswordIFrame(strPassword);
+        //getDriver().get(TestDataHandler.ssConfig.getRogersURL());
+        //rogers_home_page.clkSignIn();	    	
+    	//rogers_login_page.switchToSignInIFrame();
+        //rogers_login_page.setUsernameIFrame(strUsername);    	
+        //rogers_login_page.setPasswordIFrame(strPassword);
+        reporter.reportLogWithScreenshot("Re sign In");  
+        reporter.reportLogWithScreenshot("Login Credential is entered.");
+		rogers_login_page.clkSignInIFrame();		
+		rogers_login_page.switchOutOfSignInIFrame();		       
+        reporter.reportLogWithScreenshot("Account overview page.");     
 //	        rogers_account_overview_page.clkCtnBadge(last4Digit);
 	        rogers_account_overview_page.clkMenuUsageAndService();
 	        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
