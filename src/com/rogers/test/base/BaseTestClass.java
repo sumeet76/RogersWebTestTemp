@@ -265,6 +265,7 @@ public class BaseTestClass {
 			break; 
 		
 		case "buyflows": 
+			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ strLanguage);
 			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
 			break;
 			

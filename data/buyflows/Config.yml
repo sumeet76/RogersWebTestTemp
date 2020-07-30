@@ -1,5 +1,5 @@
 # Config
-rogersURL: https://qa7.rogers.com/consumer/wireless
+rogersURL: https://qa7.rogers.com
 #rogersURL: https://qa07-ciam.rogers.com
 solarisPath: /web/totes/browsebuy/v1/byPassCaptcha
 legacyPath: /web/totes/api/v1/bypassCaptchaAuth
