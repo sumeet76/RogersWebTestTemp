@@ -1,5 +1,6 @@
 package com.rogers.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -58,8 +59,8 @@ public class RogersLoginPage extends BasePageClass {
 	 * To switch to the iframe
 	 * @author chinnarao.vattam
 	 */
-	public void switchToSignInIFrame() {
-		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraSignIn, 100);
+	public void switchToSignInIFrame() {			
+		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraSignIn, 5);
 	}
 	
 	/**
@@ -113,7 +114,7 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSkipIFrame() {
-		reusableActions.clickIfAvailable(btnSkip,0);
+		reusableActions.clickIfAvailable(btnSkip,5);
 	}
 	
 	/**
