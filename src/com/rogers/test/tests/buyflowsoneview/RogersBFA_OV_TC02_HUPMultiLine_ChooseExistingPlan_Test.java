@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
+import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 
 /**
@@ -26,6 +27,8 @@ public class RogersBFA_OV_TC02_HUPMultiLine_ChooseExistingPlan_Test extends Base
 		environment_selection_page.clkGo();
 		reporter.hardAssert(account_over_view_page.verifySuccessfulLogin(), "Login Successful", "Login Failed");
 		reporter.hardAssert(account_over_view_page.verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase02.getCtn()),"CTN Found","CTN Not Found");
+		account_over_view_page.clkBtnAssignDataManager();
+		account_over_view_page.clkBtnOkOneViewDialoue();
 		rogersOV_wireless_details_page.verifyWirelessPageLoad();
 		reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
 		rogersOV_wireless_details_page.clkUpgradeMyDevice();
@@ -72,7 +75,7 @@ public class RogersBFA_OV_TC02_HUPMultiLine_ChooseExistingPlan_Test extends Base
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startOVSession(TestDataHandler.bfaOneViewConfig.getRogersOVUrl(),strBrowser, strLanguage,"buyflowsoneview", TestDataHandler.buyFlowsOVtestCase02.getContactID(),TestDataHandler.buyFlowsOVtestCase02.getBanNo(),TestDataHandler.bfaOneViewConfig.getUsrID(), TestDataHandler.bfaOneViewConfig.getLoginID(),  method);
+		startOVSession(TestDataHandler.bfaOneViewConfig.getRogersOVUrl(),strBrowser, strLanguage,RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim(), TestDataHandler.buyFlowsOVtestCase02.getContactID(),TestDataHandler.buyFlowsOVtestCase02.getBanNo(),TestDataHandler.bfaOneViewConfig.getUsrID(), TestDataHandler.bfaOneViewConfig.getLoginID(),  method);
   	}
     
     @AfterTest(alwaysRun = true)

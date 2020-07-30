@@ -25,11 +25,27 @@ public class RogersChooseAddonsPage extends BasePageClass {
 	})
 	WebElement btnContinue;
 	
-	@FindBy(xpath = "//section[contains(@class,'summary-section')]//span/span/span[@res='_continue']")
+	@FindAll({
+	//@FindBy(xpath = "//section[contains(@class,'summary-section')]//span/span/span[@res='_continue']")
+	@FindBy(xpath = "//section[contains(@class,'summary-section')]//p[@class='col-sm-6 btn button-continue ng-scope']"),
+	@FindBy(xpath = "//button[@name='button_continue']//span")
+	})
 	WebElement btnContinueHUP;
 	
 	@FindBy(xpath = "//span[@translate='mppc.summary.checkout_button']/../parent::div[contains(@class,'summary-strip-section')]/button")
 	WebElement btnCheckout;
+	
+	@FindBy(xpath = "//div[contains(@data-ng-repeat,\"subscriber in vm.additionalSubscribers\")]//input[@type='checkbox']/..//label")
+	WebElement checkBoxKeepCurrentPlanLine2;
+	
+	/**
+	 * Clicks on the 'Continue' button at the bottom of the page
+	 * @author rajesh.varalli1
+	 */
+	public void clkCheckBoxKeepCurrentPlanLine2() {
+		reusableActions.executeJavaScriptClick(checkBoxKeepCurrentPlanLine2);
+		//reusableActions.clickIfAvailable(checkBoxKeepCurrentPlanLine2,30);
+	}
 	
 	/**
 	 * Clicks on the 'Continue' button at the bottom of the page

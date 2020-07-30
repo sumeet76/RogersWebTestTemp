@@ -34,7 +34,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	@FindBy(xpath = "//md-select[@ng-model='model.filterByType']//span[@class='md-select-icon']")
 	WebElement icnPlanType;
 	
-	@FindBy(xpath = "//span[contains(@translate,'ppc')]/parent::button/parent::div[contains(@class,'summary')]")
+	@FindBy(xpath = "//span[@translate='ppc_checkout_review_checkout']/../parent::div[contains(@class,'summary')]")
 	WebElement btnCheckout;
 	
 	@FindBy(xpath = "//div[@class='plan-socview']/span[@class='tabdata ng-scope']")
@@ -106,7 +106,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkMakeChangesToExistingPlan() {
-		reusableActions.clickWhenReady(lblChangesToExistingPlan,60);
+		reusableActions.clickIfAvailable(lblChangesToExistingPlan,60);
 	}
 	
 	/**
@@ -154,7 +154,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkButtonModalContinue() {
-		reusableActions.clickWhenReady(btnModalContinue,60);
+		reusableActions.clickIfAvailable(btnModalContinue,60);
 	}
 	
 	/**
@@ -307,7 +307,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyAndClickDowngradeFeeContinue() {
-		if(reusableActions.isElementVisible(btnDowngradeFeeContinue, 90)) {
+		if(reusableActions.isElementVisible(btnDowngradeFeeContinue, 30)) {
 			reusableActions.executeJavaScriptClick(btnDowngradeFeeContinue);
 			return true;			
 		} else {

@@ -29,7 +29,30 @@ public class AccountOverViewPage  extends BasePageClass {
 	
 	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.total_balance' or text()='Total balance' or text()='Total du solde'  or text()='Total Balance']")
 	WebElement infoBalanceLable;
+	
+	@FindBy(xpath = "//div[@class='oneview-dialog']//button")
+	WebElement btnOneViewDataManagerDialogue;
 
+	@FindBy(xpath = "//div[@class='oneview-dialog']//button")
+	WebElement btnOkOneViewDialogue;
+	
+	/**
+	 * To click on ok button after clicking on Assign data manager in the dialogue box @function clkBtnAssignDataManager
+	 * @author Saurav.Goyal
+	 */
+	public void clkBtnOkOneViewDialoue() {
+		reusableActions.staticWait(5000);
+		reusableActions.clickIfAvailable(btnOkOneViewDialogue,30);
+	}
+	
+	/**
+	 * To click on Assign data manager in the dialogue box
+	 * @author Saurav.Goyal
+	 */
+	public void clkBtnAssignDataManager() {
+		reusableActions.clickIfAvailable(btnOneViewDataManagerDialogue,30);
+	}
+	
 	/**
 	 * Selects the Internet Badge on the account dashbaord
 	 * @author Drashti.Patel

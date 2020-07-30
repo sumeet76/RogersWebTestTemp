@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
+import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 
 /**
@@ -25,12 +26,15 @@ public class RogersBFA_OV_TC05_HUPWithPPCSingleLine_ChooseDifferentPlan_Test ext
 		environment_selection_page.selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
 		environment_selection_page.clkGo();
 		reporter.hardAssert(account_over_view_page.verifySuccessfulLogin(), "Login Successful", "Login Failed");
-		reporter.hardAssert(account_over_view_page.verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase02.getCtn()),"CTN Found","CTN Not Found");
+		reporter.hardAssert(account_over_view_page.verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase05.getCtn()),"CTN Found","CTN Not Found");
+		account_over_view_page.clkBtnAssignDataManager();
+		account_over_view_page.clkBtnOkOneViewDialoue();
 		rogersOV_wireless_details_page.verifyWirelessPageLoad();
 		reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
 		rogersOV_wireless_details_page.clkUpgradeMyDevice();
 		reporter.reportLogWithScreenshot("Rogers Choose Phone Page");
-		rogersOV_choose_phone_page.searchDevice(TestDataHandler.buyFlowsOVtestCase02.getNewDevice());
+		rogersOV_choose_phone_page.searchDevice(TestDataHandler.buyFlowsOVtestCase05.getNewDevice());
+		Boolean proOnTheGoFlag = rogersOV_choose_phone_page.checkProOnTheGo();
 		rogersOV_choose_phone_page.selectFirstAvailableDevice();
 		reporter.reportLogWithScreenshot("Rogers Choose Phone Page");
 		rogersOV_build_plan_page.selectFirstPlanInPickNewPlan();
@@ -39,12 +43,14 @@ public class RogersBFA_OV_TC05_HUPWithPPCSingleLine_ChooseDifferentPlan_Test ext
 		reporter.reportLogWithScreenshot("Rogers Choose Addons Page");
 		rogersOV_choose_addons_page.clkContinueHUP();
 		reporter.reportLogWithScreenshot("Rogers Shipping Page");
-        //rogers_shipping_page.clkRadioNormalDelivery();
-        //Check with manual team , now asking standard delivery - fee
-        //rogers_shipping_page.setEmailID();
-        //rogers_shipping_page.clkSaveEmail();
-        //rogersOV_shipping_page.clkSelectAvailableTime();
-        //rogersOV_shipping_page.clkReserve();
+		if(proOnTheGoFlag) {
+	        rogers_shipping_page.setEmailID();
+	        rogers_shipping_page.clkSaveEmail();
+	        rogers_shipping_page.setPhoneNumber();
+	        rogers_shipping_page.clkSaveNumber();
+	        rogers_shipping_page.clkSelectAvailableTime();
+	        rogers_shipping_page.clkReserve();
+        }
         reporter.reportLogWithScreenshot("Rogers Shipping Page before clicking continue");
         rogersOV_shipping_page.clkContinue();
         reporter.reportLogWithScreenshot("Rogers review page");
@@ -70,7 +76,7 @@ public class RogersBFA_OV_TC05_HUPWithPPCSingleLine_ChooseDifferentPlan_Test ext
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startOVSession(TestDataHandler.bfaOneViewConfig.getRogersOVUrl(),strBrowser, strLanguage,"buyflowsoneview", TestDataHandler.buyFlowsOVtestCase02.getContactID(),TestDataHandler.buyFlowsOVtestCase02.getBanNo(),TestDataHandler.bfaOneViewConfig.getUsrID(), TestDataHandler.bfaOneViewConfig.getLoginID(),  method);
+		startOVSession(TestDataHandler.bfaOneViewConfig.getRogersOVUrl(),strBrowser, strLanguage,RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim(), TestDataHandler.buyFlowsOVtestCase05.getContactID(),TestDataHandler.buyFlowsOVtestCase05.getBanNo(),TestDataHandler.bfaOneViewConfig.getUsrID(), TestDataHandler.bfaOneViewConfig.getLoginID(),  method);
   	}
     
     @AfterTest(alwaysRun = true)

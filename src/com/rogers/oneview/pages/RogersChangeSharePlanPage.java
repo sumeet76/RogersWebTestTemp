@@ -16,15 +16,20 @@ public class RogersChangeSharePlanPage  extends BasePageClass {
 	
 	@FindBy(xpath = "//button[@class='btn edit ng-scope']")
 	List<WebElement> btnEdit;
+	
+	
+	@FindBy(xpath = "//div[@class='row plan-details']")
+	WebElement lbllineDetailData;
 
 	/**
-	 * This function will click edit button
+	 * This function will click edit button on change share plan page
 	 * @author Saurav.Goyal
 	 */
 	public void clickEditButton() {
-		reusableActions.clickWhenReady(btnEdit.get(0),45);
-		
+			reusableActions.waitForPageLoad();
+			reusableActions.javascriptScrollByVisibleElement(lbllineDetailData);
+			reusableActions.clickWhenReady(btnEdit.get(0),60);
+			reusableActions.staticWait(2000);		
 	}
-		
 }
 

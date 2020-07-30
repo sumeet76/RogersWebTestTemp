@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
+import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 
 /**
@@ -28,7 +29,10 @@ public class RogersBFA_OV_TC03_PPCOnMultiLine_Test extends BaseTestClass {
         reporter.hardAssert(account_over_view_page.verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page");
         reporter.hardAssert(account_over_view_page.verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase03.getCtn()), "Select CTN Passed", "Select CTN Failed");
-        reporter.reportLogWithScreenshot("Wireless Dashboard Page");
+        account_over_view_page.clkBtnAssignDataManager();
+		account_over_view_page.clkBtnOkOneViewDialoue();
+		rogersOV_wireless_details_page.verifyWirelessPageLoad();
+		reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
         rogersOV_wireless_details_page.clickChangePlanButton();
         reporter.reportLogWithScreenshot("Change share plan page");
         rogersOV_ChangeSharePlan_page.clickEditButton();
@@ -68,7 +72,7 @@ public class RogersBFA_OV_TC03_PPCOnMultiLine_Test extends BaseTestClass {
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startOVSession(TestDataHandler.bfaOneViewConfig.getRogersOVUrl(),strBrowser, strLanguage,"buyflowsoneview", TestDataHandler.buyFlowsOVtestCase03.getContactID(),TestDataHandler.buyFlowsOVtestCase03.getBanNo(),TestDataHandler.bfaOneViewConfig.getUsrID(), TestDataHandler.bfaOneViewConfig.getLoginID(),  method);
+		startOVSession(TestDataHandler.bfaOneViewConfig.getRogersOVUrl(),strBrowser, strLanguage,RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim(), TestDataHandler.buyFlowsOVtestCase03.getContactID(),TestDataHandler.buyFlowsOVtestCase03.getBanNo(),TestDataHandler.bfaOneViewConfig.getUsrID(), TestDataHandler.bfaOneViewConfig.getLoginID(),  method);
   	}
     
     @AfterTest(alwaysRun = true)
