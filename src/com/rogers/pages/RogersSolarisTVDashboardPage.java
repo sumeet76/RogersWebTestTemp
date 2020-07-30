@@ -183,6 +183,14 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	}
 
 	/**
+	 * Click the TV badge on  account details page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkTVBadgeMobile() {
+		reusableActions.moveToElementAndClick(btnSolaristvBadge,120);
+	}
+	
+	/**
 	 * Verify the view my channel lineup link on Solaris TV dashboard page
 	 * @return true if the Solaris TV dashboard page display the view my channel lineup link, else false
 	 * @author chinnarao.vattam
@@ -493,9 +501,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkConfirmSwap() {
-		reusableActions.waitForElementVisibility(btnConfirmSwap,90);
-		reusableActions.executeJavaScriptClick(btnConfirmSwap);
-		reusableActions.waitForElementInvisibility(popupLoadingFingers,220);		
+		reusableActions.waitForElementVisibility(btnConfirmSwap,180);
+		reusableActions.getWhenReady(btnConfirmSwap,90).click();
 	}
 	
 	/**

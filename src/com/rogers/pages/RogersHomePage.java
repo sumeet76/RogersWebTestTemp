@@ -91,6 +91,9 @@ public class RogersHomePage extends BasePageClass {
 	WebElement btnServiceability;
 	//a[@title='Check if Ignite Bundles are available in your area' or @title='Vérifiez si les offres groupées Élan sont disponibles dans votre secteur.']
 	
+	@FindBy(xpath ="//div[@class='ng-star-inserted overlay']")
+	WebElement overlayHomePage;
+		
 	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -primary -large ng-star-inserted']")
 	WebElement btnWelcomeback;	
 	//a[@title='Check if Ignite Bundles are available in your area']
@@ -429,7 +432,11 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkServiceability() {
-		reusableActions.getWhenReady(btnServiceability, 120).click();
+	if(reusableActions.isElementVisible(overlayHomePage,2))
+		{
+		reusableActions.waitForElementInvisibilityNOException(overlayHomePage,5);	
+		}
+		reusableActions.getWhenReady(btnServiceability, 30).click();
 	}
 	
 	/**
