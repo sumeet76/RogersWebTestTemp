@@ -153,7 +153,13 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
 
 			if(xmlTestParameters.get("strBrowser").contains("sauce"))
 			{
-				((JavascriptExecutor) webDriver).executeScript("sauce:job-result=" + "skipped");
+				((JavascriptExecutor) webDriver).executeScript("sauce:job-result=" + "skipped");				
+				((JavascriptExecutor)webDriver).executeScript("sauce:job-name="+getTestMethodName(iTestResult));
+				String sauceSessionId = (((RemoteWebDriver) webDriver).getSessionId()).toString();
+				String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", sauceSessionId, getTestMethodName(iTestResult));
+				System.out.println(message);
+				
+				
 			}else if (xmlTestParameters.get("strBrowser").equalsIgnoreCase("browserstack")) {
 				try {
 					((BaseTestClass) testClass).mark("skipped");
