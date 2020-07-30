@@ -457,7 +457,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verify4KTV() {
-		reusableActions.waitForElementVisibility(rdo4KTV, 10);
+		reusableActions.waitForElementVisibility(rdo4KTV, 60);
 		return	reusableActions.isElementVisible(rdo4KTV);
 	}
 	
@@ -496,7 +496,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisStarterPackageMobile() {
-		reusableActions.getWhenReady(btnSolarisStarterPackageMobile, 180).click();
+		reusableActions.getWhenReady(btnSolarisStarterPackageMobile, 60).click();
 	}
 	/**
 	 * Click Starter package to check Service ability for Starter package

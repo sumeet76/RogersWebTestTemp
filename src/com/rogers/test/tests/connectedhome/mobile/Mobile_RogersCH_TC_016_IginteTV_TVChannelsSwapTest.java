@@ -61,7 +61,6 @@ public class Mobile_RogersCH_TC_016_IginteTV_TVChannelsSwapTest extends BaseTest
     
     rogers_solaris_tv_dashboard_page.clkTVBadgeMobile();
     reporter.reportLogWithScreenshot("Launched the TV dash board");
-    reporter.reportLogWithScreenshot("Launched the TV dash board");
     rogers_solaris_tv_dashboard_page.clkChangeFlexChannels();  
     reporter.reportLogWithScreenshot("TV channels pannel has displayed");
     rogers_solaris_tv_dashboard_page.clkOutChannelOne();

@@ -526,7 +526,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifySuccessfulLogin() {
-		return reusableActions.isElementVisible(infoBalanceLable,60);
+		return reusableActions.isElementVisible(infoBalanceLable,90);
 	}
 	
 	/**
