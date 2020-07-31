@@ -50,6 +50,24 @@ public class RogersShippingPage extends BasePageClass {
 	@FindBy(xpath = "//button[@class='__rdButton size-sm -mb-5']")
 	WebElement btnSaveNumber;
 	
+	@FindBy(xpath = "//div[@class='__normalDeliveryMethod']/..")
+	WebElement rdoNormalDelivery;
+	
+	@FindBy(xpath = "//span[@class='mobile-block -mt4mb10']//span[@class='__checkoutEditLink']")
+	WebElement btnContactEdit;
+	
+	@FindBy(xpath = "//span[@class='mobile-block -mb-10']//span[@class='__checkoutEditLink']")
+	WebElement btnEmailEdit;
+	
+	
+	/**
+	 * Clicks on the 'Continue' button at the bottom of the page
+	 * @author rajesh.varalli1
+	 */
+	public void clkRadioNormalDelivery() {
+		reusableActions.clickWhenReady(rdoNormalDelivery , 120);
+	}
+	
 	/**
 	 * Clicks on the 'Continue' button at the bottom of the page
 	 * @author rajesh.varalli1
@@ -84,8 +102,14 @@ public class RogersShippingPage extends BasePageClass {
 	 */
 	public void setEmailID() {
 		String strEmail = FormFiller.generateEmail();
-		if(reusableActions.isElementVisible(lblMandatoryEmail,60)) {
-			reusableActions.clickWhenReady(lblMandatoryEmail,60);
+		if(reusableActions.isElementVisible(lblMandatoryEmail,30)) {
+			reusableActions.clickWhenReady(lblMandatoryEmail,30);
+			inputEmail.clear();
+			inputEmail.sendKeys(strEmail);			
+		}else if(reusableActions.isElementVisible(btnEmailEdit,30)) {
+			reusableActions.clickWhenReady(btnEmailEdit);
+			reusableActions.clickWhenReady(lblMandatoryEmail,30);
+			inputEmail.clear();
 			inputEmail.sendKeys(strEmail);
 		}
 	}
@@ -96,8 +120,16 @@ public class RogersShippingPage extends BasePageClass {
 	 */
 	public void setPhoneNumber() {
 		String strPhoneNumber = FormFiller.generatePhoneNumber();
-		reusableActions.clickIfAvailable(lblPhoneNumber,60);
-		if(reusableActions.isElementVisible(inputPhoneNumber,60)) {
+		if(reusableActions.isElementVisible(lblPhoneNumber,30)) {
+			reusableActions.clickWhenReady(lblPhoneNumber);
+			reusableActions.waitForElementVisibility(inputPhoneNumber,30);
+			inputPhoneNumber.clear();
+			inputPhoneNumber.sendKeys(strPhoneNumber);
+		}else if(reusableActions.isElementVisible(btnContactEdit, 30)) {
+			reusableActions.clickWhenReady(btnContactEdit);
+			reusableActions.clickWhenReady(lblPhoneNumber,30);
+			reusableActions.waitForElementVisibility(inputPhoneNumber,30);
+			inputPhoneNumber.clear();
 			inputPhoneNumber.sendKeys(strPhoneNumber);
 		}
 	}

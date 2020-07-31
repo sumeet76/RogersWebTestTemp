@@ -34,16 +34,11 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class Mobile_RogersCH_TC_003_Internet_BuyInternetOfferTest extends BaseTestClass {
 
     @Test
-    public void checkBuyInternetOfferMobile() throws InterruptedException {
+    public void checkBuyInternetOfferMobile() throws InterruptedException {   	
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		rogers_home_page.clkEasyLogin();
-		reporter.reportLogWithScreenshot("Launched the Home Page");
-		rogers_home_page.clkNavMobile();
-		reporter.reportLogWithScreenshot("Launched the Navgation card");
-    	rogers_home_page.clkShopMobile(); 
-    	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
-    	rogers_home_page.clkInternetMobile();
-    	rogers_buy_page.verifyInternetMenuMobile();     	
+    	rogers_home_page.clkEasyInternet() ;
+    	
+        reporter.hardAssert(rogers_home_page.verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");  	
     	reporter.reportLogWithScreenshot("Launched the Internet packages page");
     	rogers_home_page.clkInternetAvailability();
     	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
@@ -137,7 +132,7 @@ public class Mobile_RogersCH_TC_003_Internet_BuyInternetOfferTest extends BaseTe
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 

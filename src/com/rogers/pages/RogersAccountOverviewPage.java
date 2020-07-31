@@ -51,7 +51,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[@linkurl='tvdashboard']/parent::div")
 	WebElement btnTVBadgeConsolidated;
 
-	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.total_balance' or text()='Total balance' or text()='Total du solde']")
+	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.total_balance' or text()='Total balance' or text()='Total du solde'  or text()='Total Balance']")
 	WebElement infoBalanceLable;
 
 	@FindBy(xpath = "//h1[@class='mt-24']")
@@ -526,7 +526,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifySuccessfulLogin() {
-		return reusableActions.isElementVisible(infoBalanceLable,60);
+		return reusableActions.isElementVisible(infoBalanceLable,90);
 	}
 	
 	/**
@@ -594,15 +594,21 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean verifyAndClickWirelessCTN(String strCTN) {
 		strCTN = strCTN.replace("-", "").replace(" ", "");
-		strCTN = strCTN.substring(0, 3) + "-" + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);		
-		String strCTNXpath = "//div[@class='myServiceName']//div[contains(text(),'" + strCTN + "')]";		
-		if(reusableActions.isElementVisible(By.xpath(strCTNXpath))) {
-			reusableActions.scrollToElement(reusableActions.getWhenReady(By.xpath(strCTNXpath)));
-			//reusableActions.javascriptScrollByVisibleElement(reusableActions.getWhenReady(By.xpath(strCTNXpath)));
-			reusableActions.clickWhenReady(By.xpath(strCTNXpath), 120);
-			//reusableActions.scrollToElementAndClick(reusableActions.getWhenReady(By.xpath(strCTNXpath)));
+		String strCTNWithUnderScore = strCTN.substring(0, 3) + "-" + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);	
+		String strCTNWithUnderScoreXpath = "//div[@class='myServiceName']//div[contains(text(),'" + strCTNWithUnderScore + "')]";
+		
+		String strCTNWithoutUnderScore = strCTN.substring(0, 3) + " " + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);	
+		String strCTNWithOutUnderScoreXpath = "//div[@class='service-container mt-24']//span[contains(text(),'" + strCTNWithoutUnderScore + "')]";
+		
+		if(reusableActions.isElementVisible(By.xpath(strCTNWithUnderScoreXpath))) {
+			reusableActions.scrollToElement(reusableActions.getWhenReady(By.xpath(strCTNWithUnderScoreXpath)));
+			reusableActions.clickWhenReady(By.xpath(strCTNWithUnderScoreXpath), 120);
 			return true;
-		} else if (verifyAndClickShareEverythingCTN(strCTN)) {
+		}else if(reusableActions.isElementVisible(By.xpath(strCTNWithOutUnderScoreXpath))){
+			reusableActions.scrollToElement(reusableActions.getWhenReady(By.xpath(strCTNWithOutUnderScoreXpath)));
+			reusableActions.clickWhenReady(By.xpath(strCTNWithOutUnderScoreXpath), 120);
+			return true;
+		}else if (verifyAndClickShareEverythingCTN(strCTN)) {
 			return true;
 		}
 		return false;

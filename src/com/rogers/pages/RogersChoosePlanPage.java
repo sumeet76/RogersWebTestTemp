@@ -76,12 +76,46 @@ public class RogersChoosePlanPage extends BasePageClass {
 	@FindBy(xpath = "//input[@value='changeCurrentPlan']//parent::label//span[@class='dsa-selection__caption text-center']")
 	WebElement lblChangesToExistingPlan;
 	
+	@FindBy(xpath = "//div[@class='modal-body share-everything-modal']//input[@type='checkbox']")
+	WebElement chkboxOnModalAddOtherLinetoShareEveryThing;
+	
+	@FindBy(xpath = "//div[@class='modal-body share-everything-modal']//span[@translate='_add']")
+	WebElement btnAddOnModalAddOtherLinetoShareEveryThing;
+	
+	@FindBy(xpath = "//div[@class='modal-body share-everything-modal']//a[@class='pull-right red-button']")
+	WebElement btnContinueOnModalSelectPrimaryLineForNewShareEverthingPlan;
+	
+	/**
+	 * Clicks on continue button on Modal Select Primary Line For New Share Everthing Plan
+	 * @author Saurav.Goyal
+	 */
+	public void clkBtnContinueOnModalSelectPrimaryLineForNewShareEverthingPlan() {
+		reusableActions.clickWhenReady(btnContinueOnModalSelectPrimaryLineForNewShareEverthingPlan,60);
+	}
+	
+	/**
+	 * Clicks on button add on Modal Add Other Line to Share EveryThing
+	 * @author Saurav.Goyal
+	 */
+	public void clkButtonAddOnModalAddOtherLinetoShareEveryThing() {
+		reusableActions.clickWhenReady(btnAddOnModalAddOtherLinetoShareEveryThing,60);
+	}
+	
+	/**
+	 * Clicks on check box on Modal Add Other Line to Share EveryThing
+	 * @author Saurav.Goyal
+	 */
+	public void clkCheckBoxOnModalAddOtherLinetoShareEveryThing() {
+		reusableActions.clickWhenReady(chkboxOnModalAddOtherLinetoShareEveryThing,60);
+	}
+	
 	/**
 	 * Clicks on label make Change to existing plan
 	 * @author Saurav.Goyal
 	 */
 	public void clkMakeChangesToExistingPlan() {
-		reusableActions.clickWhenReady(lblChangesToExistingPlan,60);
+		//reusableActions.clickWhenReady(lblChangesToExistingPlan,60);
+		reusableActions.clickIfAvailable(lblChangesToExistingPlan,30);
 	}
 	
 	/**
@@ -129,7 +163,8 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkButtonModalContinue() {
-		reusableActions.clickWhenReady(btnModalContinue,60);
+		//reusableActions.clickWhenReady(btnModalContinue,60);
+		reusableActions.clickIfAvailable(btnModalContinue,30);
 	}
 	
 	/**
@@ -279,7 +314,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyAndClickDowngradeFeeContinue() {
-		if(reusableActions.isElementVisible(btnDowngradeFeeContinue, 90)) {
+		if(reusableActions.isElementVisible(btnDowngradeFeeContinue, 60)) {
 			reusableActions.executeJavaScriptClick(btnDowngradeFeeContinue);
 			return true;			
 		} else {

@@ -2,6 +2,7 @@ package com.rogers.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -16,7 +17,8 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//h2[contains(text(),'My Wireless Usage')]")
+	@FindAll({@FindBy(xpath = "//h2[contains(text(),'My Wireless Usage')]"),
+			@FindBy(xpath = "//t[contains(text(),'My Wireless')]")})
 	WebElement lblMyWlsUsage;
 
 	@FindBy(xpath = "//a[@class='my-line-change-number']")
@@ -47,7 +49,11 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	WebElement lnkChangeCurrentPlan;
 	
 	//@FindBy(xpath = "//span[@class='plan-cta-text']")
-	@FindBy(xpath = "//button[@title='Changer mon appareil pour un nouveau' or @title='Upgrade my device to a new one']")
+	
+	@FindAll({
+		@FindBy(xpath = "//button[@title='Changer mon appareil pour un nouveau' or @title='Upgrade my device to a new one']"),
+		@FindBy(xpath = "//div[@class='device-details']//button[@class='upgrade-button no-bg']")
+	})
 	WebElement btnUpgradeMyDevice;
 	
 	/**

@@ -6,6 +6,7 @@
 .settings/org.eclipse.m2e.core.prefs
 ExtentReports/ExtentReportResults.html
 test-output/
+debug.log
 ExtentReports/
 *.html
 *.png
@@ -14,3 +15,5 @@ rogers_property.dat
 msedgedriver
 *.orig
 .gradle
+.idea/
+*.iml

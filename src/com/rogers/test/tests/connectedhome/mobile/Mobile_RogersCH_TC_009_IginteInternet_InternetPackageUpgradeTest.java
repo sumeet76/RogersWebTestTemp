@@ -44,7 +44,6 @@ public class Mobile_RogersCH_TC_009_IginteInternet_InternetPackageUpgradeTest ex
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
 		rogers_home_page.clkEasyLogin();
         reporter.reportLogWithScreenshot("Home Page");
-        reporter.reportLog("Home Page Launched");
     	rogers_home_page.clkSignInMobile();    	
         rogers_login_page.switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
@@ -60,7 +59,6 @@ public class Mobile_RogersCH_TC_009_IginteInternet_InternetPackageUpgradeTest ex
     	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_internet_dashboard_page.clkSolarisInternetBadge();
-        rogers_internet_dashboard_page.clkInternetPopup();
         reporter.reportLogWithScreenshot("Launched the Interent dashboard");
         rogers_internet_dashboard_page.clkSolChangeInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Interent packages page");

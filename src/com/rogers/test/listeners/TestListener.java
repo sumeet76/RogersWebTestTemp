@@ -67,10 +67,7 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
   		Object testClass = iTestResult.getInstance();
   		WebDriver driver = ((BaseTestClass) testClass).getDriver(); 
   		if(xmlTestParameters.get("strBrowser").contains("sauce")) {
-  			((JavascriptExecutor)driver).executeScript("sauce:job-name="+getTestMethodName(iTestResult));
-  	  		sauceSessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
-  	  		String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", sauceSessionId, getTestMethodName(iTestResult));
-  	  	    System.out.println(message);
+			sauceSessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
   	  	    String[] strLinks = SauceLabsUtils.getSauceJobLinks(sauceSessionId);
   	  	    ExtentTestManager.getTest().log(LogStatus.INFO, "Video Started", "<iframe width=\"597\" height=\"448\" src=\""+ strLinks[0] +"&width=597&height=448\">\r\n" + 
            		"</iframe>");
@@ -80,6 +77,7 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
 	
 	@Override
 	public void onTestSuccess(ITestResult iTestResult) {
+
 		System.out.println(" in onTestSuccess method " +  getTestMethodName(iTestResult) + " succeed");
 		//Extentreports log operation for passed tests.
 		Object testClass = iTestResult.getInstance();
@@ -88,14 +86,13 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
 		if(xmlTestParameters.get("strBrowser").contains("sauce"))
 		{    	 
 			((JavascriptExecutor) driver).executeScript("sauce:job-result=" + "passed");
-		} else if (xmlTestParameters.get("strBrowser").equalsIgnoreCase("browserstack")) {
-			try {
-				((BaseTestClass) testClass).mark("passed");
-			} catch (IOException | URISyntaxException e) {
-				e.printStackTrace();
-			}
+			((JavascriptExecutor)driver).executeScript("sauce:job-name="+getTestMethodName(iTestResult));
+			String sauceSessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
+			String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", sauceSessionId, getTestMethodName(iTestResult));
+			System.out.println(message);
 		}
-		ExtentTestManager.getTest().log(LogStatus.PASS, "Test passed");       
+		ExtentTestManager.getTest().log(LogStatus.PASS, "Test passed");
+
 
 	}
 
@@ -113,12 +110,10 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
 			if(xmlTestParameters.get("strBrowser").contains("sauce"))
 			{
 				((JavascriptExecutor) webDriver).executeScript("sauce:job-result=" + "failed");
-			}else if (xmlTestParameters.get("strBrowser").equalsIgnoreCase("browserstack")) {
-				try {
-					((BaseTestClass) testClass).mark("failed");
-				} catch (IOException | URISyntaxException e) {
-					e.printStackTrace();
-				}
+				((JavascriptExecutor)webDriver).executeScript("sauce:job-name="+getTestMethodName(iTestResult));
+				String sauceSessionId = (((RemoteWebDriver) webDriver).getSessionId()).toString();
+				String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", sauceSessionId, getTestMethodName(iTestResult));
+				System.out.println(message);
 			}
 
 			//Take base64Screenshot screenshot.
@@ -158,7 +153,13 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
 
 			if(xmlTestParameters.get("strBrowser").contains("sauce"))
 			{
-				((JavascriptExecutor) webDriver).executeScript("sauce:job-result=" + "skipped");
+				((JavascriptExecutor) webDriver).executeScript("sauce:job-result=" + "skipped");				
+				((JavascriptExecutor)webDriver).executeScript("sauce:job-name="+getTestMethodName(iTestResult));
+				String sauceSessionId = (((RemoteWebDriver) webDriver).getSessionId()).toString();
+				String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", sauceSessionId, getTestMethodName(iTestResult));
+				System.out.println(message);
+				
+				
 			}else if (xmlTestParameters.get("strBrowser").equalsIgnoreCase("browserstack")) {
 				try {
 					((BaseTestClass) testClass).mark("skipped");

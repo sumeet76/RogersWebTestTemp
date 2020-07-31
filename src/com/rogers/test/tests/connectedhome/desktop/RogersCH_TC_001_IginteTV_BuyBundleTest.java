@@ -71,7 +71,7 @@ public class RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
         
-        /*reporter.hardAssert(rogers_igniteTV_buy_page.verifyOptNewPhone(),"4KTV radio button is availabe","4KTV radio button is not availabe");
+/*        reporter.hardAssert(rogers_igniteTV_buy_page.verifyOptNewPhone(),"4KTV radio button is availabe","4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the port-in popup");
         rogers_igniteTV_buy_page.selectOptNewPhone();
         rogers_igniteTV_buy_page.clickOptPhone();
@@ -275,7 +275,7 @@ public class RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 

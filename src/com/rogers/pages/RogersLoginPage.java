@@ -113,7 +113,7 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSkipIFrame() {
-		reusableActions.clickIfAvailable(btnSkip,5);
+		reusableActions.clickIfAvailable(btnSkip,30);
 	}
 	
 	/**

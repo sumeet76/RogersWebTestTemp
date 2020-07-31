@@ -3,14 +3,12 @@ package com.rogers.test.tests.buyflows;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
-
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
@@ -37,20 +35,22 @@ public class RogersBFA_TC08_HUP_Test extends BaseTestClass {
     public void hupFlowTest() {
 		reporter.reportLogWithScreenshot("Rogers Home Page");
 		rogers_home_page.clkSignIn();
-        rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(TestDataHandler.testCase04.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.testCase04.getPassword());
-        reporter.reportLogWithScreenshot("Rogers Login Page");
-        rogers_login_page.clkSignInIFrame();
-        rogers_login_page.clkSkipIFrame();
-        rogers_login_page.switchOutOfSignInIFrame();
+		rogers_login_page.switchToSignInIFrame();
+		rogers_login_page.setUsernameIFrame(TestDataHandler.testCase8.getUsername());
+		rogers_login_page.setPasswordIFrame(TestDataHandler.testCase8.getPassword());
+		reporter.reportLogWithScreenshot("Rogers Login Page");
+		rogers_login_page.clkSignInIFrame();
+		reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
+		rogers_login_page.clkSkipIFrame();
+		rogers_login_page.switchOutOfSignInIFrame();
         reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");
-        reporter.hardAssert(rogers_account_overview_page.verifyAndClickWirelessCTN(TestDataHandler.testCase04.getCtn()),"CTN Found","CTN Not Found");
+        reporter.hardAssert(rogers_account_overview_page.verifyAndClickWirelessCTN(TestDataHandler.testCase8.getCtn()),"CTN Found","CTN Not Found");
         reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
         rogers_wireless_details_page.clkUpgradeMyDevice();
         reporter.reportLogWithScreenshot("Rogers Choose Phone Page");
-        rogers_choose_phone_page.searchDevice(TestDataHandler.testCase04.getNewDevice());
+        rogers_choose_phone_page.searchDevice(TestDataHandler.testCase8.getNewDevice());
+        Boolean proOnTheGoFlag = rogers_choose_phone_page.checkProOnTheGo();
         rogers_choose_phone_page.selectFirstAvailableDevice();
         rogers_build_plan_page.selectExistingPlan();
         reporter.reportLogWithScreenshot("Rogers Build Plan Page");
@@ -58,17 +58,21 @@ public class RogersBFA_TC08_HUP_Test extends BaseTestClass {
         reporter.reportLogWithScreenshot("Rogers Choose Addons Page");
         rogers_choose_addons_page.clkContinueHUP();
         reporter.reportLogWithScreenshot("Rogers Shipping Page");
-        rogers_shipping_page.setEmailID();
-        rogers_shipping_page.clkSaveEmail();
-        rogers_shipping_page.clkSelectAvailableTime();
-        rogers_shipping_page.clkReserve();
+        if(proOnTheGoFlag) {
+	        rogers_shipping_page.setEmailID();
+	        rogers_shipping_page.clkSaveEmail();
+	        rogers_shipping_page.setPhoneNumber();
+	        rogers_shipping_page.clkSaveNumber();
+	        rogers_shipping_page.clkSelectAvailableTime();
+	        rogers_shipping_page.clkReserve();
+        }
         reporter.reportLogWithScreenshot("Rogers Shipping Page before clicking continue");
         rogers_shipping_page.clkContinue();
         reporter.reportLogWithScreenshot("Rogers review page");
         rogers_order_review_page.clkTermsAgreementCheckbox();
         rogers_order_review_page.clkShieldAgreementCheckbox();
         rogers_order_review_page.clkUpfrontTermsCheckbox();
-        rogers_order_review_page.selectEmailDigitalCopy(TestDataHandler.testCase04.getUsername());
+        rogers_order_review_page.selectEmailDigitalCopy(TestDataHandler.testCase8.getUsername());
         reporter.reportLogWithScreenshot("Rogers Order Review Page");
         if(rogers_order_review_page.isPaymentRequired()) {
         	rogers_order_review_page.clkContinue();
