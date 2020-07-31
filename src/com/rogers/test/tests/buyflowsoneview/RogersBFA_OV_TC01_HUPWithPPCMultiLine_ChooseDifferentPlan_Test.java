@@ -34,7 +34,11 @@ public class RogersBFA_OV_TC01_HUPWithPPCMultiLine_ChooseDifferentPlan_Test exte
 		rogersOV_wireless_details_page.clkUpgradeMyDevice();
 		reporter.reportLogWithScreenshot("Rogers Choose Phone Page");
 		rogersOV_choose_phone_page.searchDevice(TestDataHandler.buyFlowsOVtestCase01.getNewDevice());
-		Boolean proOnTheGoFlag = rogersOV_choose_phone_page.checkProOnTheGo();
+		Boolean proOnTheGoAddressFlag  = rogersOV_choose_phone_page.checkProOnTheGoAtAddress(TestDataHandler.buyFlowsOVtestCase01.getPostalCode());
+		Boolean proOnTheGoFlag = false;
+		if(proOnTheGoAddressFlag) {
+			proOnTheGoFlag = rogersOV_choose_phone_page.checkProOnTheGo();
+		}
 		rogersOV_choose_phone_page.selectFirstAvailableDevice();
 		reporter.reportLogWithScreenshot("Rogers Choose Phone Page");
 		rogersOV_build_plan_page.selectFirstPlanInPickNewPlan();
