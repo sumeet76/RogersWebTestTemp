@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Connected Home Rogers all Tests CH" parallel="classes"
-	thread-count="1">
+	thread-count="3">
 	<listeners>
 		<listener
 			class-name="com.rogers.test.listeners.AnnotationTransformer" />
