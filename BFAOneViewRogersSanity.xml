@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Rogers Complete RT Suite - BFAOneView" parallel="none" thread-count="3">
+	<parameter name="strBrowser" value="saucechrome" />
+	<parameter name="strLanguage" value="en" />
+	
+	<listeners>
+		<listener
+			class-name="com.rogers.test.listeners.TestListener" />
+		<listener
+			class-name="com.rogers.test.listeners.AnnotationTransformer" />
+	</listeners>
+	
+	<test name="TC07-OV-PPC_Singleline Account_Validate if user is able to place an order in PPC flow_EN" enabled="true">
+	<classes>
+			<class
+				name="com.rogers.test.tests.buyflowsoneview.RogersBFA_OV_TC07_PPCSingleLine_Test">
+			</class>
+		</classes>
+	</test>
+		
+</suite>

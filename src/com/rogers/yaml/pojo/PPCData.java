@@ -7,6 +7,22 @@ public class PPCData {
 	private String ctn;
 	private String newPlanType;
 	private String newPlanCategory;
+	private String contactID;
+	private String banNo;
+	
+	public String getBanNo() {
+		return banNo;
+	}
+	public void setBanNo(String banNo) {
+		this.banNo = banNo;
+	}
+	public String getContactID() {
+		return contactID;
+	}
+	public void setContactID(String contactID) {
+		this.contactID = contactID;
+	}
+	
 	/**
 	 * @return the username
 	 */

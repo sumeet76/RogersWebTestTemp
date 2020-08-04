@@ -25,7 +25,8 @@ public class RogersChooseAddonsPage extends BasePageClass {
 	})
 	WebElement btnContinue;
 	
-	@FindBy(xpath = "//section[contains(@class,'summary-section')]//span/span/span[@res='_continue']")
+	//@FindBy(xpath = "//section[contains(@class,'summary-section')]//span/span/span[@res='_continue']")
+	@FindBy(xpath = "//section[contains(@class,'summary-section')]//p[@class='col-sm-6 btn button-continue ng-scope']")
 	WebElement btnContinueHUP;
 	
 	@FindBy(xpath = "//span[@translate='mppc.summary.checkout_button']/../parent::div[contains(@class,'summary-strip-section')]/button")

@@ -76,7 +76,8 @@ public class RogersDigitalTVPackageSelectionPage extends BasePageClass {
 	 */
 	public void clkCheckout() {
 		reusableActions.waitForElementVisibility(btnCheckout, 90);
-		reusableActions.scrollToElement(btnCheckout);
+		//Javascript scroll used to support firefox (geckodriver)
+		//reusableActions.javascriptScrollByVisibleElement(btnCheckout);
 		reusableActions.getWhenReady(btnCheckout, 90).click();
 	}
 	

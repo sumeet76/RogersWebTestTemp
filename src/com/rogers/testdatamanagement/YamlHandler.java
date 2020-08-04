@@ -111,6 +111,21 @@ public class YamlHandler {
 
 	}
 	
+	public static Config getBFAOneViewConfig() {
+		Yaml yaml = new Yaml(new Constructor(Config.class));
+		InputStream inputStream;
+		try {
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/buyflowsoneview/Config.yml"));
+			Config config = yaml.load(inputStream);
+			return config;
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+	
 	public static CHOneViewConfig getCHOneViewConfig() {
 		Yaml yaml = new Yaml(new Constructor(CHOneViewConfig.class));
 		InputStream inputStream;
@@ -169,6 +184,20 @@ public class YamlHandler {
 		}
 	}
 	
+	public static PaymentDetails getBFAOneViewPaymentDetails() {
+		Yaml yaml = new Yaml(new Constructor(PaymentDetails.class));
+		InputStream inputStream;
+		try {
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/buyflowsoneview/RogersPaymentInfo.yml"));
+			PaymentDetails paymentDetails = yaml.load(inputStream);
+			return paymentDetails;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+
 	public static PaymentDetails getOVPaymentDetails() {
 		Yaml yaml = new Yaml(new Constructor(PaymentDetails.class));
 		InputStream inputStream;
@@ -221,12 +250,38 @@ public class YamlHandler {
 			return null;
 		}
 	}
+	
+	public static HUPData getHUPdataOneView(String dataFileName) {
+		Yaml yaml = new Yaml(new Constructor(HUPData.class));
+		InputStream inputStream;
+		try {
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/buyflowsoneview/" + dataFileName + ".yml"));
+			HUPData hupData = yaml.load(inputStream);
+			return hupData;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	public static PPCData getPPCdata(String dataFileName) {
 		Yaml yaml = new Yaml(new Constructor(PPCData.class));
 		InputStream inputStream;
 		try {
 			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/buyflows/" + dataFileName + ".yml"));
+			PPCData ppcData = yaml.load(inputStream);
+			return ppcData;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public static PPCData getPPCdataOneView(String dataFileName) {
+		Yaml yaml = new Yaml(new Constructor(PPCData.class));
+		InputStream inputStream;
+		try {
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/buyflowsoneview/" + dataFileName + ".yml"));
 			PPCData ppcData = yaml.load(inputStream);
 			return ppcData;
 		} catch (FileNotFoundException e) {

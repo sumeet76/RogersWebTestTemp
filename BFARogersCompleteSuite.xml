@@ -34,5 +34,13 @@
 			</class>
 		</classes>
 	</test>
+	
+	<test name="TC10 - Regression-Rogers-Additional line HUP Scenario" enabled="true">
+	<classes>
+			<class
+				name="com.rogers.test.tests.buyflows.RogersBFA_TC10_HUPOnAdditonalLine_Test">
+			</class>
+		</classes>
+	</test>
 		
 </suite>

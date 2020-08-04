@@ -1,8 +1,11 @@
 package com.rogers.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -25,7 +28,10 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//ul[@class='dds_o-headerNavDropdown -navbar']//a[@href='/web/preLogout.jsp']")
 	WebElement lnkSignOut;
 	
-	@FindBy(xpath = "//li[@class='dds_o-navLinkList__item']/a[contains(@class,'dds_m-navLink dropdown-hide')]")
+	@FindAll({
+	@FindBy(xpath = "//li[@class='dds_o-navLinkList__item']/a[contains(@class,'dds_m-navLink dropdown-hide')]"),
+	@FindBy(xpath = "//div[@class='rcl-navmain']//li[@class='o-navLinkList__item nav-list-active']//a[@class='m-navLink']//Span[@class='m-navLink__caption']"),
+	@FindBy(xpath = "//a[@class='m-navLink']//span[@class='m-navLink__chevron rds-icon-expand']")})
 	WebElement btnShop;
 	
 	@FindBy(xpath = "//li[@id='Shop-mobileDropdown']")
@@ -68,7 +74,11 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//a[@href='/web/totes/#/easylogin/main']")
 	WebElement btnRegisterNowFromMyRogers;
 	
-	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/wireless']")
+	//@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/wireless']")
+	@FindAll({
+		@FindBy(xpath = "(//li[@class='o-headerNavDropdown__item'])[1]//a"),
+		@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/wireless']")
+	})
 	WebElement lnkWireless;
 	
 	@FindBy(xpath = "//span[text()='View all devices']")
@@ -81,6 +91,9 @@ public class RogersHomePage extends BasePageClass {
 	WebElement btnServiceability;
 	//a[@title='Check if Ignite Bundles are available in your area' or @title='Vérifiez si les offres groupées Élan sont disponibles dans votre secteur.']
 	
+	@FindBy(xpath ="//div[@class='ng-star-inserted overlay']")
+	WebElement overlayHomePage;
+		
 	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -primary -large ng-star-inserted']")
 	WebElement btnWelcomeback;	
 	//a[@title='Check if Ignite Bundles are available in your area']
@@ -163,6 +176,9 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//button[@class='btn btn-lg btn-red']")
 	WebElement btnAddNow;
 	
+	@FindBy(xpath = "//div[@class='subscription-detail']")
+	List<WebElement> linkAddSecondLine;
+	
 	@FindBy(xpath = "//div[@class='line-icon line-shared-icon']")
 	WebElement btnToSharedPlan;
 	
@@ -177,6 +193,14 @@ public class RogersHomePage extends BasePageClass {
 	
 	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet at your address']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']")
 	WebElement lnkInternetAvailability;
+	
+	/**
+	 * Click on add link to add new line
+	 * @author Saurav.Goyal
+	 */
+	public void clkAddSecondLine() {
+		reusableActions.clickWhenVisible(linkAddSecondLine.get(linkAddSecondLine.size()-1) , 30);
+	}
 	
 	/**
 	 * click button add device to a shared plan
@@ -408,7 +432,11 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkServiceability() {
-		reusableActions.getWhenReady(btnServiceability, 120).click();
+	if(reusableActions.isElementVisible(overlayHomePage,2))
+		{
+		reusableActions.waitForElementInvisibilityNOException(overlayHomePage,5);	
+		}
+		reusableActions.getWhenReady(btnServiceability, 30).click();
 	}
 	
 	/**

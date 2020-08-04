@@ -191,7 +191,8 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 */
 	public void clkAcceptenceCheckboxUpdate() {		
 		reusableActions.waitForElementVisibility(lnkAgreementToEndExistingCustomer, 50);
-		reusableActions.scrollToElement(lnkAgreementToEndExistingCustomer);		
+		//Javascript scroll used to support firefox (geckodriver)
+		reusableActions.javascriptScrollByVisibleElement(lnkAgreementToEndExistingCustomer);	
 		reusableActions.getWhenReady(clkChangeAcceptCheckboxUpdate, 90).click();
 	}
 
@@ -295,8 +296,8 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkTermsAgreementCheckbox() {
-		reusableActions.waitForElementVisibility(chbTerms, 100);
-		reusableActions.clickWhenReady(chbTerms,100);
+		reusableActions.waitForElementVisibility(chbTerms, 60);
+		reusableActions.clickIfAvailable(chbTerms,60);
 	}
 
 	/**
