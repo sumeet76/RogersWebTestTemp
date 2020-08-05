@@ -137,8 +137,8 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSolChangeInternetPackage() {	
-		reusableActions.waitForElementVisibility(btnSolChangeInternetPackage, 180);
-		reusableActions.getWhenReady(btnSolChangeInternetPackage, 180).click();
+		reusableActions.waitForElementVisibility(btnSolChangeInternetPackage, 90);
+		reusableActions.getWhenReady(btnSolChangeInternetPackage, 60).click();
 
 	}
 	
@@ -201,10 +201,9 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @param strPackageNameFr package name
 	 * @author Chinnarao.Vattam
 	 */
-	public void selectSolarisInternetPackage(String strPackageNameEn,String strPackageNameFr) {		
-		//By packageNameLocator = By.xpath("//span[contains(normalize-space(text()),'" + strPackageName+ "') or contains(normalize-space(text()),'Élan Internet 150i')]/ancestor::div[@class='owl-item active']//ins[@translate='global.cta.select']");
+	public void selectSolarisInternetPackage(String strPackageNameEn,String strPackageNameFr) {	
 		By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='internet-bundle-tile__row']//button[@aria-label='Add Rogers Ignite Popular Bundle to your cart']");
-		reusableActions.getWhenReady(packageNameLocator, 180).click();
+		reusableActions.getWhenReady(packageNameLocator, 60).click();
 	}
 	
 	/**

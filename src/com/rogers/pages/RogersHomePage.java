@@ -321,7 +321,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkExistingCustomerShop() {
-		reusableActions.getWhenReady(btnExistingCustomerShop, 30).click();				
+		reusableActions.getWhenReady(btnExistingCustomerShop, 90).click();				
 	}
 	
 	
