@@ -203,7 +203,10 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public void selectSolarisInternetPackage(String strPackageNameEn,String strPackageNameFr) {	
 		By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='internet-bundle-tile__row']//button[@aria-label='Add Rogers Ignite Popular Bundle to your cart']");
-		reusableActions.getWhenReady(packageNameLocator, 60).click();
+		reusableActions.javascriptScrollToMiddleOfPage();
+		reusableActions.getWhenReady(packageNameLocator, 90);
+		WebElement pkg = driver.findElement(packageNameLocator);
+		reusableActions.executeJavaScriptClick(pkg);
 	}
 	
 	/**

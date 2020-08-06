@@ -280,7 +280,8 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSubmitUpdateInternet() {
-		reusableActions.getWhenReady(clkSubmitUpdateInternet, 200).click();
+		reusableActions.javascriptScrollToBottomOfPage();
+		reusableActions.getWhenReady(clkSubmitUpdateInternet, 150).click();
 	}
 	
 	/**
