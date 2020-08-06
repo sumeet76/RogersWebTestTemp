@@ -42,7 +42,7 @@ public class RogersSS_TC_032_Postpaid_ChangeBillingAddress extends BaseTestClass
 	}
 	
 	@Test
-	public void validateUserChangeContactInformationAndBillingAddress() {
+	public void validateUserChangeBillingAddress() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc013132.getUsername();
     	String strPassword = TestDataHandler.tc013132.getPassword();

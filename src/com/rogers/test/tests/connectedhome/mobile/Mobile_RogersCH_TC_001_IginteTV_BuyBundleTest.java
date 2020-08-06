@@ -56,16 +56,10 @@ public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass
     @Test
     public void checkBuyIgniteTVOfferMobile() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		rogers_home_page.clkEasyLogin();
-		reporter.reportLogWithScreenshot("Launched the Home Page");
-		rogers_home_page.clkNavMobile();
-		reporter.reportLogWithScreenshot("Launched the Navgation card");
-    	rogers_home_page.clkShopMobile(); 
-    	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");    	
-    	rogers_home_page.clkIgniteTVMobile();
+    	rogers_home_page.clkTVBundle();
     	
-    	reporter.hardAssert(rogers_home_page.verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
-    	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+        reporter.hardAssert(rogers_home_page.verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
+       	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	rogers_home_page.clkServiceability();
     	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
     	rogers_home_page.clkAddressCheck();
@@ -103,7 +97,7 @@ public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass
         rogers_igniteTV_credit_check_page.selectExpiryYear();
         rogers_igniteTV_credit_check_page.selectExpiryMonth();
         rogers_igniteTV_credit_check_page.selectExpiryDay();
-        rogers_igniteTV_credit_check_page.setDrivingLicenseNumber("ONTARIO");
+        rogers_igniteTV_credit_check_page.setDrivingLicenseNumberMobile("ONTARIO");
         reporter.reportLogWithScreenshot("Driving License Details");
         rogers_igniteTV_credit_check_page.selectSecondIDOption("Passport");
         rogers_igniteTV_credit_check_page.setPassportNumber();
