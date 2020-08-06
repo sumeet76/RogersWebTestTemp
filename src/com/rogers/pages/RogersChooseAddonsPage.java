@@ -38,7 +38,7 @@ public class RogersChooseAddonsPage extends BasePageClass {
 	 */
 	public void clkContinueHUP() {
 		reusableActions.executeJavaScriptClick(btnContinueHUP);
-		reusableActions.clickIfAvailable(By.xpath("//div[@class='ngdialog-content']//button[@res='_continue']"),60);
+		//reusableActions.clickIfAvailable(By.xpath("//div[@class='ngdialog-content']//button[@res='_continue']"),60);
 	}
 	
 	/**

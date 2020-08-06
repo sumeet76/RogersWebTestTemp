@@ -323,7 +323,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @param strEmail string email
 	 */
 	public void selectEmailDigitalCopy(String strEmail) {
-		reusableActions.clickWhenVisible(rdbtnEmail,30);
+		reusableActions.clickIfAvailable(rdbtnEmail,30);
 		if(reusableActions.isElementVisible(txtCustomerEmail)) {
 			txtCustomerEmail.sendKeys(strEmail);
 		}

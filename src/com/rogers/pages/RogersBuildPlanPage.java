@@ -103,13 +103,18 @@ public class RogersBuildPlanPage extends BasePageClass {
 	 */
 	public void clkContinue() {
 		if(handleTodayOfferOverlay()) {
-			reusableActions.clickWhenReady(btnContinue,120);			
+			reusableActions.clickWhenReady(btnContinue,60);			
 		}
 
 		if(reusableActions.isElementVisible(By.xpath("//span[@res='_upfront_amount']"),2)) {
-			reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(By.xpath("//div[@class='upfront-popup-button']/a[@translate='new_Confirm']")));
+			reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(By.xpath("//a[@translate='new_Confirm']")));
+			//reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(By.xpath("//div[@class='upfront-popup-button']/a[@translate='new_Confirm']")));
 		}
 
+		if(reusableActions.isElementVisible(planSlider, 2)) {
+			reusableActions.waitForElementVisibility(planSlider, 60);
+			//reusableActions.clickIfAvailable(btnContinue, 120);		
+		}
 		if(reusableActions.isElementVisible(planSlider, 2)) {
 			reusableActions.waitForElementVisibility(planSlider, 60);
 			//reusableActions.clickIfAvailable(btnContinue, 120);		
@@ -298,8 +303,8 @@ public class RogersBuildPlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void selectExistingPlan() {
-		reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(lnkKeepExisting, 40));
-		reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(btnSelectExistingPlan, 30));
+		reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(lnkKeepExisting, 60));
+		reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(btnSelectExistingPlan, 60));
 	}
 
 }

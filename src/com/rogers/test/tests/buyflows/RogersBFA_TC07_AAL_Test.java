@@ -56,7 +56,11 @@ public class RogersBFA_TC07_AAL_Test extends BaseTestClass {
 		reporter.reportLogWithScreenshot("Add device to a shared plan diologue displayed");
 		rogers_home_page.clkAddDeviceToSharedPlan();
 		rogers_choose_phone_page.searchDevice(TestDataHandler.testCase7.getNewDevice());
-		Boolean proOnTheGoFlag = rogers_choose_phone_page.checkProOnTheGo();
+		Boolean proOnTheGoAddressFlag  = rogers_choose_phone_page.checkProOnTheGoAtAddress(TestDataHandler.testCase7.getPostalCode());
+		Boolean proOnTheGoFlag = false;
+		if(proOnTheGoAddressFlag) {
+			proOnTheGoFlag = rogers_choose_phone_page.checkProOnTheGo();
+		}
 		reporter.reportLogWithScreenshot("Rogers Choose Phone page");
 		rogers_choose_phone_page.addFirstAvailableDevice();
 		reporter.reportLogWithScreenshot("Rogers Build Plan page");
@@ -67,11 +71,10 @@ public class RogersBFA_TC07_AAL_Test extends BaseTestClass {
 		reporter.reportLogWithScreenshot("Rogers Cart Summary page");
 		rogers_cart_summary_page.clkContinue();
 		reporter.reportLogWithScreenshot("Rogers Shipping page");
+		rogers_shipping_page.clkRadioBillingAddress();
 		if(proOnTheGoFlag) {
-	        rogers_shipping_page.setEmailID();
-	        rogers_shipping_page.clkSaveEmail();
-	        rogers_shipping_page.setPhoneNumber();
-	        rogers_shipping_page.clkSaveNumber();
+	        rogers_shipping_page.setEmailIDAndSave();
+	        rogers_shipping_page.setPhoneNumberAndSave();
 	        rogers_shipping_page.clkSelectAvailableTime();
 	        rogers_shipping_page.clkReserve();
         }

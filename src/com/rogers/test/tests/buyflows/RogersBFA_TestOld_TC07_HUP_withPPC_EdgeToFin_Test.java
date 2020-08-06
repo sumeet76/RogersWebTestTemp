@@ -59,8 +59,7 @@ public class RogersBFA_TestOld_TC07_HUP_withPPC_EdgeToFin_Test extends BaseTestC
         reporter.reportLogWithScreenshot("Rogers Choose Addons Page");
         rogers_choose_addons_page.clkContinueHUP();
         reporter.reportLogWithScreenshot("Rogers Shipping Page");
-        rogers_shipping_page.setEmailID();
-        rogers_shipping_page.clkSaveEmail();
+        rogers_shipping_page.setEmailIDAndSave();
         rogers_shipping_page.clkSelectAvailableTime();
         rogers_shipping_page.clkReserve();
         rogers_shipping_page.clkContinue();

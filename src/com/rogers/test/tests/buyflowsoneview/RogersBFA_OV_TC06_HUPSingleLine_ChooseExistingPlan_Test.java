@@ -47,10 +47,8 @@ public class RogersBFA_OV_TC06_HUPSingleLine_ChooseExistingPlan_Test extends Bas
 		rogersOV_choose_addons_page.clkContinueHUP();
 		reporter.reportLogWithScreenshot("Rogers Shipping Page");
 		if(proOnTheGoFlag) {
-	        rogers_shipping_page.setEmailID();
-	        rogers_shipping_page.clkSaveEmail();
-	        rogers_shipping_page.setPhoneNumber();
-	        rogers_shipping_page.clkSaveNumber();
+	        rogers_shipping_page.setEmailIDAndSave();
+	        rogers_shipping_page.setPhoneNumberAndSave();
 	        rogers_shipping_page.clkSelectAvailableTime();
 	        rogers_shipping_page.clkReserve();
         }

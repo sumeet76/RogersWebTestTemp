@@ -2,6 +2,7 @@ package com.rogers.pages;
 
 import java.util.List;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -59,13 +60,23 @@ public class RogersShippingPage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='mobile-block -mb-10']//span[@class='__checkoutEditLink']")
 	WebElement btnEmailEdit;
 	
+	@FindBy(xpath = "//span[@checkout-res='checkout_billing_address']")
+	WebElement rdoBillingAddress;
 	
 	/**
-	 * Clicks on the 'Continue' button at the bottom of the page
+	 * Clicks on the billing address radio button
+	 * @author Saurav.Goyal
+	 */
+	public void clkRadioBillingAddress() {
+		reusableActions.clickWhenReady(rdoBillingAddress , 30);
+	}
+	
+	/**
+	 * Clicks on the radio button normal delivery
 	 * @author rajesh.varalli1
 	 */
 	public void clkRadioNormalDelivery() {
-		reusableActions.clickWhenReady(rdoNormalDelivery , 120);
+		reusableActions.clickWhenReady(rdoNormalDelivery , 30);
 	}
 	
 	/**
@@ -100,9 +111,16 @@ public class RogersShippingPage extends BasePageClass {
 	 * Enter email id
 	 * @author Saurav.Goyal
 	 */
-	public void setEmailID() {
+	public void setEmailIDAndSave() {
 		String strEmail = FormFiller.generateEmail();
-		if(reusableActions.isElementVisible(lblMandatoryEmail,30)) {
+		if(!reusableActions.isElementVisible(btnEmailEdit,30)) {
+			reusableActions.clickWhenReady(lblMandatoryEmail,30);
+			inputEmail.clear();
+			inputEmail.sendKeys(strEmail);
+			//inputEmail.sendKeys(Keys.TAB);
+			reusableActions.clickIfAvailable(btnSaveEmail , 30);
+		}		
+		/*if(reusableActions.isElementVisible(lblMandatoryEmail,30)) {
 			reusableActions.clickWhenReady(lblMandatoryEmail,30);
 			inputEmail.clear();
 			inputEmail.sendKeys(strEmail);			
@@ -111,16 +129,23 @@ public class RogersShippingPage extends BasePageClass {
 			reusableActions.clickWhenReady(lblMandatoryEmail,30);
 			inputEmail.clear();
 			inputEmail.sendKeys(strEmail);
-		}
+		}*/
 	}
 	
 	/**
 	 * Enter phone number
 	 * @author Saurav.Goyal
 	 */
-	public void setPhoneNumber() {
+	public void setPhoneNumberAndSave() {
 		String strPhoneNumber = FormFiller.generatePhoneNumber();
-		if(reusableActions.isElementVisible(lblPhoneNumber,30)) {
+		if(!reusableActions.isElementVisible(btnContactEdit, 30)) {
+			reusableActions.clickWhenReady(lblPhoneNumber);
+			reusableActions.waitForElementVisibility(inputPhoneNumber,30);
+			inputPhoneNumber.clear();
+			inputPhoneNumber.sendKeys(strPhoneNumber);
+			reusableActions.clickIfAvailable(btnSaveNumber , 30);
+		}
+		/*if(reusableActions.isElementVisible(lblPhoneNumber,30)) {
 			reusableActions.clickWhenReady(lblPhoneNumber);
 			reusableActions.waitForElementVisibility(inputPhoneNumber,30);
 			inputPhoneNumber.clear();
@@ -131,23 +156,7 @@ public class RogersShippingPage extends BasePageClass {
 			reusableActions.waitForElementVisibility(inputPhoneNumber,30);
 			inputPhoneNumber.clear();
 			inputPhoneNumber.sendKeys(strPhoneNumber);
-		}
-	}
-	
-	/**
-	 * Click on save after entering email id
-	 * @author Saurav.Goyal
-	 */
-	public void clkSaveEmail() {
-		reusableActions.clickIfAvailable(btnSaveEmail , 120);
-	}
-	
-	/**
-	 * Click on save after entering email id
-	 * @author Saurav.Goyal
-	 */
-	public void clkSaveNumber() {
-		reusableActions.clickIfAvailable(btnSaveNumber , 120);
+		}*/
 	}
 	
 }

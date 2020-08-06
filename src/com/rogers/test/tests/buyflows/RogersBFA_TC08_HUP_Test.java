@@ -41,7 +41,7 @@ public class RogersBFA_TC08_HUP_Test extends BaseTestClass {
 		reporter.reportLogWithScreenshot("Rogers Login Page");
 		rogers_login_page.clkSignInIFrame();
 		reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
-		rogers_login_page.clkSkipIFrame();
+		//rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
         reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");
@@ -50,7 +50,11 @@ public class RogersBFA_TC08_HUP_Test extends BaseTestClass {
         rogers_wireless_details_page.clkUpgradeMyDevice();
         reporter.reportLogWithScreenshot("Rogers Choose Phone Page");
         rogers_choose_phone_page.searchDevice(TestDataHandler.testCase8.getNewDevice());
-        Boolean proOnTheGoFlag = rogers_choose_phone_page.checkProOnTheGo();
+        Boolean proOnTheGoAddressFlag  = rogers_choose_phone_page.checkProOnTheGoAtAddress(TestDataHandler.testCase8.getPostalCode());
+		Boolean proOnTheGoFlag = false;
+		if(proOnTheGoAddressFlag) {
+			proOnTheGoFlag = rogers_choose_phone_page.checkProOnTheGo();
+		}
         rogers_choose_phone_page.selectFirstAvailableDevice();
         rogers_build_plan_page.selectExistingPlan();
         reporter.reportLogWithScreenshot("Rogers Build Plan Page");
@@ -58,11 +62,10 @@ public class RogersBFA_TC08_HUP_Test extends BaseTestClass {
         reporter.reportLogWithScreenshot("Rogers Choose Addons Page");
         rogers_choose_addons_page.clkContinueHUP();
         reporter.reportLogWithScreenshot("Rogers Shipping Page");
+        rogers_shipping_page.clkRadioBillingAddress();
         if(proOnTheGoFlag) {
-	        rogers_shipping_page.setEmailID();
-	        rogers_shipping_page.clkSaveEmail();
-	        rogers_shipping_page.setPhoneNumber();
-	        rogers_shipping_page.clkSaveNumber();
+	        rogers_shipping_page.setEmailIDAndSave();
+	        rogers_shipping_page.setPhoneNumberAndSave();
 	        rogers_shipping_page.clkSelectAvailableTime();
 	        rogers_shipping_page.clkReserve();
         }

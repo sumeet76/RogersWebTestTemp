@@ -61,6 +61,23 @@ public class RogersChoosePhonePage extends BasePageClass {
 	@FindBy(xpath = "//section[@class='phoneModel']")
 	List<WebElement> deviceModal;
 	
+	@FindBy(xpath = "//*[@res='check_eligibility']")
+	WebElement linkProOnTheGoCheckEligibility;
+	
+	@FindBy(xpath = "//input[@id='zipcode']")
+	WebElement inputPostalCodeOnForm;
+	
+	@FindBy(xpath = "//div[contains(@class,'hidden-xs')]//button[@class='btn checkAvailabilityBtn btn-active']")
+	WebElement btnCheckPostalCodeOnForm;
+	
+	@FindBy(xpath = "//img[@alt='success-icon']")
+	WebElement imgSuccess;
+	
+	@FindBy(xpath = "//button[@res='eligible_continue']")
+	WebElement formProOnTheGoContinue;
+	
+	@FindBy(xpath = "//button[@res='eligible_cancel']")
+	WebElement formProOnTheGoCancel;
 	
 	/**
 	 * Clicks on the 'Details' button on the first available device
@@ -161,6 +178,26 @@ public class RogersChoosePhonePage extends BasePageClass {
 						return false;
 					}
 			}
+		}
+		return false;
+	}
+	
+	/**
+	 * This method will check whether the customer address is eligible to deliver pro on the go device or not
+	 * @return true if the customer address is eligible to deliver pro on the go device in there ares else false
+	 * @param postalCode : customer's postal code
+	 * @author Saurav.Goyal
+	 */
+	public boolean checkProOnTheGoAtAddress(String postalCode) {
+		if(reusableActions.isElementVisible(linkProOnTheGoCheckEligibility, 30)) {
+			reusableActions.clickWhenReady(linkProOnTheGoCheckEligibility, 30);
+			reusableActions.getWhenReady(inputPostalCodeOnForm).sendKeys(postalCode);
+			reusableActions.clickWhenReady(btnCheckPostalCodeOnForm, 30);
+			if(reusableActions.isElementVisible(imgSuccess, 30)) {
+				reusableActions.clickWhenReady(formProOnTheGoContinue, 30);
+				return true;
+			}
+			reusableActions.clickWhenReady(formProOnTheGoCancel, 30);
 		}
 		return false;
 	}
