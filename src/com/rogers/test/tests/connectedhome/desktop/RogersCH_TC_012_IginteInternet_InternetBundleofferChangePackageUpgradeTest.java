@@ -62,7 +62,8 @@ public class RogersCH_TC_012_IginteInternet_InternetBundleofferChangePackageUpgr
         rogers_buy_page.clkIgniteInternetSpeed();
         reporter.reportLogWithScreenshot("Launched the TV packge Page"); 
         rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.solarisInternetAccountForUpgrade.getAccountDetails().getUpgradePlanEn(),TestDataHandler.solarisInternetAccountForUpgrade.getAccountDetails().getUpgradePlanFr());
-		reporter.hardAssert(rogers_order_review_page.verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
+        rogers_internet_dashboard_page.clkInternetChangeOK();
+        reporter.hardAssert(rogers_order_review_page.verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");
 		
 		reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");

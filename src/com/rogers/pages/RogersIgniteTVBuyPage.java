@@ -75,7 +75,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath ="//div[@class='mt-auto w-100']//button[@aria-label='Add Rogers Ignite Starter Bundle to cart']")
 	WebElement btnSolarisStarterPackageMobile;	
 	
-	@FindBy(xpath = "//div[@aria-label='$124.99 per m']")
+	@FindBy(xpath = "//div[@aria-label='$134.99 per m']")
 	WebElement txtPackageCost;	
 	
 	@FindBy(xpath = "//p[@id='ds-modal-title-1']")
@@ -486,7 +486,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisStarterPackageNew() {
-		reusableActions.waitForElementVisibility(btnSolarisStarterPackageNew, 60);
+		reusableActions.waitForElementVisibility(btnSolarisStarterPackageNew, 10);
 		reusableActions.waitForElementVisibility(txtPackageCost, 5);
 		reusableActions.getWhenReady(btnSolarisStarterPackageNew, 10).click();
 	}

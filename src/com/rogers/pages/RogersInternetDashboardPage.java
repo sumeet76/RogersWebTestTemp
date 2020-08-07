@@ -99,6 +99,14 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	}
 
 	/**
+	 * Click the Solaris Internet Badge on the Solaris account page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkInternetBadgeMobile() {
+		reusableActions.javascriptScrollToMiddleOfPage();
+		reusableActions.getWhenReady(btnSolarisInternetBadge,60).click();			
+	}
+	/**
 	 * Verify the Internet header text on the Solaris Internet dash board
 	 * @return true if the Internet heading displayed; else false
 	 * @author Chinnarao.Vattam
@@ -139,7 +147,15 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	public void clkSolChangeInternetPackage() {	
 		reusableActions.waitForElementVisibility(btnSolChangeInternetPackage, 90);
 		reusableActions.getWhenReady(btnSolChangeInternetPackage, 60).click();
-
+	}
+	
+	/**
+	 * Click the Change Internet Package button on Solaris Internet dash board
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkSolChangeInternetPackageMobile() {	
+		reusableActions.waitForElementVisibility(btnSolChangeInternetPackage, 90);
+		reusableActions.executeJavaScriptClick(btnSolChangeInternetPackage);
 	}
 	
 	/**
