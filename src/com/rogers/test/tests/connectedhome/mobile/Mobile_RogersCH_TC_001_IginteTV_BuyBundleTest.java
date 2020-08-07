@@ -100,7 +100,7 @@ public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass
         rogers_igniteTV_credit_check_page.setDrivingLicenseNumberMobile("ONTARIO");
         reporter.reportLogWithScreenshot("Driving License Details");
         rogers_igniteTV_credit_check_page.selectSecondIDOption("Passport");
-        rogers_igniteTV_credit_check_page.setPassportNumber();
+        rogers_igniteTV_credit_check_page.setPassportNumberMobile();
         rogers_igniteTV_credit_check_page.selectPassportExpiryYear();
         rogers_igniteTV_credit_check_page.selectPassportExpiryMonth();
         rogers_igniteTV_credit_check_page.selectPassportExpiryDay();
@@ -141,7 +141,7 @@ public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass
         rogers_order_review_page.clkAcceptenceCheckboxMobile();
         reporter.reportLogWithScreenshot("Agreement details");
         rogers_order_review_page.clkSubmitMobile();
-        reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");      
+        reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");      
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
     }
     
@@ -154,7 +154,7 @@ public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 

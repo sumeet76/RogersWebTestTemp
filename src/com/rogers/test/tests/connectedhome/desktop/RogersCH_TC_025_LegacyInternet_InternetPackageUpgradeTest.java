@@ -49,7 +49,7 @@ public class RogersCH_TC_025_LegacyInternet_InternetPackageUpgradeTest extends B
 	    rogers_account_overview_page.selectAccount(TestDataHandler.legacyInternetAccountUpgrade.accountDetails.getBan());
 		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.clkInternetPopup(TestDataHandler.chConfig.getBrowser()); 
+		rogers_account_overview_page.clkInternetPopup(); 
 		rogers_internet_dashboard_page.clkChangeInternetPackage();
 		reporter.reportLogWithScreenshot("Launched the Internet package Page");
 		rogers_internet_package_selection_page.selectInternetPackage(TestDataHandler.legacyInternetAccountUpgrade.getAccountDetails().getUpgradePlanEn(),TestDataHandler.legacyInternetAccountUpgrade.getAccountDetails().getUpgradePlanFr(), TestDataHandler.chConfig.getLanguage());

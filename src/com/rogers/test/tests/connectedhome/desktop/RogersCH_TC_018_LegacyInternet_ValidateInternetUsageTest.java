@@ -54,7 +54,7 @@ public class RogersCH_TC_018_LegacyInternet_ValidateInternetUsageTest extends Ba
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		rogers_account_overview_page.clkLegacyInternetBadge(TestDataHandler.chConfig.getBrowser());
 		reporter.reportLogWithScreenshot("Launched the Internet Dashboard Page");
-		rogers_account_overview_page.clkInternetPopup(TestDataHandler.chConfig.getBrowser());
+		rogers_account_overview_page.clkInternetPopup();
 		reporter.hardAssert(rogers_internet_dashboard_page.verifyInternetUsage(),"Verifed the Internet dashboard","Internet dashboard Verification has failed");
     	}
 

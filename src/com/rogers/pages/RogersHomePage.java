@@ -321,7 +321,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkExistingCustomerShop() {
-		reusableActions.getWhenReady(btnExistingCustomerShop, 30).click();				
+		reusableActions.getWhenReady(btnExistingCustomerShop, 90).click();				
 	}
 	
 	
@@ -517,7 +517,7 @@ public class RogersHomePage extends BasePageClass {
 		reusableActions.waitForElementVisibility(txaIgniteAddressContainerExisting, 60);
 		reusableActions.getWhenReady(txaIgniteAddressContainerExisting, 3).click();
 		reusableActions.getWhenReady(txaIgniteAddressLookup, 3).clear();
-		reusableActions.getWhenReady(txaIgniteAddressLookup, 3).sendKeys(strAddress);
+		reusableActions.getWhenReady(txaIgniteAddressLookup, 5).sendKeys(strAddress);
 		reusableActions.getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.TAB);
 		reusableActions.getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);
 		reusableActions.getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);

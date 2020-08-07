@@ -181,7 +181,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkTVBadge() {
-		reusableActions.getWhenReady(btnSolaristvBadge,30).click();
+		reusableActions.getWhenReady(btnSolaristvBadge,90).click();
 	}
 
 	/**
@@ -207,7 +207,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkViewMyChannelLineup() {
-		reusableActions.waitForElementInvisibility(loaderTVdashboard,90);		
+		reusableActions.waitForElementVisibility(lnkViewMyChannelLineup,120);		
 		reusableActions.getWhenReady(lnkViewMyChannelLineup, 60).click();		
 	}
 
@@ -282,7 +282,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkChangeTVPackage() {
-		reusableActions.waitForElementInvisibility(loaderTVdashboard,90);
+		reusableActions.waitForElementVisibility(btnChangeTVPackage,90);
 		reusableActions.getWhenReady(btnChangeTVPackage, 30).click();
 	}
 	
@@ -291,7 +291,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkManageChannelsAndThemePacks() {
-		reusableActions.waitForElementInvisibility(loaderTVdashboard,90);
+		reusableActions.waitForElementVisibility(btnManageChannelsAndThemePacks,90);
 		reusableActions.getWhenReady(btnManageChannelsAndThemePacks, 30).click();
 	}
 
@@ -311,19 +311,19 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
-		reusableActions.staticWait(3000);
 		By packageNameLocator = By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'owl-item')]//ins[@translate='global.cta.select']");
-		WebElement pkg = driver.findElement(packageNameLocator);
-		if(reusableActions.isElementVisible(packageNameLocator,150))
+		if(reusableActions.isElementVisible(packageNameLocator,90))
 		{		
-		reusableActions.getWhenReady(packageNameLocator, 120);
+		reusableActions.getWhenReady(packageNameLocator, 30);
+		WebElement pkg = driver.findElement(packageNameLocator);
 		reusableActions.executeJavaScriptClick(pkg);
 		 }
 	   else
 		{
-	    reusableActions.getWhenReady(imgNext, 120);
+	    reusableActions.getWhenReady(imgNext, 30);
 	    reusableActions.executeJavaScriptClick(imgNext);
-	    reusableActions.getWhenReady(pkg, 120);
+	    WebElement pkg = driver.findElement(packageNameLocator);
+	    reusableActions.getWhenReady(pkg, 30);
 	    reusableActions.executeJavaScriptClick(pkg);
 		}
 	}
@@ -507,8 +507,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkConfirmSwap() {
-		reusableActions.waitForElementVisibility(btnConfirmSwap,180);
-		reusableActions.getWhenReady(btnConfirmSwap,90).click();
+		reusableActions.waitForElementVisibility(btnConfirmSwap,30);		
+		reusableActions.executeJavaScriptClick(btnConfirmSwap);
 	}
 	
 	/**

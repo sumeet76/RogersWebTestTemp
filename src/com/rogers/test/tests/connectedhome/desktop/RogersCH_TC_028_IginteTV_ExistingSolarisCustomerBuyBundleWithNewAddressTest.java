@@ -85,7 +85,8 @@ public class RogersCH_TC_028_IginteTV_ExistingSolarisCustomerBuyBundleWithNewAdd
         rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-        rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();        
+        rogers_igniteTV_buy_page.selectSolarisStarterPackageNew(); 
+		reporter.reportLogWithScreenshot("Launched the port-in popup");
 	        
 	        reporter.hardAssert(rogers_igniteTV_buy_page.verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
 	        reporter.reportLogWithScreenshot("Launched the cart summary page");
@@ -101,7 +102,7 @@ public class RogersCH_TC_028_IginteTV_ExistingSolarisCustomerBuyBundleWithNewAdd
 	        reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
 	    	rogers_tech_install_page.selSelffinstallDateAndTimeMigrartion(); 
 	        reporter.reportLogWithScreenshot("Launched the tech install page");	        
-	        rogers_tech_install_page.clkTechInstallSlot();
+	        //rogers_tech_install_page.clkTechInstallSlot();
 	        reporter.reportLogWithScreenshot("tech install details");
 	        rogers_tech_install_page.setMobielNumberExistingCustomer();
 	        rogers_tech_install_page.setEmailExistingCustomer();
