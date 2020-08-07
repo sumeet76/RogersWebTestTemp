@@ -148,8 +148,11 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[@translate='ute.payment.method.account_prefix']")
 	WebElement lblAutoPaymentAccountPreFix;
-
-	@FindBy(xpath = "//*[contains(@class,'cc-image') or contains(@class,'cc-icon')]")
+	
+	@FindAll({
+		@FindBy(xpath = "//span[@class='auto-payment-info']/ds-icon"),
+		@FindBy(xpath = "//*[contains(@class,'cc-image') or contains(@class,'cc-icon')]")
+	})	
 	WebElement imgCC;
 
 	@FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.makePayment']")
@@ -791,7 +794,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyThatAutoPaymentWithCCIsDisplayedOnAccountOverViewPage() {
-		reusableActions.waitForElementVisibility(lblAutoPayment);
+		reusableActions.waitForElementVisibility(lblAutoPayment, 50);
 		return (reusableActions.isDisplayed(lblAutoPayment)
 			 && reusableActions.isDisplayed(imgCC));
 	}
