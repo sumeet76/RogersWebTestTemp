@@ -2,6 +2,7 @@ package com.rogers.pages;
 
 import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -79,10 +80,13 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='ds-radioLabel__container ml-8 text-body my-12'][contains(.,'Use billing address')]")
 	WebElement useBillingAddressRadioBtnCreateProfile;
 
-	@FindBy(xpath = "(//div[@class='ds-radioLabel__container ml-8 text-body my-12'][contains(.,'English')])[1]")
+	@FindBy(xpath = "//label[@for='ds-radio-input-id-3']")
 	WebElement languageEnglishRadioBtnCreateProfile;
 
-	@FindBy(xpath = "(//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100'][contains(.,'Continue')])[1]")
+	@FindBy(xpath = "//ngx-recaptcha2[@data-test='recaptcha']//iframe[@role='presentation']")
+	WebElement fraGoolgeRecaptcha;
+	
+	@FindBy(xpath = "//button[@data-test='personal-info-continue']")
 	WebElement btnGotoCreditEvalStepper;
 
 	//***Create Profile stepper****
@@ -101,6 +105,15 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath= "//ds-form-field[@data-test='credit-eval-dob']//input[@formcontrolname='dateOfBirth']")
 	WebElement inputTxtDOB;
 
+	@FindBy(xpath= "//select[@data-test='dob-select-year']")
+	WebElement inputYearDOB;
+	
+	@FindBy(xpath= "//*[@data-test='dob-select-month']")
+	WebElement inputMonthDOB;
+	
+	@FindBy(xpath= "//*[@data-test='dob-select-day']")
+	WebElement inputDayDOB;
+	
 	@FindBy(xpath="//*[@id='step-2-open']/form//p[contains(text(),'Credit Card')]")
 	WebElement creditCardTitle;
 
@@ -145,6 +158,9 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	@FindBy(xpath = "//*[@id='ds-stepper-id-2-completedContent-1']//div[@class='w-100']/p")
 	WebElement identificationLabel;
+	
+	@FindBy(xpath = "//span[@id='recaptcha-anchor']")
+	WebElement RadioCheckboxCreateProfile;
 
     //***Choose a Number stepper*****
 
@@ -253,13 +269,16 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//p[@class='text-body mb-8']")
 	WebElement txtBillingDetails;
 
+	private boolean ture;
+
 	/**
 	 * To get the Title of post checkout page
 	 *
 	 * @author nimmy.george
 	 */
 
-	public WebElement getCheckoutTitle(){
+	public WebElement getCheckoutTitle()
+	{
 		reusableActions.getWhenReady(checkoutTitle);
 		return checkoutTitle;
 	}
@@ -271,8 +290,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public String getMonthlyFeeAfterTax() { 
+		reusableActions.waitForPageLoad();
+		reusableActions.getWhenReady(monthlyFeeAfterTax,5);
 		reusableActions.javascriptScrollByVisibleElement(monthlyFeeAfterTax);
-    	reusableActions.staticWait(3000);
 		return monthlyFeeAfterTax.getText().replaceAll("\\n",""); }
 
 	/**
@@ -301,13 +321,18 @@ public class RogersCheckoutPage extends BasePageClass {
 
 
 	/**
-	 * To get the Title of Create Profile stepper
+	 * To Verify Title of Create Profile stepper and return boolean value
 	 *
 	 * @author nimmy.george
 	 */
-	public void getCreateProfileTitle() { 
+	public boolean  verifyCreateProfileTitle() { 
 		reusableActions.javascriptScrollToTopOfPage();
-		reusableActions.getWhenReady(createProfileTitle); }
+		if(reusableActions.getWhenReady(createProfileTitle)!= null)
+			return true;
+				else
+					return false;
+					}
+	
 
 	/**
 	 * Enter the email on the Create Profile stepper, email address field
@@ -438,61 +463,69 @@ public class RogersCheckoutPage extends BasePageClass {
 	}
 
 	/**
-	 * To click "Continue" button in Create profile stepper, that takes you to Credit Evaluation stepper
-	 * @author nimmy.george
-	 */
-	public void clkBtnGotoCreditEvalStepper() {
-		WebDriverWait wait = new WebDriverWait(driver, 10);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100'][contains(.,'Continue')])[1]")));
-		reusableActions.clickWhenReady(btnGotoCreditEvalStepper, 30);
-	}
-
-	/**
-	 * To get the Title of Credit Evaluation stepper
-	 *
-	 * author Karthic Hasan
-	 */
-
-	public void getCreditEvaluationTitle() {
-		reusableActions.javascriptScrollByVisibleElement(creditEvaluationTitle);
-		reusableActions.getWhenReady(creditEvaluationTitle);
-	}
-
-	/**
-	 * To get the Date of Birth Label from Credit Evaluation stepper
+	 * Switch to Credit Card Iframe in Create Profile  stepper
 	 *
 	 * @author Karthic.hasan
 	 */
 
-	public void getDateOfBirthLabel() { reusableActions.getWhenReady(dateOfBirthLabel); }
+	public void switchToRecaptchaIFrame() { 
+		driver.switchTo().frame(reusableActions.getWhenVisible(fraGoolgeRecaptcha));
+		System.out.println("Switched to iframe");
+		}
 
 	/**
-	 * Enter the Date of Birth on the Credit Evaluation stepper, Date of Birth Field
-	 *
-	 * @author karthic.hasan
+	 * To click on the I'm not robot in the Create Profile stepper.
+	 * @author nimmy.george
 	 */
+
+	public void clkImNotRombotCheckbox() {
+		//reusableActions.javascriptScrollByVisibleElement(RadioCheckboxCreateProfile);
+		reusableActions.clickIfAvailable(RadioCheckboxCreateProfile);
+		System.out.println("Clicked");
+	}
+
+	/**
+	 * Switch out of Google Iframe in Create profile stepper
+	 *
+	 * @author Karthic.hasan
+	 */
+
+	public void switchOutOfGoogleIFrame() { driver.switchTo().defaultContent(); }
+	
+	/**
+	 * To click "Continue" button in Create profile stepper, that takes you to Credit Evaluation stepper
+	 * @author nimmy.george
+	 */
+	public void clkBtnGotoCreditEvalStepper() {
+//		WebDriverWait wait = new WebDriverWait(driver, 10);
+//		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[@data-test='personal-info-continue']")));
+		reusableActions.clickWhenReady(btnGotoCreditEvalStepper, 30);
+	}
+
+	/**
+	 * To Verify the Title of Credit Evaluation stepper and return Ture or false.
+	 *
+	 * author Karthic Hasan
+	 */
+
+	public boolean verifyCreditEvaluationTitle() {
+		//reusableActions.getWhenReady(creditEvaluationTitle);
+		if(reusableActions.isElementVisible(creditEvaluationTitle))
+		{
+		reusableActions.javascriptScrollByVisibleElement(creditEvaluationTitle);
+		   return true;
+		}
+		else 
+	        return false;
+	}
+
 
 	public void setDateOfBirth(String strDOB) {
 		reusableActions.getWhenReady(txtDOB).click();
 		reusableActions.getWhenVisible(inputTxtDOB).sendKeys(strDOB);
 	}
 
-	/**
-	 * To get the Credit Card Title from Credit Evaluation stepper
-	 *
-	 * @author Karthic.hasan
-	 */
-
-	public void getCreditCardTitle() { reusableActions.getWhenReady(creditCardTitle); }
-
-	/**
-	 * To get the Card Number Label from Credit Evaluation stepper
-	 *
-	 * @author Karthic.hasan
-	 */
-
-	public void getCardNumberLabel() { reusableActions.getWhenReady(cardNumberLabel); }
-
+	
 	/**
 	 * Switch to Credit Card Iframe in Credit Evaluation stepper
 	 *
@@ -533,16 +566,41 @@ public class RogersCheckoutPage extends BasePageClass {
 		reusableActions.getWhenReady(txtExpiryDate).click();
 		reusableActions.getWhenReady(inputExpiryDate, 10).sendKeys(strExpiryDate);
 	}
-
 	/**
-	 * To get the Credit Card Id Label from Credit Evaluation stepper
+	 * Select DOB-Year Dropdown Option on the Credit Evaluation stepper.
 	 *
-	 * @author Karthic.hasan
+	 * @author karthic.hasan
 	 */
 
-	public WebElement getIdLabel() {
-		reusableActions.getWhenReady(idLabel);
-		return idLabel;
+	public void selectYearDropdownOption(String strYear) {
+		
+		reusableActions.waitForElementVisibility(inputYearDOB, 20);
+		reusableActions.clickIfAvailable(inputYearDOB);
+		reusableActions.selectWhenReady(inputYearDOB, strYear);
+	}
+	/**
+	 * Select DOB-Month Dropdown Option on the Credit Evaluation stepper.
+	 *
+	 * @author karthic.hasan
+	 */
+
+	public void selectMonthDropdownOption(String strMonth) {
+		
+		reusableActions.waitForElementVisibility(inputMonthDOB, 20);
+		reusableActions.clickIfAvailable(inputMonthDOB);
+		reusableActions.selectWhenReady(inputMonthDOB, strMonth);
+	}
+	/**
+	 * Select DOB-Date Dropdown Option on the Credit Evaluation stepper.
+	 *
+	 * @author karthic.hasan
+	 */
+
+	public void selectDayDropdownOption(String strDay) {
+		
+		reusableActions.waitForElementVisibility(inputDayDOB, 20);
+		reusableActions.clickIfAvailable(inputDayDOB);
+		reusableActions.selectWhenReady(inputDayDOB, strDay);
 	}
 
 	/**
@@ -576,14 +634,10 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author karthic.hasan
 	 */
 
-	public void clkCreditAuthorizationChkBox() { reusableActions.getWhenReady(chkCreditAuthorization).click(); }
-
-	/**
-	 * To verify Credit Evaluation Continue button in the Credit Evaluation stepper
-	 *
-	 * @author karthic.hasan
-	 */
-	public boolean verifyCreditInfo() { return reusableActions.isElementVisible(btnCreditEvalContinue); }
+	public void clkCreditAuthorizationChkBox() 
+	{
+		reusableActions.getWhenReady(chkCreditAuthorization).click(); 
+		}
 
 	/**
 	 * To click on the Credit Evaluation Continue button in the Credit Evaluation
@@ -595,19 +649,19 @@ public class RogersCheckoutPage extends BasePageClass {
 	public void clkCreditEvalContinue() { reusableActions.getWhenReady(btnCreditEvalContinue).click(); }
 
 	/**
-	 * To verify Credit Evaluation popup in the Credit Evaluation stepper
+	 * To verify Credit Evaluation popup is present in the Credit Evaluation stepper
 	 *
 	 * @author karthic.hasan
 	 */
-	public boolean verifyCreditEvalPopup() { return reusableActions.isElementVisible(popCreditEval); }
+	public boolean isCreditEvalPopupPresent() { return reusableActions.isElementVisible(popCreditEval); }
 
 	/**
-	 * To verify Credit Evaluation text in the Credit Evaluation Model
+	 * To verify Credit Evaluation text is present in the Credit Evaluation Model and return Boolean value.
 	 *
 	 * @author karthic.hasan
 	 */
 
-	public boolean verifyCreditEvalTextOnModal() { return reusableActions.isElementVisible(txtCreditEval); }
+	public boolean isCreditEvalTextOnModalPresent() { return reusableActions.isElementVisible(txtCreditEval); }
 
 	/**
 	 * WaitUntill Credit Evaluation text get invisible from the Credit Evaluation
@@ -619,12 +673,12 @@ public class RogersCheckoutPage extends BasePageClass {
 	public void waitUntilCreditEvalPopupClose() { reusableActions.waitForElementVisibility(identificationLabel); }
 
 	/**
-	 * To verify Credit Evaluation Identification Label in the Credit Evaluation
+	 * To verify Credit Evaluation Identification Label is present in the Credit Evaluation 
 	 * stepper
 	 *
 	 * @author karthic.hasan
 	 */
-	public boolean verifyIdentificationLabel() {
+	public boolean isIdentificationLabel() {
 		reusableActions.staticWait(20000);
 		reusableActions.javascriptScrollByVisibleElement(identificationLabel);
 		return reusableActions.isElementVisible(identificationLabel);
@@ -636,34 +690,16 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author karthic.hasan
 	 */
 
-	public boolean verifyChooseaNumberTitle() { return reusableActions.isElementVisible(chooseNumberTitle); }
+	public boolean isChooseaNumberTitleDisplayed() { return reusableActions.isElementVisible(chooseNumberTitle); }
 
 	/**
-	 * To verify Select A Number Tab in the Choose a Number stepper
+	 * To verify Select A Number Tab & UseAnExistingNumber Tab is present in the Choose a Number stepper and return boolean value.
 	 *
 	 * @author karthic.hasan
 	 */
 
-	public boolean verifySelectaNewNumberTab() {
-		return reusableActions.isElementVisible(selectaNewNumberTab);
-	}
-	/**
-	 * To verify Use an Existing Number Tab in the Choose a Number stepper
-	 *
-	 * @author karthic.hasan
-	 */
-
-	public boolean verifyUseAnExistingNumberTab() {
-		return reusableActions.isElementVisible(useAnExistingNumberTab);
-	}
-	/**
-	 * To verify City Dropdown in the Choose a Number stepper
-	 *
-	 * @author karthic.hasan
-	 */
-
-	public boolean verifyCityDropdown() {
-		return reusableActions.isElementVisible(cityDropdown);
+	public boolean isChooseNumberTabsDisplayed() {
+		return (reusableActions.isElementVisible(selectaNewNumberTab) && reusableActions.isElementVisible(useAnExistingNumberTab));
 	}
 
 	/**
@@ -696,7 +732,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author karthic.hasan
 	 */
 
-	public boolean verifyFindMoreAvlNumberButton() {
+	public boolean isFindMoreAvlNumberButtonPresent() {
 		return reusableActions.isElementVisible(btnFindMoreAvlNumber);
 	}
 
@@ -712,33 +748,34 @@ public class RogersCheckoutPage extends BasePageClass {
 	}
 
 	/**
-	 * To verify Choose A Number Label in the Choose a Number stepper
+	 * To verify Choose A Number Label in the Choose a Number stepper and return boolean value
 	 *
 	 * @author karthic.hasan
 	 */
 
-	public boolean verifyChooseaNumberLabel() {
+	public boolean isChooseaNumberLabelDisplayed() {
 		reusableActions.javascriptScrollByVisibleElement(lblChooseaNumber);
 		return reusableActions.isElementVisible(lblChooseaNumber);
 	}
 
 	/**
-	 * To get the Title of Billing Options stepper
+	 * To Verify the Title of Billing Options stepper Displayed and Return True or False Boolean Value.
 	 *
 	 * @author nimmy.george
 	 */
 
-	public void getBillingOptionsTitle() {
+	public boolean isBillingOptionsTitleDisplayed() {
 		reusableActions.getWhenReady(billingOptionsTitle);
+		return reusableActions.isElementVisible(billingOptionsTitle);
 	}
 
 	/**
-	 * To verify Payment Method Dropdown in the Billing & Payment option stepper
+	 * To verify Payment Method Dropdown is Present in the Billing & Payment option stepper
 	 *
 	 * @author karthic.hasan
 	 */
 
-	public boolean verifySelectPaymentMethodDropdown() {
+	public boolean isPaymentMethodDropdownPresent() {
 		return reusableActions.isElementVisible(drpSelectPaymentMethod);
 	}
 
@@ -790,12 +827,12 @@ public class RogersCheckoutPage extends BasePageClass {
 	}
 
 	/**
-	 * To verify Card Details in the Billing & Payment option stepper
+	 * To verify Card Details displayed in the Billing & Payment option stepper
 	 *
 	 * @author karthic.hasan
 	 */
 
-	public boolean verifyCardDetails() {
+	public boolean isCardDetailsDisplayed() {
 		return reusableActions.isElementVisible(txtCreditDetails);
 	}
 
@@ -866,8 +903,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	public boolean clkDeliveryMethodStandard() {
 		reusableActions.javascriptScrollByVisibleElement(deliveryMethodHeader);
 		reusableActions.clickIfAvailable(deliveryMethodStandard,30);
-		deliveryMethodStandard.isSelected();
-		return true;
+		return deliveryMethodStandard.isSelected();
 	}
 
 	/**
@@ -879,8 +915,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	public boolean selectDate() {
 		reusableActions.javascriptScrollByVisibleElement(txtEmailAddress);
 		reusableActions.clickIfAvailable(selDate, 3);
-		useBillingAddressRadioBtnCreateProfile.isSelected();
-		return true;
+		return useBillingAddressRadioBtnCreateProfile.isSelected();
 	}
 
 	/**

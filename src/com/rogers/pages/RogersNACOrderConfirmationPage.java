@@ -56,11 +56,11 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 	 
 	 
 	    /**
-	     * To get the Title of Order Confirmation Page
+	     * To Verify the Title of Order Confirmation Page is Present
 	     *
 	     * @author Karthic.hasan
 	     */
-	    public boolean getOrderConfirmationTitle() {
+	    public boolean isOrderConfirmationTitlePresent() {
 	       return reusableActions.isElementVisible(orderConfirmationTitle);
 	    }
 	    
@@ -116,8 +116,9 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 		 * @author karthic.hasan
 		 */
 		
-		public boolean verifyLearnMoreLink()
+		public boolean isLearnMoreLinkDisplayed()
 		{
+			reusableActions.javascriptScrollByVisibleElement(learnMoreLink);
 			return reusableActions.isDisplayed(learnMoreLink);
 		}
 	   

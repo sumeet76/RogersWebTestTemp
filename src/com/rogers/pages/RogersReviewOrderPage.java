@@ -73,12 +73,12 @@ public class RogersReviewOrderPage extends BasePageClass {
 
 
     /**
-     * To get the Title of Order Review Page
+     * To Verify the Title of Order Review Page is Present
      *
      * @author nimmy.george
      */
-    public void getOrderReviewPageTitle() {
-        reusableActions.getWhenReady(orderReviewPageTitle);
+    public boolean isOrderReviewPageTitlePresent() {
+       return reusableActions.isElementVisible(orderReviewPageTitle, 60);
     }
 
     /**

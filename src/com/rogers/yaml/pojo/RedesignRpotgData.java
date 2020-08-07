@@ -4,7 +4,9 @@ public class RedesignRpotgData {
     private String deviceName;
     private String firstName;
     private String lastName;
-    private String dateOfBirth;
+    private String dateOfBirthYear;
+    private String dateOfBirthMonth;
+    private String dateOfBirthDay;
     private String creditCardDetails;
     private String expiryDate;
     private String dropdownOption;
@@ -26,13 +28,29 @@ public class RedesignRpotgData {
 		this.postalCode = postalCode;
 	}
 
-    public String getDateOfBirth() {
-		return dateOfBirth;
+    public String getDateOfBirthYear() {
+		return dateOfBirthYear;
 	}
 
-	public void setDateOfBirth(String dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+	public void setDateOfBirthYear(String dateOfBirthYear) {
+		this.dateOfBirthYear = dateOfBirthYear;
 	}
+	
+	  public String getDateOfBirthMonth() {
+			return dateOfBirthMonth;
+		}
+
+		public void setDateOfBirthMonth(String dateOfBirthMonth) {
+			this.dateOfBirthMonth = dateOfBirthMonth;
+		}
+		
+		  public String getDateOfBirthDay() {
+				return dateOfBirthDay;
+			}
+
+			public void setDateOfBirthDay(String dateOfBirthDay) {
+				this.dateOfBirthDay = dateOfBirthDay;
+			}
 
 	public String getDeviceName() {
         return deviceName;

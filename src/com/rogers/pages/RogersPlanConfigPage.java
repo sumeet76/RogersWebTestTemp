@@ -29,7 +29,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     WebElement preCartSummaryContinueButton;
 
     //@FindBy(xpath = "//button[@id='main-continue-button']")
-    @FindBy(xpath ="//button[@data-test='build-plan-checkout-flow-button']")
+    @FindBy(xpath ="//button[@data-test='build-plan-checkout-flow-button']/span")
     WebElement continueButtonOnCartSummary;
 
     @FindBy(xpath = "//button[@id='get-bpo-offer-button']")
@@ -344,7 +344,8 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void clickCartSummaryContinueButton() {
-        reusableActions.clickIfAvailable(continueButtonOnCartSummary, 5);
+    	reusableActions.javascriptScrollByVisibleElement(continueButtonOnCartSummary);
+        reusableActions.executeJavaScriptClick(continueButtonOnCartSummary);
     }
 
     /**
@@ -413,6 +414,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public String getOneTimeFeesAmount() {
+    	reusableActions.javascriptScrollByVisibleElement(oneTimeFeesAmount);
         return oneTimeFeesAmount.getText().replaceAll("\\n","");
     }
 

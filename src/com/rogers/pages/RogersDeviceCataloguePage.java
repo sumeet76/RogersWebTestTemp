@@ -439,7 +439,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
     public Boolean clickGetStartedButtonOnModal() {
         reusableActions.clickIfAvailable(modalContainerGetStartedbutton);
-        return reusableActions.isElementVisible(new RogersDeviceConfigPage(driver).continueButton);
+        return (reusableActions.isElementVisible(new RogersDeviceConfigPage(driver).continueButton));
     }
 
 
@@ -459,7 +459,8 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
     public String getPricingBlockCataloguePage(String deviceName){
         xpathDeviceName=createXpathWithDeviceName(deviceName);
-        String pricingBlockContentXpath = xpathDeviceName + "/..//div[@class='d-flex mb-16']";
+        String pricingBlockContentXpath = xpathDeviceName + "/..//div[@class='d-flex mb-16 flex-row justify-content-around' or @class='d-flex mb-16']";
+        reusableActions.javascriptScrollByVisibleElement(driver.findElement(By.xpath(xpathDeviceName)));
         return reusableActions.getWhenReady(By.xpath(pricingBlockContentXpath), 20).getText().replaceAll("\\s+","");
     }
 
@@ -503,8 +504,8 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author nimmy.george
      */
 
-    public String verifyRpotgBannerPresent() {
-        return reusableActions.getWhenReady(rpotgBannerText, 10).getText();
+    public boolean isRpotgBannerPresent() {
+        return reusableActions.isDisplayed(rpotgBannerText);
     }
 
 
@@ -514,7 +515,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author nimmy.george
      */
 
-    public void clkRpotgBannerLearnMore() {
+    public void clickRpotgBannerLearnMore() {
         reusableActions.clickIfAvailable(learnMoreBannerLearnMore);
 
     }
@@ -525,7 +526,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author nimmy.george
      */
 
-    public void clkCheckEligibilityRpotgBanner() {
+    public void clickCheckEligibilityRpotgBanner() {
         reusableActions.clickWhenReady(checkEligibilityRpotgBanner);
     }
 
@@ -546,8 +547,9 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author nimmy.george
      */
 
-    public void clkCheckBtn() {
-        reusableActions.getWhenVisible(checkBtn, 20).click();
+    public void clickCheckBtn() {
+        reusableActions.getWhenVisible(checkBtn, 20);
+        reusableActions.doubleClick(checkBtn,0);
     }
 
     /**
@@ -556,7 +558,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author nimmy.george
      */
 
-    public void clkContinueBtn() {
+    public void clickContinueBtn() {
         reusableActions.clickWhenReady(continueBtn, 20);
     }
 

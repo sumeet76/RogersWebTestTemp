@@ -1,7 +1,7 @@
 
 # Config
 ---
-url: https://rcom2.qa01.eks.rogers.com/phones/
+url: https://rcom5.qa01.eks.rogers.com/phones/
 #url: https://rcom2.qa01.eks.rogers.com/phones/samsung-galaxy-s20-plus-5g/build-plan?tierType=upfrontEdge&upfrontEdge=true&flowType=nac&sku=S20PL128BLU&step=5&tier=EDGEFIN2TAB&data=f4047&talk=sku_plan_sku1310410_sku1310410&addons=NOPROTECTION
 #url: https://staging.rogers.com/phones/
 browser: chrome

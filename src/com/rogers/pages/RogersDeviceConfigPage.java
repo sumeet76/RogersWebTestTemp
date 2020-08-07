@@ -17,9 +17,10 @@ public class RogersDeviceConfigPage extends BasePageClass {
 
     public String xpathDeviceName;
 
-    @FindBy(xpath = "//button[@id='continue-button']")
+    @FindBy(xpath = "//button[@title='Select' or @title='Continue']")
     public
     WebElement continueButton;
+
 
     @FindBy(xpath = "//span[contains(text(),'Pre-order Ship Home') or contains(text(),'PREORDER RESERVE')]")
     WebElement backOrderShipHome;
@@ -321,6 +322,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
      * @author Pranav.Shaligram
      */
     public String getPromoBlockText () {
+    	reusableActions.javascriptScrollByVisibleElement(promoBlock);
         return reusableActions.getWhenReady(promoBlock, 10).getText().trim().replaceAll("\\n", " ");
     }
 
