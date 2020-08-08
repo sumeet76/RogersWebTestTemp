@@ -1,11 +1,12 @@
    # Account Details 
 ---
-username: AutoR820SS65@yahoo.com
+username: AutoR820SS20@yahoo.com
 password: DigiAuto@123
 accountDetails:
-   ban: 935744961
-   ctn: 6476271213
+   ban: 935744995
+   ctn: 6476271215
    postalcode: M4L2Z8   
-   contactemail: AutoR820SS65@yahoo.com
-   newpassword: DigiAuto@123    
+   recoveryNumber: 9876543210
+   contactemail: AutoR820SS20@yahoo.com
+   newpassword: rogers123   
 ...

@@ -75,8 +75,10 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 
 	@FindBy(xpath = "//input[@formcontrolname='accountNumber']")
 	WebElement txtAcountNumber;
-	
-	@FindBy (xpath = "/html/body/table[1]//b[contains(text(),'Your username is') or contains(text(),'Votre nom d’utilisateur est')]/parent::td")	
+		
+	@FindAll({
+	@FindBy (xpath = "//*[contains(text(),'username is') or contains(text(),'Votre nom d’utilisateur est')]/parent::tr/following-sibling::tr/td"),
+	@FindBy (xpath = "/html/body/table[1]//b[contains(text(),'Your username is') or contains(text(),'Votre nom d’utilisateur est')]/parent::td")})
 	WebElement lblYourUsername;
 	
 	@FindBy (xpath = "/html/body/table[1]//img[@alt='Return to sign in' or @alt='Ouvrir une session']")

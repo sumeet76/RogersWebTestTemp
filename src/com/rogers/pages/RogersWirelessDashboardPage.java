@@ -2171,7 +2171,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkStreamSaverOff() {
-		reusableActions.getWhenReady(btnStreamSaverSwitchOff).click();
+		reusableActions.getWhenReady(btnStreamSaverSwitchON).click();
 		
 	}
 

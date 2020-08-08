@@ -107,7 +107,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
         @FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.setUpAutomaticPayments']")})	
 	WebElement lnkSetUpAutomaticPaymentMethodMobile;
 	
-	@FindBy(xpath = "//button/span[@translate='ute.rogers.account.balance.make_a_payment']")
+	@FindAll({
+        @FindBy(xpath = "//span[contains(text(),'Make a payment')]"),
+	@FindBy(xpath = "//button/span[@translate='ute.rogers.account.balance.make_a_payment']")})
 	WebElement btnMakeAPayment;
 	
 	@FindBy(xpath = "//div[@ng-show='loadingImg']")
@@ -220,8 +222,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		@FindBy(xpath = "//span[contains(text(),'Entertainment')]/ancestor::div[@class='subscription-detail']"),
         @FindBy(xpath = "//span[@translate='ute.subscriptionBadge.smartStream']")})	
 	WebElement btnEntertainmentBadge;
-
-	@FindBy(xpath = "//button[@aria-label='ute.common.label.billAndPayment']")
+		
+	@FindAll({
+	@FindBy(xpath = "//span[contains(text(),'Billing & Payment')]"),	
+	@FindBy(xpath = "//button[@aria-label='ute.common.label.billAndPayment']")})
 	WebElement menuBillingAndPaymentsMobile;
 
 	@FindBy(xpath = "//*[@id='overview' or @id='survol']//md-list-item//span[@data-translate='ute.common.second.level.navigation.billing.changePaymentMethod']/ancestor::h2/parent::div/parent::div/button")
@@ -738,7 +742,6 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		//reusableActions.waitForElementTobeClickable(btnMakeAPayment, 20);
 		//reusableActions.getWhenReady(btnMakeAPayment,10).click();
 		
-		
 		boolean clickSuccess=false;
 		int count=0;
 		while (count<=3 && !clickSuccess) {
@@ -755,6 +758,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			}
 			count++;
 		}
+		
 		
 	}
 	
@@ -1121,6 +1125,15 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void clkbtnBackToDevices() {
 		reusableActions.clickWhenReady(btnClickBackToDevice);
+	}
+
+
+
+	public void clickMakePaymentMobile() {
+		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
+		reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
+		reusableActions.getWhenReady(btnMakeAPayment,30).click();			
+		
 	} 
 	
 	
