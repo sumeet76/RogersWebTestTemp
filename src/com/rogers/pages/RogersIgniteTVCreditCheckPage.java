@@ -323,9 +323,22 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void setPassportNumber() {
 		String strPasportNumber = FormFiller.generatePassportNumber();
-		reusableActions.waitForElementVisibility(txtContainerPasportNumber,180);
+		reusableActions.waitForElementVisibility(txtContainerPasportNumber,30);
 		reusableActions.getWhenReady(txtContainerPasportNumber,10).click();
-		reusableActions.getWhenReady(txtPasportNumber, 60).clear();
+		reusableActions.getWhenReady(txtPasportNumber, 30).clear();
+		reusableActions.getWhenReady(txtPasportNumber, 3).sendKeys(strPasportNumber);
+	}
+	
+	/**
+	 * Set dynamic passport number on Credit check page
+	 * @author Chinnarao.Vattam
+	 */
+	public void setPassportNumberMobile() {
+		String strPasportNumber = FormFiller.generatePassportNumber();
+		reusableActions.waitForElementVisibility(txtContainerPasportNumber,30);
+		reusableActions.javascriptScrollToMiddleOfPage();
+		reusableActions.getWhenReady(txtContainerPasportNumber,10).click();
+		reusableActions.getWhenReady(txtPasportNumber, 30).clear();
 		reusableActions.getWhenReady(txtPasportNumber, 3).sendKeys(strPasportNumber);
 	}
 

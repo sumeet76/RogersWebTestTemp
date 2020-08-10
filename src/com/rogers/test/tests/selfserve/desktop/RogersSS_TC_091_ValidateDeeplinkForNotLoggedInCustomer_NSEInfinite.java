@@ -62,8 +62,7 @@ public class RogersSS_TC_091_ValidateDeeplinkForNotLoggedInCustomer_NSEInfinite 
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 		reporter.reportLogWithScreenshot("After Log In");
-		reporter.hardAssert((rogers_change_payment_method_page.verifyChangePaymentMethodLoad() &&
-				rogers_billing_page.verifyIfViewBillFrameDisplayed())
+		reporter.hardAssert(rogers_change_payment_method_page.verifyChangePaymentMethodLoad()
 	    		   , "Redirected to the view bill page from where the MOP modal pops up and is working as designed for not logged in user"
 	    		   , "Didnt redirect to the view bill page and the MOP modal pops up is not shown");
 		reporter.reportLogWithScreenshot("The view bill page from where the MOP modal pops up");

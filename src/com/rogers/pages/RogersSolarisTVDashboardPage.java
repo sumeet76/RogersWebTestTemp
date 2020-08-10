@@ -291,7 +291,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkManageChannelsAndThemePacks() {
-		reusableActions.waitForElementInvisibility(loaderTVdashboard,90);
+		reusableActions.waitForElementVisibility(btnManageChannelsAndThemePacks,90);
 		reusableActions.getWhenReady(btnManageChannelsAndThemePacks, 30).click();
 	}
 
@@ -312,17 +312,18 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 */
 	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
 		By packageNameLocator = By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'owl-item')]//ins[@translate='global.cta.select']");
-		WebElement pkg = driver.findElement(packageNameLocator);
-		if(reusableActions.isElementVisible(packageNameLocator,120))
+		if(reusableActions.isElementVisible(packageNameLocator,90))
 		{		
-		reusableActions.getWhenReady(packageNameLocator, 120);
+		reusableActions.getWhenReady(packageNameLocator, 30);
+		WebElement pkg = driver.findElement(packageNameLocator);
 		reusableActions.executeJavaScriptClick(pkg);
 		 }
 	   else
 		{
-	    reusableActions.getWhenReady(imgNext, 120);
+	    reusableActions.getWhenReady(imgNext, 30);
 	    reusableActions.executeJavaScriptClick(imgNext);
-	    reusableActions.getWhenReady(pkg, 120);
+	    WebElement pkg = driver.findElement(packageNameLocator);
+	    reusableActions.getWhenReady(pkg, 30);
 	    reusableActions.executeJavaScriptClick(pkg);
 		}
 	}
@@ -506,9 +507,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkConfirmSwap() {
-		reusableActions.waitForElementVisibility(btnConfirmSwap,180);
-		reusableActions.javascriptScrollToBottomOfPage();
-		reusableActions.getWhenReady(btnConfirmSwap,90).click();
+		reusableActions.waitForElementVisibility(btnConfirmSwap,30);		
+		reusableActions.executeJavaScriptClick(btnConfirmSwap);
 	}
 	
 	/**

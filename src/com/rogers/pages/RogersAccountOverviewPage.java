@@ -148,8 +148,11 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[@translate='ute.payment.method.account_prefix']")
 	WebElement lblAutoPaymentAccountPreFix;
-
-	@FindBy(xpath = "//*[contains(@class,'cc-image') or contains(@class,'cc-icon')]")
+	
+	@FindAll({
+		@FindBy(xpath = "//span[@class='auto-payment-info']/ds-icon"),
+		@FindBy(xpath = "//*[contains(@class,'cc-image') or contains(@class,'cc-icon')]")
+	})	
 	WebElement imgCC;
 
 	@FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.makePayment']")
@@ -303,6 +306,16 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * Clicks on the Legacy 'InternetBadge' option on the dash board
 	 * @author chinnarao.vattam
 	 */
+	public void clkLegacyInternetMobile() {
+		reusableActions.javascriptScrollToMiddleOfPage();
+		reusableActions.getWhenReady(btnLegacyInternetBadge, 60).click();
+/*		reusableActions.waitForElementVisibility(btnLegacyInternetBadge, 60);
+		reusableActions.executeJavaScriptClick(btnLegacyInternetBadge);*/
+	}
+	/**
+	 * Clicks on the Legacy 'InternetBadge' option on the dash board
+	 * @author chinnarao.vattam
+	 */
 	public void clkLegacyInternetBadge() {
 		reusableActions.getWhenReady(btnLegacyInternetBadge, 120).click();
 	}
@@ -331,16 +344,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	
 	/**
 	 * Clicks on the 'InternetPopup' option on the dash board
-	 * @param strBrowser- strBrowser
 	 * @author chinnarao.vattam
 	 */
-	public void clkInternetPopup(String strBrowser) {
-		if (strBrowser.equalsIgnoreCase("chrome"))
-		{
+	public void clkInternetPopup() {
 		reusableActions.clickIfAvailable(popUpInternetPopup, 60);
-		}else {
-			reusableActions.clickIfAvailable(popUpInternetPopup, 60);			
-		}
 	}
 
 	/**
@@ -351,7 +358,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public void clkTVBadge(String strBrowser ) {
 		if (strBrowser.equalsIgnoreCase("chrome"))
 		{		
-		reusableActions.getWhenReady(btnTVBadge, 120).click();
+		reusableActions.getWhenReady(btnTVBadge, 60).click();
 		}else
 		{
 			reusableActions.clickIfAvailable(btnTVBadge,120);
@@ -371,8 +378,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkTVBadgeMobile() {	
-		reusableActions.getWhenReady(btnTVBadge,180);
-		reusableActions.executeJavaScriptClick(btnTVBadge);
+		reusableActions.javascriptScrollToMiddleOfPage();
+		reusableActions.getWhenReady(btnTVBadge, 60).click();	
 	}
 	
 	/**
@@ -383,10 +390,19 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public void clkRHPBadge(String strBrowser) {
 		if (strBrowser.equalsIgnoreCase("chrome"))
 		{
-		reusableActions.getWhenReady(btnRHPBadge, 120).click();;
+		reusableActions.getWhenReady(btnRHPBadge, 90).click();;
 		}else {
-			reusableActions.clickIfAvailable(btnRHPBadge, 120);
+			reusableActions.clickIfAvailable(btnRHPBadge, 90);
 			}
+		}
+	
+	/**
+	 * Clicks on the 'RHP Badge' option on the dash board
+	 * @author chinnarao.vattam
+	 */
+	public void clkRHPBadgeMobile() {
+		reusableActions.javascriptScrollToMiddleOfPage();
+		reusableActions.getWhenReady(btnRHPBadge, 90).click();
 		}
 	
 	/**
@@ -555,7 +571,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verfyContactUsToManageFeaturess() {
-		return reusableActions.isElementVisible(lnkContactUsToManageFeaturess, 20);
+		return reusableActions.isElementVisible(lnkContactUsToManageFeaturess, 60);
 	}
 	
 	/**
@@ -791,7 +807,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyThatAutoPaymentWithCCIsDisplayedOnAccountOverViewPage() {
-		reusableActions.waitForElementVisibility(lblAutoPayment);
+		reusableActions.waitForElementVisibility(lblAutoPayment, 50);
 		return (reusableActions.isDisplayed(lblAutoPayment)
 			 && reusableActions.isDisplayed(imgCC));
 	}
