@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -93,7 +93,7 @@ public class RogersBFA_TestOld_TC05_HUP_withDeviceBalance_FinToFin_24Months0Upfr
 		startSession(TestDataHandler.bfaConfig.getRogersURL(), strBrowser, strLanguage, RogersEnums.GroupName.buyflows , method);
 	}
 
-    @AfterTest(alwaysRun = true)
+	@AfterMethod(alwaysRun = true)
     public void afterTest() {
     	closeSession();
     }
