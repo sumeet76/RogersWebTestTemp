@@ -35,24 +35,24 @@ public class Mobile_RogersCH_TC_019_DigitalTV_ValidateTVDashboardTest extends Ba
 
 	@Test
 	public void checkLegacyTVDashboardMobile() {
+		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();
         reporter.reportLogWithScreenshot("Home Page");
-        reporter.reportLog("Home Page Launched");
-    	rogers_home_page.clkSignInMobile();
-
-		rogers_login_page.switchToSignInIFrame();
-		reporter.reportLogWithScreenshot("Launched the SignIn popup");
+    	rogers_home_page.clkSignInMobile();    	
+        rogers_login_page.switchToSignInIFrame();
+        reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		rogers_login_page.setUsernameIFrame(TestDataHandler.digitalTVAccount.getUsername());
 		rogers_login_page.setPasswordIFrame(TestDataHandler.digitalTVAccount.getPassword());
-		reporter.reportLogWithScreenshot("Enter the account credentails");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-	    reporter.reportLogWithScreenshot("Skip popup");
-	    rogers_login_page.clkSkipIFrame();
-	    rogers_login_page.switchOutOfSignInIFrame();
+        reporter.reportLogWithScreenshot("Enter the account credentails");
+        rogers_login_page.clkSignInIFrame();
+    	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        reporter.reportLogWithScreenshot("Skip popup");
+        rogers_login_page.clkSkipIFrame();
+        rogers_login_page.switchOutOfSignInIFrame();
 	    rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVAccount.accountDetails.getBan());
 		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.clkTVBadge(TestDataHandler.chConfig.getBrowser());
+		rogers_account_overview_page.clkTVBadgeMobile();
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
 		reporter.hardAssert(rogers_digital_tv_dashboard_page.verifyChangeMyPackage(),"Verifed the TV dashboard","TV dashboard Verification has failed");
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");

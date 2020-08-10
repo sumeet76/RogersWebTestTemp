@@ -3,9 +3,9 @@
 sauceOptions:
    seleniumVersion: 3.141.59
    name: Fido - Connected home Job
-   maxDuration: 800
-   commandTimeout: 600
-   idleTimeout: 180
+   maxDuration: 600
+   commandTimeout: 300
+   idleTimeout: 120
    build: August 19th Agile Release -CHRogers
 mutableFireFoxCapabilities:  
    platformName: Windows 10

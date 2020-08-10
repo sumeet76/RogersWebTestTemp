@@ -104,7 +104,7 @@ public class RogersCH_TC_006_IginteTV_BuySolarisDoublePlayChangeInstallationDate
         reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
     	rogers_tech_install_page.selSelffinstallDateAndTimeMigrartion(); 
         reporter.reportLogWithScreenshot("Launched the tech install page");	        
-        rogers_tech_install_page.clkTechInstallSlot();
+       // rogers_tech_install_page.clkTechInstallSlot();
         reporter.reportLogWithScreenshot("tech install details");
         rogers_tech_install_page.setMobielNumberExistingCustomer();
         rogers_tech_install_page.setEmailExistingCustomer();

@@ -31,7 +31,7 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy (xpath = "//img[@src='assets/images/error_warning.png']")
 	WebElement failLoginMsg;
 
-	@FindBy(xpath = "//button[text()='Skip' or text()='Continuer']")
+	@FindBy(xpath = "//button[contains(text(),'Skip') or contains(text(),'Continuer')]")
 	WebElement btnSkip;
 	
 	@FindBy(xpath = "//a[text()='Register' or text()=\"S'inscrire\"]")
@@ -113,7 +113,7 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSkipIFrame() {
-		reusableActions.clickIfAvailable(btnSkip,30);
+		reusableActions.clickIfAvailable(btnSkip,20);
 	}
 	
 	/**

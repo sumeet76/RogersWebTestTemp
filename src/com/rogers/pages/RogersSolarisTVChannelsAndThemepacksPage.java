@@ -112,8 +112,8 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author Saurav.Goyal	 
 	 */
 	public void addChannel() {
-		reusableActions.waitForElementVisibility(addParticularChannelToCart.get(0), 340);
-		reusableActions.getWhenReady(addParticularChannelToCart.get(0), 180).click();
+		reusableActions.waitForElementVisibility(addParticularChannelToCart.get(0), 180);
+		reusableActions.getWhenReady(addParticularChannelToCart.get(0), 90).click();
 	}
 	
 	/**

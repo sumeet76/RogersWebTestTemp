@@ -166,9 +166,13 @@ public class RogersChoosePhonePage extends BasePageClass {
 		for(WebElement element: deviceModal) {
 			if(reusableActions.isElementVisible(element , 30))
 				try {
-					reusableActions.isElementVisible(element.findElement(By.xpath("//div[contains(@class,'button') and (@res='details_devicemodel' or @res='upgrade')]")));
+					WebElement btnDetail =  element.findElement(By.xpath("//div[contains(@class,'button') and (@res='details_devicemodel' or @res='upgrade' or @res='_add')]"));
+					reusableActions.isElementVisible(btnDetail);
+					//reusableActions.isElementVisible(element.findElement(By.xpath("//div[contains(@class,'button') and (@res='details_devicemodel' or @res='upgrade')]")));
 					detailButtonFlag = true;
-					reusableActions.isElementVisible(element.findElement(By.xpath("//section[@class='phoneModel']//span[@res='device_eligible']")));
+					WebElement proOnTheGoMsgDisplay  = element.findElement(By.xpath("//section[@class='phoneModel']//span[@res='device_eligible']"));
+					reusableActions.isElementVisible(proOnTheGoMsgDisplay);
+					//reusableActions.isElementVisible(element.findElement(By.xpath("//section[@class='phoneModel']//span[@res='device_eligible']")));
 					return detailButtonFlag;
 				} catch (Exception e) {
 					if(detailButtonFlag = true) {

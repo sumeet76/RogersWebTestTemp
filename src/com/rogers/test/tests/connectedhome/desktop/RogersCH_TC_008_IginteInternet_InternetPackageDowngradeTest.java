@@ -55,8 +55,9 @@ public class RogersCH_TC_008_IginteInternet_InternetPackageDowngradeTest extends
         rogers_internet_dashboard_page.clkSolChangeInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Interent packages page");        
         rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.solarisInternetAccount.getAccountDetails().getDowngradePlanEn(),TestDataHandler.solarisInternetAccount.getAccountDetails().getDowngradePlanFr());
+        rogers_internet_dashboard_page.clkInternetChangeOK();
         reporter.hardAssert(rogers_internet_dashboard_page.verifyContatUSInternetDowngarde(),"Displayed the contat US popup","Download package has failed");        
-        reporter.reportLogWithScreenshot("Launched the Interent packages page");
+        reporter.reportLogWithScreenshot("Launched the customercare popup");
     	}
 	
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})

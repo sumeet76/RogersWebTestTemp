@@ -19,6 +19,9 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//a[@href='/consumer/easyloginriverpage']")
 	WebElement lnkEasyLogin;
 	
+	@FindBy(xpath = "//a[@href='/consumer/internet']")
+	WebElement lnkEasyInternet;
+	
 	@FindBy(xpath = "//a[@href='/web/consumer/ignite-bundles/tv-internet']")
 	WebElement lnkTVBundle;
 	
@@ -91,6 +94,9 @@ public class RogersHomePage extends BasePageClass {
 	WebElement btnServiceability;
 	//a[@title='Check if Ignite Bundles are available in your area' or @title='Vérifiez si les offres groupées Élan sont disponibles dans votre secteur.']
 	
+	@FindBy(xpath ="//div[@class='ng-star-inserted overlay']")
+	WebElement overlayHomePage;
+		
 	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -primary -large ng-star-inserted']")
 	WebElement btnWelcomeback;	
 	//a[@title='Check if Ignite Bundles are available in your area']
@@ -191,6 +197,9 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet at your address']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']")
 	WebElement lnkInternetAvailability;
 	
+	@FindBy(xpath = "//i[@class='li-loader']")
+	WebElement loaderInternetServiceability;
+	
 	/**
 	 * Click on add link to add new line
 	 * @author Saurav.Goyal
@@ -265,6 +274,14 @@ public class RogersHomePage extends BasePageClass {
 	}
 	
 	/**
+	 * Click the SignIn button from the top tile bar 
+	 * @author chinnarao.vattam 
+	 */
+	public void clkEasyInternet() {		
+		reusableActions.getWhenVisible(lnkEasyInternet, 30).click();
+	}
+		
+	/**
 	 * checks if the contenful url is displayed
 	 * @return true if the contentful url is displayed else false
 	 * @author Mirza.Kamran
@@ -279,7 +296,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkSignOut() {		
-		reusableActions.getWhenVisible(lnkSignOut, 90).click();
+		reusableActions.getWhenVisible(lnkSignOut, 30).click();
 	}
 	
 	/**
@@ -287,7 +304,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkShop() {
-		reusableActions.getWhenReady(btnShop, 120).click();				
+		reusableActions.getWhenReady(btnShop, 30).click();				
 	}
 	
 	/**
@@ -295,7 +312,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkShopMobile() {
-		reusableActions.getWhenReady(btnShopMobile, 90).click();				
+		reusableActions.getWhenReady(btnShopMobile, 30).click();				
 	}
 	
 
@@ -313,7 +330,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkMyRogers() {
-		reusableActions.getWhenReady(lnkMyRogers, 60).click();
+		reusableActions.getWhenReady(lnkMyRogers, 30).click();
 	}
 	
 	/**
@@ -321,7 +338,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkNoThnx() {	
-		reusableActions.clickIfAvailable(btnNoThnx, 90);
+		reusableActions.clickIfAvailable(btnNoThnx, 30);
 	}
 	
 	/**
@@ -346,7 +363,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkIgniteTVMobile() {
-		reusableActions.getWhenReady(lnkIgniteTVMobile, 90).click();
+		reusableActions.getWhenReady(lnkIgniteTVMobile, 30).click();
 	}
 	
 	/**
@@ -363,7 +380,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkInternet() {		
-		reusableActions.getWhenVisible(lnkInternet, 60).click();
+		reusableActions.getWhenVisible(lnkInternet, 30).click();
 	}
 
 	/**
@@ -371,7 +388,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkInternetMobile() {		
-		reusableActions.getWhenVisible(lnkInternetMobile, 60).click();
+		reusableActions.getWhenVisible(lnkInternetMobile, 30).click();
 	}
 	
 	/**
@@ -379,7 +396,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkHomeMonitering() {		
-		reusableActions.getWhenVisible(lnkHomeMonitering, 60).click();
+		reusableActions.getWhenVisible(lnkHomeMonitering, 30).click();
 	}
 	
 	
@@ -388,7 +405,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkBundle() {		
-		reusableActions.getWhenVisible(lnkBundle, 60).click();
+		reusableActions.getWhenVisible(lnkBundle, 30).click();
 	}
 	
 	/**
@@ -429,7 +446,11 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkServiceability() {
-		reusableActions.getWhenReady(btnServiceability, 120).click();
+	if(reusableActions.isElementVisible(overlayHomePage,2))
+		{
+		reusableActions.waitForElementInvisibilityNOException(overlayHomePage,5);	
+		}
+		reusableActions.getWhenReady(btnServiceability, 30).click();
 	}
 	
 	/**
@@ -438,7 +459,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyIgnitepage() {
-		return reusableActions.isElementVisible(btnServiceability, 120);
+		return reusableActions.isElementVisible(btnServiceability, 60);
 	}
 
 	/**
@@ -446,8 +467,8 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkServiceabilityMigration() {		
-		reusableActions.waitForElementInvisibility(popupLoadingFingersciam, 180);
-		reusableActions.getWhenReady(btnServiceability, 120).click();
+		reusableActions.waitForElementInvisibility(popupLoadingFingersciam, 90);
+		reusableActions.getWhenReady(btnServiceability, 30).click();
 	}
 	
 	/**
@@ -465,7 +486,7 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public void clkAddressCheck() {
 		reusableActions.waitForElementVisibility(btnAddress, 60);
-		reusableActions.getWhenReady(btnAddress, 60).click();
+		reusableActions.getWhenReady(btnAddress, 20).click();
 	}
 	
 	/**
@@ -482,25 +503,25 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void setIgniteAddressLookupLearn(String strAddress) {
-		reusableActions.waitForElementVisibility(txaIgniteAddressContainer, 240);
+		reusableActions.waitForElementVisibility(txaIgniteAddressContainer, 90);
 		reusableActions.getWhenReady(txaIgniteAddressContainer, 3).click();
 		reusableActions.getWhenReady(txaIgniteAddressLookup, 3).clear();
 		reusableActions.getWhenReady(txaIgniteAddressLookup, 3).sendKeys(strAddress);
-		reusableActions.getWhenVisible(txaIgniteAddressLookup, 10).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(txaIgniteAddressLookup, 10).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(txaIgniteAddressLookup, 10).sendKeys(Keys.ARROW_DOWN);
+		reusableActions.getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);
+		reusableActions.getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);
+		reusableActions.getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);
 		reusableActions.getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
 	}
 	
 	public void setIgniteAddressLookup(String strAddress) {
-		reusableActions.waitForElementVisibility(txaIgniteAddressContainerExisting, 120);
+		reusableActions.waitForElementVisibility(txaIgniteAddressContainerExisting, 60);
 		reusableActions.getWhenReady(txaIgniteAddressContainerExisting, 3).click();
 		reusableActions.getWhenReady(txaIgniteAddressLookup, 3).clear();
-		reusableActions.getWhenReady(txaIgniteAddressLookup, 3).sendKeys(strAddress);
+		reusableActions.getWhenReady(txaIgniteAddressLookup, 5).sendKeys(strAddress);
 		reusableActions.getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.TAB);
-		reusableActions.getWhenVisible(txaIgniteAddressLookup, 10).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(txaIgniteAddressLookup, 10).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(txaIgniteAddressLookup, 10).sendKeys(Keys.ARROW_DOWN);		
+		reusableActions.getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);
+		reusableActions.getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);
+		reusableActions.getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);		
 		reusableActions.getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
 	}
 	
@@ -509,7 +530,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkIgniteAddressLookupSubmit() {
-		reusableActions.getWhenReady(btnIgniteAddressLookupSubmit, 120).click();
+		reusableActions.getWhenReady(btnIgniteAddressLookupSubmit, 30).click();
 	}
 	
 	/**
@@ -517,7 +538,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkOnlyInternet() {
-		reusableActions.getWhenReady(lnkOnlyInternet, 120).click();
+		reusableActions.getWhenReady(lnkOnlyInternet, 30).click();
 	}
 	
 	/**
@@ -525,7 +546,8 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkOnlyInternetMobile() {
-		reusableActions.waitForElementVisibility(lnkOnlyInternet, 120);
+		reusableActions.waitForElementInvisibility(loaderInternetServiceability,50);		
+		reusableActions.waitForElementVisibility(lnkOnlyInternet, 10);
 		reusableActions.executeJavaScriptClick(lnkOnlyInternet);
 	}
 	
@@ -534,7 +556,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkIgniteAddressLookupSubmitMobile() {
-		reusableActions.waitForElementVisibility(btnIgniteAddressLookupSubmit,60);
+		reusableActions.waitForElementVisibility(btnIgniteAddressLookupSubmit,30);
 		reusableActions.executeJavaScriptClick(btnIgniteAddressLookupSubmit);
 	}
 	
@@ -593,8 +615,8 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao vattam
 	 */
 	public void clkWelcomeback() {
-		reusableActions.waitForElementVisibility(btnWelcomeback, 120);
-		reusableActions.getWhenReady(btnWelcomeback, 90).click();
+		reusableActions.waitForElementVisibility(btnWelcomeback, 60);
+		reusableActions.getWhenReady(btnWelcomeback, 20).click();
 		}
 	
 	/**
@@ -602,7 +624,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao vattam
 	 */
 	public void clkUseThisAddress() {
-		reusableActions.getWhenReady(btnUseThisAddress, 120).click();
+		reusableActions.getWhenReady(btnUseThisAddress, 90).click();
 		}
 	
 	/**
@@ -622,12 +644,21 @@ public class RogersHomePage extends BasePageClass {
 		reusableActions.getWhenVisible(lnkSignInMobile, 30).click();
 	}
 	
+	
+	
+	/**
+	 * To verify the Service ability on Ignite page for Migration flow
+	 * @return true if the Service ability button is available on Ignite page, else false 
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyInternetpage() {
+		return reusableActions.isElementVisible(lnkInternetAvailability, 60);
+	}
 	/**
 	 * Click the InternetAvailability link Internet on the page 
 	 * @author chinnarao.vattam
 	 */
 	public void clkInternetAvailability() {	
-		reusableActions.waitForElementVisibility(lnkInternetAvailability,90);
 		reusableActions.getWhenReady(lnkInternetAvailability,30).click();
 	}
 	

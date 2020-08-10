@@ -276,7 +276,7 @@ public class BaseTestClass {
  			driver.get(strUrl+"?setLanguage="+ strLanguage );
  			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
 		}
-	    setImplicitWait(getDriver(), 10);
+	    //setImplicitWait(getDriver(), 10);
 	    init(strGroupName);	 
  }
 		

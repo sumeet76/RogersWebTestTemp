@@ -68,8 +68,7 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyProfilePage() {
-		//reusableActions.waitForElementInvisibility(popupLoadingFingers,100);
-		return reusableActions.isElementVisible(txtProfile);
+		return reusableActions.isElementVisible(txtProfile,100);
 	}
 	
 	/**
@@ -78,7 +77,7 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 */
 	public void setEmail() {
 		String strEmail = FormFiller.generateEmail();
-		reusableActions.waitForElementVisibility(txtContainerEmail,180);
+		reusableActions.waitForElementVisibility(txtContainerEmail,30);
 		reusableActions.getWhenReady(txtContainerEmail,10).click();
 		reusableActions.getWhenReady(txtEmail, 30).clear();
 		reusableActions.getWhenReady(txtEmail,10).sendKeys(strEmail);
