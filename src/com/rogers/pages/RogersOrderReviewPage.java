@@ -182,7 +182,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyAgreement() {
-		return reusableActions.isElementVisible(infoAgreement, 30);
+		return reusableActions.isElementVisible(infoAgreement, 120);
 	}
 
 	/**
@@ -297,6 +297,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 */
 	public void clkSubmitUpdate() {
 		reusableActions.getWhenReady(clkSubmitUpdate, 200).click();
+		reusableActions.staticWait(10000);
 	}
 	
 	/**

@@ -542,7 +542,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifySuccessfulLogin() {
-		return reusableActions.isElementVisible(infoBalanceLable,90);
+		return reusableActions.isElementVisible(infoBalanceLable,30);
 	}
 	
 	/**

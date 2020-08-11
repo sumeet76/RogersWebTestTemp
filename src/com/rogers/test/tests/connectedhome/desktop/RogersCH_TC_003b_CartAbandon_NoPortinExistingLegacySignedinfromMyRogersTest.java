@@ -59,9 +59,11 @@ public class RogersCH_TC_003b_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
 
 	@Test
 	public void checkCartAbandonNoPortinExistingLegacySignedinfromMyRogersTest() {
+		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();
 		reporter.reportLogWithScreenshot("Launched the Home Page");
-		rogers_home_page.clkSignIn();
-		rogers_login_page.switchToSignInIFrame();
+		rogers_home_page.clkSignIn();     
+  		rogers_login_page.switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		rogers_login_page.setUsernameIFrame(TestDataHandler.noPortInAbondoneFlows.getUsername());
 		rogers_login_page.setPasswordIFrame(TestDataHandler.noPortInAbondoneFlows.getPassword());
@@ -76,7 +78,8 @@ public class RogersCH_TC_003b_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
 	    reporter.reportLogWithScreenshot("Launched the Account Page"); 
         rogers_home_page.clkShop(); 
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-     	rogers_home_page.clkIgniteTV();
+        rogers_home_page.clkIgniteTVExistingCustomer();   	
+     	reporter.hardAssert(rogers_home_page.verifyWelcomeback(),"Welcome back popup has Launched","Welcome back popup has not Launched");
      	reporter.reportLogWithScreenshot("Launched the Welcome back popup");
      	rogers_home_page.clkWelcomeback();   	
         reporter.reportLogWithScreenshot("Launched the cart summary page");
@@ -85,36 +88,6 @@ public class RogersCH_TC_003b_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
        
         reporter.hardAssert( rogers_igniteTV_profile_creation_page.verifyImportantInformation(),"Important Information popup has Launched","Important Information popup has not Launched");
         rogers_igniteTV_profile_creation_page.clkIUnderstand();
-        reporter.reportLogWithScreenshot("Launched the create profile page");
-        rogers_igniteTV_profile_creation_page.clkSubmitProfile();   
-        reporter.reportLogWithScreenshot("Launched the credit evalution page");
-        rogers_igniteTV_credit_check_page.selectDOBYearExistingCustomer(TestDataHandler.noPortInAbondoneFlows.getAccountDetails().getYear());
-        rogers_igniteTV_credit_check_page.selectDOBMonthExistingCustomer(TestDataHandler.noPortInAbondoneFlows.getAccountDetails().getMonth());
-        rogers_igniteTV_credit_check_page.selectDOBDayExistingCustomer(TestDataHandler.noPortInAbondoneFlows.getAccountDetails().getDate());
-        reporter.reportLogWithScreenshot("Entered the DOB details");
-        rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
-        reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        rogers_home_phone_selection_page.clkContinueHomePhoneSelection();  
-        reporter.reportLogWithScreenshot("Launched the tech install page");
-        rogers_tech_install_page.selTechInstalStartDate();
-        reporter.reportLogWithScreenshot("Selected Start date for Installation slot");
-        rogers_tech_install_page.selTechInstalEndDate();
-        reporter.reportLogWithScreenshot("Selected End date for Installation slot");
-        rogers_tech_install_page.setEmail(); 
-        reporter.reportLogWithScreenshot("tech install details");
-        rogers_tech_install_page.clkTechInstallContinue();
-        reporter.reportLogWithScreenshot("Launched the payment options page");
-        rogers_payment_options_page.clkPaymentConfirmExistingCustomer();
-        
-        reporter.hardAssert(rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the order review page");
-       
-        reporter.hardAssert( rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
-        rogers_order_review_page.clkAcceptenceCheckbox();
-        reporter.reportLogWithScreenshot("Agreement details");
-        rogers_order_review_page.clkSubmit();
-        reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");  
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");
 		}
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})

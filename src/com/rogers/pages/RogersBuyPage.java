@@ -122,8 +122,7 @@ public class RogersBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkAddressLookupSubmit() {
-		reusableActions.clickWhenReady(btnAddressLookupSubmit, 90);
-	
+		reusableActions.clickWhenReady(btnAddressLookupSubmit, 30);	
 	}
 
 	/**

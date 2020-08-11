@@ -67,6 +67,7 @@ public class RogersCH_TC_008_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannel
         reporter.reportLogWithScreenshot("Launched the personalize channel page");
         rogers_solaris_tv_channels_and_themepacks_page.clkExchangeLater(); 
         reporter.reportLogWithScreenshot("Launched the channels and themepacks page");
+        rogers_solaris_tv_channels_and_themepacks_page.SearchChannel(TestDataHandler.igniteTVAccount.accountDetails.getSwapInChannelThree());
         rogers_solaris_tv_channels_and_themepacks_page.addChannel();
         reporter.reportLogWithScreenshot("Channel added");
         rogers_solaris_tv_channels_and_themepacks_page.clkThemePacks();

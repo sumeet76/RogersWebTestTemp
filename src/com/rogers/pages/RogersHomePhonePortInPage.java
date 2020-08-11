@@ -50,8 +50,19 @@ public class RogersHomePhonePortInPage extends BasePageClass {
 	@FindBy(xpath ="//div[contains(@class,'current-phone-provider')]//input[contains(@class,'ds-input w-100 text-copy pt-16 ds-bgcolor-transparent cdk-text-field-autofill-monitored')]")
 	WebElement txtCurrentPhoneNumber;
 	
+	@FindBy(xpath = "//div[contains(@class,'current-phone-provider')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	WebElement txtCurrentPhoneNumberContainer;
 	
-	@FindBy(id = "accountNumber")
+	@FindBy(xpath = "	//div[contains(@class,'current-phone-provider')]//span[@class='ds-formField__labelWrapper position-absolute ng-trigger ng-trigger-floatAnimation']")
+	WebElement spanIMEI;
+	
+	@FindBy(xpath = "//select[@class='text-semi ds-input w-100 text-copy pt-16 ds-bgcolor-transparent cdk-text-field-autofill-monitored ng-pristine ng-valid -select ng-touched']")
+	WebElement ddlAccountNumberOrIMEI;
+		
+	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white -select']")
+	WebElement selIMEIContainer;
+	
+		@FindBy(xpath = "//input[@id='accountNumber']")
 	WebElement txtAccountNumberOrIMEI;
 	
 	@FindBy(xpath = "//button[@class='ute-btn-primary']//ins[@translate='global.common.buttons.continue']")
@@ -131,8 +142,11 @@ public class RogersHomePhonePortInPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void setCurrentPhoneNumber() {
-		String strPhoneNumber = FormFiller.generatePhoneNumber();		
-		reusableActions.executeJavaScriptClick(txtCurrentPhoneNumber);
+		String strPhoneNumber = FormFiller.generatePhoneNumber();
+		//Address loading taking time and interrupting the phone element 
+		reusableActions.staticWait(3000);
+		reusableActions.getWhenReady(txtCurrentPhoneNumberContainer,10).click();		
+		reusableActions.getWhenReady(txtCurrentPhoneNumber,10).clear();
 		reusableActions.getWhenReady(txtCurrentPhoneNumber, 10).sendKeys(strPhoneNumber);
 	}
 	
@@ -157,8 +171,19 @@ public class RogersHomePhonePortInPage extends BasePageClass {
 	 * @param strAccountNumberorIMEI Account Number or IMEI   for the port-in feature 
 	 * @author Chinnarao.Vattam
 	 */
+	public void selIMEI() {
+		reusableActions.getWhenReady(selIMEIContainer, 30);	
+		//reusableActions.waitForElementVisibility(ddlAccountNumberOrIMEI,120);
+		reusableActions.selectWhenReadyByVisibleText(ddlAccountNumberOrIMEI, "IMEI");
+	}
+	
+	/**
+	 * Set Account Number or IMEI on the Home phone Port-in page
+	 * @param strAccountNumberorIMEI Account Number or IMEI   for the port-in feature 
+	 * @author Chinnarao.Vattam
+	 */
 	public void setAccountNumberOrIMEI(String strAccountNumberorIMEI) {
-		reusableActions.getWhenReady(txtAccountNumberOrIMEI, 3).clear();
+		reusableActions.getWhenReady(txtAccountNumberOrIMEI, 30).clear();
 		reusableActions.getWhenReady(txtAccountNumberOrIMEI, 3).sendKeys(strAccountNumberorIMEI);
 	}
 	

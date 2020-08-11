@@ -131,7 +131,7 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c15-0 ds-formField__typeds-input')]")
 	WebElement txaIgniteLookup;
 	
-	@FindBy(xpath = "//li[@class='dds_o-navLinkList__item']//a[@title='MyRogers']")
+	@FindBy(xpath = "//a[@title='MyRogers']//span[@class='m-navLink__caption']")
 	WebElement lnkMyRogers;
 	
 	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large']")
@@ -618,6 +618,16 @@ public class RogersHomePage extends BasePageClass {
 		reusableActions.waitForElementVisibility(btnWelcomeback, 60);
 		reusableActions.getWhenReady(btnWelcomeback, 20).click();
 		}
+	
+	
+	/**
+	 * To verify the Service ability on Ignite page for Migration flow
+	 * @return true if the Welcomeback popup is available, else false 
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyWelcomeback(){
+		return reusableActions.isElementVisible(btnWelcomeback, 60);
+	}
 	
 	/**
 	 * Click on the existing address selection button

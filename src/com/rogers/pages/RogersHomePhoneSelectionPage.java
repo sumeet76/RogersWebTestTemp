@@ -24,9 +24,11 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='buttons-block hidden-xs']//button[@class='ute-btn-primary']")
 	WebElement btnContinueHomePhoneSelection;
 	
-	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
+	@FindBy(xpath = "//span[@translate='global.cta.continue']")
 	WebElement btnContinueHomePhoneSelectionMigration;
 	
+	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -tertiary -large ng-star-inserted']")
+	WebElement popupNoContinue;
 	
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
@@ -99,7 +101,7 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 */
 	public void clkContinueHomePhoneSelection() {
 		reusableActions.waitForElementVisibility(btnContinueHomePhoneSelection, 180);
-		reusableActions.clickWhenReady(btnContinueHomePhoneSelection, 90);
+		reusableActions.getWhenReady(btnContinueHomePhoneSelection, 90).click();
 	}
 	
 	/**
@@ -107,8 +109,10 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkContinueHomePhoneSelectionMigration() {
-		reusableActions.waitForElementVisibility(btnContinueHomePhoneSelectionMigration, 180);
-		reusableActions.getWhenReady(btnContinueHomePhoneSelectionMigration, 90).click();
+		reusableActions.javascriptScrollToMiddleOfPage();
+		reusableActions.getWhenReady(btnContinueHomePhoneSelectionMigration, 90);
+		reusableActions.executeJavaScriptClick(btnContinueHomePhoneSelectionMigration);
+		reusableActions.clickIfAvailable(popupNoContinue,30);
 	}
 	
 	
