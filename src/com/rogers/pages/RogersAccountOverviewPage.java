@@ -134,7 +134,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		WebElement menuAndServices;
 	
 	@FindAll({
-	@FindBy(xpath = " //div[@class='ute-secondLevelNav-bar-m']//button//span[@data-translate='ute.common.label.overview']"),
+	@FindBy(xpath = "//div[@class='ute-secondLevelNav-bar-m']//button//span[@data-translate='ute.common.label.overview']"),
 	@FindBy(xpath = "//button[contains(text(),'Overview') or contains(text(),'Survol')]")})
 	WebElement btnOverViewMobile;
 	
@@ -227,6 +227,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Billing & Payment')]"),	
 	@FindBy(xpath = "//button[@aria-label='ute.common.label.billAndPayment']")})
 	WebElement menuBillingAndPaymentsMobile;
+	
+	@FindBy(xpath = "//div[@class='ute-secondLevelNav-bar-m']//button//span[contains(text(),'Billing & Payment')]")
+	WebElement menuMainBillingAndPaymentsMobile;
 
 	@FindBy(xpath = "//*[@id='overview' or @id='survol']//md-list-item//span[@data-translate='ute.common.second.level.navigation.billing.changePaymentMethod']/ancestor::h2/parent::div/parent::div/button")
 	WebElement submenuChangePaymentMethod;
@@ -690,8 +693,15 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkSetUpAutomaticPaymentMethodMobile() {
-		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
-		reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
+		if(reusableActions.isElementVisible(btnOverViewMobile))
+		{
+		
+		reusableActions.getWhenReady(btnOverViewMobile,30).click();
+		}else if (reusableActions.isElementVisible(menuMainBillingAndPaymentsMobile))
+		{
+			reusableActions.getWhenReady(menuMainBillingAndPaymentsMobile,30).click();
+		}	
+		//reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
 		reusableActions.staticWait(3000); //extra static buffers added for firefox	
 		reusableActions.waitForElementVisibility(submenuSetUpAutomaticPaymentMethodMobile);
 		reusableActions.getWhenReady(submenuSetUpAutomaticPaymentMethodMobile).click();	
@@ -798,8 +808,15 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isSetAutoPaymentDisplayedMobile() {
-		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
-		reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
+		if(reusableActions.isElementVisible(btnOverViewMobile))
+		{
+		
+		reusableActions.getWhenReady(btnOverViewMobile,30).click();
+		}else if (reusableActions.isElementVisible(menuMainBillingAndPaymentsMobile))
+		{
+			reusableActions.getWhenReady(menuMainBillingAndPaymentsMobile,30).click();
+		}
+		//reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
 		reusableActions.staticWait(3000); //extra static buffers added for firefox
 		return reusableActions.isDisplayed(lnkSetUpAutomaticPaymentMethodMobile);
 	}

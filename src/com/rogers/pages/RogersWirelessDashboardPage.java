@@ -210,7 +210,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy (xpath = "//span[@data-ng-bind='simCardConfirmation.getNewSimCardNumber()']")
 	WebElement btnCloseViewDetails;
 
-	@FindBy (xpath = "//div[@class='data-usage-details-holder component_holder']/rss-billing/div[@class='bill-cycle']/span[@class='daysRemaining']")
+	@FindAll({
+	@FindBy(xpath = "//rss-data-usage-details//span[@class='daysRemaining']"),
+	@FindBy (xpath = "//div[@class='data-usage-details-holder component_holder']/rss-billing/div[@class='bill-cycle']/span[@class='daysRemaining']")})
 	WebElement lblDaysRemainingInBillCycle;
 
 	@FindBy (xpath = "//div[@class='add-data']")
