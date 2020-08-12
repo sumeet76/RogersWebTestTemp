@@ -1173,6 +1173,21 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
 		reusableActions.getWhenReady(btnMakeAPayment,30).click();			
 		
+	}
+
+	public boolean isAddALinkDisplayedBelowCTNs() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public void clkAddALink() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public boolean verifyIfAddALinkOverlayIsdisplayed() {
+		// TODO Auto-generated method stub
+		return false;
 	} 
 	
 	

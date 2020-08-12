@@ -34,24 +34,36 @@ public class RogersSS_TC_97_AO_ValidateAddALineEntryPointOnAccountOverview_SE ex
 	
     @Test
     public void validateSignInAndAccountOverview() {
-        reporter.reportLogWithScreenshot("Home Page");
-        reporter.reportLog("Home Page Launched");
-    	rogers_home_page.clkSignIn();
-		rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(TestDataHandler.tc013132.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.tc013132.getPassword());
-        reporter.reportLogWithScreenshot("Login Credential is entered.");
-        rogers_login_page.clkSignInIFrame();
-        reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
-        rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+    	 reporter.reportLogWithScreenshot("Home Page");
+         reporter.reportLog("Home Page Launched");
+     	 rogers_home_page.clkSignIn();
+ 		 rogers_login_page.switchToSignInIFrame();
+         rogers_login_page.setUsernameIFrame(TestDataHandler.tc95.getUsername());
+         rogers_login_page.setPasswordIFrame(TestDataHandler.tc95.getPassword());
+         reporter.reportLogWithScreenshot("Login Credential is entered.");
+         rogers_login_page.clkSignInIFrame();
+         reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
+         rogers_login_page.clkSkipIFrame();
+ 		rogers_login_page.switchOutOfSignInIFrame();
 
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
-        	reporter.reportLogWithScreenshot("Select an account.");
-        	rogers_account_overview_page.selectAccount(TestDataHandler.tc013132.getAccountDetails().getBan());       
-        }
-        reporter.reportLogWithScreenshot("Account overview page.");
-        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Passed", "Login Failed");
+         if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+         	reporter.reportLogWithScreenshot("Select an account.");
+         	rogers_account_overview_page.selectAccount(TestDataHandler.tc95.getAccountDetails().getBan());       
+         }
+         reporter.reportLogWithScreenshot("Account overview page.");
+         reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Passed", "Login Failed");
+         common_business_flows.scrollToMiddleOfWebPage();
+         reporter.reportLogWithScreenshot("CTNS View");
+         
+         reporter.hardAssert(rogers_account_overview_page.isAddALinkDisplayedBelowCTNs(),
+         		"Suspended CTN is avialable",
+         		"Suspended CTN is not available");
+         
+         rogers_account_overview_page.clkAddALink();
+        
+         reporter.hardAssert(rogers_account_overview_page.verifyIfAddALinkOverlayIsdisplayed(),
+         		"User is unable to click and navigate through suspended CTN Badge",
+         		"It seems the user was able to click on suspended CTN");
     }
 
   
