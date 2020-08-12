@@ -18,7 +18,7 @@ public class RogersChangeSharePlanPage  extends BasePageClass {
 	List<WebElement> btnEdit;
 	
 	
-	@FindBy(xpath = "//div[@class='row plan-details']")
+	@FindBy(xpath = "//button[@class='btn edit ng-scope']")
 	WebElement lbllineDetailData;
 
 	/**
@@ -27,9 +27,9 @@ public class RogersChangeSharePlanPage  extends BasePageClass {
 	 */
 	public void clickEditButton() {
 			reusableActions.waitForPageLoad();
-			reusableActions.javascriptScrollByVisibleElement(lbllineDetailData);
-			reusableActions.clickWhenReady(btnEdit.get(0),60);
-			reusableActions.staticWait(2000);		
+			reusableActions.waitForElementVisibility(lbllineDetailData, 30);
+			reusableActions.clickWhenReady(btnEdit.get(0),30);
+			//reusableActions.staticWait(2000);		
 	}
 }
 

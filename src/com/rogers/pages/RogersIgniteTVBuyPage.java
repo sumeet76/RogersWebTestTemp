@@ -49,7 +49,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='buttons-block hidden-xs']//ins[@translate='global.common.buttons.noThanksContinue']")
 	WebElement btnNoThanksContinue;
 	
-	@FindBy(xpath = "//div[@class='buttons-block hidden-xs']//ins[@translate='global.modals.rhpSplitterModal.portMyNumber']")
+	@FindBy(xpath = "//label[contains(@for,'global.modals.activateIgniteHomePhoneModal.messageForExistingNumber')]")
 	WebElement btnKeepMyNumber;
 	
 	@FindBy(xpath = "//button[@class='continue-addon ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
@@ -75,7 +75,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath ="//div[@class='mt-auto w-100']//button[@aria-label='Add Rogers Ignite Starter Bundle to cart']")
 	WebElement btnSolarisStarterPackageMobile;	
 	
-	@FindBy(xpath = "//div[@aria-label='$134.99 per m']")
+	@FindBy(xpath = "//div[@aria-label='$124.99 per m']")
 	WebElement txtPackageCost;	
 	
 	@FindBy(xpath = "//p[@id='ds-modal-title-1']")
@@ -486,8 +486,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisStarterPackageNew() {
-		reusableActions.waitForElementVisibility(btnSolarisStarterPackageNew, 10);
-		reusableActions.waitForElementVisibility(txtPackageCost, 5);
+		reusableActions.waitForElementVisibility(btnSolarisStarterPackageNew, 120);
+		//reusableActions.waitForElementVisibility(txtPackageCost, 5);
 		reusableActions.getWhenReady(btnSolarisStarterPackageNew, 10).click();
 	}
 	

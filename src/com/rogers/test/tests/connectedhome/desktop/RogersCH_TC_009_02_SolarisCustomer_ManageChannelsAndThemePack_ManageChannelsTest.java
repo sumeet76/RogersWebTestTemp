@@ -55,10 +55,7 @@ public class RogersCH_TC_009_02_SolarisCustomer_ManageChannelsAndThemePack_Manag
 		reporter.reportLogWithScreenshot("Launched the TV dash board");
 		rogers_solaris_tv_dashboard_page.clkManageChannelsAndThemePacks();
 		
-		reporter.reportLogWithScreenshot("Clicked on Manage channels and theme packs");
-		rogers_solaris_tv_channels_and_themepacks_page.addChannelThemepack();
-		reporter.reportLogWithScreenshot("Channel added");
-		rogers_solaris_tv_channels_and_themepacks_page.clkRemoveFromYourChanges();
+		rogers_solaris_tv_channels_and_themepacks_page.searchChannel(TestDataHandler.igniteTVAccount.accountDetails.getSwapInChannelOne());
 		reporter.reportLogWithScreenshot("Clicked on remove from your changes");
 		rogers_solaris_tv_channels_and_themepacks_page.addChannel();
 		reporter.reportLogWithScreenshot("Channel again added");
@@ -69,7 +66,7 @@ public class RogersCH_TC_009_02_SolarisCustomer_ManageChannelsAndThemePack_Manag
 		rogers_order_review_page.clkAcceptenceCheckboxUpdate();
 		reporter.reportLogWithScreenshot("Agreement details");
 		rogers_order_review_page.clkSubmitUpdate();
-        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
+        reporter.softAssert(rogers_order_confirmation_page.verifyOrderSuccess(),"Update order completed","Update order Failed");
 		reporter.reportLogWithScreenshot("Launched the Confirmation page");
     	}
 
@@ -82,7 +79,7 @@ public class RogersCH_TC_009_02_SolarisCustomer_ManageChannelsAndThemePack_Manag
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 

@@ -2,6 +2,7 @@ package com.rogers.pages;
 
 import java.util.List;
 
+import org.apache.commons.lang3.math.NumberUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -249,6 +250,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy (xpath = "//div[@class='floatingOverview bcStatic']")
 	WebElement btnLiveChat;
 
+	@FindBy (xpath = "//span[@class='menu-click']")
+	WebElement menuAccountNumber;
+	
 	@FindBy(xpath = "//iframe[@id='va-iframe']")
 	WebElement fraLiveChat;
 	
@@ -352,25 +356,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	/**
 	 * Clicks on the 'TV Badge' option on the dash board
-	 * @param strBrowser- strBrowser
 	 * @author chinnarao.vattam
 	 */
-	public void clkTVBadge(String strBrowser ) {
-		if (strBrowser.equalsIgnoreCase("chrome"))
-		{		
-		reusableActions.getWhenReady(btnTVBadge, 60).click();
-		}else
-		{
-			reusableActions.clickIfAvailable(btnTVBadge,120);
-		}		
-	}
-
-	/**
-	 * Clicks on the 'TV Badge' option on the dash board
-	 * @author chinnarao.vattam
-	 */
-	public void clkTVBadge() {	
-		reusableActions.getWhenReady(btnTVBadge, 180).click();
+	public void clkTVBadge( ) {	
+		reusableActions.getWhenReady(btnTVBadge, 60).click();		
 	}
 	
 	/**
@@ -384,16 +373,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	
 	/**
 	 * Clicks on the 'RHP Badge' option on the dash board
-	 * @param strBrowser- strBrowser
 	 * @author chinnarao.vattam
 	 */
-	public void clkRHPBadge(String strBrowser) {
-		if (strBrowser.equalsIgnoreCase("chrome"))
-		{
+	public void clkRHPBadge() {
 		reusableActions.getWhenReady(btnRHPBadge, 90).click();;
-		}else {
-			reusableActions.clickIfAvailable(btnRHPBadge, 90);
-			}
 		}
 	
 	/**
@@ -403,14 +386,6 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public void clkRHPBadgeMobile() {
 		reusableActions.javascriptScrollToMiddleOfPage();
 		reusableActions.getWhenReady(btnRHPBadge, 90).click();
-		}
-	
-	/**
-	 * Clicks on the 'RHP Badge' option on the dash board
-	 * @author chinnarao.vattam
-	 */
-	public void clkRHPBadge() {
-		reusableActions.getWhenReady(btnRHPBadge, 120).click();;
 		}
 	
 	/**
@@ -427,8 +402,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @param strAccountNumber account number of the Roger's customer
 	 * @author ning.xue
 	 */
-	public void selectAccount(String strAccountNumber) {
-			reusableActions.clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 50);
+	public void selectAccount(String strAccountNumber) {		
+	reusableActions.clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 20);
 	}
 	
 	/**
@@ -541,8 +516,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @return true if the balance label is present ; else false
 	 * @author chinnarao.vattam
 	 */
-	public boolean verifySuccessfulLogin() {
-		return reusableActions.isElementVisible(infoBalanceLable,90);
+	public boolean verifySuccessfulLogin() {		
+	 String strAccountNumber = reusableActions.getWhenReady(menuAccountNumber,40).getText();
+	  return NumberUtils.isDigits(strAccountNumber);
 	}
 	
 	/**

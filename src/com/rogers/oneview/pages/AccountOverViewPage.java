@@ -41,8 +41,8 @@ public class AccountOverViewPage  extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkBtnOkOneViewDialoue() {
-		reusableActions.staticWait(5000);
-		reusableActions.clickIfAvailable(btnOkOneViewDialogue,30);
+		if(reusableActions.isElementVisible(btnOkOneViewDialogue, 30))
+			reusableActions.clickIfAvailable(btnOkOneViewDialogue);
 	}
 	
 	/**

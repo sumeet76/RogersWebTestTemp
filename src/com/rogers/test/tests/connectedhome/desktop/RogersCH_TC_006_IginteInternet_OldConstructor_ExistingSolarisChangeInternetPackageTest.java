@@ -64,7 +64,7 @@ public class RogersCH_TC_006_IginteInternet_OldConstructor_ExistingSolarisChange
         rogers_internet_dashboard_page.clkSolChangeInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Interent packages page");
         rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.solarisInternetOldConstructor.getAccountDetails().getUpgradePlanEn(),TestDataHandler.solarisInternetOldConstructor.getAccountDetails().getUpgradePlanFr());
-        rogers_internet_dashboard_page.clkInternetChangeOK();
+        //rogers_internet_dashboard_page.clkInternetChangeOK();
         reporter.reportLogWithScreenshot("Launched the agreement page"); 
         reporter.hardAssert(rogers_order_review_page.verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
         reporter.reportLogWithScreenshot("Launched the order review page");

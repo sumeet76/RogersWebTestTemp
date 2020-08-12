@@ -59,6 +59,8 @@ public class RogersCH_TC_003a_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
 
 	@Test
 	public void checkCartAbandonNoPortinExistingLegacySignedinfromMyRogersTest() {
+		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
@@ -97,16 +99,12 @@ public class RogersCH_TC_003a_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
         reporter.reportLogWithScreenshot("Launched the create profile page");
         rogers_igniteTV_profile_creation_page.clkSubmitProfile();   
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
-        rogers_home_page.clkMyRogers(); 
-        reporter.reportLogWithScreenshot("Launched the Cart Abandonment Form popup");
-        
-        reporter.hardAssert(rogers_igniteTV_credit_check_page.verifyCartAbandonmentForm(),"Cart Abandonment Form has Launched","Cart Abandonment Form has not Launched");
-        rogers_igniteTV_credit_check_page.clkCartAbandonmentForm();
-        reporter.reportLogWithScreenshot("Launched the Email sent success popup");
-        
-        reporter.hardAssert(rogers_igniteTV_credit_check_page.verifyCartEmailSuccess(),"Cart Email Success popup has Launched","Cart Email Success popup has not Launched");
-        rogers_igniteTV_credit_check_page.clkCartEmailSuccess();
-        reporter.reportLogWithScreenshot("Signout account");	
+        rogers_igniteTV_credit_check_page.selectDOBYearExistingCustomerMigration(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getYear());
+        rogers_igniteTV_credit_check_page.selectDOBMonthExistingCustomerMigration(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getMonth());
+        rogers_igniteTV_credit_check_page.selectDOBDayExistingCustomerMigration(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getDate());
+        reporter.reportLogWithScreenshot("Entered the DOB details");
+        rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
+        rogers_home_page.clkMyRogers();       
 		}
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})

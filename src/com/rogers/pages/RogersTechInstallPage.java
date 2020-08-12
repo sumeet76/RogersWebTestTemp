@@ -35,7 +35,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
 	WebElement txtContainerMobileExistingCustomer;
 	
-	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-47')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[3]")
 	WebElement txtContainerMobileMigration;
 	
 	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-54')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
@@ -44,7 +44,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-40')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
 	WebElement txtContainerEmailExistingCustomer;
 	
-	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-48')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[4]")
 	WebElement txtContainerEmailMigration;
 	
     @FindBy(xpath ="//input[@id='ds-form-input-id-34']")
@@ -411,6 +411,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selTechInstalStartDate() {
+		reusableActions.staticWait(5000);
 		reusableActions.waitForElementVisibility(imgStartingTechInstallSlot,180); 
 		reusableActions.getWhenReady(imgStartingTechInstallSlot, 20).click();
 		Calendar calendar = Calendar.getInstance();

@@ -70,7 +70,7 @@ public class RogersCH_TC_009_01_SolarisCustomer_ManageChannelsAndThemePack_Manag
 		rogers_order_review_page.clkAcceptenceCheckboxUpdate();
 		reporter.reportLogWithScreenshot("Agreement details");
 		rogers_order_review_page.clkSubmitUpdate();
-		//reporter.hardAssert(rogers_order_confirmation_page.verifyOrderSuccess(),"Update order completed","Update order Failed");
+		reporter.hardAssert(rogers_order_confirmation_page.verifyOrderSuccess(),"Update order completed","Update order Failed");
 		reporter.reportLogWithScreenshot("Launched the Confirmation page");
     	}
 

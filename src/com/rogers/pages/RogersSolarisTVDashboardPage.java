@@ -207,8 +207,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkViewMyChannelLineup() {
-		reusableActions.waitForElementVisibility(lnkViewMyChannelLineup,120);		
-		reusableActions.getWhenReady(lnkViewMyChannelLineup, 60).click();		
+		reusableActions.waitForElementVisibility(lnkViewMyChannelLineup,60);		
+		reusableActions.getWhenReady(lnkViewMyChannelLineup, 30).click();		
 	}
 
 	/**
@@ -255,7 +255,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkCloseChannelsPopup() {
-		reusableActions.clickWhenReady(popupCloseChannel,40);
+		reusableActions.getWhenReady(popupCloseChannel,40).click();
 		}
 
 	/**
@@ -263,9 +263,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkViewfelxChannels() {
-		reusableActions.waitForElementInvisibility(lstChannelList, 90);
 		reusableActions.waitForElementVisibility(lnkViewfelxChannels, 60);
-		reusableActions.getWhenReady(lnkViewfelxChannels,30).click();		
+		reusableActions.getWhenReady(lnkViewfelxChannels,10).click();		
 	}
 
 	/**
@@ -312,18 +311,18 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 */
 	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
 		By packageNameLocator = By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'owl-item')]//ins[@translate='global.cta.select']");
-		if(reusableActions.isElementVisible(packageNameLocator,90))
+		if(reusableActions.isElementVisible(packageNameLocator,40))
 		{		
-		reusableActions.getWhenReady(packageNameLocator, 30);
+		reusableActions.getWhenReady(packageNameLocator, 10);
 		WebElement pkg = driver.findElement(packageNameLocator);
 		reusableActions.executeJavaScriptClick(pkg);
 		 }
 	   else
 		{
-	    reusableActions.getWhenReady(imgNext, 30);
+	    reusableActions.getWhenReady(imgNext, 20);
 	    reusableActions.executeJavaScriptClick(imgNext);
 	    WebElement pkg = driver.findElement(packageNameLocator);
-	    reusableActions.getWhenReady(pkg, 30);
+	    reusableActions.getWhenReady(pkg, 20);
 	    reusableActions.executeJavaScriptClick(pkg);
 		}
 	}

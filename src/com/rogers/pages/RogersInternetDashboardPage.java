@@ -163,7 +163,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkInternetChangeOK() {		
-		reusableActions.clickIfAvailable(btnInternetChangeOK, 120);
+		reusableActions.clickIfAvailable(btnInternetChangeOK, 30);
 
 	}
 	
