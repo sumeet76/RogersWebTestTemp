@@ -33,6 +33,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
         @FindBy (xpath ="//div[@class='ute-dataManager-badgeList-individualBadge']//div[@class='ute-dataManager-badgeList-individualBadgeInfo']")})
 	List<WebElement> lstCtnBadges;
 	
+	@FindBy(xpath = "//ds-icon/following-sibling::span[contains(text(),'Suspended')]")
+	WebElement suspendedCTN;
 	
 	@FindBy(xpath = "//div[@class='row modal-content-header']//button[@class='close']")
 	WebElement popUpInternetPopup;
@@ -975,6 +977,26 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public int getTotalCTN() {		
 		return lstCtnBadges.size();
 	}
+	
+	/**
+	 * Checks if the suspended CTN is displayed
+	 * @return boolean true if the suspended CTN is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isSuspendedCTNAvailable() {	
+		
+		return reusableActions.isElementVisible(suspendedCTN);
+				
+	}
+	
+	/**
+	 * Checks if the suspended CTN is displayed 
+	 * @author Mirza.Kamran
+	 */
+	public void clkSuspendedCTN() {	
+		reusableActions.getWhenReady(suspendedCTN).click();
+	}
+	
 	
 	/**
 	 * Click the overview navigation button on the page 
