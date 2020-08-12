@@ -80,7 +80,7 @@ public class RogersBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkIgniteInternetSpeed() {
-			reusableActions.clickWhenReady(btnIgniteInternetSpeed, 40);
+			reusableActions.getWhenReady(btnIgniteInternetSpeed, 40).click();
 	}
 
 	/**
@@ -88,10 +88,9 @@ public class RogersBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkExchangeFlexChannel() {
-		reusableActions.getWhenReady(btnExchangeFlexChannel, 60).click();
-		//for Prod issue, will be removing once the issue got fixed
+		reusableActions.getWhenReady(btnExchangeFlexChannel, 90).click();
 		reusableActions.clickIfAvailable(btnExchangeFlexChannel, 60);
-	}
+       }
 	
 	
 	/**
@@ -99,7 +98,7 @@ public class RogersBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkDTVPackage() {				
-		reusableActions.clickWhenReady(lnkDigitalTVPackage, 30);		
+		reusableActions.getWhenReady(lnkDigitalTVPackage, 30).click();		
 	}
 	
 /**
@@ -122,7 +121,7 @@ public class RogersBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkAddressLookupSubmit() {
-		reusableActions.clickWhenReady(btnAddressLookupSubmit, 30);	
+		reusableActions.getWhenReady(btnAddressLookupSubmit, 30).click();	
 	}
 
 	/**
@@ -174,7 +173,7 @@ public class RogersBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkBuyOnline() {
-		reusableActions.clickWhenReady(btnBuyOnline, 30);
+		reusableActions.getWhenReady(btnBuyOnline, 30).click();
 	}
 
 	}

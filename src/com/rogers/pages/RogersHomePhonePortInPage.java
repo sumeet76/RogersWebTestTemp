@@ -168,7 +168,6 @@ public class RogersHomePhonePortInPage extends BasePageClass {
 	
 	/**
 	 * Set Account Number or IMEI on the Home phone Port-in page
-	 * @param strAccountNumberorIMEI Account Number or IMEI   for the port-in feature 
 	 * @author Chinnarao.Vattam
 	 */
 	public void selIMEI() {

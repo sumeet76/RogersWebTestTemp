@@ -88,8 +88,9 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam	 
 	 */
 	public void clkAddButtonOnThemePackListOnManageChannelsAndThemePacks() {
-		reusableActions.waitForElementVisibility(addThemePackClassicTVThemePacks, 240);
-		reusableActions.getWhenReady(addThemePackClassicTVThemePacks, 40).click();		
+		//Taking more time to load all the themepacks
+		reusableActions.waitForElementVisibility(addThemePackClassicTVThemePacks, 120);
+		reusableActions.executeJavaScriptClick(addThemePackClassicTVThemePacks);		
 	}		
 	
 	/**
@@ -97,7 +98,8 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam	 
 	 */
 	public void clkAddButtonOnThemePackListOnManageChannelsAndThemePacks4plus1() {
-		reusableActions.waitForElementVisibility(addThemePackClassicTVThemePacks4plus1, 240);
+		//Taking more time to load all the themepacks
+		reusableActions.waitForElementVisibility(addThemePackClassicTVThemePacks4plus1, 120);
 		reusableActions.executeJavaScriptClick(addThemePackClassicTVThemePacks4plus1);		
 	}
 	/**
@@ -114,6 +116,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam	 
 	 */
 	public void clkConfirmChangesOnManageChannelsAndThemePacks() {
+		//Taking more time to load all the themepacks
 		reusableActions.getWhenReady(clkConfirmChangesOnManageChannelsAndThemePacks, 120).click();
 	}	
 	
@@ -128,9 +131,10 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	
 	/**
 	 * Add first channel from the list
+	 * @param strInChannel  available channel
 	 * @author chinnarao.vattam	 
 	 */
-	public void SearchChannel(String strInChannel) {
+	public void searchChannel(String strInChannel) {
 		reusableActions.waitForElementVisibility(iconSearch,120);
 		reusableActions.getWhenReady(iconSearch,20).click();
 		reusableActions.getWhenReady(iconSearch, 30).sendKeys(strInChannel);	

@@ -49,10 +49,10 @@ public class RogersCH_TC_019_DigitalTV_ValidateTVDashboardTest extends BaseTestC
 	    reporter.reportLogWithScreenshot("Skip popup");
 	    rogers_login_page.clkSkipIFrame();
 	    rogers_login_page.switchOutOfSignInIFrame();
-	    rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVAccount.accountDetails.getBan());
 		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.clkTVBadge(TestDataHandler.chConfig.getBrowser());
+	    rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVAccount.accountDetails.getBan());
+		reporter.reportLogWithScreenshot("Launched the Account Page");
+		rogers_account_overview_page.clkTVBadge();
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
 		reporter.hardAssert(rogers_digital_tv_dashboard_page.verifyChangeMyPackage(),"Verifed the TV dashboard","TV dashboard Verification has failed");
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");

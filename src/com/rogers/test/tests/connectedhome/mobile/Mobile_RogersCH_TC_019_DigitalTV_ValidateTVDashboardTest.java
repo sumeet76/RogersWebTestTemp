@@ -49,8 +49,7 @@ public class Mobile_RogersCH_TC_019_DigitalTV_ValidateTVDashboardTest extends Ba
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
-	    rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVAccount.accountDetails.getBan());
-		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+		reporter.hardAssert(rogers_account_overview_page.verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
 		rogers_account_overview_page.clkTVBadgeMobile();
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
