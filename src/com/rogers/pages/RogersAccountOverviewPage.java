@@ -403,7 +403,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void selectAccount(String strAccountNumber) {		
-	reusableActions.clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 20);
+	reusableActions.clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 10);
 	}
 	
 	/**
@@ -516,9 +516,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @return true if the balance label is present ; else false
 	 * @author chinnarao.vattam
 	 */
-	public boolean verifySuccessfulLogin() {		
-	 String strAccountNumber = reusableActions.getWhenReady(menuAccountNumber,40).getText();
-	  return NumberUtils.isDigits(strAccountNumber);
+	public boolean verifySuccessfulLogin() {	
+	 reusableActions.waitForElementVisibility(menuAccountNumber,60);
+	 String strAccountNumber = reusableActions.getWhenReady(menuAccountNumber,5).getText();
+	 return NumberUtils.isDigits(strAccountNumber);
 	}
 	
 	/**

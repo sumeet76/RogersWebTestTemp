@@ -439,7 +439,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public void set4KTV() {	
 		reusableActions.getWhenReady(rdo4KTV, 120);
-		reusableActions.scrollToElement(rdo4KTV);		
+		//reusableActions.scrollToElement(rdo4KTV);		
 		reusableActions.executeJavaScriptClick(rdo4KTV);
 	}
 	
@@ -457,8 +457,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verify4KTV() {
-		reusableActions.waitForElementVisibility(rdo4KTV, 60);
-		return	reusableActions.isElementVisible(rdo4KTV);
+		return	reusableActions.isElementVisible(rdo4KTV,90);
 	}
 	
 	/**
@@ -486,8 +485,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisStarterPackageNew() {
-		reusableActions.waitForElementVisibility(btnSolarisStarterPackageNew, 120);
-		//reusableActions.waitForElementVisibility(txtPackageCost, 5);
+		reusableActions.waitForElementVisibility(btnSolarisStarterPackageNew, 20);
+		reusableActions.waitForElementVisibility(txtPackageCost, 5);
 		reusableActions.getWhenReady(btnSolarisStarterPackageNew, 10).click();
 	}
 	

@@ -21,21 +21,24 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
 	WebElement txtContainerEmail;
 	
-		@FindBy(xpath = "//input[@id='ds-form-input-id-14']")
+		@FindBy(xpath = "//input[@name='email']")
 	WebElement txtEmail;
-	
-	@FindBy(xpath = "//input[@id='ds-form-input-id-15']")
-	WebElement txtConfirmEmail;
-	
-	@FindBy(xpath = "//input[@id='ds-form-input-id-9']")
-	WebElement txtFirstName;
-	
-	@FindBy(xpath = "//input[@id='ds-form-input-id-10']")
-	WebElement txtLastName;
-	
-	@FindBy(xpath = "//input[@id='ds-form-input-id-12']")
-	WebElement btnPhone;
+		//input[@id='ds-form-input-id-14']
 		
+	@FindBy(xpath = "//input[@name='confirmEmail']")
+	WebElement txtConfirmEmail;
+	//input[@id='ds-form-input-id-15']
+	
+	@FindBy(xpath = "//input[contains(@aria-label,'First Name')]")
+	WebElement txtFirstName;
+	//input[@id='ds-form-input-id-9']
+	@FindBy(xpath = "//input[contains(@aria-label,'Last Name')]")
+	WebElement txtLastName;
+	//input[@id='ds-form-input-id-10']
+	@FindBy(xpath = "//input[contains(@aria-label,'your phone number')]")
+	WebElement btnPhone;
+	//input[@id='ds-form-input-id-12']
+	
 	@FindBy(xpath = "//span[@translate='global.cta.continue']")
 	WebElement btnProfielSubmit;	
 	//input[@class='ute-btn-primary profile-submit-button']

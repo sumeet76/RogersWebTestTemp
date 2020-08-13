@@ -450,7 +450,7 @@ public class RogersHomePage extends BasePageClass {
 		{
 		reusableActions.waitForElementInvisibilityNOException(overlayHomePage,5);	
 		}
-		reusableActions.getWhenReady(btnServiceability, 30).click();
+	reusableActions.getWhenReady(btnServiceability, 30).click();
 	}
 	
 	/**
@@ -485,7 +485,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkAddressCheck() {
-		reusableActions.waitForElementVisibility(btnAddress, 60);
+		reusableActions.waitForElementVisibility(btnAddress, 90);
 		reusableActions.getWhenReady(btnAddress, 20).click();
 	}
 	
@@ -530,7 +530,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkIgniteAddressLookupSubmit() {
-		reusableActions.getWhenReady(btnIgniteAddressLookupSubmit, 30).click();
+		reusableActions.getWhenReady(btnIgniteAddressLookupSubmit, 60).click();
 	}
 	
 	/**
