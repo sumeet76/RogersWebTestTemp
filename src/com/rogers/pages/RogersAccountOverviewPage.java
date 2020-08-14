@@ -110,9 +110,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
         @FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.setUpAutomaticPayments']")})	
 	WebElement lnkSetUpAutomaticPaymentMethodMobile;
 	
-	@FindAll({
-        @FindBy(xpath = "//span[contains(text(),'Make a payment')]"),
-	@FindBy(xpath = "//button/span[@translate='ute.rogers.account.balance.make_a_payment']")})
+	@FindAll({    
+	@FindBy(xpath = "//button/span[@translate='ute.rogers.account.balance.make_a_payment']"),
+    @FindBy(xpath = "//span[contains(text(),'Make a payment')]")})
 	WebElement btnMakeAPayment;
 	
 	@FindBy(xpath = "//div[@ng-show='loadingImg']")
