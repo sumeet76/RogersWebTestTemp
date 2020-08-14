@@ -61,10 +61,10 @@ public class RogersSS_TC_064_ValidateDataUsage_InfiniteIndividualPlanReducedSpee
         }
         rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
         
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyUnlimitedDataNoOverage(),
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyUnlimitedDataNoOverage(),
 		        		"The unlimited data no overage is diaplyed",
 		        		"The unlimited data no overage label is not displayed");
-        reporter.softAssert(rogers_wireless_dashboard_page.verifySpeedReducedMsg(),
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifySpeedReducedMsg(),
 						"Label using data at reduced speed is displayed",
 						"Label using data at reduced speed is not displayed");
         reporter.softAssert(rogers_wireless_dashboard_page.verifySpeedPassButtonIsDisplayed(),

@@ -79,6 +79,7 @@ import com.rogers.pages.RogersSHMDashboardPage;
 import com.rogers.pages.RogersSecurePaymentPage;
 import com.rogers.pages.RogersSetPasswordPage;
 import com.rogers.pages.RogersShareEverythingPage;
+import com.rogers.pages.RogersShippingPage;
 import com.rogers.pages.RogersSolarisRHPDashboardPage;
 import com.rogers.pages.RogersSolarisTVChannelsAndThemepacksPage;
 import com.rogers.pages.RogersSolarisTVDashboardPage;
@@ -276,7 +277,8 @@ public class BaseTestClass {
  			driver.get(strUrl+"?setLanguage="+ strLanguage );
  			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
 		}
-	    //setImplicitWait(getDriver(), 10);
+	    setImplicitWait(getDriver(), 10);
+		getDriver().manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
 	    init(strGroupName);	 
  }
 		

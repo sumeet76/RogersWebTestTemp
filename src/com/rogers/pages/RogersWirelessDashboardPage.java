@@ -1,5 +1,6 @@
 package com.rogers.pages;
 
+import java.math.BigDecimal;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -209,7 +210,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy (xpath = "//span[@data-ng-bind='simCardConfirmation.getNewSimCardNumber()']")
 	WebElement btnCloseViewDetails;
 
-	@FindBy (xpath = "//div[@class='data-usage-details-holder component_holder']/rss-billing/div[@class='bill-cycle']/span[@class='daysRemaining']")
+	@FindAll({
+	@FindBy(xpath = "//rss-data-usage-details//span[@class='daysRemaining']"),
+	@FindBy (xpath = "//div[@class='data-usage-details-holder component_holder']/rss-billing/div[@class='bill-cycle']/span[@class='daysRemaining']")})
 	WebElement lblDaysRemainingInBillCycle;
 
 	@FindBy (xpath = "//div[@class='add-data']")
@@ -1965,7 +1968,10 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @return true if the Data Alert is correctly set, otherwise false.
 	 */
 	public boolean isDataAlertCorrectlySet(String strDataAlert) {
-		return reusableActions.getWhenReady(lblDataAlertSetValue).getText().trim().replaceAll(",", ".").contains(strDataAlert);
+		String strDataAlertValue = reusableActions.getWhenReady(lblDataAlertSetValue).getText().trim().replaceAll(",", ".").split(" ")[0];
+		double doubleAlertValue = Double.parseDouble(strDataAlertValue);
+		strDataAlertValue =  String.format("%.2f", new BigDecimal(doubleAlertValue));
+		return strDataAlertValue.contains(strDataAlert);
 	}
 
 	/**
@@ -2111,7 +2117,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkStreamSaverOn() {
-		reusableActions.getWhenReady(divDataAccessOFF).click();
+		reusableActions.getWhenReady(btnStreamSaverSwitchOff).click();
 		
 	}
 
@@ -2167,7 +2173,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkStreamSaverOff() {
-		reusableActions.getWhenReady(btnStreamSaverSwitchOff).click();
+		reusableActions.getWhenReady(btnStreamSaverSwitchON).click();
 		
 	}
 

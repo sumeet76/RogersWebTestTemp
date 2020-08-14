@@ -136,6 +136,7 @@ public class TestDataHandler {
 	public static Config rogersConfig;
 	public static AccountData tc01030405;
 	public static AccountData tc92;
+	public static AccountData tc95;
 	
 	public static void dataInit (String strApplicationType) {	    	
     	if(strApplicationType.toUpperCase().trim().endsWith("CH")) {	    	
@@ -262,6 +263,7 @@ public class TestDataHandler {
     	tc82 = YamlHandler.getAccountData("tc82InfiniteSE");
     	tc01030405 =  YamlHandler.getAccountData("tc01_03_04_05_FDMInfiniteSE");
     	tc92 = YamlHandler.getAccountData("tc92_CancelledInfiniteNSE");
+    	tc95 = YamlHandler.getAccountData("tc95NSESuspendedCTN");
     	
     	//================ Connected home =========================
     	tc43IgniteRHP = YamlHandler.getAccountData("tc43IgniteRHP");

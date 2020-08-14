@@ -34,6 +34,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
         @FindBy (xpath ="//div[@class='ute-dataManager-badgeList-individualBadge']//div[@class='ute-dataManager-badgeList-individualBadgeInfo']")})
 	List<WebElement> lstCtnBadges;
 	
+	@FindBy(xpath = "//ds-icon/following-sibling::span[contains(text(),'Suspended')]")
+	WebElement suspendedCTN;
 	
 	@FindBy(xpath = "//div[@class='row modal-content-header']//button[@class='close']")
 	WebElement popUpInternetPopup;
@@ -108,7 +110,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
         @FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.setUpAutomaticPayments']")})	
 	WebElement lnkSetUpAutomaticPaymentMethodMobile;
 	
-	@FindBy(xpath = "//button/span[@translate='ute.rogers.account.balance.make_a_payment']")
+	@FindAll({
+        @FindBy(xpath = "//span[contains(text(),'Make a payment')]"),
+	@FindBy(xpath = "//button/span[@translate='ute.rogers.account.balance.make_a_payment']")})
 	WebElement btnMakeAPayment;
 	
 	@FindBy(xpath = "//div[@ng-show='loadingImg']")
@@ -124,8 +128,16 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Profile & Settings' or text()='Profil et paramètres']/parent::a")})
 	WebElement menuProfileAndSettingsMobile;
 	
+	
+	
+	
 	@FindAll({
-	@FindBy(xpath = " //div[@class='ute-secondLevelNav-bar-m']//button//span[@data-translate='ute.common.label.overview']"),
+		@FindBy(xpath = "//button[@aria-label='ute.common.label.profileAndSetting']"),
+		@FindBy(xpath = "//span[text()='Profile & Settings' or text()='Profil et paramètres']/parent::a")})
+		WebElement menuAndServices;
+	
+	@FindAll({
+	@FindBy(xpath = "//div[@class='ute-secondLevelNav-bar-m']//button//span[@data-translate='ute.common.label.overview']"),
 	@FindBy(xpath = "//button[contains(text(),'Overview') or contains(text(),'Survol')]")})
 	WebElement btnOverViewMobile;
 	
@@ -216,9 +228,14 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		@FindBy(xpath = "//span[contains(text(),'Entertainment')]/ancestor::div[@class='subscription-detail']"),
         @FindBy(xpath = "//span[@translate='ute.subscriptionBadge.smartStream']")})	
 	WebElement btnEntertainmentBadge;
-
-	@FindBy(xpath = "//button[@aria-label='ute.common.label.billAndPayment']")
+		
+	@FindAll({
+	@FindBy(xpath = "//span[contains(text(),'Billing & Payment')]"),	
+	@FindBy(xpath = "//button[@aria-label='ute.common.label.billAndPayment']")})
 	WebElement menuBillingAndPaymentsMobile;
+	
+	@FindBy(xpath = "//div[@class='ute-secondLevelNav-bar-m']//button//span[contains(text(),'Billing & Payment')]")
+	WebElement menuMainBillingAndPaymentsMobile;
 
 	@FindBy(xpath = "//*[@id='overview' or @id='survol']//md-list-item//span[@data-translate='ute.common.second.level.navigation.billing.changePaymentMethod']/ancestor::h2/parent::div/parent::div/button")
 	WebElement submenuChangePaymentMethod;
@@ -260,6 +277,13 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		@FindBy (xpath = "//app-welcome-rogers"),
 		@FindBy (xpath = "//div[@class='bc-frame-title']")})
 		WebElement headerLiveChat;
+	
+	@FindAll({		
+		@FindBy (xpath = "//span[text()='Usage & Services' or text()='Profil et paramètres']/parent::a")})
+	WebElement menuUsageAndServicesMobile;
+
+	@FindBy(xpath = "//a[@data-translate='ute.common.reactivate.ctn.backToDevice']")	
+	WebElement btnClickBackToDevice;
 	
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
@@ -403,7 +427,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void selectAccount(String strAccountNumber) {		
-	reusableActions.clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 10);
+	reusableActions.getWhenReady((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 20).click();
 	}
 	
 	/**
@@ -508,6 +532,17 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
 		reusableActions.getWhenReady(menuProfileAndSettingsMobile,30).click();			
 		reusableActions.waitForElementVisibility(headerProfileNSettings,60);
+					
+	}
+	
+	/**
+	 * Click on menu  on Mobile
+	 * @author Mirza.Kamran
+	 */
+	public void clkMenuUsageAndServiceMobile() {		
+		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
+		reusableActions.getWhenReady(menuUsageAndServicesMobile,30).click();			
+		//reusableActions.waitForElementVisibility(headerProfileNSettings,60);
 					
 	}
 	
@@ -653,8 +688,15 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkSetUpAutomaticPaymentMethodMobile() {
-		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
-		reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
+		if(reusableActions.isElementVisible(btnOverViewMobile))
+		{
+		
+		reusableActions.getWhenReady(btnOverViewMobile,30).click();
+		}else if (reusableActions.isElementVisible(menuMainBillingAndPaymentsMobile))
+		{
+			reusableActions.getWhenReady(menuMainBillingAndPaymentsMobile,30).click();
+		}	
+		//reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
 		reusableActions.staticWait(3000); //extra static buffers added for firefox	
 		reusableActions.waitForElementVisibility(submenuSetUpAutomaticPaymentMethodMobile);
 		reusableActions.getWhenReady(submenuSetUpAutomaticPaymentMethodMobile).click();	
@@ -705,7 +747,6 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		//reusableActions.waitForElementTobeClickable(btnMakeAPayment, 20);
 		//reusableActions.getWhenReady(btnMakeAPayment,10).click();
 		
-		
 		boolean clickSuccess=false;
 		int count=0;
 		while (count<=3 && !clickSuccess) {
@@ -722,6 +763,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			}
 			count++;
 		}
+		
 		
 	}
 	
@@ -761,8 +803,15 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isSetAutoPaymentDisplayedMobile() {
-		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
-		reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
+		if(reusableActions.isElementVisible(btnOverViewMobile))
+		{
+		
+		reusableActions.getWhenReady(btnOverViewMobile,30).click();
+		}else if (reusableActions.isElementVisible(menuMainBillingAndPaymentsMobile))
+		{
+			reusableActions.getWhenReady(menuMainBillingAndPaymentsMobile,30).click();
+		}
+		//reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
 		reusableActions.staticWait(3000); //extra static buffers added for firefox
 		return reusableActions.isDisplayed(lnkSetUpAutomaticPaymentMethodMobile);
 	}
@@ -923,6 +972,26 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	}
 	
 	/**
+	 * Checks if the suspended CTN is displayed
+	 * @return boolean true if the suspended CTN is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isSuspendedCTNAvailable() {	
+		
+		return reusableActions.isElementVisible(suspendedCTN);
+				
+	}
+	
+	/**
+	 * Checks if the suspended CTN is displayed 
+	 * @author Mirza.Kamran
+	 */
+	public void clkSuspendedCTN() {	
+		reusableActions.getWhenReady(suspendedCTN).click();
+	}
+	
+	
+	/**
 	 * Click the overview navigation button on the page 
 	 * @author ning.xue
 	 */
@@ -1080,6 +1149,38 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			return reusableActions.isElementVisible(headerLiveChat, 30);
 		}
 		
+	}
+
+	/**
+	 * Clicks on back to devices page
+	 * @author Mirza.Kamran
+	 */
+	public void clkbtnBackToDevices() {
+		reusableActions.clickWhenReady(btnClickBackToDevice);
+	}
+
+
+
+	public void clickMakePaymentMobile() {
+		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
+		reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
+		reusableActions.getWhenReady(btnMakeAPayment,30).click();			
+		
+	}
+
+	public boolean isAddALinkDisplayedBelowCTNs() {
+		//reusableActions.isElementVisible(locator)
+		return false;
+	}
+
+	public void clkAddALink() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public boolean verifyIfAddALinkOverlayIsdisplayed() {
+		// TODO Auto-generated method stub
+		return false;
 	} 
 	
 	

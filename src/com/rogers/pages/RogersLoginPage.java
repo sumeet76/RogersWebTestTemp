@@ -58,8 +58,8 @@ public class RogersLoginPage extends BasePageClass {
 	 * To switch to the iframe
 	 * @author chinnarao.vattam
 	 */
-	public void switchToSignInIFrame() {
-		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraSignIn, 100);
+	public void switchToSignInIFrame() {			
+		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraSignIn, 5);
 	}
 	
 	/**
@@ -105,7 +105,7 @@ public class RogersLoginPage extends BasePageClass {
 	 * @return true if login fail message is displayed, otherwise false.
 	 */
 	public Boolean verifyLoginFailMsgIframe() {
-		return reusableActions.isElementVisible(failLoginMsg,3);
+		return reusableActions.isElementVisible(failLoginMsg, 10);
 	}
 
 	/**
