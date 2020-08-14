@@ -427,7 +427,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void selectAccount(String strAccountNumber) {		
-	reusableActions.clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 20);
+	reusableActions.getWhenReady((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 20).click();
 	}
 	
 	/**
