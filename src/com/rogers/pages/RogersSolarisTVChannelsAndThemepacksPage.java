@@ -30,6 +30,13 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='channel-list-row']//button[@class='ute-btn-primary ute-sm ute-short']//ins")
 	List<WebElement> addParticularChannelToCart;
 	
+	@FindBy(xpath = "//div[@class='channel-list-row']//button[@class='ute-btn-primary ute-sm ute-short']//ins")
+	WebElement addChannelToCart;
+	
+	@FindBy(xpath = "//input[@id='searchTyping_']")
+	WebElement iconSearch;
+	
+	
 	@FindBy(xpath = "//button[contains(@id,'remove-channel')]//ins")
 	WebElement removeParticularChannelFromCart;
 	
@@ -72,14 +79,18 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[@class='preloader loading-secondary']")
 	WebElement ldrThemepack;
+		
+	@FindBy(xpath = "//span[@class='ute-icon-search noClickIcon']")
+	WebElement btnSearchChannel;
+	
 	/**
 	 * Click on add button of the first pack in theme pack in manage channels and theme pack
 	 * @author chinnarao.vattam	 
 	 */
 	public void clkAddButtonOnThemePackListOnManageChannelsAndThemePacks() {
-/*		reusableActions.waitForElementVisibility(addThemePackListOnManageChannelsAndThemePacks.get(0), 340);
-		reusableActions.getWhenReady(addThemePackListOnManageChannelsAndThemePacks.get(0), 60).click();*/
-		reusableActions.getWhenReady(addThemePackClassicTVThemePacks, 240).click();		
+		//Taking more time to load all the themepacks
+		reusableActions.waitForElementVisibility(addThemePackClassicTVThemePacks, 120);
+		reusableActions.executeJavaScriptClick(addThemePackClassicTVThemePacks);		
 	}		
 	
 	/**
@@ -87,7 +98,8 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam	 
 	 */
 	public void clkAddButtonOnThemePackListOnManageChannelsAndThemePacks4plus1() {
-		reusableActions.waitForElementVisibility(addThemePackClassicTVThemePacks4plus1, 240);
+		//Taking more time to load all the themepacks
+		reusableActions.waitForElementVisibility(addThemePackClassicTVThemePacks4plus1, 120);
 		reusableActions.executeJavaScriptClick(addThemePackClassicTVThemePacks4plus1);		
 	}
 	/**
@@ -104,16 +116,29 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam	 
 	 */
 	public void clkConfirmChangesOnManageChannelsAndThemePacks() {
+		//Taking more time to load all the themepacks
 		reusableActions.getWhenReady(clkConfirmChangesOnManageChannelsAndThemePacks, 120).click();
 	}	
 	
 	/**
 	 * Add first channel from the list
-	 * @author Saurav.Goyal	 
+	 * @author chinnarao.vattam	 
 	 */
 	public void addChannel() {
-		reusableActions.waitForElementVisibility(addParticularChannelToCart.get(0), 340);
-		reusableActions.getWhenReady(addParticularChannelToCart.get(0), 180).click();
+		reusableActions.waitForElementVisibility(addChannelToCart, 60);
+		reusableActions.getWhenReady(addChannelToCart, 30).click();
+	}
+	
+	/**
+	 * Add first channel from the list
+	 * @param strInChannel  available channel
+	 * @author chinnarao.vattam	 
+	 */
+	public void searchChannel(String strInChannel) {
+		reusableActions.waitForElementVisibility(iconSearch,120);
+		reusableActions.getWhenReady(iconSearch,20).click();
+		reusableActions.getWhenReady(iconSearch, 30).sendKeys(strInChannel);	
+		reusableActions.getWhenReady(btnSearchChannel,30).click();
 	}
 	
 	/**
@@ -121,9 +146,8 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam	 
 	 */
 	public void addChannelThemepack() {
-		reusableActions.waitForElementInvisibility(ldrThemepack, 120);
-		reusableActions.waitForElementVisibility(addParticularChannelToCart.get(0), 340);
-		//reusableActions.getWhenReady(addParticularChannelToCart.get(0), 180).click();
+		reusableActions.waitForElementInvisibility(ldrThemepack, 240);
+		reusableActions.getWhenReady(addThemePackClassicTVThemePacks, 120).click();
 	}
 	
 	/**

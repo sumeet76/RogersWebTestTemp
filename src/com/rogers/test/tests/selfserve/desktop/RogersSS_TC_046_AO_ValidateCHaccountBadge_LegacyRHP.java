@@ -53,7 +53,7 @@ public class RogersSS_TC_046_AO_ValidateCHaccountBadge_LegacyRHP extends BaseTes
 		rogers_account_overview_page.selectAccount(TestDataHandler.tc46LegacyRHP.getAccountDetails().getBan());
 		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.clkRHPBadge(xmlTestParameters.get("strBrowser"));
+		rogers_account_overview_page.clkRHPBadge();
 		reporter.reportLogWithScreenshot("Click RHP Badge");
 		Thread.sleep(7000);
 		reporter.hardAssert(rogers_account_overview_page.verifyRHPBanner(),"Verifed the RHP dashboard",

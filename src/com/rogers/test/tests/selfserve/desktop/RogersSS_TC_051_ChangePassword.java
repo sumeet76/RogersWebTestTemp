@@ -54,11 +54,11 @@ public class RogersSS_TC_051_ChangePassword extends BaseTestClass {
         }
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
-        
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
-        	reporter.reportLogWithScreenshot("Select an account.");
-        	rogers_account_overview_page.selectAccount(TestDataHandler.tc2751.getAccountDetails().getBan());       
-        }
+        //Account selection when there have multiple BAN.
+//        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+//        	reporter.reportLogWithScreenshot("Select an account.");
+//        	rogers_account_overview_page.selectAccount(TestDataHandler.tc2751.getAccountDetails().getBan());       
+//        }
         reporter.reportLogWithScreenshot("Account overview page.");
 		rogers_account_overview_page.clkLnkProfileNSettings();
 		reporter.reportLogWithScreenshot("Profile & Settings page.");

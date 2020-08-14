@@ -5,6 +5,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -34,7 +35,10 @@ public class RogersChoosePlanPage extends BasePageClass {
 	@FindBy(xpath = "//md-select[@ng-model='model.filterByType']//span[@class='md-select-icon']")
 	WebElement icnPlanType;
 	
-	@FindBy(xpath = "//span[@translate='ppc_checkout_review_checkout']/../parent::div[contains(@class,'summary')]")
+	@FindAll({
+		@FindBy(xpath = "//span[@translate='mppc.summary.continue_button']/../parent::div[contains(@class,'summary-strip-section')]/button"),
+		@FindBy(xpath = "//span[@translate='ppc_checkout_review_checkout']/../parent::div[contains(@class,'summary')]")
+	})
 	WebElement btnCheckout;
 	
 	@FindBy(xpath = "//div[@class='plan-socview']/span[@class='tabdata ng-scope']")
@@ -248,8 +252,8 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkCheckout() {
-		reusableActions.clickWhenReady(btnCheckout, 40);
-		reusableActions.clickIfAvailable(rdoSelectTodaysDate, 40);
+		reusableActions.clickWhenReady(btnCheckout, 30);
+		reusableActions.clickIfAvailable(rdoSelectTodaysDate, 30);
 		reusableActions.clickIfAvailable(By.xpath("//div[@class='billingDateButtonClass inlineBlockClass']"));
 	}
 	

@@ -51,7 +51,7 @@ public class RogersSS_TC_045_AO_ValidateCHAccountBadge_LegacyInternet extends Ba
 		reporter.reportLogWithScreenshot("Launched the Account Overview Page");
 		rogers_account_overview_page.clkLegacyInternetBadge(xmlTestParameters.get("strBrowser"));
 		reporter.reportLogWithScreenshot("Launched the Internet Dashboard Page");
-		rogers_account_overview_page.clkInternetPopup(xmlTestParameters.get("strBrowser"));		
+		rogers_account_overview_page.clkInternetPopup();		
 		reporter.hardAssert(rogers_internet_dashboard_page.verifyInternetUsage(),"Verifed the Internet dashboard","Internet dashboard Verification has failed");
 		reporter.reportLogWithScreenshot("The Internet Dashboard Page");		   
         common_business_flows.scrollToMiddleOfWebPage();

@@ -49,7 +49,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='buttons-block hidden-xs']//ins[@translate='global.common.buttons.noThanksContinue']")
 	WebElement btnNoThanksContinue;
 	
-	@FindBy(xpath = "//div[@class='buttons-block hidden-xs']//ins[@translate='global.modals.rhpSplitterModal.portMyNumber']")
+	@FindBy(xpath = "//label[contains(@for,'global.modals.activateIgniteHomePhoneModal.messageForExistingNumber')]")
 	WebElement btnKeepMyNumber;
 	
 	@FindBy(xpath = "//button[@class='continue-addon ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
@@ -486,8 +486,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisStarterPackageNew() {
-		reusableActions.waitForElementVisibility(btnSolarisStarterPackageNew, 10);
-		reusableActions.waitForElementVisibility(txtPackageCost, 5);
+		reusableActions.waitForElementVisibility(btnSolarisStarterPackageNew, 120);
+		//reusableActions.waitForElementVisibility(txtPackageCost, 5);
 		reusableActions.getWhenReady(btnSolarisStarterPackageNew, 10).click();
 	}
 	

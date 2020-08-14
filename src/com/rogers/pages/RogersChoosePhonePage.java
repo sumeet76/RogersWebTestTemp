@@ -19,7 +19,8 @@ public class RogersChoosePhonePage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//div[contains(@class,'button') and (@res='details_devicemodel' or @res='upgrade')]")
+	//div[contains(@class,'button') and (@res='details_devicemodel' or @res='upgrade' or @res='_add')]
+	@FindBy(xpath = "//div[contains(@class,'button') and (@res='details_devicemodel' or @res='upgrade' or @res='_add')]")
 	WebElement btnDetails;
 	
 	@FindBy(xpath = "//span[@translate='_newCustomer']/parent::button")
@@ -59,8 +60,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	WebElement lblChooseALine;
 	
 	@FindBy(xpath = "//section[@class='phoneModel']")
-	List<WebElement> deviceModal;
-	
+	List<WebElement> deviceModal;	
 	
 	/**
 	 * Clicks on the 'Details' button on the first available device
@@ -151,10 +151,13 @@ public class RogersChoosePhonePage extends BasePageClass {
 		for(WebElement element: deviceModal) {
 			if(reusableActions.isElementVisible(element , 30))
 				try {
-					reusableActions.isElementVisible(element.findElement(By.xpath("//div[contains(@class,'button') and (@res='details_devicemodel' or @res='upgrade' or @res='_add')]")));
+					WebElement btnDetail =  element.findElement(By.xpath("//div[contains(@class,'button') and (@res='details_devicemodel' or @res='upgrade' or @res='_add')]"));
+					reusableActions.isElementVisible(btnDetail);
 					detailButtonFlag = true;
 					//reusableActions.isElementVisible(element.findElement(By.xpath("//section[@class='phoneModel']//span[@res='device_eligible']")));
-					reusableActions.isElementVisible(element.findElement(By.xpath("//span[@class='-messageFont']")));
+					WebElement proOnTheGoMsgDisplay  = element.findElement(By.xpath("//span[@class='-messageFont']"));
+					reusableActions.isElementVisible(proOnTheGoMsgDisplay);
+					//reusableActions.isElementVisible(element.findElement(By.xpath("//span[@class='-messageFont']")));
 					return detailButtonFlag;
 				} catch (Exception e) {
 					if(detailButtonFlag = true) {

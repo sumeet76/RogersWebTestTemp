@@ -99,6 +99,14 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	}
 
 	/**
+	 * Click the Solaris Internet Badge on the Solaris account page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkInternetBadgeMobile() {
+		reusableActions.javascriptScrollToMiddleOfPage();
+		reusableActions.getWhenReady(btnSolarisInternetBadge,60).click();			
+	}
+	/**
 	 * Verify the Internet header text on the Solaris Internet dash board
 	 * @return true if the Internet heading displayed; else false
 	 * @author Chinnarao.Vattam
@@ -137,9 +145,17 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSolChangeInternetPackage() {	
-		reusableActions.waitForElementVisibility(btnSolChangeInternetPackage, 180);
-		reusableActions.getWhenReady(btnSolChangeInternetPackage, 180).click();
-
+		reusableActions.waitForElementVisibility(btnSolChangeInternetPackage, 90);
+		reusableActions.getWhenReady(btnSolChangeInternetPackage, 60).click();
+	}
+	
+	/**
+	 * Click the Change Internet Package button on Solaris Internet dash board
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkSolChangeInternetPackageMobile() {	
+		reusableActions.waitForElementVisibility(btnSolChangeInternetPackage, 90);
+		reusableActions.executeJavaScriptClick(btnSolChangeInternetPackage);
 	}
 	
 	/**
@@ -147,7 +163,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkInternetChangeOK() {		
-		reusableActions.clickIfAvailable(btnInternetChangeOK, 120);
+		reusableActions.clickIfAvailable(btnInternetChangeOK, 30);
 
 	}
 	
@@ -201,10 +217,12 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @param strPackageNameFr package name
 	 * @author Chinnarao.Vattam
 	 */
-	public void selectSolarisInternetPackage(String strPackageNameEn,String strPackageNameFr) {		
-		//By packageNameLocator = By.xpath("//span[contains(normalize-space(text()),'" + strPackageName+ "') or contains(normalize-space(text()),'Élan Internet 150i')]/ancestor::div[@class='owl-item active']//ins[@translate='global.cta.select']");
+	public void selectSolarisInternetPackage(String strPackageNameEn,String strPackageNameFr) {	
 		By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='internet-bundle-tile__row']//button[@aria-label='Add Rogers Ignite Popular Bundle to your cart']");
-		reusableActions.getWhenReady(packageNameLocator, 180).click();
+		reusableActions.javascriptScrollToMiddleOfPage();
+		reusableActions.getWhenReady(packageNameLocator, 90);
+		WebElement pkg = driver.findElement(packageNameLocator);
+		reusableActions.executeJavaScriptClick(pkg);
 	}
 	
 	/**

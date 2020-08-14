@@ -29,22 +29,22 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath ="//select[@id='backupTimeSlot']")
 	WebElement selBackupTimeSlot;
 	
-	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-52')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
 	WebElement txtContainerMobile;
 	
 	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
 	WebElement txtContainerMobileExistingCustomer;
 	
-	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-47')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[3]")
 	WebElement txtContainerMobileMigration;
 	
-	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-53')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-54')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
 	WebElement txtContainerEmail;
 	
-	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[3]")
+	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-40')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
 	WebElement txtContainerEmailExistingCustomer;
 	
-	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-48')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[4]")
 	WebElement txtContainerEmailMigration;
 	
     @FindBy(xpath ="//input[@id='ds-form-input-id-34']")
@@ -177,13 +177,13 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyTechInstallPage() {
-		return	reusableActions.isElementVisible(txtTechInstalpage, 180);
+		return	reusableActions.isElementVisible(txtTechInstalpage, 120);
 	}
 	
 	
 	public void clkPersonalizedInstall() {
-		reusableActions.waitForElementVisibility(chkPersonalizedInstall, 180);
-		reusableActions.getWhenReady(chkPersonalizedInstall, 180).click();
+		reusableActions.waitForElementVisibility(chkPersonalizedInstall, 60);
+		reusableActions.getWhenReady(chkPersonalizedInstall, 30).click();
 	}
 	
 	/**
@@ -242,6 +242,12 @@ public class RogersTechInstallPage extends BasePageClass {
 	}
 	
 	public void selSelffinstallDateAndTimeMigrartion() {
+		if(reusableActions.isElementVisible(rdoTechInstallSlot, 90))
+		{
+		reusableActions.getWhenReady(rdoTechInstallSlot, 30).click();	
+		}
+		else
+		{
 		reusableActions.waitForElementVisibility(clkCalendarIcon,20); 
 		reusableActions.getWhenReady(clkCalendarIcon, 20).click();
 		Calendar calendar = Calendar.getInstance();
@@ -257,6 +263,7 @@ public class RogersTechInstallPage extends BasePageClass {
 		reusableActions.getWhenReady(selStartDate, 20).click();
 		reusableActions.waitForElementVisibility(rdoTechInstallSlot, 180);
 		reusableActions.getWhenReady(rdoTechInstallSlot, 90).click();
+		}
 	}
 	
 	/**
@@ -347,7 +354,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 */
 	public void setEmailMobile() {
 		String strEmail = FormFiller.generateEmail();
-		reusableActions.waitForElementVisibility(txtContainerEmail,180);
+		reusableActions.waitForElementVisibility(txtContainerEmail,30);
 		reusableActions.executeJavaScriptClick(txtContainerEmail);
 		reusableActions.getWhenReady(txtEmail, 30).clear();
 		reusableActions.getWhenReady(txtEmail,10).sendKeys(strEmail);
@@ -359,8 +366,8 @@ public class RogersTechInstallPage extends BasePageClass {
 	 */
 	public void setEmail() {
 		String strEmail = FormFiller.generateEmail();
-		reusableActions.waitForElementVisibility(txtContainerEmail,180);
-		reusableActions.getWhenReady(txtContainerEmail,10).click();
+		reusableActions.waitForElementVisibility(txtContainerEmail,30);
+		reusableActions.getWhenReady(txtContainerEmail,20).click();
 		reusableActions.getWhenReady(txtEmail, 30).clear();
 		reusableActions.getWhenReady(txtEmail,10).sendKeys(strEmail);
 	}
@@ -404,6 +411,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selTechInstalStartDate() {
+		reusableActions.staticWait(5000);
 		reusableActions.waitForElementVisibility(imgStartingTechInstallSlot,180); 
 		reusableActions.getWhenReady(imgStartingTechInstallSlot, 20).click();
 		Calendar calendar = Calendar.getInstance();

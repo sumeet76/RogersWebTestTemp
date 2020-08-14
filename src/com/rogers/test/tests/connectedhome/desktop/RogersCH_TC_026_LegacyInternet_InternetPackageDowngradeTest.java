@@ -51,7 +51,7 @@ public class RogersCH_TC_026_LegacyInternet_InternetPackageDowngradeTest extends
         reporter.reportLogWithScreenshot("Launched the Account Page");
 		rogers_account_overview_page.clkLegacyInternetBadge(TestDataHandler.chConfig.getBrowser());
 		reporter.reportLogWithScreenshot("Launched the Internet Dashboard Page");
-		rogers_account_overview_page.clkInternetPopup(TestDataHandler.chConfig.getBrowser()); 
+		rogers_account_overview_page.clkInternetPopup(); 
 		rogers_internet_dashboard_page.clkChangeInternetPackage();
 		reporter.reportLogWithScreenshot("Launched the Internet package Page");
 		rogers_internet_package_selection_page.selectInternetPackage(TestDataHandler.legacyInternetAccount.getAccountDetails().getDowngradePlanEn(),TestDataHandler.legacyInternetAccount.getAccountDetails().getDowngradePlanFr(), TestDataHandler.chConfig.getLanguage());

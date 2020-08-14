@@ -37,24 +37,25 @@ public class Mobile_RogersCH_TC_005_IginteInternet_ValidateInternetDashboardUsag
 
     @Test
     public void checkInternetDashboardMobile() {
+		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+		rogers_home_page.clkEasyLogin();
         reporter.reportLogWithScreenshot("Home Page");
-        reporter.reportLog("Home Page Launched");
-    	rogers_home_page.clkSignInMobile();
-    	
-          rogers_login_page.switchToSignInIFrame();
-          reporter.reportLogWithScreenshot("Launched the SignIn popup");
-          rogers_login_page.setUsernameIFrame(TestDataHandler.solarisInternetAccountWithUsage.getUsername());
-          rogers_login_page.setPasswordIFrame(TestDataHandler.solarisInternetAccountWithUsage.getPassword());
-          reporter.reportLogWithScreenshot("Enter the account credentails");
-          rogers_login_page.clkSignInIFrame();
-      	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+    	rogers_home_page.clkSignInMobile();    	
+        rogers_login_page.switchToSignInIFrame();
+        reporter.reportLogWithScreenshot("Launched the SignIn popup");
+        rogers_login_page.setUsernameIFrame(TestDataHandler.solarisInternetAccountWithUsage.getUsername());
+        rogers_login_page.setPasswordIFrame(TestDataHandler.solarisInternetAccountWithUsage.getPassword());
+        reporter.reportLogWithScreenshot("Enter the account credentails");
+        rogers_login_page.clkSignInIFrame();
+    	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
         rogers_account_overview_page.selectAccount(TestDataHandler.solarisInternetAccountWithUsage.accountDetails.getBan());
     	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-          reporter.reportLogWithScreenshot("Launched the Account Page");
-          rogers_internet_dashboard_page.clkSolarisInternetBadge();
+        reporter.reportLogWithScreenshot("Launched the Account Page");
+        rogers_internet_dashboard_page.clkInternetBadgeMobile();
+        reporter.reportLogWithScreenshot("Launched the Interent dashboard");
           rogers_internet_dashboard_page.clkInternetPopup();
           reporter.reportLogWithScreenshot("Launched the Interent dashboard");
   		reporter.hardAssert(rogers_internet_dashboard_page.verifyInternet(), "Verified the Internet page", "Internet page verification failed");

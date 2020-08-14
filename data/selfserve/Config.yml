@@ -1,7 +1,7 @@
 # Config
 ---
 rogersURL: https://qa6.rogers.com
-rogersCIAMUrl: https://qa06-ciam.rogers.com
+rogersCIAMUrl: https://qa6.rogers.com
 browser: chrome
 language: en
 cookieUserName: orphanRegRog12@mailinator.com
