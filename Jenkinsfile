@@ -39,7 +39,7 @@ pipeline {
         stage('Upload data to NS'){
             steps {
                 script{
-                    sh label: 'Testing NS upload', script: """ netstorage-upload.sh /mnt/ns/nskey.pem /test-data qa-test"""
+                    sh label: 'Testing NS upload', script: """ netstorage-upload.sh /mnt/ns/nskey.pem ./test-data qa-test"""
                 }
             }
         }
