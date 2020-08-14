@@ -21,52 +21,49 @@ void toolSh(String command) {
         sh command
     }
 }
-
 pipeline {
     agent {
         kubernetes {
             yamlFile 'jenkins-agent.yml'
+            defaultContainer 'tools'
             podRetention never()
+
         }
     }
-
-
-    
     environment {
         TEST_CRED = credentials('TEST_CRED')
         SAUCE_USERNAME = credentials('SAUCE_USERNAME')
         SAUCE_ACCESS_KEY=credentials('SAUCE_ACCESS_KEY')
-        
     }
     stages {
+        stage('Upload data to NS'){
+            steps {
+                script{
+                    sh label: 'Testing NS upload', script: """ netstorage-upload.sh /mnt/ns/nskey.pem /test-data qa-test"""
+                }
+            }
+        }
         stage('Run CI?') {
             when { expression { shouldRun() } }
             stages {
-                
-                    
-                        stage('Environment Variables') {
-                            steps { sh 'env | sort' }
-                        }
-                        stage('Credentials') {
-                            environment {
-                                GITHUB_CREDENTIALS = credentials('github_daws_svc_account')
-                                ARTIFACTORY_CREDENTIALS = credentials('artifactory_serv_svc_dawsdev')
-                                SONARQUBE_TOKEN = credentials('sonarqube_serv_svc_dawsdev')
-                            }
-                            steps {
-                         
-                                toolSh 'github-credentials.sh'
-                                toolSh 'artifactory-credentials.sh'
-                                toolSh 'sonarqube-credentials.sh'
-                            }
-                        }
-
-                         stage('Publish') {
-                                            steps { toolSh 'gradle artifactoryPublish' }
-                                        }
-                        
-                 
-
+                stage('Environment Variables') {
+                    steps { sh 'env | sort' }
+                }
+                stage('Credentials') {
+                    environment {
+                        GITHUB_CREDENTIALS = credentials('github_daws_svc_account')
+                        ARTIFACTORY_CREDENTIALS = credentials('artifactory_serv_svc_dawsdev')
+                        SONARQUBE_TOKEN = credentials('sonarqube_serv_svc_dawsdev')
+                    }
+                    steps {
+                        toolSh 'github-credentials.sh'
+                        toolSh 'artifactory-credentials.sh'
+                        toolSh 'sonarqube-credentials.sh'
+                    }
+                }
+                stage('Publish') {
+                    steps { toolSh 'gradle artifactoryPublish' }
+                }
             }
         }
     }
