@@ -1176,7 +1176,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	}
 
 	public boolean isAddALinkDisplayedBelowCTNs() {
-		// TODO Auto-generated method stub
+		//reusableActions.isElementVisible(locator)
 		return false;
 	}
 

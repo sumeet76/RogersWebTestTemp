@@ -57,7 +57,7 @@ public class RogersAddDataPage extends BasePageClass {
 	 */
 	public void selectFirstDataAddOnOption() {
 		reusableActions.waitForElementVisibility(divListAddDataOpt.get(1),60);
-		reusableActions.clickWhenReady(divListAddDataOpt.get(1), 60);
+		reusableActions.clickWhenReady(divListAddDataOpt.get(2), 60);
 		
 	}
 	
