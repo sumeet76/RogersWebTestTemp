@@ -1177,7 +1177,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 
 	/**
-	 * 
+	 * Clicks on make payment on mobile
+	 * @author Mirza.Kamran
 	 */
 	public void clickMakePaymentMobile() {
 		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
@@ -1187,15 +1188,17 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Checks if the add link is displayed below the list of CTNs
+	 * @return true if the CTN displayed else false
+	 * @author Mirza.Kamran
 	 */
 	public boolean isAddALinkDisplayedBelowCTNs() {
 		return reusableActions.isElementVisible(lnkAddALine);
 	}
 
 	/**
-	 * 
+	 * Clicks  on Add Link 
+	 * @author Mirza.Kamran
 	 */
 	public void clkAddALink() {
 		reusableActions.getWhenReady(lnkAddALine).click();
@@ -1203,7 +1206,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	}
 
 	/**
-	 * @return
+	 * Checks if the add link overlay is displayed	 *
+	 * @return true if the link is displayed else false
+	 * @author Mirza.Kamran
 	 */
 	public boolean verifyIfAddALinkOverlayIsdisplayed() {
 		return reusableActions.isElementVisible(headerOverlayforAddLink,30)
@@ -1212,8 +1217,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Checks if the Credit limit reached notification is displayed
+	 * @return true if the credit limit reached notification is displayed else false
+	 * @author Mirza.Kamran
 	 */
 	public boolean isCreditLimitReachedNotificationDisplayed() {
 		return reusableActions.isElementVisible(lblCreditLimitExceeded);
