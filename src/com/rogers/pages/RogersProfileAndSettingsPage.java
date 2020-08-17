@@ -289,7 +289,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void clkLnkSetupRecoveryNum() {
 		reusableActions.waitForElementTobeClickable(lnkSetupRecoveryNum, 30);
-		reusableActions.clickIfAvailable(lnkSetupRecoveryNum, 30);
+		reusableActions.getWhenReady(lnkSetupRecoveryNum, 30).click();
 	}
 	
 	/**
@@ -353,7 +353,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnContinueToMyRogersIframe() {
-		reusableActions.clickIfAvailable(btnContinueToMyRogers, 30);
+		reusableActions.getWhenReady(btnContinueToMyRogers, 30).click();
 	}
 	
 	/**

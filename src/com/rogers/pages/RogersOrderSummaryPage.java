@@ -239,7 +239,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectDOBYear() {
-		reusableActions.waitForElementVisibility(ddlDobYear,90);
+		reusableActions.waitForElementVisibility(ddlDobYear,30);
 		String strDOBYear = FormFiller.generateDOBYear();
 		reusableActions.selectWhenReady(ddlDobYear, strDOBYear);
 	}

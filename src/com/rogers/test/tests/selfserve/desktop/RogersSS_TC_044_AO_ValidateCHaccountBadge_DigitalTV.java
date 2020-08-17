@@ -54,7 +54,7 @@ public class RogersSS_TC_044_AO_ValidateCHaccountBadge_DigitalTV extends BaseTes
 		rogers_account_overview_page.selectAccount(TestDataHandler.tc44DigitalTVAccount.getAccountDetails().getBan());
 		getDriver().switchTo().defaultContent();
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.clkTVBadge(xmlTestParameters.get("strBrowser"));
+		rogers_account_overview_page.clkTVBadge();
 		reporter.reportLogWithScreenshot("Clicked  the DTV badge");
 		reporter.hardAssert(rogers_digital_tv_dashboard_page.verifyChangeMyPackage(),"Verifed the TV dashboard","TV dashboard Verification has failed");
 		reporter.reportLogWithScreenshot("Launched the Digital TV Dashboard Page");

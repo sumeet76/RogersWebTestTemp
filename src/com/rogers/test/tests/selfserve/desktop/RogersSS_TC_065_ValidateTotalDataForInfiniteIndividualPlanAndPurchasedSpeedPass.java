@@ -39,7 +39,7 @@ public class RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurcha
 		rogers_login_page.setPasswordIFrame(strPassword);
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login proceed without error.", "Login got error.");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 
@@ -48,6 +48,9 @@ public class RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurcha
 			rogers_account_overview_page.selectAccount(
 					TestDataHandler.tc6577.getAccountDetails().getBan());
 		}
+		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), 
+				"Login succeed, account overview page openned.", 
+				"Account overview page didn't open successfully");
 		reporter.reportLogWithScreenshot("Account overview page.");
 		rogers_account_overview_page.clkMenuUsageAndService();
 		reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");

@@ -105,6 +105,22 @@ public class RogersCH_TC_015_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
         rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
         rogers_home_phone_selection_page.clkContinueHomePhoneSelectionMigration(); 
+        
+        
+/*        reporter.reportLogWithScreenshot("Launched the cart summary page");
+        rogers_igniteTV_buy_page.set4KTV(); 
+        rogers_igniteTV_buy_page.clkCheckout();
+        reporter.reportLogWithScreenshot("Launched the create profile page");
+        rogers_igniteTV_profile_creation_page.clkSubmitProfile();   
+        reporter.reportLogWithScreenshot("Launched the credit evalution page");
+        rogers_igniteTV_credit_check_page.selectDOBYearExistingCustomerMigration(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getYear());
+        rogers_igniteTV_credit_check_page.selectDOBMonthExistingCustomerMigration(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getMonth());
+        rogers_igniteTV_credit_check_page.selectDOBDayExistingCustomerMigration(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getDate());
+        reporter.reportLogWithScreenshot("Entered the DOB details");
+        rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
+        reporter.reportLogWithScreenshot("Launched the home phone selection page");
+        rogers_home_phone_selection_page.clkContinueHomePhoneSelectionMigration(); */
+        
          
         reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
@@ -121,6 +137,7 @@ public class RogersCH_TC_015_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
         rogers_tech_install_page.setMobielNumberMigration();
         rogers_tech_install_page.setEmailMigration();        
         reporter.reportLogWithScreenshot("tech install details");
+        rogers_tech_install_page.clkTechInstalConsentExistingCustomer();
         rogers_tech_install_page.clkTechInstallContinue();
         reporter.reportLogWithScreenshot("Launched the payment options page");        
         rogers_payment_options_page.clkPaymentConfirmExistingCustomer();        
@@ -146,7 +163,7 @@ public class RogersCH_TC_015_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 }

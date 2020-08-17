@@ -182,7 +182,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyAgreement() {
-		return reusableActions.isElementVisible(infoAgreement, 30);
+		return reusableActions.isElementVisible(infoAgreement, 120);
 	}
 
 	/**
@@ -218,19 +218,10 @@ public class RogersOrderReviewPage extends BasePageClass {
 	public void clkAcceptenceCheckboxUpdateInternetMobile() {
 		reusableActions.waitForElementVisibility(lnkAgreementPrivacyPolicy, 30);
 		reusableActions.executeJavaScriptClick(lnkAgreementPrivacyPolicy);		
+		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);
+		reusableActions.javascriptScrollByVisibleElement(lnkAgreementToEnd);
+		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);
 		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 5).sendKeys(Keys.PAGE_DOWN);
-		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 5).sendKeys(Keys.PAGE_DOWN);	
-		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 5).sendKeys(Keys.PAGE_DOWN);	
-		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 5).sendKeys(Keys.PAGE_DOWN);	
-		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 5).sendKeys(Keys.PAGE_DOWN);
-		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 5).sendKeys(Keys.PAGE_DOWN);	
-		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 5).sendKeys(Keys.PAGE_DOWN);	
-		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 5).sendKeys(Keys.PAGE_DOWN);	
-		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 5).sendKeys(Keys.PAGE_DOWN);
-		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 5).sendKeys(Keys.PAGE_DOWN);	
-		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 5).sendKeys(Keys.PAGE_DOWN);	
-		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 5).sendKeys(Keys.PAGE_DOWN);	
-		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 5).sendKeys(Keys.PAGE_DOWN);	
 		reusableActions.getWhenReady(clkChangeAcceptCheckboxUpdateInternet, 30);
 		reusableActions.executeJavaScriptClick(clkChangeAcceptCheckboxUpdateInternet);
 	}
@@ -297,6 +288,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 */
 	public void clkSubmitUpdate() {
 		reusableActions.getWhenReady(clkSubmitUpdate, 200).click();
+		reusableActions.staticWait(10000);
 	}
 	
 	/**

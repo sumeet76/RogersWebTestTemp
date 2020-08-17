@@ -47,8 +47,7 @@ public class Mobile_RogersCH_TC_023_LegacyRHP_ValidateRHPDashboardTest extends B
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
-	    rogers_account_overview_page.selectAccount(TestDataHandler.legacyRHP.accountDetails.getBan());
-		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+		reporter.hardAssert(rogers_account_overview_page.verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
 		rogers_account_overview_page.clkRHPBadgeMobile();
 		reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");

@@ -34,7 +34,7 @@ public class Mobile_RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest exten
 			        		"Login successful",
 			        		"Login Error. Refer screenshot");
         common_business_flows.clkCloseFeedbackIfAvailableMobile();
-        rogers_account_overview_page.clkViewBill();
+        //rogers_account_overview_page.clkViewBill();
         rogers_account_overview_page.clickMakePayment();
 		reporter.reportLogWithScreenshot("Make Payment button is clicked.");
         reporter.hardAssert(rogers_secure_payment_page.verifySecurePaymentLoad(),

@@ -47,10 +47,10 @@ public class RogersCH_TC_024_IgniteRHP_ValidateRHPDasboardTest extends BaseTestC
  	    reporter.reportLogWithScreenshot("Skip popup");
  	    rogers_login_page.clkSkipIFrame();
  	    rogers_login_page.switchOutOfSignInIFrame();
- 	    rogers_account_overview_page.selectAccount(TestDataHandler.igniteRHP.accountDetails.getBan());
  		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.clkRHPBadge(TestDataHandler.chConfig.getBrowser());
+ 	    rogers_account_overview_page.selectAccount(TestDataHandler.igniteRHP.accountDetails.getBan());
+ 		reporter.reportLogWithScreenshot("Launched the Account Page");
+		rogers_account_overview_page.clkRHPBadge();
         reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");        
         reporter.softAssert(rogers_solaris_rhp_dashboard_validation_page.verifyConfigureYourCurrentFeatures(),"Verification of Configure Your Current Features link is success","Verification of Configure Your Current Features link is Failed");
         reporter.softAssert(rogers_solaris_rhp_dashboard_validation_page.verfyAccessYourVoicemailSettings(),"Verification of Access Your Voicemail Settings link is success","Verification of Access Your Voicemail Settings link is successFailed");

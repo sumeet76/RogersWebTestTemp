@@ -19,19 +19,19 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	@FindBy(xpath = "//select[@id='ds-form-input-id-18']")
 	WebElement ddlCreditCheckYear;
 	
-	@FindBy(xpath = "//select[@id='ds-form-input-id-19']")
+	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.year']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlCreditCheckYearMigration;
 		
 	@FindBy(xpath = "//select[@id='ds-form-input-id-19']")
 	WebElement ddlCreditCheckMonth;
 	
-	@FindBy(xpath = "//select[@id='ds-form-input-id-20']")
+	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.month']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlCreditCheckMonthMigration;
 	
 	@FindBy(xpath = "//select[@id='ds-form-input-id-20']")
 	WebElement ddlCreditCheckDay;
 	
-	@FindBy(xpath = "//select[@id='ds-form-input-id-21']")
+	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.day']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlCreditCheckDayMigration;
 	
 	@FindBy(xpath = "//select[@id='ds-form-input-id-21']")

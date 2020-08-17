@@ -97,6 +97,10 @@ public class RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE_Add
 	        reporter.reportLogWithScreenshot("Wireless dashboard page.");  
 	        rogers_login_page.clickSignOut();
 	        reporter.reportLogWithScreenshot("Sign Out clicked");  
+	        if(rogers_home_page.isContentFulURLDisplayed())
+			{
+				rogers_home_page.clkEasyLogin();
+			}
 	        rogers_login_page.clkSignInAs();
 	        reporter.reportLogWithScreenshot("Re sign In");  
 	        rogers_login_page.switchToSignInIFrame();
