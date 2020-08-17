@@ -110,9 +110,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
         @FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.setUpAutomaticPayments']")})	
 	WebElement lnkSetUpAutomaticPaymentMethodMobile;
 	
-	@FindAll({
-        @FindBy(xpath = "//span[contains(text(),'Make a payment')]"),
-	@FindBy(xpath = "//button/span[@translate='ute.rogers.account.balance.make_a_payment']")})
+	@FindAll({    
+	@FindBy(xpath = "//button/span[@translate='ute.rogers.account.balance.make_a_payment']"),
+    @FindBy(xpath = "//span[contains(text(),'Make a payment')]")})
 	WebElement btnMakeAPayment;
 	
 	@FindBy(xpath = "//div[@ng-show='loadingImg']")
@@ -284,6 +284,21 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	@FindBy(xpath = "//a[@data-translate='ute.common.reactivate.ctn.backToDevice']")	
 	WebElement btnClickBackToDevice;
+
+	@FindBy(xpath = "//p[contains(@class,'dsa-alert') and (contains(text(),'You’ve exceeded your credit limit and your services are now suspended') or contains(text(),'Vous avez dépassé votre limite de crédit et vos services sont suspendus'))]")
+	WebElement lblCreditLimitExceeded;
+
+	@FindBy(xpath = "//rss-subscription-details//span[contains(text(),'Add a') and contains(text(),'Add a')]")
+	WebElement lnkAddALine;
+
+	@FindBy(xpath = "//h4[@translate='see.has_share_group_popup_title']")
+	WebElement headerOverlayforAddLink;
+	
+	@FindBy(xpath = "//*[@translate='see.add_to_shared_plan']")
+	WebElement btnAddToSharedPlan;
+		
+	@FindBy(xpath = "//*[@translate='see.add_non_shared_line']")
+	WebElement btnAddToNonSharedPlan;
 	
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
@@ -1161,6 +1176,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 
 
+	/**
+	 * Clicks on make payment on mobile
+	 * @author Mirza.Kamran
+	 */
 	public void clickMakePaymentMobile() {
 		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
 		reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
@@ -1168,19 +1187,42 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		
 	}
 
+	/**
+	 * Checks if the add link is displayed below the list of CTNs
+	 * @return true if the CTN displayed else false
+	 * @author Mirza.Kamran
+	 */
 	public boolean isAddALinkDisplayedBelowCTNs() {
-		//reusableActions.isElementVisible(locator)
-		return false;
+		return reusableActions.isElementVisible(lnkAddALine);
 	}
 
+	/**
+	 * Clicks  on Add Link 
+	 * @author Mirza.Kamran
+	 */
 	public void clkAddALink() {
-		// TODO Auto-generated method stub
+		reusableActions.getWhenReady(lnkAddALine).click();
 		
 	}
 
+	/**
+	 * Checks if the add link overlay is displayed	 *
+	 * @return true if the link is displayed else false
+	 * @author Mirza.Kamran
+	 */
 	public boolean verifyIfAddALinkOverlayIsdisplayed() {
-		// TODO Auto-generated method stub
-		return false;
+		return reusableActions.isElementVisible(headerOverlayforAddLink,30)
+				&& reusableActions.isElementVisible(btnAddToSharedPlan)
+				&& reusableActions.isElementVisible(btnAddToNonSharedPlan);
+	}
+
+	/**
+	 * Checks if the Credit limit reached notification is displayed
+	 * @return true if the credit limit reached notification is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isCreditLimitReachedNotificationDisplayed() {
+		return reusableActions.isElementVisible(lblCreditLimitExceeded);
 	} 
 	
 	

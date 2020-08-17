@@ -53,11 +53,11 @@ public class RogersSS_TC_97_AO_ValidateAddALineEntryPointOnAccountOverview_SE ex
          reporter.reportLogWithScreenshot("Account overview page.");
          reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Passed", "Login Failed");
          common_business_flows.scrollToMiddleOfWebPage();
-         reporter.reportLogWithScreenshot("CTNS View");
+         reporter.reportLogWithScreenshot("CTNs View");
          
          reporter.hardAssert(rogers_account_overview_page.isAddALinkDisplayedBelowCTNs(),
-         		"Suspended CTN is avialable",
-         		"Suspended CTN is not available");
+         		"Add link is displayed below CTN's",
+         		"Add link is not displayed below CTN's");
          
          rogers_account_overview_page.clkAddALink();
         
