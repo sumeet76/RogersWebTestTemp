@@ -33,13 +33,15 @@ public class RogersSS_TC_94_AO_ValidateCreditLimitExceededAccountSuspended_SE_In
 	
 	
     @Test
-    public void validateSignInAndAccountOverview() {
+    public void validateCreditLimitExceededAccountSuspended_SE_Infinite() {
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
     	rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(TestDataHandler.tc95.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.tc95.getPassword());
+        //rogers_login_page.setUsernameIFrame(TestDataHandler.tc95.getUsername());
+        //rogers_login_page.setPasswordIFrame(TestDataHandler.tc95.getPassword());
+		rogers_login_page.setUsernameIFrame("nonsimentrypoint@mailinator.com");
+		rogers_login_page.setPasswordIFrame("rogers123");
         reporter.reportLogWithScreenshot("Login Credential is entered.");
         rogers_login_page.clkSignInIFrame();
         reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
@@ -55,15 +57,22 @@ public class RogersSS_TC_94_AO_ValidateCreditLimitExceededAccountSuspended_SE_In
         common_business_flows.scrollToMiddleOfWebPage();
         reporter.reportLogWithScreenshot("CTNS View");
         
-        reporter.hardAssert(rogers_account_overview_page.isSuspendedCTNAvailable(),
-        		"Suspended CTN is avialable",
-        		"Suspended CTN is not available");
+        reporter.hardAssert(rogers_account_overview_page.isCreditLimitReachedNotificationDisplayed(),
+        		"Credit limit reached notification is displayed as expected",
+        		"Credit limit reached notification is displayed as expected");
         
-        rogers_account_overview_page.clkSuspendedCTN();
+        //rogers_account_overview_page.clkSuspendedCTN();
        
-        reporter.hardAssert(rogers_account_overview_page.isSuspendedCTNAvailable(),
-        		"User is unable to click and navigate through suspended CTN Badge",
-        		"It seems the user was able to click on suspended CTN");
+        //reporter.hardAssert(rogers_account_overview_page.isSuspendedCTNAvailable(),
+        //		"User is unable to click and navigate through suspended CTN Badge",
+        //		"It seems the user was able to click on suspended CTN");
+        
+        rogers_account_overview_page.clkBtnLiveChat();
+		reporter.reportLogWithScreenshot("Clicked on Button Live Chat");	
+		reporter.softAssert(rogers_account_overview_page.verifyLiveChatOverlayOpened(), 
+							"Live Chat overlay opened in Account overview page", 
+							"Live Chat overlay did NOT open in Account overview page, please investigate.");
+		reporter.reportLogWithScreenshot("Live Chat overlay opened."); 
         
     }
 

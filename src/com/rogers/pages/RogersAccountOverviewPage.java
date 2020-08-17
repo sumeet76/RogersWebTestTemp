@@ -284,6 +284,21 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	@FindBy(xpath = "//a[@data-translate='ute.common.reactivate.ctn.backToDevice']")	
 	WebElement btnClickBackToDevice;
+
+	@FindBy(xpath = "//p[contains(@class,'dsa-alert') and (contains(text(),'You’ve exceeded your credit limit and your services are now suspended') or contains(text(),'Vous avez dépassé votre limite de crédit et vos services sont suspendus'))]")
+	WebElement lblCreditLimitExceeded;
+
+	@FindBy(xpath = "//rss-subscription-details//span[contains(text(),'Add a') and contains(text(),'Add a')]")
+	WebElement lnkAddALine;
+
+	@FindBy(xpath = "//h4[@translate='see.has_share_group_popup_title']")
+	WebElement headerOverlayforAddLink;
+	
+	@FindBy(xpath = "//*[@translate='see.add_to_shared_plan']")
+	WebElement btnAddToSharedPlan;
+		
+	@FindBy(xpath = "//*[@translate='see.add_non_shared_line']")
+	WebElement btnAddToNonSharedPlan;
 	
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
@@ -1161,6 +1176,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 
 
+	/**
+	 * 
+	 */
 	public void clickMakePaymentMobile() {
 		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
 		reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
@@ -1168,19 +1186,37 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean isAddALinkDisplayedBelowCTNs() {
-		//reusableActions.isElementVisible(locator)
-		return false;
+		return reusableActions.isElementVisible(lnkAddALine);
 	}
 
+	/**
+	 * 
+	 */
 	public void clkAddALink() {
-		// TODO Auto-generated method stub
+		reusableActions.getWhenReady(lnkAddALine).click();
 		
 	}
 
+	/**
+	 * @return
+	 */
 	public boolean verifyIfAddALinkOverlayIsdisplayed() {
-		// TODO Auto-generated method stub
-		return false;
+		return reusableActions.isElementVisible(headerOverlayforAddLink,30)
+				&& reusableActions.isElementVisible(btnAddToSharedPlan)
+				&& reusableActions.isElementVisible(btnAddToNonSharedPlan);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean isCreditLimitReachedNotificationDisplayed() {
+		return reusableActions.isElementVisible(lblCreditLimitExceeded);
 	} 
 	
 	
