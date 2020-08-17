@@ -41,7 +41,7 @@ public class RogersBFA_TC08_HUP_Test extends BaseTestClass {
 		reporter.reportLogWithScreenshot("Rogers Login Page");
 		rogers_login_page.clkSignInIFrame();
 		reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
-		//rogers_login_page.clkSkipIFrame();
+		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
         reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");

@@ -24,7 +24,7 @@ public class RogersBFA_OV_TC06_HUPSingleLine_ChooseExistingPlan_Test extends Bas
 		environment_selection_page.presenceOfTheGoButton();
 		reporter.reportLogWithScreenshot("Rogers Choose Phone page");
 		environment_selection_page.selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
-		environment_selection_page.clkGo();
+		//environment_selection_page.clkGo();
 		reporter.hardAssert(account_over_view_page.verifySuccessfulLogin(), "Login Successful", "Login Failed");
 		reporter.hardAssert(account_over_view_page.verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase06.getCtn()),"CTN Found","CTN Not Found");
 		account_over_view_page.clkBtnAssignDataManager();
@@ -46,11 +46,12 @@ public class RogersBFA_OV_TC06_HUPSingleLine_ChooseExistingPlan_Test extends Bas
 		reporter.reportLogWithScreenshot("Rogers Choose Addons Page");
 		rogersOV_choose_addons_page.clkContinueHUP();
 		reporter.reportLogWithScreenshot("Rogers Shipping Page");
+		rogersOV_shipping_page.clkRadioBillingAddress();
 		if(proOnTheGoFlag) {
-	        rogers_shipping_page.setEmailIDAndSave();
-	        rogers_shipping_page.setPhoneNumberAndSave();
-	        rogers_shipping_page.clkSelectAvailableTime();
-	        rogers_shipping_page.clkReserve();
+			rogersOV_shipping_page.setEmailIDAndSave();
+			rogersOV_shipping_page.setPhoneNumberAndSave();
+			rogersOV_shipping_page.clkSelectAvailableTime();
+			rogersOV_shipping_page.clkReserve();
         }
         reporter.reportLogWithScreenshot("Rogers Shipping Page before clicking continue");
         rogersOV_shipping_page.clkContinue();

@@ -30,7 +30,7 @@ public class RogersBFA_OV_TC04_PPCMultiLineKeepingSamePlanOnAdditionalLine_Test 
         reporter.reportLogWithScreenshot("Account Overview page");
         reporter.hardAssert(account_over_view_page.verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase04.getCtn()), "Select CTN Passed", "Select CTN Failed");
         account_over_view_page.clkBtnAssignDataManager();
-		account_over_view_page.clkBtnOkOneViewDialoue();
+		//account_over_view_page.clkBtnOkOneViewDialoue();
         reporter.reportLogWithScreenshot("Wireless Dashboard Page");
         rogersOV_wireless_details_page.clickChangePlanButton();
         reporter.reportLogWithScreenshot("Change share plan page");
@@ -45,6 +45,8 @@ public class RogersBFA_OV_TC04_PPCMultiLineKeepingSamePlanOnAdditionalLine_Test 
         rogersOV_ChoosePlan_page.selectFirstAvailablePlan();
         rogersOV_ChoosePlan_page.verifyAndClickDowngradeFeeContinue();
         rogersOV_ChoosePlan_page.clkCheckout();
+        reporter.reportLogWithScreenshot("Rogers Choose Addons Page");
+		rogersOV_choose_addons_page.clkContinueHUP();
         order_Review_Page.selectEmailDigitalCopy(TestDataHandler.buyFlowsOVtestCase04.getUsername());
         reporter.reportLogWithScreenshot("Order Review page");
         if(order_Review_Page.isPaymentRequired()) {

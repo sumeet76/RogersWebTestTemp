@@ -26,7 +26,7 @@ public class RogersBFA_OV_TC07_PPCSingleLine_Test extends BaseTestClass {
 		environment_selection_page.presenceOfTheGoButton();
 		reporter.reportLogWithScreenshot("Rogers Choose Phone page");
 		environment_selection_page.selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
-		environment_selection_page.clkGo();
+		//environment_selection_page.clkGo();
         reporter.hardAssert(account_over_view_page.verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page");
         reporter.hardAssert(account_over_view_page.verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase07.getCtn()), "Select CTN Passed", "Select CTN Failed");
