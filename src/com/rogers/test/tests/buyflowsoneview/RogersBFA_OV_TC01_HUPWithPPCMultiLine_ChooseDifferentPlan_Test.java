@@ -28,7 +28,7 @@ public class RogersBFA_OV_TC01_HUPWithPPCMultiLine_ChooseDifferentPlan_Test exte
 		reporter.hardAssert(account_over_view_page.verifySuccessfulLogin(), "Login Successful", "Login Failed");
 		reporter.hardAssert(account_over_view_page.verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase01.getCtn()),"CTN Found","CTN Not Found");
 		account_over_view_page.clkBtnAssignDataManager();
-		account_over_view_page.clkBtnOkOneViewDialoue();
+		//account_over_view_page.clkBtnOkOneViewDialoue();
 		rogersOV_wireless_details_page.verifyWirelessPageLoad();
 		reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
 		rogersOV_wireless_details_page.clkUpgradeMyDevice();

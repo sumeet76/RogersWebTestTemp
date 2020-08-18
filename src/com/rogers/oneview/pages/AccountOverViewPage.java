@@ -117,7 +117,7 @@ public class AccountOverViewPage  extends BasePageClass {
 		String strCTNXpath = "//*[contains(text(),'" + strCTN + "')]";
 		reusableActions.clickIfAvailable(By.xpath("//div[@class='rep-notifications permitted']//div[@class='blocker']"));
 		if(reusableActions.isElementVisible(By.xpath(strCTNXpath))) {
-			reusableActions.scrollToElement(reusableActions.getWhenReady(By.xpath(strCTNXpath)));
+			reusableActions.javascriptScrollToBottomOfPage();
 			reusableActions.clickWhenReady(By.xpath(strCTNXpath), 120);
 			return true;
 		} else if (verifyAndClickShareEverythingCTN(strCTN)) {

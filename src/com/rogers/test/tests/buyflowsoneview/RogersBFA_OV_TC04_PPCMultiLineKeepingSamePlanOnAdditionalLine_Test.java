@@ -37,13 +37,15 @@ public class RogersBFA_OV_TC04_PPCMultiLineKeepingSamePlanOnAdditionalLine_Test 
         rogersOV_ChangeSharePlan_page.clickEditButton();
         reporter.reportLogWithScreenshot("Choose Plan page");
         rogersOV_ChoosePlan_page.clkSharedLineOne();
-        rogersOV_ChoosePlan_page.selectPlanCategory(TestDataHandler.buyFlowsOVtestCase03.getNewPlanCategory());
+        rogersOV_ChoosePlan_page.selectPlanCategory(TestDataHandler.buyFlowsOVtestCase04.getNewPlanCategory());
         rogersOV_ChoosePlan_page.selectFirstAvailablePlan();
         rogersOV_ChoosePlan_page.verifyAndClickDowngradeFeeContinue();
+        /*
         rogersOV_ChoosePlan_page.clkSharedLineTwo();
         rogersOV_ChoosePlan_page.selectPlanCategory(TestDataHandler.buyFlowsOVtestCase03.getNewPlanCategory());
         rogersOV_ChoosePlan_page.selectFirstAvailablePlan();
         rogersOV_ChoosePlan_page.verifyAndClickDowngradeFeeContinue();
+        */
         rogersOV_ChoosePlan_page.clkCheckout();
         reporter.reportLogWithScreenshot("Rogers Choose Addons Page");
 		rogersOV_choose_addons_page.clkContinueHUP();
