@@ -3,10 +3,10 @@
 sauceOptions:
    seleniumVersion: 3.141.59
    name: Rogers - BFA
-   maxDuration: 600
+   maxDuration: 900
    commandTimeout: 600
    idleTimeout: 1000
-   build: Rogers - BFA Release July 29th 
+   build: Rogers - BFA Akamai Release August 5 
 mutableFireFoxCapabilities:  
    platformName: Windows 10
    browserVersion: latest

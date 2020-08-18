@@ -8,7 +8,22 @@ public class AALData {
 	private String password;
 	private String ctnCity;
 	private String ctn;
+	private String postalCode;
 	
+	/**
+	 * @return the postalCode
+	 */
+	public String getPostalCode() {
+		return postalCode;
+	}
+
+	/**
+	 * @param postalCode of the customer
+	 */
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+
 	/**
 	 * @return the ctn
 	 */

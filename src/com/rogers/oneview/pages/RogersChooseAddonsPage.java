@@ -28,7 +28,8 @@ public class RogersChooseAddonsPage extends BasePageClass {
 	@FindAll({
 	//@FindBy(xpath = "//section[contains(@class,'summary-section')]//span/span/span[@res='_continue']")
 	@FindBy(xpath = "//section[contains(@class,'summary-section')]//p[@class='col-sm-6 btn button-continue ng-scope']"),
-	@FindBy(xpath = "//button[@name='button_continue']//span")
+	@FindBy(xpath = "//button[@name='button_continue']//span"),
+	@FindBy(xpath = "//div[contains(@class,'summary-strip-section hidden')]//button")
 	})
 	WebElement btnContinueHUP;
 	
@@ -56,7 +57,7 @@ public class RogersChooseAddonsPage extends BasePageClass {
 	 */
 	public void clkContinueHUP() {
 		reusableActions.executeJavaScriptClick(btnContinueHUP);
-		reusableActions.clickIfAvailable(By.xpath("//div[@class='ngdialog-content']//button[@res='_continue']"),60);
+		reusableActions.clickIfAvailable(By.xpath("//div[@class='ngdialog-content']//button[@res='_continue']"),30);
 	}
 	
 	/**

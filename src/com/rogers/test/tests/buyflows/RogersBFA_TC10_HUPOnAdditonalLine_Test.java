@@ -40,7 +40,11 @@ public class RogersBFA_TC10_HUPOnAdditonalLine_Test extends BaseTestClass {
         rogers_wireless_details_page.clkUpgradeMyDevice();
         reporter.reportLogWithScreenshot("Rogers Choose Phone Page");
         rogers_choose_phone_page.searchDevice(TestDataHandler.testCase10.getNewDevice());
-        Boolean proOnTheGoFlag = rogers_choose_phone_page.checkProOnTheGo();
+        Boolean proOnTheGoAddressFlag  = rogers_choose_phone_page.checkProOnTheGoAtAddress(TestDataHandler.testCase10.getPostalCode());
+		Boolean proOnTheGoFlag = false;
+		if(proOnTheGoAddressFlag) {
+			proOnTheGoFlag = rogers_choose_phone_page.checkProOnTheGo();
+		}
         rogers_choose_phone_page.selectFirstAvailableDevice();
         rogers_build_plan_page.selectExistingPlan();
         reporter.reportLogWithScreenshot("Rogers Build Plan Page");
@@ -48,10 +52,9 @@ public class RogersBFA_TC10_HUPOnAdditonalLine_Test extends BaseTestClass {
         reporter.reportLogWithScreenshot("Rogers Choose Addons Page");
         rogers_choose_addons_page.clkContinueHUP();
         reporter.reportLogWithScreenshot("Rogers Shipping Page");
-        //rogers_shipping_page.clkRadioNormalDelivery();
+        rogers_shipping_page.clkRadioBillingAddress();
         if(proOnTheGoFlag) {
-	        rogers_shipping_page.setEmailID();
-	        rogers_shipping_page.clkSaveEmail();
+	        rogers_shipping_page.setEmailIDAndSave();
 	        rogers_shipping_page.clkSelectAvailableTime();
 	        rogers_shipping_page.clkReserve();
         }

@@ -30,7 +30,9 @@ public class AccountOverViewPage  extends BasePageClass {
 	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.total_balance' or text()='Total balance' or text()='Total du solde'  or text()='Total Balance']")
 	WebElement infoBalanceLable;
 	
-	@FindBy(xpath = "//div[@class='oneview-dialog']//button")
+	//ToDo Change the index
+	//@FindBy(xpath = "//div[@class='oneview-dialog']//button")
+	@FindBy(xpath = "(//app-dialog//i[@class='close rui-icon-mobile-menu-exit'])[2]")
 	WebElement btnOneViewDataManagerDialogue;
 
 	@FindBy(xpath = "//div[@class='oneview-dialog']//button")
@@ -115,7 +117,7 @@ public class AccountOverViewPage  extends BasePageClass {
 		String strCTNXpath = "//*[contains(text(),'" + strCTN + "')]";
 		reusableActions.clickIfAvailable(By.xpath("//div[@class='rep-notifications permitted']//div[@class='blocker']"));
 		if(reusableActions.isElementVisible(By.xpath(strCTNXpath))) {
-			reusableActions.scrollToElement(reusableActions.getWhenReady(By.xpath(strCTNXpath)));
+			reusableActions.javascriptScrollToBottomOfPage();
 			reusableActions.clickWhenReady(By.xpath(strCTNXpath), 120);
 			return true;
 		} else if (verifyAndClickShareEverythingCTN(strCTN)) {
