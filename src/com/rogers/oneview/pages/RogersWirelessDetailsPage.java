@@ -66,37 +66,6 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	}
 	
 	/**
-	 * Clicks on the 'Change My Caller Id' link
-	 * @author rajesh.varalli1
-	 */
-	public void clickChangeMyCallerId() {
-		reusableActions.scrollToElement(lnkChangeMyCallerId);
-		reusableActions.clickIfAvailable(lnkChangeMyCallerId);
-	}
-	
-	/**
-	 * Clicks on the Overview button/link on the top menu
-	 * @author rajesh.varalli1
-	 */
-	public void clickOverview() {
-		reusableActions.clickIfAvailable(lnkOverview);
-	}
-
-	/**
-	 * Validates and clicks on the 'Update My Voice mail Password' link
-	 * @return true if link found; else false
-	 * @author rajesh.varalli1
-	 */
-	public boolean clickUpdateMyVoicemailPwd() {
-		if(reusableActions.isElementVisible(lnkUpdateMyVoicemailPwd, 60)) {
-			reusableActions.scrollToElement(lnkUpdateMyVoicemailPwd);
-			reusableActions.clickIfAvailable(lnkUpdateMyVoicemailPwd);
-			return true;
-		}
-		return false;
-	}
-	
-	/**
 	 * Enters the password in the new voicemail password field
 	 * @param strPassword New voicemail password
 	 * @author rajesh.varalli1
@@ -115,14 +84,6 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	}
 	
 	/**
-	 * Clicks on the 'Submit' button
-	 * @author rajesh.varalli1
-	 */
-	public void clickSubmitButton() {
-		reusableActions.clickIfAvailable(btnVoicemailPwdSubmit);
-	}
-	
-	/**
 	 * Validates the Reset Voicemail Password successful message
 	 * @return true if message displayed; else false
 	 * @author rajesh.varalli1
@@ -137,14 +98,6 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	 */
 	public void clickChangePlanButton() {
 		reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(btnChangePlan, 60));
-	}
-	
-	/**
-	 * Clicks on the 'Make changes to your current plan' link on the overlay
-	 * @author rajesh.varalli1
-	 */
-	public void clickMakeChangesToCurrentPlan() {
-		reusableActions.clickIfAvailable(lnkChangeCurrentPlan);
 	}
 	
 	/**

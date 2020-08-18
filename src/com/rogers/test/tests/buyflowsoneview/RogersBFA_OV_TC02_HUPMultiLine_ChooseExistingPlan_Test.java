@@ -27,7 +27,7 @@ public class RogersBFA_OV_TC02_HUPMultiLine_ChooseExistingPlan_Test extends Base
 		//environment_selection_page.clkGo();
 		reporter.hardAssert(account_over_view_page.verifySuccessfulLogin(), "Login Successful", "Login Failed");
 		reporter.hardAssert(account_over_view_page.verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase02.getCtn()),"CTN Found","CTN Not Found");
-		account_over_view_page.clkBtnAssignDataManager();
+		account_over_view_page.clkCloseBtnAssignDataManager();
 		//account_over_view_page.clkBtnOkOneViewDialoue();
 		rogersOV_wireless_details_page.verifyWirelessPageLoad();
 		reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");

@@ -39,19 +39,10 @@ public class AccountOverViewPage  extends BasePageClass {
 	WebElement btnOkOneViewDialogue;
 	
 	/**
-	 * To click on ok button after clicking on Assign data manager in the dialogue box @function clkBtnAssignDataManager
-	 * @author Saurav.Goyal
-	 */
-	public void clkBtnOkOneViewDialoue() {
-		if(reusableActions.isElementVisible(btnOkOneViewDialogue, 30))
-			reusableActions.clickIfAvailable(btnOkOneViewDialogue);
-	}
-	
-	/**
 	 * To click on Assign data manager in the dialogue box
 	 * @author Saurav.Goyal
 	 */
-	public void clkBtnAssignDataManager() {
+	public void clkCloseBtnAssignDataManager() {
 		reusableActions.clickIfAvailable(btnOneViewDataManagerDialogue,30);
 	}
 	

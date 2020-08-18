@@ -29,7 +29,7 @@ public class RogersBFA_OV_TC04_PPCMultiLineKeepingSamePlanOnAdditionalLine_Test 
         reporter.hardAssert(account_over_view_page.verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page");
         reporter.hardAssert(account_over_view_page.verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase04.getCtn()), "Select CTN Passed", "Select CTN Failed");
-        account_over_view_page.clkBtnAssignDataManager();
+        account_over_view_page.clkCloseBtnAssignDataManager();
 		//account_over_view_page.clkBtnOkOneViewDialoue();
         reporter.reportLogWithScreenshot("Wireless Dashboard Page");
         rogersOV_wireless_details_page.clickChangePlanButton();

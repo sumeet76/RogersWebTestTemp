@@ -29,7 +29,7 @@ public class RogersBFA_OV_TC03_PPCOnMultiLine_Test extends BaseTestClass {
 		reporter.hardAssert(account_over_view_page.verifySuccessfulLogin(), "Login Successful", "Login Failed");
 		reporter.reportLogWithScreenshot("Account Overview page");
 		reporter.hardAssert(account_over_view_page.verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase03.getCtn()), "Select CTN Passed", "Select CTN Failed");
-		account_over_view_page.clkBtnAssignDataManager();
+		account_over_view_page.clkCloseBtnAssignDataManager();
 		//account_over_view_page.clkBtnOkOneViewDialoue();
 		rogersOV_wireless_details_page.verifyWirelessPageLoad();
 		reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
