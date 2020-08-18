@@ -118,18 +118,8 @@ public class RogersShippingPage extends BasePageClass {
 			inputEmail.clear();
 			inputEmail.sendKeys(strEmail);
 			//inputEmail.sendKeys(Keys.TAB);
-			reusableActions.clickIfAvailable(btnSaveEmail , 30);
+			reusableActions.clickWhenReady(btnSaveEmail , 30);
 		}		
-		/*if(reusableActions.isElementVisible(lblMandatoryEmail,30)) {
-			reusableActions.clickWhenReady(lblMandatoryEmail,30);
-			inputEmail.clear();
-			inputEmail.sendKeys(strEmail);			
-		}else if(reusableActions.isElementVisible(btnEmailEdit,30)) {
-			reusableActions.clickWhenReady(btnEmailEdit);
-			reusableActions.clickWhenReady(lblMandatoryEmail,30);
-			inputEmail.clear();
-			inputEmail.sendKeys(strEmail);
-		}*/
 	}
 	
 	/**
@@ -143,20 +133,8 @@ public class RogersShippingPage extends BasePageClass {
 			reusableActions.waitForElementVisibility(inputPhoneNumber,30);
 			inputPhoneNumber.clear();
 			inputPhoneNumber.sendKeys(strPhoneNumber);
-			reusableActions.clickIfAvailable(btnSaveNumber , 30);
+			reusableActions.clickWhenReady(btnSaveNumber , 30);
 		}
-		/*if(reusableActions.isElementVisible(lblPhoneNumber,30)) {
-			reusableActions.clickWhenReady(lblPhoneNumber);
-			reusableActions.waitForElementVisibility(inputPhoneNumber,30);
-			inputPhoneNumber.clear();
-			inputPhoneNumber.sendKeys(strPhoneNumber);
-		}else if(reusableActions.isElementVisible(btnContactEdit, 30)) {
-			reusableActions.clickWhenReady(btnContactEdit);
-			reusableActions.clickWhenReady(lblPhoneNumber,30);
-			reusableActions.waitForElementVisibility(inputPhoneNumber,30);
-			inputPhoneNumber.clear();
-			inputPhoneNumber.sendKeys(strPhoneNumber);
-		}*/
 	}
 	
 }
