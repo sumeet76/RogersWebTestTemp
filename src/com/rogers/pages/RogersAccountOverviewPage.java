@@ -736,16 +736,6 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		//reusableActions.clickIfAvailable(submenuSetUpAutomaticPaymentMethodMobile);
 	}
 	
-	
-	/**
-	 * Clicks on the 'Billing and Payment' then 'Change Payment Method' option
-	 * @author rajesh.varalli1
-	 */
-	public void clickChangePaymentMethod() {
-		reusableActions.clickIfAvailable(lnkBillingAndPayment);
-		reusableActions.clickIfAvailable(lnkChangePaymentMethod);
-	}
-	
 	/**
 	 * Clicks on the 'Billing and Payment' then 'Change Payment Method' option
 	 * @author Mirza.Kamran
@@ -925,21 +915,13 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public boolean isMoreThanOneBanPresent() {
 		return (lstAccountBans.size()>3);
 	} 
-
-	/**
-	 * Click on the Account drop down
-	 * @author Saurav.Goyal
-	 */
-	public void clickAccount() {
-		reusableActions.clickIfAvailable(downArrowAccount);
-	}
 	
 	/**
 	 * Click on the Overview tab
 	 * @author Saurav.Goyal
 	 */
 	public void clickOverview() {
-		reusableActions.clickIfAvailable(clkOverview);
+		reusableActions.clickWhenReady(clkOverview);
 	}
 	
 	/**

@@ -222,7 +222,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author Saurav.Goyal 
 	 */
 	public void clkAddNow() {	
-		reusableActions.clickIfAvailable(btnAddNow, 90);
+		reusableActions.clickWhenReady(btnAddNow, 90);
 	}
 	
 	/**

@@ -85,14 +85,6 @@ public class RogersSecurePaymentPage extends BasePageClass {
 	}
 	
 	/**
-	 * Clicks on the 'Pay with credit card, Visa Debit, or Debit Mastercard' radio button
-	 * @author rajesh.varalli1
-	 */
-	public void clickPayWithCard() {
-		reusableActions.clickIfAvailable(rdbtnPayWithCard);
-	}
-	
-	/**
 	 * Enters the credit/debit card number
 	 * @param strCardNumber - Debit/Credit card number
 	 * @author rajesh.varalli1

@@ -315,7 +315,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkShieldAgreementCheckbox() {
-		reusableActions.clickIfAvailable(chbShieldTerms,60);
+		reusableActions.clickWhenReady(chbShieldTerms,60);
 	}
 
 	/**
@@ -324,7 +324,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 */
 	public void clkTermsAgreementCheckbox() {
 		reusableActions.waitForElementVisibility(chbTerms, 60);
-		reusableActions.clickIfAvailable(chbTerms,60);
+		reusableActions.clickWhenReady(chbTerms,60);
 	}
 
 	/**
@@ -332,7 +332,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkUpfrontTermsCheckbox() {
-		reusableActions.clickIfAvailable(chbUpfrontTerms,60);
+		reusableActions.clickWhenReady(chbUpfrontTerms,60);
 	}
 
 	/**
