@@ -82,11 +82,17 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 		String strEmail = FormFiller.generateEmail();
 		reusableActions.waitForElementVisibility(txtContainerEmail,30);
 		reusableActions.getWhenReady(txtContainerEmail,10).click();
-		reusableActions.getWhenReady(txtEmail, 30).clear();
+		/*	reusableActions.getWhenReady(txtEmail, 30).clear();
 		reusableActions.getWhenReady(txtEmail,10).sendKeys(strEmail);
 		reusableActions.executeJavaScriptClick(txtConfirmEmail);
 		reusableActions.getWhenReady(txtConfirmEmail, 10).clear();
-		reusableActions.getWhenReady(txtConfirmEmail,3).sendKeys(strEmail);
+		reusableActions.getWhenReady(txtConfirmEmail,3).sendKeys(strEmail);*/
+        reusableActions.clickWhenReady(txtEmail);
+        txtEmail.clear();
+        txtEmail.sendKeys(strEmail);
+        reusableActions.executeJavaScriptClick(txtConfirmEmail);
+        txtConfirmEmail.clear();
+        txtConfirmEmail.sendKeys(strEmail); 
 	}
 
 	/**
@@ -96,8 +102,8 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	public void setFirstname() {
 		String strName = FormFiller.generateRandomName();
 		reusableActions.executeJavaScriptClick(txtFirstName);
-		reusableActions.getWhenReady(txtFirstName, 3).clear();
-		reusableActions.getWhenReady(txtFirstName,3).sendKeys(strName);
+		txtFirstName.clear();
+		txtFirstName.sendKeys(strName);
 	}
 
 	/**
@@ -107,8 +113,8 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	public void setLastName() {
 		String strName = FormFiller.generateRandomName();
 		reusableActions.executeJavaScriptClick(txtLastName);
-		reusableActions.getWhenReady(txtLastName, 3).clear();
-		reusableActions.getWhenReady(txtLastName,3).sendKeys(strName);
+		txtLastName.clear();
+		txtLastName.sendKeys(strName);
 	}
 
 	/**
@@ -116,11 +122,10 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void setPhone() {
-		//String strPhoneNumber = FormFiller.generatePhoneNumber();
-		String strPhoneNumber ="1010000062";
+		String strPhoneNumber = FormFiller.generatePhoneNumber();
 		reusableActions.executeJavaScriptClick(btnPhone);
-		reusableActions.getWhenReady(btnPhone, 3).clear();
-		reusableActions.getWhenReady(btnPhone,3).sendKeys(strPhoneNumber);
+		btnPhone.clear();
+		btnPhone.sendKeys(strPhoneNumber);
 	}
 	
 	/**

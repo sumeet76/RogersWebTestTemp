@@ -330,21 +330,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			reusableActions.clickIfAvailable(btnInternetBadge, 90);
 		}
 	}
-	
-	/**
-	 * Clicks on the Legacy 'InternetBadge' option on the dash board
-	 * @param strBrowser browser type
-	 * @author chinnarao.vattam
-	 */
-	public void clkLegacyInternetBadge(String strBrowser) {
-		if (strBrowser.toLowerCase().contains("chrome"))
-		{
-		reusableActions.getWhenReady(btnLegacyInternetBadge, 120).click();
-		}else {
-			reusableActions.clickIfAvailable(btnLegacyInternetBadge, 120);
-		}
-	}
-	
+
 	/**
 	 * Clicks on the Legacy 'InternetBadge' option on the dash board
 	 * @author chinnarao.vattam

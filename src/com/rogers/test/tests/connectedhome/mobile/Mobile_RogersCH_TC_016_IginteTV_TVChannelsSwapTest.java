@@ -41,8 +41,6 @@ public class Mobile_RogersCH_TC_016_IginteTV_TVChannelsSwapTest extends BaseTest
 @Test
 	
    public void checkSolarisTVSwapChannelsMobile() {  
-	reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-	rogers_home_page.clkEasyLogin();
     reporter.reportLogWithScreenshot("Home Page");
 	rogers_home_page.clkSignInMobile();    	
     rogers_login_page.switchToSignInIFrame();
@@ -56,7 +54,7 @@ public class Mobile_RogersCH_TC_016_IginteTV_TVChannelsSwapTest extends BaseTest
     rogers_login_page.clkSkipIFrame();
     rogers_login_page.switchOutOfSignInIFrame();
     rogers_account_overview_page.selectAccount(TestDataHandler.igniteTVAccount.accountDetails.getBan());
-	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+	reporter.hardAssert(rogers_account_overview_page.verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
     reporter.reportLogWithScreenshot("Launched the Account Page");
     
     rogers_solaris_tv_dashboard_page.clkTVBadgeMobile();
@@ -90,7 +88,7 @@ public class Mobile_RogersCH_TC_016_IginteTV_TVChannelsSwapTest extends BaseTest
 //login flow
 public void beforeTest(String strBrowser, String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 	xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-	startSession(TestDataHandler.chConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
+	startSession(TestDataHandler.chConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
 }
 
 @AfterMethod(alwaysRun = true)

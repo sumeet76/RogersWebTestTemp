@@ -49,7 +49,7 @@ public class RogersCH_TC_026_LegacyInternet_InternetPackageDowngradeTest extends
 	    rogers_account_overview_page.selectAccount(TestDataHandler.legacyInternetAccount.accountDetails.getBan());
 		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.clkLegacyInternetBadge(TestDataHandler.chConfig.getBrowser());
+		rogers_account_overview_page.clkLegacyInternetBadge();
 		reporter.reportLogWithScreenshot("Launched the Internet Dashboard Page");
 		rogers_account_overview_page.clkInternetPopup(); 
 		rogers_internet_dashboard_page.clkChangeInternetPackage();

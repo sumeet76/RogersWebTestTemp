@@ -35,6 +35,9 @@ public class RogersInternetUsagePage extends BasePageClass {
 	@FindBy(xpath = "//h2[@id='internetUsage-alerts-tab']")
 	WebElement btnUsageAlerts;
 
+	@FindBy(xpath = "//div[@class='rch-tabs__dropdown']/select")
+	WebElement selUsageMobile;
+	
 	@FindBy(xpath = "//div[@class='internet-usage-alerts-component']")
 	WebElement infoUsageAlerts;
 	
@@ -75,6 +78,24 @@ public class RogersInternetUsagePage extends BasePageClass {
 
 	}
 
+	/**
+	 * Click on the Internet Monthly usage link on solaris Internet usage page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkMonthlyUsageMobile() {	
+		reusableActions.waitForElementVisibility(selUsageMobile,20);
+		reusableActions.selectWhenReadyByVisibleText(selUsageMobile, "Monthly Usage");
+	}
+	
+	/**
+	 * Click on the Internet Monthly usage link on solaris Internet usage page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkUsageAlertsMobile() {	
+		reusableActions.waitForElementVisibility(selUsageMobile,20);
+		reusableActions.selectWhenReadyByVisibleText(selUsageMobile, "Usage Alerts");
+	}
+	
 	/**
 	 * Verify the Internet Monthly Breakdown table heading text on solaris Internet usage page
 	 * @return true if the Internet Monthly Breakdown table heading displayed; else false
