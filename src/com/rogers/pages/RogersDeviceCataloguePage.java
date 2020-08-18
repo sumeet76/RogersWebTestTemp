@@ -439,7 +439,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
     public Boolean clickGetStartedButtonOnModal() {
         reusableActions.clickIfAvailable(modalContainerGetStartedbutton);
-        return (reusableActions.isElementVisible(new RogersDeviceConfigPage(driver).continueButton));
+        return (reusableActions.isElementVisible(new RogersDeviceConfigPage(driver).continueButton, 30));
     }
 
 
@@ -456,11 +456,26 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @param deviceName : name of the device for which pricing block is required
      * @return pricingBlockContent : Pricing block value
      * @author nimmy.george
+     * @throws InterruptedException 
      */
-    public String getPricingBlockCataloguePage(String deviceName){
+    public String getPricingBlockCataloguePage(String deviceName) throws InterruptedException{
+    	//reusableActions.waitForPageLoad();
+    	//Thread.sleep(1000);
+    	reusableActions.staticWait(30000);
+    	System.out.println("After page loads");
+    	System.out.println(deviceName);
         xpathDeviceName=createXpathWithDeviceName(deviceName);
-        String pricingBlockContentXpath = xpathDeviceName + "/..//div[@class='d-flex mb-16 flex-row justify-content-around' or @class='d-flex mb-16']";
-        reusableActions.javascriptScrollByVisibleElement(driver.findElement(By.xpath(xpathDeviceName)));
+        System.out.println(xpathDeviceName);
+        String pricingBlockContentXpath = xpathDeviceName + "/parent::div/div";
+        System.out.println(pricingBlockContentXpath);
+        	//	+ ""
+        	//	+ "/..//div[@class='d-flex mb-16 flex-row justify-content-around' or @class='d-flex mb-16']";
+ //      reusableActions.waitForElementVisibility(driver.findElement(By.xpath(pricingBlockContentXpath)));
+//        System.out.println("Element visibility passed");
+//        reusableActions.scrollToElement(driver.findElement(By.xpath(pricingBlockContentXpath)));
+        reusableActions.waitForElementVisibility(driver.findElement(By.xpath(createXpathForCTAButton(deviceName))),50);
+        System.out.println("Element Scroll passed");
+        System.out.println(reusableActions.getWhenReady(By.xpath(pricingBlockContentXpath), 20).getText().replaceAll("\\s+",""));
         return reusableActions.getWhenReady(By.xpath(pricingBlockContentXpath), 20).getText().replaceAll("\\s+","");
     }
 
@@ -505,7 +520,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
 
     public boolean isRpotgBannerPresent() {
-        return reusableActions.isDisplayed(rpotgBannerText);
+         return reusableActions.isElementVisible(rpotgBannerText,40);
     }
 
 
@@ -548,7 +563,8 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
 
     public void clickCheckBtn() {
-        reusableActions.getWhenVisible(checkBtn, 20);
+        reusableActions.getWhenVisible(checkBtn, 30);
+        reusableActions.doubleClick(checkBtn,0);
         reusableActions.doubleClick(checkBtn,0);
     }
 
@@ -559,7 +575,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
 
     public void clickContinueBtn() {
-        reusableActions.clickWhenReady(continueBtn, 20);
+        reusableActions.clickWhenReady(continueBtn, 30);
     }
 
 

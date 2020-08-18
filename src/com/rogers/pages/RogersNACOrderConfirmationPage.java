@@ -12,7 +12,7 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 		super(driver);
 	}
 	
-	 @FindBy(xpath = "//h1[@id='bfa-page-title']")
+	 @FindBy(xpath = "//h1[@id='bfa-page-title' and text()='Order Confirmation']")
 	 WebElement orderConfirmationTitle;
 	 
 	 @FindBy(xpath="//p[@class='text-title-6 mb-40 ng-star-inserted']")
@@ -61,6 +61,7 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 	     * @author Karthic.hasan
 	     */
 	    public boolean isOrderConfirmationTitlePresent() {
+	    	reusableActions.waitForElementVisibility(orderConfirmationTitle,60);
 	       return reusableActions.isElementVisible(orderConfirmationTitle);
 	    }
 	    

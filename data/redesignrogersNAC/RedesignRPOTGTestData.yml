@@ -1,19 +1,20 @@
-deviceName : iPhone 11 Pro
+deviceName : Samsung Galaxy S20 5G
 firstName : AYLIN
 lastName : VALENTINE
-dateOfBirthYear: 1975
-dateOfBirthMonth: 1
-dateOfBirthDay: 29
-creditCardDetails: 4111111111111111
+dateOfBirthYear: 1985
+dateOfBirthMonth: 6
+dateOfBirthDay: 20
+creditCardDetails: 5316317150942577
 expiryDate: 11/23
 dropdownOption: PASSPORT
 passportNumber: LR678562
-cityName: TORONTO
-contactNumber: (101) 000-0061
-billingAddress: 78-800 Paramount Dr, Stoney Creek, ON, L8J 3V9
+cityName: OTTAWA
+contactNumber: (204) 058-2779
+billingAddress: 40-125 Bonaventure Dr, Hamilton, ON, L9C 5Y9
 nameOnCard: AYLIN VALENTINE
-billingCreditCardNumber: 371449751209263
-billingNameOnCard: AYLIN VALENTINE
-cvvNumber: 1234
+billingCreditCardNumber: 5316317150942577
+paymentMethod:  INVOICE
+billingNameOnCard: Karthick SPEARS
+cvvNumber: 123
 postalCode: M2J1M2
 

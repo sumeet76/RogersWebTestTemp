@@ -3,11 +3,7 @@ package com.rogers.test.tests.redesignrogersnac;
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
-
-import utils.ReusableActions;
-
 import org.apache.http.client.ClientProtocolException;
-import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -35,6 +31,7 @@ public class RogersRedesign_TC_01_NonRpotgTest extends BaseTestClass {
     public void redesignRogersRpotg() throws InterruptedException {
     	
     	 //**************************Device catalog page*****************************************
+    	
         String deviceName=TestDataHandler.redesignRpotgData.getDeviceName();
         String pricingBlockValueCataloguePage = rogers_device_catalogue_page.getPricingBlockCataloguePage(deviceName);
         String pricePlanInfoCataloguePage = rogers_device_catalogue_page.getPricePlanInfoCataloguePage(deviceName);
@@ -67,7 +64,7 @@ public class RogersRedesign_TC_01_NonRpotgTest extends BaseTestClass {
         reporter.softAssert(rogers_plan_config_page.verifyBreadCrumb(deviceName), "BreadCrumb on Plan config page is working fine","BreadCrumb is not working fine");
         reporter.hardAssert(rogers_plan_config_page.verifyDefaultPrice(fullPriceValueCataloguePage), "Default  price is same as it is shown in device catalogue & Config page page", "Default price is not same as it is shown in device catalogue page");
         rogers_plan_config_page.clickPreCartSummaryContinueButton();
-        rogers_plan_config_page.selectDataOption(deviceName);	
+        //rogers_plan_config_page.selectDataOption(deviceName);	
         reporter.reportLogPassWithScreenshot("Plan config page data option selected");
         rogers_plan_config_page.clickPreCartSummaryContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
@@ -91,15 +88,17 @@ public class RogersRedesign_TC_01_NonRpotgTest extends BaseTestClass {
         reporter.softAssert(rogers_checkout_page.verifyCreateProfileTitle(),"Create profile Title Present","Create profile Title not present");
         String emailCreateProfile=rogers_checkout_page.setEmailCreateProfile();
         rogers_checkout_page.confirmEmailCreateProfile(emailCreateProfile);
-        String firstName = rogers_checkout_page.setFirstNameCreateProfile();
-        String lastName = rogers_checkout_page.setLastNameCreateProfile();
+//        String firstName = rogers_checkout_page.setFirstNameCreateProfile();
+//        String lastName = rogers_checkout_page.setLastNameCreateProfile();
+        String firstName = rogers_checkout_page.setFirstNameCreateProfilepage("AMARA");
+        String lastName = rogers_checkout_page.setLastNameCreateProfilepage("SPEARS");
         String fullNameCreateProfile=firstName+" "+lastName;
         String contactNumberCreateProfile=TestDataHandler.redesignRpotgData.getContactNumber();
         rogers_checkout_page.setContactNumberCreateProfile(contactNumberCreateProfile);
         reporter.reportLogPassWithScreenshot("Create Profile Page details Entered till ContactNumber");
         rogers_checkout_page.setBillingAddressCreateProfile(TestDataHandler.redesignRpotgData.getBillingAddress());
-        reporter.softAssert(rogers_checkout_page.clkUseBillingAddressRadioBtnCreateProfile(),"use billing address is not selected","use billing address is not selected");
-        reporter.softAssert(rogers_checkout_page.clkLanguageEnglishRadioBtnCreateProfile(),"Language English is selected","Language English is not selected");
+        rogers_checkout_page.clkUseBillingAddressRadioBtnCreateProfile();
+        rogers_checkout_page.clkLanguageEnglishRadioBtnCreateProfile();
         reporter.reportLogPassWithScreenshot("Create Profile Page details provided for Address,Shipping Address & Language Selected");
         rogers_checkout_page.switchToRecaptchaIFrame();
         rogers_checkout_page.clkImNotRombotCheckbox();
@@ -110,6 +109,8 @@ public class RogersRedesign_TC_01_NonRpotgTest extends BaseTestClass {
         reporter.softAssert(rogers_checkout_page.verifyCreditEvaluationTitle(),"CreditEvaluation Title verified","CreditEvaluation Title not present");
 		//rogers_checkout_page.setDateOfBirth(TestDataHandler.redesignRpotgData.getDateOfBirth());
 		rogers_checkout_page.selectYearDropdownOption(TestDataHandler.redesignRpotgData.getDateOfBirthYear());
+		//span[text()='No, thanks']
+		//rogers_checkout_page.clkNoThanks();
 		rogers_checkout_page.selectMonthDropdownOption(TestDataHandler.redesignRpotgData.getDateOfBirthMonth());
 		rogers_checkout_page.selectDayDropdownOption(TestDataHandler.redesignRpotgData.getDateOfBirthDay());
         rogers_checkout_page.switchToCreditCardIFrame();
@@ -140,6 +141,7 @@ public class RogersRedesign_TC_01_NonRpotgTest extends BaseTestClass {
      // ***************Billing & Payment Stepper*************//
         reporter.softAssert(rogers_checkout_page.isBillingOptionsTitleDisplayed(),"Billing Options Title Displayed","Billing Options Title Not Present");
         reporter.softAssert(rogers_checkout_page.isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed","Select Payment Method Dropdown not disaplayed");
+        rogers_checkout_page.clkNoThanks();
         rogers_checkout_page.setNameOnCard(TestDataHandler.redesignRpotgData.getNameOnCard());
         rogers_checkout_page.switchToCreditCardIFrame();
         rogers_checkout_page.setCreditCardNumberIFrame(TestDataHandler.redesignRpotgData.getBillingCreditCardNumber());
@@ -152,8 +154,9 @@ public class RogersRedesign_TC_01_NonRpotgTest extends BaseTestClass {
         reporter.hardAssert(rogers_checkout_page.isCardDetailsDisplayed(),"Card details disaplayed in Billing & Payment Options", "Card details not disaplayed in Billing & Payment Options");
         //***************Billing Options Stepper*************//
         reporter.softAssert(rogers_checkout_page.clkBillingAddress(),"Billing Address radio button is selected ","Billing Address is not selected");
-        reporter.softAssert(rogers_checkout_page.clkDeliveryMethodStandard(),"Standard Deliver-Free selected","Standard Delivery not selected");
+        rogers_checkout_page.clkDeliveryMethodStandard();
         reporter.reportLogPassWithScreenshot("Billing Options Stepper");
+        Thread.sleep(1000);
         rogers_checkout_page.clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Continue button clicked from Billing Options Stepper");
         rogers_checkout_page.clksubmitBtnCheckoutPage();

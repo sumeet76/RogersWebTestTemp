@@ -15,7 +15,7 @@ public class RogersReviewOrderPage extends BasePageClass {
         super(driver);
     }
 
-    @FindBy(xpath = "//h1[@id='bfa-page-title']")
+    @FindBy(xpath = "//h1[@id='bfa-page-title' and text()='Review Your Order']")
     WebElement orderReviewPageTitle;
 
     @FindBy(xpath="(//div[contains(@class,'totalRow d-flex align-items-center')])[1]")
@@ -39,7 +39,7 @@ public class RogersReviewOrderPage extends BasePageClass {
     @FindBy(xpath="//p[@class='text-body-lg mb-0' and contains(text(),'Shipping Address')]/..")
     WebElement shippingCompleteAddress;
     
-    @FindBy(xpath="//p[@class='text-body-lg mb-0' and contains(text(),'Delivery Method')] ")
+    @FindBy(xpath="//p[@class='text-body-lg mb-0 ng-star-inserted' and contains(text(),'Delivery Method')]")
     WebElement deliveryMethodTitle;
     
     @FindBy(xpath="//p[@class='text-body-sm my-8' and contains(text(),'Rogers Pro On-the-Go')]/../p[2]")
@@ -74,11 +74,12 @@ public class RogersReviewOrderPage extends BasePageClass {
 
     /**
      * To Verify the Title of Order Review Page is Present
-     *
+     * @return true or false
      * @author nimmy.george
      */
     public boolean isOrderReviewPageTitlePresent() {
-       return reusableActions.isElementVisible(orderReviewPageTitle, 60);
+    	reusableActions.waitForElementVisibility(orderReviewPageTitle, 60);
+       return reusableActions.isElementVisible(orderReviewPageTitle);
     }
 
     /**
@@ -153,7 +154,7 @@ public class RogersReviewOrderPage extends BasePageClass {
 
     /**
      * To get the Delivery Address Title in Order Review Page
-     *
+     * @return true or false
      * @author Karthic.hasan
      */
     public boolean verifyDeliveryAddressTitle() {
@@ -193,7 +194,7 @@ public class RogersReviewOrderPage extends BasePageClass {
     public void clkFinancingConsentCheckbox() {
         reusableActions.javascriptScrollByVisibleElement(txtPleaseReadAgreement);
         reusableActions.staticWait(1000);
-        reusableActions.clickIfAvailable(chFinancingConsent,2);
+        reusableActions.clickWhenReady(chFinancingConsent,2);
     }
 
     /**
@@ -201,7 +202,7 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author nimmy.george
      */
     public void clkAgreementConsentCheckbox() {
-        reusableActions.clickIfAvailable(chAgreementConsent,2);
+        reusableActions.clickWhenReady(chAgreementConsent,2);
     }
 
     /**
@@ -209,7 +210,7 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author nimmy.george
      */
     public void clkUpfrontConsentCheckbox() {
-        reusableActions.clickIfAvailable(chUpfrontConsent,2);
+        reusableActions.clickWhenReady(chUpfrontConsent,2);
     }
 
     /**
@@ -217,7 +218,7 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clkEmailConsentCheckbox() {
-        reusableActions.clickIfAvailable(chEmailConsent,2);
+        reusableActions.clickWhenReady(chEmailConsent,2);
     }
 
     
@@ -226,7 +227,7 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clkSubmitOrderBtn() {
-        reusableActions.clickIfAvailable(submitOrderBtn,2);
+        reusableActions.clickWhenReady(submitOrderBtn,2);
         reusableActions.staticWait(9000);
     }
 

@@ -346,6 +346,8 @@ public class RogersPlanConfigPage extends BasePageClass {
     public void clickCartSummaryContinueButton() {
     	reusableActions.javascriptScrollByVisibleElement(continueButtonOnCartSummary);
         reusableActions.executeJavaScriptClick(continueButtonOnCartSummary);
+//        reusableActions.waitForElementTobeClickable(continueButtonOnCartSummary, 10);
+//        reusableActions.clickWhenReady(continueButtonOnCartSummary);
     }
 
     /**
@@ -451,7 +453,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public boolean verifyDefaultPrice(String downPriceValueCataloguePage) {
-        if(reusableActions.getWhenReady(priceForSelectedDeviceCost, 10).getText().toUpperCase().replace(" ", "").contains(downPriceValueCataloguePage.toUpperCase().replaceAll("/", "").replace(" ", "")))
+        if(reusableActions.getWhenReady(priceForSelectedDeviceCost, 30).getText().toUpperCase().replace(" ", "").contains(downPriceValueCataloguePage.toUpperCase().replaceAll("/", "").replace(" ", "")))
             return true;
         return false;
     }
