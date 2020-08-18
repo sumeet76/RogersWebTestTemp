@@ -298,6 +298,13 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		
 	@FindBy(xpath = "//*[@translate='see.add_non_shared_line']")
 	WebElement btnAddToNonSharedPlan;
+
+	@FindBy(xpath = "//div[contains(@class,'share-everything')]//div[contains(@class,'subscription-detail')]//rss-subscription-detail//a")
+	WebElement lstShareEverythingCTNs;
+	
+	//div[contains(@class,'individual_wireless')]//div[contains(@class,'subscription-detail')]//rss-subscription-detail//a
+	
+	//div[contains(@class,'residential_services')]//div[contains(@class,'subscription-detail')]//rss-subscription-detail//a
 	
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
@@ -1208,6 +1215,15 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean isCreditLimitReachedNotificationDisplayed() {
 		return reusableActions.isElementVisible(lblCreditLimitExceeded);
+	}
+
+	/**
+	 * Checks if share everything CTNs displayed
+	 * @return return true if share everything is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isShareEverythingDisplayed() {
+		return reusableActions.isElementVisible(lstShareEverythingCTNs);
 	} 
 	
 	
