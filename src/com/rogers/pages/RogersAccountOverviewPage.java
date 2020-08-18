@@ -127,9 +127,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Profile & Settings' or text()='Profil et paramètres']/parent::a")})
 	WebElement menuProfileAndSettingsMobile;
 	
-	
-	
-	
+
 	@FindAll({
 		@FindBy(xpath = "//button[@aria-label='ute.common.label.profileAndSetting']"),
 		@FindBy(xpath = "//span[text()='Profile & Settings' or text()='Profil et paramètres']/parent::a")})
@@ -300,11 +298,13 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	WebElement btnAddToNonSharedPlan;
 
 	@FindBy(xpath = "//div[contains(@class,'share-everything')]//div[contains(@class,'subscription-detail')]//rss-subscription-detail//a")
-	WebElement lstShareEverythingCTNs;
-	
-	//div[contains(@class,'individual_wireless')]//div[contains(@class,'subscription-detail')]//rss-subscription-detail//a
-	
-	//div[contains(@class,'residential_services')]//div[contains(@class,'subscription-detail')]//rss-subscription-detail//a
+	List<WebElement> lstShareEverythingCTNs;
+		
+	@FindBy(xpath = "//div[contains(@class,'individual_wireless')]//div[contains(@class,'subscription-detail')]//rss-subscription-detail//a")
+	List<WebElement> lstIndividualWirelessCTNs;
+		
+	@FindBy(xpath = "//div[contains(@class,'residential_services')]//div[contains(@class,'subscription-detail')]//rss-subscription-detail//a")
+	List<WebElement> lstResidentialServicesCTNs;
 	
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
@@ -1218,14 +1218,63 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	}
 
 	/**
+	 * Checks if Individual Wireless CTNs displayed
+	 * @return return true if Individual Wireless is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isIndividualWirelessCTNsDisplayed() {
+		return (reusableActions.isElementVisible(lstIndividualWirelessCTNs.get(0))
+				&& lstShareEverythingCTNs.get(0).getLocation().x<lstIndividualWirelessCTNs.get(0).getLocation().x
+				&& lstIndividualWirelessCTNs.get(0).getLocation().x<lstResidentialServicesCTNs.get(0).getLocation().x
+			);
+	} 
+	
+	/**
+	 * Checks if Residential services CTNs displayed
+	 * @return return true if Residential services is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isResidentialServicesCTNsDisplayed() {
+		return (reusableActions.isElementVisible(lstResidentialServicesCTNs.get(0))
+				&& lstIndividualWirelessCTNs.get(0).getLocation().x<lstResidentialServicesCTNs.get(0).getLocation().x
+			);
+	} 
+	
+	/**
 	 * Checks if share everything CTNs displayed
 	 * @return return true if share everything is displayed else false
 	 * @author Mirza.Kamran
 	 */
 	public boolean isShareEverythingDisplayed() {
-		return reusableActions.isElementVisible(lstShareEverythingCTNs);
+		return (reusableActions.isElementVisible(lstShareEverythingCTNs.get(0))
+				&& lstShareEverythingCTNs.get(0).getLocation().x<lstIndividualWirelessCTNs.get(0).getLocation().x
+				);
+	}
+
+	/**
+	 * Checks if the CTNS are left aligned correctly under each CTN category
+	 * @return int values depicting status of alignment
+	 * @author Mirza.Kamran
+	 */
+	public int isShareEverythingCTNLeftAligned() {
+		int alignmentvalue = 0;
+		int alignmentStatus = 1;
+		if(lstShareEverythingCTNs.size()>1)
+		{
+			alignmentvalue = lstShareEverythingCTNs.get(0).getLocation().x;
+			for (WebElement webElement : lstShareEverythingCTNs) {
+				if(alignmentvalue!=webElement.getLocation().x)
+				{
+					alignmentStatus = 3;
+				}
+			}
+		}else
+		{
+			alignmentStatus = 2;
+		}
+		
+		return alignmentStatus;
 	} 
-	
 	
 	
 	
