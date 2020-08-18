@@ -306,7 +306,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 */
 	public boolean verifySuccessMessageIsDisplayed() {
 		reusableActions.waitForElementVisibility(lblSuccessHeader);
-		return (reusableActions.isDisplayed(lblSuccessHeader) && reusableActions.isDisplayed(lblYouAutomaticPaymentWillStart));
+		return (lblSuccessHeader.isDisplayed() && lblYouAutomaticPaymentWillStart.isDisplayed());
 	}
 	
 	/**
@@ -338,7 +338,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
      * @author Mirza.Kamran
      */
 	public Boolean labelCCDetailsWillBeKeptEncryptedMsgDisplayed() {
-		return reusableActions.isDisplayed(lblCreditCardSecuredMsg);
+		return lblCreditCardSecuredMsg.isDisplayed();
 	}
 		
 	/**
@@ -347,9 +347,9 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isCCSecuredAreaDisplayed() {
-		return (reusableActions.isDisplayed(lblCCheader)
-				&& reusableActions.isDisplayed(lblCCNumber)
-				&& reusableActions.isDisplayed(lblExpiryDate));
+		return (lblCCheader.isDisplayed()
+				&& lblCCNumber.isDisplayed()
+				&& lblExpiryDate.isDisplayed());
 	}
 
 	/**
