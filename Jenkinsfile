@@ -36,13 +36,7 @@ pipeline {
         SAUCE_ACCESS_KEY=credentials('SAUCE_ACCESS_KEY')
     }
     stages {
-        stage('Upload data to NS'){
-            steps {
-                script{
-                    sh label: 'Testing NS upload', script: """ netstorage-upload.sh /mnt/ns/nskey.pem ./test-data qa-test"""
-                }
-            }
-        }
+
         stage('Run CI?') {
             when { expression { shouldRun() } }
             stages {
