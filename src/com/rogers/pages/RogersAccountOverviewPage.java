@@ -520,7 +520,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 //			reusableActions.staticWait(4000);
 			reusableActions.getWhenReady(menuProfileNSettings,30).click();			
 			reusableActions.waitForElementVisibility(headerProfileNSettings,60);
-			if(headerProfileNSettings.isDisplayed())
+			if(reusableActions.isElementVisible(headerProfileNSettings))
 			{
 				System.out.println("Profile and settings click successful in attempt: "+(count+1));
 				clickSuccess=true;				
@@ -761,7 +761,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 			reusableActions.getWhenReady(btnMakeAPayment,30).click();			
 			reusableActions.waitForElementVisibility(lblMakeASecurePayment,10);
-			if(lblMakeASecurePayment.isDisplayed())
+			if(reusableActions.isElementVisible(lblMakeASecurePayment))
 			{
 				System.out.println("Make payment button clicked in attempt: "+(count+1));
 				clickSuccess=true;				
@@ -792,7 +792,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		reusableActions.staticWait(2000);
 		reusableActions.executeJavaScriptClick(lnkBillingAndPayment);
 		reusableActions.staticWait(3000); //extra static buffers added for firefox
-		return lnkSetUpAutomaticPaymentMethod.isDisplayed();
+		return reusableActions.isElementVisible(lnkSetUpAutomaticPaymentMethod);
 	}
 	
 	/**
@@ -820,7 +820,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		}
 		//reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
 		reusableActions.staticWait(3000); //extra static buffers added for firefox
-		return lnkSetUpAutomaticPaymentMethodMobile.isDisplayed();
+		return reusableActions.isElementVisible(lnkSetUpAutomaticPaymentMethodMobile);
 	}
 
 	/**
@@ -830,8 +830,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean verifyThatAutoPaymentIsDisplayedOnAccountOverViewPage() {
 		reusableActions.waitForElementVisibility(lblAutoPayment);
-		return (lblAutoPayment.isDisplayed()
-			 && lblAutoPaymentAccountPreFix.isDisplayed());
+		return (reusableActions.isElementVisible(lblAutoPayment)
+			 && reusableActions.isElementVisible(lblAutoPaymentAccountPreFix));
 	}	
 	
 	/**
@@ -841,8 +841,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean verifyThatAutoPaymentWithCCIsDisplayedOnAccountOverViewPage() {
 		reusableActions.waitForElementVisibility(lblAutoPayment, 50);
-		return (lblAutoPayment.isDisplayed()
-			 && imgCC.isDisplayed());
+		return (reusableActions.isElementVisible(lblAutoPayment)
+			 && reusableActions.isElementVisible(imgCC));
 	}
 
 		
@@ -863,7 +863,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean isCCDisplayedOnAccountOverViewPage() {		
 		return (reusableActions.isElementVisible(lblAutoPayment,30)
-			 && imgCC.isDisplayed());
+			 && reusableActions.isElementVisible(imgCC));
 	}
 	
 	/**
@@ -883,7 +883,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			reusableActions.executeJavaScriptClick(lnkBillingAndPayment);			
 			reusableActions.waitForElementVisibility(lnkMakePayment);
 			reusableActions.executeJavaScriptClick(lnkMakePayment);	
-			if(txtAmount.isDisplayed())
+			if(reusableActions.isElementVisible(txtAmount))
 			{
 				System.out.println("Billing and payment click successful in attempt: "+(count+1));
 				clickSuccess=true;				
