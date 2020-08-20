@@ -88,12 +88,10 @@ pipeline {
                                 def buildTimeStamp = "${env.BUILD_TIMESTAMP}"
                                 def testProfile = "${env.TestProfile}"
                                 def destinationFolder=jobName.replaceAll("\\s+", "").replace("digital-qe/","") + "/" +testProfile+"/"+ buildTimeStamp.replaceAll("\\s+", "")+"/"
-                                sh label: 'Testing NS upload', script: """ 
-                                mkdir -p ./report/${destinationFolder}
-                                cp -R ./Test-Result ./report/${destinationFolder}
+                                sh label: 'NS upload', script: """ 
                                 netstorage-upload.sh /mnt/ns/nskey.pem ./report Digital-QE/
                                 """
-                                REPORT_URL="${REPORT_URL}"+"/report/"+destinationFolder+"/Test-Result/results.html"
+                                REPORT_URL="${REPORT_URL}"+"/report/"+destinationFolder+"/results.html"
                             }
 
                         }
