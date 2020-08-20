@@ -305,6 +305,43 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		
 	@FindBy(xpath = "//div[contains(@class,'residential_services')]//div[contains(@class,'subscription-detail')]//rss-subscription-detail//a")
 	List<WebElement> lstResidentialServicesCTNs;
+
+	@FindBy(xpath = "//*[@translate='acc_overview_top_up_now']")
+	WebElement btnPrepaidTopUpNow;
+
+	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.current.account.balance']")
+	WebElement lblCurrentAccountBalance;
+
+	@FindBy(xpath = "//*[@class='rogers-amount']")
+	WebElement lblCurrentBalanceAmount;
+
+	@FindBy(xpath = "//*[@translate='acc_overview_expires_on']")
+	WebElement lblBalanceExpiresOn;
+
+	@FindBy(xpath = "//*[@data-test-id='myr-accountBalance-expiryDate']")
+	WebElement lblExpiryMonth;
+
+	@FindBy(xpath = "//*[@translate='change_method_update']")
+	WebElement lnkUpdatePaymentMethod;
+
+	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.view.call']")
+	WebElement lnkViewCallTransactionHistory;
+
+	@FindBy(xpath = "//div[@ng-if='!ao.mss.loadingData && ao.mss.selectedAccountDetail.isPrepaid']//*[@translate='service_wireless_prepaid']")
+	WebElement btnCTNWidgetPrepaid;
+
+	@FindBy(xpath = "//*[@translate='myaccoverview_account_preferences']")
+	WebElement lblAccountPreferences;
+
+	@FindBy(xpath = "//*[@translate='myaccoverview_change_contact_information']")
+	WebElement lnkChangeContactInfo;
+
+	@FindBy(xpath = "//*[@translate='myaccoverview_change_password']")
+	WebElement lnkChangePassword;
+
+	@FindBy(xpath = "//*[@translate='acc_overview_other_services']")
+	WebElement lblOtherServicesAvailable;
+	
 	
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
@@ -1274,6 +1311,96 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		}
 		
 		return alignmentStatus;
+	}
+
+	/**
+	 * checks if the top up button is displayed
+	 * @return true if the button is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isTopUpButtonDisplayed() {
+		return reusableActions.isElementVisible(btnPrepaidTopUpNow);
+	}
+
+	/**
+	 * Checks if Current Account Balance is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isCurrentAccountBalanceDisplayed() {
+		
+		return (reusableActions.isElementVisible(lblCurrentAccountBalance)
+				&& reusableActions.isElementVisible(lblCurrentBalanceAmount));
+	}
+
+	/**
+	 * Checks if Balance expires is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isBalanceExpiresOnDisplayedOnAOPage() {
+		return (reusableActions.isElementVisible(lblBalanceExpiresOn)
+				&& reusableActions.isElementVisible(lblExpiryMonth));				
+	}
+
+	
+	/**
+	 * Checks if Link update payment method is displayed is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isLnkUpdatePaymentMethodDisplayedOnAOPage() {
+		return reusableActions.isElementVisible(lnkUpdatePaymentMethod);
+	}
+
+	/**
+	 * Checks if Link view call transaction history is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isLnkViewCallTransactionHistoryDisplayedOnAOPage() {
+		return reusableActions.isElementVisible(lnkViewCallTransactionHistory);
+		
+	}
+
+	/**
+	 * Checks if CTN widget is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isCTNWidgetIsDisplayedOnAOPg() {
+		return reusableActions.isElementVisible(btnCTNWidgetPrepaid);
+	}
+
+	/**
+	 * Checks if Current Account Balance is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isAccountPreferencesSectionDisplayedAOPg() {
+		return reusableActions.isElementVisible(lblAccountPreferences)
+				&& reusableActions.isElementVisible(lnkChangeContactInfo)
+				&& reusableActions.isElementVisible(lnkChangePassword);
+		
+	}
+
+	/**
+	 * Checks if Other services is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isOtherServicesDisplayedOnAOPg() {
+		return reusableActions.isElementVisible(lblOtherServicesAvailable);
+		
+	}
+
+	/**
+	 * Clicks on CTN widget is clicked
+	 * @author Mirza.Kamran
+	 */
+	public void clkCTNWidget() {
+		reusableActions.getWhenReady(btnCTNWidgetPrepaid).click();
+		
 	} 
 	
 	
