@@ -325,7 +325,7 @@
 						<version>3.0.0-M4</version>
 						<configuration>
 							<suiteXmlFiles>
-								<suiteXmlFile>BFARogersSanity.xml</suiteXmlFile>
+								<suiteXmlFile>BFARogersSanityPack.xml</suiteXmlFile>
 							</suiteXmlFiles>
 						</configuration>
 					</plugin>
