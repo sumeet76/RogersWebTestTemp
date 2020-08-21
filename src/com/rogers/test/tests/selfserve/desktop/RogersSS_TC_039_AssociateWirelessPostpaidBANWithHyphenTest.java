@@ -44,7 +44,7 @@ public class RogersSS_TC_039_AssociateWirelessPostpaidBANWithHyphenTest extends 
         }
         reporter.reportLogWithScreenshot("Account overview page.");
 		rogers_account_overview_page.clkLinkAnotherAccount();
-		reporter.softAssert(rogers_link_account_page.verifyLinkAccountPageLoad(), 
+		reporter.hardAssert(rogers_link_account_page.verifyLinkAccountPageLoad(), 
 				"Link Account page load success.", 
 				"Link Account Page Load Failed");
 		reporter.reportLogWithScreenshot("Link account page.");

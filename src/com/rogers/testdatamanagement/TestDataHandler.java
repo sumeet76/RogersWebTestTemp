@@ -138,6 +138,7 @@ public class TestDataHandler {
 	public static AccountData tc92;
 	public static AccountData tc95;
 	public static AccountData tc90;
+	public static AccountData tc98;
 	
 	public static void dataInit (String strApplicationType) {	    	
     	if(strApplicationType.toUpperCase().trim().endsWith("CH")) {	    	
@@ -266,6 +267,7 @@ public class TestDataHandler {
     	tc92 = YamlHandler.getAccountData("tc92_CancelledInfiniteNSE");
     	tc95 = YamlHandler.getAccountData("tc95NSESuspendedCTN");
     	tc90 = YamlHandler.getAccountData("tc90_SE_NSE_ResidentialServices");
+    	tc98 = YamlHandler.getAccountData("tc98PrepaidAccount");
     	
     	//================ Connected home =========================
     	tc43IgniteRHP = YamlHandler.getAccountData("tc43IgniteRHP");

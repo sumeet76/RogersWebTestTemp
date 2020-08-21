@@ -67,13 +67,13 @@ public class RogersSS_TC_067_ValidateDataUsageInfiniteSEReducedSpeeds extends Ba
 
        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();  
                            
-		reporter.softAssert(rogers_wireless_dashboard_page.verifySpeedReducedMsg(),
+		reporter.hardAssert(rogers_wireless_dashboard_page.verifySpeedReducedMsg(),
 						"Label using data at reduced speed is displayed",
 						"Label using data at reduced speed is not displayed");
-		reporter.softAssert(rogers_wireless_dashboard_page.verifySpeedPassButtonIsDisplayed(),
+		reporter.hardAssert(rogers_wireless_dashboard_page.verifySpeedPassButtonIsDisplayed(),
 						"Link add speed pass is displayed",
 						"Link add speed pass is not displayed");
-		reporter.softAssert(rogers_wireless_dashboard_page.verifyCallOutMsgToAddSpeedPassIsDisplayed(),
+		reporter.hardAssert(rogers_wireless_dashboard_page.verifyCallOutMsgToAddSpeedPassIsDisplayed(),
 						"Call out message to Add speed pass is displayed",
 						"call out message to add speed pass is not displayed");
 		rogers_wireless_dashboard_page.clkCloseCallOutMsg();

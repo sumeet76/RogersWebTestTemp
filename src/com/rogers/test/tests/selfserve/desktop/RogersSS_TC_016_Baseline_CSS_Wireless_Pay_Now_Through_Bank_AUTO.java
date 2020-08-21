@@ -57,7 +57,7 @@ public class RogersSS_TC_016_Baseline_CSS_Wireless_Pay_Now_Through_Bank_AUTO ext
 			getDriver().close();
 			getDriver().switchTo().window(strMainWindowHandle);
 			reporter.reportLogWithScreenshot("Banking page closed");			
-			reporter.softAssert(rogers_make_payment_page.verifyIfTheSelectedBankIsDisplayedCorrectlyOnTheMakePaymentOverLay(),
+			reporter.hardAssert(rogers_make_payment_page.verifyIfTheSelectedBankIsDisplayedCorrectlyOnTheMakePaymentOverLay(),
 					"Selected Bank is displayed on the make payment overlay.",
 					"Selected Bank isn't displayed on the make payment overlay.");																	
     }

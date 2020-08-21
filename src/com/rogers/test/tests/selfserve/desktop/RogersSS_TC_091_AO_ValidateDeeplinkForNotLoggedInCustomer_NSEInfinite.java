@@ -16,7 +16,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 
 
-public class RogersSS_TC_091_ValidateDeeplinkForNotLoggedInCustomer_NSEInfinite extends BaseTestClass {	
+public class RogersSS_TC_091_AO_ValidateDeeplinkForNotLoggedInCustomer_NSEInfinite extends BaseTestClass {	
    	
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {

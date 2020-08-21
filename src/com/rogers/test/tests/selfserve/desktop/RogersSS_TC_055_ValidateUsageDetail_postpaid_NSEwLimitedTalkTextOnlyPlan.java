@@ -60,30 +60,30 @@ public class RogersSS_TC_055_ValidateUsageDetail_postpaid_NSEwLimitedTalkTextOnl
         
         reporter.reportLogWithScreenshot("Wireless dashboard page.");
         
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyTalkTextOnlyUsageModuleIsDisplayed(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyTalkTextOnlyUsageModuleIsDisplayed(), 
         					"Talk & Text usage module is displayed.", 
         					"Talk & Text usage module is not displayed.");
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyTalkMinutesRemainingIsDisplayed(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyTalkMinutesRemainingIsDisplayed(), 
 							"Talk usage minutes remaining is displayed.", 
 							"Talk usage minutes remaining is not displayed.");
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyTalkUsageAnytimeIsDisplayed(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyTalkUsageAnytimeIsDisplayed(), 
 							"Talk usage anytime is displayed.", 
 							"Talk usage anytime is not displayed.");
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyLimitedTalkUsageDetailsAccuracy(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLimitedTalkUsageDetailsAccuracy(), 
 							"Talk usage details are accurate.", 
 							"Talk usage details are not accurate, please investigate.");
         
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyLimitedTextsRemainingIsDisplayed(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLimitedTextsRemainingIsDisplayed(), 
 							"Text usage texts remaining is displayed.", 
 							"Text usage texts remaining is not displayed.");
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyLimitedTextsMsgSentIsDisplayed(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLimitedTextsMsgSentIsDisplayed(), 
 							"Text usage texts sent is displayed.", 
 							"Text usage texts sent is not displayed.");
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyLimitedTextsMsgReceivedIsDisplayed(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLimitedTextsMsgReceivedIsDisplayed(), 
 							"Text usage texts received is displayed.", 
 							"Text usage texts received is not displayed.");
         
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyLimitedTextUsageDetailsAccuracy(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLimitedTextUsageDetailsAccuracy(), 
 							"Text usage details are accurate.", 
 							"Text usage details are not accurate, please investigate.");
         

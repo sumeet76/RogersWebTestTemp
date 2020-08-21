@@ -69,7 +69,7 @@ public class RogersSS_TC_009_UserSetMobileNumForSMSRecovery extends BaseTestClas
     			reporter.reportLogWithScreenshot("Verify code is entered.");
     			rogers_profile_and_settings_page.clkBtnVerifyMeIframe();
 
-    			reporter.softAssert(rogers_profile_and_settings_page.verifySetRecoverySuccessConfirmationMsg(strRecoveryNumber.substring(strRecoveryNumber.length()-4)),
+    			reporter.hardAssert(rogers_profile_and_settings_page.verifySetRecoverySuccessConfirmationMsg(strRecoveryNumber.substring(strRecoveryNumber.length()-4)),
     					"Got recovery phone number set successfully confirm message",
     					"Got error when setting recovery phone number");
     			reporter.reportLogWithScreenshot("Confirm page of set recovery phone number.");

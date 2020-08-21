@@ -63,13 +63,13 @@ public class RogersSS_TC_073_ValidateMyWirelessPlanSectionInTheWirelessDashboard
         rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
         rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
         reporter.reportLogWithScreenshot("Middle of Wireless dashboard page.");        
-	    reporter.softAssert(rogers_wireless_dashboard_page.verifyPlanNameIsDisplayed(),
+	    reporter.hardAssert(rogers_wireless_dashboard_page.verifyPlanNameIsDisplayed(),
 	    		"Plan name is displayed",
 	    		"Plan name is not displayed");	    
-	    reporter.softAssert(rogers_wireless_dashboard_page.verifyMonthlyServiceFeeIsDisplayed(),
+	    reporter.hardAssert(rogers_wireless_dashboard_page.verifyMonthlyServiceFeeIsDisplayed(),
 	    		"Monthly service fee is displayed in the Plan section",
 	    		"Monthly service fee is not displayed in the Plan section");
-	    reporter.softAssert(rogers_wireless_dashboard_page.verifyButtonChangePlanIsDisplayed(),
+	    reporter.hardAssert(rogers_wireless_dashboard_page.verifyButtonChangePlanIsDisplayed(),
 	    		"Button Change plan is displayed in the plan section",
 	    		"Button Change plan is not displayed");
 	    reporter.softAssert(rogers_wireless_dashboard_page.verifyIncludedSectionIsDisplayed(),

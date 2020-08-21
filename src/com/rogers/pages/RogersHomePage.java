@@ -263,7 +263,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkSignIn() {		
-		reusableActions.getWhenVisible(lnkSignIn, 30).click();
+		reusableActions.getWhenVisible(lnkSignIn, 30).click();		
 	}
 	
 	/**
@@ -457,7 +457,7 @@ public class RogersHomePage extends BasePageClass {
 	public void clkServiceability() {
 	if(reusableActions.isElementVisible(overlayHomePage,2))
 		{
-		reusableActions.waitForElementInvisibilityNOException(overlayHomePage,5);	
+		reusableActions.waitForElementInvisibility(overlayHomePage,5);	
 		}
 	reusableActions.getWhenReady(btnServiceability, 30).click();
 	}

@@ -67,7 +67,7 @@ public class RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs e
        	Map<String, Integer> countOfActiveAndCancelledAddDataOnMyPlan = rogers_wireless_dashboard_page.getAllExistingAddDataCountCancelledAndActiveOnMyPlanSection();			
        	rogers_wireless_dashboard_page.scrollToTopOfDasboardPage();
 		//4. Click on View details in usage dashboard
-		  reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(), 
+		  reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(), 
 							"'Manage Data' page is displayed after click on view details link", 
 							"'Manage Data' page is NOT displayed after click on view details link");  
         reporter.reportLogWithScreenshot("Manage data page view after we click on view details");  
@@ -75,7 +75,7 @@ public class RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs e
 		Map<String, Integer> countOfActiveAndCancelledAddData = rogers_manage_data_page.getAllExistingAddDataCountCancelledAndActive();
 		reporter.reportLogWithScreenshot("Manage Data page");
 		//Comparisons Before Cancel:
-		reporter.softAssert((countOfActiveAndCancelledAddDataOnMyPlan.get("cancelled")==countOfActiveAndCancelledAddData.get("cancelled")
+		reporter.hardAssert((countOfActiveAndCancelledAddDataOnMyPlan.get("cancelled")==countOfActiveAndCancelledAddData.get("cancelled")
 							&& countOfActiveAndCancelledAddDataOnMyPlan.get("active")==countOfActiveAndCancelledAddData.get("active"))
 				, "The number of cancelled and active add on macth on my plans and manage data page", 
 				"The number of cancelled and active add on does not macth on my plans and manage data page");
@@ -136,15 +136,15 @@ public class RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs e
 				reporter.reportLogWithScreenshot("dashboard page");				
 				reporter.reportLogWithScreenshot("My Plan Details");
 				//All the added OTT are reflected in total bucket,plan section and manage data page
-				reporter.softAssert(rogers_wireless_dashboard_page.verifyCancelledAddedDataInMyPlan(1, countOfActiveAndCancelledAddDataOnMyPlan.get("cancelled"))
+				reporter.hardAssert(rogers_wireless_dashboard_page.verifyCancelledAddedDataInMyPlan(1, countOfActiveAndCancelledAddDataOnMyPlan.get("cancelled"))
 						,"Expires MMM DD - is displayed next to the cancelled MDT in plan section",
 						"Expires MMM DD - is NOT displayed next to the cancelled MDT in plan section");
 				
 				rogers_wireless_dashboard_page.scrollToTopOfDasboardPage();
-				reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(),
+				reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(),
 						"'Data details' page is displayed after click on view details link",
 						"'Data details' page is NOT displayed after click on view details link");					
-				reporter.softAssert(rogers_manage_data_page.verifyCancelledMDTInManageData(1,countOfActiveAndCancelledAddData.get("cancelled")),
+				reporter.hardAssert(rogers_manage_data_page.verifyCancelledMDTInManageData(1,countOfActiveAndCancelledAddData.get("cancelled")),
 						"Expires MMM DD - is displayed next to the cancelled MDT in manage data page",
 						"Expires MMM DD - is NOT displayed next to the cancelled MDT in manage data page, plase investigate");	
 				

@@ -69,7 +69,7 @@ public class RogersSS_TC_94_AO_ValidateCreditLimitExceededAccountSuspended_SE_In
         
         rogers_account_overview_page.clkBtnLiveChat();
 		reporter.reportLogWithScreenshot("Clicked on Button Live Chat");	
-		reporter.softAssert(rogers_account_overview_page.verifyLiveChatOverlayOpened(), 
+		reporter.hardAssert(rogers_account_overview_page.verifyLiveChatOverlayOpened(), 
 							"Live Chat overlay opened in Account overview page", 
 							"Live Chat overlay did NOT open in Account overview page, please investigate.");
 		reporter.reportLogWithScreenshot("Live Chat overlay opened."); 

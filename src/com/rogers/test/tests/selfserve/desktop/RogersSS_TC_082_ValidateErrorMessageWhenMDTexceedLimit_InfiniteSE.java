@@ -64,7 +64,7 @@ public class RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE e
 				"Speed Pass button is displayed", 
 				"Speed Pass button is NOT displayed");
 		reporter.reportLogWithScreenshot("Wireless dashboard page."); 
-		reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(), 
+		reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(), 
 			"'Data details' page is displayed after click on view details link", 
 			"'Data details' page is NOT displayed after click on view details link");  
 		int countOfExistSpeedPass = rogers_manage_data_page.getAllExistingSpeedPassCount();		
@@ -77,7 +77,7 @@ public class RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE e
 			}
 		}
 		rogers_wireless_dashboard_page.clkBtnSpeedPass();
-		reporter.softAssert(rogers_speed_pass_page.verifyCannotAddSpeedPassHeaderIsDisplayed(), 
+		reporter.hardAssert(rogers_speed_pass_page.verifyCannotAddSpeedPassHeaderIsDisplayed(), 
 				"Cannot Add Speed Pass error message is displayed", 
 				"Cannot Add Speed Pass error message is not displayed");  
 

@@ -46,11 +46,11 @@ public class RogersSS_TC_041_AO_ValidateCHaccountBadge_IginteTV extends BaseTest
         rogers_login_page.clkSkipIFrame(); 
         rogers_login_page.switchOutOfSignInIFrame();
         rogers_account_overview_page.selectAccount(TestDataHandler.tc41IgniteTVAccount.accountDetails.getBan());                    
-        reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_solaris_tv_dashboard_page.clkTVBadge();
              
-        reporter.softAssert(rogers_solaris_tv_dashboard_page.verifyViewMyChannelLineUpDisplayed()
+        reporter.hardAssert(rogers_solaris_tv_dashboard_page.verifyViewMyChannelLineUpDisplayed()
         		&& rogers_solaris_tv_dashboard_page.verifyViewFlexChannelsDisplayed(), "Ignite TV dashboard page is displayed", "Ignite TV dashboard page NOT displayed correctly please investigate");
         
         reporter.reportLogWithScreenshot("Launched the Ignite TV dashboard Page");     

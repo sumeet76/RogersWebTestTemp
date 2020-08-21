@@ -59,40 +59,40 @@ public class RogersSS_TC_058_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDa
         rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
        
         //verify Data usage
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyDataDelayMessage(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyDataDelayMessage(), 
 				"Data delayed by 12 hours message is displayed", 
 				"Data delayed by 12 hours message is NOT displayed");
-		reporter.softAssert(rogers_wireless_dashboard_page.verifyDataRemainingOutOfTotalDataBucket(), 
+		reporter.hardAssert(rogers_wireless_dashboard_page.verifyDataRemainingOutOfTotalDataBucket(), 
 						"Data remaining out of Total data bucket info should be displayed", 
 						"Data remaining out of Total data bucket info is not displayed.");
-		reporter.softAssert(rogers_wireless_dashboard_page.verifyTotalDataBucket(), 
+		reporter.hardAssert(rogers_wireless_dashboard_page.verifyTotalDataBucket(), 
 						"Total data bucket includes plan, paid OTTs, paid MDTs, promotional (zero-rated) bonus OTT and MDTs info should be displayed", 
 						"Total data bucket includes plan, paid OTTs, paid MDTs, promotional (zero-rated) bonus OTT and MDTs info NOT displayed");
         reporter.reportLogWithScreenshot("Navigated back to dashboard from manage data view");  
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyDaysRemainingInTheBillCycleIsDisplayed(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyDaysRemainingInTheBillCycleIsDisplayed(), 
 							"Days left remaining in the bill cycle is displayed", 
 							"Days left remaining in the bill cycle is NOT displayed");        
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyAddDataButtonIsDisplayed(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyAddDataButtonIsDisplayed(), 
 							"Add the Data top-up  button should be displayed", 
 							"Add the Data top-up  button is NOT displayed.");   		
         reporter.reportLogWithScreenshot("Wireless dashboard page.");
         
         //verify Talk & Text usage detail section
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyFullPlanTalkTextUsageModuleIsDisplayed(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyFullPlanTalkTextUsageModuleIsDisplayed(), 
 				"Talk & Text usage module for full plan is displayed.", 
 				"Talk & Text usage module for full plan is not displayed.");
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyTalkHaveMinutesRemainingValues(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyTalkHaveMinutesRemainingValues(), 
 				"Remaining minutes for talk is displayed.", 
 				"Remaining minutes for talk is not displayed.");
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyTextHaveMinutesRemainingValues(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyTextHaveMinutesRemainingValues(), 
 				"Remaining text is displayed.", 
 				"Remaining text is not displayed.");
         rogers_wireless_dashboard_page.clkViewDetailsInFullPlanTalkAndTextUsageModule();
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyDsModalTalkTextDetailIsDisplayed(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyDsModalTalkTextDetailIsDisplayed(), 
 				"Talk & Text detail ds-modal for full plan is displayed.", 
 				"Talk & Text detail ds-modal for full plan is not displayed.");
         reporter.reportLogWithScreenshot("Talk and text details after click view details.");
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyDsModalTalkTextDetailComplyWithTalkTextUsageInWirelessDashboard(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyDsModalTalkTextDetailComplyWithTalkTextUsageInWirelessDashboard(), 
 				"Talk & Text details in ds-modal for full plan comply with the usage in dashboard.", 
 				"Talk & Text details in ds-modal for full plan does not comply with the usage in dashboard."); 
         rogers_wireless_dashboard_page.closeDsModal();

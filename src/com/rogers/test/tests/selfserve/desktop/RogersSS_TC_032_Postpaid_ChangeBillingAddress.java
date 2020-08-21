@@ -108,7 +108,7 @@ public class RogersSS_TC_032_Postpaid_ChangeBillingAddress extends BaseTestClass
     	rogers_profile_and_settings_page.selectAndSubmit(); 
     	//rogers_profile_and_settings_page.clkSubmit();
 		reporter.reportLogWithScreenshot("New billing address submitted.");
-    	reporter.softAssert((rogers_profile_and_settings_page.clickDoneChangeBillingAddress()
+    	reporter.hardAssert((rogers_profile_and_settings_page.clickDoneChangeBillingAddress()
     			&& rogers_profile_and_settings_page.verifyBillingAddress(strBillingAddress)),
 				"Billing address change was done successfully", 
 				"Billing address was not updated, please investigate");

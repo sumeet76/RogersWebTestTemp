@@ -71,7 +71,7 @@ public class RogersSS_TC_02_AccountRegistration extends BaseTestClass {
 			rogers_set_password_page.setConfirmPassword(strPassword);
 			reporter.reportLogWithScreenshot("Set password page.");
 			rogers_set_password_page.clkBtnSetPassword();
-			reporter.softAssert(rogers_set_password_page.verifyMsgReigistrationCompleteIsDisplayed(),
+			reporter.hardAssert(rogers_set_password_page.verifyMsgReigistrationCompleteIsDisplayed(),
 					"Registration completed message displayed",
 					"Registration completed message does Not displayed");
 			reporter.reportLogWithScreenshot("Set password completed.");

@@ -51,7 +51,7 @@ public class RogersSS_TC_046_AO_ValidateCHaccountBadge_LegacyRHP extends BaseTes
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 		rogers_account_overview_page.selectAccount(TestDataHandler.tc46LegacyRHP.getAccountDetails().getBan());
-		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed");
+		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		rogers_account_overview_page.clkRHPBadge();
 		reporter.reportLogWithScreenshot("Click RHP Badge");

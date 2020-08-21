@@ -136,15 +136,15 @@ public class RogersSS_TC79_ValidateCancelDataFlowNSECTNwithSingleRegularMDTs ext
 				reporter.reportLogWithScreenshot("dashboard page");				
 				reporter.reportLogWithScreenshot("My Plan Details");
 				//All the added OTT are reflected in total bucket,plan section and manage data page
-				reporter.softAssert(rogers_wireless_dashboard_page.verifyCancelledAddedDataInMyPlan(1, countOfActiveAndCancelledAddDataOnMyPlan.get("cancelled"))
+				reporter.hardAssert(rogers_wireless_dashboard_page.verifyCancelledAddedDataInMyPlan(1, countOfActiveAndCancelledAddDataOnMyPlan.get("cancelled"))
 						,"Expires MMM DD - is displayed next to the cancelled MDT in plan section",
 						"Expires MMM DD - is NOT displayed next to the cancelled MDT in plan section");
 				
 				rogers_wireless_dashboard_page.scrollToTopOfDasboardPage();	
-				reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(),
+				reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(),
 						"'Data details' page is displayed after click on view details link",
 						"'Data details' page is NOT displayed after click on view details link");				
-				reporter.softAssert(rogers_manage_data_page.verifyCancelledMDTInManageData(1,countOfActiveAndCancelledAddData.get("cancelled")),
+				reporter.hardAssert(rogers_manage_data_page.verifyCancelledMDTInManageData(1,countOfActiveAndCancelledAddData.get("cancelled")),
 						"Expires MMM DD - is displayed next to the cancelled MDT in manage data page",
 						"Expires MMM DD - is NOT displayed next to the cancelled MDT in manage data page, plase investigate");	
 				

@@ -78,39 +78,39 @@ public class RogersSS_TC_060_ValidateCopyChangesOfDataUsageDisplayWithInLimitsPo
        {
     	   rogers_wireless_dashboard_page.clkTheNthCTNOnDashboardPage(ctnCount);
     	   reporter.reportLogWithScreenshot("CTN Number : "+ctnCount);
-    	   reporter.softAssert(rogers_wireless_dashboard_page.verifyUsageBarIsDisplayed(),
+    	   reporter.hardAssert(rogers_wireless_dashboard_page.verifyUsageBarIsDisplayed(),
     	           "Usage bar displayed with the usage ",
     	           "Usage bar seems not displayed, please investigate");
-    	           reporter.softAssert(rogers_wireless_dashboard_page.verifyDataRemainingOutOfTotalDataBucket(), 
+    	           reporter.hardAssert(rogers_wireless_dashboard_page.verifyDataRemainingOutOfTotalDataBucket(), 
     	    				"Data remaining out of Total data bucket info should be displayed", 
     	    				"Data remaining out of Total data bucket info is not displayed.");
-    	    		reporter.softAssert(rogers_wireless_dashboard_page.verifyTotalDataBucket(), 
+    	    		reporter.hardAssert(rogers_wireless_dashboard_page.verifyTotalDataBucket(), 
     	    						"Max Speed data remaining is displayed with the total data remaining included (Speed pass) if any", 
     	    						"Max Speed data remaining seems NOT displayed with the total data remaining included (Speed pass)");
     	    		//6. Total data should be displayed with GB
     	    		reporter.reportLogWithScreenshot("Navigated back to dashboard after resign in");  
-    	    		 reporter.softAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded(),
+    	    		 reporter.hardAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded(),
     	    	        		"All amounts are coverted to GB For Total Data Displayed Below Label Total Data Plus Plan Added",
     	    	        		"it seems amount is not convertd to GB For Total Data Displayed Below Label Total Data Plus Plan Added, please investigate");
-    	            reporter.softAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForLabelDataRemaining(),
+    	            reporter.hardAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForLabelDataRemaining(),
     	            		"All amounts are coverted to GB For Label Data Remaining",
     	            		"it seems amount is not convertd to GB For Label Data Remaining, please investigate");
-    	            reporter.softAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForlabelTotalDataDisplayedBelowBarRightSide(),
+    	            reporter.hardAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForlabelTotalDataDisplayedBelowBarRightSide(),
     	            		"All amounts are coverted to GB label Total Data Displayed Below Bar RightSide",
     	            		"it seems amount is not convertd to GB label Total Data Displayed Below Bar RightSide, please investigate");
     	    		
-    	    		 reporter.softAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesForTotalDataPlusAddedPlan(), 
+    	    		 reporter.hardAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesForTotalDataPlusAddedPlan(), 
     	    					"All MB amounts converted in GB up to 2 decimal points For Total Data Plus Added Plan", 
     	    					"MB amounts converted in GB up to 2 decimal points NOT validated For Total Data Plus Added Plan, please investigate");  
-    	    		reporter.softAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesOnLabelDataRemaining(), 
+    	    		reporter.hardAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesOnLabelDataRemaining(), 
     	    				"All MB amounts converted in GB up to 2 decimal points On Label Data Remaining", 
     	    				"MB amounts converted in GB up to 2 decimal points NOT validated On Label Data Remaining, please investigate"); 
-    	    		reporter.softAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesOnTotalDataBelowUsageBarRightSide(), 
+    	    		reporter.hardAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesOnTotalDataBelowUsageBarRightSide(), 
     	    				"All MB amounts converted in GB up to 2 decimal points Total Data Below UsageBar RightSide", 
     	    				"MB amounts converted in GB up to 2 decimal points NOT validated Total Data Below UsageBar RightSide, please investigate"); 
     	    		
     	    		//7. Manage Data page displayed successfully
-    	    		reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(), 
+    	    		reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(), 
     	    						"'Manage Data' page is displayed after click on view details link", 
     	    						"'Manage Data' page is NOT displayed after click on view details link");  
     	    		reporter.reportLogWithScreenshot("Manage data page view after we click on view details"); 
@@ -119,26 +119,26 @@ public class RogersSS_TC_060_ValidateCopyChangesOfDataUsageDisplayWithInLimitsPo
     	    		reporter.reportLogWithScreenshot("Navigated back to dashboard from manage data view"); 
     	    		
     	    		//8. Remaining days in bill cycle displayed below the total data
-    	    		reporter.softAssert(rogers_wireless_dashboard_page.verifyDaysRemainingInTheBillCycleIsDisplayed(), 
+    	    		reporter.hardAssert(rogers_wireless_dashboard_page.verifyDaysRemainingInTheBillCycleIsDisplayed(), 
     	    						"Days left remaining in the bill cycle is displayed", 
     	    						"Days left remaining in the bill cycle is NOT displayed");  
-    	    		reporter.softAssert(!rogers_wireless_dashboard_page.verifyDataDelayMessage(), 
+    	    		reporter.hardAssert(!rogers_wireless_dashboard_page.verifyDataDelayMessage(), 
     	    						"Data delayed 12 hours message doesn't display, this is Demo line.", 
     	    						"Data delayed 12 hours message doesn't display, please check.");  
     	    		//9. Add Speed pass flow page displayed successfully
     	    		reporter.reportLogWithScreenshot("Navigated back to dashboard from manage data view");  
-    	            reporter.softAssert(rogers_wireless_dashboard_page.verifyAddDataButtonIsDisplayed(), 
+    	            reporter.hardAssert(rogers_wireless_dashboard_page.verifyAddDataButtonIsDisplayed(), 
     	    							"Add the Data top-up button is displayed", 
     	    							"Add the Data top-up  button is NOT displayed.");        
     	            rogers_wireless_dashboard_page.clkAddData();      
-    	            reporter.softAssert(rogers_add_data_page.verifyAddDataOverlayIsDisplayed(), 
+    	            reporter.hardAssert(rogers_add_data_page.verifyAddDataOverlayIsDisplayed(), 
     	    							"Add Data overlay is displayed", 
     	    							"Add Data overlay is NOT displayed.");
     	            reporter.reportLogWithScreenshot("Add Data Overlay"); 
     	            rogers_speed_pass_page.clkBtnCloseInSpeedPassPopup();
     	            if(ctnCount>1)
     	            {
-    	            reporter.softAssert(totalDataPlan==rogers_wireless_dashboard_page.getTotalDataVolume()
+    	            reporter.hardAssert(totalDataPlan==rogers_wireless_dashboard_page.getTotalDataVolume()
     	            		&& totalDataRemaining==rogers_wireless_dashboard_page.getDataRemainingOutOfTotalDataBucket(), 
     	            		"data usage details remain the same for CTN Number: "+ctnCount, 
     	            		"data usage details is not the same for CTN Number: "+ctnCount);    	                	            

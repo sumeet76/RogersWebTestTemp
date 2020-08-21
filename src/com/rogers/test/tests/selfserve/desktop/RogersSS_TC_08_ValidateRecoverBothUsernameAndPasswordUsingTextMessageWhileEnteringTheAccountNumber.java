@@ -69,7 +69,7 @@ public class RogersSS_TC_08_ValidateRecoverBothUsernameAndPasswordUsingTextMessa
 		rogers_recover_pass_or_name.setConfirmPassword(strNewPass);
 		reporter.reportLogWithScreenshot("New passwords set");
 		rogers_recover_pass_or_name.clkBtnSetPassword();
-		reporter.softAssert(rogers_recover_pass_or_name.isPasswordRestSuccessIsDisplayed()
+		reporter.hardAssert(rogers_recover_pass_or_name.isPasswordRestSuccessIsDisplayed()
 				, "Password reset success message is displayed"
 				, "Password reset success message not displayed");
 		rogers_recover_pass_or_name.clkLogInToMyAccount();
