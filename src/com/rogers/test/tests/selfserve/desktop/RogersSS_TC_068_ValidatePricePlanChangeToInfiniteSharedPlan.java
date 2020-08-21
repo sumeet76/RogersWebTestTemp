@@ -75,15 +75,15 @@ public class RogersSS_TC_068_ValidatePricePlanChangeToInfiniteSharedPlan extends
 Since you've made the recent change, usage details won't be available until your next billing cycle.	
          */
         reporter.reportLogWithScreenshot("Dashboard View");        
-        reporter.softAssert(rogers_wireless_dashboard_page.verifySpeedReducedMsg(),
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifySpeedReducedMsg(),
             		"Usage page displays  the reduced speeds message",
             		"Usage page does not displays the reduced speeds message");	        
                
-        reporter.softAssert(rogers_wireless_dashboard_page.verifySpeedPassButtonIsDisplayed(),
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifySpeedPassButtonIsDisplayed(),
 							"Link add speed pass is displayed",
 							"Link add speed pass is not displayed");
         reporter.reportLogWithScreenshot("Add speed pass is displayed");
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyCallOutMsgToAddSpeedPassIsDisplayed(),
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyCallOutMsgToAddSpeedPassIsDisplayed(),
 							"Call out message to Add speed pass is displayed",
 							"call out message to add speed pass is not displayed");
         
@@ -100,7 +100,7 @@ Since you've made the recent change, usage details won't be available until your
 //        }
         rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
                 
-        reporter.softAssert(!rogers_wireless_dashboard_page.verifyCallOutMsgToAddSpeedPassIsDisplayed(),
+        reporter.hardAssert(!rogers_wireless_dashboard_page.verifyCallOutMsgToAddSpeedPassIsDisplayed(),
 				"Call out message to Add speed pass is NOT displayed",
 				"call out message to add speed pass is displayed even after closing in the same session, please investigate");
         

@@ -71,7 +71,7 @@ public class RogersSS_TC_018_TC25_Wireless_Postpaid_OverviewBillInfoChangePaymen
  		reporter.reportLogWithScreenshot("Auto Payment setting completed.");
 		rogers_change_payment_method_page.clkOnDone();		
 		//check payment method on overview page		
-		reporter.softAssert(rogers_account_overview_page.verifyThatAutoPaymentIsDisplayedOnAccountOverViewPage(),
+		reporter.hardAssert(rogers_account_overview_page.verifyThatAutoPaymentIsDisplayedOnAccountOverViewPage(),
 				"Auto payment account details displayed on the account overview page",
 				"Auto payment account details NOT displayed on the account overview page");			
     }
@@ -103,7 +103,7 @@ public class RogersSS_TC_018_TC25_Wireless_Postpaid_OverviewBillInfoChangePaymen
 			rogers_change_payment_method_page.clkSwitchToManualPayments();
 			rogers_change_payment_method_page.clkYesCancelAutomaticPayment();
 			reporter.reportLogWithScreenshot("Payment method switch to manual completed");
-			reporter.softAssert(rogers_change_payment_method_page.verifyChangePaymentMethodToManual(),
+			reporter.hardAssert(rogers_change_payment_method_page.verifyChangePaymentMethodToManual(),
 					"Change payment to manul completed successfully",
 					"Change payment method to Manual failed. Refer screenshot");
 			rogers_change_payment_method_page.clkButtonDoneChangePayment();

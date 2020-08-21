@@ -64,7 +64,7 @@ public class RogersSS_TC_01_FDM_AssignDMRoleViaOverlayForFirstTimeLogin extends 
     		   "Add data manager available for this account","Add data manager is not displayed for this account");
        rogers_wireless_dashboard_page.clkAddDataManager();
        reporter.reportLogWithScreenshot("Add data manger button clicked");
-       reporter.softAssert(rogers_wireless_dashboard_page.isChooseDataManagerOverlayDisplayed(),
+       reporter.hardAssert(rogers_wireless_dashboard_page.isChooseDataManagerOverlayDisplayed(),
         		   "Choose data manager overlay is displayed for this account", 
         		   "Choose data manager overlay is NOT available for this account");
        reporter.reportLogWithScreenshot("Add data manager overlay displayed");

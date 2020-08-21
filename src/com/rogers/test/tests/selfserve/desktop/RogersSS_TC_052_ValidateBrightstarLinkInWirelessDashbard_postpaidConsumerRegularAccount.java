@@ -68,7 +68,7 @@ public class RogersSS_TC_052_ValidateBrightstarLinkInWirelessDashbard_postpaidCo
         rogers_wireless_dashboard_page.clkBtnHelpYourPhoneContinue();
         reporter.reportLogWithScreenshot("Button continue in help out on your phone is clicked.");
         String strUrlExpected = TestDataHandler.ssConfig.getPhoneRepairUrl();
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyBrightstarLinkOpenSuccessfully(strUrlExpected), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyBrightstarLinkOpenSuccessfully(strUrlExpected), 
 				"Brightstar link opened successfully.", 
 				"Brightstar link didn't redirect to expected url.");
         reporter.reportLogWithScreenshot("Brightstar link opened page.");

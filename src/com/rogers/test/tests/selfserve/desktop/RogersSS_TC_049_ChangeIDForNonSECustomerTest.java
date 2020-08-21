@@ -68,12 +68,12 @@ public class RogersSS_TC_049_ChangeIDForNonSECustomerTest extends BaseTestClass 
 			rogers_wireless_dashboard_page.scrollToTopOfDasboardPage();
 			rogers_wireless_dashboard_page.clickOverview();
 			reporter.reportLogWithScreenshot("Back on overview page"); 
-			reporter.softAssert(rogers_account_overview_page.verifyWirelessCallerIdCTNBadgeName(strFirstName),
+			reporter.hardAssert(rogers_account_overview_page.verifyWirelessCallerIdCTNBadgeName(strFirstName),
 					"Caller ID First Name" + strFirstName + " is updated in CTN badge",
 					"Caller ID First Name" + strFirstName + " is NOT updated in CTN badge");
 			rogers_account_overview_page.clkMenuUsageAndService();
 	        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked");
-			reporter.softAssert(rogers_account_overview_page.verifyWirelessCallerIdUpdatedInDropDownToSelectWirelessUsage(strFirstName),
+			reporter.hardAssert(rogers_account_overview_page.verifyWirelessCallerIdUpdatedInDropDownToSelectWirelessUsage(strFirstName),
 					"Caller ID First Name" + strFirstName + " is updated in Dropdown to select usage and services",
 					"Caller ID First Name" + strFirstName + " is NOT updated in Dropdown to select usage and services");
 		}

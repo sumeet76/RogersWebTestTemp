@@ -71,11 +71,11 @@ public class RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhe
        reporter.reportLogWithScreenshot("Click on left scroll performed"); 
        rogers_wireless_dashboard_page.clkTheNthCTNOnDashboardPage(1);
        reporter.reportLogWithScreenshot("Click 1st CTN");
-       reporter.softAssert(rogers_wireless_dashboard_page.isSixthCTNBadgeInVisibleBeforeScrollingOnDashBoard(),
+       reporter.hardAssert(rogers_wireless_dashboard_page.isSixthCTNBadgeInVisibleBeforeScrollingOnDashBoard(),
     		   "6th CTN badge is not visible before scroll",
     		   "6th CTN is visible before scroll");
        rogers_wireless_dashboard_page.clkNextCTNScrollArrow();
-       reporter.softAssert(rogers_wireless_dashboard_page.isSixthCTNVisible(),
+       reporter.hardAssert(rogers_wireless_dashboard_page.isSixthCTNVisible(),
     		   "6th CTN badge is visible After click on  scroll",
     		   "6th CTN is not visible after click on scrol scroll");
        rogers_wireless_dashboard_page.clkTheSixthCTN();

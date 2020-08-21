@@ -60,21 +60,21 @@ public class RogersSS_TC80_ValidateDataUsageDisplayInOveragePayPerUsePostpaidNon
         }
         
         rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();        
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyOverageChargesInTheUsageBar(),
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyOverageChargesInTheUsageBar(),
         		"You have overage charge is displayed",
         		"You have overage charge is NOT displayed, please decrease the data usage and re validate");       
-         reporter.softAssert((rogers_wireless_dashboard_page.verifyCallOutMessageToAddDataIsDisplayed()
+         reporter.hardAssert((rogers_wireless_dashboard_page.verifyCallOutMessageToAddDataIsDisplayed()
         		             && rogers_wireless_dashboard_page.verifyCallOutMessageToAddDataDueToOverageIsDisplayed()),
         		 "Call out message to add data is displayed",
         		 "Call out message to add data is not displayed");
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyDataDelayMessage(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyDataDelayMessage(), 
         					"Data delayed by 12 hours message is displayed", 
         					"Data delayed by 12 hours message is NOT displayed");
         reporter.reportLogWithScreenshot("Wireless dashboard page."); 
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyTotalDataBucket(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyTotalDataBucket(), 
 							"Total data bucket includes plan, paid OTTs, paid MDTs, promotional (zero-rated) bonus OTT and MDTs info should be displayed", 
 							"Total data bucket includes plan, paid OTTs, paid MDTs, promotional (zero-rated) bonus OTT and MDTs info NOT displayed");      
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyAddDataButtonIsDisplayed(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyAddDataButtonIsDisplayed(), 
 							"Add the Data top-up button is displayed", 
 							"Add the Data top-up  button is NOT displayed."); 
        

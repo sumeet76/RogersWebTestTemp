@@ -752,7 +752,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void clkBillngsAndPaymentsSubMenuSetUpAutomaticPaymentMethod() {
 		reusableActions.waitForElementVisibility(lnkSetUpAutomaticPaymentMethod);		
-		reusableActions.clickIfAvailable(lnkSetUpAutomaticPaymentMethod);
+		reusableActions.getWhenReady(lnkSetUpAutomaticPaymentMethod).click();
 	}
 	
 	/**

@@ -60,13 +60,13 @@ public class RogersSS_TC_075_ValidateLiveChatBadgeOnWirelessDashboardPage extend
         }
         rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
                        
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyLiveChatButtonIsDisplayed(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLiveChatButtonIsDisplayed(), 
         					"Live Chat button is displayed in wireless dashboard page", 
         					"Live Chat button is NOT displayed in wireless dashboard page");
         reporter.reportLogWithScreenshot("Wireless dashboard page."); 
         rogers_wireless_dashboard_page.clkBtnLiveChat();
         
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyLiveChatOverlayOpened(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLiveChatOverlayOpened(), 
 							"Live Chat overlay opened in wireless dashboard page", 
 							"Live Chat overlay did NOT open in wireless dashboard page, please investigate.");
         reporter.reportLogWithScreenshot("Live Chat overlay opened."); 

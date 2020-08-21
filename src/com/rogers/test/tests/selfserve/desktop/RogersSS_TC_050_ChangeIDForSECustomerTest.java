@@ -71,7 +71,7 @@ public class RogersSS_TC_050_ChangeIDForSECustomerTest extends BaseTestClass {
 			//for CTN refresh go on overview and come back
 			rogers_wireless_dashboard_page.clickOverview();
 			reporter.reportLogWithScreenshot("Back on overview page"); 
-			reporter.softAssert(rogers_account_overview_page.verifyWirelessCallerIdCTNBadgeName(strFirstName),
+			reporter.hardAssert(rogers_account_overview_page.verifyWirelessCallerIdCTNBadgeName(strFirstName),
 					"Caller ID First Name" + strFirstName + " is updated in CTN badge",
 					"Caller ID First Name" + strFirstName + " is NOT updated in CTN badge");			
 			rogers_account_overview_page.clkMenuUsageAndService();
@@ -82,7 +82,7 @@ public class RogersSS_TC_050_ChangeIDForSECustomerTest extends BaseTestClass {
 	        	rogers_account_overview_page.clkSubMenuWirelessUsage();
 	        }
 	        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();	        	        
-			reporter.softAssert(rogers_wireless_dashboard_page.verifyWirelessCallerIdUpdatedInSeCtnTab(strFirstName),
+			reporter.hardAssert(rogers_wireless_dashboard_page.verifyWirelessCallerIdUpdatedInSeCtnTab(strFirstName),
 					"Caller ID First Name" + strFirstName + " is updated in SE CTN Tab",
 					"Caller ID First Name" + strFirstName + " is NOT updated in SE CTN Tab");			
 		}

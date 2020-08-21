@@ -49,13 +49,13 @@ public class RogersSS_TC_096_AO_ValidateTheLiveChatButtonOnTheAccountOverviewSEi
     	String strPassword = TestDataHandler.tc63.getPassword();		
 		tryLogin(strUsername, strPassword);
 		reporter.reportLogWithScreenshot("Account overveiew page");		
-		reporter.softAssert(rogers_account_overview_page.verifyLiveChatButtonIsDisplayed(), 
+		reporter.hardAssert(rogers_account_overview_page.verifyLiveChatButtonIsDisplayed(), 
 					"Live Chat button is displayed in Account overview page", 
 					"Live Chat button is NOT displayed in Account overview page");
 		
 		rogers_account_overview_page.clkBtnLiveChat();
 		reporter.reportLogWithScreenshot("Clicked on Button Live Chat");	
-		reporter.softAssert(rogers_account_overview_page.verifyLiveChatOverlayOpened(), 
+		reporter.hardAssert(rogers_account_overview_page.verifyLiveChatOverlayOpened(), 
 							"Live Chat overlay opened in Account overview page", 
 							"Live Chat overlay did NOT open in Account overview page, please investigate.");
 		reporter.reportLogWithScreenshot("Live Chat overlay opened."); 

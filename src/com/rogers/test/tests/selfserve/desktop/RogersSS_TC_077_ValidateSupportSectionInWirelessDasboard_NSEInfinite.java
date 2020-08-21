@@ -63,24 +63,24 @@ public class RogersSS_TC_077_ValidateSupportSectionInWirelessDasboard_NSEInfinit
                        
         //rogers_wireless_dashboard_page.scrollToBottomOfPage();
         reporter.reportLogWithScreenshot("Bottom of Wireless dashboard page."); 
-        reporter.softAssert(rogers_wireless_dashboard_page.verifySupportSection(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifySupportSection(), 
         					"Support section is loaded in wireless dashboard page", 
         					"Support section is NOT loaded in wireless dashboard page");
         String strBaseUrl = TestDataHandler.ssConfig.getRogersURL();
         strBaseUrl = strBaseUrl.substring(0, strBaseUrl.lastIndexOf("com")+3);
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyLinkFaqUnlockDevice(strBaseUrl), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLinkFaqUnlockDevice(strBaseUrl), 
 				"FAQ: Unlocking Device link in Support section is validated successfully.", 
 				"Something wrong with FAQ: Unlocking Device link in Support section.");
         reporter.reportLogWithScreenshot("After click FAQ: Unlocking Device link."); 
         rogers_wireless_dashboard_page.navigateBacktoDashboardPage();
         
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyLinkDeviceProtection(strBaseUrl), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLinkDeviceProtection(strBaseUrl), 
 				"Device Protection link in Support section is validated successfully.", 
 				"Something wrong with Device protection link in Support section.");
         reporter.reportLogWithScreenshot("After click Device Protection link."); 
         rogers_wireless_dashboard_page.navigateBacktoDashboardPage();
         
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyLinkNetworkAid(strBaseUrl), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLinkNetworkAid(strBaseUrl), 
 				"Network Aid link in Support section is validated successfully.", 
 				"Something wrong with Network Aid link in Support section.");
         reporter.reportLogWithScreenshot("After click Network Aid link."); 

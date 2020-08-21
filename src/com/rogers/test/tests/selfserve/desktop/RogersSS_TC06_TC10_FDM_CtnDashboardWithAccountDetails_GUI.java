@@ -71,19 +71,19 @@ button should be displayed n Share Everything Dashboard
        
        //usage dashboard area is displayed
        reporter.reportLogWithScreenshot("usage dashboard area is displayed");
-       reporter.softAssert(rogers_wireless_dashboard_page.verifyTotalDataBucket(),
+       reporter.hardAssert(rogers_wireless_dashboard_page.verifyTotalDataBucket(),
     		   "Total data bucket is displayed", "Total data ");
-       reporter.softAssert(rogers_wireless_dashboard_page.verifyDataRemainingOutOfTotalDataBucket(),
+       reporter.hardAssert(rogers_wireless_dashboard_page.verifyDataRemainingOutOfTotalDataBucket(),
     		   "data remaining out of total data bucket is dsiplayed", 
     		   "data remaining out of total data bucket is NOT displayed");
-       reporter.softAssert(rogers_wireless_dashboard_page.verifyDaysRemainingInTheBillCycleIsDisplayed(),
+       reporter.hardAssert(rogers_wireless_dashboard_page.verifyDaysRemainingInTheBillCycleIsDisplayed(),
     		   "Days remaining in the bill cycle is displayed",
     		   "Days remaining in the bill cycle is not displayed");
        
        common_business_flows.scrollToMiddleOfWebPage();
        reporter.reportLogWithScreenshot("Price Plan details along with Change Plan & Change number button");
        //Price Plan details along with Change Plan & Change number button
-       reporter.softAssert(rogers_wireless_dashboard_page.verifyChangePlanButtonDisplayed(), 
+       reporter.hardAssert(rogers_wireless_dashboard_page.verifyChangePlanButtonDisplayed(), 
 				"Change Plan button is displayed", 
 				"Change plan button is not displayed");
        
@@ -102,7 +102,7 @@ button should be displayed n Share Everything Dashboard
 			
 		//4.Share everything dashboard displayed successfully with
 		//Data access, stream saver, data alert buttons in the wireless dashboard.
-		 reporter.softAssert(rogers_wireless_dashboard_page.verifyDataAccessDisplayed(), 
+		 reporter.hardAssert(rogers_wireless_dashboard_page.verifyDataAccessDisplayed(), 
 					"Data access is displayed", 
 					"Data access is not displayed");
 		 reporter.softAssert(rogers_wireless_dashboard_page.verifyStreamSaverDisplayed(), 

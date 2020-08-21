@@ -69,13 +69,13 @@ public class RogersSS_TC_074_ValidateLiveChatLinkInChangeCallerIdLimitExceedModa
 							"Change call ID limit exceed modal opened successfully.", 
 							"Change call ID limit exceed modal didn't open, please check the data.");
                        
-        reporter.softAssert(rogers_change_my_caller_id_page.verifyLinkLiveChatOnExceedLimitOverlay(), 
+        reporter.hardAssert(rogers_change_my_caller_id_page.verifyLinkLiveChatOnExceedLimitOverlay(), 
         					"Live Chat button is displayed in Exceed Limit overlay", 
         					"Live Chat button is NOT displayed in Exceed Limit overlay");
         reporter.reportLogWithScreenshot(" Exceed Limit overlay."); 
         rogers_change_my_caller_id_page.clkLinkLiveChatOnExceedLimitOverlay();
         
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyLiveChatOverlayOpened(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLiveChatOverlayOpened(), 
 							"Live Chat overlay opened.", 
 							"Live Chat overlay did NOT open, please investigate.");
         reporter.reportLogWithScreenshot("Live Chat overlay opened."); 

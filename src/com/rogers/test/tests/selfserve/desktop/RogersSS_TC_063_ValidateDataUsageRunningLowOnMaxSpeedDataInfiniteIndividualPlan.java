@@ -64,17 +64,17 @@ public class RogersSS_TC_063_ValidateDataUsageRunningLowOnMaxSpeedDataInfiniteIn
     		   , "Data remaining is ten percent and less"
     		   , "The data is not 10 % or less, please reduce the date and rerun the script");              
        reporter.reportLogWithScreenshot("Data remaining is ten percent and less");
-       reporter.softAssert(rogers_wireless_dashboard_page.validateDataRemainingOutOfTotalDataBucketTenPercentOrLess(),
+       reporter.hardAssert(rogers_wireless_dashboard_page.validateDataRemainingOutOfTotalDataBucketTenPercentOrLess(),
             		"Running Low state in the usage bar ",
             		"Running Low state in the usage bar  is not displayed");	                       
-       reporter.softAssert(rogers_wireless_dashboard_page.verifySpeedPassButtonIsDisplayed(),
+       reporter.hardAssert(rogers_wireless_dashboard_page.verifySpeedPassButtonIsDisplayed(),
 							"Link 'Add speed pass' is displayed",
 							"Link 'Add speed pass' is not displayed");
        reporter.reportLogWithScreenshot("Add speed pass is displayed");
-       reporter.softAssert(rogers_wireless_dashboard_page.verifyCallOutMsgToAddSpeedPassIsDisplayed(),
+       reporter.hardAssert(rogers_wireless_dashboard_page.verifyCallOutMsgToAddSpeedPassIsDisplayed(),
 							"Call out message to add speed pass is displayed",
 							"call out message to add speed pass is not displayed");
-       reporter.softAssert(rogers_wireless_dashboard_page.verifyDataDelayMessage(),
+       reporter.hardAssert(rogers_wireless_dashboard_page.verifyDataDelayMessage(),
         		"Data delay label is displayed",
         		"Data delay label is not displayed");
     }

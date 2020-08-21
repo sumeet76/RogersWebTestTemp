@@ -65,7 +65,7 @@ public class RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE e
 				"Speed Pass button is displayed", 
 				"Speed Pass button is NOT displayed");
 		reporter.reportLogWithScreenshot("Wireless dashboard page."); 
-		reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(), 
+		reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(), 
 			"'Data details' page is displayed after click on view details link", 
 			"'Data details' page is NOT displayed after click on view details link");  
 	    //- Plan data: should be displayed (shared data across all lines)
@@ -80,18 +80,18 @@ public class RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE e
 		
 		int totalAddedSpeedPass = common_business_flows.addSpeedPass();	
 
-		reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(), 
+		reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(), 
 				"'Data details' page is displayed after click on view details link", 
 				"'Data details' page is NOT displayed after click on view details link"); 
 		reporter.reportLogWithScreenshot("Manage data page view after we click on view details"); 
-		reporter.softAssert(rogers_manage_data_page.verifyAddedDataInDataDetails(totalAddedSpeedPass,countOfExistSpeedPass), 
+		reporter.hardAssert(rogers_manage_data_page.verifyAddedDataInDataDetails(totalAddedSpeedPass,countOfExistSpeedPass), 
 						"Added data section is verified in 'Data details' page,"
 						+ " multiple speed passes of same size displayed individually.", 
 						"Added data section in 'Data details' page is not verified successfully.");  
 		int countOfExistSpeedPassTotalGB = rogers_manage_data_page.getAllExistingSpeedPassTotalGB();	
 		rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
 		reporter.reportLogWithScreenshot("Total data view");
-		reporter.softAssert(rogers_manage_data_page.verifyTotalDataInDataDetailsWithMaxSpeedAndTotalOfSpeedPasses(countOfExistSpeedPassTotalGB,totalSharedDataDisplayedInPlanDataSection), 
+		reporter.hardAssert(rogers_manage_data_page.verifyTotalDataInDataDetailsWithMaxSpeedAndTotalOfSpeedPasses(countOfExistSpeedPassTotalGB,totalSharedDataDisplayedInPlanDataSection), 
 						"Total Data: displays data plan on Max speed AND total added speed passes separately ", 
 						"Total Data: NOT displays data plan on Max speed AND total added speed passes separately ");	
 

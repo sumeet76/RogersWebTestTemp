@@ -63,12 +63,12 @@ public class RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurcha
 		}
 		rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
 
-		reporter.softAssert(rogers_wireless_dashboard_page.verifyDataDelayMessage(),
+		reporter.hardAssert(rogers_wireless_dashboard_page.verifyDataDelayMessage(),
 				"Data delay by 12 hours banner is displayed", "Data delay by 12 hours banner is NOT displayed");
 		reporter.hardAssert(rogers_wireless_dashboard_page.verifySpeedPassButtonIsDisplayed(),
 				"Speed Pass button is displayed", "Speed Pass button is NOT displayed");
 		reporter.reportLogWithScreenshot("Wireless dashboard page.");
-		reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(),
+		reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(),
 				"'Data details' page is displayed after click on view details link",
 				"'Data details' page is NOT displayed after click on view details link");
 		int countOfExistSpeedPass = rogers_manage_data_page.getAllExistingSpeedPassCount();
@@ -78,16 +78,16 @@ public class RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurcha
 		
 		int totalAddedSpeedPass = common_business_flows.addSpeedPass();
 		Thread.sleep(3000);
-		reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(),
+		reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(),
 				"'Data details' page is displayed after click on view details link",
 				"'Data details' page is NOT displayed after click on view details link");
 		reporter.reportLogWithScreenshot("Manage data page view after we click on view details");
-		reporter.softAssert(
+		reporter.hardAssert(
 				rogers_manage_data_page.verifyAddedDataInDataDetails(totalAddedSpeedPass, countOfExistSpeedPass),
 				"Added data section is verified in 'Data details' page,"
 						+ " multiple speed passes of same size displayed individually.",
 				"Added data section in 'Data details' page is not verified successfully.");
-		reporter.softAssert(rogers_manage_data_page.verifyTotalDataInDataDetails(),
+		reporter.hardAssert(rogers_manage_data_page.verifyTotalDataInDataDetails(),
 				"Total data section is verified in 'Data details' page.",
 				"Total data section in 'Data details' page is not verified successfully.");
 		rogers_manage_data_page.clkBackOnManageDataUsagePage();

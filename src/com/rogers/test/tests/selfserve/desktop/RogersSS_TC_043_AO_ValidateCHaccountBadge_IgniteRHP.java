@@ -50,11 +50,11 @@ public class RogersSS_TC_043_AO_ValidateCHaccountBadge_IgniteRHP extends BaseTes
  		rogers_login_page.clkSkipIFrame();
  		rogers_login_page.switchOutOfSignInIFrame();
         rogers_account_overview_page.selectAccount(TestDataHandler.tc43IgniteRHP.accountDetails.getBan()); 
-		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed");
+		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_solaris_rhp_dashboard_validation_page.clkSolarisRHPBadge(xmlTestParameters.get("strBrowser")); 
         reporter.reportLogWithScreenshot("Clicked on RHP badge");
-        reporter.softAssert(rogers_solaris_rhp_dashboard_validation_page.verifyConfigureYourCurrentFeatures(),
+        reporter.hardAssert(rogers_solaris_rhp_dashboard_validation_page.verifyConfigureYourCurrentFeatures(),
         		"Verification of Configure Your Current Features link is success",
         		"Verification of Configure Your Current Features link is Failed");        
         reporter.reportLogWithScreenshot("RHP Dashboard page is opened correctly");

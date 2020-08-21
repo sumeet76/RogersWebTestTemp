@@ -46,7 +46,7 @@ public class RogersSS_TC_040_AO_ValidateCHaccountBadge_SHM extends BaseTestClass
         rogers_login_page.clkSkipIFrame(); 
         rogers_login_page.switchOutOfSignInIFrame();
         rogers_account_overview_page.selectAccount(TestDataHandler.tc40SHMAccount.accountDetails.getBan());                    
-        reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),
+        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),
         		"Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_solaris_tv_dashboard_page.clkSHMBadge();          
@@ -55,7 +55,7 @@ public class RogersSS_TC_040_AO_ValidateCHaccountBadge_SHM extends BaseTestClass
         reporter.reportLogWithScreenshot("Launched the SHM dashboard Page");
         common_business_flows.scrollToMiddleOfWebPage();
 		reporter.reportLogWithScreenshot("Mid page view");
-        reporter.softAssert(rogers_shm_dashboard_page.verifyShopForAccessoriesLinkdisplayed()
+        reporter.hardAssert(rogers_shm_dashboard_page.verifyShopForAccessoriesLinkdisplayed()
         		&& rogers_shm_dashboard_page.verifyShopForAccessoriesLinkdisplayed()
         		&& rogers_shm_dashboard_page.verifyLearnAboutSmartHomeMonitoringLinkdisplayed()
         		&& rogers_shm_dashboard_page.verifyInsuranceCertificateLinkdisplayed(),
