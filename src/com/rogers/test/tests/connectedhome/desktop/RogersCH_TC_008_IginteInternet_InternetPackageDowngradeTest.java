@@ -34,8 +34,6 @@ public class RogersCH_TC_008_IginteInternet_InternetPackageDowngradeTest extends
 
     @Test
     public void checkInternetPackageDowngrade() {
-		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		rogers_home_page.clkEasyLogin();
         rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
@@ -64,7 +62,7 @@ public class RogersCH_TC_008_IginteInternet_InternetPackageDowngradeTest extends
 	//login flow
 	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.chConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
+		startSession(TestDataHandler.chConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
 	}
 
 	@AfterMethod(alwaysRun = true)

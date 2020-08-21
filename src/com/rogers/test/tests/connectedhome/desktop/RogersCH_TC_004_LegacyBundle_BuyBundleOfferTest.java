@@ -77,7 +77,7 @@ public class RogersCH_TC_004_LegacyBundle_BuyBundleOfferTest extends BaseTestCla
     	rogers_order_summary_page.selectDOBMonth();
     	rogers_order_summary_page.selectDOBDay();
     	rogers_order_summary_page.switchToCreditCardIFrame();
-    	rogers_order_summary_page.setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber(),TestDataHandler.chConfig.getBrowser());
+    	rogers_order_summary_page.setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
     	rogers_order_summary_page.switchOutOfCreditCardIFrame();
     	rogers_order_summary_page.selectExpiryMonth();
     	rogers_order_summary_page.selectExpiryYear();
@@ -116,7 +116,7 @@ public class RogersCH_TC_004_LegacyBundle_BuyBundleOfferTest extends BaseTestCla
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 

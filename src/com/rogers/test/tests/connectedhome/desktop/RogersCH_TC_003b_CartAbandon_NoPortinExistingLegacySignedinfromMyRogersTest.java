@@ -59,8 +59,6 @@ public class RogersCH_TC_003b_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
 
 	@Test
 	public void checkCartAbandonNoPortinExistingLegacySignedinfromMyRogersTest() {
-		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		rogers_home_page.clkEasyLogin();
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();     
   		rogers_login_page.switchToSignInIFrame();

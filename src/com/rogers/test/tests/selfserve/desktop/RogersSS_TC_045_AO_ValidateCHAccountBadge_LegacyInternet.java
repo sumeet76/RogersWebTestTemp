@@ -49,7 +49,7 @@ public class RogersSS_TC_045_AO_ValidateCHAccountBadge_LegacyInternet extends Ba
 		rogers_account_overview_page
 				.selectAccount(TestDataHandler.tc45LegacyInternetAccount.getAccountDetails().getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Overview Page");
-		rogers_account_overview_page.clkLegacyInternetBadge(xmlTestParameters.get("strBrowser"));
+		rogers_account_overview_page.clkLegacyInternetBadge();
 		reporter.reportLogWithScreenshot("Launched the Internet Dashboard Page");
 		rogers_account_overview_page.clkInternetPopup();		
 		reporter.hardAssert(rogers_internet_dashboard_page.verifyInternetUsage(),"Verifed the Internet dashboard","Internet dashboard Verification has failed");

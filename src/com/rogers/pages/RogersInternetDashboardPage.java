@@ -119,10 +119,11 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * Click on the Internet Usage Alerts link on solaris Internet dash board
 	 * @author Chinnarao.Vattam
 	 */
-	public void clkInternetUsageAlerts() {		
-		reusableActions.getWhenReady(lnkInternetUsageAlerts,90).click();
-	}
+	public void clkInternetUsageAlerts() {
+		reusableActions.waitForElementVisibility(lnkInternetUsageAlerts,60);
+		reusableActions.executeJavaScriptClick(lnkInternetUsageAlerts);
 
+	}
 	/**
 	 * Verify the Internet Usage Alerts link on Solaris Internet dash board
 	 * @return true if the Internet Usage Alerts link displayed; else false

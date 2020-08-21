@@ -40,8 +40,6 @@ public class RogersCH_TC_033_IginteTV_TVPackagesNewfoundlandFootprintTest extend
 
 	 @Test
 	    public void checkSolarisTVPackageUpgrade() {
-			reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-			rogers_home_page.clkEasyLogin();
 	        reporter.reportLogWithScreenshot("Launched the Home Page");
 	        rogers_home_page.clkSignIn();
 	        rogers_login_page.switchToSignInIFrame();
@@ -86,7 +84,7 @@ public class RogersCH_TC_033_IginteTV_TVPackagesNewfoundlandFootprintTest extend
 		//login flow
 		public void beforeTest(String strBrowser, String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-			startSession(TestDataHandler.chConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
+			startSession(TestDataHandler.chConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
 		}
 
 	@AfterMethod(alwaysRun = true)

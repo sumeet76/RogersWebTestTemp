@@ -37,8 +37,6 @@ public class Mobile_RogersCH_TC_005_IginteInternet_ValidateInternetDashboardUsag
 
     @Test
     public void checkInternetDashboardMobile() {
-		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		rogers_home_page.clkEasyLogin();
         reporter.reportLogWithScreenshot("Home Page");
     	rogers_home_page.clkSignInMobile();    	
         rogers_login_page.switchToSignInIFrame();
@@ -52,7 +50,7 @@ public class Mobile_RogersCH_TC_005_IginteInternet_ValidateInternetDashboardUsag
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
         rogers_account_overview_page.selectAccount(TestDataHandler.solarisInternetAccountWithUsage.accountDetails.getBan());
-    	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+    	reporter.hardAssert(rogers_account_overview_page.verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_internet_dashboard_page.clkInternetBadgeMobile();
         reporter.reportLogWithScreenshot("Launched the Interent dashboard");
@@ -65,11 +63,11 @@ public class Mobile_RogersCH_TC_005_IginteInternet_ValidateInternetDashboardUsag
           reporter.softAssert(rogers_internet_usage_page.verifyDailyBreakdown(), "Verified the daily usage Breakdown", "Daily usage Breakdown deatils are not present");
           reporter.reportLogWithScreenshot("Daily Breakdown details");
           reporter.softAssert(rogers_internet_usage_page.verifyDailyBreakdownTable(), "Verified the daily usage", "Daily usage deatils are not present");
-          rogers_internet_usage_page.clkMonthlyUsage();                    
+          rogers_internet_usage_page.clkMonthlyUsageMobile();                    
           reporter.softAssert(rogers_internet_usage_page.verifyMonthlyBreakdown(),"Verified the monthly usage Breakdown", "Monthly usage Breakdown deatils are not present");
           reporter.reportLogWithScreenshot("Monthly Breakdown details");
           reporter.softAssert(rogers_internet_usage_page.verifyMonthlyBreakdownTable(),"Verified the monthly usage", "Monthly usage deatils are not present");
-          rogers_internet_usage_page.clkUsageAlerts();
+          rogers_internet_usage_page.clkUsageAlertsMobile();
           reporter.softAssert(rogers_internet_usage_page.verifyUsageAlerts(),"Verified the Usage Alerts", "Usage Alerts are not present");
           reporter.reportLogWithScreenshot("Usage and Alerts details");
       	}
@@ -78,7 +76,7 @@ public class Mobile_RogersCH_TC_005_IginteInternet_ValidateInternetDashboardUsag
 	//login flow
 	public void beforeTest(String strBrowser, String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.chConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
+		startSession(TestDataHandler.chConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
 	}
 
 	@AfterMethod(alwaysRun = true)

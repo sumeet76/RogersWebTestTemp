@@ -250,18 +250,18 @@ public class BaseTestClass {
 			
 		case "connectedhome_legacylogin":
 			driver.get(strUrl+"/web/totes/api/v1/bypassCaptchaAuth");
-			driver.get(strUrl+"?setLanguage="+ strLanguage );
+			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ strLanguage);
 			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
 			break; 
 
 		case "connectedhome_ignitelogin":
 			driver.get(strUrl+"/web/totes/browsebuy/v1/byPassCaptcha");	
-			driver.get(strUrl+"?setLanguage="+ strLanguage );
+			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ strLanguage);
 			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
 			break; 
 			
 		case "connectedhome_login":
-			driver.get(strUrl+"?setLanguage="+ strLanguage );
+			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ strLanguage);
 			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
 			break; 
 		

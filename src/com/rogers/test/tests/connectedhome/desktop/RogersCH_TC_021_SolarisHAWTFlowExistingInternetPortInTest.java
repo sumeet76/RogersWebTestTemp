@@ -17,8 +17,6 @@ public class RogersCH_TC_021_SolarisHAWTFlowExistingInternetPortInTest extends B
 
     @Test
     public void checkBuyIginteTVOffer() {
-		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		rogers_home_page.clkEasyLogin();
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
@@ -119,7 +117,7 @@ public class RogersCH_TC_021_SolarisHAWTFlowExistingInternetPortInTest extends B
 	
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 }

@@ -1,16 +1,15 @@
 package com.rogers.pages;
 
-import java.util.List;
-
+import com.rogers.pages.base.BasePageClass;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindAll;
+import org.openqa.selenium.support.FindBy;
 
-import com.rogers.pages.base.BasePageClass;
+import java.util.List;
 
 public class RogersAccountOverviewPage extends BasePageClass {
 
@@ -330,21 +329,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			reusableActions.clickIfAvailable(btnInternetBadge, 90);
 		}
 	}
-	
-	/**
-	 * Clicks on the Legacy 'InternetBadge' option on the dash board
-	 * @param strBrowser browser type
-	 * @author chinnarao.vattam
-	 */
-	public void clkLegacyInternetBadge(String strBrowser) {
-		if (strBrowser.toLowerCase().contains("chrome"))
-		{
-		reusableActions.getWhenReady(btnLegacyInternetBadge, 120).click();
-		}else {
-			reusableActions.clickIfAvailable(btnLegacyInternetBadge, 120);
-		}
-	}
-	
+
 	/**
 	 * Clicks on the Legacy 'InternetBadge' option on the dash board
 	 * @author chinnarao.vattam
@@ -528,7 +513,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 //			reusableActions.staticWait(4000);
 			reusableActions.getWhenReady(menuProfileNSettings,30).click();			
 			reusableActions.waitForElementVisibility(headerProfileNSettings,60);
-			if(reusableActions.isDisplayed(headerProfileNSettings))
+			if(headerProfileNSettings.isDisplayed())
 			{
 				System.out.println("Profile and settings click successful in attempt: "+(count+1));
 				clickSuccess=true;				
@@ -759,7 +744,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 			reusableActions.getWhenReady(btnMakeAPayment,30).click();			
 			reusableActions.waitForElementVisibility(lblMakeASecurePayment,10);
-			if(reusableActions.isDisplayed(lblMakeASecurePayment))
+			if(lblMakeASecurePayment.isDisplayed())
 			{
 				System.out.println("Make payment button clicked in attempt: "+(count+1));
 				clickSuccess=true;				
@@ -790,7 +775,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		reusableActions.staticWait(2000);
 		reusableActions.executeJavaScriptClick(lnkBillingAndPayment);
 		reusableActions.staticWait(3000); //extra static buffers added for firefox
-		return reusableActions.isDisplayed(lnkSetUpAutomaticPaymentMethod);
+		return lnkSetUpAutomaticPaymentMethod.isDisplayed();
 	}
 	
 	/**
@@ -818,7 +803,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		}
 		//reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
 		reusableActions.staticWait(3000); //extra static buffers added for firefox
-		return reusableActions.isDisplayed(lnkSetUpAutomaticPaymentMethodMobile);
+		return lnkSetUpAutomaticPaymentMethodMobile.isDisplayed();
 	}
 
 	/**
@@ -828,8 +813,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean verifyThatAutoPaymentIsDisplayedOnAccountOverViewPage() {
 		reusableActions.waitForElementVisibility(lblAutoPayment);
-		return (reusableActions.isDisplayed(lblAutoPayment)
-			 && reusableActions.isDisplayed(lblAutoPaymentAccountPreFix));
+		return (lblAutoPayment.isDisplayed()
+			 && lblAutoPaymentAccountPreFix.isDisplayed());
 	}	
 	
 	/**
@@ -839,8 +824,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean verifyThatAutoPaymentWithCCIsDisplayedOnAccountOverViewPage() {
 		reusableActions.waitForElementVisibility(lblAutoPayment, 50);
-		return (reusableActions.isDisplayed(lblAutoPayment)
-			 && reusableActions.isDisplayed(imgCC));
+		return (lblAutoPayment.isDisplayed()
+			 && imgCC.isDisplayed());
 	}
 
 		
@@ -861,7 +846,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean isCCDisplayedOnAccountOverViewPage() {		
 		return (reusableActions.isElementVisible(lblAutoPayment,30)
-			 && reusableActions.isDisplayed(imgCC));
+			 && imgCC.isDisplayed());
 	}
 	
 	/**
@@ -881,7 +866,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			reusableActions.executeJavaScriptClick(lnkBillingAndPayment);			
 			reusableActions.waitForElementVisibility(lnkMakePayment);
 			reusableActions.executeJavaScriptClick(lnkMakePayment);	
-			if(reusableActions.isDisplayed(txtAmount))
+			if(txtAmount.isDisplayed())
 			{
 				System.out.println("Billing and payment click successful in attempt: "+(count+1));
 				clickSuccess=true;				

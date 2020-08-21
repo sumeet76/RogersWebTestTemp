@@ -55,8 +55,6 @@ public class RogersCH_TC_028_IginteTV_ExistingSolarisCustomerBuyBundleWithNewAdd
 
     @Test
     public void checkExistingSolarisCustomerBuyBundleWithNewAddress() {
-    	reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		rogers_home_page.clkEasyLogin();
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();

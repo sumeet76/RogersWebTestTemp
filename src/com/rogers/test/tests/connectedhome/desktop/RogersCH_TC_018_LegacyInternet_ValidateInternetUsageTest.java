@@ -34,8 +34,6 @@ public class RogersCH_TC_018_LegacyInternet_ValidateInternetUsageTest extends Ba
 	
 	@Test
 	public void checkLegacyInternetUsage() {
-	    reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		rogers_home_page.clkEasyLogin();
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
 		 rogers_login_page.switchToSignInIFrame();
@@ -52,7 +50,7 @@ public class RogersCH_TC_018_LegacyInternet_ValidateInternetUsageTest extends Ba
 		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.clkLegacyInternetBadge(TestDataHandler.chConfig.getBrowser());
+		rogers_account_overview_page.clkLegacyInternetBadge();
 		reporter.reportLogWithScreenshot("Launched the Internet Dashboard Page");
 		rogers_account_overview_page.clkInternetPopup();
 		reporter.hardAssert(rogers_internet_dashboard_page.verifyInternetUsage(),"Verifed the Internet dashboard","Internet dashboard Verification has failed");
@@ -62,7 +60,7 @@ public class RogersCH_TC_018_LegacyInternet_ValidateInternetUsageTest extends Ba
 	//login flow
 	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.chConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacylogin, method);
+		startSession(TestDataHandler.chConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
 	}
 	
 	@AfterMethod(alwaysRun = true)

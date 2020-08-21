@@ -35,8 +35,6 @@ public class Mobile_RogersCH_TC_019_DigitalTV_ValidateTVDashboardTest extends Ba
 
 	@Test
 	public void checkLegacyTVDashboardMobile() {
-		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		rogers_home_page.clkEasyLogin();
         reporter.reportLogWithScreenshot("Home Page");
     	rogers_home_page.clkSignInMobile();    	
         rogers_login_page.switchToSignInIFrame();
@@ -62,7 +60,7 @@ public class Mobile_RogersCH_TC_019_DigitalTV_ValidateTVDashboardTest extends Ba
 	//login flow
 	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.chConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacylogin, method);
+		startSession(TestDataHandler.chConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
 	}
 
 	

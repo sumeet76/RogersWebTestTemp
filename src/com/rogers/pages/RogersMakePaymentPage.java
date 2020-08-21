@@ -288,7 +288,7 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 */
 	public Boolean verifyPaymentSuccessfulMessageDisplayed() {
 						
-		if(! reusableActions.isDisplayed(lblPaymentReceived)) {
+		if(! lblPaymentReceived.isDisplayed()) {
 			System.out.print("The Label payment received is not displayed it seems, please investigate");
 			return false;
 		}
@@ -354,7 +354,7 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyIfTheSelectedBankIsDisplayedCorrectlyOnTheMakePaymentOverLay() {		
-		return reusableActions.isDisplayed(imgSelectedbank);
+		return imgSelectedbank.isDisplayed();
 	}
 }
 

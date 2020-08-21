@@ -740,7 +740,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean clkBtnAddContactEmailFinish() {
 		reusableActions.staticWait(1000);
-		if(reusableActions.isDisplayed(btnAddContactEmailDone))
+		if(btnAddContactEmailDone.isDisplayed())
 		{
 		 reusableActions.clickWhenReady(btnAddContactEmailDone, 30);
 		 return true;
@@ -794,7 +794,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean clkBtnUpdateHomeNumberFinish() {
 		reusableActions.staticWait(1000);
-		if(reusableActions.isDisplayed(btnUpdateHomeNumberDone))
+		if(btnUpdateHomeNumberDone.isDisplayed())
 		{
 		 reusableActions.clickWhenReady(btnUpdateHomeNumberDone, 30);
 		 return true;
@@ -855,7 +855,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean clkBtnAddBusinessNumberDone() {
 		reusableActions.staticWait(1000);
-		if(reusableActions.isDisplayed(btnAddBusinessNumberDone))
+		if(btnAddBusinessNumberDone.isDisplayed())
 		{
 		 reusableActions.clickWhenReady(btnAddBusinessNumberDone, 30);
 		 return true;
@@ -872,7 +872,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean clkBtnChangeLanguageDone() {
 		reusableActions.staticWait(1000);
-		if(reusableActions.isDisplayed(btnChangeLanguageDone))
+		if(btnChangeLanguageDone.isDisplayed())
 		{
 		 reusableActions.clickWhenReady(btnChangeLanguageDone, 30);
 		 return true;
@@ -899,7 +899,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean buttonFinishExists() {
 
-		return reusableActions.isDisplayed(btnAddContactEmailDone);
+		return btnAddContactEmailDone.isDisplayed();
 	}
 	
 	/**
@@ -1018,7 +1018,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean clickDoneChangeBillingAddress() {
 		reusableActions.staticWait(1000);
-		if(reusableActions.isDisplayed(btnChangeAddressDone))
+		if(btnChangeAddressDone.isDisplayed())
 		{
 		 reusableActions.clickWhenReady(btnChangeAddressDone, 30);
 		 return true;

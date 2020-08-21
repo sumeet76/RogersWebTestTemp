@@ -56,8 +56,7 @@ public class RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
     @Test
     public void checkBuyIgniteTVOffer() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-    	rogers_home_page.clkTVBundle();
-    	
+    	rogers_home_page.clkTVBundle();    	
         reporter.hardAssert(rogers_home_page.verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
        	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	rogers_home_page.clkServiceability();
