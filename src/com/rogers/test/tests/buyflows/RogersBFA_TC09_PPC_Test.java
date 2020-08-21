@@ -31,6 +31,7 @@ public class RogersBFA_TC09_PPC_Test extends BaseTestClass {
 
 	@Test
     public void ppcFlowTest() {
+		reporter.hardAssert(rogers_home_page.verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		reporter.reportLogWithScreenshot("Home Page");
 		rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();
@@ -44,10 +45,11 @@ public class RogersBFA_TC09_PPC_Test extends BaseTestClass {
         reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page");
         reporter.hardAssert(rogers_account_overview_page.verifyAndClickWirelessCTN(TestDataHandler.testCase9.getCtn()), "Select CTN Passed", "Select CTN Failed");
+        rogers_wireless_details_page.verifyWirelessPageLoad();
         reporter.reportLogWithScreenshot("Wireless Dashboard Page");
         rogers_wireless_details_page.clickChangePlanButton();
-        reporter.reportLogWithScreenshot("Modal window appeared for change your plan");
         rogers_choose_plan_page.clkMakeChangesToExistingPlan();
+        reporter.reportLogWithScreenshot("Modal window appeared for change your plan");
         rogers_choose_plan_page.clkButtonModalContinue();
         reporter.reportLogWithScreenshot("Choose Plan page");
         rogers_choose_plan_page.selectPlanCategory(TestDataHandler.testCase9.getNewPlanCategory());
@@ -55,11 +57,11 @@ public class RogersBFA_TC09_PPC_Test extends BaseTestClass {
         rogers_choose_plan_page.selectFirstAvailablePlan();
         rogers_choose_plan_page.verifyAndClickDowngradeFeeContinue();
         rogers_choose_plan_page.clkCheckout();
-        reporter.reportLogWithScreenshot("Order review page");
+        rogers_order_review_page.verifyOrderReviewPageLoadedSuccessfully();
+        reporter.reportLogWithScreenshot("Rogers Order review page");
         rogers_order_review_page.clkTermsAgreementCheckbox();
-        //rogers_order_review_page.clkShieldAgreementCheckbox();
         rogers_order_review_page.selectEmailDigitalCopy(TestDataHandler.testCase9.getUsername());
-        reporter.reportLogWithScreenshot("Order Review page");
+        reporter.reportLogWithScreenshot("Rogers Order Review page");
         if(rogers_order_review_page.isPaymentRequired()) {
         	rogers_order_review_page.clkContinue();
         	rogers_payment_page.setCreditCardDetails(TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getNumber(), 

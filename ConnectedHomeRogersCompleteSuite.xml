@@ -76,5 +76,5 @@
    	        <class name="com.rogers.test.tests.connectedhome.mobile.Mobile_RogersCH_TC_019_DigitalTV_ValidateTVDashboardTest"></class>
      	    <class name="com.rogers.test.tests.connectedhome.mobile.Mobile_RogersCH_TC_023_LegacyRHP_ValidateRHPDashboardTest"></class>  
 		</classes> 
-	</test    
+	</test >   
 </suite>

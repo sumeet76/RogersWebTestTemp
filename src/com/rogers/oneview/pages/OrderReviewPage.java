@@ -131,22 +131,6 @@ public class OrderReviewPage  extends BasePageClass {
 	}
 	
 	/**
-	 * Clicks on the 'Device Financing Agreement' checkbox
-	 * @author rajesh.varalli1
-	 */
-	public void clkShieldAgreementCheckbox() {
-		reusableActions.clickIfAvailable(chbShieldTerms,60);
-	}
-	
-	/**
-	 * Clicks on the 'Upfront Terms' checkbox
-	 * @author rajesh.varalli1
-	 */
-	public void clkUpfrontTermsCheckbox() {
-		reusableActions.clickIfAvailable(chbUpfrontTerms,60);
-	}
-	
-	/**
 	 * Clicks on the 'Email a Digital Copy' radio button
 	 * @author rajesh.varalli1
 	 * @param strEmail string email

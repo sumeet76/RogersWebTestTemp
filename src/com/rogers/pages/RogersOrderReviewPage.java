@@ -121,22 +121,35 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement popupLoadingFingersInternet;	
 	
+	@FindBy(xpath = "//Span[@checkout-res='checkout_review_order']")
+	WebElement lblReviewYourorder;	
+	
+	
 	/**
-	 * To click on the chevron on the payment page
+	 * To verify the Rogers order review Page load
 	 * @author Saurav.Goyal
 	 */
-	public void clkChevronYourCart() {
-		reusableActions.waitForElementVisibility(downChevronYourCart, 120);
-		reusableActions.getWhenReady(downChevronYourCart, 120).click();
+	public void verifyOrderReviewPageLoadedSuccessfully() {
+		reusableActions.waitForElementVisibility(lblReviewYourorder, 60);
 	}
-
+	
+	
+    /**
+     * To click on the chevron on the payment page
+     * @author Saurav.Goyal
+     */
+    public void clkChevronYourCart() {
+        reusableActions.waitForElementVisibility(downChevronYourCart, 120);
+        reusableActions.getWhenReady(downChevronYourCart, 120).click();
+    }
+    
 	/**
 	 * To verify gwp promotion in the payment page
 	 * @return true if the promotion is available else return false
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyGWPYourCartPromotion() {
-		reusableActions.waitForElementVisibility(gwpYourCart, 120);
+		reusableActions.waitForElementVisibility(gwpYourCart, 60);
 		return	reusableActions.isElementVisible(gwpYourCart);
 	}
 	
@@ -315,7 +328,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkShieldAgreementCheckbox() {
-		reusableActions.clickIfAvailable(chbShieldTerms,60);
+		reusableActions.clickWhenReady(chbShieldTerms,60);
 	}
 
 	/**
@@ -324,7 +337,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 */
 	public void clkTermsAgreementCheckbox() {
 		reusableActions.waitForElementVisibility(chbTerms, 60);
-		reusableActions.clickIfAvailable(chbTerms,60);
+		reusableActions.clickWhenReady(chbTerms,60);
 	}
 
 	/**
@@ -332,7 +345,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkUpfrontTermsCheckbox() {
-		reusableActions.clickIfAvailable(chbUpfrontTerms,60);
+		reusableActions.clickWhenReady(chbUpfrontTerms,60);
 	}
 
 	/**
@@ -351,7 +364,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @param strEmail string email
 	 */
 	public void selectEmailDigitalCopy(String strEmail) {
-		reusableActions.clickWhenVisible(rdbtnEmail,30);
+		reusableActions.clickIfAvailable(rdbtnEmail,30);
 		if(reusableActions.isElementVisible(txtCustomerEmail)) {
 			txtCustomerEmail.sendKeys(strEmail);
 		}

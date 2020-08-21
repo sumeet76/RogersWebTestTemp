@@ -318,13 +318,6 @@ public class RogersMakePaymentPage extends BasePageClass {
 	}
 
 	/**
-	 * clicks on Button Close Make Payment
-	 */
-	public void closePayNowModal() {
-		reusableActions.clickIfAvailable(btnCloseMakePayment);		
-	}
-
-	/**
 	 * Selects the bank details
 	 * @param strBankName string bank name
 	 * @author Mirza.Kamran

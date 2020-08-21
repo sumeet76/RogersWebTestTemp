@@ -60,8 +60,7 @@ public class RogersBFA_TestOld_TC05_HUP_withDeviceBalance_FinToFin_24Months0Upfr
         reporter.reportLogWithScreenshot("Rogers Choose Addons Page");
         rogers_choose_addons_page.clkContinueHUP();
         reporter.reportLogWithScreenshot("Rogers Shipping Page");
-        rogers_shipping_page.setEmailID();
-        rogers_shipping_page.clkSaveEmail();
+        rogers_shipping_page.setEmailIDAndSave();
         rogers_shipping_page.clkSelectAvailableTime();
         rogers_shipping_page.clkReserve();
         reporter.reportLogWithScreenshot("Rogers Shipping Page before clicking continue");

@@ -117,14 +117,6 @@ public class RogersChangePlanPage extends BasePageClass {
 	}
 	
 	/**
-	 * Clicks on the 'Continue' button on the 'Do you want these changes to your add-ons?' overlay
-	 * @author rajesh.varalli1
-	 */
-	public void clickContinueDropAddons() {
-		reusableActions.clickIfAvailable(btnContinueDropAddons, 40);
-	}
-	
-	/**
 	 * Returns the Amount of the Price Plan selected
 	 * @return Amount in Decimal format
 	 * @author rajesh.varalli1

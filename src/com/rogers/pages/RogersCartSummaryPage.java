@@ -23,11 +23,20 @@ public class RogersCartSummaryPage extends BasePageClass {
 	WebElement lnkAddAnotherLine;
 	
 	/**
+	 * To verify the Rogers cart summary Page load
+	 * @author Saurav.Goyal
+	 */
+	public void verifyCartSummaryPageLoadedSuccessfully() {
+		reusableActions.waitForElementVisibility(btnContinue, 60);
+	}
+	
+	/**
 	 * Clicks on the 'Continue' button at the bottom of the page
 	 * @author rajesh.varalli1
 	 */
 	public void clkContinue() {
-		reusableActions.clickWhenReady(btnContinue,60);
+		reusableActions.waitForElementTobeClickable(btnContinue, 60);
+		reusableActions.clickWhenReady(btnContinue);
 	}
 	
 	/**

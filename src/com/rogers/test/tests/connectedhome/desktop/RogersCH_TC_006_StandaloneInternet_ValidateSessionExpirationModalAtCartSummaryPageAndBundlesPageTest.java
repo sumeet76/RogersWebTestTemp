@@ -31,11 +31,11 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *
  **/
 
-public class RogersCH_TC_003_StandAloneInternet_BuyInternetOfferTest extends BaseTestClass {
+public class RogersCH_TC_006_StandaloneInternet_ValidateSessionExpirationModalAtCartSummaryPageAndBundlesPageTest extends BaseTestClass {
 
     @Test
-    public void checkBuyInternetOffer() throws InterruptedException {
-		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+    public void checkSessionExpirationModalatCartSummaryPage() throws InterruptedException {
+    	reporter.reportLogWithScreenshot("Launched the Easy Login Page");
 		rogers_home_page.clkEasyLogin();
     	reporter.reportLogWithScreenshot("Launched the Home Page");
     	rogers_home_page.clkShop(); 

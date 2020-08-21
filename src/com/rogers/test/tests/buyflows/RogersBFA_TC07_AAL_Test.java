@@ -36,6 +36,7 @@ public class RogersBFA_TC07_AAL_Test extends BaseTestClass {
 
 	@Test
 	public void aalFlowTest() {
+		reporter.hardAssert(rogers_home_page.verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		reporter.reportLogWithScreenshot("Home Page");
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
@@ -51,47 +52,55 @@ public class RogersBFA_TC07_AAL_Test extends BaseTestClass {
 		rogers_home_page.clkShop();
 		rogers_home_page.clkWireless();
 		rogers_home_page.clkViewAllDevices();
-		reporter.reportLogWithScreenshot("Add button displayed");
 		rogers_home_page.clkAddNow();
-		reporter.reportLogWithScreenshot("Add device to a shared plan diologue displayed");
+		reporter.reportLogWithScreenshot("clicked on Add button and on Add device to a shared plan diologue displayed");
 		rogers_home_page.clkAddDeviceToSharedPlan();
-		rogers_choose_phone_page.searchDevice(TestDataHandler.testCase7.getNewDevice());
-		Boolean proOnTheGoFlag = rogers_choose_phone_page.checkProOnTheGo();
+		reporter.hardAssert(rogers_choose_phone_page.verifyRogersChoosePhonePage(), "Rogers Choose Phone Page loaded properly", "Rogers Choose Phone Page load failed");
 		reporter.reportLogWithScreenshot("Rogers Choose Phone page");
-		rogers_choose_phone_page.addFirstAvailableDevice();
+		rogers_choose_phone_page.searchDevice(TestDataHandler.testCase7.getNewDevice());
+		Boolean proOnTheGoAddressFlag  = rogers_choose_phone_page.checkProOnTheGoAtAddress(TestDataHandler.testCase7.getPostalCode());
+		Boolean proOnTheGoFlag = false;
+		if(proOnTheGoAddressFlag) {
+			proOnTheGoFlag = rogers_choose_phone_page.checkProOnTheGo();
+		}
+		rogers_choose_phone_page.addFirstAvailableDevice();	
+		rogers_build_plan_page.verifyBildPlanPageLoadedSuccessfully();
 		reporter.reportLogWithScreenshot("Rogers Build Plan page");
 		rogers_build_plan_page.selectFirstAvailablePlan();
 		rogers_build_plan_page.clkContinue();
+		rogers_choose_addons_page.verifyChooseAddOnsPageLoadedSuccessfully();
 		reporter.reportLogWithScreenshot("Rogers Choose Addons page");
 		rogers_choose_addons_page.clkContinue();
+		rogers_cart_summary_page.verifyCartSummaryPageLoadedSuccessfully();
 		reporter.reportLogWithScreenshot("Rogers Cart Summary page");
 		rogers_cart_summary_page.clkContinue();
+		reporter.hardAssert(rogers_shipping_page.verifyRogersShippingPage(), "Rogers shipping Page loaded properly", "Rogers shipping Page load failed");
 		reporter.reportLogWithScreenshot("Rogers Shipping page");
+		rogers_shipping_page.clkRadioBillingAddress();
 		if(proOnTheGoFlag) {
-	        rogers_shipping_page.setEmailID();
-	        rogers_shipping_page.clkSaveEmail();
-	        rogers_shipping_page.setPhoneNumber();
-	        rogers_shipping_page.clkSaveNumber();
+	        rogers_shipping_page.setEmailIDAndSave();
+	        rogers_shipping_page.setPhoneNumberAndSave();
 	        rogers_shipping_page.clkSelectAvailableTime();
 	        rogers_shipping_page.clkReserve();
         }
         reporter.reportLogWithScreenshot("Rogers Shipping Page before clicking continue");
 		rogers_shipping_page.clkContinue();
+		rogers_choose_number_page.verifyChooseNumberPageLoadedSuccessfully();
 		reporter.reportLogWithScreenshot("Rogers Choose Number page");
 		rogers_choose_number_page.clkSelectNewNumber();
 		rogers_choose_number_page.selectCity(TestDataHandler.testCase7.getCtnCity());
 		rogers_choose_number_page.clkFindAvailableNumbers();
 		rogers_choose_number_page.selectFirstAvailableNumber();
 		rogers_choose_number_page.clkSave();
-		reporter.reportLogWithScreenshot("Rogers Choose Number page");
+		reporter.reportLogWithScreenshot("Rogers Choose Number page clicking continue");
 		rogers_choose_number_page.clkContinue();
+		rogers_order_review_page.verifyOrderReviewPageLoadedSuccessfully();
 		reporter.reportLogWithScreenshot("Rogers Order Review page");
-		//rogers_order_review_page.clkEmailDigitalCopy();
 		rogers_order_review_page.clkTermsAgreementCheckbox();
 		rogers_order_review_page.clkShieldAgreementCheckbox();
 		rogers_order_review_page.clkUpfrontTermsCheckbox();
 		rogers_order_review_page.selectEmailDigitalCopy(TestDataHandler.testCase7.getUsername());
-		reporter.reportLogWithScreenshot("Rogers Order Review page");
+		reporter.reportLogWithScreenshot("Rogers Order Review page before clicking submit");
 		if(rogers_order_review_page.isPaymentRequired()) {
 			rogers_order_review_page.clkContinue();
 			rogers_payment_page.setCreditCardDetails(TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getNumber(), 

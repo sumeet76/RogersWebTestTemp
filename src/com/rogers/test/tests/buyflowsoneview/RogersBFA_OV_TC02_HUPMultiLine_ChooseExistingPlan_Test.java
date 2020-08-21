@@ -24,17 +24,21 @@ public class RogersBFA_OV_TC02_HUPMultiLine_ChooseExistingPlan_Test extends Base
 		environment_selection_page.presenceOfTheGoButton();
 		reporter.reportLogWithScreenshot("Rogers Choose Phone page");
 		environment_selection_page.selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
-		environment_selection_page.clkGo();
+		//environment_selection_page.clkGo();
 		reporter.hardAssert(account_over_view_page.verifySuccessfulLogin(), "Login Successful", "Login Failed");
 		reporter.hardAssert(account_over_view_page.verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase02.getCtn()),"CTN Found","CTN Not Found");
-		account_over_view_page.clkBtnAssignDataManager();
-		account_over_view_page.clkBtnOkOneViewDialoue();
+		account_over_view_page.clkCloseBtnAssignDataManager();
+		//account_over_view_page.clkBtnOkOneViewDialoue();
 		rogersOV_wireless_details_page.verifyWirelessPageLoad();
 		reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
 		rogersOV_wireless_details_page.clkUpgradeMyDevice();
 		reporter.reportLogWithScreenshot("Rogers Choose Phone Page");
 		rogersOV_choose_phone_page.searchDevice(TestDataHandler.buyFlowsOVtestCase02.getNewDevice());
-		Boolean proOnTheGoFlag = rogersOV_choose_phone_page.checkProOnTheGo();
+		Boolean proOnTheGoAddressFlag  = rogersOV_choose_phone_page.checkProOnTheGoAtAddress(TestDataHandler.buyFlowsOVtestCase02.getPostalCode());
+		Boolean proOnTheGoFlag = false;
+		if(proOnTheGoAddressFlag) {
+			proOnTheGoFlag = rogersOV_choose_phone_page.checkProOnTheGo();
+		}
 		rogersOV_choose_phone_page.selectFirstAvailableDevice();
 		rogersOV_build_plan_page.selectExistingPlan();
 		reporter.reportLogWithScreenshot("Rogers Build Plan Page");
@@ -42,13 +46,12 @@ public class RogersBFA_OV_TC02_HUPMultiLine_ChooseExistingPlan_Test extends Base
 		reporter.reportLogWithScreenshot("Rogers Choose Addons Page");
 		rogersOV_choose_addons_page.clkContinueHUP();
 		reporter.reportLogWithScreenshot("Rogers Shipping Page");
+		rogersOV_shipping_page.clkRadioBillingAddress();
 		if(proOnTheGoFlag) {
-	        rogers_shipping_page.setEmailID();
-	        rogers_shipping_page.clkSaveEmail();
-	        rogers_shipping_page.setPhoneNumber();
-	        rogers_shipping_page.clkSaveNumber();
-	        rogers_shipping_page.clkSelectAvailableTime();
-	        rogers_shipping_page.clkReserve();
+			rogersOV_shipping_page.setEmailIDAndSave();
+			rogersOV_shipping_page.setPhoneNumberAndSave();
+			rogersOV_shipping_page.clkSelectAvailableTime();
+			rogersOV_shipping_page.clkReserve();
         }
         reporter.reportLogWithScreenshot("Rogers Shipping Page before clicking continue");
         rogersOV_shipping_page.clkContinue();
