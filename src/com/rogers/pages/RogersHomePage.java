@@ -201,6 +201,15 @@ public class RogersHomePage extends BasePageClass {
 	WebElement loaderInternetServiceability;
 	
 	/**
+	 * To verify the Home page
+	 * @return true if the signin link is available on home page, else false 
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyHomepage() {
+		return reusableActions.isElementVisible(lnkSignIn, 60);
+	}
+	
+	/**
 	 * Click on add link to add new line
 	 * @author Saurav.Goyal
 	 */
@@ -607,7 +616,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author saurav.goyal
 	 */
 	public void clkContinueIgniteMultipleAddressLookupSubmit() {
-		reusableActions.getWhenReady(continueBtnIgniteMultipleAddressLookupSubmit, 120).click();
+		reusableActions.getWhenReady(continueBtnIgniteMultipleAddressLookupSubmit, 30).click();
 		}
 
 	/**

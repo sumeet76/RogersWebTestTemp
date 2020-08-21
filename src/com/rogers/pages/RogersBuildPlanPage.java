@@ -70,14 +70,27 @@ public class RogersBuildPlanPage extends BasePageClass {
 
 	@FindBy(xpath = "//span[@res='select_existing_plan']/parent::button")
 	WebElement btnSelectExistingPlan;
+	
+	@FindBy(xpath = "//div[@res='you-selected']")
+	WebElement lblYouSelected;
+	
 
+	/**
+	 * To verify the Rogers build plan Page load
+	 * @author Saurav.Goyal
+	 */
+	public void verifyBildPlanPageLoadedSuccessfully() {
+		reusableActions.waitForElementVisibility(lblYouSelected, 60);
+	}
+	
 	/**
 	 * Clicks on the 'Add' button against the first available price plan
 	 * @author rajesh.varalli1
 	 */
 	public void selectFirstAvailablePlan() {
 		reusableActions.waitForPageLoad();
-		reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(btnAdd.get(0), 30));
+		reusableActions.waitForElementVisibility(btnAdd.get(0), 60);
+		reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(btnAdd.get(0)));
 		reusableActions.staticWait(2000);
 	}
 

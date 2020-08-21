@@ -15,14 +15,13 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 /**
  * TC10 - Regression-Rogers-Additional line HUP Scenario
- * 
  * @author Saurav.Goyal
- *
  */
 public class RogersBFA_TC10_HUPOnAdditonalLine_Test extends BaseTestClass {
 
 	@Test
     public void hupOnAdditionalLineFlowTest() {
+		reporter.hardAssert(rogers_home_page.verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		reporter.reportLogWithScreenshot("Rogers Home Page");
 		rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();
@@ -36,8 +35,10 @@ public class RogersBFA_TC10_HUPOnAdditonalLine_Test extends BaseTestClass {
         reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");
         reporter.hardAssert(rogers_account_overview_page.verifyAndClickWirelessCTN(TestDataHandler.testCase10.getCtn()),"CTN Found","CTN Not Found");
+        rogers_wireless_details_page.verifyWirelessPageLoad();
         reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
         rogers_wireless_details_page.clkUpgradeMyDevice();
+        reporter.hardAssert(rogers_choose_phone_page.verifyRogersChoosePhonePage(), "Rogers Choose Phone Page loaded properly", "Rogers Choose Phone Page load failed");
         reporter.reportLogWithScreenshot("Rogers Choose Phone Page");
         rogers_choose_phone_page.searchDevice(TestDataHandler.testCase10.getNewDevice());
         Boolean proOnTheGoAddressFlag  = rogers_choose_phone_page.checkProOnTheGoAtAddress(TestDataHandler.testCase10.getPostalCode());
@@ -46,20 +47,26 @@ public class RogersBFA_TC10_HUPOnAdditonalLine_Test extends BaseTestClass {
 			proOnTheGoFlag = rogers_choose_phone_page.checkProOnTheGo();
 		}
         rogers_choose_phone_page.selectFirstAvailableDevice();
+        rogers_build_plan_page.verifyBildPlanPageLoadedSuccessfully();
+        reporter.reportLogWithScreenshot("Rogers Build Plan page");
         rogers_build_plan_page.selectExistingPlan();
-        reporter.reportLogWithScreenshot("Rogers Build Plan Page");
+        reporter.reportLogWithScreenshot("Rogers Build Plan Page: Existing plan");
         rogers_build_plan_page.clkContinue();
+        rogers_choose_addons_page.verifyChooseAddOnsPageLoadedSuccessfully();
         reporter.reportLogWithScreenshot("Rogers Choose Addons Page");
         rogers_choose_addons_page.clkContinueHUP();
+        reporter.hardAssert(rogers_shipping_page.verifyRogersShippingPage(), "Rogers shipping Page loaded properly", "Rogers shipping Page load failed");
         reporter.reportLogWithScreenshot("Rogers Shipping Page");
         rogers_shipping_page.clkRadioBillingAddress();
         if(proOnTheGoFlag) {
 	        rogers_shipping_page.setEmailIDAndSave();
+	        rogers_shipping_page.setPhoneNumberAndSave();
 	        rogers_shipping_page.clkSelectAvailableTime();
 	        rogers_shipping_page.clkReserve();
         }
         reporter.reportLogWithScreenshot("Rogers Shipping Page before clicking continue");
         rogers_shipping_page.clkContinue();
+        rogers_order_review_page.verifyOrderReviewPageLoadedSuccessfully();
         reporter.reportLogWithScreenshot("Rogers review page");
         rogers_order_review_page.clkTermsAgreementCheckbox();
         rogers_order_review_page.clkShieldAgreementCheckbox();

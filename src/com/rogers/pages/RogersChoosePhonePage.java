@@ -80,6 +80,14 @@ public class RogersChoosePhonePage extends BasePageClass {
 	@FindBy(xpath = "//button[@res='eligible_cancel']")
 	WebElement formProOnTheGoCancel;
 
+	/**
+	 * To verify the Rogers Choose Phone Page
+	 * @return true if the search text filter for phone is available on page, else false 
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyRogersChoosePhonePage() {
+		return reusableActions.isElementVisible(txtSearch, 60);
+	}
 	
 	/**
 	 * Clicks on the 'Details' button on the first available device
@@ -127,7 +135,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void searchDevice(String strDeviceName) {
-		reusableActions.getWhenReady(txtSearch, 80).sendKeys(strDeviceName);
+		reusableActions.getWhenReady(txtSearch, 60).sendKeys(strDeviceName);
 		reusableActions.executeJavaScriptClick(imgSearch);
 	}
 	
