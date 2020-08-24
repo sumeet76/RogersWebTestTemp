@@ -10,7 +10,7 @@
 		<listener
 			class-name="com.rogers.test.listeners.AnnotationTransformer" />
 	</listeners>	
-<test name="RogersRedesign_TC_01_NonRpotgTest" enabled="false">
+<test name="RogersRedesign_TC_01_NonRpotgTest" enabled="true">
 <classes>				             
 <class name="com.rogers.test.tests.redesignrogersnac.RogersRedesign_TC_01_NonRpotgTest" ></class>
 </classes>          																					

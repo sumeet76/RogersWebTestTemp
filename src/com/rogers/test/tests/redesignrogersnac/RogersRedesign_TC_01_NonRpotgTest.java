@@ -88,10 +88,11 @@ public class RogersRedesign_TC_01_NonRpotgTest extends BaseTestClass {
         reporter.softAssert(rogers_checkout_page.verifyCreateProfileTitle(),"Create profile Title Present","Create profile Title not present");
         String emailCreateProfile=rogers_checkout_page.setEmailCreateProfile();
         rogers_checkout_page.confirmEmailCreateProfile(emailCreateProfile);
-//        String firstName = rogers_checkout_page.setFirstNameCreateProfile();
-//        String lastName = rogers_checkout_page.setLastNameCreateProfile();
-        String firstName = rogers_checkout_page.setFirstNameCreateProfilepage("AMARA");
-        String lastName = rogers_checkout_page.setLastNameCreateProfilepage("SPEARS");
+        String firstName = rogers_checkout_page.setFirstNameCreateProfile();
+        String lastName = rogers_checkout_page.setLastNameCreateProfile();
+      //*************** AVS Data Code- Commented for future issue ******//
+//        String firstName = rogers_checkout_page.setFirstNameCreateProfilepage("AMARA");
+//        String lastName = rogers_checkout_page.setLastNameCreateProfilepage("SPEARS");
         String fullNameCreateProfile=firstName+" "+lastName;
         String contactNumberCreateProfile=TestDataHandler.redesignRpotgData.getContactNumber();
         rogers_checkout_page.setContactNumberCreateProfile(contactNumberCreateProfile);

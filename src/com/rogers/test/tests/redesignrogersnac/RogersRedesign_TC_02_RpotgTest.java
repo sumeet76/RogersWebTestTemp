@@ -71,7 +71,7 @@ public class RogersRedesign_TC_02_RpotgTest extends BaseTestClass {
 		System.out.println(TestDataHandler.redesignRpotgData.getPostalCode());
 		reporter.softAssert(
 				rogers_device_config_page.verifyeligiblePostalCodeinBanner()
-						.equals(TestDataHandler.redesignRpotgData.getPostalCode()),
+						.contains(TestDataHandler.redesignRpotgData.getPostalCode()),
 				"Eligible postal code verified in Device Catalog page Banner is carried on to Device Config Page Banner as expected",
 				"Postal Code not matching");
 		String rpotgLabelDeviceConfig = rogers_device_config_page.getRpotgLabelDeviceConfigPage();
@@ -115,7 +115,7 @@ public class RogersRedesign_TC_02_RpotgTest extends BaseTestClass {
 		System.out.println(TestDataHandler.redesignRpotgData.getPostalCode());
 		reporter.softAssert(
 				rogers_plan_config_page.verifyeligiblePostalCodeinBanner()
-						.equals(TestDataHandler.redesignRpotgData.getPostalCode()),
+						.contains(TestDataHandler.redesignRpotgData.getPostalCode()),
 				"Eligible postal code verified in Device Catalog & Device Config page POTG Banner is carried on to Plan Config Page Banner as expected",
 				"Postal code not matching in Plan Config page");
 		String rpotgLabelPlanConfig = rogers_plan_config_page.getRpotgLabelPlanConfigPage();

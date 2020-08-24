@@ -184,7 +184,7 @@ public class RogersReviewOrderPage extends BasePageClass {
 	public String getDeliveryTime() { 
 		reusableActions.javascriptScrollByVisibleElement(deliveryTime);
    	    reusableActions.staticWait(3000);
-		return deliveryTime.getText().replaceAll("\\n",""); 
+		return deliveryTime.getText().replaceAll("\\s",""); 
 	}
 	
     /**

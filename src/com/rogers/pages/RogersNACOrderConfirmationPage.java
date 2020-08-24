@@ -200,7 +200,8 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 		public String getAppointmentTime() { 
 			reusableActions.javascriptScrollByVisibleElement(appointmentTime);
 	   	    reusableActions.staticWait(3000);
-			return appointmentTime.getText().replaceAll("Between","Between:"); 
+	   	   String appointmentTime1= appointmentTime.getText().replaceAll("Between","Between:");
+			return appointmentTime1.replaceAll("\\s",""); 
 		}
 		
 		/**

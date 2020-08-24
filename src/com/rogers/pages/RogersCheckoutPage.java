@@ -989,7 +989,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	public String getAppointmentTime() { 
 		reusableActions.javascriptScrollByVisibleElement(appointmentTime);
    	    reusableActions.staticWait(3000);
-		return appointmentTime.getText().replaceAll("\\n",""); 
+		return appointmentTime.getText().replaceAll("\\s",""); 
 	}
 	
     /**
