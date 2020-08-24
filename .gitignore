@@ -19,3 +19,7 @@ gradle
 .idea
 /build
 .settings/org.eclipse.buildship.core.prefs
+
+gradlew
+
+gradlew.bat
