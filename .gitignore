@@ -15,7 +15,11 @@ rogers_property.dat
 msedgedriver
 *.orig
 .gradle
-.idea/
-*.iml
-*.prefs
-build/
+gradle
+.idea
+/build
+.settings/org.eclipse.buildship.core.prefs
+
+gradlew
+
+gradlew.bat

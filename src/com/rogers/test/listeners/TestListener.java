@@ -6,24 +6,19 @@ import extentreport.ExtentManager;
 import extentreport.ExtentTestManager;
 import extentreport.FileUpload;
 import extentreport.SendEmail;
-import utils.SauceLabsUtils;
-import java.io.IOException;
-//import java.net.URISyntaxException;
-import java.util.HashMap;
-import javax.mail.MessagingException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.IInvokedMethod;
-import org.testng.IInvokedMethodListener;
-import org.testng.ISuite;
-import org.testng.ISuiteListener;
-import org.testng.ITestContext;
-import org.testng.ITestListener;
-import org.testng.ITestResult;
-import org.testng.Reporter;
+import org.testng.*;
+import utils.SauceLabsUtils;
+
+import javax.mail.MessagingException;
+import java.io.IOException;
+import java.util.HashMap;
+
+//import java.net.URISyntaxException;
 
 public class TestListener extends BaseTestClass implements ITestListener , ISuiteListener, IInvokedMethodListener {
 
@@ -245,9 +240,13 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
 	public void onFinish(ISuite suite) {
 
 		try {
-
+			/**
+			 * The if block will get executed if the test run is triggered from local machine or any machine
+			 * where BUILD_TIMESTAMP is not setup. BUILD_TIMESTAMP env variable is set by Jenkins job.
+ 			 */
+			if((System.getenv("BUILD_TIMESTAMP").equals("")||System.getenv("BUILD_TIMESTAMP")==null)){
 			String strResPath= FileUpload.extentReportsUpload();
-			SendEmail.sendEmail(suite.getName(), strResPath);
+			SendEmail.sendEmail(suite.getName(), strResPath);}
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
