@@ -36,7 +36,9 @@ public class Mobile_RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_Infin
 	
     @Test
     public void validateTotalDataForInfiniteSEIndividualPlan() {
-    	rogers_home_page.clkSignIn();
+    	reporter.reportLogWithScreenshot("Home Page");
+        reporter.reportLog("Home Page Launched");
+    	rogers_home_page.clkSignInMobile();
     	String strUsername = TestDataHandler.tc6269.getUsername();
     	rogers_login_page.switchToSignInIFrame();
         rogers_login_page.setUsernameIFrame(strUsername);
@@ -53,7 +55,7 @@ public class Mobile_RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_Infin
             rogers_account_overview_page.selectAccount(TestDataHandler.tc6269.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");   
-        rogers_account_overview_page.clkMenuUsageAndService();
+        rogers_account_overview_page.clkMenuUsageAndServiceMobile();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
     	rogers_account_overview_page.clkSubMenuWirelessUsage();
 
