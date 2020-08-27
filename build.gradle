@@ -44,7 +44,7 @@ task "localTest"(type: Test) {
 	useTestNG(){
 
 		if (project.hasProperty('SanityCH')) { suites 'ConnectedHomeRogersSanityPack.xml' }
-		if (project.hasProperty('SanitySS')) { suites 'SelfServeRogersSanityPack.xml' }
+		if (project.hasProperty('SanitySS')) { suites 'SelfServeRogersEnvSanity.xml' }
 		if (project.hasProperty('SanityBFA')) { suites 'BFARogersSanityPack.xml' }
 		if (project.hasProperty('RegressionCH')) { suites 'ConnectedHomeRogersCompleteSuite.xml' }
 		if (project.hasProperty('RegressionSS')) { suites 'SelfServeRogersCompleteSuite.xml' }
