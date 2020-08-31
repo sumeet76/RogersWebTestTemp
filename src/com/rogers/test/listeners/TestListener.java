@@ -249,7 +249,7 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
 			 * The if block will get executed if the test run is triggered from local machine or any machine
 			 * where BUILD_TIMESTAMP is not setup. BUILD_TIMESTAMP env variable is set by Jenkins job.
  			 */
-			if((System.getenv("BUILD_TIMESTAMP").equals("")||System.getenv("BUILD_TIMESTAMP")==null)){
+			if((System.getenv("BUILD_TIMESTAMP")==null) || System.getenv("BUILD_TIMESTAMP").equals("")){
 			String strResPath= FileUpload.extentReportsUpload();
 			SendEmail.sendEmail(suite.getName(), strResPath);
 		}
