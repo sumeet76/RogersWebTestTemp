@@ -1,3 +1,8 @@
+buildscript {
+	dependencies {
+		classpath group: 'gradle.plugin.SCPlugin', name: 'Gradle-Sauce-Connect-Plugin', version: '0.0.15'}
+}
+
 plugins {
 	id 'java'
 	id 'java-library'
@@ -6,9 +11,10 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'net.researchgate.release' version '2.8.1'
 	id 'net.saliman.properties' version '1.5.1'
-	id "io.johnroach.SauceConnectPlugin" version "0.0.35"
-
 }
+
+apply plugin: 'com.aditya.SauceConnectPlugin'
+
 sauceconnect {
 	username = System.getenv('SAUCE_USERNAME')
 	key = System.getenv('SAUCE_ACCESS_KEY')
@@ -22,11 +28,19 @@ def sauce = [
 
 
 task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
-
+	onlyIf {
+		(!System.getProperty("QaUrl").equals(null) && !System.getProperty("QaUrl").equals("")) || (!System.getProperty("AWSQaUrl").equals(null) && !System.getProperty("AWSQaUrl").equals(""))
+	}
+	/*   if (System.getProperty("QaUrl").equals(null) || System.getProperty("QaUrl").equals(""))
+       {
+           throw new GradleException(" Please pass the QA URL commandline argument as '-DQaUrl=qaX'  ")
+       }*/
+	systemProperties(System.getProperties())
 	outputs.upToDateWhen { false }  // Always run tests
 
 	useTestNG(){
-
+		Set listeners = [ "com.rogers.test.listeners.TestListener" , "com.rogers.test.listeners.AnnotationTransformer"]
+		setListeners(listeners)
 		if (project.hasProperty('SanityCH')) { suites 'ConnectedHomeRogersEnvSanity.xml' }
 		if (project.hasProperty('SanitySS')) { suites 'SelfServeRogersSanityPack.xml' }
 		if (project.hasProperty('SanityBFA')) { suites 'BFARogersSanityPack.xml' }
@@ -37,12 +51,24 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 
 }
 
-task "localTest"(type: Test) {
 
+//To shutdown the sauceconnect
+sauceTest.finalizedBy stopSauceConnect
+
+task "localTest"(type: Test) {
+	onlyIf {
+		(!System.getProperty("QaUrl").equals(null) && !System.getProperty("QaUrl").equals("")) || (!System.getProperty("AWSQaUrl").equals(null) && !System.getProperty("AWSQaUrl").equals(""))
+	}
+	/*   if (System.getProperty("QaUrl").equals(null) || System.getProperty("QaUrl").equals(""))
+       {
+           throw new GradleException(" Please pass the QA URL commandline argument as '-DQaUrl=qaX'  ")
+       }*/
+	systemProperties(System.getProperties())
 	outputs.upToDateWhen { false }  // Always run tests
 
 	useTestNG(){
-
+		Set listeners = [ "com.rogers.test.listeners.TestListener" , "com.rogers.test.listeners.AnnotationTransformer"]
+		setListeners(listeners)
 		if (project.hasProperty('SanityCH')) { suites 'ConnectedHomeRogersSanityPack.xml' }
 		if (project.hasProperty('SanitySS')) { suites 'SelfServeRogersSanityPack.xml' }
 		if (project.hasProperty('SanityBFA')) { suites 'BFARogersSanityPack.xml' }
@@ -52,6 +78,7 @@ task "localTest"(type: Test) {
 	}
 
 }
+
 
 repositories {
 
@@ -103,7 +130,6 @@ configurations {
 
 compileJava {
 	options.encoding = 'UTF-8'
-
 }
 
 task sourceJar(type: Jar) {

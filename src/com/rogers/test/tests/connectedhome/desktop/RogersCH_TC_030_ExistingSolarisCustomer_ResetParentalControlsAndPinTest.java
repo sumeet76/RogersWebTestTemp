@@ -1,17 +1,13 @@
 package com.rogers.test.tests.connectedhome.desktop;
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 /**
  * This class contains the test method to test the Reset parental controls and pin functionality in change tv buy flow for Rogers.com   
@@ -60,9 +56,9 @@ public class RogersCH_TC_030_ExistingSolarisCustomer_ResetParentalControlsAndPin
 
     @BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
-	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.chConfig.getRogersURL(),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 
 	@AfterMethod(alwaysRun = true)

@@ -206,6 +206,7 @@ public class BaseTestClass {
 	//int port = 4723;	
 	private CaptchaBypassHandlers captcha_bypass_handlers;
 	private Map<String, String> sauceParameters;
+	private Map<String,String> RunParameters;
 		
 		public BaseTestClass() {
 			 browserdriver =  new BrowserDrivers();
@@ -223,59 +224,62 @@ public class BaseTestClass {
 	 * @throws IOException               java.io.IOException, Signals that an I/O exception of some sort has occurred, produced by failed or interrupted I/O operations.
 	 */
 	public void startSession(String strUrl, String strBrowser,  String strLanguage, String strGroupName , Method currentTestMethodName) throws ClientProtocolException, IOException {
-		if(strBrowser.contains("sauce"))
+		RunParameters = getExecutionParameters(strBrowser, strLanguage);
+		String browser = RunParameters.get("Browser");
+		String language = RunParameters.get("Language");
+		if(browser.contains("sauce"))
 		{
-			sauceParameters = initializeSauceParamsMap(strBrowser);
+			sauceParameters = initializeSauceParamsMap(browser);
 		}
-		this.driver = browserdriver.driverInit(strBrowser, sauceParameters, currentTestMethodName, strGroupName);
+		this.driver = browserdriver.driverInit(browser, sauceParameters, currentTestMethodName, strGroupName);
 		System.out.println(strUrl + "----------------------------------------------------------------------------");
 		captcha_bypass_handlers = new CaptchaBypassHandlers(getDriver());
 		switch(strGroupName.toLowerCase().trim()) {			
 		case "selfserve":
 		case "selfserve_login":
 		case "mobile_selfserve":
-			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ strLanguage);
-			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
+			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ language);
+			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 			break;
 			
 		case "connectedhome_legacyanonymous":
 			driver.get(strUrl+"/web/totes/api/v1/bypassCaptchaAuth");
-			captcha_bypass_handlers.captchaBypassURLLegacyAnonymousBuyFlows(strUrl, strLanguage); 
+			captcha_bypass_handlers.captchaBypassURLLegacyAnonymousBuyFlows(strUrl, language); 
 			break;	
 			
 		case "connectedhome_igniteanonymous":				
 			driver.get(strUrl+"/web/totes/browsebuy/v1/byPassCaptcha");
-			driver.get(strUrl+"?setLanguage="+ strLanguage ); 
+			driver.get(strUrl+"?setLanguage="+ language); 
 			break;
 			
 		case "connectedhome_legacylogin":
 			driver.get(strUrl+"/web/totes/api/v1/bypassCaptchaAuth");
-			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ strLanguage);
-			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
+			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ language);
+			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 			break; 
 
 		case "connectedhome_ignitelogin":
 			driver.get(strUrl+"/web/totes/browsebuy/v1/byPassCaptcha");	
-			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ strLanguage);
-			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
+			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ language);
+			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 			break; 
 			
 		case "connectedhome_login":
-			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ strLanguage);
-			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
+			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ language);
+			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 			break; 
 		
 		case "buyflows": 
-			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ strLanguage);
-			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
+			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ language);
+			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 			break;
 			
 		case "buyflowsoneview": driver.get(strUrl);
 			break; 
 		
  		default :
- 			driver.get(strUrl+"?setLanguage="+ strLanguage );
- 			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
+ 			driver.get(strUrl+"?setLanguage="+ language );
+ 			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 		}
 	    setImplicitWait(getDriver(), 10);
 		getDriver().manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
@@ -626,4 +630,34 @@ public class BaseTestClass {
 		  putRequest.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 		  HttpClientBuilder.create().build().execute(putRequest);
 		}
+	
+	/** To start a session using given url, browser, language and test case group name.
+	 * @param strLanguage    string of test Language
+	 * @param strBrowser     string of browser name
+	 * @return HashMap of test TestParameters
+	 */
+		public static HashMap<String, String>  getExecutionParameters(String strBrowser,String strLanguage) {
+		if (System.getProperty("Browser") == null || System.getProperty("Browser").isEmpty())
+		{
+			System.setProperty("Browser", strBrowser);
+		}
+		if (System.getProperty("Language") == null ||  System.getProperty("Language").isEmpty())
+		{
+			System.setProperty("Language", strLanguage);
+		}
+		if(System.getProperty("Browser").equals("") && strBrowser.isEmpty())
+		{
+			System.setProperty("Browser", "chrome");
+		}
+		if(System.getProperty("Language").equals("") && strLanguage.isEmpty() )
+		{
+			System.setProperty("Language", "en");
+		}
+		strBrowser= System.getProperty("Browser");
+		strLanguage= System.getProperty("Language");
+		HashMap<String, String> TestParameters = new HashMap<>();
+		TestParameters.put("Browser", strBrowser);
+		TestParameters.put("Language", strLanguage );
+		return TestParameters;
+	}
 }

@@ -1,10 +1,11 @@
 package com.rogers.test.tests.connectedhome.desktop;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeMethod;  
+import org.testng.annotations.Optional;                     
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -53,9 +54,9 @@ public class RogersCH_TC_001_SHM_ServicabilityCheckTest extends BaseTestClass {
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
 	//legacyAnonymous
-	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws  IOException  {
-		startSession(TestDataHandler.chConfig.getRogersURL(),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacyanonymous, method);
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws  IOException  {
+		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacyanonymous, method);
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 	
 

@@ -2,12 +2,13 @@ package com.rogers.test.tests.selfserve.desktop;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;                     
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
@@ -66,9 +67,9 @@ public class RogersSS_TC_043_AO_ValidateCHaccountBadge_IgniteRHP extends BaseTes
     }
     
     @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-	public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-	   xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+	   // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+		startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
 				
 	}
    	
