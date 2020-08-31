@@ -68,8 +68,10 @@ public class RogersCH_TC_007_IginteTV_ValidateWelcomeBackModalWhencxRetrievesCar
         rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-        rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
-       
+        rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();       
+        reporter.hardAssert(rogers_igniteTV_buy_page.verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
+        reporter.reportLogWithScreenshot("Launched the cart summary page");        
+        rogers_home_page.clkTVBundle();         
         reporter.hardAssert(rogers_igniteTV_buy_page.verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
         rogers_igniteTV_buy_page.set4KTV();

@@ -51,27 +51,22 @@ public class RogersCH_TC_013_IginteInternet_ValidateVAicononInternetDashboardTes
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount(TestDataHandler.solarisInternetAccount.accountDetails.getBan());
     	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        reporter.reportLogWithScreenshot("Launched the Account Page");
+        rogers_account_overview_page.selectAccount(TestDataHandler.solarisInternetAccount.accountDetails.getBan());
+    	reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_internet_dashboard_page.clkSolarisInternetBadge();
-        rogers_internet_dashboard_page.clkInternetPopup();
-        reporter.reportLogWithScreenshot("Launched the Interent dashboard");
-        rogers_internet_dashboard_page.clkSolChangeInternetPackage();
-        reporter.reportLogWithScreenshot("Launched the Interent packages page");
-        rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.solarisInternetAccount.getAccountDetails().getUpgradePlanEn(),TestDataHandler.solarisInternetAccount.getAccountDetails().getUpgradePlanFr());
-        reporter.reportLogWithScreenshot("Launched the agreement page");
-        //rogers_internet_dashboard_page.clkInternetChangeOK();
-		reporter.hardAssert(rogers_order_review_page.verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
-		reporter.reportLogWithScreenshot("Launched the order review page");
-				reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
-		
-        rogers_order_review_page.clkAcceptenceCheckboxUpdateInternet();
-        reporter.reportLogWithScreenshot("Agreement details");
-        rogers_order_review_page.clkSubmitUpdateInternet();
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmationNew(),"Update order completed","Update order Failed");                             
-        reporter.reportLogWithScreenshot("Verified the Confirmation page");
+        reporter.hardAssert(rogers_internet_dashboard_page.verifyInternetPage(),"Launched the internet dashboard Page","Internet dashboard Page dosen't launched");
+        reporter.hardAssert(rogers_internet_dashboard_page.verifyVAButton(),"VA button is present","VA button is not present");
+        rogers_internet_dashboard_page.clkVAButton();
+        reporter.hardAssert(rogers_internet_dashboard_page.verifyVaWelcome(),"VA chat tab has launched","VA chat tab hasn't launched");
+        rogers_internet_dashboard_page.clkVAMenu();
+        rogers_internet_dashboard_page.clkVAMininmize();
+        rogers_internet_dashboard_page.clkVAButton();
+        reporter.hardAssert(rogers_internet_dashboard_page.verifyVaWelcome(),"VA chat tab has launched","VA chat tab hasn't launched");
+        reporter.hardAssert(rogers_internet_dashboard_page.verifyVaTopicList(),"VA chat Topic list is available","VA chat Topic list is not available");
+        rogers_internet_dashboard_page.clkVAMenu();
+        rogers_internet_dashboard_page.clkVAClose();
+        reporter.hardAssert(rogers_internet_dashboard_page.verifyVAButton(),"VA button is present","VA button is not present");
     	}
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
