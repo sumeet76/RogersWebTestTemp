@@ -33,6 +33,7 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 		threadCount = test_threadCount as int
 		Set listeners = [ "com.rogers.test.listeners.TestListener" , "com.rogers.test.listeners.AnnotationTransformer"]
 		setListeners(listeners)
+		includeGroups System.getProperty('groupName', 'NONE')
 		if (project.hasProperty('SanityCH')) {
 			suites 'ConnectedHomeRogersEnvSanity.xml'
 		}
@@ -71,6 +72,7 @@ task "localTest"(type: Test) {
 		threadCount = test_threadCount as int
 		Set listeners = [ "com.rogers.test.listeners.TestListener" , "com.rogers.test.listeners.AnnotationTransformer"]
 		setListeners(listeners)
+		includeGroups System.getProperty('groupName', 'NONE')
 		if (project.hasProperty('SanityCH')) {
 			suites 'ConnectedHomeRogersSanityPack.xml'
 		}
