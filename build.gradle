@@ -22,25 +22,35 @@ def sauce = [
 
 
 task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
-	onlyIf {
-		(!System.getProperty("QaUrl").equals(null) && !System.getProperty("QaUrl").equals("")) || (!System.getProperty("AWSQaUrl").equals(null) && !System.getProperty("AWSQaUrl").equals(""))
-	}
-	/*   if (System.getProperty("QaUrl").equals(null) || System.getProperty("QaUrl").equals(""))
-       {
-           throw new GradleException(" Please pass the QA URL commandline argument as '-DQaUrl=qaX'  ")
-       }*/
+	systemProperty 'QaUrl', test_QaUrl
+	systemProperty 'Browser', test_Browser
+	systemProperty 'Language', test_Language
 	systemProperties(System.getProperties())
 	outputs.upToDateWhen { false }  // Always run tests
 
 	useTestNG(){
+		parallel = test_parallel
+		threadCount = test_threadCount as int
 		Set listeners = [ "com.rogers.test.listeners.TestListener" , "com.rogers.test.listeners.AnnotationTransformer"]
 		setListeners(listeners)
-		if (project.hasProperty('SanityCH')) { suites 'ConnectedHomeRogersEnvSanity.xml' }
-		if (project.hasProperty('SanitySS')) { suites 'SelfServeRogersSanityPack.xml' }
-		if (project.hasProperty('SanityBFA')) { suites 'BFARogersSanityPack.xml' }
-		if (project.hasProperty('RegressionCH')) { suites 'ConnectedHomeRogersCompleteSuite.xml' }
-		if (project.hasProperty('RegressionSS')) { suites 'SelfServeRogersCompleteSuite.xml' }
-		if (project.hasProperty('RegressionBFA')) { suites 'BFARogersCompleteSuite.xml' }
+		if (project.hasProperty('SanityCH')) {
+			suites 'ConnectedHomeRogersEnvSanity.xml'
+		}
+		if (project.hasProperty('SanitySS')) {
+			suites 'SelfServeRogersSanityPack.xml'
+		}
+		if (project.hasProperty('SanityBFA')) {
+			suites 'BFARogersSanityPack.xml'
+		}
+		if (project.hasProperty('RegressionCH')) {
+			suites 'ConnectedHomeRogersCompleteSuite.xml'
+		}
+		if (project.hasProperty('RegressionSS')) {
+			suites 'SelfServeRogersCompleteSuite.xml'
+		}
+		if (project.hasProperty('RegressionBFA')) {
+			suites 'BFARogersCompleteSuite.xml'
+		}
 	}
 
 }
@@ -50,25 +60,35 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 sauceTest.finalizedBy stopSauceConnect
 
 task "localTest"(type: Test) {
-	onlyIf {
-		(!System.getProperty("QaUrl").equals(null) && !System.getProperty("QaUrl").equals("")) || (!System.getProperty("AWSQaUrl").equals(null) && !System.getProperty("AWSQaUrl").equals(""))
-	}
-	/*   if (System.getProperty("QaUrl").equals(null) || System.getProperty("QaUrl").equals(""))
-       {
-           throw new GradleException(" Please pass the QA URL commandline argument as '-DQaUrl=qaX'  ")
-       }*/
+	systemProperty 'QaUrl', test_QaUrl
+	systemProperty 'Browser', test_Browser
+	systemProperty 'Language', test_Language
 	systemProperties(System.getProperties())
 	outputs.upToDateWhen { false }  // Always run tests
 
-	useTestNG(){
+	useTestNG() {
+		parallel = test_parallel
+		threadCount = test_threadCount as int
 		Set listeners = [ "com.rogers.test.listeners.TestListener" , "com.rogers.test.listeners.AnnotationTransformer"]
 		setListeners(listeners)
-		if (project.hasProperty('SanityCH')) { suites 'ConnectedHomeRogersSanityPack.xml' }
-		if (project.hasProperty('SanitySS')) { suites 'SelfServeRogersSanityPack.xml' }
-		if (project.hasProperty('SanityBFA')) { suites 'BFARogersSanityPack.xml' }
-		if (project.hasProperty('RegressionCH')) { suites 'ConnectedHomeRogersCompleteSuite.xml' }
-		if (project.hasProperty('RegressionSS')) { suites 'SelfServeRogersCompleteSuite.xml' }
-		if (project.hasProperty('RegressionBFA')) { suites 'BFARogersCompleteSuite.xml' }
+		if (project.hasProperty('SanityCH')) {
+			suites 'ConnectedHomeRogersSanityPack.xml'
+		}
+		if (project.hasProperty('SanitySS')) {
+			suites 'SelfServeRogersSanityPack.xml'
+		}
+		if (project.hasProperty('SanityBFA')) {
+			suites 'BFARogersSanityPack.xml'
+		}
+		if (project.hasProperty('RegressionCH')) {
+			suites 'ConnectedHomeRogersCompleteSuite.xml'
+		}
+		if (project.hasProperty('RegressionSS')) {
+			suites 'SelfServeRogersCompleteSuite.xml'
+		}
+		if (project.hasProperty('RegressionBFA')) {
+			suites 'BFARogersCompleteSuite.xml'
+		}
 	}
 
 }
