@@ -36,7 +36,9 @@ public class Mobile_RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_Infin
 	
     @Test
     public void validateTotalDataForInfiniteSEIndividualPlan() {
-    	rogers_home_page.clkSignIn();
+    	reporter.reportLogWithScreenshot("Home Page");
+        reporter.reportLog("Home Page Launched");
+    	rogers_home_page.clkSignInMobile();
     	String strUsername = TestDataHandler.tc6269.getUsername();
     	rogers_login_page.switchToSignInIFrame();
         rogers_login_page.setUsernameIFrame(strUsername);
@@ -53,18 +55,20 @@ public class Mobile_RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_Infin
             rogers_account_overview_page.selectAccount(TestDataHandler.tc6269.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");   
-        rogers_account_overview_page.clkMenuUsageAndService();
+        rogers_account_overview_page.clkMenuUsageAndServiceMobile();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
     	rogers_account_overview_page.clkSubMenuWirelessUsage();
 
         rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
-         
+        //rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
         //  - Added Data: should be included all Speed passes added for current bill cycle
         //  - Added Data: multiple speed passes of same size should be displayed individually (not summed up)
         reporter.hardAssert(rogers_wireless_dashboard_page.verifySpeedPassButtonIsDisplayed(), 
 				"Speed Pass button is displayed", 
 				"Speed Pass button is NOT displayed");
 		reporter.reportLogWithScreenshot("Wireless dashboard page."); 
+		rogers_profile_and_settings_page.clkCloseFeedbackIfAvailableMobile();
+		rogers_wireless_dashboard_page.closeChatImage();
 		reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(), 
 			"'Data details' page is displayed after click on view details link", 
 			"'Data details' page is NOT displayed after click on view details link");  
@@ -75,7 +79,7 @@ public class Mobile_RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_Infin
 		int totalSharedDataDisplayedInPlanDataSection = rogers_manage_data_page.getTotalPlanData();
 		int countOfExistSpeedPass = rogers_manage_data_page.getAllExistingSpeedPassCount();		
 		reporter.reportLogWithScreenshot("Speed passes");
-		
+		rogers_wireless_dashboard_page.scrollToTopOfDasboardPage();
 		rogers_manage_data_page.clkBackOnManageDataUsagePage();	
 		
 		int totalAddedSpeedPass = common_business_flows.addSpeedPass();	

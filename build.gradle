@@ -64,7 +64,7 @@ task "localTest"(type: Test) {
 		Set listeners = [ "com.rogers.test.listeners.TestListener" , "com.rogers.test.listeners.AnnotationTransformer"]
 		setListeners(listeners)
 		if (project.hasProperty('SanityCH')) { suites 'ConnectedHomeRogersSanityPack.xml' }
-		if (project.hasProperty('SanitySS')) { suites 'SelfServeRogersSanityPack.xml' }
+		if (project.hasProperty('SanitySS')) { suites 'SelfServeRogersEnvSanity.xml' }
 		if (project.hasProperty('SanityBFA')) { suites 'BFARogersSanityPack.xml' }
 		if (project.hasProperty('RegressionCH')) { suites 'ConnectedHomeRogersCompleteSuite.xml' }
 		if (project.hasProperty('RegressionSS')) { suites 'SelfServeRogersCompleteSuite.xml' }
