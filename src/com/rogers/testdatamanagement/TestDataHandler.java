@@ -177,7 +177,7 @@ public class TestDataHandler {
 	private static void connectedHomeDataInit() {
 		chConfig =  YamlHandler.getCableConfig();
       	chPaymentInfo = YamlHandler.getCablePaymentDetails();
-      	sauceSettings = YamlHandler.getSauceSettings("/data/connectedhome/SauceSettings.yml");
+      	sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/connectedhome/SauceSettings.yml");
       	//sacueConfig = YamlHandler.getSauceConfig();              	
       	//Digital TV test data
     	digitalTVAccount = YamlHandler.getCableAccountData("DigitalTVAccount");
@@ -240,7 +240,7 @@ public class TestDataHandler {
 	
 	private static void selfserveDataInit() {
     	ssConfig =  YamlHandler.getConfig();
-    	sauceSettings = YamlHandler.getSauceSettings("/data/selfserve/SauceSettings.yml");
+    	sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/selfserve/SauceSettings.yml");
     	paymentInfo = YamlHandler.getPaymentDetails();
     	tc013132 = YamlHandler.getAccountData("tc01_31_32Postpaid");
     	tc0224 = YamlHandler.getAccountData("tc02_24PostpaidLostStolen");
@@ -296,7 +296,7 @@ public class TestDataHandler {
 	private static void buyFlowsDataInit() {
 		rogersConfig = YamlHandler.getBFAConfig();
 		bfaConfig =  YamlHandler.getBFAConfig();
-		sauceSettings = YamlHandler.getSauceSettings("/data/buyflows/SauceSettings.yml");
+		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/buyflows/SauceSettings.yml");
 		bfaPaymentInfo = YamlHandler.getBFAPaymentDetails();
 		testCase7 = YamlHandler.getAALdata("tc7AAL");
 		testCase8 = YamlHandler.getHUPdata("tc8HUP");
@@ -310,7 +310,7 @@ public class TestDataHandler {
 	
 	private static void buyFlowsOneViewDataInit() {
 		bfaOneViewConfig =  YamlHandler.getBFAOneViewConfig();
-		sauceSettings = YamlHandler.getSauceSettings("/data/buyflows/SauceSettings.yml");
+		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/buyflows/SauceSettings.yml");
 		bfaOneViewPaymentInfo = YamlHandler.getBFAOneViewPaymentDetails();
 		buyFlowsOVtestCase01 = YamlHandler.getHUPdataOneView("tc01OVHUPWithPPCMultilineAccount");
 		buyFlowsOVtestCase02 = YamlHandler.getHUPdataOneView("tc02OVHUPExistingPlanMultilineAccount");

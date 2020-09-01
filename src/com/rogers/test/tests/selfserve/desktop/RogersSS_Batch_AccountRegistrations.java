@@ -33,7 +33,7 @@ public class RogersSS_Batch_AccountRegistrations extends BaseTestClass {
 	@DataProvider(name = "AccountRegistrationData")
 	public Iterator<Object[]> testData() throws IOException
 	{
-	  return parseCsvData(System.getProperty("user.dir") + "/data/selfserve/AccountRegistration.csv");
+	  return parseCsvData(System.getProperty("user.dir") + "/test-data/rogers/selfserve/AccountRegistration.csv");
 	}
 	
 	
