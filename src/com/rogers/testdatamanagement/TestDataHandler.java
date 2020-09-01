@@ -61,10 +61,14 @@ public class TestDataHandler {
 	public static AccountData standaloneInternetAccountWithUsage;
 	public static AccountData legacyRHP;
 	public static AccountData igniteRHP;
+	public static AccountData rogersSHM;
 	public static AccountData solarisInternetAccountWithUsage;
 	public static AccountData tc42SolarisInternetAccountWithUsage;
 	public static AccountData solarisInternetAccountForUpgrade;
 	public static AccountData solarisTVAccountForUpgrade;
+	public static AccountData solarisTVAccountStarterPackage;
+	public static AccountData solarisTVAccountFlex5Package;
+	public static AccountData solarisTVAccountPopularPackage;
 	public static AccountData solarisTVAccountForUpgradeON;
 	public static AccountData solarisTVAccountForUpgradeNL;
 	public static AccountData solarisTVAccountForUpgradeNB;
@@ -84,6 +88,7 @@ public class TestDataHandler {
 	public static AccountData solarisChangeTVManageChannels;
 	public static AccountData solarisChangeTVManageThemePacks;
 	public static AccountData solarisInternetAccountWithUsageAndPackageUpgrade;
+	public static AccountData standaloneInternetAccountforUpgrade;
 	public static AccountData solarisConsumerNoPortinCartAbandon;
 	public static AccountData solarisConsumerPortInCartAbandon;
 	public static AccountData solarisConsumerGWPDigitalTV;
@@ -198,11 +203,13 @@ public class TestDataHandler {
     	//RHP test data
     	legacyRHP = YamlHandler.getCableAccountData("LegacyRHP");
     	igniteRHP = YamlHandler.getCableAccountData("IgniteRHP");
+    	rogersSHM = YamlHandler.getAccountData("RogersSHM");
     	solarisMultipleSubscriptions = YamlHandler.getCableAccountData("SolarisMultipleSubscriptions");
     	
     	//Ignite Internet test data
     	solarisInternetAccount = YamlHandler.getCableAccountData("SolarisInternetAccount");
     	internetAccountUpgrade   = YamlHandler.getCableAccountData("InternetAccountUpgrade");
+    	standaloneInternetAccountforUpgrade   = YamlHandler.getCableAccountData("StandaloneInternetAccountforUpgrade");
     	solarisInternetAccountWithUsage = YamlHandler.getCableAccountData("SolarisInternetAccountWithUsage");
     	solarisInternetAccountForUpgrade = YamlHandler.getCableAccountData("SolarisInternetAccountForUpgrade");
     	standaloneInternetAccountWithUsage = YamlHandler.getCableAccountData("StandaloneInternetAccountWithUsage");
@@ -214,6 +221,9 @@ public class TestDataHandler {
     	igniteTVAccount = YamlHandler.getCableAccountData("IgniteTVAccount");
     	solarisTVAccount = YamlHandler.getCableAccountData("SolarisTVAccount");
     	solarisPortinFlows = YamlHandler.getCableAccountData("SolarisPortinFlows");
+    	solarisTVAccountStarterPackage = YamlHandler.getCableAccountData("SolarisTVAccountStarterPackage");
+    	solarisTVAccountFlex5Package = YamlHandler.getCableAccountData("SolarisTVAccountFlex5Package");
+    	solarisTVAccountPopularPackage = YamlHandler.getCableAccountData("SolarisTVAccountPopularPackage");
     	solarisTVAccountForUpgrade = YamlHandler.getCableAccountData("SolarisTVAccountForUpgrade");
     	solarisTVAccountForUpgradeON = YamlHandler.getCableAccountData("SolarisTVAccountForUpgradeON");
     	solarisTVAccountForUpgradeNL = YamlHandler.getCableAccountData("SolarisTVAccountForUpgradeNL");
