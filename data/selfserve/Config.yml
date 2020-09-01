@@ -1,6 +1,6 @@
 # Config
 ---
-rogersURL: https://qa5.rogers.com
+rogersURL: https://qa6.rogers.com
 rogersCIAMUrl: https://qa6.rogers.com
 browser: chrome
 language: en

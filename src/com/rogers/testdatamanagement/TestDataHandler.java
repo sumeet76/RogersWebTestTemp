@@ -144,6 +144,7 @@ public class TestDataHandler {
 	public static AccountData tc95;
 	public static AccountData tc90;
 	public static AccountData tc98;
+	public static AccountData tc09;
 	
 	public static void dataInit (String strApplicationType) {	    	
     	if(strApplicationType.toUpperCase().trim().endsWith("CH")) {	    	
@@ -289,6 +290,7 @@ public class TestDataHandler {
     	tc40SHMAccount = YamlHandler.getAccountData("tc40SHMAccount");
     	tc47TupeloAccount = YamlHandler.getAccountData("tc47TupeloAccount");
     	tc0610 = YamlHandler.getAccountData("tc06_10DemolineSEPlanMultiLine");
+    	tc09 = YamlHandler.getAccountData("TC09FDM");
 	}
 	
 	private static void buyFlowsDataInit() {
