@@ -26,7 +26,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_018_LegacyInternet_ValidateInternetUsageTest extends BaseTestClass {
 	
-	@Test
+	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH"})
 	public void checkLegacyInternetUsage() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();

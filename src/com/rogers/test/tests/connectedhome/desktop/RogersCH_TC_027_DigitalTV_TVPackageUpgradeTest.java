@@ -27,7 +27,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_027_DigitalTV_TVPackageUpgradeTest extends BaseTestClass {
 
-	@Test
+	@Test(groups = {"RegressionCH","LegacyTVFlowsCH"})
 	public void checkTVPackageUpgrade() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();

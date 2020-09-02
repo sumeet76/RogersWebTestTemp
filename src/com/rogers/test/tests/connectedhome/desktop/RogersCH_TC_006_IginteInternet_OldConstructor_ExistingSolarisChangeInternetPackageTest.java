@@ -39,7 +39,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_006_IginteInternet_OldConstructor_ExistingSolarisChangeInternetPackageTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"RegressionCH","RogersInternetCH"})
     public void checkIginteInternetOldConstructorExistingSolarisChangeInternetPackageTest() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();

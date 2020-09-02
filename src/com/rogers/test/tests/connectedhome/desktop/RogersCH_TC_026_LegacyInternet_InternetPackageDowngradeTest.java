@@ -27,7 +27,7 @@ import java.lang.reflect.Method;
 public class RogersCH_TC_026_LegacyInternet_InternetPackageDowngradeTest extends BaseTestClass {
 
 	
-	@Test
+	@Test(groups = {"RegressionCH","LegacyTVFlowsCH"})
 	public void checkInternetPackageDowngrade() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();

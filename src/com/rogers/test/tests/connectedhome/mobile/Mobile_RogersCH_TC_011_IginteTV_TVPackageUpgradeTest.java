@@ -34,7 +34,7 @@ import java.lang.reflect.Method;
 
 public class Mobile_RogersCH_TC_011_IginteTV_TVPackageUpgradeTest extends BaseTestClass {
 
-    @Test
+    @Test(groups = {"RegressionCH","RogersMobileCH"})
     public void checkSolarisTVPackageUpgradeMobile() {
         reporter.reportLogWithScreenshot("Home Page");
     	rogers_home_page.clkSignInMobile();    	

@@ -35,7 +35,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_009_IginteInternet_InternetPackageUpgradeTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"RegressionCH","RogersInternetCH"})
     public void checkInternetPackageUpgrade() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();

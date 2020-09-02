@@ -40,7 +40,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class Mobile_RogersCH_TC_009_IginteInternet_InternetPackageUpgradeTest extends BaseTestClass {
 
-    @Test
+    @Test(groups = {"RegressionCH","RogersMobileCH"})
     public void checkInternetPackageUpgradeMobile() {
         reporter.reportLogWithScreenshot("Home Page");
     	rogers_home_page.clkSignInMobile();    	

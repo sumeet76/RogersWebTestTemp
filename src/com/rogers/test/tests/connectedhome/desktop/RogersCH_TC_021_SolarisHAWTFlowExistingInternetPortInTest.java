@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_021_SolarisHAWTFlowExistingInternetPortInTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersCableBuyCH"})
+    @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
     public void checkBuyIginteTVOfferPortIn() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();

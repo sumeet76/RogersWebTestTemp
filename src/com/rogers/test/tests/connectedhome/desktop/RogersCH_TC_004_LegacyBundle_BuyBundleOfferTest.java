@@ -40,7 +40,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_004_LegacyBundle_BuyBundleOfferTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"SanityCH","RegressionCH","LegacyTVFlowsCH"})
     public void checkLegacyBundleOffer() throws InterruptedException {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
 		rogers_home_page.clkEasyLogin();

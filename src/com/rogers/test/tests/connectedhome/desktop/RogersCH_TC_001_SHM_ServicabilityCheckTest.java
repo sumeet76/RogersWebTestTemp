@@ -32,7 +32,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_001_SHM_ServicabilityCheckTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"SanityCH","RegressionCH","RhpAndRhmCH"})
     public void checkServicabilityRHMTest() throws InterruptedException {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
 		rogers_home_page.clkEasyLogin();

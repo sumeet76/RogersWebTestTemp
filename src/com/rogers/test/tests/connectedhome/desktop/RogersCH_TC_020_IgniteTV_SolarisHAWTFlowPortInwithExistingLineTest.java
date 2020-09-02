@@ -48,7 +48,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_020_IgniteTV_SolarisHAWTFlowPortInwithExistingLineTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersCableBuyCH"})
+    @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
     public void checkBuyIginteTVOffer() {
     	reporter.reportLogWithScreenshot("Launched the Home Page");
     	rogers_home_page.clkShop(); 

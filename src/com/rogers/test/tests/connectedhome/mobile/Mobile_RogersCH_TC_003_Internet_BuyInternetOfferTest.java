@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 
 public class Mobile_RogersCH_TC_003_Internet_BuyInternetOfferTest extends BaseTestClass {
 
-    @Test
+    @Test(groups = {"RegressionCH","RogersMobileCH"})
     public void checkBuyInternetOfferMobile() throws InterruptedException {   	
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	rogers_home_page.clkEasyInternet() ;

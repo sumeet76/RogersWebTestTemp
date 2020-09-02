@@ -34,7 +34,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_003_LegacyInternet_BuyInternetOfferTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"RegressionCH","LegacyTVFlowsCH"})
     public void checkBuyInternetOffer() throws InterruptedException {
     	reporter.reportLogWithScreenshot("Launched the Home Page");
     	rogers_home_page.clkShop(); 

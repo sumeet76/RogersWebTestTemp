@@ -31,7 +31,7 @@ import java.lang.reflect.Method;
 
 public class Mobile_RogersCH_TC_005_IginteInternet_ValidateInternetDashboardUsageTest extends BaseTestClass {
 
-    @Test
+    @Test(groups = {"RegressionCH","RogersMobileCH"})
     public void checkInternetDashboardMobile() {
         reporter.reportLogWithScreenshot("Home Page");
     	rogers_home_page.clkSignInMobile();    	

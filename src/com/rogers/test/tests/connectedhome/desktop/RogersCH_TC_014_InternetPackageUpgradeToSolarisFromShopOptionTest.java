@@ -51,7 +51,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_014_InternetPackageUpgradeToSolarisFromShopOptionTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersCableBuyCH"})
+    @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
 	public void checkInternetPackageUpgrade() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();

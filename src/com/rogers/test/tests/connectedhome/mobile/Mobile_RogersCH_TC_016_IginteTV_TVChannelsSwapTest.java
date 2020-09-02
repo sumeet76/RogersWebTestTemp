@@ -34,7 +34,7 @@ import java.lang.reflect.Method;
 
 public class Mobile_RogersCH_TC_016_IginteTV_TVChannelsSwapTest extends BaseTestClass {
 	
-@Test
+    @Test(groups = {"RegressionCH","RogersMobileCH"})
 	
    public void checkSolarisTVSwapChannelsMobile() {  
     reporter.reportLogWithScreenshot("Home Page");

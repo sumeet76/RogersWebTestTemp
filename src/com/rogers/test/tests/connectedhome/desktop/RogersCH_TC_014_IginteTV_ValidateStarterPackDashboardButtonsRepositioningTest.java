@@ -29,7 +29,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_014_IginteTV_ValidateStarterPackDashboardButtonsRepositioningTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
     public void checkStarterPackDashboardButtonsRepositioning() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();

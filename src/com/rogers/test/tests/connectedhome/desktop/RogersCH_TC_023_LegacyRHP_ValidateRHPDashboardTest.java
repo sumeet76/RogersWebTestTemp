@@ -26,7 +26,7 @@ import java.lang.reflect.Method;
 public class RogersCH_TC_023_LegacyRHP_ValidateRHPDashboardTest extends BaseTestClass {
 
 
-	@Test
+	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH"})
 	public void checkLegacyRHPDashboard () {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();

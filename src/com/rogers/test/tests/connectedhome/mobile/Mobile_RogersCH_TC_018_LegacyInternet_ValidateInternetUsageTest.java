@@ -33,7 +33,7 @@ import org.testng.annotations.Parameters;
 
 public class Mobile_RogersCH_TC_018_LegacyInternet_ValidateInternetUsageTest extends BaseTestClass {
 	
-	@Test
+    @Test(groups = {"RegressionCH","RogersMobileCH"})
 	public void checkLegacyInternetUsageMobile() {
         reporter.reportLogWithScreenshot("Home Page");
     	rogers_home_page.clkSignInMobile();    	

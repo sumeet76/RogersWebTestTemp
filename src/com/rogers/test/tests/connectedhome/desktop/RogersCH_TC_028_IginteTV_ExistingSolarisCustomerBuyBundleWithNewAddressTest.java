@@ -48,7 +48,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_028_IginteTV_ExistingSolarisCustomerBuyBundleWithNewAddressTest extends BaseTestClass {
 
-    @Test
+	 @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
     public void checkExistingSolarisCustomerBuyBundleWithNewAddress() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();

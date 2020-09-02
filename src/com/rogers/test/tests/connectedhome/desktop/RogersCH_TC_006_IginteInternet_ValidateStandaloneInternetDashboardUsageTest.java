@@ -35,7 +35,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_006_IginteInternet_ValidateStandaloneInternetDashboardUsageTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"RegressionCH","saiCH"})
     public void checkStandaloneInternetDashboard() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();

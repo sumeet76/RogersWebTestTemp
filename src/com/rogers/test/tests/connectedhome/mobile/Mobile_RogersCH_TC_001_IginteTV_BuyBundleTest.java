@@ -48,7 +48,7 @@ import java.lang.reflect.Method;
 
 public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersCableBuyCH"})
+    @Test(groups = {"RegressionCH","RogersMobileCH"})
     public void checkBuyIgniteTVOfferMobile() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	rogers_home_page.clkTVBundle();

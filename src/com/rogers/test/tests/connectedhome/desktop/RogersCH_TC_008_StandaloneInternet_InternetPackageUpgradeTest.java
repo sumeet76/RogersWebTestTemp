@@ -40,7 +40,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_008_StandaloneInternet_InternetPackageUpgradeTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"RegressionCH","saiCH"})
     public void checkStandalonePackageUpgrade() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();

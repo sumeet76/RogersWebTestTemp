@@ -34,7 +34,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class Mobile_RogersCH_TC_019_DigitalTV_ValidateTVDashboardTest extends BaseTestClass {
 
 
-	@Test
+    @Test(groups = {"RegressionCH","RogersMobileCH"})
 	public void checkLegacyTVDashboardMobile() {
         reporter.reportLogWithScreenshot("Home Page");
     	rogers_home_page.clkSignInMobile();    	

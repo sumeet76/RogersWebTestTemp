@@ -32,7 +32,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class Mobile_RogersCH_TC_023_LegacyRHP_ValidateRHPDashboardTest extends BaseTestClass {
 
 
-	@Test
+    @Test(groups = {"RegressionCH","RogersMobileCH"})
 	public void checkLegacyRHPDashboardMobile() {
         reporter.reportLogWithScreenshot("Home Page");
     	rogers_home_page.clkSignInMobile();    	

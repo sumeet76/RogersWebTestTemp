@@ -50,7 +50,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_015_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersCableBuyCH"})
+    @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
 	public void checkTVPackageUpgradeTest() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();

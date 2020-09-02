@@ -27,7 +27,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_024_IgniteRHP_ValidateRHPDasboardTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"SanityCH","RegressionCH","RhpAndRhmCH"})
     public void checkSolarisRHPDasboard() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();

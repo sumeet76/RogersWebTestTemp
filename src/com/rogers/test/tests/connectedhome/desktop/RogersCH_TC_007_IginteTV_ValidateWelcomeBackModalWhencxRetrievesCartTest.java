@@ -53,7 +53,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_007_IginteTV_ValidateWelcomeBackModalWhencxRetrievesCartTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
     public void checkWelcomeBackModalWhencxRetrievesCart() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	rogers_home_page.clkTVBundle();    	

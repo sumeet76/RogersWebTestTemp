@@ -32,7 +32,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_001_SHM_ValidateAccountDashboardTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"RegressionCH","RhpAndRhmCH"})
         public void checkSHMaccountDashboard() {
             reporter.reportLogWithScreenshot("Launched the Home Page");
             rogers_home_page.clkSignIn();

@@ -34,7 +34,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_005_StandaloneInternet_ValidateSessionExpirationModalatCartSummaryPageTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"RegressionCH","saiCH"})
     public void checkSessionExpirationModalatCartSummaryPage() throws InterruptedException {
     	reporter.reportLogWithScreenshot("Launched the Easy Login Page");
 		rogers_home_page.clkEasyLogin();
