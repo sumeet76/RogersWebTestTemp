@@ -37,7 +37,7 @@ public class RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaymentMeth
     }
 
     
-    @Test
+    @Test(groups = {"SanitySS"})
     public void overviewBillInfoChangePaymentMethodPAC_To_CC() {
 
     	rogers_home_page.clkSignIn();
