@@ -10,10 +10,12 @@ import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.rogers.test.base.BaseTestClass;
+import com.rogers.test.helpers.RogersEnums;
 import com.rogers.test.helpers.RogersEnums.GroupName;
 import com.rogers.testdatamanagement.TestDataHandler;
 
@@ -21,11 +23,13 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersSS_TC_09_FDM_AddDataUpsell extends BaseTestClass {	
    	
-	@BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-	public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,GroupName.selfserve, method);
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
+	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+	   // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+		startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+				
 	}
+	   	
 		
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() throws InterruptedException {
@@ -33,11 +37,11 @@ public class RogersSS_TC_09_FDM_AddDataUpsell extends BaseTestClass {
 	}
 		
 	Integer counterOfAddedData =0;
-    @Test
+    @Test(groups = {"SSFDM"})
     public void validateDataUsageDisplayForRunningLowAndAddData() {
     	reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
-    	rogers_home_page.clkSignInMobile();
+        rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc09.getUsername();
     	rogers_login_page.switchToSignInIFrame();
         rogers_login_page.setUsernameIFrame(strUsername);
