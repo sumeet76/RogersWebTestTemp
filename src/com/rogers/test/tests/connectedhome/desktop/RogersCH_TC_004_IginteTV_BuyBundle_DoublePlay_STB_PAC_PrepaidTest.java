@@ -52,7 +52,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_004_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest extends BaseTestClass {
 
-	@Test
+    @Test(groups = {"RegressionCH","RogersCableBuyCH"})
 	public void checkDoublePalyTVOffer() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	rogers_home_page.clkTVBundle();

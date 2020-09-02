@@ -39,7 +39,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_005_IginteTV_OldConstructor_ExistingSolarisChangeTVPackageTest extends BaseTestClass {
 
-    @Test 
+	 @Test(groups = {"RegressionCH","TVPlanUpgardeCH"})
     public void checkIginteTVOldConstructorExistingSolarisChangeTVPackageTest() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();

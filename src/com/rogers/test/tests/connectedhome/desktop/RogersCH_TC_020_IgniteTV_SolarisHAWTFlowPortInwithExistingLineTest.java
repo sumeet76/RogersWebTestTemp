@@ -10,7 +10,6 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-//import org.testng.Assert;
 
 
 /**
@@ -49,7 +48,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_020_IgniteTV_SolarisHAWTFlowPortInwithExistingLineTest extends BaseTestClass {
 
-    @Test
+    @Test(groups = {"RegressionCH","RogersCableBuyCH"})
     public void checkBuyIginteTVOffer() {
     	reporter.reportLogWithScreenshot("Launched the Home Page");
     	rogers_home_page.clkShop(); 

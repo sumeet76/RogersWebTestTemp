@@ -40,7 +40,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_008_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannelsAndThemePackTest extends BaseTestClass {
 
-    @Test
+	 @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
     public void checkSolarisChangeTVPackageAdd4KChannelsAndThemePackFlow() { 
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();

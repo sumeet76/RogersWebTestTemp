@@ -33,7 +33,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_008_IginteInternet_InternetPackageDowngradeTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"SanityCH","RegressionCH","RogersInternetCH"})
     public void checkInternetPackageDowngrade() {
         rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();

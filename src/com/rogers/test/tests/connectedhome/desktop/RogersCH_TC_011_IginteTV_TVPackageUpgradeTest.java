@@ -34,7 +34,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_011_IginteTV_TVPackageUpgradeTest extends BaseTestClass {
 
-    @Test
+	 @Test(groups = {"RegressionCH","TVPlanUpgardeCH"})
     public void checkSolarisTVPackageUpgrade() 
     {
         reporter.reportLogWithScreenshot("Launched the Home Page");

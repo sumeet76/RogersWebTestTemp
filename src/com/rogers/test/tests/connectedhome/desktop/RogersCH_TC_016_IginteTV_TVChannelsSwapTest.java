@@ -34,7 +34,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_016_IginteTV_TVChannelsSwapTest extends BaseTestClass {
 	
-@Test
+	 @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
 	
    public void checkSolarisTVSwapChannels() {
     reporter.reportLogWithScreenshot("Launched the Home Page");

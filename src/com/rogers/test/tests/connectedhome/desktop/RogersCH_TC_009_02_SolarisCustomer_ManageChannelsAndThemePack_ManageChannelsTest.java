@@ -33,7 +33,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_009_02_SolarisCustomer_ManageChannelsAndThemePack_ManageChannelsTest extends BaseTestClass {
 
-	@Test
+	 @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
 	public void checkManageChannelsAndThemePack_ManageChannelsFlow() {  
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
