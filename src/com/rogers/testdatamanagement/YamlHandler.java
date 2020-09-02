@@ -21,7 +21,7 @@ import com.rogers.yaml.pojo.SauceSettings;
 
 public class YamlHandler {
 
-	public static AccountData getAccountData(String accountName) {
+	public static AccountData getSSAccountData(String accountName) {
 		Yaml yaml = new Yaml(new Constructor(AccountData.class));
 		InputStream inputStream;
 		try {
@@ -66,7 +66,7 @@ public class YamlHandler {
 		}
 	}
 	
-	public static Config getConfig() {
+	public static Config getSSConfig() {
 		Yaml yaml = new Yaml(new Constructor(Config.class));
 		InputStream inputStream;
 		try {
@@ -141,7 +141,7 @@ public class YamlHandler {
 
 	}
 	
-	public static PaymentDetails getPaymentDetails() {
+	public static PaymentDetails getSSPaymentDetails() {
 		Yaml yaml = new Yaml(new Constructor(PaymentDetails.class));
 		InputStream inputStream;
 		try {
