@@ -203,7 +203,7 @@ public class TestDataHandler {
     	//RHP test data
     	legacyRHP = YamlHandler.getCableAccountData("LegacyRHP");
     	igniteRHP = YamlHandler.getCableAccountData("IgniteRHP");
-    	rogersSHM = YamlHandler.getAccountData("RogersSHM");
+    	rogersSHM = YamlHandler.getCableAccountData("RogersSHM");
     	solarisMultipleSubscriptions = YamlHandler.getCableAccountData("SolarisMultipleSubscriptions");
     	
     	//Ignite Internet test data

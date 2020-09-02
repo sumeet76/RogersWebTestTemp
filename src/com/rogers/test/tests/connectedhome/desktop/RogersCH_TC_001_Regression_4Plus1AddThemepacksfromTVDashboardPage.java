@@ -33,7 +33,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_001_Regression_4Plus1AddThemepacksfromTVDashboardPage extends BaseTestClass {
 
-	@Test
+	 @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
 	public void check4Plus1AddThemepacksfromTVDashboardPage() { 
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();

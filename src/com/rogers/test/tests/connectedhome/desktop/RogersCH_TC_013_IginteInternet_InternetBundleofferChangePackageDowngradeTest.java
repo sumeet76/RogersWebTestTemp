@@ -29,7 +29,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_013_IginteInternet_InternetBundleofferChangePackageDowngradeTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"RegressionCH","RogersInternetCH"})
     public void checkInternetBundleofferChangePackageDowngrade() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();
@@ -57,14 +57,6 @@ public class RogersCH_TC_013_IginteInternet_InternetBundleofferChangePackageDown
         rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.solarisInternetAccount.getAccountDetails().getDowngradePlanEn(),TestDataHandler.solarisInternetAccount.getAccountDetails().getDowngradePlanFr());
         reporter.hardAssert(rogers_internet_dashboard_page.verifyContatUSInternetDowngarde(),"Displayed the contat US popup","Download package has failed");        
         reporter.reportLogWithScreenshot("Launched the customercare popup");
-        
-        
-        
-        
-        
-       rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.solarisInternetAccount.getAccountDetails().getDowngradePlanEn(),TestDataHandler.solarisInternetAccount.getAccountDetails().getDowngradePlanFr());
-       reporter.hardAssert(rogers_internet_dashboard_page.verifyContatUSInternetDowngarde(),"Displayed the contat US popup","Download package has failed");        
-       reporter.reportLogWithScreenshot("Launched the Interent packages page"); 
     	}                        
 
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})

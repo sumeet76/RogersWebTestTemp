@@ -35,7 +35,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_007_IginteTV_ValidateTVDashboardTest extends BaseTestClass {
 
-    @Test
+	 @Test(groups = {"SanityCH","RegressionCH","IgniteTVDashboardCH"})
     public void checkTVDashboard() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();

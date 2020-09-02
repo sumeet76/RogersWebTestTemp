@@ -39,8 +39,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_001_IginteTV_TVChannelsSwapFromAddressmodalTest extends BaseTestClass {
 	
-@Test
-	
+    @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
    public void checkSolarisTVSwapChannels() { 
     reporter.reportLogWithScreenshot("Launched the Home Page");
     rogers_home_page.clkSignIn();

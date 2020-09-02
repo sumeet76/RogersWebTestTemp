@@ -58,7 +58,7 @@ import org.testng.annotations.Parameters;
 
 public class RogersCH_TC_003a_CartAbandon_NoPortinExistingLegacySignedinfromMyRogersTest extends BaseTestClass {
 
-	@Test
+    @Test(groups = {"RegressionCH","RogersCableBuyCH"})
 	public void checkCartAbandonNoPortinExistingLegacySignedinfromMyRogersTest() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();

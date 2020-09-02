@@ -27,7 +27,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_030_ExistingSolarisCustomer_ResetParentalControlsAndPinTest extends BaseTestClass {
 
-    @Test
+	 @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
     public void checkSolarisTVResetParentalControlsAndPinFlow() {  
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();
