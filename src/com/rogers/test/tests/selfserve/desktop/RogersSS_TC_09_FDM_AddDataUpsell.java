@@ -16,7 +16,6 @@ import org.testng.annotations.Test;
 
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
-import com.rogers.test.helpers.RogersEnums.GroupName;
 import com.rogers.testdatamanagement.TestDataHandler;
 
 
@@ -42,11 +41,11 @@ public class RogersSS_TC_09_FDM_AddDataUpsell extends BaseTestClass {
     	reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
         rogers_home_page.clkSignIn();
-    	String strUsername = TestDataHandler.tc09.getUsername();
+    	//String strUsername = TestDataHandler.tc09.getUsername();
     	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
-        String strPassword = TestDataHandler.tc09.getPassword();    	
-        rogers_login_page.setPasswordIFrame(strPassword);
+        rogers_login_page.setUsernameIFrame("AutoR820SS24@yahoo.com");
+        //String strPassword = TestDataHandler.tc09.getPassword();    	
+        rogers_login_page.setPasswordIFrame("DigiAuto@123");
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
 		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
@@ -55,7 +54,7 @@ public class RogersSS_TC_09_FDM_AddDataUpsell extends BaseTestClass {
 		
         if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc09.getAccountDetails().getBan());
+            rogers_account_overview_page.selectAccount("935756791");//TestDataHandler.tc09.getAccountDetails().getBan()
         }
         reporter.reportLogWithScreenshot("Account overview page.");   
         rogers_account_overview_page.clkMenuUsageAndService();
