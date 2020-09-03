@@ -460,8 +460,8 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
     public String getPricingBlockCataloguePage(String deviceName) throws InterruptedException{
     	//reusableActions.waitForPageLoad();
-    	Thread.sleep(5000);
-    	//reusableActions.staticWait(30000);
+    	//Thread.sleep(1000);
+    	reusableActions.staticWait(30000);
     	System.out.println("After page loads");
     	System.out.println(deviceName);
         xpathDeviceName=createXpathWithDeviceName(deviceName);

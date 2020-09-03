@@ -166,9 +166,9 @@ public class RogersRedesign_TC_02_RpotgTest extends BaseTestClass {
 		reporter.reportLogPassWithScreenshot("Create Profile Page details Entered till ContactNumber");
 		String billingAddressCreateProfile = TestDataHandler.redesignRpotgData.getBillingAddress();
 		rogers_checkout_page.setBillingAddressCreateProfile(billingAddressCreateProfile);
-//		rogers_checkout_page.getRpotgSuccessMessage();
-//		reporter.reportLogPassWithScreenshot(
-//				"Billing Address entered is eligible for RPOTG - Success message validated");
+		rogers_checkout_page.getRpotgSuccessMessage();
+		reporter.reportLogPassWithScreenshot(
+				"Billing Address entered is eligible for RPOTG - Success message validated");
 		rogers_checkout_page.clkUseBillingAddressRadioBtnCreateProfile();
 		rogers_checkout_page.clkLanguageEnglishRadioBtnCreateProfile();
 		reporter.reportLogPassWithScreenshot(
