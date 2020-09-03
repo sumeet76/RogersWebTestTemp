@@ -4,7 +4,7 @@ Belongs to Rogers Digital QA Test Automation
 How to Launch Tests
 
 To run tests on SauceLabs
-gradle sauceTest   -Ptest_Browser=saucechrome -Ptest_Language=en   --tests 'RogersCH_Regression*' -Ptest_threadCount=1 -Ptest_QaUrl=https://qa6.Rogers.com -i --stacktrace
+gradle sauceTest   -Ptest_browser=saucechrome -Ptest_language=en   --tests 'RogersCH_Regression*' -Ptest_threadCount=1 -Ptest_qaURL=https://qa6.Rogers.com -i --stacktrace
 
 To run tests on Local
-gradle localTest   -Ptest_Browser=chrome -Ptest_Language=en   --tests 'RogersCH_Regression*' -Ptest_threadCount=1 -Ptest_QaUrl=https://qa6.Rogers.com -i --stacktrace
+gradle localTest   -Ptest_browser=chrome -Ptest_language=en   --tests 'RogersCH_Regression*' -Ptest_threadCount=1 -Ptest_qaURL=https://qa6.Rogers.com -i --stacktrace
