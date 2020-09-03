@@ -186,7 +186,7 @@ public class RogersSC_TC_010_GWP_ExistingLegacyCustomer_RHPCustomer_ServiceAndBr
 		reporter.reportLogWithScreenshot("Launched the Confirmation page");
 	}
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, String strGroupName,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
 		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,strGroupName, method);

@@ -23,3 +23,5 @@ gradle
 gradlew
 
 gradlew.bat
+
+fido_property.dat

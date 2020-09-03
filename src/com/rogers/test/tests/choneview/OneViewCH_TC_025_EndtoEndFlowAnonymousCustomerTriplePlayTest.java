@@ -84,7 +84,7 @@ public class OneViewCH_TC_025_EndtoEndFlowAnonymousCustomerTriplePlayTest extend
 		
     }
     
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,String strGroupName, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
         startOVSession(System.getProperty("QaUrl"), strBrowser, strLanguage,strGroupName,TestDataHandler.anonymousData.contactDetails.getContactID(),"",TestDataHandler.chOneViewConfig.getUsrID(), TestDataHandler.chOneViewConfig.getLoginID(), method);

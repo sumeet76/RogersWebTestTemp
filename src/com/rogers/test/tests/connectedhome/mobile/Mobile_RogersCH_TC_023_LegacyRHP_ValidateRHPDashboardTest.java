@@ -32,7 +32,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class Mobile_RogersCH_TC_023_LegacyRHP_ValidateRHPDashboardTest extends BaseTestClass {
 
 
-    @Test(groups = {"RegressionCH","RogersMobileCH"})
+    @Test(groups = {"MobileRegressionCH"})
 	public void checkLegacyRHPDashboardMobile() {
         reporter.reportLogWithScreenshot("Home Page");
     	rogers_home_page.clkSignInMobile();    	
@@ -54,7 +54,7 @@ public class Mobile_RogersCH_TC_023_LegacyRHP_ValidateRHPDashboardTest extends B
 		reporter.hardAssert(rogers_account_overview_page.verfyContactUsToManageFeaturess(),"Contact Us To Manage Featuress link has present on RHP dashboard","Contact Us To Manage Featuress link has not present on RHP dashboard");		
 	}
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());

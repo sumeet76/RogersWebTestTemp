@@ -34,7 +34,7 @@ import java.lang.reflect.Method;
 
 public class Mobile_RogersCH_TC_016_IginteTV_TVChannelsSwapTest extends BaseTestClass {
 	
-    @Test(groups = {"RegressionCH","RogersMobileCH"})
+    @Test(groups = {"MobileRegressionCH"})
 	
    public void checkSolarisTVSwapChannelsMobile() {  
     reporter.reportLogWithScreenshot("Home Page");
@@ -80,7 +80,7 @@ public class Mobile_RogersCH_TC_016_IginteTV_TVChannelsSwapTest extends BaseTest
 	}        
 	
 
-@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 //login flow
 public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 	// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());

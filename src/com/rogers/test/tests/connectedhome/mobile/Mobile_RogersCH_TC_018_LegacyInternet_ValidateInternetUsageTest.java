@@ -33,7 +33,7 @@ import org.testng.annotations.Parameters;
 
 public class Mobile_RogersCH_TC_018_LegacyInternet_ValidateInternetUsageTest extends BaseTestClass {
 	
-    @Test(groups = {"RegressionCH","RogersMobileCH"})
+    @Test(groups = {"MobileRegressionCH"})
 	public void checkLegacyInternetUsageMobile() {
         reporter.reportLogWithScreenshot("Home Page");
     	rogers_home_page.clkSignInMobile();    	
@@ -55,7 +55,7 @@ public class Mobile_RogersCH_TC_018_LegacyInternet_ValidateInternetUsageTest ext
 		reporter.hardAssert(rogers_internet_dashboard_page.verifyInternetUsage(),"Verifed the Internet dashboard","Internet dashboard Verification has failed");
    	}
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
