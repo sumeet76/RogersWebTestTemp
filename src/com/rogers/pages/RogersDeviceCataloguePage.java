@@ -459,27 +459,12 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @throws InterruptedException 
      */
     public String getPricingBlockCataloguePage(String deviceName) throws InterruptedException{
-    	//reusableActions.waitForPageLoad();
-    	//Thread.sleep(1000);
-    	reusableActions.staticWait(30000);
-    	System.out.println("After page loads");
-    	System.out.println(deviceName);
+    	Thread.sleep(5000);
         xpathDeviceName=createXpathWithDeviceName(deviceName);
-        System.out.println(xpathDeviceName);
         String pricingBlockContentXpath = xpathDeviceName + "/parent::div/div";
-        System.out.println(pricingBlockContentXpath);
-        	//	+ ""
-        	//	+ "/..//div[@class='d-flex mb-16 flex-row justify-content-around' or @class='d-flex mb-16']";
- //      reusableActions.waitForElementVisibility(driver.findElement(By.xpath(pricingBlockContentXpath)));
-//        System.out.println("Element visibility passed");
-//        reusableActions.scrollToElement(driver.findElement(By.xpath(pricingBlockContentXpath)));
-        reusableActions.waitForElementVisibility(driver.findElement(By.xpath(createXpathForCTAButton(deviceName))),50);
-        System.out.println("Element Scroll passed");
-        System.out.println(reusableActions.getWhenReady(By.xpath(pricingBlockContentXpath), 20).getText().replaceAll("\\s+",""));
+        reusableActions.waitForElementVisibility(driver.findElement(By.xpath(createXpathForCTAButton(deviceName))),30);
         return reusableActions.getWhenReady(By.xpath(pricingBlockContentXpath), 20).getText().replaceAll("\\s+","");
     }
-
-
 
 
     /**
