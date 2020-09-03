@@ -35,7 +35,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_013_IginteInternet_ValidateVAicononInternetDashboardTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"RegressionCH","RogersInternetCH"})
     public void checkVAicononInternetDashboard() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();
@@ -69,7 +69,7 @@ public class RogersCH_TC_013_IginteInternet_ValidateVAicononInternetDashboardTes
         reporter.hardAssert(rogers_internet_dashboard_page.verifyVAButton(),"VA button is present","VA button is not present");
     	}
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());

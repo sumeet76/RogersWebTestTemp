@@ -29,7 +29,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_014_IginteTV_ValidatePopularPackDashboardButtonsRepositioningTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
     public void checkPopularPackDashboardButtonsRepositioning() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();
@@ -53,7 +53,7 @@ public class RogersCH_TC_014_IginteTV_ValidatePopularPackDashboardButtonsReposit
     	}       
 
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());

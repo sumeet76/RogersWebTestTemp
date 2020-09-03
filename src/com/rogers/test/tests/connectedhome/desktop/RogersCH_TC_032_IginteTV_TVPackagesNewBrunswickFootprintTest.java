@@ -77,7 +77,7 @@ public class RogersCH_TC_032_IginteTV_TVPackagesNewBrunswickFootprintTest extend
 	        reporter.reportLogWithScreenshot("Verified the Confirmation page");
         	}
 
-		@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+		@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 		//login flow
 		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 			// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());

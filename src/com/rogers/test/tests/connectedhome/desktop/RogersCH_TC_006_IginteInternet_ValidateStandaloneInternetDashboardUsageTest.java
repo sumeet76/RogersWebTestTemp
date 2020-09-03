@@ -35,7 +35,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_006_IginteInternet_ValidateStandaloneInternetDashboardUsageTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"RegressionCH","saiCH"})
     public void checkStandaloneInternetDashboard() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();
@@ -69,7 +69,7 @@ public class RogersCH_TC_006_IginteInternet_ValidateStandaloneInternetDashboardU
         reporter.reportLogWithScreenshot("Usage and Alerts details");
     	}
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());

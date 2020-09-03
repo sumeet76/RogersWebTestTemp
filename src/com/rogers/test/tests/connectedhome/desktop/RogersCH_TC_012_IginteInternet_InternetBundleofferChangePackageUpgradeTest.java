@@ -31,7 +31,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_012_IginteInternet_InternetBundleofferChangePackageUpgradeTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"RegressionCH","RogersInternetCH"})
     public void checkSolarisBundleofferChangePackageUpgrade() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();
@@ -70,7 +70,7 @@ public class RogersCH_TC_012_IginteInternet_InternetBundleofferChangePackageUpgr
         reporter.reportLogWithScreenshot("Verified the Confirmation page");
     	}
 	
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());

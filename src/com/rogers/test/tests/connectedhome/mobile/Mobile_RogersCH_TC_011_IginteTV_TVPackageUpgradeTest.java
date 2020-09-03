@@ -34,7 +34,7 @@ import java.lang.reflect.Method;
 
 public class Mobile_RogersCH_TC_011_IginteTV_TVPackageUpgradeTest extends BaseTestClass {
 
-    @Test
+    @Test(groups = {"MobileRegressionCH"})
     public void checkSolarisTVPackageUpgradeMobile() {
         reporter.reportLogWithScreenshot("Home Page");
     	rogers_home_page.clkSignInMobile();    	
@@ -78,7 +78,7 @@ public class Mobile_RogersCH_TC_011_IginteTV_TVPackageUpgradeTest extends BaseTe
         reporter.reportLogWithScreenshot("Verified the Confirmation page");
     	}
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());

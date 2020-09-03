@@ -34,7 +34,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class Mobile_RogersCH_TC_019_DigitalTV_ValidateTVDashboardTest extends BaseTestClass {
 
 
-	@Test
+    @Test(groups = {"MobileRegressionCH"})
 	public void checkLegacyTVDashboardMobile() {
         reporter.reportLogWithScreenshot("Home Page");
     	rogers_home_page.clkSignInMobile();    	
@@ -57,7 +57,7 @@ public class Mobile_RogersCH_TC_019_DigitalTV_ValidateTVDashboardTest extends Ba
     	}
 
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());

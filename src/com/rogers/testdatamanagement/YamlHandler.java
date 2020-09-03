@@ -1,23 +1,13 @@
 package com.rogers.testdatamanagement;
 
+import com.rogers.yaml.pojo.*;
+import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.Constructor;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.constructor.Constructor;
-
-import com.rogers.yaml.pojo.AALData;
-import com.rogers.yaml.pojo.AccountData;
-import com.rogers.yaml.pojo.CHOneViewConfig;
-import com.rogers.yaml.pojo.Config;
-import com.rogers.yaml.pojo.ContactData;
-import com.rogers.yaml.pojo.HUPData;
-import com.rogers.yaml.pojo.MigrationData;
-import com.rogers.yaml.pojo.NACData;
-import com.rogers.yaml.pojo.PPCData;
-import com.rogers.yaml.pojo.PaymentDetails;
-import com.rogers.yaml.pojo.SauceSettings;
 
 public class YamlHandler {
 

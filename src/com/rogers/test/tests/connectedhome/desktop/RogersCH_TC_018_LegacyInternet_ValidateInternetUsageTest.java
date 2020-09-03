@@ -26,7 +26,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_018_LegacyInternet_ValidateInternetUsageTest extends BaseTestClass {
 	
-	@Test
+	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH"})
 	public void checkLegacyInternetUsage() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
@@ -50,7 +50,7 @@ public class RogersCH_TC_018_LegacyInternet_ValidateInternetUsageTest extends Ba
 		reporter.hardAssert(rogers_internet_dashboard_page.verifyInternetUsage(),"Verifed the Internet dashboard","Internet dashboard Verification has failed");
     	}
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());

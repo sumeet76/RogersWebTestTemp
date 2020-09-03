@@ -1,94 +1,16 @@
 package com.rogers.test.base;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPut;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.message.BasicNameValuePair;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
-import com.rogers.oneview.pages.AccountOverViewPage;
-import com.rogers.oneview.pages.ChannelsAndThemePacksPage;
-import com.rogers.oneview.pages.CreditCheckPage;
-import com.rogers.oneview.pages.CustomerProfilePage;
-import com.rogers.oneview.pages.EnvironmentSelectionPage;
-import com.rogers.oneview.pages.FulfillmentPage;
-import com.rogers.oneview.pages.HomePhoneAddonsPage;
-import com.rogers.oneview.pages.HomePhoneSelectionPage;
-import com.rogers.oneview.pages.HomePhonedashboard;
-import com.rogers.oneview.pages.InternetDashboardPage;
-import com.rogers.oneview.pages.OrderConfirmationPage;
-import com.rogers.oneview.pages.OrderReviewPage;
-import com.rogers.oneview.pages.PaymentOptionsPage;
-import com.rogers.oneview.pages.RogersIgniteBundlesPage;
-import com.rogers.oneview.pages.RogersInternetUsageOVPage;
-import com.rogers.oneview.pages.TVDashboardPage;
-import com.rogers.pages.RogersAccountOverviewPage;
-import com.rogers.pages.RogersAddDataPage;
-import com.rogers.pages.RogersBillingPage;
+import com.rogers.oneview.pages.*;
 import com.rogers.pages.RogersBuildPlanPage;
-import com.rogers.pages.RogersBuyPage;
-import com.rogers.pages.RogersCartSummaryPage;
-import com.rogers.pages.RogersChangeMyCallerIdPage;
-import com.rogers.pages.RogersChangePaymentMethodPage;
-import com.rogers.pages.RogersChangePlanPage;
-import com.rogers.pages.RogersChangeSEPlanPage;
 import com.rogers.pages.RogersChooseAddonsPage;
-import com.rogers.pages.RogersChooseNumberPage;
 import com.rogers.pages.RogersChoosePhonePage;
-import com.rogers.pages.RogersShippingPage;
 import com.rogers.pages.RogersChoosePlanPage;
-import com.rogers.pages.RogersDigitalTVDashboardPage;
-import com.rogers.pages.RogersDigitalTVPackageSelectionPage;
-import com.rogers.pages.RogersHomePage;
-import com.rogers.pages.RogersHomePhonePortInPage;
-import com.rogers.pages.RogersHomePhoneSelectionPage;
-import com.rogers.pages.RogersIgniteTVBuyPage;
-import com.rogers.pages.RogersIgniteTVCreditCheckPage;
-import com.rogers.pages.RogersIgniteTVProfileCreationPage;
-import com.rogers.pages.RogersInternetCreditCheckPage;
-import com.rogers.pages.RogersInternetDashboardPage;
-import com.rogers.pages.RogersInternetPackageSelectionPage;
-import com.rogers.pages.RogersInternetProfilePage;
-import com.rogers.pages.RogersInternetUsagePage;
-import com.rogers.pages.RogersLegacyBundleBuyPage;
-import com.rogers.pages.RogersLinkAccountPage;
-import com.rogers.pages.RogersLoginPage;
-import com.rogers.pages.RogersMakePaymentPage;
-import com.rogers.pages.RogersManageDataPage;
-import com.rogers.pages.RogersOrderConfirmationPage;
-import com.rogers.pages.RogersOrderReviewPage;
-import com.rogers.pages.RogersOrderSummaryPage;
-import com.rogers.pages.RogersPaymentOptionsPage;
 import com.rogers.pages.RogersPaymentPage;
-import com.rogers.pages.RogersProfileAndSettingsPage;
-import com.rogers.pages.RogersRecoverPassOrNamePage;
-import com.rogers.pages.RogersRegisterPage;
-import com.rogers.pages.RogersSHMDashboardPage;
-import com.rogers.pages.RogersSecurePaymentPage;
-import com.rogers.pages.RogersSetPasswordPage;
-import com.rogers.pages.RogersShareEverythingPage;
 import com.rogers.pages.RogersShippingPage;
-import com.rogers.pages.RogersSolarisRHPDashboardPage;
-import com.rogers.pages.RogersSolarisTVChannelsAndThemepacksPage;
-import com.rogers.pages.RogersSolarisTVDashboardPage;
-import com.rogers.pages.RogersSpeedPassPage;
-import com.rogers.pages.RogersTechInstallPage;
-import com.rogers.pages.RogersWirelessCreditEvaluationPage;
-import com.rogers.pages.RogersWirelessDashboardPage;
 import com.rogers.pages.RogersWirelessDetailsPage;
-import com.rogers.pages.RogersWirelessProfileCreationPage;
+import com.rogers.pages.*;
 import com.rogers.pages.ens.EnsHomePage;
 import com.rogers.pages.ens.EnsNotificationViewPage;
 import com.rogers.test.commonbusinessfunctions.CommonBusinessFlows;
@@ -97,11 +19,27 @@ import com.rogers.test.helpers.CaptchaBypassHandlers;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.test.helpers.RogersEnums.SauceCapabilities;
 import com.rogers.testdatamanagement.TestDataHandler;
-
 import extentreport.ExtentTestManager;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.message.BasicNameValuePair;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import utils.AppiumServerJava;
 import utils.BrowserDrivers;
 import utils.Reporter;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 //@Listeners ({com.rogers.test.listeners.TestListener.class ,
 //	com.rogers.test.listeners.AnnotationTransformer.class ,
@@ -218,7 +156,7 @@ public class BaseTestClass {
 	 * @param strUrl                     string of test url
 	 * @param strBrowser                 string of browser name
 	 * @param strLanguage                string of language to use
-	 * @param enumGroupName               string of group name of the test case
+	 * @param strGroupName               string of group name of the test case
 	 * @param currentTestMethodName 
 	 * @throws ClientProtocolException   org.apache.http.client.ClientProtocolException, Signals an error in the HTTP protocol.
 	 * @throws IOException               java.io.IOException, Signals that an I/O exception of some sort has occurred, produced by failed or interrupted I/O operations.
@@ -343,7 +281,7 @@ public class BaseTestClass {
 	 * @param strUrl                     string of test url
 	 * @param strBrowser                 string of browser name
 	 * @param strLanguage                string of language to use
-	 * @param enumGroupName               string of group name of the test case
+	 * @param strGroupName               string of group name of the test case
 	 * @param currentTestMethodName 
 	 * @throws ClientProtocolException   org.apache.http.client.ClientProtocolException, Signals an error in the HTTP protocol.
 	 * @throws IOException               java.io.IOException, Signals that an I/O exception of some sort has occurred, produced by failed or interrupted I/O operations.
@@ -389,7 +327,6 @@ public class BaseTestClass {
 			rogers_profile_and_settings_page = new RogersProfileAndSettingsPage(driver);
 			rogers_payment_options_page = new RogersPaymentOptionsPage(driver);
 			rogers_make_payment_page = new RogersMakePaymentPage(driver);
-			reporter = new ExtentTestManager(driver);
 			common_business_flows = new CommonBusinessFlows(this);
 			ensHomePage = new EnsHomePage(getDriver());
 			ensNoteViewPage = new EnsNotificationViewPage(getDriver());

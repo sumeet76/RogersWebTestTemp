@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
 
 public class RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest extends BaseTestClass {
 
-    @Test
+    @Test(groups = {"SanitySS"})
     public void payNowByCreditCard() {
         rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();

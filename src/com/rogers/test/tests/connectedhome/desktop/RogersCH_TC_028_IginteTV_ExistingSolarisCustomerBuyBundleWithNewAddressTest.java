@@ -48,7 +48,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_028_IginteTV_ExistingSolarisCustomerBuyBundleWithNewAddressTest extends BaseTestClass {
 
-    @Test
+	 @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
     public void checkExistingSolarisCustomerBuyBundleWithNewAddress() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
@@ -115,7 +115,7 @@ public class RogersCH_TC_028_IginteTV_ExistingSolarisCustomerBuyBundleWithNewAdd
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
     	}
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteAnonymous
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
 		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);

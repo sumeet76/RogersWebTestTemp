@@ -26,7 +26,7 @@ public class RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage 
 		closeSession();
 	}
 	
-    @Test
+    @Test(groups = {"SanitySS"})
     public void validateSuspendUsage() {
     	this.loginAndNavToDashboard();
       //Click on 'Reactive' link in Services page.

@@ -27,7 +27,7 @@ import java.lang.reflect.Method;
 public class RogersCH_TC_025_LegacyInternet_InternetPackageUpgradeTest extends BaseTestClass {
 
 	
-	@Test
+	@Test(groups = {"RegressionCH","LegacyTVFlowsCH"})
 	public void checkInternetPackageUpgrade() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
@@ -65,7 +65,7 @@ public class RogersCH_TC_025_LegacyInternet_InternetPackageUpgradeTest extends B
 
 
 	
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, String strGroupName, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());

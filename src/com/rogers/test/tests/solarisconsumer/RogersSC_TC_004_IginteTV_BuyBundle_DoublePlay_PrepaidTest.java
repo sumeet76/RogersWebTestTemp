@@ -141,7 +141,7 @@ public class RogersSC_TC_004_IginteTV_BuyBundle_DoublePlay_PrepaidTest extends B
         reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");       
     }
 
-    @BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+    @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, String strGroupName,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
 		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,strGroupName, method);

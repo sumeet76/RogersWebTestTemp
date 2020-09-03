@@ -1,18 +1,13 @@
 package com.rogers.test.tests.connectedhome.desktop;
-import java.io.IOException;
-import java.lang.reflect.Method;
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;   
-import org.testng.annotations.Optional;                     
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 /**
  * This class contains the test method to test the IgniteTV buy flow for Rogers.com   
@@ -53,7 +48,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_007_IginteTV_ValidateWelcomeBackModalWhencxRetrievesCartTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
     public void checkWelcomeBackModalWhencxRetrievesCart() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	rogers_home_page.clkTVBundle();    	
@@ -142,7 +137,7 @@ public class RogersCH_TC_007_IginteTV_ValidateWelcomeBackModalWhencxRetrievesCar
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
     }
 
-    @BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+    @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteAnonymous
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_igniteanonymous, method);
