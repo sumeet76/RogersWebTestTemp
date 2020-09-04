@@ -26,7 +26,7 @@ import java.lang.reflect.Method;
 
 public class RogersSS_TC_041_AO_ValidateCHaccountBadge_IginteTV extends BaseTestClass {
 
-    @Test
+    @Test(groups = {"RegressionSS","AccountOverviewSS"})
     public void checkTVDashboard() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();

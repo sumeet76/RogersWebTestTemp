@@ -27,7 +27,7 @@ public class RogersSS_TC_054_ValidateUsageDetails_postpaid_NSEwUnlimitedTalkText
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateUsageDisplayWithinLimit() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc54.getUsername();

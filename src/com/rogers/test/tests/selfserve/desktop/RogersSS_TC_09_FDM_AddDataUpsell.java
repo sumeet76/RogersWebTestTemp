@@ -42,7 +42,7 @@ public class RogersSS_TC_09_FDM_AddDataUpsell extends BaseTestClass {
         rogers_home_page.clkSignIn();
     	//String strUsername = TestDataHandler.tc09.getUsername();
     	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame("AutoR820SS24@yahoo.com");
+        rogers_login_page.setUsernameIFrame("AutoR820SS89@yahoo.com");
         //String strPassword = TestDataHandler.tc09.getPassword();    	
         rogers_login_page.setPasswordIFrame("DigiAuto@123");
         reporter.reportLogWithScreenshot("Login Credential is entered.");
@@ -53,7 +53,7 @@ public class RogersSS_TC_09_FDM_AddDataUpsell extends BaseTestClass {
 		
         if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount("935756791");//TestDataHandler.tc09.getAccountDetails().getBan()
+            rogers_account_overview_page.selectAccount("935759175");//TestDataHandler.tc09.getAccountDetails().getBan()
         }
         reporter.reportLogWithScreenshot("Account overview page.");   
         rogers_account_overview_page.clkMenuUsageAndService();
@@ -74,9 +74,10 @@ public class RogersSS_TC_09_FDM_AddDataUpsell extends BaseTestClass {
 		reporter.softAssert(rogers_wireless_dashboard_page.verifyAddDataButtonIsDisplayed(), 
 						"Add the Data top-up button is displayed", 
 						"Add the Data top-up  button is NOT displayed.");  
-		        
+		rogers_wireless_dashboard_page.clkAddData();        
 		if(counterOfAddedData<10)
 		{
+			
 		reporter.softAssert(rogers_add_data_page.verifyAddDataOverlayIsDisplayed(), 
 							"Add the Data top-up  window should be displayed. (completd an MDT add on)", 
 							"Add the Data top-up  window is NOT displayed.");          

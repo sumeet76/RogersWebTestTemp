@@ -32,7 +32,7 @@ public class RogersSS_TC_072_wldb_ValidateDetailsOfDeviceSection extends BaseTes
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateDeviceSectionOnWirelessDashboardPage() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc727375.getUsername();

@@ -36,7 +36,7 @@ public class RogersSS_TC_096_AO_ValidateTheLiveChatButtonOnTheAccountOverviewSEi
          rogers_login_page.switchOutOfSignInIFrame();
     }
     
-    @Test
+    @Test(groups = {"RegressionSS","AccountOverviewSS"})
     public void validateTheLiveChatButtonOnTheAccountOverviewSEinfinite() {
 
     	rogers_home_page.clkSignIn();

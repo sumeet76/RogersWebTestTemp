@@ -80,7 +80,7 @@ public class Mobile_RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_Infin
 				"Plan data is NOT displayed");
 		int totalSharedDataDisplayedInPlanDataSection = rogers_manage_data_page.getTotalPlanData();
 		int countOfExistSpeedPass = rogers_manage_data_page.getAllExistingSpeedPassCount();		
-		reporter.reportLogWithScreenshot("Speed passes");
+		reporter.reportLogWithScreenshot("Speed passes "+countOfExistSpeedPass);
 		rogers_wireless_dashboard_page.scrollToTopOfDasboardPage();
 		rogers_manage_data_page.clkBackOnManageDataUsagePage();	
 		

@@ -30,7 +30,7 @@ public class RogersSS_TC_074_ValidateLiveChatLinkInChangeCallerIdLimitExceedModa
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateLiveChatBadgeInChangeCallerIdLimitExceedModal() {
 	
         rogers_home_page.clkSignIn();

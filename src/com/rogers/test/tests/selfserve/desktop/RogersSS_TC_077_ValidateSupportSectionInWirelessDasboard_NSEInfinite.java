@@ -27,7 +27,7 @@ public class RogersSS_TC_077_ValidateSupportSectionInWirelessDasboard_NSEInfinit
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateSupportSectionOnWirelessDashboardPage() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc6577.getUsername();

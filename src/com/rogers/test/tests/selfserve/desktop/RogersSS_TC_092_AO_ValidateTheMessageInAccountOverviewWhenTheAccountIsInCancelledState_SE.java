@@ -43,7 +43,7 @@ public class RogersSS_TC_092_AO_ValidateTheMessageInAccountOverviewWhenTheAccoun
 7. Subscription widget or any other services widget should not be displayed for a cancelled account"
 	 */
 	
-    @Test
+    @Test(groups = {"RegressionSS","AccountOverviewSS"})
     public void validateSignInAndAccountOverview() {
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");

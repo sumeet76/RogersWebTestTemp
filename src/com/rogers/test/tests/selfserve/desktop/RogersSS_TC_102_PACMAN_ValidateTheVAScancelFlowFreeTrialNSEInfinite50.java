@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 
 
 
-public class RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest extends BaseTestClass {	
+public class RogersSS_TC_102_PACMAN_ValidateTheVAScancelFlowFreeTrialNSEInfinite50 extends BaseTestClass {	
     
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
@@ -27,7 +27,7 @@ public class RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest extends
 	}
 	
 	
-	@Test(groups = {"SanitySS","RegressionSS","AccountOverviewSS"})
+	@Test(groups = {"SanitySS","RegressionSS"})
     public void validateSignInAndAccountOverview() {
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");

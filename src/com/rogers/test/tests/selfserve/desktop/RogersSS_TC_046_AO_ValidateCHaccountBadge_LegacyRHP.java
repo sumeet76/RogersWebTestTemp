@@ -31,7 +31,7 @@ Steps:
 public class RogersSS_TC_046_AO_ValidateCHaccountBadge_LegacyRHP extends BaseTestClass {
 
 
-	@Test
+	@Test(groups = {"RegressionSS","AccountOverviewSS"})
 	public void checkLegacyRHPDashboard () throws InterruptedException {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();

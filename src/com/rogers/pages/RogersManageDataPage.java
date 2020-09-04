@@ -105,7 +105,7 @@ public class RogersManageDataPage extends BasePageClass {
 	 * @param intCountOfSpeedPassBefore int, the previous record
 	 * @author ning.xue
 	 */
-	public boolean verifyAddedDataInDataDetails(int listAddedData, int intCountOfSpeedPassBefore) {
+	public boolean verifyAddedDataInDataDetails(int listAddedData, int intCountOfSpeedPassBefore) {		
 		int totalSpeedPass1 = getAllExistingSpeedPassCount();
 		return totalSpeedPass1 == listAddedData + intCountOfSpeedPassBefore;
 		
@@ -116,7 +116,7 @@ public class RogersManageDataPage extends BasePageClass {
 	 * @return int count of all speed pass
 	 * @author Mirza.Kamran
 	 */
-	public int getAllExistingSpeedPassCount() {		
+	public int getAllExistingSpeedPassCount() {				
 		return rowsAddedData.size();
 	}
 
