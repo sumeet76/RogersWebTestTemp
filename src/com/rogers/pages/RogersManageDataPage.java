@@ -180,8 +180,8 @@ public class RogersManageDataPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyPlanDataIsDisplayed() {
-		return (headerPlanDataOnDataDetailsPage.isDisplayed()
-				&& headerUnlimitedDataInYourPlanOnDataDetailsPage.isDisplayed());
+		return (reusableActions.isElementVisible(headerPlanDataOnDataDetailsPage)
+				&& reusableActions.isElementVisible(headerUnlimitedDataInYourPlanOnDataDetailsPage));
 	} 
 
 	/**
