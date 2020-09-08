@@ -94,8 +94,8 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void setPhone() {
-		//String strPhoneNumber = FormFiller.generatePhoneNumber();
-		String strPhoneNumber ="1010000062";
+		String strPhoneNumber = FormFiller.generatePhoneNumber();
+		//String strPhoneNumber ="1010000062";
 		reusableActions.executeJavaScriptClick(btnPhone);
 		reusableActions.getWhenReady(btnPhone, 3).clear();
 		reusableActions.getWhenReady(btnPhone,3).sendKeys(strPhoneNumber);

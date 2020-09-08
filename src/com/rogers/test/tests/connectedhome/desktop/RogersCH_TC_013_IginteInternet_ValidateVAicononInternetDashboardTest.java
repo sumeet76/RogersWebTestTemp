@@ -1,18 +1,14 @@
 package com.rogers.test.tests.connectedhome.desktop;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 
 
@@ -39,7 +35,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_013_IginteInternet_ValidateVAicononInternetDashboardTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"RegressionCH","RogersInternetCH"})
     public void checkVAicononInternetDashboard() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();
@@ -55,34 +51,29 @@ public class RogersCH_TC_013_IginteInternet_ValidateVAicononInternetDashboardTes
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount(TestDataHandler.solarisInternetAccount.accountDetails.getBan());
     	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        reporter.reportLogWithScreenshot("Launched the Account Page");
+        rogers_account_overview_page.selectAccount(TestDataHandler.solarisInternetAccount.accountDetails.getBan());
+    	reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_internet_dashboard_page.clkSolarisInternetBadge();
-        rogers_internet_dashboard_page.clkInternetPopup();
-        reporter.reportLogWithScreenshot("Launched the Interent dashboard");
-        rogers_internet_dashboard_page.clkSolChangeInternetPackage();
-        reporter.reportLogWithScreenshot("Launched the Interent packages page");
-        rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.solarisInternetAccount.getAccountDetails().getUpgradePlanEn(),TestDataHandler.solarisInternetAccount.getAccountDetails().getUpgradePlanFr());
-        reporter.reportLogWithScreenshot("Launched the agreement page");
-        //rogers_internet_dashboard_page.clkInternetChangeOK();
-		reporter.hardAssert(rogers_order_review_page.verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
-		reporter.reportLogWithScreenshot("Launched the order review page");
-				reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
-		
-        rogers_order_review_page.clkAcceptenceCheckboxUpdateInternet();
-        reporter.reportLogWithScreenshot("Agreement details");
-        rogers_order_review_page.clkSubmitUpdateInternet();
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmationNew(),"Update order completed","Update order Failed");                             
-        reporter.reportLogWithScreenshot("Verified the Confirmation page");
+        reporter.hardAssert(rogers_internet_dashboard_page.verifyInternetPage(),"Launched the internet dashboard Page","Internet dashboard Page dosen't launched");
+        reporter.hardAssert(rogers_internet_dashboard_page.verifyVAButton(),"VA button is present","VA button is not present");
+        rogers_internet_dashboard_page.clkVAButton();
+        reporter.hardAssert(rogers_internet_dashboard_page.verifyVaWelcome(),"VA chat tab has launched","VA chat tab hasn't launched");
+        rogers_internet_dashboard_page.clkVAMenu();
+        rogers_internet_dashboard_page.clkVAMininmize();
+        rogers_internet_dashboard_page.clkVAButton();
+        reporter.hardAssert(rogers_internet_dashboard_page.verifyVaWelcome(),"VA chat tab has launched","VA chat tab hasn't launched");
+        reporter.hardAssert(rogers_internet_dashboard_page.verifyVaTopicList(),"VA chat Topic list is available","VA chat Topic list is not available");
+        rogers_internet_dashboard_page.clkVAMenu();
+        rogers_internet_dashboard_page.clkVAClose();
+        reporter.hardAssert(rogers_internet_dashboard_page.verifyVAButton(),"VA button is present","VA button is not present");
     	}
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
-	public void beforeTest(String strBrowser, String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.chConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
 	}
 
 	@AfterMethod(alwaysRun = true)

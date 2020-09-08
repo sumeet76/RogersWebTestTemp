@@ -1,12 +1,12 @@
 package com.rogers.test.tests.solarisconsumer;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
@@ -27,7 +27,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *6. Click "No thanks Continue"
  *7. Select any triple play bundle and Click on Continue
  *8. Select one option for   'Do you have a 4K TV'
- *9. Click “checkout” button on cart summary page.
+ *9. Click checkout button on cart summary page.
  *10. Enter all personal information on user profile creation page - 1) Profile step
  *11. Click on Continue
  *12. In 2) Credit Evaluation page, enter the required info on Credit Check:
@@ -148,11 +148,11 @@ public class RogersSC_TC_013_IginteTV_AnonymousCustomer_BuyingSolarisTriplePlayN
         reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");       
     }
 
-    @BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})
+    @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
-	public void beforeTest(String strBrowser, String strLanguage, String strGroupName,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.chConfig.getRogersURL(),  strBrowser,strLanguage,strGroupName, method);
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, String strGroupName,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,strGroupName, method);
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 
 	@AfterMethod(alwaysRun = true)

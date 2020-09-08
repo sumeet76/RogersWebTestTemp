@@ -2,12 +2,12 @@
 package com.rogers.test.tests.solarisconsumer;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
@@ -29,7 +29,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *7. Enter ph number and click on eligibility and continue
  *8. Click on Continue in Home phone add ons page
  *9. Select one option for   'Do you have a 4K TV'
- *10. Click “checkout” button on cart summary page.
+ *10. Click checkout button on cart summary page.
  *11. Enter all personal information on user profile creation page - 1) Profile step
  *12. Click on Continue
  *13. In 2) Credit Evaluation page, enter the required info on Credit Check:
@@ -192,11 +192,11 @@ public class RogersSC_TC_014_IgniteTV_AnonymousCustomerTriplePlayPortInTest exte
                           
     }
 
-    @BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})
+    @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
-	public void beforeTest(String strBrowser, String strLanguage, String strGroupName,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.chConfig.getRogersURL(),  strBrowser,strLanguage,strGroupName, method);
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, String strGroupName,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,strGroupName, method);
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 	
 	@AfterMethod(alwaysRun = true)

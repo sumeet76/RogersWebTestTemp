@@ -55,7 +55,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	WebElement popupContatUS;
 
 	@FindBy(xpath = "//a[@id='swapChannelsButton']")
-	WebElement infoChangeFlexChannels;
+	WebElement lnkChangeFlexChannels;
 	
 	@FindBy(xpath = "//input[@id='searchFilter_swapout']")
 	WebElement infoChannelSwapoutSeach;
@@ -158,6 +158,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[@class='loading']")
 	WebElement ldrThemepack2;
+	
+	@FindBy(xpath = "//h3[@class='copy-1 font-medium margin-0']")
+	WebElement txtFlexChannels;
 	
 	
 	/**
@@ -267,6 +270,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		reusableActions.getWhenReady(lnkViewfelxChannels,10).click();		
 	}
 
+	
 	/**
 	 * verify the ViewfelxChannels link on solaris TV dashboard page
 	 * @return true if the solaris TV dashboard page display the ViewfelxChannels link, else false
@@ -300,9 +304,51 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 */
 	public void clkChangeFlexChannels() {
 		reusableActions.waitForElementInvisibility(By.className("QSIPopOverShadowBox"),90);
-		reusableActions.getWhenReady(infoChangeFlexChannels, 120).click();		
+		reusableActions.getWhenReady(lnkChangeFlexChannels, 120).click();		
 	}
+	
+	/**
+	 * To verify Exchange FlexChanne link
+	 *@return true if the ExchangeFlex Channel link is displayed; else false
+	 * @author chinnarao.vattam 
+	 */
+	public boolean verifyExchangeFlexChannelLink() {
+		return reusableActions.isElementVisible(lnkChangeFlexChannels, 10);
+       }
+	
+	
+	/**
+	 * To verify Exchange FlexChanne link
+	 *@return true if the ExchangeFlex Channel link is displayed; else false
+	 * @author chinnarao.vattam 
+	 */
+	public boolean verifyFlexChannelcount() {
+		String strChannels=reusableActions.getWhenReady(txtFlexChannels, 50).getText();
+		String[] channels = strChannels.split("\\s+");
+		return channels[0].equals("0");
+       }
 
+	/**
+	 * To verify Exchange FlexChanne link
+	 *@return true if the ExchangeFlex Channel link is displayed; else false
+	 * @author chinnarao.vattam 
+	 */
+	public boolean verifyFlexChannelcountFive() {
+		String strChannels=reusableActions.getWhenReady(txtFlexChannels, 50).getText();
+		String[] channels = strChannels.split("\\s+");
+		return channels[0].equals("5");
+       }
+	
+	/**
+	 * To verify Exchange FlexChanne link
+	 *@return true if the ExchangeFlex Channel link is displayed; else false
+	 * @author chinnarao.vattam 
+	 */
+	public boolean verifyFlexChannelcountPopular() {
+		String strChannels=reusableActions.getWhenReady(txtFlexChannels, 50).getText();
+		String[] channels = strChannels.split("\\s+");
+		return channels[0].equals("45");
+       }
 	/**
 	 * Selects the solaris tv package name to be upgrade or downgrade 
 	 * @param strPackageNameEn solaris tv package name to be upgrade or downgrade
