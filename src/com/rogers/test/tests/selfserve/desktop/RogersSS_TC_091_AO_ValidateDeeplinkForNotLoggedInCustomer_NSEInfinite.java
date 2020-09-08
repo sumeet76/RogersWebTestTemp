@@ -38,7 +38,7 @@ public class RogersSS_TC_091_AO_ValidateDeeplinkForNotLoggedInCustomer_NSEInfini
 
 "	
  */
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateDeeplinkForNotLoggedInCustomerNSEInfinite() {
     	reporter.reportLogWithScreenshot("Rogers launhced");
     	String strDeepLinkURL = TestDataHandler.ssConfig.getRogersURL().split(".com")[0]+".com/web/totes/#/viewbill/payment-method";

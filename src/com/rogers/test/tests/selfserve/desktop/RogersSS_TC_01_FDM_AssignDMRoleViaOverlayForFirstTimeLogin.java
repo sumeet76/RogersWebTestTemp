@@ -27,7 +27,7 @@ public class RogersSS_TC_01_FDM_AssignDMRoleViaOverlayForFirstTimeLogin extends 
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","FDMSS"})
     public void validateAssignDMRoleViaOverlayForFirstTimeLogin() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc01030405.getUsername();

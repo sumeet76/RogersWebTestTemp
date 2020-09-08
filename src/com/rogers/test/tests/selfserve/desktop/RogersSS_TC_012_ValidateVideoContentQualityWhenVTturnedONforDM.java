@@ -32,7 +32,7 @@ public class RogersSS_TC_012_ValidateVideoContentQualityWhenVTturnedONforDM exte
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","FDMSS"})
     public void videoContentQualityWhenVTturnedONforDM() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc01030405.getUsername();
