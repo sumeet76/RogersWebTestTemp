@@ -21,7 +21,7 @@ import utils.FormFiller;
 
 public class RogersSS_TC_049_ChangeIDForNonSECustomerTest extends BaseTestClass {
 
-	@Test
+	@Test(groups = {"RegressionSS","WirelessDashboardSS"})
 	public void changeIDForNonSECustomer() {
 		String strFirstName = FormFiller.generateRandomName().toUpperCase();
 		String strLastName = FormFiller.generateRandomName().toUpperCase();		

@@ -740,7 +740,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean clkBtnAddContactEmailFinish() {
 		reusableActions.staticWait(1000);
-		if(btnAddContactEmailDone.isDisplayed())
+		if(reusableActions.isElementVisible(btnAddContactEmailDone))
 		{
 		 reusableActions.clickWhenReady(btnAddContactEmailDone, 30);
 		 return true;
@@ -794,7 +794,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean clkBtnUpdateHomeNumberFinish() {
 		reusableActions.staticWait(1000);
-		if(btnUpdateHomeNumberDone.isDisplayed())
+		if(reusableActions.isElementVisible(btnUpdateHomeNumberDone))
 		{
 		 reusableActions.clickWhenReady(btnUpdateHomeNumberDone, 30);
 		 return true;
@@ -855,7 +855,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean clkBtnAddBusinessNumberDone() {
 		reusableActions.staticWait(1000);
-		if(btnAddBusinessNumberDone.isDisplayed())
+		if(reusableActions.isElementVisible(btnAddBusinessNumberDone))
 		{
 		 reusableActions.clickWhenReady(btnAddBusinessNumberDone, 30);
 		 return true;
@@ -872,7 +872,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean clkBtnChangeLanguageDone() {
 		reusableActions.staticWait(1000);
-		if(btnChangeLanguageDone.isDisplayed())
+		if(reusableActions.isElementVisible(btnChangeLanguageDone))
 		{
 		 reusableActions.clickWhenReady(btnChangeLanguageDone, 30);
 		 return true;
@@ -899,7 +899,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean buttonFinishExists() {
 
-		return btnAddContactEmailDone.isDisplayed();
+		return reusableActions.isElementVisible(btnAddContactEmailDone);
 	}
 	
 	/**
@@ -1018,7 +1018,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean clickDoneChangeBillingAddress() {
 		reusableActions.staticWait(1000);
-		if(btnChangeAddressDone.isDisplayed())
+		if(reusableActions.isElementVisible(btnChangeAddressDone))
 		{
 		 reusableActions.clickWhenReady(btnChangeAddressDone, 30);
 		 return true;

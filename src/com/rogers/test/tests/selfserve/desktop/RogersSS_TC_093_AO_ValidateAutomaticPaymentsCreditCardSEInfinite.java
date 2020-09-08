@@ -36,7 +36,7 @@ public class RogersSS_TC_093_AO_ValidateAutomaticPaymentsCreditCardSEInfinite ex
          rogers_login_page.switchOutOfSignInIFrame();
     }
     
-    @Test
+    @Test(groups = {"RegressionSS","BillingAndPaymentsSS"})
     public void validateAutomaticPaymentsCreditCardSEInfinite() {
 
     	rogers_home_page.clkSignIn();

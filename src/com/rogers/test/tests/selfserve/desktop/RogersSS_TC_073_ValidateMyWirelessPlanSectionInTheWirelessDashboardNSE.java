@@ -33,7 +33,7 @@ public class RogersSS_TC_073_ValidateMyWirelessPlanSectionInTheWirelessDashboard
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateMyWirelessPlanSectionInTheWirelessDashboardNSE() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc727375.getUsername();

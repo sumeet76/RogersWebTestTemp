@@ -2335,4 +2335,12 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	public boolean isPrepaidStartOrTrackAPhoneRepairClaimDisplayed() {
 		return reusableActions.isElementVisible(lnkStartOrTrackAPhonerepairClaim);
 	}
+
+	/**
+	 * Close chat image
+	 * @author Mirza.Kamran
+	 */
+	public void closeChatImage() {
+		reusableActions.executeJavaScript("return document.getElementsByClassName('floating-live-chat')[0].remove();");		
+	}
 }

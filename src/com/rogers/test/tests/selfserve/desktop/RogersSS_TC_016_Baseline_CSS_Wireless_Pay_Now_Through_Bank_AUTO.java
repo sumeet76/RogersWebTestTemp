@@ -27,7 +27,7 @@ public class RogersSS_TC_016_Baseline_CSS_Wireless_Pay_Now_Through_Bank_AUTO ext
 	}
 	
 	
-	@Test(priority = 1)
+	@Test(groups = {"RegressionSS","BillingAndPaymentsSS"})
     public void baselineCSSWirelessPayNowThroughBankAUTO() {    	    	    
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc161825.getUsername();

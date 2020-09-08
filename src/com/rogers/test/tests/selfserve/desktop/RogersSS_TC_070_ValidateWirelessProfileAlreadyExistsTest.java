@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 
 public class RogersSS_TC_070_ValidateWirelessProfileAlreadyExistsTest extends BaseTestClass {
 
-    @Test
+    @Test(groups = {"RegressionSS","ProfileAndSettingsSS"})
     public void validateWirelessProfileAlreadyExists() {
                     rogers_home_page.clkSignIn();             
                     reporter.reportLogWithScreenshot("Sign in overlay");                	

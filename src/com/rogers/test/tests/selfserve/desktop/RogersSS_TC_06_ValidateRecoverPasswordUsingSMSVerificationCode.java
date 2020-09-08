@@ -31,7 +31,7 @@ public class RogersSS_TC_06_ValidateRecoverPasswordUsingSMSVerificationCode exte
 		closeSession();
 	}
 	
-	@Test
+	@Test(groups = {"RegressionSS","ProfileAndSettingsSS"})
 	public void validateRecoverUsernameUsingSMSVerificationCode() {
 		reporter.reportLogWithScreenshot("Rogers Launch page");
     	rogers_home_page.clkSignIn();

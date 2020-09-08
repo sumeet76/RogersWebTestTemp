@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 public class RogersSS_TC_11_TC04_ValidateUserTryToLinkAccountToRegisteredProfile extends BaseTestClass {
 
-	@Test
+	@Test(groups = {"RegressionSS","ProfileAndSettingsSS"})
 	public void validateUserLinkAccountToRegisteredProfile() {
 		
 		rogers_home_page.clkSignIn();

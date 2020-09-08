@@ -33,7 +33,7 @@ public class RogersSS_TC_04_ValidateRecoverUsernameUsingSMSVerificationCode exte
 		closeSession();
 	}
 	
-	@Test
+	@Test(groups = {"RegressionSS","ProfileAndSettingsSS"})
 	public void validateRecoverUsernameUsingSMSVerificationCode() {
 		reporter.reportLogWithScreenshot("Rogers Launch page");
     	rogers_home_page.clkSignIn(); 

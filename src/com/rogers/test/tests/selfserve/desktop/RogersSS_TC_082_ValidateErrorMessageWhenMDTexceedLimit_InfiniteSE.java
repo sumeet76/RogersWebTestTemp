@@ -34,7 +34,7 @@ public class RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE e
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateErrorMessageWhenExceedLimitForInfiniteSEPlan() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc82.getUsername();

@@ -35,7 +35,7 @@ public class RogersSS_TC_060_ValidateCopyChangesOfDataUsageDisplayWithInLimitsPo
 	
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateCopyChangesOfDataUsageDisplayWithInLimitsPostpaidSEplanMultiCTN() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc60.getUsername();

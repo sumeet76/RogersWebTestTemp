@@ -27,7 +27,7 @@ public class RogersSS_TC_063_ValidateDataUsageRunningLowOnMaxSpeedDataInfiniteIn
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateDataUsageDisplayForRunningLowAndAddData() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc63.getUsername();

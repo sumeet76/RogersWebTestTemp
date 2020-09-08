@@ -29,7 +29,7 @@ public class RogersSS_TC79_ValidateCancelDataFlowNSECTNwithSingleRegularMDTs ext
 	
 	//TODO: put as dependant on 59 in the testNG xml
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateCancelSingleMDTFlowNSEWithMultiline() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc59.getUsername();

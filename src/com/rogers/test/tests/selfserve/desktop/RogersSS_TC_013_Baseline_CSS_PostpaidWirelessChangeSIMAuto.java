@@ -27,7 +27,7 @@ public class RogersSS_TC_013_Baseline_CSS_PostpaidWirelessChangeSIMAuto extends 
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void postpaidWirelessChangeSIM() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc1314.getUsername();

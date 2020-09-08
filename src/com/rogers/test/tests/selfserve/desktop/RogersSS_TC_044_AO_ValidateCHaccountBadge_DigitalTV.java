@@ -38,7 +38,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class RogersSS_TC_044_AO_ValidateCHaccountBadge_DigitalTV extends BaseTestClass {
 
 
-	@Test
+	@Test(groups = {"RegressionSS","AccountOverviewSS"})
 	public void checkLegacyTVDashboard () {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();

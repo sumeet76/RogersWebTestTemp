@@ -35,7 +35,7 @@ public class RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE e
 	
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateTotalDataForInfiniteSEIndividualPlan() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc6269.getUsername();

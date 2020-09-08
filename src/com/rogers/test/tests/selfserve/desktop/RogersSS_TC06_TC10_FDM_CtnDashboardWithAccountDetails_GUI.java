@@ -39,7 +39,7 @@ button should be displayed n Share Everything Dashboard
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","FDMSS"})
     public void validateFdmCtnDashboardWithAccountDetails() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc01030405.getUsername();
