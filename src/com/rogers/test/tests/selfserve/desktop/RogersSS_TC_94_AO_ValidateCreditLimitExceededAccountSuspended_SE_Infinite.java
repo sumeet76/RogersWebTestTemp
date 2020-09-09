@@ -9,6 +9,7 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.Map;
 
 
 
@@ -33,10 +34,8 @@ public class RogersSS_TC_94_AO_ValidateCreditLimitExceededAccountSuspended_SE_In
         reporter.reportLog("Home Page Launched");
     	rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
-        //rogers_login_page.setUsernameIFrame(TestDataHandler.tc95.getUsername());
-        //rogers_login_page.setPasswordIFrame(TestDataHandler.tc95.getPassword());
-		rogers_login_page.setUsernameIFrame("nonsimentrypoint@mailinator.com");
-		rogers_login_page.setPasswordIFrame("rogers123");
+        rogers_login_page.setUsernameIFrame(TestDataHandler.tc94.getUsername());
+        rogers_login_page.setPasswordIFrame(TestDataHandler.tc94.getPassword());
         reporter.reportLogWithScreenshot("Login Credential is entered.");
         rogers_login_page.clkSignInIFrame();
         reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
@@ -49,13 +48,14 @@ public class RogersSS_TC_94_AO_ValidateCreditLimitExceededAccountSuspended_SE_In
         }
         reporter.reportLogWithScreenshot("Account overview page.");
         reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Passed", "Login Failed");
-        common_business_flows.scrollToMiddleOfWebPage();
-        reporter.reportLogWithScreenshot("CTNS View");
+       
         
         reporter.hardAssert(rogers_account_overview_page.isCreditLimitReachedNotificationDisplayed(),
         		"Credit limit reached notification is displayed as expected",
         		"Credit limit reached notification is displayed as expected");
         
+        common_business_flows.scrollToMiddleOfWebPage();
+        reporter.reportLogWithScreenshot("CTNS View");
         //rogers_account_overview_page.clkSuspendedCTN();
        
         //reporter.hardAssert(rogers_account_overview_page.isSuspendedCTNAvailable(),
@@ -70,7 +70,7 @@ public class RogersSS_TC_94_AO_ValidateCreditLimitExceededAccountSuspended_SE_In
 		reporter.reportLogWithScreenshot("Live Chat overlay opened."); 
         
     }
-
-  
+    
+      
 
 }

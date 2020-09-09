@@ -57,7 +57,7 @@
 	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_056_ValidateDataUsageDesplayWithinLimit_postpaid_NSEDataOnlyPlan"></class>	
 	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_057_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDataUnlimitedTalkTextPlan"></class>
 	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_058_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDataLimitedTalkTextPlan"></class>
-	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE_AddData"></class>				             
+	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_059_79ValidateDataUsageDisplayRunningLow_postpaid_NSE_AddAndCancelDataFlowMultipleCTNwithSingleRegularMDTs"></class>				             
 	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_060_ValidateCopyChangesOfDataUsageDisplayWithInLimitsPostpaidSEplanMultiCTN"></class>				             
 	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE"></class>
 	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_063_ValidateDataUsageRunningLowOnMaxSpeedDataInfiniteIndividualPlan"></class>				             
@@ -70,8 +70,7 @@
 	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_074_ValidateLiveChatLinkInChangeCallerIdLimitExceedModal_SEInfinite"></class>				             
 	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_075_ValidateLiveChatBadgeOnWirelessDashboardPage"></class>				             
 	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_077_ValidateSupportSectionInWirelessDasboard_NSEInfinite"></class>    
-    <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs"></class>
-	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC79_ValidateCancelDataFlowNSECTNwithSingleRegularMDTs"></class>				             
+    <class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs"></class>					            
 	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC80_ValidateDataUsageDisplayInOveragePayPerUsePostpaidNonSEplan"></class>				             
 	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_081_ValidateErrorMessageWhenMDTandProfileMaximumLimitForSE"></class>				             
 	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE"></class>

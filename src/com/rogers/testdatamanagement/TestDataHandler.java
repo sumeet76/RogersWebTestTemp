@@ -144,6 +144,7 @@ public class TestDataHandler {
 	public static AccountData tc95;
 	public static AccountData tc90;
 	public static AccountData tc98;
+	public static AccountData tc94;
 	
 	public static void dataInit (String strApplicationType) {	    	
     	if(strApplicationType.toUpperCase().trim().endsWith("CH")) {	    	
@@ -275,6 +276,7 @@ public class TestDataHandler {
     	tc82 = YamlHandler.getSSAccountData("tc82InfiniteSE");
     	tc01030405 =  YamlHandler.getSSAccountData("tc01_03_04_05_FDMInfiniteSE");
     	tc92 = YamlHandler.getSSAccountData("tc92_CancelledInfiniteNSE");
+    	tc94 = YamlHandler.getSSAccountData("tc94CreditLimitExceededAccountSEInfinite");
     	tc95 = YamlHandler.getSSAccountData("tc95NSESuspendedCTN");
     	tc90 = YamlHandler.getSSAccountData("tc90_SE_NSE_ResidentialServices");
     	tc98 = YamlHandler.getSSAccountData("tc98PrepaidAccount");
