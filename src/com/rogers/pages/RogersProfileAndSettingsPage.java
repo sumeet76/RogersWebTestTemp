@@ -240,9 +240,15 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy(xpath = "//div[text()='Billing address:' or text()='Adresse de facturation :']/parent::div/following-sibling::div[1]")
 	WebElement lblBillingAddress;
 	
-	@FindBy(xpath = "//rss-contact-info//div")
+	@FindAll({
+		@FindBy(xpath = "//div[text()='Email:' or text()='Email:']/parent::div/parent::div"),
+		@FindBy(xpath = "//rss-contact-info//div")})	
 	WebElement lblContactsDetailsSection;
 	
+	@FindAll({
+		@FindBy(xpath = "//div[text()='Language:' or text()='Language:']/parent::div/parent::div"),
+		@FindBy(xpath = "//rss-contact-info//div")})	
+	WebElement lblLanguageSection;
 	
 	@FindBy(xpath = "//div[text()='Language:']/parent::div/following-sibling::div")
 	WebElement lblContactsDetailsSectionMobile;
@@ -970,6 +976,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setCityName(String strCityName) {
+		reusableActions.waitForElementTobeClickable(lblCityName, 30);
 		reusableActions.getWhenReady(lblCityName).click();
 		reusableActions.getWhenReady(txtCityName).sendKeys(strCityName);
 	}
@@ -1052,7 +1059,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public String getExistingLanguage() {		
-		return reusableActions.getWhenReady(lblContactsDetailsSection).getText();
+		return reusableActions.getWhenReady(lblLanguageSection).getText();
 	}
 
 	/**
