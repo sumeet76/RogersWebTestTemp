@@ -2,7 +2,7 @@ package com.rogers.test.tests.selfserve.desktop;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-
+import java.util.List;
 import java.util.Map;
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
@@ -31,7 +31,7 @@ public class RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs e
 		closeSession();
 	}
 	
-	
+	Integer counterOfAddedData =0;
     @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateCancelMDTFlowNSEWithMultipleMDT() {
     	rogers_home_page.clkSignIn();
@@ -72,7 +72,8 @@ public class RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs e
 							"'Manage Data' page is displayed after click on view details link", 
 							"'Manage Data' page is NOT displayed after click on view details link");  
         reporter.reportLogWithScreenshot("Manage data page view after we click on view details");  
-      
+       
+        counterOfAddedData = rogers_manage_data_page.getAllExistingAddedDataCount();        Map<String, Integer> countOfAlreadyAddedData = rogers_manage_data_page.getCountOfAllExistingAddedDataValues();
 		Map<String, Integer> countOfActiveAndCancelledAddData = rogers_manage_data_page.getAllExistingAddDataCountCancelledAndActive();
 		reporter.reportLogWithScreenshot("Manage Data page");
 		//Comparisons Before Cancel:
@@ -81,8 +82,26 @@ public class RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs e
 				, "The number of cancelled and active add on macth on my plans and manage data page", 
 				"The number of cancelled and active add on does not macth on my plans and manage data page");
 				
-		//TODO add mutiple similar MDT's
+		rogers_wireless_dashboard_page.clkAddData();
+		if(counterOfAddedData<10)
+		{
+			
+		reporter.softAssert(rogers_add_data_page.verifyAddDataOverlayIsDisplayed(), 
+							"Add the Data top-up  window should be displayed. (completd an MDT add on)", 
+							"Add the Data top-up  window is NOT displayed.");          
+		List<String> allMDTValues =rogers_add_data_page.getAllAddDataOptions();         
+		rogers_speed_pass_page.clkBtnCloseInSpeedPassPopup();
 		
+		addAnyMDTForTotalOfThreeTimes(allMDTValues,countOfAlreadyAddedData);        		
+		}else
+		{
+			reporter.hardAssert(rogers_add_data_page.verifyAddDataLimitReachedIsDisplayed(), 
+					"Limit reached overlay is displayed, since already 10 addons have been added", 
+					"Limit reached overlay is not displayed even though there are 10 add ons"); 
+			 reporter.reportLogWithScreenshot("Limit reached overlay is displayed");
+			 rogers_speed_pass_page.clkBtnCloseInSpeedPassPopup();
+		}
+
 		
 		if((countOfActiveAndCancelledAddData.get("active")>=1))
 		{
@@ -160,4 +179,72 @@ public class RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs e
 	}
         
 
+    /**
+     * This method will try to add each MDT's 3 times if its not already added
+     * @param allMDT List of all the MDT values available for the account
+     * @param countOfAlreadyAddedData Map containing the count of already added MDT's 
+     */
+    private void addAnyMDTForTotalOfThreeTimes(List<String> allMDT, Map<String, Integer> countOfAlreadyAddedData) {
+    	for(String mdt: allMDT)
+    	{
+    		    		
+    		if(countOfAlreadyAddedData.containsKey(mdt)  && countOfAlreadyAddedData.get(mdt)<3)
+    		{
+    			reporter.reportLog("The Add on data :"+mdt+" needs to be added "+(3-countOfAlreadyAddedData.get(mdt))+" times and one extra attempt to check Limit reached");
+    			addMDTForGivenNumberOfTimes(3-countOfAlreadyAddedData.get(mdt),mdt);
+    			
+    			break;
+    		}else if(!countOfAlreadyAddedData.containsKey(mdt))
+    		{
+    			reporter.reportLog("The Add on data :"+mdt+" is not added , will add it 3 times and one extra attempt to check Limit reached");
+    			addMDTForGivenNumberOfTimes(3,mdt);
+    			break;
+    		}else if(countOfAlreadyAddedData.get(mdt)==3)
+    		{
+    			reporter.reportLog("The Add on data :"+mdt+" is already added 3 times");
+    			addMDTForGivenNumberOfTimes(0,mdt);
+    			break;
+    		}
+    	}
+    }
+    
+    /**
+     * This methods will try to add MDT value for the specified number of times
+     * @param intMaxNumberOfTimesToAdd The number of times to add a particular MDT
+     * @param strMDT The MDT data value to add
+     */
+    private void addMDTForGivenNumberOfTimes(Integer intMaxNumberOfTimesToAdd,String strMDT) {
+    	for(int itr=1;itr<=intMaxNumberOfTimesToAdd+1;itr++)
+    	{
+    		 rogers_wireless_dashboard_page.clkAddData();
+             reporter.softAssert(rogers_add_data_page.verifyAddDataOverlayIsDisplayed(), 
+     							"Add the Data top-up  window should be displayed. (completd an MDT add on)", 
+     							"Add the Data top-up  window is NOT displayed.");   
+             reporter.reportLogWithScreenshot("Add Data Add on");  
+             rogers_add_data_page.selectAddOnOption(strMDT);
+             reporter.reportLogWithScreenshot("Select Add on option");  
+             rogers_add_data_page.clkContinue();
+             reporter.reportLogWithScreenshot("Select Purchase"); 
+             rogers_add_data_page.clkPurchase();
+             if(itr<=intMaxNumberOfTimesToAdd && counterOfAddedData<10)
+             {
+             reporter.softAssert(rogers_add_data_page.verifyAddDataSuccessMsgIsDisplayed(), 
+						"Add the Data top-up  window should be displayed. (completd an MDT add on)", 
+						"Add the Data top-up  window is NOT displayed.");
+             rogers_speed_pass_page.clkBtnCloseInSpeedPassPopup();
+             counterOfAddedData++;
+             }else if(itr>intMaxNumberOfTimesToAdd || counterOfAddedData==10)
+             {
+            	 reporter.hardAssert(rogers_add_data_page.verifyAddDataLimitReachedIsDisplayed(), 
+							"Limit reached overlay is displayed", 
+							"Limit reached overlay is not displayed"); 
+            	 reporter.reportLogWithScreenshot("Limit reached overlay is displayed");
+            	 rogers_speed_pass_page.clkBtnCloseInSpeedPassPopup();
+            	 break;
+             }
+             
+    	}
+    	    	        
+    }
+    
 }
