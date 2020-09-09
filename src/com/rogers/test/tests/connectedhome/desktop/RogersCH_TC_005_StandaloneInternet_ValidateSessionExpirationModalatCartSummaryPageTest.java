@@ -1,19 +1,13 @@
 package com.rogers.test.tests.connectedhome.desktop;
-import java.io.IOException;
-import java.lang.reflect.Method;
-
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;     
-import org.testng.annotations.Optional;                     
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 
 
@@ -47,8 +41,8 @@ public class RogersCH_TC_005_StandaloneInternet_ValidateSessionExpirationModalat
     	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
     	rogers_home_page.clkAddressCheck();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=(String) TestDataHandler.standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=(String) TestDataHandler.standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line2");
         rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
@@ -135,7 +129,7 @@ public class RogersCH_TC_005_StandaloneInternet_ValidateSessionExpirationModalat
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 

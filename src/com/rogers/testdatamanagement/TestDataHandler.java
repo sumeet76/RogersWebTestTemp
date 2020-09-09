@@ -56,6 +56,7 @@ public class TestDataHandler {
 	public static AccountData digitalTVAccount;
 	public static AccountData solarisInternetAccount;
 	public static AccountData igniteTVAccount;
+	public static AccountData igniteTV4Plus1Account;
 	public static AccountData tc41IgniteTVAccount;
 	public static AccountData solarisTVAccount;
 	public static AccountData standaloneInternetAccountWithUsage;
@@ -219,6 +220,7 @@ public class TestDataHandler {
 
     	//Ignite TV test data
     	igniteTVAccount = YamlHandler.getCableAccountData("IgniteTVAccount");
+		igniteTV4Plus1Account = YamlHandler.getCableAccountData("IgniteTV4Plus1Account");
     	solarisTVAccount = YamlHandler.getCableAccountData("SolarisTVAccount");
     	solarisPortinFlows = YamlHandler.getCableAccountData("SolarisPortinFlows");
     	solarisTVAccountStarterPackage = YamlHandler.getCableAccountData("SolarisTVAccountStarterPackage");
