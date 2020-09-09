@@ -1,17 +1,13 @@
 package com.rogers.test.tests.connectedhome.desktop;
-import java.io.IOException;
-import java.lang.reflect.Method;
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod; 
-import org.testng.annotations.Optional;                     
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 /**
  * This class contains the test method to test the IgniteTV buy flow for Rogers.com   
@@ -78,8 +74,8 @@ public class RogersCH_TC_006_IginteTV_BuySolarisDoublePlayChangeInstallationDate
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 		rogers_home_page.clkServiceability();
 		reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-		String  strAddressLine1=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line1");
-		String  strAddressLine2=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line2");
+		String  strAddressLine1=(String) TestDataHandler.solarisInternetAccountWithUsageAndPackageUpgrade.getAccountDetails().getAddress().get("line1");
+		String  strAddressLine2=(String) TestDataHandler.solarisInternetAccountWithUsageAndPackageUpgrade.getAccountDetails().getAddress().get("line2");
 		rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
 		rogers_home_page.clkIgniteAddressLookupSubmit();
 		//rogers_home_page.clkContinueIgniteMultipleAddressLookupSubmit();
