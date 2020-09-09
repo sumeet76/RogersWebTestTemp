@@ -32,7 +32,7 @@ public class RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhe
 	}
 
 	
-    @Test
+    @Test(groups = {"RegressionSS","FDMSS"})
     public void validateScrollBarInFDMsectionOfWirelessDashboardWhenCxHasMoreThan5CTN_SE() {
     	rogers_home_page.clkSignIn();
     	//TODO create new data file

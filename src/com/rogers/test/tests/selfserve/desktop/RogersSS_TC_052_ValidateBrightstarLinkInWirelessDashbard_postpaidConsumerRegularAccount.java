@@ -27,7 +27,7 @@ public class RogersSS_TC_052_ValidateBrightstarLinkInWirelessDashbard_postpaidCo
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateBrightstarLink() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc495271.getUsername();

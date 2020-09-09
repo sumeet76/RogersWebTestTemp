@@ -39,7 +39,7 @@ Expected:
 
 public class RogersSS_TC_042_AO_ValidateCHaccountBadge_IginteInternet extends BaseTestClass {
 
-    @Test
+    @Test(groups = {"RegressionSS","AccountOverviewSS"})
     public void checkInternetDashboard() {
     	            reporter.reportLogWithScreenshot("Launched the Home Page");
                     rogers_home_page.clkSignIn();

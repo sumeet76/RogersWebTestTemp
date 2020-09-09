@@ -27,7 +27,7 @@ public class RogersSS_TC_071_Validate3rdPartyBrightstarPage extends BaseTestClas
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validate3rdPartyBrightstarPage() { 
     	reporter.reportLogWithScreenshot("Rogers launched");
     	String strDeepLinkURL = TestDataHandler.ssConfig.getRogersURL().split(".com")[0]+".com"+TestDataHandler.ssConfig.getRepairClaimUrl();

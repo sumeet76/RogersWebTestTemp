@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 
 public class RogersSS_TC_027_UpdateVoicemailPasswordTest extends BaseTestClass {
 
-	@Test
+	@Test(groups = {"RegressionSS","ProfileAndSettingsSS"})
 	public void updateVoicemailPassword() {
 		String strNewPwd = FormFiller.generatePhoneNumber().substring(0, 4);
 		rogers_home_page.clkSignIn();

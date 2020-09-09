@@ -27,7 +27,7 @@ public class RogersSS_TC80_ValidateDataUsageDisplayInOveragePayPerUsePostpaidNon
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateDataUsageDisplayInOverageForNSE() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc80.getUsername();

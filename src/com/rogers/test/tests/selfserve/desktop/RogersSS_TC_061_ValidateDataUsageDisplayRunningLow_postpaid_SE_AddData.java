@@ -28,7 +28,9 @@ public class RogersSS_TC_061_ValidateDataUsageDisplayRunningLow_postpaid_SE_AddD
 	
     @Test
     public void validateDataUsageDisplayForRunningLowAndAddData() {
-    	rogers_home_page.clkSignIn();
+    	reporter.reportLogWithScreenshot("Home Page");
+        reporter.reportLog("Home Page Launched");
+    	rogers_home_page.clkSignInMobile();
     	String strUsername = TestDataHandler.tc61.getUsername();
     	rogers_login_page.switchToSignInIFrame();
         rogers_login_page.setUsernameIFrame(strUsername);
@@ -45,7 +47,7 @@ public class RogersSS_TC_061_ValidateDataUsageDisplayRunningLow_postpaid_SE_AddD
             rogers_account_overview_page.selectAccount(TestDataHandler.tc61.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");   
-        rogers_account_overview_page.clkMenuUsageAndService();
+        rogers_account_overview_page.clkMenuUsageAndServiceMobile();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
 
     	rogers_account_overview_page.clkSubMenuWirelessUsage();

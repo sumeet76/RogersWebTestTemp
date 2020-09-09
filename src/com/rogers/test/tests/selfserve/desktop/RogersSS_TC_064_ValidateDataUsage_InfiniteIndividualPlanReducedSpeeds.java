@@ -27,7 +27,7 @@ public class RogersSS_TC_064_ValidateDataUsage_InfiniteIndividualPlanReducedSpee
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateDataUsageForInfiniteNsePlanReducedSpeed() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc64.getUsername();

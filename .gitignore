@@ -15,6 +15,7 @@ rogers_property.dat
 msedgedriver
 *.orig
 .gradle
+<<<<<<< Updated upstream
 gradle
 .idea
 /build
@@ -25,3 +26,8 @@ gradlew
 gradlew.bat
 
 fido_property.dat
+=======
+.idea/
+*.iml
+/build/
+>>>>>>> Stashed changes

@@ -25,7 +25,7 @@ public class RogersSS_TC_03_UserValidateRecoverUsernameUsingEmailID extends Base
 		closeSession();
 	}
 	
-	@Test
+	@Test(groups = {"RegressionSS","ProfileAndSettingsSS"})
 	public void userValidateRecoverUsernameUsingEmailID() {
 		
 		reporter.reportLogWithScreenshot("Rogers Launch page");

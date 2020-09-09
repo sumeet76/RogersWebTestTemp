@@ -26,7 +26,7 @@ import java.lang.reflect.Method;
 
 public class RogersSS_TC_045_AO_ValidateCHAccountBadge_LegacyInternet extends BaseTestClass {
 	
-	@Test
+	@Test(groups = {"RegressionSS","AccountOverviewSS"})
 	public void checkLegacyInternetUsage() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();

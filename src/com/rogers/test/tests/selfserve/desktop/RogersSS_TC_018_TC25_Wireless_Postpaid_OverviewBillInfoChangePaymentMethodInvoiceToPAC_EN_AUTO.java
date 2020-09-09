@@ -32,7 +32,7 @@ public class RogersSS_TC_018_TC25_Wireless_Postpaid_OverviewBillInfoChangePaymen
 	}
 	
 	
-	@Test(priority = 1)
+	@Test(priority = 1,groups = {"RegressionSS","BillingAndPaymentsSS"})
     public void overviewBillInfoChangePaymentMethodInvoiceToPAC() {
     	    	    
     	rogers_home_page.clkSignIn();
@@ -89,7 +89,7 @@ public class RogersSS_TC_018_TC25_Wireless_Postpaid_OverviewBillInfoChangePaymen
     }
 
        
-    @Test(priority = 2,dependsOnMethods = "overviewBillInfoChangePaymentMethodInvoiceToPAC")
+    @Test(priority = 2,dependsOnMethods = "overviewBillInfoChangePaymentMethodInvoiceToPAC",groups = {"RegressionSS","BillingAndPaymentsSS"})
     public void wirelessPostpaidChangePaymentMethodToManualTest() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc161825.getUsername();

@@ -33,7 +33,7 @@ public class RogersSS_TC_014_BaselineUpdateEmailAddress extends BaseTestClass {
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","ProfileAndSettingsSS"})
     public void validateUserUpdateUsername() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc1314.getUsername();

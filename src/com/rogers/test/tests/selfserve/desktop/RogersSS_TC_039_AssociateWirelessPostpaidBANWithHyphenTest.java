@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 public class RogersSS_TC_039_AssociateWirelessPostpaidBANWithHyphenTest extends BaseTestClass {
 
-	@Test
+	@Test(groups = {"RegressionSS","WirelessDashboardSS"})
 	public void associateWirelessPostpaidBANwithHyphen() {
 		
 		rogers_home_page.clkSignIn();

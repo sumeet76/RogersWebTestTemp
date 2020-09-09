@@ -27,7 +27,7 @@ public class RogersSS_TC_04_05_FDM_BlockAndUnblockDataUsageForTheCTN extends Bas
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","FDMSS"})
     public void blockFDMDataUsageForTheCTN() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc01030405.getUsername();

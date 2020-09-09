@@ -32,7 +32,7 @@ public class RogersSS_TC_075_ValidateLiveChatBadgeOnWirelessDashboardPage extend
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateLiveChatBadgeOnWirelessDashboardPage() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc727375.getUsername();

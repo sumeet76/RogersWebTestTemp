@@ -145,8 +145,8 @@ public class RogersSecurePaymentPage extends BasePageClass {
 	 * @return true if Payment Success msg and amount displayed are correct; else false
 	 */
 	public boolean verifyPaymentSuccessful(String strAmount) {
-		reusableActions.waitForElementVisibility(lblPaymentSuccessMsg);
-		return (reusableActions.isElementVisible(lblPaymentSuccessMsg, 60) &&
+		reusableActions.waitForElementVisibility(lblPaymentSuccessMsg, 60);
+		return (reusableActions.isElementVisible(lblPaymentSuccessMsg) &&
 				lblPaymentAmount.getText().trim().replace("$", "").trim().contains(strAmount));
 	}
 	

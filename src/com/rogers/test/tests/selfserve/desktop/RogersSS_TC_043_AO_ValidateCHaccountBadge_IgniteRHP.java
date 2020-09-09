@@ -36,7 +36,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersSS_TC_043_AO_ValidateCHaccountBadge_IgniteRHP extends BaseTestClass {
 
-    @Test
+    @Test(groups = {"RegressionSS","AccountOverviewSS"})
     public void checkSolarisRHPDasboard() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
