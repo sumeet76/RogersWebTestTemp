@@ -120,7 +120,7 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 		public boolean isLearnMoreLinkDisplayed()
 		{
 			reusableActions.javascriptScrollByVisibleElement(learnMoreLink);
-			return reusableActions.isDisplayed(learnMoreLink);
+			return learnMoreLink.isDisplayed();
 		}
 	   
 		/**
@@ -132,7 +132,7 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 		public boolean verifyRpotgTitle()
 		{
 			reusableActions.staticWait(1000);
-			return reusableActions.isDisplayed(rpotgTitle);
+			return rpotgTitle.isDisplayed();
 		}
 		
 		/**
@@ -143,7 +143,7 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 		
 		public boolean verifyAppointmentDetailsTitle()
 		{
-			return reusableActions.isDisplayed(appointmentDetailsTitle);
+			return appointmentDetailsTitle.isDisplayed();
 		}
 		
 		/**
@@ -154,7 +154,7 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 		
 		public boolean verifyAppointmentDateTitle()
 		{
-			return reusableActions.isDisplayed(appointmentDateTitle);
+			return appointmentDateTitle.isDisplayed();
 		}
 		
 		/**
@@ -165,7 +165,7 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 		
 		public boolean verifyAppointmentAddressTitle()
 		{
-			return reusableActions.isDisplayed(appointmentAddressTitle);
+			return appointmentAddressTitle.isDisplayed();
 		}
 		
 		/**
@@ -176,7 +176,7 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 		
 		public boolean verifyDeviceImage()
 		{
-			return reusableActions.isDisplayed(deviceImage);
+			return deviceImage.isDisplayed();
 		}
 		
 		/**
