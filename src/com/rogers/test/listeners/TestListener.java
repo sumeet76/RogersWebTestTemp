@@ -16,6 +16,7 @@ import utils.SauceLabsUtils;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
+import java.util.HashMap;
 
 //import java.net.URISyntaxException;
 

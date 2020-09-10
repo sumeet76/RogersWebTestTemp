@@ -32,7 +32,7 @@
 
 <test name="Rogers self serve single run" enabled="true">
 <classes>				             
-	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_09_FDM_AddDataUpsell"></class>
+	<class name="com.rogers.test.tests.selfserve.desktop.RogersSS_TC_102_PACMAN_ValidateTheVAScancelFlowFreeTrialNSEInfinite50"></class>
 </classes>          																					
 </test>
 							

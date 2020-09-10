@@ -341,6 +341,38 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	@FindBy(xpath = "//*[@translate='acc_overview_other_services']")
 	WebElement lblOtherServicesAvailable;
+
+	@FindBy(xpath = "")
+	WebElement btnSubscriptionSignUp;
+
+	@FindBy(xpath = "//a//span[contains(@class,'ds-button__copy') and contains(text(),'Manage')]")
+	WebElement btnSubscriptionManage;
+
+	@FindBy(xpath = "//h2[text()='Currently subscribed']")
+	WebElement headerCurrentlySubscribed;
+
+	@FindBy(xpath = "//a[@title='Cancel the Apple Music subscription for ROGERS CANCELLATION']")
+	WebElement btnCancelSubscription;
+
+	
+	@FindBy(xpath = "//h1[text()='Cancel subscription']")
+	WebElement headerCancelSubscription;
+
+	@FindBy(xpath = "//rss-subscriber-info")
+	WebElement lblRogersCancellationForSubs;
+
+	@FindBy(xpath = "//*[contains(text(),'I’m cancelling this subscription because:')]/ancestor::span/preceding-sibling::select")
+	WebElement selectReasonForCancel;
+
+	@FindBy(xpath = "//*[contains(text(),'Confirm')]")
+	WebElement btnConfirm;
+
+	private By btnOK;
+
+	private By headerCancelSuccess;
+
+	@FindBy(xpath = "//option[@value='0: Object']")
+	WebElement optReasonOne;
 	
 	
 	/**
@@ -1383,9 +1415,126 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public void clkCTNWidget() {
 		reusableActions.getWhenReady(btnCTNWidgetPrepaid).click();
 		
+	}
+
+	/**
+	 * Verifies if the account has subscription available which can be redeem
+	 * @return true if available else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifySubscriptionIsAvailableForRedeem() {
+		return reusableActions.isElementVisible(btnSubscriptionSignUp);
 	} 
 	
+	/**
+	 * Verifies if the account has subscription available which can be redeem
+	 * @return true if available else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyIfSubscriptionIsAvailableForCancellation() {
+		return reusableActions.isElementVisible(btnSubscriptionManage);
+	}
+
+	/**
+	 * Clicks on Manage button
+	 * @author Mirza.Kamran
+	 */
+	public void clkManageOnSubscription() {
+		reusableActions.getWhenReady(btnSubscriptionManage).click();
+	} 
+		
+	/**
+	 * Verifies if the currently subscribed pane is displayed
+	 * @return true if available else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyIfCurrentlySubscribedPaneIsDisplayed() {
+		return reusableActions.isElementVisible(headerCurrentlySubscribed);
+	}
+		
+	/**
+	 * Verifies if the button cancel subscription is displayed
+	 * @return true if available else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyIfButtonCancelSubscriptionIsDisplayed() {
+		return reusableActions.isElementVisible(btnCancelSubscription);
+	}
 	
+	/**
+	 * Clicks on cancel subscription button
+	 * @author Mirza.Kamran
+	 */
+	public void clkCancelSubscription() {
+		reusableActions.getWhenReady(btnCancelSubscription).click();
+	} 
 	
+		
+		/**
+		 * Verifies if the button cancel subscription is displayed
+		 * @return true if available else false
+		 * @author Mirza.Kamran
+		 */
+		public boolean verifyIfHeaderCancelSubscriptionIsDisplayed() {
+			return reusableActions.isElementVisible(headerCancelSubscription);
+		}
+		
+				
+		/**
+		 * Verifies if the cancel subscription details are correctly displayed
+		 * @return true if available else false
+		 * @author Mirza.Kamran
+		 */
+		public boolean verifyIfCancelSubscriptionDetailsIsDisplayedCorrectly(String strSubscriberNumber) {
+			return reusableActions.getWhenReady(lblRogersCancellationForSubs).getText().trim().replaceAll(" ","").replaceAll("-","").contains(strSubscriberNumber);
+		}
+		
+		/**
+		 * Selects the cancellation reason
+		 * @author Mirza.Kamran
+		 */
+		public void selectReasonForCancelSubscription() {
+			reusableActions.getWhenReady(selectReasonForCancel).click();
+			reusableActions.getWhenReady(optReasonOne).click();
+			//reusableActions.selectWhenReadyByVisibleText(selectReasonForCancel, " I'm switching to another music service provider ");
+		} 
 	
+		/**
+		 * Selects confirm cancel subscription
+		 * @author Mirza.Kamran
+		 */
+		public void clkConfirmCancelSubscription() {
+			reusableActions.getWhenReady(btnConfirm).click();
+		}
+
+		/**
+		 * verifies if the cancel success overlay is displayed
+		 * @return true if displayed else false
+		 * @author Mirza.Kamran
+		 */
+		public boolean verifyIfCancelSuccessfulOverLayDisplayed() {
+			return reusableActions.isElementVisible(headerCancelSuccess);
+		} 
+		
+		
+		/**
+		 * Selects okay on cancel success overlay
+		 * @author Mirza.Kamran
+		 */
+		public void clkOKButtonOnCancelSuccessOverlay() {
+			reusableActions.getWhenReady(btnOK).click();
+		}
+
+		/**
+		 * 
+		 * @return true if displayed else false
+		 * @author Mirza.Kamran
+		 */
+		public boolean verifyIfSMPIsDisplayedWithCancelledSubscription() {
+
+			return false;
+		}
+		
+		
+		
 }
