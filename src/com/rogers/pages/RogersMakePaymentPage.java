@@ -288,7 +288,7 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 */
 	public Boolean verifyPaymentSuccessfulMessageDisplayed() {
 						
-		if(! reusableActions.isDisplayed(lblPaymentReceived)) {
+		if(! reusableActions.isElementVisible(lblPaymentReceived)) {
 			System.out.print("The Label payment received is not displayed it seems, please investigate");
 			return false;
 		}
@@ -315,13 +315,6 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 */
 	public boolean verifyBankSection() {		
 		return reusableActions.isElementVisible(divBankPayment);
-	}
-
-	/**
-	 * clicks on Button Close Make Payment
-	 */
-	public void closePayNowModal() {
-		reusableActions.clickIfAvailable(btnCloseMakePayment);		
 	}
 
 	/**
@@ -361,7 +354,7 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyIfTheSelectedBankIsDisplayedCorrectlyOnTheMakePaymentOverLay() {		
-		return reusableActions.isDisplayed(imgSelectedbank);
+		return reusableActions.isElementVisible(imgSelectedbank);
 	}
 }
 

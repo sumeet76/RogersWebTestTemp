@@ -2,6 +2,7 @@ package com.rogers.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -16,7 +17,8 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//h2[contains(text(),'My Wireless Usage')]")
+	@FindAll({@FindBy(xpath = "//h2[contains(text(),'My Wireless Usage')]"),
+			@FindBy(xpath = "//t[contains(text(),'My Wireless')]")})
 	WebElement lblMyWlsUsage;
 
 	@FindBy(xpath = "//a[@class='my-line-change-number']")
@@ -47,7 +49,11 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	WebElement lnkChangeCurrentPlan;
 	
 	//@FindBy(xpath = "//span[@class='plan-cta-text']")
-	@FindBy(xpath = "//button[@title='Changer mon appareil pour un nouveau' or @title='Upgrade my device to a new one']")
+	
+	@FindAll({
+		@FindBy(xpath = "//button[@title='Changer mon appareil pour un nouveau' or @title='Upgrade my device to a new one']"),
+		@FindBy(xpath = "//div[@class='device-details']//button[@class='upgrade-button no-bg']")
+	})
 	WebElement btnUpgradeMyDevice;
 	
 	/**
@@ -57,37 +63,6 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	 */
 	public boolean verifyWirelessPageLoad() {
 		return reusableActions.isElementVisible(lblMyWlsUsage);
-	}
-	
-	/**
-	 * Clicks on the 'Change My Caller Id' link
-	 * @author rajesh.varalli1
-	 */
-	public void clickChangeMyCallerId() {
-		reusableActions.scrollToElement(lnkChangeMyCallerId);
-		reusableActions.clickIfAvailable(lnkChangeMyCallerId);
-	}
-	
-	/**
-	 * Clicks on the Overview button/link on the top menu
-	 * @author rajesh.varalli1
-	 */
-	public void clickOverview() {
-		reusableActions.clickIfAvailable(lnkOverview);
-	}
-
-	/**
-	 * Validates and clicks on the 'Update My Voice mail Password' link
-	 * @return true if link found; else false
-	 * @author rajesh.varalli1
-	 */
-	public boolean clickUpdateMyVoicemailPwd() {
-		if(reusableActions.isElementVisible(lnkUpdateMyVoicemailPwd, 60)) {
-			reusableActions.scrollToElement(lnkUpdateMyVoicemailPwd);
-			reusableActions.clickIfAvailable(lnkUpdateMyVoicemailPwd);
-			return true;
-		}
-		return false;
 	}
 	
 	/**
@@ -109,14 +84,6 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	}
 	
 	/**
-	 * Clicks on the 'Submit' button
-	 * @author rajesh.varalli1
-	 */
-	public void clickSubmitButton() {
-		reusableActions.clickIfAvailable(btnVoicemailPwdSubmit);
-	}
-	
-	/**
 	 * Validates the Reset Voicemail Password successful message
 	 * @return true if message displayed; else false
 	 * @author rajesh.varalli1
@@ -131,14 +98,6 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	 */
 	public void clickChangePlanButton() {
 		reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(btnChangePlan, 100));
-	}
-	
-	/**
-	 * Clicks on the 'Make changes to your current plan' link on the overlay
-	 * @author rajesh.varalli1
-	 */
-	public void clickMakeChangesToCurrentPlan() {
-		reusableActions.clickIfAvailable(lnkChangeCurrentPlan);
 	}
 	
 	/**

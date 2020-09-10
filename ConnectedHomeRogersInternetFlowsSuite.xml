@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Connected Home Rogers all Tests CH" parallel="classes"
+	thread-count="1">
+	<listeners>
+		<listener
+			class-name="com.rogers.test.listeners.AnnotationTransformer" />
+		<listener class-name="com.rogers.test.listeners.TestListener" />
+	</listeners>
+       	<test name="Rogers Cable Internet flows ">
+		<parameter name="strBrowser" value="saucechrome" />
+		<parameter name="strLanguage" value="en" />
+		<classes>	 	
+		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_005_IginteInternet_ValidateInternetDashboardUsageTest"></class>
+ 		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_008_IginteInternet_InternetPackageDowngradeTest"></class> 
+  		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_013_IginteInternet_InternetBundleofferChangePackageDowngradeTest"></class>
+        <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_006_IginteInternet_OldConstructor_ExistingSolarisChangeInternetPackageTest"></class>  
+    	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_009_IginteInternet_InternetPackageUpgradeTest"></class> 
+ 	 	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_012_IginteInternet_InternetBundleofferChangePackageUpgradeTest"></class>
+   		</classes>
+	</test>       
+              		
+      <test name="Cable rogers Mobile cases">
+		<parameter name="strBrowser" value="sauceandroidchrome" />
+		<parameter name="strLanguage" value="en" />
+		<classes>
+        	<class name="com.rogers.test.tests.connectedhome.mobile.Mobile_RogersCH_TC_005_IginteInternet_ValidateInternetDashboardUsageTest"></class>      	    
+      	    <class name="com.rogers.test.tests.connectedhome.mobile.Mobile_RogersCH_TC_009_IginteInternet_InternetPackageUpgradeTest"></class>     
+		</classes> 
+	</test >   
+</suite>

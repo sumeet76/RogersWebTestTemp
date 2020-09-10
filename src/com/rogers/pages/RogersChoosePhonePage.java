@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-
 import com.rogers.pages.base.BasePageClass;
 
 /**
@@ -20,7 +19,8 @@ public class RogersChoosePhonePage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//div[contains(@class,'button') and (@res='details_devicemodel' or @res='upgrade')]")
+	//div[contains(@class,'button') and (@res='details_devicemodel' or @res='upgrade' or @res='_add')]
+	@FindBy(xpath = "//div[contains(@class,'button') and (@res='details_devicemodel' or @res='upgrade' or @res='_add')]")
 	WebElement btnDetails;
 	
 	@FindBy(xpath = "//span[@translate='_newCustomer']/parent::button")
@@ -38,12 +38,17 @@ public class RogersChoosePhonePage extends BasePageClass {
 	@FindBy(xpath = "//input[@id='searchBar']/../span")
 	WebElement imgSearch;
 	
+	//2nd findby: https://qa06-ciam.rogers.com/
+	//div[@class='uniEligibleDevice ng-scope']
 	@FindAll({
 		@FindBy(xpath = "//div[@res='_add']"),
 		@FindBy(xpath = "//span[text()='$0' or text()='0']/ancestor::section[@class='phoneModel']//div[@res='details_devicemodel' or @res='upgrade']"),
 		@FindBy(xpath = "//span[text()='$0' or text()='0']/ancestor::section[@class='phoneModel']//div[@res='_add']")
 	})
 	WebElement btnAdd;
+	
+	@FindBy(xpath = "//span[@class='-messageFont']")
+	WebElement lblProOntheGo;
 	
 	@FindBy(xpath = "//span[text()='$0' or text()='0']/ancestor::section[@class='phoneModel']//div[@res='details_devicemodel' or @res='upgrade']")
 	List<WebElement> btnZeroUpfrontDeviceDetails;
@@ -53,6 +58,36 @@ public class RogersChoosePhonePage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[@class='choose-ctn-modal']")
 	WebElement lblChooseALine;
+	
+	@FindBy(xpath = "//section[@class='phoneModel']")
+	List<WebElement> deviceModal;
+	
+	@FindBy(xpath = "//*[@res='check_eligibility']")
+	WebElement linkProOnTheGoCheckEligibility;
+	
+	@FindBy(xpath = "//input[@id='zipcode']")
+	WebElement inputPostalCodeOnForm;
+	
+	@FindBy(xpath = "//div[contains(@class,'hidden-xs')]//button[@class='btn checkAvailabilityBtn btn-active']")
+	WebElement btnCheckPostalCodeOnForm;
+	
+	@FindBy(xpath = "//img[@alt='success-icon']")
+	WebElement imgSuccess;
+	
+	@FindBy(xpath = "//button[@res='eligible_continue']")
+	WebElement formProOnTheGoContinue;
+	
+	@FindBy(xpath = "//button[@res='eligible_cancel']")
+	WebElement formProOnTheGoCancel;
+
+	/**
+	 * To verify the Rogers Choose Phone Page
+	 * @return true if the search text filter for phone is available on page, else false 
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyRogersChoosePhonePage() {
+		return reusableActions.isElementVisible(txtSearch, 60);
+	}
 	
 	/**
 	 * Clicks on the 'Details' button on the first available device
@@ -100,7 +135,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void searchDevice(String strDeviceName) {
-		reusableActions.getWhenReady(txtSearch, 80).sendKeys(strDeviceName);
+		reusableActions.getWhenReady(txtSearch, 60).sendKeys(strDeviceName);
 		reusableActions.executeJavaScriptClick(imgSearch);
 	}
 	
@@ -133,4 +168,50 @@ public class RogersChoosePhonePage extends BasePageClass {
 		}
 	}
 	
+	/**
+	 * This method will check whether the device is pro on the go or not
+	 * @return true if the device is pro on the go else false
+	 * @author Saurav.Goyal
+	 */
+	public boolean checkProOnTheGo() {
+		boolean detailButtonFlag; 
+		for(WebElement element: deviceModal) {
+			if(reusableActions.isElementVisible(element , 30))
+				try {
+					WebElement btnDetail =  element.findElement(By.xpath("//div[contains(@class,'button') and (@res='details_devicemodel' or @res='upgrade' or @res='_add')]"));
+					reusableActions.isElementVisible(btnDetail);
+					detailButtonFlag = true;
+					//reusableActions.isElementVisible(element.findElement(By.xpath("//section[@class='phoneModel']//span[@res='device_eligible']")));
+					WebElement proOnTheGoMsgDisplay  = element.findElement(By.xpath("//span[@class='-messageFont']"));
+					reusableActions.isElementVisible(proOnTheGoMsgDisplay);
+					//reusableActions.isElementVisible(element.findElement(By.xpath("//span[@class='-messageFont']")));
+					return detailButtonFlag;
+				} catch (Exception e) {
+					if(detailButtonFlag = true) {
+						return false;
+					}
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * This method will check whether the customer address is eligible to deliver pro on the go device or not
+	 * @return true if the customer address is eligible to deliver pro on the go device in there ares else false
+	 * @param postalCode : customer's postal code
+	 * @author Saurav.Goyal
+	 */
+	public boolean checkProOnTheGoAtAddress(String postalCode) {
+		if(reusableActions.isElementVisible(linkProOnTheGoCheckEligibility, 30)) {
+			reusableActions.clickWhenReady(linkProOnTheGoCheckEligibility, 30);
+			reusableActions.getWhenReady(inputPostalCodeOnForm).sendKeys(postalCode);
+			reusableActions.clickWhenReady(btnCheckPostalCodeOnForm, 30);
+			if(reusableActions.isElementVisible(imgSuccess, 30)) {
+				reusableActions.clickWhenReady(formProOnTheGoContinue, 30);
+				return true;
+			}
+			reusableActions.clickWhenReady(formProOnTheGoCancel, 30);
+		}
+		return false;
+	}
 }

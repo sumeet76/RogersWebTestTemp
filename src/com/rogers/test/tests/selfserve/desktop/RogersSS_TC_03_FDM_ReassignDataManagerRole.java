@@ -1,27 +1,23 @@
 package com.rogers.test.tests.selfserve.desktop;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 
 
 public class RogersSS_TC_03_FDM_ReassignDataManagerRole extends BaseTestClass {	
    	
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
-			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
+		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+			startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 		}
 	   	
 		
@@ -31,8 +27,8 @@ public class RogersSS_TC_03_FDM_ReassignDataManagerRole extends BaseTestClass {
 	}
 	
 	
-    @Test
-    public void validateDataUsageInfiniteSEReducedSpeeds() {
+    @Test(groups = {"RegressionSS","FDMSS"})
+    public void validateReassignDataManagerRole() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc7681.getUsername();
     	rogers_login_page.switchToSignInIFrame();
@@ -41,6 +37,7 @@ public class RogersSS_TC_03_FDM_ReassignDataManagerRole extends BaseTestClass {
         rogers_login_page.setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 		
@@ -64,27 +61,27 @@ public class RogersSS_TC_03_FDM_ReassignDataManagerRole extends BaseTestClass {
        reporter.reportLogWithScreenshot("dashboard page displayed"); 
        rogers_wireless_dashboard_page.clkDataManagerCTN();
        reporter.reportLogWithScreenshot("Data Manager CTN clicked"); 
-       reporter.hardAssert(rogers_wireless_dashboard_page.isAddChangeDataManagerDisplayed(),
-    		   "Change data manager available for this account","Chnage data manager is not displayed for this account");
+       reporter.hardAssert(rogers_wireless_dashboard_page.isChangeDataManagerDisplayed(),
+    		   "Change data manager available for this account","Change data manager is not displayed for this account");
        String strDataManagerCTN = rogers_wireless_dashboard_page.getDataManagerCTN();
        reporter.reportLogWithScreenshot("Data manager CTN is : "+strDataManagerCTN); 
        String strNonDataManagerCTN = rogers_wireless_dashboard_page.getNonDataManagerCTN();
-       reporter.reportLogWithScreenshot("Non Data manager CTN is : "+strNonDataManagerCTN); 
+       reporter.reportLog("Non Data manager CTN is : "+strNonDataManagerCTN); 
        rogers_wireless_dashboard_page.clkChangeDataManager();
        reporter.reportLogWithScreenshot("Change data manger button clicked");
-       reporter.softAssert(rogers_wireless_dashboard_page.isChooseDataManagerOverlayDisplayed(),
+       reporter.hardAssert(rogers_wireless_dashboard_page.isChooseDataManagerOverlayDisplayed(),
         		   "Choose data manager overlay is displayed for this account", 
         		   "Choose data manager overlay is NOT available for this account");
        reporter.reportLogWithScreenshot("Choose data manager overlay displayed");       
        rogers_wireless_dashboard_page.changeDataManager(strNonDataManagerCTN);
-       reporter.reportLogWithScreenshot("Data manager chnages to : "+strNonDataManagerCTN);
+       reporter.reportLogWithScreenshot("Data manager changes to : "+strNonDataManagerCTN);
        rogers_wireless_dashboard_page.clkSaveButtonOnDataManager();
        reporter.reportLogWithScreenshot("Save data manager clicked");
        rogers_wireless_dashboard_page.clkDataManagerCTN();
        reporter.reportLogWithScreenshot("Data Manager CTN clicked"); 
-       reporter.softAssert(rogers_wireless_dashboard_page.isChangeDataManagerSuccessful(strNonDataManagerCTN),
-    		   "Data manager is changed successfully", "Data manager is not chnaged for this account yet");
-       reporter.reportLogWithScreenshot("Chnage Data manager is done successfully from "+strDataManagerCTN+" this to "+strNonDataManagerCTN);
+       reporter.hardAssert(rogers_wireless_dashboard_page.isChangeDataManagerSuccessful(strNonDataManagerCTN),
+    		   "Data manager is changed successfully", "Data manager is not changed for this account yet");
+       reporter.reportLogWithScreenshot("Change Data manager is done successfully from "+strDataManagerCTN+" this to "+strNonDataManagerCTN);
        
     }
 

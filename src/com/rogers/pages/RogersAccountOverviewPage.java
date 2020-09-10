@@ -1,15 +1,15 @@
 package com.rogers.pages;
 
-import java.util.List;
-
+import com.rogers.pages.base.BasePageClass;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindAll;
+import org.openqa.selenium.support.FindBy;
 
-import com.rogers.pages.base.BasePageClass;
+import java.util.List;
 
 public class RogersAccountOverviewPage extends BasePageClass {
 
@@ -33,6 +33,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
         @FindBy (xpath ="//div[@class='ute-dataManager-badgeList-individualBadge']//div[@class='ute-dataManager-badgeList-individualBadgeInfo']")})
 	List<WebElement> lstCtnBadges;
 	
+	@FindBy(xpath = "//ds-icon/following-sibling::span[contains(text(),'Suspended')]")
+	WebElement suspendedCTN;
 	
 	@FindBy(xpath = "//div[@class='row modal-content-header']//button[@class='close']")
 	WebElement popUpInternetPopup;
@@ -51,7 +53,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[@linkurl='tvdashboard']/parent::div")
 	WebElement btnTVBadgeConsolidated;
 
-	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.total_balance' or text()='Total balance' or text()='Total du solde']")
+	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.total_balance' or text()='Total balance' or text()='Total du solde'  or text()='Total Balance']")
 	WebElement infoBalanceLable;
 
 	@FindBy(xpath = "//h1[@class='mt-24']")
@@ -93,6 +95,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	
 	@FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.changePaymentMethod']")
 	WebElement lnkChangePaymentMethod;
+	
+	@FindBy(xpath = "//span[@translate='ute.payment.method.mop_title']")
+	WebElement lnkBelowCardChangePaymentMethod;
 		
 	@FindAll({
         @FindBy(xpath = "//rss-billing-widget//span[contains(text(),'Set up automatic payments') or contains(text(),'Établir les paiements automat.')]"),
@@ -104,7 +109,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
         @FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.setUpAutomaticPayments']")})	
 	WebElement lnkSetUpAutomaticPaymentMethodMobile;
 	
-	@FindBy(xpath = "//button/span[@translate='ute.rogers.account.balance.make_a_payment']")
+	@FindAll({    
+	@FindBy(xpath = "//button/span[@translate='ute.rogers.account.balance.make_a_payment']"),
+    @FindBy(xpath = "//span[contains(text(),'Make a payment')]")})
 	WebElement btnMakeAPayment;
 	
 	@FindBy(xpath = "//div[@ng-show='loadingImg']")
@@ -120,8 +127,14 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Profile & Settings' or text()='Profil et paramètres']/parent::a")})
 	WebElement menuProfileAndSettingsMobile;
 	
+
 	@FindAll({
-	@FindBy(xpath = " //div[@class='ute-secondLevelNav-bar-m']//button//span[@data-translate='ute.common.label.overview']"),
+		@FindBy(xpath = "//button[@aria-label='ute.common.label.profileAndSetting']"),
+		@FindBy(xpath = "//span[text()='Profile & Settings' or text()='Profil et paramètres']/parent::a")})
+		WebElement menuAndServices;
+	
+	@FindAll({
+	@FindBy(xpath = "//div[@class='ute-secondLevelNav-bar-m']//button//span[@data-translate='ute.common.label.overview']"),
 	@FindBy(xpath = "//button[contains(text(),'Overview') or contains(text(),'Survol')]")})
 	WebElement btnOverViewMobile;
 	
@@ -140,13 +153,16 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy (xpath = "//h1[@class='profile-header']")
 	WebElement headerProfileNSettings;
 	
-	@FindBy (xpath = "//div[@translate='ute.payment.method.payment_method' or @translate='ute.payment.method.will_auto_charge']")
+	@FindBy (xpath = "//*[@translate='ute.payment.method.payment_method' or @translate='ute.payment.method.will_auto_charge' or contains(text(),'Will be automatically charged to:') or contains(text(),'Mode de paiement:')]")
 	WebElement lblAutoPayment;
 	
 	@FindBy(xpath = "//div[@translate='ute.payment.method.account_prefix']")
 	WebElement lblAutoPaymentAccountPreFix;
-
-	@FindBy(xpath = "//div[contains(@class,'cc-image')]")
+	
+	@FindAll({
+		@FindBy(xpath = "//span[@class='auto-payment-info']/ds-icon"),
+		@FindBy(xpath = "//*[contains(@class,'cc-image') or contains(@class,'cc-icon')]")
+	})	
 	WebElement imgCC;
 
 	@FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.makePayment']")
@@ -209,9 +225,14 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		@FindBy(xpath = "//span[contains(text(),'Entertainment')]/ancestor::div[@class='subscription-detail']"),
         @FindBy(xpath = "//span[@translate='ute.subscriptionBadge.smartStream']")})	
 	WebElement btnEntertainmentBadge;
-
-	@FindBy(xpath = "//button[@aria-label='ute.common.label.billAndPayment']")
+		
+	@FindAll({
+	@FindBy(xpath = "//span[contains(text(),'Billing & Payment')]"),	
+	@FindBy(xpath = "//button[@aria-label='ute.common.label.billAndPayment']")})
 	WebElement menuBillingAndPaymentsMobile;
+	
+	@FindBy(xpath = "//div[@class='ute-secondLevelNav-bar-m']//button//span[contains(text(),'Billing & Payment')]")
+	WebElement menuMainBillingAndPaymentsMobile;
 
 	@FindBy(xpath = "//*[@id='overview' or @id='survol']//md-list-item//span[@data-translate='ute.common.second.level.navigation.billing.changePaymentMethod']/ancestor::h2/parent::div/parent::div/button")
 	WebElement submenuChangePaymentMethod;
@@ -222,6 +243,106 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@translate,'makeAPayment')]")
 	WebElement lblMakeASecurePayment;
 
+	@FindBy(xpath = "//span[@class='auto-payment-info']")
+	WebElement txtCC;
+
+	@FindBy(xpath = "//p[contains(text(),'This account has been cancelled, so your access to MyRogers') or contains(text(),'Ce compte a été fermé, votre accès à MonRogers')]") 
+	WebElement divAccountCancelled;
+	
+	@FindBy(xpath = "//span[text()=' - View billing and payment history' or contains(text(),'Consulter votre historique de facture et de paiement')]") 
+	WebElement lnkViewBillingAndPayment;
+	
+	@FindBy(xpath = "//span[contains(text(),'Manage Profile') or contains(text(),'Gérer votre profil')]") 
+	WebElement lnkManageProfile;
+
+	@FindBy(xpath = "//span[contains(text(),'Set up automatic payments') or contains(text(),'Configurer les paiements automatiques')]") 
+	WebElement lnkSetUpAutomaticPaymentMethodAOPage;
+
+	@FindBy(xpath = "//span[text()='Payment History' or text()='Historique de paiement']") 
+	WebElement lnkPaymentHistoryDisplayed;
+	
+	@FindBy (xpath = "//div[@class='floatingOverview bcStatic']")
+	WebElement btnLiveChat;
+
+	@FindBy (xpath = "//span[@class='menu-click']")
+	WebElement menuAccountNumber;
+	
+	@FindBy(xpath = "//iframe[@id='va-iframe']")
+	WebElement fraLiveChat;
+	
+	@FindAll({
+		@FindBy (xpath = "//app-welcome-rogers"),
+		@FindBy (xpath = "//div[@class='bc-frame-title']")})
+		WebElement headerLiveChat;
+	
+	@FindAll({		
+		@FindBy (xpath = "//span[text()='Usage & Services' or text()='Profil et paramètres']/parent::a")})
+	WebElement menuUsageAndServicesMobile;
+
+	@FindBy(xpath = "//a[@data-translate='ute.common.reactivate.ctn.backToDevice']")	
+	WebElement btnClickBackToDevice;
+
+	@FindBy(xpath = "//p[contains(@class,'dsa-alert') and (contains(text(),'You’ve exceeded your credit limit and your services are now suspended') or contains(text(),'Vous avez dépassé votre limite de crédit et vos services sont suspendus'))]")
+	WebElement lblCreditLimitExceeded;
+
+	@FindBy(xpath = "//rss-subscription-details//span[contains(text(),'Add a') and contains(text(),'Add a')]")
+	WebElement lnkAddALine;
+
+	@FindBy(xpath = "//h4[@translate='see.has_share_group_popup_title']")
+	WebElement headerOverlayforAddLink;
+	
+	@FindBy(xpath = "//*[@translate='see.add_to_shared_plan']")
+	WebElement btnAddToSharedPlan;
+		
+	@FindBy(xpath = "//*[@translate='see.add_non_shared_line']")
+	WebElement btnAddToNonSharedPlan;
+
+	@FindBy(xpath = "//div[contains(@class,'share-everything')]//div[contains(@class,'subscription-detail')]//rss-subscription-detail//a")
+	List<WebElement> lstShareEverythingCTNs;
+		
+	@FindBy(xpath = "//div[contains(@class,'individual_wireless')]//div[contains(@class,'subscription-detail')]//rss-subscription-detail//a")
+	List<WebElement> lstIndividualWirelessCTNs;
+		
+	@FindBy(xpath = "//div[contains(@class,'residential_services')]//div[contains(@class,'subscription-detail')]//rss-subscription-detail//a")
+	List<WebElement> lstResidentialServicesCTNs;
+
+	@FindBy(xpath = "//*[@translate='acc_overview_top_up_now']")
+	WebElement btnPrepaidTopUpNow;
+
+	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.current.account.balance']")
+	WebElement lblCurrentAccountBalance;
+
+	@FindBy(xpath = "//*[@class='rogers-amount']")
+	WebElement lblCurrentBalanceAmount;
+
+	@FindBy(xpath = "//*[@translate='acc_overview_expires_on']")
+	WebElement lblBalanceExpiresOn;
+
+	@FindBy(xpath = "//*[@data-test-id='myr-accountBalance-expiryDate']")
+	WebElement lblExpiryMonth;
+
+	@FindBy(xpath = "//*[@translate='change_method_update']")
+	WebElement lnkUpdatePaymentMethod;
+
+	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.view.call']")
+	WebElement lnkViewCallTransactionHistory;
+
+	@FindBy(xpath = "//div[@ng-if='!ao.mss.loadingData && ao.mss.selectedAccountDetail.isPrepaid']//*[@translate='service_wireless_prepaid']")
+	WebElement btnCTNWidgetPrepaid;
+
+	@FindBy(xpath = "//*[@translate='myaccoverview_account_preferences']")
+	WebElement lblAccountPreferences;
+
+	@FindBy(xpath = "//*[@translate='myaccoverview_change_contact_information']")
+	WebElement lnkChangeContactInfo;
+
+	@FindBy(xpath = "//*[@translate='myaccoverview_change_password']")
+	WebElement lnkChangePassword;
+
+	@FindBy(xpath = "//*[@translate='acc_overview_other_services']")
+	WebElement lblOtherServicesAvailable;
+	
+	
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
 	 * @return true if more than one ban present else false
@@ -252,21 +373,17 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			reusableActions.clickIfAvailable(btnInternetBadge, 90);
 		}
 	}
-	
+
 	/**
 	 * Clicks on the Legacy 'InternetBadge' option on the dash board
-	 * @param strBrowser browser type
 	 * @author chinnarao.vattam
 	 */
-	public void clkLegacyInternetBadge(String strBrowser) {
-		if (strBrowser.toLowerCase().contains("chrome"))
-		{
-		reusableActions.getWhenReady(btnLegacyInternetBadge, 120).click();
-		}else {
-			reusableActions.clickIfAvailable(btnLegacyInternetBadge, 120);
-		}
+	public void clkLegacyInternetMobile() {
+		reusableActions.javascriptScrollToMiddleOfPage();
+		reusableActions.getWhenReady(btnLegacyInternetBadge, 60).click();
+/*		reusableActions.waitForElementVisibility(btnLegacyInternetBadge, 60);
+		reusableActions.executeJavaScriptClick(btnLegacyInternetBadge);*/
 	}
-	
 	/**
 	 * Clicks on the Legacy 'InternetBadge' option on the dash board
 	 * @author chinnarao.vattam
@@ -299,40 +416,18 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	
 	/**
 	 * Clicks on the 'InternetPopup' option on the dash board
-	 * @param strBrowser- strBrowser
 	 * @author chinnarao.vattam
 	 */
-	public void clkInternetPopup(String strBrowser) {
-		if (strBrowser.equalsIgnoreCase("chrome"))
-		{
+	public void clkInternetPopup() {
 		reusableActions.clickIfAvailable(popUpInternetPopup, 60);
-		}else {
-			reusableActions.clickIfAvailable(popUpInternetPopup, 60);			
-		}
-	}
-
-	/**
-	 * Clicks on the 'TV Badge' option on the dash board
-	 * @param strBrowser- strBrowser
-	 * @author chinnarao.vattam
-	 */
-	public void clkTVBadge(String strBrowser ) {
-		if (strBrowser.equalsIgnoreCase("chrome"))
-		{		
-		reusableActions.getWhenReady(btnTVBadge, 120).click();
-		}else
-		{
-			reusableActions.clickIfAvailable(btnTVBadge,120);
-		}		
 	}
 
 	/**
 	 * Clicks on the 'TV Badge' option on the dash board
 	 * @author chinnarao.vattam
 	 */
-	public void clkTVBadge() {	
-		reusableActions.getWhenReady(btnTVBadge, 180).click();
-		reusableActions.staticWait(10000);
+	public void clkTVBadge( ) {	
+		reusableActions.getWhenReady(btnTVBadge, 60).click();		
 	}
 	
 	/**
@@ -340,30 +435,25 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkTVBadgeMobile() {	
-		reusableActions.getWhenReady(btnTVBadge,180);
-		reusableActions.executeJavaScriptClick(btnTVBadge);
+		reusableActions.javascriptScrollToMiddleOfPage();
+		reusableActions.getWhenReady(btnTVBadge, 60).click();	
 	}
-	
-	/**
-	 * Clicks on the 'RHP Badge' option on the dash board
-	 * @param strBrowser- strBrowser
-	 * @author chinnarao.vattam
-	 */
-	public void clkRHPBadge(String strBrowser) {
-		if (strBrowser.equalsIgnoreCase("chrome"))
-		{
-		reusableActions.getWhenReady(btnRHPBadge, 120).click();;
-		}else {
-			reusableActions.clickIfAvailable(btnRHPBadge, 120);
-			}
-		}
 	
 	/**
 	 * Clicks on the 'RHP Badge' option on the dash board
 	 * @author chinnarao.vattam
 	 */
 	public void clkRHPBadge() {
-		reusableActions.getWhenReady(btnRHPBadge, 120).click();;
+		reusableActions.getWhenReady(btnRHPBadge, 90).click();;
+		}
+	
+	/**
+	 * Clicks on the 'RHP Badge' option on the dash board
+	 * @author chinnarao.vattam
+	 */
+	public void clkRHPBadgeMobile() {
+		reusableActions.javascriptScrollToMiddleOfPage();
+		reusableActions.getWhenReady(btnRHPBadge, 90).click();
 		}
 	
 	/**
@@ -372,7 +462,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public Boolean isAccountSelectionPopupDisplayed() {
-		return reusableActions.isElementVisible(headerAccountSelect, 10);
+		return reusableActions.isElementVisible(headerAccountSelect);
 	}
 
 	/**
@@ -380,8 +470,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @param strAccountNumber account number of the Roger's customer
 	 * @author ning.xue
 	 */
-	public void selectAccount(String strAccountNumber) {
-			reusableActions.clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 30);
+	public void selectAccount(String strAccountNumber) {		
+	reusableActions.getWhenReady((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 20).click();
 	}
 	
 	/**
@@ -467,7 +557,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 //			reusableActions.staticWait(4000);
 			reusableActions.getWhenReady(menuProfileNSettings,30).click();			
 			reusableActions.waitForElementVisibility(headerProfileNSettings,60);
-			if(reusableActions.isDisplayed(headerProfileNSettings))
+			if(reusableActions.isElementVisible(headerProfileNSettings))
 			{
 				System.out.println("Profile and settings click successful in attempt: "+(count+1));
 				clickSuccess=true;				
@@ -490,12 +580,25 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	}
 	
 	/**
+	 * Click on menu  on Mobile
+	 * @author Mirza.Kamran
+	 */
+	public void clkMenuUsageAndServiceMobile() {		
+		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
+		reusableActions.getWhenReady(menuUsageAndServicesMobile,30).click();			
+		//reusableActions.waitForElementVisibility(headerProfileNSettings,60);
+					
+	}
+	
+	/**
 	 * To verify the successful login
 	 * @return true if the balance label is present ; else false
 	 * @author chinnarao.vattam
 	 */
-	public boolean verifySuccessfulLogin() {
-		return reusableActions.isElementVisible(infoBalanceLable,60);
+	public boolean verifySuccessfulLogin() {	
+	 reusableActions.waitForElementVisibility(menuAccountNumber,60);
+	 String strAccountNumber = reusableActions.getWhenReady(menuAccountNumber,5).getText();
+	 return NumberUtils.isDigits(strAccountNumber);
 	}
 	
 	/**
@@ -524,7 +627,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verfyContactUsToManageFeaturess() {
-		return reusableActions.isElementVisible(lnkContactUsToManageFeaturess, 20);
+		return reusableActions.isElementVisible(lnkContactUsToManageFeaturess, 60);
 	}
 	
 	/**
@@ -563,15 +666,21 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean verifyAndClickWirelessCTN(String strCTN) {
 		strCTN = strCTN.replace("-", "").replace(" ", "");
-		strCTN = strCTN.substring(0, 3) + "-" + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);		
-		String strCTNXpath = "//div[@class='myServiceName']//div[contains(text(),'" + strCTN + "')]";		
-		if(reusableActions.isElementVisible(By.xpath(strCTNXpath))) {
-			reusableActions.scrollToElement(reusableActions.getWhenReady(By.xpath(strCTNXpath)));
-			//reusableActions.javascriptScrollByVisibleElement(reusableActions.getWhenReady(By.xpath(strCTNXpath)));
-			reusableActions.clickWhenReady(By.xpath(strCTNXpath), 120);
-			//reusableActions.scrollToElementAndClick(reusableActions.getWhenReady(By.xpath(strCTNXpath)));
+		String strCTNWithUnderScore = strCTN.substring(0, 3) + "-" + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);	
+		String strCTNWithUnderScoreXpath = "//div[@class='myServiceName']//div[contains(text(),'" + strCTNWithUnderScore + "')]";
+		
+		String strCTNWithoutUnderScore = strCTN.substring(0, 3) + " " + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);	
+		String strCTNWithOutUnderScoreXpath = "//div[@class='service-container mt-24']//span[contains(text(),'" + strCTNWithoutUnderScore + "')]";
+		
+		if(reusableActions.isElementVisible(By.xpath(strCTNWithUnderScoreXpath))) {
+			reusableActions.scrollToElement(reusableActions.getWhenReady(By.xpath(strCTNWithUnderScoreXpath)));
+			reusableActions.clickWhenReady(By.xpath(strCTNWithUnderScoreXpath), 120);
 			return true;
-		} else if (verifyAndClickShareEverythingCTN(strCTN)) {
+		}else if(reusableActions.isElementVisible(By.xpath(strCTNWithOutUnderScoreXpath))){
+			reusableActions.scrollToElement(reusableActions.getWhenReady(By.xpath(strCTNWithOutUnderScoreXpath)));
+			reusableActions.clickWhenReady(By.xpath(strCTNWithOutUnderScoreXpath), 120);
+			return true;
+		}else if (verifyAndClickShareEverythingCTN(strCTN)) {
 			return true;
 		}
 		return false;
@@ -623,8 +732,15 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkSetUpAutomaticPaymentMethodMobile() {
-		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
-		reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
+		if(reusableActions.isElementVisible(btnOverViewMobile))
+		{
+		
+		reusableActions.getWhenReady(btnOverViewMobile,30).click();
+		}else if (reusableActions.isElementVisible(menuMainBillingAndPaymentsMobile))
+		{
+			reusableActions.getWhenReady(menuMainBillingAndPaymentsMobile,30).click();
+		}	
+		//reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
 		reusableActions.staticWait(3000); //extra static buffers added for firefox	
 		reusableActions.waitForElementVisibility(submenuSetUpAutomaticPaymentMethodMobile);
 		reusableActions.getWhenReady(submenuSetUpAutomaticPaymentMethodMobile).click();	
@@ -636,7 +752,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void clkBillngsAndPaymentsSubMenuSetUpAutomaticPaymentMethod() {
 		reusableActions.waitForElementVisibility(lnkSetUpAutomaticPaymentMethod);		
-		reusableActions.clickIfAvailable(lnkSetUpAutomaticPaymentMethod);
+		reusableActions.getWhenReady(lnkSetUpAutomaticPaymentMethod).click();
 	}
 	
 	/**
@@ -647,16 +763,6 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		reusableActions.waitForElementVisibility(submenuSetUpAutomaticPaymentMethodMobile);
 		reusableActions.getWhenReady(submenuSetUpAutomaticPaymentMethodMobile).click();		
 		//reusableActions.clickIfAvailable(submenuSetUpAutomaticPaymentMethodMobile);
-	}
-	
-	
-	/**
-	 * Clicks on the 'Billing and Payment' then 'Change Payment Method' option
-	 * @author rajesh.varalli1
-	 */
-	public void clickChangePaymentMethod() {
-		reusableActions.clickIfAvailable(lnkBillingAndPayment);
-		reusableActions.clickIfAvailable(lnkChangePaymentMethod);
 	}
 	
 	/**
@@ -675,7 +781,6 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		//reusableActions.waitForElementTobeClickable(btnMakeAPayment, 20);
 		//reusableActions.getWhenReady(btnMakeAPayment,10).click();
 		
-		
 		boolean clickSuccess=false;
 		int count=0;
 		while (count<=3 && !clickSuccess) {
@@ -683,7 +788,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 			reusableActions.getWhenReady(btnMakeAPayment,30).click();			
 			reusableActions.waitForElementVisibility(lblMakeASecurePayment,10);
-			if(reusableActions.isDisplayed(lblMakeASecurePayment))
+			if(reusableActions.isElementVisible(lblMakeASecurePayment))
 			{
 				System.out.println("Make payment button clicked in attempt: "+(count+1));
 				clickSuccess=true;				
@@ -692,6 +797,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			}
 			count++;
 		}
+		
 		
 	}
 	
@@ -713,7 +819,16 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		reusableActions.staticWait(2000);
 		reusableActions.executeJavaScriptClick(lnkBillingAndPayment);
 		reusableActions.staticWait(3000); //extra static buffers added for firefox
-		return reusableActions.isDisplayed(lnkSetUpAutomaticPaymentMethod);
+		return reusableActions.isElementVisible(lnkSetUpAutomaticPaymentMethod);
+	}
+	
+	/**
+	 * Checks if the auto payment is displayed
+	 * @return true if set automatic payment sub menu is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isLnkSetAutoPaymentDisplayed() {		
+		return reusableActions.isElementVisible(lnkSetUpAutomaticPaymentMethodAOPage);
 	}
 	
 	/**
@@ -722,10 +837,17 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isSetAutoPaymentDisplayedMobile() {
-		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
-		reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
+		if(reusableActions.isElementVisible(btnOverViewMobile))
+		{
+		
+		reusableActions.getWhenReady(btnOverViewMobile,30).click();
+		}else if (reusableActions.isElementVisible(menuMainBillingAndPaymentsMobile))
+		{
+			reusableActions.getWhenReady(menuMainBillingAndPaymentsMobile,30).click();
+		}
+		//reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
 		reusableActions.staticWait(3000); //extra static buffers added for firefox
-		return reusableActions.isDisplayed(lnkSetUpAutomaticPaymentMethodMobile);
+		return reusableActions.isElementVisible(lnkSetUpAutomaticPaymentMethodMobile);
 	}
 
 	/**
@@ -735,8 +857,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean verifyThatAutoPaymentIsDisplayedOnAccountOverViewPage() {
 		reusableActions.waitForElementVisibility(lblAutoPayment);
-		return (reusableActions.isDisplayed(lblAutoPayment)
-			 && reusableActions.isDisplayed(lblAutoPaymentAccountPreFix));
+		return (reusableActions.isElementVisible(lblAutoPayment)
+			 && reusableActions.isElementVisible(lblAutoPaymentAccountPreFix));
 	}	
 	
 	/**
@@ -745,11 +867,32 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyThatAutoPaymentWithCCIsDisplayedOnAccountOverViewPage() {
-		reusableActions.waitForElementVisibility(lblAutoPayment);
-		return (reusableActions.isDisplayed(lblAutoPayment)
-			 && reusableActions.isDisplayed(imgCC));
+		reusableActions.waitForElementVisibility(lblAutoPayment, 50);
+		return (reusableActions.isElementVisible(lblAutoPayment)
+			 && reusableActions.isElementVisible(imgCC));
 	}
 
+		
+	/**
+	 * Checks if the auto payment option is set successfully to CC
+	 * @return true if the payment option is set successfully
+	 * @param strCC string value of of containing cc
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyCCEndingWithIsDisplayedCorrectly(String strCC) {		
+		return reusableActions.getWhenReady(txtCC).getText().trim().endsWith(strCC.substring(strCC.length()-4));
+	}
+	
+	/**
+	 * Checks if the CC auto payment option is displayed on Account overview
+	 * @return true if the CC payment option is displayed on account overview, else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isCCDisplayedOnAccountOverViewPage() {		
+		return (reusableActions.isElementVisible(lblAutoPayment,30)
+			 && reusableActions.isElementVisible(imgCC));
+	}
+	
 	/**
 	 * Clicks on the menu Billing and Payments and selects the submenu Make Payment option
 	 * @author Mirza.Kamran
@@ -767,7 +910,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			reusableActions.executeJavaScriptClick(lnkBillingAndPayment);			
 			reusableActions.waitForElementVisibility(lnkMakePayment);
 			reusableActions.executeJavaScriptClick(lnkMakePayment);	
-			if(reusableActions.isDisplayed(txtAmount))
+			if(reusableActions.isElementVisible(txtAmount))
 			{
 				System.out.println("Billing and payment click successful in attempt: "+(count+1));
 				clickSuccess=true;				
@@ -801,21 +944,13 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public boolean isMoreThanOneBanPresent() {
 		return (lstAccountBans.size()>3);
 	} 
-
-	/**
-	 * Click on the Account drop down
-	 * @author Saurav.Goyal
-	 */
-	public void clickAccount() {
-		reusableActions.clickIfAvailable(downArrowAccount);
-	}
 	
 	/**
 	 * Click on the Overview tab
 	 * @author Saurav.Goyal
 	 */
 	public void clickOverview() {
-		reusableActions.clickIfAvailable(clkOverview);
+		reusableActions.clickWhenReady(clkOverview);
 	}
 	
 	/**
@@ -843,6 +978,16 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public boolean isCTNMoreThanOne() {		
 		return lstCtnBadges.size()>1;
 	}
+	
+	/**
+	 * Checks if the no CTNS are displayed
+	 * @return true if the no CTNS are displayed
+	 * @author Mirza.Kamran
+	 */
+	public boolean isCTNNotDisplayed() {		
+		return lstCtnBadges.size()==0;
+	}
+	
 	/**
 	 * retruns total no of CTNS
 	 * @return int value total no of CTNs
@@ -851,6 +996,26 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public int getTotalCTN() {		
 		return lstCtnBadges.size();
 	}
+	
+	/**
+	 * Checks if the suspended CTN is displayed
+	 * @return boolean true if the suspended CTN is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isSuspendedCTNAvailable() {	
+		
+		return reusableActions.isElementVisible(suspendedCTN);
+				
+	}
+	
+	/**
+	 * Checks if the suspended CTN is displayed 
+	 * @author Mirza.Kamran
+	 */
+	public void clkSuspendedCTN() {	
+		reusableActions.getWhenReady(suspendedCTN).click();
+	}
+	
 	
 	/**
 	 * Click the overview navigation button on the page 
@@ -914,6 +1079,16 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	}
 
 	/**
+	 * Clicks on view bill if available
+	 * @author Mirza.Kamran
+	 * @return true if the view bill is displayed else false
+	 */
+	public boolean isViewBillDisplayed() {
+	return reusableActions.isElementVisible(btnViewYourBill);
+		
+	}
+	
+	/**
 	 * Clicks on Billings and payments sub menu change paymeny mobile
 	 * @author Mirza.Kamran
 	 */
@@ -922,4 +1097,295 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		reusableActions.getWhenReady(submenuChangePaymentMethod).click();
 		
 	}
+
+	/**
+	 * Is Change payment method displayed
+	 * @return true if the change payment method is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isChangePaymentMethodDisplayed() {
+		return reusableActions.isElementVisible(lnkBelowCardChangePaymentMethod);
+	}
+
+	/**
+	 * The account is cancelled message is displayed
+	 * @author Mirza.Kamran
+	 * @return true if the message is displayed else false
+	 */
+	public boolean isAccountCancelledMessageDisplayed() {
+		return reusableActions.isElementVisible(divAccountCancelled);
+	}
+	
+	/**
+	 * The view billing and payment history is displayed inside account is cancelled message
+	 * @author Mirza.Kamran
+	 * @return true if the message is displayed else false
+	 */
+	public boolean isViewBillingAndPaymentHistoryDisplayedInsideAccountCancelledMessage() {
+		return reusableActions.isElementVisible(lnkViewBillingAndPayment);
+	}
+	
+	/**
+	 * The Manage Profile link is displayed inside account is cancelled message
+	 * @author Mirza.Kamran
+	 * @return true if the message is displayed else false
+	 */
+	public boolean isManageProfileLinkDisplayedInsideAccountCancelledMessage() {
+		return reusableActions.isElementVisible(lnkManageProfile);
+	}
+
+	/**
+	 * Payment history link is displayed
+	 * @return true if the payment history link is displayed on account overview page else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isLnkPaymentHistoryDisplayed() {
+		return reusableActions.isElementVisible(lnkPaymentHistoryDisplayed);
+	}
+
+	/**
+	 * To verify if the live chat button display in wireless dashboard page
+	 * @return true if the button displayed otherwise false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyLiveChatButtonIsDisplayed() {
+		return reusableActions.isElementVisible(btnLiveChat, 30);
+	}
+	
+	/**
+	 * Click the button Live chat in wireless dashboard page
+	 * @author Mirza.Kamran
+	 */
+	public void clkBtnLiveChat() {
+		reusableActions.getWhenReady(btnLiveChat, 20).click();
+	}
+	
+	/**
+	 * To verify if the live chat overlay opened in wireless dashboard page
+	 * @return true if the overlay opened otherwise false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyLiveChatOverlayOpened() {	
+	  if(reusableActions.isElementVisible(fraLiveChat))
+		{
+		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraLiveChat, 20);
+		return reusableActions.isElementVisible(headerLiveChat, 30);
+		}else
+		{
+			return reusableActions.isElementVisible(headerLiveChat, 30);
+		}
+		
+	}
+
+	/**
+	 * Clicks on back to devices page
+	 * @author Mirza.Kamran
+	 */
+	public void clkbtnBackToDevices() {
+		reusableActions.clickWhenReady(btnClickBackToDevice);
+	}
+
+
+
+	/**
+	 * Clicks on make payment on mobile
+	 * @author Mirza.Kamran
+	 */
+	public void clickMakePaymentMobile() {
+		reusableActions.getWhenReady(btnOverViewMobile,30).click();			
+		reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
+		reusableActions.getWhenReady(btnMakeAPayment,30).click();			
+		
+	}
+
+	/**
+	 * Checks if the add link is displayed below the list of CTNs
+	 * @return true if the CTN displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isAddALinkDisplayedBelowCTNs() {
+		return reusableActions.isElementVisible(lnkAddALine);
+	}
+
+	/**
+	 * Clicks  on Add Link 
+	 * @author Mirza.Kamran
+	 */
+	public void clkAddALink() {
+		reusableActions.getWhenReady(lnkAddALine).click();
+		
+	}
+
+	/**
+	 * Checks if the add link overlay is displayed	 *
+	 * @return true if the link is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyIfAddALinkOverlayIsdisplayed() {
+		return reusableActions.isElementVisible(headerOverlayforAddLink,30)
+				&& reusableActions.isElementVisible(btnAddToSharedPlan)
+				&& reusableActions.isElementVisible(btnAddToNonSharedPlan);
+	}
+
+	/**
+	 * Checks if the Credit limit reached notification is displayed
+	 * @return true if the credit limit reached notification is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isCreditLimitReachedNotificationDisplayed() {
+		return reusableActions.isElementVisible(lblCreditLimitExceeded);
+	}
+
+	/**
+	 * Checks if Individual Wireless CTNs displayed
+	 * @return return true if Individual Wireless is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isIndividualWirelessCTNsDisplayed() {
+		return (reusableActions.isElementVisible(lstIndividualWirelessCTNs.get(0))
+				&& lstShareEverythingCTNs.get(0).getLocation().x<lstIndividualWirelessCTNs.get(0).getLocation().x
+				&& lstIndividualWirelessCTNs.get(0).getLocation().x<lstResidentialServicesCTNs.get(0).getLocation().x
+			);
+	} 
+	
+	/**
+	 * Checks if Residential services CTNs displayed
+	 * @return return true if Residential services is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isResidentialServicesCTNsDisplayed() {
+		return (reusableActions.isElementVisible(lstResidentialServicesCTNs.get(0))
+				&& lstIndividualWirelessCTNs.get(0).getLocation().x<lstResidentialServicesCTNs.get(0).getLocation().x
+			);
+	} 
+	
+	/**
+	 * Checks if share everything CTNs displayed
+	 * @return return true if share everything is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isShareEverythingDisplayed() {
+		return (reusableActions.isElementVisible(lstShareEverythingCTNs.get(0))
+				&& lstShareEverythingCTNs.get(0).getLocation().x<lstIndividualWirelessCTNs.get(0).getLocation().x
+				);
+	}
+
+	/**
+	 * Checks if the CTNS are left aligned correctly under each CTN category
+	 * @return int values depicting status of alignment
+	 * @author Mirza.Kamran
+	 */
+	public int isShareEverythingCTNLeftAligned() {
+		int alignmentvalue = 0;
+		int alignmentStatus = 1;
+		if(lstShareEverythingCTNs.size()>1)
+		{
+			alignmentvalue = lstShareEverythingCTNs.get(0).getLocation().x;
+			for (WebElement webElement : lstShareEverythingCTNs) {
+				if(alignmentvalue!=webElement.getLocation().x)
+				{
+					alignmentStatus = 3;
+				}
+			}
+		}else
+		{
+			alignmentStatus = 2;
+		}
+		
+		return alignmentStatus;
+	}
+
+	/**
+	 * checks if the top up button is displayed
+	 * @return true if the button is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isTopUpButtonDisplayed() {
+		return reusableActions.isElementVisible(btnPrepaidTopUpNow);
+	}
+
+	/**
+	 * Checks if Current Account Balance is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isCurrentAccountBalanceDisplayed() {
+		
+		return (reusableActions.isElementVisible(lblCurrentAccountBalance)
+				&& reusableActions.isElementVisible(lblCurrentBalanceAmount));
+	}
+
+	/**
+	 * Checks if Balance expires is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isBalanceExpiresOnDisplayedOnAOPage() {
+		return (reusableActions.isElementVisible(lblBalanceExpiresOn)
+				&& reusableActions.isElementVisible(lblExpiryMonth));				
+	}
+
+	
+	/**
+	 * Checks if Link update payment method is displayed is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isLnkUpdatePaymentMethodDisplayedOnAOPage() {
+		return reusableActions.isElementVisible(lnkUpdatePaymentMethod);
+	}
+
+	/**
+	 * Checks if Link view call transaction history is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isLnkViewCallTransactionHistoryDisplayedOnAOPage() {
+		return reusableActions.isElementVisible(lnkViewCallTransactionHistory);
+		
+	}
+
+	/**
+	 * Checks if CTN widget is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isCTNWidgetIsDisplayedOnAOPg() {
+		return reusableActions.isElementVisible(btnCTNWidgetPrepaid);
+	}
+
+	/**
+	 * Checks if Current Account Balance is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isAccountPreferencesSectionDisplayedAOPg() {
+		return reusableActions.isElementVisible(lblAccountPreferences)
+				&& reusableActions.isElementVisible(lnkChangeContactInfo)
+				&& reusableActions.isElementVisible(lnkChangePassword);
+		
+	}
+
+	/**
+	 * Checks if Other services is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isOtherServicesDisplayedOnAOPg() {
+		return reusableActions.isElementVisible(lblOtherServicesAvailable);
+		
+	}
+
+	/**
+	 * Clicks on CTN widget is clicked
+	 * @author Mirza.Kamran
+	 */
+	public void clkCTNWidget() {
+		reusableActions.getWhenReady(btnCTNWidgetPrepaid).click();
+		
+	} 
+	
+	
+	
+	
 }

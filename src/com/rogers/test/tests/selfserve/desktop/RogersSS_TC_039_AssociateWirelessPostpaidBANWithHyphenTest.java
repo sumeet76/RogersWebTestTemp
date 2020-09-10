@@ -1,24 +1,19 @@
 package com.rogers.test.tests.selfserve.desktop;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 
 public class RogersSS_TC_039_AssociateWirelessPostpaidBANWithHyphenTest extends BaseTestClass {
 
-	@Test
+	@Test(groups = {"RegressionSS","WirelessDashboardSS"})
 	public void associateWirelessPostpaidBANwithHyphen() {
 		
 		rogers_home_page.clkSignIn();
@@ -27,6 +22,7 @@ public class RogersSS_TC_039_AssociateWirelessPostpaidBANWithHyphenTest extends 
 		rogers_login_page.setPasswordIFrame(TestDataHandler.tc041139.getPassword());
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 
@@ -43,7 +39,7 @@ public class RogersSS_TC_039_AssociateWirelessPostpaidBANWithHyphenTest extends 
         }
         reporter.reportLogWithScreenshot("Account overview page.");
 		rogers_account_overview_page.clkLinkAnotherAccount();
-		reporter.softAssert(rogers_link_account_page.verifyLinkAccountPageLoad(), 
+		reporter.hardAssert(rogers_link_account_page.verifyLinkAccountPageLoad(), 
 				"Link Account page load success.", 
 				"Link Account Page Load Failed");
 		reporter.reportLogWithScreenshot("Link account page.");
@@ -84,9 +80,9 @@ public class RogersSS_TC_039_AssociateWirelessPostpaidBANWithHyphenTest extends 
 	}
 
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
-			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
+		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+			startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
 		}
 	   	
 

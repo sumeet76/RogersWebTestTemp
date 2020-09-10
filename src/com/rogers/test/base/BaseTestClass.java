@@ -1,42 +1,8 @@
 package com.rogers.test.base;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPut;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.message.BasicNameValuePair;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
-import com.rogers.oneview.pages.AccountOverViewPage;
-import com.rogers.oneview.pages.ChannelsAndThemePacksPage;
-import com.rogers.oneview.pages.CreditCheckPage;
-import com.rogers.oneview.pages.CustomerProfilePage;
-import com.rogers.oneview.pages.EnvironmentSelectionPage;
-import com.rogers.oneview.pages.FulfillmentPage;
-import com.rogers.oneview.pages.HomePhoneAddonsPage;
-import com.rogers.oneview.pages.HomePhoneSelectionPage;
-import com.rogers.oneview.pages.HomePhonedashboard;
-import com.rogers.oneview.pages.InternetDashboardPage;
-import com.rogers.oneview.pages.OrderConfirmationPage;
-import com.rogers.oneview.pages.OrderReviewPage;
-import com.rogers.oneview.pages.PaymentOptionsPage;
-import com.rogers.oneview.pages.RogersIgniteBundlesPage;
-import com.rogers.oneview.pages.RogersInternetUsageOVPage;
-import com.rogers.oneview.pages.TVDashboardPage;
-import com.rogers.pages.RogersAccountOverviewPage;
-import com.rogers.pages.RogersAddDataPage;
-import com.rogers.pages.RogersBillingPage;
+import com.rogers.oneview.pages.*;
 import com.rogers.pages.RogersBuildPlanPage;
 import com.rogers.pages.RogersBuyPage;
 import com.rogers.pages.RogersCartSummaryPage;
@@ -46,7 +12,6 @@ import com.rogers.pages.RogersChangePlanPage;
 import com.rogers.pages.RogersChangeSEPlanPage;
 import com.rogers.pages.RogersCheckoutPage;
 import com.rogers.pages.RogersChooseAddonsPage;
-import com.rogers.pages.RogersChooseNumberPage;
 import com.rogers.pages.RogersChoosePhonePage;
 import com.rogers.pages.RogersChoosePlanPage;
 import com.rogers.pages.RogersDeviceCataloguePage;
@@ -85,15 +50,8 @@ import com.rogers.pages.RogersSecurePaymentPage;
 import com.rogers.pages.RogersSetPasswordPage;
 import com.rogers.pages.RogersShareEverythingPage;
 import com.rogers.pages.RogersShippingPage;
-import com.rogers.pages.RogersSolarisRHPDashboardPage;
-import com.rogers.pages.RogersSolarisTVChannelsAndThemepacksPage;
-import com.rogers.pages.RogersSolarisTVDashboardPage;
-import com.rogers.pages.RogersSpeedPassPage;
-import com.rogers.pages.RogersTechInstallPage;
-import com.rogers.pages.RogersWirelessCreditEvaluationPage;
-import com.rogers.pages.RogersWirelessDashboardPage;
 import com.rogers.pages.RogersWirelessDetailsPage;
-import com.rogers.pages.RogersWirelessProfileCreationPage;
+import com.rogers.pages.*;
 import com.rogers.pages.ens.EnsHomePage;
 import com.rogers.pages.ens.EnsNotificationViewPage;
 import com.rogers.test.commonbusinessfunctions.CommonBusinessFlows;
@@ -103,9 +61,26 @@ import com.rogers.test.helpers.RogersEnums;
 import com.rogers.test.helpers.RogersEnums.SauceCapabilities;
 import com.rogers.testdatamanagement.TestDataHandler;
 import extentreport.ExtentTestManager;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.message.BasicNameValuePair;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import utils.AppiumServerJava;
 import utils.BrowserDrivers;
 import utils.Reporter;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 //@Listeners ({com.rogers.test.listeners.TestListener.class ,
 //	com.rogers.test.listeners.AnnotationTransformer.class ,
@@ -198,6 +173,14 @@ public class BaseTestClass {
 	protected ChannelsAndThemePacksPage channels_Theme_Packs_Page;
 	protected HomePhoneAddonsPage home_Phone_Addons_Page;
 	protected RogersSHMDashboardPage rogers_shm_dashboard_page;
+	protected com.rogers.oneview.pages.RogersWirelessDetailsPage rogersOV_wireless_details_page;
+	protected com.rogers.oneview.pages.RogersChangeSharePlanPage rogersOV_ChangeSharePlan_page;
+	protected com.rogers.oneview.pages.RogersChoosePhonePage rogersOV_choose_phone_page;
+	protected com.rogers.oneview.pages.RogersBuildPlanPage rogersOV_build_plan_page;
+	protected com.rogers.oneview.pages.RogersChooseAddonsPage rogersOV_choose_addons_page;
+	protected com.rogers.oneview.pages.RogersShippingPage rogersOV_shipping_page;
+	protected com.rogers.oneview.pages.RogersPaymentPage rogersOV_payment_page;
+	protected com.rogers.oneview.pages.RogersChoosePlanPage rogersOV_ChoosePlan_page;
 	AppiumServerJava appiumServer = new AppiumServerJava();	
 	//int port = 4723;	
 	private CaptchaBypassHandlers captcha_bypass_handlers;
@@ -208,6 +191,7 @@ public class BaseTestClass {
 	protected RogersCheckoutPage rogers_checkout_page;
 	protected RogersReviewOrderPage rogers_review_order_page;
 	protected RogersNACOrderConfirmationPage rogers_NAC_order_confirmation_page;
+	private Map<String,String> RunParameters;
 		
 		public BaseTestClass() {
 			 browserdriver =  new BrowserDrivers();
@@ -215,58 +199,76 @@ public class BaseTestClass {
 		}
 
 
-	 /* To start a session using given url, browser, language and test case group name.
+	 /** To start a session using given url, browser, language and test case group name.
 	 * @param strUrl                     string of test url
 	 * @param strBrowser                 string of browser name
 	 * @param strLanguage                string of language to use
-	 * @param enumGroupName               string of group name of the test case
+	 * @param strGroupName               string of group name of the test case
 	 * @param currentTestMethodName 
 	 * @throws ClientProtocolException   org.apache.http.client.ClientProtocolException, Signals an error in the HTTP protocol.
 	 * @throws IOException               java.io.IOException, Signals that an I/O exception of some sort has occurred, produced by failed or interrupted I/O operations.
 	 */
 	public void startSession(String strUrl, String strBrowser,  String strLanguage, String strGroupName , Method currentTestMethodName) throws ClientProtocolException, IOException {
-		if(strBrowser.contains("sauce"))
+		RunParameters = getExecutionParameters(strBrowser, strLanguage);
+		String browser = RunParameters.get("Browser");
+		String language = RunParameters.get("Language");
+		if(browser.contains("sauce"))
 		{
-			sauceParameters = initializeSauceParamsMap(strBrowser);
+			sauceParameters = initializeSauceParamsMap(browser);
 		}
-		this.driver = browserdriver.driverInit(strBrowser, sauceParameters, currentTestMethodName, strGroupName);
+		this.driver = browserdriver.driverInit(browser, sauceParameters, currentTestMethodName, strGroupName);
 		System.out.println(strUrl + "----------------------------------------------------------------------------");
 		captcha_bypass_handlers = new CaptchaBypassHandlers(getDriver());
 		switch(strGroupName.toLowerCase().trim()) {			
 		case "selfserve":
 		case "selfserve_login":
 		case "mobile_selfserve":
-			captcha_bypass_handlers.captchaBypassURLSelfserveFlows(strUrl, strLanguage);
+			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ language);
+			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 			break;
 			
-		case "connectedhome_legacyanonymous":				
-			captcha_bypass_handlers.captchaBypassURLLegacyAnonymousBuyFlows(strUrl, strLanguage); 
+		case "connectedhome_legacyanonymous":
+			driver.get(strUrl+"/web/totes/api/v1/bypassCaptchaAuth");
+			captcha_bypass_handlers.captchaBypassURLLegacyAnonymousBuyFlows(strUrl, language); 
 			break;	
 			
 		case "connectedhome_igniteanonymous":				
-			captcha_bypass_handlers.captchaBypassURLIgniteAnonymousBuyFlows(strUrl, strLanguage); 
+			driver.get(strUrl+"/web/totes/browsebuy/v1/byPassCaptcha");
+			driver.get(strUrl+"?setLanguage="+ language); 
 			break;
 			
 		case "connectedhome_legacylogin":
-			captcha_bypass_handlers.captchaBypassURLLegacyLoginFlows(strUrl, strLanguage);
+			driver.get(strUrl+"/web/totes/api/v1/bypassCaptchaAuth");
+			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ language);
+			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 			break; 
 
 		case "connectedhome_ignitelogin":
-			captcha_bypass_handlers.captchaBypassURLIgniteLoginFlows(strUrl, strLanguage);
+			driver.get(strUrl+"/web/totes/browsebuy/v1/byPassCaptcha");	
+			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ language);
+			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 			break; 
 			
 		case "connectedhome_login":
-			captcha_bypass_handlers.captchaBypassURLLoginFlows(strUrl, strLanguage);
+			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ language);
+			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 			break; 
 		
-		case "buyflows": driver.get(strUrl);
+		case "buyflows": 
+			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ language);
+			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
+			break;
+			
+		case "redesignrogers":	
+		case "buyflowsoneview": driver.get(strUrl);
 			break; 
 		
  		default :
- 			driver.get(strUrl);
- 			break;
+ 			driver.get(strUrl+"?setLanguage="+ language );
+ 			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 		}
 	    setImplicitWait(getDriver(), 10);
+		getDriver().manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
 	    init(strGroupName);	 
  }
 		
@@ -285,32 +287,32 @@ public class BaseTestClass {
 		 sauceOptions.put(SauceCapabilities.idleTimeout.toString(), TestDataHandler.sauceSettings.getSauceOptions().getIdleTimeout());
 		 sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getSauceOptions().getBuild());
 		 switch (strBrowser.toLowerCase()) {
-			case "saucechrome":							    
-				sauceOptions.put(SauceCapabilities.platformVersion.toString(), TestDataHandler.sauceSettings.getMutableChromeCapabilities().getPlatformVersion());  				       
-				sauceOptions.put(SauceCapabilities.browserVersion.toString(), TestDataHandler.sauceSettings.getMutableChromeCapabilities().getBrowserVersion());
-				break;
-			case "saucefirefox":										
-				sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getMutableFireFoxCapabilities().getPlatformVersion());  				       
-				sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getMutableFireFoxCapabilities().getBrowserVersion());
-				break;
-			case "sauceedge":
-				sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getMutableEdgeCapabilities().getBrowserVersion());  				       
-				sauceOptions.put(SauceCapabilities.build.toString(), TestDataHandler.sauceSettings.getMutableEdgeCapabilities().getPlatformVersion());
-				break;
-			case "sauceandroidchrome":
-				sauceOptions.put(SauceCapabilities.platformName.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getPlatformName()); 
-				sauceOptions.put(SauceCapabilities.platformVersion.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getPlatformVersion()); 
-				sauceOptions.put(SauceCapabilities.appiumVersion.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getAppiumVersion()); 
-				sauceOptions.put(SauceCapabilities.deviceName.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getDeviceName()); 
-				sauceOptions.put(SauceCapabilities.deviceOrientation.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getDeviceOrientation()); 
-				break;
+		 case "saucechrome":                            
+             sauceOptions.put(SauceCapabilities.platformName.toString(), TestDataHandler.sauceSettings.getMutableChromeCapabilities().getPlatformName());                     
+             sauceOptions.put(SauceCapabilities.browserVersion.toString(), TestDataHandler.sauceSettings.getMutableChromeCapabilities().getBrowserVersion());
+             break;
+         case "saucefirefox":                                       
+             sauceOptions.put(SauceCapabilities.platformName.toString(), TestDataHandler.sauceSettings.getMutableFireFoxCapabilities().getPlatformName());                     
+             sauceOptions.put(SauceCapabilities.browserVersion.toString(), TestDataHandler.sauceSettings.getMutableFireFoxCapabilities().getBrowserVersion());
+             break;
+         case "sauceedge":
+             sauceOptions.put(SauceCapabilities.platformName.toString(), TestDataHandler.sauceSettings.getMutableEdgeCapabilities().getPlatformName());                     
+             sauceOptions.put(SauceCapabilities.browserVersion.toString(), TestDataHandler.sauceSettings.getMutableEdgeCapabilities().getBrowserVersion());
+             break;
+         case "sauceandroidchrome":
+        	 sauceOptions.put(SauceCapabilities.platformName.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getPlatformName()); 
+        	 sauceOptions.put(SauceCapabilities.platformVersion.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getPlatformVersion()); 
+        	 sauceOptions.put(SauceCapabilities.appiumVersion.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getAppiumVersion()); 
+        	 sauceOptions.put(SauceCapabilities.deviceName.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getDeviceName()); 
+        	 sauceOptions.put(SauceCapabilities.deviceOrientation.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getDeviceOrientation()); 
+        	 break;
 		}
 			 			  		        		
 		return sauceOptions;
 	}
 
 
-	/* To start a session using given url, browser, language and test case group name.
+	/** To start a session using given url, browser, language and test case group name.
 	 * @param strUrl                     string of test url
 	 * @param strBrowser                 string of browser name
 	 * @param strLanguage                string of language to use
@@ -323,11 +325,11 @@ public class BaseTestClass {
 		startSession(strUrl, strBrowser, strLanguage, enumGroupName.toString().toLowerCase().trim(), currentTestMethodName);
 	}		
 
-	 /* To start a session using given url, browser, language and test case group name.
+	 /** To start a session using given url, browser, language and test case group name.
 	 * @param strUrl                     string of test url
 	 * @param strBrowser                 string of browser name
 	 * @param strLanguage                string of language to use
-	 * @param enumGroupName               string of group name of the test case
+	 * @param strGroupName               string of group name of the test case
 	 * @param currentTestMethodName 
 	 * @throws ClientProtocolException   org.apache.http.client.ClientProtocolException, Signals an error in the HTTP protocol.
 	 * @throws IOException               java.io.IOException, Signals that an I/O exception of some sort has occurred, produced by failed or interrupted I/O operations.
@@ -373,7 +375,6 @@ public class BaseTestClass {
 			rogers_profile_and_settings_page = new RogersProfileAndSettingsPage(driver);
 			rogers_payment_options_page = new RogersPaymentOptionsPage(driver);
 			rogers_make_payment_page = new RogersMakePaymentPage(driver);
-			reporter = new ExtentTestManager(driver);
 			common_business_flows = new CommonBusinessFlows(this);
 			ensHomePage = new EnsHomePage(getDriver());
 			ensNoteViewPage = new EnsNotificationViewPage(getDriver());
@@ -550,6 +551,23 @@ public class BaseTestClass {
 			rogers_checkout_page=new RogersCheckoutPage(getDriver());
 			rogers_review_order_page=new RogersReviewOrderPage(getDriver());
 			rogers_NAC_order_confirmation_page=new RogersNACOrderConfirmationPage(getDriver());
+		
+		case "buyflowsoneview":
+			
+			environment_selection_page = new EnvironmentSelectionPage(getDriver());
+			account_over_view_page= new AccountOverViewPage(getDriver());
+			order_Confirmation_Page = new OrderConfirmationPage(getDriver());
+			order_Review_Page = new OrderReviewPage(getDriver());
+			rogersOV_ChangeSharePlan_page = new com.rogers.oneview.pages.RogersChangeSharePlanPage(getDriver());
+			rogersOV_wireless_details_page = new com.rogers.oneview.pages.RogersWirelessDetailsPage(getDriver());
+			rogersOV_choose_phone_page = new com.rogers.oneview.pages.RogersChoosePhonePage(getDriver());
+			rogersOV_build_plan_page = new com.rogers.oneview.pages.RogersBuildPlanPage(getDriver());
+			rogersOV_choose_addons_page = new com.rogers.oneview.pages.RogersChooseAddonsPage(getDriver());
+			rogersOV_shipping_page = new com.rogers.oneview.pages.RogersShippingPage(getDriver());
+			rogersOV_payment_page = new com.rogers.oneview.pages.RogersPaymentPage(getDriver());
+			rogersOV_ChoosePlan_page = new com.rogers.oneview.pages.RogersChoosePlanPage(getDriver());
+			break;
+			
 		default:
 			
 		}	
@@ -605,4 +623,34 @@ public class BaseTestClass {
 		  putRequest.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 		  HttpClientBuilder.create().build().execute(putRequest);
 		}
+	
+	/** To start a session using given url, browser, language and test case group name.
+	 * @param strLanguage    string of test Language
+	 * @param strBrowser     string of browser name
+	 * @return HashMap of test TestParameters
+	 */
+		public static HashMap<String, String>  getExecutionParameters(String strBrowser,String strLanguage) {
+		if (System.getProperty("Browser") == null || System.getProperty("Browser").isEmpty())
+		{
+			System.setProperty("Browser", strBrowser);
+		}
+		if (System.getProperty("Language") == null ||  System.getProperty("Language").isEmpty())
+		{
+			System.setProperty("Language", strLanguage);
+		}
+		if(System.getProperty("Browser").equals("") && strBrowser.isEmpty())
+		{
+			System.setProperty("Browser", "chrome");
+		}
+		if(System.getProperty("Language").equals("") && strLanguage.isEmpty() )
+		{
+			System.setProperty("Language", "en");
+		}
+		strBrowser= System.getProperty("Browser");
+		strLanguage= System.getProperty("Language");
+		HashMap<String, String> TestParameters = new HashMap<>();
+		TestParameters.put("Browser", strBrowser);
+		TestParameters.put("Language", strLanguage );
+		return TestParameters;
+	}
 }

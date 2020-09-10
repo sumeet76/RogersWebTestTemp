@@ -19,19 +19,19 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	@FindBy(xpath = "//select[@id='ds-form-input-id-18']")
 	WebElement ddlCreditCheckYear;
 	
-	@FindBy(xpath = "//select[@id='ds-form-input-id-19']")
+	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.year']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlCreditCheckYearMigration;
 		
 	@FindBy(xpath = "//select[@id='ds-form-input-id-19']")
 	WebElement ddlCreditCheckMonth;
 	
-	@FindBy(xpath = "//select[@id='ds-form-input-id-20']")
+	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.month']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlCreditCheckMonthMigration;
 	
 	@FindBy(xpath = "//select[@id='ds-form-input-id-20']")
 	WebElement ddlCreditCheckDay;
 	
-	@FindBy(xpath = "//select[@id='ds-form-input-id-21']")
+	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.day']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlCreditCheckDayMigration;
 	
 	@FindBy(xpath = "//select[@id='ds-form-input-id-21']")
@@ -159,7 +159,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void selectDOBYearExistingCustomerMigration(String strDOBYear) {
 		//reusableActions.waitForElementInvisibility(popupLoadingFingers);
-		reusableActions.waitForElementVisibility(ddlCreditCheckYearMigration,20);
+		reusableActions.waitForElementVisibility(ddlCreditCheckYearMigration,120);
 		reusableActions.selectWhenReadyByVisibleText(ddlCreditCheckYearMigration, strDOBYear);
 	}
 	
@@ -289,9 +289,21 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void setDrivingLicenseNumber(String province) {
 		String strLicenseNumber = FormFiller.generateLicenseNumber(province);
-		reusableActions.waitForElementVisibility(txtContainer,180);
+		reusableActions.waitForElementVisibility(txtContainer,30);
 		reusableActions.getWhenReady(txtContainer,10).click();		
 		reusableActions.getWhenReady(txtLicenseNumber, 30).clear();
+		reusableActions.getWhenReady(txtLicenseNumber, 3).sendKeys(strLicenseNumber);
+	}
+	/**
+	 * Set dynamic license number for British Columbia  on Credit check page
+	 * @param province of address
+	 * @author Chinnarao.Vattam
+	 */
+	public void setDrivingLicenseNumberMobile(String province) {
+		String strLicenseNumber = FormFiller.generateLicenseNumber(province);		
+		reusableActions.waitForElementVisibility(txtContainer,20);
+		reusableActions.executeJavaScriptClick(txtContainer);		
+		reusableActions.getWhenReady(txtLicenseNumber,5).clear();
 		reusableActions.getWhenReady(txtLicenseNumber, 3).sendKeys(strLicenseNumber);
 	}
 	
@@ -311,9 +323,22 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void setPassportNumber() {
 		String strPasportNumber = FormFiller.generatePassportNumber();
-		reusableActions.waitForElementVisibility(txtContainerPasportNumber,180);
+		reusableActions.waitForElementVisibility(txtContainerPasportNumber,30);
 		reusableActions.getWhenReady(txtContainerPasportNumber,10).click();
-		reusableActions.getWhenReady(txtPasportNumber, 60).clear();
+		reusableActions.getWhenReady(txtPasportNumber, 30).clear();
+		reusableActions.getWhenReady(txtPasportNumber, 3).sendKeys(strPasportNumber);
+	}
+	
+	/**
+	 * Set dynamic passport number on Credit check page
+	 * @author Chinnarao.Vattam
+	 */
+	public void setPassportNumberMobile() {
+		String strPasportNumber = FormFiller.generatePassportNumber();
+		reusableActions.waitForElementVisibility(txtContainerPasportNumber,30);
+		reusableActions.javascriptScrollToMiddleOfPage();
+		reusableActions.getWhenReady(txtContainerPasportNumber,10).click();
+		reusableActions.getWhenReady(txtPasportNumber, 30).clear();
 		reusableActions.getWhenReady(txtPasportNumber, 3).sendKeys(strPasportNumber);
 	}
 
@@ -365,7 +390,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkCreditConsentSubmit() {
-		reusableActions.executeJavaScriptClick(chkConsent);
+		reusableActions.executeJavaScriptClick(btnCreditCheckSubmit);
 	}
 	
 	/**

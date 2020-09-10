@@ -1,12 +1,13 @@
 package com.rogers.test.tests.solarisconsumer;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeMethod; 
+import org.testng.annotations.Optional;                     
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
@@ -68,11 +69,11 @@ public class RogersSC_TC_006_ExistingSolarisCustomer_InternetPackageChangeTest e
 		reporter.reportLogWithScreenshot("Launched the Confirmation page");
     }
 
-    @BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})
+    @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
-	public void beforeTest(String strBrowser, String strLanguage, String strGroupName,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.rogersConfig.getRogersURL(),  strBrowser,strLanguage,strGroupName, method);
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, String strGroupName,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,strGroupName, method);
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 
 	@AfterMethod(alwaysRun = true)

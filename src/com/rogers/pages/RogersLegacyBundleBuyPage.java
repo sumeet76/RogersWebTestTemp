@@ -47,7 +47,7 @@ public class RogersLegacyBundleBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSelectBundle() {
-		reusableActions.getWhenReady(btnSelectBundle,120).click();
+		reusableActions.getWhenReady(btnSelectBundle,30).click();
 	}
 	
 	/**
@@ -68,7 +68,7 @@ public class RogersLegacyBundleBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkAddressLookupSubmit() {
-		reusableActions.clickWhenReady(btnAddressLookupSubmit, 30);
+		reusableActions.getWhenReady(btnAddressLookupSubmit, 30).click();
 	}
 	
 	/**

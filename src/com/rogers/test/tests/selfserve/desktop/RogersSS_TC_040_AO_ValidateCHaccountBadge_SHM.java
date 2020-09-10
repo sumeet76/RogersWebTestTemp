@@ -1,19 +1,14 @@
 package com.rogers.test.tests.selfserve.desktop;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 /**
  * This class contains the test method to validate the TV dashboard for Rogers.com   
@@ -31,7 +26,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersSS_TC_040_AO_ValidateCHaccountBadge_SHM extends BaseTestClass {
 
-    @Test
+    @Test(groups = {"RegressionSS","AccountOverviewSS"})
     public void checkTVDashboard() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();
@@ -41,11 +36,12 @@ public class RogersSS_TC_040_AO_ValidateCHaccountBadge_SHM extends BaseTestClass
         rogers_login_page.setPasswordIFrame(TestDataHandler.tc40SHMAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         rogers_login_page.clkSignInIFrame();
+        reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame(); 
         rogers_login_page.switchOutOfSignInIFrame();
         rogers_account_overview_page.selectAccount(TestDataHandler.tc40SHMAccount.accountDetails.getBan());                    
-        reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),
+        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),
         		"Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_solaris_tv_dashboard_page.clkSHMBadge();          
@@ -54,7 +50,7 @@ public class RogersSS_TC_040_AO_ValidateCHaccountBadge_SHM extends BaseTestClass
         reporter.reportLogWithScreenshot("Launched the SHM dashboard Page");
         common_business_flows.scrollToMiddleOfWebPage();
 		reporter.reportLogWithScreenshot("Mid page view");
-        reporter.softAssert(rogers_shm_dashboard_page.verifyShopForAccessoriesLinkdisplayed()
+        reporter.hardAssert(rogers_shm_dashboard_page.verifyShopForAccessoriesLinkdisplayed()
         		&& rogers_shm_dashboard_page.verifyShopForAccessoriesLinkdisplayed()
         		&& rogers_shm_dashboard_page.verifyLearnAboutSmartHomeMonitoringLinkdisplayed()
         		&& rogers_shm_dashboard_page.verifyInsuranceCertificateLinkdisplayed(),
@@ -66,9 +62,9 @@ public class RogersSS_TC_040_AO_ValidateCHaccountBadge_SHM extends BaseTestClass
     }
 
     @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-	public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-	   xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+	   // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+		startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
 				
 	}
    	

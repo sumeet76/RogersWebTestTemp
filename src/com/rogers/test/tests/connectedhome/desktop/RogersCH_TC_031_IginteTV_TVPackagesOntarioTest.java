@@ -1,18 +1,14 @@
 package com.rogers.test.tests.connectedhome.desktop;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 
 /**
@@ -38,7 +34,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_031_IginteTV_TVPackagesOntarioTest extends BaseTestClass {
 
-    @Test
+	 @Test(groups = {"RegressionCH","TVPlanUpgardeCH"})
     public void checkSolarisTVPackageUpgrade() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();
@@ -71,8 +67,6 @@ public class RogersCH_TC_031_IginteTV_TVPackagesOntarioTest extends BaseTestClas
         rogers_solaris_tv_channels_and_themepacks_page.clkYesIHave4K();  
         reporter.reportLogWithScreenshot("Launched the 4K Content popup");
         rogers_solaris_tv_channels_and_themepacks_page.clk4KContent();
-    	reporter.hardAssert(rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
-		reporter.reportLogWithScreenshot("Launched the order review page");
 		
 		reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
         rogers_order_review_page.clkAcceptenceCheckboxUpdate();
@@ -83,11 +77,11 @@ public class RogersCH_TC_031_IginteTV_TVPackagesOntarioTest extends BaseTestClas
         reporter.reportLogWithScreenshot("Verified the Confirmation page");
     	}
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
-	public void beforeTest(String strBrowser, String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.rogersConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
 	}
 
 	@AfterMethod(alwaysRun = true)

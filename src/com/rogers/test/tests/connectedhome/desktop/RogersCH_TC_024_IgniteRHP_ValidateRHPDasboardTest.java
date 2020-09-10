@@ -1,18 +1,14 @@
 package com.rogers.test.tests.connectedhome.desktop;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 
 /**
@@ -31,10 +27,8 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_024_IgniteRHP_ValidateRHPDasboardTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"SanityCH","RegressionCH","RhpAndRhmCH"})
     public void checkSolarisRHPDasboard() {
-		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		rogers_home_page.clkEasyLogin();
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
@@ -47,21 +41,21 @@ public class RogersCH_TC_024_IgniteRHP_ValidateRHPDasboardTest extends BaseTestC
  	    reporter.reportLogWithScreenshot("Skip popup");
  	    rogers_login_page.clkSkipIFrame();
  	    rogers_login_page.switchOutOfSignInIFrame();
- 	    rogers_account_overview_page.selectAccount(TestDataHandler.igniteRHP.accountDetails.getBan());
  		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.clkRHPBadge(TestDataHandler.rogersConfig.getBrowser());
+ 	    rogers_account_overview_page.selectAccount(TestDataHandler.igniteRHP.accountDetails.getBan());
+ 		reporter.reportLogWithScreenshot("Launched the Account Page");
+		rogers_account_overview_page.clkRHPBadge();
         reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");        
         reporter.softAssert(rogers_solaris_rhp_dashboard_validation_page.verifyConfigureYourCurrentFeatures(),"Verification of Configure Your Current Features link is success","Verification of Configure Your Current Features link is Failed");
         reporter.softAssert(rogers_solaris_rhp_dashboard_validation_page.verfyAccessYourVoicemailSettings(),"Verification of Access Your Voicemail Settings link is success","Verification of Access Your Voicemail Settings link is successFailed");
         reporter.softAssert(rogers_solaris_rhp_dashboard_validation_page.verfyResetYourVoicemailPassword(),"Verification of Reset Your Voicemail Password link is success","Verification of Reset Your Voicemail Password link is success Failed");
     	}
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
-	public void beforeTest(String strBrowser, String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.rogersConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
 	}
 
 	@AfterMethod(alwaysRun = true)

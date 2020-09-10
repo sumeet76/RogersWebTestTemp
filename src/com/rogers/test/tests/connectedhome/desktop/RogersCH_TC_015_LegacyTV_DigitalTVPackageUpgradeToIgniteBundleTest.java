@@ -1,19 +1,13 @@
 package com.rogers.test.tests.connectedhome.desktop;
 
-import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
-
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
 
 /**
  * This class contains the test method to verify the upgarde flow for Legacy TV to IgniteTV for Rogers.com  
@@ -33,7 +27,7 @@ import org.testng.annotations.Parameters;
  *9. Click "No thanks Continue".
  *10. Click on Continue.
  *11. Select one option for   'Do you have a 4K TV'.
- *12. Click “checkout” button on cart summary page.
+ *12. Click checkout button on cart summary page.
  *13. All the personal information is auto populated.
  *14. Click on continue button.
  *15. In Credit Evaluation page, enter the required info on Credit Check:
@@ -56,7 +50,7 @@ import org.testng.annotations.Parameters;
 
 public class RogersCH_TC_015_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest extends BaseTestClass {
 
-	@Test
+    @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
 	public void checkTVPackageUpgradeTest() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
@@ -71,7 +65,7 @@ public class RogersCH_TC_015_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
 	    rogers_login_page.clkSkipIFrame();
 	    rogers_login_page.switchOutOfSignInIFrame();
 	    rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVUpgradeToIgnite.accountDetails.getBan());
-		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+		//reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page"); 
 		 rogers_home_page.clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
@@ -103,6 +97,22 @@ public class RogersCH_TC_015_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
         rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
         rogers_home_phone_selection_page.clkContinueHomePhoneSelectionMigration(); 
+        
+        
+/*        reporter.reportLogWithScreenshot("Launched the cart summary page");
+        rogers_igniteTV_buy_page.set4KTV(); 
+        rogers_igniteTV_buy_page.clkCheckout();
+        reporter.reportLogWithScreenshot("Launched the create profile page");
+        rogers_igniteTV_profile_creation_page.clkSubmitProfile();   
+        reporter.reportLogWithScreenshot("Launched the credit evalution page");
+        rogers_igniteTV_credit_check_page.selectDOBYearExistingCustomerMigration(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getYear());
+        rogers_igniteTV_credit_check_page.selectDOBMonthExistingCustomerMigration(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getMonth());
+        rogers_igniteTV_credit_check_page.selectDOBDayExistingCustomerMigration(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getDate());
+        reporter.reportLogWithScreenshot("Entered the DOB details");
+        rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
+        reporter.reportLogWithScreenshot("Launched the home phone selection page");
+        rogers_home_phone_selection_page.clkContinueHomePhoneSelectionMigration(); */
+        
          
         reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
@@ -119,6 +129,7 @@ public class RogersCH_TC_015_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
         rogers_tech_install_page.setMobielNumberMigration();
         rogers_tech_install_page.setEmailMigration();        
         reporter.reportLogWithScreenshot("tech install details");
+        rogers_tech_install_page.clkTechInstalConsentExistingCustomer();
         rogers_tech_install_page.clkTechInstallContinue();
         reporter.reportLogWithScreenshot("Launched the payment options page");        
         rogers_payment_options_page.clkPaymentConfirmExistingCustomer();        
@@ -135,11 +146,11 @@ public class RogersCH_TC_015_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
     	}
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
-	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws  IOException {
-		startSession(TestDataHandler.rogersConfig.getRogersURL(),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws  IOException {
+		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 
 	@AfterMethod(alwaysRun = true)

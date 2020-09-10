@@ -1,18 +1,13 @@
 package com.rogers.test.tests.connectedhome.desktop;
 
-import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
 
 /**
  * This class contains the test method to verify  Internet Package downgrade functionality for Rogers.com  
@@ -32,7 +27,7 @@ import org.testng.annotations.Parameters;
 public class RogersCH_TC_025_LegacyInternet_InternetPackageUpgradeTest extends BaseTestClass {
 
 	
-	@Test
+	@Test(groups = {"RegressionCH","LegacyTVFlowsCH"})
 	public void checkInternetPackageUpgrade() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
@@ -49,10 +44,10 @@ public class RogersCH_TC_025_LegacyInternet_InternetPackageUpgradeTest extends B
 	    rogers_account_overview_page.selectAccount(TestDataHandler.legacyInternetAccountUpgrade.accountDetails.getBan());
 		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.clkInternetPopup(TestDataHandler.rogersConfig.getBrowser()); 
+		rogers_account_overview_page.clkInternetPopup(); 
 		rogers_internet_dashboard_page.clkChangeInternetPackage();
 		reporter.reportLogWithScreenshot("Launched the Internet package Page");
-		rogers_internet_package_selection_page.selectInternetPackage(TestDataHandler.legacyInternetAccountUpgrade.getAccountDetails().getUpgradePlanEn(),TestDataHandler.legacyInternetAccountUpgrade.getAccountDetails().getUpgradePlanFr(), TestDataHandler.rogersConfig.getLanguage());
+		rogers_internet_package_selection_page.selectInternetPackage(TestDataHandler.legacyInternetAccountUpgrade.getAccountDetails().getUpgradePlanEn(),TestDataHandler.legacyInternetAccountUpgrade.getAccountDetails().getUpgradePlanFr(), TestDataHandler.chConfig.getLanguage());
 		reporter.reportLogWithScreenshot("Launched the upgrade modem popup");
 		rogers_internet_package_selection_page.clkUpgradeContinue();		
 		rogers_internet_package_selection_page.clkCheckout();		
@@ -70,11 +65,11 @@ public class RogersCH_TC_025_LegacyInternet_InternetPackageUpgradeTest extends B
 
 
 	
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
-	public void beforeTest(String strBrowser, String strLanguage, String strGroupName, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.rogersConfig.getRogersURL(), strBrowser,strLanguage,strGroupName, method);
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, String strGroupName, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,strGroupName, method);
 	}
 
 	@AfterMethod(alwaysRun = true)

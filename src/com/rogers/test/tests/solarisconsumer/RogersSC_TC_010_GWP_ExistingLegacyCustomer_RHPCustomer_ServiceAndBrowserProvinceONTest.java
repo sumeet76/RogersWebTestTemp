@@ -7,13 +7,13 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 /**
@@ -34,7 +34,7 @@ import org.testng.annotations.Parameters;
  *9. Click "No thanks Continue".
  *10. Verify GWP offer for the starter bundel and Click on Continue.
  *11. Select one option for   'Do you have a 4K TV'.
- *12. Verify GWP in the your cart and Click “checkout” button on cart summary page.
+ *12. Verify GWP in the your cart and Click checkout button on cart summary page.
  *13. All the personal information is auto populated.
  *14. Verify GWP in the your cart and Click on continue button.
  *15. In Credit Evaluation page, enter the required info on Credit Check:
@@ -186,11 +186,11 @@ public class RogersSC_TC_010_GWP_ExistingLegacyCustomer_RHPCustomer_ServiceAndBr
 		reporter.reportLogWithScreenshot("Launched the Confirmation page");
 	}
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
-	public void beforeTest(String strBrowser, String strLanguage, String strGroupName,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.rogersConfig.getRogersURL(),  strBrowser,strLanguage,strGroupName, method);
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, String strGroupName,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,strGroupName, method);
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 
 	@AfterMethod(alwaysRun = true)

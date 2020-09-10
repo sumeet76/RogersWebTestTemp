@@ -1,18 +1,13 @@
 package com.rogers.test.tests.connectedhome.mobile;
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 /**
  * This class contains the test method to test the IgniteTV buy flow for Rogers.com   
@@ -29,7 +24,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *6. Click "No thanks Continue"
  *7. Click on Continue in Home phone add ons page
  *8. Select one option for   'Do you have a 4K TV'
- *9. Click “checkout” button on cart summary page.
+ *9. Click checkout button on cart summary page.
  *10. Enter all personal information on user profile creation page - 1) Profile step
  *11. Click on Continue
  *12. In 2) Credit Evaluation page, enter the required info on Credit Check:
@@ -53,24 +48,20 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
 
-    @Test
+    @Test(groups = {"MobileRegressionCH"})
     public void checkBuyIgniteTVOfferMobile() {
-		reporter.reportLogWithScreenshot("Launched the Home Page");
-		rogers_home_page.clkNavMobile();
-		reporter.reportLogWithScreenshot("Launched the Navgation card");
-    	rogers_home_page.clkShopMobile(); 
-    	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");    	
-    	rogers_home_page.clkIgniteTVMobile();
+		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+    	rogers_home_page.clkTVBundle();
     	
-    	reporter.hardAssert(rogers_home_page.verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
-    	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+        reporter.hardAssert(rogers_home_page.verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
+       	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	rogers_home_page.clkServiceability();
     	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
     	rogers_home_page.clkAddressCheck();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line2");
-        rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
         reporter.reportLogWithScreenshot("Availability check button enabled");
         rogers_home_page.clkIgniteAddressLookupSubmitMobile();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
@@ -101,10 +92,10 @@ public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass
         rogers_igniteTV_credit_check_page.selectExpiryYear();
         rogers_igniteTV_credit_check_page.selectExpiryMonth();
         rogers_igniteTV_credit_check_page.selectExpiryDay();
-        rogers_igniteTV_credit_check_page.setDrivingLicenseNumber("ONTARIO");
+        rogers_igniteTV_credit_check_page.setDrivingLicenseNumberMobile("ONTARIO");
         reporter.reportLogWithScreenshot("Driving License Details");
         rogers_igniteTV_credit_check_page.selectSecondIDOption("Passport");
-        rogers_igniteTV_credit_check_page.setPassportNumber();
+        rogers_igniteTV_credit_check_page.setPassportNumberMobile();
         rogers_igniteTV_credit_check_page.selectPassportExpiryYear();
         rogers_igniteTV_credit_check_page.selectPassportExpiryMonth();
         rogers_igniteTV_credit_check_page.selectPassportExpiryDay();
@@ -118,45 +109,47 @@ public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass
        reporter.reportLogWithScreenshot("Launched the tech install page");
        rogers_tech_install_page.clkTechInstallSlotMobile();
        reporter.reportLogWithScreenshot("tech install details");
-       rogers_tech_install_page.setMobielNumber();
-       rogers_tech_install_page.setEmail();
+       rogers_tech_install_page.setMobielNumberMobile();
+       rogers_tech_install_page.setEmailMobile();
+       reporter.reportLogWithScreenshot("tech install consent");
        rogers_tech_install_page.clkTechInstalConsent();
        reporter.reportLogWithScreenshot("tech install details");
-       rogers_tech_install_page.clkTechInstallContinue();
+       rogers_tech_install_page.clkTechInstallContinueMobile();
         
         reporter.hardAssert( rogers_payment_options_page.verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
         rogers_payment_options_page.selectPaymentMode("Pre-authorized Credit Card");
         rogers_payment_options_page.switchToCreditCardIFrame();
-        rogers_payment_options_page.setCreditCardNumberIFrame(TestDataHandler.rogersPaymentInfo.getCreditCardDetails().getNumber());
+        rogers_payment_options_page.setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
         rogers_payment_options_page.switchOutOfCreditCardIFrame();
-        rogers_payment_options_page.setCVV();
+        reporter.reportLogWithScreenshot("Launched the card details");
+        rogers_payment_options_page.setCVVMobile();
         rogers_payment_options_page.selectExpiryMonth();
         rogers_payment_options_page.selectExpiryYear(); 
         reporter.reportLogWithScreenshot("Payment options Details");
-        rogers_payment_options_page.clkPaymentConfirm();
+        rogers_payment_options_page.clkPaymentConfirmMobile();
     	reporter.hardAssert(rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");
 		
 		reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
         
-        rogers_order_review_page.clkAcceptenceCheckbox();
+        rogers_order_review_page.clkAcceptenceCheckboxMobile();
         reporter.reportLogWithScreenshot("Agreement details");
-        rogers_order_review_page.clkSubmit();
-        reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");      
+        rogers_order_review_page.clkSubmitMobile();
+        reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");      
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
     }
     
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteAnonymous
-	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.rogersConfig.getRogersURL(), strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_igniteanonymous, method);
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_igniteanonymous, method);
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 

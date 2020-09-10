@@ -1,18 +1,14 @@
 package com.rogers.test.tests.connectedhome.mobile;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 
 
@@ -35,26 +31,25 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class Mobile_RogersCH_TC_005_IginteInternet_ValidateInternetDashboardUsageTest extends BaseTestClass {
 
-    @Test
+    @Test(groups = {"MobileRegressionCH"})
     public void checkInternetDashboardMobile() {
         reporter.reportLogWithScreenshot("Home Page");
-        reporter.reportLog("Home Page Launched");
-    	rogers_home_page.clkSignInMobile();
-    	
-          rogers_login_page.switchToSignInIFrame();
-          reporter.reportLogWithScreenshot("Launched the SignIn popup");
-          rogers_login_page.setUsernameIFrame(TestDataHandler.solarisInternetAccountWithUsage.getUsername());
-          rogers_login_page.setPasswordIFrame(TestDataHandler.solarisInternetAccountWithUsage.getPassword());
-          reporter.reportLogWithScreenshot("Enter the account credentails");
-          rogers_login_page.clkSignInIFrame();
-      	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+    	rogers_home_page.clkSignInMobile();    	
+        rogers_login_page.switchToSignInIFrame();
+        reporter.reportLogWithScreenshot("Launched the SignIn popup");
+        rogers_login_page.setUsernameIFrame(TestDataHandler.solarisInternetAccountWithUsage.getUsername());
+        rogers_login_page.setPasswordIFrame(TestDataHandler.solarisInternetAccountWithUsage.getPassword());
+        reporter.reportLogWithScreenshot("Enter the account credentails");
+        rogers_login_page.clkSignInIFrame();
+    	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
         rogers_account_overview_page.selectAccount(TestDataHandler.solarisInternetAccountWithUsage.accountDetails.getBan());
-    	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-          reporter.reportLogWithScreenshot("Launched the Account Page");
-          rogers_internet_dashboard_page.clkSolarisInternetBadge();
+    	reporter.hardAssert(rogers_account_overview_page.verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
+        reporter.reportLogWithScreenshot("Launched the Account Page");
+        rogers_internet_dashboard_page.clkInternetBadgeMobile();
+        reporter.reportLogWithScreenshot("Launched the Interent dashboard");
           rogers_internet_dashboard_page.clkInternetPopup();
           reporter.reportLogWithScreenshot("Launched the Interent dashboard");
   		reporter.hardAssert(rogers_internet_dashboard_page.verifyInternet(), "Verified the Internet page", "Internet page verification failed");
@@ -64,20 +59,20 @@ public class Mobile_RogersCH_TC_005_IginteInternet_ValidateInternetDashboardUsag
           reporter.softAssert(rogers_internet_usage_page.verifyDailyBreakdown(), "Verified the daily usage Breakdown", "Daily usage Breakdown deatils are not present");
           reporter.reportLogWithScreenshot("Daily Breakdown details");
           reporter.softAssert(rogers_internet_usage_page.verifyDailyBreakdownTable(), "Verified the daily usage", "Daily usage deatils are not present");
-          rogers_internet_usage_page.clkMonthlyUsage();                    
+          rogers_internet_usage_page.clkMonthlyUsageMobile();                    
           reporter.softAssert(rogers_internet_usage_page.verifyMonthlyBreakdown(),"Verified the monthly usage Breakdown", "Monthly usage Breakdown deatils are not present");
           reporter.reportLogWithScreenshot("Monthly Breakdown details");
           reporter.softAssert(rogers_internet_usage_page.verifyMonthlyBreakdownTable(),"Verified the monthly usage", "Monthly usage deatils are not present");
-          rogers_internet_usage_page.clkUsageAlerts();
+          rogers_internet_usage_page.clkUsageAlertsMobile();
           reporter.softAssert(rogers_internet_usage_page.verifyUsageAlerts(),"Verified the Usage Alerts", "Usage Alerts are not present");
           reporter.reportLogWithScreenshot("Usage and Alerts details");
       	}
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
-	public void beforeTest(String strBrowser, String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.rogersConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
 	}
 
 	@AfterMethod(alwaysRun = true)

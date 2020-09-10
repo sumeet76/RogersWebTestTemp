@@ -1,18 +1,13 @@
 package com.rogers.test.tests.connectedhome.mobile;
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 
 
@@ -33,17 +28,12 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class Mobile_RogersCH_TC_003_Internet_BuyInternetOfferTest extends BaseTestClass {
 
-    @Test
-    public void checkBuyInternetOfferMobile() throws InterruptedException {
+    @Test(groups = {"MobileRegressionCH"})
+    public void checkBuyInternetOfferMobile() throws InterruptedException {   	
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		rogers_home_page.clkEasyLogin();
-		reporter.reportLogWithScreenshot("Launched the Home Page");
-		rogers_home_page.clkNavMobile();
-		reporter.reportLogWithScreenshot("Launched the Navgation card");
-    	rogers_home_page.clkShopMobile(); 
-    	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
-    	rogers_home_page.clkInternetMobile();
-    	rogers_buy_page.verifyInternetMenuMobile();     	
+    	rogers_home_page.clkEasyInternet() ;
+    	
+        reporter.hardAssert(rogers_home_page.verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");  	
     	reporter.reportLogWithScreenshot("Launched the Internet packages page");
     	rogers_home_page.clkInternetAvailability();
     	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
@@ -51,10 +41,10 @@ public class Mobile_RogersCH_TC_003_Internet_BuyInternetOfferTest extends BaseTe
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line2");
-        rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
-        rogers_home_page.clkOnlyInternet();
+        rogers_home_page.clkOnlyInternetMobile();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");       
         rogers_internet_package_selection_page.clkInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");         
@@ -106,7 +96,7 @@ public class Mobile_RogersCH_TC_003_Internet_BuyInternetOfferTest extends BaseTe
         reporter.reportLogWithScreenshot("Launched the payment options page");
         rogers_payment_options_page.selectPaymentMode("Pre-authorized Credit Card");
         rogers_payment_options_page.switchToCreditCardIFrame();
-        rogers_payment_options_page.setCreditCardNumberIFrame(TestDataHandler.rogersPaymentInfo.getCreditCardDetails().getNumber());
+        rogers_payment_options_page.setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
         rogers_payment_options_page.switchOutOfCreditCardIFrame();
         rogers_payment_options_page.setCVV();
         rogers_payment_options_page.selectExpiryMonth();
@@ -127,17 +117,17 @@ public class Mobile_RogersCH_TC_003_Internet_BuyInternetOfferTest extends BaseTe
     	}
 
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//legacyAnonymous
-	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.rogersConfig.getRogersURL(),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacyanonymous, method);
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacyanonymous, method);
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 	
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 

@@ -2,12 +2,13 @@ package com.rogers.test.tests.connectedhome.desktop;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeMethod;  
+import org.testng.annotations.Optional;                     
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
@@ -34,10 +35,8 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_006_IginteInternet_ValidateStandaloneInternetDashboardUsageTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"RegressionCH","saiCH"})
     public void checkStandaloneInternetDashboard() {
-		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		rogers_home_page.clkEasyLogin();
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();
@@ -47,7 +46,6 @@ public class RogersCH_TC_006_IginteInternet_ValidateStandaloneInternetDashboardU
         reporter.reportLogWithScreenshot("Enter the account credentails");
         rogers_login_page.clkSignInIFrame();
     	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
         rogers_account_overview_page.selectAccount(TestDataHandler.standaloneInternetAccountWithUsage.accountDetails.getBan());
@@ -71,11 +69,11 @@ public class RogersCH_TC_006_IginteInternet_ValidateStandaloneInternetDashboardU
         reporter.reportLogWithScreenshot("Usage and Alerts details");
     	}
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
-	public void beforeTest(String strBrowser, String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.rogersConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
 	}
 
 	@AfterMethod(alwaysRun = true)

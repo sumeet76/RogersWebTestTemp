@@ -1,12 +1,13 @@
 package com.rogers.test.tests.connectedhome.desktop;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeMethod;   
+import org.testng.annotations.Optional;                     
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -39,7 +40,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_004_LegacyBundle_BuyBundleOfferTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"SanityCH","RegressionCH","LegacyTVFlowsCH"})
     public void checkLegacyBundleOffer() throws InterruptedException {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
 		rogers_home_page.clkEasyLogin();
@@ -55,7 +56,7 @@ public class RogersCH_TC_004_LegacyBundle_BuyBundleOfferTest extends BaseTestCla
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         rogers_legacy_bundle_buy_page.clkAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Good News for the Service availability");
-        String strLanguage = TestDataHandler.rogersConfig.getLanguage();
+        String strLanguage = TestDataHandler.chConfig.getLanguage();
     	if (strLanguage.equals("en"))
     	{
     	reporter.reportLogWithScreenshot("Good News for the Service availability");
@@ -77,7 +78,7 @@ public class RogersCH_TC_004_LegacyBundle_BuyBundleOfferTest extends BaseTestCla
     	rogers_order_summary_page.selectDOBMonth();
     	rogers_order_summary_page.selectDOBDay();
     	rogers_order_summary_page.switchToCreditCardIFrame();
-    	rogers_order_summary_page.setCreditCardNumberIFrame(TestDataHandler.rogersPaymentInfo.getCreditCardDetails().getNumber(),TestDataHandler.rogersConfig.getBrowser());
+    	rogers_order_summary_page.setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
     	rogers_order_summary_page.switchOutOfCreditCardIFrame();
     	rogers_order_summary_page.selectExpiryMonth();
     	rogers_order_summary_page.selectExpiryYear();
@@ -107,16 +108,16 @@ public class RogersCH_TC_004_LegacyBundle_BuyBundleOfferTest extends BaseTestCla
     	}
         }
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//legacyAnonymous
-	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.rogersConfig.getRogersURL(),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacyanonymous, method);
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacyanonymous, method);
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 

@@ -1,6 +1,5 @@
 package com.rogers.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -22,14 +21,29 @@ public class RogersChooseAddonsPage extends BasePageClass {
 	@FindAll({
 		@FindBy(xpath = "//p[@res='_continue']"),
 		@FindBy(xpath = "//span[@checkout-res='checkout_continue_lbl']")
+		//@FindBy(xpath = "//section[contains(@class,'summary-section')]//p[@class='col-sm-6 btn button-continue ng-scope']")
 	})
 	WebElement btnContinue;
 	
-	@FindBy(xpath = "//section[contains(@class,'summary-section')]//span/span/span[@res='_continue']")
+	//@FindBy(xpath = "//section[contains(@class,'summary-section')]//span/span/span[@res='_continue']")
+	@FindBy(xpath = "//section[contains(@class,'summary-section')]//p[@class='col-sm-6 btn button-continue ng-scope']")
 	WebElement btnContinueHUP;
 	
 	@FindBy(xpath = "//span[@translate='mppc.summary.checkout_button']/../parent::div[contains(@class,'summary-strip-section')]/button")
 	WebElement btnCheckout;
+	
+	
+	@FindBy(xpath = "//a[@res='ppc_conflicting_step_one' or @res='back_to_device_arrow']")
+	WebElement lnkStep2SelectMyPlan;
+	
+	
+	/**
+	 * To verify the Rogers choose addon plan Page load
+	 * @author Saurav.Goyal
+	 */
+	public void verifyChooseAddOnsPageLoadedSuccessfully() {
+		reusableActions.waitForElementVisibility(lnkStep2SelectMyPlan, 60);
+	}
 	
 	/**
 	 * Clicks on the 'Continue' button at the bottom of the page
@@ -37,7 +51,7 @@ public class RogersChooseAddonsPage extends BasePageClass {
 	 */
 	public void clkContinueHUP() {
 		reusableActions.executeJavaScriptClick(btnContinueHUP);
-		reusableActions.clickIfAvailable(By.xpath("//div[@class='ngdialog-content']//button[@res='_continue']"),60);
+		//reusableActions.clickIfAvailable(By.xpath("//div[@class='ngdialog-content']//button[@res='_continue']"),60);
 	}
 	
 	/**

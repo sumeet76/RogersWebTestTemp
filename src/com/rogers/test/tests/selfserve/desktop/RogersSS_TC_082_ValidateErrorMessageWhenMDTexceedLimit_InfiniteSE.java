@@ -2,12 +2,13 @@ package com.rogers.test.tests.selfserve.desktop;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;                     
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -21,9 +22,9 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE extends BaseTestClass {	
    	
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
-			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
+		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+			startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
 		}
 	   	
 		
@@ -33,7 +34,7 @@ public class RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE e
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateErrorMessageWhenExceedLimitForInfiniteSEPlan() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc82.getUsername();
@@ -43,6 +44,7 @@ public class RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE e
         rogers_login_page.setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 		
@@ -63,7 +65,7 @@ public class RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE e
 				"Speed Pass button is displayed", 
 				"Speed Pass button is NOT displayed");
 		reporter.reportLogWithScreenshot("Wireless dashboard page."); 
-		reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(), 
+		reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(), 
 			"'Data details' page is displayed after click on view details link", 
 			"'Data details' page is NOT displayed after click on view details link");  
 		int countOfExistSpeedPass = rogers_manage_data_page.getAllExistingSpeedPassCount();		
@@ -76,7 +78,7 @@ public class RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE e
 			}
 		}
 		rogers_wireless_dashboard_page.clkBtnSpeedPass();
-		reporter.softAssert(rogers_speed_pass_page.verifyCannotAddSpeedPassHeaderIsDisplayed(), 
+		reporter.hardAssert(rogers_speed_pass_page.verifyCannotAddSpeedPassHeaderIsDisplayed(), 
 				"Cannot Add Speed Pass error message is displayed", 
 				"Cannot Add Speed Pass error message is not displayed");  
 

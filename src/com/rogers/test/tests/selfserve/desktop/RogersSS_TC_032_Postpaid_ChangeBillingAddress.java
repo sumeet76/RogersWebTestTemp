@@ -1,19 +1,14 @@
 package com.rogers.test.tests.selfserve.desktop;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 
 public class RogersSS_TC_032_Postpaid_ChangeBillingAddress extends BaseTestClass {
@@ -30,9 +25,9 @@ public class RogersSS_TC_032_Postpaid_ChangeBillingAddress extends BaseTestClass
 
 
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
-			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
+		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+			startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 		}
 	   	
 	 
@@ -41,8 +36,8 @@ public class RogersSS_TC_032_Postpaid_ChangeBillingAddress extends BaseTestClass
 		closeSession();
 	}
 	
-	@Test
-	public void validateUserChangeContactInformationAndBillingAddress() {
+	@Test(groups = {"SanitySS","RegressionSS","ProfileAndSettingsSS"})
+	public void validateUserChangeBillingAddress() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc013132.getUsername();
     	String strPassword = TestDataHandler.tc013132.getPassword();
@@ -53,6 +48,7 @@ public class RogersSS_TC_032_Postpaid_ChangeBillingAddress extends BaseTestClass
 		rogers_login_page.setPasswordIFrame(strPassword);
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
         
@@ -107,7 +103,7 @@ public class RogersSS_TC_032_Postpaid_ChangeBillingAddress extends BaseTestClass
     	rogers_profile_and_settings_page.selectAndSubmit(); 
     	//rogers_profile_and_settings_page.clkSubmit();
 		reporter.reportLogWithScreenshot("New billing address submitted.");
-    	reporter.softAssert((rogers_profile_and_settings_page.clickDoneChangeBillingAddress()
+    	reporter.hardAssert((rogers_profile_and_settings_page.clickDoneChangeBillingAddress()
     			&& rogers_profile_and_settings_page.verifyBillingAddress(strBillingAddress)),
 				"Billing address change was done successfully", 
 				"Billing address was not updated, please investigate");

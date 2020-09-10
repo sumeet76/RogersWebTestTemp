@@ -2,11 +2,12 @@ package com.rogers.test.tests.selfserve.desktop;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;                     
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -19,9 +20,9 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class RogersSS_TC06_TC10_FDM_CtnDashboardWithAccountDetails_GUI extends BaseTestClass {	
    	
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
-			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
+		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+			startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 		}
 /**
 ﻿1. Rogers.com CSS should be launched successfully
@@ -38,22 +39,23 @@ button should be displayed n Share Everything Dashboard
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","FDMSS"})
     public void validateFdmCtnDashboardWithAccountDetails() {
     	rogers_home_page.clkSignIn();
-    	String strUsername = TestDataHandler.tc0610.getUsername();
+    	String strUsername = TestDataHandler.tc01030405.getUsername();
     	rogers_login_page.switchToSignInIFrame();
         rogers_login_page.setUsernameIFrame(strUsername);
-        String strPassword = TestDataHandler.tc0610.getPassword();    	
+        String strPassword = TestDataHandler.tc01030405.getPassword();    	
         rogers_login_page.setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 		
         if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc0610.getAccountDetails().getBan());
+            rogers_account_overview_page.selectAccount(TestDataHandler.tc01030405.getAccountDetails().getBan());
         }
         
        common_business_flows.scrollToMiddleOfWebPage();
@@ -70,19 +72,19 @@ button should be displayed n Share Everything Dashboard
        
        //usage dashboard area is displayed
        reporter.reportLogWithScreenshot("usage dashboard area is displayed");
-       reporter.softAssert(rogers_wireless_dashboard_page.verifyTotalDataBucket(),
+       reporter.hardAssert(rogers_wireless_dashboard_page.verifyTotalDataBucket(),
     		   "Total data bucket is displayed", "Total data ");
-       reporter.softAssert(rogers_wireless_dashboard_page.verifyDataRemainingOutOfTotalDataBucket(),
+       reporter.hardAssert(rogers_wireless_dashboard_page.verifyDataRemainingOutOfTotalDataBucket(),
     		   "data remaining out of total data bucket is dsiplayed", 
     		   "data remaining out of total data bucket is NOT displayed");
-       reporter.softAssert(rogers_wireless_dashboard_page.verifyDaysRemainingInTheBillCycleIsDisplayed(),
+       reporter.hardAssert(rogers_wireless_dashboard_page.verifyDaysRemainingInTheBillCycleIsDisplayed(),
     		   "Days remaining in the bill cycle is displayed",
     		   "Days remaining in the bill cycle is not displayed");
        
        common_business_flows.scrollToMiddleOfWebPage();
        reporter.reportLogWithScreenshot("Price Plan details along with Change Plan & Change number button");
        //Price Plan details along with Change Plan & Change number button
-       reporter.softAssert(rogers_wireless_dashboard_page.verifyChangePlanButtonDisplayed(), 
+       reporter.hardAssert(rogers_wireless_dashboard_page.verifyChangePlanButtonDisplayed(), 
 				"Change Plan button is displayed", 
 				"Change plan button is not displayed");
        
@@ -101,7 +103,7 @@ button should be displayed n Share Everything Dashboard
 			
 		//4.Share everything dashboard displayed successfully with
 		//Data access, stream saver, data alert buttons in the wireless dashboard.
-		 reporter.softAssert(rogers_wireless_dashboard_page.verifyDataAccessDisplayed(), 
+		 reporter.hardAssert(rogers_wireless_dashboard_page.verifyDataAccessDisplayed(), 
 					"Data access is displayed", 
 					"Data access is not displayed");
 		 reporter.softAssert(rogers_wireless_dashboard_page.verifyStreamSaverDisplayed(), 

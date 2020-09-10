@@ -1,12 +1,13 @@
 package com.rogers.test.tests.connectedhome.desktop;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeMethod;   
+import org.testng.annotations.Optional;                     
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -33,10 +34,8 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_003_LegacyInternet_BuyInternetOfferTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"RegressionCH","LegacyTVFlowsCH"})
     public void checkBuyInternetOffer() throws InterruptedException {
-		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		rogers_home_page.clkEasyLogin();
     	reporter.reportLogWithScreenshot("Launched the Home Page");
     	rogers_home_page.clkShop(); 
     	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
@@ -53,11 +52,11 @@ public class RogersCH_TC_003_LegacyInternet_BuyInternetOfferTest extends BaseTes
     	}
 
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//legacyAnonymous
-	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.rogersConfig.getRogersURL(),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacyanonymous, method);
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacyanonymous, method);
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 	
 

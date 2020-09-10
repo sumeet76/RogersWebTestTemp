@@ -240,9 +240,15 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy(xpath = "//div[text()='Billing address:' or text()='Adresse de facturation :']/parent::div/following-sibling::div[1]")
 	WebElement lblBillingAddress;
 	
-	@FindBy(xpath = "//rss-contact-info//div")
+	@FindAll({
+		@FindBy(xpath = "//div[text()='Email:' or text()='Email:']/parent::div/parent::div"),
+		@FindBy(xpath = "//rss-contact-info//div")})	
 	WebElement lblContactsDetailsSection;
 	
+	@FindAll({
+		@FindBy(xpath = "//div[text()='Language:' or text()='Language:']/parent::div/parent::div"),
+		@FindBy(xpath = "//rss-contact-info//div")})	
+	WebElement lblLanguageSection;
 	
 	@FindBy(xpath = "//div[text()='Language:']/parent::div/following-sibling::div")
 	WebElement lblContactsDetailsSectionMobile;
@@ -289,7 +295,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void clkLnkSetupRecoveryNum() {
 		reusableActions.waitForElementTobeClickable(lnkSetupRecoveryNum, 30);
-		reusableActions.clickIfAvailable(lnkSetupRecoveryNum, 30);
+		reusableActions.getWhenReady(lnkSetupRecoveryNum, 30).click();
 	}
 	
 	/**
@@ -353,7 +359,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnContinueToMyRogersIframe() {
-		reusableActions.clickIfAvailable(btnContinueToMyRogers, 30);
+		reusableActions.getWhenReady(btnContinueToMyRogers, 30).click();
 	}
 	
 	/**
@@ -740,7 +746,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean clkBtnAddContactEmailFinish() {
 		reusableActions.staticWait(1000);
-		if(reusableActions.isDisplayed(btnAddContactEmailDone))
+		if(reusableActions.isElementVisible(btnAddContactEmailDone))
 		{
 		 reusableActions.clickWhenReady(btnAddContactEmailDone, 30);
 		 return true;
@@ -794,7 +800,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean clkBtnUpdateHomeNumberFinish() {
 		reusableActions.staticWait(1000);
-		if(reusableActions.isDisplayed(btnUpdateHomeNumberDone))
+		if(reusableActions.isElementVisible(btnUpdateHomeNumberDone))
 		{
 		 reusableActions.clickWhenReady(btnUpdateHomeNumberDone, 30);
 		 return true;
@@ -855,7 +861,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean clkBtnAddBusinessNumberDone() {
 		reusableActions.staticWait(1000);
-		if(reusableActions.isDisplayed(btnAddBusinessNumberDone))
+		if(reusableActions.isElementVisible(btnAddBusinessNumberDone))
 		{
 		 reusableActions.clickWhenReady(btnAddBusinessNumberDone, 30);
 		 return true;
@@ -872,7 +878,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean clkBtnChangeLanguageDone() {
 		reusableActions.staticWait(1000);
-		if(reusableActions.isDisplayed(btnChangeLanguageDone))
+		if(reusableActions.isElementVisible(btnChangeLanguageDone))
 		{
 		 reusableActions.clickWhenReady(btnChangeLanguageDone, 30);
 		 return true;
@@ -899,7 +905,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean buttonFinishExists() {
 
-		return reusableActions.isDisplayed(btnAddContactEmailDone);
+		return reusableActions.isElementVisible(btnAddContactEmailDone);
 	}
 	
 	/**
@@ -970,6 +976,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setCityName(String strCityName) {
+		reusableActions.waitForElementTobeClickable(lblCityName, 30);
 		reusableActions.getWhenReady(lblCityName).click();
 		reusableActions.getWhenReady(txtCityName).sendKeys(strCityName);
 	}
@@ -1018,7 +1025,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean clickDoneChangeBillingAddress() {
 		reusableActions.staticWait(1000);
-		if(reusableActions.isDisplayed(btnChangeAddressDone))
+		if(reusableActions.isElementVisible(btnChangeAddressDone))
 		{
 		 reusableActions.clickWhenReady(btnChangeAddressDone, 30);
 		 return true;
@@ -1052,7 +1059,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public String getExistingLanguage() {		
-		return reusableActions.getWhenReady(lblContactsDetailsSection).getText();
+		return reusableActions.getWhenReady(lblLanguageSection).getText();
 	}
 
 	/**

@@ -1,19 +1,14 @@
 package com.rogers.test.tests.buyflows;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 /**
  * TC05-Validate user able to perform HUP with PPC for an existing account with device balance using financial offers (fin to fin) for 24 months with $0 upfront
@@ -60,8 +55,7 @@ public class RogersBFA_TestOld_TC05_HUP_withDeviceBalance_FinToFin_24Months0Upfr
         reporter.reportLogWithScreenshot("Rogers Choose Addons Page");
         rogers_choose_addons_page.clkContinueHUP();
         reporter.reportLogWithScreenshot("Rogers Shipping Page");
-        rogers_shipping_page.setEmailID();
-        rogers_shipping_page.clkSaveEmail();
+        rogers_shipping_page.setEmailIDAndSave();
         rogers_shipping_page.clkSelectAvailableTime();
         rogers_shipping_page.clkReserve();
         reporter.reportLogWithScreenshot("Rogers Shipping Page before clicking continue");
@@ -87,13 +81,13 @@ public class RogersBFA_TestOld_TC05_HUP_withDeviceBalance_FinToFin_24Months0Upfr
         reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");
    }
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
-	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.bfaConfig.getRogersURL(), strBrowser, strLanguage, RogersEnums.GroupName.buyflows , method);
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+		startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows , method);
 	}
 
-    @AfterTest(alwaysRun = true)
+	@AfterMethod(alwaysRun = true)
     public void afterTest() {
     	closeSession();
     }

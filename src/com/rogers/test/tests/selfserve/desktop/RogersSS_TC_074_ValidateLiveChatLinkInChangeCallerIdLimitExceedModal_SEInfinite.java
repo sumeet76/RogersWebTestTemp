@@ -1,18 +1,14 @@
 package com.rogers.test.tests.selfserve.desktop;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 /**
  * This script is to test the live chat link in change caller ID limit exceed modal, so the precondition is 
  * to let change caller ID exceed the limit of 3, so we have to run this script after successfully run TC50 3 times.
@@ -22,9 +18,9 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class RogersSS_TC_074_ValidateLiveChatLinkInChangeCallerIdLimitExceedModal_SEInfinite extends BaseTestClass {	
    	
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
-			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
+		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+			startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
 		}
 	   	
 		
@@ -34,7 +30,7 @@ public class RogersSS_TC_074_ValidateLiveChatLinkInChangeCallerIdLimitExceedModa
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateLiveChatBadgeInChangeCallerIdLimitExceedModal() {
 	
         rogers_home_page.clkSignIn();
@@ -42,6 +38,7 @@ public class RogersSS_TC_074_ValidateLiveChatLinkInChangeCallerIdLimitExceedModa
 		rogers_login_page.setUsernameIFrame(TestDataHandler.tc5074.getUsername());
 		rogers_login_page.setPasswordIFrame(TestDataHandler.tc5074.getPassword());
 		rogers_login_page.clkSignInIFrame();
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 		 if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
@@ -68,13 +65,13 @@ public class RogersSS_TC_074_ValidateLiveChatLinkInChangeCallerIdLimitExceedModa
 							"Change call ID limit exceed modal opened successfully.", 
 							"Change call ID limit exceed modal didn't open, please check the data.");
                        
-        reporter.softAssert(rogers_change_my_caller_id_page.verifyLinkLiveChatOnExceedLimitOverlay(), 
+        reporter.hardAssert(rogers_change_my_caller_id_page.verifyLinkLiveChatOnExceedLimitOverlay(), 
         					"Live Chat button is displayed in Exceed Limit overlay", 
         					"Live Chat button is NOT displayed in Exceed Limit overlay");
         reporter.reportLogWithScreenshot(" Exceed Limit overlay."); 
         rogers_change_my_caller_id_page.clkLinkLiveChatOnExceedLimitOverlay();
         
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyLiveChatOverlayOpened(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLiveChatOverlayOpened(), 
 							"Live Chat overlay opened.", 
 							"Live Chat overlay did NOT open, please investigate.");
         reporter.reportLogWithScreenshot("Live Chat overlay opened."); 

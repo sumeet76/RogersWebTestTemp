@@ -1,5 +1,6 @@
 package com.rogers.oneview.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,7 +26,26 @@ public class AccountOverViewPage  extends BasePageClass {
 	
 	@FindBy(xpath = "//div[@translate='myaccoverview_get_ignite_bundle']/ancestor::div[@role='button']")
 	WebElement btnGetIgniteTVBadge;
+	
+	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.total_balance' or text()='Total balance' or text()='Total du solde'  or text()='Total Balance']")
+	WebElement infoBalanceLable;
+	
+	//ToDo Change the index
+	//@FindBy(xpath = "//div[@class='oneview-dialog']//button")
+	@FindBy(xpath = "(//app-dialog//i[@class='close rui-icon-mobile-menu-exit'])[2]")
+	WebElement btnOneViewDataManagerDialogue;
 
+	@FindBy(xpath = "//div[@class='oneview-dialog']//button")
+	WebElement btnOkOneViewDialogue;
+	
+	/**
+	 * To click on Assign data manager in the dialogue box
+	 * @author Saurav.Goyal
+	 */
+	public void clkCloseBtnAssignDataManager() {
+		reusableActions.clickIfAvailable(btnOneViewDataManagerDialogue,30);
+	}
+	
 	/**
 	 * Selects the Internet Badge on the account dashbaord
 	 * @author Drashti.Patel
@@ -76,7 +96,51 @@ public class AccountOverViewPage  extends BasePageClass {
 			//reusableActions.javascriptScrollByVisibleElement(btnGetIgniteTVBadge);
 			reusableActions.getWhenReady(btnGetIgniteTVBadge, 50).sendKeys(Keys.ENTER);
 		}	
+	/**
+	 * Validates and clicks on the Wireless Phone Number
+	 * @param strCTN - Phone Number
+	 * @return - true if Phone Number found; else false
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyAndClickWirelessCTN(String strCTN) {
+		strCTN = strCTN.replace("-", "").replace(" ", "");
+		strCTN = "(" + strCTN.substring(0, 3) + ") " + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);		
+		String strCTNXpath = "//*[contains(text(),'" + strCTN + "')]";
+		reusableActions.clickIfAvailable(By.xpath("//div[@class='rep-notifications permitted']//div[@class='blocker']"));
+		if(reusableActions.isElementVisible(By.xpath(strCTNXpath))) {
+			reusableActions.javascriptScrollToBottomOfPage();
+			reusableActions.clickWhenReady(By.xpath(strCTNXpath), 120);
+			return true;
+		} else if (verifyAndClickShareEverythingCTN(strCTN)) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Validates and clicks on the Wireless Phone Number under Share Everything
+	 * @param strCTN - Phone Number
+	 * @return - true if Phone Number found; else false
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyAndClickShareEverythingCTN(String strCTN) {
+		strCTN = strCTN.replace("-", "").replace(" ", "");
+		strCTN = strCTN.substring(0, 3) + "-" + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);
+		String strCTNXpath = "//div[contains(@class,'sharedWireless')]//div[contains(text(),'" + strCTN +"')]/parent::div/button";
+		if(reusableActions.isElementVisible(By.xpath(strCTNXpath))) {
+			reusableActions.executeJavaScriptClick(driver.findElement(By.xpath(strCTNXpath)));
+			return true;
+		}
+		return false;
+	}
 	
-	
+	/**
+	 * To verify the successful login
+	 * @return true if the balance label is present ; else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifySuccessfulLogin() {
+		return reusableActions.isElementVisible(infoBalanceLable,60);
+	}
 }
 

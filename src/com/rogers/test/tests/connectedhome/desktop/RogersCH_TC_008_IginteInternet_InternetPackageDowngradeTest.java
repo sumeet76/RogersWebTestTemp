@@ -2,12 +2,13 @@ package com.rogers.test.tests.connectedhome.desktop;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeMethod;  
+import org.testng.annotations.Optional;                     
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
@@ -32,10 +33,8 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_008_IginteInternet_InternetPackageDowngradeTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"SanityCH","RegressionCH","RogersInternetCH"})
     public void checkInternetPackageDowngrade() {
-		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		rogers_home_page.clkEasyLogin();
         rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
@@ -55,15 +54,16 @@ public class RogersCH_TC_008_IginteInternet_InternetPackageDowngradeTest extends
         rogers_internet_dashboard_page.clkSolChangeInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Interent packages page");        
         rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.solarisInternetAccount.getAccountDetails().getDowngradePlanEn(),TestDataHandler.solarisInternetAccount.getAccountDetails().getDowngradePlanFr());
+        //rogers_internet_dashboard_page.clkInternetChangeOK();
         reporter.hardAssert(rogers_internet_dashboard_page.verifyContatUSInternetDowngarde(),"Displayed the contat US popup","Download package has failed");        
-        reporter.reportLogWithScreenshot("Launched the Interent packages page");
+        reporter.reportLogWithScreenshot("Launched the customercare popup");
     	}
 	
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
-	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.rogersConfig.getRogersURL(), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
 	}
 
 	@AfterMethod(alwaysRun = true)

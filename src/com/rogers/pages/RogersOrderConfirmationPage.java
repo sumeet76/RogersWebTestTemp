@@ -56,6 +56,10 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement popupLoadingFingersInternet;	
 	
+	@FindBy(xpath = "//span[@checkout-res='checkout_order_summary_total']")
+	WebElement lblOrderSummaryTotal;	
+	
+	
 	/**
 	 * Verify the the yellow banner with order success information
 	 * @return true if the page display the yellow banner with order success information , else false
@@ -72,8 +76,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOrderConfirmation() {
-		reusableActions.waitForElementInvisibility(popupLoadingFingersInternet, 180);
-		return reusableActions.isElementVisible(infoChangeOrderConfirmation, 60);
+		return reusableActions.isElementVisible(infoChangeOrderConfirmation, 180);
 	}
 	
 	/**
@@ -82,8 +85,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOrderConfirmationNew() {
-		reusableActions.waitForElementInvisibility(popupLoadingFingersInternet, 180);
-		return reusableActions.isElementVisible(infoChangeOrderConfirmationnew, 60);
+		return reusableActions.isElementVisible(infoChangeOrderConfirmationnew, 120);
 	}
 	/**
 	 * Verify the the yellow banner with order success information
@@ -111,7 +113,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyOrderConfirmationPageLoad() {
-		return reusableActions.isElementVisible(lblOrderConfirmation, 120);
+		return reusableActions.isElementVisible(lblOrderConfirmation, 60);
 	}
 	
 	/**
@@ -120,7 +122,11 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyThankYouDisplayed() {
-		return reusableActions.isElementVisible(lblThankYou,60);
+		reusableActions.waitForElementVisibility(lblOrderSummaryTotal, 60);
+		if(lblThankYou.isDisplayed()) {
+			return reusableActions.isElementVisible(lblThankYou,60);
+		}
+		return false;
 	}
 	
 	/**

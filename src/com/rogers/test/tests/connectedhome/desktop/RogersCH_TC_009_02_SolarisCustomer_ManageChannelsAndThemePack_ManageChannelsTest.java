@@ -1,12 +1,13 @@
 package com.rogers.test.tests.connectedhome.desktop;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeMethod;  
+import org.testng.annotations.Optional;                     
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
@@ -32,8 +33,8 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_009_02_SolarisCustomer_ManageChannelsAndThemePack_ManageChannelsTest extends BaseTestClass {
 
-	@Test
-	public void checkManageChannelsAndThemePack_ManageChannelsFlow() {       
+	 @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
+	public void checkManageChannelsAndThemePack_ManageChannelsFlow() {  
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
@@ -47,37 +48,32 @@ public class RogersCH_TC_009_02_SolarisCustomer_ManageChannelsAndThemePack_Manag
 	    rogers_login_page.clkSkipIFrame();
 	    rogers_login_page.switchOutOfSignInIFrame();
 	    rogers_account_overview_page.selectAccount(TestDataHandler.solarisChangeTVManageChannels.accountDetails.getBan());
-		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+		//reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
 		rogers_solaris_tv_dashboard_page.clkTVBadge();
 		reporter.reportLogWithScreenshot("Launched the TV dash board");
 		rogers_solaris_tv_dashboard_page.clkManageChannelsAndThemePacks();
-		reporter.reportLogWithScreenshot("Clicked on Manage channels and theme packs");
-		rogers_solaris_tv_channels_and_themepacks_page.addChannel();
-		reporter.reportLogWithScreenshot("Channel added");
-		rogers_solaris_tv_channels_and_themepacks_page.clkRemoveFromYourChanges();
+		
+		rogers_solaris_tv_channels_and_themepacks_page.searchChannel(TestDataHandler.igniteTVAccount.accountDetails.getSwapInChannelOne());
 		reporter.reportLogWithScreenshot("Clicked on remove from your changes");
 		rogers_solaris_tv_channels_and_themepacks_page.addChannel();
 		reporter.reportLogWithScreenshot("Channel again added");
 		rogers_solaris_tv_channels_and_themepacks_page.clkConfirmChangesOnManageChannelsAndThemePacks();
 		reporter.reportLogWithScreenshot("Clicked in confirm changes on manage channels and theme packs");
-		
-		reporter.hardAssert(rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
-		reporter.reportLogWithScreenshot("Launched the order review page");
-		
+	
 		reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
 		rogers_order_review_page.clkAcceptenceCheckboxUpdate();
 		reporter.reportLogWithScreenshot("Agreement details");
 		rogers_order_review_page.clkSubmitUpdate();
-		reporter.hardAssert(rogers_order_confirmation_page.verifyOrderSuccess(),"Update order completed","Update order Failed");
+        reporter.softAssert(rogers_order_confirmation_page.verifyOrderSuccess(),"Update order completed","Update order Failed");
 		reporter.reportLogWithScreenshot("Launched the Confirmation page");
     	}
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
-	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.rogersConfig.getRogersURL(),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 
 	@AfterMethod(alwaysRun = true)

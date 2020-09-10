@@ -31,7 +31,7 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy (xpath = "//img[@src='assets/images/error_warning.png']")
 	WebElement failLoginMsg;
 
-	@FindBy(xpath = "//button[text()='Skip' or text()='Continuer']")
+	@FindBy(xpath = "//button[contains(text(),'Skip') or contains(text(),'Continuer')]")
 	WebElement btnSkip;
 	
 	@FindBy(xpath = "//a[text()='Register' or text()=\"S'inscrire\"]")
@@ -58,8 +58,8 @@ public class RogersLoginPage extends BasePageClass {
 	 * To switch to the iframe
 	 * @author chinnarao.vattam
 	 */
-	public void switchToSignInIFrame() {
-		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraSignIn, 100);
+	public void switchToSignInIFrame() {			
+		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraSignIn, 5);
 	}
 	
 	/**
@@ -113,7 +113,7 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSkipIFrame() {
-		reusableActions.clickIfAvailable(btnSkip,30);
+		reusableActions.clickIfAvailable(btnSkip,20);
 	}
 	
 	/**
@@ -161,13 +161,13 @@ public class RogersLoginPage extends BasePageClass {
 		boolean clickSuccess=false;
 		int count=0;
 		while (count<=3 && !clickSuccess) {
-			if(!reusableActions.isDisplayed(fraSignIn))
+			if(!reusableActions.isElementVisible(fraSignIn))
 			{
 				reusableActions.waitForElementTobeClickable(lnkReSignInAs, 120);
 				reusableActions.javascriptScrollByVisibleElement(lnkReSignInAs);
 				reusableActions.executeJavaScriptClick(lnkReSignInAs);
 				reusableActions.staticWait(3000);
-				if(reusableActions.isDisplayed(fraSignIn))
+				if(reusableActions.isElementVisible(fraSignIn))
 				{
 					clickSuccess=true;
 					break;

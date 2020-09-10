@@ -20,7 +20,10 @@ public class TestDataHandler {
 	public static Config ssConfig;
 	public static PaymentDetails paymentInfo;
 	public static Config bfaConfig;
+	public static Config chConfig;
+	public static CHOneViewConfig chOneViewConfig;
 	public static PaymentDetails bfaPaymentInfo;
+	public static PaymentDetails chPaymentInfo;	
 	public static AccountData tc013132;
 	public static AccountData tc0224;
 	public static AccountData tc041139;
@@ -52,20 +55,23 @@ public class TestDataHandler {
 	public static AccountData tc7681;
 	public static AccountData tc82;
 	public static AccountData tc80;
-	public static Config rogersConfig;
 	public static AccountData digitalTVAccount;
 	public static AccountData solarisInternetAccount;
 	public static AccountData igniteTVAccount;
+	public static AccountData igniteTV4Plus1Account;
 	public static AccountData tc41IgniteTVAccount;
-	public static PaymentDetails rogersPaymentInfo;
 	public static AccountData solarisTVAccount;
 	public static AccountData standaloneInternetAccountWithUsage;
 	public static AccountData legacyRHP;
 	public static AccountData igniteRHP;
+	public static AccountData rogersSHM;
 	public static AccountData solarisInternetAccountWithUsage;
 	public static AccountData tc42SolarisInternetAccountWithUsage;
 	public static AccountData solarisInternetAccountForUpgrade;
 	public static AccountData solarisTVAccountForUpgrade;
+	public static AccountData solarisTVAccountStarterPackage;
+	public static AccountData solarisTVAccountFlex5Package;
+	public static AccountData solarisTVAccountPopularPackage;
 	public static AccountData solarisTVAccountForUpgradeON;
 	public static AccountData solarisTVAccountForUpgradeNL;
 	public static AccountData solarisTVAccountForUpgradeNB;
@@ -85,6 +91,7 @@ public class TestDataHandler {
 	public static AccountData solarisChangeTVManageChannels;
 	public static AccountData solarisChangeTVManageThemePacks;
 	public static AccountData solarisInternetAccountWithUsageAndPackageUpgrade;
+	public static AccountData standaloneInternetAccountforUpgrade;
 	public static AccountData solarisConsumerNoPortinCartAbandon;
 	public static AccountData solarisConsumerPortInCartAbandon;
 	public static AccountData solarisConsumerGWPDigitalTV;
@@ -98,17 +105,24 @@ public class TestDataHandler {
 	public static AccountData solarisConsumerGWPRhp;
 	public static AccountData solarisConsumerGWPRhpShm;
 	public static AccountData solarisHTOMigrationSignIn;
-	public static AALData testCase01;
+	public static AALData testCase7;
+	public static HUPData testCase8;
+	public static PPCData testCase9;
 	public static AALData testCase02;
-	public static PPCData testCase03;
-	public static HUPData testCase04;
 	public static HUPData testCase05;
 	public static HUPData testCase06;
 	public static HUPData testCase07;
 	public static PPCData testCase08;
 	public static HUPData testCase09;
+	public static HUPData testCase10;
+	public static HUPData buyFlowsOVtestCase01;
+	public static HUPData buyFlowsOVtestCase02;
+	public static HUPData buyFlowsOVtestCase05;
+	public static HUPData buyFlowsOVtestCase06;
+	public static PPCData buyFlowsOVtestCase03;
+	public static PPCData buyFlowsOVtestCase04;
+	public static PPCData buyFlowsOVtestCase07;
 	public static SauceSettings sauceSettings;
-	public static CHOneViewConfig chOneViewConfig;
 	public static AccountData igniteTVParentalcontrols;
 	public static AccountData solarisAccount;
 	public static AccountData solarisTV;
@@ -124,8 +138,19 @@ public class TestDataHandler {
 	public static AccountData tc44DigitalTVAccount;
 	public static AccountData tc45LegacyInternetAccount;
 	public static AccountData tc46LegacyRHP;
+	public static AccountData shmAccount;
+	public static AccountData tupeloAccount;
+	public static Config bfaOneViewConfig;
+	public static PaymentDetails bfaOneViewPaymentInfo;
 	public static AccountData tc0610;
-
+	public static Config rogersConfig;
+	public static AccountData tc01030405;
+	public static AccountData tc92;
+	public static AccountData tc95;
+	public static AccountData tc90;
+	public static AccountData tc98;
+	public static AccountData tc94;
+	
 	public static void dataInit (String strApplicationType) {	    	
     	if(strApplicationType.toUpperCase().trim().endsWith("CH")) {	    	
     		//cable Data files
@@ -137,6 +162,9 @@ public class TestDataHandler {
     	} else if(strApplicationType.toUpperCase().trim().endsWith("BFA")) {
     		//Buy-Flows Data files
     		buyFlowsDataInit();
+    	} else if(strApplicationType.toUpperCase().trim().endsWith("BFAONEVIEW")) {
+        		//Buy-Flows Data files
+    		buyFlowsOneViewDataInit();
     	} else if(strApplicationType.toUpperCase().trim().endsWith("COV")) {
     		//ch oneview  Data files
     		chOneViewDataInit();
@@ -156,9 +184,9 @@ public class TestDataHandler {
 	}
 	
 	private static void connectedHomeDataInit() {
-		rogersConfig =  YamlHandler.getCableConfig();
-      	rogersPaymentInfo = YamlHandler.getCablePaymentDetails();
-      	sauceSettings = YamlHandler.getSauceSettings("/data/connectedhome/SauceSettings.yml");
+		chConfig =  YamlHandler.getCableConfig();
+      	chPaymentInfo = YamlHandler.getCablePaymentDetails();
+      	sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/connectedhome/SauceSettings.yml");
       	//sacueConfig = YamlHandler.getSauceConfig();              	
       	//Digital TV test data
     	digitalTVAccount = YamlHandler.getCableAccountData("DigitalTVAccount");
@@ -185,11 +213,13 @@ public class TestDataHandler {
     	//RHP test data
     	legacyRHP = YamlHandler.getCableAccountData("LegacyRHP");
     	igniteRHP = YamlHandler.getCableAccountData("IgniteRHP");
+    	rogersSHM = YamlHandler.getCableAccountData("RogersSHM");
     	solarisMultipleSubscriptions = YamlHandler.getCableAccountData("SolarisMultipleSubscriptions");
     	
     	//Ignite Internet test data
     	solarisInternetAccount = YamlHandler.getCableAccountData("SolarisInternetAccount");
     	internetAccountUpgrade   = YamlHandler.getCableAccountData("InternetAccountUpgrade");
+    	standaloneInternetAccountforUpgrade   = YamlHandler.getCableAccountData("StandaloneInternetAccountforUpgrade");
     	solarisInternetAccountWithUsage = YamlHandler.getCableAccountData("SolarisInternetAccountWithUsage");
     	solarisInternetAccountForUpgrade = YamlHandler.getCableAccountData("SolarisInternetAccountForUpgrade");
     	standaloneInternetAccountWithUsage = YamlHandler.getCableAccountData("StandaloneInternetAccountWithUsage");
@@ -199,8 +229,12 @@ public class TestDataHandler {
 
     	//Ignite TV test data
     	igniteTVAccount = YamlHandler.getCableAccountData("IgniteTVAccount");
+		igniteTV4Plus1Account = YamlHandler.getCableAccountData("IgniteTV4Plus1Account");
     	solarisTVAccount = YamlHandler.getCableAccountData("SolarisTVAccount");
     	solarisPortinFlows = YamlHandler.getCableAccountData("SolarisPortinFlows");
+    	solarisTVAccountStarterPackage = YamlHandler.getCableAccountData("SolarisTVAccountStarterPackage");
+    	solarisTVAccountFlex5Package = YamlHandler.getCableAccountData("SolarisTVAccountFlex5Package");
+    	solarisTVAccountPopularPackage = YamlHandler.getCableAccountData("SolarisTVAccountPopularPackage");
     	solarisTVAccountForUpgrade = YamlHandler.getCableAccountData("SolarisTVAccountForUpgrade");
     	solarisTVAccountForUpgradeON = YamlHandler.getCableAccountData("SolarisTVAccountForUpgradeON");
     	solarisTVAccountForUpgradeNL = YamlHandler.getCableAccountData("SolarisTVAccountForUpgradeNL");
@@ -215,68 +249,86 @@ public class TestDataHandler {
 	}
 	
 	private static void selfserveDataInit() {
-    	ssConfig =  YamlHandler.getConfig();
-    	sauceSettings = YamlHandler.getSauceSettings("/data/selfserve/SauceSettings.yml");
-    	paymentInfo = YamlHandler.getPaymentDetails();
-    	tc013132 = YamlHandler.getAccountData("tc01_31_32Postpaid");
-    	tc0224 = YamlHandler.getAccountData("tc02_24PostpaidLostStolen");
-    	tc041139 = YamlHandler.getAccountData("tc04_11_39PostpaidLinkAccount");
-    	tc040609 = YamlHandler.getAccountData("tc04_06_09RecoveryBySMS");
-    	tc1314 = YamlHandler.getAccountData("tc13_14PostPaidWithSIM");
-    	tc161825 = YamlHandler.getAccountData("tc16_18_25PostpaidPayment");
-    	tc1920 = YamlHandler.getAccountData("tc19_20PostpaidPayment");
-    	tc2751 = YamlHandler.getAccountData("tc27_51PostpaidWithVoicemail");
-    	tc36 = YamlHandler.getAccountData("tc36PostpaidWithBill");
-    	tc495271 = YamlHandler.getAccountData("tc49_52_71NSE");
-    	tc5074 = YamlHandler.getAccountData("tc50_74InfiniteSE(Demoline)");
-    	tc53 = YamlHandler.getAccountData("tc53Prepaid");
-    	tc54 = YamlHandler.getAccountData("tc54NSEwithUnlimitedTTOnlyPlan");
-    	tc55 = YamlHandler.getAccountData("tc55NSEwithLimitedTTOnlyPlan");
-    	tc56 = YamlHandler.getAccountData("tc56NSEwithDataOnlyPlan");
-    	tc57 = YamlHandler.getAccountData("tc57NSEwDataUnlimitedTTPlan");
-    	tc58 = YamlHandler.getAccountData("tc58NSEwDataLimitedTTPlan");
-    	tc59 = YamlHandler.getAccountData("tc59NSEwDataUnlimitedTTPlanRunningLow");
-    	tc61 = YamlHandler.getAccountData("tc61SEPlanRunningLow(Demoline)");
-    	tc6269 = YamlHandler.getAccountData("tc62_69InfiniteSE(Demoline)");
-    	tc63 = YamlHandler.getAccountData("tc63NSEindividualRunningLow");
-    	tc64 = YamlHandler.getAccountData("tc64InfiniteNSEReducedSpeed");
-    	tc6577 = YamlHandler.getAccountData("tc65_77InfiniteNSE");
-    	tc727375 = YamlHandler.getAccountData("tc72_73_75NSE");
-    	tc02 = YamlHandler.getAccountData("tc02_PreRegister");
-    	tc03 = YamlHandler.getAccountData("tc03RecoverUsernameByEmail");
-    	tc67 = YamlHandler.getAccountData("tc67InfiniteSEReducedSpeed(Demoline)");    
-    	tc7681 = YamlHandler.getAccountData("tc76_81SEPlanWith6Ctns(Demoline)"); 
-    	tc78 = YamlHandler.getAccountData("tc78NSESingleLine");    	    	
-    	tc60 = YamlHandler.getAccountData("tc60SEMultipleCTN");
-    	tc80 = YamlHandler.getAccountData("TC80NSEwOverage");
-    	tc82 = YamlHandler.getAccountData("tc82InfiniteSE");
+    	ssConfig =  YamlHandler.getSSConfig();
+    	sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/selfserve/SauceSettings.yml");
+    	paymentInfo = YamlHandler.getSSPaymentDetails();
+    	tc013132 = YamlHandler.getSSAccountData("tc01_31_32Postpaid");
+    	tc0224 = YamlHandler.getSSAccountData("tc02_24PostpaidLostStolen");
+    	tc041139 = YamlHandler.getSSAccountData("tc04_11_39PostpaidLinkAccount");
+    	tc040609 = YamlHandler.getSSAccountData("tc04_06_09RecoveryBySMS");
+    	tc1314 = YamlHandler.getSSAccountData("tc13_14PostPaidWithSIM");
+    	tc161825 = YamlHandler.getSSAccountData("tc16_18_25PostpaidPayment");
+    	tc1920 = YamlHandler.getSSAccountData("tc19_20PostpaidPayment");
+    	tc2751 = YamlHandler.getSSAccountData("tc27_51PostpaidWithVoicemail");
+    	tc36 = YamlHandler.getSSAccountData("tc36PostpaidWithBill");
+    	tc495271 = YamlHandler.getSSAccountData("tc49_52_71NSE");
+    	tc5074 = YamlHandler.getSSAccountData("tc50_74InfiniteSE(Demoline)");
+    	tc53 = YamlHandler.getSSAccountData("tc53Prepaid");
+    	tc54 = YamlHandler.getSSAccountData("tc54NSEwithUnlimitedTTOnlyPlan");
+    	tc55 = YamlHandler.getSSAccountData("tc55NSEwithLimitedTTOnlyPlan");
+    	tc56 = YamlHandler.getSSAccountData("tc56NSEwithDataOnlyPlan");
+    	tc57 = YamlHandler.getSSAccountData("tc57NSEwDataUnlimitedTTPlan");
+    	tc58 = YamlHandler.getSSAccountData("tc58NSEwDataLimitedTTPlan");
+    	tc59 = YamlHandler.getSSAccountData("tc59NSEwDataUnlimitedTTPlanRunningLow");
+    	tc61 = YamlHandler.getSSAccountData("tc61SEPlanRunningLow(Demoline)");
+    	tc6269 = YamlHandler.getSSAccountData("tc62_69InfiniteSE(Demoline)");
+    	tc63 = YamlHandler.getSSAccountData("tc63NSEindividualRunningLow");
+    	tc64 = YamlHandler.getSSAccountData("tc64InfiniteNSEReducedSpeed");
+    	tc6577 = YamlHandler.getSSAccountData("tc65_77InfiniteNSE");
+    	tc727375 = YamlHandler.getSSAccountData("tc72_73_75NSE");
+    	tc02 = YamlHandler.getSSAccountData("tc02_PreRegister");
+    	tc03 = YamlHandler.getSSAccountData("tc03RecoverUsernameByEmail");
+    	tc67 = YamlHandler.getSSAccountData("tc67InfiniteSEReducedSpeed(Demoline)");    
+    	tc7681 = YamlHandler.getSSAccountData("tc76_81SEPlanWith6Ctns(Demoline)"); 
+    	tc78 = YamlHandler.getSSAccountData("tc78NSESingleLine");    	    	
+    	tc60 = YamlHandler.getSSAccountData("tc60SEMultipleCTN");
+    	tc80 = YamlHandler.getSSAccountData("TC80NSEwOverage");
+    	tc82 = YamlHandler.getSSAccountData("tc82InfiniteSE");
+    	tc01030405 =  YamlHandler.getSSAccountData("tc01_03_04_05_FDMInfiniteSE");
+    	tc92 = YamlHandler.getSSAccountData("tc92_CancelledInfiniteNSE");
+    	tc94 = YamlHandler.getSSAccountData("tc94CreditLimitExceededAccountSEInfinite");
+    	tc95 = YamlHandler.getSSAccountData("tc95NSESuspendedCTN");
+    	tc90 = YamlHandler.getSSAccountData("tc90_SE_NSE_ResidentialServices");
+    	tc98 = YamlHandler.getSSAccountData("tc98PrepaidAccount");
     	
     	//================ Connected home =========================
-    	tc43IgniteRHP = YamlHandler.getAccountData("tc43IgniteRHP");
-    	tc42SolarisInternetAccountWithUsage = YamlHandler.getAccountData("tc42SolarisInternetAccountWithUsage");
-    	tc41IgniteTVAccount = YamlHandler.getAccountData("tc41IgniteTVAccount");
-    	tc44DigitalTVAccount = YamlHandler.getAccountData("tc44DigitalTVAccount");
-    	tc46LegacyRHP = YamlHandler.getAccountData("tc46LegacyRHP");
-    	tc45LegacyInternetAccount = YamlHandler.getAccountData("tc45LegacyInternetAccount");
-    	tc40SHMAccount = YamlHandler.getAccountData("tc40SHMAccount");
-    	tc47TupeloAccount = YamlHandler.getAccountData("tc47TupeloAccount");
-    	tc0610 = YamlHandler.getAccountData("tc06_10DemolineSEPlanMultiLine");
+    	tc43IgniteRHP = YamlHandler.getSSAccountData("tc43IgniteRHP");
+    	tc42SolarisInternetAccountWithUsage = YamlHandler.getSSAccountData("tc42SolarisInternetAccountWithUsage");
+    	tc41IgniteTVAccount = YamlHandler.getSSAccountData("tc41IgniteTVAccount");
+    	tc44DigitalTVAccount = YamlHandler.getSSAccountData("tc44DigitalTVAccount");
+    	tc46LegacyRHP = YamlHandler.getSSAccountData("tc46LegacyRHP");
+    	tc45LegacyInternetAccount = YamlHandler.getSSAccountData("tc45LegacyInternetAccount");
+    	tc40SHMAccount = YamlHandler.getSSAccountData("tc40SHMAccount");
+    	tc47TupeloAccount = YamlHandler.getSSAccountData("tc47TupeloAccount");
+    	tc0610 = YamlHandler.getSSAccountData("tc06_10DemolineSEPlanMultiLine");
 	}
 	
 	private static void buyFlowsDataInit() {
-		ssConfig =  YamlHandler.getBFAConfig();
+		rogersConfig = YamlHandler.getBFAConfig();
 		bfaConfig =  YamlHandler.getBFAConfig();
-		sauceSettings = YamlHandler.getSauceSettings("/data/buyflows/SauceSettings.yml");
+		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/buyflows/SauceSettings.yml");
 		bfaPaymentInfo = YamlHandler.getBFAPaymentDetails();
-    	testCase01 = YamlHandler.getAALdata("tc01AAL");
+		testCase7 = YamlHandler.getAALdata("tc7AAL");
+		testCase8 = YamlHandler.getHUPdata("tc8HUP");
+    	testCase9 = YamlHandler.getPPCdata("tc9PPC");
     	testCase02 = YamlHandler.getAALdata("tc02AAL");
-    	testCase03 = YamlHandler.getPPCdata("tc03PPC");
-    	testCase04 = YamlHandler.getHUPdata("tc04HUP");
     	testCase05 = YamlHandler.getHUPdata("tc05HUP");
     	testCase06 = YamlHandler.getHUPdata("tc06HUP");
-    	testCase07 = YamlHandler.getHUPdata("tc07HUP");
-    	testCase08 = YamlHandler.getPPCdata("tc08PPC");
-    	testCase09 = YamlHandler.getHUPdata("tc09HUP");
+    	testCase10 = YamlHandler.getHUPdata("tc10HUP");
+    	testCase08 = YamlHandler.getPPCdata("tc08PPC");    	
+	}
+	
+	private static void buyFlowsOneViewDataInit() {
+		bfaOneViewConfig =  YamlHandler.getBFAOneViewConfig();
+		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/buyflows/SauceSettings.yml");
+		bfaOneViewPaymentInfo = YamlHandler.getBFAOneViewPaymentDetails();
+		buyFlowsOVtestCase01 = YamlHandler.getHUPdataOneView("tc01OVHUPWithPPCMultilineAccount");
+		buyFlowsOVtestCase02 = YamlHandler.getHUPdataOneView("tc02OVHUPExistingPlanMultilineAccount");
+		buyFlowsOVtestCase03 = YamlHandler.getPPCdataOneView("tc03OVPPCMultilineAccountForBothLines");
+		buyFlowsOVtestCase04 = YamlHandler.getPPCdataOneView("tc04OVPPCMultilineAccount");
+		buyFlowsOVtestCase05 = YamlHandler.getHUPdataOneView("tc05OVHUPWithPPCSinglelineAccount");
+		buyFlowsOVtestCase06 = YamlHandler.getHUPdataOneView("tc06OVHUPExistingPlanSinglelineAccount");
+		buyFlowsOVtestCase07 = YamlHandler.getPPCdataOneView("tc07OVPPCSinglelineAccount");		
 	}
 	
 	private static void chOneViewDataInit() {

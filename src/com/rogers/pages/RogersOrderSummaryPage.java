@@ -3,10 +3,12 @@ package com.rogers.pages;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -239,7 +241,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectDOBYear() {
-		reusableActions.waitForElementVisibility(ddlDobYear,90);
+		reusableActions.waitForElementVisibility(ddlDobYear,30);
 		String strDOBYear = FormFiller.generateDOBYear();
 		reusableActions.selectWhenReady(ddlDobYear, strDOBYear);
 	}
@@ -275,24 +277,25 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	/**
 	 * set the account number of semaphone frame
 	 * @param strAccountNumber account number of the pre-auth credit card
-	 * @param strBrowser Browser of the application
 	 * @author chinnarao.vattam
 	 */
-	public void setCreditCardNumberIFrame(String strAccountNumber , String strBrowser){
-	if (strBrowser.equalsIgnoreCase("firefox"))
-	 {				
+	public void setCreditCardNumberIFrame(String strAccountNumber){
+    Capabilities cap = ((RemoteWebDriver) getDriver()).getCapabilities();
+	String browserName = cap.getBrowserName().toLowerCase();
+	if(browserName.trim().equalsIgnoreCase("chrome"))
+	 {	
+		Actions act= new Actions(reusableActions.getDriver());	
+	    act.moveToElement(txtCreditCardNumber);
+		act.click(txtCreditCardNumber).sendKeys(txtCreditCardNumber, strAccountNumber).build().perform();
+	}
+	else
+	{
 		txtCreditCardNumberMasked.click();
-		reusableActions.staticWait(100);
+		reusableActions.staticWait(200);
 		reusableActions.executeJavaScript("document.getElementById('pan').value='"+strAccountNumber+"'");
 		txtCreditCardNumber.sendKeys(Keys.ENTER);
 		reusableActions.staticWait(100);
-		}
-	else
-	{
-	Actions act= new Actions(reusableActions.getDriver());	
-    act.moveToElement(txtCreditCardNumber);
-	act.click(txtCreditCardNumber).sendKeys(txtCreditCardNumber, strAccountNumber).build().perform();	
-	}		
+	}
 	}
 	
 	
@@ -480,9 +483,9 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkConsentCheckboxBundleflow() {	
-		reusableActions.isElementVisible(lnkWebsiteBundleflow, 50);
-		reusableActions.scrollToElement(lnkWebsiteBundleflow);	
-		reusableActions.clickWhenReady(chkConsentCheckboxBundleflow, 90);
+		reusableActions.isElementVisible(lnkWebsiteBundleflow, 50);		
+		reusableActions.javascriptScrollByVisibleElement(lnkWebsiteBundleflow);	
+		reusableActions.executeJavaScriptClick(chkConsentCheckboxBundleflow);
 	}
 	
 	/**
@@ -500,7 +503,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSubmit() {
-		reusableActions.clickWhenReady(btnSubmit, 20);
+		reusableActions.getWhenReady(btnSubmit, 20).click();
 	}
 	
 	/**

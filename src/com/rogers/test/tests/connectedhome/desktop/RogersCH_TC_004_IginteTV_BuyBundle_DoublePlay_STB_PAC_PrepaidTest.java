@@ -1,12 +1,12 @@
 package com.rogers.test.tests.connectedhome.desktop;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeMethod;    
+import org.testng.annotations.Optional;                     
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
@@ -28,7 +28,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  *6. Click "No thanks Continue"
  *7. Click on Continue in Home phone add ons page
  *8. Select one option for   'Do you have a 4K TV'
- *9. Click “checkout” button on cart summary page.
+ *9. Click checkout button on cart summary page.
  *10. Enter all personal information on user profile creation page - 1) Profile step
  *11. Click on Continue
  *12. In 2) Credit Evaluation page, enter the required info on Credit Check:
@@ -52,14 +52,10 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_004_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest extends BaseTestClass {
 
-	@Test
+    @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
 	public void checkDoublePalyTVOffer() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		rogers_home_page.clkEasyLogin();
-    	reporter.reportLogWithScreenshot("Launched the Home Page");
-    	rogers_home_page.clkShop(); 
-    	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-    	rogers_home_page.clkIgniteTV();
+    	rogers_home_page.clkTVBundle();
     	
         reporter.hardAssert(rogers_home_page.verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
        	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
@@ -127,8 +123,6 @@ public class RogersCH_TC_004_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest e
        reporter.reportLogWithScreenshot("Launched the tech install page");
        //rogers_tech_install_page.clkPersonalizedInstall();
        rogers_tech_install_page.selSelffinstallDateAndTime();
-       reporter.reportLogWithScreenshot("Launched the tech install page");
-       rogers_tech_install_page.clkTechInstallSlot();
        reporter.reportLogWithScreenshot("tech install details");
        rogers_tech_install_page.setMobielNumber();
        rogers_tech_install_page.setEmail();
@@ -140,7 +134,7 @@ public class RogersCH_TC_004_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest e
         reporter.reportLogWithScreenshot("Launched the payment options page");
         rogers_payment_options_page.selectPaymentMode("Pre-authorized Credit Card");
         rogers_payment_options_page.switchToCreditCardIFrame();
-        rogers_payment_options_page.setCreditCardNumberIFrame(TestDataHandler.rogersPaymentInfo.getCreditCardDetails().getNumber());
+        rogers_payment_options_page.setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
         rogers_payment_options_page.switchOutOfCreditCardIFrame();
         rogers_payment_options_page.setCVV();
         rogers_payment_options_page.selectExpiryMonth();
@@ -160,11 +154,11 @@ public class RogersCH_TC_004_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest e
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
     }
 	
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteAnonymous
-	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.rogersConfig.getRogersURL(), strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_igniteanonymous, method);
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_igniteanonymous, method);
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 
 	@AfterMethod(alwaysRun = true)

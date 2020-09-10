@@ -1,28 +1,23 @@
 package com.rogers.test.tests.selfserve.desktop;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 
 public class RogersSS_TC_08_ValidateRecoverBothUsernameAndPasswordUsingTextMessageWhileEnteringTheAccountNumber extends BaseTestClass {
 	
 
 	@BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-	public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve_login,method);
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+		startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve_login,method);
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 	
 	@AfterMethod(alwaysRun = true)
@@ -30,7 +25,7 @@ public class RogersSS_TC_08_ValidateRecoverBothUsernameAndPasswordUsingTextMessa
 		closeSession();
 	}
 		
-	@Test
+	@Test(groups = {"RegressionSS","ProfileAndSettingsSS"})
 	public void validateRecoverUsernameUsingSMSVerificationCode() {
 		reporter.reportLogWithScreenshot("Rogers Launch page");
     	rogers_home_page.clkSignIn();
@@ -69,7 +64,7 @@ public class RogersSS_TC_08_ValidateRecoverBothUsernameAndPasswordUsingTextMessa
 		rogers_recover_pass_or_name.setConfirmPassword(strNewPass);
 		reporter.reportLogWithScreenshot("New passwords set");
 		rogers_recover_pass_or_name.clkBtnSetPassword();
-		reporter.softAssert(rogers_recover_pass_or_name.isPasswordRestSuccessIsDisplayed()
+		reporter.hardAssert(rogers_recover_pass_or_name.isPasswordRestSuccessIsDisplayed()
 				, "Password reset success message is displayed"
 				, "Password reset success message not displayed");
 		rogers_recover_pass_or_name.clkLogInToMyAccount();

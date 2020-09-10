@@ -2,12 +2,13 @@ package com.rogers.test.tests.selfserve.desktop;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -20,9 +21,9 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class RogersSS_TC_014_BaselineUpdateEmailAddress extends BaseTestClass {	
     
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
-			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
+		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+			startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 		}
 	   	
 		
@@ -32,7 +33,7 @@ public class RogersSS_TC_014_BaselineUpdateEmailAddress extends BaseTestClass {
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","ProfileAndSettingsSS"})
     public void validateUserUpdateUsername() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc1314.getUsername();
@@ -71,6 +72,7 @@ public class RogersSS_TC_014_BaselineUpdateEmailAddress extends BaseTestClass {
         rogers_login_page.setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
         rogers_login_page.clkSignInIFrame();
+        reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
     }
     
     private void changeUsername(String strUsername, String strNewUsername) {

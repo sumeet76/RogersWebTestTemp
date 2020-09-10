@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Connected Home Rogers all Tests CH" parallel="classes"
+	thread-count="1">
+	<listeners>
+		<listener
+			class-name="com.rogers.test.listeners.AnnotationTransformer" />
+		<listener class-name="com.rogers.test.listeners.TestListener" />
+	</listeners>
+       	<test name="rogers Cable - Ignite Buy Flows">
+		<parameter name="strBrowser" value="saucechrome" />
+		<parameter name="strLanguage" value="en" />
+		<classes>	 		        
+  	 	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_001_IginteTV_BuyBundleTest"></class>  
+   	 	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_004_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest"></class> 
+ 	    <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_030_IginteTV_BuyIgniteStarterBundleTest"></class>  
+        <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_034_IginteTV_DoublePlayBuyTest"></class> 
+        <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_006_IginteTV_BuySolarisDoublePlayChangeInstallationDateMonthlyBillTest"></class>  
+	    <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_014_InternetPackageUpgradeToSolarisFromShopOptionTest"></class>
+ 	    <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_028_IginteTV_ExistingSolarisCustomerBuyBundleWithNewAddressTest"></class> 
+  	 	<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_003a_CartAbandon_NoPortinExistingLegacySignedinfromMyRogersTest"></class> 
+  		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_003b_CartAbandon_NoPortinExistingLegacySignedinfromMyRogersTest"></class>  
+	    <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_015_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest"></class>  
+ 		<class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_021_SolarisHAWTFlowExistingInternetPortInTest"></class> 
+	    <class name="com.rogers.test.tests.connectedhome.desktop.RogersCH_TC_020_IgniteTV_SolarisHAWTFlowPortInwithExistingLineTest"></class> 
+   		</classes>
+	</test>   
+                		
+      <test name="Cable rogers Mobile cases">
+		<parameter name="strBrowser" value="sauceandroidchrome" />
+		<parameter name="strLanguage" value="en" />
+		<classes>
+           	<class name="com.rogers.test.tests.connectedhome.mobile.Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest"></class> 
+		</classes> 
+	</test>  
+</suite>

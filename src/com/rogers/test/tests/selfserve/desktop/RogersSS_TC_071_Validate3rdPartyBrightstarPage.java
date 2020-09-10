@@ -1,28 +1,23 @@
 package com.rogers.test.tests.selfserve.desktop;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 
 
 public class RogersSS_TC_071_Validate3rdPartyBrightstarPage extends BaseTestClass {	
     
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.ssConfig.getRogersURL()+TestDataHandler.ssConfig.getRepairClaimUrl(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
-			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
+		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+			startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
 		}
 	   	
 		
@@ -32,8 +27,15 @@ public class RogersSS_TC_071_Validate3rdPartyBrightstarPage extends BaseTestClas
 	}
 	
 	
-    @Test
-    public void validate3rdPartyBrightstarPage() {    
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
+    public void validate3rdPartyBrightstarPage() { 
+    	reporter.reportLogWithScreenshot("Rogers launched");
+    	String strDeepLinkURL = TestDataHandler.ssConfig.getRogersURL().split(".com")[0]+".com"+TestDataHandler.ssConfig.getRepairClaimUrl();
+    	getDriver().get(strDeepLinkURL);
+    	reporter.reportLogWithScreenshot("After setting the deeplink : "+strDeepLinkURL);
+    	reporter.hardAssert(rogers_login_page.isSignInFrameDisplayed()
+    	    		   , "When a user is not logged into an account and deep link URL is entered, it is asking the user to login first"
+    	    		   , "The login pop up didnt show up for non logged in user after entering deep link");
     	String strUsername = TestDataHandler.tc495271.getUsername();
     	String strPassword = TestDataHandler.tc495271.getPassword();
         String strUrlExpected = TestDataHandler.ssConfig.getPhoneRepairUrl();
@@ -50,7 +52,7 @@ public class RogersSS_TC_071_Validate3rdPartyBrightstarPage extends BaseTestClas
 	        rogers_wireless_dashboard_page.clkBtnHelpYourPhoneContinue();
 	        reporter.reportLogWithScreenshot("Button continue in help out on your phone is clicked.");
 		} 
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyBrightstarLinkOpenSuccessfully(strUrlExpected), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyBrightstarLinkOpenSuccessfully(strUrlExpected), 
 				"Brightstar link opened successfully.", 
 				"Brightstar link didn't redirect to expected url.");
         reporter.reportLogWithScreenshot("Brightstar link opened page.");

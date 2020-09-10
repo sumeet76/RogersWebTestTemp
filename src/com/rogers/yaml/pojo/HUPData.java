@@ -7,6 +7,47 @@ public class HUPData {
 	private String username;
 	private String password;
 	private String ctn;
+	private String contactID;
+	private String banNo;
+	private String postalCode;
+	
+	/**
+	 * @return the postalCode
+	 */
+	public String getPostalCode() {
+		return postalCode;
+	}
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+	
+	/**
+	 * @return the banNo
+	 */
+	public String getBanNo() {
+		return banNo;
+	}
+	
+	/**
+	 * @param banNo the banNo to set
+	 */
+	public void setBanNo(String banNo) {
+		this.banNo = banNo;
+	}
+	
+	/**
+	 * @return the contactID
+	 */
+	public String getContactID() {
+		return contactID;
+	}
+	
+	/**
+	 * @param contactID the contactID to set
+	 */
+	public void setContactID(String contactID) {
+		this.contactID = contactID;
+	}
 	/**
 	 * @return the newDevice
 	 */

@@ -1,19 +1,14 @@
 package com.rogers.test.tests.buyflows;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 /**
  * TC06-Validate user able to perform Deeplink HUP for Keep existing plan using Existing Finance Account
@@ -51,8 +46,7 @@ public class RogersBFA_TestOld_TC06_HUP_Deeplink_FinanceAmount_KeepExistingPlan_
         reporter.reportLogWithScreenshot("Rogers Choose Addons page");
         rogers_choose_addons_page.clkContinueHUP();
         reporter.reportLogWithScreenshot("Rogers Shipping page");
-        rogers_shipping_page.setEmailID();
-        rogers_shipping_page.clkSaveEmail();
+        rogers_shipping_page.setEmailIDAndSave();
         rogers_shipping_page.clkSelectAvailableTime();
         rogers_shipping_page.clkReserve();
         reporter.reportLogWithScreenshot("Rogers Shipping Page before clicking continue");
@@ -79,13 +73,13 @@ public class RogersBFA_TestOld_TC06_HUP_Deeplink_FinanceAmount_KeepExistingPlan_
         reporter.reportLogWithScreenshot("Rogers Order Confirmation page");
    }
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
-	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.bfaConfig.getRogersURL(), strBrowser, strLanguage, RogersEnums.GroupName.buyflows , method);
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+		startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows , method);
 	}
 
-    @AfterTest(alwaysRun = true)
+	@AfterMethod(alwaysRun = true)
     public void afterTest() {
     	closeSession();
     }

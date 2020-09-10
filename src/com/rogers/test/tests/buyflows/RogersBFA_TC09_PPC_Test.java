@@ -1,19 +1,14 @@
 package com.rogers.test.tests.buyflows;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 /**
  * TC03-Validate user able to perform Main line PPC on Existing Finance account
@@ -33,11 +28,12 @@ public class RogersBFA_TC09_PPC_Test extends BaseTestClass {
 
 	@Test
     public void ppcFlowTest() {
+		reporter.hardAssert(rogers_home_page.verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		reporter.reportLogWithScreenshot("Home Page");
 		rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(TestDataHandler.testCase03.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.testCase03.getPassword());
+        rogers_login_page.setUsernameIFrame(TestDataHandler.testCase9.getUsername());
+        rogers_login_page.setPasswordIFrame(TestDataHandler.testCase9.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         rogers_login_page.clkSignInIFrame();
         reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
@@ -45,22 +41,24 @@ public class RogersBFA_TC09_PPC_Test extends BaseTestClass {
         rogers_login_page.switchOutOfSignInIFrame();
         reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page");
-        reporter.hardAssert(rogers_account_overview_page.verifyAndClickWirelessCTN(TestDataHandler.testCase03.getCtn()), "Select CTN Passed", "Select CTN Failed");
+        reporter.hardAssert(rogers_account_overview_page.verifyAndClickWirelessCTN(TestDataHandler.testCase9.getCtn()), "Select CTN Passed", "Select CTN Failed");
+        rogers_wireless_details_page.verifyWirelessPageLoad();
         reporter.reportLogWithScreenshot("Wireless Dashboard Page");
         rogers_wireless_details_page.clickChangePlanButton();
-        reporter.reportLogWithScreenshot("Modal window appeared for change your plan");
         rogers_choose_plan_page.clkMakeChangesToExistingPlan();
+        reporter.reportLogWithScreenshot("Modal window appeared for change your plan");
         rogers_choose_plan_page.clkButtonModalContinue();
         reporter.reportLogWithScreenshot("Choose Plan page");
-        rogers_choose_plan_page.selectPlanType("");
-        rogers_choose_plan_page.selectPlanCategory(TestDataHandler.testCase03.getNewPlanCategory());
+        rogers_choose_plan_page.selectPlanCategory(TestDataHandler.testCase9.getNewPlanCategory());
+        rogers_choose_plan_page.selectPlanType(TestDataHandler.testCase9.getNewPlanType());
         rogers_choose_plan_page.selectFirstAvailablePlan();
         rogers_choose_plan_page.verifyAndClickDowngradeFeeContinue();
         rogers_choose_plan_page.clkCheckout();
+        rogers_order_review_page.verifyOrderReviewPageLoadedSuccessfully();
+        reporter.reportLogWithScreenshot("Rogers Order review page");
         rogers_order_review_page.clkTermsAgreementCheckbox();
-        //rogers_order_review_page.clkShieldAgreementCheckbox();
-        //rogers_order_review_page.selectEmailDigitalCopy(TestDataHandler.testCase03.getUsername());
-        reporter.reportLogWithScreenshot("Order Review page");
+        rogers_order_review_page.selectEmailDigitalCopy(TestDataHandler.testCase9.getUsername());
+        reporter.reportLogWithScreenshot("Rogers Order Review page");
         if(rogers_order_review_page.isPaymentRequired()) {
         	rogers_order_review_page.clkContinue();
         	rogers_payment_page.setCreditCardDetails(TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getNumber(), 
@@ -77,13 +75,13 @@ public class RogersBFA_TC09_PPC_Test extends BaseTestClass {
         reporter.reportLogWithScreenshot("Order Confirmation page");
    }
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
-	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.bfaConfig.getRogersURL(), strBrowser, strLanguage, RogersEnums.GroupName.buyflows , method);
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+		startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows , method);
 	}
     
-    @AfterTest(alwaysRun = true)
+	@AfterMethod(alwaysRun = true)
     public void afterTest() {
     	closeSession();
     }

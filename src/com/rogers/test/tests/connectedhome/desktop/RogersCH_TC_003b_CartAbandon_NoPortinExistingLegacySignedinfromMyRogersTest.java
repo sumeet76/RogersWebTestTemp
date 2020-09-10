@@ -8,12 +8,13 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeMethod; 
+import org.testng.annotations.Optional;                     
 import org.testng.annotations.Parameters;
 
 /**
@@ -34,7 +35,7 @@ import org.testng.annotations.Parameters;
  *9. Click "No thanks Continue".
  *10. Click on Continue.
  *11. Select one option for   'Do you have a 4K TV'.
- *12. Click “checkout” button on cart summary page.
+ *12. Click checkout button on cart summary page.
  *13. All the personal information is auto populated.
  *14. Click on continue button.
  *15. In Credit Evaluation page, enter the required info on Credit Check:
@@ -57,11 +58,11 @@ import org.testng.annotations.Parameters;
 
 public class RogersCH_TC_003b_CartAbandon_NoPortinExistingLegacySignedinfromMyRogersTest extends BaseTestClass {
 
-	@Test
+    @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
 	public void checkCartAbandonNoPortinExistingLegacySignedinfromMyRogersTest() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
-		rogers_home_page.clkSignIn();
-		rogers_login_page.switchToSignInIFrame();
+		rogers_home_page.clkSignIn();     
+  		rogers_login_page.switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		rogers_login_page.setUsernameIFrame(TestDataHandler.noPortInAbondoneFlows.getUsername());
 		rogers_login_page.setPasswordIFrame(TestDataHandler.noPortInAbondoneFlows.getPassword());
@@ -76,7 +77,8 @@ public class RogersCH_TC_003b_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
 	    reporter.reportLogWithScreenshot("Launched the Account Page"); 
         rogers_home_page.clkShop(); 
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-     	rogers_home_page.clkIgniteTV();
+        rogers_home_page.clkIgniteTVExistingCustomer();   	
+     	reporter.hardAssert(rogers_home_page.verifyWelcomeback(),"Welcome back popup has Launched","Welcome back popup has not Launched");
      	reporter.reportLogWithScreenshot("Launched the Welcome back popup");
      	rogers_home_page.clkWelcomeback();   	
         reporter.reportLogWithScreenshot("Launched the cart summary page");
@@ -85,43 +87,13 @@ public class RogersCH_TC_003b_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
        
         reporter.hardAssert( rogers_igniteTV_profile_creation_page.verifyImportantInformation(),"Important Information popup has Launched","Important Information popup has not Launched");
         rogers_igniteTV_profile_creation_page.clkIUnderstand();
-        reporter.reportLogWithScreenshot("Launched the create profile page");
-        rogers_igniteTV_profile_creation_page.clkSubmitProfile();   
-        reporter.reportLogWithScreenshot("Launched the credit evalution page");
-        rogers_igniteTV_credit_check_page.selectDOBYearExistingCustomer(TestDataHandler.noPortInAbondoneFlows.getAccountDetails().getYear());
-        rogers_igniteTV_credit_check_page.selectDOBMonthExistingCustomer(TestDataHandler.noPortInAbondoneFlows.getAccountDetails().getMonth());
-        rogers_igniteTV_credit_check_page.selectDOBDayExistingCustomer(TestDataHandler.noPortInAbondoneFlows.getAccountDetails().getDate());
-        reporter.reportLogWithScreenshot("Entered the DOB details");
-        rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
-        reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        rogers_home_phone_selection_page.clkContinueHomePhoneSelection();  
-        reporter.reportLogWithScreenshot("Launched the tech install page");
-        rogers_tech_install_page.selTechInstalStartDate();
-        reporter.reportLogWithScreenshot("Selected Start date for Installation slot");
-        rogers_tech_install_page.selTechInstalEndDate();
-        reporter.reportLogWithScreenshot("Selected End date for Installation slot");
-        rogers_tech_install_page.setEmail(); 
-        reporter.reportLogWithScreenshot("tech install details");
-        rogers_tech_install_page.clkTechInstallContinue();
-        reporter.reportLogWithScreenshot("Launched the payment options page");
-        rogers_payment_options_page.clkPaymentConfirmExistingCustomer();
-        
-        reporter.hardAssert(rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the order review page");
-       
-        reporter.hardAssert( rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
-        rogers_order_review_page.clkAcceptenceCheckbox();
-        reporter.reportLogWithScreenshot("Agreement details");
-        rogers_order_review_page.clkSubmit();
-        reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");  
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");
 		}
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
-	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.rogersConfig.getRogersURL(),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 
 	@AfterMethod(alwaysRun = true)

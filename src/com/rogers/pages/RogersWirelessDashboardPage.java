@@ -1,5 +1,6 @@
 package com.rogers.pages;
 
+import java.math.BigDecimal;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -208,7 +209,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 
 	@FindBy (xpath = "//span[@data-ng-bind='simCardConfirmation.getNewSimCardNumber()']")
 	WebElement btnCloseViewDetails;
-
+	
 	@FindBy (xpath = "//div[@class='data-usage-details-holder component_holder']/rss-billing/div[@class='bill-cycle']/span[@class='daysRemaining']")
 	WebElement lblDaysRemainingInBillCycle;
 
@@ -273,6 +274,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy (xpath = "//app-welcome-rogers"),
 	@FindBy (xpath = "//div[@class='bc-frame-title']")})
 	WebElement headerLiveChat;
+
+	@FindBy(xpath = "//iframe[@id='va-iframe']")
+	WebElement fraLiveChat;
 	
 	@FindBy (xpath = "//div[@class='add-data']/span[contains(text(),'Speed Pass') or contains(text(),'Accès Rapido')]")
 	WebElement btnSpeedPass;
@@ -408,7 +412,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//ancestor::div[contains(@class,'postpaid-addons')]//div[@class='addon-description' or @class='addon-description ng-star-inserted']")
 	List<WebElement> lstMyPlanAddOns;
 
-	@FindBy(xpath = "//a[@title='Change the Data Manager for this account' or @title='Change the Data Manager for this account']")
+	@FindBy(xpath = "//a[@title='Change the Data Manager for this account' or @title='Change the Data Manager for this account']//span[contains(text(),'Add')]")
 	WebElement btnAddDataManager;
 
 	@FindBy(xpath = "//p[text()='Choose a Data Manager' or text()='Choisir un gestionnaire de données']")
@@ -454,6 +458,12 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		
 	@FindBy(xpath = "//li/span[contains(text(),'Stream Saver:') or contains(text(),'Maximiseur de données :')]")
 	WebElement lblStreamSaver;
+	
+	@FindBy(xpath = "//ds-switch[@title='Stream Saver for DONOTUSE']//span[text()='OFF']")
+	WebElement btnStreamSaverSwitchOff;
+	
+	@FindBy(xpath = "//ds-switch[@title='Stream Saver for DONOTUSE']//span[text()='ON']")
+	WebElement btnStreamSaverSwitchON;
 		
 	@FindBy(xpath = "//li/span[contains(text(),'Data Alert:') or contains(text(),'Alertes de données :')]")
 	WebElement lblDataAlert;
@@ -469,6 +479,45 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	
 	@FindBy(xpath = "//ds-switch[@title='Data access for DONOTUSE' or @title='Accès aux données pour DONOTUSE']//Span[text()='OFF' or text()='NON']")
 	WebElement divDataAccessOFF;
+
+	@FindBy(xpath = "//*[@translate='wirelessPrepaidHeader']")
+	WebElement headerPrepaid;
+
+	@FindBy(xpath = "//*[@translate='wirelessPrepaid']")
+	WebElement lblPrepaidManageMyPlanAndDataAddOnHeader;
+
+	@FindBy(xpath = "//*[@data-test-id='myr-wirelessPlan-phoneSelected_planDescHTML']")
+	WebElement lblPrepaidPlanDetails;
+
+	@FindBy(xpath = "//*[@translate='wireless_prepaid_plan-expires']")
+	WebElement lblPrepaidNextPaymentDate;
+	
+	@FindBy(xpath = "//*[@data-test-id='myr-wirelessPlan-nextPaymentDateEn']")
+	WebElement lblPrepaidNextPaymentMonthAndDate;
+
+	@FindBy(xpath = "//*[@translate='acc_overview_top_up_now']")
+	WebElement btnTopUpNow;
+
+	@FindBy(xpath = "//*[@translate='wireless_prepaid_change-plan']")
+	WebElement lnkChangeMyPlan;
+
+	@FindBy(xpath = "//*[@translate='wireless_prepaid_manage-add-ons']")
+	WebElement lnkManageMyaddOns;
+
+	@FindBy(xpath = "//*[@translate='wireless_prepaid_wireless-number']")
+	WebElement lblMyWireLessNumberHeader;
+
+	@FindBy(xpath = "//*[@data-test-id='myr-wirelessPlan-my-line-number']")
+	WebElement lblWirelessNumber;
+
+	@FindBy(xpath = "//*[@data-test-id='myr-wirelessPlan-my-line-number_isCare']")
+	WebElement lblPinCode;
+
+	@FindBy(xpath = "//*[@translate='wireless_prepaid_change-pin']")
+	WebElement lnkChangeMyPinCode;
+
+	@FindBy(xpath = "//*[@translate='start_track_phone_repair']")
+	WebElement lnkStartOrTrackAPhonerepairClaim;
 	
 	/**
 	 * To click the link of lost or stolen device on wireless dashboard page
@@ -1263,8 +1312,15 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyLiveChatOverlayOpened() {	
-		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(getDriver().findElement(By.xpath("//iframe[@id='va-iframe']")), 20);
+	  if(reusableActions.isElementVisible(fraLiveChat))
+		{
+		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraLiveChat, 20);
 		return reusableActions.isElementVisible(headerLiveChat, 30);
+		}else
+		{
+			return reusableActions.isElementVisible(headerLiveChat, 30);
+		}
+		
 	} 
 	
 	/**
@@ -1536,7 +1592,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public boolean verifyLinkNetworkAid(String strBaseUrl) {
 		reusableActions.getWhenReady(lnkNetworkAid, 60).click();
-		return reusableActions.verifyUrls(strBaseUrl + "/customer/support/article/wireless-my-network");
+		//updated in july 24th release
+		///customer/support/article/wireless-my-network
+		return reusableActions.verifyUrls(strBaseUrl + "/consumer/wireless/my-network");
 	}
 	
 	/**
@@ -1943,12 +2001,14 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	
 	/**
 	 *  Checks the data alert value set
-	 * @return true if the value is set else false
 	 * @param strDataAlert data alert value
 	 * @return true if the Data Alert is correctly set, otherwise false.
 	 */
 	public boolean isDataAlertCorrectlySet(String strDataAlert) {
-		return reusableActions.getWhenReady(lblDataAlertSetValue).getText().trim().replaceAll(",", ".").contains(strDataAlert);
+		String strDataAlertValue = reusableActions.getWhenReady(lblDataAlertSetValue).getText().trim().replaceAll(",", ".").split(" ")[0];
+		double doubleAlertValue = Double.parseDouble(strDataAlertValue);
+		strDataAlertValue =  String.format("%.2f", new BigDecimal(doubleAlertValue));
+		return strDataAlertValue.contains(strDataAlert);
 	}
 
 	/**
@@ -1956,7 +2016,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @return true if the chnage data manager is displayed else false
 	 * @author Mirza.Kamran
 	 */
-	public boolean isAddChangeDataManagerDisplayed() {		
+	public boolean isChangeDataManagerDisplayed() {		
 		return reusableActions.isElementVisible(btnChangeDataManager);
 	}
 	
@@ -2044,20 +2104,58 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		return reusableActions.isElementVisible(lnkChangeMyPhoneNumber);
 	}
 
+	/**
+	 * Verify if the screen saver displayed
+	 * @return true if the screen saver is displayed else false
+	 * @author Mirza.Kamran
+	 */
 	public boolean verifyStreamSaverDisplayed() {		
 		return reusableActions.isElementVisible(lblStreamSaver);
 	}
 
+	/**
+	 * Verify if the Data access is displayed
+	 * @return true if the data access is displayed else false
+	 * @author Mirza.Kamran
+	 */
 	public boolean verifyDataAccessDisplayed() { 
 		return reusableActions.isElementVisible(lblDataAccess);
 	}
 
+	/**
+	 * Verify if the Data alert is  displayed
+	 * @return true if the data alert is displayed else false
+	 * @author Mirza.Kamran
+	 */
 	public boolean verifyDataAlertDisplayed() {
 		return reusableActions.isElementVisible(lblDataAlert);
 	}
 
+	/**
+	 * Verify if the data manager displayed
+	 * @return true if the screen saver is displayed else false
+	 * @author Mirza.Kamran
+	 */
 	public boolean verifyDataManagerDisplayed() {
 		return reusableActions.isElementVisible(lbldataManager);
+	}
+
+	/**
+	 * Checks if the Stream Saver ON is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isStreamSaverONDisplayed() {		
+		return reusableActions.isElementVisible(btnStreamSaverSwitchON);
+	}
+
+	/**
+	 * Clicks on Stream Saver ON button
+	 * @author Mirza.Kamran
+	 */
+	public void clkStreamSaverOn() {
+		reusableActions.getWhenReady(btnStreamSaverSwitchOff).click();
+		
 	}
 
 	/**
@@ -2078,6 +2176,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		
 	}
 
+	
+	
 	/**
 	 * Checks if the data manager OFF is displayed
 	 * @return true if the element is displayed else false
@@ -2097,11 +2197,150 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	}
 
 	/**
+	 * Checks if the Stream Saver OFF is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isStreamSaverOFF() {
+		return reusableActions.isElementVisible(btnStreamSaverSwitchOff);
+	}
+
+	/**
+	 * Clicks on Stream Saver OFF button
+	 * @author Mirza.Kamran
+	 */
+	public void clkStreamSaverOff() {
+		reusableActions.getWhenReady(btnStreamSaverSwitchON).click();
+		
+	}
+
+	
+	
+	/**
 	 * Checks if the data access is displayed
 	 * @return true if the data access is displayed else false
 	 * @author Mirza.Kamran
 	 */
 	public boolean isDataAccessDisplayed() {
 		return reusableActions.isElementVisible(lblDataAccess);
+	}
+
+	/**
+	 * Click left CTN scroll arrow
+	 * @author Mirza.Kamran
+	 */
+	public void clkLeftCTNScrollArrow() {
+		reusableActions.clickIfAvailable(btnLeftScrollCTN);
+	}
+
+	/**
+	 * Checks if the prepaid header is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isPrepaidHeaderDisplayed() {
+		return reusableActions.isElementVisible(headerPrepaid);
+		
+	}
+
+	/**
+	 * Checks if the prepaid manage my plan and data add on header is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isPrepaidManageMyPlanAndDataAddOnheaderDisplayed() {
+		return reusableActions.isElementVisible(lblPrepaidManageMyPlanAndDataAddOnHeader);				
+	}
+
+	/**
+	 * Checks if the prepaid Plan details is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isPrepaidPlanDetailsSectionDisplayed() {
+		return reusableActions.isElementVisible(lblPrepaidPlanDetails);
+	}
+
+	/**
+	 * Checks if the prepaid Next payment Date section is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isPrepaidNextPaymentDateSectionDisplayed() {
+		return (reusableActions.isElementVisible(lblPrepaidNextPaymentDate)
+				&& reusableActions.isElementVisible(lblPrepaidNextPaymentMonthAndDate));
+	}
+
+	/**
+	 * Checks if the prepaid Top Up Now is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isPrepaidTopUpNowButtonDisplayed() {
+		return reusableActions.isElementVisible(btnTopUpNow);
+	}
+
+	/**
+	 * Checks if the prepaid Change my plan is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isPrepaidChangeMyPlanDisplayed() {
+		return reusableActions.isElementVisible(lnkChangeMyPlan);
+	}
+
+	/**
+	 * Checks if the prepaid link Manage My Add ons is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isPrepaidManageMyAddOnsDisplayed() {
+		return reusableActions.isElementVisible(lnkManageMyaddOns);
+	}
+
+	/**
+	 * Checks if the prepaid My wireless number section is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isMyWirelessNumberSectionDisplayed() {
+		return (reusableActions.isElementVisible(lblMyWireLessNumberHeader)
+				&& reusableActions.isElementVisible(lblWirelessNumber));
+	}
+
+	/**
+	 * Checks if the label prepaid Pin code is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isPrepaidPinCodeDisplayed() {
+		return reusableActions.isElementVisible(lblPinCode);
+				
+	}
+
+	/**
+	 * Checks if the prepaid lnk change my pin code is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isPrepaidChangeMyPinCodeDisplayed() {
+		return reusableActions.isElementVisible(lnkChangeMyPinCode);
+	}
+
+	/**
+	 * Checks if the prepaid lnk Start or track a phone repair claim is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isPrepaidStartOrTrackAPhoneRepairClaimDisplayed() {
+		return reusableActions.isElementVisible(lnkStartOrTrackAPhonerepairClaim);
+	}
+
+	/**
+	 * Close chat image
+	 * @author Mirza.Kamran
+	 */
+	public void closeChatImage() {
+		reusableActions.executeJavaScript("return document.getElementsByClassName('floating-live-chat')[0].remove();");		
 	}
 }

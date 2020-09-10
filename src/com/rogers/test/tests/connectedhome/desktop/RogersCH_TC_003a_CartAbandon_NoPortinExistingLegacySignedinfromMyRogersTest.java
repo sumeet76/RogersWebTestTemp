@@ -8,12 +8,13 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeMethod;   
+import org.testng.annotations.Optional;                     
 import org.testng.annotations.Parameters;
 
 /**
@@ -34,7 +35,7 @@ import org.testng.annotations.Parameters;
  *9. Click "No thanks Continue".
  *10. Click on Continue.
  *11. Select one option for   'Do you have a 4K TV'.
- *12. Click “checkout” button on cart summary page.
+ *12. Click checkout button on cart summary page.
  *13. All the personal information is auto populated.
  *14. Click on continue button.
  *15. In Credit Evaluation page, enter the required info on Credit Check:
@@ -57,7 +58,7 @@ import org.testng.annotations.Parameters;
 
 public class RogersCH_TC_003a_CartAbandon_NoPortinExistingLegacySignedinfromMyRogersTest extends BaseTestClass {
 
-	@Test
+    @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
 	public void checkCartAbandonNoPortinExistingLegacySignedinfromMyRogersTest() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();
@@ -97,23 +98,19 @@ public class RogersCH_TC_003a_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
         reporter.reportLogWithScreenshot("Launched the create profile page");
         rogers_igniteTV_profile_creation_page.clkSubmitProfile();   
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
-        rogers_home_page.clkMyRogers(); 
-        reporter.reportLogWithScreenshot("Launched the Cart Abandonment Form popup");
-        
-        reporter.hardAssert(rogers_igniteTV_credit_check_page.verifyCartAbandonmentForm(),"Cart Abandonment Form has Launched","Cart Abandonment Form has not Launched");
-        rogers_igniteTV_credit_check_page.clkCartAbandonmentForm();
-        reporter.reportLogWithScreenshot("Launched the Email sent success popup");
-        
-        reporter.hardAssert(rogers_igniteTV_credit_check_page.verifyCartEmailSuccess(),"Cart Email Success popup has Launched","Cart Email Success popup has not Launched");
-        rogers_igniteTV_credit_check_page.clkCartEmailSuccess();
-        reporter.reportLogWithScreenshot("Signout account");	
+        rogers_igniteTV_credit_check_page.selectDOBYearExistingCustomerMigration(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getYear());
+        rogers_igniteTV_credit_check_page.selectDOBMonthExistingCustomerMigration(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getMonth());
+        rogers_igniteTV_credit_check_page.selectDOBDayExistingCustomerMigration(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getDate());
+        reporter.reportLogWithScreenshot("Entered the DOB details");
+        rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
+        rogers_home_page.clkMyRogers();       
 		}
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
-	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.rogersConfig.getRogersURL(),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 
 	@AfterMethod(alwaysRun = true)

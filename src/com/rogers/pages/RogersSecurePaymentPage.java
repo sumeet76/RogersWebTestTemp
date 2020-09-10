@@ -85,14 +85,6 @@ public class RogersSecurePaymentPage extends BasePageClass {
 	}
 	
 	/**
-	 * Clicks on the 'Pay with credit card, Visa Debit, or Debit Mastercard' radio button
-	 * @author rajesh.varalli1
-	 */
-	public void clickPayWithCard() {
-		reusableActions.clickIfAvailable(rdbtnPayWithCard);
-	}
-	
-	/**
 	 * Enters the credit/debit card number
 	 * @param strCardNumber - Debit/Credit card number
 	 * @author rajesh.varalli1
@@ -153,8 +145,8 @@ public class RogersSecurePaymentPage extends BasePageClass {
 	 * @return true if Payment Success msg and amount displayed are correct; else false
 	 */
 	public boolean verifyPaymentSuccessful(String strAmount) {
-		reusableActions.waitForElementVisibility(lblPaymentSuccessMsg);
-		return (reusableActions.isElementVisible(lblPaymentSuccessMsg, 60) &&
+		reusableActions.waitForElementVisibility(lblPaymentSuccessMsg, 60);
+		return (reusableActions.isElementVisible(lblPaymentSuccessMsg) &&
 				lblPaymentAmount.getText().trim().replace("$", "").trim().contains(strAmount));
 	}
 	

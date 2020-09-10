@@ -1,12 +1,12 @@
 package com.rogers.test.tests.choneview;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeMethod;                
+import org.testng.annotations.Optional;                     
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -84,10 +84,10 @@ public class OneViewCH_TC_025_EndtoEndFlowAnonymousCustomerTriplePlayTest extend
 		
     }
     
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})
-	public void beforeTest(String strBrowser, String strLanguage,String strGroupName, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-        startOVSession(TestDataHandler.chOneViewConfig.getUrl(), strBrowser, strLanguage,strGroupName,TestDataHandler.anonymousData.contactDetails.getContactID(),"",TestDataHandler.chOneViewConfig.getUsrID(), TestDataHandler.chOneViewConfig.getLoginID(), method);
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,String strGroupName, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+        startOVSession(System.getProperty("QaUrl"), strBrowser, strLanguage,strGroupName,TestDataHandler.anonymousData.contactDetails.getContactID(),"",TestDataHandler.chOneViewConfig.getUsrID(), TestDataHandler.chOneViewConfig.getLoginID(), method);
 	
 	}
 

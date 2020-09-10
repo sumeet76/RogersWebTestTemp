@@ -21,21 +21,24 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
 	WebElement txtContainerEmail;
 	
-		@FindBy(xpath = "//input[@id='ds-form-input-id-14']")
+		@FindBy(xpath = "//input[@name='email']")
 	WebElement txtEmail;
-	
-	@FindBy(xpath = "//input[@id='ds-form-input-id-15']")
-	WebElement txtConfirmEmail;
-	
-	@FindBy(xpath = "//input[@id='ds-form-input-id-9']")
-	WebElement txtFirstName;
-	
-	@FindBy(xpath = "//input[@id='ds-form-input-id-10']")
-	WebElement txtLastName;
-	
-	@FindBy(xpath = "//input[@id='ds-form-input-id-12']")
-	WebElement btnPhone;
+		//input[@id='ds-form-input-id-14']
 		
+	@FindBy(xpath = "//input[@name='confirmEmail']")
+	WebElement txtConfirmEmail;
+	//input[@id='ds-form-input-id-15']
+	
+	@FindBy(xpath = "//input[contains(@aria-label,'First Name')]")
+	WebElement txtFirstName;
+	//input[@id='ds-form-input-id-9']
+	@FindBy(xpath = "//input[contains(@aria-label,'Last Name')]")
+	WebElement txtLastName;
+	//input[@id='ds-form-input-id-10']
+	@FindBy(xpath = "//input[contains(@aria-label,'your phone number')]")
+	WebElement btnPhone;
+	//input[@id='ds-form-input-id-12']
+	
 	@FindBy(xpath = "//span[@translate='global.cta.continue']")
 	WebElement btnProfielSubmit;	
 	//input[@class='ute-btn-primary profile-submit-button']
@@ -68,8 +71,7 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyProfilePage() {
-		//reusableActions.waitForElementInvisibility(popupLoadingFingers,100);
-		return reusableActions.isElementVisible(txtProfile);
+		return reusableActions.isElementVisible(txtProfile,100);
 	}
 	
 	/**
@@ -78,13 +80,19 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 */
 	public void setEmail() {
 		String strEmail = FormFiller.generateEmail();
-		reusableActions.waitForElementVisibility(txtContainerEmail,180);
+		reusableActions.waitForElementVisibility(txtContainerEmail,30);
 		reusableActions.getWhenReady(txtContainerEmail,10).click();
-		reusableActions.getWhenReady(txtEmail, 30).clear();
+		/*	reusableActions.getWhenReady(txtEmail, 30).clear();
 		reusableActions.getWhenReady(txtEmail,10).sendKeys(strEmail);
 		reusableActions.executeJavaScriptClick(txtConfirmEmail);
 		reusableActions.getWhenReady(txtConfirmEmail, 10).clear();
-		reusableActions.getWhenReady(txtConfirmEmail,3).sendKeys(strEmail);
+		reusableActions.getWhenReady(txtConfirmEmail,3).sendKeys(strEmail);*/
+        reusableActions.clickWhenReady(txtEmail);
+        txtEmail.clear();
+        txtEmail.sendKeys(strEmail);
+        reusableActions.executeJavaScriptClick(txtConfirmEmail);
+        txtConfirmEmail.clear();
+        txtConfirmEmail.sendKeys(strEmail); 
 	}
 
 	/**
@@ -94,8 +102,8 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	public void setFirstname() {
 		String strName = FormFiller.generateRandomName();
 		reusableActions.executeJavaScriptClick(txtFirstName);
-		reusableActions.getWhenReady(txtFirstName, 3).clear();
-		reusableActions.getWhenReady(txtFirstName,3).sendKeys(strName);
+		txtFirstName.clear();
+		txtFirstName.sendKeys(strName);
 	}
 
 	/**
@@ -105,8 +113,8 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	public void setLastName() {
 		String strName = FormFiller.generateRandomName();
 		reusableActions.executeJavaScriptClick(txtLastName);
-		reusableActions.getWhenReady(txtLastName, 3).clear();
-		reusableActions.getWhenReady(txtLastName,3).sendKeys(strName);
+		txtLastName.clear();
+		txtLastName.sendKeys(strName);
 	}
 
 	/**
@@ -114,11 +122,10 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void setPhone() {
-		//String strPhoneNumber = FormFiller.generatePhoneNumber();
-		String strPhoneNumber ="1010000062";
+		String strPhoneNumber = FormFiller.generatePhoneNumber();
 		reusableActions.executeJavaScriptClick(btnPhone);
-		reusableActions.getWhenReady(btnPhone, 3).clear();
-		reusableActions.getWhenReady(btnPhone,3).sendKeys(strPhoneNumber);
+		btnPhone.clear();
+		btnPhone.sendKeys(strPhoneNumber);
 	}
 	
 	/**
