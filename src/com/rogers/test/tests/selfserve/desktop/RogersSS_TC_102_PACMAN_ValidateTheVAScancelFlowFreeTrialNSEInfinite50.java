@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+
 
 
 
@@ -28,7 +28,7 @@ public class RogersSS_TC_102_PACMAN_ValidateTheVAScancelFlowFreeTrialNSEInfinite
 	}
 	
 	
-	@Test(groups = {"SanitySS","RegressionSS","CancelSubscription"})
+	@Test(groups = {"RegressionSS","CancelSubscription"})
     public void validateSignInAndAccountOverview() {
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
@@ -72,15 +72,19 @@ public class RogersSS_TC_102_PACMAN_ValidateTheVAScancelFlowFreeTrialNSEInfinite
         		"The cancel subscription details did not matched");        
         rogers_account_overview_page.selectReasonForCancelSubscription();
         reporter.reportLogWithScreenshot("reason for cancel subscription is selected");
-        /*rogers_account_overview_page.clkConfirmCancelSubscription();
+        rogers_account_overview_page.clkConfirmCancelSubscription();
+        reporter.reportLogWithScreenshot("Confirm button clicked");
         reporter.hardAssert(rogers_account_overview_page.verifyIfCancelSuccessfulOverLayDisplayed(), 
         		"The cancel subscription success overlay is displayed", 
         		"The cancel subscription success overlay not displayed");  
+        reporter.reportLogWithScreenshot("cancel success overlay displayed");
         rogers_account_overview_page.clkOKButtonOnCancelSuccessOverlay();
+        reporter.reportLogWithScreenshot("Cliked on OKay button");
         reporter.hardAssert(rogers_account_overview_page.verifyIfSMPIsDisplayedWithCancelledSubscription(), 
         		"The Subscription management page shows the cancelled CTN subscription", 
         		"The Subscription management page does NOT shows the cancelled CTN subscription");
-        		*/
+        reporter.reportLogWithScreenshot("Subscription management page shows the cancelled subscription");
+        		
     }
 
   

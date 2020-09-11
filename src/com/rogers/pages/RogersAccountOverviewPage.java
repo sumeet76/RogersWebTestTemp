@@ -361,18 +361,27 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//rss-subscriber-info")
 	WebElement lblRogersCancellationForSubs;
 
-	@FindBy(xpath = "//*[contains(text(),'I’m cancelling this subscription because:')]/ancestor::span/preceding-sibling::select")
+	////*[contains(text(),'I’m cancelling this subscription because:')]/ancestor::span/parent::div/ancestor::ds-form-field
+	@FindBy(xpath = "//rss-cancel//ds-form-field/div/div[contains(@class,'select')]")
 	WebElement selectReasonForCancel;
 
 	@FindBy(xpath = "//*[contains(text(),'Confirm')]")
 	WebElement btnConfirm;
 
-	private By btnOK;
+	@FindBy(xpath = "//button[@title='Return to subscription management page']")
+	WebElement btnOK;
 
-	private By headerCancelSuccess;
+	@FindBy(xpath = "//p[text()='Subscription cancelled']")
+	WebElement headerCancelSuccess;
 
 	@FindBy(xpath = "//option[@value='0: Object']")
 	WebElement optReasonOne;
+
+	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[text()=' Cancelled ']")
+	WebElement paneSMPCancelled;
+	
+	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[contains(text(),'Promotion ends')]")
+	WebElement lblSMPpromotionEnds;
 	
 	
 	/**
@@ -1495,6 +1504,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		 */
 		public void selectReasonForCancelSubscription() {
 			reusableActions.getWhenReady(selectReasonForCancel).click();
+			reusableActions.waitForElementTobeClickable(optReasonOne, 5);
 			reusableActions.getWhenReady(optReasonOne).click();
 			//reusableActions.selectWhenReadyByVisibleText(selectReasonForCancel, " I'm switching to another music service provider ");
 		} 
@@ -1530,9 +1540,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		 * @return true if displayed else false
 		 * @author Mirza.Kamran
 		 */
-		public boolean verifyIfSMPIsDisplayedWithCancelledSubscription() {
-
-			return false;
+		public boolean verifyIfSMPIsDisplayedWithCancelledSubscription() {			
+			return (reusableActions.isElementVisible(paneSMPCancelled)
+					&& reusableActions.isElementVisible(lblSMPpromotionEnds);
 		}
 		
 		

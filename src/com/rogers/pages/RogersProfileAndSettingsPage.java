@@ -976,8 +976,8 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setCityName(String strCityName) {
-		reusableActions.waitForElementTobeClickable(lblCityName, 30);
-		reusableActions.getWhenReady(lblCityName).click();
+		reusableActions.waitForElementTobeClickable(getDriver().findElement(By.xpath("//input[@title='Enter city’s name' or @title='Entrer le nom de la ville']/parent::div/parent::div")), 30);
+		reusableActions.getWhenReady(By.xpath("//input[@title='Enter city’s name' or @title='Entrer le nom de la ville']/parent::div/parent::div")).click();
 		reusableActions.getWhenReady(txtCityName).sendKeys(strCityName);
 	}
 
