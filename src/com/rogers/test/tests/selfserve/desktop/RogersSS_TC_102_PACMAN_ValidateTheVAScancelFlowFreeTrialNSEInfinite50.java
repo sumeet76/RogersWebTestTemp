@@ -34,10 +34,8 @@ public class RogersSS_TC_102_PACMAN_ValidateTheVAScancelFlowFreeTrialNSEInfinite
         reporter.reportLog("Home Page Launched");
     	rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
-		//TestDataHandler.tc013132.getUsername()
-		//TestDataHandler.tc013132.getPassword()
-        rogers_login_page.setUsernameIFrame("cancellation001@mailinator.com");
-        rogers_login_page.setPasswordIFrame("rogers123");
+        rogers_login_page.setUsernameIFrame(TestDataHandler.tc102.getUsername());
+        rogers_login_page.setPasswordIFrame(TestDataHandler.tc102.getPassword());
         reporter.reportLogWithScreenshot("Login Credential is entered.");
         rogers_login_page.clkSignInIFrame();
         reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
@@ -46,8 +44,7 @@ public class RogersSS_TC_102_PACMAN_ValidateTheVAScancelFlowFreeTrialNSEInfinite
 
         if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-        	//TestDataHandler.tc013132.getAccountDetails().getBan()
-        	rogers_account_overview_page.selectAccount("937131852");       
+        	rogers_account_overview_page.selectAccount(TestDataHandler.tc102.getAccountDetails().getBan());       
         }
         reporter.reportLogWithScreenshot("Account overview page.");
         reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Passed", "Login Failed");

@@ -342,7 +342,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//*[@translate='acc_overview_other_services']")
 	WebElement lblOtherServicesAvailable;
 
-	@FindBy(xpath = "")
+	@FindBy(xpath = "//a//span[contains(@class,'ds-button__copy') and contains(text(),'Sign up')]")
 	WebElement btnSubscriptionSignUp;
 
 	@FindBy(xpath = "//a//span[contains(@class,'ds-button__copy') and contains(text(),'Manage')]")
@@ -351,7 +351,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//h2[text()='Currently subscribed']")
 	WebElement headerCurrentlySubscribed;
 
-	@FindBy(xpath = "//a[@title='Cancel the Apple Music subscription for ROGERS CANCELLATION']")
+	@FindBy(xpath = "//a[contains(@title,'Cancel the Apple Music subscription for')]")
 	WebElement btnCancelSubscription;
 
 	
@@ -360,6 +360,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	@FindBy(xpath = "//rss-subscriber-info")
 	WebElement lblRogersCancellationForSubs;
+	
+	@FindBy(xpath = "//rss-subscriber-info")
+	WebElement lblRogersRedeemForSubs;
 
 	////*[contains(text(),'I’m cancelling this subscription because:')]/ancestor::span/parent::div/ancestor::ds-form-field
 	@FindBy(xpath = "//rss-cancel//ds-form-field/div/div[contains(@class,'select')]")
@@ -373,6 +376,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	@FindBy(xpath = "//p[text()='Subscription cancelled']")
 	WebElement headerCancelSuccess;
+	
+	@FindBy(xpath = "//*[contains(text(),'Subscription successful')]")
+	WebElement headerSubscriptionSuccess;
 
 	@FindBy(xpath = "//option[@value='0: Object']")
 	WebElement optReasonOne;
@@ -382,6 +388,31 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	
 	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[contains(text(),'Promotion ends')]")
 	WebElement lblSMPpromotionEnds;
+	
+	@FindBy(xpath = "//span[contains(text(),'Promotion started')]")
+	WebElement lblSMPpromotionStarted;
+
+	@FindBy(xpath = "//ds-checkbox")
+	WebElement chkRedeemSubs;
+
+	@FindBy(xpath = "//a[@title='Sign up for Apple Music']")
+	WebElement btnSignUp;
+
+	@FindBy(xpath = "//h1[@class='signup-page-title']")
+	WebElement headerTnC;
+
+	@FindBy(xpath = "//ds-checkbox")
+	WebElement chkTnC;
+	
+	@FindBy(xpath = "//button[@title='Continue and activate this Apple Music subscription']")
+	WebElement btnSubscribeToSubsscription;
+
+	@FindBy(xpath = "//a[text()='Yes']")
+	WebElement btnCloseFAQ;
+
+	@FindBy(xpath = "//span[@class='vas-subscriber-number']")
+	WebElement paneSMPSubsCTN;
+
 	
 	
 	/**
@@ -1544,7 +1575,114 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			return (reusableActions.isElementVisible(paneSMPCancelled)
 					&& reusableActions.isElementVisible(lblSMPpromotionEnds));
 		}
+
+		/**
+		 * Clicks on sign up subscription
+		 * @author Mirza.Kamran
+		 */
+		public void clkSignUpSubscription() {
+			reusableActions.getWhenReady(btnSubscriptionSignUp).click();
+			
+		}
+
+		/**
+		 * Verifies if the subs is available for redeem
+		 * @return true if available else false
+		 * @author Mirza.Kamran
+		 */
+		public boolean verifyIfSubscriptionIsAvailableForRedeem() {		
+			return reusableActions.isElementVisible(chkRedeemSubs);
+		}
+
+		/**
+		 * Cliks on sign up subscription
+		 * @author Mirza.Kamran
+		 */
+		public void clkSignUp() {
+			reusableActions.getWhenReady(btnSignUp).click();
+			
+		}
+
+		/**
+		 * Clicks on redeem check box
+		 * @author Mirza.Kamran
+		 */
+		public void checkRedeem() {
+			reusableActions.getWhenReady(chkRedeemSubs).click();
+		}
+
+		/**
+		 * Verifies if TnC is displayed
+		 * @return true if displayed else false
+		 * @author Mirza.Kamran
+		 */
+		public boolean verifyIfTnCForSubscriptionIsDisplayed() {			
+			return reusableActions.isElementVisible(headerTnC);
+		}
+
+		/**
+		 * selects the TnC check box
+		 * @author Mirza.Kamran
+		 */
+		public void checkTnC() {
+			reusableActions.getWhenReady(chkTnC).click();
+			
+		}
+
+		/**
+		 * Clicks subscribe button
+		 * @author Mirza.Kamran
+		 */
+		public void clkSubscribeToSubs() {
+		reusableActions.getWhenReady(btnSubscribeToSubsscription).click();
+			
+		}
+
+		/**
+		 * Verifies if redeem details matches with CTN
+		 * @param strSubscriberNumber CTN for which the subscription is redeem
+		 * @return true if details match else false
+		 * @author Mirza.Kamran
+		 */
+		public boolean verifyIfRedeemSubscriptionDetailsIsDisplayedCorrectly(String strSubscriberNumber) {			
+			return reusableActions.getWhenReady(lblRogersRedeemForSubs).getText().trim().replaceAll(" ","").replaceAll("-","").contains(strSubscriberNumber);
+		}
 		
+		/**
+		 * verifies if the Subscription success overlay is displayed
+		 * @return true if displayed else false
+		 * @author Mirza.Kamran
+		 */
+		public boolean verifyIfSubscriptionSuccessfulOverLayDisplayed() {
+			return reusableActions.isElementVisible(By.xpath("//*[contains(text(),'Subscription successful')]"));
+		} 
 		
-		
+		/**
+		 * Selects okay on Subscription success overlay
+		 * @author Mirza.Kamran
+		 */
+		public void clkOKButtonOnSubscriptionSuccessOverlay() {
+			reusableActions.getWhenReady(btnOK).click();
+		}
+
+		/**
+		 * Clicks close FAQ
+		 * @author Mirza.Kamran
+		 */
+		public void clkCloseFAQ() {
+			reusableActions.getWhenReady(By.xpath("//a[text()='Yes']")).click();
+			
+		}
+
+		/**
+		 * Verifies if the subscribed details match
+		 * @param strSubscriberNumber 
+		 * @return true if the details match else false
+		 * @author Mirza.Kamran
+		 */
+		public boolean verifyIfSMPIsDisplayedWithSubscribedCTN(String strSubscriberNumber) {
+			return (reusableActions.getWhenReady(paneSMPSubsCTN).getText().trim().replaceAll(" ","").replaceAll("-","").contains(strSubscriberNumber)
+					&& reusableActions.isElementVisible(lblSMPpromotionStarted)
+					&& reusableActions.isElementVisible(btnCancelSubscription));
+		}
 }

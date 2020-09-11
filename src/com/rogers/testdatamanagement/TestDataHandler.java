@@ -146,6 +146,8 @@ public class TestDataHandler {
 	public static AccountData tc90;
 	public static AccountData tc98;
 	public static AccountData tc94;
+	public static AccountData tc102;
+	public static AccountData tc103;
 	
 	public static void dataInit (String strApplicationType) {	    	
     	if(strApplicationType.toUpperCase().trim().endsWith("CH")) {	    	
@@ -282,6 +284,8 @@ public class TestDataHandler {
     	tc95 = YamlHandler.getSSAccountData("tc95NSESuspendedCTN");
     	tc90 = YamlHandler.getSSAccountData("tc90_SE_NSE_ResidentialServices");
     	tc98 = YamlHandler.getSSAccountData("tc98PrepaidAccount");
+    	tc102 = YamlHandler.getSSAccountData("tc102NSEInfinite50Cancellation");
+    	tc103 = YamlHandler.getSSAccountData("tc103Infinite20Redeem");
     	
     	//================ Connected home =========================
     	tc43IgniteRHP = YamlHandler.getSSAccountData("tc43IgniteRHP");

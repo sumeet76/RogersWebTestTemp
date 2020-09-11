@@ -28,23 +28,25 @@ public class RogersSS_TC_103_PACMAN_VerifyTheOrderSummaryPageOfVASsubscriptionRe
 	}
 	
 	
-	@Test(groups = {"SanitySS","RegressionSS"})
-    public void validateSignInAndAccountOverview() {
+	@Test(groups = {"RegressionSS","PACMANRedeem"})
+    public void verifyTheOrderSummaryPageOfVASsubscriptionRedemptionFlow_SEInfinite20() {
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
     	rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(TestDataHandler.tc013132.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.tc013132.getPassword());
+        rogers_login_page.setUsernameIFrame(TestDataHandler.tc103.getUsername());
+        rogers_login_page.setPasswordIFrame(TestDataHandler.tc103.getPassword());
+        String strCTN =TestDataHandler.tc103.getAccountDetails().getCtn();
         reporter.reportLogWithScreenshot("Login Credential is entered.");
         rogers_login_page.clkSignInIFrame();
-        reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
+        reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login proceed.",
+        		"Login got error.");
         rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 
         if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-        	rogers_account_overview_page.selectAccount(TestDataHandler.tc013132.getAccountDetails().getBan());       
+        	rogers_account_overview_page.selectAccount(TestDataHandler.tc103.getAccountDetails().getBan());       
         }
         reporter.reportLogWithScreenshot("Account overview page.");
         reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Passed", "Login Failed");
@@ -55,6 +57,38 @@ public class RogersSS_TC_103_PACMAN_VerifyTheOrderSummaryPageOfVASsubscriptionRe
         		"The subscription is available for redeem", 
         		"The subscription is NOT available for redeem");
         
+        rogers_account_overview_page.clkSignUpSubscription();
+        reporter.hardAssert(rogers_account_overview_page.verifyIfSubscriptionIsAvailableForRedeem(), 
+        		"The current subscription redeem selection is displayed", 
+        		"The current subscription is redeem selection is NOT displayed");
+        reporter.reportLogWithScreenshot("Current subscription for redeem");
+        rogers_account_overview_page.checkRedeem();
+        reporter.reportLogWithScreenshot("Current subscription check box seletced for redeem");
+        rogers_account_overview_page.clkSignUp();
+        reporter.hardAssert(rogers_account_overview_page.verifyIfRedeemSubscriptionDetailsIsDisplayedCorrectly(strCTN), 
+        		"The cancel subscription details matched", 
+        		"The cancel subscription details did not matched");          
+        common_business_flows.scrollToMiddleOfWebPage();
+        reporter.reportLogWithScreenshot("T and C page");
+        reporter.hardAssert(rogers_account_overview_page.verifyIfTnCForSubscriptionIsDisplayed(), 
+        		"The Subscription TnC is displayed", 
+        		"The Subscription TnC is NOT displayed");
+       
+        rogers_account_overview_page.checkTnC();
+        reporter.reportLogWithScreenshot("T and C check box is selected");
+        rogers_account_overview_page.clkSubscribeToSubs();   
+        reporter.reportLogWithScreenshot("Subscription button clicked");
+        reporter.hardAssert(rogers_account_overview_page.verifyIfSubscriptionSuccessfulOverLayDisplayed(), 
+        		"The subscription success overlay is displayed", 
+        		"The subscription success overlay not displayed");  
+        reporter.reportLogWithScreenshot("Subscription success overlay displayed");
+        rogers_account_overview_page.clkOKButtonOnSubscriptionSuccessOverlay();
+        reporter.reportLogWithScreenshot("Cliked on OKay button");        
+        reporter.hardAssert(rogers_account_overview_page.verifyIfSMPIsDisplayedWithSubscribedCTN(strCTN), 
+        		"The Subscription management page SMP shows the subscribed CTNs in Currently Subscribed Section", 
+        		"The Subscription management page does NOT shows the SMP shows the subscribed CTNs in Currently Subscribed Section");
+        reporter.reportLogWithScreenshot("Subscription management page shows the subscribed CTNs in Currently Subscribed Section");
+        	
     }
 
   
