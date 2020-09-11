@@ -1542,7 +1542,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		 */
 		public boolean verifyIfSMPIsDisplayedWithCancelledSubscription() {			
 			return (reusableActions.isElementVisible(paneSMPCancelled)
-					&& reusableActions.isElementVisible(lblSMPpromotionEnds);
+					&& reusableActions.isElementVisible(lblSMPpromotionEnds));
 		}
 		
 		
