@@ -64,7 +64,7 @@ public class RogersSS_TC_102_PACMAN_ValidateTheVAScancelFlowFreeTrialNSEInfinite
         reporter.hardAssert(rogers_account_overview_page.verifyIfHeaderCancelSubscriptionIsDisplayed(), 
         		"The header cancel subscription is displayed", 
         		"The header cancel subscription is NOT displayed");
-        reporter.hardAssert(rogers_account_overview_page.verifyIfCancelSubscriptionDetailsIsDisplayedCorrectly("4165004630"), 
+        reporter.hardAssert(rogers_account_overview_page.verifyIfCancelSubscriptionDetailsIsDisplayedCorrectly(TestDataHandler.tc102.getAccountDetails().getCtn()), 
         		"The cancel subscription details matched", 
         		"The cancel subscription details did not matched");        
         rogers_account_overview_page.selectReasonForCancelSubscription();
