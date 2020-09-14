@@ -1,5 +1,6 @@
 package com.rogers.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -22,7 +23,9 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(id = "password")
 	WebElement txtPassword;
 
-	@FindBy(xpath = "//button[@data-dtname='signin submit']")
+	@FindAll({
+		@FindBy(xpath = "//div[@class='text-center signInButton ']"),
+		@FindBy(xpath = "//button[@data-dtname='signin submit']")})		
 	WebElement btnSignIn;
 
 	@FindBy(xpath = "//iframe[contains(@src,'/web/totes/easylogin/signin')]")
@@ -34,7 +37,7 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(text(),'Skip') or contains(text(),'Continuer')]")
 	WebElement btnSkip;
 	
-	@FindBy(xpath = "//a[text()='Register' or text()=\"S'inscrire\"]")
+	@FindBy(xpath = "//h5[@class='registerButton']//*[text()='Register' or text()=\"S'inscrire\"]")
 	WebElement lnkRegister;
 	
 	@FindBy(xpath = "//button[text()='Register now' or text()=\"S'inscrire maintenant\"]")
@@ -54,12 +57,15 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(xpath = "//a[text()='Forgot username and/or password?' or contains(text(),\"Nom d'utilisateur ou mot de passe oublié?\")]")
 	WebElement btnForgotUserNameAndPassword;
 
+	@FindBy(xpath = "//input[@id='password']/parent::div[contains(@class,'ds-formField__inputContainer')]")
+	WebElement lblPassword;
+
 	/**
 	 * To switch to the iframe
 	 * @author chinnarao.vattam
 	 */
 	public void switchToSignInIFrame() {			
-		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraSignIn, 5);
+		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraSignIn, 30);
 	}
 	
 	/**
@@ -87,6 +93,8 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void setPasswordIFrame(String strPassword) {
+		//reusableActions.waitForElementTobeClickable(txtPassword, 30);
+		reusableActions.getWhenReady(lblPassword).click();
 		reusableActions.getWhenVisible(txtPassword,20).clear();
 		reusableActions.getWhenVisible(txtPassword).sendKeys(strPassword);
 	}

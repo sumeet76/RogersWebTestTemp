@@ -1,5 +1,6 @@
 package com.rogers.pages;
 
+import org.apache.xmlbeans.impl.xb.xsdschema.FieldDocument.Field.Xpath;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -216,7 +217,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy(xpath = "//select[@title='Select type' or @title='Sélectionner le type']")
 	WebElement cboApartmentType;
 	
-	@FindBy(xpath = "//input[@title='Enter city’s name' or @title='Entrer le nom de la ville']")
+	@FindBy(xpath = "//input[contains(@title,'Enter city') or @title='Entrer le nom de la ville']")
 	WebElement txtCityName;
 	
 	@FindBy(xpath = "//select[@title='Select a province/territory' or @title='Sélectionner une province/un territoire']")
@@ -259,7 +260,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy(xpath = "//input[@title='Enter street name' or @title='Entrer le nom de la rue']/parent::div")
 	WebElement lblStreetName;
 
-	@FindBy(xpath = "//input[@title='Enter city’s name' or @title='Entrer le nom de la ville']/parent::div")
+	@FindBy(xpath = "//input[contains(@title,'Enter city') or @title='Entrer le nom de la ville']/parent::div/parent::div/parent::ds-form-field")
 	WebElement lblCityName;
 
 	@FindBy(xpath = "//input[@title='Enter postal code' or @title='Entrer le code postal']/parent::div")
@@ -975,8 +976,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @param strCityName city name
 	 * @author Mirza.Kamran
 	 */
-	public void setCityName(String strCityName) {
-		reusableActions.waitForElementTobeClickable(lblCityName, 30);
+	public void setCityName(String strCityName) {		
 		reusableActions.getWhenReady(lblCityName).click();
 		reusableActions.getWhenReady(txtCityName).sendKeys(strCityName);
 	}
