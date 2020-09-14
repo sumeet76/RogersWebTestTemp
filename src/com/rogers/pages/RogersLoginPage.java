@@ -37,7 +37,7 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(text(),'Skip') or contains(text(),'Continuer')]")
 	WebElement btnSkip;
 	
-	@FindBy(xpath = "//a[text()='Register' or text()=\"S'inscrire\"]")
+	@FindBy(xpath = "//h5[@class='registerButton']//*[text()='Register' or text()=\"S'inscrire\"]")
 	WebElement lnkRegister;
 	
 	@FindBy(xpath = "//button[text()='Register now' or text()=\"S'inscrire maintenant\"]")
