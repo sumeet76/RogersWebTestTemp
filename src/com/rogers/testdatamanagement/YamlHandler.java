@@ -1,6 +1,5 @@
 package com.rogers.testdatamanagement;
 
-import com.rogers.yaml.pojo.*;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
@@ -8,6 +7,20 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+
+import com.rogers.yaml.pojo.AALData;
+import com.rogers.yaml.pojo.AccountData;
+import com.rogers.yaml.pojo.CHOneViewConfig;
+import com.rogers.yaml.pojo.Config;
+import com.rogers.yaml.pojo.ContactData;
+import com.rogers.yaml.pojo.HUPData;
+import com.rogers.yaml.pojo.MigrationData;
+import com.rogers.yaml.pojo.NACData;
+import com.rogers.yaml.pojo.PPCData;
+import com.rogers.yaml.pojo.PaymentDetails;
+import com.rogers.yaml.pojo.RedesignConfig;
+import com.rogers.yaml.pojo.RedesignRpotgData;
+import com.rogers.yaml.pojo.SauceSettings;
 
 public class YamlHandler {
 
@@ -324,5 +337,35 @@ public class YamlHandler {
 
 	}
 
+	public static RedesignConfig getRedesignConfig() {
+		Yaml yaml = new Yaml(new Constructor(RedesignConfig.class));
+		InputStream inputStream;
+		try {
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/redesignrogersNAC/RedesignRogersConfig.yml"));
+			RedesignConfig redesignconfig = yaml.load(inputStream);
+			return redesignconfig;
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
+
+	public static RedesignRpotgData getRedesignRpotgData() {
+		Yaml yaml = new Yaml(new Constructor(RedesignRpotgData.class));
+		InputStream inputStream;
+		try {
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/redesignrogersNAC/RedesignRpotgTestData.yml"));
+			RedesignRpotgData redesignRpotgData = yaml.load(inputStream);
+			return redesignRpotgData;
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 	
 }
