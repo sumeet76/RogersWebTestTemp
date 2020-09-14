@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -17,14 +18,10 @@ import java.lang.reflect.Method;
 public class RogersRedesign_TC_02_RpotgTest extends BaseTestClass {
 	String deviceName;
 
-	@BeforeMethod
-	@Parameters({ "strBrowser", "strLanguage" })
-	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext, Method method)
-			throws ClientProtocolException, IOException {
-		//xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.redesignConfig.getUrl(), strBrowser, strLanguage,
-				RogersEnums.GroupName.redesignrogers, method);
-
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
 	@Test
