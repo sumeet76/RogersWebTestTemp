@@ -12,7 +12,6 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
 
 public class RogersRedesign_TC_01_NonRpotgTest extends BaseTestClass {
 
@@ -21,7 +20,7 @@ public class RogersRedesign_TC_01_NonRpotgTest extends BaseTestClass {
     @BeforeMethod
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-    	xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+    	//xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
     	startSession(TestDataHandler.redesignConfig.getUrl(), strBrowser, strLanguage, RogersEnums.GroupName.redesignrogers, method);
 
     }
