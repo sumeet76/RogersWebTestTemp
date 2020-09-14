@@ -210,8 +210,8 @@ public class BaseTestClass {
 	 */
 	public void startSession(String strUrl, String strBrowser,  String strLanguage, String strGroupName , Method currentTestMethodName) throws ClientProtocolException, IOException {
 		RunParameters = getExecutionParameters(strBrowser, strLanguage);
-		String browser = RunParameters.get("Browser");
-		String language = RunParameters.get("Language");
+		String browser = RunParameters.get("Browser").toLowerCase();
+		String language = RunParameters.get("Language").toLowerCase();
 		if(browser.contains("sauce"))
 		{
 			sauceParameters = initializeSauceParamsMap(browser);
