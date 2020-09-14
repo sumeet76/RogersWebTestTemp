@@ -42,9 +42,9 @@ public class RogersCH_TC_010_IginteTV_TVPackageDowngradeTest extends BaseTestCla
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount(TestDataHandler.solarisTVAccount.accountDetails.getBan());
-    	//reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        reporter.reportLogWithScreenshot("Launched the Account Page");
+    	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+    	rogers_account_overview_page.selectAccount(TestDataHandler.solarisTVAccount.accountDetails.getBan());
+    	reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_solaris_tv_dashboard_page.clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         rogers_solaris_tv_dashboard_page.clkChangeTVPackage();
@@ -65,6 +65,7 @@ public class RogersCH_TC_010_IginteTV_TVPackageDowngradeTest extends BaseTestCla
 	public void afterTest() {
 		closeSession();
 	}
+
 
 
 

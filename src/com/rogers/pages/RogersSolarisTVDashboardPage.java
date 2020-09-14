@@ -512,7 +512,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void swapChannelIn(String strInChannel) {
-			reusableActions.getWhenReady(txtEnterChannelToSerach, 120).clear();
+			reusableActions.getWhenReady(txtEnterChannelToSerach, 60).clear();
 			reusableActions.getWhenReady(txtEnterChannelToSerach, 30).sendKeys(strInChannel);
 			reusableActions.waitForElementVisibility(btnSearchChannel,60);
 			reusableActions.executeJavaScriptClick(btnSearchChannel);			

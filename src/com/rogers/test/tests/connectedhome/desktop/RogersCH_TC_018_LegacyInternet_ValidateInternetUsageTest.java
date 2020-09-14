@@ -40,9 +40,9 @@ public class RogersCH_TC_018_LegacyInternet_ValidateInternetUsageTest extends Ba
 	    reporter.reportLogWithScreenshot("Skip popup");
 	    rogers_login_page.clkSkipIFrame();
 	    rogers_login_page.switchOutOfSignInIFrame();
-	    rogers_account_overview_page.selectAccount(TestDataHandler.legacyInternetAccount.accountDetails.getBan());
 		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-       reporter.reportLogWithScreenshot("Launched the Account Page");
+		rogers_account_overview_page.selectAccount(TestDataHandler.legacyInternetAccount.accountDetails.getBan());
+		reporter.reportLogWithScreenshot("Launched the Account Page");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		rogers_account_overview_page.clkLegacyInternetBadge();
 		reporter.reportLogWithScreenshot("Launched the Internet Dashboard Page");

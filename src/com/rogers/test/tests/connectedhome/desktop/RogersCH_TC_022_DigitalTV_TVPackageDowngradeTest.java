@@ -26,6 +26,7 @@ import java.lang.reflect.Method;
  **/
 
 public class RogersCH_TC_022_DigitalTV_TVPackageDowngradeTest extends BaseTestClass {
+	private String strLanguage=System.getProperty("Language");
 
 	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH"})
 	public void checkTVPackageDowngrade() {
@@ -47,7 +48,6 @@ public class RogersCH_TC_022_DigitalTV_TVPackageDowngradeTest extends BaseTestCl
 		rogers_account_overview_page.clkTVBadge();
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
 		rogers_digital_tv_dashboard_page.clkChangeMyPackage();
-		String strLanguage = TestDataHandler.chConfig.getLanguage();
 		if (strLanguage.equals("en"))
 		{
 		reporter.reportLogWithScreenshot("Launched the TV package Page");
