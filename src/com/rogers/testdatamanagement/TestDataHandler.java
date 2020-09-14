@@ -343,7 +343,7 @@ public class TestDataHandler {
 
 	private static void reDesignDataInit(){
 		redesignConfig=YamlHandler.getRedesignConfig();
-		sauceSettings = YamlHandler.getSauceSettings("/data/redesignrogersNAC/SauceSettings.yml");
+		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/redesignrogersNAC/SauceSettings.yml");
 		redesignRpotgData=YamlHandler.getRedesignRpotgData();
 	}
 

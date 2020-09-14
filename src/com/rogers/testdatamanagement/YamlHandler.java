@@ -1,6 +1,5 @@
 package com.rogers.testdatamanagement;
 
-import com.rogers.yaml.pojo.*;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
@@ -342,7 +341,7 @@ public class YamlHandler {
 		Yaml yaml = new Yaml(new Constructor(RedesignConfig.class));
 		InputStream inputStream;
 		try {
-			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/redesignrogersNAC/RedesignRogersConfig.yml"));
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/redesignrogersNAC/RedesignRogersConfig.yml"));
 			RedesignConfig redesignconfig = yaml.load(inputStream);
 			return redesignconfig;
 		} catch (FileNotFoundException e) {
@@ -358,7 +357,7 @@ public class YamlHandler {
 		Yaml yaml = new Yaml(new Constructor(RedesignRpotgData.class));
 		InputStream inputStream;
 		try {
-			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/data/redesignrogersNAC/RedesignRpotgTestData.yml"));
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/redesignrogersNAC/RedesignRpotgTestData.yml"));
 			RedesignRpotgData redesignRpotgData = yaml.load(inputStream);
 			return redesignRpotgData;
 		} catch (FileNotFoundException e) {
