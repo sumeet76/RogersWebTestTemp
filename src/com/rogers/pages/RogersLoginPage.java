@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 
 import com.rogers.pages.base.BasePageClass;
 
@@ -56,12 +57,18 @@ public class RogersLoginPage extends BasePageClass {
 
 	@FindBy(xpath = "//a[text()='Forgot username and/or password?' or contains(text(),\"Nom d'utilisateur ou mot de passe oublié?\")]")
 	WebElement btnForgotUserNameAndPassword;
+	
+	@FindBy(xpath = "//span[text()='Forgot username' or text()='Forgot username']")
+	WebElement lnkForgotUserName;
 
 	@FindBy(xpath = "//input[@id='password']/parent::div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement lblPassword;
 	
 	@FindBy(xpath = "//input[@id='username']/parent::div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement lblUserName;
+
+	@FindBy(xpath = "//span[text()='Forgot password ' or text()='Forgot password ']")
+	WebElement lnkForgotPassword;
 
 	/**
 	 * To switch to the iframe
@@ -200,10 +207,26 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkForgotPassOrNameIframe() {	
+		
 		reusableActions.clickIfAvailable(btnForgotUserNameAndPassword);
 	}
 
-	
+	/**
+	 * Clicks on Forgot Username iframe
+	 */
+	public void clkForgotUsernameIframe() {
+		reusableActions.getWhenReady(lnkForgotUserName).click();
+		
+	}
 
+	
+	/**
+	 * Clicks on Forgot Password iframe
+	 * @author Mirza.Kamran
+	 */
+	public void clkForgotPasswordIframe() {
+		reusableActions.getWhenReady(lnkForgotPassword).click();
+		
+	}
 	
 }

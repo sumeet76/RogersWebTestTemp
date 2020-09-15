@@ -39,16 +39,20 @@ public class RogersSS_TC_04_ValidateRecoverUsernameUsingSMSVerificationCode exte
     	rogers_home_page.clkSignIn(); 
     	reporter.reportLogWithScreenshot("Sign In Overlay");
 		rogers_login_page.switchToSignInIFrame();
-		rogers_login_page.clkForgotPassOrNameIframe();							
-		reporter.reportLogWithScreenshot("Forgot password or name is clicked.");
-		rogers_recover_pass_or_name.clkBtnUserName();
+		rogers_login_page.clkForgotUsernameIframe();							
+		reporter.reportLogWithScreenshot("Forgot username link is clicked.");
+		rogers_recover_pass_or_name.clkUseYourAccountInfoInsteadLink();
 		String strAccountNumber = TestDataHandler.tc040609.getAccountDetails().getBan();
+		String strPostcode =  TestDataHandler.tc040609.getAccountDetails().getPostalcode();
+		String strDOB =  TestDataHandler.tc040609.getAccountDetails().getDob();
 		strPassword = TestDataHandler.tc040609.getPassword();
 		rogers_recover_pass_or_name.setAccountNumber(strAccountNumber);
-		reporter.reportLogWithScreenshot("Set email for recover user name.");
+		rogers_recover_pass_or_name.setPostCode(strPostcode);
+		rogers_recover_pass_or_name.setDOB(strDOB);
+		reporter.reportLogWithScreenshot("Set Account, post code and DOB number for recover user name.");
 		rogers_recover_pass_or_name.clkBtnContinue();	
 		reporter.reportLogWithScreenshot("Click on Text as recovery option");
-		rogers_recover_pass_or_name.clkTextToAsRecoveryOption();
+		//rogers_recover_pass_or_name.clkTextToAsRecoveryOption();
 		String strTestingTab = getDriver().getWindowHandle();
 		
 		//Will open a new tab for ENS, to get verification code from ENS		
@@ -56,9 +60,11 @@ public class RogersSS_TC_04_ValidateRecoverUsernameUsingSMSVerificationCode exte
 			reporter.reportLogWithScreenshot("ENS");
 			String strPhoneNum = TestDataHandler.tc040609.getAccountDetails().getRecoveryNumber();
 			strRecoveredUserName = ensVerifications.getAccountUserName(strPhoneNum);			
-			getDriver().switchTo().window(strTestingTab);
+			getDriver().switchTo().window(strTestingTab);			
 			reporter.reportLogWithScreenshot("Close the Overlay");
 			rogers_recover_pass_or_name.switchToSetCodeIframe();
+			rogers_recover_pass_or_name.setRecoveryCode(strRecoveredUserName);
+			rogers_recover_pass_or_name.clkBtnContinue();
 			rogers_recover_pass_or_name.clkBtnCloseWeHaveTextedUserNameOverlay();			
 		} catch (Exception e) {
 			e.printStackTrace();

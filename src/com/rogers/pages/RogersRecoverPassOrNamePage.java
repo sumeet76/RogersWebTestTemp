@@ -2,6 +2,7 @@ package com.rogers.pages;
 
 import java.util.ArrayList;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -32,6 +33,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	
 	
 	@FindAll({
+		@FindBy(xpath = "//span[contains(text(),'Continue') or contains(text(),'Continuer')]/ancestor::button"),
 		@FindBy (xpath = "//button[contains(text(),'Continue') or contains(text(),'Continuer')]"),
 		@FindBy (xpath = "//button[@class='primary-button state-btn']")	
 	})	
@@ -83,6 +85,28 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	
 	@FindBy (xpath = "/html/body/table[1]//img[@alt='Return to sign in' or @alt='Ouvrir une session']")
 	WebElement btnReturnToSignin;
+
+	@FindBy(xpath = "//a[text()='Use your account information instead.']")
+	WebElement lnkUseYourAccountInfoInstead;
+
+	@FindBy(xpath = "//input[@formcontrolname='accountNumber']/parent::div")
+	WebElement lblAccountNumber;
+
+	@FindBy(xpath = "//input[@formcontrolname='postalCode']/parent::div")
+	WebElement lblPostCode;
+
+	@FindBy(xpath = "//input[@formcontrolname='postalCode']")
+	WebElement txtPostCode;
+		
+	@FindBy(xpath = "//input[@formcontrolname='dob']/parent::div")
+	WebElement lblDOB;
+
+	@FindBy(xpath = "//input[@formcontrolname='dob']")
+	WebElement txtDOB;
+
+	@FindBy(xpath = "//ds-code-input/div/div[1]/input")
+	WebElement inputCode;
+	
 	
 	public void clkBtnPassword() {
 		reusableActions.getWhenVisible(btnPassword).click();
@@ -259,6 +283,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setAccountNumber(String strAccountNumber) {
+		reusableActions.getWhenReady(lblAccountNumber).click();
 		reusableActions.getWhenReady(txtAcountNumber).clear();
 		reusableActions.getWhenReady(txtAcountNumber).sendKeys(strAccountNumber);
 	}
@@ -290,4 +315,46 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 		getDriver().switchTo().window(tabs.get(intTabIndex));
 	}
+
+	/**
+	 * Clicks on the account link
+	 * @author Mirza.Kamran
+	 */
+	public void clkUseYourAccountInfoInsteadLink() {
+	  reusableActions.getWhenReady(lnkUseYourAccountInfoInstead).click();		
+	}
+
+	/**
+	 * Sets the Postcode number for recovery
+	 * @param strPostcode, String, postcode 
+	 * @author Mirza.Kamran
+	 */
+	public void setPostCode(String strPostcode) {	
+			reusableActions.getWhenReady(lblPostCode).click();
+			reusableActions.getWhenReady(txtPostCode).clear();
+			reusableActions.getWhenReady(txtPostCode).sendKeys(strPostcode);
+	
+	}
+
+	/**
+	 * Sets the DOB  for recovery
+	 * @param strDOB, String, DOB 
+	 * @author Mirza.Kamran
+	 */
+	public void setDOB(String strDOB) {
+		reusableActions.getWhenReady(lblDOB).click();
+		reusableActions.getWhenReady(txtDOB).clear();
+		reusableActions.getWhenReady(txtDOB).sendKeys(strDOB);
+	}
+
+	/**
+	 * @param strRecoveredUserName 
+	 * 
+	 */
+	public void setRecoveryCode(String strRecoveredUserName) {
+		
+		reusableActions.getWhenReady(inputCode).sendKeys(strRecoveredUserName);
+	}
+	
+	
 }

@@ -47,6 +47,7 @@ public class AccountDetails {
 	private String dealerCode;
 	private String rhmPackageEn;
 	private String rhmPackageFr;
+	private String dob;
 	
 	public String getRhmPackageEn() {
 		return rhmPackageEn;
@@ -530,5 +531,19 @@ public class AccountDetails {
 	 */
 	public void setDealerCode(String dealerCode) {
 		this.dealerCode = dealerCode;
+	}
+
+	/**
+	 * @return the dob
+	 */
+	public String getDob() {
+		return dob;
+	}
+
+	/**
+	 * @param dob the dob to set
+	 */
+	public void setDob(String dob) {
+		this.dob = dob;
 	}
 }
