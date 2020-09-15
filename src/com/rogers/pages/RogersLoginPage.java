@@ -59,6 +59,9 @@ public class RogersLoginPage extends BasePageClass {
 
 	@FindBy(xpath = "//input[@id='password']/parent::div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement lblPassword;
+	
+	@FindBy(xpath = "//input[@id='username']/parent::div[contains(@class,'ds-formField__inputContainer')]")
+	WebElement lblUserName;
 
 	/**
 	 * To switch to the iframe
@@ -84,6 +87,7 @@ public class RogersLoginPage extends BasePageClass {
 	 */	
 
 	public void setUsernameIFrame(String strUsername) {
+		reusableActions.getWhenReady(lblUserName).click();
 		reusableActions.getWhenVisible(txtUsername, 30).clear();
 		reusableActions.getWhenVisible(txtUsername).sendKeys(strUsername);
 	}
