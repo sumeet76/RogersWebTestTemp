@@ -268,7 +268,7 @@ public class BaseTestClass {
  			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 		}
 	    setImplicitWait(getDriver(), 10);	
-		getDriver().manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+		getDriver().manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 	    init(strGroupName);	 
  }
 		

@@ -609,9 +609,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author Ning.Xue
 	 */
 	public void clkDropDownAccount(String strLast4DigAcctNum) {
-		reusableActions.getWhenReady(
-				(By.xpath("//span[contains(text(),'" + strLast4DigAcctNum + "')or contains(text(),'" + strLast4DigAcctNum + "')]")), 
-				10).click();
+		reusableActions.clickWhenReady(
+				(By.xpath("//span[contains(@data-translate-values,'" + strLast4DigAcctNum + "')or contains(text(),'" + strLast4DigAcctNum + "')]")), 
+				10);
 
 	}
 	
