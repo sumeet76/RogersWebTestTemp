@@ -87,7 +87,7 @@ public class RogersLoginPage extends BasePageClass {
 	 */	
 
 	public void setUsernameIFrame(String strUsername) {
-		reusableActions.getWhenReady(lblUserName).click();
+		reusableActions.getWhenReady(lblUserName,20).click();
 		reusableActions.getWhenVisible(txtUsername, 30).clear();
 		reusableActions.getWhenVisible(txtUsername).sendKeys(strUsername);
 	}
