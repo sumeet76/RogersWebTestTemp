@@ -28,7 +28,7 @@ public class RogersBuyPage extends BasePageClass {
 	@FindBy(xpath = "//a[@data-smartserviceability-config='{ \"lob\": \"dtv\", \"data\": { \"package\": \"QDPA\" } }']")
 	WebElement lnkDigitalTVPackage;
 
-	@FindBy(id = "addressLookupField-0")
+	@FindBy(xpath = "//input[@id='addressLookupField-0']")
 	WebElement txtAddressLookup;
 
 	@FindBy(id = "addressLookupSubmit-0")
@@ -107,7 +107,7 @@ public class RogersBuyPage extends BasePageClass {
  * @author chinnarao.vattam
  */
 	public void setAddressLookup(String strAddress) {
-		reusableActions.getWhenReady(txtAddressLookup,30).clear();
+		reusableActions.getWhenReady(txtAddressLookup,60).clear();
 		reusableActions.getWhenReady(txtAddressLookup, 10).sendKeys(strAddress);
 		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.TAB);
 		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.ARROW_DOWN);
@@ -162,9 +162,9 @@ public class RogersBuyPage extends BasePageClass {
 	public void selectHomeMoniteringPackage(String strHomeMoniteringEn, String strHomeMoniteringFr ) {
 		By packageNameLocator = By.xpath("//h3[contains(text(),'"+strHomeMoniteringEn+ "') or contains(text(),'"+ strHomeMoniteringFr+ "')]/ancestor::div[@class='package-tile']//div[@class='how-to-get-it']//a[@class='rogers-btn-solid']");
 		WebElement pkg = driver.findElement(packageNameLocator);
-		reusableActions.waitForElementVisibility(pkg, 180);
+		reusableActions.waitForElementVisibility(pkg, 60);
 		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(packageNameLocator, 180);
+		reusableActions.getWhenReady(packageNameLocator, 30);
 		reusableActions.executeJavaScriptClick(pkg);
 	}
 	

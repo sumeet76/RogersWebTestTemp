@@ -1,10 +1,7 @@
 /target/
 .classpath
-.settings/org.eclipse.core.resources.prefs
 .project
-.settings/org.eclipse.jdt.core.prefs
-.settings/org.eclipse.m2e.core.prefs
-ExtentReports/ExtentReportResults.html
+.settings/
 test-output/
 debug.log
 ExtentReports/
@@ -12,10 +9,10 @@ ExtentReports/
 *.png
 rogers_property.dat
 .checkstyle
-msedgedriver
 *.orig
 .gradle
-<<<<<<< Updated upstream
+bin/
+build/
 gradle
 .idea
 /build
@@ -26,8 +23,6 @@ gradlew
 gradlew.bat
 
 fido_property.dat
-=======
 .idea/
 *.iml
 /build/
->>>>>>> Stashed changes

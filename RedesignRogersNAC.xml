@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Redesign Rogers Tests NAC" parallel="tests" thread-count="1">
+<parameter name="strBrowser" value="saucechrome"/>
+<parameter name="strLanguage" value="en"/> 
+
+<listeners>
+		<listener
+			class-name="com.rogers.test.listeners.TestListener" />
+		<listener
+			class-name="com.rogers.test.listeners.AnnotationTransformer" />
+	</listeners>	
+<test name="RogersRedesign_TC_01_NonRpotgTest" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.redesignrogersnac.RogersRedesign_TC_01_NonRpotgTest" ></class>
+</classes>          																					
+</test>
+<test name="RogersRedesign_TC_02_RpotgTest" enabled="true">
+<classes>				             
+<class name="com.rogers.test.tests.redesignrogersnac.RogersRedesign_TC_02_RpotgTest"></class>
+
+</classes>          																					
+</test>
+</suite>

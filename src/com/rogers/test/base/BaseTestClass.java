@@ -4,10 +4,51 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.rogers.oneview.pages.*;
 import com.rogers.pages.RogersBuildPlanPage;
+import com.rogers.pages.RogersBuyPage;
+import com.rogers.pages.RogersCartSummaryPage;
+import com.rogers.pages.RogersChangeMyCallerIdPage;
+import com.rogers.pages.RogersChangePaymentMethodPage;
+import com.rogers.pages.RogersChangePlanPage;
+import com.rogers.pages.RogersChangeSEPlanPage;
+import com.rogers.pages.RogersCheckoutPage;
 import com.rogers.pages.RogersChooseAddonsPage;
 import com.rogers.pages.RogersChoosePhonePage;
 import com.rogers.pages.RogersChoosePlanPage;
+import com.rogers.pages.RogersDeviceCataloguePage;
+import com.rogers.pages.RogersDeviceConfigPage;
+import com.rogers.pages.RogersDigitalTVDashboardPage;
+import com.rogers.pages.RogersDigitalTVPackageSelectionPage;
+import com.rogers.pages.RogersHomePage;
+import com.rogers.pages.RogersHomePhonePortInPage;
+import com.rogers.pages.RogersHomePhoneSelectionPage;
+import com.rogers.pages.RogersIgniteTVBuyPage;
+import com.rogers.pages.RogersIgniteTVCreditCheckPage;
+import com.rogers.pages.RogersIgniteTVProfileCreationPage;
+import com.rogers.pages.RogersInternetCreditCheckPage;
+import com.rogers.pages.RogersInternetDashboardPage;
+import com.rogers.pages.RogersInternetPackageSelectionPage;
+import com.rogers.pages.RogersInternetProfilePage;
+import com.rogers.pages.RogersInternetUsagePage;
+import com.rogers.pages.RogersLegacyBundleBuyPage;
+import com.rogers.pages.RogersLinkAccountPage;
+import com.rogers.pages.RogersLoginPage;
+import com.rogers.pages.RogersMakePaymentPage;
+import com.rogers.pages.RogersManageDataPage;
+import com.rogers.pages.RogersNACOrderConfirmationPage;
+import com.rogers.pages.RogersOrderConfirmationPage;
+import com.rogers.pages.RogersOrderReviewPage;
+import com.rogers.pages.RogersOrderSummaryPage;
+import com.rogers.pages.RogersPaymentOptionsPage;
 import com.rogers.pages.RogersPaymentPage;
+import com.rogers.pages.RogersPlanConfigPage;
+import com.rogers.pages.RogersProfileAndSettingsPage;
+import com.rogers.pages.RogersRecoverPassOrNamePage;
+import com.rogers.pages.RogersRegisterPage;
+import com.rogers.pages.RogersReviewOrderPage;
+import com.rogers.pages.RogersSHMDashboardPage;
+import com.rogers.pages.RogersSecurePaymentPage;
+import com.rogers.pages.RogersSetPasswordPage;
+import com.rogers.pages.RogersShareEverythingPage;
 import com.rogers.pages.RogersShippingPage;
 import com.rogers.pages.RogersWirelessDetailsPage;
 import com.rogers.pages.*;
@@ -144,6 +185,12 @@ public class BaseTestClass {
 	//int port = 4723;	
 	private CaptchaBypassHandlers captcha_bypass_handlers;
 	private Map<String, String> sauceParameters;
+	protected RogersDeviceCataloguePage rogers_device_catalogue_page;
+	protected RogersDeviceConfigPage rogers_device_config_page;
+	protected RogersPlanConfigPage rogers_plan_config_page;
+	protected RogersCheckoutPage rogers_checkout_page;
+	protected RogersReviewOrderPage rogers_review_order_page;
+	protected RogersNACOrderConfirmationPage rogers_NAC_order_confirmation_page;
 	private Map<String,String> RunParameters;
 		
 		public BaseTestClass() {
@@ -163,8 +210,8 @@ public class BaseTestClass {
 	 */
 	public void startSession(String strUrl, String strBrowser,  String strLanguage, String strGroupName , Method currentTestMethodName) throws ClientProtocolException, IOException {
 		RunParameters = getExecutionParameters(strBrowser, strLanguage);
-		String browser = RunParameters.get("Browser");
-		String language = RunParameters.get("Language");
+		String browser = RunParameters.get("Browser").toLowerCase();
+		String language = RunParameters.get("Language").toLowerCase();
 		if(browser.contains("sauce"))
 		{
 			sauceParameters = initializeSauceParamsMap(browser);
@@ -212,6 +259,7 @@ public class BaseTestClass {
 			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 			break;
 			
+		case "redesignrogers":	
 		case "buyflowsoneview": driver.get(strUrl);
 			break; 
 		
@@ -495,6 +543,14 @@ public class BaseTestClass {
 			channels_Theme_Packs_Page=new ChannelsAndThemePacksPage(getDriver());
 			home_Phone_Addons_Page=new HomePhoneAddonsPage(getDriver());
 			break;		
+			
+		case "redesignrogers":
+			rogers_device_catalogue_page=new RogersDeviceCataloguePage(getDriver());
+			rogers_device_config_page=new RogersDeviceConfigPage(getDriver());
+			rogers_plan_config_page=new RogersPlanConfigPage(getDriver());
+			rogers_checkout_page=new RogersCheckoutPage(getDriver());
+			rogers_review_order_page=new RogersReviewOrderPage(getDriver());
+			rogers_NAC_order_confirmation_page=new RogersNACOrderConfirmationPage(getDriver());
 		
 		case "buyflowsoneview":
 			
