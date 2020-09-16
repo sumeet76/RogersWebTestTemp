@@ -413,6 +413,15 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='vas-subscriber-number']")
 	WebElement paneSMPSubsCTN;
 
+	@FindBy(xpath = "//p[text()='One or more of your services are suspended. ']")
+	WebElement lblServiceSuspended;
+
+	@FindBy(xpath = "//rds-bold-chat//div[@class='live-chat-link-suspended bcStatic']")
+	WebElement btnLiveChatInsideSuspendedNotification;
+
+	@FindBy(xpath = "//div[@title='Rogers Live Chat']")
+	WebElement headerRogersLiveChat;
+
 	
 	
 	/**
@@ -1250,6 +1259,16 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	}
 
 	/**
+	 * To verify if the live chat overlay opened in wireless dashboard page
+	 * @return true if the overlay opened otherwise false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyLiveChatOverlayOpenedFromSuspensionNotification() {	
+	  
+			return reusableActions.isElementVisible(headerRogersLiveChat, 30);		
+	}
+	
+	/**
 	 * Clicks on back to devices page
 	 * @author Mirza.Kamran
 	 */
@@ -1684,5 +1703,23 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			return (reusableActions.getWhenReady(paneSMPSubsCTN).getText().trim().replaceAll(" ","").replaceAll("-","").contains(strSubscriberNumber)
 					&& reusableActions.isElementVisible(lblSMPpromotionStarted)
 					&& reusableActions.isElementVisible(btnCancelSubscription));
+		}
+
+		/**
+		 * Service suspended notification is displayed
+		 * @author Mirza.Kamran
+		 * @return true if the suspended service notification is displayed else false
+		 */
+		public boolean isServicesSuspendedNotificationDisplayed() {			
+			return (reusableActions.isElementVisible(lblServiceSuspended)
+					&& reusableActions.isElementVisible(btnLiveChatInsideSuspendedNotification));
+		}
+		
+		/**
+		 * Clicks on Button live chat inside the suspension notification
+		 * @author Mirza.Kamran
+		 */
+		public void clkBtnLiveChatInsideSuspensionNotification() {
+			reusableActions.getWhenReady(btnLiveChatInsideSuspendedNotification).click();
 		}
 }
