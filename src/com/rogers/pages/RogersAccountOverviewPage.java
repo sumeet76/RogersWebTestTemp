@@ -36,6 +36,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//ds-icon/following-sibling::span[contains(text(),'Suspended')]")
 	WebElement suspendedCTN;
 	
+	@FindBy(xpath = "//rss-subscription-detail//span[text()=' Suspended ' or text()=' Suspendu ']")
+	List<WebElement> lstSuspendedCTNs;
+	
 	@FindBy(xpath = "//div[@class='row modal-content-header']//button[@class='close']")
 	WebElement popUpInternetPopup;
 
@@ -413,13 +416,13 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='vas-subscriber-number']")
 	WebElement paneSMPSubsCTN;
 
-	@FindBy(xpath = "//p[text()='One or more of your services are suspended. ']")
+	@FindBy(xpath = "//p[text()='One or more of your services are suspended. ' or text()='Au moins un de vos services est suspendu. ']")
 	WebElement lblServiceSuspended;
 
 	@FindBy(xpath = "//rds-bold-chat//div[@class='live-chat-link-suspended bcStatic']")
 	WebElement btnLiveChatInsideSuspendedNotification;
 
-	@FindBy(xpath = "//div[@title='Rogers Live Chat']")
+	@FindBy(xpath = "//div[@title='Rogers Live Chat' or @title='Clavardage en direct de Rogers']")
 	WebElement headerRogersLiveChat;
 
 	
@@ -1085,7 +1088,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean isSuspendedCTNAvailable() {	
 		
-		return reusableActions.isElementVisible(suspendedCTN);
+		return reusableActions.isElementVisible(lstSuspendedCTNs.get(0));
 				
 	}
 	
@@ -1094,7 +1097,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkSuspendedCTN() {	
-		reusableActions.getWhenReady(suspendedCTN).click();
+		reusableActions.getWhenReady(lstSuspendedCTNs.get(0)).click();
 	}
 	
 	
