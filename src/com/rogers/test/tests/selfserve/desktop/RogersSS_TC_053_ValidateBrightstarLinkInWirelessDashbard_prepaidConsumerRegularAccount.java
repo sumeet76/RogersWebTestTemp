@@ -30,8 +30,8 @@ public class RogersSS_TC_053_ValidateBrightstarLinkInWirelessDashbard_prepaidCon
     @Test
     public void validateBrightstarLink() {
     	rogers_home_page.clkSignIn();
-    	String strUsername = TestDataHandler.tc98.getUsername();
-    	String strPassword = TestDataHandler.tc98.getPassword();
+    	String strUsername = TestDataHandler.tc5398.getUsername();
+    	String strPassword = TestDataHandler.tc5398.getPassword();
     	rogers_login_page.switchToSignInIFrame();
         rogers_login_page.setUsernameIFrame(strUsername);
         rogers_login_page.setPasswordIFrame(strPassword);
@@ -46,9 +46,10 @@ public class RogersSS_TC_053_ValidateBrightstarLinkInWirelessDashbard_prepaidCon
        // rogers_account_overview_page.removeCookieAfterLogin("temp_token_r");
         rogers_account_overview_page.clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
-        String strAccountNum = TestDataHandler.tc98.getAccountDetails().getCtn();
-        if (rogers_account_overview_page.isAccountShowInDropDown(strAccountNum.substring(strAccountNum.length()-4))) {
-            rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
+        String strAccountNum = TestDataHandler.tc5398.getAccountDetails().getCtn();
+        String strLast4Dig = strAccountNum.substring(strAccountNum.length()-4);
+        if (rogers_account_overview_page.isAccountShowInDropDown(strLast4Dig)) {
+            rogers_account_overview_page.clkDropDownAccount(strLast4Dig);
         } else {
         	rogers_account_overview_page.clkSubMenuWirelessUsage();
         }
