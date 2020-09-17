@@ -25,7 +25,7 @@ import java.lang.reflect.Method;
  **/
 
 public class RogersCH_TC_025_LegacyInternet_InternetPackageUpgradeTest extends BaseTestClass {
-
+	final String strLanguage=System.getProperty("Language");
 	
 	@Test(groups = {"RegressionCH","LegacyTVFlowsCH"})
 	public void checkInternetPackageUpgrade() {
@@ -47,7 +47,7 @@ public class RogersCH_TC_025_LegacyInternet_InternetPackageUpgradeTest extends B
 		rogers_account_overview_page.clkInternetPopup(); 
 		rogers_internet_dashboard_page.clkChangeInternetPackage();
 		reporter.reportLogWithScreenshot("Launched the Internet package Page");
-		rogers_internet_package_selection_page.selectInternetPackage(TestDataHandler.legacyInternetAccountUpgrade.getAccountDetails().getUpgradePlanEn(),TestDataHandler.legacyInternetAccountUpgrade.getAccountDetails().getUpgradePlanFr(), TestDataHandler.chConfig.getLanguage());
+		rogers_internet_package_selection_page.selectInternetPackage(TestDataHandler.legacyInternetAccountUpgrade.getAccountDetails().getUpgradePlanEn(),TestDataHandler.legacyInternetAccountUpgrade.getAccountDetails().getUpgradePlanFr(), strLanguage);
 		reporter.reportLogWithScreenshot("Launched the upgrade modem popup");
 		rogers_internet_package_selection_page.clkUpgradeContinue();		
 		rogers_internet_package_selection_page.clkCheckout();		

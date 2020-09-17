@@ -1,8 +1,6 @@
 package com.rogers.test.tests.connectedhome.desktop;
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-
+import com.rogers.test.base.BaseTestClass;
+import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
@@ -10,8 +8,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import com.rogers.test.base.BaseTestClass;
-import com.rogers.testdatamanagement.TestDataHandler;
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.util.HashMap;
 
 /**
  * This class contains the test method to test Digital TV Offer Buy flow for Rogers.com  
@@ -49,7 +48,7 @@ public class RogersCH_TC_002_DigitalTV_BuyTVOfferTest extends BaseTestClass {
 	@BeforeMethod @Parameters({ "strBrowser", "strLanguage","strGroupName"})
 	//legacyAnonymous
 	public void beforeTest(String strBrowser, String strLanguage, String strGroupName,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(TestDataHandler.chConfig.getRogersURL(),  strBrowser,strLanguage,strGroupName, method);
+		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,strGroupName, method);
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 

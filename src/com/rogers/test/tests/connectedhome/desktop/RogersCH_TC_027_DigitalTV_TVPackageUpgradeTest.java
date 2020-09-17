@@ -26,6 +26,7 @@ import java.lang.reflect.Method;
  **/
 
 public class RogersCH_TC_027_DigitalTV_TVPackageUpgradeTest extends BaseTestClass {
+	final String strLanguage=System.getProperty("Language");
 
 	@Test(groups = {"RegressionCH","LegacyTVFlowsCH"})
 	public void checkTVPackageUpgrade() {
@@ -47,7 +48,6 @@ public class RogersCH_TC_027_DigitalTV_TVPackageUpgradeTest extends BaseTestClas
 		rogers_account_overview_page.clkTVBadge();
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
 		rogers_digital_tv_dashboard_page.clkChangeMyPackage();
-		String strLanguage = TestDataHandler.chConfig.getLanguage();
 		if (strLanguage.equals("en"))
 		{
 		reporter.reportLogWithScreenshot("Launched the TV package Page");

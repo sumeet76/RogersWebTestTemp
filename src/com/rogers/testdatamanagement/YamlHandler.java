@@ -84,21 +84,6 @@ public class YamlHandler {
 
 	}
 	
-	public static Config getCableConfig() {
-		Yaml yaml = new Yaml(new Constructor(Config.class));
-		InputStream inputStream;
-		try {
-			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/connectedhome/Config.yml"));
-			Config config = yaml.load(inputStream);
-			return config;
-		} catch (FileNotFoundException e) {
-
-			e.printStackTrace();
-			return null;
-		}
-
-	}
-	
 	public static Config getBFAConfig() {
 		Yaml yaml = new Yaml(new Constructor(Config.class));
 		InputStream inputStream;

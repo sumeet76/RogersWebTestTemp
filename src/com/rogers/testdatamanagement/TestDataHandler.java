@@ -20,7 +20,6 @@ public class TestDataHandler {
 	public static Config ssConfig;
 	public static PaymentDetails paymentInfo;
 	public static Config bfaConfig;
-	public static Config chConfig;
 	public static CHOneViewConfig chOneViewConfig;
 	public static PaymentDetails bfaPaymentInfo;
 	public static PaymentDetails chPaymentInfo;	
@@ -185,7 +184,6 @@ public class TestDataHandler {
 	}
 	
 	private static void connectedHomeDataInit() {
-		chConfig =  YamlHandler.getCableConfig();
       	chPaymentInfo = YamlHandler.getCablePaymentDetails();
       	sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/connectedhome/SauceSettings.yml");
       	//sacueConfig = YamlHandler.getSauceConfig();              	
