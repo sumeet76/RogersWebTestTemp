@@ -50,8 +50,9 @@ public class RogersSS_TC_052_ValidateBrightstarLinkInWirelessDashbard_postpaidCo
         rogers_account_overview_page.clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
         String strAccountNum = TestDataHandler.tc495271.getAccountDetails().getCtn();
-        if (rogers_account_overview_page.isAccountShowInDropDown(strAccountNum.substring(strAccountNum.length()-4))) {
-            rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
+        String strLast4Dig = strAccountNum.substring(strAccountNum.length()-4);
+        if (rogers_account_overview_page.isAccountShowInDropDown(strLast4Dig)) {
+            rogers_account_overview_page.clkDropDownAccount(strLast4Dig);
         } else {
         	rogers_account_overview_page.clkSubMenuWirelessUsage();
         }

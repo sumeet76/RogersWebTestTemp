@@ -35,7 +35,6 @@ public class TestDataHandler {
 	public static AccountData tc36;
 	public static AccountData tc495271;
 	public static AccountData tc5074;
-	public static AccountData tc53;
 	public static AccountData tc54;
 	public static AccountData tc55;
 	public static AccountData tc56;
@@ -148,7 +147,7 @@ public class TestDataHandler {
 	public static AccountData tc92;
 	public static AccountData tc95;
 	public static AccountData tc90;
-	public static AccountData tc98;
+	public static AccountData tc5398;
 	public static AccountData tc94;
 	public static AccountData tc102;
 	public static AccountData tc103;
@@ -265,7 +264,6 @@ public class TestDataHandler {
     	tc36 = YamlHandler.getSSAccountData("tc36PostpaidWithBill");
     	tc495271 = YamlHandler.getSSAccountData("tc49_52_71NSE");
     	tc5074 = YamlHandler.getSSAccountData("tc50_74InfiniteSE(Demoline)");
-    	tc53 = YamlHandler.getSSAccountData("tc53Prepaid");
     	tc54 = YamlHandler.getSSAccountData("tc54NSEwithUnlimitedTTOnlyPlan");
     	tc55 = YamlHandler.getSSAccountData("tc55NSEwithLimitedTTOnlyPlan");
     	tc56 = YamlHandler.getSSAccountData("tc56NSEwithDataOnlyPlan");
@@ -291,7 +289,7 @@ public class TestDataHandler {
     	tc94 = YamlHandler.getSSAccountData("tc94CreditLimitExceededAccountSEInfinite");
     	tc95 = YamlHandler.getSSAccountData("tc95NSESuspendedCTN");
     	tc90 = YamlHandler.getSSAccountData("tc90_SE_NSE_ResidentialServices");
-    	tc98 = YamlHandler.getSSAccountData("tc98PrepaidAccount");
+    	tc5398 = YamlHandler.getSSAccountData("tc53_98PrepaidAccount");
     	tc102 = YamlHandler.getSSAccountData("tc102NSEInfinite50Cancellation");
     	tc103 = YamlHandler.getSSAccountData("tc103Infinite20Redeem");
     	

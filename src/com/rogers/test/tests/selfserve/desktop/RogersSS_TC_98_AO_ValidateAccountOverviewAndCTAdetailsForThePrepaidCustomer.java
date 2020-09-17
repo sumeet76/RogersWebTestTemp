@@ -33,8 +33,8 @@ public class RogersSS_TC_98_AO_ValidateAccountOverviewAndCTAdetailsForThePrepaid
         reporter.reportLog("Home Page Launched");
     	rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(TestDataHandler.tc98.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.tc98.getPassword());
+        rogers_login_page.setUsernameIFrame(TestDataHandler.tc5398.getUsername());
+        rogers_login_page.setPasswordIFrame(TestDataHandler.tc5398.getPassword());
         reporter.reportLogWithScreenshot("Login Credential is entered.");
         rogers_login_page.clkSignInIFrame();
         reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
@@ -43,7 +43,7 @@ public class RogersSS_TC_98_AO_ValidateAccountOverviewAndCTAdetailsForThePrepaid
 
         if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-        	rogers_account_overview_page.selectAccount(TestDataHandler.tc98.getAccountDetails().getBan());       
+        	rogers_account_overview_page.selectAccount(TestDataHandler.tc5398.getAccountDetails().getBan());       
         }
         reporter.reportLogWithScreenshot("Account overview page.");
         //reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Passed", "Login Failed");
