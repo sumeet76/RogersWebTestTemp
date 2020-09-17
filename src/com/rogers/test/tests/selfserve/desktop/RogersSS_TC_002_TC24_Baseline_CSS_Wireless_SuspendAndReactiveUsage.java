@@ -50,7 +50,7 @@ public class RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage 
         reporter.reportLogWithScreenshot("Service successfully suspended.");
     }
 	
-    @Test (dependsOnMethods = "validateSuspendUsage")
+    @Test (dependsOnMethods = "validateSuspendUsage",groups = {"SanitySS","RegressionSS","WirelessDashboardSS"})
     public void validateReactivateService() {
     	this.loginAndNavToDashboard();
       //Click on 'Reactive' link in Services page.
