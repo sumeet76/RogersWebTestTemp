@@ -1,19 +1,13 @@
 package com.rogers.test.tests.selfserve.desktop;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
-import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 /**
  *  De-scoped-Need Manually Change PP from CSM
@@ -24,9 +18,9 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class RogersSS_TC_068_ValidatePricePlanChangeToInfiniteSharedPlan extends BaseTestClass {	
    	
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
-			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
+		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+			startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 		}
 	   	
 		
@@ -75,15 +69,15 @@ public class RogersSS_TC_068_ValidatePricePlanChangeToInfiniteSharedPlan extends
 Since you've made the recent change, usage details won't be available until your next billing cycle.	
          */
         reporter.reportLogWithScreenshot("Dashboard View");        
-        reporter.softAssert(rogers_wireless_dashboard_page.verifySpeedReducedMsg(),
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifySpeedReducedMsg(),
             		"Usage page displays  the reduced speeds message",
             		"Usage page does not displays the reduced speeds message");	        
                
-        reporter.softAssert(rogers_wireless_dashboard_page.verifySpeedPassButtonIsDisplayed(),
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifySpeedPassButtonIsDisplayed(),
 							"Link add speed pass is displayed",
 							"Link add speed pass is not displayed");
         reporter.reportLogWithScreenshot("Add speed pass is displayed");
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyCallOutMsgToAddSpeedPassIsDisplayed(),
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyCallOutMsgToAddSpeedPassIsDisplayed(),
 							"Call out message to Add speed pass is displayed",
 							"call out message to add speed pass is not displayed");
         
@@ -100,7 +94,7 @@ Since you've made the recent change, usage details won't be available until your
 //        }
         rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
                 
-        reporter.softAssert(!rogers_wireless_dashboard_page.verifyCallOutMsgToAddSpeedPassIsDisplayed(),
+        reporter.hardAssert(!rogers_wireless_dashboard_page.verifyCallOutMsgToAddSpeedPassIsDisplayed(),
 				"Call out message to Add speed pass is NOT displayed",
 				"call out message to add speed pass is displayed even after closing in the same session, please investigate");
         

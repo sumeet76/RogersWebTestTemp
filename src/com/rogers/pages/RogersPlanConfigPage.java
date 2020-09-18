@@ -33,11 +33,11 @@ public class RogersPlanConfigPage extends BasePageClass {
     
     @FindBy(xpath = "//ds-step[@id='stepper-addons']//div[@class='d-flex flex-row-reverse']//button")
     WebElement preCartSummaryContinueButtonAddOns;
-
+    
     //@FindBy(xpath = "//button[@id='main-continue-button']")
     @FindBy(xpath ="//button[@data-test='build-plan-checkout-flow-button']/span")
     WebElement continueButtonOnCartSummary;
-
+    
     @FindBy(xpath = "//button[@id='get-bpo-offer-button' or @data-test='bpo-offer-modal-button-primary']")
     WebElement getBPOOfferOnDeviceProtection;
 
@@ -85,7 +85,7 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     @FindBy(xpath = "//span[contains(text(),'Apportez votre propre appareil') or contains(text(),'Bring Your Own Device')]")
     WebElement bringYourOwnDeviceInBreadCrumb;
-    
+
     /**
      * Select Device Protection Header on Plan config page
      */
@@ -450,7 +450,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     /**
      * This method will verify BreadCrumb on Plan config Page
      * @param deviceName: String of device name
-     * @return true if breadcrum is displayed fine else false
+     * @return true if breadcrumb is displayed fine else false
      * @author saurav.goyal
      */
     public boolean verifyBreadCrumb(String deviceName) {
@@ -460,8 +460,8 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
     
     /**
-     * This method will verify BreadCrumb on Plan config Page for BYOD
-     * @return true if breadcrum is displayed fine else false
+     * This method will verify BreadCrumb on Plan config Page for NAC BYOD
+     * @return true if breadcrumb is displayed fine else false
      * @author saurav.goyal
      */
     public boolean verifyBreadCrumb() {

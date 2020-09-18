@@ -1,27 +1,23 @@
 package com.rogers.test.tests.selfserve.desktop;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 
 
 public class RogersSS_TC_077_ValidateSupportSectionInWirelessDasboard_NSEInfinite extends BaseTestClass {	
    	
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
-			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
+		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+			startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
 		}
 	   	
 		
@@ -31,7 +27,7 @@ public class RogersSS_TC_077_ValidateSupportSectionInWirelessDasboard_NSEInfinit
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateSupportSectionOnWirelessDashboardPage() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc6577.getUsername();
@@ -63,24 +59,24 @@ public class RogersSS_TC_077_ValidateSupportSectionInWirelessDasboard_NSEInfinit
                        
         //rogers_wireless_dashboard_page.scrollToBottomOfPage();
         reporter.reportLogWithScreenshot("Bottom of Wireless dashboard page."); 
-        reporter.softAssert(rogers_wireless_dashboard_page.verifySupportSection(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifySupportSection(), 
         					"Support section is loaded in wireless dashboard page", 
         					"Support section is NOT loaded in wireless dashboard page");
         String strBaseUrl = TestDataHandler.ssConfig.getRogersURL();
         strBaseUrl = strBaseUrl.substring(0, strBaseUrl.lastIndexOf("com")+3);
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyLinkFaqUnlockDevice(strBaseUrl), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLinkFaqUnlockDevice(strBaseUrl), 
 				"FAQ: Unlocking Device link in Support section is validated successfully.", 
 				"Something wrong with FAQ: Unlocking Device link in Support section.");
         reporter.reportLogWithScreenshot("After click FAQ: Unlocking Device link."); 
         rogers_wireless_dashboard_page.navigateBacktoDashboardPage();
         
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyLinkDeviceProtection(strBaseUrl), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLinkDeviceProtection(strBaseUrl), 
 				"Device Protection link in Support section is validated successfully.", 
 				"Something wrong with Device protection link in Support section.");
         reporter.reportLogWithScreenshot("After click Device Protection link."); 
         rogers_wireless_dashboard_page.navigateBacktoDashboardPage();
         
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyLinkNetworkAid(strBaseUrl), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLinkNetworkAid(strBaseUrl), 
 				"Network Aid link in Support section is validated successfully.", 
 				"Something wrong with Network Aid link in Support section.");
         reporter.reportLogWithScreenshot("After click Network Aid link."); 

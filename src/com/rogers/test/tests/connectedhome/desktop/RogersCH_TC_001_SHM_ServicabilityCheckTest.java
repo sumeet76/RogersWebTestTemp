@@ -1,16 +1,12 @@
 package com.rogers.test.tests.connectedhome.desktop;
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 
 
@@ -31,7 +27,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class RogersCH_TC_001_SHM_ServicabilityCheckTest extends BaseTestClass {
 
-    @Test
+	@Test(groups = {"SanityCH","RegressionCH","RhpAndRhmCH"})
     public void checkServicabilityRHMTest() throws InterruptedException {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
 		rogers_home_page.clkEasyLogin();
@@ -40,9 +36,9 @@ public class RogersCH_TC_001_SHM_ServicabilityCheckTest extends BaseTestClass {
     	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Home Monitering");
     	rogers_home_page.clkHomeMonitering();
     	reporter.reportLogWithScreenshot("Launched the Home Monitering packages page");
-    	rogers_buy_page.selectHomeMoniteringPackage(TestDataHandler.igniteTVAccount.getAccountDetails().getRhmPackageEn(),TestDataHandler.igniteTVAccount.getAccountDetails().getRhmPackageFr());
-        String  strAddressLine1=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line2");
+    	rogers_buy_page.selectHomeMoniteringPackage(TestDataHandler.rogersSHM.getAccountDetails().getRhmPackageEn(),TestDataHandler.rogersSHM.getAccountDetails().getRhmPackageFr());
+        String  strAddressLine1=(String) TestDataHandler.rogersSHM.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=(String) TestDataHandler.rogersSHM.getAccountDetails().getAddress().get("line2");
         rogers_buy_page.setAddressLookup(strAddressLine1+", "+strAddressLine2);
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
     	rogers_buy_page.clkAddressLookupSubmit(); 
@@ -51,11 +47,11 @@ public class RogersCH_TC_001_SHM_ServicabilityCheckTest extends BaseTestClass {
     }
 
 
-	@BeforeMethod @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//legacyAnonymous
-	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws  IOException  {
-		startSession(TestDataHandler.chConfig.getRogersURL(),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacyanonymous, method);
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws  IOException  {
+		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacyanonymous, method);
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 	
 

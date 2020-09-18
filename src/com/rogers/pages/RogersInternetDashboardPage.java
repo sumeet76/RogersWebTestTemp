@@ -72,7 +72,35 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='owl-item active']//ins[@translate='global.cta.select']")
 	WebElement btnSelectInternetPackageMobile;
 	
-
+	@FindBy(xpath = "//button[@id='va-button']")
+	WebElement btnVaButton;
+	
+	@FindBy(xpath = "//h1[@translate='global.label.internet']")
+	WebElement txtInternet;
+	
+	@FindBy(xpath = "//a[@href='#' and @class='mat-menu-trigger va-header-ham-button']")
+	WebElement btnVaMenu;
+	//a[@class='mat-menu-trigger va-header-ham-button']
+	
+	@FindBy(xpath = "//button[@id='va-menu-minimum-button']")
+	WebElement btnVAMininmize;
+	
+	@FindBy(xpath = "//div[@id='va-welcome-header']")
+	WebElement txtVaWelcome;
+	
+	@FindBy(xpath = "//input[@id='va-welcome-input']")
+	WebElement txtVaCustomerName;
+	
+	@FindBy(xpath = "//button[@id='va-welcome-send-button']")
+	WebElement btnVaWelcomeSend;
+	
+	@FindBy(xpath = "//div[@class='ng-select-container ng-has-value']")
+	WebElement selVaTopicList;
+	
+	@FindBy(xpath = "//button[@id='va-menu-close-button']")
+	WebElement btnVAClose;
+	
+	
 	/**
 	 * Verify the Internet usage on the Internet dash board page
 	 * @return true if the Internet usage displayed; else false
@@ -166,6 +194,77 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	public void clkInternetChangeOK() {		
 		reusableActions.clickIfAvailable(btnInternetChangeOK, 30);
 
+	}
+	
+	/**
+	 * Checks if the pop up contact us is visible
+	 * @return true when pop up contact us is visible else false
+	 * @author Chinnarao.Vattam
+	 */
+	public boolean verifyInternetPage() {	
+		return reusableActions.isElementVisible(txtInternet, 30);
+	}
+
+	/**
+	 * Click the Change Internet Package OK button on Solaris Internet dash board
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkVAButton() {		
+		reusableActions.getWhenReady(btnVaButton, 10).click();
+
+	}
+	
+	/**
+	 * Click the Change Internet Package OK button on Solaris Internet dash board
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkVAMenu() {	
+		reusableActions.getWhenReady(btnVaMenu, 10).click();
+	}
+	
+	/**
+	 * Click the Change Internet Package OK button on Solaris Internet dash board
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkVAMininmize() {		
+		reusableActions.getWhenReady(btnVAMininmize, 10).click();
+
+	}
+	
+	/**
+	 * Click the Change Internet Package OK button on Solaris Internet dash board
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkVAClose() {		
+		reusableActions.getWhenReady(btnVAClose, 10).click();
+
+	}
+	
+	/**
+	 * Checks if the pop up contact us is visible
+	 * @return true when pop up contact us is visible else false
+	 * @author Chinnarao.Vattam
+	 */
+	public boolean verifyVAButton() {	
+		return reusableActions.isElementVisible(btnVaButton, 10);
+	}
+	
+	/**
+	 * Checks if the pop up contact us is visible
+	 * @return true when pop up contact us is visible else false
+	 * @author Chinnarao.Vattam
+	 */
+	public boolean verifyVaWelcome() {	
+		return reusableActions.isElementVisible(txtVaWelcome, 90);
+	}
+	
+	/**
+	 * Checks if the pop up contact us is visible
+	 * @return true when pop up contact us is visible else false
+	 * @author Chinnarao.Vattam
+	 */
+	public boolean verifyVaTopicList() {	
+		return reusableActions.isElementVisible(selVaTopicList, 10);
 	}
 	
 	/**

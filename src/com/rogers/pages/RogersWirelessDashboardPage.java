@@ -479,6 +479,45 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	
 	@FindBy(xpath = "//ds-switch[@title='Data access for DONOTUSE' or @title='Accès aux données pour DONOTUSE']//Span[text()='OFF' or text()='NON']")
 	WebElement divDataAccessOFF;
+
+	@FindBy(xpath = "//*[@translate='wirelessPrepaidHeader']")
+	WebElement headerPrepaid;
+
+	@FindBy(xpath = "//*[@translate='wirelessPrepaid']")
+	WebElement lblPrepaidManageMyPlanAndDataAddOnHeader;
+
+	@FindBy(xpath = "//*[@data-test-id='myr-wirelessPlan-phoneSelected_planDescHTML']")
+	WebElement lblPrepaidPlanDetails;
+
+	@FindBy(xpath = "//*[@translate='wireless_prepaid_plan-expires']")
+	WebElement lblPrepaidNextPaymentDate;
+	
+	@FindBy(xpath = "//*[@data-test-id='myr-wirelessPlan-nextPaymentDateEn']")
+	WebElement lblPrepaidNextPaymentMonthAndDate;
+
+	@FindBy(xpath = "//*[@translate='acc_overview_top_up_now']")
+	WebElement btnTopUpNow;
+
+	@FindBy(xpath = "//*[@translate='wireless_prepaid_change-plan']")
+	WebElement lnkChangeMyPlan;
+
+	@FindBy(xpath = "//*[@translate='wireless_prepaid_manage-add-ons']")
+	WebElement lnkManageMyaddOns;
+
+	@FindBy(xpath = "//*[@translate='wireless_prepaid_wireless-number']")
+	WebElement lblMyWireLessNumberHeader;
+
+	@FindBy(xpath = "//*[@data-test-id='myr-wirelessPlan-my-line-number']")
+	WebElement lblWirelessNumber;
+
+	@FindBy(xpath = "//*[@data-test-id='myr-wirelessPlan-my-line-number_isCare']")
+	WebElement lblPinCode;
+
+	@FindBy(xpath = "//*[@translate='wireless_prepaid_change-pin']")
+	WebElement lnkChangeMyPinCode;
+
+	@FindBy(xpath = "//*[@translate='start_track_phone_repair']")
+	WebElement lnkStartOrTrackAPhonerepairClaim;
 	
 	/**
 	 * To click the link of lost or stolen device on wireless dashboard page
@@ -2192,5 +2231,116 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public void clkLeftCTNScrollArrow() {
 		reusableActions.clickIfAvailable(btnLeftScrollCTN);
+	}
+
+	/**
+	 * Checks if the prepaid header is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isPrepaidHeaderDisplayed() {
+		return reusableActions.isElementVisible(headerPrepaid);
+		
+	}
+
+	/**
+	 * Checks if the prepaid manage my plan and data add on header is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isPrepaidManageMyPlanAndDataAddOnheaderDisplayed() {
+		return reusableActions.isElementVisible(lblPrepaidManageMyPlanAndDataAddOnHeader);				
+	}
+
+	/**
+	 * Checks if the prepaid Plan details is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isPrepaidPlanDetailsSectionDisplayed() {
+		return reusableActions.isElementVisible(lblPrepaidPlanDetails);
+	}
+
+	/**
+	 * Checks if the prepaid Next payment Date section is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isPrepaidNextPaymentDateSectionDisplayed() {
+		return (reusableActions.isElementVisible(lblPrepaidNextPaymentDate)
+				&& reusableActions.isElementVisible(lblPrepaidNextPaymentMonthAndDate));
+	}
+
+	/**
+	 * Checks if the prepaid Top Up Now is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isPrepaidTopUpNowButtonDisplayed() {
+		return reusableActions.isElementVisible(btnTopUpNow);
+	}
+
+	/**
+	 * Checks if the prepaid Change my plan is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isPrepaidChangeMyPlanDisplayed() {
+		return reusableActions.isElementVisible(lnkChangeMyPlan);
+	}
+
+	/**
+	 * Checks if the prepaid link Manage My Add ons is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isPrepaidManageMyAddOnsDisplayed() {
+		return reusableActions.isElementVisible(lnkManageMyaddOns);
+	}
+
+	/**
+	 * Checks if the prepaid My wireless number section is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isMyWirelessNumberSectionDisplayed() {
+		return (reusableActions.isElementVisible(lblMyWireLessNumberHeader)
+				&& reusableActions.isElementVisible(lblWirelessNumber));
+	}
+
+	/**
+	 * Checks if the label prepaid Pin code is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isPrepaidPinCodeDisplayed() {
+		return reusableActions.isElementVisible(lblPinCode);
+				
+	}
+
+	/**
+	 * Checks if the prepaid lnk change my pin code is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isPrepaidChangeMyPinCodeDisplayed() {
+		return reusableActions.isElementVisible(lnkChangeMyPinCode);
+	}
+
+	/**
+	 * Checks if the prepaid lnk Start or track a phone repair claim is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isPrepaidStartOrTrackAPhoneRepairClaimDisplayed() {
+		return reusableActions.isElementVisible(lnkStartOrTrackAPhonerepairClaim);
+	}
+
+	/**
+	 * Close chat image
+	 * @author Mirza.Kamran
+	 */
+	public void closeChatImage() {
+		reusableActions.executeJavaScript("return document.getElementsByClassName('floating-live-chat')[0].remove();");		
 	}
 }

@@ -36,6 +36,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//ds-icon/following-sibling::span[contains(text(),'Suspended')]")
 	WebElement suspendedCTN;
 	
+	@FindBy(xpath = "//rss-subscription-detail//span[text()=' Suspended ' or text()=' Suspendu ']")
+	List<WebElement> lstSuspendedCTNs;
+	
 	@FindBy(xpath = "//div[@class='row modal-content-header']//button[@class='close']")
 	WebElement popUpInternetPopup;
 
@@ -127,9 +130,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Profile & Settings' or text()='Profil et paramètres']/parent::a")})
 	WebElement menuProfileAndSettingsMobile;
 	
-	
-	
-	
+
 	@FindAll({
 		@FindBy(xpath = "//button[@aria-label='ute.common.label.profileAndSetting']"),
 		@FindBy(xpath = "//span[text()='Profile & Settings' or text()='Profil et paramètres']/parent::a")})
@@ -298,6 +299,133 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		
 	@FindBy(xpath = "//*[@translate='see.add_non_shared_line']")
 	WebElement btnAddToNonSharedPlan;
+
+	@FindBy(xpath = "//div[contains(@class,'share-everything')]//div[contains(@class,'subscription-detail')]//rss-subscription-detail//a")
+	List<WebElement> lstShareEverythingCTNs;
+		
+	@FindBy(xpath = "//div[contains(@class,'individual_wireless')]//div[contains(@class,'subscription-detail')]//rss-subscription-detail//a")
+	List<WebElement> lstIndividualWirelessCTNs;
+		
+	@FindBy(xpath = "//div[contains(@class,'residential_services')]//div[contains(@class,'subscription-detail')]//rss-subscription-detail//a")
+	List<WebElement> lstResidentialServicesCTNs;
+
+	@FindBy(xpath = "//*[@translate='acc_overview_top_up_now']")
+	WebElement btnPrepaidTopUpNow;
+
+	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.current.account.balance']")
+	WebElement lblCurrentAccountBalance;
+
+	@FindBy(xpath = "//*[@class='rogers-amount']")
+	WebElement lblCurrentBalanceAmount;
+
+	@FindBy(xpath = "//*[@translate='acc_overview_expires_on']")
+	WebElement lblBalanceExpiresOn;
+
+	@FindBy(xpath = "//*[@data-test-id='myr-accountBalance-expiryDate']")
+	WebElement lblExpiryMonth;
+
+	@FindBy(xpath = "//*[@translate='change_method_update']")
+	WebElement lnkUpdatePaymentMethod;
+
+	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.view.call']")
+	WebElement lnkViewCallTransactionHistory;
+
+	@FindBy(xpath = "//div[@ng-if='!ao.mss.loadingData && ao.mss.selectedAccountDetail.isPrepaid']//*[@translate='service_wireless_prepaid']")
+	WebElement btnCTNWidgetPrepaid;
+
+	@FindBy(xpath = "//*[@translate='myaccoverview_account_preferences']")
+	WebElement lblAccountPreferences;
+
+	@FindBy(xpath = "//*[@translate='myaccoverview_change_contact_information']")
+	WebElement lnkChangeContactInfo;
+
+	@FindBy(xpath = "//*[@translate='myaccoverview_change_password']")
+	WebElement lnkChangePassword;
+
+	@FindBy(xpath = "//*[@translate='acc_overview_other_services']")
+	WebElement lblOtherServicesAvailable;
+
+	@FindBy(xpath = "//a//span[contains(@class,'ds-button__copy') and contains(text(),'Sign up')]")
+	WebElement btnSubscriptionSignUp;
+
+	@FindBy(xpath = "//a//span[contains(@class,'ds-button__copy') and contains(text(),'Manage')]")
+	WebElement btnSubscriptionManage;
+
+	@FindBy(xpath = "//h2[text()='Currently subscribed']")
+	WebElement headerCurrentlySubscribed;
+
+	@FindBy(xpath = "//a[contains(@title,'Cancel the Apple Music subscription for')]")
+	WebElement btnCancelSubscription;
+
+	
+	@FindBy(xpath = "//h1[text()='Cancel subscription']")
+	WebElement headerCancelSubscription;
+
+	@FindBy(xpath = "//rss-subscriber-info")
+	WebElement lblRogersCancellationForSubs;
+	
+	@FindBy(xpath = "//rss-subscriber-info")
+	WebElement lblRogersRedeemForSubs;
+
+	////*[contains(text(),'I’m cancelling this subscription because:')]/ancestor::span/parent::div/ancestor::ds-form-field
+	@FindBy(xpath = "//rss-cancel//ds-form-field/div/div[contains(@class,'select')]")
+	WebElement selectReasonForCancel;
+
+	@FindBy(xpath = "//*[contains(text(),'Confirm')]")
+	WebElement btnConfirm;
+
+	@FindBy(xpath = "//button[@title='Return to subscription management page']")
+	WebElement btnOK;
+
+	@FindBy(xpath = "//p[text()='Subscription cancelled']")
+	WebElement headerCancelSuccess;
+	
+	@FindBy(xpath = "//*[contains(text(),'Subscription successful')]")
+	WebElement headerSubscriptionSuccess;
+
+	@FindBy(xpath = "//option[@value='0: Object']")
+	WebElement optReasonOne;
+
+	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[text()=' Cancelled ']")
+	WebElement paneSMPCancelled;
+	
+	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[contains(text(),'Promotion ends')]")
+	WebElement lblSMPpromotionEnds;
+	
+	@FindBy(xpath = "//span[contains(text(),'Promotion started')]")
+	WebElement lblSMPpromotionStarted;
+
+	@FindBy(xpath = "//ds-checkbox")
+	WebElement chkRedeemSubs;
+
+	@FindBy(xpath = "//a[@title='Sign up for Apple Music']")
+	WebElement btnSignUp;
+
+	@FindBy(xpath = "//h1[@class='signup-page-title']")
+	WebElement headerTnC;
+
+	@FindBy(xpath = "//ds-checkbox")
+	WebElement chkTnC;
+	
+	@FindBy(xpath = "//button[@title='Continue and activate this Apple Music subscription']")
+	WebElement btnSubscribeToSubsscription;
+
+	@FindBy(xpath = "//a[text()='Yes']")
+	WebElement btnCloseFAQ;
+
+	@FindBy(xpath = "//span[@class='vas-subscriber-number']")
+	WebElement paneSMPSubsCTN;
+
+	@FindBy(xpath = "//p[text()='One or more of your services are suspended. ' or text()='Au moins un de vos services est suspendu. ']")
+	WebElement lblServiceSuspended;
+
+	@FindBy(xpath = "//rds-bold-chat//div[@class='live-chat-link-suspended bcStatic']")
+	WebElement btnLiveChatInsideSuspendedNotification;
+
+	@FindBy(xpath = "//div[@title='Rogers Live Chat' or @title='Clavardage en direct de Rogers']")
+	WebElement headerRogersLiveChat;
+
+	
 	
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
@@ -427,7 +555,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void selectAccount(String strAccountNumber) {		
-	reusableActions.getWhenReady((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 20).click();
+	reusableActions.clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 20);
 	}
 	
 	/**
@@ -493,9 +621,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author Ning.Xue
 	 */
 	public void clkDropDownAccount(String strLast4DigAcctNum) {
-		reusableActions.getWhenReady(
-				(By.xpath("//span[contains(text(),'" + strLast4DigAcctNum + "')or contains(text(),'" + strLast4DigAcctNum + "')]")), 
-				10).click();
+		reusableActions.clickWhenReady(
+				(By.xpath("//span[contains(@data-translate-values,'" + strLast4DigAcctNum + "')or contains(text(),'" + strLast4DigAcctNum + "')]")), 
+				10);
 
 	}
 	
@@ -513,7 +641,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 //			reusableActions.staticWait(4000);
 			reusableActions.getWhenReady(menuProfileNSettings,30).click();			
 			reusableActions.waitForElementVisibility(headerProfileNSettings,60);
-			if(headerProfileNSettings.isDisplayed())
+			if(reusableActions.isElementVisible(headerProfileNSettings))
 			{
 				System.out.println("Profile and settings click successful in attempt: "+(count+1));
 				clickSuccess=true;				
@@ -708,7 +836,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void clkBillngsAndPaymentsSubMenuSetUpAutomaticPaymentMethod() {
 		reusableActions.waitForElementVisibility(lnkSetUpAutomaticPaymentMethod);		
-		reusableActions.clickIfAvailable(lnkSetUpAutomaticPaymentMethod);
+		reusableActions.getWhenReady(lnkSetUpAutomaticPaymentMethod).click();
 	}
 	
 	/**
@@ -744,7 +872,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 			reusableActions.getWhenReady(btnMakeAPayment,30).click();			
 			reusableActions.waitForElementVisibility(lblMakeASecurePayment,10);
-			if(lblMakeASecurePayment.isDisplayed())
+			if(reusableActions.isElementVisible(lblMakeASecurePayment))
 			{
 				System.out.println("Make payment button clicked in attempt: "+(count+1));
 				clickSuccess=true;				
@@ -775,7 +903,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		reusableActions.staticWait(2000);
 		reusableActions.executeJavaScriptClick(lnkBillingAndPayment);
 		reusableActions.staticWait(3000); //extra static buffers added for firefox
-		return lnkSetUpAutomaticPaymentMethod.isDisplayed();
+		return reusableActions.isElementVisible(lnkSetUpAutomaticPaymentMethod);
 	}
 	
 	/**
@@ -803,7 +931,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		}
 		//reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
 		reusableActions.staticWait(3000); //extra static buffers added for firefox
-		return lnkSetUpAutomaticPaymentMethodMobile.isDisplayed();
+		return reusableActions.isElementVisible(lnkSetUpAutomaticPaymentMethodMobile);
 	}
 
 	/**
@@ -813,8 +941,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean verifyThatAutoPaymentIsDisplayedOnAccountOverViewPage() {
 		reusableActions.waitForElementVisibility(lblAutoPayment);
-		return (lblAutoPayment.isDisplayed()
-			 && lblAutoPaymentAccountPreFix.isDisplayed());
+		return (reusableActions.isElementVisible(lblAutoPayment)
+			 && reusableActions.isElementVisible(lblAutoPaymentAccountPreFix));
 	}	
 	
 	/**
@@ -824,8 +952,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean verifyThatAutoPaymentWithCCIsDisplayedOnAccountOverViewPage() {
 		reusableActions.waitForElementVisibility(lblAutoPayment, 50);
-		return (lblAutoPayment.isDisplayed()
-			 && imgCC.isDisplayed());
+		return (reusableActions.isElementVisible(lblAutoPayment)
+			 && reusableActions.isElementVisible(imgCC));
 	}
 
 		
@@ -846,7 +974,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean isCCDisplayedOnAccountOverViewPage() {		
 		return (reusableActions.isElementVisible(lblAutoPayment,30)
-			 && imgCC.isDisplayed());
+			 && reusableActions.isElementVisible(imgCC));
 	}
 	
 	/**
@@ -866,7 +994,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			reusableActions.executeJavaScriptClick(lnkBillingAndPayment);			
 			reusableActions.waitForElementVisibility(lnkMakePayment);
 			reusableActions.executeJavaScriptClick(lnkMakePayment);	
-			if(txtAmount.isDisplayed())
+			if(reusableActions.isElementVisible(txtAmount))
 			{
 				System.out.println("Billing and payment click successful in attempt: "+(count+1));
 				clickSuccess=true;				
@@ -960,7 +1088,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean isSuspendedCTNAvailable() {	
 		
-		return reusableActions.isElementVisible(suspendedCTN);
+		return reusableActions.isElementVisible(lstSuspendedCTNs.get(0));
 				
 	}
 	
@@ -969,7 +1097,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkSuspendedCTN() {	
-		reusableActions.getWhenReady(suspendedCTN).click();
+		reusableActions.getWhenReady(lstSuspendedCTNs.get(0)).click();
 	}
 	
 	
@@ -1134,6 +1262,16 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	}
 
 	/**
+	 * To verify if the live chat overlay opened in wireless dashboard page
+	 * @return true if the overlay opened otherwise false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyLiveChatOverlayOpenedFromSuspensionNotification() {	
+	  
+			return reusableActions.isElementVisible(headerRogersLiveChat, 30);		
+	}
+	
+	/**
 	 * Clicks on back to devices page
 	 * @author Mirza.Kamran
 	 */
@@ -1190,10 +1328,401 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean isCreditLimitReachedNotificationDisplayed() {
 		return reusableActions.isElementVisible(lblCreditLimitExceeded);
+	}
+
+	/**
+	 * Checks if Individual Wireless CTNs displayed
+	 * @return return true if Individual Wireless is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isIndividualWirelessCTNsDisplayed() {
+		return (reusableActions.isElementVisible(lstIndividualWirelessCTNs.get(0))
+				&& lstShareEverythingCTNs.get(0).getLocation().x<lstIndividualWirelessCTNs.get(0).getLocation().x
+				&& lstIndividualWirelessCTNs.get(0).getLocation().x<lstResidentialServicesCTNs.get(0).getLocation().x
+			);
 	} 
 	
+	/**
+	 * Checks if Residential services CTNs displayed
+	 * @return return true if Residential services is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isResidentialServicesCTNsDisplayed() {
+		return (reusableActions.isElementVisible(lstResidentialServicesCTNs.get(0))
+				&& lstIndividualWirelessCTNs.get(0).getLocation().x<lstResidentialServicesCTNs.get(0).getLocation().x
+			);
+	} 
 	
+	/**
+	 * Checks if share everything CTNs displayed
+	 * @return return true if share everything is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isShareEverythingDisplayed() {
+		return (reusableActions.isElementVisible(lstShareEverythingCTNs.get(0))
+				&& lstShareEverythingCTNs.get(0).getLocation().x<lstIndividualWirelessCTNs.get(0).getLocation().x
+				);
+	}
+
+	/**
+	 * Checks if the CTNS are left aligned correctly under each CTN category
+	 * @return int values depicting status of alignment
+	 * @author Mirza.Kamran
+	 */
+	public int isShareEverythingCTNLeftAligned() {
+		int alignmentvalue = 0;
+		int alignmentStatus = 1;
+		if(lstShareEverythingCTNs.size()>1)
+		{
+			alignmentvalue = lstShareEverythingCTNs.get(0).getLocation().x;
+			for (WebElement webElement : lstShareEverythingCTNs) {
+				if(alignmentvalue!=webElement.getLocation().x)
+				{
+					alignmentStatus = 3;
+				}
+			}
+		}else
+		{
+			alignmentStatus = 2;
+		}
+		
+		return alignmentStatus;
+	}
+
+	/**
+	 * checks if the top up button is displayed
+	 * @return true if the button is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isTopUpButtonDisplayed() {
+		return reusableActions.isElementVisible(btnPrepaidTopUpNow);
+	}
+
+	/**
+	 * Checks if Current Account Balance is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isCurrentAccountBalanceDisplayed() {
+		
+		return (reusableActions.isElementVisible(lblCurrentAccountBalance)
+				&& reusableActions.isElementVisible(lblCurrentBalanceAmount));
+	}
+
+	/**
+	 * Checks if Balance expires is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isBalanceExpiresOnDisplayedOnAOPage() {
+		return (reusableActions.isElementVisible(lblBalanceExpiresOn)
+				&& reusableActions.isElementVisible(lblExpiryMonth));				
+	}
+
 	
+	/**
+	 * Checks if Link update payment method is displayed is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isLnkUpdatePaymentMethodDisplayedOnAOPage() {
+		return reusableActions.isElementVisible(lnkUpdatePaymentMethod);
+	}
+
+	/**
+	 * Checks if Link view call transaction history is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isLnkViewCallTransactionHistoryDisplayedOnAOPage() {
+		return reusableActions.isElementVisible(lnkViewCallTransactionHistory);
+		
+	}
+
+	/**
+	 * Checks if CTN widget is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isCTNWidgetIsDisplayedOnAOPg() {
+		return reusableActions.isElementVisible(btnCTNWidgetPrepaid);
+	}
+
+	/**
+	 * Checks if Current Account Balance is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isAccountPreferencesSectionDisplayedAOPg() {
+		return reusableActions.isElementVisible(lblAccountPreferences)
+				&& reusableActions.isElementVisible(lnkChangeContactInfo)
+				&& reusableActions.isElementVisible(lnkChangePassword);
+		
+	}
+
+	/**
+	 * Checks if Other services is displayed
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isOtherServicesDisplayedOnAOPg() {
+		return reusableActions.isElementVisible(lblOtherServicesAvailable);
+		
+	}
+
+	/**
+	 * Clicks on CTN widget is clicked
+	 * @author Mirza.Kamran
+	 */
+	public void clkCTNWidget() {
+		reusableActions.getWhenReady(btnCTNWidgetPrepaid).click();
+		
+	}
+
+	/**
+	 * Verifies if the account has subscription available which can be redeem
+	 * @return true if available else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifySubscriptionIsAvailableForRedeem() {
+		return reusableActions.isElementVisible(btnSubscriptionSignUp);
+	} 
 	
+	/**
+	 * Verifies if the account has subscription available which can be redeem
+	 * @return true if available else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyIfSubscriptionIsAvailableForCancellation() {
+		return reusableActions.isElementVisible(btnSubscriptionManage);
+	}
+
+	/**
+	 * Clicks on Manage button
+	 * @author Mirza.Kamran
+	 */
+	public void clkManageOnSubscription() {
+		reusableActions.getWhenReady(btnSubscriptionManage).click();
+	} 
+		
+	/**
+	 * Verifies if the currently subscribed pane is displayed
+	 * @return true if available else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyIfCurrentlySubscribedPaneIsDisplayed() {
+		return reusableActions.isElementVisible(headerCurrentlySubscribed);
+	}
+		
+	/**
+	 * Verifies if the button cancel subscription is displayed
+	 * @return true if available else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyIfButtonCancelSubscriptionIsDisplayed() {
+		return reusableActions.isElementVisible(btnCancelSubscription);
+	}
 	
+	/**
+	 * Clicks on cancel subscription button
+	 * @author Mirza.Kamran
+	 */
+	public void clkCancelSubscription() {
+		reusableActions.getWhenReady(btnCancelSubscription).click();
+	} 
+	
+		
+		/**
+		 * Verifies if the button cancel subscription is displayed
+		 * @return true if available else false
+		 * @author Mirza.Kamran
+		 */
+		public boolean verifyIfHeaderCancelSubscriptionIsDisplayed() {
+			return reusableActions.isElementVisible(headerCancelSubscription);
+		}
+		
+				
+		/**
+		 * Verifies if the cancel subscription details are correctly displayed
+		 * @return true if available else false
+		 * @author Mirza.Kamran
+		 */
+		public boolean verifyIfCancelSubscriptionDetailsIsDisplayedCorrectly(String strSubscriberNumber) {
+			return reusableActions.getWhenReady(lblRogersCancellationForSubs).getText().trim().replaceAll(" ","").replaceAll("-","").contains(strSubscriberNumber);
+		}
+		
+		/**
+		 * Selects the cancellation reason
+		 * @author Mirza.Kamran
+		 */
+		public void selectReasonForCancelSubscription() {
+			reusableActions.getWhenReady(selectReasonForCancel).click();
+			reusableActions.waitForElementTobeClickable(optReasonOne, 5);
+			reusableActions.getWhenReady(optReasonOne).click();
+			//reusableActions.selectWhenReadyByVisibleText(selectReasonForCancel, " I'm switching to another music service provider ");
+		} 
+	
+		/**
+		 * Selects confirm cancel subscription
+		 * @author Mirza.Kamran
+		 */
+		public void clkConfirmCancelSubscription() {
+			reusableActions.getWhenReady(btnConfirm).click();
+		}
+
+		/**
+		 * verifies if the cancel success overlay is displayed
+		 * @return true if displayed else false
+		 * @author Mirza.Kamran
+		 */
+		public boolean verifyIfCancelSuccessfulOverLayDisplayed() {
+			return reusableActions.isElementVisible(headerCancelSuccess);
+		} 
+		
+		
+		/**
+		 * Selects okay on cancel success overlay
+		 * @author Mirza.Kamran
+		 */
+		public void clkOKButtonOnCancelSuccessOverlay() {
+			reusableActions.getWhenReady(btnOK).click();
+		}
+
+		/**
+		 * 
+		 * @return true if displayed else false
+		 * @author Mirza.Kamran
+		 */
+		public boolean verifyIfSMPIsDisplayedWithCancelledSubscription() {			
+			return (reusableActions.isElementVisible(paneSMPCancelled)
+					&& reusableActions.isElementVisible(lblSMPpromotionEnds));
+		}
+
+		/**
+		 * Clicks on sign up subscription
+		 * @author Mirza.Kamran
+		 */
+		public void clkSignUpSubscription() {
+			reusableActions.getWhenReady(btnSubscriptionSignUp).click();
+			
+		}
+
+		/**
+		 * Verifies if the subs is available for redeem
+		 * @return true if available else false
+		 * @author Mirza.Kamran
+		 */
+		public boolean verifyIfSubscriptionIsAvailableForRedeem() {		
+			return reusableActions.isElementVisible(chkRedeemSubs);
+		}
+
+		/**
+		 * Cliks on sign up subscription
+		 * @author Mirza.Kamran
+		 */
+		public void clkSignUp() {
+			reusableActions.getWhenReady(btnSignUp).click();
+			
+		}
+
+		/**
+		 * Clicks on redeem check box
+		 * @author Mirza.Kamran
+		 */
+		public void checkRedeem() {
+			reusableActions.getWhenReady(chkRedeemSubs).click();
+		}
+
+		/**
+		 * Verifies if TnC is displayed
+		 * @return true if displayed else false
+		 * @author Mirza.Kamran
+		 */
+		public boolean verifyIfTnCForSubscriptionIsDisplayed() {			
+			return reusableActions.isElementVisible(headerTnC);
+		}
+
+		/**
+		 * selects the TnC check box
+		 * @author Mirza.Kamran
+		 */
+		public void checkTnC() {
+			reusableActions.getWhenReady(chkTnC).click();
+			
+		}
+
+		/**
+		 * Clicks subscribe button
+		 * @author Mirza.Kamran
+		 */
+		public void clkSubscribeToSubs() {
+		reusableActions.getWhenReady(btnSubscribeToSubsscription).click();
+			
+		}
+
+		/**
+		 * Verifies if redeem details matches with CTN
+		 * @param strSubscriberNumber CTN for which the subscription is redeem
+		 * @return true if details match else false
+		 * @author Mirza.Kamran
+		 */
+		public boolean verifyIfRedeemSubscriptionDetailsIsDisplayedCorrectly(String strSubscriberNumber) {			
+			return reusableActions.getWhenReady(lblRogersRedeemForSubs).getText().trim().replaceAll(" ","").replaceAll("-","").contains(strSubscriberNumber);
+		}
+		
+		/**
+		 * verifies if the Subscription success overlay is displayed
+		 * @return true if displayed else false
+		 * @author Mirza.Kamran
+		 */
+		public boolean verifyIfSubscriptionSuccessfulOverLayDisplayed() {
+			return reusableActions.isElementVisible(By.xpath("//*[contains(text(),'Subscription successful')]"));
+		} 
+		
+		/**
+		 * Selects okay on Subscription success overlay
+		 * @author Mirza.Kamran
+		 */
+		public void clkOKButtonOnSubscriptionSuccessOverlay() {
+			reusableActions.getWhenReady(btnOK).click();
+		}
+
+		/**
+		 * Clicks close FAQ
+		 * @author Mirza.Kamran
+		 */
+		public void clkCloseFAQ() {
+			reusableActions.getWhenReady(By.xpath("//a[text()='Yes']")).click();
+			
+		}
+
+		/**
+		 * Verifies if the subscribed details match
+		 * @param strSubscriberNumber 
+		 * @return true if the details match else false
+		 * @author Mirza.Kamran
+		 */
+		public boolean verifyIfSMPIsDisplayedWithSubscribedCTN(String strSubscriberNumber) {
+			return (reusableActions.getWhenReady(paneSMPSubsCTN).getText().trim().replaceAll(" ","").replaceAll("-","").contains(strSubscriberNumber)
+					&& reusableActions.isElementVisible(lblSMPpromotionStarted)
+					&& reusableActions.isElementVisible(btnCancelSubscription));
+		}
+
+		/**
+		 * Service suspended notification is displayed
+		 * @author Mirza.Kamran
+		 * @return true if the suspended service notification is displayed else false
+		 */
+		public boolean isServicesSuspendedNotificationDisplayed() {			
+			return (reusableActions.isElementVisible(lblServiceSuspended)
+					&& reusableActions.isElementVisible(btnLiveChatInsideSuspendedNotification));
+		}
+		
+		/**
+		 * Clicks on Button live chat inside the suspension notification
+		 * @author Mirza.Kamran
+		 */
+		public void clkBtnLiveChatInsideSuspensionNotification() {
+			reusableActions.getWhenReady(btnLiveChatInsideSuspendedNotification).click();
+		}
 }

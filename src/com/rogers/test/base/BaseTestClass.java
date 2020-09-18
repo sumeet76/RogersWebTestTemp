@@ -1,42 +1,8 @@
 package com.rogers.test.base;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPut;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.message.BasicNameValuePair;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
-import com.rogers.oneview.pages.AccountOverViewPage;
-import com.rogers.oneview.pages.ChannelsAndThemePacksPage;
-import com.rogers.oneview.pages.CreditCheckPage;
-import com.rogers.oneview.pages.CustomerProfilePage;
-import com.rogers.oneview.pages.EnvironmentSelectionPage;
-import com.rogers.oneview.pages.FulfillmentPage;
-import com.rogers.oneview.pages.HomePhoneAddonsPage;
-import com.rogers.oneview.pages.HomePhoneSelectionPage;
-import com.rogers.oneview.pages.HomePhonedashboard;
-import com.rogers.oneview.pages.InternetDashboardPage;
-import com.rogers.oneview.pages.OrderConfirmationPage;
-import com.rogers.oneview.pages.OrderReviewPage;
-import com.rogers.oneview.pages.PaymentOptionsPage;
-import com.rogers.oneview.pages.RogersIgniteBundlesPage;
-import com.rogers.oneview.pages.RogersInternetUsageOVPage;
-import com.rogers.oneview.pages.TVDashboardPage;
-import com.rogers.pages.RogersAccountOverviewPage;
-import com.rogers.pages.RogersAddDataPage;
-import com.rogers.pages.RogersBillingPage;
+import com.rogers.oneview.pages.*;
 import com.rogers.pages.RogersBuildPlanPage;
 import com.rogers.pages.RogersBuyPage;
 import com.rogers.pages.RogersCartSummaryPage;
@@ -44,11 +10,12 @@ import com.rogers.pages.RogersChangeMyCallerIdPage;
 import com.rogers.pages.RogersChangePaymentMethodPage;
 import com.rogers.pages.RogersChangePlanPage;
 import com.rogers.pages.RogersChangeSEPlanPage;
+import com.rogers.pages.RogersCheckoutPage;
 import com.rogers.pages.RogersChooseAddonsPage;
-import com.rogers.pages.RogersChooseNumberPage;
 import com.rogers.pages.RogersChoosePhonePage;
-import com.rogers.pages.RogersShippingPage;
 import com.rogers.pages.RogersChoosePlanPage;
+import com.rogers.pages.RogersDeviceCataloguePage;
+import com.rogers.pages.RogersDeviceConfigPage;
 import com.rogers.pages.RogersDigitalTVDashboardPage;
 import com.rogers.pages.RogersDigitalTVPackageSelectionPage;
 import com.rogers.pages.RogersHomePage;
@@ -67,28 +34,24 @@ import com.rogers.pages.RogersLinkAccountPage;
 import com.rogers.pages.RogersLoginPage;
 import com.rogers.pages.RogersMakePaymentPage;
 import com.rogers.pages.RogersManageDataPage;
+import com.rogers.pages.RogersNACOrderConfirmationPage;
 import com.rogers.pages.RogersOrderConfirmationPage;
 import com.rogers.pages.RogersOrderReviewPage;
 import com.rogers.pages.RogersOrderSummaryPage;
 import com.rogers.pages.RogersPaymentOptionsPage;
 import com.rogers.pages.RogersPaymentPage;
+import com.rogers.pages.RogersPlanConfigPage;
 import com.rogers.pages.RogersProfileAndSettingsPage;
 import com.rogers.pages.RogersRecoverPassOrNamePage;
 import com.rogers.pages.RogersRegisterPage;
+import com.rogers.pages.RogersReviewOrderPage;
 import com.rogers.pages.RogersSHMDashboardPage;
 import com.rogers.pages.RogersSecurePaymentPage;
 import com.rogers.pages.RogersSetPasswordPage;
 import com.rogers.pages.RogersShareEverythingPage;
 import com.rogers.pages.RogersShippingPage;
-import com.rogers.pages.RogersSolarisRHPDashboardPage;
-import com.rogers.pages.RogersSolarisTVChannelsAndThemepacksPage;
-import com.rogers.pages.RogersSolarisTVDashboardPage;
-import com.rogers.pages.RogersSpeedPassPage;
-import com.rogers.pages.RogersTechInstallPage;
-import com.rogers.pages.RogersWirelessCreditEvaluationPage;
-import com.rogers.pages.RogersWirelessDashboardPage;
 import com.rogers.pages.RogersWirelessDetailsPage;
-import com.rogers.pages.RogersWirelessProfileCreationPage;
+import com.rogers.pages.*;
 import com.rogers.pages.ens.EnsHomePage;
 import com.rogers.pages.ens.EnsNotificationViewPage;
 import com.rogers.test.commonbusinessfunctions.CommonBusinessFlows;
@@ -97,11 +60,27 @@ import com.rogers.test.helpers.CaptchaBypassHandlers;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.test.helpers.RogersEnums.SauceCapabilities;
 import com.rogers.testdatamanagement.TestDataHandler;
-
 import extentreport.ExtentTestManager;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.message.BasicNameValuePair;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import utils.AppiumServerJava;
 import utils.BrowserDrivers;
 import utils.Reporter;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 //@Listeners ({com.rogers.test.listeners.TestListener.class ,
 //	com.rogers.test.listeners.AnnotationTransformer.class ,
@@ -206,6 +185,13 @@ public class BaseTestClass {
 	//int port = 4723;	
 	private CaptchaBypassHandlers captcha_bypass_handlers;
 	private Map<String, String> sauceParameters;
+	protected RogersDeviceCataloguePage rogers_device_catalogue_page;
+	protected RogersDeviceConfigPage rogers_device_config_page;
+	protected RogersPlanConfigPage rogers_plan_config_page;
+	protected RogersCheckoutPage rogers_checkout_page;
+	protected RogersReviewOrderPage rogers_review_order_page;
+	protected RogersNACOrderConfirmationPage rogers_NAC_order_confirmation_page;
+	private Map<String,String> RunParameters;
 		
 		public BaseTestClass() {
 			 browserdriver =  new BrowserDrivers();
@@ -217,68 +203,72 @@ public class BaseTestClass {
 	 * @param strUrl                     string of test url
 	 * @param strBrowser                 string of browser name
 	 * @param strLanguage                string of language to use
-	 * @param enumGroupName               string of group name of the test case
+	 * @param strGroupName               string of group name of the test case
 	 * @param currentTestMethodName 
 	 * @throws ClientProtocolException   org.apache.http.client.ClientProtocolException, Signals an error in the HTTP protocol.
 	 * @throws IOException               java.io.IOException, Signals that an I/O exception of some sort has occurred, produced by failed or interrupted I/O operations.
 	 */
 	public void startSession(String strUrl, String strBrowser,  String strLanguage, String strGroupName , Method currentTestMethodName) throws ClientProtocolException, IOException {
-		if(strBrowser.contains("sauce"))
+		RunParameters = getExecutionParameters(strBrowser, strLanguage);
+		String browser = RunParameters.get("Browser").toLowerCase();
+		String language = RunParameters.get("Language").toLowerCase();
+		if(browser.contains("sauce"))
 		{
-			sauceParameters = initializeSauceParamsMap(strBrowser);
+			sauceParameters = initializeSauceParamsMap(browser);
 		}
-		this.driver = browserdriver.driverInit(strBrowser, sauceParameters, currentTestMethodName, strGroupName);
+		this.driver = browserdriver.driverInit(browser, sauceParameters, currentTestMethodName, strGroupName);
 		System.out.println(strUrl + "----------------------------------------------------------------------------");
 		captcha_bypass_handlers = new CaptchaBypassHandlers(getDriver());
 		switch(strGroupName.toLowerCase().trim()) {			
 		case "selfserve":
 		case "selfserve_login":
 		case "mobile_selfserve":
-			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ strLanguage);
-			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
+			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ language);
+			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 			break;
 			
 		case "connectedhome_legacyanonymous":
 			driver.get(strUrl+"/web/totes/api/v1/bypassCaptchaAuth");
-			captcha_bypass_handlers.captchaBypassURLLegacyAnonymousBuyFlows(strUrl, strLanguage); 
+			captcha_bypass_handlers.captchaBypassURLLegacyAnonymousBuyFlows(strUrl, language); 
 			break;	
 			
 		case "connectedhome_igniteanonymous":				
 			driver.get(strUrl+"/web/totes/browsebuy/v1/byPassCaptcha");
-			driver.get(strUrl+"?setLanguage="+ strLanguage ); 
+			driver.get(strUrl+"?setLanguage="+ language); 
 			break;
 			
 		case "connectedhome_legacylogin":
 			driver.get(strUrl+"/web/totes/api/v1/bypassCaptchaAuth");
-			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ strLanguage);
-			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
+			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ language);
+			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 			break; 
 
 		case "connectedhome_ignitelogin":
 			driver.get(strUrl+"/web/totes/browsebuy/v1/byPassCaptcha");	
-			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ strLanguage);
-			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
+			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ language);
+			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 			break; 
 			
 		case "connectedhome_login":
-			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ strLanguage);
-			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
+			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ language);
+			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 			break; 
 		
 		case "buyflows": 
-			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ strLanguage);
-			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
+			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ language);
+			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 			break;
 			
+		case "redesignrogers":	
 		case "buyflowsoneview": driver.get(strUrl);
 			break; 
 		
  		default :
- 			driver.get(strUrl+"?setLanguage="+ strLanguage );
- 			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, strLanguage);
+ 			driver.get(strUrl+"?setLanguage="+ language );
+ 			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 		}
-	    setImplicitWait(getDriver(), 10);
-		getDriver().manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+	    setImplicitWait(getDriver(), 10);	
+		getDriver().manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 	    init(strGroupName);	 
  }
 		
@@ -339,7 +329,7 @@ public class BaseTestClass {
 	 * @param strUrl                     string of test url
 	 * @param strBrowser                 string of browser name
 	 * @param strLanguage                string of language to use
-	 * @param enumGroupName               string of group name of the test case
+	 * @param strGroupName               string of group name of the test case
 	 * @param currentTestMethodName 
 	 * @throws ClientProtocolException   org.apache.http.client.ClientProtocolException, Signals an error in the HTTP protocol.
 	 * @throws IOException               java.io.IOException, Signals that an I/O exception of some sort has occurred, produced by failed or interrupted I/O operations.
@@ -385,7 +375,6 @@ public class BaseTestClass {
 			rogers_profile_and_settings_page = new RogersProfileAndSettingsPage(driver);
 			rogers_payment_options_page = new RogersPaymentOptionsPage(driver);
 			rogers_make_payment_page = new RogersMakePaymentPage(driver);
-			reporter = new ExtentTestManager(driver);
 			common_business_flows = new CommonBusinessFlows(this);
 			ensHomePage = new EnsHomePage(getDriver());
 			ensNoteViewPage = new EnsNotificationViewPage(getDriver());
@@ -554,6 +543,14 @@ public class BaseTestClass {
 			channels_Theme_Packs_Page=new ChannelsAndThemePacksPage(getDriver());
 			home_Phone_Addons_Page=new HomePhoneAddonsPage(getDriver());
 			break;		
+			
+		case "redesignrogers":
+			rogers_device_catalogue_page=new RogersDeviceCataloguePage(getDriver());
+			rogers_device_config_page=new RogersDeviceConfigPage(getDriver());
+			rogers_plan_config_page=new RogersPlanConfigPage(getDriver());
+			rogers_checkout_page=new RogersCheckoutPage(getDriver());
+			rogers_review_order_page=new RogersReviewOrderPage(getDriver());
+			rogers_NAC_order_confirmation_page=new RogersNACOrderConfirmationPage(getDriver());
 		
 		case "buyflowsoneview":
 			
@@ -626,4 +623,34 @@ public class BaseTestClass {
 		  putRequest.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 		  HttpClientBuilder.create().build().execute(putRequest);
 		}
+	
+	/** To start a session using given url, browser, language and test case group name.
+	 * @param strLanguage    string of test Language
+	 * @param strBrowser     string of browser name
+	 * @return HashMap of test TestParameters
+	 */
+		public static HashMap<String, String>  getExecutionParameters(String strBrowser,String strLanguage) {
+		if (System.getProperty("Browser") == null || System.getProperty("Browser").isEmpty())
+		{
+			System.setProperty("Browser", strBrowser);
+		}
+		if (System.getProperty("Language") == null ||  System.getProperty("Language").isEmpty())
+		{
+			System.setProperty("Language", strLanguage);
+		}
+		if(System.getProperty("Browser").equals("") && strBrowser.isEmpty())
+		{
+			System.setProperty("Browser", "chrome");
+		}
+		if(System.getProperty("Language").equals("") && strLanguage.isEmpty() )
+		{
+			System.setProperty("Language", "en");
+		}
+		strBrowser= System.getProperty("Browser");
+		strLanguage= System.getProperty("Language");
+		HashMap<String, String> TestParameters = new HashMap<>();
+		TestParameters.put("Browser", strBrowser);
+		TestParameters.put("Language", strLanguage );
+		return TestParameters;
+	}
 }

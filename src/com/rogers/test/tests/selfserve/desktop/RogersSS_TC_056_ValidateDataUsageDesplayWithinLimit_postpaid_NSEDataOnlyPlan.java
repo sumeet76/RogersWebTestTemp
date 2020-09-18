@@ -2,11 +2,12 @@ package com.rogers.test.tests.selfserve.desktop;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;                     
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -19,9 +20,9 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class RogersSS_TC_056_ValidateDataUsageDesplayWithinLimit_postpaid_NSEDataOnlyPlan extends BaseTestClass {	
    	
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
-			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
+		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+			startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 		}
 	   	
 		
@@ -31,7 +32,7 @@ public class RogersSS_TC_056_ValidateDataUsageDesplayWithinLimit_postpaid_NSEDat
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateDataUsageDisplayForDataOnlyPlan() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc56.getUsername();
@@ -56,23 +57,23 @@ public class RogersSS_TC_056_ValidateDataUsageDesplayWithinLimit_postpaid_NSEDat
         rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
         rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
                        
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyDataDelayMessage(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyDataDelayMessage(), 
         					"Data delayed by 12 hours message is displayed", 
         					"Data delayed by 12 hours message is NOT displayed");
         reporter.reportLogWithScreenshot("Wireless dashboard page."); 
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyDataRemainingOutOfTotalDataBucket(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyDataRemainingOutOfTotalDataBucket(), 
 							"Data remaining out of Total data bucket info should be displayed", 
 							"Data remaining out of Total data bucket info is not displayed.");
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyTotalDataBucket(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyTotalDataBucket(), 
 							"Total data bucket includes plan, paid OTTs, paid MDTs, promotional (zero-rated) bonus OTT and MDTs info should be displayed", 
 							"Total data bucket includes plan, paid OTTs, paid MDTs, promotional (zero-rated) bonus OTT and MDTs info NOT displayed");
-        reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(), 
+        reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(), 
 							"'Manage Data' page is displayed after click on view details link", 
 							"'Manage Data' page is NOT displayed after click on view details link");  
         reporter.reportLogWithScreenshot("Manage data page view after we click on view details");  
         rogers_manage_data_page.clkBackOnManageDataUsagePage();
         reporter.reportLogWithScreenshot("Navigated back to dashboard from manage data view");  
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyDaysRemainingInTheBillCycleIsDisplayed(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyDaysRemainingInTheBillCycleIsDisplayed(), 
 							"Days left remaining in the bill cycle is displayed", 
 							"Days left remaining in the bill cycle is NOT displayed"); 
         common_business_flows.addDataFlow();
@@ -108,22 +109,22 @@ public class RogersSS_TC_056_ValidateDataUsageDesplayWithinLimit_postpaid_NSEDat
         	rogers_add_data_page.clkCloseOnAddDataOverlay();
         }
         reporter.reportLogWithScreenshot("Navigated back to dashboard after resign in");  
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded(),
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded(),
         		"All amounts are coverted to GB For Total Data Displayed Below Label Total Data Plus Plan Added",
         		"it seems amount is not convertd to GB For Total Data Displayed Below Label Total Data Plus Plan Added, please investigate");
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForLabelDataRemaining(),
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForLabelDataRemaining(),
         		"All amounts are coverted to GB For Label Data Remaining",
         		"it seems amount is not convertd to GB For Label Data Remaining, please investigate");
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForlabelTotalDataDisplayedBelowBarRightSide(),
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForlabelTotalDataDisplayedBelowBarRightSide(),
         		"All amounts are coverted to GB label Total Data Displayed Below Bar RightSide",
         		"it seems amount is not convertd to GB label Total Data Displayed Below Bar RightSide, please investigate");
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesForTotalDataPlusAddedPlan(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesForTotalDataPlusAddedPlan(), 
 							"All MB amounts converted in GB up to 2 decimal points For Total Data Plus Added Plan", 
 							"MB amounts converted in GB up to 2 decimal points NOT validated For Total Data Plus Added Plan, please investigate");  
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesOnLabelDataRemaining(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesOnLabelDataRemaining(), 
 				"All MB amounts converted in GB up to 2 decimal points On Label Data Remaining", 
 				"MB amounts converted in GB up to 2 decimal points NOT validated On Label Data Remaining, please investigate"); 
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesOnTotalDataBelowUsageBarRightSide(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesOnTotalDataBelowUsageBarRightSide(), 
 				"All MB amounts converted in GB up to 2 decimal points Total Data Below UsageBar RightSide", 
 				"MB amounts converted in GB up to 2 decimal points NOT validated Total Data Below UsageBar RightSide, please investigate"); 
         rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();

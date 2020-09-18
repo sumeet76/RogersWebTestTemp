@@ -2,6 +2,7 @@ package com.rogers.pages;
 
 import java.util.ArrayList;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -32,6 +33,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	
 	
 	@FindAll({
+		@FindBy(xpath = "//span[contains(text(),'Continue') or contains(text(),'Continuer')]/ancestor::button"),
 		@FindBy (xpath = "//button[contains(text(),'Continue') or contains(text(),'Continuer')]"),
 		@FindBy (xpath = "//button[@class='primary-button state-btn']")	
 	})	
@@ -52,8 +54,16 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	@FindBy (xpath = "//input[@formcontrolname='newPassword']")
 	WebElement txtNewPass;
 	
+
+	@FindBy (xpath = "//input[@formcontrolname='newPassword']/parent::div")
+	WebElement lblNewPass;
+	
+	
 	@FindBy (xpath = "//input[@formcontrolname='confirmPassword']")
 	WebElement txtConfirmNewPass;
+	
+	@FindBy (xpath = "//input[@formcontrolname='confirmPassword']/parent::div")
+	WebElement lblConfirmNewPass;
 	
 	@FindBy (xpath = "//button[contains(text(),'Set password') or contains(text(),'de passe')]")
 	WebElement btnSetPassword;
@@ -83,6 +93,40 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	
 	@FindBy (xpath = "/html/body/table[1]//img[@alt='Return to sign in' or @alt='Ouvrir une session']")
 	WebElement btnReturnToSignin;
+
+	@FindBy(xpath = "//a[text()='Use your account information instead.']")
+	WebElement lnkUseYourAccountInfoInstead;
+
+	@FindBy(xpath = "//input[@formcontrolname='accountNumber']/parent::div")
+	WebElement lblAccountNumber;
+
+	@FindBy(xpath = "//input[@formcontrolname='postalCode']/parent::div")
+	WebElement lblPostCode;
+
+	@FindBy(xpath = "//input[@formcontrolname='postalCode']")
+	WebElement txtPostCode;
+		
+	@FindBy(xpath = "//input[@formcontrolname='dob']/parent::div")
+	WebElement lblDOB;
+
+	@FindBy(xpath = "//input[@formcontrolname='dob']")
+	WebElement txtDOB;
+
+	@FindBy(xpath = "//ds-code-input/div/div[1]/input")
+	WebElement inputCode;
+
+	@FindBy(xpath = "//span[text()='Create a new MyRogers password for ']/following-sibling::span")
+	WebElement lblSetPasswordForUserName;
+
+	@FindBy(xpath = "//h1//span[text()='Success!']")
+	WebElement lblYourPasswordHasBeenReset;
+	
+	@FindBy(xpath = "//button//*[text()='Go to MyRogers']")
+	WebElement btnGoToMyRogers;
+
+	@FindBy(xpath = "//input[@formcontrolname='username']")
+	WebElement txtUsername;
+	
 	
 	public void clkBtnPassword() {
 		reusableActions.getWhenVisible(btnPassword).click();
@@ -170,7 +214,8 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Ning.Xue
 	 */
 	public void setNewPassword(String strNewPass) {
-		reusableActions.getWhenReady(txtNewPass).clear();
+		reusableActions.getWhenReady(lblNewPass).click();				
+		//reusableActions.getWhenReady(txtNewPass).clear();
 		reusableActions.getWhenReady(txtNewPass).sendKeys(strNewPass);
 	}
 	
@@ -180,7 +225,8 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Ning.Xue
 	 */
 	public void setConfirmPassword(String strNewPass) {
-		reusableActions.getWhenReady(txtConfirmNewPass).clear();
+		reusableActions.getWhenReady(lblConfirmNewPass).click();	
+		//reusableActions.getWhenReady(txtConfirmNewPass).clear();
 		reusableActions.getWhenReady(txtConfirmNewPass).sendKeys(strNewPass);
 	}
 	
@@ -238,6 +284,15 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	}
 
 	/**
+	 * Is password reset success displayed
+	 * @return true if password reset successful else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isPasswordRestSuccessForRecoveredUsernameOrPwd() {		
+		return reusableActions.isElementVisible(lblYourPasswordHasBeenReset);
+	}
+	
+	/**
 	 * Switches back to default content
 	 * @author Mirza.Kamran
 	 */
@@ -250,7 +305,11 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkBtnCloseWeHaveTextedUserNameOverlay() {		
-		reusableActions.clickWhenReady(btnCloseWeHaveTextedUserNameOverlay);
+		reusableActions.getWhenReady(By.xpath("//input[@formcontrolname='newPassword']/parent::div")).click();
+		reusableActions.getWhenReady(txtNewPass).sendKeys("rogers123");
+		reusableActions.getWhenReady(By.xpath("//input[@formcontrolname='confirmPassword']/parent::div")).click();
+		reusableActions.getWhenReady(txtConfirmNewPass).sendKeys("rogers123");
+		//reusableActions.clickWhenReady(btnCloseWeHaveTextedUserNameOverlay);
 	}
 
 	/**
@@ -259,7 +318,9 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setAccountNumber(String strAccountNumber) {
-		reusableActions.getWhenReady(txtAcountNumber).clear();
+		reusableActions.waitForElementTobeClickable(lblAccountNumber, 30);
+		reusableActions.getWhenReady(lblAccountNumber).click();
+		//reusableActions.getWhenReady(txtAcountNumber).clear();
 		reusableActions.getWhenReady(txtAcountNumber).sendKeys(strAccountNumber);
 	}
 	
@@ -289,5 +350,74 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	public void switchToSigninPage(int intTabIndex) {
 		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 		getDriver().switchTo().window(tabs.get(intTabIndex));
+	}
+
+	/**
+	 * Clicks on the account link
+	 * @author Mirza.Kamran
+	 */
+	public void clkUseYourAccountInfoInsteadLink() {
+	  reusableActions.getWhenReady(lnkUseYourAccountInfoInstead).click();		
+	}
+
+	/**
+	 * Sets the Postcode number for recovery
+	 * @param strPostcode, String, postcode 
+	 * @author Mirza.Kamran
+	 */
+	public void setPostCode(String strPostcode) {	
+			reusableActions.getWhenReady(lblPostCode).click();
+			//reusableActions.getWhenReady(txtPostCode).clear();
+			reusableActions.getWhenReady(txtPostCode).sendKeys(strPostcode);
+	
+	}
+
+	/**
+	 * Sets the DOB  for recovery
+	 * @param strDOB, String, DOB 
+	 * @author Mirza.Kamran
+	 */
+	public void setDOB(String strDOB) {
+		reusableActions.getWhenReady(lblDOB).click();
+		//reusableActions.getWhenReady(txtDOB).clear();
+		reusableActions.getWhenReady(txtDOB).sendKeys(strDOB);
+	}
+
+	/**
+	 * @param strRecoveredUserName 
+	 * 
+	 */
+	public void setRecoveryCode(String strRecoveredUserName) {
+		
+		reusableActions.getWhenReady(inputCode).sendKeys(strRecoveredUserName);
+	}
+
+	/**
+	 * gets the username 
+	 * @author Mirza.Kamran
+	 * @return string value username
+	 */
+	public String getRecoveryUsernameNew() {
+		return reusableActions.getWhenReady(lblSetPasswordForUserName).getText().trim();
+		
+	}
+	
+	/**
+	 * Clicks on Go to my rogers
+	 * @author Mirza.Kamran
+	 */
+	public void clkGoToMyRogers()
+	{
+		reusableActions.getWhenReady(btnGoToMyRogers).click();
+	}
+
+	/**
+	 * Sets the username for password recovery
+	 * @param strUsername username
+	 * @author Mirza.Kamran
+	 */
+	public void setUsernameIFrame(String strUsername) {		
+		reusableActions.getWhenVisible(txtUsername).sendKeys(strUsername);
+		
 	}
 }

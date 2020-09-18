@@ -2,11 +2,12 @@ package com.rogers.test.tests.selfserve.desktop;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;                     
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -19,9 +20,9 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class RogersSS_TC_075_ValidateLiveChatBadgeOnWirelessDashboardPage extends BaseTestClass {	
    	
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
-			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
+		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+			startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
 		}
 	   	
 		
@@ -31,7 +32,7 @@ public class RogersSS_TC_075_ValidateLiveChatBadgeOnWirelessDashboardPage extend
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateLiveChatBadgeOnWirelessDashboardPage() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc727375.getUsername();
@@ -60,13 +61,13 @@ public class RogersSS_TC_075_ValidateLiveChatBadgeOnWirelessDashboardPage extend
         }
         rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
                        
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyLiveChatButtonIsDisplayed(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLiveChatButtonIsDisplayed(), 
         					"Live Chat button is displayed in wireless dashboard page", 
         					"Live Chat button is NOT displayed in wireless dashboard page");
         reporter.reportLogWithScreenshot("Wireless dashboard page."); 
         rogers_wireless_dashboard_page.clkBtnLiveChat();
         
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyLiveChatOverlayOpened(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLiveChatOverlayOpened(), 
 							"Live Chat overlay opened in wireless dashboard page", 
 							"Live Chat overlay did NOT open in wireless dashboard page, please investigate.");
         reporter.reportLogWithScreenshot("Live Chat overlay opened."); 

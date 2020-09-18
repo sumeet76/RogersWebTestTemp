@@ -485,8 +485,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisStarterPackageNew() {
-		reusableActions.waitForElementVisibility(btnSolarisStarterPackageNew, 20);
-		reusableActions.waitForElementVisibility(txtPackageCost, 55);
+		reusableActions.waitForElementVisibility(btnSolarisStarterPackageNew, 60);
+		reusableActions.waitForElementVisibility(txtPackageCost, 15);
 		reusableActions.getWhenReady(btnSolarisStarterPackageNew, 10).click();
 	}
 	

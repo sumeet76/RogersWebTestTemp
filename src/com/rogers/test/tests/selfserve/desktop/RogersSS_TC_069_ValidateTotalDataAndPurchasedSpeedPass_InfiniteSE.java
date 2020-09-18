@@ -2,12 +2,13 @@ package com.rogers.test.tests.selfserve.desktop;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;                     
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -21,9 +22,9 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE extends BaseTestClass {	
    	
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
-			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
+		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+			startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 		}
 	   	
 		
@@ -34,7 +35,7 @@ public class RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE e
 	
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateTotalDataForInfiniteSEIndividualPlan() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc6269.getUsername();
@@ -65,7 +66,7 @@ public class RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE e
 				"Speed Pass button is displayed", 
 				"Speed Pass button is NOT displayed");
 		reporter.reportLogWithScreenshot("Wireless dashboard page."); 
-		reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(), 
+		reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(), 
 			"'Data details' page is displayed after click on view details link", 
 			"'Data details' page is NOT displayed after click on view details link");  
 	    //- Plan data: should be displayed (shared data across all lines)
@@ -80,18 +81,18 @@ public class RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE e
 		
 		int totalAddedSpeedPass = common_business_flows.addSpeedPass();	
 
-		reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(), 
+		reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(), 
 				"'Data details' page is displayed after click on view details link", 
 				"'Data details' page is NOT displayed after click on view details link"); 
 		reporter.reportLogWithScreenshot("Manage data page view after we click on view details"); 
-		reporter.softAssert(rogers_manage_data_page.verifyAddedDataInDataDetails(totalAddedSpeedPass,countOfExistSpeedPass), 
+		reporter.hardAssert(rogers_manage_data_page.verifyAddedDataInDataDetails(totalAddedSpeedPass,countOfExistSpeedPass), 
 						"Added data section is verified in 'Data details' page,"
 						+ " multiple speed passes of same size displayed individually.", 
 						"Added data section in 'Data details' page is not verified successfully.");  
 		int countOfExistSpeedPassTotalGB = rogers_manage_data_page.getAllExistingSpeedPassTotalGB();	
 		rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
 		reporter.reportLogWithScreenshot("Total data view");
-		reporter.softAssert(rogers_manage_data_page.verifyTotalDataInDataDetailsWithMaxSpeedAndTotalOfSpeedPasses(countOfExistSpeedPassTotalGB,totalSharedDataDisplayedInPlanDataSection), 
+		reporter.hardAssert(rogers_manage_data_page.verifyTotalDataInDataDetailsWithMaxSpeedAndTotalOfSpeedPasses(countOfExistSpeedPassTotalGB,totalSharedDataDisplayedInPlanDataSection), 
 						"Total Data: displays data plan on Max speed AND total added speed passes separately ", 
 						"Total Data: NOT displays data plan on Max speed AND total added speed passes separately ");	
 

@@ -1,27 +1,23 @@
 package com.rogers.test.tests.selfserve.desktop;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 
 
 public class RogersSS_TC_064_ValidateDataUsage_InfiniteIndividualPlanReducedSpeeds extends BaseTestClass {	
    	
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
-			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
+		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+			startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 		}
 	   	
 		
@@ -31,7 +27,7 @@ public class RogersSS_TC_064_ValidateDataUsage_InfiniteIndividualPlanReducedSpee
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateDataUsageForInfiniteNsePlanReducedSpeed() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc64.getUsername();
@@ -67,15 +63,15 @@ public class RogersSS_TC_064_ValidateDataUsage_InfiniteIndividualPlanReducedSpee
         reporter.hardAssert(rogers_wireless_dashboard_page.verifySpeedReducedMsg(),
 						"Label using data at reduced speed is displayed",
 						"Label using data at reduced speed is not displayed");
-        reporter.softAssert(rogers_wireless_dashboard_page.verifySpeedPassButtonIsDisplayed(),
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifySpeedPassButtonIsDisplayed(),
 						"Link add speed pass is displayed",
 						"Link add speed pass is not displayed");
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyCallOutMsgToAddSpeedPassIsDisplayed(),
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyCallOutMsgToAddSpeedPassIsDisplayed(),
 						"Call out message to Add speed pass is displayed",
 						"call out message to add speed pass is not displayed");
         reporter.reportLogWithScreenshot("Dashboard page of reduced speed.");          
         rogers_wireless_dashboard_page.clkCloseCallOutMsg();
-        reporter.softAssert(rogers_wireless_dashboard_page.validateCloseCallOutIsClosed(),
+        reporter.hardAssert(rogers_wireless_dashboard_page.validateCloseCallOutIsClosed(),
 						"Click on close call out message successful",
 						"Click on close call out message didnt succeed");
         reporter.reportLogWithScreenshot("Closed Call out message to Add speed pass on dashboard page.");  

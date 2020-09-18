@@ -1,5 +1,6 @@
 package com.rogers.pages;
 
+import org.apache.xmlbeans.impl.xb.xsdschema.FieldDocument.Field.Xpath;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -216,7 +217,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy(xpath = "//select[@title='Select type' or @title='Sélectionner le type']")
 	WebElement cboApartmentType;
 	
-	@FindBy(xpath = "//input[@title='Enter city’s name' or @title='Entrer le nom de la ville']")
+	@FindBy(xpath = "//input[contains(@title,'Enter city') or @title='Entrer le nom de la ville']")
 	WebElement txtCityName;
 	
 	@FindBy(xpath = "//select[@title='Select a province/territory' or @title='Sélectionner une province/un territoire']")
@@ -240,9 +241,15 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy(xpath = "//div[text()='Billing address:' or text()='Adresse de facturation :']/parent::div/following-sibling::div[1]")
 	WebElement lblBillingAddress;
 	
-	@FindBy(xpath = "//rss-contact-info//div")
+	@FindAll({
+		@FindBy(xpath = "//div[text()='Email:' or text()='Email:']/parent::div/parent::div"),
+		@FindBy(xpath = "//rss-contact-info//div")})	
 	WebElement lblContactsDetailsSection;
 	
+	@FindAll({
+		@FindBy(xpath = "//div[text()='Language:' or text()='Language:']/parent::div/parent::div"),
+		@FindBy(xpath = "//rss-contact-info//div")})	
+	WebElement lblLanguageSection;
 	
 	@FindBy(xpath = "//div[text()='Language:']/parent::div/following-sibling::div")
 	WebElement lblContactsDetailsSectionMobile;
@@ -253,7 +260,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy(xpath = "//input[@title='Enter street name' or @title='Entrer le nom de la rue']/parent::div")
 	WebElement lblStreetName;
 
-	@FindBy(xpath = "//input[@title='Enter city’s name' or @title='Entrer le nom de la ville']/parent::div")
+	@FindBy(xpath = "//input[contains(@title,'Enter city') or @title='Entrer le nom de la ville']/parent::div/parent::div/parent::ds-form-field")
 	WebElement lblCityName;
 
 	@FindBy(xpath = "//input[@title='Enter postal code' or @title='Entrer le code postal']/parent::div")
@@ -740,7 +747,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean clkBtnAddContactEmailFinish() {
 		reusableActions.staticWait(1000);
-		if(btnAddContactEmailDone.isDisplayed())
+		if(reusableActions.isElementVisible(btnAddContactEmailDone))
 		{
 		 reusableActions.clickWhenReady(btnAddContactEmailDone, 30);
 		 return true;
@@ -794,7 +801,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean clkBtnUpdateHomeNumberFinish() {
 		reusableActions.staticWait(1000);
-		if(btnUpdateHomeNumberDone.isDisplayed())
+		if(reusableActions.isElementVisible(btnUpdateHomeNumberDone))
 		{
 		 reusableActions.clickWhenReady(btnUpdateHomeNumberDone, 30);
 		 return true;
@@ -855,7 +862,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean clkBtnAddBusinessNumberDone() {
 		reusableActions.staticWait(1000);
-		if(btnAddBusinessNumberDone.isDisplayed())
+		if(reusableActions.isElementVisible(btnAddBusinessNumberDone))
 		{
 		 reusableActions.clickWhenReady(btnAddBusinessNumberDone, 30);
 		 return true;
@@ -872,7 +879,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean clkBtnChangeLanguageDone() {
 		reusableActions.staticWait(1000);
-		if(btnChangeLanguageDone.isDisplayed())
+		if(reusableActions.isElementVisible(btnChangeLanguageDone))
 		{
 		 reusableActions.clickWhenReady(btnChangeLanguageDone, 30);
 		 return true;
@@ -899,7 +906,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean buttonFinishExists() {
 
-		return btnAddContactEmailDone.isDisplayed();
+		return reusableActions.isElementVisible(btnAddContactEmailDone);
 	}
 	
 	/**
@@ -969,7 +976,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @param strCityName city name
 	 * @author Mirza.Kamran
 	 */
-	public void setCityName(String strCityName) {
+	public void setCityName(String strCityName) {		
 		reusableActions.getWhenReady(lblCityName).click();
 		reusableActions.getWhenReady(txtCityName).sendKeys(strCityName);
 	}
@@ -1018,7 +1025,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean clickDoneChangeBillingAddress() {
 		reusableActions.staticWait(1000);
-		if(btnChangeAddressDone.isDisplayed())
+		if(reusableActions.isElementVisible(btnChangeAddressDone))
 		{
 		 reusableActions.clickWhenReady(btnChangeAddressDone, 30);
 		 return true;
@@ -1052,7 +1059,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public String getExistingLanguage() {		
-		return reusableActions.getWhenReady(lblContactsDetailsSection).getText();
+		return reusableActions.getWhenReady(lblLanguageSection).getText();
 	}
 
 	/**

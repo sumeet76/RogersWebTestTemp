@@ -1,28 +1,23 @@
 package com.rogers.test.tests.selfserve.desktop;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 
 
 public class RogersSS_TC_092_AO_ValidateTheMessageInAccountOverviewWhenTheAccountIsInCancelledState_SE extends BaseTestClass {	
     
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-	public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-	   xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+	   // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+		startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
 				
 	}
 	   	
@@ -48,7 +43,7 @@ public class RogersSS_TC_092_AO_ValidateTheMessageInAccountOverviewWhenTheAccoun
 7. Subscription widget or any other services widget should not be displayed for a cancelled account"
 	 */
 	
-    @Test
+    @Test(groups = {"RegressionSS","AccountOverviewSS"})
     public void validateSignInAndAccountOverview() {
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
@@ -71,15 +66,20 @@ public class RogersSS_TC_092_AO_ValidateTheMessageInAccountOverviewWhenTheAccoun
         		"The cancelled account message is displayed as expected above the billing widget",
         		"The account cancelled message is NOT displayed ");
         reporter.reportLogWithScreenshot("Account cancelled message");
-        reporter.softAssert((rogers_account_overview_page.isViewBillingAndPaymentHistoryDisplayedInsideAccountCancelledMessage()
-        		&& rogers_account_overview_page.isManageProfileLinkDisplayedInsideAccountCancelledMessage()),
-        		"The account cancelled message is displayed with 'View Billing & Payment History' and 'Manage Profile' as expected",
-        		"The account cancelled message is NOT displayed with 'View Billing & Payment History' and 'Manage Profile' as expected");
-        reporter.softAssert((rogers_account_overview_page.isViewBillDisplayed()
-        		&& rogers_account_overview_page.isLnkSetAutoPaymentDisplayed()
-        		&& rogers_account_overview_page.isLnkPaymentHistoryDisplayed()),
-        		"The View Bill, Payment history, set up autopayment links displayed",
-        		"The View Bill, Payment history, set up autopayment links  NOt displayed");
+        reporter.hardAssert(rogers_account_overview_page.isViewBillingAndPaymentHistoryDisplayedInsideAccountCancelledMessage(),
+        		"The account cancelled message is displayed with View Billing & Payment History",
+        		"The account cancelled message is NOT displayed with View Billing & Payment History");
+        
+        reporter.hardAssert(rogers_account_overview_page.isManageProfileLinkDisplayedInsideAccountCancelledMessage(),
+        		"Manage Profile displayed as expected",
+        		"Manage Profile not displayed as expected");
+        reporter.softAssert(rogers_account_overview_page.isViewBillDisplayed(),"The View Bill link displayed",
+        		"The View Bill link  NOt displayed");
+        reporter.softAssert( rogers_account_overview_page.isLnkSetAutoPaymentDisplayed(),"Payment history link displayed",
+        		"Payment history link  Not displayed");
+        reporter.softAssert(rogers_account_overview_page.isLnkPaymentHistoryDisplayed(),"Set up autopayment link displayed",
+	   "Set up autopayment link  Not displayed");
+        		
         common_business_flows.scrollToBottomOfWebPage();
         reporter.reportLogWithScreenshot("Checking CTN or other services");
         reporter.softAssert(rogers_account_overview_page.isCTNNotDisplayed(),

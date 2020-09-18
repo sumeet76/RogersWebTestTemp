@@ -2,12 +2,13 @@ package com.rogers.test.tests.selfserve.desktop;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;                     
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -23,9 +24,9 @@ public class RogersSS_TC_031_Postpaid_ChangeContactInfo extends BaseTestClass {
 	private String strAltEmail;
 
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
-			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
+		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+			startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
 		}
 	   	
 	 
@@ -34,7 +35,7 @@ public class RogersSS_TC_031_Postpaid_ChangeContactInfo extends BaseTestClass {
 		closeSession();
 	}
 	
-	@Test
+	@Test(groups = {"SanitySS","RegressionSS","ProfileAndSettingsSS"})
 	public void validateUserChangeContactInformation() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc013132.getUsername();
@@ -78,7 +79,7 @@ public class RogersSS_TC_031_Postpaid_ChangeContactInfo extends BaseTestClass {
     	rogers_profile_and_settings_page.clkBtnAddContactEmailContinue();
     	rogers_profile_and_settings_page.clkBtnAddContactEmailSubmit();    
 		reporter.reportLogWithScreenshot("Contact email information submitted.");
-	    reporter.softAssert((rogers_profile_and_settings_page.clkBtnAddContactEmailFinish()
+	    reporter.hardAssert((rogers_profile_and_settings_page.clkBtnAddContactEmailFinish()
 	    		&& rogers_profile_and_settings_page.verifyContactEmailSuccessfullySet(strNewEmail)),
 				"Contact email was successfully add", 
 				"Add contact email failed");	    
@@ -91,7 +92,7 @@ public class RogersSS_TC_031_Postpaid_ChangeContactInfo extends BaseTestClass {
     	rogers_profile_and_settings_page.clkBtnUpdateHomeNumberContinue();
     	rogers_profile_and_settings_page.clkBtnUpdateHomeNumberSubmit();
 		reporter.reportLogWithScreenshot("Home phone number inflormation submitted.");
-    	reporter.softAssert((rogers_profile_and_settings_page.clkBtnUpdateHomeNumberFinish()
+    	reporter.hardAssert((rogers_profile_and_settings_page.clkBtnUpdateHomeNumberFinish()
     			&& rogers_profile_and_settings_page.verifyHomeNumber(strHomePhoneNumer.substring(strHomePhoneNumer.length()-4))),
     			"Home phone number was successfully updated",
     			"Update home phone number failed");    	
@@ -104,7 +105,7 @@ public class RogersSS_TC_031_Postpaid_ChangeContactInfo extends BaseTestClass {
     	rogers_profile_and_settings_page.clkBtnAddBusinessNumberContinue();
     	rogers_profile_and_settings_page.clkBtnAddBusinessNumberSubmit();  
 		reporter.reportLogWithScreenshot("Business phone number inflormation submitted.");
-    	reporter.softAssert((rogers_profile_and_settings_page.clkBtnAddBusinessNumberDone()
+    	reporter.hardAssert((rogers_profile_and_settings_page.clkBtnAddBusinessNumberDone()
     			&& rogers_profile_and_settings_page.verifyBusinessNumber(strBusinessNumer.substring(strBusinessNumer.length()-4))),
 				"Business phone number was successfully Added", 
 				"Add business phone number failed");
@@ -127,7 +128,7 @@ public class RogersSS_TC_031_Postpaid_ChangeContactInfo extends BaseTestClass {
     	}    	    	
     	rogers_profile_and_settings_page.clkBtnChangelanguageSubmit();    	
 		reporter.reportLogWithScreenshot("Change contact language inflormation submitted.");
-    	reporter.softAssert((rogers_profile_and_settings_page.clkBtnChangeLanguageDone()
+    	reporter.hardAssert((rogers_profile_and_settings_page.clkBtnChangeLanguageDone()
     			&& rogers_profile_and_settings_page.verifyLanguageSetSuccessfully(newLanguage)),
 				"Change language was done successfully", 
 				"Change language did not happen successfully");

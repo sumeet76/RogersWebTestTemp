@@ -62,6 +62,9 @@ public class RogersBillingPage extends BasePageClass {
 	@FindBy (xpath = "//span[@translate='ute.payment.method.history']")
 	WebElement lnkPaymentHistory;
 	
+	@FindBy(xpath = "//*[@translate='ute.common.label.billAndAccountBalance']")
+	WebElement lblBillAndAccountBalanceHeader;
+	
 	/**
 	 * Verify if the account has no bill.
 	 * @return true if the account has no bill, else false
@@ -193,5 +196,15 @@ public class RogersBillingPage extends BasePageClass {
 	 */
 	public void clkPaymentHistoryLink() {
 		reusableActions.getWhenReady(lnkPaymentHistory).click();
+	}
+	
+	/**
+	 * Checks if the view bill page header is displayed 
+	 * @return true if the header is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyViewBillPageHeaderDisplayed()
+	{
+		return reusableActions.isElementVisible(lblBillAndAccountBalanceHeader);
 	}
 }

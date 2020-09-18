@@ -2,11 +2,12 @@ package com.rogers.test.tests.selfserve.desktop;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;                     
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -19,9 +20,9 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class RogersSS_TC_072_wldb_ValidateDetailsOfDeviceSection extends BaseTestClass {	
    	
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
-			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
+		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+			startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
 		}
 	   	
 		
@@ -31,7 +32,7 @@ public class RogersSS_TC_072_wldb_ValidateDetailsOfDeviceSection extends BaseTes
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateDeviceSectionOnWirelessDashboardPage() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc727375.getUsername();
@@ -61,10 +62,10 @@ public class RogersSS_TC_072_wldb_ValidateDetailsOfDeviceSection extends BaseTes
         }
         rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
                        
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyHeaderOfDeviceSection(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyHeaderOfDeviceSection(), 
         					"Header of Device section in wireless dashboard page verified successfully", 
         					"Header of device section in wireless dashboard page didn't show as expected.");
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyDeviceBalanceOfDeviceSection(), 
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyDeviceBalanceOfDeviceSection(), 
 							"Device balance in wireless dashboard page verified successfully", 
 							"Device balance in wireless dashboard page didn't show as expected.");
     	//rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
@@ -77,7 +78,7 @@ public class RogersSS_TC_072_wldb_ValidateDetailsOfDeviceSection extends BaseTes
             reporter.reportLogWithScreenshot("Device Upgrade Modal opened.");
         	rogers_wireless_dashboard_page.clkCloseDeviceUpgradeModal();
         } else {
-            reporter.softAssert(rogers_wireless_dashboard_page.verifyChoosePhonePage(), 
+            reporter.hardAssert(rogers_wireless_dashboard_page.verifyChoosePhonePage(), 
     							"Choose phone page opened successfully", 
     							"Choose phone page didn't open as expected.");       
             reporter.reportLogWithScreenshot("Choose phone page opened.");
@@ -86,16 +87,16 @@ public class RogersSS_TC_072_wldb_ValidateDetailsOfDeviceSection extends BaseTes
 
         if(rogers_wireless_dashboard_page.isDeviceClosingDateMsgAvailable()) {
 
-            reporter.softAssert(rogers_wireless_dashboard_page.verifyDeviceClosingDateMsgIfAvailable(), 
+            reporter.hardAssert(rogers_wireless_dashboard_page.verifyDeviceClosingDateMsgIfAvailable(), 
     							"Device balance closing date message verified successfully", 
     							"Device balance closing date message didn't show as expected.");
-            reporter.softAssert(rogers_wireless_dashboard_page.verifyMyDeviceDetailsModalOfDeviceSection(), 
+            reporter.hardAssert(rogers_wireless_dashboard_page.verifyMyDeviceDetailsModalOfDeviceSection(), 
     							"View details modal verified successfully", 
     							"View details modal didn't show activation date and expire date as expected.");    
             reporter.reportLogWithScreenshot("View details modal opened."); 
             rogers_wireless_dashboard_page.clkCloseMyDeviceDetailsModal();
         }else {
-            reporter.softAssert(rogers_wireless_dashboard_page.verifyLinkMyDeviceDetailsOfDeviceSection(), 
+            reporter.hardAssert(rogers_wireless_dashboard_page.verifyLinkMyDeviceDetailsOfDeviceSection(), 
     							"View details modal opened successfully", 
     							"View details modal didn't open as expected.");       
             rogers_wireless_dashboard_page.clkCloseMyDeviceDetailsModal();

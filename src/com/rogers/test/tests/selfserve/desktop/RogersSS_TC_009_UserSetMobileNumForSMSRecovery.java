@@ -2,12 +2,13 @@ package com.rogers.test.tests.selfserve.desktop;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;                     
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -19,9 +20,9 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class RogersSS_TC_009_UserSetMobileNumForSMSRecovery extends BaseTestClass {
 	
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
-			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
+		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+			startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
 		}
 	   	
 		
@@ -30,7 +31,7 @@ public class RogersSS_TC_009_UserSetMobileNumForSMSRecovery extends BaseTestClas
 		closeSession();
 	}
 	
-	@Test
+	@Test(groups = {"RegressionSS","ProfileAndSettingsSS"})
 	public void validateUserSuccessfullyAddMobileNumForRecovery() {
 		String strUserName = TestDataHandler.tc040609.getUsername();
 		String strRecoveryNumber = TestDataHandler.tc040609.getAccountDetails().getRecoveryNumber();
@@ -69,7 +70,7 @@ public class RogersSS_TC_009_UserSetMobileNumForSMSRecovery extends BaseTestClas
     			reporter.reportLogWithScreenshot("Verify code is entered.");
     			rogers_profile_and_settings_page.clkBtnVerifyMeIframe();
 
-    			reporter.softAssert(rogers_profile_and_settings_page.verifySetRecoverySuccessConfirmationMsg(strRecoveryNumber.substring(strRecoveryNumber.length()-4)),
+    			reporter.hardAssert(rogers_profile_and_settings_page.verifySetRecoverySuccessConfirmationMsg(strRecoveryNumber.substring(strRecoveryNumber.length()-4)),
     					"Got recovery phone number set successfully confirm message",
     					"Got error when setting recovery phone number");
     			reporter.reportLogWithScreenshot("Confirm page of set recovery phone number.");

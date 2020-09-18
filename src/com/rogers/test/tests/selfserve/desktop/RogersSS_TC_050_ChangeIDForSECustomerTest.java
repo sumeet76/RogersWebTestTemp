@@ -2,12 +2,13 @@ package com.rogers.test.tests.selfserve.desktop;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;                     
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -21,7 +22,7 @@ import utils.FormFiller;
 
 public class RogersSS_TC_050_ChangeIDForSECustomerTest extends BaseTestClass {
 
-	@Test
+	@Test(groups = {"RegressionSS","WirelessDashboardSS"})
 	public void changeIDForSECustomer() {
 		String strFirstName = FormFiller.generateRandomName().toUpperCase();
 		String strLastName = FormFiller.generateRandomName().toUpperCase();		
@@ -71,7 +72,7 @@ public class RogersSS_TC_050_ChangeIDForSECustomerTest extends BaseTestClass {
 			//for CTN refresh go on overview and come back
 			rogers_wireless_dashboard_page.clickOverview();
 			reporter.reportLogWithScreenshot("Back on overview page"); 
-			reporter.softAssert(rogers_account_overview_page.verifyWirelessCallerIdCTNBadgeName(strFirstName),
+			reporter.hardAssert(rogers_account_overview_page.verifyWirelessCallerIdCTNBadgeName(strFirstName),
 					"Caller ID First Name" + strFirstName + " is updated in CTN badge",
 					"Caller ID First Name" + strFirstName + " is NOT updated in CTN badge");			
 			rogers_account_overview_page.clkMenuUsageAndService();
@@ -82,7 +83,7 @@ public class RogersSS_TC_050_ChangeIDForSECustomerTest extends BaseTestClass {
 	        	rogers_account_overview_page.clkSubMenuWirelessUsage();
 	        }
 	        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();	        	        
-			reporter.softAssert(rogers_wireless_dashboard_page.verifyWirelessCallerIdUpdatedInSeCtnTab(strFirstName),
+			reporter.hardAssert(rogers_wireless_dashboard_page.verifyWirelessCallerIdUpdatedInSeCtnTab(strFirstName),
 					"Caller ID First Name" + strFirstName + " is updated in SE CTN Tab",
 					"Caller ID First Name" + strFirstName + " is NOT updated in SE CTN Tab");			
 		}
@@ -90,9 +91,9 @@ public class RogersSS_TC_050_ChangeIDForSECustomerTest extends BaseTestClass {
 	}
 
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
-			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
+		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+			startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
 		}
 	   	
 		

@@ -2,12 +2,13 @@ package com.rogers.test.tests.selfserve.desktop;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;                     
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -20,9 +21,9 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class RogersSS_TC_073_ValidateMyWirelessPlanSectionInTheWirelessDashboardNSE extends BaseTestClass {	
     
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-		public void beforeTest(String strBrowser, String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(TestDataHandler.ssConfig.getRogersURL(),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
-			xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
+		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+			startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
 		}
 	   	
 		
@@ -32,7 +33,7 @@ public class RogersSS_TC_073_ValidateMyWirelessPlanSectionInTheWirelessDashboard
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateMyWirelessPlanSectionInTheWirelessDashboardNSE() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc727375.getUsername();
@@ -63,13 +64,13 @@ public class RogersSS_TC_073_ValidateMyWirelessPlanSectionInTheWirelessDashboard
         rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
         rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
         reporter.reportLogWithScreenshot("Middle of Wireless dashboard page.");        
-	    reporter.softAssert(rogers_wireless_dashboard_page.verifyPlanNameIsDisplayed(),
+	    reporter.hardAssert(rogers_wireless_dashboard_page.verifyPlanNameIsDisplayed(),
 	    		"Plan name is displayed",
 	    		"Plan name is not displayed");	    
-	    reporter.softAssert(rogers_wireless_dashboard_page.verifyMonthlyServiceFeeIsDisplayed(),
+	    reporter.hardAssert(rogers_wireless_dashboard_page.verifyMonthlyServiceFeeIsDisplayed(),
 	    		"Monthly service fee is displayed in the Plan section",
 	    		"Monthly service fee is not displayed in the Plan section");
-	    reporter.softAssert(rogers_wireless_dashboard_page.verifyButtonChangePlanIsDisplayed(),
+	    reporter.hardAssert(rogers_wireless_dashboard_page.verifyButtonChangePlanIsDisplayed(),
 	    		"Button Change plan is displayed in the plan section",
 	    		"Button Change plan is not displayed");
 	    reporter.softAssert(rogers_wireless_dashboard_page.verifyIncludedSectionIsDisplayed(),
