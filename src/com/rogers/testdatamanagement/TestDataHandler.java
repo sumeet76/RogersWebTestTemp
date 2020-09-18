@@ -107,6 +107,7 @@ public class TestDataHandler {
 	public static PPCData testCase08;
 	public static HUPData testCase09;
 	public static HUPData testCase10;
+	public static RedesignRpotgData testCase11;
 	public static HUPData buyFlowsOVtestCase01;
 	public static HUPData buyFlowsOVtestCase02;
 	public static HUPData buyFlowsOVtestCase05;
@@ -289,7 +290,8 @@ public class TestDataHandler {
     	testCase05 = YamlHandler.getHUPdata("tc05HUP");
     	testCase06 = YamlHandler.getHUPdata("tc06HUP");
     	testCase10 = YamlHandler.getHUPdata("tc10HUP");
-    	testCase08 = YamlHandler.getPPCdata("tc08PPC");    	
+    	testCase08 = YamlHandler.getPPCdata("tc08PPC");
+    	testCase11 = YamlHandler.getRedesignNACData("tc11NacByod");
 	}
 	
 	private static void buyFlowsOneViewDataInit() {

@@ -34,7 +34,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  */
 public class RogersBFA_TC07_AAL_Test extends BaseTestClass {
 
-	@Test
+	@Test(groups = {"RegressionBFA","SanityBFA","AALBFA"})
 	public void aalFlowTest() {
 		reporter.hardAssert(rogers_home_page.verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		reporter.reportLogWithScreenshot("Home Page");

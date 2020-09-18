@@ -42,5 +42,13 @@
 			</class>
 		</classes>
 	</test>
+	
+	<test name="TC11 - Regression-Rogers-NAC BYOD Test" enabled="true">
+	<classes>
+			<class
+				name="com.rogers.test.tests.buyflows.RogersBFA_TC11_NAC_BYOD_Test">
+			</class>
+		</classes>
+	</test>
 		
 </suite>

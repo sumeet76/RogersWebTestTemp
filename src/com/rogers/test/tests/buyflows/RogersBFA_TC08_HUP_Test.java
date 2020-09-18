@@ -31,7 +31,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  */
 public class RogersBFA_TC08_HUP_Test extends BaseTestClass {
 
-	@Test
+	@Test(groups = {"RegressionBFA","SanityBFA","HUPBFA"})
     public void hupFlowTest() {
 		reporter.hardAssert(rogers_home_page.verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		reporter.reportLogWithScreenshot("Rogers Home Page");

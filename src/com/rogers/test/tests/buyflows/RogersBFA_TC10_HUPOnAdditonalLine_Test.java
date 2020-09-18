@@ -19,7 +19,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  */
 public class RogersBFA_TC10_HUPOnAdditonalLine_Test extends BaseTestClass {
 
-	@Test
+	@Test(groups = {"RegressionBFA","HUPBFA"})
     public void hupOnAdditionalLineFlowTest() {
 		reporter.hardAssert(rogers_home_page.verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		reporter.reportLogWithScreenshot("Rogers Home Page");

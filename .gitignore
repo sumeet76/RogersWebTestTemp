@@ -17,3 +17,7 @@ msedgedriver
 .gradle
 .idea/
 *.iml
+/build/
+*.prefs
+*.zip
+*.class

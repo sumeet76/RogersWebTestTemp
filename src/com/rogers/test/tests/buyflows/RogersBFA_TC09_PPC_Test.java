@@ -29,7 +29,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  */
 public class RogersBFA_TC09_PPC_Test extends BaseTestClass {
 
-	@Test
+	@Test(groups = {"RegressionBFA","SanityBFA","PPCBFA"})
     public void ppcFlowTest() {
 		reporter.hardAssert(rogers_home_page.verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		reporter.reportLogWithScreenshot("Home Page");
