@@ -13,7 +13,6 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
 
 public class RogersBFA_TC11_NAC_BYOD_Test extends BaseTestClass {
 

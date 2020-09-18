@@ -1,6 +1,5 @@
 package com.rogers.pages;
 
-import org.apache.xmlbeans.impl.xb.xsdschema.FieldDocument.Field.Xpath;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
