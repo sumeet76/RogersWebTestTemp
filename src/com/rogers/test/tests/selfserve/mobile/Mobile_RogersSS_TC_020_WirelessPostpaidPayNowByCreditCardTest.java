@@ -20,7 +20,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class Mobile_RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest extends BaseTestClass {
 
-    @Test
+    @Test(groups = {"MobileSanitySS"})
     public void payNowByCreditCard() {
         rogers_home_page.clkSignInMobile();
         rogers_login_page.switchToSignInIFrame();

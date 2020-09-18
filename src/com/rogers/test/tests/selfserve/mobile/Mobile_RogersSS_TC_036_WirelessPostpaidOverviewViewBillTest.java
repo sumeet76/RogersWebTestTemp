@@ -19,7 +19,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 public class Mobile_RogersSS_TC_036_WirelessPostpaidOverviewViewBillTest extends BaseTestClass {
 
-    @Test
+    @Test(groups = {"MobileSanitySS"})
     public void viewBillTest() {
     	rogers_home_page.clkSignInMobile();
 		rogers_login_page.switchToSignInIFrame();

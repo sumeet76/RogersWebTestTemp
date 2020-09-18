@@ -33,7 +33,7 @@ public class Mobile_RogersSS_TC_051_ChangePassword extends BaseTestClass {
 	}
 	
 	
-    @Test
+    @Test(groups = {"MobileSanitySS"})
     public void validateUserChangePassword() {
     	rogers_home_page.clkSignInMobile();
     	String strUsername = TestDataHandler.tc2751.getUsername();

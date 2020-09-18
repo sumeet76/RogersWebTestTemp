@@ -42,7 +42,7 @@ public class Mobile_RogersSS_TC_032_Postpaid_ChangeBillingAddress extends BaseTe
 		closeSession();
 	}
 	
-	@Test
+	@Test(groups = {"MobileSanitySS"})
 	public void validateUserChangeContactInformationAndBillingAddress() {
     	rogers_home_page.clkSignInMobile();
     	String strUsername = TestDataHandler.tc013132.getUsername();
