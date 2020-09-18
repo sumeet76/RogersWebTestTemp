@@ -33,7 +33,7 @@ public class Mobile_RogersSS_TC_057_ValidateDataUsageDisplayWithinLimit_postpaid
 	}
 	
 	
-    @Test
+    @Test(groups = {"MobileSanitySS"})
     public void validateLimitedTalkTextUsageDisplayWithinLimit() {
     	reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");

@@ -26,7 +26,7 @@ public class Mobile_RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest 
 	}
 	
 	
-    @Test
+    @Test(groups = {"MobileSanitySS"})
     public void validateSignInAndAccountOverview() {    	        
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");

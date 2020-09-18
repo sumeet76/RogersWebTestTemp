@@ -32,7 +32,7 @@ public class Mobile_RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiv
 		closeSession();
 	}
 	
-    @Test
+    @Test(groups = {"MobileSanitySS"})
     public void validateSuspendUsage() {
     	this.loginAndNavToDashboard();
       //Click on 'Reactive' link in Services page.
@@ -56,7 +56,7 @@ public class Mobile_RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiv
         reporter.reportLogWithScreenshot("Service successfully suspended.");
     }
 	
-    @Test (dependsOnMethods = "validateSuspendUsage")
+    @Test (dependsOnMethods = "validateSuspendUsage",groups = {"MobileSanitySS"})
     public void validateReactivateService() {
     	this.loginAndNavToDashboard();
       //Click on 'Reactive' link in Services page.

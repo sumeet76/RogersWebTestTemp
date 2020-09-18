@@ -33,7 +33,7 @@ public class Mobile_RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_Infin
 	
 	
 	
-    @Test(groups = {"MobileSS"})
+    @Test(groups = {"MobileSanitySS"})
     public void validateTotalDataForInfiniteSEIndividualPlan() {
     	reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");

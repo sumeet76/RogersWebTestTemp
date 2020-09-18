@@ -42,7 +42,7 @@ public class Mobile_RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaym
     }
 
     
-    @Test
+    @Test(groups = {"MobileSanitySS"})
     public void overviewBillInfoChangePaymentMethodPAC_To_CC() {
 
     	rogers_home_page.clkSignInMobile();
