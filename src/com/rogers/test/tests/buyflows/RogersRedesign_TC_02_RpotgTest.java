@@ -1,4 +1,4 @@
-package com.rogers.test.tests.redesignrogersnac;
+package com.rogers.test.tests.buyflows;
 
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
@@ -39,14 +39,14 @@ public class RogersRedesign_TC_02_RpotgTest extends BaseTestClass {
 		rogers_device_catalogue_page.clickCloseButtonOnModal();
 		rogers_device_catalogue_page.clickCheckEligibilityRpotgBanner();
 		reporter.reportLogPassWithScreenshot("RPOTG Check Eligibility Banner");
-		rogers_device_catalogue_page.validateRpotgPostalCode(TestDataHandler.redesignRpotgData.getPostalCode());
+		rogers_device_catalogue_page.validateRpotgPostalCode(TestDataHandler.tc02Rpotg.getPostalCode());
 		rogers_device_catalogue_page.clickCheckBtn();
 		reporter.reportLogPassWithScreenshot("RPOTG: Postal Code & Check Eligibility Success");
 		rogers_device_catalogue_page.clickContinueBtn();
 		String postalCode = rogers_device_catalogue_page.verifyeligiblePostalCodeinBanner();
-		reporter.hardAssert(postalCode.contains(TestDataHandler.redesignRpotgData.getPostalCode()),
+		reporter.hardAssert(postalCode.contains(TestDataHandler.tc02Rpotg.getPostalCode()),
 				"RPOTG Banner has the eligible postal code displayed", "RPOTG Banner not displayed in banner");
-		String deviceName = TestDataHandler.redesignRpotgData.getDeviceName();
+		String deviceName = TestDataHandler.tc02Rpotg.getDeviceName();
 		String pricingBlockValueCataloguePage = rogers_device_catalogue_page.getPricingBlockCataloguePage(deviceName);
 		String pricePlanInfoCataloguePage = rogers_device_catalogue_page.getPricePlanInfoCataloguePage(deviceName);
 		String fullPriceValueCataloguePage = rogers_device_catalogue_page.getPhoneFullPrice(deviceName);
@@ -64,10 +64,10 @@ public class RogersRedesign_TC_02_RpotgTest extends BaseTestClass {
 
 		// ***************************Device config page************************************
 		System.out.println(rogers_device_config_page.verifyeligiblePostalCodeinBanner());
-		System.out.println(TestDataHandler.redesignRpotgData.getPostalCode());
+		System.out.println(TestDataHandler.tc02Rpotg.getPostalCode());
 		reporter.softAssert(
 				rogers_device_config_page.verifyeligiblePostalCodeinBanner()
-						.contains(TestDataHandler.redesignRpotgData.getPostalCode()),
+						.contains(TestDataHandler.tc02Rpotg.getPostalCode()),
 				"Eligible postal code verified in Device Catalog page Banner is carried on to Device Config Page Banner as expected",
 				"Postal Code not matching");
 		String rpotgLabelDeviceConfig = rogers_device_config_page.getRpotgLabelDeviceConfigPage();
@@ -108,10 +108,10 @@ public class RogersRedesign_TC_02_RpotgTest extends BaseTestClass {
 		// ****************************Plan config
 		// page***************************************
 		System.out.print(rogers_plan_config_page.verifyeligiblePostalCodeinBanner());
-		System.out.println(TestDataHandler.redesignRpotgData.getPostalCode());
+		System.out.println(TestDataHandler.tc02Rpotg.getPostalCode());
 		reporter.softAssert(
 				rogers_plan_config_page.verifyeligiblePostalCodeinBanner()
-						.contains(TestDataHandler.redesignRpotgData.getPostalCode()),
+						.contains(TestDataHandler.tc02Rpotg.getPostalCode()),
 				"Eligible postal code verified in Device Catalog & Device Config page POTG Banner is carried on to Plan Config Page Banner as expected",
 				"Postal code not matching in Plan Config page");
 		String rpotgLabelPlanConfig = rogers_plan_config_page.getRpotgLabelPlanConfigPage();
@@ -157,10 +157,10 @@ public class RogersRedesign_TC_02_RpotgTest extends BaseTestClass {
 //		String firstName = rogers_checkout_page.setFirstNameCreateProfilepage("IRELAND");	
 //		String lastName = rogers_checkout_page.setLastNameCreateProfilepage("MARTIN");
 		String fullNameCreateProfile = firstName + " " + lastName;
-		String contactNumberCreateProfile = TestDataHandler.redesignRpotgData.getContactNumber();
+		String contactNumberCreateProfile = TestDataHandler.tc02Rpotg.getContactNumber();
 		rogers_checkout_page.setContactNumberCreateProfile(contactNumberCreateProfile);
 		reporter.reportLogPassWithScreenshot("Create Profile Page details Entered till ContactNumber");
-		String billingAddressCreateProfile = TestDataHandler.redesignRpotgData.getBillingAddress();
+		String billingAddressCreateProfile = TestDataHandler.tc02Rpotg.getBillingAddress();
 		rogers_checkout_page.setBillingAddressCreateProfile(billingAddressCreateProfile);
 		rogers_checkout_page.getRpotgSuccessMessage();
 		reporter.reportLogPassWithScreenshot(
@@ -179,16 +179,16 @@ public class RogersRedesign_TC_02_RpotgTest extends BaseTestClass {
 		reporter.softAssert(rogers_checkout_page.verifyCreditEvaluationTitle(), "CreditEvaluation Title verified",
 				"CreditEvaluation Title not present");
 		// rogers_checkout_page.setDateOfBirth(TestDataHandler.redesignRpotgData.getDateOfBirth());
-		rogers_checkout_page.selectYearDropdownOption(TestDataHandler.redesignRpotgData.getDateOfBirthYear());
-		rogers_checkout_page.selectMonthDropdownOption(TestDataHandler.redesignRpotgData.getDateOfBirthMonth());
-		rogers_checkout_page.selectDayDropdownOption(TestDataHandler.redesignRpotgData.getDateOfBirthDay());
+		rogers_checkout_page.selectYearDropdownOption(TestDataHandler.tc02Rpotg.getDateOfBirthYear());
+		rogers_checkout_page.selectMonthDropdownOption(TestDataHandler.tc02Rpotg.getDateOfBirthMonth());
+		rogers_checkout_page.selectDayDropdownOption(TestDataHandler.tc02Rpotg.getDateOfBirthDay());
 		rogers_checkout_page.switchToCreditCardIFrame();
-		rogers_checkout_page.setCreditCardNumberIFrame(TestDataHandler.redesignRpotgData.getCreditCardDetails());
+		rogers_checkout_page.setCreditCardNumberIFrame(TestDataHandler.tc02Rpotg.getCreditCardDetails());
 		reporter.reportLogPassWithScreenshot("DOB & Credit Card Details Entered Successfully");
 		rogers_checkout_page.switchOutOfCreditCardIFrame();
-		rogers_checkout_page.setExpiryDate(TestDataHandler.redesignRpotgData.getExpiryDate());
-		rogers_checkout_page.selectDropdownOption(TestDataHandler.redesignRpotgData.getDropdownOption());
-		rogers_checkout_page.setPassportNumber(TestDataHandler.redesignRpotgData.getPassportNumber());
+		rogers_checkout_page.setExpiryDate(TestDataHandler.tc02Rpotg.getExpiryDate());
+		rogers_checkout_page.selectDropdownOption(TestDataHandler.tc02Rpotg.getDropdownOption());
+		rogers_checkout_page.setPassportNumber(TestDataHandler.tc02Rpotg.getPassportNumber());
 		reporter.reportLogPassWithScreenshot("PassportNumber Entered Successfully");
 		rogers_checkout_page.clkCreditAuthorizationChkBox();
 		rogers_checkout_page.clkCreditEvalContinue();
@@ -206,7 +206,7 @@ public class RogersRedesign_TC_02_RpotgTest extends BaseTestClass {
 		reporter.softAssert(rogers_checkout_page.isChooseNumberTabsDisplayed(),
 				"Select a New Number/Use Existing Number Tab Displayed",
 				"Select a New Number/Use Existing Number Tab not disaplayed");
-		rogers_checkout_page.selectCityDropdownOption(TestDataHandler.redesignRpotgData.getCityName());
+		rogers_checkout_page.selectCityDropdownOption(TestDataHandler.tc02Rpotg.getCityName());
 		reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
 		rogers_checkout_page.clkChosePhoneNumber();
 		reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
@@ -223,7 +223,7 @@ public class RogersRedesign_TC_02_RpotgTest extends BaseTestClass {
 				"Billing Options Title Not Present");
 		reporter.softAssert(rogers_checkout_page.isPaymentMethodDropdownPresent(),
 				"Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not disaplayed");
-		rogers_checkout_page.selectPaymentMethodDropdownOption(TestDataHandler.redesignRpotgData.getPaymentMethod());
+		rogers_checkout_page.selectPaymentMethodDropdownOption(TestDataHandler.tc02Rpotg.getPaymentMethod());
 //		rogers_checkout_page.setNameOnCard(TestDataHandler.redesignRpotgData.getNameOnCard());
 //		rogers_checkout_page.switchToCreditCardIFrame();
 //		rogers_checkout_page.setCreditCardNumberIFrame(TestDataHandler.redesignRpotgData.getBillingCreditCardNumber());

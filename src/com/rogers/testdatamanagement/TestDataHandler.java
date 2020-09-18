@@ -114,6 +114,8 @@ public class TestDataHandler {
 	public static HUPData testCase09;
 	public static HUPData testCase10;
 	public static RedesignRpotgData testCase11;
+	public static RedesignRpotgData tc01NonRpotg;
+	public static RedesignRpotgData tc02Rpotg;
 	public static HUPData buyFlowsOVtestCase01;
 	public static HUPData buyFlowsOVtestCase02;
 	public static HUPData buyFlowsOVtestCase05;
@@ -130,7 +132,6 @@ public class TestDataHandler {
 	public static PaymentDetails ovPaymentInfo;
 	public static AccountData tc60;
 	public static RedesignConfig redesignConfig;
-	public static RedesignRpotgData redesignRpotgData;
 	public static AccountData tc40SHMAccount;
 	public static AccountData tc47TupeloAccount;
 	public static AccountData tc43IgniteRHP;
@@ -169,9 +170,6 @@ public class TestDataHandler {
     	} else if(strApplicationType.toUpperCase().trim().endsWith("COV")) {
     		//ch oneview  Data files
     		chOneViewDataInit();
-    	} else if(strApplicationType.toUpperCase().trim().endsWith("NAC"))
-    	{
-    		reDesignDataInit();
     	}
     	else {
     		//All Data files
@@ -179,7 +177,6 @@ public class TestDataHandler {
     		selfserveDataInit();
     		buyFlowsDataInit();
     		chOneViewDataInit();
-    		reDesignDataInit();
     	}
 	
 	}
@@ -318,6 +315,8 @@ public class TestDataHandler {
     	testCase10 = YamlHandler.getHUPdata("tc10HUP");
     	testCase08 = YamlHandler.getPPCdata("tc08PPC");
     	testCase11 = YamlHandler.getRedesignNACData("tc11NacByod");
+    	tc01NonRpotg=YamlHandler.getRedesignNACData("tc01NonRpotg");
+    	tc02Rpotg=YamlHandler.getRedesignNACData("tc02Rpotg");
 	}
 	
 	private static void buyFlowsOneViewDataInit() {
@@ -342,11 +341,4 @@ public class TestDataHandler {
       	anonymousData=YamlHandler.getContactData("AnonymousData");
       	migrationData=YamlHandler.getMigrationData("MigrationData");      
 	}
-
-	private static void reDesignDataInit(){
-		redesignConfig=YamlHandler.getRedesignConfig();
-		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/redesignrogersNAC/SauceSettings.yml");
-		redesignRpotgData=YamlHandler.getRedesignRpotgData();
-	}
-
 }
