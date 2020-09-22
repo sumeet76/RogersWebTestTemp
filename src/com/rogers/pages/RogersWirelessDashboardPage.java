@@ -151,7 +151,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy (xpath = "//span[contains(text(),'phone repair claim') or contains(text(),'réparation de téléphone')]")
 	WebElement lnkTrackRepairClaim;
 	
-	@FindBy (xpath = "//button[@title='Continue to the site' or contains(@title,'Continuer')] | //span[@translate='global.cta.continue']")
+	@FindBy (xpath = "//button[@title='Continue to the site' or contains(@title,'Continuer')] | //span[contains(@translate,'continue')]")
 	WebElement btnHlpYrPhoneContinue;
 	
 	@FindBy (xpath = "//ds-modal-container")
