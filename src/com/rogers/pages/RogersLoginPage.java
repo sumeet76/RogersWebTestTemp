@@ -49,6 +49,7 @@ public class RogersLoginPage extends BasePageClass {
 	WebElement lnkSignOut;
 		
 	@FindAll({
+		@FindBy(xpath = "//dsa-header/header[contains(@class,'rcl-header l-headerDesk')]//*[text()='Sign in' or text()='Connexion']"),
         @FindBy(xpath = "//div[@class='dds-navbar-nav']//a[@aria-label='Sign in to My Rogers']//span[text()='Sign in'  or text()='Connexion']"),
         @FindBy(xpath = "//a[contains(@class,'signin-interceptor dds_m-navLink -navbar -login dropdown-hide')]")})	
 	WebElement lnkReSignInAs;
@@ -82,7 +83,9 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	 public boolean isSignInFrameDisplayed() {
-		 return reusableActions.isElementVisible(fraSignIn);
+		 return (reusableActions.isElementVisible(fraSignIn,30) 
+				 || reusableActions.isElementVisible(lblPassword) 
+				 || reusableActions.isElementVisible(txtPassword));
 	 }
 	
 	/**
@@ -92,7 +95,7 @@ public class RogersLoginPage extends BasePageClass {
 	 */	
 
 	public void setUsernameIFrame(String strUsername) {
-		reusableActions.getWhenReady(lblUserName,20).click();
+		reusableActions.clickIfAvailable(lblUserName,20);
 		reusableActions.getWhenVisible(txtUsername, 30).clear();
 		reusableActions.getWhenVisible(txtUsername).sendKeys(strUsername);
 	}

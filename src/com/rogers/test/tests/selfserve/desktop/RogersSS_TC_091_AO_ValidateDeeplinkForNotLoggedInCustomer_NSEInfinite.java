@@ -48,7 +48,7 @@ public class RogersSS_TC_091_AO_ValidateDeeplinkForNotLoggedInCustomer_NSEInfini
     	    		   , "When a user is not logged into an account and deep link URL is entered, it is asking the user to login first"
     	    		   , "The login pop up didnt show up for non logged in user after entering deep link");  
     	String strUsername = TestDataHandler.tc63.getUsername();
-    	rogers_login_page.switchToSignInIFrame();
+    	//rogers_login_page.switchToSignInIFrame();
         rogers_login_page.setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc63.getPassword();    	
         rogers_login_page.setPasswordIFrame(strPassword);

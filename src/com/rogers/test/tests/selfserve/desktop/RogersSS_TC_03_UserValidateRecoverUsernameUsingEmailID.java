@@ -31,9 +31,10 @@ public class RogersSS_TC_03_UserValidateRecoverUsernameUsingEmailID extends Base
 		reporter.reportLogWithScreenshot("Rogers Launch page");
     	rogers_home_page.clkSignIn(); 
 		rogers_login_page.switchToSignInIFrame();
-		rogers_login_page.clkForgotPassOrNameIframe();
-		reporter.reportLogWithScreenshot("Forgot password or name is clicked.");
-		rogers_recover_pass_or_name.clkBtnUserName();
+		rogers_login_page.clkForgotUsernameIframe();							
+		reporter.reportLogWithScreenshot("Forgot username link is clicked.");
+		
+		//rogers_recover_pass_or_name.clkBtnUserName();
 		String strEmail = TestDataHandler.tc03.getAccountDetails().getContactemail();
 		String strBan = TestDataHandler.tc03.getAccountDetails().getBan();
 		rogers_recover_pass_or_name.setEmailAddress(strEmail);
