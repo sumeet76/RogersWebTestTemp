@@ -58,7 +58,8 @@ pipeline {
         FTP_SERVER = credentials('FTP_SERVER')
         FTP_USERNAME = credentials('FTP_USERNAME')
         FTP_PASSWORD = credentials('FTP_PASSWORD')
-
+        ENS_USERNAME= credentials('ENS_USERNAME')
+        ENS_PASSWORD= credentials('ENS_PASSWORD')
     }
     stages {
         stage('Run CI?') {
@@ -91,7 +92,7 @@ pipeline {
                             if(params.IndividualTests.isEmpty())
                                 toolSh "gradle sauceTest -Ptest_browser=${params.Browser} -Ptest_language=${params.Language} -Ptest_groupName='${params.Groups}' -Ptest_threadCount=${params.ThreadCount} -i --stacktrace"
                             else
-                                toolSh "gradle sauceTest -Ptest_browser=${params.Browser} -Ptest_language=${params.Language} ${params.IndividualTests} -Ptest_threadCount=${params.ThreadCount} -i --stacktrace"
+                                toolSh "gradle sauceTest -Ptest_browser=${params.Browser} -Ptest_language=${params.Language} ${generateTestString(params.IndividualTests)} -Ptest_threadCount=${params.ThreadCount} -i --stacktrace"
 
                         }
                     }
@@ -135,4 +136,16 @@ pipeline {
     }
 
 
+}
+
+String generateTestString(String tests) {
+    //  String tests="OneViewCH_TC_003_IgniteNACDualPlayWithout4KTVExpressCheckout OneViewCH_TC_004_MigrationTriplePlayON OneViewCH_TC_017_TV_ResetParentalControlsAndRestartBoxTest OneViewCH_TC_018a_TV_HeaderFooterUserForgotPurchasePinTest OneViewCH_TC_018b_Internet_HeaderFooterUsageTest OneViewCH_TC_018c_HomePhone_HeaderFooterResetVoiceMailTest OneViewCH_TC_018d_Internet_DashboardSupportLinksAvailabilityTest OneViewCH_TC_018e_TV_DashboardSupportLinksAvailabilityTest OneViewCH_TC_018f_TV_ChannelLineupViewPDFTest";
+    tests =tests.trim();
+    String[] strArray=tests.split(" ");
+    String finalTestString="";
+    for (int i=0;i<=strArray.length-1;i++){
+        finalTestString=finalTestString+"--tests '"+strArray[i].replace(".java","")+"' ";
+    }
+
+    return finalTestString;
 }
