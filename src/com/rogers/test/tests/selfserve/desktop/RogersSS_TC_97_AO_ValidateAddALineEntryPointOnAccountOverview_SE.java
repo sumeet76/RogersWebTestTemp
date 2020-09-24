@@ -33,8 +33,8 @@ public class RogersSS_TC_97_AO_ValidateAddALineEntryPointOnAccountOverview_SE ex
          reporter.reportLog("Home Page Launched");
      	 rogers_home_page.clkSignIn();
  		 rogers_login_page.switchToSignInIFrame();
-         rogers_login_page.setUsernameIFrame(TestDataHandler.tc95.getUsername());
-         rogers_login_page.setPasswordIFrame(TestDataHandler.tc95.getPassword());
+         rogers_login_page.setUsernameIFrame(TestDataHandler.tc60.getUsername());
+         rogers_login_page.setPasswordIFrame(TestDataHandler.tc60.getPassword());
          reporter.reportLogWithScreenshot("Login Credential is entered.");
          rogers_login_page.clkSignInIFrame();
          reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
@@ -43,7 +43,7 @@ public class RogersSS_TC_97_AO_ValidateAddALineEntryPointOnAccountOverview_SE ex
 
          if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
          	reporter.reportLogWithScreenshot("Select an account.");
-         	rogers_account_overview_page.selectAccount(TestDataHandler.tc95.getAccountDetails().getBan());       
+         	rogers_account_overview_page.selectAccount(TestDataHandler.tc60.getAccountDetails().getBan());       
          }
          reporter.reportLogWithScreenshot("Account overview page.");
          reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Passed", "Login Failed");
@@ -53,12 +53,13 @@ public class RogersSS_TC_97_AO_ValidateAddALineEntryPointOnAccountOverview_SE ex
          reporter.hardAssert(rogers_account_overview_page.isAddALinkDisplayedBelowCTNs(),
          		"Add link is displayed below CTN's",
          		"Add link is not displayed below CTN's");
-         
+         reporter.reportLogWithScreenshot("Add link is displayed");
          rogers_account_overview_page.clkAddALink();
-        
-         reporter.hardAssert(rogers_account_overview_page.verifyIfAddALinkOverlayIsdisplayed(),
-         		"User is unable to click and navigate through suspended CTN Badge",
-         		"It seems the user was able to click on suspended CTN");
+         reporter.reportLogWithScreenshot("Click on Add link");
+         reporter.hardAssert(rogers_account_overview_page.verifyIfAddALinkOverlayOnDeviceSelectionPageIsdisplayed(),
+         		"Pop up should get displayed asking 'What plan do you want to add this device to?' and device selection page in the background",
+         		"Pop up 'What Plan do you want to add on Device page'  didnt get displayed");
+         reporter.reportLogWithScreenshot("'What plan do you want to add this device to?' and device selection page in the background");
     }
 
   
