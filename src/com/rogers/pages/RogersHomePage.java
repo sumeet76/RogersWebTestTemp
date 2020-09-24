@@ -1,14 +1,13 @@
 package com.rogers.pages;
 
-import java.util.List;
-
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
-import com.rogers.pages.base.BasePageClass;
+import java.util.List;
 
 public class RogersHomePage extends BasePageClass {
 
@@ -65,12 +64,14 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//li[@class='dds_o-mobileNavDropdown__item']/a[@href='/web/consumer/internet']")
 	WebElement lnkInternetMobile;
 	
-	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/home-monitoring']")
+	@FindBy(xpath = "//li[@class='o-headerNavDropdown__item']/a[@class='m-navLink -dropdown' and contains(text(),' Home Monitoring')]")
 	WebElement lnkHomeMonitering;
-	
-	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/bundles']")
+	//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/home-monitoring']
+
+	@FindBy(xpath = "")
 	WebElement lnkBundle;
-	
+	//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/bundles']
+
 	@FindBy(xpath = "//a[@href='/consumer/easyloginriverpage']")
 	WebElement lnkMyRogersLink;
 	
@@ -263,7 +264,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkSignIn() {		
-		reusableActions.getWhenVisible(lnkSignIn, 30).click();		
+		reusableActions.getWhenVisible(lnkSignIn, 60).click();		
 	}
 	
 	/**

@@ -73,8 +73,8 @@ public class RogersCH_TC_028_IginteTV_ExistingSolarisCustomerBuyBundleWithNewAdd
     	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	rogers_home_page.clkServiceability();
     	reporter.reportLogWithScreenshot("Launched the csutomer availability check popup");
-        String  strAddressLine1=(String) TestDataHandler.solarisTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=(String) TestDataHandler.solarisTVAccount.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.solarisTVAccount.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.solarisTVAccount.getAccountDetails().getAddress().get("line2");
         rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");

@@ -138,12 +138,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//i[@class='ute-icon-button-left']")
 	WebElement imgPrevious;
 		
-	@FindAll({
-        @FindBy(xpath = "//span[@translate='myaccoverview_home_monotoring']"),
-        @FindBy(xpath = "//span[contains(text(),'Home Monitoring') or contains(text(),'Système domotique')]/ancestor::div[@class='subscription-detail']")})
+	@FindBy(xpath = "//span[contains(text(),'Home Monitoring') or contains(text(),'Système domotique')]/ancestor::div[@class='subscription-detail']")
 	WebElement btnSHMBadge;
 	
-
 	@FindBy(xpath = "//ins[@usertype-translate='global.dashboard.tv.digitalBoxes']")
 	WebElement lblBoxHeader;
 
@@ -347,7 +344,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	public boolean verifyFlexChannelcountPopular() {
 		String strChannels=reusableActions.getWhenReady(txtFlexChannels, 50).getText();
 		String[] channels = strChannels.split("\\s+");
-		return channels[0].equals("45");
+		return channels[0].equals("44");
        }
 	/**
 	 * Selects the solaris tv package name to be upgrade or downgrade 
@@ -634,7 +631,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkSHMBadge() {		
-		reusableActions.getWhenReady(btnSHMBadge).click();
+		reusableActions.getWhenReady(btnSHMBadge,60).click();
 	}
 
 	

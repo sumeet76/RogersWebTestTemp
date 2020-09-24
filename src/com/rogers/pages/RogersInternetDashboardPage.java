@@ -219,7 +219,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkVAMenu() {	
-		reusableActions.getWhenReady(btnVaMenu, 10).click();
+		reusableActions.getWhenReady(btnVaMenu, 20).click();
 	}
 	
 	/**

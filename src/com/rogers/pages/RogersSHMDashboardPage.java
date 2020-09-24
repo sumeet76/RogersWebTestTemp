@@ -47,7 +47,7 @@ public class RogersSHMDashboardPage extends BasePageClass {
 	 */
 	public Boolean verifyShopForAccessoriesLinkdisplayed()
 	{
-		return reusableActions.isElementVisible(lnkShopForAccessories,10);
+		return reusableActions.isElementVisible(lnkShopForAccessories,30);
 	}
 	
 	/**

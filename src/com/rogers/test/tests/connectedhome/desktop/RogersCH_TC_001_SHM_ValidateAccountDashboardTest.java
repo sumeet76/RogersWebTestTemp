@@ -40,25 +40,18 @@ public class RogersCH_TC_001_SHM_ValidateAccountDashboardTest extends BaseTestCl
             reporter.reportLogWithScreenshot("Skip popup");
             rogers_login_page.clkSkipIFrame(); 
             rogers_login_page.switchOutOfSignInIFrame();
-            rogers_account_overview_page.selectAccount(TestDataHandler.rogersSHM.accountDetails.getBan());                    
-            reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),
-            		"Logged in successfully", "Login failed");
-            reporter.reportLogWithScreenshot("Launched the Account Page");
-            rogers_solaris_tv_dashboard_page.clkSHMBadge();          
-            reporter.hardAssert(rogers_shm_dashboard_page.verifySHMDashBoardPageIsDisplayed(),
-            		"SHM dashboard page is displayed", "SHM dashboard page NOT displayed correctly please investigate");        
-            reporter.reportLogWithScreenshot("Launched the SHM dashboard Page");
-            common_business_flows.scrollToMiddleOfWebPage();
-    		reporter.reportLogWithScreenshot("Mid page view");
-            reporter.softAssert(rogers_shm_dashboard_page.verifyShopForAccessoriesLinkdisplayed()
-            		&& rogers_shm_dashboard_page.verifyShopForAccessoriesLinkdisplayed()
-            		&& rogers_shm_dashboard_page.verifyLearnAboutSmartHomeMonitoringLinkdisplayed()
-            		&& rogers_shm_dashboard_page.verifyInsuranceCertificateLinkdisplayed(),
-            		"SHM dashboard page Links displayed", "SHM dashboard page Links not displayed correctly please investigate");               
-    		common_business_flows.scrollToBottomOfWebPage();
-    		reporter.reportLogWithScreenshot("Bottom View");
-        
-        
+            reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+            rogers_solaris_tv_dashboard_page.clkSHMBadge();
+            reporter.reportLogWithScreenshot("SHM dashboard page");
+            //reporter.hardAssert(rogers_shm_dashboard_page.verifySHMDashBoardPageIsDisplayed(),"SHM dashboard page is displayed", "SHM dashboard page NOT displayed correctly please investigate");
+            reporter.softAssert(rogers_shm_dashboard_page.verifyShopForAccessoriesLinkdisplayed(),
+            		"SHM dashboard page Links displayed", "SHM dashboard page Links not displayed correctly please investigate");
+            reporter.softAssert(rogers_shm_dashboard_page.verifyShopForAccessoriesLinkdisplayed(),
+                "SHM dashboard page Links displayed", "SHM dashboard page Links not displayed correctly please investigate");
+            reporter.softAssert(rogers_shm_dashboard_page.verifyLearnAboutSmartHomeMonitoringLinkdisplayed(),
+                "SHM dashboard page Links displayed", "SHM dashboard page Links not displayed correctly please investigate");
+            reporter.softAssert( rogers_shm_dashboard_page.verifyInsuranceCertificateLinkdisplayed(),
+                "SHM dashboard page Links displayed", "SHM dashboard page Links not displayed correctly please investigate");
     }
 
     @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})

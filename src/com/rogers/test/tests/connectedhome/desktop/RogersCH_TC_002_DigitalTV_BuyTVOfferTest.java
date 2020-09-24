@@ -36,8 +36,8 @@ public class RogersCH_TC_002_DigitalTV_BuyTVOfferTest extends BaseTestClass {
     	rogers_home_page.clkDTV();
     	reporter.reportLogWithScreenshot("Launched the TV packages page");
     	rogers_buy_page.clkDTVPackage();
-        String  strAddressLine1=(String) TestDataHandler.digitalTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=(String) TestDataHandler.digitalTVAccount.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.digitalTVAccount.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.digitalTVAccount.getAccountDetails().getAddress().get("line2");
         rogers_buy_page.setAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
     	rogers_buy_page.clkAddressLookupSubmit();

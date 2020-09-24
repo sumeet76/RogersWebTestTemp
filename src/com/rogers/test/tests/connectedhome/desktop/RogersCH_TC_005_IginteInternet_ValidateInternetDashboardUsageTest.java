@@ -75,7 +75,7 @@ public class RogersCH_TC_005_IginteInternet_ValidateInternetDashboardUsageTest e
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 

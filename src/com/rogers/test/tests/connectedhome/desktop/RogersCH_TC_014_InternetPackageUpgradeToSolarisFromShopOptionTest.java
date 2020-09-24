@@ -76,8 +76,8 @@ public class RogersCH_TC_014_InternetPackageUpgradeToSolarisFromShopOptionTest e
     	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	rogers_home_page.clkServiceability();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1=(String) TestDataHandler.internetAccountUpgrade.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=(String) TestDataHandler.internetAccountUpgrade.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.internetAccountUpgrade.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.internetAccountUpgrade.getAccountDetails().getAddress().get("line2");
         rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
