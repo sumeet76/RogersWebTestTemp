@@ -32,7 +32,7 @@ public class Mobile_RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest 
         reporter.reportLog("Home Page Launched");
     	rogers_home_page.clkSignInMobile();
     	rogers_login_page.switchToSignInIFrame();
-    	rogers_login_page.setUsernameIFrame(TestDataHandler.tc013132.getUsername());
+    	rogers_login_page.setUsernameIFrameMobile(TestDataHandler.tc013132.getUsername());
     	rogers_login_page.setPasswordIFrame(TestDataHandler.tc013132.getPassword());
         reporter.reportLogWithScreenshot("Login Credential is entered.");
         rogers_login_page.clkSignInIFrame();

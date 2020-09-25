@@ -99,6 +99,20 @@ public class RogersLoginPage extends BasePageClass {
 		reusableActions.getWhenVisible(txtUsername, 30).clear();
 		reusableActions.getWhenVisible(txtUsername).sendKeys(strUsername);
 	}
+	
+	/**
+	 * Enter the user name on Sign in frame
+	 * @param strUsername user name to be login
+	 * @author chinnarao.vattam
+	 */	
+
+	public void setUsernameIFrameMobile(String strUsername) {
+		//reusableActions.clickIfAvailable(lblUserName,20);
+		reusableActions.getWhenVisible(txtUsername, 30).clear();
+		reusableActions.getWhenVisible(txtUsername).sendKeys(strUsername);
+	}
+	
+	
 	/**
 	 * Enter the password on Sign in frame
 	 * @param strPassword user password to be login
