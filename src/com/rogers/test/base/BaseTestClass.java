@@ -668,27 +668,6 @@ public class BaseTestClass {
 		return TestParameters;
 	}
 
-	/**
-	 * Parses the CSV file and returns rows as list of string array
-	 * @param fileName
-	 * @return returns rows as list of string arrays
-	 * @throws IOException
-	 */
-	protected List<String[]> parseCsvData(String fileName) throws IOException
-	{
-		BufferedReader input = null;
-		File file = new File(fileName);
-		input = new BufferedReader(new FileReader(file));
-		String line = null;
-		List<String[]> strArrayList = new ArrayList<String[]>();
-		while ((line = input.readLine()) != null)
-		{
-			String in = line.trim();
-			String[] strTempArray = in.split(",");
-			strArrayList.add(strTempArray);
-		}
-		input.close();
-		return strArrayList;
 
-	}
+
 }

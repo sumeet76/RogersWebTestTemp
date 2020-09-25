@@ -6,11 +6,13 @@ import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
+
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import utils.CSVReader;
 
 public class RogersSearch_CBS_1643_Relevant_Results_Rendering_Test extends BaseTestClass {
 
@@ -18,7 +20,7 @@ public class RogersSearch_CBS_1643_Relevant_Results_Rendering_Test extends BaseT
     @DataProvider(name = "FilterData")
     public Object[] testData() throws IOException {
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
-        List<String[]> csvData = parseCsvData(csvFileName);
+        List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
         Object[] csvRowStrArray = new Object[csvData.size()];
 
         for (int i = 0; i < csvData.size(); i++) {

@@ -11,6 +11,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import utils.CSVReader;
 
 public class RogersSearch_CBS_1664_Functioning_Of_Parent_Filter_Test extends BaseTestClass {
 
@@ -18,7 +19,7 @@ public class RogersSearch_CBS_1664_Functioning_Of_Parent_Filter_Test extends Bas
     @DataProvider(name = "FilterData")
     public Object[] testData() throws IOException {
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
-        List<String[]> csvData = parseCsvData(csvFileName);
+        List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
         Object[] csvRowStrArray = new Object[csvData.size()];
 
         for (int i = 0; i < csvData.size(); i++) {
