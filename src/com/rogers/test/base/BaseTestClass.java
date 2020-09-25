@@ -74,12 +74,16 @@ import utils.AppiumServerJava;
 import utils.BrowserDrivers;
 import utils.Reporter;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -662,5 +666,29 @@ public class BaseTestClass {
 		TestParameters.put("Browser", strBrowser);
 		TestParameters.put("Language", strLanguage );
 		return TestParameters;
+	}
+
+	/**
+	 * Parses the CSV file and returns rows as list of string array
+	 * @param fileName
+	 * @return returns rows as list of string arrays
+	 * @throws IOException
+	 */
+	protected List<String[]> parseCsvData(String fileName) throws IOException
+	{
+		BufferedReader input = null;
+		File file = new File(fileName);
+		input = new BufferedReader(new FileReader(file));
+		String line = null;
+		List<String[]> strArrayList = new ArrayList<String[]>();
+		while ((line = input.readLine()) != null)
+		{
+			String in = line.trim();
+			String[] strTempArray = in.split(",");
+			strArrayList.add(strTempArray);
+		}
+		input.close();
+		return strArrayList;
+
 	}
 }
