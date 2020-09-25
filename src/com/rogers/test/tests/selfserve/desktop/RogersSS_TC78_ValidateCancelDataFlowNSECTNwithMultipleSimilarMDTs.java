@@ -68,12 +68,13 @@ public class RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs e
        	Map<String, Integer> countOfActiveAndCancelledAddDataOnMyPlan = rogers_wireless_dashboard_page.getAllExistingAddDataCountCancelledAndActiveOnMyPlanSection();			
        	rogers_wireless_dashboard_page.scrollToTopOfDasboardPage();
 		//4. Click on View details in usage dashboard
-		  reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(), 
+		reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(), 
 							"'Manage Data' page is displayed after click on view details link", 
 							"'Manage Data' page is NOT displayed after click on view details link");  
         reporter.reportLogWithScreenshot("Manage data page view after we click on view details");  
        
-        counterOfAddedData = rogers_manage_data_page.getAllExistingAddedDataCount();        Map<String, Integer> countOfAlreadyAddedData = rogers_manage_data_page.getCountOfAllExistingAddedDataValues();
+        counterOfAddedData = rogers_manage_data_page.getAllExistingAddedDataCount();        
+        Map<String, Integer> countOfAlreadyAddedData = rogers_manage_data_page.getCountOfAllExistingAddedDataValues();
 		Map<String, Integer> countOfActiveAndCancelledAddData = rogers_manage_data_page.getAllExistingAddDataCountCancelledAndActive();
 		reporter.reportLogWithScreenshot("Manage Data page");
 		//Comparisons Before Cancel:
@@ -81,7 +82,7 @@ public class RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs e
 							&& countOfActiveAndCancelledAddDataOnMyPlan.get("active")==countOfActiveAndCancelledAddData.get("active"))
 				, "The number of cancelled and active add on macth on my plans and manage data page", 
 				"The number of cancelled and active add on does not macth on my plans and manage data page");
-				
+		rogers_manage_data_page.clkBackOnManageDataUsagePage();		
 		rogers_wireless_dashboard_page.clkAddData();
 		if(counterOfAddedData<10)
 		{
@@ -102,6 +103,16 @@ public class RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs e
 			 rogers_speed_pass_page.clkBtnCloseInSpeedPassPopup();
 		}
 
+		reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(), 
+				"'Manage Data' page is displayed after click on view details link", 
+				"'Manage Data' page is NOT displayed after click on view details link");  
+		reporter.reportLogWithScreenshot("Manage data page view after we click on view details");  
+		
+		counterOfAddedData = rogers_manage_data_page.getAllExistingAddedDataCount();        
+		countOfAlreadyAddedData = rogers_manage_data_page.getCountOfAllExistingAddedDataValues();
+		countOfActiveAndCancelledAddData = rogers_manage_data_page.getAllExistingAddDataCountCancelledAndActive();
+		reporter.reportLogWithScreenshot("Manage Data page");
+		
 		
 		if((countOfActiveAndCancelledAddData.get("active")>=1))
 		{

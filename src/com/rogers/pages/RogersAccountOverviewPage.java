@@ -1315,10 +1315,11 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @return true if the link is displayed else false
 	 * @author Mirza.Kamran
 	 */
-	public boolean verifyIfAddALinkOverlayIsdisplayed() {
+	public boolean verifyIfAddALinkOverlayOnDeviceSelectionPageIsdisplayed() {
 		return reusableActions.isElementVisible(headerOverlayforAddLink,30)
 				&& reusableActions.isElementVisible(btnAddToSharedPlan)
-				&& reusableActions.isElementVisible(btnAddToNonSharedPlan);
+				&& reusableActions.isElementVisible(btnAddToNonSharedPlan)
+				&& get_Driver_Url().contains("rogers.com/web/totes/wireless/choose-phone");
 	}
 
 	/**

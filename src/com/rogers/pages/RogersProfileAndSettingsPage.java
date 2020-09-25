@@ -283,7 +283,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(text(),'Home number') or contains(text(),'Numéro de sans-fil :') or contains(text(),'numéro à la maison')]/parent::div/parent::div//span[text()=' Update ' or text()=' Mettre à jour ' or text()=' Ajouter ']")
 	WebElement btnUpdateHomeNumberMobile;
 	
-	@FindBy (xpath = "//div[contains(text(),'Business number:') or contains(text(),'Numéro de téléphone au travail :') or contains(text(),'numéro à la maison')]/parent::div/parent::div//span[text()=' Update ' or text()=' Mettre à jour ' or text()=' Ajouter ']")
+	@FindBy (xpath = "//div[contains(text(),'Business number:') or contains(text(),'Numéro de téléphone au travail :') or contains(text(),'numéro à la maison')]/parent::div/parent::div//span[text()=' Update ' or text()=' Add ' or text()=' Mettre à jour ' or text()=' Ajouter ']")
 	WebElement lnkAddBusinessNumberMobile;
 	
 	@FindBy (xpath = "//div[contains(text(),'Language:') or contains(text(),'Langue :') or contains(text(),'numéro à la maison')]/parent::div/parent::div//span[text()=' Change ' or text()=' Changer ' or text()=' Ajouter ']")

@@ -350,7 +350,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//button[@title='Close Plan details window' or @title='Fermer la fenêtre Détails du forfait']")
 	WebElement btnClosePlanDetailsOverlay;
 	
-	@FindBy(xpath = "//div[text()='You’re running low!' or text()='Il en reste peu!']")
+	@FindAll({
+		@FindBy(xpath = "//div[@class='data-usage-bar-background low-data-warning']"),
+	@FindBy(xpath = "//div[text()='You’re running low!' or text()='Il en reste peu!' or @class='data-usage-bar-background low-data-warning']")})
 	WebElement divRunningLowInUsageBar;
 	
 	@FindBy(xpath = "//span[text()='You have overage charges' or text()='Vous avez des frais d’utilisation excédentaire']")

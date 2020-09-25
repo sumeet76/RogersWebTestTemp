@@ -76,9 +76,13 @@ public class RogersSS_TC_064_ValidateDataUsage_InfiniteIndividualPlanReducedSpee
 						"Click on close call out message didnt succeed");
         reporter.reportLogWithScreenshot("Closed Call out message to Add speed pass on dashboard page.");  
 	    rogers_login_page.clickSignOut();
-	    reporter.reportLogWithScreenshot("Sign Out clicked");  
-        rogers_login_page.clkSignInAs();
-        reporter.reportLogWithScreenshot("Re sign In");  
+	    reporter.reportLogWithScreenshot("Sign out done");
+		if(rogers_home_page.isContentFulURLDisplayed())
+		{
+			rogers_home_page.clkEasyLogin();
+		}			
+		rogers_login_page.clkSignInAs();
+		reporter.reportLogWithScreenshot("Click Re Sign In");
         rogers_login_page.switchToSignInIFrame();
                    
         rogers_login_page.setPasswordIFrame(strPassword);
