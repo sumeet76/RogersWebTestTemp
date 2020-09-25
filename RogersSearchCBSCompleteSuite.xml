@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Rogers search CBS" parallel="none" thread-count="2">
+	<parameter name="strBrowser" value="chrome" />
+	<parameter name="strLanguage" value="en" />
+	
+	<listeners>
+		<listener
+			class-name="com.rogers.test.listeners.TestListener" />
+		<listener
+			class-name="com.rogers.test.listeners.AnnotationTransformer" />
+	</listeners>
+	
+	<test name="filtersRenderingTest" enabled="true">
+	<classes>
+			<class
+				name="com.rogers.test.tests.search.RogersSearch_CBS_1664_Functioning_Of_Parent_Filter_Test">
+			</class>
+		</classes>
+	</test>
+	
+		
+</suite>
