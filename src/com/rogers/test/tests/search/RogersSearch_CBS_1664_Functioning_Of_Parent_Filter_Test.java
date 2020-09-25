@@ -46,29 +46,29 @@ public class RogersSearch_CBS_1664_Functioning_Of_Parent_Filter_Test extends Bas
 	@DataProvider(name = "FilterData")
 	public Object[] testData() throws IOException
 	{
-		String csvFileName = System.getProperty("user.dir") + "/data/search/FilterData.csv";
+		String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
 		List<String[]> csvData = parseCsvData(csvFileName);
-		Object[] csvRow = new Object[csvData.size()];
+		Object[] csvRowStrArray = new Object[csvData.size()];
 		 
         for(int i =0; i < csvData.size();i++){
-        	csvRow[i] = csvData.get(i);
+        	csvRowStrArray[i] = csvData.get(i);
         }
  
-        return csvRow;
+        return csvRowStrArray;
 		 
 		
 	}
 	
 	@Test(dataProvider = "FilterData")
 
-		public void validateResultsForSubFilter(String[] csvRow) {
+		public void validateResultsForSubFilter(String[] csvRowStrArray) {
 		
-		System.out.println("URL is:"+TestDataHandler.searchCBSConfig.getRogersURL()+csvRow[0]);
+		System.out.println("URL is:"+System.getProperty("SearchUrl")+csvRowStrArray[0]);
 		
-		getDriver().get(TestDataHandler.searchCBSConfig.getRogersURL()+csvRow[0]);
+		getDriver().get(System.getProperty("SearchUrl")+csvRowStrArray[0]);
 		System.out.println(getDriver().getCurrentUrl());
 				
-				String[] strFilters = Arrays.copyOfRange(csvRow, 1, csvRow.length);
+				String[] strFilters = Arrays.copyOfRange(csvRowStrArray, 1, csvRowStrArray.length);
 				
 					reporter.softAssert(rogers_search_page.clkParentFilterAndVerifyResultsCategoryTagRelevancy(strFilters),"Result with "+ strFilters +" tag is Displayed","Result with "+ strFilters +" tag is NOT Displayed");
 					reporter.reportLogWithScreenshot("Search QA Page - "+strFilters);
@@ -83,7 +83,7 @@ public class RogersSearch_CBS_1664_Functioning_Of_Parent_Filter_Test extends Bas
 	@BeforeMethod @Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(String strBrowser, String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(TestDataHandler.searchCBSConfig.getRogersURL()+"wireless", strBrowser, strLanguage, RogersEnums.GroupName.search, method);
+		startSession(System.getProperty("SearchUrl")+"wireless", strBrowser, strLanguage, RogersEnums.GroupName.search, method);
 	}
 
 	@AfterMethod(alwaysRun = true)
