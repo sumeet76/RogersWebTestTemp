@@ -31,23 +31,38 @@ public class RogersSearch_CBS_1663_Only_One_Grand_Parent_Filter_Can_Be_Selected_
 
     }
 
-    @Test(dataProvider = "FilterData")
-
-    public void validateGrandParentFilterSelection(String[] csvRowStrArray) {
-
-        getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0]);
-
-
-        String[] strFilters = Arrays.copyOfRange(csvRowStrArray, 1, csvRowStrArray.length);
-
-        reporter.hardAssert(rogers_search_page.verifyOnlyOneGrandParentFilterSelectionDisplay(strFilters), strFilters + "Filter Expanded", strFilters + "Filter Collapsed");
-
-        reporter.reportLogWithScreenshot("Search QA Page - " + strFilters);
-
-        System.out.println("end of set");
-
-    }
-
+	@Test(dataProvider = "FilterData")
+	
+	public void validateGrandParentFilterSelection(String[] csvRow) {
+	
+	getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
+	
+			
+			String[] strFilters = Arrays.copyOfRange(csvRow, 1, csvRow.length);
+			for(int i=0; i<strFilters.length; i++) {
+				
+				rogers_search_page.clkGrandParentFilter(strFilters[i]);
+				reporter.reportLogWithScreenshot(strFilters[i]+" is clicked");
+				reporter.hardAssert(rogers_search_page.isGrandParentFilterExpanded(strFilters[i]), strFilters[i]+" is Expanded", strFilters[i]+" is not Expanded");
+				for(int j=0; j<strFilters.length; j++) {
+					
+					if(i!=j) {
+						
+						reporter.hardAssert(!(rogers_search_page.isGrandParentFilterExpanded(strFilters[j])), strFilters[j]+" is not Expanded", strFilters[j]+" is Expanded");
+						
+					}
+					
+					
+				}
+				
+				
+				
+			}
+			
+			
+	System.out.println("end of set");
+		
+	}
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})

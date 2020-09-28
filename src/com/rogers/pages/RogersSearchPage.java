@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -177,63 +178,220 @@ public class RogersSearchPage extends BasePageClass {
 	 */
 	
 	public void clkGrandParentFilter(String strFilterName) {
-
-		reusableActions.clickWhenReady(
-				By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'"
-						+ strFilterName + "')]"));
+		WebElement parentFilter = driver.findElement(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'"
+				+ strFilterName + "')]"));
+		
+		reusableActions.scrollToElementAndClick(parentFilter);
+						
 		
 	}
 	
-	
 	/**
-	 * verify only one grand parent filter selection display
-	 * @return true if collapsed, otherwise false
+	 * clicking on parent filter
+	 * @return true if displayed, otherwise false
 	 * @author pankaj.patil
 	 */
 	
-	public boolean verifyOnlyOneGrandParentFilterSelectionDisplay(String[] strFilterArray) {
+	public void clkParentFilter(WebElement parentFilter) {
 
-		List<String> strFilterList = Arrays.asList(strFilterArray);
-		System.out.println("List of Parent Filter:" + strFilterList);
-		boolean blnFlag = true;
-
-		for (int selectedFilterCounter = 0; selectedFilterCounter < strFilterList.size(); selectedFilterCounter++) {
-
-			System.out.println("Parent filter values:" + strFilterList.get(selectedFilterCounter));
-
-			clkGrandParentFilter(strFilterList.get(selectedFilterCounter));
-			System.out.println("After clicking parent filter" + getDriver().getCurrentUrl());
-
-			WebElement selectedFilter = driver.findElement(By.xpath("//p[starts-with(text(),'" + strFilterList.get(selectedFilterCounter)
-					+ "')]/ancestor::button//following-sibling::ds-expander"));
-
-			selectedFilter.getAttribute("ng-reflect-expanded");
-
-			System.out.println("Selected Filter Flag is:"+selectedFilter.getAttribute("ng-reflect-expanded"));
+		reusableActions.clickWhenReady(parentFilter);
+		
+	}
+	
+	public List<WebElement> getParentFilters(String strGrandParentFilterName){
+		
+		return driver.findElements(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'"+strGrandParentFilterName+"')]/ancestor::button/following-sibling::ds-expander//p"));
+		
+		
+	}
+	
+	public boolean isParentFilterExpanded(WebElement parentFilter) {
+		
+		WebElement expandedFilter = parentFilter.findElement(By.xpath("ancestor::button"));
+		
+		if(expandedFilter.getAttribute("aria-expanded").equals("true")) {
 			
-			for (int unSelectedFilterCounter=selectedFilterCounter+1; unSelectedFilterCounter<strFilterList.size(); unSelectedFilterCounter++) {
+			return true;
+			
+		}
+		
+		return false;
+		
+	}
+
+	
+	
+	public boolean isGrandParentFilterExpanded(String strFilterName) {
+		
+		WebElement expandedFilter = driver.findElement(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'"+strFilterName+"')]/ancestor::button//following-sibling::ds-expander"));
+		
+		
+		if(expandedFilter.getAttribute("ng-reflect-expanded").equals("true")) {
+			
+			return true;
+			
+		}
+		
+		return false;
+		
+	}
+	
+	/**
+	 * clicking on shop grand parent filter and then wireless parent filter
+	 * @return true if displayed, otherwise false
+	 * @author pankaj.patil
+	 */
+	
+	public void clkShopAndThenWirelessFilter() {
+		
+		reusableActions.clickWhenReady(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'Shop')]"));
+		reusableActions.clickWhenReady(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p[starts-with(text(),'Wireless')]"));
+		
+		/*WebElement parentFilter = driver.findElement(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'"
+				+ strFilterName + "')]"));
+		
+		reusableActions.scrollToElementAndClick(parentFilter);*/
+						
+		
+	}
+	
+	public boolean verifyColorResultsDisplay() {
+		
+		boolean blnFlag = true;
+		
+		
+		List<WebElement> lstColorFilter = driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]"));
+		
+		for(int i=0; i<lstColorFilter.size(); i++) {
+			
+			System.out.println("value of color filter is:"+driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value"));
+			
+			reusableActions.staticWait(2000);
+			
+			reusableActions.clickWhenReady(By.xpath("//span[starts-with(text(),'"+driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value")+"')]"));
+			reusableActions.staticWait(2000);
+			
+		List<WebElement> lstColorResults = driver.findElements(By.xpath("//span[starts-with(@style,'background: ')]"));
+		
+		for(int j=0; j<lstColorResults.size(); j++) {
+			
+			System.out.println("value of Color Result is:"+lstColorResults.get(j).getAttribute("style"));
+			
+			String[] strColorResult = lstColorResults.get(j).getAttribute("style").split(" ");
+
+			reusableActions.getWhenReady(driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i), 20);
+			
+			System.out.println("Before if statement - value of strColorResult is:"+strColorResult[1].replaceAll(";", ""));
+			System.out.println("Before if statement - value of color filter is:"+driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value"));
+			
+			if(!(driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value").equalsIgnoreCase(strColorResult[1].replaceAll(";", "")))) {
 				
-				WebElement unSelectedFilter = driver.findElement(By.xpath("//p[starts-with(text(),'" + strFilterList.get(unSelectedFilterCounter)
-				+ "')]/ancestor::button//following-sibling::ds-expander"));
-
-				unSelectedFilter.getAttribute("ng-reflect-expanded");
-
-				System.out.println("Unselected Filter Flag is:"+unSelectedFilter.getAttribute("ng-reflect-expanded"));
-				
-				if (!selectedFilter.getAttribute("ng-reflect-expanded").equalsIgnoreCase("true") || !unSelectedFilter.getAttribute("ng-reflect-expanded").equalsIgnoreCase("false")) {
-
-					System.out.println("Inside if statement");
-					blnFlag = false;
-					break;
-				}
+				blnFlag = false;
+				break;
 				
 			}
 			
 		}
-
-		return blnFlag;
-
-	}		
 		
+		reusableActions.clickWhenReady(By.xpath("//span[starts-with(text(),'"+driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value")+"')]"));
+		reusableActions.staticWait(2000);
+			
+		}
+		
+	return blnFlag;	
+		
+	}
+	
+	
+public boolean verifyDifferentColorResultsDisplay() {
+		
+		boolean blnFlag = false;
+		
+		
+		List<WebElement> lstColorFilter = driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]"));
+		
+		for(int i=0; i<lstColorFilter.size(); i++) {
+			
+			System.out.println("value of color filter is:"+driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value"));
+			
+			reusableActions.staticWait(500);
+			
+			reusableActions.clickWhenReady(By.xpath("//span[starts-with(text(),'"+driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value")+"')]"));
+			reusableActions.staticWait(500);
+			
+		List<WebElement> lstColorResults = driver.findElements(By.xpath("//span[starts-with(@style,'background: ')]"));
+		
+		for(int j=0; j<lstColorResults.size(); j++) {
+			
+			System.out.println("value of Color Result is:"+driver.findElements(By.xpath("//span[starts-with(@style,'background: ')]")).get(j).getAttribute("style"));
+			
+			String[] strColorResult = driver.findElements(By.xpath("//span[starts-with(@style,'background: ')]")).get(j).getAttribute("style").split(" ");
+			
+			List<String> lstColorResultText = Arrays.asList(strColorResult[1].replaceAll(";", ""));
+			
+			for(int k=0; k<lstColorResultText.size(); k++) {
+				
+				if((driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value").equalsIgnoreCase(lstColorResultText.get(k)))) {
+					
+					blnFlag = true;
+					break;
+					
+				}
+				
+				
+			}
+			
+		}
+		
+		}
+		
+		return blnFlag;
+		
+}
+
+public boolean verifyResultsColorLabelWithSelectedColor() {
+	
+	boolean blnFlag = true;
+	
+	List<WebElement> lstResults = driver.findElements(By.xpath("//a[@class='text-title-5']/parent::div/parent::div"));
+	
+	for(int i=0; i<lstResults.size(); i++) {
+
+
+		List<WebElement> resultColorList = driver.findElements(By.xpath("//a[@class='text-title-5']/parent::div/parent::div")).get(i).findElements(By.tagName("ds-selection"));
+
+		for(int j=0; j<resultColorList.size(); j++) {
+			String selectedColor=driver.findElements(By.xpath("//a[@class='text-title-5']/parent::div/parent::div")).get(i).findElements(By.tagName("ds-selection")).get(j).getAttribute("ng-reflect-color");
+			reusableActions.scrollToElementAndClick(driver.findElements(By.xpath("//a[@class='text-title-5']/parent::div/parent::div")).get(i).findElements(By.tagName("ds-selection")).get(j));
+			WebElement resultLink= driver.findElements(By.xpath("//a[@class='text-title-5']/parent::div/parent::div")).get(i).findElement(By.tagName("a"));
+			reusableActions.getWhenVisible(resultLink).sendKeys(Keys.ENTER);
+			reusableActions.staticWait(4000);
+			WebElement colorLabel = reusableActions.getWhenReady(By.xpath("//span[text()='Colour:']//following-sibling::span"));
+			if(!selectedColor.equalsIgnoreCase(colorLabel.getText())) {
+				blnFlag = false;
+				System.out.println(blnFlag);
+				System.out.println("Selected Color : "+ selectedColor);
+				System.out.println("Actual Color : "+ colorLabel.getText());
+				break;
+			}
+			driver.navigate().back();
+			reusableActions.staticWait(1000);
+
+
+		}
+
+		driver.navigate().back();
+		reusableActions.staticWait(1000);
+
+			
+		}
+	
+		return blnFlag;
+	}
 
 }
+
+			
+		
+
+	
