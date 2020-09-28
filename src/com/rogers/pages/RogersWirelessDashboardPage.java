@@ -1137,7 +1137,17 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public boolean verifyAddedDataReflectedInTotalDataBucket(double origDataVolume, double addedDataVolume) {
 		double newTotalDataVolume = this.getTotalDataVolume();
-		return newTotalDataVolume == origDataVolume + addedDataVolume;
+		double total = origDataVolume + addedDataVolume;
+		
+		double diff=0;
+		if(newTotalDataVolume>total)
+		{
+			diff=newTotalDataVolume-total;
+		}else
+		{
+			diff=total-newTotalDataVolume;
+		}
+		return (newTotalDataVolume == origDataVolume + addedDataVolume) || (diff<=0.1);
 	}
 	
 	/**
