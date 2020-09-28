@@ -362,16 +362,24 @@ public boolean verifyResultsColorLabelWithSelectedColor() {
 
 		for(int j=0; j<resultColorList.size(); j++) {
 			String selectedColor=driver.findElements(By.xpath("//a[@class='text-title-5']/parent::div/parent::div")).get(i).findElements(By.tagName("ds-selection")).get(j).getAttribute("ng-reflect-color");
+			reusableActions.javascriptScrollByVisibleElement(driver.findElements(By.xpath("//a[@class='text-title-5']/parent::div/parent::div")).get(i).findElements(By.tagName("ds-selection")).get(j));
 			reusableActions.scrollToElementAndClick(driver.findElements(By.xpath("//a[@class='text-title-5']/parent::div/parent::div")).get(i).findElements(By.tagName("ds-selection")).get(j));
 			WebElement resultLink= driver.findElements(By.xpath("//a[@class='text-title-5']/parent::div/parent::div")).get(i).findElement(By.tagName("a"));
 			reusableActions.getWhenVisible(resultLink).sendKeys(Keys.ENTER);
 			reusableActions.staticWait(4000);
-			WebElement colorLabel = reusableActions.getWhenReady(By.xpath("//span[text()='Colour:']//following-sibling::span"));
-			if(!selectedColor.equalsIgnoreCase(colorLabel.getText())) {
+			String colorLabel;
+			if(driver.getCurrentUrl().contains("watch")){
+				 colorLabel = driver.findElement(By.xpath("//div[contains(@class,'color-switch') and contains(@class,'active') and @style='display: block;']/a")).getAttribute("class").split("-")[0];
+			}
+			else{
+				 colorLabel = reusableActions.getWhenReady(By.xpath("//span[text()='Colour:']//following-sibling::span")).getText();
+			}
+
+			if(!selectedColor.equalsIgnoreCase(colorLabel)) {
 				blnFlag = false;
 				System.out.println(blnFlag);
 				System.out.println("Selected Color : "+ selectedColor);
-				System.out.println("Actual Color : "+ colorLabel.getText());
+				System.out.println("Actual Color : "+ colorLabel);
 				break;
 			}
 			driver.navigate().back();
