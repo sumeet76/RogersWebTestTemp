@@ -151,6 +151,7 @@ public class TestDataHandler {
 	public static AccountData tc94;
 	public static AccountData tc102;
 	public static AccountData tc103;
+	public static Config searchCBSConfig;
 	
 	public static void dataInit (String strApplicationType) {	 
 		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");

@@ -30,7 +30,6 @@ public class RogersSearch_CBS_1619_Relevant_Filters_Rendering_Test extends BaseT
 
     }
 
-
     @Test(dataProvider = "FilterData")
 
     public void validateFilters(String[] csvRowStrArray) {
