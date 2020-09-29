@@ -52,7 +52,6 @@ public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass
     public void checkBuyIgniteTVOfferMobile() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	rogers_home_page.clkTVBundle();
-    	
         reporter.hardAssert(rogers_home_page.verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
        	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	rogers_home_page.clkServiceability();
@@ -105,13 +104,13 @@ public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass
         
        reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
        reporter.reportLogWithScreenshot("Launched the tech install page");
-       rogers_tech_install_page.selSelffinstallDateAndTimeMobile();
-       reporter.reportLogWithScreenshot("Launched the tech install page");
-       rogers_tech_install_page.clkTechInstallSlotMobile();
-       reporter.reportLogWithScreenshot("tech install details");
-       rogers_tech_install_page.setMobielNumberMobile();
-       rogers_tech_install_page.setEmailMobile();
-       reporter.reportLogWithScreenshot("tech install consent");
+       //rogers_tech_install_page.selSelffinstallDateAndTimeMobile();
+       //reporter.reportLogWithScreenshot("Launched the tech install page");
+       //rogers_tech_install_page.clkTechInstallSlotMobile();
+       //reporter.reportLogWithScreenshot("tech install details");
+       //rogers_tech_install_page.setMobielNumberMobile();
+       //rogers_tech_install_page.setEmailMobile();
+       //reporter.reportLogWithScreenshot("tech install consent");
        rogers_tech_install_page.clkTechInstalConsent();
        reporter.reportLogWithScreenshot("tech install details");
        rogers_tech_install_page.clkTechInstallContinueMobile();

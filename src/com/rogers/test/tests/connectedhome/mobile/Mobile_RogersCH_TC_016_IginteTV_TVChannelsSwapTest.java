@@ -36,11 +36,11 @@ public class Mobile_RogersCH_TC_016_IginteTV_TVChannelsSwapTest extends BaseTest
 	
     @Test(groups = {"MobileRegressionCH"})
 	
-   public void checkSolarisTVSwapChannelsMobile() {  
-    reporter.reportLogWithScreenshot("Home Page");
-	rogers_home_page.clkSignInMobile();    	
-    rogers_login_page.switchToSignInIFrame();
-    reporter.reportLogWithScreenshot("Launched the SignIn popup");
+   public void checkSolarisTVSwapChannelsMobile() {
+     reporter.reportLogWithScreenshot("Home Page");
+     rogers_home_page.clkSignInMobile();
+     rogers_login_page.switchToSignInIFrame();
+     reporter.reportLogWithScreenshot("Launched the SignIn popup");
     rogers_login_page.setUsernameIFrame(TestDataHandler.igniteTVAccount.getUsername());
     rogers_login_page.setPasswordIFrame(TestDataHandler.igniteTVAccount.getPassword());
     reporter.reportLogWithScreenshot("Enter the account credentails");
@@ -49,8 +49,7 @@ public class Mobile_RogersCH_TC_016_IginteTV_TVChannelsSwapTest extends BaseTest
     reporter.reportLogWithScreenshot("Skip popup");
     rogers_login_page.clkSkipIFrame();
     rogers_login_page.switchOutOfSignInIFrame();
-    rogers_account_overview_page.selectAccount(TestDataHandler.igniteTVAccount.accountDetails.getBan());
-	reporter.hardAssert(rogers_account_overview_page.verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
+    reporter.hardAssert(rogers_account_overview_page.verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
     reporter.reportLogWithScreenshot("Launched the Account Page");
     
     rogers_solaris_tv_dashboard_page.clkTVBadgeMobile();

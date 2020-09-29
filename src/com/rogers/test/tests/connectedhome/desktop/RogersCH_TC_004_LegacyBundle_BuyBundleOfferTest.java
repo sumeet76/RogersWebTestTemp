@@ -37,10 +37,8 @@ public class RogersCH_TC_004_LegacyBundle_BuyBundleOfferTest extends BaseTestCla
 
 	@Test(groups = {"SanityCH","RegressionCH","LegacyTVFlowsCH"})
     public void checkLegacyBundleOffer() throws InterruptedException {
-		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		rogers_home_page.clkEasyLogin();
     	reporter.reportLogWithScreenshot("Launched the Home Page");
-    	rogers_home_page.clkExistingCustomerShop();
+    	rogers_home_page.clkShop();
     	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy bundle");
     	rogers_home_page.clkBundle();
     	reporter.reportLogWithScreenshot("Launched the legacy bundle packages page");

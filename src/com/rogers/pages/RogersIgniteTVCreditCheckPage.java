@@ -67,10 +67,9 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	@FindBy(xpath = "//select[@id='ds-form-input-id-31']")
 	WebElement ddlPassportExpiryDay;
 		
-	@FindBy(xpath = "//label[@for='ds-checkbox-id-0']")
+	@FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]")
 	WebElement chkConsent;
-	//label[@for='credit_check_consent']
-		
+
 	@FindBy(xpath = "//button[contains(@class,'-primary -large')]")
 	WebElement btnCreditCheckSubmit;
 	//button[@class='ute-btn-primary']

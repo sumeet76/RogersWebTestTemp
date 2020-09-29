@@ -95,13 +95,13 @@ public class RogersCH_TC_014_InternetPackageUpgradeToSolarisFromShopOptionTest e
 	        rogers_igniteTV_profile_creation_page.clkSubmitProfile();  
 	        
 	        reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
-	    	rogers_tech_install_page.selSelffinstallDateAndTimeMigrartion(); 
-	        reporter.reportLogWithScreenshot("Launched the tech install page");	        
+	    	//rogers_tech_install_page.selSelffinstallDateAndTimeMigrartion();
+	        //reporter.reportLogWithScreenshot("Launched the tech install page");
 	       // rogers_tech_install_page.clkTechInstallSlot();
-	        reporter.reportLogWithScreenshot("tech install details");
-	        rogers_tech_install_page.setMobielNumberExistingCustomer();
-	        rogers_tech_install_page.setEmailExistingCustomer();
-	        rogers_tech_install_page.clkTechInstalConsentExistingCustomer();
+	        //reporter.reportLogWithScreenshot("tech install details");
+	        //rogers_tech_install_page.setMobielNumberExistingCustomer();
+	       // rogers_tech_install_page.setEmailExistingCustomer();
+	        rogers_tech_install_page.clkTechInstalConsent();
 	        reporter.reportLogWithScreenshot("tech install details");
 	        rogers_tech_install_page.clkTechInstallContinue();
         reporter.reportLogWithScreenshot("Launched the order review page");

@@ -118,10 +118,10 @@ public class RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
        reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
        reporter.reportLogWithScreenshot("Launched the tech install page");
        //rogers_tech_install_page.clkPersonalizedInstall();
-       rogers_tech_install_page.selSelffinstallDateAndTime();
-       reporter.reportLogWithScreenshot("Launched the tech install page");
-       rogers_tech_install_page.setMobielNumber();
-       rogers_tech_install_page.setEmail();
+       //rogers_tech_install_page.selSelffinstallDateAndTime();
+       //reporter.reportLogWithScreenshot("Launched the tech install page");
+       //rogers_tech_install_page.setMobielNumber();
+       //rogers_tech_install_page.setEmail();
        rogers_tech_install_page.clkTechInstalConsent();
        reporter.reportLogWithScreenshot("tech install details");
        rogers_tech_install_page.clkTechInstallContinue();
@@ -269,7 +269,7 @@ public class RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass {
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 

@@ -464,9 +464,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void clkLegacyInternetMobile() {
 		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(btnLegacyInternetBadge, 60).click();
-/*		reusableActions.waitForElementVisibility(btnLegacyInternetBadge, 60);
-		reusableActions.executeJavaScriptClick(btnLegacyInternetBadge);*/
+		reusableActions.waitForElementVisibility(btnLegacyInternetBadge, 60);
+		reusableActions.executeJavaScriptClick(btnLegacyInternetBadge);
 	}
 	/**
 	 * Clicks on the Legacy 'InternetBadge' option on the dash board
@@ -518,9 +517,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * Clicks on the 'TV Badge' option on the dash board
 	 * @author chinnarao.vattam
 	 */
-	public void clkTVBadgeMobile() {	
+	public void clkTVBadgeMobile() {
+		reusableActions.isElementVisible(btnTVBadge,110);
 		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(btnTVBadge, 60).click();	
+		reusableActions.executeJavaScriptClick(btnTVBadge);
 	}
 	
 	/**

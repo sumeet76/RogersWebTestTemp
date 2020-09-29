@@ -44,7 +44,7 @@ public class Mobile_RogersCH_TC_003_Internet_BuyInternetOfferTest extends BaseTe
         rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
-        rogers_home_page.clkOnlyInternetMobile();
+        //rogers_home_page.clkOnlyInternetMobile();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");       
         rogers_internet_package_selection_page.clkInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");         

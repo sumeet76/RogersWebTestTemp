@@ -60,17 +60,18 @@ public class RogersHomePage extends BasePageClass {
 		
 	@FindBy(xpath = "//a[@href='/web/consumer/internet']")
 	WebElement lnkInternet;
-	
+
 	@FindBy(xpath = "//li[@class='dds_o-mobileNavDropdown__item']/a[@href='/web/consumer/internet']")
 	WebElement lnkInternetMobile;
 	
-	@FindBy(xpath = "//li[@class='o-headerNavDropdown__item']/a[@class='m-navLink -dropdown' and contains(text(),' Home Monitoring')]")
+	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/home-monitoring']")
 	WebElement lnkHomeMonitering;
-	//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/home-monitoring']
+    //li[@class='o-headerNavDropdown__item']/a[@class='m-navLink -dropdown' and contains(text(),' Home Monitoring')]
 
-	@FindBy(xpath = "")
+
+	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/bundles']")
 	WebElement lnkBundle;
-	//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/bundles']
+
 
 	@FindBy(xpath = "//a[@href='/consumer/easyloginriverpage']")
 	WebElement lnkMyRogersLink;
@@ -195,7 +196,7 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='View navigation']")
 	WebElement lnkViewNavigationMobile;
 	
-	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet at your address']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']")
+	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet at your address']")
 	WebElement lnkInternetAvailability;
 	
 	@FindBy(xpath = "//i[@class='li-loader']")

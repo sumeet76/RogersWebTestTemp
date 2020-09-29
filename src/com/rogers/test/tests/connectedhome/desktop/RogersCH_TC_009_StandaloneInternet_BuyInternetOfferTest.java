@@ -30,23 +30,20 @@ public class RogersCH_TC_009_StandaloneInternet_BuyInternetOfferTest extends Bas
 
 	@Test(groups = {"RegressionCH","saiCH"})
     public void checkBuyStandAloneInternetOffer() throws InterruptedException {
-		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		rogers_home_page.clkEasyLogin();
-    	reporter.reportLogWithScreenshot("Launched the Home Page");
-    	rogers_home_page.clkShop(); 
     	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
-    	rogers_home_page.clkInternet();
-    	reporter.reportLogWithScreenshot("Launched the Internet packages page");
-    	rogers_home_page.clkInternetAvailability();
-    	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-    	rogers_home_page.clkAddressCheck();
+    	rogers_home_page.clkEasyInternet();
+        reporter.hardAssert(rogers_home_page.verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the Internet packages page");
+        rogers_home_page.clkInternetAvailability();
+        reporter.reportLogWithScreenshot("Launched the customer availability check popup");
+        rogers_home_page.clkAddressCheck();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line2");
         rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
-        rogers_home_page.clkOnlyInternet();
+        //rogers_home_page.clkOnlyInternet();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");       
         rogers_internet_package_selection_page.clkInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");         
@@ -84,12 +81,12 @@ public class RogersCH_TC_009_StandaloneInternet_BuyInternetOfferTest extends Bas
         
        reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
        reporter.reportLogWithScreenshot("Launched the tech install page");
-       rogers_tech_install_page.selSelffinstallDateAndTime();
-       reporter.reportLogWithScreenshot("Launched the tech install page");
-       rogers_tech_install_page.clkTechInstallSlot();
+       //rogers_tech_install_page.selSelffinstallDateAndTime();
+       //reporter.reportLogWithScreenshot("Launched the tech install page");
+       //rogers_tech_install_page.clkTechInstallSlot();
        reporter.reportLogWithScreenshot("tech install details");
-       rogers_tech_install_page.setMobielNumber();
-       rogers_tech_install_page.setEmail();
+       //rogers_tech_install_page.setMobielNumber();
+      //rogers_tech_install_page.setEmail();
        rogers_tech_install_page.clkTechInstalConsent();
        reporter.reportLogWithScreenshot("tech install details");
        rogers_tech_install_page.clkTechInstallContinue();

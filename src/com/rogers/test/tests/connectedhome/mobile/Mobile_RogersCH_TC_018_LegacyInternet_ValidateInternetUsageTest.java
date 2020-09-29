@@ -1,21 +1,14 @@
 package com.rogers.test.tests.connectedhome.mobile;
 
-import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;                     
-import org.testng.annotations.Parameters;
 
 /**
  * This class contains the test method to verify the Legacy Internet usage for Rogers.com   
@@ -52,7 +45,7 @@ public class Mobile_RogersCH_TC_018_LegacyInternet_ValidateInternetUsageTest ext
 		rogers_account_overview_page.clkLegacyInternetMobile();
 		reporter.reportLogWithScreenshot("Launched the Internet Dashboard Page");
 		rogers_account_overview_page.clkInternetPopup();
-		reporter.hardAssert(rogers_internet_dashboard_page.verifyInternetUsage(),"Verifed the Internet dashboard","Internet dashboard Verification has failed");
+		reporter.hardAssert(rogers_internet_dashboard_page.verifyInternetUsageMobile(),"Verifed the Internet dashboard","Internet dashboard Verification has failed");
    	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

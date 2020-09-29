@@ -26,7 +26,10 @@ public class RogersOrderReviewPage extends BasePageClass {
 	
 	@FindBy(xpath = "//h3[@translate='global.label.OrderReview']")
 	WebElement txtAgreementPageBuy;
-	
+
+	@FindBy(xpath = "//ins[@translate='global.label.reviewHeading']")
+	WebElement infoAgreementMobile;
+
 	@FindBy(xpath = "//div[@id='terms-conditions']")
 	WebElement infoAgreement;
 
@@ -44,15 +47,15 @@ public class RogersOrderReviewPage extends BasePageClass {
 	
 	@FindBy(xpath = "//li[@id='headingDetails4']//button[@class='button-link']")
 	WebElement lnkAgreementPrivacyPolicy;
+
+	@FindBy(xpath = "//li[@id='headingDetails4']//div[@class='ute-link cursor-hand']")
+	WebElement lnkAgreementPrivacyPolicyTCMobile;
+
+	@FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]")
+	WebElement clkChangeAcceptCheckbox;
 	
-    @FindAll(
-        	{@FindBy(xpath = "//label[@for='ds-checkbox-id-3']"),
-        		@FindBy(xpath = "//label[@for='ds-checkbox-id-1']")})
-		WebElement clkChangeAcceptCheckbox;
-	
-	@FindBy(xpath = "//label[@for='ds-checkbox-id-0']")
+	@FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]")
 	WebElement clkChangeAcceptCheckboxMigration;
-	
 
 	@FindBy(xpath = "//span[@translate='global.cta.submit']")
 	WebElement clkSubmit;
@@ -180,7 +183,11 @@ public class RogersOrderReviewPage extends BasePageClass {
 	public boolean verifyAgreementPage() {
 		return	reusableActions.isElementVisible(txtAgreementPageBuy, 180);
 	}
-	
+
+	public boolean verifyAgreementPageTVMobile() {
+		return	reusableActions.isElementVisible(infoAgreementMobile, 180);
+	}
+
 	/**
 	 * Verify the order review page
 	 * @return true if the Agreement is present on the order review page, else false
@@ -207,6 +214,17 @@ public class RogersOrderReviewPage extends BasePageClass {
 		//Javascript scroll used to support firefox (geckodriver)
 		reusableActions.javascriptScrollByVisibleElement(lnkAgreementToEndExistingCustomer);	
 		reusableActions.getWhenReady(clkChangeAcceptCheckboxUpdate, 90).click();
+	}
+
+	/**
+	 * Click on the Consent check box on the order review page
+	 * @author chinnarao.vattam
+	 */
+	public void clkAcceptenceCheckboxUpdateTVMobile() {
+		reusableActions.waitForElementVisibility(lnkAgreementToEndExistingCustomer, 30);
+		reusableActions.javascriptScrollByVisibleElement(lnkAgreementToEnd);
+		reusableActions.getWhenReady(clkChangeAcceptCheckboxUpdate, 30);
+		reusableActions.executeJavaScriptClick(clkChangeAcceptCheckboxUpdate);
 	}
 
 	/**
@@ -300,10 +318,19 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSubmitUpdate() {
-		reusableActions.getWhenReady(clkSubmitUpdate, 200).click();
+		reusableActions.getWhenReady(clkSubmitUpdate, 100).click();
 		reusableActions.staticWait(10000);
 	}
-	
+
+	/**
+	 * Click on the Submit button on the order review page
+	 * @author chinnarao.vattam
+	 */
+	public void clkSubmitUpdateMobile() {
+		reusableActions.waitForElementInvisibility(clkSubmitUpdate, 50);
+		reusableActions.executeJavaScriptClick(clkSubmitUpdate);
+		reusableActions.staticWait(10000);
+	}
 	/**
 	 * Click on the Submit button on the order review page
 	 * @author chinnarao.vattam

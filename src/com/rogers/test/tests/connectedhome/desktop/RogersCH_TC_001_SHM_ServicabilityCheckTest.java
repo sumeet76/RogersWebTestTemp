@@ -29,10 +29,8 @@ public class RogersCH_TC_001_SHM_ServicabilityCheckTest extends BaseTestClass {
 
 	@Test(groups = {"SanityCH","RegressionCH","RhpAndRhmCH"})
     public void checkServicabilityRHMTest() throws InterruptedException {
-		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		rogers_home_page.clkEasyLogin();
     	reporter.reportLogWithScreenshot("Launched the Home Page");
-    	rogers_home_page.clkExistingCustomerShop();
+    	rogers_home_page.clkShop();
     	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Home Monitering");
     	rogers_home_page.clkHomeMonitering();
     	reporter.reportLogWithScreenshot("Launched the Home Monitering packages page");
