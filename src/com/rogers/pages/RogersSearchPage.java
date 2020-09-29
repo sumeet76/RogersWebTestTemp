@@ -397,6 +397,147 @@ public boolean verifyResultsColorLabelWithSelectedColor() {
 		return blnFlag;
 	}
 
+
+public boolean verifyResultsStorageLabelWithSelectedStorage() {
+	
+	boolean blnFlag = true;
+
+	List<WebElement> lstStorageFilter = driver.findElements(By.xpath("//input[@name='storage']"));
+
+	for (int i = 0; i < lstStorageFilter.size(); i++) {
+		reusableActions.waitForAllElementsVisible(driver.findElements(By.xpath("//input[@name='storage']")), 40);
+		String strStorageFilter = driver.findElements(By.xpath("//input[@name='storage']")).get(i).getAttribute("value");
+
+		System.out.println("value of storage filter is:" + driver.findElements(By.xpath("//input[@name='storage']")).get(i).getAttribute("value"));
+
+		reusableActions.staticWait(2000);
+
+		reusableActions.clickWhenReady(
+				By.xpath("//ds-checkbox[@ng-reflect-value='"+driver.findElements(By.xpath("//input[@name='storage']")).get(i).getAttribute("value")+"']"));
+		reusableActions.staticWait(2000);
+
+		List<WebElement> lstStorageResultsLink = driver.findElements(By.xpath("//a[contains(@href,'storage')]"));
+		
+		for(int j=0; j<lstStorageResultsLink.size(); j++) {
+			
+			System.out.println("Storage results link list:"+driver.findElements(By.xpath("//a[contains(@href,'storage')]")).get(j).getText());
+			
+			reusableActions.getWhenVisible(driver.findElements(By.xpath("//a[contains(@href,'storage')]")).get(j)).sendKeys(Keys.ENTER);
+			//reusableActions.staticWait(4000);
+			
+			//reusableActions.clickWhenReady(lstStorageResultsLink.get(j));
+
+			reusableActions.staticWait(5000);
+			
+			WebElement storageLabel = driver.findElement(By.xpath("//span[text()='Storage:']//following-sibling::span"));
+			reusableActions.waitForElementVisibility(storageLabel);
+			System.out.println("Storage Label is:" + storageLabel.getText().replaceAll("\\s", ""));
+			System.out.println("Storage filter value is:" + strStorageFilter);
+			
+			//System.out.println(strStorageFilter.equalsIgnoreCase(storageLabel.getText()));
+			if (!(strStorageFilter.equalsIgnoreCase(storageLabel.getText().replaceAll("\\s", "")))) {
+
+				blnFlag = false;
+				System.out.println("Inside if loop");
+				break;
+
+			}
+			
+			System.out.println("Before Navigation");
+			driver.navigate().back();
+			System.out.println("After Navigation");
+			reusableActions.staticWait(4000);
+			
+			
+		}
+		if(blnFlag == false) {
+			
+			break;
+		}
+		
+		reusableActions.waitForElementVisibility(driver.findElement(By.xpath("//input[@name='storage']")), 40);
+		
+		//reusableActions.clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='"+lstStorageFilter.get(i).getAttribute("value")+"']"));
+		reusableActions.clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='"+strStorageFilter+"']"));
+		
+		
+	}	
+			
+	return blnFlag;	
+		}
+
+public boolean verifyResultsSizeLabelWithSelectedSize() {
+	
+	boolean blnFlag = true;
+
+	List<WebElement> lstSizeFilter = driver.findElements(By.xpath("//input[contains(@id,'size')]"));
+
+	for (int i = 0; i < lstSizeFilter.size(); i++) {
+		reusableActions.waitForAllElementsVisible(driver.findElements(By.xpath("//input[contains(@id,'size')]")), 40);
+		String strSizeFilter = driver.findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value");
+
+		System.out.println("value of size filter is:" + driver.findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value"));
+
+		reusableActions.staticWait(2000);
+
+		reusableActions.clickWhenReady(
+				By.xpath("//ds-checkbox[@ng-reflect-value='"+driver.findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value")+"']"));
+		reusableActions.staticWait(2000);
+
+		List<WebElement> lstSizeResultsLink = driver.findElements(By.xpath("//a[contains(@href,'watch')]"));
+		
+		for(int j=0; j<lstSizeResultsLink.size(); j++) {
+			
+			System.out.println("Size results link list:"+driver.findElements(By.xpath("//a[contains(@href,'watch')]")).get(j).getText());
+			
+			reusableActions.getWhenVisible(driver.findElements(By.xpath("//a[contains(@href,'watch')]")).get(j)).sendKeys(Keys.ENTER);
+			//reusableActions.staticWait(4000);
+			
+			//reusableActions.clickWhenReady(lstStorageResultsLink.get(j));
+
+			reusableActions.staticWait(5000);
+			
+			//WebElement sizeLabel = driver.findElement(By.xpath("//div[contains(@class,'active')]/a[text()='"+strSizeFilter+"']"));
+			WebElement sizeLabel = driver.findElement(By.xpath("//a[text()='"+strSizeFilter+"']"));
+			
+			reusableActions.waitForElementVisibility(sizeLabel);
+			System.out.println("Size Label is:" + sizeLabel.getText());
+			System.out.println("Size filter value is:" + strSizeFilter);
+			
+			//System.out.println(strStorageFilter.equalsIgnoreCase(storageLabel.getText()));
+			
+			if (!strSizeFilter.equalsIgnoreCase(sizeLabel.getText()) || !sizeLabel.isSelected()) {
+
+				blnFlag = false;
+				System.out.println("Inside if loop");
+				break;
+
+			}
+			
+			System.out.println("Before Navigation");
+			driver.navigate().back();
+			System.out.println("After Navigation");
+			reusableActions.staticWait(4000);
+			
+			
+		}
+		if(blnFlag == false) {
+			
+			break;
+		}
+		
+		reusableActions.waitForElementVisibility(driver.findElement(By.xpath("//input[contains(@id,'size')]")), 40);
+		
+		//reusableActions.clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='"+lstStorageFilter.get(i).getAttribute("value")+"']"));
+		reusableActions.clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='"+strSizeFilter+"']"));
+		
+		
+	}	
+			
+	return blnFlag;
+	
+		}
+
 }
 
 			
