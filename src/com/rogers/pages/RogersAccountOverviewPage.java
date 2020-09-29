@@ -841,8 +841,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		{
 			reusableActions.getWhenReady(menuMainBillingAndPaymentsMobile,30).click();
 		}	
-		//reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
-		reusableActions.staticWait(3000); //extra static buffers added for firefox	
+		reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();					
 		reusableActions.waitForElementVisibility(submenuSetUpAutomaticPaymentMethodMobile);
 		reusableActions.getWhenReady(submenuSetUpAutomaticPaymentMethodMobile).click();	
 	}
