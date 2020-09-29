@@ -54,7 +54,7 @@ public class Mobile_RogersCH_TC_011_IginteTV_TVPackageUpgradeTest extends BaseTe
         
         rogers_solaris_tv_dashboard_page.clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
-        rogers_solaris_tv_dashboard_page.clkChangeTVPackage();
+        rogers_solaris_tv_dashboard_page.clkChangeTVPackageMobile();
         reporter.reportLogWithScreenshot("Launched the TV packages page");
         rogers_solaris_tv_dashboard_page.selectSolarisTVPackage(TestDataHandler.solarisTVAccountForUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.solarisTVAccountForUpgrade.accountDetails.getUpgradePlanFr());
         rogers_solaris_tv_dashboard_page.clkPopupChangeTVPackage();
@@ -63,16 +63,16 @@ public class Mobile_RogersCH_TC_011_IginteTV_TVPackageUpgradeTest extends BaseTe
         reporter.reportLogWithScreenshot("Launched the channels and themepacks page");
         rogers_solaris_tv_channels_and_themepacks_page.clkContinueFromThemepacks();
         reporter.reportLogWithScreenshot("Launched the 4K enquiry popup");
-        rogers_solaris_tv_channels_and_themepacks_page.clkYesIHave4K();  
+        rogers_solaris_tv_channels_and_themepacks_page.clkYesIHave4KMobile();
         reporter.reportLogWithScreenshot("Launched the 4K Content popup");
         rogers_solaris_tv_channels_and_themepacks_page.clk4KContent();
-    	reporter.hardAssert(rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
+    	reporter.hardAssert(rogers_order_review_page.verifyAgreementPageTVMobile(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");
 		
 		reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");;
-        rogers_order_review_page.clkAcceptenceCheckboxUpdate();
+        rogers_order_review_page.clkAcceptenceCheckboxUpdateTVMobile();
         reporter.reportLogWithScreenshot("Agreement details");
-        rogers_order_review_page.clkSubmitUpdate();
+        rogers_order_review_page.clkSubmitUpdateMobile();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
         reporter.reportLogWithScreenshot("Verified the Confirmation page");
@@ -87,7 +87,7 @@ public class Mobile_RogersCH_TC_011_IginteTV_TVPackageUpgradeTest extends BaseTe
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 

@@ -1,13 +1,12 @@
 package com.rogers.test.helpers;
 
+import org.openqa.selenium.Cookie;
+import org.openqa.selenium.WebDriver;
+import utils.CookieFetcher;
+
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Date;
-
-import org.openqa.selenium.Cookie;
-import org.openqa.selenium.WebDriver;
-
-import utils.CookieFetcher;
 
 public class CaptchaBypassHandlers {
 	
@@ -27,7 +26,7 @@ public class CaptchaBypassHandlers {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				driver.get(strUrl+"?setLanguage="+ strLanguage );
+		        driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ strLanguage);
         }
 	
 	/**

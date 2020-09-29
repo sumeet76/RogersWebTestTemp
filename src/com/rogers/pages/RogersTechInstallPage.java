@@ -1,14 +1,13 @@
 package com.rogers.pages;
 
-import java.util.Calendar;
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import com.rogers.pages.base.BasePageClass;
-
 import utils.FormFiller;
+
+import java.util.Calendar;
 
 /**
  * @author chinnarao.vattam
@@ -73,16 +72,17 @@ public class RogersTechInstallPage extends BasePageClass {
 	
 	@FindBy(xpath ="//input[@formcontrolname='enrouteEmail']")   
 	WebElement txtEmailExistingCustomer;
-	
-	@FindBy(xpath ="//label[@for='ds-checkbox-id-1']")
+
+	@FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]")
 	WebElement chkTechInstalConsent;
 	
 	@FindBy(xpath ="//label[@for='ds-checkbox-id-0']")
 	WebElement chkTechInstalConsentExistingCustomer;
 	
-	@FindBy(xpath ="//span[@translate='global.checkout.fulfillment.confirm']")
+	@FindBy(xpath ="//button[@aria-label='Click here to continue']")
 	WebElement btnTechInstallContinue;
-	
+	//span[@translate='global.checkout.fulfillment.confirm']
+
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
 	

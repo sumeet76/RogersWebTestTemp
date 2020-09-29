@@ -37,16 +37,14 @@ public class RogersCH_TC_004_LegacyBundle_BuyBundleOfferTest extends BaseTestCla
 
 	@Test(groups = {"SanityCH","RegressionCH","LegacyTVFlowsCH"})
     public void checkLegacyBundleOffer() throws InterruptedException {
-		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		rogers_home_page.clkEasyLogin();
     	reporter.reportLogWithScreenshot("Launched the Home Page");
-    	rogers_home_page.clkShop(); 
+    	rogers_home_page.clkShop();
     	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy bundle");
     	rogers_home_page.clkBundle();
     	reporter.reportLogWithScreenshot("Launched the legacy bundle packages page");
     	rogers_legacy_bundle_buy_page.clkSelectBundle();
-        String  strAddressLine1=(String) TestDataHandler.digitalTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=(String) TestDataHandler.digitalTVAccount.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.digitalTVAccount.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.digitalTVAccount.getAccountDetails().getAddress().get("line2");
         rogers_legacy_bundle_buy_page.setAddressLookup(strAddressLine1+", "+strAddressLine2);
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         rogers_legacy_bundle_buy_page.clkAddressLookupSubmit();

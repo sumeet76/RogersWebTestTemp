@@ -37,8 +37,8 @@ public class RogersCH_TC_021_SolarisHAWTFlowExistingInternetPortInTest extends B
 	    	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");    	
 	        rogers_home_page.clkUseThisAddress();        
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-    	String  strAddressLine1=(String) TestDataHandler.solarisPortinFlows.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=(String) TestDataHandler.solarisPortinFlows.getAccountDetails().getAddress().get("line2");
+    	String  strAddressLine1=TestDataHandler.solarisPortinFlows.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.solarisPortinFlows.getAccountDetails().getAddress().get("line2");
 /*       rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         rogers_home_page.clkIgniteAddressLookupSubmit();*/
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");

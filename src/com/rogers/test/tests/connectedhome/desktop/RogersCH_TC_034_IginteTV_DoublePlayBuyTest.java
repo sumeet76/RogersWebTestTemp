@@ -59,8 +59,8 @@ public class RogersCH_TC_034_IginteTV_DoublePlayBuyTest extends BaseTestClass {
     	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
     	rogers_home_page.clkAddressCheck();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line2");
         rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
@@ -118,10 +118,10 @@ public class RogersCH_TC_034_IginteTV_DoublePlayBuyTest extends BaseTestClass {
        reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
        reporter.reportLogWithScreenshot("Launched the tech install page");
        //rogers_tech_install_page.clkPersonalizedInstall();
-       rogers_tech_install_page.selSelffinstallDateAndTime();
-       reporter.reportLogWithScreenshot("Launched the tech install page");
-       rogers_tech_install_page.setMobielNumber();
-       rogers_tech_install_page.setEmail();
+       //rogers_tech_install_page.selSelffinstallDateAndTime();
+       //reporter.reportLogWithScreenshot("Launched the tech install page");
+       //rogers_tech_install_page.setMobielNumber();
+       //rogers_tech_install_page.setEmail();
        rogers_tech_install_page.clkTechInstalConsent();
        reporter.reportLogWithScreenshot("tech install details");
        rogers_tech_install_page.clkTechInstallContinue();
