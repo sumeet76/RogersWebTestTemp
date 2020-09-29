@@ -43,7 +43,8 @@ public class Mobile_RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest 
         	rogers_account_overview_page.selectAccount(TestDataHandler.tc013132.getAccountDetails().getBan());       
         }
         reporter.reportLogWithScreenshot("Account overview page.");
-        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Passed", "Login Failed");
+        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLoginMobile(),
+        		"Login Passed", "Login Failed");
     }
 
   

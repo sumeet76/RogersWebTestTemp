@@ -28,7 +28,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	@FindBy (xpath = "//button[text()='Both username and password' or text()=\"Nom d'utilisateur et mot de passe\"]")
 	WebElement btnBoth;
 	
-	@FindBy (xpath = "//input[@formcontrolname='emailAddress']")
+	@FindBy (xpath = "//input[@formcontrolname='email']")
 	WebElement txtEmailAddress;
 	
 	

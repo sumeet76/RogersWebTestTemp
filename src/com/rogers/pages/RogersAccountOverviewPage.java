@@ -269,6 +269,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	@FindBy (xpath = "//span[@class='menu-click']")
 	WebElement menuAccountNumber;
+		
+	@FindBy(xpath = "//div[@class='c-nav-shell-in-mobile']//span[contains(text(),' Account: ')]/span")
+	WebElement menuAccountNumberMobile;
 	
 	@FindBy(xpath = "//iframe[@id='va-iframe']")
 	WebElement fraLiveChat;
@@ -684,6 +687,19 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 String strAccountNumber = reusableActions.getWhenReady(menuAccountNumber,5).getText();
 	 return NumberUtils.isDigits(strAccountNumber);
 	}
+		
+	
+	/**
+	 * To verify the successful login
+	 * @return true if the balance label is present ; else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifySuccessfulLoginMobile() {	
+	 reusableActions.waitForElementVisibility(menuAccountNumberMobile,60);
+	 String strAccountNumber = reusableActions.getWhenReady(menuAccountNumberMobile,5).getText();
+	 return NumberUtils.isDigits(strAccountNumber);
+	}
+	
 	
 	/**
 	 * To verify the successful login
