@@ -230,8 +230,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	WebElement btnEntertainmentBadge;
 		
 	@FindAll({
-	@FindBy(xpath = "//span[contains(text(),'Billing & Payment')]"),	
-	@FindBy(xpath = "//button[@aria-label='ute.common.label.billAndPayment']")})
+	@FindBy(xpath = "//button[@aria-label='ute.common.label.billAndPayment']"),
+	@FindBy(xpath = "//div[@id='services']//span[contains(text(),'Billing & Payment')]")	
+	})
 	WebElement menuBillingAndPaymentsMobile;
 	
 	@FindBy(xpath = "//div[@class='ute-secondLevelNav-bar-m']//button//span[contains(text(),'Billing & Payment')]")
@@ -945,8 +946,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		{
 			reusableActions.getWhenReady(menuMainBillingAndPaymentsMobile,30).click();
 		}
-		//reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
-		reusableActions.staticWait(3000); //extra static buffers added for firefox
+		reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();				
 		return reusableActions.isElementVisible(lnkSetUpAutomaticPaymentMethodMobile);
 	}
 

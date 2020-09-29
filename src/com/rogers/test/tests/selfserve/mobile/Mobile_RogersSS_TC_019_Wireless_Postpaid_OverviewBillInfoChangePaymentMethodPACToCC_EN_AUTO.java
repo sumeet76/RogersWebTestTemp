@@ -52,6 +52,7 @@ public class Mobile_RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaym
 		
 		reporter.reportLogWithScreenshot("Account overveiew page");
 		rogers_account_overview_page.clkViewBill();
+		reporter.reportLogWithScreenshot("clicked on View Bill");
 		common_business_flows.clkCloseFeedbackIfAvailableMobile();
 		if(!rogers_account_overview_page.isSetAutoPaymentDisplayedMobile())
 		{
