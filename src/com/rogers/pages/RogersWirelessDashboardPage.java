@@ -520,6 +520,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//*[@translate='start_track_phone_repair']")
 	WebElement lnkStartOrTrackAPhonerepairClaim;
+
+	@FindBy(xpath = "//rss-data-usage-details//rss-billing/div[@class='bill-cycle']/span[@class='daysRemaining']")
+	WebElement lblDaysRemainingInBillCycleMobile;
 	
 	/**
 	 * To click the link of lost or stolen device on wireless dashboard page
@@ -1168,7 +1171,17 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	public boolean verifyDaysRemainingInTheBillCycleIsDisplayed() {		
 		return reusableActions.isElementVisible(lblDaysRemainingInBillCycle, 30);
 	}
-
+	
+	/**
+	 * Verifies if the data remaining out of total data bucket is displayed
+	 * @return true if element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyDaysRemainingInTheBillCycleIsDisplayedMobile() {		
+		return reusableActions.isElementVisible(lblDaysRemainingInBillCycleMobile, 30);
+	}
+	
+	
 	/**
 	 * Verifies if add data button displayed
 	 * @return true if element is displayed else false
