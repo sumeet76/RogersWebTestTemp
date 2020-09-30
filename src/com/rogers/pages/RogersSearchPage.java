@@ -538,9 +538,117 @@ public boolean verifyResultsSizeLabelWithSelectedSize() {
 	
 		}
 
+public boolean verifyChildFilterSelection() {
+	
+	boolean blnFlag = true;
+	
+	List<WebElement> lstColorFilter = driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]"));
+	
+	for(int i=0; i<1; i++) {
+		
+		System.out.println("value of color filter is:"+driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value"));
+		
+		reusableActions.staticWait(2000);
+		
+		reusableActions.clickWhenReady(By.xpath("//span[starts-with(text(),'"+driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value")+"')]"));
+		reusableActions.staticWait(2000);
+		
+	List<WebElement> lstColorResults = driver.findElements(By.xpath("//span[starts-with(@style,'background: ')]"));
+	
+	for(int j=0; j<lstColorResults.size(); j++) {
+		
+		System.out.println("value of Color Result is:"+lstColorResults.get(j).getAttribute("style"));
+		
+		String[] strColorResult = lstColorResults.get(j).getAttribute("style").split(" ");
+
+		reusableActions.getWhenReady(driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i), 20);
+		
+		System.out.println("Before if statement - value of strColorResult is:"+strColorResult[1].replaceAll(";", ""));
+		System.out.println("Before if statement - value of color filter is:"+driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value"));
+		
+		if(!(driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value").equalsIgnoreCase(strColorResult[1].replaceAll(";", "")))) {
+			
+			blnFlag = false;
+			break;
+			
+		}
+		
+	}
+	
+	reusableActions.staticWait(2000);
+		
+	}
+	
+return blnFlag;	
+	
 }
 
-			
-		
 
+public boolean verifyParentFilterSelection() {
 	
+	boolean blnFlag = true;
+
+	/*List<String> strFilterList = Arrays.asList(strFilterArray);
+
+	System.out.println("List of Grand Parent Filter:" + strFilterList);
+
+	boolean blnFlag = true;
+
+	for (int grandParentFiltercounter = 0; grandParentFiltercounter < strFilterList.size(); grandParentFiltercounter++) {
+
+		System.out.println("Parent filter values:" + strFilterList.get(grandParentFiltercounter));
+
+		clkGrandParentFilter(strFilterList.get(grandParentFiltercounter));*/
+	
+		System.out.println("After clicking parent filter" + getDriver().getCurrentUrl());
+
+		List<WebElement> parentFiltersList = driver.findElements(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p"));
+		
+		for (int parentFilterCounter = 0; parentFilterCounter < 1; parentFilterCounter++) {
+			reusableActions.staticWait(4000);
+			//System.out.println("Sub Filter values:" + parentFiltersList.get(parentFilterCounter).getText());
+			System.out.println("Sub Filter values:" + driver.findElements(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p")).get(parentFilterCounter).getText());
+			
+
+			//reusableActions.clickWhenReady(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p[starts-with(text(),'"+ parentFiltersList.get(parentFilterCounter).getText() + "')]"), 20);
+			
+			reusableActions.javascriptScrollByVisibleElement(driver.findElement(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p[starts-with(text(),'"+ parentFiltersList.get(parentFilterCounter).getText() + "')]")));
+			reusableActions.staticWait(4000);
+			reusableActions.scrollToElementAndClick(driver.findElement(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p[starts-with(text(),'"+ parentFiltersList.get(parentFilterCounter).getText() + "')]")));
+			
+			//reusableActions.javascriptScrollByVisibleElement(driver.findElements(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p")).get(parentFilterCounter));
+			//reusableActions.staticWait(4000);
+			//reusableActions.scrollToElementAndClick(driver.findElements(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p")).get(parentFilterCounter));
+			
+			System.out.println("After clicking sub filter" + getDriver().getCurrentUrl());
+	
+			reusableActions.staticWait(1000);
+			List<WebElement> lstResultsWithCategoryTags = driver.findElements(By.xpath("//span[contains(@class,'categorylbl')]"));
+			for (int categoryTagsCounter = 0; categoryTagsCounter < lstResultsWithCategoryTags.size(); categoryTagsCounter++) {
+			
+				reusableActions.staticWait(500);
+				String strTagText[] = reusableActions.getWhenReady(driver.findElements(By.xpath("//span[contains(@class,'categorylbl')]")).get(categoryTagsCounter), 10).getText().split("-");
+				System.out.println("Expected Grand Parent Filter value is Shop");
+				System.out.println("Actual grand parent filter value:"+strTagText[0].trim());
+				System.out.println("Expected Parent Filter value:"+parentFiltersList.get(parentFilterCounter).getText().split("\\Q[\\E")[0].trim());
+				System.out.println("Actual parent filter value:"+strTagText[1].trim());
+				
+				if (!(strTagText[0].trim()).equalsIgnoreCase("Shop")
+						|| !parentFiltersList.get(parentFilterCounter).getText().split("\\Q[\\E")[0].trim().equalsIgnoreCase(strTagText[1].trim())) {
+					blnFlag = false;
+					break;
+				}
+			System.out.println("Category Tag Counter:"+categoryTagsCounter);
+			System.out.println("Size of list result with category Tag is:"+lstResultsWithCategoryTags.size());
+			
+			}
+
+		}
+		
+		return blnFlag;
+		
+	}
+	
+
+}
+
