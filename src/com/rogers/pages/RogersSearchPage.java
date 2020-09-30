@@ -538,6 +538,29 @@ public boolean verifyResultsSizeLabelWithSelectedSize() {
 	
 		}
 
+	public boolean validateResultsTag(String strGrandParentFilter, String strParentFilter) {
+		String[] strParentFilterName = strParentFilter.split("\\[");
+		String strExpectedTag = strGrandParentFilter.trim() + " - " + strParentFilterName[0].trim();
+		List<WebElement> resultlinkTags = driver.findElements(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]"));
+		for (int counter=0;counter<resultlinkTags.size();counter++){
+			if(!(resultlinkTags.get(counter).getText().equals(strExpectedTag))) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public boolean validateResultsTag(String strGrandParentFilter) {
+		String strExpectedTag = strGrandParentFilter.trim() + " - ";
+		List<WebElement> resultlinkTags = driver.findElements(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]"));
+		for (int counter=0;counter<resultlinkTags.size();counter++){
+			if(!(resultlinkTags.get(counter).getText().startsWith(strExpectedTag))) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 }
 
 			
