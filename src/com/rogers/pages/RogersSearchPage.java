@@ -181,6 +181,7 @@ public class RogersSearchPage extends BasePageClass {
 		WebElement parentFilter = driver.findElement(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'"
 				+ strFilterName + "')]"));
 		
+		reusableActions.javascriptScrollToTopOfPage();
 		reusableActions.scrollToElementAndClick(parentFilter);
 						
 		
@@ -538,6 +539,7 @@ public boolean verifyResultsSizeLabelWithSelectedSize() {
 	
 		}
 
+
 public boolean verifyChildFilterSelection() {
 	
 	boolean blnFlag = true;
@@ -580,8 +582,32 @@ public boolean verifyChildFilterSelection() {
 	}
 	
 return blnFlag;	
-	
+
 }
+	
+
+	public boolean validateResultsTag(String strGrandParentFilter, String strParentFilter) {
+		String[] strParentFilterName = strParentFilter.split("\\[");
+		String strExpectedTag = strGrandParentFilter.trim() + " - " + strParentFilterName[0].trim();
+		List<WebElement> resultlinkTags = driver.findElements(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]"));
+		for (int counter=0;counter<resultlinkTags.size();counter++){
+			if(!(resultlinkTags.get(counter).getText().equals(strExpectedTag))) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public boolean validateResultsTag(String strGrandParentFilter) {
+		String strExpectedTag = strGrandParentFilter.trim() + " - ";
+		List<WebElement> resultlinkTags = driver.findElements(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]"));
+		for (int counter=0;counter<resultlinkTags.size();counter++){
+			if(!(resultlinkTags.get(counter).getText().startsWith(strExpectedTag))) {
+				return false;
+			}
+		}
+		return true;
+	}
 
 
 public boolean verifyParentFilterSelection() {
@@ -610,11 +636,12 @@ public boolean verifyParentFilterSelection() {
 			System.out.println("Sub Filter values:" + driver.findElements(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p")).get(parentFilterCounter).getText());
 			
 
-			//reusableActions.clickWhenReady(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p[starts-with(text(),'"+ parentFiltersList.get(parentFilterCounter).getText() + "')]"), 20);
 			
-			reusableActions.javascriptScrollByVisibleElement(driver.findElement(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p[starts-with(text(),'"+ parentFiltersList.get(parentFilterCounter).getText() + "')]")));
-			reusableActions.staticWait(4000);
-			reusableActions.scrollToElementAndClick(driver.findElement(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p[starts-with(text(),'"+ parentFiltersList.get(parentFilterCounter).getText() + "')]")));
+			reusableActions.javascriptScrollToTopOfPage();
+			reusableActions.clickWhenReady(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p[starts-with(text(),'"+ parentFiltersList.get(parentFilterCounter).getText() + "')]"), 20);
+			//reusableActions.javascriptScrollByVisibleElement(driver.findElement(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p[starts-with(text(),'"+ parentFiltersList.get(parentFilterCounter).getText() + "')]")));
+			//reusableActions.staticWait(4000);
+			//reusableActions.scrollToElementAndClick(driver.findElement(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p[starts-with(text(),'"+ parentFiltersList.get(parentFilterCounter).getText() + "')]")));
 			
 			//reusableActions.javascriptScrollByVisibleElement(driver.findElements(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p")).get(parentFilterCounter));
 			//reusableActions.staticWait(4000);
