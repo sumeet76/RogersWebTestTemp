@@ -44,6 +44,7 @@ public class RogersSS_TC_093_AO_ValidateAutomaticPaymentsCreditCardSEInfinite ex
     	String strPassword = TestDataHandler.tc6269.getPassword();		
 		tryLogin(strUsername, strPassword);
 		reporter.reportLogWithScreenshot("Account overveiew page");		
+		rogers_account_overview_page.clkViewBill();
 		if(!rogers_account_overview_page.isCCDisplayedOnAccountOverViewPage())
 		{
 			if(!rogers_account_overview_page.isSetAutoPaymentDisplayed())
