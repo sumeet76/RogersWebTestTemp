@@ -40,8 +40,8 @@ public class RogersSS_TC_093_AO_ValidateAutomaticPaymentsCreditCardSEInfinite ex
     public void validateAutomaticPaymentsCreditCardSEInfinite() {
 
     	rogers_home_page.clkSignIn();
-    	String strUsername = TestDataHandler.tc63.getUsername();
-    	String strPassword = TestDataHandler.tc63.getPassword();		
+    	String strUsername = TestDataHandler.tc6269.getUsername();
+    	String strPassword = TestDataHandler.tc6269.getPassword();		
 		tryLogin(strUsername, strPassword);
 		reporter.reportLogWithScreenshot("Account overveiew page");		
 		if(!rogers_account_overview_page.isCCDisplayedOnAccountOverViewPage())
