@@ -33,7 +33,7 @@ public class RogersSS_Batch_AccountRegistrations extends BaseTestClass {
 	@DataProvider(name = "AccountRegistrationData")
 	public Iterator<Object[]> testData() throws IOException
 	{
-	  return parseCsvData(System.getProperty("user.dir") + "/test-data/rogers/selfserve/AccountRegistration.csv");
+	  return parseCsvDataSS(System.getProperty("user.dir") + "/test-data/rogers/selfserve/AccountRegistration.csv");
 	}
 	
 	
@@ -119,7 +119,7 @@ public class RogersSS_Batch_AccountRegistrations extends BaseTestClass {
 	 * @throws IOException
 	 * @author Mirza.Kamran
 	 */
-	private Iterator<Object[]> parseCsvData(String fileName) throws IOException
+	public Iterator<Object[]> parseCsvDataSS(String fileName) throws IOException
 	{
 	  BufferedReader input = null;
 	  File file = new File(fileName);

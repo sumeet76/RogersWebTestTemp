@@ -12,6 +12,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.*;
+import org.testng.internal.TestResult;
 import utils.SauceLabsUtils;
 
 import javax.mail.MessagingException;
@@ -47,18 +48,15 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
 	@Override
 	public void onTestStart(ITestResult iTestResult) {
 		String sauceSessionId;
-		System.out.println(" in onTestStart method " +  getTestMethodName(iTestResult) + " start");
+		int dataIteratorIndex = ((TestResult) iTestResult).getParameterIndex();
+		System.out.println(" in onTestStart method " +  getTestMethodName(iTestResult) + "-" + dataIteratorIndex + " start");
 		//Start operation for extentreports.
 		String fullTestClassName[] = iTestResult.getMethod().getTestClass().getName().split("\\.");
-		//Get XMLTest Parameters from BaseTest and assign to local webdriver variable.
-		//Object xmlTestParams = iTestResult.getInstance();
-		//HashMap<String, String> xmlTestParameters = ((BaseTestClass) xmlTestParams).getXMLParameters();
-		//String testClassName = fullTestClassName[fullTestClassName.length-1] +"_" + xmlTestParameters.get("strBrowser") +"_" + xmlTestParameters.get("strLanguage").toUpperCase();
 		String testClassName = fullTestClassName[fullTestClassName.length-1] +"_" + strBrowser +"_" + strLanguage.toUpperCase();
-		/*if(xmlTestParameters.get("strExecutionType") != null) {
-			testClassName += "_"+xmlTestParameters.get("strExecutionType");
-		}*/
-		ExtentTestManager.startTest(testClassName,iTestResult.getName());	
+		if(dataIteratorIndex!=0) {
+			testClassName = testClassName + "_DataSet-" + (dataIteratorIndex+1);
+		}
+		ExtentTestManager.startTest(testClassName,iTestResult.getName());
 		Object testClass = iTestResult.getInstance();
 		WebDriver driver = ((BaseTestClass) testClass).getDriver(); 
 		//if(xmlTestParameters.get("strBrowser").contains("sauce"))
