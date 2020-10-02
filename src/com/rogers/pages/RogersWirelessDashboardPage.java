@@ -462,10 +462,10 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//li/span[contains(text(),'Stream Saver:') or contains(text(),'Maximiseur de données :')]")
 	WebElement lblStreamSaver;
 	
-	@FindBy(xpath = "//ds-switch[@title='Stream Saver for DONOTUSE']//span[text()='OFF']")
+	@FindBy(xpath = "//ds-switch[contains(@title,'Stream Saver') or contains(@title,'Maximiseur de donn')]//span[text()='OFF' or text()='NON']")
 	WebElement btnStreamSaverSwitchOff;
 	
-	@FindBy(xpath = "//ds-switch[@title='Stream Saver for DONOTUSE']//span[text()='ON']")
+	@FindBy(xpath = "//ds-switch[@title='Stream Saver for DONOTUSE' or contains(@title,'Maximiseur de donn')]//span[text()='ON' text()='OUI']")
 	WebElement btnStreamSaverSwitchON;
 		
 	@FindBy(xpath = "//li/span[contains(text(),'Data Alert:') or contains(text(),'Alertes de données :')]")

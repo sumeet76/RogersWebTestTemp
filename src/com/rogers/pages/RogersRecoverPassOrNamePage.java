@@ -94,7 +94,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	@FindBy (xpath = "/html/body/table[1]//img[@alt='Return to sign in' or @alt='Ouvrir une session']")
 	WebElement btnReturnToSignin;
 
-	@FindBy(xpath = "//a[text()='Use your account information instead.']")
+	@FindBy(xpath = "//a[text()='Use your account information instead.'or contains(text(),'t les renseignements de votre compte')]")
 	WebElement lnkUseYourAccountInfoInstead;
 
 	@FindBy(xpath = "//input[@formcontrolname='accountNumber']/parent::div")
@@ -115,13 +115,13 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	@FindBy(xpath = "//ds-code-input/div/div[1]/input")
 	WebElement inputCode;
 
-	@FindBy(xpath = "//span[text()='Create a new MyRogers password for ']/following-sibling::span")
+	@FindBy(xpath = "//span[text()='Create a new MyRogers password for ' or contains(text(),'passe MyRoger')]/following-sibling::span")
 	WebElement lblSetPasswordForUserName;
 
-	@FindBy(xpath = "//h1//span[text()='Success!']")
+	@FindBy(xpath = "//h1//span[text()='Success!' or contains(text(),'Succ')]")
 	WebElement lblYourPasswordHasBeenReset;
 	
-	@FindBy(xpath = "//button//*[text()='Go to MyRogers']")
+	@FindBy(xpath = "//button//*[text()='Go to MyRogers' or contains(text(),'MyRogers')]")
 	WebElement btnGoToMyRogers;
 
 	@FindBy(xpath = "//input[@formcontrolname='username']")
