@@ -247,7 +247,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@translate,'makeAPayment')]")
 	WebElement lblMakeASecurePayment;
 
-	@FindBy(xpath = "//span[@class='auto-payment-info']")
+	@FindBy(xpath = "//span[@class='auto-payment-info']/span")
 	WebElement txtCC;
 
 	@FindBy(xpath = "//p[contains(text(),'This account has been cancelled, so your access to MyRogers') or contains(text(),'Ce compte a été fermé, votre accès à MonRogers')]") 
@@ -979,7 +979,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyCCEndingWithIsDisplayedCorrectly(String strCC) {		
-		return reusableActions.getWhenReady(txtCC).getText().trim().endsWith(strCC.substring(strCC.length()-4));
+		return NumberUtils.isCreatable(reusableActions.getWhenReady(txtCC).getText().trim().replaceAll(",", "."));
 	}
 	
 	/**
