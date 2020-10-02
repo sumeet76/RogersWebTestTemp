@@ -115,13 +115,13 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	@FindBy(xpath = "//ds-code-input/div/div[1]/input")
 	WebElement inputCode;
 
-	@FindBy(xpath = "//span[text()='Create a new MyRogers password for ' or contains(text(),'passe MyRoger')]/following-sibling::span")
+	@FindBy(xpath = "//span[text()='Create a new MyRogers password for ' or contains(text(),'ez un nouveau mot de passe MonRogers pour')]/following-sibling::span")
 	WebElement lblSetPasswordForUserName;
 
-	@FindBy(xpath = "//h1//span[text()='Success!' or contains(text(),'Succ')]")
+	@FindBy(xpath = "//h1//span[text()='Success!' or contains(text(),'ussi!')]")
 	WebElement lblYourPasswordHasBeenReset;
 	
-	@FindBy(xpath = "//button//*[text()='Go to MyRogers' or contains(text(),'MyRogers')]")
+	@FindBy(xpath = "//button//*[text()='Go to MyRogers' or contains(text(),'MonRogers')]")
 	WebElement btnGoToMyRogers;
 
 	@FindBy(xpath = "//input[@formcontrolname='username']")

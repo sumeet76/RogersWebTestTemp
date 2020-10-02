@@ -156,7 +156,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy (xpath = "//h1[@class='profile-header']")
 	WebElement headerProfileNSettings;
 	
-	@FindBy (xpath = "//*[@translate='ute.payment.method.payment_method' or @translate='ute.payment.method.will_auto_charge' or contains(text(),'Will be automatically charged to:') or contains(text(),'Mode de paiement:')]")
+	@FindBy (xpath = "//*[@translate='ute.payment.method.payment_method' or @translate='ute.payment.method.will_auto_charge' or contains(text(),'Will be automatically charged to:') or contains(text(),'Mode de paiement:') or contains(text(),'Sera porté automatiquement à :')]")
 	WebElement lblAutoPayment;
 	
 	@FindBy(xpath = "//div[@translate='ute.payment.method.account_prefix']")
