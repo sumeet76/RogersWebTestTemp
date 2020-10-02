@@ -102,7 +102,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//h2[contains(text(),'My Wireless Usage') or contains(text(),'Mon utilisation des')]")
 	WebElement lblMyWlsUsage;
 
-	@FindBy(xpath = "//*[contains(text(),'Change my Caller ID') or contains(text(),'pour l’Affichage des appels')]")
+	@FindBy(xpath = "//*[contains(text(),'Change my Caller ID') or contains(text(),'Affichage des appels')]")
 	WebElement lnkChangeMyCallerId;
 	
 	
