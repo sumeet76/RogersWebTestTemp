@@ -11,6 +11,7 @@ import java.util.Locale;
 import java.util.regex.Pattern;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -1041,9 +1042,16 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setOldSimNum(String strOldSimNum) {
+		try {					
 		reusableActions.waitForElementTobeClickable(txtCurrentSIMNumber, 60);		
 		reusableActions.getWhenReady(txtCurrentSIMNumber, 30).clear();
 		reusableActions.getWhenReady(txtCurrentSIMNumber).sendKeys(strOldSimNum);
+		} catch (StaleElementReferenceException e) {
+			reusableActions.staticWait(5000); // static wait to handle state ref error 
+			reusableActions.waitForElementTobeClickable(txtCurrentSIMNumber, 60);		
+			reusableActions.getWhenReady(txtCurrentSIMNumber, 30).clear();
+			reusableActions.getWhenReady(txtCurrentSIMNumber).sendKeys(strOldSimNum);
+		}
 		
 	}
 

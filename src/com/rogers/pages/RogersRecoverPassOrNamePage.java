@@ -126,6 +126,9 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 
 	@FindBy(xpath = "//input[@formcontrolname='username']")
 	WebElement txtUsername;
+
+	@FindBy(xpath = "//td[text()=' Verification code: ']/parent::tr/following-sibling::tr/td")
+	WebElement lblYourVerificationCode;
 	
 	
 	public void clkBtnPassword() {
@@ -419,5 +422,10 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	public void setUsernameIFrame(String strUsername) {		
 		reusableActions.getWhenVisible(txtUsername).sendKeys(strUsername);
 		
+	}
+
+	public String getVerificationCodeForRecoverUsername() {
+		String strMsg = reusableActions.getWhenReady(lblYourVerificationCode).getText();
+		return strMsg.trim();
 	}
 }
