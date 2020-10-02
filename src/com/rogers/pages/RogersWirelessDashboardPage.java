@@ -415,7 +415,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//ancestor::div[contains(@class,'postpaid-addons')]//div[@class='addon-description' or @class='addon-description ng-star-inserted']")
 	List<WebElement> lstMyPlanAddOns;
 
-	@FindBy(xpath = "//a[@title='Change the Data Manager for this account' or @title='Change the Data Manager for this account']//span[contains(text(),'Add')]")
+	@FindBy(xpath = "//a[@title='Change the Data Manager for this account' or contains(@title,'Changer le gestionnaire de données pour ce compte')]//span[contains(text(),'Add') or contains(text(),'Ajoute')]")
 	WebElement btnAddDataManager;
 
 	@FindBy(xpath = "//p[text()='Choose a Data Manager' or text()='Choisir un gestionnaire de données']")
@@ -495,7 +495,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//*[@translate='wireless_prepaid_plan-expires']")
 	WebElement lblPrepaidNextPaymentDate;
 	
-	@FindBy(xpath = "//*[@data-test-id='myr-wirelessPlan-nextPaymentDateEn']")
+	@FindBy(xpath = "//*[@data-test-id='myr-wirelessPlan-nextPaymentDateEn']/parent::small")
 	WebElement lblPrepaidNextPaymentMonthAndDate;
 
 	@FindBy(xpath = "//*[@translate='acc_overview_top_up_now']")
