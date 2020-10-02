@@ -293,8 +293,8 @@ public class TestDataHandler {
     	tc95 = YamlHandler.getSSAccountData("tc95NSESuspendedCTN");
     	tc90 = YamlHandler.getSSAccountData("tc90_SE_NSE_ResidentialServices");
     	tc5398 = YamlHandler.getSSAccountData("tc53_98PrepaidAccount");
-    	tc99 = YamlHandler.getSSAccountData("tc99SohoMultipleAccounts.yml");
-    	tc100 = YamlHandler.getSSAccountData("tc100InfiniteNSESohoCustomer.yml");
+    	tc99 = YamlHandler.getSSAccountData("tc99SohoMultipleAccounts");
+    	tc100 = YamlHandler.getSSAccountData("tc100InfiniteNSESohoCustomer");
     	tc102 = YamlHandler.getSSAccountData("tc102NSEInfinite50Cancellation");
     	tc103 = YamlHandler.getSSAccountData("tc103Infinite20Redeem");
     	

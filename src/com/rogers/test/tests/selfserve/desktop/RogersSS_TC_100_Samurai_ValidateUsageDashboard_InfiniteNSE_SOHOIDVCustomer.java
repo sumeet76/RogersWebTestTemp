@@ -30,7 +30,7 @@ public class RogersSS_TC_100_Samurai_ValidateUsageDashboard_InfiniteNSE_SOHOIDVC
 		closeSession();
 	}
 
-	@Test(groups = {"RegressionSS","WirelessDashboardSS"})
+	@Test(groups = {"RegressionSS","WirelessDashboardSS","SamuraiSS"})
 	public void validateUsageDashboardOfInfiniteNSESohoIDVCustomer() throws InterruptedException {
 		rogers_home_page.clkSignIn();
 		String strUsername = TestDataHandler.tc100.getUsername();
@@ -44,11 +44,6 @@ public class RogersSS_TC_100_Samurai_ValidateUsageDashboard_InfiniteNSE_SOHOIDVC
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 
-		if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
-			reporter.reportLogWithScreenshot("Select an account.");
-			rogers_account_overview_page.selectAccount(
-					TestDataHandler.tc100.getAccountDetails().getBan());
-		}
 		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), 
 				"Login succeed, account overview page openned.", 
 				"Account overview page didn't open successfully");
@@ -66,9 +61,17 @@ public class RogersSS_TC_100_Samurai_ValidateUsageDashboard_InfiniteNSE_SOHOIDVC
 
 		reporter.hardAssert(rogers_wireless_dashboard_page.verifyDataDelayMessage(),
 				"Data delay by 12 hours banner is displayed", "Data delay by 12 hours banner is NOT displayed");
+		reporter.reportLogWithScreenshot("Wireless dashboard page.");
+
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyTotalDataBucket(), 
+							"Total data bucket is displayed", 
+							"Total data bucket is NOT displayed");
+        reporter.hardAssert(rogers_wireless_dashboard_page.verifyDaysRemainingInTheBillCycleIsDisplayed(), 
+							"Days left remaining in the bill cycle is displayed", 
+							"Days left remaining in the bill cycle is NOT displayed"); 
 		reporter.hardAssert(rogers_wireless_dashboard_page.verifySpeedPassButtonIsDisplayed(),
 				"Speed Pass button is displayed", "Speed Pass button is NOT displayed");
-		reporter.reportLogWithScreenshot("Wireless dashboard page.");
+
 		rogers_wireless_dashboard_page.clkBtnSpeedPass();
 		reporter.hardAssert(rogers_speed_pass_page.verifySpeedPassPopupIsDisplayed(), 
 				"Add speed pass overlay is displayed.", 
