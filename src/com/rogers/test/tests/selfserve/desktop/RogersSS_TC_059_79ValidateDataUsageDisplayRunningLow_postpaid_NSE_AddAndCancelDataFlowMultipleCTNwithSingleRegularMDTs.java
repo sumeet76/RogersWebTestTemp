@@ -27,7 +27,7 @@ public class RogersSS_TC_059_79ValidateDataUsageDisplayRunningLow_postpaid_NSE_A
 		closeSession();
 	}
 	
-	/*
+
     @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateDataUsageDisplayForRunningLowAndAddData() {
     	rogers_home_page.clkSignIn();
@@ -158,8 +158,8 @@ public class RogersSS_TC_059_79ValidateDataUsageDisplayRunningLow_postpaid_NSE_A
         reporter.reportLogWithScreenshot("Bottom of Wireless dashboard page.");
     }
     
-    */
-    @Test//(dependsOnMethods = "validateDataUsageDisplayForRunningLowAndAddData",groups = {"RegressionSS","WirelessDashboardSS"})
+
+    @Test(dependsOnMethods = "validateDataUsageDisplayForRunningLowAndAddData",groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateCancelSingleMDTFlowNSEWithMultiline() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc59.getUsername();

@@ -121,13 +121,13 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	WebElement imgLoadingFingers;
 	
 	@FindAll({
-        @FindBy(xpath = "//a[text()='Profile & Settings' or text()='Profil et paramètres']"),
+        @FindBy(xpath = "//a[text()='Profile & Settings' or contains(text(),'Profil et param')]"),
         @FindBy(xpath = "//span[@data-translate='ute.common.label.profileAndSetting']")})
     WebElement menuProfileNSettings;
 
 	@FindAll({
 	@FindBy(xpath = "//button[@aria-label='ute.common.label.profileAndSetting']"),
-	@FindBy(xpath = "//span[text()='Profile & Settings' or text()='Profil et paramètres']/parent::a")})
+	@FindBy(xpath = "//span[text()='Profile & Settings' or contains(text(),'Profil et param')]/parent::a")})
 	WebElement menuProfileAndSettingsMobile;
 	
 
@@ -292,7 +292,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//p[contains(@class,'dsa-alert') and (contains(text(),'You’ve exceeded your credit limit and your services are now suspended') or contains(text(),'Vous avez dépassé votre limite de crédit et vos services sont suspendus'))]")
 	WebElement lblCreditLimitExceeded;
 
-	@FindBy(xpath = "//rss-subscription-details//span[contains(text(),'Add a') and contains(text(),'Ajout d')]")
+	@FindBy(xpath = "//rss-subscription-details//span[contains(text(),'Add a') or contains(text(),'Ajout d')]")
 	WebElement lnkAddALine;
 
 	@FindBy(xpath = "//h4[@translate='see.has_share_group_popup_title']")
@@ -390,10 +390,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//option[@value='0: Object']")
 	WebElement optReasonOne;
 
-	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[text()=' Cancelled ' or contains(text(),'Annul')]")
+	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[text()=' Cancelled ' or contains(text(),' Service annul')]")
 	WebElement paneSMPCancelled;
 	
-	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[contains(text(),'Promotion ends') or contains(text(),'La promotion se termine')]")
+	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[contains(text(),'Promotion ends') or contains(text(),'La promotion prend fin le')]")
 	WebElement lblSMPpromotionEnds;
 	
 	@FindBy(xpath = "//span[contains(text(),'Promotion started') or contains(text(),' La promotion a commencé')]")
