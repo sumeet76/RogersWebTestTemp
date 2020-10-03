@@ -247,7 +247,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@translate,'makeAPayment')]")
 	WebElement lblMakeASecurePayment;
 
-	@FindBy(xpath = "//span[@class='auto-payment-info']")
+	@FindBy(xpath = "//span[@class='auto-payment-info' or @translate='ute.payment.method.ending_number']")
 	WebElement txtCC;
 
 	@FindBy(xpath = "//p[contains(text(),'This account has been cancelled, so your access to MyRogers') or contains(text(),'Ce compte a été fermé, votre accès à MonRogers')]") 
@@ -967,8 +967,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean verifyThatAutoPaymentWithCCIsDisplayedOnAccountOverViewPage() {
 		reusableActions.waitForElementVisibility(lblAutoPayment, 50);
-		return (reusableActions.isElementVisible(lblAutoPayment)
-			 && reusableActions.isElementVisible(imgCC));
+		return (reusableActions.isElementVisible(lblAutoPayment,20)
+			 && reusableActions.isElementVisible(imgCC,20));
 	}
 
 		
@@ -978,8 +978,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @param strCC string value of of containing cc
 	 * @author Mirza.Kamran
 	 */
-	public boolean verifyCCEndingWithIsDisplayedCorrectly(String strCC) {		
-		return reusableActions.isElementVisible(txtCC);
+	public boolean verifyCCEndingWithIsDisplayedCorrectly() {		
+		return reusableActions.isElementVisible(txtCC,30);
 	}
 	
 	/**

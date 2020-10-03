@@ -78,7 +78,7 @@ public class RogersSS_TC_093_AO_ValidateAutomaticPaymentsCreditCardSEInfinite ex
 		}	
 		
 		reporter.softAssert((rogers_account_overview_page.verifyThatAutoPaymentWithCCIsDisplayedOnAccountOverViewPage()
-				&& rogers_account_overview_page.verifyCCEndingWithIsDisplayedCorrectly(TestDataHandler.paymentInfo.getCreditCardDetails().getNumber()))
+				&& rogers_account_overview_page.verifyCCEndingWithIsDisplayedCorrectly())
 				,"Auto payment CC details displayed on the Account overview page"
 				,"Auto payment CC details is NOT displayed on the Account overview page page");
 		reporter.reportLogWithScreenshot("Billing widget is displayed with type of CC, last 4 digits of CC Number");
