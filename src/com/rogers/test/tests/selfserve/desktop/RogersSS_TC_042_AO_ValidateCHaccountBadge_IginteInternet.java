@@ -23,7 +23,6 @@ import com.rogers.testdatamanagement.TestDataHandler;
  * @author chinnarao.vattam
  * 
  * Test steps:
- *
  *1. Launch the Rogers.com url.
  *2. Click on Sign in button and login with valid details.
  *3. Login with valid credentials

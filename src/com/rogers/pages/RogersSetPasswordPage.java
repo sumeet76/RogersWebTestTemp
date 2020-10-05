@@ -31,7 +31,7 @@ public class RogersSetPasswordPage extends BasePageClass {
 	@FindBy (xpath = "//div[@class='ute-elr-password']")
 	WebElement divSetPassword;
 	
-	@FindBy (xpath = "//button[text()='Set password']")
+	@FindBy (xpath = "//button[text()='Set password' or text()='Enregistrer un mot de passe']")
 	WebElement btnSetPassword;
 	
 	@FindBy (xpath = "//div[@translate='ute.easy.login.registration.step_complete_header']")

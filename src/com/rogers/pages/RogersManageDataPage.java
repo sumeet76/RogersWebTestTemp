@@ -19,7 +19,7 @@ public class RogersManageDataPage extends BasePageClass {
 	}
 
 
-	@FindBy (xpath = "//a[@title='View data details' or @title='Afficher les détails des données']")
+	@FindBy (xpath = "//a[@title='View data details' or contains(@title,'Afficher les d')]")
 	WebElement lnkViewDetails;
 	
 	@FindBy (xpath = "//*[contains(text(),'Your data details') or contains(text(),'Détails de vos données')]")
@@ -72,7 +72,7 @@ public class RogersManageDataPage extends BasePageClass {
 	@FindBy (xpath = "//button//span[text()='Yes, cancel' or text()='Oui, annuler']")
 	WebElement btnYesCancel;
 
-	@FindBy(xpath = "//p[text()='Add-on cancelled' or contains(text(),'Option annulée')]")
+	@FindBy(xpath = "//p[text()='Add-on cancelled' or contains(text(),'Option annul')]")
 	WebElement titleAddOnCancelled;
 	
 	@FindBy(xpath = "//button[@title='Close' or @title='Fermer']//span[contains(text(),'Fermer') or contains(text(),'Close')]/parent::span/parent::button")

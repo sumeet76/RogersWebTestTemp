@@ -40,10 +40,11 @@ public class RogersSS_TC_093_AO_ValidateAutomaticPaymentsCreditCardSEInfinite ex
     public void validateAutomaticPaymentsCreditCardSEInfinite() {
 
     	rogers_home_page.clkSignIn();
-    	String strUsername = TestDataHandler.tc63.getUsername();
-    	String strPassword = TestDataHandler.tc63.getPassword();		
+    	String strUsername = TestDataHandler.tc6269.getUsername();
+    	String strPassword = TestDataHandler.tc6269.getPassword();		
 		tryLogin(strUsername, strPassword);
 		reporter.reportLogWithScreenshot("Account overveiew page");		
+		rogers_account_overview_page.clkViewBill();
 		if(!rogers_account_overview_page.isCCDisplayedOnAccountOverViewPage())
 		{
 			if(!rogers_account_overview_page.isSetAutoPaymentDisplayed())
@@ -77,7 +78,7 @@ public class RogersSS_TC_093_AO_ValidateAutomaticPaymentsCreditCardSEInfinite ex
 		}	
 		
 		reporter.softAssert((rogers_account_overview_page.verifyThatAutoPaymentWithCCIsDisplayedOnAccountOverViewPage()
-				&& rogers_account_overview_page.verifyCCEndingWithIsDisplayedCorrectly(TestDataHandler.paymentInfo.getCreditCardDetails().getNumber()))
+				&& rogers_account_overview_page.verifyCCEndingWithIsDisplayedCorrectly())
 				,"Auto payment CC details displayed on the Account overview page"
 				,"Auto payment CC details is NOT displayed on the Account overview page page");
 		reporter.reportLogWithScreenshot("Billing widget is displayed with type of CC, last 4 digits of CC Number");

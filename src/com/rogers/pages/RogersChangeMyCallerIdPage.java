@@ -19,7 +19,7 @@ public class RogersChangeMyCallerIdPage extends BasePageClass {
 	@FindBy (xpath = "//p[contains(text(),'exceeded the limit for Caller ID changes.') or contains(text(),'atteint la limite de changements')]")
 	WebElement msgExceedLimit;
 	
-	@FindBy (xpath = "//button[@class='exceeded-close-button ds-button ds-focus ds-active -primary -large']/span")
+	@FindBy (xpath = "//button[contains(@class,'exceeded-close-button')]/span")
 	WebElement btnDoneInExceedLimitOverlay;
 	
 	@FindBy(xpath = "//input[@id='caller-firstName']/parent::div")

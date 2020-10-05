@@ -57,7 +57,7 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(xpath = "//a[text()='Forgot username and/or password?' or contains(text(),\"Nom d'utilisateur ou mot de passe oublié?\")]")
 	WebElement btnForgotUserNameAndPassword;
 	
-	@FindBy(xpath = "//span[text()='Forgot username' or text()='Forgot username']")
+	@FindBy(xpath = "//span[text()='Forgot username' or contains(text(),'utilisateur oubli')]")
 	WebElement lnkForgotUserName;
 
 	@FindBy(xpath = "//input[@id='password']/parent::div[contains(@class,'ds-formField__inputContainer')]")
@@ -66,7 +66,7 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(xpath = "//input[@id='username']/parent::div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement lblUserName;
 
-	@FindBy(xpath = "//span[text()='Forgot password ' or text()='Forgot password ']")
+	@FindBy(xpath = "//span[text()='Forgot password ' or contains(text(),'Mot de passe oubli')]")
 	WebElement lnkForgotPassword;
 
 	/**
