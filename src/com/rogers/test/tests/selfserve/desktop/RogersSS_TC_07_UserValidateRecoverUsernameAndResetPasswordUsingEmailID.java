@@ -30,6 +30,7 @@ public class RogersSS_TC_07_UserValidateRecoverUsernameAndResetPasswordUsingEmai
 		
 		reporter.reportLogWithScreenshot("Rogers Launch page");
     	rogers_home_page.clkSignIn(); 
+    	reporter.reportLogWithScreenshot("Sign In Overlay");
 		rogers_login_page.switchToSignInIFrame();
 		rogers_login_page.clkForgotUsernameIframe();							
 		reporter.reportLogWithScreenshot("Forgot username link is clicked.");
@@ -64,6 +65,7 @@ public class RogersSS_TC_07_UserValidateRecoverUsernameAndResetPasswordUsingEmai
 				"The recovered username is incorrect");
 		rogers_recover_pass_or_name.setNewPassword(strPassword);
 		rogers_recover_pass_or_name.setConfirmPassword(strPassword);
+		reporter.reportLogWithScreenshot("Reset Password page");
 		rogers_recover_pass_or_name.clkBtnContinue();
 		//Login with recovered user name to verify 		 
 		reporter.hardAssert(rogers_recover_pass_or_name.isPasswordRestSuccessForRecoveredUsernameOrPwd(),

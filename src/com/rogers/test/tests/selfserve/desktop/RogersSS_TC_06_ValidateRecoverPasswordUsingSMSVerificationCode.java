@@ -40,9 +40,9 @@ public class RogersSS_TC_06_ValidateRecoverPasswordUsingSMSVerificationCode exte
 		rogers_login_page.clkForgotPasswordIframe();				
 		reporter.reportLogWithScreenshot("Forgot password link is clicked.");
 		//rogers_recover_pass_or_name.clkBtnPassword();
-		String strUsername = TestDataHandler.tc040609.getUsername();
-		String strPassword = TestDataHandler.tc040609.getPassword();
-		String strAccount = TestDataHandler.tc040609.getAccountDetails().getBan();			
+		String strUsername = TestDataHandler.tc060809.getUsername();
+		String strPassword = TestDataHandler.tc060809.getPassword();
+		String strAccount = TestDataHandler.tc060809.getAccountDetails().getBan();			
 		rogers_recover_pass_or_name.setUsernameIFrame(strUsername);
 		reporter.reportLogWithScreenshot("Set user name for password recovery");
 		rogers_recover_pass_or_name.clkBtnContinue();	
@@ -52,7 +52,7 @@ public class RogersSS_TC_06_ValidateRecoverPasswordUsingSMSVerificationCode exte
 		//--------------------
 		try {
 			reporter.reportLogWithScreenshot("ENS");
-			String strPhoneNum = TestDataHandler.tc040609.getAccountDetails().getRecoveryNumber();
+			String strPhoneNum = TestDataHandler.tc060809.getAccountDetails().getRecoveryNumber();
 			String strCode = ensVerifications.getVerifyCode(strPhoneNum);			
 			//switch to working test tab.
 			getDriver().switchTo().window(strTestingTab);

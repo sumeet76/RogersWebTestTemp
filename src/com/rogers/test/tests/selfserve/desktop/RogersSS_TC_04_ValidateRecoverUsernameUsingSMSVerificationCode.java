@@ -42,10 +42,10 @@ public class RogersSS_TC_04_ValidateRecoverUsernameUsingSMSVerificationCode exte
 		rogers_login_page.clkForgotUsernameIframe();							
 		reporter.reportLogWithScreenshot("Forgot username link is clicked.");
 		rogers_recover_pass_or_name.clkUseYourAccountInfoInsteadLink();
-		String strAccountNumber = TestDataHandler.tc040609.getAccountDetails().getBan();
-		String strPostcode =  TestDataHandler.tc040609.getAccountDetails().getPostalcode();
-		String strDOB =  TestDataHandler.tc040609.getAccountDetails().getDob();
-		strPassword = TestDataHandler.tc040609.getPassword();
+		String strAccountNumber = TestDataHandler.tc060809.getAccountDetails().getBan();
+		String strPostcode =  TestDataHandler.tc060809.getAccountDetails().getPostalcode();
+		String strDOB =  TestDataHandler.tc060809.getAccountDetails().getDob();
+		strPassword = TestDataHandler.tc060809.getPassword();
 		rogers_recover_pass_or_name.setAccountNumber(strAccountNumber);
 		rogers_recover_pass_or_name.setPostCode(strPostcode);
 		rogers_recover_pass_or_name.setDOB(strDOB);
@@ -58,7 +58,7 @@ public class RogersSS_TC_04_ValidateRecoverUsernameUsingSMSVerificationCode exte
 		//Will open a new tab for ENS, to get verification code from ENS		
 		try {
 			reporter.reportLogWithScreenshot("ENS");
-			String strPhoneNum = TestDataHandler.tc040609.getAccountDetails().getRecoveryNumber();
+			String strPhoneNum = TestDataHandler.tc060809.getAccountDetails().getRecoveryNumber();
 			String recoveryCode = ensVerifications.getAccountUserName(strPhoneNum);			
 			getDriver().switchTo().window(strTestingTab);			
 			reporter.reportLogWithScreenshot("Close the Overlay");

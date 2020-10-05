@@ -73,8 +73,9 @@ public class RogersLoginPage extends BasePageClass {
 	 * To switch to the iframe
 	 * @author chinnarao.vattam
 	 */
-	public void switchToSignInIFrame() {			
-		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraSignIn, 30);
+	public void switchToSignInIFrame() {		
+		driver.switchTo().frame(fraSignIn);
+//		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraSignIn, 30);
 	}
 	
 	/**

@@ -190,7 +190,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Ning.Xue
 	 */
 	public void clkBtnTextNow() {
-		reusableActions.getWhenVisible(btnTextNow).click();
+		reusableActions.getWhenReady(btnTextNow).click();
 	}
 	
 	/**

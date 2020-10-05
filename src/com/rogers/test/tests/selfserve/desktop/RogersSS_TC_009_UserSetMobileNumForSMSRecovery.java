@@ -33,12 +33,12 @@ public class RogersSS_TC_009_UserSetMobileNumForSMSRecovery extends BaseTestClas
 	
 	@Test(groups = {"RegressionSS","ProfileAndSettingsSS"})
 	public void validateUserSuccessfullyAddMobileNumForRecovery() {
-		String strUserName = TestDataHandler.tc040609.getUsername();
-		String strRecoveryNumber = TestDataHandler.tc040609.getAccountDetails().getRecoveryNumber();
+		String strUserName = TestDataHandler.tc060809.getUsername();
+		String strRecoveryNumber = TestDataHandler.tc060809.getAccountDetails().getRecoveryNumber();
     	rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
 		rogers_login_page.setUsernameIFrame(strUserName);
-		rogers_login_page.setPasswordIFrame(TestDataHandler.tc040609.getPassword());
+		rogers_login_page.setPasswordIFrame(TestDataHandler.tc060809.getPassword());
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
 		rogers_login_page.clkSignInIFrame();
 		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
@@ -46,7 +46,7 @@ public class RogersSS_TC_009_UserSetMobileNumForSMSRecovery extends BaseTestClas
 		rogers_login_page.switchOutOfSignInIFrame();        
         if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc040609.getAccountDetails().getBan());
+            rogers_account_overview_page.selectAccount(TestDataHandler.tc060809.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");
         if (rogers_account_overview_page.verifySuccessfulLogin()) {
@@ -77,7 +77,7 @@ public class RogersSS_TC_009_UserSetMobileNumForSMSRecovery extends BaseTestClas
     			rogers_profile_and_settings_page.clkBtnContinueToMyRogersIframe();
     	        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
     	        	reporter.reportLogWithScreenshot("Select an account.");
-    	            rogers_account_overview_page.selectAccount(TestDataHandler.tc040609.getAccountDetails().getBan());
+    	            rogers_account_overview_page.selectAccount(TestDataHandler.tc060809.getAccountDetails().getBan());
     	        }
     	        rogers_profile_and_settings_page.switchOutofSetRecoveryNumIframe();
     			rogers_account_overview_page.clkLnkProfileNSettings();

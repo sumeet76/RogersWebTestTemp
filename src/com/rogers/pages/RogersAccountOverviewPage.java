@@ -684,7 +684,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifySuccessfulLogin() {	
-	 reusableActions.waitForElementVisibility(menuAccountNumber,60);
+//	 reusableActions.waitForElementVisibility(menuAccountNumber,60);
 	 String strAccountNumber = reusableActions.getWhenReady(menuAccountNumber,5).getText();
 	 return NumberUtils.isDigits(strAccountNumber);
 	}
