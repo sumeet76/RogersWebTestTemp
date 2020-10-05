@@ -152,6 +152,7 @@ public class TestDataHandler {
 	public static AccountData tc102;
 	public static AccountData tc103;
 	public static Config searchCBSConfig;
+	public static AccountData tc104;
 	
 	public static void dataInit (String strApplicationType) {	 
 		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
@@ -294,6 +295,7 @@ public class TestDataHandler {
     	tc5398 = YamlHandler.getSSAccountData("tc53_98PrepaidAccount");
     	tc102 = YamlHandler.getSSAccountData("tc102NSEInfinite50Cancellation");
     	tc103 = YamlHandler.getSSAccountData("tc103Infinite20Redeem");
+    	tc104 = YamlHandler.getSSAccountData("tc104Infinite10RedeemCancel");
     	
     	//================ Connected home =========================
     	tc43IgniteRHP = YamlHandler.getSSAccountData("tc43IgniteRHP");
