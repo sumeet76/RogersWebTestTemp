@@ -25,7 +25,7 @@ public class RogersSS_TC_03_UserValidateRecoverUsernameUsingEmailID extends Base
 		closeSession();
 	}
 	
-	@Test(groups = {"RegressionSS","ProfileAndSettingsSS"})
+	@Test(groups = {"TC03"})
 	public void userValidateRecoverUsernameUsingEmailID() {
 		
 		reporter.reportLogWithScreenshot("Rogers Launch page");
@@ -33,11 +33,11 @@ public class RogersSS_TC_03_UserValidateRecoverUsernameUsingEmailID extends Base
 		rogers_login_page.switchToSignInIFrame();
 		rogers_login_page.clkForgotUsernameIframe();							
 		reporter.reportLogWithScreenshot("Forgot username link is clicked.");
-		String strUserName = TestDataHandler.tc03.getUsername();
-		String strPassword = TestDataHandler.tc03.getPassword();
+		String strUserName = TestDataHandler.tc07.getUsername();
+		String strPassword = TestDataHandler.tc07.getPassword();
 		//rogers_recover_pass_or_name.clkBtnUserName();
-		String strEmail = TestDataHandler.tc03.getAccountDetails().getContactemail();
-		String strBan = TestDataHandler.tc03.getAccountDetails().getBan();
+		String strEmail = TestDataHandler.tc07.getAccountDetails().getContactemail();
+		String strBan = TestDataHandler.tc07.getAccountDetails().getBan();
 		rogers_recover_pass_or_name.setEmailAddress(strEmail);
 		reporter.reportLogWithScreenshot("Set email for recover user name.");
 		rogers_recover_pass_or_name.clkBtnContinue();		

@@ -11,30 +11,26 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * This test case has a precondition which is the recovery number for the profile have to be set before this TC execute. 
- * Which means TC04 and TC009 should share the same data and for the first execution, we have to run TC009 before running TC04.
- * @author mirza.kamran
+ * Recover username and reset password flow updated after Rogers recovery flow re-design. 
+ * 2020/10/5
+ * @author ning.xue
  *
  */
-public class RogersSS_TC_04_ValidateRecoverUsernameUsingSMSVerificationCode extends BaseTestClass {
+public class RogersSS_TC_08_ValidateRecoverUsernameAndResetPasswordUsingTextMessageWhileEnteringTheAccountNumber extends BaseTestClass {
 	
-
-	private String strRecoveredUserName;
-	private String strPassword;
-
 	@BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
 		startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve_login,method);
-		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
-	 
+	
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() throws InterruptedException {
 		closeSession();
 	}
-	
-	@Test(groups = {"TC04"})
-	public void validateRecoverUsernameUsingSMSVerificationCode() {
+		
+	@Test(groups = {"RegressionSS","ProfileAndSettingsSS"})
+	public void validateRecoverUsernameAndResetPasswordUsingSMSVerificationCode() {
 		reporter.reportLogWithScreenshot("Rogers Launch page");
     	rogers_home_page.clkSignIn(); 
     	reporter.reportLogWithScreenshot("Sign In Overlay");
@@ -45,7 +41,7 @@ public class RogersSS_TC_04_ValidateRecoverUsernameUsingSMSVerificationCode exte
 		String strAccountNumber = TestDataHandler.tc040609.getAccountDetails().getBan();
 		String strPostcode =  TestDataHandler.tc040609.getAccountDetails().getPostalcode();
 		String strDOB =  TestDataHandler.tc040609.getAccountDetails().getDob();
-		strPassword = TestDataHandler.tc040609.getPassword();
+		String strPassword = TestDataHandler.tc040609.getPassword();
 		rogers_recover_pass_or_name.setAccountNumber(strAccountNumber);
 		rogers_recover_pass_or_name.setPostCode(strPostcode);
 		rogers_recover_pass_or_name.setDOB(strDOB);
@@ -65,7 +61,7 @@ public class RogersSS_TC_04_ValidateRecoverUsernameUsingSMSVerificationCode exte
 			rogers_recover_pass_or_name.switchToSetCodeIframe();
 			rogers_recover_pass_or_name.setRecoveryCode(recoveryCode);
 			rogers_recover_pass_or_name.clkBtnContinue();
-			strRecoveredUserName= rogers_recover_pass_or_name.getRecoveryUsernameNew();
+			String strRecoveredUserName= rogers_recover_pass_or_name.getRecoveryUsernameNew();
 			reporter.reportLogWithScreenshot("Recovered username is : "+strRecoveredUserName);
 			rogers_recover_pass_or_name.setNewPassword(strPassword);
 			rogers_recover_pass_or_name.setConfirmPassword(strPassword);

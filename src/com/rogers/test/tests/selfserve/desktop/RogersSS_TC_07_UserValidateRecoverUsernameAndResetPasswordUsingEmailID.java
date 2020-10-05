@@ -10,17 +10,9 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-/**
- * This test case has a precondition which is the recovery number for the profile have to be set before this TC execute. 
- * Which means TC04 and TC009 should share the same data and for the first execution, we have to run TC009 before running TC04.
- * @author mirza.kamran
- *
- */
-public class RogersSS_TC_04_ValidateRecoverUsernameUsingSMSVerificationCode extends BaseTestClass {
-	
 
-	private String strRecoveredUserName;
-	private String strPassword;
+public class RogersSS_TC_07_UserValidateRecoverUsernameAndResetPasswordUsingEmailID extends BaseTestClass {
+	
 
 	@BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
@@ -33,47 +25,46 @@ public class RogersSS_TC_04_ValidateRecoverUsernameUsingSMSVerificationCode exte
 		closeSession();
 	}
 	
-	@Test(groups = {"TC04"})
-	public void validateRecoverUsernameUsingSMSVerificationCode() {
+	@Test(groups = {"RegressionSS","ProfileAndSettingsSS"})
+	public void userValidateRecoverUsernameAndResetPasswordUsingEmailID() {
+		
 		reporter.reportLogWithScreenshot("Rogers Launch page");
     	rogers_home_page.clkSignIn(); 
-    	reporter.reportLogWithScreenshot("Sign In Overlay");
 		rogers_login_page.switchToSignInIFrame();
 		rogers_login_page.clkForgotUsernameIframe();							
 		reporter.reportLogWithScreenshot("Forgot username link is clicked.");
-		rogers_recover_pass_or_name.clkUseYourAccountInfoInsteadLink();
-		String strAccountNumber = TestDataHandler.tc040609.getAccountDetails().getBan();
-		String strPostcode =  TestDataHandler.tc040609.getAccountDetails().getPostalcode();
-		String strDOB =  TestDataHandler.tc040609.getAccountDetails().getDob();
-		strPassword = TestDataHandler.tc040609.getPassword();
-		rogers_recover_pass_or_name.setAccountNumber(strAccountNumber);
-		rogers_recover_pass_or_name.setPostCode(strPostcode);
-		rogers_recover_pass_or_name.setDOB(strDOB);
-		reporter.reportLogWithScreenshot("Set Account, post code and DOB number for recover user name.");
-		rogers_recover_pass_or_name.clkBtnContinue();	
-		reporter.reportLogWithScreenshot("Click on Text as recovery option");
-		//rogers_recover_pass_or_name.clkTextToAsRecoveryOption();
+		String strUserName = TestDataHandler.tc07.getUsername();
+		String strPassword = TestDataHandler.tc07.getPassword();
+		//rogers_recover_pass_or_name.clkBtnUserName();
+		String strEmail = TestDataHandler.tc07.getAccountDetails().getContactemail();
+		String strBan = TestDataHandler.tc07.getAccountDetails().getBan();
+		rogers_recover_pass_or_name.setEmailAddress(strEmail);
+		reporter.reportLogWithScreenshot("Set email for recover user name.");
+		rogers_recover_pass_or_name.clkBtnContinue();		
 		String strTestingTab = getDriver().getWindowHandle();
-		
-		//Will open a new tab for ENS, to get verification code from ENS		
+		String strRecoveredUserName ="";
+		//Go to ENS to verify email and get reset password page.		
 		try {
-			reporter.reportLogWithScreenshot("ENS");
-			String strPhoneNum = TestDataHandler.tc040609.getAccountDetails().getRecoveryNumber();
-			String recoveryCode = ensVerifications.getAccountUserName(strPhoneNum);			
+			
+			ensVerifications.getEmailVerifyPage(strEmail);
+			String recoveryCode = rogers_recover_pass_or_name.getVerificationCodeForRecoverUsername();			
 			getDriver().switchTo().window(strTestingTab);			
 			reporter.reportLogWithScreenshot("Close the Overlay");
 			rogers_recover_pass_or_name.switchToSetCodeIframe();
 			rogers_recover_pass_or_name.setRecoveryCode(recoveryCode);
 			rogers_recover_pass_or_name.clkBtnContinue();
 			strRecoveredUserName= rogers_recover_pass_or_name.getRecoveryUsernameNew();
-			reporter.reportLogWithScreenshot("Recovered username is : "+strRecoveredUserName);
-			rogers_recover_pass_or_name.setNewPassword(strPassword);
-			rogers_recover_pass_or_name.setConfirmPassword(strPassword);
-			rogers_recover_pass_or_name.clkBtnContinue();
+			reporter.reportLogWithScreenshot("Recovered username is : "+strRecoveredUserName.trim());			
 						
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		reporter.hardAssert(strRecoveredUserName.trim().toLowerCase().contains(strUserName.trim().toLowerCase()),
+				"The recovered username is correct",
+				"The recovered username is incorrect");
+		rogers_recover_pass_or_name.setNewPassword(strPassword);
+		rogers_recover_pass_or_name.setConfirmPassword(strPassword);
+		rogers_recover_pass_or_name.clkBtnContinue();
 		//Login with recovered user name to verify 		 
 		reporter.hardAssert(rogers_recover_pass_or_name.isPasswordRestSuccessForRecoveredUsernameOrPwd(),
 				"passowrd reset successful for recover username",
@@ -84,7 +75,8 @@ public class RogersSS_TC_04_ValidateRecoverUsernameUsingSMSVerificationCode exte
 		rogers_recover_pass_or_name.switchToDefaultContent();	
 		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),
 				"username successfully recovered", "username NOT recovered successfully, please investigate");							
-		reporter.reportLogWithScreenshot("Account overview");		
+		reporter.reportLogWithScreenshot("Account overview");	
+		
 						
 	}
 

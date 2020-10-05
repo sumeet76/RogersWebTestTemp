@@ -46,7 +46,7 @@ public class TestDataHandler {
 	public static AccountData tc6577;
 	public static AccountData tc727375;
 	public static AccountData tc02;
-	public static AccountData tc03;
+	public static AccountData tc07;
 	public static AccountData tc61;
 	public static AccountData tc67;	
 	public static AccountData tc78;
@@ -282,7 +282,7 @@ public class TestDataHandler {
     	tc6577 = YamlHandler.getSSAccountData("tc65_77InfiniteNSE");
     	tc727375 = YamlHandler.getSSAccountData("tc72_73_75NSE");
     	tc02 = YamlHandler.getSSAccountData("tc02_PreRegister");
-    	tc03 = YamlHandler.getSSAccountData("tc03RecoverUsernameByEmail");
+    	tc07 = YamlHandler.getSSAccountData("tc07RecoverUsernameByEmail.yml");
     	tc67 = YamlHandler.getSSAccountData("tc67InfiniteSEReducedSpeed(Demoline)");    
     	tc7681 = YamlHandler.getSSAccountData("tc76_81SEPlanWith6Ctns(Demoline)"); 
     	tc78 = YamlHandler.getSSAccountData("tc78NSESingleLine");    	    	
