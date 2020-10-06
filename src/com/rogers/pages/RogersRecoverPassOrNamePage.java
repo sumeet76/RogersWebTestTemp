@@ -127,7 +127,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	@FindBy(xpath = "//input[@formcontrolname='username']")
 	WebElement txtUsername;
 
-	@FindBy(xpath = "//td[text()=' Verification code: ']/parent::tr/following-sibling::tr/td")
+	@FindBy(xpath = "//td[contains(text(),'Verification code') or contains(text(),'Code de vérification')]/parent::tr/following-sibling::tr/td")
 	WebElement lblYourVerificationCode;
 	
 	
@@ -190,7 +190,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Ning.Xue
 	 */
 	public void clkBtnTextNow() {
-		reusableActions.getWhenVisible(btnTextNow).click();
+		reusableActions.getWhenReady(btnTextNow).click();
 	}
 	
 	/**
