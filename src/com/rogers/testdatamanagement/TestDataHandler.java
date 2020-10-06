@@ -26,7 +26,7 @@ public class TestDataHandler {
 	public static AccountData tc013132;
 	public static AccountData tc0224;
 	public static AccountData tc041139;
-	public static AccountData tc040609;
+	public static AccountData tc060809;
 	public static AccountData tc1314;
 	public static AccountData tc161825;
 	public static AccountData tc1920;
@@ -46,7 +46,7 @@ public class TestDataHandler {
 	public static AccountData tc6577;
 	public static AccountData tc727375;
 	public static AccountData tc02;
-	public static AccountData tc03;
+	public static AccountData tc07;
 	public static AccountData tc61;
 	public static AccountData tc67;	
 	public static AccountData tc78;
@@ -151,6 +151,8 @@ public class TestDataHandler {
 	public static AccountData tc94;
 	public static AccountData tc102;
 	public static AccountData tc103;
+	public static AccountData tc100;
+	public static AccountData tc99;
 	public static Config searchCBSConfig;
 	public static AccountData tc104;
 	
@@ -259,7 +261,7 @@ public class TestDataHandler {
     	tc013132 = YamlHandler.getSSAccountData("tc01_31_32Postpaid");
     	tc0224 = YamlHandler.getSSAccountData("tc02_24PostpaidLostStolen");
     	tc041139 = YamlHandler.getSSAccountData("tc04_11_39PostpaidLinkAccount");
-    	tc040609 = YamlHandler.getSSAccountData("tc04_06_09RecoveryBySMS");
+    	tc060809 = YamlHandler.getSSAccountData("tc06_08_09RecoveryBySMS");
     	tc1314 = YamlHandler.getSSAccountData("tc13_14PostPaidWithSIM");
     	tc161825 = YamlHandler.getSSAccountData("tc16_18_25PostpaidPayment");
     	tc1920 = YamlHandler.getSSAccountData("tc19_20PostpaidPayment");
@@ -280,7 +282,7 @@ public class TestDataHandler {
     	tc6577 = YamlHandler.getSSAccountData("tc65_77InfiniteNSE");
     	tc727375 = YamlHandler.getSSAccountData("tc72_73_75NSE");
     	tc02 = YamlHandler.getSSAccountData("tc02_PreRegister");
-    	tc03 = YamlHandler.getSSAccountData("tc03RecoverUsernameByEmail");
+    	tc07 = YamlHandler.getSSAccountData("tc07RecoverUsernameByEmail");
     	tc67 = YamlHandler.getSSAccountData("tc67InfiniteSEReducedSpeed(Demoline)");    
     	tc7681 = YamlHandler.getSSAccountData("tc76_81SEPlanWith6Ctns(Demoline)"); 
     	tc78 = YamlHandler.getSSAccountData("tc78NSESingleLine");    	    	
@@ -293,6 +295,8 @@ public class TestDataHandler {
     	tc95 = YamlHandler.getSSAccountData("tc95NSESuspendedCTN");
     	tc90 = YamlHandler.getSSAccountData("tc90_SE_NSE_ResidentialServices");
     	tc5398 = YamlHandler.getSSAccountData("tc53_98PrepaidAccount");
+    	tc99 = YamlHandler.getSSAccountData("tc99SohoMultipleAccounts");
+    	tc100 = YamlHandler.getSSAccountData("tc100InfiniteNSESohoCustomer");
     	tc102 = YamlHandler.getSSAccountData("tc102NSEInfinite50Cancellation");
     	tc103 = YamlHandler.getSSAccountData("tc103Infinite20Redeem");
     	tc104 = YamlHandler.getSSAccountData("tc104Infinite10RedeemCancel");

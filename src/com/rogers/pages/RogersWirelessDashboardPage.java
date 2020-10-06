@@ -1096,7 +1096,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyDataDelayMessage() {		
-		return reusableActions.isElementVisible(lblDataDelayMsg, 30);
+		return reusableActions.isElementVisible(lblDataDelayMsg, 60);
 	}
 
 	/**

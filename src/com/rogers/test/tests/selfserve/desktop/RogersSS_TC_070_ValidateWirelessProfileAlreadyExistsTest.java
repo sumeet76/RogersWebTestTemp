@@ -18,8 +18,8 @@ public class RogersSS_TC_070_ValidateWirelessProfileAlreadyExistsTest extends Ba
     public void validateWirelessProfileAlreadyExists() {
                     rogers_home_page.clkSignIn();             
                     reporter.reportLogWithScreenshot("Sign in overlay");                	
-                	String strBan = TestDataHandler.tc040609.getAccountDetails().getBan();
-                	String strPostalCode = TestDataHandler.tc040609.getAccountDetails().getPostalcode();    	
+                	String strBan = TestDataHandler.tc060809.getAccountDetails().getBan();
+                	String strPostalCode = TestDataHandler.tc060809.getAccountDetails().getPostalcode();    	
             		rogers_login_page.switchToSignInIFrame();
             		try {
             		rogers_login_page.clickRegister();            		

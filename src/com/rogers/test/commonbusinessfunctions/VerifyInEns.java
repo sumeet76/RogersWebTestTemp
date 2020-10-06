@@ -46,7 +46,7 @@ public class VerifyInEns{
 	 * @throws IOException
 	 * @author ning.xue
 	 */
-	public String getVerifyCode(String strPhoneNum) throws ClientProtocolException, IOException {
+	public String getVerifyCode(String strPhoneNum){
 
 		this.startVerify();
 		this.loginToEns();
@@ -68,13 +68,15 @@ public class VerifyInEns{
 	 * @throws IOException
 	 * @author ning.xue
 	 */
-	public void getEmailVerifyPage(String strAccountId) throws ClientProtocolException, IOException {
+	public void getEmailVerifyPage(String strAccountId){
 		this.startVerify();
 		this.loginToEns();
 		
 		baseTestClass.ensNoteViewPage.clkMenuNotifViewer();
 		baseTestClass.ensNoteViewPage.clkBtnSearchNotification();
-		baseTestClass.ensNoteViewPage.clkLnkHtmlForEmailVerify(strAccountId);		
+		baseTestClass.setImplicitWait(baseTestClass.getDriver(), 2);
+		baseTestClass.ensNoteViewPage.clkLnkHtmlForEmailVerify(strAccountId);
+		baseTestClass.setImplicitWait(baseTestClass.getDriver(), 2);
 		baseTestClass.ensNoteViewPage.switchToNewTab(2);		
 	}
 

@@ -35,11 +35,11 @@ public class RogersSS_TC_05_UserValidateRecoverPasswordUsingEmailI extends BaseT
 		reporter.reportLogWithScreenshot("Switched to sign in iFrame");
 		rogers_login_page.clkForgotPasswordIframe();							
 		reporter.reportLogWithScreenshot("Forgot username link is clicked.");
-		String strUserName = TestDataHandler.tc03.getUsername();
-		String strPassword = TestDataHandler.tc03.getPassword();
+		String strUserName = TestDataHandler.tc07.getUsername();
+		String strPassword = TestDataHandler.tc07.getPassword();
 		//rogers_recover_pass_or_name.clkBtnUserName();
-		String strEmail = TestDataHandler.tc03.getAccountDetails().getContactemail();
-		String strBan = TestDataHandler.tc03.getAccountDetails().getBan();
+		String strEmail = TestDataHandler.tc07.getAccountDetails().getContactemail();
+		String strBan = TestDataHandler.tc07.getAccountDetails().getBan();
 		rogers_recover_pass_or_name.setUsernameIFrame(strUserName);
 		reporter.reportLogWithScreenshot("Set username for recover password.");
 		rogers_recover_pass_or_name.clkBtnContinue();		
