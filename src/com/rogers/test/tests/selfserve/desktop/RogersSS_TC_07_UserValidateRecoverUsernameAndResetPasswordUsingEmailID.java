@@ -37,29 +37,24 @@ public class RogersSS_TC_07_UserValidateRecoverUsernameAndResetPasswordUsingEmai
 		String strUserName = TestDataHandler.tc07.getUsername();
 		String strPassword = TestDataHandler.tc07.getPassword();
 		//rogers_recover_pass_or_name.clkBtnUserName();
-		String strEmail = TestDataHandler.tc07.getAccountDetails().getContactemail();
-		String strBan = TestDataHandler.tc07.getAccountDetails().getBan();
-		rogers_recover_pass_or_name.setEmailAddress(strEmail);
+		rogers_recover_pass_or_name.setEmailAddress(strUserName);
 		reporter.reportLogWithScreenshot("Set email for recover user name.");
 		rogers_recover_pass_or_name.clkBtnContinue();		
 		String strTestingTab = getDriver().getWindowHandle();
 		String strRecoveredUserName ="";
 		//Go to ENS to verify email and get reset password page.		
-		try {
-			
-			ensVerifications.getEmailVerifyPage(strEmail);
-			String recoveryCode = rogers_recover_pass_or_name.getVerificationCodeForRecoverUsername();			
-			getDriver().switchTo().window(strTestingTab);			
-			reporter.reportLogWithScreenshot("Close the Overlay");
-			rogers_recover_pass_or_name.switchToSetCodeIframe();
-			rogers_recover_pass_or_name.setRecoveryCode(recoveryCode);
-			rogers_recover_pass_or_name.clkBtnContinue();
-			strRecoveredUserName= rogers_recover_pass_or_name.getRecoveryUsernameNew();
-			reporter.reportLogWithScreenshot("Recovered username is : "+strRecoveredUserName.trim());			
-						
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
+		ensVerifications.getEmailVerifyPage(strUserName);
+		reporter.reportLogWithScreenshot("Get recovery code");
+		String recoveryCode = rogers_recover_pass_or_name.getVerificationCodeForRecoverUsername();			
+		getDriver().switchTo().window(strTestingTab);			
+		rogers_recover_pass_or_name.switchToSetCodeIframe();
+		rogers_recover_pass_or_name.setRecoveryCode(recoveryCode);
+		reporter.reportLogWithScreenshot("Set recovery code");
+		rogers_recover_pass_or_name.clkBtnContinue();
+		strRecoveredUserName= rogers_recover_pass_or_name.getRecoveryUsernameNew();
+		reporter.reportLogWithScreenshot("Recovered username is : "+strRecoveredUserName.trim());			
+
 		reporter.hardAssert(strRecoveredUserName.trim().toLowerCase().contains(strUserName.trim().toLowerCase()),
 				"The recovered username is correct",
 				"The recovered username is incorrect");
@@ -75,8 +70,10 @@ public class RogersSS_TC_07_UserValidateRecoverUsernameAndResetPasswordUsingEmai
 		rogers_recover_pass_or_name.clkGoToMyRogers();
 		reporter.reportLogWithScreenshot("Go to my rogers clicked");
 		rogers_recover_pass_or_name.switchToDefaultContent();	
+		setImplicitWait(getDriver(), 5);
 		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),
-				"username successfully recovered", "username NOT recovered successfully, please investigate");							
+				"Login with recovered username and password succeed.", 
+				"Failed to login with recovered username and password");							
 		reporter.reportLogWithScreenshot("Account overview");	
 		
 						
