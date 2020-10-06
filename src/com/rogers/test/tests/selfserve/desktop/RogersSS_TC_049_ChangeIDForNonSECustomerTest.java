@@ -27,8 +27,10 @@ public class RogersSS_TC_049_ChangeIDForNonSECustomerTest extends BaseTestClass 
 		String strLastName = FormFiller.generateRandomName().toUpperCase();		
         rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
-		rogers_login_page.setUsernameIFrame(TestDataHandler.tc495271.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.tc495271.getPassword());
+		String strUserName = TestDataHandler.tc495271.getUsername();
+		String strPassword = TestDataHandler.tc495271.getPassword();
+		rogers_login_page.setUsernameIFrame(strUserName);
+		rogers_login_page.setPasswordIFrame(strPassword);
 		rogers_login_page.clkSignInIFrame();
 		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		rogers_login_page.clkSkipIFrame();
@@ -70,30 +72,7 @@ public class RogersSS_TC_049_ChangeIDForNonSECustomerTest extends BaseTestClass 
 			rogers_wireless_dashboard_page.clickOverview();
 			reporter.reportLogWithScreenshot("Back on overview page"); 
 			
-			//Sign out and re sign in to verify if change user id reflected.	         
-	        rogers_login_page.clickSignOut();
-	        reporter.reportLogWithScreenshot("Sign Out clicked");  
-	        if(rogers_home_page.isContentFulURLDisplayed())
-			{
-				rogers_home_page.clkEasyLogin();
-			}
-	        rogers_login_page.clkSignInAs();
-	        reporter.reportLogWithScreenshot("Re sign In");  
-	        rogers_login_page.switchToSignInIFrame();
-	                   
-	        rogers_login_page.setPasswordIFrame(TestDataHandler.tc495271.getPassword());
-	        //getDriver().get(TestDataHandler.ssConfig.getRogersURL());
-	        //rogers_home_page.clkSignIn();	    	
-	    	//rogers_login_page.switchToSignInIFrame();
-	        //rogers_login_page.setUsernameIFrame(strUsername);    	
-	        //rogers_login_page.setPasswordIFrame(strPassword);
-	        reporter.reportLogWithScreenshot("Re sign In");  
-	        reporter.reportLogWithScreenshot("Login Credential is entered.");
-			rogers_login_page.clkSignInIFrame();		
-			rogers_login_page.switchOutOfSignInIFrame();		       
-	        reporter.reportLogWithScreenshot("Account overview page.");   
-			
-			
+			common_business_flows.logOutAndReSignIn(strUserName, strPassword);     					
 			reporter.hardAssert(rogers_account_overview_page.verifyWirelessCallerIdCTNBadgeName(strFirstName),
 					"Caller ID First Name" + strFirstName + " is updated in CTN badge",
 					"Caller ID First Name" + strFirstName + " is NOT updated in CTN badge");

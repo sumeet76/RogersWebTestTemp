@@ -70,17 +70,7 @@ public class RogersSS_TC_061_ValidateDataUsageDisplayRunningLow_postpaid_SE_AddD
         	rogers_add_data_page.clkCloseOnAddDataOverlay();
         	//Sign out and re sign in to verify if added data reflected.
 	        reporter.reportLogWithScreenshot("Wireless dashboard page.");  
-	        rogers_login_page.clickSignOut();
-	        reporter.reportLogWithScreenshot("Sign Out clicked");  
-	        rogers_login_page.clkSignInAs();
-	        reporter.reportLogWithScreenshot("Re sign In");  
-	        rogers_login_page.switchToSignInIFrame();
-	                   
-	        rogers_login_page.setPasswordIFrame(strPassword);
-	        reporter.reportLogWithScreenshot("Login Credential is entered.");
-			rogers_login_page.clkSignInIFrame();		
-			rogers_login_page.switchOutOfSignInIFrame();		       
-	        reporter.reportLogWithScreenshot("Account overview page.");        
+	        common_business_flows.logOutAndReSignIn(strUsername, strPassword);      
 	        rogers_account_overview_page.clkMenuUsageAndService();
 	        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");        
 	        rogers_account_overview_page.clkSubMenuWirelessUsage();

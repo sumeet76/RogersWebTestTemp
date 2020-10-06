@@ -30,7 +30,9 @@ public class RogersSS_TC_05_UserValidateRecoverPasswordUsingEmailI extends BaseT
 		
 		reporter.reportLogWithScreenshot("Rogers Launch page");
     	rogers_home_page.clkSignIn(); 
+    	reporter.reportLogWithScreenshot("Clicked SIgn IN");
 		rogers_login_page.switchToSignInIFrame();
+		reporter.reportLogWithScreenshot("Switched to sign in iFrame");
 		rogers_login_page.clkForgotPasswordIframe();							
 		reporter.reportLogWithScreenshot("Forgot username link is clicked.");
 		String strUserName = TestDataHandler.tc03.getUsername();
@@ -73,6 +75,7 @@ public class RogersSS_TC_05_UserValidateRecoverPasswordUsingEmailI extends BaseT
 		rogers_recover_pass_or_name.clkGoToMyRogers();
 		reporter.reportLogWithScreenshot("Go to my rogers clicked");
 		rogers_recover_pass_or_name.switchToDefaultContent();	
+		reporter.reportLogWithScreenshot("Waiting for account overview to load...");
 		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),
 				"password successfully recovered/set", "password NOT recovered successfully, please investigate");							
 		reporter.reportLogWithScreenshot("Account overview");	
