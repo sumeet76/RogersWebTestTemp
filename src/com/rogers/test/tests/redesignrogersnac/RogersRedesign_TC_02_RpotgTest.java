@@ -122,14 +122,15 @@ public class RogersRedesign_TC_02_RpotgTest extends BaseTestClass {
 		reporter.hardAssert(rogers_plan_config_page.verifyDefaultPrice(fullPriceValueCataloguePage),
 				"Default  price is same as it is shown in device catalogue & Config page page",
 				"Default price is not same as it is shown in device catalogue page");
-		rogers_plan_config_page.clickPreCartSummaryContinueButton();
+		rogers_plan_config_page.clickPreCartDeviceCostContinueButton();
 		// rogers_plan_config_page.selectDataOption(deviceName);
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
-		rogers_plan_config_page.clickPreCartSummaryContinueButton();
+		rogers_plan_config_page.clickPreCartDataOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
-		rogers_plan_config_page.clickPreCartSummaryContinueButton();
+		rogers_plan_config_page.clickPreCartTalkOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data protection selected");
-		rogers_plan_config_page.clickPreCartSummaryContinueButton();
+		rogers_plan_config_page.skipBPOOffer();
+		rogers_plan_config_page.clickPreCartAddonsContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
 		String monthlyFeesAmount = rogers_plan_config_page.getMonthlyFeesAmount();
 		String oneTimeFeesAmount = rogers_plan_config_page.getOneTimeFeesAmount();
@@ -152,10 +153,10 @@ public class RogersRedesign_TC_02_RpotgTest extends BaseTestClass {
 				"Create profile Title not present");
 		String emailCreateProfile = rogers_checkout_page.setEmailCreateProfile();
 		rogers_checkout_page.confirmEmailCreateProfile(emailCreateProfile);
-              String firstName = rogers_checkout_page.setFirstNameCreateProfile();
-                String lastName = rogers_checkout_page.setLastNameCreateProfile();
-//		String firstName = rogers_checkout_page.setFirstNameCreateProfilepage("IRELAND");	
-//		String lastName = rogers_checkout_page.setLastNameCreateProfilepage("MARTIN");
+        String firstName = rogers_checkout_page.setFirstNameCreateProfile();
+        String lastName = rogers_checkout_page.setLastNameCreateProfile();
+//		String firstName = rogers_checkout_page.setFirstNameCreateProfilepage("smisamvulamani");	
+//		String lastName = rogers_checkout_page.setLastNameCreateProfilepage("marichale");
 		String fullNameCreateProfile = firstName + " " + lastName;
 		String contactNumberCreateProfile = TestDataHandler.redesignRpotgData.getContactNumber();
 		rogers_checkout_page.setContactNumberCreateProfile(contactNumberCreateProfile);
@@ -165,7 +166,7 @@ public class RogersRedesign_TC_02_RpotgTest extends BaseTestClass {
 		rogers_checkout_page.getRpotgSuccessMessage();
 		reporter.reportLogPassWithScreenshot(
 				"Billing Address entered is eligible for RPOTG - Success message validated");
-		rogers_checkout_page.clkUseBillingAddressRadioBtnCreateProfile();
+		//rogers_checkout_page.clkUseBillingAddressRadioBtnCreateProfile();
 		rogers_checkout_page.clkLanguageEnglishRadioBtnCreateProfile();
 		reporter.reportLogPassWithScreenshot(
 				"Create Profile Page details provided for Address,Shipping Address & Language Selected");
@@ -192,10 +193,10 @@ public class RogersRedesign_TC_02_RpotgTest extends BaseTestClass {
 		reporter.reportLogPassWithScreenshot("PassportNumber Entered Successfully");
 		rogers_checkout_page.clkCreditAuthorizationChkBox();
 		rogers_checkout_page.clkCreditEvalContinue();
-		reporter.softAssert(rogers_checkout_page.isCreditEvalPopupPresent(), "Credit Evaluation Popup Displayed",
-				"Credit Evaluation popup not disaplayed");
-		reporter.softAssert(rogers_checkout_page.isCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed",
-				"Credit Evaluation Text not disaplayed on Modal");
+//		reporter.softAssert(rogers_checkout_page.isCreditEvalPopupPresent(), "Credit Evaluation Popup Displayed",
+//				"Credit Evaluation popup not disaplayed");
+//		reporter.softAssert(rogers_checkout_page.isCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed",
+//				"Credit Evaluation Text not disaplayed on Modal");
 		reporter.reportLogWithScreenshot("Credit Evaluation processing popup");
 		reporter.hardAssert(rogers_checkout_page.isIdentificationLabel(), "Credit Evaluation Successful",
 				"Credit Evaluation Identification Label not disaplayed");
@@ -213,10 +214,6 @@ public class RogersRedesign_TC_02_RpotgTest extends BaseTestClass {
 		reporter.softAssert(rogers_checkout_page.isFindMoreAvlNumberButtonPresent(),
 				"Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");
 		rogers_checkout_page.clkChooseNumberbutton();
-		reporter.hardAssert(rogers_checkout_page.isChooseaNumberLabelDisplayed(),
-				"Choose a Number Identification label displayed Successfully",
-				"Choose a Number Identification Label not disaplayed");
-		reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
 
 		// ***************Billing & Payment Stepper*************//
 		reporter.softAssert(rogers_checkout_page.isBillingOptionsTitleDisplayed(), "Billing Options Title Displayed",
@@ -244,7 +241,7 @@ public class RogersRedesign_TC_02_RpotgTest extends BaseTestClass {
 		reporter.softAssert(billingAddressCreateProfile.equals(addressShippingStepper),
 				"Address in Shipping Stepper matches as entered in Create Profile stepper",
 				"Address in Shipping Stepper not matches as entered in Create Profile stepper");
-		rogers_checkout_page.clkNoThanks();
+		//rogers_checkout_page.clkNoThanks();
 		String contactNumberShippingStepper = rogers_checkout_page.getContactNumber();
 		reporter.softAssert(contactNumberShippingStepper.contains(contactNumberCreateProfile),
 				"Contact Number in Shipping Stepper contains same number as Create Profile Stepper",
@@ -347,9 +344,9 @@ public class RogersRedesign_TC_02_RpotgTest extends BaseTestClass {
 		reporter.hardAssert(purchaseIncludesConfrimation.equals(puchaseIncludeReviewPage),
 				"Purchase includes Matches in ORder Confirmation page", "Purchase Includes Not Matching");
 		reporter.reportLogPassWithScreenshot("Purchase includes captured as" + "-->" + purchaseIncludesConfrimation);
-		reporter.hardAssert(rogers_NAC_order_confirmation_page.isLearnMoreLinkDisplayed(), "Learn More Link Displayed",
-				"Learn More Link not Present");
-		reporter.reportLogPassWithScreenshot("Order Review Page: LearnMore Link");
+//		reporter.hardAssert(rogers_NAC_order_confirmation_page.isLearnMoreLinkDisplayed(), "Learn More Link Displayed",
+//				"Learn More Link not Present");
+//		reporter.reportLogPassWithScreenshot("Order Review Page: LearnMore Link");
 	}
 
 	@AfterMethod(alwaysRun = true)

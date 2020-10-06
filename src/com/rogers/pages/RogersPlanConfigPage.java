@@ -24,7 +24,19 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     @FindBy(xpath = "//nav[@class='ds-breadcrumb']")
     WebElement breadCrumb;
-
+    
+    @FindBy(xpath = "//button[@data-test='stepper-1-edit-step-continue-button']")
+    WebElement preCartDeviceCostContinueButton;
+    
+    @FindBy(xpath = "//button[@data-test='stepper-2-edit-step-continue-button']")
+    WebElement preCartDataOtionContinueButton;
+    
+    @FindBy(xpath = "//button[@data-test='stepper-3-edit-step-continue-button']")
+    WebElement preCartTalkOptionContinueButton;
+    
+    @FindBy(xpath = "//button[@data-test='stepper-4-edit-step-continue-button']")
+    WebElement preCartAddonsContinueButton;
+    
     @FindBy(xpath = "//div[contains(@class,'ds-step__content ds-border-bottom ds-brcolor-concrete p-16 p-md-24 ds-bgcolor-misty')]//button[contains(@class,'primary -large')]")
     WebElement preCartSummaryContinueButton;
     
@@ -33,16 +45,14 @@ public class RogersPlanConfigPage extends BasePageClass {
     
     @FindBy(xpath = "//ds-step[@id='stepper-addons']//div[@class='d-flex flex-row-reverse']//button")
     WebElement preCartSummaryContinueButtonAddOns;
-    
-    //@FindBy(xpath = "//button[@id='main-continue-button']")
+
     @FindBy(xpath ="//button[@data-test='build-plan-checkout-flow-button']/span")
     WebElement continueButtonOnCartSummary;
     
     @FindBy(xpath = "//button[@id='get-bpo-offer-button' or @data-test='bpo-offer-modal-button-primary']")
     WebElement getBPOOfferOnDeviceProtection;
 
-
-    @FindBy(xpath = "//button[@id='skip-bpo-offer-button']")
+    @FindBy(xpath = "//button[@id='Skip the Offer']")
     WebElement skipBPOOfferOnDeviceProtection;
 
     @FindBy(xpath = "//div[@class='d-flex flex-row']")
@@ -278,6 +288,38 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public void clickPreCartSummaryContinueButtonTalkOptions() {
         reusableActions.clickIfAvailable(preCartSummaryContinueButtonTalkOptions, 5);
+    }
+    
+    /**
+     * Click continue on Device Cost Section
+     * @author karthic.hasan
+     */
+    public void clickPreCartDeviceCostContinueButton() {
+        reusableActions.clickWhenReady(preCartDeviceCostContinueButton);
+    }
+    
+    /**
+     * Click continue on Data Option Section
+     * @author karthic.hasan
+     */
+    public void clickPreCartDataOptionContinueButton() {
+        reusableActions.clickWhenReady(preCartDataOtionContinueButton);
+    }
+    
+    /**
+     * Click continue on Talk Option Section
+     * @author karthic.hasan
+     */
+    public void clickPreCartTalkOptionContinueButton() {
+        reusableActions.clickWhenReady(preCartTalkOptionContinueButton);
+    }
+    
+    /**
+     * Click continue on Addons Section
+     * @author karthic.hasan
+     */
+    public void clickPreCartAddonsContinueButton() {
+        reusableActions.clickWhenReady(preCartAddonsContinueButton);
     }
     
     /**

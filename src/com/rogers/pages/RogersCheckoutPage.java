@@ -67,16 +67,16 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "(//div[contains(.,'Billing Address')])[13]/input")
 	WebElement inputBillingAddress;
 
-	@FindBy(xpath = "//div[contains(@class,'auto-suggest-list ng-star-inserted')]")
+	@FindBy(xpath = "//r-address-auto-complete[@data-test='personal-info-address']//li[@class='ng-star-inserted'][1]")
 	WebElement billingAddressSelection;
 
-	@FindBy(xpath = "//span[contains(@class,'text-semi text-italic')]")
+	@FindBy(xpath = "//div[@data-test='ba-eligible']/div")
 	WebElement successMessageRpotg;
 
-	@FindBy(xpath = "//div[@class='ds-radioLabel__container ml-8 text-body my-12'][contains(.,'Use billing address')]")
+	@FindBy(xpath = "//*[@data-test='from-value-same']")
 	WebElement useBillingAddressRadioBtnCreateProfile;
 
-	@FindBy(xpath = "//label[@for='ds-radio-input-id-3']")
+	@FindBy(xpath = "//ds-radio-button[@data-test='preferred-language-en']")
 	WebElement languageEnglishRadioBtnCreateProfile;
 
 	@FindBy(xpath = "//ngx-recaptcha2[@data-test='recaptcha']//iframe[@role='presentation']")
@@ -155,33 +155,35 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//*[@id='ds-stepper-id-2-completedContent-1']//div[@class='w-100']/p")
 	WebElement identificationLabel;
 	
-	@FindBy(xpath = "//span[@id='recaptcha-anchor']")
+	@FindBy(xpath = "//div[@id='rc-anchor-container']")
 	WebElement radioCheckboxCreateProfile;
+	
+	@FindBy(xpath = "//label[@for='ds-radio-input-id-4']")
+	WebElement lblFrenchLanguage;
 
 	@FindBy(xpath = "//div[@id='step-3-open']/h2")
 	WebElement chooseNumberTitle;
 
-	@FindBy(xpath = "//button[@id='ds-tabs-2-tab-0']")
+	@FindBy(xpath = "//div[@role='tablist']/button[@tabindex='0']")
 	WebElement selectaNewNumberTab;
 
-	@FindBy(xpath = "//button[@id='ds-tabs-2-tab-1']")
+	@FindBy(xpath = "//div[@role='tablist']/button[@tabindex='-1']")
 	WebElement useAnExistingNumberTab;
 
 	//@FindBy(xpath = "//select[@id='ds-form-input-id-13']")
 	@FindBy(xpath = "//ds-form-field[@data-test='choose-number-city']//select")
 	WebElement cityDropdown;
 
-	@FindBy(xpath = "//label[@for='ds-radio-input-id-13']//div[@class='ds-radioButton__outerCircle my-12']")
+	@FindBy(xpath = "//ds-radio-group[@formcontrolname='newNumber']/div/div[1]")
 	WebElement rdoChosePhoneNumber;
 
 	@FindBy(xpath = "//div[@class='my-16']/button")
 	WebElement btnFindMoreAvlNumber;
 
-
 	@FindBy(xpath = "//button[@data-test='choose-number-continue']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']")
 	WebElement btnChooseNumberContinue;
 
-	@FindBy(xpath = "//*[@id='ds-stepper-id-2-completedContent-2']//div[@class='w-100']/p[@class='text-body']")
+	@FindBy(xpath = "//ds-icon[@data-test='choose-number-complete']/../div/p[1]")
 	WebElement lblChooseaNumber;
 
 	//***Billing & Payment Options stepper
@@ -189,7 +191,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//h2[contains(@data-test,'payment-method-title')]")
 	WebElement billingOptionsTitle;
 
-	@FindBy(xpath = "//select[@formcontrolname='method']")
+	@FindBy(xpath = "//select[@data-test='select-payment-option']")
 	WebElement drpSelectPaymentMethod;
 
 	@FindBy(xpath = "//input[@formcontrolname='name']/..")
@@ -233,7 +235,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath="//span[@data-test='email-address']")
 	WebElement prepopulatedEmailId;
 
-	@FindBy(xpath="//p[text()='Delivery Method']")
+	@FindBy(xpath="//p[@data-test='step-title-shipping']")
 	WebElement deliveryMethodHeader;
 	
 	@FindBy(xpath ="//ds-radio-button[@data-test='standard-delivery']/label")
@@ -251,13 +253,13 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//button[@data-test='shipping-continue']")
 	WebElement continueBtnShipping;
 	
-	@FindBy(xpath ="//p[@class='text-body-sm my-8'][1]")
+	@FindBy(xpath ="//div[@data-test='delivery-information']//child::div/p[2]")
 	WebElement appointmentDate;
 	
-	@FindBy(xpath ="//p[@class='text-body-sm my-8'][2]")
+	@FindBy(xpath ="//div[@data-test='delivery-information']//child::div/p[3]")
 	WebElement appointmentTime;
 
-	@FindBy(xpath = "//button[contains(@id,'main-continue-button')]")
+	@FindBy(xpath = "//button[@id='main-continue-button']")
 	WebElement submitBtnCheckoutPage;
 
 	@FindBy(xpath = "//p[@class='text-body mb-8']")
@@ -266,7 +268,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//ds-accordion-panel[@data-test='shipping-delivery-options']//button")
 	WebElement viewAnotherOption;
 	
-	@FindBy(xpath = "//div[@class='QSIPopOver SI_5Asif8K9VkSJZM9_PopOverContainer'][1]//span[text()='No, thanks']")
+	@FindBy(xpath = "//div[@class='QSIPopOver SI_5Asif8K9VkSJZM9_PopOverContainer'][1]//following::span[text()='No, thanks']//ancestor::div[@tabindex='0']")
 	WebElement btnNoThanks;
 	
 	
@@ -365,7 +367,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	public String setFirstNameCreateProfile() {
 
 		reusableActions.clickWhenReady(firstNameCreateProfile);
-		reusableActions.getWhenReady(inputFirstName,3).sendKeys(FormFiller.generateRandomName());
+		reusableActions.getWhenReady(inputFirstName,3).sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
 		return reusableActions.getWhenReady(inputFirstName,20).getAttribute("value");
 	}
 	
@@ -398,7 +400,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	
 	public void clkNoThanks()
 	{
-		reusableActions.clickIfAvailable(btnNoThanks,10);
+		reusableActions.clickIfAvailable(btnNoThanks,5);
 	}
 	/**
 	 * Enter the lastName on the Create Profile stepper, Last Name field
@@ -408,7 +410,7 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public String setLastNameCreateProfile() {
 		reusableActions.clickWhenReady(lastNameCreateProfile);
-		reusableActions.getWhenReady(inputLastName,3).sendKeys(FormFiller.generateRandomName());
+		reusableActions.getWhenReady(inputLastName,3).sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
 		return reusableActions.getWhenReady(inputLastName,20).getAttribute("value");
 	}
 
@@ -435,7 +437,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	public String setBillingAddressCreateProfile(String billingAddress) {
 		reusableActions.clickWhenReady(billingAddressCreateProfile);
 		reusableActions.getWhenReady(inputBillingAddress,3).sendKeys(billingAddress);
-		billingAddressSelection.click();
+		reusableActions.moveToElementAndClick(billingAddressSelection, 5);
 		return reusableActions.getWhenReady(inputBillingAddress,20).getAttribute("value");
 	}
 
@@ -485,7 +487,8 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public void clkImNotRombotCheckbox() {
 		reusableActions.waitForPageLoad();
-		reusableActions.moveToElementAndClick(radioCheckboxCreateProfile,10);
+		reusableActions.scrollToElement(radioCheckboxCreateProfile);
+		reusableActions.clickWhenReady(radioCheckboxCreateProfile,10);
 	}
 
 	/**
@@ -514,7 +517,7 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public boolean verifyCreditEvaluationTitle() {
 		//reusableActions.getWhenReady(creditEvaluationTitle);
-		if(reusableActions.isElementVisible(creditEvaluationTitle,30))
+		if(reusableActions.isElementVisible(creditEvaluationTitle,10))
 		{
 		reusableActions.javascriptScrollByVisibleElement(creditEvaluationTitle);
 		   return true;
@@ -549,7 +552,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void setCreditCardNumberIFrame(String strAccountNumber) {
-		reusableActions.getWhenReady(txtCardNumber, 90);
+//		reusableActions.getWhenReady(txtCardNumber, 90);
 		reusableActions.getWhenReady(txtCardNumber, 30).sendKeys(strAccountNumber);
 	}
 
@@ -581,8 +584,7 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public void selectYearDropdownOption(String strYear) {
 		
-		reusableActions.waitForElementVisibility(inputYearDOB, 20);
-		reusableActions.clickWhenReady(inputYearDOB);
+		reusableActions.moveToElementAndClick(inputYearDOB,5);
 		reusableActions.selectWhenReady(inputYearDOB, strYear);
 
 	}
@@ -593,19 +595,10 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void selectMonthDropdownOption(String strMonth) {
-		try
-		{
-			reusableActions.waitForElementVisibility(inputMonthDOB, 20);
-			reusableActions.clickWhenReady(inputMonthDOB);
-			reusableActions.selectWhenReady(inputMonthDOB, strMonth);
-		}catch (Exception e) {
 			clkNoThanks();
-			reusableActions.waitForElementVisibility(inputMonthDOB, 20);
+			reusableActions.javascriptScrollByVisibleElement(creditEvaluationTitle);		
 			reusableActions.clickWhenReady(inputMonthDOB);
-			reusableActions.selectWhenReady(inputMonthDOB, strMonth);
-		
-		}
-			
+			reusableActions.selectWhenReady(inputMonthDOB, strMonth);			
 	}
 	/**
 	 * Select DOB-Date Dropdown Option on the Credit Evaluation stepper.
@@ -614,20 +607,10 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void selectDayDropdownOption(String strDay) {
-		try
-		{
-			reusableActions.waitForElementVisibility(inputDayDOB, 20);
-			reusableActions.clickWhenReady(inputDayDOB);
-			reusableActions.selectWhenReady(inputDayDOB, strDay);
-		
-		}
-		catch (Exception e) {
-		
 			clkNoThanks();
-			reusableActions.waitForElementVisibility(inputDayDOB, 20);
+			reusableActions.javascriptScrollByVisibleElement(creditEvaluationTitle);
 			reusableActions.clickWhenReady(inputDayDOB);
 			reusableActions.selectWhenReady(inputDayDOB, strDay);
-		}
 	}
 
 	/**
@@ -800,7 +783,6 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author karthic.hasan
 	 */	
 	public void selectPaymentMethodDropdownOption(String strPaymentMethod) {
-
 		reusableActions.scrollToElementAndClick(drpSelectPaymentMethod);
 		reusableActions.selectWhenReady(drpSelectPaymentMethod, strPaymentMethod);
 
@@ -921,6 +903,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void clkDeliveryMethodStandard() {
+		reusableActions.staticWait(5000);
 		reusableActions.javascriptScrollByVisibleElement(deliveryMethodHeader);
 		if(reusableActions.isElementVisible(viewAnotherOption))
 		{

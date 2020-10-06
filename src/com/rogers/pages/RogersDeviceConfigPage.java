@@ -17,7 +17,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
 
     public String xpathDeviceName;
 
-    @FindBy(xpath = "//button[@title='Select' or @title='Continue']")
+    @FindBy(xpath = "//button[@title='Select' or @title='Continue' or @title='Ship to home']")
     public
     WebElement continueButton;
 
@@ -99,7 +99,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
      */
     public void clickContinueButton() {
         if (reusableActions.isElementVisible(continueButton))
-            reusableActions.clickIfAvailable(continueButton, 10);
+            reusableActions.clickWhenReady(continueButton);
     }
 
     /***
