@@ -82,25 +82,7 @@ public class RogersSS_TC_056_ValidateDataUsageDesplayWithinLimit_postpaid_NSEDat
         	rogers_add_data_page.clkCloseOnAddDataOverlay();
         	//Sign out and re sign in to verify if added data reflected.
 	        reporter.reportLogWithScreenshot("Wireless dashboard page.");  
-	        rogers_login_page.clickSignOut();
-			reporter.reportLogWithScreenshot("Sign out done");
-			if(rogers_home_page.isContentFulURLDisplayed())
-			{
-				rogers_home_page.clkEasyLogin();
-			}			
-			rogers_login_page.clkSignInAs();
-			reporter.reportLogWithScreenshot("Click Re Sign In");	    	
-	    	rogers_login_page.switchToSignInIFrame();
-	        //rogers_login_page.setUsernameIFrame(strUsername);    	
-	        rogers_login_page.setPasswordIFrame(strPassword);
-	        reporter.reportLogWithScreenshot("Re sign In");  
-	        //rogers_login_page.switchToSignInIFrame();
-	                   
-	        //rogers_login_page.setPasswordIFrame(strPassword);
-	        reporter.reportLogWithScreenshot("Login Credential is entered.");
-			rogers_login_page.clkSignInIFrame();		
-			rogers_login_page.switchOutOfSignInIFrame();		       
-	        reporter.reportLogWithScreenshot("Account overview page.");        
+	        common_business_flows.logOutAndReSignIn(strUsername, strPassword);       
 	        rogers_account_overview_page.clkMenuUsageAndService();
 	        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");        
 	        rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));

@@ -131,21 +131,7 @@ public class RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs e
 			common_business_flows.scrollToTopOfWebPage();
 			rogers_manage_data_page.clkBackOnManageDataUsagePage();
 			reporter.reportLogWithScreenshot("Back on dashboard");
-			
-			rogers_login_page.clickSignOut();
-			reporter.reportLogWithScreenshot("Sign out done");
-			if(rogers_home_page.isContentFulURLDisplayed())
-			{
-				rogers_home_page.clkEasyLogin();
-			}			
-			rogers_login_page.clkSignInAs();
-			reporter.reportLogWithScreenshot("Click Re Sign In");
-			rogers_login_page.switchToSignInIFrame();	        
-	        rogers_login_page.setPasswordIFrame(strPassword);
-	        reporter.reportLogWithScreenshot("Login Credential is entered.");
-			rogers_login_page.clkSignInIFrame();
-			rogers_login_page.clkSkipIFrame();
-			rogers_login_page.switchOutOfSignInIFrame();				        
+			common_business_flows.logOutAndReSignIn(strUsername, strPassword);				        
 			//rechange to the original one
 			if(rogers_account_overview_page.verifySuccessfulLogin())
 			{

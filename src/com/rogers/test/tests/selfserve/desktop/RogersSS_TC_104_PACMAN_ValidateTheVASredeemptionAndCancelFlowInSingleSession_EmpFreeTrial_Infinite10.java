@@ -29,7 +29,7 @@ public class RogersSS_TC_104_PACMAN_ValidateTheVASredeemptionAndCancelFlowInSing
 	
 	
 	@Test(groups = {"RegressionSS","PACMANRedeem"})
-    public void verifyTheOrderSummaryPageOfVASsubscriptionRedemptionFlow_SEInfinite20() {
+    public void validateTheVASredeemptionAndCancelFlowInSingleSession_EmpFreeTrial_Infinite10() {
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
     	rogers_home_page.clkSignIn();
