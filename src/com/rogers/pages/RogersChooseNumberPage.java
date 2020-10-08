@@ -1,13 +1,12 @@
 package com.rogers.pages;
 
-import java.util.List;
-
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import com.rogers.pages.base.BasePageClass;
+import java.util.List;
 
 /**
  * @author rajesh.varalli1
@@ -43,7 +42,7 @@ public class RogersChooseNumberPage extends BasePageClass {
 	@FindBy(xpath = "//div[@ng-repeat='line in model.lineInfo']")
 	List<WebElement> lblCTNLines;
 
-	@FindBy(xpath = "//*[@id='line-choose-number-2']//span[@checkout-res='checkout_choose_number']")
+	@FindBy(xpath = "//*[@id='line-choose-number-1']//span[@checkout-res='checkout_choose_number']")
 	WebElement lblLineChooseNumber2;
 
 	

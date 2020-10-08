@@ -73,14 +73,19 @@ import utils.AppiumServerJava;
 import utils.BrowserDrivers;
 import utils.Reporter;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
 
 //@Listeners ({com.rogers.test.listeners.TestListener.class ,
 //	com.rogers.test.listeners.AnnotationTransformer.class ,
@@ -335,14 +340,17 @@ public class BaseTestClass {
 	 * @throws IOException               java.io.IOException, Signals that an I/O exception of some sort has occurred, produced by failed or interrupted I/O operations.
 	 */
 	public void startOVSession(String strUrl,  String strBrowser,  String strLanguage, String strGroupName, String strContactID,String strAccNo, String strLoginID,  String strLanID,  Method currentTestMethodName ) throws ClientProtocolException, IOException {
-		if(strBrowser.contains("sauce"))
+		RunParameters = getExecutionParameters(strBrowser, strLanguage);
+		String browser = RunParameters.get("Browser").toLowerCase();
+		String language = RunParameters.get("Language").toLowerCase();
+		if(browser.contains("sauce"))
 		{
-			sauceParameters = initializeSauceParamsMap(strBrowser);
+			sauceParameters = initializeSauceParamsMap(browser);
 		}
-		this.driver = browserdriver.driverInit(strBrowser,sauceParameters, currentTestMethodName, strGroupName);
+		this.driver = browserdriver.driverInit(browser,sauceParameters, currentTestMethodName, strGroupName);
 		System.out.println(strUrl + "----------------------------------------------------------------------------");
 		captcha_bypass_handlers = new CaptchaBypassHandlers(getDriver());
-		captcha_bypass_handlers.chOnewviewFlows(strUrl, strAccNo, strLoginID, strLanID, strLanguage,strBrowser,  currentTestMethodName ,strContactID);
+		captcha_bypass_handlers.chOnewviewFlows(strUrl, strAccNo, strLoginID, strLanID, language,browser,  currentTestMethodName ,strContactID);
 		   setImplicitWait(getDriver(), 10);
 		    init(strGroupName);
 }

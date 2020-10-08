@@ -1,20 +1,6 @@
 package com.rogers.testdatamanagement;
 
-import com.rogers.yaml.pojo.CHOneViewConfig;
-import com.rogers.yaml.pojo.MigrationData;
-
-
-import com.rogers.yaml.pojo.AALData;
-import com.rogers.yaml.pojo.AccountData;
-import com.rogers.yaml.pojo.Config;
-import com.rogers.yaml.pojo.HUPData;
-import com.rogers.yaml.pojo.PPCData;
-import com.rogers.yaml.pojo.PaymentDetails;
-import com.rogers.yaml.pojo.RedesignConfig;
-import com.rogers.yaml.pojo.RedesignRpotgData;
-import com.rogers.yaml.pojo.SauceSettings;
-
-import com.rogers.yaml.pojo.ContactData;
+import com.rogers.yaml.pojo.*;
 
 public class TestDataHandler {	
 	public static Config ssConfig;
@@ -113,6 +99,7 @@ public class TestDataHandler {
 	public static PPCData testCase08;
 	public static HUPData testCase09;
 	public static HUPData testCase10;
+	public static HUPData testCase12;
 	public static RedesignRpotgData testCase11;
 	public static RedesignRpotgData tc01NonRpotg;
 	public static RedesignRpotgData tc02Rpotg;
@@ -177,6 +164,7 @@ public class TestDataHandler {
     		selfserveDataInit();
     		buyFlowsDataInit();
     		chOneViewDataInit();
+			buyFlowsOneViewDataInit();
     	}
 	
 	}
@@ -317,6 +305,7 @@ public class TestDataHandler {
     	testCase11 = YamlHandler.getRedesignNACData("tc11NacByod");
     	tc01NonRpotg=YamlHandler.getRedesignNACData("tc01NonRpotg");
     	tc02Rpotg=YamlHandler.getRedesignNACData("tc02Rpotg");
+		testCase12 = YamlHandler.getHUPdata("tc12HUP");
 	}
 	
 	private static void buyFlowsOneViewDataInit() {

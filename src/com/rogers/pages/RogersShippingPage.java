@@ -92,7 +92,8 @@ public class RogersShippingPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkRadioNormalDelivery() {
-		reusableActions.clickWhenReady(rdoNormalDelivery , 30);
+		if(rdoNormalDelivery.isDisplayed())
+			reusableActions.clickWhenReady(rdoNormalDelivery , 30);
 	}
 
 	/**

@@ -52,15 +52,12 @@ public class RogersReviewOrderPage extends BasePageClass {
     WebElement txtPleaseReadAgreement;
     
     @FindBy(xpath="//input[contains(@name,'financingConsent')]/..")
-    		
     WebElement chFinancingConsent;
 
     @FindBy(xpath="//input[contains(@name,'agreementConsent')]/..")
-    	
     WebElement chAgreementConsent;
 
     @FindBy(xpath = "//input[contains(@name,'upfrontConsent')]/..")
-    		
     WebElement chUpfrontConsent;
     
     @FindBy(xpath ="//ds-checkbox[@name='credit-check']")

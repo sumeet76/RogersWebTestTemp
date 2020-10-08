@@ -6,16 +6,12 @@ import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
 import org.testng.Assert;
 import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class RogersRedesign_TC_02_RpotgTest extends BaseTestClass {
+public class RogersBFA_TC_02_RpotgTest extends BaseTestClass {
 	String deviceName;
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
@@ -24,7 +20,7 @@ public class RogersRedesign_TC_02_RpotgTest extends BaseTestClass {
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-	@Test
+	@Test(groups = {"RegressionBFA","SanityBFA","NACBFA"})
 	public void redesignRogersRpotg() throws InterruptedException {
 
 		// **************************Device catalog page*****************************************
