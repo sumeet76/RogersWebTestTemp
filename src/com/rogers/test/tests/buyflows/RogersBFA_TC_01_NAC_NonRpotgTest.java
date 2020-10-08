@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class RogersBFA_TC_01_NonRpotgTest extends BaseTestClass {
+public class RogersBFA_TC_01_NAC_NonRpotgTest extends BaseTestClass {
 
   
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
@@ -20,7 +20,7 @@ public class RogersBFA_TC_01_NonRpotgTest extends BaseTestClass {
 	}
 
     @Test(groups = {"RegressionBFA","SanityBFA","NACBFA"})
-    public void redesignRogersRpotg() throws InterruptedException {
+    public void redesignRogersNacRpotg() throws InterruptedException {
     	
     	 //**************************Device catalog page*****************************************
     	
@@ -145,13 +145,12 @@ public class RogersBFA_TC_01_NonRpotgTest extends BaseTestClass {
         rogers_checkout_page.setBillingExpiryDate(TestDataHandler.tc01NonRpotg.getExpiryDate());
         rogers_checkout_page.setCVVNumber(TestDataHandler.tc01NonRpotg.getCvvNumber());
         reporter.reportLogPassWithScreenshot("Billing & Payment Details Entered Successfully");
-        rogers_checkout_page.clkAddCard();       
-=======
+        rogers_checkout_page.clkAddCard();
         reporter.softAssert(rogers_checkout_page.isBillingOptionsTitleDisplayed(), "Billing Options Title Displayed",
 				"Billing Options Title Not Present");
 		reporter.softAssert(rogers_checkout_page.isPaymentMethodDropdownPresent(),
 				"Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not disaplayed");
-		rogers_checkout_page.selectPaymentMethodDropdownOption(TestDataHandler.redesignRpotgData.getPaymentMethod());
+		rogers_checkout_page.selectPaymentMethodDropdownOption(TestDataHandler.tc01NonRpotg.getPaymentMethod());
 //        rogers_checkout_page.setNameOnCard(TestDataHandler.redesignRpotgData.getNameOnCard());
 //        rogers_checkout_page.switchToCreditCardIFrame();
 //        rogers_checkout_page.setCreditCardNumberIFrame(TestDataHandler.redesignRpotgData.getBillingCreditCardNumber());
@@ -159,8 +158,7 @@ public class RogersBFA_TC_01_NonRpotgTest extends BaseTestClass {
 //        rogers_checkout_page.setBillingExpiryDate(TestDataHandler.redesignRpotgData.getExpiryDate());
 //        rogers_checkout_page.setCVVNumber(TestDataHandler.redesignRpotgData.getCvvNumber());
 //        reporter.reportLogPassWithScreenshot("Billing & Payment Details Entered Successfully");
-//        rogers_checkout_page.clkAddCard();       
->>>>>>> 03f43dff6a90e93c213740f13398c52d40ecc6df:src/com/rogers/test/tests/redesignrogersnac/RogersRedesign_TC_01_NonRpotgTest.java
+//        rogers_checkout_page.clkAddCard();
         rogers_checkout_page.clkBillingContinueButton();
 //        reporter.hardAssert(rogers_checkout_page.isCardDetailsDisplayed(),"Card details disaplayed in Billing & Payment Options", "Card details not disaplayed in Billing & Payment Options");
         //***************Billing Options Stepper*************//

@@ -11,7 +11,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class RogersBFA_TC_02_RpotgTest extends BaseTestClass {
+public class RogersBFA_TC_02_NAC_RpotgTest extends BaseTestClass {
 	String deviceName;
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
@@ -21,7 +21,7 @@ public class RogersBFA_TC_02_RpotgTest extends BaseTestClass {
 	}
 
 	@Test(groups = {"RegressionBFA","SanityBFA","NACBFA"})
-	public void redesignRogersRpotg() throws InterruptedException {
+	public void redesignRogersNacRpotg() throws InterruptedException {
 
 		// **************************Device catalog page*****************************************
 
