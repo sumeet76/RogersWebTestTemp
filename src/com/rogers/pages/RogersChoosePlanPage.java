@@ -1,13 +1,12 @@
 package com.rogers.pages;
 
-import java.util.List;
-
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import com.rogers.pages.base.BasePageClass;
+import java.util.List;
 
 /**
  * @author rajesh.varalli1
@@ -114,7 +113,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkMakeChangesToExistingPlan() {
-		//reusableActions.clickWhenReady(lblChangesToExistingPlan,60);
+		reusableActions.javascriptScrollToTopOfPage();
 		reusableActions.clickIfAvailable(lblChangesToExistingPlan,30);
 	}
 	

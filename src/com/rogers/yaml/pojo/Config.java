@@ -20,7 +20,16 @@ public class Config {
 	private String environmentName;
 	private String loginID;
 	private String usrID;
+	private String rogersNacURL;
 	
+	public String getRogersNacURL() {
+		return rogersNacURL;
+	}
+
+	public void setRogersNacURL(String rogersNacURL) {
+		this.rogersNacURL = rogersNacURL;
+	}
+
 	public String getLoginID() {
 		return loginID;
 	}
