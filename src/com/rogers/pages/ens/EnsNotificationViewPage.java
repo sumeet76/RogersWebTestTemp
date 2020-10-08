@@ -72,7 +72,7 @@ public class EnsNotificationViewPage extends BasePageClass {
 	public void clkLnkHtmlForEmailVerify(String strAccountId) {
 		reusableActions.waitForAllElementsVisible(driver.findElements(By.xpath("//td[contains(text(),'" + strAccountId + "')]")), 30);
 		List<WebElement> lnkHtml = driver.findElements(By.xpath("//td[contains(text(),'" + strAccountId + "')]//following-sibling::td/a[@class='img_html_png']"));
-		reusableActions.getWhenVisible(lnkHtml.get(0), 20).click();
+		reusableActions.getWhenReady(lnkHtml.get(0), 30).click();
 		reusableActions.waitForNumberOfWindowsToBe(3, 20);
 	}
 	

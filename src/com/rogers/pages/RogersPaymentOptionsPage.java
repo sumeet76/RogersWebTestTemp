@@ -1,13 +1,10 @@
 package com.rogers.pages;
 
 
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-
-import com.rogers.pages.base.BasePageClass;
-
 import utils.FormFiller;
 
 public class RogersPaymentOptionsPage extends BasePageClass {
@@ -19,12 +16,8 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	@FindBy(xpath = "//h2[@translate='global.checkout.billingAndPayment.title']")
 	WebElement txtPaymentpage;
 	
-	@FindAll({
-		   @FindBy(xpath = "//select[@id='ds-form-input-id-40']"),
-		   @FindBy(xpath = "//select[@id='ds-form-input-id-38']"),
-		   @FindBy(xpath = "//select[@id='ds-form-input-id-37']")
-		})
-      WebElement ddlPaymentMode;
+	@FindBy(xpath = "//select[contains(@class,'-select') and contains(@id,'ds-form-input-id-')]")
+	WebElement ddlPaymentMode;
 	
 	@FindBy(xpath = "//input[@id='transit-code']")
 	WebElement txtTransitCode;
@@ -48,25 +41,17 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	@FindBy(xpath = "//input[@class='semafonemandatory']")
 	WebElement txtCardNumber;
 	
-	@FindAll({
-		@FindBy(xpath = "//input[@id='ds-form-input-id-44']"),
-		@FindBy(xpath = "//input[@id='ds-form-input-id-43']")
-	})
+	@FindBy(xpath = "//input[contains(@class,'ds-input') and contains(@id,'ds-form-input-id-')]")
 	WebElement txtCVV;
 
 	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
 	WebElement txtContainerCVV;
 	
-	@FindAll({
-		@FindBy(xpath = "//select[@id='ds-form-input-id-41']"),
-		@FindBy(xpath = "//select[@id='ds-form-input-id-42']")
-	})
+
+	@FindBy(xpath = "//rch-dropdown[@ng-reflect-selected-key='0']//select[contains(@id,'ds-form-input-id') and contains(@class,'select')]")
 	WebElement ddlExpiryMonth;
 
-	@FindAll({
-		@FindBy(xpath = "//select[@id='ds-form-input-id-42']"),
-		@FindBy(xpath = "//select[@id='ds-form-input-id-43']")
-	})
+	@FindBy(xpath = "//rch-dropdown[@ng-reflect-selected-key='2019']//select[contains(@id,'ds-form-input-id') and contains(@class,'select')]")
 	WebElement ddlExpiryYear;
 	
 	@FindBy(xpath = "//span[@translate='global.cta.continue']")

@@ -35,7 +35,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//input[@class='checkoutButton']")
 	WebElement btnCheckout;
 	
-	@FindBy(xpath = "//span[@translate='global.cta.continue']")
+	@FindBy(xpath = "//button//span[@translate='global.cta.continue']")
 	WebElement btnInternetBuyContinue;
 	
 	@FindBy(xpath = "//button[@aria-label='Add Ignite Internet 500u to your cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']")
@@ -109,6 +109,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		
 	public void clkInternetBuyContinue() {
 		reusableActions.waitForElementInvisibility(popUpLoading, 90);
+		reusableActions.javascriptScrollToMiddleOfPage();
 		reusableActions.getWhenReady(btnInternetBuyContinue, 90).click();
 	}
 	

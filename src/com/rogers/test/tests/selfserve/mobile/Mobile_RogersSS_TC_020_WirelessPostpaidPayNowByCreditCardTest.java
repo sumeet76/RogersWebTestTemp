@@ -30,7 +30,7 @@ public class Mobile_RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest exten
         rogers_login_page.clkSignInIFrame();
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();                   
-        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),
+        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLoginMobile(),
 			        		"Login successful",
 			        		"Login Error. Refer screenshot");
         common_business_flows.clkCloseFeedbackIfAvailableMobile();

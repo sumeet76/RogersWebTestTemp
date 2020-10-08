@@ -57,7 +57,7 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(xpath = "//a[text()='Forgot username and/or password?' or contains(text(),\"Nom d'utilisateur ou mot de passe oublié?\")]")
 	WebElement btnForgotUserNameAndPassword;
 	
-	@FindBy(xpath = "//span[text()='Forgot username' or text()='Forgot username']")
+	@FindBy(xpath = "//span[text()='Forgot username' or contains(text(),'utilisateur oubli')]")
 	WebElement lnkForgotUserName;
 
 	@FindBy(xpath = "//input[@id='password']/parent::div[contains(@class,'ds-formField__inputContainer')]")
@@ -66,15 +66,16 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(xpath = "//input[@id='username']/parent::div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement lblUserName;
 
-	@FindBy(xpath = "//span[text()='Forgot password ' or text()='Forgot password ']")
+	@FindBy(xpath = "//span[text()='Forgot password ' or contains(text(),'Mot de passe oubli')]")
 	WebElement lnkForgotPassword;
 
 	/**
 	 * To switch to the iframe
 	 * @author chinnarao.vattam
 	 */
-	public void switchToSignInIFrame() {			
-		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraSignIn, 30);
+	public void switchToSignInIFrame() {		
+		driver.switchTo().frame(fraSignIn);
+//		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraSignIn, 30);
 	}
 	
 	/**
@@ -99,6 +100,20 @@ public class RogersLoginPage extends BasePageClass {
 		reusableActions.getWhenVisible(txtUsername, 30).clear();
 		reusableActions.getWhenVisible(txtUsername).sendKeys(strUsername);
 	}
+	
+	/**
+	 * Enter the user name on Sign in frame
+	 * @param strUsername user name to be login
+	 * @author chinnarao.vattam
+	 */	
+
+	public void setUsernameIFrameMobile(String strUsername) {
+		//reusableActions.clickIfAvailable(lblUserName,20);
+		reusableActions.getWhenVisible(txtUsername, 30).clear();
+		reusableActions.getWhenVisible(txtUsername).sendKeys(strUsername);
+	}
+	
+	
 	/**
 	 * Enter the password on Sign in frame
 	 * @param strPassword user password to be login

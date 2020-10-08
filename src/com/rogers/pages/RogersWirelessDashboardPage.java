@@ -11,6 +11,7 @@ import java.util.Locale;
 import java.util.regex.Pattern;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -101,7 +102,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//h2[contains(text(),'My Wireless Usage') or contains(text(),'Mon utilisation des')]")
 	WebElement lblMyWlsUsage;
 
-	@FindBy(xpath = "//*[contains(text(),'Change my Caller ID') or contains(text(),'pour l’Affichage des appels')]")
+	@FindBy(xpath = "//*[contains(text(),'Change my Caller ID') or contains(text(),'Affichage des appels')]")
 	WebElement lnkChangeMyCallerId;
 	
 	
@@ -414,7 +415,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//ancestor::div[contains(@class,'postpaid-addons')]//div[@class='addon-description' or @class='addon-description ng-star-inserted']")
 	List<WebElement> lstMyPlanAddOns;
 
-	@FindBy(xpath = "//a[@title='Change the Data Manager for this account' or @title='Change the Data Manager for this account']//span[contains(text(),'Add')]")
+	@FindBy(xpath = "//a[@title='Change the Data Manager for this account' or contains(@title,'Changer le gestionnaire de données pour ce compte')]//span[contains(text(),'Add') or contains(text(),'Ajoute')]")
 	WebElement btnAddDataManager;
 
 	@FindBy(xpath = "//p[text()='Choose a Data Manager' or text()='Choisir un gestionnaire de données']")
@@ -461,10 +462,10 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//li/span[contains(text(),'Stream Saver:') or contains(text(),'Maximiseur de données :')]")
 	WebElement lblStreamSaver;
 	
-	@FindBy(xpath = "//ds-switch[@title='Stream Saver for DONOTUSE']//span[text()='OFF']")
+	@FindBy(xpath = "//ds-switch[contains(@title,'Stream Saver') or contains(@title,'Maximiseur de donn')]//span[text()='OFF' or text()='NON']")
 	WebElement btnStreamSaverSwitchOff;
 	
-	@FindBy(xpath = "//ds-switch[@title='Stream Saver for DONOTUSE']//span[text()='ON']")
+	@FindBy(xpath = "//ds-switch[@title='Stream Saver for DONOTUSE' or contains(@title,'Maximiseur de donn')]//span[text()='ON' or text()='OUI']")
 	WebElement btnStreamSaverSwitchON;
 		
 	@FindBy(xpath = "//li/span[contains(text(),'Data Alert:') or contains(text(),'Alertes de données :')]")
@@ -494,7 +495,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//*[@translate='wireless_prepaid_plan-expires']")
 	WebElement lblPrepaidNextPaymentDate;
 	
-	@FindBy(xpath = "//*[@data-test-id='myr-wirelessPlan-nextPaymentDateEn']")
+	@FindBy(xpath = "//*[@data-test-id='myr-wirelessPlan-nextPaymentDateEn']/parent::small")
 	WebElement lblPrepaidNextPaymentMonthAndDate;
 
 	@FindBy(xpath = "//*[@translate='acc_overview_top_up_now']")
@@ -520,6 +521,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//*[@translate='start_track_phone_repair']")
 	WebElement lnkStartOrTrackAPhonerepairClaim;
+
+	@FindBy(xpath = "//rss-data-usage-details//rss-billing/div[@class='bill-cycle']/span[@class='daysRemaining']")
+	WebElement lblDaysRemainingInBillCycleMobile;
 	
 	/**
 	 * To click the link of lost or stolen device on wireless dashboard page
@@ -1038,9 +1042,16 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setOldSimNum(String strOldSimNum) {
+		try {					
 		reusableActions.waitForElementTobeClickable(txtCurrentSIMNumber, 60);		
 		reusableActions.getWhenReady(txtCurrentSIMNumber, 30).clear();
 		reusableActions.getWhenReady(txtCurrentSIMNumber).sendKeys(strOldSimNum);
+		} catch (StaleElementReferenceException e) {
+			reusableActions.staticWait(5000); // static wait to handle state ref error 
+			reusableActions.waitForElementTobeClickable(txtCurrentSIMNumber, 60);		
+			reusableActions.getWhenReady(txtCurrentSIMNumber, 30).clear();
+			reusableActions.getWhenReady(txtCurrentSIMNumber).sendKeys(strOldSimNum);
+		}
 		
 	}
 
@@ -1085,7 +1096,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyDataDelayMessage() {		
-		return reusableActions.isElementVisible(lblDataDelayMsg, 30);
+		return reusableActions.isElementVisible(lblDataDelayMsg, 60);
 	}
 
 	/**
@@ -1137,7 +1148,17 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public boolean verifyAddedDataReflectedInTotalDataBucket(double origDataVolume, double addedDataVolume) {
 		double newTotalDataVolume = this.getTotalDataVolume();
-		return newTotalDataVolume == origDataVolume + addedDataVolume;
+		double total = origDataVolume + addedDataVolume;
+		
+		double diff=0;
+		if(newTotalDataVolume>total)
+		{
+			diff=newTotalDataVolume-total;
+		}else
+		{
+			diff=total-newTotalDataVolume;
+		}
+		return (newTotalDataVolume == origDataVolume + addedDataVolume) || (diff<=0.1);
 	}
 	
 	/**
@@ -1158,7 +1179,17 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	public boolean verifyDaysRemainingInTheBillCycleIsDisplayed() {		
 		return reusableActions.isElementVisible(lblDaysRemainingInBillCycle, 30);
 	}
-
+	
+	/**
+	 * Verifies if the data remaining out of total data bucket is displayed
+	 * @return true if element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyDaysRemainingInTheBillCycleIsDisplayedMobile() {		
+		return reusableActions.isElementVisible(lblDaysRemainingInBillCycleMobile, 30);
+	}
+	
+	
 	/**
 	 * Verifies if add data button displayed
 	 * @return true if element is displayed else false

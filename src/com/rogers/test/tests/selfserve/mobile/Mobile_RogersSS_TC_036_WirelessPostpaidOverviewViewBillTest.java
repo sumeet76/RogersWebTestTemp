@@ -35,7 +35,7 @@ public class Mobile_RogersSS_TC_036_WirelessPostpaidOverviewViewBillTest extends
             rogers_account_overview_page.selectAccount(TestDataHandler.tc36.getAccountDetails().getBan());
         }
 		reporter.reportLogWithScreenshot("Page after login.");
-        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),
+        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLoginMobile(),
         						"Login success.",
         						"Login Error. Refer screenshot");
         rogers_account_overview_page.clickViewYourBill();

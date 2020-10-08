@@ -23,8 +23,9 @@ public class RogersEnums {
 		mobile_selfserve,
 		buyflows,
 		redesignrogers,
-		buyflowsoneview
-	};
+		buyflowsoneview,
+		search
+		  } ;
     
     public enum SauceCapabilities{
     	seleniumVersion,

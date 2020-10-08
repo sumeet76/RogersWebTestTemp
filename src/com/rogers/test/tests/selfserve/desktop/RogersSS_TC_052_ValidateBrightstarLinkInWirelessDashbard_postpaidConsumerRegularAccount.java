@@ -57,7 +57,7 @@ public class RogersSS_TC_052_ValidateBrightstarLinkInWirelessDashbard_postpaidCo
         	rogers_account_overview_page.clkSubMenuWirelessUsage();
         }
         rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
-        rogers_wireless_dashboard_page.scrollToBottomOfPage();
+        //rogers_wireless_dashboard_page.scrollToBottomOfPage();
         reporter.reportLogWithScreenshot("Bottom of Wireless dashboard page.");
         rogers_wireless_dashboard_page.clkLnkTrackPhoneRepairClaim();
         reporter.reportLogWithScreenshot("Link start or track a phone repair claim is clicked.");

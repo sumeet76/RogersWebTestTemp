@@ -28,8 +28,10 @@ public class RogersSS_TC_050_ChangeIDForSECustomerTest extends BaseTestClass {
 		String strLastName = FormFiller.generateRandomName().toUpperCase();		
         rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
-		rogers_login_page.setUsernameIFrame(TestDataHandler.tc5074.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.tc5074.getPassword());
+		String strUserName = TestDataHandler.tc5074.getUsername();
+		String strPassword = TestDataHandler.tc5074.getPassword();
+		rogers_login_page.setUsernameIFrame(strUserName);
+		rogers_login_page.setPasswordIFrame(strPassword);
 		rogers_login_page.clkSignInIFrame();
 		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		rogers_login_page.clkSkipIFrame();
@@ -72,6 +74,9 @@ public class RogersSS_TC_050_ChangeIDForSECustomerTest extends BaseTestClass {
 			//for CTN refresh go on overview and come back
 			rogers_wireless_dashboard_page.clickOverview();
 			reporter.reportLogWithScreenshot("Back on overview page"); 
+			
+			common_business_flows.logOutAndReSignIn(strUserName, strPassword);	
+									
 			reporter.hardAssert(rogers_account_overview_page.verifyWirelessCallerIdCTNBadgeName(strFirstName),
 					"Caller ID First Name" + strFirstName + " is updated in CTN badge",
 					"Caller ID First Name" + strFirstName + " is NOT updated in CTN badge");			

@@ -70,8 +70,8 @@ public class RogersSC_TC_006_IginteTV_ExistingCustomerBuySolarisDoublePlayChange
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 		rogers_home_page.clkServiceability();
 		reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-		String  strAddressLine1=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line1");
-		String  strAddressLine2=(String) TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line2");
+		String  strAddressLine1=TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line1");
+		String  strAddressLine2=TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line2");
 		rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
 		rogers_home_page.clkIgniteAddressLookupSubmit();
 		//rogers_home_page.clkContinueIgniteMultipleAddressLookupSubmit();

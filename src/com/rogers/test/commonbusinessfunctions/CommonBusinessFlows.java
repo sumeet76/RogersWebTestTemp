@@ -144,4 +144,32 @@ public class CommonBusinessFlows {
 		baseTestClass.rogers_profile_and_settings_page.clkCloseFeedbackIfAvailableMobile();
 	}
 
+	/**
+	 * Log out and re sign in
+	 * @param strUserName string username
+	 * @param strPassword string password
+	 * @author Mirza.Kamran
+	 */
+	public void logOutAndReSignIn(String strUserName, String strPassword)
+	{
+		baseTestClass.rogers_login_page.clickSignOut();
+		baseTestClass.reporter.reportLogWithScreenshot("Sign Out clicked");  
+		baseTestClass.reporter.reportLogWithScreenshot("Checking contentful URL..");  
+        if(baseTestClass.rogers_home_page.isContentFulURLDisplayed())
+		{
+        	baseTestClass.reporter.reportLogWithScreenshot("Contentful page is displayed");  
+        	baseTestClass.rogers_home_page.clkEasyLogin();
+		}
+        baseTestClass.reporter.reportLogWithScreenshot("Sign-in is being clicked");  
+        baseTestClass.rogers_login_page.clkSignInAs();
+        baseTestClass.reporter.reportLogWithScreenshot("Re sign In");  
+        baseTestClass.rogers_login_page.switchToSignInIFrame();
+        baseTestClass.reporter.reportLogWithScreenshot("Set password");             
+        baseTestClass.rogers_login_page.setPasswordIFrame(strPassword);               
+        baseTestClass.reporter.reportLogWithScreenshot("Login Credential is entered.");
+        baseTestClass.rogers_login_page.clkSignInIFrame();	
+        baseTestClass.reporter.reportLogWithScreenshot("Sign In clicked");  
+        baseTestClass.rogers_login_page.switchOutOfSignInIFrame();		       
+        baseTestClass.reporter.reportLogWithScreenshot("Account overview page.");   
+	}
 }

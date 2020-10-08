@@ -41,6 +41,9 @@ public class RogersDigitalTVDashboardPage extends BasePageClass {
 		return reusableActions.isElementVisible(btnChangeMyPackage,60);
 	}
 
+	public boolean verifyChangeMyPackageMobile() {
+		return reusableActions.isElementVisible(btnChangeMyPackage,110);
+	}
 	/**
 	 * Click on the  the change package button on the legacy TV dash board 
 	 * @author chinnarao.vattam 

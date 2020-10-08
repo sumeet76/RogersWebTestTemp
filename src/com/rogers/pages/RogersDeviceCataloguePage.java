@@ -71,10 +71,10 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "(//p[@class='dsa-info__contentHeader align-self-center text-title-4 mb-0'])[2]")
     WebElement rpotgBannerText;
 
-    @FindBy(xpath = "(//button[contains(@tabindex,'-1')])[3]")
+    @FindBy(xpath = "//button[@title='Check']")
     WebElement checkBtn;
 
-    @FindBy(xpath = "(//button[contains(@tabindex,'-1')])[4]")
+    @FindBy(xpath = "//button[@title='Continue']")
     WebElement continueBtn;
 
     @FindBy(xpath = "(//p[contains(@class,'dsa-info__contentBody text-body mb-0')])[2]")
@@ -462,7 +462,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     	Thread.sleep(5000);
         xpathDeviceName=createXpathWithDeviceName(deviceName);
         String pricingBlockContentXpath = xpathDeviceName + "/parent::div/div";
-        reusableActions.waitForElementVisibility(driver.findElement(By.xpath(createXpathForCTAButton(deviceName))),30);
+        reusableActions.waitForElementVisibility(driver.findElement(By.xpath(createXpathForCTAButton(deviceName))),40);
         return reusableActions.getWhenReady(By.xpath(pricingBlockContentXpath), 20).getText().replaceAll("\\s+","");
     }
 

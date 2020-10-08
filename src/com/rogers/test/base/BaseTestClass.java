@@ -46,6 +46,7 @@ import com.rogers.pages.RogersRecoverPassOrNamePage;
 import com.rogers.pages.RogersRegisterPage;
 import com.rogers.pages.RogersReviewOrderPage;
 import com.rogers.pages.RogersSHMDashboardPage;
+import com.rogers.pages.RogersSearchPage;
 import com.rogers.pages.RogersSecurePaymentPage;
 import com.rogers.pages.RogersSetPasswordPage;
 import com.rogers.pages.RogersShareEverythingPage;
@@ -186,6 +187,7 @@ public class BaseTestClass {
 	protected com.rogers.oneview.pages.RogersShippingPage rogersOV_shipping_page;
 	protected com.rogers.oneview.pages.RogersPaymentPage rogersOV_payment_page;
 	protected com.rogers.oneview.pages.RogersChoosePlanPage rogersOV_ChoosePlan_page;
+	protected RogersSearchPage rogers_search_page;
 	AppiumServerJava appiumServer = new AppiumServerJava();	
 	//int port = 4723;	
 	private CaptchaBypassHandlers captcha_bypass_handlers;
@@ -267,12 +269,15 @@ public class BaseTestClass {
 		case "redesignrogers":	
 		case "buyflowsoneview": driver.get(strUrl);
 			break; 
+			
+		case "search": //driver.get(strUrl);
+		break;
 		
  		default :
  			driver.get(strUrl+"?setLanguage="+ language );
  			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 		}
-	    setImplicitWait(getDriver(), 10);	
+//	    setImplicitWait(getDriver(), 10);	
 		getDriver().manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 	    init(strGroupName);	 
  }
@@ -363,8 +368,13 @@ public class BaseTestClass {
 		common_business_flows = new CommonBusinessFlows(this);
 		switch(strGroupName) {
 		
+		case "search":
+			rogers_search_page = new RogersSearchPage(driver);
+			break;
+			
 		case "selfserve":
 		case "selfserve_login":
+		
 			
 			rogers_home_page = new RogersHomePage(driver);
 			rogers_login_page = new RogersLoginPage(driver);
@@ -661,4 +671,7 @@ public class BaseTestClass {
 		TestParameters.put("Language", strLanguage );
 		return TestParameters;
 	}
+
+
+
 }

@@ -33,7 +33,7 @@ public class RogersSS_Batch_AccountRegistrations extends BaseTestClass {
 	@DataProvider(name = "AccountRegistrationData")
 	public Iterator<Object[]> testData() throws IOException
 	{
-	  return parseCsvData(System.getProperty("user.dir") + "/test-data/rogers/selfserve/AccountRegistration.csv");
+	  return parseCsvDataSS(System.getProperty("user.dir") + "/test-data/rogers/selfserve/AccountRegistration.csv");
 	}
 	
 	
@@ -71,43 +71,34 @@ public class RogersSS_Batch_AccountRegistrations extends BaseTestClass {
 		}
 			
 		//Will open a new tab for ENS, to get verification code from ENS		
-		try {
-			reporter.reportLogWithScreenshot("ENS");
-			ensVerifications.getEmailVerifyPage(strEmail);
-			reporter.reportLogWithScreenshot("Email inbox got from ENS.");
-			rogers_set_password_page.clkBtnSetPasswordInEmail();
-			//Another new page opened
-			rogers_set_password_page.switchToSetPasswordTab(3);
-			rogers_set_password_page.setPassword(strPassword);
-			rogers_set_password_page.setConfirmPassword(strPassword);
-			reporter.reportLogWithScreenshot("Set password page.");
-			rogers_set_password_page.clkBtnSetPassword();
-			reporter.softAssert(rogers_set_password_page.verifyMsgReigistrationCompleteIsDisplayed(),
-					"Registration completed message displayed",
-					"Registration completed message does Not displayed");
-			reporter.reportLogWithScreenshot("Set password completed.");
-			rogers_set_password_page.clkButtonSignIn();
-			rogers_login_page.switchToSignInIFrame();
-	        rogers_login_page.setUsernameIFrame(strEmail);
-	        rogers_login_page.setPasswordIFrame(strPassword);
-	        reporter.reportLogWithScreenshot("Login Credential is entered.");
-	        rogers_login_page.clkSignInIFrame();
-	        rogers_login_page.clkSkipIFrame();
-			rogers_login_page.switchOutOfSignInIFrame();
-	        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
-	        	reporter.reportLogWithScreenshot("Select an account.");
-	        	rogers_account_overview_page.selectAccount(strBan);       
-	        }
-	        reporter.reportLogWithScreenshot("Account overview page.");
-			
-			
-			
-		} catch (ClientProtocolException e) {
-			reporter.reportLogWithScreenshot(e.getMessage());
-		} catch (IOException e) {
-			reporter.reportLogWithScreenshot(e.getMessage());
-		}
 
+		reporter.reportLogWithScreenshot("ENS");
+		ensVerifications.getEmailVerifyPage(strEmail);
+		reporter.reportLogWithScreenshot("Email inbox got from ENS.");
+		rogers_set_password_page.clkBtnSetPasswordInEmail();
+		//Another new page opened
+		rogers_set_password_page.switchToSetPasswordTab(3);
+		rogers_set_password_page.setPassword(strPassword);
+		rogers_set_password_page.setConfirmPassword(strPassword);
+		reporter.reportLogWithScreenshot("Set password page.");
+		rogers_set_password_page.clkBtnSetPassword();
+		reporter.softAssert(rogers_set_password_page.verifyMsgReigistrationCompleteIsDisplayed(),
+				"Registration completed message displayed",
+				"Registration completed message does Not displayed");
+		reporter.reportLogWithScreenshot("Set password completed.");
+		rogers_set_password_page.clkButtonSignIn();
+		rogers_login_page.switchToSignInIFrame();
+        rogers_login_page.setUsernameIFrame(strEmail);
+        rogers_login_page.setPasswordIFrame(strPassword);
+        reporter.reportLogWithScreenshot("Login Credential is entered.");
+        rogers_login_page.clkSignInIFrame();
+        rogers_login_page.clkSkipIFrame();
+		rogers_login_page.switchOutOfSignInIFrame();
+        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        	reporter.reportLogWithScreenshot("Select an account.");
+        	rogers_account_overview_page.selectAccount(strBan);       
+        }
+        reporter.reportLogWithScreenshot("Account overview page.");
 						
 	}
 	
@@ -119,7 +110,7 @@ public class RogersSS_Batch_AccountRegistrations extends BaseTestClass {
 	 * @throws IOException
 	 * @author Mirza.Kamran
 	 */
-	private Iterator<Object[]> parseCsvData(String fileName) throws IOException
+	public Iterator<Object[]> parseCsvDataSS(String fileName) throws IOException
 	{
 	  BufferedReader input = null;
 	  File file = new File(fileName);

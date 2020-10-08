@@ -28,7 +28,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	@FindBy (xpath = "//button[text()='Both username and password' or text()=\"Nom d'utilisateur et mot de passe\"]")
 	WebElement btnBoth;
 	
-	@FindBy (xpath = "//input[@formcontrolname='emailAddress']")
+	@FindBy (xpath = "//input[@formcontrolname='email']")
 	WebElement txtEmailAddress;
 	
 	
@@ -94,7 +94,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	@FindBy (xpath = "/html/body/table[1]//img[@alt='Return to sign in' or @alt='Ouvrir une session']")
 	WebElement btnReturnToSignin;
 
-	@FindBy(xpath = "//a[text()='Use your account information instead.']")
+	@FindBy(xpath = "//a[text()='Use your account information instead.'or contains(text(),'t les renseignements de votre compte')]")
 	WebElement lnkUseYourAccountInfoInstead;
 
 	@FindBy(xpath = "//input[@formcontrolname='accountNumber']/parent::div")
@@ -115,17 +115,20 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	@FindBy(xpath = "//ds-code-input/div/div[1]/input")
 	WebElement inputCode;
 
-	@FindBy(xpath = "//span[text()='Create a new MyRogers password for ']/following-sibling::span")
+	@FindBy(xpath = "//span[text()='Create a new MyRogers password for ' or contains(text(),'ez un nouveau mot de passe MonRogers pour')]/following-sibling::span")
 	WebElement lblSetPasswordForUserName;
 
-	@FindBy(xpath = "//h1//span[text()='Success!']")
+	@FindBy(xpath = "//h1//span[text()='Success!' or contains(text(),'ussi!')]")
 	WebElement lblYourPasswordHasBeenReset;
 	
-	@FindBy(xpath = "//button//*[text()='Go to MyRogers']")
+	@FindBy(xpath = "//button//*[text()='Go to MyRogers' or contains(text(),'MonRogers')]")
 	WebElement btnGoToMyRogers;
 
 	@FindBy(xpath = "//input[@formcontrolname='username']")
 	WebElement txtUsername;
+
+	@FindBy(xpath = "//td[text()=' Verification code: ' or contains(text(),'Code de v')]/parent::tr/following-sibling::tr/td")
+	WebElement lblYourVerificationCode;
 	
 	
 	public void clkBtnPassword() {
@@ -187,7 +190,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Ning.Xue
 	 */
 	public void clkBtnTextNow() {
-		reusableActions.getWhenVisible(btnTextNow).click();
+		reusableActions.getWhenReady(btnTextNow).click();
 	}
 	
 	/**
@@ -419,5 +422,10 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	public void setUsernameIFrame(String strUsername) {		
 		reusableActions.getWhenVisible(txtUsername).sendKeys(strUsername);
 		
+	}
+
+	public String getVerificationCodeForRecoverUsername() {
+		String strMsg = reusableActions.getWhenReady(lblYourVerificationCode).getText();
+		return strMsg.trim();
 	}
 }

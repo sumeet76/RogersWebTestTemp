@@ -76,6 +76,7 @@ public class RogersSS_TC_011_FDM_ValidateVideoStreamingTabInSE_Dashboard extends
        }
                   	   
     	   reporter.reportLogWithScreenshot("Stream saver if set to ON");
+    	   common_business_flows.scrollToTopOfWebPage();
            rogers_wireless_dashboard_page.clkStreamSaverOff();
            reporter.hardAssert(rogers_wireless_dashboard_page.isStreamSaverOFF(),
         		   "Stream Saver is switch off successfully",

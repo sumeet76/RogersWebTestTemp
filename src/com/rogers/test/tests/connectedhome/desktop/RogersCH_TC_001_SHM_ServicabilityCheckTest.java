@@ -29,16 +29,14 @@ public class RogersCH_TC_001_SHM_ServicabilityCheckTest extends BaseTestClass {
 
 	@Test(groups = {"SanityCH","RegressionCH","RhpAndRhmCH"})
     public void checkServicabilityRHMTest() throws InterruptedException {
-		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		rogers_home_page.clkEasyLogin();
     	reporter.reportLogWithScreenshot("Launched the Home Page");
-    	rogers_home_page.clkShop(); 
+    	rogers_home_page.clkShop();
     	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Home Monitering");
     	rogers_home_page.clkHomeMonitering();
     	reporter.reportLogWithScreenshot("Launched the Home Monitering packages page");
     	rogers_buy_page.selectHomeMoniteringPackage(TestDataHandler.rogersSHM.getAccountDetails().getRhmPackageEn(),TestDataHandler.rogersSHM.getAccountDetails().getRhmPackageFr());
-        String  strAddressLine1=(String) TestDataHandler.rogersSHM.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=(String) TestDataHandler.rogersSHM.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.rogersSHM.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.rogersSHM.getAccountDetails().getAddress().get("line2");
         rogers_buy_page.setAddressLookup(strAddressLine1+", "+strAddressLine2);
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
     	rogers_buy_page.clkAddressLookupSubmit(); 

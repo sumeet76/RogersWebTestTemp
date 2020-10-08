@@ -110,6 +110,10 @@ public class RogersInternetDashboardPage extends BasePageClass {
 		return reusableActions.isElementVisible(txtInternetUsage,30);
 	}
 
+	public boolean verifyInternetUsageMobile() {
+		return reusableActions.isElementVisible(txtInternetUsage,110);
+	}
+
 	/**
 	 * Verify the Internet usage on the Internet dash board page
 	 * @author Chinnarao.Vattam
@@ -219,7 +223,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkVAMenu() {	
-		reusableActions.getWhenReady(btnVaMenu, 10).click();
+		reusableActions.getWhenReady(btnVaMenu, 20).click();
 	}
 	
 	/**
@@ -318,13 +322,26 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectSolarisInternetPackage(String strPackageNameEn,String strPackageNameFr) {	
-		By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='internet-bundle-tile__row']//button[@aria-label='Add Rogers Ignite Popular Bundle to your cart']");
+		By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='internet-bundle-tile__row']//button[contains(@aria-label,'Add Rogers Ignite')]");
 		reusableActions.javascriptScrollToMiddleOfPage();
 		reusableActions.getWhenReady(packageNameLocator, 90);
 		WebElement pkg = driver.findElement(packageNameLocator);
 		reusableActions.executeJavaScriptClick(pkg);
 	}
-	
+
+	/**
+	 * Select Solaris Internet Package
+	 * @param strPackageNameEn package name
+	 * @param strPackageNameFr package name
+	 * @author Chinnarao.Vattam
+	 */
+	public void selectStandAloneInternetPackage(String strPackageNameEn,String strPackageNameFr) {
+		By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='internet-bundle-tile__row']//button[contains(@aria-label,'Add Ignite Internet')]");
+		reusableActions.javascriptScrollToMiddleOfPage();
+		reusableActions.getWhenReady(packageNameLocator, 90);
+		WebElement pkg = driver.findElement(packageNameLocator);
+		reusableActions.executeJavaScriptClick(pkg);
+	}
 	/**
 	 * Select the  Internet Package on change Internet package page
 	 * @param strPackageNameEn Internet package to be selected

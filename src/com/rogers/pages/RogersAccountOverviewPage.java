@@ -121,13 +121,13 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	WebElement imgLoadingFingers;
 	
 	@FindAll({
-        @FindBy(xpath = "//a[text()='Profile & Settings' or text()='Profil et paramètres']"),
+        @FindBy(xpath = "//a[text()='Profile & Settings' or contains(text(),'Profil et param')]"),
         @FindBy(xpath = "//span[@data-translate='ute.common.label.profileAndSetting']")})
     WebElement menuProfileNSettings;
 
 	@FindAll({
 	@FindBy(xpath = "//button[@aria-label='ute.common.label.profileAndSetting']"),
-	@FindBy(xpath = "//span[text()='Profile & Settings' or text()='Profil et paramètres']/parent::a")})
+	@FindBy(xpath = "//span[text()='Profile & Settings' or contains(text(),'Profil et param')]/parent::a")})
 	WebElement menuProfileAndSettingsMobile;
 	
 
@@ -156,7 +156,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy (xpath = "//h1[@class='profile-header']")
 	WebElement headerProfileNSettings;
 	
-	@FindBy (xpath = "//*[@translate='ute.payment.method.payment_method' or @translate='ute.payment.method.will_auto_charge' or contains(text(),'Will be automatically charged to:') or contains(text(),'Mode de paiement:')]")
+	@FindBy (xpath = "//*[@translate='ute.payment.method.payment_method' or @translate='ute.payment.method.will_auto_charge' or contains(text(),'Will be automatically charged to:') or contains(text(),'Mode de paiement:') or contains(text(),'Sera porté automatiquement à :')]")
 	WebElement lblAutoPayment;
 	
 	@FindBy(xpath = "//div[@translate='ute.payment.method.account_prefix']")
@@ -225,13 +225,14 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	WebElement btnProfileSettingsMobile;
 	
 	@FindAll({
-		@FindBy(xpath = "//span[contains(text(),'Entertainment')]/ancestor::div[@class='subscription-detail']"),
+		@FindBy(xpath = "//span[contains(text(),'Entertainment') or contains(text(),'Divertissement')]/ancestor::div[@class='subscription-detail']"),
         @FindBy(xpath = "//span[@translate='ute.subscriptionBadge.smartStream']")})	
 	WebElement btnEntertainmentBadge;
 		
 	@FindAll({
-	@FindBy(xpath = "//span[contains(text(),'Billing & Payment')]"),	
-	@FindBy(xpath = "//button[@aria-label='ute.common.label.billAndPayment']")})
+	@FindBy(xpath = "//button[@aria-label='ute.common.label.billAndPayment']"),
+	@FindBy(xpath = "//div[@id='services']//span[contains(text(),'Billing & Payment')]")	
+	})
 	WebElement menuBillingAndPaymentsMobile;
 	
 	@FindBy(xpath = "//div[@class='ute-secondLevelNav-bar-m']//button//span[contains(text(),'Billing & Payment')]")
@@ -246,7 +247,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@translate,'makeAPayment')]")
 	WebElement lblMakeASecurePayment;
 
-	@FindBy(xpath = "//span[@class='auto-payment-info']")
+	@FindBy(xpath = "//span[@class='auto-payment-info' or @translate='ute.payment.method.ending_number']")
 	WebElement txtCC;
 
 	@FindBy(xpath = "//p[contains(text(),'This account has been cancelled, so your access to MyRogers') or contains(text(),'Ce compte a été fermé, votre accès à MonRogers')]") 
@@ -269,6 +270,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	@FindBy (xpath = "//span[@class='menu-click']")
 	WebElement menuAccountNumber;
+		
+	@FindBy(xpath = "//div[@class='c-nav-shell-in-mobile']//span[contains(text(),' Account: ')]/span")
+	WebElement menuAccountNumberMobile;
 	
 	@FindBy(xpath = "//iframe[@id='va-iframe']")
 	WebElement fraLiveChat;
@@ -288,7 +292,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//p[contains(@class,'dsa-alert') and (contains(text(),'You’ve exceeded your credit limit and your services are now suspended') or contains(text(),'Vous avez dépassé votre limite de crédit et vos services sont suspendus'))]")
 	WebElement lblCreditLimitExceeded;
 
-	@FindBy(xpath = "//rss-subscription-details//span[contains(text(),'Add a') and contains(text(),'Add a')]")
+	@FindBy(xpath = "//rss-subscription-details//span[contains(text(),'Add a') or contains(text(),'Ajout d')]")
 	WebElement lnkAddALine;
 
 	@FindBy(xpath = "//h4[@translate='see.has_share_group_popup_title']")
@@ -345,20 +349,20 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//*[@translate='acc_overview_other_services']")
 	WebElement lblOtherServicesAvailable;
 
-	@FindBy(xpath = "//a//span[contains(@class,'ds-button__copy') and contains(text(),'Sign up')]")
+	@FindBy(xpath = "//a//span[contains(@class,'ds-button__copy') and (contains(text(),'Sign up') or contains(text(),'S’abonner'))]")
 	WebElement btnSubscriptionSignUp;
 
-	@FindBy(xpath = "//a//span[contains(@class,'ds-button__copy') and contains(text(),'Manage')]")
+	@FindBy(xpath = "//a//span[contains(@class,'ds-button__copy') and (contains(text(),'Manage') or contains(text(),'Gérer'))]")
 	WebElement btnSubscriptionManage;
 
-	@FindBy(xpath = "//h2[text()='Currently subscribed']")
+	@FindBy(xpath = "//h2[text()='Currently subscribed' or text()='Abonnement en cours']")
 	WebElement headerCurrentlySubscribed;
 
-	@FindBy(xpath = "//a[contains(@title,'Cancel the Apple Music subscription for')]")
+	@FindBy(xpath = "//a[contains(@title,'Cancel the Apple Music subscription for') or contains(@title,'Annuler l’abonnement')]")
 	WebElement btnCancelSubscription;
 
 	
-	@FindBy(xpath = "//h1[text()='Cancel subscription']")
+	@FindBy(xpath = "//h1[text()='Cancel subscription' or contains(text(),'Annuler l’abonnement')]")
 	WebElement headerCancelSubscription;
 
 	@FindBy(xpath = "//rss-subscriber-info")
@@ -371,34 +375,34 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//rss-cancel//ds-form-field/div/div[contains(@class,'select')]")
 	WebElement selectReasonForCancel;
 
-	@FindBy(xpath = "//*[contains(text(),'Confirm')]")
+	@FindBy(xpath = "//*[contains(text(),'Confirm') or contains(text(),'Confirmer')]")
 	WebElement btnConfirm;
 
-	@FindBy(xpath = "//button[@title='Return to subscription management page']")
+	@FindBy(xpath = "//button[@title='Return to subscription management page' or @title='Revenir à la page de gestion des abonnements']")
 	WebElement btnOK;
 
-	@FindBy(xpath = "//p[text()='Subscription cancelled']")
+	@FindBy(xpath = "//p[text()='Subscription cancelled' or contains(text(),'Abonnement annul')]")
 	WebElement headerCancelSuccess;
 	
-	@FindBy(xpath = "//*[contains(text(),'Subscription successful')]")
+	@FindBy(xpath = "//*[contains(text(),'Subscription successful') or contains(text(),'Abonnement réussi')]")
 	WebElement headerSubscriptionSuccess;
 
 	@FindBy(xpath = "//option[@value='0: Object']")
 	WebElement optReasonOne;
 
-	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[text()=' Cancelled ']")
+	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[text()=' Cancelled ' or contains(text(),' Service annul')]")
 	WebElement paneSMPCancelled;
 	
-	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[contains(text(),'Promotion ends')]")
+	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[contains(text(),'Promotion ends') or contains(text(),'La promotion prend fin le')]")
 	WebElement lblSMPpromotionEnds;
 	
-	@FindBy(xpath = "//span[contains(text(),'Promotion started')]")
+	@FindBy(xpath = "//span[contains(text(),'Promotion started') or contains(text(),' La promotion a commencé')]")
 	WebElement lblSMPpromotionStarted;
 
 	@FindBy(xpath = "//ds-checkbox")
 	WebElement chkRedeemSubs;
 
-	@FindBy(xpath = "//a[@title='Sign up for Apple Music']")
+	@FindBy(xpath = "//a[@title='Sign up for Apple Music' or contains(@title,'S’abonner à Apple Music')]")
 	WebElement btnSignUp;
 
 	@FindBy(xpath = "//h1[@class='signup-page-title']")
@@ -407,10 +411,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//ds-checkbox")
 	WebElement chkTnC;
 	
-	@FindBy(xpath = "//button[@title='Continue and activate this Apple Music subscription']")
+	@FindBy(xpath = "//button[@title='Continue and activate this Apple Music subscription' or contains(@title,'Continuer et activer cet abonnement')]")
 	WebElement btnSubscribeToSubsscription;
 
-	@FindBy(xpath = "//a[text()='Yes']")
+	@FindBy(xpath = "//a[text()='Yes' or contains(text(),'Oui')]")
 	WebElement btnCloseFAQ;
 
 	@FindBy(xpath = "//span[@class='vas-subscriber-number']")
@@ -464,9 +468,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void clkLegacyInternetMobile() {
 		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(btnLegacyInternetBadge, 60).click();
-/*		reusableActions.waitForElementVisibility(btnLegacyInternetBadge, 60);
-		reusableActions.executeJavaScriptClick(btnLegacyInternetBadge);*/
+		reusableActions.waitForElementVisibility(btnLegacyInternetBadge, 60);
+		reusableActions.executeJavaScriptClick(btnLegacyInternetBadge);
 	}
 	/**
 	 * Clicks on the Legacy 'InternetBadge' option on the dash board
@@ -518,9 +521,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * Clicks on the 'TV Badge' option on the dash board
 	 * @author chinnarao.vattam
 	 */
-	public void clkTVBadgeMobile() {	
+	public void clkTVBadgeMobile() {
+		reusableActions.isElementVisible(btnTVBadge,110);
 		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(btnTVBadge, 60).click();	
+		reusableActions.executeJavaScriptClick(btnTVBadge);
 	}
 	
 	/**
@@ -680,10 +684,24 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifySuccessfulLogin() {	
-	 reusableActions.waitForElementVisibility(menuAccountNumber,60);
-	 String strAccountNumber = reusableActions.getWhenReady(menuAccountNumber,5).getText();
+		reusableActions.staticWait(3000);
+		 reusableActions.waitForElementVisibility(menuAccountNumber,60);
+		 String strAccountNumber = reusableActions.getWhenReady(menuAccountNumber,30).getText();
+		 return NumberUtils.isDigits(strAccountNumber);
+	}
+		
+	
+	/**
+	 * To verify the successful login
+	 * @return true if the balance label is present ; else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifySuccessfulLoginMobile() {	
+	 reusableActions.waitForElementVisibility(menuAccountNumberMobile,60);
+	 String strAccountNumber = reusableActions.getWhenReady(menuAccountNumberMobile,5).getText();
 	 return NumberUtils.isDigits(strAccountNumber);
 	}
+	
 	
 	/**
 	 * To verify the successful login
@@ -824,8 +842,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		{
 			reusableActions.getWhenReady(menuMainBillingAndPaymentsMobile,30).click();
 		}	
-		//reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
-		reusableActions.staticWait(3000); //extra static buffers added for firefox	
+		reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();					
 		reusableActions.waitForElementVisibility(submenuSetUpAutomaticPaymentMethodMobile);
 		reusableActions.getWhenReady(submenuSetUpAutomaticPaymentMethodMobile).click();	
 	}
@@ -929,8 +946,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		{
 			reusableActions.getWhenReady(menuMainBillingAndPaymentsMobile,30).click();
 		}
-		//reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();		
-		reusableActions.staticWait(3000); //extra static buffers added for firefox
+		reusableActions.getWhenReady(menuBillingAndPaymentsMobile,30).click();				
 		return reusableActions.isElementVisible(lnkSetUpAutomaticPaymentMethodMobile);
 	}
 
@@ -952,8 +968,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean verifyThatAutoPaymentWithCCIsDisplayedOnAccountOverViewPage() {
 		reusableActions.waitForElementVisibility(lblAutoPayment, 50);
-		return (reusableActions.isElementVisible(lblAutoPayment)
-			 && reusableActions.isElementVisible(imgCC));
+		return (reusableActions.isElementVisible(lblAutoPayment,20)
+			 && reusableActions.isElementVisible(imgCC,20));
 	}
 
 		
@@ -963,8 +979,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @param strCC string value of of containing cc
 	 * @author Mirza.Kamran
 	 */
-	public boolean verifyCCEndingWithIsDisplayedCorrectly(String strCC) {		
-		return reusableActions.getWhenReady(txtCC).getText().trim().endsWith(strCC.substring(strCC.length()-4));
+	public boolean verifyCCEndingWithIsDisplayedCorrectly() {		
+		return reusableActions.isElementVisible(txtCC,30);
 	}
 	
 	/**
@@ -1677,7 +1693,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		 * @author Mirza.Kamran
 		 */
 		public boolean verifyIfSubscriptionSuccessfulOverLayDisplayed() {
-			return reusableActions.isElementVisible(By.xpath("//*[contains(text(),'Subscription successful')]"));
+			return reusableActions.isElementVisible(By.xpath("//*[contains(text(),'Subscription successful') or contains(text(),'Abonnement réussi')]"));
 		} 
 		
 		/**

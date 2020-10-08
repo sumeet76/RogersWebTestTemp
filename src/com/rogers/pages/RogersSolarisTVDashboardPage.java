@@ -43,8 +43,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	WebElement lnkViewfelxChannels;
 
 	@FindBy(xpath = "//ins[@translate='global.cta.changeTVPackage']")
-	WebElement btnChangeTVPackage;		
-	
+	WebElement btnChangeTVPackage;
+
 	@FindBy(xpath = "//ins[@translate='global.cta.addChannelsOrThemePacksTv']")
 	WebElement btnManageChannelsAndThemePacks;
 	
@@ -138,12 +138,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//i[@class='ute-icon-button-left']")
 	WebElement imgPrevious;
 		
-	@FindAll({
-        @FindBy(xpath = "//span[@translate='myaccoverview_home_monotoring']"),
-        @FindBy(xpath = "//span[contains(text(),'Home Monitoring') or contains(text(),'Système domotique')]/ancestor::div[@class='subscription-detail']")})
+	@FindBy(xpath = "//span[contains(text(),'Home Monitoring') or contains(text(),'Système domotique')]/ancestor::div[@class='subscription-detail']")
 	WebElement btnSHMBadge;
 	
-
 	@FindBy(xpath = "//ins[@usertype-translate='global.dashboard.tv.digitalBoxes']")
 	WebElement lblBoxHeader;
 
@@ -288,7 +285,16 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		reusableActions.waitForElementVisibility(btnChangeTVPackage,90);
 		reusableActions.getWhenReady(btnChangeTVPackage, 30).click();
 	}
-	
+
+	/**
+	 * Click the ChangeTV Package link on solaris TV dashboard page
+	 * @author chinnarao.vattam
+	 */
+	public void clkChangeTVPackageMobile() {
+		reusableActions.waitForElementVisibility(btnChangeTVPackage,90);
+		reusableActions.staticWait(3000);
+		reusableActions.executeJavaScriptClick(btnChangeTVPackage);
+	}
 	/**
 	 * Click the Manage Channels And Theme Packs link on solaris TV dashboard page
 	 * @author chinnarao.vattam
@@ -347,7 +353,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	public boolean verifyFlexChannelcountPopular() {
 		String strChannels=reusableActions.getWhenReady(txtFlexChannels, 50).getText();
 		String[] channels = strChannels.split("\\s+");
-		return channels[0].equals("45");
+		return channels[0].equals("44");
        }
 	/**
 	 * Selects the solaris tv package name to be upgrade or downgrade 
@@ -357,18 +363,18 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 */
 	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
 		By packageNameLocator = By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'owl-item')]//ins[@translate='global.cta.select']");
-		if(reusableActions.isElementVisible(packageNameLocator,40))
+		if(reusableActions.isElementVisible(packageNameLocator,60))
 		{		
-		reusableActions.getWhenReady(packageNameLocator, 10);
+		reusableActions.getWhenReady(packageNameLocator, 20);
 		WebElement pkg = driver.findElement(packageNameLocator);
 		reusableActions.executeJavaScriptClick(pkg);
 		 }
 	   else
 		{
-	    reusableActions.getWhenReady(imgNext, 20);
+	    reusableActions.getWhenReady(imgNext, 60);
 	    reusableActions.executeJavaScriptClick(imgNext);
 	    WebElement pkg = driver.findElement(packageNameLocator);
-	    reusableActions.getWhenReady(pkg, 20);
+	    reusableActions.getWhenReady(pkg, 60);
 	    reusableActions.executeJavaScriptClick(pkg);
 		}
 	}
@@ -520,7 +526,22 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 			reusableActions.waitForElementVisibility(btnSearchChannel,120);
 			reusableActions.getWhenReady(imgChannel, 30).click();	
 	}
-	
+
+	/**
+	 * Search for the required channel and will add it to the to be add list
+	 * @param strInChannel  are channels
+	 * @author chinnarao.vattam
+	 */
+	public void swapChannelInMobile(String strInChannel) {
+		reusableActions.getWhenReady(txtEnterChannelToSerach, 60).clear();
+		reusableActions.getWhenReady(txtEnterChannelToSerach, 30).sendKeys(strInChannel);
+		reusableActions.waitForElementVisibility(btnSearchChannel,60);
+		reusableActions.executeJavaScriptClick(btnSearchChannel);
+		By imgChannel = By.xpath("//div[@class='channel-title' and contains(text(), '"+ strInChannel+"')]/ancestor::div[@class='genre-channel']//span[@class='ute-icon-info']");
+		reusableActions.waitForElementVisibility(btnSearchChannel,120);
+		reusableActions.executeJavaScriptClick((WebElement) imgChannel);
+	}
+
 	/**
 	 * Click the Channel Add button 
 	 * @author chinnarao.vattam
@@ -634,7 +655,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkSHMBadge() {		
-		reusableActions.getWhenReady(btnSHMBadge).click();
+		reusableActions.getWhenReady(btnSHMBadge,60).click();
 	}
 
 	

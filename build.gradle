@@ -9,7 +9,7 @@ plugins {
 sauceconnect {
 	username = System.getenv('SAUCE_USERNAME')
 	key = System.getenv('SAUCE_ACCESS_KEY')
-	options = "-i myTunnel"
+	options = "-i myTunnel --no-remove-colliding-tunnels"
 }
 
 def sauce = [
@@ -33,6 +33,7 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'AWSUrl', test_awsURL
 	systemProperty 'Browser', test_browser
 	systemProperty 'Language', test_language
+	systemProperty 'SearchUrl', test_searchURL
 
 	useTestNG(){
 		parallel = test_parallel
@@ -61,6 +62,7 @@ task "localTest"(type: Test) {
 	systemProperty 'AWSUrl', test_awsURL
 	systemProperty 'Browser', test_browser
 	systemProperty 'Language', test_language
+	systemProperty 'SearchUrl', test_searchURL
 
 	systemProperties(System.getProperties())
 	outputs.upToDateWhen { false }  // Always run tests

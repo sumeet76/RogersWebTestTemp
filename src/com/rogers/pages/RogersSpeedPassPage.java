@@ -50,7 +50,8 @@ public class RogersSpeedPassPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifySpeedPassPopupIsDisplayed() {
-		return reusableActions.isElementVisible(topUpSpeedPass, 30);
+		return (reusableActions.isElementVisible(topUpSpeedPass, 30)
+				||reusableActions.isElementVisible(lblCannotAddSpeedPass, 30));
 	}
 	
 	/**

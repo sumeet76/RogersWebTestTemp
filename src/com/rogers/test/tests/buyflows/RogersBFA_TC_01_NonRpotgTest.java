@@ -41,7 +41,8 @@ public class RogersBFA_TC_01_NonRpotgTest extends BaseTestClass {
         String deviceInfoDeviceConfigPage = deviceNameDeviceConfigPage + " " + deviceSizeDeviceConfigPage + " " + deviceColorDeviceConfigPage;
         reporter.softAssert(rogers_device_config_page.verifyDefaultSizeSelected(),"Default value for size is selected", "Default value for size is not selected");
         //reporter.softAssert(rogers_device_config_page.verifyDefaultColorSelected(),"Default value of color is selected","Default value of color is not selected");
-		reporter.reportLogPassWithScreenshot("Device Config Page"+"Device info:"+deviceInfoDeviceConfigPage);
+		reporter.reportLogPassWithScreenshot("Device Config Page->"+"Device info:"+deviceInfoDeviceConfigPage);
+		Thread.sleep(2000);
         String pricingBlockValueDeviceConfigPage = rogers_device_config_page.getPricingBlockValueDeviceConfigPage();
         reporter.hardAssert(pricingBlockValueCataloguePage.equals(pricingBlockValueDeviceConfigPage),"Pricing block value for device catalogue page matches with the device config page value", "Pricing blocks on Catalogue page and config page is not matching");
         String pricePlanInfoDeviceConfigPage = rogers_device_config_page.getPricePlanValueDeviceConfigPage();
@@ -55,15 +56,15 @@ public class RogersBFA_TC_01_NonRpotgTest extends BaseTestClass {
         //############################Plan config page###############################
         reporter.softAssert(rogers_plan_config_page.verifyBreadCrumb(deviceName), "BreadCrumb on Plan config page is working fine","BreadCrumb is not working fine");
         reporter.hardAssert(rogers_plan_config_page.verifyDefaultPrice(fullPriceValueCataloguePage), "Default  price is same as it is shown in device catalogue & Config page page", "Default price is not same as it is shown in device catalogue page");
-        rogers_plan_config_page.clickPreCartSummaryContinueButton();
+        rogers_plan_config_page.clickPreCartDeviceCostContinueButton();
         //rogers_plan_config_page.selectDataOption(deviceName);	
         reporter.reportLogPassWithScreenshot("Plan config page data option selected");
-        rogers_plan_config_page.clickPreCartSummaryContinueButton();
+        rogers_plan_config_page.clickPreCartDataOptionContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
-        rogers_plan_config_page.clickPreCartSummaryContinueButton();
+        rogers_plan_config_page.clickPreCartTalkOptionContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page data protection selected");
         rogers_plan_config_page.clickOptionInDataProtection(deviceName);
-        rogers_plan_config_page.clickPreCartSummaryContinueButton();
+        rogers_plan_config_page.clickPreCartAddonsContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
         String monthlyFeesAmount = rogers_plan_config_page.getMonthlyFeesAmount();
         String oneTimeFeesAmount = rogers_plan_config_page.getOneTimeFeesAmount();
@@ -80,11 +81,13 @@ public class RogersBFA_TC_01_NonRpotgTest extends BaseTestClass {
         reporter.softAssert(rogers_checkout_page.verifyCreateProfileTitle(),"Create profile Title Present","Create profile Title not present");
         String emailCreateProfile=rogers_checkout_page.setEmailCreateProfile();
         rogers_checkout_page.confirmEmailCreateProfile(emailCreateProfile);
+        //String firstName = rogers_checkout_page.setFirstNameCreateProfile();
+        //String lastName = rogers_checkout_page.setLastNameCreateProfile();
+      //*************** AVS Data Code- Commented for future issue ******//
         String firstName = rogers_checkout_page.setFirstNameCreateProfile();
         String lastName = rogers_checkout_page.setLastNameCreateProfile();
-      //*************** AVS Data Code- Commented for future issue ******//
-//        String firstName = rogers_checkout_page.setFirstNameCreateProfilepage("AMARA");
-//        String lastName = rogers_checkout_page.setLastNameCreateProfilepage("SPEARS");
+        //String firstName = rogers_checkout_page.setFirstNameCreateProfilepage("AMARAssspeares");
+        //String lastName = rogers_checkout_page.setLastNameCreateProfilepage("SPEARSsscheck");
         String fullNameCreateProfile=firstName+" "+lastName;
         String contactNumberCreateProfile=TestDataHandler.tc01NonRpotg.getContactNumber();
         rogers_checkout_page.setContactNumberCreateProfile(contactNumberCreateProfile);
@@ -143,8 +146,23 @@ public class RogersBFA_TC_01_NonRpotgTest extends BaseTestClass {
         rogers_checkout_page.setCVVNumber(TestDataHandler.tc01NonRpotg.getCvvNumber());
         reporter.reportLogPassWithScreenshot("Billing & Payment Details Entered Successfully");
         rogers_checkout_page.clkAddCard();       
+=======
+        reporter.softAssert(rogers_checkout_page.isBillingOptionsTitleDisplayed(), "Billing Options Title Displayed",
+				"Billing Options Title Not Present");
+		reporter.softAssert(rogers_checkout_page.isPaymentMethodDropdownPresent(),
+				"Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not disaplayed");
+		rogers_checkout_page.selectPaymentMethodDropdownOption(TestDataHandler.redesignRpotgData.getPaymentMethod());
+//        rogers_checkout_page.setNameOnCard(TestDataHandler.redesignRpotgData.getNameOnCard());
+//        rogers_checkout_page.switchToCreditCardIFrame();
+//        rogers_checkout_page.setCreditCardNumberIFrame(TestDataHandler.redesignRpotgData.getBillingCreditCardNumber());
+//        rogers_checkout_page.switchOutOfCreditCardIFrame();
+//        rogers_checkout_page.setBillingExpiryDate(TestDataHandler.redesignRpotgData.getExpiryDate());
+//        rogers_checkout_page.setCVVNumber(TestDataHandler.redesignRpotgData.getCvvNumber());
+//        reporter.reportLogPassWithScreenshot("Billing & Payment Details Entered Successfully");
+//        rogers_checkout_page.clkAddCard();       
+>>>>>>> 03f43dff6a90e93c213740f13398c52d40ecc6df:src/com/rogers/test/tests/redesignrogersnac/RogersRedesign_TC_01_NonRpotgTest.java
         rogers_checkout_page.clkBillingContinueButton();
-        reporter.hardAssert(rogers_checkout_page.isCardDetailsDisplayed(),"Card details disaplayed in Billing & Payment Options", "Card details not disaplayed in Billing & Payment Options");
+//        reporter.hardAssert(rogers_checkout_page.isCardDetailsDisplayed(),"Card details disaplayed in Billing & Payment Options", "Card details not disaplayed in Billing & Payment Options");
         //***************Billing Options Stepper*************//
         reporter.softAssert(rogers_checkout_page.clkBillingAddress(),"Billing Address radio button is selected ","Billing Address is not selected");
         rogers_checkout_page.clkDeliveryMethodStandard();
@@ -181,8 +199,8 @@ public class RogersBFA_TC_01_NonRpotgTest extends BaseTestClass {
         reporter.hardAssert(oneTimeFee.equals(oneTimeFeesConfirmationPage),"Total One time fee after tax matches with checkout page","Total One time fee after tax not matches with checkout page");
         String purchaseIncludesConfrimation=rogers_NAC_order_confirmation_page.getPurchaseIncludesText();
         reporter.reportLogPassWithScreenshot("Purchase includes captured as" + "-->" +purchaseIncludesConfrimation);
-        reporter.hardAssert(rogers_NAC_order_confirmation_page.isLearnMoreLinkDisplayed(),"Learn More Link Displayed","Learn More Link not Present");
-        reporter.reportLogPassWithScreenshot("Order Review Page: LearnMore Link");
+        //reporter.hardAssert(rogers_NAC_order_confirmation_page.isLearnMoreLinkDisplayed(),"Learn More Link Displayed","Learn More Link not Present");
+        //reporter.reportLogPassWithScreenshot("Order Review Page: LearnMore Link");
         
   }
 

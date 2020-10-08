@@ -57,8 +57,8 @@ public class RogersSC_TC_004_ExistingLegacyCustomer_PortIn_CartAbandonTest exten
 		reporter.reportLogWithScreenshot("Port-in Number validation success");
 		rogers_home_phone_port_in_page.setFirstName();
 		rogers_home_phone_port_in_page.setLastName();
-		String  strAddressLine1=(String) TestDataHandler.solarisConsumerPortInCartAbandon.getAccountDetails().getAddress().get("line1");
-		String  strAddressLine2=(String) TestDataHandler.solarisConsumerPortInCartAbandon.getAccountDetails().getAddress().get("line2");
+		String  strAddressLine1=TestDataHandler.solarisConsumerPortInCartAbandon.getAccountDetails().getAddress().get("line1");
+		String  strAddressLine2=TestDataHandler.solarisConsumerPortInCartAbandon.getAccountDetails().getAddress().get("line2");
 		rogers_home_phone_port_in_page.setInvoiceAddress(strAddressLine1+", "+strAddressLine2+", CANADA");
 		rogers_home_phone_port_in_page.setCurrentPhoneNumber();
 		rogers_home_phone_port_in_page.setAccountNumberOrIMEI(TestDataHandler.solarisConsumerPortInCartAbandon.getAccountDetails().getImeiNumber());

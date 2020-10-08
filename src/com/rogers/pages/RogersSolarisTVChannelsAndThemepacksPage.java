@@ -1,11 +1,11 @@
 package com.rogers.pages;
 
-import java.util.List;
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import com.rogers.pages.base.BasePageClass;
+import java.util.List;
 
 public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 
@@ -17,7 +17,10 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[contains(@class,'ute-btn-group-set-accessibility')]//ins[@usertype-translate='global.cta.yesIHave4K']")
 	WebElement btnYesIHave4K;
-	
+
+	@FindBy(xpath = "(//button[contains(@class,'ute-btn-primary margin-right-0 margin-left-15')]//ins[@usertype-translate='global.cta.yesIHave4K'])[1]")
+	WebElement btnYesIHave4KMobile;
+
 	@FindBy(xpath = "//button[contains(@class,'continue-btn-4k')]//ins[@translate='global.cta.continue']")
 	WebElement btn4KContent;
 	
@@ -230,7 +233,15 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	public void clkYesIHave4K() {
 		reusableActions.getWhenReady(btnYesIHave4K, 90).click();
 	}
-	
+
+	/**
+	 * Click on the "YesIHave4K" button
+	 * @author chinnarao.vattam
+	 */
+	public void clkYesIHave4KMobile() {
+		reusableActions.getWhenReady(btnYesIHave4KMobile, 90).click();
+	}
+
 	/**
 	 * Click on the "4KContent" button
 	 * @author chinnarao.vattam
