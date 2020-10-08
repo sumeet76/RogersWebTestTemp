@@ -32,7 +32,7 @@ public class RogersSpeedPassPage extends BasePageClass {
 	@FindBy (xpath = "//h2[@class='add-data-modal-title success-title']")
 	WebElement msgSuccessAddedSP;
 	
-	@FindBy (xpath = "//span[@class='ds-icon rds-icon-error']")
+	@FindBy (xpath = "//span[@class='ds-icon rds-icon-error' or @class='ds-icon rds-icon-close']")
 	WebElement btnCloseSpeedPassTopup;
 	
 	@FindBy(xpath = "//h2[@class='add-data-modal-title error-title']")
