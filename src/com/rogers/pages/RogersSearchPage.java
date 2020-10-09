@@ -597,6 +597,16 @@ return blnFlag;
 		}
 		return true;
 	}
+	
+	public boolean validateResultsLinks(String strGrandParentFilter, String strParentFilter) {
+		List<WebElement> resultlinks = driver.findElements(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]/preceding-sibling::a"));
+		for (int counter=0;counter<resultlinks.size();counter++){
+			if(!(resultlinks.get(counter).getAttribute("href").equals(""))) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	public boolean validateResultsTag(String strGrandParentFilter) {
 		String strExpectedTag = strGrandParentFilter.trim() + " - ";
