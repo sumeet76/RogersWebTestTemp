@@ -262,7 +262,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy (xpath = "//span[@title='Reactivate your services now.' or @title='Réactivez vos services dès maintenant.']/a")
 	WebElement lnkReactivateService;
 	
-	@FindBy (xpath = "//*[@class='ute-reactivateCtn-Success-header-title']")
+	@FindBy (xpath = "//*[@class='ute-reactivateCtn-Success-header-title' or text()='Services resumed']")
 	WebElement msgServiceResumed;
 	
 	@FindBy (xpath = "//span/strong[@class='name']")
