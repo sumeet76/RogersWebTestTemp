@@ -278,6 +278,7 @@ public class BaseTestClass {
 		}
 //	    setImplicitWait(getDriver(), 10);	
 		getDriver().manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+		getDriver().manage().window().maximize();
 	    init(strGroupName);	 
  }
 		
@@ -366,6 +367,7 @@ public class BaseTestClass {
 		
 		case "search":
 			rogers_search_page = new RogersSearchPage(driver);
+			rogers_device_config_page = new RogersDeviceConfigPage(driver);
 			break;
 			
 		case "selfserve":

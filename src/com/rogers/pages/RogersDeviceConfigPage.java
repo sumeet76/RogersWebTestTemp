@@ -21,7 +21,6 @@ public class RogersDeviceConfigPage extends BasePageClass {
     public
     WebElement continueButton;
 
-
     @FindBy(xpath = "//span[contains(text(),'Pre-order Ship Home') or contains(text(),'PREORDER RESERVE')]")
     WebElement backOrderShipHome;
 
@@ -69,7 +68,11 @@ public class RogersDeviceConfigPage extends BasePageClass {
     @FindBy(xpath = "//span[@class='d-flex mt-16 mb-8 ng-star-inserted']")
     WebElement labelRpotg;
 
+    @FindBy(xpath = "//dsa-selector[@data-test='storage-selector']//span[text()='Storage:']/following-sibling::span")
+    WebElement lblStorageValue;
 
+    @FindBy(xpath = "//dsa-selector[@data-test='color-selector']//span[text()='Colour:']/following-sibling::span[1]")
+    WebElement lblColorValue;
 
     /***
      * This method will check the presence of continue button and will return true if present else false
@@ -348,5 +351,36 @@ public class RogersDeviceConfigPage extends BasePageClass {
         else
             return "no color";
     }
-}
 
+    /**
+     * Get the Device Name as in the page title
+     * @return Device Name
+     * @author rajesh.varalli1
+     */
+    public String getDeviceName() {
+        reusableActions.waitForElementTobeClickable(deviceName,30);
+        return deviceName.getText().trim();
+    }
+
+    /**
+     * Navigates back to the previous page
+     * and waits for 3 seconds
+     * @author rajesh.varalli1
+     */
+    public void navigateBack() {
+        driver.navigate().back();
+        if(reusableActions.isElementVisible(deviceName,3)) {
+            driver.navigate().back();
+            driver.navigate().back();
+        }
+        reusableActions.staticWait(3000);
+    }
+
+    public String getSelectedStorage() {
+        return lblStorageValue.getText().trim().replace(" ","");
+    }
+
+    public String getSelectedColor() {
+        return lblColorValue.getText().trim().replace(" ","");
+    }
+}
