@@ -45,6 +45,7 @@ public class RogersBFA_TC09_PPC_Test extends BaseTestClass {
         rogers_wireless_details_page.verifyWirelessPageLoad();
         reporter.reportLogWithScreenshot("Wireless Dashboard Page");
         rogers_wireless_details_page.clickChangePlanButton();
+        rogers_choose_plan_page.verifyAndClickDowngradeFeeContinue();
         rogers_choose_plan_page.clkMakeChangesToExistingPlan();
         reporter.reportLogWithScreenshot("Modal window appeared for change your plan");
         rogers_choose_plan_page.clkButtonModalContinue();
@@ -57,6 +58,7 @@ public class RogersBFA_TC09_PPC_Test extends BaseTestClass {
         rogers_order_review_page.verifyOrderReviewPageLoadedSuccessfully();
         reporter.reportLogWithScreenshot("Rogers Order review page");
         rogers_order_review_page.clkTermsAgreementCheckbox();
+        rogers_order_review_page.clkUpfrontTermsCheckbox();
         rogers_order_review_page.selectEmailDigitalCopy(TestDataHandler.testCase9.getUsername());
         reporter.reportLogWithScreenshot("Rogers Order Review page");
         if(rogers_order_review_page.isPaymentRequired()) {

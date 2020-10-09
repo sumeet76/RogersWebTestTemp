@@ -1,12 +1,11 @@
 package com.rogers.oneview.pages;
 
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import com.rogers.pages.base.BasePageClass;
 
 public class AccountOverViewPage  extends BasePageClass {
 
@@ -37,7 +36,28 @@ public class AccountOverViewPage  extends BasePageClass {
 
 	@FindBy(xpath = "//div[@class='oneview-dialog']//button")
 	WebElement btnOkOneViewDialogue;
-	
+
+	@FindBy(xpath = "//input[@class='hup-input']")
+	WebElement delearCodeOneViewDialogue;
+
+	@FindBy(xpath = "//button[@class='hup-button red']")
+	WebElement btnSubmitOneViewDialogue;
+
+	/**
+	 * To enter dealer code in dealer code dialogue box
+	 * @author Saurav.Goyal
+	 */
+	public void enterDealerCodeDialogue() {
+		reusableActions.getWhenReady(delearCodeOneViewDialogue, 50).sendKeys("0MAAA");
+	}
+
+	/**
+	 * To click on submit button in dealer code dialogue box
+	 * @author Saurav.Goyal
+	 */
+	public void clkSubmitBtnDealerCodeDialogue() {
+		reusableActions.clickIfAvailable(btnSubmitOneViewDialogue,30);
+	}
 	/**
 	 * To click on Assign data manager in the dialogue box
 	 * @author Saurav.Goyal

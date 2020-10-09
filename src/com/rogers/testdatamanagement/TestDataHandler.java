@@ -1,20 +1,6 @@
 package com.rogers.testdatamanagement;
 
-import com.rogers.yaml.pojo.CHOneViewConfig;
-import com.rogers.yaml.pojo.MigrationData;
-
-
-import com.rogers.yaml.pojo.AALData;
-import com.rogers.yaml.pojo.AccountData;
-import com.rogers.yaml.pojo.Config;
-import com.rogers.yaml.pojo.HUPData;
-import com.rogers.yaml.pojo.PPCData;
-import com.rogers.yaml.pojo.PaymentDetails;
-import com.rogers.yaml.pojo.RedesignConfig;
-import com.rogers.yaml.pojo.RedesignRpotgData;
-import com.rogers.yaml.pojo.SauceSettings;
-
-import com.rogers.yaml.pojo.ContactData;
+import com.rogers.yaml.pojo.*;
 
 public class TestDataHandler {	
 	public static Config ssConfig;
@@ -113,7 +99,10 @@ public class TestDataHandler {
 	public static PPCData testCase08;
 	public static HUPData testCase09;
 	public static HUPData testCase10;
+	public static HUPData testCase12;
 	public static RedesignRpotgData testCase11;
+	public static RedesignRpotgData tc01NonRpotg;
+	public static RedesignRpotgData tc02Rpotg;
 	public static HUPData buyFlowsOVtestCase01;
 	public static HUPData buyFlowsOVtestCase02;
 	public static HUPData buyFlowsOVtestCase05;
@@ -130,7 +119,6 @@ public class TestDataHandler {
 	public static PaymentDetails ovPaymentInfo;
 	public static AccountData tc60;
 	public static RedesignConfig redesignConfig;
-	public static RedesignRpotgData redesignRpotgData;
 	public static AccountData tc40SHMAccount;
 	public static AccountData tc47TupeloAccount;
 	public static AccountData tc43IgniteRHP;
@@ -174,9 +162,6 @@ public class TestDataHandler {
     	} else if(strApplicationType.toUpperCase().trim().endsWith("COV")) {
     		//ch oneview  Data files
     		chOneViewDataInit();
-    	} else if(strApplicationType.toUpperCase().trim().endsWith("NAC"))
-    	{
-    		reDesignDataInit();
     	}
     	else {
     		//All Data files
@@ -185,7 +170,7 @@ public class TestDataHandler {
     		selfserveDataInit();
     		buyFlowsDataInit();
     		chOneViewDataInit();
-    		reDesignDataInit();
+			buyFlowsOneViewDataInit();
     	}
 	
 	}
@@ -327,6 +312,9 @@ public class TestDataHandler {
     	testCase10 = YamlHandler.getHUPdata("tc10HUP");
     	testCase08 = YamlHandler.getPPCdata("tc08PPC");
     	testCase11 = YamlHandler.getRedesignNACData("tc11NacByod");
+    	tc01NonRpotg=YamlHandler.getRedesignNACData("tc01NonRpotg");
+    	tc02Rpotg=YamlHandler.getRedesignNACData("tc02Rpotg");
+		testCase12 = YamlHandler.getHUPdata("tc12HUP");
 	}
 	
 	private static void buyFlowsOneViewDataInit() {
@@ -343,19 +331,12 @@ public class TestDataHandler {
 	}
 	
 	private static void chOneViewDataInit() {
-     	chOneViewConfig =  YamlHandler.getCHOneViewConfig();
-    	ovPaymentInfo=YamlHandler.getOVPaymentDetails();
-      	igniteTVParentalcontrols = YamlHandler.getOVAccountData("IgniteTVParentalcontrols");
-      	solarisAccount = YamlHandler.getOVAccountData("SolarisAccount");
-      	solarisTV = YamlHandler.getOVAccountData("SolarisTV");
-      	anonymousData=YamlHandler.getContactData("AnonymousData");
-      	migrationData=YamlHandler.getMigrationData("MigrationData");      
+		chOneViewConfig = YamlHandler.getCHOneViewConfig();
+		ovPaymentInfo = YamlHandler.getOVPaymentDetails();
+		igniteTVParentalcontrols = YamlHandler.getOVAccountData("IgniteTVParentalcontrols");
+		solarisAccount = YamlHandler.getOVAccountData("SolarisAccount");
+		solarisTV = YamlHandler.getOVAccountData("SolarisTV");
+		anonymousData = YamlHandler.getContactData("AnonymousData");
+		migrationData = YamlHandler.getMigrationData("MigrationData");
 	}
-
-	private static void reDesignDataInit(){
-		redesignConfig=YamlHandler.getRedesignConfig();
-		//sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/redesignrogersNAC/SauceSettings.yml");
-		redesignRpotgData=YamlHandler.getRedesignRpotgData();
-	}
-
 }

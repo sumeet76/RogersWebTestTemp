@@ -53,6 +53,7 @@ public class RogersSS_TC_104_PACMAN_ValidateTheVASredeemptionAndCancelFlowInSing
         
         common_business_flows.scrollToMiddleOfWebPage();
         reporter.reportLogWithScreenshot("CTNS or Subscriptions View");
+        
         reporter.hardAssert(rogers_account_overview_page.verifySubscriptionIsAvailableForRedeem(), 
         		"The subscription is available for redeem", 
         		"The subscription is NOT available for redeem");
@@ -66,8 +67,8 @@ public class RogersSS_TC_104_PACMAN_ValidateTheVASredeemptionAndCancelFlowInSing
         reporter.reportLogWithScreenshot("Current subscription check box seletced for redeem");
         rogers_account_overview_page.clkSignUp();
         reporter.hardAssert(rogers_account_overview_page.verifyIfRedeemSubscriptionDetailsIsDisplayedCorrectly(strCTN), 
-        		"The cancel subscription details matched", 
-        		"The cancel subscription details did not matched");          
+        		"The subscription details matched", 
+        		"The subscription details did not matched");          
         common_business_flows.scrollToMiddleOfWebPage();
         reporter.reportLogWithScreenshot("T and C page");
         reporter.hardAssert(rogers_account_overview_page.verifyIfTnCForSubscriptionIsDisplayed(), 
@@ -93,12 +94,25 @@ public class RogersSS_TC_104_PACMAN_ValidateTheVASredeemptionAndCancelFlowInSing
         		"The current subscription is displayed", 
         		"The current subscription is NOT displayed");
         reporter.reportLogWithScreenshot("Current subscription");
+        
+        rogers_wireless_dashboard_page.clickOverview();
+        reporter.reportLogWithScreenshot("Back to account overview");
+        common_business_flows.scrollToMiddleOfWebPage();
+        reporter.reportLogWithScreenshot("CTNS or Subscriptions View");
+        reporter.hardAssert(rogers_account_overview_page.verifyIfSubscriptionIsAvailableForCancellation(), 
+        		"The subscription is available for Cancellation", 
+        		"The subscription is NOT available for Cancellation");
+        rogers_account_overview_page.clkManageOnSubscription();
+        reporter.hardAssert(rogers_account_overview_page.verifyIfCurrentlySubscribedPaneIsDisplayed(), 
+        		"The current subscription is displayed", 
+        		"The current subscription is NOT displayed");
+        reporter.reportLogWithScreenshot("Current subscription");
         rogers_account_overview_page.clkCancelSubscription();
         reporter.reportLogWithScreenshot("Cancel subscription details is displayed");
         reporter.hardAssert(rogers_account_overview_page.verifyIfHeaderCancelSubscriptionIsDisplayed(), 
         		"The header cancel subscription is displayed", 
         		"The header cancel subscription is NOT displayed");
-        reporter.hardAssert(rogers_account_overview_page.verifyIfCancelSubscriptionDetailsIsDisplayedCorrectly(TestDataHandler.tc102.getAccountDetails().getCtn()), 
+        reporter.hardAssert(rogers_account_overview_page.verifyIfCancelSubscriptionDetailsIsDisplayedCorrectly(TestDataHandler.tc104.getAccountDetails().getCtn()), 
         		"The cancel subscription details matched", 
         		"The cancel subscription details did not matched");        
         rogers_account_overview_page.selectReasonForCancelSubscription();

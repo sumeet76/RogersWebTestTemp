@@ -87,14 +87,16 @@ pipeline {
 
                 stage('Regression Tests') {
                     steps {
-                        script {
 
-                            if(params.IndividualTests.isEmpty())
-                                toolSh "gradle sauceTest -Ptest_browser=${params.Browser} -Ptest_language=${params.Language} -Ptest_groupName='${params.Groups}' -Ptest_threadCount=${params.ThreadCount} -i --stacktrace"
-                            else
-                                toolSh "gradle sauceTest -Ptest_browser=${params.Browser} -Ptest_language=${params.Language} ${generateTestString(params.IndividualTests)} -Ptest_threadCount=${params.ThreadCount} -i --stacktrace"
+                                script {
 
-                        }
+                                    if (params.IndividualTests.isEmpty())
+                                        toolSh "gradle sauceTest -Ptest_browser=${params.Browser} -Ptest_language=${params.Language} -Ptest_groupName='${params.Groups}' -Ptest_threadCount=${params.ThreadCount} -i --stacktrace"
+                                    else
+                                        toolSh "gradle sauceTest -Ptest_browser=${params.Browser} -Ptest_language=${params.Language} ${generateTestString(params.IndividualTests)} -Ptest_threadCount=${params.ThreadCount} -i --stacktrace"
+
+                                }
+
                     }
                     post {
                         always {
