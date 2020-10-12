@@ -30,6 +30,11 @@ public class RogersSearchPage extends BasePageClass {
 	@FindBy(xpath = "//p[starts-with(text(),'Other') or starts-with(text(),'Magasiner')]")
 	WebElement ddlOther;
 	
+	@FindBy(id = "ds-form-input-id-0")
+	WebElement txtSearch;
+	
+	
+	
 
 	/**
 	 * check if expected filters displayed or not 
@@ -606,6 +611,22 @@ return blnFlag;
 			}
 		}
 		return false;
+	}
+	
+	public void enterTextSearch(String searchText)
+	{
+		txtSearch.click();
+		txtSearch.clear();
+		txtSearch.sendKeys(searchText);
+	}
+	
+	public boolean validateLabelVisible(String str)
+	{
+		return reusableActions.isElementVisible(By.xpath("//h2[contains(text(),'"+str+"')]"), 10);
+	}
+	public boolean validateLinksVisible(String str)
+	{
+		return !driver.findElements(By.xpath("//h2[contains(text(),'"+str+"')]/ancestor::div/a")).isEmpty();
 	}
 
 	public boolean validateResultsTag(String strGrandParentFilter) {
