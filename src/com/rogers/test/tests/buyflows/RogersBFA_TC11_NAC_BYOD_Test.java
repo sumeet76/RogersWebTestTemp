@@ -5,11 +5,7 @@ import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -58,7 +54,7 @@ public class RogersBFA_TC11_NAC_BYOD_Test extends BaseTestClass {
 		reporter.reportLogPassWithScreenshot("Create Profile Page details provided for email , name and Address");
 		rogers_checkout_page.switchToRecaptchaIFrame();
 		rogers_checkout_page.clkImNotRombotCheckbox();
-		reporter.reportLogPassWithScreenshot("I'm not Robot Checked");
+		reporter.reportLogPassWithScreenshot("I'm not Robot CheckedRogersCheckoutPage");
 		rogers_checkout_page.switchOutOfGoogleIFrame();
 		rogers_checkout_page.clkBtnGotoCreditEvalStepper();
 		//***************Credit Evaluation Stepper*************//
@@ -109,12 +105,14 @@ public class RogersBFA_TC11_NAC_BYOD_Test extends BaseTestClass {
 		rogers_checkout_page.clkBillingContinueButton();
 		reporter.hardAssert(rogers_checkout_page.isCardDetailsDisplayed(),"Card details disaplayed in Billing & Payment Options", "Card details not disaplayed in Billing & Payment Options");
 		//***************Billing Options Stepper*************//
+		/*
 		reporter.softAssert(rogers_checkout_page.clkBillingAddress(),"Billing Address radio button is selected ","Billing Address is not selected");
 		rogers_checkout_page.clkDeliveryMethodStandard();
 		reporter.reportLogPassWithScreenshot("Billing Options Stepper");
 		Thread.sleep(1000);
 		rogers_checkout_page.clkContinueBtnShipping();
 		reporter.reportLogPassWithScreenshot("Continue button clicked from Billing Options Stepper");
+		*/
 		rogers_checkout_page.clksubmitBtnCheckoutPage();
 		//***************Order Review Page*************//
 		reporter.softAssert(rogers_review_order_page.isOrderReviewPageTitlePresent(),"Order Review Page Title Present","Order Review Page Title is not Present");
@@ -124,9 +122,9 @@ public class RogersBFA_TC11_NAC_BYOD_Test extends BaseTestClass {
 		String contactEmailReviewPage=rogers_review_order_page.getContactEmail();
 		reporter.hardAssert(emailCreateProfile.equals(contactEmailReviewPage),"Contact email in Order Review Page matches as entered in Create Profile stepper","Contact email in Order Review Page not matches as entered in Create Profile stepper");
 		reporter.reportLogPassWithScreenshot("Order Review Page : Contact Details");
-		rogers_review_order_page.clkFinancingConsentCheckbox();
+		//rogers_review_order_page.clkFinancingConsentCheckbox();
 		rogers_review_order_page.clkAgreementConsentCheckbox();
-		rogers_review_order_page.clkUpfrontConsentCheckbox();
+		//rogers_review_order_page.clkUpfrontConsentCheckbox();
 		reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
 		rogers_review_order_page.clkSubmitOrderBtn();
 		//************Order Confirmation Page****************//
@@ -134,8 +132,8 @@ public class RogersBFA_TC11_NAC_BYOD_Test extends BaseTestClass {
 		reporter.reportLogPassWithScreenshot("Order Confirmation Page");
 		String purchaseIncludesConfrimation=rogers_NAC_order_confirmation_page.getPurchaseIncludesText();
 		reporter.reportLogPassWithScreenshot("Purchase includes captured as" + "-->" +purchaseIncludesConfrimation);
-		reporter.hardAssert(rogers_NAC_order_confirmation_page.isLearnMoreLinkDisplayed(),"Learn More Link Displayed","Learn More Link not Present");
-		reporter.reportLogPassWithScreenshot("Order Review Page: LearnMore Link");
+		//reporter.hardAssert(rogers_NAC_order_confirmation_page.isLearnMoreLinkDisplayed(),"Learn More Link Displayed","Learn More Link not Present");
+		//reporter.reportLogPassWithScreenshot("Order Review Page: LearnMore Link");
 
 	}
 

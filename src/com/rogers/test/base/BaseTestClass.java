@@ -87,6 +87,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+
 //@Listeners ({com.rogers.test.listeners.TestListener.class ,
 //	com.rogers.test.listeners.AnnotationTransformer.class ,
 //	com.rogers.test.listeners.TestListener.class })
@@ -278,6 +279,7 @@ public class BaseTestClass {
 		}
 //	    setImplicitWait(getDriver(), 10);	
 		getDriver().manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+		getDriver().manage().window().maximize();
 	    init(strGroupName);	 
  }
 		
@@ -344,14 +346,17 @@ public class BaseTestClass {
 	 * @throws IOException               java.io.IOException, Signals that an I/O exception of some sort has occurred, produced by failed or interrupted I/O operations.
 	 */
 	public void startOVSession(String strUrl,  String strBrowser,  String strLanguage, String strGroupName, String strContactID,String strAccNo, String strLoginID,  String strLanID,  Method currentTestMethodName ) throws ClientProtocolException, IOException {
-		if(strBrowser.contains("sauce"))
+		RunParameters = getExecutionParameters(strBrowser, strLanguage);
+		String browser = RunParameters.get("Browser").toLowerCase();
+		String language = RunParameters.get("Language").toLowerCase();
+		if(browser.contains("sauce"))
 		{
-			sauceParameters = initializeSauceParamsMap(strBrowser);
+			sauceParameters = initializeSauceParamsMap(browser);
 		}
-		this.driver = browserdriver.driverInit(strBrowser,sauceParameters, currentTestMethodName, strGroupName);
+		this.driver = browserdriver.driverInit(browser,sauceParameters, currentTestMethodName, strGroupName);
 		System.out.println(strUrl + "----------------------------------------------------------------------------");
 		captcha_bypass_handlers = new CaptchaBypassHandlers(getDriver());
-		captcha_bypass_handlers.chOnewviewFlows(strUrl, strAccNo, strLoginID, strLanID, strLanguage,strBrowser,  currentTestMethodName ,strContactID);
+		captcha_bypass_handlers.chOnewviewFlows(strUrl, strAccNo, strLoginID, strLanID, language,browser,  currentTestMethodName ,strContactID);
 		   setImplicitWait(getDriver(), 10);
 		    init(strGroupName);
 }
@@ -366,6 +371,7 @@ public class BaseTestClass {
 		
 		case "search":
 			rogers_search_page = new RogersSearchPage(driver);
+			rogers_device_config_page = new RogersDeviceConfigPage(driver);
 			break;
 			
 		case "selfserve":

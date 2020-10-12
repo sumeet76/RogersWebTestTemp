@@ -1,20 +1,16 @@
-package com.rogers.test.tests.redesignrogersnac;
+package com.rogers.test.tests.buyflows;
 
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class RogersRedesign_TC_01_NonRpotgTest extends BaseTestClass {
+public class RogersBFA_TC_01_NAC_NonRpotgTest extends BaseTestClass {
 
   
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
@@ -23,12 +19,12 @@ public class RogersRedesign_TC_01_NonRpotgTest extends BaseTestClass {
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-    @Test
-    public void redesignRogersRpotg() throws InterruptedException {
+    @Test(groups = {"RegressionBFA","SanityBFA","NACBFA"})
+    public void redesignRogersNacRpotg() throws InterruptedException {
     	
     	 //**************************Device catalog page*****************************************
     	
-        String deviceName=TestDataHandler.redesignRpotgData.getDeviceName();
+        String deviceName=TestDataHandler.tc01NonRpotg.getDeviceName();
         String pricingBlockValueCataloguePage = rogers_device_catalogue_page.getPricingBlockCataloguePage(deviceName);
         String pricePlanInfoCataloguePage = rogers_device_catalogue_page.getPricePlanInfoCataloguePage(deviceName);
         String fullPriceValueCataloguePage = rogers_device_catalogue_page.getPhoneFullPrice(deviceName);
@@ -93,11 +89,11 @@ public class RogersRedesign_TC_01_NonRpotgTest extends BaseTestClass {
         //String firstName = rogers_checkout_page.setFirstNameCreateProfilepage("AMARAssspeares");
         //String lastName = rogers_checkout_page.setLastNameCreateProfilepage("SPEARSsscheck");
         String fullNameCreateProfile=firstName+" "+lastName;
-        String contactNumberCreateProfile=TestDataHandler.redesignRpotgData.getContactNumber();
+        String contactNumberCreateProfile=TestDataHandler.tc01NonRpotg.getContactNumber();
         rogers_checkout_page.setContactNumberCreateProfile(contactNumberCreateProfile);
         reporter.reportLogPassWithScreenshot("Create Profile Page details Entered till ContactNumber");
-        rogers_checkout_page.setBillingAddressCreateProfile(TestDataHandler.redesignRpotgData.getBillingAddress());
-        //rogers_checkout_page.clkUseBillingAddressRadioBtnCreateProfile();
+        rogers_checkout_page.setBillingAddressCreateProfile(TestDataHandler.tc01NonRpotg.getBillingAddress());
+        rogers_checkout_page.clkUseBillingAddressRadioBtnCreateProfile();
         rogers_checkout_page.clkLanguageEnglishRadioBtnCreateProfile();
         reporter.reportLogPassWithScreenshot("Create Profile Page details provided for Address,Shipping Address & Language Selected");
         rogers_checkout_page.switchToRecaptchaIFrame();
@@ -108,18 +104,18 @@ public class RogersRedesign_TC_01_NonRpotgTest extends BaseTestClass {
         //***************Credit Evaluation Stepper*************//
         reporter.softAssert(rogers_checkout_page.verifyCreditEvaluationTitle(),"CreditEvaluation Title verified","CreditEvaluation Title not present");
 		//rogers_checkout_page.setDateOfBirth(TestDataHandler.redesignRpotgData.getDateOfBirth());
-		rogers_checkout_page.selectYearDropdownOption(TestDataHandler.redesignRpotgData.getDateOfBirthYear());
+		rogers_checkout_page.selectYearDropdownOption(TestDataHandler.tc01NonRpotg.getDateOfBirthYear());
 		//span[text()='No, thanks']
 		//rogers_checkout_page.clkNoThanks();
-		rogers_checkout_page.selectMonthDropdownOption(TestDataHandler.redesignRpotgData.getDateOfBirthMonth());
-		rogers_checkout_page.selectDayDropdownOption(TestDataHandler.redesignRpotgData.getDateOfBirthDay());
+		rogers_checkout_page.selectMonthDropdownOption(TestDataHandler.tc01NonRpotg.getDateOfBirthMonth());
+		rogers_checkout_page.selectDayDropdownOption(TestDataHandler.tc01NonRpotg.getDateOfBirthDay());
         rogers_checkout_page.switchToCreditCardIFrame();
-        rogers_checkout_page.setCreditCardNumberIFrame(TestDataHandler.redesignRpotgData.getCreditCardDetails());
+        rogers_checkout_page.setCreditCardNumberIFrame(TestDataHandler.tc01NonRpotg.getCreditCardDetails());
         reporter.reportLogPassWithScreenshot("DOB & Credit Card Details Entered Successfully");
         rogers_checkout_page.switchOutOfCreditCardIFrame();
-        rogers_checkout_page.setExpiryDate(TestDataHandler.redesignRpotgData.getExpiryDate());
-        rogers_checkout_page.selectDropdownOption(TestDataHandler.redesignRpotgData.getDropdownOption());
-        rogers_checkout_page.setPassportNumber(TestDataHandler.redesignRpotgData.getPassportNumber());
+        rogers_checkout_page.setExpiryDate(TestDataHandler.tc01NonRpotg.getExpiryDate());
+        rogers_checkout_page.selectDropdownOption(TestDataHandler.tc01NonRpotg.getDropdownOption());
+        rogers_checkout_page.setPassportNumber(TestDataHandler.tc01NonRpotg.getPassportNumber());
         reporter.reportLogPassWithScreenshot("PassportNumber Entered Successfully");
         rogers_checkout_page.clkCreditAuthorizationChkBox();
         rogers_checkout_page.clkCreditEvalContinue();
@@ -129,8 +125,8 @@ public class RogersRedesign_TC_01_NonRpotgTest extends BaseTestClass {
         reporter.hardAssert(rogers_checkout_page.isIdentificationLabel(),"Credit Evaluation Successful", "Credit Evaluation Identification Label not disaplayed");
        // ***************Choose a Number Stepper*************//      
         reporter.softAssert(rogers_checkout_page.isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed","Choose a Number Title not disaplayed");
-        reporter.softAssert(rogers_checkout_page.isChooseNumberTabsDisplayed(),"Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not displayed");
-        rogers_checkout_page.selectCityDropdownOption(TestDataHandler.redesignRpotgData.getCityName());
+        reporter.softAssert(rogers_checkout_page.isChooseNumberTabsDisplayed(),"Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
+        rogers_checkout_page.selectCityDropdownOption(TestDataHandler.tc01NonRpotg.getCityName());
         reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully" );
         rogers_checkout_page.clkChosePhoneNumber();
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
@@ -139,11 +135,22 @@ public class RogersRedesign_TC_01_NonRpotgTest extends BaseTestClass {
         reporter.hardAssert(rogers_checkout_page.isChooseaNumberLabelDisplayed(),"Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
         reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
      // ***************Billing & Payment Stepper*************//
+        reporter.softAssert(rogers_checkout_page.isBillingOptionsTitleDisplayed(),"Billing Options Title Displayed","Billing Options Title Not Present");
+        reporter.softAssert(rogers_checkout_page.isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed","Select Payment Method Dropdown not disaplayed");
+        rogers_checkout_page.clkNoThanks();
+        rogers_checkout_page.setNameOnCard(TestDataHandler.tc01NonRpotg.getNameOnCard());
+        rogers_checkout_page.switchToCreditCardIFrame();
+        rogers_checkout_page.setCreditCardNumberIFrame(TestDataHandler.tc01NonRpotg.getBillingCreditCardNumber());
+        rogers_checkout_page.switchOutOfCreditCardIFrame();
+        rogers_checkout_page.setBillingExpiryDate(TestDataHandler.tc01NonRpotg.getExpiryDate());
+        rogers_checkout_page.setCVVNumber(TestDataHandler.tc01NonRpotg.getCvvNumber());
+        reporter.reportLogPassWithScreenshot("Billing & Payment Details Entered Successfully");
+        rogers_checkout_page.clkAddCard();
         reporter.softAssert(rogers_checkout_page.isBillingOptionsTitleDisplayed(), "Billing Options Title Displayed",
 				"Billing Options Title Not Present");
 		reporter.softAssert(rogers_checkout_page.isPaymentMethodDropdownPresent(),
 				"Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not disaplayed");
-		rogers_checkout_page.selectPaymentMethodDropdownOption(TestDataHandler.redesignRpotgData.getPaymentMethod());
+		rogers_checkout_page.selectPaymentMethodDropdownOption(TestDataHandler.tc01NonRpotg.getPaymentMethod());
 //        rogers_checkout_page.setNameOnCard(TestDataHandler.redesignRpotgData.getNameOnCard());
 //        rogers_checkout_page.switchToCreditCardIFrame();
 //        rogers_checkout_page.setCreditCardNumberIFrame(TestDataHandler.redesignRpotgData.getBillingCreditCardNumber());
@@ -151,7 +158,7 @@ public class RogersRedesign_TC_01_NonRpotgTest extends BaseTestClass {
 //        rogers_checkout_page.setBillingExpiryDate(TestDataHandler.redesignRpotgData.getExpiryDate());
 //        rogers_checkout_page.setCVVNumber(TestDataHandler.redesignRpotgData.getCvvNumber());
 //        reporter.reportLogPassWithScreenshot("Billing & Payment Details Entered Successfully");
-//        rogers_checkout_page.clkAddCard();       
+//        rogers_checkout_page.clkAddCard();
         rogers_checkout_page.clkBillingContinueButton();
 //        reporter.hardAssert(rogers_checkout_page.isCardDetailsDisplayed(),"Card details disaplayed in Billing & Payment Options", "Card details not disaplayed in Billing & Payment Options");
         //***************Billing Options Stepper*************//
