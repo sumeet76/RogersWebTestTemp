@@ -17,6 +17,7 @@ import utils.SauceLabsUtils;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
+import java.util.Arrays;
 
 //import java.net.URISyntaxException;
 
@@ -49,6 +50,7 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
 	public void onTestStart(ITestResult iTestResult) {
 		String sauceSessionId;
 		int dataIteratorIndex = ((TestResult) iTestResult).getParameterIndex();
+		Object[] dataParam = iTestResult.getParameters();
 		System.out.println(" in onTestStart method " +  getTestMethodName(iTestResult) + "-" + dataIteratorIndex + " start");
 		//Start operation for extentreports.
 		String fullTestClassName[] = iTestResult.getMethod().getTestClass().getName().split("\\.");
@@ -60,6 +62,11 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
 		Object testClass = iTestResult.getInstance();
 		WebDriver driver = ((BaseTestClass) testClass).getDriver(); 
 		//if(xmlTestParameters.get("strBrowser").contains("sauce"))
+		if(dataParam.length!=0) {
+			String[] stringArray = Arrays.copyOf(((String[]) dataParam[0]), ((String[]) dataParam[0]).length, String[].class);
+			//System.out.println("TEST DATA USED - " + Arrays.toString(stringArray));
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Test Data - " + Arrays.toString(stringArray));
+		}
 		if(strBrowser.contains("sauce"))
 		{
 			sauceSessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
