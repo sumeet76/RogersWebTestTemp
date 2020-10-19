@@ -137,6 +137,7 @@ public class TestDataHandler {
 	public static AccountData tc90;
 	public static AccountData tc5398;
 	public static AccountData tc94;
+	public static AccountData tc101;
 	public static AccountData tc102;
 	public static AccountData tc103;
 	public static AccountData tc100;
@@ -282,6 +283,7 @@ public class TestDataHandler {
     	tc5398 = YamlHandler.getSSAccountData("tc53_98PrepaidAccount");
     	tc99 = YamlHandler.getSSAccountData("tc99SohoMultipleAccounts");
     	tc100 = YamlHandler.getSSAccountData("tc100InfiniteNSESohoCustomer");
+    	tc101 = YamlHandler.getSSAccountData("tc101InfiniteSESohoCustomer");
     	tc102 = YamlHandler.getSSAccountData("tc102NSEInfinite50Cancellation");
     	tc103 = YamlHandler.getSSAccountData("tc103Infinite20Redeem");
     	tc104 = YamlHandler.getSSAccountData("tc104Infinite10RedeemCancel");
