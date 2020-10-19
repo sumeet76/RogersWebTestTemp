@@ -477,10 +477,10 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Change my phone number') or contains(text(),'Changer mon numéro de téléphone')]")
 	WebElement lnkChangeMyPhoneNumber;
 
-	@FindBy(xpath = "//ds-switch[@title='Data access for DONOTUSE' or @title='Accès aux données pour DONOTUSE']//Span[text()='ON' or text()='OUI']")
+	@FindBy(xpath = "//ds-switch[contains(@title,'Data access for') or contains(@title,'Accès aux données pour')]//Span[text()='ON' or text()='OUI']")
 	WebElement divDataAccessOn;
 	
-	@FindBy(xpath = "//ds-switch[@title='Data access for DONOTUSE' or @title='Accès aux données pour DONOTUSE']//Span[text()='OFF' or text()='NON']")
+	@FindBy(xpath = "//ds-switch[contains(@title,'Data access for') or contains(@title,'Accès aux données pour')]//Span[text()='OFF' or text()='NON']")
 	WebElement divDataAccessOFF;
 
 	@FindBy(xpath = "//*[@translate='wirelessPrepaidHeader']")

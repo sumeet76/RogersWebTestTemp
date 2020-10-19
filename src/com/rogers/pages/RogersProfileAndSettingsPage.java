@@ -404,7 +404,8 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public Boolean isTheWorkingAccount(String strAccountNum) {
-		return reusableActions.isElementVisible(By.xpath("//div[contains(text(),'" + strAccountNum + "')]"), 30);
+		return (reusableActions.isElementVisible(By.xpath("//rss-account-info//*[contains(text(),'" + strAccountNum + "')]"), 30)
+				||reusableActions.isElementVisible(By.xpath("//div[contains(text(),'" + strAccountNum + "')]"), 30));
 	}
 	
 	/**

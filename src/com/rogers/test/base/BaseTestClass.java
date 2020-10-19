@@ -279,7 +279,10 @@ public class BaseTestClass {
 		}
 	    setImplicitWait(getDriver(), 10);	
 		getDriver().manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+		if(!browser.contains("sauceandroid"))
+		{
 		getDriver().manage().window().maximize();
+		}
 	    init(strGroupName);	 
  }
 		
