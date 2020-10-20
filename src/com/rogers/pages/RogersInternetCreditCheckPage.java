@@ -64,10 +64,10 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@class,'-primary -large')]")
 	WebElement btnCreditCheckSubmit;
 	
-	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-40')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
 	WebElement txtContainer;
 	
-	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-45')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
 	WebElement txtContainerPasportNumber;
 				
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")

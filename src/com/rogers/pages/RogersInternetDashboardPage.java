@@ -136,7 +136,8 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public void clkInternetBadgeMobile() {
 		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(btnSolarisInternetBadge,60).click();			
+		reusableActions.waitForElementVisibility(btnSolarisInternetBadge,90);
+		reusableActions.executeJavaScriptClick(btnSolarisInternetBadge);
 	}
 	/**
 	 * Verify the Internet header text on the Solaris Internet dash board

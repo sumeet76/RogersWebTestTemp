@@ -13,14 +13,12 @@ public class RogersBuyPage extends BasePageClass {
 	public RogersBuyPage(WebDriver driver) {
 		super(driver);
 	}
-	@FindBy(xpath = "(//button[@class='change-button ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large ng-star-inserted'])[1]")
+	@FindBy(xpath = "//span[contains(text(),'Ignite Internet speed') or contains(text(),'Vitesse Internet Élan')]")
 	WebElement btnIgniteInternetSpeed;	
-	//button[@translate='global.modals.serviceability.changeTVPackage']
-	
-	@FindBy(xpath = "(//button[@class='change-button ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large ng-star-inserted'])[3]")
-	WebElement btnExchangeFlexChannel;	
-	//button[@translate='global.modals.serviceability.changeTVPackage']
-	
+
+	@FindBy(xpath = "//span[contains(text(),'Exchange Flex Channels') or contains(text(),'Échanger chaînes flexibles')]")
+	WebElement btnExchangeFlexChannel;
+
 	@FindBy(xpath = "//label[@for='existingActiveAddress-1']")
 	WebElement rdoSecondAddress;
 

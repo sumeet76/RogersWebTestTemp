@@ -16,25 +16,25 @@ public class RogersInternetProfilePage extends BasePageClass {
 	@FindBy(xpath = "//h4[@translate='global.checkout.profile.createProfile']")
 	WebElement txtProfile;
 	
-	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-31')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[1]")
 	WebElement txtContainerEmail;
 	
-	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-32')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
 	WebElement txtContainerConfirmEmail;
 	
-		@FindBy(xpath = "//input[@id='ds-form-input-id-9']")
+	@FindBy(xpath = "//input[@name='email']")
 	WebElement txtEmail;
 	
-	@FindBy(xpath = "//input[@id='ds-form-input-id-10']")
+	@FindBy(xpath = "//input[@name='confirmEmail']")
 	WebElement txtConfirmEmail;
 	
-	@FindBy(xpath = "//input[@id='ds-form-input-id-4']")
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @aria-label='Please enter your First Name.']")
 	WebElement txtFirstName;
 	
-	@FindBy(xpath = "//input[@id='ds-form-input-id-5']")
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @aria-label='Please enter your Last Name.']")
 	WebElement txtLastName;
 	
-	@FindBy(xpath = "//input[@id='ds-form-input-id-7']")
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @aria-label='Please enter your phone number.']")
 	WebElement btnPhone;
 		
 	@FindBy(xpath = "//span[@translate='global.cta.continue']")
