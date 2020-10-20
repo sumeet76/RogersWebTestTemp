@@ -65,7 +65,7 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
 		if(dataParam.length!=0) {
 			String[] stringArray = Arrays.copyOf(((String[]) dataParam[0]), ((String[]) dataParam[0]).length, String[].class);
 			//System.out.println("TEST DATA USED - " + Arrays.toString(stringArray));
-			ExtentTestManager.getTest().log(LogStatus.INFO,"Test Data - " + Arrays.toString(stringArray));
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Test Data", Arrays.toString(stringArray));
 		}
 		if(strBrowser.contains("sauce"))
 		{
