@@ -14,10 +14,12 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//input[@id='digits']")
 	WebElement txtChosePhoneNumber;
 	
-	@FindBy(xpath = "//ins[@translate='global.checkout.numberSelection.sections.section1.cta']")
-	WebElement btnGeneratePhoneNumber;	
-	//ins[@translate='global.checkout.numberSelection.sections.section1.cta2']
-	
+	@FindBy(xpath = "//h1[@class='rhp-port-in__header']")
+	WebElement btnGeneratePhoneNumberPage;
+
+	@FindBy(xpath = "//span[contains(text(),'I’ll pick a new number, skip this.') or contains(text(),'Je veux choisir un nouveau numéro et passer à étape suivante.')]/ancestor:::button")
+	WebElement btnGeneratePhoneNumber;
+
 	@FindBy(xpath = "//label[@for='number-1']")
 	WebElement rdoChosePhoneNumber;
 	
@@ -74,8 +76,7 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPhoneNumberPage() {
-		reusableActions.waitForElementInvisibility(popupLoadingFingers, 120);
-		return	reusableActions.isElementVisible(btnGeneratePhoneNumber, 60);
+		return	reusableActions.isElementVisible(btnGeneratePhoneNumberPage, 90);
 	}
 	
 	/**
@@ -83,7 +84,9 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkPhoneNumberGenerator() {
-		reusableActions.getWhenReady(btnGeneratePhoneNumber, 60).click();
+		//reusableActions.waitForElementVisibility(btnGeneratePhoneNumber,60);
+		//reusableActions.executeJavaScriptClick(btnGeneratePhoneNumber);
+		reusableActions.staticWait(5000);
 	}
 		
 	

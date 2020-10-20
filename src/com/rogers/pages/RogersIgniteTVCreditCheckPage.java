@@ -16,55 +16,55 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 		super(driver);
 	}
 	
-	@FindBy(xpath = "//select[@id='ds-form-input-id-18']")
+	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.year']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlCreditCheckYear;
 	
 	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.year']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlCreditCheckYearMigration;
 		
-	@FindBy(xpath = "//select[@id='ds-form-input-id-19']")
+	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.month']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlCreditCheckMonth;
 	
 	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.month']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlCreditCheckMonthMigration;
 	
-	@FindBy(xpath = "//select[@id='ds-form-input-id-20']")
+	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.day']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlCreditCheckDay;
 	
 	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.day']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlCreditCheckDayMigration;
 	
-	@FindBy(xpath = "//select[@id='ds-form-input-id-21']")
+	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.firstIdOp']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlFirstID;
 	
-	@FindBy(xpath = "//select[@id='ds-form-input-id-24']")
+	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.enterYour']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlProvince;
 		
-	@FindBy(xpath = "//select[@id='ds-form-input-id-25']")
+	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.driving_l']//select[contains(@id,'ds-form-input-id-')])[1]")
 	WebElement ddlExpiryYear;
 	
-	@FindBy(xpath = "//select[@id='ds-form-input-id-26']")
+	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.driving_l']//select[contains(@id,'ds-form-input-id-')])[2]")
 	WebElement ddlExpiryMonth;
 
-	@FindBy(xpath = "//select[@id='ds-form-input-id-27']")
+	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.driving_l']//select[contains(@id,'ds-form-input-id-')])[3]")
 	WebElement ddlExpiryDay;
 		
-	@FindBy(xpath = "//input[@id='ds-form-input-id-23']")
+	@FindBy(xpath = "//input[@aria-label='Please enter your driver’s license number']")
 	WebElement txtLicenseNumber;
 	  	
-	@FindBy(xpath = "//select[@id='ds-form-input-id-22']")
+	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.secondIdO']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlSecondIdOption;
 	
-	@FindBy(xpath = "//input[@id='ds-form-input-id-28']")
+	@FindBy(xpath = "//div[@class='passport-component']//input[@aria-label='Please enter your passport number']")
 	WebElement txtPasportNumber;
 		
-	@FindBy(xpath = "//select[@id='ds-form-input-id-29']")
+	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.passport_']//select[contains(@id,'ds-form-input-id-')])[1]")
 	WebElement ddlPassportExpiryYear;
 		
-	@FindBy(xpath = "//select[@id='ds-form-input-id-30']")
+	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.passport_']//select[contains(@id,'ds-form-input-id-')])[2]")
 	WebElement ddlPassportExpiryMonth;
 	
-	@FindBy(xpath = "//select[@id='ds-form-input-id-31']")
+	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.passport_']//select[contains(@id,'ds-form-input-id-')])[3]")
 	WebElement ddlPassportExpiryDay;
 		
 	@FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]")

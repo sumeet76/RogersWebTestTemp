@@ -383,4 +383,17 @@ public class RogersDeviceConfigPage extends BasePageClass {
     public String getSelectedColor() {
         return lblColorValue.getText().trim().replace(" ","");
     }
+
+    public String getSelectedSize(String strSizeFilter) {
+        reusableActions.staticWait(5000);
+        WebElement lblSizeValue = driver.findElement(By.xpath("//a[text()='" + strSizeFilter + "']"));
+        reusableActions.waitForElementVisibility(lblSizeValue);
+        return lblSizeValue.getText().trim().replace(" ","");
+    }
+
+    public String getSelectedWatchColor() {
+        String btnWatchColor = driver.findElement(By.xpath("//div[contains(@class,'color-switch') and contains(@class,'active') and @style='display: block;']/a")).getAttribute("class").split("-")[0];
+        reusableActions.staticWait(4000);
+        return btnWatchColor.trim().replace(" ","");
+    }
 }

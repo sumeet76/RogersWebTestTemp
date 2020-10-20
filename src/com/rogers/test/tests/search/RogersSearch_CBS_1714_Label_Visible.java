@@ -40,19 +40,17 @@ public class RogersSearch_CBS_1714_Label_Visible extends BaseTestClass {
 	
 		getDriver().get(System.getProperty("SearchUrl"));
 		reporter.reportLogWithScreenshot("CBS Search Page");
-		rogers_search_page.enterTextSearch("wir");	
+		rogers_search_page.enterTextSearch(csvRow[0]);
 		reporter.reportLogWithScreenshot("Search field entered");
 		reporter.hardAssert(rogers_search_page.validateLabelVisible("Suggestions"), "label Suggestion Visible", "label Suggestion Not Visible");
 		reporter.hardAssert(rogers_search_page.validateLabelVisible("Support"), "label Support Visible", "label Support Not Visible");
 		reporter.reportLogWithScreenshot("Search Label Validation");
-		reporter.hardAssert(rogers_search_page.validateLinksVisible("Suggestions"), "Suggestion Links Visible", "Suggestion Links  Not Visible");
-		reporter.hardAssert(rogers_search_page.validateLinksVisible("Support"), "Support Links  Visible", " Support Links Not Visible");
-		reporter.reportLogWithScreenshot("Link Validation");		
-		
-		
+		if(rogers_search_page.validateLinksVisible("Suggestions") || rogers_search_page.validateLinksVisible("Support")) {
+			reporter.reportLogPassWithScreenshot("Results Displayed");
+		} else {
+			reporter.reportLogFailWithScreenshot("Suggestions and Support both empty");
+		}
 	}
-
-
 
 	@BeforeMethod(alwaysRun = true)
 	@Parameters({"strBrowser", "strLanguage"})
@@ -65,6 +63,5 @@ public class RogersSearch_CBS_1714_Label_Visible extends BaseTestClass {
 	public void afterTest() {
 		closeSession();
 	}
-	
-	
+
 }

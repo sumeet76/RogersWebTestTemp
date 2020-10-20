@@ -674,7 +674,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyInternetpage() {
-		return reusableActions.isElementVisible(lnkInternetAvailability, 60);
+		return reusableActions.isElementVisible(lnkInternetAvailability, 90);
 	}
 	/**
 	 * Click the InternetAvailability link Internet on the page 
