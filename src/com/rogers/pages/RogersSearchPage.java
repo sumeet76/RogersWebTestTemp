@@ -33,9 +33,11 @@ public class RogersSearchPage extends BasePageClass {
 	@FindBy(xpath = "//p[starts-with(text(),'Other') or starts-with(text(),'Magasiner')]")
     WebElement ddlOther;
 
-
     @FindBy(xpath = "//button[@title='Reset Filter']")
     WebElement btnResetAllFilters;
+
+    @FindBy(xpath = "//button[@title='Close search']")
+    WebElement txtSearchCloseIcon;
 
     /**
      * check if expected filters displayed or not
@@ -827,4 +829,45 @@ return blnFlag;
         return false;
     }
 
+    public void clkSizeType(String strSize) {
+        reusableActions.clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='"+strSize+"']"));
+        reusableActions.javascriptScrollToTopOfPage();
+        reusableActions.staticWait(1500);
+    }
+
+    public List<String> getSizeSelections() {
+        List<String> strSizeSelections = new ArrayList<String>();
+        List<WebElement> chkSizeSelections = driver.findElements(By.xpath("//input[contains(@id,'size')]"));
+        for(int i=0;i<chkSizeSelections.size();i++) {
+            strSizeSelections.add(chkSizeSelections.get(i).getAttribute("value"));
+        }
+        return strSizeSelections;
+    }
+
+    public void clkOnMagnifyingLens() {
+        txtSearch.sendKeys(Keys.ENTER);
+        System.out.println("Enter key is clicked");
+        reusableActions.staticWait(4000);
+    }
+
+    public boolean validateResultLandingPageURL(String strQuery) {
+        boolean blnFlag = false;
+        if(driver.getCurrentUrl().contains(strQuery)) {
+            blnFlag = true;
+        }
+        return blnFlag;
+    }
+
+    public void clkCloseSearchIcon() {
+        txtSearchCloseIcon.click();
+    }
+
+    public boolean validateSearchBoxIsEmpty() {
+        boolean blnFlag = true;
+        String txtSearchValue = txtSearch.getAttribute("ng-reflect-value");
+        if(txtSearchValue.isEmpty()) {
+            return blnFlag;
+        }
+        return false;
+    }
 }
