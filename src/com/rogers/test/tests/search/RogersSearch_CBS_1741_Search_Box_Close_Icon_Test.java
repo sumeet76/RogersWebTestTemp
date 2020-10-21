@@ -21,36 +21,25 @@ import com.rogers.test.helpers.RogersEnums;
 import utils.CSVReader;
 
 public class RogersSearch_CBS_1741_Search_Box_Close_Icon_Test extends BaseTestClass {
-    @DataProvider(name = "FilterData")
-    public Object[] testData() throws IOException
-    {
-        String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/SearchBoxText.csv";
-        List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
-        Object[] csvRow = new Object[csvData.size()];
 
-        for(int i =0; i < csvData.size();i++){
-            csvRow[i] = csvData.get(i);
-        }
+    @Test
+    public void validateSearchBoxCloseIcon() {
 
-        return csvRow;
-    }
-
-    @Test(dataProvider = "FilterData")
-    public void validateSearchBoxCloseIcon(String[] csvRow) {
-
-        //getDriver().get(System.getProperty("SearchUrl"));
-        getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
+        getDriver().get(System.getProperty("SearchUrl"));
         reporter.reportLogWithScreenshot("CBS Search Page");
-        rogers_search_page.enterTextSearch(csvRow[1]);
+        rogers_search_page.enterTextSearch("wireless");
         reporter.reportLogWithScreenshot("Search field entered");
         reporter.hardAssert(rogers_search_page.validateLabelVisible("Suggestions"), "label Suggestion Visible", "label Suggestion Not Visible");
         reporter.hardAssert(rogers_search_page.validateLabelVisible("Support"), "label Support Visible", "label Support Not Visible");
         reporter.reportLogWithScreenshot("Search Label Validation");
-        reporter.hardAssert(rogers_search_page.validateLinksVisible("Suggestions"), "Suggestion Links Visible", "Suggestion Links  Not Visible");
-        reporter.hardAssert(rogers_search_page.validateLinksVisible("Support"), "Support Links  Visible", " Support Links Not Visible");
-        reporter.reportLogWithScreenshot("Link Validation");
+        if(rogers_search_page.validateLinksVisible("Suggestions") || rogers_search_page.validateLinksVisible("Support")) {
+            reporter.reportLogPassWithScreenshot("Suggestion or Supports populated");
+        } else {
+            reporter.reportLogFailWithScreenshot("Suggestion and Support not populated");
+        }
         rogers_search_page.clkCloseSearchIcon();
         reporter.hardAssert(rogers_search_page.validateSearchBoxIsEmpty(), "Search Box is Empty", "Search Box is not Empty");
+        reporter.reportLogWithScreenshot("Search field reset");
     }
 
     @BeforeMethod(alwaysRun = true)
