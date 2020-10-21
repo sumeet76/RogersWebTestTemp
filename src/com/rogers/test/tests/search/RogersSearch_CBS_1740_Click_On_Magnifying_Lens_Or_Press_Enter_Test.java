@@ -1,12 +1,11 @@
 package com.rogers.test.tests.search;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import org.openqa.selenium.WebElement;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -24,7 +23,7 @@ public class RogersSearch_CBS_1740_Click_On_Magnifying_Lens_Or_Press_Enter_Test 
     @DataProvider(name = "FilterData")
     public Object[] testData() throws IOException
     {
-        String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/SearchBoxText.csv";
+        String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
         Object[] csvRow = new Object[csvData.size()];
 
@@ -36,25 +35,25 @@ public class RogersSearch_CBS_1740_Click_On_Magnifying_Lens_Or_Press_Enter_Test 
     }
 
     @Test(dataProvider = "FilterData")
-    public void validateResultLandingPage(String[] csvRow) {
-
-        //getDriver().get(System.getProperty("SearchUrl"));
-        getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
+    public void validateResultLandingPage(String[] csvRow) throws UnsupportedEncodingException {
+        getDriver().get(System.getProperty("SearchUrl"));
         reporter.reportLogWithScreenshot("CBS Search Page");
-        rogers_search_page.enterTextSearch(csvRow[1]);
+        rogers_search_page.enterTextSearch(csvRow[0]);
         reporter.reportLogWithScreenshot("Search field entered");
         reporter.hardAssert(rogers_search_page.validateLabelVisible("Suggestions"), "label Suggestion Visible", "label Suggestion Not Visible");
         reporter.hardAssert(rogers_search_page.validateLabelVisible("Support"), "label Support Visible", "label Support Not Visible");
-        reporter.reportLogWithScreenshot("Search Label Validation");
-        reporter.hardAssert(rogers_search_page.validateLinksVisible("Suggestions"), "Suggestion Links Visible", "Suggestion Links  Not Visible");
-        reporter.hardAssert(rogers_search_page.validateLinksVisible("Support"), "Support Links  Visible", " Support Links Not Visible");
-        reporter.reportLogWithScreenshot("Link Validation");
+        if(rogers_search_page.validateLinksVisible("Suggestions") || rogers_search_page.validateLinksVisible("Support")) {
+            reporter.reportLogPassWithScreenshot("Suggestion or Supports populated");
+        } else {
+            reporter.reportLogFailWithScreenshot("Suggestion and Support not populated");
+        }
         rogers_search_page.clkOnMagnifyingLens();
-        reporter.hardAssert(rogers_search_page.validateResultLandingPageURL(csvRow[1]), "Result Landing Page displayed", "Result Landing Page not displayed");
-
+        reporter.reportLogWithScreenshot("Search Results Page");
+        reporter.hardAssert(rogers_search_page.validateResultLandingPageURL(csvRow[0]), "Result Landing Page displayed", "Result Landing Page not displayed");
+        for (int i = 1; i < csvRow.length; i++) {
+            reporter.softAssert(rogers_search_page.isFilterDisplayed(csvRow[i]), "Filter " + csvRow[i] + " is Displayed", "Filter " + csvRow[i] + " is NOT Displayed");
+        }
     }
-
-
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -67,6 +66,5 @@ public class RogersSearch_CBS_1740_Click_On_Magnifying_Lens_Or_Press_Enter_Test 
     public void afterTest() {
         closeSession();
     }
-
 
 }
