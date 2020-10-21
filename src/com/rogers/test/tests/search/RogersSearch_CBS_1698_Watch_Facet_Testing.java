@@ -65,10 +65,7 @@ public class RogersSearch_CBS_1698_Watch_Facet_Testing extends BaseTestClass {
                 resultLinks = rogers_search_page.getAllResultLinks();
                 for(int k=0;k< resultLinks.size();k++) {
                     rogers_search_page.clkResultLink(resultLinks.get(k));
-                    //strDeviceName = rogers_device_config_page.getDeviceName();
-                    //if(!strDeviceName.equals("Phones")) {
-                    //reporter.reportLogPassWithScreenshot(strDeviceName + " Page");
-                    strSelectedSize = rogers_device_config_page.getSelectedSize(strSizeOptions.get(i));
+                    strSelectedSize = rogers_device_config_page.getSelectedSize();
                     strSelectedColor = rogers_device_config_page.getSelectedWatchColor();
                     reporter.softAssert(strSelectedSize.equals(strSizeOptions.get(i)),
                             "Size Expected="+strSizeOptions.get(i)+"; Actual=" + strSelectedSize,
@@ -76,26 +73,14 @@ public class RogersSearch_CBS_1698_Watch_Facet_Testing extends BaseTestClass {
                     reporter.softAssert(strSelectedColor.equals(strColorOptions.get(j)),
                             "Color Expected="+strColorOptions.get(j)+"; Actual=" + strSelectedColor,
                             "Color Expected="+strColorOptions.get(j)+"; Actual=" + strSelectedColor);
-                    //TODO - Results Validation
-                    //} else {
-                    //reporter.reportLogFailWithScreenshot("Failed to land on Device Config page");
-
                     rogers_device_config_page.navigateBack();
                     resultLinks = rogers_search_page.getAllResultLinks();
                 }
-
                 rogers_search_page.clkColorType(strColorOptions.get(j));
-
             }
-
             rogers_search_page.clkSizeType(strSizeOptions.get(i));
-
         }
-
     }
-
-
-
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
