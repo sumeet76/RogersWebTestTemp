@@ -50,22 +50,48 @@ public class RogersCH_TC_035_IginteTV_CRMaddressMismatchWithSGI_ValidateServicea
 
     @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
     public void checkCRMaddressMismatchWithSGI_ServiceabilityTest() {
-		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-    	rogers_home_page.clkTVBundle();    	
-        reporter.hardAssert(rogers_home_page.verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
-       	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-    	rogers_home_page.clkServiceability();
-    	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-    	rogers_home_page.clkAddressCheck();
-    	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1=TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line2");
-        rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
-        rogers_home_page.clkIgniteAddressLookupSubmit();
-        reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-        rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
-        
-    }
+		reporter.reportLogWithScreenshot("Launched the Home Page");
+		rogers_home_page.clkSignIn();
+		rogers_login_page.switchToSignInIFrame();
+		reporter.reportLogWithScreenshot("Launched the SignIn popup");
+		rogers_login_page.setUsernameIFrame(TestDataHandler.digitalTVUpgradeToIgnite.getUsername());
+		rogers_login_page.setPasswordIFrame(TestDataHandler.digitalTVUpgradeToIgnite.getPassword());
+		reporter.reportLogWithScreenshot("Enter the account credentails");
+		rogers_login_page.clkSignInIFrame();
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+		reporter.reportLogWithScreenshot("Skip popup");
+		rogers_login_page.clkSkipIFrame();
+		rogers_login_page.switchOutOfSignInIFrame();
+		rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVUpgradeToIgnite.accountDetails.getBan());
+		//reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+		reporter.reportLogWithScreenshot("Launched the Account Page");
+		rogers_home_page.clkExistingCustomerShop();
+		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+		rogers_home_page.clkIgniteTVExistingCustomer();
+		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+		rogers_home_page.clkNoThnx();
+		rogers_home_page.clkServiceability();
+		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+		rogers_home_page.clkUseThisAddress();
+		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
+		rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
+
+		reporter.hardAssert(rogers_home_phone_selection_page.verifyPhoneNumberPage(),"Ignite page has Launched","Ignite page has not Launched");
+		reporter.reportLogWithScreenshot("Launched the home phone selection page");
+		rogers_home_phone_selection_page.clkSkipforNewNumber();
+		reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
+		rogers_igniteTV_buy_page.clkHomePhone();
+
+		reporter.hardAssert(rogers_igniteTV_buy_page.verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");
+		reporter.reportLogWithScreenshot("Launched the cart summary page");
+		rogers_igniteTV_buy_page.set4KTV();
+		reporter.reportLogWithScreenshot("4k TV selected");
+		rogers_igniteTV_buy_page.clkCheckout();
+		reporter.reportLogWithScreenshot("Launched the create profile page");
+		rogers_igniteTV_profile_creation_page.clkSubmitProfile();
+		reporter.hardAssert(rogers_igniteTV_credit_check_page.verifyCreditEvalutionPage(),"Credit Evalution page has Launched","Credit Evalution page has not Launched");
+		reporter.reportLogWithScreenshot("Launched the credit evalution page");
+	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteAnonymous

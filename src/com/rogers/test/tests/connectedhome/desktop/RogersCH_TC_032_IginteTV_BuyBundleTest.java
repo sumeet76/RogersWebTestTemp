@@ -67,7 +67,7 @@ public class RogersCH_TC_032_IginteTV_BuyBundleTest extends BaseTestClass {
 
         reporter.hardAssert(rogers_home_phone_selection_page.verifyPhoneNumberPage(),"Ignite page has Launched","Ignite page has not Launched");
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        rogers_home_phone_selection_page.clkPhoneNumberGenerator();
+        rogers_home_phone_selection_page.clkSkipforNewNumber();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
         rogers_igniteTV_buy_page.clkHomePhone();
 
@@ -96,7 +96,7 @@ public class RogersCH_TC_032_IginteTV_BuyBundleTest extends BaseTestClass {
         rogers_igniteTV_credit_check_page.selectExpiryYear();
         rogers_igniteTV_credit_check_page.selectExpiryMonth();
         rogers_igniteTV_credit_check_page.selectExpiryDay();
-        rogers_igniteTV_credit_check_page.setDrivingLicenseNumber("ONTARIO");
+        rogers_igniteTV_credit_check_page.setDrivingLicenseNumber("ON");
         reporter.reportLogWithScreenshot("Driving License Details");
         rogers_igniteTV_credit_check_page.selectSecondIDOption("Passport");
         rogers_igniteTV_credit_check_page.setPassportNumber();

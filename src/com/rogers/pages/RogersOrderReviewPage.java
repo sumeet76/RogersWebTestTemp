@@ -65,7 +65,13 @@ public class RogersOrderReviewPage extends BasePageClass {
 
 	@FindBy(xpath = "//label[@class='ds-checkboxLabel d-inline-flex align-items-start']")
 	WebElement clkChangeAcceptCheckboxUpdateInternet;
-	
+
+	@FindBy(xpath = "//div[@class='text-semi mt-3 -f24 ng-star-inserted']")
+	WebElement popupSessionModel;
+
+	@FindBy(xpath = "//button[@ng-reflect-variant='primary']//span[@ng-reflect-klass='ds-button__copy text-button te']")
+	WebElement btnContinueSession;
+
 	@FindBy(xpath = "//input[@class='ute-btn-primary']")
 	WebElement clkSubmitUpdate;
 	
@@ -155,8 +161,25 @@ public class RogersOrderReviewPage extends BasePageClass {
 		reusableActions.waitForElementVisibility(gwpYourCart, 60);
 		return	reusableActions.isElementVisible(gwpYourCart);
 	}
-	
 
+	/**
+	 * To verify the Session expiry Model
+	 * @return true if the Session expiry Model has available, else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifySessionModel() {
+		//Session expiry time  2 minutes
+		reusableActions.staticWait(120000);
+		return reusableActions.isElementVisible(popupSessionModel,60);
+	}
+
+	/**
+	 * Click the Continue button on the profile page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkContinueSession() {
+		reusableActions.getWhenReady(btnContinueSession, 20).click();
+	}
 	
 	/**
 	 * Enter date of birth	

@@ -80,7 +80,13 @@ public class RogersCH_TC_036_IginteTV_ExistingSolarisCustomerBuyBundleWithNewAdd
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew(); 
 		reporter.reportLogWithScreenshot("Launched the port-in popup");
-	        
+
+		 reporter.hardAssert(rogers_home_phone_selection_page.verifyPhoneNumberPage(),"Ignite page has Launched","Ignite page has not Launched");
+		 reporter.reportLogWithScreenshot("Launched the home phone selection page");
+		 rogers_home_phone_selection_page.clkSkipforNewNumber();
+		 reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
+		 rogers_igniteTV_buy_page.clkHomePhone();
+
 	        reporter.hardAssert(rogers_igniteTV_buy_page.verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
 	        reporter.reportLogWithScreenshot("Launched the cart summary page");
 	        rogers_igniteTV_buy_page.set4KTV(); 

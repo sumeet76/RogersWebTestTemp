@@ -80,11 +80,11 @@ public class RogersCH_TC_034a_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
         reporter.reportLogWithScreenshot("Launched the information popup");
         rogers_igniteTV_buy_page.clkIUnderstand();
-        reporter.reportLogWithScreenshot("Launched the port-in popup");
-        rogers_igniteTV_buy_page.selectOptNewPhone();
-        rogers_igniteTV_buy_page.clickOptPhone();
-        reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
-        rogers_igniteTV_buy_page.clkHomePhone();
+		reporter.hardAssert(rogers_home_phone_selection_page.verifyPhoneNumberPage(),"Ignite page has Launched","Ignite page has not Launched");
+		reporter.reportLogWithScreenshot("Launched the home phone selection page");
+		rogers_home_phone_selection_page.clkSkipforNewNumber();
+		reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
+		rogers_igniteTV_buy_page.clkHomePhone();
         reporter.reportLogWithScreenshot("Launched the cart summary page");
         rogers_igniteTV_buy_page.set4KTV(); 
         rogers_igniteTV_buy_page.clkCheckout();

@@ -77,15 +77,17 @@ public class RogersCH_TC_038_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
         rogers_home_page.clkUseThisAddress();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
-        reporter.reportLogWithScreenshot("Launched the information popup");
-        rogers_igniteTV_buy_page.clkIUnderstand();
-        reporter.reportLogWithScreenshot("Launched the port-in popup");
-        rogers_igniteTV_buy_page.selectOptNewPhone();
-        rogers_igniteTV_buy_page.clickOptPhone();
+
+        reporter.hardAssert(rogers_home_phone_selection_page.verifyPhoneNumberPage(),"Ignite page has Launched","Ignite page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the home phone selection page");
+        rogers_home_phone_selection_page.clkSkipforNewNumber();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
         rogers_igniteTV_buy_page.clkHomePhone();
+
+        reporter.hardAssert(rogers_igniteTV_buy_page.verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
-        rogers_igniteTV_buy_page.set4KTV(); 
+        rogers_igniteTV_buy_page.set4KTV();
+        reporter.reportLogWithScreenshot("4k TV selected");
         rogers_igniteTV_buy_page.clkCheckout();
         reporter.reportLogWithScreenshot("Launched the create profile page");
         rogers_igniteTV_profile_creation_page.clkSubmitProfile();   
@@ -96,23 +98,7 @@ public class RogersCH_TC_038_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
         reporter.reportLogWithScreenshot("Entered the DOB details");
         rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        rogers_home_phone_selection_page.clkContinueHomePhoneSelectionMigration(); 
-        
-        
-/*        reporter.reportLogWithScreenshot("Launched the cart summary page");
-        rogers_igniteTV_buy_page.set4KTV(); 
-        rogers_igniteTV_buy_page.clkCheckout();
-        reporter.reportLogWithScreenshot("Launched the create profile page");
-        rogers_igniteTV_profile_creation_page.clkSubmitProfile();   
-        reporter.reportLogWithScreenshot("Launched the credit evalution page");
-        rogers_igniteTV_credit_check_page.selectDOBYearExistingCustomerMigration(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getYear());
-        rogers_igniteTV_credit_check_page.selectDOBMonthExistingCustomerMigration(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getMonth());
-        rogers_igniteTV_credit_check_page.selectDOBDayExistingCustomerMigration(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getDate());
-        reporter.reportLogWithScreenshot("Entered the DOB details");
-        rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
-        reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        rogers_home_phone_selection_page.clkContinueHomePhoneSelectionMigration(); */
-        
+        rogers_home_phone_selection_page.clkContinueHomePhoneSelectionMigration();
          
         reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");

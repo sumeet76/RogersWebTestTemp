@@ -13,11 +13,14 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	}
 	@FindBy(xpath = "//input[@id='digits']")
 	WebElement txtChosePhoneNumber;
-	
+
+	@FindBy(xpath = "//i[@class='li-loader']")
+	WebElement loaderPhoneNumberPage;
+
 	@FindBy(xpath = "//h1[@class='rhp-port-in__header']")
 	WebElement btnGeneratePhoneNumberPage;
 
-	@FindBy(xpath = "//span[contains(text(),'I’ll pick a new number, skip this.') or contains(text(),'Je veux choisir un nouveau numéro et passer à étape suivante.')]/ancestor:::button")
+	@FindBy(xpath = "//span[contains(text(),'I’ll pick a new number, skip this.') or contains(text(),'Je veux choisir un nouveau numéro et passer à étape suivante.')]//ancestor::button/span")
 	WebElement btnGeneratePhoneNumber;
 
 	@FindBy(xpath = "//label[@for='number-1']")
@@ -76,17 +79,26 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPhoneNumberPage() {
-		return	reusableActions.isElementVisible(btnGeneratePhoneNumberPage, 90);
+		reusableActions.waitForElementInvisibility(loaderPhoneNumberPage,90);
+		return	reusableActions.isElementVisible(btnGeneratePhoneNumberPage, 60);
 	}
-	
+
+	/**
+	 * Click on Generate Phone Number button to generate phone numbers
+	 * @author chinnarao.vattam
+	 */
+	public void clkSkipforNewNumber() {
+		//Todo
+		reusableActions.staticWait(2000);
+		//reusableActions.getWhenReady(btnGeneratePhoneNumber,30).click();
+	}
+
 	/**
 	 * Click on Generate Phone Number button to generate phone numbers
 	 * @author chinnarao.vattam
 	 */
 	public void clkPhoneNumberGenerator() {
-		//reusableActions.waitForElementVisibility(btnGeneratePhoneNumber,60);
-		//reusableActions.executeJavaScriptClick(btnGeneratePhoneNumber);
-		reusableActions.staticWait(5000);
+		reusableActions.executeJavaScriptClick(btnGeneratePhoneNumber);
 	}
 		
 	

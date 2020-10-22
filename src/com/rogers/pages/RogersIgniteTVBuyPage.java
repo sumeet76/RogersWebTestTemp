@@ -1,12 +1,12 @@
 package com.rogers.pages;
 
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import com.rogers.pages.base.BasePageClass;
+import utils.FormFiller;
 
 public class RogersIgniteTVBuyPage extends BasePageClass {
 
@@ -59,8 +59,32 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//input[@id='have4K-yes']")
 	WebElement rdo4KTV;
 	//label[@for='have4K-yes']
-	
-	
+
+	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	WebElement txtEmailContainer;
+
+	@FindBy(xpath = "//input[@type='email']")
+	WebElement txtEmail;
+
+	@FindBy(xpath = "//span[@translate='global.modals.cartAbandonment.successModal.primaryButtonLabel']")
+	WebElement btnOkay;
+
+	@FindBy(xpath = "//button[@type='submit']//span[@translate='global.modals.cartAbandonment.triggerEmailModal.primaryButtonLabel']")
+	WebElement btnSubmit;
+
+	@FindBy(xpath = "//div[@class='ds-checkboxLabel__container ml-8 text-body my-12']")
+	WebElement clkEmailCheckbox;
+
+	@FindBy(xpath = "//button[@ng-reflect-variant='primary']//span")
+	WebElement clkContinue;
+
+	@FindBy(xpath = "//h2[@translate='global.modals.cartAbandonment.triggerEmailModal.title']")
+	WebElement popupEmailModal;
+
+
+	@FindBy(xpath = "//a[@title='MyRogers' or @title='MonRogers' and @class='m-navLink ng-star-inserted']")
+	WebElement lnkMyRogers;
+
 	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
 	WebElement btnCheckout;
 	//button[@class='mr-24 cart-summary-checkout ds-button ds-focus ds-active -primary -large']
@@ -122,7 +146,13 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	
 	@FindBy(xpath ="//ins[@translate='global.label.bundles']/ancestor::h2[@class='solaris-tab-list-header']")
 	WebElement tabBundles;
-	
+
+	@FindBy(xpath = "//div[@class='text-semi mt-3 -f24 ng-star-inserted']")
+	WebElement popupSessionModel;
+
+	@FindBy(xpath = "//button[@ng-reflect-variant='primary']//span[@ng-reflect-klass='ds-button__copy text-button te']")
+	WebElement btnContinueSession;
+
 	@FindBy(xpath ="//h3[contains(normalize-space(.),'Rogers Ignite Starter Bundle') or contains(normalize-space(.),'Offre groupée Élan Découverte')]/ancestor::bundle-mini-component[@class='bundle-mini-component channel-column']//ins[@translate='global.label.tvChannelsCount']")
 	WebElement txtStarterChannels;
 	
@@ -216,7 +246,26 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		String xpathBundlePackage = "//button[contains(@aria-label,'"+ bundleName +"')]//ancestor::div[contains(@class,'d-flex')]/preceding-sibling::section//p";
 		return	reusableActions.isElementVisible(By.xpath(xpathBundlePackage), 120);
 	}
-		
+
+	/**
+	 * To verify the Session expiry Model
+	 * @return true if the Session expiry Model has available, else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifySessionModel() {
+		//Session expiry time  2 minutes
+		reusableActions.staticWait(120000);
+		return reusableActions.isElementVisible(popupSessionModel,60);
+	}
+
+	/**
+	 * Click the Continue button on the profile page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkContinueSession() {
+		reusableActions.getWhenReady(btnContinueSession, 20).click();
+	}
+
 	/**
 	 * To click on the chevron of the starter bundel package
 	 * @param	bundleName : name of the bundle package
@@ -270,7 +319,6 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public void clkPlusAddIgniteTVBoxes() {
 		reusableActions.waitForElementVisibility(buttonAddIgniteTVBoxes, 180);
-		reusableActions.staticWait(7000);
 		reusableActions.getWhenReady(buttonAddIgniteTVBoxes, 90).click();
 	}
 	
@@ -540,21 +588,104 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	public void clickOptPhone() {
 		reusableActions.clickWhenReady(btnOptPhone, 120);
 	}
-	
+
+	/**
+	 * Click the Channels button
+	 * @author chinnarao.vattam
+	 */
 	public void clickChannels() {
 		reusableActions.waitForElementVisibility(tabChannelsTab, 180);		
 		reusableActions.moveToElementAndClick(tabChannelsTab, 180);
 	}
-	
+
+	/**
+	 * Click the Bundles button
+	 * @author chinnarao.vattam
+	 */
 	public void clickBundles() {
 		reusableActions.waitForElementVisibility(tabBundles, 180);
 		reusableActions.moveToElementAndClick(tabBundles, 180);
 	}
-	
-	public void clickThemePacks() {
-		reusableActions.clickWhenReady(tabThemePacksTab, 20);
+
+	/**
+	 * To set the Lookup address on the service availability  Lookup popup
+	 * @author chinnarao.vattam
+	 */
+	public void setEmail() {
+		String strEmail = FormFiller.generateEmail();
+		reusableActions.waitForElementVisibility(txtEmailContainer,30);
+		reusableActions.getWhenReady(txtEmailContainer,10).click();
+		reusableActions.clickWhenReady(txtEmail);
+		txtEmail.clear();
+		txtEmail.sendKeys(strEmail);
 	}
-	
+
+	/**
+	 * Click the Okay button
+	 * @author chinnarao.vattam
+	 */
+	public void clickOkay() {
+		reusableActions.getWhenReady(btnOkay, 60).click();
+	}
+
+	/**
+	 * Click the Submit button
+	 * @author chinnarao.vattam
+	 */
+
+	public void clickSubmit() {
+		reusableActions.clickWhenReady(btnSubmit, 20);
+	}
+	/**
+	 * Click the Email Checkbox
+	 * @author chinnarao.vattam
+	 */
+	public void clickEmailCheckbox() {
+		reusableActions.clickWhenReady(clkEmailCheckbox, 20);
+	}
+
+	/**
+	 * Click the Continue button
+	 * @author chinnarao.vattam
+	 */
+	public void clickContinue() {
+		reusableActions.clickWhenReady(clkContinue, 20);
+	}
+
+	/**
+	 * Verify the Welcome back Popup
+	 * @return true if Welcome back Popup  display when we back to bundle buy, else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyWelcomeBackPopup() {
+		return reusableActions.isElementVisible(clkContinue,30);
+	}
+
+	/**
+	 * Verify the Email Modal
+	 * @return true if Email Modal display the abondone action, else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyEmailModal() {
+		return reusableActions.isElementVisible(popupEmailModal,30);
+	}
+
+	/**
+	 * Verify the Confirmation Modal
+	 * @return true if Email Modal display the abondone action, else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyConfirmation() {
+		return reusableActions.isElementVisible(btnOkay,30);
+	}
+
+	/**
+	 * Click the MyRogers link
+	 * @author chinnarao.vattam
+	 */
+	public void clickMyRogers() {
+		reusableActions.clickWhenReady(lnkMyRogers, 20);
+	}
 	/**
 	 * Verify the Ignite TV Starter Package on Solaris TV dashboard page
 	 * @return true if the Solaris TV dashboard page display the Ignite TV Starter Package, else false
