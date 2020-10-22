@@ -81,7 +81,7 @@ public class RogersCH_TC_036_IginteTV_ExistingSolarisCustomerBuyBundleWithNewAdd
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew(); 
 		reporter.reportLogWithScreenshot("Launched the port-in popup");
 
-		 reporter.hardAssert(rogers_home_phone_selection_page.verifyPhoneNumberPage(),"Ignite page has Launched","Ignite page has not Launched");
+		 reporter.hardAssert(rogers_home_phone_selection_page.verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
 		 reporter.reportLogWithScreenshot("Launched the home phone selection page");
 		 rogers_home_phone_selection_page.clkSkipforNewNumber();
 		 reporter.reportLogWithScreenshot("Launched the Home phone add-on page");

@@ -76,7 +76,7 @@ public class RogersCH_TC_035_IginteTV_CRMaddressMismatchWithSGI_ValidateServicea
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
 		rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
 
-		reporter.hardAssert(rogers_home_phone_selection_page.verifyPhoneNumberPage(),"Ignite page has Launched","Ignite page has not Launched");
+		reporter.hardAssert(rogers_home_phone_selection_page.verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the home phone selection page");
 		rogers_home_phone_selection_page.clkSkipforNewNumber();
 		reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
