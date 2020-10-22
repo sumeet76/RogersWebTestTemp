@@ -30,7 +30,7 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(xpath = "//iframe[contains(@src,'/web/totes/easylogin/signin')]")
 	WebElement fraSignIn;
 	
-	@FindBy (xpath = "//img[@src='assets/images/error_warning.png']")
+	@FindBy (xpath = "//ds-alert[@variant='error']")
 	WebElement failLoginMsg;
 
 	@FindBy(xpath = "//button[contains(text(),'Skip') or contains(text(),'Continuer')]")
