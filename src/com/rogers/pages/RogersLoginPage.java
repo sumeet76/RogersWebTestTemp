@@ -73,7 +73,8 @@ public class RogersLoginPage extends BasePageClass {
 	 * To switch to the iframe
 	 * @author chinnarao.vattam
 	 */
-	public void switchToSignInIFrame() {		
+	public void switchToSignInIFrame() {	
+		reusableActions.getWhenReady(fraSignIn,10);
 		driver.switchTo().frame(fraSignIn);
 //		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraSignIn, 30);
 	}
@@ -148,7 +149,7 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSkipIFrame() {
-		reusableActions.clickIfAvailable(btnSkip,20);
+		reusableActions.clickIfAvailable(btnSkip,10);
 	}
 	
 	/**
