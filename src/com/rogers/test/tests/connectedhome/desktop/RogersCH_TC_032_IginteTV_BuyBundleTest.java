@@ -67,6 +67,7 @@ public class RogersCH_TC_032_IginteTV_BuyBundleTest extends BaseTestClass {
 
         reporter.hardAssert(rogers_home_phone_selection_page.verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
+        rogers_home_phone_port_in_page.setHomePhoneNumber(TestDataHandler.solarisPortinFlows.getAccountDetails().getPhoneNumber());
         rogers_home_phone_selection_page.clkSkipforNewNumber();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
         rogers_igniteTV_buy_page.clkHomePhone();

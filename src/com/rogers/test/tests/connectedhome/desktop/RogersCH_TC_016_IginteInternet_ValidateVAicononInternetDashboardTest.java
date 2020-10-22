@@ -58,16 +58,12 @@ public class RogersCH_TC_016_IginteInternet_ValidateVAicononInternetDashboardTes
         reporter.hardAssert(rogers_internet_dashboard_page.verifyInternetPage(),"Launched the internet dashboard Page","Internet dashboard Page dosen't launched");
         reporter.hardAssert(rogers_internet_dashboard_page.verifyVAButton(),"VA button is present","VA button is not present");
         rogers_internet_dashboard_page.clkVAButton();
-        //reporter.hardAssert(rogers_internet_dashboard_page.verifyVaWelcome(),"VA chat tab has launched","VA chat tab hasn't launched");
-        //reporter.hardAssert(rogers_internet_dashboard_page.verifyVaTopicList(),"VA chat Topic list is available","VA chat Topic list is not available");
-        /*rogers_internet_dashboard_page.clkVAMenu();
-        rogers_internet_dashboard_page.clkVAMininmize();
-        rogers_internet_dashboard_page.clkVAButton();*/
-        //reporter.hardAssert(rogers_internet_dashboard_page.verifyVaWelcome(),"VA chat tab has launched","VA chat tab hasn't launched");
-/*        rogers_internet_dashboard_page.clkVAMenu();
-        rogers_internet_dashboard_page.clkVAClose();
-        reporter.hardAssert(rogers_internet_dashboard_page.verifyVAButton(),"VA button is present","VA button is not present");*/
-    	}
+        rogers_internet_dashboard_page.switchToVAIFrame();
+        reporter.hardAssert(rogers_internet_dashboard_page.verifyVaWelcome(),"VA chat tab has launched","VA chat tab hasn't launched");
+        reporter.hardAssert(rogers_internet_dashboard_page.verifyVaTopicList(),"VA chat Topic list is available","VA chat Topic list is not available");
+        reporter.hardAssert(rogers_internet_dashboard_page.verifyVaWelcomeSend(),"VA chat Continue button is available","VA chat Continue button  is not available");
+
+   	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow

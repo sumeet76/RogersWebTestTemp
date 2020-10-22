@@ -92,7 +92,7 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPortInOutPage() {
-		reusableActions.waitForElementInvisibility(loaderPhoneNumberPage,90);
+		reusableActions.waitForElementInvisibility(loaderPhoneNumberPage,120);
 		return	reusableActions.isElementVisible(btnPortInOutPage, 60);
 	}
 	/**
@@ -101,8 +101,13 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 */
 	public void clkSkipforNewNumber() {
 		//Todo
-		reusableActions.staticWait(2000);
-		//reusableActions.getWhenReady(btnSkipforNewNumber,30).click();
+		reusableActions.staticWait(5000);
+		reusableActions.javascriptScrollToMiddleOfPage();
+		reusableActions.waitForElementVisibility(btnSkipforNewNumber,90);
+		reusableActions.isElementVisible(btnSkipforNewNumber,30);
+		reusableActions.executeJavaScriptClick(btnSkipforNewNumber);
+		reusableActions.getWhenReady(btnSkipforNewNumber,60).click();
+
 	}
 
 	/**

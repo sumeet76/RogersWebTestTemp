@@ -84,6 +84,10 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	
 	@FindBy(xpath = "//button[@id='va-menu-minimum-button']")
 	WebElement btnVAMininmize;
+
+	@FindBy(xpath = "//iframe[@id='va-iframe']")
+	WebElement ifrmVA;
+
 	
 	@FindBy(xpath = "//div[@id='va-welcome-header']")
 	WebElement txtVaWelcome;
@@ -94,7 +98,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//button[@id='va-welcome-send-button']")
 	WebElement btnVaWelcomeSend;
 	
-	@FindBy(xpath = "//div[@class='ng-select-container ng-has-value']")
+	@FindBy(xpath = "//input[@name='va-welcome-input']")
 	WebElement selVaTopicList;
 	
 	@FindBy(xpath = "//button[@id='va-menu-close-button']")
@@ -127,7 +131,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSolarisInternetBadge() {
-		reusableActions.getWhenReady(btnSolarisInternetBadge,120).click();			
+		reusableActions.getWhenReady(btnSolarisInternetBadge,60).click();
 	}
 
 	/**
@@ -259,19 +263,38 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @return true when pop up contact us is visible else false
 	 * @author Chinnarao.Vattam
 	 */
-	public boolean verifyVaWelcome() {	
+	public boolean verifyVaWelcome() {
 		return reusableActions.isElementVisible(txtVaWelcome, 90);
 	}
-	
+
+	/**
+	 * To switch to the iframe
+	 * @author chinnarao.vattam
+	 */
+	public void switchToVAIFrame() {
+		driver.switchTo().frame(ifrmVA);
+//		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraSignIn, 30);
+	}
+
 	/**
 	 * Checks if the pop up contact us is visible
 	 * @return true when pop up contact us is visible else false
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyVaTopicList() {	
-		return reusableActions.isElementVisible(selVaTopicList, 10);
+		return reusableActions.isElementVisible(selVaTopicList, 30);
 	}
-	
+
+	/**
+	 * Checks if the pop up contact us is visible
+	 * @return true when pop up contact us is visible else false
+	 * @author Chinnarao.Vattam
+	 */
+	public boolean verifyVaWelcomeSend() {
+		return reusableActions.isElementVisible(btnVaWelcomeSend, 30);
+	}
+
+
 	/**
 	 * Checks if the pop up contact us is visible
 	 * @return true when pop up contact us is visible else false
