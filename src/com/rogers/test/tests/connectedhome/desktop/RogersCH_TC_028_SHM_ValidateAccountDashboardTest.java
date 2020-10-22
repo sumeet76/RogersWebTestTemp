@@ -43,7 +43,7 @@ public class RogersCH_TC_028_SHM_ValidateAccountDashboardTest extends BaseTestCl
             reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
             rogers_solaris_tv_dashboard_page.clkSHMBadge();
             reporter.reportLogWithScreenshot("SHM dashboard page");
-            //reporter.hardAssert(rogers_shm_dashboard_page.verifySHMDashBoardPageIsDisplayed(),"SHM dashboard page is displayed", "SHM dashboard page NOT displayed correctly please investigate");
+            reporter.hardAssert(rogers_shm_dashboard_page.verifySHMDashBoardPageIsDisplayed(),"SHM dashboard page is displayed", "SHM dashboard page NOT displayed correctly please investigate");
             reporter.softAssert(rogers_shm_dashboard_page.verifyShopForAccessoriesLinkdisplayed(),
             		"SHM dashboard page Links displayed", "SHM dashboard page Links not displayed correctly please investigate");
             reporter.softAssert(rogers_shm_dashboard_page.verifyShopForAccessoriesLinkdisplayed(),
