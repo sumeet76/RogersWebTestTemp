@@ -30,36 +30,36 @@ public class RogersCH_TC_025_StandaloneInternet_ValidateSessionExpirationModalAt
 
 	@Test(groups = {"RegressionCH","saiCH"})
     public void checkSessionExpirationModalatCartSummaryPage() throws InterruptedException {
-    	reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		rogers_home_page.clkEasyLogin();
-    	reporter.reportLogWithScreenshot("Launched the Home Page");
-    	rogers_home_page.clkShop(); 
-    	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
-    	rogers_home_page.clkInternet();
-    	reporter.reportLogWithScreenshot("Launched the Internet packages page");
-    	rogers_home_page.clkInternetAvailability();
-    	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-    	rogers_home_page.clkAddressCheck();
-    	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1=TestDataHandler.standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line2");
+        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
+        rogers_home_page.clkEasyInternet();
+        reporter.hardAssert(rogers_home_page.verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the Internet packages page");
+        rogers_home_page.clkInternetAvailability();
+        reporter.reportLogWithScreenshot("Launched the customer availability check popup");
+        rogers_home_page.clkAddressCheck();
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+        String  strAddressLine1=TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line2");
         rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
-        rogers_home_page.clkOnlyInternet();
-        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");       
+        //rogers_home_page.clkOnlyInternet();
+        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         rogers_internet_package_selection_page.clkInternetPackage();
-        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");         
+        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         rogers_internet_package_selection_page.clkInternetBuyContinue();
-        
+
         reporter.hardAssert(rogers_ineternet_profile_page.verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
+        reporter.hardAssert(rogers_ineternet_profile_page.verifySessionModel(),"Session expiry Model has Launched","Session expiry Model has not Launched");
+        rogers_ineternet_profile_page.clkContinue();
+        reporter.hardAssert(rogers_ineternet_profile_page.verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
         rogers_ineternet_profile_page.setEmail();
         rogers_ineternet_profile_page.setFirstname();
         rogers_ineternet_profile_page.setLastName();
         rogers_ineternet_profile_page.setPhone();
         rogers_ineternet_profile_page.clkSubmitProfile();
-        
+
         reporter.hardAssert(rogers_internet_credit_check_page.verifyCreditEvalutionPage(),"Credit Evalution page has Launched","Credit Evalution page has not Launched");
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
         rogers_internet_credit_check_page.selectDOBYear();
@@ -81,41 +81,38 @@ public class RogersCH_TC_025_StandaloneInternet_ValidateSessionExpirationModalAt
         rogers_internet_credit_check_page.clkCreditConsent();
         reporter.reportLogWithScreenshot("Passport Details");
         rogers_internet_credit_check_page.clkCreditConsentSubmit();
-        
-       reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
-       reporter.reportLogWithScreenshot("Launched the tech install page");
-       rogers_tech_install_page.selSelffinstallDateAndTime();
-       reporter.reportLogWithScreenshot("Launched the tech install page");
-       rogers_tech_install_page.clkTechInstallSlot();
-       reporter.reportLogWithScreenshot("tech install details");
-       rogers_tech_install_page.setMobielNumber();
-       rogers_tech_install_page.setEmail();
-       rogers_tech_install_page.clkTechInstalConsent();
-       reporter.reportLogWithScreenshot("tech install details");
-       rogers_tech_install_page.clkTechInstallContinue();
-        
+
+        reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the tech install page");
+        //rogers_tech_install_page.selSelffinstallDateAndTime();
+        //reporter.reportLogWithScreenshot("Launched the tech install page");
+        //rogers_tech_install_page.clkTechInstallSlot();
+        reporter.reportLogWithScreenshot("tech install details");
+        //rogers_tech_install_page.setMobielNumber();
+        //rogers_tech_install_page.setEmail();
+        rogers_tech_install_page.clkTechInstalConsent();
+        reporter.reportLogWithScreenshot("tech install details");
+        rogers_tech_install_page.clkTechInstallContinue();
+
         reporter.hardAssert(rogers_payment_options_page.verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
+        reporter.hardAssert(rogers_payment_options_page.verifySessionModel(),"Session expiry Model has Launched","Session expiry Model has not Launched");
+        rogers_payment_options_page.clkContinueSession();
+        reporter.hardAssert(rogers_payment_options_page.verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the payment options page");
+
         rogers_payment_options_page.selectPaymentMode("Pre-authorized Credit Card");
         rogers_payment_options_page.switchToCreditCardIFrame();
         rogers_payment_options_page.setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
         rogers_payment_options_page.switchOutOfCreditCardIFrame();
         rogers_payment_options_page.setCVV();
         rogers_payment_options_page.selectExpiryMonth();
-        rogers_payment_options_page.selectExpiryYear(); 
+        rogers_payment_options_page.selectExpiryYear();
         reporter.reportLogWithScreenshot("Payment options Details");
         rogers_payment_options_page.clkPaymentConfirm();
-        
-        reporter.hardAssert(rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the order review page");
 
-        reporter.hardAssert( rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
-        rogers_order_review_page.clkAcceptenceCheckbox();
-        reporter.reportLogWithScreenshot("Agreement details");
-        rogers_order_review_page.clkSubmit();
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");      
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");    
+        reporter.hardAssert(rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
+
     }
 
 

@@ -43,10 +43,9 @@ public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends B
         rogers_home_page.clkIgniteAddressLookupSubmit();*/
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
-        reporter.reportLogWithScreenshot("Launched the port-in popup");
-        rogers_igniteTV_buy_page.clkKeepMyNumber();
-        rogers_igniteTV_buy_page.clickOptPhone();
-        reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
+
+        reporter.hardAssert(rogers_home_phone_selection_page.verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the home phone selection page");
         rogers_home_phone_port_in_page.setHomePhoneNumber(TestDataHandler.solarisPortinFlows.getAccountDetails().getPhoneNumber());
         rogers_home_phone_port_in_page.clkPhoneNumberEligibiltyCheck();
         

@@ -13,12 +13,19 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	}
 	@FindBy(xpath = "//input[@id='digits']")
 	WebElement txtChosePhoneNumber;
-	
-	@FindBy(xpath = "//h1[@class='rhp-port-in__header']")
-	WebElement btnGeneratePhoneNumberPage;
 
-	@FindBy(xpath = "//span[contains(text(),'I’ll pick a new number, skip this.') or contains(text(),'Je veux choisir un nouveau numéro et passer à étape suivante.')]/ancestor:::button")
+	@FindBy(xpath = "//h1[@class='rhp-port-in__header']")
+	WebElement btnPortInOutPage;
+
+	@FindBy(xpath = "//ins[@translate='global.checkout.numberSelection.sections.section1.cta']")
 	WebElement btnGeneratePhoneNumber;
+	//ins[@translate='global.checkout.numberSelection.sections.section1.cta2']
+
+	@FindBy(xpath = "//i[@class='li-loader']")
+	WebElement loaderPhoneNumberPage;
+
+	@FindBy(xpath = "//span[contains(text(),'I’ll pick a new number, skip this.') or contains(text(),'Je veux choisir un nouveau numéro et passer à étape suivante.')]//ancestor::button/span")
+	WebElement btnSkipforNewNumber;
 
 	@FindBy(xpath = "//label[@for='number-1']")
 	WebElement rdoChosePhoneNumber;
@@ -76,17 +83,34 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPhoneNumberPage() {
-		return	reusableActions.isElementVisible(btnGeneratePhoneNumberPage, 90);
+		return	reusableActions.isElementVisible(btnGeneratePhoneNumber, 60);
 	}
-	
+
+	/**
+	 * To set a number to have phone number consisting the given number
+	 * @return true if, Generate PhoneNumber button is available on home phone page, else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyPortInOutPage() {
+		reusableActions.waitForElementInvisibility(loaderPhoneNumberPage,90);
+		return	reusableActions.isElementVisible(btnPortInOutPage, 60);
+	}
+	/**
+	 * Click on Generate Phone Number button to generate phone numbers
+	 * @author chinnarao.vattam
+	 */
+	public void clkSkipforNewNumber() {
+		//Todo
+		reusableActions.staticWait(2000);
+		//reusableActions.getWhenReady(btnSkipforNewNumber,30).click();
+	}
+
 	/**
 	 * Click on Generate Phone Number button to generate phone numbers
 	 * @author chinnarao.vattam
 	 */
 	public void clkPhoneNumberGenerator() {
-		//reusableActions.waitForElementVisibility(btnGeneratePhoneNumber,60);
-		//reusableActions.executeJavaScriptClick(btnGeneratePhoneNumber);
-		reusableActions.staticWait(5000);
+		reusableActions.executeJavaScriptClick(btnGeneratePhoneNumber);
 	}
 		
 	
