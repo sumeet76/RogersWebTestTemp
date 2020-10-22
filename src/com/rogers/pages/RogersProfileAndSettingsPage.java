@@ -120,7 +120,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//strong")
 	WebElement btnChangePassDone;
 	
-	@FindBy (xpath = "//button[@title='Display contact information' or @title='Afficher les coordonnées']")
+	@FindBy (xpath = "//button[@title='Display contact information' or @title='Afficher les coordonn']")
 	WebElement btnContactInfo;
 	
 	@FindBy (xpath = "//button[@title='Display billing settings' or @title='Afficher les préférences de facturation']")

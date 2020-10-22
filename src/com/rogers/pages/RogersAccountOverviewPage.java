@@ -103,7 +103,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	WebElement lnkBelowCardChangePaymentMethod;
 		
 	@FindAll({
-        @FindBy(xpath = "//rss-billing-widget//span[contains(text(),'Set up automatic payments') or contains(text(),'Établir les paiements automat.')]"),
+        @FindBy(xpath = "//rss-billing-widget//span[contains(text(),'Set up automatic payments') or contains(text(),'tablir les paiements automat.')]"),
         @FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.setUpAutomaticPayments']")})	
 	WebElement lnkSetUpAutomaticPaymentMethod;
 	
