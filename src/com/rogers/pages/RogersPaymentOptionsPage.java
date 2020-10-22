@@ -28,6 +28,12 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	@FindBy(xpath = "//input[@id='account-number']")
 	WebElement txtAccountNumber;
 
+	@FindBy(xpath = "//div[@class='text-semi mt-3 -f24 ng-star-inserted']")
+	WebElement popupSessionModel;
+
+	@FindBy(xpath = "//button[@ng-reflect-variant='primary']//span[@ng-reflect-klass='ds-button__copy text-button te']")
+	WebElement btnContinueSession;
+
 	@FindBy(xpath = "//a[@href='http://www.cdnpay.ca/']")
 	WebElement lnkCDPay;
 
@@ -98,7 +104,26 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 		reusableActions.waitForElementVisibility(txtPaymentpage, 120);
 		return	reusableActions.isElementVisible(txtPaymentpage, 20);
 	}
-	
+
+	/**
+	 * To verify the Session expiry Model
+	 * @return true if the Session expiry Model has available, else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifySessionModel() {
+		//Session expiry time  2 minutes
+		reusableActions.staticWait(120000);
+		return reusableActions.isElementVisible(popupSessionModel,60);
+	}
+
+	/**
+	 * Click the Continue button on the profile page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkContinueSession() {
+		reusableActions.getWhenReady(btnContinueSession, 20).click();
+	}
+
 	/**
 	 * Verify the Payment Modes page
 	 * @return true if the Payment Mode drop down list is present, else false

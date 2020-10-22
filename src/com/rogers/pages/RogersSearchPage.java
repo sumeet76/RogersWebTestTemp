@@ -1,5 +1,10 @@
 package com.rogers.pages;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URL;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -850,9 +855,10 @@ return blnFlag;
         reusableActions.staticWait(4000);
     }
 
-    public boolean validateResultLandingPageURL(String strQuery) {
+    public boolean validateResultLandingPageURL(String strQuery) throws UnsupportedEncodingException{
+        String strUrl = URLDecoder.decode(driver.getCurrentUrl(), StandardCharsets.UTF_8.name());
         boolean blnFlag = false;
-        if(driver.getCurrentUrl().contains(strQuery)) {
+        if(strUrl.contains(strQuery)) {
             blnFlag = true;
         }
         return blnFlag;

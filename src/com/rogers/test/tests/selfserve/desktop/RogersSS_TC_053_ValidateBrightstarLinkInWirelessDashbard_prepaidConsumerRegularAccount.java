@@ -32,6 +32,7 @@ public class RogersSS_TC_053_ValidateBrightstarLinkInWirelessDashbard_prepaidCon
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc5398.getUsername();
     	String strPassword = TestDataHandler.tc5398.getPassword();
+        String strAccountNum = TestDataHandler.tc5398.getAccountDetails().getCtn();
     	rogers_login_page.switchToSignInIFrame();
         rogers_login_page.setUsernameIFrame(strUsername);
         rogers_login_page.setPasswordIFrame(strPassword);
@@ -46,13 +47,8 @@ public class RogersSS_TC_053_ValidateBrightstarLinkInWirelessDashbard_prepaidCon
        // rogers_account_overview_page.removeCookieAfterLogin("temp_token_r");
         rogers_account_overview_page.clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
-        String strAccountNum = TestDataHandler.tc5398.getAccountDetails().getCtn();
-        String strLast4Dig = strAccountNum.substring(strAccountNum.length()-4);
-        if (rogers_account_overview_page.isAccountShowInDropDown(strLast4Dig)) {
-            rogers_account_overview_page.clkDropDownAccount(strLast4Dig);
-        } else {
-        	rogers_account_overview_page.clkSubMenuWirelessUsage();
-        }
+        rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
+
         rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
         rogers_wireless_dashboard_page.scrollToBottomOfPage();
         reporter.reportLogWithScreenshot("Bottom of Wireless dashboard page.");

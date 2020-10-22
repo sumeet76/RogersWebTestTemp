@@ -288,10 +288,14 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void setDrivingLicenseNumber(String province) {
 		String strLicenseNumber = FormFiller.generateLicenseNumber(province);
-		reusableActions.waitForElementVisibility(txtContainer,30);
-		reusableActions.getWhenReady(txtContainer,10).click();		
-		reusableActions.getWhenReady(txtLicenseNumber, 30).clear();
-		reusableActions.getWhenReady(txtLicenseNumber, 3).sendKeys(strLicenseNumber);
+		reusableActions.waitForElementVisibility(txtContainer,20);
+		reusableActions.getWhenReady(txtContainer,10).click();
+		//Todo
+		reusableActions.staticWait(6000);
+/*		reusableActions.executeJavaScriptClick(txtLicenseNumber);
+		reusableActions.getWhenReady(txtLicenseNumber,30).click();
+		txtLicenseNumber.clear();
+		txtLicenseNumber.sendKeys(strLicenseNumber);*/
 	}
 	/**
 	 * Set dynamic license number for British Columbia  on Credit check page
@@ -301,7 +305,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	public void setDrivingLicenseNumberMobile(String province) {
 		String strLicenseNumber = FormFiller.generateLicenseNumber(province);		
 		reusableActions.waitForElementVisibility(txtContainer,20);
-		reusableActions.executeJavaScriptClick(txtContainer);		
+		reusableActions.executeJavaScriptClick(txtContainer);
 		reusableActions.getWhenReady(txtLicenseNumber,5).clear();
 		reusableActions.getWhenReady(txtLicenseNumber, 3).sendKeys(strLicenseNumber);
 	}
@@ -324,8 +328,9 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 		String strPasportNumber = FormFiller.generatePassportNumber();
 		reusableActions.waitForElementVisibility(txtContainerPasportNumber,30);
 		reusableActions.getWhenReady(txtContainerPasportNumber,10).click();
-		reusableActions.getWhenReady(txtPasportNumber, 30).clear();
-		reusableActions.getWhenReady(txtPasportNumber, 3).sendKeys(strPasportNumber);
+		reusableActions.clickWhenReady(txtPasportNumber);
+		txtPasportNumber.clear();
+		txtPasportNumber.sendKeys(strPasportNumber);
 	}
 	
 	/**
