@@ -103,19 +103,9 @@ public class RogersCH_TC_030_IginteTV_DoublePlayBuyTest extends BaseTestClass {
         rogers_igniteTV_credit_check_page.clkCreditConsent();
         reporter.reportLogWithScreenshot("Passport Details");
        rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
-/*      reporter.hardAssert(rogers_home_phone_selection_page.verifyPhoneNumberPage(),"Ignite page has Launched","Ignite page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        rogers_home_phone_selection_page.clkPhoneNumberGenerator(); 
-        rogers_home_phone_selection_page.clkChosePhoneNumber(); 
-        rogers_home_phone_selection_page.clkContinueHomePhoneSelection();*/ 
-       
+
        reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
        reporter.reportLogWithScreenshot("Launched the tech install page");
-       //rogers_tech_install_page.clkPersonalizedInstall();
-       //rogers_tech_install_page.selSelffinstallDateAndTime();
-       //reporter.reportLogWithScreenshot("Launched the tech install page");
-       //rogers_tech_install_page.setMobielNumber();
-       //rogers_tech_install_page.setEmail();
        rogers_tech_install_page.clkTechInstalConsent();
        reporter.reportLogWithScreenshot("tech install details");
        rogers_tech_install_page.clkTechInstallContinue();
