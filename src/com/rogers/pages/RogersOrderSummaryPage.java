@@ -1,19 +1,13 @@
 package com.rogers.pages;
 
-import java.util.List;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.Capabilities;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import com.rogers.pages.base.BasePageClass;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
-
-import com.rogers.pages.base.BasePageClass;
-
 import utils.FormFiller;
+
+import java.util.List;
 
 public class RogersOrderSummaryPage extends BasePageClass {
 
@@ -446,7 +440,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	public void scrollDownToAgreement() {
 		List<WebElement> termsandconditions =  driver.findElements(By.xpath("//ol[@id='t1']//a"));
 		termsandconditions.get(3).click();
-		reusableActions.waitForElementVisibility(lnkWebsite,120);
+		reusableActions.waitForElementVisibility(lnkWebsite,60);
 		reusableActions.javascriptScrollByVisibleElement(lnkWebsite);
 		reusableActions.getWhenVisible(lnkWebsite,10).sendKeys(Keys.ARROW_DOWN);
 		reusableActions.getWhenVisible(lnkWebsite, 10).sendKeys(Keys.ARROW_DOWN);
@@ -466,7 +460,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void scrollDownToAgreementForLegacyflow() {
-		reusableActions.waitForElementVisibility(lnkWebsiteTVflow,120);
+		reusableActions.waitForElementVisibility(lnkWebsiteTVflow,60);
 		reusableActions.javascriptScrollByVisibleElement(lnkWebsiteTVflow);	
 	}
 	

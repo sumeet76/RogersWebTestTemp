@@ -55,6 +55,7 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyProfilePage() {
+		reusableActions.waitForElementVisibility(txtProfile,60);
 		return reusableActions.isElementVisible(txtProfile);
 	}
 
@@ -84,7 +85,7 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 */
 	public void setEmail() {
 		String strEmail = FormFiller.generateEmail();
-		reusableActions.waitForElementVisibility(txtContainerEmail,180);
+		reusableActions.waitForElementVisibility(txtContainerEmail,20);
 		reusableActions.getWhenReady(txtContainerEmail,10).click();
 		reusableActions.getWhenReady(txtEmail, 30).clear();
 		reusableActions.getWhenReady(txtEmail,10).sendKeys(strEmail);
@@ -132,7 +133,7 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSubmitProfile() {
-		reusableActions.getWhenReady(btnProfielSubmit, 120).click();
+		reusableActions.getWhenReady(btnProfielSubmit, 60).click();
 	}
 	
 	/**
@@ -140,7 +141,7 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSubmitProfileMobile() {
-		reusableActions.waitForElementVisibility(btnProfielSubmit, 120);
+		reusableActions.waitForElementVisibility(btnProfielSubmit, 60);
 		reusableActions.executeJavaScriptClick(btnProfielSubmit);
 	}
 

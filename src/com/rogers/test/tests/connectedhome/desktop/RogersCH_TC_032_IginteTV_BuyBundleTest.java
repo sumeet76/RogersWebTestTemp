@@ -63,11 +63,11 @@ public class RogersCH_TC_032_IginteTV_BuyBundleTest extends BaseTestClass {
         rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
+        reporter.hardAssert(rogers_igniteTV_buy_page.verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
 
         reporter.hardAssert(rogers_home_phone_selection_page.verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        rogers_home_phone_port_in_page.setHomePhoneNumber(TestDataHandler.solarisPortinFlows.getAccountDetails().getPhoneNumber());
         rogers_home_phone_selection_page.clkSkipforNewNumber();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
         rogers_igniteTV_buy_page.clkHomePhone();
@@ -111,13 +111,12 @@ public class RogersCH_TC_032_IginteTV_BuyBundleTest extends BaseTestClass {
         reporter.hardAssert(rogers_home_phone_selection_page.verifyPhoneNumberPage(),"Ignite page has Launched","Ignite page has not Launched");
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
         rogers_home_phone_selection_page.clkPhoneNumberGenerator();
-        rogers_home_phone_selection_page.clkChosePhoneNumber();
         rogers_home_phone_selection_page.clkContinueHomePhoneSelection();
 
        reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
        reporter.reportLogWithScreenshot("Launched the tech install page");
        //rogers_tech_install_page.clkPersonalizedInstall();
-       //rogers_tech_install_page.selSelffinstallDateAndTime();
+       rogers_tech_install_page.selSelffinstallDateAndTime();
        //reporter.reportLogWithScreenshot("Launched the tech install page");
        //rogers_tech_install_page.setMobielNumber();
        //rogers_tech_install_page.setEmail();
@@ -268,7 +267,7 @@ public class RogersCH_TC_032_IginteTV_BuyBundleTest extends BaseTestClass {
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 

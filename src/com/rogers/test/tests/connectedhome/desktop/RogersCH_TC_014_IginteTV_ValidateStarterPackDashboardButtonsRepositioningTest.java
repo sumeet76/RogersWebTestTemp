@@ -44,10 +44,10 @@ public class RogersCH_TC_014_IginteTV_ValidateStarterPackDashboardButtonsReposit
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
     	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        //rogers_account_overview_page.selectAccount(TestDataHandler.solarisTVAccountStarterPackage.accountDetails.getBan());
+        rogers_account_overview_page.selectAccount(TestDataHandler.solarisTVAccountStarterPackage.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_solaris_tv_dashboard_page.clkTVBadge();
-        reporter.hardAssert(rogers_solaris_tv_dashboard_page.verifyFlexChannelcount(),"FlexChannel are Zero","FlexChannel are not Zero");
+        reporter.hardAssert(rogers_solaris_tv_dashboard_page.verifyFlexChannelcount(TestDataHandler.solarisTVAccountStarterPackage.accountDetails.getFlexChannelsCount()),"FlexChannel are Zero","FlexChannel are not Zero");
         reporter.reportLogWithScreenshot("Launched the TV dashboard Page");
         reporter.hardAssert(!rogers_solaris_tv_dashboard_page.verifyExchangeFlexChannelLink(),"Exchange FlexChannel Link is not available","Exchange FlexChannel Link is available");
     }       

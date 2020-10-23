@@ -101,7 +101,7 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPaymentModepage() {
-		reusableActions.waitForElementVisibility(txtPaymentpage, 120);
+		reusableActions.waitForElementVisibility(txtPaymentpage, 60);
 		return	reusableActions.isElementVisible(txtPaymentpage, 20);
 	}
 
@@ -176,9 +176,9 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 */
 	public void setCVV() {
 		String strCVV = FormFiller.generateCVVNumber();
-		reusableActions.waitForElementVisibility(txtContainerCVV,180);
+		reusableActions.waitForElementVisibility(txtContainerCVV,50);
 		reusableActions.getWhenReady(txtContainerCVV,10).click();
-		reusableActions.getWhenReady(txtCVV,30).click();
+		txtCVV.click();
 		reusableActions.getWhenReady(txtCVV).sendKeys(strCVV);
 	}
 

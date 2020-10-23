@@ -44,7 +44,7 @@ public class Mobile_RogersCH_TC_009_LegacyRHP_ValidateRHPDashboardTest extends B
         reporter.reportLogWithScreenshot("Launched the Account Page");
 		rogers_account_overview_page.clkRHPBadgeMobile();
 		reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");
-		reporter.hardAssert(rogers_account_overview_page.verifyRHPBanner(),"Verifed the RHP dashboard","RHP dashboard Verification has failed");
+		reporter.hardAssert(rogers_solaris_rhp_dashboard_validation_page.verifyRHPBanner(),"Verifed the RHP dashboard","RHP dashboard Verification has failed");
 		reporter.hardAssert(rogers_account_overview_page.verfyContactUsToManageFeaturess(),"Contact Us To Manage Featuress link has present on RHP dashboard","Contact Us To Manage Featuress link has not present on RHP dashboard");		
 	}
 

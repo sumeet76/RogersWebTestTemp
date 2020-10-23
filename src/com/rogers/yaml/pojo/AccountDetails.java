@@ -48,6 +48,7 @@ public class AccountDetails {
 	private String rhmPackageEn;
 	private String rhmPackageFr;
 	private String dob;
+	private String flexChannelsCount;
 	
 	public String getRhmPackageEn() {
 		return rhmPackageEn;
@@ -546,4 +547,20 @@ public class AccountDetails {
 	public void setDob(String dob) {
 		this.dob = dob;
 	}
+
+	/**
+	 * @return the flexChannelsCount
+	 */
+	public String getFlexChannelsCount() {
+		return flexChannelsCount;
+	}
+
+	/**
+	 * @param flexChannelsCount the flexChannelsCount to set
+	 */
+	public void setFlexChannelsCount(String flexChannelsCount) {
+		this.flexChannelsCount = flexChannelsCount;
+	}
+
+
 }

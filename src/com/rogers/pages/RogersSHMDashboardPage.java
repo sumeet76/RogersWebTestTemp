@@ -27,10 +27,8 @@ public class RogersSHMDashboardPage extends BasePageClass {
 	
 	@FindBy(xpath = "//span[@translate='shm_learn_more']")
 	WebElement lnkLearnSmartHomeMonitoring;
-	
-	
 
-	
+
 	/**
 	 *Checks if the SHM dashboard is open successfully
 	 * @return true if the page is open, else false

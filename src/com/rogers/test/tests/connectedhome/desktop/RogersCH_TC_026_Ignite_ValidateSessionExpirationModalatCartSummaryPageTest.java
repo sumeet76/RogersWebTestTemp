@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_026_Ignite_ValidateSessionExpirationModalatCartSummaryPageTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","saiCH"})
+	@Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
     public void checkSessionExpirationModalatCartSummaryPage() throws InterruptedException {
         reporter.reportLogWithScreenshot("Launched the Easy Login Page");
         rogers_home_page.clkTVBundle();
@@ -43,6 +43,7 @@ public class RogersCH_TC_026_Ignite_ValidateSessionExpirationModalatCartSummaryP
         rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
+        reporter.hardAssert(rogers_igniteTV_buy_page.verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
 
         reporter.hardAssert(rogers_home_phone_selection_page.verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
@@ -100,11 +101,6 @@ public class RogersCH_TC_026_Ignite_ValidateSessionExpirationModalatCartSummaryP
 
         reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
-        //rogers_tech_install_page.clkPersonalizedInstall();
-        //rogers_tech_install_page.selSelffinstallDateAndTime();
-        //reporter.reportLogWithScreenshot("Launched the tech install page");
-        //rogers_tech_install_page.setMobielNumber();
-        //rogers_tech_install_page.setEmail();
         rogers_tech_install_page.clkTechInstalConsent();
         reporter.reportLogWithScreenshot("tech install details");
         rogers_tech_install_page.clkTechInstallContinue();
