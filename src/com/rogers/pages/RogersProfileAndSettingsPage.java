@@ -129,7 +129,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//span[contains(text(),'email') or contains(text(),'adresse courriel')]")
 	WebElement lnkAddContactEmail;
 	
-	@FindBy (xpath = "//span[contains(text(),'Change billing address') or contains(text(),'Changer l’adresse de facturation')]")
+	@FindBy (xpath = "//span[contains(text(),'Change billing address') or contains(text(),'adresse de facturation')]")
 	WebElement lnkChangeBillingAddress;
 	
 	@FindBy(xpath = "//button[@title='Change billing address' or @title='Changer l’adresse de facturation']")
@@ -644,7 +644,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnBillingInfomation() {
-		reusableActions.clickWhenReady(btnBilingAddressInfo, 30);
+		reusableActions.clickWhenReady(By.xpath("//button[@title='Display billing settings' or contains(@title,'rences de facturation')]"), 30);
 	}
 	
 	/**
