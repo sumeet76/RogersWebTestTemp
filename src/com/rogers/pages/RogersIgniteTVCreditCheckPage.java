@@ -126,7 +126,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyCreditEvalutionPage() {
-		reusableActions.waitForElementVisibility(ddlCreditCheckYear, 180);
+		reusableActions.waitForElementVisibility(ddlCreditCheckYear, 90);
 		return	reusableActions.isElementVisible(ddlCreditCheckYear);
 	}
 	

@@ -34,12 +34,12 @@ public class RogersDigitalTVPackageSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void selectPackage(String strPackageNameEn, String strPackageNameFr) {	
-		reusableActions.waitForElementInvisibility(packageLoader, 180);
+		reusableActions.waitForElementInvisibility(packageLoader, 90);
 	    By packageNameLocator = By.xpath("//div[contains(normalize-space(@class),'pkgTitle_pkg') and text()='"+ strPackageNameEn+ "']/ancestor::div[@class='justForBorderStyle_pkg']//a[@class='redAddtocart_pkg']/parent::div");
 		WebElement pkg = driver.findElement(packageNameLocator);
-		reusableActions.waitForElementVisibility(pkg, 180);
+		reusableActions.waitForElementVisibility(pkg, 90);
 		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(packageNameLocator, 180);
+		reusableActions.getWhenReady(packageNameLocator, 30);
 		reusableActions.executeJavaScriptClick(pkg);
 	}
 	
@@ -50,14 +50,14 @@ public class RogersDigitalTVPackageSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void selectPackageUpgarde(String strPackageNameEn, String strPackageNameFr) {
-		reusableActions.waitForElementInvisibility(packageLoader, 180);
+		reusableActions.waitForElementInvisibility(packageLoader, 90);
 		WebElement cartBanner = driver.findElement(By.xpath("//div[@class='runningCart avenirNextFont']"));       
 	    ((JavascriptExecutor)driver).executeScript("arguments[0].style.visibility='hidden'", cartBanner);
 	    By packageNameLocator = By.xpath("//div[contains(normalize-space(@class),'pkgTitle_pkg') and text()='"+ strPackageNameEn+ "']/ancestor::div[@class='justForBorderStyle_pkg']//a[@class='redAddtocart_pkg']/parent::div");
 		WebElement pkg = driver.findElement(packageNameLocator);	
-		reusableActions.waitForElementVisibility(pkg, 180);
+		reusableActions.waitForElementVisibility(pkg, 90);
 		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.waitForElementVisibility(pkg, 180);
+		reusableActions.waitForElementVisibility(pkg, 30);
 		reusableActions.executeJavaScriptClick(pkg);
 	}
 

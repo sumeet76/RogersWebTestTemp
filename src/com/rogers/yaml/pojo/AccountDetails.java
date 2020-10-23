@@ -552,7 +552,7 @@ public class AccountDetails {
 	 * @return the flexChannelsCount
 	 */
 	public String getFlexChannelsCount() {
-		return dob;
+		return flexChannelsCount;
 	}
 
 	/**

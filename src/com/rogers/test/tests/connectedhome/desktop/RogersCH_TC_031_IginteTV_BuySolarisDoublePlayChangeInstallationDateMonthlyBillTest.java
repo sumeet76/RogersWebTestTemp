@@ -80,8 +80,8 @@ public class RogersCH_TC_031_IginteTV_BuySolarisDoublePlayChangeInstallationDate
 		rogers_home_page.clkIgniteAddressLookupSubmit();
 		//rogers_home_page.clkContinueIgniteMultipleAddressLookupSubmit();
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-
-
+		reporter.hardAssert(rogers_igniteTV_buy_page.verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
+		rogers_igniteTV_buy_page.clkHomephone();
 		rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
 		reporter.reportLogWithScreenshot("Launched the port-in popup");
 

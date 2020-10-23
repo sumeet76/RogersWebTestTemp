@@ -77,6 +77,7 @@ public class RogersCH_TC_034a_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");    	
         rogers_home_page.clkUseThisAddress();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
+		reporter.hardAssert(rogers_igniteTV_buy_page.verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
         reporter.reportLogWithScreenshot("Launched the information popup");
         rogers_igniteTV_buy_page.clkIUnderstand();

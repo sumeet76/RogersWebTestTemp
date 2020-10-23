@@ -396,8 +396,8 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	public void selectSolarisInternetPackageMigration(String strPackageName) {
 		By packageNameLocator = By.xpath("//span[contains(normalize-space(text()),'" + strPackageName
 				+ "') or contains(normalize-space(text()),'Élan Internet gigabit')]/ancestor::div[@class='owl-item active']//ins[@translate='global.cta.select']");
-		reusableActions.waitForElementInvisibility(popupLoadingFingers,180);
-		reusableActions.getWhenReady(packageNameLocator, 120).click();
+		reusableActions.waitForElementInvisibility(popupLoadingFingers,90);
+		reusableActions.getWhenReady(packageNameLocator, 60).click();
 	}
 	
 	/**
@@ -407,6 +407,6 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public void selectSolarisInternetPackage1(String strPackageName) {		
 		By packageNameLocator = By.xpath("//span[contains(normalize-space(text()),'" + strPackageName+ "') or contains(normalize-space(text()),'Élan Internet 150i')]/ancestor::div[@class='owl-item active']//ins[@translate='global.cta.select']");
-		reusableActions.getWhenReady(packageNameLocator, 180).click();
+		reusableActions.getWhenReady(packageNameLocator, 90).click();
 	}
 }

@@ -271,7 +271,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selSelffinstallDateAndTimeMobile() {
-		if(reusableActions.isElementVisible(rdoTechInstallSlot, 120))
+		if(reusableActions.isElementVisible(rdoTechInstallSlot, 90))
 		{
 		reusableActions.executeJavaScriptClick(rdoTechInstallSlot);	
 		}
@@ -497,9 +497,9 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkTechInstallContinueMobile() {
-		reusableActions.waitForElementTobeClickable(btnTechInstallContinue, 180);
+		reusableActions.waitForElementTobeClickable(btnTechInstallContinue, 90);
 		reusableActions.javascriptScrollByVisibleElement(btnTechInstallContinue);
-		reusableActions.waitForElementVisibility(btnTechInstallContinue, 120);
+		reusableActions.waitForElementVisibility(btnTechInstallContinue, 60);
 		reusableActions.executeJavaScriptClick(btnTechInstallContinue);
 	}
 

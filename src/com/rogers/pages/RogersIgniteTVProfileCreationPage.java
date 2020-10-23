@@ -147,7 +147,7 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSubmitProfile() {
-		reusableActions.getWhenReady(btnProfielSubmit, 120).click();
+		reusableActions.getWhenReady(btnProfielSubmit, 60).click();
 	}
 	
 	/**

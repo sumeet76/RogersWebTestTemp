@@ -49,8 +49,8 @@ public class RogersDigitalTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */	
 	public void clkChangeMyPackage() {
-		reusableActions.isElementVisible(btnChangeMyPackage,180);
-		reusableActions.getWhenReady(btnChangeMyPackage,180).click();
+		reusableActions.isElementVisible(btnChangeMyPackage,90);
+		reusableActions.getWhenReady(btnChangeMyPackage,30).click();
 	}
 	
 	/**

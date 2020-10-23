@@ -217,7 +217,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyAgreementPageInternet() {
-		return	reusableActions.isElementVisible(txtAgreementPageInternet, 120);
+		return	reusableActions.isElementVisible(txtAgreementPageInternet, 90);
 	}
 	/**
 	 * Verify the agreement block on the order review page
@@ -255,7 +255,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkAcceptenceCheckboxUpdateInternet() {
-		reusableActions.waitForElementVisibility(lnkAgreementPrivacyPolicy, 120);
+		reusableActions.waitForElementVisibility(lnkAgreementPrivacyPolicy, 60);
 		reusableActions.getWhenReady(lnkAgreementPrivacyPolicy, 30).click();		
 		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 30).sendKeys(Keys.PAGE_DOWN);
 		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);	
@@ -360,7 +360,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 */
 	public void clkSubmitUpdateInternet() {
 		reusableActions.javascriptScrollToBottomOfPage();
-		reusableActions.getWhenReady(clkSubmitUpdateInternet, 150).click();
+		reusableActions.getWhenReady(clkSubmitUpdateInternet, 90).click();
 	}
 	
 	/**

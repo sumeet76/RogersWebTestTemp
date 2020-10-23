@@ -43,6 +43,7 @@ public class RogersCH_TC_026_Ignite_ValidateSessionExpirationModalatCartSummaryP
         rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
+        reporter.hardAssert(rogers_igniteTV_buy_page.verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
 
         reporter.hardAssert(rogers_home_phone_selection_page.verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");

@@ -76,6 +76,7 @@ public class RogersCH_TC_038_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");    	
         rogers_home_page.clkUseThisAddress();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
+        reporter.hardAssert(rogers_igniteTV_buy_page.verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
 
         reporter.hardAssert(rogers_home_phone_selection_page.verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");

@@ -64,10 +64,8 @@ public class RogersCH_TC_030_IginteTV_DoublePlayBuyTest extends BaseTestClass {
         rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-
-        
-
-
+        reporter.hardAssert(rogers_igniteTV_buy_page.verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
+        rogers_igniteTV_buy_page.clkHomephone();
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
 
         reporter.hardAssert(rogers_igniteTV_buy_page.verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");

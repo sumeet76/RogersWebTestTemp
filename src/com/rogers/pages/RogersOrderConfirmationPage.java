@@ -66,8 +66,8 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOrderConfirmationLegacy() {
-		reusableActions.waitForElementVisibility(infoChangeOrderConfirmationLegacy,180);
-		return reusableActions.isElementVisible(infoChangeOrderConfirmationLegacy, 60);
+		reusableActions.waitForElementVisibility(infoChangeOrderConfirmationLegacy,90);
+		return reusableActions.isElementVisible(infoChangeOrderConfirmationLegacy, 30);
 	}
 	
 	/**
@@ -76,7 +76,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOrderConfirmation() {
-		return reusableActions.isElementVisible(infoChangeOrderConfirmation, 180);
+		return reusableActions.isElementVisible(infoChangeOrderConfirmation, 90);
 	}
 	
 	/**
@@ -93,8 +93,8 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOrderSuccess() {
-		reusableActions.waitForElementVisibility(infoOrderConfirmation,180);
-		return reusableActions.isElementVisible(infoOrderConfirmation, 60);
+		reusableActions.waitForElementVisibility(infoOrderConfirmation,90);
+		return reusableActions.isElementVisible(infoOrderConfirmation, 30);
 	}
 	
 	
