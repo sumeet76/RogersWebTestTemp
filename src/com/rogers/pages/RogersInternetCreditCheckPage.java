@@ -82,7 +82,7 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyCreditEvalutionPage() {
-		reusableActions.waitForElementVisibility(ddlCreditCheckYear, 180);
+		reusableActions.waitForElementVisibility(ddlCreditCheckYear, 90);
 		return	reusableActions.isElementVisible(ddlCreditCheckYear);
 	}
 	
@@ -213,10 +213,10 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 */
 	public void setDrivingLicenseNumber(String province) {
 		String strLicenseNumber = FormFiller.generateLicenseNumber(province);
-		reusableActions.waitForElementVisibility(txtContainer,180);
+		reusableActions.waitForElementVisibility(txtContainer,30);
 		reusableActions.getWhenReady(txtContainer,10).click();		
-		reusableActions.getWhenReady(txtLicenseNumber, 30).clear();
-		reusableActions.getWhenReady(txtLicenseNumber, 3).sendKeys(strLicenseNumber);
+		txtLicenseNumber.clear();
+		txtLicenseNumber.sendKeys(strLicenseNumber);
 	}
 	
 	/**
@@ -235,10 +235,10 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 */
 	public void setPassportNumber() {
 		String strPasportNumber = FormFiller.generatePassportNumber();
-		reusableActions.waitForElementVisibility(txtContainerPasportNumber,180);
+		reusableActions.waitForElementVisibility(txtContainerPasportNumber,30);
 		reusableActions.getWhenReady(txtContainerPasportNumber,10).click();
-		reusableActions.getWhenReady(txtPasportNumber, 60).clear();
-		reusableActions.getWhenReady(txtPasportNumber, 3).sendKeys(strPasportNumber);
+		txtPasportNumber.clear();
+		txtPasportNumber.sendKeys(strPasportNumber);
 	}
 
 	/**
@@ -273,7 +273,7 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkCreditConsent() {
-		reusableActions.getWhenReady(chkConsent, 120).click();
+		reusableActions.getWhenReady(chkConsent, 50).click();
 	}
 
 	/**

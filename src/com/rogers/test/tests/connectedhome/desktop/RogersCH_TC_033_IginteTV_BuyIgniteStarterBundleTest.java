@@ -69,7 +69,6 @@ public class RogersCH_TC_033_IginteTV_BuyIgniteStarterBundleTest extends BaseTes
 		reporter.hardAssert(rogers_home_phone_selection_page.verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the home phone selection page");
 		rogers_home_phone_selection_page.clkSkipforNewNumber();
-		reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
 		rogers_igniteTV_buy_page.clkHomePhone();
 	        
 	        reporter.hardAssert(rogers_igniteTV_buy_page.verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
@@ -111,13 +110,12 @@ public class RogersCH_TC_033_IginteTV_BuyIgniteStarterBundleTest extends BaseTes
 	      reporter.hardAssert(rogers_home_phone_selection_page.verifyPhoneNumberPage(),"Ignite page has Launched","Ignite page has not Launched");
 	        reporter.reportLogWithScreenshot("Launched the home phone selection page");
 	        rogers_home_phone_selection_page.clkPhoneNumberGenerator(); 
-	        rogers_home_phone_selection_page.clkChosePhoneNumber(); 
 	        rogers_home_phone_selection_page.clkContinueHomePhoneSelection();
 	       
 	       reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
 	       reporter.reportLogWithScreenshot("Launched the tech install page");
 	       //rogers_tech_install_page.clkPersonalizedInstall();
-	       //rogers_tech_install_page.selSelffinstallDateAndTime();
+	       rogers_tech_install_page.selSelffinstallDateAndTime();
 	       //reporter.reportLogWithScreenshot("Launched the tech install page");
 	       //rogers_tech_install_page.setMobielNumber();
 	       //rogers_tech_install_page.setEmail();

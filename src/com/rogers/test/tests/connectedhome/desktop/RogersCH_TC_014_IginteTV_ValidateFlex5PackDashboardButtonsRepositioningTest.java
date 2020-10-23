@@ -48,7 +48,7 @@ public class RogersCH_TC_014_IginteTV_ValidateFlex5PackDashboardButtonsRepositio
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_solaris_tv_dashboard_page.clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dashboard Page");          
-        reporter.hardAssert(rogers_solaris_tv_dashboard_page.verifyFlexChannelcountFive(),"FlexChannel are Five","FlexChannel are not Five");
+        reporter.hardAssert(rogers_solaris_tv_dashboard_page.verifyFlexChannelcount(TestDataHandler.solarisTVAccountFlex5Package.accountDetails.getFlexChannelsCount()),"FlexChannel are Five","FlexChannel are not Five");
         reporter.reportLogWithScreenshot("Launched the TV dashboard Page");
         reporter.hardAssert(rogers_solaris_tv_dashboard_page.verifyExchangeFlexChannelLink(),"Exchange FlexChannel Link is available","Exchange FlexChannel Link is not available");                    
     	                       

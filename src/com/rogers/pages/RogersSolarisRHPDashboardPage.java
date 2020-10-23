@@ -22,6 +22,9 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//ins[@translate='global.label.homePhoneDashboard']")
 	WebElement infoSolarisrhpDashboard;
 
+	@FindBy(xpath = "//span[@translate='ute.rogers.rhpDashboard.homePhone']")
+	WebElement infoLegacyrhpDashboard;
+
 	@FindBy(xpath = "//ins[@usertype-translate='global.cta.configureYourFeatures']")
 	WebElement lnkConfigureYourCurrentFeatures;
 
@@ -47,6 +50,15 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 		{
 			reusableActions.clickWhenReady(btnSolarisrhpBadge, 60);
 		}
+	}
+
+	/**
+	 * To Verify the RHP Banner on the Legacy RHP dash board
+	 * @return true if the package name is Home Phone ; else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyRHPBanner() {
+		return reusableActions.isElementVisible(infoLegacyrhpDashboard, 20);
 	}
 
 	/**

@@ -177,7 +177,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyTechInstallPage() {
-		return	reusableActions.isElementVisible(txtTechInstalpage, 120);
+		return	reusableActions.isElementVisible(txtTechInstalpage, 90);
 	}
 	
 	
@@ -467,7 +467,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkTechInstalConsent() {
-		reusableActions.waitForElementVisibility(chkTechInstalConsent, 180);
+		reusableActions.waitForElementVisibility(chkTechInstalConsent, 60);
 		reusableActions.javascriptScrollByVisibleElement(chkTechInstalConsent);
 		reusableActions.executeJavaScriptClick(chkTechInstalConsent);
 	}
@@ -477,7 +477,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkTechInstalConsentExistingCustomer() {
-		reusableActions.waitForElementVisibility(chkTechInstalConsentExistingCustomer, 180);
+		reusableActions.waitForElementVisibility(chkTechInstalConsentExistingCustomer, 60);
 		reusableActions.javascriptScrollByVisibleElement(chkTechInstalConsentExistingCustomer);
 		reusableActions.executeJavaScriptClick(chkTechInstalConsentExistingCustomer);
 	}
@@ -487,9 +487,9 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkTechInstallContinue() {
-		reusableActions.waitForElementTobeClickable(btnTechInstallContinue, 180);
+		reusableActions.waitForElementTobeClickable(btnTechInstallContinue, 60);
 		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(btnTechInstallContinue, 120).click();
+		reusableActions.getWhenReady(btnTechInstallContinue, 30).click();
 	}
 	
 	/**

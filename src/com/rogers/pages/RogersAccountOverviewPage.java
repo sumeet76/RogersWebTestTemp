@@ -61,10 +61,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	@FindBy(xpath = "//h1[@class='mt-24']")
 	WebElement infoWelcome;
-	
-	@FindBy(xpath = "//span[@translate='ute.rogers.rhpDashboard.homePhone']")
-	WebElement infoLegacyrhpDashboard;
-	
+
 	@FindBy(xpath = "//span[@translate='ute.rogers.rhpDashboard.contactMangerFeatures']")
 	WebElement lnkContactUsToManageFeaturess;
 		
@@ -710,17 +707,6 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public boolean verifyLoginSuccessWelcome() {
 		return reusableActions.isElementVisible(infoWelcome,60);
 	}
-	
-
-	/**
-	 * To Verify the RHP Banner on the Legacy RHP dash board
-	 * @return true if the package name is Home Phone ; else false
-	 * @author chinnarao.vattam
-	 */
-	//TODO please move this to dashboard page
-	public boolean verifyRHPBanner() {
-		return reusableActions.isElementVisible(infoLegacyrhpDashboard, 20);
-	}
 
 	/**
 	 * To Verify the RHP Banner on the Legacy RHP dash board
@@ -975,7 +961,6 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	/**
 	 * Checks if the auto payment option is set successfully to CC
 	 * @return true if the payment option is set successfully
-	 * @param strCC string value of of containing cc
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyCCEndingWithIsDisplayedCorrectly() {		

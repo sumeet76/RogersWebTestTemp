@@ -80,7 +80,6 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//span[contains(text(),'Submit') or contains(text(),'Soumettre')]")
 	WebElement btnChangeUsernameSubmit;
 	
-	//TODO: xpath will add French
 	@FindBy (xpath = "//span[contains(text(),'Username changed') or contains(text(),'Nom d’utilisateur modifié')]")
 	WebElement lblChangeUsernameSucMsg;
 	

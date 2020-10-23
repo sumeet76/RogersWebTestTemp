@@ -322,39 +322,18 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		return reusableActions.isElementVisible(lnkChangeFlexChannels, 10);
        }
 	
-	
 	/**
 	 * To verify Exchange FlexChanne link
 	 *@return true if the ExchangeFlex Channel link is displayed; else false
 	 * @author chinnarao.vattam 
 	 */
-	public boolean verifyFlexChannelcount() {
+	public boolean verifyFlexChannelcount(String strFlexChannels) {
+		// 0, 5, 44 channels
 		String strChannels=reusableActions.getWhenReady(txtFlexChannels, 50).getText();
 		String[] channels = strChannels.split("\\s+");
-		return channels[0].equals("0");
+		return channels[0].equals(strFlexChannels);
        }
 
-	/**
-	 * To verify Exchange FlexChanne link
-	 *@return true if the ExchangeFlex Channel link is displayed; else false
-	 * @author chinnarao.vattam 
-	 */
-	public boolean verifyFlexChannelcountFive() {
-		String strChannels=reusableActions.getWhenReady(txtFlexChannels, 50).getText();
-		String[] channels = strChannels.split("\\s+");
-		return channels[0].equals("5");
-       }
-	
-	/**
-	 * To verify Exchange FlexChanne link
-	 *@return true if the ExchangeFlex Channel link is displayed; else false
-	 * @author chinnarao.vattam 
-	 */
-	public boolean verifyFlexChannelcountPopular() {
-		String strChannels=reusableActions.getWhenReady(txtFlexChannels, 50).getText();
-		String[] channels = strChannels.split("\\s+");
-		return channels[0].equals("44");
-       }
 	/**
 	 * Selects the solaris tv package name to be upgrade or downgrade 
 	 * @param strPackageNameEn solaris tv package name to be upgrade or downgrade

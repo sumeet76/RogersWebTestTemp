@@ -80,9 +80,11 @@ public class RogersCH_TC_031_IginteTV_BuySolarisDoublePlayChangeInstallationDate
 		rogers_home_page.clkIgniteAddressLookupSubmit();
 		//rogers_home_page.clkContinueIgniteMultipleAddressLookupSubmit();
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
+
+
 		rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
 		reporter.reportLogWithScreenshot("Launched the port-in popup");
-		
+
 		reporter.hardAssert(rogers_igniteTV_buy_page.verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
 		reporter.reportLogWithScreenshot("Launched the cart summary page");
 		rogers_igniteTV_buy_page.set4KTV();

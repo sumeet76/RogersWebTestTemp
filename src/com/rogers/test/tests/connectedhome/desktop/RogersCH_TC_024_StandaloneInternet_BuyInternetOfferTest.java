@@ -81,7 +81,6 @@ public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends Bas
         
        reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
        reporter.reportLogWithScreenshot("Launched the tech install page");
-       reporter.reportLogWithScreenshot("tech install details");
        rogers_tech_install_page.clkTechInstalConsent();
        reporter.reportLogWithScreenshot("tech install details");
        rogers_tech_install_page.clkTechInstallContinue();

@@ -204,7 +204,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyAgreementPage() {
-		return	reusableActions.isElementVisible(txtAgreementPageBuy, 180);
+		return	reusableActions.isElementVisible(txtAgreementPageBuy, 60);
 	}
 
 	public boolean verifyAgreementPageTVMobile() {
@@ -225,7 +225,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyAgreement() {
-		return reusableActions.isElementVisible(infoAgreement, 120);
+		return reusableActions.isElementVisible(infoAgreement, 90);
 	}
 
 	/**

@@ -49,7 +49,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.driving_l']//select[contains(@id,'ds-form-input-id-')])[3]")
 	WebElement ddlExpiryDay;
 		
-	@FindBy(xpath = "//input[@aria-label='Please enter your driver’s license number']")
+	@FindBy(xpath = "//input[contains(@aria-label,'license number') or  contains(@aria-label,'de licence') ]")
 	WebElement txtLicenseNumber;
 	  	
 	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.secondIdO']//select[contains(@id,'ds-form-input-id-')]")
@@ -290,12 +290,9 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 		String strLicenseNumber = FormFiller.generateLicenseNumber(province);
 		reusableActions.waitForElementVisibility(txtContainer,20);
 		reusableActions.getWhenReady(txtContainer,10).click();
-		//Todo
-		reusableActions.staticWait(6000);
-/*		reusableActions.executeJavaScriptClick(txtLicenseNumber);
-		reusableActions.getWhenReady(txtLicenseNumber,30).click();
+		txtLicenseNumber.click();
 		txtLicenseNumber.clear();
-		txtLicenseNumber.sendKeys(strLicenseNumber);*/
+		txtLicenseNumber.sendKeys(strLicenseNumber);
 	}
 	/**
 	 * Set dynamic license number for British Columbia  on Credit check page

@@ -47,7 +47,7 @@ public class RogersCH_TC_014_IginteTV_ValidatePopularPackDashboardButtonsReposit
     	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_solaris_tv_dashboard_page.clkTVBadge();
-        reporter.hardAssert(rogers_solaris_tv_dashboard_page.verifyFlexChannelcountPopular(),"FlexChannel are Fourty Five","There is a ambiguity in FlexChannel count ");
+        reporter.hardAssert(rogers_solaris_tv_dashboard_page.verifyFlexChannelcount(TestDataHandler.solarisTVAccountPopularPackage.accountDetails.getFlexChannelsCount()),"FlexChannel are Fourty Five","There is a ambiguity in FlexChannel count ");
         reporter.reportLogWithScreenshot("Launched the TV dashboard Page");
         reporter.hardAssert(rogers_solaris_tv_dashboard_page.verifyExchangeFlexChannelLink(),"Exchange FlexChannel Link is available","Exchange FlexChannel Link is not available");                             
     	}       
