@@ -104,7 +104,7 @@ public class RogersCH_TC_037_InternetPackageUpgradeToSolarisFromShopOptionTest e
 	        reporter.reportLogWithScreenshot("Launched the tech install page");
 	       // rogers_tech_install_page.clkTechInstallSlot();
 	        reporter.reportLogWithScreenshot("tech install details");
-	        rogers_tech_install_page.setMobielNumberExistingCustomer();rogers_tech_install_page.setEmailExistingCustomer();
+	        rogers_tech_install_page.setMobielNumberExistingCustomer();
 	        rogers_tech_install_page.clkTechInstalConsent();
 	        reporter.reportLogWithScreenshot("tech install details");
 	        rogers_tech_install_page.clkTechInstallContinue();

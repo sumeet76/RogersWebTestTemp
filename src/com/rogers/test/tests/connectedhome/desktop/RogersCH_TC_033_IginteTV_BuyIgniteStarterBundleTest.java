@@ -119,7 +119,6 @@ public class RogersCH_TC_033_IginteTV_BuyIgniteStarterBundleTest extends BaseTes
 	       rogers_tech_install_page.selSelffinstallDateAndTime();
 	       reporter.reportLogWithScreenshot("Launched the tech install page");
 	       rogers_tech_install_page.setMobielNumber();
-	       rogers_tech_install_page.setEmail();
 	       rogers_tech_install_page.clkTechInstalConsent();
 	       reporter.reportLogWithScreenshot("tech install details");
 	       rogers_tech_install_page.clkTechInstallContinue();

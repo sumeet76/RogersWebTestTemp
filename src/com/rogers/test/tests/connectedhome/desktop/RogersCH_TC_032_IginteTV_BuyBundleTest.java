@@ -48,7 +48,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_032_IginteTV_BuyBundleTest extends BaseTestClass {
 
-    @Test(groups = {"SanityCH","RegressionCH","RogersIgniteBuyCH"})
+    @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
     public void checkBuyIgniteTVOffer() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	rogers_home_page.clkTVBundle();    	
@@ -119,7 +119,6 @@ public class RogersCH_TC_032_IginteTV_BuyBundleTest extends BaseTestClass {
        rogers_tech_install_page.selSelffinstallDateAndTime();
        reporter.reportLogWithScreenshot("Launched the tech install page");
        rogers_tech_install_page.setMobielNumber();
-       rogers_tech_install_page.setEmail();
        rogers_tech_install_page.clkTechInstalConsent();
        reporter.reportLogWithScreenshot("tech install details");
        rogers_tech_install_page.clkTechInstallContinue();

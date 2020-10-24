@@ -231,7 +231,7 @@ public class BaseTestClass {
  			driver.get(strUrl+"?setLanguage="+ language );
  			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 		}
-	    setImplicitWait(getDriver(), 50);
+	    setImplicitWait(getDriver(), 10);
 		getDriver().manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
 		if(!browser.contains("sauceandroid"))
 		{
