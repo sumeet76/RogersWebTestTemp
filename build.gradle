@@ -135,6 +135,10 @@ compileJava {
 	options.encoding = 'UTF-8'
 }
 
+compileTestJava {
+   options.encoding = 'UTF-8'
+}
+
 task sourceJar(type: Jar) {
 	from sourceSets.main.allSource
 	archiveClassifier = 'sources'

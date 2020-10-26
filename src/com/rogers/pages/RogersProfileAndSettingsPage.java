@@ -643,7 +643,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnBillingInfomation() {
-		reusableActions.clickWhenReady(By.xpath("//button[@title='Display billing settings' or contains(@title,'rences de facturation')]"), 30);
+		reusableActions.clickWhenReady(btnBilingAddressInfo, 30);
 	}
 	
 	/**
