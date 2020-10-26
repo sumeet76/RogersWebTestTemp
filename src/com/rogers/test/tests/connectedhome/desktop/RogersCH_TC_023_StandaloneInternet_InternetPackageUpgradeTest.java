@@ -61,7 +61,7 @@ public class RogersCH_TC_023_StandaloneInternet_InternetPackageUpgradeTest exten
         reporter.reportLogWithScreenshot("Launched the Interent packages page");
         rogers_internet_dashboard_page.selectStandAloneInternetPackage(TestDataHandler.standaloneInternetAccountforUpgrade.getAccountDetails().getUpgradePlanEn(),TestDataHandler.solarisInternetAccount.getAccountDetails().getUpgradePlanFr());
         reporter.reportLogWithScreenshot("Launched the agreement page");
-        //rogers_internet_dashboard_page.clkInternetChangeOK();
+        rogers_internet_dashboard_page.clkInternetChangeOK();
 		reporter.hardAssert(rogers_order_review_page.verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");
 		reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");

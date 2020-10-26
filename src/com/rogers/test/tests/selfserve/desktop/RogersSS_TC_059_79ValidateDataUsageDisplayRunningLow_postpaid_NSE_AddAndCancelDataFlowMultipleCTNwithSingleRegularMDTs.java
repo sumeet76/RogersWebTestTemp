@@ -50,12 +50,8 @@ public class RogersSS_TC_059_79ValidateDataUsageDisplayRunningLow_postpaid_NSE_A
         rogers_account_overview_page.clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
         String strAccountNum = TestDataHandler.tc59.getAccountDetails().getCtn();        
-        if (rogers_account_overview_page.isAccountShowInDropDown(strAccountNum.substring(strAccountNum.length()-4))) {
-            rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
-        } else {
-        	rogers_account_overview_page.clkSubMenuWirelessUsage();
-        }
-        
+        rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
+
         rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
         reporter.hardAssert(rogers_wireless_dashboard_page.verifyRunningLowStateInTheUsageBar(),
         		"Data running low is displayed for 10% or less data",

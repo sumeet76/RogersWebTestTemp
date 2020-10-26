@@ -1,29 +1,22 @@
 package com.rogers.test.tests.search;
 
+import com.rogers.test.base.BaseTestClass;
+import com.rogers.test.helpers.RogersEnums;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+import utils.CSVReader;
+
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
-import com.rogers.test.base.BaseTestClass;
-import com.rogers.test.helpers.RogersEnums;
-
-import utils.CSVReader;
-
-public class RogersSearch_CBS_1740_Click_On_Magnifying_Lens_Or_Press_Enter_Test extends BaseTestClass {
+public class RogersSearch_CBS_1742_InvalidTerm_NoResultsPage_Test extends BaseTestClass {
     @DataProvider(name = "FilterData")
     public Object[] testData() throws IOException
     {
-        String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
+        String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/InvalidTerms.csv";
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
         Object[] csvRow = new Object[csvData.size()];
 
@@ -40,19 +33,24 @@ public class RogersSearch_CBS_1740_Click_On_Magnifying_Lens_Or_Press_Enter_Test 
         reporter.reportLogWithScreenshot("CBS Search Page");
         rogers_search_page.enterTextSearch(csvRow[0]);
         reporter.reportLogWithScreenshot("Search field entered");
-        reporter.hardAssert(rogers_search_page.isSuggestionsSectionDisplayed(), "label Suggestion Visible", "label Suggestion Not Visible");
-        reporter.hardAssert(rogers_search_page.isSupportSectionDisplayed(), "label Support Visible", "label Support Not Visible");
-        if(rogers_search_page.isSupportSectionPopulated() || rogers_search_page.isLeftSectionPopulated()) {
-            reporter.reportLogPassWithScreenshot("Suggestion or Supports populated");
-        } else {
-            reporter.reportLogFailWithScreenshot("Suggestion and Support not populated");
-        }
+        reporter.hardAssert(rogers_search_page.isSuggestionsSectionDisplayed(),
+                "Suggestion Label Visible", "Suggestion Label Not Visible");
+        reporter.hardAssert(rogers_search_page.isSupportSectionDisplayed(),
+                "Support Label Visible", "Support Label Not Visible");
+        reporter.hardAssert(!rogers_search_page.isSupportSectionPopulated(),
+                "Suggestions not loaded", "Suggestion loaded");
+        reporter.hardAssert(!rogers_search_page.isLeftSectionPopulated(),
+                "Support links not loaded", "Support links loaded");
         rogers_search_page.clkOnMagnifyingLens();
         reporter.reportLogWithScreenshot("Search Results Page");
-        reporter.hardAssert(rogers_search_page.validateResultLandingPageURL(csvRow[0]), "Result Landing Page displayed", "Result Landing Page not displayed");
-        for (int i = 1; i < csvRow.length; i++) {
-            reporter.softAssert(rogers_search_page.isFilterDisplayed(csvRow[i]), "Filter " + csvRow[i] + " is Displayed", "Filter " + csvRow[i] + " is NOT Displayed");
-        }
+        reporter.hardAssert(rogers_search_page.validateResultLandingPageURL(csvRow[0]),
+                "Result Landing Page displayed", "Result Landing Page not displayed");
+        reporter.hardAssert(rogers_search_page.isNoResultsDisplayed(),
+                "No Results Found","No Results message not displayed");
+        reporter.hardAssert(!rogers_search_page.isFilterDisplayed("Support"),
+                "Filter Support is Not Displayed", "Filter Support is Displayed");
+        reporter.hardAssert(!rogers_search_page.isFilterDisplayed("Shop"),
+                "Filter Shop is Not Displayed", "Filter Shop is Displayed");
     }
 
     @BeforeMethod(alwaysRun = true)

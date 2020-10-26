@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 public class RogersCH_TC_045_DigitalTV_TVPackageUpgradeTest extends BaseTestClass {
 	final String strLanguage=System.getProperty("Language");
 
-	@Test(groups = {"RegressionCH","LegacyTVFlowsCH"})
+	@Test(groups = {"RegressionCH","LegacyDashboardCH"})
 	public void checkTVPackageUpgrade() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		rogers_home_page.clkSignIn();

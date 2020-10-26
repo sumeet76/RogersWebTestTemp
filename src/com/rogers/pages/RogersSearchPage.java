@@ -1,8 +1,6 @@
 package com.rogers.pages;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URI;
-import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -43,6 +41,27 @@ public class RogersSearchPage extends BasePageClass {
 
     @FindBy(xpath = "//button[@title='Close search']")
     WebElement txtSearchCloseIcon;
+
+    @FindBy(xpath = "//app-search-noresults//span[contains(text(),'Sorry! No results found on')]")
+    WebElement lblNoResultsMsg;
+
+    @FindBy(xpath = "//section[@class='col-12 col-md-6 h-md-100 ds-overflow-y-auto d-none d-md-block']")
+    WebElement firstSectionValues;
+
+    @FindBy(xpath = "//div[@ng-reflect-heading='Suggestions']/parent::section/parent::div/section[1]")
+    WebElement leftSectionResults;
+
+    @FindBy(xpath = "//div[@ng-reflect-heading='Support']/parent::section")
+    WebElement supportSection;
+
+    @FindBy(xpath = "//div[@ng-reflect-heading='Support']/parent::section//a")
+    WebElement supportSectionLinks;
+
+    @FindBy(xpath = "//div[@ng-reflect-heading='Suggestions']/parent::section")
+    WebElement suggestionsSection;
+
+    @FindBy(xpath = "//div[@ng-reflect-heading='Suggestions']/parent::section//a")
+    List<WebElement> suggestionsSectionLinks;
 
     /**
      * check if expected filters displayed or not
@@ -110,7 +129,7 @@ public class RogersSearchPage extends BasePageClass {
 
             for (int i = 0; i < categoryTags.size(); i++) {
 
-                String strTagText[] = categoryTags.get(i).getText().split("-");
+                String strTagText[] = driver.findElements(By.xpath("//span[contains(@class,'categorylbl')]")).get(i).getText().split("-");
 
                 if (!strFilterValues.get(j).equals(strTagText[0].trim())) {
                     blnFlag = false;
@@ -339,31 +358,6 @@ return blnFlag;
 		txtSearch.sendKeys(searchText);
 	}
 	
-	public boolean validateLabelVisible(String str)
-	{
-		return reusableActions.isElementVisible(By.xpath("//h2[contains(text(),'"+str+"')]"), 10);
-	}
-	public boolean validateLinksVisible(String str)
-	{
-		return !driver.findElements(By.xpath("//h2[contains(text(),'"+str+"')]/ancestor::div/a")).isEmpty();
-	}
-
-
-/*
-	public boolean verifyParentFilterSelection() {	
-		boolean blnFlag = true;
-		if (!(driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value").equalsIgnoreCase(strColorResult[1].replaceAll(";", "")))) {
-			blnFlag = false;
-			break;
-		}
-	}
-	reusableActions.clickWhenReady(By.xpath("//span[starts-with(text(),'" + driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value") + "')]"));
-	reusableActions.staticWait(2000);
-}
-return blnFlag;
-} */
-
-
     public boolean verifyDifferentColorResultsDisplay() {
 
         boolean blnFlag = false;
@@ -858,7 +852,7 @@ return blnFlag;
     public boolean validateResultLandingPageURL(String strQuery) throws UnsupportedEncodingException{
         String strUrl = URLDecoder.decode(driver.getCurrentUrl(), StandardCharsets.UTF_8.name());
         boolean blnFlag = false;
-        if(strUrl.contains(strQuery)) {
+        if(strUrl.contains(strQuery.trim())) {
             blnFlag = true;
         }
         return blnFlag;
@@ -869,11 +863,92 @@ return blnFlag;
     }
 
     public boolean validateSearchBoxIsEmpty() {
-        boolean blnFlag = true;
+        boolean blnFlag = false;
         String txtSearchValue = txtSearch.getAttribute("ng-reflect-value");
         if(txtSearchValue.isEmpty()) {
-            return blnFlag;
+            blnFlag = true;
+        }
+        return blnFlag;
+    }
+
+    public boolean isNoResultsDisplayed() {
+        return reusableActions.isElementVisible(lblNoResultsMsg);
+    }
+
+    public void hoverSuggestionsType(String strSuggestions) {
+        WebElement suggestionValue = driver.findElement(By.xpath("//span[(@class='ds-link__wrapper d-inline-block text-button')]/span[text()='"+" "+strSuggestions+" "+"']"));
+        reusableActions.scrollToElement(suggestionValue);
+        reusableActions.javascriptScrollToTopOfPage();
+        reusableActions.staticWait(1500);
+    }
+
+    public boolean verifyLeftSectionInnerHTML() {
+            boolean blnFlag = true;
+
+        String strInnerHTML = firstSectionValues.getAttribute("innerHTML");
+        System.out.println("Value of Inner HTML is:"+strInnerHTML);
+        List<String> lstInnerHTML = new ArrayList<String>();
+        lstInnerHTML.add(strInnerHTML);
+
+        for (int i = 0; i < lstInnerHTML.size()-1; i++)
+            for (int j = i+1; j < lstInnerHTML.size(); j++)
+                if(lstInnerHTML.get(i) == lstInnerHTML.get(j)) {
+                    blnFlag = false;
+                }
+
+        return blnFlag;
+    }
+
+    public List<String> getSuggestionSelections() {
+        List<String> strSuggestionSelections = new ArrayList<String>();
+        List<WebElement> hoverSuggestionSelections = driver.findElements(By.xpath("//div[@ng-reflect-heading='Suggestions']/a/div/span/span[@class='ds-link__copy']"));
+        for(int i=0;i<hoverSuggestionSelections.size();i++) {
+            strSuggestionSelections.add(hoverSuggestionSelections.get(i).getText());
+        }
+        return strSuggestionSelections;
+    }
+
+    public boolean isSuggestionsSectionDisplayed() {
+        return reusableActions.isElementVisible(suggestionsSection);
+    }
+
+    public boolean isSuggestionsSectionPopulated() {
+        if(suggestionsSectionLinks.size()!=0) {
+            return true;
         }
         return false;
+    }
+
+    public boolean isSupportSectionDisplayed() {
+        return reusableActions.isElementVisible(supportSection);
+    }
+
+    public boolean isSupportSectionPopulated() {
+        return reusableActions.isElementVisible(supportSectionLinks);
+    }
+
+    public boolean isLeftSectionPopulated() {
+        return reusableActions.isElementVisible(leftSectionResults);
+    }
+
+    public String getLeftSectionInnerhtml() {
+        return leftSectionResults.getAttribute("innerHTML");
+    }
+
+    public String getSupportInnerhtml() {
+        return supportSection.getAttribute("innerHTML");
+    }
+
+    public boolean validateSupportLinks() {
+        for(int i=0;i<suggestionsSectionLinks.size();i++) {
+            if(suggestionsSectionLinks.get(i).getAttribute("href")==null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void clkSuggestionsType(String strSuggestion) {
+        reusableActions.clickWhenReady(By.xpath("//div[@ng-reflect-heading='Suggestions']//span[starts-with(text(),' "+strSuggestion+"')]"));
     }
 }

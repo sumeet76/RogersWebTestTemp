@@ -65,7 +65,7 @@ public class RogersCH_TC_038_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
 	    rogers_login_page.clkSkipIFrame();
 	    rogers_login_page.switchOutOfSignInIFrame();
 	    rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVUpgradeToIgnite.accountDetails.getBan());
-		//reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page"); 
 		 rogers_home_page.clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
