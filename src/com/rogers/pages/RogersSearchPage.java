@@ -849,7 +849,7 @@ return blnFlag;
         reusableActions.staticWait(4000);
     }
 
-    public boolean validateResultLandingPageURL(String strQuery) throws UnsupportedEncodingException{
+    public boolean validateURLContains(String strQuery) throws UnsupportedEncodingException{
         String strUrl = URLDecoder.decode(driver.getCurrentUrl(), StandardCharsets.UTF_8.name());
         boolean blnFlag = false;
         if(strUrl.contains(strQuery.trim())) {
@@ -950,5 +950,59 @@ return blnFlag;
 
     public void clkSuggestionsType(String strSuggestion) {
         reusableActions.clickWhenReady(By.xpath("//div[@ng-reflect-heading='Suggestions']//span[starts-with(text(),' "+strSuggestion+"')]"));
+    }
+
+    public boolean validateFiltersInUrl(String strGrandParentFilter, String strParentFilter) throws UnsupportedEncodingException {
+        String strQuery = "f=" + strGrandParentFilter.trim() + "_" + strParentFilter.trim();
+        return validateURLContains(strQuery);
+    }
+
+    public boolean validateDeviceTypesInUrl(String[] strDeviceType) throws UnsupportedEncodingException {
+        String strQuery = "devicetype:";
+        for(int i=0; i<strDeviceType.length;i++) {
+            strQuery = strQuery + strDeviceType[i].trim();
+            if(i!=strDeviceType.length-1) {
+                strQuery = strQuery + ",";
+            }
+        }
+        return validateURLContains(strQuery);
+    }
+
+    public boolean validateBrandsInUrl(String[] strBrand) throws UnsupportedEncodingException {
+        String strQuery = "brand:";
+        for(int i=0; i<strBrand.length;i++) {
+            strQuery = strQuery + strBrand[i].trim();
+            if(i!=strBrand.length-1) {
+                strQuery = strQuery + ",";
+            }
+        }
+        return validateURLContains(strQuery);
+    }
+
+    public boolean validateStoragesInUrl(String[] strStorage) throws UnsupportedEncodingException {
+        String strQuery = "storage:";
+        for(int i=0; i<strStorage.length;i++) {
+            strQuery = strQuery + strStorage[i].trim();
+            if(i!=strStorage.length-1) {
+                strQuery = strQuery + ",";
+            }
+        }
+        return validateURLContains(strQuery);
+    }
+
+    public boolean validateColorsInUrl(String[] strColor) throws UnsupportedEncodingException {
+        String strQuery = "color:";
+        for(int i=0; i<strColor.length;i++) {
+            strQuery = strQuery + strColor[i].trim();
+            if(i!=strColor.length-1) {
+                strQuery = strQuery + ",";
+            }
+        }
+        return validateURLContains(strQuery);
+    }
+
+    public boolean isFilterChecked(String strFilter) {
+        return reusableActions.getWhenReady(By.xpath("//ds-checkbox//input[@value='"+strFilter.trim()+"']"))
+                .getAttribute("aria-checked").equals("true");
     }
 }
