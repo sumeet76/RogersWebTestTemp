@@ -49,7 +49,7 @@ public class RogersSearch_CBS_1740_Click_On_Magnifying_Lens_Or_Press_Enter_Test 
         }
         rogers_search_page.clkOnMagnifyingLens();
         reporter.reportLogWithScreenshot("Search Results Page");
-        reporter.hardAssert(rogers_search_page.validateResultLandingPageURL(csvRow[0]), "Result Landing Page displayed", "Result Landing Page not displayed");
+        reporter.hardAssert(rogers_search_page.validateURLContains(csvRow[0]), "Result Landing Page displayed", "Result Landing Page not displayed");
         for (int i = 1; i < csvRow.length; i++) {
             reporter.softAssert(rogers_search_page.isFilterDisplayed(csvRow[i]), "Filter " + csvRow[i] + " is Displayed", "Filter " + csvRow[i] + " is NOT Displayed");
         }

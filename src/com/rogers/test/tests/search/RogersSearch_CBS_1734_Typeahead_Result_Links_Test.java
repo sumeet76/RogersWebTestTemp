@@ -57,7 +57,7 @@ public class RogersSearch_CBS_1734_Typeahead_Result_Links_Test extends BaseTestC
             }
             if(blnCurSupport || blnCurLeftPane) {
                 rogers_search_page.clkSuggestionsType(strSuggestionOptions.get(j));
-                reporter.hardAssert(rogers_search_page.validateResultLandingPageURL(strSuggestionOptions.get(j)),
+                reporter.hardAssert(rogers_search_page.validateURLContains(strSuggestionOptions.get(j)),
                         "Result Landing Page displayed", "Result Landing Page not displayed");
                 reporter.reportLogWithScreenshot("Landing page for suggested result click");
             } else {

@@ -29,7 +29,7 @@ public class RogersSearch_CBS_1701_ResetAllFilters_Button_Test extends BaseTestC
 				"Billing/Accounts filter expanded","Billing/Accounts filter expanded");
 		reporter.hardAssert(rogers_search_page.validateResultsTag("Support","Billing/Accounts")
 				,"Results' tags verified", "Results' tags mismatch");
-		reporter.reportLogWithScreenshot("Shop-Billing/Accounts Expanded");
+		reporter.reportLogWithScreenshot("Support-Billing/Accounts Expanded");
 		rogers_search_page.clkResetAllFilters();
 		reporter.reportLogWithScreenshot("Reset All Filters button clicked");
 		reporter.hardAssert(rogers_search_page.validateAllFiltersCollapsed(),
