@@ -2,16 +2,12 @@ package com.rogers.test.tests.selfserve.desktop;
 
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
-import com.rogers.testdatamanagement.TestDataHandler;
-
-import extentreport.ExtentTestManager;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONObject;
-import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
@@ -35,11 +31,11 @@ public class RogersSS_TC22_EN_ValidateAutoRegistrationReminderEmails_Postpaid ex
 	
 	@Test(groups = {"Autoregister"})
 	public void validateUserChangeContactInformationAndBillingAddress() {
-		String strURI = "https://qa07-mservices.rogers.com/v1/user/registration/mwautocreate";
+		String strURI = "https://qa02-mservices.rogers.com/v1/user/registration/mwautocreate";
 		reporter.reportLog("URI:"+strURI);
-		String strEmail = "Auto1020SS74@yahoo.com";
+		String strEmail = "Auto1020SS75@yahoo.com";
 		String strPassword = "DigiAuto@123";
-		String strBan ="938021383";
+		String strBan ="938055639";
 		//================= Email reminder code
 		this.autoregisterUser(strURI,strEmail,strBan);
 		this.sendreminderEmail(strURI);    
@@ -112,7 +108,7 @@ public class RogersSS_TC22_EN_ValidateAutoRegistrationReminderEmails_Postpaid ex
 		}
 		
 		public void sendreminderEmail(String strURI) {
-			String strURIEmailer ="https://qa07-mservices.rogers.com/v1/user/registration/retry";
+			String strURIEmailer ="https://qa02-mservices.rogers.com/v1/user/registration/retry";
 			reporter.reportLog("URI emailer:"+strURIEmailer);
 			RestAssured.baseURI = strURIEmailer;
 			RequestSpecification request = RestAssured.given();
