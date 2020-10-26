@@ -13,15 +13,26 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	}
 	@FindBy(xpath = "//input[@id='digits']")
 	WebElement txtChosePhoneNumber;
-	
-	@FindBy(xpath = "//ins[@translate='global.checkout.numberSelection.sections.section1.cta']")
-	WebElement btnGeneratePhoneNumber;	
-	//ins[@translate='global.checkout.numberSelection.sections.section1.cta2']
-	
+
+	@FindBy(xpath = "//h1[@class='rhp-port-in__header']")
+	WebElement btnPortInOutPage;
+
+	@FindBy(xpath = "//h1[@class='fr-spacing-top-30 -text-semi']")
+	WebElement txtPhoneNumberSelectionPage;
+
+	@FindBy(xpath = "//span[@class='ng-star-inserted']/ancestor::button[@type='submit']")
+	WebElement btnGeneratePhoneNumber;
+
+	@FindBy(xpath = "//i[@class='li-loader']")
+	WebElement loaderPhoneNumberPage;
+
+	@FindBy(xpath = "//span[contains(text(),'new number') or contains(text(),'Je veux choisir un nouveau')]//ancestor::button")
+	WebElement btnSkipforNewNumber;
+
 	@FindBy(xpath = "//label[@for='number-1']")
 	WebElement rdoChosePhoneNumber;
 	
-	@FindBy(xpath = "//div[@class='buttons-block hidden-xs']//button[@class='ute-btn-primary']")
+	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::button")
 	WebElement btnContinueHomePhoneSelection;
 	
 	@FindBy(xpath = "//span[@translate='global.cta.continue']")
@@ -74,16 +85,35 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPhoneNumberPage() {
-		reusableActions.waitForElementInvisibility(popupLoadingFingers, 120);
-		return	reusableActions.isElementVisible(btnGeneratePhoneNumber, 60);
+		return	reusableActions.isElementVisible(txtPhoneNumberSelectionPage, 60);
 	}
-	
+
+	/**
+	 * To set a number to have phone number consisting the given number
+	 * @return true if, Generate PhoneNumber button is available on home phone page, else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyPortInOutPage() {
+		if(reusableActions.isElementVisible(loaderPhoneNumberPage)) {
+			reusableActions.waitForElementInvisibilityNOException(loaderPhoneNumberPage,20);
+		}
+		return	reusableActions.isElementVisible(btnPortInOutPage, 60);
+	}
+	/**
+	 * Click on Generate Phone Number button to generate phone numbers
+	 * @author chinnarao.vattam
+	 */
+	public void clkSkipforNewNumber() {
+		reusableActions.javascriptScrollToMiddleOfPage();
+		reusableActions.getWhenReady(btnSkipforNewNumber, 60).click();
+	  }
+
 	/**
 	 * Click on Generate Phone Number button to generate phone numbers
 	 * @author chinnarao.vattam
 	 */
 	public void clkPhoneNumberGenerator() {
-		reusableActions.getWhenReady(btnGeneratePhoneNumber, 60).click();
+		reusableActions.executeJavaScriptClick(btnGeneratePhoneNumber);
 	}
 		
 	
@@ -100,8 +130,8 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkContinueHomePhoneSelection() {
-		reusableActions.waitForElementVisibility(btnContinueHomePhoneSelection, 180);
-		reusableActions.getWhenReady(btnContinueHomePhoneSelection, 90).click();
+		reusableActions.waitForElementVisibility(btnContinueHomePhoneSelection, 20);
+		reusableActions.getWhenReady(btnContinueHomePhoneSelection, 20).click();
 	}
 	
 	/**

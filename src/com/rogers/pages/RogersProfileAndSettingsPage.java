@@ -80,7 +80,6 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//span[contains(text(),'Submit') or contains(text(),'Soumettre')]")
 	WebElement btnChangeUsernameSubmit;
 	
-	//TODO: xpath will add French
 	@FindBy (xpath = "//span[contains(text(),'Username changed') or contains(text(),'Nom d’utilisateur modifié')]")
 	WebElement lblChangeUsernameSucMsg;
 	
@@ -120,7 +119,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//strong")
 	WebElement btnChangePassDone;
 	
-	@FindBy (xpath = "//button[@title='Display contact information' or @title='Afficher les coordonnées']")
+	@FindBy (xpath = "//button[@title='Display contact information' or @title='Afficher les coordonn']")
 	WebElement btnContactInfo;
 	
 	@FindBy (xpath = "//button[@title='Display billing settings' or @title='Afficher les préférences de facturation']")
@@ -129,7 +128,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//span[contains(text(),'email') or contains(text(),'adresse courriel')]")
 	WebElement lnkAddContactEmail;
 	
-	@FindBy (xpath = "//span[contains(text(),'Change billing address') or contains(text(),'Changer l’adresse de facturation')]")
+	@FindBy (xpath = "//span[contains(text(),'Change billing address') or contains(text(),'adresse de facturation')]")
 	WebElement lnkChangeBillingAddress;
 	
 	@FindBy(xpath = "//button[@title='Change billing address' or @title='Changer l’adresse de facturation']")
@@ -404,7 +403,8 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public Boolean isTheWorkingAccount(String strAccountNum) {
-		return reusableActions.isElementVisible(By.xpath("//div[contains(text(),'" + strAccountNum + "')]"), 30);
+		return (reusableActions.isElementVisible(By.xpath("//rss-account-info//*[contains(text(),'" + strAccountNum + "')]"), 30)
+				||reusableActions.isElementVisible(By.xpath("//div[contains(text(),'" + strAccountNum + "')]"), 30));
 	}
 	
 	/**

@@ -65,7 +65,13 @@ public class RogersOrderReviewPage extends BasePageClass {
 
 	@FindBy(xpath = "//label[@class='ds-checkboxLabel d-inline-flex align-items-start']")
 	WebElement clkChangeAcceptCheckboxUpdateInternet;
-	
+
+	@FindBy(xpath = "//div[@class='text-semi mt-3 -f24 ng-star-inserted']")
+	WebElement popupSessionModel;
+
+	@FindBy(xpath = "//button[@ng-reflect-variant='primary']//span[@ng-reflect-klass='ds-button__copy text-button te']")
+	WebElement btnContinueSession;
+
 	@FindBy(xpath = "//input[@class='ute-btn-primary']")
 	WebElement clkSubmitUpdate;
 	
@@ -155,8 +161,25 @@ public class RogersOrderReviewPage extends BasePageClass {
 		reusableActions.waitForElementVisibility(gwpYourCart, 60);
 		return	reusableActions.isElementVisible(gwpYourCart);
 	}
-	
 
+	/**
+	 * To verify the Session expiry Model
+	 * @return true if the Session expiry Model has available, else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifySessionModel() {
+		//Session expiry time  2 minutes
+		reusableActions.staticWait(120000);
+		return reusableActions.isElementVisible(popupSessionModel,60);
+	}
+
+	/**
+	 * Click the Continue button on the profile page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkContinueSession() {
+		reusableActions.getWhenReady(btnContinueSession, 20).click();
+	}
 	
 	/**
 	 * Enter date of birth	
@@ -181,7 +204,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyAgreementPage() {
-		return	reusableActions.isElementVisible(txtAgreementPageBuy, 180);
+		return	reusableActions.isElementVisible(txtAgreementPageBuy, 60);
 	}
 
 	public boolean verifyAgreementPageTVMobile() {
@@ -194,7 +217,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyAgreementPageInternet() {
-		return	reusableActions.isElementVisible(txtAgreementPageInternet, 120);
+		return	reusableActions.isElementVisible(txtAgreementPageInternet, 90);
 	}
 	/**
 	 * Verify the agreement block on the order review page
@@ -202,7 +225,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyAgreement() {
-		return reusableActions.isElementVisible(infoAgreement, 120);
+		return reusableActions.isElementVisible(infoAgreement, 90);
 	}
 
 	/**
@@ -232,7 +255,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkAcceptenceCheckboxUpdateInternet() {
-		reusableActions.waitForElementVisibility(lnkAgreementPrivacyPolicy, 120);
+		reusableActions.waitForElementVisibility(lnkAgreementPrivacyPolicy, 60);
 		reusableActions.getWhenReady(lnkAgreementPrivacyPolicy, 30).click();		
 		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 30).sendKeys(Keys.PAGE_DOWN);
 		reusableActions.getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);	
@@ -337,7 +360,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 */
 	public void clkSubmitUpdateInternet() {
 		reusableActions.javascriptScrollToBottomOfPage();
-		reusableActions.getWhenReady(clkSubmitUpdateInternet, 150).click();
+		reusableActions.getWhenReady(clkSubmitUpdateInternet, 90).click();
 	}
 	
 	/**

@@ -1,6 +1,8 @@
 package com.rogers.pages;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -149,7 +151,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@role='button']/span[contains(@translate,'device_upgrade')]")
 	WebElement btnUpgradeMyDevice;
 	
-	@FindBy (xpath = "//span[contains(text(),'phone repair claim') or contains(text(),'réparation de téléphone')]")
+	@FindBy (xpath = "//span[contains(text(),'phone repair claim') or contains(text(),'Repair or trade-in device') or contains(text(),'réparation de téléphone')]")
 	WebElement lnkTrackRepairClaim;
 	
 	@FindBy (xpath = "//button[@title='Continue to the site' or contains(@title,'Continuer')] | //span[contains(@translate,'continue')]")
@@ -282,16 +284,22 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy (xpath = "//div[@class='add-data']/span[contains(text(),'Speed Pass') or contains(text(),'Accès Rapido')]")
 	WebElement btnSpeedPass;
 
-	@FindBy(xpath = "//h2[contains(text(),'My Device') or contains(text(),'Mon appareil')]")
+	@FindBy(xpath = "//h2[contains(text(),'Device') or contains(text(),'appareil')]")
 	WebElement headerMyDevice;
 	
-	@FindBy(xpath = "//div[@class='card-price-info']//span[contains(text(),'Device balance') or contains(text(),'Solde de l’appareil')]")
+	@FindBy(xpath = "//rss-device//span[contains(text(),'balance') or contains(text(),'Solde')]")
 	WebElement lblDeviceBalance;  
 	
-	@FindBy (xpath = "//div[@class='card-price-info']//span[@class='price']")
+	@FindAll({
+		@FindBy (xpath = "//div[@class='card-price-info']//span[@class='price']"),
+		@FindBy (xpath = "//div[@class='ds-price -inline']//div[@class='ds-price__amountDollars text-semi']")
+	})
 	WebElement devicePriceMain;
 	
-	@FindBy (xpath = "//div[@class='card-price-info']//span[@class='cents']")
+	@FindAll({
+		@FindBy (xpath = "//div[@class='ds-price -inline']//div[contains(@class,'ds-price__amountCents')]"),
+		@FindBy (xpath = "//div[@class='card-price-info']//span[@class='cents']")
+	})
 	WebElement devicePriceCents;
 	
 	@FindBy (xpath = "//span[contains(text(),'Changer mon appareil') or contains(text(),'Upgrade my device')]")
@@ -306,22 +314,37 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy (xpath = "//button[@title='Close Device upgrade window' or @title='Fermer la rehaussement Détails de l’appareil']")
 	WebElement btnCloseDeviceUpgradeModal;
 	
-	@FindBy (xpath = "//span[contains(text(),'sera/était de') or contains(text(),'will be/was $0')]")  
-	WebElement txtClosingDate;
+	@FindAll({
+		@FindBy (xpath = "//span[contains(text(),'end date') or contains(text(),'Date de fin')]"),
+		@FindBy (xpath = "//span[contains(text(),'sera/était de') or contains(text(),'will be/was $0')]")  
+	})
+	WebElement txtEndDate;
 	
-	@FindBy (xpath = "//span[contains(text(),'Détails de mon appareil') or contains(text(),'device details')]") 
+	@FindBy (xpath = "//span[contains(text(),'end date') or contains(text(),'Date de fin')]/following-sibling::span")
+	WebElement endDate;
+	
+	@FindBy (xpath = "//rss-device//span[contains(text(),'Détails') or contains(text(),'details')]") 
 	WebElement lnkViewDeviceDetails;
 	
 	@FindBy (xpath = "//div[@class='ds-modal__header d-flex align-items-start']")
 	WebElement modalDeviceDetails;
 	
-	@FindBy (xpath = "//button[@title='Close Device details window' or @title='Fermer la fenêtre Détails de l’appareil']")
+	@FindAll({
+		@FindBy (xpath = "//span[@class='ds-icon rds-icon-close']"),
+		@FindBy (xpath = "//button[@title='Close Device details window' or @title='Fermer la fenêtre Détails de l’appareil']")
+	})
 	WebElement btnCloseDeviceDetailModal;
 	
-	@FindBy (xpath = "//span[contains(text(),'activation')]")
+	@FindAll({
+		@FindBy (xpath = "//span[contains(text(),'Device purchased') or contains(text(),'Appareil acheté')]"),
+		@FindBy (xpath = "//span[contains(text(),'activation')]")
+	})
 	WebElement activationDateOnDeviceModal;
 	
-	@FindBy (xpath = "//span[contains(text(),'Balance will be/was $0 on:') or contains(text(),'Le solde sera/était de 0 $ le :')]")
+	@FindAll({
+		@FindBy (xpath = "//span[contains(text(),'balance will be $0') or contains(text(),'financement sera de 0')]"),
+		@FindBy (xpath = "//span[contains(text(),'Balance will be/was $0 on:') or contains(text(),'Le solde sera/était de 0 $ le :')]")
+	})
 	WebElement balanceClosingDate;
 	
 	@FindBy(xpath = "//ins[@translate='plans.infoHeading']")
@@ -477,10 +500,10 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Change my phone number') or contains(text(),'Changer mon numéro de téléphone')]")
 	WebElement lnkChangeMyPhoneNumber;
 
-	@FindBy(xpath = "//ds-switch[@title='Data access for DONOTUSE' or @title='Accès aux données pour DONOTUSE']//Span[text()='ON' or text()='OUI']")
+	@FindBy(xpath = "//ds-switch[contains(@title,'Data access for') or contains(@title,'Accès aux données pour')]//Span[text()='ON' or text()='OUI']")
 	WebElement divDataAccessOn;
 	
-	@FindBy(xpath = "//ds-switch[@title='Data access for DONOTUSE' or @title='Accès aux données pour DONOTUSE']//Span[text()='OFF' or text()='NON']")
+	@FindBy(xpath = "//ds-switch[contains(@title,'Data access for') or contains(@title,'Accès aux données pour')]//Span[text()='OFF' or text()='NON']")
 	WebElement divDataAccessOFF;
 
 	@FindBy(xpath = "//*[@translate='wirelessPrepaidHeader']")
@@ -1472,10 +1495,19 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		if (strPriceCents.startsWith(",")) {
 			strPriceCents = strPriceCents.replace(',', '.');
 		}
-		Pattern pat = Pattern.compile("^(0|0?[1-9]\\d*)\\.\\d\\d$");
-
-		return reusableActions.isElementVisible(lblDeviceBalance,10) 
-				&& Pattern.matches(pat.toString(), strPriceMain.concat(strPriceCents));
+		String strBalance = "$" + strPriceMain.concat(strPriceCents);
+		Number number = null;
+		try {
+			number = NumberFormat.getCurrencyInstance(Locale.CANADA).parse(strBalance);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		if(number != null) {
+			return true;
+		}else {
+			return false;
+		}
+		
 	}
 	
 	/**
@@ -1517,7 +1549,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @return true if the message is available, otherwise false
 	 */
 	public boolean isDeviceClosingDateMsgAvailable() {
-		return reusableActions.isElementVisible(txtClosingDate,10);
+		return reusableActions.isElementVisible(txtEndDate,10);
 	}
 	
 	/**
@@ -1527,8 +1559,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public boolean verifyDeviceClosingDateMsgIfAvailable() {
 
-		String strMsg = txtClosingDate.getText();
-		String strDate = strMsg.substring(strMsg.length()-13).trim();
+		String strDate = endDate.getText();
 		String strBrowserLanguage = menuLanguage.getText();
 		if (strBrowserLanguage.equalsIgnoreCase("FR")) {
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM. dd, yyyy");

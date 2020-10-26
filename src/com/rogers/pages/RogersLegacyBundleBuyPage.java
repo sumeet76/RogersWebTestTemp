@@ -56,7 +56,7 @@ public class RogersLegacyBundleBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void setAddressLookup(String strAddress) {
-		reusableActions.getWhenReady(txtAddressLookup,180).clear();
+		reusableActions.getWhenReady(txtAddressLookup,60).clear();
 		reusableActions.getWhenReady(txtAddressLookup,20).sendKeys(strAddress);
 		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.SPACE);
 		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.ARROW_DOWN);

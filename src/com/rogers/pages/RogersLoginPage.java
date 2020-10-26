@@ -30,7 +30,7 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(xpath = "//iframe[contains(@src,'/web/totes/easylogin/signin')]")
 	WebElement fraSignIn;
 	
-	@FindBy (xpath = "//img[@src='assets/images/error_warning.png']")
+	@FindBy (xpath = "//ds-alert[@variant='error']")
 	WebElement failLoginMsg;
 
 	@FindBy(xpath = "//button[contains(text(),'Skip') or contains(text(),'Continuer')]")
@@ -73,7 +73,8 @@ public class RogersLoginPage extends BasePageClass {
 	 * To switch to the iframe
 	 * @author chinnarao.vattam
 	 */
-	public void switchToSignInIFrame() {		
+	public void switchToSignInIFrame() {	
+		reusableActions.getWhenReady(fraSignIn,10);
 		driver.switchTo().frame(fraSignIn);
 //		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraSignIn, 30);
 	}
@@ -148,7 +149,7 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSkipIFrame() {
-		reusableActions.clickIfAvailable(btnSkip,20);
+		reusableActions.clickIfAvailable(btnSkip,10);
 	}
 	
 	/**

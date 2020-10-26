@@ -51,7 +51,7 @@ public class RogersSS_TC_046_AO_ValidateCHaccountBadge_LegacyRHP extends BaseTes
 		rogers_account_overview_page.clkRHPBadge();
 		reporter.reportLogWithScreenshot("Click RHP Badge");
 		Thread.sleep(7000);
-		reporter.hardAssert(rogers_account_overview_page.verifyRHPBanner(),"Verifed the RHP dashboard",
+		reporter.hardAssert(rogers_solaris_rhp_dashboard_validation_page.verifyRHPBanner(),"Verifed the RHP dashboard",
 				"RHP dashboard Verification has failed");		
 		reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");
 		common_business_flows.scrollToMiddleOfWebPage();

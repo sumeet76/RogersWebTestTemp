@@ -27,8 +27,11 @@ public class RogersTechInstallPage extends BasePageClass {
 	
 	@FindBy(xpath ="//select[@id='backupTimeSlot']")
 	WebElement selBackupTimeSlot;
+
+	@FindBy(xpath ="//div[@class='appointment-content']")
+	WebElement txtEnroute;
 	
-	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
+	@FindBy(xpath = "//input[@formcontrolname='enrouteMobileNumber']/ancestor::div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement txtContainerMobile;
 	
 	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
@@ -37,7 +40,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[3]")
 	WebElement txtContainerMobileMigration;
 	
-	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-54')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	@FindBy(xpath = "//input[@formcontrolname='enrouteEmail']/ancestor::div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement txtContainerEmail;
 	
 	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-40')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
@@ -46,12 +49,12 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[4]")
 	WebElement txtContainerEmailMigration;
 	
-    @FindBy(xpath ="//input[@id='ds-form-input-id-34']")
+    @FindBy(xpath ="//input[@formcontrolname='enrouteMobileNumber']")
 	WebElement txtMobielNumber;		
 		//input[@id='enrouteMobile']
     
-    @FindBy(xpath ="//input[@id='ds-form-input-id-28']")
-	WebElement txtMobielNumberMigration;	
+    @FindBy(xpath ="//input[@formcontrolname='enrouteMobileNumber']")
+	WebElement txtMobielNumberMigration;
 
 	@FindBy(xpath ="//input[@formcontrolname='enrouteMobileNumber']")  
 	WebElement txtMobielNumberExistingCustomer;	
@@ -63,11 +66,11 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath ="(//span[@class='ds-icon rds-icon-calendar'])[2]")
 	WebElement imgEndingTechInstallSlot;
 	
-	@FindBy(xpath ="//input[@id='ds-form-input-id-35']")
+	@FindBy(xpath ="//input[@formcontrolname='enrouteEmail']")
 	WebElement txtEmail;
 	//input[@id='enRouteEmail']
 	
-	@FindBy(xpath ="//input[@id='ds-form-input-id-29']")
+	@FindBy(xpath ="//input[@formcontrolname='enrouteEmail']")
 	WebElement txtEmailMigration;		
 	
 	@FindBy(xpath ="//input[@formcontrolname='enrouteEmail']")   
@@ -177,7 +180,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyTechInstallPage() {
-		return	reusableActions.isElementVisible(txtTechInstalpage, 120);
+		return	reusableActions.isElementVisible(txtTechInstalpage, 90);
 	}
 	
 	
@@ -271,7 +274,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selSelffinstallDateAndTimeMobile() {
-		if(reusableActions.isElementVisible(rdoTechInstallSlot, 120))
+		if(reusableActions.isElementVisible(rdoTechInstallSlot, 90))
 		{
 		reusableActions.executeJavaScriptClick(rdoTechInstallSlot);	
 		}
@@ -319,11 +322,18 @@ public class RogersTechInstallPage extends BasePageClass {
 	 */
 	public void setMobielNumber() {
 		String strPhoneNumber = FormFiller.generatePhoneNumber();
-		reusableActions.waitForElementVisibility(txtContainerMobile,180);
-		reusableActions.getWhenReady(txtContainerMobile,30).click();
-		reusableActions.getWhenReady(txtMobielNumber, 30).clear();
-		reusableActions.getWhenReady(txtMobielNumber, 3).sendKeys(strPhoneNumber);
-	}
+		String strEmail = FormFiller.generateEmail();
+		if(reusableActions.isElementVisible(txtEnroute,90)) {
+			reusableActions.waitForElementVisibility(txtContainerMobile, 20);
+			reusableActions.getWhenReady(txtContainerMobile, 10).click();
+			reusableActions.getWhenReady(txtMobielNumber, 10).clear();
+			reusableActions.getWhenReady(txtMobielNumber, 3).sendKeys(strPhoneNumber);
+			reusableActions.waitForElementVisibility(txtContainerEmail, 30);
+			reusableActions.getWhenReady(txtContainerEmail, 10).click();
+			reusableActions.getWhenReady(txtEmail, 10).clear();
+			reusableActions.getWhenReady(txtEmail, 10).sendKeys(strEmail);
+		}
+		}
 	
 	/**
 	 * Set dynamic mobile number on the Order Summary Page
@@ -389,12 +399,18 @@ public class RogersTechInstallPage extends BasePageClass {
 	 */
 	public void setMobielNumberExistingCustomer() {
 		String strPhoneNumber = FormFiller.generatePhoneNumber();
-		reusableActions.waitForElementVisibility(txtContainerMobileExistingCustomer,180);
-		reusableActions.getWhenReady(txtContainerMobileExistingCustomer,10).click();
-		reusableActions.getWhenReady(txtMobielNumberExistingCustomer, 30).clear();
-		reusableActions.getWhenReady(txtMobielNumberExistingCustomer, 3).sendKeys(strPhoneNumber);
+		String strEmail = FormFiller.generateEmail();
+		if (reusableActions.isElementVisible(txtEnroute, 90)) {
+			reusableActions.waitForElementVisibility(txtContainerMobileExistingCustomer, 20);
+			reusableActions.getWhenReady(txtContainerMobileExistingCustomer, 10).click();
+			reusableActions.getWhenReady(txtMobielNumberExistingCustomer, 30).clear();
+			reusableActions.getWhenReady(txtMobielNumberExistingCustomer, 3).sendKeys(strPhoneNumber);
+			reusableActions.waitForElementVisibility(txtContainerEmailExistingCustomer, 20);
+			reusableActions.getWhenReady(txtContainerEmailExistingCustomer, 10).click();
+			reusableActions.getWhenReady(txtEmailExistingCustomer, 30).clear();
+			reusableActions.getWhenReady(txtEmailExistingCustomer, 3).sendKeys(strEmail);
+		}
 	}
-	
 	/**
 	 * Set dynamic email on the Order Summary Page
 	 * @author Chinnarao.Vattam
@@ -467,7 +483,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkTechInstalConsent() {
-		reusableActions.waitForElementVisibility(chkTechInstalConsent, 180);
+		reusableActions.waitForElementVisibility(chkTechInstalConsent, 60);
 		reusableActions.javascriptScrollByVisibleElement(chkTechInstalConsent);
 		reusableActions.executeJavaScriptClick(chkTechInstalConsent);
 	}
@@ -477,7 +493,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkTechInstalConsentExistingCustomer() {
-		reusableActions.waitForElementVisibility(chkTechInstalConsentExistingCustomer, 180);
+		reusableActions.waitForElementVisibility(chkTechInstalConsentExistingCustomer, 60);
 		reusableActions.javascriptScrollByVisibleElement(chkTechInstalConsentExistingCustomer);
 		reusableActions.executeJavaScriptClick(chkTechInstalConsentExistingCustomer);
 	}
@@ -487,9 +503,9 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkTechInstallContinue() {
-		reusableActions.waitForElementTobeClickable(btnTechInstallContinue, 180);
+		reusableActions.waitForElementTobeClickable(btnTechInstallContinue, 60);
 		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(btnTechInstallContinue, 120).click();
+		reusableActions.getWhenReady(btnTechInstallContinue, 30).click();
 	}
 	
 	/**
@@ -497,9 +513,9 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkTechInstallContinueMobile() {
-		reusableActions.waitForElementTobeClickable(btnTechInstallContinue, 180);
+		reusableActions.waitForElementTobeClickable(btnTechInstallContinue, 90);
 		reusableActions.javascriptScrollByVisibleElement(btnTechInstallContinue);
-		reusableActions.waitForElementVisibility(btnTechInstallContinue, 120);
+		reusableActions.waitForElementVisibility(btnTechInstallContinue, 60);
 		reusableActions.executeJavaScriptClick(btnTechInstallContinue);
 	}
 

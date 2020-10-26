@@ -84,6 +84,10 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	
 	@FindBy(xpath = "//button[@id='va-menu-minimum-button']")
 	WebElement btnVAMininmize;
+
+	@FindBy(xpath = "//iframe[@id='va-iframe']")
+	WebElement ifrmVA;
+
 	
 	@FindBy(xpath = "//div[@id='va-welcome-header']")
 	WebElement txtVaWelcome;
@@ -94,7 +98,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//button[@id='va-welcome-send-button']")
 	WebElement btnVaWelcomeSend;
 	
-	@FindBy(xpath = "//div[@class='ng-select-container ng-has-value']")
+	@FindBy(xpath = "//input[@name='va-welcome-input']")
 	WebElement selVaTopicList;
 	
 	@FindBy(xpath = "//button[@id='va-menu-close-button']")
@@ -127,7 +131,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSolarisInternetBadge() {
-		reusableActions.getWhenReady(btnSolarisInternetBadge,120).click();			
+		reusableActions.getWhenReady(btnSolarisInternetBadge,60).click();
 	}
 
 	/**
@@ -136,7 +140,8 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public void clkInternetBadgeMobile() {
 		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(btnSolarisInternetBadge,60).click();			
+		reusableActions.waitForElementVisibility(btnSolarisInternetBadge,90);
+		reusableActions.executeJavaScriptClick(btnSolarisInternetBadge);
 	}
 	/**
 	 * Verify the Internet header text on the Solaris Internet dash board
@@ -258,19 +263,38 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @return true when pop up contact us is visible else false
 	 * @author Chinnarao.Vattam
 	 */
-	public boolean verifyVaWelcome() {	
+	public boolean verifyVaWelcome() {
 		return reusableActions.isElementVisible(txtVaWelcome, 90);
 	}
-	
+
+	/**
+	 * To switch to the iframe
+	 * @author chinnarao.vattam
+	 */
+	public void switchToVAIFrame() {
+		driver.switchTo().frame(ifrmVA);
+//		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraSignIn, 30);
+	}
+
 	/**
 	 * Checks if the pop up contact us is visible
 	 * @return true when pop up contact us is visible else false
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyVaTopicList() {	
-		return reusableActions.isElementVisible(selVaTopicList, 10);
+		return reusableActions.isElementVisible(selVaTopicList, 30);
 	}
-	
+
+	/**
+	 * Checks if the pop up contact us is visible
+	 * @return true when pop up contact us is visible else false
+	 * @author Chinnarao.Vattam
+	 */
+	public boolean verifyVaWelcomeSend() {
+		return reusableActions.isElementVisible(btnVaWelcomeSend, 30);
+	}
+
+
 	/**
 	 * Checks if the pop up contact us is visible
 	 * @return true when pop up contact us is visible else false
@@ -372,8 +396,8 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	public void selectSolarisInternetPackageMigration(String strPackageName) {
 		By packageNameLocator = By.xpath("//span[contains(normalize-space(text()),'" + strPackageName
 				+ "') or contains(normalize-space(text()),'Élan Internet gigabit')]/ancestor::div[@class='owl-item active']//ins[@translate='global.cta.select']");
-		reusableActions.waitForElementInvisibility(popupLoadingFingers,180);
-		reusableActions.getWhenReady(packageNameLocator, 120).click();
+		reusableActions.waitForElementInvisibility(popupLoadingFingers,90);
+		reusableActions.getWhenReady(packageNameLocator, 60).click();
 	}
 	
 	/**
@@ -383,6 +407,6 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public void selectSolarisInternetPackage1(String strPackageName) {		
 		By packageNameLocator = By.xpath("//span[contains(normalize-space(text()),'" + strPackageName+ "') or contains(normalize-space(text()),'Élan Internet 150i')]/ancestor::div[@class='owl-item active']//ins[@translate='global.cta.select']");
-		reusableActions.getWhenReady(packageNameLocator, 180).click();
+		reusableActions.getWhenReady(packageNameLocator, 90).click();
 	}
 }

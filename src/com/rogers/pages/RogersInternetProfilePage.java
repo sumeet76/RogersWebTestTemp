@@ -15,26 +15,32 @@ public class RogersInternetProfilePage extends BasePageClass {
 	
 	@FindBy(xpath = "//h4[@translate='global.checkout.profile.createProfile']")
 	WebElement txtProfile;
+
+	@FindBy(xpath = "//div[@class='text-semi mt-3 -f24 ng-star-inserted']")
+	WebElement popupSessionModel;
+
+	@FindBy(xpath = "//button[@ng-reflect-variant='primary']//span[@ng-reflect-klass='ds-button__copy text-button te']")
+	WebElement btnContinueSession;
 	
-	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-31')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[1]")
 	WebElement txtContainerEmail;
 	
-	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-32')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
 	WebElement txtContainerConfirmEmail;
 	
-		@FindBy(xpath = "//input[@id='ds-form-input-id-9']")
+	@FindBy(xpath = "//input[@name='email']")
 	WebElement txtEmail;
 	
-	@FindBy(xpath = "//input[@id='ds-form-input-id-10']")
+	@FindBy(xpath = "//input[@name='confirmEmail']")
 	WebElement txtConfirmEmail;
 	
-	@FindBy(xpath = "//input[@id='ds-form-input-id-4']")
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @aria-label='Please enter your First Name.']")
 	WebElement txtFirstName;
 	
-	@FindBy(xpath = "//input[@id='ds-form-input-id-5']")
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @aria-label='Please enter your Last Name.']")
 	WebElement txtLastName;
 	
-	@FindBy(xpath = "//input[@id='ds-form-input-id-7']")
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @aria-label='Please enter your phone number.']")
 	WebElement btnPhone;
 		
 	@FindBy(xpath = "//span[@translate='global.cta.continue']")
@@ -49,16 +55,37 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyProfilePage() {
+		reusableActions.waitForElementVisibility(txtProfile,60);
 		return reusableActions.isElementVisible(txtProfile);
 	}
-	
-		/**
+
+	/**
+	 * To verify the Session expiry Model
+	 * @return true if the Session expiry Model has available, else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifySessionModel() {
+		//Session expiry time  2 minutes
+		reusableActions.staticWait(120000);
+		return reusableActions.isElementVisible(popupSessionModel,60);
+	}
+
+	/**
+	 * Click the Continue button on the profile page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkContinue() {
+		reusableActions.getWhenReady(btnContinueSession, 20).click();
+	}
+
+
+	/**
 	 * Set dynamic email and confirm email on profile page
 	 * @author Chinnarao.Vattam
 	 */
 	public void setEmail() {
 		String strEmail = FormFiller.generateEmail();
-		reusableActions.waitForElementVisibility(txtContainerEmail,180);
+		reusableActions.waitForElementVisibility(txtContainerEmail,20);
 		reusableActions.getWhenReady(txtContainerEmail,10).click();
 		reusableActions.getWhenReady(txtEmail, 30).clear();
 		reusableActions.getWhenReady(txtEmail,10).sendKeys(strEmail);
@@ -106,7 +133,7 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSubmitProfile() {
-		reusableActions.getWhenReady(btnProfielSubmit, 120).click();
+		reusableActions.getWhenReady(btnProfielSubmit, 60).click();
 	}
 	
 	/**
@@ -114,7 +141,7 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSubmitProfileMobile() {
-		reusableActions.waitForElementVisibility(btnProfielSubmit, 120);
+		reusableActions.waitForElementVisibility(btnProfielSubmit, 60);
 		reusableActions.executeJavaScriptClick(btnProfielSubmit);
 	}
 
