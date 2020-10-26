@@ -40,9 +40,9 @@ public class RogersSearch_CBS_1740_Click_On_Magnifying_Lens_Or_Press_Enter_Test 
         reporter.reportLogWithScreenshot("CBS Search Page");
         rogers_search_page.enterTextSearch(csvRow[0]);
         reporter.reportLogWithScreenshot("Search field entered");
-        reporter.hardAssert(rogers_search_page.validateLabelVisible("Suggestions"), "label Suggestion Visible", "label Suggestion Not Visible");
-        reporter.hardAssert(rogers_search_page.validateLabelVisible("Support"), "label Support Visible", "label Support Not Visible");
-        if(rogers_search_page.validateLinksVisible("Suggestions") || rogers_search_page.validateLinksVisible("Support")) {
+        reporter.hardAssert(rogers_search_page.isSuggestionsSectionDisplayed(), "label Suggestion Visible", "label Suggestion Not Visible");
+        reporter.hardAssert(rogers_search_page.isSupportSectionDisplayed(), "label Support Visible", "label Support Not Visible");
+        if(rogers_search_page.isSupportSectionPopulated() || rogers_search_page.isLeftSectionPopulated()) {
             reporter.reportLogPassWithScreenshot("Suggestion or Supports populated");
         } else {
             reporter.reportLogFailWithScreenshot("Suggestion and Support not populated");
