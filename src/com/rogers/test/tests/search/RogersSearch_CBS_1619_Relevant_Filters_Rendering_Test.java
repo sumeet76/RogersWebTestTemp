@@ -15,37 +15,26 @@ import utils.CSVReader;
 
 public class RogersSearch_CBS_1619_Relevant_Filters_Rendering_Test extends BaseTestClass {
 
-
     @DataProvider(name = "FilterData")
     public Object[] testData() throws IOException {
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
         Object[] csvRowStrArray = new Object[csvData.size()];
-
         for (int i = 0; i < csvData.size(); i++) {
             csvRowStrArray[i] = csvData.get(i);
         }
-
         return csvRowStrArray;
-
     }
 
     @Test(dataProvider = "FilterData")
-
     public void validateFilters(String[] csvRowStrArray) {
-
         getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0]);
-
+        reporter.reportLogWithScreenshot("Search QA Page Results");
+        reporter.softAssert(rogers_search_page.validateGrandParentFiltersCount(csvRowStrArray.length-1),
+                "Filters Count Matched","Filters Count Mismatch");
         for (int i = 1; i < csvRowStrArray.length; i++) {
-
             reporter.softAssert(rogers_search_page.isFilterDisplayed(csvRowStrArray[i]), "Filter " + csvRowStrArray[i] + " is Displayed", "Filter " + csvRowStrArray[i] + " is NOT Displayed");
-
-            reporter.reportLogWithScreenshot("Search QA Page - " + csvRowStrArray[i]);
-
         }
-
-        System.out.println("end of set");
-
     }
 
 
