@@ -43,8 +43,8 @@ public class RogersCH_TC_047_LegacyBundle_BuyBundleOfferTest extends BaseTestCla
     	rogers_home_page.clkBundle();
     	reporter.reportLogWithScreenshot("Launched the legacy bundle packages page");
     	rogers_legacy_bundle_buy_page.clkSelectBundle();
-        String  strAddressLine1=TestDataHandler.digitalTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.digitalTVAccount.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc43_44_digitalTVAccount.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc43_44_digitalTVAccount.getAccountDetails().getAddress().get("line2");
         rogers_legacy_bundle_buy_page.setAddressLookup(strAddressLine1+", "+strAddressLine2);
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         rogers_legacy_bundle_buy_page.clkAddressLookupSubmit();
@@ -59,11 +59,11 @@ public class RogersCH_TC_047_LegacyBundle_BuyBundleOfferTest extends BaseTestCla
     	rogers_order_summary_page.setFirstName();
     	rogers_order_summary_page.setLastName();
     	rogers_order_summary_page.setEmail();
-    	rogers_order_summary_page.setStreetNumber(TestDataHandler.digitalTVAccount.getAccountDetails().getAddress().get("streetNumber"));
-    	rogers_order_summary_page.setStreetName(TestDataHandler.digitalTVAccount.getAccountDetails().getAddress().get("streetName"));
-    	rogers_order_summary_page.setCity(TestDataHandler.digitalTVAccount.getAccountDetails().getAddress().get("city"));
-    	rogers_order_summary_page.selectProvince(TestDataHandler.digitalTVAccount.getAccountDetails().getAddress().get("Province"));
-    	rogers_order_summary_page.setPostalCode(TestDataHandler.digitalTVAccount.getAccountDetails().getAddress().get("PostalCode"));
+    	rogers_order_summary_page.setStreetNumber(TestDataHandler.tc43_44_digitalTVAccount.getAccountDetails().getAddress().get("streetNumber"));
+    	rogers_order_summary_page.setStreetName(TestDataHandler.tc43_44_digitalTVAccount.getAccountDetails().getAddress().get("streetName"));
+    	rogers_order_summary_page.setCity(TestDataHandler.tc43_44_digitalTVAccount.getAccountDetails().getAddress().get("city"));
+    	rogers_order_summary_page.selectProvince(TestDataHandler.tc43_44_digitalTVAccount.getAccountDetails().getAddress().get("Province"));
+    	rogers_order_summary_page.setPostalCode(TestDataHandler.tc43_44_digitalTVAccount.getAccountDetails().getAddress().get("PostalCode"));
     	rogers_order_summary_page.setPhone();
     	reporter.reportLogWithScreenshot("Entered the user contact information");    	
     	rogers_order_summary_page.selectDOBYear();

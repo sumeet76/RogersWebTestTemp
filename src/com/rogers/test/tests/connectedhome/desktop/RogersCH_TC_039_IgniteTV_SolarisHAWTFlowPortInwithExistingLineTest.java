@@ -58,8 +58,8 @@ public class RogersCH_TC_039_IgniteTV_SolarisHAWTFlowPortInwithExistingLineTest 
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
         rogers_home_page.clkAddressCheck();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1=TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
         rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
@@ -68,7 +68,7 @@ public class RogersCH_TC_039_IgniteTV_SolarisHAWTFlowPortInwithExistingLineTest 
 
         reporter.hardAssert(rogers_home_phone_selection_page.verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
-        rogers_home_phone_port_in_page.setHomePhoneNumber(TestDataHandler.solarisPortinFlows.getAccountDetails().getPhoneNumber());
+        rogers_home_phone_port_in_page.setHomePhoneNumber(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getPhoneNumber());
         rogers_home_phone_port_in_page.clkPhoneNumberEligibiltyCheck();
 
         rogers_home_phone_port_in_page.verifyPhoneNumberSuccess();

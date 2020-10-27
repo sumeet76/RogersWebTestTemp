@@ -54,8 +54,8 @@ public class RogersSC_TC_006_IginteTV_ExistingCustomerBuySolarisDoublePlayChange
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setUsernameIFrame(TestDataHandler.solarisInternetAccountWithUsageAndPackageUpgrade.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.solarisInternetAccountWithUsageAndPackageUpgrade.getPassword());
+		rogers_login_page.setUsernameIFrame(TestDataHandler.tc31_SolarisInternetAccountWithUsageAndPackageUpgrade.getUsername());
+		rogers_login_page.setPasswordIFrame(TestDataHandler.tc31_SolarisInternetAccountWithUsageAndPackageUpgrade.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
 		reporter.reportLogWithScreenshot("Skip popup");
@@ -70,8 +70,8 @@ public class RogersSC_TC_006_IginteTV_ExistingCustomerBuySolarisDoublePlayChange
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 		rogers_home_page.clkServiceability();
 		reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-		String  strAddressLine1=TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line1");
-		String  strAddressLine2=TestDataHandler.igniteTVAccount.getAccountDetails().getAddress().get("line2");
+		String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
+		String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
 		rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
 		rogers_home_page.clkIgniteAddressLookupSubmit();
 		//rogers_home_page.clkContinueIgniteMultipleAddressLookupSubmit();

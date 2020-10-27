@@ -40,15 +40,15 @@ public class RogersCH_TC_010_IginteTV_TVPackagesOntarioTest extends BaseTestClas
         rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        rogers_login_page.setUsernameIFrame(TestDataHandler.solarisTVAccountForUpgradeON.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.solarisTVAccountForUpgradeON.getPassword());
+        rogers_login_page.setUsernameIFrame(TestDataHandler.tc10_SolarisTVAccountForUpgradeON.getUsername());
+        rogers_login_page.setPasswordIFrame(TestDataHandler.tc10_SolarisTVAccountForUpgradeON.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         rogers_login_page.clkSignInIFrame();
     	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount(TestDataHandler.solarisTVAccountForUpgradeON.accountDetails.getBan());
+        rogers_account_overview_page.selectAccount(TestDataHandler.tc10_SolarisTVAccountForUpgradeON.accountDetails.getBan());
     	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");               
         rogers_solaris_tv_dashboard_page.clkTVBadge();
@@ -56,7 +56,7 @@ public class RogersCH_TC_010_IginteTV_TVPackagesOntarioTest extends BaseTestClas
         rogers_solaris_tv_dashboard_page.clkChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the TV packages page");
         reporter.softAssert(rogers_solaris_tv_dashboard_page.verifyIgniteTVStarterPackage(),"Ignite TV Starter Package is available for the Ontario footprint","Ignite TV Starter Package is not available for the Ontario footprint");
-        rogers_solaris_tv_dashboard_page.selectSolarisTVPackage(TestDataHandler.solarisTVAccountForUpgradeON.accountDetails.getUpgradePlanEn(),TestDataHandler.solarisTVAccountForUpgradeON.accountDetails.getUpgradePlanFr());
+        rogers_solaris_tv_dashboard_page.selectSolarisTVPackage(TestDataHandler.tc10_SolarisTVAccountForUpgradeON.accountDetails.getUpgradePlanEn(),TestDataHandler.tc10_SolarisTVAccountForUpgradeON.accountDetails.getUpgradePlanFr());
 
         rogers_solaris_tv_dashboard_page.clkPopupChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the personalize channel page");

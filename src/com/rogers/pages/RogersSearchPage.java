@@ -71,11 +71,9 @@ public class RogersSearchPage extends BasePageClass {
      */
 
     public boolean isFilterDisplayed(String strFilterName) {
-
         return reusableActions.isElementVisible(
                 By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'"
                         + strFilterName + "')]"));
-
     }
 
 
@@ -1004,5 +1002,10 @@ return blnFlag;
     public boolean isFilterChecked(String strFilter) {
         return reusableActions.getWhenReady(By.xpath("//ds-checkbox//input[@value='"+strFilter.trim()+"']"))
                 .getAttribute("aria-checked").equals("true");
+    }
+
+    public boolean validateGrandParentFiltersCount(int count) {
+        return driver.findElements(By.xpath("//div[@class='ds-filter__listSet']//ds-accordion-panel[contains(@class,'-main-level')]"))
+                .size()==count;
     }
 }

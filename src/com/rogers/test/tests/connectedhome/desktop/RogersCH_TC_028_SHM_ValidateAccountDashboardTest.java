@@ -32,8 +32,8 @@ public class RogersCH_TC_028_SHM_ValidateAccountDashboardTest extends BaseTestCl
             rogers_home_page.clkSignIn();
             rogers_login_page.switchToSignInIFrame();
             reporter.reportLogWithScreenshot("Launched the SignIn popup");
-            rogers_login_page.setUsernameIFrame(TestDataHandler.rogersSHM.getUsername());
-            rogers_login_page.setPasswordIFrame(TestDataHandler.rogersSHM.getPassword());
+            rogers_login_page.setUsernameIFrame(TestDataHandler.tc27_28_RogersSHM.getUsername());
+            rogers_login_page.setPasswordIFrame(TestDataHandler.tc27_28_RogersSHM.getPassword());
             reporter.reportLogWithScreenshot("Enter the account credentails");
             rogers_login_page.clkSignInIFrame();
             reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");

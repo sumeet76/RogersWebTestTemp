@@ -1,17 +1,12 @@
 package com.rogers.test.tests.solarisconsumer;
-import java.io.IOException;
-import java.lang.reflect.Method;
-
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 /**
  * This class contains the test method to test the Manage channels packs functionality in TV buy flow for Rogers.com   
@@ -38,14 +33,14 @@ public class RogersSC_TC_009_02_ExistingSolarisCustomer_ManageChannelsAndThemePa
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setUsernameIFrame(TestDataHandler.solarisChangeTVManageChannels.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.solarisChangeTVManageChannels.getPassword());
+		rogers_login_page.setUsernameIFrame(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.getUsername());
+		rogers_login_page.setPasswordIFrame(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
 		reporter.reportLogWithScreenshot("Skip popup");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
-		rogers_account_overview_page.selectAccount((TestDataHandler.solarisChangeTVManageChannels.accountDetails.getBan()));
+		rogers_account_overview_page.selectAccount((TestDataHandler.tc06_2_SolarisChangeTVManageChannels.accountDetails.getBan()));
 		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		rogers_solaris_tv_dashboard_page.clkTVBadge();

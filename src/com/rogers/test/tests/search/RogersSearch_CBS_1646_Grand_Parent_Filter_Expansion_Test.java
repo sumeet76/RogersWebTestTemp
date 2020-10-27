@@ -2,49 +2,38 @@ package com.rogers.test.tests.search;
 
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
-import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import utils.CSVReader;
-public class RogersSearch_CBS_1646_Grand_Parent_Filter_Expansion_Test extends BaseTestClass {
 
+public class RogersSearch_CBS_1646_Grand_Parent_Filter_Expansion_Test extends BaseTestClass {
 
     @DataProvider(name = "FilterData")
     public Object[] testData() throws IOException {
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
         Object[] csvRowStrArray = new Object[csvData.size()];
-
         for (int i = 0; i < csvData.size(); i++) {
             csvRowStrArray[i] = csvData.get(i);
         }
-
         return csvRowStrArray;
-
-
     }
 
     @Test(dataProvider = "FilterData")
-
-    public void validateResultsForParentFilter(String[] csvRowStrArray) {
-
+    public void validateResultsGrandParentFilter(String[] csvRowStrArray) {
         getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0]);
-
-        String[] strFilters = Arrays.copyOfRange(csvRowStrArray, 1, csvRowStrArray.length);
-
-        reporter.softAssert(rogers_search_page.clkGrandParentFilterAndVerifyResultsCategoryTagRelevancy(strFilters), "Result with " + strFilters + " tag is Displayed", "Result with " + strFilters + " tag is NOT Displayed");
-        reporter.reportLogWithScreenshot("Search QA Page - " + strFilters);
-
-        System.out.println("end of set");
-
+        for(int i=1;i< csvRowStrArray.length;i++) {
+            rogers_search_page.clkGrandParentFilter(csvRowStrArray[i]);
+            reporter.reportLogWithScreenshot(csvRowStrArray[i]+" filter selected");
+            reporter.softAssert(rogers_search_page.validateResultsTag(csvRowStrArray[i]),
+                    "Results have tag " +csvRowStrArray[i], "Results do Not have tag " +csvRowStrArray[i]);
+        }
     }
-
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -58,7 +47,4 @@ public class RogersSearch_CBS_1646_Grand_Parent_Filter_Expansion_Test extends Ba
         closeSession();
     }
 
-
 }
-
-

@@ -1,18 +1,13 @@
 package com.rogers.test.tests.solarisconsumer;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;    
-import org.testng.annotations.Optional;                     
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 
 
@@ -41,8 +36,8 @@ public class RogersSC_TC_002_IgniteInternet_ValidateInternetDashboardUsageAndPac
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setUsernameIFrame(TestDataHandler.solarisInternetAccountWithUsageAndPackageUpgrade.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.solarisInternetAccountWithUsageAndPackageUpgrade.getPassword());
+		rogers_login_page.setUsernameIFrame(TestDataHandler.tc31_SolarisInternetAccountWithUsageAndPackageUpgrade.getUsername());
+		rogers_login_page.setPasswordIFrame(TestDataHandler.tc31_SolarisInternetAccountWithUsageAndPackageUpgrade.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
 		reporter.reportLogWithScreenshot("Skip popup");
@@ -69,7 +64,7 @@ public class RogersSC_TC_002_IgniteInternet_ValidateInternetDashboardUsageAndPac
 		reporter.reportLogWithScreenshot("Launched the Interent dashboard");
 		rogers_internet_dashboard_page.clkSolChangeInternetPackage();
 		reporter.reportLogWithScreenshot("Launched the Interent packages page");
-		rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.solarisInternetAccount.getAccountDetails().getUpgradePlanEn(),TestDataHandler.solarisInternetAccount.getAccountDetails().getUpgradePlanFr());
+		rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getAccountDetails().getUpgradePlanFr());
 		reporter.reportLogWithScreenshot("Launched the agreement page"); 
 		rogers_order_review_page.verifyAgreementPage();
 		reporter.reportLogWithScreenshot("Launched the order review page");

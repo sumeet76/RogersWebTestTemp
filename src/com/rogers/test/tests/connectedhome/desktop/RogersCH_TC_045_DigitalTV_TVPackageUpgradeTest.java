@@ -34,15 +34,15 @@ public class RogersCH_TC_045_DigitalTV_TVPackageUpgradeTest extends BaseTestClas
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setUsernameIFrame(TestDataHandler.digitalTVAccountUpgradePackage.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.digitalTVAccountUpgradePackage.getPassword());
+		rogers_login_page.setUsernameIFrame(TestDataHandler.tc45_digitalTVAccountUpgradePackage.getUsername());
+		rogers_login_page.setPasswordIFrame(TestDataHandler.tc45_digitalTVAccountUpgradePackage.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
 		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    reporter.reportLogWithScreenshot("Skip popup");
 	    rogers_login_page.clkSkipIFrame();
 	    rogers_login_page.switchOutOfSignInIFrame();
-	    rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVAccountUpgradePackage.accountDetails.getBan());
+	    rogers_account_overview_page.selectAccount(TestDataHandler.tc45_digitalTVAccountUpgradePackage.accountDetails.getBan());
 		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");		
 		rogers_account_overview_page.clkTVBadge();
@@ -51,7 +51,7 @@ public class RogersCH_TC_045_DigitalTV_TVPackageUpgradeTest extends BaseTestClas
 		if (strLanguage.equals("en"))
 		{
 		reporter.reportLogWithScreenshot("Launched the TV package Page");
-		rogers_digital_tv_package_selection_page.selectPackageUpgarde(TestDataHandler.digitalTVAccountUpgradePackage.getAccountDetails().getUpgradePlanEn(),TestDataHandler.digitalTVAccount.getAccountDetails().getUpgradePlanFr());
+		rogers_digital_tv_package_selection_page.selectPackageUpgarde(TestDataHandler.tc45_digitalTVAccountUpgradePackage.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc45_digitalTVAccountUpgradePackage.getAccountDetails().getUpgradePlanFr());
 		rogers_digital_tv_package_selection_page.clkCheckout();
 		reporter.reportLogWithScreenshot("Launched the TV checkout Page");
 		rogers_order_confirmation_page.clkUpgradeCartCheckOutButton();

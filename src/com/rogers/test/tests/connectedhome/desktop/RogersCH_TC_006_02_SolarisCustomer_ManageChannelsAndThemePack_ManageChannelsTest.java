@@ -34,22 +34,22 @@ public class RogersCH_TC_006_02_SolarisCustomer_ManageChannelsAndThemePack_Manag
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setUsernameIFrame(TestDataHandler.solarisChangeTVManageChannels.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.solarisChangeTVManageChannels.getPassword());
+		rogers_login_page.setUsernameIFrame(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.getUsername());
+		rogers_login_page.setPasswordIFrame(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
 		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    reporter.reportLogWithScreenshot("Skip popup");
 	    rogers_login_page.clkSkipIFrame();
 	    rogers_login_page.switchOutOfSignInIFrame();
-	    rogers_account_overview_page.selectAccount(TestDataHandler.solarisChangeTVManageChannels.accountDetails.getBan());
+	    rogers_account_overview_page.selectAccount(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.accountDetails.getBan());
 		//reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
 		rogers_solaris_tv_dashboard_page.clkTVBadge();
 		reporter.reportLogWithScreenshot("Launched the TV dash board");
 		rogers_solaris_tv_dashboard_page.clkManageChannelsAndThemePacks();
 		
-		rogers_solaris_tv_channels_and_themepacks_page.searchChannel(TestDataHandler.igniteTVAccount.accountDetails.getSwapInChannelOne());
+		rogers_solaris_tv_channels_and_themepacks_page.searchChannel(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getSwapInChannelOne());
 		reporter.reportLogWithScreenshot("Clicked on remove from your changes");
 		rogers_solaris_tv_channels_and_themepacks_page.addChannel();
 		reporter.reportLogWithScreenshot("Channel again added");

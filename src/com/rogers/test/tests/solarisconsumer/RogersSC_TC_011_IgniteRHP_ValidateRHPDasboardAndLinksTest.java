@@ -35,14 +35,14 @@ public class RogersSC_TC_011_IgniteRHP_ValidateRHPDasboardAndLinksTest extends B
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        rogers_login_page.setUsernameIFrame(TestDataHandler.igniteRHP.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.igniteRHP.getPassword());
+        rogers_login_page.setUsernameIFrame(TestDataHandler.tc42_igniteRHP.getUsername());
+        rogers_login_page.setPasswordIFrame(TestDataHandler.tc42_igniteRHP.getPassword());
  		reporter.reportLogWithScreenshot("Enter the account credentails");
  		rogers_login_page.clkSignInIFrame();
  		reporter.reportLogWithScreenshot("Skip popup");
  		rogers_login_page.clkSkipIFrame();
  		rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount(TestDataHandler.igniteRHP.accountDetails.getBan()); 
+        rogers_account_overview_page.selectAccount(TestDataHandler.tc42_igniteRHP.accountDetails.getBan());
 		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_solaris_rhp_dashboard_validation_page.clkSolarisRHPBadge(strBrowser);
