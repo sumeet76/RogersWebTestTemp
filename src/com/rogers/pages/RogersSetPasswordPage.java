@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -22,28 +23,30 @@ public class RogersSetPasswordPage extends BasePageClass {
 	@FindBy (xpath = "//ins[@translate='global.cta.continue']")
 	WebElement btnContinue;
 	
-	@FindBy (xpath = "//input[@name='password']")
+	@FindBy (xpath = "//input[@name='password' or @id='password']")
 	WebElement inputPassword;
 	
-	@FindBy (xpath = "//input[@name='confirmPassword']")
+	@FindBy (xpath = "//input[@name='confirmPassword' or @id='cpassword']")
 	WebElement inputConfirmPassword;
 	
 	@FindBy (xpath = "//div[@class='ute-elr-password']")
 	WebElement divSetPassword;
+		
 	
-	@FindBy (xpath = "//button[text()='Set password' or text()='Enregistrer un mot de passe']")
+	@FindBy (xpath = "//button[text()='Set password' or text()='Enregistrer un mot de passe' or @title='Submit password']")
 	WebElement btnSetPassword;
+
 	
-	@FindBy (xpath = "//div[@translate='ute.easy.login.registration.step_complete_header']")
+	@FindBy (xpath = "//div[@translate='ute.easy.login.registration.step_complete_header' or text()='Registration complete']")
 	WebElement msgRegistrationComplete;
 	
 	@FindBy (xpath = "//button[@translate='ute.easy.login.registration.complete.goToOverview']")
 	WebElement btnGotoOverview;
 	
-	@FindBy(xpath = "//button[text()='Sign In' or text()='Ouvrez une session']")
+	@FindBy(xpath = "//button[contains(text(),'Sign In') or contains(text(),'Sign in') or text()='Ouvrez une session']")
 	WebElement btnSignIn;
 	
-	@FindBy (xpath = "//img[@alt='Set password' or @alt='Enregister le mot de passe']")
+	@FindBy (xpath = "//img[@alt='Set password' or @alt='Enregister le mot de passe' or @alt='Set a password']")
 	WebElement btnSetPasswordInEmail;
 	
 	/**
@@ -105,9 +108,11 @@ public class RogersSetPasswordPage extends BasePageClass {
 	 */
 	public void clkBtnSetPassword() {
 		//click on any blank space
-		reusableActions.clickWhenReady(divSetPassword, 10);
+		//reusableActions.clickWhenReady(divSetPassword, 10);
 		reusableActions.clickWhenReady(btnSetPassword, 60);
 	} 
+	
+	
 	
 	/**
 	 * Check if the registration completed message is displayed.
