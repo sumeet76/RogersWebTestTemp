@@ -34,8 +34,8 @@ public class RogersCH_TC_006_01_SolarisCustomer_ManageChannelsAndThemePack_Manag
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setUsernameIFrame(TestDataHandler.solarisChangeTVManageThemePacks.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.solarisChangeTVManageThemePacks.getPassword());
+		rogers_login_page.setUsernameIFrame(TestDataHandler.tc06_1_SolarisChangeTVManageThemePacks.getUsername());
+		rogers_login_page.setPasswordIFrame(TestDataHandler.tc06_1_SolarisChangeTVManageThemePacks.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
 		reporter.reportLogWithScreenshot("Skip popup");
@@ -44,7 +44,7 @@ public class RogersCH_TC_006_01_SolarisCustomer_ManageChannelsAndThemePack_Manag
 	    reporter.reportLogWithScreenshot("Skip popup");
 	    rogers_login_page.clkSkipIFrame();
 	    rogers_login_page.switchOutOfSignInIFrame();
-	    rogers_account_overview_page.selectAccount(TestDataHandler.solarisChangeTVManageThemePacks.accountDetails.getBan());
+	    rogers_account_overview_page.selectAccount(TestDataHandler.tc06_1_SolarisChangeTVManageThemePacks.accountDetails.getBan());
 		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
 		rogers_solaris_tv_dashboard_page.clkTVBadge();

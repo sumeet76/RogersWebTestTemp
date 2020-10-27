@@ -40,15 +40,15 @@ public class Mobile_RogersCH_TC_005_IginteTV_TVPackageUpgradeTest extends BaseTe
     	rogers_home_page.clkSignInMobile();    	
         rogers_login_page.switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        rogers_login_page.setUsernameIFrame(TestDataHandler.solarisTVAccountForUpgrade.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.solarisTVAccountForUpgrade.getPassword());
+        rogers_login_page.setUsernameIFrame(TestDataHandler.tc09_SolarisTVAccountForUpgrade.getUsername());
+        rogers_login_page.setPasswordIFrame(TestDataHandler.tc09_SolarisTVAccountForUpgrade.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         rogers_login_page.clkSignInIFrame();
     	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount(TestDataHandler.solarisTVAccountForUpgrade.accountDetails.getBan());
+        rogers_account_overview_page.selectAccount(TestDataHandler.tc09_SolarisTVAccountForUpgrade.accountDetails.getBan());
     	reporter.hardAssert(rogers_account_overview_page.verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         
@@ -56,7 +56,7 @@ public class Mobile_RogersCH_TC_005_IginteTV_TVPackageUpgradeTest extends BaseTe
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         rogers_solaris_tv_dashboard_page.clkChangeTVPackageMobile();
         reporter.reportLogWithScreenshot("Launched the TV packages page");
-        rogers_solaris_tv_dashboard_page.selectSolarisTVPackage(TestDataHandler.solarisTVAccountForUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.solarisTVAccountForUpgrade.accountDetails.getUpgradePlanFr());
+        rogers_solaris_tv_dashboard_page.selectSolarisTVPackage(TestDataHandler.tc09_SolarisTVAccountForUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.tc09_SolarisTVAccountForUpgrade.accountDetails.getUpgradePlanFr());
         rogers_solaris_tv_dashboard_page.clkPopupChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the personalize channel page");
         rogers_solaris_tv_channels_and_themepacks_page.clkExchangeLater();         

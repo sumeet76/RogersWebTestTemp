@@ -34,9 +34,9 @@ public class RogersCH_TC_027_SHM_ServicabilityCheckTest extends BaseTestClass {
     	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Home Monitering");
     	rogers_home_page.clkHomeMonitering();
     	reporter.reportLogWithScreenshot("Launched the Home Monitering packages page");
-    	rogers_buy_page.selectHomeMoniteringPackage(TestDataHandler.rogersSHM.getAccountDetails().getRhmPackageEn(),TestDataHandler.rogersSHM.getAccountDetails().getRhmPackageFr());
-        String  strAddressLine1=TestDataHandler.rogersSHM.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.rogersSHM.getAccountDetails().getAddress().get("line2");
+    	rogers_buy_page.selectHomeMoniteringPackage(TestDataHandler.tc27_28_RogersSHM.getAccountDetails().getRhmPackageEn(),TestDataHandler.tc27_28_RogersSHM.getAccountDetails().getRhmPackageFr());
+        String  strAddressLine1=TestDataHandler.tc27_28_RogersSHM.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc27_28_RogersSHM.getAccountDetails().getAddress().get("line2");
         rogers_buy_page.setAddressLookup(strAddressLine1+", "+strAddressLine2);
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
     	rogers_buy_page.clkAddressLookupSubmit(); 

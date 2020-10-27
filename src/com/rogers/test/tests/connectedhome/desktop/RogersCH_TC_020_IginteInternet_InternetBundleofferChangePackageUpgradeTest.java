@@ -37,15 +37,15 @@ public class RogersCH_TC_020_IginteInternet_InternetBundleofferChangePackageUpgr
         rogers_home_page.clkSignIn();
         rogers_login_page.switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        rogers_login_page.setUsernameIFrame(TestDataHandler.solarisInternetAccountForUpgrade.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.solarisInternetAccountForUpgrade.getPassword());
+        rogers_login_page.setUsernameIFrame(TestDataHandler.tc20_SolarisInternetAccountForUpgrade.getUsername());
+        rogers_login_page.setPasswordIFrame(TestDataHandler.tc20_SolarisInternetAccountForUpgrade.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         rogers_login_page.clkSignInIFrame();
     	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         rogers_login_page.clkSkipIFrame();
         rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount(TestDataHandler.solarisInternetAccountForUpgrade.accountDetails.getBan());
+        rogers_account_overview_page.selectAccount(TestDataHandler.tc20_SolarisInternetAccountForUpgrade.accountDetails.getBan());
     	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_home_page.clkExistingCustomerShop();
@@ -55,7 +55,7 @@ public class RogersCH_TC_020_IginteInternet_InternetBundleofferChangePackageUpgr
         reporter.reportLogWithScreenshot("Address confirmation popup has lanched to select Ignite Internet speed button"); 
         rogers_buy_page.clkIgniteInternetSpeed();
         reporter.reportLogWithScreenshot("Launched the TV packge Page"); 
-        rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.solarisInternetAccountForUpgrade.getAccountDetails().getUpgradePlanEn(),TestDataHandler.solarisInternetAccountForUpgrade.getAccountDetails().getUpgradePlanFr());
+        rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.tc20_SolarisInternetAccountForUpgrade.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc20_SolarisInternetAccountForUpgrade.getAccountDetails().getUpgradePlanFr());
         rogers_internet_dashboard_page.clkInternetChangeOK();
         reporter.hardAssert(rogers_order_review_page.verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");

@@ -17,15 +17,15 @@ public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends B
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-   		rogers_login_page.setUsernameIFrame(TestDataHandler.solarisPortinFlows.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.solarisPortinFlows.getPassword());
+   		rogers_login_page.setUsernameIFrame(TestDataHandler.tc39_40_SolarisPortinFlows.getUsername());
+		rogers_login_page.setPasswordIFrame(TestDataHandler.tc39_40_SolarisPortinFlows.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
 		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    reporter.reportLogWithScreenshot("Skip popup");
 	    rogers_login_page.clkSkipIFrame();
 	    rogers_login_page.switchOutOfSignInIFrame();
-	    rogers_account_overview_page.selectAccount(TestDataHandler.solarisPortinFlows.accountDetails.getBan());
+	    rogers_account_overview_page.selectAccount(TestDataHandler.tc39_40_SolarisPortinFlows.accountDetails.getBan());
 		//reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_home_page.clkShop(); 
@@ -37,8 +37,8 @@ public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends B
 	    	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");    	
 	        rogers_home_page.clkUseThisAddress();        
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-    	String  strAddressLine1=TestDataHandler.solarisPortinFlows.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.solarisPortinFlows.getAccountDetails().getAddress().get("line2");
+    	String  strAddressLine1=TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getAddress().get("line2");
       rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
@@ -47,7 +47,7 @@ public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends B
 
         reporter.hardAssert(rogers_home_phone_selection_page.verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        rogers_home_phone_port_in_page.setHomePhoneNumber(TestDataHandler.solarisPortinFlows.getAccountDetails().getPhoneNumber());
+        rogers_home_phone_port_in_page.setHomePhoneNumber(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getPhoneNumber());
         rogers_home_phone_port_in_page.clkPhoneNumberEligibiltyCheck();
         
         reporter.hardAssert(rogers_home_phone_port_in_page.verifyPhoneNumberSuccess(),"Port-in Number validation success","Port-in Number validation Failed");
@@ -73,9 +73,9 @@ public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends B
         
         
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
-        rogers_igniteTV_credit_check_page.selectDOBYearExistingCustomerMigration(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getYear());
-        rogers_igniteTV_credit_check_page.selectDOBMonthExistingCustomerMigration(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getMonth());
-        rogers_igniteTV_credit_check_page.selectDOBDayExistingCustomerMigration(TestDataHandler.digitalTVUpgradeToIgnite.getAccountDetails().getDate());
+        rogers_igniteTV_credit_check_page.selectDOBYearExistingCustomerMigration(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getYear());
+        rogers_igniteTV_credit_check_page.selectDOBMonthExistingCustomerMigration(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getMonth());
+        rogers_igniteTV_credit_check_page.selectDOBDayExistingCustomerMigration(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getDate());
         reporter.reportLogWithScreenshot("Entered the DOB details");
         rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
         

@@ -54,15 +54,15 @@ public class RogersCH_TC_035_IginteTV_CRMaddressMismatchWithSGI_ValidateServicea
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setUsernameIFrame(TestDataHandler.digitalTVUpgradeToIgnite.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.digitalTVUpgradeToIgnite.getPassword());
+		rogers_login_page.setUsernameIFrame(TestDataHandler.tc35_CRMaddressMismatchWithSGI.getUsername());
+		rogers_login_page.setPasswordIFrame(TestDataHandler.tc35_CRMaddressMismatchWithSGI.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
 		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 		reporter.reportLogWithScreenshot("Skip popup");
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
-		rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVUpgradeToIgnite.accountDetails.getBan());
+		rogers_account_overview_page.selectAccount(TestDataHandler.tc35_CRMaddressMismatchWithSGI.accountDetails.getBan());
 		//reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		rogers_home_page.clkExistingCustomerShop();

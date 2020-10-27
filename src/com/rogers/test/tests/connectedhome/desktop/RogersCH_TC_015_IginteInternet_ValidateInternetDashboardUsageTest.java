@@ -37,15 +37,15 @@ public class RogersCH_TC_015_IginteInternet_ValidateInternetDashboardUsageTest e
                     rogers_home_page.clkSignIn();
                     rogers_login_page.switchToSignInIFrame();
                     reporter.reportLogWithScreenshot("Launched the SignIn popup");
-                    rogers_login_page.setUsernameIFrame(TestDataHandler.solarisInternetAccountWithUsage.getUsername());
-                    rogers_login_page.setPasswordIFrame(TestDataHandler.solarisInternetAccountWithUsage.getPassword());
+                    rogers_login_page.setUsernameIFrame(TestDataHandler.tc15_SolarisInternetAccountWithUsage.getUsername());
+                    rogers_login_page.setPasswordIFrame(TestDataHandler.tc15_SolarisInternetAccountWithUsage.getPassword());
                     reporter.reportLogWithScreenshot("Enter the account credentails");
                     rogers_login_page.clkSignInIFrame();
                 	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
                     reporter.reportLogWithScreenshot("Skip popup");
                     rogers_login_page.clkSkipIFrame();
                     rogers_login_page.switchOutOfSignInIFrame();
-                    rogers_account_overview_page.selectAccount(TestDataHandler.solarisInternetAccountWithUsage.accountDetails.getBan());
+                    rogers_account_overview_page.selectAccount(TestDataHandler.tc15_SolarisInternetAccountWithUsage.accountDetails.getBan());
                 	//reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
                     reporter.reportLogWithScreenshot("Launched the Account Page");
                     rogers_internet_dashboard_page.clkSolarisInternetBadge();

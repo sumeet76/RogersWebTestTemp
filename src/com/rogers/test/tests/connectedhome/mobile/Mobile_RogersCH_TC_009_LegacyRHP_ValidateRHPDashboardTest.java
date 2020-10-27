@@ -32,8 +32,8 @@ public class Mobile_RogersCH_TC_009_LegacyRHP_ValidateRHPDashboardTest extends B
     	rogers_home_page.clkSignInMobile();    	
         rogers_login_page.switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setUsernameIFrame(TestDataHandler.legacyRHP.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.legacyRHP.getPassword());
+		rogers_login_page.setUsernameIFrame(TestDataHandler.tc48_legacyRHP.getUsername());
+		rogers_login_page.setPasswordIFrame(TestDataHandler.tc48_legacyRHP.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         rogers_login_page.clkSignInIFrame();
     	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");

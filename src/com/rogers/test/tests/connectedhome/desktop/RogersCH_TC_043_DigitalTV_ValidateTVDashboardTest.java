@@ -34,8 +34,8 @@ public class RogersCH_TC_043_DigitalTV_ValidateTVDashboardTest extends BaseTestC
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setUsernameIFrame(TestDataHandler.digitalTVAccount.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.digitalTVAccount.getPassword());
+		rogers_login_page.setUsernameIFrame(TestDataHandler.tc43_44_digitalTVAccount.getUsername());
+		rogers_login_page.setPasswordIFrame(TestDataHandler.tc43_44_digitalTVAccount.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		rogers_login_page.clkSignInIFrame();
 		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
@@ -43,7 +43,7 @@ public class RogersCH_TC_043_DigitalTV_ValidateTVDashboardTest extends BaseTestC
 	    rogers_login_page.clkSkipIFrame();
 	    rogers_login_page.switchOutOfSignInIFrame();
 		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-	    rogers_account_overview_page.selectAccount(TestDataHandler.digitalTVAccount.accountDetails.getBan());
+	    rogers_account_overview_page.selectAccount(TestDataHandler.tc43_44_digitalTVAccount.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		rogers_account_overview_page.clkTVBadge();
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");

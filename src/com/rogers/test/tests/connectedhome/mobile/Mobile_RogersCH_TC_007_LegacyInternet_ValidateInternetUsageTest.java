@@ -32,8 +32,8 @@ public class Mobile_RogersCH_TC_007_LegacyInternet_ValidateInternetUsageTest ext
     	rogers_home_page.clkSignInMobile();    	
         rogers_login_page.switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setUsernameIFrame(TestDataHandler.legacyInternetAccount.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.legacyInternetAccount.getPassword());
+		rogers_login_page.setUsernameIFrame(TestDataHandler.tc46_legacyInternetAccount.getUsername());
+		rogers_login_page.setPasswordIFrame(TestDataHandler.tc46_legacyInternetAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         rogers_login_page.clkSignInIFrame();
     	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
