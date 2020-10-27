@@ -38,13 +38,10 @@ public class RogersSearch_CBS_1643_Relevant_Results_Rendering_Test extends BaseT
 
         getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0]);
 
+        reporter.reportLogWithScreenshot("Search Results page");
         String[] strFilters = Arrays.copyOfRange(csvRowStrArray, 1, csvRowStrArray.length);
-        reporter.softAssert(rogers_search_page.verifyResultsCategoryTagRelevancy(strFilters), "Result with " + strFilters + " tag is Displayed", "Result with " + strFilters + " tag is NOT Displayed");
-        reporter.reportLogWithScreenshot("Search QA Page - " + strFilters);
-
-
-        System.out.println("end of set");
-
+        reporter.softAssert(rogers_search_page.verifyResultsCategoryTagRelevancy(strFilters),
+                "Relevant Results Displayed", "Relevant Results Not Displayed");
     }
 
 
