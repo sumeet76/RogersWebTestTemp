@@ -201,8 +201,7 @@ public class TestDataHandler {
 		
     	//Legacy Internet test data
 		tc46_legacyInternetAccount = YamlHandler.getCableAccountData("TC46_LegacyInternetAccount");
-    	legacyInternetAccountUpgrade = YamlHandler.getCableAccountData("LegacyInternetAccountUpgrade");
-    	
+
     	//RHP test data
 		tc48_legacyRHP = YamlHandler.getCableAccountData("TC48_LegacyRHP");
     	tc42_igniteRHP = YamlHandler.getCableAccountData("TC42_igniteRHP");
