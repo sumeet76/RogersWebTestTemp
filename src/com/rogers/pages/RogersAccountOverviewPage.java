@@ -1678,6 +1678,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		 */
 		public boolean verifyIfSubscriptionSuccessfulOverLayDisplayed() {
 			return reusableActions.isElementVisible(By.xpath("//*[contains(text(),'Subscription successful') or contains(text(),'Abonnement réussi')]"));
+			
 		} 
 		
 		/**
@@ -1685,7 +1686,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		 * @author Mirza.Kamran
 		 */
 		public void clkOKButtonOnSubscriptionSuccessOverlay() {
+			reusableActions.staticWait(3000);
 			reusableActions.getWhenReady(btnOK).click();
+			reusableActions.staticWait(3000);
 		}
 
 		/**

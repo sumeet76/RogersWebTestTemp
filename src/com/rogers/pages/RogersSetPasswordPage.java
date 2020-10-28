@@ -33,20 +33,20 @@ public class RogersSetPasswordPage extends BasePageClass {
 	WebElement divSetPassword;
 		
 	
-	@FindBy (xpath = "//button[text()='Set password' or text()='Enregistrer un mot de passe' or @title='Submit password']")
+	@FindBy (xpath = "//button[text()='Set password' or text()='Enregistrer un mot de passe' or @title='Submit password' or @title='Soumettre le mot de passe']")
 	WebElement btnSetPassword;
 
 	
-	@FindBy (xpath = "//div[@translate='ute.easy.login.registration.step_complete_header' or text()='Registration complete']")
+	@FindBy (xpath = "//div[@translate='ute.easy.login.registration.step_complete_header' or text()='Registration complete' or text()='Inscription terminée']")
 	WebElement msgRegistrationComplete;
 	
 	@FindBy (xpath = "//button[@translate='ute.easy.login.registration.complete.goToOverview']")
 	WebElement btnGotoOverview;
 	
-	@FindBy(xpath = "//button[contains(text(),'Sign In') or contains(text(),'Sign in') or text()='Ouvrez une session']")
+	@FindBy(xpath = "//button[contains(text(),'Sign In') or contains(text(),'Sign in') or text()='Ouvrez une session' or contains(text(),'Ouvrir une session')]")
 	WebElement btnSignIn;
 	
-	@FindBy (xpath = "//img[@alt='Set password' or @alt='Enregister le mot de passe' or @alt='Set a password']")
+	@FindBy (xpath = "//img[@alt='Set password' or @alt='Enregister le mot de passe' or @alt='Configurer le mot de passe' or @alt='Set a password']")
 	WebElement btnSetPasswordInEmail;
 	
 	/**

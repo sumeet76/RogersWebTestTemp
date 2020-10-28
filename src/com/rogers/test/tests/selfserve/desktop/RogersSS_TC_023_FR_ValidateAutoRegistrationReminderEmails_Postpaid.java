@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class RogersSS_TC_022_EN_ValidateAutoRegistrationReminderEmails_Postpaid extends BaseTestClass {
+public class RogersSS_TC_023_FR_ValidateAutoRegistrationReminderEmails_Postpaid extends BaseTestClass {
 	
 
 	@BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
@@ -33,9 +33,9 @@ public class RogersSS_TC_022_EN_ValidateAutoRegistrationReminderEmails_Postpaid 
 	public void validateUserChangeContactInformationAndBillingAddress() {
 		String strURI = "https://qa05-mservices.rogers.com/v1/user/registration/mwautocreate";
 		reporter.reportLog("URI:"+strURI);
-		String strEmail = "AutoNDR1020SS51@yahoo.com";
+		String strEmail = "AutoNDR1020SS45@yahoo.com";
 		String strPassword = "DigiAuto@123";
-		String strBan ="938055696";
+		String strBan ="938055704";
 		//================= Email reminder code
 		this.autoregisterUser(strURI,strEmail,strBan);
 		this.sendreminderEmail(strURI);    
@@ -82,7 +82,7 @@ public class RogersSS_TC_022_EN_ValidateAutoRegistrationReminderEmails_Postpaid 
 			requestParams.put("APIKey", "33E65811AA93C04251E841EDE37C9DE9D93FB40336092A7A4B209463A2362E27"); 
 			requestParams.put("accountNumber", strBan);		 
 			requestParams.put("email", strEmail);
-			requestParams.put("language", "en");
+			requestParams.put("language", "fr");
 			requestParams.put("realm",  "ROGERS");
 			requestParams.put("consolidatedAccNumber", "");
 			requestParams.put("billType", "1");
@@ -127,7 +127,7 @@ public class RogersSS_TC_022_EN_ValidateAutoRegistrationReminderEmails_Postpaid 
 			// Add a header stating the Request body is a JSON
 			request.header("Content-Type", "application/json")
 		      .and().header("realm","ROGERS")
-		      .and().header("Accept-Language","EN");		
+		      .and().header("Accept-Language","FR");		
 			 
 			// Add the Json to the body of the request
 			request.body(requestParams.toString());
