@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class RogersSS_TC_11_TC04_ValidateUserTryToLinkAccountToRegisteredProfile extends BaseTestClass {
+public class RogersSS_TC_011_TC04_ValidateUserTryToLinkAccountToRegisteredProfile extends BaseTestClass {
 
 	@Test(groups = {"RegressionSS","ProfileAndSettingsSS"})
 	public void validateUserLinkAccountToRegisteredProfile() {

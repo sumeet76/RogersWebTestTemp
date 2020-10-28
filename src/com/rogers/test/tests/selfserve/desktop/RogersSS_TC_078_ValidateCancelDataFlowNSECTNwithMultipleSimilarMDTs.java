@@ -17,7 +17,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 
 
-public class RogersSS_TC78_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs extends BaseTestClass {	
+public class RogersSS_TC_078_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs extends BaseTestClass {	
     
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {

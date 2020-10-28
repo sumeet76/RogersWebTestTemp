@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class RogersSS_TC22_EN_ValidateAutoRegistrationReminderEmails_Postpaid extends BaseTestClass {
+public class RogersSS_TC_022_EN_ValidateAutoRegistrationReminderEmails_Postpaid extends BaseTestClass {
 	
 
 	@BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
@@ -31,11 +31,11 @@ public class RogersSS_TC22_EN_ValidateAutoRegistrationReminderEmails_Postpaid ex
 	
 	@Test(groups = {"Autoregister"})
 	public void validateUserChangeContactInformationAndBillingAddress() {
-		String strURI = "https://qa02-mservices.rogers.com/v1/user/registration/mwautocreate";
+		String strURI = "https://qa05-mservices.rogers.com/v1/user/registration/mwautocreate";
 		reporter.reportLog("URI:"+strURI);
-		String strEmail = "Auto1020SS75@yahoo.com";
+		String strEmail = "AutoNDR1020SS49@yahoo.com";
 		String strPassword = "DigiAuto@123";
-		String strBan ="938055639";
+		String strBan ="938055688";
 		//================= Email reminder code
 		this.autoregisterUser(strURI,strEmail,strBan);
 		this.sendreminderEmail(strURI);    
@@ -108,7 +108,7 @@ public class RogersSS_TC22_EN_ValidateAutoRegistrationReminderEmails_Postpaid ex
 		}
 		
 		public void sendreminderEmail(String strURI) {
-			String strURIEmailer ="https://qa02-mservices.rogers.com/v1/user/registration/retry";
+			String strURIEmailer ="https://qa05-mservices.rogers.com/v1/user/registration/retry";
 			reporter.reportLog("URI emailer:"+strURIEmailer);
 			RestAssured.baseURI = strURIEmailer;
 			RequestSpecification request = RestAssured.given();
