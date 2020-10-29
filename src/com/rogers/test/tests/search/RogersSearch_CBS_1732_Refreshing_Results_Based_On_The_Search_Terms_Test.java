@@ -67,14 +67,30 @@ public class RogersSearch_CBS_1732_Refreshing_Results_Based_On_The_Search_Terms_
                 strCurLeftPaneInnerhtml = rogers_search_page.getLeftSectionInnerhtml();
                 strCurSupportInnerHtml = rogers_search_page.getSupportInnerhtml();
                 if(j!=0){
+                    boolean leftPaneRefreshStatus = true;
+                    boolean supportPaneRefreshStatus = true;
                     if(blnPrevLeftPane) {
-                        reporter.softAssert(!(strCurLeftPaneInnerhtml.equals(strPrevLeftPaneInnerhtml)),
-                                "Left pane results refreshed","Left pane results not refreshed");
+                        if(strCurLeftPaneInnerhtml.equals(strPrevLeftPaneInnerhtml)){
+                            leftPaneRefreshStatus=false;
+                        }
                     }
                     if(blnPrevSupport) {
-                        reporter.softAssert(!(strCurSupportInnerHtml.equals(strPrevSupportInnerHtml)),
-                                "Support links refreshed","Support links not refreshed");
+                        if(strCurSupportInnerHtml.equals(strPrevSupportInnerHtml)){
+                            supportPaneRefreshStatus=false;
+                        }
                     }
+                    String refreshedPaneStatus="";
+                    if (leftPaneRefreshStatus==true&&supportPaneRefreshStatus==true)
+                        refreshedPaneStatus= "Results on both the panes have refreshed";
+                    else if(leftPaneRefreshStatus!=true&&supportPaneRefreshStatus!=true)
+                        refreshedPaneStatus= "Results on neither of the panes have refreshed";
+                    else if(leftPaneRefreshStatus==true)
+                        refreshedPaneStatus= "Results on the left pane has refreshed";
+                    else if(supportPaneRefreshStatus==true)
+                        refreshedPaneStatus= "Results on the support pane has refreshed";
+
+
+                    reporter.softAssert(!(leftPaneRefreshStatus==false&&supportPaneRefreshStatus==false),refreshedPaneStatus,refreshedPaneStatus);
                 }
                 strPrevLeftPaneInnerhtml = strCurLeftPaneInnerhtml;
                 strPrevSupportInnerHtml = strCurLeftPaneInnerhtml;
