@@ -918,15 +918,15 @@ return blnFlag;
     }
 
     public boolean isSupportSectionDisplayed() {
-        return reusableActions.isElementVisible(supportSection);
+        return reusableActions.isElementVisible(supportSection,1);
     }
 
     public boolean isSupportSectionPopulated() {
-        return reusableActions.isElementVisible(supportSectionLinks);
+        return reusableActions.isElementVisible(supportSectionLinks,1);
     }
 
     public boolean isLeftSectionPopulated() {
-        return reusableActions.isElementVisible(leftSectionResults);
+        return reusableActions.isElementVisible(leftSectionResults,1);
     }
 
     public String getLeftSectionInnerhtml() {
