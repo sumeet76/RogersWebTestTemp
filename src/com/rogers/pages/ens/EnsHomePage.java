@@ -2,7 +2,9 @@ package com.rogers.pages.ens;
 
 import java.util.ArrayList;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -35,11 +37,12 @@ public class EnsHomePage extends BasePageClass{
 	 */
 	public void openNewTabForEns(String strEnsUrl) {
 		JavascriptExecutor executor = (JavascriptExecutor)driver;
-		executor.executeScript("window.open()");
+		String openNewWindow = "window.open('"+ strEnsUrl +"', '_blank')";
+		executor.executeScript(openNewWindow);
 		reusableActions.waitForNumberOfWindowsToBe(2, 10);
 		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(tabs.get(1));
-		driver.get(strEnsUrl);
+//		driver.get(strEnsUrl);
 	}
 	
 	/**

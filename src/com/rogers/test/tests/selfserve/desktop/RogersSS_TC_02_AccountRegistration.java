@@ -25,7 +25,7 @@ public class RogersSS_TC_02_AccountRegistration extends BaseTestClass {
 		closeSession();
 	}
 	
-	@Test(groups = {"RegressionSS","ProfileAndSettingsSS"})
+	@Test(groups = {"RegressionSS","ProfileAndSettingsSS","RecoverySS"})
 	public void validateUserChangeContactInformationAndBillingAddress() {
 		reporter.reportLogWithScreenshot("Rogers Launch page");
     	rogers_home_page.clkSignIn();    	 

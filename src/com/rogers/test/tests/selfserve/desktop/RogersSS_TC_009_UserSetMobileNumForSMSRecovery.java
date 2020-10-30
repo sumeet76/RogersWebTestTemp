@@ -31,7 +31,7 @@ public class RogersSS_TC_009_UserSetMobileNumForSMSRecovery extends BaseTestClas
 		closeSession();
 	}
 	
-	@Test(groups = {"RegressionSS","ProfileAndSettingsSS"})
+	@Test(groups = {"RegressionSS","ProfileAndSettingsSS","RecoverySS"})
 	public void validateUserSuccessfullyAddMobileNumForRecovery() {
 		String strUserName = TestDataHandler.tc060809.getUsername();
 		String strRecoveryNumber = TestDataHandler.tc060809.getAccountDetails().getRecoveryNumber();
