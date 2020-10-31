@@ -31,7 +31,7 @@ public class RogersSearch_CBS_1673_Parent_Filter_Selection_Deselection_Test exte
 	@Test(dataProvider = "FilterData")
 	
 	public void validateParentFilterDeselection(String[] csvRow) {
-	
+		String strGrandParentText;
 		getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
 	
 		List<WebElement> lstParentFilters;
@@ -41,23 +41,24 @@ public class RogersSearch_CBS_1673_Parent_Filter_Selection_Deselection_Test exte
 
 			rogers_search_page.clkGrandParentFilter(strFilters[i]);
 			reporter.reportLogWithScreenshot(strFilters[i]+" is clicked");
+			strGrandParentText = rogers_search_page.getResultWindowText();
 			lstParentFilters = rogers_search_page.getParentFilters(strFilters[i]);
 
 			for(int j=0; j<lstParentFilters.size(); j++) {
 				rogers_search_page.clkParentFilter(lstParentFilters.get(j));
 				strParentFilterName = lstParentFilters.get(j).getText();
 				reporter.reportLogWithScreenshot(strParentFilterName +" is selected");
-				reporter.hardAssert(rogers_search_page.validateResultsTag(strFilters[i],strParentFilterName),
+				reporter.softAssert(rogers_search_page.validateResultsTag(strFilters[i],strParentFilterName),
 						"Results tags verified", "Results tags mismatch");
 				rogers_search_page.clkParentFilter(lstParentFilters.get(j));
 				reporter.reportLogWithScreenshot(strParentFilterName+" is deselected");
-				reporter.hardAssert(rogers_search_page.validateResultsTag(strFilters[i]),
+				reporter.softAssert(rogers_search_page.validateResultsTag(strFilters[i]),
 						"Results tags verified", "Results tags mismatch");
+				reporter.softAssert(rogers_search_page.getResultWindowText().equals(strGrandParentText),
+						"Results refreshed back to Grand Parent Filter",
+						"Results Not refreshed back to Grand Parent Filter");
 			}
 		}
-			
-		System.out.println("end of set");
-		
 	}
 
 
