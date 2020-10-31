@@ -23,38 +23,26 @@ import utils.CSVReader;
 
 public class RogersSearch_CBS_1681_Color_Facet_Testing_Test extends BaseTestClass {
 
+	@Test
+	public void validateColorFilterSelection() {
+		List<String> strColorFilters;
+		getDriver().get(System.getProperty("SearchUrl")+"wireless");
+	
+		rogers_search_page.clkShopAndThenWirelessFilter();
+		reporter.reportLogWithScreenshot("Shop and Wireless Filters clicked");
+		strColorFilters = rogers_search_page.getColorFilters();
+		for(int i=0;i<strColorFilters.size();i++) {
+			rogers_search_page.clkColorType(strColorFilters.get(i));
+			reporter.reportLogWithScreenshot(strColorFilters.get(i) + " - Color Selected");
 
-	@DataProvider(name = "FilterData")
-	public Object[] testData() throws IOException
-	{
-		String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
-		List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
-		Object[] csvRow = new Object[csvData.size()];
-		 
-        for(int i =0; i < csvData.size();i++){
-        	csvRow[i] = csvData.get(i);
-        }
- 
-        return csvRow;
-		 
-		
+			reporter.softAssert(rogers_search_page.validateResultsColor(strColorFilters.get(i)),
+					"All Results belong to color"+strColorFilters.get(i),
+					"All Results do Not belong to color"+strColorFilters.get(i));
+
+			rogers_search_page.clkColorType(strColorFilters.get(i));
+			reporter.reportLogWithScreenshot(strColorFilters.get(i) + " - Color Deselected");
+		}
 	}
-	
-	@Test(dataProvider = "FilterData")
-	
-	public void validateColorFilterSelection(String[] csvRow) {
-	
-	getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
-	
-	rogers_search_page.clkShopAndThenWirelessFilter();
-	reporter.reportLogWithScreenshot("Shop and Wireless Filters clicked");
-	
-	reporter.hardAssert(rogers_search_page.verifyColorResultsDisplay(), "Color Results displayed correctly", "Color Results not displayed correctly");
-				
-				
-	}
-
-
 
 	@BeforeMethod(alwaysRun = true)
 	@Parameters({"strBrowser", "strLanguage"})
