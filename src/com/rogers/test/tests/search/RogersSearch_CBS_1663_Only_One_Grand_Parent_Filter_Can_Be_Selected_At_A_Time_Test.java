@@ -21,47 +21,28 @@ public class RogersSearch_CBS_1663_Only_One_Grand_Parent_Filter_Can_Be_Selected_
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
         Object[] csvRowStrArray = new Object[csvData.size()];
-
         for (int i = 0; i < csvData.size(); i++) {
             csvRowStrArray[i] = csvData.get(i);
         }
-
         return csvRowStrArray;
-
-
     }
 
 	@Test(dataProvider = "FilterData")
-	
 	public void validateGrandParentFilterSelection(String[] csvRow) {
-	
-	getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
-	
-			
-			String[] strFilters = Arrays.copyOfRange(csvRow, 1, csvRow.length);
-			for(int i=0; i<strFilters.length; i++) {
-				
-				rogers_search_page.clkGrandParentFilter(strFilters[i]);
-				reporter.reportLogWithScreenshot(strFilters[i]+" is clicked");
-				reporter.hardAssert(rogers_search_page.isGrandParentFilterExpanded(strFilters[i]), strFilters[i]+" is Expanded", strFilters[i]+" is not Expanded");
-				for(int j=0; j<strFilters.length; j++) {
-					
-					if(i!=j) {
-						
-						reporter.hardAssert(!(rogers_search_page.isGrandParentFilterExpanded(strFilters[j])), strFilters[j]+" is not Expanded", strFilters[j]+" is Expanded");
-						
-					}
-					
-					
-				}
-				
-				
-				
-			}
-			
-			
-	System.out.println("end of set");
-		
+	    getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
+
+        for(int i=1; i<csvRow.length; i++) {
+            rogers_search_page.clkGrandParentFilter(csvRow[i]);
+            reporter.reportLogWithScreenshot(csvRow[i]+" is selected");
+            reporter.softAssert(rogers_search_page.isGrandParentFilterExpanded(csvRow[i]),
+                    csvRow[i]+" is Expanded", csvRow[i]+" is not Expanded");
+            for(int j=1; j<csvRow.length; j++) {
+                if(i!=j) {
+                    reporter.softAssert(!(rogers_search_page.isGrandParentFilterExpanded(csvRow[j])),
+                            csvRow[j]+" is not Expanded", csvRow[j]+" is Expanded");
+                }
+            }
+        }
 	}
 
     @BeforeMethod(alwaysRun = true)

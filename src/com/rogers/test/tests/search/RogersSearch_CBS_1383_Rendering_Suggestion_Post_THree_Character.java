@@ -26,19 +26,19 @@ public class RogersSearch_CBS_1383_Rendering_Suggestion_Post_THree_Character ext
         reporter.reportLogWithScreenshot("CBS Search Page");
         rogers_search_page.enterTextSearch("w");
         reporter.reportLogWithScreenshot("Search field entered with one character");
-        reporter.hardAssert(!rogers_search_page.isSuggestionsSectionDisplayed(), "label Suggestion Not Visible", "label Suggestion Visible");
-        reporter.hardAssert(!rogers_search_page.isSupportSectionDisplayed(), "label Support Not Visible", "label Support Visible");
+        reporter.softAssert(!rogers_search_page.isSuggestionsSectionDisplayed(), "label Suggestion Not Visible", "label Suggestion Visible");
+        reporter.softAssert(!rogers_search_page.isSupportSectionDisplayed(), "label Support Not Visible", "label Support Visible");
         rogers_search_page.enterTextSearch("wi");
         reporter.reportLogWithScreenshot("Search field entered with two characters");
-        reporter.hardAssert(!rogers_search_page.isSuggestionsSectionDisplayed(), "label Suggestion Not Visible", "label Suggestion Visible");
-        reporter.hardAssert(!rogers_search_page.isSupportSectionDisplayed(), "label Support Not Visible", "label Support Visible");
+        reporter.softAssert(!rogers_search_page.isSuggestionsSectionDisplayed(), "label Suggestion Not Visible", "label Suggestion Visible");
+        reporter.softAssert(!rogers_search_page.isSupportSectionDisplayed(), "label Support Not Visible", "label Support Visible");
         rogers_search_page.enterTextSearch("wir");
-        reporter.hardAssert(rogers_search_page.isSuggestionsSectionDisplayed(), "label Suggestion Visible", "label Suggestion Not Visible");
-        reporter.hardAssert(rogers_search_page.isSupportSectionDisplayed(), "label Support Visible", "label Support Not Visible");
+        reporter.softAssert(rogers_search_page.isSuggestionsSectionDisplayed(), "label Suggestion Visible", "label Suggestion Not Visible");
+        reporter.softAssert(rogers_search_page.isSupportSectionDisplayed(), "label Support Visible", "label Support Not Visible");
         reporter.reportLogWithScreenshot("Search field entered with three Character");
         reporter.reportLogWithScreenshot("Search Label Validation");
-        reporter.hardAssert(rogers_search_page.isSupportSectionPopulated(), "Suggestion Links Visible", "Suggestion Links  Not Visible");
-        reporter.hardAssert(rogers_search_page.isLeftSectionPopulated(), "Support Links  Visible", " Support Links Not Visible");
+        reporter.softAssert(rogers_search_page.isSupportSectionPopulated(), "Suggestion Links Visible", "Suggestion Links  Not Visible");
+        reporter.softAssert(rogers_search_page.isLeftSectionPopulated(), "Support Links  Visible", " Support Links Not Visible");
         reporter.reportLogWithScreenshot("Link Validation");
     }
 
