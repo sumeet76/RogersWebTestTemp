@@ -2,6 +2,7 @@ package com.rogers.test.tests.selfserve.desktop;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.math.BigDecimal;
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
@@ -71,6 +72,7 @@ public class RogersSS_TC_012_ValidateVideoContentQualityWhenVTturnedONforDM exte
        double totalDataValue = rogers_wireless_dashboard_page.getTotalDataVolume();
        double dataAlert = totalDataValue*0.8;
        String strDataAlert = Double.toString(dataAlert).replaceAll(",", ".");
+       strDataAlert =  String.format("%.2f", new BigDecimal(Double.toString(dataAlert).replaceAll(",", ".")));
        rogers_wireless_dashboard_page.clkSetDataAlert();
        reporter.reportLogWithScreenshot("Set data alert");
        reporter.hardAssert(rogers_wireless_dashboard_page.isSetDataAlertOverlayDisplayed(),

@@ -9,6 +9,7 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.math.BigDecimal;
 
 
 
@@ -55,7 +56,9 @@ public class RogersSS_TC_01_FDM_AssignDMRoleViaOverlayForFirstTimeLogin extends 
        double totalDataValue = rogers_wireless_dashboard_page.getTotalDataVolume();
        double dataAlert = totalDataValue*0.8;
        String strDataAlert = Double.toString(dataAlert).replaceAll(",", ".");
+       strDataAlert =  String.format("%.2f", new BigDecimal(Double.toString(dataAlert).replaceAll(",", ".")));
        //common_business_flows.scrollToMiddleOfWebPage();
+       
        reporter.hardAssert(rogers_wireless_dashboard_page.isAddDataManagerDisplayed(),
     		   "Add data manager available for this account","Add data manager is not displayed for this account");
        rogers_wireless_dashboard_page.clkAddDataManager();
@@ -68,6 +71,7 @@ public class RogersSS_TC_01_FDM_AssignDMRoleViaOverlayForFirstTimeLogin extends 
        reporter.reportLogWithScreenshot("Data manager selected");
        rogers_wireless_dashboard_page.clkSaveButtonOnDataManager();
        reporter.reportLogWithScreenshot("Save data manager clicked");
+      
        reporter.hardAssert(!rogers_wireless_dashboard_page.isAddDataManagerDisplayed(),
     		   "Data manager set successfully",
     		   "Data manager is not set for this account yet");

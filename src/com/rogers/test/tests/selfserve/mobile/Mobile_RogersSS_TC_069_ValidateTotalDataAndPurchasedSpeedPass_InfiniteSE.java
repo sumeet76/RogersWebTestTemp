@@ -62,12 +62,12 @@ public class Mobile_RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_Infin
         //rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
         //  - Added Data: should be included all Speed passes added for current bill cycle
         //  - Added Data: multiple speed passes of same size should be displayed individually (not summed up)
+        reporter.reportLogWithScreenshot("Wireless dashboard page."); 
+		rogers_profile_and_settings_page.clkCloseFeedbackIfAvailableMobile();
+		rogers_wireless_dashboard_page.closeChatImage();
         reporter.hardAssert(rogers_wireless_dashboard_page.verifySpeedPassButtonIsDisplayed(), 
 				"Speed Pass button is displayed", 
 				"Speed Pass button is NOT displayed");
-		reporter.reportLogWithScreenshot("Wireless dashboard page."); 
-		rogers_profile_and_settings_page.clkCloseFeedbackIfAvailableMobile();
-		rogers_wireless_dashboard_page.closeChatImage();
 		reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(), 
 			"'Data details' page is displayed after click on view details link", 
 			"'Data details' page is NOT displayed after click on view details link");  

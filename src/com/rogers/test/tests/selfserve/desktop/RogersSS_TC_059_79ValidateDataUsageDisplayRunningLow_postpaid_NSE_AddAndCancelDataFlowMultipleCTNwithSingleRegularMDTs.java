@@ -28,7 +28,7 @@ public class RogersSS_TC_059_79ValidateDataUsageDisplayRunningLow_postpaid_NSE_A
 	}
 	
 
-    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
+   @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateDataUsageDisplayForRunningLowAndAddData() {
     	rogers_home_page.clkSignIn();
     	String strUsername = TestDataHandler.tc59.getUsername();

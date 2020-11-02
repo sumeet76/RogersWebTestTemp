@@ -194,6 +194,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	@FindAll({
         @FindBy(xpath = "//div[@class='c-dropdown-menu-holder']/a"),
+        @FindBy(xpath = "//*[@data-translate='ute.common.second.level.navigation.wireless.phone.prepaid']"),
         @FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.wireless.phone']")})	
 	WebElement subMenuUsageDropDown;
 	
@@ -623,7 +624,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void clkDropDownAccount(String strLast4DigAcctNum) {
 		reusableActions.clickWhenReady(
-				(By.xpath("//span[contains(@data-translate-values,'" + strLast4DigAcctNum + "')or contains(text(),'" + strLast4DigAcctNum + "')]")));
+				(By.xpath("//span[contains(@data-translate-values,'" + strLast4DigAcctNum + "') or contains(text(),'" + strLast4DigAcctNum + "')]")));
 
 	}
 	
@@ -1017,7 +1018,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyWirelessCallerIdUpdatedInDropDownToSelectWirelessUsage(String strFirstName) {					
-		return reusableActions.isElementVisible((By.xpath("//span[contains(@data-translate-values,'" + strFirstName + "')]")),20);
+		return (reusableActions.isElementVisible((By.xpath("//a[@class='c-dropdown-item']/span[contains(text(),'" + strFirstName + "')]")),20)
+				|| reusableActions.isElementVisible((By.xpath("//span[contains(@data-translate-values,'" + strFirstName + "')]")),20)) ;
 	}
 	
 	/**
