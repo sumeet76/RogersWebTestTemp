@@ -70,7 +70,7 @@ public class RogersSS_TC_02_AccountRegistration extends BaseTestClass {
 				"Registration completed message does Not displayed");
 		reporter.reportLogWithScreenshot("Set password completed.");
 		rogers_set_password_page.clkButtonSignIn();
-		rogers_login_page.switchToSignInIFrame();
+		//rogers_login_page.switchToSignInIFrame();
         rogers_login_page.setUsernameIFrame(strEmail);
         rogers_login_page.setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
