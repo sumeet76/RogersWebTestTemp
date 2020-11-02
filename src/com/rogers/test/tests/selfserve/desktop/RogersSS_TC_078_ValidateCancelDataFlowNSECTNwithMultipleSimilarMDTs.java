@@ -46,20 +46,17 @@ public class RogersSS_TC_078_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs
 		rogers_login_page.clkSkipIFrame();
 		rogers_login_page.switchOutOfSignInIFrame();
 		
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
-        	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc78.getAccountDetails().getBan());
-        }
+//        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+//        	reporter.reportLogWithScreenshot("Select an account.");
+//            rogers_account_overview_page.selectAccount(TestDataHandler.tc78.getAccountDetails().getBan());
+//        }
         reporter.reportLogWithScreenshot("Account overview page.");
         
         rogers_account_overview_page.clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
         String strAccountNum = TestDataHandler.tc78.getAccountDetails().getCtn();
-        if (rogers_account_overview_page.isAccountShowInDropDown(strAccountNum.substring(strAccountNum.length()-4))) {
-            rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
-        } else {
-        	rogers_account_overview_page.clkSubMenuWirelessUsage();
-        }
+        rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
+
         rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
         reporter.reportLogWithScreenshot("Dashboard page");
         rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
@@ -82,37 +79,40 @@ public class RogersSS_TC_078_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs
 							&& countOfActiveAndCancelledAddDataOnMyPlan.get("active")==countOfActiveAndCancelledAddData.get("active"))
 				, "The number of cancelled and active add on macth on my plans and manage data page", 
 				"The number of cancelled and active add on does not macth on my plans and manage data page");
-		rogers_manage_data_page.clkBackOnManageDataUsagePage();		
-		rogers_wireless_dashboard_page.clkAddData();
-		if(counterOfAddedData<10)
-		{
+		if((countOfActiveAndCancelledAddData.get("active")<1)) {
+			rogers_manage_data_page.clkBackOnManageDataUsagePage();		
 			
-		reporter.softAssert(rogers_add_data_page.verifyAddDataOverlayIsDisplayed(), 
-							"Add the Data top-up  window should be displayed. (completd an MDT add on)", 
-							"Add the Data top-up  window is NOT displayed.");          
-		List<String> allMDTValues =rogers_add_data_page.getAllAddDataOptions();         
-		rogers_speed_pass_page.clkBtnCloseInSpeedPassPopup();
-		
-		addAnyMDTForTotalOfThreeTimes(allMDTValues,countOfAlreadyAddedData);        		
-		}else
-		{
-			reporter.hardAssert(rogers_add_data_page.verifyAddDataLimitReachedIsDisplayed(), 
-					"Limit reached overlay is displayed, since already 10 addons have been added", 
-					"Limit reached overlay is not displayed even though there are 10 add ons"); 
-			 reporter.reportLogWithScreenshot("Limit reached overlay is displayed");
-			 rogers_speed_pass_page.clkBtnCloseInSpeedPassPopup();
-		}
+			rogers_wireless_dashboard_page.clkAddData();
+			if(counterOfAddedData<10)
+			{
+				
+				reporter.softAssert(rogers_add_data_page.verifyAddDataOverlayIsDisplayed(), 
+									"Add the Data top-up  window should be displayed. (completd an MDT add on)", 
+									"Add the Data top-up  window is NOT displayed.");          
+				List<String> allMDTValues =rogers_add_data_page.getAllAddDataOptions();         
+				rogers_speed_pass_page.clkBtnCloseInSpeedPassPopup();
+				
+				addAnyMDTForTotalOfThreeTimes(allMDTValues,countOfAlreadyAddedData);        		
+			}else
+			{
+				reporter.hardAssert(rogers_add_data_page.verifyAddDataLimitReachedIsDisplayed(), 
+						"Limit reached overlay is displayed, since already 10 addons have been added", 
+						"Limit reached overlay is not displayed even though there are 10 add ons"); 
+				 reporter.reportLogWithScreenshot("Limit reached overlay is displayed");
+				 rogers_speed_pass_page.clkBtnCloseInSpeedPassPopup();
+			}
 
-		reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(), 
-				"'Manage Data' page is displayed after click on view details link", 
-				"'Manage Data' page is NOT displayed after click on view details link");  
-		reporter.reportLogWithScreenshot("Manage data page view after we click on view details");  
-		
-		counterOfAddedData = rogers_manage_data_page.getAllExistingAddedDataCount();        
-		countOfAlreadyAddedData = rogers_manage_data_page.getCountOfAllExistingAddedDataValues();
-		countOfActiveAndCancelledAddData = rogers_manage_data_page.getAllExistingAddDataCountCancelledAndActive();
-		reporter.reportLogWithScreenshot("Manage Data page");
-		
+			reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(), 
+					"'Manage Data' page is displayed after click on view details link", 
+					"'Manage Data' page is NOT displayed after click on view details link");  
+			reporter.reportLogWithScreenshot("Manage data page view after we click on view details");  
+			
+			counterOfAddedData = rogers_manage_data_page.getAllExistingAddedDataCount();        
+			countOfAlreadyAddedData = rogers_manage_data_page.getCountOfAllExistingAddedDataValues();
+			countOfActiveAndCancelledAddData = rogers_manage_data_page.getAllExistingAddDataCountCancelledAndActive();
+			reporter.reportLogWithScreenshot("Manage Data page");
+			
+		}
 		
 		if((countOfActiveAndCancelledAddData.get("active")>=1))
 		{
@@ -135,19 +135,15 @@ public class RogersSS_TC_078_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs
 			//rechange to the original one
 			if(rogers_account_overview_page.verifySuccessfulLogin())
 			{
-				if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
-		        	reporter.reportLogWithScreenshot("Select an account.");
-		            rogers_account_overview_page.selectAccount(TestDataHandler.tc59.getAccountDetails().getBan());
-		        }
+//				if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+//		        	reporter.reportLogWithScreenshot("Select an account.");
+//		            rogers_account_overview_page.selectAccount(TestDataHandler.tc59.getAccountDetails().getBan());
+//		        }
 		        reporter.reportLogWithScreenshot("Account overview page.");
 		        
 		        rogers_account_overview_page.clkMenuUsageAndService();
 		        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
-		        if (rogers_account_overview_page.isAccountShowInDropDown(strAccountNum.substring(strAccountNum.length()-4))) {
-		            rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
-		        } else {
-		        	rogers_account_overview_page.clkSubMenuWirelessUsage();
-		        }
+	            rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
 		        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
 		        rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();		        
 				reporter.reportLogWithScreenshot("dashboard page");				

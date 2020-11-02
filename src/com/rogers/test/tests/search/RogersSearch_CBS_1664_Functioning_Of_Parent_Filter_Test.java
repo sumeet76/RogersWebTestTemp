@@ -3,6 +3,7 @@ package com.rogers.test.tests.search;
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import org.apache.http.client.ClientProtocolException;
+import org.openqa.selenium.WebElement;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
@@ -33,21 +34,26 @@ public class RogersSearch_CBS_1664_Functioning_Of_Parent_Filter_Test extends Bas
 
     @Test(dataProvider = "FilterData")
 
-    public void validateResultsForSubFilter(String[] csvRowStrArray) {
+    public void validateResultsForSubFilter(String[] csvRow) {
+        List<WebElement> lstParentFilters;
+        String strParentFilter;
 
-        System.out.println("URL is:" + System.getProperty("SearchUrl") + csvRowStrArray[0]);
+        getDriver().get(System.getProperty("SearchUrl") + csvRow[0]);
 
-        getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0]);
-        System.out.println(getDriver().getCurrentUrl());
+        for (int i=1;i< csvRow.length;i++) {
+            rogers_search_page.clkGrandParentFilter(csvRow[i]);
+            reporter.reportLogWithScreenshot(csvRow[i]+" is clicked");
+            lstParentFilters = rogers_search_page.getParentFilters(csvRow[i]);
 
-        String[] strFilters = Arrays.copyOfRange(csvRowStrArray, 1, csvRowStrArray.length);
-
-        reporter.softAssert(rogers_search_page.clkParentFilterAndVerifyResultsCategoryTagRelevancy(strFilters), "Result with " + strFilters + " tag is Displayed", "Result with " + strFilters + " tag is NOT Displayed");
-        reporter.reportLogWithScreenshot("Search QA Page - " + strFilters);
-
-
-        System.out.println("end of set");
-
+            for(int j=0;j<lstParentFilters.size();j++) {
+                rogers_search_page.clkParentFilter(lstParentFilters.get(j));
+                strParentFilter = lstParentFilters.get(j).getText();
+                reporter.reportLogWithScreenshot(strParentFilter +" is clicked");
+                reporter.softAssert(rogers_search_page.validateResultsTag(csvRow[i],strParentFilter),
+                        "Results belong to tag " + csvRow[i] + "-" + strParentFilter,
+                        "Results do Not belong to tag " + csvRow[i] + "-" + strParentFilter);
+            }
+        }
     }
 
 

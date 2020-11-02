@@ -25,7 +25,7 @@ public class RogersSS_TC_07_UserValidateRecoverUsernameAndResetPasswordUsingEmai
 		closeSession();
 	}
 	
-	@Test(groups = {"RegressionSS","ProfileAndSettingsSS"})
+	@Test(groups = {"RegressionSS","ProfileAndSettingsSS","RecoverySS"})
 	public void userValidateRecoverUsernameAndResetPasswordUsingEmailID() {
 		
 		reporter.reportLogWithScreenshot("Rogers Launch page");

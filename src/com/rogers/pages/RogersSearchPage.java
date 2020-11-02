@@ -63,6 +63,9 @@ public class RogersSearchPage extends BasePageClass {
     @FindBy(xpath = "//div[@ng-reflect-heading='Suggestions']/parent::section//a")
     List<WebElement> suggestionsSectionLinks;
 
+    @FindBy(xpath = "//app-search-results/div[@class='resultList']")
+    WebElement resultsWindow;
+
     /**
      * check if expected filters displayed or not
      *
@@ -918,15 +921,15 @@ return blnFlag;
     }
 
     public boolean isSupportSectionDisplayed() {
-        return reusableActions.isElementVisible(supportSection);
+        return reusableActions.isElementVisible(supportSection,1);
     }
 
     public boolean isSupportSectionPopulated() {
-        return reusableActions.isElementVisible(supportSectionLinks);
+        return reusableActions.isElementVisible(supportSectionLinks,1);
     }
 
     public boolean isLeftSectionPopulated() {
-        return reusableActions.isElementVisible(leftSectionResults);
+        return reusableActions.isElementVisible(leftSectionResults,1);
     }
 
     public String getLeftSectionInnerhtml() {
@@ -1007,5 +1010,29 @@ return blnFlag;
     public boolean validateGrandParentFiltersCount(int count) {
         return driver.findElements(By.xpath("//div[@class='ds-filter__listSet']//ds-accordion-panel[contains(@class,'-main-level')]"))
                 .size()==count;
+    }
+
+    public String getResultWindowText() {
+        return resultsWindow.getText();
+    }
+
+    public List<String> getColorFilters() {
+        List<String> colorFilters = new ArrayList<String>();
+        List<WebElement> colorFilterElements = driver.findElements(By.xpath("//span[contains(@class,'checkbox-color-copy')]"));
+        for(int i=0;i<colorFilterElements.size();i++) {
+            colorFilters.add(colorFilterElements.get(i).getText().split("\\(")[0].trim());
+        }
+        return colorFilters;
+    }
+
+    public boolean validateResultsColor(String strColor) {
+        List<WebElement> resultColoursList = driver.findElements(By.xpath("//app-search-results//ds-selection[@ng-reflect-type='color']"));
+        for(int i=0;i<resultColoursList.size();i++) {
+            if(!(resultColoursList.get(i).getAttribute("ng-reflect-value")
+                    .trim().toLowerCase().equals(strColor.toLowerCase()))) {
+                return false;
+            }
+        }
+        return true;
     }
 }

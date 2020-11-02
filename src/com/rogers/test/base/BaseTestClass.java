@@ -184,54 +184,63 @@ public class BaseTestClass {
 		case "selfserve":
 		case "selfserve_login":
 		case "mobile_selfserve":
+			setImplicitWait(getDriver(), 10);
 			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ language);
 			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 			break;
 			
 		case "connectedhome_legacyanonymous":
+			setImplicitWait(getDriver(), 10);
 			driver.get(strUrl+"/web/totes/api/v1/bypassCaptchaAuth");
 			captcha_bypass_handlers.captchaBypassURLLegacyAnonymousBuyFlows(strUrl, language); 
 			break;	
 			
-		case "connectedhome_igniteanonymous":				
+		case "connectedhome_igniteanonymous":
+			setImplicitWait(getDriver(), 10);
 			driver.get(strUrl+"/web/totes/browsebuy/v1/byPassCaptcha");
 			driver.get(strUrl+"?setLanguage="+ language); 
 			break;
 			
 		case "connectedhome_legacylogin":
+			setImplicitWait(getDriver(), 10);
 			driver.get(strUrl+"/web/totes/api/v1/bypassCaptchaAuth");
 			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ language);
 			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 			break; 
 
 		case "connectedhome_ignitelogin":
+			setImplicitWait(getDriver(), 10);
 			driver.get(strUrl+"/web/totes/browsebuy/v1/byPassCaptcha");	
 			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ language);
 			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 			break; 
 			
 		case "connectedhome_login":
+			setImplicitWait(getDriver(), 10);
 			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ language);
 			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 			break; 
 		
-		case "buyflows": 
+		case "buyflows":
+			setImplicitWait(getDriver(), 10);
 			driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ language);
 			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 			break;
 			
 		case "redesignrogers":	
-		case "buyflowsoneview": driver.get(strUrl);
+		case "buyflowsoneview": setImplicitWait(getDriver(), 10);driver.get(strUrl);
 			break; 
 			
 		case "search": //driver.get(strUrl);
+			setImplicitWait(getDriver(), 1);
 		break;
 		
  		default :
+			setImplicitWait(getDriver(), 10);
  			driver.get(strUrl+"?setLanguage="+ language );
  			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 		}
-	    setImplicitWait(getDriver(), 10);
+
 		getDriver().manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
 		if(!browser.contains("sauceandroid"))
 		{

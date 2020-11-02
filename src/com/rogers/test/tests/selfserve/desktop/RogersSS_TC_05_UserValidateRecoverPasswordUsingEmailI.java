@@ -25,7 +25,7 @@ public class RogersSS_TC_05_UserValidateRecoverPasswordUsingEmailI extends BaseT
 		closeSession();
 	}
 	
-	@Test(groups = {"RegressionSS","ProfileAndSettingsSS"})
+	@Test(groups = {"RegressionSS","ProfileAndSettingsSS","RecoverySS"})
 	public void userValidateRecoverUsernameUsingEmailID() {
 		
 		reporter.reportLogWithScreenshot("Rogers Launch page");
