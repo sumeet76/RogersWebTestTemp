@@ -32,32 +32,32 @@ public class Mobile_RogersCH_TC_002_Internet_BuyInternetOfferTest extends BaseTe
     public void checkBuyInternetOfferMobile() throws InterruptedException {   	
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	rogers_home_page.clkEasyInternet() ;
-    	
-        reporter.hardAssert(rogers_home_page.verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");  	
-    	reporter.reportLogWithScreenshot("Launched the Internet packages page");
-    	rogers_home_page.clkInternetAvailability();
-    	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-    	rogers_home_page.clkAddressCheck();
-    	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+
+        reporter.hardAssert(rogers_home_page.verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the Internet packages page");
+        rogers_home_page.clkInternetAvailability();
+        reporter.reportLogWithScreenshot("Launched the customer availability check popup");
+        rogers_home_page.clkAddressCheck();
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
-        rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
+        rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
-        //rogers_home_page.clkOnlyInternetMobile();
-        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");       
+        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         rogers_internet_package_selection_page.clkInternetPackage();
-        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");         
-        rogers_internet_package_selection_page.clkInternetBuyContinue();
-        
-        reporter.hardAssert(rogers_ineternet_profile_page.verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
+        rogers_home_page.clkOnlyInternet();
+        rogers_internet_package_selection_page.clkInternetBuyContinueMobile();
+
+        reporter.hardAssert(rogers_ineternet_profile_page.verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
         rogers_ineternet_profile_page.setEmail();
         rogers_ineternet_profile_page.setFirstname();
         rogers_ineternet_profile_page.setLastName();
         rogers_ineternet_profile_page.setPhone();
-        rogers_ineternet_profile_page.clkSubmitProfile();
-        
+        rogers_ineternet_profile_page.clkSubmitProfileMobile();
+
         reporter.hardAssert(rogers_internet_credit_check_page.verifyCreditEvalutionPage(),"Credit Evalution page has Launched","Credit Evalution page has not Launched");
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
         rogers_internet_credit_check_page.selectDOBYear();
@@ -69,29 +69,23 @@ public class Mobile_RogersCH_TC_002_Internet_BuyInternetOfferTest extends BaseTe
         rogers_internet_credit_check_page.selectExpiryYear();
         rogers_internet_credit_check_page.selectExpiryMonth();
         rogers_internet_credit_check_page.selectExpiryDay();
-        rogers_internet_credit_check_page.setDrivingLicenseNumber("ONTARIO");
+        rogers_internet_credit_check_page.setDrivingLicenseNumberMobile("ONTARIO");
         reporter.reportLogWithScreenshot("Driving License Details");
         rogers_internet_credit_check_page.selectSecondIDOption("Passport");
         rogers_internet_credit_check_page.setPassportNumber();
         rogers_internet_credit_check_page.selectPassportExpiryYear();
         rogers_internet_credit_check_page.selectPassportExpiryMonth();
         rogers_internet_credit_check_page.selectPassportExpiryDay();
-        rogers_internet_credit_check_page.clkCreditConsent();
+        rogers_internet_credit_check_page.clkCreditConsentMobile();
         reporter.reportLogWithScreenshot("Passport Details");
-        rogers_internet_credit_check_page.clkCreditConsentSubmit();
-        
-       reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
-       reporter.reportLogWithScreenshot("Launched the tech install page");
-       rogers_tech_install_page.selSelffinstallDateAndTime();
-       reporter.reportLogWithScreenshot("Launched the tech install page");
-       rogers_tech_install_page.clkTechInstallSlot();
-       reporter.reportLogWithScreenshot("tech install details");
-       rogers_tech_install_page.setMobielNumber();
-       rogers_tech_install_page.setEmail();
-       rogers_tech_install_page.clkTechInstalConsent();
-       reporter.reportLogWithScreenshot("tech install details");
-       rogers_tech_install_page.clkTechInstallContinue();
-        
+        rogers_internet_credit_check_page.clkCreditConsentSubmitMobile();
+
+        reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the tech install page");
+        rogers_tech_install_page.clkTechInstalConsent();
+        reporter.reportLogWithScreenshot("tech install details");
+        rogers_tech_install_page.clkTechInstallContinueMobile();
+
         reporter.hardAssert(rogers_payment_options_page.verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
         rogers_payment_options_page.selectPaymentMode("Pre-authorized Credit Card");
@@ -100,34 +94,34 @@ public class Mobile_RogersCH_TC_002_Internet_BuyInternetOfferTest extends BaseTe
         rogers_payment_options_page.switchOutOfCreditCardIFrame();
         rogers_payment_options_page.setCVV();
         rogers_payment_options_page.selectExpiryMonth();
-        rogers_payment_options_page.selectExpiryYear(); 
+        rogers_payment_options_page.selectExpiryYear();
         reporter.reportLogWithScreenshot("Payment options Details");
-        rogers_payment_options_page.clkPaymentConfirm();
-        
+        rogers_payment_options_page.clkPaymentConfirmMobile();
+
         reporter.hardAssert(rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
 
         reporter.hardAssert( rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
-        rogers_order_review_page.clkAcceptenceCheckbox();
+        rogers_order_review_page.clkAcceptenceCheckboxMobile();
         reporter.reportLogWithScreenshot("Agreement details");
-        rogers_order_review_page.clkSubmit();
+        rogers_order_review_page.clkSubmitMobile();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");      
-        reporter.reportLogWithScreenshot("Launched the Confirmation page"); 
-    	}
+        reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
+        reporter.reportLogWithScreenshot("Launched the Confirmation page");
+    }
 
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//legacyAnonymous
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacyanonymous, method);
+		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_igniteanonymous, method);
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 	
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 

@@ -15,10 +15,10 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 		super(driver);
 	}
 	
-	@FindBy(xpath = "//h4[@translate='global.checkout.profile.createProfile']")
+	@FindBy(xpath = "//h2[@translate='global.checkout.profile.createProfile']")
 	WebElement txtProfile;
 	
-	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	@FindBy(xpath = "(//div[contains(@class,'ds-formField__inputContainer')])[1]")
 	WebElement txtContainerEmail;
 	
 		@FindBy(xpath = "//input[@name='email']")
@@ -71,7 +71,7 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyProfilePage() {
-		return reusableActions.isElementVisible(txtProfile,100);
+		return reusableActions.isElementVisible(txtProfile,90);
 	}
 	
 	/**
@@ -80,7 +80,7 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 */
 	public void setEmail() {
 		String strEmail = FormFiller.generateEmail();
-		reusableActions.waitForElementVisibility(txtContainerEmail,30);
+		reusableActions.waitForElementVisibility(txtContainerEmail,90);
 		reusableActions.getWhenReady(txtContainerEmail,10).click();
         reusableActions.clickWhenReady(txtEmail);
         txtEmail.clear();

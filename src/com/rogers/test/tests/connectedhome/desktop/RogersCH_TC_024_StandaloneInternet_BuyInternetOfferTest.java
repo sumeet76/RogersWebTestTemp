@@ -43,13 +43,13 @@ public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends Bas
         rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
-        //rogers_home_page.clkOnlyInternet();
-        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");       
+        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         rogers_internet_package_selection_page.clkInternetPackage();
-        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");         
+        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
+        rogers_home_page.clkOnlyInternet();
         rogers_internet_package_selection_page.clkInternetBuyContinue();
         
-        reporter.hardAssert(rogers_ineternet_profile_page.verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
+        reporter.hardAssert(rogers_ineternet_profile_page.verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
         rogers_ineternet_profile_page.setEmail();
         rogers_ineternet_profile_page.setFirstname();

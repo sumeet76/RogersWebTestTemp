@@ -57,10 +57,11 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	
 	@FindBy(xpath = "//select[@id='ds-form-input-id-26']")
 	WebElement ddlPassportExpiryDay;
-		
-	@FindBy(xpath = "//label[@for='ds-checkbox-id-0']")
+
+	@FindBy(xpath = "//div[@class='ds-checkbox__box my-12 rds-icon-check']")
 	WebElement chkConsent;
-		
+	//label[@for='ds-checkbox-id-0']
+
 	@FindBy(xpath = "//button[contains(@class,'-primary -large')]")
 	WebElement btnCreditCheckSubmit;
 	
@@ -218,6 +219,19 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 		txtLicenseNumber.clear();
 		txtLicenseNumber.sendKeys(strLicenseNumber);
 	}
+
+	/**
+	 * Set dynamic license number for British Columbia  on Credit check page
+	 * @param province of address
+	 * @author Chinnarao.Vattam
+	 */
+	public void setDrivingLicenseNumberMobile(String province) {
+		String strLicenseNumber = FormFiller.generateLicenseNumber(province);
+		reusableActions.waitForElementVisibility(txtContainer,20);
+		reusableActions.executeJavaScriptClick(txtContainer);
+		reusableActions.getWhenReady(txtLicenseNumber,5).clear();
+		reusableActions.getWhenReady(txtLicenseNumber, 3).sendKeys(strLicenseNumber);
+	}
 	
 	/**
 	 * Selects the second identification on Credit check page
@@ -281,6 +295,7 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkCreditConsentMobile() {
+		reusableActions.waitForElementVisibility(chkConsent,20);
 		reusableActions.executeJavaScriptClick(chkConsent);
 	}
 	
@@ -289,7 +304,8 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkCreditConsentSubmit() {
-		reusableActions.executeJavaScriptClick(chkConsent);
+		reusableActions.waitForElementVisibility(btnCreditCheckSubmit,20);
+		reusableActions.executeJavaScriptClick(btnCreditCheckSubmit);
 	}
 	
 	/**

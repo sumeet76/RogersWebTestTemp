@@ -556,7 +556,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void selectAccount(String strAccountNumber) {		
-	reusableActions.clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 20);
+	reusableActions.clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 90);
 	}
 	
 	/**
@@ -680,7 +680,6 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifySuccessfulLogin() {	
-		reusableActions.staticWait(3000);
 		 reusableActions.waitForElementVisibility(menuAccountNumber,60);
 		 String strAccountNumber = reusableActions.getWhenReady(menuAccountNumber,30).getText();
 		 return NumberUtils.isDigits(strAccountNumber);

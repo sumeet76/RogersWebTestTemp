@@ -64,15 +64,9 @@ public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass
         reporter.reportLogWithScreenshot("Availability check button enabled");
         rogers_home_page.clkIgniteAddressLookupSubmitMobile();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-        reporter.hardAssert(rogers_igniteTV_buy_page.verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-        rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
-
-
-        reporter.hardAssert(rogers_home_phone_selection_page.verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        rogers_home_phone_selection_page.clkSkipforNewNumber();
-        reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
-        rogers_igniteTV_buy_page.clkHomePhone();
+        reporter.hardAssert(rogers_igniteTV_buy_page.verifyBundlesPageMobile(),"Bundles Page has launched","Bundles Page has not launched");
+        rogers_igniteTV_buy_page.clkHomephoneMobile();
+        rogers_igniteTV_buy_page.selectSolarisStarterPackageMobile();
 
         reporter.hardAssert(rogers_igniteTV_buy_page.verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
@@ -80,7 +74,7 @@ public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass
         reporter.reportLogWithScreenshot("4k TV selected");
         rogers_igniteTV_buy_page.clkCheckoutMobile();   
                
-        reporter.hardAssert(rogers_igniteTV_profile_creation_page.verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
+        //reporter.hardAssert(rogers_igniteTV_profile_creation_page.verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
         rogers_igniteTV_profile_creation_page.setEmail();
         rogers_igniteTV_profile_creation_page.setFirstname();
@@ -110,20 +104,9 @@ public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass
         reporter.reportLogWithScreenshot("Passport Details");
        rogers_igniteTV_credit_check_page.clkCreditConsentSubmitMobile();
 
-        reporter.hardAssert(rogers_home_phone_selection_page.verifyPhoneNumberPage(),"Ignite page has Launched","Ignite page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        rogers_home_phone_selection_page.clkPhoneNumberGenerator();
-        rogers_home_phone_selection_page.clkContinueHomePhoneSelection();
-        
+
        reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
        reporter.reportLogWithScreenshot("Launched the tech install page");
-       rogers_tech_install_page.selSelffinstallDateAndTimeMobile();
-       //reporter.reportLogWithScreenshot("Launched the tech install page");
-       //rogers_tech_install_page.clkTechInstallSlotMobile();
-       //reporter.reportLogWithScreenshot("tech install details");
-       //rogers_tech_install_page.setMobielNumberMobile();
-       //rogers_tech_install_page.setEmailMobile();
-       //reporter.reportLogWithScreenshot("tech install consent");
        rogers_tech_install_page.clkTechInstalConsent();
        reporter.reportLogWithScreenshot("tech install details");
        rogers_tech_install_page.clkTechInstallContinueMobile();

@@ -88,17 +88,39 @@ public class RogersCH_TC_034a_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
 		rogers_igniteTV_buy_page.clkHomePhone();
         reporter.reportLogWithScreenshot("Launched the cart summary page");
         rogers_igniteTV_buy_page.set4KTV(); 
-        rogers_igniteTV_buy_page.clkCheckout();
-        reporter.reportLogWithScreenshot("Launched the create profile page");
-        rogers_igniteTV_profile_creation_page.clkSubmitProfile();   
-        reporter.reportLogWithScreenshot("Launched the credit evalution page");
-        rogers_igniteTV_credit_check_page.selectDOBYearExistingCustomerMigration(TestDataHandler.tc38_DigitalTVUpgradeToIgnite.getAccountDetails().getYear());
-        rogers_igniteTV_credit_check_page.selectDOBMonthExistingCustomerMigration(TestDataHandler.tc38_DigitalTVUpgradeToIgnite.getAccountDetails().getMonth());
-        rogers_igniteTV_credit_check_page.selectDOBDayExistingCustomerMigration(TestDataHandler.tc38_DigitalTVUpgradeToIgnite.getAccountDetails().getDate());
-        reporter.reportLogWithScreenshot("Entered the DOB details");
-        rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
-        rogers_home_page.clkMyRogers();       
+        rogers_home_page.clkMyRogers();
 		}
+
+	@Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
+	public void checkCartAbandonNoPortinExistingLegacySignedinfromMyRogersTest1() {
+		reporter.reportLogWithScreenshot("Launched the Home Page");
+		rogers_home_page.clkSignIn();
+		rogers_login_page.switchToSignInIFrame();
+		reporter.reportLogWithScreenshot("Launched the SignIn popup");
+		rogers_login_page.setUsernameIFrame(TestDataHandler.tc34_NoPortInAbondoneFlows.getUsername());
+		rogers_login_page.setPasswordIFrame(TestDataHandler.tc34_NoPortInAbondoneFlows.getPassword());
+		reporter.reportLogWithScreenshot("Enter the account credentails");
+		rogers_login_page.clkSignInIFrame();
+		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+		reporter.reportLogWithScreenshot("Skip popup");
+		rogers_login_page.clkSkipIFrame();
+		rogers_login_page.switchOutOfSignInIFrame();
+		rogers_account_overview_page.selectAccount(TestDataHandler.tc34_NoPortInAbondoneFlows.accountDetails.getBan());
+		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+		reporter.reportLogWithScreenshot("Launched the Account Page");
+		rogers_home_page.clkShop();
+		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+		rogers_home_page.clkIgniteTVExistingCustomer();
+		reporter.hardAssert(rogers_home_page.verifyWelcomeback(),"Welcome back popup has Launched","Welcome back popup has not Launched");
+		reporter.reportLogWithScreenshot("Launched the Welcome back popup");
+		rogers_home_page.clkWelcomeback();
+		reporter.reportLogWithScreenshot("Launched the cart summary page");
+		rogers_igniteTV_buy_page.clkCheckout();
+		reporter.reportLogWithScreenshot("Launched the information popup");
+
+		reporter.hardAssert( rogers_igniteTV_profile_creation_page.verifyImportantInformation(),"Important Information popup has Launched","Important Information popup has not Launched");
+		rogers_igniteTV_profile_creation_page.clkIUnderstand();
+	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin

@@ -183,7 +183,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSolChangeInternetPackage() {	
-		reusableActions.waitForElementVisibility(btnSolChangeInternetPackage, 90);
+		reusableActions.waitForElementVisibility(btnSolChangeInternetPackage, 120);
 		reusableActions.getWhenReady(btnSolChangeInternetPackage, 60).click();
 	}
 	
@@ -311,7 +311,9 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyContatUSInternetDowngarde() {
-		reusableActions.waitForElementInvisibility(popupLoadingFingersInternet, 90);		
+		if (reusableActions.isElementVisible(popupLoadingFingersInternet, 30)){
+			reusableActions.waitForElementInvisibility(popupLoadingFingersInternet, 60);
+		}
 		return reusableActions.isElementVisible(popupContatUSInternetDowngarde, 20);
 	}
 	
