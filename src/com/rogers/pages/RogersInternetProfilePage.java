@@ -16,13 +16,17 @@ public class RogersInternetProfilePage extends BasePageClass {
 	@FindBy(xpath = "//h4[@translate='global.checkout.profile.createProfile']")
 	WebElement txtProfile;
 
+	@FindBy(xpath = "//h2[@translate='global.checkout.profile.createProfile']")
+	WebElement txtSaiProfile;
+
+
 	@FindBy(xpath = "//div[@class='text-semi mt-3 -f24 ng-star-inserted']")
 	WebElement popupSessionModel;
 
 	@FindBy(xpath = "//button[@ng-reflect-variant='primary']//span[@ng-reflect-klass='ds-button__copy text-button te']")
 	WebElement btnContinueSession;
 	
-	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[1]")
+	@FindBy(xpath = "(//div[contains(@class,'ds-formField__inputContainer')])[1]")
 	WebElement txtContainerEmail;
 	
 	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
@@ -57,6 +61,16 @@ public class RogersInternetProfilePage extends BasePageClass {
 	public boolean verifyProfilePage() {
 		reusableActions.waitForElementVisibility(txtProfile,60);
 		return reusableActions.isElementVisible(txtProfile);
+	}
+
+	/**
+	 * To verify the launch of Profile Page
+	 * @return true if the email text box has available, else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyProfilePageSAI() {
+		reusableActions.waitForElementVisibility(txtSaiProfile,60);
+		return reusableActions.isElementVisible(txtSaiProfile);
 	}
 
 	/**
@@ -135,7 +149,7 @@ public class RogersInternetProfilePage extends BasePageClass {
 	public void clkSubmitProfile() {
 		reusableActions.getWhenReady(btnProfielSubmit, 60).click();
 	}
-	
+
 	/**
 	 * Click the Submit button on the profile page
 	 * @author Chinnarao.Vattam

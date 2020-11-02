@@ -180,7 +180,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyTechInstallPage() {
-		return	reusableActions.isElementVisible(txtTechInstalpage, 90);
+		return	reusableActions.isElementVisible(txtTechInstalpage, 120);
 	}
 	
 	
@@ -312,8 +312,28 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkTechInstallSlotMobile() {
-		reusableActions.waitForElementVisibility(rdoTechInstallSlot, 180);
-		reusableActions.executeJavaScriptClick(rdoTechInstallSlot);
+		if(reusableActions.isElementVisible(rdoTechInstallSlot, 90))
+		{
+			reusableActions.getWhenReady(rdoTechInstallSlot, 30).click();
+		}
+		else
+		{
+			reusableActions.waitForElementVisibility(clkCalendarIcon,20);
+			reusableActions.getWhenReady(clkCalendarIcon, 20).click();
+			Calendar calendar = Calendar.getInstance();
+			int intDate = calendar.get(Calendar.DATE);
+			int startDate = intDate + 20;
+			//If startDate > 29 , 29 being the number of days in the month
+			if(startDate>29) {
+				reusableActions.getWhenReady(clkChevron, 60).click();
+				startDate = startDate - 29;
+			}
+			String strStartDate= Integer.toString(startDate);
+			By selStartDate = By.xpath("//span[contains(text(),'" + strStartDate + "') and @class='owl-dt-calendar-cell-content']");
+			reusableActions.getWhenReady(selStartDate, 20).click();
+			reusableActions.waitForElementVisibility(rdoTechInstallSlot, 180);
+			reusableActions.getWhenReady(rdoTechInstallSlot, 90).click();
+		}
 	}
 	
 	/**
@@ -341,11 +361,18 @@ public class RogersTechInstallPage extends BasePageClass {
 	 */
 	public void setMobielNumberMobile() {
 		String strPhoneNumber = FormFiller.generatePhoneNumber();
-		reusableActions.waitForElementVisibility(txtContainerMobile,180);
-		reusableActions.executeJavaScriptClick(txtContainerMobile);
-		reusableActions.getWhenReady(txtMobielNumber, 30).clear();
-		reusableActions.getWhenReady(txtMobielNumber, 3).sendKeys(strPhoneNumber);
-	}
+		String strEmail = FormFiller.generateEmail();
+		if(reusableActions.isElementVisible(txtEnroute,90)) {
+			reusableActions.waitForElementVisibility(txtContainerMobile, 20);
+			reusableActions.getWhenReady(txtContainerMobile, 10).click();
+			reusableActions.getWhenReady(txtMobielNumber, 10).clear();
+			reusableActions.getWhenReady(txtMobielNumber, 3).sendKeys(strPhoneNumber);
+			reusableActions.waitForElementVisibility(txtContainerEmail, 30);
+			reusableActions.getWhenReady(txtContainerEmail, 10).click();
+			reusableActions.getWhenReady(txtEmail, 10).clear();
+			reusableActions.getWhenReady(txtEmail, 10).sendKeys(strEmail);
+		}
+}
 	
 	/**
 	 * Set dynamic mobile number on the Order Summary Page
@@ -507,7 +534,7 @@ public class RogersTechInstallPage extends BasePageClass {
 		reusableActions.javascriptScrollToMiddleOfPage();
 		reusableActions.getWhenReady(btnTechInstallContinue, 30).click();
 	}
-	
+
 	/**
 	 * Click the continue button to continue the TechInstall on installation page
 	 * @author Chinnarao.Vattam

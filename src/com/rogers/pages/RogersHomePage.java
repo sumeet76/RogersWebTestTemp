@@ -146,7 +146,7 @@ public class RogersHomePage extends BasePageClass {
 	WebElement btnIgniteAddressLookupSubmit;		
 	//button[@class='a-btnPrimary']	
 	
-	@FindBy(xpath = "//a[@class='w-100 ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large ng-star-inserted']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']")
+	@FindBy(xpath = "//span[@translate='global.targetedOffer.label.noContinueInternet']")
 	WebElement lnkOnlyInternet;		
 	
 	@FindBy(xpath = "//ngx-smart-modal[@id='loadingModal']")
@@ -197,9 +197,13 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='View navigation']")
 	WebElement lnkViewNavigationMobile;
 	
-	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet at your address']")
+	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet at your address']/span")
 	WebElement lnkInternetAvailability;
-	
+
+	@FindBy(xpath = "//h2[contains(text(),'Ignite your Internet') or contains(text(),'rience du service')]")
+	WebElement txtInternetBuyPage;
+
+
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement loaderInternetServiceability;
 	
@@ -568,7 +572,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkIgniteAddressLookupSubmitMobile() {
-		reusableActions.waitForElementVisibility(btnIgniteAddressLookupSubmit,30);
+		reusableActions.waitForElementVisibility(btnIgniteAddressLookupSubmit,90);
 		reusableActions.executeJavaScriptClick(btnIgniteAddressLookupSubmit);
 	}
 	
@@ -674,13 +678,16 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyInternetpage() {
-		return reusableActions.isElementVisible(lnkInternetAvailability, 60);
+		reusableActions.waitForElementVisibility(txtInternetBuyPage,120);
+		return reusableActions.isElementVisible(txtInternetBuyPage, 30);
 	}
 	/**
 	 * Click the InternetAvailability link Internet on the page 
 	 * @author chinnarao.vattam
 	 */
-	public void clkInternetAvailability() {	
+	public void clkInternetAvailability() {
+		reusableActions.staticWait(3000);
+		reusableActions.waitForElementVisibility(txtInternetBuyPage,120);
 		reusableActions.getWhenReady(lnkInternetAvailability,30).click();
 	}
 	

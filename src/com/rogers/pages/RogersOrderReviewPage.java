@@ -342,7 +342,6 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 */
 	public void clkSubmitUpdate() {
 		reusableActions.getWhenReady(clkSubmitUpdate, 100).click();
-		reusableActions.staticWait(10000);
 	}
 
 	/**
@@ -350,9 +349,8 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSubmitUpdateMobile() {
-		reusableActions.waitForElementInvisibility(clkSubmitUpdate, 50);
+		reusableActions.waitForElementInvisibility(clkSubmitUpdate, 120);
 		reusableActions.executeJavaScriptClick(clkSubmitUpdate);
-		reusableActions.staticWait(10000);
 	}
 	/**
 	 * Click on the Submit button on the order review page

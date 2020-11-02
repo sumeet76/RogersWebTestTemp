@@ -63,7 +63,6 @@ public class RogersCH_TC_031_IginteTV_BuySolarisDoublePlayChangeInstallationDate
 	    rogers_login_page.clkSkipIFrame();
 	    rogers_login_page.switchOutOfSignInIFrame();
 	    rogers_account_overview_page.selectAccount(TestDataHandler.tc31_SolarisInternetAccountWithUsageAndPackageUpgrade.accountDetails.getBan());
-		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
 		 rogers_home_page.clkExistingCustomerShop();
@@ -93,7 +92,7 @@ public class RogersCH_TC_031_IginteTV_BuySolarisDoublePlayChangeInstallationDate
 		rogers_igniteTV_buy_page.clkUpdateCart();
 		rogers_igniteTV_buy_page.clkCheckout();
 		
-		reporter.hardAssert(rogers_igniteTV_profile_creation_page.verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
+		//reporter.hardAssert(rogers_igniteTV_profile_creation_page.verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the create profile page");
 		rogers_igniteTV_profile_creation_page.clkSubmitProfile();
         

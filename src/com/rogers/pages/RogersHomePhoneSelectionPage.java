@@ -35,9 +35,7 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::button")
 	WebElement btnContinueHomePhoneSelection;
 	
-	@FindBy(xpath = "//span[@translate='global.cta.continue']")
-	WebElement btnContinueHomePhoneSelectionMigration;
-	
+
 	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -tertiary -large ng-star-inserted']")
 	WebElement popupNoContinue;
 	
@@ -133,18 +131,6 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 		reusableActions.waitForElementVisibility(btnContinueHomePhoneSelection, 20);
 		reusableActions.getWhenReady(btnContinueHomePhoneSelection, 20).click();
 	}
-	
-	/**
-	 *Click on Continue button after selecting the Phone number on the select phone number page 
-	 * @author chinnarao.vattam
-	 */
-	public void clkContinueHomePhoneSelectionMigration() {
-		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(btnContinueHomePhoneSelectionMigration, 90);
-		reusableActions.executeJavaScriptClick(btnContinueHomePhoneSelectionMigration);
-		reusableActions.clickIfAvailable(popupNoContinue,30);
-	}
-	
-	
+
 
 }

@@ -215,7 +215,16 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	public void clkExchangeLater() {
 		reusableActions.getWhenReady(btnExchangeLater, 180).click();
 	}
-	
+
+	/**
+	 * Click on the ExchangeLater button
+	 * @author chinnarao.vattam
+	 */
+	public void clkExchangeLaterMobile() {
+		reusableActions.waitForElementVisibility(btnExchangeLater, 180);
+		reusableActions.executeJavaScriptClick(btnExchangeLater);
+	}
+
 	/**
 	 * Click on the continue from theme packs button
 	 * @author chinnarao.vattam
@@ -226,7 +235,17 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 /*		reusableActions.waitForElementVisibility(addParticularChannelToCart.get(0), 240);*/
 		reusableActions.getWhenReady(btnContinueFromThemepacks, 120).click();
 	}
-	
+
+	/**
+	 * Click on the continue from theme packs button
+	 * @author chinnarao.vattam
+	 */
+	public void clkContinueFromThemepacksMobile() {
+		//Need time to load all the TV packages
+		reusableActions.staticWait(7000);
+		reusableActions.waitForElementVisibility(btnContinueFromThemepacks, 90);
+		reusableActions.executeJavaScriptClick(btnContinueFromThemepacks);
+	}
 	/**
 	 * Click on the "YesIHave4K" button
 	 * @author chinnarao.vattam

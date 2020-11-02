@@ -28,6 +28,10 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement popUpLoading;
+
+	@FindBy(xpath = "//h1[@class='cart-summary__header']")
+	WebElement txtCartSummaryHeader;
+
 	
 	@FindBy(id = "modemUpgradeContinue")
 	WebElement btnUpgradeContinue;
@@ -35,7 +39,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//input[@class='checkoutButton']")
 	WebElement btnCheckout;
 	
-	@FindBy(xpath = "//button//span[@translate='global.cta.continue']")
+	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::span[contains(@class,'ds-button__wrapper')]")
 	WebElement btnInternetBuyContinue;
 	
 	@FindBy(xpath = "//button[@aria-label='Add Ignite Internet 500u to your cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']")
@@ -107,12 +111,22 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		reusableActions.getWhenReady(btnInternetPackage, 90).click();
 	}
 		
-	public void clkInternetBuyContinue() {
-		reusableActions.waitForElementInvisibility(popUpLoading, 60);
+	public void clkInternetBuyContinueMobile() {
+		reusableActions.staticWait(3000);
 		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(btnInternetBuyContinue, 20).click();
+		reusableActions.moveToElementAndClick(btnInternetBuyContinue,90);
+		reusableActions.executeJavaScriptClick(btnInternetBuyContinue);
+		reusableActions.clickIfAvailable(btnInternetBuyContinue,90);
 	}
-	
+
+	public void clkInternetBuyContinue() {
+		if(reusableActions.isElementVisible(popUpLoading, 10)) {
+			reusableActions.waitForElementInvisibility(popUpLoading, 30);
+		}
+		reusableActions.javascriptScrollToMiddleOfPage();
+		reusableActions.getWhenReady(btnInternetBuyContinue, 60).click();
+	}
+
 	public void clkCheckout() {
 		reusableActions.waitForElementVisibility(btnCheckout, 90);
 		reusableActions.scrollToElement(btnCheckout);

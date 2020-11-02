@@ -190,7 +190,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 */
 	public void clkTVBadgeMobile() {
 		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(btnSolaristvBadge,30).click();
+		reusableActions.getWhenReady(btnSolaristvBadge,90).click();
 	}
 	
 	/**
@@ -365,7 +365,15 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	public void clkPopupChangeTVPackage() {
 		reusableActions.getWhenReady(popupChangeTVPackage, 90).click();
 	}
-	
+
+	/**
+	 * Click the ChangeTV Package button on solaris TV dashboard page
+	 * @author chinnarao.vattam
+	 */
+	public void clkPopupChangeTVPackageMobile() {
+		reusableActions.waitForElementVisibility(popupChangeTVPackage, 90);
+		reusableActions.executeJavaScriptClick(popupChangeTVPackage);
+	}
 	/**
 	 * Verify the contact us popup on solaris TV dashboard page
 	 * @return true if the solaris TV dashboard page display the contat us popup , else false

@@ -53,6 +53,7 @@ public class TestDataHandler {
 	public static AccountData tc42SolarisInternetAccountWithUsage;
 	public static AccountData tc20_SolarisInternetAccountForUpgrade;
 	public static AccountData tc09_SolarisTVAccountForUpgrade;
+	public static AccountData tcm05_SolarisTVAccountForUpgrade;
 	public static AccountData tc14_solarisTVAccountStarterPackage;
 	public static AccountData tc14_SolarisTVAccountFlex5Package;
 	public static AccountData tc14_solarisTVAccountPopularPackage;
@@ -62,7 +63,8 @@ public class TestDataHandler {
 	public static AccountData tc37_internetAccountUpgrade;
 	public static AccountData tc45_digitalTVAccountUpgradePackage;
 	public static AccountData  tc46_legacyInternetAccount;
-	public static AccountData legacyInternetAccountUpgrade;
+	public static AccountData tcm09_SolarisInternetAccount;
+	public static AccountData tcm06_IgniteTVAccount;
 	public static AccountData tc39_40_SolarisPortinFlows;
 	public static AccountData tc38_DigitalTVUpgradeToIgnite;
 	public static AccountData tc21_SolarisInternetOldConstructor;
@@ -209,6 +211,7 @@ public class TestDataHandler {
     	solarisMultipleSubscriptions = YamlHandler.getCableAccountData("SolarisMultipleSubscriptions");
     	
     	//Ignite Internet test data
+		tcm09_SolarisInternetAccount = YamlHandler.getCableAccountData("TCM09_SolarisInternetAccount");
     	tc16_17_18_19_SolarisInternetAccount = YamlHandler.getCableAccountData("TC16_17_18_19_SolarisInternetAccount");
     	tc37_internetAccountUpgrade   = YamlHandler.getCableAccountData("TC37_InternetAccountUpgrade");
 		tc23_standaloneInternetAccountforUpgrade   = YamlHandler.getCableAccountData("TC23_StandaloneInternetAccountforUpgrade");
@@ -220,6 +223,7 @@ public class TestDataHandler {
     	tc31_SolarisInternetAccountWithUsageAndPackageUpgrade = YamlHandler.getCableAccountData("TC31_SolarisInternetAccountWithUsageAndPackageUpgrade");
 
     	//Ignite TV test data
+		tcm05_SolarisTVAccountForUpgrade  = YamlHandler.getCableAccountData("TCM05_SolarisTVAccountForUpgrade");
 		tc35_CRMaddressMismatchWithSGI = YamlHandler.getCableAccountData("TC35_CRMaddressMismatchWithSGI");
 		tc01_02_03_IgniteTVAccount = YamlHandler.getCableAccountData("TC01_02_03_IgniteTVAccount");
 		tc05_IgniteTV4Plus1Account = YamlHandler.getCableAccountData("TC05_IgniteTV4Plus1Account");

@@ -76,7 +76,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOrderConfirmation() {
-		return reusableActions.isElementVisible(infoChangeOrderConfirmation, 90);
+		return reusableActions.isElementVisible(infoChangeOrderConfirmation, 120);
 	}
 	
 	/**
@@ -85,7 +85,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOrderConfirmationNew() {
-		return reusableActions.isElementVisible(infoChangeOrderConfirmationnew, 90);
+		return reusableActions.isElementVisible(infoChangeOrderConfirmationnew, 120);
 	}
 	/**
 	 * Verify the the yellow banner with order success information

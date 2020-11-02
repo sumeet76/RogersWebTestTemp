@@ -69,7 +69,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	WebElement txtEmail;
 
 
-	@FindBy(xpath = "//h2[@translate='global.label.ourBundles']")
+	@FindBy(xpath = "//h2[@class='dsa-billboard__copyHeading ng-star-inserted']")
 	WebElement txtBundlesPage;
 
 	@FindBy(xpath = "//span[@translate='global.modals.cartAbandonment.successModal.primaryButtonLabel']")
@@ -99,14 +99,14 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath ="//div[@class='mt-auto w-100']//button[@aria-label='Order Rogers Ignite Starter online now' or @aria-label='Commandez Élan Découverte maintenant'] ")
 	WebElement btnSolarisStarterPackageServiceability;	
 	
-	@FindBy(xpath ="//div[@class='mt-auto w-100']//button[@aria-label='Add Rogers Ignite Starter Bundle to cart']")
+	@FindBy(xpath ="//h3[contains(text(),'Ignite Starter') or contains(text(),'Élan Découverte')]/ancestor::div[@class='bundle-tile-row']//span[@translate='global.cta.addToCart']")
 	WebElement btnSolarisStarterPackageNew;	
 	//span[@translate='global.cta.addToCart']
 
-	@FindBy(xpath ="//div[@class='mt-auto w-100']//button[@aria-label='Add Rogers Ignite Starter Bundle to cart']")
+	@FindBy(xpath ="//h3[contains(text(),'Ignite Starter') or contains(text(),'Élan Découverte')]/ancestor::div[@class='bundle-tile-row']//span[@translate='global.cta.addToCart']")
 	WebElement btnSolarisStarterPackageMobile;	
 	
-	@FindBy(xpath = "//div[@aria-label='$134.99 per m']")
+	@FindBy(xpath = "(//div[@aria-label='$134.99 per m'])[2]")
 	WebElement txtPackageCost;	
 	
 	@FindBy(xpath = "//p[@id='ds-modal-title-1']")
@@ -233,7 +233,14 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	public void clkHomephone() {
 		reusableActions.getWhenReady(checkboxHomephone, 20).click();
 	}
-
+	/**
+	 * To click on  Home phone checkbox
+	 * @author chinnarao.vattam
+	 */
+	public void clkHomephoneMobile() {
+		reusableActions.waitForElementVisibility(checkboxHomephone, 60);
+		reusableActions.executeJavaScriptClick(checkboxHomephone);
+	}
 
 	/**
 	 * To click on the chevron of your cart
@@ -259,10 +266,19 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyBundlesPage() {
-		reusableActions.waitForElementVisibility(txtBundlesPage, 60);
+		reusableActions.waitForElementVisibility(txtBundlesPage, 120);
 		return	reusableActions.isElementVisible(txtBundlesPage);
 	}
 
+	/**
+	 * To verify Bundles Page
+	 * @return true if the Bundles is available else return false
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyBundlesPageMobile() {
+		reusableActions.waitForElementVisibility(txtBundlesPage, 120);
+		return	reusableActions.isElementVisible(txtBundlesPage);
+	}
 	/**
 	 * To verify Upgrading To Ignite bundels Modal
 	 * @param	bundleName : name of the bundle package
@@ -560,18 +576,19 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisStarterPackageNew() {
-		reusableActions.waitForElementVisibility(btnSolarisStarterPackageNew, 30);
-		reusableActions.waitForElementVisibility(txtPackageCost, 15);
-		reusableActions.getWhenReady(btnSolarisStarterPackageNew, 10).click();
+		reusableActions.waitForElementVisibility(btnSolarisStarterPackageNew, 180);
+		reusableActions.getWhenReady(btnSolarisStarterPackageNew, 60).click();
 	}
-	
 	/**
 	 * Click Starter package button for anonymous customer
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisStarterPackageMobile() {
-		reusableActions.getWhenReady(btnSolarisStarterPackageMobile, 60).click();
+		reusableActions.waitForElementVisibility(btnSolarisStarterPackageNew, 120);
+		reusableActions.executeJavaScriptClick(btnSolarisStarterPackageNew);
+		//reusableActions.getWhenReady(btnSolarisStarterPackageMobile, 60).click();
 	}
+
 	/**
 	 * Click Starter package to check Service ability for Starter package
 	 * @author chinnarao.vattam
