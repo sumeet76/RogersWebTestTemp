@@ -41,8 +41,8 @@ public class Mobile_RogersCH_TC_004_IginteInternet_InternetPackageUpgradeTest ex
     	rogers_home_page.clkSignInMobile();    	
         rogers_login_page.switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        rogers_login_page.setUsernameIFrame(TestDataHandler.tcm09_SolarisInternetAccount.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.tcm09_SolarisInternetAccount.getPassword());
+        rogers_login_page.setUsernameIFrame(TestDataHandler.tcm04_SolarisInternetAccount.getUsername());
+        rogers_login_page.setPasswordIFrame(TestDataHandler.tcm04_SolarisInternetAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         rogers_login_page.clkSignInIFrame();
     	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
@@ -55,7 +55,7 @@ public class Mobile_RogersCH_TC_004_IginteInternet_InternetPackageUpgradeTest ex
         reporter.reportLogWithScreenshot("Launched the Interent dashboard");
         rogers_internet_dashboard_page.clkSolChangeInternetPackageMobile();
         reporter.reportLogWithScreenshot("Launched the Interent packages page");
-        rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.tcm09_SolarisInternetAccount.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getAccountDetails().getUpgradePlanFr());
+        rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.tcm04_SolarisInternetAccount.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getAccountDetails().getUpgradePlanFr());
         reporter.reportLogWithScreenshot("Launched the agreement page");
         rogers_internet_dashboard_page.clkInternetChangeOK();
 		reporter.hardAssert(rogers_order_review_page.verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
