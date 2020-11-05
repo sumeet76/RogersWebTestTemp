@@ -681,9 +681,22 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifySuccessfulLogin() {	
-		 reusableActions.waitForElementVisibility(menuAccountNumber,60);
+		 int counter = 0;
+		 boolean overviewPageLoaded = false;
+		 reusableActions.waitForElementVisibility(menuAccountNumber,90);
 		 String strAccountNumber = reusableActions.getWhenReady(menuAccountNumber,30).getText();
-		 return NumberUtils.isDigits(strAccountNumber);
+		 while (counter<3) {
+			 
+			 if(NumberUtils.isDigits(strAccountNumber))
+			 {
+				 overviewPageLoaded = true;
+				 break;
+			 }
+			 reusableActions.staticWait(5000);
+			 strAccountNumber = reusableActions.getWhenReady(menuAccountNumber,30).getText();
+			 counter++;		 
+		}
+		 return overviewPageLoaded;
 	}
 		
 	
@@ -693,9 +706,22 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifySuccessfulLoginMobile() {	
-	 reusableActions.waitForElementVisibility(menuAccountNumberMobile,60);
+	 int counter = 0;
+	 boolean overviewPageLoaded = false;
+	 reusableActions.waitForElementVisibility(menuAccountNumberMobile,90);
 	 String strAccountNumber = reusableActions.getWhenReady(menuAccountNumberMobile,5).getText();
-	 return NumberUtils.isDigits(strAccountNumber);
+	 while (counter<3) {
+		 
+		 if(NumberUtils.isDigits(strAccountNumber))
+		 {
+			 overviewPageLoaded = true;
+			 break;
+		 }
+		 reusableActions.staticWait(5000);
+		 strAccountNumber = reusableActions.getWhenReady(menuAccountNumber,30).getText();
+		 counter++;		 
+	}
+	 return overviewPageLoaded;
 	}
 	
 	

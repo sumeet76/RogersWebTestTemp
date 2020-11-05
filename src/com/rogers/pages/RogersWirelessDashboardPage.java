@@ -330,6 +330,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	WebElement modalDeviceDetails;
 	
 	@FindAll({
+		@FindBy(xpath = "//span[@class='ds-icon rds-icon-error']"),
 		@FindBy (xpath = "//span[@class='ds-icon rds-icon-close']"),
 		@FindBy (xpath = "//button[@title='Close Device details window' or @title='Fermer la fenêtre Détails de l’appareil']")
 	})
@@ -2210,7 +2211,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isStreamSaverONDisplayed() {		
-		return reusableActions.isElementVisible(btnStreamSaverSwitchON);
+		return reusableActions.isElementVisible(btnStreamSaverSwitchON,60);
 	}
 
 	/**
@@ -2218,7 +2219,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkStreamSaverOn() {
-		reusableActions.getWhenReady(btnStreamSaverSwitchOff).click();
+		reusableActions.getWhenReady(btnStreamSaverSwitchOff,60).click();
 		
 	}
 
@@ -2248,7 +2249,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isDataAccessOFF() {
-		return reusableActions.isElementVisible(divDataAccessOFF);
+		return reusableActions.isElementVisible(divDataAccessOFF,60);
 	}
 
 	/**

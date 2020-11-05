@@ -411,7 +411,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 */
 	public void clkGoToMyRogers()
 	{
-		reusableActions.getWhenReady(btnGoToMyRogers).click();
+		reusableActions.getWhenReady(btnGoToMyRogers,60).click();
 	}
 
 	/**
