@@ -62,17 +62,13 @@ public class RogersCH_TC_004_IginteTV_TVChannelsSwapTest extends BaseTestClass {
     reporter.reportLogWithScreenshot("removed the Swap-out Channels");
     rogers_solaris_tv_dashboard_page.swapChannelIn(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getSwapInChannelOne());
     reporter.reportLogWithScreenshot("Selceted the Swap-in Channel one");
-    rogers_solaris_tv_dashboard_page.btnChannelAdd();
     rogers_solaris_tv_dashboard_page.btnClearSerachResults();
     rogers_solaris_tv_dashboard_page.swapChannelIn(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getSwapInChannelTwo());
     reporter.reportLogWithScreenshot("Selceted the Swap-in Channel two");
-    rogers_solaris_tv_dashboard_page.btnChannelAdd();
     rogers_solaris_tv_dashboard_page.btnClearSerachResults();
     rogers_solaris_tv_dashboard_page.swapChannelIn(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getSwapInChannelThree());
     reporter.reportLogWithScreenshot("Selceted the Swap-in Channel three");
-    rogers_solaris_tv_dashboard_page.btnChannelAdd();
-    rogers_solaris_tv_dashboard_page.btnClearSerachResults();    
-    rogers_solaris_tv_dashboard_page.clkConfirmSwap(); 
+    rogers_solaris_tv_dashboard_page.clkConfirmSwap();
     reporter.reportLogWithScreenshot("Swap Success popup has launched");
     rogers_solaris_tv_dashboard_page.clkSuccessSwap();    
     reporter.reportLogWithScreenshot("Swap success");  
