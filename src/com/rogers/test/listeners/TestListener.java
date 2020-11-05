@@ -1,7 +1,6 @@
 package com.rogers.test.listeners;
 import com.relevantcodes.extentreports.LogStatus;
 import com.rogers.test.base.BaseTestClass;
-import com.rogers.testdatamanagement.TestDataHandler;
 import extentreport.ExtentManager;
 import extentreport.ExtentTestManager;
 import extentreport.FileUpload;
@@ -237,9 +236,8 @@ public class TestListener extends BaseTestClass implements ITestListener , ISuit
 
 
 	@Override
-	public void onStart(ISuite suite) {
+	public void onStart(ISuite suite)  {
 
-		TestDataHandler.dataInit(suite.getName());
 		System.out.println("Data File Initialized");
 	}
 

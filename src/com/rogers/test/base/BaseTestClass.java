@@ -7,7 +7,6 @@ import com.rogers.pages.RogersBuildPlanPage;
 import com.rogers.pages.RogersChooseAddonsPage;
 import com.rogers.pages.RogersChoosePhonePage;
 import com.rogers.pages.RogersChoosePlanPage;
-import com.rogers.pages.RogersPaymentPage;
 import com.rogers.pages.RogersShippingPage;
 import com.rogers.pages.RogersWirelessDetailsPage;
 import com.rogers.pages.*;
@@ -28,10 +27,13 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.ITestContext;
+import org.testng.annotations.BeforeSuite;
 import utils.AppiumServerJava;
 import utils.BrowserDrivers;
 import utils.Reporter;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.URI;
@@ -1034,5 +1036,9 @@ public class BaseTestClass {
 			return webDriverThreadLocal.get();
 	}
 
+	@BeforeSuite
+	public void beforeSuite(ITestContext iTestContext)throws FileNotFoundException {
+		TestDataHandler.dataInit(iTestContext.getSuite().getName());
+	}
 
 }
