@@ -25,9 +25,9 @@ public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends B
 	    reporter.reportLogWithScreenshot("Skip popup");
 	    rogers_login_page.clkSkipIFrame();
 	    rogers_login_page.switchOutOfSignInIFrame();
-	    rogers_account_overview_page.selectAccount(TestDataHandler.tc39_40_SolarisPortinFlows.accountDetails.getBan());
-		//reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        reporter.reportLogWithScreenshot("Launched the Account Page");
+		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+        rogers_account_overview_page.selectAccount(TestDataHandler.tc39_40_SolarisPortinFlows.accountDetails.getBan());
+		reporter.reportLogWithScreenshot("Launched the Account Page");
         rogers_home_page.clkShop(); 
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
         rogers_home_page.clkIgniteTVExistingCustomer();
@@ -58,8 +58,8 @@ public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends B
         rogers_home_phone_port_in_page.setCurrentPhoneNumber(); 
         reporter.reportLogWithScreenshot("Port-in details set");
         rogers_home_phone_port_in_page.selIMEI();
-        rogers_home_phone_port_in_page.setAccountNumberOrIMEI("352912110031531") ;
-        rogers_home_phone_port_in_page.clkPhoneCheck();
+        rogers_home_phone_port_in_page.setAccountNumberOrIMEI(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getImei()) ;
+        rogers_home_phone_port_in_page.clkPhoneNumberEligibiltyCheck();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
         rogers_igniteTV_buy_page.clkHomePhone();
         

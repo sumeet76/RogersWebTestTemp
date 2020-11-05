@@ -223,6 +223,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectFirstID(String strFirstID) {
+		reusableActions.waitForElementVisibility(ddlFirstID,10);
 		reusableActions.selectWhenReadyByVisibleText(ddlFirstID, strFirstID);
 	}
 	
@@ -232,6 +233,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectProvince(String strProvince) {
+		reusableActions.waitForElementVisibility(ddlProvince,10);
 		reusableActions.selectWhenReadyByVisibleText(ddlProvince, strProvince);
 	}
 	
@@ -259,7 +261,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @param strYYYY Expire year
 	 * @author Chinnarao.Vattam
 	 */
-	public void selectExpiryYearYYYY(String strYYYY) {
+	public void selectExpiryYear(String strYYYY) {
 		reusableActions.selectWhenReadyByVisibleText(ddlExpiryYear, strYYYY);
 	}
 	

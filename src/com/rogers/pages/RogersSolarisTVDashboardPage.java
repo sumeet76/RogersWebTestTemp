@@ -69,13 +69,13 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@id='tvPopupTitle']/i[@class='ute-icon']")
 	WebElement infoSuccessIcon;	
 
-	@FindBy(xpath = "(//div[@class='col-md-12 tv-channel-list']//span[@class='ute-icon-circle-cross'])[1]")
+	@FindBy(xpath = "((//div[@ng-repeat='channelsArray in listofChannelsArray'])[1]//div[@class='channel-logo-body'])[1]")
 	WebElement btnSelectChannelOne;
 	
-	@FindBy(xpath = "(//div[@class='col-md-12 tv-channel-list']//span[@class='ute-icon-circle-cross'])[2]")
+	@FindBy(xpath = "((//div[@ng-repeat='channelsArray in listofChannelsArray'])[1]//div[@class='channel-logo-body'])[2]")
 	WebElement btnSelectChannelTwo;
 	
-	@FindBy(xpath = "(//div[@class='col-md-12 tv-channel-list']//span[@class='ute-icon-circle-cross'])[3]")
+	@FindBy(xpath = "((//div[@ng-repeat='channelsArray in listofChannelsArray'])[1]//div[@class='channel-logo-body'])[3]")
 	WebElement btnSelectChannelThree;
 	
 	@FindBy(xpath = "//input[contains(@class,'ng-empty')]")
@@ -509,7 +509,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 			reusableActions.getWhenReady(txtEnterChannelToSerach, 30).sendKeys(strInChannel);
 			reusableActions.waitForElementVisibility(btnSearchChannel,60);
 			reusableActions.executeJavaScriptClick(btnSearchChannel);			
-			By imgChannel = By.xpath("//div[@class='channel-title' and contains(text(), '"+ strInChannel+"')]/ancestor::div[@class='genre-channel']//span[@class='ute-icon-info']");
+			By imgChannel = By.xpath("//div[@class='channel-title' and contains(text(), '"+ strInChannel+"')]/ancestor::div[@class='genre-channel']//div[@class='channel-logo-body']");
 			reusableActions.waitForElementVisibility(btnSearchChannel,90);
 			reusableActions.getWhenReady(imgChannel, 30).click();	
 	}

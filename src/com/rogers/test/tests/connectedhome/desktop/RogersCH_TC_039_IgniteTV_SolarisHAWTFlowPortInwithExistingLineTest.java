@@ -58,8 +58,8 @@ public class RogersCH_TC_039_IgniteTV_SolarisHAWTFlowPortInwithExistingLineTest 
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
         rogers_home_page.clkAddressCheck();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getAddress().get("line2");
         rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
         rogers_home_page.clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
@@ -67,26 +67,30 @@ public class RogersCH_TC_039_IgniteTV_SolarisHAWTFlowPortInwithExistingLineTest 
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
 
         reporter.hardAssert(rogers_home_phone_selection_page.verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
+        reporter.reportLogWithScreenshot("Launched the home phone selection page");
         rogers_home_phone_port_in_page.setHomePhoneNumber(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getPhoneNumber());
         rogers_home_phone_port_in_page.clkPhoneNumberEligibiltyCheck();
 
-        rogers_home_phone_port_in_page.verifyPhoneNumberSuccess();
+        reporter.hardAssert(rogers_home_phone_port_in_page.verifyPhoneNumberSuccess(),"Port-in Number validation success","Port-in Number validation Failed");
         reporter.reportLogWithScreenshot("Port-in Number validation success");
         rogers_home_phone_port_in_page.setFirstName();
         rogers_home_phone_port_in_page.setLastName();
         rogers_home_phone_port_in_page.setInvoiceAddress(strAddressLine1+", "+strAddressLine2+", CANADA");
-        rogers_home_phone_port_in_page.setCurrentPhoneNumber(); 
+        rogers_home_phone_port_in_page.setCurrentPhoneNumber();
         reporter.reportLogWithScreenshot("Port-in details set");
-        rogers_home_phone_port_in_page.clkPhoneCheck();
+        rogers_home_phone_port_in_page.selIMEI();
+        rogers_home_phone_port_in_page.setAccountNumberOrIMEI(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getImei()) ;
+        rogers_home_phone_port_in_page.clkPhoneNumberEligibiltyCheck();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
         rogers_igniteTV_buy_page.clkHomePhone();
-        rogers_igniteTV_buy_page.verify4KTV();
+
+        reporter.hardAssert(rogers_igniteTV_buy_page.verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
         rogers_igniteTV_buy_page.set4KTV();
         reporter.reportLogWithScreenshot("4k TV selected");
         rogers_igniteTV_buy_page.clkCheckout();
         rogers_igniteTV_profile_creation_page.verifyProfilePage();
+
         reporter.reportLogWithScreenshot("Launched the create profile page");
         rogers_igniteTV_profile_creation_page.setEmail();
         rogers_igniteTV_profile_creation_page.setFirstname();
@@ -99,14 +103,14 @@ public class RogersCH_TC_039_IgniteTV_SolarisHAWTFlowPortInwithExistingLineTest 
         rogers_igniteTV_credit_check_page.selectDOBMonth();
         rogers_igniteTV_credit_check_page.selectDOBDay();
         reporter.reportLogWithScreenshot("Entered DOB details");
-        rogers_igniteTV_credit_check_page.selectFirstID("2");
-        rogers_igniteTV_credit_check_page.selectProvince("ON");
-        rogers_igniteTV_credit_check_page.selectExpiryYearwithSpace();
+        rogers_igniteTV_credit_check_page.selectFirstID("Driver's License");
+        rogers_igniteTV_credit_check_page.selectProvince("Ontario");
+        rogers_igniteTV_credit_check_page.selectExpiryYear();
         rogers_igniteTV_credit_check_page.selectExpiryMonth();
         rogers_igniteTV_credit_check_page.selectExpiryDay();
-        rogers_igniteTV_credit_check_page.setDrivingLicenseNumber("ONTARIO");
+        rogers_igniteTV_credit_check_page.setDrivingLicenseNumber("ON");
         reporter.reportLogWithScreenshot("Driving License Details");
-        rogers_igniteTV_credit_check_page.selectSecondIDOption("4");
+        rogers_igniteTV_credit_check_page.selectSecondIDOption("Passport");
         rogers_igniteTV_credit_check_page.setPassportNumber();
         rogers_igniteTV_credit_check_page.selectPassportExpiryYear();
         rogers_igniteTV_credit_check_page.selectPassportExpiryMonth();
@@ -151,7 +155,7 @@ public class RogersCH_TC_039_IgniteTV_SolarisHAWTFlowPortInwithExistingLineTest 
 	
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }
