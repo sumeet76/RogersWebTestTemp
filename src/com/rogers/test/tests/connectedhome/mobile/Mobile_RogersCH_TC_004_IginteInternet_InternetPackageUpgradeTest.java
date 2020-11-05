@@ -38,36 +38,36 @@ public class Mobile_RogersCH_TC_004_IginteInternet_InternetPackageUpgradeTest ex
     @Test(groups = {"MobileRegressionCH"})
     public void checkInternetPackageUpgradeMobile() {
         reporter.reportLogWithScreenshot("Home Page");
-    	rogers_home_page.clkSignInMobile();    	
-        rogers_login_page.switchToSignInIFrame();
+    	getRogersHomePage().clkSignInMobile();    	
+        getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        rogers_login_page.setUsernameIFrame(TestDataHandler.tcm04_SolarisInternetAccount.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.tcm04_SolarisInternetAccount.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tcm04_SolarisInternetAccount.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tcm04_SolarisInternetAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
-        rogers_login_page.clkSignInIFrame();
-    	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        getRogersLoginPage().clkSignInIFrame();
+    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
-        rogers_login_page.clkSkipIFrame();
-        rogers_login_page.switchOutOfSignInIFrame();
-    	reporter.hardAssert(rogers_account_overview_page.verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
+        getRogersLoginPage().clkSkipIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();
+    	reporter.hardAssert(getRogersAccountOverviewPage().verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
-        rogers_internet_dashboard_page.clkInternetBadgeMobile();
+        getRogersInternetDashboardPage().clkInternetBadgeMobile();
         reporter.reportLogWithScreenshot("Launched the Interent dashboard");
-        rogers_internet_dashboard_page.clkSolChangeInternetPackageMobile();
+        getRogersInternetDashboardPage().clkSolChangeInternetPackageMobile();
         reporter.reportLogWithScreenshot("Launched the Interent packages page");
-        rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.tcm04_SolarisInternetAccount.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getAccountDetails().getUpgradePlanFr());
+        getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tcm04_SolarisInternetAccount.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getAccountDetails().getUpgradePlanFr());
         reporter.reportLogWithScreenshot("Launched the agreement page");
-        rogers_internet_dashboard_page.clkInternetChangeOK();
-		reporter.hardAssert(rogers_order_review_page.verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
+        getRogersInternetDashboardPage().clkInternetChangeOK();
+		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");
 		
-		reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
+		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
 		
-        rogers_order_review_page.clkAcceptenceCheckboxUpdateInternetMobile();
+        getRogersOrderReviewPage().clkAcceptenceCheckboxUpdateInternetMobile();
         reporter.reportLogWithScreenshot("Agreement details");
-        rogers_order_review_page.clkSubmitUpdateInternetMobile();
+        getRogersOrderReviewPage().clkSubmitUpdateInternetMobile();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmationNew(),"Update order completed","Update order Failed");                             
+        reporter.softAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Update order completed","Update order Failed");
         reporter.reportLogWithScreenshot("Verified the Confirmation page");
     	}
 

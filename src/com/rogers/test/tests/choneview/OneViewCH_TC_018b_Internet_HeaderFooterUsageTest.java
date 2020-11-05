@@ -18,27 +18,27 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class OneViewCH_TC_018b_Internet_HeaderFooterUsageTest extends BaseTestClass {
     @Test @Parameters("strBrowser")
     public void checkInternetHeaderFooterAndUsage(String strBrowser) {
-		environment_selection_page.selectOneViewEnv(TestDataHandler.chOneViewConfig.getOneViewenv());
+		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.chOneViewConfig.getOneViewenv());
 /*		reporter.reportLogWithScreenshot("OneView Interface has Launched");
-		environment_selection_page.enterDealerCode(TestDataHandler.igniteTVParentalcontrols.getDealercode());
+		getEnvironmentSelectionPage().enterDealerCode(TestDataHandler.igniteTVParentalcontrols.getDealercode());
 		reporter.reportLogWithScreenshot("Enter the dealer code");
-		environment_selection_page.submitDealerCode();	*/
+		getEnvironmentSelectionPage().submitDealerCode();	*/
 		reporter.reportLogWithScreenshot("Launched the account dashboard page");
-		account_over_view_page.selectInternetBadage();
+		getAccountOverViewPage().selectInternetBadage();
 		reporter.reportLogWithScreenshot("Lanched the internet dashboard page ");
-		reporter.softAssert(internet_dashboard_page.verifyHeader(),"Header is available","Verification of Header failed");
+		reporter.softAssert(getInternetDashboardPage().verifyHeader(),"Header is available","Verification of Header failed");
 		reporter.reportLogWithScreenshot("Header available on Internet Dashboard page");
-		reporter.softAssert(internet_dashboard_page.verifyFooter(),"Footer is available","Verification of Header failed");
+		reporter.softAssert(getInternetDashboardPage().verifyFooter(),"Footer is available","Verification of Header failed");
 		reporter.reportLogWithScreenshot("Footer available on Internet Dashboard page");
-		internet_dashboard_page.clickbtnUsageAndAlerts();
+		getInternetDashboardPage().clickbtnUsageAndAlerts();
 		reporter.reportLogWithScreenshot("Internet usage page launched");
-		//reporter.softAssert(rogers_internet_usage_ov_page.verifyDailyBreakdownTable(strBrowser),"Verification for break down table passed","Verification for breakdown table failed");
+		//reporter.softAssert(getRogersInternetUsageOVPage().verifyDailyBreakdownTable(strBrowser),"Verification for break down table passed","Verification for breakdown table failed");
 		reporter.reportLogWithScreenshot("Daily Break down table available");
-		rogers_internet_usage_ov_page.clkMonthlyUsage(strBrowser);
+		getRogersInternetUsageOVPage().clkMonthlyUsage(strBrowser);
 		reporter.reportLogWithScreenshot("Monthly Usage page launched");
-		reporter.softAssert(rogers_internet_usage_ov_page.verifyMonthlyBreakdownTable(strBrowser),"Verification for monthly down table passed","Verification for breakdown table failed");
+		reporter.softAssert(getRogersInternetUsageOVPage().verifyMonthlyBreakdownTable(strBrowser),"Verification for monthly down table passed","Verification for breakdown table failed");
 		reporter.reportLogWithScreenshot("Monthly Break down table available");
-		rogers_internet_usage_ov_page.clkUsageAlerts(strBrowser);
+		getRogersInternetUsageOVPage().clkUsageAlerts(strBrowser);
 		reporter.reportLogWithScreenshot("Usage Alers Page launched");
 		}
     

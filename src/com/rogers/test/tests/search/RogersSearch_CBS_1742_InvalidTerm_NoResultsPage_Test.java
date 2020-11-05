@@ -31,25 +31,25 @@ public class RogersSearch_CBS_1742_InvalidTerm_NoResultsPage_Test extends BaseTe
     public void validateResultLandingPage(String[] csvRow) throws UnsupportedEncodingException {
         getDriver().get(System.getProperty("SearchUrl"));
         reporter.reportLogWithScreenshot("CBS Search Page");
-        rogers_search_page.enterTextSearch(csvRow[0]);
+        getRogersSearchPage().enterTextSearch(csvRow[0]);
         reporter.reportLogWithScreenshot("Search field entered");
-        reporter.hardAssert(rogers_search_page.isSuggestionsSectionDisplayed(),
+        reporter.hardAssert(getRogersSearchPage().isSuggestionsSectionDisplayed(),
                 "Suggestion Label Visible", "Suggestion Label Not Visible");
-        reporter.hardAssert(rogers_search_page.isSupportSectionDisplayed(),
+        reporter.hardAssert(getRogersSearchPage().isSupportSectionDisplayed(),
                 "Support Label Visible", "Support Label Not Visible");
-        reporter.hardAssert(!rogers_search_page.isSupportSectionPopulated(),
+        reporter.hardAssert(!getRogersSearchPage().isSupportSectionPopulated(),
                 "Suggestions not loaded", "Suggestion loaded");
-        reporter.hardAssert(!rogers_search_page.isLeftSectionPopulated(),
+        reporter.hardAssert(!getRogersSearchPage().isLeftSectionPopulated(),
                 "Support links not loaded", "Support links loaded");
-        rogers_search_page.clkOnMagnifyingLens();
+        getRogersSearchPage().clkOnMagnifyingLens();
         reporter.reportLogWithScreenshot("Search Results Page");
-        reporter.hardAssert(rogers_search_page.validateURLContains(csvRow[0]),
+        reporter.hardAssert(getRogersSearchPage().validateURLContains(csvRow[0]),
                 "Result Landing Page displayed", "Result Landing Page not displayed");
-        reporter.hardAssert(rogers_search_page.isNoResultsDisplayed(),
+        reporter.hardAssert(getRogersSearchPage().isNoResultsDisplayed(),
                 "No Results Found","No Results message not displayed");
-        reporter.hardAssert(!rogers_search_page.isFilterDisplayed("Support"),
+        reporter.hardAssert(!getRogersSearchPage().isFilterDisplayed("Support"),
                 "Filter Support is Not Displayed", "Filter Support is Displayed");
-        reporter.hardAssert(!rogers_search_page.isFilterDisplayed("Shop"),
+        reporter.hardAssert(!getRogersSearchPage().isFilterDisplayed("Shop"),
                 "Filter Shop is Not Displayed", "Filter Shop is Displayed");
     }
 

@@ -34,39 +34,39 @@ public class RogersCH_TC_020_IginteInternet_InternetBundleofferChangePackageUpgr
 	@Test(groups = {"RegressionCH","RogersInternetCH"})
     public void checkSolarisBundleofferChangePackageUpgrade() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
-        rogers_home_page.clkSignIn();
-        rogers_login_page.switchToSignInIFrame();
+        getRogersHomePage().clkSignIn();
+        getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        rogers_login_page.setUsernameIFrame(TestDataHandler.tc20_SolarisInternetAccountForUpgrade.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.tc20_SolarisInternetAccountForUpgrade.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc20_SolarisInternetAccountForUpgrade.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc20_SolarisInternetAccountForUpgrade.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
-        rogers_login_page.clkSignInIFrame();
-    	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        getRogersLoginPage().clkSignInIFrame();
+    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
-        rogers_login_page.clkSkipIFrame();
-        rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount(TestDataHandler.tc20_SolarisInternetAccountForUpgrade.accountDetails.getBan());
-    	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+        getRogersLoginPage().clkSkipIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc20_SolarisInternetAccountForUpgrade.accountDetails.getBan());
+    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
-        rogers_home_page.clkExistingCustomerShop();
-        rogers_home_page.clkIgniteTVExistingCustomer();
+        getRogersHomePage().clkExistingCustomerShop();
+        getRogersHomePage().clkIgniteTVExistingCustomer();
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-    	rogers_home_page.clkServiceabilityMigration();  
+    	getRogersHomePage().clkServiceabilityMigration();
         reporter.reportLogWithScreenshot("Address confirmation popup has lanched to select Ignite Internet speed button"); 
-        rogers_buy_page.clkIgniteInternetSpeed();
+        getRogersBuyPage().clkIgniteInternetSpeed();
         reporter.reportLogWithScreenshot("Launched the TV packge Page"); 
-        rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.tc20_SolarisInternetAccountForUpgrade.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc20_SolarisInternetAccountForUpgrade.getAccountDetails().getUpgradePlanFr());
-        rogers_internet_dashboard_page.clkInternetChangeOK();
-        reporter.hardAssert(rogers_order_review_page.verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
+        getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tc20_SolarisInternetAccountForUpgrade.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc20_SolarisInternetAccountForUpgrade.getAccountDetails().getUpgradePlanFr());
+        getRogersInternetDashboardPage().clkInternetChangeOK();
+        reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");
 		
-		reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
+		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
 		
-        rogers_order_review_page.clkAcceptenceCheckboxUpdateInternet();
+        getRogersOrderReviewPage().clkAcceptenceCheckboxUpdateInternet();
         reporter.reportLogWithScreenshot("Agreement details");
-        rogers_order_review_page.clkSubmitUpdateInternet();
+        getRogersOrderReviewPage().clkSubmitUpdateInternet();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmationNew(),"Update order completed","Update order Failed");                             
+        reporter.softAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Update order completed","Update order Failed");
         reporter.reportLogWithScreenshot("Verified the Confirmation page");
     	}
 	

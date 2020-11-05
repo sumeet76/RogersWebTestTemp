@@ -31,7 +31,7 @@ public class RogersPPCOrderConfirmationPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyOrderConfirmationPageLoad() {
-		return reusableActions.isElementVisible(lblOrderConfirmation, 60);
+		return getReusableActionsInstance().isElementVisible(lblOrderConfirmation, 60);
 	}
 	
 	/**
@@ -39,7 +39,7 @@ public class RogersPPCOrderConfirmationPage extends BasePageClass {
 	 * @return true if displayed; else false
 	 */
 	public boolean verifyThankYouDisplayed() {
-		return reusableActions.isElementVisible(lblThankYou);
+		return getReusableActionsInstance().isElementVisible(lblThankYou);
 	}
 	
 	/**

@@ -28,58 +28,58 @@ public class RogersSS_TC_02_AccountRegistration extends BaseTestClass {
 	@Test(groups = {"RegressionSS","ProfileAndSettingsSS","RecoverySS"})
 	public void validateUserChangeContactInformationAndBillingAddress() {
 		reporter.reportLogWithScreenshot("Rogers Launch page");
-    	rogers_home_page.clkSignIn();    	 
+    	getRogersHomePage().clkSignIn();
     	reporter.reportLogWithScreenshot("Sign in overlay");
     	String strPassword = TestDataHandler.tc02.getPassword();
     	String strBan = TestDataHandler.tc02.getAccountDetails().getBan();
     	String strEmail = TestDataHandler.tc02.getUsername();
     	String strPostalCode = TestDataHandler.tc02.getAccountDetails().getPostalcode();    	
-		rogers_login_page.switchToSignInIFrame();
-		rogers_login_page.clickRegister();
+		getRogersLoginPage().switchToSignInIFrame();
+		getRogersLoginPage().clickRegister();
 		reporter.reportLogWithScreenshot("Register Now");
 		//=== commenting due  to changes in story DC-3077 		
-		//rogers_register_page.clickRegisterNow();
+		//getRogersRegisterPage().clickRegisterNow();
 		reporter.reportLogWithScreenshot("Wireless Or Resedential Services");
-		rogers_register_page.clickWirelessOrResidentialServices();
+		getRogersRegisterPage().clickWirelessOrResidentialServices();
 		reporter.reportLogWithScreenshot("Set account number and Postal code");
-		rogers_register_page.setAccountNumber(strBan);
-		rogers_register_page.setPostalCode(strPostalCode);
+		getRogersRegisterPage().setAccountNumber(strBan);
+		getRogersRegisterPage().setPostalCode(strPostalCode);
 		reporter.reportLogWithScreenshot("Account number and postal code ");
-		rogers_register_page.clickContinue();
-		if(!rogers_register_page.isProfileAlreadyStarted())
+		getRogersRegisterPage().clickContinue();
+		if(!getRogersRegisterPage().isProfileAlreadyStarted())
 		{
-			rogers_register_page.setEmail(strEmail);
-			rogers_register_page.setReEnterEmail(strEmail);
+			getRogersRegisterPage().setEmail(strEmail);
+			getRogersRegisterPage().setReEnterEmail(strEmail);
 			reporter.reportLogWithScreenshot("Set email address");
-			rogers_register_page.clkContinueEmailVarification();
+			getRogersRegisterPage().clkContinueEmailVarification();
 		}
 			
 		//Will open a new tab for ENS, to get verification code from ENS		
 		reporter.reportLogWithScreenshot("ENS");
 		ensVerifications.getEmailVerifyPage(strEmail);
 		reporter.reportLogWithScreenshot("Email inbox got from ENS.");
-		rogers_set_password_page.clkBtnSetPasswordInEmail();
+		getRogersSetPasswordPage().clkBtnSetPasswordInEmail();
 		//Another new page opened
-		rogers_set_password_page.switchToSetPasswordTab(3);
-		rogers_set_password_page.setPassword(strPassword);
-		rogers_set_password_page.setConfirmPassword(strPassword);
+		getRogersSetPasswordPage().switchToSetPasswordTab(3);
+		getRogersSetPasswordPage().setPassword(strPassword);
+		getRogersSetPasswordPage().setConfirmPassword(strPassword);
 		reporter.reportLogWithScreenshot("Set password page.");
-		rogers_set_password_page.clkBtnSetPassword();
-		reporter.hardAssert(rogers_set_password_page.verifyMsgReigistrationCompleteIsDisplayed(),
+		getRogersSetPasswordPage().clkBtnSetPassword();
+		reporter.hardAssert(getRogersSetPasswordPage().verifyMsgReigistrationCompleteIsDisplayed(),
 				"Registration completed message displayed",
 				"Registration completed message does Not displayed");
 		reporter.reportLogWithScreenshot("Set password completed.");
-		rogers_set_password_page.clkButtonSignIn();
-		//rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strEmail);
-        rogers_login_page.setPasswordIFrame(strPassword);
+		getRogersSetPasswordPage().clkButtonSignIn();
+		//getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strEmail);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-        rogers_login_page.clkSignInIFrame();
-        rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        getRogersLoginPage().clkSignInIFrame();
+        getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-        	rogers_account_overview_page.selectAccount(strBan);       
+        	getRogersAccountOverviewPage().selectAccount(strBan);       
         }
         reporter.reportLogWithScreenshot("Account overview page.");
 						

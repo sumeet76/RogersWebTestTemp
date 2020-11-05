@@ -1,15 +1,12 @@
 package com.rogers.pages.ens;
 
-import java.util.ArrayList;
-
-import org.openqa.selenium.By;
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import com.rogers.pages.base.BasePageClass;
+import java.util.ArrayList;
 
 
 public class EnsHomePage extends BasePageClass{
@@ -36,13 +33,13 @@ public class EnsHomePage extends BasePageClass{
 	 * @author ning.xue
 	 */
 	public void openNewTabForEns(String strEnsUrl) {
-		JavascriptExecutor executor = (JavascriptExecutor)driver;
+		JavascriptExecutor executor = (JavascriptExecutor)getDriver();
 		String openNewWindow = "window.open('"+ strEnsUrl +"', '_blank')";
 		executor.executeScript(openNewWindow);
-		reusableActions.waitForNumberOfWindowsToBe(2, 10);
-		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-		driver.switchTo().window(tabs.get(1));
-//		driver.get(strEnsUrl);
+		getReusableActionsInstance().waitForNumberOfWindowsToBe(2, 10);
+		ArrayList<String> tabs = new ArrayList<String>(getDriver().getWindowHandles());
+		getDriver().switchTo().window(tabs.get(1));
+//		getDriver().get(strEnsUrl);
 	}
 	
 	/**
@@ -51,9 +48,9 @@ public class EnsHomePage extends BasePageClass{
 	 * @author ning.xue
 	 */
 	public void setEmail(String strEmail) {
-		reusableActions.getWhenReady(inputEmail, 20).clear();
-		reusableActions.getWhenReady(inputEmail).click();
-		reusableActions.getWhenReady(inputEmail).sendKeys(strEmail);
+		getReusableActionsInstance().getWhenReady(inputEmail, 20).clear();
+		getReusableActionsInstance().getWhenReady(inputEmail).click();
+		getReusableActionsInstance().getWhenReady(inputEmail).sendKeys(strEmail);
 	}
 	
 	/**
@@ -61,7 +58,7 @@ public class EnsHomePage extends BasePageClass{
 	 * @author ning.xue
 	 */
 	public void clkBtnNext() {		
-		reusableActions.getWhenVisible(btnNext,10).click();
+		getReusableActionsInstance().getWhenVisible(btnNext,10).click();
 	}
 	
 	/**
@@ -71,10 +68,10 @@ public class EnsHomePage extends BasePageClass{
 	 */
 	public void setPassword(String strPassword) {
 
-		if(reusableActions.isElementVisible(inputPassword)) {
-			reusableActions.getWhenReady(inputPassword, 20).clear();
-			reusableActions.getWhenReady(inputPassword).click();
-			reusableActions.getWhenReady(inputPassword).sendKeys(strPassword);
+		if(getReusableActionsInstance().isElementVisible(inputPassword)) {
+			getReusableActionsInstance().getWhenReady(inputPassword, 20).clear();
+			getReusableActionsInstance().getWhenReady(inputPassword).click();
+			getReusableActionsInstance().getWhenReady(inputPassword).sendKeys(strPassword);
 		}
 		
 	}
@@ -84,8 +81,8 @@ public class EnsHomePage extends BasePageClass{
 	 * @author ning.xue
 	 */
 	public void clkBtnSignIn() {	
-		if(reusableActions.isElementVisible(btnSignIn)) {
-		reusableActions.getWhenVisible(btnSignIn,10).click();
+		if(getReusableActionsInstance().isElementVisible(btnSignIn)) {
+		getReusableActionsInstance().getWhenVisible(btnSignIn,10).click();
 		}
 	}
 	

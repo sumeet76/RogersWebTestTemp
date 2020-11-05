@@ -40,12 +40,12 @@ public class RogersSearch_CBS_1714_Label_Visible extends BaseTestClass {
 	
 		getDriver().get(System.getProperty("SearchUrl"));
 		reporter.reportLogWithScreenshot("CBS Search Page");
-		rogers_search_page.enterTextSearch(csvRow[0]);
+		getRogersSearchPage().enterTextSearch(csvRow[0]);
 		reporter.reportLogWithScreenshot("Search field entered");
-		reporter.hardAssert(rogers_search_page.isSuggestionsSectionDisplayed(), "label Suggestion Visible", "label Suggestion Not Visible");
-		reporter.hardAssert(rogers_search_page.isSupportSectionDisplayed(), "label Support Visible", "label Support Not Visible");
+		reporter.hardAssert(getRogersSearchPage().isSuggestionsSectionDisplayed(), "label Suggestion Visible", "label Suggestion Not Visible");
+		reporter.hardAssert(getRogersSearchPage().isSupportSectionDisplayed(), "label Support Visible", "label Support Not Visible");
 		reporter.reportLogWithScreenshot("Search Label Validation");
-		if(rogers_search_page.isSupportSectionPopulated() || rogers_search_page.isLeftSectionPopulated()) {
+		if(getRogersSearchPage().isSupportSectionPopulated() || getRogersSearchPage().isLeftSectionPopulated()) {
 			reporter.reportLogPassWithScreenshot("Results Displayed");
 		} else {
 			reporter.reportLogFailWithScreenshot("Suggestions and Support both empty");

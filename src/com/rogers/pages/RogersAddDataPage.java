@@ -48,7 +48,7 @@ public class RogersAddDataPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyAddDataOverlayIsDisplayed() {			
-		return reusableActions.isElementVisible(divListAddDataOpt.get(1), 60);
+		return getReusableActionsInstance().isElementVisible(divListAddDataOpt.get(1), 60);
 	}
 	
 	/**
@@ -56,8 +56,8 @@ public class RogersAddDataPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void selectDataAddOnOption(Integer index) {
-		reusableActions.waitForElementVisibility(divListAddDataOpt.get(index),60);
-		reusableActions.clickWhenReady(divListAddDataOpt.get(index), 60);
+		getReusableActionsInstance().waitForElementVisibility(divListAddDataOpt.get(index),60);
+		getReusableActionsInstance().clickWhenReady(divListAddDataOpt.get(index), 60);
 		
 	}
 	
@@ -83,7 +83,7 @@ public class RogersAddDataPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkContinue() {
-		reusableActions.clickWhenReady(btnContinue, 30);
+		getReusableActionsInstance().clickWhenReady(btnContinue, 30);
 		
 	}
 
@@ -92,9 +92,9 @@ public class RogersAddDataPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkPurchase() {
-		reusableActions.clickWhenReady(btnPurchase, 30);
-		reusableActions.waitForPageLoad();
-		reusableActions.staticWait(3000);//buffer for sync
+		getReusableActionsInstance().clickWhenReady(btnPurchase, 30);
+		getReusableActionsInstance().waitForPageLoad();
+		getReusableActionsInstance().staticWait(3000);//buffer for sync
 		
 	}
 	
@@ -104,7 +104,7 @@ public class RogersAddDataPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyAddDataSuccessMsgIsDisplayed() {
-		return reusableActions.isElementVisible(lblAddDataSuccess);
+		return getReusableActionsInstance().isElementVisible(lblAddDataSuccess);
 	}
 	
 	/**
@@ -112,7 +112,7 @@ public class RogersAddDataPage extends BasePageClass {
 	 * @return double, the value of added data.
 	 */
 	public double getAddedDataVolume() {
-		String strMsgAddedData = reusableActions.getWhenReady(msgDataAddedVolume, 20).getText();
+		String strMsgAddedData = getReusableActionsInstance().getWhenReady(msgDataAddedVolume, 20).getText();
 
 		double addedDataVolume = 0;
 		if (strMsgAddedData.contains("GB")||strMsgAddedData.contains("Go")) {
@@ -132,7 +132,7 @@ public class RogersAddDataPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyErrorMsgIsDisplayed() {
-		return reusableActions.isElementVisible(msgError);
+		return getReusableActionsInstance().isElementVisible(msgError);
 	}
 	
 	/**
@@ -140,7 +140,7 @@ public class RogersAddDataPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkCloseOnAddDataOverlay() {
-		reusableActions.clickWhenReady(btnCloseAddData, 30);
+		getReusableActionsInstance().clickWhenReady(btnCloseAddData, 30);
 	}
 
 	/**
@@ -150,7 +150,7 @@ public class RogersAddDataPage extends BasePageClass {
 	 */
 	public boolean verifyAddDataLimitReachedIsDisplayed() {
 		
-		return reusableActions.isElementVisible(lblLimitReached);
+		return getReusableActionsInstance().isElementVisible(lblLimitReached);
 	}
 
 	/**
@@ -161,7 +161,7 @@ public class RogersAddDataPage extends BasePageClass {
 	 */
 	public boolean clkTheDataAddOnWhichAreNotAddedMoreThanThreeTime(Map<String, Integer> mapcountOfAlreadyAddedData) {
 		boolean foundLessThanThree = false;
-		reusableActions.waitForElementVisibility(divListAddDataOpt.get(1), 60);
+		getReusableActionsInstance().waitForElementVisibility(divListAddDataOpt.get(1), 60);
 		for(WebElement btn: divListAddDataOpt)
 		{
 			String addedvalue = getNumbersFromString(btn.getText());

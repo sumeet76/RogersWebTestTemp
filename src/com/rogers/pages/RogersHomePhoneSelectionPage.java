@@ -53,8 +53,8 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkChevronYourCart() {
-		reusableActions.waitForElementVisibility(downChevronYourCart, 120);
-		reusableActions.getWhenReady(downChevronYourCart, 120).click();
+		getReusableActionsInstance().waitForElementVisibility(downChevronYourCart, 120);
+		getReusableActionsInstance().getWhenReady(downChevronYourCart, 120).click();
 	}
 
 	/**
@@ -63,8 +63,8 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyGWPYourCartPromotion() {
-		reusableActions.waitForElementVisibility(gwpYourCart, 120);
-		return	reusableActions.isElementVisible(gwpYourCart);
+		getReusableActionsInstance().waitForElementVisibility(gwpYourCart, 120);
+		return	getReusableActionsInstance().isElementVisible(gwpYourCart);
 	}
 	
 /**
@@ -73,8 +73,8 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
  * @author chinnarao.vattam
  */
 	public void setPhoneNumberWith(String strChosePhoneNumber) {
-		reusableActions.getWhenReady(txtChosePhoneNumber, 30).clear();
-		reusableActions.getWhenReady(txtChosePhoneNumber, 3).sendKeys(strChosePhoneNumber);
+		getReusableActionsInstance().getWhenReady(txtChosePhoneNumber, 30).clear();
+		getReusableActionsInstance().getWhenReady(txtChosePhoneNumber, 3).sendKeys(strChosePhoneNumber);
 	}
 	
 	/**
@@ -83,7 +83,7 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPhoneNumberPage() {
-		return	reusableActions.isElementVisible(txtPhoneNumberSelectionPage, 60);
+		return	getReusableActionsInstance().isElementVisible(txtPhoneNumberSelectionPage, 60);
 	}
 
 	/**
@@ -92,18 +92,18 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPortInOutPage() {
-		if(reusableActions.isElementVisible(loaderPhoneNumberPage)) {
-			reusableActions.waitForElementInvisibilityNOException(loaderPhoneNumberPage,20);
+		if(getReusableActionsInstance().isElementVisible(loaderPhoneNumberPage)) {
+			getReusableActionsInstance().waitForElementInvisibilityNOException(loaderPhoneNumberPage,20);
 		}
-		return	reusableActions.isElementVisible(btnPortInOutPage, 60);
+		return	getReusableActionsInstance().isElementVisible(btnPortInOutPage, 60);
 	}
 	/**
 	 * Click on Generate Phone Number button to generate phone numbers
 	 * @author chinnarao.vattam
 	 */
 	public void clkSkipforNewNumber() {
-		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(btnSkipforNewNumber, 60).click();
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().getWhenReady(btnSkipforNewNumber, 60).click();
 	  }
 
 	/**
@@ -111,7 +111,7 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkPhoneNumberGenerator() {
-		reusableActions.executeJavaScriptClick(btnGeneratePhoneNumber);
+		getReusableActionsInstance().executeJavaScriptClick(btnGeneratePhoneNumber);
 	}
 		
 	
@@ -120,7 +120,7 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkChosePhoneNumber() {
-		reusableActions.getWhenReady(rdoChosePhoneNumber, 60).click();
+		getReusableActionsInstance().getWhenReady(rdoChosePhoneNumber, 60).click();
 	}
 	
 	/**
@@ -128,8 +128,8 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkContinueHomePhoneSelection() {
-		reusableActions.waitForElementVisibility(btnContinueHomePhoneSelection, 20);
-		reusableActions.getWhenReady(btnContinueHomePhoneSelection, 20).click();
+		getReusableActionsInstance().waitForElementVisibility(btnContinueHomePhoneSelection, 20);
+		getReusableActionsInstance().getWhenReady(btnContinueHomePhoneSelection, 20).click();
 	}
 
 

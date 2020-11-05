@@ -35,51 +35,51 @@ public class RogersSS_TC_009_UserSetMobileNumForSMSRecovery extends BaseTestClas
 	public void validateUserSuccessfullyAddMobileNumForRecovery() {
 		String strUserName = TestDataHandler.tc060809.getUsername();
 		String strRecoveryNumber = TestDataHandler.tc060809.getAccountDetails().getRecoveryNumber();
-    	rogers_home_page.clkSignIn();
-		rogers_login_page.switchToSignInIFrame();
-		rogers_login_page.setUsernameIFrame(strUserName);
-		rogers_login_page.setPasswordIFrame(TestDataHandler.tc060809.getPassword());
+    	getRogersHomePage().clkSignIn();
+		getRogersLoginPage().switchToSignInIFrame();
+		getRogersLoginPage().setUsernameIFrame(strUserName);
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc060809.getPassword());
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();        
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc060809.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc060809.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");
-        if (rogers_account_overview_page.verifySuccessfulLogin()) {
-        	rogers_account_overview_page.clkLnkProfileNSettings();
+        if (getRogersAccountOverviewPage().verifySuccessfulLogin()) {
+        	getRogersAccountOverviewPage().clkLnkProfileNSettings();
         	reporter.reportLogWithScreenshot("Profile & Settings page.");
-        	rogers_profile_and_settings_page.clkLnkSetupRecoveryNum();
+        	getRogersProfileAndSettingsPage().clkLnkSetupRecoveryNum();
     		String strTestingTab = getDriver().getWindowHandle();
-    		rogers_profile_and_settings_page.switchToSetRecoveryNumIFrame();
-        	rogers_profile_and_settings_page.setPhoneNumberIframe(strRecoveryNumber);
+    		getRogersProfileAndSettingsPage().switchToSetRecoveryNumIFrame();
+        	getRogersProfileAndSettingsPage().setPhoneNumberIframe(strRecoveryNumber);
         	reporter.reportLogWithScreenshot("Recovery phone number is entered.");
-        	rogers_profile_and_settings_page.clkBtnContinueIframe();
+        	getRogersProfileAndSettingsPage().clkBtnContinueIframe();
         	
     		//Will open a new tab for ENS, to get verification code from ENS
     		
 			String strVerifyCode = ensVerifications.getVerifyCode(strRecoveryNumber);
 			getDriver().switchTo().window(strTestingTab);
-			rogers_profile_and_settings_page.switchToSetRecoveryNumIFrame();
-			rogers_profile_and_settings_page.setVerifyCodeIframe(strVerifyCode);
+			getRogersProfileAndSettingsPage().switchToSetRecoveryNumIFrame();
+			getRogersProfileAndSettingsPage().setVerifyCodeIframe(strVerifyCode);
 			reporter.reportLogWithScreenshot("Verify code is entered.");
-			rogers_profile_and_settings_page.clkBtnVerifyMeIframe();
+			getRogersProfileAndSettingsPage().clkBtnVerifyMeIframe();
 
-			reporter.hardAssert(rogers_profile_and_settings_page.verifySetRecoverySuccessConfirmationMsg(strRecoveryNumber.substring(strRecoveryNumber.length()-4)),
+			reporter.hardAssert(getRogersProfileAndSettingsPage().verifySetRecoverySuccessConfirmationMsg(strRecoveryNumber.substring(strRecoveryNumber.length()-4)),
 					"Got recovery phone number set successfully confirm message",
 					"Got error when setting recovery phone number");
 			reporter.reportLogWithScreenshot("Confirm page of set recovery phone number.");
-			rogers_profile_and_settings_page.clkBtnContinueToMyRogersIframe();
-	        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+			getRogersProfileAndSettingsPage().clkBtnContinueToMyRogersIframe();
+	        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
 	        	reporter.reportLogWithScreenshot("Select an account.");
-	            rogers_account_overview_page.selectAccount(TestDataHandler.tc060809.getAccountDetails().getBan());
+	            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc060809.getAccountDetails().getBan());
 	        }
-	        rogers_profile_and_settings_page.switchOutofSetRecoveryNumIframe();
-			rogers_account_overview_page.clkLnkProfileNSettings();
-			reporter.softAssert(rogers_profile_and_settings_page.verifyRecoveryNumberSetSuccessfully(strRecoveryNumber.substring(strRecoveryNumber.length()-4)),
+	        getRogersProfileAndSettingsPage().switchOutofSetRecoveryNumIframe();
+			getRogersAccountOverviewPage().clkLnkProfileNSettings();
+			reporter.softAssert(getRogersProfileAndSettingsPage().verifyRecoveryNumberSetSuccessfully(strRecoveryNumber.substring(strRecoveryNumber.length()-4)),
 					"Recovery number set successfully",
 					"Recovery number did not set successfully");
 			reporter.reportLogWithScreenshot("Profile & Settings page after set recovery phone num.");

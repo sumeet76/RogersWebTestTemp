@@ -40,45 +40,45 @@ public class RogersSearch_CBS_1698_Watch_Facet_Testing extends BaseTestClass {
 
         getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
 
-        reporter.hardAssert(rogers_search_page.isGrandParentFilterDisplayed("Shop")
+        reporter.hardAssert(getRogersSearchPage().isGrandParentFilterDisplayed("Shop")
                 ,"Shop filter is Displayed","Shop filter is Not Displayed");
-        rogers_search_page.clkGrandParentFilter("Shop");
-        reporter.hardAssert(rogers_search_page.isParentFilterDisplayed("Shop","Wireless")
+        getRogersSearchPage().clkGrandParentFilter("Shop");
+        reporter.hardAssert(getRogersSearchPage().isParentFilterDisplayed("Shop","Wireless")
                 ,"Shop-Wireless filter is Displayed","Shop-Wireless filter is Not Displayed");
-        rogers_search_page.clkParentFilter("Shop","Wireless");
-        reporter.hardAssert(rogers_search_page.validateResultsTag("Shop","Wireless")
+        getRogersSearchPage().clkParentFilter("Shop","Wireless");
+        reporter.hardAssert(getRogersSearchPage().validateResultsTag("Shop","Wireless")
                 ,"Results' tags verified", "Results' tags mismatch");
         reporter.reportLogWithScreenshot("Shop-Wireless Expanded");
-        rogers_search_page.clkDeviceType("Watch");
+        getRogersSearchPage().clkDeviceType("Watch");
 
-        strSizeOptions = rogers_search_page.getSizeSelections();
+        strSizeOptions = getRogersSearchPage().getSizeSelections();
         reporter.hardAssert(strSizeOptions.size()!=0,"Size Options Available","Size Options Unavailable");
         for(int i=0;i< strSizeOptions.size();i++) {
-            rogers_search_page.clkSizeType(strSizeOptions.get(i));
+            getRogersSearchPage().clkSizeType(strSizeOptions.get(i));
 
-            strColorOptions = rogers_search_page.getColorSelections();
+            strColorOptions = getRogersSearchPage().getColorSelections();
             for(int j=0;j< strColorOptions.size();j++) {
-                rogers_search_page.clkColorType(strColorOptions.get(j));
+                getRogersSearchPage().clkColorType(strColorOptions.get(j));
                 reporter.reportLogWithScreenshot("Size: " + strSizeOptions.get(i)
                         +" and Color:" + strColorOptions.get(j) + " is Selected");
 
-                resultLinks = rogers_search_page.getAllResultLinks();
+                resultLinks = getRogersSearchPage().getAllResultLinks();
                 for(int k=0;k< resultLinks.size();k++) {
-                    rogers_search_page.clkResultLink(resultLinks.get(k));
-                    strSelectedSize = rogers_device_config_page.getSelectedSize();
-                    strSelectedColor = rogers_device_config_page.getSelectedWatchColor();
+                    getRogersSearchPage().clkResultLink(resultLinks.get(k));
+                    strSelectedSize = getRogersDeviceConfigPage().getSelectedSize();
+                    strSelectedColor = getRogersDeviceConfigPage().getSelectedWatchColor();
                     reporter.softAssert(strSelectedSize.equals(strSizeOptions.get(i)),
                             "Size Expected="+strSizeOptions.get(i)+"; Actual=" + strSelectedSize,
                             "Size Expected="+strSizeOptions.get(i)+"; Actual=" + strSelectedSize);
                     reporter.softAssert(strSelectedColor.equals(strColorOptions.get(j)),
                             "Color Expected="+strColorOptions.get(j)+"; Actual=" + strSelectedColor,
                             "Color Expected="+strColorOptions.get(j)+"; Actual=" + strSelectedColor);
-                    rogers_device_config_page.navigateBack();
-                    resultLinks = rogers_search_page.getAllResultLinks();
+                    getRogersDeviceConfigPage().navigateBack();
+                    resultLinks = getRogersSearchPage().getAllResultLinks();
                 }
-                rogers_search_page.clkColorType(strColorOptions.get(j));
+                getRogersSearchPage().clkColorType(strColorOptions.get(j));
             }
-            rogers_search_page.clkSizeType(strSizeOptions.get(i));
+            getRogersSearchPage().clkSizeType(strSizeOptions.get(i));
         }
     }
 

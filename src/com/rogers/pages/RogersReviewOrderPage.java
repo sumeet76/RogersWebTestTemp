@@ -75,8 +75,8 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author nimmy.george
      */
     public boolean isOrderReviewPageTitlePresent() {
-    	reusableActions.waitForElementVisibility(orderReviewPageTitle, 60);
-       return reusableActions.isElementVisible(orderReviewPageTitle);
+    	getReusableActionsInstance().waitForElementVisibility(orderReviewPageTitle, 60);
+       return getReusableActionsInstance().isElementVisible(orderReviewPageTitle);
     }
 
     /**
@@ -86,8 +86,8 @@ public class RogersReviewOrderPage extends BasePageClass {
 	 */
 
     public String getMonthlyFeeAfterTax() {
-    	reusableActions.javascriptScrollByVisibleElement(monthlyFeeAfterTax);
-    	reusableActions.staticWait(3000);
+    	getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyFeeAfterTax);
+    	getReusableActionsInstance().staticWait(3000);
     	System.out.println(monthlyFeeAfterTax.getText());
     	return monthlyFeeAfterTax.getText().replaceAll("\\n",""); }
 
@@ -105,7 +105,7 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author nimmy.george
      */
 
-    public String getPurchaseIncludesText(){ return reusableActions.getWhenReady(purchaseIncludes,10).getText().trim().replaceAll("\\n", " "); }
+    public String getPurchaseIncludesText(){ return getReusableActionsInstance().getWhenReady(purchaseIncludes,10).getText().trim().replaceAll("\\n", " "); }
 
 
     /**
@@ -114,9 +114,9 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author nimmy.george
      */
     public String getContactName() {
-    	reusableActions.javascriptScrollToTopOfPage();
-        reusableActions.getWhenReady(contactName);
-        return reusableActions.getWhenReady(contactName).getText();
+    	getReusableActionsInstance().javascriptScrollToTopOfPage();
+        getReusableActionsInstance().getWhenReady(contactName);
+        return getReusableActionsInstance().getWhenReady(contactName).getText();
     }
 
     /**
@@ -125,8 +125,8 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author nimmy.george
      */
     public String getContactNumber() {
-        reusableActions.getWhenReady(contactNumber);
-        return reusableActions.getWhenReady(contactNumber,20).getText().trim();
+        getReusableActionsInstance().getWhenReady(contactNumber);
+        return getReusableActionsInstance().getWhenReady(contactNumber,20).getText().trim();
     }
 
     /**
@@ -135,8 +135,8 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author nimmy.george
      */
     public String getContactEmail() {
-        reusableActions.getWhenReady(contactEmail);
-        return reusableActions.getWhenReady(contactEmail).getText();
+        getReusableActionsInstance().getWhenReady(contactEmail);
+        return getReusableActionsInstance().getWhenReady(contactEmail).getText();
     }
 
     /**
@@ -146,7 +146,7 @@ public class RogersReviewOrderPage extends BasePageClass {
 	 */
 
 	public String getShippingAddressText() { 
-		return reusableActions.getWhenReady(shippingCompleteAddress,10).getText().trim().replaceAll("\\n", " ");
+		return getReusableActionsInstance().getWhenReady(shippingCompleteAddress,10).getText().trim().replaceAll("\\n", " ");
 	}
 
     /**
@@ -155,7 +155,7 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author Karthic.hasan
      */
     public boolean verifyDeliveryAddressTitle() {
-       return reusableActions.isElementVisible(deliveryMethodTitle);
+       return getReusableActionsInstance().isElementVisible(deliveryMethodTitle);
     }
 	
     
@@ -166,8 +166,8 @@ public class RogersReviewOrderPage extends BasePageClass {
 	 */
 
 	public String getDeliveryDate() { 
-		reusableActions.javascriptScrollByVisibleElement(deliveryDate);
-   	    reusableActions.staticWait(3000);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(deliveryDate);
+   	    getReusableActionsInstance().staticWait(3000);
 		return deliveryDate.getText().replaceAll("\\n",""); 
 	}
 	
@@ -179,8 +179,8 @@ public class RogersReviewOrderPage extends BasePageClass {
 	 */
 
 	public String getDeliveryTime() { 
-		reusableActions.javascriptScrollByVisibleElement(deliveryTime);
-   	    reusableActions.staticWait(3000);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(deliveryTime);
+   	    getReusableActionsInstance().staticWait(3000);
 		return deliveryTime.getText().replaceAll("\\s",""); 
 	}
 	
@@ -189,9 +189,9 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author nimmy.george
      */
     public void clkFinancingConsentCheckbox() {
-        reusableActions.javascriptScrollByVisibleElement(txtPleaseReadAgreement);
-        reusableActions.staticWait(1000);
-        reusableActions.clickWhenReady(chFinancingConsent,2);
+        getReusableActionsInstance().javascriptScrollByVisibleElement(txtPleaseReadAgreement);
+        getReusableActionsInstance().staticWait(1000);
+        getReusableActionsInstance().clickWhenReady(chFinancingConsent,2);
     }
 
     /**
@@ -199,7 +199,7 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author nimmy.george
      */
     public void clkAgreementConsentCheckbox() {
-        reusableActions.clickWhenReady(chAgreementConsent,2);
+        getReusableActionsInstance().clickWhenReady(chAgreementConsent,2);
     }
 
     /**
@@ -207,7 +207,7 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author nimmy.george
      */
     public void clkUpfrontConsentCheckbox() {
-        reusableActions.clickWhenReady(chUpfrontConsent,2);
+        getReusableActionsInstance().clickWhenReady(chUpfrontConsent,2);
     }
 
     /**
@@ -215,7 +215,7 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clkEmailConsentCheckbox() {
-        reusableActions.clickWhenReady(chEmailConsent,2);
+        getReusableActionsInstance().clickWhenReady(chEmailConsent,2);
     }
 
     
@@ -224,8 +224,8 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clkSubmitOrderBtn() {
-        reusableActions.clickWhenReady(submitOrderBtn,2);
-        reusableActions.staticWait(9000);
+        getReusableActionsInstance().clickWhenReady(submitOrderBtn,2);
+        getReusableActionsInstance().staticWait(9000);
     }
 
 }

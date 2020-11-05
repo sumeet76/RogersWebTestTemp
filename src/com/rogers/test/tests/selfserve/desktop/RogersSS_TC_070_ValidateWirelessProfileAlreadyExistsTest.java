@@ -16,17 +16,17 @@ public class RogersSS_TC_070_ValidateWirelessProfileAlreadyExistsTest extends Ba
 
     @Test(groups = {"RegressionSS","ProfileAndSettingsSS"})
     public void validateWirelessProfileAlreadyExists() {
-                    rogers_home_page.clkSignIn();             
+                    getRogersHomePage().clkSignIn();
                     reporter.reportLogWithScreenshot("Sign in overlay");                	
                 	String strBan = TestDataHandler.tc060809.getAccountDetails().getBan();
                 	String strPostalCode = TestDataHandler.tc060809.getAccountDetails().getPostalcode();    	
-            		rogers_login_page.switchToSignInIFrame();
+            		getRogersLoginPage().switchToSignInIFrame();
             		try {
-            		rogers_login_page.clickRegister();            		
+            		getRogersLoginPage().clickRegister();
             		reporter.reportLogWithScreenshot("Wireless Or Resedential Services");
             		/*=== commenting due  to changes in story DC-3077 
             		
-	            		rogers_register_page.clickRegisterNow();	
+	            		getRogersRegisterPage().clickRegisterNow();
 	            		
 	            		                	*/
             		}catch (Exception e) {
@@ -34,13 +34,13 @@ public class RogersSS_TC_070_ValidateWirelessProfileAlreadyExistsTest extends Ba
 					}
 					
             		
-            		rogers_register_page.clickWirelessOrResidentialServices();
+            		getRogersRegisterPage().clickWirelessOrResidentialServices();
             		reporter.reportLogWithScreenshot("Set account number and Postal code");
-            		rogers_register_page.setAccountNumber(strBan);
-            		rogers_register_page.setPostalCode(strPostalCode);
+            		getRogersRegisterPage().setAccountNumber(strBan);
+            		getRogersRegisterPage().setPostalCode(strPostalCode);
             		reporter.reportLogWithScreenshot("Account number and postal code ");
-            		rogers_register_page.clickContinue();            		
-            		reporter.hardAssert(rogers_register_page.isProfileAlreadyStarted(),
+            		getRogersRegisterPage().clickContinue();
+            		reporter.hardAssert(getRogersRegisterPage().isProfileAlreadyStarted(),
             				"Message displayed: This account is registered at the following address ",
             				"The profile is not already registered, please select existing registered profile and rerun");
             		reporter.reportLogWithScreenshot("The account already registered message");

@@ -47,11 +47,11 @@ public class RogersSearch_CBS_1683_Clicking_On_Results_With_Selected_Color_Test 
 	
 	getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
 	
-	rogers_search_page.clkShopAndThenWirelessFilter();
+	getRogersSearchPage().clkShopAndThenWirelessFilter();
 	reporter.reportLogWithScreenshot("Shop and Wireless Filters clicked");
 	
-	reporter.hardAssert(rogers_search_page.verifyDifferentColorResultsDisplay(), "Color Results displayed correctly", "Color Results not displayed correctly");
-	reporter.hardAssert(rogers_search_page.verifyResultsColorLabelWithSelectedColor(), "Color Label Displayed Correctly", "Color Label not Displayed Correctly");
+	reporter.hardAssert(getRogersSearchPage().verifyDifferentColorResultsDisplay(), "Color Results displayed correctly", "Color Results not displayed correctly");
+	reporter.hardAssert(getRogersSearchPage().verifyResultsColorLabelWithSelectedColor(), "Color Label Displayed Correctly", "Color Label not Displayed Correctly");
 				
 				
 	}

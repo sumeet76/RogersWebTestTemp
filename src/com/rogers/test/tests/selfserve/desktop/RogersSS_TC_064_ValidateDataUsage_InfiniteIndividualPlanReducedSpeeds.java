@@ -29,64 +29,64 @@ public class RogersSS_TC_064_ValidateDataUsage_InfiniteIndividualPlanReducedSpee
 	
     @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateDataUsageForInfiniteNsePlanReducedSpeed() {
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc64.getUsername();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc64.getPassword();    	
-        rogers_login_page.setPasswordIFrame(strPassword);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 		
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc64.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc64.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");  
-        rogers_account_overview_page.clkMenuUsageAndService();
+        getRogersAccountOverviewPage().clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
         String strAccountNum = TestDataHandler.tc64.getAccountDetails().getCtn();
         String strLast4DigitAccount = strAccountNum.substring(strAccountNum.length()-4);
-        if (rogers_account_overview_page.isAccountShowInDropDown(strLast4DigitAccount)) {
-            rogers_account_overview_page.clkDropDownAccount(strLast4DigitAccount);
+        if (getRogersAccountOverviewPage().isAccountShowInDropDown(strLast4DigitAccount)) {
+            getRogersAccountOverviewPage().clkDropDownAccount(strLast4DigitAccount);
         } else {
-     	   rogers_account_overview_page.clkSubMenuWirelessUsage();
+     	   getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
         }
-        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
+        getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
         
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyUnlimitedDataNoOverage(),
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyUnlimitedDataNoOverage(),
 		        		"The unlimited data no overage is diaplyed",
 		        		"The unlimited data no overage label is not displayed");
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifySpeedReducedMsg(),
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifySpeedReducedMsg(),
 						"Label using data at reduced speed is displayed",
 						"Label using data at reduced speed is not displayed");
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifySpeedPassButtonIsDisplayed(),
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifySpeedPassButtonIsDisplayed(),
 						"Link add speed pass is displayed",
 						"Link add speed pass is not displayed");
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyCallOutMsgToAddSpeedPassIsDisplayed(),
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyCallOutMsgToAddSpeedPassIsDisplayed(),
 						"Call out message to Add speed pass is displayed",
 						"call out message to add speed pass is not displayed");
         reporter.reportLogWithScreenshot("Dashboard page of reduced speed.");          
-        rogers_wireless_dashboard_page.clkCloseCallOutMsg();
-        reporter.hardAssert(rogers_wireless_dashboard_page.validateCloseCallOutIsClosed(),
+        getRogersWirelessDashboardPage().clkCloseCallOutMsg();
+        reporter.hardAssert(getRogersWirelessDashboardPage().validateCloseCallOutIsClosed(),
 						"Click on close call out message successful",
 						"Click on close call out message didnt succeed");
         reporter.reportLogWithScreenshot("Closed Call out message to Add speed pass on dashboard page.");  
         common_business_flows.logOutAndReSignIn(strUsername, strPassword);   
-//	        rogers_account_overview_page.clkCtnBadge(last4Digit);
-	        rogers_account_overview_page.clkMenuUsageAndService();
+//	        getRogersAccountOverviewPage().clkCtnBadge(last4Digit);
+	        getRogersAccountOverviewPage().clkMenuUsageAndService();
 	        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
-	        if (rogers_account_overview_page.isAccountShowInDropDown(strLast4DigitAccount)) {
-	            rogers_account_overview_page.clkDropDownAccount(strLast4DigitAccount);
+	        if (getRogersAccountOverviewPage().isAccountShowInDropDown(strLast4DigitAccount)) {
+	            getRogersAccountOverviewPage().clkDropDownAccount(strLast4DigitAccount);
 	        } else {
-	     	   rogers_account_overview_page.clkSubMenuWirelessUsage();
+	     	   getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
 	        }
 
 	        reporter.reportLogWithScreenshot("Navigated back to dashboard after re-sign in");     
-            rogers_wireless_dashboard_page.verifyCallOutMsgToAddSpeedPassIsDisplayed();   
+            getRogersWirelessDashboardPage().verifyCallOutMsgToAddSpeedPassIsDisplayed();
             reporter.reportLogWithScreenshot("Dashboard with Call out message to Add speed pass displayed");
     }
     

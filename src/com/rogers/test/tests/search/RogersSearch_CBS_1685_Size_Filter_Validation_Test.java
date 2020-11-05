@@ -46,10 +46,10 @@ public class RogersSearch_CBS_1685_Size_Filter_Validation_Test extends BaseTestC
 	
 	getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
 	
-	rogers_search_page.clkShopAndThenWirelessFilter();
+	getRogersSearchPage().clkShopAndThenWirelessFilter();
 	reporter.reportLogWithScreenshot("Shop and Wireless Filters clicked");
 	
-	reporter.hardAssert(rogers_search_page.verifyResultsSizeLabelWithSelectedSize(), "Size label displayed correctly", "Size label not displayed correctly");
+	reporter.hardAssert(getRogersSearchPage().verifyResultsSizeLabelWithSelectedSize(), "Size label displayed correctly", "Size label not displayed correctly");
 				
 				
 	}

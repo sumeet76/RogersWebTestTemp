@@ -9,12 +9,14 @@ import java.lang.reflect.Method;
 import java.util.Date;
 
 public class CaptchaBypassHandlers {
-	
-	private WebDriver driver;
+
+	private static final ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
 	public CaptchaBypassHandlers(WebDriver driver) {
-		this.driver = driver;
+		webDriverThreadLocal.set(driver);
 	}
-		
+	private WebDriver getDriver(){
+		return webDriverThreadLocal.get();
+	}
 	/**
 	 * To Bypass Captcha for Legacy Anonymous Buy Flows
 	 * @param strUrl                     string of test url
@@ -26,7 +28,7 @@ public class CaptchaBypassHandlers {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-		        driver.get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ strLanguage);
+		        getDriver().get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ strLanguage);
         }
 	
 	/**
@@ -58,7 +60,7 @@ public class CaptchaBypassHandlers {
 		
 		
 		Cookie captchBypass = new Cookie ("temp_token_r",CookieFetcher.setAndFetchCookie(strCookieUserName, strCookieUserPassword, strUrl));
-		driver.manage().addCookie(captchBypass);
+		getDriver().manage().addCookie(captchBypass);
 	}
 
 	/**
@@ -73,7 +75,7 @@ public class CaptchaBypassHandlers {
 		else
 			oneViewUrl=CaptchaBypassHandlers.urlOneViewMigration(strUrl, strLoginID, strLanID, strAccNo, strLanguage, strContactID);	
 		System.out.println(oneViewUrl + "----------------------------------------------------------------------------");	
-		driver.get(oneViewUrl);
+		getDriver().get(oneViewUrl);
   }
 	
 	public static String  urlOneViewExistingCustomer(String strUrl, String strLoginID, String strLanID, String strAccNo, String strLanguage) {

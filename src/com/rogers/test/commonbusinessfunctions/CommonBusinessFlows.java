@@ -18,14 +18,14 @@ public class CommonBusinessFlows {
 	}
 	
 	public void launchAndLoginApplication(String strUserName, String strPassword, String strAccount) {
-		baseTestClass.rogers_home_page.clkSignIn();    
-		baseTestClass.rogers_login_page.switchToSignInIFrame();
+		baseTestClass.getRogersHomePage().clkSignIn();    
+		baseTestClass.getRogersLoginPage().switchToSignInIFrame();
 		loginApplication(strUserName,strPassword); 
-		baseTestClass.rogers_login_page.clkSkipIFrame();
-		baseTestClass.rogers_login_page.switchOutOfSignInIFrame();
-		 if (baseTestClass.rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+		baseTestClass.getRogersLoginPage().clkSkipIFrame();
+		baseTestClass.getRogersLoginPage().switchOutOfSignInIFrame();
+		 if (baseTestClass.getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
 	        	baseTestClass.reporter.reportLogWithScreenshot("Select an account.");
-	        	baseTestClass.rogers_account_overview_page.selectAccount(strAccount);
+	        	baseTestClass.getRogersAccountOverviewPage().selectAccount(strAccount);
 	        }
 		 baseTestClass.reporter.reportLogWithScreenshot("Account overview page."); 
 	}
@@ -36,10 +36,10 @@ public class CommonBusinessFlows {
 	 * @param strPassword
 	 */
 	public void loginApplication(String strUsername, String strPassword) {
-		baseTestClass.rogers_login_page.setUsernameIFrame(strUsername);           	
-		baseTestClass.rogers_login_page.setPasswordIFrame(strPassword);
+		baseTestClass.getRogersLoginPage().setUsernameIFrame(strUsername);           	
+		baseTestClass.getRogersLoginPage().setPasswordIFrame(strPassword);
 		baseTestClass.reporter.reportLogWithScreenshot("Login Credential is entered: UserName :- "+strUsername+" Password:- "+strPassword);
-		baseTestClass.rogers_login_page.clkSignInIFrame();
+		baseTestClass.getRogersLoginPage().clkSignInIFrame();
 		
 
 	}
@@ -51,22 +51,22 @@ public class CommonBusinessFlows {
 	 * @author Mirza.Kamran
 	 */
 	public void resetPasswordBack(String oldPassword, String newPassword) {
-		baseTestClass.rogers_account_overview_page.clkLnkProfileNSettings();
-		baseTestClass.rogers_profile_and_settings_page.clkLnkChangePassword();
+		baseTestClass.getRogersAccountOverviewPage().clkLnkProfileNSettings();
+		baseTestClass.getRogersProfileAndSettingsPage().clkLnkChangePassword();
 		//verify the change password overlay is displayed or not
-		baseTestClass.reporter.hardAssert(baseTestClass.rogers_profile_and_settings_page.isOverlayChangePasswordDisplayed(),
+		baseTestClass.reporter.hardAssert(baseTestClass.getRogersProfileAndSettingsPage().isOverlayChangePasswordDisplayed(),
 							"Change password process ready to set new password.",
 							"Change password overlay didn't present.");
-		baseTestClass.rogers_profile_and_settings_page.setCurrentPassword(oldPassword);
-		baseTestClass.rogers_profile_and_settings_page.setNewPassword(newPassword);
-		baseTestClass.rogers_profile_and_settings_page.setConfirmPassword(newPassword);
+		baseTestClass.getRogersProfileAndSettingsPage().setCurrentPassword(oldPassword);
+		baseTestClass.getRogersProfileAndSettingsPage().setNewPassword(newPassword);
+		baseTestClass.getRogersProfileAndSettingsPage().setConfirmPassword(newPassword);
 		baseTestClass.reporter.reportLogWithScreenshot("New password is entered.");
-		baseTestClass.rogers_profile_and_settings_page.clkBtnChangePasswordSubmit();
+		baseTestClass.getRogersProfileAndSettingsPage().clkBtnChangePasswordSubmit();
 		//verify success message --
-		baseTestClass.reporter.hardAssert(baseTestClass.rogers_profile_and_settings_page.verifyChangePasswordSuccessMsg(), 
+		baseTestClass.reporter.hardAssert(baseTestClass.getRogersProfileAndSettingsPage().verifyChangePasswordSuccessMsg(),
         						"Successfully changed password.", 
         						"Change password failed.");
-        baseTestClass.rogers_profile_and_settings_page.clkBtnChangePasswordDone();
+        baseTestClass.getRogersProfileAndSettingsPage().clkBtnChangePasswordDone();
 	}
 	
 	/**
@@ -75,28 +75,28 @@ public class CommonBusinessFlows {
 	 * @author ning.xue
 	 */
 	public int addSpeedPass() {
-		baseTestClass.rogers_wireless_dashboard_page.clkBtnSpeedPass();
+		baseTestClass.getRogersWirelessDashboardPage().clkBtnSpeedPass();
 		int intAddedSpeedPassRecord = 0;
-		if (baseTestClass.rogers_speed_pass_page.verifySpeedPassPopupIsDisplayed()) {
-			baseTestClass.reporter.hardAssert(baseTestClass.rogers_speed_pass_page.verifySpeedPassPopupIsDisplayed(),
+		if (baseTestClass.getRogersSpeedPassPage().verifySpeedPassPopupIsDisplayed()) {
+			baseTestClass.reporter.hardAssert(baseTestClass.getRogersSpeedPassPage().verifySpeedPassPopupIsDisplayed(),
 					"Speed Pass popup is displayed", "Speed Pass popup is NOT displayed");
-			baseTestClass.rogers_speed_pass_page.clkMaxSpeedDataInSpeedPassPopup();
+			baseTestClass.getRogersSpeedPassPage().clkMaxSpeedDataInSpeedPassPopup();
 			baseTestClass.reporter.reportLogWithScreenshot("Select Add on option");  
-			baseTestClass.rogers_speed_pass_page.clkBtnContinueInSpeedPassPopup();
-			baseTestClass.reporter.hardAssert(baseTestClass.rogers_speed_pass_page.verifyHeaderConfirmPurchaseIsDisplayed(),
+			baseTestClass.getRogersSpeedPassPage().clkBtnContinueInSpeedPassPopup();
+			baseTestClass.reporter.hardAssert(baseTestClass.getRogersSpeedPassPage().verifyHeaderConfirmPurchaseIsDisplayed(),
 					"Confirm Purchase is displayed", "Confirm Purchase is NOT displayed");
 			baseTestClass.reporter.reportLogWithScreenshot("Add speed pass confirm page."); 
-			baseTestClass.rogers_speed_pass_page.clkBtnPurchaseInSpeedPassPopup();
-			baseTestClass.reporter.hardAssert(baseTestClass.rogers_speed_pass_page.verifyMsgSuccessAddedSpeedPassIsDisplayed(),
+			baseTestClass.getRogersSpeedPassPage().clkBtnPurchaseInSpeedPassPopup();
+			baseTestClass.reporter.hardAssert(baseTestClass.getRogersSpeedPassPage().verifyMsgSuccessAddedSpeedPassIsDisplayed(),
 					"Message of success added speed pass is displayed",
 					"Message of success added speed pass is NOT displayed");
 			baseTestClass.reporter.reportLogWithScreenshot("Add speed pass purchase is clicked."); 
 			intAddedSpeedPassRecord++;
 
-		} else if (baseTestClass.rogers_speed_pass_page.verifyCannotAddSpeedPassHeaderIsDisplayed()) {
+		} else if (baseTestClass.getRogersSpeedPassPage().verifyCannotAddSpeedPassHeaderIsDisplayed()) {
 			baseTestClass.reporter.reportLogWithScreenshot("Add Speed Pass limit reached popup is displayed");
 		}
-		baseTestClass.rogers_speed_pass_page.clkBtnCloseInSpeedPassPopup();
+		baseTestClass.getRogersSpeedPassPage().clkBtnCloseInSpeedPassPopup();
 
 		return intAddedSpeedPassRecord;
 
@@ -108,32 +108,32 @@ public class CommonBusinessFlows {
 	 * @author ning.xue
 	 */
 	public void addDataFlow() {
-		baseTestClass.rogers_wireless_dashboard_page.clkAddData();
-		baseTestClass.reporter.hardAssert(baseTestClass.rogers_add_data_page.verifyAddDataOverlayIsDisplayed(), 
+		baseTestClass.getRogersWirelessDashboardPage().clkAddData();
+		baseTestClass.reporter.hardAssert(baseTestClass.getRogersAddDataPage().verifyAddDataOverlayIsDisplayed(),
 							"Add the Data top-up  window should be displayed. (completd an MDT add on)", 
 						"Add the Data top-up  window is NOT displayed.");        
 		baseTestClass.reporter.reportLogWithScreenshot("Add Data Add on");  
-		baseTestClass.rogers_add_data_page.selectDataAddOnOption(1);
+		baseTestClass.getRogersAddDataPage().selectDataAddOnOption(1);
 		baseTestClass.reporter.reportLogWithScreenshot("Select Add on option");  
-		baseTestClass.rogers_add_data_page.clkContinue();
+		baseTestClass.getRogersAddDataPage().clkContinue();
 		baseTestClass.reporter.reportLogWithScreenshot("Select Purchase");  
-		baseTestClass.rogers_add_data_page.clkPurchase();
+		baseTestClass.getRogersAddDataPage().clkPurchase();
 		baseTestClass.reporter.reportLogWithScreenshot("Purchase status");  
 
 	}
 
 	public void scrollToMiddleOfWebPage() {
-		baseTestClass.rogers_account_overview_page.scrollToMiddleOfPage();
+		baseTestClass.getRogersAccountOverviewPage().scrollToMiddleOfPage();
 	}
 	
 
 	public void scrollToTopOfWebPage() {
-		baseTestClass.rogers_account_overview_page.scrollToTopOfPage();
+		baseTestClass.getRogersAccountOverviewPage().scrollToTopOfPage();
 	}
 	
 
 	public void scrollToBottomOfWebPage() {
-		baseTestClass.rogers_account_overview_page.scrollToBottomOfPage();
+		baseTestClass.getRogersAccountOverviewPage().scrollToBottomOfPage();
 	}
 	
 	/**
@@ -141,7 +141,7 @@ public class CommonBusinessFlows {
 	 * @author Mirza.Kamran
 	 */
 	public void clkCloseFeedbackIfAvailableMobile() {
-		baseTestClass.rogers_profile_and_settings_page.clkCloseFeedbackIfAvailableMobile();
+		baseTestClass.getRogersProfileAndSettingsPage().clkCloseFeedbackIfAvailableMobile();
 	}
 
 	/**
@@ -152,24 +152,24 @@ public class CommonBusinessFlows {
 	 */
 	public void logOutAndReSignIn(String strUserName, String strPassword)
 	{
-		baseTestClass.rogers_login_page.clickSignOut();
+		baseTestClass.getRogersLoginPage().clickSignOut();
 		baseTestClass.reporter.reportLogWithScreenshot("Sign Out clicked");  
 		baseTestClass.reporter.reportLogWithScreenshot("Checking contentful URL..");  
-        if(baseTestClass.rogers_home_page.isContentFulURLDisplayed())
+        if(baseTestClass.getRogersHomePage().isContentFulURLDisplayed())
 		{
         	baseTestClass.reporter.reportLogWithScreenshot("Contentful page is displayed");  
-        	baseTestClass.rogers_home_page.clkEasyLogin();
+        	baseTestClass.getRogersHomePage().clkEasyLogin();
 		}
         baseTestClass.reporter.reportLogWithScreenshot("Sign-in is being clicked");  
-        baseTestClass.rogers_login_page.clkSignInAs();
+        baseTestClass.getRogersLoginPage().clkSignInAs();
         baseTestClass.reporter.reportLogWithScreenshot("Re sign In");  
-        baseTestClass.rogers_login_page.switchToSignInIFrame();
+        baseTestClass.getRogersLoginPage().switchToSignInIFrame();
         baseTestClass.reporter.reportLogWithScreenshot("Set password");             
-        baseTestClass.rogers_login_page.setPasswordIFrame(strPassword);               
+        baseTestClass.getRogersLoginPage().setPasswordIFrame(strPassword);               
         baseTestClass.reporter.reportLogWithScreenshot("Login Credential is entered.");
-        baseTestClass.rogers_login_page.clkSignInIFrame();	
+        baseTestClass.getRogersLoginPage().clkSignInIFrame();	
         baseTestClass.reporter.reportLogWithScreenshot("Sign In clicked");  
-        baseTestClass.rogers_login_page.switchOutOfSignInIFrame();		       
+        baseTestClass.getRogersLoginPage().switchOutOfSignInIFrame();		       
         baseTestClass.reporter.reportLogWithScreenshot("Account overview page.");   
 	}
 }

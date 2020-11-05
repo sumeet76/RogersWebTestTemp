@@ -35,59 +35,59 @@ public class RogersSS_TC_073_ValidateMyWirelessPlanSectionInTheWirelessDashboard
 	
     @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateMyWirelessPlanSectionInTheWirelessDashboardNSE() {
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc727375.getUsername();
     	String strPassword = TestDataHandler.tc727375.getPassword();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
-        rogers_login_page.setPasswordIFrame(strPassword);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 		
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc727375.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc727375.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");
         
-        rogers_account_overview_page.clkMenuUsageAndService();
+        getRogersAccountOverviewPage().clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
         String strAccountNum = TestDataHandler.tc727375.getAccountDetails().getCtn();
-        if (rogers_account_overview_page.isAccountShowInDropDown(strAccountNum.substring(strAccountNum.length()-4))) {
-            rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
+        if (getRogersAccountOverviewPage().isAccountShowInDropDown(strAccountNum.substring(strAccountNum.length()-4))) {
+            getRogersAccountOverviewPage().clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
         } else {
-        	rogers_account_overview_page.clkSubMenuWirelessUsage();
+        	getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
         }
-        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
-        rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
+        getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
+        getRogersWirelessDashboardPage().scrollToMidOfDasboardPage();
         reporter.reportLogWithScreenshot("Middle of Wireless dashboard page.");        
-	    reporter.hardAssert(rogers_wireless_dashboard_page.verifyPlanNameIsDisplayed(),
+	    reporter.hardAssert(getRogersWirelessDashboardPage().verifyPlanNameIsDisplayed(),
 	    		"Plan name is displayed",
 	    		"Plan name is not displayed");	    
-	    reporter.hardAssert(rogers_wireless_dashboard_page.verifyMonthlyServiceFeeIsDisplayed(),
+	    reporter.hardAssert(getRogersWirelessDashboardPage().verifyMonthlyServiceFeeIsDisplayed(),
 	    		"Monthly service fee is displayed in the Plan section",
 	    		"Monthly service fee is not displayed in the Plan section");
-	    reporter.hardAssert(rogers_wireless_dashboard_page.verifyButtonChangePlanIsDisplayed(),
+	    reporter.hardAssert(getRogersWirelessDashboardPage().verifyButtonChangePlanIsDisplayed(),
 	    		"Button Change plan is displayed in the plan section",
 	    		"Button Change plan is not displayed");
-	    reporter.softAssert(rogers_wireless_dashboard_page.verifyIncludedSectionIsDisplayed(),
+	    reporter.softAssert(getRogersWirelessDashboardPage().verifyIncludedSectionIsDisplayed(),
 	    		"Included section is displayed",
 	    		"included section is not displayed");
-	    reporter.softAssert(rogers_wireless_dashboard_page.verifTitleMyWirelessPlanIsDisplayed(),
+	    reporter.softAssert(getRogersWirelessDashboardPage().verifTitleMyWirelessPlanIsDisplayed(),
 	    		"My Wireless plan title is displayed",
 	    		"My Wireless plan title is not displayed");
-	    reporter.softAssert(rogers_wireless_dashboard_page.verifyMyPlansDetailsIsDisplayedAtTheBottomOfMyPlan(),
+	    reporter.softAssert(getRogersWirelessDashboardPage().verifyMyPlansDetailsIsDisplayedAtTheBottomOfMyPlan(),
 	    		"My Plan link details is displayed at the bottom",
 	    		"My Plan link details is not displayed at the bottom");
-	    rogers_wireless_dashboard_page.clkMyPlanDetailsLink();	    
-	    reporter.softAssert(rogers_wireless_dashboard_page.verifyMyPlanDetailsOverlayIsDisplayed(),
+	    getRogersWirelessDashboardPage().clkMyPlanDetailsLink();
+	    reporter.softAssert(getRogersWirelessDashboardPage().verifyMyPlanDetailsOverlayIsDisplayed(),
 	    "My Plan details overlay is displayed",
 	    "My Plan details overlay is not displayed");
 	    reporter.reportLogWithScreenshot("My Plan details overlay");   
-	    rogers_wireless_dashboard_page.closeMyPlanDetailsOverlay();
+	    getRogersWirelessDashboardPage().closeMyPlanDetailsOverlay();
 	    
     }
 

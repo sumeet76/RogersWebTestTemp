@@ -35,65 +35,65 @@ public class RogersSS_TC_014_BaselineUpdateEmailAddress extends BaseTestClass {
 	
     @Test(groups = {"RegressionSS","ProfileAndSettingsSS"})
     public void validateUserUpdateUsername() {
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc1314.getUsername();
     	String strPassword = TestDataHandler.tc1314.getPassword();
 		String strNewUsername = TestDataHandler.tc1314.getNewUsername();
-    	rogers_login_page.switchToSignInIFrame();
+    	getRogersLoginPage().switchToSignInIFrame();
 		tryLogin(strUsername, strPassword);
-        if (rogers_login_page.verifyLoginFailMsgIframe()) {
+        if (getRogersLoginPage().verifyLoginFailMsgIframe()) {
         	reporter.reportLogWithScreenshot("Login failed, update username.");
         	String tempUsername = strUsername;
         	strUsername = strNewUsername;
         	strNewUsername = tempUsername;
         	tryLogin(strUsername, strPassword);
-        	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),
+        	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),
         						"Successfully login with new username.",
         						"Both login with original and new user name atemp failed, please investigate.");
         }
-        rogers_login_page.clkSkipIFrame();
-        rogers_login_page.switchOutOfSignInIFrame();        
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        getRogersLoginPage().clkSkipIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-        	rogers_account_overview_page.selectAccount(TestDataHandler.tc1314.getAccountDetails().getBan());       
+        	getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc1314.getAccountDetails().getBan());       
         }
         reporter.reportLogWithScreenshot("Account overview page.");
-		rogers_account_overview_page.clkLnkProfileNSettings();
+		getRogersAccountOverviewPage().clkLnkProfileNSettings();
 		reporter.reportLogWithScreenshot("Profile & Settings page.");
         changeUsername(strUsername, strNewUsername);        
-        if (rogers_profile_and_settings_page.verifyUsername(strNewUsername)) {
+        if (getRogersProfileAndSettingsPage().verifyUsername(strNewUsername)) {
         	//Change user name back after successfully changed user name
             changeUsername(strNewUsername, strUsername);
         }
     }
 
     private void tryLogin(String strUsername, String strPassword) {
-        rogers_login_page.setUsernameIFrame(strUsername);
-        rogers_login_page.setPasswordIFrame(strPassword);
+        getRogersLoginPage().setUsernameIFrame(strUsername);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-        rogers_login_page.clkSignInIFrame();
-        reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+        getRogersLoginPage().clkSignInIFrame();
+        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
     }
     
     private void changeUsername(String strUsername, String strNewUsername) {
-		rogers_profile_and_settings_page.clkLnkChangeUsername();
-		reporter.hardAssert(rogers_profile_and_settings_page.verifyCurrentUsername(strUsername), 
+		getRogersProfileAndSettingsPage().clkLnkChangeUsername();
+		reporter.hardAssert(getRogersProfileAndSettingsPage().verifyCurrentUsername(strUsername),
 							"Change user name overlay displayed successfully.",
 							"Change user name overlay didn't displayed.");
-		rogers_profile_and_settings_page.setNewUsername(strNewUsername);
+		getRogersProfileAndSettingsPage().setNewUsername(strNewUsername);
 		reporter.reportLogWithScreenshot("New user name is entered.");
-		rogers_profile_and_settings_page.clkBtnChangeUsernameContinue();		
-		reporter.hardAssert(rogers_profile_and_settings_page.verifyChangeUsernameConfirmMsg(strNewUsername),
+		getRogersProfileAndSettingsPage().clkBtnChangeUsernameContinue();
+		reporter.hardAssert(getRogersProfileAndSettingsPage().verifyChangeUsernameConfirmMsg(strNewUsername),
 							"Change user name confirm message is displayed.",
 							"Change user name flow failed to confirm.");
 		reporter.reportLogWithScreenshot("Confirm change user name.");
-		rogers_profile_and_settings_page.clkBtnChangeUsernameSubmit();
+		getRogersProfileAndSettingsPage().clkBtnChangeUsernameSubmit();
 		//verify success message --
-        reporter.hardAssert(rogers_profile_and_settings_page.verifyChangeUsernameSuccessMsg(), 
+        reporter.hardAssert(getRogersProfileAndSettingsPage().verifyChangeUsernameSuccessMsg(),
         						"Successfully changed user name.", 
         						"Change user name failed.");
         reporter.reportLogWithScreenshot("Change user name completed.");
-        rogers_profile_and_settings_page.clkBtnChangeUsernameDone();
+        getRogersProfileAndSettingsPage().clkBtnChangeUsernameDone();
     }
 
 }

@@ -36,49 +36,49 @@ public class RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE e
 	
     @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateErrorMessageWhenExceedLimitForInfiniteSEPlan() {
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc82.getUsername();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc82.getPassword();    	
-        rogers_login_page.setPasswordIFrame(strPassword);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 		
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc82.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc82.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");   
-        rogers_account_overview_page.clkMenuUsageAndService();
+        getRogersAccountOverviewPage().clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
-    	rogers_account_overview_page.clkSubMenuWirelessUsage();
+    	getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
 
-        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
+        getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
          
         //  - Added Data: should be included all Speed passes added for current bill cycle
         //  - Added Data: multiple speed passes of same size should be displayed individually (not summed up)
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifySpeedPassButtonIsDisplayed(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifySpeedPassButtonIsDisplayed(),
 				"Speed Pass button is displayed", 
 				"Speed Pass button is NOT displayed");
 		reporter.reportLogWithScreenshot("Wireless dashboard page."); 
-		reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(), 
+		reporter.hardAssert(getRogersManageDataPage().validateViewDetailsLink(),
 			"'Data details' page is displayed after click on view details link", 
 			"'Data details' page is NOT displayed after click on view details link");  
-		int countOfExistSpeedPass = rogers_manage_data_page.getAllExistingSpeedPassCount();		
+		int countOfExistSpeedPass = getRogersManageDataPage().getAllExistingSpeedPassCount();
 		reporter.reportLogWithScreenshot("Manage data page.");		
-		rogers_manage_data_page.clkBackOnManageDataUsagePage();	
+		getRogersManageDataPage().clkBackOnManageDataUsagePage();
 		//Add speed pass to reach limit 10
 		if (countOfExistSpeedPass < 10) {
 			for (int counter = 0; counter + countOfExistSpeedPass < 10; counter++) {
 				common_business_flows.addSpeedPass();	
 			}
 		}
-		rogers_wireless_dashboard_page.clkBtnSpeedPass();
-		reporter.hardAssert(rogers_speed_pass_page.verifyCannotAddSpeedPassHeaderIsDisplayed(), 
+		getRogersWirelessDashboardPage().clkBtnSpeedPass();
+		reporter.hardAssert(getRogersSpeedPassPage().verifyCannotAddSpeedPassHeaderIsDisplayed(),
 				"Cannot Add Speed Pass error message is displayed", 
 				"Cannot Add Speed Pass error message is not displayed");  
 

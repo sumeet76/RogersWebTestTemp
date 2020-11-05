@@ -38,57 +38,57 @@ public class RogersSS_TC_081_ValidateErrorMessageWhenMDTandProfileMaximumLimitFo
 	
     @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateErrorMessageWhenMDTandProfileMaximumLimitForSE() {
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc7681.getUsername();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc7681.getPassword();    	
-        rogers_login_page.setPasswordIFrame(strPassword);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 		
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc7681.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc7681.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");   
-        rogers_account_overview_page.clkMenuUsageAndService();
+        getRogersAccountOverviewPage().clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
-        rogers_account_overview_page.clkSubMenuWirelessUsage();        
-        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
+        getRogersAccountOverviewPage().clkSubMenuWirelessUsage();        
+        getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
         
-        reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(), 
+        reporter.softAssert(getRogersManageDataPage().validateViewDetailsLink(),
 							"'Manage Data' page is displayed after click on view details link", 
 							"'Manage Data' page is NOT displayed after click on view details link");  
         reporter.reportLogWithScreenshot("Manage data page view after we click on view details");  
-        counterOfAddedData = rogers_manage_data_page.getAllExistingAddedDataCount();
-        Map<String, Integer> countOfAlreadyAddedData = rogers_manage_data_page.getCountOfAllExistingAddedDataValues();
+        counterOfAddedData = getRogersManageDataPage().getAllExistingAddedDataCount();
+        Map<String, Integer> countOfAlreadyAddedData = getRogersManageDataPage().getCountOfAllExistingAddedDataValues();
         
-        rogers_manage_data_page.clkBackOnManageDataUsagePage();
+        getRogersManageDataPage().clkBackOnManageDataUsagePage();
         reporter.reportLogWithScreenshot("Navigated back to dashboard from manage data view");  
-        reporter.softAssert(rogers_wireless_dashboard_page.verifyAddDataButtonIsDisplayed(), 
+        reporter.softAssert(getRogersWirelessDashboardPage().verifyAddDataButtonIsDisplayed(),
 							"Add the Data top-up button is displayed", 
 							"Add the Data top-up  button is NOT displayed.");        
-        rogers_wireless_dashboard_page.clkAddData();
+        getRogersWirelessDashboardPage().clkAddData();
         if(counterOfAddedData<10)
         {
-        reporter.softAssert(rogers_add_data_page.verifyAddDataOverlayIsDisplayed(), 
+        reporter.softAssert(getRogersAddDataPage().verifyAddDataOverlayIsDisplayed(),
 							"Add the Data top-up  window should be displayed. (completd an MDT add on)", 
 							"Add the Data top-up  window is NOT displayed.");          
-        List<String> allMDTValues =rogers_add_data_page.getAllAddDataOptions();         
-        rogers_speed_pass_page.clkBtnCloseInSpeedPassPopup();
+        List<String> allMDTValues =getRogersAddDataPage().getAllAddDataOptions();
+        getRogersSpeedPassPage().clkBtnCloseInSpeedPassPopup();
         
 		addThreeTimesEachData(allMDTValues,countOfAlreadyAddedData);        		
         }else
         {
-        	reporter.hardAssert(rogers_add_data_page.verifyAddDataLimitReachedIsDisplayed(), 
+        	reporter.hardAssert(getRogersAddDataPage().verifyAddDataLimitReachedIsDisplayed(),
 					"Limit reached overlay is displayed, since already 10 addons have been added", 
 					"Limit reached overlay is not displayed even though there are 10 add ons"); 
 	    	 reporter.reportLogWithScreenshot("Limit reached overlay is displayed");
-	    	 rogers_speed_pass_page.clkBtnCloseInSpeedPassPopup();
+	    	 getRogersSpeedPassPage().clkBtnCloseInSpeedPassPopup();
         }
                                                
     }
@@ -101,30 +101,30 @@ public class RogersSS_TC_081_ValidateErrorMessageWhenMDTandProfileMaximumLimitFo
     private void addMDTForGivenNumberOfTimes(Integer intMaxNumberOfTimesToAdd,String strMDT) {
     	for(int itr=1;itr<=intMaxNumberOfTimesToAdd+1;itr++)
     	{
-    		 rogers_wireless_dashboard_page.clkAddData();
-             reporter.softAssert(rogers_add_data_page.verifyAddDataOverlayIsDisplayed(), 
+    		 getRogersWirelessDashboardPage().clkAddData();
+             reporter.softAssert(getRogersAddDataPage().verifyAddDataOverlayIsDisplayed(),
      							"Add the Data top-up  window should be displayed. (completd an MDT add on)", 
      							"Add the Data top-up  window is NOT displayed.");   
              reporter.reportLogWithScreenshot("Add Data Add on");  
-             rogers_add_data_page.selectAddOnOption(strMDT);
+             getRogersAddDataPage().selectAddOnOption(strMDT);
              reporter.reportLogWithScreenshot("Select Add on option");  
-             rogers_add_data_page.clkContinue();
+             getRogersAddDataPage().clkContinue();
              reporter.reportLogWithScreenshot("Select Purchase"); 
-             rogers_add_data_page.clkPurchase();
+             getRogersAddDataPage().clkPurchase();
              if(itr<=intMaxNumberOfTimesToAdd && counterOfAddedData<10)
              {
-             reporter.softAssert(rogers_add_data_page.verifyAddDataSuccessMsgIsDisplayed(), 
+             reporter.softAssert(getRogersAddDataPage().verifyAddDataSuccessMsgIsDisplayed(),
 						"Add the Data top-up  window should be displayed. (completd an MDT add on)", 
 						"Add the Data top-up  window is NOT displayed.");
-             rogers_speed_pass_page.clkBtnCloseInSpeedPassPopup();
+             getRogersSpeedPassPage().clkBtnCloseInSpeedPassPopup();
              counterOfAddedData++;
              }else if(itr>intMaxNumberOfTimesToAdd || counterOfAddedData==10)
              {
-            	 reporter.hardAssert(rogers_add_data_page.verifyAddDataLimitReachedIsDisplayed(), 
+            	 reporter.hardAssert(getRogersAddDataPage().verifyAddDataLimitReachedIsDisplayed(),
 							"Limit reached overlay is displayed", 
 							"Limit reached overlay is not displayed"); 
             	 reporter.reportLogWithScreenshot("Limit reached overlay is displayed");
-            	 rogers_speed_pass_page.clkBtnCloseInSpeedPassPopup();
+            	 getRogersSpeedPassPage().clkBtnCloseInSpeedPassPopup();
             	 break;
              }
              

@@ -36,7 +36,7 @@ public class RogersLinkAccountPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyLinkAccountPageLoad() {
-		return reusableActions.isElementVisible(lblLinkAccount);
+		return getReusableActionsInstance().isElementVisible(lblLinkAccount);
 	}
 	
 	/**
@@ -45,7 +45,7 @@ public class RogersLinkAccountPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void setAccountNumber(String strAccountNumber) {
-		reusableActions.getWhenReady(txtAccountNumber, 30).sendKeys(strAccountNumber);
+		getReusableActionsInstance().getWhenReady(txtAccountNumber, 30).sendKeys(strAccountNumber);
 	}
 	
 	/**
@@ -54,7 +54,7 @@ public class RogersLinkAccountPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void setPostalCode(String strPostalCode) {
-		reusableActions.getWhenReady(txtPostalCode, 30).sendKeys(strPostalCode);
+		getReusableActionsInstance().getWhenReady(txtPostalCode, 30).sendKeys(strPostalCode);
 	}
 	
 	/**
@@ -62,7 +62,7 @@ public class RogersLinkAccountPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkBtnLinkAccount() {
-		reusableActions.getWhenReady(btnLinkAccount, 30).click();
-		reusableActions.staticWait(50000);
+		getReusableActionsInstance().getWhenReady(btnLinkAccount, 30).click();
+		getReusableActionsInstance().staticWait(50000);
 	}
 }

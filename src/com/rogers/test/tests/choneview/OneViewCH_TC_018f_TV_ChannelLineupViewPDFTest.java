@@ -20,14 +20,14 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class OneViewCH_TC_018f_TV_ChannelLineupViewPDFTest extends BaseTestClass {
     @Test
     public void checkChannelLineupAndViewPdf() {
-		environment_selection_page.selectOneViewEnv(TestDataHandler.chOneViewConfig.getOneViewenv());
+		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.chOneViewConfig.getOneViewenv());
 		reporter.reportLogWithScreenshot("Launched the account dashboard page");
-		account_over_view_page.selectTVBadage();
+		getAccountOverViewPage().selectTVBadage();
 		reporter.reportLogWithScreenshot("Lanched the HomePhone dashboard page ");
-		tv_dashboard_page.clickViewChannelLineUp();
-		reporter.hardAssert(tv_dashboard_page.verifyViewPdf(),"Channel Line up displays view PDF button","View PDF button on channel line up not available- Test failed");
+		getTVDashboardPage().clickViewChannelLineUp();
+		reporter.hardAssert(getTVDashboardPage().verifyViewPdf(),"Channel Line up displays view PDF button","View PDF button on channel line up not available- Test failed");
 		reporter.reportLogWithScreenshot("Channel Line up Launched and view pdf button available");
-		tv_dashboard_page.clickViewPdf();
+		getTVDashboardPage().clickViewPdf();
 		reporter.reportLogWithScreenshot("PDF view clicked");
     }
     

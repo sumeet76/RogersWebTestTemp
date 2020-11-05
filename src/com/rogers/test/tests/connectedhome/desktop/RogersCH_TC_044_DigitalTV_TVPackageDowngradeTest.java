@@ -31,32 +31,32 @@ public class RogersCH_TC_044_DigitalTV_TVPackageDowngradeTest extends BaseTestCl
 	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH"})
 	public void checkTVPackageDowngrade() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
-		rogers_home_page.clkSignIn();
-		rogers_login_page.switchToSignInIFrame();
+		getRogersHomePage().clkSignIn();
+		getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setUsernameIFrame(TestDataHandler.tc43_44_digitalTVAccount.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.tc43_44_digitalTVAccount.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc43_44_digitalTVAccount.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc43_44_digitalTVAccount.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    reporter.reportLogWithScreenshot("Skip popup");
-	    rogers_login_page.clkSkipIFrame();
-	    rogers_login_page.switchOutOfSignInIFrame();
-	    rogers_account_overview_page.selectAccount(TestDataHandler.tc43_44_digitalTVAccount.accountDetails.getBan());
-		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+	    getRogersLoginPage().clkSkipIFrame();
+	    getRogersLoginPage().switchOutOfSignInIFrame();
+	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc43_44_digitalTVAccount.accountDetails.getBan());
+		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");		
-		rogers_account_overview_page.clkTVBadge();
+		getRogersAccountOverviewPage().clkTVBadge();
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
-		rogers_digital_tv_dashboard_page.clkChangeMyPackage();
+		getRogersDigitalTVDashboardPage().clkChangeMyPackage();
 		if (strLanguage.equals("en"))
 		{
 		reporter.reportLogWithScreenshot("Launched the TV package Page");
-		rogers_digital_tv_package_selection_page.selectPackage(TestDataHandler.tc43_44_digitalTVAccount.getAccountDetails().getDowngradePlanEn(),TestDataHandler.tc43_44_digitalTVAccount.getAccountDetails().getDowngradePlanFr());
-		reporter.hardAssert(rogers_digital_tv_package_selection_page.verifyDowngradeWaysToBuyBox(), "Downgrade ways popup has launched", "Downgrade has failed");
+		getRogersDigitalTVPackageSelectionPage().selectPackage(TestDataHandler.tc43_44_digitalTVAccount.getAccountDetails().getDowngradePlanEn(),TestDataHandler.tc43_44_digitalTVAccount.getAccountDetails().getDowngradePlanFr());
+		reporter.hardAssert(getRogersDigitalTVPackageSelectionPage().verifyDowngradeWaysToBuyBox(), "Downgrade ways popup has launched", "Downgrade has failed");
 		}	
 		else
 		{
-		reporter.hardAssert(rogers_digital_tv_dashboard_page.verifyContactCustomercarePopupForFr(),"Downgrade ways popup has launched", "Downgrade has failed");
+		reporter.hardAssert(getRogersDigitalTVDashboardPage().verifyContactCustomercarePopupForFr(),"Downgrade ways popup has launched", "Downgrade has failed");
 		}
 		}
 

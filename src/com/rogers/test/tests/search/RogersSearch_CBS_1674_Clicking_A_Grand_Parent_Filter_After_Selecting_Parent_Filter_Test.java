@@ -32,29 +32,29 @@ public class RogersSearch_CBS_1674_Clicking_A_Grand_Parent_Filter_After_Selectin
 		String strParentFilterName;
 
 		getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
-		strResultWindowText = rogers_search_page.getResultWindowText();
+		strResultWindowText = getRogersSearchPage().getResultWindowText();
 	
 		String[] strFilters = Arrays.copyOfRange(csvRow, 1, csvRow.length);
 		for(int i=0; i<strFilters.length; i++) {
 			
-			rogers_search_page.clkGrandParentFilter(strFilters[i]);
+			getRogersSearchPage().clkGrandParentFilter(strFilters[i]);
 			reporter.reportLogWithScreenshot(strFilters[i]+" is clicked");
-			lstParentFilters = rogers_search_page.getParentFilters(strFilters[i]);
+			lstParentFilters = getRogersSearchPage().getParentFilters(strFilters[i]);
 
 			for(int j=0; j<lstParentFilters.size(); j++) {
-				rogers_search_page.clkParentFilter(lstParentFilters.get(j));
+				getRogersSearchPage().clkParentFilter(lstParentFilters.get(j));
 				strParentFilterName = lstParentFilters.get(j).getText();
 				reporter.reportLogWithScreenshot(strParentFilterName +" is selected");
-				reporter.hardAssert(rogers_search_page.validateResultsTag(strFilters[i],strParentFilterName),
+				reporter.hardAssert(getRogersSearchPage().validateResultsTag(strFilters[i],strParentFilterName),
 						"Results tags verified", "Results tags mismatch");
 		
-				rogers_search_page.clkGrandParentFilter(strFilters[i]);
+				getRogersSearchPage().clkGrandParentFilter(strFilters[i]);
 				reporter.reportLogWithScreenshot(strFilters[i]+" is clicked");
-				reporter.softAssert(rogers_search_page.getResultWindowText().equals(strResultWindowText),
+				reporter.softAssert(getRogersSearchPage().getResultWindowText().equals(strResultWindowText),
 						"Results refreshed back to initial search",
 						"Results Not refreshed back to initial search");
 
-				rogers_search_page.clkGrandParentFilter(strFilters[i]);
+				getRogersSearchPage().clkGrandParentFilter(strFilters[i]);
 			}
 		}
 	}

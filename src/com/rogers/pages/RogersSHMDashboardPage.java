@@ -35,7 +35,7 @@ public class RogersSHMDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public Boolean verifySHMDashBoardPageIsDisplayed() {
-		return reusableActions.isElementVisible(titleSHMPage,60);
+		return getReusableActionsInstance().isElementVisible(titleSHMPage,60);
 	}
 	
 	/**
@@ -45,7 +45,7 @@ public class RogersSHMDashboardPage extends BasePageClass {
 	 */
 	public Boolean verifyShopForAccessoriesLinkdisplayed()
 	{
-		return reusableActions.isElementVisible(lnkShopForAccessories,30);
+		return getReusableActionsInstance().isElementVisible(lnkShopForAccessories,30);
 	}
 	
 	/**
@@ -55,7 +55,7 @@ public class RogersSHMDashboardPage extends BasePageClass {
 	 */
 	public Boolean verifyNewToSmartHomeLinkdisplayed()
 	{
-		return reusableActions.isElementVisible(lnkNewToSmartHome,10);
+		return getReusableActionsInstance().isElementVisible(lnkNewToSmartHome,10);
 	}
 	
 	/**
@@ -65,7 +65,7 @@ public class RogersSHMDashboardPage extends BasePageClass {
 	 */
 	public Boolean verifyLearnAboutSmartHomeMonitoringLinkdisplayed()
 	{
-		return reusableActions.isElementVisible(lnkLearnSmartHomeMonitoring,10);
+		return getReusableActionsInstance().isElementVisible(lnkLearnSmartHomeMonitoring,10);
 	}
 	
 	/**
@@ -75,7 +75,7 @@ public class RogersSHMDashboardPage extends BasePageClass {
 	 */
 	public Boolean verifyInsuranceCertificateLinkdisplayed()
 	{
-		return reusableActions.isElementVisible(lnkInsuranceCertificate,10);
+		return getReusableActionsInstance().isElementVisible(lnkInsuranceCertificate,10);
 	}
 	
 	

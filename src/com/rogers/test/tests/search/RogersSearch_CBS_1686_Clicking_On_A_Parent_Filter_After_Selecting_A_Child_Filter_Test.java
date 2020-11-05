@@ -46,11 +46,11 @@ public class RogersSearch_CBS_1686_Clicking_On_A_Parent_Filter_After_Selecting_A
 	
 	getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
 	
-	rogers_search_page.clkShopAndThenWirelessFilter();
+	getRogersSearchPage().clkShopAndThenWirelessFilter();
 	reporter.reportLogWithScreenshot("Shop and Wireless Filters clicked");
 	
-	reporter.hardAssert(rogers_search_page.verifyChildFilterSelection(), "Color Results displayed correctly", "Color Results not displayed correctly");
-	reporter.hardAssert(rogers_search_page.verifyParentFilterSelection(), "Parent Filter results displayed correctly", "Parent Filter results not displayed correctly");
+	reporter.hardAssert(getRogersSearchPage().verifyChildFilterSelection(), "Color Results displayed correctly", "Color Results not displayed correctly");
+	reporter.hardAssert(getRogersSearchPage().verifyParentFilterSelection(), "Parent Filter results displayed correctly", "Parent Filter results not displayed correctly");
 				
 				
 	}

@@ -57,8 +57,8 @@ public class HomePhonedashboard  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */	
 	public void clickYesResetPassword() {
-		reusableActions.javascriptScrollByVisibleElement(btnYesResetPassword);
-		reusableActions.getWhenReady(btnYesResetPassword,120).click();;
+		getReusableActionsInstance().javascriptScrollByVisibleElement(btnYesResetPassword);
+		getReusableActionsInstance().getWhenReady(btnYesResetPassword,120).click();;
 		
 	}
 	
@@ -68,9 +68,9 @@ public class HomePhonedashboard  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */	
 	public void clickResetVoiceMail() {
-		WebElement btn=reusableActions.getWhenReady(btnResetVoiceMail,120);
-		reusableActions.javascriptScrollByCoordinates(0,btn.getLocation().y-300);
-		reusableActions.clickWhenReady(btnResetVoiceMail,120);
+		WebElement btn=getReusableActionsInstance().getWhenReady(btnResetVoiceMail,120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		getReusableActionsInstance().clickWhenReady(btnResetVoiceMail,120);
 }
 	
 			
@@ -80,7 +80,7 @@ public class HomePhonedashboard  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickBacktoAccountOverview() {
-		reusableActions.getWhenReady(btnBackToAccountOverview,120).click();
+		getReusableActionsInstance().getWhenReady(btnBackToAccountOverview,120).click();
 		}
 	
 	
@@ -91,7 +91,7 @@ public class HomePhonedashboard  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickContinue() {
-		reusableActions.getWhenReady(btnContnue,120).click();
+		getReusableActionsInstance().getWhenReady(btnContnue,120).click();
 		}
 	
 	/**
@@ -100,7 +100,7 @@ public class HomePhonedashboard  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */	
 	public boolean verifySuccess() {
-		return reusableActions.isElementVisible(imgSuccess,120);
+		return getReusableActionsInstance().isElementVisible(imgSuccess,120);
 	}
 	
 	/**
@@ -108,7 +108,7 @@ public class HomePhonedashboard  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickSuccessOk() {
-		reusableActions.getWhenReady(btnSuccessOk,120).click();
+		getReusableActionsInstance().getWhenReady(btnSuccessOk,120).click();
 		}
 	
 	/**
@@ -117,8 +117,8 @@ public class HomePhonedashboard  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */	
 	public boolean verifyHeader() {	
-		reusableActions.waitForElementVisibility(icnHeader,120);
-		return reusableActions.isElementVisible(icnHeader);
+		getReusableActionsInstance().waitForElementVisibility(icnHeader,120);
+		return getReusableActionsInstance().isElementVisible(icnHeader);
 	}
 	
 	/**
@@ -128,7 +128,7 @@ public class HomePhonedashboard  extends BasePageClass {
 	 */	
 	public boolean verifyFooter() {
 		
-		return reusableActions.isElementVisible(icnFooter);
+		return getReusableActionsInstance().isElementVisible(icnFooter);
 	}
 	
 	/**
@@ -136,7 +136,7 @@ public class HomePhonedashboard  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */	
 	public void goToPageBottom() {
-		reusableActions.javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 	}
 	
 	
@@ -145,7 +145,7 @@ public class HomePhonedashboard  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */	
 	public void goToPageMid() {		
-		reusableActions.javascriptScrollToMiddleOfPage();;
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();;
 	}
 	
 	

@@ -135,7 +135,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkCheckout() {
-		reusableActions.clickWhenReady(btnCheckout, 30);
+		getReusableActionsInstance().clickWhenReady(btnCheckout, 30);
 	}
 	
 	/**
@@ -144,8 +144,8 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 */
 	public void setEmail(){
 		String strEmail = FormFiller.generateEmail();
-		reusableActions.getWhenReady(txtContactEmail, 3).clear();
-		reusableActions.getWhenReady(txtContactEmail,3).sendKeys(strEmail);
+		getReusableActionsInstance().getWhenReady(txtContactEmail, 3).clear();
+		getReusableActionsInstance().getWhenReady(txtContactEmail,3).sendKeys(strEmail);
 	}
 	
 	/**
@@ -155,8 +155,8 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	public void setFirstName(){
 		String strName = FormFiller.generateRandomName();
 		String strFname="Rogersaa" + strName;
-		reusableActions.getWhenReady(txtContactFirstName, 3).clear();
-		reusableActions.getWhenReady(txtContactFirstName,3).sendKeys(strFname);
+		getReusableActionsInstance().getWhenReady(txtContactFirstName, 3).clear();
+		getReusableActionsInstance().getWhenReady(txtContactFirstName,3).sendKeys(strFname);
 	}
 	
 	/**
@@ -166,8 +166,8 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	public void setLastName(){
 		String strName = FormFiller.generateRandomName();
 		String strLname="Automation" + strName;
-		reusableActions.getWhenReady(txtContactLastName, 3).clear();
-		reusableActions.getWhenReady(txtContactLastName,3).sendKeys(strLname);
+		getReusableActionsInstance().getWhenReady(txtContactLastName, 3).clear();
+		getReusableActionsInstance().getWhenReady(txtContactLastName,3).sendKeys(strLname);
 	}
 	
 	/**
@@ -176,8 +176,8 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void setStreetNumber(String strStreetNumber) {
-		reusableActions.getWhenReady(txtContactStreetNumber).clear();
-		reusableActions.getWhenReady(txtContactStreetNumber, 5).sendKeys(strStreetNumber);
+		getReusableActionsInstance().getWhenReady(txtContactStreetNumber).clear();
+		getReusableActionsInstance().getWhenReady(txtContactStreetNumber, 5).sendKeys(strStreetNumber);
 	}
 	
 	/**
@@ -186,8 +186,8 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void setStreetName(String strStreetName) {
-		reusableActions.getWhenReady(txtContactStreetName).clear();
-		reusableActions.getWhenReady(txtContactStreetName, 5).sendKeys(strStreetName);
+		getReusableActionsInstance().getWhenReady(txtContactStreetName).clear();
+		getReusableActionsInstance().getWhenReady(txtContactStreetName, 5).sendKeys(strStreetName);
 	}
 	
 	/**
@@ -196,8 +196,8 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void setCity(String strCity) {
-		reusableActions.getWhenReady(txtContactCity).clear();
-		reusableActions.getWhenReady(txtContactCity, 5).sendKeys(strCity);
+		getReusableActionsInstance().getWhenReady(txtContactCity).clear();
+		getReusableActionsInstance().getWhenReady(txtContactCity, 5).sendKeys(strCity);
 	}
 	
 	/**
@@ -206,7 +206,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectProvince(String strProvince) {
-		reusableActions.selectWhenReady(ddlContactProvince, strProvince, 5);
+		getReusableActionsInstance().selectWhenReady(ddlContactProvince, strProvince, 5);
 	}
 	
 	/**
@@ -215,8 +215,8 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void setPostalCode(String strPostalCode) {
-		reusableActions.getWhenReady(txtContactPostalcode).clear();
-		reusableActions.getWhenReady(txtContactPostalcode, 5).sendKeys(strPostalCode);
+		getReusableActionsInstance().getWhenReady(txtContactPostalcode).clear();
+		getReusableActionsInstance().getWhenReady(txtContactPostalcode, 5).sendKeys(strPostalCode);
 	}
 	
 	/**
@@ -225,8 +225,8 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 */
 	public void setPhone() {
 		String strLicenseNumber = FormFiller.generatePhoneNumber();
-		reusableActions.getWhenReady(txtContactPhone, 3).clear();
-		reusableActions.getWhenReady(txtContactPhone,3).sendKeys(strLicenseNumber);
+		getReusableActionsInstance().getWhenReady(txtContactPhone, 3).clear();
+		getReusableActionsInstance().getWhenReady(txtContactPhone,3).sendKeys(strLicenseNumber);
 		
 	}
 
@@ -235,9 +235,9 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectDOBYear() {
-		reusableActions.waitForElementVisibility(ddlDobYear,30);
+		getReusableActionsInstance().waitForElementVisibility(ddlDobYear,30);
 		String strDOBYear = FormFiller.generateDOBYear();
-		reusableActions.selectWhenReady(ddlDobYear, strDOBYear);
+		getReusableActionsInstance().selectWhenReady(ddlDobYear, strDOBYear);
 	}
 
 	/**
@@ -246,7 +246,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 */
 	public void selectDOBMonth() {
 		String strDOBMonth = FormFiller.generateNameOfMonth();
-		reusableActions.selectWhenReady(ddlDobMonth, strDOBMonth);
+		getReusableActionsInstance().selectWhenReady(ddlDobMonth, strDOBMonth);
 	}
 
 	/**
@@ -255,8 +255,8 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 */
 	public void selectDOBDay() {
 		String strDOBDay = FormFiller.generateCalendarDay();
-		reusableActions.selectWhenReady(ddlDobDay, strDOBDay);
-		reusableActions.getWhenReady(ddlDobDay).sendKeys(Keys.TAB);
+		getReusableActionsInstance().selectWhenReady(ddlDobDay, strDOBDay);
+		getReusableActionsInstance().getWhenReady(ddlDobDay).sendKeys(Keys.TAB);
 	}
 
 	/**
@@ -264,8 +264,8 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void switchToCreditCardIFrame() {
-		//driver.switchTo().frame(reusableActions.getWhenVisible(fraSemaphone,20));
-		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraSemaphone, 10);
+		//getDriver().switchTo().frame(getReusableActionsInstance().getWhenVisible(fraSemaphone,20));
+		getReusableActionsInstance().waitForFrameToBeAvailableAndSwitchToIt(fraSemaphone, 10);
 	}
 	
 	/**
@@ -278,17 +278,17 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	String browserName = cap.getBrowserName().toLowerCase();
 	if(browserName.trim().equalsIgnoreCase("chrome"))
 	 {	
-		Actions act= new Actions(reusableActions.getDriver());	
+		Actions act= new Actions(getReusableActionsInstance().getDriver());
 	    act.moveToElement(txtCreditCardNumber);
 		act.click(txtCreditCardNumber).sendKeys(txtCreditCardNumber, strAccountNumber).build().perform();
 	}
 	else
 	{
 		txtCreditCardNumberMasked.click();
-		reusableActions.staticWait(200);
-		reusableActions.executeJavaScript("document.getElementById('pan').value='"+strAccountNumber+"'");
+		getReusableActionsInstance().staticWait(200);
+		getReusableActionsInstance().executeJavaScript("document.getElementById('pan').value='"+strAccountNumber+"'");
 		txtCreditCardNumber.sendKeys(Keys.ENTER);
-		reusableActions.staticWait(100);
+		getReusableActionsInstance().staticWait(100);
 	}
 	}
 	
@@ -298,7 +298,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void switchOutOfCreditCardIFrame() {
-		driver.switchTo().defaultContent();
+		getDriver().switchTo().defaultContent();
 	}
 	
 	/**
@@ -307,7 +307,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectCreditcardExpiryYear(String strYYYY) {
-		reusableActions.selectWhenReady(ddlExpiryYear, strYYYY);
+		getReusableActionsInstance().selectWhenReady(ddlExpiryYear, strYYYY);
 	}
 /**
  * selects the credit card expire month
@@ -315,7 +315,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
  * @author chinnarao.vattam
  */
 	public void selectCreditcardxpiryMonth(String strMM) {
-		reusableActions.selectWhenReady(ddlExpiryMonth, strMM);
+		getReusableActionsInstance().selectWhenReady(ddlExpiryMonth, strMM);
 	}
 
 	/**
@@ -324,7 +324,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 */
 	public void selectExpiryYear() {
 		String strYYYY = FormFiller.generateExpiryYear();		
-		reusableActions.selectWhenReady(ddlExpiryYear, strYYYY);
+		getReusableActionsInstance().selectWhenReady(ddlExpiryYear, strYYYY);
 	}
 
 	/**
@@ -333,7 +333,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 */
 	public void selectExpiryMonth() {
 		String strMM = FormFiller.generateNameOfMonth();
-		reusableActions.selectWhenReady(ddlExpiryMonth, strMM);
+		getReusableActionsInstance().selectWhenReady(ddlExpiryMonth, strMM);
 	}
 	
 	/**
@@ -342,8 +342,8 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectSecondIDOption(String strSecondIDOption) {
-		reusableActions.waitForElementVisibility(ddlSecondID, 20);
-		reusableActions.selectWhenReady(ddlSecondID, strSecondIDOption);
+		getReusableActionsInstance().waitForElementVisibility(ddlSecondID, 20);
+		getReusableActionsInstance().selectWhenReady(ddlSecondID, strSecondIDOption);
 	}
 
 	/**
@@ -352,8 +352,8 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 */
 	public void setDrivingLicenseNumber() {
 		String strLicenseNumber = FormFiller.generateLicenseNumber();
-		reusableActions.getWhenReady(txtDrivingLicense, 30).clear();
-		reusableActions.getWhenReady(txtDrivingLicense, 3).sendKeys(strLicenseNumber);
+		getReusableActionsInstance().getWhenReady(txtDrivingLicense, 30).clear();
+		getReusableActionsInstance().getWhenReady(txtDrivingLicense, 3).sendKeys(strLicenseNumber);
 	}
 	
 	/**
@@ -362,7 +362,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectDirivingLicenseProvince(String strProvince) {
-		reusableActions.selectWhenReady(ddlProvince, strProvince);
+		getReusableActionsInstance().selectWhenReady(ddlProvince, strProvince);
 	}
 	
 	/**
@@ -371,7 +371,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 */
 	public void selectDrivingLicenseExpiryYear() {
 		String strYYYY = FormFiller.generateExpiryYear();
-		reusableActions.selectWhenReady(ddlLicenseExpiryYear, strYYYY);
+		getReusableActionsInstance().selectWhenReady(ddlLicenseExpiryYear, strYYYY);
 	}
 
 	/**
@@ -380,7 +380,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 */
 	public void selectDrivingLicenseExpiryMonth() {
 		String strMM = FormFiller.generateMonth();
-		reusableActions.selectWhenReady(ddlLicenseExpiryMonth, strMM);
+		getReusableActionsInstance().selectWhenReady(ddlLicenseExpiryMonth, strMM);
 	}
 
 	/**
@@ -389,7 +389,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 */
 	public void selectLicenseExpiryMonth() {
 		String strMM = FormFiller.generateNameOfMonth();
-		reusableActions.selectWhenReady(ddlLicenseExpiryMonth, strMM);
+		getReusableActionsInstance().selectWhenReady(ddlLicenseExpiryMonth, strMM);
 	}
 	
 	/**
@@ -398,7 +398,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 */
 	public void selectDrivingLicenseExpiryDay() {
 		String expiryDay = FormFiller.generateCalendarDay();
-		reusableActions.selectWhenReady(ddlLicenseExpiryDay, expiryDay);
+		getReusableActionsInstance().selectWhenReady(ddlLicenseExpiryDay, expiryDay);
 	}
 
 	/**
@@ -406,7 +406,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkCreditConsent() {
-		reusableActions.clickWhenReady(chkCreditConsentCheck, 30);
+		getReusableActionsInstance().clickWhenReady(chkCreditConsentCheck, 30);
 	}
 
 	/**
@@ -414,7 +414,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkCreditConsentSubmit() {
-		reusableActions.clickWhenReady(ddlCreditConsentSubmit, 30);
+		getReusableActionsInstance().clickWhenReady(ddlCreditConsentSubmit, 30);
 	}
 	
 	/**
@@ -422,7 +422,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkTechInstall() {
-		reusableActions.clickWhenReady(rdoTechInstall, 30);
+		getReusableActionsInstance().clickWhenReady(rdoTechInstall, 30);
 	}
 	
 	/**
@@ -430,7 +430,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkCommunicationMode() {
-		reusableActions.clickWhenReady(chkCommunicationMode, 30);
+		getReusableActionsInstance().clickWhenReady(chkCommunicationMode, 30);
 	}
 	
 	/**
@@ -438,12 +438,12 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void scrollDownToAgreement() {
-		List<WebElement> termsandconditions =  driver.findElements(By.xpath("//ol[@id='t1']//a"));
+		List<WebElement> termsandconditions =  getDriver().findElements(By.xpath("//ol[@id='t1']//a"));
 		termsandconditions.get(3).click();
-		reusableActions.waitForElementVisibility(lnkWebsite,60);
-		reusableActions.javascriptScrollByVisibleElement(lnkWebsite);
-		reusableActions.getWhenVisible(lnkWebsite,10).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(lnkWebsite, 10).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().waitForElementVisibility(lnkWebsite,60);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(lnkWebsite);
+		getReusableActionsInstance().getWhenVisible(lnkWebsite,10).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(lnkWebsite, 10).sendKeys(Keys.ARROW_DOWN);
 		
 	}
 	
@@ -452,7 +452,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void scrollDownToAgreementForBundleflow() {
-		reusableActions.javascriptScrollByVisibleElement(lnkWebsiteBundleflow);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(lnkWebsiteBundleflow);
      }
 	
 	/**
@@ -460,8 +460,8 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void scrollDownToAgreementForLegacyflow() {
-		reusableActions.waitForElementVisibility(lnkWebsiteTVflow,60);
-		reusableActions.javascriptScrollByVisibleElement(lnkWebsiteTVflow);	
+		getReusableActionsInstance().waitForElementVisibility(lnkWebsiteTVflow,60);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(lnkWebsiteTVflow);
 	}
 	
 	/**
@@ -469,7 +469,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkConsentCheckbox() {
-		reusableActions.clickWhenVisible(chkConsentCheckbox, 40);
+		getReusableActionsInstance().clickWhenVisible(chkConsentCheckbox, 40);
 	}
 
 	/**
@@ -477,9 +477,9 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkConsentCheckboxBundleflow() {	
-		reusableActions.isElementVisible(lnkWebsiteBundleflow, 50);		
-		reusableActions.javascriptScrollByVisibleElement(lnkWebsiteBundleflow);	
-		reusableActions.executeJavaScriptClick(chkConsentCheckboxBundleflow);
+		getReusableActionsInstance().isElementVisible(lnkWebsiteBundleflow, 50);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(lnkWebsiteBundleflow);
+		getReusableActionsInstance().executeJavaScriptClick(chkConsentCheckboxBundleflow);
 	}
 	
 	/**
@@ -487,7 +487,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkConsentCheckboxLegacyFlow() {
-		reusableActions.clickWhenVisible(chkConsentCheckboxDTV, 40);
+		getReusableActionsInstance().clickWhenVisible(chkConsentCheckboxDTV, 40);
 	}
 	
 	
@@ -497,7 +497,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSubmit() {
-		reusableActions.getWhenReady(btnSubmit, 20).click();
+		getReusableActionsInstance().getWhenReady(btnSubmit, 20).click();
 	}
 	
 	/**
@@ -505,7 +505,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkOrderSubmit() {
-		reusableActions.clickWhenReady(btnDTVOrderSubmit, 20);
+		getReusableActionsInstance().clickWhenReady(btnDTVOrderSubmit, 20);
 	}
 	
 	

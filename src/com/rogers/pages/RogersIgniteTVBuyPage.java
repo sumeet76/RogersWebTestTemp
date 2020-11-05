@@ -213,7 +213,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public void selectSolarisBundlePackage(String bundleName) {
 		String xpathBundlePackage="//div[@class='mt-auto w-100']//button[contains(@aria-label,'"+ bundleName +"')]//span[@translate='global.cta.addToCart']";
-		reusableActions.clickWhenReady(By.xpath(xpathBundlePackage), 120);
+		getReusableActionsInstance().clickWhenReady(By.xpath(xpathBundlePackage), 120);
 	}
 	
 	/**
@@ -221,8 +221,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkChevronDownYourCart() {
-		reusableActions.waitForElementVisibility(downChevronCartSummary, 120);
-		reusableActions.clickWhenReady(downChevronCartSummary, 120);
+		getReusableActionsInstance().waitForElementVisibility(downChevronCartSummary, 120);
+		getReusableActionsInstance().clickWhenReady(downChevronCartSummary, 120);
 	}
 
 
@@ -231,15 +231,15 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkHomephone() {
-		reusableActions.getWhenReady(checkboxHomephone, 20).click();
+		getReusableActionsInstance().getWhenReady(checkboxHomephone, 20).click();
 	}
 	/**
 	 * To click on  Home phone checkbox
 	 * @author chinnarao.vattam
 	 */
 	public void clkHomephoneMobile() {
-		reusableActions.waitForElementVisibility(checkboxHomephone, 60);
-		reusableActions.executeJavaScriptClick(checkboxHomephone);
+		getReusableActionsInstance().waitForElementVisibility(checkboxHomephone, 60);
+		getReusableActionsInstance().executeJavaScriptClick(checkboxHomephone);
 	}
 
 	/**
@@ -247,7 +247,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkChevronUpYourCart() {
-		reusableActions.getWhenReady(upChevronCartSummary, 120).click();
+		getReusableActionsInstance().getWhenReady(upChevronCartSummary, 120).click();
 	}
 	
 	/**
@@ -256,8 +256,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyGWPYourCartPromotion() {
-			reusableActions.waitForElementVisibility(gwpYourCart, 120);
-			return	reusableActions.isElementVisible(gwpYourCart);
+			getReusableActionsInstance().waitForElementVisibility(gwpYourCart, 120);
+			return	getReusableActionsInstance().isElementVisible(gwpYourCart);
 	}
 
 	/**
@@ -266,8 +266,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyBundlesPage() {
-		reusableActions.waitForElementVisibility(txtBundlesPage, 120);
-		return	reusableActions.isElementVisible(txtBundlesPage);
+		getReusableActionsInstance().waitForElementVisibility(txtBundlesPage, 120);
+		return	getReusableActionsInstance().isElementVisible(txtBundlesPage);
 	}
 
 	/**
@@ -276,8 +276,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyBundlesPageMobile() {
-		reusableActions.waitForElementVisibility(txtBundlesPage, 120);
-		return	reusableActions.isElementVisible(txtBundlesPage);
+		getReusableActionsInstance().waitForElementVisibility(txtBundlesPage, 120);
+		return	getReusableActionsInstance().isElementVisible(txtBundlesPage);
 	}
 	/**
 	 * To verify Upgrading To Ignite bundels Modal
@@ -287,7 +287,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public boolean verifyGWPForStarterPackage(String bundleName) {
 		String xpathBundlePackage = "//button[contains(@aria-label,'"+ bundleName +"')]//ancestor::div[contains(@class,'d-flex')]/preceding-sibling::section//p";
-		return	reusableActions.isElementVisible(By.xpath(xpathBundlePackage), 120);
+		return	getReusableActionsInstance().isElementVisible(By.xpath(xpathBundlePackage), 120);
 	}
 
 	/**
@@ -297,8 +297,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public boolean verifySessionModel() {
 		//Session expiry time  2 minutes
-		reusableActions.staticWait(120000);
-		return reusableActions.isElementVisible(popupSessionModel,60);
+		getReusableActionsInstance().staticWait(120000);
+		return getReusableActionsInstance().isElementVisible(popupSessionModel,60);
 	}
 
 	/**
@@ -306,7 +306,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkContinueSession() {
-		reusableActions.getWhenReady(btnContinueSession, 20).click();
+		getReusableActionsInstance().getWhenReady(btnContinueSession, 20).click();
 	}
 
 	/**
@@ -316,7 +316,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public void clkChevronSolarisStarterPackageNew(String bundleName) {
 		String xpathBundlePackage = "//button[contains(@aria-label,'"+ bundleName +"')]//ancestor::div[@class='row']//following-sibling::div[contains(@class,'dsa-rate-card__detail')]//span[@class='ds-icon rds-icon-chevron-down']";
-		reusableActions.getWhenReady(By.xpath(xpathBundlePackage), 120).click();
+		getReusableActionsInstance().getWhenReady(By.xpath(xpathBundlePackage), 120).click();
 	}
 	
 	/**
@@ -326,7 +326,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public void clkChevronForBundle(String bundleName) {
 		String bundleXpath = "//button[contains(@aria-label,'"+ bundleName +"')]//ancestor::div[@class='row']//following-sibling::div[contains(@class,'dsa-rate-card__detail')]//span[@class='ds-icon rds-icon-chevron-down']";
-		reusableActions.getWhenReady(By.xpath(bundleXpath), 120).click();
+		getReusableActionsInstance().getWhenReady(By.xpath(bundleXpath), 120).click();
 	}
 	
 	/**
@@ -335,8 +335,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyUpgradingToIgnitebundelsModal() {
-			reusableActions.waitForElementVisibility(modalUpgradingToIgnitebundels, 120);
-			return	reusableActions.isElementVisible(modalUpgradingToIgnitebundels);
+			getReusableActionsInstance().waitForElementVisibility(modalUpgradingToIgnitebundels, 120);
+			return	getReusableActionsInstance().isElementVisible(modalUpgradingToIgnitebundels);
 	}
 	
 	/**
@@ -344,7 +344,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkOkayUpgradingToIgnitebundelsModal() {
-		reusableActions.getWhenReady(okayUpgradingToIgnitebundelsModal, 120).click();
+		getReusableActionsInstance().getWhenReady(okayUpgradingToIgnitebundelsModal, 120).click();
 	}
 	
 	
@@ -353,7 +353,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkRadioOptKeepMyExistingPhoneNumber() {
-		reusableActions.getWhenReady(rdoKeepExistingPhoneNumber, 60).click();
+		getReusableActionsInstance().getWhenReady(rdoKeepExistingPhoneNumber, 60).click();
 	}
 	
 	/**
@@ -361,8 +361,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkPlusAddIgniteTVBoxes() {
-		reusableActions.waitForElementVisibility(buttonAddIgniteTVBoxes, 90);
-		reusableActions.getWhenReady(buttonAddIgniteTVBoxes, 30).click();
+		getReusableActionsInstance().waitForElementVisibility(buttonAddIgniteTVBoxes, 90);
+		getReusableActionsInstance().getWhenReady(buttonAddIgniteTVBoxes, 30).click();
 	}
 	
 	/**
@@ -370,7 +370,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkUpdateCart() {
-		reusableActions.getWhenReady(buttonUpdateCart, 60).click();
+		getReusableActionsInstance().getWhenReady(buttonUpdateCart, 60).click();
 	}
 	
 	/**
@@ -379,8 +379,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal 
 	 */
 	public boolean verifyButtonUpgradeNow() {		
-		reusableActions.waitForElementVisibility(buttonUpgradeNow, 120);
-		return	reusableActions.isElementVisible(buttonUpgradeNow);
+		getReusableActionsInstance().waitForElementVisibility(buttonUpgradeNow, 120);
+		return	getReusableActionsInstance().isElementVisible(buttonUpgradeNow);
 	}
 	
 	/**
@@ -388,7 +388,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal 
 	 */
 	public void clkButtonUpgradeNow() {		
-		reusableActions.getWhenReady(buttonUpgradeNow, 120).click();
+		getReusableActionsInstance().getWhenReady(buttonUpgradeNow, 120).click();
 	}
 
 	/**
@@ -397,12 +397,12 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void setIgniteAddressLookup(String strAddress) {
-		reusableActions.getWhenReady(txaIgniteAddressLookup, 3).clear();
-		reusableActions.getWhenReady(txaIgniteAddressLookup, 3).sendKeys(strAddress);
-		reusableActions.getWhenVisible(txaIgniteAddressLookup, 10).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(txaIgniteAddressLookup, 10).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(txaIgniteAddressLookup, 10).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).sendKeys(strAddress);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 10).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 10).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 10).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
 	}
 
 	/**
@@ -410,7 +410,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkIgniteAddressLookupSubmit() {
-		reusableActions.getWhenReady(btnIgniteAddressLookupSubmit, 30).click();
+		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 30).click();
 	}
 	
 	/**
@@ -418,7 +418,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkIgniteAvailability() {
-		reusableActions.getWhenReady(btnIgniteCheckAvailability, 30).click();
+		getReusableActionsInstance().getWhenReady(btnIgniteCheckAvailability, 30).click();
 	}
 	
 	/**
@@ -426,7 +426,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkActivateLater() {
-		reusableActions.clickWhenReady(chkActivateLater, 30);
+		getReusableActionsInstance().clickWhenReady(chkActivateLater, 30);
 	}
 
 	/**
@@ -434,7 +434,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkConfirmActivateLater() {
-		reusableActions.clickWhenReady(btnActivateLater, 30);
+		getReusableActionsInstance().clickWhenReady(btnActivateLater, 30);
 		
 	}
 
@@ -443,7 +443,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisStarterPackage() {
-		reusableActions.clickWhenReady(btnSolarisStarterPackage, 60);
+		getReusableActionsInstance().clickWhenReady(btnSolarisStarterPackage, 60);
 	}
 	
 	/**
@@ -451,8 +451,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisSelectPackage() {
-		//reusableActions.scrollToElementAndClick(btnSolarisSelectPackage);
-		reusableActions.getWhenReady(btnSolarisSelectPackage, 60).click();
+		//getReusableActionsInstance().scrollToElementAndClick(btnSolarisSelectPackage);
+		getReusableActionsInstance().getWhenReady(btnSolarisSelectPackage, 60).click();
 	}
 	
 	/**
@@ -460,7 +460,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkContinue() {
-		reusableActions.clickWhenReady(btnContinue, 60);
+		getReusableActionsInstance().clickWhenReady(btnContinue, 60);
 	}
 	
 	/**
@@ -468,7 +468,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkGoodNewsContinue() {
-		reusableActions.clickWhenReady(btnGoodNewsContinue, 30);
+		getReusableActionsInstance().clickWhenReady(btnGoodNewsContinue, 30);
 	}
 	
 	/**
@@ -476,7 +476,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkNoThanksContinue() {
-		reusableActions.clickWhenReady(btnNoThanksContinue, 60);
+		getReusableActionsInstance().clickWhenReady(btnNoThanksContinue, 60);
 	}
 
 	/**
@@ -485,8 +485,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyHomePhone() {
-		reusableActions.waitForElementVisibility(btnHomePhoneContinue, 60);
-		return	reusableActions.isElementVisible(btnHomePhoneContinue);
+		getReusableActionsInstance().waitForElementVisibility(btnHomePhoneContinue, 60);
+		return	getReusableActionsInstance().isElementVisible(btnHomePhoneContinue);
 	}
 	
 	/**
@@ -495,8 +495,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyImportantInformation() {
-		reusableActions.waitForElementVisibility(popImportantInformation, 60);
-		return	reusableActions.isElementVisible(popImportantInformation);
+		getReusableActionsInstance().waitForElementVisibility(popImportantInformation, 60);
+		return	getReusableActionsInstance().isElementVisible(popImportantInformation);
 	}
 	
 	/**
@@ -504,7 +504,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkIUnderstand() {
-		reusableActions.getWhenReady(btnIUnderstand, 60).click();
+		getReusableActionsInstance().getWhenReady(btnIUnderstand, 60).click();
 	}
 		
 	/**
@@ -512,8 +512,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkHomePhone() {
-		reusableActions.waitForElementVisibility(btnHomePhoneContinue, 30);
-		reusableActions.getWhenReady(btnHomePhoneContinue, 10).click();
+		getReusableActionsInstance().waitForElementVisibility(btnHomePhoneContinue, 30);
+		getReusableActionsInstance().getWhenReady(btnHomePhoneContinue, 10).click();
 	}
 
 	/**
@@ -521,7 +521,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkKeepMyNumber() {
-		reusableActions.getWhenReady(btnKeepMyNumber, 90).click();
+		getReusableActionsInstance().getWhenReady(btnKeepMyNumber, 90).click();
 	}
 	
 	/**
@@ -529,9 +529,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void set4KTV() {	
-		reusableActions.getWhenReady(rdo4KTV, 120);
-		//reusableActions.scrollToElement(rdo4KTV);		
-		reusableActions.executeJavaScriptClick(rdo4KTV);
+		getReusableActionsInstance().getWhenReady(rdo4KTV, 120);
+		//getReusableActionsInstance().scrollToElement(rdo4KTV);
+		getReusableActionsInstance().executeJavaScriptClick(rdo4KTV);
 	}
 	
 	/**
@@ -539,7 +539,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void set4KTVMobile() {		
-		reusableActions.executeJavaScriptClick(rdo4KTV);
+		getReusableActionsInstance().executeJavaScriptClick(rdo4KTV);
 	}
 	
 	/**
@@ -548,7 +548,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verify4KTV() {
-		return	reusableActions.isElementVisible(rdo4KTV,90);
+		return	getReusableActionsInstance().isElementVisible(rdo4KTV,90);
 	}
 	
 	/**
@@ -556,9 +556,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkCheckout() {
-		reusableActions.waitForElementInvisibility(popupLoadingFingersciam,90);
-		reusableActions.getWhenReady(btnCheckout, 20).click();
-		reusableActions.waitForElementInvisibility(popupLoadingFingersciam,90);
+		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
+		getReusableActionsInstance().getWhenReady(btnCheckout, 20).click();
+		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
 	}
 	
 	/**
@@ -566,9 +566,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkCheckoutMobile() {
-		reusableActions.waitForElementInvisibility(popupLoadingFingersciam,90);
-		reusableActions.executeJavaScriptClick(btnCheckout);
-		reusableActions.waitForElementInvisibility(popupLoadingFingersciam,90);
+		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
+		getReusableActionsInstance().executeJavaScriptClick(btnCheckout);
+		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
 	}
 
 	/**
@@ -576,17 +576,17 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisStarterPackageNew() {
-		reusableActions.waitForElementVisibility(btnSolarisStarterPackageNew, 180);
-		reusableActions.getWhenReady(btnSolarisStarterPackageNew, 60).click();
+		getReusableActionsInstance().waitForElementVisibility(btnSolarisStarterPackageNew, 180);
+		getReusableActionsInstance().getWhenReady(btnSolarisStarterPackageNew, 60).click();
 	}
 	/**
 	 * Click Starter package button for anonymous customer
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisStarterPackageMobile() {
-		reusableActions.waitForElementVisibility(btnSolarisStarterPackageNew, 120);
-		reusableActions.executeJavaScriptClick(btnSolarisStarterPackageNew);
-		//reusableActions.getWhenReady(btnSolarisStarterPackageMobile, 60).click();
+		getReusableActionsInstance().waitForElementVisibility(btnSolarisStarterPackageNew, 120);
+		getReusableActionsInstance().executeJavaScriptClick(btnSolarisStarterPackageNew);
+		//getReusableActionsInstance().getWhenReady(btnSolarisStarterPackageMobile, 60).click();
 	}
 
 	/**
@@ -594,7 +594,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisStarterPackageServiceability() {
-		reusableActions.clickWhenReady(btnSolarisStarterPackageServiceability, 90);
+		getReusableActionsInstance().clickWhenReady(btnSolarisStarterPackageServiceability, 90);
 	}
 	
 	/**
@@ -603,7 +603,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verify4KTVSelection() {
-		return	reusableActions.isElementVisible(rdo4KTV);
+		return	getReusableActionsInstance().isElementVisible(rdo4KTV);
 	}
 	
 	/**
@@ -612,8 +612,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOptNewPhone() {
-		reusableActions.waitForElementVisibility(rdoOptNewPhone, 120);
-		return	reusableActions.isElementVisible(rdoOptNewPhone);
+		getReusableActionsInstance().waitForElementVisibility(rdoOptNewPhone, 120);
+		return	getReusableActionsInstance().isElementVisible(rdoOptNewPhone);
 	}
 	
 	/**
@@ -621,8 +621,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectOptNewPhone() {
-		reusableActions.getWhenReady(rdoOptNewPhone, 60).click();
-		reusableActions.waitForElementVisibility(rdoOptNewPhoneEnable,60);		
+		getReusableActionsInstance().getWhenReady(rdoOptNewPhone, 60).click();
+		getReusableActionsInstance().waitForElementVisibility(rdoOptNewPhoneEnable,60);
 	}
 
 	/**
@@ -630,7 +630,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clickOptPhone() {
-		reusableActions.clickWhenReady(btnOptPhone, 120);
+		getReusableActionsInstance().clickWhenReady(btnOptPhone, 120);
 	}
 
 	/**
@@ -638,8 +638,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clickChannels() {
-		reusableActions.waitForElementVisibility(tabChannelsTab, 90);
-		reusableActions.moveToElementAndClick(tabChannelsTab, 90);
+		getReusableActionsInstance().waitForElementVisibility(tabChannelsTab, 90);
+		getReusableActionsInstance().moveToElementAndClick(tabChannelsTab, 90);
 	}
 
 	/**
@@ -647,8 +647,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clickBundles() {
-		reusableActions.waitForElementVisibility(tabBundles, 90);
-		reusableActions.moveToElementAndClick(tabBundles, 30);
+		getReusableActionsInstance().waitForElementVisibility(tabBundles, 90);
+		getReusableActionsInstance().moveToElementAndClick(tabBundles, 30);
 	}
 
 	/**
@@ -657,9 +657,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public void setEmail() {
 		String strEmail = FormFiller.generateEmail();
-		reusableActions.waitForElementVisibility(txtEmailContainer,30);
-		reusableActions.getWhenReady(txtEmailContainer,10).click();
-		reusableActions.clickWhenReady(txtEmail);
+		getReusableActionsInstance().waitForElementVisibility(txtEmailContainer,30);
+		getReusableActionsInstance().getWhenReady(txtEmailContainer,10).click();
+		getReusableActionsInstance().clickWhenReady(txtEmail);
 		txtEmail.clear();
 		txtEmail.sendKeys(strEmail);
 	}
@@ -669,7 +669,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clickOkay() {
-		reusableActions.getWhenReady(btnOkay, 60).click();
+		getReusableActionsInstance().getWhenReady(btnOkay, 60).click();
 	}
 
 	/**
@@ -678,14 +678,14 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 
 	public void clickSubmit() {
-		reusableActions.clickWhenReady(btnSubmit, 20);
+		getReusableActionsInstance().clickWhenReady(btnSubmit, 20);
 	}
 	/**
 	 * Click the Email Checkbox
 	 * @author chinnarao.vattam
 	 */
 	public void clickEmailCheckbox() {
-		reusableActions.clickWhenReady(clkEmailCheckbox, 20);
+		getReusableActionsInstance().clickWhenReady(clkEmailCheckbox, 20);
 	}
 
 	/**
@@ -693,7 +693,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clickContinue() {
-		reusableActions.clickWhenReady(clkContinue, 20);
+		getReusableActionsInstance().clickWhenReady(clkContinue, 20);
 	}
 
 	/**
@@ -702,7 +702,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyWelcomeBackPopup() {
-		return reusableActions.isElementVisible(clkContinue,30);
+		return getReusableActionsInstance().isElementVisible(clkContinue,30);
 	}
 
 	/**
@@ -711,7 +711,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyEmailModal() {
-		return reusableActions.isElementVisible(popupEmailModal,30);
+		return getReusableActionsInstance().isElementVisible(popupEmailModal,30);
 	}
 
 	/**
@@ -720,7 +720,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyConfirmation() {
-		return reusableActions.isElementVisible(btnOkay,30);
+		return getReusableActionsInstance().isElementVisible(btnOkay,30);
 	}
 
 	/**
@@ -728,7 +728,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clickMyRogers() {
-		reusableActions.clickWhenReady(lnkMyRogers, 20);
+		getReusableActionsInstance().clickWhenReady(lnkMyRogers, 20);
 	}
 	/**
 	 * Verify the Ignite TV Starter Package on Solaris TV dashboard page
@@ -736,7 +736,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyStarterPackageRatecard() {		
-		return reusableActions.isElementVisible(elmStarterRatecard);
+		return getReusableActionsInstance().isElementVisible(elmStarterRatecard);
 	}
 	
 	/**
@@ -745,7 +745,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPopularPackageRatecard() {		
-		return reusableActions.isElementVisible(elmPopularRatecard);
+		return getReusableActionsInstance().isElementVisible(elmPopularRatecard);
 	}
 	
 	/**
@@ -754,7 +754,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifySelectPackageRatecard() {		
-		return reusableActions.isElementVisible(elmSelectRatecard);
+		return getReusableActionsInstance().isElementVisible(elmSelectRatecard);
 	}
 	
 	/**
@@ -763,7 +763,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPremierPackageRatecard() {		
-		return reusableActions.isElementVisible(elmPremierRatecard);
+		return getReusableActionsInstance().isElementVisible(elmPremierRatecard);
 	}
 	
 	/**
@@ -772,7 +772,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyStarterPackageChannels() {		
-		reusableActions.isElementVisible(txtStarterChannels);
+		getReusableActionsInstance().isElementVisible(txtStarterChannels);
 		String strChannels = txtStarterChannels.getText().trim();
 		if (strChannels.equalsIgnoreCase("37 chaînes") || strChannels.equalsIgnoreCase("37 Channels"))
 		return true;
@@ -786,7 +786,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPopularPackageChannels() {		
-		reusableActions.isElementVisible(txtPopularChannels);
+		getReusableActionsInstance().isElementVisible(txtPopularChannels);
 		String strChannels = txtPopularChannels.getText().trim();
 		if (strChannels.equalsIgnoreCase("151 chaînes") || strChannels.equalsIgnoreCase("151 Channels"))
 		return true;
@@ -800,7 +800,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifySelectPackageChannels() {		
-		reusableActions.isElementVisible(txtSelectChannels);
+		getReusableActionsInstance().isElementVisible(txtSelectChannels);
 		String strChannels = txtSelectChannels.getText().trim();
 		if (strChannels.equalsIgnoreCase("119 chaînes") || strChannels.equalsIgnoreCase("119 Channels"))
 		return true;
@@ -814,7 +814,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPremierPackageChannels() {		
-		reusableActions.isElementVisible(txtPremierChannels);
+		getReusableActionsInstance().isElementVisible(txtPremierChannels);
 		String strChannels = txtPremierChannels.getText().trim();
 		if (strChannels.equalsIgnoreCase("192 chaînes") || strChannels.equalsIgnoreCase("192 Channels"))
 		return true;

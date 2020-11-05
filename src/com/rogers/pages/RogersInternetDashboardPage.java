@@ -111,11 +111,11 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyInternetUsage() {	
-		return reusableActions.isElementVisible(txtInternetUsage,30);
+		return getReusableActionsInstance().isElementVisible(txtInternetUsage,30);
 	}
 
 	public boolean verifyInternetUsageMobile() {
-		return reusableActions.isElementVisible(txtInternetUsage,110);
+		return getReusableActionsInstance().isElementVisible(txtInternetUsage,110);
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkChangeInternetPackage() {
-			reusableActions.getWhenReady(btnChangeInternetPackage,90).click();
+			getReusableActionsInstance().getWhenReady(btnChangeInternetPackage,90).click();
 	}
 	
 	/**
@@ -131,7 +131,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSolarisInternetBadge() {
-		reusableActions.getWhenReady(btnSolarisInternetBadge,60).click();
+		getReusableActionsInstance().getWhenReady(btnSolarisInternetBadge,60).click();
 	}
 
 	/**
@@ -139,9 +139,9 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkInternetBadgeMobile() {
-		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.waitForElementVisibility(btnSolarisInternetBadge,90);
-		reusableActions.executeJavaScriptClick(btnSolarisInternetBadge);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().waitForElementVisibility(btnSolarisInternetBadge,90);
+		getReusableActionsInstance().executeJavaScriptClick(btnSolarisInternetBadge);
 	}
 	/**
 	 * Verify the Internet header text on the Solaris Internet dash board
@@ -149,7 +149,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyInternet() {		
-		return reusableActions.isElementVisible(infoInternet,40);		
+		return getReusableActionsInstance().isElementVisible(infoInternet,40);
 	}
 
 	/**
@@ -157,8 +157,8 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkInternetUsageAlerts() {
-		reusableActions.waitForElementVisibility(lnkInternetUsageAlerts,60);
-		reusableActions.executeJavaScriptClick(lnkInternetUsageAlerts);
+		getReusableActionsInstance().waitForElementVisibility(lnkInternetUsageAlerts,60);
+		getReusableActionsInstance().executeJavaScriptClick(lnkInternetUsageAlerts);
 
 	}
 	/**
@@ -167,7 +167,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyUsageAndAlerts() {		
-		return reusableActions.isElementVisible(infoUsageAndAlerts,30);
+		return getReusableActionsInstance().isElementVisible(infoUsageAndAlerts,30);
 	}
 
 	/**
@@ -175,7 +175,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkInternetPopup() {
-		reusableActions.clickIfAvailable(popUpInternetPopup, 40);
+		getReusableActionsInstance().clickIfAvailable(popUpInternetPopup, 40);
 	}
 
 	/**
@@ -183,8 +183,8 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSolChangeInternetPackage() {	
-		reusableActions.waitForElementVisibility(btnSolChangeInternetPackage, 120);
-		reusableActions.getWhenReady(btnSolChangeInternetPackage, 60).click();
+		getReusableActionsInstance().waitForElementVisibility(btnSolChangeInternetPackage, 120);
+		getReusableActionsInstance().getWhenReady(btnSolChangeInternetPackage, 60).click();
 	}
 	
 	/**
@@ -192,8 +192,8 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSolChangeInternetPackageMobile() {	
-		reusableActions.waitForElementVisibility(btnSolChangeInternetPackage, 90);
-		reusableActions.executeJavaScriptClick(btnSolChangeInternetPackage);
+		getReusableActionsInstance().waitForElementVisibility(btnSolChangeInternetPackage, 90);
+		getReusableActionsInstance().executeJavaScriptClick(btnSolChangeInternetPackage);
 	}
 	
 	/**
@@ -201,7 +201,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkInternetChangeOK() {		
-		reusableActions.clickIfAvailable(btnInternetChangeOK, 30);
+		getReusableActionsInstance().clickIfAvailable(btnInternetChangeOK, 30);
 
 	}
 	
@@ -211,7 +211,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyInternetPage() {	
-		return reusableActions.isElementVisible(txtInternet, 30);
+		return getReusableActionsInstance().isElementVisible(txtInternet, 30);
 	}
 
 	/**
@@ -219,7 +219,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkVAButton() {		
-		reusableActions.getWhenReady(btnVaButton, 10).click();
+		getReusableActionsInstance().getWhenReady(btnVaButton, 10).click();
 
 	}
 	
@@ -228,7 +228,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkVAMenu() {	
-		reusableActions.getWhenReady(btnVaMenu, 20).click();
+		getReusableActionsInstance().getWhenReady(btnVaMenu, 20).click();
 	}
 	
 	/**
@@ -236,7 +236,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkVAMininmize() {		
-		reusableActions.getWhenReady(btnVAMininmize, 10).click();
+		getReusableActionsInstance().getWhenReady(btnVAMininmize, 10).click();
 
 	}
 	
@@ -245,7 +245,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkVAClose() {		
-		reusableActions.getWhenReady(btnVAClose, 10).click();
+		getReusableActionsInstance().getWhenReady(btnVAClose, 10).click();
 
 	}
 	
@@ -255,7 +255,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyVAButton() {	
-		return reusableActions.isElementVisible(btnVaButton, 10);
+		return getReusableActionsInstance().isElementVisible(btnVaButton, 10);
 	}
 	
 	/**
@@ -264,7 +264,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyVaWelcome() {
-		return reusableActions.isElementVisible(txtVaWelcome, 90);
+		return getReusableActionsInstance().isElementVisible(txtVaWelcome, 90);
 	}
 
 	/**
@@ -272,8 +272,8 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void switchToVAIFrame() {
-		driver.switchTo().frame(ifrmVA);
-//		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraSignIn, 30);
+		getDriver().switchTo().frame(ifrmVA);
+//		getReusableActionsInstance().waitForFrameToBeAvailableAndSwitchToIt(fraSignIn, 30);
 	}
 
 	/**
@@ -282,7 +282,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyVaTopicList() {	
-		return reusableActions.isElementVisible(selVaTopicList, 30);
+		return getReusableActionsInstance().isElementVisible(selVaTopicList, 30);
 	}
 
 	/**
@@ -291,7 +291,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyVaWelcomeSend() {
-		return reusableActions.isElementVisible(btnVaWelcomeSend, 30);
+		return getReusableActionsInstance().isElementVisible(btnVaWelcomeSend, 30);
 	}
 
 
@@ -301,8 +301,8 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifycontatUSPopUp() {
-		reusableActions.waitForElementInvisibility(popupLoadingFingers, 60);		
-		return reusableActions.isElementVisible(popupContatUS, 20);
+		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingers, 60);
+		return getReusableActionsInstance().isElementVisible(popupContatUS, 20);
 	}
 	
 	/**
@@ -311,10 +311,10 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyContatUSInternetDowngarde() {
-		if (reusableActions.isElementVisible(popupLoadingFingersInternet, 30)){
-			reusableActions.waitForElementInvisibility(popupLoadingFingersInternet, 60);
+		if (getReusableActionsInstance().isElementVisible(popupLoadingFingersInternet, 30)){
+			getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersInternet, 60);
 		}
-		return reusableActions.isElementVisible(popupContatUSInternetDowngarde, 20);
+		return getReusableActionsInstance().isElementVisible(popupContatUSInternetDowngarde, 20);
 	}
 	
 	
@@ -327,16 +327,16 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public void selectSolarisInternetPackageOld(String strPackageNameEn,String strPackageNameFr) {
 		By btnPackageSelection = By.xpath("//span[contains(normalize-space(text()),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='owl-item active']//ins[@translate='global.cta.select']");
-		reusableActions.javascriptScrollToMiddleOfPage();
-		if(reusableActions.isElementVisible(btnPackageSelection, 60))
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		if(getReusableActionsInstance().isElementVisible(btnPackageSelection, 60))
 		{		
-	    reusableActions.getWhenReady(btnPackageSelection, 30).click();	
+	    getReusableActionsInstance().getWhenReady(btnPackageSelection, 30).click();
 		 }
 	   else
 		{
-	    reusableActions.getWhenReady(imgNext, 90).click();  
-	    reusableActions.isElementVisible(btnPackageSelection, 60);
-	    reusableActions.getWhenReady(btnPackageSelection, 30).click();	
+	    getReusableActionsInstance().getWhenReady(imgNext, 90).click();
+	    getReusableActionsInstance().isElementVisible(btnPackageSelection, 60);
+	    getReusableActionsInstance().getWhenReady(btnPackageSelection, 30).click();
 		}
 	}
 
@@ -349,10 +349,10 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public void selectSolarisInternetPackage(String strPackageNameEn,String strPackageNameFr) {	
 		By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='internet-bundle-tile__row']//button[contains(@aria-label,'Add Rogers Ignite')]");
-		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(packageNameLocator, 90);
-		WebElement pkg = driver.findElement(packageNameLocator);
-		reusableActions.executeJavaScriptClick(pkg);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().getWhenReady(packageNameLocator, 90);
+		WebElement pkg = getDriver().findElement(packageNameLocator);
+		getReusableActionsInstance().executeJavaScriptClick(pkg);
 	}
 
 	/**
@@ -363,10 +363,10 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public void selectStandAloneInternetPackage(String strPackageNameEn,String strPackageNameFr) {
 		By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='internet-bundle-tile__row']//button[contains(@aria-label,'Add Ignite Internet')]");
-		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(packageNameLocator, 90);
-		WebElement pkg = driver.findElement(packageNameLocator);
-		reusableActions.executeJavaScriptClick(pkg);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().getWhenReady(packageNameLocator, 90);
+		WebElement pkg = getDriver().findElement(packageNameLocator);
+		getReusableActionsInstance().executeJavaScriptClick(pkg);
 	}
 	/**
 	 * Select the  Internet Package on change Internet package page
@@ -375,19 +375,19 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectSolarisInternetPackageMobile(String strPackageNameEn,String strPackageNameFr) {
-		reusableActions.waitForElementInvisibility(popupLoadingFingersMobile,120);
+		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersMobile,120);
 		By btnPackageSelection = By.xpath("//span[contains(normalize-space(text()),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]");
-		if(reusableActions.isElementVisible(btnPackageSelection, 60))
+		if(getReusableActionsInstance().isElementVisible(btnPackageSelection, 60))
 		{		
-	    reusableActions.getWhenReady(btnSelectInternetPackageMobile, 30).click();	
+	    getReusableActionsInstance().getWhenReady(btnSelectInternetPackageMobile, 30).click();
 		 }
 	   else
 		{
-	    reusableActions.getWhenReady(imgNext, 90).click();  
-	    reusableActions.isElementVisible(btnPackageSelection, 60);
-	    reusableActions.getWhenReady(btnSelectInternetPackageMobile, 30).click();	
+	    getReusableActionsInstance().getWhenReady(imgNext, 90).click();
+	    getReusableActionsInstance().isElementVisible(btnPackageSelection, 60);
+	    getReusableActionsInstance().getWhenReady(btnSelectInternetPackageMobile, 30).click();
 		}
-		reusableActions.waitForElementInvisibility(popupLoadingFingersMobile,120);
+		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersMobile,120);
 	}
 	
 	/**
@@ -398,8 +398,8 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	public void selectSolarisInternetPackageMigration(String strPackageName) {
 		By packageNameLocator = By.xpath("//span[contains(normalize-space(text()),'" + strPackageName
 				+ "') or contains(normalize-space(text()),'Élan Internet gigabit')]/ancestor::div[@class='owl-item active']//ins[@translate='global.cta.select']");
-		reusableActions.waitForElementInvisibility(popupLoadingFingers,90);
-		reusableActions.getWhenReady(packageNameLocator, 60).click();
+		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingers,90);
+		getReusableActionsInstance().getWhenReady(packageNameLocator, 60).click();
 	}
 	
 	/**
@@ -409,6 +409,6 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public void selectSolarisInternetPackage1(String strPackageName) {		
 		By packageNameLocator = By.xpath("//span[contains(normalize-space(text()),'" + strPackageName+ "') or contains(normalize-space(text()),'Élan Internet 150i')]/ancestor::div[@class='owl-item active']//ins[@translate='global.cta.select']");
-		reusableActions.getWhenReady(packageNameLocator, 90).click();
+		getReusableActionsInstance().getWhenReady(packageNameLocator, 90).click();
 	}
 }

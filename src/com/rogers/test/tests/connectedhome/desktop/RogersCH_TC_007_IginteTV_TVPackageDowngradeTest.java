@@ -31,26 +31,26 @@ public class RogersCH_TC_007_IginteTV_TVPackageDowngradeTest extends BaseTestCla
 	 @Test(groups = {"SanityCH","RegressionCH","TVPlanUpgardeCH"})
     public void checkSolarisTVPackageDowngrade() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
-        rogers_home_page.clkSignIn();
-        rogers_login_page.switchToSignInIFrame();
+        getRogersHomePage().clkSignIn();
+        getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        rogers_login_page.setUsernameIFrame(TestDataHandler.tc04_07_SolarisTVAccount.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.tc04_07_SolarisTVAccount.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc04_07_SolarisTVAccount.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc04_07_SolarisTVAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
-        rogers_login_page.clkSignInIFrame();
-    	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        getRogersLoginPage().clkSignInIFrame();
+    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
-        rogers_login_page.clkSkipIFrame();
-        rogers_login_page.switchOutOfSignInIFrame();
-    	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-    	rogers_account_overview_page.selectAccount(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getBan());
+        getRogersLoginPage().clkSkipIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();
+    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+    	getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getBan());
     	reporter.reportLogWithScreenshot("Launched the Account Page");
-        rogers_solaris_tv_dashboard_page.clkTVBadge();
+        getRogersSolarisTVDashboardPage().clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
-        rogers_solaris_tv_dashboard_page.clkChangeTVPackage();
+        getRogersSolarisTVDashboardPage().clkChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the TV packages page");
-        rogers_solaris_tv_dashboard_page.selectSolarisTVPackage(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getDowngradePlanEn(),TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getDowngradePlanFr());
-        reporter.hardAssert(rogers_solaris_tv_dashboard_page.verifycontatUSPopUp(),"Displayed the contat US popup","Download package has failed");              
+        getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getDowngradePlanEn(),TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getDowngradePlanFr());
+        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifycontatUSPopUp(),"Displayed the contat US popup","Download package has failed");
         reporter.reportLogWithScreenshot("Launched the customer care popup");  
     	}
 

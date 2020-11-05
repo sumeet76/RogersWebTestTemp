@@ -70,9 +70,9 @@ public class RogersWirelessCreditEvaluationPage extends BasePageClass {
 	public void setDateOfBirth() {
 		String strDOBMonth = "0" + FormFiller.generateMonth();
 		
-		reusableActions.selectWhenReady(ddlDOBYear, FormFiller.generateDOBYear());
-		reusableActions.selectWhenReady(ddlDOBMonth, strDOBMonth.substring(strDOBMonth.length()-2));
-		reusableActions.selectWhenReady(ddlDOBDay, FormFiller.generateCalendarDay());
+		getReusableActionsInstance().selectWhenReady(ddlDOBYear, FormFiller.generateDOBYear());
+		getReusableActionsInstance().selectWhenReady(ddlDOBMonth, strDOBMonth.substring(strDOBMonth.length()-2));
+		getReusableActionsInstance().selectWhenReady(ddlDOBDay, FormFiller.generateCalendarDay());
 	}
 	
 	/**
@@ -83,18 +83,18 @@ public class RogersWirelessCreditEvaluationPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void setCreditCardDetails(String strCCNumber, String strCCExpMonth, String strCCExpYear) {
-		driver.switchTo().frame(frmCreditCard);
+		getDriver().switchTo().frame(frmCreditCard);
 		
-		reusableActions.staticWait(5000);
+		getReusableActionsInstance().staticWait(5000);
 		txtCreditCardNumberMasked.click();
 		txtCreditCardNumber.click();
 		txtCreditCardNumber.sendKeys(strCCNumber);
 		
-		driver.switchTo().defaultContent();
+		getDriver().switchTo().defaultContent();
 		
-		reusableActions.selectWhenReady(ddlCreditCardExpiryMonth, strCCExpMonth);
+		getReusableActionsInstance().selectWhenReady(ddlCreditCardExpiryMonth, strCCExpMonth);
 		
-		reusableActions.selectWhenReadyByVisibleText(ddlCreditCardExpiryYear, strCCExpYear);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlCreditCardExpiryYear, strCCExpYear);
 	}
 	
 	/**
@@ -105,11 +105,11 @@ public class RogersWirelessCreditEvaluationPage extends BasePageClass {
 	public void setDrivingLicenseDetails(String strDLProvince) {
 		String strDOBMonth = "0" + FormFiller.generateMonth();
 		
-		reusableActions.selectWhenReady(ddlDLProvince, strDLProvince);
-		reusableActions.selectWhenReady(ddlDLExpiryYear, FormFiller.generateExpiryYear());
-		reusableActions.selectWhenReady(ddlDLExpiryMonth, strDOBMonth.substring(strDOBMonth.length()-2));
-		reusableActions.selectWhenReady(ddlDLExpiryDay, FormFiller.generateCalendarDay());
-		reusableActions.getWhenReady(txtDLNumber, 10).sendKeys(FormFiller.generateLicenseNumber(strDLProvince));
+		getReusableActionsInstance().selectWhenReady(ddlDLProvince, strDLProvince);
+		getReusableActionsInstance().selectWhenReady(ddlDLExpiryYear, FormFiller.generateExpiryYear());
+		getReusableActionsInstance().selectWhenReady(ddlDLExpiryMonth, strDOBMonth.substring(strDOBMonth.length()-2));
+		getReusableActionsInstance().selectWhenReady(ddlDLExpiryDay, FormFiller.generateCalendarDay());
+		getReusableActionsInstance().getWhenReady(txtDLNumber, 10).sendKeys(FormFiller.generateLicenseNumber(strDLProvince));
 	}
 	
 	/**
@@ -117,7 +117,7 @@ public class RogersWirelessCreditEvaluationPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void setCreditCheckConsent() {
-		reusableActions.clickWhenReady(chbxCreditCheckConsent);
+		getReusableActionsInstance().clickWhenReady(chbxCreditCheckConsent);
 	}
 	
 	/**
@@ -125,6 +125,6 @@ public class RogersWirelessCreditEvaluationPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkContinue() {
-		reusableActions.clickWhenVisible(btnContinue);
+		getReusableActionsInstance().clickWhenVisible(btnContinue);
 	}
 }

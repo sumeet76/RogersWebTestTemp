@@ -45,10 +45,10 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	public void clkSolarisRHPBadge(String strBrowser ) {
 		if (strBrowser.equalsIgnoreCase("chrome"))
 		{
-		reusableActions.getWhenReady(btnSolarisrhpBadge, 30).click();		
+		getReusableActionsInstance().getWhenReady(btnSolarisrhpBadge, 30).click();
 		}else
 		{
-			reusableActions.clickWhenReady(btnSolarisrhpBadge, 60);
+			getReusableActionsInstance().clickWhenReady(btnSolarisrhpBadge, 60);
 		}
 	}
 
@@ -58,7 +58,7 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyRHPBanner() {
-		return reusableActions.isElementVisible(infoLegacyrhpDashboard, 20);
+		return getReusableActionsInstance().isElementVisible(infoLegacyrhpDashboard, 20);
 	}
 
 	/**
@@ -67,8 +67,8 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */	
 	public boolean verifyConfigureYourCurrentFeatures() {
-		reusableActions.waitForElementVisibility(lnkConfigureYourCurrentFeatures, 120);
-		return reusableActions.isElementVisible(lnkConfigureYourCurrentFeatures);
+		getReusableActionsInstance().waitForElementVisibility(lnkConfigureYourCurrentFeatures, 120);
+		return getReusableActionsInstance().isElementVisible(lnkConfigureYourCurrentFeatures);
 	}
 	/**
 	 * Verify the access your voice mail settings link onSolaris RHP dashboard
@@ -76,7 +76,7 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verfyAccessYourVoicemailSettings() {
-		return reusableActions.isElementVisible(lnkAccessYourVoicemailSettings);
+		return getReusableActionsInstance().isElementVisible(lnkAccessYourVoicemailSettings);
 	}
 	/**
 	 * Verify the reset your voice mail password link on Solaris RHP dashboard
@@ -84,7 +84,7 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verfyResetYourVoicemailPassword() {
-		return reusableActions.isElementVisible(lnkResetYourVoicemailPassword);
+		return getReusableActionsInstance().isElementVisible(lnkResetYourVoicemailPassword);
 	}
 	/**
 	 * Verify the live chat on RHP dashboard link on Solaris RHP dashboard
@@ -92,7 +92,7 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verfyLiveChatOnRHPDashboard() {
-		return reusableActions.isElementVisible(lnkLiveChatOnRHPDashboard);
+		return getReusableActionsInstance().isElementVisible(lnkLiveChatOnRHPDashboard);
 	}
 
 }

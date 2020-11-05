@@ -30,153 +30,153 @@ public class RogersSS_TC_059_79ValidateDataUsageDisplayRunningLow_postpaid_NSE_A
 
    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateDataUsageDisplayForRunningLowAndAddData() {
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc59.getUsername();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc59.getPassword();    	
-        rogers_login_page.setPasswordIFrame(strPassword);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 		
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc59.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc59.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");   
-        rogers_account_overview_page.clkMenuUsageAndService();
+        getRogersAccountOverviewPage().clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
         String strAccountNum = TestDataHandler.tc59.getAccountDetails().getCtn();        
-        rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
+        getRogersAccountOverviewPage().clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
 
-        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyRunningLowStateInTheUsageBar(),
+        getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyRunningLowStateInTheUsageBar(),
         		"Data running low is displayed for 10% or less data",
         		"It seems the data running low state is not yet reached for this acccount, please decrease the data usage and re validate");
-         reporter.hardAssert(rogers_wireless_dashboard_page.verifyCallOutMessageToAddDataIsDisplayed(),
+         reporter.hardAssert(getRogersWirelessDashboardPage().verifyCallOutMessageToAddDataIsDisplayed(),
         		 "Call out message to add data is displayed",
         		 "Call out message to add data is not displayed");
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyDataDelayMessage(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyDataDelayMessage(),
         					"Data delayed by 12 hours message is displayed", 
         					"Data delayed by 12 hours message is NOT displayed");
         reporter.reportLogWithScreenshot("Wireless dashboard page."); 
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyTotalDataBucket(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyTotalDataBucket(),
 							"Total data bucket includes plan, paid OTTs, paid MDTs, promotional (zero-rated) bonus OTT and MDTs info should be displayed", 
 							"Total data bucket includes plan, paid OTTs, paid MDTs, promotional (zero-rated) bonus OTT and MDTs info NOT displayed");
-        reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(), 
+        reporter.hardAssert(getRogersManageDataPage().validateViewDetailsLink(),
 							"'Manage Data' page is displayed after click on view details link", 
 							"'Manage Data' page is NOT displayed after click on view details link");  
         reporter.reportLogWithScreenshot("Manage data page view after we click on view details");  
-        rogers_manage_data_page.clkBackOnManageDataUsagePage();
+        getRogersManageDataPage().clkBackOnManageDataUsagePage();
         reporter.reportLogWithScreenshot("Navigated back to dashboard from manage data view");  
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyDaysRemainingInTheBillCycleIsDisplayed(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyDaysRemainingInTheBillCycleIsDisplayed(),
 							"Days left remaining in the bill cycle is displayed", 
 							"Days left remaining in the bill cycle is NOT displayed");    
 
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyAddDataButtonIsDisplayed(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyAddDataButtonIsDisplayed(),
 							"Add the Data top-up button is displayed", 
 							"Add the Data top-up  button is NOT displayed."); 
-        double origTotalData = rogers_wireless_dashboard_page.getTotalDataVolume();
+        double origTotalData = getRogersWirelessDashboardPage().getTotalDataVolume();
         double addedData = 0;
         common_business_flows.addDataFlow();
-        if(rogers_add_data_page.verifyAddDataSuccessMsgIsDisplayed())
+        if(getRogersAddDataPage().verifyAddDataSuccessMsgIsDisplayed())
         {
-        	addedData = rogers_add_data_page.getAddedDataVolume();
-        	rogers_add_data_page.clkCloseOnAddDataOverlay();
+        	addedData = getRogersAddDataPage().getAddedDataVolume();
+        	getRogersAddDataPage().clkCloseOnAddDataOverlay();
         	//Sign out and re sign in to verify if added data reflected.
 	        reporter.reportLogWithScreenshot("Wireless dashboard page.");  
 	        common_business_flows.logOutAndReSignIn(strUsername, strPassword);     
-	        rogers_account_overview_page.clkMenuUsageAndService();
+	        getRogersAccountOverviewPage().clkMenuUsageAndService();
 	        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");        
-	        if (rogers_account_overview_page.isAccountShowInDropDown(strAccountNum.substring(strAccountNum.length()-4))) {
-	            rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
+	        if (getRogersAccountOverviewPage().isAccountShowInDropDown(strAccountNum.substring(strAccountNum.length()-4))) {
+	            getRogersAccountOverviewPage().clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
 	        } else {
-	        	rogers_account_overview_page.clkSubMenuWirelessUsage();
+	        	getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
 	        }
 	        reporter.reportLogWithScreenshot("Wireless dashboard page.");
-	        reporter.softAssert(!rogers_wireless_dashboard_page.verifyRunningLowStateInTheUsageBar(),
+	        reporter.softAssert(!getRogersWirelessDashboardPage().verifyRunningLowStateInTheUsageBar(),
 	        		"Data running low is disappeared",
 	        		"It seems the data running low state is still displayed, please add more data and re validate");
-	        reporter.softAssert(rogers_wireless_dashboard_page.verifyAddedDataReflectedInTotalDataBucket(origTotalData, addedData), 
+	        reporter.softAssert(getRogersWirelessDashboardPage().verifyAddedDataReflectedInTotalDataBucket(origTotalData, addedData),
 								"Added data is reflected in total data bucket.", 
 								"Added data didn't reflect in total data bucket.");
 	     	        
-        } else if (rogers_add_data_page.verifyErrorMsgIsDisplayed()) {
+        } else if (getRogersAddDataPage().verifyErrorMsgIsDisplayed()) {
         	reporter.reportLogWithScreenshot("Add data purchase got error, please check if limit is reached.");
-        	rogers_add_data_page.clkCloseOnAddDataOverlay();
+        	getRogersAddDataPage().clkCloseOnAddDataOverlay();
         }
         
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded(),
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyAllMBAmountsConvertedToGBForTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded(),
         		"All amounts are coverted to GB For Total Data Displayed Below Label Total Data Plus Plan Added",
         		"it seems amount is not convertd to GB For Total Data Displayed Below Label Total Data Plus Plan Added, please investigate");
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForLabelDataRemaining(),
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyAllMBAmountsConvertedToGBForLabelDataRemaining(),
         		"All amounts are coverted to GB For Label Data Remaining",
         		"it seems amount is not convertd to GB For Label Data Remaining, please investigate");
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForlabelTotalDataDisplayedBelowBarRightSide(),
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyAllMBAmountsConvertedToGBForlabelTotalDataDisplayedBelowBarRightSide(),
         		"All amounts are coverted to GB label Total Data Displayed Below Bar RightSide",
         		"it seems amount is not convertd to GB label Total Data Displayed Below Bar RightSide, please investigate");
         
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesForTotalDataPlusAddedPlan(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesForTotalDataPlusAddedPlan(),
 				"All MB amounts converted in GB up to 2 decimal points For Total Data Plus Added Plan", 
 				"MB amounts converted in GB up to 2 decimal points NOT validated For Total Data Plus Added Plan, please investigate");  
-		reporter.hardAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesOnLabelDataRemaining(), 
+		reporter.hardAssert(getRogersWirelessDashboardPage().verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesOnLabelDataRemaining(),
 			"All MB amounts converted in GB up to 2 decimal points On Label Data Remaining", 
 			"MB amounts converted in GB up to 2 decimal points NOT validated On Label Data Remaining, please investigate"); 
-		reporter.hardAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesOnTotalDataBelowUsageBarRightSide(), 
+		reporter.hardAssert(getRogersWirelessDashboardPage().verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesOnTotalDataBelowUsageBarRightSide(),
 			"All MB amounts converted in GB up to 2 decimal points Total Data Below UsageBar RightSide", 
 			"MB amounts converted in GB up to 2 decimal points NOT validated Total Data Below UsageBar RightSide, please investigate");                              
-        rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
+        getRogersWirelessDashboardPage().scrollToMidOfDasboardPage();
         reporter.reportLogWithScreenshot("Middle of Wireless dashboard page.");        
-        rogers_wireless_dashboard_page.scrollToBottomOfPage();
+        getRogersWirelessDashboardPage().scrollToBottomOfPage();
         reporter.reportLogWithScreenshot("Bottom of Wireless dashboard page.");
     }
     
 
     @Test(dependsOnMethods = "validateDataUsageDisplayForRunningLowAndAddData",groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateCancelSingleMDTFlowNSEWithMultiline() {
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc59.getUsername();
     	String strPassword = TestDataHandler.tc59.getPassword();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
-        rogers_login_page.setPasswordIFrame(strPassword);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 		
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc59.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc59.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");
         
-        rogers_account_overview_page.clkMenuUsageAndService();
+        getRogersAccountOverviewPage().clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
         String strAccountNum = TestDataHandler.tc59.getAccountDetails().getCtn();
-        if (rogers_account_overview_page.isAccountShowInDropDown(strAccountNum.substring(strAccountNum.length()-4))) {
-            rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
+        if (getRogersAccountOverviewPage().isAccountShowInDropDown(strAccountNum.substring(strAccountNum.length()-4))) {
+            getRogersAccountOverviewPage().clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
         } else {
-        	rogers_account_overview_page.clkSubMenuWirelessUsage();
+        	getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
         }
-        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
+        getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
         reporter.reportLogWithScreenshot("Dashboard page");
-        rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
+        getRogersWirelessDashboardPage().scrollToMidOfDasboardPage();
         reporter.reportLogWithScreenshot("Dashboard My Plan");
         
-       	Map<String, Integer> countOfActiveAndCancelledAddDataOnMyPlan = rogers_wireless_dashboard_page.getAllExistingAddDataCountCancelledAndActiveOnMyPlanSection();			
-       	rogers_wireless_dashboard_page.scrollToTopOfDasboardPage();
+       	Map<String, Integer> countOfActiveAndCancelledAddDataOnMyPlan = getRogersWirelessDashboardPage().getAllExistingAddDataCountCancelledAndActiveOnMyPlanSection();
+       	getRogersWirelessDashboardPage().scrollToTopOfDasboardPage();
 		//4. Click on View details in usage dashboard
-		  reporter.softAssert(rogers_manage_data_page.validateViewDetailsLink(), 
+		  reporter.softAssert(getRogersManageDataPage().validateViewDetailsLink(),
 							"'Manage Data' page is displayed after click on view details link", 
 							"'Manage Data' page is NOT displayed after click on view details link");  
         reporter.reportLogWithScreenshot("Manage data page view after we click on view details");  
       
-		Map<String, Integer> countOfActiveAndCancelledAddData = rogers_manage_data_page.getAllExistingAddDataCountCancelledAndActive();
+		Map<String, Integer> countOfActiveAndCancelledAddData = getRogersManageDataPage().getAllExistingAddDataCountCancelledAndActive();
 		reporter.reportLogWithScreenshot("Manage Data page");
 		//Comparisions Before Cancel:
 		reporter.softAssert((countOfActiveAndCancelledAddDataOnMyPlan.get("cancelled")==countOfActiveAndCancelledAddData.get("cancelled")
@@ -188,51 +188,51 @@ public class RogersSS_TC_059_79ValidateDataUsageDisplayRunningLow_postpaid_NSE_A
 		{
 			
 			reporter.reportLogWithScreenshot("Click on cancel MTT Link");
-			rogers_manage_data_page.clkCancelMDTLink();			
+			getRogersManageDataPage().clkCancelMDTLink();
 			reporter.reportLogWithScreenshot("Click on Yes Remove Top Up");
-			rogers_manage_data_page.clkYesRemoveTopUpButton();
-			reporter.hardAssert(rogers_manage_data_page.isCancelSuccessdisplayed(),
+			getRogersManageDataPage().clkYesRemoveTopUpButton();
+			reporter.hardAssert(getRogersManageDataPage().isCancelSuccessdisplayed(),
 					"Cancel MDT success",
 					"MDT cancel not successful");
 			reporter.reportLogWithScreenshot("Cancel successful");
-			rogers_manage_data_page.clkCloseButtonOnCancelSuccessOverlay();
+			getRogersManageDataPage().clkCloseButtonOnCancelSuccessOverlay();
 			reporter.reportLogWithScreenshot("Close overlay");
 			
 			common_business_flows.scrollToTopOfWebPage();
-			rogers_manage_data_page.clkBackOnManageDataUsagePage();
+			getRogersManageDataPage().clkBackOnManageDataUsagePage();
 			reporter.reportLogWithScreenshot("Back on dashboard");
 			
 			common_business_flows.logOutAndReSignIn(strUsername, strPassword);			        
 			//rechange to the original one
-			if(rogers_account_overview_page.verifySuccessfulLogin())
+			if(getRogersAccountOverviewPage().verifySuccessfulLogin())
 			{
-				if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+				if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
 		        	reporter.reportLogWithScreenshot("Select an account.");
-		            rogers_account_overview_page.selectAccount(TestDataHandler.tc59.getAccountDetails().getBan());
+		            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc59.getAccountDetails().getBan());
 		        }
 		        reporter.reportLogWithScreenshot("Account overview page.");
 		        
-		        rogers_account_overview_page.clkMenuUsageAndService();
+		        getRogersAccountOverviewPage().clkMenuUsageAndService();
 		        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
-		        if (rogers_account_overview_page.isAccountShowInDropDown(strAccountNum.substring(strAccountNum.length()-4))) {
-		            rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
+		        if (getRogersAccountOverviewPage().isAccountShowInDropDown(strAccountNum.substring(strAccountNum.length()-4))) {
+		            getRogersAccountOverviewPage().clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
 		        } else {
-		        	rogers_account_overview_page.clkSubMenuWirelessUsage();
+		        	getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
 		        }
-		        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
-		        rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();		        
+		        getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
+		        getRogersWirelessDashboardPage().scrollToMidOfDasboardPage();
 				reporter.reportLogWithScreenshot("dashboard page");				
 				reporter.reportLogWithScreenshot("My Plan Details");
 				//All the added OTT are reflected in total bucket,plan section and manage data page
-				reporter.hardAssert(rogers_wireless_dashboard_page.verifyCancelledAddedDataInMyPlan(1, countOfActiveAndCancelledAddDataOnMyPlan.get("cancelled"))
+				reporter.hardAssert(getRogersWirelessDashboardPage().verifyCancelledAddedDataInMyPlan(1, countOfActiveAndCancelledAddDataOnMyPlan.get("cancelled"))
 						,"Expires MMM DD - is displayed next to the cancelled MDT in plan section",
 						"Expires MMM DD - is NOT displayed next to the cancelled MDT in plan section");
 				
-				rogers_wireless_dashboard_page.scrollToTopOfDasboardPage();	
-				reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(),
+				getRogersWirelessDashboardPage().scrollToTopOfDasboardPage();
+				reporter.hardAssert(getRogersManageDataPage().validateViewDetailsLink(),
 						"'Data details' page is displayed after click on view details link",
 						"'Data details' page is NOT displayed after click on view details link");				
-				reporter.hardAssert(rogers_manage_data_page.verifyCancelledMDTInManageData(1,countOfActiveAndCancelledAddData.get("cancelled")),
+				reporter.hardAssert(getRogersManageDataPage().verifyCancelledMDTInManageData(1,countOfActiveAndCancelledAddData.get("cancelled")),
 						"Expires MMM DD - is displayed next to the cancelled MDT in manage data page",
 						"Expires MMM DD - is NOT displayed next to the cancelled MDT in manage data page, plase investigate");	
 				

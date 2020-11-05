@@ -71,7 +71,7 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyProfilePage() {
-		return reusableActions.isElementVisible(txtProfile,90);
+		return getReusableActionsInstance().isElementVisible(txtProfile,90);
 	}
 	
 	/**
@@ -80,12 +80,12 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 */
 	public void setEmail() {
 		String strEmail = FormFiller.generateEmail();
-		reusableActions.waitForElementVisibility(txtContainerEmail,90);
-		reusableActions.getWhenReady(txtContainerEmail,10).click();
-        reusableActions.clickWhenReady(txtEmail);
+		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail,90);
+		getReusableActionsInstance().getWhenReady(txtContainerEmail,10).click();
+        getReusableActionsInstance().clickWhenReady(txtEmail);
         txtEmail.clear();
         txtEmail.sendKeys(strEmail);
-        reusableActions.executeJavaScriptClick(txtConfirmEmail);
+        getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
         txtConfirmEmail.clear();
         txtConfirmEmail.sendKeys(strEmail); 
 	}
@@ -96,7 +96,7 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 */
 	public void setFirstname() {
 		String strName = FormFiller.generateRandomName();
-		reusableActions.executeJavaScriptClick(txtFirstName);
+		getReusableActionsInstance().executeJavaScriptClick(txtFirstName);
 		txtFirstName.clear();
 		txtFirstName.sendKeys(strName);
 	}
@@ -107,7 +107,7 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 */
 	public void setLastName() {
 		String strName = FormFiller.generateRandomName();
-		reusableActions.executeJavaScriptClick(txtLastName);
+		getReusableActionsInstance().executeJavaScriptClick(txtLastName);
 		txtLastName.clear();
 		txtLastName.sendKeys(strName);
 	}
@@ -118,7 +118,7 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 */
 	public void setPhone() {
 		String strPhoneNumber = FormFiller.generatePhoneNumber();
-		reusableActions.executeJavaScriptClick(btnPhone);
+		getReusableActionsInstance().executeJavaScriptClick(btnPhone);
 		btnPhone.clear();
 		btnPhone.sendKeys(strPhoneNumber);
 	}
@@ -128,8 +128,8 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkChevronYourCart() {
-		reusableActions.waitForElementVisibility(downChevronYourCart, 120);
-		reusableActions.getWhenReady(downChevronYourCart, 120).click();
+		getReusableActionsInstance().waitForElementVisibility(downChevronYourCart, 120);
+		getReusableActionsInstance().getWhenReady(downChevronYourCart, 120).click();
 	}
 
 	/**
@@ -138,8 +138,8 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyGWPYourCartPromotion() {
-		reusableActions.waitForElementVisibility(gwpYourCart, 120);
-		return	reusableActions.isElementVisible(gwpYourCart);
+		getReusableActionsInstance().waitForElementVisibility(gwpYourCart, 120);
+		return	getReusableActionsInstance().isElementVisible(gwpYourCart);
 	}
 	
 	/**
@@ -147,7 +147,7 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSubmitProfile() {
-		reusableActions.getWhenReady(btnProfielSubmit, 60).click();
+		getReusableActionsInstance().getWhenReady(btnProfielSubmit, 60).click();
 	}
 	
 	/**
@@ -155,8 +155,8 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSubmitProfileMobile() {
-		reusableActions.waitForElementVisibility(btnProfielSubmit, 120);
-		reusableActions.executeJavaScriptClick(btnProfielSubmit);
+		getReusableActionsInstance().waitForElementVisibility(btnProfielSubmit, 120);
+		getReusableActionsInstance().executeJavaScriptClick(btnProfielSubmit);
 	}
 
 	/**
@@ -165,8 +165,8 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyImportantInformation() {
-		reusableActions.waitForElementVisibility(popImportantInformation, 120);
-		return	reusableActions.isElementVisible(popImportantInformation);
+		getReusableActionsInstance().waitForElementVisibility(popImportantInformation, 120);
+		return	getReusableActionsInstance().isElementVisible(popImportantInformation);
 	}
 	
 	/**
@@ -174,7 +174,7 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkIUnderstand(){
-		reusableActions.getWhenReady(btnIUnderstand, 120).click();
+		getReusableActionsInstance().getWhenReady(btnIUnderstand, 120).click();
 	}
 	
 	/**
@@ -182,7 +182,7 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkUseAnotherAddress() {
-		reusableActions.getWhenReady(rdoUseAnotherAddress, 30).click();
+		getReusableActionsInstance().getWhenReady(rdoUseAnotherAddress, 30).click();
 	}
 
 	/**
@@ -191,11 +191,11 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * @param strAddress address string
 	 */
 	public void setNewAddress(String strAddress) {
-		reusableActions.getWhenReady(txtAnotherAddress, 3).click();
-		reusableActions.getWhenReady(txtAnotherAddress, 3).clear();
-		reusableActions.getWhenReady(txtAnotherAddress, 3).sendKeys(strAddress);
-		reusableActions.getWhenVisible(txtAnotherAddress, 10).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(txtAnotherAddress).sendKeys(Keys.ENTER);
+		getReusableActionsInstance().getWhenReady(txtAnotherAddress, 3).click();
+		getReusableActionsInstance().getWhenReady(txtAnotherAddress, 3).clear();
+		getReusableActionsInstance().getWhenReady(txtAnotherAddress, 3).sendKeys(strAddress);
+		getReusableActionsInstance().getWhenVisible(txtAnotherAddress, 10).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txtAnotherAddress).sendKeys(Keys.ENTER);
 	}
 	
 }

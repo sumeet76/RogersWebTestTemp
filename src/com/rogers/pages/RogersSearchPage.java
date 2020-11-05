@@ -74,7 +74,7 @@ public class RogersSearchPage extends BasePageClass {
      */
 
     public boolean isFilterDisplayed(String strFilterName) {
-        return reusableActions.isElementVisible(
+        return getReusableActionsInstance().isElementVisible(
                 By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'"
                         + strFilterName + "')]"));
     }
@@ -89,7 +89,7 @@ public class RogersSearchPage extends BasePageClass {
 
     public boolean verifyResultsCategoryTagRelevancy(String[] strFilterArray) {
 
-        List<WebElement> categoryTags = driver.findElements(By.xpath("//span[contains(@class,'categorylbl')]"));
+        List<WebElement> categoryTags = getDriver().findElements(By.xpath("//span[contains(@class,'categorylbl')]"));
 
         List<String> strFilterValues = Arrays.asList(strFilterArray);
         boolean blnFlag = true;
@@ -122,15 +122,15 @@ public class RogersSearchPage extends BasePageClass {
 
         for (int j = 0; j < strFilterValues.size(); j++) {
 
-            reusableActions.clickIfAvailable(
+            getReusableActionsInstance().clickIfAvailable(
                     By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'"
                             + strFilterValues.get(j) + "')]"));
 
-            List<WebElement> categoryTags = driver.findElements(By.xpath("//span[contains(@class,'categorylbl')]"));
+            List<WebElement> categoryTags = getDriver().findElements(By.xpath("//span[contains(@class,'categorylbl')]"));
 
             for (int i = 0; i < categoryTags.size(); i++) {
 
-                String strTagText[] = driver.findElements(By.xpath("//span[contains(@class,'categorylbl')]")).get(i).getText().split("-");
+                String strTagText[] = getDriver().findElements(By.xpath("//span[contains(@class,'categorylbl')]")).get(i).getText().split("-");
 
                 if (!strFilterValues.get(j).equals(strTagText[0].trim())) {
                     blnFlag = false;
@@ -167,24 +167,24 @@ public class RogersSearchPage extends BasePageClass {
             clkGrandParentFilter(strFilterList.get(grandParentFiltercounter));
             System.out.println("After clicking parent filter" + getDriver().getCurrentUrl());
 
-            List<WebElement> parentFiltersList = driver.findElements(By.xpath("//p[starts-with(text(),'" + strFilterList.get(grandParentFiltercounter)
+            List<WebElement> parentFiltersList = getDriver().findElements(By.xpath("//p[starts-with(text(),'" + strFilterList.get(grandParentFiltercounter)
                     + "')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p"));
 
             for (int parentFilterCounter = 0; parentFilterCounter < parentFiltersList.size(); parentFilterCounter++) {
-                reusableActions.staticWait(1500);
+                getReusableActionsInstance().staticWait(1500);
                 System.out.println("Sub Filter values:" + parentFiltersList.get(parentFilterCounter).getText());
 
-                reusableActions.clickWhenReady(By.xpath("//p[starts-with(text(),'" + strFilterList.get(grandParentFiltercounter)
+                getReusableActionsInstance().clickWhenReady(By.xpath("//p[starts-with(text(),'" + strFilterList.get(grandParentFiltercounter)
                         + "')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p[starts-with(text(),'"
                         + parentFiltersList.get(parentFilterCounter).getText() + "')]"), 20);
                 System.out.println("After clicking sub filter" + getDriver().getCurrentUrl());
 
-                reusableActions.staticWait(1000);
-                List<WebElement> lstResultsWithCategoryTags = driver.findElements(By.xpath("//span[contains(@class,'categorylbl')]"));
+                getReusableActionsInstance().staticWait(1000);
+                List<WebElement> lstResultsWithCategoryTags = getDriver().findElements(By.xpath("//span[contains(@class,'categorylbl')]"));
                 for (int categoryTagsCounter = 0; categoryTagsCounter < lstResultsWithCategoryTags.size(); categoryTagsCounter++) {
 
-                    reusableActions.staticWait(500);
-                    String strTagText[] = reusableActions.getWhenReady(driver.findElements(By.xpath("//span[contains(@class,'categorylbl')]")).get(categoryTagsCounter), 10).getText().split("-");
+                    getReusableActionsInstance().staticWait(500);
+                    String strTagText[] = getReusableActionsInstance().getWhenReady(getDriver().findElements(By.xpath("//span[contains(@class,'categorylbl')]")).get(categoryTagsCounter), 10).getText().split("-");
                     System.out.println("Expected Grand Parent Filter value:" + strFilterList.get(grandParentFiltercounter));
                     System.out.println("Actual grand parent filter value:" + strTagText[0].trim());
                     System.out.println("Expected Parent Filter value:" + parentFiltersList.get(parentFilterCounter).getText().split("\\Q[\\E")[0].trim());
@@ -216,12 +216,12 @@ public class RogersSearchPage extends BasePageClass {
      */
 
     public void clkGrandParentFilter(String strFilterName) {
-        WebElement grandParentFilter = driver.findElement(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'"
+        WebElement grandParentFilter = getDriver().findElement(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'"
                 + strFilterName + "')]"));
 
-        reusableActions.javascriptScrollToTopOfPage();
-        reusableActions.scrollToElementAndClick(grandParentFilter);
-        reusableActions.staticWait(1500);
+        getReusableActionsInstance().javascriptScrollToTopOfPage();
+        getReusableActionsInstance().scrollToElementAndClick(grandParentFilter);
+        getReusableActionsInstance().staticWait(1500);
     }
 
     /**
@@ -232,11 +232,11 @@ public class RogersSearchPage extends BasePageClass {
      */
 
     public void clkParentFilter(WebElement parentFilter) {
-        reusableActions.clickWhenReady(parentFilter);
+        getReusableActionsInstance().clickWhenReady(parentFilter);
     }
 
     public List<WebElement> getParentFilters(String strGrandParentFilterName) {
-        return driver.findElements(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'" + strGrandParentFilterName + "')]/ancestor::button/following-sibling::ds-expander//p"));
+        return getDriver().findElements(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'" + strGrandParentFilterName + "')]/ancestor::button/following-sibling::ds-expander//p"));
     }
 
     public boolean isParentFilterExpanded(WebElement parentFilter) {
@@ -256,7 +256,7 @@ public class RogersSearchPage extends BasePageClass {
 
     public boolean isGrandParentFilterExpanded(String strFilterName) {
 
-        WebElement expandedFilter = driver.findElement(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'" + strFilterName + "')]/ancestor::button//following-sibling::ds-expander"));
+        WebElement expandedFilter = getDriver().findElement(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'" + strFilterName + "')]/ancestor::button//following-sibling::ds-expander"));
 
 
         if (expandedFilter.getAttribute("ng-reflect-expanded").equals("true")) {
@@ -278,13 +278,13 @@ public class RogersSearchPage extends BasePageClass {
 
     public void clkShopAndThenWirelessFilter() {
 
-        reusableActions.clickWhenReady(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'Shop')]"));
-        reusableActions.clickWhenReady(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p[starts-with(text(),'Wireless')]"));
+        getReusableActionsInstance().clickWhenReady(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'Shop')]"));
+        getReusableActionsInstance().clickWhenReady(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p[starts-with(text(),'Wireless')]"));
 		
-		/*WebElement parentFilter = driver.findElement(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'"
+		/*WebElement parentFilter = getDriver().findElement(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'"
 				+ strFilterName + "')]"));
 		
-		reusableActions.scrollToElementAndClick(parentFilter);*/
+		getReusableActionsInstance().scrollToElementAndClick(parentFilter);*/
 
 
     }
@@ -294,18 +294,18 @@ public class RogersSearchPage extends BasePageClass {
         boolean blnFlag = true;
 
 
-        List<WebElement> lstColorFilter = driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]"));
+        List<WebElement> lstColorFilter = getDriver().findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]"));
 
         for (int i = 0; i < lstColorFilter.size(); i++) {
 
-            System.out.println("value of color filter is:" + driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value"));
+            System.out.println("value of color filter is:" + getDriver().findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value"));
 
-            reusableActions.staticWait(2000);
+            getReusableActionsInstance().staticWait(2000);
 
-            reusableActions.clickWhenReady(By.xpath("//span[starts-with(text(),'" + driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value") + "')]"));
-            reusableActions.staticWait(2000);
+            getReusableActionsInstance().clickWhenReady(By.xpath("//span[starts-with(text(),'" + getDriver().findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value") + "')]"));
+            getReusableActionsInstance().staticWait(2000);
 
-            List<WebElement> lstColorResults = driver.findElements(By.xpath("//span[starts-with(@style,'background: ')]"));
+            List<WebElement> lstColorResults = getDriver().findElements(By.xpath("//span[starts-with(@style,'background: ')]"));
 
             for (int j = 0; j < lstColorResults.size(); j++) {
 
@@ -313,17 +313,17 @@ public class RogersSearchPage extends BasePageClass {
 
                 String[] strColorResult = lstColorResults.get(j).getAttribute("style").split(" ");
 
-                reusableActions.getWhenReady(driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i), 20);
+                getReusableActionsInstance().getWhenReady(getDriver().findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i), 20);
 
                 System.out.println("Before if statement - value of strColorResult is:" + strColorResult[1].replaceAll(";", ""));
-                System.out.println("Before if statement - value of color filter is:" + driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value"));
+                System.out.println("Before if statement - value of color filter is:" + getDriver().findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value"));
 
-		reusableActions.getWhenReady(driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i), 20);
+		getReusableActionsInstance().getWhenReady(getDriver().findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i), 20);
 		
 		System.out.println("Before if statement - value of strColorResult is:"+strColorResult[1].replaceAll(";", ""));
-		System.out.println("Before if statement - value of color filter is:"+driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value"));
+		System.out.println("Before if statement - value of color filter is:"+getDriver().findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value"));
 		
-		if(!(driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value").equalsIgnoreCase(strColorResult[1].replaceAll(";", "")))) {
+		if(!(getDriver().findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value").equalsIgnoreCase(strColorResult[1].replaceAll(";", "")))) {
 			
 			blnFlag = false;
 			break;
@@ -332,7 +332,7 @@ public class RogersSearchPage extends BasePageClass {
 		
 	}
 	
-	reusableActions.staticWait(2000);
+	getReusableActionsInstance().staticWait(2000);
 		
 	}
 	
@@ -343,7 +343,7 @@ return blnFlag;
 
 	
 	public boolean validateResultsLinks(String strGrandParentFilter, String strParentFilter) {
-		List<WebElement> resultlinks = driver.findElements(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]/preceding-sibling::a"));
+		List<WebElement> resultlinks = getDriver().findElements(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]/preceding-sibling::a"));
 		for (int counter=0;counter<resultlinks.size();counter++){
 			if(!(resultlinks.get(counter).getAttribute("href").equals(""))) {
 				return true;
@@ -364,30 +364,30 @@ return blnFlag;
         boolean blnFlag = false;
 
 
-        List<WebElement> lstColorFilter = driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]"));
+        List<WebElement> lstColorFilter = getDriver().findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]"));
 
         for (int i = 0; i < lstColorFilter.size(); i++) {
 
-            System.out.println("value of color filter is:" + driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value"));
+            System.out.println("value of color filter is:" + getDriver().findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value"));
 
-            reusableActions.staticWait(500);
+            getReusableActionsInstance().staticWait(500);
 
-            reusableActions.clickWhenReady(By.xpath("//span[starts-with(text(),'" + driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value") + "')]"));
-            reusableActions.staticWait(500);
+            getReusableActionsInstance().clickWhenReady(By.xpath("//span[starts-with(text(),'" + getDriver().findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value") + "')]"));
+            getReusableActionsInstance().staticWait(500);
 
-            List<WebElement> lstColorResults = driver.findElements(By.xpath("//span[starts-with(@style,'background: ')]"));
+            List<WebElement> lstColorResults = getDriver().findElements(By.xpath("//span[starts-with(@style,'background: ')]"));
 
             for (int j = 0; j < lstColorResults.size(); j++) {
 
-                System.out.println("value of Color Result is:" + driver.findElements(By.xpath("//span[starts-with(@style,'background: ')]")).get(j).getAttribute("style"));
+                System.out.println("value of Color Result is:" + getDriver().findElements(By.xpath("//span[starts-with(@style,'background: ')]")).get(j).getAttribute("style"));
 
-                String[] strColorResult = driver.findElements(By.xpath("//span[starts-with(@style,'background: ')]")).get(j).getAttribute("style").split(" ");
+                String[] strColorResult = getDriver().findElements(By.xpath("//span[starts-with(@style,'background: ')]")).get(j).getAttribute("style").split(" ");
 
                 List<String> lstColorResultText = Arrays.asList(strColorResult[1].replaceAll(";", ""));
 
                 for (int k = 0; k < lstColorResultText.size(); k++) {
 
-                    if ((driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value").equalsIgnoreCase(lstColorResultText.get(k)))) {
+                    if ((getDriver().findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value").equalsIgnoreCase(lstColorResultText.get(k)))) {
 
                         blnFlag = true;
                         break;
@@ -409,25 +409,25 @@ return blnFlag;
 
         boolean blnFlag = true;
 
-        List<WebElement> lstResults = driver.findElements(By.xpath("//a[@class='text-title-5']/parent::div/parent::div"));
+        List<WebElement> lstResults = getDriver().findElements(By.xpath("//a[@class='text-title-5']/parent::div/parent::div"));
 
         for (int i = 0; i < lstResults.size(); i++) {
 
 
-            List<WebElement> resultColorList = driver.findElements(By.xpath("//a[@class='text-title-5']/parent::div/parent::div")).get(i).findElements(By.tagName("ds-selection"));
+            List<WebElement> resultColorList = getDriver().findElements(By.xpath("//a[@class='text-title-5']/parent::div/parent::div")).get(i).findElements(By.tagName("ds-selection"));
 
             for (int j = 0; j < resultColorList.size(); j++) {
-                String selectedColor = driver.findElements(By.xpath("//a[@class='text-title-5']/parent::div/parent::div")).get(i).findElements(By.tagName("ds-selection")).get(j).getAttribute("ng-reflect-color");
-                reusableActions.javascriptScrollByVisibleElement(driver.findElements(By.xpath("//a[@class='text-title-5']/parent::div/parent::div")).get(i).findElements(By.tagName("ds-selection")).get(j));
-                reusableActions.scrollToElementAndClick(driver.findElements(By.xpath("//a[@class='text-title-5']/parent::div/parent::div")).get(i).findElements(By.tagName("ds-selection")).get(j));
-                WebElement resultLink = driver.findElements(By.xpath("//a[@class='text-title-5']/parent::div/parent::div")).get(i).findElement(By.tagName("a"));
-                reusableActions.getWhenVisible(resultLink).sendKeys(Keys.ENTER);
-                reusableActions.staticWait(4000);
+                String selectedColor = getDriver().findElements(By.xpath("//a[@class='text-title-5']/parent::div/parent::div")).get(i).findElements(By.tagName("ds-selection")).get(j).getAttribute("ng-reflect-color");
+                getReusableActionsInstance().javascriptScrollByVisibleElement(getDriver().findElements(By.xpath("//a[@class='text-title-5']/parent::div/parent::div")).get(i).findElements(By.tagName("ds-selection")).get(j));
+                getReusableActionsInstance().scrollToElementAndClick(getDriver().findElements(By.xpath("//a[@class='text-title-5']/parent::div/parent::div")).get(i).findElements(By.tagName("ds-selection")).get(j));
+                WebElement resultLink = getDriver().findElements(By.xpath("//a[@class='text-title-5']/parent::div/parent::div")).get(i).findElement(By.tagName("a"));
+                getReusableActionsInstance().getWhenVisible(resultLink).sendKeys(Keys.ENTER);
+                getReusableActionsInstance().staticWait(4000);
                 String colorLabel;
-                if (driver.getCurrentUrl().contains("watch")) {
-                    colorLabel = driver.findElement(By.xpath("//div[contains(@class,'color-switch') and contains(@class,'active') and @style='display: block;']/a")).getAttribute("class").split("-")[0];
+                if (getDriver().getCurrentUrl().contains("watch")) {
+                    colorLabel = getDriver().findElement(By.xpath("//div[contains(@class,'color-switch') and contains(@class,'active') and @style='display: block;']/a")).getAttribute("class").split("-")[0];
                 } else {
-                    colorLabel = reusableActions.getWhenReady(By.xpath("//span[text()='Colour:']//following-sibling::span")).getText();
+                    colorLabel = getReusableActionsInstance().getWhenReady(By.xpath("//span[text()='Colour:']//following-sibling::span")).getText();
                 }
 
                 if (!selectedColor.equalsIgnoreCase(colorLabel)) {
@@ -437,14 +437,14 @@ return blnFlag;
                     System.out.println("Actual Color : " + colorLabel);
                     break;
                 }
-                driver.navigate().back();
-                reusableActions.staticWait(1000);
+                getDriver().navigate().back();
+                getReusableActionsInstance().staticWait(1000);
 
 
             }
 
-            driver.navigate().back();
-            reusableActions.staticWait(1000);
+            getDriver().navigate().back();
+            getReusableActionsInstance().staticWait(1000);
 
 
         }
@@ -457,35 +457,35 @@ return blnFlag;
 
         boolean blnFlag = true;
 
-        List<WebElement> lstStorageFilter = driver.findElements(By.xpath("//input[@name='storage']"));
+        List<WebElement> lstStorageFilter = getDriver().findElements(By.xpath("//input[@name='storage']"));
 
         for (int i = 0; i < lstStorageFilter.size(); i++) {
-            reusableActions.waitForAllElementsVisible(driver.findElements(By.xpath("//input[@name='storage']")), 40);
-            String strStorageFilter = driver.findElements(By.xpath("//input[@name='storage']")).get(i).getAttribute("value");
+            getReusableActionsInstance().waitForAllElementsVisible(getDriver().findElements(By.xpath("//input[@name='storage']")), 40);
+            String strStorageFilter = getDriver().findElements(By.xpath("//input[@name='storage']")).get(i).getAttribute("value");
 
-            System.out.println("value of storage filter is:" + driver.findElements(By.xpath("//input[@name='storage']")).get(i).getAttribute("value"));
+            System.out.println("value of storage filter is:" + getDriver().findElements(By.xpath("//input[@name='storage']")).get(i).getAttribute("value"));
 
-            reusableActions.staticWait(2000);
+            getReusableActionsInstance().staticWait(2000);
 
-            reusableActions.clickWhenReady(
-                    By.xpath("//ds-checkbox[@ng-reflect-value='" + driver.findElements(By.xpath("//input[@name='storage']")).get(i).getAttribute("value") + "']"));
-            reusableActions.staticWait(2000);
+            getReusableActionsInstance().clickWhenReady(
+                    By.xpath("//ds-checkbox[@ng-reflect-value='" + getDriver().findElements(By.xpath("//input[@name='storage']")).get(i).getAttribute("value") + "']"));
+            getReusableActionsInstance().staticWait(2000);
 
-            List<WebElement> lstStorageResultsLink = driver.findElements(By.xpath("//a[contains(@href,'storage')]"));
+            List<WebElement> lstStorageResultsLink = getDriver().findElements(By.xpath("//a[contains(@href,'storage')]"));
 
             for (int j = 0; j < lstStorageResultsLink.size(); j++) {
 
-                System.out.println("Storage results link list:" + driver.findElements(By.xpath("//a[contains(@href,'storage')]")).get(j).getText());
+                System.out.println("Storage results link list:" + getDriver().findElements(By.xpath("//a[contains(@href,'storage')]")).get(j).getText());
 
-                reusableActions.getWhenVisible(driver.findElements(By.xpath("//a[contains(@href,'storage')]")).get(j)).sendKeys(Keys.ENTER);
-                //reusableActions.staticWait(4000);
+                getReusableActionsInstance().getWhenVisible(getDriver().findElements(By.xpath("//a[contains(@href,'storage')]")).get(j)).sendKeys(Keys.ENTER);
+                //getReusableActionsInstance().staticWait(4000);
 
-                //reusableActions.clickWhenReady(lstStorageResultsLink.get(j));
+                //getReusableActionsInstance().clickWhenReady(lstStorageResultsLink.get(j));
 
-                reusableActions.staticWait(5000);
+                getReusableActionsInstance().staticWait(5000);
 
-                WebElement storageLabel = driver.findElement(By.xpath("//span[text()='Storage:']//following-sibling::span"));
-                reusableActions.waitForElementVisibility(storageLabel);
+                WebElement storageLabel = getDriver().findElement(By.xpath("//span[text()='Storage:']//following-sibling::span"));
+                getReusableActionsInstance().waitForElementVisibility(storageLabel);
                 System.out.println("Storage Label is:" + storageLabel.getText().replaceAll("\\s", ""));
                 System.out.println("Storage filter value is:" + strStorageFilter);
 
@@ -499,9 +499,9 @@ return blnFlag;
                 }
 
                 System.out.println("Before Navigation");
-                driver.navigate().back();
+                getDriver().navigate().back();
                 System.out.println("After Navigation");
-                reusableActions.staticWait(4000);
+                getReusableActionsInstance().staticWait(4000);
 
 
             }
@@ -510,10 +510,10 @@ return blnFlag;
                 break;
             }
 
-            reusableActions.waitForElementVisibility(driver.findElement(By.xpath("//input[@name='storage']")), 40);
+            getReusableActionsInstance().waitForElementVisibility(getDriver().findElement(By.xpath("//input[@name='storage']")), 40);
 
-            //reusableActions.clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='"+lstStorageFilter.get(i).getAttribute("value")+"']"));
-            reusableActions.clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='" + strStorageFilter + "']"));
+            //getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='"+lstStorageFilter.get(i).getAttribute("value")+"']"));
+            getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='" + strStorageFilter + "']"));
 
 
         }
@@ -525,37 +525,37 @@ return blnFlag;
 
         boolean blnFlag = true;
 
-        List<WebElement> lstSizeFilter = driver.findElements(By.xpath("//input[contains(@id,'size')]"));
+        List<WebElement> lstSizeFilter = getDriver().findElements(By.xpath("//input[contains(@id,'size')]"));
 
         for (int i = 0; i < lstSizeFilter.size(); i++) {
-            reusableActions.waitForAllElementsVisible(driver.findElements(By.xpath("//input[contains(@id,'size')]")), 40);
-            String strSizeFilter = driver.findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value");
+            getReusableActionsInstance().waitForAllElementsVisible(getDriver().findElements(By.xpath("//input[contains(@id,'size')]")), 40);
+            String strSizeFilter = getDriver().findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value");
 
-            System.out.println("value of size filter is:" + driver.findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value"));
+            System.out.println("value of size filter is:" + getDriver().findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value"));
 
-            reusableActions.staticWait(2000);
+            getReusableActionsInstance().staticWait(2000);
 
-            reusableActions.clickWhenReady(
-                    By.xpath("//ds-checkbox[@ng-reflect-value='" + driver.findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value") + "']"));
-            reusableActions.staticWait(2000);
+            getReusableActionsInstance().clickWhenReady(
+                    By.xpath("//ds-checkbox[@ng-reflect-value='" + getDriver().findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value") + "']"));
+            getReusableActionsInstance().staticWait(2000);
 
-            List<WebElement> lstSizeResultsLink = driver.findElements(By.xpath("//a[contains(@href,'watch')]"));
+            List<WebElement> lstSizeResultsLink = getDriver().findElements(By.xpath("//a[contains(@href,'watch')]"));
 
             for (int j = 0; j < lstSizeResultsLink.size(); j++) {
 
-                System.out.println("Size results link list:" + driver.findElements(By.xpath("//a[contains(@href,'watch')]")).get(j).getText());
+                System.out.println("Size results link list:" + getDriver().findElements(By.xpath("//a[contains(@href,'watch')]")).get(j).getText());
 
-                reusableActions.getWhenVisible(driver.findElements(By.xpath("//a[contains(@href,'watch')]")).get(j)).sendKeys(Keys.ENTER);
-                //reusableActions.staticWait(4000);
+                getReusableActionsInstance().getWhenVisible(getDriver().findElements(By.xpath("//a[contains(@href,'watch')]")).get(j)).sendKeys(Keys.ENTER);
+                //getReusableActionsInstance().staticWait(4000);
 
-                //reusableActions.clickWhenReady(lstStorageResultsLink.get(j));
+                //getReusableActionsInstance().clickWhenReady(lstStorageResultsLink.get(j));
 
-                reusableActions.staticWait(5000);
+                getReusableActionsInstance().staticWait(5000);
 
-                //WebElement sizeLabel = driver.findElement(By.xpath("//div[contains(@class,'active')]/a[text()='"+strSizeFilter+"']"));
-                WebElement sizeLabel = driver.findElement(By.xpath("//a[text()='" + strSizeFilter + "']"));
+                //WebElement sizeLabel = getDriver().findElement(By.xpath("//div[contains(@class,'active')]/a[text()='"+strSizeFilter+"']"));
+                WebElement sizeLabel = getDriver().findElement(By.xpath("//a[text()='" + strSizeFilter + "']"));
 
-                reusableActions.waitForElementVisibility(sizeLabel);
+                getReusableActionsInstance().waitForElementVisibility(sizeLabel);
                 System.out.println("Size Label is:" + sizeLabel.getText());
                 System.out.println("Size filter value is:" + strSizeFilter);
 
@@ -570,9 +570,9 @@ return blnFlag;
                 }
 
                 System.out.println("Before Navigation");
-                driver.navigate().back();
+                getDriver().navigate().back();
                 System.out.println("After Navigation");
-                reusableActions.staticWait(4000);
+                getReusableActionsInstance().staticWait(4000);
 
 
             }
@@ -581,10 +581,10 @@ return blnFlag;
                 break;
             }
 
-            reusableActions.waitForElementVisibility(driver.findElement(By.xpath("//input[contains(@id,'size')]")), 40);
+            getReusableActionsInstance().waitForElementVisibility(getDriver().findElement(By.xpath("//input[contains(@id,'size')]")), 40);
 
-            //reusableActions.clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='"+lstStorageFilter.get(i).getAttribute("value")+"']"));
-            reusableActions.clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='" + strSizeFilter + "']"));
+            //getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='"+lstStorageFilter.get(i).getAttribute("value")+"']"));
+            getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='" + strSizeFilter + "']"));
 
 
         }
@@ -598,18 +598,18 @@ return blnFlag;
 
         boolean blnFlag = true;
 
-        List<WebElement> lstColorFilter = driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]"));
+        List<WebElement> lstColorFilter = getDriver().findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]"));
 
         for (int i = 0; i < 1; i++) {
 
-            System.out.println("value of color filter is:" + driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value"));
+            System.out.println("value of color filter is:" + getDriver().findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value"));
 
-            reusableActions.staticWait(2000);
+            getReusableActionsInstance().staticWait(2000);
 
-            reusableActions.clickWhenReady(By.xpath("//span[starts-with(text(),'" + driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value") + "')]"));
-            reusableActions.staticWait(2000);
+            getReusableActionsInstance().clickWhenReady(By.xpath("//span[starts-with(text(),'" + getDriver().findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value") + "')]"));
+            getReusableActionsInstance().staticWait(2000);
 
-            List<WebElement> lstColorResults = driver.findElements(By.xpath("//span[starts-with(@style,'background: ')]"));
+            List<WebElement> lstColorResults = getDriver().findElements(By.xpath("//span[starts-with(@style,'background: ')]"));
 
             for (int j = 0; j < lstColorResults.size(); j++) {
 
@@ -617,12 +617,12 @@ return blnFlag;
 
                 String[] strColorResult = lstColorResults.get(j).getAttribute("style").split(" ");
 
-                reusableActions.getWhenReady(driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i), 20);
+                getReusableActionsInstance().getWhenReady(getDriver().findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i), 20);
 
                 System.out.println("Before if statement - value of strColorResult is:" + strColorResult[1].replaceAll(";", ""));
-                System.out.println("Before if statement - value of color filter is:" + driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value"));
+                System.out.println("Before if statement - value of color filter is:" + getDriver().findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value"));
 
-                if (!(driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value").equalsIgnoreCase(strColorResult[1].replaceAll(";", "")))) {
+                if (!(getDriver().findElements(By.xpath("//input[@type='checkbox' and contains(@id,'color')]")).get(i).getAttribute("value").equalsIgnoreCase(strColorResult[1].replaceAll(";", "")))) {
 
                     blnFlag = false;
                     break;
@@ -631,7 +631,7 @@ return blnFlag;
 
             }
 
-            reusableActions.staticWait(2000);
+            getReusableActionsInstance().staticWait(2000);
 
         }
 
@@ -643,7 +643,7 @@ return blnFlag;
     public boolean validateResultsTag(String strGrandParentFilter, String strParentFilter) {
         String[] strParentFilterName = strParentFilter.split("\\[");
         String strExpectedTag = strGrandParentFilter.trim() + " - " + strParentFilterName[0].trim();
-        List<WebElement> resultlinkTags = driver.findElements(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]"));
+        List<WebElement> resultlinkTags = getDriver().findElements(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]"));
         for (int counter = 0; counter < resultlinkTags.size(); counter++) {
             if (!(resultlinkTags.get(counter).getText().equals(strExpectedTag))) {
                 return false;
@@ -654,7 +654,7 @@ return blnFlag;
 
     public boolean validateResultsTag(String strGrandParentFilter) {
         String strExpectedTag = strGrandParentFilter.trim() + " - ";
-        List<WebElement> resultlinkTags = driver.findElements(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]"));
+        List<WebElement> resultlinkTags = getDriver().findElements(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]"));
         for (int counter = 0; counter < resultlinkTags.size(); counter++) {
             if (!(resultlinkTags.get(counter).getText().startsWith(strExpectedTag))) {
                 return false;
@@ -683,32 +683,32 @@ return blnFlag;
 
         System.out.println("After clicking parent filter" + getDriver().getCurrentUrl());
 
-        List<WebElement> parentFiltersList = driver.findElements(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p"));
+        List<WebElement> parentFiltersList = getDriver().findElements(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p"));
 
         for (int parentFilterCounter = 0; parentFilterCounter < 1; parentFilterCounter++) {
-            reusableActions.staticWait(4000);
+            getReusableActionsInstance().staticWait(4000);
             //System.out.println("Sub Filter values:" + parentFiltersList.get(parentFilterCounter).getText());
-            System.out.println("Sub Filter values:" + driver.findElements(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p")).get(parentFilterCounter).getText());
+            System.out.println("Sub Filter values:" + getDriver().findElements(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p")).get(parentFilterCounter).getText());
 
 
-            reusableActions.javascriptScrollToTopOfPage();
-            reusableActions.clickWhenReady(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p[starts-with(text(),'" + parentFiltersList.get(parentFilterCounter).getText() + "')]"), 20);
-            //reusableActions.javascriptScrollByVisibleElement(driver.findElement(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p[starts-with(text(),'"+ parentFiltersList.get(parentFilterCounter).getText() + "')]")));
-            //reusableActions.staticWait(4000);
-            //reusableActions.scrollToElementAndClick(driver.findElement(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p[starts-with(text(),'"+ parentFiltersList.get(parentFilterCounter).getText() + "')]")));
+            getReusableActionsInstance().javascriptScrollToTopOfPage();
+            getReusableActionsInstance().clickWhenReady(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p[starts-with(text(),'" + parentFiltersList.get(parentFilterCounter).getText() + "')]"), 20);
+            //getReusableActionsInstance().javascriptScrollByVisibleElement(getDriver().findElement(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p[starts-with(text(),'"+ parentFiltersList.get(parentFilterCounter).getText() + "')]")));
+            //getReusableActionsInstance().staticWait(4000);
+            //getReusableActionsInstance().scrollToElementAndClick(getDriver().findElement(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p[starts-with(text(),'"+ parentFiltersList.get(parentFilterCounter).getText() + "')]")));
 
-            //reusableActions.javascriptScrollByVisibleElement(driver.findElements(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p")).get(parentFilterCounter));
-            //reusableActions.staticWait(4000);
-            //reusableActions.scrollToElementAndClick(driver.findElements(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p")).get(parentFilterCounter));
+            //getReusableActionsInstance().javascriptScrollByVisibleElement(getDriver().findElements(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p")).get(parentFilterCounter));
+            //getReusableActionsInstance().staticWait(4000);
+            //getReusableActionsInstance().scrollToElementAndClick(getDriver().findElements(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p")).get(parentFilterCounter));
 
             System.out.println("After clicking sub filter" + getDriver().getCurrentUrl());
 
-            reusableActions.staticWait(1000);
-            List<WebElement> lstResultsWithCategoryTags = driver.findElements(By.xpath("//span[contains(@class,'categorylbl')]"));
+            getReusableActionsInstance().staticWait(1000);
+            List<WebElement> lstResultsWithCategoryTags = getDriver().findElements(By.xpath("//span[contains(@class,'categorylbl')]"));
             for (int categoryTagsCounter = 0; categoryTagsCounter < lstResultsWithCategoryTags.size(); categoryTagsCounter++) {
 
-                reusableActions.staticWait(500);
-                String strTagText[] = reusableActions.getWhenReady(driver.findElements(By.xpath("//span[contains(@class,'categorylbl')]")).get(categoryTagsCounter), 10).getText().split("-");
+                getReusableActionsInstance().staticWait(500);
+                String strTagText[] = getReusableActionsInstance().getWhenReady(getDriver().findElements(By.xpath("//span[contains(@class,'categorylbl')]")).get(categoryTagsCounter), 10).getText().split("-");
                 System.out.println("Expected Grand Parent Filter value is Shop");
                 System.out.println("Actual grand parent filter value:" + strTagText[0].trim());
                 System.out.println("Expected Parent Filter value:" + parentFiltersList.get(parentFilterCounter).getText().split("\\Q[\\E")[0].trim());
@@ -731,26 +731,26 @@ return blnFlag;
     }
 
     public boolean isGrandParentFilterDisplayed(String strGrandParentFilterName) {
-        return reusableActions.isElementVisible(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button" +
+        return getReusableActionsInstance().isElementVisible(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button" +
                 "//p[starts-with(text(),'" + strGrandParentFilterName + "')]"));
     }
 
     public boolean isParentFilterDisplayed(String strGrandParentFilterName,String strParentFilterName) {
-        return reusableActions.isElementVisible(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button" +
+        return getReusableActionsInstance().isElementVisible(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button" +
                 "//p[starts-with(text(),'" +strGrandParentFilterName+"')]/ancestor::button/following-sibling::ds-expander" +
                 "//p[starts-with(text(),'" +strParentFilterName+"')]"));
     }
 
     public void clkParentFilter(String strGrandParentFilterName, String strParentFilterName) {
-        reusableActions.clickWhenReady(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button" +
+        getReusableActionsInstance().clickWhenReady(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button" +
                     "//p[starts-with(text(),'"+strGrandParentFilterName+"')]/ancestor::button/following-sibling::ds-expander" +
                     "//p[starts-with(text(),'"+strParentFilterName+"')]"));
-        reusableActions.staticWait(1500);
+        getReusableActionsInstance().staticWait(1500);
     }
 
     public List<String> getStorageSelections() {
         List<String> strStorageSelections = new ArrayList<String>();
-        List<WebElement> chkStorageSelections = driver.findElements(By.xpath("//input[@name='storage']"));
+        List<WebElement> chkStorageSelections = getDriver().findElements(By.xpath("//input[@name='storage']"));
         for(int i=0;i<chkStorageSelections.size();i++) {
             strStorageSelections.add(chkStorageSelections.get(i).getAttribute("value"));
         }
@@ -759,7 +759,7 @@ return blnFlag;
 
     public List<String> getColorSelections() {
         List<String> strColorSelections = new ArrayList<String>();
-        List<WebElement> chkColorSelections = driver.findElements(By.xpath("//input[@name='color']"));
+        List<WebElement> chkColorSelections = getDriver().findElements(By.xpath("//input[@name='color']"));
         for(int i=0;i<chkColorSelections.size();i++) {
             strColorSelections.add(chkColorSelections.get(i).getAttribute("value"));
         }
@@ -767,38 +767,38 @@ return blnFlag;
     }
 
     public void clkStorageType(String strStorage) {
-        reusableActions.clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='"+strStorage+"']"));
-        reusableActions.javascriptScrollToTopOfPage();
-        reusableActions.staticWait(1500);
+        getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='"+strStorage+"']"));
+        getReusableActionsInstance().javascriptScrollToTopOfPage();
+        getReusableActionsInstance().staticWait(1500);
     }
 
     public void clkColorType(String strColor) {
-        reusableActions.clickWhenReady(By.xpath("//span[contains(@class,'color') and starts-with(text(),'"+strColor+"')]"));
-        reusableActions.staticWait(1500);
+        getReusableActionsInstance().clickWhenReady(By.xpath("//span[contains(@class,'color') and starts-with(text(),'"+strColor+"')]"));
+        getReusableActionsInstance().staticWait(1500);
     }
 
     public List<WebElement> getAllResultLinks() {
-        return driver.findElements(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]/preceding-sibling::a"));
+        return getDriver().findElements(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]/preceding-sibling::a"));
     }
 
     public void clkResultLink(WebElement resultLink) {
-        reusableActions.javascriptScrollToTopOfPage();
-        reusableActions.clickWhenReady(resultLink);
+        getReusableActionsInstance().javascriptScrollToTopOfPage();
+        getReusableActionsInstance().clickWhenReady(resultLink);
     }
 
     public boolean isParentFilterExpanded(String strGrandParentFilter, String strParentFilter) {
-        return isParentFilterExpanded(driver.findElement(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button" +
+        return isParentFilterExpanded(getDriver().findElement(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button" +
                 "//p[starts-with(text(),'"+strGrandParentFilter+"')]/ancestor::button/following-sibling::ds-expander" +
                 "//p[starts-with(text(),'"+strParentFilter+"')]")));
     }
 
     public void clkResetAllFilters() {
-        reusableActions.clickWhenReady(btnResetAllFilters);
+        getReusableActionsInstance().clickWhenReady(btnResetAllFilters);
     }
 
     public boolean validateAllFiltersCollapsed() {
         boolean collapsedFlag = true;
-        List<WebElement> grandParentFilters = driver.findElements(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p"));
+        List<WebElement> grandParentFilters = getDriver().findElements(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p"));
         for(int i=0; i< grandParentFilters.size();i++) {
             if(isGrandParentFilterExpanded(grandParentFilters.get(i).getText())) {
                 collapsedFlag = false;
@@ -808,19 +808,19 @@ return blnFlag;
     }
 
     public void clkDeviceType(String strDeviceType) {
-        reusableActions.clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='"+strDeviceType+"']"));
-        reusableActions.javascriptScrollToTopOfPage();
-        reusableActions.staticWait(1500);
+        getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='"+strDeviceType+"']"));
+        getReusableActionsInstance().javascriptScrollToTopOfPage();
+        getReusableActionsInstance().staticWait(1500);
     }
 
     public void clkBrandType(String strBrandType) {
-        reusableActions.clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='"+strBrandType+"']"));
-        reusableActions.javascriptScrollToTopOfPage();
-        reusableActions.staticWait(1500);
+        getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='"+strBrandType+"']"));
+        getReusableActionsInstance().javascriptScrollToTopOfPage();
+        getReusableActionsInstance().staticWait(1500);
     }
 
     public boolean validateResultsLinks() {
-        List<WebElement> resultlinks = driver.findElements(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]/preceding-sibling::a"));
+        List<WebElement> resultlinks = getDriver().findElements(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]/preceding-sibling::a"));
         for (int counter=0;counter<resultlinks.size();counter++){
             if(!(resultlinks.get(counter).getAttribute("href").equals(""))) {
                 return true;
@@ -830,14 +830,14 @@ return blnFlag;
     }
 
     public void clkSizeType(String strSize) {
-        reusableActions.clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='"+strSize+"']"));
-        reusableActions.javascriptScrollToTopOfPage();
-        reusableActions.staticWait(1500);
+        getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='"+strSize+"']"));
+        getReusableActionsInstance().javascriptScrollToTopOfPage();
+        getReusableActionsInstance().staticWait(1500);
     }
 
     public List<String> getSizeSelections() {
         List<String> strSizeSelections = new ArrayList<String>();
-        List<WebElement> chkSizeSelections = driver.findElements(By.xpath("//input[contains(@id,'size')]"));
+        List<WebElement> chkSizeSelections = getDriver().findElements(By.xpath("//input[contains(@id,'size')]"));
         for(int i=0;i<chkSizeSelections.size();i++) {
             strSizeSelections.add(chkSizeSelections.get(i).getAttribute("value"));
         }
@@ -847,11 +847,11 @@ return blnFlag;
     public void clkOnMagnifyingLens() {
         txtSearch.sendKeys(Keys.ENTER);
         System.out.println("Enter key is clicked");
-        reusableActions.staticWait(4000);
+        getReusableActionsInstance().staticWait(4000);
     }
 
     public boolean validateURLContains(String strQuery) throws UnsupportedEncodingException{
-        String strUrl = URLDecoder.decode(driver.getCurrentUrl(), StandardCharsets.UTF_8.name());
+        String strUrl = URLDecoder.decode(getDriver().getCurrentUrl(), StandardCharsets.UTF_8.name());
         boolean blnFlag = false;
         if(strUrl.contains(strQuery.trim())) {
             blnFlag = true;
@@ -873,14 +873,14 @@ return blnFlag;
     }
 
     public boolean isNoResultsDisplayed() {
-        return reusableActions.isElementVisible(lblNoResultsMsg);
+        return getReusableActionsInstance().isElementVisible(lblNoResultsMsg);
     }
 
     public void hoverSuggestionsType(String strSuggestions) {
-        WebElement suggestionValue = driver.findElement(By.xpath("//span[(@class='ds-link__wrapper d-inline-block text-button')]/span[text()='"+" "+strSuggestions+" "+"']"));
-        reusableActions.scrollToElement(suggestionValue);
-        reusableActions.javascriptScrollToTopOfPage();
-        reusableActions.staticWait(1500);
+        WebElement suggestionValue = getDriver().findElement(By.xpath("//span[(@class='ds-link__wrapper d-inline-block text-button')]/span[text()='"+" "+strSuggestions+" "+"']"));
+        getReusableActionsInstance().scrollToElement(suggestionValue);
+        getReusableActionsInstance().javascriptScrollToTopOfPage();
+        getReusableActionsInstance().staticWait(1500);
     }
 
     public boolean verifyLeftSectionInnerHTML() {
@@ -902,7 +902,7 @@ return blnFlag;
 
     public List<String> getSuggestionSelections() {
         List<String> strSuggestionSelections = new ArrayList<String>();
-        List<WebElement> hoverSuggestionSelections = driver.findElements(By.xpath("//div[@ng-reflect-heading='Suggestions']/a/div/span/span[@class='ds-link__copy']"));
+        List<WebElement> hoverSuggestionSelections = getDriver().findElements(By.xpath("//div[@ng-reflect-heading='Suggestions']/a/div/span/span[@class='ds-link__copy']"));
         for(int i=0;i<hoverSuggestionSelections.size();i++) {
             strSuggestionSelections.add(hoverSuggestionSelections.get(i).getText());
         }
@@ -910,7 +910,7 @@ return blnFlag;
     }
 
     public boolean isSuggestionsSectionDisplayed() {
-        return reusableActions.isElementVisible(suggestionsSection);
+        return getReusableActionsInstance().isElementVisible(suggestionsSection);
     }
 
     public boolean isSuggestionsSectionPopulated() {
@@ -921,15 +921,15 @@ return blnFlag;
     }
 
     public boolean isSupportSectionDisplayed() {
-        return reusableActions.isElementVisible(supportSection,1);
+        return getReusableActionsInstance().isElementVisible(supportSection,1);
     }
 
     public boolean isSupportSectionPopulated() {
-        return reusableActions.isElementVisible(supportSectionLinks,1);
+        return getReusableActionsInstance().isElementVisible(supportSectionLinks,1);
     }
 
     public boolean isLeftSectionPopulated() {
-        return reusableActions.isElementVisible(leftSectionResults,1);
+        return getReusableActionsInstance().isElementVisible(leftSectionResults,1);
     }
 
     public String getLeftSectionInnerhtml() {
@@ -950,7 +950,7 @@ return blnFlag;
     }
 
     public void clkSuggestionsType(String strSuggestion) {
-        reusableActions.clickWhenReady(By.xpath("//div[@ng-reflect-heading='Suggestions']//span[starts-with(text(),' "+strSuggestion+"')]"));
+        getReusableActionsInstance().clickWhenReady(By.xpath("//div[@ng-reflect-heading='Suggestions']//span[starts-with(text(),' "+strSuggestion+"')]"));
     }
 
     public boolean validateFiltersInUrl(String strGrandParentFilter, String strParentFilter) throws UnsupportedEncodingException {
@@ -1003,12 +1003,12 @@ return blnFlag;
     }
 
     public boolean isFilterChecked(String strFilter) {
-        return reusableActions.getWhenReady(By.xpath("//ds-checkbox//input[@value='"+strFilter.trim()+"']"))
+        return getReusableActionsInstance().getWhenReady(By.xpath("//ds-checkbox//input[@value='"+strFilter.trim()+"']"))
                 .getAttribute("aria-checked").equals("true");
     }
 
     public boolean validateGrandParentFiltersCount(int count) {
-        return driver.findElements(By.xpath("//div[@class='ds-filter__listSet']//ds-accordion-panel[contains(@class,'-main-level')]"))
+        return getDriver().findElements(By.xpath("//div[@class='ds-filter__listSet']//ds-accordion-panel[contains(@class,'-main-level')]"))
                 .size()==count;
     }
 
@@ -1018,7 +1018,7 @@ return blnFlag;
 
     public List<String> getColorFilters() {
         List<String> colorFilters = new ArrayList<String>();
-        List<WebElement> colorFilterElements = driver.findElements(By.xpath("//span[contains(@class,'checkbox-color-copy')]"));
+        List<WebElement> colorFilterElements = getDriver().findElements(By.xpath("//span[contains(@class,'checkbox-color-copy')]"));
         for(int i=0;i<colorFilterElements.size();i++) {
             colorFilters.add(colorFilterElements.get(i).getText().split("\\(")[0].trim());
         }
@@ -1026,7 +1026,7 @@ return blnFlag;
     }
 
     public boolean validateResultsColor(String strColor) {
-        List<WebElement> resultColoursList = driver.findElements(By.xpath("//app-search-results//ds-selection[@ng-reflect-type='color']"));
+        List<WebElement> resultColoursList = getDriver().findElements(By.xpath("//app-search-results//ds-selection[@ng-reflect-type='color']"));
         for(int i=0;i<resultColoursList.size();i++) {
             if(!(resultColoursList.get(i).getAttribute("ng-reflect-value")
                     .trim().toLowerCase().equals(strColor.toLowerCase()))) {

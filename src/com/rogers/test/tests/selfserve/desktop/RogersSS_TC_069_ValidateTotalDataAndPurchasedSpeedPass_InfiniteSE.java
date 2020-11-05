@@ -37,62 +37,62 @@ public class RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE e
 	
     @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateTotalDataForInfiniteSEIndividualPlan() {
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc6269.getUsername();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc6269.getPassword();    	
-        rogers_login_page.setPasswordIFrame(strPassword);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 		
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc6269.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc6269.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");   
-        rogers_account_overview_page.clkMenuUsageAndService();
+        getRogersAccountOverviewPage().clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
-    	rogers_account_overview_page.clkSubMenuWirelessUsage();
+    	getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
 
-        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
+        getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
          
         //  - Added Data: should be included all Speed passes added for current bill cycle
         //  - Added Data: multiple speed passes of same size should be displayed individually (not summed up)
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifySpeedPassButtonIsDisplayed(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifySpeedPassButtonIsDisplayed(),
 				"Speed Pass button is displayed", 
 				"Speed Pass button is NOT displayed");
 		reporter.reportLogWithScreenshot("Wireless dashboard page."); 
-		reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(), 
+		reporter.hardAssert(getRogersManageDataPage().validateViewDetailsLink(),
 			"'Data details' page is displayed after click on view details link", 
 			"'Data details' page is NOT displayed after click on view details link");  
 	    //- Plan data: should be displayed (shared data across all lines)
-		reporter.hardAssert(rogers_manage_data_page.verifyPlanDataIsDisplayed(), 
+		reporter.hardAssert(getRogersManageDataPage().verifyPlanDataIsDisplayed(),
 				"Plan data is displayed", 
 				"Plan data is NOT displayed");
-		int totalSharedDataDisplayedInPlanDataSection = rogers_manage_data_page.getTotalPlanData();
-		int countOfExistSpeedPass = rogers_manage_data_page.getAllExistingSpeedPassCount();		
+		int totalSharedDataDisplayedInPlanDataSection = getRogersManageDataPage().getTotalPlanData();
+		int countOfExistSpeedPass = getRogersManageDataPage().getAllExistingSpeedPassCount();
 		reporter.reportLogWithScreenshot("Speed passes");
 		
-		rogers_manage_data_page.clkBackOnManageDataUsagePage();	
+		getRogersManageDataPage().clkBackOnManageDataUsagePage();
 		
 		int totalAddedSpeedPass = common_business_flows.addSpeedPass();	
 
-		reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(), 
+		reporter.hardAssert(getRogersManageDataPage().validateViewDetailsLink(),
 				"'Data details' page is displayed after click on view details link", 
 				"'Data details' page is NOT displayed after click on view details link"); 
 		reporter.reportLogWithScreenshot("Manage data page view after we click on view details"); 
-		reporter.hardAssert(rogers_manage_data_page.verifyAddedDataInDataDetails(totalAddedSpeedPass,countOfExistSpeedPass), 
+		reporter.hardAssert(getRogersManageDataPage().verifyAddedDataInDataDetails(totalAddedSpeedPass,countOfExistSpeedPass),
 						"Added data section is verified in 'Data details' page,"
 						+ " multiple speed passes of same size displayed individually.", 
 						"Added data section in 'Data details' page is not verified successfully.");  
-		int countOfExistSpeedPassTotalGB = rogers_manage_data_page.getAllExistingSpeedPassTotalGB();	
-		rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
+		int countOfExistSpeedPassTotalGB = getRogersManageDataPage().getAllExistingSpeedPassTotalGB();
+		getRogersWirelessDashboardPage().scrollToMidOfDasboardPage();
 		reporter.reportLogWithScreenshot("Total data view");
-		reporter.hardAssert(rogers_manage_data_page.verifyTotalDataInDataDetailsWithMaxSpeedAndTotalOfSpeedPasses(countOfExistSpeedPassTotalGB,totalSharedDataDisplayedInPlanDataSection), 
+		reporter.hardAssert(getRogersManageDataPage().verifyTotalDataInDataDetailsWithMaxSpeedAndTotalOfSpeedPasses(countOfExistSpeedPassTotalGB,totalSharedDataDisplayedInPlanDataSection),
 						"Total Data: displays data plan on Max speed AND total added speed passes separately ", 
 						"Total Data: NOT displays data plan on Max speed AND total added speed passes separately ");	
 

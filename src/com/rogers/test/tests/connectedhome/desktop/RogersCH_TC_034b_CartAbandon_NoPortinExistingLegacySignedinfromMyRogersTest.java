@@ -54,32 +54,32 @@ public class RogersCH_TC_034b_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
     @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
 	public void checkCartAbandonNoPortinExistingLegacySignedinfromMyRogersTest() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
-		rogers_home_page.clkSignIn();     
-  		rogers_login_page.switchToSignInIFrame();
+		getRogersHomePage().clkSignIn();
+  		getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setUsernameIFrame(TestDataHandler.tc34_NoPortInAbondoneFlows.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.tc34_NoPortInAbondoneFlows.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc34_NoPortInAbondoneFlows.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc34_NoPortInAbondoneFlows.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    reporter.reportLogWithScreenshot("Skip popup");
-	    rogers_login_page.clkSkipIFrame();
-	    rogers_login_page.switchOutOfSignInIFrame();
-	    rogers_account_overview_page.selectAccount(TestDataHandler.tc34_NoPortInAbondoneFlows.accountDetails.getBan());
-		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+	    getRogersLoginPage().clkSkipIFrame();
+	    getRogersLoginPage().switchOutOfSignInIFrame();
+	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc34_NoPortInAbondoneFlows.accountDetails.getBan());
+		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 	    reporter.reportLogWithScreenshot("Launched the Account Page"); 
-        rogers_home_page.clkShop(); 
+        getRogersHomePage().clkShop();
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        rogers_home_page.clkIgniteTVExistingCustomer();   	
-     	reporter.hardAssert(rogers_home_page.verifyWelcomeback(),"Welcome back popup has Launched","Welcome back popup has not Launched");
+        getRogersHomePage().clkIgniteTVExistingCustomer();
+     	reporter.hardAssert(getRogersHomePage().verifyWelcomeback(),"Welcome back popup has Launched","Welcome back popup has not Launched");
      	reporter.reportLogWithScreenshot("Launched the Welcome back popup");
-     	rogers_home_page.clkWelcomeback();   	
+     	getRogersHomePage().clkWelcomeback();
         reporter.reportLogWithScreenshot("Launched the cart summary page");
-        rogers_igniteTV_buy_page.clkCheckout();
+        getRogersIgniteTVBuyPage().clkCheckout();
         reporter.reportLogWithScreenshot("Launched the information popup");
        
-        reporter.hardAssert( rogers_igniteTV_profile_creation_page.verifyImportantInformation(),"Important Information popup has Launched","Important Information popup has not Launched");
-        rogers_igniteTV_profile_creation_page.clkIUnderstand();
+        reporter.hardAssert( getRogersIgniteTVProfileCreationPage().verifyImportantInformation(),"Important Information popup has Launched","Important Information popup has not Launched");
+        getRogersIgniteTVProfileCreationPage().clkIUnderstand();
 		}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

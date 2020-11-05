@@ -46,10 +46,10 @@ public class RogersSearch_CBS_1684_Storage_Filter_Functioning_Test extends BaseT
 	
 	getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
 	
-	rogers_search_page.clkShopAndThenWirelessFilter();
+	getRogersSearchPage().clkShopAndThenWirelessFilter();
 	reporter.reportLogWithScreenshot("Shop and Wireless Filters clicked");
 	
-	reporter.hardAssert(rogers_search_page.verifyResultsStorageLabelWithSelectedStorage(), "Storage label displayed correctly", "Storage label not displayed correctly");
+	reporter.hardAssert(getRogersSearchPage().verifyResultsStorageLabelWithSelectedStorage(), "Storage label displayed correctly", "Storage label not displayed correctly");
 				
 				
 	}

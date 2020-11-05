@@ -34,26 +34,26 @@ public class RogersSC_TC_003_ExistingSolarisCustomer_ResetParentalControlsAndPin
     @Test
     public void checkSolarisTVResetParentalControlsAndPinFlow() {       
         reporter.reportLogWithScreenshot("Launched the Home Page");
-        rogers_home_page.clkSignIn();
-        rogers_login_page.switchToSignInIFrame();
+        getRogersHomePage().clkSignIn();
+        getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        rogers_login_page.setUsernameIFrame(TestDataHandler.solarisTVAccountPackageUpgrade.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.solarisTVAccountPackageUpgrade.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.solarisTVAccountPackageUpgrade.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.solarisTVAccountPackageUpgrade.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
-        rogers_login_page.clkSignInIFrame();
+        getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Skip popup");
-        rogers_login_page.clkSkipIFrame();
-        rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount((TestDataHandler.solarisTVAccountPackageUpgrade.accountDetails.getBan()));
-        reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+        getRogersLoginPage().clkSkipIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();
+        getRogersAccountOverviewPage().selectAccount((TestDataHandler.solarisTVAccountPackageUpgrade.accountDetails.getBan()));
+        reporter.softAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
-        rogers_solaris_tv_dashboard_page.clkTVBadge();
+        getRogersSolarisTVDashboardPage().clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
-        rogers_solaris_tv_dashboard_page.clkResetParentalConrolsAndPin();
+        getRogersSolarisTVDashboardPage().clkResetParentalConrolsAndPin();
         reporter.reportLogWithScreenshot("Alert window with Reset your Controls and Pin will appear");
-        rogers_solaris_tv_dashboard_page.clkContinueParentalControlAndPinReset();
+        getRogersSolarisTVDashboardPage().clkContinueParentalControlAndPinReset();
         reporter.reportLogWithScreenshot("Clicked continue button on Reset your Controls and Pin Alert window");
-        reporter.softAssert(rogers_solaris_tv_dashboard_page.verifyResetParentalControlsAndPinSuccess(), "Parental Controls And Pin reset successfull","Parental Controls And Pin reset failed");
+        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyResetParentalControlsAndPinSuccess(), "Parental Controls And Pin reset successfull","Parental Controls And Pin reset failed");
         reporter.reportLogWithScreenshot("Success message verified");      
     }
 

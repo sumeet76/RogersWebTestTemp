@@ -28,18 +28,18 @@ public class RogersSearch_CBS_1681_Color_Facet_Testing_Test extends BaseTestClas
 		List<String> strColorFilters;
 		getDriver().get(System.getProperty("SearchUrl")+"wireless");
 	
-		rogers_search_page.clkShopAndThenWirelessFilter();
+		getRogersSearchPage().clkShopAndThenWirelessFilter();
 		reporter.reportLogWithScreenshot("Shop and Wireless Filters clicked");
-		strColorFilters = rogers_search_page.getColorFilters();
+		strColorFilters = getRogersSearchPage().getColorFilters();
 		for(int i=0;i<strColorFilters.size();i++) {
-			rogers_search_page.clkColorType(strColorFilters.get(i));
+			getRogersSearchPage().clkColorType(strColorFilters.get(i));
 			reporter.reportLogWithScreenshot(strColorFilters.get(i) + " - Color Selected");
 
-			reporter.softAssert(rogers_search_page.validateResultsColor(strColorFilters.get(i)),
+			reporter.softAssert(getRogersSearchPage().validateResultsColor(strColorFilters.get(i)),
 					"All Results belong to color"+strColorFilters.get(i),
 					"All Results do Not belong to color"+strColorFilters.get(i));
 
-			rogers_search_page.clkColorType(strColorFilters.get(i));
+			getRogersSearchPage().clkColorType(strColorFilters.get(i));
 			reporter.reportLogWithScreenshot(strColorFilters.get(i) + " - Color Deselected");
 		}
 	}

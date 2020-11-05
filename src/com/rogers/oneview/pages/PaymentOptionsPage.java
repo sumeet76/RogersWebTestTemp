@@ -28,19 +28,19 @@ public class PaymentOptionsPage  extends BasePageClass {
 	 * @author Harpartap.Virk
 	 */	
 	public void selectPaymentOption(String paymentopt) {
-		if(reusableActions.isElementVisible(collapse,120)) 
-			reusableActions.clickWhenReady(collapse);
-		reusableActions.javascriptScrollByVisibleElement(paymentText);
-		//reusableActions.selectWhenReadyByVisibleText(paymentOption,paymentopt);
-		reusableActions.selectWhenReady(paymentOption, 1);
+		if(getReusableActionsInstance().isElementVisible(collapse,120))
+			getReusableActionsInstance().clickWhenReady(collapse);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(paymentText);
+		//getReusableActionsInstance().selectWhenReadyByVisibleText(paymentOption,paymentopt);
+		getReusableActionsInstance().selectWhenReady(paymentOption, 1);
 		}
 	/**
 	 * Click Continue Button  
 	 * @author Harpartap.Virk
 	 */	
 	public void clkContinue() {	
-		//reusableActions.javascriptScrollToBottomOfPage();
-		reusableActions.getWhenReady(continueButton,120).sendKeys(Keys.ENTER);
+		//getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().getWhenReady(continueButton,120).sendKeys(Keys.ENTER);
 		System.out.println("213123");
 	}
 /**
@@ -49,7 +49,7 @@ public class PaymentOptionsPage  extends BasePageClass {
  * @author Harpartap.Virk
  */	
 public boolean verifyPaymentPage() {	
-	return reusableActions.isElementVisible(paymentText,120);
+	return getReusableActionsInstance().isElementVisible(paymentText,120);
 }
 	}
 

@@ -37,100 +37,100 @@ public class Mobile_RogersSS_TC_031_Postpaid_ChangeContactInfo extends BaseTestC
 	
 	@Test(groups = {"MobileSanitySS"})
 	public void validateUserChangeContactInformation() {		
-		rogers_home_page.clkSignInMobile();
+		getRogersHomePage().clkSignInMobile();
     	String strUsername = TestDataHandler.tc013132.getUsername();
     	String strPassword = TestDataHandler.tc013132.getPassword();
     	String strBan = TestDataHandler.tc013132.getAccountDetails().getBan();
     	String strEmail = TestDataHandler.tc013132.getAccountDetails().getContactemail();
     	strAltEmail = FormFiller.generateEmail();
-		rogers_login_page.switchToSignInIFrame();
-		rogers_login_page.setUsernameIFrame(strUsername);
-		rogers_login_page.setPasswordIFrame(strPassword);
+		getRogersLoginPage().switchToSignInIFrame();
+		getRogersLoginPage().setUsernameIFrame(strUsername);
+		getRogersLoginPage().setPasswordIFrame(strPassword);
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
         
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select BAN.");
-            rogers_account_overview_page.selectAccount(strBan);
+            getRogersAccountOverviewPage().selectAccount(strBan);
         }
 		reporter.reportLogWithScreenshot("Account overveiew page");    	
-		rogers_account_overview_page.clkLnkProfileNSettingsMobile();
+		getRogersAccountOverviewPage().clkLnkProfileNSettingsMobile();
 		reporter.reportLogWithScreenshot("Profile & Settings page");
 		common_business_flows.scrollToMiddleOfWebPage();
-		rogers_profile_and_settings_page.clkCloseFeedbackIfAvailableMobile();
-    	rogers_profile_and_settings_page.clkBtnContactInfomation();
+		getRogersProfileAndSettingsPage().clkCloseFeedbackIfAvailableMobile();
+    	getRogersProfileAndSettingsPage().clkBtnContactInfomation();
     	
     	//Add Contact email, can't be the same as user name!!!
-		rogers_profile_and_settings_page.clkBtnChangeEmailMobile();
-		//rogers_profile_and_settings_page.clkBtnAddEmailMobile();
+		getRogersProfileAndSettingsPage().clkBtnChangeEmailMobile();
+		//getRogersProfileAndSettingsPage().clkBtnAddEmailMobile();
     	String strNewEmail="";
-    	if(rogers_profile_and_settings_page.getContactEmailMobile().toLowerCase().contains(strEmail.toLowerCase()))
+    	if(getRogersProfileAndSettingsPage().getContactEmailMobile().toLowerCase().contains(strEmail.toLowerCase()))
     	{
-        	rogers_profile_and_settings_page.setContactEmailMobile(strAltEmail);
+        	getRogersProfileAndSettingsPage().setContactEmailMobile(strAltEmail);
         	strNewEmail=strAltEmail;
      
     	}else
     	{
-        	rogers_profile_and_settings_page.setContactEmailMobile(strEmail);
+        	getRogersProfileAndSettingsPage().setContactEmailMobile(strEmail);
         	strNewEmail=strEmail;
     	}
     	reporter.reportLogWithScreenshot("Contact email information is entered.");
-    	rogers_profile_and_settings_page.clkBtnAddContactEmailContinue();
-    	rogers_profile_and_settings_page.clkBtnAddContactEmailSubmit();    
+    	getRogersProfileAndSettingsPage().clkBtnAddContactEmailContinue();
+    	getRogersProfileAndSettingsPage().clkBtnAddContactEmailSubmit();
 		reporter.reportLogWithScreenshot("Contact email information submitted.");
-	    reporter.softAssert((rogers_profile_and_settings_page.clkBtnAddContactEmailFinish()
-	    		&& rogers_profile_and_settings_page.verifyContactEmailSuccessfullySet(strNewEmail)),
+	    reporter.softAssert((getRogersProfileAndSettingsPage().clkBtnAddContactEmailFinish()
+	    		&& getRogersProfileAndSettingsPage().verifyContactEmailSuccessfullySet(strNewEmail)),
 				"Contact email was successfully add", 
 				"Add contact email failed");	    
     	    	    
     	//Update home number, can't be the same as what it already has!!!
-    	rogers_profile_and_settings_page.clkLnkUpdateHomeNumberMobile();
+    	getRogersProfileAndSettingsPage().clkLnkUpdateHomeNumberMobile();
     	String strHomePhoneNumer = FormFiller.generateRandomNumber(10);
-    	rogers_profile_and_settings_page.setHomePhoneMobile(strHomePhoneNumer);
+    	getRogersProfileAndSettingsPage().setHomePhoneMobile(strHomePhoneNumer);
     	reporter.reportLogWithScreenshot("Home phone number is entered.");
-    	rogers_profile_and_settings_page.clkBtnUpdateHomeNumberContinue();
-    	rogers_profile_and_settings_page.clkBtnUpdateHomeNumberSubmit();
+    	getRogersProfileAndSettingsPage().clkBtnUpdateHomeNumberContinue();
+    	getRogersProfileAndSettingsPage().clkBtnUpdateHomeNumberSubmit();
 		reporter.reportLogWithScreenshot("Home phone number inflormation submitted.");
-    	reporter.softAssert((rogers_profile_and_settings_page.clkBtnUpdateHomeNumberFinish()
-    			&& rogers_profile_and_settings_page.verifyHomeNumber(strHomePhoneNumer.substring(strHomePhoneNumer.length()-4))),
+    	reporter.softAssert((getRogersProfileAndSettingsPage().clkBtnUpdateHomeNumberFinish()
+    			&& getRogersProfileAndSettingsPage().verifyHomeNumber(strHomePhoneNumer.substring(strHomePhoneNumer.length()-4))),
     			"Home phone number was successfully updated",
     			"Update home phone number failed");    	
     	
     	//Add business number, can't be the same as what it already has!!!
-    	rogers_profile_and_settings_page.clkLnkAddBusinessNumberMobile();
+    	getRogersProfileAndSettingsPage().clkLnkAddBusinessNumberMobile();
     	String strBusinessNumer = FormFiller.generateRandomNumber(10);
-    	rogers_profile_and_settings_page.setBusinessPhoneMobile(strBusinessNumer);
+    	getRogersProfileAndSettingsPage().setBusinessPhoneMobile(strBusinessNumer);
     	reporter.reportLogWithScreenshot("Business number is entered.");
-    	rogers_profile_and_settings_page.clkBtnAddBusinessNumberContinue();
-    	rogers_profile_and_settings_page.clkBtnAddBusinessNumberSubmit();  
+    	getRogersProfileAndSettingsPage().clkBtnAddBusinessNumberContinue();
+    	getRogersProfileAndSettingsPage().clkBtnAddBusinessNumberSubmit();
 		reporter.reportLogWithScreenshot("Business phone number inflormation submitted.");
-    	reporter.softAssert((rogers_profile_and_settings_page.clkBtnAddBusinessNumberDone()
-    			&& rogers_profile_and_settings_page.verifyBusinessNumber(strBusinessNumer.substring(strBusinessNumer.length()-4))),
+    	reporter.softAssert((getRogersProfileAndSettingsPage().clkBtnAddBusinessNumberDone()
+    			&& getRogersProfileAndSettingsPage().verifyBusinessNumber(strBusinessNumer.substring(strBusinessNumer.length()-4))),
 				"Business phone number was successfully Added", 
 				"Add business phone number failed");
     	
     	//Change contact language, have to change language!!!
     	String newLanguage="";
-    	String existingLanguage = rogers_profile_and_settings_page.getExistingLanguageMobile();
+    	String existingLanguage = getRogersProfileAndSettingsPage().getExistingLanguageMobile();
     	if(existingLanguage.contains("English")
     	||existingLanguage.contains("Anglais"))
     	{
     		newLanguage = existingLanguage.contains("English") ? "French": "Français";
     		
-    		rogers_profile_and_settings_page.clkLnkChangeContactLanguageMobile();
-    		rogers_profile_and_settings_page.clkLanguage(newLanguage);
+    		getRogersProfileAndSettingsPage().clkLnkChangeContactLanguageMobile();
+    		getRogersProfileAndSettingsPage().clkLanguage(newLanguage);
     	}else
     	{
     		newLanguage = existingLanguage.contains("French") ? "English": "Anglais";
-    		rogers_profile_and_settings_page.clkLnkChangeContactLanguageMobile();
-    		rogers_profile_and_settings_page.clkLanguage(newLanguage);
+    		getRogersProfileAndSettingsPage().clkLnkChangeContactLanguageMobile();
+    		getRogersProfileAndSettingsPage().clkLanguage(newLanguage);
     	}    	    	
-    	rogers_profile_and_settings_page.clkBtnChangelanguageSubmit();    	
+    	getRogersProfileAndSettingsPage().clkBtnChangelanguageSubmit();
 		reporter.reportLogWithScreenshot("Change contact language inflormation submitted.");
-    	reporter.softAssert((rogers_profile_and_settings_page.clkBtnChangeLanguageDone()
-    			&& rogers_profile_and_settings_page.verifyLanguageSetSuccessfully(newLanguage)),
+    	reporter.softAssert((getRogersProfileAndSettingsPage().clkBtnChangeLanguageDone()
+    			&& getRogersProfileAndSettingsPage().verifyLanguageSetSuccessfully(newLanguage)),
 				"Change language was done successfully", 
 				"Change language did not happen successfully");
     	

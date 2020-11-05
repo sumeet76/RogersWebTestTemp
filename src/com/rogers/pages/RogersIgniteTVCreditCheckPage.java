@@ -106,8 +106,8 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkChevronYourCart() {
-		reusableActions.waitForElementVisibility(downChevronYourCart, 120);
-		reusableActions.getWhenReady(downChevronYourCart, 120).click();
+		getReusableActionsInstance().waitForElementVisibility(downChevronYourCart, 120);
+		getReusableActionsInstance().getWhenReady(downChevronYourCart, 120).click();
 	}
 
 	/**
@@ -116,8 +116,8 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyGWPYourCartPromotion() {
-		reusableActions.waitForElementVisibility(gwpYourCart, 120);
-		return	reusableActions.isElementVisible(gwpYourCart);
+		getReusableActionsInstance().waitForElementVisibility(gwpYourCart, 120);
+		return	getReusableActionsInstance().isElementVisible(gwpYourCart);
 	}
 	
 	/**
@@ -126,8 +126,8 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyCreditEvalutionPage() {
-		reusableActions.waitForElementVisibility(ddlCreditCheckYear, 90);
-		return	reusableActions.isElementVisible(ddlCreditCheckYear);
+		getReusableActionsInstance().waitForElementVisibility(ddlCreditCheckYear, 90);
+		return	getReusableActionsInstance().isElementVisible(ddlCreditCheckYear);
 	}
 	
 	/**
@@ -135,9 +135,9 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectDOBYear() {
-		reusableActions.waitForElementVisibility(ddlCreditCheckYear,20);
+		getReusableActionsInstance().waitForElementVisibility(ddlCreditCheckYear,20);
 		String strDOBYear = FormFiller.generateDOBYear();
-		reusableActions.selectWhenReadyByVisibleText(ddlCreditCheckYear, strDOBYear);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlCreditCheckYear, strDOBYear);
 	}
 	
 	/**
@@ -146,9 +146,9 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectDOBYearExistingCustomer(String strDOBYear) {
-		//reusableActions.waitForElementInvisibility(popupLoadingFingers);
-		reusableActions.waitForElementVisibility(ddlCreditCheckYear,20);
-		reusableActions.selectWhenReadyByVisibleText(ddlCreditCheckYear, strDOBYear);
+		//getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingers);
+		getReusableActionsInstance().waitForElementVisibility(ddlCreditCheckYear,20);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlCreditCheckYear, strDOBYear);
 	}
 	
 	/**
@@ -157,9 +157,9 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectDOBYearExistingCustomerMigration(String strDOBYear) {
-		//reusableActions.waitForElementInvisibility(popupLoadingFingers);
-		reusableActions.waitForElementVisibility(ddlCreditCheckYearMigration,120);
-		reusableActions.selectWhenReadyByVisibleText(ddlCreditCheckYearMigration, strDOBYear);
+		//getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingers);
+		getReusableActionsInstance().waitForElementVisibility(ddlCreditCheckYearMigration,120);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlCreditCheckYearMigration, strDOBYear);
 	}
 	
 	/**
@@ -168,7 +168,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void selectDOBMonth() {
 		String strDOBMonth = FormFiller.generateNameOfMonth();
-		reusableActions.selectWhenReadyByVisibleText(ddlCreditCheckMonth, strDOBMonth);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlCreditCheckMonth, strDOBMonth);
 	}
 	
 	/**
@@ -177,7 +177,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectDOBMonthExistingCustomer(String strDOBMonth) {
-		reusableActions.selectWhenReadyByVisibleText(ddlCreditCheckMonth, strDOBMonth);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlCreditCheckMonth, strDOBMonth);
 	}
 	
 	/**
@@ -187,7 +187,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void selectDOBMonthExistingCustomerMigration(String strDOBMonth) {
 		String dOBMonth = strDOBMonth+": Object";
-		reusableActions.selectWhenReady(ddlCreditCheckMonthMigration, dOBMonth);
+		getReusableActionsInstance().selectWhenReady(ddlCreditCheckMonthMigration, dOBMonth);
 	}
 	
 	/**
@@ -196,7 +196,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void selectDOBDay() {
 		String strDOBDay = FormFiller.generateCalendarDay();
-		reusableActions.selectWhenReadyByVisibleText(ddlCreditCheckDay, strDOBDay);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlCreditCheckDay, strDOBDay);
 	}
 	
 	/**
@@ -205,7 +205,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectDOBDayExistingCustomer(String strDOBDay) {
-		reusableActions.selectWhenReady(ddlCreditCheckDay, strDOBDay);
+		getReusableActionsInstance().selectWhenReady(ddlCreditCheckDay, strDOBDay);
 	}
 	
 	/**
@@ -214,7 +214,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectDOBDayExistingCustomerMigration(String strDOBDay) {
-		reusableActions.selectWhenReadyByVisibleText(ddlCreditCheckDayMigration, strDOBDay);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlCreditCheckDayMigration, strDOBDay);
 	}
 	
 	/**
@@ -223,7 +223,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectFirstID(String strFirstID) {
-		reusableActions.selectWhenReadyByVisibleText(ddlFirstID, strFirstID);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlFirstID, strFirstID);
 	}
 	
 	/**
@@ -232,7 +232,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectProvince(String strProvince) {
-		reusableActions.selectWhenReadyByVisibleText(ddlProvince, strProvince);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlProvince, strProvince);
 	}
 	
 	/**
@@ -241,7 +241,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void selectExpiryYear() {
 		String strYYYY = FormFiller.generateExpiryYear();
-		reusableActions.selectWhenReadyByVisibleText(ddlExpiryYear,strYYYY);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlExpiryYear,strYYYY);
 	}
 	
 	/**
@@ -249,7 +249,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectExpiryYearwithSpace() {
-		Select listbox = new Select(driver.findElement(By.xpath("//select[@name='dlExpiryYear']")));
+		Select listbox = new Select(getDriver().findElement(By.xpath("//select[@name='dlExpiryYear']")));
 		listbox.selectByIndex(2);
 	}
 	
@@ -260,7 +260,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectExpiryYearYYYY(String strYYYY) {
-		reusableActions.selectWhenReadyByVisibleText(ddlExpiryYear, strYYYY);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlExpiryYear, strYYYY);
 	}
 	
 	/**
@@ -269,7 +269,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void selectExpiryMonth() {
 		String strMM = FormFiller.generateNameOfMonth();
-		reusableActions.selectWhenReadyByVisibleText(ddlExpiryMonth, strMM);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlExpiryMonth, strMM);
 	}
 	
 	/**
@@ -278,7 +278,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void selectExpiryDay() {
 		String strDD = FormFiller.generateCalendarDay();
-		reusableActions.selectWhenReadyByVisibleText(ddlExpiryDay, strDD);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlExpiryDay, strDD);
 	}
 	
 	/**
@@ -288,8 +288,8 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void setDrivingLicenseNumber(String province) {
 		String strLicenseNumber = FormFiller.generateLicenseNumber(province);
-		reusableActions.waitForElementVisibility(txtContainer,20);
-		reusableActions.getWhenReady(txtContainer,10).click();
+		getReusableActionsInstance().waitForElementVisibility(txtContainer,20);
+		getReusableActionsInstance().getWhenReady(txtContainer,10).click();
 		txtLicenseNumber.click();
 		txtLicenseNumber.clear();
 		txtLicenseNumber.sendKeys(strLicenseNumber);
@@ -301,10 +301,10 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void setDrivingLicenseNumberMobile(String province) {
 		String strLicenseNumber = FormFiller.generateLicenseNumber(province);		
-		reusableActions.waitForElementVisibility(txtContainer,20);
-		reusableActions.executeJavaScriptClick(txtContainer);
-		reusableActions.getWhenReady(txtLicenseNumber,5).clear();
-		reusableActions.getWhenReady(txtLicenseNumber, 3).sendKeys(strLicenseNumber);
+		getReusableActionsInstance().waitForElementVisibility(txtContainer,20);
+		getReusableActionsInstance().executeJavaScriptClick(txtContainer);
+		getReusableActionsInstance().getWhenReady(txtLicenseNumber,5).clear();
+		getReusableActionsInstance().getWhenReady(txtLicenseNumber, 3).sendKeys(strLicenseNumber);
 	}
 	
 	/**
@@ -313,8 +313,8 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectSecondIDOption(String strSecondIDOption) {
-		reusableActions.waitForElementVisibility(ddlSecondIdOption, 20);
-		reusableActions.selectWhenReadyByVisibleText(ddlSecondIdOption, strSecondIDOption);
+		getReusableActionsInstance().waitForElementVisibility(ddlSecondIdOption, 20);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlSecondIdOption, strSecondIDOption);
 	}
 	 
 	/**
@@ -323,9 +323,9 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void setPassportNumber() {
 		String strPasportNumber = FormFiller.generatePassportNumber();
-		reusableActions.waitForElementVisibility(txtContainerPasportNumber,30);
-		reusableActions.getWhenReady(txtContainerPasportNumber,10).click();
-		reusableActions.clickWhenReady(txtPasportNumber);
+		getReusableActionsInstance().waitForElementVisibility(txtContainerPasportNumber,30);
+		getReusableActionsInstance().getWhenReady(txtContainerPasportNumber,10).click();
+		getReusableActionsInstance().clickWhenReady(txtPasportNumber);
 		txtPasportNumber.clear();
 		txtPasportNumber.sendKeys(strPasportNumber);
 	}
@@ -336,11 +336,11 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void setPassportNumberMobile() {
 		String strPasportNumber = FormFiller.generatePassportNumber();
-		reusableActions.waitForElementVisibility(txtContainerPasportNumber,30);
-		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(txtContainerPasportNumber,10).click();
-		reusableActions.getWhenReady(txtPasportNumber, 30).clear();
-		reusableActions.getWhenReady(txtPasportNumber, 3).sendKeys(strPasportNumber);
+		getReusableActionsInstance().waitForElementVisibility(txtContainerPasportNumber,30);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().getWhenReady(txtContainerPasportNumber,10).click();
+		getReusableActionsInstance().getWhenReady(txtPasportNumber, 30).clear();
+		getReusableActionsInstance().getWhenReady(txtPasportNumber, 3).sendKeys(strPasportNumber);
 	}
 
 	/**
@@ -349,7 +349,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void selectPassportExpiryYear() {
 		String strYYYY = FormFiller.generateExpiryYear();
-		reusableActions.selectWhenReadyByVisibleText(ddlPassportExpiryYear, strYYYY);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlPassportExpiryYear, strYYYY);
 	}
 	
 	/**
@@ -358,7 +358,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void selectPassportExpiryMonth() {
 		String strMM = FormFiller.generateNameOfMonth();
-		reusableActions.selectWhenReadyByVisibleText(ddlPassportExpiryMonth, strMM);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlPassportExpiryMonth, strMM);
 	}
 	
 	/**
@@ -367,7 +367,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 */
 	public void selectPassportExpiryDay() {
 		String strDD = FormFiller.generateCalendarDay();
-		reusableActions.selectWhenReadyByVisibleText(ddlPassportExpiryDay, strDD);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlPassportExpiryDay, strDD);
 	}
 	
 	/**
@@ -375,7 +375,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkCreditConsent() {
-		reusableActions.getWhenReady(chkConsent, 120).click();
+		getReusableActionsInstance().getWhenReady(chkConsent, 120).click();
 	}
 
 	/**
@@ -383,7 +383,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkCreditConsentMobile() {
-		reusableActions.executeJavaScriptClick(chkConsent);
+		getReusableActionsInstance().executeJavaScriptClick(chkConsent);
 	}
 	
 	/**
@@ -391,7 +391,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkCreditConsentSubmit() {
-		reusableActions.executeJavaScriptClick(btnCreditCheckSubmit);
+		getReusableActionsInstance().executeJavaScriptClick(btnCreditCheckSubmit);
 	}
 	
 	/**
@@ -399,8 +399,8 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkCreditConsentSubmitMobile() {
-		reusableActions.getWhenReady(btnCreditCheckSubmit, 30);
-		reusableActions.executeJavaScriptClick(btnCreditCheckSubmit);
+		getReusableActionsInstance().getWhenReady(btnCreditCheckSubmit, 30);
+		getReusableActionsInstance().executeJavaScriptClick(btnCreditCheckSubmit);
 	}
 
 	/**
@@ -409,8 +409,8 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyCartAbandonmentForm() {
-		reusableActions.waitForElementVisibility(popCartAbandonmentForm, 30);
-		return	reusableActions.isElementVisible(popCartAbandonmentForm);
+		getReusableActionsInstance().waitForElementVisibility(popCartAbandonmentForm, 30);
+		return	getReusableActionsInstance().isElementVisible(popCartAbandonmentForm);
 	}
 	
 	/**
@@ -418,7 +418,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkCartAbandonmentForm() {
-		reusableActions.clickWhenReady(btnCartAbandonmentForm, 90);
+		getReusableActionsInstance().clickWhenReady(btnCartAbandonmentForm, 90);
 	}
 	
 	/**
@@ -427,8 +427,8 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyCartEmailSuccess() {
-		reusableActions.waitForElementVisibility(popCartEmailSuccess, 30);
-		return	reusableActions.isElementVisible(popCartEmailSuccess);
+		getReusableActionsInstance().waitForElementVisibility(popCartEmailSuccess, 30);
+		return	getReusableActionsInstance().isElementVisible(popCartEmailSuccess);
 	}
 	
 	/**
@@ -436,8 +436,8 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkCartEmailSuccess() {
-		reusableActions.waitForElementVisibility(popCartEmailSuccess, 30);
-		reusableActions.clickWhenReady(popCartEmailSuccess, 20);
+		getReusableActionsInstance().waitForElementVisibility(popCartEmailSuccess, 30);
+		getReusableActionsInstance().clickWhenReady(popCartEmailSuccess, 20);
 	}
 
 }
