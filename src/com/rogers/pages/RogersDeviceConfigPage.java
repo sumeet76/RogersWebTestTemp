@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utils.DigiAutoCustomException;
 
 import java.util.List;
 
@@ -358,7 +359,11 @@ public class RogersDeviceConfigPage extends BasePageClass {
      * @author rajesh.varalli1
      */
     public String getDeviceName() {
-        getReusableActionsInstance().waitForElementTobeClickable(deviceName,30);
+        try {
+            getReusableActionsInstance().waitForElementTobeClickable(deviceName,30);
+        } catch (DigiAutoCustomException e) {
+            return null;
+        }
         return deviceName.getText().trim();
     }
 
@@ -369,11 +374,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
      */
     public void navigateBack() {
         getDriver().navigate().back();
-        if(getReusableActionsInstance().isElementVisible(deviceName,3)) {
-            getDriver().navigate().back();
-            getDriver().navigate().back();
-        }
-        getReusableActionsInstance().staticWait(3000);
+        getReusableActionsInstance().staticWait(1000);
     }
 
     public String getSelectedStorage() {

@@ -24,9 +24,11 @@ public class RogersSearch_CBS_1674_Clicking_A_Grand_Parent_Filter_After_Selectin
         }
         return csvRow;
 	}
-	
+
 	@Test(dataProvider = "FilterData")
-	public void validateParentFilterDeselection(String[] csvRow) {
+	public void validateNavigationFromParentToGrandParent(String[] csvRow) {
+
+		getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
 		String strResultWindowText;
 		List<WebElement> lstParentFilters;
 		String strParentFilterName;
@@ -35,8 +37,9 @@ public class RogersSearch_CBS_1674_Clicking_A_Grand_Parent_Filter_After_Selectin
 		strResultWindowText = getRogersSearchPage().getResultWindowText();
 	
 		String[] strFilters = Arrays.copyOfRange(csvRow, 1, csvRow.length);
+
 		for(int i=0; i<strFilters.length; i++) {
-			
+
 			getRogersSearchPage().clkGrandParentFilter(strFilters[i]);
 			reporter.reportLogWithScreenshot(strFilters[i]+" is clicked");
 			lstParentFilters = getRogersSearchPage().getParentFilters(strFilters[i]);
@@ -47,13 +50,10 @@ public class RogersSearch_CBS_1674_Clicking_A_Grand_Parent_Filter_After_Selectin
 				reporter.reportLogWithScreenshot(strParentFilterName +" is selected");
 				reporter.hardAssert(getRogersSearchPage().validateResultsTag(strFilters[i],strParentFilterName),
 						"Results tags verified", "Results tags mismatch");
-		
 				getRogersSearchPage().clkGrandParentFilter(strFilters[i]);
 				reporter.reportLogWithScreenshot(strFilters[i]+" is clicked");
-				reporter.softAssert(getRogersSearchPage().getResultWindowText().equals(strResultWindowText),
-						"Results refreshed back to initial search",
-						"Results Not refreshed back to initial search");
-
+				reporter.hardAssert(strResultWindowText.equals(getRogersSearchPage().getResultWindowText()),
+						"Successfully navigated to GrandParent from Parent filter", "Navigation from Parent to GrandParent filter failed");
 				getRogersSearchPage().clkGrandParentFilter(strFilters[i]);
 			}
 		}

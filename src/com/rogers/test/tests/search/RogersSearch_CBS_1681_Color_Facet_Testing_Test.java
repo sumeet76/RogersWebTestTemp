@@ -39,8 +39,8 @@ public class RogersSearch_CBS_1681_Color_Facet_Testing_Test extends BaseTestClas
 					"All Results belong to color"+strColorFilters.get(i),
 					"All Results do Not belong to color"+strColorFilters.get(i));
 
+			reporter.reportLogWithScreenshot(strColorFilters.get(i) + " - Color Results");
 			getRogersSearchPage().clkColorType(strColorFilters.get(i));
-			reporter.reportLogWithScreenshot(strColorFilters.get(i) + " - Color Deselected");
 		}
 	}
 
@@ -55,8 +55,5 @@ public class RogersSearch_CBS_1681_Color_Facet_Testing_Test extends BaseTestClas
 	public void afterTest() {
 		closeSession();
 	}
-	
-	
+
 }
-
-
