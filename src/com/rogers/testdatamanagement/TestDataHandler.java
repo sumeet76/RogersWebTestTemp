@@ -63,7 +63,7 @@ public class TestDataHandler {
 	public static AccountData tc37_internetAccountUpgrade;
 	public static AccountData tc45_digitalTVAccountUpgradePackage;
 	public static AccountData  tc46_legacyInternetAccount;
-	public static AccountData tcm09_SolarisInternetAccount;
+	public static AccountData tcm04_SolarisInternetAccount;
 	public static AccountData tcm06_IgniteTVAccount;
 	public static AccountData tc39_40_SolarisPortinFlows;
 	public static AccountData tc38_DigitalTVUpgradeToIgnite;
@@ -211,7 +211,7 @@ public class TestDataHandler {
     	solarisMultipleSubscriptions = YamlHandler.getCableAccountData("SolarisMultipleSubscriptions");
     	
     	//Ignite Internet test data
-		tcm09_SolarisInternetAccount = YamlHandler.getCableAccountData("TCM09_SolarisInternetAccount");
+		tcm04_SolarisInternetAccount = YamlHandler.getCableAccountData("TCM04_SolarisInternetAccount");
     	tc16_17_18_19_SolarisInternetAccount = YamlHandler.getCableAccountData("TC16_17_18_19_SolarisInternetAccount");
     	tc37_internetAccountUpgrade   = YamlHandler.getCableAccountData("TC37_InternetAccountUpgrade");
 		tc23_standaloneInternetAccountforUpgrade   = YamlHandler.getCableAccountData("TC23_StandaloneInternetAccountforUpgrade");

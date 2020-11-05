@@ -41,7 +41,7 @@ public class RogersSS_TC_001_Stress_ValidateSignInAndAccountOverviewTest extends
 //        return serviceProcessDataList;
 //    }
 	
-	@Test(invocationCount = 10,groups = {"EasyLogin100"})
+	@Test(invocationCount = 100,groups = {"EasyLogin100"})
     public void validateSignInAndAccountOverview() {
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
