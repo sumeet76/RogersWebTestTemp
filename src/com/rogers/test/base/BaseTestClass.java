@@ -1038,7 +1038,7 @@ public class BaseTestClass {
 
 	@BeforeSuite
 	public void beforeSuite(ITestContext iTestContext)throws FileNotFoundException {
-		TestDataHandler.dataInit(iTestContext.getSuite().getName());
+		TestDataHandler.dataInit(iTestContext.getSuite().getAllMethods());
 	}
 
 }
