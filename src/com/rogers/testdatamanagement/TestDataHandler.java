@@ -184,9 +184,9 @@ public class TestDataHandler {
       	//sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/connectedhome/SauceSettings.yml");
       	//sacueConfig = YamlHandler.getSauceConfig();              	
       	//Digital TV test data
-    	tc43_44_digitalTVAccount = YamlHandler.getCableAccountData("TC43_44_digitalTVAccount");
+    	tc43_44_digitalTVAccount = YamlHandler.getCableAccountData("TC43_44_DigitalTVAccount");
     	tc38_DigitalTVUpgradeToIgnite = YamlHandler.getCableAccountData("TC38_DigitalTVUpgradeToIgnite");
-    	tc45_digitalTVAccountUpgradePackage = YamlHandler.getCableAccountData("TC45_digitalTVAccountUpgradePackage");
+    	tc45_digitalTVAccountUpgradePackage = YamlHandler.getCableAccountData("TC45_DigitalTVAccountUpgradePackage");
     	tc34_NoPortInAbondoneFlows = YamlHandler.getCableAccountData("TC34_NoPortInAbondoneFlows");
     	solarisConsumerNoPortinCartAbandon= YamlHandler.getCableAccountData("SolarisConsumerNoPortinCartAbandon");
 		solarisConsumerPortInCartAbandon=YamlHandler.getCableAccountData("SolarisConsumerPortInCartAbandon");
@@ -206,7 +206,7 @@ public class TestDataHandler {
 
     	//RHP test data
 		tc48_legacyRHP = YamlHandler.getCableAccountData("TC48_LegacyRHP");
-    	tc42_igniteRHP = YamlHandler.getCableAccountData("TC42_igniteRHP");
+    	tc42_igniteRHP = YamlHandler.getCableAccountData("TC42_IgniteRHP");
     	tc27_28_RogersSHM = YamlHandler.getCableAccountData("TC27_28_RogersSHM");
     	solarisMultipleSubscriptions = YamlHandler.getCableAccountData("SolarisMultipleSubscriptions");
     	
