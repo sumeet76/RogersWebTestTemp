@@ -1,13 +1,12 @@
 package com.rogers.pages;
 
 
-import java.util.List;
-
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import com.rogers.pages.base.BasePageClass;
+import java.util.List;
 
 /**
  * 
@@ -80,7 +79,7 @@ public class RogersBillingPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void switchToBillViewIframe() {
-		getReusableActionsInstance().getDriver().switchTo().defaultContent();
+		getDriver().switchTo().defaultContent();
 		getReusableActionsInstance().waitForFrameToBeAvailableAndSwitchToIt(frameBillDetails, 60);
 		
 	}

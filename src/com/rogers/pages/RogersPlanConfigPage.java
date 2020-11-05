@@ -139,7 +139,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     public void selectDeviceCost(String deviceCost) {
         if(deviceCost != null) {
             xpathDcDoTo = createXpathWithInputData(deviceCost);
-            List<WebElement> noOfTiers = getReusableActionsInstance().getDriver().findElements(By.xpath(xpathDcDoTo));
+            List<WebElement> noOfTiers = getDriver().findElements(By.xpath(xpathDcDoTo));
             if(noOfTiers.size() == 1)
                 getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo));
             else
@@ -158,7 +158,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     public void selectDataOption(String dataOption) {
         if(dataOption != null) {
             xpathDcDoTo = createXpathWithInputData(dataOption);
-            List<WebElement> noOfTiers = getReusableActionsInstance().getDriver().findElements(By.xpath(xpathDcDoTo));
+            List<WebElement> noOfTiers = getDriver().findElements(By.xpath(xpathDcDoTo));
             if(noOfTiers.size() == 1)
                 getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo));
             else
@@ -182,7 +182,7 @@ public class RogersPlanConfigPage extends BasePageClass {
         final int dataNonStrikedPriceValue;
         if(dataOption != null) {
             xpathDcDoTo = createXpathWithInputData(dataOption);
-            List<WebElement> noOfTiers = getReusableActionsInstance().getDriver().findElements(By.xpath(xpathDcDoTo));
+            List<WebElement> noOfTiers = getDriver().findElements(By.xpath(xpathDcDoTo));
             if(noOfTiers.size() == 1) {
                 dataStrikedPrice = getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo+"//p[@class='text-line-through text-body-sm mb-0 ng-star-inserted']")).getText();
                 dataNonStrikedPrice = getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo+"//p[@class='text-body-lg text-semi mb-0 ng-star-inserted']")).getText();
@@ -226,7 +226,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     public void selectTalkOptions(String talkOptions) {
         if(talkOptions != null) {
             xpathDcDoTo = createXpathWithInputData(talkOptions);
-            List<WebElement> noOfTiers = getReusableActionsInstance().getDriver().findElements(By.xpath(xpathDcDoTo));
+            List<WebElement> noOfTiers = getDriver().findElements(By.xpath(xpathDcDoTo));
             if(noOfTiers.size() == 1)
                 getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo));
             else
@@ -271,7 +271,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public String verifyToolTipInDataProtection(String dataProtectionOption) {
         String xpathProtectionPlan = createXpathWithInputDataForProtectionPlan(dataProtectionOption);
-        return getReusableActionsInstance().getTitle(getReusableActionsInstance().getDriver().findElement(By.xpath(xpathProtectionPlan))).trim();
+        return getReusableActionsInstance().getTitle(getDriver().findElement(By.xpath(xpathProtectionPlan))).trim();
     }
 
     /**

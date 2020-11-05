@@ -278,7 +278,7 @@ public class RogersOrderSummaryPage extends BasePageClass {
 	String browserName = cap.getBrowserName().toLowerCase();
 	if(browserName.trim().equalsIgnoreCase("chrome"))
 	 {	
-		Actions act= new Actions(getReusableActionsInstance().getDriver());
+		Actions act= new Actions(getDriver());
 	    act.moveToElement(txtCreditCardNumber);
 		act.click(txtCreditCardNumber).sendKeys(txtCreditCardNumber, strAccountNumber).build().perform();
 	}

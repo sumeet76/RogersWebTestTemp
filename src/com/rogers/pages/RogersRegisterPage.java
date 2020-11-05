@@ -69,7 +69,7 @@ public class RogersRegisterPage extends BasePageClass {
 	public void clickWirelessOrResidentialServices() {
 		 Capabilities cap = ((RemoteWebDriver)getDriver()).getCapabilities();
 		if(cap.getBrowserName().toLowerCase().contains("firefox")) {
-		getReusableActionsInstance().getDriver().switchTo().defaultContent();//added for firefox dead object issue handling
+		getDriver().switchTo().defaultContent();//added for firefox dead object issue handling
 		getReusableActionsInstance().waitForElementTobeClickable(btnWirelessResidentialServices, 30);
 		getReusableActionsInstance().executeJavaScriptClick(btnWirelessResidentialServices);
 		}else

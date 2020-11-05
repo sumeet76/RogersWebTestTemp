@@ -236,7 +236,7 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 */
 	public void clkReviewAndContinueButton()
 	{	
-		Actions act=new Actions(getReusableActionsInstance().getDriver());
+		Actions act=new Actions(getDriver());
 		act.moveToElement(getReusableActionsInstance().getWhenReady(btnReviewAndContinue)).click().build().perform();
 
 	}
@@ -247,7 +247,7 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 */
 	public void clkPayNow()
 	{		
-		Actions act=new Actions(getReusableActionsInstance().getDriver());
+		Actions act=new Actions(getDriver());
 		act.moveToElement(getReusableActionsInstance().getWhenReady(btnPayNow)).click().build().perform();
 
 	}
@@ -258,7 +258,7 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 */
 	public void clkPayOnInteracSite()
 	{	
-		Actions act=new Actions(getReusableActionsInstance().getDriver());
+		Actions act=new Actions(getDriver());
 		act.moveToElement(getReusableActionsInstance().getWhenReady(btnPayOntheInteracSite)).click().build().perform();
 
 	}	
@@ -345,7 +345,7 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyBankPageOpenedSuccessfully(String strWindowTitle) {		
-		return getReusableActionsInstance().getDriver().getTitle().contains(strWindowTitle);
+		return getDriver().getTitle().contains(strWindowTitle);
 	}
 
 	/**
