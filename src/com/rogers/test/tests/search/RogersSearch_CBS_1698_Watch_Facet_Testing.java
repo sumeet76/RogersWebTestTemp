@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class RogersSearch_CBS_1698_Watch_Facet_Testing extends BaseTestClass {
-    @DataProvider(name = "FilterData")
+    @DataProvider(name = "FilterData",parallel=true)
     public Object[] testData() throws IOException
     {
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataWatchFilter.csv";

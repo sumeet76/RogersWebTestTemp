@@ -2,20 +2,19 @@ package com.rogers.test.tests.search;
 
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
-import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
+import utils.CSVReader;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
-import utils.CSVReader;
 
 
 public class RogersSearch_CBS_1619_Relevant_Filters_Rendering_Test extends BaseTestClass {
 
-    @DataProvider(name = "FilterData")
+    @DataProvider(name = "FilterData",parallel=true)
     public Object[] testData() throws IOException {
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);

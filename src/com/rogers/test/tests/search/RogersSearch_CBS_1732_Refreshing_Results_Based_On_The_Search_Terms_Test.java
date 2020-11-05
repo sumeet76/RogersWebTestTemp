@@ -19,7 +19,7 @@ import com.rogers.test.helpers.RogersEnums;
 import utils.CSVReader;
 
 public class RogersSearch_CBS_1732_Refreshing_Results_Based_On_The_Search_Terms_Test extends BaseTestClass {
-    @DataProvider(name = "FilterData")
+    @DataProvider(name = "FilterData",parallel=true)
     public Object[] testData() throws IOException
     {
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/SearchBoxText1732.csv";

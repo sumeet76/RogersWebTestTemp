@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class RogersSearch_CBS_1734_Typeahead_Result_Links_Test extends BaseTestClass {
-    @DataProvider(name = "FilterData")
+    @DataProvider(name = "FilterData",parallel=true)
     public Object[] testData() throws IOException
     {
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/SearchBoxText1732.csv";
