@@ -103,7 +103,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author nimmy.george
      */
     public String createXpathWithDeviceName(String deviceName) {
-        xpathDeviceName="//p[@class='text-title-5 '][contains(.,'"+deviceName+"')]";
+        xpathDeviceName="//p[contains(@class,'text-title-5 ')][.='"+deviceName+"']";
         return xpathDeviceName;
     }
 
@@ -176,7 +176,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
     public String createXpathForCTAButton(String deviceName) {
         xpathDeviceName = createXpathWithDeviceName(deviceName);
-        String ctaButtonXpath = xpathDeviceName + "/..//following-sibling::div//span[contains(@class,'ds-button__copy')]";
+        String ctaButtonXpath = xpathDeviceName + "/ancestor::div[@class='dsa-nacTile__top']//following-sibling::div//span[contains(@class,'ds-button__copy')]";
         return ctaButtonXpath;
     }
 
@@ -461,7 +461,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     public String getPricingBlockCataloguePage(String deviceName) throws InterruptedException{
     	Thread.sleep(5000);
         xpathDeviceName=createXpathWithDeviceName(deviceName);
-        String pricingBlockContentXpath = xpathDeviceName + "/parent::div/div";
+        String pricingBlockContentXpath = xpathDeviceName + "/ancestor::div[@class='dsa-nacTile__top']//following-sibling::div//div[@class='ds-price']";
         reusableActions.waitForElementVisibility(driver.findElement(By.xpath(createXpathForCTAButton(deviceName))),40);
         return reusableActions.getWhenReady(By.xpath(pricingBlockContentXpath), 20).getText().replaceAll("\\s+","");
     }

@@ -93,7 +93,7 @@ public class RogersBFA_TC_01_NAC_NonRpotgTest extends BaseTestClass {
         rogers_checkout_page.setContactNumberCreateProfile(contactNumberCreateProfile);
         reporter.reportLogPassWithScreenshot("Create Profile Page details Entered till ContactNumber");
         rogers_checkout_page.setBillingAddressCreateProfile(TestDataHandler.tc01NonRpotg.getBillingAddress());
-        rogers_checkout_page.clkUseBillingAddressRadioBtnCreateProfile();
+        //rogers_checkout_page.clkUseBillingAddressRadioBtnCreateProfile();
         rogers_checkout_page.clkLanguageEnglishRadioBtnCreateProfile();
         reporter.reportLogPassWithScreenshot("Create Profile Page details provided for Address,Shipping Address & Language Selected");
         rogers_checkout_page.switchToRecaptchaIFrame();

@@ -68,6 +68,7 @@ public class RogersShippingPage extends BasePageClass {
      * @author Saurav.Goyal
      */
     public void clkRadioBillingAddress() {
+		reusableActions.staticWait(5000);
         reusableActions.clickWhenReady(rdoBillingAddress , 30);
     }
     
@@ -104,7 +105,7 @@ public class RogersShippingPage extends BasePageClass {
 	 */
 	public void clkSelectAvailableTime() {
 		reusableActions.scrollToElement(lblSelectAvailableTime.get(0));
-		reusableActions.clickWhenReady(lblSelectAvailableTime.get(0) , 120);
+		reusableActions.clickWhenReady(lblSelectAvailableTime.get(0) , 60);
 	}
 
 	/**

@@ -174,7 +174,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void selectFirstAvailablePlan() {
-		reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(btnSelect.get(0), 30));
+		reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(btnSelect.get(3), 30));
 		reusableActions.staticWait(3000);
 	}
 	

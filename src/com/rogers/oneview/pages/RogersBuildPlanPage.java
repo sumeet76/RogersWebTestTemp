@@ -121,7 +121,7 @@ public class RogersBuildPlanPage extends BasePageClass {
 	 */
 	public void clkContinue() {
 		if(handleTodayOfferOverlay()) {
-			reusableActions.clickWhenReady(btnContinue,120);			
+			reusableActions.clickWhenReady(btnContinue,60);
 		}
 
 		if(reusableActions.isElementVisible(By.xpath("//span[@res='_upfront_amount']"),2)) {

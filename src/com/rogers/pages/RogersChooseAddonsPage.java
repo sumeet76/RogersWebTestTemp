@@ -68,7 +68,7 @@ public class RogersChooseAddonsPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkCheckout() {
-		reusableActions.clickWhenReady(btnCheckout);
-		reusableActions.waitForElementVisibility(btnCheckout, 60);
+		reusableActions.clickWhenReady(btnCheckout , 60);
+		//reusableActions.waitForElementVisibility(btnCheckout, 60);
 	}
 }

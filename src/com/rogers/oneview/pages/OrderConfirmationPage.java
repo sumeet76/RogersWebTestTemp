@@ -38,6 +38,7 @@ public class OrderConfirmationPage  extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyOrderConfirmationPageLoad() {
+		reusableActions.staticWait(5000);
 		return reusableActions.isElementVisible(lblOrderConfirmation, 120);
 	}
 	

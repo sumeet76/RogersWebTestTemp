@@ -113,6 +113,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyOrderConfirmationPageLoad() {
+		reusableActions.staticWait(10000);
 		return reusableActions.isElementVisible(lblOrderConfirmation, 60);
 	}
 	
