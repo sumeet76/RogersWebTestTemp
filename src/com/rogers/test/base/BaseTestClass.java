@@ -1036,7 +1036,7 @@ public class BaseTestClass {
 			return webDriverThreadLocal.get();
 	}
 
-	@BeforeSuite
+	@BeforeSuite(alwaysRun = true)
 	public void beforeSuite(ITestContext iTestContext)throws FileNotFoundException {
 		TestDataHandler.dataInit(iTestContext.getSuite().getAllMethods());
 	}
