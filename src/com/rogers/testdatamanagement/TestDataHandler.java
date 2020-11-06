@@ -322,7 +322,7 @@ public class TestDataHandler {
     	tc01NonRpotg=YamlHandler.getRedesignNACData("tc01NonRpotg");
     	tc02Rpotg=YamlHandler.getRedesignNACData("tc02Rpotg");
 		testCase12 = YamlHandler.getHUPdata("tc12HUP");
-		tc03NACBopisTerm = YamlHandler.getRedesignNACData("tc03NACTermBopis");
+		tc03NACBopisTerm = YamlHandler.getRedesignNACData("tc03NACBopisTerm");
 	}
 	
 	private static void buyFlowsOneViewDataInit() {
