@@ -84,7 +84,7 @@ public class RogersBFA_TC08_HUP_Test extends BaseTestClass {
         reporter.reportLogWithScreenshot("Rogers Order Review Page");
         if(rogers_order_review_page.isPaymentRequired()) {
         	rogers_order_review_page.clkContinue();
-        	rogers_payment_page.setCreditCardDetails(TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getNumber(), 
+        	rogers_payment_page.setCreditCardDetails(TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getNumber(),
    				 TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getExpiryMonth(), 
    				 TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getExpiryYear(),
    				 TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getCVV());

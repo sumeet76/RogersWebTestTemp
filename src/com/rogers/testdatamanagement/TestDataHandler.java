@@ -106,6 +106,7 @@ public class TestDataHandler {
 	public static RedesignRpotgData testCase11;
 	public static RedesignRpotgData tc01NonRpotg;
 	public static RedesignRpotgData tc02Rpotg;
+	public static RedesignRpotgData tc03NACBopisTerm;
 	public static HUPData buyFlowsOVtestCase01;
 	public static HUPData buyFlowsOVtestCase02;
 	public static HUPData buyFlowsOVtestCase05;
@@ -321,6 +322,7 @@ public class TestDataHandler {
     	tc01NonRpotg=YamlHandler.getRedesignNACData("tc01NonRpotg");
     	tc02Rpotg=YamlHandler.getRedesignNACData("tc02Rpotg");
 		testCase12 = YamlHandler.getHUPdata("tc12HUP");
+		tc03NACBopisTerm = YamlHandler.getRedesignNACData("tc03NACTermBopis");
 	}
 	
 	private static void buyFlowsOneViewDataInit() {
