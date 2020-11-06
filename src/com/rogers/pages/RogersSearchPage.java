@@ -47,7 +47,7 @@ public class RogersSearchPage extends BasePageClass {
     @FindBy(xpath = "//section[@class='col-12 col-md-6 h-md-100 ds-overflow-y-auto d-none d-md-block']")
     WebElement firstSectionValues;
 
-    @FindBy(xpath = "//div[@ng-reflect-heading='Suggestions']/parent::section/parent::div/section[1]")
+    @FindBy(xpath = "//div[@ng-reflect-heading='Suggestions']/parent::section/parent::div/section[1]/div")
     WebElement leftSectionResults;
 
     @FindBy(xpath = "//div[@ng-reflect-heading='Support']/parent::section")

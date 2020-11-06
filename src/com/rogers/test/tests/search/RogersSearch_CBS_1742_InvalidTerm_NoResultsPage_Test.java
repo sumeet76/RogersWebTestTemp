@@ -44,7 +44,7 @@ public class RogersSearch_CBS_1742_InvalidTerm_NoResultsPage_Test extends BaseTe
         getRogersSearchPage().clkOnMagnifyingLens();
         reporter.reportLogWithScreenshot("Search Results Page");
         reporter.hardAssert(getRogersSearchPage().validateURLContains(csvRow[0]),
-                "Result Landing Page displayed", "Result Landing Page not displayed");
+                "Results URL is right", "Results URL is not right");
         reporter.hardAssert(getRogersSearchPage().isNoResultsDisplayed(),
                 "No Results Found","No Results message not displayed");
         reporter.hardAssert(!getRogersSearchPage().isFilterDisplayed("Support"),
