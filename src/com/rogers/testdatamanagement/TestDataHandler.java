@@ -211,6 +211,7 @@ public class TestDataHandler {
     	solarisMultipleSubscriptions = YamlHandler.getCableAccountData("SolarisMultipleSubscriptions");
     	
     	//Ignite Internet test data
+		tcm06_IgniteTVAccount=YamlHandler.getCableAccountData("TCM06_IgniteTVAccount");
 		tcm04_SolarisInternetAccount = YamlHandler.getCableAccountData("TCM04_SolarisInternetAccount");
     	tc16_17_18_19_SolarisInternetAccount = YamlHandler.getCableAccountData("TC16_17_18_19_SolarisInternetAccount");
     	tc37_internetAccountUpgrade   = YamlHandler.getCableAccountData("TC37_InternetAccountUpgrade");

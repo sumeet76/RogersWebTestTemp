@@ -35,7 +35,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_013_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannelsAndThemePackTest extends BaseTestClass {
 
-	 @Test(groups = {"RegressionCH"})
+	 @Test(groups = {"RegressionCH","TVPlanUpgardeCH"})
     public void checkSolarisChangeTVPackageAdd4KChannelsAndThemePackFlow() { 
         reporter.reportLogWithScreenshot("Launched the Home Page");
         rogers_home_page.clkSignIn();

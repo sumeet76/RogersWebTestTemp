@@ -312,7 +312,16 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		reusableActions.waitForElementInvisibility(By.className("QSIPopOverShadowBox"),90);
 		reusableActions.getWhenReady(lnkChangeFlexChannels, 60).click();
 	}
-	
+
+	/**
+	 * Click the Change FlexChannels link on solaris TV dashboard page
+	 * @author chinnarao.vattam
+	 */
+	public void clkChangeFlexChannelsMobile() {
+		reusableActions.waitForElementInvisibility(By.className("QSIPopOverShadowBox"),90);
+		reusableActions.waitForElementInvisibility(lnkChangeFlexChannels, 60);
+		reusableActions.executeJavaScriptClick(lnkChangeFlexChannels);
+	}
 	/**
 	 * To verify Exchange FlexChanne link
 	 *@return true if the ExchangeFlex Channel link is displayed; else false
