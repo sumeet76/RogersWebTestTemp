@@ -34,52 +34,52 @@ public class RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhe
 	
     @Test(groups = {"RegressionSS","FDMSS"})
     public void validateScrollBarInFDMsectionOfWirelessDashboardWhenCxHasMoreThan5CTN_SE() {
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	//TODO create new data file
     	String strUsername = TestDataHandler.tc7681.getUsername();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc7681.getPassword();    	
-        rogers_login_page.setPasswordIFrame(strPassword);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 		
 		common_business_flows.scrollToMiddleOfWebPage();
 		reporter.reportLogWithScreenshot("Check the number of CTNs");
-		reporter.hardAssert(rogers_account_overview_page.isCTNMoreThanSix(),
+		reporter.hardAssert(getRogersAccountOverviewPage().isCTNMoreThanSix(),
 				"The account has more than 5 CTNS",
 				"The account doesnt have more than 5 CTN's, please add more than 5 and rerun");
 		common_business_flows.scrollToTopOfWebPage();
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc7681.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc7681.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");     
-       rogers_account_overview_page.clkMenuUsageAndService();
+       getRogersAccountOverviewPage().clkMenuUsageAndService();
        //For demo-line data, the sub-menu shows as "Wireless Usage"
-   		rogers_account_overview_page.clkSubMenuWirelessUsage();
+   		getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
 
-       rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();  
+       getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();  
               
-       reporter.hardAssert(rogers_wireless_dashboard_page.isScrollForCTNsPresent(),
+       reporter.hardAssert(getRogersWirelessDashboardPage().isScrollForCTNsPresent(),
     		   "The scroll for CTNS is present",
     		   "The scroll for CTNs not present");
-       rogers_wireless_dashboard_page.clkLeftCTNScrollArrow();
-       rogers_wireless_dashboard_page.clkLeftCTNScrollArrow();
+       getRogersWirelessDashboardPage().clkLeftCTNScrollArrow();
+       getRogersWirelessDashboardPage().clkLeftCTNScrollArrow();
        reporter.reportLogWithScreenshot("Click on left scroll performed"); 
-       rogers_wireless_dashboard_page.clkTheNthCTNOnDashboardPage(1);
+       getRogersWirelessDashboardPage().clkTheNthCTNOnDashboardPage(1);
        reporter.reportLogWithScreenshot("Click 1st CTN");
-       reporter.hardAssert(rogers_wireless_dashboard_page.isSixthCTNBadgeInVisibleBeforeScrollingOnDashBoard(),
+       reporter.hardAssert(getRogersWirelessDashboardPage().isSixthCTNBadgeInVisibleBeforeScrollingOnDashBoard(),
     		   "6th CTN badge is not visible before scroll",
     		   "6th CTN is visible before scroll");
-       rogers_wireless_dashboard_page.clkNextCTNScrollArrow();
-       reporter.hardAssert(rogers_wireless_dashboard_page.isSixthCTNVisible(),
+       getRogersWirelessDashboardPage().clkNextCTNScrollArrow();
+       reporter.hardAssert(getRogersWirelessDashboardPage().isSixthCTNVisible(),
     		   "6th CTN badge is visible After click on  scroll",
     		   "6th CTN is not visible after click on scrol scroll");
-       rogers_wireless_dashboard_page.clkTheSixthCTN();
+       getRogersWirelessDashboardPage().clkTheSixthCTN();
        reporter.reportLogWithScreenshot("Clicked 6th CTN and wireless dashboard loaded for 6th"); 
     }
     

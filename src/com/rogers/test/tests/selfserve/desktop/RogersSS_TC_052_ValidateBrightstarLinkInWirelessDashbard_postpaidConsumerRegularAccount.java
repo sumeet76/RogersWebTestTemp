@@ -29,42 +29,42 @@ public class RogersSS_TC_052_ValidateBrightstarLinkInWirelessDashbard_postpaidCo
 	
     @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateBrightstarLink() {
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc495271.getUsername();
     	String strPassword = TestDataHandler.tc495271.getPassword();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
-        rogers_login_page.setPasswordIFrame(strPassword);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 		
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc495271.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc495271.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");
         
-        rogers_account_overview_page.clkMenuUsageAndService();
+        getRogersAccountOverviewPage().clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
         String strAccountNum = TestDataHandler.tc495271.getAccountDetails().getCtn();
         String strLast4Dig = strAccountNum.substring(strAccountNum.length()-4);
-        if (rogers_account_overview_page.isAccountShowInDropDown(strLast4Dig)) {
-            rogers_account_overview_page.clkDropDownAccount(strLast4Dig);
+        if (getRogersAccountOverviewPage().isAccountShowInDropDown(strLast4Dig)) {
+            getRogersAccountOverviewPage().clkDropDownAccount(strLast4Dig);
         } else {
-        	rogers_account_overview_page.clkSubMenuWirelessUsage();
+        	getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
         }
-        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
-        //rogers_wireless_dashboard_page.scrollToBottomOfPage();
+        getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
+        //getRogersWirelessDashboardPage().scrollToBottomOfPage();
         reporter.reportLogWithScreenshot("Bottom of Wireless dashboard page.");
-        rogers_wireless_dashboard_page.clkLnkTrackPhoneRepairClaim();
+        getRogersWirelessDashboardPage().clkLnkTrackPhoneRepairClaim();
         reporter.reportLogWithScreenshot("Link start or track a phone repair claim is clicked.");
-        rogers_wireless_dashboard_page.clkBtnHelpYourPhoneContinue();
+        getRogersWirelessDashboardPage().clkBtnHelpYourPhoneContinue();
         reporter.reportLogWithScreenshot("Button continue in help out on your phone is clicked.");
         String strUrlExpected = TestDataHandler.ssConfig.getPhoneRepairUrl();
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyBrightstarLinkOpenSuccessfully(strUrlExpected), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyBrightstarLinkOpenSuccessfully(strUrlExpected),
 				"Brightstar link opened successfully.", 
 				"Brightstar link didn't redirect to expected url.");
         reporter.reportLogWithScreenshot("Brightstar link opened page.");

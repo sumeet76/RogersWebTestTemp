@@ -87,10 +87,10 @@ public class RogersManageDataPage extends BasePageClass {
 	 */
 	public boolean validateViewDetailsLink() {
 		boolean isDisplayed=false;
-		reusableActions.waitForElementTobeClickable(lnkViewDetails, 30);
-		reusableActions.getWhenReady(lnkViewDetails, 50).click();
-		if(reusableActions.isElementVisible(headerYourDataDetails,30)
-			&& reusableActions.isElementVisible(lnkAddmanageAuthorizeUsers, 30)	)
+		getReusableActionsInstance().waitForElementTobeClickable(lnkViewDetails, 30);
+		getReusableActionsInstance().getWhenReady(lnkViewDetails, 50).click();
+		if(getReusableActionsInstance().isElementVisible(headerYourDataDetails,30)
+			&& getReusableActionsInstance().isElementVisible(lnkAddmanageAuthorizeUsers, 30)	)
 		{				
 			isDisplayed=true;			
 		}		
@@ -142,7 +142,7 @@ public class RogersManageDataPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyTotalDataInDataDetails() {		
-		return reusableActions.isElementVisible(lblTotalDataInDataDetail, 30);
+		return getReusableActionsInstance().isElementVisible(lblTotalDataInDataDetail, 30);
 	}
 	
 
@@ -151,7 +151,7 @@ public class RogersManageDataPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkBackOnManageDataUsagePage() {
-		reusableActions.clickWhenReady(btnBackFromManageUsers, 60);		
+		getReusableActionsInstance().clickWhenReady(btnBackFromManageUsers, 60);
 	}
 	
 	/**
@@ -162,11 +162,11 @@ public class RogersManageDataPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyTotalDataInDataDetailsWithMaxSpeedAndTotalOfSpeedPasses(int countOfExistSpeedPassTotalGB, int totalSharedDataDisplayedInPlanDataSection) {
-		String strtotalShared = reusableActions.getWhenReady(lblTotalDataMessageInViewDetails).getText().split("GB|Go")[0].replace(",", ".");		
-		if (!reusableActions.isElementVisible(lblSpeedPassInTotalData, 10)) {
+		String strtotalShared = getReusableActionsInstance().getWhenReady(lblTotalDataMessageInViewDetails).getText().split("GB|Go")[0].replace(",", ".");
+		if (!getReusableActionsInstance().isElementVisible(lblSpeedPassInTotalData, 10)) {
 			return false;
 		} else {
-			String strSpeedPassTotal = reusableActions.getWhenReady(lblSpeedPassInTotalData).getText();
+			String strSpeedPassTotal = getReusableActionsInstance().getWhenReady(lblSpeedPassInTotalData).getText();
 			String strTotalSpeedPass= strSpeedPassTotal.replaceAll("[^0-9]", "");
 			return (((int)Double.parseDouble(strtotalShared) == totalSharedDataDisplayedInPlanDataSection)
 					&& (Integer.parseInt(strTotalSpeedPass) == countOfExistSpeedPassTotalGB));
@@ -180,8 +180,8 @@ public class RogersManageDataPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyPlanDataIsDisplayed() {
-		return (reusableActions.isElementVisible(headerPlanDataOnDataDetailsPage)
-				&& reusableActions.isElementVisible(headerUnlimitedDataInYourPlanOnDataDetailsPage));
+		return (getReusableActionsInstance().isElementVisible(headerPlanDataOnDataDetailsPage)
+				&& getReusableActionsInstance().isElementVisible(headerUnlimitedDataInYourPlanOnDataDetailsPage));
 	} 
 
 	/**
@@ -190,7 +190,7 @@ public class RogersManageDataPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public int getTotalPlanData() {	
-		String str = reusableActions.getWhenReady(lblShareableMaxSpeedData).getText().split("GB|Go")[0].replace(",", ".");
+		String str = getReusableActionsInstance().getWhenReady(lblShareableMaxSpeedData).getText().split("GB|Go")[0].replace(",", ".");
 		String numberOnly= str.replaceAll("[^0-9]", "");
 		return Integer.parseInt(numberOnly);
 	}
@@ -250,7 +250,7 @@ public class RogersManageDataPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkYesRemoveTopUpButton() {
-		reusableActions.clickIfAvailable(btnYesCancel);		
+		getReusableActionsInstance().clickIfAvailable(btnYesCancel);
 	}
 
 	/**
@@ -270,7 +270,7 @@ public class RogersManageDataPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkCloseButtonOnCancelSuccessOverlay() {
-		reusableActions.getWhenReady(btnCloseAddOnCancelled).click();
+		getReusableActionsInstance().getWhenReady(btnCloseAddOnCancelled).click();
 	}
 
 	/**
@@ -279,7 +279,7 @@ public class RogersManageDataPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isCancelSuccessdisplayed() {		
-		return reusableActions.isElementVisible(titleAddOnCancelled,30);
+		return getReusableActionsInstance().isElementVisible(titleAddOnCancelled,30);
 	}
 
 

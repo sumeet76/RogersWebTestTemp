@@ -37,44 +37,44 @@ public class Mobile_RogersCH_TC_005_IginteTV_TVPackageUpgradeTest extends BaseTe
     @Test(groups = {"MobileRegressionCH"})
     public void checkSolarisTVPackageUpgradeMobile() {
         reporter.reportLogWithScreenshot("Home Page");
-    	rogers_home_page.clkSignInMobile();    	
-        rogers_login_page.switchToSignInIFrame();
+    	getRogersHomePage().clkSignInMobile();
+        getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        rogers_login_page.setUsernameIFrame(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
-        rogers_login_page.clkSignInIFrame();
-    	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        getRogersLoginPage().clkSignInIFrame();
+    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
-        rogers_login_page.clkSkipIFrame();
-        rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.accountDetails.getBan());
-    	reporter.hardAssert(rogers_account_overview_page.verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
+        getRogersLoginPage().clkSkipIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.accountDetails.getBan());
+    	reporter.hardAssert(getRogersAccountOverviewPage().verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         
-        rogers_solaris_tv_dashboard_page.clkTVBadgeMobile();
+        getRogersSolarisTVDashboardPage().clkTVBadgeMobile();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
-        rogers_solaris_tv_dashboard_page.clkChangeTVPackageMobile();
+        getRogersSolarisTVDashboardPage().clkChangeTVPackageMobile();
         reporter.reportLogWithScreenshot("Launched the TV packages page");
-        rogers_solaris_tv_dashboard_page.selectSolarisTVPackage(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.tc09_SolarisTVAccountForUpgrade.accountDetails.getUpgradePlanFr());
-        rogers_solaris_tv_dashboard_page.clkPopupChangeTVPackageMobile();
+        getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.tc09_SolarisTVAccountForUpgrade.accountDetails.getUpgradePlanFr());
+        getRogersSolarisTVDashboardPage().clkPopupChangeTVPackageMobile();
         reporter.reportLogWithScreenshot("Launched the personalize channel page");
-        rogers_solaris_tv_channels_and_themepacks_page.clkExchangeLaterMobile();
+        getRogersSolarisTVChannelsAndThemepacksPage().clkExchangeLaterMobile();
         reporter.reportLogWithScreenshot("Launched the channels and themepacks page");
-        rogers_solaris_tv_channels_and_themepacks_page.clkContinueFromThemepacksMobile();
+        getRogersSolarisTVChannelsAndThemepacksPage().clkContinueFromThemepacksMobile();
         reporter.reportLogWithScreenshot("Launched the 4K enquiry popup");
-        rogers_solaris_tv_channels_and_themepacks_page.clkYesIHave4KMobile();
+        getRogersSolarisTVChannelsAndThemepacksPage().clkYesIHave4KMobile();
         reporter.reportLogWithScreenshot("Launched the 4K Content popup");
-        rogers_solaris_tv_channels_and_themepacks_page.clk4KContent();
-    	reporter.hardAssert(rogers_order_review_page.verifyAgreementPageTVMobile(),"Agreement page has Launched","Agreement page has not Launched");
+        getRogersSolarisTVChannelsAndThemepacksPage().clk4KContent();
+    	reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPageTVMobile(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");
 		
-		reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");;
-        rogers_order_review_page.clkAcceptenceCheckboxUpdateTVMobile();
+		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");;
+        getRogersOrderReviewPage().clkAcceptenceCheckboxUpdateTVMobile();
         reporter.reportLogWithScreenshot("Agreement details");
-        rogers_order_review_page.clkSubmitUpdateMobile();
+        getRogersOrderReviewPage().clkSubmitUpdateMobile();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
+        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmation(),"Update order completed","Update order Failed");
         reporter.reportLogWithScreenshot("Verified the Confirmation page");
     	}
 

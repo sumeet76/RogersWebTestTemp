@@ -29,63 +29,63 @@ public class RogersSS_TC_055_ValidateUsageDetail_postpaid_NSEwLimitedTalkTextOnl
 	
     @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateLimitedTalkTextUsageDisplayWithinLimit() {
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc55.getUsername();
     	String strPassword = TestDataHandler.tc55.getPassword();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
-        rogers_login_page.setPasswordIFrame(strPassword);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 		
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc55.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc55.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");
         
-        rogers_account_overview_page.clkMenuUsageAndService();
+        getRogersAccountOverviewPage().clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
         String strAccountNum = TestDataHandler.tc55.getAccountDetails().getCtn();
-        rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
-        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
+        getRogersAccountOverviewPage().clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
+        getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
         
         reporter.reportLogWithScreenshot("Wireless dashboard page.");
         
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyTalkTextOnlyUsageModuleIsDisplayed(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyTalkTextOnlyUsageModuleIsDisplayed(),
         					"Talk & Text usage module is displayed.", 
         					"Talk & Text usage module is not displayed.");
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyTalkMinutesRemainingIsDisplayed(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyTalkMinutesRemainingIsDisplayed(),
 							"Talk usage minutes remaining is displayed.", 
 							"Talk usage minutes remaining is not displayed.");
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyTalkUsageAnytimeIsDisplayed(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyTalkUsageAnytimeIsDisplayed(),
 							"Talk usage anytime is displayed.", 
 							"Talk usage anytime is not displayed.");
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLimitedTalkUsageDetailsAccuracy(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyLimitedTalkUsageDetailsAccuracy(),
 							"Talk usage details are accurate.", 
 							"Talk usage details are not accurate, please investigate.");
         
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLimitedTextsRemainingIsDisplayed(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyLimitedTextsRemainingIsDisplayed(),
 							"Text usage texts remaining is displayed.", 
 							"Text usage texts remaining is not displayed.");
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLimitedTextsMsgSentIsDisplayed(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyLimitedTextsMsgSentIsDisplayed(),
 							"Text usage texts sent is displayed.", 
 							"Text usage texts sent is not displayed.");
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLimitedTextsMsgReceivedIsDisplayed(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyLimitedTextsMsgReceivedIsDisplayed(),
 							"Text usage texts received is displayed.", 
 							"Text usage texts received is not displayed.");
         
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLimitedTextUsageDetailsAccuracy(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyLimitedTextUsageDetailsAccuracy(),
 							"Text usage details are accurate.", 
 							"Text usage details are not accurate, please investigate.");
         
-        rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
+        getRogersWirelessDashboardPage().scrollToMidOfDasboardPage();
         reporter.reportLogWithScreenshot("Middle of Wireless dashboard page.");
         
-        rogers_wireless_dashboard_page.scrollToBottomOfPage();;
+        getRogersWirelessDashboardPage().scrollToBottomOfPage();;
         reporter.reportLogWithScreenshot("Bottom of Wireless dashboard page.");
     }
 

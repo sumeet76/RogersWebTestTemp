@@ -31,32 +31,32 @@ public class RogersSS_TC_97_AO_ValidateAddALineEntryPointOnAccountOverview_SE ex
     public void validateSignInAndAccountOverview() {
     	 reporter.reportLogWithScreenshot("Home Page");
          reporter.reportLog("Home Page Launched");
-     	 rogers_home_page.clkSignIn();
- 		 rogers_login_page.switchToSignInIFrame();
-         rogers_login_page.setUsernameIFrame(TestDataHandler.tc60.getUsername());
-         rogers_login_page.setPasswordIFrame(TestDataHandler.tc60.getPassword());
+     	 getRogersHomePage().clkSignIn();
+ 		 getRogersLoginPage().switchToSignInIFrame();
+         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc60.getUsername());
+         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc60.getPassword());
          reporter.reportLogWithScreenshot("Login Credential is entered.");
-         rogers_login_page.clkSignInIFrame();
-         reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
-         rogers_login_page.clkSkipIFrame();
- 		rogers_login_page.switchOutOfSignInIFrame();
+         getRogersLoginPage().clkSignInIFrame();
+         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
+         getRogersLoginPage().clkSkipIFrame();
+ 		getRogersLoginPage().switchOutOfSignInIFrame();
 
-         if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
          	reporter.reportLogWithScreenshot("Select an account.");
-         	rogers_account_overview_page.selectAccount(TestDataHandler.tc60.getAccountDetails().getBan());       
+         	getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc60.getAccountDetails().getBan());       
          }
          reporter.reportLogWithScreenshot("Account overview page.");
-         reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Passed", "Login Failed");
+         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Passed", "Login Failed");
          common_business_flows.scrollToMiddleOfWebPage();
          reporter.reportLogWithScreenshot("CTNs View");
          
-         reporter.hardAssert(rogers_account_overview_page.isAddALinkDisplayedBelowCTNs(),
+         reporter.hardAssert(getRogersAccountOverviewPage().isAddALinkDisplayedBelowCTNs(),
          		"Add link is displayed below CTN's",
          		"Add link is not displayed below CTN's");
          reporter.reportLogWithScreenshot("Add link is displayed");
-         rogers_account_overview_page.clkAddALink();
+         getRogersAccountOverviewPage().clkAddALink();
          reporter.reportLogWithScreenshot("Click on Add link");
-         reporter.hardAssert(rogers_account_overview_page.verifyIfAddALinkOverlayOnDeviceSelectionPageIsdisplayed(),
+         reporter.hardAssert(getRogersAccountOverviewPage().verifyIfAddALinkOverlayOnDeviceSelectionPageIsdisplayed(),
          		"Pop up should get displayed asking 'What plan do you want to add this device to?' and device selection page in the background",
          		"Pop up 'What Plan do you want to add on Device page'  didnt get displayed");
          reporter.reportLogWithScreenshot("'What plan do you want to add this device to?' and device selection page in the background");

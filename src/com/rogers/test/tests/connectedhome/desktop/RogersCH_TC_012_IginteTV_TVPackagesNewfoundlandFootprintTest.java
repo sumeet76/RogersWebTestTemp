@@ -37,42 +37,42 @@ public class RogersCH_TC_012_IginteTV_TVPackagesNewfoundlandFootprintTest extend
 	 @Test(groups = {"RegressionCH","TVPlanUpgardeCH"})
 	    public void checkSolarisTVPackageUpgrade() {
 	        reporter.reportLogWithScreenshot("Launched the Home Page");
-	        rogers_home_page.clkSignIn();
-	        rogers_login_page.switchToSignInIFrame();
+	        getRogersHomePage().clkSignIn();
+	        getRogersLoginPage().switchToSignInIFrame();
 	        reporter.reportLogWithScreenshot("Launched the SignIn popup");
-	        rogers_login_page.setUsernameIFrame(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.getUsername());
-	        rogers_login_page.setPasswordIFrame(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.getPassword());
+	        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.getUsername());
+	        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.getPassword());
 	        reporter.reportLogWithScreenshot("Enter the account credentails");
-	        rogers_login_page.clkSignInIFrame();
-	    	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+	        getRogersLoginPage().clkSignInIFrame();
+	    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	        reporter.reportLogWithScreenshot("Skip popup");
-	        rogers_login_page.clkSkipIFrame();
-	        rogers_login_page.switchOutOfSignInIFrame();
-	        rogers_account_overview_page.selectAccount(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.accountDetails.getBan());
-	    	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+	        getRogersLoginPage().clkSkipIFrame();
+	        getRogersLoginPage().switchOutOfSignInIFrame();
+	        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.accountDetails.getBan());
+	    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
             reporter.reportLogWithScreenshot("Launched the Account Page");                
-	        rogers_solaris_tv_dashboard_page.clkTVBadge();
+	        getRogersSolarisTVDashboardPage().clkTVBadge();
 	        reporter.reportLogWithScreenshot("Launched the TV dash board");
-	        rogers_solaris_tv_dashboard_page.clkChangeTVPackage();
+	        getRogersSolarisTVDashboardPage().clkChangeTVPackage();
 	        reporter.reportLogWithScreenshot("Launched the TV packages page");
-	        reporter.softAssert(rogers_solaris_tv_dashboard_page.verifyIgniteTVStarterPackage(),"Ignite TV Starter Package is available for the Ontario footprint","Ignite TV Starter Package is not available for the Ontario footprint");
-	        rogers_solaris_tv_dashboard_page.selectSolarisTVPackage(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.accountDetails.getUpgradePlanEn(),TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.accountDetails.getUpgradePlanFr());
-	        rogers_solaris_tv_dashboard_page.clkPopupChangeTVPackage();
+	        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyIgniteTVStarterPackage(),"Ignite TV Starter Package is available for the Ontario footprint","Ignite TV Starter Package is not available for the Ontario footprint");
+	        getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.accountDetails.getUpgradePlanEn(),TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.accountDetails.getUpgradePlanFr());
+	        getRogersSolarisTVDashboardPage().clkPopupChangeTVPackage();
 	        reporter.reportLogWithScreenshot("Launched the personalize channel page");
-	        rogers_solaris_tv_channels_and_themepacks_page.clkExchangeLater(); 
+	        getRogersSolarisTVChannelsAndThemepacksPage().clkExchangeLater();
 	        reporter.reportLogWithScreenshot("Launched the channels and themepacks page");
-	        rogers_solaris_tv_channels_and_themepacks_page.clkContinueFromThemepacks();
+	        getRogersSolarisTVChannelsAndThemepacksPage().clkContinueFromThemepacks();
 	        reporter.reportLogWithScreenshot("Launched the 4K enquiry popup");
-	        rogers_solaris_tv_channels_and_themepacks_page.clkYesIHave4K();  
+	        getRogersSolarisTVChannelsAndThemepacksPage().clkYesIHave4K();
 	        reporter.reportLogWithScreenshot("Launched the 4K Content popup");
-	        rogers_solaris_tv_channels_and_themepacks_page.clk4KContent();
+	        getRogersSolarisTVChannelsAndThemepacksPage().clk4KContent();
 			
-			reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
-	        rogers_order_review_page.clkAcceptenceCheckboxUpdate();
+			reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
+	        getRogersOrderReviewPage().clkAcceptenceCheckboxUpdate();
 	        reporter.reportLogWithScreenshot("Agreement details");
-	        rogers_order_review_page.clkSubmitUpdate();
+	        getRogersOrderReviewPage().clkSubmitUpdate();
 	        reporter.reportLogWithScreenshot("Launched the Confirmation page");
-	        reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
+	        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmation(),"Update order completed","Update order Failed");
 	        reporter.reportLogWithScreenshot("Verified the Confirmation page");
         	}
 

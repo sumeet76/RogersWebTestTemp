@@ -34,81 +34,81 @@ public class RogersSS_TC_056_ValidateDataUsageDesplayWithinLimit_postpaid_NSEDat
 	
     @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateDataUsageDisplayForDataOnlyPlan() {
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc56.getUsername();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc56.getPassword();    	
-        rogers_login_page.setPasswordIFrame(strPassword);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.reportLogWithScreenshot("Account overview page.");       
-        rogers_account_overview_page.clkMenuUsageAndService();
+        getRogersAccountOverviewPage().clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
         String strAccountNum = TestDataHandler.tc56.getAccountDetails().getCtn();
-        rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
-        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
+        getRogersAccountOverviewPage().clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
+        getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
                        
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyDataDelayMessage(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyDataDelayMessage(),
         					"Data delayed by 12 hours message is displayed", 
         					"Data delayed by 12 hours message is NOT displayed");
         reporter.reportLogWithScreenshot("Wireless dashboard page."); 
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyDataRemainingOutOfTotalDataBucket(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyDataRemainingOutOfTotalDataBucket(),
 							"Data remaining out of Total data bucket info should be displayed", 
 							"Data remaining out of Total data bucket info is not displayed.");
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyTotalDataBucket(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyTotalDataBucket(),
 							"Total data bucket includes plan, paid OTTs, paid MDTs, promotional (zero-rated) bonus OTT and MDTs info should be displayed", 
 							"Total data bucket includes plan, paid OTTs, paid MDTs, promotional (zero-rated) bonus OTT and MDTs info NOT displayed");
-        reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(), 
+        reporter.hardAssert(getRogersManageDataPage().validateViewDetailsLink(),
 							"'Manage Data' page is displayed after click on view details link", 
 							"'Manage Data' page is NOT displayed after click on view details link");  
         reporter.reportLogWithScreenshot("Manage data page view after we click on view details");  
-        rogers_manage_data_page.clkBackOnManageDataUsagePage();
+        getRogersManageDataPage().clkBackOnManageDataUsagePage();
         reporter.reportLogWithScreenshot("Navigated back to dashboard from manage data view");  
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyDaysRemainingInTheBillCycleIsDisplayed(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyDaysRemainingInTheBillCycleIsDisplayed(),
 							"Days left remaining in the bill cycle is displayed", 
 							"Days left remaining in the bill cycle is NOT displayed"); 
         common_business_flows.addDataFlow();
-        if(rogers_add_data_page.verifyAddDataSuccessMsgIsDisplayed())
+        if(getRogersAddDataPage().verifyAddDataSuccessMsgIsDisplayed())
         {
-        	rogers_add_data_page.clkCloseOnAddDataOverlay();
+        	getRogersAddDataPage().clkCloseOnAddDataOverlay();
         	//Sign out and re sign in to verify if added data reflected.
 	        reporter.reportLogWithScreenshot("Wireless dashboard page.");  
 	        common_business_flows.logOutAndReSignIn(strUsername, strPassword);       
-	        rogers_account_overview_page.clkMenuUsageAndService();
+	        getRogersAccountOverviewPage().clkMenuUsageAndService();
 	        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");        
-	        rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
+	        getRogersAccountOverviewPage().clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
 	        reporter.reportLogWithScreenshot("Wireless dashboard page.");
 	        
-        } else if (rogers_add_data_page.verifyErrorMsgIsDisplayed()) {
+        } else if (getRogersAddDataPage().verifyErrorMsgIsDisplayed()) {
         	reporter.reportLogWithScreenshot("Add data purchase got error, please check if limit is reached.");
-        	rogers_add_data_page.clkCloseOnAddDataOverlay();
+        	getRogersAddDataPage().clkCloseOnAddDataOverlay();
         }
         reporter.reportLogWithScreenshot("Navigated back to dashboard after resign in");  
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded(),
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyAllMBAmountsConvertedToGBForTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded(),
         		"All amounts are coverted to GB For Total Data Displayed Below Label Total Data Plus Plan Added",
         		"it seems amount is not convertd to GB For Total Data Displayed Below Label Total Data Plus Plan Added, please investigate");
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForLabelDataRemaining(),
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyAllMBAmountsConvertedToGBForLabelDataRemaining(),
         		"All amounts are coverted to GB For Label Data Remaining",
         		"it seems amount is not convertd to GB For Label Data Remaining, please investigate");
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBForlabelTotalDataDisplayedBelowBarRightSide(),
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyAllMBAmountsConvertedToGBForlabelTotalDataDisplayedBelowBarRightSide(),
         		"All amounts are coverted to GB label Total Data Displayed Below Bar RightSide",
         		"it seems amount is not convertd to GB label Total Data Displayed Below Bar RightSide, please investigate");
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesForTotalDataPlusAddedPlan(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesForTotalDataPlusAddedPlan(),
 							"All MB amounts converted in GB up to 2 decimal points For Total Data Plus Added Plan", 
 							"MB amounts converted in GB up to 2 decimal points NOT validated For Total Data Plus Added Plan, please investigate");  
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesOnLabelDataRemaining(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesOnLabelDataRemaining(),
 				"All MB amounts converted in GB up to 2 decimal points On Label Data Remaining", 
 				"MB amounts converted in GB up to 2 decimal points NOT validated On Label Data Remaining, please investigate"); 
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesOnTotalDataBelowUsageBarRightSide(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesOnTotalDataBelowUsageBarRightSide(),
 				"All MB amounts converted in GB up to 2 decimal points Total Data Below UsageBar RightSide", 
 				"MB amounts converted in GB up to 2 decimal points NOT validated Total Data Below UsageBar RightSide, please investigate"); 
-        rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
+        getRogersWirelessDashboardPage().scrollToMidOfDasboardPage();
         reporter.reportLogWithScreenshot("Middle of Wireless dashboard page.");        
-        rogers_wireless_dashboard_page.scrollToBottomOfPage();
+        getRogersWirelessDashboardPage().scrollToBottomOfPage();
         reporter.reportLogWithScreenshot("Bottom of Wireless dashboard page.");
     }
     

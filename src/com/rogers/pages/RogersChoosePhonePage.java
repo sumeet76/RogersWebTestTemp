@@ -86,7 +86,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyRogersChoosePhonePage() {
-		return reusableActions.isElementVisible(txtSearch, 60);
+		return getReusableActionsInstance().isElementVisible(txtSearch, 60);
 	}
 	
 	/**
@@ -94,7 +94,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void selectFirstAvailableDevice() {
-		reusableActions.clickWhenVisible(btnDetails);
+		getReusableActionsInstance().clickWhenVisible(btnDetails);
 	}
 	
 	/**
@@ -102,7 +102,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void addFirstAvailableDevice() {
-		reusableActions.executeJavaScriptClick(btnAdd);
+		getReusableActionsInstance().executeJavaScriptClick(btnAdd);
 	}
 	
 	/**
@@ -110,7 +110,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkNewCustomer() {
-		reusableActions.clickWhenVisible(btnNewCustomer);
+		getReusableActionsInstance().clickWhenVisible(btnNewCustomer);
 	}
 	
 	/**
@@ -118,7 +118,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkUpgrade() {
-		reusableActions.clickWhenVisible(btnUpgrade);
+		getReusableActionsInstance().clickWhenVisible(btnUpgrade);
 	}
 	
 	/**
@@ -126,7 +126,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkAddALine() {
-		reusableActions.clickWhenVisible(btnAddALine);
+		getReusableActionsInstance().clickWhenVisible(btnAddALine);
 	}
 	
 	/**
@@ -135,8 +135,8 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void searchDevice(String strDeviceName) {
-		reusableActions.getWhenReady(txtSearch, 60).sendKeys(strDeviceName);
-		reusableActions.executeJavaScriptClick(imgSearch);
+		getReusableActionsInstance().getWhenReady(txtSearch, 60).sendKeys(strDeviceName);
+		getReusableActionsInstance().executeJavaScriptClick(imgSearch);
 	}
 	
 	/**
@@ -144,7 +144,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void selectFirstZeroUpfrontDeviceAvailable() {
-		reusableActions.executeJavaScriptClick(btnZeroUpfrontDeviceDetails.get(0));
+		getReusableActionsInstance().executeJavaScriptClick(btnZeroUpfrontDeviceDetails.get(0));
 	}
 	
 	/**
@@ -152,7 +152,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void addFirstZeroUpfrontDeviceAvailable() {
-		reusableActions.executeJavaScriptClick(btnZeroUpfrontDeviceAdd.get(0));
+		getReusableActionsInstance().executeJavaScriptClick(btnZeroUpfrontDeviceAdd.get(0));
 	}
 	
 	/**
@@ -161,10 +161,10 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void selectLineForUpgrade(String strCTN) {
-		if(reusableActions.isElementVisible(lblChooseALine, 20)) {
+		if(getReusableActionsInstance().isElementVisible(lblChooseALine, 20)) {
 			strCTN = strCTN.replace("-", "").replace(" ", "");
 			strCTN = strCTN.substring(0, 3) + " " + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);
-			reusableActions.clickWhenReady(By.xpath("//div[text()='"+ strCTN +"']"));
+			getReusableActionsInstance().clickWhenReady(By.xpath("//div[text()='"+ strCTN +"']"));
 		}
 	}
 	
@@ -176,15 +176,15 @@ public class RogersChoosePhonePage extends BasePageClass {
 	public boolean checkProOnTheGo() {
 		boolean detailButtonFlag; 
 		for(WebElement element: deviceModal) {
-			if(reusableActions.isElementVisible(element , 30))
+			if(getReusableActionsInstance().isElementVisible(element , 30))
 				try {
 					WebElement btnDetail =  element.findElement(By.xpath("//div[contains(@class,'button') and (@res='details_devicemodel' or @res='upgrade' or @res='_add')]"));
-					reusableActions.isElementVisible(btnDetail);
+					getReusableActionsInstance().isElementVisible(btnDetail);
 					detailButtonFlag = true;
-					//reusableActions.isElementVisible(element.findElement(By.xpath("//section[@class='phoneModel']//span[@res='device_eligible']")));
+					//getReusableActionsInstance().isElementVisible(element.findElement(By.xpath("//section[@class='phoneModel']//span[@res='device_eligible']")));
 					WebElement proOnTheGoMsgDisplay  = element.findElement(By.xpath("//span[@class='-messageFont']"));
-					reusableActions.isElementVisible(proOnTheGoMsgDisplay);
-					//reusableActions.isElementVisible(element.findElement(By.xpath("//span[@class='-messageFont']")));
+					getReusableActionsInstance().isElementVisible(proOnTheGoMsgDisplay);
+					//getReusableActionsInstance().isElementVisible(element.findElement(By.xpath("//span[@class='-messageFont']")));
 					return detailButtonFlag;
 				} catch (Exception e) {
 					if(detailButtonFlag = true) {
@@ -202,15 +202,15 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public boolean checkProOnTheGoAtAddress(String postalCode) {
-		if(reusableActions.isElementVisible(linkProOnTheGoCheckEligibility, 30)) {
-			reusableActions.clickWhenReady(linkProOnTheGoCheckEligibility, 30);
-			reusableActions.getWhenReady(inputPostalCodeOnForm).sendKeys(postalCode);
-			reusableActions.clickWhenReady(btnCheckPostalCodeOnForm, 30);
-			if(reusableActions.isElementVisible(imgSuccess, 30)) {
-				reusableActions.clickWhenReady(formProOnTheGoContinue, 30);
+		if(getReusableActionsInstance().isElementVisible(linkProOnTheGoCheckEligibility, 30)) {
+			getReusableActionsInstance().clickWhenReady(linkProOnTheGoCheckEligibility, 30);
+			getReusableActionsInstance().getWhenReady(inputPostalCodeOnForm).sendKeys(postalCode);
+			getReusableActionsInstance().clickWhenReady(btnCheckPostalCodeOnForm, 30);
+			if(getReusableActionsInstance().isElementVisible(imgSuccess, 30)) {
+				getReusableActionsInstance().clickWhenReady(formProOnTheGoContinue, 30);
 				return true;
 			}
-			reusableActions.clickWhenReady(formProOnTheGoCancel, 30);
+			getReusableActionsInstance().clickWhenReady(formProOnTheGoCancel, 30);
 		}
 		return false;
 	}

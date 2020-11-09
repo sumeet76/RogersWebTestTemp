@@ -124,8 +124,8 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkChevronYourCart() {
-		reusableActions.waitForElementVisibility(downChevronYourCart, 120);
-		reusableActions.getWhenReady(downChevronYourCart, 120).click();
+		getReusableActionsInstance().waitForElementVisibility(downChevronYourCart, 120);
+		getReusableActionsInstance().getWhenReady(downChevronYourCart, 120).click();
 	}
 
 
@@ -135,8 +135,8 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyGWPYourCartPromotion() {
-		reusableActions.waitForElementVisibility(gwpYourCart, 120);
-		return	reusableActions.isElementVisible(gwpYourCart);
+		getReusableActionsInstance().waitForElementVisibility(gwpYourCart, 120);
+		return	getReusableActionsInstance().isElementVisible(gwpYourCart);
 	}
 
 	/**
@@ -144,7 +144,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkIUnderStand() {
-		reusableActions.getWhenReady(clkIUnderStand, 60).click();
+		getReusableActionsInstance().getWhenReady(clkIUnderStand, 60).click();
 	}
 
 	/**
@@ -153,7 +153,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @param date which date to be entered
 	 */
 	public void selectPrefferedDates(String date) {
-		reusableActions.getWhenReady(prefferedDates, 180).sendKeys(date);;
+		getReusableActionsInstance().getWhenReady(prefferedDates, 180).sendKeys(date);;
 	}
 
 	/**
@@ -162,7 +162,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @param slot which slot to be entered
 	 */
 	public void selectPreferredTimeSlot(String slot) {
-		reusableActions.getWhenReady(selPreferredTimeSlot, 180).sendKeys(slot);;
+		getReusableActionsInstance().getWhenReady(selPreferredTimeSlot, 180).sendKeys(slot);;
 	}
 	
 	/**
@@ -171,7 +171,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @param slot which slot to be entered
 	 */
 	public void selectBackupTimeSlot(String slot) {
-		reusableActions.getWhenReady(selBackupTimeSlot, 180).sendKeys(slot);;
+		getReusableActionsInstance().getWhenReady(selBackupTimeSlot, 180).sendKeys(slot);;
 	}
 	
 	/**
@@ -180,13 +180,13 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyTechInstallPage() {
-		return	reusableActions.isElementVisible(txtTechInstalpage, 120);
+		return	getReusableActionsInstance().isElementVisible(txtTechInstalpage, 120);
 	}
 	
 	
 	public void clkPersonalizedInstall() {
-		reusableActions.waitForElementVisibility(chkPersonalizedInstall, 60);
-		reusableActions.getWhenReady(chkPersonalizedInstall, 30).click();
+		getReusableActionsInstance().waitForElementVisibility(chkPersonalizedInstall, 60);
+		getReusableActionsInstance().getWhenReady(chkPersonalizedInstall, 30).click();
 	}
 	
 	/**
@@ -195,7 +195,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyTechInstallCalendar() {	
-		return	reusableActions.isElementVisible(imgStartingTechInstallSlot, 180);
+		return	getReusableActionsInstance().isElementVisible(imgStartingTechInstallSlot, 180);
 	}
 	
 	/**
@@ -203,15 +203,15 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selTechInstal() {
-		reusableActions.waitForElementVisibility(imgTechInstallSlot,180); 
-		reusableActions.scrollToElement(imgTechInstallSlot); 
-		reusableActions.getWhenReady(imgTechInstallSlot, 20).click();
+		getReusableActionsInstance().waitForElementVisibility(imgTechInstallSlot,180);
+		getReusableActionsInstance().scrollToElement(imgTechInstallSlot);
+		getReusableActionsInstance().getWhenReady(imgTechInstallSlot, 20).click();
 		Calendar calendar = Calendar.getInstance();
 		int intDate = calendar.get(Calendar.DATE);
 		int startDate = intDate + 5; 
 		String strStartDate= Integer.toString(startDate);
 		By selStartDate = By.xpath("//span[contains(text(),'" + strStartDate + "') and @class='owl-dt-calendar-cell-content']");
-		reusableActions.getWhenReady(selStartDate, 20).click();
+		getReusableActionsInstance().getWhenReady(selStartDate, 20).click();
 		//button[@class='btn btn-default btn-sm']//span[contains(text(),'" + strStartDate + "')]
 	}
 	
@@ -220,52 +220,52 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selSelffinstallDateAndTime() {
-		if(reusableActions.isElementVisible(rdoTechInstallSlot, 90))
+		if(getReusableActionsInstance().isElementVisible(rdoTechInstallSlot, 90))
 		{
-		reusableActions.getWhenReady(rdoTechInstallSlot, 30).click();	
+		getReusableActionsInstance().getWhenReady(rdoTechInstallSlot, 30).click();
 		}
 		else
 		{	
-		reusableActions.waitForElementVisibility(clkCalendarIcon,20); 
-		reusableActions.getWhenReady(clkCalendarIcon, 20).click();
+		getReusableActionsInstance().waitForElementVisibility(clkCalendarIcon,20);
+		getReusableActionsInstance().getWhenReady(clkCalendarIcon, 20).click();
 		Calendar calendar = Calendar.getInstance();
 		int intDate = calendar.get(Calendar.DATE);
 		int startDate = intDate + 20; 
 		//If startDate > 29 , 29 being the number of days in the month
 		if(startDate>29) {
-			reusableActions.getWhenReady(clkChevron, 60).click();
+			getReusableActionsInstance().getWhenReady(clkChevron, 60).click();
 			startDate = startDate - 29;
 		}
 		String strStartDate= Integer.toString(startDate);
 		By selStartDate = By.xpath("//span[contains(text(),'" + strStartDate + "') and @class='owl-dt-calendar-cell-content']");
-		reusableActions.getWhenReady(selStartDate, 20).click();
-		reusableActions.waitForElementVisibility(rdoTechInstallSlot, 180);
-		reusableActions.getWhenReady(rdoTechInstallSlot, 90).click();
+		getReusableActionsInstance().getWhenReady(selStartDate, 20).click();
+		getReusableActionsInstance().waitForElementVisibility(rdoTechInstallSlot, 180);
+		getReusableActionsInstance().getWhenReady(rdoTechInstallSlot, 90).click();
 		}
 	}
 	
 	public void selSelffinstallDateAndTimeMigrartion() {
-		if(reusableActions.isElementVisible(rdoTechInstallSlot, 90))
+		if(getReusableActionsInstance().isElementVisible(rdoTechInstallSlot, 90))
 		{
-		reusableActions.getWhenReady(rdoTechInstallSlot, 30).click();	
+		getReusableActionsInstance().getWhenReady(rdoTechInstallSlot, 30).click();
 		}
 		else
 		{
-		reusableActions.waitForElementVisibility(clkCalendarIcon,20); 
-		reusableActions.getWhenReady(clkCalendarIcon, 20).click();
+		getReusableActionsInstance().waitForElementVisibility(clkCalendarIcon,20);
+		getReusableActionsInstance().getWhenReady(clkCalendarIcon, 20).click();
 		Calendar calendar = Calendar.getInstance();
 		int intDate = calendar.get(Calendar.DATE);
 		int startDate = intDate + 20; 
 		//If startDate > 29 , 29 being the number of days in the month
 		if(startDate>29) {
-			reusableActions.getWhenReady(clkChevron, 60).click();
+			getReusableActionsInstance().getWhenReady(clkChevron, 60).click();
 			startDate = startDate - 29;
 		}
 		String strStartDate= Integer.toString(startDate);
 		By selStartDate = By.xpath("//span[contains(text(),'" + strStartDate + "') and @class='owl-dt-calendar-cell-content']");
-		reusableActions.getWhenReady(selStartDate, 20).click();
-		reusableActions.waitForElementVisibility(rdoTechInstallSlot, 180);
-		reusableActions.getWhenReady(rdoTechInstallSlot, 90).click();
+		getReusableActionsInstance().getWhenReady(selStartDate, 20).click();
+		getReusableActionsInstance().waitForElementVisibility(rdoTechInstallSlot, 180);
+		getReusableActionsInstance().getWhenReady(rdoTechInstallSlot, 90).click();
 		}
 	}
 	
@@ -274,27 +274,27 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selSelffinstallDateAndTimeMobile() {
-		if(reusableActions.isElementVisible(rdoTechInstallSlot, 90))
+		if(getReusableActionsInstance().isElementVisible(rdoTechInstallSlot, 90))
 		{
-		reusableActions.executeJavaScriptClick(rdoTechInstallSlot);	
+		getReusableActionsInstance().executeJavaScriptClick(rdoTechInstallSlot);
 		}
 		else
 		{
-		reusableActions.waitForElementVisibility(clkCalendarIcon,50); 
-		reusableActions.executeJavaScriptClick(clkCalendarIcon);
+		getReusableActionsInstance().waitForElementVisibility(clkCalendarIcon,50);
+		getReusableActionsInstance().executeJavaScriptClick(clkCalendarIcon);
 		Calendar calendar = Calendar.getInstance();
 		int intDate = calendar.get(Calendar.DATE);
 		int startDate = intDate + 20; 
 		//If startDate > 29 , 29 being the number of days in the month
 		if(startDate>29) {
-			reusableActions.waitForElementVisibility(clkChevron, 60);
-			reusableActions.executeJavaScriptClick(clkChevron);
+			getReusableActionsInstance().waitForElementVisibility(clkChevron, 60);
+			getReusableActionsInstance().executeJavaScriptClick(clkChevron);
 			startDate = startDate - 29;
 		}
 		String strStartDate= Integer.toString(startDate);
 		By selStartDate = By.xpath("//span[contains(text(),'" + strStartDate + "') and @class='owl-dt-calendar-cell-content']");
-		WebElement date = driver.findElement(selStartDate);
-		reusableActions.executeJavaScriptClick(date);
+		WebElement date = getDriver().findElement(selStartDate);
+		getReusableActionsInstance().executeJavaScriptClick(date);
 		}
 	}
 
@@ -303,8 +303,8 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkTechInstallSlot() {
-		reusableActions.waitForElementVisibility(rdoTechInstallSlot, 180);
-		reusableActions.getWhenReady(rdoTechInstallSlot, 180).click();
+		getReusableActionsInstance().waitForElementVisibility(rdoTechInstallSlot, 180);
+		getReusableActionsInstance().getWhenReady(rdoTechInstallSlot, 180).click();
 	}
 	
 	/**
@@ -312,27 +312,27 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkTechInstallSlotMobile() {
-		if(reusableActions.isElementVisible(rdoTechInstallSlot, 90))
+		if(getReusableActionsInstance().isElementVisible(rdoTechInstallSlot, 90))
 		{
-			reusableActions.getWhenReady(rdoTechInstallSlot, 30).click();
+			getReusableActionsInstance().getWhenReady(rdoTechInstallSlot, 30).click();
 		}
 		else
 		{
-			reusableActions.waitForElementVisibility(clkCalendarIcon,20);
-			reusableActions.getWhenReady(clkCalendarIcon, 20).click();
+			getReusableActionsInstance().waitForElementVisibility(clkCalendarIcon,20);
+			getReusableActionsInstance().getWhenReady(clkCalendarIcon, 20).click();
 			Calendar calendar = Calendar.getInstance();
 			int intDate = calendar.get(Calendar.DATE);
 			int startDate = intDate + 20;
 			//If startDate > 29 , 29 being the number of days in the month
 			if(startDate>29) {
-				reusableActions.getWhenReady(clkChevron, 60).click();
+				getReusableActionsInstance().getWhenReady(clkChevron, 60).click();
 				startDate = startDate - 29;
 			}
 			String strStartDate= Integer.toString(startDate);
 			By selStartDate = By.xpath("//span[contains(text(),'" + strStartDate + "') and @class='owl-dt-calendar-cell-content']");
-			reusableActions.getWhenReady(selStartDate, 20).click();
-			reusableActions.waitForElementVisibility(rdoTechInstallSlot, 180);
-			reusableActions.getWhenReady(rdoTechInstallSlot, 90).click();
+			getReusableActionsInstance().getWhenReady(selStartDate, 20).click();
+			getReusableActionsInstance().waitForElementVisibility(rdoTechInstallSlot, 180);
+			getReusableActionsInstance().getWhenReady(rdoTechInstallSlot, 90).click();
 		}
 	}
 	
@@ -343,15 +343,15 @@ public class RogersTechInstallPage extends BasePageClass {
 	public void setMobielNumber() {
 		String strPhoneNumber = FormFiller.generatePhoneNumber();
 		String strEmail = FormFiller.generateEmail();
-		if(reusableActions.isElementVisible(txtEnroute,90)) {
-			reusableActions.waitForElementVisibility(txtContainerMobile, 20);
-			reusableActions.getWhenReady(txtContainerMobile, 10).click();
-			reusableActions.getWhenReady(txtMobielNumber, 10).clear();
-			reusableActions.getWhenReady(txtMobielNumber, 3).sendKeys(strPhoneNumber);
-			reusableActions.waitForElementVisibility(txtContainerEmail, 30);
-			reusableActions.getWhenReady(txtContainerEmail, 10).click();
-			reusableActions.getWhenReady(txtEmail, 10).clear();
-			reusableActions.getWhenReady(txtEmail, 10).sendKeys(strEmail);
+		if(getReusableActionsInstance().isElementVisible(txtEnroute,90)) {
+			getReusableActionsInstance().waitForElementVisibility(txtContainerMobile, 20);
+			getReusableActionsInstance().getWhenReady(txtContainerMobile, 10).click();
+			getReusableActionsInstance().getWhenReady(txtMobielNumber, 10).clear();
+			getReusableActionsInstance().getWhenReady(txtMobielNumber, 3).sendKeys(strPhoneNumber);
+			getReusableActionsInstance().waitForElementVisibility(txtContainerEmail, 30);
+			getReusableActionsInstance().getWhenReady(txtContainerEmail, 10).click();
+			getReusableActionsInstance().getWhenReady(txtEmail, 10).clear();
+			getReusableActionsInstance().getWhenReady(txtEmail, 10).sendKeys(strEmail);
 		}
 		}
 	
@@ -362,15 +362,15 @@ public class RogersTechInstallPage extends BasePageClass {
 	public void setMobielNumberMobile() {
 		String strPhoneNumber = FormFiller.generatePhoneNumber();
 		String strEmail = FormFiller.generateEmail();
-		if(reusableActions.isElementVisible(txtEnroute,90)) {
-			reusableActions.waitForElementVisibility(txtContainerMobile, 20);
-			reusableActions.getWhenReady(txtContainerMobile, 10).click();
-			reusableActions.getWhenReady(txtMobielNumber, 10).clear();
-			reusableActions.getWhenReady(txtMobielNumber, 3).sendKeys(strPhoneNumber);
-			reusableActions.waitForElementVisibility(txtContainerEmail, 30);
-			reusableActions.getWhenReady(txtContainerEmail, 10).click();
-			reusableActions.getWhenReady(txtEmail, 10).clear();
-			reusableActions.getWhenReady(txtEmail, 10).sendKeys(strEmail);
+		if(getReusableActionsInstance().isElementVisible(txtEnroute,90)) {
+			getReusableActionsInstance().waitForElementVisibility(txtContainerMobile, 20);
+			getReusableActionsInstance().getWhenReady(txtContainerMobile, 10).click();
+			getReusableActionsInstance().getWhenReady(txtMobielNumber, 10).clear();
+			getReusableActionsInstance().getWhenReady(txtMobielNumber, 3).sendKeys(strPhoneNumber);
+			getReusableActionsInstance().waitForElementVisibility(txtContainerEmail, 30);
+			getReusableActionsInstance().getWhenReady(txtContainerEmail, 10).click();
+			getReusableActionsInstance().getWhenReady(txtEmail, 10).clear();
+			getReusableActionsInstance().getWhenReady(txtEmail, 10).sendKeys(strEmail);
 		}
 }
 	
@@ -380,10 +380,10 @@ public class RogersTechInstallPage extends BasePageClass {
 	 */
 	public void setMobielNumberMigration() {
 		String strPhoneNumber = FormFiller.generatePhoneNumber();
-		reusableActions.waitForElementVisibility(txtContainerMobileMigration,180);
-		reusableActions.getWhenReady(txtContainerMobileMigration,10).click();
-		reusableActions.getWhenReady(txtMobielNumberMigration, 30).clear();
-		reusableActions.getWhenReady(txtMobielNumberMigration, 3).sendKeys(strPhoneNumber);
+		getReusableActionsInstance().waitForElementVisibility(txtContainerMobileMigration,180);
+		getReusableActionsInstance().getWhenReady(txtContainerMobileMigration,10).click();
+		getReusableActionsInstance().getWhenReady(txtMobielNumberMigration, 30).clear();
+		getReusableActionsInstance().getWhenReady(txtMobielNumberMigration, 3).sendKeys(strPhoneNumber);
 	}
 	/**
 	 * Set dynamic email on the Order Summary Page
@@ -391,10 +391,10 @@ public class RogersTechInstallPage extends BasePageClass {
 	 */
 	public void setEmailMobile() {
 		String strEmail = FormFiller.generateEmail();
-		reusableActions.waitForElementVisibility(txtContainerEmail,30);
-		reusableActions.executeJavaScriptClick(txtContainerEmail);
-		reusableActions.getWhenReady(txtEmail, 30).clear();
-		reusableActions.getWhenReady(txtEmail,10).sendKeys(strEmail);
+		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail,30);
+		getReusableActionsInstance().executeJavaScriptClick(txtContainerEmail);
+		getReusableActionsInstance().getWhenReady(txtEmail, 30).clear();
+		getReusableActionsInstance().getWhenReady(txtEmail,10).sendKeys(strEmail);
 	}
 	
 	/**
@@ -403,10 +403,10 @@ public class RogersTechInstallPage extends BasePageClass {
 	 */
 	public void setEmail() {
 		String strEmail = FormFiller.generateEmail();
-		reusableActions.waitForElementVisibility(txtContainerEmail,30);
-		reusableActions.getWhenReady(txtContainerEmail,20).click();
-		reusableActions.getWhenReady(txtEmail, 30).clear();
-		reusableActions.getWhenReady(txtEmail,10).sendKeys(strEmail);
+		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail,30);
+		getReusableActionsInstance().getWhenReady(txtContainerEmail,20).click();
+		getReusableActionsInstance().getWhenReady(txtEmail, 30).clear();
+		getReusableActionsInstance().getWhenReady(txtEmail,10).sendKeys(strEmail);
 	}
 	/**
 	 * Set dynamic email on the Order Summary Page
@@ -414,10 +414,10 @@ public class RogersTechInstallPage extends BasePageClass {
 	 */
 	public void setEmailMigration() {
 		String strEmail = FormFiller.generateEmail();
-		reusableActions.waitForElementVisibility(txtContainerEmailMigration,180);
-		reusableActions.getWhenReady(txtContainerEmailMigration,10).click();
-		reusableActions.getWhenReady(txtEmailMigration, 30).clear();
-		reusableActions.getWhenReady(txtEmailMigration,10).sendKeys(strEmail);
+		getReusableActionsInstance().waitForElementVisibility(txtContainerEmailMigration,180);
+		getReusableActionsInstance().getWhenReady(txtContainerEmailMigration,10).click();
+		getReusableActionsInstance().getWhenReady(txtEmailMigration, 30).clear();
+		getReusableActionsInstance().getWhenReady(txtEmailMigration,10).sendKeys(strEmail);
 	}
 	
 	/**
@@ -427,15 +427,15 @@ public class RogersTechInstallPage extends BasePageClass {
 	public void setMobielNumberExistingCustomer() {
 		String strPhoneNumber = FormFiller.generatePhoneNumber();
 		String strEmail = FormFiller.generateEmail();
-		if (reusableActions.isElementVisible(txtEnroute, 90)) {
-			reusableActions.waitForElementVisibility(txtContainerMobileExistingCustomer, 20);
-			reusableActions.getWhenReady(txtContainerMobileExistingCustomer, 10).click();
-			reusableActions.getWhenReady(txtMobielNumberExistingCustomer, 30).clear();
-			reusableActions.getWhenReady(txtMobielNumberExistingCustomer, 3).sendKeys(strPhoneNumber);
-			reusableActions.waitForElementVisibility(txtContainerEmailExistingCustomer, 20);
-			reusableActions.getWhenReady(txtContainerEmailExistingCustomer, 10).click();
-			reusableActions.getWhenReady(txtEmailExistingCustomer, 30).clear();
-			reusableActions.getWhenReady(txtEmailExistingCustomer, 3).sendKeys(strEmail);
+		if (getReusableActionsInstance().isElementVisible(txtEnroute, 90)) {
+			getReusableActionsInstance().waitForElementVisibility(txtContainerMobileExistingCustomer, 20);
+			getReusableActionsInstance().getWhenReady(txtContainerMobileExistingCustomer, 10).click();
+			getReusableActionsInstance().getWhenReady(txtMobielNumberExistingCustomer, 30).clear();
+			getReusableActionsInstance().getWhenReady(txtMobielNumberExistingCustomer, 3).sendKeys(strPhoneNumber);
+			getReusableActionsInstance().waitForElementVisibility(txtContainerEmailExistingCustomer, 20);
+			getReusableActionsInstance().getWhenReady(txtContainerEmailExistingCustomer, 10).click();
+			getReusableActionsInstance().getWhenReady(txtEmailExistingCustomer, 30).clear();
+			getReusableActionsInstance().getWhenReady(txtEmailExistingCustomer, 3).sendKeys(strEmail);
 		}
 	}
 	/**
@@ -444,35 +444,35 @@ public class RogersTechInstallPage extends BasePageClass {
 	 */
 	public void setEmailExistingCustomer() {
 		String strEmail = FormFiller.generateEmail();
-		reusableActions.waitForElementVisibility(txtContainerEmailExistingCustomer,180);
-		reusableActions.getWhenReady(txtContainerEmailExistingCustomer,10).click();
-		reusableActions.getWhenReady(txtEmailExistingCustomer, 30).clear();
-		reusableActions.getWhenReady(txtEmailExistingCustomer, 3).sendKeys(strEmail);
+		getReusableActionsInstance().waitForElementVisibility(txtContainerEmailExistingCustomer,180);
+		getReusableActionsInstance().getWhenReady(txtContainerEmailExistingCustomer,10).click();
+		getReusableActionsInstance().getWhenReady(txtEmailExistingCustomer, 30).clear();
+		getReusableActionsInstance().getWhenReady(txtEmailExistingCustomer, 3).sendKeys(strEmail);
 	}
 	/**
 	 * To select the Technical Installation Start Date
 	 * @author chinnarao.vattam
 	 */
 	public void selTechInstalStartDate() {
-		reusableActions.staticWait(5000);
-		reusableActions.waitForElementVisibility(imgStartingTechInstallSlot,180); 
-		reusableActions.getWhenReady(imgStartingTechInstallSlot, 20).click();
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().waitForElementVisibility(imgStartingTechInstallSlot,180);
+		getReusableActionsInstance().getWhenReady(imgStartingTechInstallSlot, 20).click();
 		Calendar calendar = Calendar.getInstance();
 		int intDate = calendar.get(Calendar.DATE);
 		int iDate = intDate + 10; 
 		if(iDate >= 30) {
-		reusableActions.waitForElementVisibility(clkChevron, 60);
-		reusableActions.getWhenReady(clkChevron, 60).click();		
+		getReusableActionsInstance().waitForElementVisibility(clkChevron, 60);
+		getReusableActionsInstance().getWhenReady(clkChevron, 60).click();
 		int selDate = intDate - 14 ;
 		String strStartDate= Integer.toString(selDate);	
 		By selStartDate = By.xpath("//tr[@class='ng-star-inserted']//td//span[contains(text(),'" + strStartDate + "')]");
-		reusableActions.getWhenReady(selStartDate, 60).click();
+		getReusableActionsInstance().getWhenReady(selStartDate, 60).click();
 		}
 		else
 		{
 			String strStartDate= Integer.toString(intDate);
 			By selStartDate = By.xpath("//tr[@class='ng-star-inserted']//td//span[contains(text(),'" + strStartDate + "')]");
-			reusableActions.getWhenReady(selStartDate, 60).click();
+			getReusableActionsInstance().getWhenReady(selStartDate, 60).click();
 		}
 	}
 	
@@ -481,25 +481,25 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selTechInstalEndDate() {
-		reusableActions.waitForElementVisibility(imgEndingTechInstallSlot,60); 
-		reusableActions.getWhenReady(imgEndingTechInstallSlot, 20).click();
+		getReusableActionsInstance().waitForElementVisibility(imgEndingTechInstallSlot,60);
+		getReusableActionsInstance().getWhenReady(imgEndingTechInstallSlot, 20).click();
 		Calendar calendar = Calendar.getInstance();
 		int intDate = calendar.get(Calendar.DATE);	
 		int iDate = intDate + 10; 
 		if(iDate >= 30) {
-		reusableActions.waitForElementVisibility(clkChevron, 60);
-		reusableActions.getWhenReady(clkChevron, 60).click();
+		getReusableActionsInstance().waitForElementVisibility(clkChevron, 60);
+		getReusableActionsInstance().getWhenReady(clkChevron, 60).click();
 		int selDate = intDate - 6 ;
 		String strEndDate= Integer.toString(selDate);
 		By selEndDate = By.xpath("//tr[@class='ng-star-inserted']//td//span[contains(text(),'" + strEndDate + "')]");
-		reusableActions.getWhenReady(selEndDate, 30).click();
+		getReusableActionsInstance().getWhenReady(selEndDate, 30).click();
 		}
 		else
 		{
 			int endDate = intDate + 5;
 			String strEndDate= Integer.toString(endDate);
 			By selEndDate = By.xpath("//tr[@class='ng-star-inserted']//td//span[contains(text(),'" + strEndDate + "')]");
-			reusableActions.getWhenReady(selEndDate, 30).click();
+			getReusableActionsInstance().getWhenReady(selEndDate, 30).click();
 		}
 		
 
@@ -510,9 +510,9 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkTechInstalConsent() {
-		reusableActions.waitForElementVisibility(chkTechInstalConsent, 60);
-		reusableActions.javascriptScrollByVisibleElement(chkTechInstalConsent);
-		reusableActions.executeJavaScriptClick(chkTechInstalConsent);
+		getReusableActionsInstance().waitForElementVisibility(chkTechInstalConsent, 60);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(chkTechInstalConsent);
+		getReusableActionsInstance().executeJavaScriptClick(chkTechInstalConsent);
 	}
 	
 	/**
@@ -520,9 +520,9 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkTechInstalConsentExistingCustomer() {
-		reusableActions.waitForElementVisibility(chkTechInstalConsentExistingCustomer, 60);
-		reusableActions.javascriptScrollByVisibleElement(chkTechInstalConsentExistingCustomer);
-		reusableActions.executeJavaScriptClick(chkTechInstalConsentExistingCustomer);
+		getReusableActionsInstance().waitForElementVisibility(chkTechInstalConsentExistingCustomer, 60);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(chkTechInstalConsentExistingCustomer);
+		getReusableActionsInstance().executeJavaScriptClick(chkTechInstalConsentExistingCustomer);
 	}
 	
 	/**
@@ -530,9 +530,9 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkTechInstallContinue() {
-		reusableActions.waitForElementTobeClickable(btnTechInstallContinue, 60);
-		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(btnTechInstallContinue, 30).click();
+		getReusableActionsInstance().waitForElementTobeClickable(btnTechInstallContinue, 60);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().getWhenReady(btnTechInstallContinue, 30).click();
 	}
 
 	/**
@@ -540,10 +540,10 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkTechInstallContinueMobile() {
-		reusableActions.waitForElementTobeClickable(btnTechInstallContinue, 90);
-		reusableActions.javascriptScrollByVisibleElement(btnTechInstallContinue);
-		reusableActions.waitForElementVisibility(btnTechInstallContinue, 60);
-		reusableActions.executeJavaScriptClick(btnTechInstallContinue);
+		getReusableActionsInstance().waitForElementTobeClickable(btnTechInstallContinue, 90);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(btnTechInstallContinue);
+		getReusableActionsInstance().waitForElementVisibility(btnTechInstallContinue, 60);
+		getReusableActionsInstance().executeJavaScriptClick(btnTechInstallContinue);
 	}
 
 }

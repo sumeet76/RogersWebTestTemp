@@ -1,15 +1,15 @@
 package com.rogers.oneview.pages;
-import java.util.List;
-
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-import com.rogers.pages.base.BasePageClass;
 
-public class OrderReviewPage  extends BasePageClass {
+import java.util.List;
 
-	public OrderReviewPage(WebDriver driver) {
+public class RogersOVOrderReviewPage  extends BasePageClass {
+
+	public RogersOVOrderReviewPage(WebDriver driver) {
 		super(driver);
 	}
 	@FindBy(xpath = "//label[@for='shieldTermsCheckbox']")
@@ -72,27 +72,27 @@ public class OrderReviewPage  extends BasePageClass {
 	 * @author Harpartap.Virk
 	 */	
 	public void expandMonthlyBill() {
-		reusableActions.clickWhenReady(monthlyBill,120);
+		getReusableActionsInstance().clickWhenReady(monthlyBill,120);
 	}
 	/**
 	 * Expand Monthly Bill
 	 * @author Harpartap.Virk
 	 */	
 	public void expandOneTimeFees() {
-		if(reusableActions.isElementVisible(oneTimeFees,120))
-		reusableActions.javascriptScrollByVisibleElement(oneTimeFees);
-		reusableActions.staticWait(5000);
-		reusableActions.clickWhenReady(oneTimeFees,120);
+		if(getReusableActionsInstance().isElementVisible(oneTimeFees,120))
+		getReusableActionsInstance().javascriptScrollByVisibleElement(oneTimeFees);
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().clickWhenReady(oneTimeFees,120);
 	}
 	/**
 	 * Click Submit Button  
 	 * @author Harpartap.Virk
 	 */	
 	public void clkSubmit() {	
-		reusableActions.javascriptScrollToBottomOfPage();
-		reusableActions.staticWait(3000);
-		reusableActions.clickWhenReady(submitButton);
-		//reusableActions.staticWait(8000);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().clickWhenReady(submitButton);
+		//getReusableActionsInstance().staticWait(8000);
 	}
 	/**
 	 * Verify Monthly Charges Appear
@@ -100,9 +100,9 @@ public class OrderReviewPage  extends BasePageClass {
 	 * @author Harpartap.Virk
 	 */	
 	public boolean verifyMonthlyCharges() {	
-	if(reusableActions.isElementVisible(totalMonthlyFees,120)){
-		WebElement btn=reusableActions.getWhenReady(totalMonthlyFees);
-		reusableActions.javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+	if(getReusableActionsInstance().isElementVisible(totalMonthlyFees,120)){
+		WebElement btn=getReusableActionsInstance().getWhenReady(totalMonthlyFees);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
 		return true;
 	}else
 		return false;
@@ -114,10 +114,10 @@ public class OrderReviewPage  extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkAllTermsAgreementCheckboxs() {
-		reusableActions.waitForAllElementsVisible(termsCheckBoxes, 60);
+		getReusableActionsInstance().waitForAllElementsVisible(termsCheckBoxes, 60);
 		for(WebElement element:termsCheckBoxes) {
-			reusableActions.waitForElementVisibility(element, 60);
-			reusableActions.clickWhenReady(element,60);
+			getReusableActionsInstance().waitForElementVisibility(element, 60);
+			getReusableActionsInstance().clickWhenReady(element,60);
 		}
 	}
 	
@@ -126,8 +126,8 @@ public class OrderReviewPage  extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkTermsAgreementCheckbox() {
-		reusableActions.waitForElementVisibility(chbTerms, 100);
-		reusableActions.clickWhenReady(chbTerms,100);
+		getReusableActionsInstance().waitForElementVisibility(chbTerms, 100);
+		getReusableActionsInstance().clickWhenReady(chbTerms,100);
 	}
 	
 	/**
@@ -136,8 +136,8 @@ public class OrderReviewPage  extends BasePageClass {
 	 * @param strEmail string email
 	 */
 	public void selectEmailDigitalCopy(String strEmail) {
-		reusableActions.clickWhenVisible(rdbtnEmail,30);
-		if(reusableActions.isElementVisible(txtCustomerEmail)) {
+		getReusableActionsInstance().clickWhenVisible(rdbtnEmail,30);
+		if(getReusableActionsInstance().isElementVisible(txtCustomerEmail)) {
 			txtCustomerEmail.sendKeys(strEmail);
 		}
 	}
@@ -148,7 +148,7 @@ public class OrderReviewPage  extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean isPaymentRequired() {
-		return reusableActions.isElementVisible(lblPaymentStep, 30);
+		return getReusableActionsInstance().isElementVisible(lblPaymentStep, 30);
 	}
 	
 	/**
@@ -156,7 +156,7 @@ public class OrderReviewPage  extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkContinue() {
-		reusableActions.clickWhenReady(btnContinue,60);
+		getReusableActionsInstance().clickWhenReady(btnContinue,60);
 	}
 	
 	/**
@@ -164,7 +164,7 @@ public class OrderReviewPage  extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkSubmitOrder() {
-		reusableActions.clickWhenVisible(btnSubmitOrder,60);
+		getReusableActionsInstance().clickWhenVisible(btnSubmitOrder,60);
 	}
 }
 

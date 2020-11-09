@@ -100,7 +100,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * Select Device Protection Header on Plan config page
      */
     public void selectDeviceProtectionHeaderTab() {
-        reusableActions.clickIfAvailable(deviceProtectiontab);
+        getReusableActionsInstance().clickIfAvailable(deviceProtectiontab);
     }
 
     /**
@@ -139,14 +139,14 @@ public class RogersPlanConfigPage extends BasePageClass {
     public void selectDeviceCost(String deviceCost) {
         if(deviceCost != null) {
             xpathDcDoTo = createXpathWithInputData(deviceCost);
-            List<WebElement> noOfTiers = reusableActions.getDriver().findElements(By.xpath(xpathDcDoTo));
+            List<WebElement> noOfTiers = getDriver().findElements(By.xpath(xpathDcDoTo));
             if(noOfTiers.size() == 1)
-                reusableActions.clickIfAvailable(By.xpath(xpathDcDoTo));
+                getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo));
             else
-                reusableActions.clickIfAvailable(By.xpath(xpathDcDoTo + "[1]"));
+                getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo + "[1]"));
         }else{
             xpathDcDoTo = createXpathWithInputData(deviceCost);
-            reusableActions.clickIfAvailable(By.xpath(xpathDcDoTo));
+            getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo));
         }
     }
 
@@ -158,14 +158,14 @@ public class RogersPlanConfigPage extends BasePageClass {
     public void selectDataOption(String dataOption) {
         if(dataOption != null) {
             xpathDcDoTo = createXpathWithInputData(dataOption);
-            List<WebElement> noOfTiers = reusableActions.getDriver().findElements(By.xpath(xpathDcDoTo));
+            List<WebElement> noOfTiers = getDriver().findElements(By.xpath(xpathDcDoTo));
             if(noOfTiers.size() == 1)
-                reusableActions.clickIfAvailable(By.xpath(xpathDcDoTo));
+                getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo));
             else
-                reusableActions.clickIfAvailable(By.xpath(xpathDcDoTo + "[1]"));
+                getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo + "[1]"));
         }else{
             xpathDcDoTo = "//p[contains(text(),'2.')]//following-sibling::div//div[@class='pb-16 ng-star-inserted'][1]";
-            reusableActions.clickIfAvailable(By.xpath(xpathDcDoTo));
+            getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo));
         }
     }
 
@@ -182,10 +182,10 @@ public class RogersPlanConfigPage extends BasePageClass {
         final int dataNonStrikedPriceValue;
         if(dataOption != null) {
             xpathDcDoTo = createXpathWithInputData(dataOption);
-            List<WebElement> noOfTiers = reusableActions.getDriver().findElements(By.xpath(xpathDcDoTo));
+            List<WebElement> noOfTiers = getDriver().findElements(By.xpath(xpathDcDoTo));
             if(noOfTiers.size() == 1) {
-                dataStrikedPrice = reusableActions.getWhenReady(By.xpath(xpathDcDoTo+"//p[@class='text-line-through text-body-sm mb-0 ng-star-inserted']")).getText();
-                dataNonStrikedPrice = reusableActions.getWhenReady(By.xpath(xpathDcDoTo+"//p[@class='text-body-lg text-semi mb-0 ng-star-inserted']")).getText();
+                dataStrikedPrice = getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo+"//p[@class='text-line-through text-body-sm mb-0 ng-star-inserted']")).getText();
+                dataNonStrikedPrice = getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo+"//p[@class='text-body-lg text-semi mb-0 ng-star-inserted']")).getText();
                 dataStrikedPriceValue = Integer.parseInt(dataStrikedPrice.replaceAll("[^-?0-9]+", ""));
                 dataNonStrikedPriceValue = Integer.parseInt(dataNonStrikedPrice.replaceAll("[^-?0-9]+", ""));
                 if(dataStrikedPriceValue - dataNonStrikedPriceValue == 1000 )
@@ -194,8 +194,8 @@ public class RogersPlanConfigPage extends BasePageClass {
                     return false;
             }
             else {
-                dataStrikedPrice = reusableActions.getWhenReady(By.xpath(By.xpath(xpathDcDoTo + "[1]")+"//p[@class='text-line-through text-body-sm mb-0 ng-star-inserted']")).getText();
-                dataNonStrikedPrice = reusableActions.getWhenReady(By.xpath(xpathDcDoTo+"//p[@class='text-body-lg text-semi mb-0 ng-star-inserted']")).getText();
+                dataStrikedPrice = getReusableActionsInstance().getWhenReady(By.xpath(By.xpath(xpathDcDoTo + "[1]")+"//p[@class='text-line-through text-body-sm mb-0 ng-star-inserted']")).getText();
+                dataNonStrikedPrice = getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo+"//p[@class='text-body-lg text-semi mb-0 ng-star-inserted']")).getText();
                 dataStrikedPriceValue = Integer.parseInt(dataStrikedPrice.replaceAll("[^-?0-9]+", ""));
                 dataNonStrikedPriceValue = Integer.parseInt(dataNonStrikedPrice.replaceAll("[^-?0-9]+", ""));
                 if(dataStrikedPriceValue - dataNonStrikedPriceValue == 1000 )
@@ -206,8 +206,8 @@ public class RogersPlanConfigPage extends BasePageClass {
             }
         }else{
             xpathDcDoTo = "//p[contains(text(),'2.')]//following-sibling::div//div[@class='pb-16 ng-star-inserted'][1]//p[@class='text-line-through text-body-sm mb-0 ng-star-inserted']";
-            dataStrikedPrice = reusableActions.getWhenReady(By.xpath(xpathDcDoTo)).getText();
-            dataNonStrikedPrice = reusableActions.getWhenReady(By.xpath(xpathDcDoTo+"//following-sibling::p")).getText();
+            dataStrikedPrice = getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo)).getText();
+            dataNonStrikedPrice = getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo+"//following-sibling::p")).getText();
             dataStrikedPriceValue = Integer.parseInt(dataStrikedPrice.replaceAll("[^-?0-9]+", ""));
             dataNonStrikedPriceValue = Integer.parseInt(dataNonStrikedPrice.replaceAll("[^-?0-9]+", ""));
             if(dataStrikedPriceValue - dataNonStrikedPriceValue == 1000 )
@@ -226,14 +226,14 @@ public class RogersPlanConfigPage extends BasePageClass {
     public void selectTalkOptions(String talkOptions) {
         if(talkOptions != null) {
             xpathDcDoTo = createXpathWithInputData(talkOptions);
-            List<WebElement> noOfTiers = reusableActions.getDriver().findElements(By.xpath(xpathDcDoTo));
+            List<WebElement> noOfTiers = getDriver().findElements(By.xpath(xpathDcDoTo));
             if(noOfTiers.size() == 1)
-                reusableActions.clickIfAvailable(By.xpath(xpathDcDoTo));
+                getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo));
             else
-                reusableActions.clickIfAvailable(By.xpath(xpathDcDoTo + "[1]"));
+                getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo + "[1]"));
         }else{
             xpathDcDoTo = "//p[contains(text(),'3.')]//following-sibling::div//div[@class='pb-16 ng-star-inserted'][1]";
-            reusableActions.clickIfAvailable(By.xpath(xpathDcDoTo + "[1]"));
+            getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo + "[1]"));
         }
     }
 
@@ -257,9 +257,9 @@ public class RogersPlanConfigPage extends BasePageClass {
     public void clickOptionInDataProtection(String dataProtectionOption) {
         if(dataProtectionOption != null && !dataProtectionOption.isEmpty()) {
             xpathDcDoTo = createXpathWithInputDataForProtectionPlan(dataProtectionOption);
-            reusableActions.clickIfAvailable(By.xpath(xpathDcDoTo));
+            getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo));
         }else
-            reusableActions.clickIfAvailable(noDeviceProtection, 10);
+            getReusableActionsInstance().clickIfAvailable(noDeviceProtection, 10);
     }
 
     /**
@@ -271,7 +271,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public String verifyToolTipInDataProtection(String dataProtectionOption) {
         String xpathProtectionPlan = createXpathWithInputDataForProtectionPlan(dataProtectionOption);
-        return reusableActions.getTitle(reusableActions.getDriver().findElement(By.xpath(xpathProtectionPlan))).trim();
+        return getReusableActionsInstance().getTitle(getDriver().findElement(By.xpath(xpathProtectionPlan))).trim();
     }
 
     /**
@@ -279,7 +279,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void clickPreCartSummaryContinueButton() {
-        reusableActions.clickIfAvailable(preCartSummaryContinueButton, 5);
+        getReusableActionsInstance().clickIfAvailable(preCartSummaryContinueButton, 5);
     }
     
     /**
@@ -287,7 +287,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void clickPreCartSummaryContinueButtonTalkOptions() {
-        reusableActions.clickIfAvailable(preCartSummaryContinueButtonTalkOptions, 5);
+        getReusableActionsInstance().clickIfAvailable(preCartSummaryContinueButtonTalkOptions, 5);
     }
     
     /**
@@ -295,7 +295,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clickPreCartDeviceCostContinueButton() {
-        reusableActions.clickWhenReady(preCartDeviceCostContinueButton);
+        getReusableActionsInstance().clickWhenReady(preCartDeviceCostContinueButton);
     }
     
     /**
@@ -303,7 +303,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clickPreCartDataOptionContinueButton() {
-        reusableActions.clickWhenReady(preCartDataOtionContinueButton);
+        getReusableActionsInstance().clickWhenReady(preCartDataOtionContinueButton);
     }
     
     /**
@@ -311,7 +311,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clickPreCartTalkOptionContinueButton() {
-        reusableActions.clickWhenReady(preCartTalkOptionContinueButton);
+        getReusableActionsInstance().clickWhenReady(preCartTalkOptionContinueButton);
     }
     
     /**
@@ -319,7 +319,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clickPreCartAddonsContinueButton() {
-        reusableActions.clickWhenReady(preCartAddonsContinueButton);
+        getReusableActionsInstance().clickWhenReady(preCartAddonsContinueButton);
     }
     
     /**
@@ -327,7 +327,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void clickPreCartSummaryContinueButtonAddOns() {
-        reusableActions.clickIfAvailable(preCartSummaryContinueButtonAddOns, 5);
+        getReusableActionsInstance().clickIfAvailable(preCartSummaryContinueButtonAddOns, 5);
     }
 
     /**
@@ -413,10 +413,10 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void clickCartSummaryContinueButton() {
-    	reusableActions.javascriptScrollByVisibleElement(continueButtonOnCartSummary);
-        reusableActions.executeJavaScriptClick(continueButtonOnCartSummary);
-//        reusableActions.waitForElementTobeClickable(continueButtonOnCartSummary, 10);
-//        reusableActions.clickWhenReady(continueButtonOnCartSummary);
+    	getReusableActionsInstance().javascriptScrollByVisibleElement(continueButtonOnCartSummary);
+        getReusableActionsInstance().executeJavaScriptClick(continueButtonOnCartSummary);
+//        getReusableActionsInstance().waitForElementTobeClickable(continueButtonOnCartSummary, 10);
+//        getReusableActionsInstance().clickWhenReady(continueButtonOnCartSummary);
     }
 
     /**
@@ -424,7 +424,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void clickGetBPOOffer() {
-        reusableActions.clickIfAvailable(getBPOOfferOnDeviceProtection, 5);
+        getReusableActionsInstance().clickIfAvailable(getBPOOfferOnDeviceProtection, 5);
     }
 
     /**
@@ -432,7 +432,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void clickEditButtonDeviceCost() {
-        reusableActions.clickIfAvailable(editButtonDeviceCost, 5);
+        getReusableActionsInstance().clickIfAvailable(editButtonDeviceCost, 5);
     }
 
     /**
@@ -440,8 +440,8 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void skipBPOOffer() {
-        if(reusableActions.isElementVisible(skipBPOOfferOnDeviceProtection, 5))
-            reusableActions.clickIfAvailable(skipBPOOfferOnDeviceProtection, 5);
+        if(getReusableActionsInstance().isElementVisible(skipBPOOfferOnDeviceProtection, 5))
+            getReusableActionsInstance().clickIfAvailable(skipBPOOfferOnDeviceProtection, 5);
     }
 
     /**
@@ -485,7 +485,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public String getOneTimeFeesAmount() {
-    	reusableActions.javascriptScrollByVisibleElement(oneTimeFeesAmount);
+    	getReusableActionsInstance().javascriptScrollByVisibleElement(oneTimeFeesAmount);
         return oneTimeFeesAmount.getText().replaceAll("\\n","");
     }
 
@@ -496,7 +496,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public boolean verifyBreadCrumb(String deviceName) {
-        if(reusableActions.isElementVisible(devicesInBreadCrumb) && reusableActions.isElementVisible(buildPlanInBreadCrumb) && breadCrumb.getText().toUpperCase().contains((deviceName).toUpperCase()))
+        if(getReusableActionsInstance().isElementVisible(devicesInBreadCrumb) && getReusableActionsInstance().isElementVisible(buildPlanInBreadCrumb) && breadCrumb.getText().toUpperCase().contains((deviceName).toUpperCase()))
             return true;
         return false;
     }
@@ -507,7 +507,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public boolean verifyBreadCrumb() {
-        if(reusableActions.isElementVisible(plansInBreadCrumb) && reusableActions.isElementVisible(buildPlanInBreadCrumb) && reusableActions.isElementVisible(bringYourOwnDeviceInBreadCrumb))
+        if(getReusableActionsInstance().isElementVisible(plansInBreadCrumb) && getReusableActionsInstance().isElementVisible(buildPlanInBreadCrumb) && getReusableActionsInstance().isElementVisible(bringYourOwnDeviceInBreadCrumb))
             return true;
         return false;
     }
@@ -521,7 +521,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public boolean verifyDeviceInfo(String deviceInfoConfigPage , String deviceName) {
         String deviceInfoXpath = "//p[contains(text(),'" + deviceName + "')]";
-        if(reusableActions.getWhenReady(By.xpath(deviceInfoXpath), 10).getText().replace(" ", "").toUpperCase().equalsIgnoreCase(deviceInfoConfigPage.replace(" ", "").toUpperCase()))
+        if(getReusableActionsInstance().getWhenReady(By.xpath(deviceInfoXpath), 10).getText().replace(" ", "").toUpperCase().equalsIgnoreCase(deviceInfoConfigPage.replace(" ", "").toUpperCase()))
             return true;
         return false;
     }
@@ -533,7 +533,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public boolean verifyDefaultPrice(String downPriceValueCataloguePage) {
-        if(reusableActions.getWhenReady(priceForSelectedDeviceCost, 30).getText().toUpperCase().replace(" ", "").contains(downPriceValueCataloguePage.toUpperCase().replaceAll("/", "").replace(" ", "")))
+        if(getReusableActionsInstance().getWhenReady(priceForSelectedDeviceCost, 30).getText().toUpperCase().replace(" ", "").contains(downPriceValueCataloguePage.toUpperCase().replaceAll("/", "").replace(" ", "")))
             return true;
         return false;
     }
@@ -544,7 +544,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author Pranav.Shaligram
      */
     public String getPromoBlockText(){
-        return reusableActions.getWhenReady(promoBlock,10).getText().trim().replaceAll("\\n", " ");
+        return getReusableActionsInstance().getWhenReady(promoBlock,10).getText().trim().replaceAll("\\n", " ");
     }
 
     /**
@@ -553,14 +553,14 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author Pranav.Shaligram
      */
     public String getLabelText(){
-        return reusableActions.getWhenReady(tierLabel, 10).getText().trim();
+        return getReusableActionsInstance().getWhenReady(tierLabel, 10).getText().trim();
     }
 
     @FindBy(xpath="//p[contains(@class,'dsa-info__contentBody text-body mb-0')]")
     WebElement eligiblePostalCodeinBanner;
 
     public String verifyeligiblePostalCodeinBanner(){
-        reusableActions.getWhenVisible(eligiblePostalCodeinBanner,20);
+        getReusableActionsInstance().getWhenVisible(eligiblePostalCodeinBanner,20);
         return eligiblePostalCodeinBanner.getText().replaceAll("\\s+","");
     }
 

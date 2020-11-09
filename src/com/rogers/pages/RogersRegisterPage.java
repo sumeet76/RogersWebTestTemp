@@ -69,12 +69,12 @@ public class RogersRegisterPage extends BasePageClass {
 	public void clickWirelessOrResidentialServices() {
 		 Capabilities cap = ((RemoteWebDriver)getDriver()).getCapabilities();
 		if(cap.getBrowserName().toLowerCase().contains("firefox")) {
-		reusableActions.getDriver().switchTo().defaultContent();//added for firefox dead object issue handling
-		reusableActions.waitForElementTobeClickable(btnWirelessResidentialServices, 30);
-		reusableActions.executeJavaScriptClick(btnWirelessResidentialServices);
+		getDriver().switchTo().defaultContent();//added for firefox dead object issue handling
+		getReusableActionsInstance().waitForElementTobeClickable(btnWirelessResidentialServices, 30);
+		getReusableActionsInstance().executeJavaScriptClick(btnWirelessResidentialServices);
 		}else
 		{
-			reusableActions.clickWhenReady(btnWirelessResidentialServices);
+			getReusableActionsInstance().clickWhenReady(btnWirelessResidentialServices);
 		}
 	}
 	
@@ -106,8 +106,8 @@ public class RogersRegisterPage extends BasePageClass {
 		int count=0;
 		while (count<=2 && !clickSuccess) {
 			System.out.println("Attempt: "+(count+1)+" Trying to find Ban and postcode");
-			reusableActions.clickIfAvailable(btnContinue);			
-			if(reusableActions.isElementVisible(lblUnableToFindAccount, 10))
+			getReusableActionsInstance().clickIfAvailable(btnContinue);
+			if(getReusableActionsInstance().isElementVisible(lblUnableToFindAccount, 10))
 			{				
 				count++;
 			}else {				
@@ -145,8 +145,8 @@ public class RogersRegisterPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyExistingProfileError(String strError) {
-		return (strError.toUpperCase().contains(driver.findElement(By.xpath("//div[@class='inline-error']/span[1]")).getText().toUpperCase()) &&
-				strError.toUpperCase().contains(driver.findElement(By.xpath("//div[@class='inline-error']/span[2]")).getText().toUpperCase()));
+		return (strError.toUpperCase().contains(getDriver().findElement(By.xpath("//div[@class='inline-error']/span[1]")).getText().toUpperCase()) &&
+				strError.toUpperCase().contains(getDriver().findElement(By.xpath("//div[@class='inline-error']/span[2]")).getText().toUpperCase()));
 	}
 
 	/**
@@ -154,8 +154,8 @@ public class RogersRegisterPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSelectService() {		
-		reusableActions.scrollToElement(btnSelectService);
-		reusableActions.clickWhenReady(btnSelectService,20);
+		getReusableActionsInstance().scrollToElement(btnSelectService);
+		getReusableActionsInstance().clickWhenReady(btnSelectService,20);
 	}
 
 	
@@ -164,7 +164,7 @@ public class RogersRegisterPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkContinueEmailVarification() {
-		reusableActions.getWhenReady(btnContinueEmailVarification).click();
+		getReusableActionsInstance().getWhenReady(btnContinueEmailVarification).click();
 	}
 	
 	/**
@@ -172,8 +172,8 @@ public class RogersRegisterPage extends BasePageClass {
 	 * @author rajesh.varalli1 
 	 */
 	public void clickRegister() {
-		driver.switchTo().frame(fraSignIn);
-		reusableActions.clickIfAvailable(lnkRegister);
+		getDriver().switchTo().frame(fraSignIn);
+		getReusableActionsInstance().clickIfAvailable(lnkRegister);
 	}
 	
 	/**
@@ -181,10 +181,10 @@ public class RogersRegisterPage extends BasePageClass {
 	 * @author rajesh.varalli1 
 	 */
 	public void clickRegisterNow() {
-		reusableActions.clickIfAvailable(btnRegisterNow);
+		getReusableActionsInstance().clickIfAvailable(btnRegisterNow);
 	}
 
 	public boolean isProfileAlreadyStarted() {		
-		return reusableActions.isElementVisible(lblProfileAlready);
+		return getReusableActionsInstance().isElementVisible(lblProfileAlready);
 	}
 }

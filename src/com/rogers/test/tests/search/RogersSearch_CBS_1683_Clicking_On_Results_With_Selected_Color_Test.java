@@ -1,62 +1,72 @@
 package com.rogers.test.tests.search;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-
-import org.apache.http.client.ClientProtocolException;
+import com.rogers.test.base.BaseTestClass;
+import com.rogers.test.helpers.RogersEnums;
 import org.openqa.selenium.WebElement;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
-import com.rogers.test.base.BaseTestClass;
-import com.rogers.test.helpers.RogersEnums;
-import com.rogers.testdatamanagement.TestDataHandler;
-import utils.CSVReader;
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.List;
 
 public class RogersSearch_CBS_1683_Clicking_On_Results_With_Selected_Color_Test extends BaseTestClass {
-	
 
+	@Test
+	public void validateResultsWithSelectedColors() {
+		List<WebElement> resultLinks;
+		String strDeviceName;
+		String strSelectedColor;
+		List<String> strColorFilters;
+		String strSearchTerm = "iphone";
+		List<String> resultColorOptions;
 
-	@DataProvider(name = "FilterData")
-	public Object[] testData() throws IOException
-	{
-		String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
-		List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
-		Object[] csvRow = new Object[csvData.size()];
-		 
-        for(int i =0; i < csvData.size();i++){
-        	csvRow[i] = csvData.get(i);
-        }
- 
-        return csvRow;
-		 
-		
+		getDriver().get(System.getProperty("SearchUrl")+strSearchTerm);
+
+		getRogersSearchPage().clkGrandParentFilter("Shop");
+		getRogersSearchPage().clkParentFilter("Shop","Wireless");
+		reporter.reportLogWithScreenshot("Shop and Wireless Filters clicked");
+
+		strColorFilters = getRogersSearchPage().getColorFilters();
+		for(int i=0;i<strColorFilters.size();i++) {
+			getRogersSearchPage().clkColorType(strColorFilters.get(i));
+			reporter.reportLogWithScreenshot(strColorFilters.get(i) + " - Color Selected");
+		}
+
+		resultLinks = getRogersSearchPage().getAllResultLinks();
+		for(int k=0;k<resultLinks.size();k++) {
+			String linkDetails = resultLinks.get(k).getText();
+
+			resultColorOptions = getRogersSearchPage().getResultColorOptions(resultLinks.get(k));
+			for (int j=0;j<resultColorOptions.size();j++) {
+				getRogersSearchPage().clkResultColor(resultLinks.get(k), resultColorOptions.get(j));
+				reporter.reportLogWithScreenshot(resultColorOptions.get(j) + " color selected for Result link-" + (k+1));
+				getRogersSearchPage().clkResultLink(resultLinks.get(k));
+
+				strDeviceName = getRogersDeviceConfigPage().getDeviceName();
+				if(strDeviceName != null && !strDeviceName.equals("Phones")) {
+					reporter.reportLogPassWithScreenshot(strDeviceName + " Page");
+					strSelectedColor = getRogersDeviceConfigPage().getSelectedColor();
+					reporter.softAssert(strSelectedColor.equals(resultColorOptions.get(j)),
+							"Color: Expected="+resultColorOptions.get(j)+"; Actual=" + strSelectedColor,
+							"Color: Expected="+resultColorOptions.get(j)+"; Actual=" + strSelectedColor);
+					getRogersDeviceConfigPage().navigateBack();
+				} else {
+					reporter.reportLogFailWithScreenshot("Failed to land on Device Config page for following device: "  + linkDetails + " & following color: " + resultColorOptions.get(j));
+					getDriver().get(System.getProperty("SearchUrl")+strSearchTerm);
+					getRogersSearchPage().clkGrandParentFilter("Shop");
+					getRogersSearchPage().clkParentFilter("Shop","Wireless");
+					strColorFilters = getRogersSearchPage().getColorFilters();
+					for(int i=0;i<strColorFilters.size();i++) {
+						getRogersSearchPage().clkColorType(strColorFilters.get(i));
+					}
+				}
+				resultLinks = getRogersSearchPage().getAllResultLinks();
+				resultColorOptions = getRogersSearchPage().getResultColorOptions(resultLinks.get(k));
+			}
+		}
 	}
-	
-	@Test(dataProvider = "FilterData")
-	
-	public void validateResultsWithSelectedColors(String[] csvRow) {
-	
-	getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
-	
-	rogers_search_page.clkShopAndThenWirelessFilter();
-	reporter.reportLogWithScreenshot("Shop and Wireless Filters clicked");
-	
-	reporter.hardAssert(rogers_search_page.verifyDifferentColorResultsDisplay(), "Color Results displayed correctly", "Color Results not displayed correctly");
-	reporter.hardAssert(rogers_search_page.verifyResultsColorLabelWithSelectedColor(), "Color Label Displayed Correctly", "Color Label not Displayed Correctly");
-				
-				
-	}
-
-
 
 	@BeforeMethod(alwaysRun = true)
 	@Parameters({"strBrowser", "strLanguage"})
@@ -69,8 +79,5 @@ public class RogersSearch_CBS_1683_Clicking_On_Results_With_Selected_Color_Test 
 	public void afterTest() {
 		closeSession();
 	}
-	
-	
+
 }
-
-

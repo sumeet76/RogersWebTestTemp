@@ -59,8 +59,8 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyProfilePage() {
-		reusableActions.waitForElementVisibility(txtProfile,60);
-		return reusableActions.isElementVisible(txtProfile);
+		getReusableActionsInstance().waitForElementVisibility(txtProfile,60);
+		return getReusableActionsInstance().isElementVisible(txtProfile);
 	}
 
 	/**
@@ -69,8 +69,8 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyProfilePageSAI() {
-		reusableActions.waitForElementVisibility(txtSaiProfile,60);
-		return reusableActions.isElementVisible(txtSaiProfile);
+		getReusableActionsInstance().waitForElementVisibility(txtSaiProfile,60);
+		return getReusableActionsInstance().isElementVisible(txtSaiProfile);
 	}
 
 	/**
@@ -80,8 +80,8 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 */
 	public boolean verifySessionModel() {
 		//Session expiry time  2 minutes
-		reusableActions.staticWait(120000);
-		return reusableActions.isElementVisible(popupSessionModel,60);
+		getReusableActionsInstance().staticWait(120000);
+		return getReusableActionsInstance().isElementVisible(popupSessionModel,60);
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkContinue() {
-		reusableActions.getWhenReady(btnContinueSession, 20).click();
+		getReusableActionsInstance().getWhenReady(btnContinueSession, 20).click();
 	}
 
 
@@ -99,13 +99,13 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 */
 	public void setEmail() {
 		String strEmail = FormFiller.generateEmail();
-		reusableActions.waitForElementVisibility(txtContainerEmail,20);
-		reusableActions.getWhenReady(txtContainerEmail,10).click();
-		reusableActions.getWhenReady(txtEmail, 30).clear();
-		reusableActions.getWhenReady(txtEmail,10).sendKeys(strEmail);
-		reusableActions.executeJavaScriptClick(txtConfirmEmail);
-		reusableActions.getWhenReady(txtConfirmEmail, 10).clear();
-		reusableActions.getWhenReady(txtConfirmEmail,3).sendKeys(strEmail);
+		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail,20);
+		getReusableActionsInstance().getWhenReady(txtContainerEmail,10).click();
+		getReusableActionsInstance().getWhenReady(txtEmail, 30).clear();
+		getReusableActionsInstance().getWhenReady(txtEmail,10).sendKeys(strEmail);
+		getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
+		getReusableActionsInstance().getWhenReady(txtConfirmEmail, 10).clear();
+		getReusableActionsInstance().getWhenReady(txtConfirmEmail,3).sendKeys(strEmail);
 	}
 
 	/**
@@ -114,9 +114,9 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 */
 	public void setFirstname() {
 		String strName = FormFiller.generateRandomName();
-		reusableActions.executeJavaScriptClick(txtFirstName);
-		reusableActions.getWhenReady(txtFirstName, 3).clear();
-		reusableActions.getWhenReady(txtFirstName,3).sendKeys(strName);
+		getReusableActionsInstance().executeJavaScriptClick(txtFirstName);
+		getReusableActionsInstance().getWhenReady(txtFirstName, 3).clear();
+		getReusableActionsInstance().getWhenReady(txtFirstName,3).sendKeys(strName);
 	}
 
 	/**
@@ -125,9 +125,9 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 */
 	public void setLastName() {
 		String strName = FormFiller.generateRandomName();
-		reusableActions.executeJavaScriptClick(txtLastName);
-		reusableActions.getWhenReady(txtLastName, 3).clear();
-		reusableActions.getWhenReady(txtLastName,3).sendKeys(strName);
+		getReusableActionsInstance().executeJavaScriptClick(txtLastName);
+		getReusableActionsInstance().getWhenReady(txtLastName, 3).clear();
+		getReusableActionsInstance().getWhenReady(txtLastName,3).sendKeys(strName);
 	}
 
 	/**
@@ -137,9 +137,9 @@ public class RogersInternetProfilePage extends BasePageClass {
 	public void setPhone() {
 		String strPhoneNumber = FormFiller.generatePhoneNumber();
 		//String strPhoneNumber ="1010000062";
-		reusableActions.executeJavaScriptClick(btnPhone);
-		reusableActions.getWhenReady(btnPhone, 3).clear();
-		reusableActions.getWhenReady(btnPhone,3).sendKeys(strPhoneNumber);
+		getReusableActionsInstance().executeJavaScriptClick(btnPhone);
+		getReusableActionsInstance().getWhenReady(btnPhone, 3).clear();
+		getReusableActionsInstance().getWhenReady(btnPhone,3).sendKeys(strPhoneNumber);
 	}
 	
 	/**
@@ -147,7 +147,7 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSubmitProfile() {
-		reusableActions.getWhenReady(btnProfielSubmit, 60).click();
+		getReusableActionsInstance().getWhenReady(btnProfielSubmit, 60).click();
 	}
 
 	/**
@@ -155,8 +155,8 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSubmitProfileMobile() {
-		reusableActions.waitForElementVisibility(btnProfielSubmit, 60);
-		reusableActions.executeJavaScriptClick(btnProfielSubmit);
+		getReusableActionsInstance().waitForElementVisibility(btnProfielSubmit, 60);
+		getReusableActionsInstance().executeJavaScriptClick(btnProfielSubmit);
 	}
 
 }

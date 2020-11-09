@@ -29,35 +29,35 @@ public class RogersSS_TC_053_ValidateBrightstarLinkInWirelessDashbard_prepaidCon
 	
     @Test (groups = {"RegressionSS","WirelessDashboardSS","TC53"})
     public void validateBrightstarLink() {
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc5398.getUsername();
     	String strPassword = TestDataHandler.tc5398.getPassword();
         String strAccountNum = TestDataHandler.tc5398.getAccountDetails().getCtn();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
-        rogers_login_page.setPasswordIFrame(strPassword);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_account_overview_page.removeCookieAfterLogin("temp_token_r");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersAccountOverviewPage().removeCookieAfterLogin("temp_token_r");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 
         reporter.reportLogWithScreenshot("Account overview page.");
-       // rogers_account_overview_page.removeCookieAfterLogin("temp_token_r");
-        rogers_account_overview_page.clkMenuUsageAndService();
+       // getRogersAccountOverviewPage().removeCookieAfterLogin("temp_token_r");
+        getRogersAccountOverviewPage().clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
-        rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
+        getRogersAccountOverviewPage().clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
 
-        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
-        rogers_wireless_dashboard_page.scrollToBottomOfPage();
+        getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
+        getRogersWirelessDashboardPage().scrollToBottomOfPage();
         reporter.reportLogWithScreenshot("Bottom of Wireless dashboard page.");
-        rogers_wireless_dashboard_page.clkLnkTrackPhoneRepairClaim();
+        getRogersWirelessDashboardPage().clkLnkTrackPhoneRepairClaim();
         reporter.reportLogWithScreenshot("Link start or track a phone repair claim is clicked.");
-        rogers_wireless_dashboard_page.clkBtnHelpYourPhoneContinue();
+        getRogersWirelessDashboardPage().clkBtnHelpYourPhoneContinue();
         reporter.reportLogWithScreenshot("Button continue in help out on your phone is clicked.");
         String strUrlExpected = TestDataHandler.ssConfig.getPhoneRepairUrl();
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyBrightstarLinkOpenSuccessfully(strUrlExpected), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyBrightstarLinkOpenSuccessfully(strUrlExpected),
 				"Brightstar link opened successfully.", 
 				"Brightstar link didn't redirect to expected url.");
         reporter.reportLogWithScreenshot("Brightstar link opened page.");

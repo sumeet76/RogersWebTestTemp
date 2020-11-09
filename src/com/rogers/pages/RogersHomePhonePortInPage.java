@@ -77,9 +77,9 @@ public class RogersHomePhonePortInPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void setHomePhoneNumber(String strPhoneNumber) {
-		reusableActions.getWhenReady(txtHomePhoneNumberFormcontainer, 30).click();
-		reusableActions.getWhenReady(txtHomePhoneNumber, 40).clear();
-		reusableActions.getWhenReady(txtHomePhoneNumber, 60).sendKeys(strPhoneNumber);
+		getReusableActionsInstance().getWhenReady(txtHomePhoneNumberFormcontainer, 30).click();
+		getReusableActionsInstance().getWhenReady(txtHomePhoneNumber, 40).clear();
+		getReusableActionsInstance().getWhenReady(txtHomePhoneNumber, 60).sendKeys(strPhoneNumber);
 	}
 	
 	/**
@@ -88,7 +88,7 @@ public class RogersHomePhonePortInPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean   verifyPhoneNumberSuccess() {
-		return reusableActions.isElementVisible(imgPhoneNumberVerificationSuccess, 60);
+		return getReusableActionsInstance().isElementVisible(imgPhoneNumberVerificationSuccess, 60);
 	}
 
 	
@@ -97,7 +97,7 @@ public class RogersHomePhonePortInPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkPhoneNumberEligibiltyCheck() {
-		reusableActions.getWhenReady(btnPhoneNumberEligibiltyCheck, 120).click();
+		getReusableActionsInstance().getWhenReady(btnPhoneNumberEligibiltyCheck, 120).click();
 	}
 	
 	/**
@@ -105,7 +105,7 @@ public class RogersHomePhonePortInPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkPhoneCheck() {
-		reusableActions.getWhenReady(btnConfirmPhone, 120).click();
+		getReusableActionsInstance().getWhenReady(btnConfirmPhone, 120).click();
 	}
 	
 	/**
@@ -115,9 +115,9 @@ public class RogersHomePhonePortInPage extends BasePageClass {
 	public void setFirstName() {
 		String strName = FormFiller.generateRandomName();
 		String strFname="Rogersaa" + strName;
-		reusableActions.waitForElementVisibility(imgPhoneNumberVerificationSuccess, 30);
-		reusableActions.executeJavaScriptClick(txtFirstName);
-		reusableActions.getWhenReady(txtFirstName, 10).sendKeys(strFname);
+		getReusableActionsInstance().waitForElementVisibility(imgPhoneNumberVerificationSuccess, 30);
+		getReusableActionsInstance().executeJavaScriptClick(txtFirstName);
+		getReusableActionsInstance().getWhenReady(txtFirstName, 10).sendKeys(strFname);
 	}
 	
 	/**
@@ -127,8 +127,8 @@ public class RogersHomePhonePortInPage extends BasePageClass {
 	public void setLastName() {
 		String strName = FormFiller.generateRandomName();
 		String strLname="Automation" + strName;
-		reusableActions.executeJavaScriptClick(txtLastName);
-		reusableActions.getWhenReady(txtLastName, 3).sendKeys(strLname);
+		getReusableActionsInstance().executeJavaScriptClick(txtLastName);
+		getReusableActionsInstance().getWhenReady(txtLastName, 3).sendKeys(strLname);
 	}
 	
 	/**
@@ -138,10 +138,10 @@ public class RogersHomePhonePortInPage extends BasePageClass {
 	public void setCurrentPhoneNumber() {
 		String strPhoneNumber = FormFiller.generatePhoneNumber();
 		//Address loading taking time and interrupting the phone element 
-		reusableActions.staticWait(3000);
-		reusableActions.getWhenReady(txtCurrentPhoneNumberContainer,10).click();		
-		reusableActions.getWhenReady(txtCurrentPhoneNumber,10).clear();
-		reusableActions.getWhenReady(txtCurrentPhoneNumber, 10).sendKeys(strPhoneNumber);
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().getWhenReady(txtCurrentPhoneNumberContainer,10).click();
+		getReusableActionsInstance().getWhenReady(txtCurrentPhoneNumber,10).clear();
+		getReusableActionsInstance().getWhenReady(txtCurrentPhoneNumber, 10).sendKeys(strPhoneNumber);
 	}
 	
 	
@@ -151,13 +151,13 @@ public class RogersHomePhonePortInPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void setInvoiceAddress(String strInvoiceAddress) {
-		reusableActions.executeJavaScriptClick(txtInvoiceAddress);
-		reusableActions.getWhenReady(txtInvoiceAddress, 3).clear();
-		reusableActions.getWhenReady(txtInvoiceAddress, 3).sendKeys(strInvoiceAddress);
-		reusableActions.getWhenVisible(txtInvoiceAddress, 10).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(txtInvoiceAddress, 10).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(txtInvoiceAddress, 10).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(txtInvoiceAddress).sendKeys(Keys.ENTER);
+		getReusableActionsInstance().executeJavaScriptClick(txtInvoiceAddress);
+		getReusableActionsInstance().getWhenReady(txtInvoiceAddress, 3).clear();
+		getReusableActionsInstance().getWhenReady(txtInvoiceAddress, 3).sendKeys(strInvoiceAddress);
+		getReusableActionsInstance().getWhenVisible(txtInvoiceAddress, 10).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txtInvoiceAddress, 10).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txtInvoiceAddress, 10).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txtInvoiceAddress).sendKeys(Keys.ENTER);
 	}
 	
 	/**
@@ -165,9 +165,9 @@ public class RogersHomePhonePortInPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selIMEI() {
-		reusableActions.getWhenReady(selIMEIContainer, 30);	
-		reusableActions.waitForElementVisibility(ddlAccountNumberOrIMEI,90);
-		reusableActions.selectWhenReadyByVisibleText(ddlAccountNumberOrIMEI, "IMEI");
+		getReusableActionsInstance().getWhenReady(selIMEIContainer, 30);
+		//getReusableActionsInstance().waitForElementVisibility(ddlAccountNumberOrIMEI,120);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlAccountNumberOrIMEI, "IMEI");
 	}
 	
 	/**
@@ -176,9 +176,9 @@ public class RogersHomePhonePortInPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void setAccountNumberOrIMEI(String strAccountNumberorIMEI) {
-		reusableActions.executeJavaScriptClick(txtIMEIContainer);
-		reusableActions.getWhenReady(txtAccountNumberOrIMEI, 60).clear();
-		reusableActions.getWhenReady(txtAccountNumberOrIMEI, 3).sendKeys(strAccountNumberorIMEI);
+		getReusableActionsInstance().executeJavaScriptClick(txtIMEIContainer);
+		getReusableActionsInstance().getWhenReady(txtAccountNumberOrIMEI, 60).clear();
+		getReusableActionsInstance().getWhenReady(txtAccountNumberOrIMEI, 3).sendKeys(strAccountNumberorIMEI);
 	}
 	
 	/**
@@ -186,6 +186,6 @@ public class RogersHomePhonePortInPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkConfirmPhoneNumber() {
-		reusableActions.getWhenReady(btnConfirmPhoneNumber, 30).click();
+		getReusableActionsInstance().getWhenReady(btnConfirmPhoneNumber, 30).click();
 	}
 }

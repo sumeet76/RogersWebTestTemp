@@ -21,7 +21,7 @@ import com.rogers.test.helpers.RogersEnums;
 import utils.CSVReader;
 
 public class RogersSearch_CBS_1703_Results_To_Links_Detailed_Page extends BaseTestClass {
-    @DataProvider(name = "FilterData")
+    @DataProvider(name = "FilterData",parallel=true)
     public Object[] testData() throws IOException
     {
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
@@ -45,15 +45,15 @@ public class RogersSearch_CBS_1703_Results_To_Links_Detailed_Page extends BaseTe
         String[] strFilters = Arrays.copyOfRange(csvRow, 1, csvRow.length);
         for(int i=0; i<strFilters.length; i++) {
 
-            rogers_search_page.clkGrandParentFilter(strFilters[i]);
+            getRogersSearchPage().clkGrandParentFilter(strFilters[i]);
             reporter.reportLogWithScreenshot("Grand Parent Filter "+strFilters[i]+" is clicked");
-            lstParentFilters = rogers_search_page.getParentFilters(strFilters[i]);
+            lstParentFilters = getRogersSearchPage().getParentFilters(strFilters[i]);
 
             for(int j=0; j<lstParentFilters.size(); j++) {
-                rogers_search_page.clkParentFilter(lstParentFilters.get(j));
+                getRogersSearchPage().clkParentFilter(lstParentFilters.get(j));
                 strParentFilterName = lstParentFilters.get(j).getText();
                 reporter.reportLogWithScreenshot("Parent filter "+strParentFilterName +" is selected");
-                reporter.hardAssert(rogers_search_page.validateResultsLinks(strFilters[i],strParentFilterName),
+                reporter.hardAssert(getRogersSearchPage().validateResultsLinks(strFilters[i],strParentFilterName),
                         "Displayed Results are Links", "Displayed Results are Links");
             }
             System.out.println("end of set");

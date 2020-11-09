@@ -43,7 +43,7 @@ public class EnsNotificationViewPage extends BasePageClass {
 	 * @author ning.xue 
 	 */
 	public void clkMenuNotifViewer() {
-		reusableActions.getWhenVisible(menuNotificationViewer).click();
+		getReusableActionsInstance().getWhenVisible(menuNotificationViewer).click();
 	}
 	
 	/**
@@ -52,8 +52,8 @@ public class EnsNotificationViewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void setAccountId(String strAccountId) {
-		reusableActions.getWhenReady(txtAccountId).clear();
-		reusableActions.getWhenReady(txtAccountId).sendKeys(strAccountId);
+		getReusableActionsInstance().getWhenReady(txtAccountId).clear();
+		getReusableActionsInstance().getWhenReady(txtAccountId).sendKeys(strAccountId);
 	}
 	
 	/**
@@ -61,8 +61,8 @@ public class EnsNotificationViewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnSearchNotification() {
-		reusableActions.staticWait(3000);
-		reusableActions.clickWhenVisible(btnSearchNotification);
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().clickWhenVisible(btnSearchNotification);
 	}
 	/**
 	 * To verify in email by clicking the html file image by locating the first(latest) record by account ID.
@@ -70,10 +70,10 @@ public class EnsNotificationViewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkLnkHtmlForEmailVerify(String strAccountId) {
-		reusableActions.waitForAllElementsVisible(driver.findElements(By.xpath("//td[contains(text(),'" + strAccountId + "')]")), 30);
-		List<WebElement> lnkHtml = driver.findElements(By.xpath("//td[contains(text(),'" + strAccountId + "')]//following-sibling::td/a[@class='img_html_png']"));
-		reusableActions.getWhenReady(lnkHtml.get(0), 30).click();
-		reusableActions.waitForNumberOfWindowsToBe(3, 20);
+		getReusableActionsInstance().waitForAllElementsVisible(getDriver().findElements(By.xpath("//td[contains(text(),'" + strAccountId + "')]")), 30);
+		List<WebElement> lnkHtml = getDriver().findElements(By.xpath("//td[contains(text(),'" + strAccountId + "')]//following-sibling::td/a[@class='img_html_png']"));
+		getReusableActionsInstance().getWhenReady(lnkHtml.get(0), 30).click();
+		getReusableActionsInstance().waitForNumberOfWindowsToBe(3, 20);
 	}
 	
 	/**
@@ -82,9 +82,9 @@ public class EnsNotificationViewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkLnkPdfForSmsVerify(String strPhoneNum) {
-		reusableActions.waitForAllElementsVisible(driver.findElements(By.xpath("//td[contains(text(),'" + strPhoneNum + "')]//following-sibling::td/a[@class='img_pdf_png']")), 30);
-		List<WebElement> lnkHtml = driver.findElements(By.xpath("//td[contains(text(),'" + strPhoneNum + "')]//following-sibling::td/a[@class='img_pdf_png']"));
-		reusableActions.getWhenVisible(lnkHtml.get(0)).click();
+		getReusableActionsInstance().waitForAllElementsVisible(getDriver().findElements(By.xpath("//td[contains(text(),'" + strPhoneNum + "')]//following-sibling::td/a[@class='img_pdf_png']")), 30);
+		List<WebElement> lnkHtml = getDriver().findElements(By.xpath("//td[contains(text(),'" + strPhoneNum + "')]//following-sibling::td/a[@class='img_pdf_png']"));
+		getReusableActionsInstance().getWhenVisible(lnkHtml.get(0)).click();
 	}
 	
 	/**
@@ -93,7 +93,7 @@ public class EnsNotificationViewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public String getNotificationCode() {
-		reusableActions.staticWait(5000); 
+		getReusableActionsInstance().staticWait(5000);
 		String strNotification = notificationText.getText();
 		String strCode = strNotification.substring(strNotification.length()-8);
 		return strCode;
@@ -105,7 +105,7 @@ public class EnsNotificationViewPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public String getUserName() {
-		reusableActions.staticWait(5000); 
+		getReusableActionsInstance().staticWait(5000);
 		String strNotification = notificationText.getText();
 		String struserName = strNotification.split(": ")[1].trim();
 		return struserName;
@@ -116,7 +116,7 @@ public class EnsNotificationViewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnOk() {
-		reusableActions.clickWhenVisible(btnOk, 10);
+		getReusableActionsInstance().clickWhenVisible(btnOk, 10);
 	}
 	
 	/**
@@ -124,7 +124,7 @@ public class EnsNotificationViewPage extends BasePageClass {
      * @param strEmail, email string.
      */
     public void setEmailId(String strEmail) {
-    	reusableActions.getWhenReady(txtContactEmail).sendKeys(strEmail);
+    	getReusableActionsInstance().getWhenReady(txtContactEmail).sendKeys(strEmail);
     }
     
     /**
@@ -132,8 +132,8 @@ public class EnsNotificationViewPage extends BasePageClass {
 	 * @param intTabIndex the index of the tab
 	 */
 	public void switchToNewTab(int intTabIndex) {
-		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-		driver.switchTo().window(tabs.get(intTabIndex));
+		ArrayList<String> tabs = new ArrayList<String>(getDriver().getWindowHandles());
+		getDriver().switchTo().window(tabs.get(intTabIndex));
 	}
 	
 	/**
@@ -141,7 +141,7 @@ public class EnsNotificationViewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnSetPasswordInEmail() {
-		reusableActions.clickWhenReady(btnSetPasswordInEmail, 30);
+		getReusableActionsInstance().clickWhenReady(btnSetPasswordInEmail, 30);
 	}
 	
 	/**
@@ -149,7 +149,7 @@ public class EnsNotificationViewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void closeEnsWindow() {
-		reusableActions.closeCurrentWindow();
+		getReusableActionsInstance().closeCurrentWindow();
 	}
 
 }

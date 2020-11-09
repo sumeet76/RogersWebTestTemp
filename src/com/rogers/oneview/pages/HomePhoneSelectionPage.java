@@ -57,8 +57,8 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	 * @author Harpartap.Virk
 	 */	
 	public void clkGeneratePhoneNo() {
-		//reusableActions.javascriptScrollByVisibleElement(reusableActions.getWhenReady(phoneNoInput,120));
-		reusableActions.getWhenReady(generatePhoneNumber,60).sendKeys(Keys.ENTER);
+		//getReusableActionsInstance().javascriptScrollByVisibleElement(getReusableActionsInstance().getWhenReady(phoneNoInput,120));
+		getReusableActionsInstance().getWhenReady(generatePhoneNumber,60).sendKeys(Keys.ENTER);
 	}
 	/**
 	 * Verify the Phone Number is Selected
@@ -66,15 +66,15 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	 * @author Harpartap.Virk
 	 */	
 	public boolean verifyNumber() {	
-		return reusableActions.isElementVisible(continueButton);
+		return getReusableActionsInstance().isElementVisible(continueButton);
 	}
 	/**
 	 * Click Continue Button  
 	 * @author Harpartap.Virk
 	 */	
 	public void clkContinue() {	
-		//reusableActions.javascriptScrollByVisibleElement(reusableActions.getWhenReady(continueButton));
-		reusableActions.getWhenReady(continueButton).sendKeys(Keys.ENTER);;
+		//getReusableActionsInstance().javascriptScrollByVisibleElement(getReusableActionsInstance().getWhenReady(continueButton));
+		getReusableActionsInstance().getWhenReady(continueButton).sendKeys(Keys.ENTER);;
 	}
 	
 	
@@ -83,8 +83,8 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	 * @author Harpartap.Virk
 	 */	
 	public void clkUpdateDirectoryListing() {
-		//reusableActions.javascriptScrollByVisibleElement(reusableActions.getWhenReady(phoneNoInput,120));
-		reusableActions.getWhenReady(updateDirectoryListingbtn,60).sendKeys(Keys.ENTER);
+		//getReusableActionsInstance().javascriptScrollByVisibleElement(getReusableActionsInstance().getWhenReady(phoneNoInput,120));
+		getReusableActionsInstance().getWhenReady(updateDirectoryListingbtn,60).sendKeys(Keys.ENTER);
 	}
 	
 	/**
@@ -93,8 +93,8 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	 * @author Harpartap.Virk
 	 */	
 	public boolean verifySelectedNumber() {	
-		WebElement btn=reusableActions.getWhenReady(selectedPhoneNo,120);
-		reusableActions.javascriptScrollByCoordinates(0,btn.getLocation().y-300);
-		return reusableActions.isElementVisible(selectedPhoneNo);
+		WebElement btn=getReusableActionsInstance().getWhenReady(selectedPhoneNo,120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		return getReusableActionsInstance().isElementVisible(selectedPhoneNo);
 	}
 }

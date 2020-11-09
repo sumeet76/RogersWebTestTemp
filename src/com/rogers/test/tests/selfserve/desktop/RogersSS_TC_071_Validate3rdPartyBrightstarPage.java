@@ -33,26 +33,26 @@ public class RogersSS_TC_071_Validate3rdPartyBrightstarPage extends BaseTestClas
     	String strDeepLinkURL = System.getProperty("QaUrl").split(".com")[0]+".com"+TestDataHandler.ssConfig.getRepairClaimUrl();
     	getDriver().get(strDeepLinkURL);
     	reporter.reportLogWithScreenshot("After setting the deeplink : "+strDeepLinkURL);
-    	reporter.hardAssert(rogers_login_page.isSignInFrameDisplayed()
+    	reporter.hardAssert(getRogersLoginPage().isSignInFrameDisplayed()
     	    		   , "When a user is not logged into an account and deep link URL is entered, it is asking the user to login first"
     	    		   , "The login pop up didnt show up for non logged in user after entering deep link");
     	String strUsername = TestDataHandler.tc495271.getUsername();
     	String strPassword = TestDataHandler.tc495271.getPassword();
         String strUrlExpected = TestDataHandler.ssConfig.getPhoneRepairUrl();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
-        rogers_login_page.setPasswordIFrame(strPassword);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
-		if (rogers_wireless_dashboard_page.verifyRepairClaimModalIsDisplayed()) {
+		getRogersLoginPage().clkSignInIFrame();
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
+		if (getRogersWirelessDashboardPage().verifyRepairClaimModalIsDisplayed()) {
 	        reporter.reportLogWithScreenshot("Repair claim page.");
-	        rogers_wireless_dashboard_page.clkFirstCtnInListForRepairClaim();
-	        rogers_wireless_dashboard_page.clkBtnHelpYourPhoneContinue();
+	        getRogersWirelessDashboardPage().clkFirstCtnInListForRepairClaim();
+	        getRogersWirelessDashboardPage().clkBtnHelpYourPhoneContinue();
 	        reporter.reportLogWithScreenshot("Button continue in help out on your phone is clicked.");
 		} 
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyBrightstarLinkOpenSuccessfully(strUrlExpected), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyBrightstarLinkOpenSuccessfully(strUrlExpected),
 				"Brightstar link opened successfully.", 
 				"Brightstar link didn't redirect to expected url.");
         reporter.reportLogWithScreenshot("Brightstar link opened page.");

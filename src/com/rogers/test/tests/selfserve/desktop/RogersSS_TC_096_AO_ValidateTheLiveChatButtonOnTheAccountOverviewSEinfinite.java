@@ -26,31 +26,31 @@ public class RogersSS_TC_096_AO_ValidateTheLiveChatButtonOnTheAccountOverviewSEi
 	}
 		   
     private void tryLogin(String strUsername, String strPassword) {
-    	 rogers_login_page.switchToSignInIFrame();
-    	 rogers_login_page.setUsernameIFrame(strUsername);
-         rogers_login_page.setPasswordIFrame(strPassword);
+    	 getRogersLoginPage().switchToSignInIFrame();
+    	 getRogersLoginPage().setUsernameIFrame(strUsername);
+         getRogersLoginPage().setPasswordIFrame(strPassword);
  		 reporter.reportLogWithScreenshot("Login Credential is entered.");
-         rogers_login_page.clkSignInIFrame();
-         reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-         rogers_login_page.clkSkipIFrame();      
-         rogers_login_page.switchOutOfSignInIFrame();
+         getRogersLoginPage().clkSignInIFrame();
+         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+         getRogersLoginPage().clkSkipIFrame();      
+         getRogersLoginPage().switchOutOfSignInIFrame();
     }
     
     @Test(groups = {"RegressionSS","AccountOverviewSS"})
     public void validateTheLiveChatButtonOnTheAccountOverviewSEinfinite() {
 
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc63.getUsername();
     	String strPassword = TestDataHandler.tc63.getPassword();		
 		tryLogin(strUsername, strPassword);
 		reporter.reportLogWithScreenshot("Account overveiew page");		
-		reporter.hardAssert(rogers_account_overview_page.verifyLiveChatButtonIsDisplayed(), 
+		reporter.hardAssert(getRogersAccountOverviewPage().verifyLiveChatButtonIsDisplayed(), 
 					"Live Chat button is displayed in Account overview page", 
 					"Live Chat button is NOT displayed in Account overview page");
 		
-		rogers_account_overview_page.clkBtnLiveChat();
+		getRogersAccountOverviewPage().clkBtnLiveChat();
 		reporter.reportLogWithScreenshot("Clicked on Button Live Chat");	
-		reporter.hardAssert(rogers_account_overview_page.verifyLiveChatOverlayOpened(), 
+		reporter.hardAssert(getRogersAccountOverviewPage().verifyLiveChatOverlayOpened(), 
 							"Live Chat overlay opened in Account overview page", 
 							"Live Chat overlay did NOT open in Account overview page, please investigate.");
 		reporter.reportLogWithScreenshot("Live Chat overlay opened."); 

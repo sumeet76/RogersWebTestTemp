@@ -31,48 +31,48 @@ public class RogersSS_TC_94_AO_ValidateCreditLimitExceededAccountSuspended_SE_In
     public void validateCreditLimitExceededAccountSuspended_SE_Infinite() {
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
-    	rogers_home_page.clkSignIn();
-		rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(TestDataHandler.tc94.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.tc94.getPassword());
+    	getRogersHomePage().clkSignIn();
+		getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc94.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc94.getPassword());
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-        rogers_login_page.clkSignInIFrame();
-        reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
-        rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+        getRogersLoginPage().clkSignInIFrame();
+        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
+        getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-        	rogers_account_overview_page.selectAccount(TestDataHandler.tc94.getAccountDetails().getBan());       
+        	getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc94.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");
-        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Passed", "Login Failed");
+        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Passed", "Login Failed");
         
         /*
-        reporter.hardAssert(rogers_account_overview_page.isCreditLimitReachedNotificationDisplayed(),
+        reporter.hardAssert(getRogersAccountOverviewPage().isCreditLimitReachedNotificationDisplayed(),
         		"Credit limit reached notification is displayed as expected",
         		"Credit limit reached notification is NOT displayed as expected");
         */
-        reporter.hardAssert(rogers_account_overview_page.isServicesSuspendedNotificationDisplayed(),
+        reporter.hardAssert(getRogersAccountOverviewPage().isServicesSuspendedNotificationDisplayed(),
         		"Service suspended notification is displayed as expected",
         		"Service suspended notification is NOT displayed as expected"); 
         reporter.reportLogWithScreenshot("Services suspended Notification displayed");
         common_business_flows.scrollToMiddleOfWebPage();
         reporter.reportLogWithScreenshot("CTNs View");
-        reporter.hardAssert(rogers_account_overview_page.isSuspendedCTNAvailable(),
+        reporter.hardAssert(getRogersAccountOverviewPage().isSuspendedCTNAvailable(),
         		"Suspended CTN is avialable",
         		"Suspended CTN is not available");
         
-        rogers_account_overview_page.clkSuspendedCTN();
+        getRogersAccountOverviewPage().clkSuspendedCTN();
        
-        reporter.hardAssert(rogers_account_overview_page.isSuspendedCTNAvailable(),
+        reporter.hardAssert(getRogersAccountOverviewPage().isSuspendedCTNAvailable(),
         		"User is unable to click and navigate through suspended CTN Badge",
         		"It seems the user was able to click on suspended CTN");
         
         common_business_flows.scrollToTopOfWebPage();
-        rogers_account_overview_page.clkBtnLiveChatInsideSuspensionNotification();
+        getRogersAccountOverviewPage().clkBtnLiveChatInsideSuspensionNotification();
 		reporter.reportLogWithScreenshot("Clicked on Button Live Chat");	
-		reporter.hardAssert(rogers_account_overview_page.verifyLiveChatOverlayOpened(), 
+		reporter.hardAssert(getRogersAccountOverviewPage().verifyLiveChatOverlayOpened(),
 							"Live Chat overlay opened in Account overview page", 
 							"Live Chat overlay did NOT open in Account overview page, please investigate.");
 		reporter.reportLogWithScreenshot("Live Chat overlay opened."); 

@@ -32,84 +32,84 @@ public class RogersBFA_TC07_AAL_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","SanityBFA","AALBFA"})
 	public void aalFlowTest() {
-		reporter.hardAssert(rogers_home_page.verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+		reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		reporter.reportLogWithScreenshot("Home Page");
-		rogers_home_page.clkSignIn();
-		rogers_login_page.switchToSignInIFrame();
-		rogers_login_page.setUsernameIFrame(TestDataHandler.testCase7.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.testCase7.getPassword());
+		getRogersHomePage().clkSignIn();
+		getRogersLoginPage().switchToSignInIFrame();
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.testCase7.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.testCase7.getPassword());
 		reporter.reportLogWithScreenshot("Login Page");
-		rogers_login_page.clkSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
 		reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
-		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Successful", "Login Failed");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
+		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
 		reporter.reportLogWithScreenshot("Account Overview page");
-		rogers_home_page.clkShop();
-		rogers_home_page.clkWireless();
-		rogers_home_page.clkViewAllDevices();
-		rogers_home_page.clkAddNow();
+		getRogersHomePage().clkShop();
+		getRogersHomePage().clkWireless();
+		getRogersHomePage().clkViewAllDevices();
+		getRogersHomePage().clkAddNow();
 		reporter.reportLogWithScreenshot("clicked on Add button and on Add device to a shared plan diologue displayed");
-		rogers_home_page.clkAddDeviceToSharedPlan();
-		reporter.hardAssert(rogers_choose_phone_page.verifyRogersChoosePhonePage(), "Rogers Choose Phone Page loaded properly", "Rogers Choose Phone Page load failed");
+		getRogersHomePage().clkAddDeviceToSharedPlan();
+		reporter.hardAssert(getRogersChoosePhonePage().verifyRogersChoosePhonePage(), "Rogers Choose Phone Page loaded properly", "Rogers Choose Phone Page load failed");
 		reporter.reportLogWithScreenshot("Rogers Choose Phone page");
-		rogers_choose_phone_page.searchDevice(TestDataHandler.testCase7.getNewDevice());
-		Boolean proOnTheGoAddressFlag  = rogers_choose_phone_page.checkProOnTheGoAtAddress(TestDataHandler.testCase7.getPostalCode());
+		getRogersChoosePhonePage().searchDevice(TestDataHandler.testCase7.getNewDevice());
+		Boolean proOnTheGoAddressFlag  = getRogersChoosePhonePage().checkProOnTheGoAtAddress(TestDataHandler.testCase7.getPostalCode());
 		Boolean proOnTheGoFlag = false;
 		if(proOnTheGoAddressFlag) {
-			proOnTheGoFlag = rogers_choose_phone_page.checkProOnTheGo();
+			proOnTheGoFlag = getRogersChoosePhonePage().checkProOnTheGo();
 		}
-		rogers_choose_phone_page.addFirstAvailableDevice();	
-		rogers_build_plan_page.verifyBildPlanPageLoadedSuccessfully();
+		getRogersChoosePhonePage().addFirstAvailableDevice();
+		getRogersBuildPlanPage().verifyBildPlanPageLoadedSuccessfully();
 		reporter.reportLogWithScreenshot("Rogers Build Plan page");
-		rogers_build_plan_page.selectFirstAvailablePlan();
-		rogers_build_plan_page.clkContinue();
-		rogers_choose_addons_page.verifyChooseAddOnsPageLoadedSuccessfully();
+		getRogersBuildPlanPage().selectFirstAvailablePlan();
+		getRogersBuildPlanPage().clkContinue();
+		getRogersChooseAddonsPage().verifyChooseAddOnsPageLoadedSuccessfully();
 		reporter.reportLogWithScreenshot("Rogers Choose Addons page");
-		rogers_choose_addons_page.clkContinue();
-		rogers_cart_summary_page.verifyCartSummaryPageLoadedSuccessfully();
+		getRogersChooseAddonsPage().clkContinue();
+		getRogersCartSummaryPage().verifyCartSummaryPageLoadedSuccessfully();
 		reporter.reportLogWithScreenshot("Rogers Cart Summary page");
-		rogers_cart_summary_page.clkContinue();
-		reporter.hardAssert(rogers_shipping_page.verifyRogersShippingPage(), "Rogers shipping Page loaded properly", "Rogers shipping Page load failed");
+		getRogersCartSummaryPage().clkContinue();
+		reporter.hardAssert(getRogersShippingPage().verifyRogersShippingPage(), "Rogers shipping Page loaded properly", "Rogers shipping Page load failed");
 		reporter.reportLogWithScreenshot("Rogers Shipping page");
-		rogers_shipping_page.clkRadioBillingAddress();
+		getRogersShippingPage().clkRadioBillingAddress();
 		if(proOnTheGoFlag) {
-	        rogers_shipping_page.setEmailIDAndSave();
-	        rogers_shipping_page.setPhoneNumberAndSave();
-	        rogers_shipping_page.clkSelectAvailableTime();
-	        rogers_shipping_page.clkReserve();
+	        getRogersShippingPage().setEmailIDAndSave();
+	        getRogersShippingPage().setPhoneNumberAndSave();
+	        getRogersShippingPage().clkSelectAvailableTime();
+	        getRogersShippingPage().clkReserve();
         }
         reporter.reportLogWithScreenshot("Rogers Shipping Page before clicking continue");
-		rogers_shipping_page.clkContinue();
-		rogers_choose_number_page.verifyChooseNumberPageLoadedSuccessfully();
+		getRogersShippingPage().clkContinue();
+		getRogersChooseNumberPage().verifyChooseNumberPageLoadedSuccessfully();
 		reporter.reportLogWithScreenshot("Rogers Choose Number page");
-		rogers_choose_number_page.clkSelectNewNumber();
-		rogers_choose_number_page.selectCity(TestDataHandler.testCase7.getCtnCity());
-		rogers_choose_number_page.clkFindAvailableNumbers();
-		rogers_choose_number_page.selectFirstAvailableNumber();
-		rogers_choose_number_page.clkSave();
+		getRogersChooseNumberPage().clkSelectNewNumber();
+		getRogersChooseNumberPage().selectCity(TestDataHandler.testCase7.getCtnCity());
+		getRogersChooseNumberPage().clkFindAvailableNumbers();
+		getRogersChooseNumberPage().selectFirstAvailableNumber();
+		getRogersChooseNumberPage().clkSave();
 		reporter.reportLogWithScreenshot("Rogers Choose Number page clicking continue");
-		rogers_choose_number_page.clkContinue();
-		rogers_order_review_page.verifyOrderReviewPageLoadedSuccessfully();
+		getRogersChooseNumberPage().clkContinue();
+		getRogersOrderReviewPage().verifyOrderReviewPageLoadedSuccessfully();
 		reporter.reportLogWithScreenshot("Rogers Order Review page");
-		rogers_order_review_page.clkTermsAgreementCheckbox();
-		rogers_order_review_page.clkShieldAgreementCheckbox();
-		rogers_order_review_page.clkUpfrontTermsCheckbox();
-		rogers_order_review_page.selectEmailDigitalCopy(TestDataHandler.testCase7.getUsername());
+		getRogersOrderReviewPage().clkTermsAgreementCheckbox();
+		getRogersOrderReviewPage().clkShieldAgreementCheckbox();
+		getRogersOrderReviewPage().clkUpfrontTermsCheckbox();
+		getRogersOrderReviewPage().selectEmailDigitalCopy(TestDataHandler.testCase7.getUsername());
 		reporter.reportLogWithScreenshot("Rogers Order Review page before clicking submit");
-		if(rogers_order_review_page.isPaymentRequired()) {
-			rogers_order_review_page.clkContinue();
-			rogers_payment_page.setCreditCardDetails(TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getNumber(), 
+		if(getRogersOrderReviewPage().isPaymentRequired()) {
+			getRogersOrderReviewPage().clkContinue();
+			getRogersPaymentPage().setCreditCardDetails(TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getNumber(),
 					TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getExpiryMonth(), 
 					TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getExpiryYear(),
 					TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getCVV());
 			reporter.reportLogWithScreenshot("Rogers Payment Page");
-			rogers_payment_page.clkSubmit();
+			getRogersPaymentPage().clkSubmit();
 		} else {
-			rogers_order_review_page.clkSubmitOrder();
+			getRogersOrderReviewPage().clkSubmitOrder();
 		}
-		reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
-		reporter.hardAssert(rogers_order_confirmation_page.verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
+		reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
+		reporter.hardAssert(getRogersOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
 		reporter.reportLogWithScreenshot("Rogers Order Confirmation page");
 	}
 

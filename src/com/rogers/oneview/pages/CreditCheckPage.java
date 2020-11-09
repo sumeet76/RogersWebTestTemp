@@ -74,9 +74,9 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @author Harpartap.Virk
 	 */	
 	public void setDOB(String yearofBirth,String monthofBirth,String dayofBirth) {	
-		reusableActions.selectWhenReadyByVisibleText(year, yearofBirth);
-		reusableActions.selectWhenReady(month,Integer.parseInt(monthofBirth));
-		reusableActions.selectWhenReadyByVisibleText(date, dayofBirth);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(year, yearofBirth);
+		getReusableActionsInstance().selectWhenReady(month,Integer.parseInt(monthofBirth));
+		getReusableActionsInstance().selectWhenReadyByVisibleText(date, dayofBirth);
 	}
 	/**
 	 * Select ID's Type and Details
@@ -87,18 +87,18 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @author Harpartap.Virk
 	 */	
 	public void setPassport(String expiryYear, String idExpiryMonth,String idExpiryDay,String passportNo ) {	
-		reusableActions.javascriptScrollByVisibleElement(secondID);
-		reusableActions.selectWhenReady(secondID,3);
-		reusableActions.javascriptScrollByVisibleElement(passportContainer);
-		reusableActions.clickWhenReady(passportContainer);
-		reusableActions.javascriptScrollByVisibleElement(passportInput);
-		reusableActions.enterText(passportInput, passportNo, 30);
-		reusableActions.javascriptScrollByVisibleElement(passportExpiryYear);
-		reusableActions.selectWhenReadyByVisibleText(passportExpiryYear, expiryYear);
-		reusableActions.javascriptScrollByVisibleElement(passportExpiryMonth);
-		reusableActions.selectWhenReady(passportExpiryMonth,Integer.parseInt(idExpiryMonth));
-		reusableActions.javascriptScrollByVisibleElement(passportExpiryDay);
-		reusableActions.selectWhenReadyByVisibleText(passportExpiryDay, idExpiryDay);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(secondID);
+		getReusableActionsInstance().selectWhenReady(secondID,3);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(passportContainer);
+		getReusableActionsInstance().clickWhenReady(passportContainer);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(passportInput);
+		getReusableActionsInstance().enterText(passportInput, passportNo, 30);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(passportExpiryYear);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(passportExpiryYear, expiryYear);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(passportExpiryMonth);
+		getReusableActionsInstance().selectWhenReady(passportExpiryMonth,Integer.parseInt(idExpiryMonth));
+		getReusableActionsInstance().javascriptScrollByVisibleElement(passportExpiryDay);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(passportExpiryDay, idExpiryDay);
 	}
 	/**
 	 * Select ID's Type and Details
@@ -110,19 +110,19 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @author Harpartap.Virk
 	 */	
 	public void setDriversLicense(String provinc,String expiryYear, String idExpiryMonth,String idExpiryDay,String licenseNo) {	
-		//reusableActions.selectWhenReadyByVisibleText(iD, iD1);
-		reusableActions.selectWhenReady(iD,2);
-		reusableActions.selectWhenReadyByVisibleText(province, provinc);
-		reusableActions.javascriptScrollByVisibleElement(licenseExpiryYear);
-		reusableActions.selectWhenReadyByVisibleText(licenseExpiryYear, expiryYear);
-		reusableActions.javascriptScrollByVisibleElement(licenseExpiryMonth);
-		reusableActions.selectWhenReady(licenseExpiryMonth,Integer.parseInt(idExpiryMonth));
-		reusableActions.javascriptScrollByVisibleElement(licenseExpiryDay);
-		reusableActions.selectWhenReadyByVisibleText(licenseExpiryDay, idExpiryDay);
-		reusableActions.javascriptScrollByVisibleElement(licenseNoContainer);
-		reusableActions.clickWhenReady(licenseNoContainer);
-		reusableActions.javascriptScrollByVisibleElement(licenseNoInput);
-		reusableActions.enterText(licenseNoInput, licenseNo, 30);
+		//getReusableActionsInstance().selectWhenReadyByVisibleText(iD, iD1);
+		getReusableActionsInstance().selectWhenReady(iD,2);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(province, provinc);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(licenseExpiryYear);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(licenseExpiryYear, expiryYear);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(licenseExpiryMonth);
+		getReusableActionsInstance().selectWhenReady(licenseExpiryMonth,Integer.parseInt(idExpiryMonth));
+		getReusableActionsInstance().javascriptScrollByVisibleElement(licenseExpiryDay);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(licenseExpiryDay, idExpiryDay);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(licenseNoContainer);
+		getReusableActionsInstance().clickWhenReady(licenseNoContainer);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(licenseNoInput);
+		getReusableActionsInstance().enterText(licenseNoInput, licenseNo, 30);
 	}
 	/**
 	 * Verify Credit Check Information is correct
@@ -130,28 +130,28 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @author Harpartap.Virk
 	 */	
 	public boolean verifyCreditInfo() {	
-		return reusableActions.isElementVisible(continueButton);
+		return getReusableActionsInstance().isElementVisible(continueButton);
 	}
 	/**
 	 * Click Continue Button after Credit Information Entered 
 	 * @author Harpartap.Virk
 	 */	
 	public void clkContinue() {	
-		reusableActions.clickWhenReady(continueButton);
+		getReusableActionsInstance().clickWhenReady(continueButton);
 	}
 	/**
 	 * Click Authorization Checkbox 
 	 * @author Harpartap.Virk
 	 */	
 	public void clkAuthorize() {	
-		reusableActions.clickWhenReady(authorizecheckbox);
+		getReusableActionsInstance().clickWhenReady(authorizecheckbox);
 	}
 	/**
 	 * Click Collapse(Down Arrow)
 	 * @author Harpartap.Virk
 	 */	
 	public void clkCollapse() {
-		reusableActions.clickIfAvailable(collapse,60);
+		getReusableActionsInstance().clickIfAvailable(collapse,60);
 	}
 }
 

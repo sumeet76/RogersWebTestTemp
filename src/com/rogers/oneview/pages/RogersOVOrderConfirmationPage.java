@@ -5,9 +5,9 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import com.rogers.pages.base.BasePageClass;
 
-public class OrderConfirmationPage  extends BasePageClass {
+public class RogersOVOrderConfirmationPage  extends BasePageClass {
 
-	public OrderConfirmationPage(WebDriver driver) {
+	public RogersOVOrderConfirmationPage(WebDriver driver) {
 		super(driver);
 	}
 	
@@ -29,7 +29,7 @@ public class OrderConfirmationPage  extends BasePageClass {
 	 * @author Harpartap.Virk
 	 */	
 	public boolean verifyOrder() {	
-		return reusableActions.isElementVisible(orderConfirmation,120);
+		return getReusableActionsInstance().isElementVisible(orderConfirmation,120);
 	}
 	
 	/**
@@ -38,7 +38,7 @@ public class OrderConfirmationPage  extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyOrderConfirmationPageLoad() {
-		return reusableActions.isElementVisible(lblOrderConfirmation, 120);
+		return getReusableActionsInstance().isElementVisible(lblOrderConfirmation, 120);
 	}
 	
 	/**
@@ -47,7 +47,7 @@ public class OrderConfirmationPage  extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyThankYouDisplayed() {
-		return reusableActions.isElementVisible(lblThankYou,60);
+		return getReusableActionsInstance().isElementVisible(lblThankYou,60);
 	}
 }
 

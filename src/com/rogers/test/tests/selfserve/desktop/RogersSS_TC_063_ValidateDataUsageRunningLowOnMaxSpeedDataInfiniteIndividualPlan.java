@@ -29,48 +29,48 @@ public class RogersSS_TC_063_ValidateDataUsageRunningLowOnMaxSpeedDataInfiniteIn
 	
     @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateDataUsageDisplayForRunningLowAndAddData() {
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc63.getUsername();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc63.getPassword();    	
-        rogers_login_page.setPasswordIFrame(strPassword);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 		
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc63.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc63.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");     
-       rogers_account_overview_page.clkMenuUsageAndService();
+       getRogersAccountOverviewPage().clkMenuUsageAndService();
        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
        String strAccountNum = TestDataHandler.tc63.getAccountDetails().getCtn();
        String strLast4DigitAccount = strAccountNum.substring(strAccountNum.length()-4);
-       if (rogers_account_overview_page.isAccountShowInDropDown(strLast4DigitAccount)) {
-           rogers_account_overview_page.clkDropDownAccount(strLast4DigitAccount);
+       if (getRogersAccountOverviewPage().isAccountShowInDropDown(strLast4DigitAccount)) {
+           getRogersAccountOverviewPage().clkDropDownAccount(strLast4DigitAccount);
        } else {
-    	   rogers_account_overview_page.clkSubMenuWirelessUsage();
+    	   getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
        }
-       rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();              
-       reporter.hardAssert(rogers_wireless_dashboard_page.checkIfTheDataIsTenPercentOrLess()
+       getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
+       reporter.hardAssert(getRogersWirelessDashboardPage().checkIfTheDataIsTenPercentOrLess()
     		   , "Data remaining is ten percent and less"
     		   , "The data is not 10 % or less, please reduce the date and rerun the script");              
        reporter.reportLogWithScreenshot("Data remaining is ten percent and less");
-       reporter.hardAssert(rogers_wireless_dashboard_page.validateDataRemainingOutOfTotalDataBucketTenPercentOrLess(),
+       reporter.hardAssert(getRogersWirelessDashboardPage().validateDataRemainingOutOfTotalDataBucketTenPercentOrLess(),
             		"Running Low state in the usage bar ",
             		"Running Low state in the usage bar  is not displayed");	                       
-       reporter.hardAssert(rogers_wireless_dashboard_page.verifySpeedPassButtonIsDisplayed(),
+       reporter.hardAssert(getRogersWirelessDashboardPage().verifySpeedPassButtonIsDisplayed(),
 							"Link 'Add speed pass' is displayed",
 							"Link 'Add speed pass' is not displayed");
        reporter.reportLogWithScreenshot("Add speed pass is displayed");
-       reporter.hardAssert(rogers_wireless_dashboard_page.verifyCallOutMsgToAddSpeedPassIsDisplayed(),
+       reporter.hardAssert(getRogersWirelessDashboardPage().verifyCallOutMsgToAddSpeedPassIsDisplayed(),
 							"Call out message to add speed pass is displayed",
 							"call out message to add speed pass is not displayed");
-       reporter.hardAssert(rogers_wireless_dashboard_page.verifyDataDelayMessage(),
+       reporter.hardAssert(getRogersWirelessDashboardPage().verifyDataDelayMessage(),
         		"Data delay label is displayed",
         		"Data delay label is not displayed");
     }

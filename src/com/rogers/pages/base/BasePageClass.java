@@ -18,7 +18,7 @@ public class BasePageClass {
   /**
    * The Driver.
    */
-  protected WebDriver driver;
+
   /**
    * The Action.
    */
@@ -30,12 +30,12 @@ public class BasePageClass {
   /**
    * The Act.
    */
-  Actions act;
   /**
    * The Reusable actions.
    */
-  protected ReusableActions reusableActions;
-
+  private static final ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
+  private static final ThreadLocal<ReusableActions> reusableActionsThreadLocal = new ThreadLocal<>();
+  private static final ThreadLocal<Actions> actionsThreadLocal = new ThreadLocal<>();
   /**
    * Instantiates a new Base page class.
    *
@@ -43,10 +43,32 @@ public class BasePageClass {
    */
   public BasePageClass(WebDriver driver) {
 
-    this.driver = driver;
-    PageFactory.initElements(driver, this);
-    act = new Actions(driver);
-    reusableActions = new ReusableActions(this.driver);
+    webDriverThreadLocal.set(driver);
+    PageFactory.initElements(getDriver(), this);
+    actionsThreadLocal.set(new Actions(getDriver()));
+    reusableActionsThreadLocal.set(new ReusableActions(getDriver()));
+  }
+
+  /**
+   * This method returns the WebDriver instance from the ThreadLocal
+   */
+  protected WebDriver getDriver(){
+    return webDriverThreadLocal.get();
+  }
+
+  /**
+   * This method returns the ReusableActions class instance from the ThreadLocal
+   */
+  protected ReusableActions getReusableActionsInstance(){
+    return reusableActionsThreadLocal.get();
+  }
+
+  /**
+   * This method return the Actions class instance from the ThreadLocal
+   */
+
+  protected Actions getActionsInstance(){
+    return actionsThreadLocal.get();
   }
 
 
@@ -65,17 +87,15 @@ public class BasePageClass {
    * @return the driver url
    */
   protected String get_Driver_Url() {
-    return driver.getCurrentUrl();
+    return getDriver().getCurrentUrl();
   }
 
   /**
-   * Gets driver.
+   * Gets getDriver().
    *
    * @return the driver
    */
-  protected WebDriver getDriver() {
-    return driver;
-  }
+
 
 
 

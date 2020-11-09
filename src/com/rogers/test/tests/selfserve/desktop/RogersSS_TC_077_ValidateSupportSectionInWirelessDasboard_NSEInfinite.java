@@ -29,54 +29,54 @@ public class RogersSS_TC_077_ValidateSupportSectionInWirelessDasboard_NSEInfinit
 	
     @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateSupportSectionOnWirelessDashboardPage() {
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc6577.getUsername();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc6577.getPassword();    	
-        rogers_login_page.setPasswordIFrame(strPassword);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 		
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc6577.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc6577.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");  
-        rogers_account_overview_page.clkMenuUsageAndService();
+        getRogersAccountOverviewPage().clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
         String strAccountNum = TestDataHandler.tc6577.getAccountDetails().getCtn(); 
         String strLast4DigitAccount = strAccountNum.substring(strAccountNum.length()-4);
-        if (rogers_account_overview_page.isAccountShowInDropDown(strLast4DigitAccount)) {
-            rogers_account_overview_page.clkDropDownAccount(strLast4DigitAccount);
+        if (getRogersAccountOverviewPage().isAccountShowInDropDown(strLast4DigitAccount)) {
+            getRogersAccountOverviewPage().clkDropDownAccount(strLast4DigitAccount);
         } else {
-        	rogers_account_overview_page.clkSubMenuWirelessUsage();
+        	getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
         }
-        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
+        getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
                        
-        //rogers_wireless_dashboard_page.scrollToBottomOfPage();
+        //getRogersWirelessDashboardPage().scrollToBottomOfPage();
         reporter.reportLogWithScreenshot("Bottom of Wireless dashboard page."); 
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifySupportSection(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifySupportSection(),
         					"Support section is loaded in wireless dashboard page", 
         					"Support section is NOT loaded in wireless dashboard page");
         String strBaseUrl = System.getProperty("QaUrl");
         strBaseUrl = strBaseUrl.substring(0, strBaseUrl.lastIndexOf("com")+3);
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLinkFaqUnlockDevice(strBaseUrl), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyLinkFaqUnlockDevice(strBaseUrl),
 				"FAQ: Unlocking Device link in Support section is validated successfully.", 
 				"Something wrong with FAQ: Unlocking Device link in Support section.");
         reporter.reportLogWithScreenshot("After click FAQ: Unlocking Device link."); 
-        rogers_wireless_dashboard_page.navigateBacktoDashboardPage();
+        getRogersWirelessDashboardPage().navigateBacktoDashboardPage();
         
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLinkDeviceProtection(strBaseUrl), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyLinkDeviceProtection(strBaseUrl),
 				"Device Protection link in Support section is validated successfully.", 
 				"Something wrong with Device protection link in Support section.");
         reporter.reportLogWithScreenshot("After click Device Protection link."); 
-        rogers_wireless_dashboard_page.navigateBacktoDashboardPage();
+        getRogersWirelessDashboardPage().navigateBacktoDashboardPage();
         
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLinkNetworkAid(strBaseUrl), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyLinkNetworkAid(strBaseUrl),
 				"Network Aid link in Support section is validated successfully.", 
 				"Something wrong with Network Aid link in Support section.");
         reporter.reportLogWithScreenshot("After click Network Aid link."); 

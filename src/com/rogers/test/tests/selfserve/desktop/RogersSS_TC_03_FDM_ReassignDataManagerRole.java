@@ -29,57 +29,57 @@ public class RogersSS_TC_03_FDM_ReassignDataManagerRole extends BaseTestClass {
 	
     @Test(groups = {"RegressionSS","FDMSS"})
     public void validateReassignDataManagerRole() {
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc7681.getUsername();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc7681.getPassword();    	
-        rogers_login_page.setPasswordIFrame(strPassword);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 		
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc7681.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc7681.getAccountDetails().getBan());
         }
         
        common_business_flows.scrollToMiddleOfWebPage();
 	   reporter.reportLogWithScreenshot("Check the number of CTNs");
-	   reporter.hardAssert(rogers_account_overview_page.isCTNMoreThanOne(),
+	   reporter.hardAssert(getRogersAccountOverviewPage().isCTNMoreThanOne(),
 				"The account has more than 1 CTNS",
 				"The account doesnt have more than 1 CTNs, please add more than 1 and rerun");
 	   common_business_flows.scrollToTopOfWebPage();
        reporter.reportLogWithScreenshot("Account overview page.");     
-       rogers_account_overview_page.clkMenuUsageAndService();
+       getRogersAccountOverviewPage().clkMenuUsageAndService();
        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
-       rogers_account_overview_page.clkSubMenuWirelessUsage();
-       rogers_account_overview_page.clkCloseInNewLookPopupIfVisible(); 
+       getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
+       getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
               
        reporter.reportLogWithScreenshot("dashboard page displayed"); 
-       rogers_wireless_dashboard_page.clkDataManagerCTN();
+       getRogersWirelessDashboardPage().clkDataManagerCTN();
        reporter.reportLogWithScreenshot("Data Manager CTN clicked"); 
-       reporter.hardAssert(rogers_wireless_dashboard_page.isChangeDataManagerDisplayed(),
+       reporter.hardAssert(getRogersWirelessDashboardPage().isChangeDataManagerDisplayed(),
     		   "Change data manager available for this account","Change data manager is not displayed for this account");
-       String strDataManagerCTN = rogers_wireless_dashboard_page.getDataManagerCTN();
+       String strDataManagerCTN = getRogersWirelessDashboardPage().getDataManagerCTN();
        reporter.reportLogWithScreenshot("Data manager CTN is : "+strDataManagerCTN); 
-       String strNonDataManagerCTN = rogers_wireless_dashboard_page.getNonDataManagerCTN();
+       String strNonDataManagerCTN = getRogersWirelessDashboardPage().getNonDataManagerCTN();
        reporter.reportLog("Non Data manager CTN is : "+strNonDataManagerCTN); 
-       rogers_wireless_dashboard_page.clkChangeDataManager();
+       getRogersWirelessDashboardPage().clkChangeDataManager();
        reporter.reportLogWithScreenshot("Change data manger button clicked");
-       reporter.hardAssert(rogers_wireless_dashboard_page.isChooseDataManagerOverlayDisplayed(),
+       reporter.hardAssert(getRogersWirelessDashboardPage().isChooseDataManagerOverlayDisplayed(),
         		   "Choose data manager overlay is displayed for this account", 
         		   "Choose data manager overlay is NOT available for this account");
        reporter.reportLogWithScreenshot("Choose data manager overlay displayed");       
-       rogers_wireless_dashboard_page.changeDataManager(strNonDataManagerCTN);
+       getRogersWirelessDashboardPage().changeDataManager(strNonDataManagerCTN);
        reporter.reportLogWithScreenshot("Data manager changes to : "+strNonDataManagerCTN);
-       rogers_wireless_dashboard_page.clkSaveButtonOnDataManager();
+       getRogersWirelessDashboardPage().clkSaveButtonOnDataManager();
        reporter.reportLogWithScreenshot("Save data manager clicked");
-       rogers_wireless_dashboard_page.clkDataManagerCTN();
+       getRogersWirelessDashboardPage().clkDataManagerCTN();
        reporter.reportLogWithScreenshot("Data Manager CTN clicked"); 
-       reporter.hardAssert(rogers_wireless_dashboard_page.isChangeDataManagerSuccessful(strNonDataManagerCTN),
+       reporter.hardAssert(getRogersWirelessDashboardPage().isChangeDataManagerSuccessful(strNonDataManagerCTN),
     		   "Data manager is changed successfully", "Data manager is not changed for this account yet");
        reporter.reportLogWithScreenshot("Change Data manager is done successfully from "+strDataManagerCTN+" this to "+strNonDataManagerCTN);
        

@@ -1,13 +1,12 @@
 package com.rogers.pages;
 
 
-import java.util.List;
-
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import com.rogers.pages.base.BasePageClass;
+import java.util.List;
 
 /**
  * 
@@ -71,7 +70,7 @@ public class RogersBillingPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyIfAccountHasNoBill() {
-		return reusableActions.isElementVisible(noBillNote, 20);
+		return getReusableActionsInstance().isElementVisible(noBillNote, 20);
 
 	}
 
@@ -80,8 +79,8 @@ public class RogersBillingPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void switchToBillViewIframe() {
-		reusableActions.getDriver().switchTo().defaultContent();
-		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(frameBillDetails, 60);
+		getDriver().switchTo().defaultContent();
+		getReusableActionsInstance().waitForFrameToBeAvailableAndSwitchToIt(frameBillDetails, 60);
 		
 	}
 	
@@ -91,7 +90,7 @@ public class RogersBillingPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyIfViewBillFrameDisplayed() {
-		return reusableActions.isElementVisible(frameBillDetails, 20);
+		return getReusableActionsInstance().isElementVisible(frameBillDetails, 20);
 
 	}
 	
@@ -102,7 +101,7 @@ public class RogersBillingPage extends BasePageClass {
 	 */
 	public boolean verifyBillingAndPaymentPageLoadIframe() {
  
-		return reusableActions.isElementVisible(divBillValueNew);
+		return getReusableActionsInstance().isElementVisible(divBillValueNew);
 	}
 	
 	/**
@@ -111,8 +110,8 @@ public class RogersBillingPage extends BasePageClass {
 	 * @author rajesh.varalli1 
 	 */
 	public boolean verifyYourBillDisplayedIFrame() {
-		//driver.switchTo().frame(fraViewBill);
-		return (reusableActions.isElementVisible(lblTotalToPay));
+		//getDriver().switchTo().frame(fraViewBill);
+		return (getReusableActionsInstance().isElementVisible(lblTotalToPay));
 	}
 	
 	/**
@@ -120,7 +119,7 @@ public class RogersBillingPage extends BasePageClass {
 	 * @author Ning.Xue
 	 */
 	public void scrollToMiddlePage() {
-		reusableActions.javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 	}
 	
 	/**
@@ -129,7 +128,7 @@ public class RogersBillingPage extends BasePageClass {
 	 * @return true if Payment Success msg and amount displayed are correct; else false
 	 */
 	public boolean verifyPaymentSuccessful(String strAmount) {
-		return (reusableActions.isElementVisible(lblPaymentConfirmationMsg, 60) &&
+		return (getReusableActionsInstance().isElementVisible(lblPaymentConfirmationMsg, 60) &&
 				lblPaymentConfirmationAmount.getText().trim().replace("$", "").trim().contains(strAmount));
 	}
 	
@@ -139,7 +138,7 @@ public class RogersBillingPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public String getTransactionReferenceNumber() {
-	return reusableActions.getWhenReady(lblReferenceNumber).getText().trim();	
+	return getReusableActionsInstance().getWhenReady(lblReferenceNumber).getText().trim();
 	}
 	
 	/**
@@ -147,9 +146,9 @@ public class RogersBillingPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void sortPaymentHistoryTableByReferenceNumberDesc() {
-		reusableActions.waitForElementTobeClickable(lblRefNumerColumnSort, 30);
-		reusableActions.executeJavaScriptClick(lblRefNumerColumnSort);
-		reusableActions.executeJavaScriptClick(lblRefNumerColumnSort);
+		getReusableActionsInstance().waitForElementTobeClickable(lblRefNumerColumnSort, 30);
+		getReusableActionsInstance().executeJavaScriptClick(lblRefNumerColumnSort);
+		getReusableActionsInstance().executeJavaScriptClick(lblRefNumerColumnSort);
 	}
 
 	/**
@@ -159,8 +158,8 @@ public class RogersBillingPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyThePaymentHistoryRecord(String strRefNumber) {
-		reusableActions.waitForElementTobeClickable(rowPaymentHistoryFirst, 30);
-		String strRowText=reusableActions.getWhenReady(rowPaymentHistoryFirst).getText();
+		getReusableActionsInstance().waitForElementTobeClickable(rowPaymentHistoryFirst, 30);
+		String strRowText=getReusableActionsInstance().getWhenReady(rowPaymentHistoryFirst).getText();
 		return strRowText.contains(strRefNumber);
 	}
 	
@@ -171,7 +170,7 @@ public class RogersBillingPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyThePaymentHistoryRecordMobile(String strRefNumber) {
-		reusableActions.waitForElementTobeClickable(rowPaymentHistoryMobile.get(0), 30);
+		getReusableActionsInstance().waitForElementTobeClickable(rowPaymentHistoryMobile.get(0), 30);
 		for (WebElement row : rowPaymentHistoryMobile) {
 			if(row.getText().contains(strRefNumber))
 			{
@@ -195,7 +194,7 @@ public class RogersBillingPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkPaymentHistoryLink() {
-		reusableActions.getWhenReady(lnkPaymentHistory).click();
+		getReusableActionsInstance().getWhenReady(lnkPaymentHistory).click();
 	}
 	
 	/**
@@ -205,6 +204,6 @@ public class RogersBillingPage extends BasePageClass {
 	 */
 	public boolean verifyViewBillPageHeaderDisplayed()
 	{
-		return reusableActions.isElementVisible(lblBillAndAccountBalanceHeader);
+		return getReusableActionsInstance().isElementVisible(lblBillAndAccountBalanceHeader);
 	}
 }

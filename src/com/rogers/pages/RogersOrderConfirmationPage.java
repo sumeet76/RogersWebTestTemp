@@ -66,8 +66,8 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOrderConfirmationLegacy() {
-		reusableActions.waitForElementVisibility(infoChangeOrderConfirmationLegacy,90);
-		return reusableActions.isElementVisible(infoChangeOrderConfirmationLegacy, 30);
+		getReusableActionsInstance().waitForElementVisibility(infoChangeOrderConfirmationLegacy,90);
+		return getReusableActionsInstance().isElementVisible(infoChangeOrderConfirmationLegacy, 30);
 	}
 	
 	/**
@@ -76,7 +76,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOrderConfirmation() {
-		return reusableActions.isElementVisible(infoChangeOrderConfirmation, 120);
+		return getReusableActionsInstance().isElementVisible(infoChangeOrderConfirmation, 120);
 	}
 	
 	/**
@@ -85,7 +85,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOrderConfirmationNew() {
-		return reusableActions.isElementVisible(infoChangeOrderConfirmationnew, 120);
+		return getReusableActionsInstance().isElementVisible(infoChangeOrderConfirmationnew, 120);
 	}
 	/**
 	 * Verify the the yellow banner with order success information
@@ -93,8 +93,8 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOrderSuccess() {
-		reusableActions.waitForElementVisibility(infoOrderConfirmation,90);
-		return reusableActions.isElementVisible(infoOrderConfirmation, 30);
+		getReusableActionsInstance().waitForElementVisibility(infoOrderConfirmation,90);
+		return getReusableActionsInstance().isElementVisible(infoOrderConfirmation, 30);
 	}
 	
 	
@@ -104,7 +104,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyContinueShopping() {
-		return reusableActions.isElementVisible(btnContinueShopping, 10);
+		return getReusableActionsInstance().isElementVisible(btnContinueShopping, 10);
 	}
 	
 	/**
@@ -113,7 +113,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyOrderConfirmationPageLoad() {
-		return reusableActions.isElementVisible(lblOrderConfirmation, 60);
+		return getReusableActionsInstance().isElementVisible(lblOrderConfirmation, 60);
 	}
 	
 	/**
@@ -122,9 +122,9 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyThankYouDisplayed() {
-		reusableActions.waitForElementVisibility(lblOrderSummaryTotal, 60);
+		getReusableActionsInstance().waitForElementVisibility(lblOrderSummaryTotal, 60);
 		if(lblThankYou.isDisplayed()) {
-			return reusableActions.isElementVisible(lblThankYou,60);
+			return getReusableActionsInstance().isElementVisible(lblThankYou,60);
 		}
 		return false;
 	}
@@ -135,7 +135,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyLegacyUpgardeOrderConfirmation() {
-		return reusableActions.isElementVisible(btnDTVOrderSummary, 180);
+		return getReusableActionsInstance().isElementVisible(btnDTVOrderSummary, 180);
 	}
 	
 	/**
@@ -143,7 +143,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkUpgradeCartCheckOutButton() {
-		reusableActions.waitForElementVisibility(btnUpgradeCartCheckOutButton, 180);
-		reusableActions.executeJavaScriptClick(btnUpgradeCartCheckOutButton);
+		getReusableActionsInstance().waitForElementVisibility(btnUpgradeCartCheckOutButton, 180);
+		getReusableActionsInstance().executeJavaScriptClick(btnUpgradeCartCheckOutButton);
 	}
 }

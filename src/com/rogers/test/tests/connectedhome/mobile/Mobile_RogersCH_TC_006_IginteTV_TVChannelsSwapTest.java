@@ -38,39 +38,41 @@ public class Mobile_RogersCH_TC_006_IginteTV_TVChannelsSwapTest extends BaseTest
 	
    public void checkSolarisTVSwapChannelsMobile() {
      reporter.reportLogWithScreenshot("Home Page");
-     rogers_home_page.clkSignInMobile();
-     rogers_login_page.switchToSignInIFrame();
+     getRogersHomePage().clkSignInMobile();
+     getRogersLoginPage().switchToSignInIFrame();
      reporter.reportLogWithScreenshot("Launched the SignIn popup");
-    rogers_login_page.setUsernameIFrame(TestDataHandler.tcm06_IgniteTVAccount.getUsername());
-    rogers_login_page.setPasswordIFrame(TestDataHandler.tcm06_IgniteTVAccount.getPassword());
+    getRogersLoginPage().setUsernameIFrame(TestDataHandler.tcm06_IgniteTVAccount.getUsername());
+    getRogersLoginPage().setPasswordIFrame(TestDataHandler.tcm06_IgniteTVAccount.getPassword());
     reporter.reportLogWithScreenshot("Enter the account credentails");
-    rogers_login_page.clkSignInIFrame();
-	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+    getRogersLoginPage().clkSignInIFrame();
+	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
     reporter.reportLogWithScreenshot("Skip popup");
-    rogers_login_page.clkSkipIFrame();
-    rogers_login_page.switchOutOfSignInIFrame();
-    reporter.hardAssert(rogers_account_overview_page.verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
+    getRogersLoginPage().clkSkipIFrame();
+    getRogersLoginPage().switchOutOfSignInIFrame();
+    reporter.hardAssert(getRogersAccountOverviewPage().verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
     reporter.reportLogWithScreenshot("Launched the Account Page");
     
-    rogers_solaris_tv_dashboard_page.clkTVBadgeMobile();
+    getRogersSolarisTVDashboardPage().clkTVBadgeMobile();
     reporter.reportLogWithScreenshot("Launched the TV dash board");
-    rogers_solaris_tv_dashboard_page.clkChangeFlexChannelsMobile();
+
+        getRogersSolarisTVDashboardPage().clkChangeFlexChannelsMobile();
+
     reporter.reportLogWithScreenshot("TV channels pannel has displayed");
-    rogers_solaris_tv_dashboard_page.clkOutChannelOne();
-    rogers_solaris_tv_dashboard_page.clkOutChannelTwo();
-    rogers_solaris_tv_dashboard_page.clkOutChannelThree();
+    getRogersSolarisTVDashboardPage().clkOutChannelOne();
+    getRogersSolarisTVDashboardPage().clkOutChannelTwo();
+    getRogersSolarisTVDashboardPage().clkOutChannelThree();
     reporter.reportLogWithScreenshot("removed the Swap-out Channels");
-    rogers_solaris_tv_dashboard_page.swapChannelIn(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapInChannelOne());
+    getRogersSolarisTVDashboardPage().swapChannelIn(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapInChannelOne());
     reporter.reportLogWithScreenshot("Selceted the Swap-in Channel one");
-    rogers_solaris_tv_dashboard_page.btnClearSerachResults();
-    rogers_solaris_tv_dashboard_page.swapChannelIn(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapInChannelTwo());
+       getRogersSolarisTVDashboardPage().btnClearSerachResults();
+        getRogersSolarisTVDashboardPage().swapChannelIn(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapInChannelTwo());
     reporter.reportLogWithScreenshot("Selceted the Swap-in Channel two");
-    rogers_solaris_tv_dashboard_page.btnClearSerachResults();
-    rogers_solaris_tv_dashboard_page.swapChannelIn(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapInChannelThree());
+        getRogersSolarisTVDashboardPage().btnClearSerachResults();
+        getRogersSolarisTVDashboardPage().swapChannelIn(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapInChannelThree());
     reporter.reportLogWithScreenshot("Selceted the Swap-in Channel three");
-    rogers_solaris_tv_dashboard_page.clkConfirmSwap(); 
+        getRogersSolarisTVDashboardPage().clkConfirmSwap();
     reporter.reportLogWithScreenshot("Swap Success popup has launched");
-    rogers_solaris_tv_dashboard_page.clkSuccessSwap();    
+    getRogersSolarisTVDashboardPage().clkSuccessSwap();
     reporter.reportLogWithScreenshot("Swap success");  
 	}        
 	

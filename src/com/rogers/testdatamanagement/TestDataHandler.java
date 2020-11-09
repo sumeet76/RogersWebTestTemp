@@ -1,6 +1,10 @@
 package com.rogers.testdatamanagement;
 
 import com.rogers.yaml.pojo.*;
+import org.testng.ITestNGMethod;
+
+import java.io.FileNotFoundException;
+import java.util.List;
 
 public class TestDataHandler {	
 	public static Config ssConfig;
@@ -148,38 +152,51 @@ public class TestDataHandler {
 	public static Config searchCBSConfig;
 	public static AccountData tc104;
 	
-	public static void dataInit (String strApplicationType) {	 
-		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
-    	if(strApplicationType.toUpperCase().trim().endsWith("CH")) {	    	
-    		//cable Data files
-    		connectedHomeDataInit();            
-    	} else if(strApplicationType.toUpperCase().trim().endsWith("SS")
-    			|| strApplicationType.toUpperCase().trim().endsWith("SS]")) {
-	    	//Self-Service Data files
-    		selfserveDataInit();
-    	} else if(strApplicationType.toUpperCase().trim().endsWith("BFA")) {
-    		//Buy-Flows Data files
-    		buyFlowsDataInit();
-    	} else if(strApplicationType.toUpperCase().trim().endsWith("BFAONEVIEW")) {
-        		//Buy-Flows Data files
-    		buyFlowsOneViewDataInit();
-    	} else if(strApplicationType.toUpperCase().trim().endsWith("COV")) {
-    		//ch oneview  Data files
-    		chOneViewDataInit();
-    	}
-    	else {
-    		//All Data files
-    		
-    		connectedHomeDataInit(); 
-    		selfserveDataInit();
-    		buyFlowsDataInit();
-    		chOneViewDataInit();
+	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
+ 		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
+
+		String strTestMethodName = lstTestMethodName.toString();
+		boolean match = false;
+		if(strTestMethodName.contains("connectedhome.") || strTestMethodName.contains("solarisconsumer.")) {
+			//HSI Fido Data files
+			connectedHomeDataInit();
+			match = true;
+		}
+		if(strTestMethodName.contains("selfserve.")) {
+			//Self-Service Data files
+			selfserveDataInit();
+			match = true;
+		}
+		if(strTestMethodName.contains("buyflows.")) {
+			//Buy-Flows Data files
+			buyFlowsDataInit();
+			match = true;
+		}
+		if(strTestMethodName.contains("buyflowsoneview.")) {
+			//Buy-Flows Data files
 			buyFlowsOneViewDataInit();
-    	}
-	
+			match = true;
+		}
+		if(strTestMethodName.contains("choneview.")) {
+			//Buy-Flows Data files
+			chOneViewDataInit();
+			match = true;
+		}
+		if(strTestMethodName.contains("search.")) {
+			//No yaml data files to initialize
+			match = true;
+		}
+		if (!match) {
+			//All Data files
+			connectedHomeDataInit();
+			selfserveDataInit();
+			buyFlowsDataInit();
+			chOneViewDataInit();
+			buyFlowsOneViewDataInit();
+		}
 	}
 	
-	private static void connectedHomeDataInit() {
+	private static void connectedHomeDataInit() throws FileNotFoundException {
       	chPaymentInfo = YamlHandler.getCablePaymentDetails();
       	//sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/connectedhome/SauceSettings.yml");
       	//sacueConfig = YamlHandler.getSauceConfig();              	
@@ -245,7 +262,7 @@ public class TestDataHandler {
     	solarisHTOMigrationSignIn = YamlHandler.getCableAccountData("SolarisHTOMigrationSignIn");
 	}
 	
-	private static void selfserveDataInit() {
+	private static void selfserveDataInit() throws FileNotFoundException {
     	ssConfig =  YamlHandler.getSSConfig();
     	//sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/selfserve/SauceSettings.yml");
     	paymentInfo = YamlHandler.getSSPaymentDetails();
@@ -305,7 +322,7 @@ public class TestDataHandler {
     	tc0610 = YamlHandler.getSSAccountData("tc06_10DemolineSEPlanMultiLine");
 	}
 	
-	private static void buyFlowsDataInit() {
+	private static void buyFlowsDataInit() throws FileNotFoundException {
 		rogersConfig = YamlHandler.getBFAConfig();
 		bfaConfig =  YamlHandler.getBFAConfig();
 		//sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/buyflows/SauceSettings.yml");
@@ -324,7 +341,7 @@ public class TestDataHandler {
 		testCase12 = YamlHandler.getHUPdata("tc12HUP");
 	}
 	
-	private static void buyFlowsOneViewDataInit() {
+	private static void buyFlowsOneViewDataInit() throws FileNotFoundException {
 		bfaOneViewConfig =  YamlHandler.getBFAOneViewConfig();
 		//sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/buyflows/SauceSettings.yml");
 		bfaOneViewPaymentInfo = YamlHandler.getBFAOneViewPaymentDetails();
@@ -337,7 +354,7 @@ public class TestDataHandler {
 		buyFlowsOVtestCase07 = YamlHandler.getPPCdataOneView("tc07OVPPCSinglelineAccount");		
 	}
 	
-	private static void chOneViewDataInit() {
+	private static void chOneViewDataInit() throws FileNotFoundException {
 		chOneViewConfig = YamlHandler.getCHOneViewConfig();
 		ovPaymentInfo = YamlHandler.getOVPaymentDetails();
 		igniteTVParentalcontrols = YamlHandler.getOVAccountData("IgniteTVParentalcontrols");

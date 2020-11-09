@@ -38,30 +38,30 @@ public class RogersCH_TC_016_IginteInternet_ValidateVAicononInternetDashboardTes
 	@Test(groups = {"RegressionCH","RogersInternetCH"})
     public void checkVAicononInternetDashboard() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
-        rogers_home_page.clkSignIn();
-        rogers_login_page.switchToSignInIFrame();
+        getRogersHomePage().clkSignIn();
+        getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        rogers_login_page.setUsernameIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
-        rogers_login_page.clkSignInIFrame();
+        getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Skip popup");
-        rogers_login_page.clkSkipIFrame();
-    	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        getRogersLoginPage().clkSkipIFrame();
+    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
-        rogers_login_page.clkSkipIFrame();
-        rogers_login_page.switchOutOfSignInIFrame();
-    	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        rogers_account_overview_page.selectAccount(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.accountDetails.getBan());
+        getRogersLoginPage().clkSkipIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();
+    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.accountDetails.getBan());
     	reporter.reportLogWithScreenshot("Launched the Account Page");
-        rogers_internet_dashboard_page.clkSolarisInternetBadge();
-        reporter.hardAssert(rogers_internet_dashboard_page.verifyInternetPage(),"Launched the internet dashboard Page","Internet dashboard Page dosen't launched");
-        reporter.hardAssert(rogers_internet_dashboard_page.verifyVAButton(),"VA button is present","VA button is not present");
-        rogers_internet_dashboard_page.clkVAButton();
-        rogers_internet_dashboard_page.switchToVAIFrame();
-        reporter.hardAssert(rogers_internet_dashboard_page.verifyVaWelcome(),"VA chat tab has launched","VA chat tab hasn't launched");
-        reporter.hardAssert(rogers_internet_dashboard_page.verifyVaTopicList(),"VA chat Topic list is available","VA chat Topic list is not available");
-        reporter.hardAssert(rogers_internet_dashboard_page.verifyVaWelcomeSend(),"VA chat Continue button is available","VA chat Continue button  is not available");
+        getRogersInternetDashboardPage().clkSolarisInternetBadge();
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyInternetPage(),"Launched the internet dashboard Page","Internet dashboard Page dosen't launched");
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyVAButton(),"VA button is present","VA button is not present");
+        getRogersInternetDashboardPage().clkVAButton();
+        getRogersInternetDashboardPage().switchToVAIFrame();
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyVaWelcome(),"VA chat tab has launched","VA chat tab hasn't launched");
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyVaTopicList(),"VA chat Topic list is available","VA chat Topic list is not available");
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyVaWelcomeSend(),"VA chat Continue button is available","VA chat Continue button  is not available");
 
    	}
 

@@ -29,45 +29,45 @@ public class RogersSS_TC_04_05_FDM_BlockAndUnblockDataUsageForTheCTN extends Bas
 	
     @Test(groups = {"RegressionSS","FDMSS"})
     public void blockFDMDataUsageForTheCTN() {
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc01030405.getUsername();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc01030405.getPassword();    	
-        rogers_login_page.setPasswordIFrame(strPassword);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 		
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc01030405.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc01030405.getAccountDetails().getBan());
         }
        reporter.reportLogWithScreenshot("Account overview page.");     
-       rogers_account_overview_page.clkMenuUsageAndService();
+       getRogersAccountOverviewPage().clkMenuUsageAndService();
        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
-       rogers_account_overview_page.clkSubMenuWirelessUsage();
-       rogers_account_overview_page.clkCloseInNewLookPopupIfVisible(); 
+       getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
+       getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
      
        reporter.reportLogWithScreenshot("Dashboard page");
        common_business_flows.scrollToMiddleOfWebPage();
        reporter.reportLogWithScreenshot("Middle view of Dashboard page");
        common_business_flows.scrollToTopOfWebPage();
     
-       reporter.hardAssert(rogers_wireless_dashboard_page.isDataAccessDisplayed(),
+       reporter.hardAssert(getRogersWirelessDashboardPage().isDataAccessDisplayed(),
     		   "Data access ON is displayed",
     		   "Data access ON is not displayed");
-       if(!rogers_wireless_dashboard_page.isDataAccessOnDisplayed())
+       if(!getRogersWirelessDashboardPage().isDataAccessOnDisplayed())
        {
     	   
     	onDataAccess();   
        }
                   	   
     	   reporter.reportLogWithScreenshot("Data access if set to ON");
-           rogers_wireless_dashboard_page.clkDataAccessOff();
-           reporter.hardAssert(rogers_wireless_dashboard_page.isDataAccessOFF(),
+           getRogersWirelessDashboardPage().clkDataAccessOff();
+           reporter.hardAssert(getRogersWirelessDashboardPage().isDataAccessOFF(),
         		   "Data access is switch off successfully",
         		   "Data access didnt switch off successfuly , please investigate");       
            reporter.reportLogWithScreenshot("Data access set to OFf");
@@ -79,42 +79,42 @@ public class RogersSS_TC_04_05_FDM_BlockAndUnblockDataUsageForTheCTN extends Bas
     
     @Test (dependsOnMethods = "blockFDMDataUsageForTheCTN")
 	public void unblockFDMDataUsageForTheCTN() {
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc01030405.getUsername();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc01030405.getPassword();    	
-        rogers_login_page.setPasswordIFrame(strPassword);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 		
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc01030405.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc01030405.getAccountDetails().getBan());
         }
        reporter.reportLogWithScreenshot("Account overview page.");     
-       rogers_account_overview_page.clkMenuUsageAndService();
+       getRogersAccountOverviewPage().clkMenuUsageAndService();
        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
-       rogers_account_overview_page.clkSubMenuWirelessUsage();
-       rogers_account_overview_page.clkCloseInNewLookPopupIfVisible(); 
+       getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
+       getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
      
        reporter.reportLogWithScreenshot("Dashboard page");
        common_business_flows.scrollToMiddleOfWebPage();
        reporter.reportLogWithScreenshot("Middle view of Dashboard page");
        common_business_flows.scrollToTopOfWebPage();
     
-       reporter.hardAssert(rogers_wireless_dashboard_page.isDataAccessDisplayed(),
+       reporter.hardAssert(getRogersWirelessDashboardPage().isDataAccessDisplayed(),
     		   "Data access ON is displayed",
     		   "Data access ON is not displayed");	
-       if(rogers_wireless_dashboard_page.isDataAccessOnDisplayed())
+       if(getRogersWirelessDashboardPage().isDataAccessOnDisplayed())
        {
     	 offDataAccess();
        }
         reporter.reportLogWithScreenshot("Data access if set to OFF");
-        rogers_wireless_dashboard_page.clkDataAccessOn();
-        reporter.hardAssert(rogers_wireless_dashboard_page.isDataAccessOnDisplayed(),
+        getRogersWirelessDashboardPage().clkDataAccessOn();
+        reporter.hardAssert(getRogersWirelessDashboardPage().isDataAccessOnDisplayed(),
      		   "Data access is switch ON successfully",
      		   "Data access didnt switch ON successfuly , please investigate");       
         reporter.reportLogWithScreenshot("Data access set to ON");        
@@ -124,8 +124,8 @@ public class RogersSS_TC_04_05_FDM_BlockAndUnblockDataUsageForTheCTN extends Bas
 	
 	public void offDataAccess() {
 		 reporter.reportLogWithScreenshot("Data access if set to ON, switching OFF");
-         rogers_wireless_dashboard_page.clkDataAccessOff();
-         reporter.hardAssert(rogers_wireless_dashboard_page.isDataAccessOFF(),
+         getRogersWirelessDashboardPage().clkDataAccessOff();
+         reporter.hardAssert(getRogersWirelessDashboardPage().isDataAccessOFF(),
       		   "Data access is switch off successfully",
       		   "Data access didnt switch off successfuly , please investigate");       
          reporter.reportLogWithScreenshot("Data access set to OFf");
@@ -133,8 +133,8 @@ public class RogersSS_TC_04_05_FDM_BlockAndUnblockDataUsageForTheCTN extends Bas
 
 	public void onDataAccess() {
 		reporter.reportLogWithScreenshot("Data access if set to OFF, switching it ON");
-        rogers_wireless_dashboard_page.clkDataAccessOn();
-        reporter.hardAssert(rogers_wireless_dashboard_page.isDataAccessOnDisplayed(),
+        getRogersWirelessDashboardPage().clkDataAccessOn();
+        reporter.hardAssert(getRogersWirelessDashboardPage().isDataAccessOnDisplayed(),
      		   "Data access is switch ON successfully",
      		   "Data access didnt switch ON successfuly , please investigate");
 	}

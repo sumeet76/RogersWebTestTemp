@@ -14,93 +14,93 @@ public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends B
     @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
     public void checkBuyIginteTVOfferPortIn() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
-		rogers_home_page.clkSignIn();
-		rogers_login_page.switchToSignInIFrame();
+		getRogersHomePage().clkSignIn();
+		getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-   		rogers_login_page.setUsernameIFrame(TestDataHandler.tc39_40_SolarisPortinFlows.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.tc39_40_SolarisPortinFlows.getPassword());
+   		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc39_40_SolarisPortinFlows.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc39_40_SolarisPortinFlows.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    reporter.reportLogWithScreenshot("Skip popup");
-	    rogers_login_page.clkSkipIFrame();
-	    rogers_login_page.switchOutOfSignInIFrame();
-		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        rogers_account_overview_page.selectAccount(TestDataHandler.tc39_40_SolarisPortinFlows.accountDetails.getBan());
+        getRogersLoginPage().clkSkipIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();
+		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc39_40_SolarisPortinFlows.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-        rogers_home_page.clkShop(); 
+        getRogersHomePage().clkShop();
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        rogers_home_page.clkIgniteTVExistingCustomer();
+        getRogersHomePage().clkIgniteTVExistingCustomer();
 	    	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-	    	rogers_home_page.clkNoThnx();
-	    	rogers_home_page.clkServiceability();
+	    	getRogersHomePage().clkNoThnx();
+	    	getRogersHomePage().clkServiceability();
 	    	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");    	
-	        rogers_home_page.clkUseThisAddress();        
+	        getRogersHomePage().clkUseThisAddress();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
     	String  strAddressLine1=TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getAddress().get("line2");
-      rogers_home_page.setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
-        rogers_home_page.clkIgniteAddressLookupSubmit();
+      getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-        reporter.hardAssert(rogers_igniteTV_buy_page.verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-        rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
+        getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
 
-        reporter.hardAssert(rogers_home_phone_selection_page.verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
+        reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        rogers_home_phone_port_in_page.setHomePhoneNumber(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getPhoneNumber());
-        rogers_home_phone_port_in_page.clkPhoneNumberEligibiltyCheck();
+        getRogersHomePhonePortInPage().setHomePhoneNumber(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getPhoneNumber());
+        getRogersHomePhonePortInPage().clkPhoneNumberEligibiltyCheck();
         
-        reporter.hardAssert(rogers_home_phone_port_in_page.verifyPhoneNumberSuccess(),"Port-in Number validation success","Port-in Number validation Failed");
+        reporter.hardAssert(getRogersHomePhonePortInPage().verifyPhoneNumberSuccess(),"Port-in Number validation success","Port-in Number validation Failed");
         reporter.reportLogWithScreenshot("Port-in Number validation success");
-        rogers_home_phone_port_in_page.setFirstName();
-        rogers_home_phone_port_in_page.setLastName();
-        rogers_home_phone_port_in_page.setInvoiceAddress(strAddressLine1+", "+strAddressLine2+", CANADA");
-        rogers_home_phone_port_in_page.setCurrentPhoneNumber(); 
+        getRogersHomePhonePortInPage().setFirstName();
+        getRogersHomePhonePortInPage().setLastName();
+        getRogersHomePhonePortInPage().setInvoiceAddress(strAddressLine1+", "+strAddressLine2+", CANADA");
+        getRogersHomePhonePortInPage().setCurrentPhoneNumber();
         reporter.reportLogWithScreenshot("Port-in details set");
-        rogers_home_phone_port_in_page.selIMEI();
-        rogers_home_phone_port_in_page.setAccountNumberOrIMEI(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getImei()) ;
-        rogers_home_phone_port_in_page.clkPhoneNumberEligibiltyCheck();
+        getRogersHomePhonePortInPage().selIMEI();
+        getRogersHomePhonePortInPage().setAccountNumberOrIMEI(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getImei()) ;
+        getRogersHomePhonePortInPage().clkPhoneNumberEligibiltyCheck();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
-        rogers_igniteTV_buy_page.clkHomePhone();
+        getRogersIgniteTVBuyPage().clkHomePhone();
         
-        reporter.hardAssert(rogers_igniteTV_buy_page.verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
-        rogers_igniteTV_buy_page.set4KTV();
+        getRogersIgniteTVBuyPage().set4KTV();
         reporter.reportLogWithScreenshot("4k TV selected");
-        rogers_igniteTV_buy_page.clkCheckout();
+        getRogersIgniteTVBuyPage().clkCheckout();
         reporter.reportLogWithScreenshot("Launched the profile page");
-        rogers_igniteTV_profile_creation_page.clkSubmitProfile();  
+        getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
         
         
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
-        rogers_igniteTV_credit_check_page.selectDOBYearExistingCustomerMigration(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getYear());
-        rogers_igniteTV_credit_check_page.selectDOBMonthExistingCustomerMigration(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getMonth());
-        rogers_igniteTV_credit_check_page.selectDOBDayExistingCustomerMigration(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getDate());
+        getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomerMigration(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getYear());
+        getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomerMigration(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getMonth());
+        getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomerMigration(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getDate());
         reporter.reportLogWithScreenshot("Entered the DOB details");
-        rogers_igniteTV_credit_check_page.clkCreditConsentSubmit();
+        getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
         
         reporter.reportLogWithScreenshot("Home Phone selection page has launched");
-        rogers_home_phone_selection_page.clkContinueHomePhoneSelection();  
+        getRogersHomePhoneSelectionPage().clkContinueHomePhoneSelection();
 
-        reporter.hardAssert(rogers_tech_install_page.verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
+        reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
-        rogers_tech_install_page.selTechInstalStartDate();
+        getRogersTechInstallPage().selTechInstalStartDate();
         reporter.reportLogWithScreenshot("Selected Start date for Installation slot");
-        rogers_tech_install_page.selTechInstalEndDate();
+        getRogersTechInstallPage().selTechInstalEndDate();
         reporter.reportLogWithScreenshot("Selected End date for Installation slot");
-        rogers_tech_install_page.setEmail(); 
+        getRogersTechInstallPage().setEmail();
         reporter.reportLogWithScreenshot("tech install details");
-        rogers_tech_install_page.clkTechInstallContinue();
-    	reporter.hardAssert(rogers_order_review_page.verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
+        getRogersTechInstallPage().clkTechInstallContinue();
+    	reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");
 		
-		reporter.hardAssert(rogers_order_review_page.verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
+		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
         
-        rogers_order_review_page.clkAcceptenceCheckbox();
+        getRogersOrderReviewPage().clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
-        rogers_order_review_page.clkSubmit();
+        getRogersOrderReviewPage().clkSubmit();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");       
+        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmation(),"Order has created successfully","Order has failed");       
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
     	}
 

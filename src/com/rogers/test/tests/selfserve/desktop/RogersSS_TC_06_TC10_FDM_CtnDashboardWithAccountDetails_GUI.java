@@ -41,78 +41,78 @@ button should be displayed n Share Everything Dashboard
 	
     @Test(groups = {"RegressionSS","FDMSS"})
     public void validateFdmCtnDashboardWithAccountDetails() {
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc01030405.getUsername();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc01030405.getPassword();    	
-        rogers_login_page.setPasswordIFrame(strPassword);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 		
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc01030405.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc01030405.getAccountDetails().getBan());
         }
         
        common_business_flows.scrollToMiddleOfWebPage();
 	   reporter.reportLogWithScreenshot("Check the number of CTNs");
-	   reporter.hardAssert(rogers_account_overview_page.isCTNMoreThanOne(),
+	   reporter.hardAssert(getRogersAccountOverviewPage().isCTNMoreThanOne(),
 				"The account has more than 1 CTNS",
 				"The account doesnt have more than 1 CTNs, please add more than 1 and rerun");
 	   common_business_flows.scrollToTopOfWebPage();
        reporter.reportLogWithScreenshot("Account overview page.");     
-       rogers_account_overview_page.clkMenuUsageAndService();
+       getRogersAccountOverviewPage().clkMenuUsageAndService();
        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
-       rogers_account_overview_page.clkSubMenuWirelessUsage();
-       rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();           
+       getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
+       getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();           
        
        //usage dashboard area is displayed
        reporter.reportLogWithScreenshot("usage dashboard area is displayed");
-       reporter.hardAssert(rogers_wireless_dashboard_page.verifyTotalDataBucket(),
+       reporter.hardAssert(getRogersWirelessDashboardPage().verifyTotalDataBucket(),
     		   "Total data bucket is displayed", "Total data ");
-       reporter.hardAssert(rogers_wireless_dashboard_page.verifyDataRemainingOutOfTotalDataBucket(),
+       reporter.hardAssert(getRogersWirelessDashboardPage().verifyDataRemainingOutOfTotalDataBucket(),
     		   "data remaining out of total data bucket is dsiplayed", 
     		   "data remaining out of total data bucket is NOT displayed");
-       reporter.hardAssert(rogers_wireless_dashboard_page.verifyDaysRemainingInTheBillCycleIsDisplayed(),
+       reporter.hardAssert(getRogersWirelessDashboardPage().verifyDaysRemainingInTheBillCycleIsDisplayed(),
     		   "Days remaining in the bill cycle is displayed",
     		   "Days remaining in the bill cycle is not displayed");
        
        common_business_flows.scrollToMiddleOfWebPage();
        reporter.reportLogWithScreenshot("Price Plan details along with Change Plan & Change number button");
        //Price Plan details along with Change Plan & Change number button
-       reporter.hardAssert(rogers_wireless_dashboard_page.verifyChangePlanButtonDisplayed(), 
+       reporter.hardAssert(getRogersWirelessDashboardPage().verifyChangePlanButtonDisplayed(),
 				"Change Plan button is displayed", 
 				"Change plan button is not displayed");
        
-       reporter.softAssert(rogers_wireless_dashboard_page.verifyChangeMyNumberDisplayed(), 
+       reporter.softAssert(getRogersWirelessDashboardPage().verifyChangeMyNumberDisplayed(),
 				"Change my number is displayed", 
 				"Change my number is not displayed");
                      
-       reporter.softAssert(rogers_wireless_dashboard_page.verifyHeaderOfDeviceSection(), 
+       reporter.softAssert(getRogersWirelessDashboardPage().verifyHeaderOfDeviceSection(),
 				"Header of Device section in wireless dashboard page verified successfully", 
 				"Header of device section in wireless dashboard page didn't show as expected.");		
-		//rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
+		//getRogersWirelessDashboardPage().scrollToMidOfDasboardPage();
 		reporter.reportLogWithScreenshot("Wireless dashboard page Device Section."); 
-		reporter.softAssert(rogers_wireless_dashboard_page.verifyLinkUpgradeMyDevice(), 
+		reporter.softAssert(getRogersWirelessDashboardPage().verifyLinkUpgradeMyDevice(),
 				"Device balance in wireless dashboard page verified successfully", 
 				"Device balance in wireless dashboard page didn't show as expected.");
 			
 		//4.Share everything dashboard displayed successfully with
 		//Data access, stream saver, data alert buttons in the wireless dashboard.
-		 reporter.hardAssert(rogers_wireless_dashboard_page.verifyDataAccessDisplayed(), 
+		 reporter.hardAssert(getRogersWirelessDashboardPage().verifyDataAccessDisplayed(),
 					"Data access is displayed", 
 					"Data access is not displayed");
-		 reporter.softAssert(rogers_wireless_dashboard_page.verifyStreamSaverDisplayed(), 
+		 reporter.softAssert(getRogersWirelessDashboardPage().verifyStreamSaverDisplayed(),
 					"Stream Saver is displayed", 
 					"Stream Saver is not displayed");
-		 reporter.softAssert(rogers_wireless_dashboard_page.verifyDataAlertDisplayed(), 
+		 reporter.softAssert(getRogersWirelessDashboardPage().verifyDataAlertDisplayed(),
 					"Data alert is displayed", 
 					"Data alert is not displayed");
-		 reporter.softAssert(rogers_wireless_dashboard_page.verifyDataManagerDisplayed(), 
+		 reporter.softAssert(getRogersWirelessDashboardPage().verifyDataManagerDisplayed(),
 					"Data manager is displayed", 
 					"Data manager is not displayed");	
 		 

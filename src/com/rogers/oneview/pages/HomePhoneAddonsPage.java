@@ -30,22 +30,22 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 	 * @author Harpartap.Virk
 	 */	
 	public void clkexchangeLater() {
-		reusableActions.clickWhenReady(exchangeLaterbtn);
+		getReusableActionsInstance().clickWhenReady(exchangeLaterbtn);
 	}	
 	/**
 	 * Click Collapse(Down Arrow)
 	 * @author Harpartap.Virk
 	 */	
 	public void clkCollapse() {
-		reusableActions.clickIfAvailable(collapse,60);
+		getReusableActionsInstance().clickIfAvailable(collapse,60);
 	}
 	/**
 	 * Click Customer Add-On review
 	 * @author harpartap.virk
 	 */
 	public void clkCustomerAddonReview() {
-			//reusableActions.javascriptScrollByVisibleElement(btnGetIgniteTVBadge);
-			reusableActions.getWhenReady(customerAddonReveiwLink,120).click();	
+			//getReusableActionsInstance().javascriptScrollByVisibleElement(btnGetIgniteTVBadge);
+			getReusableActionsInstance().getWhenReady(customerAddonReveiwLink,120).click();
 		}
 	
 	/**
@@ -54,7 +54,7 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 	 * @author Harpartap.Virk
 	 */	
 	public boolean verifyreviewed() {	
-		return reusableActions.isElementVisible(continueButton,120);
+		return getReusableActionsInstance().isElementVisible(continueButton,120);
 			
 	}
 	/**
@@ -62,18 +62,18 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 	 * @author Harpartap.Virk
 	 */	
 	public void clkCheckOut() {
-		reusableActions.clickWhenReady(checkOut,120);
-		//reusableActions.clickIfAvailable(checkOut,45);
-		//reusableActions.clickIfAvailable(continueforCheckout,45);
+		getReusableActionsInstance().clickWhenReady(checkOut,120);
+		//getReusableActionsInstance().clickIfAvailable(checkOut,45);
+		//getReusableActionsInstance().clickIfAvailable(continueforCheckout,45);
 	}
 	/**
 	 * Click Continue
 	 * @author Harpartap.Virk
 	 */	
 	public void clkContinue() {
-		reusableActions.getWhenReady(continueButton,120).sendKeys(Keys.ENTER);
-		//reusableActions.clickIfAvailable(checkOut,45);
-		//reusableActions.clickIfAvailable(continueforCheckout,45);
+		getReusableActionsInstance().getWhenReady(continueButton,120).sendKeys(Keys.ENTER);
+		//getReusableActionsInstance().clickIfAvailable(checkOut,45);
+		//getReusableActionsInstance().clickIfAvailable(continueforCheckout,45);
 	}
 }
 
