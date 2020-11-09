@@ -113,7 +113,7 @@ public class CommonBusinessFlows {
 							"Add the Data top-up  window should be displayed. (completd an MDT add on)", 
 						"Add the Data top-up  window is NOT displayed.");        
 		baseTestClass.reporter.reportLogWithScreenshot("Add Data Add on");  
-		baseTestClass.getRogersAddDataPage().selectDataAddOnOption(1);
+		baseTestClass.getRogersAddDataPage().selectDataAddOnOption(2);
 		baseTestClass.reporter.reportLogWithScreenshot("Select Add on option");  
 		baseTestClass.getRogersAddDataPage().clkContinue();
 		baseTestClass.reporter.reportLogWithScreenshot("Select Purchase");  
