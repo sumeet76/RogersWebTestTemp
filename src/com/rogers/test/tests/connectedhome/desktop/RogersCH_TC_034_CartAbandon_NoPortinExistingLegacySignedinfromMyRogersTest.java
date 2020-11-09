@@ -49,7 +49,7 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_034a_CartAbandon_NoPortinExistingLegacySignedinfromMyRogersTest extends BaseTestClass {
+public class RogersCH_TC_034_CartAbandon_NoPortinExistingLegacySignedinfromMyRogersTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
 	public void checkCartAbandonNoPortinExistingLegacySignedinfromMyRogersTest() {
@@ -77,7 +77,7 @@ public class RogersCH_TC_034a_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");    	
         rogers_home_page.clkUseThisAddress();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-		reporter.hardAssert(rogers_igniteTV_buy_page.verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
+		//reporter.hardAssert(rogers_igniteTV_buy_page.verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
         rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
         reporter.reportLogWithScreenshot("Launched the information popup");
         rogers_igniteTV_buy_page.clkIUnderstand();
@@ -87,13 +87,13 @@ public class RogersCH_TC_034a_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
 		reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
 		rogers_igniteTV_buy_page.clkHomePhone();
         reporter.reportLogWithScreenshot("Launched the cart summary page");
-        rogers_igniteTV_buy_page.set4KTV(); 
-        rogers_home_page.clkMyRogers();
-		}
 
-	@Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
-	public void checkCartAbandonNoPortinExistingLegacySignedinfromMyRogersTest1() {
-		reporter.reportLogWithScreenshot("Launched the Home Page");
+		reporter.hardAssert(rogers_igniteTV_buy_page.verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");
+		reporter.reportLogWithScreenshot("Launched the cart summary page");
+		rogers_igniteTV_buy_page.set4KTV();
+		reporter.reportLogWithScreenshot("4k TV selected");
+		rogers_home_page.clkSignOut();
+		getDriver().get(TestDataHandler.rogersConfig.getRogersURL()+"/consumer/easyloginriverpage");
 		rogers_home_page.clkSignIn();
 		rogers_login_page.switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
@@ -120,7 +120,7 @@ public class RogersCH_TC_034a_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
 
 		reporter.hardAssert( rogers_igniteTV_profile_creation_page.verifyImportantInformation(),"Important Information popup has Launched","Important Information popup has not Launched");
 		rogers_igniteTV_profile_creation_page.clkIUnderstand();
-	}
+		}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
