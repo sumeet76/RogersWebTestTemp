@@ -23,11 +23,11 @@ public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends B
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    reporter.reportLogWithScreenshot("Skip popup");
-	    getRogersLoginPage().clkSkipIFrame();
-	    getRogersLoginPage().switchOutOfSignInIFrame();
-	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc39_40_SolarisPortinFlows.accountDetails.getBan());
-		//reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        reporter.reportLogWithScreenshot("Launched the Account Page");
+        getRogersLoginPage().clkSkipIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();
+		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc39_40_SolarisPortinFlows.accountDetails.getBan());
+		reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersHomePage().clkShop();
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
         getRogersHomePage().clkIgniteTVExistingCustomer();
@@ -58,8 +58,8 @@ public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends B
         getRogersHomePhonePortInPage().setCurrentPhoneNumber();
         reporter.reportLogWithScreenshot("Port-in details set");
         getRogersHomePhonePortInPage().selIMEI();
-        getRogersHomePhonePortInPage().setAccountNumberOrIMEI("352912110031531") ;
-        getRogersHomePhonePortInPage().clkPhoneCheck();
+        getRogersHomePhonePortInPage().setAccountNumberOrIMEI(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getImei()) ;
+        getRogersHomePhonePortInPage().clkPhoneNumberEligibiltyCheck();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
         getRogersIgniteTVBuyPage().clkHomePhone();
         

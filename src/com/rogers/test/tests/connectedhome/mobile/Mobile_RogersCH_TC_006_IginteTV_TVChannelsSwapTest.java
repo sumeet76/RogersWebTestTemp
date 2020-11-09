@@ -54,7 +54,9 @@ public class Mobile_RogersCH_TC_006_IginteTV_TVChannelsSwapTest extends BaseTest
     
     getRogersSolarisTVDashboardPage().clkTVBadgeMobile();
     reporter.reportLogWithScreenshot("Launched the TV dash board");
-    getRogersSolarisTVDashboardPage().clkChangeFlexChannels();
+
+        getRogersSolarisTVDashboardPage().clkChangeFlexChannelsMobile();
+
     reporter.reportLogWithScreenshot("TV channels pannel has displayed");
     getRogersSolarisTVDashboardPage().clkOutChannelOne();
     getRogersSolarisTVDashboardPage().clkOutChannelTwo();
@@ -62,17 +64,13 @@ public class Mobile_RogersCH_TC_006_IginteTV_TVChannelsSwapTest extends BaseTest
     reporter.reportLogWithScreenshot("removed the Swap-out Channels");
     getRogersSolarisTVDashboardPage().swapChannelIn(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapInChannelOne());
     reporter.reportLogWithScreenshot("Selceted the Swap-in Channel one");
-    getRogersSolarisTVDashboardPage().btnChannelAdd();
-    getRogersSolarisTVDashboardPage().btnClearSerachResults();
-    getRogersSolarisTVDashboardPage().swapChannelIn(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapInChannelTwo());
+       getRogersSolarisTVDashboardPage().btnClearSerachResults();
+        getRogersSolarisTVDashboardPage().swapChannelIn(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapInChannelTwo());
     reporter.reportLogWithScreenshot("Selceted the Swap-in Channel two");
-    getRogersSolarisTVDashboardPage().btnChannelAdd();
-    getRogersSolarisTVDashboardPage().btnClearSerachResults();
-    getRogersSolarisTVDashboardPage().swapChannelIn(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapInChannelThree());
+        getRogersSolarisTVDashboardPage().btnClearSerachResults();
+        getRogersSolarisTVDashboardPage().swapChannelIn(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapInChannelThree());
     reporter.reportLogWithScreenshot("Selceted the Swap-in Channel three");
-    getRogersSolarisTVDashboardPage().btnChannelAdd();
-    getRogersSolarisTVDashboardPage().btnClearSerachResults();
-    getRogersSolarisTVDashboardPage().clkConfirmSwap();
+        getRogersSolarisTVDashboardPage().clkConfirmSwap();
     reporter.reportLogWithScreenshot("Swap Success popup has launched");
     getRogersSolarisTVDashboardPage().clkSuccessSwap();
     reporter.reportLogWithScreenshot("Swap success");  

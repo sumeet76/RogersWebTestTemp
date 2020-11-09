@@ -48,6 +48,7 @@ public class AccountDetails {
 	private String rhmPackageEn;
 	private String rhmPackageFr;
 	private String dob;
+	private String  imei;
 	private String flexChannelsCount;
 	
 	public String getRhmPackageEn() {
@@ -109,6 +110,19 @@ public class AccountDetails {
 	public void setBan(String ban) {
 		this.ban = ban;
 	}
+	/**
+	 * @return the Imei
+	 */
+	public String getImei() {
+		return imei;
+	}
+	/**
+	 * @param imei the imei to set
+	 */
+	public void setImei(String imei) {
+		this.imei = imei;
+	}
+
 	/**
 	 * @return the ctn
 	 */

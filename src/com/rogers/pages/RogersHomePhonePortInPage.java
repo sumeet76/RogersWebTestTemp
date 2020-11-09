@@ -34,31 +34,31 @@ public class RogersHomePhonePortInPage extends BasePageClass {
 	WebElement imgPhoneNumberVerificationSuccess;	
 
 
-	@FindBy(xpath ="//div[@class='col-sm-6']//input[contains(@class,'ds-input w-100 text-copy pt-16 ds-bgcolor-transparent cdk-text-field-autofill-monitored')]")
+	@FindBy(xpath ="//input[contains(@aria-label,'Enter your first name here')]")
 	WebElement txtFirstName;
 
-	@FindBy(xpath ="//div[@class='col-sm-6 mt-16 mt-sm-0']//input[contains(@class,'ds-input w-100 text-copy pt-16 ds-bgcolor-transparent cdk-text-field-autofill-monitored')]")
+	@FindBy(xpath ="//input[contains(@aria-label,'Enter your last name here')]")
 	WebElement txtLastName;
 	
 	@FindBy(xpath ="//input[contains(@id,'canada-post-address-complete-')]")
 	WebElement txtInvoiceAddress;
-	
-	@FindBy(xpath ="//div[contains(@class,'current-phone-provider')]//input[contains(@class,'ds-input w-100 text-copy pt-16 ds-bgcolor-transparent cdk-text-field-autofill-monitored')]")
+
+	@FindBy(xpath ="//input[contains(@aria-label,'Enter your current phone provider here')]")
 	WebElement txtCurrentPhoneNumber;
 	
-	@FindBy(xpath = "//div[contains(@class,'current-phone-provider')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	@FindBy(xpath = "//input[contains(@aria-label,'Enter your current phone provider here')]/ancestor::div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement txtCurrentPhoneNumberContainer;
-	
-	@FindBy(xpath = "	//div[contains(@class,'current-phone-provider')]//span[@class='ds-formField__labelWrapper position-absolute ng-trigger ng-trigger-floatAnimation']")
-	WebElement spanIMEI;
-	
-	@FindBy(xpath = "//select[@class='text-semi ds-input w-100 text-copy pt-16 ds-bgcolor-transparent cdk-text-field-autofill-monitored ng-pristine ng-valid -select ng-touched']")
+
+	@FindBy(xpath = "//select[contains(@aria-label,'Open list of account options')]")
 	WebElement ddlAccountNumberOrIMEI;
 		
-	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white -select']")
+	@FindBy(xpath = "//div[contains(@class,'ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white -select')]")
 	WebElement selIMEIContainer;
-	
-		@FindBy(xpath = "//input[@id='accountNumber']")
+
+	@FindBy(xpath = "//input[@name='imei']/ancestor::div[contains(@class,'ds-formField__inputContainer')]")
+	WebElement txtIMEIContainer;
+
+		@FindBy(xpath = "//input[@name='imei']")
 	WebElement txtAccountNumberOrIMEI;
 	
 	@FindBy(xpath = "//button[@class='ute-btn-primary']//ins[@translate='global.common.buttons.continue']")
@@ -176,7 +176,8 @@ public class RogersHomePhonePortInPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void setAccountNumberOrIMEI(String strAccountNumberorIMEI) {
-		getReusableActionsInstance().getWhenReady(txtAccountNumberOrIMEI, 30).clear();
+		getReusableActionsInstance().executeJavaScriptClick(txtIMEIContainer);
+		getReusableActionsInstance().getWhenReady(txtAccountNumberOrIMEI, 60).clear();
 		getReusableActionsInstance().getWhenReady(txtAccountNumberOrIMEI, 3).sendKeys(strAccountNumberorIMEI);
 	}
 	

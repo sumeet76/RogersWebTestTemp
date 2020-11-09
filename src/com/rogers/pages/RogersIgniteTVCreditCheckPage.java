@@ -223,6 +223,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectFirstID(String strFirstID) {
+		getReusableActionsInstance().waitForElementVisibility(ddlFirstID,10);
 		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlFirstID, strFirstID);
 	}
 	
@@ -232,6 +233,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectProvince(String strProvince) {
+		getReusableActionsInstance().waitForElementVisibility(ddlProvince,10);
 		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlProvince, strProvince);
 	}
 	

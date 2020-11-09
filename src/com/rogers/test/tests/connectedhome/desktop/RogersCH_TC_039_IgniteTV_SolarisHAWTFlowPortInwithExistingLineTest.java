@@ -58,30 +58,32 @@ public class RogersCH_TC_039_IgniteTV_SolarisHAWTFlowPortInwithExistingLineTest 
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
         getRogersHomePage().clkAddressCheck();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
         getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
+       // reporter.hardAssert(getRogersHomePhonePortInPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the home phone selection page");
+            getRogersHomePhonePortInPage().setHomePhoneNumber(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getPhoneNumber());
+            getRogersHomePhonePortInPage().clkPhoneNumberEligibiltyCheck();
 
-        reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
-        getRogersHomePhonePortInPage().setHomePhoneNumber(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getPhoneNumber());
-        getRogersHomePhonePortInPage().clkPhoneNumberEligibiltyCheck();
-
-        getRogersHomePhonePortInPage().verifyPhoneNumberSuccess();
+        reporter.hardAssert(getRogersHomePhonePortInPage().verifyPhoneNumberSuccess(),"Port-in Number validation success","Port-in Number validation Failed");
         reporter.reportLogWithScreenshot("Port-in Number validation success");
-        getRogersHomePhonePortInPage().setFirstName();
-        getRogersHomePhonePortInPage().setLastName();
-        getRogersHomePhonePortInPage().setInvoiceAddress(strAddressLine1+", "+strAddressLine2+", CANADA");
-        getRogersHomePhonePortInPage().setCurrentPhoneNumber();
+            getRogersHomePhonePortInPage().setFirstName();
+            getRogersHomePhonePortInPage().setLastName();
+            getRogersHomePhonePortInPage().setInvoiceAddress(strAddressLine1+", "+strAddressLine2+", CANADA");
+            getRogersHomePhonePortInPage().setCurrentPhoneNumber();
         reporter.reportLogWithScreenshot("Port-in details set");
-        getRogersHomePhonePortInPage().clkPhoneCheck();
+            getRogersHomePhonePortInPage().selIMEI();
+            getRogersHomePhonePortInPage().setAccountNumberOrIMEI(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getImei()) ;
+            getRogersHomePhonePortInPage().clkPhoneNumberEligibiltyCheck();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
-        getRogersIgniteTVBuyPage().clkHomePhone();
-        getRogersIgniteTVBuyPage().verify4KTV();
+            getRogersIgniteTVBuyPage().clkHomePhone();
+
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
         getRogersIgniteTVBuyPage().set4KTV();
         reporter.reportLogWithScreenshot("4k TV selected");
@@ -99,19 +101,21 @@ public class RogersCH_TC_039_IgniteTV_SolarisHAWTFlowPortInwithExistingLineTest 
         getRogersIgniteTVCreditCheckPage().selectDOBMonth();
         getRogersIgniteTVCreditCheckPage().selectDOBDay();
         reporter.reportLogWithScreenshot("Entered DOB details");
-        getRogersIgniteTVCreditCheckPage().selectFirstID("2");
-        getRogersIgniteTVCreditCheckPage().selectProvince("ON");
-        getRogersIgniteTVCreditCheckPage().selectExpiryYearwithSpace();
-        getRogersIgniteTVCreditCheckPage().selectExpiryMonth();
-        getRogersIgniteTVCreditCheckPage().selectExpiryDay();
-        getRogersIgniteTVCreditCheckPage().setDrivingLicenseNumber("ONTARIO");
+
+            getRogersIgniteTVCreditCheckPage().selectFirstID("Driver's License");
+            getRogersIgniteTVCreditCheckPage().selectProvince("Ontario");
+            getRogersIgniteTVCreditCheckPage().selectExpiryYear();
+            getRogersIgniteTVCreditCheckPage().selectExpiryMonth();
+            getRogersIgniteTVCreditCheckPage().selectExpiryDay();
+            getRogersIgniteTVCreditCheckPage().setDrivingLicenseNumber("ON");
         reporter.reportLogWithScreenshot("Driving License Details");
-        getRogersIgniteTVCreditCheckPage().selectSecondIDOption("4");
-        getRogersIgniteTVCreditCheckPage().setPassportNumber();
-        getRogersIgniteTVCreditCheckPage().selectPassportExpiryYear();
-        getRogersIgniteTVCreditCheckPage().selectPassportExpiryMonth();
-        getRogersIgniteTVCreditCheckPage().selectPassportExpiryDay();
-        getRogersIgniteTVCreditCheckPage().clkCreditConsent();
+            getRogersIgniteTVCreditCheckPage().selectSecondIDOption("Passport");
+            getRogersIgniteTVCreditCheckPage().setPassportNumber();
+            getRogersIgniteTVCreditCheckPage().selectPassportExpiryYear();
+            getRogersIgniteTVCreditCheckPage().selectPassportExpiryMonth();
+            getRogersIgniteTVCreditCheckPage().selectPassportExpiryDay();
+            getRogersIgniteTVCreditCheckPage().clkCreditConsent();
+
         reporter.reportLogWithScreenshot("Passport Details");
         getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
         reporter.reportLogWithScreenshot("Home Phone selection page has launched");
@@ -151,7 +155,7 @@ public class RogersCH_TC_039_IgniteTV_SolarisHAWTFlowPortInwithExistingLineTest 
 	
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }

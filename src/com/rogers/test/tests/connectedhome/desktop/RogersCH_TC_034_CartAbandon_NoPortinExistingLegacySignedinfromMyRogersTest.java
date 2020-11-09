@@ -49,7 +49,7 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_034a_CartAbandon_NoPortinExistingLegacySignedinfromMyRogersTest extends BaseTestClass {
+public class RogersCH_TC_034_CartAbandon_NoPortinExistingLegacySignedinfromMyRogersTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
 	public void checkCartAbandonNoPortinExistingLegacySignedinfromMyRogersTest() {
@@ -77,8 +77,8 @@ public class RogersCH_TC_034a_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");    	
         getRogersHomePage().clkUseThisAddress();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-        getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
+		//reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
+		getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
         reporter.reportLogWithScreenshot("Launched the information popup");
         getRogersIgniteTVBuyPage().clkIUnderstand();
 		reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
@@ -87,16 +87,15 @@ public class RogersCH_TC_034a_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
 		reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
 		getRogersIgniteTVBuyPage().clkHomePhone();
         reporter.reportLogWithScreenshot("Launched the cart summary page");
-        getRogersIgniteTVBuyPage().set4KTV();
-        getRogersHomePage().clkMyRogers();
-		}
-
-	@Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
-	public void checkCartAbandonNoPortinExistingLegacySignedinfromMyRogersTest1() {
-		reporter.reportLogWithScreenshot("Launched the Home Page");
+		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");
+		reporter.reportLogWithScreenshot("Launched the cart summary page");
+		getRogersIgniteTVBuyPage().set4KTV();
+		reporter.reportLogWithScreenshot("4k TV selected");
+		getRogersHomePage().clkSignOut();
+		getDriver().get(TestDataHandler.rogersConfig.getRogersURL()+"/consumer/easyloginriverpage");
 		getRogersHomePage().clkSignIn();
 		getRogersLoginPage().switchToSignInIFrame();
-		reporter.reportLogWithScreenshot("Launched the SignIn popup");
+        reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc34_NoPortInAbondoneFlows.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc34_NoPortInAbondoneFlows.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
@@ -117,10 +116,7 @@ public class RogersCH_TC_034a_CartAbandon_NoPortinExistingLegacySignedinfromMyRo
 		reporter.reportLogWithScreenshot("Launched the cart summary page");
 		getRogersIgniteTVBuyPage().clkCheckout();
 		reporter.reportLogWithScreenshot("Launched the information popup");
-
-		reporter.hardAssert( getRogersIgniteTVProfileCreationPage().verifyImportantInformation(),"Important Information popup has Launched","Important Information popup has not Launched");
-		getRogersIgniteTVProfileCreationPage().clkIUnderstand();
-	}
+		}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin

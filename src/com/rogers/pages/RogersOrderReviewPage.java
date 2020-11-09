@@ -74,7 +74,8 @@ public class RogersOrderReviewPage extends BasePageClass {
 
 	@FindBy(xpath = "//input[@class='ute-btn-primary']")
 	WebElement clkSubmitUpdate;
-	
+	//input[@name='submit]
+
 	@FindBy(xpath = "//span[@translate='global.cta.submit']")
 	WebElement clkSubmitUpdateInternet;
 	
