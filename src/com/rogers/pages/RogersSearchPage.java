@@ -230,13 +230,13 @@ public class RogersSearchPage extends BasePageClass {
      * @return true if displayed, otherwise false
      * @author pankaj.patil
      */
-
     public void clkParentFilter(WebElement parentFilter)  {
-        getReusableActionsInstance().staticWait(500);
+        getReusableActionsInstance().javascriptScrollToTopOfPage();
         getReusableActionsInstance().clickWhenReady(parentFilter);
         System.out.println("+++++++++"+getReusableActionsInstance()+"++++++++++"+ Thread.currentThread().getName()+"  "+getDriver()+ "***************"+"Page: "+this);
         getReusableActionsInstance().staticWait(500);
     }
+
 
     public List<WebElement> getParentFilters(String strGrandParentFilterName) {
         return getDriver().findElements(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'" + strGrandParentFilterName + "')]/ancestor::button/following-sibling::ds-expander//p"));
@@ -343,11 +343,9 @@ public class RogersSearchPage extends BasePageClass {
 
     }
 
-
-
     public boolean validateResultsLinks(String strGrandParentFilter, String strParentFilter) {
         List<WebElement> resultlinks = getDriver().findElements(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]/preceding-sibling::a"));
-        for (int counter=0;counter<resultlinks.size();counter++){
+        for (int counter=0;counter<resultlinks.size();counter++) {
             if(!(resultlinks.get(counter).getAttribute("href").equals(""))) {
                 return true;
             }
@@ -785,7 +783,6 @@ public class RogersSearchPage extends BasePageClass {
     }
 
     public List<WebElement> getAllResultLinks() {
-        getReusableActionsInstance().javascriptScrollToTopOfPage();
         return getDriver().findElements(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]/preceding-sibling::a"));
     }
 
@@ -1027,7 +1024,6 @@ public class RogersSearchPage extends BasePageClass {
         return true;
     }
 
-
     public List<String> getColorFilters() {
         List<String> colorFilters = new ArrayList<String>();
         List<WebElement> colorFilterElements = getDriver().findElements(By.xpath("//span[contains(@class,'checkbox-color-copy')]"));
@@ -1047,4 +1043,20 @@ public class RogersSearchPage extends BasePageClass {
         }
         return true;
     }
+
+    public List<String> getResultColorOptions(WebElement resultLink) {
+        List<String> colorOptions = new ArrayList<String>();
+        List<WebElement> resultColorOptions = resultLink.findElements(By.xpath("parent::div/following-sibling::ds-radio-group//ds-selection"));
+        for(int i=0;i<resultColorOptions.size();i++) {
+            colorOptions.add(resultColorOptions.get(i).getAttribute("ng-reflect-value"));
+        }
+        return colorOptions;
+    }
+
+    public void clkResultColor(WebElement resultLink, String strColor) {
+        getReusableActionsInstance().javascriptScrollToTopOfPage();
+        WebElement resultColor = resultLink.findElement(By.xpath("parent::div/following-sibling::ds-radio-group//ds-selection[@ng-reflect-value='"+strColor+"']"));
+        getReusableActionsInstance().clickWhenReady(resultColor);
+    }
+
 }

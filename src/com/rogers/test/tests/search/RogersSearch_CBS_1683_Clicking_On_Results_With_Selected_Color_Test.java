@@ -20,6 +20,8 @@ public class RogersSearch_CBS_1683_Clicking_On_Results_With_Selected_Color_Test 
 		String strSelectedColor;
 		List<String> strColorFilters;
 		String strSearchTerm = "iphone";
+		List<String> resultColorOptions;
+
 		getDriver().get(System.getProperty("SearchUrl")+strSearchTerm);
 
 		getRogersSearchPage().clkGrandParentFilter("Shop");
@@ -28,39 +30,41 @@ public class RogersSearch_CBS_1683_Clicking_On_Results_With_Selected_Color_Test 
 
 		strColorFilters = getRogersSearchPage().getColorFilters();
 		for(int i=0;i<strColorFilters.size();i++) {
-			//Selecting color filter
 			getRogersSearchPage().clkColorType(strColorFilters.get(i));
 			reporter.reportLogWithScreenshot(strColorFilters.get(i) + " - Color Selected");
+		}
 
-			reporter.softAssert(getRogersSearchPage().validateResultsColor(strColorFilters.get(i)),
-					"All Results belong to color"+strColorFilters.get(i),
-					"All Results do Not belong to color"+strColorFilters.get(i));
+		resultLinks = getRogersSearchPage().getAllResultLinks();
+		for(int k=0;k<resultLinks.size();k++) {
+			String linkDetails = resultLinks.get(k).getText();
 
-			resultLinks = getRogersSearchPage().getAllResultLinks();
-			reporter.reportLogWithScreenshot(strColorFilters.get(i) + " - Color Results");
-
-			for(int k=0;k< resultLinks.size();k++) {
-				String linkDetails=resultLinks.get(k).getText();
+			resultColorOptions = getRogersSearchPage().getResultColorOptions(resultLinks.get(k));
+			for (int j=0;j<resultColorOptions.size();j++) {
+				getRogersSearchPage().clkResultColor(resultLinks.get(k), resultColorOptions.get(j));
+				reporter.reportLogWithScreenshot(resultColorOptions.get(j) + " color selected for Result link-" + (k+1));
 				getRogersSearchPage().clkResultLink(resultLinks.get(k));
 
 				strDeviceName = getRogersDeviceConfigPage().getDeviceName();
 				if(strDeviceName != null && !strDeviceName.equals("Phones")) {
 					reporter.reportLogPassWithScreenshot(strDeviceName + " Page");
 					strSelectedColor = getRogersDeviceConfigPage().getSelectedColor();
-					reporter.softAssert(strSelectedColor.equals(strColorFilters.get(i)),
-							"Color: Expected="+strColorFilters.get(i)+"; Actual=" + strSelectedColor,
-							"Color: Expected="+strColorFilters.get(i)+"; Actual=" + strSelectedColor);
+					reporter.softAssert(strSelectedColor.equals(resultColorOptions.get(j)),
+							"Color: Expected="+resultColorOptions.get(j)+"; Actual=" + strSelectedColor,
+							"Color: Expected="+resultColorOptions.get(j)+"; Actual=" + strSelectedColor);
 					getRogersDeviceConfigPage().navigateBack();
 				} else {
-					reporter.reportLogFailWithScreenshot("Failed to land on Device Config page for following device: "  + linkDetails + " & following color: " +strColorFilters.get(i));
+					reporter.reportLogFailWithScreenshot("Failed to land on Device Config page for following device: "  + linkDetails + " & following color: " + resultColorOptions.get(j));
 					getDriver().get(System.getProperty("SearchUrl")+strSearchTerm);
 					getRogersSearchPage().clkGrandParentFilter("Shop");
 					getRogersSearchPage().clkParentFilter("Shop","Wireless");
-					getRogersSearchPage().clkColorType(strColorFilters.get(i));
+					strColorFilters = getRogersSearchPage().getColorFilters();
+					for(int i=0;i<strColorFilters.size();i++) {
+						getRogersSearchPage().clkColorType(strColorFilters.get(i));
+					}
 				}
 				resultLinks = getRogersSearchPage().getAllResultLinks();
+				resultColorOptions = getRogersSearchPage().getResultColorOptions(resultLinks.get(k));
 			}
-			getRogersSearchPage().clkColorType(strColorFilters.get(i));
 		}
 	}
 
