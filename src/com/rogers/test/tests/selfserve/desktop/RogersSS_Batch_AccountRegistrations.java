@@ -5,6 +5,7 @@ import com.rogers.test.helpers.RogersEnums;
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
+import utils.CSVReader;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -29,18 +30,26 @@ public class RogersSS_Batch_AccountRegistrations extends BaseTestClass {
 	public void afterTest() throws InterruptedException {
 		closeSession();
 	}
-	
-	@DataProvider(name = "AccountRegistrationData")
-	public Iterator<Object[]> testData() throws IOException
-	{
-	  return parseCsvDataSS(System.getProperty("user.dir") + "/test-data/rogers/selfserve/AccountRegistration.csv");
+
+	@DataProvider(name = "AccountRegistrationData", parallel = true)
+	public Object[] testData() throws IOException {
+		String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/selfserve/AccountRegistration.csv";
+		List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
+		Object[] csvRowStrArray = new Object[csvData.size()];
+		for (int i = 0; i < csvData.size(); i++) {
+			csvRowStrArray[i] = csvData.get(i);
+		}
+		return csvRowStrArray;
 	}
 	
-	
 	@Test(dataProvider = "AccountRegistrationData")
-	public void rogersSS_Batch_AccountRegistrations(String strBan, String strPostalCode, String strEmail,String strPassword) {
-		System.out.print(System.getenv());
-		
+	public void rogersSS_Batch_AccountRegistrations(String[] csvRowStrArray) {
+		System.out.println(System.getenv());
+		String strBan = csvRowStrArray[0];
+		String strPostalCode = csvRowStrArray[1];
+		String strEmail = csvRowStrArray[2];
+		String strPassword = csvRowStrArray[3];
+
 		reporter.reportLogWithScreenshot("Rogers Launch page");
     	getRogersHomePage().clkSignIn();
     	reporter.reportLogWithScreenshot("Sign in overlay");    		
