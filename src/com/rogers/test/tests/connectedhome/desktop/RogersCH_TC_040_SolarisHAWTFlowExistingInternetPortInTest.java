@@ -39,10 +39,9 @@ public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends B
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
     	String  strAddressLine1=TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getAddress().get("line2");
-      getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
-        getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
+        getRogersIgniteTVBuyPage().clkHomephone();
         getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
 
         reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
@@ -85,12 +84,17 @@ public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends B
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
         getRogersTechInstallPage().selTechInstalStartDate();
+        getRogersTechInstallPage().selectPreferredTimeSlot("1: AFT");
         reporter.reportLogWithScreenshot("Selected Start date for Installation slot");
         getRogersTechInstallPage().selTechInstalEndDate();
+        reporter.reportLogWithScreenshot("Selected End date for Installation");
+        getRogersTechInstallPage().selectBackupTimeSlot("1: AFT");
         reporter.reportLogWithScreenshot("Selected End date for Installation slot");
-        getRogersTechInstallPage().setEmail();
+        getRogersTechInstallPage().setMobielNumber();
         reporter.reportLogWithScreenshot("tech install details");
         getRogersTechInstallPage().clkTechInstallContinue();
+        reporter.reportLogWithScreenshot("Launched the payment options page");
+        getRogersPaymentOptionsPage().clkPaymentConfirm();
     	reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");
 		
@@ -100,7 +104,7 @@ public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends B
         reporter.reportLogWithScreenshot("Agreement details");
         getRogersOrderReviewPage().clkSubmit();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmation(),"Order has created successfully","Order has failed");       
+        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
     	}
 

@@ -77,10 +77,8 @@ public class RogersCH_TC_031_IginteTV_BuySolarisDoublePlayChangeInstallationDate
 		String  strAddressLine2=TestDataHandler.tc31_SolarisInternetAccountWithUsageAndPackageUpgrade.getAccountDetails().getAddress().get("line2");
 		getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
 		getRogersHomePage().clkIgniteAddressLookupSubmit();
-		//getRogersHomePage().clkContinueIgniteMultipleAddressLookupSubmit();
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-		getRogersIgniteTVBuyPage().clkHomephone();
 		getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
 		reporter.reportLogWithScreenshot("Launched the port-in popup");
 

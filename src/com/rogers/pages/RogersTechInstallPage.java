@@ -222,12 +222,12 @@ public class RogersTechInstallPage extends BasePageClass {
 	public void selSelffinstallDateAndTime() {
 		if(getReusableActionsInstance().isElementVisible(rdoTechInstallSlot, 90))
 		{
-		getReusableActionsInstance().getWhenReady(rdoTechInstallSlot, 30).click();
+		getReusableActionsInstance().getWhenReady(rdoTechInstallSlot, 90).click();
 		}
 		else
 		{	
 		getReusableActionsInstance().waitForElementVisibility(clkCalendarIcon,20);
-		getReusableActionsInstance().getWhenReady(clkCalendarIcon, 20).click();
+		getReusableActionsInstance().getWhenReady(clkCalendarIcon, 90).click();
 		Calendar calendar = Calendar.getInstance();
 		int intDate = calendar.get(Calendar.DATE);
 		int startDate = intDate + 20; 
@@ -238,8 +238,8 @@ public class RogersTechInstallPage extends BasePageClass {
 		}
 		String strStartDate= Integer.toString(startDate);
 		By selStartDate = By.xpath("//span[contains(text(),'" + strStartDate + "') and @class='owl-dt-calendar-cell-content']");
-		getReusableActionsInstance().getWhenReady(selStartDate, 20).click();
-		getReusableActionsInstance().waitForElementVisibility(rdoTechInstallSlot, 180);
+		getReusableActionsInstance().getWhenReady(selStartDate, 90).click();
+		getReusableActionsInstance().waitForElementVisibility(rdoTechInstallSlot, 90);
 		getReusableActionsInstance().getWhenReady(rdoTechInstallSlot, 90).click();
 		}
 	}
@@ -341,6 +341,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void setMobielNumber() {
+		getReusableActionsInstance().staticWait(6000);
 		String strPhoneNumber = FormFiller.generatePhoneNumber();
 		String strEmail = FormFiller.generateEmail();
 		if(getReusableActionsInstance().isElementVisible(txtEnroute,90)) {
@@ -456,7 +457,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	public void selTechInstalStartDate() {
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementVisibility(imgStartingTechInstallSlot,180);
-		getReusableActionsInstance().getWhenReady(imgStartingTechInstallSlot, 20).click();
+		getReusableActionsInstance().getWhenReady(imgStartingTechInstallSlot, 60).click();
 		Calendar calendar = Calendar.getInstance();
 		int intDate = calendar.get(Calendar.DATE);
 		int iDate = intDate + 10; 
@@ -474,6 +475,7 @@ public class RogersTechInstallPage extends BasePageClass {
 			By selStartDate = By.xpath("//tr[@class='ng-star-inserted']//td//span[contains(text(),'" + strStartDate + "')]");
 			getReusableActionsInstance().getWhenReady(selStartDate, 60).click();
 		}
+		getReusableActionsInstance().staticWait(5000);
 	}
 	
 	/**
@@ -481,12 +483,12 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selTechInstalEndDate() {
-		getReusableActionsInstance().waitForElementVisibility(imgEndingTechInstallSlot,60);
-		getReusableActionsInstance().getWhenReady(imgEndingTechInstallSlot, 20).click();
+		getReusableActionsInstance().waitForElementVisibility(imgEndingTechInstallSlot,90);
+		getReusableActionsInstance().getWhenReady(imgEndingTechInstallSlot, 90).click();
 		Calendar calendar = Calendar.getInstance();
 		int intDate = calendar.get(Calendar.DATE);	
 		int iDate = intDate + 10; 
-		if(iDate >= 30) {
+		if(iDate >= 90) {
 		getReusableActionsInstance().waitForElementVisibility(clkChevron, 60);
 		getReusableActionsInstance().getWhenReady(clkChevron, 60).click();
 		int selDate = intDate - 6 ;
@@ -501,8 +503,7 @@ public class RogersTechInstallPage extends BasePageClass {
 			By selEndDate = By.xpath("//tr[@class='ng-star-inserted']//td//span[contains(text(),'" + strEndDate + "')]");
 			getReusableActionsInstance().getWhenReady(selEndDate, 30).click();
 		}
-		
-
+		getReusableActionsInstance().staticWait(7000);
 	}
 	
 	/**

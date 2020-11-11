@@ -76,7 +76,8 @@ public class RogersCH_TC_038_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");    	
         getRogersHomePage().clkUseThisAddress();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
+        //reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
+        getRogersIgniteTVBuyPage().clkHomephone();
         getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
         reporter.reportLogWithScreenshot("Launched the information popup");
         getRogersIgniteTVBuyPage().clkIUnderstand();
@@ -111,21 +112,19 @@ public class RogersCH_TC_038_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
         reporter.reportLogWithScreenshot("Selected End date for Installation");
         getRogersTechInstallPage().selectBackupTimeSlot("1: AFT");
         reporter.reportLogWithScreenshot("Selected End date for Installation slot");
-        getRogersTechInstallPage().clkTechInstallSlot();
         reporter.reportLogWithScreenshot("tech install details");
-        getRogersTechInstallPage().setMobielNumberMigration();
-        getRogersTechInstallPage().setEmailMigration();
+        getRogersTechInstallPage().setMobielNumber();
         reporter.reportLogWithScreenshot("tech install details");
-        getRogersTechInstallPage().clkTechInstalConsentExistingCustomer();
+        getRogersTechInstallPage().clkTechInstalConsent();
         getRogersTechInstallPage().clkTechInstallContinue();
         reporter.reportLogWithScreenshot("Launched the payment options page");        
-        getRogersPaymentOptionsPage().clkPaymentConfirmExistingCustomer();        
+        getRogersPaymentOptionsPage().clkPaymentConfirm();
     	reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");
 		
 		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
         
-        getRogersOrderReviewPage().clkAcceptenceCheckboxMigration();
+        getRogersOrderReviewPage().clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
         getRogersOrderReviewPage().clkSubmit();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");

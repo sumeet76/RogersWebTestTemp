@@ -686,8 +686,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkInternetAvailability() {
-		getReusableActionsInstance().staticWait(3000);
-		getReusableActionsInstance().waitForElementVisibility(txtInternetBuyPage,120);
+		getReusableActionsInstance().waitForElementVisibility(lnkInternetAvailability,120);
 		getReusableActionsInstance().getWhenReady(lnkInternetAvailability,30).click();
 	}
 	

@@ -517,6 +517,14 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	}
 
 	/**
+	 * Click Home phone button on Ignite Home Phone popup
+	 * @author chinnarao.vattam
+	 */
+	public void clkHomePhoneMobile() {
+		getReusableActionsInstance().waitForElementVisibility(btnHomePhoneContinue, 60);
+		getReusableActionsInstance().executeJavaScriptClick(btnHomePhoneContinue);
+	}
+	/**
 	 * Click Keep My Number button on port-in page
 	 * @author chinnarao.vattam
 	 */

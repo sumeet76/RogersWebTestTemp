@@ -110,6 +110,15 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 * Click on Generate Phone Number button to generate phone numbers
 	 * @author chinnarao.vattam
 	 */
+	public void clkSkipforNewNumberMobile() {
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().waitForElementVisibility(btnSkipforNewNumber, 60);
+		getReusableActionsInstance().executeJavaScriptClick(btnSkipforNewNumber);
+	}
+	/**
+	 * Click on Generate Phone Number button to generate phone numbers
+	 * @author chinnarao.vattam
+	 */
 	public void clkPhoneNumberGenerator() {
 		getReusableActionsInstance().executeJavaScriptClick(btnGeneratePhoneNumber);
 	}
@@ -128,9 +137,24 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkContinueHomePhoneSelection() {
-		getReusableActionsInstance().waitForElementVisibility(btnContinueHomePhoneSelection, 20);
-		getReusableActionsInstance().getWhenReady(btnContinueHomePhoneSelection, 20).click();
+		getReusableActionsInstance().waitForElementVisibility(btnContinueHomePhoneSelection, 120);
+		getReusableActionsInstance().getWhenReady(btnContinueHomePhoneSelection, 90).click();
 	}
 
-
+	/**
+	 *Click on Continue button after selecting the Phone number on the select phone number page
+	 * @author chinnarao.vattam
+	 */
+	public void clkContinueHomePhoneMobile() {
+		getReusableActionsInstance().waitForElementVisibility(btnContinueHomePhoneSelection, 120);
+		getReusableActionsInstance().executeJavaScriptClick(btnContinueHomePhoneSelection);
+	}
+	/**
+	 *Click on Continue button after selecting the Phone number on the select phone number page
+	 * @author chinnarao.vattam
+	 */
+	public void clkContinueHomePhonePage() {
+		getReusableActionsInstance().waitForElementVisibility(btnContinueHomePhoneSelection, 120);
+		getReusableActionsInstance().getWhenReady(btnContinueHomePhoneSelection, 90).click();
+	}
 }

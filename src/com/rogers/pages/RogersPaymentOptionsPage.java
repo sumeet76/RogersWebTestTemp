@@ -139,7 +139,7 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectPaymentMode(String strPaymentMode) {
-		getReusableActionsInstance().waitForElementVisibility(ddlPaymentMode, 30);
+		getReusableActionsInstance().waitForElementVisibility(ddlPaymentMode, 90);
 		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlPaymentMode, strPaymentMode);
 	}
 	

@@ -82,7 +82,8 @@ public class RogersCH_TC_037_InternetPackageUpgradeToSolarisFromShopOptionTest e
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-        getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
+		getRogersIgniteTVBuyPage().clkHomephone();
+		getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
 		reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the home phone selection page");
 		getRogersHomePhoneSelectionPage().clkSkipforNewNumber();
