@@ -31,6 +31,9 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	@FindBy (xpath = "//input[@formcontrolname='email']")
 	WebElement txtEmailAddress;
 	
+	@FindBy (xpath = "//input[@formcontrolname='email']/parent::div")
+	WebElement lblEmailAddress;
+	
 	
 	@FindAll({
 		@FindBy(xpath = "//span[contains(text(),'Continue') or contains(text(),'Continuer')]/ancestor::button"),
@@ -157,6 +160,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void setEmailAddress(String strUsername) {
+		//reusableActions.clickIfAvailable(By.xpath("//input[@formcontrolname='email']/parent::div"));
 		reusableActions.getWhenReady(txtEmailAddress).clear();
 		reusableActions.getWhenReady(txtEmailAddress).sendKeys(strUsername);
 	}

@@ -5,6 +5,7 @@ import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -57,7 +58,9 @@ public class RogersRegisterPage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@class,'ute-primary-button')]")
 	WebElement btnRegisterNow;
 	
-	@FindBy(xpath = "//span[contains(text(),'This account is registered to:') or contains(text(),'compte est inscrit à l’adresse suivante')]")
+	@FindAll({
+	@FindBy(xpath = "//h1[contains(text(),'Already registered')]"),
+	@FindBy(xpath = "//span[contains(text(),'This account is registered to:') or contains(text(),'compte est inscrit à l’adresse suivante')]")})
 	WebElement lblProfileAlready;
 	
 	@FindBy(xpath = "//span[contains(text(),'able to find that account and/or postal code') or contains(text(),'avons pas trouvé ce compte ou ce code postal.')]")

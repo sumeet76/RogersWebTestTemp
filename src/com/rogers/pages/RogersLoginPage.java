@@ -165,7 +165,7 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author rajesh.varalli1 
 	 */
 	public void clickRegister() {
-		reusableActions.clickIfAvailable(lnkRegister);
+		reusableActions.getWhenReady(lnkRegister).click();
 	}
 	
 	

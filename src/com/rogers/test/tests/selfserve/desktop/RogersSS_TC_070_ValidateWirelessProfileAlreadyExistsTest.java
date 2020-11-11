@@ -17,9 +17,11 @@ public class RogersSS_TC_070_ValidateWirelessProfileAlreadyExistsTest extends Ba
     @Test(groups = {"RegressionSS","ProfileAndSettingsSS"})
     public void validateWirelessProfileAlreadyExists() {
                     rogers_home_page.clkSignIn();             
-                    reporter.reportLogWithScreenshot("Sign in overlay");                	
+                    reporter.reportLogWithScreenshot("Sign in overlay");  
+                    String strEmail = TestDataHandler.tc060809.getUsername();              	
                 	String strBan = TestDataHandler.tc060809.getAccountDetails().getBan();
-                	String strPostalCode = TestDataHandler.tc060809.getAccountDetails().getPostalcode();    	
+                	String strPostalCode = TestDataHandler.tc060809.getAccountDetails().getPostalcode();
+                	String strDOB =  TestDataHandler.tc060809.getAccountDetails().getDob();
             		rogers_login_page.switchToSignInIFrame();
             		try {
             			rogers_login_page.clickRegister();            		
@@ -33,13 +35,21 @@ public class RogersSS_TC_070_ValidateWirelessProfileAlreadyExistsTest extends Ba
 						//supressing firefox dead object error
 					}
 					
-            		
-            		rogers_register_page.clickWirelessOrResidentialServices();
+            		/* nov 11 updates
+            		             		rogers_register_page.clickWirelessOrResidentialServices();
+            		 
             		reporter.reportLogWithScreenshot("Set account number and Postal code");
             		rogers_register_page.setAccountNumber(strBan);
             		rogers_register_page.setPostalCode(strPostalCode);
             		reporter.reportLogWithScreenshot("Account number and postal code ");
-            		rogers_register_page.clickContinue();            		
+            		rogers_register_page.clickContinue();  
+            		
+            		          		*/
+            		
+            		rogers_recover_pass_or_name.setEmailAddress(strEmail);
+            		reporter.reportLogWithScreenshot("Set email for recover user name.");
+            		rogers_recover_pass_or_name.clkBtnContinue();	
+            		
             		reporter.hardAssert(rogers_register_page.isProfileAlreadyStarted(),
             				"Message displayed: This account is registered at the following address ",
             				"The profile is not already registered, please select existing registered profile and rerun");
