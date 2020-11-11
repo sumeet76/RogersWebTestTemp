@@ -30,7 +30,7 @@ public class RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurcha
 		closeSession();
 	}
 
-	@Test(groups = {"RegressionSS","WirelessDashboardSS"})
+	@Test(groups = {"AddDataFlow","WirelessDashboardSS"})
 	public void validateTotalDataForInfiniteIndividualPlan() throws InterruptedException {
 		getRogersHomePage().clkSignIn();
 		String strUsername = TestDataHandler.tc6577.getUsername();

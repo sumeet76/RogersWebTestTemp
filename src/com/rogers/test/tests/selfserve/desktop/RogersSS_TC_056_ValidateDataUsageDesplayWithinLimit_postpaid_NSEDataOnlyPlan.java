@@ -32,7 +32,7 @@ public class RogersSS_TC_056_ValidateDataUsageDesplayWithinLimit_postpaid_NSEDat
 	}
 	
 	
-    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
+    @Test(groups = {"AddDataFlow","WirelessDashboardSS"})
     public void validateDataUsageDisplayForDataOnlyPlan() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc56.getUsername();

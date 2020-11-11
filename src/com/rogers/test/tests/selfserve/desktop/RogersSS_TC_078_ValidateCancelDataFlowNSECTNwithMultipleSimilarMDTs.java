@@ -32,7 +32,7 @@ public class RogersSS_TC_078_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs
 	}
 	
 	Integer counterOfAddedData =0;
-    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
+    @Test(groups = {"AddDataFlow","WirelessDashboardSS"})
     public void validateCancelMDTFlowNSEWithMultipleMDT() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc78.getUsername();
