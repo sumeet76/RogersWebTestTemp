@@ -44,20 +44,20 @@ public class RogersSS_TC_02_AccountRegistration extends BaseTestClass {
 		//rogers_register_page.clickWirelessOrResidentialServices();
 		 
 		//New chnage== Nov 11
-		rogers_recover_pass_or_name.setEmailAddress(strEmail);
+		getRogersRecoverPassOrNamePage().setEmailAddress(strEmail);
 		reporter.reportLogWithScreenshot("Set email for recover user name.");
-		rogers_recover_pass_or_name.clkBtnContinue();	
-		rogers_recover_pass_or_name.setAccountNumber(strBan);
-		rogers_recover_pass_or_name.setPostCode(strPostalCode);
-		rogers_recover_pass_or_name.setDOB(strDOB);
+		getRogersRecoverPassOrNamePage().clkBtnContinue();	
+		getRogersRecoverPassOrNamePage().setAccountNumber(strBan);
+		getRogersRecoverPassOrNamePage().setPostCode(strPostalCode);
+		getRogersRecoverPassOrNamePage().setDOB(strDOB);
 		reporter.reportLogWithScreenshot("Set Account, post code and DOB number for recover user name.");
-		rogers_recover_pass_or_name.clkBtnContinue();	
+		getRogersRecoverPassOrNamePage().clkBtnContinue();	
 		reporter.reportLogWithScreenshot("Set account number and Postal code");
 		//rogers_register_page.setAccountNumber(strBan);
 		//rogers_register_page.setPostalCode(strPostalCode);
 		//reporter.reportLogWithScreenshot("Account number and postal code ");
 		//.clickContinue();
-		if(!rogers_register_page.isProfileAlreadyStarted())
+		if(!getRogersRegisterPage().isProfileAlreadyStarted())
 		{
 			String strTestingTab = getDriver().getWindowHandle();
 			String strRecoveredUserName ="";
@@ -65,32 +65,32 @@ public class RogersSS_TC_02_AccountRegistration extends BaseTestClass {
 
 			ensVerifications.getEmailVerifyPage(strEmail);
 			reporter.reportLogWithScreenshot("Get recovery code");
-			String recoveryCode = rogers_recover_pass_or_name.getVerificationCodeForRecoverUsername();			
+			String recoveryCode = getRogersRecoverPassOrNamePage().getVerificationCodeForRecoverUsername();			
 			getDriver().switchTo().window(strTestingTab);			
-			rogers_recover_pass_or_name.switchToSetCodeIframe();
-			rogers_recover_pass_or_name.setRecoveryCode(recoveryCode);
+			getRogersRecoverPassOrNamePage().switchToSetCodeIframe();
+			getRogersRecoverPassOrNamePage().setRecoveryCode(recoveryCode);
 			reporter.reportLogWithScreenshot("Set recovery code");
-			rogers_recover_pass_or_name.clkBtnContinue();
-			strRecoveredUserName= rogers_recover_pass_or_name.getRecoveryUsernameNew();
+			getRogersRecoverPassOrNamePage().clkBtnContinue();
+			strRecoveredUserName= getRogersRecoverPassOrNamePage().getRecoveryUsernameNew();
 			reporter.reportLogWithScreenshot("Recovered username is : "+strRecoveredUserName.trim());			
 
 			reporter.hardAssert(strRecoveredUserName.trim().toLowerCase().contains(strEmail.trim().toLowerCase()),
 					"The recovered username is correct",
 					"The recovered username is incorrect");
-			rogers_recover_pass_or_name.setNewPassword(strPassword);
-			rogers_recover_pass_or_name.setConfirmPassword(strPassword);
+			getRogersRecoverPassOrNamePage().setNewPassword(strPassword);
+			getRogersRecoverPassOrNamePage().setConfirmPassword(strPassword);
 			reporter.reportLogWithScreenshot("Reset Password page");
-			rogers_recover_pass_or_name.clkBtnContinue();
+			getRogersRecoverPassOrNamePage().clkBtnContinue();
 			//Login with recovered user name to verify 		 
-			reporter.hardAssert(rogers_recover_pass_or_name.isPasswordRestSuccessForRecoveredUsernameOrPwd(),
+			reporter.hardAssert(getRogersRecoverPassOrNamePage().isPasswordRestSuccessForRecoveredUsernameOrPwd(),
 					"passowrd reset successful for recover username",
 					"passowrd reset NOT successful for recover username");
 			reporter.reportLogWithScreenshot("Password success page");
-			rogers_recover_pass_or_name.clkGoToMyRogers();
+			getRogersRecoverPassOrNamePage().clkGoToMyRogers();
 			reporter.reportLogWithScreenshot("Go to my rogers clicked");
-			rogers_recover_pass_or_name.switchToDefaultContent();	
+			getRogersRecoverPassOrNamePage().switchToDefaultContent();	
 			setImplicitWait(getDriver(), 5);
-			reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),
+			reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),
 					"Login with recovered username and password succeed.", 
 					"Failed to login with recovered username and password");							
 			reporter.reportLogWithScreenshot("Account overview");	

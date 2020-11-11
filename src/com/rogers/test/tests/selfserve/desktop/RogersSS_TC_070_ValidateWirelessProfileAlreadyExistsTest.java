@@ -16,15 +16,15 @@ public class RogersSS_TC_070_ValidateWirelessProfileAlreadyExistsTest extends Ba
 
     @Test(groups = {"RegressionSS","ProfileAndSettingsSS"})
     public void validateWirelessProfileAlreadyExists() {
-                    rogers_home_page.clkSignIn();             
+                    getRogersHomePage().clkSignIn();             
                     reporter.reportLogWithScreenshot("Sign in overlay");  
                     String strEmail = TestDataHandler.tc060809.getUsername();              	
                 	String strBan = TestDataHandler.tc060809.getAccountDetails().getBan();
                 	String strPostalCode = TestDataHandler.tc060809.getAccountDetails().getPostalcode();
                 	String strDOB =  TestDataHandler.tc060809.getAccountDetails().getDob();
-            		rogers_login_page.switchToSignInIFrame();
+            		getRogersLoginPage().switchToSignInIFrame();
             		try {
-            			rogers_login_page.clickRegister();            		
+            			getRogersLoginPage().clickRegister();            		
             		reporter.reportLogWithScreenshot("Wireless Or Resedential Services");
             		/*=== commenting due  to changes in story DC-3077 
             		
@@ -46,11 +46,11 @@ public class RogersSS_TC_070_ValidateWirelessProfileAlreadyExistsTest extends Ba
             		
             		          		*/
             		
-            		rogers_recover_pass_or_name.setEmailAddress(strEmail);
+            		getRogersRecoverPassOrNamePage().setEmailAddress(strEmail);
             		reporter.reportLogWithScreenshot("Set email for recover user name.");
-            		rogers_recover_pass_or_name.clkBtnContinue();	
+            		getRogersRecoverPassOrNamePage().clkBtnContinue();	
             		
-            		reporter.hardAssert(rogers_register_page.isProfileAlreadyStarted(),
+            		reporter.hardAssert(getRogersRegisterPage().isProfileAlreadyStarted(),
             				"Message displayed: This account is registered at the following address ",
             				"The profile is not already registered, please select existing registered profile and rerun");
             		reporter.reportLogWithScreenshot("The account already registered message");
