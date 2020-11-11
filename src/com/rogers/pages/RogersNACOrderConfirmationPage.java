@@ -61,8 +61,8 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 	     * @author Karthic.hasan
 	     */
 	    public boolean isOrderConfirmationTitlePresent() {
-	    	reusableActions.waitForElementVisibility(orderConfirmationTitle,60);
-	       return reusableActions.isElementVisible(orderConfirmationTitle);
+	    	getReusableActionsInstance().waitForElementVisibility(orderConfirmationTitle,60);
+	       return getReusableActionsInstance().isElementVisible(orderConfirmationTitle);
 	    }
 	    
 		/**
@@ -73,7 +73,7 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 		
 		public boolean verifyOrderConfirmationContent()
 		{
-			return reusableActions.isElementVisible(orderConfirmationContent);
+			return getReusableActionsInstance().isElementVisible(orderConfirmationContent);
 		}
 	 
 	    /**
@@ -107,7 +107,7 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 
 		public String getPurchaseIncludesText()
 		{ 
-			return reusableActions.getWhenReady(purchaseIncludes,10).getText().trim().replaceAll("\\n", " "); 
+			return getReusableActionsInstance().getWhenReady(purchaseIncludes,10).getText().trim().replaceAll("\\n", " ");
 			
 		}
 
@@ -119,7 +119,7 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 		
 		public boolean isLearnMoreLinkDisplayed()
 		{
-			reusableActions.javascriptScrollByVisibleElement(learnMoreLink);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(learnMoreLink);
 			return learnMoreLink.isDisplayed();
 		}
 	   
@@ -131,7 +131,7 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 		
 		public boolean verifyRpotgTitle()
 		{
-			reusableActions.staticWait(1000);
+			getReusableActionsInstance().staticWait(1000);
 			return rpotgTitle.isDisplayed();
 		}
 		
@@ -186,8 +186,8 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 		 */
 
 		public String getAppointmentDate() { 
-			reusableActions.javascriptScrollByVisibleElement(appointmentDate);
-	   	    reusableActions.staticWait(3000);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(appointmentDate);
+	   	    getReusableActionsInstance().staticWait(3000);
 			return appointmentDate.getText().replaceAll("\\n",""); 
 		}
 
@@ -198,8 +198,8 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 		 */
 
 		public String getAppointmentTime() { 
-			reusableActions.javascriptScrollByVisibleElement(appointmentTime);
-	   	    reusableActions.staticWait(3000);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(appointmentTime);
+	   	    getReusableActionsInstance().staticWait(3000);
 	   	   String appointmentTime1= appointmentTime.getText().replaceAll("Between","Between:");
 			return appointmentTime1.replaceAll("\\s",""); 
 		}
@@ -211,7 +211,7 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 		 */
 
 		public String getAppointmentAddressText() { 
-			return reusableActions.getWhenReady(appointmentCompleteAddress,10).getText().trim().replaceAll("\\n", " ");
+			return getReusableActionsInstance().getWhenReady(appointmentCompleteAddress,10).getText().trim().replaceAll("\\n", " ");
 		}
 		
 }

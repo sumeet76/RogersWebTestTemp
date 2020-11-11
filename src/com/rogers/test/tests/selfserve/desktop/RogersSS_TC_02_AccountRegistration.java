@@ -28,15 +28,15 @@ public class RogersSS_TC_02_AccountRegistration extends BaseTestClass {
 	@Test(groups = {"RegressionSS","ProfileAndSettingsSS","RecoverySS"})
 	public void validateUserChangeContactInformationAndBillingAddress() {
 		reporter.reportLogWithScreenshot("Rogers Launch page");
-    	rogers_home_page.clkSignIn();    	 
+    	getRogersHomePage().clkSignIn();
     	reporter.reportLogWithScreenshot("Sign in overlay");
     	String strPassword = TestDataHandler.tc02.getPassword();
     	String strBan = TestDataHandler.tc02.getAccountDetails().getBan();
     	String strEmail = TestDataHandler.tc02.getUsername();
     	String strPostalCode = TestDataHandler.tc02.getAccountDetails().getPostalcode();  
     	String strDOB = TestDataHandler.tc02.getAccountDetails().getDob();
-		rogers_login_page.switchToSignInIFrame();
-		rogers_login_page.clickRegister();
+		getRogersLoginPage().switchToSignInIFrame();
+		getRogersLoginPage().clickRegister();
 		reporter.reportLogWithScreenshot("Register Now");
 		//=== commenting due  to changes in story DC-3077 		
 		//rogers_register_page.clickRegisterNow();

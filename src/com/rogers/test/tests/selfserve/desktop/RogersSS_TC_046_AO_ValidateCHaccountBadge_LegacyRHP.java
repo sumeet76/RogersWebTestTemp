@@ -34,24 +34,24 @@ public class RogersSS_TC_046_AO_ValidateCHaccountBadge_LegacyRHP extends BaseTes
 	@Test(groups = {"RegressionSS","AccountOverviewSS"})
 	public void checkLegacyRHPDashboard () throws InterruptedException {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
-		rogers_home_page.clkSignIn();
-		rogers_login_page.switchToSignInIFrame();
+		getRogersHomePage().clkSignIn();
+		getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setUsernameIFrame(TestDataHandler.tc46LegacyRHP.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.tc46LegacyRHP.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc46LegacyRHP.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc46LegacyRHP.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		reporter.reportLogWithScreenshot("Skip popup");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
-		rogers_account_overview_page.selectAccount(TestDataHandler.tc46LegacyRHP.getAccountDetails().getBan());
-		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
+		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc46LegacyRHP.getAccountDetails().getBan());
+		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Login Success","Login Failed");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.clkRHPBadge();
+		getRogersAccountOverviewPage().clkRHPBadge();
 		reporter.reportLogWithScreenshot("Click RHP Badge");
 		Thread.sleep(7000);
-		reporter.hardAssert(rogers_solaris_rhp_dashboard_validation_page.verifyRHPBanner(),"Verifed the RHP dashboard",
+		reporter.hardAssert(getRogersSolarisRHPDashboardPage().verifyRHPBanner(),"Verifed the RHP dashboard",
 				"RHP dashboard Verification has failed");		
 		reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");
 		common_business_flows.scrollToMiddleOfWebPage();

@@ -34,51 +34,51 @@ public class RogersSS_TC_011_FDM_ValidateVideoStreamingTabInSE_Dashboard extends
 	
     @Test(groups = {"RegressionSS","FDMSS"})
     public void blockFDMDataUsageForTheCTN() {
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc01030405.getUsername();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc01030405.getPassword();    	
-        rogers_login_page.setPasswordIFrame(strPassword);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 		
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc01030405.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc01030405.getAccountDetails().getBan());
         }
        reporter.reportLogWithScreenshot("Account overview page.");     
-       rogers_account_overview_page.clkMenuUsageAndService();
+       getRogersAccountOverviewPage().clkMenuUsageAndService();
        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
-       rogers_account_overview_page.clkSubMenuWirelessUsage();
-       rogers_account_overview_page.clkCloseInNewLookPopupIfVisible(); 
+       getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
+       getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible(); 
      
        reporter.reportLogWithScreenshot("Dashboard page");
        common_business_flows.scrollToMiddleOfWebPage();
        reporter.reportLogWithScreenshot("Middle view of Dashboard page");
        common_business_flows.scrollToTopOfWebPage();
     
-       reporter.hardAssert(rogers_wireless_dashboard_page.verifyStreamSaverDisplayed(),
+       reporter.hardAssert(getRogersWirelessDashboardPage().verifyStreamSaverDisplayed(),
     		   "Stream saver is displayed",
     		   "Stream saver is not displayed");
        
-       if(!rogers_wireless_dashboard_page.isStreamSaverONDisplayed())
+       if(!getRogersWirelessDashboardPage().isStreamSaverONDisplayed())
        {
     	   
     		reporter.reportLogWithScreenshot("Stream saver is set to OFF, switching it ON");
-            rogers_wireless_dashboard_page.clkStreamSaverOn();
-            reporter.hardAssert(rogers_wireless_dashboard_page.isStreamSaverONDisplayed(),
+            getRogersWirelessDashboardPage().clkStreamSaverOn();
+            reporter.hardAssert(getRogersWirelessDashboardPage().isStreamSaverONDisplayed(),
          		   "Stream saver is switch ON successfully",
          		   "Stream saver didnt switch ON successfuly , please investigate");   
        }
                   	   
     	   reporter.reportLogWithScreenshot("Stream saver if set to ON");
     	   common_business_flows.scrollToTopOfWebPage();
-           rogers_wireless_dashboard_page.clkStreamSaverOff();
-           reporter.hardAssert(rogers_wireless_dashboard_page.isStreamSaverOFF(),
+           getRogersWirelessDashboardPage().clkStreamSaverOff();
+           reporter.hardAssert(getRogersWirelessDashboardPage().isStreamSaverOFF(),
         		   "Stream Saver is switch off successfully",
         		   "Stream Saver didnt switch off successfuly , please investigate");       
            reporter.reportLogWithScreenshot("Stream Saver set to OFf");

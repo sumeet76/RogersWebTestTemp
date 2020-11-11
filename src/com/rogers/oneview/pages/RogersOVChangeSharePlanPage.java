@@ -1,16 +1,15 @@
 package com.rogers.oneview.pages;
 
-import java.util.List;
-
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import com.rogers.pages.base.BasePageClass;
+import java.util.List;
 
-public class RogersChangeSharePlanPage  extends BasePageClass {
+public class RogersOVChangeSharePlanPage  extends BasePageClass {
 
-	public RogersChangeSharePlanPage(WebDriver driver) {
+	public RogersOVChangeSharePlanPage(WebDriver driver) {
 		super(driver);
 	}
 	
@@ -26,10 +25,10 @@ public class RogersChangeSharePlanPage  extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clickEditButton() {
-			reusableActions.waitForPageLoad();
-			reusableActions.waitForElementVisibility(lbllineDetailData, 30);
-			reusableActions.clickWhenReady(btnEdit.get(0),30);
-			//reusableActions.staticWait(2000);		
+			getReusableActionsInstance().waitForPageLoad();
+			getReusableActionsInstance().waitForElementVisibility(lbllineDetailData, 30);
+			getReusableActionsInstance().clickWhenReady(btnEdit.get(0),30);
+			//getReusableActionsInstance().staticWait(2000);
 	}
 }
 

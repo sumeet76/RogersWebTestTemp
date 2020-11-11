@@ -34,72 +34,72 @@ public class RogersSS_TC_072_wldb_ValidateDetailsOfDeviceSection extends BaseTes
 	
     @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateDeviceSectionOnWirelessDashboardPage() {
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc727375.getUsername();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc727375.getPassword();    	
-        rogers_login_page.setPasswordIFrame(strPassword);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 		
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc727375.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc727375.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");  
-        rogers_account_overview_page.clkMenuUsageAndService();
+        getRogersAccountOverviewPage().clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
         String strAccountNum = TestDataHandler.tc727375.getAccountDetails().getCtn();
         String last4Digit = strAccountNum.substring(strAccountNum.length()-4);
-        if (rogers_account_overview_page.isAccountShowInDropDown(last4Digit)) {
-            rogers_account_overview_page.clkDropDownAccount(last4Digit);
+        if (getRogersAccountOverviewPage().isAccountShowInDropDown(last4Digit)) {
+            getRogersAccountOverviewPage().clkDropDownAccount(last4Digit);
         } else {
-        	rogers_account_overview_page.clkSubMenuWirelessUsage();
+        	getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
         }
-        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
+        getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
                        
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyHeaderOfDeviceSection(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyHeaderOfDeviceSection(),
         					"Header of Device section in wireless dashboard page verified successfully", 
         					"Header of device section in wireless dashboard page didn't show as expected.");
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyDeviceBalanceOfDeviceSection(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyDeviceBalanceOfDeviceSection(),
 							"Device balance in wireless dashboard page verified successfully", 
 							"Device balance in wireless dashboard page didn't show as expected.");
-    	//rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
+    	//getRogersWirelessDashboardPage().scrollToMidOfDasboardPage();
         reporter.reportLogWithScreenshot("Wireless dashboard page Device Section."); 
-        rogers_wireless_dashboard_page.clkLinkUpgradeMyDevice();
-        if (rogers_wireless_dashboard_page.isModalDeviceUpgradeAvailable()) {
+        getRogersWirelessDashboardPage().clkLinkUpgradeMyDevice();
+        if (getRogersWirelessDashboardPage().isModalDeviceUpgradeAvailable()) {
             reporter.softAssert(true, 
     							"The account is not eligible for device upgrade.", 
     							"."); 
             reporter.reportLogWithScreenshot("Device Upgrade Modal opened.");
-        	rogers_wireless_dashboard_page.clkCloseDeviceUpgradeModal();
+        	getRogersWirelessDashboardPage().clkCloseDeviceUpgradeModal();
         } else {
-            reporter.hardAssert(rogers_wireless_dashboard_page.verifyChoosePhonePage(), 
+            reporter.hardAssert(getRogersWirelessDashboardPage().verifyChoosePhonePage(),
     							"Choose phone page opened successfully", 
     							"Choose phone page didn't open as expected.");       
             reporter.reportLogWithScreenshot("Choose phone page opened.");
-            rogers_wireless_dashboard_page.navigateBacktoDashboardPage();
+            getRogersWirelessDashboardPage().navigateBacktoDashboardPage();
         }
 
-        if(rogers_wireless_dashboard_page.isDeviceClosingDateMsgAvailable()) {
+        if(getRogersWirelessDashboardPage().isDeviceClosingDateMsgAvailable()) {
 
-            reporter.hardAssert(rogers_wireless_dashboard_page.verifyDeviceClosingDateMsgIfAvailable(), 
+            reporter.hardAssert(getRogersWirelessDashboardPage().verifyDeviceClosingDateMsgIfAvailable(),
     							"Device balance closing date message verified successfully", 
     							"Device balance closing date message didn't show as expected.");
-            reporter.hardAssert(rogers_wireless_dashboard_page.verifyMyDeviceDetailsModalOfDeviceSection(), 
+            reporter.hardAssert(getRogersWirelessDashboardPage().verifyMyDeviceDetailsModalOfDeviceSection(),
     							"View details modal verified successfully", 
     							"View details modal didn't show activation date and expire date as expected.");    
             reporter.reportLogWithScreenshot("View details modal opened."); 
-            rogers_wireless_dashboard_page.clkCloseMyDeviceDetailsModal();
+            getRogersWirelessDashboardPage().clkCloseMyDeviceDetailsModal();
         }else {
-            reporter.hardAssert(rogers_wireless_dashboard_page.verifyLinkMyDeviceDetailsOfDeviceSection(), 
+            reporter.hardAssert(getRogersWirelessDashboardPage().verifyLinkMyDeviceDetailsOfDeviceSection(),
     							"View details modal opened successfully", 
     							"View details modal didn't open as expected.");       
-            rogers_wireless_dashboard_page.clkCloseMyDeviceDetailsModal();
+            getRogersWirelessDashboardPage().clkCloseMyDeviceDetailsModal();
         }
     }
     

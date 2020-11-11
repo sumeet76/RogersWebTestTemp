@@ -1,20 +1,14 @@
 package com.rogers.test.tests.buyflows;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-
-
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;                  
-import org.testng.annotations.Optional;                     
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 /**
  * TC02-Validate user able to perform AAL on ML with Fin offer
@@ -40,47 +34,47 @@ public class RogersBFA_TestOld_TC02_AAL_MultiLine_FinancePlan_Test extends BaseT
 	@Test
     public void performAALMultiLine() {
 		reporter.reportLogWithScreenshot("Rogers Home page");
-        rogers_home_page.clkShop();
-        rogers_home_page.clkWireless();
-        rogers_home_page.clkViewAllDevices();
-        rogers_choose_phone_page.searchDevice(TestDataHandler.testCase02.getNewDevice());
+        getRogersHomePage().clkShop();
+        getRogersHomePage().clkWireless();
+        getRogersHomePage().clkViewAllDevices();
+        getRogersChoosePhonePage().searchDevice(TestDataHandler.testCase02.getNewDevice());
         reporter.reportLogWithScreenshot("Rogers Choose Phone page");
         reporter.reportLogWithScreenshot("Existing Existing Customer overlay");
-        rogers_choose_phone_page.selectFirstAvailableDevice();
-        rogers_choose_phone_page.clkAddALine();
-        rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(TestDataHandler.testCase02.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.testCase02.getPassword());
+        getRogersChoosePhonePage().selectFirstAvailableDevice();
+        getRogersChoosePhonePage().clkAddALine();
+        getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.testCase02.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.testCase02.getPassword());
         reporter.reportLogWithScreenshot("Rogers login overlay");
-        rogers_login_page.clkSignInIFrame();
-        rogers_login_page.clkSkipIFrame();
-        rogers_login_page.switchOutOfSignInIFrame();
+        getRogersLoginPage().clkSignInIFrame();
+        getRogersLoginPage().clkSkipIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.reportLogWithScreenshot("Calling Options overlay");
-        rogers_build_plan_page.clkCallingOptionsOkay();
-        rogers_build_plan_page.selectPlanCategory(TestDataHandler.testCase02.getNewPlanCategory());
-        rogers_build_plan_page.selectFirstAvailablePlan();
+        getRogersBuildPlanPage().clkCallingOptionsOkay();
+        getRogersBuildPlanPage().selectPlanCategory(TestDataHandler.testCase02.getNewPlanCategory());
+        getRogersBuildPlanPage().selectFirstAvailablePlan();
         reporter.reportLogWithScreenshot("Rogers Build Plan page");
-        rogers_build_plan_page.clkContinue();
+        getRogersBuildPlanPage().clkContinue();
         reporter.reportLogWithScreenshot("Rogers Choose Addons page");
-        rogers_choose_addons_page.clkContinue();
+        getRogersChooseAddonsPage().clkContinue();
         reporter.reportLogWithScreenshot("Rogers Cart Summary page");
-        rogers_cart_summary_page.clkContinue();
+        getRogersCartSummaryPage().clkContinue();
         reporter.reportLogWithScreenshot("Rogers Shipping page");
-        rogers_shipping_page.clkContinue();
-        rogers_choose_number_page.clkSelectNewNumber();
-        rogers_choose_number_page.selectCity(TestDataHandler.testCase02.getCtnCity());
-        rogers_choose_number_page.clkFindAvailableNumbers();
-        rogers_choose_number_page.selectFirstAvailableNumber();
-        rogers_choose_number_page.clkSave();
+        getRogersShippingPage().clkContinue();
+        getRogersChooseNumberPage().clkSelectNewNumber();
+        getRogersChooseNumberPage().selectCity(TestDataHandler.testCase02.getCtnCity());
+        getRogersChooseNumberPage().clkFindAvailableNumbers();
+        getRogersChooseNumberPage().selectFirstAvailableNumber();
+        getRogersChooseNumberPage().clkSave();
         reporter.reportLogWithScreenshot("Rogers Choose Number page");
-        rogers_choose_number_page.clkContinue();
-        rogers_order_review_page.clkTermsAgreementCheckbox();
-        rogers_order_review_page.clkShieldAgreementCheckbox();
-        rogers_order_review_page.selectEmailDigitalCopy(TestDataHandler.testCase02.getUsername());
+        getRogersChooseNumberPage().clkContinue();
+        getRogersOrderReviewPage().clkTermsAgreementCheckbox();
+        getRogersOrderReviewPage().clkShieldAgreementCheckbox();
+        getRogersOrderReviewPage().selectEmailDigitalCopy(TestDataHandler.testCase02.getUsername());
         reporter.reportLogWithScreenshot("Rogers Order Review page");
-        rogers_order_review_page.clkSubmitOrder();
-        reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
-        reporter.hardAssert(rogers_order_confirmation_page.verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
+        getRogersOrderReviewPage().clkSubmitOrder();
+        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
+        reporter.hardAssert(getRogersOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
         reporter.reportLogWithScreenshot("Rogers Order Confirmation page");
     }
 

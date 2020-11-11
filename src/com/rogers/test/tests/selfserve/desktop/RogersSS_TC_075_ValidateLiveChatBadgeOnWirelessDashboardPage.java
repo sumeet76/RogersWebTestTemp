@@ -34,40 +34,40 @@ public class RogersSS_TC_075_ValidateLiveChatBadgeOnWirelessDashboardPage extend
 	
     @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateLiveChatBadgeOnWirelessDashboardPage() {
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc727375.getUsername();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc727375.getPassword();    	
-        rogers_login_page.setPasswordIFrame(strPassword);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 		
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc727375.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc727375.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");  
-        rogers_account_overview_page.clkMenuUsageAndService();
+        getRogersAccountOverviewPage().clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
         String strAccountNum = TestDataHandler.tc727375.getAccountDetails().getCtn();        
-        if (rogers_account_overview_page.isAccountShowInDropDown(strAccountNum.substring(strAccountNum.length()-4))) {
-            rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
+        if (getRogersAccountOverviewPage().isAccountShowInDropDown(strAccountNum.substring(strAccountNum.length()-4))) {
+            getRogersAccountOverviewPage().clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
         } else {
-        	rogers_account_overview_page.clkSubMenuWirelessUsage();
+        	getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
         }
-        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
+        getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
                        
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLiveChatButtonIsDisplayed(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyLiveChatButtonIsDisplayed(),
         					"Live Chat button is displayed in wireless dashboard page", 
         					"Live Chat button is NOT displayed in wireless dashboard page");
         reporter.reportLogWithScreenshot("Wireless dashboard page."); 
-        rogers_wireless_dashboard_page.clkBtnLiveChat();
+        getRogersWirelessDashboardPage().clkBtnLiveChat();
         
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyLiveChatOverlayOpened(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyLiveChatOverlayOpened(),
 							"Live Chat overlay opened in wireless dashboard page", 
 							"Live Chat overlay did NOT open in wireless dashboard page, please investigate.");
         reporter.reportLogWithScreenshot("Live Chat overlay opened."); 

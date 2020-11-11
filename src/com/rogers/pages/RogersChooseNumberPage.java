@@ -51,7 +51,7 @@ public class RogersChooseNumberPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void verifyChooseNumberPageLoadedSuccessfully() {
-		reusableActions.waitForElementVisibility(btnSelectNewNumber.get(0),60);
+		getReusableActionsInstance().waitForElementVisibility(btnSelectNewNumber.get(0),60);
 	}
 
 	/**
@@ -59,9 +59,9 @@ public class RogersChooseNumberPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkSelectNewNumber() {
-		reusableActions.staticWait(2000);
-		reusableActions.clickWhenReady(btnSelectNewNumber.get(0),60);
-		reusableActions.staticWait(2000);
+		getReusableActionsInstance().staticWait(2000);
+		getReusableActionsInstance().clickWhenReady(btnSelectNewNumber.get(0),60);
+		getReusableActionsInstance().staticWait(2000);
 	}
 
 	/**
@@ -69,7 +69,7 @@ public class RogersChooseNumberPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickUseExistingNumber() {
-		reusableActions.clickWhenReady(btnUseExistingNumber.get(0));
+		getReusableActionsInstance().clickWhenReady(btnUseExistingNumber.get(0));
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class RogersChooseNumberPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void selectCity(String city) {
-		reusableActions.selectWhenReadyByVisibleText(ddlCity.get(0), city.toUpperCase());
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlCity.get(0), city.toUpperCase());
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class RogersChooseNumberPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkFindAvailableNumbers() {
-		reusableActions.scrollToElementAndClick(btnFindAvailableNumbers.get(0));
+		getReusableActionsInstance().scrollToElementAndClick(btnFindAvailableNumbers.get(0));
 	}
 
 	/**
@@ -94,8 +94,8 @@ public class RogersChooseNumberPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void selectFirstAvailableNumber() {
-		reusableActions.waitForElementVisibility(lblLineChooseNumber2, 30);
-		reusableActions.executeJavaScriptClick(rdAvailableNumbers.get(0));
+		getReusableActionsInstance().waitForElementVisibility(lblLineChooseNumber2, 30);
+		getReusableActionsInstance().executeJavaScriptClick(rdAvailableNumbers.get(0));
 	}
 
 	/**
@@ -103,9 +103,9 @@ public class RogersChooseNumberPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkContinue() {
-		reusableActions.waitForElementInvisibility(btnSave.get(0), 30);
-		reusableActions.clickWhenVisible(btnContinue);
-		reusableActions.waitForElementVisibility(btnContinue,30);
+		getReusableActionsInstance().waitForElementInvisibility(btnSave.get(0), 30);
+		getReusableActionsInstance().clickWhenVisible(btnContinue);
+		getReusableActionsInstance().waitForElementVisibility(btnContinue,30);
 	}
 
 	/**
@@ -113,20 +113,20 @@ public class RogersChooseNumberPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkSave() {
-		reusableActions.clickWhenVisible(btnSave.get(0));
+		getReusableActionsInstance().clickWhenVisible(btnSave.get(0));
 	}
 
 	public void selectNewPhoneNumber(String strCity) {
 		for (int index = 0; index < lblCTNLines.size(); index++) {
 			if(index != 0) {
-				reusableActions.clickWhenReady(By.xpath("//span[@checkout-res-param-index='"+ (index+1) +"']"));
+				getReusableActionsInstance().clickWhenReady(By.xpath("//span[@checkout-res-param-index='"+ (index+1) +"']"));
 			}
-			reusableActions.clickWhenReady(btnSelectNewNumber.get(index));
-			reusableActions.staticWait(2000);
-			reusableActions.selectWhenReadyByVisibleText(ddlCity.get(index), strCity.toUpperCase());
-			reusableActions.scrollToElementAndClick(btnFindAvailableNumbers.get(0));
-			reusableActions.executeJavaScriptClick(rdAvailableNumbers.get(index*10));
-			reusableActions.clickWhenVisible(btnSave.get(index));
+			getReusableActionsInstance().clickWhenReady(btnSelectNewNumber.get(index));
+			getReusableActionsInstance().staticWait(2000);
+			getReusableActionsInstance().selectWhenReadyByVisibleText(ddlCity.get(index), strCity.toUpperCase());
+			getReusableActionsInstance().scrollToElementAndClick(btnFindAvailableNumbers.get(0));
+			getReusableActionsInstance().executeJavaScriptClick(rdAvailableNumbers.get(index*10));
+			getReusableActionsInstance().clickWhenVisible(btnSave.get(index));
 		}
 	}
 

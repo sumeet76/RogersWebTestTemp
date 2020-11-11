@@ -35,7 +35,7 @@ public class RogersChangeSEPlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyChangeSEPlanPageLoad() {
-		return reusableActions.isElementVisible(lblChangeYourPlan);
+		return getReusableActionsInstance().isElementVisible(lblChangeYourPlan);
 	}
 	
 	/**
@@ -43,7 +43,7 @@ public class RogersChangeSEPlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickPrimaryLineEdit() {
-		reusableActions.clickWhenReady(btnPrimaryLineEdit);
+		getReusableActionsInstance().clickWhenReady(btnPrimaryLineEdit);
 	}
 	
 	/**
@@ -54,14 +54,14 @@ public class RogersChangeSEPlanPage extends BasePageClass {
 	public void clickSpecificLineEdit(String ctn) {
 		List<WebElement> lines = new ArrayList<WebElement>();
 		WebElement tempElement;
-		lines = driver.findElements(By.xpath("//div[@class='line-details']"));
+		lines = getDriver().findElements(By.xpath("//div[@class='line-details']"));
 		System.out.println("LINES - " + lines.size());
 		for (WebElement line : lines) {
 			System.out.println(line.getText().replaceAll("-", "").replaceAll(" ", ""));
 			System.out.println(ctn);
 			if(line.getText().replaceAll("-", "").replaceAll(" ", "").contains(ctn)) {
 				tempElement = line.findElement(By.xpath("./..//button[text()='Edit' and @aria-hidden='false']"));
-				reusableActions.clickWhenReady(tempElement);
+				getReusableActionsInstance().clickWhenReady(tempElement);
 				System.out.println("HEREEEEEEEEEEEEEEEEEEEEE");
 			}
 		}
@@ -72,7 +72,7 @@ public class RogersChangeSEPlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void selectFirstAvailablePlan() {
-		reusableActions.clickWhenReady(btnSelect);
+		getReusableActionsInstance().clickWhenReady(btnSelect);
 	}
 
 }

@@ -17,7 +17,7 @@ import utils.CSVReader;
 public class RogersSearch_CBS_1664_Functioning_Of_Parent_Filter_Test extends BaseTestClass {
 
 
-    @DataProvider(name = "FilterData")
+    @DataProvider(name = "FilterData",parallel=true)
     public Object[] testData() throws IOException {
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
@@ -41,15 +41,15 @@ public class RogersSearch_CBS_1664_Functioning_Of_Parent_Filter_Test extends Bas
         getDriver().get(System.getProperty("SearchUrl") + csvRow[0]);
 
         for (int i=1;i< csvRow.length;i++) {
-            rogers_search_page.clkGrandParentFilter(csvRow[i]);
+            getRogersSearchPage().clkGrandParentFilter(csvRow[i]);
             reporter.reportLogWithScreenshot(csvRow[i]+" is clicked");
-            lstParentFilters = rogers_search_page.getParentFilters(csvRow[i]);
+            lstParentFilters = getRogersSearchPage().getParentFilters(csvRow[i]);
 
             for(int j=0;j<lstParentFilters.size();j++) {
-                rogers_search_page.clkParentFilter(lstParentFilters.get(j));
+                getRogersSearchPage().clkParentFilter(lstParentFilters.get(j));
                 strParentFilter = lstParentFilters.get(j).getText();
                 reporter.reportLogWithScreenshot(strParentFilter +" is clicked");
-                reporter.softAssert(rogers_search_page.validateResultsTag(csvRow[i],strParentFilter),
+                reporter.softAssert(getRogersSearchPage().validateResultsTag(csvRow[i],strParentFilter),
                         "Results belong to tag " + csvRow[i] + "-" + strParentFilter,
                         "Results do Not belong to tag " + csvRow[i] + "-" + strParentFilter);
             }

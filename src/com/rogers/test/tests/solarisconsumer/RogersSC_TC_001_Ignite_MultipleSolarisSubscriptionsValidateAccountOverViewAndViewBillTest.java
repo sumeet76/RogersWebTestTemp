@@ -37,32 +37,32 @@ public class RogersSC_TC_001_Ignite_MultipleSolarisSubscriptionsValidateAccountO
 	@Test
     public void validateMultipleServicesAndViewBill() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
-		rogers_home_page.clkSignIn();
-		rogers_login_page.switchToSignInIFrame();
+		getRogersHomePage().clkSignIn();
+		getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        rogers_login_page.setUsernameIFrame(TestDataHandler.solarisMultipleSubscriptions.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.solarisMultipleSubscriptions.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.solarisMultipleSubscriptions.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.solarisMultipleSubscriptions.getPassword());
  		reporter.reportLogWithScreenshot("Enter the account credentails");
- 		rogers_login_page.clkSignInIFrame();
+ 		getRogersLoginPage().clkSignInIFrame();
  		reporter.reportLogWithScreenshot("Skip popup");
- 		rogers_login_page.clkSkipIFrame();
- 		rogers_login_page.switchOutOfSignInIFrame();
- 		Assert.assertTrue(rogers_account_overview_page.isMoreThanOneBanPresentInThePopUp(), "More than one Ban is not displayed in the pop up");
+ 		getRogersLoginPage().clkSkipIFrame();
+ 		getRogersLoginPage().switchOutOfSignInIFrame();
+ 		Assert.assertTrue(getRogersAccountOverviewPage().isMoreThanOneBanPresentInThePopUp(), "More than one Ban is not displayed in the pop up");
  		reporter.reportLogWithScreenshot("Two subscriptions(Multiple Services)are shown up");
- 		rogers_account_overview_page.selectAccount(TestDataHandler.solarisMultipleSubscriptions.accountDetails.getBan());
-		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed");
+ 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.solarisMultipleSubscriptions.accountDetails.getBan());
+		reporter.softAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Login Success","Login Failed");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		/*
-		 * rogers_account_overview_page.clickAccount();
+		 * getRogersAccountOverviewPage().clickAccount();
 		 * reporter.reportLogWithScreenshot("Account overlay is displayed");
-		 * reporter.softAssert(rogers_account_overview_page.isMoreThanOneBanPresent(),
+		 * reporter.softAssert(getRogersAccountOverviewPage().isMoreThanOneBanPresent(),
 		 * "More than one Ban is present",
 		 * "More than one Ban not displayed in the Account Submenu"); reporter.
 		 * reportLogWithScreenshot("Two subscriptions(Multiple Services)are shown up");
-		 * rogers_account_overview_page.selectAnAccountFromTheAccountDropDown();
-		 * rogers_account_overview_page.clickOverview();
+		 * getRogersAccountOverviewPage().selectAnAccountFromTheAccountDropDown();
+		 * getRogersAccountOverviewPage().clickOverview();
 		 */
-		rogers_account_overview_page.clickViewYourBill();
+		getRogersAccountOverviewPage().clickViewYourBill();
 		reporter.reportLogWithScreenshot("Billing and payment page.");
 		if (!rogersBillingPage.verifyIfAccountHasNoBill()) {
 			rogersBillingPage.switchToBillViewIframe();

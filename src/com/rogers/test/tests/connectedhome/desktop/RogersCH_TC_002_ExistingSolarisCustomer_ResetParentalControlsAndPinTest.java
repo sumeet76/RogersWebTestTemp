@@ -30,27 +30,27 @@ public class RogersCH_TC_002_ExistingSolarisCustomer_ResetParentalControlsAndPin
 	 @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
     public void checkSolarisTVResetParentalControlsAndPinFlow() {  
         reporter.reportLogWithScreenshot("Launched the Home Page");
-        rogers_home_page.clkSignIn();
-        rogers_login_page.switchToSignInIFrame();
+        getRogersHomePage().clkSignIn();
+        getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        rogers_login_page.setUsernameIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
-        rogers_login_page.clkSignInIFrame();
-    	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        getRogersLoginPage().clkSignInIFrame();
+    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
-        rogers_login_page.clkSkipIFrame();
-        rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getBan());
-    	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+        getRogersLoginPage().clkSkipIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getBan());
+    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
-        rogers_solaris_tv_dashboard_page.clkTVBadge();
+        getRogersSolarisTVDashboardPage().clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
-        rogers_solaris_tv_dashboard_page.clkResetParentalConrolsAndPin();
+        getRogersSolarisTVDashboardPage().clkResetParentalConrolsAndPin();
         reporter.reportLogWithScreenshot("Alert window with Reset your Controls and Pin will appear");
-        rogers_solaris_tv_dashboard_page.clkContinueParentalControlAndPinReset();
+        getRogersSolarisTVDashboardPage().clkContinueParentalControlAndPinReset();
         reporter.reportLogWithScreenshot("Clicked continue button on Reset your Controls and Pin Alert window");
-        reporter.hardAssert(rogers_solaris_tv_dashboard_page.verifyResetParentalControlsAndPinSuccess(), "Parental Controls And Pin reset successfull","Parental Controls And Pin reset failed");
+        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyResetParentalControlsAndPinSuccess(), "Parental Controls And Pin reset successfull","Parental Controls And Pin reset failed");
         reporter.reportLogWithScreenshot("Success message verified");   
     	}
 

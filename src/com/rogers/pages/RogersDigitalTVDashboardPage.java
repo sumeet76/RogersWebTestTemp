@@ -38,19 +38,19 @@ public class RogersDigitalTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */	
 	public boolean verifyChangeMyPackage() {
-		return reusableActions.isElementVisible(btnChangeMyPackage,60);
+		return getReusableActionsInstance().isElementVisible(btnChangeMyPackage,60);
 	}
 
 	public boolean verifyChangeMyPackageMobile() {
-		return reusableActions.isElementVisible(btnChangeMyPackage,110);
+		return getReusableActionsInstance().isElementVisible(btnChangeMyPackage,110);
 	}
 	/**
 	 * Click on the  the change package button on the legacy TV dash board 
 	 * @author chinnarao.vattam 
 	 */	
 	public void clkChangeMyPackage() {
-		reusableActions.isElementVisible(btnChangeMyPackage,90);
-		reusableActions.getWhenReady(btnChangeMyPackage,30).click();
+		getReusableActionsInstance().isElementVisible(btnChangeMyPackage,90);
+		getReusableActionsInstance().getWhenReady(btnChangeMyPackage,30).click();
 	}
 	
 	/**
@@ -59,7 +59,7 @@ public class RogersDigitalTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public boolean verifyChangeBonusChannel() {
-		return reusableActions.isElementVisible(btnChangeBonusChannel,20);
+		return getReusableActionsInstance().isElementVisible(btnChangeBonusChannel,20);
 	}
 	
 	/**
@@ -68,7 +68,7 @@ public class RogersDigitalTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public boolean verifyTVAddThemes() {
-		return reusableActions.isElementVisible(btnTVAddThemes,20);
+		return getReusableActionsInstance().isElementVisible(btnTVAddThemes,20);
 	}
 	
 	/**
@@ -77,7 +77,7 @@ public class RogersDigitalTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public boolean verifyTVAddChannels() {
-		return reusableActions.isElementVisible(btnTVAddChannels,20);
+		return getReusableActionsInstance().isElementVisible(btnTVAddChannels,20);
 	}
 	
 	/**
@@ -86,7 +86,7 @@ public class RogersDigitalTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public boolean verifyContactCustomercarePopupForFr() {
-		return reusableActions.isElementVisible(popupContactCustomercareForDigitalTVDowngradeFr,30);
+		return getReusableActionsInstance().isElementVisible(popupContactCustomercareForDigitalTVDowngradeFr,30);
 	}
 	
 	/**
@@ -95,7 +95,7 @@ public class RogersDigitalTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */	
 	public boolean verifyBuyNowIgnite() {
-		return reusableActions.isElementVisible(btnBuyNowIgnite,60);
+		return getReusableActionsInstance().isElementVisible(btnBuyNowIgnite,60);
 	}
 	
 	/**
@@ -103,7 +103,7 @@ public class RogersDigitalTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */	
 	public void clkBuyNowIgnite() {
-		reusableActions.javascriptScrollByVisibleElement(btnBuyNowIgnite);
-		reusableActions.moveToElementAndClick(btnBuyNowIgnite,30);		
+		getReusableActionsInstance().javascriptScrollByVisibleElement(btnBuyNowIgnite);
+		getReusableActionsInstance().moveToElementAndClick(btnBuyNowIgnite,30);
 	}	
 }

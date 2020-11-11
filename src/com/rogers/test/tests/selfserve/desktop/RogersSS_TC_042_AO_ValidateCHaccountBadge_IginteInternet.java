@@ -41,28 +41,28 @@ public class RogersSS_TC_042_AO_ValidateCHaccountBadge_IginteInternet extends Ba
     @Test(groups = {"RegressionSS","AccountOverviewSS"})
     public void checkInternetDashboard() {
     	            reporter.reportLogWithScreenshot("Launched the Home Page");
-                    rogers_home_page.clkSignIn();
-                    rogers_login_page.switchToSignInIFrame();
+                    getRogersHomePage().clkSignIn();
+                    getRogersLoginPage().switchToSignInIFrame();
                     reporter.reportLogWithScreenshot("Launched the SignIn popup");
-                    rogers_login_page.setUsernameIFrame(TestDataHandler.tc42SolarisInternetAccountWithUsage.getUsername());
-                    rogers_login_page.setPasswordIFrame(TestDataHandler.tc42SolarisInternetAccountWithUsage.getPassword());
+                    getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc42SolarisInternetAccountWithUsage.getUsername());
+                    getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc42SolarisInternetAccountWithUsage.getPassword());
                     reporter.reportLogWithScreenshot("Enter the account credentails");
-                    rogers_login_page.clkSignInIFrame();
-                    reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+                    getRogersLoginPage().clkSignInIFrame();
+                    reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
                     reporter.reportLogWithScreenshot("Skip popup");
-                    rogers_login_page.clkSkipIFrame();  
-                    rogers_login_page.switchOutOfSignInIFrame();
-                    rogers_account_overview_page.selectAccount((TestDataHandler.tc42SolarisInternetAccountWithUsage.accountDetails.getBan()));
-            		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), 
+                    getRogersLoginPage().clkSkipIFrame();
+                    getRogersLoginPage().switchOutOfSignInIFrame();
+                    getRogersAccountOverviewPage().selectAccount((TestDataHandler.tc42SolarisInternetAccountWithUsage.accountDetails.getBan()));
+            		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), 
             				"Logged in successfully", "Login failed");
                     reporter.reportLogWithScreenshot("Launched the Account Page");
-                    rogers_internet_dashboard_page.clkSolarisInternetBadge();
-                    rogers_internet_dashboard_page.clkInternetPopup();
+                    getRogersInternetDashboardPage().clkSolarisInternetBadge();
+                    getRogersInternetDashboardPage().clkInternetPopup();
                     reporter.reportLogWithScreenshot("Clicked on Internet badge");                   
-            		reporter.hardAssert(rogers_internet_dashboard_page.verifyInternet(), 
+            		reporter.hardAssert(getRogersInternetDashboardPage().verifyInternet(),
             				"Verified the Internet page",
             				"Internet page verification failed");
-            		reporter.hardAssert(rogers_internet_dashboard_page.verifyUsageAndAlerts(),
+            		reporter.hardAssert(getRogersInternetDashboardPage().verifyUsageAndAlerts(),
             				"Usage and Alerts link present on the internet dash page",
             				"Usage and Alerts link is not present on the internet page");                
             		reporter.reportLogWithScreenshot("Ignite Internet dashboard is opened");

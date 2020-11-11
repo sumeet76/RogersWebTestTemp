@@ -23,39 +23,51 @@ import utils.CSVReader;
 
 public class RogersSearch_CBS_1686_Clicking_On_A_Parent_Filter_After_Selecting_A_Child_Filter_Test extends BaseTestClass {
 
+	@Test
+	public void validateChildAndParentFilterSelection() {
+		List<WebElement> lstParentFilters;
+		List<String> strColorFilters;
+		String strParentFilterName;
+		int intCounter = 0;
 
-	@DataProvider(name = "FilterData")
-	public Object[] testData() throws IOException
-	{
-		String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
-		List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
-		Object[] csvRow = new Object[csvData.size()];
-		 
-        for(int i =0; i < csvData.size();i++){
-        	csvRow[i] = csvData.get(i);
-        }
- 
-        return csvRow;
-		 
-		
+		getDriver().get(System.getProperty("SearchUrl")+"iphone");
+
+		getRogersSearchPage().clkGrandParentFilter("Shop");
+		reporter.reportLogWithScreenshot("Shop is clicked");
+
+		lstParentFilters = getRogersSearchPage().getParentFilters("Shop");
+
+		getRogersSearchPage().clkParentFilter("Shop","Wireless");
+		reporter.reportLogWithScreenshot("Wireless is selected");
+
+		strColorFilters = getRogersSearchPage().getColorFilters();
+		for(int i=0;i<strColorFilters.size();i++) {
+			getRogersSearchPage().clkColorType(strColorFilters.get(i));
+			reporter.reportLogWithScreenshot(strColorFilters.get(i) + " - Color Selected");
+
+			reporter.softAssert(getRogersSearchPage().validateResultsTag("Shop","Wireless"),
+					"Results belong to tag 'Shop - Wireless'",
+					"Results do not belong to tag 'Shop - Wireless'");
+
+			reporter.softAssert(getRogersSearchPage().validateResultsColor(strColorFilters.get(i)),
+					"All Results belong to color: "+strColorFilters.get(i),
+					"All Results do Not belong to color: "+strColorFilters.get(i));
+
+			if(intCounter == (lstParentFilters.size()-1)) {
+				intCounter = 0;
+			}
+
+			strParentFilterName = lstParentFilters.get(intCounter).getText();
+			getRogersSearchPage().clkParentFilter(lstParentFilters.get(intCounter));
+			reporter.reportLogWithScreenshot("Parent filter " + lstParentFilters.get(intCounter).getText() + " is clicked");
+			reporter.softAssert(getRogersSearchPage().validateResultsTag("Shop",strParentFilterName),
+					"Results belong to tag 'Shop - "+ strParentFilterName +"'. Navigation Passed",
+					"Results do not belong to tag 'Shop - "+ strParentFilterName +"'. Navigation Failed");
+
+			intCounter++;
+			getRogersSearchPage().clkParentFilter("Shop","Wireless");
+		}
 	}
-	
-	@Test(dataProvider = "FilterData")
-	
-	public void validateChildAndParentFilterSelection(String[] csvRow) {
-	
-	getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
-	
-	rogers_search_page.clkShopAndThenWirelessFilter();
-	reporter.reportLogWithScreenshot("Shop and Wireless Filters clicked");
-	
-	reporter.hardAssert(rogers_search_page.verifyChildFilterSelection(), "Color Results displayed correctly", "Color Results not displayed correctly");
-	reporter.hardAssert(rogers_search_page.verifyParentFilterSelection(), "Parent Filter results displayed correctly", "Parent Filter results not displayed correctly");
-				
-				
-	}
-
-
 
 	@BeforeMethod(alwaysRun = true)
 	@Parameters({"strBrowser", "strLanguage"})
@@ -68,8 +80,5 @@ public class RogersSearch_CBS_1686_Clicking_On_A_Parent_Filter_After_Selecting_A
 	public void afterTest() {
 		closeSession();
 	}
-	
-	
+
 }
-
-

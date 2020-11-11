@@ -554,7 +554,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkLnkLostOrStolenDevice() {
-		reusableActions.getWhenReady(lnkLostOrStolenDevice, 10).click();
+		getReusableActionsInstance().getWhenReady(lnkLostOrStolenDevice, 10).click();
 	}
 	 
 	/**
@@ -562,9 +562,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnSwitchOffMyService() {
-//		reusableActions.waitForElementTobeClickable(btnSwitchOffService, 10);
-//		reusableActions.javascriptScrollByVisibleElement(btnSwitchOffService);
-		reusableActions.getWhenReady(btnSwitchOffService, 20).click();
+//		getReusableActionsInstance().waitForElementTobeClickable(btnSwitchOffService, 10);
+//		getReusableActionsInstance().javascriptScrollByVisibleElement(btnSwitchOffService);
+		getReusableActionsInstance().getWhenReady(btnSwitchOffService, 20).click();
 
 	}
 	
@@ -574,7 +574,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyServiceSuspendedMsgDisplayed() {
-		return reusableActions.isElementVisible(msgServiceSuspended, 30);
+		return getReusableActionsInstance().isElementVisible(msgServiceSuspended, 30);
 	}
 	
 	/**
@@ -583,7 +583,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyToReactivateServiceMsgDisplayed() {
-		return reusableActions.isElementVisible(msgToReactivateService, 30);
+		return getReusableActionsInstance().isElementVisible(msgToReactivateService, 30);
 	}
 	
 	/**
@@ -591,7 +591,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkLnkReactivateService() {
-		reusableActions.getWhenReady(lnkReactivateService, 10).click();
+		getReusableActionsInstance().getWhenReady(lnkReactivateService, 10).click();
 	}
 	
 	/**
@@ -600,7 +600,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyServiceResumedMsgDisplayed() {
-		return reusableActions.isElementVisible(msgServiceResumed, 30);
+		return getReusableActionsInstance().isElementVisible(msgServiceResumed, 30);
 	}
 	
 	/**
@@ -608,7 +608,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkLnkTrackPhoneRepairClaim() {
-		reusableActions.getWhenReady(lnkTrackRepairClaim, 10).click();
+		getReusableActionsInstance().getWhenReady(lnkTrackRepairClaim, 10).click();
 	}
 	
 	/**
@@ -616,7 +616,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnHelpYourPhoneContinue() {
-		reusableActions.clickWhenReady(btnHlpYrPhoneContinue, 10);
+		getReusableActionsInstance().clickWhenReady(btnHlpYrPhoneContinue, 10);
 	} 
 	
 	/**
@@ -625,7 +625,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyRepairClaimModalIsDisplayed() {
-		return reusableActions.isElementVisible(repairClaimModal, 3);
+		return getReusableActionsInstance().isElementVisible(repairClaimModal, 3);
 	}
 	
 	/**
@@ -633,7 +633,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkFirstCtnInListForRepairClaim() {
-		reusableActions.getWhenReady(radiosOfMultiCtnRepairClaim.get(0),20).click();
+		getReusableActionsInstance().getWhenReady(radiosOfMultiCtnRepairClaim.get(0),20).click();
 	}
 	
 	/**
@@ -643,10 +643,10 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyBrightstarLinkOpenSuccessfully(String expectedUrl) {
-		reusableActions.waitForNumberOfWindowsToBe(2, 5);
-		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-		driver.switchTo().window(tabs.get(1));
-		String urlOpened = driver.getCurrentUrl();
+		getReusableActionsInstance().waitForNumberOfWindowsToBe(2, 5);
+		ArrayList<String> tabs = new ArrayList<String>(getDriver().getWindowHandles());
+		getDriver().switchTo().window(tabs.get(1));
+		String urlOpened = getDriver().getCurrentUrl();
 		return urlOpened.contains(expectedUrl);
 	} 
 	
@@ -656,14 +656,14 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyFullPlanTalkTextUsageModuleIsDisplayed() {
-		return reusableActions.isElementVisible(mixedTalkTextUsageModule, 30);
+		return getReusableActionsInstance().isElementVisible(mixedTalkTextUsageModule, 30);
 	}
 	
 	/**
 	 * To click the view details link in talk and text usage module for full plan wireless dash board.
 	 */
 	public void clkViewDetailsInFullPlanTalkAndTextUsageModule() { 
-		reusableActions.clickWhenReady(viewDetailTalkText, 10);
+		getReusableActionsInstance().clickWhenReady(viewDetailTalkText, 10);
 	} 
 	
 	/**
@@ -672,7 +672,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyDsModalTalkTextDetailIsDisplayed() {
-		return reusableActions.isElementVisible(dsModalTalkTextDetail, 10);
+		return getReusableActionsInstance().isElementVisible(dsModalTalkTextDetail, 10);
 	}
 
 	/**
@@ -686,9 +686,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		ListIterator<WebElement> valueList = null;
 		valueList = dsModalTalkAndTextIncludeValue.listIterator();
 		while (litr.hasNext()) {
-			String strUsed = reusableActions.getWhenReady(litr.next()).getText();
+			String strUsed = getReusableActionsInstance().getWhenReady(litr.next()).getText();
 			if (valueList.hasNext()) {
-				String strDetail = reusableActions.getWhenReady(valueList.next()).getText();
+				String strDetail = getReusableActionsInstance().getWhenReady(valueList.next()).getText();
 				if (!strUsed.equalsIgnoreCase(strDetail)) {
 					return false;
 				}
@@ -706,7 +706,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyTalkTextOnlyUsageModuleIsDisplayed() {
-		return reusableActions.isElementVisible(talkTextOnlyUsageModule, 30);
+		return getReusableActionsInstance().isElementVisible(talkTextOnlyUsageModule, 30);
 	}
 	
 	/**
@@ -715,7 +715,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyTalkMinutesRemainingIsDisplayed() {
-		return reusableActions.isElementVisible(divMinutesRemaining, 30);
+		return getReusableActionsInstance().isElementVisible(divMinutesRemaining, 30);
 	}
 	
 	/**
@@ -724,7 +724,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyTalkUsageAnytimeIsDisplayed() {
-		return reusableActions.isElementVisible(tdAnytime, 30);
+		return getReusableActionsInstance().isElementVisible(tdAnytime, 30);
 	}
 	
 	/**
@@ -734,9 +734,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public boolean verifyLimitedTalkUsageDetailsAccuracy() {
 		System.out.println("Limited Talk plan usage details is being checked");
-		Integer intRemainMinutes = Integer.parseInt(reusableActions.getWhenReady(divMinutesRemaining).getText());
-		Integer intTotalMinutes = Integer.parseInt(reusableActions.getWhenReady(minutesInclude).getText());
-		String strMinutesUsed = reusableActions.getWhenReady(minutesTotalUsed).getText();
+		Integer intRemainMinutes = Integer.parseInt(getReusableActionsInstance().getWhenReady(divMinutesRemaining).getText());
+		Integer intTotalMinutes = Integer.parseInt(getReusableActionsInstance().getWhenReady(minutesInclude).getText());
+		String strMinutesUsed = getReusableActionsInstance().getWhenReady(minutesTotalUsed).getText();
 		Integer intMinutesUsed = Integer.parseInt(strMinutesUsed.substring(0, strMinutesUsed.length()-8));
 		return intRemainMinutes == intTotalMinutes - intMinutesUsed;
 	}	
@@ -747,7 +747,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyLimitedTextsRemainingIsDisplayed() {
-		return reusableActions.isElementVisible(divTextsRemaining, 30);
+		return getReusableActionsInstance().isElementVisible(divTextsRemaining, 30);
 	}
 	
 	/**
@@ -756,7 +756,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyLimitedTextsMsgSentIsDisplayed() {
-		return reusableActions.isElementVisible(msgAnytimeSent, 30);
+		return getReusableActionsInstance().isElementVisible(msgAnytimeSent, 30);
 	}
 	
 	/**
@@ -765,7 +765,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyLimitedTextsMsgReceivedIsDisplayed() {
-		return reusableActions.isElementVisible(msgAnytimeReceived, 30);
+		return getReusableActionsInstance().isElementVisible(msgAnytimeReceived, 30);
 	}
 	
 	/**
@@ -775,9 +775,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public boolean verifyLimitedTextUsageDetailsAccuracy() {
 		System.out.println("Limited Text usage details is being checked");
-		Integer intRemainTexts = Integer.parseInt(reusableActions.getWhenReady(divTextsRemaining).getText());
-		Integer intTotalTexts = Integer.parseInt(reusableActions.getWhenReady(msgIncluded).getText());
-		String strTextsUsed = reusableActions.getWhenReady(msgTotalUsed).getText();
+		Integer intRemainTexts = Integer.parseInt(getReusableActionsInstance().getWhenReady(divTextsRemaining).getText());
+		Integer intTotalTexts = Integer.parseInt(getReusableActionsInstance().getWhenReady(msgIncluded).getText());
+		String strTextsUsed = getReusableActionsInstance().getWhenReady(msgTotalUsed).getText();
 		Integer intTextsUsed = Integer.parseInt(strTextsUsed.substring(0, strTextsUsed.length()-9));
 		return intRemainTexts == intTotalTexts - intTextsUsed;
 	}	
@@ -788,7 +788,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyUnlimitedTalkMinutesIsDisplayed() {
-		return reusableActions.isElementVisible(talkUnlimitedMinutes, 30);
+		return getReusableActionsInstance().isElementVisible(talkUnlimitedMinutes, 30);
 	} 
 	
 	/**
@@ -797,7 +797,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyUnlimitedTalkWeekdayUsageIsDisplayed() {
-		return reusableActions.isElementVisible(talkWeekday, 30);
+		return getReusableActionsInstance().isElementVisible(talkWeekday, 30);
 	}
 	
 	
@@ -808,7 +808,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyUnlimitedTalkNightAndWeekendUsageIsDisplayed() {
-		return reusableActions.isElementVisible(talkWeekend, 30);
+		return getReusableActionsInstance().isElementVisible(talkWeekend, 30);
 	} 
 	
 	/**
@@ -819,7 +819,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	public boolean verifyUnlimitedTalkWeekdayUsageIsInteger() {
 	    try
 	    {
-	        Integer.parseInt(reusableActions.getWhenReady(totalUsedMinutes).getText());
+	        Integer.parseInt(getReusableActionsInstance().getWhenReady(totalUsedMinutes).getText());
 	        return true;
 	    } catch (NumberFormatException ex)
 	    {
@@ -838,8 +838,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		litr = talkAndTextIncludeValue.listIterator();
 		boolean unlimitedTrue = false;
 		while (litr.hasNext()) {
-			unlimitedTrue = reusableActions.getWhenReady(litr.next()).getText().equalsIgnoreCase("Unlimited") 
-					|| reusableActions.getWhenReady(litr.next()).getText().equalsIgnoreCase("Illimités");
+			unlimitedTrue = getReusableActionsInstance().getWhenReady(litr.next()).getText().equalsIgnoreCase("Unlimited")
+					|| getReusableActionsInstance().getWhenReady(litr.next()).getText().equalsIgnoreCase("Illimités");
 			if (unlimitedTrue == false) {
 				return false;
 			}
@@ -859,7 +859,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		litr = talkAndTextUsedValue.listIterator();
 		boolean numberTrue = false;
 		while (litr.hasNext()) {
-			String strUsed = reusableActions.getWhenReady(litr.next()).getText();
+			String strUsed = getReusableActionsInstance().getWhenReady(litr.next()).getText();
 			String strUsedValue = "";
 			if (strUsed.toUpperCase().contains("MINUTE")) {
 				strUsedValue = strUsed.substring(0, strUsed.length()-8);
@@ -882,7 +882,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyUnlimitedTextsIsDisplayed() {
-		return reusableActions.isElementVisible(textUnlimitedTexts, 30);
+		return getReusableActionsInstance().isElementVisible(textUnlimitedTexts, 30);
 	} 
 	
 	/**
@@ -891,7 +891,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyUnlimitedTextsPictureAndVideoIsDisplayed() {
-		return reusableActions.isElementVisible(textPictureAndVideoMsg, 30);
+		return getReusableActionsInstance().isElementVisible(textPictureAndVideoMsg, 30);
 	}
 	
 	/**
@@ -900,7 +900,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyUnlimitedTextsBundlesMsgIsDisplayed() {
-		return reusableActions.isElementVisible(textBundlesMsg, 30);
+		return getReusableActionsInstance().isElementVisible(textBundlesMsg, 30);
 	}
 	
 	/**
@@ -909,7 +909,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyWirelessPageLoad() {
-		return reusableActions.isElementVisible(lblMyWlsUsage);
+		return getReusableActionsInstance().isElementVisible(lblMyWlsUsage);
 	}
 	
 	/**
@@ -917,7 +917,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickChangeMyCallerId() {
-		reusableActions.getWhenReady(lnkChangeMyCallerId, 20).click();
+		getReusableActionsInstance().getWhenReady(lnkChangeMyCallerId, 20).click();
 	} 
 	
 	/**
@@ -928,7 +928,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public boolean verifyWirelessCallerIdUpdatedInSeCtnTab(String strFirstName) {
 				
-		return reusableActions.getWhenReady(nameSeCtnTab).getText().trim().contains(strFirstName);		
+		return getReusableActionsInstance().getWhenReady(nameSeCtnTab).getText().trim().contains(strFirstName);
 	}
 	
 	/**
@@ -936,8 +936,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickOverview() {
-		reusableActions.waitForElementTobeClickable(lnkOverview, 10);
-		reusableActions.executeJavaScriptClick(lnkOverview);
+		getReusableActionsInstance().waitForElementTobeClickable(lnkOverview, 10);
+		getReusableActionsInstance().executeJavaScriptClick(lnkOverview);
 	}
 
 	/**
@@ -946,14 +946,14 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean clickUpdateMyVoicemailPwd() {
-		if(reusableActions.isElementVisible(lnkUpdateMyVoicemailPwd, 30)) {
+		if(getReusableActionsInstance().isElementVisible(lnkUpdateMyVoicemailPwd, 30)) {
 			Capabilities cap = ((RemoteWebDriver) getDriver()).getCapabilities();
 		    String browserName = cap.getBrowserName().toLowerCase();
 			if(!browserName.trim().toLowerCase().equalsIgnoreCase("firefox"))
 			{
-				reusableActions.scrollToElement(lnkUpdateMyVoicemailPwd);
+				getReusableActionsInstance().scrollToElement(lnkUpdateMyVoicemailPwd);
 			}
-			reusableActions.clickIfAvailable(lnkUpdateMyVoicemailPwd);
+			getReusableActionsInstance().clickIfAvailable(lnkUpdateMyVoicemailPwd);
 			return true;
 		}
 		return false;
@@ -965,9 +965,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void setNewVoicemailPassword(String strPassword) {
-		reusableActions.getWhenReady(divNewVoicemailPwd, 10).click();
-		//reusableActions.getWhenReady(txtNewVoicemailPwd, 5).clear();
-		reusableActions.getWhenReady(txtNewVoicemailPwd, 5).sendKeys(strPassword);
+		getReusableActionsInstance().getWhenReady(divNewVoicemailPwd, 10).click();
+		//getReusableActionsInstance().getWhenReady(txtNewVoicemailPwd, 5).clear();
+		getReusableActionsInstance().getWhenReady(txtNewVoicemailPwd, 5).sendKeys(strPassword);
 	}
 	
 	/**
@@ -976,9 +976,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void setConfirmVoicemailPassword(String strPassword) {
-		reusableActions.getWhenReady(divConfirmVoicemailPwd, 10).click();
-		//reusableActions.getWhenReady(txtConfirmVoicemailPwd, 5).clear();
-		reusableActions.getWhenReady(txtConfirmVoicemailPwd, 5).sendKeys(strPassword);
+		getReusableActionsInstance().getWhenReady(divConfirmVoicemailPwd, 10).click();
+		//getReusableActionsInstance().getWhenReady(txtConfirmVoicemailPwd, 5).clear();
+		getReusableActionsInstance().getWhenReady(txtConfirmVoicemailPwd, 5).sendKeys(strPassword);
 	}
 	
 	/**
@@ -986,7 +986,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickSubmitButton() {
-		reusableActions.getWhenReady(btnVoicemailPwdSubmit,10).click();
+		getReusableActionsInstance().getWhenReady(btnVoicemailPwdSubmit,10).click();
 	}
 	
 	/**
@@ -995,10 +995,10 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyResetVoicemailPasswordSuccess() {
-//		if (reusableActions.isElementVisible(imgLoading)) {
-//			reusableActions.waitForElementInvisibility(imgLoading, 30);
+//		if (getReusableActionsInstance().isElementVisible(imgLoading)) {
+//			getReusableActionsInstance().waitForElementInvisibility(imgLoading, 30);
 //		}
-		return reusableActions.isElementVisible(msgResetVoicemailPwdSuccess,30);
+		return getReusableActionsInstance().isElementVisible(msgResetVoicemailPwdSuccess,30);
 	}
 	
 	/**
@@ -1006,7 +1006,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clickResetVMPwdDoneButton() {
-		reusableActions.getWhenReady(btnResetVMPwdDone,10).click();
+		getReusableActionsInstance().getWhenReady(btnResetVMPwdDone,10).click();
 	}
 	
 	/**
@@ -1014,7 +1014,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickChangePlanButton() {
-		reusableActions.clickIfAvailable(btnChangePlan);
+		getReusableActionsInstance().clickIfAvailable(btnChangePlan);
 	}
 	
 	/**
@@ -1022,7 +1022,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickMakeChangesToCurrentPlan() {
-		reusableActions.clickIfAvailable(lnkChangeCurrentPlan);
+		getReusableActionsInstance().clickIfAvailable(lnkChangeCurrentPlan);
 	}
 	
 	/**
@@ -1030,7 +1030,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void scrollToTopOfDasboardPage() {
-		reusableActions.javascriptScrollToTopOfPage();
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
 		
 	}
 	
@@ -1039,7 +1039,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void scrollToMidOfDasboardPage() {
-		reusableActions.javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 		
 	}
 
@@ -1048,7 +1048,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void scrollToBottomOfPage() {
-		reusableActions.javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		
 	}
 
@@ -1057,7 +1057,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkLinkChangeMySIM() {
-		reusableActions.clickWhenReady(lnkChangeMySIM);
+		getReusableActionsInstance().clickWhenReady(lnkChangeMySIM);
 	}
 
 	/**
@@ -1067,14 +1067,14 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public void setOldSimNum(String strOldSimNum) {
 		try {					
-		reusableActions.waitForElementTobeClickable(txtCurrentSIMNumber, 60);		
-		reusableActions.getWhenReady(txtCurrentSIMNumber, 30).clear();
-		reusableActions.getWhenReady(txtCurrentSIMNumber).sendKeys(strOldSimNum);
+		getReusableActionsInstance().waitForElementTobeClickable(txtCurrentSIMNumber, 60);
+		getReusableActionsInstance().getWhenReady(txtCurrentSIMNumber, 30).clear();
+		getReusableActionsInstance().getWhenReady(txtCurrentSIMNumber).sendKeys(strOldSimNum);
 		} catch (StaleElementReferenceException e) {
-			reusableActions.staticWait(5000); // static wait to handle state ref error 
-			reusableActions.waitForElementTobeClickable(txtCurrentSIMNumber, 60);		
-			reusableActions.getWhenReady(txtCurrentSIMNumber, 30).clear();
-			reusableActions.getWhenReady(txtCurrentSIMNumber).sendKeys(strOldSimNum);
+			getReusableActionsInstance().staticWait(5000); // static wait to handle state ref error
+			getReusableActionsInstance().waitForElementTobeClickable(txtCurrentSIMNumber, 60);
+			getReusableActionsInstance().getWhenReady(txtCurrentSIMNumber, 30).clear();
+			getReusableActionsInstance().getWhenReady(txtCurrentSIMNumber).sendKeys(strOldSimNum);
 		}
 		
 	}
@@ -1085,9 +1085,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setNewSimNum(String strNewSimNum) {
-		reusableActions.waitForElementTobeClickable(txtNewSIMNumber, 60);
-		//reusableActions.getWhenReady(txtNewSIMNumber, 30).clear();
-		reusableActions.getWhenReady(txtNewSIMNumber).sendKeys(strNewSimNum);
+		getReusableActionsInstance().waitForElementTobeClickable(txtNewSIMNumber, 60);
+		//getReusableActionsInstance().getWhenReady(txtNewSIMNumber, 30).clear();
+		getReusableActionsInstance().getWhenReady(txtNewSIMNumber).sendKeys(strNewSimNum);
 	}
 
 	/**
@@ -1095,7 +1095,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran 
 	 */
 	public void clkBtnUpdateSimNext() {
-		reusableActions.clickWhenReady(btnContinueChangeSIM);
+		getReusableActionsInstance().clickWhenReady(btnContinueChangeSIM);
 		
 	}
 
@@ -1107,8 +1107,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyUpdateSimReview(String strOldSimNum, String strNewSimNum) {
-		if (reusableActions.isElementVisible(titleReviewUpdateSIM, 30)
-				&& reusableActions.getWhenReady(reviewNewSim).getText().trim().contains(strNewSimNum)) {
+		if (getReusableActionsInstance().isElementVisible(titleReviewUpdateSIM, 30)
+				&& getReusableActionsInstance().getWhenReady(reviewNewSim).getText().trim().contains(strNewSimNum)) {
 			return true;
 		}
 		return false;
@@ -1120,7 +1120,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyDataDelayMessage() {		
-		return reusableActions.isElementVisible(lblDataDelayMsg, 60);
+		return getReusableActionsInstance().isElementVisible(lblDataDelayMsg, 60);
 	}
 
 	/**
@@ -1129,7 +1129,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyDataRemainingOutOfTotalDataBucket() {		
-		return reusableActions.isElementVisible(lblDataRemainingOutOfTotalDataBucket, 30);
+		return getReusableActionsInstance().isElementVisible(lblDataRemainingOutOfTotalDataBucket, 30);
 		
 	}
 
@@ -1139,7 +1139,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public double getDataRemainingOutOfTotalDataBucket() {				
-		String strTotalData = reusableActions.getWhenReady(lblDataRemainingValue, 30).getText().replaceAll(",", ".").trim();
+		String strTotalData = getReusableActionsInstance().getWhenReady(lblDataRemainingValue, 30).getText().replaceAll(",", ".").trim();
 		return Double.parseDouble(strTotalData.substring(0, strTotalData.length()-2).trim());
 	}
 	
@@ -1150,7 +1150,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public boolean verifyTotalDataBucket() {
 	
-		return reusableActions.isElementVisible(lblTotalDataBucket, 30);
+		return getReusableActionsInstance().isElementVisible(lblTotalDataBucket, 30);
 	}
 	
 	/**
@@ -1160,7 +1160,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public boolean getTotalDataBucket() {
 	
-		return reusableActions.isElementVisible(lblTotalDataBucket, 30);
+		return getReusableActionsInstance().isElementVisible(lblTotalDataBucket, 30);
 	}
 	
 	/**
@@ -1191,7 +1191,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public double getTotalDataVolume() {
-		String strTotalData = reusableActions.getWhenReady(lblTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded, 30).getText().trim().replaceAll(",", ".");
+		String strTotalData = getReusableActionsInstance().getWhenReady(lblTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded, 30).getText().trim().replaceAll(",", ".");
 		return Double.parseDouble(strTotalData.substring(0, strTotalData.length()-2).trim());
 	}
 
@@ -1201,7 +1201,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyDaysRemainingInTheBillCycleIsDisplayed() {		
-		return reusableActions.isElementVisible(lblDaysRemainingInBillCycle, 30);
+		return getReusableActionsInstance().isElementVisible(lblDaysRemainingInBillCycle, 30);
 	}
 	
 	/**
@@ -1210,7 +1210,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyDaysRemainingInTheBillCycleIsDisplayedMobile() {		
-		return reusableActions.isElementVisible(lblDaysRemainingInBillCycleMobile, 30);
+		return getReusableActionsInstance().isElementVisible(lblDaysRemainingInBillCycleMobile, 30);
 	}
 	
 	
@@ -1220,8 +1220,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyAddDataButtonIsDisplayed() {			
-		return (reusableActions.getWhenReady(lnkAddDataTopUp, 30).getText().toLowerCase().contains("add data")
-				||reusableActions.getWhenReady(lnkAddDataTopUp, 30).getText().toLowerCase().contains("ajouter des données"));
+		return (getReusableActionsInstance().getWhenReady(lnkAddDataTopUp, 30).getText().toLowerCase().contains("add data")
+				||getReusableActionsInstance().getWhenReady(lnkAddDataTopUp, 30).getText().toLowerCase().contains("ajouter des données"));
 	}
 	
 	/**
@@ -1231,8 +1231,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public boolean verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesForTotalDataPlusAddedPlan() {		
 		//compares English and French 
-		return ((matchTwoDecimalPlacesPatterMatch(reusableActions.getWhenReady(lblTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded, 30).getText().split("GB")[0].trim())	
-				  || matchTwoDecimalPlacesPatterMatch(reusableActions.getWhenReady(lblTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded, 30).getText().split("Go")[0].trim())));
+		return ((matchTwoDecimalPlacesPatterMatch(getReusableActionsInstance().getWhenReady(lblTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded, 30).getText().split("GB")[0].trim())
+				  || matchTwoDecimalPlacesPatterMatch(getReusableActionsInstance().getWhenReady(lblTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded, 30).getText().split("Go")[0].trim())));
 			
 	}
 	
@@ -1244,8 +1244,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public boolean verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesOnLabelDataRemaining() {		
 		//compares English and French
-		return ((matchTwoDecimalPlacesPatterMatch(reusableActions.getWhenReady(lblDataRemaining, 30).getText().split("GB")[0].trim())
-				  || matchTwoDecimalPlacesPatterMatch(reusableActions.getWhenReady(lblDataRemaining, 30).getText().split("Go")[0].trim())));
+		return ((matchTwoDecimalPlacesPatterMatch(getReusableActionsInstance().getWhenReady(lblDataRemaining, 30).getText().split("GB")[0].trim())
+				  || matchTwoDecimalPlacesPatterMatch(getReusableActionsInstance().getWhenReady(lblDataRemaining, 30).getText().split("Go")[0].trim())));
 			
 	}
 	
@@ -1257,8 +1257,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public boolean verifyAllMBAmountsConvertedToGBUptoTwoDecimalPlacesOnTotalDataBelowUsageBarRightSide() {		
 		//compares English and French 
-		return ((matchTwoDecimalPlacesPatterMatch(reusableActions.getWhenReady(lbltotalDataDisplayedBelowBarRightSide, 30).getText().split("GB")[0].trim())
-				  || matchTwoDecimalPlacesPatterMatch(reusableActions.getWhenReady(lbltotalDataDisplayedBelowBarRightSide, 30).getText().split("Go")[0].trim())));
+		return ((matchTwoDecimalPlacesPatterMatch(getReusableActionsInstance().getWhenReady(lbltotalDataDisplayedBelowBarRightSide, 30).getText().split("GB")[0].trim())
+				  || matchTwoDecimalPlacesPatterMatch(getReusableActionsInstance().getWhenReady(lbltotalDataDisplayedBelowBarRightSide, 30).getText().split("Go")[0].trim())));
 	}
 	
 	
@@ -1268,8 +1268,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyAllMBAmountsConvertedToGBForTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded() {				
-		return ((reusableActions.getWhenReady(lblTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded, 30).getText().trim().contains("GB") )
-						|| reusableActions.getWhenReady(lblTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded, 30).getText().trim().contains("Go"));								
+		return ((getReusableActionsInstance().getWhenReady(lblTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded, 30).getText().trim().contains("GB") )
+						|| getReusableActionsInstance().getWhenReady(lblTotalDataDisplayedBelowLabelTotalDataPlusPlanAdded, 30).getText().trim().contains("Go"));
 				
 	}
 	
@@ -1279,8 +1279,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyAllMBAmountsConvertedToGBForLabelDataRemaining() {					
-		return ((reusableActions.getWhenReady(lblDataRemaining, 30).getText().trim().contains("GB") 
-						|| reusableActions.getWhenReady(lblDataRemaining, 30).getText().trim().contains("Go") ));
+		return ((getReusableActionsInstance().getWhenReady(lblDataRemaining, 30).getText().trim().contains("GB")
+						|| getReusableActionsInstance().getWhenReady(lblDataRemaining, 30).getText().trim().contains("Go") ));
 	}
 	
 	/**
@@ -1289,8 +1289,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyAllMBAmountsConvertedToGBForlabelTotalDataDisplayedBelowBarRightSide() {					
-		return ((reusableActions.getWhenReady(lbltotalDataDisplayedBelowBarRightSide, 30).getText().trim().contains("GB") 
-						|| reusableActions.getWhenReady(lbltotalDataDisplayedBelowBarRightSide, 30).getText().trim().contains("Go")));
+		return ((getReusableActionsInstance().getWhenReady(lbltotalDataDisplayedBelowBarRightSide, 30).getText().trim().contains("GB")
+						|| getReusableActionsInstance().getWhenReady(lbltotalDataDisplayedBelowBarRightSide, 30).getText().trim().contains("Go")));
 	}
 	
 	/**
@@ -1310,10 +1310,10 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyTalkHaveMinutesRemainingValues() {		
-		return ((reusableActions.getWhenReady(lblTalkUsage).getText().toLowerCase().contains("minutes remaining")
-				&& reusableActions.getWhenReady(txtNumericValueTalk).getText().trim().matches("^[0-9]*$"))
-				|| (reusableActions.getWhenReady(lblTalkUsage).getText().toLowerCase().contains("minutes restantes")
-						&& reusableActions.getWhenReady(txtNumericValueTalk).getText().trim().matches("^[0-9]*$")));
+		return ((getReusableActionsInstance().getWhenReady(lblTalkUsage).getText().toLowerCase().contains("minutes remaining")
+				&& getReusableActionsInstance().getWhenReady(txtNumericValueTalk).getText().trim().matches("^[0-9]*$"))
+				|| (getReusableActionsInstance().getWhenReady(lblTalkUsage).getText().toLowerCase().contains("minutes restantes")
+						&& getReusableActionsInstance().getWhenReady(txtNumericValueTalk).getText().trim().matches("^[0-9]*$")));
 	}
 	
 	/**
@@ -1322,10 +1322,10 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyTextHaveMinutesRemainingValues() {		
-		return ((reusableActions.getWhenReady(lblTextUsage).getText().toLowerCase().contains("texts remaining")
-				&& reusableActions.getWhenReady(txtNumericValueText).getText().trim().matches("^[0-9]*$"))
-				|| (reusableActions.getWhenReady(lblTextUsage).getText().toLowerCase().contains("messages texte restants")
-				&& reusableActions.getWhenReady(txtNumericValueText).getText().trim().matches("^[0-9]*$")));
+		return ((getReusableActionsInstance().getWhenReady(lblTextUsage).getText().toLowerCase().contains("texts remaining")
+				&& getReusableActionsInstance().getWhenReady(txtNumericValueText).getText().trim().matches("^[0-9]*$"))
+				|| (getReusableActionsInstance().getWhenReady(lblTextUsage).getText().toLowerCase().contains("messages texte restants")
+				&& getReusableActionsInstance().getWhenReady(txtNumericValueText).getText().trim().matches("^[0-9]*$")));
 	}
 
 	/**
@@ -1334,8 +1334,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyTalkAndTextDoesntContainViewDetails() {
-		return (!reusableActions.getWhenReady(divTalkAndTextContainer).getText().trim().contains("view details")
-				&& !reusableActions.getWhenReady(divTalkAndTextContainer).getText().trim().contains("Afficher les détails"));
+		return (!getReusableActionsInstance().getWhenReady(divTalkAndTextContainer).getText().trim().contains("view details")
+				&& !getReusableActionsInstance().getWhenReady(divTalkAndTextContainer).getText().trim().contains("Afficher les détails"));
 	}
 
 	/**
@@ -1343,7 +1343,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran 
 	 */
 	public void closeDsModal() {
-		reusableActions.clickWhenReady(btnCloseOverLay);		
+		getReusableActionsInstance().clickWhenReady(btnCloseOverLay);
 	}
 	
 	/**
@@ -1352,7 +1352,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyLiveChatButtonIsDisplayed() {
-		return reusableActions.isElementVisible(btnLiveChat, 30);
+		return getReusableActionsInstance().isElementVisible(btnLiveChat, 30);
 	}
 	
 	/**
@@ -1360,7 +1360,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnLiveChat() {
-		reusableActions.getWhenReady(btnLiveChat, 20).click();
+		getReusableActionsInstance().getWhenReady(btnLiveChat, 20).click();
 	}
 	
 	/**
@@ -1369,13 +1369,13 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyLiveChatOverlayOpened() {	
-	  if(reusableActions.isElementVisible(fraLiveChat))
+	  if(getReusableActionsInstance().isElementVisible(fraLiveChat))
 		{
-		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraLiveChat, 20);
-		return reusableActions.isElementVisible(headerLiveChat, 30);
+		getReusableActionsInstance().waitForFrameToBeAvailableAndSwitchToIt(fraLiveChat, 20);
+		return getReusableActionsInstance().isElementVisible(headerLiveChat, 30);
 		}else
 		{
-			return reusableActions.isElementVisible(headerLiveChat, 30);
+			return getReusableActionsInstance().isElementVisible(headerLiveChat, 30);
 		}
 		
 	} 
@@ -1385,8 +1385,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnSpeedPass() {
-		//reusableActions.waitForElementTobeClickable(btnSpeedPass, 60);
-		reusableActions.getWhenReady(btnSpeedPass, 60).click();
+		//getReusableActionsInstance().waitForElementTobeClickable(btnSpeedPass, 60);
+		getReusableActionsInstance().getWhenReady(btnSpeedPass, 60).click();
 	} 
 
 	/**
@@ -1395,7 +1395,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyMyPlansDetailsIsDisplayedAtTheBottomOfMyPlan() {
-		return reusableActions.isElementVisible(lnkMyPlanDetailsAtBottom);		
+		return getReusableActionsInstance().isElementVisible(lnkMyPlanDetailsAtBottom);
 		
 	}
 
@@ -1405,7 +1405,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyPlanNameIsDisplayed() {
-		return reusableActions.isElementVisible(txtPlanName);		
+		return getReusableActionsInstance().isElementVisible(txtPlanName);
 		
 	}
 
@@ -1415,7 +1415,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyMonthlyServiceFeeIsDisplayed() {
-		return reusableActions.isElementVisible(txtMonthlyServiceCharge);		
+		return getReusableActionsInstance().isElementVisible(txtMonthlyServiceCharge);
 		
 	}
 
@@ -1425,7 +1425,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyButtonChangePlanIsDisplayed() {
-		return reusableActions.isElementVisible(btnChangePricePlan);		
+		return getReusableActionsInstance().isElementVisible(btnChangePricePlan);
 		
 	}
 
@@ -1435,7 +1435,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyIncludedSectionIsDisplayed() {
-		return reusableActions.isElementVisible(txtHeadingIncluded);	
+		return getReusableActionsInstance().isElementVisible(txtHeadingIncluded);
 	}
 
 	/**
@@ -1444,7 +1444,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifTitleMyWirelessPlanIsDisplayed() {
-		return reusableActions.isElementVisible(txtHeadingIncluded);
+		return getReusableActionsInstance().isElementVisible(txtHeadingIncluded);
 		
 	}
 
@@ -1453,7 +1453,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkMyPlanDetailsLink() {
-		reusableActions.clickWhenReady(lnkMyPlanDetails);
+		getReusableActionsInstance().clickWhenReady(lnkMyPlanDetails);
 		
 	}
 
@@ -1464,7 +1464,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public boolean verifyMyPlanDetailsOverlayIsDisplayed() {
 		
-		return reusableActions.isElementVisible(lblFullPlanDetailsOverlayHeaders);
+		return getReusableActionsInstance().isElementVisible(lblFullPlanDetailsOverlayHeaders);
 	}
 
 	/**
@@ -1472,7 +1472,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void closeMyPlanDetailsOverlay() {
-		reusableActions.clickWhenReady(btnClosePlanDetailsOverlay);
+		getReusableActionsInstance().clickWhenReady(btnClosePlanDetailsOverlay);
 		
 	} 
 	
@@ -1482,7 +1482,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyHeaderOfDeviceSection() {
-		return reusableActions.isElementVisible(headerMyDevice,30);
+		return getReusableActionsInstance().isElementVisible(headerMyDevice,30);
 	}
 	
 	/**
@@ -1516,7 +1516,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkLinkUpgradeMyDevice() {
-		reusableActions.getWhenReady(lnkUpgradeMyDevice, 30).click();
+		getReusableActionsInstance().getWhenReady(lnkUpgradeMyDevice, 30).click();
 	}
 	
 	/**
@@ -1525,7 +1525,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @return true if the element is visible else false
 	 */
 	public boolean verifyLinkUpgradeMyDevice() {
-		return reusableActions.isElementVisible(lnkUpgradeMyDevice);
+		return getReusableActionsInstance().isElementVisible(lnkUpgradeMyDevice);
 	}
 	
 	/**
@@ -1534,7 +1534,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyChoosePhonePage() {
-		return reusableActions.isElementVisible(sectionChoosePhone, 20);
+		return getReusableActionsInstance().isElementVisible(sectionChoosePhone, 20);
 	}
 	
 	/**
@@ -1542,7 +1542,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void navigateBacktoDashboardPage() {
-		reusableActions.backToPreviousPage();
+		getReusableActionsInstance().backToPreviousPage();
 	}
 	
 	/**
@@ -1550,7 +1550,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @return true if the message is available, otherwise false
 	 */
 	public boolean isDeviceClosingDateMsgAvailable() {
-		return reusableActions.isElementVisible(txtEndDate,10);
+		return getReusableActionsInstance().isElementVisible(txtEndDate,10);
 	}
 	
 	/**
@@ -1589,8 +1589,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyLinkMyDeviceDetailsOfDeviceSection() {
-		reusableActions.getWhenReady(lnkViewDeviceDetails, 30).click();
-		return reusableActions.isElementVisible(modalDeviceDetails, 20); 
+		getReusableActionsInstance().getWhenReady(lnkViewDeviceDetails, 30).click();
+		return getReusableActionsInstance().isElementVisible(modalDeviceDetails, 20);
 	}
 	
 	/**
@@ -1599,9 +1599,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyMyDeviceDetailsModalOfDeviceSection() {
-		reusableActions.getWhenReady(lnkViewDeviceDetails, 30).click();
-		return (reusableActions.isElementVisible(activationDateOnDeviceModal, 10)
-				&& reusableActions.isElementVisible(balanceClosingDate, 10)); 
+		getReusableActionsInstance().getWhenReady(lnkViewDeviceDetails, 30).click();
+		return (getReusableActionsInstance().isElementVisible(activationDateOnDeviceModal, 10)
+				&& getReusableActionsInstance().isElementVisible(balanceClosingDate, 10));
 	}
 	
 	/**
@@ -1609,7 +1609,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkCloseMyDeviceDetailsModal() {
-		reusableActions.getWhenReady(btnCloseDeviceDetailModal, 10).click();
+		getReusableActionsInstance().getWhenReady(btnCloseDeviceDetailModal, 10).click();
 	}
 	
 	/**
@@ -1618,7 +1618,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean isModalDeviceUpgradeAvailable() {
-		return reusableActions.isElementVisible(modalDeviceUpgrade, 20);
+		return getReusableActionsInstance().isElementVisible(modalDeviceUpgrade, 20);
 	}
 	
 	/**
@@ -1626,7 +1626,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkCloseDeviceUpgradeModal() {
-		reusableActions.getWhenReady(btnCloseDeviceUpgradeModal, 10).click();
+		getReusableActionsInstance().getWhenReady(btnCloseDeviceUpgradeModal, 10).click();
 	}
 	
 	/**
@@ -1635,7 +1635,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifySupportSection() {
-		return reusableActions.isElementVisible(supportSection);
+		return getReusableActionsInstance().isElementVisible(supportSection);
 	}
 	
 	/**
@@ -1645,8 +1645,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyLinkFaqUnlockDevice(String strBaseUrl) {
-		reusableActions.getWhenReady(lnkFaqUnlockDevice, 20).click();
-		return reusableActions.verifyUrls(strBaseUrl + "/customer/support/article/unlocking-devices");
+		getReusableActionsInstance().getWhenReady(lnkFaqUnlockDevice, 20).click();
+		return getReusableActionsInstance().verifyUrls(strBaseUrl + "/customer/support/article/unlocking-devices");
 	}
 	
 	/**
@@ -1656,10 +1656,10 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyLinkNetworkAid(String strBaseUrl) {
-		reusableActions.getWhenReady(lnkNetworkAid, 60).click();
+		getReusableActionsInstance().getWhenReady(lnkNetworkAid, 60).click();
 		//updated in july 24th release
 		///customer/support/article/wireless-my-network
-		return reusableActions.verifyUrls(strBaseUrl + "/consumer/wireless/my-network");
+		return getReusableActionsInstance().verifyUrls(strBaseUrl + "/consumer/wireless/my-network");
 	}
 	
 	/**
@@ -1669,8 +1669,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyLinkDeviceProtection(String strBaseUrl) {
-		reusableActions.getWhenReady(lnkDeviceProtection, 60).click();
-		return reusableActions.verifyUrls(strBaseUrl + "/consumer/wireless/device-protection#,handset-protection--1");
+		getReusableActionsInstance().getWhenReady(lnkDeviceProtection, 60).click();
+		return getReusableActionsInstance().verifyUrls(strBaseUrl + "/consumer/wireless/device-protection#,handset-protection--1");
 	}
 
 	/**
@@ -1679,7 +1679,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyRunningLowStateInTheUsageBar() {
-		return reusableActions.isElementVisible(divRunningLowInUsageBar);		
+		return getReusableActionsInstance().isElementVisible(divRunningLowInUsageBar);
 	}
 
 
@@ -1689,7 +1689,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyCallOutMessageToAddDataIsDisplayed() {
-		return reusableActions.isElementVisible(divCallOutMsgToAddData);
+		return getReusableActionsInstance().isElementVisible(divCallOutMsgToAddData);
 	}
 
 
@@ -1699,7 +1699,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyUnlimitedDataNoOverage() {
-		return reusableActions.isElementVisible(lblUnlimitdeData);
+		return getReusableActionsInstance().isElementVisible(lblUnlimitdeData);
 
 		
 	}
@@ -1711,7 +1711,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifySpeedReducedMsg() {
-		return reusableActions.isElementVisible(lblUsingDataAtReducedSpeed);
+		return getReusableActionsInstance().isElementVisible(lblUsingDataAtReducedSpeed);
 		
 	}
 
@@ -1722,7 +1722,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifySpeedPassButtonIsDisplayed() {
-		return reusableActions.isElementVisible(btnSpeedPass);		
+		return getReusableActionsInstance().isElementVisible(btnSpeedPass);
 		
 	}
 
@@ -1733,7 +1733,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyCallOutMsgToAddSpeedPassIsDisplayed() {
-		return reusableActions.isElementVisible(divSpeedPassPopOver);		
+		return getReusableActionsInstance().isElementVisible(divSpeedPassPopOver);
 	}
 
 
@@ -1742,7 +1742,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkCloseCallOutMsg() {
-		reusableActions.clickWhenReady(btnCloseCallOutPopUp);
+		getReusableActionsInstance().clickWhenReady(btnCloseCallOutPopUp);
 		
 	}
 
@@ -1752,7 +1752,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @return true if the call out is closed else false
 	 */
 	public boolean validateCloseCallOutIsClosed() {
-		return !reusableActions.isElementVisible(btnCloseCallOutPopUp);		
+		return !getReusableActionsInstance().isElementVisible(btnCloseCallOutPopUp);
 	}
 	
 	/**
@@ -1762,7 +1762,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public boolean validateDataRemainingOutOfTotalDataBucketTenPercentOrLess() {
 		
-		return reusableActions.isElementVisible(lblApproachingReducedSpeed);
+		return getReusableActionsInstance().isElementVisible(lblApproachingReducedSpeed);
 	}
 
 	/**
@@ -1771,12 +1771,12 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean checkIfTheDataIsTenPercentOrLess() {		
-		String totalData = reusableActions.getWhenReady(lblTotalData).getText()
+		String totalData = getReusableActionsInstance().getWhenReady(lblTotalData).getText()
 				.split("GB")[0]
 				.replace("Go", "")
 				.replace(",", ".")
 				.trim();
-		String remainingData = reusableActions.getWhenReady(lblremainingData).getText()
+		String remainingData = getReusableActionsInstance().getWhenReady(lblremainingData).getText()
 				.replace("Go", "")
 				.replace(",", ".")
 				.trim();	  
@@ -1789,7 +1789,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyUsageBarIsDisplayed() {
-		return reusableActions.isElementVisible(divUsageBar);
+		return getReusableActionsInstance().isElementVisible(divUsageBar);
 	}
 
 	/**
@@ -1797,7 +1797,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkAddData() {
-		reusableActions.clickWhenReady(lnkAddDataTopUp);			
+		getReusableActionsInstance().clickWhenReady(lnkAddDataTopUp);
 	}
 	
 	/**
@@ -1809,7 +1809,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	public double getSingleLineUsage(String strCtn) {
 		
 		String strLast4Digit = strCtn.substring(strCtn.length()-5);
-		String strUsageInCtn = reusableActions.getWhenReady(By.xpath("//span[contains(text(),'" + strLast4Digit 
+		String strUsageInCtn = getReusableActionsInstance().getWhenReady(By.xpath("//span[contains(text(),'" + strLast4Digit
 									+ "')]/parent::span/following-sibling::span/span"), 20).getText();
 		return Double.parseDouble(strUsageInCtn.substring(0, strUsageInCtn.lastIndexOf("GB")-2).trim());
 	}
@@ -1822,7 +1822,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	public void clkCtnTab(String strCtn) {
 		
 		String strLast4Digit = strCtn.substring(strCtn.length()-4);
-		reusableActions.getWhenReady(By.xpath("//span[contains(text(),'" + strLast4Digit + "')]"), 20).click();
+		getReusableActionsInstance().getWhenReady(By.xpath("//span[contains(text(),'" + strLast4Digit + "')]"), 20).click();
 	}
 
 	/**
@@ -1831,8 +1831,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isScrollForCTNsPresent() {		
-		return (reusableActions.isElementVisible(btnLeftScrollCTN)
-				&& reusableActions.isElementVisible(btnRightScrollCTN));
+		return (getReusableActionsInstance().isElementVisible(btnLeftScrollCTN)
+				&& getReusableActionsInstance().isElementVisible(btnRightScrollCTN));
 	}
 
 	/**
@@ -1840,7 +1840,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkNextCTNScrollArrow() {
-		reusableActions.clickWhenReady(btnRightScrollCTN);
+		getReusableActionsInstance().clickWhenReady(btnRightScrollCTN);
 		
 	}
 
@@ -1850,7 +1850,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isSixthCTNBadgeInVisibleBeforeScrollingOnDashBoard() {		
-		return !reusableActions.isElementVisible(lstOfCTNBadgesOnDashboardPage.get(5));
+		return !getReusableActionsInstance().isElementVisible(lstOfCTNBadgesOnDashboardPage.get(5));
 	}
 
 	/**
@@ -1859,7 +1859,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isSixthCTNVisible() {		
-		return reusableActions.isElementVisible(lstOfCTNBadgesOnDashboardPage.get(5));
+		return getReusableActionsInstance().isElementVisible(lstOfCTNBadgesOnDashboardPage.get(5));
 	}
 
 	/**
@@ -1867,7 +1867,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkTheSixthCTN() {
-		reusableActions.clickWhenReady(lstOfCTNBadgesOnDashboardPage.get(5));
+		getReusableActionsInstance().clickWhenReady(lstOfCTNBadgesOnDashboardPage.get(5));
 		
 	}
 
@@ -1877,7 +1877,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
  * @author Mirza.Kamran
  */
 	public void clkTheNthCTNOnDashboardPage(int intCtnNumber) {
-		reusableActions.clickWhenReady(lstOfCTNBadgesOnDashboardPage.get(intCtnNumber-1));
+		getReusableActionsInstance().clickWhenReady(lstOfCTNBadgesOnDashboardPage.get(intCtnNumber-1));
 		
 	}
 	
@@ -1932,7 +1932,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyOverageChargesInTheUsageBar() {
-		return reusableActions.isElementVisible(divOverageLowInUsageBar);	
+		return getReusableActionsInstance().isElementVisible(divOverageLowInUsageBar);
 	}
 
 	/**
@@ -1942,7 +1942,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 */
 	public boolean verifyCallOutMessageToAddDataDueToOverageIsDisplayed() {
 		
-		return reusableActions.isElementVisible(divCallOutMsgToAddDataForOverage);
+		return getReusableActionsInstance().isElementVisible(divCallOutMsgToAddDataForOverage);
 	}
 	
 	
@@ -1952,7 +1952,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isAddDataManagerDisplayed() {
-		return reusableActions.isElementVisible(btnAddDataManager,60);
+		return getReusableActionsInstance().isElementVisible(btnAddDataManager,60);
 	}
 
 	/**
@@ -1960,7 +1960,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkAddDataManager() {
-		reusableActions.clickWhenReady(btnAddDataManager);
+		getReusableActionsInstance().clickWhenReady(btnAddDataManager);
 		
 	}
 
@@ -1969,7 +1969,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkChangeDataManager() {
-		reusableActions.clickWhenReady(btnChangeDataManager);
+		getReusableActionsInstance().clickWhenReady(btnChangeDataManager);
 		
 	}
 	
@@ -1979,7 +1979,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isChooseDataManagerOverlayDisplayed() {		
-		return reusableActions.isElementVisible(titleChooseDataManager);
+		return getReusableActionsInstance().isElementVisible(titleChooseDataManager);
 	}
 
 	/**
@@ -1987,7 +1987,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void selectDataManager() {
-		reusableActions.selectWhenReady(selectDataManager, 0);
+		getReusableActionsInstance().selectWhenReady(selectDataManager, 0);
 		
 	}
 	
@@ -1997,7 +1997,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @param strCTNValue string value for CTN
 	 */
 	public void changeDataManager(String strCTNValue) {
-		reusableActions.selectWhenReady(selectDataManager,strCTNValue.replaceAll(" ", "").replaceAll("-", ""));
+		getReusableActionsInstance().selectWhenReady(selectDataManager,strCTNValue.replaceAll(" ", "").replaceAll("-", ""));
 		
 	}
 
@@ -2007,8 +2007,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkSaveButtonOnDataManager() {	
-		reusableActions.clickWhenReady(btnSaveDataManager);
-		reusableActions.staticWait(10000);
+		getReusableActionsInstance().clickWhenReady(btnSaveDataManager);
+		getReusableActionsInstance().staticWait(10000);
 	}
 
 	/**
@@ -2017,7 +2017,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isSetDataAlertDisplayed() {		
-		return reusableActions.isElementVisible(btnSetDataAlert);
+		return getReusableActionsInstance().isElementVisible(btnSetDataAlert);
 	}
 
 	/**
@@ -2025,7 +2025,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkSetDataAlert() {
-		reusableActions.clickWhenReady(btnSetDataAlert);
+		getReusableActionsInstance().clickWhenReady(btnSetDataAlert);
 	}
 
 	/**
@@ -2033,7 +2033,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setAlertOn() {
-		reusableActions.clickWhenReady(btnSetAlertOn);
+		getReusableActionsInstance().clickWhenReady(btnSetAlertOn);
 
 	}
 
@@ -2043,7 +2043,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isSetDataAlertOverlayDisplayed() {		
-		return reusableActions.isElementVisible(titleSetDataAlert);		
+		return getReusableActionsInstance().isElementVisible(titleSetDataAlert);
 	}
 
 	/**
@@ -2052,8 +2052,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setDataAlertValue(String strDataAlertValue) {				
-		reusableActions.clickWhenReady(lblSetDataAlert);
-		reusableActions.getWhenReady(txtSetDataAlert).sendKeys(strDataAlertValue);		
+		getReusableActionsInstance().clickWhenReady(lblSetDataAlert);
+		getReusableActionsInstance().getWhenReady(txtSetDataAlert).sendKeys(strDataAlertValue);
 	}
 
 	/**
@@ -2061,7 +2061,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkSaveButtonOnDataAlertOverlay() {
-		reusableActions.clickWhenReady(btnSaveDataAlert);				
+		getReusableActionsInstance().clickWhenReady(btnSaveDataAlert);
 	}
 	
 	/**
@@ -2070,7 +2070,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @return true if the Data Alert is correctly set, otherwise false.
 	 */
 	public boolean isDataAlertCorrectlySet(String strDataAlert) {
-		String strDataAlertValue = reusableActions.getWhenReady(lblDataAlertSetValue).getText().trim().replaceAll(",", ".").split(" ")[0];
+		String strDataAlertValue = getReusableActionsInstance().getWhenReady(lblDataAlertSetValue).getText().trim().replaceAll(",", ".").split(" ")[0];
 		double doubleAlertValue = Double.parseDouble(strDataAlertValue);
 		strDataAlertValue =  String.format("%.2f", new BigDecimal(doubleAlertValue));
 		return strDataAlertValue.contains(strDataAlert);
@@ -2082,7 +2082,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isChangeDataManagerDisplayed() {		
-		return reusableActions.isElementVisible(btnChangeDataManager);
+		return getReusableActionsInstance().isElementVisible(btnChangeDataManager);
 	}
 	
 	/**
@@ -2138,7 +2138,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * Clicks on Data Manager CTN
 	 */
 	public void clkDataManagerCTN() {
-		reusableActions.clickWhenReady(btnDataManagerCTN,30);
+		getReusableActionsInstance().clickWhenReady(btnDataManagerCTN,30);
 		
 	}
 
@@ -2148,7 +2148,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyChangePlanButtonDisplayed() {		
-		return reusableActions.isElementVisible(btnChangePlan);
+		return getReusableActionsInstance().isElementVisible(btnChangePlan);
 	}
 
 	/**
@@ -2157,7 +2157,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyMyPlanDetailsDisplayed() {		
-		return reusableActions.isElementVisible(lblMyPlanDetails);
+		return getReusableActionsInstance().isElementVisible(lblMyPlanDetails);
 	}
 	
 	/**
@@ -2166,7 +2166,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyChangeMyNumberDisplayed() {		
-		return reusableActions.isElementVisible(lnkChangeMyPhoneNumber);
+		return getReusableActionsInstance().isElementVisible(lnkChangeMyPhoneNumber);
 	}
 
 	/**
@@ -2175,7 +2175,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyStreamSaverDisplayed() {		
-		return reusableActions.isElementVisible(lblStreamSaver);
+		return getReusableActionsInstance().isElementVisible(lblStreamSaver);
 	}
 
 	/**
@@ -2184,7 +2184,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyDataAccessDisplayed() { 
-		return reusableActions.isElementVisible(lblDataAccess);
+		return getReusableActionsInstance().isElementVisible(lblDataAccess);
 	}
 
 	/**
@@ -2193,7 +2193,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyDataAlertDisplayed() {
-		return reusableActions.isElementVisible(lblDataAlert);
+		return getReusableActionsInstance().isElementVisible(lblDataAlert);
 	}
 
 	/**
@@ -2202,7 +2202,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyDataManagerDisplayed() {
-		return reusableActions.isElementVisible(lbldataManager);
+		return getReusableActionsInstance().isElementVisible(lbldataManager);
 	}
 
 	/**
@@ -2211,7 +2211,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isStreamSaverONDisplayed() {		
-		return reusableActions.isElementVisible(btnStreamSaverSwitchON,60);
+		return getReusableActionsInstance().isElementVisible(btnStreamSaverSwitchON,60);
 	}
 
 	/**
@@ -2219,7 +2219,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkStreamSaverOn() {
-		reusableActions.getWhenReady(btnStreamSaverSwitchOff,60).click();
+		getReusableActionsInstance().getWhenReady(btnStreamSaverSwitchOff,60).click();
 		
 	}
 
@@ -2229,7 +2229,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isDataAccessOnDisplayed() {		
-		return reusableActions.isElementVisible(divDataAccessOn);
+		return getReusableActionsInstance().isElementVisible(divDataAccessOn);
 	}
 
 	/**
@@ -2237,7 +2237,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkDataAccessOn() {
-		reusableActions.getWhenReady(divDataAccessOFF).click();
+		getReusableActionsInstance().getWhenReady(divDataAccessOFF).click();
 		
 	}
 
@@ -2249,7 +2249,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isDataAccessOFF() {
-		return reusableActions.isElementVisible(divDataAccessOFF,60);
+		return getReusableActionsInstance().isElementVisible(divDataAccessOFF,60);
 	}
 
 	/**
@@ -2257,7 +2257,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkDataAccessOff() {
-		reusableActions.getWhenReady(divDataAccessOn).click();
+		getReusableActionsInstance().getWhenReady(divDataAccessOn).click();
 		
 	}
 
@@ -2267,7 +2267,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isStreamSaverOFF() {
-		return reusableActions.isElementVisible(btnStreamSaverSwitchOff);
+		return getReusableActionsInstance().isElementVisible(btnStreamSaverSwitchOff);
 	}
 
 	/**
@@ -2275,7 +2275,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkStreamSaverOff() {
-		reusableActions.getWhenReady(btnStreamSaverSwitchON).click();
+		getReusableActionsInstance().getWhenReady(btnStreamSaverSwitchON).click();
 		
 	}
 
@@ -2287,7 +2287,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isDataAccessDisplayed() {
-		return reusableActions.isElementVisible(lblDataAccess);
+		return getReusableActionsInstance().isElementVisible(lblDataAccess);
 	}
 
 	/**
@@ -2295,7 +2295,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkLeftCTNScrollArrow() {
-		reusableActions.clickIfAvailable(btnLeftScrollCTN);
+		getReusableActionsInstance().clickIfAvailable(btnLeftScrollCTN);
 	}
 
 	/**
@@ -2304,7 +2304,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isPrepaidHeaderDisplayed() {
-		return reusableActions.isElementVisible(headerPrepaid);
+		return getReusableActionsInstance().isElementVisible(headerPrepaid);
 		
 	}
 
@@ -2314,7 +2314,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isPrepaidManageMyPlanAndDataAddOnheaderDisplayed() {
-		return reusableActions.isElementVisible(lblPrepaidManageMyPlanAndDataAddOnHeader);				
+		return getReusableActionsInstance().isElementVisible(lblPrepaidManageMyPlanAndDataAddOnHeader);
 	}
 
 	/**
@@ -2323,7 +2323,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isPrepaidPlanDetailsSectionDisplayed() {
-		return reusableActions.isElementVisible(lblPrepaidPlanDetails);
+		return getReusableActionsInstance().isElementVisible(lblPrepaidPlanDetails);
 	}
 
 	/**
@@ -2332,8 +2332,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isPrepaidNextPaymentDateSectionDisplayed() {
-		return (reusableActions.isElementVisible(lblPrepaidNextPaymentDate)
-				&& reusableActions.isElementVisible(lblPrepaidNextPaymentMonthAndDate));
+		return (getReusableActionsInstance().isElementVisible(lblPrepaidNextPaymentDate)
+				&& getReusableActionsInstance().isElementVisible(lblPrepaidNextPaymentMonthAndDate));
 	}
 
 	/**
@@ -2342,7 +2342,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isPrepaidTopUpNowButtonDisplayed() {
-		return reusableActions.isElementVisible(btnTopUpNow);
+		return getReusableActionsInstance().isElementVisible(btnTopUpNow);
 	}
 
 	/**
@@ -2351,7 +2351,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isPrepaidChangeMyPlanDisplayed() {
-		return reusableActions.isElementVisible(lnkChangeMyPlan);
+		return getReusableActionsInstance().isElementVisible(lnkChangeMyPlan);
 	}
 
 	/**
@@ -2360,7 +2360,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isPrepaidManageMyAddOnsDisplayed() {
-		return reusableActions.isElementVisible(lnkManageMyaddOns);
+		return getReusableActionsInstance().isElementVisible(lnkManageMyaddOns);
 	}
 
 	/**
@@ -2369,8 +2369,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isMyWirelessNumberSectionDisplayed() {
-		return (reusableActions.isElementVisible(lblMyWireLessNumberHeader)
-				&& reusableActions.isElementVisible(lblWirelessNumber));
+		return (getReusableActionsInstance().isElementVisible(lblMyWireLessNumberHeader)
+				&& getReusableActionsInstance().isElementVisible(lblWirelessNumber));
 	}
 
 	/**
@@ -2379,7 +2379,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isPrepaidPinCodeDisplayed() {
-		return reusableActions.isElementVisible(lblPinCode);
+		return getReusableActionsInstance().isElementVisible(lblPinCode);
 				
 	}
 
@@ -2389,7 +2389,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isPrepaidChangeMyPinCodeDisplayed() {
-		return reusableActions.isElementVisible(lnkChangeMyPinCode);
+		return getReusableActionsInstance().isElementVisible(lnkChangeMyPinCode);
 	}
 
 	/**
@@ -2398,7 +2398,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isPrepaidStartOrTrackAPhoneRepairClaimDisplayed() {
-		return reusableActions.isElementVisible(lnkStartOrTrackAPhonerepairClaim);
+		return getReusableActionsInstance().isElementVisible(lnkStartOrTrackAPhonerepairClaim);
 	}
 
 	/**
@@ -2406,6 +2406,6 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void closeChatImage() {
-		reusableActions.executeJavaScript("return document.getElementsByClassName('floating-live-chat')[0].remove();");		
+		getReusableActionsInstance().executeJavaScript("return document.getElementsByClassName('floating-live-chat')[0].remove();");
 	}
 }

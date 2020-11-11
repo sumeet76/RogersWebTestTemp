@@ -48,7 +48,7 @@ public class AccountOverViewPage  extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void enterDealerCodeDialogue() {
-		reusableActions.getWhenReady(delearCodeOneViewDialogue, 50).sendKeys("0MAAA");
+		getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 50).sendKeys("0MAAA");
 	}
 
 	/**
@@ -56,14 +56,14 @@ public class AccountOverViewPage  extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkSubmitBtnDealerCodeDialogue() {
-		reusableActions.clickIfAvailable(btnSubmitOneViewDialogue,30);
+		getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue,30);
 	}
 	/**
 	 * To click on Assign data manager in the dialogue box
 	 * @author Saurav.Goyal
 	 */
 	public void clkCloseBtnAssignDataManager() {
-		reusableActions.clickIfAvailable(btnOneViewDataManagerDialogue,30);
+		getReusableActionsInstance().clickIfAvailable(btnOneViewDataManagerDialogue,30);
 	}
 	
 	/**
@@ -71,9 +71,9 @@ public class AccountOverViewPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void selectInternetBadage() {
-		WebElement btn=reusableActions.getWhenReady(btnInternetBadge,120);
-		reusableActions.javascriptScrollByCoordinates(0,btn.getLocation().y-300);
-		reusableActions.clickWhenReady(btnInternetBadge,45);
+		WebElement btn=getReusableActionsInstance().getWhenReady(btnInternetBadge,120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		getReusableActionsInstance().clickWhenReady(btnInternetBadge,45);
 		
 		}
 		
@@ -82,9 +82,9 @@ public class AccountOverViewPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void selectHomePhoneBadge() {
-		WebElement btn=reusableActions.getWhenReady(btnHomePhoneBadge,120);
-		reusableActions.javascriptScrollByCoordinates(0,btn.getLocation().y-300);
-		reusableActions.clickWhenReady(btnHomePhoneBadge,45);
+		WebElement btn=getReusableActionsInstance().getWhenReady(btnHomePhoneBadge,120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		getReusableActionsInstance().clickWhenReady(btnHomePhoneBadge,45);
 		}
 
 	
@@ -94,9 +94,9 @@ public class AccountOverViewPage  extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectTVBadage(String strBrowser) {
-		WebElement btn=reusableActions.getWhenReady(btnTVBadge,120);
-		reusableActions.javascriptScrollByCoordinates(0,btn.getLocation().y-300);
-		reusableActions.clickWhenReady(btnTVBadge,45);
+		WebElement btn=getReusableActionsInstance().getWhenReady(btnTVBadge,120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		getReusableActionsInstance().clickWhenReady(btnTVBadge,45);
 		
 		}
 	/**
@@ -104,17 +104,17 @@ public class AccountOverViewPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void selectTVBadage() {
-		WebElement btn=reusableActions.getWhenReady(btnTVBadge,120);
-		reusableActions.javascriptScrollByCoordinates(0,btn.getLocation().y-300);
-		reusableActions.clickWhenReady(btnTVBadge,45);
+		WebElement btn=getReusableActionsInstance().getWhenReady(btnTVBadge,120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		getReusableActionsInstance().clickWhenReady(btnTVBadge,45);
 		}
 	/**
 	 * Selects the Get Ignite TV Badge on the account dashbaord
 	 * @author harpartap.virk
 	 */
 	public void selectGetIgniteTVBadge() {
-			//reusableActions.javascriptScrollByVisibleElement(btnGetIgniteTVBadge);
-			reusableActions.getWhenReady(btnGetIgniteTVBadge, 50).sendKeys(Keys.ENTER);
+			//getReusableActionsInstance().javascriptScrollByVisibleElement(btnGetIgniteTVBadge);
+			getReusableActionsInstance().getWhenReady(btnGetIgniteTVBadge, 50).sendKeys(Keys.ENTER);
 		}	
 	/**
 	 * Validates and clicks on the Wireless Phone Number
@@ -126,10 +126,10 @@ public class AccountOverViewPage  extends BasePageClass {
 		strCTN = strCTN.replace("-", "").replace(" ", "");
 		strCTN = "(" + strCTN.substring(0, 3) + ") " + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);		
 		String strCTNXpath = "//*[contains(text(),'" + strCTN + "')]";
-		reusableActions.clickIfAvailable(By.xpath("//div[@class='rep-notifications permitted']//div[@class='blocker']"));
-		if(reusableActions.isElementVisible(By.xpath(strCTNXpath))) {
-			reusableActions.javascriptScrollToBottomOfPage();
-			reusableActions.clickWhenReady(By.xpath(strCTNXpath), 120);
+		getReusableActionsInstance().clickIfAvailable(By.xpath("//div[@class='rep-notifications permitted']//div[@class='blocker']"));
+		if(getReusableActionsInstance().isElementVisible(By.xpath(strCTNXpath))) {
+			getReusableActionsInstance().javascriptScrollToBottomOfPage();
+			getReusableActionsInstance().clickWhenReady(By.xpath(strCTNXpath), 120);
 			return true;
 		} else if (verifyAndClickShareEverythingCTN(strCTN)) {
 			return true;
@@ -147,8 +147,8 @@ public class AccountOverViewPage  extends BasePageClass {
 		strCTN = strCTN.replace("-", "").replace(" ", "");
 		strCTN = strCTN.substring(0, 3) + "-" + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);
 		String strCTNXpath = "//div[contains(@class,'sharedWireless')]//div[contains(text(),'" + strCTN +"')]/parent::div/button";
-		if(reusableActions.isElementVisible(By.xpath(strCTNXpath))) {
-			reusableActions.executeJavaScriptClick(driver.findElement(By.xpath(strCTNXpath)));
+		if(getReusableActionsInstance().isElementVisible(By.xpath(strCTNXpath))) {
+			getReusableActionsInstance().executeJavaScriptClick(getDriver().findElement(By.xpath(strCTNXpath)));
 			return true;
 		}
 		return false;
@@ -160,7 +160,7 @@ public class AccountOverViewPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifySuccessfulLogin() {
-		return reusableActions.isElementVisible(infoBalanceLable,60);
+		return getReusableActionsInstance().isElementVisible(infoBalanceLable,60);
 	}
 }
 

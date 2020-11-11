@@ -29,24 +29,24 @@ public class RogersSS_TC_045_AO_ValidateCHAccountBadge_LegacyInternet extends Ba
 	@Test(groups = {"RegressionSS","AccountOverviewSS"})
 	public void checkLegacyInternetUsage() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
-		rogers_home_page.clkSignIn();
-		 rogers_login_page.switchToSignInIFrame();
+		getRogersHomePage().clkSignIn();
+		 getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setUsernameIFrame(TestDataHandler.tc45LegacyInternetAccount.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.tc45LegacyInternetAccount.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc45LegacyInternetAccount.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc45LegacyInternetAccount.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		reporter.reportLogWithScreenshot("Skip popup");
-		rogers_login_page.clkSkipIFrame();
-		 rogers_login_page.switchOutOfSignInIFrame();
-		rogers_account_overview_page
+		getRogersLoginPage().clkSkipIFrame();
+		 getRogersLoginPage().switchOutOfSignInIFrame();
+		getRogersAccountOverviewPage()
 				.selectAccount(TestDataHandler.tc45LegacyInternetAccount.getAccountDetails().getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Overview Page");
-		rogers_account_overview_page.clkLegacyInternetBadge();
+		getRogersAccountOverviewPage().clkLegacyInternetBadge();
 		reporter.reportLogWithScreenshot("Launched the Internet Dashboard Page");
-		rogers_account_overview_page.clkInternetPopup();		
-		reporter.hardAssert(rogers_internet_dashboard_page.verifyInternetUsage(),"Verifed the Internet dashboard","Internet dashboard Verification has failed");
+		getRogersAccountOverviewPage().clkInternetPopup();
+		reporter.hardAssert(getRogersInternetDashboardPage().verifyInternetUsage(),"Verifed the Internet dashboard","Internet dashboard Verification has failed");
 		reporter.reportLogWithScreenshot("The Internet Dashboard Page");		   
         common_business_flows.scrollToMiddleOfWebPage();
 		reporter.reportLogWithScreenshot("Mid page view");

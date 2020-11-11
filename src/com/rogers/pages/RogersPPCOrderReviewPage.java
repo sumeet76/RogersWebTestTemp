@@ -43,7 +43,7 @@ public class RogersPPCOrderReviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyReviewOrderPageLoad() {
-		return reusableActions.isElementVisible(lblReviewYourOrder, 60);
+		return getReusableActionsInstance().isElementVisible(lblReviewYourOrder, 60);
 	}
 	
 	/**
@@ -52,7 +52,7 @@ public class RogersPPCOrderReviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyOrderSummaryTotalDisplayed() {
-		return reusableActions.isElementVisible(lblOrderSummaryTotal);
+		return getReusableActionsInstance().isElementVisible(lblOrderSummaryTotal);
 	}
 	
 	/**
@@ -69,7 +69,7 @@ public class RogersPPCOrderReviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyAdditionalAgreementDetailsDisplayed() {
-		return reusableActions.isElementVisible(lblAdditionalAgreementDetails);
+		return getReusableActionsInstance().isElementVisible(lblAdditionalAgreementDetails);
 	}
 	
 	/**
@@ -77,7 +77,7 @@ public class RogersPPCOrderReviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickTermsCheckbox() {
-		reusableActions.clickWhenVisible(chkboxTerms);
+		getReusableActionsInstance().clickWhenVisible(chkboxTerms);
 	}
 	
 	/**
@@ -85,7 +85,7 @@ public class RogersPPCOrderReviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickEmailDigitalCopy() {
-		reusableActions.clickWhenVisible(rdbtnEmail);
+		getReusableActionsInstance().clickWhenVisible(rdbtnEmail);
 	}
 	
 	/**
@@ -93,7 +93,7 @@ public class RogersPPCOrderReviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickSubmitOrder() {
-		reusableActions.clickWhenVisible(btnSubmitOrder);
+		getReusableActionsInstance().clickWhenVisible(btnSubmitOrder);
 	}
 
 }

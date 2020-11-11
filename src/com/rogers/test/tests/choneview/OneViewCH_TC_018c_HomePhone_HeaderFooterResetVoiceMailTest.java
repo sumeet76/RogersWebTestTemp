@@ -14,9 +14,9 @@ import java.lang.reflect.Method;
 public class OneViewCH_TC_018c_HomePhone_HeaderFooterResetVoiceMailTest extends BaseTestClass {
     @Test
     public void checkHomePhoneHeaderFooterAndResetVoiceMailTest() {
-		environment_selection_page.selectOneViewEnv(TestDataHandler.chOneViewConfig.getOneViewenv());
+		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.chOneViewConfig.getOneViewenv());
 		reporter.reportLogWithScreenshot("Launched the account dashboard page");
-		account_over_view_page.selectHomePhoneBadge();;
+		getAccountOverViewPage().selectHomePhoneBadge();;
 		reporter.reportLogWithScreenshot("Lanched the HomePhone dashboard page ");		
 		reporter.softAssert(home_phone_dashboard.verifyHeader(),"Header is available","Verification of Header failed");
 		reporter.reportLogWithScreenshot("Header available on Home Phone Dashboard page");

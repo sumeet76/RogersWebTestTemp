@@ -29,55 +29,55 @@ public class RogersSS_TC_057_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDa
 	
     @Test(groups = {"SanitySS","RegressionSS","WirelessDashboardSS"})
     public void validateLimitedTalkTextUsageDisplayWithinLimit() {
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc57.getUsername();
     	String strPassword = TestDataHandler.tc57.getPassword();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
-        rogers_login_page.setPasswordIFrame(strPassword);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 		
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc57.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc57.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");
         
-        rogers_account_overview_page.clkMenuUsageAndService();
+        getRogersAccountOverviewPage().clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
         String strAccountNum = TestDataHandler.tc57.getAccountDetails().getCtn();
-        rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
-        //rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
+        getRogersAccountOverviewPage().clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
+        //getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
        
         //verify Data usage
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyDataDelayMessage(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyDataDelayMessage(),
 				"Data delayed by 12 hours message is displayed", 
 				"Data delayed by 12 hours message is NOT displayed");
-		reporter.hardAssert(rogers_wireless_dashboard_page.verifyDataRemainingOutOfTotalDataBucket(), 
+		reporter.hardAssert(getRogersWirelessDashboardPage().verifyDataRemainingOutOfTotalDataBucket(),
 						"Data remaining out of Total data bucket info should be displayed", 
 						"Data remaining out of Total data bucket info is not displayed.");
-		reporter.hardAssert(rogers_wireless_dashboard_page.verifyTotalDataBucket(), 
+		reporter.hardAssert(getRogersWirelessDashboardPage().verifyTotalDataBucket(),
 						"Total data bucket includes plan, paid OTTs, paid MDTs, promotional (zero-rated) bonus OTT and MDTs info should be displayed", 
 						"Total data bucket includes plan, paid OTTs, paid MDTs, promotional (zero-rated) bonus OTT and MDTs info NOT displayed");
 
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyDaysRemainingInTheBillCycleIsDisplayed(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyDaysRemainingInTheBillCycleIsDisplayed(),
 							"Days left remaining in the bill cycle is displayed", 
 							"Days left remaining in the bill cycle is NOT displayed");        
 		
         reporter.reportLogWithScreenshot("Wireless dashboard page.");
         
         //verify Talk & Text usage detail section
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyFullPlanTalkTextUsageModuleIsDisplayed(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyFullPlanTalkTextUsageModuleIsDisplayed(),
 				"Talk & Text usage module for full plan is displayed.", 
 				"Talk & Text usage module for full plan is not displayed.");
-       // reporter.softAssert(rogers_wireless_dashboard_page.verifyUnlimitedTalkMinutesIsDisplayed(), 
+       // reporter.softAssert(getRogersWirelessDashboardPage().verifyUnlimitedTalkMinutesIsDisplayed(),
        // "Unlimited minutes for talk is displayed.", 
 		//		"Unlimited minutes for talk is not displayed.");
-        if(rogers_wireless_dashboard_page.verifyUnlimitedTextsIsDisplayed())
+        if(getRogersWirelessDashboardPage().verifyUnlimitedTextsIsDisplayed())
         {
         	reporter.reportLogPass("Unlimited text is displayed.");
         }else
@@ -85,10 +85,10 @@ public class RogersSS_TC_057_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDa
         	reporter.reportLog("Unlimited text is NOT displayed for this account");
         }
         
-        rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
+        getRogersWirelessDashboardPage().scrollToMidOfDasboardPage();
         reporter.reportLogWithScreenshot("Middle of Wireless dashboard page.");
         
-        rogers_wireless_dashboard_page.scrollToBottomOfPage();;
+        getRogersWirelessDashboardPage().scrollToBottomOfPage();;
         reporter.reportLogWithScreenshot("Bottom of Wireless dashboard page.");
     }
 

@@ -44,22 +44,22 @@ public class RogersSS_TC_091_AO_ValidateDeeplinkForNotLoggedInCustomer_NSEInfini
     	String strDeepLinkURL = TestDataHandler.ssConfig.getRogersURL().split(".com")[0]+".com/web/totes/#/viewbill/payment-method";
     	getDriver().get(strDeepLinkURL);
     	reporter.reportLogWithScreenshot("After setting the deeplink : "+strDeepLinkURL);
-    	reporter.hardAssert(rogers_login_page.isSignInFrameDisplayed()
+    	reporter.hardAssert(getRogersLoginPage().isSignInFrameDisplayed()
     	    		   , "When a user is not logged into an account and deep link URL is entered, it is asking the user to login first"
     	    		   , "The login pop up didnt show up for non logged in user after entering deep link");  
     	String strUsername = TestDataHandler.tc63.getUsername();
-    	//rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
+    	//getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc63.getPassword();    	
-        rogers_login_page.setPasswordIFrame(strPassword);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 		reporter.reportLogWithScreenshot("After Log In");
-		reporter.hardAssert((rogers_change_payment_method_page.verifyChangePaymentMethodLoad()
-				&& rogers_billing_page.verifyViewBillPageHeaderDisplayed())
+		reporter.hardAssert((getRogersChangePaymentMethodPage().verifyChangePaymentMethodLoad()
+				&& getRogersBillingPage().verifyViewBillPageHeaderDisplayed())
 	    		   , "Redirected to the view bill page from where the MOP modal pops up and is working as designed for not logged in user"
 	    		   , "Didnt redirect to the view bill page and the MOP modal pops up is not shown");
 		reporter.reportLogWithScreenshot("The view bill page from where the MOP modal pops up");

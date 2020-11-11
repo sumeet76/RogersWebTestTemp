@@ -40,48 +40,48 @@ public class FulfillmentPage  extends BasePageClass {
 	public void clkFirstAvailableAppointment() {
 		String ki="";
 		String result=  LocalDate.now().format(DateTimeFormatter.ofPattern("MMMM d, yyyy"))	;
-		if(reusableActions.isElementVisible(alert,65)) {
-			reusableActions.clickWhenReady(datePicker);
+		if(getReusableActionsInstance().isElementVisible(alert,65)) {
+			getReusableActionsInstance().clickWhenReady(datePicker);
 			List<WebElement> webElements=dates.findElements(By.tagName("td"));
-			reusableActions.waitForAllElementsVisible(webElements,120);
+			getReusableActionsInstance().waitForAllElementsVisible(webElements,120);
 			int no=webElements.size();
 			for(int ind=0;ind<no;ind++) {
 				if(ind>0) {
 			webElements=dates.findElements(By.tagName("td"));
-			reusableActions.waitForAllElementsVisible(webElements,120);
+			getReusableActionsInstance().waitForAllElementsVisible(webElements,120);
 				}
 	
 				if(webElements.get(ind).getAttribute("aria-label").equals(result) || ki.equals("flag")) {
 					ki="flag";
 					webElements.get(ind+1).click();
-					if(!reusableActions.isElementVisible(alert,30)) {
+					if(!getReusableActionsInstance().isElementVisible(alert,30)) {
 						break;
 					}else {
-						reusableActions.clickWhenReady(datePicker);
+						getReusableActionsInstance().clickWhenReady(datePicker);
 							}
 						}
 				}
 		}
-		reusableActions.getWhenReady(firstAvailableAppointment,60);
-		reusableActions.javascriptScrollByVisibleElement(firstAvailableAppointment);
-		//reusableActions.staticWait(3000);
-		reusableActions.executeJavaScriptClick(firstAvailableAppointment);
+		getReusableActionsInstance().getWhenReady(firstAvailableAppointment,60);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(firstAvailableAppointment);
+		//getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().executeJavaScriptClick(firstAvailableAppointment);
 	}
 	/**
 	 * Click Continue Button  
 	 * @author Harpartap.Virk
 	 */	
 	public void clkContinue() {	
-		//reusableActions.javascriptScrollToBottomOfPage();
-		reusableActions.getWhenReady(continueButton).sendKeys(Keys.ENTER);
+		//getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().getWhenReady(continueButton).sendKeys(Keys.ENTER);
 	}
 	/**
 	 * Click Agree Condition  
 	 * @author Harpartap.Virk
 	 */	
 	public void selectChkboxAgreeCondition() {	
-		WebElement btn=reusableActions.getWhenReady(agreeCondition,120);
-		reusableActions.javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		WebElement btn=getReusableActionsInstance().getWhenReady(agreeCondition,120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
 		btn.click();
 	}
 }

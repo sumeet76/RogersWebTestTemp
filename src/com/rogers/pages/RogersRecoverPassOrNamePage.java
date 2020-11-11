@@ -135,7 +135,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	
 	
 	public void clkBtnPassword() {
-		reusableActions.getWhenVisible(btnPassword).click();
+		getReusableActionsInstance().getWhenVisible(btnPassword).click();
 	}
 	
 	/**
@@ -143,7 +143,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Ning.Xue
 	 */
 	public void clkBtnUserName() {
-		reusableActions.getWhenVisible(btnUserName).click();
+		getReusableActionsInstance().getWhenVisible(btnUserName).click();
 	}
 	
 	/**
@@ -151,7 +151,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Ning.Xue
 	 */
 	public void clkBtnBoth() {
-		reusableActions.getWhenVisible(btnBoth).click();
+		getReusableActionsInstance().getWhenVisible(btnBoth).click();
 	}
 	
 	/**
@@ -160,9 +160,8 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void setEmailAddress(String strUsername) {
-		//reusableActions.clickIfAvailable(By.xpath("//input[@formcontrolname='email']/parent::div"));
-		reusableActions.getWhenReady(txtEmailAddress).clear();
-		reusableActions.getWhenReady(txtEmailAddress).sendKeys(strUsername);
+		getReusableActionsInstance().getWhenReady(txtEmailAddress).clear();
+		getReusableActionsInstance().getWhenReady(txtEmailAddress).sendKeys(strUsername);
 	}
 	
 	/**
@@ -170,12 +169,12 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Ning.Xue
 	 */
 	public void clkBtnContinue() {
-		reusableActions.getWhenVisible(btnContinue).click();
+		getReusableActionsInstance().getWhenVisible(btnContinue).click();
 	}
 	//For captcha bypass
 	public void sendEnter() {
-		reusableActions.getWhenVisible(btnContinue).sendKeys(Keys.ENTER);
-		reusableActions.getWhenVisible(btnContinue).sendKeys(Keys.ENTER);
+		getReusableActionsInstance().getWhenVisible(btnContinue).sendKeys(Keys.ENTER);
+		getReusableActionsInstance().getWhenVisible(btnContinue).sendKeys(Keys.ENTER);
 	}
 	
 	/**
@@ -183,8 +182,8 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Ning.Xue
 	 */
 	public void clkBtnEmailNowIfAvailable() {
-		if (reusableActions.isElementVisible(btnEmailNow, 5)) {
-			reusableActions.getWhenVisible(btnEmailNow).click();
+		if (getReusableActionsInstance().isElementVisible(btnEmailNow, 5)) {
+			getReusableActionsInstance().getWhenVisible(btnEmailNow).click();
 		}
 		
 	}
@@ -194,7 +193,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Ning.Xue
 	 */
 	public void clkBtnTextNow() {
-		reusableActions.getWhenReady(btnTextNow).click();
+		getReusableActionsInstance().getWhenReady(btnTextNow).click();
 	}
 	
 	/**
@@ -203,8 +202,8 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Ning.Xue
 	 */
 	public void setCode(String strCode) {
-		//reusableActions.getWhenReady(txtCode).clear();
-		reusableActions.getWhenReady(txtCode).sendKeys(strCode);
+		//getReusableActionsInstance().getWhenReady(txtCode).clear();
+		getReusableActionsInstance().getWhenReady(txtCode).sendKeys(strCode);
 	}
 	
 	/**
@@ -212,7 +211,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Ning.Xue
 	 */
 	public void clkBtnVerifyMe() {
-		reusableActions.getWhenVisible(btnVerifyMe).click();
+		getReusableActionsInstance().getWhenVisible(btnVerifyMe).click();
 	}
 	
 	/**
@@ -221,9 +220,9 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Ning.Xue
 	 */
 	public void setNewPassword(String strNewPass) {
-		reusableActions.getWhenReady(lblNewPass).click();				
-		//reusableActions.getWhenReady(txtNewPass).clear();
-		reusableActions.getWhenReady(txtNewPass).sendKeys(strNewPass);
+		getReusableActionsInstance().getWhenReady(lblNewPass).click();
+		//getReusableActionsInstance().getWhenReady(txtNewPass).clear();
+		getReusableActionsInstance().getWhenReady(txtNewPass).sendKeys(strNewPass);
 	}
 	
 	/**
@@ -232,9 +231,9 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Ning.Xue
 	 */
 	public void setConfirmPassword(String strNewPass) {
-		reusableActions.getWhenReady(lblConfirmNewPass).click();	
-		//reusableActions.getWhenReady(txtConfirmNewPass).clear();
-		reusableActions.getWhenReady(txtConfirmNewPass).sendKeys(strNewPass);
+		getReusableActionsInstance().getWhenReady(lblConfirmNewPass).click();
+		//getReusableActionsInstance().getWhenReady(txtConfirmNewPass).clear();
+		getReusableActionsInstance().getWhenReady(txtConfirmNewPass).sendKeys(strNewPass);
 	}
 	
 	/**
@@ -242,9 +241,9 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Ning.Xue
 	 */
 	public void clkBtnSetPassword() {
-		reusableActions.waitForElementTobeClickable(btnSetPassword, 20);
-		reusableActions.executeJavaScriptClick(btnSetPassword);
-		//reusableActions.getWhenReady(btnSetPassword).click();		
+		getReusableActionsInstance().waitForElementTobeClickable(btnSetPassword, 20);
+		getReusableActionsInstance().executeJavaScriptClick(btnSetPassword);
+		//getReusableActionsInstance().getWhenReady(btnSetPassword).click();
 	}
 
 	/**
@@ -252,7 +251,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkTextToAsRecoveryOption() {
-		reusableActions.getWhenReady(btnTextToRecovery).click();
+		getReusableActionsInstance().getWhenReady(btnTextToRecovery).click();
 		
 	}
 
@@ -261,7 +260,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void switchToSetCodeIframe() {		
-		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(iframe, 30);
+		getReusableActionsInstance().waitForFrameToBeAvailableAndSwitchToIt(iframe, 30);
 	}
 
 	/**
@@ -269,7 +268,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 *@author Mirza.Kamran 
 	 */
 	public void clickVerifyMe() {
-		reusableActions.getWhenReady(btnVerifyMe).click();
+		getReusableActionsInstance().getWhenReady(btnVerifyMe).click();
 		
 	}
 
@@ -278,7 +277,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkLogInToMyAccount() {
-		reusableActions.getWhenReady(btnLogInToMyAccount).click();
+		getReusableActionsInstance().getWhenReady(btnLogInToMyAccount).click();
 	}
 
 	/**
@@ -287,7 +286,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isPasswordRestSuccessIsDisplayed() {		
-		return reusableActions.isElementVisible(txtYourPasswordHasBeenReset);
+		return getReusableActionsInstance().isElementVisible(txtYourPasswordHasBeenReset);
 	}
 
 	/**
@@ -296,7 +295,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isPasswordRestSuccessForRecoveredUsernameOrPwd() {		
-		return reusableActions.isElementVisible(lblYourPasswordHasBeenReset);
+		return getReusableActionsInstance().isElementVisible(lblYourPasswordHasBeenReset);
 	}
 	
 	/**
@@ -312,11 +311,11 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkBtnCloseWeHaveTextedUserNameOverlay() {		
-		reusableActions.getWhenReady(By.xpath("//input[@formcontrolname='newPassword']/parent::div")).click();
-		reusableActions.getWhenReady(txtNewPass).sendKeys("rogers123");
-		reusableActions.getWhenReady(By.xpath("//input[@formcontrolname='confirmPassword']/parent::div")).click();
-		reusableActions.getWhenReady(txtConfirmNewPass).sendKeys("rogers123");
-		//reusableActions.clickWhenReady(btnCloseWeHaveTextedUserNameOverlay);
+		getReusableActionsInstance().getWhenReady(By.xpath("//input[@formcontrolname='newPassword']/parent::div")).click();
+		getReusableActionsInstance().getWhenReady(txtNewPass).sendKeys("rogers123");
+		getReusableActionsInstance().getWhenReady(By.xpath("//input[@formcontrolname='confirmPassword']/parent::div")).click();
+		getReusableActionsInstance().getWhenReady(txtConfirmNewPass).sendKeys("rogers123");
+		//getReusableActionsInstance().clickWhenReady(btnCloseWeHaveTextedUserNameOverlay);
 	}
 
 	/**
@@ -325,10 +324,10 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setAccountNumber(String strAccountNumber) {
-		reusableActions.waitForElementTobeClickable(lblAccountNumber, 30);
-		reusableActions.getWhenReady(lblAccountNumber).click();
-		//reusableActions.getWhenReady(txtAcountNumber).clear();
-		reusableActions.getWhenReady(txtAcountNumber).sendKeys(strAccountNumber);
+		getReusableActionsInstance().waitForElementTobeClickable(lblAccountNumber, 30);
+		getReusableActionsInstance().getWhenReady(lblAccountNumber).click();
+		//getReusableActionsInstance().getWhenReady(txtAcountNumber).clear();
+		getReusableActionsInstance().getWhenReady(txtAcountNumber).sendKeys(strAccountNumber);
 	}
 	
 	/**
@@ -346,7 +345,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnReturnToSignin() {
-		reusableActions.getWhenReady(btnReturnToSignin).click();
+		getReusableActionsInstance().getWhenReady(btnReturnToSignin).click();
 	}
 	
 	/**
@@ -355,7 +354,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void switchToSigninPage(int intTabIndex) {
-		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+		ArrayList<String> tabs = new ArrayList<String>(getDriver().getWindowHandles());
 		getDriver().switchTo().window(tabs.get(intTabIndex));
 	}
 
@@ -364,7 +363,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkUseYourAccountInfoInsteadLink() {
-	  reusableActions.getWhenReady(lnkUseYourAccountInfoInstead).click();		
+	  getReusableActionsInstance().getWhenReady(lnkUseYourAccountInfoInstead).click();
 	}
 
 	/**
@@ -373,9 +372,9 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setPostCode(String strPostcode) {	
-			reusableActions.getWhenReady(lblPostCode).click();
-			//reusableActions.getWhenReady(txtPostCode).clear();
-			reusableActions.getWhenReady(txtPostCode).sendKeys(strPostcode);
+			getReusableActionsInstance().getWhenReady(lblPostCode).click();
+			//getReusableActionsInstance().getWhenReady(txtPostCode).clear();
+			getReusableActionsInstance().getWhenReady(txtPostCode).sendKeys(strPostcode);
 	
 	}
 
@@ -385,9 +384,9 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setDOB(String strDOB) {
-		reusableActions.getWhenReady(lblDOB).click();
-		//reusableActions.getWhenReady(txtDOB).clear();
-		reusableActions.getWhenReady(txtDOB).sendKeys(strDOB);
+		getReusableActionsInstance().getWhenReady(lblDOB).click();
+		//getReusableActionsInstance().getWhenReady(txtDOB).clear();
+		getReusableActionsInstance().getWhenReady(txtDOB).sendKeys(strDOB);
 	}
 
 	/**
@@ -396,7 +395,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 */
 	public void setRecoveryCode(String strRecoveredUserName) {
 		
-		reusableActions.getWhenReady(inputCode).sendKeys(strRecoveredUserName);
+		getReusableActionsInstance().getWhenReady(inputCode).sendKeys(strRecoveredUserName);
 	}
 
 	/**
@@ -405,7 +404,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @return string value username
 	 */
 	public String getRecoveryUsernameNew() {
-		return reusableActions.getWhenReady(lblSetPasswordForUserName).getText().trim();
+		return getReusableActionsInstance().getWhenReady(lblSetPasswordForUserName).getText().trim();
 		
 	}
 	
@@ -415,7 +414,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 */
 	public void clkGoToMyRogers()
 	{
-		reusableActions.getWhenReady(btnGoToMyRogers,60).click();
+		getReusableActionsInstance().getWhenReady(btnGoToMyRogers,60).click();
 	}
 
 	/**
@@ -424,12 +423,12 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setUsernameIFrame(String strUsername) {		
-		reusableActions.getWhenVisible(txtUsername).sendKeys(strUsername);
+		getReusableActionsInstance().getWhenVisible(txtUsername).sendKeys(strUsername);
 		
 	}
 
 	public String getVerificationCodeForRecoverUsername() {
-		String strMsg = reusableActions.getWhenReady(lblYourVerificationCode).getText();
+		String strMsg = getReusableActionsInstance().getWhenReady(lblYourVerificationCode).getText();
 		return strMsg.trim();
 	}
 }

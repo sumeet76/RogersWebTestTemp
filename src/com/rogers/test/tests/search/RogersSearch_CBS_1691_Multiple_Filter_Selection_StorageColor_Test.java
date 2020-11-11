@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class RogersSearch_CBS_1691_Multiple_Filter_Selection_StorageColor_Test extends BaseTestClass {
-	@DataProvider(name = "FilterData")
+	@DataProvider(name = "FilterData",parallel=true)
 	public Object[] testData() throws IOException
 	{
 		String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
@@ -39,34 +39,34 @@ public class RogersSearch_CBS_1691_Multiple_Filter_Selection_StorageColor_Test e
 
 		getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
 
-		reporter.hardAssert(rogers_search_page.isGrandParentFilterDisplayed("Shop")
+		reporter.hardAssert(getRogersSearchPage().isGrandParentFilterDisplayed("Shop")
 				,"Shop filter is Displayed","Shop filter is Not Displayed");
-		rogers_search_page.clkGrandParentFilter("Shop");
-		reporter.hardAssert(rogers_search_page.isParentFilterDisplayed("Shop","Wireless")
+		getRogersSearchPage().clkGrandParentFilter("Shop");
+		reporter.hardAssert(getRogersSearchPage().isParentFilterDisplayed("Shop","Wireless")
 				,"Shop-Wireless filter is Displayed","Shop-Wireless filter is Not Displayed");
-		rogers_search_page.clkParentFilter("Shop","Wireless");
-		reporter.hardAssert(rogers_search_page.validateResultsTag("Shop","Wireless")
+		getRogersSearchPage().clkParentFilter("Shop","Wireless");
+		reporter.hardAssert(getRogersSearchPage().validateResultsTag("Shop","Wireless")
 				,"Results' tags verified", "Results' tags mismatch");
 		reporter.reportLogWithScreenshot("Shop-Wireless Expanded");
-		strStorageOptions = rogers_search_page.getStorageSelections();
+		strStorageOptions = getRogersSearchPage().getStorageSelections();
 		reporter.hardAssert(strStorageOptions.size()!=0,"Storage Options Available","Storage Options Unavailable");
 		for(int i=0;i< strStorageOptions.size();i++) {
-			rogers_search_page.clkStorageType(strStorageOptions.get(i));
+			getRogersSearchPage().clkStorageType(strStorageOptions.get(i));
 
-			strColorOptions = rogers_search_page.getColorSelections();
+			strColorOptions = getRogersSearchPage().getColorSelections();
 			for(int j=0;j< strColorOptions.size();j++) {
-				rogers_search_page.clkColorType(strColorOptions.get(j));
+				getRogersSearchPage().clkColorType(strColorOptions.get(j));
 				reporter.reportLogWithScreenshot("Storage: " + strStorageOptions.get(i)
 						+" and Color:" + strColorOptions.get(j) + " is Selected");
 
-				resultLinks = rogers_search_page.getAllResultLinks();
+				resultLinks = getRogersSearchPage().getAllResultLinks();
 				for(int k=0;k< resultLinks.size();k++) {
-					rogers_search_page.clkResultLink(resultLinks.get(k));
-					strDeviceName = rogers_device_config_page.getDeviceName();
+					getRogersSearchPage().clkResultLink(resultLinks.get(k));
+					strDeviceName = getRogersDeviceConfigPage().getDeviceName();
 					if(!strDeviceName.equals("Phones")) {
 						reporter.reportLogPassWithScreenshot(strDeviceName + " Page");
-						strSelectedStorage = rogers_device_config_page.getSelectedStorage();
-						strSelectedColor = rogers_device_config_page.getSelectedColor();
+						strSelectedStorage = getRogersDeviceConfigPage().getSelectedStorage();
+						strSelectedColor = getRogersDeviceConfigPage().getSelectedColor();
 						reporter.softAssert(strSelectedStorage.equals(strStorageOptions.get(i)),
 								"Storage Expected="+strStorageOptions.get(i)+"; Actual=" + strSelectedStorage,
 								"Storage Expected="+strStorageOptions.get(i)+"; Actual=" + strSelectedStorage);
@@ -77,12 +77,12 @@ public class RogersSearch_CBS_1691_Multiple_Filter_Selection_StorageColor_Test e
 					} else {
 						reporter.reportLogFailWithScreenshot("Failed to land on Device Config page");
 					}
-					rogers_device_config_page.navigateBack();
-					resultLinks = rogers_search_page.getAllResultLinks();
+					getRogersDeviceConfigPage().navigateBack();
+					resultLinks = getRogersSearchPage().getAllResultLinks();
 				}
-				rogers_search_page.clkColorType(strColorOptions.get(j));
+				getRogersSearchPage().clkColorType(strColorOptions.get(j));
 			}
-			rogers_search_page.clkStorageType(strStorageOptions.get(i));
+			getRogersSearchPage().clkStorageType(strStorageOptions.get(i));
 		}
 	}
 

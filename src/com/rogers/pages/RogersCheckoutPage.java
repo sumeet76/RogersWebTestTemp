@@ -281,7 +281,7 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public WebElement getCheckoutTitle()
 	{
-		reusableActions.getWhenReady(checkoutTitle);
+		getReusableActionsInstance().getWhenReady(checkoutTitle);
 		return checkoutTitle;
 	}
 
@@ -292,8 +292,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public String getMonthlyFeeAfterTax() { 
-		reusableActions.waitForElementVisibility(createProfileTitle, 50);
-		reusableActions.javascriptScrollByVisibleElement(monthlyFeeAfterTax);
+		getReusableActionsInstance().waitForElementVisibility(createProfileTitle, 50);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyFeeAfterTax);
 		return monthlyFeeAfterTax.getText().replaceAll("\\n",""); }
 
 	/**
@@ -310,7 +310,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author nimmy.george
 	 */
 
-	public String getPurchaseIncludesText(){ return reusableActions.getWhenReady(purchaseIncludes,10).getText().trim().replaceAll("\\n", " "); }
+	public String getPurchaseIncludesText(){ return getReusableActionsInstance().getWhenReady(purchaseIncludes,10).getText().trim().replaceAll("\\n", " "); }
 
 	/**
 	 * This method will get the RPOTG label from the purchase includes section displayed below the cart summary
@@ -318,7 +318,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author nimmy.george
 	 */
 
-	public String getRpotgLabelPurchaseIncludes(){ return reusableActions.getWhenReady(labelRpotg,10).getText().trim(); }
+	public String getRpotgLabelPurchaseIncludes(){ return getReusableActionsInstance().getWhenReady(labelRpotg,10).getText().trim(); }
 
 
 	/**
@@ -327,8 +327,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author nimmy.george
 	 */
 	public boolean  verifyCreateProfileTitle() { 
-		reusableActions.javascriptScrollToTopOfPage();
-		if(reusableActions.getWhenReady(createProfileTitle,30)!= null)
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
+		if(getReusableActionsInstance().getWhenReady(createProfileTitle,30)!= null)
 			return true;
 				else
 					return false;
@@ -342,9 +342,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public String setEmailCreateProfile() {
-		reusableActions.clickWhenReady(emailCreateProfile);
-		reusableActions.getWhenReady(inputEmail,40).sendKeys(FormFiller.generateEmail());
-		return reusableActions.getWhenReady(inputEmail,40).getAttribute("value");
+		getReusableActionsInstance().clickWhenReady(emailCreateProfile);
+		getReusableActionsInstance().getWhenReady(inputEmail,40).sendKeys(FormFiller.generateEmail());
+		return getReusableActionsInstance().getWhenReady(inputEmail,40).getAttribute("value");
 	}
 
 	/**
@@ -354,8 +354,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void confirmEmailCreateProfile(String confirmEmail) {
-		reusableActions.clickWhenReady(confirmEmailCreateProfile);
-		reusableActions.getWhenReady(inputConfirmEmail, 3).sendKeys(confirmEmail);
+		getReusableActionsInstance().clickWhenReady(confirmEmailCreateProfile);
+		getReusableActionsInstance().getWhenReady(inputConfirmEmail, 3).sendKeys(confirmEmail);
 	}
 
 	/**
@@ -366,9 +366,9 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public String setFirstNameCreateProfile() {
 
-		reusableActions.clickWhenReady(firstNameCreateProfile);
-		reusableActions.getWhenReady(inputFirstName,3).sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
-		return reusableActions.getWhenReady(inputFirstName,20).getAttribute("value");
+		getReusableActionsInstance().clickWhenReady(firstNameCreateProfile);
+		getReusableActionsInstance().getWhenReady(inputFirstName,3).sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
+		return getReusableActionsInstance().getWhenReady(inputFirstName,20).getAttribute("value");
 	}
 	
 	/**
@@ -379,9 +379,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public String setFirstNameCreateProfilepage(String firstName) {
-		reusableActions.clickWhenReady(firstNameCreateProfile);
-		reusableActions.getWhenReady(inputFirstName,3).sendKeys(firstName);
-		return reusableActions.getWhenReady(inputFirstName,20).getAttribute("value");
+		getReusableActionsInstance().clickWhenReady(firstNameCreateProfile);
+		getReusableActionsInstance().getWhenReady(inputFirstName,3).sendKeys(firstName);
+		return getReusableActionsInstance().getWhenReady(inputFirstName,20).getAttribute("value");
 	}
 
 	/**
@@ -392,15 +392,15 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public String setLastNameCreateProfilepage(String lastName) {
-		reusableActions.clickWhenReady(lastNameCreateProfile);
-		reusableActions.getWhenReady(inputLastName,3).sendKeys(lastName);
-		return reusableActions.getWhenReady(inputLastName,20).getAttribute("value");
+		getReusableActionsInstance().clickWhenReady(lastNameCreateProfile);
+		getReusableActionsInstance().getWhenReady(inputLastName,3).sendKeys(lastName);
+		return getReusableActionsInstance().getWhenReady(inputLastName,20).getAttribute("value");
 	}
 
 	
 	public void clkNoThanks()
 	{
-		reusableActions.clickIfAvailable(btnNoThanks,5);
+		getReusableActionsInstance().clickIfAvailable(btnNoThanks,5);
 	}
 	/**
 	 * Enter the lastName on the Create Profile stepper, Last Name field
@@ -409,9 +409,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public String setLastNameCreateProfile() {
-		reusableActions.clickWhenReady(lastNameCreateProfile);
-		reusableActions.getWhenReady(inputLastName,3).sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
-		return reusableActions.getWhenReady(inputLastName,20).getAttribute("value");
+		getReusableActionsInstance().clickWhenReady(lastNameCreateProfile);
+		getReusableActionsInstance().getWhenReady(inputLastName,3).sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
+		return getReusableActionsInstance().getWhenReady(inputLastName,20).getAttribute("value");
 	}
 
 	/**
@@ -422,9 +422,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public String setContactNumberCreateProfile(String contactNumber) {
-		reusableActions.clickWhenReady(contactNumberCreateProfile);
-		reusableActions.getWhenReady(inputContactNumber,3).sendKeys(contactNumber);
-		return reusableActions.getWhenReady(inputContactNumber,20).getAttribute("value").trim();
+		getReusableActionsInstance().clickWhenReady(contactNumberCreateProfile);
+		getReusableActionsInstance().getWhenReady(inputContactNumber,3).sendKeys(contactNumber);
+		return getReusableActionsInstance().getWhenReady(inputContactNumber,20).getAttribute("value").trim();
 	}
 
 	/**
@@ -435,10 +435,10 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public String setBillingAddressCreateProfile(String billingAddress) {
-		reusableActions.clickWhenReady(billingAddressCreateProfile);
-		reusableActions.getWhenReady(inputBillingAddress,3).sendKeys(billingAddress);
-		reusableActions.moveToElementAndClick(billingAddressSelection, 5);
-		return reusableActions.getWhenReady(inputBillingAddress,20).getAttribute("value");
+		getReusableActionsInstance().clickWhenReady(billingAddressCreateProfile);
+		getReusableActionsInstance().getWhenReady(inputBillingAddress,3).sendKeys(billingAddress);
+		getReusableActionsInstance().moveToElementAndClick(billingAddressSelection, 5);
+		return getReusableActionsInstance().getWhenReady(inputBillingAddress,20).getAttribute("value");
 	}
 
 	/**
@@ -448,7 +448,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void getRpotgSuccessMessage() {
-		reusableActions.getWhenReady(successMessageRpotg);
+		getReusableActionsInstance().getWhenReady(successMessageRpotg);
 	}
 
 	/**
@@ -457,7 +457,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void clkUseBillingAddressRadioBtnCreateProfile() {
-		reusableActions.clickWhenReady(useBillingAddressRadioBtnCreateProfile,3);
+		getReusableActionsInstance().clickWhenReady(useBillingAddressRadioBtnCreateProfile,3);
 	}
 
 	/**
@@ -466,7 +466,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void clkLanguageEnglishRadioBtnCreateProfile() {
-		reusableActions.clickWhenReady(languageEnglishRadioBtnCreateProfile,3);
+		getReusableActionsInstance().clickWhenReady(languageEnglishRadioBtnCreateProfile,3);
 	}
 
 	/**
@@ -476,7 +476,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void switchToRecaptchaIFrame() { 
-		driver.switchTo().frame(reusableActions.getWhenVisible(fraGoolgeRecaptcha));
+		getDriver().switchTo().frame(getReusableActionsInstance().getWhenVisible(fraGoolgeRecaptcha));
 		System.out.println("Switched to iframe");
 		}
 
@@ -486,9 +486,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void clkImNotRombotCheckbox() {
-		reusableActions.waitForPageLoad();
-		reusableActions.scrollToElement(radioCheckboxCreateProfile);
-		reusableActions.clickWhenReady(radioCheckboxCreateProfile,10);
+		getReusableActionsInstance().waitForPageLoad();
+		getReusableActionsInstance().scrollToElement(radioCheckboxCreateProfile);
+		getReusableActionsInstance().clickWhenReady(radioCheckboxCreateProfile,10);
 	}
 
 	/**
@@ -497,7 +497,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author Karthic.hasan
 	 */
 
-	public void switchOutOfGoogleIFrame() { driver.switchTo().defaultContent(); }
+	public void switchOutOfGoogleIFrame() { getDriver().switchTo().defaultContent(); }
 	
 	/**
 	 * To click "Continue" button in Create profile stepper, that takes you to Credit Evaluation stepper
@@ -506,7 +506,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	public void clkBtnGotoCreditEvalStepper() {
 //		WebDriverWait wait = new WebDriverWait(driver, 10);
 //		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[@data-test='personal-info-continue']")));
-		reusableActions.clickWhenReady(btnGotoCreditEvalStepper, 40);
+		getReusableActionsInstance().clickWhenReady(btnGotoCreditEvalStepper, 40);
 	}
 
 	/**
@@ -516,10 +516,10 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public boolean verifyCreditEvaluationTitle() {
-		//reusableActions.getWhenReady(creditEvaluationTitle);
-		if(reusableActions.isElementVisible(creditEvaluationTitle,10))
+		//getReusableActionsInstance().getWhenReady(creditEvaluationTitle);
+		if(getReusableActionsInstance().isElementVisible(creditEvaluationTitle,10))
 		{
-		reusableActions.javascriptScrollByVisibleElement(creditEvaluationTitle);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(creditEvaluationTitle);
 		   return true;
 		}
 		else 
@@ -533,8 +533,8 @@ public class RogersCheckoutPage extends BasePageClass {
 //	 */
 //
 //	public void setDateOfBirth(String strDOB) {
-//		reusableActions.getWhenReady(txtDOB).click();
-//		reusableActions.getWhenVisible(inputTxtDOB).sendKeys(strDOB);
+//		getReusableActionsInstance().getWhenReady(txtDOB).click();
+//		getReusableActionsInstance().getWhenVisible(inputTxtDOB).sendKeys(strDOB);
 //	}
 
 	
@@ -543,7 +543,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author Karthic.hasan
 	 */
 
-	public void switchToCreditCardIFrame() { driver.switchTo().frame(reusableActions.getWhenVisible(fraSemaphone)); }
+	public void switchToCreditCardIFrame() { getDriver().switchTo().frame(getReusableActionsInstance().getWhenVisible(fraSemaphone)); }
 
 	/**
 	 * Enter the Credit Card Number on the Credit Evaluation stepper, Credit Card Field
@@ -552,8 +552,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void setCreditCardNumberIFrame(String strAccountNumber) {
-//		reusableActions.getWhenReady(txtCardNumber, 90);
-		reusableActions.getWhenReady(txtCardNumber, 30).sendKeys(strAccountNumber);
+//		getReusableActionsInstance().getWhenReady(txtCardNumber, 90);
+		getReusableActionsInstance().getWhenReady(txtCardNumber, 30).sendKeys(strAccountNumber);
 	}
 
 
@@ -563,7 +563,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author Karthic.hasan
 	 */
 
-	public void switchOutOfCreditCardIFrame() { driver.switchTo().defaultContent(); }
+	public void switchOutOfCreditCardIFrame() { getDriver().switchTo().defaultContent(); }
 
 	/**
 	 * Enter the Expiry Date on the Credit Evaluation stepper, Expiry Date Field
@@ -572,9 +572,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void setExpiryDate(String strExpiryDate) {
-		reusableActions.staticWait(4000);
-		reusableActions.getWhenReady(txtExpiryDate).click();
-		reusableActions.getWhenReady(inputExpiryDate, 10).sendKeys(strExpiryDate);
+		getReusableActionsInstance().staticWait(4000);
+		getReusableActionsInstance().getWhenReady(txtExpiryDate).click();
+		getReusableActionsInstance().getWhenReady(inputExpiryDate, 10).sendKeys(strExpiryDate);
 	}
 	/**
 	 * Select DOB-Year Dropdown Option on the Credit Evaluation stepper.
@@ -584,8 +584,8 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public void selectYearDropdownOption(String strYear) {
 		
-		reusableActions.moveToElementAndClick(inputYearDOB,5);
-		reusableActions.selectWhenReady(inputYearDOB, strYear);
+		getReusableActionsInstance().moveToElementAndClick(inputYearDOB,5);
+		getReusableActionsInstance().selectWhenReady(inputYearDOB, strYear);
 
 	}
 	/**
@@ -596,9 +596,9 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public void selectMonthDropdownOption(String strMonth) {
 			clkNoThanks();
-			reusableActions.javascriptScrollByVisibleElement(creditEvaluationTitle);		
-			reusableActions.clickWhenReady(inputMonthDOB);
-			reusableActions.selectWhenReady(inputMonthDOB, strMonth);			
+			getReusableActionsInstance().javascriptScrollByVisibleElement(creditEvaluationTitle);
+			getReusableActionsInstance().clickWhenReady(inputMonthDOB);
+			getReusableActionsInstance().selectWhenReady(inputMonthDOB, strMonth);
 	}
 	/**
 	 * Select DOB-Date Dropdown Option on the Credit Evaluation stepper.
@@ -608,9 +608,9 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public void selectDayDropdownOption(String strDay) {
 			clkNoThanks();
-			reusableActions.javascriptScrollByVisibleElement(creditEvaluationTitle);
-			reusableActions.clickWhenReady(inputDayDOB);
-			reusableActions.selectWhenReady(inputDayDOB, strDay);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(creditEvaluationTitle);
+			getReusableActionsInstance().clickWhenReady(inputDayDOB);
+			getReusableActionsInstance().selectWhenReady(inputDayDOB, strDay);
 	}
 
 	/**
@@ -620,9 +620,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void selectDropdownOption(String selectYourIdOption) {
-		reusableActions.waitForElementVisibility(dropdownidclick, 20);
-		reusableActions.clickWhenReady(dropdownidclick);
-		reusableActions.selectWhenReady(dropdownidclick, selectYourIdOption);
+		getReusableActionsInstance().waitForElementVisibility(dropdownidclick, 20);
+		getReusableActionsInstance().clickWhenReady(dropdownidclick);
+		getReusableActionsInstance().selectWhenReady(dropdownidclick, selectYourIdOption);
 	}
 
 	/**
@@ -632,9 +632,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void setPassportNumber(String strPasportNumber) {
-		// reusableActions.javascriptScrollByVisibleElement(txtPasportNumber);
-		reusableActions.clickWhenReady(txtPasportNumber);
-		reusableActions.getWhenReady(inputPasportNumber, 3).sendKeys(strPasportNumber);
+		// getReusableActionsInstance().javascriptScrollByVisibleElement(txtPasportNumber);
+		getReusableActionsInstance().clickWhenReady(txtPasportNumber);
+		getReusableActionsInstance().getWhenReady(inputPasportNumber, 3).sendKeys(strPasportNumber);
 	}
 
 	/**
@@ -644,7 +644,7 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public void clkCreditAuthorizationChkBox() 
 	{
-		reusableActions.getWhenReady(chkCreditAuthorization).click(); 
+		getReusableActionsInstance().getWhenReady(chkCreditAuthorization).click();
 		}
 
 	/**
@@ -652,14 +652,14 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author karthic.hasan
 	 */
 
-	public void clkCreditEvalContinue() { reusableActions.getWhenReady(btnCreditEvalContinue).click(); }
+	public void clkCreditEvalContinue() { getReusableActionsInstance().getWhenReady(btnCreditEvalContinue).click(); }
 
 	/**
 	 * To verify Credit Evaluation popup is present in the Credit Evaluation stepper
 	 * @return True or False
 	 * @author karthic.hasan
 	 */
-	public boolean isCreditEvalPopupPresent() { return reusableActions.isElementVisible(popCreditEval); }
+	public boolean isCreditEvalPopupPresent() { return getReusableActionsInstance().isElementVisible(popCreditEval); }
 
 	/**
 	 * To verify Credit Evaluation text is present in the Credit Evaluation Model and return Boolean value.
@@ -667,23 +667,23 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author karthic.hasan
 	 */
 
-	public boolean isCreditEvalTextOnModalPresent() { return reusableActions.isElementVisible(txtCreditEval); }
+	public boolean isCreditEvalTextOnModalPresent() { return getReusableActionsInstance().isElementVisible(txtCreditEval); }
 
 	/**
 	 * WaitUntill Credit Evaluation text get invisible from the Credit Evaluation Model
 	 * @author karthic.hasan
 	 */
 
-	public void waitUntilCreditEvalPopupClose() { reusableActions.waitForElementVisibility(identificationLabel); }
+	public void waitUntilCreditEvalPopupClose() { getReusableActionsInstance().waitForElementVisibility(identificationLabel); }
 
 	/**
 	 * To verify Credit Evaluation Identification Label is present in the Credit Evaluation stepper
 	 * @author karthic.hasan
 	 */
 	public boolean isIdentificationLabel() {
-		reusableActions.waitForElementVisibility(identificationLabel, 50);
-		reusableActions.javascriptScrollByVisibleElement(identificationLabel);
-		return reusableActions.isElementVisible(identificationLabel);
+		getReusableActionsInstance().waitForElementVisibility(identificationLabel, 50);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(identificationLabel);
+		return getReusableActionsInstance().isElementVisible(identificationLabel);
 	}
 
 	/**
@@ -692,7 +692,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author karthic.hasan
 	 */
 
-	public boolean isChooseaNumberTitleDisplayed() { return reusableActions.isElementVisible(chooseNumberTitle); }
+	public boolean isChooseaNumberTitleDisplayed() { return getReusableActionsInstance().isElementVisible(chooseNumberTitle); }
 
 	/**
 	 * To verify Select A Number Tab UseAnExistingNumber Tab is present in the Choose a Number stepper and return boolean value.
@@ -701,7 +701,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public boolean isChooseNumberTabsDisplayed() {
-		return (reusableActions.isElementVisible(selectaNewNumberTab) && reusableActions.isElementVisible(useAnExistingNumberTab));
+		return (getReusableActionsInstance().isElementVisible(selectaNewNumberTab) && getReusableActionsInstance().isElementVisible(useAnExistingNumberTab));
 	}
 
 	/**
@@ -711,9 +711,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void selectCityDropdownOption(String selectYourOption) {
-		reusableActions.waitForElementVisibility(cityDropdown, 20);
-		reusableActions.clickWhenReady(cityDropdown);
-		reusableActions.selectWhenReadyByVisibleText(cityDropdown, selectYourOption);
+		getReusableActionsInstance().waitForElementVisibility(cityDropdown, 20);
+		getReusableActionsInstance().clickWhenReady(cityDropdown);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(cityDropdown, selectYourOption);
 	}
 
 	/**
@@ -722,7 +722,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void clkChosePhoneNumber() {
-		reusableActions.getWhenReady(rdoChosePhoneNumber, 60).click();
+		getReusableActionsInstance().getWhenReady(rdoChosePhoneNumber, 60).click();
 	}
 
 	/**
@@ -732,7 +732,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public boolean isFindMoreAvlNumberButtonPresent() {
-		return reusableActions.isElementVisible(btnFindMoreAvlNumber);
+		return getReusableActionsInstance().isElementVisible(btnFindMoreAvlNumber);
 	}
 
 	/**
@@ -741,8 +741,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void clkChooseNumberbutton() {
-		reusableActions.javascriptScrollByVisibleElement(cityDropdown);
-		reusableActions.getWhenReady(btnChooseNumberContinue, 60).click();
+		getReusableActionsInstance().javascriptScrollByVisibleElement(cityDropdown);
+		getReusableActionsInstance().getWhenReady(btnChooseNumberContinue, 60).click();
 	}
 
 	/**
@@ -752,8 +752,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public boolean isChooseaNumberLabelDisplayed() {
-		reusableActions.javascriptScrollByVisibleElement(lblChooseaNumber);
-		return reusableActions.isElementVisible(lblChooseaNumber);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(lblChooseaNumber);
+		return getReusableActionsInstance().isElementVisible(lblChooseaNumber);
 	}
 
 	/**
@@ -763,8 +763,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public boolean isBillingOptionsTitleDisplayed() {
-		reusableActions.getWhenReady(billingOptionsTitle);
-		return reusableActions.isElementVisible(billingOptionsTitle);
+		getReusableActionsInstance().getWhenReady(billingOptionsTitle);
+		return getReusableActionsInstance().isElementVisible(billingOptionsTitle);
 	}
 
 	/**
@@ -774,7 +774,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public boolean isPaymentMethodDropdownPresent() {
-		return reusableActions.isElementVisible(drpSelectPaymentMethod);
+		return getReusableActionsInstance().isElementVisible(drpSelectPaymentMethod);
 	}
 
 	/**
@@ -783,8 +783,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author karthic.hasan
 	 */	
 	public void selectPaymentMethodDropdownOption(String strPaymentMethod) {
-		reusableActions.scrollToElementAndClick(drpSelectPaymentMethod);
-		reusableActions.selectWhenReady(drpSelectPaymentMethod, strPaymentMethod);
+		getReusableActionsInstance().scrollToElementAndClick(drpSelectPaymentMethod);
+		getReusableActionsInstance().selectWhenReady(drpSelectPaymentMethod, strPaymentMethod);
 
 	}
 
@@ -795,9 +795,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void setNameOnCard(String strNameOnCard) {
-		reusableActions.staticWait(2000);
-		reusableActions.getWhenReady(txtNameOnCard).click();
-		reusableActions.getWhenVisible(inputNameOnCard).sendKeys(strNameOnCard);
+		getReusableActionsInstance().staticWait(2000);
+		getReusableActionsInstance().getWhenReady(txtNameOnCard).click();
+		getReusableActionsInstance().getWhenVisible(inputNameOnCard).sendKeys(strNameOnCard);
 	}
 
 	/**
@@ -806,9 +806,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author karthic.hasan
 	 */
 	public void setBillingExpiryDate(String strBillingExpiryDate) {
-		reusableActions.getWhenReady(txtBillingExpiryDate).click();
-		reusableActions.staticWait(1000);
-		reusableActions.getWhenReady(inputBillingExpiryDate, 10).sendKeys(strBillingExpiryDate);
+		getReusableActionsInstance().getWhenReady(txtBillingExpiryDate).click();
+		getReusableActionsInstance().staticWait(1000);
+		getReusableActionsInstance().getWhenReady(inputBillingExpiryDate, 10).sendKeys(strBillingExpiryDate);
 	}
 
 	/**
@@ -818,9 +818,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void setCVVNumber(String strCVVNumber) {
-		reusableActions.getWhenReady(txtCVVNumber).click();
-		reusableActions.staticWait(1000);
-		reusableActions.getWhenReady(inputCVVNumber, 10).sendKeys(strCVVNumber);
+		getReusableActionsInstance().getWhenReady(txtCVVNumber).click();
+		getReusableActionsInstance().staticWait(1000);
+		getReusableActionsInstance().getWhenReady(inputCVVNumber, 10).sendKeys(strCVVNumber);
 	}
 
 	/**
@@ -829,7 +829,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void clkAddCard() {
-		reusableActions.getWhenReady(btnAddCard).click();
+		getReusableActionsInstance().getWhenReady(btnAddCard).click();
 	}
 
 	/**
@@ -839,7 +839,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public boolean isCardDetailsDisplayed() {
-		return reusableActions.isElementVisible(txtCreditDetails,30);
+		return getReusableActionsInstance().isElementVisible(txtCreditDetails,30);
 	}
 
 	/**
@@ -848,7 +848,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void clkBillingContinueButton() {
-		reusableActions.getWhenReady(btnBillingContinueButton).click();
+		getReusableActionsInstance().getWhenReady(btnBillingContinueButton).click();
 	}
 
 	/**
@@ -858,8 +858,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public boolean clkBillingAddress() {
-		reusableActions.scrollToElementAndClick(billingAddressShipping);
-		//reusableActions.clickWhenReady(billingAddressShipping,3);
+		getReusableActionsInstance().scrollToElementAndClick(billingAddressShipping);
+		//getReusableActionsInstance().clickWhenReady(billingAddressShipping,3);
 		billingAddressShipping.isSelected();
 		return true;
 	}
@@ -871,8 +871,8 @@ public class RogersCheckoutPage extends BasePageClass {
      ** @author karthic.hasan
      */
     public String getShippingAddress() {
-    	reusableActions.javascriptScrollToTopOfPage();
-        return reusableActions.getWhenReady(prepopulatedShippingAddress).getText();
+    	getReusableActionsInstance().javascriptScrollToTopOfPage();
+        return getReusableActionsInstance().getWhenReady(prepopulatedShippingAddress).getText();
     }
     
     /**
@@ -882,8 +882,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public String getContactNumber() { 
-		reusableActions.javascriptScrollByVisibleElement(contactNumberDetails);
-   	    reusableActions.staticWait(3000);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(contactNumberDetails);
+   	    getReusableActionsInstance().staticWait(3000);
 		return contactNumberDetails.getText().replaceAll("\\n",""); 
 	}
     
@@ -893,8 +893,8 @@ public class RogersCheckoutPage extends BasePageClass {
      * @author karthic.hasan
      */
     public String getEmailId() {
-    	reusableActions.javascriptScrollToTopOfPage();
-        return reusableActions.getWhenReady(prepopulatedEmailId).getText();
+    	getReusableActionsInstance().javascriptScrollToTopOfPage();
+        return getReusableActionsInstance().getWhenReady(prepopulatedEmailId).getText();
     }  
     
 	/**
@@ -903,17 +903,17 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void clkDeliveryMethodStandard() {
-		reusableActions.staticWait(5000);
-		reusableActions.javascriptScrollByVisibleElement(deliveryMethodHeader);
-		if(reusableActions.isElementVisible(viewAnotherOption))
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(deliveryMethodHeader);
+		if(getReusableActionsInstance().isElementVisible(viewAnotherOption))
 		{
 		System.out.println("inside loop");
-		reusableActions.scrollToElementAndClick(viewAnotherOption);
-		reusableActions.clickWhenReady(deliveryMethodStandard);
+		getReusableActionsInstance().scrollToElementAndClick(viewAnotherOption);
+		getReusableActionsInstance().clickWhenReady(deliveryMethodStandard);
 		
 		}
 		else {
-			reusableActions.clickWhenReady(deliveryMethodStandard,30);
+			getReusableActionsInstance().clickWhenReady(deliveryMethodStandard,30);
 		}
 		
 	}
@@ -924,8 +924,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void selectDate() {
-		//reusableActions.javascriptScrollByVisibleElement(selDate);
-		reusableActions.moveToElementAndClick(selDate, 3);
+		//getReusableActionsInstance().javascriptScrollByVisibleElement(selDate);
+		getReusableActionsInstance().moveToElementAndClick(selDate, 3);
 	}
 
 	/**
@@ -934,7 +934,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void selectTime() {
-		reusableActions.moveToElementAndClick(selTime, 3);
+		getReusableActionsInstance().moveToElementAndClick(selTime, 3);
 	}
 
 	/**
@@ -946,8 +946,8 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public void clkContinueBtnShipping() {
 		//wait.until(ExpectedConditions.elementToBeClickable(continueBtnShipping));
-        //reusableActions.javascriptScrollByVisibleElement(continueBtnShipping);
-		reusableActions.clickWhenVisible(continueBtnShipping, 30);
+        //getReusableActionsInstance().javascriptScrollByVisibleElement(continueBtnShipping);
+		getReusableActionsInstance().clickWhenVisible(continueBtnShipping, 30);
 	}
 
 	
@@ -958,8 +958,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public String getAppointmentDate() { 
-		reusableActions.javascriptScrollByVisibleElement(appointmentDate);
-   	    reusableActions.staticWait(3000);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(appointmentDate);
+   	    getReusableActionsInstance().staticWait(3000);
 		return appointmentDate.getText().replaceAll("\\n",""); 
 	}
 
@@ -970,8 +970,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public String getAppointmentTime() { 
-		reusableActions.javascriptScrollByVisibleElement(appointmentTime);
-   	    reusableActions.staticWait(3000);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(appointmentTime);
+   	    getReusableActionsInstance().staticWait(3000);
 		return appointmentTime.getText().replaceAll("\\s",""); 
 	}
 	
@@ -982,7 +982,7 @@ public class RogersCheckoutPage extends BasePageClass {
      */
 
     public void clksubmitBtnCheckoutPage(){
-        reusableActions.moveToElementAndClick(submitBtnCheckoutPage,20);
+        getReusableActionsInstance().moveToElementAndClick(submitBtnCheckoutPage,20);
     }
 
 	/**
@@ -992,7 +992,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public boolean verifyBillingDetails() {
-		return reusableActions.isElementVisible(txtBillingDetails);
+		return getReusableActionsInstance().isElementVisible(txtBillingDetails);
 	}
 
 

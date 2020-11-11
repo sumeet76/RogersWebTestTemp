@@ -37,35 +37,35 @@ public class RogersSC_TC_006_ExistingSolarisCustomer_InternetPackageChangeTest e
     @Test
     public void checkSolarisInternetPackageChangeFlow() {       
         reporter.reportLogWithScreenshot("Launched the Home Page");
-        rogers_home_page.clkSignIn();
-        rogers_login_page.switchToSignInIFrame();
+        getRogersHomePage().clkSignIn();
+        getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        rogers_login_page.setUsernameIFrame(TestDataHandler.solarisInternetPackageChange.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.solarisInternetPackageChange.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.solarisInternetPackageChange.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.solarisInternetPackageChange.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
-        rogers_login_page.clkSignInIFrame();
+        getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Skip popup");
-        rogers_login_page.clkSkipIFrame();
-        rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount((TestDataHandler.solarisInternetPackageChange.accountDetails.getBan()));
-        reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+        getRogersLoginPage().clkSkipIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();
+        getRogersAccountOverviewPage().selectAccount((TestDataHandler.solarisInternetPackageChange.accountDetails.getBan()));
+        reporter.softAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
-        rogers_internet_dashboard_page.clkSolarisInternetBadge();
-        rogers_internet_dashboard_page.clkInternetPopup();
+        getRogersInternetDashboardPage().clkSolarisInternetBadge();
+        getRogersInternetDashboardPage().clkInternetPopup();
         reporter.reportLogWithScreenshot("Launched the Interent dashboard");
-        rogers_internet_dashboard_page.clkSolChangeInternetPackage();
+        getRogersInternetDashboardPage().clkSolChangeInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Interent packages page");
-        rogers_internet_dashboard_page.selectSolarisInternetPackage(TestDataHandler.solarisInternetPackageChange.getAccountDetails().getUpgradePlanEn(),TestDataHandler.solarisInternetPackageChange.getAccountDetails().getUpgradePlanFr());
+        getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.solarisInternetPackageChange.getAccountDetails().getUpgradePlanEn(),TestDataHandler.solarisInternetPackageChange.getAccountDetails().getUpgradePlanFr());
         reporter.reportLogWithScreenshot("Launched the agreement page"); 
-        rogers_order_review_page.verifyAgreementPage();
+        getRogersOrderReviewPage().verifyAgreementPage();
         reporter.reportLogWithScreenshot("Launched the order review page");
-        rogers_order_review_page.verifyAgreement();
-        rogers_order_review_page.clkAcceptenceCheckbox();
+        getRogersOrderReviewPage().verifyAgreement();
+        getRogersOrderReviewPage().clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
-		rogers_order_review_page.clkSubmit();
-		rogers_order_confirmation_page.verifyOrderConfirmation();
+		getRogersOrderReviewPage().clkSubmit();
+		getRogersOrderConfirmationPage().verifyOrderConfirmation();
 		reporter.reportLogWithScreenshot("Launched the Confirmation page");
-		reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Update order completed","Update order Failed");
+		reporter.softAssert(getRogersOrderConfirmationPage().verifyOrderConfirmation(),"Update order completed","Update order Failed");
 		reporter.reportLogWithScreenshot("Launched the Confirmation page");
     }
 

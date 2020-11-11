@@ -62,7 +62,7 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyWirelessPageLoad() {
-		return reusableActions.isElementVisible(lblMyWlsUsage);
+		return getReusableActionsInstance().isElementVisible(lblMyWlsUsage);
 	}
 	
 	/**
@@ -89,7 +89,7 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyResetVoicemailPasswordSuccess() {
-		return reusableActions.isElementVisible(lblResetVoicemailPwdSuccess,60);
+		return getReusableActionsInstance().isElementVisible(lblResetVoicemailPwdSuccess,60);
 	}
 	
 	/**
@@ -97,7 +97,7 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickChangePlanButton() {
-		reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(btnChangePlan, 100));
+		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(btnChangePlan, 100));
 	}
 	
 	/**
@@ -105,7 +105,7 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkUpgradeMyDevice() {
-		reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(btnUpgradeMyDevice));
+		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(btnUpgradeMyDevice));
 	}
 
 }

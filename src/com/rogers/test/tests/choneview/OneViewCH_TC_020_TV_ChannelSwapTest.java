@@ -17,43 +17,43 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class OneViewCH_TC_020_TV_ChannelSwapTest extends BaseTestClass {
     @Test @Parameters("strBrowser")
     public void checkChannelSwapTest(String strBrowser) {
-		environment_selection_page.selectOneViewEnv(TestDataHandler.chOneViewConfig.getOneViewenv());
+		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.chOneViewConfig.getOneViewenv());
 /*		reporter.reportLogWithScreenshot("OneView Interface has Launched");
-		environment_selection_page.enterDealerCode(TestDataHandler.igniteTVParentalcontrols.getDealercode());
+		getEnvironmentSelectionPage().enterDealerCode(TestDataHandler.igniteTVParentalcontrols.getDealercode());
 		reporter.reportLogWithScreenshot("Enter the dealer code");
-		environment_selection_page.submitDealerCode();	*/
+		getEnvironmentSelectionPage().submitDealerCode();	*/
 		reporter.reportLogWithScreenshot("Launched the account dashboard page");
-		account_over_view_page.selectTVBadage(strBrowser);
+		getAccountOverViewPage().selectTVBadage(strBrowser);
 		reporter.reportLogWithScreenshot("Launched the TV dashboard page");
-		tv_dashboard_page.clickExchangeFlexChannels();
+		getTVDashboardPage().clickExchangeFlexChannels();
 		reporter.reportLogWithScreenshot("Exchange Flex Channel button clicked");	
-		//tv_dashboard_page.clickSearchChannelToRemove();
+		//getTVDashboardPage().clickSearchChannelToRemove();
 		//reporter.reportLogWithScreenshot("Search Icon clicked on the Remove Channel Section");
-		tv_dashboard_page.clickFirstChannelToRemove();
+		getTVDashboardPage().clickFirstChannelToRemove();
 		reporter.reportLogWithScreenshot("First Channel on the remove list clicked");
-		tv_dashboard_page.clickSelectChannelRemove();
+		getTVDashboardPage().clickSelectChannelRemove();
 		reporter.reportLogWithScreenshot("Select button clicked");
-		tv_dashboard_page.clickSecondChannelToRemove();
+		getTVDashboardPage().clickSecondChannelToRemove();
 		reporter.reportLogWithScreenshot("Second Channel on the remove list clicked");
-		tv_dashboard_page.clickSelectChannelRemove();
+		getTVDashboardPage().clickSelectChannelRemove();
 		reporter.reportLogWithScreenshot("Select button clicked");
-		//tv_dashboard_page.clickSearchChannelToAdd();
+		//getTVDashboardPage().clickSearchChannelToAdd();
 		//reporter.reportLogWithScreenshot("Search Icon clicked on the Add Channel Section");
-		tv_dashboard_page.clickFirstChannelToAdd();
+		getTVDashboardPage().clickFirstChannelToAdd();
 		reporter.reportLogWithScreenshot("First Channel on the add list clicked");
-		tv_dashboard_page.clickSelectChannelAdd();
+		getTVDashboardPage().clickSelectChannelAdd();
 		reporter.reportLogWithScreenshot("Select button clicked");
-		tv_dashboard_page.clickSecondChannelToAdd();
+		getTVDashboardPage().clickSecondChannelToAdd();
 		reporter.reportLogWithScreenshot("Second Channel on the add list clicked");
-		tv_dashboard_page.clickSelectChannelAdd();
+		getTVDashboardPage().clickSelectChannelAdd();
 		reporter.reportLogWithScreenshot("Select button clicked");
-		tv_dashboard_page.clickConfirmExchange(strBrowser);
+		getTVDashboardPage().clickConfirmExchange(strBrowser);
 		reporter.reportLogWithScreenshot("Confirm Exchange button clicked");
-		tv_dashboard_page.clickOK();
+		getTVDashboardPage().clickOK();
 		reporter.reportLogWithScreenshot("Clicked Ok on the exhange channel pop up");
-		reporter.hardAssert(tv_dashboard_page.verifyResetSuccess(),"Channel exchange completed successfully- Passed","Channel exchange not completed - Failed");	
+		reporter.hardAssert(getTVDashboardPage().verifyResetSuccess(),"Channel exchange completed successfully- Passed","Channel exchange not completed - Failed");	
         reporter.reportLogWithScreenshot("Swap channel success");
-		tv_dashboard_page.clickSuccessOk() ;
+		getTVDashboardPage().clickSuccessOk() ;
 		
     }
     

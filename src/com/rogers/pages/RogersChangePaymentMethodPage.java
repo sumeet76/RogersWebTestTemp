@@ -112,7 +112,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyChangePaymentMethodLoad() {
-		return reusableActions.isElementVisible(lblChangePaymentMethod,30);
+		return getReusableActionsInstance().isElementVisible(lblChangePaymentMethod,30);
 	}
 	
 	
@@ -121,7 +121,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkYesCancelAutomaticPayment() {
-		reusableActions.clickIfAvailable(btnCancelAutomaticPayments,30);
+		getReusableActionsInstance().clickIfAvailable(btnCancelAutomaticPayments,30);
 	}
 	
 	/**
@@ -130,7 +130,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyChangePaymentMethodToManual() {
-		return (reusableActions.isElementVisible(lblChangePaymentMethodSuccess, 60) &&(
+		return (getReusableActionsInstance().isElementVisible(lblChangePaymentMethodSuccess, 60) &&(
 				lblCurrentPaymentMethod.getText().equals("Manual payments")
 				|| lblCurrentPaymentMethod.getText().equals("Paiements manuels")));
 	}
@@ -140,8 +140,8 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkUseBankAccountForAutomaticPayments() {
-		reusableActions.waitForElementVisibility(optBankAccount, 60);		
-		reusableActions.clickWhenReady(optBankAccount);
+		getReusableActionsInstance().waitForElementVisibility(optBankAccount, 60);
+		getReusableActionsInstance().clickWhenReady(optBankAccount);
 	}
 	
 	/**
@@ -149,8 +149,8 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkUseCCForAutomaticPayments() {
-		reusableActions.waitForElementVisibility(optCardAccount, 60);		
-		reusableActions.executeJavaScriptClick(optCardAccount);
+		getReusableActionsInstance().waitForElementVisibility(optCardAccount, 60);
+		getReusableActionsInstance().executeJavaScriptClick(optCardAccount);
 	}
 	
 	/**
@@ -158,8 +158,8 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkSwitchToManualPayments() {
-		reusableActions.waitForElementVisibility(optManualPayments, 60);		
-		reusableActions.executeJavaScriptClick(optManualPayments);
+		getReusableActionsInstance().waitForElementVisibility(optManualPayments, 60);
+		getReusableActionsInstance().executeJavaScriptClick(optManualPayments);
 	}
 
 	/**
@@ -167,8 +167,8 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkUseCardForAutomaticPayments() {
-		reusableActions.waitForElementVisibility(optCardAccount, 60);
-		reusableActions.executeJavaScriptClick(optCardAccount);
+		getReusableActionsInstance().waitForElementVisibility(optCardAccount, 60);
+		getReusableActionsInstance().executeJavaScriptClick(optCardAccount);
 	}
 
 	/**
@@ -177,10 +177,10 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void setCreditCardNumber(String strAccountNumber) {
-		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraSemaphone, 30);
-		reusableActions.getWhenReady(txtCardNumber,40).click();
-		reusableActions.getWhenReady(txtCardNumber).sendKeys(strAccountNumber);
-		driver.switchTo().defaultContent();
+		getReusableActionsInstance().waitForFrameToBeAvailableAndSwitchToIt(fraSemaphone, 30);
+		getReusableActionsInstance().getWhenReady(txtCardNumber,40).click();
+		getReusableActionsInstance().getWhenReady(txtCardNumber).sendKeys(strAccountNumber);
+		getDriver().switchTo().defaultContent();
 	}
 
 	/**
@@ -189,8 +189,8 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 */
 	public void setCVV() {
 		String strCVV = FormFiller.generateCVVNumber();
-		reusableActions.clickWhenVisible(txtCVV);
-		reusableActions.getWhenReady(txtCVV).sendKeys(strCVV);
+		getReusableActionsInstance().clickWhenVisible(txtCVV);
+		getReusableActionsInstance().getWhenReady(txtCVV).sendKeys(strCVV);
 	}
 
 	/**
@@ -199,7 +199,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 */
 	public void selectExpiryMonth() {
 		String strMM = FormFiller.generateMonth();
-		reusableActions.selectWhenReady(ddlExpiryMonth, strMM);
+		getReusableActionsInstance().selectWhenReady(ddlExpiryMonth, strMM);
 	}
 
 	/**
@@ -208,7 +208,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 */
 	public void selectExpiryYear() {
 		String strYYYY = FormFiller.generateMonth();
-		reusableActions.selectWhenReady(ddlExpiryYear, strYYYY);
+		getReusableActionsInstance().selectWhenReady(ddlExpiryYear, strYYYY);
 	}
 
 	/**
@@ -217,8 +217,8 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void setCreditcardCVV(String strCVV) {
-		reusableActions.clickWhenVisible(txtCVV);
-		reusableActions.getWhenReady(txtCVV).sendKeys(strCVV);
+		getReusableActionsInstance().clickWhenVisible(txtCVV);
+		getReusableActionsInstance().getWhenReady(txtCVV).sendKeys(strCVV);
 	}
 
 	/**
@@ -227,7 +227,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectCreditcardExpiryMonth(String strMM) {
-		reusableActions.selectWhenReadyByVisibleText(ddlExpiryMonth, strMM);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlExpiryMonth, strMM);
 	}
 
 	/**
@@ -236,7 +236,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectCreditcardExpiryYear(String strYYYY) {
-		reusableActions.selectWhenReadyByVisibleText(ddlExpiryYear, strYYYY);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlExpiryYear, strYYYY);
 	}
 	
 	
@@ -246,8 +246,8 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setTransitCode(String strTransitCode) {
-		reusableActions.waitForElementVisibility(txtTransit, 60);
-		reusableActions.getWhenReady(txtTransit).sendKeys(strTransitCode);;
+		getReusableActionsInstance().waitForElementVisibility(txtTransit, 60);
+		getReusableActionsInstance().getWhenReady(txtTransit).sendKeys(strTransitCode);;
 		
 	}
 
@@ -257,8 +257,8 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setBankCode(String strBankCode) {
-		reusableActions.waitForElementVisibility(txtInstitution, 60);
-		reusableActions.getWhenReady(txtInstitution).sendKeys(strBankCode);;		
+		getReusableActionsInstance().waitForElementVisibility(txtInstitution, 60);
+		getReusableActionsInstance().getWhenReady(txtInstitution).sendKeys(strBankCode);;
 	}
 	
 	/**
@@ -267,11 +267,11 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setAccountNumber(String strAccountNumber) {
-		reusableActions.waitForElementVisibility(txtAccount, 60);
-		reusableActions.getWhenReady(txtAccount).sendKeys(strAccountNumber);
-		reusableActions.staticWait(1000);
-		reusableActions.getWhenReady(txtAccount).sendKeys(Keys.TAB);
-		reusableActions.staticWait(1000);
+		getReusableActionsInstance().waitForElementVisibility(txtAccount, 60);
+		getReusableActionsInstance().getWhenReady(txtAccount).sendKeys(strAccountNumber);
+		getReusableActionsInstance().staticWait(1000);
+		getReusableActionsInstance().getWhenReady(txtAccount).sendKeys(Keys.TAB);
+		getReusableActionsInstance().staticWait(1000);
 	}
 
 	/**
@@ -279,8 +279,8 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkContinue() {
-		reusableActions.waitForElementTobeClickable(btnContinue, 60);
-		reusableActions.executeJavaScriptClick(btnContinue);
+		getReusableActionsInstance().waitForElementTobeClickable(btnContinue, 60);
+		getReusableActionsInstance().executeJavaScriptClick(btnContinue);
 	}
 	
 	/**
@@ -288,7 +288,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkTermsAndCond() {
-		reusableActions.clickWhenReady(chkTnC);
+		getReusableActionsInstance().clickWhenReady(chkTnC);
 	}
 	
 	/**
@@ -296,7 +296,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkSubmit() {
-		reusableActions.clickWhenReady(btnSubmit);
+		getReusableActionsInstance().clickWhenReady(btnSubmit);
 	}
 	
 	/**
@@ -305,8 +305,8 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifySuccessMessageIsDisplayed() {
-		reusableActions.waitForElementVisibility(lblSuccessHeader);
-		return (reusableActions.isElementVisible(lblSuccessHeader) && reusableActions.isElementVisible(lblYouAutomaticPaymentWillStart));
+		getReusableActionsInstance().waitForElementVisibility(lblSuccessHeader);
+		return (getReusableActionsInstance().isElementVisible(lblSuccessHeader) && getReusableActionsInstance().isElementVisible(lblYouAutomaticPaymentWillStart));
 	}
 	
 	/**
@@ -314,14 +314,14 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran 
 	 */
 	public void clkOnDone() {
-	reusableActions.executeJavaScriptClick(btnDone);
+	getReusableActionsInstance().executeJavaScriptClick(btnDone);
 	}	
 	
 	/**
 	 * Clicks on the Cancel Auto payments
 	 */
 	public void clkButtoncancelAutoPayment() {
-		reusableActions.clickWhenReady(btnYesCancelAutoPayment);
+		getReusableActionsInstance().clickWhenReady(btnYesCancelAutoPayment);
 	}
 	
 	/**
@@ -329,7 +329,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkButtonDoneChangePayment() {
-		reusableActions.clickIfAvailable(btnChangePaymentDone);
+		getReusableActionsInstance().clickIfAvailable(btnChangePaymentDone);
 	}
 	
     /**
@@ -338,7 +338,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
      * @author Mirza.Kamran
      */
 	public Boolean labelCCDetailsWillBeKeptEncryptedMsgDisplayed() {
-		return reusableActions.isElementVisible(lblCreditCardSecuredMsg);
+		return getReusableActionsInstance().isElementVisible(lblCreditCardSecuredMsg);
 	}
 		
 	/**
@@ -347,9 +347,9 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isCCSecuredAreaDisplayed() {
-		return (reusableActions.isElementVisible(lblCCheader)
-				&& reusableActions.isElementVisible(lblCCNumber)
-				&& reusableActions.isElementVisible(lblExpiryDate));
+		return (getReusableActionsInstance().isElementVisible(lblCCheader)
+				&& getReusableActionsInstance().isElementVisible(lblCCNumber)
+				&& getReusableActionsInstance().isElementVisible(lblExpiryDate));
 	}
 
 	/**
@@ -357,7 +357,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkContinueOnReviewPg() {
-		reusableActions.executeJavaScriptClick(btnContinueOnSecuredCC);
+		getReusableActionsInstance().executeJavaScriptClick(btnContinueOnSecuredCC);
 		
 	}	
 	

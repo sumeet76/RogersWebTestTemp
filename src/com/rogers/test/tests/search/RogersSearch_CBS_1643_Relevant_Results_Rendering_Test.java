@@ -17,7 +17,7 @@ import utils.CSVReader;
 public class RogersSearch_CBS_1643_Relevant_Results_Rendering_Test extends BaseTestClass {
 
 
-    @DataProvider(name = "FilterData")
+    @DataProvider(name = "FilterData",parallel=true)
     public Object[] testData() throws IOException {
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
@@ -40,7 +40,7 @@ public class RogersSearch_CBS_1643_Relevant_Results_Rendering_Test extends BaseT
 
         reporter.reportLogWithScreenshot("Search Results page");
         String[] strFilters = Arrays.copyOfRange(csvRowStrArray, 1, csvRowStrArray.length);
-        reporter.softAssert(rogers_search_page.verifyResultsCategoryTagRelevancy(strFilters),
+        reporter.softAssert(getRogersSearchPage().verifyResultsCategoryTagRelevancy(strFilters),
                 "Relevant Results Displayed", "Relevant Results Not Displayed");
     }
 

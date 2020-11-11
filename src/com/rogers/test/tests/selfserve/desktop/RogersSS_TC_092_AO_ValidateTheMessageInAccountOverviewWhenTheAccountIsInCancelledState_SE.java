@@ -47,42 +47,42 @@ public class RogersSS_TC_092_AO_ValidateTheMessageInAccountOverviewWhenTheAccoun
     public void validateSignInAndAccountOverview() {
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
-    	rogers_home_page.clkSignIn();
-		rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(TestDataHandler.tc92.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.tc92.getPassword());
+    	getRogersHomePage().clkSignIn();
+		getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc92.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc92.getPassword());
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-        rogers_login_page.clkSignInIFrame();
-        reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-        rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+        getRogersLoginPage().clkSignInIFrame();
+        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+        getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-        	rogers_account_overview_page.selectAccount(TestDataHandler.tc92.getAccountDetails().getBan());       
+        	getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc92.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");
-        reporter.hardAssert(rogers_account_overview_page.isAccountCancelledMessageDisplayed(),
+        reporter.hardAssert(getRogersAccountOverviewPage().isAccountCancelledMessageDisplayed(),
         		"The cancelled account message is displayed as expected above the billing widget",
         		"The account cancelled message is NOT displayed ");
         reporter.reportLogWithScreenshot("Account cancelled message");
-        reporter.hardAssert(rogers_account_overview_page.isViewBillingAndPaymentHistoryDisplayedInsideAccountCancelledMessage(),
+        reporter.hardAssert(getRogersAccountOverviewPage().isViewBillingAndPaymentHistoryDisplayedInsideAccountCancelledMessage(),
         		"The account cancelled message is displayed with View Billing & Payment History",
         		"The account cancelled message is NOT displayed with View Billing & Payment History");
         
-        reporter.hardAssert(rogers_account_overview_page.isManageProfileLinkDisplayedInsideAccountCancelledMessage(),
+        reporter.hardAssert(getRogersAccountOverviewPage().isManageProfileLinkDisplayedInsideAccountCancelledMessage(),
         		"Manage Profile displayed as expected",
         		"Manage Profile not displayed as expected");
-        reporter.softAssert(rogers_account_overview_page.isViewBillDisplayed(),"The View Bill link displayed",
+        reporter.softAssert(getRogersAccountOverviewPage().isViewBillDisplayed(),"The View Bill link displayed",
         		"The View Bill link  NOt displayed");
-        reporter.softAssert( rogers_account_overview_page.isLnkSetAutoPaymentDisplayed(),"Payment history link displayed",
+        reporter.softAssert( getRogersAccountOverviewPage().isLnkSetAutoPaymentDisplayed(),"Payment history link displayed",
         		"Payment history link  Not displayed");
-        reporter.softAssert(rogers_account_overview_page.isLnkPaymentHistoryDisplayed(),"Set up autopayment link displayed",
+        reporter.softAssert(getRogersAccountOverviewPage().isLnkPaymentHistoryDisplayed(),"Set up autopayment link displayed",
 	   "Set up autopayment link  Not displayed");
         		
         common_business_flows.scrollToBottomOfWebPage();
         reporter.reportLogWithScreenshot("Checking CTN or other services");
-        reporter.softAssert(rogers_account_overview_page.isCTNNotDisplayed(),
+        reporter.softAssert(getRogersAccountOverviewPage().isCTNNotDisplayed(),
         		"The cancelled account has no ctns or services",
         		"The cancelled account is showing ctn's please investigate");
         

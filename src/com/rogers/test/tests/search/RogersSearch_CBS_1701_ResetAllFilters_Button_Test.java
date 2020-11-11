@@ -21,41 +21,41 @@ public class RogersSearch_CBS_1701_ResetAllFilters_Button_Test extends BaseTestC
 
 		getDriver().get(System.getProperty("SearchUrl")+"wireless");
 
-		rogers_search_page.clkGrandParentFilter("Support");
-		reporter.hardAssert(rogers_search_page.isGrandParentFilterExpanded("Support"),
+		getRogersSearchPage().clkGrandParentFilter("Support");
+		reporter.hardAssert(getRogersSearchPage().isGrandParentFilterExpanded("Support"),
 				"Support filter expanded","Support filter expanded");
-		rogers_search_page.clkParentFilter("Support","Billing/Accounts");
-		reporter.hardAssert(rogers_search_page.isParentFilterExpanded("Support","Billing/Accounts"),
+		getRogersSearchPage().clkParentFilter("Support","Billing/Accounts");
+		reporter.hardAssert(getRogersSearchPage().isParentFilterExpanded("Support","Billing/Accounts"),
 				"Billing/Accounts filter expanded","Billing/Accounts filter expanded");
-		reporter.hardAssert(rogers_search_page.validateResultsTag("Support","Billing/Accounts")
+		reporter.hardAssert(getRogersSearchPage().validateResultsTag("Support","Billing/Accounts")
 				,"Results' tags verified", "Results' tags mismatch");
 		reporter.reportLogWithScreenshot("Support-Billing/Accounts Expanded");
-		rogers_search_page.clkResetAllFilters();
+		getRogersSearchPage().clkResetAllFilters();
 		reporter.reportLogWithScreenshot("Reset All Filters button clicked");
-		reporter.hardAssert(rogers_search_page.validateAllFiltersCollapsed(),
+		reporter.hardAssert(getRogersSearchPage().validateAllFiltersCollapsed(),
 				"All Filters are Reset","Filters Not Reset");
-		reporter.hardAssert(rogers_search_page.validateResultsTag("Support"),
+		reporter.hardAssert(getRogersSearchPage().validateResultsTag("Support"),
 				"All Results Refreshed","Results Not Refreshed");
 
-		rogers_search_page.clkGrandParentFilter("Shop");
-		reporter.hardAssert(rogers_search_page.isGrandParentFilterExpanded("Shop"),
+		getRogersSearchPage().clkGrandParentFilter("Shop");
+		reporter.hardAssert(getRogersSearchPage().isGrandParentFilterExpanded("Shop"),
 				"Shop filter expanded","Shop filter expanded");
-		rogers_search_page.clkParentFilter("Shop","Wireless");
-		reporter.hardAssert(rogers_search_page.isParentFilterExpanded("Shop","Wireless"),
+		getRogersSearchPage().clkParentFilter("Shop","Wireless");
+		reporter.hardAssert(getRogersSearchPage().isParentFilterExpanded("Shop","Wireless"),
 				"Wireless filter expanded","Wireless filter expanded");
-		rogers_search_page.clkDeviceType("Smartphone");
-		rogers_search_page.clkBrandType("Apple");
-		strStorageOptions = rogers_search_page.getStorageSelections();
-		rogers_search_page.clkStorageType(strStorageOptions.get(0));
-		strColorOptions = rogers_search_page.getColorSelections();
-		rogers_search_page.clkColorType(strColorOptions.get(0));
+		getRogersSearchPage().clkDeviceType("Smartphone");
+		getRogersSearchPage().clkBrandType("Apple");
+		strStorageOptions = getRogersSearchPage().getStorageSelections();
+		getRogersSearchPage().clkStorageType(strStorageOptions.get(0));
+		strColorOptions = getRogersSearchPage().getColorSelections();
+		getRogersSearchPage().clkColorType(strColorOptions.get(0));
 		reporter.reportLogWithScreenshot("Device:Smartphone; Brand:Apple; Storage:" + strStorageOptions.get(0)
 				+"; Color:" + strColorOptions.get(0) + " is Selected");
-		rogers_search_page.clkResetAllFilters();
+		getRogersSearchPage().clkResetAllFilters();
 		reporter.reportLogWithScreenshot("Reset All Filters button clicked");
-		reporter.hardAssert(rogers_search_page.validateAllFiltersCollapsed(),
+		reporter.hardAssert(getRogersSearchPage().validateAllFiltersCollapsed(),
 				"All Filters are Reset","Filters Not Reset");
-		reporter.hardAssert(rogers_search_page.validateResultsTag("Support"),
+		reporter.hardAssert(getRogersSearchPage().validateResultsTag("Support"),
 				"All Results Refreshed","Results Not Refreshed");
 	}
 

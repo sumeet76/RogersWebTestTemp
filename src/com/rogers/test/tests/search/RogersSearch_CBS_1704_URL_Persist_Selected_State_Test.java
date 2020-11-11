@@ -26,10 +26,10 @@ public class RogersSearch_CBS_1704_URL_Persist_Selected_State_Test extends BaseT
 
 		getDriver().get(System.getProperty("SearchUrl")+"wireless");
 
-		rogers_search_page.clkGrandParentFilter("Support");
-		rogers_search_page.clkParentFilter("Support","Billing/Accounts");
+		getRogersSearchPage().clkGrandParentFilter("Support");
+		getRogersSearchPage().clkParentFilter("Support","Billing/Accounts");
 		reporter.reportLogWithScreenshot("Support-Billing/Accounts Expanded");
-		reporter.softAssert(rogers_search_page.validateFiltersInUrl("Support","Billing/Accounts"),
+		reporter.softAssert(getRogersSearchPage().validateFiltersInUrl("Support","Billing/Accounts"),
 				"Support_Billing/Accounts appended in URL","Support_Billing/Accounts NOT appended in URL");
 		strCurrentUrl = getDriver().getCurrentUrl();
 		getDriver().get("about:blank");
@@ -37,35 +37,35 @@ public class RogersSearch_CBS_1704_URL_Persist_Selected_State_Test extends BaseT
 
 		getDriver().get(strCurrentUrl);
 		reporter.reportLogWithScreenshot("Browser re-launched with url - " + strCurrentUrl);
-		reporter.hardAssert(rogers_search_page.isGrandParentFilterExpanded("Support"),
+		reporter.hardAssert(getRogersSearchPage().isGrandParentFilterExpanded("Support"),
 				"Support filter expanded","Support filter Not expanded");
-		reporter.hardAssert(rogers_search_page.isParentFilterExpanded("Support","Billing/Accounts"),
+		reporter.hardAssert(getRogersSearchPage().isParentFilterExpanded("Support","Billing/Accounts"),
 				"Billing/Accounts filter expanded","Billing/Accounts filter Not expanded");
 
-		rogers_search_page.clkGrandParentFilter("Shop");
-		rogers_search_page.clkParentFilter("Shop","Wireless");
+		getRogersSearchPage().clkGrandParentFilter("Shop");
+		getRogersSearchPage().clkParentFilter("Shop","Wireless");
 		for (intIndex=0;intIndex<strDeviceType.length;intIndex++) {
-			rogers_search_page.clkDeviceType(strDeviceType[intIndex]);
+			getRogersSearchPage().clkDeviceType(strDeviceType[intIndex]);
 		}
 		for (intIndex=0;intIndex<strBrandType.length;intIndex++) {
-			rogers_search_page.clkBrandType(strBrandType[intIndex]);
+			getRogersSearchPage().clkBrandType(strBrandType[intIndex]);
 		}
 		for (intIndex=0;intIndex<strStorageType.length;intIndex++) {
-			rogers_search_page.clkStorageType(strStorageType[intIndex]);
+			getRogersSearchPage().clkStorageType(strStorageType[intIndex]);
 		}
 		for (intIndex=0;intIndex<strColorType.length;intIndex++) {
-			rogers_search_page.clkColorType(strColorType[intIndex]);
+			getRogersSearchPage().clkColorType(strColorType[intIndex]);
 		}
 		reporter.reportLogWithScreenshot("Filters Selected");
-		reporter.softAssert(rogers_search_page.validateFiltersInUrl("Shop","Wireless"),
+		reporter.softAssert(getRogersSearchPage().validateFiltersInUrl("Shop","Wireless"),
 				"Shop_Wireless appended in URL","Shop_Wireless NOT appended in URL");
-		reporter.softAssert(rogers_search_page.validateDeviceTypesInUrl(strDeviceType),
+		reporter.softAssert(getRogersSearchPage().validateDeviceTypesInUrl(strDeviceType),
 				Arrays.toString(strDeviceType) + " appended in URL",Arrays.toString(strDeviceType) + " NOT appended in URL");
-		reporter.softAssert(rogers_search_page.validateBrandsInUrl(strBrandType),
+		reporter.softAssert(getRogersSearchPage().validateBrandsInUrl(strBrandType),
 				Arrays.toString(strBrandType) + " appended in URL",Arrays.toString(strBrandType) + " NOT appended in URL");
-		reporter.softAssert(rogers_search_page.validateStoragesInUrl(strStorageType),
+		reporter.softAssert(getRogersSearchPage().validateStoragesInUrl(strStorageType),
 				Arrays.toString(strStorageType) + " appended in URL",Arrays.toString(strStorageType) + " NOT appended in URL");
-		reporter.softAssert(rogers_search_page.validateColorsInUrl(strColorType),
+		reporter.softAssert(getRogersSearchPage().validateColorsInUrl(strColorType),
 				Arrays.toString(strColorType) + " appended in URL",Arrays.toString(strColorType) + " NOT appended in URL");
 		strCurrentUrl = getDriver().getCurrentUrl();
 		getDriver().get("about:blank");
@@ -73,24 +73,24 @@ public class RogersSearch_CBS_1704_URL_Persist_Selected_State_Test extends BaseT
 
 		getDriver().get(strCurrentUrl);
 		reporter.reportLogWithScreenshot("Browser re-launched with url - " + strCurrentUrl);
-		reporter.softAssert(rogers_search_page.isGrandParentFilterExpanded("Shop"),
+		reporter.softAssert(getRogersSearchPage().isGrandParentFilterExpanded("Shop"),
 				"Shop filter expanded","Shop filter expanded");
-		reporter.softAssert(rogers_search_page.isParentFilterExpanded("Shop","Wireless"),
+		reporter.softAssert(getRogersSearchPage().isParentFilterExpanded("Shop","Wireless"),
 				"Wireless filter expanded","Wireless filter NOT expanded");
 		for (intIndex=0;intIndex<strDeviceType.length;intIndex++) {
-			reporter.softAssert(rogers_search_page.isFilterChecked(strDeviceType[intIndex]),
+			reporter.softAssert(getRogersSearchPage().isFilterChecked(strDeviceType[intIndex]),
 					strDeviceType[intIndex] + " is Checked",strDeviceType[intIndex] + " is Not Checked");
 		}
 		for (intIndex=0;intIndex<strBrandType.length;intIndex++) {
-			reporter.softAssert(rogers_search_page.isFilterChecked(strBrandType[intIndex]),
+			reporter.softAssert(getRogersSearchPage().isFilterChecked(strBrandType[intIndex]),
 					strBrandType[intIndex] + " is Checked",strBrandType[intIndex] + " is Not Checked");
 		}
 		for (intIndex=0;intIndex<strStorageType.length;intIndex++) {
-			reporter.softAssert(rogers_search_page.isFilterChecked(strStorageType[intIndex]),
+			reporter.softAssert(getRogersSearchPage().isFilterChecked(strStorageType[intIndex]),
 					strStorageType[intIndex] + " is Checked",strStorageType[intIndex] + " is Not Checked");
 		}
 		for (intIndex=0;intIndex<strColorType.length;intIndex++) {
-			reporter.softAssert(rogers_search_page.isFilterChecked(strColorType[intIndex]),
+			reporter.softAssert(getRogersSearchPage().isFilterChecked(strColorType[intIndex]),
 					strColorType[intIndex] + " is Checked",strColorType[intIndex] + " is Not Checked");
 		}
 	}

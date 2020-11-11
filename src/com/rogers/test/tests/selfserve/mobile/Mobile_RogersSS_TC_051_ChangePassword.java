@@ -35,66 +35,66 @@ public class Mobile_RogersSS_TC_051_ChangePassword extends BaseTestClass {
 	
     @Test(groups = {"MobileSanitySS"})
     public void validateUserChangePassword() {
-    	rogers_home_page.clkSignInMobile();
+    	getRogersHomePage().clkSignInMobile();
     	String strUsername = TestDataHandler.tc2751.getUsername();
     	String strPassword = TestDataHandler.tc2751.getPassword();
 		String strNewPassword = TestDataHandler.tc2751.getNewpassword();
-		rogers_login_page.switchToSignInIFrame();
+		getRogersLoginPage().switchToSignInIFrame();
 		tryLogin(strUsername, strPassword);
         //If login fail message show, change password and try login again 
-        if (rogers_login_page.verifyLoginFailMsgIframe()) {
+        if (getRogersLoginPage().verifyLoginFailMsgIframe()) {
         	reporter.reportLogWithScreenshot("Login Failed, use the updated password.");
         	String tempValue = strPassword;
         	strPassword = strNewPassword;
         	strNewPassword = tempValue;
         	tryLogin(strUsername, strPassword);
-        	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),
+        	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),
         			"Successfully login with new password.",
         			"Both login with original and new user name atemp failed, please investigate.");
         }
-        rogers_login_page.clkSkipIFrame();
-        rogers_login_page.switchOutOfSignInIFrame();
+        getRogersLoginPage().clkSkipIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();
         
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-        	rogers_account_overview_page.selectAccount(TestDataHandler.tc2751.getAccountDetails().getBan());       
+        	getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc2751.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");
-        rogers_profile_and_settings_page.clkCloseFeedbackIfAvailableMobile();
-		rogers_account_overview_page.clkLnkProfileNSettingsMobile();
+        getRogersProfileAndSettingsPage().clkCloseFeedbackIfAvailableMobile();
+		getRogersAccountOverviewPage().clkLnkProfileNSettingsMobile();
 		reporter.reportLogWithScreenshot("Profile & Settings page.");		
 		changePassword(strPassword, strNewPassword);
 		reporter.reportLogWithScreenshot("Change password is done.");
-        if (rogers_profile_and_settings_page.verifyUsername(strUsername)) {
+        if (getRogersProfileAndSettingsPage().verifyUsername(strUsername)) {
         	//Change password back after successfully changed password
             changePassword(strNewPassword, strPassword);
         }
     }
 
     private void tryLogin(String strUsername, String strPassword) {
-        rogers_login_page.setUsernameIFrame(strUsername);
-        rogers_login_page.setPasswordIFrame(strPassword);
+        getRogersLoginPage().setUsernameIFrame(strUsername);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-        rogers_login_page.clkSignInIFrame();
+        getRogersLoginPage().clkSignInIFrame();
 
     }
   
     private void changePassword(String strPassword, String strNewPassword) {
-		rogers_profile_and_settings_page.clkLnkChangePassword();
+		getRogersProfileAndSettingsPage().clkLnkChangePassword();
 		//verify the change password overlay is displayed or not
-		reporter.hardAssert(rogers_profile_and_settings_page.isOverlayChangePasswordDisplayed(),
+		reporter.hardAssert(getRogersProfileAndSettingsPage().isOverlayChangePasswordDisplayed(),
 							"Change password process ready to set new password.",
 							"Change password overlay didn't present.");
-		rogers_profile_and_settings_page.setCurrentPassword(strPassword);
-		rogers_profile_and_settings_page.setNewPassword(strNewPassword);
-		rogers_profile_and_settings_page.setConfirmPassword(strNewPassword);
+		getRogersProfileAndSettingsPage().setCurrentPassword(strPassword);
+		getRogersProfileAndSettingsPage().setNewPassword(strNewPassword);
+		getRogersProfileAndSettingsPage().setConfirmPassword(strNewPassword);
 		reporter.reportLogWithScreenshot("New password is entered.");
-		rogers_profile_and_settings_page.clkBtnChangePasswordSubmit();
+		getRogersProfileAndSettingsPage().clkBtnChangePasswordSubmit();
 		//verify success message --
-        reporter.hardAssert(rogers_profile_and_settings_page.verifyChangePasswordSuccessMsg(), 
+        reporter.hardAssert(getRogersProfileAndSettingsPage().verifyChangePasswordSuccessMsg(),
         						"Successfully changed password.", 
         						"Change password failed.");
-        rogers_profile_and_settings_page.clkBtnChangePasswordDone();
+        getRogersProfileAndSettingsPage().clkBtnChangePasswordDone();
     }
 
 }

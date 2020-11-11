@@ -4,9 +4,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import com.rogers.pages.base.BasePageClass;
 
-public class ChannelsAndThemePacksPage  extends BasePageClass {
+public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 
-	public ChannelsAndThemePacksPage(WebDriver driver) {
+	public RogersOVChannelsAndThemePacksPage(WebDriver driver) {
 		super(driver);
 	}
 	
@@ -38,22 +38,22 @@ public class ChannelsAndThemePacksPage  extends BasePageClass {
 	 * @author Harpartap.Virk
 	 */	
 	public void clkexchangeLater() {
-		reusableActions.clickWhenReady(exchangeLaterbtn);
+		getReusableActionsInstance().clickWhenReady(exchangeLaterbtn);
 	}	
 	/**
 	 * Click Collapse(Down Arrow)
 	 * @author Harpartap.Virk
 	 */	
 	public void clkCollapse() {
-		reusableActions.clickIfAvailable(collapse,20);
+		getReusableActionsInstance().clickIfAvailable(collapse,20);
 	}
 	/**
 	 * Click Customer Add-On review
 	 * @author harpartap.virk
 	 */
 	public void clkCustomerAddonReview() {
-			//reusableActions.javascriptScrollByVisibleElement(btnGetIgniteTVBadge);
-			reusableActions.getWhenReady(customerAddonReveiwLink,120).click();	
+			//getReusableActionsInstance().javascriptScrollByVisibleElement(btnGetIgniteTVBadge);
+			getReusableActionsInstance().getWhenReady(customerAddonReveiwLink,120).click();
 		}
 	
 	/**
@@ -62,7 +62,7 @@ public class ChannelsAndThemePacksPage  extends BasePageClass {
 	 * @author Harpartap.Virk
 	 */	
 	public boolean verifyreviewed() {	
-		return reusableActions.isElementVisible(continueButton,120);
+		return getReusableActionsInstance().isElementVisible(continueButton,120);
 			
 	}
 	/**
@@ -70,18 +70,18 @@ public class ChannelsAndThemePacksPage  extends BasePageClass {
 	 * @author Harpartap.Virk
 	 */	
 	public void clkCheckOut() {
-		reusableActions.clickWhenReady(checkOut,120);
-		//reusableActions.clickIfAvailable(checkOut,45);
-		//reusableActions.clickIfAvailable(continueforCheckout,45);
+		getReusableActionsInstance().clickWhenReady(checkOut,120);
+		//getReusableActionsInstance().clickIfAvailable(checkOut,45);
+		//getReusableActionsInstance().clickIfAvailable(continueforCheckout,45);
 	}
 	/**
 	 * Click Continue
 	 * @author Harpartap.Virk
 	 */	
 	public void clkContinue() {
-		reusableActions.clickWhenReady(continueButton,120);
-		//reusableActions.clickIfAvailable(checkOut,45);
-		//reusableActions.clickIfAvailable(continueforCheckout,45);
+		getReusableActionsInstance().clickWhenReady(continueButton,120);
+		//getReusableActionsInstance().clickIfAvailable(checkOut,45);
+		//getReusableActionsInstance().clickIfAvailable(continueforCheckout,45);
 	}
 	
 	/**
@@ -89,10 +89,10 @@ public class ChannelsAndThemePacksPage  extends BasePageClass {
 	 * @author Harpartap.Virk
 	 */	
 	public void clkMinicartContinue() {
-		reusableActions.clickWhenReady(minicartContinue,120);
-		reusableActions.waitForElementVisibility(btnContinueOn4kTv,120);
-		//reusableActions.clickIfAvailable(checkOut,45);
-		//reusableActions.clickIfAvailable(continueforCheckout,45);
+		getReusableActionsInstance().clickWhenReady(minicartContinue,120);
+		getReusableActionsInstance().waitForElementVisibility(btnContinueOn4kTv,120);
+		//getReusableActionsInstance().clickIfAvailable(checkOut,45);
+		//getReusableActionsInstance().clickIfAvailable(continueforCheckout,45);
 	}
 }
 

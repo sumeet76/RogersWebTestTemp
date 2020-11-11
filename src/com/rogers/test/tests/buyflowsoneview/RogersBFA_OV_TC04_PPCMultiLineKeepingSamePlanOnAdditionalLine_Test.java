@@ -23,47 +23,47 @@ public class RogersBFA_OV_TC04_PPCMultiLineKeepingSamePlanOnAdditionalLine_Test 
 
 	@Test
     public void ppcOnMultiLineKeepingSamePlanOnAdditionalLineFlowTest() {
-		environment_selection_page.presenceOfTheGoButton();
+		getEnvironmentSelectionPage().presenceOfTheGoButton();
 		reporter.reportLogWithScreenshot("Rogers Choose Phone page");
-		environment_selection_page.selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
-        reporter.hardAssert(account_over_view_page.verifySuccessfulLogin(), "Login Successful", "Login Failed");
+		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
+        reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page");
-        reporter.hardAssert(account_over_view_page.verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase04.getCtn()), "Select CTN Passed", "Select CTN Failed");
-        account_over_view_page.clkCloseBtnAssignDataManager();
-		//account_over_view_page.clkBtnOkOneViewDialoue();
+        reporter.hardAssert(getAccountOverViewPage().verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase04.getCtn()), "Select CTN Passed", "Select CTN Failed");
+        getAccountOverViewPage().clkCloseBtnAssignDataManager();
+		//getAccountOverViewPage().clkBtnOkOneViewDialoue();
         reporter.reportLogWithScreenshot("Wireless Dashboard Page");
-        rogersOV_wireless_details_page.clickChangePlanButton();
+        getRogersOVWirelessDetailsPage().clickChangePlanButton();
         reporter.reportLogWithScreenshot("Change share plan page");
-        rogersOV_ChangeSharePlan_page.clickEditButton();
+        getRogersOVChangeSharePlanPage().clickEditButton();
         reporter.reportLogWithScreenshot("Choose Plan page");
-        rogersOV_ChoosePlan_page.clkSharedLineOne();
-        rogersOV_ChoosePlan_page.selectPlanCategory(TestDataHandler.buyFlowsOVtestCase04.getNewPlanCategory());
-        rogersOV_ChoosePlan_page.selectFirstAvailablePlan();
-        rogersOV_ChoosePlan_page.verifyAndClickDowngradeFeeContinue();
+        getRogersOVChoosePlanPage().clkSharedLineOne();
+        getRogersOVChoosePlanPage().selectPlanCategory(TestDataHandler.buyFlowsOVtestCase04.getNewPlanCategory());
+        getRogersOVChoosePlanPage().selectFirstAvailablePlan();
+        getRogersOVChoosePlanPage().verifyAndClickDowngradeFeeContinue();
         /*
-        rogersOV_ChoosePlan_page.clkSharedLineTwo();
-        rogersOV_ChoosePlan_page.selectPlanCategory(TestDataHandler.buyFlowsOVtestCase03.getNewPlanCategory());
-        rogersOV_ChoosePlan_page.selectFirstAvailablePlan();
-        rogersOV_ChoosePlan_page.verifyAndClickDowngradeFeeContinue();
+        getRogersOVChoosePlanPage().clkSharedLineTwo();
+        getRogersOVChoosePlanPage().selectPlanCategory(TestDataHandler.buyFlowsOVtestCase03.getNewPlanCategory());
+        getRogersOVChoosePlanPage().selectFirstAvailablePlan();
+        getRogersOVChoosePlanPage().verifyAndClickDowngradeFeeContinue();
         */
-        rogersOV_ChoosePlan_page.clkCheckout();
+        getRogersOVChoosePlanPage().clkCheckout();
         reporter.reportLogWithScreenshot("Rogers Choose Addons Page");
-		rogersOV_choose_addons_page.clkContinueHUP();
-        order_Review_Page.selectEmailDigitalCopy(TestDataHandler.buyFlowsOVtestCase04.getUsername());
+		getRogersOVChooseAddonsPage().clkContinueHUP();
+        getRogersOVOrderReviewPage().selectEmailDigitalCopy(TestDataHandler.buyFlowsOVtestCase04.getUsername());
         reporter.reportLogWithScreenshot("Order Review page");
-        if(order_Review_Page.isPaymentRequired()) {
-        	order_Review_Page.clkContinue();
-        	rogersOV_payment_page.setCreditCardDetails(TestDataHandler.bfaOneViewPaymentInfo.getCreditCardDetails().getNumber(), 
+        if(getRogersOVOrderReviewPage().isPaymentRequired()) {
+        	getRogersOVOrderReviewPage().clkContinue();
+        	getRogersOVPaymentPage().setCreditCardDetails(TestDataHandler.bfaOneViewPaymentInfo.getCreditCardDetails().getNumber(),
    				 TestDataHandler.bfaOneViewPaymentInfo.getCreditCardDetails().getExpiryMonth(), 
    				 TestDataHandler.bfaOneViewPaymentInfo.getCreditCardDetails().getExpiryYear(),
    				 TestDataHandler.bfaOneViewPaymentInfo.getCreditCardDetails().getCVV());
         	reporter.reportLogWithScreenshot("Rogers Payment Page");
-        	rogersOV_payment_page.clkSubmit();
+        	getRogersOVPaymentPage().clkSubmit();
         } else {
-        	order_Review_Page.clkSubmitOrder();
+        	getRogersOVOrderReviewPage().clkSubmitOrder();
         }
-        reporter.hardAssert(order_Confirmation_Page.verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
-        reporter.hardAssert(order_Confirmation_Page.verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
         reporter.reportLogWithScreenshot("Order Confirmation page");
    }
 

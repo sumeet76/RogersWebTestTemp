@@ -18,19 +18,19 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class OneViewCH_TC_018d_Internet_DashboardSupportLinksAvailabilityTest extends BaseTestClass {
     @Test
     public void checkInernetDashboardSupportLinkTest() {
-		environment_selection_page.selectOneViewEnv(TestDataHandler.chOneViewConfig.getOneViewenv());
+		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.chOneViewConfig.getOneViewenv());
 		reporter.reportLogWithScreenshot("Launched the account dashboard page");
-		account_over_view_page.selectInternetBadage();
+		getAccountOverViewPage().selectInternetBadage();
 		reporter.reportLogWithScreenshot("Lanched the internet dashboard page ");
-		reporter.softAssert(internet_dashboard_page.verifLlnkLearnMoreWallToWallWifi(),"Learn more about wall to wall wifi Link is available","Learn more about wall to wall wifi Link is not available");
-		reporter.softAssert(internet_dashboard_page.verifyLnkUnderstandingWifi(),"Understanging wifi link available" ,"Understanging wifi link not available ");		
-		reporter.softAssert(internet_dashboard_page.verifyLnkTestInternetSpeed(),"Test internet speed link available","Test internet speed link not available");
-		reporter.softAssert(internet_dashboard_page.verifyLnkTipsForPlacingEero(),"Tips for placing eero link available","Tips for placing eero link not available");		
-		reporter.softAssert(internet_dashboard_page.verifyLnkHowToOptimizeSpeed(),"How to optimize link available","How to optimize link not available");
-		reporter.softAssert(internet_dashboard_page.verifyLnkGoToSupportSection(),"Go to support section link available","Go to support section link not available");
-		//internet_dashboard_page.goToPageBottom();
+		reporter.softAssert(getInternetDashboardPage().verifLlnkLearnMoreWallToWallWifi(),"Learn more about wall to wall wifi Link is available","Learn more about wall to wall wifi Link is not available");
+		reporter.softAssert(getInternetDashboardPage().verifyLnkUnderstandingWifi(),"Understanging wifi link available" ,"Understanging wifi link not available ");
+		reporter.softAssert(getInternetDashboardPage().verifyLnkTestInternetSpeed(),"Test internet speed link available","Test internet speed link not available");
+		reporter.softAssert(getInternetDashboardPage().verifyLnkTipsForPlacingEero(),"Tips for placing eero link available","Tips for placing eero link not available");
+		reporter.softAssert(getInternetDashboardPage().verifyLnkHowToOptimizeSpeed(),"How to optimize link available","How to optimize link not available");
+		reporter.softAssert(getInternetDashboardPage().verifyLnkGoToSupportSection(),"Go to support section link available","Go to support section link not available");
+		//getInternetDashboardPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("All links available ");
-		//internet_dashboard_page.goToPageMid();
+		//getInternetDashboardPage().goToPageMid();
 		//reporter.reportLogWithScreenshot("All links available ");
 
     }

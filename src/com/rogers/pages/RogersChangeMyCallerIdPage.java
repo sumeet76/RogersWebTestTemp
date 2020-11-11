@@ -58,7 +58,7 @@ public class RogersChangeMyCallerIdPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean isExceedLimitOverlayPopup() {
-		return reusableActions.isElementVisible(msgExceedLimit, 10);
+		return getReusableActionsInstance().isElementVisible(msgExceedLimit, 10);
 	}
 	
 	/**
@@ -66,7 +66,7 @@ public class RogersChangeMyCallerIdPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnDoneInExceedLimitOverlay() {
-		reusableActions.clickWhenReady(btnDoneInExceedLimitOverlay, 10);
+		getReusableActionsInstance().clickWhenReady(btnDoneInExceedLimitOverlay, 10);
 	}
 	
 	/**
@@ -75,9 +75,9 @@ public class RogersChangeMyCallerIdPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void setNewCallerIdFirstName(String strFirstName) {
-		reusableActions.getWhenReady(divCallerIdFirstName, 20).click();
-		reusableActions.getWhenReady(txtCallerIdFirstName,10).clear();
-		reusableActions.getWhenReady(txtCallerIdFirstName).sendKeys(strFirstName);
+		getReusableActionsInstance().getWhenReady(divCallerIdFirstName, 20).click();
+		getReusableActionsInstance().getWhenReady(txtCallerIdFirstName,10).clear();
+		getReusableActionsInstance().getWhenReady(txtCallerIdFirstName).sendKeys(strFirstName);
 	}
 	
 	/**
@@ -86,9 +86,9 @@ public class RogersChangeMyCallerIdPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void setNewCallerIdLastName(String strLastName) {
-		reusableActions.getWhenReady(divCallerIdLastName, 10).click();
-//		reusableActions.getWhenReady(txtCallerIdFirstName,10).clear();
-		reusableActions.getWhenReady(txtCallerIdLastName).sendKeys(strLastName);
+		getReusableActionsInstance().getWhenReady(divCallerIdLastName, 10).click();
+//		getReusableActionsInstance().getWhenReady(txtCallerIdFirstName,10).clear();
+		getReusableActionsInstance().getWhenReady(txtCallerIdLastName).sendKeys(strLastName);
 	}
 	
 	/**
@@ -96,7 +96,7 @@ public class RogersChangeMyCallerIdPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickContinue() {
-		reusableActions.getWhenReady(btnContinue,30).click();
+		getReusableActionsInstance().getWhenReady(btnContinue,30).click();
 	}
 	
 	/**
@@ -104,7 +104,7 @@ public class RogersChangeMyCallerIdPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickSubmit() {
-		reusableActions.getWhenReady(btnSubmit,30).click();
+		getReusableActionsInstance().getWhenReady(btnSubmit,30).click();
 	}
 	
 	/**
@@ -113,7 +113,7 @@ public class RogersChangeMyCallerIdPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyCallerIdChangeSuccessMsg() {
-		return reusableActions.isElementVisible(lblChangeCallerIdSuccess,60);
+		return getReusableActionsInstance().isElementVisible(lblChangeCallerIdSuccess,60);
 	}
 	
 	/**
@@ -121,10 +121,10 @@ public class RogersChangeMyCallerIdPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickDone() {
-		if (reusableActions.isElementVisible(imgLoading)) {
-			reusableActions.waitForElementInvisibility(imgLoading, 30);
+		if (getReusableActionsInstance().isElementVisible(imgLoading)) {
+			getReusableActionsInstance().waitForElementInvisibility(imgLoading, 30);
 		}
-		reusableActions.getWhenReady(btnDone,20).click();
+		getReusableActionsInstance().getWhenReady(btnDone,20).click();
 	}
 	
 	/**
@@ -133,7 +133,7 @@ public class RogersChangeMyCallerIdPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyLinkLiveChatOnExceedLimitOverlay() {
-		return reusableActions.isElementVisible(lnkLiveChat,20);
+		return getReusableActionsInstance().isElementVisible(lnkLiveChat,20);
 	}
 	
 	/**
@@ -142,8 +142,8 @@ public class RogersChangeMyCallerIdPage extends BasePageClass {
 	 */
 //TODO
 	public void clkLinkLiveChatOnExceedLimitOverlay() {
-		reusableActions.getWhenReady(lnkLiveChat,30).click();
-		reusableActions.staticWait(1000);
-		reusableActions.getWhenReady(lnkLiveChat,10).click();
+		getReusableActionsInstance().getWhenReady(lnkLiveChat,30).click();
+		getReusableActionsInstance().staticWait(1000);
+		getReusableActionsInstance().getWhenReady(lnkLiveChat,10).click();
 	}
 }

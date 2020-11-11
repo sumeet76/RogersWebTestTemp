@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utils.DigiAutoCustomException;
 
 import java.util.List;
 
@@ -80,7 +81,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public boolean verifyContinueButton() {
-        if (reusableActions.isElementVisible(continueButton))
+        if (getReusableActionsInstance().isElementVisible(continueButton))
             return true;
         else
             return false;
@@ -92,8 +93,8 @@ public class RogersDeviceConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void clickOnBackOrderShipHomebutton() {
-        if (reusableActions.isElementVisible(backOrderShipHome))
-            reusableActions.clickIfAvailable(backOrderShipHome, 10);
+        if (getReusableActionsInstance().isElementVisible(backOrderShipHome))
+            getReusableActionsInstance().clickIfAvailable(backOrderShipHome, 10);
     }
 
     /***
@@ -101,8 +102,8 @@ public class RogersDeviceConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void clickContinueButton() {
-        if (reusableActions.isElementVisible(continueButton))
-            reusableActions.clickWhenReady(continueButton);
+        if (getReusableActionsInstance().isElementVisible(continueButton))
+            getReusableActionsInstance().clickWhenReady(continueButton);
     }
 
     /***
@@ -112,7 +113,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public boolean verifyDeviceNameWithDeepLink(String deeplink) {
-        String phoneNameFromPage = reusableActions.getWhenReady(deviceName, 30).getText();
+        String phoneNameFromPage = getReusableActionsInstance().getWhenReady(deviceName, 30).getText();
         int phoneIndexInDeepLink = deeplink.indexOf("/phones/") + 8;
         String phoneNameFromDeepLink = deeplink.substring(phoneIndexInDeepLink, deeplink.substring(phoneIndexInDeepLink).indexOf("?") + phoneIndexInDeepLink).replace("-", " ").replaceAll(" Plus", "+");
         if (phoneNameFromPage.equalsIgnoreCase(phoneNameFromDeepLink)) {
@@ -173,7 +174,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
     WebElement eligiblePostalCodeinBanner;
 
     public String verifyeligiblePostalCodeinBanner(){
-        reusableActions.getWhenVisible(eligiblePostalCodeinBanner,20);
+        getReusableActionsInstance().getWhenVisible(eligiblePostalCodeinBanner,20);
         return eligiblePostalCodeinBanner.getText().replaceAll("\\s+","");
     }
 
@@ -201,7 +202,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
 
     public boolean verifyDefaultColorSelected() {
         for (WebElement deviceColor : allDeviceColor) {
-            if (!reusableActions.isAttribtuePresent(deviceColor, "disabled")) {
+            if (!getReusableActionsInstance().isAttribtuePresent(deviceColor, "disabled")) {
                 if (deviceColor.getAttribute("checked").equalsIgnoreCase("true")){
                     return true;
                 }
@@ -218,7 +219,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
      */
     public boolean verifyDefaultSizeSelected () {
         for (WebElement deviceSize : allDeviceSize) {
-            if (!reusableActions.isAttribtuePresent(deviceSize, "disabled")) {
+            if (!getReusableActionsInstance().isAttribtuePresent(deviceSize, "disabled")) {
                 if (deviceSize.getAttribute("checked").equalsIgnoreCase("true")) {
                     return true;
                 }
@@ -234,8 +235,8 @@ public class RogersDeviceConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public boolean verifyBreadCrumb () {
-        String phoneNameFromPage = reusableActions.getWhenReady(deviceName, 30).getText();
-        if (reusableActions.isElementVisible(devicesInBreadCrumb) && breadCrumb.getText().contains(phoneNameFromPage))
+        String phoneNameFromPage = getReusableActionsInstance().getWhenReady(deviceName, 30).getText();
+        if (getReusableActionsInstance().isElementVisible(devicesInBreadCrumb) && breadCrumb.getText().contains(phoneNameFromPage))
             return true;
         return false;
     }
@@ -246,7 +247,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public String getDownPrice(){
-        return reusableActions.getWhenReady(getPhoneDownPrice, 10).getText().replaceAll("\\n", " ");
+        return getReusableActionsInstance().getWhenReady(getPhoneDownPrice, 10).getText().replaceAll("\\n", " ");
     }
 
     /**
@@ -255,7 +256,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
      * @author Nimmy.George
      */
     public String getFullPrice(){
-        return reusableActions.getWhenReady(getPhoneFullPrice, 10).getText().replaceAll("\\n", " ");
+        return getReusableActionsInstance().getWhenReady(getPhoneFullPrice, 10).getText().replaceAll("\\n", " ");
     }
 
 
@@ -266,7 +267,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public String deviceInfoDeviceConfigPage(){
-        return reusableActions.getWhenReady(deviceName, 30).getText().toUpperCase() + " " + checkedDeviceSize.getAttribute("value").toUpperCase() + " " + colourText.getText().trim().toUpperCase();
+        return getReusableActionsInstance().getWhenReady(deviceName, 30).getText().toUpperCase() + " " + checkedDeviceSize.getAttribute("value").toUpperCase() + " " + colourText.getText().trim().toUpperCase();
     }
 
     /**
@@ -275,7 +276,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public String deviceInfoDeviceNameDeviceConfigPage () {
-        return reusableActions.getWhenReady(deviceName, 30).getText().toUpperCase();
+        return getReusableActionsInstance().getWhenReady(deviceName, 30).getText().toUpperCase();
     }
 
     /**
@@ -306,7 +307,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void selectDeviceColor (String deviceColor){
-        reusableActions.clickWhenReady(By.xpath("//input[@value='" + deviceColor + "']/ancestor::label//span[contains(@class,'dsa-selection__label')]"), 10);
+        getReusableActionsInstance().clickWhenReady(By.xpath("//input[@value='" + deviceColor + "']/ancestor::label//span[contains(@class,'dsa-selection__label')]"), 10);
 
     }
 
@@ -316,7 +317,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void selectDeviceSize (String deviceSize){
-        reusableActions.clickWhenReady(By.xpath("//span[contains(@data-caption,'" + deviceSize + "')]/ancestor::span"), 10);
+        getReusableActionsInstance().clickWhenReady(By.xpath("//span[contains(@data-caption,'" + deviceSize + "')]/ancestor::span"), 10);
     }
 
     /**
@@ -325,8 +326,8 @@ public class RogersDeviceConfigPage extends BasePageClass {
      * @author Pranav.Shaligram
      */
     public String getPromoBlockText () {
-    	reusableActions.javascriptScrollByVisibleElement(promoBlock);
-        return reusableActions.getWhenReady(promoBlock, 10).getText().trim().replaceAll("\\n", " ");
+    	getReusableActionsInstance().javascriptScrollByVisibleElement(promoBlock);
+        return getReusableActionsInstance().getWhenReady(promoBlock, 10).getText().trim().replaceAll("\\n", " ");
     }
 
     /**
@@ -358,7 +359,11 @@ public class RogersDeviceConfigPage extends BasePageClass {
      * @author rajesh.varalli1
      */
     public String getDeviceName() {
-        reusableActions.waitForElementTobeClickable(deviceName,30);
+        try {
+            getReusableActionsInstance().waitForElementTobeClickable(deviceName,30);
+        } catch (DigiAutoCustomException e) {
+            return null;
+        }
         return deviceName.getText().trim();
     }
 
@@ -368,12 +373,8 @@ public class RogersDeviceConfigPage extends BasePageClass {
      * @author rajesh.varalli1
      */
     public void navigateBack() {
-        driver.navigate().back();
-        if(reusableActions.isElementVisible(deviceName,3)) {
-            driver.navigate().back();
-            driver.navigate().back();
-        }
-        reusableActions.staticWait(3000);
+        getDriver().navigate().back();
+        getReusableActionsInstance().staticWait(1000);
     }
 
     public String getSelectedStorage() {
@@ -385,13 +386,13 @@ public class RogersDeviceConfigPage extends BasePageClass {
     }
 
     public String getSelectedSize() {
-        reusableActions.staticWait(3000);
-        WebElement lblSizeValue = driver.findElement(By.xpath("//div[contains(@class,'common-devices') and contains(@class,'active')]//div[contains(@class,'size-switch') and contains(@class,'active')]/a"));
+        getReusableActionsInstance().staticWait(3000);
+        WebElement lblSizeValue = getDriver().findElement(By.xpath("//div[contains(@class,'common-devices') and contains(@class,'active')]//div[contains(@class,'size-switch') and contains(@class,'active')]/a"));
         return lblSizeValue.getText().trim().replace(" ","");
     }
 
     public String getSelectedWatchColor() {
-        String btnWatchColor = driver.findElement(By.xpath("//div[contains(@class,'color-switch') and contains(@class,'active') and @style='display: block;']/a")).getAttribute("class").split("-")[0];
+        String btnWatchColor = getDriver().findElement(By.xpath("//div[contains(@class,'color-switch') and contains(@class,'active') and @style='display: block;']/a")).getAttribute("class").split("-")[0];
         return btnWatchColor.trim().replace(" ","");
     }
 }

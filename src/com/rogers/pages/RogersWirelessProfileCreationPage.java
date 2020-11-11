@@ -52,9 +52,9 @@ public class RogersWirelessProfileCreationPage extends BasePageClass {
 	 */
 	public void setCommunicationDetails(){
 		String strEmail = FormFiller.generateEmail();
-		reusableActions.getWhenReady(txtEmail, 3).clear();
+		getReusableActionsInstance().getWhenReady(txtEmail, 3).clear();
 		txtEmail.sendKeys(strEmail);
-		reusableActions.getWhenReady(txtConfirmEmail, 3).clear();
+		getReusableActionsInstance().getWhenReady(txtConfirmEmail, 3).clear();
 		txtConfirmEmail.sendKeys(strEmail);
 	}
 	
@@ -64,7 +64,7 @@ public class RogersWirelessProfileCreationPage extends BasePageClass {
 	 */
 	public void setFirstName(){
 		String strFname = FormFiller.generateRandomName();
-		reusableActions.getWhenReady(txtFirstName, 3).clear();
+		getReusableActionsInstance().getWhenReady(txtFirstName, 3).clear();
 		txtFirstName.sendKeys(strFname);
 	}
 	
@@ -74,7 +74,7 @@ public class RogersWirelessProfileCreationPage extends BasePageClass {
 	 */
 	public void setLastName(){
 		String strLname = FormFiller.generateRandomName();
-		reusableActions.getWhenReady(txtLastName, 3).clear();
+		getReusableActionsInstance().getWhenReady(txtLastName, 3).clear();
 		txtLastName.sendKeys(strLname);
 	}
 	
@@ -93,7 +93,7 @@ public class RogersWirelessProfileCreationPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void setContactNumber(String strPhoneNumber) {
-		reusableActions.getWhenReady(txtContactNumber, 3).clear();
+		getReusableActionsInstance().getWhenReady(txtContactNumber, 3).clear();
 		txtContactNumber.sendKeys(strPhoneNumber);
 	}
 	
@@ -106,9 +106,9 @@ public class RogersWirelessProfileCreationPage extends BasePageClass {
 		txtBillingAddress.sendKeys(billingAddress);
 		txtBillingAddress.sendKeys("a");
 		txtBillingAddress.sendKeys(Keys.BACK_SPACE);
-		reusableActions.staticWait(3000);
-		reusableActions.executeJavaScriptClick(lblAddressResult);
-		reusableActions.staticWait(3000);
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().executeJavaScriptClick(lblAddressResult);
+		getReusableActionsInstance().staticWait(3000);
 	}
 	
 	/**
@@ -116,7 +116,7 @@ public class RogersWirelessProfileCreationPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkUseBillingAddress() {
-		reusableActions.clickWhenReady(lblBillingAddress);
+		getReusableActionsInstance().clickWhenReady(lblBillingAddress);
 	}
 	
 	/**
@@ -124,7 +124,7 @@ public class RogersWirelessProfileCreationPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkContinue() {
-		reusableActions.clickWhenReady(btnContinue);
+		getReusableActionsInstance().clickWhenReady(btnContinue);
 	}
 	
 }

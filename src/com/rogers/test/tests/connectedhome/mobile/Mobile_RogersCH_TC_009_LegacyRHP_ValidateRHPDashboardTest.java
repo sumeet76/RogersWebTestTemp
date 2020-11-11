@@ -29,23 +29,23 @@ public class Mobile_RogersCH_TC_009_LegacyRHP_ValidateRHPDashboardTest extends B
     @Test(groups = {"MobileRegressionCH"})
 	public void checkLegacyRHPDashboardMobile() {
         reporter.reportLogWithScreenshot("Home Page");
-    	rogers_home_page.clkSignInMobile();    	
-        rogers_login_page.switchToSignInIFrame();
+    	getRogersHomePage().clkSignInMobile();
+        getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setUsernameIFrame(TestDataHandler.tc48_legacyRHP.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.tc48_legacyRHP.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc48_legacyRHP.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc48_legacyRHP.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
-        rogers_login_page.clkSignInIFrame();
-    	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        getRogersLoginPage().clkSignInIFrame();
+    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
-        rogers_login_page.clkSkipIFrame();
-        rogers_login_page.switchOutOfSignInIFrame();
-		reporter.hardAssert(rogers_account_overview_page.verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
+        getRogersLoginPage().clkSkipIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();
+		reporter.hardAssert(getRogersAccountOverviewPage().verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.clkRHPBadgeMobile();
+		getRogersAccountOverviewPage().clkRHPBadgeMobile();
 		reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");
-		reporter.hardAssert(rogers_solaris_rhp_dashboard_validation_page.verifyRHPBanner(),"Verifed the RHP dashboard","RHP dashboard Verification has failed");
-		reporter.hardAssert(rogers_account_overview_page.verfyContactUsToManageFeaturess(),"Contact Us To Manage Featuress link has present on RHP dashboard","Contact Us To Manage Featuress link has not present on RHP dashboard");		
+		reporter.hardAssert(getRogersSolarisRHPDashboardPage().verifyRHPBanner(),"Verifed the RHP dashboard","RHP dashboard Verification has failed");
+		reporter.hardAssert(getRogersAccountOverviewPage().verfyContactUsToManageFeaturess(),"Contact Us To Manage Featuress link has present on RHP dashboard","Contact Us To Manage Featuress link has not present on RHP dashboard");		
 	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

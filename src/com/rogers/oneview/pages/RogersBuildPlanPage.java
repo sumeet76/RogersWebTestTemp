@@ -82,10 +82,10 @@ public class RogersBuildPlanPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void selectFirstPlanInPickNewPlan() {
-		reusableActions.waitForPageLoad();
-		reusableActions.javascriptScrollByVisibleElement(lblData);
-		reusableActions.clickWhenReady(addPlan.get(0), 30);
-		reusableActions.staticWait(2000);
+		getReusableActionsInstance().waitForPageLoad();
+		getReusableActionsInstance().javascriptScrollByVisibleElement(lblData);
+		getReusableActionsInstance().clickWhenReady(addPlan.get(0), 30);
+		getReusableActionsInstance().staticWait(2000);
 	}
 	
 	/**
@@ -93,10 +93,10 @@ public class RogersBuildPlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void selectFirstAvailablePlan() {
-		reusableActions.waitForPageLoad();
-		reusableActions.clickWhenReady(btnAdd.get(0), 30);
-		reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(btnAdd.get(0), 30));
-		reusableActions.staticWait(2000);
+		getReusableActionsInstance().waitForPageLoad();
+		getReusableActionsInstance().clickWhenReady(btnAdd.get(0), 30);
+		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(btnAdd.get(0), 30));
+		getReusableActionsInstance().staticWait(2000);
 	}
 
 	/**
@@ -106,9 +106,9 @@ public class RogersBuildPlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean handleTodayOfferOverlay() {
-		if(reusableActions.isElementVisible(btnGetThisOffer, 3)) {
-			reusableActions.clickWhenReady(btnGetThisOffer);
-			reusableActions.clickWhenVisible(By.xpath("//span[@res='continue_to_addons']/parent::button"), 10);
+		if(getReusableActionsInstance().isElementVisible(btnGetThisOffer, 3)) {
+			getReusableActionsInstance().clickWhenReady(btnGetThisOffer);
+			getReusableActionsInstance().clickWhenVisible(By.xpath("//span[@res='continue_to_addons']/parent::button"), 10);
 			return false;
 		} else {
 			return true;
@@ -121,16 +121,16 @@ public class RogersBuildPlanPage extends BasePageClass {
 	 */
 	public void clkContinue() {
 		if(handleTodayOfferOverlay()) {
-			reusableActions.clickWhenReady(btnContinue,120);			
+			getReusableActionsInstance().clickWhenReady(btnContinue,120);
 		}
 
-		if(reusableActions.isElementVisible(By.xpath("//span[@res='_upfront_amount']"),2)) {
-			reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(By.xpath("//div[@class='upfront-popup-button']/a[@translate='new_Confirm']")));
+		if(getReusableActionsInstance().isElementVisible(By.xpath("//span[@res='_upfront_amount']"),2)) {
+			getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(By.xpath("//div[@class='upfront-popup-button']/a[@translate='new_Confirm']")));
 		}
 
-		if(reusableActions.isElementVisible(planSlider, 2)) {
-			reusableActions.waitForElementVisibility(planSlider, 60);
-			//reusableActions.clickIfAvailable(btnContinue, 120);		
+		if(getReusableActionsInstance().isElementVisible(planSlider, 2)) {
+			getReusableActionsInstance().waitForElementVisibility(planSlider, 60);
+			//getReusableActionsInstance().clickIfAvailable(btnContinue, 120);
 		}
 	}
 
@@ -180,10 +180,10 @@ public class RogersBuildPlanPage extends BasePageClass {
 			break;
 		}
 
-		reusableActions.dragAndDrop(planSlider, reusableActions.getWhenReady(By.xpath("//div[@res='Category-" + planCat + "']"),60));
-		reusableActions.dragAndDrop(planSlider, reusableActions.getWhenReady(By.xpath("//div[@res='Category-" + planCat + "']")));
+		getReusableActionsInstance().dragAndDrop(planSlider, getReusableActionsInstance().getWhenReady(By.xpath("//div[@res='Category-" + planCat + "']"),60));
+		getReusableActionsInstance().dragAndDrop(planSlider, getReusableActionsInstance().getWhenReady(By.xpath("//div[@res='Category-" + planCat + "']")));
 		if(planCat.contains("FIN")) {
-			reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(By.xpath("//span[contains(@translate-values, 'month:') and contains(@translate-values, '" + strTermMonths.trim() + "')]")));
+			getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(By.xpath("//span[contains(@translate-values, 'month:') and contains(@translate-values, '" + strTermMonths.trim() + "')]")));
 		}
 	}
 
@@ -194,7 +194,7 @@ public class RogersBuildPlanPage extends BasePageClass {
 	 */
 	public void selectEdgeFinancing(String strTermMonths) {
 		selectPlanCategory("EDGE FIN");
-		reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(By.xpath("//span[contains(@translate-values, 'month:') and contains(@translate-values, '" + strTermMonths.trim() + "')]")));
+		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(By.xpath("//span[contains(@translate-values, 'month:') and contains(@translate-values, '" + strTermMonths.trim() + "')]")));
 	}
 
 	/**
@@ -202,9 +202,9 @@ public class RogersBuildPlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkCallingOptionsOkay() {
-		reusableActions.waitForElementVisibility(btnOkay, 100);
-		reusableActions.clickWhenReady(btnOkay);
-		reusableActions.staticWait(5000);
+		getReusableActionsInstance().waitForElementVisibility(btnOkay, 100);
+		getReusableActionsInstance().clickWhenReady(btnOkay);
+		getReusableActionsInstance().staticWait(5000);
 	}
 
 	/**
@@ -212,7 +212,7 @@ public class RogersBuildPlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkAddALine() {
-		reusableActions.clickWhenReady(lnkAddALine);
+		getReusableActionsInstance().clickWhenReady(lnkAddALine);
 	}
 
 	/**
@@ -220,7 +220,7 @@ public class RogersBuildPlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkOverlayContinue() {
-		reusableActions.clickWhenReady(btnOverlayContinue);
+		getReusableActionsInstance().clickWhenReady(btnOverlayContinue);
 	}
 
 	/**
@@ -228,7 +228,7 @@ public class RogersBuildPlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkSelect() {
-		reusableActions.executeJavaScriptClick(btnSelect);
+		getReusableActionsInstance().executeJavaScriptClick(btnSelect);
 	}
 
 	/**
@@ -255,7 +255,7 @@ public class RogersBuildPlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void selectLowerPricePlan() {
-		reusableActions.getWhenReady(By.xpath("//button[@res='_add']"), 40);
+		getReusableActionsInstance().getWhenReady(By.xpath("//button[@res='_add']"), 40);
 		String newPlan = null;
 		String strCurPln = getCurrentPlanCategory().toUpperCase();
 		double dblCurPlnVal = getCurrentPlanValue();
@@ -273,8 +273,8 @@ public class RogersBuildPlanPage extends BasePageClass {
 		selectPlanCategory(newPlan);
 
 		for (int index=0; index<lblPlanValue.size(); index++) {
-			if(Double.parseDouble(reusableActions.getWhenReady(lblPlanValue.get(index),30).getText().replace("$", "").trim()) < dblCurPlnVal) {
-				reusableActions.executeJavaScriptClick(btnAdd.get(index));
+			if(Double.parseDouble(getReusableActionsInstance().getWhenReady(lblPlanValue.get(index),30).getText().replace("$", "").trim()) < dblCurPlnVal) {
+				getReusableActionsInstance().executeJavaScriptClick(btnAdd.get(index));
 				break;
 			}
 		}
@@ -286,7 +286,7 @@ public class RogersBuildPlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void selectHigherPricePlan() {
-		reusableActions.getWhenReady(By.xpath("//button[@res='_add']"), 40);
+		getReusableActionsInstance().getWhenReady(By.xpath("//button[@res='_add']"), 40);
 		String newPlan = null;
 		String strCurPln = getCurrentPlanCategory().toUpperCase();
 		double dblCurPlnVal = getCurrentPlanValue();
@@ -304,8 +304,8 @@ public class RogersBuildPlanPage extends BasePageClass {
 		selectPlanCategory(newPlan);
 
 		for (int index=0; index<lblPlanValue.size(); index++) {
-			if(Double.parseDouble(reusableActions.getWhenReady(lblPlanValue.get(index),30).getText().replace("$", "").trim()) > dblCurPlnVal) {
-				reusableActions.executeJavaScriptClick(btnAdd.get(index));
+			if(Double.parseDouble(getReusableActionsInstance().getWhenReady(lblPlanValue.get(index),30).getText().replace("$", "").trim()) > dblCurPlnVal) {
+				getReusableActionsInstance().executeJavaScriptClick(btnAdd.get(index));
 				break;
 			}
 		}
@@ -316,8 +316,8 @@ public class RogersBuildPlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void selectExistingPlan() {
-		reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(lnkKeepExisting, 40));
-		reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(btnSelectExistingPlan, 30));
+		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(lnkKeepExisting, 40));
+		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(btnSelectExistingPlan, 30));
 	}
 
 }

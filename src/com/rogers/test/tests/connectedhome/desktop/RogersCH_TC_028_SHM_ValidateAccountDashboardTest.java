@@ -29,27 +29,27 @@ public class RogersCH_TC_028_SHM_ValidateAccountDashboardTest extends BaseTestCl
 	@Test(groups = {"RegressionCH","RhpAndRhmCH"})
         public void checkSHMaccountDashboard() {
             reporter.reportLogWithScreenshot("Launched the Home Page");
-            rogers_home_page.clkSignIn();
-            rogers_login_page.switchToSignInIFrame();
+            getRogersHomePage().clkSignIn();
+            getRogersLoginPage().switchToSignInIFrame();
             reporter.reportLogWithScreenshot("Launched the SignIn popup");
-            rogers_login_page.setUsernameIFrame(TestDataHandler.tc27_28_RogersSHM.getUsername());
-            rogers_login_page.setPasswordIFrame(TestDataHandler.tc27_28_RogersSHM.getPassword());
+            getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc27_28_RogersSHM.getUsername());
+            getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc27_28_RogersSHM.getPassword());
             reporter.reportLogWithScreenshot("Enter the account credentails");
-            rogers_login_page.clkSignInIFrame();
-            reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+            getRogersLoginPage().clkSignInIFrame();
+            reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
             reporter.reportLogWithScreenshot("Skip popup");
-            rogers_login_page.clkSkipIFrame(); 
-            rogers_login_page.switchOutOfSignInIFrame();
-            reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
-            rogers_solaris_tv_dashboard_page.clkSHMBadge();
+            getRogersLoginPage().clkSkipIFrame(); 
+            getRogersLoginPage().switchOutOfSignInIFrame();
+            reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+            getRogersSolarisTVDashboardPage().clkSHMBadge();
             reporter.reportLogWithScreenshot("SHM dashboard page");
-            reporter.softAssert(rogers_shm_dashboard_page.verifyShopForAccessoriesLinkdisplayed(),
+            reporter.softAssert(getRogersSHMDashboardPage().verifyShopForAccessoriesLinkdisplayed(),
             		"SHM dashboard page Links displayed", "SHM dashboard page Links not displayed correctly please investigate");
-            reporter.softAssert(rogers_shm_dashboard_page.verifyShopForAccessoriesLinkdisplayed(),
+            reporter.softAssert(getRogersSHMDashboardPage().verifyShopForAccessoriesLinkdisplayed(),
                 "SHM dashboard page Links displayed", "SHM dashboard page Links not displayed correctly please investigate");
-            reporter.softAssert(rogers_shm_dashboard_page.verifyLearnAboutSmartHomeMonitoringLinkdisplayed(),
+            reporter.softAssert(getRogersSHMDashboardPage().verifyLearnAboutSmartHomeMonitoringLinkdisplayed(),
                 "SHM dashboard page Links displayed", "SHM dashboard page Links not displayed correctly please investigate");
-            reporter.softAssert( rogers_shm_dashboard_page.verifyInsuranceCertificateLinkdisplayed(),
+            reporter.softAssert( getRogersSHMDashboardPage().verifyInsuranceCertificateLinkdisplayed(),
                 "SHM dashboard page Links displayed", "SHM dashboard page Links not displayed correctly please investigate");
     }
 

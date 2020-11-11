@@ -33,12 +33,12 @@ public class RogersInternetUsageOVPage extends BasePageClass {
 	public boolean verifyDailyBreakdownTable(String strBrowser) {
 		if (strBrowser.equalsIgnoreCase("firefox"))
 		{
-		reusableActions.javascriptScrollByVisibleElement(tblDailyBreakdown);
-		return reusableActions.isElementVisible(tblDailyBreakdown,120);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(tblDailyBreakdown);
+		return getReusableActionsInstance().isElementVisible(tblDailyBreakdown,120);
 	}else
 	{
-		reusableActions.scrollToElement(tblDailyBreakdown);
-		return reusableActions.isElementVisible(tblDailyBreakdown,120);
+		getReusableActionsInstance().scrollToElement(tblDailyBreakdown);
+		return getReusableActionsInstance().isElementVisible(tblDailyBreakdown,120);
 		
 	}
 	}
@@ -51,12 +51,12 @@ public class RogersInternetUsageOVPage extends BasePageClass {
 	public void clkMonthlyUsage(String strBrowser) {
 		if (strBrowser.equalsIgnoreCase("firefox"))
 		{
-			reusableActions.javascriptScrollToTopOfPage();
-		reusableActions.getWhenReady(btnMonthlyUsage, 120).click();
+			getReusableActionsInstance().javascriptScrollToTopOfPage();
+		getReusableActionsInstance().getWhenReady(btnMonthlyUsage, 120).click();
 			
 		}else {
-		reusableActions.scrollToElement(btnMonthlyUsage);
-		reusableActions.clickWhenReady(btnMonthlyUsage,120);
+		getReusableActionsInstance().scrollToElement(btnMonthlyUsage);
+		getReusableActionsInstance().clickWhenReady(btnMonthlyUsage,120);
 
 	}
 	}
@@ -69,11 +69,11 @@ public class RogersInternetUsageOVPage extends BasePageClass {
 	public boolean verifyMonthlyBreakdownTable(String strBrowser) {	
 		if (strBrowser.equalsIgnoreCase("firefox"))
 		{
-		reusableActions.javascriptScrollByVisibleElement(tblMonthlyBreakdown);
-		return reusableActions.isElementVisible(tblMonthlyBreakdown,120);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(tblMonthlyBreakdown);
+		return getReusableActionsInstance().isElementVisible(tblMonthlyBreakdown,120);
 	}else {
-		reusableActions.scrollToElement(tblMonthlyBreakdown);
-		return reusableActions.isElementVisible(tblMonthlyBreakdown,120);
+		getReusableActionsInstance().scrollToElement(tblMonthlyBreakdown);
+		return getReusableActionsInstance().isElementVisible(tblMonthlyBreakdown,120);
 		}
 	}
 
@@ -84,8 +84,8 @@ public class RogersInternetUsageOVPage extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clkUsageAlerts(String strBrowser) {		
-		reusableActions.javascriptScrollToTopOfPage();
-		reusableActions.getWhenReady(btnUsageAlerts,120).click();
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
+		getReusableActionsInstance().getWhenReady(btnUsageAlerts,120).click();
 	}
 
 }
