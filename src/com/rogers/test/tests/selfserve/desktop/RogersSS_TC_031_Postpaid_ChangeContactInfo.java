@@ -35,7 +35,7 @@ public class RogersSS_TC_031_Postpaid_ChangeContactInfo extends BaseTestClass {
 		closeSession();
 	}
 	
-	@Test(groups = {"SanitySS","RegressionSS","ProfileAndSettingsSS"})
+	@Test(groups = {"SanitySS","ProfileAndSettingsSS"})
 	public void validateUserChangeContactInformation() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc013132.getUsername();

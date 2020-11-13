@@ -33,7 +33,7 @@ public class RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE extends B
 	
 	
 	
-    @Test(groups = {"SanitySS","RegressionSS","WirelessDashboardSS"})
+    @Test(groups = {"SanitySS","WirelessDashboardSS"})
     public void validateDataRemainingOnMaxSpeedInfiniteSE() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc6269.getUsername();

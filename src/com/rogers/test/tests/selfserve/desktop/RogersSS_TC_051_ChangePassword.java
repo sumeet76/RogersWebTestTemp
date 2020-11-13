@@ -33,7 +33,7 @@ public class RogersSS_TC_051_ChangePassword extends BaseTestClass {
 	}
 	
 	
-    @Test(groups = {"SanitySS","RegressionSS","ProfileAndSettingsSS"})
+    @Test(groups = {"SanitySS","ProfileAndSettingsSS"})
     public void validateUserChangePassword() {
 
     	getRogersHomePage().clkSignIn();

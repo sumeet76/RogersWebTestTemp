@@ -33,9 +33,9 @@ public class RogersSS_TC_022_EN_ValidateAutoRegistrationReminderEmails_Postpaid 
 	public void validateUserChangeContactInformationAndBillingAddress() {
 		String strURI = "https://qa05-mservices.rogers.com/v1/user/registration/mwautocreate";
 		reporter.reportLog("URI:"+strURI);
-		String strEmail = "AutoNDR1020SS51@yahoo.com";
+		String strEmail = "AutoNDR1020SSNov181@yahoo.com";
 		String strPassword = "DigiAuto@123";
-		String strBan ="938055696";
+		String strBan ="938138153";
 		//================= Email reminder code
 		this.autoregisterUser(strURI,strEmail,strBan);
 		this.sendreminderEmail(strURI);    
