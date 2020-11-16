@@ -2,6 +2,8 @@ package com.rogers.test.tests.selfserve.desktop;
 
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
+import com.rogers.testdatamanagement.TestDataHandler;
+
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -19,8 +21,7 @@ public class RogersSS_TC_023_FR_ValidateAutoRegistrationReminderEmails_Postpaid 
 	
 
 	@BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			
+		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {			
 		startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve_login,method);
 		}
 	 
@@ -31,11 +32,11 @@ public class RogersSS_TC_023_FR_ValidateAutoRegistrationReminderEmails_Postpaid 
 	
 	@Test(groups = {"Autoregister"})
 	public void validateUserChangeContactInformationAndBillingAddress() {
-		String strURI = "https://qa05-mservices.rogers.com/v1/user/registration/mwautocreate";
+		String strURI = System.getProperty("test_URIautoRegister");
 		reporter.reportLog("URI:"+strURI);
-		String strEmail = "AutoNDR1020SSNov182@yahoo.com";
-		String strPassword = "DigiAuto@123";
-		String strBan ="938138195";
+		String strEmail = TestDataHandler.tc23.getUsername();
+		String strPassword = TestDataHandler.tc23.getPassword();
+		String strBan =TestDataHandler.tc23.getAccountDetails().getBan();
 		//================= Email reminder code
 		this.autoregisterUser(strURI,strEmail,strBan);
 		this.sendreminderEmail(strURI);    
@@ -108,7 +109,7 @@ public class RogersSS_TC_023_FR_ValidateAutoRegistrationReminderEmails_Postpaid 
 		}
 		
 		public void sendreminderEmail(String strURI) {
-			String strURIEmailer ="https://qa05-mservices.rogers.com/v1/user/registration/retry";
+			String strURIEmailer = System.getProperty("test_URIEmailer");
 			reporter.reportLog("URI emailer:"+strURIEmailer);
 			RestAssured.baseURI = strURIEmailer;
 			RequestSpecification request = RestAssured.given();
