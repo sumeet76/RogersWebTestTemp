@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 public class RogersSS_TC_036_WirelessPostpaidOverviewViewBillTest extends BaseTestClass {
 
-    @Test(groups = {"SanitySS","RegressionSS","BillingAndPaymentsSS"})
+    @Test(groups = {"SanitySS","BillingAndPaymentsSS"})
     public void viewBillTest() {
         getRogersHomePage().clkSignIn();
 		getRogersLoginPage().switchToSignInIFrame();

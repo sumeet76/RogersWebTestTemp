@@ -2229,7 +2229,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isDataAccessOnDisplayed() {		
-		return getReusableActionsInstance().isElementVisible(divDataAccessOn);
+		return getReusableActionsInstance().isElementVisible(divDataAccessOn,60);
 	}
 
 	/**
@@ -2237,7 +2237,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkDataAccessOn() {
-		getReusableActionsInstance().getWhenReady(divDataAccessOFF).click();
+		getReusableActionsInstance().getWhenReady(divDataAccessOFF,60).click();
 		
 	}
 
@@ -2257,7 +2257,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkDataAccessOff() {
-		getReusableActionsInstance().getWhenReady(divDataAccessOn).click();
+		getReusableActionsInstance().getWhenReady(divDataAccessOn,60).click();
 		
 	}
 
@@ -2267,7 +2267,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isStreamSaverOFF() {
-		return getReusableActionsInstance().isElementVisible(btnStreamSaverSwitchOff);
+		return getReusableActionsInstance().isElementVisible(btnStreamSaverSwitchOff,60);
 	}
 
 	/**
@@ -2275,7 +2275,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkStreamSaverOff() {
-		getReusableActionsInstance().getWhenReady(btnStreamSaverSwitchON).click();
+		getReusableActionsInstance().getWhenReady(btnStreamSaverSwitchON,60).click();
 		
 	}
 
@@ -2287,7 +2287,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isDataAccessDisplayed() {
-		return getReusableActionsInstance().isElementVisible(lblDataAccess);
+		return getReusableActionsInstance().isElementVisible(lblDataAccess,60);
 	}
 
 	/**

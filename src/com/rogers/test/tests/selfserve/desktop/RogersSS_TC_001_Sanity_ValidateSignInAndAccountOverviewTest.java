@@ -27,7 +27,7 @@ public class RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest extends
 	}
 	
 	
-	@Test(groups = {"SanitySS","RegressionSS","AccountOverviewSS"})
+	@Test(groups = {"SanitySS","AccountOverviewSS"})
     public void validateSignInAndAccountOverview() {
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");

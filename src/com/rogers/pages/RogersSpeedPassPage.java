@@ -102,6 +102,7 @@ public class RogersSpeedPassPage extends BasePageClass {
 	 */
 	public void clkBtnCloseInSpeedPassPopup() {
 		getReusableActionsInstance().getWhenReady(btnCloseSpeedPassTopup, 20).click();
+		getReusableActionsInstance().staticWait(5000);
 	}
 	
 	/**
