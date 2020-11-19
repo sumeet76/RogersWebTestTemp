@@ -34,6 +34,8 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'Browser', test_browser
 	systemProperty 'Language', test_language
 	systemProperty 'SearchUrl', test_searchURL
+	systemProperty 'URIautoRegister', test_URIautoRegister
+	systemProperty 'URIEmailer', test_URIEmailer
 
 	useTestNG(){
 		parallel = test_parallel
@@ -63,6 +65,8 @@ task "localTest"(type: Test) {
 	systemProperty 'Browser', test_browser
 	systemProperty 'Language', test_language
 	systemProperty 'SearchUrl', test_searchURL
+	systemProperty 'URIautoRegister', test_URIautoRegister
+	systemProperty 'URIEmailer', test_URIEmailer			
 
 	systemProperties(System.getProperties())
 	outputs.upToDateWhen { false }  // Always run tests

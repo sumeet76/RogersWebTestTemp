@@ -32,7 +32,7 @@ public class RogersSS_TC_023_FR_ValidateAutoRegistrationReminderEmails_Postpaid 
 	
 	@Test(groups = {"Autoregister"})
 	public void validateUserChangeContactInformationAndBillingAddress() {
-		String strURI = System.getProperty("test_URIautoRegister");
+		String strURI = System.getProperty("URIautoRegister");
 		reporter.reportLog("URI:"+strURI);
 		String strEmail = TestDataHandler.tc23.getUsername();
 		String strPassword = TestDataHandler.tc23.getPassword();
@@ -109,7 +109,7 @@ public class RogersSS_TC_023_FR_ValidateAutoRegistrationReminderEmails_Postpaid 
 		}
 		
 		public void sendreminderEmail(String strURI) {
-			String strURIEmailer = System.getProperty("test_URIEmailer");
+			String strURIEmailer = System.getProperty("URIEmailer");
 			reporter.reportLog("URI emailer:"+strURIEmailer);
 			RestAssured.baseURI = strURIEmailer;
 			RequestSpecification request = RestAssured.given();
