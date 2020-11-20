@@ -78,7 +78,10 @@ public class RogersOrderReviewPage extends BasePageClass {
 
 	@FindBy(xpath = "//span[@translate='global.cta.submit']")
 	WebElement clkSubmitUpdateInternet;
-	
+
+	@FindBy(xpath = "//span[@translate='global.cta.submitSmartStream']")
+	WebElement clkSubmitUpdateSAI;
+
 	@FindBy(xpath = "//label[@for='shieldTermsCheckbox']")
 	WebElement chbShieldTerms;
 	
@@ -361,7 +364,15 @@ public class RogersOrderReviewPage extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().getWhenReady(clkSubmitUpdateInternet, 90).click();
 	}
-	
+
+	/**
+	 * Click on the Submit button on the order review page
+	 * @author chinnarao.vattam
+	 */
+	public void clkSubmitUpdateSAI() {
+		getReusableActionsInstance().moveToElementAndClick(clkSubmitUpdateSAI,90);
+	}
+
 	/**
 	 * Click on the Submit button on the order review page
 	 * @author chinnarao.vattam

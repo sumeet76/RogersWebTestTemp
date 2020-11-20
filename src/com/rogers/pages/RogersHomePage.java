@@ -197,12 +197,14 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='View navigation']")
 	WebElement lnkViewNavigationMobile;
 	
-	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet at your address']/span")
+	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet ']/span")
 	WebElement lnkInternetAvailability;
 
-	@FindBy(xpath = "//h2[contains(text(),'Ignite your Internet') or contains(text(),'rience du service')]")
-	WebElement txtInternetBuyPage;
+	@FindBy(xpath = "(//div[@class='dsa-billboard__wrapper position-relative'])[2]")
+	WebElement divInternetBuyPage;
 
+	@FindBy(xpath = "//h2[contains(@class,'dsa-billboard__copyHeading ng-star-inserted')]")
+	WebElement txtInternetBuyPage;
 
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement loaderInternetServiceability;
@@ -678,7 +680,9 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyInternetpage() {
-		getReusableActionsInstance().waitForElementVisibility(txtInternetBuyPage,120);
+		//page is taking more time to load , temporary wait
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().waitForElementVisibility(divInternetBuyPage,90);
 		return getReusableActionsInstance().isElementVisible(txtInternetBuyPage, 30);
 	}
 	/**

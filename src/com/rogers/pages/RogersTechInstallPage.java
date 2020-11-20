@@ -236,7 +236,7 @@ public class RogersTechInstallPage extends BasePageClass {
 			getReusableActionsInstance().getWhenReady(clkChevron, 60).click();
 			startDate = startDate - 29;
 		}
-		String strStartDate= Integer.toString(startDate);
+		String strStartDate= Integer.toString(startDate + 5);
 		By selStartDate = By.xpath("//span[contains(text(),'" + strStartDate + "') and @class='owl-dt-calendar-cell-content']");
 		getReusableActionsInstance().getWhenReady(selStartDate, 90).click();
 		getReusableActionsInstance().waitForElementVisibility(rdoTechInstallSlot, 90);
@@ -261,7 +261,7 @@ public class RogersTechInstallPage extends BasePageClass {
 			getReusableActionsInstance().getWhenReady(clkChevron, 60).click();
 			startDate = startDate - 29;
 		}
-		String strStartDate= Integer.toString(startDate);
+		String strStartDate= Integer.toString(startDate + 5);
 		By selStartDate = By.xpath("//span[contains(text(),'" + strStartDate + "') and @class='owl-dt-calendar-cell-content']");
 		getReusableActionsInstance().getWhenReady(selStartDate, 20).click();
 		getReusableActionsInstance().waitForElementVisibility(rdoTechInstallSlot, 180);
@@ -291,7 +291,7 @@ public class RogersTechInstallPage extends BasePageClass {
 			getReusableActionsInstance().executeJavaScriptClick(clkChevron);
 			startDate = startDate - 29;
 		}
-		String strStartDate= Integer.toString(startDate);
+		String strStartDate= Integer.toString(startDate + 5);
 		By selStartDate = By.xpath("//span[contains(text(),'" + strStartDate + "') and @class='owl-dt-calendar-cell-content']");
 		WebElement date = getDriver().findElement(selStartDate);
 		getReusableActionsInstance().executeJavaScriptClick(date);
@@ -328,7 +328,7 @@ public class RogersTechInstallPage extends BasePageClass {
 				getReusableActionsInstance().getWhenReady(clkChevron, 60).click();
 				startDate = startDate - 29;
 			}
-			String strStartDate= Integer.toString(startDate);
+			String strStartDate= Integer.toString(startDate+ 5);
 			By selStartDate = By.xpath("//span[contains(text(),'" + strStartDate + "') and @class='owl-dt-calendar-cell-content']");
 			getReusableActionsInstance().getWhenReady(selStartDate, 20).click();
 			getReusableActionsInstance().waitForElementVisibility(rdoTechInstallSlot, 180);

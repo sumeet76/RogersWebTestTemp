@@ -37,7 +37,7 @@ public class Mobile_RogersCH_TC_002_Internet_BuyInternetOfferTest extends BaseTe
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        getRogersHomePage().clkAddressCheck();
+        //getRogersHomePage().clkAddressCheck();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
@@ -76,7 +76,7 @@ public class Mobile_RogersCH_TC_002_Internet_BuyInternetOfferTest extends BaseTe
         getRogersInternetCreditCheckPage().selectPassportExpiryYear();
         getRogersInternetCreditCheckPage().selectPassportExpiryMonth();
         getRogersInternetCreditCheckPage().selectPassportExpiryDay();
-        getRogersInternetCreditCheckPage().clkCreditConsentMobile();
+        getRogersInternetCreditCheckPage().clkCreditConsentSaiMobile();
         reporter.reportLogWithScreenshot("Passport Details");
         getRogersInternetCreditCheckPage().clkCreditConsentSubmitMobile();
 

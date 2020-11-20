@@ -53,6 +53,9 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	
 	@FindBy(xpath = "//a[@class='btn ute-btn-primary btn-block-xs ute-sm custom-modal-button']")
 	WebElement btnInternetChangeOK;
+
+	@FindBy(xpath = "//button[contains(@class,'-primary -large ng-star-inserted')]")
+	WebElement btnSAInternetChangeOK;
 	
 	@FindBy(xpath = "//i[@class='ute-icon-button-right']")
 	WebElement imgNext;
@@ -202,9 +205,16 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public void clkInternetChangeOK() {		
 		getReusableActionsInstance().clickIfAvailable(btnInternetChangeOK, 30);
-
 	}
-	
+
+	/**
+	 * Click the Change Internet Package OK button on Solaris Internet dash board
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkSAInternetChangeOK() {
+		getReusableActionsInstance().clickIfAvailable(btnSAInternetChangeOK, 30);
+	}
+
 	/**
 	 * Checks if the pop up contact us is visible
 	 * @return true when pop up contact us is visible else false

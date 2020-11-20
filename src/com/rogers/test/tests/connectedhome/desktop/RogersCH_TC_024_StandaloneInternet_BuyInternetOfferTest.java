@@ -36,7 +36,7 @@ public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends Bas
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        getRogersHomePage().clkAddressCheck();
+        //getRogersHomePage().clkAddressCheck();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
@@ -75,7 +75,7 @@ public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends Bas
         getRogersInternetCreditCheckPage().selectPassportExpiryYear();
         getRogersInternetCreditCheckPage().selectPassportExpiryMonth();
         getRogersInternetCreditCheckPage().selectPassportExpiryDay();
-        getRogersInternetCreditCheckPage().clkCreditConsent();
+        getRogersInternetCreditCheckPage().clkCreditConsentSai();
         reporter.reportLogWithScreenshot("Passport Details");
         getRogersInternetCreditCheckPage().clkCreditConsentSubmit();
         
