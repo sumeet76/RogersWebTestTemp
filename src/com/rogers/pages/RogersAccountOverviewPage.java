@@ -1713,7 +1713,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		 * @author Mirza.Kamran
 		 */
 		public void clkOKButtonOnSubscriptionSuccessOverlay() {
-			getReusableActionsInstance().staticWait(3000);
+			getReusableActionsInstance().staticWait(15000);
 			getReusableActionsInstance().getWhenReady(btnOK).click();
 			getReusableActionsInstance().staticWait(3000);
 		}
