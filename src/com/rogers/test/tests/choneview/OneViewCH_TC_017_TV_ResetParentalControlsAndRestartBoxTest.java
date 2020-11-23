@@ -18,29 +18,29 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class OneViewCH_TC_017_TV_ResetParentalControlsAndRestartBoxTest extends BaseTestClass {
     @Test @Parameters("strBrowser")
     public void checkIgniteTVResetPINandResetParentalControlsTest(String strBrowser) {
-		environment_selection_page.selectOneViewEnv(TestDataHandler.chOneViewConfig.getOneViewenv());
+		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.chOneViewConfig.getOneViewenv());
 /*		reporter.reportLogWithScreenshot("OneView Interface has Launched");
-		environment_selection_page.enterDealerCode(TestDataHandler.igniteTVParentalcontrols.getDealercode());
+		getEnvironmentSelectionPage().enterDealerCode(TestDataHandler.igniteTVParentalcontrols.getDealercode());
 		reporter.reportLogWithScreenshot("Enter the dealer code");
-		environment_selection_page.submitDealerCode();	*/
+		getEnvironmentSelectionPage().submitDealerCode();	*/
 		reporter.reportLogWithScreenshot("Launched the account dashboard page");
-		account_over_view_page.selectTVBadage(strBrowser);
+		getAccountOverViewPage().selectTVBadage(strBrowser);
 		reporter.reportLogWithScreenshot("Launched the TV dashboard page");
-		tv_dashboard_page.clickResetParentalControl();
+		getTVDashboardPage().clickResetParentalControl();
 		reporter.reportLogWithScreenshot("Reset Parental Controls popup has launched");		
-		tv_dashboard_page.clickContinueReset();
+		getTVDashboardPage().clickContinueReset();
 		reporter.reportLogWithScreenshot("Reset Success popup has launched");
-        reporter.hardAssert(tv_dashboard_page.verifyResetSuccess(),"Verification of reset success","Reset has  is Failed");	
+        reporter.hardAssert(getTVDashboardPage().verifyResetSuccess(),"Verification of reset success","Reset has  is Failed");	
         reporter.reportLogWithScreenshot("reset success");	
-		tv_dashboard_page.clickSuccessOk() ;
+		getTVDashboardPage().clickSuccessOk() ;
 		reporter.reportLogWithScreenshot("Launched the TV dashboard page");		
-		tv_dashboard_page.clickRestartSetupbox();
+		getTVDashboardPage().clickRestartSetupbox();
 		reporter.reportLogWithScreenshot("Restart Setupbox popup has launched");		
-		tv_dashboard_page.clickContinueReset();
+		getTVDashboardPage().clickContinueReset();
 		reporter.reportLogWithScreenshot("Reset Success popup has launched");
-        reporter.hardAssert(tv_dashboard_page.verifyResetSuccess(),"Verification of reset success","Reset has  is Failed");	
+        reporter.hardAssert(getTVDashboardPage().verifyResetSuccess(),"Verification of reset success","Reset has  is Failed");	
         reporter.reportLogWithScreenshot("reset success");
-		tv_dashboard_page.clickSuccessOk() ;
+		getTVDashboardPage().clickSuccessOk() ;
     }
     
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

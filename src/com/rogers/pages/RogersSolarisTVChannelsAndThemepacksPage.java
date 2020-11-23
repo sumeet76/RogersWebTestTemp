@@ -92,8 +92,8 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 */
 	public void clkAddButtonOnThemePackListOnManageChannelsAndThemePacks() {
 		//Taking more time to load all the themepacks
-		reusableActions.waitForElementVisibility(addThemePackClassicTVThemePacks, 120);
-		reusableActions.executeJavaScriptClick(addThemePackClassicTVThemePacks);		
+		getReusableActionsInstance().waitForElementVisibility(addThemePackClassicTVThemePacks, 120);
+		getReusableActionsInstance().executeJavaScriptClick(addThemePackClassicTVThemePacks);
 	}		
 	
 	/**
@@ -102,15 +102,15 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 */
 	public void clkAddButtonOnThemePackListOnManageChannelsAndThemePacks4plus1() {
 		//Taking more time to load all the themepacks
-		reusableActions.waitForElementVisibility(addThemePackClassicTVThemePacks4plus1, 120);
-		reusableActions.executeJavaScriptClick(addThemePackClassicTVThemePacks4plus1);		
+		getReusableActionsInstance().waitForElementVisibility(addThemePackClassicTVThemePacks4plus1, 120);
+		getReusableActionsInstance().executeJavaScriptClick(addThemePackClassicTVThemePacks4plus1);
 	}
 	/**
 	 * Click on remove from your changes Manage channels and theme packs
 	 * @author Saurav.Goyal	 
 	 */
 	public void clkRemoveFromYourChanges() {
-		reusableActions.getWhenReady(btnRemoveFromYourChanges, 120).click();
+		getReusableActionsInstance().getWhenReady(btnRemoveFromYourChanges, 120).click();
 	}	
 	
 	
@@ -120,7 +120,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 */
 	public void clkConfirmChangesOnManageChannelsAndThemePacks() {
 		//Taking more time to load all the themepacks
-		reusableActions.getWhenReady(clkConfirmChangesOnManageChannelsAndThemePacks, 120).click();
+		getReusableActionsInstance().getWhenReady(clkConfirmChangesOnManageChannelsAndThemePacks, 120).click();
 	}	
 	
 	/**
@@ -128,8 +128,8 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam	 
 	 */
 	public void addChannel() {
-		reusableActions.waitForElementVisibility(addChannelToCart, 60);
-		reusableActions.getWhenReady(addChannelToCart, 30).click();
+		getReusableActionsInstance().waitForElementVisibility(addChannelToCart, 60);
+		getReusableActionsInstance().getWhenReady(addChannelToCart, 30).click();
 	}
 	
 	/**
@@ -138,10 +138,10 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam	 
 	 */
 	public void searchChannel(String strInChannel) {
-		reusableActions.waitForElementVisibility(iconSearch,120);
-		reusableActions.getWhenReady(iconSearch,20).click();
-		reusableActions.getWhenReady(iconSearch, 30).sendKeys(strInChannel);	
-		reusableActions.getWhenReady(btnSearchChannel,30).click();
+		getReusableActionsInstance().waitForElementVisibility(iconSearch,120);
+		getReusableActionsInstance().getWhenReady(iconSearch,20).click();
+		getReusableActionsInstance().getWhenReady(iconSearch, 30).sendKeys(strInChannel);
+		getReusableActionsInstance().getWhenReady(btnSearchChannel,30).click();
 	}
 	
 	/**
@@ -149,8 +149,8 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam	 
 	 */
 	public void addChannelThemepack() {
-		reusableActions.waitForElementInvisibility(ldrThemepack, 240);
-		reusableActions.getWhenReady(addThemePackClassicTVThemePacks, 120).click();
+		getReusableActionsInstance().waitForElementInvisibility(ldrThemepack, 240);
+		getReusableActionsInstance().getWhenReady(addThemePackClassicTVThemePacks, 120).click();
 	}
 	
 	/**
@@ -158,7 +158,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author Saurav.Goyal	 
 	 */
 	public void removeChannel() {
-		reusableActions.getWhenReady(removeParticularChannelFromCart, 120).click();
+		getReusableActionsInstance().getWhenReady(removeParticularChannelFromCart, 120).click();
 	}	
 	
 	
@@ -167,7 +167,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author Saurav.Goyal	 
 	 */
 	public void removeThemePack() {
-		reusableActions.getWhenReady(removeParticularThemePackFromCart, 120).click();
+		getReusableActionsInstance().getWhenReady(removeParticularThemePackFromCart, 120).click();
 	}	
 	
 	/**
@@ -175,7 +175,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author Saurav.Goyal	 
 	 */
 	public void clkButtonRemoveChannelFromAlert() {
-		reusableActions.getWhenReady(buttonRemoveChannelFromAlert, 180).click();
+		getReusableActionsInstance().getWhenReady(buttonRemoveChannelFromAlert, 180).click();
 	}	
 	
 	
@@ -184,10 +184,10 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam	 
 	 */
 	public void clkThemePacks() {
-		reusableActions.staticWait(5000);
-		reusableActions.javascriptScrollToTopOfPage();
-		reusableActions.waitForElementVisibility(tabThemePacks, 180);
-		reusableActions.getWhenReady(tabThemePacks, 120).click();
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
+		getReusableActionsInstance().waitForElementVisibility(tabThemePacks, 180);
+		getReusableActionsInstance().getWhenReady(tabThemePacks, 120).click();
 	}	
 	
 	/**
@@ -195,8 +195,8 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author Saurav.Goyal	 
 	 */
 	public void addThemePacks() {
-		reusableActions.waitForElementVisibility(addThemePack.get(0), 180);
-		reusableActions.getWhenReady(addThemePack.get(0), 90).click();
+		getReusableActionsInstance().waitForElementVisibility(addThemePack.get(0), 180);
+		getReusableActionsInstance().getWhenReady(addThemePack.get(0), 90).click();
 	}	
 	
 	/**
@@ -204,8 +204,8 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam	 
 	 */
 	public void clkContinueOnExistingChannelAlertWindow() {
-		reusableActions.waitForElementVisibility(yesContinueOnExistingChannelAlert, 120);
-		reusableActions.getWhenReady(yesContinueOnExistingChannelAlert, 120).click();
+		getReusableActionsInstance().waitForElementVisibility(yesContinueOnExistingChannelAlert, 120);
+		getReusableActionsInstance().getWhenReady(yesContinueOnExistingChannelAlert, 120).click();
 	}	
 		
 	/**
@@ -213,7 +213,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkExchangeLater() {
-		reusableActions.getWhenReady(btnExchangeLater, 180).click();
+		getReusableActionsInstance().getWhenReady(btnExchangeLater, 180).click();
 	}
 
 	/**
@@ -221,8 +221,8 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkExchangeLaterMobile() {
-		reusableActions.waitForElementVisibility(btnExchangeLater, 180);
-		reusableActions.executeJavaScriptClick(btnExchangeLater);
+		getReusableActionsInstance().waitForElementVisibility(btnExchangeLater, 180);
+		getReusableActionsInstance().executeJavaScriptClick(btnExchangeLater);
 	}
 
 	/**
@@ -231,9 +231,9 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 */
 	public void clkContinueFromThemepacks() {
 		//Need time to load all the TV packages
-		reusableActions.staticWait(7000);
-/*		reusableActions.waitForElementVisibility(addParticularChannelToCart.get(0), 240);*/
-		reusableActions.getWhenReady(btnContinueFromThemepacks, 120).click();
+		getReusableActionsInstance().staticWait(7000);
+/*		getReusableActionsInstance().waitForElementVisibility(addParticularChannelToCart.get(0), 240);*/
+		getReusableActionsInstance().getWhenReady(btnContinueFromThemepacks, 120).click();
 	}
 
 	/**
@@ -242,16 +242,16 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 */
 	public void clkContinueFromThemepacksMobile() {
 		//Need time to load all the TV packages
-		reusableActions.staticWait(7000);
-		reusableActions.waitForElementVisibility(btnContinueFromThemepacks, 90);
-		reusableActions.executeJavaScriptClick(btnContinueFromThemepacks);
+		getReusableActionsInstance().staticWait(7000);
+		getReusableActionsInstance().waitForElementVisibility(btnContinueFromThemepacks, 90);
+		getReusableActionsInstance().executeJavaScriptClick(btnContinueFromThemepacks);
 	}
 	/**
 	 * Click on the "YesIHave4K" button
 	 * @author chinnarao.vattam
 	 */
 	public void clkYesIHave4K() {
-		reusableActions.getWhenReady(btnYesIHave4K, 90).click();
+		getReusableActionsInstance().getWhenReady(btnYesIHave4K, 90).click();
 	}
 
 	/**
@@ -259,7 +259,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkYesIHave4KMobile() {
-		reusableActions.getWhenReady(btnYesIHave4KMobile, 90).click();
+		getReusableActionsInstance().getWhenReady(btnYesIHave4KMobile, 90).click();
 	}
 
 	/**
@@ -267,7 +267,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clk4KContent() {
-		reusableActions.getWhenReady(btn4KContent, 180).click();
+		getReusableActionsInstance().getWhenReady(btn4KContent, 180).click();
 	}
 	
 }

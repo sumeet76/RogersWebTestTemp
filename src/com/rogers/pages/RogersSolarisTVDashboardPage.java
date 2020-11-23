@@ -69,13 +69,13 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@id='tvPopupTitle']/i[@class='ute-icon']")
 	WebElement infoSuccessIcon;	
 
-	@FindBy(xpath = "(//div[@class='col-md-12 tv-channel-list']//span[@class='ute-icon-circle-cross'])[1]")
+	@FindBy(xpath = "((//div[@ng-repeat='channelsArray in listofChannelsArray'])[1]//div[@class='channel-logo-body'])[1]")
 	WebElement btnSelectChannelOne;
 	
-	@FindBy(xpath = "(//div[@class='col-md-12 tv-channel-list']//span[@class='ute-icon-circle-cross'])[2]")
+	@FindBy(xpath = "((//div[@ng-repeat='channelsArray in listofChannelsArray'])[1]//div[@class='channel-logo-body'])[2]")
 	WebElement btnSelectChannelTwo;
 	
-	@FindBy(xpath = "(//div[@class='col-md-12 tv-channel-list']//span[@class='ute-icon-circle-cross'])[3]")
+	@FindBy(xpath = "((//div[@ng-repeat='channelsArray in listofChannelsArray'])[1]//div[@class='channel-logo-body'])[3]")
 	WebElement btnSelectChannelThree;
 	
 	@FindBy(xpath = "//input[contains(@class,'ng-empty')]")
@@ -165,7 +165,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkResetParentalConrolsAndPin() {
-		reusableActions.clickWhenReady(lnkResetParentalConrolsAndPin,40);
+		getReusableActionsInstance().clickWhenReady(lnkResetParentalConrolsAndPin,40);
 	}
 	
 	/**
@@ -173,7 +173,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkContinueParentalControlAndPinReset() {
-		reusableActions.clickWhenReady(btnContinueParentalControlAndPinReset,90);
+		getReusableActionsInstance().clickWhenReady(btnContinueParentalControlAndPinReset,90);
 	}
 	
 	/**
@@ -181,7 +181,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkTVBadge() {
-		reusableActions.getWhenReady(btnSolaristvBadge,90).click();
+		getReusableActionsInstance().getWhenReady(btnSolaristvBadge,90).click();
 	}
 
 	/**
@@ -189,8 +189,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkTVBadgeMobile() {
-		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(btnSolaristvBadge,90).click();
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().getWhenReady(btnSolaristvBadge,90).click();
 	}
 	
 	/**
@@ -199,7 +199,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyMyChannelLineup() {		
-		return reusableActions.isElementVisible(lnkViewMyChannelLineup);
+		return getReusableActionsInstance().isElementVisible(lnkViewMyChannelLineup);
 	}
 
 	/**
@@ -207,8 +207,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkViewMyChannelLineup() {
-		reusableActions.waitForElementVisibility(lnkViewMyChannelLineup,60);		
-		reusableActions.getWhenReady(lnkViewMyChannelLineup, 30).click();		
+		getReusableActionsInstance().waitForElementVisibility(lnkViewMyChannelLineup,60);
+		getReusableActionsInstance().getWhenReady(lnkViewMyChannelLineup, 30).click();
 	}
 
 	/**
@@ -217,7 +217,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPDF() {		
-		return reusableActions.isElementVisible(lnkPDFPage);		
+		return getReusableActionsInstance().isElementVisible(lnkPDFPage);
 	}
 
 	/**
@@ -226,18 +226,18 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean clklAndVerifyViewPDF() {
-		String mainWindow = driver.getWindowHandle();
-		reusableActions.getWhenReady(lnkViewAsPDF,90).click();
-		reusableActions.waitForNumberOfWindowsToBe(2);
-		reusableActions.switchToNewWindow(mainWindow);
+		String mainWindow = getDriver().getWindowHandle();
+		getReusableActionsInstance().getWhenReady(lnkViewAsPDF,90).click();
+		getReusableActionsInstance().waitForNumberOfWindowsToBe(2);
+		getReusableActionsInstance().switchToNewWindow(mainWindow);
 		//the page is moving to new window
-		reusableActions.staticWait(1000);
-		reusableActions.isElementVisible(lnkPDFPage);
-		reusableActions.closeCurrentWindow();
-		reusableActions.switchToMainWindow(mainWindow);
+		getReusableActionsInstance().staticWait(1000);
+		getReusableActionsInstance().isElementVisible(lnkPDFPage);
+		getReusableActionsInstance().closeCurrentWindow();
+		getReusableActionsInstance().switchToMainWindow(mainWindow);
 		//the page is moving to original window
-		reusableActions.staticWait(1000);
-		reusableActions.waitForNumberOfWindowsToBe(1);		
+		getReusableActionsInstance().staticWait(1000);
+		getReusableActionsInstance().waitForNumberOfWindowsToBe(1);
 		return true;
 	}
 
@@ -247,7 +247,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyChannelList() {		
-		return reusableActions.isElementVisible(lstChannelList,20);
+		return getReusableActionsInstance().isElementVisible(lstChannelList,20);
 	}
 
 	/**
@@ -255,7 +255,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkCloseChannelsPopup() {
-		reusableActions.getWhenReady(popupCloseChannel,40).click();
+		getReusableActionsInstance().getWhenReady(popupCloseChannel,40).click();
 		}
 
 	/**
@@ -263,8 +263,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkViewfelxChannels() {
-		reusableActions.waitForElementVisibility(lnkViewfelxChannels, 60);
-		reusableActions.getWhenReady(lnkViewfelxChannels,10).click();		
+		getReusableActionsInstance().waitForElementVisibility(lnkViewfelxChannels, 60);
+		getReusableActionsInstance().getWhenReady(lnkViewfelxChannels,10).click();
 	}
 
 	
@@ -274,7 +274,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyViewfelxChannels() {		
-		return reusableActions.isElementVisible(lnkViewfelxChannels,20);
+		return getReusableActionsInstance().isElementVisible(lnkViewfelxChannels,20);
 	}
 
 	/**
@@ -282,8 +282,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkChangeTVPackage() {
-		reusableActions.waitForElementVisibility(btnChangeTVPackage,90);
-		reusableActions.getWhenReady(btnChangeTVPackage, 30).click();
+		getReusableActionsInstance().waitForElementVisibility(btnChangeTVPackage,90);
+		getReusableActionsInstance().getWhenReady(btnChangeTVPackage, 30).click();
 	}
 
 	/**
@@ -291,17 +291,17 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkChangeTVPackageMobile() {
-		reusableActions.waitForElementVisibility(btnChangeTVPackage,90);
-		reusableActions.staticWait(3000);
-		reusableActions.executeJavaScriptClick(btnChangeTVPackage);
+		getReusableActionsInstance().waitForElementVisibility(btnChangeTVPackage,90);
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().executeJavaScriptClick(btnChangeTVPackage);
 	}
 	/**
 	 * Click the Manage Channels And Theme Packs link on solaris TV dashboard page
 	 * @author chinnarao.vattam
 	 */
 	public void clkManageChannelsAndThemePacks() {
-		reusableActions.waitForElementVisibility(btnManageChannelsAndThemePacks,90);
-		reusableActions.getWhenReady(btnManageChannelsAndThemePacks, 30).click();
+		getReusableActionsInstance().waitForElementVisibility(btnManageChannelsAndThemePacks,90);
+		getReusableActionsInstance().getWhenReady(btnManageChannelsAndThemePacks, 30).click();
 	}
 
 	/**
@@ -309,17 +309,26 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkChangeFlexChannels() {
-		reusableActions.waitForElementInvisibility(By.className("QSIPopOverShadowBox"),90);
-		reusableActions.getWhenReady(lnkChangeFlexChannels, 60).click();
+		getReusableActionsInstance().waitForElementInvisibility(By.className("QSIPopOverShadowBox"),90);
+		getReusableActionsInstance().getWhenReady(lnkChangeFlexChannels, 60).click();
 	}
-	
+
+	/**
+	 * Click the Change FlexChannels link on solaris TV dashboard page
+	 * @author chinnarao.vattam
+	 */
+	public void clkChangeFlexChannelsMobile() {
+		getReusableActionsInstance().waitForElementInvisibility(By.className("QSIPopOverShadowBox"),90);
+		getReusableActionsInstance().waitForElementInvisibility(lnkChangeFlexChannels, 60);
+		getReusableActionsInstance().executeJavaScriptClick(lnkChangeFlexChannels);
+	}
 	/**
 	 * To verify Exchange FlexChanne link
 	 *@return true if the ExchangeFlex Channel link is displayed; else false
 	 * @author chinnarao.vattam 
 	 */
 	public boolean verifyExchangeFlexChannelLink() {
-		return reusableActions.isElementVisible(lnkChangeFlexChannels, 10);
+		return getReusableActionsInstance().isElementVisible(lnkChangeFlexChannels, 10);
        }
 	
 	/**
@@ -329,7 +338,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 */
 	public boolean verifyFlexChannelcount(String strFlexChannels) {
 		// 0, 5, 44 channels
-		String strChannels=reusableActions.getWhenReady(txtFlexChannels, 50).getText();
+		String strChannels=getReusableActionsInstance().getWhenReady(txtFlexChannels, 50).getText();
 		String[] channels = strChannels.split("\\s+");
 		return channels[0].equals(strFlexChannels);
        }
@@ -342,19 +351,19 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 */
 	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
 		By packageNameLocator = By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'owl-item')]//ins[@translate='global.cta.select']");
-		if(reusableActions.isElementVisible(packageNameLocator,60))
+		if(getReusableActionsInstance().isElementVisible(packageNameLocator,60))
 		{		
-		reusableActions.getWhenReady(packageNameLocator, 20);
-		WebElement pkg = driver.findElement(packageNameLocator);
-		reusableActions.executeJavaScriptClick(pkg);
+		getReusableActionsInstance().getWhenReady(packageNameLocator, 20);
+		WebElement pkg = getDriver().findElement(packageNameLocator);
+		getReusableActionsInstance().executeJavaScriptClick(pkg);
 		 }
 	   else
 		{
-	    reusableActions.getWhenReady(imgNext, 60);
-	    reusableActions.executeJavaScriptClick(imgNext);
-	    WebElement pkg = driver.findElement(packageNameLocator);
-	    reusableActions.getWhenReady(pkg, 60);
-	    reusableActions.executeJavaScriptClick(pkg);
+	    getReusableActionsInstance().getWhenReady(imgNext, 60);
+	    getReusableActionsInstance().executeJavaScriptClick(imgNext);
+	    WebElement pkg = getDriver().findElement(packageNameLocator);
+	    getReusableActionsInstance().getWhenReady(pkg, 60);
+	    getReusableActionsInstance().executeJavaScriptClick(pkg);
 		}
 	}
 	
@@ -363,7 +372,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkPopupChangeTVPackage() {
-		reusableActions.getWhenReady(popupChangeTVPackage, 90).click();
+		getReusableActionsInstance().getWhenReady(popupChangeTVPackage, 90).click();
 	}
 
 	/**
@@ -371,8 +380,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkPopupChangeTVPackageMobile() {
-		reusableActions.waitForElementVisibility(popupChangeTVPackage, 90);
-		reusableActions.executeJavaScriptClick(popupChangeTVPackage);
+		getReusableActionsInstance().waitForElementVisibility(popupChangeTVPackage, 90);
+		getReusableActionsInstance().executeJavaScriptClick(popupChangeTVPackage);
 	}
 	/**
 	 * Verify the contact us popup on solaris TV dashboard page
@@ -380,7 +389,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifycontatUSPopUp() {		
-		return reusableActions.isElementVisible(popupContatUS, 90);
+		return getReusableActionsInstance().isElementVisible(popupContatUS, 90);
 	}
 
 	/**
@@ -388,7 +397,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkConfirmExchange() {		
-		reusableActions.clickWhenReady(btnConfirmExchange, 30);
+		getReusableActionsInstance().clickWhenReady(btnConfirmExchange, 30);
 	}
 
 	/**
@@ -397,7 +406,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifySuccessIcon() {		
-		return reusableActions.isElementVisible(infoSuccessIcon, 180);
+		return getReusableActionsInstance().isElementVisible(infoSuccessIcon, 180);
 	}
 	
 	/**
@@ -406,7 +415,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyResetParentalControlsAndPinSuccess() {		
-		return reusableActions.isElementVisible(successMessageParentalControlAndPinReset, 90);
+		return getReusableActionsInstance().isElementVisible(successMessageParentalControlAndPinReset, 90);
 	}
 	
 	/**
@@ -417,13 +426,13 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	public void swapInChannel(String[] strInChannellist) {
 		String strInChannel[] = strInChannellist;
 		for (String channel : strInChannel) {
-			reusableActions.getWhenReady(infoChannelSwapinSeach, 90).clear();
-			reusableActions.getWhenReady(infoChannelSwapinSeach, 10).sendKeys(channel);
+			getReusableActionsInstance().getWhenReady(infoChannelSwapinSeach, 90).clear();
+			getReusableActionsInstance().getWhenReady(infoChannelSwapinSeach, 10).sendKeys(channel);
 			By channelLocator = By.xpath("//a[@title='" + channel + "']");
-			reusableActions.getWhenReady(channelLocator, 90).click();
+			getReusableActionsInstance().getWhenReady(channelLocator, 90).click();
 			By btnChannelLocator = By.xpath("//a[@title='" + channel
 					+ "']/ancestor::li[@class='tv-channel-li']//button[@class='select-channel-btn']");
-			reusableActions.getWhenReady(btnChannelLocator, 10).click();
+			getReusableActionsInstance().getWhenReady(btnChannelLocator, 10).click();
 				}
 	}
 /**
@@ -434,15 +443,15 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	public void swapOutChannel(String[] strOutChannellist) {
 		String strOutChannel[] = strOutChannellist;
 		for (String channel : strOutChannel) {
-			reusableActions.getWhenReady(infoChannelSwapoutSeach, 30).clear();
-			reusableActions.getWhenReady(infoChannelSwapoutSeach, 10).sendKeys(channel);
+			getReusableActionsInstance().getWhenReady(infoChannelSwapoutSeach, 30).clear();
+			getReusableActionsInstance().getWhenReady(infoChannelSwapoutSeach, 10).sendKeys(channel);
 			//By channelLocator = By.xpath("//a[@title='" + channel + "']");
-			reusableActions.waitForElementStaleness(driver.findElement( By.xpath("//a[@title='" + channel + "']")),3);
-			reusableActions.getWhenReady(By.xpath("//a[@title='" + channel + "']"), 20).click();
+			getReusableActionsInstance().waitForElementStaleness(getDriver().findElement( By.xpath("//a[@title='" + channel + "']")),3);
+			getReusableActionsInstance().getWhenReady(By.xpath("//a[@title='" + channel + "']"), 20).click();
 			
 			By btnChannelLocator = By.xpath("//a[@title='" + channel
 					+ "']/ancestor::li[@class='tv-channel-li']//button[@class='select-channel-btn']");
-			reusableActions.getWhenReady(btnChannelLocator, 20).click();
+			getReusableActionsInstance().getWhenReady(btnChannelLocator, 20).click();
 		}
 	}
 	
@@ -453,7 +462,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyIgniteTVStarterPackage() {		
-		return reusableActions.isElementVisible(txtIgniteTVStarter);
+		return getReusableActionsInstance().isElementVisible(txtIgniteTVStarter);
 	}
 	
 	/**
@@ -461,7 +470,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkOutChannelOne() {		
-		reusableActions.getWhenReady(btnSelectChannelOne, 90).click();
+		getReusableActionsInstance().getWhenReady(btnSelectChannelOne, 90).click();
 	}
 	
 	/**
@@ -469,7 +478,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkOutChannelTwo() {		
-		reusableActions.getWhenReady(btnSelectChannelTwo, 90).click();
+		getReusableActionsInstance().getWhenReady(btnSelectChannelTwo, 90).click();
 	}
 
 	/**
@@ -477,7 +486,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkOutChannelThree() {		
-		reusableActions.getWhenReady(btnSelectChannelThree, 60).click();
+		getReusableActionsInstance().getWhenReady(btnSelectChannelThree, 60).click();
 	}
 	
 	/**
@@ -488,14 +497,14 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	public void swapChannelIn(String[] strInChannellist) {
 		String strInChannel[] = strInChannellist;
 		for (String channel : strInChannel) {			
-		reusableActions.getWhenReady(txtEnterChannelToSerach, 90).clear();
-		reusableActions.getWhenReady(txtEnterChannelToSerach, 10).sendKeys(channel);
-		reusableActions.getWhenReady(btnSearchChannel, 30).click();
-		reusableActions.waitForElementVisibility(btnSelectChannel, 90);
-		reusableActions.scrollToElement(btnSelectChannel);
-		reusableActions.getWhenReady(btnSelectChannel, 90).click();	
-		reusableActions.getWhenReady(btnConfirmSelectedChannel, 60).click();
-		reusableActions.getWhenReady(btnClearSerachResults, 180).click();
+		getReusableActionsInstance().getWhenReady(txtEnterChannelToSerach, 90).clear();
+		getReusableActionsInstance().getWhenReady(txtEnterChannelToSerach, 10).sendKeys(channel);
+		getReusableActionsInstance().getWhenReady(btnSearchChannel, 30).click();
+		getReusableActionsInstance().waitForElementVisibility(btnSelectChannel, 90);
+		getReusableActionsInstance().scrollToElement(btnSelectChannel);
+		getReusableActionsInstance().getWhenReady(btnSelectChannel, 90).click();
+		getReusableActionsInstance().getWhenReady(btnConfirmSelectedChannel, 60).click();
+		getReusableActionsInstance().getWhenReady(btnClearSerachResults, 180).click();
 		}
 	}
 
@@ -505,13 +514,13 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void swapChannelIn(String strInChannel) {
-			reusableActions.getWhenReady(txtEnterChannelToSerach, 60).clear();
-			reusableActions.getWhenReady(txtEnterChannelToSerach, 30).sendKeys(strInChannel);
-			reusableActions.waitForElementVisibility(btnSearchChannel,60);
-			reusableActions.executeJavaScriptClick(btnSearchChannel);			
-			By imgChannel = By.xpath("//div[@class='channel-title' and contains(text(), '"+ strInChannel+"')]/ancestor::div[@class='genre-channel']//span[@class='ute-icon-info']");
-			reusableActions.waitForElementVisibility(btnSearchChannel,90);
-			reusableActions.getWhenReady(imgChannel, 30).click();	
+			getReusableActionsInstance().getWhenReady(txtEnterChannelToSerach, 60).clear();
+			getReusableActionsInstance().getWhenReady(txtEnterChannelToSerach, 30).sendKeys(strInChannel);
+			getReusableActionsInstance().waitForElementVisibility(btnSearchChannel,60);
+			getReusableActionsInstance().executeJavaScriptClick(btnSearchChannel);
+		    By imgChannel = By.xpath("//div[@class='channel-title' and contains(text(), '"+ strInChannel+"')]/ancestor::div[@class='genre-channel']//div[@class='channel-logo-body']");
+			getReusableActionsInstance().waitForElementVisibility(btnSearchChannel,90);
+			getReusableActionsInstance().getWhenReady(imgChannel, 30).click();
 	}
 
 	/**
@@ -520,13 +529,13 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void swapChannelInMobile(String strInChannel) {
-		reusableActions.getWhenReady(txtEnterChannelToSerach, 60).clear();
-		reusableActions.getWhenReady(txtEnterChannelToSerach, 30).sendKeys(strInChannel);
-		reusableActions.waitForElementVisibility(btnSearchChannel,60);
-		reusableActions.executeJavaScriptClick(btnSearchChannel);
+		getReusableActionsInstance().getWhenReady(txtEnterChannelToSerach, 60).clear();
+		getReusableActionsInstance().getWhenReady(txtEnterChannelToSerach, 30).sendKeys(strInChannel);
+		getReusableActionsInstance().waitForElementVisibility(btnSearchChannel,60);
+		getReusableActionsInstance().executeJavaScriptClick(btnSearchChannel);
 		By imgChannel = By.xpath("//div[@class='channel-title' and contains(text(), '"+ strInChannel+"')]/ancestor::div[@class='genre-channel']//span[@class='ute-icon-info']");
-		reusableActions.waitForElementVisibility(btnSearchChannel,90);
-		reusableActions.executeJavaScriptClick((WebElement) imgChannel);
+		getReusableActionsInstance().waitForElementVisibility(btnSearchChannel,90);
+		getReusableActionsInstance().executeJavaScriptClick((WebElement) imgChannel);
 	}
 
 	/**
@@ -534,7 +543,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void btnChannelAdd() {		
-		reusableActions.getWhenReady(btnConfirmSelectedChannel, 90).click();
+		getReusableActionsInstance().getWhenReady(btnConfirmSelectedChannel, 90).click();
 	}
 	
 	/**
@@ -542,9 +551,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 		public void btnClearSerachResults() {	
-			reusableActions.waitForElementVisibility(btnClearSerachResults, 60);
-			reusableActions.scrollToElement(btnClearSerachResults);
-			reusableActions.executeJavaScriptClick(btnClearSerachResults);
+			getReusableActionsInstance().waitForElementVisibility(btnClearSerachResults, 60);
+			getReusableActionsInstance().scrollToElement(btnClearSerachResults);
+			getReusableActionsInstance().executeJavaScriptClick(btnClearSerachResults);
 		}
 	
 	/**
@@ -552,7 +561,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkConfirmChannels() {		
-		reusableActions.getWhenReady(btnConfirmSelectedChannel, 30).click();
+		getReusableActionsInstance().getWhenReady(btnConfirmSelectedChannel, 30).click();
 	}
 	
 	/**
@@ -560,8 +569,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkConfirmSwap() {
-		reusableActions.waitForElementVisibility(btnConfirmSwap,30);		
-		reusableActions.executeJavaScriptClick(btnConfirmSwap);
+		getReusableActionsInstance().waitForElementVisibility(btnConfirmSwap,30);
+		getReusableActionsInstance().executeJavaScriptClick(btnConfirmSwap);
 	}
 	
 	/**
@@ -569,8 +578,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSuccessSwap() {	
-		reusableActions.waitForElementVisibility(btnContinueSwap, 180);
-		reusableActions.getWhenReady(btnContinueSwap, 180).click();
+		getReusableActionsInstance().waitForElementVisibility(btnContinueSwap, 180);
+		getReusableActionsInstance().getWhenReady(btnContinueSwap, 180).click();
 	}
 	
 	/**
@@ -578,8 +587,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkOkButton() {	
-		reusableActions.waitForElementInvisibility(btnContinueSwap, 90);
-		reusableActions.clickWhenReady(btnOK, 30);
+		getReusableActionsInstance().waitForElementInvisibility(btnContinueSwap, 90);
+		getReusableActionsInstance().clickWhenReady(btnOK, 30);
 	}
 	
 	/**
@@ -588,7 +597,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyIgniteTVSelectPackage() {		
-		return reusableActions.isElementVisible(txtIgniteTVSelect);
+		return getReusableActionsInstance().isElementVisible(txtIgniteTVSelect);
 	}
 	
 	
@@ -598,7 +607,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyIgniteTVPremierPackage() {		
-		return reusableActions.isElementVisible(txtIgniteTVPremier);
+		return getReusableActionsInstance().isElementVisible(txtIgniteTVPremier);
 	}
 	
 	/**
@@ -607,7 +616,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyIgniteFlex5Package() {		
-		return reusableActions.isElementVisible(txtIgniteFlex5);
+		return getReusableActionsInstance().isElementVisible(txtIgniteFlex5);
 	}
 	
 	/**
@@ -616,7 +625,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyIgniteFlex10Package() {		
-		return reusableActions.isElementVisible(txtIgniteFlex10);
+		return getReusableActionsInstance().isElementVisible(txtIgniteFlex10);
 	}
 
 	/**
@@ -625,7 +634,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyViewMyChannelLineUpDisplayed() {		
-		return reusableActions.isElementVisible(lnkViewMyChannelLineup,60);
+		return getReusableActionsInstance().isElementVisible(lnkViewMyChannelLineup,60);
 	}
 
 	/**
@@ -634,7 +643,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyViewFlexChannelsDisplayed() {		
-		return reusableActions.isElementVisible(lnkViewfelxChannels,60);
+		return getReusableActionsInstance().isElementVisible(lnkViewfelxChannels,60);
 	}
 
 	/**
@@ -642,7 +651,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkSHMBadge() {		
-		reusableActions.getWhenReady(btnSHMBadge,60).click();
+		getReusableActionsInstance().getWhenReady(btnSHMBadge,60).click();
 	}
 
 	
@@ -653,7 +662,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyTupeloDashbaordIsDisplayed() {
-		return reusableActions.isElementVisible(lblHeaderTV);
+		return getReusableActionsInstance().isElementVisible(lblHeaderTV);
 		
 	}
 
@@ -663,7 +672,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyBoxCountIsDisplayed() {		
-		return reusableActions.isElementVisible(lblBoxHeader);
+		return getReusableActionsInstance().isElementVisible(lblBoxHeader);
 	}
 
 	/**
@@ -671,7 +680,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @return true if the box settings is displayed
 	 */
 	public boolean verifyBoxSettingslsDisplayed() {		
-		return reusableActions.isElementVisible(lblBoxSettings);
+		return getReusableActionsInstance().isElementVisible(lblBoxSettings);
 	}
 
 }

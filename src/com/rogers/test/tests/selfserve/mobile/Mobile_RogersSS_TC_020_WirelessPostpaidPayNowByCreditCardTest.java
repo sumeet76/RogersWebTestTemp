@@ -22,49 +22,49 @@ public class Mobile_RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest exten
 
     @Test(groups = {"MobileSanitySS"})
     public void payNowByCreditCard() {
-        rogers_home_page.clkSignInMobile();
-        rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(TestDataHandler.tc1920.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.tc1920.getPassword());
+        getRogersHomePage().clkSignInMobile();
+        getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc1920.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc1920.getPassword());
 		reporter.reportLogWithScreenshot("Login credential is entered.");
-        rogers_login_page.clkSignInIFrame();
-        rogers_login_page.clkSkipIFrame();
-        rogers_login_page.switchOutOfSignInIFrame();                   
-        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLoginMobile(),
+        getRogersLoginPage().clkSignInIFrame();
+        getRogersLoginPage().clkSkipIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();                   
+        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLoginMobile(),
 			        		"Login successful",
 			        		"Login Error. Refer screenshot");
         common_business_flows.clkCloseFeedbackIfAvailableMobile();
-        rogers_account_overview_page.clkViewBill();
+        getRogersAccountOverviewPage().clkViewBill();
         reporter.reportLogWithScreenshot("Clicked on view bill");
-        rogers_account_overview_page.clickMakePayment();
+        getRogersAccountOverviewPage().clickMakePayment();
 		reporter.reportLogWithScreenshot("Make Payment button is clicked.");
-        reporter.hardAssert(rogers_secure_payment_page.verifySecurePaymentLoad(),
+        reporter.hardAssert(getRogersSecurePaymentPage().verifySecurePaymentLoad(),
 			        		"Secure payment loaded",
 			        		"Secure Payment overlay error. Refer screenshot");                    
         String strPaymentAmount="2";
-        rogers_secure_payment_page.setPaymentAmount(strPaymentAmount);
-        rogers_make_payment_page.selectHowWouldYouLikeToPay(RogersMakePaymentPage.MakePayOptions.credit);
+        getRogersSecurePaymentPage().setPaymentAmount(strPaymentAmount);
+        getRogersMakePaymentPage().selectHowWouldYouLikeToPay(RogersMakePaymentPage.MakePayOptions.credit);
 		reporter.reportLogWithScreenshot("Card option selected");
-        rogers_secure_payment_page.setCardNumber(TestDataHandler.paymentInfo.getCreditCardDetails().getNumber());
-        rogers_secure_payment_page.setCardExpiryMonth(TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryMonth());
-        rogers_secure_payment_page.setCardExpiryYear(TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryYear());
-        rogers_secure_payment_page.setSecurityCode(TestDataHandler.paymentInfo.getCreditCardDetails().getCVV());
-        rogers_secure_payment_page.clickReviewAndContinue();
-        rogers_secure_payment_page.clickPayNow();
+        getRogersSecurePaymentPage().setCardNumber(TestDataHandler.paymentInfo.getCreditCardDetails().getNumber());
+        getRogersSecurePaymentPage().setCardExpiryMonth(TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryMonth());
+        getRogersSecurePaymentPage().setCardExpiryYear(TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryYear());
+        getRogersSecurePaymentPage().setSecurityCode(TestDataHandler.paymentInfo.getCreditCardDetails().getCVV());
+        getRogersSecurePaymentPage().clickReviewAndContinue();
+        getRogersSecurePaymentPage().clickPayNow();
         reporter.reportLogWithScreenshot("Payment status");
-        reporter.hardAssert(rogers_secure_payment_page.verifyPaymentSuccessful(strPaymentAmount),
+        reporter.hardAssert(getRogersSecurePaymentPage().verifyPaymentSuccessful(strPaymentAmount),
 			        		"Payment confirmaton",
 			        		"Payment Confirmation message Error. Refer screenshot");        
-        String strReferenceNumber= rogers_secure_payment_page.getTransactionReferenceNumber();
+        String strReferenceNumber= getRogersSecurePaymentPage().getTransactionReferenceNumber();
         reporter.reportLogWithScreenshot("Payment Successful, Transaction reference number is :"+strReferenceNumber);
-        rogers_secure_payment_page.clickDone();
-        reporter.hardAssert((rogers_billing_page.verifyPaymentSuccessful(strPaymentAmount)
-        					&& rogers_billing_page.getTransactionReferenceNumber().contains(strReferenceNumber)),
+        getRogersSecurePaymentPage().clickDone();
+        reporter.hardAssert((getRogersBillingPage().verifyPaymentSuccessful(strPaymentAmount)
+        					&& getRogersBillingPage().getTransactionReferenceNumber().contains(strReferenceNumber)),
 			        		"Payment confirmation message displayed",
 			        		"Payment Confirmation message Error. Refer screenshot");
         common_business_flows.scrollToMiddleOfWebPage();
         reporter.reportLogWithScreenshot("Payment Confirmation on account overview page");        
-        reporter.hardAssert(rogers_billing_page.verifyThePaymentHistoryRecordMobile(strReferenceNumber),
+        reporter.hardAssert(getRogersBillingPage().verifyThePaymentHistoryRecordMobile(strReferenceNumber),
         					"The payment history record is created for the credit transaction"
         					,"The payment history is not created for the credit transaction, please investigate for ref  num :"+strReferenceNumber);
         

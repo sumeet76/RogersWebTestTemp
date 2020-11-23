@@ -18,16 +18,16 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class OneViewCH_TC_018e_TV_DashboardSupportLinksAvailabilityTest extends BaseTestClass {
     @Test
     public void checkTVDashboardSupportLinkTest() {
-    	environment_selection_page.selectOneViewEnv(TestDataHandler.chOneViewConfig.getOneViewenv());
+    	getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.chOneViewConfig.getOneViewenv());
 		reporter.reportLogWithScreenshot("Launched the account dashboard page");
-		account_over_view_page.selectTVBadage(TestDataHandler.chOneViewConfig.getBrowser());
+		getAccountOverViewPage().selectTVBadage(TestDataHandler.chOneViewConfig.getBrowser());
 		reporter.reportLogWithScreenshot("Launched the TV dashboard page");
-		reporter.softAssert(tv_dashboard_page.verifyLnkFAQOnPowerSaver(),"FAQ on power saver - Link availability assertion passed","FAQ on power saver - Link availability assertion failed");
-		reporter.softAssert(tv_dashboard_page.verifyLnkGoToSupportSection(),"Go to support section - Link availability assertion passed","Go to support section - Link availability assertion failed");
-		reporter.softAssert(tv_dashboard_page.verifyLnkIgniteTvErrCode(),"Ignite Tv Error code - Link availability assertion passed","Ignite Tv Error code - Link availability assertion failed");
-		reporter.softAssert(tv_dashboard_page.verifyLnkIntroToAppsOnIgniteTv(),"Intro to apps on Ignite Tv- Link availability assertion passed","Intro to apps on Ignite Tv - Link availability assertion failed");
-		reporter.softAssert(tv_dashboard_page.verifyLnkUsingVoiceCommands(),"Using voice commands - Link availability assertion passed","Using voice commands - Link availability assertion failed");
-		tv_dashboard_page.goToPageBottom();
+		reporter.softAssert(getTVDashboardPage().verifyLnkFAQOnPowerSaver(),"FAQ on power saver - Link availability assertion passed","FAQ on power saver - Link availability assertion failed");
+		reporter.softAssert(getTVDashboardPage().verifyLnkGoToSupportSection(),"Go to support section - Link availability assertion passed","Go to support section - Link availability assertion failed");
+		reporter.softAssert(getTVDashboardPage().verifyLnkIgniteTvErrCode(),"Ignite Tv Error code - Link availability assertion passed","Ignite Tv Error code - Link availability assertion failed");
+		reporter.softAssert(getTVDashboardPage().verifyLnkIntroToAppsOnIgniteTv(),"Intro to apps on Ignite Tv- Link availability assertion passed","Intro to apps on Ignite Tv - Link availability assertion failed");
+		reporter.softAssert(getTVDashboardPage().verifyLnkUsingVoiceCommands(),"Using voice commands - Link availability assertion passed","Using voice commands - Link availability assertion failed");
+		getTVDashboardPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("Support links available");		
     }
     

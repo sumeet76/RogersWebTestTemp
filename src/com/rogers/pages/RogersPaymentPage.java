@@ -53,17 +53,17 @@ public class RogersPaymentPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void setCreditCardDetails(String strCCNumber, String strCCExpMonth, String strCCExpYear, String strCCSecurityCode) {
-		driver.switchTo().frame(frmCreditCard);		
-		reusableActions.staticWait(5000);
+		getDriver().switchTo().frame(frmCreditCard);
+		getReusableActionsInstance().staticWait(5000);
 		txtCreditCardNumberMasked.click();
 		txtCreditCardNumber.click();
 		txtCreditCardNumber.sendKeys(strCCNumber);
 		
-		driver.switchTo().defaultContent();
+		getDriver().switchTo().defaultContent();
 		
-		reusableActions.selectWhenReady(ddlCreditCardExpiryMonth, strCCExpMonth);
+		getReusableActionsInstance().selectWhenReady(ddlCreditCardExpiryMonth, strCCExpMonth);
 		
-		reusableActions.selectWhenReadyByVisibleText(ddlCreditCardExpiryYear, strCCExpYear);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlCreditCardExpiryYear, strCCExpYear);
 		
 		txtSecurityCode.sendKeys(strCCSecurityCode);
 	}
@@ -73,7 +73,7 @@ public class RogersPaymentPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkSubmitOrder() {
-		reusableActions.clickWhenVisible(btnSubmitOrder);
+		getReusableActionsInstance().clickWhenVisible(btnSubmitOrder);
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class RogersPaymentPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkSubmit() {
-		reusableActions.clickWhenVisible(btnSubmit);
+		getReusableActionsInstance().clickWhenVisible(btnSubmit);
 	}
 
 }

@@ -26,8 +26,8 @@ public class CustomerProfilePage  extends BasePageClass {
 	 * @author Harpartap.Virk
 	 */	
 	public boolean verifyCustomerProfile() {
-		reusableActions.clickIfAvailable(collapse,60);
-		return reusableActions.isElementVisible(customerProfile,120);
+		getReusableActionsInstance().clickIfAvailable(collapse,60);
+		return getReusableActionsInstance().isElementVisible(customerProfile,120);
 	
 	}
 	/**
@@ -35,7 +35,7 @@ public class CustomerProfilePage  extends BasePageClass {
 	 * @author Harpartap.Virk
 	 */	
 	public void clkContinue() {	
-		reusableActions.getWhenReady(continueButton,120).sendKeys(Keys.ENTER);
+		getReusableActionsInstance().getWhenReady(continueButton,120).sendKeys(Keys.ENTER);
 		
 	}	
 		

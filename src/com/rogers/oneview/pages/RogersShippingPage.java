@@ -68,8 +68,8 @@ public class RogersShippingPage extends BasePageClass {
      * @author Saurav.Goyal
      */
     public void clkRadioBillingAddress() {
-		reusableActions.staticWait(5000);
-        reusableActions.clickWhenReady(rdoBillingAddress , 30);
+		getReusableActionsInstance().staticWait(5000);
+        getReusableActionsInstance().clickWhenReady(rdoBillingAddress , 30);
     }
     
     /**
@@ -77,7 +77,7 @@ public class RogersShippingPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkRadioNormalDelivery() {
-		reusableActions.clickWhenReady(rdoNormalDelivery , 30);
+		getReusableActionsInstance().clickWhenReady(rdoNormalDelivery , 30);
 	}
 
 	/**
@@ -85,10 +85,10 @@ public class RogersShippingPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkContinue() {
-		reusableActions.getWhenReady(lblShippingTitle,60);
-		reusableActions.staticWait(2000);
-		reusableActions.waitForElementVisibility(btnContinue,60);
-		reusableActions.clickWhenReady(btnContinue);
+		getReusableActionsInstance().getWhenReady(lblShippingTitle,60);
+		getReusableActionsInstance().staticWait(2000);
+		getReusableActionsInstance().waitForElementVisibility(btnContinue,60);
+		getReusableActionsInstance().clickWhenReady(btnContinue);
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class RogersShippingPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkReserve() {
-		reusableActions.clickWhenReady(btnReserve , 120);
+		getReusableActionsInstance().clickWhenReady(btnReserve , 120);
 	}
 
 	/**
@@ -104,8 +104,8 @@ public class RogersShippingPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkSelectAvailableTime() {
-		reusableActions.scrollToElement(lblSelectAvailableTime.get(0));
-		reusableActions.clickWhenReady(lblSelectAvailableTime.get(0) , 60);
+		getReusableActionsInstance().scrollToElement(lblSelectAvailableTime.get(0));
+		getReusableActionsInstance().clickWhenReady(lblSelectAvailableTime.get(0) , 60);
 	}
 
 	/**
@@ -114,12 +114,12 @@ public class RogersShippingPage extends BasePageClass {
 	 */
 	public void setEmailIDAndSave() {
 		String strEmail = FormFiller.generateEmail();
-		if(reusableActions.isElementVisible(lblMandatoryEmail,30)) {
-			if(!reusableActions.isElementVisible(btnEmailEdit,30)) {
-				reusableActions.clickWhenReady(lblMandatoryEmail,30);
+		if(getReusableActionsInstance().isElementVisible(lblMandatoryEmail,30)) {
+			if(!getReusableActionsInstance().isElementVisible(btnEmailEdit,30)) {
+				getReusableActionsInstance().clickWhenReady(lblMandatoryEmail,30);
 				inputEmail.clear();
 				inputEmail.sendKeys(strEmail);
-				reusableActions.clickWhenReady(btnSaveEmail , 30);
+				getReusableActionsInstance().clickWhenReady(btnSaveEmail , 30);
 			}  
 		}
 	}
@@ -130,13 +130,13 @@ public class RogersShippingPage extends BasePageClass {
 	 */
 	public void setPhoneNumberAndSave() {
 		String strPhoneNumber = FormFiller.generatePhoneNumber();
-		if(reusableActions.isElementVisible(lblPhoneNumber,30)) {
-			if(!reusableActions.isElementVisible(btnContactEdit, 30)) {
-				reusableActions.clickWhenReady(lblPhoneNumber);
-				reusableActions.waitForElementVisibility(inputPhoneNumber,30);
+		if(getReusableActionsInstance().isElementVisible(lblPhoneNumber,30)) {
+			if(!getReusableActionsInstance().isElementVisible(btnContactEdit, 30)) {
+				getReusableActionsInstance().clickWhenReady(lblPhoneNumber);
+				getReusableActionsInstance().waitForElementVisibility(inputPhoneNumber,30);
 				inputPhoneNumber.clear();
 				inputPhoneNumber.sendKeys(strPhoneNumber);
-				reusableActions.clickWhenReady(btnSaveNumber , 30);
+				getReusableActionsInstance().clickWhenReady(btnSaveNumber , 30);
 			}
 		}
 	}

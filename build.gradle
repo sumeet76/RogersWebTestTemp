@@ -34,6 +34,8 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'Browser', test_browser
 	systemProperty 'Language', test_language
 	systemProperty 'SearchUrl', test_searchURL
+	systemProperty 'URIautoRegister', test_URIautoRegister
+	systemProperty 'URIEmailer', test_URIEmailer
 
 	useTestNG(){
 		parallel = test_parallel
@@ -63,6 +65,8 @@ task "localTest"(type: Test) {
 	systemProperty 'Browser', test_browser
 	systemProperty 'Language', test_language
 	systemProperty 'SearchUrl', test_searchURL
+	systemProperty 'URIautoRegister', test_URIautoRegister
+	systemProperty 'URIEmailer', test_URIEmailer			
 
 	systemProperties(System.getProperties())
 	outputs.upToDateWhen { false }  // Always run tests
@@ -84,7 +88,7 @@ task "localTest"(type: Test) {
 
 
 repositories {
-
+	mavenLocal()
 	maven {
 		url = "${artifactory_url}/${artifactory_repoKey}"
 		credentials {
@@ -99,7 +103,7 @@ dependencies {
 	api 'com.relevantcodes:extentreports:2.41.2'
 	api 'org.seleniumhq.selenium:selenium-java:3.141.59'
 	api 'org.testng:testng:6.14.3'
-	api 'automation-utils:common-utils:latest.release'
+	api 'automation-utils:common-utils:1.29-SNAPSHOT'
 	api 'io.rest-assured:rest-assured:4.3.1'
 	api 'io.rest-assured:json-path:4.3.1'
 	api 'org.json:json:20180813'

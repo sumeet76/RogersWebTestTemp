@@ -32,24 +32,24 @@ public class RogersCH_TC_014_IginteTV_ValidatePopularPackDashboardButtonsReposit
 	@Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
     public void checkPopularPackDashboardButtonsRepositioning() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
-        rogers_home_page.clkSignIn();
-        rogers_login_page.switchToSignInIFrame();
+        getRogersHomePage().clkSignIn();
+        getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        rogers_login_page.setUsernameIFrame(TestDataHandler.tc14_solarisTVAccountPopularPackage.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.tc14_solarisTVAccountPopularPackage.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc14_solarisTVAccountPopularPackage.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc14_solarisTVAccountPopularPackage.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
-        rogers_login_page.clkSignInIFrame();
-    	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        getRogersLoginPage().clkSignInIFrame();
+    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
-        rogers_login_page.clkSkipIFrame();
-        rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount(TestDataHandler.tc14_solarisTVAccountPopularPackage.accountDetails.getBan());
-    	reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+        getRogersLoginPage().clkSkipIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc14_solarisTVAccountPopularPackage.accountDetails.getBan());
+    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
-        rogers_solaris_tv_dashboard_page.clkTVBadge();
-        reporter.hardAssert(rogers_solaris_tv_dashboard_page.verifyFlexChannelcount(TestDataHandler.tc14_solarisTVAccountPopularPackage.accountDetails.getFlexChannelsCount()),"FlexChannel are Fourty Five","There is a ambiguity in FlexChannel count ");
+        getRogersSolarisTVDashboardPage().clkTVBadge();
+        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyFlexChannelcount(TestDataHandler.tc14_solarisTVAccountPopularPackage.accountDetails.getFlexChannelsCount()),"FlexChannel are Fourty Five","There is a ambiguity in FlexChannel count ");
         reporter.reportLogWithScreenshot("Launched the TV dashboard Page");
-        reporter.hardAssert(rogers_solaris_tv_dashboard_page.verifyExchangeFlexChannelLink(),"Exchange FlexChannel Link is available","Exchange FlexChannel Link is not available");                             
+        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyExchangeFlexChannelLink(),"Exchange FlexChannel Link is available","Exchange FlexChannel Link is not available");
     	}       
 
 

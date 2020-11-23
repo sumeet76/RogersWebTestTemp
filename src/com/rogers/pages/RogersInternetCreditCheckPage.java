@@ -60,7 +60,10 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 
 	@FindBy(xpath = "//div[@class='ds-checkbox__box my-12 rds-icon-check']")
 	WebElement chkConsent;
-	//label[@for='ds-checkbox-id-0']
+
+	@FindBy(xpath = "//label[@for='ds-checkbox-id-0']")
+	WebElement chkConsentSai;
+
 
 	@FindBy(xpath = "//button[contains(@class,'-primary -large')]")
 	WebElement btnCreditCheckSubmit;
@@ -83,8 +86,8 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyCreditEvalutionPage() {
-		reusableActions.waitForElementVisibility(ddlCreditCheckYear, 90);
-		return	reusableActions.isElementVisible(ddlCreditCheckYear);
+		getReusableActionsInstance().waitForElementVisibility(ddlCreditCheckYear, 90);
+		return	getReusableActionsInstance().isElementVisible(ddlCreditCheckYear);
 	}
 	
 	/**
@@ -92,9 +95,9 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectDOBYear() {
-		reusableActions.waitForElementVisibility(ddlCreditCheckYear,20);
+		getReusableActionsInstance().waitForElementVisibility(ddlCreditCheckYear,20);
 		String strDOBYear = FormFiller.generateDOBYear();
-		reusableActions.selectWhenReadyByVisibleText(ddlCreditCheckYear, strDOBYear);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlCreditCheckYear, strDOBYear);
 	}
 	
 	/**
@@ -103,8 +106,8 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectDOBYearExistingCustomer(String strDOBYear) {
-		reusableActions.waitForElementVisibility(ddlCreditCheckYear,20);
-		reusableActions.selectWhenReadyByVisibleText(ddlCreditCheckYear, strDOBYear);
+		getReusableActionsInstance().waitForElementVisibility(ddlCreditCheckYear,20);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlCreditCheckYear, strDOBYear);
 	}
 	
 	/**
@@ -113,7 +116,7 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 */
 	public void selectDOBMonth() {
 		String strDOBMonth = FormFiller.generateNameOfMonth();
-		reusableActions.selectWhenReadyByVisibleText(ddlCreditCheckMonth, strDOBMonth);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlCreditCheckMonth, strDOBMonth);
 	}
 	
 	/**
@@ -122,7 +125,7 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectDOBMonthExistingCustomer(String strDOBMonth) {
-		reusableActions.selectWhenReadyByVisibleText(ddlCreditCheckMonth, strDOBMonth);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlCreditCheckMonth, strDOBMonth);
 	}
 	
 	/**
@@ -131,7 +134,7 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 */
 	public void selectDOBDay() {
 		String strDOBDay = FormFiller.generateCalendarDay();
-		reusableActions.selectWhenReadyByVisibleText(ddlCreditCheckDay, strDOBDay);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlCreditCheckDay, strDOBDay);
 	}
 	
 	/**
@@ -140,7 +143,7 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectDOBDayExistingCustomer(String strDOBDay) {
-		reusableActions.selectWhenReady(ddlCreditCheckDay, strDOBDay);
+		getReusableActionsInstance().selectWhenReady(ddlCreditCheckDay, strDOBDay);
 	}
 	
 	/**
@@ -149,7 +152,7 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectFirstID(String strFirstID) {
-		reusableActions.selectWhenReadyByVisibleText(ddlFirstID, strFirstID);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlFirstID, strFirstID);
 	}
 	
 	/**
@@ -158,7 +161,7 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectProvince(String strProvince) {
-		reusableActions.selectWhenReadyByVisibleText(ddlProvince, strProvince);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlProvince, strProvince);
 	}
 	
 	/**
@@ -167,7 +170,7 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 */
 	public void selectExpiryYear() {
 		String strYYYY = FormFiller.generateExpiryYear();
-		reusableActions.selectWhenReadyByVisibleText(ddlExpiryYear,strYYYY);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlExpiryYear,strYYYY);
 	}
 	
 	/**
@@ -175,7 +178,7 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectExpiryYearwithSpace() {
-		Select listbox = new Select(driver.findElement(By.xpath("//select[@name='dlExpiryYear']")));
+		Select listbox = new Select(getDriver().findElement(By.xpath("//select[@name='dlExpiryYear']")));
 		listbox.selectByIndex(2);
 	}
 	
@@ -186,7 +189,7 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectExpiryYearYYYY(String strYYYY) {
-		reusableActions.selectWhenReadyByVisibleText(ddlExpiryYear, strYYYY);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlExpiryYear, strYYYY);
 	}
 	
 	/**
@@ -195,7 +198,7 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 */
 	public void selectExpiryMonth() {
 		String strMM = FormFiller.generateNameOfMonth();
-		reusableActions.selectWhenReadyByVisibleText(ddlExpiryMonth, strMM);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlExpiryMonth, strMM);
 	}
 	
 	/**
@@ -204,7 +207,7 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 */
 	public void selectExpiryDay() {
 		String strDD = FormFiller.generateCalendarDay();
-		reusableActions.selectWhenReadyByVisibleText(ddlExpiryDay, strDD);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlExpiryDay, strDD);
 	}
 	
 	/**
@@ -214,8 +217,8 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 */
 	public void setDrivingLicenseNumber(String province) {
 		String strLicenseNumber = FormFiller.generateLicenseNumber(province);
-		reusableActions.waitForElementVisibility(txtContainer,30);
-		reusableActions.getWhenReady(txtContainer,10).click();		
+		getReusableActionsInstance().waitForElementVisibility(txtContainer,30);
+		getReusableActionsInstance().getWhenReady(txtContainer,10).click();
 		txtLicenseNumber.clear();
 		txtLicenseNumber.sendKeys(strLicenseNumber);
 	}
@@ -227,10 +230,10 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 */
 	public void setDrivingLicenseNumberMobile(String province) {
 		String strLicenseNumber = FormFiller.generateLicenseNumber(province);
-		reusableActions.waitForElementVisibility(txtContainer,20);
-		reusableActions.executeJavaScriptClick(txtContainer);
-		reusableActions.getWhenReady(txtLicenseNumber,5).clear();
-		reusableActions.getWhenReady(txtLicenseNumber, 3).sendKeys(strLicenseNumber);
+		getReusableActionsInstance().waitForElementVisibility(txtContainer,20);
+		getReusableActionsInstance().executeJavaScriptClick(txtContainer);
+		getReusableActionsInstance().getWhenReady(txtLicenseNumber,5).clear();
+		getReusableActionsInstance().getWhenReady(txtLicenseNumber, 3).sendKeys(strLicenseNumber);
 	}
 	
 	/**
@@ -239,8 +242,8 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectSecondIDOption(String strSecondIDOption) {
-		reusableActions.waitForElementVisibility(ddlSecondIdOption, 20);
-		reusableActions.selectWhenReadyByVisibleText(ddlSecondIdOption, strSecondIDOption);
+		getReusableActionsInstance().waitForElementVisibility(ddlSecondIdOption, 20);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlSecondIdOption, strSecondIDOption);
 	}
 	 
 	/**
@@ -249,8 +252,8 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 */
 	public void setPassportNumber() {
 		String strPasportNumber = FormFiller.generatePassportNumber();
-		reusableActions.waitForElementVisibility(txtContainerPasportNumber,30);
-		reusableActions.getWhenReady(txtContainerPasportNumber,10).click();
+		getReusableActionsInstance().waitForElementVisibility(txtContainerPasportNumber,30);
+		getReusableActionsInstance().getWhenReady(txtContainerPasportNumber,10).click();
 		txtPasportNumber.clear();
 		txtPasportNumber.sendKeys(strPasportNumber);
 	}
@@ -261,7 +264,7 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 */
 	public void selectPassportExpiryYear() {
 		String strYYYY = FormFiller.generateExpiryYear();
-		reusableActions.selectWhenReadyByVisibleText(ddlPassportExpiryYear, strYYYY);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlPassportExpiryYear, strYYYY);
 	}
 	
 	/**
@@ -270,7 +273,7 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 */
 	public void selectPassportExpiryMonth() {
 		String strMM = FormFiller.generateNameOfMonth();
-		reusableActions.selectWhenReadyByVisibleText(ddlPassportExpiryMonth, strMM);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlPassportExpiryMonth, strMM);
 	}
 	
 	/**
@@ -279,7 +282,7 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 */
 	public void selectPassportExpiryDay() {
 		String strDD = FormFiller.generateCalendarDay();
-		reusableActions.selectWhenReadyByVisibleText(ddlPassportExpiryDay, strDD);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlPassportExpiryDay, strDD);
 	}
 	
 	/**
@@ -287,16 +290,32 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkCreditConsent() {
-		reusableActions.getWhenReady(chkConsent, 50).click();
+		getReusableActionsInstance().getWhenReady(chkConsent, 50).click();
 	}
 
 	/**
 	 * Click the Credit check Consent check box on Credit check page
 	 * @author Chinnarao.Vattam
 	 */
+	public void clkCreditConsentSai() {
+		getReusableActionsInstance().getWhenReady(chkConsentSai, 50).click();
+	}
+
+	/**
+	 * Click the Credit check Consent check box on Credit check page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkCreditConsentSaiMobile() {
+		getReusableActionsInstance().waitForElementVisibility(chkConsentSai,20);
+		getReusableActionsInstance().executeJavaScriptClick(chkConsentSai);
+	}
+	/**
+	 * Click the Credit check Consent check box on Credit check page
+	 * @author Chinnarao.Vattam
+	 */
 	public void clkCreditConsentMobile() {
-		reusableActions.waitForElementVisibility(chkConsent,20);
-		reusableActions.executeJavaScriptClick(chkConsent);
+		getReusableActionsInstance().waitForElementVisibility(chkConsent,20);
+		getReusableActionsInstance().executeJavaScriptClick(chkConsent);
 	}
 	
 	/**
@@ -304,8 +323,8 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkCreditConsentSubmit() {
-		reusableActions.waitForElementVisibility(btnCreditCheckSubmit,20);
-		reusableActions.executeJavaScriptClick(btnCreditCheckSubmit);
+		getReusableActionsInstance().waitForElementVisibility(btnCreditCheckSubmit,20);
+		getReusableActionsInstance().executeJavaScriptClick(btnCreditCheckSubmit);
 	}
 	
 	/**
@@ -313,8 +332,8 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkCreditConsentSubmitMobile() {
-		reusableActions.getWhenReady(btnCreditCheckSubmit, 30);
-		reusableActions.executeJavaScriptClick(btnCreditCheckSubmit);
+		getReusableActionsInstance().getWhenReady(btnCreditCheckSubmit, 30);
+		getReusableActionsInstance().executeJavaScriptClick(btnCreditCheckSubmit);
 	}
 
 }

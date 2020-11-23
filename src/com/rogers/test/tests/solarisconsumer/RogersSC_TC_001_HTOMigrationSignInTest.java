@@ -30,39 +30,39 @@ public class RogersSC_TC_001_HTOMigrationSignInTest extends BaseTestClass {
     @Test
     public void checkHTOMigrationSignInFlow() {
     	reporter.reportLogWithScreenshot("Launched the Home Page");
-    	rogers_home_page.clkSignIn();
-		rogers_login_page.switchToSignInIFrame();
+    	getRogersHomePage().clkSignIn();
+		getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setUsernameIFrame(TestDataHandler.solarisHTOMigrationSignIn.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.solarisHTOMigrationSignIn.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.solarisHTOMigrationSignIn.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.solarisHTOMigrationSignIn.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
-		rogers_login_page.clkSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
 		reporter.reportLogWithScreenshot("Skip popup");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
-		reporter.softAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed");
-		rogers_home_page.clkPromotionOfferBadge();
-		Assert.assertTrue(rogers_igniteTV_buy_page.verifyButtonUpgradeNow(), "Upgrade button is not available");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
+		reporter.softAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Login Success","Login Failed");
+		getRogersHomePage().clkPromotionOfferBadge();
+		Assert.assertTrue(getRogersIgniteTVBuyPage().verifyButtonUpgradeNow(), "Upgrade button is not available");
         reporter.reportLogWithScreenshot("Upgrade button on ignite-bundles page");
-        rogers_igniteTV_buy_page.clkButtonUpgradeNow();
+        getRogersIgniteTVBuyPage().clkButtonUpgradeNow();
         reporter.reportLogWithScreenshot("Modal upgrading to ignite bundels");
-        rogers_igniteTV_buy_page.verifyUpgradingToIgnitebundelsModal();
-        rogers_igniteTV_buy_page.clkOkayUpgradingToIgnitebundelsModal();
-        rogers_order_review_page.verifyAgreementPage();
+        getRogersIgniteTVBuyPage().verifyUpgradingToIgnitebundelsModal();
+        getRogersIgniteTVBuyPage().clkOkayUpgradingToIgnitebundelsModal();
+        getRogersOrderReviewPage().verifyAgreementPage();
         reporter.reportLogWithScreenshot("Launched the order review page");
-        rogers_order_review_page.enterDateOfbirth(TestDataHandler.solarisHTOMigrationSignIn.getAccountDetails().getDateOfBirth());
+        getRogersOrderReviewPage().enterDateOfbirth(TestDataHandler.solarisHTOMigrationSignIn.getAccountDetails().getDateOfBirth());
         
         
         
         
         
-        rogers_order_review_page.verifyAgreement();
-        rogers_order_review_page.clkAcceptenceCheckbox();
+        getRogersOrderReviewPage().verifyAgreement();
+        getRogersOrderReviewPage().clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
-        rogers_order_review_page.clkSubmit();
-        rogers_order_confirmation_page.verifyOrderConfirmation();
+        getRogersOrderReviewPage().clkSubmit();
+        getRogersOrderConfirmationPage().verifyOrderConfirmation();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.softAssert(rogers_order_confirmation_page.verifyOrderConfirmation(),"Order has created successfully","Order has failed");       
+        reporter.softAssert(getRogersOrderConfirmationPage().verifyOrderConfirmation(),"Order has created successfully","Order has failed");
     }
 
     @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

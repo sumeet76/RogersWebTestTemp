@@ -39,23 +39,23 @@ public class RogersSS_TC_043_AO_ValidateCHaccountBadge_IgniteRHP extends BaseTes
     @Test(groups = {"RegressionSS","AccountOverviewSS"})
     public void checkSolarisRHPDasboard() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
-		rogers_home_page.clkSignIn();
-		rogers_login_page.switchToSignInIFrame();
+		getRogersHomePage().clkSignIn();
+		getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        rogers_login_page.setUsernameIFrame(TestDataHandler.tc43IgniteRHP.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.tc43IgniteRHP.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc43IgniteRHP.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc43IgniteRHP.getPassword());
  		reporter.reportLogWithScreenshot("Enter the account credentails");
- 		rogers_login_page.clkSignInIFrame();
- 		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+ 		getRogersLoginPage().clkSignInIFrame();
+ 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
  		reporter.reportLogWithScreenshot("Skip popup");
- 		rogers_login_page.clkSkipIFrame();
- 		rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount(TestDataHandler.tc43IgniteRHP.accountDetails.getBan()); 
-		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Login Success","Login Failed");
+ 		getRogersLoginPage().clkSkipIFrame();
+ 		getRogersLoginPage().switchOutOfSignInIFrame();
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc43IgniteRHP.accountDetails.getBan());
+		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Login Success","Login Failed");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-        rogers_solaris_rhp_dashboard_validation_page.clkSolarisRHPBadge(xmlTestParameters.get("strBrowser")); 
+        getRogersSolarisRHPDashboardPage().clkSolarisRHPBadge(xmlTestParameters.get("strBrowser"));
         reporter.reportLogWithScreenshot("Clicked on RHP badge");
-        reporter.hardAssert(rogers_solaris_rhp_dashboard_validation_page.verifyConfigureYourCurrentFeatures(),
+        reporter.hardAssert(getRogersSolarisRHPDashboardPage().verifyConfigureYourCurrentFeatures(),
         		"Verification of Configure Your Current Features link is success",
         		"Verification of Configure Your Current Features link is Failed");        
         reporter.reportLogWithScreenshot("RHP Dashboard page is opened correctly");

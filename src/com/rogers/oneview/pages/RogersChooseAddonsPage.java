@@ -47,8 +47,8 @@ public class RogersChooseAddonsPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkCheckBoxKeepCurrentPlanLine2() {
-		reusableActions.executeJavaScriptClick(checkBoxKeepCurrentPlanLine2);
-		//reusableActions.clickIfAvailable(checkBoxKeepCurrentPlanLine2,30);
+		getReusableActionsInstance().executeJavaScriptClick(checkBoxKeepCurrentPlanLine2);
+		//getReusableActionsInstance().clickIfAvailable(checkBoxKeepCurrentPlanLine2,30);
 	}
 	
 	/**
@@ -56,8 +56,8 @@ public class RogersChooseAddonsPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkContinueHUP() {
-		reusableActions.executeJavaScriptClick(btnContinueHUP);
-		reusableActions.clickIfAvailable(By.xpath("//div[@class='ngdialog-content']//button[@res='_continue']"),30);
+		getReusableActionsInstance().executeJavaScriptClick(btnContinueHUP);
+		getReusableActionsInstance().clickIfAvailable(By.xpath("//div[@class='ngdialog-content']//button[@res='_continue']"),30);
 	}
 	
 	/**
@@ -65,8 +65,8 @@ public class RogersChooseAddonsPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkContinue() {
-		reusableActions.executeJavaScriptClick(btnContinue);
-		reusableActions.waitForElementVisibility(btnContinue, 60);
+		getReusableActionsInstance().executeJavaScriptClick(btnContinue);
+		getReusableActionsInstance().waitForElementVisibility(btnContinue, 60);
 	}
 	
 	/**
@@ -74,7 +74,7 @@ public class RogersChooseAddonsPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkCheckout() {
-		reusableActions.clickWhenReady(btnCheckout , 60);
-		//reusableActions.waitForElementVisibility(btnCheckout, 60);
+		getReusableActionsInstance().clickWhenReady(btnCheckout);
+		//getReusableActionsInstance().waitForElementVisibility(btnCheckout, 60);
 	}
 }

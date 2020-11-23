@@ -38,65 +38,65 @@ public class RogersCH_TC_047_LegacyBundle_BuyBundleOfferTest extends BaseTestCla
 	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH"})
     public void checkLegacyBundleOffer() throws InterruptedException {
     	reporter.reportLogWithScreenshot("Launched the Home Page");
-    	rogers_home_page.clkShop();
+    	getRogersHomePage().clkShop();
     	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy bundle");
-    	rogers_home_page.clkBundle();
+    	getRogersHomePage().clkBundle();
     	reporter.reportLogWithScreenshot("Launched the legacy bundle packages page");
-    	rogers_legacy_bundle_buy_page.clkSelectBundle();
+    	getRogersLegacyBundleBuyPage().clkSelectBundle();
         String  strAddressLine1=TestDataHandler.tc43_44_digitalTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc43_44_digitalTVAccount.getAccountDetails().getAddress().get("line2");
-        rogers_legacy_bundle_buy_page.setAddressLookup(strAddressLine1+", "+strAddressLine2);
+        getRogersLegacyBundleBuyPage().setAddressLookup(strAddressLine1+", "+strAddressLine2);
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        rogers_legacy_bundle_buy_page.clkAddressLookupSubmit();
+        getRogersLegacyBundleBuyPage().clkAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Good News for the Service availability");
     	if (strLanguage.equals("en"))
     	{
     	reporter.reportLogWithScreenshot("Good News for the Service availability");
-    	rogers_legacy_bundle_buy_page.clkBuyOnline();
+    	getRogersLegacyBundleBuyPage().clkBuyOnline();
     	reporter.reportLogWithScreenshot("Cart-summary Page with the selected plan");
-    	rogers_legacy_bundle_buy_page.clkCheckout(); 
+    	getRogersLegacyBundleBuyPage().clkCheckout();
     	reporter.reportLogWithScreenshot("Checkout page has launched to give the user information");
-    	rogers_order_summary_page.setFirstName();
-    	rogers_order_summary_page.setLastName();
-    	rogers_order_summary_page.setEmail();
-    	rogers_order_summary_page.setStreetNumber(TestDataHandler.tc43_44_digitalTVAccount.getAccountDetails().getAddress().get("streetNumber"));
-    	rogers_order_summary_page.setStreetName(TestDataHandler.tc43_44_digitalTVAccount.getAccountDetails().getAddress().get("streetName"));
-    	rogers_order_summary_page.setCity(TestDataHandler.tc43_44_digitalTVAccount.getAccountDetails().getAddress().get("city"));
-    	rogers_order_summary_page.selectProvince(TestDataHandler.tc43_44_digitalTVAccount.getAccountDetails().getAddress().get("Province"));
-    	rogers_order_summary_page.setPostalCode(TestDataHandler.tc43_44_digitalTVAccount.getAccountDetails().getAddress().get("PostalCode"));
-    	rogers_order_summary_page.setPhone();
+    	getRogersOrderSummaryPage().setFirstName();
+    	getRogersOrderSummaryPage().setLastName();
+    	getRogersOrderSummaryPage().setEmail();
+    	getRogersOrderSummaryPage().setStreetNumber(TestDataHandler.tc43_44_digitalTVAccount.getAccountDetails().getAddress().get("streetNumber"));
+    	getRogersOrderSummaryPage().setStreetName(TestDataHandler.tc43_44_digitalTVAccount.getAccountDetails().getAddress().get("streetName"));
+    	getRogersOrderSummaryPage().setCity(TestDataHandler.tc43_44_digitalTVAccount.getAccountDetails().getAddress().get("city"));
+    	getRogersOrderSummaryPage().selectProvince(TestDataHandler.tc43_44_digitalTVAccount.getAccountDetails().getAddress().get("Province"));
+    	getRogersOrderSummaryPage().setPostalCode(TestDataHandler.tc43_44_digitalTVAccount.getAccountDetails().getAddress().get("PostalCode"));
+    	getRogersOrderSummaryPage().setPhone();
     	reporter.reportLogWithScreenshot("Entered the user contact information");    	
-    	rogers_order_summary_page.selectDOBYear();
-    	rogers_order_summary_page.selectDOBMonth();
-    	rogers_order_summary_page.selectDOBDay();
-    	rogers_order_summary_page.switchToCreditCardIFrame();
-    	rogers_order_summary_page.setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
-    	rogers_order_summary_page.switchOutOfCreditCardIFrame();
-    	rogers_order_summary_page.selectExpiryMonth();
-    	rogers_order_summary_page.selectExpiryYear();
+    	getRogersOrderSummaryPage().selectDOBYear();
+    	getRogersOrderSummaryPage().selectDOBMonth();
+    	getRogersOrderSummaryPage().selectDOBDay();
+    	getRogersOrderSummaryPage().switchToCreditCardIFrame();
+    	getRogersOrderSummaryPage().setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
+    	getRogersOrderSummaryPage().switchOutOfCreditCardIFrame();
+    	getRogersOrderSummaryPage().selectExpiryMonth();
+    	getRogersOrderSummaryPage().selectExpiryYear();
     	reporter.reportLogWithScreenshot("Entered the Credit information");
-    	rogers_order_summary_page.selectSecondIDOption("dl");
-    	rogers_order_summary_page.setDrivingLicenseNumber();
-    	rogers_order_summary_page.selectDirivingLicenseProvince("British Columbia");
-    	rogers_order_summary_page.selectDrivingLicenseExpiryYear();
-    	rogers_order_summary_page.selectLicenseExpiryMonth();
-    	rogers_order_summary_page.selectDrivingLicenseExpiryDay();
+    	getRogersOrderSummaryPage().selectSecondIDOption("dl");
+    	getRogersOrderSummaryPage().setDrivingLicenseNumber();
+    	getRogersOrderSummaryPage().selectDirivingLicenseProvince("British Columbia");
+    	getRogersOrderSummaryPage().selectDrivingLicenseExpiryYear();
+    	getRogersOrderSummaryPage().selectLicenseExpiryMonth();
+    	getRogersOrderSummaryPage().selectDrivingLicenseExpiryDay();
     	reporter.reportLogWithScreenshot("Entered the Billing Information information");
-    	rogers_order_summary_page.clkCreditConsent();
+    	getRogersOrderSummaryPage().clkCreditConsent();
     	reporter.reportLogWithScreenshot("Credit Consent Check Done");
-    	rogers_order_summary_page.clkCreditConsentSubmit();
+    	getRogersOrderSummaryPage().clkCreditConsentSubmit();
     	reporter.reportLogWithScreenshot("Tech-Install block has launched");
-    	rogers_order_summary_page.clkTechInstall();
+    	getRogersOrderSummaryPage().clkTechInstall();
     	reporter.reportLogWithScreenshot("Agreement block has launched");
-    	rogers_order_summary_page.clkConsentCheckboxBundleflow();
+    	getRogersOrderSummaryPage().clkConsentCheckboxBundleflow();
     	reporter.reportLogWithScreenshot("Consent Check Done");
-    	rogers_order_summary_page.clkSubmit();  
+    	getRogersOrderSummaryPage().clkSubmit();
     	reporter.reportLogWithScreenshot("order info");
-  	    reporter.hardAssert(rogers_order_confirmation_page.verifyOrderConfirmationLegacy(),"Order has created", "Order hasn't careted");
+  	    reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationLegacy(),"Order has created", "Order hasn't careted");
     	}
     	else
     	{
-    	reporter.hardAssert(rogers_legacy_bundle_buy_page.verifyServiceabilitySuccess(),"Order has created", "Order hasn't careted");
+    	reporter.hardAssert(getRogersLegacyBundleBuyPage().verifyServiceabilitySuccess(),"Order has created", "Order hasn't careted");
     	}
         }
 

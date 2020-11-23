@@ -54,7 +54,7 @@ public class RogersSetPasswordPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnSetPasswordInEmail() {
-		reusableActions.clickWhenReady(btnSetPasswordInEmail, 30);		
+		getReusableActionsInstance().clickWhenReady(btnSetPasswordInEmail, 30);
 	}
 	
 	/**
@@ -63,7 +63,7 @@ public class RogersSetPasswordPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void switchToSetPasswordTab(int intTabIndex) {
-		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+		ArrayList<String> tabs = new ArrayList<String>(getDriver().getWindowHandles());
 		getDriver().switchTo().window(tabs.get(intTabIndex));
 	}
 	
@@ -73,7 +73,7 @@ public class RogersSetPasswordPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkRadioBtnProvince(String strProvince) {
-		reusableActions.clickWhenReady(By.xpath("//ins[contains(text(),'" + strProvince + "')]"), 20);
+		getReusableActionsInstance().clickWhenReady(By.xpath("//ins[contains(text(),'" + strProvince + "')]"), 20);
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class RogersSetPasswordPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnContinueForSetPassword() {
-		reusableActions.clickWhenReady(btnContinue, 30);
+		getReusableActionsInstance().clickWhenReady(btnContinue, 30);
 	}
 	
 	/**
@@ -89,8 +89,8 @@ public class RogersSetPasswordPage extends BasePageClass {
 	 * @param strPassword, string of the password
 	 */
 	public void setPassword(String strPassword) {
-		reusableActions.getWhenReady(inputPassword, 30).click();
-		reusableActions.getWhenReady(inputPassword, 30).sendKeys(strPassword);
+		getReusableActionsInstance().getWhenReady(inputPassword, 30).click();
+		getReusableActionsInstance().getWhenReady(inputPassword, 30).sendKeys(strPassword);
 	}
 	
 	/**
@@ -98,8 +98,8 @@ public class RogersSetPasswordPage extends BasePageClass {
 	 * @param strPassword, string of the password
 	 */
 	public void setConfirmPassword(String strPassword) {
-		reusableActions.getWhenReady(inputConfirmPassword, 30).click();
-		reusableActions.getWhenReady(inputConfirmPassword, 30).sendKeys(strPassword);
+		getReusableActionsInstance().getWhenReady(inputConfirmPassword, 30).click();
+		getReusableActionsInstance().getWhenReady(inputConfirmPassword, 30).sendKeys(strPassword);
 	}
 	
 	/**
@@ -108,8 +108,8 @@ public class RogersSetPasswordPage extends BasePageClass {
 	 */
 	public void clkBtnSetPassword() {
 		//click on any blank space
-		//reusableActions.clickWhenReady(divSetPassword, 10);
-		reusableActions.clickWhenReady(btnSetPassword, 60);
+		//getReusableActionsInstance().clickWhenReady(divSetPassword, 10);
+		getReusableActionsInstance().clickWhenReady(btnSetPassword, 60);
 	} 
 	
 	
@@ -120,8 +120,8 @@ public class RogersSetPasswordPage extends BasePageClass {
 	 */
 	public boolean verifyMsgReigistrationCompleteIsDisplayed() {
 		//msgRegistrationComplete				
-		return (reusableActions.isElementVisible(msgRegistrationComplete,100)
-				|| reusableActions.isElementVisible(btnSignIn,30));
+		return (getReusableActionsInstance().isElementVisible(msgRegistrationComplete,100)
+				|| getReusableActionsInstance().isElementVisible(btnSignIn,30));
 	}
 	
 	/**
@@ -129,7 +129,7 @@ public class RogersSetPasswordPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnGotoOverview() {
-		reusableActions.clickWhenReady(btnGotoOverview, 30);
+		getReusableActionsInstance().clickWhenReady(btnGotoOverview, 30);
 	}
 	
 	/**
@@ -137,6 +137,6 @@ public class RogersSetPasswordPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkButtonSignIn() {
-		reusableActions.clickWhenReady(btnSignIn);
+		getReusableActionsInstance().clickWhenReady(btnSignIn);
 	}
 }

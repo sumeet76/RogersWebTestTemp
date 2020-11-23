@@ -27,18 +27,18 @@ public class RogersSearch_CBS_1741_Search_Box_Close_Icon_Test extends BaseTestCl
 
         getDriver().get(System.getProperty("SearchUrl"));
         reporter.reportLogWithScreenshot("CBS Search Page");
-        rogers_search_page.enterTextSearch("wireless");
+        getRogersSearchPage().enterTextSearch("wireless");
         reporter.reportLogWithScreenshot("Search field entered");
-        reporter.hardAssert(rogers_search_page.isSuggestionsSectionDisplayed(), "label Suggestion Visible", "label Suggestion Not Visible");
-        reporter.hardAssert(rogers_search_page.isSupportSectionDisplayed(), "label Support Visible", "label Support Not Visible");
+        reporter.hardAssert(getRogersSearchPage().isSuggestionsSectionDisplayed(), "label Suggestion Visible", "label Suggestion Not Visible");
+        reporter.hardAssert(getRogersSearchPage().isSupportSectionDisplayed(), "label Support Visible", "label Support Not Visible");
         reporter.reportLogWithScreenshot("Search Label Validation");
-        if(rogers_search_page.isSupportSectionPopulated() || rogers_search_page.isLeftSectionPopulated()) {
+        if(getRogersSearchPage().isSupportSectionPopulated() || getRogersSearchPage().isLeftSectionPopulated()) {
             reporter.reportLogPassWithScreenshot("Suggestion or Supports populated");
         } else {
             reporter.reportLogFailWithScreenshot("Suggestion and Support not populated");
         }
-        rogers_search_page.clkCloseSearchIcon();
-        reporter.hardAssert(rogers_search_page.validateSearchBoxIsEmpty(), "Search Box is Empty", "Search Box is not Empty");
+        getRogersSearchPage().clkCloseSearchIcon();
+        reporter.hardAssert(getRogersSearchPage().validateSearchBoxIsEmpty(), "Search Box is Empty", "Search Box is not Empty");
         reporter.reportLogWithScreenshot("Search field reset");
     }
 

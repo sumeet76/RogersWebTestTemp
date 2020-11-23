@@ -66,7 +66,7 @@ public class RogersSecurePaymentPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifySecurePaymentLoad() {
-		return reusableActions.isElementVisible(lblMakeASecurePayment, 30);
+		return getReusableActionsInstance().isElementVisible(lblMakeASecurePayment, 30);
 	}
 	
 	/**
@@ -76,12 +76,12 @@ public class RogersSecurePaymentPage extends BasePageClass {
 	 */
 	public void setPaymentAmount(String strAmount) {	
 				
-		reusableActions.executeJavaScriptClick(txtpaymentAmount);
+		getReusableActionsInstance().executeJavaScriptClick(txtpaymentAmount);
 		for (int itr = 0; itr < 6; itr++){
-			reusableActions.getWhenReady(txtpaymentAmount).sendKeys(Keys.DELETE);		
-			reusableActions.getWhenReady(txtpaymentAmount).sendKeys(Keys.BACK_SPACE);	
+			getReusableActionsInstance().getWhenReady(txtpaymentAmount).sendKeys(Keys.DELETE);
+			getReusableActionsInstance().getWhenReady(txtpaymentAmount).sendKeys(Keys.BACK_SPACE);
 	    }
-		reusableActions.enterText(txtpaymentAmount,strAmount, 30);			
+		getReusableActionsInstance().enterText(txtpaymentAmount,strAmount, 30);
 	}
 	
 	/**
@@ -90,9 +90,9 @@ public class RogersSecurePaymentPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void setCardNumber(String strCardNumber) {
-		driver.switchTo().frame(fraCardNumber);
+		getDriver().switchTo().frame(fraCardNumber);
 		txtCardNumber.sendKeys(strCardNumber);
-		driver.switchTo().defaultContent();
+		getDriver().switchTo().defaultContent();
 	}
 	
 	/**
@@ -102,7 +102,7 @@ public class RogersSecurePaymentPage extends BasePageClass {
 	 */
 	public void setCardExpiryMonth(String strExpiryMonth) {
 				
-		reusableActions.selectWhenReadyByVisibleText(lstExpiryMonth, strExpiryMonth);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(lstExpiryMonth, strExpiryMonth);
 	}
 	
 	/**
@@ -111,7 +111,7 @@ public class RogersSecurePaymentPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void setCardExpiryYear(String strExpiryYear) {
-		reusableActions.selectWhenReadyByVisibleText(lstExpiryYear, strExpiryYear);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(lstExpiryYear, strExpiryYear);
 	}
 	
 	/**
@@ -128,7 +128,7 @@ public class RogersSecurePaymentPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickReviewAndContinue() {
-		reusableActions.clickIfAvailable(btnReviewAndContinue, 30);
+		getReusableActionsInstance().clickIfAvailable(btnReviewAndContinue, 30);
 	}
 	
 	/**
@@ -136,7 +136,7 @@ public class RogersSecurePaymentPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickPayNow() {
-		reusableActions.clickIfAvailable(btnPayNow, 60);
+		getReusableActionsInstance().clickIfAvailable(btnPayNow, 60);
 	}
 	
 	/**
@@ -145,8 +145,8 @@ public class RogersSecurePaymentPage extends BasePageClass {
 	 * @return true if Payment Success msg and amount displayed are correct; else false
 	 */
 	public boolean verifyPaymentSuccessful(String strAmount) {
-		reusableActions.waitForElementVisibility(lblPaymentSuccessMsg, 60);
-		return (reusableActions.isElementVisible(lblPaymentSuccessMsg) &&
+		getReusableActionsInstance().waitForElementVisibility(lblPaymentSuccessMsg, 60);
+		return (getReusableActionsInstance().isElementVisible(lblPaymentSuccessMsg) &&
 				lblPaymentAmount.getText().trim().replace("$", "").trim().contains(strAmount));
 	}
 	
@@ -154,7 +154,7 @@ public class RogersSecurePaymentPage extends BasePageClass {
 	 * Clicks on the 'Done' button
 	 */
 	public void clickDone() {
-		reusableActions.clickIfAvailable(btnDone);
+		getReusableActionsInstance().clickIfAvailable(btnDone);
 	}
 	
 	/**
@@ -163,7 +163,7 @@ public class RogersSecurePaymentPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public String getTransactionReferenceNumber() {
-	return reusableActions.getWhenReady(lblReferenceNumber).getText().trim();	
+	return getReusableActionsInstance().getWhenReady(lblReferenceNumber).getText().trim();
 	}
 	
 }

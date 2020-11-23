@@ -293,8 +293,8 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkLnkSetupRecoveryNum() {
-		reusableActions.waitForElementTobeClickable(lnkSetupRecoveryNum, 30);
-		reusableActions.getWhenReady(lnkSetupRecoveryNum, 30).click();
+		getReusableActionsInstance().waitForElementTobeClickable(lnkSetupRecoveryNum, 30);
+		getReusableActionsInstance().getWhenReady(lnkSetupRecoveryNum, 30).click();
 	}
 	
 	/**
@@ -302,7 +302,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void switchToSetRecoveryNumIFrame() {
-		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(iframeSmsRecovery, 10);
+		getReusableActionsInstance().waitForFrameToBeAvailableAndSwitchToIt(iframeSmsRecovery, 10);
 	}
 	
 	/**
@@ -312,8 +312,8 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void setPhoneNumberIframe(String strRecoveryNumber) {
 
-		reusableActions.getWhenReady(inputPhoneNumber,20).clear();
-		reusableActions.getWhenReady(inputPhoneNumber,2).sendKeys(strRecoveryNumber);
+		getReusableActionsInstance().getWhenReady(inputPhoneNumber,20).clear();
+		getReusableActionsInstance().getWhenReady(inputPhoneNumber,2).sendKeys(strRecoveryNumber);
 	}
 	
 	/**
@@ -321,7 +321,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnContinueIframe() {
-		reusableActions.clickIfAvailable(btnContinue, 30);
+		getReusableActionsInstance().clickIfAvailable(btnContinue, 30);
 	}
 
 	/**
@@ -330,8 +330,8 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void setVerifyCodeIframe(String strVerifyCode) {
-		reusableActions.getWhenReady(inputSmsPin,20).clear();
-		reusableActions.getWhenReady(inputSmsPin,2).sendKeys(strVerifyCode);
+		getReusableActionsInstance().getWhenReady(inputSmsPin,20).clear();
+		getReusableActionsInstance().getWhenReady(inputSmsPin,2).sendKeys(strVerifyCode);
 	}
 	
 	/**
@@ -339,8 +339,8 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnVerifyMeIframe() {
-		reusableActions.clickWhenReady(btnVerifyMe, 30);
-		//reusableActions.executeJavaScriptClick(btnContinue);
+		getReusableActionsInstance().clickWhenReady(btnVerifyMe, 30);
+		//getReusableActionsInstance().executeJavaScriptClick(btnContinue);
 	}
 	
 	/**
@@ -350,7 +350,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public Boolean verifySetRecoverySuccessConfirmationMsg(String strLast4DigitPhoneNum) {
-		return reusableActions.isElementVisible(By.xpath("//div[contains(text(),'" + strLast4DigitPhoneNum + "')]"), 30);
+		return getReusableActionsInstance().isElementVisible(By.xpath("//div[contains(text(),'" + strLast4DigitPhoneNum + "')]"), 30);
 	}
 	
 	/**
@@ -358,7 +358,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnContinueToMyRogersIframe() {
-		reusableActions.getWhenReady(btnContinueToMyRogers, 30).click();
+		getReusableActionsInstance().getWhenReady(btnContinueToMyRogers, 30).click();
 	}
 	
 	/**
@@ -366,7 +366,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void switchOutofSetRecoveryNumIframe() {
-		driver.switchTo().defaultContent();
+		getDriver().switchTo().defaultContent();
 	}
 	
 	/**
@@ -376,7 +376,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public Boolean verifyRecoveryNumberSetSuccessfully(String strLast4DigitPhoneNum) {
-		return reusableActions.isElementVisible(By.xpath("//div[contains(text(),'" + strLast4DigitPhoneNum + "')]"), 30);
+		return getReusableActionsInstance().isElementVisible(By.xpath("//div[contains(text(),'" + strLast4DigitPhoneNum + "')]"), 30);
 		
 	}
 	
@@ -385,7 +385,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clklnkLinkAnotherAcct() {
-		reusableActions.clickWhenReady(lnkLinkAnotherAcct, 30);
+		getReusableActionsInstance().clickWhenReady(lnkLinkAnotherAcct, 30);
 	}
 	
 	/**
@@ -393,7 +393,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @return true if message displayed ; else false;
 	 */
 	public boolean verifyLinkAccountSuccessful() {
-		return reusableActions.isElementVisible(lblLinkAccountSuccess);
+		return getReusableActionsInstance().isElementVisible(lblLinkAccountSuccess);
 	}
 	
 	/**
@@ -403,8 +403,8 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public Boolean isTheWorkingAccount(String strAccountNum) {
-		return (reusableActions.isElementVisible(By.xpath("//rss-account-info//*[contains(text(),'" + strAccountNum + "')]"), 30)
-				||reusableActions.isElementVisible(By.xpath("//div[contains(text(),'" + strAccountNum + "')]"), 30));
+		return (getReusableActionsInstance().isElementVisible(By.xpath("//rss-account-info//*[contains(text(),'" + strAccountNum + "')]"), 30)
+				||getReusableActionsInstance().isElementVisible(By.xpath("//div[contains(text(),'" + strAccountNum + "')]"), 30));
 	}
 	
 	/**
@@ -412,7 +412,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkLnkUnlinkThisAcct() {
-		reusableActions.clickWhenReady(lnkUnlinkThisAcct, 30);
+		getReusableActionsInstance().clickWhenReady(lnkUnlinkThisAcct, 30);
 	}
 	
 	/**
@@ -420,7 +420,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnUnlinkThisAccount() {
-		reusableActions.clickWhenReady(btnUnlinkThisAcct, 30);
+		getReusableActionsInstance().clickWhenReady(btnUnlinkThisAcct, 30);
 	}
 	
 	/**
@@ -430,7 +430,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public Boolean verifyAccountUnlinkSuccessMsg(String strCtn) {
-		return reusableActions.isElementVisible(By.xpath("//span[contains(text(),'" + strCtn + "')]"), 30);
+		return getReusableActionsInstance().isElementVisible(By.xpath("//span[contains(text(),'" + strCtn + "')]"), 30);
 	}
 	
 	
@@ -439,9 +439,9 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnUnlinkDone() {
-		reusableActions.clickWhenReady(btnUnlinkDone, 30);
-		reusableActions.staticWait(3000);
-		reusableActions.javascriptScrollToTopOfPage();
+		getReusableActionsInstance().clickWhenReady(btnUnlinkDone, 30);
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
 
 	}
 	
@@ -450,9 +450,9 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkLnkOverview() {
-		reusableActions.javascriptScrollToTopOfPage();
-		reusableActions.waitForElementTobeClickable(menuOverview, 360);
-		reusableActions.scrollToElementAndClick(menuOverview);	
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
+		getReusableActionsInstance().waitForElementTobeClickable(menuOverview, 360);
+		getReusableActionsInstance().scrollToElementAndClick(menuOverview);
 
 	}
 	
@@ -461,7 +461,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkLnkChangeUsername() {
-		reusableActions.clickWhenReady(lnkChangeUsername, 30);
+		getReusableActionsInstance().clickWhenReady(lnkChangeUsername, 30);
 	}
 	
 	/**
@@ -471,7 +471,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public Boolean verifyCurrentUsername(String strUsername) {
-		return reusableActions.isElementVisible(By.xpath("//span[text()='Current username: ' or contains(text(),'Nom d’utilisateur actuel:')]/following-sibling::span[contains(text(),'" + strUsername + "')]"), 30);
+		return getReusableActionsInstance().isElementVisible(By.xpath("//span[text()='Current username: ' or contains(text(),'Nom d’utilisateur actuel:')]/following-sibling::span[contains(text(),'" + strUsername + "')]"), 30);
 		
 	}
 	
@@ -481,9 +481,9 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void setNewUsername(String strNewUsername) {
-		reusableActions.getWhenReady(labelNewUsername,20).click();
-		//reusableActions.getWhenReady(inputNewUsername,10).clear();
-		reusableActions.getWhenReady(inputNewUsername,2).sendKeys(strNewUsername);
+		getReusableActionsInstance().getWhenReady(labelNewUsername,20).click();
+		//getReusableActionsInstance().getWhenReady(inputNewUsername,10).clear();
+		getReusableActionsInstance().getWhenReady(inputNewUsername,2).sendKeys(strNewUsername);
 	}
 	
 	/**
@@ -491,7 +491,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnChangeUsernameContinue() {
-		reusableActions.clickWhenReady(btnChangeUsernameContinue, 30);
+		getReusableActionsInstance().clickWhenReady(btnChangeUsernameContinue, 30);
 	}
 	
 	/**
@@ -501,7 +501,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public Boolean verifyChangeUsernameConfirmMsg(String strNewUsername) {
-		return 	reusableActions.isElementVisible(By.xpath("//span[text()='New username will be: ' or contains(text(),'Votre nouveau nom d')]/following-sibling::span[contains(text(),'" + strNewUsername + "')]"), 30);
+		return 	getReusableActionsInstance().isElementVisible(By.xpath("//span[text()='New username will be: ' or contains(text(),'Votre nouveau nom d')]/following-sibling::span[contains(text(),'" + strNewUsername + "')]"), 30);
 	}
 	
 	/**
@@ -509,7 +509,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnChangeUsernameSubmit() {
-		reusableActions.clickWhenReady(btnChangeUsernameSubmit, 30);
+		getReusableActionsInstance().clickWhenReady(btnChangeUsernameSubmit, 30);
 	}
 	
 	/**
@@ -518,7 +518,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public Boolean verifyChangeUsernameSuccessMsg() {
-		return 	reusableActions.isElementVisible(lblChangeUsernameSucMsg, 30);
+		return 	getReusableActionsInstance().isElementVisible(lblChangeUsernameSucMsg, 30);
 	}
 	
 	/**
@@ -527,7 +527,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @return true if the user name match, otherwise false
 	 */
 	public Boolean verifyUsername(String strUsername) {
-		return reusableActions.isElementVisible(By.xpath("//div[contains(text(),'" + strUsername + "')]"), 30);
+		return getReusableActionsInstance().isElementVisible(By.xpath("//div[contains(text(),'" + strUsername + "')]"), 30);
 	}
 	
 	/**
@@ -535,7 +535,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnChangeUsernameDone() {
-		reusableActions.clickWhenReady(btnChangeUsernameDone, 30);
+		getReusableActionsInstance().clickWhenReady(btnChangeUsernameDone, 30);
 	}
 	
 	/**
@@ -543,7 +543,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkLnkChangePassword() {
-		reusableActions.clickWhenReady(lnkChangePassword, 30);
+		getReusableActionsInstance().clickWhenReady(lnkChangePassword, 30);
 	}
 	
 	/**
@@ -551,7 +551,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @return true if the overlay displayed, otherwise false.
 	 */
 	public Boolean isOverlayChangePasswordDisplayed() {
-		return reusableActions.isElementVisible(overlayChangePassword, 30);
+		return getReusableActionsInstance().isElementVisible(overlayChangePassword, 30);
 	}
 	
 	/**
@@ -561,11 +561,11 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void setCurrentPassword(String strCurrentPass) {
 		
-		reusableActions.getWhenReady(divCurrentPassword,30).click();
+		getReusableActionsInstance().getWhenReady(divCurrentPassword,30).click();
 		//JavascriptExecutor jse = (JavascriptExecutor)getDriver();
 		//jse.executeScript("arguments[0].value='"+ strCurrentPass +"';", divCurrentPassword);
-		reusableActions.getWhenReady(divCurrentPassword,30).click();
-		reusableActions.getWhenReady(inputCurrentPassword,2).sendKeys(strCurrentPass);
+		getReusableActionsInstance().getWhenReady(divCurrentPassword,30).click();
+		getReusableActionsInstance().getWhenReady(inputCurrentPassword,2).sendKeys(strCurrentPass);
 	}
 	
 	/**
@@ -574,13 +574,13 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setCurrentPasswordMobile(String strCurrentPass) {
-		//reusableActions.getWhenReady(divCurrentPassword,30);
+		//getReusableActionsInstance().getWhenReady(divCurrentPassword,30);
 		JavascriptExecutor jse = (JavascriptExecutor)getDriver();
 		jse.executeScript("arguments[0].value='"+ strCurrentPass +"';", divCurrentPassword);
-		reusableActions.executeJavaScript("arguments[0].value='Test'");
-		reusableActions.getWhenReady(divCurrentPassword,30).click();
-		reusableActions.getWhenReady(divCurrentPassword,30).click();
-		reusableActions.getWhenReady(inputCurrentPassword,2).sendKeys(strCurrentPass);
+		getReusableActionsInstance().executeJavaScript("arguments[0].value='Test'");
+		getReusableActionsInstance().getWhenReady(divCurrentPassword,30).click();
+		getReusableActionsInstance().getWhenReady(divCurrentPassword,30).click();
+		getReusableActionsInstance().getWhenReady(inputCurrentPassword,2).sendKeys(strCurrentPass);
 	}
 	
 	/**
@@ -589,9 +589,9 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void setNewPassword(String strNewPass) {
-		reusableActions.getWhenReady(divNewPassword,30).click();
-		reusableActions.getWhenReady(divNewPassword,30).click();
-		reusableActions.getWhenReady(inputNewPassword,2).sendKeys(strNewPass);
+		getReusableActionsInstance().getWhenReady(divNewPassword,30).click();
+		getReusableActionsInstance().getWhenReady(divNewPassword,30).click();
+		getReusableActionsInstance().getWhenReady(inputNewPassword,2).sendKeys(strNewPass);
 	}
 	
 	/**
@@ -600,9 +600,9 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void setConfirmPassword(String strConfirmPass) {
-		reusableActions.getWhenReady(divConfirmPassword,30).click();
-		reusableActions.getWhenReady(divConfirmPassword,30).click();
-		reusableActions.getWhenReady(inputConfirmPassword,2).sendKeys(strConfirmPass);
+		getReusableActionsInstance().getWhenReady(divConfirmPassword,30).click();
+		getReusableActionsInstance().getWhenReady(divConfirmPassword,30).click();
+		getReusableActionsInstance().getWhenReady(inputConfirmPassword,2).sendKeys(strConfirmPass);
 	}
 	
 	/**
@@ -610,7 +610,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnChangePasswordSubmit() {
-		reusableActions.clickWhenReady(btnChangePassSubmit, 30);
+		getReusableActionsInstance().clickWhenReady(btnChangePassSubmit, 30);
 	}
 	
 	/**
@@ -619,7 +619,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public Boolean verifyChangePasswordSuccessMsg() {
-		return 	reusableActions.isElementVisible(lblChangePassSucMsg, 30);
+		return 	getReusableActionsInstance().isElementVisible(lblChangePassSucMsg, 30);
 	}
 	
 	/**
@@ -627,7 +627,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnChangePasswordDone() {
-		reusableActions.clickWhenReady(btnChangePassDone, 30);
+		getReusableActionsInstance().clickWhenReady(btnChangePassDone, 30);
 	} 
 	
 	/**
@@ -635,7 +635,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnContactInfomation() {
-		reusableActions.clickWhenReady(btnContactInfo, 30);
+		getReusableActionsInstance().clickWhenReady(btnContactInfo, 30);
 	}	
 	
 	/**
@@ -643,7 +643,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnBillingInfomation() {
-		reusableActions.clickWhenReady(btnBilingAddressInfo, 30);
+		getReusableActionsInstance().clickWhenReady(btnBilingAddressInfo, 30);
 	}
 	
 	/**
@@ -651,7 +651,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkLnkAddContactEmail() {
-		reusableActions.clickWhenReady(lnkAddContactEmail, 30);
+		getReusableActionsInstance().clickWhenReady(lnkAddContactEmail, 30);
 	}
 	
 	/**
@@ -659,7 +659,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkLnkChangeBillingAddress() {
-		reusableActions.clickWhenReady(lnkChangeBillingAddress, 30);
+		getReusableActionsInstance().clickWhenReady(lnkChangeBillingAddress, 30);
 	}
 	
 	/**
@@ -667,7 +667,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkLnkChangeBillingAddressMobile() {
-		reusableActions.clickWhenReady(lnkChangeBillingAddressMobile, 30);
+		getReusableActionsInstance().clickWhenReady(lnkChangeBillingAddressMobile, 30);
 	}
 	
 	/**
@@ -675,7 +675,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkLnkUpdateHomeNumber() {
-		reusableActions.clickWhenReady(By.xpath("//span[contains(text(),'home contact number') or contains(text(),'home number') or contains(text(),'numéro à la maison')]"), 30);
+		getReusableActionsInstance().clickWhenReady(By.xpath("//span[contains(text(),'home contact number') or contains(text(),'home number') or contains(text(),'numéro à la maison')]"), 30);
 	}
 	
 	/**
@@ -683,7 +683,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkLnkAddBusinessNumber() {
-		reusableActions.clickWhenReady(lnkAddBusinessNumber, 30);
+		getReusableActionsInstance().clickWhenReady(lnkAddBusinessNumber, 30);
 	}
 	
 	/**
@@ -691,7 +691,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkLnkAddBusinessNumberMobile() {
-		reusableActions.clickWhenReady(lnkAddBusinessNumberMobile, 30);
+		getReusableActionsInstance().clickWhenReady(lnkAddBusinessNumberMobile, 30);
 	}
 	
 	
@@ -700,7 +700,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkLnkChangeContactLanguage() {
-		reusableActions.clickWhenReady(lnkChangeLanguage, 30);
+		getReusableActionsInstance().clickWhenReady(lnkChangeLanguage, 30);
 	}
 	
 	/**
@@ -708,7 +708,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkLnkChangeContactLanguageMobile() {
-		reusableActions.clickWhenReady(lnkChangeLanguageMobile, 30);
+		getReusableActionsInstance().clickWhenReady(lnkChangeLanguageMobile, 30);
 	}
 	
 	/**
@@ -717,9 +717,9 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void setContactEmail(String strContactEmail) {
-		reusableActions.getWhenReady(lblContactEmail).click();
-		//reusableActions.getWhenReady(inputContactEmail,20).clear();		
-		reusableActions.getWhenReady(inputContactEmail).sendKeys(strContactEmail);
+		getReusableActionsInstance().getWhenReady(lblContactEmail).click();
+		//getReusableActionsInstance().getWhenReady(inputContactEmail,20).clear();
+		getReusableActionsInstance().getWhenReady(inputContactEmail).sendKeys(strContactEmail);
 		
 	}
 	
@@ -728,7 +728,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnAddContactEmailContinue() {
-		reusableActions.clickWhenReady(btnAddContactEmailContinue, 30);
+		getReusableActionsInstance().clickWhenReady(btnAddContactEmailContinue, 30);
 	}	
 	
 	/**
@@ -736,7 +736,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnAddContactEmailSubmit() {
-		reusableActions.clickWhenReady(btnAddContactEmailSubmit, 30);
+		getReusableActionsInstance().clickWhenReady(btnAddContactEmailSubmit, 30);
 	} 
 	
 	/**
@@ -745,14 +745,14 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @return true if finish is done else false
 	 */
 	public boolean clkBtnAddContactEmailFinish() {
-		reusableActions.staticWait(1000);
-		if(reusableActions.isElementVisible(btnAddContactEmailDone))
+		getReusableActionsInstance().staticWait(1000);
+		if(getReusableActionsInstance().isElementVisible(btnAddContactEmailDone))
 		{
-		 reusableActions.clickWhenReady(btnAddContactEmailDone, 30);
+		 getReusableActionsInstance().clickWhenReady(btnAddContactEmailDone, 30);
 		 return true;
 		}
 			
-		reusableActions.clickIfAvailable(btnClose);
+		getReusableActionsInstance().clickIfAvailable(btnClose);
 		return false;		
 	}
 	
@@ -763,7 +763,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public Boolean verifyContactEmailSuccessfullySet(String strContactEmail) {
-		return 	reusableActions.isElementVisible(By.xpath("//rss-contact-info//div[contains(text(),'" + strContactEmail + "')]"), 30);
+		return 	getReusableActionsInstance().isElementVisible(By.xpath("//rss-contact-info//div[contains(text(),'" + strContactEmail + "')]"), 30);
 	}
 	
 	/**
@@ -772,9 +772,9 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void setHomePhone(String strHomePhone) {
-		reusableActions.getWhenReady(lblHomePhone,30).click();
-		//reusableActions.getWhenReady(inputHomePhone,20).clear();
-		reusableActions.getWhenReady(inputHomePhone,2).sendKeys(strHomePhone);
+		getReusableActionsInstance().getWhenReady(lblHomePhone,30).click();
+		//getReusableActionsInstance().getWhenReady(inputHomePhone,20).clear();
+		getReusableActionsInstance().getWhenReady(inputHomePhone,2).sendKeys(strHomePhone);
 	}
 	
 	/**
@@ -782,7 +782,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnUpdateHomeNumberContinue() {
-		reusableActions.clickWhenReady(btnUpdateHomeNumberContinue, 30);
+		getReusableActionsInstance().clickWhenReady(btnUpdateHomeNumberContinue, 30);
 	} 
 	
 	/**
@@ -790,7 +790,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnUpdateHomeNumberSubmit() {
-		reusableActions.clickWhenReady(btnUpdateHomeNumberSubmit, 30);
+		getReusableActionsInstance().clickWhenReady(btnUpdateHomeNumberSubmit, 30);
 	} 
 	
 	/**
@@ -799,14 +799,14 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean clkBtnUpdateHomeNumberFinish() {
-		reusableActions.staticWait(1000);
-		if(reusableActions.isElementVisible(btnUpdateHomeNumberDone))
+		getReusableActionsInstance().staticWait(1000);
+		if(getReusableActionsInstance().isElementVisible(btnUpdateHomeNumberDone))
 		{
-		 reusableActions.clickWhenReady(btnUpdateHomeNumberDone, 30);
+		 getReusableActionsInstance().clickWhenReady(btnUpdateHomeNumberDone, 30);
 		 return true;
 		}
 			
-		reusableActions.clickIfAvailable(btnClose);
+		getReusableActionsInstance().clickIfAvailable(btnClose);
 		return false;
 	}
 	
@@ -816,7 +816,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @return true if the number match, otherwise false
 	 */
 	public Boolean verifyHomeNumber(String strHomeNumber) {
-		return reusableActions.isElementVisible(By.xpath("//div[contains(text(),'" + strHomeNumber + "')]"), 30);
+		return getReusableActionsInstance().isElementVisible(By.xpath("//div[contains(text(),'" + strHomeNumber + "')]"), 30);
 	}
 	
 	/**
@@ -825,9 +825,9 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void setBusinessPhone(String strBusinessPhone) {
-		reusableActions.getWhenReady(lblBusinessPhone,30).click();
-		//reusableActions.getWhenReady(inputBusinessPhone,20).clear();
-		reusableActions.getWhenReady(inputBusinessPhone,2).sendKeys(strBusinessPhone);
+		getReusableActionsInstance().getWhenReady(lblBusinessPhone,30).click();
+		//getReusableActionsInstance().getWhenReady(inputBusinessPhone,20).clear();
+		getReusableActionsInstance().getWhenReady(inputBusinessPhone,2).sendKeys(strBusinessPhone);
 	}
 	
 	/**
@@ -835,7 +835,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnAddBusinessNumberContinue() {
-		reusableActions.clickWhenReady(btnAddBusinessNumberContinue, 30);
+		getReusableActionsInstance().clickWhenReady(btnAddBusinessNumberContinue, 30);
 	} 
 	
 	/**
@@ -843,7 +843,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnAddBusinessNumberSubmit() {
-		reusableActions.clickWhenReady(btnAddBusinessNumberSubmit, 30);
+		getReusableActionsInstance().clickWhenReady(btnAddBusinessNumberSubmit, 30);
 	} 
 	
 	/**
@@ -851,7 +851,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnChangelanguageSubmit() {
-		reusableActions.clickWhenReady(btnChangeLanguageSubmit, 30);
+		getReusableActionsInstance().clickWhenReady(btnChangeLanguageSubmit, 30);
 	} 
 	
 	/**
@@ -860,14 +860,14 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @return true if button done is clicked else false
 	 */
 	public boolean clkBtnAddBusinessNumberDone() {
-		reusableActions.staticWait(1000);
-		if(reusableActions.isElementVisible(btnAddBusinessNumberDone))
+		getReusableActionsInstance().staticWait(1000);
+		if(getReusableActionsInstance().isElementVisible(btnAddBusinessNumberDone))
 		{
-		 reusableActions.clickWhenReady(btnAddBusinessNumberDone, 30);
+		 getReusableActionsInstance().clickWhenReady(btnAddBusinessNumberDone, 30);
 		 return true;
 		}
 			
-		reusableActions.clickIfAvailable(btnClose);
+		getReusableActionsInstance().clickIfAvailable(btnClose);
 		return false;		
 	}
 	
@@ -877,14 +877,14 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @return true if button done is clicked else false
 	 */
 	public boolean clkBtnChangeLanguageDone() {
-		reusableActions.staticWait(1000);
-		if(reusableActions.isElementVisible(btnChangeLanguageDone))
+		getReusableActionsInstance().staticWait(1000);
+		if(getReusableActionsInstance().isElementVisible(btnChangeLanguageDone))
 		{
-		 reusableActions.clickWhenReady(btnChangeLanguageDone, 30);
+		 getReusableActionsInstance().clickWhenReady(btnChangeLanguageDone, 30);
 		 return true;
 		}
 			
-		reusableActions.clickIfAvailable(btnClose);
+		getReusableActionsInstance().clickIfAvailable(btnClose);
 		return false;		
 	}
 	
@@ -895,7 +895,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public Boolean verifyBusinessNumber(String strBusinessNumber) {
-		return reusableActions.isElementVisible(By.xpath("//div[contains(text(),'" + strBusinessNumber + "')]"), 30);
+		return getReusableActionsInstance().isElementVisible(By.xpath("//div[contains(text(),'" + strBusinessNumber + "')]"), 30);
 	}
 
 	/**
@@ -905,7 +905,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public boolean buttonFinishExists() {
 
-		return reusableActions.isElementVisible(btnAddContactEmailDone);
+		return getReusableActionsInstance().isElementVisible(btnAddContactEmailDone);
 	}
 	
 	/**
@@ -913,7 +913,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkCloseButton() {
-		reusableActions.executeJavaScriptClick(btnClose);
+		getReusableActionsInstance().executeJavaScriptClick(btnClose);
 	}
 
 	/**
@@ -922,8 +922,8 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setStreetNumber(String strStreetNumber) {
-		reusableActions.getWhenReady(lblStreetNumber).click();;
-		reusableActions.getWhenReady(txtStreetNumber).sendKeys(strStreetNumber);
+		getReusableActionsInstance().getWhenReady(lblStreetNumber).click();;
+		getReusableActionsInstance().getWhenReady(txtStreetNumber).sendKeys(strStreetNumber);
 		
 	}
 
@@ -933,8 +933,8 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setStreetname(String strStreetName) {
-		reusableActions.getWhenReady(lblStreetName).click();
-		reusableActions.getWhenReady(txtStreetName).sendKeys(strStreetName);		
+		getReusableActionsInstance().getWhenReady(lblStreetName).click();
+		getReusableActionsInstance().getWhenReady(txtStreetName).sendKeys(strStreetName);
 	}
 
 	/**
@@ -943,7 +943,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void selectStreetType(String strStreetType) {
-		reusableActions.selectWhenReadyByVisibleText(cboStreetType,strStreetType);	
+		getReusableActionsInstance().selectWhenReadyByVisibleText(cboStreetType,strStreetType);
 		
 	}
 
@@ -953,8 +953,8 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setApartment(String strApartment) {
-		reusableActions.getWhenReady(lblApartmentNumber).click();
-		reusableActions.getWhenReady(txtApartmentNumber).sendKeys(strApartment);				
+		getReusableActionsInstance().getWhenReady(lblApartmentNumber).click();
+		getReusableActionsInstance().getWhenReady(txtApartmentNumber).sendKeys(strApartment);
 	}
 
 	/**
@@ -964,7 +964,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void selectAprtmentType(String strApartmentValue) {
 		try {
-			reusableActions.selectWhenReadyByVisibleText(cboApartmentType,strApartmentValue);
+			getReusableActionsInstance().selectWhenReadyByVisibleText(cboApartmentType,strApartmentValue);
 		}catch (Exception e) {
 					
 		}
@@ -976,8 +976,8 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setCityName(String strCityName) {		
-		reusableActions.getWhenReady(lblCityName).click();
-		reusableActions.getWhenReady(txtCityName).sendKeys(strCityName);
+		getReusableActionsInstance().getWhenReady(lblCityName).click();
+		getReusableActionsInstance().getWhenReady(txtCityName).sendKeys(strCityName);
 	}
 
 	/**
@@ -986,7 +986,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void selectProvince(String strProvince) {
-		reusableActions.selectWhenReadyByVisibleText(cboProvince,strProvince);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(cboProvince,strProvince);
 	}
 
 	/**
@@ -995,8 +995,8 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setPostalCode(String strPostalCode) {
-		reusableActions.getWhenReady(lblPostCode).click();
-		reusableActions.getWhenReady(txtPostalCode).sendKeys(strPostalCode);
+		getReusableActionsInstance().getWhenReady(lblPostCode).click();
+		getReusableActionsInstance().getWhenReady(txtPostalCode).sendKeys(strPostalCode);
 		
 	}
 
@@ -1005,7 +1005,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkChangeAddresContinueButton() {
-		reusableActions.clickIfAvailable(btnChangeAddressContinue);
+		getReusableActionsInstance().clickIfAvailable(btnChangeAddressContinue);
 		
 	}
 
@@ -1014,7 +1014,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void selectAndSubmit() {
-		reusableActions.clickIfAvailable(btnSelectAndSubmit);		
+		getReusableActionsInstance().clickIfAvailable(btnSelectAndSubmit);
 	}
 
 	/**
@@ -1023,14 +1023,14 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean clickDoneChangeBillingAddress() {
-		reusableActions.staticWait(1000);
-		if(reusableActions.isElementVisible(btnChangeAddressDone))
+		getReusableActionsInstance().staticWait(1000);
+		if(getReusableActionsInstance().isElementVisible(btnChangeAddressDone))
 		{
-		 reusableActions.clickWhenReady(btnChangeAddressDone, 30);
+		 getReusableActionsInstance().clickWhenReady(btnChangeAddressDone, 30);
 		 return true;
 		}
 			
-		reusableActions.clickIfAvailable(btnClose);
+		getReusableActionsInstance().clickIfAvailable(btnClose);
 		return false;	
 	}
 
@@ -1040,7 +1040,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @return true if the address is correct
 	 */
 	public boolean verifyBillingAddress(String strAddress) {		
-		return reusableActions.getWhenReady(lblBillingAddress).getText().trim().contains(strAddress);
+		return getReusableActionsInstance().getWhenReady(lblBillingAddress).getText().trim().contains(strAddress);
 	}
 
 	/**
@@ -1049,7 +1049,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public String getExistingBillingAddress() {
-		return reusableActions.getWhenReady(lblBillingAddress).getText().trim();
+		return getReusableActionsInstance().getWhenReady(lblBillingAddress).getText().trim();
 	}
 
 	/**
@@ -1058,7 +1058,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public String getExistingLanguage() {		
-		return reusableActions.getWhenReady(lblLanguageSection).getText();
+		return getReusableActionsInstance().getWhenReady(lblLanguageSection).getText();
 	}
 
 	/**
@@ -1067,7 +1067,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public String getExistingLanguageMobile() {		
-		return reusableActions.getWhenReady(lblContactsDetailsSectionMobile).getText();
+		return getReusableActionsInstance().getWhenReady(lblContactsDetailsSectionMobile).getText();
 	}
 	
 	/**
@@ -1076,7 +1076,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkLanguage(String strlanguage) {
-		reusableActions.clickWhenReady(By.xpath("//span[text()='"+strlanguage+"']"));
+		getReusableActionsInstance().clickWhenReady(By.xpath("//span[text()='"+strlanguage+"']"));
 		
 	}
 
@@ -1087,7 +1087,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyLanguageSetSuccessfully(String strNewLanguage) {		
-		return reusableActions.isElementVisible(By.xpath("//div[contains(text(),'" + strNewLanguage + "')]"), 30);
+		return getReusableActionsInstance().isElementVisible(By.xpath("//div[contains(text(),'" + strNewLanguage + "')]"), 30);
 	}
 
 	/**
@@ -1096,7 +1096,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 *@author Mirza.Kamran
 	 */
 	public String getContactEmail() {
-		return reusableActions.getWhenReady(lblContactsDetailsSection).getText();
+		return getReusableActionsInstance().getWhenReady(lblContactsDetailsSection).getText();
 	}
 
 	/**
@@ -1104,7 +1104,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkSubmit() {
-		reusableActions.clickWhenReady(btnSubmit);
+		getReusableActionsInstance().clickWhenReady(btnSubmit);
 		
 	}
 	
@@ -1113,7 +1113,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnChangeEmailMobile() {
-		reusableActions.clickWhenReady(btnChangeEmailMobile);
+		getReusableActionsInstance().clickWhenReady(btnChangeEmailMobile);
 		
 	}
 	
@@ -1122,7 +1122,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnAddEmailMobile() {
-		reusableActions.clickWhenReady(btnAddEmailMobile);
+		getReusableActionsInstance().clickWhenReady(btnAddEmailMobile);
 		
 	}
 	
@@ -1131,7 +1131,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkCloseFeedbackIfAvailableMobile() {
-		reusableActions.clickIfAvailable(btnCloseFeedbackMobile);
+		getReusableActionsInstance().clickIfAvailable(btnCloseFeedbackMobile);
 	}
 
 	/**
@@ -1140,14 +1140,14 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public String getContactEmailMobile() {		
-		return reusableActions.getWhenReady(lblContactEmailOnChgeContactEmailOverlay).getText().toLowerCase();
+		return getReusableActionsInstance().getWhenReady(lblContactEmailOnChgeContactEmailOverlay).getText().toLowerCase();
 	}
 
 	public void setContactEmailMobile(String strAltEmail) {
-		reusableActions.getWhenReady(lblContactEmail).click();
-		//reusableActions.getWhenReady(inputContactEmail,20).clear();
-		reusableActions.clickIfAvailable(lblContactEmail);
-		reusableActions.getWhenReady(inputContactEmail).sendKeys(strAltEmail);
+		getReusableActionsInstance().getWhenReady(lblContactEmail).click();
+		//getReusableActionsInstance().getWhenReady(inputContactEmail,20).clear();
+		getReusableActionsInstance().clickIfAvailable(lblContactEmail);
+		getReusableActionsInstance().getWhenReady(inputContactEmail).sendKeys(strAltEmail);
 		
 	}
 
@@ -1155,7 +1155,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * 
 	 */
 	public void clkLnkUpdateHomeNumberMobile() {
-		reusableActions.getWhenReady(btnUpdateHomeNumberMobile).click();
+		getReusableActionsInstance().getWhenReady(btnUpdateHomeNumberMobile).click();
 		
 	}
 	
@@ -1165,9 +1165,9 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setHomePhoneMobile(String strHomePhone) {
-		reusableActions.getWhenReady(lblHomePhone,30).click();
-		reusableActions.clickIfAvailable(lblHomePhone);
-		reusableActions.getWhenReady(inputHomePhone,2).sendKeys(strHomePhone);
+		getReusableActionsInstance().getWhenReady(lblHomePhone,30).click();
+		getReusableActionsInstance().clickIfAvailable(lblHomePhone);
+		getReusableActionsInstance().getWhenReady(inputHomePhone,2).sendKeys(strHomePhone);
 	}
 	
 	/**
@@ -1176,8 +1176,8 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setBusinessPhoneMobile(String strBusinessPhone) {
-		reusableActions.getWhenReady(lblBusinessPhone,30).click();
-		reusableActions.clickIfAvailable(lblBusinessPhone);
-		reusableActions.getWhenReady(inputBusinessPhone,2).sendKeys(strBusinessPhone);
+		getReusableActionsInstance().getWhenReady(lblBusinessPhone,30).click();
+		getReusableActionsInstance().clickIfAvailable(lblBusinessPhone);
+		getReusableActionsInstance().getWhenReady(inputBusinessPhone,2).sendKeys(strBusinessPhone);
 	}
 }

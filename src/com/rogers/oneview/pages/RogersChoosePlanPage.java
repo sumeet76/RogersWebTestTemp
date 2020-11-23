@@ -92,7 +92,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkSharedLineOne() {
-		reusableActions.clickWhenReady(linkLine.get(0),30);
+		getReusableActionsInstance().clickWhenReady(linkLine.get(0),30);
 		
 	}
 	
@@ -101,7 +101,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkSharedLineTwo() {
-		reusableActions.clickWhenReady(linkLine.get(1),30);
+		getReusableActionsInstance().clickWhenReady(linkLine.get(1),30);
 		
 	}
 	
@@ -110,7 +110,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkMakeChangesToExistingPlan() {
-		reusableActions.clickIfAvailable(lblChangesToExistingPlan,60);
+		getReusableActionsInstance().clickIfAvailable(lblChangesToExistingPlan,60);
 	}
 	
 	/**
@@ -118,7 +118,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkRadioSelectPrimaryLine() {
-		reusableActions.clickWhenReady(rdoSelectPrimaryLine,60);
+		getReusableActionsInstance().clickWhenReady(rdoSelectPrimaryLine,60);
 	}
 	
 	/**
@@ -126,7 +126,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkContinueOnSelectPrimaryShareEveryThing() {
-		reusableActions.clickWhenReady(btnContinuePrimaryLine,60);
+		getReusableActionsInstance().clickWhenReady(btnContinuePrimaryLine,60);
 	}
 	
 	/**
@@ -134,7 +134,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkCheckBoxSelectAPhone() {
-		reusableActions.clickWhenReady(chkboxOnMultiLineSelect,60);
+		getReusableActionsInstance().clickWhenReady(chkboxOnMultiLineSelect,60);
 	}
 	
 	/**
@@ -142,7 +142,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkCreateSharedPlanWithOtherLines() {
-		reusableActions.clickWhenReady(lblCreateSharedPlan,60);
+		getReusableActionsInstance().clickWhenReady(lblCreateSharedPlan,60);
 	}
 	
 	/**
@@ -150,7 +150,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkAddOnShareEveryThingModal() {
-		reusableActions.clickWhenReady(btnAddOnMultiLineSelect,60);
+		getReusableActionsInstance().clickWhenReady(btnAddOnMultiLineSelect,60);
 	}
 	
 	/**
@@ -158,7 +158,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkButtonModalContinue() {
-		reusableActions.clickIfAvailable(btnModalContinue,60);
+		getReusableActionsInstance().clickIfAvailable(btnModalContinue,60);
 	}
 	
 	/**
@@ -166,7 +166,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkNoTab() {
-		reusableActions.clickWhenReady(lnkNoTab);
+		getReusableActionsInstance().clickWhenReady(lnkNoTab);
 	}
 	
 	/**
@@ -174,8 +174,8 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void selectFirstAvailablePlan() {
-		reusableActions.executeJavaScriptClick(reusableActions.getWhenReady(btnSelect.get(3), 30));
-		reusableActions.staticWait(3000);
+		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(btnSelect.get(0), 30));
+		getReusableActionsInstance().staticWait(3000);
 	}
 	
 	/**
@@ -183,7 +183,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkBuyOnline() {
-		reusableActions.clickWhenReady(lnkBuyOnline);
+		getReusableActionsInstance().clickWhenReady(lnkBuyOnline);
 	}
 	
 	/**
@@ -226,9 +226,9 @@ public class RogersChoosePlanPage extends BasePageClass {
 			strPlanCat = "no tab";
 			break;
 		}
-		reusableActions.clickWhenReady(icnPlanCategory, 60);		
-		reusableActions.clickWhenReady(By.xpath("//md-option[@value='" + strPlanCat +"']"));
-		reusableActions.staticWait(3000);
+		getReusableActionsInstance().clickWhenReady(icnPlanCategory, 60);
+		getReusableActionsInstance().clickWhenReady(By.xpath("//md-option[@value='" + strPlanCat +"']"));
+		getReusableActionsInstance().staticWait(3000);
 	}
 	
 	/**
@@ -242,9 +242,9 @@ public class RogersChoosePlanPage extends BasePageClass {
 		} else {
 			strPlanType = "nonshare";
 		}
-		reusableActions.clickWhenReady(icnPlanType, 60);
-		reusableActions.clickWhenReady(By.xpath("//md-option[@value='"+ strPlanType +"']"));
-		reusableActions.staticWait(3000);
+		getReusableActionsInstance().clickWhenReady(icnPlanType, 60);
+		getReusableActionsInstance().clickWhenReady(By.xpath("//md-option[@value='"+ strPlanType +"']"));
+		getReusableActionsInstance().staticWait(3000);
 	}
 	
 	/**
@@ -252,9 +252,9 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkCheckout() {
-		reusableActions.clickWhenReady(btnCheckout, 30);
-		reusableActions.clickIfAvailable(rdoSelectTodaysDate, 30);
-		reusableActions.clickIfAvailable(By.xpath("//div[@class='billingDateButtonClass inlineBlockClass']"));
+		getReusableActionsInstance().clickWhenReady(btnCheckout, 30);
+		getReusableActionsInstance().clickIfAvailable(rdoSelectTodaysDate, 30);
+		getReusableActionsInstance().clickIfAvailable(By.xpath("//div[@class='billingDateButtonClass inlineBlockClass']"));
 	}
 	
 	/**
@@ -299,7 +299,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 		
 		for (int index = 0; index < lblNewPlanValue.size(); index++) {
 			if(Integer.parseInt(lblNewPlanValue.get(index).getText()) < intCurPlanVal) {
-				reusableActions.executeJavaScriptClick(btnSelect.get(index));
+				getReusableActionsInstance().executeJavaScriptClick(btnSelect.get(index));
 				break;
 			}
 		}
@@ -311,8 +311,8 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyAndClickDowngradeFeeContinue() {
-		if(reusableActions.isElementVisible(btnDowngradeFeeContinue, 30)) {
-			reusableActions.executeJavaScriptClick(btnDowngradeFeeContinue);
+		if(getReusableActionsInstance().isElementVisible(btnDowngradeFeeContinue, 30)) {
+			getReusableActionsInstance().executeJavaScriptClick(btnDowngradeFeeContinue);
 			return true;			
 		} else {
 			return false;
@@ -325,7 +325,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 */
 	public void handleAdditionalLinesPlanChange() {
 		for (int index = 0; index < lnkAdditionalLinesTabs.size(); index++) {
-			reusableActions.clickWhenReady(lnkAdditionalLinesTabs.get(index));
+			getReusableActionsInstance().clickWhenReady(lnkAdditionalLinesTabs.get(index));
 			selectFirstAvailablePlan();
 		}
 	}
@@ -336,10 +336,10 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void selectAdditionalLine(String strCTN) {
-		reusableActions.getWhenReady(By.xpath("//span[@translate='_updated']"), 30);
+		getReusableActionsInstance().getWhenReady(By.xpath("//span[@translate='_updated']"), 30);
 		strCTN = strCTN.replace("-", "").replace(" ", "");
 		strCTN = strCTN.substring(0, 3) + "-" + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);
-		reusableActions.clickWhenReady(By.xpath("//span[text()='"+ strCTN +"']/ancestor::a"));
+		getReusableActionsInstance().clickWhenReady(By.xpath("//span[text()='"+ strCTN +"']/ancestor::a"));
 	}
 	
 	/**
@@ -347,7 +347,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkContinue() {
-		reusableActions.clickWhenReady(btnContinue);
+		getReusableActionsInstance().clickWhenReady(btnContinue);
 	}
 	
 }

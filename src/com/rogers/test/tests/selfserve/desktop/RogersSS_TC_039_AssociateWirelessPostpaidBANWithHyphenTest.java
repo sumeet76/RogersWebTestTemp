@@ -16,36 +16,36 @@ public class RogersSS_TC_039_AssociateWirelessPostpaidBANWithHyphenTest extends 
 	@Test(groups = {"RegressionSS","WirelessDashboardSS"})
 	public void associateWirelessPostpaidBANwithHyphen() {
 		
-		rogers_home_page.clkSignIn();
-		rogers_login_page.switchToSignInIFrame();
-		rogers_login_page.setUsernameIFrame(TestDataHandler.tc041139.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.tc041139.getPassword());
+		getRogersHomePage().clkSignIn();
+		getRogersLoginPage().switchToSignInIFrame();
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc041139.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc041139.getPassword());
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 
 		String strNewBan = TestDataHandler.tc041139.getAccountDetails().getNewBan();
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-        	if(rogers_account_overview_page.isAccountLinked(strNewBan)) {
-        		rogers_account_overview_page.selectAccount(strNewBan);
+        	if(getRogersAccountOverviewPage().isAccountLinked(strNewBan)) {
+        		getRogersAccountOverviewPage().selectAccount(strNewBan);
         		unlinkThisAccount(strNewBan);
-        		rogers_profile_and_settings_page.clkLnkOverview();
+        		getRogersProfileAndSettingsPage().clkLnkOverview();
         	} else {
-        		rogers_account_overview_page.selectAccount(TestDataHandler.tc041139.getAccountDetails().getBan());
+        		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc041139.getAccountDetails().getBan());
         	}
         }
         reporter.reportLogWithScreenshot("Account overview page.");
-		rogers_account_overview_page.clkLinkAnotherAccount();
-		reporter.hardAssert(rogers_link_account_page.verifyLinkAccountPageLoad(), 
+		getRogersAccountOverviewPage().clkLinkAnotherAccount();
+		reporter.hardAssert(getRogersLinkAccountPage().verifyLinkAccountPageLoad(),
 				"Link Account page load success.", 
 				"Link Account Page Load Failed");
 		reporter.reportLogWithScreenshot("Link account page.");
-		rogers_link_account_page.setAccountNumber(strNewBan);
-		rogers_link_account_page.setPostalCode(TestDataHandler.tc041139.getAccountDetails().getNewPostalcode());
-		rogers_link_account_page.clkBtnLinkAccount();
+		getRogersLinkAccountPage().setAccountNumber(strNewBan);
+		getRogersLinkAccountPage().setPostalCode(TestDataHandler.tc041139.getAccountDetails().getNewPostalcode());
+		getRogersLinkAccountPage().clkBtnLinkAccount();
 //		try {
 //			getDriver().switchTo().alert().accept();
 //		}catch (NoAlertPresentException ex){
@@ -54,27 +54,27 @@ public class RogersSS_TC_039_AssociateWirelessPostpaidBANWithHyphenTest extends 
 			
 		reporter.reportLogWithScreenshot("Link account processing.");
 		
-		//reporter.hardAssert(rogers_account_overview_page.verifyLinkAccountSuccessful(), 
+		//reporter.hardAssert(getRogersAccountOverviewPage().verifyLinkAccountSuccessful(), 
 		//		"User successfully linked another account.", 
 		//		"Link Account Failed -- Success Message DID NOT displayed");
 		reporter.reportLogWithScreenshot("Link account completed.");
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
-    		rogers_account_overview_page.selectAccount(strNewBan);
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
+    		getRogersAccountOverviewPage().selectAccount(strNewBan);
         }		
 		unlinkThisAccount(strNewBan);
 	}
 	
 	public void unlinkThisAccount(String strBan) {
-		rogers_account_overview_page.clkLnkProfileNSettings();
+		getRogersAccountOverviewPage().clkLnkProfileNSettings();
 		reporter.reportLogWithScreenshot("Profile & Settings page.");
 		//check if the account working on is the account need to be unlink!!!
-		if(rogers_profile_and_settings_page.isTheWorkingAccount(strBan)) {
-			rogers_profile_and_settings_page.clkLnkUnlinkThisAcct();
-			rogers_profile_and_settings_page.clkBtnUnlinkThisAccount();
-			reporter.hardAssert(rogers_profile_and_settings_page.verifyAccountUnlinkSuccessMsg(strBan), 
+		if(getRogersProfileAndSettingsPage().isTheWorkingAccount(strBan)) {
+			getRogersProfileAndSettingsPage().clkLnkUnlinkThisAcct();
+			getRogersProfileAndSettingsPage().clkBtnUnlinkThisAccount();
+			reporter.hardAssert(getRogersProfileAndSettingsPage().verifyAccountUnlinkSuccessMsg(strBan),
 					"User successfully unlinked the account.", 
 					"Unlink Account Success Message DID NOT displayed");
-			rogers_profile_and_settings_page.clkBtnUnlinkDone();
+			getRogersProfileAndSettingsPage().clkBtnUnlinkDone();
 		}
 
 	}

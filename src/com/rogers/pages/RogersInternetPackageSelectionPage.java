@@ -55,28 +55,28 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	public void selectInternetPackage(String strPackageNameEn, String strPackageNameFr, String strLang) {
 		
 		if(strLang.equalsIgnoreCase("en")) {
-			if (reusableActions.isElementVisible(By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameEn+ "')]/ancestor::div[@class='owl-item']//a[@class='selectButton']"), 20))
-			reusableActions.getWhenReady(By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameEn+ "')]/ancestor::div[@class='owl-item']//a[@class='selectButton']")).click();
-		else if (reusableActions.isElementVisible(btnNextArrowPlans)) {
-			reusableActions.getWhenReady(btnNextArrowPlans).click();
-			reusableActions.clickWhenReady(By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameEn+ "')]/ancestor::div[@class='owl-item']//a[@class='selectButton']"),10);
-		} else if (reusableActions.isElementVisible(By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameEn+ "')]/ancestor::div[@class='owl-item']//a[@class='selectButton']"), 10)) 
+			if (getReusableActionsInstance().isElementVisible(By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameEn+ "')]/ancestor::div[@class='owl-item']//a[@class='selectButton']"), 20))
+			getReusableActionsInstance().getWhenReady(By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameEn+ "')]/ancestor::div[@class='owl-item']//a[@class='selectButton']")).click();
+		else if (getReusableActionsInstance().isElementVisible(btnNextArrowPlans)) {
+			getReusableActionsInstance().getWhenReady(btnNextArrowPlans).click();
+			getReusableActionsInstance().clickWhenReady(By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameEn+ "')]/ancestor::div[@class='owl-item']//a[@class='selectButton']"),10);
+		} else if (getReusableActionsInstance().isElementVisible(By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameEn+ "')]/ancestor::div[@class='owl-item']//a[@class='selectButton']"), 10))
 		{
-			reusableActions.getWhenReady(btnPrevArrowPlans).click();
-			reusableActions.clickWhenReady(By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameEn+ "')]/ancestor::div[@class='owl-item']//a[@class='selectButton']"),10);
+			getReusableActionsInstance().getWhenReady(btnPrevArrowPlans).click();
+			getReusableActionsInstance().clickWhenReady(By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameEn+ "')]/ancestor::div[@class='owl-item']//a[@class='selectButton']"),10);
 		} else
 			throw new NoSuchElementException("Given Package Doesnt Exist in Catalogue");
 		}
 		else
-			if (reusableActions.isElementVisible(By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameFr+ "')]/ancestor::div[@class='owl-item']//a[@class='selectButton']"), 20))
-			reusableActions.getWhenReady(By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameFr+ "')]/ancestor::div[@class='owl-item']//a[@class='selectButton']")).click();
-		else if (reusableActions.isElementVisible(btnNextArrowPlans)) {
-			reusableActions.getWhenReady(btnNextArrowPlans).click();
-			reusableActions.clickWhenReady(By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameFr+ "')]/ancestor::div[@class='owl-item']//a[@class='selectButton']"),10);
-		} else if (reusableActions.isElementVisible(By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameFr+ "')]/ancestor::div[@class='owl-item']//a[@class='selectButton']"), 10)) 
+			if (getReusableActionsInstance().isElementVisible(By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameFr+ "')]/ancestor::div[@class='owl-item']//a[@class='selectButton']"), 20))
+			getReusableActionsInstance().getWhenReady(By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameFr+ "')]/ancestor::div[@class='owl-item']//a[@class='selectButton']")).click();
+		else if (getReusableActionsInstance().isElementVisible(btnNextArrowPlans)) {
+			getReusableActionsInstance().getWhenReady(btnNextArrowPlans).click();
+			getReusableActionsInstance().clickWhenReady(By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameFr+ "')]/ancestor::div[@class='owl-item']//a[@class='selectButton']"),10);
+		} else if (getReusableActionsInstance().isElementVisible(By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameFr+ "')]/ancestor::div[@class='owl-item']//a[@class='selectButton']"), 10))
 		{
-			reusableActions.getWhenReady(btnPrevArrowPlans).click();
-			reusableActions.clickWhenReady(By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameFr+ "')]/ancestor::div[@class='owl-item']//a[@class='selectButton']"),10);
+			getReusableActionsInstance().getWhenReady(btnPrevArrowPlans).click();
+			getReusableActionsInstance().clickWhenReady(By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameFr+ "')]/ancestor::div[@class='owl-item']//a[@class='selectButton']"),10);
 		} else
 			throw new NoSuchElementException("Given Package Doesnt Exist in Catalogue");
 	}
@@ -89,7 +89,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	 */
 	public boolean verifyInternetPackageSelection(String strPackageName) {
 		String[] part = strPackageName.split("(?<=\\D)(?=\\d)");
-		return reusableActions.isElementVisible(By.xpath("//span[contains(normalize-space(.) ,'" + part[0].trim()
+		return getReusableActionsInstance().isElementVisible(By.xpath("//span[contains(normalize-space(.) ,'" + part[0].trim()
 				+ "') and contains(normalize-space(.) ,'" + part[1].trim() + "')]"));
 	}
 
@@ -99,37 +99,37 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyDowngradeWaysToBuyBox() {
-		return reusableActions.isElementVisible(popupDowngradeWaystobuyBox);
+		return getReusableActionsInstance().isElementVisible(popupDowngradeWaystobuyBox);
 	}
 
 	public void clkUpgradeContinue() {
-		//reusableActions.waitForElementVisibility(btnUpgradeContinue, 90);
-		reusableActions.getWhenReady(btnUpgradeContinue, 90).click();
+		//getReusableActionsInstance().waitForElementVisibility(btnUpgradeContinue, 90);
+		getReusableActionsInstance().getWhenReady(btnUpgradeContinue, 90).click();
 	}
 	
 	public void clkInternetPackage() {
-		reusableActions.getWhenReady(btnInternetPackage, 90).click();
+		getReusableActionsInstance().getWhenReady(btnInternetPackage, 90).click();
 	}
 		
 	public void clkInternetBuyContinueMobile() {
-		reusableActions.staticWait(3000);
-		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.moveToElementAndClick(btnInternetBuyContinue,90);
-		reusableActions.executeJavaScriptClick(btnInternetBuyContinue);
-		reusableActions.clickIfAvailable(btnInternetBuyContinue,90);
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().moveToElementAndClick(btnInternetBuyContinue,90);
+		getReusableActionsInstance().executeJavaScriptClick(btnInternetBuyContinue);
+		getReusableActionsInstance().clickIfAvailable(btnInternetBuyContinue,90);
 	}
 
 	public void clkInternetBuyContinue() {
-		if(reusableActions.isElementVisible(popUpLoading, 10)) {
-			reusableActions.waitForElementInvisibility(popUpLoading, 30);
+		if(getReusableActionsInstance().isElementVisible(popUpLoading, 10)) {
+			getReusableActionsInstance().waitForElementInvisibility(popUpLoading, 30);
 		}
-		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(btnInternetBuyContinue, 60).click();
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().getWhenReady(btnInternetBuyContinue, 60).click();
 	}
 
 	public void clkCheckout() {
-		reusableActions.waitForElementVisibility(btnCheckout, 90);
-		reusableActions.scrollToElement(btnCheckout);
-		reusableActions.getWhenReady(btnCheckout, 90).click();
+		getReusableActionsInstance().waitForElementVisibility(btnCheckout, 90);
+		getReusableActionsInstance().scrollToElement(btnCheckout);
+		getReusableActionsInstance().getWhenReady(btnCheckout, 90).click();
 	}
 }

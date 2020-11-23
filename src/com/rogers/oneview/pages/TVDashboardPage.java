@@ -177,9 +177,9 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public boolean clickSubmit() {
-		reusableActions.javascriptScrollToBottomOfPage();
-		reusableActions.getWhenReady(btnSubmit, 60).click();
-		return reusableActions.isElementVisible(orderConfirmation);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().getWhenReady(btnSubmit, 60).click();
+		return getReusableActionsInstance().isElementVisible(orderConfirmation);
 		
 		}
 	
@@ -190,11 +190,11 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickSelectLowestTVPackage() {
-		WebElement btn=reusableActions.getWhenReady(btnSelectLowestTvPackage, 60);
-		reusableActions.javascriptScrollByCoordinates(0,btn.getLocation().y-300);
-		reusableActions.getWhenReady(btnSelectLowestTvPackage, 60).click();
-		//reusableActions.getWhenReady(btnContnueReset, 90).click();
-		reusableActions.waitForElementVisibility(btnContnueReset,120);
+		WebElement btn=getReusableActionsInstance().getWhenReady(btnSelectLowestTvPackage, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		getReusableActionsInstance().getWhenReady(btnSelectLowestTvPackage, 60).click();
+		//getReusableActionsInstance().getWhenReady(btnContnueReset, 90).click();
+		getReusableActionsInstance().waitForElementVisibility(btnContnueReset,120);
 		
 		}
 	
@@ -204,8 +204,8 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickContinueChangeTVPackage() {
-		reusableActions.getWhenReady(btnContnueReset, 90).click();
-		reusableActions.waitForElementVisibility(minicartContinue,120);
+		getReusableActionsInstance().getWhenReady(btnContnueReset, 90).click();
+		getReusableActionsInstance().waitForElementVisibility(minicartContinue,120);
 		}
 	
 	/**
@@ -213,8 +213,8 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickContinue4kChannelPack() {
-		reusableActions.getWhenReady(btnContinueOn4kChannelPack,60).click();
-		reusableActions.waitForElementVisibility(btnContinueChangeDate,120);
+		getReusableActionsInstance().getWhenReady(btnContinueOn4kChannelPack,60).click();
+		getReusableActionsInstance().waitForElementVisibility(btnContinueChangeDate,120);
 		
 		}
 	
@@ -223,9 +223,9 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickContinueOn4kTv() {
-		if(reusableActions.isElementVisible(btnContinueOn4kTv,120))
-		reusableActions.getWhenReady(btnContinueOn4kTv,60).click();
-		reusableActions.waitForElementVisibility(btnContinueOn4kChannelPack,120);
+		if(getReusableActionsInstance().isElementVisible(btnContinueOn4kTv,120))
+		getReusableActionsInstance().getWhenReady(btnContinueOn4kTv,60).click();
+		getReusableActionsInstance().waitForElementVisibility(btnContinueOn4kChannelPack,120);
 		
 		}
 	
@@ -234,8 +234,8 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickContinueOnSelectDateChange() {
-		reusableActions.getWhenReady(btnContinueChangeDate,60).click();
-		reusableActions.waitForElementVisibility(btnSubmit, 120);
+		getReusableActionsInstance().getWhenReady(btnContinueChangeDate,60).click();
+		getReusableActionsInstance().waitForElementVisibility(btnSubmit, 120);
 	   }
 
 	/**
@@ -243,10 +243,10 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickExchangeFlexChannels() {
-		WebElement btn=reusableActions.getWhenReady(btnExchangeFlexChannels,80);
-		reusableActions.javascriptScrollByCoordinates(0,btn.getLocation().y-300);
-		reusableActions.getWhenReady(btnExchangeFlexChannels, 60).click();
-		reusableActions.waitForElementVisibility(btnFirstChannelToRemove, 120);
+		WebElement btn=getReusableActionsInstance().getWhenReady(btnExchangeFlexChannels,80);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		getReusableActionsInstance().getWhenReady(btnExchangeFlexChannels, 60).click();
+		getReusableActionsInstance().waitForElementVisibility(btnFirstChannelToRemove, 120);
 		}
 	
 	/**
@@ -254,9 +254,9 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickSearchChannelToRemove() {
-		reusableActions.waitForElementVisibility(icnSearchChannelToRemove,20);
-		reusableActions.javascriptScrollByVisibleElement(exchangeFlexChannelContainer);
-		reusableActions.getWhenReady(icnSearchChannelToRemove, 30).click();
+		getReusableActionsInstance().waitForElementVisibility(icnSearchChannelToRemove,20);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(exchangeFlexChannelContainer);
+		getReusableActionsInstance().getWhenReady(icnSearchChannelToRemove, 30).click();
 		
 		}
 	
@@ -265,27 +265,27 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickFirstChannelToRemove() {
-		WebElement bTn=reusableActions.getWhenReady(btnFirstChannelToRemove, 60);
-		reusableActions.javascriptScrollByCoordinates(0,bTn.getLocation().y-300);
-		reusableActions.getWhenReady(btnFirstChannelToRemove, 60).click();
+		WebElement bTn=getReusableActionsInstance().getWhenReady(btnFirstChannelToRemove, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,bTn.getLocation().y-300);
+		getReusableActionsInstance().getWhenReady(btnFirstChannelToRemove, 60).click();
 		}
 	/**
 	 * Clicks Second channel available in the list to be removed
 	 * @author Drashti.Patel
 	 */
 	public void clickSecondChannelToRemove() {
-		WebElement bTn=reusableActions.getWhenReady(btnSecondChannelToRemove, 60);
-		reusableActions.javascriptScrollByCoordinates(0,bTn.getLocation().y-300);
-		reusableActions.getWhenReady(btnSecondChannelToRemove, 60).click();
+		WebElement bTn=getReusableActionsInstance().getWhenReady(btnSecondChannelToRemove, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,bTn.getLocation().y-300);
+		getReusableActionsInstance().getWhenReady(btnSecondChannelToRemove, 60).click();
 		}
 	/**
 	 * Clicks select button on the channel to remove section
 	 * @author Drashti.Patel
 	 */
 	public void clickSelectChannelRemove() {
-		WebElement select=reusableActions.getWhenReady(btnSelectChannel, 60);
-		reusableActions.javascriptScrollByCoordinates(0,select.getLocation().y-300);
-		reusableActions.getWhenReady(btnSelectChannel, 60).click();
+		WebElement select=getReusableActionsInstance().getWhenReady(btnSelectChannel, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,select.getLocation().y-300);
+		getReusableActionsInstance().getWhenReady(btnSelectChannel, 60).click();
 		}
 	
 	/**
@@ -293,12 +293,12 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickChangeTvPackage() {
-		WebElement select=reusableActions.getWhenReady(btnChangeTvPackage, 120);
-		reusableActions.javascriptScrollByCoordinates(0,select.getLocation().y-300);
-		//reusableActions.waitForElementVisibility(btnViewChannelLineUp, 120);
-		//reusableActions.javascriptScrollByVisibleElement(btnViewChannelLineUp);
-		reusableActions.getWhenReady(btnChangeTvPackage, 120).click();
-		reusableActions.waitForElementVisibility(btnSelectChannel, 120);
+		WebElement select=getReusableActionsInstance().getWhenReady(btnChangeTvPackage, 120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,select.getLocation().y-300);
+		//getReusableActionsInstance().waitForElementVisibility(btnViewChannelLineUp, 120);
+		//getReusableActionsInstance().javascriptScrollByVisibleElement(btnViewChannelLineUp);
+		getReusableActionsInstance().getWhenReady(btnChangeTvPackage, 120).click();
+		getReusableActionsInstance().waitForElementVisibility(btnSelectChannel, 120);
 		}
 	
 	
@@ -307,9 +307,9 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickSelectChannelAdd() {
-		WebElement select=reusableActions.getWhenReady(btnSelectChannel,120);
-		reusableActions.javascriptScrollByCoordinates(0,select.getLocation().y-300);
-		reusableActions.getWhenReady(btnSelectChannel, 120).click();
+		WebElement select=getReusableActionsInstance().getWhenReady(btnSelectChannel,120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,select.getLocation().y-300);
+		getReusableActionsInstance().getWhenReady(btnSelectChannel, 120).click();
 		}
 
 
@@ -318,9 +318,9 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickSearchChannelToAdd() {
-		reusableActions.waitForElementVisibility(icnSearchChannelToAdd,120);
-		reusableActions.javascriptScrollByVisibleElement(exchangeFlexChannelContainer);	
-		reusableActions.getWhenReady(icnSearchChannelToAdd, 120).click();
+		getReusableActionsInstance().waitForElementVisibility(icnSearchChannelToAdd,120);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(exchangeFlexChannelContainer);
+		getReusableActionsInstance().getWhenReady(icnSearchChannelToAdd, 120).click();
 		
 		}
 	
@@ -329,9 +329,9 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickFirstChannelToAdd() {
-		WebElement select=reusableActions.getWhenReady(btnFirstChannelToAdd, 120);
-		reusableActions.javascriptScrollByCoordinates(0,select.getLocation().y-300);
-		reusableActions.getWhenReady(btnFirstChannelToAdd, 120).click();
+		WebElement select=getReusableActionsInstance().getWhenReady(btnFirstChannelToAdd, 120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,select.getLocation().y-300);
+		getReusableActionsInstance().getWhenReady(btnFirstChannelToAdd, 120).click();
 		}
 
 	/**
@@ -339,9 +339,9 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickSecondChannelToAdd() {
-		WebElement select=reusableActions.getWhenReady(btnSecondChannelToAdd, 120);
-		reusableActions.javascriptScrollByCoordinates(0,select.getLocation().y-300);
-		reusableActions.getWhenReady(btnSecondChannelToAdd, 120).click();
+		WebElement select=getReusableActionsInstance().getWhenReady(btnSecondChannelToAdd, 120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,select.getLocation().y-300);
+		getReusableActionsInstance().getWhenReady(btnSecondChannelToAdd, 120).click();
 		}
 	
 	/**
@@ -350,16 +350,16 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickConfirmExchange(String strBrowser) {
-		WebElement select=reusableActions.getWhenReady(btnConfirmExchange, 120);
-		reusableActions.javascriptScrollByCoordinates(0,select.getLocation().y-300);
-		reusableActions.getWhenReady(btnConfirmExchange, 120).click();
+		WebElement select=getReusableActionsInstance().getWhenReady(btnConfirmExchange, 120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,select.getLocation().y-300);
+		getReusableActionsInstance().getWhenReady(btnConfirmExchange, 120).click();
 	/*	if (strBrowser.equalsIgnoreCase("firefox"))
 		{
-			reusableActions.getWhenReady(btnConfirmExchange, 60).click();
+			getReusableActionsInstance().getWhenReady(btnConfirmExchange, 60).click();
 		}else
 		{
-		reusableActions.scrollToElement(txtRecordAndSave);
-		reusableActions.getWhenReady(btnConfirmExchange, 60).click();	
+		getReusableActionsInstance().scrollToElement(txtRecordAndSave);
+		getReusableActionsInstance().getWhenReady(btnConfirmExchange, 60).click();
 		}*/
 	}
 	
@@ -371,9 +371,9 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public boolean verifyExchangeFlexChannelIsLoaded() {
-		reusableActions.waitForElementInvisibility(popUpFlexChannelLoader, 120);
-		reusableActions.getWhenReady(icnSearchChannelToRemove, 120);
-		return reusableActions.isElementVisible(icnSearchChannelToRemove, 120);
+		getReusableActionsInstance().waitForElementInvisibility(popUpFlexChannelLoader, 120);
+		getReusableActionsInstance().getWhenReady(icnSearchChannelToRemove, 120);
+		return getReusableActionsInstance().isElementVisible(icnSearchChannelToRemove, 120);
 		}
 
 	/**
@@ -382,8 +382,8 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */	
 	public boolean verifyLnkUsingVoiceCommands() {
-		reusableActions.waitForElementVisibility(lnkUsingVoiceCommands, 120);	
-		return reusableActions.isElementVisible(lnkUsingVoiceCommands);
+		getReusableActionsInstance().waitForElementVisibility(lnkUsingVoiceCommands, 120);
+		return getReusableActionsInstance().isElementVisible(lnkUsingVoiceCommands);
 	}
 	
 	/**
@@ -391,7 +391,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickBacktoAccountOverview() {
-		reusableActions.getWhenReady(btnBackToAccountOverview, 120).click();
+		getReusableActionsInstance().getWhenReady(btnBackToAccountOverview, 120).click();
 		}
 	
 	/**
@@ -399,10 +399,10 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickViewChannelLineUp() {
-		WebElement btn=reusableActions.getWhenReady(btnViewChannelLineUp,120);
-		reusableActions.javascriptScrollByCoordinates(0,btn.getLocation().y-300);
-		reusableActions.clickWhenReady(btnViewChannelLineUp,120);
-	//	reusableActions.getWhenReady(btnViewChannelLineUp, 60).click();
+		WebElement btn=getReusableActionsInstance().getWhenReady(btnViewChannelLineUp,120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		getReusableActionsInstance().clickWhenReady(btnViewChannelLineUp,120);
+	//	getReusableActionsInstance().getWhenReady(btnViewChannelLineUp, 60).click();
 		}
 	
 	
@@ -411,11 +411,11 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickViewPdf() {
-		String handle=driver.getWindowHandle();
-		reusableActions.getWhenReady(icnViewPdf, 120).click();
-		reusableActions.staticWait(8000);
-		reusableActions.switchToNewWindow(handle);
-		reusableActions.staticWait(6000);
+		String handle=getDriver().getWindowHandle();
+		getReusableActionsInstance().getWhenReady(icnViewPdf, 120).click();
+		getReusableActionsInstance().staticWait(8000);
+		getReusableActionsInstance().switchToNewWindow(handle);
+		getReusableActionsInstance().staticWait(6000);
 		}
 	
 	/**
@@ -424,7 +424,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public boolean verifyViewPdf() {
-		return reusableActions.isElementVisible(icnViewPdf, 120);
+		return getReusableActionsInstance().isElementVisible(icnViewPdf, 120);
 		
 		}
 	
@@ -434,9 +434,9 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clickResetParentalControl() {
-		WebElement btn=reusableActions.getWhenReady(btnResetParentalControl,240);
-		reusableActions.javascriptScrollByCoordinates(0,btn.getLocation().y-300);
-		reusableActions.getWhenReady(btnResetParentalControl, 120).click();
+		WebElement btn=getReusableActionsInstance().getWhenReady(btnResetParentalControl,240);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		getReusableActionsInstance().getWhenReady(btnResetParentalControl, 120).click();
 		}	
 	
 	
@@ -446,7 +446,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */	
 	public boolean verifyResetSuccess() {	
-		return reusableActions.isElementVisible(imgSuccess,120);
+		return getReusableActionsInstance().isElementVisible(imgSuccess,120);
 	}
 	
 	/**
@@ -454,7 +454,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clickSuccessOk() {
-		reusableActions.getWhenReady(btnSuccessOk, 120).click();
+		getReusableActionsInstance().getWhenReady(btnSuccessOk, 120).click();
 		}
 	
 	/**
@@ -463,8 +463,8 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */	
 	public boolean verifyHeader() {	
-		reusableActions.waitForElementVisibility(icnHeader,120);
-		return reusableActions.isElementVisible(icnHeader);
+		getReusableActionsInstance().waitForElementVisibility(icnHeader,120);
+		return getReusableActionsInstance().isElementVisible(icnHeader);
 	}
 	
 	/**
@@ -474,7 +474,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 */	
 	public boolean verifyFooter() {
 		
-		return reusableActions.isElementVisible(icnFooter,120);
+		return getReusableActionsInstance().isElementVisible(icnFooter,120);
 	}
 	
 	/**
@@ -482,11 +482,11 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clickRestartSetupbox() {
-		reusableActions.waitForElementVisibility(btnRestartSetupbox, 240);
-		reusableActions.javascriptScrollToBottomOfPage();
-		reusableActions.javascriptScrollByVisibleElement(btnRestartSetupbox);
-		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(btnRestartSetupbox, 120).click();
+		getReusableActionsInstance().waitForElementVisibility(btnRestartSetupbox, 240);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().javascriptScrollByVisibleElement(btnRestartSetupbox);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().getWhenReady(btnRestartSetupbox, 120).click();
 		}
 	
 	/**
@@ -494,11 +494,11 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickCustForgotPurchasePin() {
-		reusableActions.waitForElementVisibility(icnCustForgotPurchasePin, 240);
-		reusableActions.javascriptScrollToBottomOfPage();
-		reusableActions.javascriptScrollByVisibleElement(icnCustForgotPurchasePin);
-		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(icnCustForgotPurchasePin, 120).click();
+		getReusableActionsInstance().waitForElementVisibility(icnCustForgotPurchasePin, 240);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().javascriptScrollByVisibleElement(icnCustForgotPurchasePin);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().getWhenReady(icnCustForgotPurchasePin, 120).click();
 		}
 	
 	/**
@@ -507,7 +507,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 */
 	
 	public void clickContinueReset() {
-		reusableActions.getWhenReady(btnContnueReset, 120).click();
+		getReusableActionsInstance().getWhenReady(btnContnueReset, 120).click();
 			}
 	/**
 	 * click OK Button
@@ -515,7 +515,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 */
 	
 	public void clickOK() {
-		reusableActions.getWhenReady(btnOk, 120).click();
+		getReusableActionsInstance().getWhenReady(btnOk, 120).click();
 			}
 		
 	/**
@@ -524,8 +524,8 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */	
 	public boolean verifyLnkIntroToAppsOnIgniteTv() {
-		reusableActions.waitForElementVisibility(lnkIntroToAppsOnIgniteTv, 120);		
-		return reusableActions.isElementVisible(lnkIntroToAppsOnIgniteTv);
+		getReusableActionsInstance().waitForElementVisibility(lnkIntroToAppsOnIgniteTv, 120);
+		return getReusableActionsInstance().isElementVisible(lnkIntroToAppsOnIgniteTv);
 	}
 	
 	/**
@@ -534,8 +534,8 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */	
 	public boolean verifyLnkFAQOnPowerSaver() {
-		reusableActions.waitForElementVisibility(lnkFAQOnPowerSaver, 120);	
-		return reusableActions.isElementVisible(lnkFAQOnPowerSaver);
+		getReusableActionsInstance().waitForElementVisibility(lnkFAQOnPowerSaver, 120);
+		return getReusableActionsInstance().isElementVisible(lnkFAQOnPowerSaver);
 	}
 	
 	/**
@@ -544,8 +544,8 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */	
 	public boolean verifyLnkIgniteTvErrCode() {
-		reusableActions.waitForElementVisibility(lnkIgniteTvErrCode, 120);		
-		return reusableActions.isElementVisible(lnkIgniteTvErrCode);
+		getReusableActionsInstance().waitForElementVisibility(lnkIgniteTvErrCode, 120);
+		return getReusableActionsInstance().isElementVisible(lnkIgniteTvErrCode);
 	}
 	
 	/**
@@ -554,8 +554,8 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */	
 	public boolean verifyLnkGoToSupportSection() {
-		reusableActions.waitForElementVisibility(lnkGoToSupportSection, 120);		
-		return reusableActions.isElementVisible(lnkGoToSupportSection);
+		getReusableActionsInstance().waitForElementVisibility(lnkGoToSupportSection, 120);
+		return getReusableActionsInstance().isElementVisible(lnkGoToSupportSection);
 	}
 	
 	/**
@@ -563,7 +563,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */	
 	public void goToPageBottom() {		
-		reusableActions.javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 	}
 	
 	
@@ -572,7 +572,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */	
 	public void goToPageMid() {		
-		reusableActions.javascriptScrollToMiddleOfPage();;
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();;
 	}
 	
 	

@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class RogersSearch_CBS_1734_Typeahead_Result_Links_Test extends BaseTestClass {
-    @DataProvider(name = "FilterData")
+    @DataProvider(name = "FilterData",parallel=true)
     public Object[] testData() throws IOException
     {
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/SearchBoxText1732.csv";
@@ -36,34 +36,34 @@ public class RogersSearch_CBS_1734_Typeahead_Result_Links_Test extends BaseTestC
         getDriver().get(System.getProperty("SearchUrl"));
         reporter.reportLogWithScreenshot("CBS Search Page");
 
-        rogers_search_page.enterTextSearch(csvRow[0]);
+        getRogersSearchPage().enterTextSearch(csvRow[0]);
         reporter.reportLogWithScreenshot("Search field entered");
-        reporter.hardAssert(rogers_search_page.isSuggestionsSectionDisplayed(),
+        reporter.hardAssert(getRogersSearchPage().isSuggestionsSectionDisplayed(),
                 "Suggestions Section Visible", "Suggestions Section Not Visible");
-        reporter.hardAssert(rogers_search_page.isSupportSectionDisplayed(),
+        reporter.hardAssert(getRogersSearchPage().isSupportSectionDisplayed(),
                 "Support Section Visible", "Support Section Not Visible");
 
-        strSuggestionOptions = rogers_search_page.getSuggestionSelections();
+        strSuggestionOptions = getRogersSearchPage().getSuggestionSelections();
         reporter.hardAssert(strSuggestionOptions.size()!=0,
                 "Suggestions Displayed","Suggestions Not Displayed");
         for(int j=0;j< strSuggestionOptions.size();j++) {
-            rogers_search_page.hoverSuggestionsType(strSuggestionOptions.get(j));
+            getRogersSearchPage().hoverSuggestionsType(strSuggestionOptions.get(j));
             reporter.reportLogWithScreenshot("Hovered on " +strSuggestionOptions.get(j));
-            blnCurLeftPane = rogers_search_page.isLeftSectionPopulated();
-            blnCurSupport = rogers_search_page.isSupportSectionPopulated();
+            blnCurLeftPane = getRogersSearchPage().isLeftSectionPopulated();
+            blnCurSupport = getRogersSearchPage().isSupportSectionPopulated();
             if(blnCurSupport) {
-                reporter.softAssert(rogers_search_page.validateSupportLinks(),
+                reporter.softAssert(getRogersSearchPage().validateSupportLinks(),
                         "All Support Results are Links","All Support Results are Not Links");
             }
             if(blnCurSupport || blnCurLeftPane) {
-                rogers_search_page.clkSuggestionsType(strSuggestionOptions.get(j));
-                reporter.hardAssert(rogers_search_page.validateURLContains(strSuggestionOptions.get(j)),
+                getRogersSearchPage().clkSuggestionsType(strSuggestionOptions.get(j));
+                reporter.hardAssert(getRogersSearchPage().validateURLContains(strSuggestionOptions.get(j)),
                         "Result Landing Page displayed", "Result Landing Page not displayed");
                 reporter.reportLogWithScreenshot("Landing page for suggested result click");
             } else {
                 reporter.reportLogFailWithScreenshot("Both Left and Support sections are not displayed");
             }
-            rogers_search_page.enterTextSearch(csvRow[0]);
+            getRogersSearchPage().enterTextSearch(csvRow[0]);
         }
     }
 

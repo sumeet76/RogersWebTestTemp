@@ -93,7 +93,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     public String getComingSoonTextTitle(String deviceName) {
         xpathDeviceName = createXpathWithDeviceName(deviceName);
         deviceTextXpath = xpathDeviceName + "//following-sibling::p";
-        return reusableActions.getWhenReady(By.xpath(deviceTextXpath), 10).getText();
+        return getReusableActionsInstance().getWhenReady(By.xpath(deviceTextXpath), 10).getText();
     }
 
     /**
@@ -118,7 +118,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     public String getDownPrice(String deviceName) {
         xpathDeviceName = createXpathWithDeviceName(deviceName);
         String deviceDownPriceXpath = xpathDeviceName + "//following-sibling::dsa-price//ds-price";
-        return reusableActions.getWhenReady(By.xpath(deviceDownPriceXpath), 10).getText().replaceAll("\\n"," ");
+        return getReusableActionsInstance().getWhenReady(By.xpath(deviceDownPriceXpath), 10).getText().replaceAll("\\n"," ");
     }
 
     /**
@@ -129,7 +129,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
     public String getPhoneName(String deviceName) {
         xpathDeviceName = createXpathWithDeviceName(deviceName);
-        return reusableActions.getWhenReady(By.xpath(xpathDeviceName), 10).getText().trim();
+        return getReusableActionsInstance().getWhenReady(By.xpath(xpathDeviceName), 10).getText().trim();
     }
 
     /**
@@ -141,7 +141,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     public String getPhoneTileText(String deviceName) {
         xpathDeviceName = createXpathWithDeviceName(deviceName);
         deviceTextXpath = xpathDeviceName + "//following-sibling::dsa-price//span[contains(@class,'dsa-price__copyBottom')]";
-        return reusableActions.getWhenReady(By.xpath(deviceTextXpath), 10).getText().trim();
+        return getReusableActionsInstance().getWhenReady(By.xpath(deviceTextXpath), 10).getText().trim();
     }
 
     /**
@@ -153,7 +153,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     public String getPhoneStrikePrice(String deviceName) {
         xpathDeviceName = createXpathWithDeviceName(deviceName);
         String deviceStrikePriceXpath = xpathDeviceName + "//following-sibling::p//strike";
-        return reusableActions.getWhenReady(By.xpath(deviceStrikePriceXpath), 10).getText().trim();
+        return getReusableActionsInstance().getWhenReady(By.xpath(deviceStrikePriceXpath), 10).getText().trim();
     }
 
     /**
@@ -165,7 +165,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     public String getPhoneFullPrice(String deviceName) {
         xpathDeviceName = createXpathWithDeviceName(deviceName);
         String deviceFullPriceXpath = xpathDeviceName + "/../p[@class='text-body-sm mb-0 text-semi']";
-        return reusableActions.getWhenReady(By.xpath(deviceFullPriceXpath), 10).getText().trim();
+        return getReusableActionsInstance().getWhenReady(By.xpath(deviceFullPriceXpath), 10).getText().trim();
     }
 
     /**
@@ -186,7 +186,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author saurav.goyal
      */
     public void clickDeviceTileCTAButton(String deviceName) {
-        reusableActions.clickWhenVisible(By.xpath(createXpathForCTAButton(deviceName)), 10);
+        getReusableActionsInstance().clickWhenVisible(By.xpath(createXpathForCTAButton(deviceName)), 10);
     }
 
     /**
@@ -196,7 +196,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author saurav.goyal
      */
     public boolean verifyDeviceTileCTAButton(String deviceName) {
-        return reusableActions.isElementVisible(By.xpath(createXpathForCTAButton(deviceName)), 10);
+        return getReusableActionsInstance().isElementVisible(By.xpath(createXpathForCTAButton(deviceName)), 10);
     }
 
     /**
@@ -205,7 +205,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author saurav.goyal
      */
     public boolean isModalDisplayed() {
-        return reusableActions.isElementVisible(modalContainer);
+        return getReusableActionsInstance().isElementVisible(modalContainer);
     }
 
     /**
@@ -216,7 +216,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     public void clickPopOverVerifyText(String deviceName) {
         xpathDeviceName = createXpathWithDeviceName(deviceName);
         String popOverXpath = xpathDeviceName + "//following-sibling::dsa-price//span[@class='ds-popover__iconWrapper']";
-        reusableActions.clickWhenVisible(By.xpath(popOverXpath),10);
+        getReusableActionsInstance().clickWhenVisible(By.xpath(popOverXpath),10);
     }
 
     /**
@@ -225,7 +225,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author saurav.goyal
      */
     public String getTextPopOver() {
-        return reusableActions.getWhenReady(popOver, 10).getText();
+        return getReusableActionsInstance().getWhenReady(popOver, 10).getText();
     }
 
     /**
@@ -248,7 +248,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     public boolean verifyFilteredDevicesCheckBox(String filteredLink) {
         String filterParameterInDeeplink = filteredLink.substring(filteredLink.indexOf("=") + 1);
         String pageRadioButtonXpath = createXpathForCheckBox(filterParameterInDeeplink);
-        return reusableActions.getWhenReady(By.xpath(pageRadioButtonXpath), 10).getAttribute("aria-checked").equalsIgnoreCase("true");
+        return getReusableActionsInstance().getWhenReady(By.xpath(pageRadioButtonXpath), 10).getAttribute("aria-checked").equalsIgnoreCase("true");
     }
 
     /**
@@ -271,7 +271,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     public boolean verifyFilteredDevicesRadioButton(String filteredLink) {
         String filterON = filteredLink.substring(filteredLink.indexOf("=") + 1);
         pageRadioButtonXpath = createXpathForRadiobuttons(filterON);
-        return reusableActions.getWhenReady(By.xpath(pageRadioButtonXpath), 20).getCssValue("opacity").equals("1");
+        return getReusableActionsInstance().getWhenReady(By.xpath(pageRadioButtonXpath), 20).getCssValue("opacity").equals("1");
     }
 
     /**
@@ -294,9 +294,9 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author saurav.goyal
      */
     public boolean verifyNoFilterSelectedByDefault() {
-        reusableActions.waitForAllElementsVisible(filterCheckBox, 10);
+        getReusableActionsInstance().waitForAllElementsVisible(filterCheckBox, 10);
         for(WebElement eachCheckBox: filterCheckBox) {
-            if(reusableActions.getWhenReady(eachCheckBox, 10).getAttribute("aria-checked").equalsIgnoreCase("true")) {
+            if(getReusableActionsInstance().getWhenReady(eachCheckBox, 10).getAttribute("aria-checked").equalsIgnoreCase("true")) {
                 return false;
             }
         }
@@ -321,7 +321,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
     public void selectManufacturerFilter(String manufacturerName) {
         manufacturerFilterXpath = createXpathForManufacturerFilter(manufacturerName);
-        reusableActions.clickWhenReady(By.xpath(manufacturerFilterXpath));
+        getReusableActionsInstance().clickWhenReady(By.xpath(manufacturerFilterXpath));
     }
 
     /**
@@ -333,19 +333,19 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     public boolean verifyManufacturerFilteredDevices(String manufacturerName) {
         if(manufacturerName.equalsIgnoreCase("Apple")) {
             for(WebElement filteredDeviceText: allFilteredDevices) {
-                if(!reusableActions.getWhenReady(filteredDeviceText, 10).getText().toUpperCase().contains("IPHONE")) {
-                    if(!reusableActions.getWhenReady(filteredDeviceText, 10).getText().toUpperCase().contains("APPLE"))
+                if(!getReusableActionsInstance().getWhenReady(filteredDeviceText, 10).getText().toUpperCase().contains("IPHONE")) {
+                    if(!getReusableActionsInstance().getWhenReady(filteredDeviceText, 10).getText().toUpperCase().contains("APPLE"))
                         return false;
                 }
             }
         }else if(manufacturerName.equalsIgnoreCase("Motorola")) {
             for(WebElement filteredDeviceText: allFilteredDevices) {
-                if(!reusableActions.getWhenReady(filteredDeviceText, 10).getText().toUpperCase().contains("MOTO"))
+                if(!getReusableActionsInstance().getWhenReady(filteredDeviceText, 10).getText().toUpperCase().contains("MOTO"))
                     return false;
             }
         }else {
             for(WebElement filteredDeviceText: allFilteredDevices) {
-                if(!reusableActions.getWhenReady(filteredDeviceText, 10).getText().toUpperCase().contains(manufacturerName.toUpperCase()))
+                if(!getReusableActionsInstance().getWhenReady(filteredDeviceText, 10).getText().toUpperCase().contains(manufacturerName.toUpperCase()))
                     return false;
             }
         }
@@ -382,7 +382,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
     public int getCountManufacturerFilterValue(String manufacturerName) {
         manufacturerFilterLableXpath = createXpathForManufacturerFilterLabelValue(manufacturerName);
-        String manufacturerFilterLabel= reusableActions.getWhenReady(By.xpath(manufacturerFilterLableXpath) , 10).getText();
+        String manufacturerFilterLabel= getReusableActionsInstance().getWhenReady(By.xpath(manufacturerFilterLableXpath) , 10).getText();
         return Integer.valueOf(manufacturerFilterLabel.substring(manufacturerFilterLabel.length()-2,manufacturerFilterLabel.length()-1));
     }
 
@@ -392,7 +392,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author saurav.goyal
      */
     public boolean verifyGetStartedButtonOnModal() {
-        return reusableActions.isElementVisible(modalContainerGetStartedbutton);
+        return getReusableActionsInstance().isElementVisible(modalContainerGetStartedbutton);
 
     }
 
@@ -402,7 +402,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author saurav.goyal
      */
     public Boolean verifyDeviceUpgradeButtonOnModal() {
-        return reusableActions.isElementVisible(modalContainerDeviceUpgradebutton);
+        return getReusableActionsInstance().isElementVisible(modalContainerDeviceUpgradebutton);
     }
 
     /**
@@ -411,7 +411,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author saurav.goyal
      */
     public Boolean verifyAddALineButtonOnModal() {
-        return reusableActions.isElementVisible(modalContainerAddALinebutton);
+        return getReusableActionsInstance().isElementVisible(modalContainerAddALinebutton);
     }
 
     /**
@@ -420,7 +420,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author saurav.goyal
      */
     public Boolean verifyCloseButtonOnModal() {
-        return reusableActions.isElementVisible(modalContainerClosebutton);
+        return getReusableActionsInstance().isElementVisible(modalContainerClosebutton);
     }
 
     /**
@@ -428,7 +428,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author saurav.goyal
      */
     public void clickCloseButtonOnModal() {
-        reusableActions.clickIfAvailable(modalContainerClosebutton, 10);
+        getReusableActionsInstance().clickIfAvailable(modalContainerClosebutton, 10);
     }
 
     /**
@@ -438,8 +438,8 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author saurav.goyal
      */
     public Boolean clickGetStartedButtonOnModal() {
-        reusableActions.clickIfAvailable(modalContainerGetStartedbutton);
-        return (reusableActions.isElementVisible(new RogersDeviceConfigPage(driver).continueButton, 30));
+        getReusableActionsInstance().clickIfAvailable(modalContainerGetStartedbutton);
+        return (getReusableActionsInstance().isElementVisible(new RogersDeviceConfigPage(getDriver()).continueButton, 30));
     }
 
 
@@ -448,7 +448,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author saurav.goyal
      */
     public void clickResetAllFilters() {
-        reusableActions.clickIfAvailable(resetAllFiltersbutton, 10);
+        getReusableActionsInstance().clickIfAvailable(resetAllFiltersbutton, 10);
     }
 
     /**
@@ -462,8 +462,8 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     	Thread.sleep(5000);
         xpathDeviceName=createXpathWithDeviceName(deviceName);
         String pricingBlockContentXpath = xpathDeviceName + "/ancestor::div[@class='dsa-nacTile__top']//following-sibling::div//div[@class='ds-price']";
-        reusableActions.waitForElementVisibility(driver.findElement(By.xpath(createXpathForCTAButton(deviceName))),40);
-        return reusableActions.getWhenReady(By.xpath(pricingBlockContentXpath), 20).getText().replaceAll("\\s+","");
+        getReusableActionsInstance().waitForElementVisibility(getDriver().findElement(By.xpath(createXpathForCTAButton(deviceName))),40);
+        return getReusableActionsInstance().getWhenReady(By.xpath(pricingBlockContentXpath), 20).getText().replaceAll("\\s+","");
     }
 
 
@@ -476,7 +476,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     public String getPricePlanInfoCataloguePage(String deviceName){
         xpathDeviceName=createXpathWithDeviceName(deviceName);
         String pricePlanContentXpath=xpathDeviceName + "/..//p[@class='text-sm mb-24']";
-        return reusableActions.getWhenReady(By.xpath(pricePlanContentXpath), 10).getText().replaceAll("\\n"," ");
+        return getReusableActionsInstance().getWhenReady(By.xpath(pricePlanContentXpath), 10).getText().replaceAll("\\n"," ");
     }
 
 
@@ -489,7 +489,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     public String getPhoneLabelText(String deviceName) {
         xpathDeviceName = createXpathWithDeviceName(deviceName);
         String deviceLblXpath = xpathDeviceName + "//ancestor::ds-tile//span[contains(@class,'dsa-deviceTile__label')]";
-        return reusableActions.getWhenReady(By.xpath(deviceLblXpath), 10).getText();
+        return getReusableActionsInstance().getWhenReady(By.xpath(deviceLblXpath), 10).getText();
     }
 
     public String getDeviceNameFromDeepLink(String deeplink) {
@@ -505,7 +505,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
 
     public boolean isRpotgBannerPresent() {
-         return reusableActions.isElementVisible(rpotgBannerText,40);
+         return getReusableActionsInstance().isElementVisible(rpotgBannerText,40);
     }
 
 
@@ -516,7 +516,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
 
     public void clickRpotgBannerLearnMore() {
-        reusableActions.clickIfAvailable(learnMoreBannerLearnMore);
+        getReusableActionsInstance().clickIfAvailable(learnMoreBannerLearnMore);
 
     }
 
@@ -527,7 +527,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
 
     public void clickCheckEligibilityRpotgBanner() {
-        reusableActions.clickWhenReady(checkEligibilityRpotgBanner);
+        getReusableActionsInstance().clickWhenReady(checkEligibilityRpotgBanner);
     }
 
     /**
@@ -536,9 +536,9 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author nimmy.george
      */
     public void validateRpotgPostalCode(String postalCode) {
-        reusableActions.javascriptScrollByVisibleElement(postalCodeRpotgBanner);
-        reusableActions.getWhenReady(postalCodeRpotgBanner).click();
-        reusableActions.getWhenVisible(inputPostalCodeRpotgBanner).sendKeys(postalCode);
+        getReusableActionsInstance().javascriptScrollByVisibleElement(postalCodeRpotgBanner);
+        getReusableActionsInstance().getWhenReady(postalCodeRpotgBanner).click();
+        getReusableActionsInstance().getWhenVisible(inputPostalCodeRpotgBanner).sendKeys(postalCode);
     }
 
     /**
@@ -548,9 +548,9 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
 
     public void clickCheckBtn() {
-        reusableActions.getWhenVisible(checkBtn, 30);
-        reusableActions.doubleClick(checkBtn,0);
-        reusableActions.doubleClick(checkBtn,0);
+        getReusableActionsInstance().getWhenVisible(checkBtn, 30);
+        getReusableActionsInstance().doubleClick(checkBtn,0);
+        getReusableActionsInstance().doubleClick(checkBtn,0);
     }
 
     /**
@@ -560,7 +560,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
 
     public void clickContinueBtn() {
-        reusableActions.clickWhenReady(continueBtn, 30);
+        getReusableActionsInstance().clickWhenReady(continueBtn, 30);
     }
 
 
@@ -571,7 +571,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
 
     public String verifyeligiblePostalCodeinBanner() {
-        reusableActions.getWhenVisible(eligiblePostalCodeinBanner, 20);
+        getReusableActionsInstance().getWhenVisible(eligiblePostalCodeinBanner, 20);
         return eligiblePostalCodeinBanner.getText().replaceAll("\\s+", "");
     }
 
@@ -586,6 +586,6 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     public String getRpotgLabelCataloguePage(String deviceName){
         xpathDeviceName=createXpathWithDeviceName(deviceName);
         String deviceTileRpotgLabelXpath = xpathDeviceName + "/../../..//span[@variant='custom']";
-        return reusableActions.getWhenReady(By.xpath(deviceTileRpotgLabelXpath),20).getText();
+        return getReusableActionsInstance().getWhenReady(By.xpath(deviceTileRpotgLabelXpath),20).getText();
     }
 }

@@ -42,7 +42,7 @@ public class RogersChooseAddonsPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void verifyChooseAddOnsPageLoadedSuccessfully() {
-		reusableActions.waitForElementVisibility(lnkStep2SelectMyPlan, 60);
+		getReusableActionsInstance().waitForElementVisibility(lnkStep2SelectMyPlan, 60);
 	}
 	
 	/**
@@ -50,8 +50,8 @@ public class RogersChooseAddonsPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkContinueHUP() {
-		reusableActions.executeJavaScriptClick(btnContinueHUP);
-		//reusableActions.clickIfAvailable(By.xpath("//div[@class='ngdialog-content']//button[@res='_continue']"),60);
+		getReusableActionsInstance().executeJavaScriptClick(btnContinueHUP);
+		//getReusableActionsInstance().clickIfAvailable(By.xpath("//div[@class='ngdialog-content']//button[@res='_continue']"),60);
 	}
 	
 	/**
@@ -59,8 +59,8 @@ public class RogersChooseAddonsPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkContinue() {
-		reusableActions.executeJavaScriptClick(btnContinue);
-		reusableActions.waitForElementVisibility(btnContinue, 60);
+		getReusableActionsInstance().executeJavaScriptClick(btnContinue);
+		getReusableActionsInstance().waitForElementVisibility(btnContinue, 60);
 	}
 	
 	/**
@@ -68,7 +68,7 @@ public class RogersChooseAddonsPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkCheckout() {
-		reusableActions.clickWhenReady(btnCheckout , 60);
-		//reusableActions.waitForElementVisibility(btnCheckout, 60);
+		getReusableActionsInstance().clickWhenReady(btnCheckout);
+		//getReusableActionsInstance().waitForElementVisibility(btnCheckout, 60);
 	}
 }

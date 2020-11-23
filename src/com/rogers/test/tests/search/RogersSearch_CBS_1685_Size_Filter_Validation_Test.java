@@ -24,7 +24,7 @@ import utils.CSVReader;
 public class RogersSearch_CBS_1685_Size_Filter_Validation_Test extends BaseTestClass {
 
 
-	@DataProvider(name = "FilterData")
+	@DataProvider(name = "FilterData",parallel=true)
 	public Object[] testData() throws IOException
 	{
 		String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataSizeFilter.csv";
@@ -46,10 +46,10 @@ public class RogersSearch_CBS_1685_Size_Filter_Validation_Test extends BaseTestC
 	
 	getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
 	
-	rogers_search_page.clkShopAndThenWirelessFilter();
+	getRogersSearchPage().clkShopAndThenWirelessFilter();
 	reporter.reportLogWithScreenshot("Shop and Wireless Filters clicked");
 	
-	reporter.hardAssert(rogers_search_page.verifyResultsSizeLabelWithSelectedSize(), "Size label displayed correctly", "Size label not displayed correctly");
+	reporter.hardAssert(getRogersSearchPage().verifyResultsSizeLabelWithSelectedSize(), "Size label displayed correctly", "Size label not displayed correctly");
 				
 				
 	}

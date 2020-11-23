@@ -17,48 +17,48 @@ public class RogersSS_TC_027_UpdateVoicemailPasswordTest extends BaseTestClass {
 	@Test(groups = {"RegressionSS","ProfileAndSettingsSS"})
 	public void updateVoicemailPassword() {
 		String strNewPwd = FormFiller.generatePhoneNumber().substring(0, 4);
-		rogers_home_page.clkSignIn();
+		getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc2751.getUsername();
     	String strPassword = TestDataHandler.tc2751.getPassword();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
-        rogers_login_page.setPasswordIFrame(strPassword);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();		
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();		
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc2751.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc2751.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");                       
-        rogers_account_overview_page.clkMenuUsageAndService();
+        getRogersAccountOverviewPage().clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
         String strAccountNum = TestDataHandler.tc2751.getAccountDetails().getCtn(); 
         String strLast4DigitAccount = strAccountNum.substring(strAccountNum.length()-4);
-        if (rogers_account_overview_page.isAccountShowInDropDown(strLast4DigitAccount)) {
-            rogers_account_overview_page.clkDropDownAccount(strLast4DigitAccount);
+        if (getRogersAccountOverviewPage().isAccountShowInDropDown(strLast4DigitAccount)) {
+            getRogersAccountOverviewPage().clkDropDownAccount(strLast4DigitAccount);
         } else {
-        	rogers_account_overview_page.clkSubMenuWirelessUsage();
+        	getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
         }   
-        rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
+        getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
         reporter.reportLogWithScreenshot("Wireless dashboard page.");
       
         reporter.reportLogWithScreenshot("Click on Link : Update voice mail password link");
-        reporter.hardAssert(rogers_wireless_dashboard_page.clickUpdateMyVoicemailPwd(),
+        reporter.hardAssert(getRogersWirelessDashboardPage().clickUpdateMyVoicemailPwd(),
         		"Update my voicemail password link clicked",
         		"Update My Voicemail Password' link NOT found");	
         reporter.reportLogWithScreenshot("Set the new voice mail password");
-		rogers_wireless_dashboard_page.setNewVoicemailPassword(strNewPwd);
-		rogers_wireless_dashboard_page.setConfirmVoicemailPassword(strNewPwd);
-		rogers_wireless_dashboard_page.clickSubmitButton();
+		getRogersWirelessDashboardPage().setNewVoicemailPassword(strNewPwd);
+		getRogersWirelessDashboardPage().setConfirmVoicemailPassword(strNewPwd);
+		getRogersWirelessDashboardPage().clickSubmitButton();
 		reporter.reportLogWithScreenshot("New password submitted");
-		reporter.hardAssert(rogers_wireless_dashboard_page.verifyResetVoicemailPasswordSuccess(),
+		reporter.hardAssert(getRogersWirelessDashboardPage().verifyResetVoicemailPasswordSuccess(),
 				"Voicemail Password Reset Success message displayed",
 				"Voicemail Password Reset Success message NOT displayed");	
 		reporter.reportLogWithScreenshot("Voice Mail Password reset confirmation page");
-		rogers_wireless_dashboard_page.clickResetVMPwdDoneButton();
+		getRogersWirelessDashboardPage().clickResetVMPwdDoneButton();
 
 	}
 

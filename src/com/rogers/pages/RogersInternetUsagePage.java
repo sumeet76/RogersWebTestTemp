@@ -48,7 +48,7 @@ public class RogersInternetUsagePage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyDailyBreakdown() {		
-		return reusableActions.isElementVisible(infoDailyBreakdown,20);
+		return getReusableActionsInstance().isElementVisible(infoDailyBreakdown,20);
 	}
 
 	/**
@@ -57,7 +57,7 @@ public class RogersInternetUsagePage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyDailyBreakdownTable() {		
-		return reusableActions.isElementVisible(tblDailyBreakdown,20);
+		return getReusableActionsInstance().isElementVisible(tblDailyBreakdown,20);
 	}
 
 	/**
@@ -66,7 +66,7 @@ public class RogersInternetUsagePage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyDailyBreakdownTableMobile() {		
-		return reusableActions.isElementVisible(tblDailyBreakdownMobile,20);
+		return getReusableActionsInstance().isElementVisible(tblDailyBreakdownMobile,20);
 	}
 	
 	/**
@@ -74,7 +74,7 @@ public class RogersInternetUsagePage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkMonthlyUsage() {		
-		reusableActions.clickWhenReady(lnkMonthlyUsage,20);
+		getReusableActionsInstance().clickWhenReady(lnkMonthlyUsage,20);
 
 	}
 
@@ -83,8 +83,8 @@ public class RogersInternetUsagePage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkMonthlyUsageMobile() {	
-		reusableActions.waitForElementVisibility(selUsageMobile,20);
-		reusableActions.selectWhenReadyByVisibleText(selUsageMobile, "Monthly Usage");
+		getReusableActionsInstance().waitForElementVisibility(selUsageMobile,20);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(selUsageMobile, "Monthly Usage");
 	}
 	
 	/**
@@ -92,8 +92,8 @@ public class RogersInternetUsagePage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkUsageAlertsMobile() {	
-		reusableActions.waitForElementVisibility(selUsageMobile,20);
-		reusableActions.selectWhenReadyByVisibleText(selUsageMobile, "Usage Alerts");
+		getReusableActionsInstance().waitForElementVisibility(selUsageMobile,20);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(selUsageMobile, "Usage Alerts");
 	}
 	
 	/**
@@ -102,7 +102,7 @@ public class RogersInternetUsagePage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyMonthlyBreakdown() {		 
-		return reusableActions.isElementVisible(infoMonthlyBreakdown);
+		return getReusableActionsInstance().isElementVisible(infoMonthlyBreakdown);
 	}
 	
 
@@ -112,7 +112,7 @@ public class RogersInternetUsagePage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyMonthlyBreakdownTable() {		
-		return reusableActions.isElementVisible(tblMonthlyBreakdown,40);
+		return getReusableActionsInstance().isElementVisible(tblMonthlyBreakdown,40);
 	}
 	
 	
@@ -122,7 +122,7 @@ public class RogersInternetUsagePage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyMonthlyBreakdownTableMobile() {		 
-		return reusableActions.isElementVisible(tblMonthlyBreakdownMobile);
+		return getReusableActionsInstance().isElementVisible(tblMonthlyBreakdownMobile);
 	}
 	
 	/**
@@ -130,7 +130,7 @@ public class RogersInternetUsagePage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkUsageAlerts() {		
-		reusableActions.clickWhenReady(btnUsageAlerts,20);
+		getReusableActionsInstance().clickWhenReady(btnUsageAlerts,20);
 	}
 
 	/**
@@ -139,6 +139,6 @@ public class RogersInternetUsagePage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean  verifyUsageAlerts() {		
-		return reusableActions.isElementVisible(infoUsageAlerts,20);
+		return getReusableActionsInstance().isElementVisible(infoUsageAlerts,20);
 	}
 }

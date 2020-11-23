@@ -29,43 +29,43 @@ public class RogersSS_TC_016_Baseline_CSS_Wireless_Pay_Now_Through_Bank_AUTO ext
 	
 	@Test(groups = {"RegressionSS","BillingAndPaymentsSS"})
     public void baselineCSSWirelessPayNowThroughBankAUTO() {    	    	    
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc161825.getUsername();
     	String strPassword = TestDataHandler.tc161825.getPassword();		
 		tryLogin(strUsername, strPassword);
 		reporter.reportLogWithScreenshot("Account overveiew page");
-		rogers_account_overview_page.clkViewBill();	
-			rogers_account_overview_page.clkBillingAndPaymentsMakeAPayment();
+		getRogersAccountOverviewPage().clkViewBill();
+			getRogersAccountOverviewPage().clkBillingAndPaymentsMakeAPayment();
 			String amountEntered = "0.1";
-			rogers_make_payment_page.setPaymentAmount(amountEntered);
+			getRogersMakePaymentPage().setPaymentAmount(amountEntered);
 			reporter.reportLogWithScreenshot("Amount Entered");
-			rogers_make_payment_page.selectHowWouldYouLikeToPay(RogersMakePaymentPage.MakePayOptions.Bank);
+			getRogersMakePaymentPage().selectHowWouldYouLikeToPay(RogersMakePaymentPage.MakePayOptions.Bank);
 			reporter.reportLogWithScreenshot("Bank option selected");
 			String strMainWindowHandle = getDriver().getWindowHandle();
-			rogers_make_payment_page.selectBank("CIBC");
+			getRogersMakePaymentPage().selectBank("CIBC");
 			reporter.reportLogWithScreenshot("Banking Page");
-			rogers_make_payment_page.switchToCIBCBankPage(strMainWindowHandle);			
-			reporter.hardAssert(rogers_make_payment_page.verifyBankPageOpenedSuccessfully("CIBC"),
+			getRogersMakePaymentPage().switchToCIBCBankPage(strMainWindowHandle);
+			reporter.hardAssert(getRogersMakePaymentPage().verifyBankPageOpenedSuccessfully("CIBC"),
 					"The banking page open successfully",
 					"The banking page did not open successfully");			
 			//close the new bank page
 			getDriver().close();
 			getDriver().switchTo().window(strMainWindowHandle);
 			reporter.reportLogWithScreenshot("Banking page closed");			
-			reporter.hardAssert(rogers_make_payment_page.verifyIfTheSelectedBankIsDisplayedCorrectlyOnTheMakePaymentOverLay(),
+			reporter.hardAssert(getRogersMakePaymentPage().verifyIfTheSelectedBankIsDisplayedCorrectlyOnTheMakePaymentOverLay(),
 					"Selected Bank is displayed on the make payment overlay.",
 					"Selected Bank isn't displayed on the make payment overlay.");																	
     }
 
     private void tryLogin(String strUsername, String strPassword) {
-    	 rogers_login_page.switchToSignInIFrame();
-    	 rogers_login_page.setUsernameIFrame(strUsername);
-         rogers_login_page.setPasswordIFrame(strPassword);
+    	 getRogersLoginPage().switchToSignInIFrame();
+    	 getRogersLoginPage().setUsernameIFrame(strUsername);
+         getRogersLoginPage().setPasswordIFrame(strPassword);
   		 reporter.reportLogWithScreenshot("Login Credential is entered.");
-         rogers_login_page.clkSignInIFrame();
-         reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-         rogers_login_page.clkSkipIFrame();      
-         rogers_login_page.switchOutOfSignInIFrame();     
+         getRogersLoginPage().clkSignInIFrame();
+         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+         getRogersLoginPage().clkSkipIFrame();
+         getRogersLoginPage().switchOutOfSignInIFrame();
     }         
     
 }

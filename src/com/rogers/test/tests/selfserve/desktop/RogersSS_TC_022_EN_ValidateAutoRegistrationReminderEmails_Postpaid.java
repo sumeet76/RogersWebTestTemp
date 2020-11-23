@@ -2,6 +2,8 @@ package com.rogers.test.tests.selfserve.desktop;
 
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
+import com.rogers.testdatamanagement.TestDataHandler;
+
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -31,11 +33,11 @@ public class RogersSS_TC_022_EN_ValidateAutoRegistrationReminderEmails_Postpaid 
 	
 	@Test(groups = {"Autoregister"})
 	public void validateUserChangeContactInformationAndBillingAddress() {
-		String strURI = "https://qa05-mservices.rogers.com/v1/user/registration/mwautocreate";
+		String strURI = System.getProperty("URIautoRegister");
 		reporter.reportLog("URI:"+strURI);
-		String strEmail = "AutoNDR1020SS51@yahoo.com";
-		String strPassword = "DigiAuto@123";
-		String strBan ="938055696";
+		String strEmail = TestDataHandler.tc22.getUsername();
+		String strPassword = TestDataHandler.tc22.getPassword();
+		String strBan =TestDataHandler.tc22.getAccountDetails().getBan();
 		//================= Email reminder code
 		this.autoregisterUser(strURI,strEmail,strBan);
 		this.sendreminderEmail(strURI);    
@@ -44,30 +46,30 @@ public class RogersSS_TC_022_EN_ValidateAutoRegistrationReminderEmails_Postpaid 
 				reporter.reportLogWithScreenshot("ENS");
 				ensVerifications.getEmailVerifyPage(strEmail);
 				reporter.reportLogWithScreenshot("Email inbox got from ENS.");
-				rogers_set_password_page.clkBtnSetPasswordInEmail();
+				getRogersSetPasswordPage().clkBtnSetPasswordInEmail();
 				//Another new page opened
-				rogers_set_password_page.switchToSetPasswordTab(3);
+				getRogersSetPasswordPage().switchToSetPasswordTab(3);
 				
-				rogers_set_password_page.setPassword(strPassword);
-				rogers_set_password_page.setConfirmPassword(strPassword);
+				getRogersSetPasswordPage().setPassword(strPassword);
+				getRogersSetPasswordPage().setConfirmPassword(strPassword);
 				reporter.reportLogWithScreenshot("Set password page.");
-				rogers_set_password_page.clkBtnSetPassword();
-				reporter.hardAssert(rogers_set_password_page.verifyMsgReigistrationCompleteIsDisplayed(),
+				getRogersSetPasswordPage().clkBtnSetPassword();
+				reporter.hardAssert(getRogersSetPasswordPage().verifyMsgReigistrationCompleteIsDisplayed(),
 						"Registration completed message displayed",
 						"Registration completed message does Not displayed");
 				reporter.reportLogWithScreenshot("Set password completed.");
-				rogers_set_password_page.clkButtonSignIn();
-				//rogers_login_page.switchToSignInIFrame();
-		        rogers_login_page.setUsernameIFrame(strEmail);
-		        rogers_login_page.setPasswordIFrame(strPassword);
+				getRogersSetPasswordPage().clkButtonSignIn();
+				//getRogersLoginPage().switchToSignInIFrame();
+		        getRogersLoginPage().setUsernameIFrame(strEmail);
+		        getRogersLoginPage().setPasswordIFrame(strPassword);
 		        reporter.reportLogWithScreenshot("Login Credential is entered.");
-		        rogers_login_page.clkSignInIFrame();
-		        rogers_login_page.clkSkipIFrame();
-				rogers_login_page.switchOutOfSignInIFrame();
-		        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+		        getRogersLoginPage().clkSignInIFrame();
+		        getRogersLoginPage().clkSkipIFrame();
+				getRogersLoginPage().switchOutOfSignInIFrame();
+		        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
 		        	reporter.reportLogWithScreenshot("Select an account.");
 		        	
-					rogers_account_overview_page.selectAccount(strBan);       
+					getRogersAccountOverviewPage().selectAccount(strBan);
 		        }
 		        reporter.reportLogWithScreenshot("Account overview page.");
 			}
@@ -108,7 +110,7 @@ public class RogersSS_TC_022_EN_ValidateAutoRegistrationReminderEmails_Postpaid 
 		}
 		
 		public void sendreminderEmail(String strURI) {
-			String strURIEmailer ="https://qa05-mservices.rogers.com/v1/user/registration/retry";
+			String strURIEmailer =System.getProperty("URIEmailer");
 			reporter.reportLog("URI emailer:"+strURIEmailer);
 			RestAssured.baseURI = strURIEmailer;
 			RequestSpecification request = RestAssured.given();

@@ -33,8 +33,8 @@ public class EnvironmentSelectionPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectOneViewEnv(String env) {
-		reusableActions.selectWhenReadyByVisibleText(ddlenvList, env);
-		reusableActions.getWhenReady(btnGo, 30).click();
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlenvList, env);
+		getReusableActionsInstance().getWhenReady(btnGo, 30).click();
 		
 		}
 	
@@ -44,9 +44,9 @@ public class EnvironmentSelectionPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void enterDealerCode(String strDealerCode) {
-		reusableActions.waitForElementVisibility(dlgDealerCode, 60);
-		reusableActions.getWhenReady(txtDealerCode, 10).click();
-		reusableActions.getWhenReady(txtDealerCode).sendKeys(strDealerCode);		
+		getReusableActionsInstance().waitForElementVisibility(dlgDealerCode, 60);
+		getReusableActionsInstance().getWhenReady(txtDealerCode, 10).click();
+		getReusableActionsInstance().getWhenReady(txtDealerCode).sendKeys(strDealerCode);
 	}
 	
 	/**
@@ -54,7 +54,7 @@ public class EnvironmentSelectionPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void submitDealerCode() {
-		reusableActions.getWhenReady(btnSubmit, 30).click();
+		getReusableActionsInstance().getWhenReady(btnSubmit, 30).click();
 	}
 	
 	/**
@@ -62,7 +62,7 @@ public class EnvironmentSelectionPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkGo() {
-		reusableActions.clickWhenReady(btnGo , 30);
+		getReusableActionsInstance().clickWhenReady(btnGo , 30);
 	}
 	
 	/**
@@ -70,6 +70,6 @@ public class EnvironmentSelectionPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void presenceOfTheGoButton() {
-		reusableActions.isElementVisible(btnGo, 10);
+		getReusableActionsInstance().isElementVisible(btnGo, 10);
 	}
 }

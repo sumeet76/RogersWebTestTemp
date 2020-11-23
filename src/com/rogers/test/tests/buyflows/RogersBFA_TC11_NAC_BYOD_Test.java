@@ -26,113 +26,113 @@ public class RogersBFA_TC11_NAC_BYOD_Test extends BaseTestClass {
 	@Test(groups = {"RegressionBFA","NACBFA"})
 	public void nacByodFlow() throws InterruptedException {
 		//############################Plan config page###############################
-		reporter.hardAssert(rogers_plan_config_page.verifyBreadCrumb(), "BreadCrumb on Plan config page is displaying fine","BreadCrumb is not displaying fine");
-		rogers_plan_config_page.clickPreCartSummaryContinueButton();
+		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(), "BreadCrumb on Plan config page is displaying fine","BreadCrumb is not displaying fine");
+		getRogersPlanConfigPage().clickPreCartSummaryContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
-		rogers_plan_config_page.clickPreCartSummaryContinueButtonTalkOptions();
+		getRogersPlanConfigPage().clickPreCartSummaryContinueButtonTalkOptions();
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
-		rogers_plan_config_page.clickPreCartSummaryContinueButtonAddOns();
+		getRogersPlanConfigPage().clickPreCartSummaryContinueButtonAddOns();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on your addon's");
-		rogers_plan_config_page.clickGetBPOOffer();
-		rogers_plan_config_page.clickCartSummaryContinueButton();
+		getRogersPlanConfigPage().clickGetBPOOffer();
+		getRogersPlanConfigPage().clickCartSummaryContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on proceed to checkout");
 		//############################CheckoutPage############################//
 		//***************Create Profile Stepper*************//
-		reporter.softAssert(rogers_checkout_page.verifyCreateProfileTitle(),"Create profile Title Present","Create profile Title not present");
-		String emailCreateProfile=rogers_checkout_page.setEmailCreateProfile();
-		rogers_checkout_page.confirmEmailCreateProfile(emailCreateProfile);
-		String firstName = rogers_checkout_page.setFirstNameCreateProfile();
-		String lastName = rogers_checkout_page.setLastNameCreateProfile();
+		reporter.softAssert(getRogersCheckoutPage().verifyCreateProfileTitle(),"Create profile Title Present","Create profile Title not present");
+		String emailCreateProfile=getRogersCheckoutPage().setEmailCreateProfile();
+		getRogersCheckoutPage().confirmEmailCreateProfile(emailCreateProfile);
+		String firstName = getRogersCheckoutPage().setFirstNameCreateProfile();
+		String lastName = getRogersCheckoutPage().setLastNameCreateProfile();
 		//*************** AVS Data Code- Commented for future issue ******//
-		//	        String firstName = rogers_checkout_page.setFirstNameCreateProfilepage("AMARA");
-		//	        String lastName = rogers_checkout_page.setLastNameCreateProfilepage("SPEARS");
+		//	        String firstName = getRogersCheckoutPage().setFirstNameCreateProfilepage("AMARA");
+		//	        String lastName = getRogersCheckoutPage().setLastNameCreateProfilepage("SPEARS");
 		String fullNameCreateProfile=firstName+" "+lastName;
 		String contactNumberCreateProfile=TestDataHandler.testCase11.getContactNumber();
-		rogers_checkout_page.setContactNumberCreateProfile(contactNumberCreateProfile);
+		getRogersCheckoutPage().setContactNumberCreateProfile(contactNumberCreateProfile);
 		reporter.reportLogPassWithScreenshot("Create Profile Page details Entered till ContactNumber");
-		rogers_checkout_page.setBillingAddressCreateProfile(TestDataHandler.testCase11.getBillingAddress());
+		getRogersCheckoutPage().setBillingAddressCreateProfile(TestDataHandler.testCase11.getBillingAddress());
 		reporter.reportLogPassWithScreenshot("Create Profile Page details provided for email , name and Address");
-		rogers_checkout_page.switchToRecaptchaIFrame();
-		rogers_checkout_page.clkImNotRombotCheckbox();
+		getRogersCheckoutPage().switchToRecaptchaIFrame();
+		getRogersCheckoutPage().clkImNotRombotCheckbox();
 		reporter.reportLogPassWithScreenshot("I'm not Robot CheckedRogersCheckoutPage");
-		rogers_checkout_page.switchOutOfGoogleIFrame();
-		rogers_checkout_page.clkBtnGotoCreditEvalStepper();
+		getRogersCheckoutPage().switchOutOfGoogleIFrame();
+		getRogersCheckoutPage().clkBtnGotoCreditEvalStepper();
 		//***************Credit Evaluation Stepper*************//
-		reporter.softAssert(rogers_checkout_page.verifyCreditEvaluationTitle(),"CreditEvaluation Title verified","CreditEvaluation Title not present");
-		//rogers_checkout_page.setDateOfBirth(TestDataHandler.redesignRpotgData.getDateOfBirth());
-		rogers_checkout_page.selectYearDropdownOption(TestDataHandler.testCase11.getDateOfBirthYear());
+		reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(),"CreditEvaluation Title verified","CreditEvaluation Title not present");
+		//getRogersCheckoutPage().setDateOfBirth(TestDataHandler.redesignRpotgData.getDateOfBirth());
+		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.testCase11.getDateOfBirthYear());
 		//span[text()='No, thanks']
-		//rogers_checkout_page.clkNoThanks();
-		rogers_checkout_page.selectMonthDropdownOption(TestDataHandler.testCase11.getDateOfBirthMonth());
-		rogers_checkout_page.selectDayDropdownOption(TestDataHandler.testCase11.getDateOfBirthDay());
-		rogers_checkout_page.switchToCreditCardIFrame();
-		rogers_checkout_page.setCreditCardNumberIFrame(TestDataHandler.testCase11.getCreditCardDetails());
+		//getRogersCheckoutPage().clkNoThanks();
+		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.testCase11.getDateOfBirthMonth());
+		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.testCase11.getDateOfBirthDay());
+		getRogersCheckoutPage().switchToCreditCardIFrame();
+		getRogersCheckoutPage().setCreditCardNumberIFrame(TestDataHandler.testCase11.getCreditCardDetails());
 		reporter.reportLogPassWithScreenshot("DOB & Credit Card Details Entered Successfully");
-		rogers_checkout_page.switchOutOfCreditCardIFrame();
-		rogers_checkout_page.setExpiryDate(TestDataHandler.testCase11.getExpiryDate());
-		rogers_checkout_page.selectDropdownOption(TestDataHandler.testCase11.getDropdownOption());
-		rogers_checkout_page.setPassportNumber(TestDataHandler.testCase11.getPassportNumber());
+		getRogersCheckoutPage().switchOutOfCreditCardIFrame();
+		getRogersCheckoutPage().setExpiryDate(TestDataHandler.testCase11.getExpiryDate());
+		getRogersCheckoutPage().selectDropdownOption(TestDataHandler.testCase11.getDropdownOption());
+		getRogersCheckoutPage().setPassportNumber(TestDataHandler.testCase11.getPassportNumber());
 		reporter.reportLogPassWithScreenshot("PassportNumber Entered Successfully");
-		rogers_checkout_page.clkCreditAuthorizationChkBox();
-		rogers_checkout_page.clkCreditEvalContinue();
-		reporter.softAssert(rogers_checkout_page.isCreditEvalPopupPresent(),"Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
-		reporter.softAssert(rogers_checkout_page.isCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed","Credit Evaluation Text not disaplayed on Modal");
+		getRogersCheckoutPage().clkCreditAuthorizationChkBox();
+		getRogersCheckoutPage().clkCreditEvalContinue();
+		reporter.softAssert(getRogersCheckoutPage().isCreditEvalPopupPresent(),"Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
+		reporter.softAssert(getRogersCheckoutPage().isCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed","Credit Evaluation Text not disaplayed on Modal");
 		reporter.reportLogWithScreenshot("Credit Evaluation processing popup");
-		reporter.hardAssert(rogers_checkout_page.isIdentificationLabel(),"Credit Evaluation Successful", "Credit Evaluation Identification Label not disaplayed");
+		reporter.hardAssert(getRogersCheckoutPage().isIdentificationLabel(),"Credit Evaluation Successful", "Credit Evaluation Identification Label not disaplayed");
 		// ***************Choose a Number Stepper*************//      
-		reporter.softAssert(rogers_checkout_page.isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed","Choose a Number Title not disaplayed");
-		reporter.softAssert(rogers_checkout_page.isChooseNumberTabsDisplayed(),"Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
-		rogers_checkout_page.selectCityDropdownOption(TestDataHandler.testCase11.getCityName());
+		reporter.softAssert(getRogersCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed","Choose a Number Title not disaplayed");
+		reporter.softAssert(getRogersCheckoutPage().isChooseNumberTabsDisplayed(),"Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
+		getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.testCase11.getCityName());
 		reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully" );
-		rogers_checkout_page.clkChosePhoneNumber();
+		getRogersCheckoutPage().clkChosePhoneNumber();
 		reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
-		reporter.softAssert(rogers_checkout_page.isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed","Find More Available Number Button not disaplayed");
-		rogers_checkout_page.clkChooseNumberbutton();
-		reporter.hardAssert(rogers_checkout_page.isChooseaNumberLabelDisplayed(),"Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
+		reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed","Find More Available Number Button not disaplayed");
+		getRogersCheckoutPage().clkChooseNumberbutton();
+		reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(),"Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
 		reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
 		// ***************Billing & Payment Stepper*************//
-		reporter.softAssert(rogers_checkout_page.isBillingOptionsTitleDisplayed(),"Billing Options Title Displayed","Billing Options Title Not Present");
-		reporter.softAssert(rogers_checkout_page.isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed","Select Payment Method Dropdown not disaplayed");
-		rogers_checkout_page.clkNoThanks();
-		rogers_checkout_page.setNameOnCard(TestDataHandler.testCase11.getNameOnCard());
-		rogers_checkout_page.switchToCreditCardIFrame();
-		rogers_checkout_page.setCreditCardNumberIFrame(TestDataHandler.testCase11.getBillingCreditCardNumber());
-		rogers_checkout_page.switchOutOfCreditCardIFrame();
-		rogers_checkout_page.setBillingExpiryDate(TestDataHandler.testCase11.getExpiryDate());
-		rogers_checkout_page.setCVVNumber(TestDataHandler.testCase11.getCvvNumber());
+		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(),"Billing Options Title Displayed","Billing Options Title Not Present");
+		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed","Select Payment Method Dropdown not disaplayed");
+		getRogersCheckoutPage().clkNoThanks();
+		getRogersCheckoutPage().setNameOnCard(TestDataHandler.testCase11.getNameOnCard());
+		getRogersCheckoutPage().switchToCreditCardIFrame();
+		getRogersCheckoutPage().setCreditCardNumberIFrame(TestDataHandler.testCase11.getBillingCreditCardNumber());
+		getRogersCheckoutPage().switchOutOfCreditCardIFrame();
+		getRogersCheckoutPage().setBillingExpiryDate(TestDataHandler.testCase11.getExpiryDate());
+		getRogersCheckoutPage().setCVVNumber(TestDataHandler.testCase11.getCvvNumber());
 		reporter.reportLogPassWithScreenshot("Billing & Payment Details Entered Successfully");
-		rogers_checkout_page.clkAddCard();       
-		rogers_checkout_page.clkBillingContinueButton();
-		reporter.hardAssert(rogers_checkout_page.isCardDetailsDisplayed(),"Card details disaplayed in Billing & Payment Options", "Card details not disaplayed in Billing & Payment Options");
+		getRogersCheckoutPage().clkAddCard();
+		getRogersCheckoutPage().clkBillingContinueButton();
+		reporter.hardAssert(getRogersCheckoutPage().isCardDetailsDisplayed(),"Card details disaplayed in Billing & Payment Options", "Card details not disaplayed in Billing & Payment Options");
 		//***************Billing Options Stepper*************//
 		/*
-		reporter.softAssert(rogers_checkout_page.clkBillingAddress(),"Billing Address radio button is selected ","Billing Address is not selected");
-		rogers_checkout_page.clkDeliveryMethodStandard();
+		reporter.softAssert(getRogersCheckoutPage().clkBillingAddress(),"Billing Address radio button is selected ","Billing Address is not selected");
+		getRogersCheckoutPage().clkDeliveryMethodStandard();
 		reporter.reportLogPassWithScreenshot("Billing Options Stepper");
 		Thread.sleep(1000);
-		rogers_checkout_page.clkContinueBtnShipping();
+		getRogersCheckoutPage().clkContinueBtnShipping();
 		reporter.reportLogPassWithScreenshot("Continue button clicked from Billing Options Stepper");
 		*/
-		rogers_checkout_page.clksubmitBtnCheckoutPage();
+		getRogersCheckoutPage().clksubmitBtnCheckoutPage();
 		//***************Order Review Page*************//
-		reporter.softAssert(rogers_review_order_page.isOrderReviewPageTitlePresent(),"Order Review Page Title Present","Order Review Page Title is not Present");
+		reporter.softAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(),"Order Review Page Title Present","Order Review Page Title is not Present");
 		reporter.reportLogPass("Order Review Page");
-		String contactNameReviewPage=rogers_review_order_page.getContactName();
+		String contactNameReviewPage=getRogersReviewOrderPage().getContactName();
 		reporter.hardAssert(fullNameCreateProfile.equals(contactNameReviewPage),"Contact Name in Order Review Page matches as entered in Create Profile stepper","Contact Name in Order Review Page not matches as entered in Create Profile stepper");
-		String contactEmailReviewPage=rogers_review_order_page.getContactEmail();
+		String contactEmailReviewPage=getRogersReviewOrderPage().getContactEmail();
 		reporter.hardAssert(emailCreateProfile.equals(contactEmailReviewPage),"Contact email in Order Review Page matches as entered in Create Profile stepper","Contact email in Order Review Page not matches as entered in Create Profile stepper");
 		reporter.reportLogPassWithScreenshot("Order Review Page : Contact Details");
-		//rogers_review_order_page.clkFinancingConsentCheckbox();
-		rogers_review_order_page.clkAgreementConsentCheckbox();
-		//rogers_review_order_page.clkUpfrontConsentCheckbox();
+		//getRogersReviewOrderPage().clkFinancingConsentCheckbox();
+		getRogersReviewOrderPage().clkAgreementConsentCheckbox();
+		//getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
 		reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
-		rogers_review_order_page.clkSubmitOrderBtn();
+		getRogersReviewOrderPage().clkSubmitOrderBtn();
 		//************Order Confirmation Page****************//
-		reporter.hardAssert(rogers_NAC_order_confirmation_page.isOrderConfirmationTitlePresent(),"Order Confrimation Page Title Present","Order Confrimation Page Title is not Present");
+		reporter.hardAssert(getRogersNACOrderConfirmationPage().isOrderConfirmationTitlePresent(),"Order Confrimation Page Title Present","Order Confrimation Page Title is not Present");
 		reporter.reportLogPassWithScreenshot("Order Confirmation Page");
-		String purchaseIncludesConfrimation=rogers_NAC_order_confirmation_page.getPurchaseIncludesText();
+		String purchaseIncludesConfrimation=getRogersNACOrderConfirmationPage().getPurchaseIncludesText();
 		reporter.reportLogPassWithScreenshot("Purchase includes captured as" + "-->" +purchaseIncludesConfrimation);
-		//reporter.hardAssert(rogers_NAC_order_confirmation_page.isLearnMoreLinkDisplayed(),"Learn More Link Displayed","Learn More Link not Present");
+		//reporter.hardAssert(getRogersNACOrderConfirmationPage().isLearnMoreLinkDisplayed(),"Learn More Link Displayed","Learn More Link not Present");
 		//reporter.reportLogPassWithScreenshot("Order Review Page: LearnMore Link");
 
 	}

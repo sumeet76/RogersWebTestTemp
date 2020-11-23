@@ -29,24 +29,24 @@ public class RogersSS_TC_041_AO_ValidateCHaccountBadge_IginteTV extends BaseTest
     @Test(groups = {"RegressionSS","AccountOverviewSS"})
     public void checkTVDashboard() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
-        rogers_home_page.clkSignIn();
-        rogers_login_page.switchToSignInIFrame();
+        getRogersHomePage().clkSignIn();
+        getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        rogers_login_page.setUsernameIFrame(TestDataHandler.tc41IgniteTVAccount.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.tc41IgniteTVAccount.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc41IgniteTVAccount.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc41IgniteTVAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
-        rogers_login_page.clkSignInIFrame();
-        reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+        getRogersLoginPage().clkSignInIFrame();
+        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
         reporter.reportLogWithScreenshot("Skip popup");
-        rogers_login_page.clkSkipIFrame(); 
-        rogers_login_page.switchOutOfSignInIFrame();
-        rogers_account_overview_page.selectAccount(TestDataHandler.tc41IgniteTVAccount.accountDetails.getBan());                    
-        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+        getRogersLoginPage().clkSkipIFrame(); 
+        getRogersLoginPage().switchOutOfSignInIFrame();
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc41IgniteTVAccount.accountDetails.getBan());
+        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
-        rogers_solaris_tv_dashboard_page.clkTVBadge();
+        getRogersSolarisTVDashboardPage().clkTVBadge();
              
-        reporter.hardAssert(rogers_solaris_tv_dashboard_page.verifyViewMyChannelLineUpDisplayed()
-        		&& rogers_solaris_tv_dashboard_page.verifyViewFlexChannelsDisplayed(), "Ignite TV dashboard page is displayed", "Ignite TV dashboard page NOT displayed correctly please investigate");
+        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyViewMyChannelLineUpDisplayed()
+        		&& getRogersSolarisTVDashboardPage().verifyViewFlexChannelsDisplayed(), "Ignite TV dashboard page is displayed", "Ignite TV dashboard page NOT displayed correctly please investigate");
         
         reporter.reportLogWithScreenshot("Launched the Ignite TV dashboard Page");     
         common_business_flows.scrollToMiddleOfWebPage();

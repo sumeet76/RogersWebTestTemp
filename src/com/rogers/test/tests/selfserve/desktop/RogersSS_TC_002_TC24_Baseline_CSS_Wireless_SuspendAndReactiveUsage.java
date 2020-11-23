@@ -26,25 +26,25 @@ public class RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage 
 		closeSession();
 	}
 	
-  @Test(groups = {"SanitySS","RegressionSS","WirelessDashboardSS"})
+  @Test(groups = {"SanitySS","WirelessDashboardSS"})
     public void validateSuspendUsage() {
     	this.loginAndNavToDashboard();
       //Click on 'Reactive' link in Services page.
-    	if(rogers_wireless_dashboard_page.verifyToReactivateServiceMsgDisplayed()) {
-    		rogers_wireless_dashboard_page.clkLnkReactivateService();
+    	if(getRogersWirelessDashboardPage().verifyToReactivateServiceMsgDisplayed()) {
+    		getRogersWirelessDashboardPage().clkLnkReactivateService();
             reporter.reportLogWithScreenshot("Service suspended, Reactivate service link is clicked.");
-    		reporter.hardAssert(rogers_wireless_dashboard_page.verifyServiceResumedMsgDisplayed(),
+    		reporter.hardAssert(getRogersWirelessDashboardPage().verifyServiceResumedMsgDisplayed(),
     				"Service resumed message displayed.",
     				"Service resumed message didn't display.");	
-            rogers_account_overview_page.clkMenuUsageAndService();
+            getRogersAccountOverviewPage().clkMenuUsageAndService();
             String strAccountNum = TestDataHandler.tc0224.getAccountDetails().getCtn();
-            rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
+            getRogersAccountOverviewPage().clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
     	}
-        rogers_wireless_dashboard_page.clkLnkLostOrStolenDevice();
+        getRogersWirelessDashboardPage().clkLnkLostOrStolenDevice();
         reporter.reportLogWithScreenshot("Lost or stolen device link is clicked.");
-        rogers_wireless_dashboard_page.clkBtnSwitchOffMyService();
+        getRogersWirelessDashboardPage().clkBtnSwitchOffMyService();
         reporter.reportLogWithScreenshot("Switch off my service is clicked.");
-		reporter.hardAssert(rogers_wireless_dashboard_page.verifyServiceSuspendedMsgDisplayed(),
+		reporter.hardAssert(getRogersWirelessDashboardPage().verifyServiceSuspendedMsgDisplayed(),
 				"Service successfully suspended.",
 				"Service suspended message didn't display.");	
         reporter.reportLogWithScreenshot("Service successfully suspended.");
@@ -54,52 +54,52 @@ public class RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage 
     public void validateReactivateService() {
     	this.loginAndNavToDashboard();
       //Click on 'Reactive' link in Services page.
-		reporter.hardAssert(rogers_wireless_dashboard_page.verifyToReactivateServiceMsgDisplayed(),
+		reporter.hardAssert(getRogersWirelessDashboardPage().verifyToReactivateServiceMsgDisplayed(),
 				"Reactivate service message didn't displayed on wireless dashboard page.",
 				"Reactivate service message didn't display.");	
-		rogers_wireless_dashboard_page.clkLnkReactivateService();
+		getRogersWirelessDashboardPage().clkLnkReactivateService();
         reporter.reportLogWithScreenshot("Reactivate service link is clicked.");
-		reporter.hardAssert(rogers_wireless_dashboard_page.verifyServiceResumedMsgDisplayed(),
+		reporter.hardAssert(getRogersWirelessDashboardPage().verifyServiceResumedMsgDisplayed(),
 				"Service resumed message displayed.",
 				"Service resumed message didn't display.");	
         reporter.reportLogWithScreenshot("Service resumed success message.");
 	     //Go back to wireless dashboard page to verify service resumed successfully
-        rogers_account_overview_page.clkMenuUsageAndService();
+        getRogersAccountOverviewPage().clkMenuUsageAndService();
         String strAccountNum = TestDataHandler.tc0224.getAccountDetails().getCtn();
-        rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
-        reporter.hardAssert(!rogers_wireless_dashboard_page.verifyToReactivateServiceMsgDisplayed(),
+        getRogersAccountOverviewPage().clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
+        reporter.hardAssert(!getRogersWirelessDashboardPage().verifyToReactivateServiceMsgDisplayed(),
 				"Service is successfully resumed.",
 				"Reactivate service message still display in wireless dashboard page.");	
 		
-		rogers_wireless_dashboard_page.scrollToMidOfDasboardPage();
+		getRogersWirelessDashboardPage().scrollToMidOfDasboardPage();
         reporter.reportLogWithScreenshot("Wireless dashboard page.");
      
     }
 
     public void loginAndNavToDashboard() {
-    	rogers_home_page.clkSignIn();
+    	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc0224.getUsername();
     	String strPassword = TestDataHandler.tc0224.getPassword();
-    	rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(strUsername);
-        rogers_login_page.setPasswordIFrame(strPassword);
+    	getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(strUsername);
+        getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 		
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            rogers_account_overview_page.selectAccount(TestDataHandler.tc0224.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc0224.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");
        //Click on the Wireless badge in account overview badge.      
-        rogers_account_overview_page.clkMenuUsageAndService();
+        getRogersAccountOverviewPage().clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
         String strAccountNum = TestDataHandler.tc0224.getAccountDetails().getCtn();
-        rogers_account_overview_page.clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
-        //rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
+        getRogersAccountOverviewPage().clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
+        //getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
         reporter.reportLogWithScreenshot("Wireless dashboard page.");
         
     }

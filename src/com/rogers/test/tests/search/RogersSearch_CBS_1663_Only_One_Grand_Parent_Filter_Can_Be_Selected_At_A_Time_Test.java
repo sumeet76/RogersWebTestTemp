@@ -16,7 +16,7 @@ import utils.CSVReader;
 public class RogersSearch_CBS_1663_Only_One_Grand_Parent_Filter_Can_Be_Selected_At_A_Time_Test extends BaseTestClass {
 
 
-    @DataProvider(name = "FilterData")
+    @DataProvider(name = "FilterData",parallel=true)
     public Object[] testData() throws IOException {
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
@@ -32,13 +32,13 @@ public class RogersSearch_CBS_1663_Only_One_Grand_Parent_Filter_Can_Be_Selected_
 	    getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
 
         for(int i=1; i<csvRow.length; i++) {
-            rogers_search_page.clkGrandParentFilter(csvRow[i]);
+            getRogersSearchPage().clkGrandParentFilter(csvRow[i]);
             reporter.reportLogWithScreenshot(csvRow[i]+" is selected");
-            reporter.softAssert(rogers_search_page.isGrandParentFilterExpanded(csvRow[i]),
+            reporter.softAssert(getRogersSearchPage().isGrandParentFilterExpanded(csvRow[i]),
                     csvRow[i]+" is Expanded", csvRow[i]+" is not Expanded");
             for(int j=1; j<csvRow.length; j++) {
                 if(i!=j) {
-                    reporter.softAssert(!(rogers_search_page.isGrandParentFilterExpanded(csvRow[j])),
+                    reporter.softAssert(!(getRogersSearchPage().isGrandParentFilterExpanded(csvRow[j])),
                             csvRow[j]+" is not Expanded", csvRow[j]+" is Expanded");
                 }
             }

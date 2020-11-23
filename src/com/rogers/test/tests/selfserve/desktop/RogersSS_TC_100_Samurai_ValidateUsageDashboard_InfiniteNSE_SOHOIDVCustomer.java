@@ -32,58 +32,58 @@ public class RogersSS_TC_100_Samurai_ValidateUsageDashboard_InfiniteNSE_SOHOIDVC
 
 	@Test(groups = {"RegressionSS","WirelessDashboardSS","SamuraiSS"})
 	public void validateUsageDashboardOfInfiniteNSESohoIDVCustomer() throws InterruptedException {
-		rogers_home_page.clkSignIn();
+		getRogersHomePage().clkSignIn();
 		String strUsername = TestDataHandler.tc100.getUsername();
-		rogers_login_page.switchToSignInIFrame();
-		rogers_login_page.setUsernameIFrame(strUsername);
+		getRogersLoginPage().switchToSignInIFrame();
+		getRogersLoginPage().setUsernameIFrame(strUsername);
 		String strPassword = TestDataHandler.tc100.getPassword();
-		rogers_login_page.setPasswordIFrame(strPassword);
+		getRogersLoginPage().setPasswordIFrame(strPassword);
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login proceed without error.", "Login got error.");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login proceed without error.", "Login got error.");
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 
-		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), 
+		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),
 				"Login succeed, account overview page openned.", 
 				"Account overview page didn't open successfully");
 		reporter.reportLogWithScreenshot("Account overview page.");
-		rogers_account_overview_page.clkMenuUsageAndService();
+		getRogersAccountOverviewPage().clkMenuUsageAndService();
 		reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
 		String strAccountNum = TestDataHandler.tc100.getAccountDetails().getCtn();
 		String strLast4DigitAccount = strAccountNum.substring(strAccountNum.length() - 4);
-		if (rogers_account_overview_page.isAccountShowInDropDown(strLast4DigitAccount)) {
-			rogers_account_overview_page.clkDropDownAccount(strLast4DigitAccount);
+		if (getRogersAccountOverviewPage().isAccountShowInDropDown(strLast4DigitAccount)) {
+			getRogersAccountOverviewPage().clkDropDownAccount(strLast4DigitAccount);
 		} else {
-			rogers_account_overview_page.clkSubMenuWirelessUsage();
+			getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
 		}
-		rogers_account_overview_page.clkCloseInNewLookPopupIfVisible();
+		getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
 
-		reporter.hardAssert(rogers_wireless_dashboard_page.verifyDataDelayMessage(),
+		reporter.hardAssert(getRogersWirelessDashboardPage().verifyDataDelayMessage(),
 				"Data delay by 12 hours banner is displayed", "Data delay by 12 hours banner is NOT displayed");
 		reporter.reportLogWithScreenshot("Wireless dashboard page.");
 
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyTotalDataBucket(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyTotalDataBucket(),
 							"Total data bucket is displayed", 
 							"Total data bucket is NOT displayed");
-        reporter.hardAssert(rogers_wireless_dashboard_page.verifyDaysRemainingInTheBillCycleIsDisplayed(), 
+        reporter.hardAssert(getRogersWirelessDashboardPage().verifyDaysRemainingInTheBillCycleIsDisplayed(),
 							"Days left remaining in the bill cycle is displayed", 
 							"Days left remaining in the bill cycle is NOT displayed"); 
-		reporter.hardAssert(rogers_wireless_dashboard_page.verifySpeedPassButtonIsDisplayed(),
+		reporter.hardAssert(getRogersWirelessDashboardPage().verifySpeedPassButtonIsDisplayed(),
 				"Speed Pass button is displayed", "Speed Pass button is NOT displayed");
 
-		rogers_wireless_dashboard_page.clkBtnSpeedPass();
-		reporter.hardAssert(rogers_speed_pass_page.verifySpeedPassPopupIsDisplayed(), 
+		getRogersWirelessDashboardPage().clkBtnSpeedPass();
+		reporter.hardAssert(getRogersSpeedPassPage().verifySpeedPassPopupIsDisplayed(),
 				"Add speed pass overlay is displayed.", 
 				"Add speed pass overlay is not displayed correctly.");
 		reporter.reportLogWithScreenshot("Speed passes overlay");
-		rogers_speed_pass_page.clkBtnCloseInSpeedPassPopup();
-		reporter.hardAssert(rogers_manage_data_page.validateViewDetailsLink(),
+		getRogersSpeedPassPage().clkBtnCloseInSpeedPassPopup();
+		reporter.hardAssert(getRogersManageDataPage().validateViewDetailsLink(),
 				"'Data details' page is displayed after click on view details link",
 				"'Data details' page is NOT displayed after click on view details link");
 
 		reporter.reportLogWithScreenshot("Manage data page.");
-		rogers_manage_data_page.clkBackOnManageDataUsagePage();
+		getRogersManageDataPage().clkBackOnManageDataUsagePage();
 		
 
 

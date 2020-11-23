@@ -45,22 +45,22 @@ public class RogersSS_TC_001_Stress_ValidateSignInAndAccountOverviewTest extends
     public void validateSignInAndAccountOverview() {
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
-    	rogers_home_page.clkSignIn();
-		rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(TestDataHandler.tc013132.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.tc013132.getPassword());
+    	getRogersHomePage().clkSignIn();
+		getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc013132.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc013132.getPassword());
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-        rogers_login_page.clkSignInIFrame();
-        reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
-        rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+        getRogersLoginPage().clkSignInIFrame();
+        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
+        getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 
-//        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+//        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
 //        	reporter.reportLogWithScreenshot("Select an account.");
-//        	rogers_account_overview_page.selectAccount(TestDataHandler.tc013132.getAccountDetails().getBan());       
+//        	getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc013132.getAccountDetails().getBan());
 //        }
         reporter.reportLogWithScreenshot("Account overview page.");
-        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Passed", "Login Failed");
+        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Passed", "Login Failed");
     }
 
   

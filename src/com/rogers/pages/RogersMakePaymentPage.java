@@ -128,10 +128,10 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void setCreditCardNumber(String strAccountNumber) {	
-		driver.switchTo().frame(reusableActions.getWhenVisible(fraCC));
-		reusableActions.clickWhenVisible(txtCardNumber);
-		reusableActions.getWhenReady(txtCardNumber).sendKeys(strAccountNumber);
-		driver.switchTo().defaultContent();
+		getDriver().switchTo().frame(getReusableActionsInstance().getWhenVisible(fraCC));
+		getReusableActionsInstance().clickWhenVisible(txtCardNumber);
+		getReusableActionsInstance().getWhenReady(txtCardNumber).sendKeys(strAccountNumber);
+		getDriver().switchTo().defaultContent();
 	}
 
 	/**
@@ -140,7 +140,7 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 */
 	public void selectExpiryYear() {
 		String strYYYY = FormFiller.generateMonth();
-		reusableActions.selectWhenReady(ddlExpiryYear, strYYYY);
+		getReusableActionsInstance().selectWhenReady(ddlExpiryYear, strYYYY);
 	}
 
 	/**
@@ -149,7 +149,7 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 */
 	public void selectExpiryMonth() {
 		String strMM = FormFiller.generateMonth();
-		reusableActions.selectWhenReady(ddlExpiryMonth, strMM);
+		getReusableActionsInstance().selectWhenReady(ddlExpiryMonth, strMM);
 	}
 
 	/**
@@ -158,8 +158,8 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 */
 	public void setCVV() {
 		String strCVV = FormFiller.generateCVVNumber();
-		reusableActions.clickWhenVisible(txtCVV);
-		reusableActions.getWhenReady(txtCVV).sendKeys(strCVV);
+		getReusableActionsInstance().clickWhenVisible(txtCVV);
+		getReusableActionsInstance().getWhenReady(txtCVV).sendKeys(strCVV);
 
 	}
 	
@@ -169,7 +169,7 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectCreditcardExpiryYear(String strYYYY) {
-		reusableActions.selectWhenReadyByVisibleText(ddlExpiryYear, strYYYY);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlExpiryYear, strYYYY);
 	}
 
 	/**
@@ -178,7 +178,7 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectCreditcardxpiryMonth(String strMM) {
-		reusableActions.selectWhenReady(ddlExpiryMonth, strMM);
+		getReusableActionsInstance().selectWhenReady(ddlExpiryMonth, strMM);
 	}
 
 	/**
@@ -187,8 +187,8 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void setCreditcardCVV(String strCVV) {
-		reusableActions.clickWhenVisible(txtCVV);
-		reusableActions.getWhenReady(txtCVV).sendKeys(strCVV);
+		getReusableActionsInstance().clickWhenVisible(txtCVV);
+		getReusableActionsInstance().getWhenReady(txtCVV).sendKeys(strCVV);
 	}
 	
 	/**
@@ -197,10 +197,10 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void setPaymentAmount(String strAmount){
-		reusableActions.clickIfAvailable(txtAmount);
+		getReusableActionsInstance().clickIfAvailable(txtAmount);
 		//The default wrapper is not working on French hence added below line
-		reusableActions.enterText(txtAmount,Keys.chord(Keys.CONTROL,"a", Keys.DELETE), 30);	
-		reusableActions.enterText(txtAmount,strAmount, 30);		
+		getReusableActionsInstance().enterText(txtAmount,Keys.chord(Keys.CONTROL,"a", Keys.DELETE), 30);
+		getReusableActionsInstance().enterText(txtAmount,strAmount, 30);
 	}
 	
 	/**
@@ -212,18 +212,18 @@ public class RogersMakePaymentPage extends BasePageClass {
 		//writing the below element in method since we want to dynamically generate this at run time
 		if(payOption.toString().toLowerCase().equals("bank"))
 		{
-			reusableActions.javascriptScrollByVisibleElement(rdoBank);
-			reusableActions.executeJavaScriptClick(rdoBank);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(rdoBank);
+			getReusableActionsInstance().executeJavaScriptClick(rdoBank);
 			
 		}else if(payOption.toString().toLowerCase().equals("credit"))
 		{
-			reusableActions.javascriptScrollByVisibleElement(rdoCredit);
-			reusableActions.executeJavaScriptClick(rdoCredit);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(rdoCredit);
+			getReusableActionsInstance().executeJavaScriptClick(rdoCredit);
 			
 		}else if(payOption.toString().toLowerCase().equals("interac"))
 		{
-			reusableActions.javascriptScrollByVisibleElement(rdoInterac);
-			reusableActions.executeJavaScriptClick(rdoInterac);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(rdoInterac);
+			getReusableActionsInstance().executeJavaScriptClick(rdoInterac);
 		}
 								
 	}
@@ -236,8 +236,8 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 */
 	public void clkReviewAndContinueButton()
 	{	
-		Actions act=new Actions(reusableActions.getDriver());		
-		act.moveToElement(reusableActions.getWhenReady(btnReviewAndContinue)).click().build().perform();
+		Actions act=new Actions(getDriver());
+		act.moveToElement(getReusableActionsInstance().getWhenReady(btnReviewAndContinue)).click().build().perform();
 
 	}
 	
@@ -247,8 +247,8 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 */
 	public void clkPayNow()
 	{		
-		Actions act=new Actions(reusableActions.getDriver());
-		act.moveToElement(reusableActions.getWhenReady(btnPayNow)).click().build().perform();
+		Actions act=new Actions(getDriver());
+		act.moveToElement(getReusableActionsInstance().getWhenReady(btnPayNow)).click().build().perform();
 
 	}
 	
@@ -258,8 +258,8 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 */
 	public void clkPayOnInteracSite()
 	{	
-		Actions act=new Actions(reusableActions.getDriver());
-		act.moveToElement(reusableActions.getWhenReady(btnPayOntheInteracSite)).click().build().perform();
+		Actions act=new Actions(getDriver());
+		act.moveToElement(getReusableActionsInstance().getWhenReady(btnPayOntheInteracSite)).click().build().perform();
 
 	}	
 	
@@ -268,7 +268,7 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkViewPaymentHistory() {
-		reusableActions.clickWhenReady(btnPaymentHistory);
+		getReusableActionsInstance().clickWhenReady(btnPaymentHistory);
 		
 	}
 	
@@ -278,7 +278,7 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public String getRefNumber()	{
-		return reusableActions.getWhenReady(lblRefrenceNumber).getText();
+		return getReusableActionsInstance().getWhenReady(lblRefrenceNumber).getText();
 	}
 	
 	/**
@@ -288,12 +288,12 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 */
 	public Boolean verifyPaymentSuccessfulMessageDisplayed() {
 						
-		if(! reusableActions.isElementVisible(lblPaymentReceived)) {
+		if(! getReusableActionsInstance().isElementVisible(lblPaymentReceived)) {
 			System.out.print("The Label payment received is not displayed it seems, please investigate");
 			return false;
 		}
-		if(! (reusableActions.getWhenVisible(lblRefrenceNumber).getText()!=null 
-			|| reusableActions.getWhenVisible(lblRefrenceNumber).getText()!=""))
+		if(! (getReusableActionsInstance().getWhenVisible(lblRefrenceNumber).getText()!=null
+			|| getReusableActionsInstance().getWhenVisible(lblRefrenceNumber).getText()!=""))
 		{	
 			System.out.print("The Label reference Number is either null or empty it seems, please investigate");
 			return false;
@@ -306,7 +306,7 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkPaymentHistoryLinkOnConfirmationPage() {
-		reusableActions.clickWhenReady(lnkPaymentHistoryOnConfirmationPageFooter);
+		getReusableActionsInstance().clickWhenReady(lnkPaymentHistoryOnConfirmationPageFooter);
 	}
 	
 	/**
@@ -314,7 +314,7 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 * @return true if the back section is visible
 	 */
 	public boolean verifyBankSection() {		
-		return reusableActions.isElementVisible(divBankPayment);
+		return getReusableActionsInstance().isElementVisible(divBankPayment);
 	}
 
 	/**
@@ -324,9 +324,9 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 */
 	public void selectBank(String strBankName) {		
 		By lblBankName= By.xpath("//area[@alt='"+strBankName+"']");
-		reusableActions.executeJavaScriptClick(getDriver().findElement(lblBankName));	
-		reusableActions.waitForNumberOfWindowsToBe(2, 30);
-		reusableActions.staticWait(3000);
+		getReusableActionsInstance().executeJavaScriptClick(getDriver().findElement(lblBankName));
+		getReusableActionsInstance().waitForNumberOfWindowsToBe(2, 30);
+		getReusableActionsInstance().staticWait(3000);
 	}
 	
 	/**
@@ -335,7 +335,7 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void switchToCIBCBankPage(String strParentWindowHandle) {
-		reusableActions.switchToNewWindow(strParentWindowHandle);
+		getReusableActionsInstance().switchToNewWindow(strParentWindowHandle);
 	}
 
 	/**
@@ -345,7 +345,7 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyBankPageOpenedSuccessfully(String strWindowTitle) {		
-		return reusableActions.getDriver().getTitle().contains(strWindowTitle);
+		return getDriver().getTitle().contains(strWindowTitle);
 	}
 
 	/**
@@ -354,7 +354,7 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyIfTheSelectedBankIsDisplayedCorrectlyOnTheMakePaymentOverLay() {		
-		return reusableActions.isElementVisible(imgSelectedbank);
+		return getReusableActionsInstance().isElementVisible(imgSelectedbank);
 	}
 }
 

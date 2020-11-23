@@ -74,9 +74,9 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void switchToSignInIFrame() {	
-		reusableActions.getWhenReady(fraSignIn,10);
-		driver.switchTo().frame(fraSignIn);
-//		reusableActions.waitForFrameToBeAvailableAndSwitchToIt(fraSignIn, 30);
+		getReusableActionsInstance().getWhenReady(fraSignIn,10);
+		getDriver().switchTo().frame(fraSignIn);
+//		getReusableActionsInstance().waitForFrameToBeAvailableAndSwitchToIt(fraSignIn, 30);
 	}
 	
 	/**
@@ -85,9 +85,9 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	 public boolean isSignInFrameDisplayed() {
-		 return (reusableActions.isElementVisible(fraSignIn,30) 
-				 || reusableActions.isElementVisible(lblPassword) 
-				 || reusableActions.isElementVisible(txtPassword));
+		 return (getReusableActionsInstance().isElementVisible(fraSignIn,30)
+				 || getReusableActionsInstance().isElementVisible(lblPassword)
+				 || getReusableActionsInstance().isElementVisible(txtPassword));
 	 }
 	
 	/**
@@ -97,9 +97,9 @@ public class RogersLoginPage extends BasePageClass {
 	 */	
 
 	public void setUsernameIFrame(String strUsername) {
-		reusableActions.clickIfAvailable(lblUserName,20);
-		reusableActions.getWhenVisible(txtUsername, 30).clear();
-		reusableActions.getWhenVisible(txtUsername).sendKeys(strUsername);
+		getReusableActionsInstance().clickIfAvailable(lblUserName,20);
+		getReusableActionsInstance().getWhenVisible(txtUsername, 30).clear();
+		getReusableActionsInstance().getWhenVisible(txtUsername).sendKeys(strUsername);
 	}
 	
 	/**
@@ -109,9 +109,9 @@ public class RogersLoginPage extends BasePageClass {
 	 */	
 
 	public void setUsernameIFrameMobile(String strUsername) {
-		//reusableActions.clickIfAvailable(lblUserName,20);
-		reusableActions.getWhenVisible(txtUsername, 30).clear();
-		reusableActions.getWhenVisible(txtUsername).sendKeys(strUsername);
+		//getReusableActionsInstance().clickIfAvailable(lblUserName,20);
+		getReusableActionsInstance().getWhenVisible(txtUsername, 30).clear();
+		getReusableActionsInstance().getWhenVisible(txtUsername).sendKeys(strUsername);
 	}
 	
 	
@@ -121,10 +121,10 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void setPasswordIFrame(String strPassword) {
-		//reusableActions.waitForElementTobeClickable(txtPassword, 30);
-		reusableActions.getWhenReady(lblPassword).click();
-		reusableActions.getWhenVisible(txtPassword,20).clear();
-		reusableActions.getWhenVisible(txtPassword).sendKeys(strPassword);
+		//getReusableActionsInstance().waitForElementTobeClickable(txtPassword, 30);
+		getReusableActionsInstance().getWhenReady(lblPassword).click();
+		getReusableActionsInstance().getWhenVisible(txtPassword,20).clear();
+		getReusableActionsInstance().getWhenVisible(txtPassword).sendKeys(strPassword);
 	}
 
 	/**
@@ -132,7 +132,7 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSignInIFrame() {
-		reusableActions.getWhenReady(btnSignIn,30).click();		
+		getReusableActionsInstance().getWhenReady(btnSignIn,30).click();
 		
 	}
 	
@@ -141,7 +141,7 @@ public class RogersLoginPage extends BasePageClass {
 	 * @return true if login fail message is displayed, otherwise false.
 	 */
 	public Boolean verifyLoginFailMsgIframe() {
-		return reusableActions.isElementVisible(failLoginMsg, 10);
+		return getReusableActionsInstance().isElementVisible(failLoginMsg, 10);
 	}
 
 	/**
@@ -149,7 +149,7 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSkipIFrame() {
-		reusableActions.clickIfAvailable(btnSkip,10);
+		getReusableActionsInstance().clickIfAvailable(btnSkip,10);
 	}
 	
 	/**
@@ -157,7 +157,7 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void switchOutOfSignInIFrame() {
-		driver.switchTo().defaultContent();
+		getDriver().switchTo().defaultContent();
 	}
 	
 	/**
@@ -165,7 +165,7 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author rajesh.varalli1 
 	 */
 	public void clickRegister() {
-		reusableActions.clickIfAvailable(lnkRegister);
+		getReusableActionsInstance().getWhenReady(lnkRegister).click();
 	}
 	
 	
@@ -174,7 +174,7 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author rajesh.varalli1 
 	 */
 	public void clickRegisterNow() {
-		reusableActions.clickIfAvailable(btnRegisterNow);
+		getReusableActionsInstance().clickIfAvailable(btnRegisterNow);
 	}
 
 	/**
@@ -182,10 +182,10 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clickSignOut() {
-		reusableActions.clickIfAvailable(lnkUserName);
-		reusableActions.waitForElementVisibility(lnkSignOut, 20);
-		reusableActions.clickIfAvailable(lnkSignOut);
-		reusableActions.waitForPageLoad();
+		getReusableActionsInstance().clickIfAvailable(lnkUserName);
+		getReusableActionsInstance().waitForElementVisibility(lnkSignOut, 20);
+		getReusableActionsInstance().clickIfAvailable(lnkSignOut);
+		getReusableActionsInstance().waitForPageLoad();
 		
 	}
 	
@@ -197,13 +197,13 @@ public class RogersLoginPage extends BasePageClass {
 		boolean clickSuccess=false;
 		int count=0;
 		while (count<=3 && !clickSuccess) {
-			if(!reusableActions.isElementVisible(fraSignIn))
+			if(!getReusableActionsInstance().isElementVisible(fraSignIn))
 			{
-				reusableActions.waitForElementTobeClickable(lnkReSignInAs, 120);
-				reusableActions.javascriptScrollByVisibleElement(lnkReSignInAs);
-				reusableActions.executeJavaScriptClick(lnkReSignInAs);
-				reusableActions.staticWait(3000);
-				if(reusableActions.isElementVisible(fraSignIn))
+				getReusableActionsInstance().waitForElementTobeClickable(lnkReSignInAs, 120);
+				getReusableActionsInstance().javascriptScrollByVisibleElement(lnkReSignInAs);
+				getReusableActionsInstance().executeJavaScriptClick(lnkReSignInAs);
+				getReusableActionsInstance().staticWait(3000);
+				if(getReusableActionsInstance().isElementVisible(fraSignIn))
 				{
 					clickSuccess=true;
 					break;
@@ -225,14 +225,14 @@ public class RogersLoginPage extends BasePageClass {
 	 */
 	public void clkForgotPassOrNameIframe() {	
 		
-		reusableActions.clickIfAvailable(btnForgotUserNameAndPassword);
+		getReusableActionsInstance().clickIfAvailable(btnForgotUserNameAndPassword);
 	}
 
 	/**
 	 * Clicks on Forgot Username iframe
 	 */
 	public void clkForgotUsernameIframe() {
-		reusableActions.getWhenReady(lnkForgotUserName).click();
+		getReusableActionsInstance().getWhenReady(lnkForgotUserName).click();
 		
 	}
 
@@ -242,7 +242,7 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkForgotPasswordIframe() {
-		reusableActions.getWhenReady(lnkForgotPassword).click();
+		getReusableActionsInstance().getWhenReady(lnkForgotPassword).click();
 		
 	}
 	

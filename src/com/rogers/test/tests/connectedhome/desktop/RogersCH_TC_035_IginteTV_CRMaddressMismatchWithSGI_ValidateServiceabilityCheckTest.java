@@ -51,46 +51,47 @@ public class RogersCH_TC_035_IginteTV_CRMaddressMismatchWithSGI_ValidateServicea
     @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
     public void checkCRMaddressMismatchWithSGI_ServiceabilityTest() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
-		rogers_home_page.clkSignIn();
-		rogers_login_page.switchToSignInIFrame();
+		getRogersHomePage().clkSignIn();
+		getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setUsernameIFrame(TestDataHandler.tc35_CRMaddressMismatchWithSGI.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.tc35_CRMaddressMismatchWithSGI.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc35_CRMaddressMismatchWithSGI.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc35_CRMaddressMismatchWithSGI.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
-		rogers_login_page.clkSignInIFrame();
-		reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 		reporter.reportLogWithScreenshot("Skip popup");
-		rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
-		reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-		rogers_account_overview_page.selectAccount(TestDataHandler.tc35_CRMaddressMismatchWithSGI.accountDetails.getBan());
+		getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
+		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc35_CRMaddressMismatchWithSGI.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_home_page.clkExistingCustomerShop();
+		getRogersHomePage().clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-		rogers_home_page.clkIgniteTVExistingCustomer();
+		getRogersHomePage().clkIgniteTVExistingCustomer();
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-		rogers_home_page.clkNoThnx();
-		rogers_home_page.clkServiceability();
+		getRogersHomePage().clkNoThnx();
+		getRogersHomePage().clkServiceability();
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-		rogers_home_page.clkUseThisAddress();
+		getRogersHomePage().clkUseThisAddress();
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-		reporter.hardAssert(rogers_igniteTV_buy_page.verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-		rogers_igniteTV_buy_page.selectSolarisStarterPackageNew();
+		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
+		getRogersIgniteTVBuyPage().clkHomephone();
+		getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
 
-/*		reporter.hardAssert(rogers_home_phone_selection_page.verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
+		reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the home phone selection page");
-		rogers_home_phone_selection_page.clkSkipforNewNumber();
+		getRogersHomePhoneSelectionPage().clkSkipforNewNumber();
 		reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
-		rogers_igniteTV_buy_page.clkHomePhone();*/
+		getRogersHomePhoneSelectionPage().clkContinueHomePhoneSelection();
 
-		reporter.hardAssert(rogers_igniteTV_buy_page.verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");
+		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");
 		reporter.reportLogWithScreenshot("Launched the cart summary page");
-		rogers_igniteTV_buy_page.set4KTV();
+		getRogersIgniteTVBuyPage().set4KTV();
 		reporter.reportLogWithScreenshot("4k TV selected");
-		rogers_igniteTV_buy_page.clkCheckout();
+		getRogersIgniteTVBuyPage().clkCheckout();
 		reporter.reportLogWithScreenshot("Launched the create profile page");
-		rogers_igniteTV_profile_creation_page.clkSubmitProfile();
-		reporter.hardAssert(rogers_igniteTV_credit_check_page.verifyCreditEvalutionPage(),"Credit Evalution page has Launched","Credit Evalution page has not Launched");
+		getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
+		reporter.hardAssert(getRogersIgniteTVCreditCheckPage().verifyCreditEvalutionPage(),"Credit Evalution page has Launched","Credit Evalution page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the credit evalution page");
 	}
 

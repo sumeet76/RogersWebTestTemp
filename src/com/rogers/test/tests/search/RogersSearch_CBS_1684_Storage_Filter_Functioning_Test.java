@@ -1,60 +1,58 @@
 package com.rogers.test.tests.search;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-
-import org.apache.http.client.ClientProtocolException;
+import com.rogers.test.base.BaseTestClass;
+import com.rogers.test.helpers.RogersEnums;
 import org.openqa.selenium.WebElement;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
-import com.rogers.test.base.BaseTestClass;
-import com.rogers.test.helpers.RogersEnums;
-import com.rogers.testdatamanagement.TestDataHandler;
-import utils.CSVReader;
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.List;
 
 public class RogersSearch_CBS_1684_Storage_Filter_Functioning_Test extends BaseTestClass {
 
+	@Test
+	public void validateStorageFilterSelection() {
+		List<WebElement> resultLinks;
+		String strDeviceName;
+		String strSelectedStorage;
+		List<String> strStorageFilters;
+		String strSearchTerm = "iphone";
 
-	@DataProvider(name = "FilterData")
-	public Object[] testData() throws IOException
-	{
-		String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataStorageFilter.csv";
-		List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
-		Object[] csvRow = new Object[csvData.size()];
-		 
-        for(int i =0; i < csvData.size();i++){
-        	csvRow[i] = csvData.get(i);
-        }
- 
-        return csvRow;
-		 
-		
+		getDriver().get(System.getProperty("SearchUrl")+strSearchTerm);
+
+		getRogersSearchPage().clkShopAndThenWirelessFilter();
+		reporter.reportLogWithScreenshot("Shop and Wireless Filters clicked");
+		strStorageFilters = getRogersSearchPage().getStorageSelections();
+		for(int i=0;i<strStorageFilters.size();i++) {
+			getRogersSearchPage().clkStorageType(strStorageFilters.get(i));
+			reporter.reportLogWithScreenshot(strStorageFilters.get(i) + " - Selected");
+
+			resultLinks = getRogersSearchPage().getAllResultLinks();
+			for(int k=0;k< resultLinks.size();k++) {
+				getRogersSearchPage().clkResultLink(resultLinks.get(k));
+				strDeviceName = getRogersDeviceConfigPage().getDeviceName();
+				if(strDeviceName != null && !strDeviceName.equals("Phones")) {
+					reporter.reportLogPassWithScreenshot(strDeviceName + " Page");
+					strSelectedStorage = getRogersDeviceConfigPage().getSelectedStorage();
+					reporter.softAssert(strSelectedStorage.equals(strStorageFilters.get(i)),
+							"Storage: Expected="+strStorageFilters.get(i)+"; Actual=" + strSelectedStorage,
+							"Storage: Expected="+strStorageFilters.get(i)+"; Actual=" + strSelectedStorage);
+					getRogersDeviceConfigPage().navigateBack();
+				} else {
+					reporter.reportLogFailWithScreenshot("Failed to land on Device Config page");
+					getDriver().get(System.getProperty("SearchUrl")+strSearchTerm);
+					getRogersSearchPage().clkGrandParentFilter("Shop");
+					getRogersSearchPage().clkParentFilter("Shop","Wireless");
+					getRogersSearchPage().clkStorageType(strStorageFilters.get(i));
+				}
+				resultLinks = getRogersSearchPage().getAllResultLinks();
+			}
+			getRogersSearchPage().clkStorageType(strStorageFilters.get(i));
+		}
 	}
-	
-	@Test(dataProvider = "FilterData")
-	
-	public void validateStorageFilterSelection(String[] csvRow) {
-	
-	getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
-	
-	rogers_search_page.clkShopAndThenWirelessFilter();
-	reporter.reportLogWithScreenshot("Shop and Wireless Filters clicked");
-	
-	reporter.hardAssert(rogers_search_page.verifyResultsStorageLabelWithSelectedStorage(), "Storage label displayed correctly", "Storage label not displayed correctly");
-				
-				
-	}
-
-
 
 	@BeforeMethod(alwaysRun = true)
 	@Parameters({"strBrowser", "strLanguage"})
@@ -67,8 +65,5 @@ public class RogersSearch_CBS_1684_Storage_Filter_Functioning_Test extends BaseT
 	public void afterTest() {
 		closeSession();
 	}
-	
-	
+
 }
-
-

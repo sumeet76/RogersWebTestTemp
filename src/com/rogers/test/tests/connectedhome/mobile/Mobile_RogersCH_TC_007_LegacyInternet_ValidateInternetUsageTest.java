@@ -29,23 +29,23 @@ public class Mobile_RogersCH_TC_007_LegacyInternet_ValidateInternetUsageTest ext
     @Test(groups = {"MobileRegressionCH"})
 	public void checkLegacyInternetUsageMobile() {
         reporter.reportLogWithScreenshot("Home Page");
-    	rogers_home_page.clkSignInMobile();    	
-        rogers_login_page.switchToSignInIFrame();
+    	getRogersHomePage().clkSignInMobile();    	
+        getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		rogers_login_page.setUsernameIFrame(TestDataHandler.tc46_legacyInternetAccount.getUsername());
-		rogers_login_page.setPasswordIFrame(TestDataHandler.tc46_legacyInternetAccount.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc46_legacyInternetAccount.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc46_legacyInternetAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
-        rogers_login_page.clkSignInIFrame();
-    	reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        getRogersLoginPage().clkSignInIFrame();
+    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
-        rogers_login_page.clkSkipIFrame();
-        rogers_login_page.switchOutOfSignInIFrame();
-    	reporter.hardAssert(rogers_account_overview_page.verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
+        getRogersLoginPage().clkSkipIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();
+    	reporter.hardAssert(getRogersAccountOverviewPage().verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
     	reporter.reportLogWithScreenshot("Launched the Account Page");
-		rogers_account_overview_page.clkLegacyInternetMobile();
+		getRogersAccountOverviewPage().clkLegacyInternetMobile();
 		reporter.reportLogWithScreenshot("Launched the Internet Dashboard Page");
-		rogers_account_overview_page.clkInternetPopup();
-		reporter.hardAssert(rogers_internet_dashboard_page.verifyInternetUsageMobile(),"Verifed the Internet dashboard","Internet dashboard Verification has failed");
+		getRogersAccountOverviewPage().clkInternetPopup();
+		reporter.hardAssert(getRogersInternetDashboardPage().verifyInternetUsageMobile(),"Verifed the Internet dashboard","Internet dashboard Verification has failed");
    	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

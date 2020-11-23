@@ -32,100 +32,100 @@ public class RogersSS_TC_104_PACMAN_ValidateTheVASredeemptionAndCancelFlowInSing
     public void validateTheVASredeemptionAndCancelFlowInSingleSession_EmpFreeTrial_Infinite10() {
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
-    	rogers_home_page.clkSignIn();
-		rogers_login_page.switchToSignInIFrame();
-        rogers_login_page.setUsernameIFrame(TestDataHandler.tc104.getUsername());
-        rogers_login_page.setPasswordIFrame(TestDataHandler.tc104.getPassword());
+    	getRogersHomePage().clkSignIn();
+		getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc104.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc104.getPassword());
         String strCTN =TestDataHandler.tc104.getAccountDetails().getCtn();
         reporter.reportLogWithScreenshot("Login Credential is entered.");
-        rogers_login_page.clkSignInIFrame();
-        reporter.hardAssert(!rogers_login_page.verifyLoginFailMsgIframe(), "Login proceed.",
+        getRogersLoginPage().clkSignInIFrame();
+        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login proceed.",
         		"Login got error.");
-        rogers_login_page.clkSkipIFrame();
-		rogers_login_page.switchOutOfSignInIFrame();
+        getRogersLoginPage().clkSkipIFrame();
+		getRogersLoginPage().switchOutOfSignInIFrame();
 
-        if (rogers_account_overview_page.isAccountSelectionPopupDisplayed()) {
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-        	rogers_account_overview_page.selectAccount(TestDataHandler.tc104.getAccountDetails().getBan());       
+        	getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc104.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");
-        reporter.hardAssert(rogers_account_overview_page.verifySuccessfulLogin(), "Login Passed", "Login Failed");
+        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Passed", "Login Failed");
         
         common_business_flows.scrollToMiddleOfWebPage();
         reporter.reportLogWithScreenshot("CTNS or Subscriptions View");
         
-        reporter.hardAssert(rogers_account_overview_page.verifySubscriptionIsAvailableForRedeem(), 
+        reporter.hardAssert(getRogersAccountOverviewPage().verifySubscriptionIsAvailableForRedeem(),
         		"The subscription is available for redeem", 
         		"The subscription is NOT available for redeem");
         
-        rogers_account_overview_page.clkSignUpSubscription();
-        reporter.hardAssert(rogers_account_overview_page.verifyIfSubscriptionIsAvailableForRedeem(), 
+        getRogersAccountOverviewPage().clkSignUpSubscription();
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfSubscriptionIsAvailableForRedeem(),
         		"The current subscription redeem selection is displayed", 
         		"The current subscription is redeem selection is NOT displayed");
         reporter.reportLogWithScreenshot("Current subscription for redeem");
-        rogers_account_overview_page.checkRedeem();
+        getRogersAccountOverviewPage().checkRedeem();
         reporter.reportLogWithScreenshot("Current subscription check box seletced for redeem");
-        rogers_account_overview_page.clkSignUp();
-        reporter.hardAssert(rogers_account_overview_page.verifyIfRedeemSubscriptionDetailsIsDisplayedCorrectly(strCTN), 
+        getRogersAccountOverviewPage().clkSignUp();
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfRedeemSubscriptionDetailsIsDisplayedCorrectly(strCTN),
         		"The subscription details matched", 
         		"The subscription details did not matched");          
         common_business_flows.scrollToMiddleOfWebPage();
         reporter.reportLogWithScreenshot("T and C page");
-        reporter.hardAssert(rogers_account_overview_page.verifyIfTnCForSubscriptionIsDisplayed(), 
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfTnCForSubscriptionIsDisplayed(),
         		"The Subscription TnC is displayed", 
         		"The Subscription TnC is NOT displayed");
        
-        rogers_account_overview_page.checkTnC();
+        getRogersAccountOverviewPage().checkTnC();
         reporter.reportLogWithScreenshot("T and C check box is selected");
-        rogers_account_overview_page.clkSubscribeToSubs();   
+        getRogersAccountOverviewPage().clkSubscribeToSubs();
         reporter.reportLogWithScreenshot("Subscription button clicked");
-        reporter.hardAssert(rogers_account_overview_page.verifyIfSubscriptionSuccessfulOverLayDisplayed(), 
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfSubscriptionSuccessfulOverLayDisplayed(),
         		"The subscription success overlay is displayed", 
         		"The subscription success overlay not displayed");  
         reporter.reportLogWithScreenshot("Subscription success overlay displayed");
-        rogers_account_overview_page.clkOKButtonOnSubscriptionSuccessOverlay();
+        getRogersAccountOverviewPage().clkOKButtonOnSubscriptionSuccessOverlay();
         reporter.reportLogWithScreenshot("Cliked on OKay button");        
-        reporter.hardAssert(rogers_account_overview_page.verifyIfSMPIsDisplayedWithSubscribedCTN(strCTN), 
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfSMPIsDisplayedWithSubscribedCTN(strCTN),
         		"The Subscription management page SMP shows the subscribed CTNs in Currently Subscribed Section", 
         		"The Subscription management page does NOT shows the SMP shows the subscribed CTNs in Currently Subscribed Section");
         reporter.reportLogWithScreenshot("Subscription management page shows the subscribed CTNs in Currently Subscribed Section");
         
-        reporter.hardAssert(rogers_account_overview_page.verifyIfCurrentlySubscribedPaneIsDisplayed(), 
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCurrentlySubscribedPaneIsDisplayed(),
         		"The current subscription is displayed", 
         		"The current subscription is NOT displayed");
         reporter.reportLogWithScreenshot("Current subscription");
         
-        rogers_wireless_dashboard_page.clickOverview();
+        getRogersWirelessDashboardPage().clickOverview();
         reporter.reportLogWithScreenshot("Back to account overview");
         common_business_flows.scrollToMiddleOfWebPage();
         reporter.reportLogWithScreenshot("CTNS or Subscriptions View");
-        reporter.hardAssert(rogers_account_overview_page.verifyIfSubscriptionIsAvailableForCancellation(), 
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfSubscriptionIsAvailableForCancellation(),
         		"The subscription is available for Cancellation", 
         		"The subscription is NOT available for Cancellation");
-        rogers_account_overview_page.clkManageOnSubscription();
-        reporter.hardAssert(rogers_account_overview_page.verifyIfCurrentlySubscribedPaneIsDisplayed(), 
+        getRogersAccountOverviewPage().clkManageOnSubscription();
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCurrentlySubscribedPaneIsDisplayed(),
         		"The current subscription is displayed", 
         		"The current subscription is NOT displayed");
         reporter.reportLogWithScreenshot("Current subscription");
-        rogers_account_overview_page.clkCancelSubscription();
+        getRogersAccountOverviewPage().clkCancelSubscription();
         reporter.reportLogWithScreenshot("Cancel subscription details is displayed");
-        reporter.hardAssert(rogers_account_overview_page.verifyIfHeaderCancelSubscriptionIsDisplayed(), 
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfHeaderCancelSubscriptionIsDisplayed(),
         		"The header cancel subscription is displayed", 
         		"The header cancel subscription is NOT displayed");
-        reporter.hardAssert(rogers_account_overview_page.verifyIfCancelSubscriptionDetailsIsDisplayedCorrectly(TestDataHandler.tc104.getAccountDetails().getCtn()), 
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCancelSubscriptionDetailsIsDisplayedCorrectly(TestDataHandler.tc104.getAccountDetails().getCtn()),
         		"The cancel subscription details matched", 
         		"The cancel subscription details did not matched");        
-        rogers_account_overview_page.selectReasonForCancelSubscription();
+        getRogersAccountOverviewPage().selectReasonForCancelSubscription();
         reporter.reportLogWithScreenshot("reason for cancel subscription is selected");
-        rogers_account_overview_page.clkConfirmCancelSubscription();
+        getRogersAccountOverviewPage().clkConfirmCancelSubscription();
         reporter.reportLogWithScreenshot("Confirm button clicked");
-        reporter.hardAssert(rogers_account_overview_page.verifyIfCancelSuccessfulOverLayDisplayed(), 
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCancelSuccessfulOverLayDisplayed(),
         		"The cancel subscription success overlay is displayed", 
         		"The cancel subscription success overlay not displayed");  
         reporter.reportLogWithScreenshot("cancel success overlay displayed");
-        rogers_account_overview_page.clkOKButtonOnCancelSuccessOverlay();
+        getRogersAccountOverviewPage().clkOKButtonOnCancelSuccessOverlay();
         reporter.reportLogWithScreenshot("Cliked on OKay button");
-        reporter.hardAssert(rogers_account_overview_page.verifyIfSMPIsDisplayedWithCancelledSubscription(), 
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfSMPIsDisplayedWithCancelledSubscription(),
         		"The Subscription management page shows the cancelled CTN subscription", 
         		"The Subscription management page does NOT shows the cancelled CTN subscription");
         reporter.reportLogWithScreenshot("Subscription management page shows the cancelled subscription");

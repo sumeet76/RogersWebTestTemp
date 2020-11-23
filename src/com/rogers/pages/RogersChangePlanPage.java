@@ -66,7 +66,7 @@ public class RogersChangePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyChangePlanPageLoad() {
-		return reusableActions.isElementVisible(lblChooseNewPlan);
+		return getReusableActionsInstance().isElementVisible(lblChooseNewPlan);
 	}
 	
 	/**
@@ -75,11 +75,11 @@ public class RogersChangePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void selectPlanType(String planType) {
-		reusableActions.clickWhenVisible(lstPlanType);
+		getReusableActionsInstance().clickWhenVisible(lstPlanType);
 		if(planType.toUpperCase().contains("INFINITE")) {
-			reusableActions.clickWhenVisible(lblRogersInfinite);
+			getReusableActionsInstance().clickWhenVisible(lblRogersInfinite);
 		} else {
-			reusableActions.clickWhenVisible(lblNonShared);
+			getReusableActionsInstance().clickWhenVisible(lblNonShared);
 		}
 	}
 	
@@ -88,7 +88,7 @@ public class RogersChangePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void selectFirstAvailablePlan() {
-		reusableActions.clickWhenVisible(btnSelectPlan.get(0));
+		getReusableActionsInstance().clickWhenVisible(btnSelectPlan.get(0));
 	}
 	
 	/**
@@ -96,7 +96,7 @@ public class RogersChangePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickViewAllPlans() {
-		reusableActions.clickWhenVisible(lnkViewAllPlans);
+		getReusableActionsInstance().clickWhenVisible(lnkViewAllPlans);
 	}
 	
 	/**
@@ -104,7 +104,7 @@ public class RogersChangePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickCheckout() {
-		reusableActions.clickWhenVisible(btnCheckout);
+		getReusableActionsInstance().clickWhenVisible(btnCheckout);
 	}
 	
 	/**
@@ -113,7 +113,7 @@ public class RogersChangePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyAddonSectionVisible() {
-		return reusableActions.isElementVisible(lblYourExistingAddons, 30);
+		return getReusableActionsInstance().isElementVisible(lblYourExistingAddons, 30);
 	}
 	
 	/**
@@ -134,11 +134,11 @@ public class RogersChangePlanPage extends BasePageClass {
 		strCTN = strCTN.replace("-", "").replace(" ", "");
 		strCTN = strCTN.substring(0, 3) + " " + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);
 		
-		reusableActions.staticWait(5000);
+		getReusableActionsInstance().staticWait(5000);
 		
 		for (int index = 0; index < lblLineDetails.size(); index++) {
 			if(lblLineDetails.get(index).getText().contains(strCTN)) {
-				reusableActions.clickWhenReady(btnEdit.get(index));
+				getReusableActionsInstance().clickWhenReady(btnEdit.get(index));
 				break;
 			}
 		}
@@ -149,7 +149,7 @@ public class RogersChangePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkChangeMainLine() {
-		reusableActions.clickWhenVisible(btnChangeMainLine);
+		getReusableActionsInstance().clickWhenVisible(btnChangeMainLine);
 	}
 	
 }

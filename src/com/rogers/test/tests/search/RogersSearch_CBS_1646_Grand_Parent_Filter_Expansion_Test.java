@@ -13,7 +13,7 @@ import utils.CSVReader;
 
 public class RogersSearch_CBS_1646_Grand_Parent_Filter_Expansion_Test extends BaseTestClass {
 
-    @DataProvider(name = "FilterData")
+    @DataProvider(name = "FilterData",parallel=true)
     public Object[] testData() throws IOException {
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
@@ -28,9 +28,9 @@ public class RogersSearch_CBS_1646_Grand_Parent_Filter_Expansion_Test extends Ba
     public void validateResultsGrandParentFilter(String[] csvRowStrArray) {
         getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0]);
         for(int i=1;i< csvRowStrArray.length;i++) {
-            rogers_search_page.clkGrandParentFilter(csvRowStrArray[i]);
+            getRogersSearchPage().clkGrandParentFilter(csvRowStrArray[i]);
             reporter.reportLogWithScreenshot(csvRowStrArray[i]+" filter selected");
-            reporter.softAssert(rogers_search_page.validateResultsTag(csvRowStrArray[i]),
+            reporter.softAssert(getRogersSearchPage().validateResultsTag(csvRowStrArray[i]),
                     "Results have tag " +csvRowStrArray[i], "Results do Not have tag " +csvRowStrArray[i]);
         }
     }

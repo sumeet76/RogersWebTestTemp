@@ -50,8 +50,8 @@ public class RogersSpeedPassPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifySpeedPassPopupIsDisplayed() {
-		return (reusableActions.isElementVisible(topUpSpeedPass, 30)
-				||reusableActions.isElementVisible(lblCannotAddSpeedPass, 30));
+		return (getReusableActionsInstance().isElementVisible(topUpSpeedPass, 30)
+				||getReusableActionsInstance().isElementVisible(lblCannotAddSpeedPass, 30));
 	}
 	
 	/**
@@ -59,7 +59,7 @@ public class RogersSpeedPassPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkMaxSpeedDataInSpeedPassPopup() {		
-		reusableActions.getWhenReady(slctMaxSpeedData, 20).click();		
+		getReusableActionsInstance().getWhenReady(slctMaxSpeedData, 20).click();
 	} 
 	
 	/**
@@ -67,7 +67,7 @@ public class RogersSpeedPassPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnContinueInSpeedPassPopup() {
-		reusableActions.getWhenReady(btnContinueSpeedPass, 20).click();
+		getReusableActionsInstance().getWhenReady(btnContinueSpeedPass, 20).click();
 	} 
 	
 	/**
@@ -76,7 +76,7 @@ public class RogersSpeedPassPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyHeaderConfirmPurchaseIsDisplayed() {
-		return reusableActions.isElementVisible(headerConfirmPurchase, 30);
+		return getReusableActionsInstance().isElementVisible(headerConfirmPurchase, 30);
 	} 
 	
 	/**
@@ -84,7 +84,7 @@ public class RogersSpeedPassPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnPurchaseInSpeedPassPopup() {
-		reusableActions.getWhenReady(btnPurchaseSP, 20).click();
+		getReusableActionsInstance().getWhenReady(btnPurchaseSP, 20).click();
 	} 
 	
 	/**
@@ -93,7 +93,7 @@ public class RogersSpeedPassPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyMsgSuccessAddedSpeedPassIsDisplayed() {
-		return reusableActions.isElementVisible(msgSuccessAddedSP, 30);
+		return getReusableActionsInstance().isElementVisible(msgSuccessAddedSP, 30);
 	} 
 	
 	/**
@@ -101,7 +101,8 @@ public class RogersSpeedPassPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnCloseInSpeedPassPopup() {
-		reusableActions.getWhenReady(btnCloseSpeedPassTopup, 20).click();
+		getReusableActionsInstance().getWhenReady(btnCloseSpeedPassTopup, 20).click();
+		getReusableActionsInstance().staticWait(5000);
 	}
 	
 	/**
@@ -110,7 +111,7 @@ public class RogersSpeedPassPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyCannotAddSpeedPassHeaderIsDisplayed() {
-		return reusableActions.isElementVisible(lblCannotAddSpeedPass);
+		return getReusableActionsInstance().isElementVisible(lblCannotAddSpeedPass);
 	}
 
 

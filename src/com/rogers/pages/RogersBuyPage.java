@@ -58,7 +58,7 @@ public class RogersBuyPage extends BasePageClass {
 	 */
 	public void selectSolarisBundlePackage(String strBundleName) {		
 		By bundleNameLocator = By.xpath("//span[contains(text(),'Select') or contains(text(),' Populaire')]/ancestor::div[@class='solaris-carousel-item']//ins[@translate='global.cta.addToCart']");
-		reusableActions.clickWhenReady(bundleNameLocator, 60); 
+		getReusableActionsInstance().clickWhenReady(bundleNameLocator, 60);
 	}
 	
 	/**
@@ -69,7 +69,7 @@ public class RogersBuyPage extends BasePageClass {
 	public void selectSolarisBundlePackage1(String strBundleName) {
 		
 		By bundleNameLocator = By.xpath("//span[contains(text(),'"+ strBundleName+ "')]/ancestor::div[@class='solaris-carousel-item']//ins[@translate='global.cta.addToCart']");
-		reusableActions.clickWhenReady(bundleNameLocator, 60);
+		getReusableActionsInstance().clickWhenReady(bundleNameLocator, 60);
 	}
 	//or contains(text(),'Sélection')
 
@@ -78,7 +78,7 @@ public class RogersBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkIgniteInternetSpeed() {
-			reusableActions.getWhenReady(btnIgniteInternetSpeed, 40).click();
+			getReusableActionsInstance().getWhenReady(btnIgniteInternetSpeed, 40).click();
 	}
 
 	/**
@@ -86,8 +86,8 @@ public class RogersBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkExchangeFlexChannel() {
-		reusableActions.getWhenReady(btnExchangeFlexChannel, 90).click();
-		reusableActions.clickIfAvailable(btnExchangeFlexChannel, 60);
+		getReusableActionsInstance().getWhenReady(btnExchangeFlexChannel, 90).click();
+		getReusableActionsInstance().clickIfAvailable(btnExchangeFlexChannel, 60);
        }
 	
 	
@@ -96,7 +96,7 @@ public class RogersBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkDTVPackage() {				
-		reusableActions.getWhenReady(lnkDigitalTVPackage, 30).click();		
+		getReusableActionsInstance().getWhenReady(lnkDigitalTVPackage, 30).click();
 	}
 	
 /**
@@ -105,13 +105,13 @@ public class RogersBuyPage extends BasePageClass {
  * @author chinnarao.vattam
  */
 	public void setAddressLookup(String strAddress) {
-		reusableActions.getWhenReady(txtAddressLookup,60).clear();
-		reusableActions.getWhenReady(txtAddressLookup, 10).sendKeys(strAddress);
-		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.TAB);
-		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.ENTER);
+		getReusableActionsInstance().getWhenReady(txtAddressLookup,60).clear();
+		getReusableActionsInstance().getWhenReady(txtAddressLookup, 10).sendKeys(strAddress);
+		getReusableActionsInstance().getWhenVisible(txtAddressLookup).sendKeys(Keys.TAB);
+		getReusableActionsInstance().getWhenVisible(txtAddressLookup).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txtAddressLookup).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txtAddressLookup).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txtAddressLookup).sendKeys(Keys.ENTER);
 	}
 	
 	/**
@@ -119,7 +119,7 @@ public class RogersBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkAddressLookupSubmit() {
-		reusableActions.getWhenReady(btnAddressLookupSubmit, 30).click();	
+		getReusableActionsInstance().getWhenReady(btnAddressLookupSubmit, 30).click();
 	}
 
 	/**
@@ -128,7 +128,7 @@ public class RogersBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyDTVAvailabilitySuccess() {
-		return reusableActions.isElementVisible(infoDTVAvailabilitySuccess, 90);
+		return getReusableActionsInstance().isElementVisible(infoDTVAvailabilitySuccess, 90);
 	}
 
 	/**
@@ -137,7 +137,7 @@ public class RogersBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyInternetMenuMobile() {
-		return reusableActions.isElementVisible(btnInternetMenuMobile, 90);
+		return getReusableActionsInstance().isElementVisible(btnInternetMenuMobile, 90);
 	}
 	
 	/**
@@ -146,9 +146,9 @@ public class RogersBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void selectInternetPackage(String strInternetBundle) {
-		WebElement  bundleLocator = (WebElement)driver.findElement(By.xpath("//p[@class='rate-card-data desktop-rate-details']/strong[contains(text(),'"+ strInternetBundle+ "')]/ancestor::div[@id='main-box']//a[@class='btn ways-to-buy']"));
-		reusableActions.waitForElementVisibility(bundleLocator,30);
-		reusableActions.executeJavaScriptClick(bundleLocator);	
+		WebElement  bundleLocator = (WebElement)getDriver().findElement(By.xpath("//p[@class='rate-card-data desktop-rate-details']/strong[contains(text(),'"+ strInternetBundle+ "')]/ancestor::div[@id='main-box']//a[@class='btn ways-to-buy']"));
+		getReusableActionsInstance().waitForElementVisibility(bundleLocator,30);
+		getReusableActionsInstance().executeJavaScriptClick(bundleLocator);
 	}	
 	
 	/**
@@ -159,11 +159,11 @@ public class RogersBuyPage extends BasePageClass {
 	 */
 	public void selectHomeMoniteringPackage(String strHomeMoniteringEn, String strHomeMoniteringFr ) {
 		By packageNameLocator = By.xpath("//h3[contains(text(),'"+strHomeMoniteringEn+ "') or contains(text(),'"+ strHomeMoniteringFr+ "')]/ancestor::div[@class='package-tile']//div[@class='how-to-get-it']//a[@class='rogers-btn-solid']");
-		WebElement pkg = driver.findElement(packageNameLocator);
-		reusableActions.waitForElementVisibility(pkg, 60);
-		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(packageNameLocator, 30);
-		reusableActions.executeJavaScriptClick(pkg);
+		WebElement pkg = getDriver().findElement(packageNameLocator);
+		getReusableActionsInstance().waitForElementVisibility(pkg, 60);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().getWhenReady(packageNameLocator, 30);
+		getReusableActionsInstance().executeJavaScriptClick(pkg);
 	}
 	
 	/**
@@ -171,7 +171,7 @@ public class RogersBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkBuyOnline() {
-		reusableActions.getWhenReady(btnBuyOnline, 30).click();
+		getReusableActionsInstance().getWhenReady(btnBuyOnline, 30).click();
 	}
 
 	}

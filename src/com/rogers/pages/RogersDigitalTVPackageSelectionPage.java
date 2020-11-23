@@ -34,13 +34,13 @@ public class RogersDigitalTVPackageSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void selectPackage(String strPackageNameEn, String strPackageNameFr) {	
-		reusableActions.waitForElementInvisibility(packageLoader, 90);
+		getReusableActionsInstance().waitForElementInvisibility(packageLoader, 90);
 	    By packageNameLocator = By.xpath("//div[contains(normalize-space(@class),'pkgTitle_pkg') and text()='"+ strPackageNameEn+ "']/ancestor::div[@class='justForBorderStyle_pkg']//a[@class='redAddtocart_pkg']/parent::div");
-		WebElement pkg = driver.findElement(packageNameLocator);
-		reusableActions.waitForElementVisibility(pkg, 90);
-		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.getWhenReady(packageNameLocator, 30);
-		reusableActions.executeJavaScriptClick(pkg);
+		WebElement pkg = getDriver().findElement(packageNameLocator);
+		getReusableActionsInstance().waitForElementVisibility(pkg, 90);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().getWhenReady(packageNameLocator, 30);
+		getReusableActionsInstance().executeJavaScriptClick(pkg);
 	}
 	
 	/**
@@ -50,15 +50,15 @@ public class RogersDigitalTVPackageSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void selectPackageUpgarde(String strPackageNameEn, String strPackageNameFr) {
-		reusableActions.waitForElementInvisibility(packageLoader, 90);
-		WebElement cartBanner = driver.findElement(By.xpath("//div[@class='runningCart avenirNextFont']"));       
-	    ((JavascriptExecutor)driver).executeScript("arguments[0].style.visibility='hidden'", cartBanner);
+		getReusableActionsInstance().waitForElementInvisibility(packageLoader, 90);
+		WebElement cartBanner = getDriver().findElement(By.xpath("//div[@class='runningCart avenirNextFont']"));
+	    ((JavascriptExecutor)getDriver()).executeScript("arguments[0].style.visibility='hidden'", cartBanner);
 	    By packageNameLocator = By.xpath("//div[contains(normalize-space(@class),'pkgTitle_pkg') and text()='"+ strPackageNameEn+ "']/ancestor::div[@class='justForBorderStyle_pkg']//a[@class='redAddtocart_pkg']/parent::div");
-		WebElement pkg = driver.findElement(packageNameLocator);	
-		reusableActions.waitForElementVisibility(pkg, 90);
-		reusableActions.javascriptScrollToMiddleOfPage();
-		reusableActions.waitForElementVisibility(pkg, 30);
-		reusableActions.executeJavaScriptClick(pkg);
+		WebElement pkg = getDriver().findElement(packageNameLocator);
+		getReusableActionsInstance().waitForElementVisibility(pkg, 90);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().waitForElementVisibility(pkg, 30);
+		getReusableActionsInstance().executeJavaScriptClick(pkg);
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class RogersDigitalTVPackageSelectionPage extends BasePageClass {
 	 * @return true if ways To Change Product Box popup displayed; else false
 	 */
 	public boolean verifyDowngradeWaysToBuyBox() {
-		return reusableActions.isElementVisible(popupWaysToChangeProductBox,20);
+		return getReusableActionsInstance().isElementVisible(popupWaysToChangeProductBox,20);
 	}
 	
 	/**
@@ -75,10 +75,10 @@ public class RogersDigitalTVPackageSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkCheckout() {
-		reusableActions.waitForElementVisibility(btnCheckout, 90);
+		getReusableActionsInstance().waitForElementVisibility(btnCheckout, 90);
 		//Javascript scroll used to support firefox (geckodriver)
-		//reusableActions.javascriptScrollByVisibleElement(btnCheckout);
-		reusableActions.getWhenReady(btnCheckout, 90).click();
+		//getReusableActionsInstance().javascriptScrollByVisibleElement(btnCheckout);
+		getReusableActionsInstance().getWhenReady(btnCheckout, 90).click();
 	}
 	
 }

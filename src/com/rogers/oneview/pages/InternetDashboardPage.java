@@ -64,10 +64,10 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */	
 	public boolean verifLlnkLearnMoreWallToWallWifi() {
-		reusableActions.waitForElementVisibility(lnkLearnMoreWallToWallWifi, 120);	
-		WebElement btn=reusableActions.getWhenReady(lnkLearnMoreWallToWallWifi,120);
-		reusableActions.javascriptScrollByCoordinates(0,btn.getLocation().y-100);
-		return reusableActions.isElementVisible(lnkLearnMoreWallToWallWifi,120);
+		getReusableActionsInstance().waitForElementVisibility(lnkLearnMoreWallToWallWifi, 120);
+		WebElement btn=getReusableActionsInstance().getWhenReady(lnkLearnMoreWallToWallWifi,120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-100);
+		return getReusableActionsInstance().isElementVisible(lnkLearnMoreWallToWallWifi,120);
 	}
 	
 	/**
@@ -76,7 +76,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */	
 	public boolean verifyLnkUnderstandingWifi() {		
-		return reusableActions.isElementVisible(lnkUnderstandingWifi,120);
+		return getReusableActionsInstance().isElementVisible(lnkUnderstandingWifi,120);
 	}
 	
 	/**
@@ -85,7 +85,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */	
 	public boolean verifyLnkTipsForPlacingEero() {		
-		return reusableActions.isElementVisible(lnkTipsForPlacingEero,120);
+		return getReusableActionsInstance().isElementVisible(lnkTipsForPlacingEero,120);
 	}
 	
 	/**
@@ -94,7 +94,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */	
 	public boolean verifyLnkTestInternetSpeed() {		
-		return reusableActions.isElementVisible(lnkTestInternetSpeed,120);
+		return getReusableActionsInstance().isElementVisible(lnkTestInternetSpeed,120);
 	}
 	
 	
@@ -104,7 +104,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */	
 	public boolean verifyLnkHowToOptimizeSpeed() {		
-		return reusableActions.isElementVisible(lnkHowToOptimizeSpeed,120);
+		return getReusableActionsInstance().isElementVisible(lnkHowToOptimizeSpeed,120);
 	}
 	
 	/**
@@ -113,7 +113,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */	
 	public boolean verifyLnkGoToSupportSection() {		
-		return reusableActions.isElementVisible(lnkGoToSupportSection,120);
+		return getReusableActionsInstance().isElementVisible(lnkGoToSupportSection,120);
 	}
 
 	
@@ -122,9 +122,9 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickbtnUsageAndAlerts() {
-		WebElement btn=reusableActions.getWhenReady(btnUsageAndAlerts,120);
-		reusableActions.javascriptScrollByCoordinates(0,btn.getLocation().y-300);
-		reusableActions.clickWhenReady(btnUsageAndAlerts,45);
+		WebElement btn=getReusableActionsInstance().getWhenReady(btnUsageAndAlerts,120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		getReusableActionsInstance().clickWhenReady(btnUsageAndAlerts,45);
 		}
 	
 	/**
@@ -135,7 +135,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickBacktoAccountOverview() {
-		reusableActions.getWhenReady(btnBackToAccountOverview,120).click();
+		getReusableActionsInstance().getWhenReady(btnBackToAccountOverview,120).click();
 		}
 	
 	/**
@@ -146,7 +146,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickContinue() {
-		reusableActions.getWhenReady(btnContnue,120).click();
+		getReusableActionsInstance().getWhenReady(btnContnue,120).click();
 		}
 	
 	/**
@@ -155,8 +155,8 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */	
 	public boolean verifySuccess() {
-		reusableActions.waitForElementInvisibility(popupLoadingFinger, 120);		
-		return reusableActions.isElementVisible(imgSuccess);
+		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFinger, 120);
+		return getReusableActionsInstance().isElementVisible(imgSuccess);
 	}
 	
 	/**
@@ -164,7 +164,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */
 	public void clickSuccessOk() {
-		reusableActions.getWhenReady(btnSuccessOk, 120).click();
+		getReusableActionsInstance().getWhenReady(btnSuccessOk, 120).click();
 		}
 	
 	/**
@@ -173,8 +173,8 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */	
 	public boolean verifyHeader() {	
-		reusableActions.waitForElementVisibility(icnHeader,120);
-		return reusableActions.isElementVisible(icnHeader);
+		getReusableActionsInstance().waitForElementVisibility(icnHeader,120);
+		return getReusableActionsInstance().isElementVisible(icnHeader);
 	}
 	
 	/**
@@ -184,7 +184,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 */	
 	public boolean verifyFooter() {
 		
-		return reusableActions.isElementVisible(icnFooter,120);
+		return getReusableActionsInstance().isElementVisible(icnFooter,120);
 	}
 	
 	/**
@@ -192,7 +192,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */	
 	public void goToPageBottom() {		
-		reusableActions.javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 	}
 	
 	
@@ -201,7 +201,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author Drashti.Patel
 	 */	
 	public void goToPageMid() {		
-		reusableActions.javascriptScrollToMiddleOfPage();;
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();;
 	}
 	
 	

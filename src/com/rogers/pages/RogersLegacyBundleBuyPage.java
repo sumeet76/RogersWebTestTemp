@@ -47,7 +47,7 @@ public class RogersLegacyBundleBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSelectBundle() {
-		reusableActions.getWhenReady(btnSelectBundle,30).click();
+		getReusableActionsInstance().getWhenReady(btnSelectBundle,30).click();
 	}
 	
 	/**
@@ -56,11 +56,11 @@ public class RogersLegacyBundleBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void setAddressLookup(String strAddress) {
-		reusableActions.getWhenReady(txtAddressLookup,60).clear();
-		reusableActions.getWhenReady(txtAddressLookup,20).sendKeys(strAddress);
-		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.SPACE);
-		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(txtAddressLookup).sendKeys(Keys.ENTER);
+		getReusableActionsInstance().getWhenReady(txtAddressLookup,60).clear();
+		getReusableActionsInstance().getWhenReady(txtAddressLookup,20).sendKeys(strAddress);
+		getReusableActionsInstance().getWhenVisible(txtAddressLookup).sendKeys(Keys.SPACE);
+		getReusableActionsInstance().getWhenVisible(txtAddressLookup).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txtAddressLookup).sendKeys(Keys.ENTER);
 	}
 	
 	/**
@@ -68,7 +68,7 @@ public class RogersLegacyBundleBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkAddressLookupSubmit() {
-		reusableActions.getWhenReady(btnAddressLookupSubmit, 30).click();
+		getReusableActionsInstance().getWhenReady(btnAddressLookupSubmit, 30).click();
 	}
 	
 	/**
@@ -76,14 +76,14 @@ public class RogersLegacyBundleBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkBuyOnline() {		
-		if (reusableActions.isElementVisible(btnBuyOnline,60))
+		if (getReusableActionsInstance().isElementVisible(btnBuyOnline,60))
 			{
-				reusableActions.getWhenReady(btnBuyOnline, 90).click();
+				getReusableActionsInstance().getWhenReady(btnBuyOnline, 90).click();
 		}
-			else if (reusableActions.isElementVisible(popupMultipleAddress,30))
+			else if (getReusableActionsInstance().isElementVisible(popupMultipleAddress,30))
 			{
-				reusableActions.getWhenReady(btnOptionOneMultipleAddress, 30).click();
-				reusableActions.getWhenReady(btnBuyOnline, 90).click();
+				getReusableActionsInstance().getWhenReady(btnOptionOneMultipleAddress, 30).click();
+				getReusableActionsInstance().getWhenReady(btnBuyOnline, 90).click();
 			} 		
 			else 		
 				throw new NoSuchElementException("Given Address dosen't have the service");	
@@ -95,7 +95,7 @@ public class RogersLegacyBundleBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkCheckout() {
-		reusableActions.clickWhenReady(btnCheckout, 30);
+		getReusableActionsInstance().clickWhenReady(btnCheckout, 30);
 	}
 	
 	/**
@@ -104,6 +104,6 @@ public class RogersLegacyBundleBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public boolean verifyServiceabilitySuccess() {
-		return reusableActions.isElementVisible(popupServiceabilitySuccess,90);
+		return getReusableActionsInstance().isElementVisible(popupServiceabilitySuccess,90);
 	}
 }

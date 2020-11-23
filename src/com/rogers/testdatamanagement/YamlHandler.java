@@ -1,5 +1,6 @@
 package com.rogers.testdatamanagement;
 
+import com.rogers.yaml.pojo.*;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
@@ -8,363 +9,314 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-import com.rogers.yaml.pojo.AALData;
-import com.rogers.yaml.pojo.AccountData;
-import com.rogers.yaml.pojo.CHOneViewConfig;
-import com.rogers.yaml.pojo.Config;
-import com.rogers.yaml.pojo.ContactData;
-import com.rogers.yaml.pojo.HUPData;
-import com.rogers.yaml.pojo.MigrationData;
-import com.rogers.yaml.pojo.NACData;
-import com.rogers.yaml.pojo.PPCData;
-import com.rogers.yaml.pojo.PaymentDetails;
-import com.rogers.yaml.pojo.RedesignConfig;
-import com.rogers.yaml.pojo.RedesignRpotgData;
-import com.rogers.yaml.pojo.SauceSettings;
-
 public class YamlHandler {
 
-	public static AccountData getSSAccountData(String accountName) {
+	public static AccountData getSSAccountData(String accountName) throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(AccountData.class));
 		InputStream inputStream;
-		try {
+		
 			inputStream = new FileInputStream(
 					new File(System.getProperty("user.dir") + "/test-data/rogers/selfserve/" + accountName + ".yml"));
 			AccountData account = yaml.load(inputStream);
 			return account;
-		} catch (FileNotFoundException e) {
+		
 
-			e.printStackTrace();
-			return null;
-		}
+		
 	}
 
-	public static AccountData getCableAccountData(String accountName) {
+	public static AccountData getCableAccountData(String accountName) throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(AccountData.class));
 		InputStream inputStream;
-		try {
+	
 			inputStream = new FileInputStream(
 					new File(System.getProperty("user.dir") + "/test-data/rogers/connectedhome/" + accountName + ".yml"));
 			AccountData account = yaml.load(inputStream);
 			return account;
-		} catch (FileNotFoundException e) {
-
-			e.printStackTrace();
-			return null;
-		}
+	
 	}
 
-	public static AccountData getOVAccountData(String accountName) {
+	public static AccountData getOVAccountData(String accountName) throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(AccountData.class));
 		InputStream inputStream;
-		try {
+		
 			inputStream = new FileInputStream(
 					new File(System.getProperty("user.dir") + "/test-data/rogers/choneview/" + accountName + ".yml"));
 			AccountData account = yaml.load(inputStream);
 			return account;
-		} catch (FileNotFoundException e) {
-
-			e.printStackTrace();
-			return null;
-		}
+	
 	}
 	
-	public static Config getSSConfig() {
+	public static Config getSSConfig() throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(Config.class));
 		InputStream inputStream;
-		try {
+	
 			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/selfserve/Config.yml"));
 			Config config = yaml.load(inputStream);
 			return config;
-		} catch (FileNotFoundException e) {
-
-			e.printStackTrace();
-			return null;
-		}
 
 	}
 	
-	public static Config getBFAConfig() {
+	public static Config getBFAConfig() throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(Config.class));
 		InputStream inputStream;
-		try {
+
 			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/buyflows/Config.yml"));
 			Config config = yaml.load(inputStream);
 			return config;
-		} catch (FileNotFoundException e) {
+		
 
-			e.printStackTrace();
-			return null;
-		}
+			
+		
 
 	}
 	
-	public static Config getBFAOneViewConfig() {
+	public static Config getBFAOneViewConfig() throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(Config.class));
 		InputStream inputStream;
-		try {
+		
 			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/buyflowsoneview/Config.yml"));
 			Config config = yaml.load(inputStream);
 			return config;
-		} catch (FileNotFoundException e) {
+		
 
-			e.printStackTrace();
-			return null;
-		}
+			
+		
 
 	}
 	
-	public static CHOneViewConfig getCHOneViewConfig() {
+	public static CHOneViewConfig getCHOneViewConfig() throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(CHOneViewConfig.class));
 		InputStream inputStream;
-		try {
+		
 			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/choneview/CHOneViewConfig.yml"));
 			CHOneViewConfig config = yaml.load(inputStream);
 			return config;
-		} catch (FileNotFoundException e) {
+		
 
-			e.printStackTrace();
-			return null;
-		}
+			
+		
 
 	}
 	
-	public static PaymentDetails getSSPaymentDetails() {
+	public static PaymentDetails getSSPaymentDetails() throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(PaymentDetails.class));
 		InputStream inputStream;
-		try {
+		
 			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/selfserve/PaymentInfo.yml"));
 			PaymentDetails paymentDetails = yaml.load(inputStream);
 			return paymentDetails;
-		} catch (FileNotFoundException e) {
+		
 
-			e.printStackTrace();
-			return null;
-		}
+			
+		
 
 	}
 
-	public static PaymentDetails getCablePaymentDetails() {
+	public static PaymentDetails getCablePaymentDetails() throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(PaymentDetails.class));
 		InputStream inputStream;
-		try {
+		
 			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/connectedhome/PaymentInfo.yml"));
 			PaymentDetails paymentDetails = yaml.load(inputStream);
 			return paymentDetails;
-		} catch (FileNotFoundException e) {
+		
 
-			e.printStackTrace();
-			return null;
-		}
+			
+		
 
 	}
 	
-	public static PaymentDetails getBFAPaymentDetails() {
+	public static PaymentDetails getBFAPaymentDetails() throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(PaymentDetails.class));
 		InputStream inputStream;
-		try {
+		
 			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/buyflows/RogersPaymentInfo.yml"));
 			PaymentDetails paymentDetails = yaml.load(inputStream);
 			return paymentDetails;
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			return null;
-		}
+		
+			
+		
 	}
 	
-	public static PaymentDetails getBFAOneViewPaymentDetails() {
+	public static PaymentDetails getBFAOneViewPaymentDetails() throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(PaymentDetails.class));
 		InputStream inputStream;
-		try {
+		
 			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/buyflowsoneview/RogersPaymentInfo.yml"));
 			PaymentDetails paymentDetails = yaml.load(inputStream);
 			return paymentDetails;
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			return null;
-		}
+		
+			
+		
 	}
 	
 
-	public static PaymentDetails getOVPaymentDetails() {
+	public static PaymentDetails getOVPaymentDetails() throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(PaymentDetails.class));
 		InputStream inputStream;
-		try {
+		
 			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/choneview/OVPaymentInfo.yml"));
 			PaymentDetails paymentDetails = yaml.load(inputStream);
 			return paymentDetails;
-		} catch (FileNotFoundException e) {
+		
 
-			e.printStackTrace();
-			return null;
-		}
+			
+		
 
 	}
-	public static NACData getNACData(String dataFileName) {
+	public static NACData getNACData(String dataFileName) throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(NACData.class));
 		InputStream inputStream;
-		try {
+		
 			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/buyflows/" + dataFileName + ".yml"));
 			NACData nacData = yaml.load(inputStream);
 			return nacData;
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			return null;
-		}
+		
+			
+		
 	}
 
-	public static AALData getAALdata(String dataFileName) {
+	public static AALData getAALdata(String dataFileName) throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(AALData.class));
 		InputStream inputStream;
-		try {
+		
 			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/buyflows/" + dataFileName + ".yml"));
 			AALData aalData = yaml.load(inputStream);
 			return aalData;
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			return null;
-		}
+		
+			
+		
 	}
 
-	public static HUPData getHUPdata(String dataFileName) {
+	public static HUPData getHUPdata(String dataFileName) throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(HUPData.class));
 		InputStream inputStream;
-		try {
+		
 			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/buyflows/" + dataFileName + ".yml"));
 			HUPData hupData = yaml.load(inputStream);
 			return hupData;
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			return null;
-		}
+		
+			
+		
 	}
 	
-	public static HUPData getHUPdataOneView(String dataFileName) {
+	public static HUPData getHUPdataOneView(String dataFileName) throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(HUPData.class));
 		InputStream inputStream;
-		try {
+		
 			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/buyflowsoneview/" + dataFileName + ".yml"));
 			HUPData hupData = yaml.load(inputStream);
 			return hupData;
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			return null;
-		}
+		
+			
+		
 	}
 
-	public static PPCData getPPCdata(String dataFileName) {
+	public static PPCData getPPCdata(String dataFileName) throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(PPCData.class));
 		InputStream inputStream;
-		try {
+		
 			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/buyflows/" + dataFileName + ".yml"));
 			PPCData ppcData = yaml.load(inputStream);
 			return ppcData;
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			return null;
-		}
+		
+			
+		
 	}
 
-	public static PPCData getPPCdataOneView(String dataFileName) {
+	public static PPCData getPPCdataOneView(String dataFileName) throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(PPCData.class));
 		InputStream inputStream;
-		try {
+		
 			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/buyflowsoneview/" + dataFileName + ".yml"));
 			PPCData ppcData = yaml.load(inputStream);
 			return ppcData;
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			return null;
-		}
+		
+			
+		
 	}
 
-	public static ContactData getContactData(String accountName) {
+	public static ContactData getContactData(String accountName) throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(ContactData.class));
 		InputStream inputStream;
-		try {
+		
 			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/choneview/" + accountName + ".yml"));
 			ContactData contactDetails = yaml.load(inputStream);
 			return contactDetails;
-		} catch (FileNotFoundException e) {
+		
 
-			e.printStackTrace();
-			return null;
-		}
+			
+		
 
 	}
-	public static MigrationData getMigrationData(String accountName) {
+	public static MigrationData getMigrationData(String accountName) throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(MigrationData.class));
 		InputStream inputStream;
-		try {
+		
 			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/choneview/" + accountName + ".yml"));
 			MigrationData migrationData = yaml.load(inputStream);
 			return migrationData;
-		} catch (FileNotFoundException e) {
+		
 
-			e.printStackTrace();
-			return null;
-		}
+			
+		
 
 	}
 	
-	public static SauceSettings getSauceSettings(String strSauceSettingLocation) {
+	public static SauceSettings getSauceSettings(String strSauceSettingLocation) throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(SauceSettings.class));
 		InputStream inputStream;
-		try {
+		
 			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + strSauceSettingLocation));
 			SauceSettings sauceSettings = yaml.load(inputStream);
 			return sauceSettings;
-		} catch (FileNotFoundException e) {
+		
 
-			e.printStackTrace();
-			return null;
-		}
+			
+		
 
 	}
 
-	public static RedesignConfig getRedesignConfig() {
+	public static RedesignConfig getRedesignConfig() throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(RedesignConfig.class));
 		InputStream inputStream;
-		try {
+		
 			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/redesignrogersNAC/RedesignRogersConfig.yml"));
 			RedesignConfig redesignconfig = yaml.load(inputStream);
 			return redesignconfig;
-		} catch (FileNotFoundException e) {
+		
 
-			e.printStackTrace();
-			return null;
-		}
+			
+		
 
 	}
 
 
-	public static RedesignRpotgData getRedesignRpotgData() {
+	public static RedesignRpotgData getRedesignRpotgData() throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(RedesignRpotgData.class));
 		InputStream inputStream;
-		try {
+		
             inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/redesignrogersNAC/RedesignRpotgTestData.yml"));
 			RedesignRpotgData redesignRpotgData = yaml.load(inputStream);
 			return redesignRpotgData;
-		} catch (FileNotFoundException e) {
+		
 
-			e.printStackTrace();
-			return null;
-		}
+			
+		
 
 	}
 	
-	public static RedesignRpotgData getRedesignNACData(String dataFileName) {
+	public static RedesignRpotgData getRedesignNACData(String dataFileName) throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(RedesignRpotgData.class));
 		InputStream inputStream;
-		try {
+		
 			inputStream = new FileInputStream(new File(System.getProperty("user.dir")+ "/test-data/rogers/buyflows/" + dataFileName + ".yml"));
 			RedesignRpotgData redesignRpotgData = yaml.load(inputStream);
 			return redesignRpotgData;
-		} catch (FileNotFoundException e) {
+		
 
-			e.printStackTrace();
-			return null;
-		}
+			
+		
 
 	}
 

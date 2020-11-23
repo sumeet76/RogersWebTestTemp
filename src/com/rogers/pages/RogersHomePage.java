@@ -197,12 +197,14 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='View navigation']")
 	WebElement lnkViewNavigationMobile;
 	
-	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet at your address']/span")
+	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet ']/span")
 	WebElement lnkInternetAvailability;
 
-	@FindBy(xpath = "//h2[contains(text(),'Ignite your Internet') or contains(text(),'rience du service')]")
-	WebElement txtInternetBuyPage;
+	@FindBy(xpath = "(//div[@class='dsa-billboard__wrapper position-relative'])[2]")
+	WebElement divInternetBuyPage;
 
+	@FindBy(xpath = "//h2[contains(@class,'dsa-billboard__copyHeading ng-star-inserted')]")
+	WebElement txtInternetBuyPage;
 
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement loaderInternetServiceability;
@@ -213,7 +215,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyHomepage() {
-		return reusableActions.isElementVisible(lnkSignIn, 60);
+		return getReusableActionsInstance().isElementVisible(lnkSignIn, 60);
 	}
 	
 	/**
@@ -221,7 +223,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkAddSecondLine() {
-		reusableActions.clickWhenVisible(linkAddSecondLine.get(linkAddSecondLine.size()-1) , 30);
+		getReusableActionsInstance().clickWhenVisible(linkAddSecondLine.get(linkAddSecondLine.size()-1) , 30);
 	}
 	
 	/**
@@ -229,7 +231,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author Saurav.Goyal 
 	 */
 	public void clkAddDeviceToSharedPlan() {	
-		reusableActions.clickIfAvailable(btnToSharedPlan, 90);
+		getReusableActionsInstance().clickIfAvailable(btnToSharedPlan, 90);
 	}
 	
 	
@@ -238,7 +240,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author Saurav.Goyal 
 	 */
 	public void clkAddNow() {	
-		reusableActions.clickWhenReady(btnAddNow, 90);
+		getReusableActionsInstance().clickWhenReady(btnAddNow, 90);
 	}
 	
 	/**
@@ -246,7 +248,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */	
 	public void clkNavMobile() {
-		reusableActions.getWhenReady(lnkNavMobile,20).click();
+		getReusableActionsInstance().getWhenReady(lnkNavMobile,20).click();
 	}
 	
 	/**
@@ -254,7 +256,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author Saurav.Goyal 
 	 */
 	public void clkNoThanks() {	
-		reusableActions.clickIfAvailable(btnNoThanks, 90);
+		getReusableActionsInstance().clickIfAvailable(btnNoThanks, 90);
 	}
 	
 	/**
@@ -262,7 +264,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author Saurav.Goyal 
 	 */
 	public void clkPromotionOfferBadge() {		
-		reusableActions.getWhenVisible(lnkPromotionOfferBadge, 30).click();
+		getReusableActionsInstance().getWhenVisible(lnkPromotionOfferBadge, 30).click();
 	}
 	
 	/**
@@ -270,7 +272,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkSignIn() {		
-		reusableActions.getWhenVisible(lnkSignIn, 60).click();		
+		getReusableActionsInstance().getWhenVisible(lnkSignIn, 60).click();
 	}
 	
 	/**
@@ -278,7 +280,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkTVBundle() {		
-		reusableActions.getWhenVisible(lnkTVBundle, 30).click();
+		getReusableActionsInstance().getWhenVisible(lnkTVBundle, 30).click();
 	}
 	
 	/**
@@ -286,7 +288,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkEasyLogin() {		
-		reusableActions.getWhenVisible(lnkEasyLogin, 30).click();
+		getReusableActionsInstance().getWhenVisible(lnkEasyLogin, 30).click();
 	}
 	
 	/**
@@ -294,7 +296,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkEasyInternet() {		
-		reusableActions.getWhenVisible(lnkEasyInternet, 30).click();
+		getReusableActionsInstance().getWhenVisible(lnkEasyInternet, 30).click();
 	}
 		
 	/**
@@ -303,7 +305,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isContentFulURLDisplayed() {
-		return reusableActions.isElementVisible(lnkEasyLogin, 30);
+		return getReusableActionsInstance().isElementVisible(lnkEasyLogin, 30);
 		
 	}
 	
@@ -312,7 +314,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkSignOut() {		
-		reusableActions.getWhenVisible(lnkSignOut, 30).click();
+		getReusableActionsInstance().getWhenVisible(lnkSignOut, 30).click();
 	}
 	
 	/**
@@ -320,7 +322,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkShop() {
-		reusableActions.getWhenReady(btnShop, 30).click();				
+		getReusableActionsInstance().getWhenReady(btnShop, 30).click();
 	}
 	
 	/**
@@ -328,7 +330,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkShopMobile() {
-		reusableActions.getWhenReady(btnShopMobile, 30).click();				
+		getReusableActionsInstance().getWhenReady(btnShopMobile, 30).click();
 	}
 	
 
@@ -337,7 +339,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkExistingCustomerShop() {
-		reusableActions.getWhenReady(btnExistingCustomerShop, 90).click();				
+		getReusableActionsInstance().getWhenReady(btnExistingCustomerShop, 90).click();
 	}
 	
 	
@@ -346,7 +348,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkMyRogers() {
-		reusableActions.getWhenReady(lnkMyRogers, 30).click();
+		getReusableActionsInstance().getWhenReady(lnkMyRogers, 30).click();
 	}
 	
 	/**
@@ -354,7 +356,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkNoThnx() {	
-		reusableActions.clickIfAvailable(btnNoThnx, 30);
+		getReusableActionsInstance().clickIfAvailable(btnNoThnx, 30);
 	}
 	
 	/**
@@ -363,7 +365,7 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	
 	public void clkDTV() {
-		reusableActions.getWhenVisible(lnkDTV,40).click();
+		getReusableActionsInstance().getWhenVisible(lnkDTV,40).click();
 	}
 
 	/**
@@ -371,7 +373,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkIgniteTV() {
-		reusableActions.getWhenReady(lnkIgniteTV, 30).click();
+		getReusableActionsInstance().getWhenReady(lnkIgniteTV, 30).click();
 	}
 	
 	/**
@@ -379,7 +381,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkIgniteTVMobile() {
-		reusableActions.getWhenReady(lnkIgniteTVMobile, 30).click();
+		getReusableActionsInstance().getWhenReady(lnkIgniteTVMobile, 30).click();
 	}
 	
 	/**
@@ -387,8 +389,8 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkIgniteTVExistingCustomer() {
-		reusableActions.waitForElementVisibility(lnkExistingCustomerIgniteTV, 30);
-		reusableActions.executeJavaScriptClick(lnkExistingCustomerIgniteTV);
+		getReusableActionsInstance().waitForElementVisibility(lnkExistingCustomerIgniteTV, 30);
+		getReusableActionsInstance().executeJavaScriptClick(lnkExistingCustomerIgniteTV);
 	}
 
 	/**
@@ -396,7 +398,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkInternet() {		
-		reusableActions.getWhenVisible(lnkInternet, 30).click();
+		getReusableActionsInstance().getWhenVisible(lnkInternet, 30).click();
 	}
 
 	/**
@@ -404,7 +406,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkInternetMobile() {		
-		reusableActions.getWhenVisible(lnkInternetMobile, 30).click();
+		getReusableActionsInstance().getWhenVisible(lnkInternetMobile, 30).click();
 	}
 	
 	/**
@@ -412,7 +414,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkHomeMonitering() {		
-		reusableActions.getWhenVisible(lnkHomeMonitering, 30).click();
+		getReusableActionsInstance().getWhenVisible(lnkHomeMonitering, 30).click();
 	}
 	
 	
@@ -421,7 +423,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkBundle() {		
-		reusableActions.getWhenVisible(lnkBundle, 30).click();
+		getReusableActionsInstance().getWhenVisible(lnkBundle, 30).click();
 	}
 	
 	/**
@@ -429,7 +431,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkMyRogersLink() {
-		reusableActions.getWhenReady(lnkMyRogersLink).click();
+		getReusableActionsInstance().getWhenReady(lnkMyRogersLink).click();
 		
 	}
 	
@@ -438,7 +440,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkRegisterNow() {		
-		reusableActions.getWhenReady(btnRegisterNowFromMyRogers).click();
+		getReusableActionsInstance().getWhenReady(btnRegisterNowFromMyRogers).click();
 	}
 	
 	/**
@@ -446,7 +448,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkWireless() {
-		reusableActions.clickWhenReady(lnkWireless);
+		getReusableActionsInstance().clickWhenReady(lnkWireless);
 	}
 	
 	/**
@@ -454,7 +456,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkViewAllDevices() {
-		reusableActions.clickWhenVisible(btnViewAllDevices);
+		getReusableActionsInstance().clickWhenVisible(btnViewAllDevices);
 	}
 
 	/**
@@ -462,11 +464,11 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkServiceability() {
-	if(reusableActions.isElementVisible(overlayHomePage,2))
+	if(getReusableActionsInstance().isElementVisible(overlayHomePage,2))
 		{
-		reusableActions.waitForElementInvisibility(overlayHomePage,5);	
+		getReusableActionsInstance().waitForElementInvisibility(overlayHomePage,5);
 		}
-	reusableActions.getWhenReady(btnServiceability, 30).click();
+	getReusableActionsInstance().getWhenReady(btnServiceability, 30).click();
 	}
 	
 	/**
@@ -475,7 +477,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyIgnitepage() {
-		return reusableActions.isElementVisible(btnServiceability, 60);
+		return getReusableActionsInstance().isElementVisible(btnServiceability, 60);
 	}
 
 	/**
@@ -483,8 +485,8 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkServiceabilityMigration() {		
-		reusableActions.waitForElementInvisibility(popupLoadingFingersciam, 90);
-		reusableActions.getWhenReady(btnServiceability, 30).click();
+		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam, 90);
+		getReusableActionsInstance().getWhenReady(btnServiceability, 30).click();
 	}
 	
 	/**
@@ -493,7 +495,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyServiceability() {
-		return reusableActions.isElementVisible(btnServiceability, 60);
+		return getReusableActionsInstance().isElementVisible(btnServiceability, 60);
 	}
 	
 	/**
@@ -501,8 +503,8 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkAddressCheck() {
-		reusableActions.waitForElementVisibility(btnAddress, 90);
-		reusableActions.getWhenReady(btnAddress, 20).click();
+		getReusableActionsInstance().waitForElementVisibility(btnAddress, 90);
+		getReusableActionsInstance().getWhenReady(btnAddress, 20).click();
 	}
 	
 	/**
@@ -510,7 +512,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkAddressValidation() {
-		reusableActions.getWhenReady(btnAddressValidation, 60).click();
+		getReusableActionsInstance().getWhenReady(btnAddressValidation, 60).click();
 	}
 	
 	/**
@@ -519,26 +521,26 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void setIgniteAddressLookupLearn(String strAddress) {
-		reusableActions.waitForElementVisibility(txaIgniteAddressContainer, 90);
-		reusableActions.getWhenReady(txaIgniteAddressContainer, 3).click();
-		reusableActions.getWhenReady(txaIgniteAddressLookup, 3).clear();
-		reusableActions.getWhenReady(txaIgniteAddressLookup, 3).sendKeys(strAddress);
-		reusableActions.getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
+		getReusableActionsInstance().waitForElementVisibility(txaIgniteAddressContainer, 90);
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressContainer, 3).click();
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).sendKeys(strAddress);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
 	}
 	
 	public void setIgniteAddressLookup(String strAddress) {
-		reusableActions.waitForElementVisibility(txaIgniteAddressContainerExisting, 60);
-		reusableActions.getWhenReady(txaIgniteAddressContainerExisting, 3).click();
-		reusableActions.getWhenReady(txaIgniteAddressLookup, 3).clear();
-		reusableActions.getWhenReady(txaIgniteAddressLookup, 5).sendKeys(strAddress);
-		reusableActions.getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.TAB);
-		reusableActions.getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);
-		reusableActions.getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);		
-		reusableActions.getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
+		getReusableActionsInstance().waitForElementVisibility(txaIgniteAddressContainerExisting, 60);
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressContainerExisting, 3).click();
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 5).sendKeys(strAddress);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.TAB);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
 	}
 	
 	/**
@@ -546,7 +548,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkIgniteAddressLookupSubmit() {
-		reusableActions.getWhenReady(btnIgniteAddressLookupSubmit, 60).click();
+		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 60).click();
 	}
 	
 	/**
@@ -554,7 +556,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkOnlyInternet() {
-		reusableActions.getWhenReady(lnkOnlyInternet, 30).click();
+		getReusableActionsInstance().getWhenReady(lnkOnlyInternet, 30).click();
 	}
 	
 	/**
@@ -562,9 +564,9 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkOnlyInternetMobile() {
-		reusableActions.waitForElementInvisibility(loaderInternetServiceability,50);		
-		reusableActions.waitForElementVisibility(lnkOnlyInternet, 10);
-		reusableActions.executeJavaScriptClick(lnkOnlyInternet);
+		getReusableActionsInstance().waitForElementInvisibility(loaderInternetServiceability,50);
+		getReusableActionsInstance().waitForElementVisibility(lnkOnlyInternet, 10);
+		getReusableActionsInstance().executeJavaScriptClick(lnkOnlyInternet);
 	}
 	
 	/**
@@ -572,8 +574,8 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkIgniteAddressLookupSubmitMobile() {
-		reusableActions.waitForElementVisibility(btnIgniteAddressLookupSubmit,90);
-		reusableActions.executeJavaScriptClick(btnIgniteAddressLookupSubmit);
+		getReusableActionsInstance().waitForElementVisibility(btnIgniteAddressLookupSubmit,90);
+		getReusableActionsInstance().executeJavaScriptClick(btnIgniteAddressLookupSubmit);
 	}
 	
 	/**
@@ -581,7 +583,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkViewSmartPhones() {
-		reusableActions.clickWhenReady(btnViewSmartPhones);
+		getReusableActionsInstance().clickWhenReady(btnViewSmartPhones);
 	}
 	
 	/**
@@ -589,7 +591,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkUpgradeYourDevice() {
-		reusableActions.clickWhenReady(btnUpgradeYourDevice);
+		getReusableActionsInstance().clickWhenReady(btnUpgradeYourDevice);
 	}
 	
 	/**
@@ -597,7 +599,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkViewPlans() {
-		reusableActions.clickWhenReady(btnViewPlans);
+		getReusableActionsInstance().clickWhenReady(btnViewPlans);
 	}
 	
 	/**
@@ -605,7 +607,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkChangeYourPlan() {
-		reusableActions.clickWhenReady(btnChangeYourPlan);
+		getReusableActionsInstance().clickWhenReady(btnChangeYourPlan);
 	}
 
 	/**
@@ -614,7 +616,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void launchHomePage(String url) {
-		reusableActions.navigateToPage(url);
+		getReusableActionsInstance().navigateToPage(url);
 	}
 	
 	
@@ -623,7 +625,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author saurav.goyal
 	 */
 	public void clkContinueIgniteMultipleAddressLookupSubmit() {
-		reusableActions.getWhenReady(continueBtnIgniteMultipleAddressLookupSubmit, 30).click();
+		getReusableActionsInstance().getWhenReady(continueBtnIgniteMultipleAddressLookupSubmit, 30).click();
 		}
 
 	/**
@@ -631,8 +633,8 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao vattam
 	 */
 	public void clkWelcomeback() {
-		reusableActions.waitForElementVisibility(btnWelcomeback, 60);
-		reusableActions.getWhenReady(btnWelcomeback, 20).click();
+		getReusableActionsInstance().waitForElementVisibility(btnWelcomeback, 60);
+		getReusableActionsInstance().getWhenReady(btnWelcomeback, 20).click();
 		}
 	
 	
@@ -642,7 +644,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyWelcomeback(){
-		return reusableActions.isElementVisible(btnWelcomeback, 60);
+		return getReusableActionsInstance().isElementVisible(btnWelcomeback, 60);
 	}
 	
 	/**
@@ -650,7 +652,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao vattam
 	 */
 	public void clkUseThisAddress() {
-		reusableActions.getWhenReady(btnUseThisAddress, 90).click();
+		getReusableActionsInstance().getWhenReady(btnUseThisAddress, 90).click();
 		}
 	
 	/**
@@ -658,7 +660,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkHamburgerMobile() {		
-		reusableActions.getWhenVisible(lnkHamburgerMobile, 30).click();
+		getReusableActionsInstance().getWhenVisible(lnkHamburgerMobile, 30).click();
 	}
 	
 	/**
@@ -666,8 +668,8 @@ public class RogersHomePage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkSignInMobile() {		
-		reusableActions.getWhenVisible(lnkViewNavigationMobile,30).click();
-		reusableActions.getWhenVisible(lnkSignInMobile, 30).click();
+		getReusableActionsInstance().getWhenVisible(lnkViewNavigationMobile,30).click();
+		getReusableActionsInstance().getWhenVisible(lnkSignInMobile, 30).click();
 	}
 	
 	
@@ -678,17 +680,18 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyInternetpage() {
-		reusableActions.waitForElementVisibility(txtInternetBuyPage,120);
-		return reusableActions.isElementVisible(txtInternetBuyPage, 30);
+		//page is taking more time to load , temporary wait
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().waitForElementVisibility(divInternetBuyPage,90);
+		return getReusableActionsInstance().isElementVisible(txtInternetBuyPage, 30);
 	}
 	/**
 	 * Click the InternetAvailability link Internet on the page 
 	 * @author chinnarao.vattam
 	 */
 	public void clkInternetAvailability() {
-		reusableActions.staticWait(3000);
-		reusableActions.waitForElementVisibility(txtInternetBuyPage,120);
-		reusableActions.getWhenReady(lnkInternetAvailability,30).click();
+		getReusableActionsInstance().waitForElementVisibility(lnkInternetAvailability,120);
+		getReusableActionsInstance().getWhenReady(lnkInternetAvailability,30).click();
 	}
 	
 }

@@ -37,7 +37,7 @@ public class RogersShareEverythingPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyShareEverythingPageLoad() {
-		return (reusableActions.isElementVisible(imgSharedData) && reusableActions.isElementVisible(lblSharedDataUsage));
+		return (getReusableActionsInstance().isElementVisible(imgSharedData) && getReusableActionsInstance().isElementVisible(lblSharedDataUsage));
 	}
 	
 	/**
@@ -45,8 +45,8 @@ public class RogersShareEverythingPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickChangeMyCallerId() {
-		reusableActions.scrollToElement(lnkChangeMyCallerId);
-		reusableActions.clickIfAvailable(lnkChangeMyCallerId);
+		getReusableActionsInstance().scrollToElement(lnkChangeMyCallerId);
+		getReusableActionsInstance().clickIfAvailable(lnkChangeMyCallerId);
 	}
 	
 	/**
@@ -54,7 +54,7 @@ public class RogersShareEverythingPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickOverview() {
-		reusableActions.clickIfAvailable(lnkOverview);
+		getReusableActionsInstance().clickIfAvailable(lnkOverview);
 	}
 	
 	/**
@@ -62,7 +62,7 @@ public class RogersShareEverythingPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickChangePlanButton() {
-		reusableActions.clickIfAvailable(btnChangePlan);
+		getReusableActionsInstance().clickIfAvailable(btnChangePlan);
 	}
 	
 }
