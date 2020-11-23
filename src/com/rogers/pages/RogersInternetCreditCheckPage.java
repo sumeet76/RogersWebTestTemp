@@ -60,7 +60,10 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 
 	@FindBy(xpath = "//div[@class='ds-checkbox__box my-12 rds-icon-check']")
 	WebElement chkConsent;
-	//label[@for='ds-checkbox-id-0']
+
+	@FindBy(xpath = "//label[@for='ds-checkbox-id-0']")
+	WebElement chkConsentSai;
+
 
 	@FindBy(xpath = "//button[contains(@class,'-primary -large')]")
 	WebElement btnCreditCheckSubmit;
@@ -290,6 +293,22 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(chkConsent, 50).click();
 	}
 
+	/**
+	 * Click the Credit check Consent check box on Credit check page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkCreditConsentSai() {
+		getReusableActionsInstance().getWhenReady(chkConsentSai, 50).click();
+	}
+
+	/**
+	 * Click the Credit check Consent check box on Credit check page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkCreditConsentSaiMobile() {
+		getReusableActionsInstance().waitForElementVisibility(chkConsentSai,20);
+		getReusableActionsInstance().executeJavaScriptClick(chkConsentSai);
+	}
 	/**
 	 * Click the Credit check Consent check box on Credit check page
 	 * @author Chinnarao.Vattam
