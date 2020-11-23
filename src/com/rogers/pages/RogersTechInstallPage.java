@@ -33,7 +33,13 @@ public class RogersTechInstallPage extends BasePageClass {
 	
 	@FindBy(xpath = "//input[@formcontrolname='enrouteMobileNumber']/ancestor::div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement txtContainerMobile;
-	
+
+	@FindBy(xpath = "//input[@formcontrolname='contactNumber']/ancestor::div[contains(@class,'ds-formField__inputContainer')]")
+	WebElement txtContainerContactNumber;
+
+	@FindBy(xpath ="//input[@formcontrolname='contactNumber']")
+	WebElement txtContactNumber;
+
 	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
 	WebElement txtContainerMobileExistingCustomer;
 	
@@ -43,7 +49,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath = "//input[@formcontrolname='enrouteEmail']/ancestor::div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement txtContainerEmail;
 	
-	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c3-40')]//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	@FindBy(xpath = "//input[@formcontrolname='enrouteEmail']/ancestor::div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement txtContainerEmailExistingCustomer;
 	
 	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[4]")
@@ -162,7 +168,8 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @param slot which slot to be entered
 	 */
 	public void selectPreferredTimeSlot(String slot) {
-		getReusableActionsInstance().getWhenReady(selPreferredTimeSlot, 180).sendKeys(slot);;
+		getReusableActionsInstance().waitForElementVisibility(selPreferredTimeSlot,30);
+		getReusableActionsInstance().selectElementFromList(selPreferredTimeSlot,slot);
 	}
 	
 	/**
@@ -171,7 +178,8 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @param slot which slot to be entered
 	 */
 	public void selectBackupTimeSlot(String slot) {
-		getReusableActionsInstance().getWhenReady(selBackupTimeSlot, 180).sendKeys(slot);;
+		getReusableActionsInstance().waitForElementVisibility(selBackupTimeSlot,30);
+		getReusableActionsInstance().selectElementFromList(selBackupTimeSlot,slot);
 	}
 	
 	/**
@@ -335,7 +343,19 @@ public class RogersTechInstallPage extends BasePageClass {
 			getReusableActionsInstance().getWhenReady(rdoTechInstallSlot, 90).click();
 		}
 	}
-	
+
+	/**
+	 * Set dynamic mobile number on the Order Summary Page
+	 * @author Chinnarao.Vattam
+	 */
+	public void setContactNumber() {
+		getReusableActionsInstance().staticWait(6000);
+/*		String strPhoneNumber = FormFiller.generatePhoneNumber();
+			getReusableActionsInstance().waitForElementVisibility(txtContainerContactNumber, 20);
+			getReusableActionsInstance().getWhenReady(txtContainerContactNumber, 10).click();
+			getReusableActionsInstance().getWhenReady(txtContactNumber, 10).clear();*/
+	}
+
 	/**
 	 * Set dynamic mobile number on the Order Summary Page
 	 * @author Chinnarao.Vattam
@@ -434,7 +454,7 @@ public class RogersTechInstallPage extends BasePageClass {
 			getReusableActionsInstance().getWhenReady(txtMobielNumberExistingCustomer, 30).clear();
 			getReusableActionsInstance().getWhenReady(txtMobielNumberExistingCustomer, 3).sendKeys(strPhoneNumber);
 			getReusableActionsInstance().waitForElementVisibility(txtContainerEmailExistingCustomer, 20);
-			getReusableActionsInstance().getWhenReady(txtContainerEmailExistingCustomer, 10).click();
+			getReusableActionsInstance().getWhenReady(txtContainerEmailExistingCustomer, 30).click();
 			getReusableActionsInstance().getWhenReady(txtEmailExistingCustomer, 30).clear();
 			getReusableActionsInstance().getWhenReady(txtEmailExistingCustomer, 3).sendKeys(strEmail);
 		}
@@ -456,7 +476,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 */
 	public void selTechInstalStartDate() {
 		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().waitForElementVisibility(imgStartingTechInstallSlot,180);
+/*		getReusableActionsInstance().waitForElementVisibility(imgStartingTechInstallSlot,180);
 		getReusableActionsInstance().getWhenReady(imgStartingTechInstallSlot, 60).click();
 		Calendar calendar = Calendar.getInstance();
 		int intDate = calendar.get(Calendar.DATE);
@@ -465,16 +485,16 @@ public class RogersTechInstallPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(clkChevron, 60);
 		getReusableActionsInstance().getWhenReady(clkChevron, 60).click();
 		int selDate = intDate - 14 ;
-		String strStartDate= Integer.toString(selDate);	
+		String strStartDate= Integer.toString(selDate+3);
 		By selStartDate = By.xpath("//tr[@class='ng-star-inserted']//td//span[contains(text(),'" + strStartDate + "')]");
 		getReusableActionsInstance().getWhenReady(selStartDate, 60).click();
 		}
 		else
 		{
-			String strStartDate= Integer.toString(intDate);
+			String strStartDate= Integer.toString(intDate+5);
 			By selStartDate = By.xpath("//tr[@class='ng-star-inserted']//td//span[contains(text(),'" + strStartDate + "')]");
 			getReusableActionsInstance().getWhenReady(selStartDate, 60).click();
-		}
+		}*/
 		getReusableActionsInstance().staticWait(5000);
 	}
 	
@@ -483,7 +503,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selTechInstalEndDate() {
-		getReusableActionsInstance().waitForElementVisibility(imgEndingTechInstallSlot,90);
+/*		getReusableActionsInstance().waitForElementVisibility(imgEndingTechInstallSlot,90);
 		getReusableActionsInstance().getWhenReady(imgEndingTechInstallSlot, 90).click();
 		Calendar calendar = Calendar.getInstance();
 		int intDate = calendar.get(Calendar.DATE);	
@@ -492,17 +512,17 @@ public class RogersTechInstallPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(clkChevron, 60);
 		getReusableActionsInstance().getWhenReady(clkChevron, 60).click();
 		int selDate = intDate - 6 ;
-		String strEndDate= Integer.toString(selDate);
+		String strEndDate= Integer.toString(selDate+10);
 		By selEndDate = By.xpath("//tr[@class='ng-star-inserted']//td//span[contains(text(),'" + strEndDate + "')]");
 		getReusableActionsInstance().getWhenReady(selEndDate, 30).click();
 		}
 		else
 		{
 			int endDate = intDate + 5;
-			String strEndDate= Integer.toString(endDate);
+			String strEndDate= Integer.toString(endDate+10);
 			By selEndDate = By.xpath("//tr[@class='ng-star-inserted']//td//span[contains(text(),'" + strEndDate + "')]");
-			getReusableActionsInstance().getWhenReady(selEndDate, 30).click();
-		}
+			getReusableActionsInstance().getWhenReady(selEndDate, 90).click();
+		}*/
 		getReusableActionsInstance().staticWait(7000);
 	}
 	

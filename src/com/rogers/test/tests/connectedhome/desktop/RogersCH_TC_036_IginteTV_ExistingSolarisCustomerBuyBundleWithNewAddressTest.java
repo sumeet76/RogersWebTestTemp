@@ -99,13 +99,18 @@ public class RogersCH_TC_036_IginteTV_ExistingSolarisCustomerBuyBundleWithNewAdd
 	        reporter.reportLogWithScreenshot("Launched the create profile page");
 	        getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
 	        reporter.reportLogWithScreenshot("Launched the home phone selection page");
-	        
+
+		 reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPhoneNumberPage(),"Ignite page has Launched","Ignite page has not Launched");
+		 reporter.reportLogWithScreenshot("Launched the home phone selection page");
+		 getRogersHomePhoneSelectionPage().clkPhoneNumberGenerator();
+		 getRogersHomePhoneSelectionPage().clkContinueHomePhoneSelection();
+
 	        reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
 	    	getRogersTechInstallPage().selSelffinstallDateAndTimeMigrartion();
 	        reporter.reportLogWithScreenshot("Launched the tech install page");	        
 	        //getRogersTechInstallPage().clkTechInstallSlot();
 	        reporter.reportLogWithScreenshot("tech install details");
-	        getRogersTechInstallPage().setMobielNumberExistingCustomer();
+	        getRogersTechInstallPage().setMobielNumber();
 	        getRogersTechInstallPage().clkTechInstalConsent();
 	        reporter.reportLogWithScreenshot("tech install details");
 	        getRogersTechInstallPage().clkTechInstallContinue();

@@ -102,6 +102,7 @@ public class RogersCH_TC_038_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
         getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
         getRogersHomePhoneSelectionPage().clkContinueHomePhoneSelection();
+
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
         getRogersTechInstallPage().selTechInstalStartDate();
@@ -116,8 +117,10 @@ public class RogersCH_TC_038_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
         getRogersTechInstallPage().setMobielNumber();
         reporter.reportLogWithScreenshot("tech install details");
         getRogersTechInstallPage().clkTechInstalConsent();
+
         getRogersTechInstallPage().clkTechInstallContinue();
-        reporter.reportLogWithScreenshot("Launched the payment options page");        
+        reporter.reportLogWithScreenshot("Launched the payment options page");
+
         getRogersPaymentOptionsPage().clkPaymentConfirm();
     	reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");

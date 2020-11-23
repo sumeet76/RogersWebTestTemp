@@ -78,16 +78,32 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * Set dynamic email and confirm email on profile page
 	 * @author Chinnarao.Vattam
 	 */
-	public void setEmail() {
+	public void setEmailMobile() {
 		String strEmail = FormFiller.generateEmail();
 		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail,90);
 		getReusableActionsInstance().getWhenReady(txtContainerEmail,10).click();
-        getReusableActionsInstance().clickWhenReady(txtEmail);
+        getReusableActionsInstance().executeJavaScriptClick(txtEmail);
         txtEmail.clear();
         txtEmail.sendKeys(strEmail);
         getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
         txtConfirmEmail.clear();
         txtConfirmEmail.sendKeys(strEmail); 
+	}
+
+	/**
+	 * Set dynamic email and confirm email on profile page
+	 * @author Chinnarao.Vattam
+	 */
+	public void setEmail() {
+		String strEmail = FormFiller.generateEmail();
+		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail,90);
+		getReusableActionsInstance().getWhenReady(txtContainerEmail,10).click();
+		getReusableActionsInstance().clickWhenReady(txtEmail);
+		txtEmail.clear();
+		txtEmail.sendKeys(strEmail);
+		getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
+		txtConfirmEmail.clear();
+		txtConfirmEmail.sendKeys(strEmail);
 	}
 
 	/**
@@ -147,7 +163,8 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSubmitProfile() {
-		getReusableActionsInstance().getWhenReady(btnProfielSubmit, 60).click();
+		getReusableActionsInstance().getWhenReady(btnProfielSubmit, 60);
+		getReusableActionsInstance().executeJavaScriptClick(btnProfielSubmit);
 	}
 	
 	/**

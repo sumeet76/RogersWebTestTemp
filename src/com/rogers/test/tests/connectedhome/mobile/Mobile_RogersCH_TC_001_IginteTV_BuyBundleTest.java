@@ -82,7 +82,7 @@ public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass
                
         //reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
-        getRogersIgniteTVProfileCreationPage().setEmail();
+        getRogersIgniteTVProfileCreationPage().setEmailMobile();
         getRogersIgniteTVProfileCreationPage().setFirstname();
         getRogersIgniteTVProfileCreationPage().setLastName();
         getRogersIgniteTVProfileCreationPage().setPhone();
