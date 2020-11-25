@@ -636,6 +636,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void clkBtnContactInfomation() {
 		getReusableActionsInstance().clickWhenReady(btnContactInfo, 30);
+		getReusableActionsInstance().staticWait(10000);
 	}	
 	
 	/**
