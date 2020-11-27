@@ -25,7 +25,7 @@ import java.lang.reflect.Method;
  **/
 
 
-public class RogersCH_TC_042_IgniteRHP_ValidateRHPDasboardTest extends BaseTestClass {
+public class RogersCH_TC_051_IgniteSmartStream_ValidateSupportSectionTest extends BaseTestClass {
 
 	@Test(groups = {"SanityCH","RegressionCH","RhpAndRhmCH"})
     public void checkSolarisRHPDasboard() {
@@ -33,8 +33,8 @@ public class RogersCH_TC_042_IgniteRHP_ValidateRHPDasboardTest extends BaseTestC
 		getRogersHomePage().clkSignIn();
 		getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc42_igniteRHP.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc42_igniteRHP.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc51_igniteSmartStream.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc51_igniteSmartStream.getPassword());
  		reporter.reportLogWithScreenshot("Enter the account credentails");
  		getRogersLoginPage().clkSignInIFrame();
  		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
@@ -42,13 +42,11 @@ public class RogersCH_TC_042_IgniteRHP_ValidateRHPDasboardTest extends BaseTestC
  	    getRogersLoginPage().clkSkipIFrame();
  	    getRogersLoginPage().switchOutOfSignInIFrame();
  		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
- 	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc42_igniteRHP.accountDetails.getBan());
+ 	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc51_igniteSmartStream.accountDetails.getBan());
  		reporter.reportLogWithScreenshot("Launched the Account Page");
-		getRogersAccountOverviewPage().clkRHPBadge();
+		getRogersAccountOverviewPage().clkSmartStream();
         reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");        
-        //reporter.softAssert(getRogersSolarisRHPDashboardPage().verifyConfigureYourCurrentFeatures(),"Verification of Configure Your Current Features link is success","Verification of Configure Your Current Features link is Failed");
-        //reporter.softAssert(getRogersSolarisRHPDashboardPage().verfyAccessYourVoicemailSettings(),"Verification of Access Your Voicemail Settings link is success","Verification of Access Your Voicemail Settings link is successFailed");
-        //reporter.softAssert(getRogersSolarisRHPDashboardPage().verfyResetYourVoicemailPassword(),"Verification of Reset Your Voicemail Password link is success","Verification of Reset Your Voicemail Password link is success Failed");
+
     	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

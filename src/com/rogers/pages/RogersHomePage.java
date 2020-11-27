@@ -390,7 +390,7 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public void clkIgniteTVExistingCustomer() {
 		getReusableActionsInstance().waitForElementVisibility(lnkExistingCustomerIgniteTV, 30);
-		getReusableActionsInstance().executeJavaScriptClick(lnkExistingCustomerIgniteTV);
+		getReusableActionsInstance().getWhenReady(lnkExistingCustomerIgniteTV).click();
 	}
 
 	/**

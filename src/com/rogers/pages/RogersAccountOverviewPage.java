@@ -19,7 +19,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	@FindBy(xpath = "//span[@class='ute-icon-internet']")
 	WebElement btnInternetBadge;
-			
+
+	@FindBy(xpath = "//span[@class='ds-icon rds-icon-tv']")
+	WebElement btnSmartStream;
+
 	@FindAll({
         @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'Internet')]"),
         @FindBy(xpath = "//span[contains(@class,'rui-icon-internet icon')]/ancestor::div[@role='button']")})
@@ -532,7 +535,15 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public void clkRHPBadge() {
 		getReusableActionsInstance().getWhenReady(btnRHPBadge, 90).click();;
 		}
-	
+
+	/**
+	 * Clicks on the 'RHP Badge' option on the dash board
+	 * @author chinnarao.vattam
+	 */
+	public void clkSmartStream() {
+		getReusableActionsInstance().getWhenReady(btnSmartStream, 90).click();;
+	}
+
 	/**
 	 * Clicks on the 'RHP Badge' option on the dash board
 	 * @author chinnarao.vattam
