@@ -21,6 +21,8 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import com.rogers.pages.base.BasePageClass;
 
+import utils.ReusableActions;
+
 
 /**
  * @author rajesh.varalli1
@@ -151,7 +153,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@role='button']/span[contains(@translate,'device_upgrade')]")
 	WebElement btnUpgradeMyDevice;
 	
-	@FindBy (xpath = "//span[contains(text(),'phone repair claim') or contains(text(),'Repair or trade-in device') or contains(text(),'réparation de téléphone')]")
+	@FindBy (xpath = "//span[contains(text(),'phone repair claim') or contains(text(),'Repair or trade-in device') or contains(text(),'réparation de téléphone') or contains(text(),'Réparer ou échanger un appareil ')]")
 	WebElement lnkTrackRepairClaim;
 	
 	@FindBy (xpath = "//button[@title='Continue to the site' or contains(@title,'Continuer')] | //span[contains(@translate,'continue')]")
@@ -323,7 +325,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy (xpath = "//span[contains(text(),'end date') or contains(text(),'Date de fin')]/following-sibling::span")
 	WebElement endDate;
 	
-	@FindBy (xpath = "//rss-device//span[contains(text(),'Détails') or contains(text(),'details')]") 
+	@FindBy (xpath = "//rss-device//span[contains(text(),'Détails') or contains(text(),'détails') or contains(text(),'details')]") 
 	WebElement lnkViewDeviceDetails;
 	
 	@FindBy (xpath = "//div[@class='ds-modal__header d-flex align-items-start']")
@@ -548,6 +550,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//rss-data-usage-details//rss-billing/div[@class='bill-cycle']/span[@class='daysRemaining']")
 	WebElement lblDaysRemainingInBillCycleMobile;
+	
+	@FindBy(xpath = "//span[contains(text(),'See offers on new phones') or contains(text(),'Voir les offres sur les nouveaux téléphones')]")
+	WebElement btnSeeOffersOnNewPhones;
 	
 	/**
 	 * To click the link of lost or stolen device on wireless dashboard page
@@ -1602,6 +1607,24 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(lnkViewDeviceDetails, 30).click();
 		return (getReusableActionsInstance().isElementVisible(activationDateOnDeviceModal, 10)
 				&& getReusableActionsInstance().isElementVisible(balanceClosingDate, 10));
+	}
+	
+	/**
+	 * Checks if view device section details link is displayed
+	 * @return true if displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isViewDeviceDetailsDisplayed() {
+		return getReusableActionsInstance().isElementVisible(lnkViewDeviceDetails);
+	}
+	
+	/**
+	 * Checks if new device section is displayed
+	 * @return true if displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isSeeOffersOnNewPhonesDisplayed() {
+		return getReusableActionsInstance().isElementVisible(btnSeeOffersOnNewPhones);
 	}
 	
 	/**

@@ -41,7 +41,7 @@ public class RogersSS_TC_091_AO_ValidateDeeplinkForNotLoggedInCustomer_NSEInfini
     @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateDeeplinkForNotLoggedInCustomerNSEInfinite() {
     	reporter.reportLogWithScreenshot("Rogers launhced");
-    	String strDeepLinkURL = TestDataHandler.ssConfig.getRogersURL().split(".com")[0]+".com/web/totes/#/viewbill/payment-method";
+    	String strDeepLinkURL = System.getProperty("QaUrl").split(".com")[0]+".com/web/totes/#/viewbill/payment-method";
     	getDriver().get(strDeepLinkURL);
     	reporter.reportLogWithScreenshot("After setting the deeplink : "+strDeepLinkURL);
     	reporter.hardAssert(getRogersLoginPage().isSignInFrameDisplayed()

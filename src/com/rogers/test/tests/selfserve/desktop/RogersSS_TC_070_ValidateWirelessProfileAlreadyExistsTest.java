@@ -49,7 +49,7 @@ public class RogersSS_TC_070_ValidateWirelessProfileAlreadyExistsTest extends Ba
             		getRogersRecoverPassOrNamePage().setEmailAddress(strEmail);
             		reporter.reportLogWithScreenshot("Set email for recover user name.");
             		getRogersRecoverPassOrNamePage().clkBtnContinue();	
-            		
+            		reporter.reportLogWithScreenshot("Clikec on Continue button");
             		reporter.hardAssert(getRogersRegisterPage().isProfileAlreadyStarted(),
             				"Message displayed: This account is registered at the following address ",
             				"The profile is not already registered, please select existing registered profile and rerun");

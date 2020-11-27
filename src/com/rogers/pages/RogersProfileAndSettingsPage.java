@@ -119,7 +119,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//strong")
 	WebElement btnChangePassDone;
 	
-	@FindBy (xpath = "//button[@title='Display contact information' or @title='Afficher les coordonn']")
+	@FindBy (xpath = "//button[@title='Display contact information' or @title='Afficher les coordonnées' or @title='Hide contact information' or @title='Masquer les coordonnées']")
 	WebElement btnContactInfo;
 	
 	@FindBy (xpath = "//button[@title='Display billing settings' or @title='Afficher les préférences de facturation']")
@@ -636,7 +636,15 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void clkBtnContactInfomation() {
 		getReusableActionsInstance().clickWhenReady(btnContactInfo, 30);
-		getReusableActionsInstance().staticWait(10000);
+		getReusableActionsInstance().staticWait(1000);
+		getReusableActionsInstance().clickWhenReady(btnContactInfo, 30);
+		getReusableActionsInstance().staticWait(1000);
+		getReusableActionsInstance().clickWhenReady(btnContactInfo, 30);
+		getReusableActionsInstance().staticWait(1000);
+		getReusableActionsInstance().clickWhenReady(btnContactInfo, 30);
+		getReusableActionsInstance().staticWait(1000);
+		getReusableActionsInstance().clickWhenReady(btnContactInfo, 30);
+		// The contact details is taking some time to load
 	}	
 	
 	/**

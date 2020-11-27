@@ -59,8 +59,8 @@ public class RogersRegisterPage extends BasePageClass {
 	WebElement btnRegisterNow;
 	
 	@FindAll({
-	@FindBy(xpath = "//h1[contains(text(),'Already registered')]"),
-	@FindBy(xpath = "//span[contains(text(),'This account is registered to:') or contains(text(),'compte est inscrit à l’adresse suivante')]")})
+	@FindBy(xpath = "//dam-already-registered/h1[contains(text(),'Already registered') or contains(text(),' Adresse courriel déjà inscrite')]"),
+	@FindBy(xpath = "//span[contains(text(),'This account is registered to:') or contains(text(),'compte est inscrit à l’adresse suivante') or contains(text(),'a déjà été utilisée pour s’inscrire à MonRogers')]")})
 	WebElement lblProfileAlready;
 	
 	@FindBy(xpath = "//span[contains(text(),'able to find that account and/or postal code') or contains(text(),'avons pas trouvé ce compte ou ce code postal.')]")
@@ -187,7 +187,7 @@ public class RogersRegisterPage extends BasePageClass {
 		getReusableActionsInstance().clickIfAvailable(btnRegisterNow);
 	}
 
-	public boolean isProfileAlreadyStarted() {		
-		return getReusableActionsInstance().isElementVisible(lblProfileAlready);
+	public boolean isProfileAlreadyStarted() {			
+		return getReusableActionsInstance().isElementVisible(lblProfileAlready,30);
 	}
 }
