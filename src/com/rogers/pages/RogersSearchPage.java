@@ -1010,7 +1010,7 @@ public class RogersSearchPage extends BasePageClass {
     }
 
     public boolean validateGrandParentFiltersCount(int count) {
-        return getDriver().findElements(By.xpath("//div[@class='ds-filter__listSet']/div"))
+        return getDriver().findElements(By.xpath("//div[@class='ds-filter__listSet']/div[contains(@class,'ds-border-bottom')]"))
                 .size()==count;
     }
 
