@@ -75,9 +75,9 @@ public class RogersSearchPage extends BasePageClass {
      * @author pankaj.patil
      */
 
-    public boolean isFilterDisplayed(String strFilterName) {
+    public boolean  isFilterDisplayed(String strFilterName) {
         return getReusableActionsInstance().isElementVisible(
-                By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'"
+                By.xpath("//div[@class='ds-filter__listSet']/div/button/div/p[starts-with(text(),'"
                         + strFilterName + "')]"));
     }
 
@@ -275,7 +275,7 @@ public class RogersSearchPage extends BasePageClass {
 
     public void clkShopAndThenWirelessFilter() {
 
-        getReusableActionsInstance().clickWhenReady(By.xpath("//button[@id='Shop-heading-1']/div/p"));
+        getReusableActionsInstance().clickWhenReady(By.xpath("//button[starts-with(@id,'Shop')]/div/p"));
         getReusableActionsInstance().clickWhenReady(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p[starts-with(text(),'Wireless')]"));
 
 		/*WebElement parentFilter = getDriver().findElement(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'"
@@ -1010,7 +1010,7 @@ public class RogersSearchPage extends BasePageClass {
     }
 
     public boolean validateGrandParentFiltersCount(int count) {
-        return getDriver().findElements(By.xpath("//div[@class='ds-filter__listSet']//ds-accordion-panel[contains(@class,'-main-level')]"))
+        return getDriver().findElements(By.xpath("//div[@class='ds-filter__listSet']/div"))
                 .size()==count;
     }
 
