@@ -25,7 +25,7 @@ import java.lang.reflect.Method;
  **/
 
 
-public class RogersCH_TC_051_IgniteSmartStream_ValidateSupportSectionTest extends BaseTestClass {
+public class RogersCH_TC_053_IHP_ValidateOrderInternet extends BaseTestClass {
 
 	@Test(groups = {"RegressionCH","RhpAndRhmCH"})
     public void checkSolarisRHPDasboard() {
@@ -33,8 +33,8 @@ public class RogersCH_TC_051_IgniteSmartStream_ValidateSupportSectionTest extend
 		getRogersHomePage().clkSignIn();
 		getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc51_igniteSmartStream.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc51_igniteSmartStream.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc42_igniteRHP.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc42_igniteRHP.getPassword());
  		reporter.reportLogWithScreenshot("Enter the account credentails");
  		getRogersLoginPage().clkSignInIFrame();
  		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
@@ -42,11 +42,21 @@ public class RogersCH_TC_051_IgniteSmartStream_ValidateSupportSectionTest extend
  	    getRogersLoginPage().clkSkipIFrame();
  	    getRogersLoginPage().switchOutOfSignInIFrame();
  		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
- 	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc51_igniteSmartStream.accountDetails.getBan());
+ 	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc42_igniteRHP.accountDetails.getBan());
  		reporter.reportLogWithScreenshot("Launched the Account Page");
-		getRogersAccountOverviewPage().clkSmartStream();
-        reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");        
+		getRogersAccountOverviewPage().clkRHPBadge();
+        reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");
 
+        getRogersHomePage().clkEasyInternet();
+		reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
+		reporter.reportLogWithScreenshot("Launched the Internet packages page");
+		getRogersHomePage().clkInternetAvailability();
+		reporter.reportLogWithScreenshot("Launched the customer availability check popup");
+		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+		String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
+		String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
+		getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+		getRogersHomePage().clkIgniteAddressLookupSubmit();
     	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
