@@ -275,7 +275,7 @@ public class RogersSearchPage extends BasePageClass {
 
     public void clkShopAndThenWirelessFilter() {
 
-        getReusableActionsInstance().clickWhenReady(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'Shop')]"));
+        getReusableActionsInstance().clickWhenReady(By.xpath("//button[@id='Shop-heading-1']/div/p"));
         getReusableActionsInstance().clickWhenReady(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p[starts-with(text(),'Wireless')]"));
 
 		/*WebElement parentFilter = getDriver().findElement(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'"
