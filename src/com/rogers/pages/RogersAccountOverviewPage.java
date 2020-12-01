@@ -430,6 +430,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[@title='Rogers Live Chat' or @title='Clavardage en direct de Rogers']")
 	WebElement headerRogersLiveChat;
 
+	@FindBy(xpath = "//p[text()='How would you like to pay?' or text()='Comment souhaitez-vous payer?']")
+	WebElement lblHowWouldYouPay;
+
 	
 	
 	/**
@@ -910,8 +913,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			System.out.println("Attempt: "+(count+1)+" Make payment button");
 
 			getReusableActionsInstance().getWhenReady(btnMakeAPayment,30).click();
-			getReusableActionsInstance().waitForElementVisibility(lblMakeASecurePayment,10);
-			if(getReusableActionsInstance().isElementVisible(lblMakeASecurePayment))
+			getReusableActionsInstance().waitForElementVisibility(lblHowWouldYouPay,10);
+			if(getReusableActionsInstance().isElementVisible(lblHowWouldYouPay))
 			{
 				System.out.println("Make payment button clicked in attempt: "+(count+1));
 				clickSuccess=true;				

@@ -32,35 +32,44 @@ public class RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest extends Base
         getRogersAccountOverviewPage().clkViewBill();
         getRogersAccountOverviewPage().clickMakePayment();
 		reporter.reportLogWithScreenshot("Make Payment button is clicked.");
-        reporter.hardAssert(getRogersSecurePaymentPage().verifySecurePaymentLoad(),
-			        		"Secure payment loaded",
-			        		"Secure Payment overlay error. Refer screenshot");                    
+		
+        reporter.hardAssert(getRogersSecurePaymentPage().verifyNewMakePaymentViewLoad(),
+        		"Secure payment loaded",
+        		"Secure Payment overlay error. Refer screenshot"); 
         String strPaymentAmount="2";
-        getRogersSecurePaymentPage().setPaymentAmount(strPaymentAmount);
-        getRogersMakePaymentPage().selectHowWouldYouLikeToPay(RogersMakePaymentPage.MakePayOptions.credit);
-		reporter.reportLogWithScreenshot("Card option selected");
-        getRogersSecurePaymentPage().setCardNumber(TestDataHandler.paymentInfo.getCreditCardDetails().getNumber());
-        getRogersSecurePaymentPage().setCardExpiryMonth(TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryMonth());
-        getRogersSecurePaymentPage().setCardExpiryYear(TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryYear());
+        getRogersMakePaymentPage().selectHowWouldYouLikeToPayNew(RogersMakePaymentPage.MakePayOptions.credit);
+        getRogersSecurePaymentPage().setPaymentAmountNew(strPaymentAmount);
+        
+        
+        
+        reporter.reportLogWithScreenshot("Card option selected");
+        
+        
+        getRogersSecurePaymentPage().setCardNumberNew(TestDataHandler.paymentInfo.getCreditCardDetails().getNumber());
+        String strDDMM = TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryMonth() + 
+        			TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryYear().substring(2);
+        getRogersSecurePaymentPage().setCardExpiry(strDDMM);
+        
         getRogersSecurePaymentPage().setSecurityCode(TestDataHandler.paymentInfo.getCreditCardDetails().getCVV());
         getRogersSecurePaymentPage().clickReviewAndContinue();
         getRogersSecurePaymentPage().clickPayNow();
+        
         reporter.reportLogWithScreenshot("Payment status");
         reporter.hardAssert(getRogersSecurePaymentPage().verifyPaymentSuccessful(strPaymentAmount),
 			        		"Payment confirmaton",
 			        		"Payment Confirmation message Error. Refer screenshot");        
-        String strReferenceNumber= getRogersSecurePaymentPage().getTransactionReferenceNumber();
-        reporter.reportLogWithScreenshot("Payment Successful, Transaction reference number is :"+strReferenceNumber);
+        String strReferenceNumber= getRogersSecurePaymentPage().getTransactionReferenceNumberNew();
+        reporter.reportLogWithScreenshot("Payment Successful, Details :"+strReferenceNumber);
+    
         getRogersSecurePaymentPage().clickDone();
-        reporter.hardAssert((getRogersBillingPage().verifyPaymentSuccessful(strPaymentAmount)
-        					&& getRogersBillingPage().getTransactionReferenceNumber().contains(strReferenceNumber)),
-			        		"Payment confirmation message displayed",
-			        		"Payment Confirmation message Error. Refer screenshot");
-        reporter.reportLogWithScreenshot("Payment Confirmation on account overview page");
+        
+       /* reporter.reportLogWithScreenshot("Payment Confirmation on account overview page");
         getRogersBillingPage().sortPaymentHistoryTableByReferenceNumberDesc();
         reporter.hardAssert(getRogersBillingPage().verifyThePaymentHistoryRecord(strReferenceNumber),
         					"The payment history record is created for the credit transaction"
         					,"The payment history is not created for the credit transaction, please investigate for ref  num :"+strReferenceNumber);
+        
+        */
         
     }
     @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
