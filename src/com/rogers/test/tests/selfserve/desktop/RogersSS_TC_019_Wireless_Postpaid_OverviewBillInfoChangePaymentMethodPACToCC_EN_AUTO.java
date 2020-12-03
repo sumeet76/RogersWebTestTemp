@@ -45,43 +45,55 @@ public class RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaymentMeth
     	String strPassword = TestDataHandler.tc1920.getPassword();		
 		tryLogin(strUsername, strPassword);
 		reporter.reportLogWithScreenshot("Account overveiew page");
-		getRogersAccountOverviewPage().clkViewBill();
-		if(!getRogersAccountOverviewPage().isSetAutoPaymentDisplayed())
+		//getRogersAccountOverviewPage().clkViewBill();
+		
+
+		if(getRogersAccountOverviewPage().isAutoPaymentAlreadySet())
 		{
 			reporter.reportLogWithScreenshot("Automatic payment is already set, trying to switch to manual");
-			getRogersAccountOverviewPage().clkBillingAndPaymentsSubMenuChangePaymentMethod();
+			getRogersAccountOverviewPage().clkChangePaymentMethod();			
 			getRogersChangePaymentMethodPage().clkSwitchToManualPayments();
 			getRogersChangePaymentMethodPage().clkYesCancelAutomaticPayment();
 			reporter.reportLogWithScreenshot("Switch to manual completed");
 			getRogersChangePaymentMethodPage().clkButtonDoneChangePayment();
 			reporter.reportLogWithScreenshot("Account overveiew page");
+			getDriver().navigate().refresh();
+			reporter.reportLogWithScreenshot("Account overveiew page page refresh");
 			getRogersAccountOverviewPage().clkSetUpAutomaticPaymentMethod();
 		}else
 		{
-			getRogersAccountOverviewPage().clkBillngsAndPaymentsSubMenuSetUpAutomaticPaymentMethod();
+			getRogersAccountOverviewPage().clkSetUpAutoPaymentQuickLink();			
 			reporter.reportLogWithScreenshot("Set auto payment overlay");
-		}			
+		}
+		
+		
 		getRogersChangePaymentMethodPage().clkUseCCForAutomaticPayments();
-		getRogersChangePaymentMethodPage().setCreditCardNumber(TestDataHandler.paymentInfo.getCreditCardDetails().getNumber());
-		getRogersChangePaymentMethodPage().setCreditcardCVV(TestDataHandler.paymentInfo.getCreditCardDetails().getCVV());
-		getRogersChangePaymentMethodPage().selectCreditcardExpiryMonth(TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryMonth());
-		getRogersChangePaymentMethodPage().selectCreditcardExpiryYear(TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryYear());
+		getRogersSecurePaymentPage().setCardNumberNew(TestDataHandler.paymentInfo.getCreditCardDetails().getNumber());
+	    String strDDMM = TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryMonth() + 
+	        			TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryYear().substring(2);
+	    getRogersSecurePaymentPage().setCardExpiry(strDDMM);	       
+	    getRogersSecurePaymentPage().setSecurityCode(TestDataHandler.paymentInfo.getCreditCardDetails().getCVV());
+		
+		
+		//getRogersChangePaymentMethodPage().setCreditCardNumber(TestDataHandler.paymentInfo.getCreditCardDetails().getNumber());
+		//getRogersChangePaymentMethodPage().setCreditcardCVV(TestDataHandler.paymentInfo.getCreditCardDetails().getCVV());
+		//getRogersChangePaymentMethodPage().selectCreditcardExpiryMonth(TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryMonth());
+		//getRogersChangePaymentMethodPage().selectCreditcardExpiryYear(TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryYear());
 		reporter.reportLogWithScreenshot("CC details entered");
-		getRogersChangePaymentMethodPage().clkContinue();
-		reporter.hardAssert(getRogersChangePaymentMethodPage().labelCCDetailsWillBeKeptEncryptedMsgDisplayed(),
+		getRogersChangePaymentMethodPage().clkContinueSettingCC();
+		reporter.hardAssert(getRogersChangePaymentMethodPage().isReviewCCDetailsPageDisplayed(),
 				"CC Details encrypted msg displayed",
 				"CC Details encrypted msg NOT displayed");
 		reporter.reportLogWithScreenshot("CC secured details");
-		reporter.hardAssert(getRogersChangePaymentMethodPage().isCCSecuredAreaDisplayed(),
-				"CC secured details displayed",
-				"CC secured details NOT displayed");
+		
 		getRogersChangePaymentMethodPage().clkContinueOnReviewPg();
 		reporter.hardAssert(getRogersChangePaymentMethodPage().verifySuccessMessageIsDisplayed(),
 				"Set up auto payment is successful",
 				"Set up auto payment is not successful");
  		reporter.reportLogWithScreenshot("Payment complete page.");
 		getRogersChangePaymentMethodPage().clkOnDone();
-		//check payment method on overview page		
+		//check payment method on overview page	
+		getDriver().navigate().refresh();
 		reporter.hardAssert(getRogersAccountOverviewPage().verifyThatAutoPaymentWithCCIsDisplayedOnAccountOverViewPage()
 				,"Auto payment CC details displayed on the account overview page"
 				,"Auto payment CC details NOT displayed on the account overview page");

@@ -350,7 +350,7 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void selectBank(String strBankName) {		
-		By lblBankName= By.xpath("//area[@alt='"+strBankName+"']");
+		By lblBankName= By.xpath("//span[text()='"+strBankName+"']");
 		getReusableActionsInstance().executeJavaScriptClick(getDriver().findElement(lblBankName));
 		getReusableActionsInstance().waitForNumberOfWindowsToBe(2, 30);
 		getReusableActionsInstance().staticWait(3000);

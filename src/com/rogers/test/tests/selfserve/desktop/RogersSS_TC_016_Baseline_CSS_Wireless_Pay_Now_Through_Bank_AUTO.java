@@ -34,12 +34,17 @@ public class RogersSS_TC_016_Baseline_CSS_Wireless_Pay_Now_Through_Bank_AUTO ext
     	String strPassword = TestDataHandler.tc161825.getPassword();		
 		tryLogin(strUsername, strPassword);
 		reporter.reportLogWithScreenshot("Account overveiew page");
-		getRogersAccountOverviewPage().clkViewBill();
-			getRogersAccountOverviewPage().clkBillingAndPaymentsMakeAPayment();
-			String amountEntered = "0.1";
-			getRogersMakePaymentPage().setPaymentAmount(amountEntered);
-			reporter.reportLogWithScreenshot("Amount Entered");
-			getRogersMakePaymentPage().selectHowWouldYouLikeToPay(RogersMakePaymentPage.MakePayOptions.Bank);
+		 getRogersAccountOverviewPage().clkViewBill();
+	        getRogersAccountOverviewPage().clickMakePayment();
+			reporter.reportLogWithScreenshot("Make Payment button is clicked.");			
+	        reporter.hardAssert(getRogersSecurePaymentPage().verifyNewMakePaymentViewLoad(),
+	        		"Secure payment loaded",
+	        		"Secure Payment overlay error. Refer screenshot"); 
+	        //String strPaymentAmount="2";
+	        getRogersMakePaymentPage().selectHowWouldYouLikeToPayNew(RogersMakePaymentPage.MakePayOptions.Bank);
+	        //getRogersSecurePaymentPage().setPaymentAmountNew(strPaymentAmount);
+	        
+	        
 			reporter.reportLogWithScreenshot("Bank option selected");
 			String strMainWindowHandle = getDriver().getWindowHandle();
 			getRogersMakePaymentPage().selectBank("CIBC");
@@ -52,9 +57,9 @@ public class RogersSS_TC_016_Baseline_CSS_Wireless_Pay_Now_Through_Bank_AUTO ext
 			getDriver().close();
 			getDriver().switchTo().window(strMainWindowHandle);
 			reporter.reportLogWithScreenshot("Banking page closed");			
-			reporter.hardAssert(getRogersMakePaymentPage().verifyIfTheSelectedBankIsDisplayedCorrectlyOnTheMakePaymentOverLay(),
-					"Selected Bank is displayed on the make payment overlay.",
-					"Selected Bank isn't displayed on the make payment overlay.");																	
+			//reporter.hardAssert(getRogersMakePaymentPage().verifyIfTheSelectedBankIsDisplayedCorrectlyOnTheMakePaymentOverLay(),
+			//		"Selected Bank is displayed on the make payment overlay.",
+			//		"Selected Bank isn't displayed on the make payment overlay.");																	
     }
 
     private void tryLogin(String strUsername, String strPassword) {

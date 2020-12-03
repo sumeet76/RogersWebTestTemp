@@ -1,6 +1,9 @@
 package com.rogers.pages;
 
 import com.rogers.pages.base.BasePageClass;
+
+import utils.ReusableActions;
+
 import org.apache.commons.lang3.math.NumberUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -102,10 +105,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='ute.payment.method.mop_title']")
 	WebElement lnkBelowCardChangePaymentMethod;
 		
-	@FindAll({
-        @FindBy(xpath = "//rss-billing-widget//span[contains(text(),'Set up automatic payments') or contains(text(),'tablir les paiements automat.')]"),
-        @FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.setUpAutomaticPayments']")})	
-	WebElement lnkSetUpAutomaticPaymentMethod;
+	
+   @FindBy(xpath = "//rss-billing-widget//span[contains(text(),'Set up automatic payments') or contains(text(),'Configurer les paiements automatiques')]")	
+   WebElement lnkSetUpAutomaticPaymentMethod;
 	
 	@FindAll({
         @FindBy(xpath = "//*[@id='overview' or @id='survol']//md-list-item//span[@data-translate='ute.common.second.level.navigation.billing.setUpAutomaticPayments']"),
@@ -161,6 +163,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[@translate='ute.payment.method.account_prefix']")
 	WebElement lblAutoPaymentAccountPreFix;
+	
+	@FindBy(xpath = "//img[@class='bank-icon']")
+	WebElement imgBank;
 	
 	@FindAll({
 		@FindBy(xpath = "//span[@class='auto-payment-info']/ds-icon"),
@@ -433,7 +438,11 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//p[text()='How would you like to pay?' or text()='Comment souhaitez-vous payer?']")
 	WebElement lblHowWouldYouPay;
 
-	
+	@FindBy(xpath = "//rss-quick-links//span[contains(text(),'Set up automatic payments') or contains(text(),'Configurer les paiements automatiques')]")
+	WebElement lnkSetUpAutoPayment;
+
+	@FindBy(xpath = "//rss-quick-links//span[contains(text(),'Change payment method') or contains(text(),'Changer le mode de paiement')]")
+	WebElement lnkChangePaymentMethodQuickLin;
 	
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
@@ -848,9 +857,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkSetUpAutomaticPaymentMethod() {
-		getReusableActionsInstance().waitForElementVisibility(lnkBillingAndPayment);
-		getReusableActionsInstance().clickIfAvailable(lnkBillingAndPayment);
-		getReusableActionsInstance().clickIfAvailable(lnkSetUpAutomaticPaymentMethod);
+		//getReusableActionsInstance().waitForElementVisibility(lnkBillingAndPayment);
+		//getReusableActionsInstance().clickIfAvailable(lnkBillingAndPayment);
+		getReusableActionsInstance().getWhenReady(lnkSetUpAutomaticPaymentMethod,30).click();
 	}
 	
 	
@@ -983,7 +992,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public boolean verifyThatAutoPaymentIsDisplayedOnAccountOverViewPage() {
 		getReusableActionsInstance().waitForElementVisibility(lblAutoPayment);
 		return (getReusableActionsInstance().isElementVisible(lblAutoPayment)
-			 && getReusableActionsInstance().isElementVisible(lblAutoPaymentAccountPreFix));
+			 && getReusableActionsInstance().isElementVisible(imgBank));
 	}	
 	
 	/**
@@ -1769,5 +1778,41 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		 */
 		public void clkBtnLiveChatInsideSuspensionNotification() {
 			getReusableActionsInstance().getWhenReady(btnLiveChatInsideSuspendedNotification).click();
+		}
+
+		/**
+		 * 
+		 * @return
+		 */
+		public boolean isSetAutoPaymentLinkDisplayed() {			
+			return getReusableActionsInstance().isElementVisible(lnkSetUpAutoPayment);
+		}
+
+		/**
+		 * 
+		 */
+		public void clkSetUpAutoPaymentQuickLink() {
+			getReusableActionsInstance().getWhenReady(lnkSetUpAutoPayment).click();
+		}
+		
+		
+		public void getCurrentPaymentMethod() {
+			//getReusableActionsInstance().getWhenReady(locator)
+		}
+
+		/**
+		 * 
+		 * @return
+		 */
+		public boolean isAutoPaymentAlreadySet() {
+			
+			return getReusableActionsInstance().isElementVisible(lblAutoPayment);
+		}
+
+		/**
+		 * 
+		 */
+		public void clkChangePaymentMethod() {
+			getReusableActionsInstance().getWhenReady(lnkChangePaymentMethodQuickLin).click();
 		}
 }

@@ -31,7 +31,7 @@ public class RogersSS_TC_022_EN_ValidateAutoRegistrationReminderEmails_Postpaid 
 		closeSession();
 	}
 	
-	@Test(groups = {"Autoregister"})
+	@Test(groups = {"Autoregister","RegressionSS"})
 	public void validateUserChangeContactInformationAndBillingAddress() {
 		String strURI = System.getProperty("URIautoRegister");
 		reporter.reportLog("URI:"+strURI);
