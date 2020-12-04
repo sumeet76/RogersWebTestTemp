@@ -443,7 +443,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	@FindBy(xpath = "//rss-quick-links//span[contains(text(),'Change payment method') or contains(text(),'Changer le mode de paiement')]")
 	WebElement lnkChangePaymentMethodQuickLin;
-	
+
+	@FindBy (xpath = "//span[contains(text(),'Payment History') or contains(text(),'Historique de paiement')]")
+	WebElement lnkPaymentHistory;
+
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
 	 * @return true if more than one ban present else false
@@ -473,6 +476,14 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		}else {
 			getReusableActionsInstance().clickIfAvailable(btnInternetBadge, 90);
 		}
+	}
+	
+	/**
+	 * Click on the link "Payment History"
+	 * @author ning.xue
+	 */
+	public void clkPaymentHistory() {
+		getReusableActionsInstance().clickWhenReady(lnkPaymentHistory, 10);
 	}
 
 	/**
