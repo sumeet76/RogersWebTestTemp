@@ -433,7 +433,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//p[text()='How would you like to pay?' or text()='Comment souhaitez-vous payer?']")
 	WebElement lblHowWouldYouPay;
 
-	
+	@FindBy (xpath = "//span[contains(text(),'Payment History') or contains(text(),'Historique de paiement')]")
+	WebElement lnkPaymentHistory;
 	
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
@@ -464,6 +465,14 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		}else {
 			getReusableActionsInstance().clickIfAvailable(btnInternetBadge, 90);
 		}
+	}
+	
+	/**
+	 * Click on the link "Payment History"
+	 * @author ning.xue
+	 */
+	public void clkPaymentHistory() {
+		getReusableActionsInstance().clickWhenReady(lnkPaymentHistory, 10);
 	}
 
 	/**

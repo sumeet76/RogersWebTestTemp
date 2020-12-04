@@ -451,6 +451,10 @@ public class BaseTestClass {
 	public static RogersNACOrderConfirmationPage getRogersNACOrderConfirmationPage() {
 		return RogersNACOrderConfirmationPageThreadLocal.get();
 	}
+	
+	public static RogersPaymentHistoryPage getRogersPaymentHistoryPage() {
+		return RogersPaymentHistoryPageThreadLocal.get();
+	}
 
 	public Map<String, String> getRunParameters() {
 		return RunParameters;
@@ -470,6 +474,7 @@ public class BaseTestClass {
 	protected static final ThreadLocal<RogersChangePaymentMethodPage> RogersChangePaymentMethodPageThreadLocal = new ThreadLocal<>();
 	protected static final ThreadLocal<RogersSecurePaymentPage> RogersSecurePaymentPageThreadLocal = new ThreadLocal<>();
 	protected static final ThreadLocal<RogersPaymentOptionsPage> RogersPaymentOptionsPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersPaymentHistoryPage> RogersPaymentHistoryPageThreadLocal = new ThreadLocal<>();
 	protected static final ThreadLocal<RogersMakePaymentPage> RogersMakePaymentPageThreadLocal = new ThreadLocal<>();
 	protected static final ThreadLocal<RogersManageDataPage> RogersManageDataPageThreadLocal = new ThreadLocal<>();
 	protected CommonBusinessFlows common_business_flows; 
@@ -755,6 +760,7 @@ public class BaseTestClass {
 			RogersSecurePaymentPageThreadLocal.set(new RogersSecurePaymentPage(getDriver()));
 			RogersProfileAndSettingsPageThreadLocal.set(new RogersProfileAndSettingsPage(getDriver()));
 			RogersPaymentOptionsPageThreadLocal.set(new RogersPaymentOptionsPage(getDriver()));
+			RogersPaymentHistoryPageThreadLocal.set(new RogersPaymentHistoryPage(getDriver()));
 			RogersMakePaymentPageThreadLocal.set(new RogersMakePaymentPage(getDriver()));
 			common_business_flows = new CommonBusinessFlows(this);
 			EnsHomePageThreadLocal.set(new EnsHomePage(getDriver()));
