@@ -26,7 +26,7 @@ public class RogersSS_TC_017_WirelessPostpaidVerifyPaymentHistoryWithPaymentTest
 		getRogersLoginPage().setPasswordIFrame(strPassword);
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
 		getRogersLoginPage().clkSignInIFrame();
-		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login proceed without error.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
 		getRogersLoginPage().switchOutOfSignInIFrame();
 		reporter.reportLogWithScreenshot("Account overveiew page");
@@ -35,7 +35,7 @@ public class RogersSS_TC_017_WirelessPostpaidVerifyPaymentHistoryWithPaymentTest
 		getRogersAccountOverviewPage().clkPaymentHistory();
 
 		reporter.reportLogWithScreenshot("Payment history page.");
-		reporter.hardAssert(getRogersPaymentHistoryPage().verifyPaymentHistoryIsSelected(),
+		reporter.hardAssert(getRogersPaymentHistoryPage().verifyPaymentHistoryIsDisplayed(),
 				"Payment history is displayed", "Payment history is not displayed as expected.");
 		reporter.hardAssert(getRogersPaymentHistoryPage().verifyIfPaymenyHistoryTablePresent(),
 				"Payment history table is displayed", "Payment history table is not displayed as expected.");

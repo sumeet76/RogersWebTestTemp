@@ -21,7 +21,7 @@ public class RogersPaymentHistoryPage extends BasePageClass {
 	}
 
 	
-	@FindBy (xpath = "//div[contains(text(),'Payment History')]//parent::button")
+	@FindBy (xpath = "//div[contains(text(),'Payment History') or contains(text(),'Historique des paiements')]//parent::button")
 	WebElement btnPaymentHistory;
 
 	@FindBy (xpath="//table")
@@ -30,12 +30,15 @@ public class RogersPaymentHistoryPage extends BasePageClass {
 	@FindBy(xpath = "//button[@aria-label='Payment History']")
 	WebElement tabPaymentHistory;
 	
+	@FindBy (xpath = "//dsa-alert")
+	WebElement alertForNoPayment;
+	
 	/**
 	 * Verify if the payment History tab is selected and payment history is displayed
 	 * @return true if the payment history tab is selected otherwise false.
 	 * @author ning.xue
 	 */
-	public boolean verifyPaymentHistoryIsSelected() {
+	public boolean verifyPaymentHistoryIsDisplayed() {
 		return getReusableActionsInstance().isElementVisible(btnPaymentHistory, 10);
 	}
 	
@@ -100,7 +103,16 @@ public class RogersPaymentHistoryPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public Boolean verifyIfPaymenyHistoryTablePresent() {		
-		return getReusableActionsInstance().isElementVisible(tablePaymentHistory);
+		return getReusableActionsInstance().isElementVisible(tablePaymentHistory, 10);
+	}
+	
+	/**
+	 * Checks if the No payment history alert is visible
+	 * @return True if the no payment history alert is present else false
+	 * @author ning.xue
+	 */
+	public Boolean verifyNoPaymenyHistoryAlertPresent() {		
+		return getReusableActionsInstance().isElementVisible(alertForNoPayment,10);
 	}
 		
 	/**
