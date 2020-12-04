@@ -41,14 +41,14 @@ public class RogersSS_TC_091_AO_ValidateDeeplinkForNotLoggedInCustomer_NSEInfini
     @Test(groups = {"RegressionSS","WirelessDashboardSS"})
     public void validateDeeplinkForNotLoggedInCustomerNSEInfinite() {
     	reporter.reportLogWithScreenshot("Rogers launhced");
-    	String strDeepLinkURL = System.getProperty("QaUrl").split(".com")[0]+".com/web/totes/#/viewbill/payment-method";
+    	String strDeepLinkURL = System.getProperty("QaUrl").split(".com")[0]+".com/consumer/self-serve/payments/history";
     	getDriver().get(strDeepLinkURL);
     	reporter.reportLogWithScreenshot("After setting the deeplink : "+strDeepLinkURL);
     	reporter.hardAssert(getRogersLoginPage().isSignInFrameDisplayed()
     	    		   , "When a user is not logged into an account and deep link URL is entered, it is asking the user to login first"
     	    		   , "The login pop up didnt show up for non logged in user after entering deep link");  
     	String strUsername = TestDataHandler.tc63.getUsername();
-    	//getRogersLoginPage().switchToSignInIFrame();
+    	getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc63.getPassword();    	
         getRogersLoginPage().setPasswordIFrame(strPassword);
@@ -58,11 +58,10 @@ public class RogersSS_TC_091_AO_ValidateDeeplinkForNotLoggedInCustomer_NSEInfini
 		getRogersLoginPage().clkSkipIFrame();
 		getRogersLoginPage().switchOutOfSignInIFrame();
 		reporter.reportLogWithScreenshot("After Log In");
-		reporter.hardAssert((getRogersChangePaymentMethodPage().verifyChangePaymentMethodLoad()
-				&& getRogersBillingPage().verifyViewBillPageHeaderDisplayed())
-	    		   , "Redirected to the view bill page from where the MOP modal pops up and is working as designed for not logged in user"
-	    		   , "Didnt redirect to the view bill page and the MOP modal pops up is not shown");
-		reporter.reportLogWithScreenshot("The view bill page from where the MOP modal pops up");
+		reporter.hardAssert(getRogersPaymentHistoryPage().verifyIfPaymenyHistoryTabPresent(), 
+				 "Payment history is displayed",
+				 "Payment history is not displayed as expected.");
+
             }
     
     

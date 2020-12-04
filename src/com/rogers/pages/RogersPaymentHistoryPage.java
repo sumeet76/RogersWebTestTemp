@@ -26,6 +26,9 @@ public class RogersPaymentHistoryPage extends BasePageClass {
 
 	@FindBy (xpath="//table")
 	WebElement tablePaymentHistory;
+
+	@FindBy(xpath = "//button[@aria-label='Payment History']")
+	WebElement tabPaymentHistory;
 	
 	/**
 	 * Verify if the payment History tab is selected and payment history is displayed
@@ -98,6 +101,15 @@ public class RogersPaymentHistoryPage extends BasePageClass {
 	 */
 	public Boolean verifyIfPaymenyHistoryTablePresent() {		
 		return getReusableActionsInstance().isElementVisible(tablePaymentHistory);
+	}
+		
+	/**
+	 * Checks if the payment history table is visible
+	 * @return True if the payment history table is present else false
+	 * @author Mirza.Kamran
+	 */
+	public Boolean verifyIfPaymenyHistoryTabPresent() {		
+		return getReusableActionsInstance().getWhenReady(tabPaymentHistory).getAttribute("aria-selected").toString().equalsIgnoreCase("true");
 	}
 	
 	/**
