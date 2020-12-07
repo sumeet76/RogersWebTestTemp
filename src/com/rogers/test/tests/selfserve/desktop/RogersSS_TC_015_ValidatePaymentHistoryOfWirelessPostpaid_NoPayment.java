@@ -1,6 +1,5 @@
 package com.rogers.test.tests.selfserve.desktop;
 
-import com.rogers.pages.RogersMakePaymentPage;
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
@@ -41,15 +40,19 @@ public class RogersSS_TC_015_ValidatePaymentHistoryOfWirelessPostpaid_NoPayment 
 		getRogersLoginPage().clkSkipIFrame();
 		getRogersLoginPage().switchOutOfSignInIFrame();
 		reporter.reportLogWithScreenshot("Account overveiew page");
-		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login successful",
+		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), 
+				"Login successful",
 				"Login Error. Refer screenshot");
 
 		getRogersAccountOverviewPage().clkPaymentHistory();
+
+		reporter.hardAssert(getRogersPaymentHistoryPage().verifyPaymentHistoryIsDisplayed(), 
+				"Payment history is displayed",
+				"Payment history is not displayed as expected.");
 		reporter.reportLogWithScreenshot("Payment History Page.");
-		reporter.hardAssert(getRogersPaymentHistoryPage().verifyPaymentHistoryIsSelected(), "Payment history is displayed",
-				"Payment history is not displayed as expected.");
-		reporter.hardAssert(!getRogersPaymentHistoryPage().verifyIfPaymenyHistoryTablePresent(), "Payment history is displayed without error",
-				"Payment history is not displayed as expected.");
+		reporter.hardAssert(getRogersPaymentHistoryPage().verifyNoPaymenyHistoryAlertPresent(), 
+				"Sorry, you don't have any history message is displayed without error",
+				"Sorry, you don't have any history message is not displayed, please investigate.");
 															
     }
     
