@@ -102,7 +102,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.billing.changePaymentMethod']")
 	WebElement lnkChangePaymentMethod;
 	
-	@FindBy(xpath = "//span[@translate='ute.payment.method.mop_title']")
+	@FindBy(xpath = "//span[@translate='ute.payment.method.mop_title' or text()='Change payment method' or text()='Changer le mode de paiement']")
 	WebElement lnkBelowCardChangePaymentMethod;
 		
 	
@@ -158,7 +158,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy (xpath = "//h1[@class='profile-header']")
 	WebElement headerProfileNSettings;
 	
-	@FindBy (xpath = "//*[@translate='ute.payment.method.payment_method' or @translate='ute.payment.method.will_auto_charge' or contains(text(),'Will be automatically charged to:') or contains(text(),'Mode de paiement:') or contains(text(),'Sera porté automatiquement à :')]")
+	@FindBy (xpath = "//*[@translate='ute.payment.method.payment_method' or @translate='ute.payment.method.will_auto_charge' or contains(text(),'Will be automatically charged to:') or contains(text(),'Mode de paiement:') or contains(text(),'Sera porté automatiquement à :') or text()='Payment method:' or text()='Mode de paiement:']")
 	WebElement lblAutoPayment;
 	
 	@FindBy(xpath = "//div[@translate='ute.payment.method.account_prefix']")
@@ -169,7 +169,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	
 	@FindAll({
 		@FindBy(xpath = "//span[@class='auto-payment-info']/ds-icon"),
-		@FindBy(xpath = "//*[contains(@class,'cc-image') or contains(@class,'cc-icon')]")
+		@FindBy(xpath = "//*[contains(@class,'cc-image') or contains(@class,'cc-icon')]"),
+		@FindBy(xpath = "//img[@class='cardImgSize']")
 	})	
 	WebElement imgCC;
 
