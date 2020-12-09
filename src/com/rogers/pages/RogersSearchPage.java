@@ -220,7 +220,7 @@ public class RogersSearchPage extends BasePageClass {
         System.out.println("+++++++++"+getReusableActionsInstance()+"++++++++++"+ Thread.currentThread().getName()+"  "+getDriver()+ "***************"+"Page: "+this );
 
         getReusableActionsInstance().getWhenVisible(By.xpath("//div[@class='ds-filter__listSet']/div/button/div/p[starts-with(text(),'"
-                + strFilterName + "')]"),6).sendKeys(Keys.ENTER);
+                + strFilterName + "')/parent::div/parent::div/parent::button]"),6).sendKeys(Keys.ENTER);
 
     }
 
