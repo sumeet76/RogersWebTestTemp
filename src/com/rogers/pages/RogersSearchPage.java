@@ -219,8 +219,8 @@ public class RogersSearchPage extends BasePageClass {
 
         System.out.println("+++++++++"+getReusableActionsInstance()+"++++++++++"+ Thread.currentThread().getName()+"  "+getDriver()+ "***************"+"Page: "+this );
 
-        getReusableActionsInstance().getWhenVisible(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'"
-                + strFilterName + "')]/parent::div/parent::div/parent::button"),6).sendKeys(Keys.ENTER);
+        getReusableActionsInstance().getWhenVisible(By.xpath("//div[@class='ds-filter__listSet']/div/button/div/p[starts-with(text(),'"
+                + strFilterName + "')]"),6).sendKeys(Keys.ENTER);
 
     }
 
@@ -657,7 +657,7 @@ public class RogersSearchPage extends BasePageClass {
 
     public boolean validateResultsTag(String strGrandParentFilter) {
         String strExpectedTag = strGrandParentFilter.trim() + " - ";
-        List<WebElement> resultlinkTags = getDriver().findElements(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]"));
+        List<WebElement> resultlinkTags = getDriver().findElements(By.xpath("//app-search-results//span[contains(@id,'searchcategory')]"));
         for (int counter = 0; counter < resultlinkTags.size(); counter++) {
 
             if (!(resultlinkTags.get(counter).getText().startsWith(strExpectedTag))) {
