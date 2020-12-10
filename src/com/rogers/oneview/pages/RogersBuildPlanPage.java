@@ -127,11 +127,13 @@ public class RogersBuildPlanPage extends BasePageClass {
 		if(getReusableActionsInstance().isElementVisible(By.xpath("//span[@res='_upfront_amount']"),2)) {
 			getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(By.xpath("//div[@class='upfront-popup-button']/a[@translate='new_Confirm']")));
 		}
-
+		/*
 		if(getReusableActionsInstance().isElementVisible(planSlider, 2)) {
 			getReusableActionsInstance().waitForElementVisibility(planSlider, 60);
 			//getReusableActionsInstance().clickIfAvailable(btnContinue, 120);
 		}
+
+		 */
 	}
 
 	/**
