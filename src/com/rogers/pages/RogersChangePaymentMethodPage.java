@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -65,7 +66,9 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	@FindBy(xpath = "//input[@id='accountNo' or @formcontrolname='account']/parent::div")
 	WebElement lblAccount;
 	
-	@FindBy(xpath = "//button[@translate='ute.payment.method.manual_payment_continue']")	
+	@FindAll({		
+	@FindBy(xpath = "//span[text()=' Continue ']"),
+	@FindBy(xpath = "//button[@translate='ute.payment.method.manual_payment_continue']")})	
 	WebElement btnContinue;
 	
 	@FindBy(xpath = "//div[@class='confirm-review']/button[@translate='ute.payment.method.manual_payment_continue']")
@@ -149,6 +152,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkYesCancelAutomaticPayment() {
+		getReusableActionsInstance().clickIfAvailable(btnContinue);
 		getReusableActionsInstance().clickIfAvailable(btnCancelAutomaticPayments,30);
 	}
 	
@@ -357,7 +361,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkButtonDoneChangePayment() {
-		getReusableActionsInstance().getWhenReady(btnChangePaymentDone).click();
+		getReusableActionsInstance().getWhenReady(btnChangePaymentDone,60).click();
 	}
 	
     /**

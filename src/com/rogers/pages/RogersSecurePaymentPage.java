@@ -243,7 +243,7 @@ public class RogersSecurePaymentPage extends BasePageClass {
 	 * Clicks on the 'Done' button
 	 */
 	public void clickDone() {
-		getReusableActionsInstance().clickIfAvailable(btnDone);
+		getReusableActionsInstance().clickIfAvailable(btnDone,30);
 	}
 	
 	/**
