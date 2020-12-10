@@ -65,14 +65,14 @@ public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass
         getRogersHomePage().clkIgniteAddressLookupSubmitMobile();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPageMobile(),"Bundles Page has launched","Bundles Page has not launched");
-        getRogersIgniteTVBuyPage().clkHomephoneMobile();
+        //getRogersIgniteTVBuyPage().clkHomephoneMobile();
         getRogersIgniteTVBuyPage().selectSolarisStarterPackageMobile();
 
-        reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
+      /*  reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
         getRogersHomePhoneSelectionPage().clkSkipforNewNumberMobile();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
-        getRogersIgniteTVBuyPage().clkHomePhoneMobile();
+        getRogersIgniteTVBuyPage().clkHomePhoneMobile();*/
 
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
@@ -82,7 +82,7 @@ public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass
                
         //reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
-        getRogersIgniteTVProfileCreationPage().setEmail();
+        getRogersIgniteTVProfileCreationPage().setEmailMobile();
         getRogersIgniteTVProfileCreationPage().setFirstname();
         getRogersIgniteTVProfileCreationPage().setLastName();
         getRogersIgniteTVProfileCreationPage().setPhone();
@@ -110,17 +110,17 @@ public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass
         reporter.reportLogWithScreenshot("Passport Details");
         getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmitMobile();
 
-        reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPhoneNumberPage(),"Ignite page has Launched","Ignite page has not Launched");
+   /*     reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPhoneNumberPage(),"Ignite page has Launched","Ignite page has not Launched");
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
         getRogersHomePhoneSelectionPage().clkPhoneNumberGenerator();
-        getRogersHomePhoneSelectionPage().clkContinueHomePhoneMobile();
+        getRogersHomePhoneSelectionPage().clkContinueHomePhoneMobile();*/
 
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
         //getRogersTechInstallPage().clkPersonalizedInstall();
-        getRogersTechInstallPage().selSelffinstallDateAndTime();
-        reporter.reportLogWithScreenshot("Launched the tech install page");
-        getRogersTechInstallPage().setMobielNumber();
+        //getRogersTechInstallPage().selSelffinstallDateAndTime();
+        //reporter.reportLogWithScreenshot("Launched the tech install page");
+        //getRogersTechInstallPage().setMobielNumber();
         getRogersTechInstallPage().clkTechInstalConsent();
         reporter.reportLogWithScreenshot("tech install details");
         getRogersTechInstallPage().clkTechInstallContinueMobile();

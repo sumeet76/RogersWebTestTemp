@@ -34,28 +34,34 @@ public class RogersSS_TC_018_TC25_Wireless_Postpaid_OverviewBillInfoChangePaymen
     	String strPassword = TestDataHandler.tc161825.getPassword();		
 		tryLogin(strUsername, strPassword);
 		reporter.reportLogWithScreenshot("Account overveiew page");
-		getRogersAccountOverviewPage().clkViewBill();
-		if(!getRogersAccountOverviewPage().isSetAutoPaymentDisplayed())
-		{
-			reporter.reportLogWithScreenshot("Automatic payment is already set, trying to switch to manual");
-			getRogersAccountOverviewPage().clkBillingAndPaymentsSubMenuChangePaymentMethod();
-			getRogersChangePaymentMethodPage().clkSwitchToManualPayments();
-			getRogersChangePaymentMethodPage().clkYesCancelAutomaticPayment();
-			reporter.reportLogWithScreenshot("Switch to manual completed");
-			getRogersChangePaymentMethodPage().clkButtonDoneChangePayment();
-			reporter.reportLogWithScreenshot("Account overveiew page");
-			getRogersAccountOverviewPage().clkSetUpAutomaticPaymentMethod();
-		}else
-		{
-			getRogersAccountOverviewPage().clkBillngsAndPaymentsSubMenuSetUpAutomaticPaymentMethod();
-			reporter.reportLogWithScreenshot("Set auto payment overlay");
-		}			
+		//getRogersAccountOverviewPage().clkViewBill();
+		
+
+				if(getRogersAccountOverviewPage().isAutoPaymentAlreadySet())
+				{
+					reporter.reportLogWithScreenshot("Automatic payment is already set, trying to switch to manual");
+					getRogersAccountOverviewPage().clkChangePaymentMethod();			
+					getRogersChangePaymentMethodPage().clkSwitchToManualPayments();
+					getRogersChangePaymentMethodPage().clkYesCancelAutomaticPayment();
+					reporter.reportLogWithScreenshot("Switch to manual completed");
+					getRogersChangePaymentMethodPage().clkButtonDoneChangePayment();
+					reporter.reportLogWithScreenshot("Account overveiew page");
+					getDriver().navigate().refresh();
+					reporter.reportLogWithScreenshot("Account overveiew page page refresh");
+					getRogersAccountOverviewPage().clkSetUpAutomaticPaymentMethod();
+				}else
+				{
+					getRogersAccountOverviewPage().clkSetUpAutoPaymentQuickLink();			
+					reporter.reportLogWithScreenshot("Set auto payment overlay");
+				}
+		
+						
 		getRogersChangePaymentMethodPage().clkUseBankAccountForAutomaticPayments();
 		getRogersChangePaymentMethodPage().setTransitCode(TestDataHandler.paymentInfo.getBankDetails().getTransitCode());
 		getRogersChangePaymentMethodPage().setBankCode(TestDataHandler.paymentInfo.getBankDetails().getBankCode());
 		getRogersChangePaymentMethodPage().setAccountNumber(TestDataHandler.paymentInfo.getBankDetails().getAccountNumber()); //2563695869
 		reporter.reportLogWithScreenshot("Bank details entered");
-		getRogersChangePaymentMethodPage().clkContinue();
+		getRogersChangePaymentMethodPage().clkContinueBank();
 		getRogersChangePaymentMethodPage().clkTermsAndCond();
 		reporter.reportLogWithScreenshot("T n C selected");
 		getRogersChangePaymentMethodPage().clkSubmit();
@@ -63,8 +69,10 @@ public class RogersSS_TC_018_TC25_Wireless_Postpaid_OverviewBillInfoChangePaymen
 		reporter.hardAssert(getRogersChangePaymentMethodPage().verifySuccessMessageIsDisplayed(),
 				"Set up auto payment is successful",
 				"Set up auto payment is not successful");
- 		reporter.reportLogWithScreenshot("Auto Payment setting completed.");
+ 		reporter.reportLogWithScreenshot("Payment complete page.");
 		getRogersChangePaymentMethodPage().clkOnDone();
+		//check payment method on overview page	
+		getDriver().navigate().refresh();
 		//check payment method on overview page		
 		reporter.hardAssert(getRogersAccountOverviewPage().verifyThatAutoPaymentIsDisplayedOnAccountOverViewPage(),
 				"Auto payment account details displayed on the account overview page",
@@ -90,8 +98,28 @@ public class RogersSS_TC_018_TC25_Wireless_Postpaid_OverviewBillInfoChangePaymen
     	String strPassword = TestDataHandler.tc161825.getPassword();		
 		tryLogin(strUsername, strPassword);		
 		reporter.reportLogWithScreenshot("Account overveiew page");
-		getRogersAccountOverviewPage().clkViewBill();
-		if(!getRogersAccountOverviewPage().isSetAutoPaymentDisplayed())
+		//getRogersAccountOverviewPage().clkViewBill();
+		if(getRogersAccountOverviewPage().isAutoPaymentAlreadySet())
+		{
+			reporter.reportLogWithScreenshot("Automatic payment is already set, trying to switch to manual");
+			getRogersAccountOverviewPage().clkChangePaymentMethod();			
+			getRogersChangePaymentMethodPage().clkSwitchToManualPayments();
+			getRogersChangePaymentMethodPage().clkYesCancelAutomaticPayment();
+			reporter.reportLogWithScreenshot("Switch to manual completed");
+			reporter.hardAssert(getRogersChangePaymentMethodPage().verifyChangePaymentMethodToManual(),
+					"Change payment to manual completed successfully",
+					"Change payment method to Manual failed. Refer screenshot");
+			getRogersChangePaymentMethodPage().clkButtonDoneChangePayment();
+			reporter.reportLogWithScreenshot("Account overveiew page");
+			getDriver().navigate().refresh();
+			reporter.reportLogWithScreenshot("Account overveiew page after change payment method.");                			
+		}else
+		{
+			reporter.reportLog("The payment option is already set to manual");
+		}
+		
+		
+	/*	if(!getRogersAccountOverviewPage().isSetAutoPaymentDisplayed())
 		{
 			reporter.reportLogWithScreenshot("Automatic payment is already set, trying to switch to manual");
 			getRogersAccountOverviewPage().clkBillingAndPaymentsSubMenuChangePaymentMethod();
@@ -99,7 +127,7 @@ public class RogersSS_TC_018_TC25_Wireless_Postpaid_OverviewBillInfoChangePaymen
 			getRogersChangePaymentMethodPage().clkYesCancelAutomaticPayment();
 			reporter.reportLogWithScreenshot("Payment method switch to manual completed");
 			reporter.hardAssert(getRogersChangePaymentMethodPage().verifyChangePaymentMethodToManual(),
-					"Change payment to manul completed successfully",
+					"Change payment to manual completed successfully",
 					"Change payment method to Manual failed. Refer screenshot");
 			getRogersChangePaymentMethodPage().clkButtonDoneChangePayment();
 			reporter.reportLogWithScreenshot("Account overveiew page after change payment method.");                			
@@ -107,6 +135,7 @@ public class RogersSS_TC_018_TC25_Wireless_Postpaid_OverviewBillInfoChangePaymen
 		{
 			reporter.reportLog("The payment option is already set to manual");
 		}
+		*/
     }
 
     

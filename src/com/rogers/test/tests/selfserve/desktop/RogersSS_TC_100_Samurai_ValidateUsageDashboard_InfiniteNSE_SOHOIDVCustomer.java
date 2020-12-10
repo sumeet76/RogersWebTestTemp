@@ -66,9 +66,9 @@ public class RogersSS_TC_100_Samurai_ValidateUsageDashboard_InfiniteNSE_SOHOIDVC
         reporter.hardAssert(getRogersWirelessDashboardPage().verifyTotalDataBucket(),
 							"Total data bucket is displayed", 
 							"Total data bucket is NOT displayed");
-        reporter.hardAssert(getRogersWirelessDashboardPage().verifyDaysRemainingInTheBillCycleIsDisplayed(),
-							"Days left remaining in the bill cycle is displayed", 
-							"Days left remaining in the bill cycle is NOT displayed"); 
+        //reporter.hardAssert(getRogersWirelessDashboardPage().verifyDaysRemainingInTheBillCycleIsDisplayed(),
+		//					"Days left remaining in the bill cycle is displayed", 
+		//					"Days left remaining in the bill cycle is NOT displayed"); 
 		reporter.hardAssert(getRogersWirelessDashboardPage().verifySpeedPassButtonIsDisplayed(),
 				"Speed Pass button is displayed", "Speed Pass button is NOT displayed");
 

@@ -70,6 +70,9 @@ button should be displayed n Share Everything Dashboard
        getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
        getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();           
        
+       reporter.reportLogWithScreenshot("Click on data manager CTN");
+       getRogersWirelessDashboardPage().clkDataManagerCTN();
+       
        //usage dashboard area is displayed
        reporter.reportLogWithScreenshot("usage dashboard area is displayed");
        reporter.hardAssert(getRogersWirelessDashboardPage().verifyTotalDataBucket(),
@@ -97,10 +100,11 @@ button should be displayed n Share Everything Dashboard
 				"Header of device section in wireless dashboard page didn't show as expected.");		
 		//getRogersWirelessDashboardPage().scrollToMidOfDasboardPage();
 		reporter.reportLogWithScreenshot("Wireless dashboard page Device Section."); 
-		reporter.softAssert(getRogersWirelessDashboardPage().verifyLinkUpgradeMyDevice(),
+		reporter.softAssert((getRogersWirelessDashboardPage().isSeeOffersOnNewPhonesDisplayed()
+				|| getRogersWirelessDashboardPage().verifyLinkUpgradeMyDevice()),				
 				"Device balance in wireless dashboard page verified successfully", 
 				"Device balance in wireless dashboard page didn't show as expected.");
-			
+	
 		//4.Share everything dashboard displayed successfully with
 		//Data access, stream saver, data alert buttons in the wireless dashboard.
 		 reporter.hardAssert(getRogersWirelessDashboardPage().verifyDataAccessDisplayed(),
@@ -111,7 +115,7 @@ button should be displayed n Share Everything Dashboard
 					"Stream Saver is not displayed");
 		 reporter.softAssert(getRogersWirelessDashboardPage().verifyDataAlertDisplayed(),
 					"Data alert is displayed", 
-					"Data alert is not displayed");
+					"Data alert is not displayed");		 
 		 reporter.softAssert(getRogersWirelessDashboardPage().verifyDataManagerDisplayed(),
 					"Data manager is displayed", 
 					"Data manager is not displayed");	

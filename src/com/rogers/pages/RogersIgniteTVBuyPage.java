@@ -231,7 +231,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkHomephone() {
-		getReusableActionsInstance().getWhenReady(checkboxHomephone, 20).click();
+		getReusableActionsInstance().getWhenReady(checkboxHomephone, 60).click();
 	}
 	/**
 	 * To click on  Home phone checkbox
@@ -362,7 +362,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public void clkPlusAddIgniteTVBoxes() {
 		getReusableActionsInstance().waitForElementVisibility(buttonAddIgniteTVBoxes, 90);
-		getReusableActionsInstance().getWhenReady(buttonAddIgniteTVBoxes, 30).click();
+		getReusableActionsInstance().executeJavaScriptClick(buttonAddIgniteTVBoxes);
 	}
 	
 	/**
@@ -370,7 +370,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkUpdateCart() {
-		getReusableActionsInstance().getWhenReady(buttonUpdateCart, 60).click();
+		getReusableActionsInstance().getWhenReady(buttonUpdateCart, 90).click();
 	}
 	
 	/**

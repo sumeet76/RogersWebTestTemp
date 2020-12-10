@@ -25,9 +25,9 @@ import java.lang.reflect.Method;
  **/
 
 
-public class RogersCH_TC_042_IgniteRHP_ValidateRHPDasboardTest extends BaseTestClass {
+public class RogersCH_TC_053_IHP_ValidateOrderInternet extends BaseTestClass {
 
-	@Test(groups = {"SanityCH","RegressionCH","RhpAndRhmCH"})
+	@Test(groups = {"RegressionCH","RhpAndRhmCH"})
     public void checkSolarisRHPDasboard() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
@@ -45,10 +45,18 @@ public class RogersCH_TC_042_IgniteRHP_ValidateRHPDasboardTest extends BaseTestC
  	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc42_igniteRHP.accountDetails.getBan());
  		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersAccountOverviewPage().clkRHPBadge();
-        reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");        
-        //reporter.softAssert(getRogersSolarisRHPDashboardPage().verifyConfigureYourCurrentFeatures(),"Verification of Configure Your Current Features link is success","Verification of Configure Your Current Features link is Failed");
-        //reporter.softAssert(getRogersSolarisRHPDashboardPage().verfyAccessYourVoicemailSettings(),"Verification of Access Your Voicemail Settings link is success","Verification of Access Your Voicemail Settings link is successFailed");
-        //reporter.softAssert(getRogersSolarisRHPDashboardPage().verfyResetYourVoicemailPassword(),"Verification of Reset Your Voicemail Password link is success","Verification of Reset Your Voicemail Password link is success Failed");
+        reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");
+
+        getRogersHomePage().clkEasyInternet();
+		reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
+		reporter.reportLogWithScreenshot("Launched the Internet packages page");
+		getRogersHomePage().clkInternetAvailability();
+		reporter.reportLogWithScreenshot("Launched the customer availability check popup");
+		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+		String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
+		String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
+		getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+		getRogersHomePage().clkIgniteAddressLookupSubmit();
     	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

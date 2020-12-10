@@ -45,7 +45,7 @@ public class Mobile_RogersCH_TC_002_Internet_BuyInternetOfferTest extends BaseTe
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
-        getRogersInternetPackageSelectionPage().clkInternetPackage();
+        getRogersInternetPackageSelectionPage().clkInternetPackageMobile();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         getRogersHomePage().clkOnlyInternet();
         getRogersInternetPackageSelectionPage().clkInternetBuyContinueMobile();
@@ -121,7 +121,7 @@ public class Mobile_RogersCH_TC_002_Internet_BuyInternetOfferTest extends BaseTe
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 

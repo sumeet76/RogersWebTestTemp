@@ -46,7 +46,7 @@ public class RogersCH_TC_048_LegacyRHP_ValidateRHPDashboardTest extends BaseTest
 		getRogersAccountOverviewPage().clkRHPBadge();
 		reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");
 		reporter.hardAssert(getRogersSolarisRHPDashboardPage().verifyRHPBanner(),"Verifed the RHP dashboard","RHP dashboard Verification has failed");
-		reporter.hardAssert(getRogersAccountOverviewPage().verfyContactUsToManageFeaturess(),"Contact Us To Manage Featuress link has present on RHP dashboard","Contact Us To Manage Featuress link has not present on RHP dashboard");
+		//reporter.hardAssert(getRogersAccountOverviewPage().verfyContactUsToManageFeaturess(),"Contact Us To Manage Featuress link has present on RHP dashboard","Contact Us To Manage Featuress link has not present on RHP dashboard");
 	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

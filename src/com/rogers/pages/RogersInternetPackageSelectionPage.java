@@ -110,6 +110,11 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	public void clkInternetPackage() {
 		getReusableActionsInstance().getWhenReady(btnInternetPackage, 90).click();
 	}
+
+	public void clkInternetPackageMobile() {
+		getReusableActionsInstance().waitForElementVisibility(btnInternetPackage, 90);
+		getReusableActionsInstance().executeJavaScriptClick(btnInternetPackage);
+	}
 		
 	public void clkInternetBuyContinueMobile() {
 		getReusableActionsInstance().staticWait(3000);

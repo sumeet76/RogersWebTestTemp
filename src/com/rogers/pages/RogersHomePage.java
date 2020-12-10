@@ -390,7 +390,7 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public void clkIgniteTVExistingCustomer() {
 		getReusableActionsInstance().waitForElementVisibility(lnkExistingCustomerIgniteTV, 30);
-		getReusableActionsInstance().executeJavaScriptClick(lnkExistingCustomerIgniteTV);
+		getReusableActionsInstance().getWhenReady(lnkExistingCustomerIgniteTV).click();
 	}
 
 	/**
@@ -556,7 +556,8 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkOnlyInternet() {
-		getReusableActionsInstance().getWhenReady(lnkOnlyInternet, 30).click();
+		getReusableActionsInstance().getWhenReady(lnkOnlyInternet, 30);
+		getReusableActionsInstance().executeJavaScriptClick(lnkOnlyInternet);
 	}
 	
 	/**

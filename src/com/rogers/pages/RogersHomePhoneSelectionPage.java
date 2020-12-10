@@ -92,10 +92,10 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPortInOutPage() {
-		if(getReusableActionsInstance().isElementVisible(loaderPhoneNumberPage)) {
+		if(getReusableActionsInstance().isElementVisible(loaderPhoneNumberPage,10)) {
 			getReusableActionsInstance().waitForElementInvisibilityNOException(loaderPhoneNumberPage,20);
 		}
-		return	getReusableActionsInstance().isElementVisible(btnPortInOutPage, 60);
+		return	getReusableActionsInstance().isElementVisible(btnPortInOutPage, 90);
 	}
 	/**
 	 * Click on Generate Phone Number button to generate phone numbers
@@ -138,7 +138,7 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 */
 	public void clkContinueHomePhoneSelection() {
 		getReusableActionsInstance().waitForElementVisibility(btnContinueHomePhoneSelection, 120);
-		getReusableActionsInstance().getWhenReady(btnContinueHomePhoneSelection, 90).click();
+		getReusableActionsInstance().moveToElementAndClick(btnContinueHomePhoneSelection,90);
 	}
 
 	/**

@@ -119,7 +119,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//strong")
 	WebElement btnChangePassDone;
 	
-	@FindBy (xpath = "//button[@title='Display contact information' or @title='Afficher les coordonn']")
+	@FindBy (xpath = "//button[@title='Display contact information' or @title='Afficher les coordonnées' or @title='Hide contact information' or @title='Masquer les coordonnées']")
 	WebElement btnContactInfo;
 	
 	@FindBy (xpath = "//button[@title='Display billing settings' or @title='Afficher les préférences de facturation']")
@@ -287,7 +287,16 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	
 	@FindBy (xpath = "//div[contains(text(),'Language:') or contains(text(),'Langue :') or contains(text(),'numéro à la maison')]/parent::div/parent::div//span[text()=' Change ' or text()=' Changer ' or text()=' Ajouter ']")
 	WebElement lnkChangeLanguageMobile;
+
+	@FindBy (xpath = "//p[text()='Before you start, we need to first verify your identity.' or text()='Avant de commencer, nous devons vérifier votre identité.']")
+	WebElement lblVerifyYourIdentity;
 		
+	@FindBy(xpath = "//button//span[text()='Continuer' or text()='Continue']")
+	WebElement btnContinueVerifyIdentity;
+	
+	@FindBy(xpath = "//iframe[@title='DAM Shield']")
+	WebElement frameVerifyIdentity;
+	
 	/**
 	 * Click on setup recovery number link
 	 * @author ning.xue
@@ -636,6 +645,15 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void clkBtnContactInfomation() {
 		getReusableActionsInstance().clickWhenReady(btnContactInfo, 30);
+		getReusableActionsInstance().staticWait(1000);
+		getReusableActionsInstance().clickWhenReady(btnContactInfo, 30);
+		getReusableActionsInstance().staticWait(1000);
+		getReusableActionsInstance().clickWhenReady(btnContactInfo, 30);
+		getReusableActionsInstance().staticWait(1000);
+		getReusableActionsInstance().clickWhenReady(btnContactInfo, 30);
+		getReusableActionsInstance().staticWait(1000);
+		getReusableActionsInstance().clickWhenReady(btnContactInfo, 30);
+		// The contact details is taking some time to load
 	}	
 	
 	/**
@@ -1179,5 +1197,26 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(lblBusinessPhone,30).click();
 		getReusableActionsInstance().clickIfAvailable(lblBusinessPhone);
 		getReusableActionsInstance().getWhenReady(inputBusinessPhone,2).sendKeys(strBusinessPhone);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean isVerifyYourIdentityOverlayDisplayed() {			
+		return getReusableActionsInstance().isElementVisible(frameVerifyIdentity);
+	}
+	
+	/**
+	 * Click continue button
+	 * @author Mirza.Kamran
+	 */
+	public void clkContinueVerifyIdentity() {
+		getReusableActionsInstance().getWhenReady(btnContinueVerifyIdentity).click();
+	
+	}
+
+	public void switchToVerifyIdentityIFrame() {
+		getDriver().switchTo().frame(frameVerifyIdentity);		
 	}
 }

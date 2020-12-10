@@ -26,7 +26,7 @@ public class RogersSS_TC_032_Postpaid_ChangeBillingAddress extends BaseTestClass
 
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-			startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+			startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve_login,method);
 			// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 		}
 	   	
@@ -90,6 +90,28 @@ public class RogersSS_TC_032_Postpaid_ChangeBillingAddress extends BaseTestClass
     		
     	}    	 	
     	getRogersProfileAndSettingsPage().clkLnkChangeBillingAddress();
+    	if(getRogersProfileAndSettingsPage().isVerifyYourIdentityOverlayDisplayed())
+    	{
+    		getRogersProfileAndSettingsPage().switchToVerifyIdentityIFrame();
+    		getRogersProfileAndSettingsPage().clkContinueVerifyIdentity();
+    		String strTestingTab = getDriver().getWindowHandle();
+    		String strRecoveredUserName ="";
+    		//Go to ENS to verify email and get reset password page.		
+    		try {
+    			
+    			ensVerifications.getEmailVerifyPage(strUsername);
+    			String recoveryCode = getRogersRecoverPassOrNamePage().getVerificationCodeForRecoverUsername();
+    			getDriver().switchTo().window(strTestingTab);			
+    			reporter.reportLogWithScreenshot("Close the Overlay");
+    			getRogersProfileAndSettingsPage().switchToVerifyIdentityIFrame();
+    			getRogersRecoverPassOrNamePage().setRecoveryCode(recoveryCode);
+    			getRogersRecoverPassOrNamePage().clkBtnContinue();    						
+    						
+    		} catch (Exception e) {
+    			e.printStackTrace();
+    		}
+    	}
+
 		getRogersProfileAndSettingsPage().setStreetNumber(strStreetNumber);
     	getRogersProfileAndSettingsPage().setStreetname(strStreetName);
     	getRogersProfileAndSettingsPage().selectStreetType(strStreetType);

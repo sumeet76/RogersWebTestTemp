@@ -113,7 +113,14 @@ public class RogersMakePaymentPage extends BasePageClass {
 
 	@FindBy(xpath = "//span[@translate='ute.payment.ui.payNow.cardMethod']")
 	WebElement rdoCredit;
+			
+	@FindBy(xpath = "//span[contains(text(),'Pay with credit card, Visa Debit') or contains(text(),'Paiement par carte de crédit, carte Visa Débit ou carte')]/ancestor::label")
+	WebElement divCredit;
 
+	@FindBy(xpath = "//span[contains(text(),'Pay through your bank') or contains(text(),' Paiement par services bancaires')]/ancestor::label")
+	WebElement divBank;	
+	
+	
 	@FindBy(xpath = "//span[@translate='ute.payment.ui.payNow.interacMethod']")
 	WebElement rdoInterac;
 
@@ -229,6 +236,26 @@ public class RogersMakePaymentPage extends BasePageClass {
 	}
 	
 	
+	/**
+	 * Selects the payment modes (pac, pacc, invoice) on the payment options page
+	 * @param payOption payment option to pay to buy Internet offer
+	 * @author Mirza.Kamran
+	 */
+	public void selectHowWouldYouLikeToPayNew(MakePayOptions payOption) {
+		//writing the below element in method since we want to dynamically generate this at run time
+		if(payOption.toString().toLowerCase().equals("bank"))
+		{
+			
+			getReusableActionsInstance().getWhenReady(divBank).click();
+			
+		}else if(payOption.toString().toLowerCase().equals("credit"))
+		{
+			//getReusableActionsInstance().javascriptScrollByVisibleElement(divCredit);
+			getReusableActionsInstance().getWhenReady(divCredit).click();
+			
+		}
+								
+	}
 	
 	/**
 	 * Click on  the Review And Continue button on the make payment page
@@ -323,7 +350,7 @@ public class RogersMakePaymentPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void selectBank(String strBankName) {		
-		By lblBankName= By.xpath("//area[@alt='"+strBankName+"']");
+		By lblBankName= By.xpath("//span[text()='"+strBankName+"']");
 		getReusableActionsInstance().executeJavaScriptClick(getDriver().findElement(lblBankName));
 		getReusableActionsInstance().waitForNumberOfWindowsToBe(2, 30);
 		getReusableActionsInstance().staticWait(3000);

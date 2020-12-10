@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-
 /**
  * This class contains the test method to test Legacy Internet Offer Buy flow for Rogers.com   
  * 
@@ -26,7 +25,7 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends BaseTestClass {
+public class RogersCH_TC_052_NAC_ValidationSaiTupeloBuyflowAddAdditionalSTBTest extends BaseTestClass {
 
 	@Test(groups = {"RegressionCH","saiCH"})
     public void checkBuyStandAloneInternetOffer() throws InterruptedException {
@@ -43,11 +42,15 @@ public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends Bas
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
+        getDriver().get(TestDataHandler.rogersConfig.getRogersURL()+"web/consumer/internet/streaming");
+        getRogersHomePage().clkAddressCheck();
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        getRogersHomePage().clkIgniteAddressLookupSubmit();
         getRogersInternetPackageSelectionPage().clkInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
-        getRogersHomePage().clkOnlyInternet();
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
-        
+
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersInternetProfilePage().setEmail();
@@ -55,7 +58,7 @@ public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends Bas
         getRogersInternetProfilePage().setLastName();
         getRogersInternetProfilePage().setPhone();
         getRogersInternetProfilePage().clkSubmitProfile();
-        
+
         reporter.hardAssert(getRogersInternetCreditCheckPage().verifyCreditEvalutionPage(),"Credit Evalution page has Launched","Credit Evalution page has not Launched");
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
         getRogersInternetCreditCheckPage().selectDOBYear();
@@ -77,13 +80,13 @@ public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends Bas
         getRogersInternetCreditCheckPage().clkCreditConsentSai();
         reporter.reportLogWithScreenshot("Passport Details");
         getRogersInternetCreditCheckPage().clkCreditConsentSubmit();
-        
-       reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
-       reporter.reportLogWithScreenshot("Launched the tech install page");
-       getRogersTechInstallPage().clkTechInstalConsent();
-       reporter.reportLogWithScreenshot("tech install details");
-       getRogersTechInstallPage().clkTechInstallContinue();
-        
+
+        reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the tech install page");
+        getRogersTechInstallPage().clkTechInstalConsent();
+        reporter.reportLogWithScreenshot("tech install details");
+        getRogersTechInstallPage().clkTechInstallContinue();
+
         reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
         getRogersPaymentOptionsPage().selectPaymentMode("Pre-authorized Credit Card");
@@ -92,10 +95,10 @@ public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends Bas
         getRogersPaymentOptionsPage().switchOutOfCreditCardIFrame();
         getRogersPaymentOptionsPage().setCVV();
         getRogersPaymentOptionsPage().selectExpiryMonth();
-        getRogersPaymentOptionsPage().selectExpiryYear(); 
+        getRogersPaymentOptionsPage().selectExpiryYear();
         reporter.reportLogWithScreenshot("Payment options Details");
         getRogersPaymentOptionsPage().clkPaymentConfirm();
-        
+
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
 
@@ -104,8 +107,8 @@ public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends Bas
         reporter.reportLogWithScreenshot("Agreement details");
         getRogersOrderReviewPage().clkSubmit();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");      
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");    
+        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
+        reporter.reportLogWithScreenshot("Launched the Confirmation page");
     }
 
 

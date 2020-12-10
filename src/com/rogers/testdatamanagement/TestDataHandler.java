@@ -81,6 +81,7 @@ public class TestDataHandler {
 	public static AccountData tc06_2_SolarisChangeTVManageChannels;
 	public static AccountData tc06_1_SolarisChangeTVManageThemePacks;
 	public static AccountData tc35_CRMaddressMismatchWithSGI;
+	public static AccountData tc51_igniteSmartStream;
 	public static AccountData tc31_SolarisInternetAccountWithUsageAndPackageUpgrade;
 	public static AccountData tc23_standaloneInternetAccountforUpgrade;
 	public static AccountData solarisConsumerNoPortinCartAbandon;
@@ -204,6 +205,7 @@ public class TestDataHandler {
       	//sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/connectedhome/SauceSettings.yml");
       	//sacueConfig = YamlHandler.getSauceConfig();              	
       	//Digital TV test data
+		tc51_igniteSmartStream = YamlHandler.getCableAccountData("TC51_IgniteSmartStream");
     	tc43_44_digitalTVAccount = YamlHandler.getCableAccountData("TC43_44_DigitalTVAccount");
     	tc38_DigitalTVUpgradeToIgnite = YamlHandler.getCableAccountData("TC38_DigitalTVUpgradeToIgnite");
     	tc45_digitalTVAccountUpgradePackage = YamlHandler.getCableAccountData("TC45_DigitalTVAccountUpgradePackage");
