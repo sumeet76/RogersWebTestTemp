@@ -68,6 +68,9 @@ public class RogersSearchPage extends BasePageClass {
     @FindBy(xpath = "//app-search-results/div[@class='resultList']")
     WebElement resultsWindow;
 
+    @FindBy(xpath = "//div[@class='ds-filter__listSet']/div/button/div/p[starts-with(text(),'')]/parent::div/parent::button")
+    List<WebElement> grandParentFilters;
+
     /**
      * check if expected filters displayed or not
      *
@@ -220,7 +223,7 @@ public class RogersSearchPage extends BasePageClass {
         System.out.println("+++++++++"+getReusableActionsInstance()+"++++++++++"+ Thread.currentThread().getName()+"  "+getDriver()+ "***************"+"Page: "+this );
 
         getReusableActionsInstance().getWhenVisible(By.xpath("//div[@class='ds-filter__listSet']/div/button/div/p[starts-with(text(),'"
-                + strFilterName + "')/parent::div/parent::div/parent::button]"),6).sendKeys(Keys.ENTER);
+                + strFilterName + "')]/parent::div/parent::button"),6).sendKeys(Keys.ENTER);
 
     }
 
@@ -1010,8 +1013,9 @@ public class RogersSearchPage extends BasePageClass {
     }
 
     public boolean validateGrandParentFiltersCount(int count) {
-        return getDriver().findElements(By.xpath("//div[@class='ds-filter__listSet']/div[contains(@class,'ds-border-bottom')]"))
-                .size()==count;
+       // return getDriver().findElements(By.xpath("//div[@class='ds-filter__listSet']/div[contains(@class,'ds-border-bottom')]"))
+         //       .size()==count;
+        return grandParentFilters.size()==count;
     }
 
     public String getResultWindowText() {
