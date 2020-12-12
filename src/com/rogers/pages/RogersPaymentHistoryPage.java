@@ -26,6 +26,9 @@ public class RogersPaymentHistoryPage extends BasePageClass {
 
 	@FindBy (xpath="//table")
 	WebElement tablePaymentHistory;
+	
+	@FindBy (xpath = "//tbody")
+	WebElement tableBody;
 
 	@FindBy(xpath = "//button[@aria-label='Payment History']")
 	WebElement tabPaymentHistory;
@@ -77,8 +80,8 @@ public class RogersPaymentHistoryPage extends BasePageClass {
 	 */
 	public int getTotalRowCount() {
 		
-		getReusableActionsInstance().waitForElementVisibility(tablePaymentHistory, 120);
-		List < WebElement > rowsTable = tablePaymentHistory.findElements(By.tagName("tr"));
+		getReusableActionsInstance().waitForElementVisibility(tableBody, 120);
+		List < WebElement > rowsTable = tableBody.findElements(By.tagName("tr"));
 	   	//To calculate no of rows In table.
 	   	return rowsTable.size();
 	}
@@ -91,8 +94,8 @@ public class RogersPaymentHistoryPage extends BasePageClass {
 	 */
 	public int getTotalColumnCount(int rowNo) {
 		
-		List < WebElement > rowsTable = tablePaymentHistory.findElements(By.tagName("tr"));
-		List < WebElement > columnsRow = rowsTable.get(rowNo).findElements(By.tagName("td"));
+		List < WebElement > rowsTable = tableBody.findElements(By.tagName("tr"));
+		List < WebElement > columnsRow = rowsTable.get(rowNo).findElements(By.xpath("./child::*"));
    	    //To calculate no of columns (cells). In that specific row.
    	    return columnsRow.size();
 	}
@@ -165,7 +168,7 @@ public class RogersPaymentHistoryPage extends BasePageClass {
 	   String cellDate = getCellDateData(intRow);
 	   if(cellDate.matches("(Jan(uary)?|Feb(ruary)?|Mar(ch)?|Apr(il)?|May|Jun(e)?|Jul(y)?|Aug(ust)?|Sep(tember)?|Oct(ober)?|Nov(ember)?|Dec(ember)?)\\s+\\d{1,2},\\s+\\d{4}")								
 				//french								
-				|| cellDate.matches("\\d{1,2}+\\s+(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|november|décembre)\\s+\\d{4}"))
+				|| cellDate.matches("\\d{1,2}+\\s+(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)\\s+\\d{4}"))
 			 {				 
 				 System.out.println("The data in row No:"+ intRow +  " columName Date " + cellDate);
 				 return true;
