@@ -223,7 +223,7 @@ public class RogersSearchPage extends BasePageClass {
         System.out.println("+++++++++"+getReusableActionsInstance()+"++++++++++"+ Thread.currentThread().getName()+"  "+getDriver()+ "***************"+"Page: "+this );
 
         getReusableActionsInstance().getWhenVisible(By.xpath("//div[@class='ds-filter__listSet']/div/button/div/p[starts-with(text(),'"
-                + strFilterName + "')]/parent::div/parent::button"),6).sendKeys(Keys.ENTER);
+                + strFilterName + "')]/parent::div/parent::button"),15).sendKeys(Keys.ENTER);
 
     }
 
@@ -262,7 +262,7 @@ public class RogersSearchPage extends BasePageClass {
 
     public boolean isGrandParentFilterExpanded(String strFilterName) {
 
-        WebElement expandedFilter = getDriver().findElement(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'" + strFilterName + "')]/ancestor::button//following-sibling::ds-expander"));
+        WebElement expandedFilter = getDriver().findElement(By.xpath("//div[@class='ds-filter__listSet']/div/button/div/p[starts-with(text(),'" + strFilterName + "')]/ancestor::button//following-sibling::ds-expander"));
 
 
         return expandedFilter.getAttribute("ng-reflect-expanded").equals("true");
