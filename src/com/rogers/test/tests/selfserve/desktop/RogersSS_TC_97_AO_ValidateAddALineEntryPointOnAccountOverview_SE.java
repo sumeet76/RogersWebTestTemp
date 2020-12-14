@@ -27,7 +27,7 @@ public class RogersSS_TC_97_AO_ValidateAddALineEntryPointOnAccountOverview_SE ex
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","AccountOverviewSS"})
     public void validateSignInAndAccountOverview() {
     	 reporter.reportLogWithScreenshot("Home Page");
          reporter.reportLog("Home Page Launched");
