@@ -242,7 +242,7 @@ public class RogersSearchPage extends BasePageClass {
 
 
     public List<WebElement> getParentFilters(String strGrandParentFilterName) {
-        return getDriver().findElements(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'" + strGrandParentFilterName + "')]/ancestor::button/following-sibling::ds-expander//p"));
+        return getDriver().findElements(By.xpath("//div[@id='Shop-body-1']/div/button/div/p[starts-with(text,'" + strGrandParentFilterName + "')]/ancestor::button"));
     }
 
     public boolean isParentFilterExpanded(WebElement parentFilter) {
@@ -647,7 +647,7 @@ public class RogersSearchPage extends BasePageClass {
     public boolean validateResultsTag(String strGrandParentFilter, String strParentFilter) {
         String[] strParentFilterName = strParentFilter.split("\\[");
         String strExpectedTag = strGrandParentFilter.trim() + " - " + strParentFilterName[0].trim();
-        getReusableActionsInstance().waitForAllElementsToBeRefreshedAndVisible(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]"),3);
+        getReusableActionsInstance().waitForAllElementsToBeRefreshedAndVisible(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]"),10);
         List<WebElement> resultlinkTags = getDriver().findElements(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]"));
         for (int counter = 0; counter < resultlinkTags.size(); counter++) {
             String actualValue=resultlinkTags.get(counter).getText();
