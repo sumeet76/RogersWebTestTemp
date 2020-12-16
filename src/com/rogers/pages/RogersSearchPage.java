@@ -263,13 +263,13 @@ public class RogersSearchPage extends BasePageClass {
     public boolean isGrandParentFilterExpanded(String strFilterName) {
         System.out.println("Starting Xpath");
 
-        WebElement expandedFilter = getDriver().findElement(By.xpath("//div[@class='ds-filter__listSet']/div/button/div/p[starts-with(text(),'" + strFilterName + "')]/ancestor::button//following-sibling::ds-expander"));
+        WebElement expandedFilter = getDriver().findElement(By.xpath("//div[@class='ds-filter__listSet']/div/button/div/p[starts-with(text(),'" + strFilterName + "')]/ancestor::button//following-sibling::ds-expander[@class='ng-tns-c9-2']"));
         System.out.println("Ending Xpath");
 
 
-       // return expandedFilter.getAttribute("ng-reflect-expanded").equals("true");
+        return expandedFilter.getAttribute("ng-reflect-expanded").equals("true");
         //return expandedFilter.getAttribute("ng-reflect-expanded=true");
-        if((expandedFilter.getAttribute("ng-reflect-expanded").equals(true))){
+       /** if((expandedFilter.getAttribute("ng-reflect-expanded").equals(true))){
 
             return true;
         } else {
@@ -278,6 +278,7 @@ public class RogersSearchPage extends BasePageClass {
             }
 
     }
+        */
 
     /**
      * clicking on shop grand parent filter and then wireless parent filter
