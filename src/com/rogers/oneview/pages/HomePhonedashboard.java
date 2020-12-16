@@ -58,7 +58,7 @@ public class HomePhonedashboard  extends BasePageClass {
 	 */	
 	public void clickYesResetPassword() {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(btnYesResetPassword);
-		getReusableActionsInstance().getWhenReady(btnYesResetPassword,120).click();;
+		getReusableActionsInstance().getWhenReady(btnYesResetPassword,120).click();
 		
 	}
 	

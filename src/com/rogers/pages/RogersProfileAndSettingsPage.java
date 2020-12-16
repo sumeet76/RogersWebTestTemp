@@ -296,6 +296,12 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	
 	@FindBy(xpath = "//iframe[@title='DAM Shield']")
 	WebElement frameVerifyIdentity;
+
+	@FindBy(xpath = "//span[text()='Sorry...' or text()='Désolé...']")
+	WebElement lblSorry;
+
+	@FindBy(xpath = "//p[text()='Due to recent changes on your account, we are unable to proceed with this transaction.' or text()='En raison de modifications récentes de votre compte, nous ne pouvons pas procéder avec cette transaction.']")
+	WebElement msgUnableToProceed;
 	
 	/**
 	 * Click on setup recovery number link
@@ -1218,5 +1224,20 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 
 	public void switchToVerifyIdentityIFrame() {
 		getDriver().switchTo().frame(frameVerifyIdentity);		
+	}
+
+	public boolean isInEligibleUser() {		
+		return (getReusableActionsInstance().isElementVisible(lblSorry)
+				&& getReusableActionsInstance().isElementVisible(msgUnableToProceed));
+	}
+	
+	
+	/**
+	 * Click continue button
+	 * @author Mirza.Kamran
+	 */
+	public void clkClose() {
+		getReusableActionsInstance().getWhenReady(btnClose).click();
+	
 	}
 }
