@@ -223,7 +223,7 @@ public class RogersSearchPage extends BasePageClass {
         System.out.println("+++++++++"+getReusableActionsInstance()+"++++++++++"+ Thread.currentThread().getName()+"  "+getDriver()+ "***************"+"Page: "+this );
 
         getReusableActionsInstance().getWhenVisible(By.xpath("//div[@class='ds-filter__listSet']/div/button/div/p[starts-with(text(),'"
-                + strFilterName + "')]/parent::div/parent::button"),15).sendKeys(Keys.ENTER);
+                + strFilterName + "')]/parent::div/parent::button"),100).sendKeys(Keys.ENTER);
 
     }
 
@@ -265,7 +265,15 @@ public class RogersSearchPage extends BasePageClass {
         WebElement expandedFilter = getDriver().findElement(By.xpath("//div[@class='ds-filter__listSet']/div/button/div/p[starts-with(text(),'" + strFilterName + "')]/ancestor::button//following-sibling::ds-expander"));
 
 
-        return expandedFilter.getAttribute("ng-reflect-expanded").equals("true");
+       // return expandedFilter.getAttribute("ng-reflect-expanded").equals("true");
+        //return expandedFilter.getAttribute("ng-reflect-expanded=true");
+        if((expandedFilter.getAttribute("ng-reflect-expanded").equals(true))){
+
+            return true;
+        } else {
+
+            return false;
+            }
 
     }
 
