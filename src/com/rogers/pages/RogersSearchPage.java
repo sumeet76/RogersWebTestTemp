@@ -276,9 +276,9 @@ public class RogersSearchPage extends BasePageClass {
 
             return false;
             }
-
+*/
     }
-        */
+
 
     /**
      * clicking on shop grand parent filter and then wireless parent filter

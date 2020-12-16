@@ -13,7 +13,7 @@ import utils.CSVReader;
 
 public class RogersSearch_CBS_1646_Grand_Parent_Filter_Expansion_Test extends BaseTestClass {
 
-    @DataProvider(name = "FilterData",parallel=true)
+    @DataProvider(name = "FilterData",parallel=false)
     public Object[] testData() throws IOException {
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
