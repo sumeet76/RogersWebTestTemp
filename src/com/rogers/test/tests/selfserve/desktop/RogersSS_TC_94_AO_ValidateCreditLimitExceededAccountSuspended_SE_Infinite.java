@@ -27,7 +27,7 @@ public class RogersSS_TC_94_AO_ValidateCreditLimitExceededAccountSuspended_SE_In
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","AccountOverviewSS"})
     public void validateCreditLimitExceededAccountSuspended_SE_Infinite() {
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");

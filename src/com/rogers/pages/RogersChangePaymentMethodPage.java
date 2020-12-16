@@ -1,8 +1,10 @@
 package com.rogers.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -25,43 +27,54 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	@FindBy(xpath = "//md-radio-button[@aria-label='Switch to manual payments' or @aria-label='Passer au paiement manuel']")
 	WebElement rdbtnSwitchToManualPayments;
 	
-	@FindBy(xpath = "//button[contains(@translate,'pm_invoice_yes')]")
+	@FindBy(xpath = "//rss-invoice-payment-method-review//button[@title='continue']")
 	WebElement btnCancelAutomaticPayments;
 
-	@FindBy(xpath = "//div[text()='Success! Your payment method has been changed.' or contains(text(),'est fait! Votre mode de paiement a été modifié')]")
+	@FindBy(xpath = "//*[text()='Success! Your payment method has been changed.' or contains(text(),'est fait! Votre mode de paiement a été modifié')]")
 	WebElement lblChangePaymentMethodSuccess;
 	
 	@FindBy(xpath = "//div[@class='current-pm']//div[@class='current-pm-value']/span")
 	WebElement lblCurrentPaymentMethod;
 	
-	@FindBy(xpath = "//md-radio-button[@aria-label='Use a bank account for automatic payments' or @aria-label='Effectuer des paiements automatiques à partir d’un compte bancaire']")
+	@FindBy(xpath = "//span[contains(text(),'Use a bank account for automatic payments') or contains(text(),' Effectuer des paiements automatiques à partir d’un compte bancaire ')]/ancestor::label")
 	WebElement optBankAccount;
 	
-	@FindBy(xpath = "//md-radio-button[contains(@aria-label,'credit card for automatic paymentsVisa Debit and Debit Mastercard are accepted') or contains(@aria-label,'Effectuer des paiements automatiques à partir d’un compte de carte')]")
+	@FindBy(xpath = "//span[contains(text(),' Use a credit card for automatic payments ') or contains(text(),' Effectuer des paiements automatiques à partir d’un compte de carte de crédit ')]/ancestor::label")
 	WebElement optCardAccount;
 	
-	@FindBy(xpath = "//md-radio-button[@aria-label='Switch to manual payments' or @aria-label='Passer au paiement manuel']")
+	@FindBy(xpath = "//span[contains(text(),'Change to manual payments')]/ancestor::label")
 	WebElement optManualPayments;
 	
-	@FindBy(xpath = "//button[@translate='ute.payment.method.pm_invoice_yes']")
+	@FindBy(xpath = "//span[contains(text(),' Yes, cancel automatic payments')]/ancestor::button")
 	WebElement btnYesCancelAutoPayment;
 
-	@FindBy(xpath = "//input[@id='transitNo']")
+	@FindBy(xpath = "//input[@formcontrolname='transit']")
 	WebElement txtTransit;
+		
+	@FindBy(xpath = "//input[@formcontrolname='transit']/parent::div")
+	WebElement lblTransit;
 	
-	@FindBy(xpath = "//input[@id='bankCode']")
+	@FindBy(xpath = "//input[@id='bankCode' or @formcontrolname='institution']")
 	WebElement txtInstitution;
 	
-	@FindBy(xpath = "//input[@id='accountNo']")
+	@FindBy(xpath = "//input[@id='bankCode' or @formcontrolname='institution']/parent::div")
+	WebElement lblInstitution;
+	
+	@FindBy(xpath = "//input[@id='accountNo' or @formcontrolname='account']")
 	WebElement txtAccount;
 	
-	@FindBy(xpath = "//button[@translate='ute.payment.method.manual_payment_continue']")	
+	@FindBy(xpath = "//input[@id='accountNo' or @formcontrolname='account']/parent::div")
+	WebElement lblAccount;
+	
+	@FindAll({		
+	@FindBy(xpath = "//span[text()=' Continue ']"),
+	@FindBy(xpath = "//button[@translate='ute.payment.method.manual_payment_continue']")})	
 	WebElement btnContinue;
 	
 	@FindBy(xpath = "//div[@class='confirm-review']/button[@translate='ute.payment.method.manual_payment_continue']")
 	WebElement btnContinueOnSecuredCC;
 	
-	@FindBy(xpath = "//span[text()='I accept the terms and conditions' or contains(text(),'accepte les modalités')]")
+	@FindBy(xpath = "//rss-setup-payment-terms-and-conditions//span[@translate='payment.setup-pay-through-bank.agree-checkbox']")
 	WebElement chkTnC;
 	
 	@FindBy(xpath = "//div[@translate='ute.payment.method.pm_cc_secure_message']")
@@ -82,14 +95,17 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='pm-success-text-content']/div[@class='success-header-text']")
 	WebElement lblSuccessHeader;
 	
-	@FindBy(xpath = "//div[@translate='ute.payment.method.pm_payment_for_next_billing_month_heading']")
+	@FindBy(xpath = "//span[text()='Success! Starting next month your bill payments will be made automatically.' or text()='C’est réussi! À partir du mois prochain, vos paiements de facture se feront automatiquement.']")
 	WebElement lblYouAutomaticPaymentWillStart;
 	
 	@FindBy(xpath = "//button[@translate='ute.payment.method.pm_done' or @translate='ute.payment.method.close_button']")
 	WebElement btnDone;
 	
-	@FindBy(xpath = "//button[@translate='ute.payment.method.pm_done']")
+	@FindBy(xpath = "//span[contains(text(),'Done') or contains(text(),'Terminé')]/ancestor::button")
 	WebElement btnChangePaymentDone;
+	
+	@FindBy(xpath = "//span[contains(text(),'Success! Your payment method has been changed.')]/ancestor::p")
+	WebElement msgChangePaymentSuccess;
 
 	@FindBy(id = "sema")
 	WebElement fraSemaphone;
@@ -105,6 +121,21 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 
 	@FindBy(xpath = "//select[@name='year']")
 	WebElement ddlExpiryYear;
+
+	@FindBy(xpath = "//ss-credit-card/following-sibling::div//button[@title='Continue' or @title='Continuer']")
+	WebElement btnContinueSetCC;
+	
+	@FindBy(xpath = "//rss-setup-payment-terms-and-conditions//button[@title='Continue' or @title='Continuer']")
+	WebElement btnSubmitTnC;
+	
+	@FindBy(xpath = "//rss-payment-card-detail-review/following-sibling::div//button[@title='Continue' or @title='Continuer']")
+	WebElement btnContinueReview;
+
+	@FindBy(xpath = "//p[text()='2. Review' or text()='2. Vérification']")
+	WebElement lblReview;
+
+	@FindBy(xpath = "//ds-picture/following-sibling::div//button[@title='Continue' or @title='Continuer']")
+	WebElement btnContinueBank;
 	
 	/**
 	 * Validates that the 'Change Payment Method' overlay is loaded successfully
@@ -121,6 +152,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkYesCancelAutomaticPayment() {
+		getReusableActionsInstance().clickIfAvailable(btnContinue);
 		getReusableActionsInstance().clickIfAvailable(btnCancelAutomaticPayments,30);
 	}
 	
@@ -130,9 +162,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyChangePaymentMethodToManual() {
-		return (getReusableActionsInstance().isElementVisible(lblChangePaymentMethodSuccess, 60) &&(
-				lblCurrentPaymentMethod.getText().equals("Manual payments")
-				|| lblCurrentPaymentMethod.getText().equals("Paiements manuels")));
+		return getReusableActionsInstance().isElementVisible(lblChangePaymentMethodSuccess, 60);
 	}
 
 	/**
@@ -246,7 +276,8 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setTransitCode(String strTransitCode) {
-		getReusableActionsInstance().waitForElementVisibility(txtTransit, 60);
+		getReusableActionsInstance().waitForElementVisibility(lblTransit, 60);
+		getReusableActionsInstance().clickIfAvailable(lblTransit);
 		getReusableActionsInstance().getWhenReady(txtTransit).sendKeys(strTransitCode);;
 		
 	}
@@ -257,7 +288,8 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setBankCode(String strBankCode) {
-		getReusableActionsInstance().waitForElementVisibility(txtInstitution, 60);
+		getReusableActionsInstance().waitForElementVisibility(lblInstitution, 60);
+		getReusableActionsInstance().clickIfAvailable(lblInstitution);
 		getReusableActionsInstance().getWhenReady(txtInstitution).sendKeys(strBankCode);;
 	}
 	
@@ -267,11 +299,12 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void setAccountNumber(String strAccountNumber) {
-		getReusableActionsInstance().waitForElementVisibility(txtAccount, 60);
+		getReusableActionsInstance().waitForElementVisibility(lblAccount, 60);
+		getReusableActionsInstance().clickIfAvailable(lblAccount);
 		getReusableActionsInstance().getWhenReady(txtAccount).sendKeys(strAccountNumber);
 		getReusableActionsInstance().staticWait(1000);
-		getReusableActionsInstance().getWhenReady(txtAccount).sendKeys(Keys.TAB);
-		getReusableActionsInstance().staticWait(1000);
+		//getReusableActionsInstance().getWhenReady(txtAccount).sendKeys(Keys.TAB);
+		//getReusableActionsInstance().staticWait(1000);
 	}
 
 	/**
@@ -296,7 +329,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkSubmit() {
-		getReusableActionsInstance().clickWhenReady(btnSubmit);
+		getReusableActionsInstance().clickWhenReady(btnSubmitTnC);
 	}
 	
 	/**
@@ -305,8 +338,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifySuccessMessageIsDisplayed() {
-		getReusableActionsInstance().waitForElementVisibility(lblSuccessHeader);
-		return (getReusableActionsInstance().isElementVisible(lblSuccessHeader) && getReusableActionsInstance().isElementVisible(lblYouAutomaticPaymentWillStart));
+		return getReusableActionsInstance().isElementVisible(lblYouAutomaticPaymentWillStart,60);
 	}
 	
 	/**
@@ -314,7 +346,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran 
 	 */
 	public void clkOnDone() {
-	getReusableActionsInstance().executeJavaScriptClick(btnDone);
+	getReusableActionsInstance().getWhenReady(btnChangePaymentDone).click();
 	}	
 	
 	/**
@@ -329,7 +361,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkButtonDoneChangePayment() {
-		getReusableActionsInstance().clickIfAvailable(btnChangePaymentDone);
+		getReusableActionsInstance().getWhenReady(btnChangePaymentDone,60).click();
 	}
 	
     /**
@@ -357,8 +389,32 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkContinueOnReviewPg() {
-		getReusableActionsInstance().executeJavaScriptClick(btnContinueOnSecuredCC);
+		getReusableActionsInstance().getWhenReady(btnContinueReview).click();
 		
+	}
+
+	/*
+	 * 
+	 */
+	public void clkContinueSettingCC() {
+		getReusableActionsInstance().getWhenReady(btnContinueSetCC).click();
+	}
+
+
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean isReviewCCDetailsPageDisplayed() {
+		// TODO Auto-generated method stub
+		return getReusableActionsInstance().isElementVisible(lblReview);
+	}
+
+	/**
+	 * 
+	 */
+	public void clkContinueBank() {
+		getReusableActionsInstance().getWhenReady(btnContinueBank).click();
 	}	
 	
 }

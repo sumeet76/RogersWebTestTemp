@@ -2260,6 +2260,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkDataAccessOn() {
+		getReusableActionsInstance().waitForElementTobeClickable(divDataAccessOFF, 60);
 		getReusableActionsInstance().getWhenReady(divDataAccessOFF,60).click();
 		
 	}
@@ -2280,6 +2281,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkDataAccessOff() {
+		getReusableActionsInstance().waitForElementTobeClickable(divDataAccessOn, 60);
 		getReusableActionsInstance().getWhenReady(divDataAccessOn,60).click();
 		
 	}

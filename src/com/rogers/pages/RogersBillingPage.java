@@ -52,7 +52,7 @@ public class RogersBillingPage extends BasePageClass {
 	@FindBy(xpath = "//*[@id='bb-bs-bill-total']")
 	WebElement divBillValueNew;
 	
-	@FindBy(id = "bb_iframe_container bb_iframe")
+	@FindBy(xpath =  "//iframe[@id = 'bb_iframe_container bb_iframe' or @id='viewBill_iframe']")
 	WebElement frameBillDetails;
 	
 	@FindBy (xpath = "//div[@translate='bb_error_message_no_bill']")

@@ -27,7 +27,7 @@ public class RogersSS_TC_98_AO_ValidateAccountOverviewAndCTAdetailsForThePrepaid
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","AccountOverviewSS"})
     public void validateAccountOverviewAndCTAdetailsForThePrepaidCustomer() {
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");

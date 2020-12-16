@@ -13,9 +13,9 @@ import com.rogers.pages.base.BasePageClass;
 
 
 
-public class RogersRecoverPassOrNamePage extends BasePageClass {
+public class RogersRegisterOrAccountRecoveryPage extends BasePageClass {
 	
-	public RogersRecoverPassOrNamePage(WebDriver driver) {
+	public RogersRegisterOrAccountRecoveryPage(WebDriver driver) {
 		super(driver);
 	}
 
@@ -294,7 +294,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @return true if password reset successful else false
 	 * @author Mirza.Kamran
 	 */
-	public boolean isPasswordRestSuccessForRecoveredUsernameOrPwd() {		
+	public boolean isPasswordSuccessfullySet() {		
 		return getReusableActionsInstance().isElementVisible(lblYourPasswordHasBeenReset);
 	}
 	
@@ -393,7 +393,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 	 * @param strRecoveredUserName 
 	 * 
 	 */
-	public void setRecoveryCode(String strRecoveredUserName) {
+	public void setVerificationCode(String strRecoveredUserName) {
 		
 		getReusableActionsInstance().getWhenReady(inputCode).sendKeys(strRecoveredUserName);
 	}
@@ -427,7 +427,7 @@ public class RogersRecoverPassOrNamePage extends BasePageClass {
 		
 	}
 
-	public String getVerificationCodeForRecoverUsername() {
+	public String getVerificationCode() {
 		String strMsg = getReusableActionsInstance().getWhenReady(lblYourVerificationCode).getText();
 		return strMsg.trim();
 	}

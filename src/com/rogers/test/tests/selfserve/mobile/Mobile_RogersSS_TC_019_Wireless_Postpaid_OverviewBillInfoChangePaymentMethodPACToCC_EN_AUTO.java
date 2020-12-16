@@ -51,9 +51,70 @@ public class Mobile_RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaym
 		tryLogin(strUsername, strPassword);
 		
 		reporter.reportLogWithScreenshot("Account overveiew page");
-		getRogersAccountOverviewPage().clkViewBill();
+		//getRogersAccountOverviewPage().clkViewBill();
 		reporter.reportLogWithScreenshot("clicked on View Bill");
 		common_business_flows.clkCloseFeedbackIfAvailableMobile();
+		
+		
+		if(getRogersAccountOverviewPage().isAutoPaymentAlreadySet())
+		{
+			reporter.reportLogWithScreenshot("Automatic payment is already set, trying to switch to manual");
+			
+			getRogersAccountOverviewPage().clkChangePaymentMethod();			
+			getRogersChangePaymentMethodPage().clkSwitchToManualPayments();
+			common_business_flows.clkCloseFeedbackIfAvailableMobile();
+			getRogersChangePaymentMethodPage().clkYesCancelAutomaticPayment();
+			reporter.reportLogWithScreenshot("Switch to manual completed");
+			common_business_flows.clkCloseFeedbackIfAvailableMobile();
+			getRogersChangePaymentMethodPage().clkButtonDoneChangePayment();
+			reporter.reportLogWithScreenshot("Account overveiew page");
+			getDriver().navigate().refresh();
+			reporter.reportLogWithScreenshot("Account overveiew page page refresh");
+			getRogersAccountOverviewPage().clkSetUpAutomaticPaymentMethod();
+		}else
+		{
+			getRogersAccountOverviewPage().clkSetUpAutoPaymentQuickLink();			
+			reporter.reportLogWithScreenshot("Set auto payment overlay");
+		}
+		
+		
+		getRogersChangePaymentMethodPage().clkUseCCForAutomaticPayments();
+		getRogersSecurePaymentPage().setCardNumberNew(TestDataHandler.paymentInfo.getCreditCardDetails().getNumber());
+	    String strDDMM = TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryMonth() + 
+	        			TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryYear().substring(2);
+	    getRogersSecurePaymentPage().setCardExpiry(strDDMM);	       
+	    getRogersSecurePaymentPage().setSecurityCode(TestDataHandler.paymentInfo.getCreditCardDetails().getCVV());				
+		//getRogersChangePaymentMethodPage().setCreditCardNumber(TestDataHandler.paymentInfo.getCreditCardDetails().getNumber());
+		//getRogersChangePaymentMethodPage().setCreditcardCVV(TestDataHandler.paymentInfo.getCreditCardDetails().getCVV());
+		//getRogersChangePaymentMethodPage().selectCreditcardExpiryMonth(TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryMonth());
+		//getRogersChangePaymentMethodPage().selectCreditcardExpiryYear(TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryYear());
+		reporter.reportLogWithScreenshot("CC details entered");
+		getRogersChangePaymentMethodPage().clkContinueSettingCC();
+		reporter.hardAssert(getRogersChangePaymentMethodPage().isReviewCCDetailsPageDisplayed(),
+				"CC Details encrypted msg displayed",
+				"CC Details encrypted msg NOT displayed");
+		reporter.reportLogWithScreenshot("CC secured details");
+		
+		getRogersChangePaymentMethodPage().clkContinueOnReviewPg();
+		reporter.hardAssert(getRogersChangePaymentMethodPage().verifySuccessMessageIsDisplayed(),
+				"Set up auto payment is successful",
+				"Set up auto payment is not successful");
+ 		reporter.reportLogWithScreenshot("Payment complete page.");
+		getRogersChangePaymentMethodPage().clkOnDone();
+		//check payment method on overview page	
+		getDriver().navigate().refresh();
+		reporter.hardAssert(getRogersAccountOverviewPage().verifyThatAutoPaymentWithCCIsDisplayedOnAccountOverViewPage()
+				,"Auto payment CC details displayed on the account overview page"
+				,"Auto payment CC details NOT displayed on the account overview page");
+ 		reporter.reportLogWithScreenshot("Account overview page, check the payment method.");
+
+		
+		
+		
+		
+		
+		// ==================================================   old code  =============================
+		/*
 		if(!getRogersAccountOverviewPage().isSetAutoPaymentDisplayedMobile())
 		{
 			reporter.reportLogWithScreenshot("Automatic payment is already set, trying to switch to manual");
@@ -94,7 +155,7 @@ public class Mobile_RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaym
 				,"Auto payment CC details displayed on the account overview page"
 				,"Auto payment CC details NOT displayed on the account overview page");
  		reporter.reportLogWithScreenshot("Account overview page, check the payment method.");
-
+		*/
     }
 
 

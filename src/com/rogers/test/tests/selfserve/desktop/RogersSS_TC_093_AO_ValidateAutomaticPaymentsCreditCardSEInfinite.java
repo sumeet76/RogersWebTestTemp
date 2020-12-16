@@ -44,37 +44,45 @@ public class RogersSS_TC_093_AO_ValidateAutomaticPaymentsCreditCardSEInfinite ex
     	String strPassword = TestDataHandler.tc6269.getPassword();		
 		tryLogin(strUsername, strPassword);
 		reporter.reportLogWithScreenshot("Account overveiew page");		
-		getRogersAccountOverviewPage().clkViewBill();
+		//getRogersAccountOverviewPage().clkViewBill();
 		if(!getRogersAccountOverviewPage().isCCDisplayedOnAccountOverViewPage())
 		{
-			if(!getRogersAccountOverviewPage().isSetAutoPaymentDisplayed())
-			{				
-				getRogersAccountOverviewPage().clkBillingAndPaymentsSubMenuChangePaymentMethod();				
+			if(getRogersAccountOverviewPage().isAutoPaymentAlreadySet())
+			{
+				reporter.reportLogWithScreenshot("Automatic payment is already set, trying to switch to manual");
+				getRogersAccountOverviewPage().clkChangePaymentMethod();			
 			}else
 			{
-				getRogersAccountOverviewPage().clkBillngsAndPaymentsSubMenuSetUpAutomaticPaymentMethod();
+				getRogersAccountOverviewPage().clkSetUpAutoPaymentQuickLink();			
 				reporter.reportLogWithScreenshot("Set auto payment overlay");
 			}				
 			getRogersChangePaymentMethodPage().clkUseCCForAutomaticPayments();
-			getRogersChangePaymentMethodPage().setCreditCardNumber(TestDataHandler.paymentInfo.getCreditCardDetails().getNumber());
-			getRogersChangePaymentMethodPage().setCreditcardCVV(TestDataHandler.paymentInfo.getCreditCardDetails().getCVV());
-			getRogersChangePaymentMethodPage().selectCreditcardExpiryMonth(TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryMonth());
-			getRogersChangePaymentMethodPage().selectCreditcardExpiryYear(TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryYear());
+			getRogersSecurePaymentPage().setCardNumberNew(TestDataHandler.paymentInfo.getCreditCardDetails().getNumber());
+		    String strDDMM = TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryMonth() + 
+		        			TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryYear().substring(2);
+		    getRogersSecurePaymentPage().setCardExpiry(strDDMM);	       
+		    getRogersSecurePaymentPage().setSecurityCode(TestDataHandler.paymentInfo.getCreditCardDetails().getCVV());
+			
+			
+			//getRogersChangePaymentMethodPage().setCreditCardNumber(TestDataHandler.paymentInfo.getCreditCardDetails().getNumber());
+			//getRogersChangePaymentMethodPage().setCreditcardCVV(TestDataHandler.paymentInfo.getCreditCardDetails().getCVV());
+			//getRogersChangePaymentMethodPage().selectCreditcardExpiryMonth(TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryMonth());
+			//getRogersChangePaymentMethodPage().selectCreditcardExpiryYear(TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryYear());
 			reporter.reportLogWithScreenshot("CC details entered");
-			getRogersChangePaymentMethodPage().clkContinue();
-			reporter.softAssert(getRogersChangePaymentMethodPage().labelCCDetailsWillBeKeptEncryptedMsgDisplayed(),
+			getRogersChangePaymentMethodPage().clkContinueSettingCC();
+			reporter.hardAssert(getRogersChangePaymentMethodPage().isReviewCCDetailsPageDisplayed(),
 					"CC Details encrypted msg displayed",
 					"CC Details encrypted msg NOT displayed");
 			reporter.reportLogWithScreenshot("CC secured details");
-			reporter.softAssert(getRogersChangePaymentMethodPage().isCCSecuredAreaDisplayed(),
-					"CC secured details displayed",
-					"CC secured details NOT displayed");
+			
 			getRogersChangePaymentMethodPage().clkContinueOnReviewPg();
-			reporter.softAssert(getRogersChangePaymentMethodPage().verifySuccessMessageIsDisplayed(),
+			reporter.hardAssert(getRogersChangePaymentMethodPage().verifySuccessMessageIsDisplayed(),
 					"Set up auto payment is successful",
 					"Set up auto payment is not successful");
 	 		reporter.reportLogWithScreenshot("Payment complete page.");
-	 		getRogersChangePaymentMethodPage().clkOnDone();
+			getRogersChangePaymentMethodPage().clkOnDone();
+			//check payment method on overview page	
+			getDriver().navigate().refresh();
 		}	
 		
 		reporter.softAssert((getRogersAccountOverviewPage().verifyThatAutoPaymentWithCCIsDisplayedOnAccountOverViewPage()

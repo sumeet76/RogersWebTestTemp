@@ -35,8 +35,36 @@ public class Mobile_RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest exten
 			        		"Login Error. Refer screenshot");
         common_business_flows.clkCloseFeedbackIfAvailableMobile();
         getRogersAccountOverviewPage().clkViewBill();
-        reporter.reportLogWithScreenshot("Clicked on view bill");
-        getRogersAccountOverviewPage().clickMakePayment();
+        reporter.reportLogWithScreenshot("Clicked on view bill");        
+        common_business_flows.clkCloseFeedbackIfAvailableMobile();
+        getRogersAccountOverviewPage().clickMakePayment();        
+        reporter.reportLogWithScreenshot("Make Payment button is clicked.");		
+        reporter.hardAssert(getRogersSecurePaymentPage().verifyNewMakePaymentViewLoad(),
+        		"Secure payment loaded",
+        		"Secure Payment overlay error. Refer screenshot"); 
+        String strPaymentAmount="2";
+        getRogersMakePaymentPage().selectHowWouldYouLikeToPayNew(RogersMakePaymentPage.MakePayOptions.credit);
+        getRogersSecurePaymentPage().setPaymentAmountNew(strPaymentAmount);         
+        reporter.reportLogWithScreenshot("Card option selected");                
+        getRogersSecurePaymentPage().setCardNumberNew(TestDataHandler.paymentInfo.getCreditCardDetails().getNumber());
+        String strDDMM = TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryMonth() + 
+        			TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryYear().substring(2);
+        getRogersSecurePaymentPage().setCardExpiry(strDDMM);
+        
+        getRogersSecurePaymentPage().setSecurityCode(TestDataHandler.paymentInfo.getCreditCardDetails().getCVV());
+        getRogersSecurePaymentPage().clickReviewAndContinue();
+        getRogersSecurePaymentPage().clickPayNow();
+        
+        reporter.reportLogWithScreenshot("Payment status");
+        reporter.hardAssert(getRogersSecurePaymentPage().verifyPaymentSuccessful(strPaymentAmount),
+			        		"Payment confirmaton",
+			        		"Payment Confirmation message Error. Refer screenshot");        
+        String strReferenceNumber= getRogersSecurePaymentPage().getTransactionReferenceNumberNew();
+        reporter.reportLogWithScreenshot("Payment Successful, Details :"+strReferenceNumber);
+    
+        getRogersSecurePaymentPage().clickDone();
+        
+        /*
 		reporter.reportLogWithScreenshot("Make Payment button is clicked.");
         reporter.hardAssert(getRogersSecurePaymentPage().verifySecurePaymentLoad(),
 			        		"Secure payment loaded",
@@ -67,6 +95,9 @@ public class Mobile_RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest exten
         reporter.hardAssert(getRogersBillingPage().verifyThePaymentHistoryRecordMobile(strReferenceNumber),
         					"The payment history record is created for the credit transaction"
         					,"The payment history is not created for the credit transaction, please investigate for ref  num :"+strReferenceNumber);
+        					
+        					*/
+        
         
     }
     @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
