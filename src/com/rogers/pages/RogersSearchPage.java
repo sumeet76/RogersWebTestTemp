@@ -250,7 +250,8 @@ public class RogersSearchPage extends BasePageClass {
 
 
     public List<WebElement> getParentFilters(String strGrandParentFilterName) {
-        return getDriver().findElements(By.xpath("//div[@id='Shop-body-1']/div/button/div/p[starts-with(text,'" + strGrandParentFilterName + "')]/ancestor::button"));
+      //  return getDriver().findElements(By.xpath("//div[@id='Shop-body-1']/div/button/div/p[starts-with(text,'" + strGrandParentFilterName + "')]/ancestor::button"));
+        return getDriver().findElements(By.xpath("//div[@id='Shop-body-1']/div/button"));
     }
 
     public boolean isParentFilterExpanded(WebElement parentFilter) {
