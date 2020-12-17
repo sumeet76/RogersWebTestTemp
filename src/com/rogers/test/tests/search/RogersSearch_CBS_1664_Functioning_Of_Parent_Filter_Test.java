@@ -17,7 +17,7 @@ import utils.CSVReader;
 public class RogersSearch_CBS_1664_Functioning_Of_Parent_Filter_Test extends BaseTestClass {
 
 
-    @DataProvider(name = "FilterData",parallel=true)
+    @DataProvider(name = "FilterData",parallel=false)
     public Object[] testData() throws IOException {
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
