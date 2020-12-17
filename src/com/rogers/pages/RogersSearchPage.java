@@ -225,13 +225,13 @@ public class RogersSearchPage extends BasePageClass {
       //  getReusableActionsInstance().getWhenVisible(By.xpath("//div[@class='ds-filter__listSet']/div/button/div/p[starts-with(text(),'"
         //        + strFilterName + "')]/parent::div/parent::button"),100).sendKeys(Keys.ENTER);
 
-        WebElement grandParentFilter = getReusableActionsInstance().getWhenVisible(By.xpath("//div[@class='ds-filter__listSet']/div/button/div/p[starts-with(text(),'"
-                + strFilterName + "')]/parent::div/parent::button"),100);
+//        WebElement grandParentFilter = getReusableActionsInstance().getWhenVisible(By.xpath("//div[@class='ds-filter__listSet']/div/button/div/p[starts-with(text(),'"
+//                + strFilterName + "')]/parent::div/parent::button"),100);
 
-        getReusableActionsInstance().staticWait(2000);
+//        getReusableActionsInstance().staticWait(2000);
 
-        grandParentFilter.click();
-
+//        grandParentFilter.click();
+        getReusableActionsInstance().clickWhenReady(By.xpath("//button[contains(@id,'"+strFilterName+"-heading')]"),5);
 
     }
 
