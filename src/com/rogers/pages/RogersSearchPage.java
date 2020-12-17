@@ -222,8 +222,16 @@ public class RogersSearchPage extends BasePageClass {
 
         System.out.println("+++++++++"+getReusableActionsInstance()+"++++++++++"+ Thread.currentThread().getName()+"  "+getDriver()+ "***************"+"Page: "+this );
 
-        getReusableActionsInstance().getWhenVisible(By.xpath("//div[@class='ds-filter__listSet']/div/button/div/p[starts-with(text(),'"
-                + strFilterName + "')]/parent::div/parent::button"),100).sendKeys(Keys.ENTER);
+      //  getReusableActionsInstance().getWhenVisible(By.xpath("//div[@class='ds-filter__listSet']/div/button/div/p[starts-with(text(),'"
+        //        + strFilterName + "')]/parent::div/parent::button"),100).sendKeys(Keys.ENTER);
+
+        WebElement grandParentFilter = getReusableActionsInstance().getWhenVisible(By.xpath("//div[@class='ds-filter__listSet']/div/button/div/p[starts-with(text(),'"
+                + strFilterName + "')]/parent::div/parent::button"),100);
+
+        getReusableActionsInstance().staticWait(2000);
+
+        grandParentFilter.click();
+
 
     }
 
