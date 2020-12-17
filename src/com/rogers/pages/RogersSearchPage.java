@@ -271,7 +271,7 @@ public class RogersSearchPage extends BasePageClass {
     public boolean isGrandParentFilterExpanded(String strFilterName) {
 
         System.out.println("Starting Xpath");
-       // getReusableActionsInstance().staticWait(10000);
+        getReusableActionsInstance().staticWait(1000);
 
        // WebElement expandedFilter = getDriver().findElement(By.xpath("//div[@class='ds-filter__listSet']/div/button/div/p[starts-with(text(),'" + strFilterName + "')]/ancestor::button//following-sibling::ds-expander[@class='ng-tns-c9-2']/div"));
         WebElement expandedFilter = getDriver().findElement(By.xpath("//button[contains(@id,'-heading')]/following-sibling::ds-expander"));
