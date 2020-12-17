@@ -76,7 +76,7 @@ public class RogersSS_TC_031_Postpaid_ChangeContactInfo extends BaseTestClass {
         	strNewEmail=strEmail;
     	}
     	reporter.reportLogWithScreenshot("Contact email information is entered.");
-    	getRogersProfileAndSettingsPage().clkBtnAddContactEmailContinue();
+    	getRogersProfileAndSettingsPage().clkBtnContinue();
     	getRogersProfileAndSettingsPage().clkBtnAddContactEmailSubmit();
 		reporter.reportLogWithScreenshot("Contact email information submitted.");
 	    reporter.hardAssert((getRogersProfileAndSettingsPage().clkBtnAddContactEmailFinish()
