@@ -668,7 +668,7 @@ public class RogersSearchPage extends BasePageClass {
 
 
     public boolean validateResultsTag(String strGrandParentFilter, String strParentFilter) {
-        String[] strParentFilterName = strParentFilter.split("\\[");
+        String[] strParentFilterName = strParentFilter.split("\\(");
         String strExpectedTag = strGrandParentFilter.trim() + " - " + strParentFilterName[0].trim();
         getReusableActionsInstance().waitForAllElementsToBeRefreshedAndVisible(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]"),10);
         List<WebElement> resultlinkTags = getDriver().findElements(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]"));
