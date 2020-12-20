@@ -264,9 +264,9 @@ public class RogersSearchPage extends BasePageClass {
    */
   public boolean isParentFilterExpanded(String strGrandParentFilterName) {
 
-      WebElement expandedFilter = getDriver().findElement(By.xpath("//div[contains(@id,'"+strGrandParentFilterName+"-body')]/div/button"));
+      WebElement expandedFilter = getDriver().findElement(By.xpath("//div[contains(@id,'"+strGrandParentFilterName+"-body')]/div/button/following-sibling::ds-expander"));
 
-      return expandedFilter.getAttribute("aria-expanded").equals("true");
+      return expandedFilter.getAttribute("ng-reflect-expanded").equals("true");
 
   }
 
