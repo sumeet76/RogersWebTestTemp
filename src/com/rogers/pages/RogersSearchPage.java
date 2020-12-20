@@ -263,9 +263,9 @@ public class RogersSearchPage extends BasePageClass {
     }
    */
   public boolean isParentFilterExpanded(String strParentFilter) {
-      getReusableActionsInstance().staticWait(1000);
+      String[] strParentFilterName = strParentFilter.split("\\(");
 
-      WebElement expandedFilter = getDriver().findElement(By.xpath("//button[contains(@id,'"+strParentFilter+"-heading')]"));
+      WebElement expandedFilter = getDriver().findElement(By.xpath("//button[contains(@id,'"+strParentFilterName+"-heading')]"));
 
       return expandedFilter.getAttribute("aria-expanded").equals("true");
 
