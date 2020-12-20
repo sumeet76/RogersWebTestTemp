@@ -44,11 +44,11 @@ public class RogersSearch_CBS_1667_RogersSearch_CBS_Only_One_Parent_Filter_Can_B
 				//reporter.reportLogWithScreenshot(lstParentFilters.get(j).getText()+" is clicked");
 				reporter.reportLogWithScreenshot(strParentFilter +" is clicked");
 				//reporter.softAssert(getRogersSearchPage().isParentFilterExpanded(lstParentFilters.get(j)),
-				reporter.softAssert(getRogersSearchPage().isParentFilterExpanded(strFilters[i]),
+				reporter.softAssert(getRogersSearchPage().isParentFilterExpanded(strParentFilter),
 						lstParentFilters.get(j).getText()+" is expanded", lstParentFilters.get(j).getText()+" is not expanded");
 				for(int k=0; k<lstParentFilters.size(); k++) {
 					if(j!=k) {
-						reporter.softAssert(!(getRogersSearchPage().isParentFilterExpanded(strFilters[i])),
+						reporter.softAssert(!(getRogersSearchPage().isParentFilterExpanded(strParentFilter)),
 								lstParentFilters.get(k).getText()+" is not expanded", lstParentFilters.get(k).getText()+" is expanded");
 					}
 				}
