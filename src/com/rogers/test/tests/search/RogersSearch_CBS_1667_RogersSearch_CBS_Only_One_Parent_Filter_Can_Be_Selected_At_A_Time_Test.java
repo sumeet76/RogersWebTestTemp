@@ -32,6 +32,7 @@ public class RogersSearch_CBS_1667_RogersSearch_CBS_Only_One_Parent_Filter_Can_B
 		getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
 	
 		List<WebElement> lstParentFilters;
+		String strParentFilter;
 		String[] strFilters = Arrays.copyOfRange(csvRow, 1, csvRow.length);
 		for(int i=0; i<strFilters.length; i++) {
 			getRogersSearchPage().clkGrandParentFilter(strFilters[i]);
@@ -39,12 +40,15 @@ public class RogersSearch_CBS_1667_RogersSearch_CBS_Only_One_Parent_Filter_Can_B
 			lstParentFilters = getRogersSearchPage().getParentFilters(strFilters[i]);
 			for(int j=0; j<lstParentFilters.size(); j++) {
 				getRogersSearchPage().clkParentFilter(lstParentFilters.get(j));
-				reporter.reportLogWithScreenshot(lstParentFilters.get(j).getText()+" is clicked");
-				reporter.softAssert(getRogersSearchPage().isParentFilterExpanded(lstParentFilters.get(j)),
+				strParentFilter = lstParentFilters.get(j).getText();
+				//reporter.reportLogWithScreenshot(lstParentFilters.get(j).getText()+" is clicked");
+				reporter.reportLogWithScreenshot(strParentFilter +" is clicked");
+				//reporter.softAssert(getRogersSearchPage().isParentFilterExpanded(lstParentFilters.get(j)),
+				reporter.softAssert(getRogersSearchPage().isParentFilterExpanded(strParentFilter),
 						lstParentFilters.get(j).getText()+" is expanded", lstParentFilters.get(j).getText()+" is not expanded");
 				for(int k=0; k<lstParentFilters.size(); k++) {
 					if(j!=k) {
-						reporter.softAssert(!(getRogersSearchPage().isParentFilterExpanded(lstParentFilters.get(k))),
+						reporter.softAssert(!(getRogersSearchPage().isParentFilterExpanded(strParentFilter)),
 								lstParentFilters.get(k).getText()+" is not expanded", lstParentFilters.get(k).getText()+" is expanded");
 					}
 				}

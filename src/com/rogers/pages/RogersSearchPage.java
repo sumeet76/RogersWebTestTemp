@@ -254,13 +254,22 @@ public class RogersSearchPage extends BasePageClass {
         return getDriver().findElements(By.xpath("//div[contains(@id,'"+strGrandParentFilterName+"-body')]/div/button"));
     }
 
-    public boolean isParentFilterExpanded(WebElement parentFilter) {
+  /**  public boolean isParentFilterExpanded(WebElement parentFilter) {
 
         WebElement expandedFilter = parentFilter.findElement(By.xpath("ancestor::button"));
 
         return expandedFilter.getAttribute("aria-expanded").equals("true");
 
     }
+   */
+  public boolean isParentFilterExpanded(String strGrandParentFilterName) {
+
+      WebElement expandedFilter = getDriver().findElement(By.xpath("//div[contains(@id,'"+strGrandParentFilterName+"-body')]/div/button"));
+
+      return expandedFilter.getAttribute("aria-expanded").equals("true");
+
+  }
+
 
     public String getResultsCountAndCurrentPageDetails(){
         //Waiting for right details to be available
