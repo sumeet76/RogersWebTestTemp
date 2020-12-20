@@ -263,7 +263,7 @@ public class RogersSearchPage extends BasePageClass {
     }
    */
   public boolean isParentFilterExpanded(String strParentFilter) {
-      String strParentFilterName = String.valueOf(strParentFilter.split("\\("));
+      String[] strParentFilterName = strParentFilter.split("\\(");
 
       WebElement expandedFilter = getDriver().findElement(By.xpath("//button[contains(@id,'"+strParentFilterName+"-heading')]"));
 
