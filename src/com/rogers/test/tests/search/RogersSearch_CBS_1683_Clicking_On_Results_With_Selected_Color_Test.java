@@ -24,9 +24,11 @@ public class RogersSearch_CBS_1683_Clicking_On_Results_With_Selected_Color_Test 
 
 		getDriver().get(System.getProperty("SearchUrl")+strSearchTerm);
 
-		getRogersSearchPage().clkGrandParentFilter("Shop");
-		getRogersSearchPage().clkParentFilter("Shop","Wireless");
+		getRogersSearchPage().clkShopAndThenWirelessFilter();
 		reporter.reportLogWithScreenshot("Shop and Wireless Filters clicked");
+		//getRogersSearchPage().clkGrandParentFilter("Shop");
+		//getRogersSearchPage().clkParentFilter("Shop","Wireless");
+		//reporter.reportLogWithScreenshot("Shop and Wireless Filters clicked");
 
 		strColorFilters = getRogersSearchPage().getColorFilters();
 		for(int i=0;i<strColorFilters.size();i++) {
@@ -55,8 +57,10 @@ public class RogersSearch_CBS_1683_Clicking_On_Results_With_Selected_Color_Test 
 				} else {
 					reporter.reportLogFailWithScreenshot("Failed to land on Device Config page for following device: "  + linkDetails + " & following color: " + resultColorOptions.get(j));
 					getDriver().get(System.getProperty("SearchUrl")+strSearchTerm);
-					getRogersSearchPage().clkGrandParentFilter("Shop");
-					getRogersSearchPage().clkParentFilter("Shop","Wireless");
+					getRogersSearchPage().clkShopAndThenWirelessFilter();
+					reporter.reportLogWithScreenshot("Shop and Wireless Filters clicked");
+					//getRogersSearchPage().clkGrandParentFilter("Shop");
+					//getRogersSearchPage().clkParentFilter("Shop","Wireless");
 					strColorFilters = getRogersSearchPage().getColorFilters();
 					for(int i=0;i<strColorFilters.size();i++) {
 						getRogersSearchPage().clkColorType(strColorFilters.get(i));

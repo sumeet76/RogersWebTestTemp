@@ -820,7 +820,8 @@ public class RogersSearchPage extends BasePageClass {
     }
 
     public List<WebElement> getAllResultLinks() {
-        return getDriver().findElements(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]/preceding-sibling::a"));
+       // return getDriver().findElements(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]/preceding-sibling::a"));
+        return getDriver().findElements(By.xpath("//a[contains(@id,'searchtitle')]"));
     }
 
     public void clkResultLink(WebElement resultLink) {
