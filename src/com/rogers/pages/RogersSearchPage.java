@@ -1096,7 +1096,7 @@ public class RogersSearchPage extends BasePageClass {
         List<String> colorOptions = new ArrayList<String>();
         List<WebElement> resultColorOptions = resultLink.findElements(By.xpath("parent::div/following-sibling::ds-radio-group//ds-selection"));
         for(int i=0;i<resultColorOptions.size();i++) {
-            colorOptions.add(resultColorOptions.get(i).getAttribute("ng-reflect-value").trim());
+            colorOptions.add(resultColorOptions.get(i).getAttribute("ng-reflect-value").trim().replace(" ",""));
         }
         return colorOptions;
     }
