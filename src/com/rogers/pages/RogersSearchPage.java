@@ -1074,11 +1074,19 @@ public class RogersSearchPage extends BasePageClass {
     public boolean validateResultsColor(String strColor) {
         List<WebElement> resultColoursList = getDriver().findElements(By.xpath("//app-search-results//ds-selection[@ng-reflect-type='color']"));
         for(int i=0;i<resultColoursList.size();i++) {
+          //  if(resultColoursList.get(i).getAttribute("ng-reflect-checked").equals("true"))
+            //return true;
 
-            if(!(resultColoursList.get(i).getAttribute("ng-reflect-checked='true'")
+        /**   if(!(resultColoursList.get(i).getAttribute("ng-reflect-value")
                     .trim().toLowerCase().equals(strColor.toLowerCase()))) {
                 return false;
+            } */
+            if((resultColoursList.get(i).getAttribute("ng-reflect-value")
+                    .trim().toLowerCase().equals(strColor.toLowerCase()))) {
+                return resultColoursList.get(i).getAttribute("ng-reflect-checked").equals("true");
+
             }
+
         }
         return true;
     }
