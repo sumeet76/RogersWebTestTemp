@@ -1083,7 +1083,7 @@ public class RogersSearchPage extends BasePageClass {
             } */
             if((resultColoursList.get(i).getAttribute("ng-reflect-value")
                     .trim().toLowerCase().equals(strColor.toLowerCase()))) {
-                return resultColoursList.get(i).getAttribute("ng-reflect-checked").equals("false");
+                return resultColoursList.get(i).getAttribute("ng-reflect-checked").equals("true");
 
             }
 
