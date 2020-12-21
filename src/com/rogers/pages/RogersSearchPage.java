@@ -314,7 +314,7 @@ public class RogersSearchPage extends BasePageClass {
         getReusableActionsInstance().clickWhenReady(By.xpath("//button[@id='Shop-heading-1']"));
         getReusableActionsInstance().staticWait(500);
       //  getReusableActionsInstance().clickWhenReady(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p[starts-with(text(),'Wireless')]"));
-        getReusableActionsInstance().clickWhenReady(By.xpath("//button[@id='Wireless-heading-4']"));
+        getReusableActionsInstance().clickWhenReady(By.xpath("//div[contains(@id,'Shop-body-1')]/div/button[contains(@id,'Wireless-heading')]"));
 		/*WebElement parentFilter = getDriver().findElement(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'"
 				+ strFilterName + "')]"));
 
