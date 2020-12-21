@@ -245,7 +245,7 @@ public class RogersSearchPage extends BasePageClass {
         getReusableActionsInstance().javascriptScrollToTopOfPage();
         getReusableActionsInstance().clickWhenReady(parentFilter);
         System.out.println("+++++++++"+getReusableActionsInstance()+"++++++++++"+ Thread.currentThread().getName()+"  "+getDriver()+ "***************"+"Page: "+this);
-        getReusableActionsInstance().staticWait(500);
+        getReusableActionsInstance().staticWait(1000);
     }
 
 
@@ -263,7 +263,7 @@ public class RogersSearchPage extends BasePageClass {
     }
    */
   public boolean isParentFilterExpanded(String strGrandParentFilterName) {
-      getReusableActionsInstance().staticWait(1000);
+     // getReusableActionsInstance().staticWait(1000);
 
       WebElement expandedFilter = getDriver().findElement(By.xpath("//div[contains(@id,'"+strGrandParentFilterName+"-body')]/div/button/following-sibling::ds-expander"));
 
