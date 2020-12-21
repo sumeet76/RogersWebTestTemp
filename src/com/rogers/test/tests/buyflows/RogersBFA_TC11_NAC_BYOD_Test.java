@@ -15,7 +15,7 @@ public class RogersBFA_TC11_NAC_BYOD_Test extends BaseTestClass {
 	@BeforeMethod (alwaysRun = true) @Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.redesignrogers, method);
+		startSession(System.getProperty("AWSBYODUrl"), strBrowser, strLanguage, RogersEnums.GroupName.redesignrogers, method);
 	}
 	
 	@AfterMethod(alwaysRun = true)
@@ -27,13 +27,13 @@ public class RogersBFA_TC11_NAC_BYOD_Test extends BaseTestClass {
 	public void nacByodFlow() throws InterruptedException {
 		//############################Plan config page###############################
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(), "BreadCrumb on Plan config page is displaying fine","BreadCrumb is not displaying fine");
-		getRogersPlanConfigPage().clickPreCartSummaryContinueButton();
+		getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
 		getRogersPlanConfigPage().clickPreCartSummaryContinueButtonTalkOptions();
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
+		getRogersPlanConfigPage().clickGetBPOOffer();
 		getRogersPlanConfigPage().clickPreCartSummaryContinueButtonAddOns();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on your addon's");
-		getRogersPlanConfigPage().clickGetBPOOffer();
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on proceed to checkout");
 		//############################CheckoutPage############################//

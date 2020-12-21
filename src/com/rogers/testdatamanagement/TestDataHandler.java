@@ -108,10 +108,13 @@ public class TestDataHandler {
 	public static HUPData testCase09;
 	public static HUPData testCase10;
 	public static HUPData testCase12;
+	public static HUPData tc13HUPNonShareNoTerm;
 	public static RedesignRpotgData testCase11;
 	public static RedesignRpotgData tc01NonRpotg;
 	public static RedesignRpotgData tc02Rpotg;
 	public static RedesignRpotgData tc03NACBopisTerm;
+	public static RedesignRpotgData tc06NACBYODTermBopis;
+	public static RedesignRpotgData tc04RpotgNoTerm;
 	public static HUPData buyFlowsOVtestCase01;
 	public static HUPData buyFlowsOVtestCase02;
 	public static HUPData buyFlowsOVtestCase05;
@@ -347,6 +350,9 @@ public class TestDataHandler {
     	tc02Rpotg=YamlHandler.getRedesignNACData("tc02Rpotg");
 		testCase12 = YamlHandler.getHUPdata("tc12HUP");
 		tc03NACBopisTerm = YamlHandler.getRedesignNACData("tc03NACBopisTerm");
+		tc04RpotgNoTerm = YamlHandler.getRedesignNACData("tc04NACRpotgNoTerm");
+		tc13HUPNonShareNoTerm = YamlHandler.getHUPdata("tc13HUPNonShareNoTerm");
+		tc06NACBYODTermBopis = YamlHandler.getRedesignNACData("tc06NacByodTermBopis");
 	}
 	
 	private static void buyFlowsOneViewDataInit() throws FileNotFoundException {

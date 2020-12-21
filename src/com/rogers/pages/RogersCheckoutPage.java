@@ -64,7 +64,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "(//div[contains(.,'Billing Address')])[13]")
 	WebElement billingAddressCreateProfile;
 
-	@FindBy(xpath = "(//div[contains(.,'Billing Address')])[13]/input")
+	@FindBy(xpath = "(//div[contains(.,'Billing Address')])[13]//input[contains(@id,'ds-form-input-id')]")
 	WebElement inputBillingAddress;
 
 	@FindBy(xpath = "//r-address-auto-complete[@data-test='personal-info-address']//li[@class='ng-star-inserted'][1]")
@@ -436,7 +436,8 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public String setBillingAddressCreateProfile(String billingAddress) {
 		getReusableActionsInstance().clickWhenReady(billingAddressCreateProfile);
-		getReusableActionsInstance().getWhenReady(inputBillingAddress,3).sendKeys(billingAddress);
+		inputBillingAddress.sendKeys(billingAddress);
+		//getReusableActionsInstance().getWhenReady(inputBillingAddress,15).sendKeys(billingAddress);
 		getReusableActionsInstance().moveToElementAndClick(billingAddressSelection, 5);
 		return getReusableActionsInstance().getWhenReady(inputBillingAddress,20).getAttribute("value");
 	}
@@ -848,7 +849,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void clkBillingContinueButton() {
-		getReusableActionsInstance().getWhenReady(btnBillingContinueButton).click();
+		getReusableActionsInstance().getWhenReady(btnBillingContinueButton,30).click();
 	}
 
 	/**

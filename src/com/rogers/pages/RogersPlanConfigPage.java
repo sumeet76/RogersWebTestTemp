@@ -4,6 +4,7 @@ import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -52,7 +53,9 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[@id='get-bpo-offer-button' or @data-test='bpo-offer-modal-button-primary']")
     WebElement getBPOOfferOnDeviceProtection;
 
-    @FindBy(xpath = "//button[@id='Skip the Offer']")
+    @FindAll({
+    @FindBy(xpath = "//button[@id='Skip the Offer']"),
+    @FindBy(xpath = "//div[@class='ds-modal__footer mb-24 mb-sm-40']//button[contains(@class,'-tertiary -large')]")})
     WebElement skipBPOOfferOnDeviceProtection;
 
     @FindBy(xpath = "//div[@class='d-flex flex-row']")
@@ -148,6 +151,14 @@ public class RogersPlanConfigPage extends BasePageClass {
             xpathDcDoTo = createXpathWithInputData(deviceCost);
             getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo));
         }
+    }
+
+    /**
+     * Select No term Device Cost on Plan config page
+     * @author saurav.goyal
+     */
+    public void selectNoTermDeviceDeviceCost(){
+        getReusableActionsInstance().clickWhenReady(By.xpath("//span[@data-caption='NOTERM_false']//ancestor::label") , 30);
     }
 
     /**
@@ -311,7 +322,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clickPreCartTalkOptionContinueButton() {
-        getReusableActionsInstance().clickWhenReady(preCartTalkOptionContinueButton);
+        getReusableActionsInstance().clickIfAvailable(preCartTalkOptionContinueButton);
     }
     
     /**
@@ -440,7 +451,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void skipBPOOffer() {
-        if(getReusableActionsInstance().isElementVisible(skipBPOOfferOnDeviceProtection, 5))
+        if(getReusableActionsInstance().isElementVisible(skipBPOOfferOnDeviceProtection, 20))
             getReusableActionsInstance().clickIfAvailable(skipBPOOfferOnDeviceProtection, 5);
     }
 

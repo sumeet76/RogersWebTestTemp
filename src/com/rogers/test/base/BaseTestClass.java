@@ -451,6 +451,10 @@ public class BaseTestClass {
 	public static RogersNACOrderConfirmationPage getRogersNACOrderConfirmationPage() {
 		return RogersNACOrderConfirmationPageThreadLocal.get();
 	}
+
+	public static RogersOneTimePaymentPage getRogersOneTimePaymentPage() {
+		return RogersOneTimePaymentPageThreadLocal.get();
+	}
 	
 	public static RogersPaymentHistoryPage getRogersPaymentHistoryPage() {
 		return RogersPaymentHistoryPageThreadLocal.get();
@@ -553,6 +557,7 @@ public class BaseTestClass {
 	protected static final ThreadLocal<RogersCheckoutPage> RogersCheckoutPageThreadLocal = new ThreadLocal<>();
 	protected static final ThreadLocal<RogersReviewOrderPage> RogersReviewOrderPageThreadLocal = new ThreadLocal<>();
 	protected static final ThreadLocal<RogersNACOrderConfirmationPage> RogersNACOrderConfirmationPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersOneTimePaymentPage> RogersOneTimePaymentPageThreadLocal = new ThreadLocal<>();
 	private Map<String,String> RunParameters;
 		
 		public BaseTestClass() {
@@ -909,6 +914,7 @@ public class BaseTestClass {
 			RogersPaymentPageThreadLocal.set(new RogersPaymentPage(getDriver()));
 			RogersChoosePlanPageThreadLocal.set(new RogersChoosePlanPage(getDriver()));
 			RogersChangePlanPageThreadLocal.set(new RogersChangePlanPage(getDriver()));
+			RogersOneTimePaymentPageThreadLocal.set(new RogersOneTimePaymentPage(getDriver()));
 			break;
 			
 		case "choneview":
@@ -938,6 +944,7 @@ public class BaseTestClass {
 			RogersCheckoutPageThreadLocal.set(new RogersCheckoutPage(getDriver()));
 			RogersReviewOrderPageThreadLocal.set(new RogersReviewOrderPage(getDriver()));
 			RogersNACOrderConfirmationPageThreadLocal.set(new RogersNACOrderConfirmationPage(getDriver()));
+			RogersOneTimePaymentPageThreadLocal.set(new RogersOneTimePaymentPage(getDriver()));
 		
 		case "buyflowsoneview":
 			

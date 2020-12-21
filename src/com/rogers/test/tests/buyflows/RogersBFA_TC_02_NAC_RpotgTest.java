@@ -17,7 +17,7 @@ public class RogersBFA_TC_02_NAC_RpotgTest extends BaseTestClass {
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
+		startSession(System.getProperty("AWSUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
 	@Test(groups = {"RegressionBFA","SanityBFA","NACBFA"})
@@ -244,6 +244,8 @@ public class RogersBFA_TC_02_NAC_RpotgTest extends BaseTestClass {
 		getRogersCheckoutPage().selectTime();
 		reporter.reportLogPass("Time Clicked successfully ");
 		 */
+		getRogersCheckoutPage().clkDeliveryMethodStandard();
+		reporter.reportLogPass("Standard Delivery selected");
 		getRogersCheckoutPage().clkContinueBtnShipping();
 		reporter.reportLogPass("Clicked continue button in shipping stepper");
 		/*

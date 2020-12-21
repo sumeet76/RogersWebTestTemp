@@ -16,14 +16,13 @@ public class RogersBFA_TC_01_NAC_NonRpotgTest extends BaseTestClass {
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
+		startSession(System.getProperty("AWSUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
     @Test(groups = {"RegressionBFA","SanityBFA","NACBFA"})
     public void redesignRogersNacRpotg() throws InterruptedException {
     	
-    	 //**************************Device catalog page*****************************************
-    	
+    	 //**************************Device catalog page****************************************
         String deviceName=TestDataHandler.tc01NonRpotg.getDeviceName();
         String pricingBlockValueCataloguePage = getRogersDeviceCataloguePage().getPricingBlockCataloguePage(deviceName);
         String pricePlanInfoCataloguePage = getRogersDeviceCataloguePage().getPricePlanInfoCataloguePage(deviceName);
