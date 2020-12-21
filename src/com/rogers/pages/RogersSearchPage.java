@@ -311,9 +311,9 @@ public class RogersSearchPage extends BasePageClass {
 
     public void clkShopAndThenWirelessFilter() {
 
-        getReusableActionsInstance().clickWhenReady(By.xpath("//button[starts-with(@id,'Shop')]/div/p"));
-        getReusableActionsInstance().clickWhenReady(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p[starts-with(text(),'Wireless')]"));
-
+        getReusableActionsInstance().clickWhenReady(By.xpath("//button[@id='Shop-heading-1']"));
+      //  getReusableActionsInstance().clickWhenReady(By.xpath("//p[starts-with(text(),'Shop')]/ancestor::button//following-sibling::ds-expander//ds-accordion-panel[contains(@class,'-sub-level')]/div/button/div/div/p[starts-with(text(),'Wireless')]"));
+        getReusableActionsInstance().clickWhenReady(By.xpath("//button[@id='Wireless-heading-4']"));
 		/*WebElement parentFilter = getDriver().findElement(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p[starts-with(text(),'"
 				+ strFilterName + "')]"));
 
@@ -1073,7 +1073,8 @@ public class RogersSearchPage extends BasePageClass {
     public boolean validateResultsColor(String strColor) {
         List<WebElement> resultColoursList = getDriver().findElements(By.xpath("//app-search-results//ds-selection[@ng-reflect-type='color']"));
         for(int i=0;i<resultColoursList.size();i++) {
-            if(!(resultColoursList.get(i).getAttribute("ng-reflect-value")
+
+            if(!(resultColoursList.get(i).getAttribute("ng-reflect-checked='true'")
                     .trim().toLowerCase().equals(strColor.toLowerCase()))) {
                 return false;
             }
