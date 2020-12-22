@@ -382,7 +382,8 @@ public class RogersDeviceConfigPage extends BasePageClass {
     }
 
     public String getSelectedColor() {
-        return lblColorValue.getText().trim().replace(" ","");
+       // return lblColorValue.getText().trim().replace(" ","");
+        return lblColorValue.getText();
     }
 
     public String getSelectedSize() {
