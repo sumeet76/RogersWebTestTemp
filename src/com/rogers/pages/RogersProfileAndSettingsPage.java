@@ -302,6 +302,18 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 
 	@FindBy(xpath = "//p[text()='Due to recent changes on your account, we are unable to proceed with this transaction.' or text()='En raison de modifications récentes de votre compte, nous ne pouvons pas procéder avec cette transaction.']")
 	WebElement msgUnableToProceed;
+
+	@FindBy(xpath = "//rss-contact-info//button[@title='Add a wireless contact number']")
+	WebElement lnkAddWirelessNumber;
+
+	@FindBy(xpath = "//input[@title='Enter new wireless contact number']/parent::div")
+	WebElement lblWirelessNumber;
+
+	@FindBy(xpath = "//input[@title='Enter new wireless contact number']")
+	WebElement inputWirelessNumber;
+	
+	@FindBy(xpath = "//button[@title='Send code']")
+	WebElement btnSendCode;
 	
 	/**
 	 * Click on setup recovery number link
@@ -680,6 +692,14 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	
 	/**
 	 * Click the link Add Contact Email in Contact Information section
+	 * @author Mirza.Kamran
+	 */
+	public void clkLnkAddWirelessNumber() {
+		getReusableActionsInstance().clickWhenReady(lnkAddWirelessNumber, 30);
+	}
+	
+	/**
+	 * Click the link Add Contact Email in Contact Information section
 	 * @author ning.xue
 	 */
 	public void clkLnkChangeBillingAddress() {
@@ -748,10 +768,22 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	}
 	
 	/**
+	 * Set contact email for add contact email flow.
+	 * @param strNewWirelessNumber String, string of contact email
+	 * @author Mirza.Kamran
+	 */
+	public void setNewWirelessNumber(String strNewWirelessNumber) {
+		getReusableActionsInstance().getWhenReady(lblWirelessNumber).click();
+		//getReusableActionsInstance().getWhenReady(inputContactEmail,20).clear();
+		getReusableActionsInstance().getWhenReady(inputWirelessNumber).sendKeys(strNewWirelessNumber);
+		
+	}
+	
+	/**
 	 * Click the button Continue in Add contact email flow
 	 * @author ning.xue
 	 */
-	public void clkBtnAddContactEmailContinue() {
+	public void clkBtnContinue() {
 		getReusableActionsInstance().clickWhenReady(btnAddContactEmailContinue, 30);
 	}	
 	
@@ -1077,6 +1109,17 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	}
 
 	/**
+	 * gets the existing billing address displayed
+	 * @return string value containing the billing address
+	 * @author Mirza.Kamran
+	 */
+	public boolean IsBillingAddressDisplayed() {
+		getDriver().switchTo().defaultContent();
+		return getReusableActionsInstance().isElementVisible(lblBillingAddress);
+	}
+
+	
+	/**
 	 * gets the existing language
 	 * @return string language name
 	 * @author Mirza.Kamran
@@ -1239,5 +1282,13 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	public void clkClose() {
 		getReusableActionsInstance().getWhenReady(btnClose).click();
 	
+	}
+
+	/**
+	 * Clicks on send button
+	 * @author Mirza.Kamran
+	 */
+	public void clkBtnSendCode() {
+		getReusableActionsInstance().getWhenReady(btnSendCode).click();
 	}
 }

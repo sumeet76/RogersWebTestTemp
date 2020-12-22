@@ -100,7 +100,11 @@ public class RogersSS_TC_033_Postpaid_ChangeBillingAddressInEligibleUser extends
     				"User is taken to eligibility failure modal",
     				"User is NOT taken to eligibility failure modal");
     		reporter.reportLogWithScreenshot("User is taken to eligibility failure modal");
-    		
+    		getRogersProfileAndSettingsPage().clkClose();
+    		reporter.reportLogWithScreenshot("Clicks on close");
+    		reporter.hardAssert(getRogersProfileAndSettingsPage().IsBillingAddressDisplayed(),
+    				"Profile and Settings page is displayed"
+    				, "Profile and Settings page not displayed");
     		
     	}
 
