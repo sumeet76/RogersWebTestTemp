@@ -217,22 +217,8 @@ public class RogersSearchPage extends BasePageClass {
      * clicking on grand parent filter
      * @author pankaj.patil
      */
-
     public void clkGrandParentFilter(String strFilterName) {
-
-        System.out.println("+++++++++"+getReusableActionsInstance()+"++++++++++"+ Thread.currentThread().getName()+"  "+getDriver()+ "***************"+"Page: "+this );
-
-      //  getReusableActionsInstance().getWhenVisible(By.xpath("//div[@class='ds-filter__listSet']/div/button/div/p[starts-with(text(),'"
-        //        + strFilterName + "')]/parent::div/parent::button"),100).sendKeys(Keys.ENTER);
-
-//        WebElement grandParentFilter = getReusableActionsInstance().getWhenVisible(By.xpath("//div[@class='ds-filter__listSet']/div/button/div/p[starts-with(text(),'"
-//                + strFilterName + "')]/parent::div/parent::button"),100);
-
-//        getReusableActionsInstance().staticWait(2000);
-
-//        grandParentFilter.click();
         getReusableActionsInstance().clickWhenReady(By.xpath("//button[contains(@id,'"+strFilterName+"-heading')]"),5);
-
     }
 
     /**
@@ -244,33 +230,16 @@ public class RogersSearchPage extends BasePageClass {
     public void clkParentFilter(WebElement parentFilter)  {
         getReusableActionsInstance().javascriptScrollToTopOfPage();
         getReusableActionsInstance().clickWhenReady(parentFilter);
-        System.out.println("+++++++++"+getReusableActionsInstance()+"++++++++++"+ Thread.currentThread().getName()+"  "+getDriver()+ "***************"+"Page: "+this);
-        getReusableActionsInstance().staticWait(1000);
+        getReusableActionsInstance().waitForAttributeToBe(parentFilter,"aria-expanded","true",5);
     }
 
-
     public List<WebElement> getParentFilters(String strGrandParentFilterName) {
-      //  return getDriver().findElements(By.xpath("//div[@id='Shop-body-1']/div/button/div/p[starts-with(text,'" + strGrandParentFilterName + "')]/ancestor::button"));
         return getDriver().findElements(By.xpath("//div[contains(@id,'"+strGrandParentFilterName+"-body')]/div/button"));
     }
 
-  /**  public boolean isParentFilterExpanded(WebElement parentFilter) {
-
-        WebElement expandedFilter = parentFilter.findElement(By.xpath("ancestor::button"));
-
-        return expandedFilter.getAttribute("aria-expanded").equals("true");
-
+    public boolean isParentFilterExpanded(WebElement parentFilter) {
+        return parentFilter.getAttribute("aria-expanded").equals("true");
     }
-   */
-  public boolean isParentFilterExpanded(String strGrandParentFilterName) {
-     // getReusableActionsInstance().staticWait(1000);
-
-      WebElement expandedFilter = getDriver().findElement(By.xpath("//div[contains(@id,'"+strGrandParentFilterName+"-body')]/div/button/following-sibling::ds-expander"));
-
-      return expandedFilter.getAttribute("ng-reflect-expanded").equals("true");
-
-  }
-
 
     public String getResultsCountAndCurrentPageDetails(){
         //Waiting for right details to be available
@@ -820,7 +789,6 @@ public class RogersSearchPage extends BasePageClass {
     }
 
     public List<WebElement> getAllResultLinks() {
-       // return getDriver().findElements(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]/preceding-sibling::a"));
         return getDriver().findElements(By.xpath("//a[contains(@id,'searchtitle')]"));
     }
 
