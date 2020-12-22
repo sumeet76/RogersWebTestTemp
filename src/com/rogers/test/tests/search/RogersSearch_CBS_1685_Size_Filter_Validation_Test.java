@@ -24,7 +24,7 @@ import utils.CSVReader;
 public class RogersSearch_CBS_1685_Size_Filter_Validation_Test extends BaseTestClass {
 
 
-	@DataProvider(name = "FilterData",parallel=true)
+	@DataProvider(name = "FilterData",parallel=false)
 	public Object[] testData() throws IOException
 	{
 		String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataSizeFilter.csv";
