@@ -30,7 +30,7 @@ public class RogersSearch_CBS_1686_Clicking_On_A_Parent_Filter_After_Selecting_A
 		String strParentFilterName;
 		int intCounter = 0;
 
-		getDriver().get(System.getProperty("SearchUrl")+"iphone");
+		getDriver().get(System.getProperty("SearchUrl")+"wireless");
 
 
 		 getRogersSearchPage().clkGrandParentFilter("Shop");
