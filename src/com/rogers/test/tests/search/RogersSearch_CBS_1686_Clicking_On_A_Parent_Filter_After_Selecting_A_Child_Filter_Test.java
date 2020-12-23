@@ -32,13 +32,15 @@ public class RogersSearch_CBS_1686_Clicking_On_A_Parent_Filter_After_Selecting_A
 
 		getDriver().get(System.getProperty("SearchUrl")+"iphone");
 
-		getRogersSearchPage().clkGrandParentFilter("Shop");
+
+		 getRogersSearchPage().clkGrandParentFilter("Shop");
 		reporter.reportLogWithScreenshot("Shop is clicked");
 
 		lstParentFilters = getRogersSearchPage().getParentFilters("Shop");
 
 		getRogersSearchPage().clkParentFilter("Shop","Wireless");
 		reporter.reportLogWithScreenshot("Wireless is selected");
+
 
 		strColorFilters = getRogersSearchPage().getColorFilters();
 		for(int i=0;i<strColorFilters.size();i++) {

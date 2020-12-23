@@ -536,15 +536,19 @@ public class RogersSearchPage extends BasePageClass {
 
         for (int i = 0; i < lstSizeFilter.size(); i++) {
             getReusableActionsInstance().waitForAllElementsVisible(getDriver().findElements(By.xpath("//input[contains(@id,'size')]")), 40);
-            String strSizeFilter = getDriver().findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value");
+           // String strSizeFilter = getDriver().findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value");
+            String strSizeFilter = lstSizeFilter.get(i).getAttribute("value");
 
-            System.out.println("value of size filter is:" + getDriver().findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value"));
+           // System.out.println("value of size filter is:" + getDriver().findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value"));
+            System.out.println("value of size filter is: "+strSizeFilter+" ");
 
-            getReusableActionsInstance().staticWait(2000);
+           // getReusableActionsInstance().staticWait(2000);
 
             getReusableActionsInstance().clickWhenReady(
-                    By.xpath("//ds-checkbox[@ng-reflect-value='" + getDriver().findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value") + "']"));
-            getReusableActionsInstance().staticWait(2000);
+                 //   By.xpath("//ds-checkbox[@ng-reflect-value='" + getDriver().findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value") + "']"));
+                    By.xpath("//ds-checkbox[@ng-reflect-value='" +strSizeFilter + " ']"));
+
+            //getReusableActionsInstance().staticWait(2000);
 
             List<WebElement> lstSizeResultsLink = getDriver().findElements(By.xpath("//a[contains(@href,'watch')]"));
 
@@ -752,9 +756,12 @@ public class RogersSearchPage extends BasePageClass {
     }
 
     public void clkParentFilter(String strGrandParentFilterName, String strParentFilterName) {
-        getReusableActionsInstance().clickWhenReady(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button" +
+      /**  getReusableActionsInstance().clickWhenReady(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button" +
                 "//p[starts-with(text(),'"+strGrandParentFilterName+"')]/ancestor::button/following-sibling::ds-expander" +
                 "//p[starts-with(text(),'"+strParentFilterName+"')]"));
+       */
+        getReusableActionsInstance().clickWhenReady(By.xpath("//div[contains(@id,'"+strGrandParentFilterName+"-body')]/div/button[contains(@id,'"+strParentFilterName+"')]"));
+
         getReusableActionsInstance().staticWait(1500);
     }
 
