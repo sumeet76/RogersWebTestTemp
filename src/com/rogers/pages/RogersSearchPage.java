@@ -249,6 +249,8 @@ public class RogersSearchPage extends BasePageClass {
 
 
     public boolean isGrandParentFilterExpanded(String strFilterName) {
+     //   String strGrandParentFilterName = grandParentFilters.split("\\(");
+      //  String strExpectedTag = strGrandParentFilter.trim() + " - " ;
 
         System.out.println("Starting Xpath");
         getReusableActionsInstance().staticWait(1000);
@@ -816,9 +818,9 @@ public class RogersSearchPage extends BasePageClass {
 
     public boolean validateAllFiltersCollapsed() {
         boolean collapsedFlag = true;
-        List<WebElement> grandParentFilters = getDriver().findElements(By.xpath("//div[contains(@class,'ds-filter__listSet')]/div/button"));
+        List<WebElement> grandParentFilters = getDriver().findElements(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p"));
         for(int i=0; i< grandParentFilters.size();i++) {
-            if(isGrandParentFilterExpanded(grandParentFilters.get(i).getText().trim())) {
+            if(isGrandParentFilterExpanded(grandParentFilters.get(i).getText())) {
                 collapsedFlag = false;
             }
         }
