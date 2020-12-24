@@ -818,7 +818,7 @@ public class RogersSearchPage extends BasePageClass {
         boolean collapsedFlag = true;
         List<WebElement> grandParentFilters = getDriver().findElements(By.xpath("//div[contains(@class,'ds-filter__listSet')]/div/button"));
         for(int i=0; i< grandParentFilters.size();i++) {
-            if(isGrandParentFilterExpanded(grandParentFilters.get(i).getText())) {
+            if(isGrandParentFilterExpanded(grandParentFilters.get(i).getText().trim())) {
                 collapsedFlag = false;
             }
         }
