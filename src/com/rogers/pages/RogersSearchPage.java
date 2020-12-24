@@ -816,7 +816,7 @@ public class RogersSearchPage extends BasePageClass {
 
     public boolean validateAllFiltersCollapsed() {
         boolean collapsedFlag = true;
-        List<WebElement> grandParentFilters = getDriver().findElements(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p"));
+        List<WebElement> grandParentFilters = getDriver().findElements(By.xpath("//div[contains(@class,'ds-filter__listSet')]/div/button"));
         for(int i=0; i< grandParentFilters.size();i++) {
             if(isGrandParentFilterExpanded(grandParentFilters.get(i).getText())) {
                 collapsedFlag = false;
