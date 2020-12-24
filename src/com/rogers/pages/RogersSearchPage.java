@@ -218,6 +218,7 @@ public class RogersSearchPage extends BasePageClass {
      * @author pankaj.patil
      */
     public void clkGrandParentFilter(String strFilterName) {
+        getReusableActionsInstance().javascriptScrollToTopOfPage();
         getReusableActionsInstance().clickWhenReady(By.xpath("//button[contains(@id,'"+strFilterName+"-heading')]"),5);
     }
 
