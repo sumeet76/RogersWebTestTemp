@@ -99,6 +99,15 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(),'Apportez votre propre appareil') or contains(text(),'Bring Your Own Device')]")
     WebElement bringYourOwnDeviceInBreadCrumb;
 
+    @FindBy(xpath = "//ds-checkbox//div[@class='ds-checkbox__box my-12']")
+    WebElement checkBoxKeepMyCurrentPlan;
+
+    @FindBy(xpath = "//ds-modal")
+    WebElement modalToDoWithOldPhone;
+
+    @FindBy(xpath = "//ds-modal//button[@title='Continue']")
+    WebElement btnContinueOnModalToDoWithOldPhone;
+
     /**
      * Select Device Protection Header on Plan config page
      */
@@ -159,6 +168,14 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public void selectNoTermDeviceDeviceCost(){
         getReusableActionsInstance().clickWhenReady(By.xpath("//span[@data-caption='NOTERM_false']//ancestor::label") , 30);
+    }
+
+    /**
+     * Select No term Device Cost on Plan config page
+     * @author saurav.goyal
+     */
+    public void setCheckBoxKeepMyCurrentPlan(){
+        getReusableActionsInstance().clickWhenReady(checkBoxKeepMyCurrentPlan , 30);
     }
 
     /**
@@ -294,6 +311,15 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
     
     /**
+     * Click continue on modal what would you like to do with your old phone
+     * @author saurav.goyal
+     */
+    public void clickContinueOnModalToDoWithOldPhone() {
+        if(getReusableActionsInstance().isElementVisible(modalToDoWithOldPhone, 20))
+            getReusableActionsInstance().clickWhenReady(btnContinueOnModalToDoWithOldPhone, 5);
+    }
+
+    /**
      * Click continue on Plan config page before cart summary
      * @author saurav.goyal
      */
@@ -314,7 +340,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clickPreCartDataOptionContinueButton() {
-        getReusableActionsInstance().clickWhenReady(preCartDataOtionContinueButton);
+        getReusableActionsInstance().clickIfAvailable(preCartDataOtionContinueButton);
     }
     
     /**
@@ -330,7 +356,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clickPreCartAddonsContinueButton() {
-        getReusableActionsInstance().clickWhenReady(preCartAddonsContinueButton);
+        getReusableActionsInstance().clickIfAvailable(preCartAddonsContinueButton);
     }
     
     /**

@@ -10,6 +10,16 @@ public class HUPData {
 	private String contactID;
 	private String banNo;
 	private String postalCode;
+	private String deviceName;
+
+	public String getDeviceName() {
+		return deviceName;
+	}
+
+	public void setDeviceName(String deviceName) {
+		this.deviceName = deviceName;
+	}
+
 	
 	/**
 	 * @return the postalCode

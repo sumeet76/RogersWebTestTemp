@@ -4,6 +4,7 @@ import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -41,7 +42,10 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "//div[@class='tippy-content']")
     WebElement comingSoonTextTitle;
 
-    @FindBy(xpath = "//ds-modal-container//*[@id=\"trident-cta10\"]")
+    @FindAll({
+            @FindBy(xpath = "//ds-modal-container//*[@id='trident-cta10']"),
+            @FindBy(xpath = "//button[@id='trident-cta-hup']//span[contains(@class,'ds-button__copy')]")    //upgrade
+    })
     WebElement modalContainerDeviceUpgradebutton;
 
     @FindBy(xpath = "//button[@id='trident-cta-nac']")
@@ -74,7 +78,10 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "//button[@title='Check']")
     WebElement checkBtn;
 
-    @FindBy(xpath = "//button[@title='Continue']")
+    @FindAll({
+            @FindBy(xpath = "//button[@title='Continue']"),
+            @FindBy(xpath = "//ds-modal-container//button[contains(@class,'-primary -large')]")
+    })
     WebElement continueBtn;
 
     @FindBy(xpath = "(//p[contains(@class,'dsa-info__contentBody text-body mb-0')])[2]")
@@ -186,7 +193,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author saurav.goyal
      */
     public void clickDeviceTileCTAButton(String deviceName) {
-        getReusableActionsInstance().clickWhenVisible(By.xpath(createXpathForCTAButton(deviceName)), 10);
+        getReusableActionsInstance().clickWhenVisible(By.xpath(createXpathForCTAButton(deviceName)), 30);
     }
 
     /**
@@ -205,7 +212,16 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author saurav.goyal
      */
     public boolean isModalDisplayed() {
-        return getReusableActionsInstance().isElementVisible(modalContainer);
+        return getReusableActionsInstance().isElementVisible(modalContainer,30);
+    }
+
+    /**
+     * This method will select the required CTN from the list
+     * @author saurav.goyal
+     */
+    public void selectCTN(String ctnNumber) {
+        String xpathCTN =  "//ds-modal-container//input[@value='" +  ctnNumber + "']/following-sibling::span[@class='dsa-radio__checkmark']";
+        getReusableActionsInstance().clickWhenReady(By.xpath(xpathCTN) , 30);
     }
 
     /**
@@ -406,6 +422,14 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     }
 
     /**
+     * This method clicks on Upgrade my phone button on the modal
+     * @author saurav.goyal
+     */
+    public void clickUpgradeMyPhoneButtonOnModal() {
+        getReusableActionsInstance().clickWhenReady(modalContainerDeviceUpgradebutton , 20);
+    }
+
+    /**
      * This method verifies whether or not Add a line button is available in a model
      * @return a boolean true if element is present else false
      * @author saurav.goyal
@@ -432,6 +456,15 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     }
 
     /**
+     * This method will click on the continue button in the RPOTG eligibility banner
+     * @author Saurav.Goyal
+     */
+
+    public void clickContinueBtn() {
+        getReusableActionsInstance().clickWhenReady(continueBtn, 30);
+    }
+
+    /**
      * This method clicks on a Get Started button in a Modal window
      * @return a boolean true if continue is present on the next device config page
      * Question about getting methods of one page to other
@@ -441,7 +474,6 @@ public class RogersDeviceCataloguePage extends BasePageClass {
         getReusableActionsInstance().clickIfAvailable(modalContainerGetStartedbutton);
         return (getReusableActionsInstance().isElementVisible(new RogersDeviceConfigPage(getDriver()).continueButton, 30));
     }
-
 
     /**
      * This method will click on Reset all filters
@@ -551,16 +583,6 @@ public class RogersDeviceCataloguePage extends BasePageClass {
         getReusableActionsInstance().getWhenVisible(checkBtn, 30);
         getReusableActionsInstance().doubleClick(checkBtn,0);
         getReusableActionsInstance().doubleClick(checkBtn,0);
-    }
-
-    /**
-     * This method will click on the continue button in the RPOTG eligibility banner
-     *
-     * @author nimmy.george
-     */
-
-    public void clickContinueBtn() {
-        getReusableActionsInstance().clickWhenReady(continueBtn, 30);
     }
 
 

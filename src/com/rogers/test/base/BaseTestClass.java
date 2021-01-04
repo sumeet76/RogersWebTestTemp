@@ -915,6 +915,11 @@ public class BaseTestClass {
 			RogersChoosePlanPageThreadLocal.set(new RogersChoosePlanPage(getDriver()));
 			RogersChangePlanPageThreadLocal.set(new RogersChangePlanPage(getDriver()));
 			RogersOneTimePaymentPageThreadLocal.set(new RogersOneTimePaymentPage(getDriver()));
+			RogersDeviceCataloguePageThreadLocal.set(new RogersDeviceCataloguePage(getDriver()));
+			RogersDeviceConfigPageThreadLocal.set(new RogersDeviceConfigPage(getDriver()));
+			RogersPlanConfigPageThreadLocal.set(new RogersPlanConfigPage(getDriver()));
+			RogersCheckoutPageThreadLocal.set(new RogersCheckoutPage(getDriver()));
+			RogersReviewOrderPageThreadLocal.set(new RogersReviewOrderPage(getDriver()));
 			break;
 			
 		case "choneview":

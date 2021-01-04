@@ -100,8 +100,11 @@ public class RogersOrderReviewPage extends BasePageClass {
 		@FindBy(xpath = "//input[@id='cxEmail']/../label"),
 		@FindBy(xpath = "//input[@id='digital-copy']/../label")})
 	WebElement rdbtnEmail;
-	
-	@FindBy(xpath = "//button[@data-dtname='reviewOrder-submit']")
+
+
+	@FindAll({
+			@FindBy(xpath = "//button[@data-test='continue-btn']"),
+			@FindBy(xpath = "//button[@data-dtname='reviewOrder-submit']")})
 	WebElement btnSubmitOrder;
 	
 	@FindBy(xpath = "//span[@checkout-res='checkout_continue_lbl']/parent::button")

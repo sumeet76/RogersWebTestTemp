@@ -241,6 +241,13 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath ="//ds-radio-button[@data-test='standard-delivery']/label")
 	WebElement deliveryMethodStandard;
 
+	@FindBy(xpath ="//ds-radio-button[@data-test='potg-delivery']/label")
+	WebElement deliveryMethodExpress;
+
+
+	@FindBy(xpath ="//p[@data-test='timeslot-appointment']")
+	WebElement deliveryAppointmentTime;
+
 	@FindBy(xpath="//span[@data-test='email-address']")
 	WebElement txtEmailAddress;
 	
@@ -859,6 +866,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public boolean clkBillingAddress() {
+		getReusableActionsInstance().waitForElementVisibility(billingAddressShipping , 30);
 		getReusableActionsInstance().scrollToElementAndClick(billingAddressShipping);
 		//getReusableActionsInstance().clickWhenReady(billingAddressShipping,3);
 		billingAddressShipping.isSelected();
@@ -917,6 +925,25 @@ public class RogersCheckoutPage extends BasePageClass {
 			getReusableActionsInstance().clickWhenReady(deliveryMethodStandard,30);
 		}
 		
+	}
+
+	/**
+	 * To click on Express Delivery Method in the shipping stepper
+	 * @author Saurav.Goyal
+	 */
+
+	public void clkDeliveryMethodExpress() {
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().clickWhenReady(deliveryMethodExpress,30);
+	}
+
+	/**
+	 * To Verify the appointment time
+	 * @return true if Appointment time is available else false
+	 * @author saurav.goyal
+	 */
+	public boolean isAppointmentTimeAvailable() {
+		return getReusableActionsInstance().isElementVisible(deliveryAppointmentTime , 30);
 	}
 
 	/**
@@ -983,7 +1010,7 @@ public class RogersCheckoutPage extends BasePageClass {
      */
 
     public void clksubmitBtnCheckoutPage(){
-        getReusableActionsInstance().moveToElementAndClick(submitBtnCheckoutPage,20);
+		getReusableActionsInstance().clickWhenReady(submitBtnCheckoutPage,30);
     }
 
 	/**
