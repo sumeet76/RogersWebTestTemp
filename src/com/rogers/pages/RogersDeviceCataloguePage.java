@@ -203,7 +203,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author saurav.goyal
      */
     public boolean verifyDeviceTileCTAButton(String deviceName) {
-        return getReusableActionsInstance().isElementVisible(By.xpath(createXpathForCTAButton(deviceName)), 10);
+        return getReusableActionsInstance().isElementVisible(By.xpath(createXpathForCTAButton(deviceName)), 30);
     }
 
     /**
