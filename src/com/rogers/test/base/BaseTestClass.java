@@ -168,7 +168,7 @@ public class BaseTestClass {
 		return RogersSetPasswordPageThreadLocal.get();
 	}
 
-	public static RogersRecoverPassOrNamePage getRogersRecoverPassOrNamePage() {
+	public static RogersRegisterOrAccountRecoveryPage getRegisterOrAccountRecoveryPage() {
 		return RogersRecoverPassOrNamePageThreadLocal.get();
 	}
 
@@ -484,7 +484,7 @@ public class BaseTestClass {
 	protected CommonBusinessFlows common_business_flows; 
 	protected VerifyInEns ensVerifications;
 	protected static final ThreadLocal<RogersSetPasswordPage> RogersSetPasswordPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersRecoverPassOrNamePage> RogersRecoverPassOrNamePageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersRegisterOrAccountRecoveryPage> RogersRecoverPassOrNamePageThreadLocal = new ThreadLocal<>();
 	protected BrowserDrivers browserdriver;
 	protected static final ThreadLocal<RogersInternetDashboardPage> RogersInternetDashboardPageThreadLocal = new ThreadLocal<>();
 	protected static final ThreadLocal<RogersInternetPackageSelectionPage> RogersInternetPackageSelectionPageThreadLocal = new ThreadLocal<>();
@@ -772,7 +772,7 @@ public class BaseTestClass {
 			EnsNotificationViewPageThreadLocal.set(new EnsNotificationViewPage(getDriver()));
 			ensVerifications = new VerifyInEns(this);
 			RogersSetPasswordPageThreadLocal.set(new RogersSetPasswordPage(getDriver()));
-			RogersRecoverPassOrNamePageThreadLocal.set(new RogersRecoverPassOrNamePage(getDriver()));
+			RogersRecoverPassOrNamePageThreadLocal.set(new RogersRegisterOrAccountRecoveryPage(getDriver()));
 			RogersSolarisRHPDashboardPageThreadLocal.set(new RogersSolarisRHPDashboardPage(getDriver()));
 			RogersInternetDashboardPageThreadLocal.set(new RogersInternetDashboardPage(getDriver()));
 			RogersInternetUsagePageThreadLocal.set(new RogersInternetUsagePage(getDriver()));

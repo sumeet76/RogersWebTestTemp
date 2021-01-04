@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class RogersSS_TC_032_Postpaid_ChangeBillingAddress extends BaseTestClass {
+public class RogersSS_TC_033_Postpaid_ChangeBillingAddressInEligibleUser extends BaseTestClass {
 	
     private String strStreetName;
 	private String strStreetType;
@@ -90,45 +90,25 @@ public class RogersSS_TC_032_Postpaid_ChangeBillingAddress extends BaseTestClass
     		
     	}    	 	
     	getRogersProfileAndSettingsPage().clkLnkChangeBillingAddress();
+    	reporter.reportLogWithScreenshot("Change billing address clicked");
     	if(getRogersProfileAndSettingsPage().isVerifyYourIdentityOverlayDisplayed())
     	{
+    		reporter.reportLogWithScreenshot("Your identity overlay is displayed");
     		getRogersProfileAndSettingsPage().switchToVerifyIdentityIFrame();
     		getRogersProfileAndSettingsPage().clkContinueVerifyIdentity();
-    		String strTestingTab = getDriver().getWindowHandle();
-    		String strRecoveredUserName ="";
-    		//Go to ENS to verify email and get reset password page.		
-    		try {
-    			
-    			ensVerifications.getEmailVerifyPage(strUsername);
-    			String recoveryCode = getRegisterOrAccountRecoveryPage().getVerificationCode();
-    			getDriver().switchTo().window(strTestingTab);			
-    			reporter.reportLogWithScreenshot("Close the Overlay");
-    			getRogersProfileAndSettingsPage().switchToVerifyIdentityIFrame();
-    			getRegisterOrAccountRecoveryPage().setVerificationCode(recoveryCode);
-    			getRegisterOrAccountRecoveryPage().clkBtnContinue();    						
-    						
-    		} catch (Exception e) {
-    			e.printStackTrace();
-    		}
+    		reporter.hardAssert(getRogersProfileAndSettingsPage().isInEligibleUser(),
+    				"User is taken to eligibility failure modal",
+    				"User is NOT taken to eligibility failure modal");
+    		reporter.reportLogWithScreenshot("User is taken to eligibility failure modal");
+    		getRogersProfileAndSettingsPage().clkClose();
+    		reporter.reportLogWithScreenshot("Clicks on close");
+    		reporter.hardAssert(getRogersProfileAndSettingsPage().IsBillingAddressDisplayed(),
+    				"Profile and Settings page is displayed"
+    				, "Profile and Settings page not displayed");
+    		
     	}
 
-		getRogersProfileAndSettingsPage().setStreetNumber(strStreetNumber);
-    	getRogersProfileAndSettingsPage().setStreetname(strStreetName);
-    	getRogersProfileAndSettingsPage().selectStreetType(strStreetType);
-    	getRogersProfileAndSettingsPage().setApartment(strApartment);
-    	getRogersProfileAndSettingsPage().selectAprtmentType(strApartmentType);
-    	getRogersProfileAndSettingsPage().setCityName(strCityName);
-    	getRogersProfileAndSettingsPage().selectProvince(strProvince);
-    	getRogersProfileAndSettingsPage().setPostalCode(strPostalCode);
-		reporter.reportLogWithScreenshot("Update billing address page.");
-    	getRogersProfileAndSettingsPage().clkChangeAddresContinueButton();
-    	getRogersProfileAndSettingsPage().selectAndSubmit();
-    	//getRogersProfileAndSettingsPage().clkSubmit();
-		reporter.reportLogWithScreenshot("New billing address submitted.");
-    	reporter.hardAssert((getRogersProfileAndSettingsPage().clickDoneChangeBillingAddress()
-    			&& getRogersProfileAndSettingsPage().verifyBillingAddress(strBillingAddress)),
-				"Billing address change was done successfully", 
-				"Billing address was not updated, please investigate");
+		
 	}
 
 }

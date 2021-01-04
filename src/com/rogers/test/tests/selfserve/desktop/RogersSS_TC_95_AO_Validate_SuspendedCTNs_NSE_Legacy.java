@@ -27,7 +27,7 @@ public class RogersSS_TC_95_AO_Validate_SuspendedCTNs_NSE_Legacy extends BaseTes
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","AccountOverviewSS"})
     public void validateSignInAndAccountOverview() {
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");

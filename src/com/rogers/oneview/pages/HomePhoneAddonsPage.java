@@ -31,7 +31,9 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 	 */	
 	public void clkexchangeLater() {
 		getReusableActionsInstance().clickWhenReady(exchangeLaterbtn);
-	}	
+	}
+	
+	
 	/**
 	 * Click Collapse(Down Arrow)
 	 * @author Harpartap.Virk
@@ -57,6 +59,7 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(continueButton,120);
 			
 	}
+	
 	/**
 	 * Click Checkout for channels Exchange
 	 * @author Harpartap.Virk

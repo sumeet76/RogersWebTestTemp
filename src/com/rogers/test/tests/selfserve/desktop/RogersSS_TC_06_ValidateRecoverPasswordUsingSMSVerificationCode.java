@@ -37,9 +37,9 @@ public class RogersSS_TC_06_ValidateRecoverPasswordUsingSMSVerificationCode exte
 		String strUsername = TestDataHandler.tc060809.getUsername();
 		String strPassword = TestDataHandler.tc060809.getPassword();
 		String strAccount = TestDataHandler.tc060809.getAccountDetails().getBan();			
-		getRogersRecoverPassOrNamePage().setUsernameIFrame(strUsername);
+		getRegisterOrAccountRecoveryPage().setUsernameIFrame(strUsername);
 		reporter.reportLogWithScreenshot("Set user name for password recovery");
-		getRogersRecoverPassOrNamePage().clkBtnContinue();
+		getRegisterOrAccountRecoveryPage().clkBtnContinue();
 		//reporter.reportLogWithScreenshot("Click on Text as recovery option");
 		//getRogersRecoverPassOrNamePage().clkTextToAsRecoveryOption();
 		String strTestingTab = getDriver().getWindowHandle();						
@@ -51,24 +51,24 @@ public class RogersSS_TC_06_ValidateRecoverPasswordUsingSMSVerificationCode exte
 			//switch to working test tab.
 			getDriver().switchTo().window(strTestingTab);
 			reporter.reportLogWithScreenshot("Set code");
-			getRogersRecoverPassOrNamePage().switchToSetCodeIframe();
-			getRogersRecoverPassOrNamePage().setRecoveryCode(strCode);
-			getRogersRecoverPassOrNamePage().clkBtnContinue();
-			getRogersRecoverPassOrNamePage().setNewPassword(strPassword);
-			getRogersRecoverPassOrNamePage().setConfirmPassword(strPassword);
-			getRogersRecoverPassOrNamePage().clkBtnContinue();
+			getRegisterOrAccountRecoveryPage().switchToSetCodeIframe();
+			getRegisterOrAccountRecoveryPage().setVerificationCode(strCode);
+			getRegisterOrAccountRecoveryPage().clkBtnContinue();
+			getRegisterOrAccountRecoveryPage().setNewPassword(strPassword);
+			getRegisterOrAccountRecoveryPage().setConfirmPassword(strPassword);
+			getRegisterOrAccountRecoveryPage().clkBtnContinue();
 						
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		//Login with recovered user name to verify 		 
-		reporter.hardAssert(getRogersRecoverPassOrNamePage().isPasswordRestSuccessForRecoveredUsernameOrPwd(),
+		reporter.hardAssert(getRegisterOrAccountRecoveryPage().isPasswordSuccessfullySet(),
 				"passowrd reset successful for recover password flow",
 				"passowrd reset NOT successful for recover password flow");
 		reporter.reportLogWithScreenshot("Password success page");
-		getRogersRecoverPassOrNamePage().clkGoToMyRogers();
+		getRegisterOrAccountRecoveryPage().clkGoToMyRogers();
 		reporter.reportLogWithScreenshot("Go to my rogers clicked");
-		getRogersRecoverPassOrNamePage().switchToDefaultContent();
+		getRegisterOrAccountRecoveryPage().switchToDefaultContent();
 		reporter.reportLogWithScreenshot("Switch to default content");
 		reporter.reportLogWithScreenshot("waiting for account overview....");
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),

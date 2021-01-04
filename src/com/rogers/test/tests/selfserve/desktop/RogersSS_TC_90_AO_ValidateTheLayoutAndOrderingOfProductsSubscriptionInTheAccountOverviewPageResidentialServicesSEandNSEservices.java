@@ -27,7 +27,7 @@ public class RogersSS_TC_90_AO_ValidateTheLayoutAndOrderingOfProductsSubscriptio
 	}
 	
 	
-    @Test
+    @Test(groups = {"RegressionSS","AccountOverviewSS"})
     public void verifyTheLayoutAndOrderingOfProductsSubscriptionInTheAccountOverviewPageResidentialServicesSEandNSEservices() {
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");

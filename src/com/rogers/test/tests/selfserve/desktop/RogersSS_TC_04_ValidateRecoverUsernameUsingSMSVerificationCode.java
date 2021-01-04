@@ -41,16 +41,16 @@ public class RogersSS_TC_04_ValidateRecoverUsernameUsingSMSVerificationCode exte
 		getRogersLoginPage().switchToSignInIFrame();
 		getRogersLoginPage().clkForgotUsernameIframe();
 		reporter.reportLogWithScreenshot("Forgot username link is clicked.");
-		getRogersRecoverPassOrNamePage().clkUseYourAccountInfoInsteadLink();
+		getRegisterOrAccountRecoveryPage().clkUseYourAccountInfoInsteadLink();
 		String strAccountNumber = TestDataHandler.tc060809.getAccountDetails().getBan();
 		String strPostcode =  TestDataHandler.tc060809.getAccountDetails().getPostalcode();
 		String strDOB =  TestDataHandler.tc060809.getAccountDetails().getDob();
 		strPassword = TestDataHandler.tc060809.getPassword();
-		getRogersRecoverPassOrNamePage().setAccountNumber(strAccountNumber);
-		getRogersRecoverPassOrNamePage().setPostCode(strPostcode);
-		getRogersRecoverPassOrNamePage().setDOB(strDOB);
+		getRegisterOrAccountRecoveryPage().setAccountNumber(strAccountNumber);
+		getRegisterOrAccountRecoveryPage().setPostCode(strPostcode);
+		getRegisterOrAccountRecoveryPage().setDOB(strDOB);
 		reporter.reportLogWithScreenshot("Set Account, post code and DOB number for recover user name.");
-		getRogersRecoverPassOrNamePage().clkBtnContinue();
+		getRegisterOrAccountRecoveryPage().clkBtnContinue();
 		reporter.reportLogWithScreenshot("Click on Text as recovery option");
 		//getRogersRecoverPassOrNamePage().clkTextToAsRecoveryOption();
 		String strTestingTab = getDriver().getWindowHandle();
@@ -62,26 +62,26 @@ public class RogersSS_TC_04_ValidateRecoverUsernameUsingSMSVerificationCode exte
 			String recoveryCode = ensVerifications.getAccountUserName(strPhoneNum);			
 			getDriver().switchTo().window(strTestingTab);			
 			reporter.reportLogWithScreenshot("Close the Overlay");
-			getRogersRecoverPassOrNamePage().switchToSetCodeIframe();
-			getRogersRecoverPassOrNamePage().setRecoveryCode(recoveryCode);
-			getRogersRecoverPassOrNamePage().clkBtnContinue();
-			strRecoveredUserName= getRogersRecoverPassOrNamePage().getRecoveryUsernameNew();
+			getRegisterOrAccountRecoveryPage().switchToSetCodeIframe();
+			getRegisterOrAccountRecoveryPage().setVerificationCode(recoveryCode);
+			getRegisterOrAccountRecoveryPage().clkBtnContinue();
+			strRecoveredUserName= getRegisterOrAccountRecoveryPage().getRecoveryUsernameNew();
 			reporter.reportLogWithScreenshot("Recovered username is : "+strRecoveredUserName);
-			getRogersRecoverPassOrNamePage().setNewPassword(strPassword);
-			getRogersRecoverPassOrNamePage().setConfirmPassword(strPassword);
-			getRogersRecoverPassOrNamePage().clkBtnContinue();
+			getRegisterOrAccountRecoveryPage().setNewPassword(strPassword);
+			getRegisterOrAccountRecoveryPage().setConfirmPassword(strPassword);
+			getRegisterOrAccountRecoveryPage().clkBtnContinue();
 						
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		//Login with recovered user name to verify 		 
-		reporter.hardAssert(getRogersRecoverPassOrNamePage().isPasswordRestSuccessForRecoveredUsernameOrPwd(),
+		reporter.hardAssert(getRegisterOrAccountRecoveryPage().isPasswordSuccessfullySet(),
 				"passowrd reset successful for recover username",
 				"passowrd reset NOT successful for recover username");
 		reporter.reportLogWithScreenshot("Password success page");
-		getRogersRecoverPassOrNamePage().clkGoToMyRogers();
+		getRegisterOrAccountRecoveryPage().clkGoToMyRogers();
 		reporter.reportLogWithScreenshot("Go to my rogers clicked");
-		getRogersRecoverPassOrNamePage().switchToDefaultContent();
+		getRegisterOrAccountRecoveryPage().switchToDefaultContent();
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),
 				"username successfully recovered", "username NOT recovered successfully, please investigate");							
 		reporter.reportLogWithScreenshot("Account overview");		
