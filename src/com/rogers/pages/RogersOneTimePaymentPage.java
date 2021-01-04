@@ -14,7 +14,8 @@ public class RogersOneTimePaymentPage extends BasePageClass {
     @FindBy(xpath = "//span[@class='ds-inputLabel d-block ds-no-overflow'][contains(text(),'CVV')]/ancestor::div/input")
     WebElement inputTxtCVV;
 
-    @FindBy(xpath = "//span[@class='ds-inputLabel d-block ds-no-overflow'][contains(text(),'CVV')]")
+    //@FindBy(xpath = "//span[@class='ds-inputLabel d-block ds-no-overflow'][contains(text(),'CVV')]")
+    @FindBy(xpath = "//ds-form-field[@data-test='cvv']//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
     WebElement txtContainerCVV;
 
     @FindBy(xpath = "//*[@class='ds-formField__wrapper']//iframe")
@@ -23,8 +24,10 @@ public class RogersOneTimePaymentPage extends BasePageClass {
     @FindBy(xpath = "//input[@id='pan']")
     WebElement txtCardNumber;
 
-    @FindBy(xpath = "//span[@class='ds-inputLabel d-block ds-no-overflow'][contains(text(),'Expiry Date') or contains(text(),'Date')]")
+    @FindBy(xpath = "//ds-form-field[@data-test='expiry-date']//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
     WebElement txtExpiryDate;
+
+    //span[@class='ds-inputLabel d-block ds-no-overflow'][contains(text(),'Expiry Date') or contains(text(),'Date')]
 
     @FindBy(xpath = "//span[@class='ds-inputLabel d-block ds-no-overflow'][contains(text(),'Expiry Date') or contains(text(),'Date')]/ancestor::div/input")
     WebElement inputExpiryDate;

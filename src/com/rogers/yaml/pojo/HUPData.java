@@ -11,6 +11,24 @@ public class HUPData {
 	private String banNo;
 	private String postalCode;
 	private String deviceName;
+	private String creditCardDetails;
+	private String expiryDate;
+
+	public String getCreditCardDetails() {
+		return creditCardDetails;
+	}
+
+	public void setCreditCardDetails(String creditCardDetails) {
+		this.creditCardDetails = creditCardDetails;
+	}
+
+	public String getExpiryDate() {
+		return expiryDate;
+	}
+
+	public void setExpiryDate(String expiryDate) {
+		this.expiryDate = expiryDate;
+	}
 
 	public String getDeviceName() {
 		return deviceName;
