@@ -28,7 +28,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	WebElement lnkViewMyChannelLineup;
     //ins[@usertype-translate='global.dashboard.tv.viewMyChannelLineup']
 
-	@FindBy(xpath = "")
+	@FindBy(xpath = "//span[@translate='global.modals.viewMyChannelsModal.viewAsPdf']")
 	WebElement lnkViewAsPDF;
 	//ins[@translate='global.modals.viewMyChannelsModal.viewAsPdf']
 
@@ -38,8 +38,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='channel-list-block']")
 	WebElement lstChannelList;
 
-	@FindBy(xpath = "//button[@class='closeModalBtn']")
+	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
 	WebElement popupCloseChannel;
+	//button[@class='closeModalBtn']
 
 	@FindBy(xpath = "//span[@translate='global.dashboard.tv.viewLineup']")
 	WebElement lnkViewfelxChannels;
@@ -237,7 +238,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		getReusableActionsInstance().switchToNewWindow(mainWindow);
 		//the page is moving to new window
 		getReusableActionsInstance().staticWait(1000);
-		getReusableActionsInstance().isElementVisible(lnkPDFPage);
+		//getReusableActionsInstance().isElementVisible(lnkPDFPage);
 		getReusableActionsInstance().closeCurrentWindow();
 		getReusableActionsInstance().switchToMainWindow(mainWindow);
 		//the page is moving to original window
