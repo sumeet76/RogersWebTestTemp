@@ -35,8 +35,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//embed[@id='plugin']")
 	WebElement lnkPDFPage;
 
-	@FindBy(xpath = "//div[@class='channel-list-block']")
+	@FindBy(xpath = "//div[@class='channels-container']")
 	WebElement lstChannelList;
+	//div[@class='channel-list-block']
 
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
 	WebElement popupCloseChannel;

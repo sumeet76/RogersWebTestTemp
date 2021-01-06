@@ -58,7 +58,7 @@ public class RogersCH_TC_001_IginteTV_ValidateTVDashboardTest extends BaseTestCl
                     
         //Verifying the Flexchannels                     
         getRogersSolarisTVDashboardPage().clkViewfelxChannels();
-        reporter.reportLogWithScreenshot("Displayed the available flex channels"); 
+        reporter.reportLogWithScreenshot("Displayed the available flex channels");
         reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChannelList(),"flex channels are avilable","There are no felx channels");
         reporter.softAssert(getRogersSolarisTVDashboardPage().clklAndVerifyViewPDF(),"all the flex channels are displayed in PDF","PDF is not displying");
         getRogersSolarisTVDashboardPage().clkCloseChannelsPopup();
