@@ -35,7 +35,7 @@ public class RogersSS_TC_034_Postpaid_UpdateWirelessPhoneNumber extends BaseTest
 		closeSession();
 	}
 	
-	@Test(groups = {"SanitySS","ProfileAndSettingsSS"})
+	@Test(groups = {"ProfileAndSettingsSS"})
 	public void validateUpdateWirelessPhoneNumber() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc013132.getUsername();
