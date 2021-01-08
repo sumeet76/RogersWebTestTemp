@@ -332,10 +332,6 @@ public class BaseTestClass {
 		return RogersInternetUsageOVPageThreadLocal.get();
 	}
 
-	public HomePhonedashboard getHome_phone_dashboard() {
-		return home_phone_dashboard;
-	}
-
 	public static RogersIgniteBundlesPage getRogersIgniteBundlesPage() {
 		return RogersIgniteBundlesPageThreadLocal.get();
 	}
@@ -386,6 +382,10 @@ public class BaseTestClass {
 
 	public static RogersOVChangeSharePlanPage getRogersOVChangeSharePlanPage() {
 		return RogersOVChangeSharePlanPageThreadLocal.get();
+	}
+
+	public static com.rogers.oneview.pages.HomePhonedashboard getHomePhonedashboard() {
+		return HomePhonedashboardThreadLocal.get();
 	}
 
 	public static com.rogers.oneview.pages.RogersChoosePhonePage getRogersOVChoosePhonePage() {
@@ -522,7 +522,7 @@ public class BaseTestClass {
 	protected static final ThreadLocal<TVDashboardPage> TVDashboardPageThreadLocal = new ThreadLocal<>();
 	protected static final ThreadLocal<InternetDashboardPage> InternetDashboardPageThreadLocal = new ThreadLocal<>();
 	protected static final ThreadLocal<RogersInternetUsageOVPage> RogersInternetUsageOVPageThreadLocal = new ThreadLocal<>();
-	protected HomePhonedashboard home_phone_dashboard;
+	protected static final ThreadLocal<HomePhonedashboard> HomePhonedashboardThreadLocal = new ThreadLocal<>();
 	protected static final ThreadLocal<RogersIgniteBundlesPage> RogersIgniteBundlesPageThreadLocal = new ThreadLocal<>();
 	protected static final ThreadLocal<CustomerProfilePage> CustomerProfilePageThreadLocal = new ThreadLocal<>();
 	protected static final ThreadLocal<CreditCheckPage> CreditCheckPageThreadLocal = new ThreadLocal<>();
@@ -599,6 +599,7 @@ public class BaseTestClass {
 		case "connectedhome_igniteanonymous":
 			setImplicitWait(getDriver(), 10);
 			getDriver().get(strUrl+"/web/totes/browsebuy/v1/byPassCaptcha");
+			//captcha_bypass_handlers.captchaBypassURLIgniteAnonymousBuyFlows(strUrl, language);
 			getDriver().get(strUrl+"?setLanguage="+ language);
 			break;
 			
@@ -918,7 +919,7 @@ public class BaseTestClass {
 			TVDashboardPageThreadLocal.set(new TVDashboardPage(getDriver()));
 			InternetDashboardPageThreadLocal.set(new InternetDashboardPage(getDriver()));
 			RogersInternetUsagePageThreadLocal.set(new RogersInternetUsagePage(getDriver()));
-			home_phone_dashboard = new HomePhonedashboard(getDriver());
+			HomePhonedashboardThreadLocal.set(new HomePhonedashboard(getDriver()));
 			RogersIgniteBundlesPageThreadLocal.set(new RogersIgniteBundlesPage(getDriver()));
 			CustomerProfilePageThreadLocal.set(new CustomerProfilePage(getDriver()));
 			CreditCheckPageThreadLocal.set(new CreditCheckPage(getDriver()));
