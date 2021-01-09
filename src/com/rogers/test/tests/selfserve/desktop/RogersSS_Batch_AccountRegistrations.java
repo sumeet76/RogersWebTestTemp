@@ -82,7 +82,7 @@ public class RogersSS_Batch_AccountRegistrations extends BaseTestClass {
 		//Will open a new tab for ENS, to get verification code from ENS		
 
 		reporter.reportLogWithScreenshot("ENS");
-		ensVerifications.getEmailVerifyPage(strEmail);
+		getEnsVerifications().getEmailVerifyPage(strEmail);
 		reporter.reportLogWithScreenshot("Email inbox got from ENS.");
 		getRogersSetPasswordPage().clkBtnSetPasswordInEmail();
 		//Another new page opened

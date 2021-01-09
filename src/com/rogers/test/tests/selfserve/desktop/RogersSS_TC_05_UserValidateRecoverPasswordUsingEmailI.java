@@ -48,7 +48,7 @@ public class RogersSS_TC_05_UserValidateRecoverPasswordUsingEmailI extends BaseT
 		//Go to ENS to verify email and get reset password page.		
 		try {
 			
-			ensVerifications.getEmailVerifyPage(strUserName);
+			getEnsVerifications().getEmailVerifyPage(strUserName);
 			String recoveryCode = getRegisterOrAccountRecoveryPage().getVerificationCode();
 			getDriver().switchTo().window(strTestingTab);			
 			reporter.reportLogWithScreenshot("Close the Overlay");

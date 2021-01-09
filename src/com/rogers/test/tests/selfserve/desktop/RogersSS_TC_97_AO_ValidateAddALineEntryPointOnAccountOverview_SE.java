@@ -47,7 +47,7 @@ public class RogersSS_TC_97_AO_ValidateAddALineEntryPointOnAccountOverview_SE ex
          }
          reporter.reportLogWithScreenshot("Account overview page.");
          reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Passed", "Login Failed");
-         common_business_flows.scrollToMiddleOfWebPage();
+         getCommonBusinessFlows().scrollToMiddleOfWebPage();
          reporter.reportLogWithScreenshot("CTNs View");
          
          reporter.hardAssert(getRogersAccountOverviewPage().isAddALinkDisplayedBelowCTNs(),

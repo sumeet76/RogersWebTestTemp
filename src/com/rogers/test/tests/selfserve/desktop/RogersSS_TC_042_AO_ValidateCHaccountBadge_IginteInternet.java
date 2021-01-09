@@ -66,9 +66,9 @@ public class RogersSS_TC_042_AO_ValidateCHaccountBadge_IginteInternet extends Ba
             				"Usage and Alerts link present on the internet dash page",
             				"Usage and Alerts link is not present on the internet page");                
             		reporter.reportLogWithScreenshot("Ignite Internet dashboard is opened");
-            		common_business_flows.scrollToMiddleOfWebPage();
+            		getCommonBusinessFlows().scrollToMiddleOfWebPage();
             		reporter.reportLogWithScreenshot("Mid page view");
-            		common_business_flows.scrollToBottomOfWebPage();
+            		getCommonBusinessFlows().scrollToBottomOfWebPage();
             		reporter.reportLogWithScreenshot("Bottom View");
     }
 

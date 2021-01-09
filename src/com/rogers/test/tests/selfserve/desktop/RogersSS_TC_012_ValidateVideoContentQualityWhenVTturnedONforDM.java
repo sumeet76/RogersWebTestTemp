@@ -58,9 +58,9 @@ public class RogersSS_TC_012_ValidateVideoContentQualityWhenVTturnedONforDM exte
        getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible(); 
      
        reporter.reportLogWithScreenshot("Dashboard page");
-       common_business_flows.scrollToMiddleOfWebPage();
+       getCommonBusinessFlows().scrollToMiddleOfWebPage();
        reporter.reportLogWithScreenshot("Middle view of Dashboard page");
-       common_business_flows.scrollToTopOfWebPage();
+       getCommonBusinessFlows().scrollToTopOfWebPage();
     
        reporter.hardAssert(getRogersWirelessDashboardPage().verifyStreamSaverDisplayed(),
     		   "Stream saver is displayed",

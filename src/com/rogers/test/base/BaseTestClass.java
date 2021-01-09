@@ -63,6 +63,104 @@ public class BaseTestClass {
 	protected static final ThreadLocal<RogersLoginPage> RogersLoginPageThreadLocal = new ThreadLocal<>();
 	protected static final ThreadLocal<RogersAccountOverviewPage> RogersAccountOverviewPageThreadLocal = new ThreadLocal<>();
 	protected static final ThreadLocal<RogersProfileAndSettingsPage> RogersProfileAndSettingsPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersWirelessDashboardPage> RogersWirelessDashboardPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersSpeedPassPage> RogersSpeedPassPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersAddDataPage> RogersAddDataPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<EnsHomePage> EnsHomePageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<EnsNotificationViewPage> EnsNotificationViewPageThreadLocal = new ThreadLocal<>();
+	protected HashMap<String,String> xmlTestParameters;
+	protected static final ThreadLocal<RogersShareEverythingPage> RogersShareEverythingPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersChangeMyCallerIdPage> RogersChangeMyCallerIdPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersRegisterPage> RogersRegisterPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersLinkAccountPage> RogersLinkAccountPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersBillingPage> RogersBillingPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersChangePaymentMethodPage> RogersChangePaymentMethodPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersSecurePaymentPage> RogersSecurePaymentPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersPaymentOptionsPage> RogersPaymentOptionsPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersPaymentHistoryPage> RogersPaymentHistoryPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersMakePaymentPage> RogersMakePaymentPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersManageDataPage> RogersManageDataPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<CommonBusinessFlows> CommonBusinessFlowsThreadLocal = new ThreadLocal<>(); 
+	protected static final ThreadLocal<VerifyInEns> ensVerificationsThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersSetPasswordPage> RogersSetPasswordPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersRegisterOrAccountRecoveryPage> RogersRecoverPassOrNamePageThreadLocal = new ThreadLocal<>();
+	protected BrowserDrivers browserdriver;
+	protected static final ThreadLocal<RogersInternetDashboardPage> RogersInternetDashboardPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersInternetPackageSelectionPage> RogersInternetPackageSelectionPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersDigitalTVDashboardPage> RogersDigitalTVDashboardPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersDigitalTVPackageSelectionPage> RogersDigitalTVPackageSelectionPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersSolarisTVDashboardPage> RogersSolarisTVDashboardPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersBuyPage> RogersBuyPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersSolarisRHPDashboardPage> RogersSolarisRHPDashboardPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersOrderSummaryPage> RogersOrderSummaryPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersOrderConfirmationPage> RogersOrderConfirmationPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersIgniteTVBuyPage> RogersIgniteTVBuyPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersOrderReviewPage> RogersOrderReviewPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersIgniteTVProfileCreationPage> RogersIgniteTVProfileCreationPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersInternetProfilePage> RogersInternetProfilePageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersIgniteTVCreditCheckPage> RogersIgniteTVCreditCheckPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersInternetCreditCheckPage> RogersInternetCreditCheckPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersHomePhoneSelectionPage> RogersHomePhoneSelectionPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersLegacyBundleBuyPage> RogersLegacyBundleBuyPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersTechInstallPage> RogersTechInstallPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersSolarisTVChannelsAndThemepacksPage> RogersSolarisTVChannelsAndThemepacksPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersHomePhonePortInPage> RogersHomePhonePortInPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersInternetUsagePage> RogersInternetUsagePageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersWirelessDetailsPage> RogersWirelessDetailsPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersChangeSEPlanPage> RogersChangeSEPlanPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersChangePlanPage> RogersChangePlanPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersChoosePhonePage> RogersChoosePhonePageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersBuildPlanPage> RogersBuildPlanPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersChooseAddonsPage> RogersChooseAddonsPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersCartSummaryPage> RogersCartSummaryPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersWirelessProfileCreationPage> RogersWirelessProfileCreationPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersWirelessCreditEvaluationPage> RogersWirelessCreditEvaluationPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersShippingPage> RogersShippingPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersChooseNumberPage> RogersChooseNumberPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersPaymentPage> RogersPaymentPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersChoosePlanPage> RogersChoosePlanPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<EnvironmentSelectionPage> EnvironmentSelectionPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<AccountOverViewPage> AccountOverViewPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<TVDashboardPage> TVDashboardPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<InternetDashboardPage> InternetDashboardPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersInternetUsageOVPage> RogersInternetUsageOVPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<HomePhonedashboard> HomePhonedashboardThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersIgniteBundlesPage> RogersIgniteBundlesPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<CustomerProfilePage> CustomerProfilePageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<CreditCheckPage> CreditCheckPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<HomePhoneSelectionPage> HomePhoneSelectionPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<FulfillmentPage> FulfillmentPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<PaymentOptionsPage> PaymentOptionsPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersOVOrderReviewPage> RogersOVOrderReviewPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersOVOrderConfirmationPage> RogersOVOrderConfirmationPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersOVChannelsAndThemePacksPage> RogersOVChannelsAndThemePacksPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<HomePhoneAddonsPage> HomePhoneAddonsPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersSHMDashboardPage> RogersSHMDashboardPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<com.rogers.oneview.pages.RogersWirelessDetailsPage>RogersOVWirelessDetailsPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersOVChangeSharePlanPage>RogersOVChangeSharePlanPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<com.rogers.oneview.pages.RogersChoosePhonePage>RogersOVChoosePhonePageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<com.rogers.oneview.pages.RogersBuildPlanPage>RogersOVBuildPlanPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<com.rogers.oneview.pages.RogersChooseAddonsPage>RogersOVChooseAddonsPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<com.rogers.oneview.pages.RogersShippingPage>RogersOVShippingPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<com.rogers.oneview.pages.RogersOVPaymentPage>RogersOVPaymentPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<com.rogers.oneview.pages.RogersChoosePlanPage>RogersOVChoosePlanPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersSearchPage> RogersSearchPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersDeviceCataloguePage> RogersDeviceCataloguePageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersDeviceConfigPage> RogersDeviceConfigPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersPlanConfigPage> RogersPlanConfigPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersCheckoutPage> RogersCheckoutPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersReviewOrderPage> RogersReviewOrderPageThreadLocal = new ThreadLocal<>();
+	protected static final ThreadLocal<RogersNACOrderConfirmationPage> RogersNACOrderConfirmationPageThreadLocal = new ThreadLocal<>();
+	AppiumServerJava appiumServer = new AppiumServerJava();	
+	//int port = 4723;	
+	private CaptchaBypassHandlers captcha_bypass_handlers;
+	private Map<String, String> sauceParameters;
+	private Map<String,String> RunParameters;
+		
+		public BaseTestClass() {
+			 browserdriver =  new BrowserDrivers();
+			 
+		}
 
 	public static ExtentReports getReport() {
 		return report;
@@ -156,12 +254,12 @@ public class BaseTestClass {
 		return RogersManageDataPageThreadLocal.get();
 	}
 
-	public CommonBusinessFlows getCommon_business_flows() {
-		return common_business_flows;
+	public CommonBusinessFlows getCommonBusinessFlows() {
+		return CommonBusinessFlowsThreadLocal.get();
 	}
 
 	public VerifyInEns getEnsVerifications() {
-		return ensVerifications;
+		return ensVerificationsThreadLocal.get();
 	}
 
 	public static RogersSetPasswordPage getRogersSetPasswordPage() {
@@ -460,106 +558,6 @@ public class BaseTestClass {
 		return RunParameters;
 	}
 
-	protected static final ThreadLocal<RogersWirelessDashboardPage> RogersWirelessDashboardPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersSpeedPassPage> RogersSpeedPassPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersAddDataPage> RogersAddDataPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<EnsHomePage> EnsHomePageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<EnsNotificationViewPage> EnsNotificationViewPageThreadLocal = new ThreadLocal<>();
-	protected HashMap<String,String> xmlTestParameters;
-	protected static final ThreadLocal<RogersShareEverythingPage> RogersShareEverythingPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersChangeMyCallerIdPage> RogersChangeMyCallerIdPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersRegisterPage> RogersRegisterPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersLinkAccountPage> RogersLinkAccountPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersBillingPage> RogersBillingPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersChangePaymentMethodPage> RogersChangePaymentMethodPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersSecurePaymentPage> RogersSecurePaymentPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersPaymentOptionsPage> RogersPaymentOptionsPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersPaymentHistoryPage> RogersPaymentHistoryPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersMakePaymentPage> RogersMakePaymentPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersManageDataPage> RogersManageDataPageThreadLocal = new ThreadLocal<>();
-	protected CommonBusinessFlows common_business_flows; 
-	protected VerifyInEns ensVerifications;
-	protected static final ThreadLocal<RogersSetPasswordPage> RogersSetPasswordPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersRegisterOrAccountRecoveryPage> RogersRecoverPassOrNamePageThreadLocal = new ThreadLocal<>();
-	protected BrowserDrivers browserdriver;
-	protected static final ThreadLocal<RogersInternetDashboardPage> RogersInternetDashboardPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersInternetPackageSelectionPage> RogersInternetPackageSelectionPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersDigitalTVDashboardPage> RogersDigitalTVDashboardPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersDigitalTVPackageSelectionPage> RogersDigitalTVPackageSelectionPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersSolarisTVDashboardPage> RogersSolarisTVDashboardPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersBuyPage> RogersBuyPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersSolarisRHPDashboardPage> RogersSolarisRHPDashboardPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersOrderSummaryPage> RogersOrderSummaryPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersOrderConfirmationPage> RogersOrderConfirmationPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersIgniteTVBuyPage> RogersIgniteTVBuyPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersOrderReviewPage> RogersOrderReviewPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersIgniteTVProfileCreationPage> RogersIgniteTVProfileCreationPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersInternetProfilePage> RogersInternetProfilePageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersIgniteTVCreditCheckPage> RogersIgniteTVCreditCheckPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersInternetCreditCheckPage> RogersInternetCreditCheckPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersHomePhoneSelectionPage> RogersHomePhoneSelectionPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersLegacyBundleBuyPage> RogersLegacyBundleBuyPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersTechInstallPage> RogersTechInstallPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersSolarisTVChannelsAndThemepacksPage> RogersSolarisTVChannelsAndThemepacksPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersHomePhonePortInPage> RogersHomePhonePortInPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersInternetUsagePage> RogersInternetUsagePageThreadLocal = new ThreadLocal<>();
-	protected RogersBillingPage rogersBillingPage;
-	protected static final ThreadLocal<RogersWirelessDetailsPage> RogersWirelessDetailsPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersChangeSEPlanPage> RogersChangeSEPlanPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersChangePlanPage> RogersChangePlanPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersChoosePhonePage> RogersChoosePhonePageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersBuildPlanPage> RogersBuildPlanPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersChooseAddonsPage> RogersChooseAddonsPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersCartSummaryPage> RogersCartSummaryPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersWirelessProfileCreationPage> RogersWirelessProfileCreationPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersWirelessCreditEvaluationPage> RogersWirelessCreditEvaluationPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersShippingPage> RogersShippingPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersChooseNumberPage> RogersChooseNumberPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersPaymentPage> RogersPaymentPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersChoosePlanPage> RogersChoosePlanPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<EnvironmentSelectionPage> EnvironmentSelectionPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<AccountOverViewPage> AccountOverViewPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<TVDashboardPage> TVDashboardPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<InternetDashboardPage> InternetDashboardPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersInternetUsageOVPage> RogersInternetUsageOVPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<HomePhonedashboard> HomePhonedashboardThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersIgniteBundlesPage> RogersIgniteBundlesPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<CustomerProfilePage> CustomerProfilePageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<CreditCheckPage> CreditCheckPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<HomePhoneSelectionPage> HomePhoneSelectionPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<FulfillmentPage> FulfillmentPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<PaymentOptionsPage> PaymentOptionsPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersOVOrderReviewPage> RogersOVOrderReviewPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersOVOrderConfirmationPage> RogersOVOrderConfirmationPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersOVChannelsAndThemePacksPage> RogersOVChannelsAndThemePacksPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<HomePhoneAddonsPage> HomePhoneAddonsPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersSHMDashboardPage> RogersSHMDashboardPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<com.rogers.oneview.pages.RogersWirelessDetailsPage>RogersOVWirelessDetailsPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersOVChangeSharePlanPage>RogersOVChangeSharePlanPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<com.rogers.oneview.pages.RogersChoosePhonePage>RogersOVChoosePhonePageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<com.rogers.oneview.pages.RogersBuildPlanPage>RogersOVBuildPlanPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<com.rogers.oneview.pages.RogersChooseAddonsPage>RogersOVChooseAddonsPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<com.rogers.oneview.pages.RogersShippingPage>RogersOVShippingPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<com.rogers.oneview.pages.RogersOVPaymentPage>RogersOVPaymentPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<com.rogers.oneview.pages.RogersChoosePlanPage>RogersOVChoosePlanPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersSearchPage> RogersSearchPageThreadLocal = new ThreadLocal<>();
-	AppiumServerJava appiumServer = new AppiumServerJava();	
-	//int port = 4723;	
-	private CaptchaBypassHandlers captcha_bypass_handlers;
-	private Map<String, String> sauceParameters;
-	protected static final ThreadLocal<RogersDeviceCataloguePage> RogersDeviceCataloguePageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersDeviceConfigPage> RogersDeviceConfigPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersPlanConfigPage> RogersPlanConfigPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersCheckoutPage> RogersCheckoutPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersReviewOrderPage> RogersReviewOrderPageThreadLocal = new ThreadLocal<>();
-	protected static final ThreadLocal<RogersNACOrderConfirmationPage> RogersNACOrderConfirmationPageThreadLocal = new ThreadLocal<>();
-	private Map<String,String> RunParameters;
-		
-		public BaseTestClass() {
-			 browserdriver =  new BrowserDrivers();
-			 
-		}
-
 
 	 /** To start a session using given url, browser, language and test case group name.
 	 * @param strUrl                     string of test url
@@ -734,7 +732,7 @@ public class BaseTestClass {
 	 */
 	private void init(String strGroupName) {
 		reporter = new ExtentTestManager(getDriver());	
-		common_business_flows = new CommonBusinessFlows(this);
+		CommonBusinessFlowsThreadLocal.set(new CommonBusinessFlows(this));
 		switch(strGroupName) {
 		
 		case "search":
@@ -763,10 +761,10 @@ public class BaseTestClass {
 			RogersPaymentOptionsPageThreadLocal.set(new RogersPaymentOptionsPage(getDriver()));
 			RogersPaymentHistoryPageThreadLocal.set(new RogersPaymentHistoryPage(getDriver()));
 			RogersMakePaymentPageThreadLocal.set(new RogersMakePaymentPage(getDriver()));
-			common_business_flows = new CommonBusinessFlows(this);
+			CommonBusinessFlowsThreadLocal.set(new CommonBusinessFlows(this));
 			EnsHomePageThreadLocal.set(new EnsHomePage(getDriver()));
 			EnsNotificationViewPageThreadLocal.set(new EnsNotificationViewPage(getDriver()));
-			ensVerifications = new VerifyInEns(this);
+			ensVerificationsThreadLocal.set(new VerifyInEns(this));
 			RogersSetPasswordPageThreadLocal.set(new RogersSetPasswordPage(getDriver()));
 			RogersRecoverPassOrNamePageThreadLocal.set(new RogersRegisterOrAccountRecoveryPage(getDriver()));
 			RogersSolarisRHPDashboardPageThreadLocal.set(new RogersSolarisRHPDashboardPage(getDriver()));

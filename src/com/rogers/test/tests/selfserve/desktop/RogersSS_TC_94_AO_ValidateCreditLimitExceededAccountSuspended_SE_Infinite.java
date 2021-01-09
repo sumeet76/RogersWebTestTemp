@@ -57,7 +57,7 @@ public class RogersSS_TC_94_AO_ValidateCreditLimitExceededAccountSuspended_SE_In
         		"Service suspended notification is displayed as expected",
         		"Service suspended notification is NOT displayed as expected"); 
         reporter.reportLogWithScreenshot("Services suspended Notification displayed");
-        common_business_flows.scrollToMiddleOfWebPage();
+        getCommonBusinessFlows().scrollToMiddleOfWebPage();
         reporter.reportLogWithScreenshot("CTNs View");
         reporter.hardAssert(getRogersAccountOverviewPage().isSuspendedCTNAvailable(),
         		"Suspended CTN is avialable",
@@ -69,7 +69,7 @@ public class RogersSS_TC_94_AO_ValidateCreditLimitExceededAccountSuspended_SE_In
         		"User is unable to click and navigate through suspended CTN Badge",
         		"It seems the user was able to click on suspended CTN");
         
-        common_business_flows.scrollToTopOfWebPage();
+        getCommonBusinessFlows().scrollToTopOfWebPage();
         getRogersAccountOverviewPage().clkBtnLiveChatInsideSuspensionNotification();
 		reporter.reportLogWithScreenshot("Clicked on Button Live Chat");	
 		reporter.hardAssert(getRogersAccountOverviewPage().verifyLiveChatOverlayOpened(),
