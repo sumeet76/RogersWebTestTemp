@@ -90,6 +90,20 @@ public class RogersDeviceCataloguePage extends BasePageClass {
 
     String deviceTextXpath = xpathDeviceName + "//following-sibling::dsa-price//span[contains(@class,'dsa-price__copyBottom')]";
 
+    @FindAll({
+            @FindBy(xpath = "//div[@class='dds-navbar-nav']//a[@aria-label='Sign in to My Rogers']//span[text()='Sign in'  or text()='Connexion']"),
+            @FindBy(xpath = "//div[@class='rcl-navbar-nav']//a[@class='m-navLink -navbar -login']//span[text()='Sign in'  or text()='Connexion']")
+    })
+    WebElement lnkSignIn;
+
+    /**
+     * To verify the Home page
+     * @return true if the signin link is available on home page, else false
+     * @author Saurav.Goyal
+     */
+    public boolean verifyHomepage() {
+        return getReusableActionsInstance().isElementVisible(lnkSignIn, 60);
+    }
     /**
      * This method gets the title text of a coming soon Device
      *
@@ -461,7 +475,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
 
     public void clickContinueBtn() {
-        getReusableActionsInstance().clickWhenReady(continueBtn, 30);
+        getReusableActionsInstance().clickWhenReady(continueBtn, 60);
     }
 
     /**
@@ -581,6 +595,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
 
     public void clickCheckBtn() {
         getReusableActionsInstance().getWhenVisible(checkBtn, 30);
+        getReusableActionsInstance().doubleClick(checkBtn,0);
         getReusableActionsInstance().doubleClick(checkBtn,0);
         getReusableActionsInstance().doubleClick(checkBtn,0);
     }

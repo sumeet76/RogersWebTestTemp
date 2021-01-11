@@ -1,6 +1,7 @@
 package com.rogers.pages;
 
 import com.rogers.pages.base.BasePageClass;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -242,8 +243,13 @@ public class RogersCheckoutPage extends BasePageClass {
 	WebElement deliveryMethodStandard;
 
 	@FindBy(xpath ="//ds-radio-button[@data-test='potg-delivery']/label")
+	WebElement deliveryMethodProOnTheGo;
+
+	@FindBy(xpath ="//ds-radio-button[@data-test='in-store-pickup']/label")
 	WebElement deliveryMethodExpress;
 
+	@FindBy(xpath ="//location-container//div[@id='store-map-div']")
+	WebElement deliveryMethodExpressLocationMap;
 
 	@FindBy(xpath ="//p[@data-test='timeslot-appointment']")
 	WebElement deliveryAppointmentTime;
@@ -266,7 +272,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath ="//div[@data-test='delivery-information']//child::div/p[3]")
 	WebElement appointmentTime;
 
-	@FindBy(xpath = "//button[@id='main-continue-button']")
+	@FindBy(xpath = "//button[@id='main-continue-button']//span[contains(@class,'ds-button__copy')]")
 	WebElement submitBtnCheckoutPage;
 
 	@FindBy(xpath = "//p[@class='text-body mb-8']")
@@ -349,6 +355,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public String setEmailCreateProfile() {
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
 		getReusableActionsInstance().clickWhenReady(emailCreateProfile);
 		getReusableActionsInstance().getWhenReady(inputEmail,40).sendKeys(FormFiller.generateEmail());
 		return getReusableActionsInstance().getWhenReady(inputEmail,40).getAttribute("value");
@@ -678,6 +685,18 @@ public class RogersCheckoutPage extends BasePageClass {
 	public boolean isCreditEvalTextOnModalPresent() { return getReusableActionsInstance().isElementVisible(txtCreditEval); }
 
 	/**
+	 * To return true if the express location map is available else false
+	 * @return True or False
+	 * @author Saurav.Goyal
+	 */
+
+	public boolean verifyExpressLocationMapPresent() {
+		return getReusableActionsInstance().isElementVisible(deliveryMethodExpressLocationMap,30);
+	}
+
+
+
+	/**
 	 * WaitUntill Credit Evaluation text get invisible from the Credit Evaluation Model
 	 * @author karthic.hasan
 	 */
@@ -700,7 +719,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author karthic.hasan
 	 */
 
-	public boolean isChooseaNumberTitleDisplayed() { return getReusableActionsInstance().isElementVisible(chooseNumberTitle); }
+	public boolean isChooseaNumberTitleDisplayed() { return getReusableActionsInstance().isElementVisible(chooseNumberTitle,60); }
 
 	/**
 	 * To verify Select A Number Tab UseAnExistingNumber Tab is present in the Choose a Number stepper and return boolean value.
@@ -932,9 +951,17 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 
-	public void clkDeliveryMethodExpress() {
-		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().clickWhenReady(deliveryMethodExpress,30);
+	public void clkDeliveryMethodExpress(String deliveryMethod) {
+		if(deliveryMethod.equalsIgnoreCase("EXPRESS")){
+			getReusableActionsInstance().staticWait(5000);
+			getReusableActionsInstance().clickWhenReady(deliveryMethodExpress,30);
+		}else if(deliveryMethod.equalsIgnoreCase("PRO")){
+			getReusableActionsInstance().staticWait(5000);
+			getReusableActionsInstance().clickWhenReady(deliveryMethodProOnTheGo,30);
+		}else{
+			getReusableActionsInstance().staticWait(5000);
+			getReusableActionsInstance().clickWhenReady(deliveryMethodStandard,30);
+		}
 	}
 
 	/**
@@ -1010,7 +1037,10 @@ public class RogersCheckoutPage extends BasePageClass {
      */
 
     public void clksubmitBtnCheckoutPage(){
-		getReusableActionsInstance().clickWhenReady(submitBtnCheckoutPage,30);
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().waitForElementVisibility(submitBtnCheckoutPage,30);
+		getReusableActionsInstance().scrollToElementAndClick(submitBtnCheckoutPage);
+		getReusableActionsInstance().clickWhenReady(submitBtnCheckoutPage , 30);
     }
 
 	/**

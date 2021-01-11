@@ -252,6 +252,18 @@ public class RogersBFA_TC04_NAC_NoTermRpotgBopisTest extends BaseTestClass {
 		getRogersOneTimePaymentPage().setCVV();
 		reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
 		getRogersOneTimePaymentPage().clkSubmitOrderBtn();
+		//***********Onetime payment page***************
+		reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),
+				"Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
+		getRogersOneTimePaymentPage().setNameonCard();
+		getRogersOneTimePaymentPage().switchToCreditCardIFrame();
+		getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc04NACNoTermRpotgBopis.getCreditCardDetailsOTP());
+		getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
+		getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc04NACNoTermRpotgBopis.getExpiryDateOTP());
+		getRogersOneTimePaymentPage().setCVV();
+		reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
+		getRogersOneTimePaymentPage().clkSubmitOrderBtn();
+
 		// ************Order Confirmation Page***************************************************
 
 		reporter.hardAssert(getRogersNACOrderConfirmationPage().isOrderConfirmationTitlePresent(),

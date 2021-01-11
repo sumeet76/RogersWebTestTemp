@@ -126,6 +126,15 @@ public class RogersChoosePhonePage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(txtSearch, 80).sendKeys(strDeviceName);
 		getReusableActionsInstance().executeJavaScriptClick(imgSearch);
 	}
+
+	/**
+	 * Verify Choose phone page
+	 * @return  true if page loaded properly else false
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyChoosePhonePage() {
+		return getReusableActionsInstance().isElementVisible(txtSearch, 60);
+	}
 	
 	/**
 	 * Clicks on the 'Details' button against the first available device with '$0' upfront cost

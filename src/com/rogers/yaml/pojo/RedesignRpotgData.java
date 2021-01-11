@@ -20,6 +20,25 @@ public class RedesignRpotgData {
     private String billingNameOnCard;
 	private String postalCode;
 	private String paymentMethod;
+	private String creditCardDetailsOTP;
+
+	public String getCreditCardDetailsOTP() {
+		return creditCardDetailsOTP;
+	}
+
+	public void setCreditCardDetailsOTP(String creditCardDetailsOTP) {
+		this.creditCardDetailsOTP = creditCardDetailsOTP;
+	}
+
+	public String getExpiryDateOTP() {
+		return expiryDateOTP;
+	}
+
+	public void setExpiryDateOTP(String expiryDateOTP) {
+		this.expiryDateOTP = expiryDateOTP;
+	}
+
+	private String expiryDateOTP;
 
 	
 	public String getPaymentMethod() {

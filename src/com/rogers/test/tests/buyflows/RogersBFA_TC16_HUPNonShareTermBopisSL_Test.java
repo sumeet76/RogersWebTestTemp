@@ -71,7 +71,7 @@ class RogersBFA_TC16_HUPNonShareTermBopisSL_Test extends BaseTestClass {
         reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                 "Billing Address is not selected");
         reporter.reportLogPassWithScreenshot("On Checkout page");
-        getRogersCheckoutPage().clkDeliveryMethodExpress();
+        getRogersCheckoutPage().clkDeliveryMethodExpress("Express");
         reporter.reportLogPassWithScreenshot("Bopis Delivery selected");
         reporter.hardAssert(getRogersCheckoutPage().isAppointmentTimeAvailable(), "Appointment time is available",
                 "Appointment time is not available");

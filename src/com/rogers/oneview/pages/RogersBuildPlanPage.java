@@ -78,13 +78,22 @@ public class RogersBuildPlanPage extends BasePageClass {
 	WebElement btnSelectExistingPlan;
 
 	/**
+	 * Verify build plan page loaded
+	 * @return true if the page is loaded else false
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyBuildPlanPage() {
+		return getReusableActionsInstance().isElementVisible(btnContinue , 60);
+	}
+
+	/**
 	 * Clicks on the 'Add' button against the first available price plan
 	 * @author Saurav.Goyal
 	 */
 	public void selectFirstPlanInPickNewPlan() {
 		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().javascriptScrollByVisibleElement(lblData);
-		getReusableActionsInstance().clickWhenReady(addPlan.get(0), 30);
+		getReusableActionsInstance().clickWhenReady(addPlan.get(1), 30);
 		getReusableActionsInstance().staticWait(2000);
 	}
 	

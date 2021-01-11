@@ -61,7 +61,18 @@ public class RogersShippingPage extends BasePageClass {
     
     @FindBy(xpath = "//span[@checkout-res='checkout_billing_address']")
     WebElement rdoBillingAddress;
-    
+
+	/**
+	 * Verify that Shipping page is loaded properly
+	 * Return true if the page is loaded properly else false
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyShippingPage() {
+		return getReusableActionsInstance().isElementVisible(btnContinue , 30);
+	}
+
+
+
     /**
      * Clicks on the 'Continue' button at the bottom of the page
      * Clicks on the billing address radio button

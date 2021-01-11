@@ -1,5 +1,4 @@
 package com.rogers.test.tests.buyflowsoneview;
-
 import java.io.IOException;
 import java.lang.reflect.Method;
 import org.apache.http.client.ClientProtocolException;
@@ -12,52 +11,53 @@ import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
-
 /**
  * TC03-OV-PPC_Multiline Account_Validate if user is able to place an order in PPC flow for both lines_EN
- *  
  * @author Saurav.Goyal
- *
  */
 public class RogersBFA_OV_TC04_PPCMultiLineKeepingSamePlanOnAdditionalLine_Test extends BaseTestClass {
-
-	@Test
+    @Test(groups = {"RegressionBFA","RegressionOVBFA","SanityBFA","PPCOvBFA"})
     public void ppcOnMultiLineKeepingSamePlanOnAdditionalLineFlowTest() {
 		getEnvironmentSelectionPage().presenceOfTheGoButton();
-		reporter.reportLogWithScreenshot("Rogers Choose Phone page");
+        reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");
 		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
+        reporter.reportLogWithScreenshot("Rogers OV environment selected" + TestDataHandler.bfaOneViewConfig.getEnvironmentName());
+        //getAccountOverViewPage().enterDealerCodeDialogue();
+        //getAccountOverViewPage().clkSubmitBtnDealerCodeDialogue();
         reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page");
         reporter.hardAssert(getAccountOverViewPage().verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase04.getCtn()), "Select CTN Passed", "Select CTN Failed");
         getAccountOverViewPage().clkCloseBtnAssignDataManager();
 		//getAccountOverViewPage().clkBtnOkOneViewDialoue();
-        reporter.reportLogWithScreenshot("Wireless Dashboard Page");
+        getRogersOVWirelessDetailsPage().verifyWirelessPageLoad();
+        reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
         getRogersOVWirelessDetailsPage().clickChangePlanButton();
+        reporter.reportLogWithScreenshot("Change plan button clicked");
+        getRogersOVChangeSharePlanPage().verifyChangeSharePlanPage();
         reporter.reportLogWithScreenshot("Change share plan page");
         getRogersOVChangeSharePlanPage().clickEditButton();
-        reporter.reportLogWithScreenshot("Choose Plan page");
+        getRogersOVChoosePlanPage().verifyChoosePlanPage();
+        reporter.reportLogWithScreenshot("Choose Plan page loaded");
         getRogersOVChoosePlanPage().clkSharedLineOne();
         getRogersOVChoosePlanPage().selectPlanCategory(TestDataHandler.buyFlowsOVtestCase04.getNewPlanCategory());
         getRogersOVChoosePlanPage().selectFirstAvailablePlan();
         getRogersOVChoosePlanPage().verifyAndClickDowngradeFeeContinue();
-        /*
-        getRogersOVChoosePlanPage().clkSharedLineTwo();
-        getRogersOVChoosePlanPage().selectPlanCategory(TestDataHandler.buyFlowsOVtestCase03.getNewPlanCategory());
-        getRogersOVChoosePlanPage().selectFirstAvailablePlan();
-        getRogersOVChoosePlanPage().verifyAndClickDowngradeFeeContinue();
-        */
+        reporter.reportLogWithScreenshot("Shared line one plan changed");
         getRogersOVChoosePlanPage().clkCheckout();
-        reporter.reportLogWithScreenshot("Rogers Choose Addons Page");
+        getRogersOVChooseAddonsPage().verifyChooseAddOnPage();
+        reporter.reportLogWithScreenshot("Rogers Choose add ons page");
 		getRogersOVChooseAddonsPage().clkContinueHUP();
+        getRogersOVOrderReviewPage().verifyOrderReviewPage();
+        reporter.reportLogWithScreenshot("Rogers Order review page");
         getRogersOVOrderReviewPage().selectEmailDigitalCopy(TestDataHandler.buyFlowsOVtestCase04.getUsername());
-        reporter.reportLogWithScreenshot("Order Review page");
+        reporter.reportLogWithScreenshot("Rogers Order Review Page after selecting terms and conditions");
         if(getRogersOVOrderReviewPage().isPaymentRequired()) {
         	getRogersOVOrderReviewPage().clkContinue();
         	getRogersOVPaymentPage().setCreditCardDetails(TestDataHandler.bfaOneViewPaymentInfo.getCreditCardDetails().getNumber(),
    				 TestDataHandler.bfaOneViewPaymentInfo.getCreditCardDetails().getExpiryMonth(), 
    				 TestDataHandler.bfaOneViewPaymentInfo.getCreditCardDetails().getExpiryYear(),
    				 TestDataHandler.bfaOneViewPaymentInfo.getCreditCardDetails().getCVV());
-        	reporter.reportLogWithScreenshot("Rogers Payment Page");
+        	     reporter.reportLogWithScreenshot("Rogers Payment Page");
         	getRogersOVPaymentPage().clkSubmit();
         } else {
         	getRogersOVOrderReviewPage().clkSubmitOrder();
@@ -69,7 +69,6 @@ public class RogersBFA_OV_TC04_PPCMultiLineKeepingSamePlanOnAdditionalLine_Test 
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 		startOVSession(System.getProperty("QaOVUrl"),strBrowser, strLanguage,RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim(), TestDataHandler.buyFlowsOVtestCase04.getContactID(),TestDataHandler.buyFlowsOVtestCase04.getBanNo(),TestDataHandler.bfaOneViewConfig.getUsrID(), TestDataHandler.bfaOneViewConfig.getLoginID(),  method);
   	}
     

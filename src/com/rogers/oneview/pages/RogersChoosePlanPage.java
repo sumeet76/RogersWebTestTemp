@@ -85,7 +85,20 @@ public class RogersChoosePlanPage extends BasePageClass {
 	
 	@FindBy(xpath = "//li[contains(@class,'line-tab ng-scope')]")
 	List<WebElement> linkLine;
-	
+
+
+	@FindBy(xpath = "//h2[@translate='current_plan_title']")
+	WebElement lblYourCurrentPlan;
+
+	/**
+	 * Verify Choose Plan page
+	 * @return true if the page is visible else false
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyChoosePlanPage() {
+		return getReusableActionsInstance().isElementVisible(lblYourCurrentPlan,30);
+
+	}
 	
 	/**
 	 * Click on shared line 1
@@ -174,7 +187,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void selectFirstAvailablePlan() {
-		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(btnSelect.get(0), 30));
+		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(btnSelect.get(1), 30));
 		getReusableActionsInstance().staticWait(3000);
 	}
 	
@@ -226,6 +239,9 @@ public class RogersChoosePlanPage extends BasePageClass {
 			strPlanCat = "no tab";
 			break;
 		}
+		getReusableActionsInstance().clickIfAvailable(By.xpath("//md-backdrop"));
+		getReusableActionsInstance().waitForElementVisibility(icnPlanCategory , 30);
+		getReusableActionsInstance().scrollToElement(icnPlanCategory);
 		getReusableActionsInstance().clickWhenReady(icnPlanCategory, 60);
 		getReusableActionsInstance().clickWhenReady(By.xpath("//md-option[@value='" + strPlanCat +"']"));
 		getReusableActionsInstance().staticWait(3000);

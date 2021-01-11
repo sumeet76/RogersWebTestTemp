@@ -37,21 +37,25 @@ public class RogersBFA_TC08_PPC_Test extends BaseTestClass {
         reporter.reportLogWithScreenshot("Wireless Dashboard Page");
         getRogersWirelessDetailsPage().clickChangePlanButton();
         getRogersChoosePlanPage().verifyAndClickDowngradeFeeContinue();
+        /*
         getRogersChoosePlanPage().clkMakeChangesToExistingPlan();
         reporter.reportLogWithScreenshot("Modal window appeared for change your plan");
         getRogersChoosePlanPage().clkButtonModalContinue();
-        reporter.reportLogWithScreenshot("Choose Plan page");
+         */
+        getRogersChoosePlanPage().verifyChoosePlanPage();
+        reporter.reportLogWithScreenshot("Choose Plan page loaded");
         getRogersChoosePlanPage().selectPlanCategory(TestDataHandler.tc08PPC.getNewPlanCategory());
         getRogersChoosePlanPage().selectPlanType(TestDataHandler.tc08PPC.getNewPlanType());
         getRogersChoosePlanPage().selectFirstAvailablePlan();
         getRogersChoosePlanPage().verifyAndClickDowngradeFeeContinue();
+        reporter.reportLogWithScreenshot("Plan selected");
         getRogersChoosePlanPage().clkCheckout();
         getRogersOrderReviewPage().verifyOrderReviewPageLoadedSuccessfully();
         reporter.reportLogWithScreenshot("Rogers Order review page");
         getRogersOrderReviewPage().clkTermsAgreementCheckbox();
         getRogersOrderReviewPage().clkUpfrontTermsCheckbox();
         getRogersOrderReviewPage().selectEmailDigitalCopy(TestDataHandler.tc08PPC.getUsername());
-        reporter.reportLogWithScreenshot("Rogers Order Review page");
+        reporter.reportLogWithScreenshot("All terms and conditions selected");
         if(getRogersOrderReviewPage().isPaymentRequired()) {
         	getRogersOrderReviewPage().clkContinue();
         	getRogersPaymentPage().setCreditCardDetails(TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getNumber(),
@@ -70,7 +74,6 @@ public class RogersBFA_TC08_PPC_Test extends BaseTestClass {
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 		startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows , method);
 	}
     
