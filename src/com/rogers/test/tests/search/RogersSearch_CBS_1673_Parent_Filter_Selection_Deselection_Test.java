@@ -50,7 +50,7 @@ public class RogersSearch_CBS_1673_Parent_Filter_Selection_Deselection_Test exte
 				reporter.reportLogWithScreenshot(strParentFilterName +" is selected");
 				reporter.softAssert(getRogersSearchPage().validateResultsTag(strFilters[i],strParentFilterName),
 						"Results tags verified", "Results tags mismatch");
-				getRogersSearchPage().clkParentFilter(lstParentFilters.get(j));
+				getRogersSearchPage().DeselectParentFilter(lstParentFilters.get(j));
 				reporter.reportLogWithScreenshot(strParentFilterName+" is deselected");
 				reporter.softAssert(getRogersSearchPage().validateResultsTag(strFilters[i]),
 						"Results tags verified", "Results tags mismatch");

@@ -234,6 +234,13 @@ public class RogersSearchPage extends BasePageClass {
         getReusableActionsInstance().waitForAttributeToBe(parentFilter,"aria-expanded","true",5);
     }
 
+    public void DeselectParentFilter(WebElement parentFilter)  {
+        getReusableActionsInstance().javascriptScrollToTopOfPage();
+        getReusableActionsInstance().clickWhenReady(parentFilter);
+        getReusableActionsInstance().waitForAttributeToBe(parentFilter,"aria-expanded","false",5);
+    }
+
+
     public List<WebElement> getParentFilters(String strGrandParentFilterName) {
         return getDriver().findElements(By.xpath("//div[contains(@id,'"+strGrandParentFilterName+"-body')]/div/button"));
     }
