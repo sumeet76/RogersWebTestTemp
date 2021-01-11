@@ -187,7 +187,7 @@ public class TestDataHandler {
 			chOneViewDataInit();
 			match = true;
 		}
-		if(strTestMethodName.contains("search.")) {
+		if(strTestMethodName.contains("search.")||strTestMethodName.contains("serviceability.")) {
 			//No yaml data files to initialize
 			match = true;
 		}
