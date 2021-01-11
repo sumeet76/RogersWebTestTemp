@@ -82,14 +82,14 @@ public class RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE ext
         //Comment out this block because the flow is checked in TC56.
 //        double origTotalData = getRogersWirelessDashboardPage().getTotalDataVolume();
 //        double addedData = 0;
-//        common_business_flows.addDataFlow();
+//        getCommonBusinessFlows().addDataFlow();
 //        if(getRogersAddDataPage().verifyAddDataSuccessMsgIsDisplayed())
 //        {
 //        	addedData = getRogersAddDataPage().getAddedDataVolume();
 //        	getRogersAddDataPage().clkCloseOnAddDataOverlay();
 //        	//Sign out and re sign in to verify if added data reflected.
 //	        reporter.reportLogWithScreenshot("Wireless dashboard page.");  
-//	        common_business_flows.logOutAndReSignIn(strUsername, strPassword);     
+//	        getCommonBusinessFlows().logOutAndReSignIn(strUsername, strPassword);     
 //	        getRogersAccountOverviewPage().clkMenuUsageAndService();
 //	        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");        
 //            getRogersAccountOverviewPage().clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));

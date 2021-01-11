@@ -22,7 +22,7 @@ public class RogersSecurePaymentPage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@translate,'makeAPayment')]")
 	WebElement lblMakeASecurePayment;
 	
-	@FindBy(xpath = "//input[@id='paymentAmount' or @id='ds-form-input-id-1']")
+	@FindBy(xpath = "//rss-payment-amount//input[@id='paymentAmount' or contains(@id,'ds-form-input-id')]")
 	WebElement txtpaymentAmount;
 	
 	@FindBy(xpath = "//input[@id='ds-form-input-id-1']")

@@ -1,4 +1,5 @@
 package com.rogers.test.tests.choneview;
+
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
@@ -18,20 +19,20 @@ public class OneViewCH_TC_018c_HomePhone_HeaderFooterResetVoiceMailTest extends 
 		reporter.reportLogWithScreenshot("Launched the account dashboard page");
 		getAccountOverViewPage().selectHomePhoneBadge();;
 		reporter.reportLogWithScreenshot("Lanched the HomePhone dashboard page ");		
-		reporter.softAssert(home_phone_dashboard.verifyHeader(),"Header is available","Verification of Header failed");
+		reporter.softAssert(getHomePhonedashboard().verifyHeader(),"Header is available","Verification of Header failed");
 		reporter.reportLogWithScreenshot("Header available on Home Phone Dashboard page");
-		reporter.softAssert(home_phone_dashboard.verifyFooter(),"Footer is available","Verification of Header failed");
+		reporter.softAssert(getHomePhonedashboard().verifyFooter(),"Footer is available","Verification of Header failed");
 		reporter.reportLogWithScreenshot("Footer available on Home Phone Dashboard page");
 		/*home_phone_dashboard.goToPageMid();
 		reporter.reportLogWithScreenshot("Moved to middle of the page");*/
-		home_phone_dashboard.clickResetVoiceMail();
+		getHomePhonedashboard().clickResetVoiceMail();
 		reporter.reportLogWithScreenshot("Reset Voice mail button clicked");
-		
-		home_phone_dashboard.clickYesResetPassword();;
+
+		getHomePhonedashboard().clickYesResetPassword();;
 		reporter.reportLogWithScreenshot("Yes clicked on the reset voicemail link pop up to continue");
 		
 		
-		reporter.hardAssert(home_phone_dashboard.verifySuccess(),"Verification of reset success","Reset has Failed with a technical error");	
+		reporter.hardAssert(getHomePhonedashboard().verifySuccess(),"Verification of reset success","Reset has Failed with a technical error");
         reporter.reportLogWithScreenshot("reset success");
 		
 		

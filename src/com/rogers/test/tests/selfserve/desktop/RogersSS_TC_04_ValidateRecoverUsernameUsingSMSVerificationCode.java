@@ -59,7 +59,7 @@ public class RogersSS_TC_04_ValidateRecoverUsernameUsingSMSVerificationCode exte
 		try {
 			reporter.reportLogWithScreenshot("ENS");
 			String strPhoneNum = TestDataHandler.tc060809.getAccountDetails().getRecoveryNumber();
-			String recoveryCode = ensVerifications.getAccountUserName(strPhoneNum);			
+			String recoveryCode = getEnsVerifications().getAccountUserName(strPhoneNum);			
 			getDriver().switchTo().window(strTestingTab);			
 			reporter.reportLogWithScreenshot("Close the Overlay");
 			getRegisterOrAccountRecoveryPage().switchToSetCodeIframe();

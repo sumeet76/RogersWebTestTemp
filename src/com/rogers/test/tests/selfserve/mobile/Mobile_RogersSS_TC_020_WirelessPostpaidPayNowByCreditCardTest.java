@@ -33,10 +33,10 @@ public class Mobile_RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest exten
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLoginMobile(),
 			        		"Login successful",
 			        		"Login Error. Refer screenshot");
-        common_business_flows.clkCloseFeedbackIfAvailableMobile();
+        getCommonBusinessFlows().clkCloseFeedbackIfAvailableMobile();
         getRogersAccountOverviewPage().clkViewBill();
         reporter.reportLogWithScreenshot("Clicked on view bill");        
-        common_business_flows.clkCloseFeedbackIfAvailableMobile();
+        getCommonBusinessFlows().clkCloseFeedbackIfAvailableMobile();
         getRogersAccountOverviewPage().clickMakePayment();        
         reporter.reportLogWithScreenshot("Make Payment button is clicked.");		
         reporter.hardAssert(getRogersSecurePaymentPage().verifyNewMakePaymentViewLoad(),
@@ -90,7 +90,7 @@ public class Mobile_RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest exten
         					&& getRogersBillingPage().getTransactionReferenceNumber().contains(strReferenceNumber)),
 			        		"Payment confirmation message displayed",
 			        		"Payment Confirmation message Error. Refer screenshot");
-        common_business_flows.scrollToMiddleOfWebPage();
+        getCommonBusinessFlows().scrollToMiddleOfWebPage();
         reporter.reportLogWithScreenshot("Payment Confirmation on account overview page");        
         reporter.hardAssert(getRogersBillingPage().verifyThePaymentHistoryRecordMobile(strReferenceNumber),
         					"The payment history record is created for the credit transaction"

@@ -21,7 +21,7 @@ public class VerifyInEns{
 	 */
 	private void startVerify() {
 
-		baseTestClass.getEnsHomePage().openNewTabForEns(TestDataHandler.ssConfig.getEnsURL());
+		BaseTestClass.getEnsHomePage().openNewTabForEns(TestDataHandler.ssConfig.getEnsURL());
 		baseTestClass.reporter.reportLogWithScreenshot("Ens Window");
 	}
 	
@@ -31,11 +31,11 @@ public class VerifyInEns{
 	 */
 	private void loginToEns() {
 		baseTestClass.reporter.reportLogWithScreenshot("Ens Login Window");
-		baseTestClass.getEnsHomePage().setEmail(System.getenv("ENS_USERNAME"));
+		BaseTestClass.getEnsHomePage().setEmail(System.getenv("ENS_USERNAME"));
 		baseTestClass.reporter.reportLogWithScreenshot("Set ENS Login details");
-		baseTestClass.getEnsHomePage().clkBtnNext();
-		baseTestClass.getEnsHomePage().setPassword(System.getenv("ENS_PASSWORD"));
-		baseTestClass.getEnsHomePage().clkBtnSignIn();
+		BaseTestClass.getEnsHomePage().clkBtnNext();
+		BaseTestClass.getEnsHomePage().setPassword(System.getenv("ENS_PASSWORD"));
+		BaseTestClass.getEnsHomePage().clkBtnSignIn();
 	}
 
 	/**
@@ -51,13 +51,13 @@ public class VerifyInEns{
 		this.startVerify();
 		this.loginToEns();
 		
-		baseTestClass.getEnsNotificationViewPage().clkMenuNotifViewer();
-		baseTestClass.getEnsNotificationViewPage().clkBtnSearchNotification();
-		baseTestClass.getEnsNotificationViewPage().clkLnkPdfForSmsVerify(strPhoneNum);
-		String strVerifyCode = baseTestClass.getEnsNotificationViewPage().getNotificationCode();
+		BaseTestClass.getEnsNotificationViewPage().clkMenuNotifViewer();
+		BaseTestClass.getEnsNotificationViewPage().clkBtnSearchNotification();
+		BaseTestClass.getEnsNotificationViewPage().clkLnkPdfForSmsVerify(strPhoneNum);
+		String strVerifyCode = BaseTestClass.getEnsNotificationViewPage().getNotificationCode();
 		baseTestClass.reporter.reportLogWithScreenshot("Got message notification code.");
-		baseTestClass.getEnsNotificationViewPage().clkBtnOk();
-		baseTestClass.getEnsNotificationViewPage().closeEnsWindow();
+		BaseTestClass.getEnsNotificationViewPage().clkBtnOk();
+		BaseTestClass.getEnsNotificationViewPage().closeEnsWindow();
 		return strVerifyCode;
 	}
 	
@@ -72,12 +72,12 @@ public class VerifyInEns{
 		this.startVerify();
 		this.loginToEns();
 		
-		baseTestClass.getEnsNotificationViewPage().clkMenuNotifViewer();
-		baseTestClass.getEnsNotificationViewPage().clkBtnSearchNotification();
+		BaseTestClass.getEnsNotificationViewPage().clkMenuNotifViewer();
+		BaseTestClass.getEnsNotificationViewPage().clkBtnSearchNotification();
 		baseTestClass.setImplicitWait(baseTestClass.getDriver(), 2);
-		baseTestClass.getEnsNotificationViewPage().clkLnkHtmlForEmailVerify(strAccountId);
+		BaseTestClass.getEnsNotificationViewPage().clkLnkHtmlForEmailVerify(strAccountId);
 		baseTestClass.setImplicitWait(baseTestClass.getDriver(), 2);
-		baseTestClass.getEnsNotificationViewPage().switchToNewTab(2);
+		BaseTestClass.getEnsNotificationViewPage().switchToNewTab(2);
 	}
 
 	/**
@@ -89,13 +89,13 @@ public class VerifyInEns{
 		this.startVerify();
 		this.loginToEns();
 		
-		baseTestClass.getEnsNotificationViewPage().clkMenuNotifViewer();
-		baseTestClass.getEnsNotificationViewPage().clkBtnSearchNotification();
-		baseTestClass.getEnsNotificationViewPage().clkLnkPdfForSmsVerify(strPhoneNum);
-		String strVerifyCode = baseTestClass.getEnsNotificationViewPage().getUserName();
+		BaseTestClass.getEnsNotificationViewPage().clkMenuNotifViewer();
+		BaseTestClass.getEnsNotificationViewPage().clkBtnSearchNotification();
+		BaseTestClass.getEnsNotificationViewPage().clkLnkPdfForSmsVerify(strPhoneNum);
+		String strVerifyCode = BaseTestClass.getEnsNotificationViewPage().getUserName();
 		baseTestClass.reporter.reportLogWithScreenshot("Got message notification code.");
-		baseTestClass.getEnsNotificationViewPage().clkBtnOk();
-		baseTestClass.getEnsNotificationViewPage().closeEnsWindow();
+		BaseTestClass.getEnsNotificationViewPage().clkBtnOk();
+		BaseTestClass.getEnsNotificationViewPage().closeEnsWindow();
 		return strVerifyCode;
 	}
 	

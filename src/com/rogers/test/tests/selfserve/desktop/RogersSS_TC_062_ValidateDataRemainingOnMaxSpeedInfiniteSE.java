@@ -53,8 +53,9 @@ public class RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE extends B
         }
         reporter.reportLogWithScreenshot("Account overview page.");     
        getRogersAccountOverviewPage().clkMenuUsageAndService();
-       //For demo-line data, the sub-menu shows as "Wireless Usage"
-   		getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
+       String strAccountNum = TestDataHandler.tc6269.getAccountDetails().getCtn();
+       getRogersAccountOverviewPage().clkDropDownAccount(strAccountNum.substring(strAccountNum.length()-4));
+   	   //getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
 
        //getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();  
               
