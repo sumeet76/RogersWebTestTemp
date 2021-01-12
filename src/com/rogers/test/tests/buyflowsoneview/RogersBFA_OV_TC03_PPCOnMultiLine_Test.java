@@ -18,7 +18,7 @@ public class RogersBFA_OV_TC03_PPCOnMultiLine_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","RegressionOVBFA","SanityBFA","PPCOvBFA"})
 	public void ppcOnMultiLineFlowTest() {
-		getEnvironmentSelectionPage().presenceOfTheGoButton();
+		reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
 		reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");
 		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
 		reporter.reportLogWithScreenshot("Rogers OV environment selected" + TestDataHandler.bfaOneViewConfig.getEnvironmentName());
@@ -29,14 +29,14 @@ public class RogersBFA_OV_TC03_PPCOnMultiLine_Test extends BaseTestClass {
 		reporter.hardAssert(getAccountOverViewPage().verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase03.getCtn()), "Select CTN Passed", "Select CTN Failed");
 		getAccountOverViewPage().clkCloseBtnAssignDataManager();
 		//getAccountOverViewPage().clkBtnOkOneViewDialoue();
-		getRogersOVWirelessDetailsPage().verifyWirelessPageLoad();
+		reporter.hardAssert(getRogersOVWirelessDetailsPage().verifyWirelessPageLoad() ,"Wireless page loaded" , "Wireless page not loaded" );
 		reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
 		getRogersOVWirelessDetailsPage().clickChangePlanButton();
 		reporter.reportLogWithScreenshot("Change plan button clicked");
-		getRogersOVChangeSharePlanPage().verifyChangeSharePlanPage();
+		reporter.hardAssert(getRogersOVChangeSharePlanPage().verifyChangeSharePlanPage(),"Change Share Plan page loaded" , "Change Share Plan page not loaded" );
 		reporter.reportLogWithScreenshot("Change share plan page");
 		getRogersOVChangeSharePlanPage().clickEditButton();
-		getRogersOVChoosePlanPage().verifyChoosePlanPage();
+		reporter.hardAssert(getRogersOVChoosePlanPage().verifyChoosePlanPage() ,"Choose Plan page loaded" , "Choose Plan page not loaded" );
 		reporter.reportLogWithScreenshot("Choose Plan page loaded");
 		getRogersOVChoosePlanPage().clkSharedLineOne();
 		getRogersOVChoosePlanPage().selectPlanCategory(TestDataHandler.buyFlowsOVtestCase03.getNewPlanCategory());
@@ -49,10 +49,10 @@ public class RogersBFA_OV_TC03_PPCOnMultiLine_Test extends BaseTestClass {
 		getRogersOVChoosePlanPage().verifyAndClickDowngradeFeeContinue();
 		reporter.reportLogWithScreenshot("Shared line two plan changed");
 		getRogersOVChoosePlanPage().clkCheckout();
-		getRogersOVChooseAddonsPage().verifyChooseAddOnPage();
+		reporter.hardAssert(getRogersOVChooseAddonsPage().verifyChooseAddOnPage() , "Addons page loaded" , "Addons page not loaded");
 		reporter.reportLogWithScreenshot("Choose add ons page");
 		getRogersOVChooseAddonsPage().clkCheckout();
-		getRogersOVOrderReviewPage().verifyOrderReviewPage();
+		reporter.hardAssert(getRogersOVOrderReviewPage().verifyOrderReviewPage() , "Order review page loaded" , "Order review page not loaded");
 		reporter.reportLogWithScreenshot("Rogers Order review page");
 		getRogersOVOrderReviewPage().selectEmailDigitalCopy(TestDataHandler.buyFlowsOVtestCase03.getUsername());
 		reporter.reportLogWithScreenshot("Rogers Order Review Page after selecting terms and conditions");

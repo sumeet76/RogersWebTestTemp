@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 /**
  * TC07 - Regression - Rogers AAL - e2e
  * @author rajesh.varalli1
- *
+ * //Pending Tobe updated after 27th Jan
  */
 public class RogersBFA_TC07_AAL_Test extends BaseTestClass {
 

@@ -18,7 +18,7 @@ public class RogersBFA_OV_TC06_HUPSingleLine_ChooseExistingPlan_Test extends Bas
 
 	@Test(groups = {"RegressionBFA","RegressionOVBFA","SanityBFA","HupOvBFA"})
     public void hupSingleLineChooseExistingPlanFlow() {
-		getEnvironmentSelectionPage().presenceOfTheGoButton();
+		reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
 		reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");
 		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
 		reporter.reportLogWithScreenshot("Rogers OV environment selected" + TestDataHandler.bfaOneViewConfig.getEnvironmentName());
@@ -29,22 +29,22 @@ public class RogersBFA_OV_TC06_HUPSingleLine_ChooseExistingPlan_Test extends Bas
 		reporter.hardAssert(getAccountOverViewPage().verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase06.getCtn()),"CTN Found","CTN Not Found");
 		getAccountOverViewPage().clkCloseBtnAssignDataManager();
 		//getAccountOverViewPage().clkBtnOkOneViewDialoue();
-		getRogersOVWirelessDetailsPage().verifyWirelessPageLoad();
+		reporter.hardAssert(getRogersOVWirelessDetailsPage().verifyWirelessPageLoad() ,"Wireless page not loaded" , "Wireless page not loaded" );
 		reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
 		getRogersOVWirelessDetailsPage().clkUpgradeMyDevice();
 		reporter.reportLogWithScreenshot("Device upgrade button clicked");
-		getRogersOVChoosePhonePage().verifyChoosePhonePage();
+		reporter.hardAssert(getRogersOVChoosePhonePage().verifyChoosePhonePage() , "Choose Phone page loaded" , "Choose Phone page not loaded");
 		getRogersOVChoosePhonePage().searchDevice(TestDataHandler.buyFlowsOVtestCase06.getNewDevice());
 		getRogersOVChoosePhonePage().selectFirstAvailableDevice();
-		getRogersOVBuildPlanPage().verifyBuildPlanPage();
+		reporter.hardAssert(getRogersOVBuildPlanPage().verifyBuildPlanPage() , "Build plan page loaded" , "Build plan page not loaded");
 		reporter.reportLogWithScreenshot("Rogers Build Plan Page");
 		getRogersOVBuildPlanPage().selectExistingPlan();
 		reporter.reportLogWithScreenshot("Existing plan selected");
 		getRogersOVBuildPlanPage().clkContinue();
-		getRogersOVChooseAddonsPage().verifyChooseAddOnPage();
+		reporter.hardAssert(getRogersOVChooseAddonsPage().verifyChooseAddOnPage() , "Addons page loaded" , "Addons page not loaded");
 		reporter.reportLogWithScreenshot("Rogers Additional line option page");
 		getRogersOVChooseAddonsPage().clkContinueHUP();
-		getRogersOVShippingPage().verifyShippingPage();
+		reporter.hardAssert(getRogersOVShippingPage().verifyShippingPage() , "Shipping page loaded" , "Shipping page not loaded");
 		reporter.reportLogWithScreenshot("Rogers Shipping Page");
 		getRogersOVShippingPage().clkRadioBillingAddress();
 		getRogersOVShippingPage().setEmailIDAndSave();
@@ -53,7 +53,7 @@ public class RogersBFA_OV_TC06_HUPSingleLine_ChooseExistingPlan_Test extends Bas
 		getRogersOVShippingPage().clkReserve();
 		reporter.reportLogWithScreenshot("Rogers Shipping Page before clicking continue");
         getRogersOVShippingPage().clkContinue();
-		getRogersOVOrderReviewPage().verifyOrderReviewPage();
+		reporter.hardAssert(getRogersOVOrderReviewPage().verifyOrderReviewPage() , "Order review page loaded" , "Order review page not loaded");
 		reporter.reportLogWithScreenshot("Rogers Order review page");
         getRogersOVOrderReviewPage().clkAllTermsAgreementCheckboxs();
         getRogersOVOrderReviewPage().selectEmailDigitalCopy(TestDataHandler.buyFlowsOVtestCase06.getUsername());

@@ -18,7 +18,7 @@ public class RogersBFA_OV_TC07_PPCSingleLine_Test extends BaseTestClass {
 
     @Test(groups = {"RegressionBFA","RegressionOVBFA","SanityBFA","PPCOvBFA"})
     public void ppcSingleLineFlowTest() {
-		getEnvironmentSelectionPage().presenceOfTheGoButton();
+        reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
         reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");
 		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
         reporter.reportLogWithScreenshot("Rogers OV environment selected" + TestDataHandler.bfaOneViewConfig.getEnvironmentName());
@@ -29,22 +29,22 @@ public class RogersBFA_OV_TC07_PPCSingleLine_Test extends BaseTestClass {
         reporter.hardAssert(getAccountOverViewPage().verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase07.getCtn()), "Select CTN Passed", "Select CTN Failed");
         getAccountOverViewPage().clkCloseBtnAssignDataManager();
 		//getAccountOverViewPage().clkBtnOkOneViewDialoue();
-		getRogersOVWirelessDetailsPage().verifyWirelessPageLoad();
+        reporter.hardAssert(getRogersOVWirelessDetailsPage().verifyWirelessPageLoad() ,"Wireless page not loaded" , "Wireless page not loaded" );
         reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
         getRogersOVWirelessDetailsPage().clickChangePlanButton();
         reporter.reportLogWithScreenshot("Change plan button clicked");
         getRogersOVChoosePlanPage().clkMakeChangesToExistingPlan();
         getRogersOVChoosePlanPage().clkButtonModalContinue();
-        getRogersOVChoosePlanPage().verifyChoosePlanPage();
+        reporter.hardAssert(getRogersOVChoosePlanPage().verifyChoosePlanPage() , "Choose plan page loaded" , "Choose plan page not loaded");
         reporter.reportLogWithScreenshot("Choose Plan page loaded");
         getRogersOVChoosePlanPage().selectPlanCategory(TestDataHandler.buyFlowsOVtestCase07.getNewPlanCategory());
-        getRogersOVChoosePlanPage().selectPlanType("");
+        getRogersOVChoosePlanPage().selectPlanType("Infinite");
         reporter.reportLogWithScreenshot("Plan category and plan type selected");
         getRogersOVChoosePlanPage().selectFirstAvailablePlan();
         getRogersOVChoosePlanPage().verifyAndClickDowngradeFeeContinue();
         reporter.reportLogWithScreenshot("New Plan selected");
-        getRogersOVChoosePlanPage().clkCheckout();
-        getRogersOVOrderReviewPage().verifyOrderReviewPage();
+         getRogersOVChoosePlanPage().clkCheckout();
+        reporter.hardAssert(getRogersOVOrderReviewPage().verifyOrderReviewPage() , "Order review page loaded" , "Order review page not loaded");
         reporter.reportLogWithScreenshot("Rogers Order review page");
         //getRogersOVOrderReviewPage().clkTermsAgreementCheckbox();
         //getRogersOrderReviewPage().clkShieldAgreementCheckbox();
