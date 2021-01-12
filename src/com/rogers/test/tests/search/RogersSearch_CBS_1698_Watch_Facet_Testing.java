@@ -67,10 +67,10 @@ public class RogersSearch_CBS_1698_Watch_Facet_Testing extends BaseTestClass {
                     getRogersSearchPage().clkResultLink(resultLinks.get(k));
                     strSelectedSize = getRogersDeviceConfigPage().getSelectedSize();
                     strSelectedColor = getRogersDeviceConfigPage().getSelectedWatchColor();
-                    reporter.softAssert(strSelectedSize.equals(strSizeOptions.get(i)),
+                    reporter.softAssert(strSelectedSize.equalsIgnoreCase(strSizeOptions.get(i)),
                             "Size Expected="+strSizeOptions.get(i)+"; Actual=" + strSelectedSize,
                             "Size Expected="+strSizeOptions.get(i)+"; Actual=" + strSelectedSize);
-                    reporter.softAssert(strSelectedColor.equals(strColorOptions.get(j)),
+                    reporter.softAssert(strSelectedColor.equalsIgnoreCase(strColorOptions.get(j)),
                             "Color Expected="+strColorOptions.get(j)+"; Actual=" + strSelectedColor,
                             "Color Expected="+strColorOptions.get(j)+"; Actual=" + strSelectedColor);
                     getRogersDeviceConfigPage().navigateBack();
