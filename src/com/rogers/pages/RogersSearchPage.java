@@ -542,23 +542,26 @@ public class RogersSearchPage extends BasePageClass {
 
         boolean blnFlag = true;
 
+
         List<WebElement> lstSizeFilter = getDriver().findElements(By.xpath("//input[contains(@id,'size')]"));
 
         for (int i = 0; i < lstSizeFilter.size(); i++) {
-            getReusableActionsInstance().waitForAllElementsVisible(getDriver().findElements(By.xpath("//input[contains(@id,'size')]")), 40);
-           // String strSizeFilter = getDriver().findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value");
-            String strSizeFilter = lstSizeFilter.get(i).getAttribute("value");
+         //   getReusableActionsInstance().waitForElementVisibility(getDriver().findElements(By.xpath("//input[contains(@id,'size')]");
+            String strSizeFilter = getDriver().findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value");
+          //  String strSizeFilter = lstSizeFilter.get(i).getAttribute("value");
 
-           // System.out.println("value of size filter is:" + getDriver().findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value"));
-            System.out.println("value of size filter is: "+strSizeFilter+" ");
+            System.out.println("value of size filter is:" + getDriver().findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value"));
+           // System.out.println("value of size filter is: "+strSizeFilter+" ");
 
            // getReusableActionsInstance().staticWait(2000);
 
             getReusableActionsInstance().clickWhenReady(
-                 //   By.xpath("//ds-checkbox[@ng-reflect-value='" + getDriver().findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value") + "']"));
-                    By.xpath("//ds-checkbox[@ng-reflect-value='" +strSizeFilter + " ']"));
+                    By.xpath("//ds-checkbox[@ng-reflect-value='" + getDriver().findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value") + "']"));
+                 //   By.xpath("//ds-checkbox[@ng-reflect-value='" +strSizeFilter + " ']"));
 
-            //getReusableActionsInstance().staticWait(2000);
+
+
+            getReusableActionsInstance().staticWait(2000);
 
             List<WebElement> lstSizeResultsLink = getDriver().findElements(By.xpath("//a[contains(@href,'watch')]"));
 
@@ -573,22 +576,36 @@ public class RogersSearchPage extends BasePageClass {
 
                 getReusableActionsInstance().staticWait(5000);
 
-                //WebElement sizeLabel = getDriver().findElement(By.xpath("//div[contains(@class,'active')]/a[text()='"+strSizeFilter+"']"));
-                WebElement sizeLabel = getDriver().findElement(By.xpath("//a[text()='" + strSizeFilter + "']"));
 
-                getReusableActionsInstance().waitForElementVisibility(sizeLabel);
-                System.out.println("Size Label is:" + sizeLabel.getText());
+               // WebElement sizelabelvalue = getDriver().findElement(By.xpath("//a[text()=" + getDriver().findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value") + " ]"));
+                WebElement sizelabel = getDriver().findElement(By.xpath("//div[contains(@class,'common-devices') and contains(@class,'active')]//div[contains(@class,'size-switch') and contains(@class,'active')]/a"));
+                getReusableActionsInstance().waitForElementVisibility(sizelabel);
+                System.out.println("Size Label is:" + sizelabel.getText());
                 System.out.println("Size filter value is:" + strSizeFilter);
 
                 //System.out.println(strStorageFilter.equalsIgnoreCase(storageLabel.getText()));
 
-                if (!strSizeFilter.equalsIgnoreCase(sizeLabel.getText()) || !sizeLabel.isSelected()) {
+                //  if (!strSizeFilter.equalsIgnoreCase(sizeLabel.getText()) || !sizeLabel.isSelected()) {
+                   if (!strSizeFilter.equalsIgnoreCase(sizelabel.getText())) {
 
                     blnFlag = false;
                     System.out.println("Inside if loop");
                     break;
 
                 }
+
+                /*    if (strSizeFilter.equalsIgnoreCase(sizelabelvalue.getText()) && sizeLabel.getAttribute("class").contains("active")) {
+
+
+                    blnFlag = true;
+                    System.out.println("Inside if loop");
+                    break;
+
+                }
+
+                 */
+
+
 
                 System.out.println("Before Navigation");
                 getDriver().navigate().back();
