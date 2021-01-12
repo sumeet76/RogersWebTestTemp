@@ -59,9 +59,9 @@ public class RogersSS_TC_044_AO_ValidateCHaccountBadge_DigitalTV extends BaseTes
 		reporter.reportLogWithScreenshot("Clicked  the DTV badge");
 		reporter.hardAssert(getRogersDigitalTVDashboardPage().verifyChangeMyPackage(),"Verifed the TV dashboard","TV dashboard Verification has failed");
 		reporter.reportLogWithScreenshot("Launched the Digital TV Dashboard Page");
-		common_business_flows.scrollToMiddleOfWebPage();
+		getCommonBusinessFlows().scrollToMiddleOfWebPage();
 		reporter.reportLogWithScreenshot("Mid page view");
-		common_business_flows.scrollToBottomOfWebPage();
+		getCommonBusinessFlows().scrollToBottomOfWebPage();
 		reporter.reportLogWithScreenshot("Bottom View");
 	}
 

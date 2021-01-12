@@ -74,7 +74,7 @@ public class RogersSS_TC_101_ValidateAddSpeedPass_SohoCustomer_InfiniteSE extend
 		
 		getRogersManageDataPage().clkBackOnManageDataUsagePage();
 		
-		int totalAddedSpeedPass = common_business_flows.addSpeedPass();	
+		int totalAddedSpeedPass = getCommonBusinessFlows().addSpeedPass();	
 
 		reporter.hardAssert(getRogersManageDataPage().validateViewDetailsLink(),
 				"'Data details' page is displayed after click on view details link", 

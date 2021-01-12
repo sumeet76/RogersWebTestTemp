@@ -66,6 +66,17 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	//button[@data-dtname='reviewOrder-submit']
 	@FindBy(xpath = "//span[@checkout-res='checkout_submit_order']/parent::button")
 	WebElement btnSubmitOrder;
+
+
+	/**
+	 * Verify order review page is loaded properly
+	 * @return true if page loaded else false
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyOrderReviewPage() {
+		return getReusableActionsInstance().isElementVisible(rdbtnEmail, 60);
+	}
+
 	
 	/**
 	 * Expand Monthly Bill

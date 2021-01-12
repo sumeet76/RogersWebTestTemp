@@ -48,14 +48,14 @@ public class RogersSS_TC_040_AO_ValidateCHaccountBadge_SHM extends BaseTestClass
         reporter.hardAssert(getRogersSHMDashboardPage().verifySHMDashBoardPageIsDisplayed(),
         		"SHM dashboard page is displayed", "SHM dashboard page NOT displayed correctly please investigate");        
         reporter.reportLogWithScreenshot("Launched the SHM dashboard Page");
-        common_business_flows.scrollToMiddleOfWebPage();
+        getCommonBusinessFlows().scrollToMiddleOfWebPage();
 		reporter.reportLogWithScreenshot("Mid page view");
         reporter.hardAssert(getRogersSHMDashboardPage().verifyShopForAccessoriesLinkdisplayed()
         		&& getRogersSHMDashboardPage().verifyShopForAccessoriesLinkdisplayed()
         		&& getRogersSHMDashboardPage().verifyLearnAboutSmartHomeMonitoringLinkdisplayed()
         		&& getRogersSHMDashboardPage().verifyInsuranceCertificateLinkdisplayed(),
         		"SHM dashboard page Links displayed", "SHM dashboard page Links not displayed correctly please investigate");               
-		common_business_flows.scrollToBottomOfWebPage();
+		getCommonBusinessFlows().scrollToBottomOfWebPage();
 		reporter.reportLogWithScreenshot("Bottom View");
         
         

@@ -58,7 +58,7 @@ public class Mobile_RogersSS_TC_031_Postpaid_ChangeContactInfo extends BaseTestC
 		reporter.reportLogWithScreenshot("Account overveiew page");    	
 		getRogersAccountOverviewPage().clkLnkProfileNSettingsMobile();
 		reporter.reportLogWithScreenshot("Profile & Settings page");
-		common_business_flows.scrollToMiddleOfWebPage();
+		getCommonBusinessFlows().scrollToMiddleOfWebPage();
 		getRogersProfileAndSettingsPage().clkCloseFeedbackIfAvailableMobile();
     	getRogersProfileAndSettingsPage().clkBtnContactInfomation();
     	

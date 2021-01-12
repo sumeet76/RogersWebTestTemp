@@ -80,7 +80,7 @@ public class RogersSS_TC_092_AO_ValidateTheMessageInAccountOverviewWhenTheAccoun
         reporter.softAssert(getRogersAccountOverviewPage().isLnkPaymentHistoryDisplayed(),"Set up autopayment link displayed",
 	   "Set up autopayment link  Not displayed");
         		
-        common_business_flows.scrollToBottomOfWebPage();
+        getCommonBusinessFlows().scrollToBottomOfWebPage();
         reporter.reportLogWithScreenshot("Checking CTN or other services");
         reporter.softAssert(getRogersAccountOverviewPage().isCTNNotDisplayed(),
         		"The cancelled account has no ctns or services",

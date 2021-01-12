@@ -11,29 +11,20 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * TC03-Validate user able to perform Main line PPC on Existing Finance account
- * 
- * Launch qa.rogers.com and login using the credentials
- * Select the main line CTN for which the plan has to be changed and select change 
- * Select a Edge plan for main line and click continue
- * Select a Addon(optional) and Click continue
- * Click continue
- * Select the billing address and click OK
- * Click continue
- *  
+ * TC08 - Regression - Rogers PPC e2e
  * @author rajesh.varalli1
  *
  */
-public class RogersBFA_TC09_PPC_Test extends BaseTestClass {
+public class RogersBFA_TC08_PPC_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","SanityBFA","PPCBFA"})
-    public void ppcFlowTest() {
+    public void rogersPpcTest() {
 		reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		reporter.reportLogWithScreenshot("Home Page");
 		getRogersHomePage().clkSignIn();
         getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.testCase9.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.testCase9.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc08PPC.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc08PPC.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
@@ -41,26 +32,30 @@ public class RogersBFA_TC09_PPC_Test extends BaseTestClass {
         getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page");
-        reporter.hardAssert(getRogersAccountOverviewPage().verifyAndClickWirelessCTN(TestDataHandler.testCase9.getCtn()), "Select CTN Passed", "Select CTN Failed");
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyAndClickWirelessCTN(TestDataHandler.tc08PPC.getCtn()), "Select CTN Passed", "Select CTN Failed");
         getRogersWirelessDetailsPage().verifyWirelessPageLoad();
         reporter.reportLogWithScreenshot("Wireless Dashboard Page");
         getRogersWirelessDetailsPage().clickChangePlanButton();
         getRogersChoosePlanPage().verifyAndClickDowngradeFeeContinue();
+        /*
         getRogersChoosePlanPage().clkMakeChangesToExistingPlan();
         reporter.reportLogWithScreenshot("Modal window appeared for change your plan");
         getRogersChoosePlanPage().clkButtonModalContinue();
-        reporter.reportLogWithScreenshot("Choose Plan page");
-        getRogersChoosePlanPage().selectPlanCategory(TestDataHandler.testCase9.getNewPlanCategory());
-        getRogersChoosePlanPage().selectPlanType(TestDataHandler.testCase9.getNewPlanType());
+         */
+        getRogersChoosePlanPage().verifyChoosePlanPage();
+        reporter.reportLogWithScreenshot("Choose Plan page loaded");
+        getRogersChoosePlanPage().selectPlanCategory(TestDataHandler.tc08PPC.getNewPlanCategory());
+        getRogersChoosePlanPage().selectPlanType(TestDataHandler.tc08PPC.getNewPlanType());
         getRogersChoosePlanPage().selectFirstAvailablePlan();
         getRogersChoosePlanPage().verifyAndClickDowngradeFeeContinue();
+        reporter.reportLogWithScreenshot("Plan selected");
         getRogersChoosePlanPage().clkCheckout();
         getRogersOrderReviewPage().verifyOrderReviewPageLoadedSuccessfully();
         reporter.reportLogWithScreenshot("Rogers Order review page");
         getRogersOrderReviewPage().clkTermsAgreementCheckbox();
         getRogersOrderReviewPage().clkUpfrontTermsCheckbox();
-        getRogersOrderReviewPage().selectEmailDigitalCopy(TestDataHandler.testCase9.getUsername());
-        reporter.reportLogWithScreenshot("Rogers Order Review page");
+        getRogersOrderReviewPage().selectEmailDigitalCopy(TestDataHandler.tc08PPC.getUsername());
+        reporter.reportLogWithScreenshot("All terms and conditions selected");
         if(getRogersOrderReviewPage().isPaymentRequired()) {
         	getRogersOrderReviewPage().clkContinue();
         	getRogersPaymentPage().setCreditCardDetails(TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getNumber(),
@@ -79,7 +74,6 @@ public class RogersBFA_TC09_PPC_Test extends BaseTestClass {
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 		startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows , method);
 	}
     

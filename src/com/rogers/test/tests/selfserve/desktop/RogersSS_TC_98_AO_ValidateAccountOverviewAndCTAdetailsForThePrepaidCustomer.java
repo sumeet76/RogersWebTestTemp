@@ -58,11 +58,11 @@ public class RogersSS_TC_98_AO_ValidateAccountOverviewAndCTAdetailsForThePrepaid
         reporter.hardAssert(getRogersAccountOverviewPage().isBalanceExpiresOnDisplayedOnAOPage(),"Balance expires on is displayed","Balance expires on is not displayed");
         reporter.hardAssert(getRogersAccountOverviewPage().isCTNWidgetIsDisplayedOnAOPg(),"CTN widget is displayed","CTN widget is not displayed");
         
-        common_business_flows.scrollToMiddleOfWebPage();
+        getCommonBusinessFlows().scrollToMiddleOfWebPage();
         reporter.reportLogWithScreenshot("Account overview middle view");
         reporter.hardAssert(getRogersAccountOverviewPage().isAccountPreferencesSectionDisplayedAOPg(),"Account preference section is displayed","Account preference section is NOT displayed");
         reporter.hardAssert(getRogersAccountOverviewPage().isOtherServicesDisplayedOnAOPg(),"Other service is displayed","Other service is not displayed");
-        common_business_flows.scrollToTopOfWebPage();
+        getCommonBusinessFlows().scrollToTopOfWebPage();
         getRogersAccountOverviewPage().clkCTNWidget();
         reporter.reportLogWithScreenshot("Prepaid Dashboard view");
         
@@ -77,12 +77,12 @@ public class RogersSS_TC_98_AO_ValidateAccountOverviewAndCTAdetailsForThePrepaid
         reporter.hardAssert(getRogersWirelessDashboardPage().isMyWirelessNumberSectionDisplayed(),"Wireless number section is displayed","Wireless number section is NOT displayed");
         reporter.hardAssert(getRogersWirelessDashboardPage().isPrepaidPinCodeDisplayed(),"Prepaid pin code is displayed","Prepaid pin code is NOT displayed");
         reporter.hardAssert(getRogersWirelessDashboardPage().isPrepaidChangeMyPinCodeDisplayed(),"Change my pin code is displayed","Change my pin code is NOT displayed");
-        common_business_flows.scrollToMiddleOfWebPage();
+        getCommonBusinessFlows().scrollToMiddleOfWebPage();
         reporter.reportLogWithScreenshot("Dashboard Middle view");
         
         reporter.hardAssert(getRogersWirelessDashboardPage().isPrepaidStartOrTrackAPhoneRepairClaimDisplayed(),"Start or track a phone repair is displayed","Start or track a phone repair is NOT displayed");
           
-        common_business_flows.scrollToBottomOfWebPage();
+        getCommonBusinessFlows().scrollToBottomOfWebPage();
         reporter.reportLogWithScreenshot("Dashboard Bottom view");
     }
 

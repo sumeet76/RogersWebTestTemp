@@ -53,7 +53,7 @@ public class Mobile_RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaym
 		reporter.reportLogWithScreenshot("Account overveiew page");
 		//getRogersAccountOverviewPage().clkViewBill();
 		reporter.reportLogWithScreenshot("clicked on View Bill");
-		common_business_flows.clkCloseFeedbackIfAvailableMobile();
+		getCommonBusinessFlows().clkCloseFeedbackIfAvailableMobile();
 		
 		
 		if(getRogersAccountOverviewPage().isAutoPaymentAlreadySet())
@@ -62,10 +62,10 @@ public class Mobile_RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaym
 			
 			getRogersAccountOverviewPage().clkChangePaymentMethod();			
 			getRogersChangePaymentMethodPage().clkSwitchToManualPayments();
-			common_business_flows.clkCloseFeedbackIfAvailableMobile();
+			getCommonBusinessFlows().clkCloseFeedbackIfAvailableMobile();
 			getRogersChangePaymentMethodPage().clkYesCancelAutomaticPayment();
 			reporter.reportLogWithScreenshot("Switch to manual completed");
-			common_business_flows.clkCloseFeedbackIfAvailableMobile();
+			getCommonBusinessFlows().clkCloseFeedbackIfAvailableMobile();
 			getRogersChangePaymentMethodPage().clkButtonDoneChangePayment();
 			reporter.reportLogWithScreenshot("Account overveiew page");
 			getDriver().navigate().refresh();

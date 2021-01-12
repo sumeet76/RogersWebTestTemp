@@ -73,6 +73,7 @@ public class RogersShippingPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyRogersShippingPage() {
+		getReusableActionsInstance().staticWait(10000);
 		if(btnSelectProvideShippingAddress.isDisplayed() || lblAppointmentTime.isDisplayed())
 			return true;
 		return false;

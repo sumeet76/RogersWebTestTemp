@@ -99,7 +99,7 @@ public class RogersSS_TC_032_Postpaid_ChangeBillingAddress extends BaseTestClass
     		//Go to ENS to verify email and get reset password page.		
     		try {
     			
-    			ensVerifications.getEmailVerifyPage(strUsername);
+    			getEnsVerifications().getEmailVerifyPage(strUsername);
     			String recoveryCode = getRegisterOrAccountRecoveryPage().getVerificationCode();
     			getDriver().switchTo().window(strTestingTab);			
     			reporter.reportLogWithScreenshot("Close the Overlay");

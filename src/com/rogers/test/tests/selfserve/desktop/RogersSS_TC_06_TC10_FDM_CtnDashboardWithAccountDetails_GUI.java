@@ -58,12 +58,12 @@ button should be displayed n Share Everything Dashboard
             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc01030405.getAccountDetails().getBan());
         }
         
-       common_business_flows.scrollToMiddleOfWebPage();
+       getCommonBusinessFlows().scrollToMiddleOfWebPage();
 	   reporter.reportLogWithScreenshot("Check the number of CTNs");
 	   reporter.hardAssert(getRogersAccountOverviewPage().isCTNMoreThanOne(),
 				"The account has more than 1 CTNS",
 				"The account doesnt have more than 1 CTNs, please add more than 1 and rerun");
-	   common_business_flows.scrollToTopOfWebPage();
+	   getCommonBusinessFlows().scrollToTopOfWebPage();
        reporter.reportLogWithScreenshot("Account overview page.");     
        getRogersAccountOverviewPage().clkMenuUsageAndService();
        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
@@ -84,7 +84,7 @@ button should be displayed n Share Everything Dashboard
     		   "Days remaining in the bill cycle is displayed",
     		   "Days remaining in the bill cycle is not displayed");
        
-       common_business_flows.scrollToMiddleOfWebPage();
+       getCommonBusinessFlows().scrollToMiddleOfWebPage();
        reporter.reportLogWithScreenshot("Price Plan details along with Change Plan & Change number button");
        //Price Plan details along with Change Plan & Change number button
        reporter.hardAssert(getRogersWirelessDashboardPage().verifyChangePlanButtonDisplayed(),
@@ -120,7 +120,7 @@ button should be displayed n Share Everything Dashboard
 					"Data manager is displayed", 
 					"Data manager is not displayed");	
 		 
-		  common_business_flows.scrollToBottomOfWebPage();
+		  getCommonBusinessFlows().scrollToBottomOfWebPage();
 	      reporter.reportLogWithScreenshot("Dashboard bottom view");
     }
 

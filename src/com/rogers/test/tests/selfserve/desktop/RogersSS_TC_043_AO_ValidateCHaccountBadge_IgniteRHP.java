@@ -59,9 +59,9 @@ public class RogersSS_TC_043_AO_ValidateCHaccountBadge_IgniteRHP extends BaseTes
         		"Verification of Configure Your Current Features link is success",
         		"Verification of Configure Your Current Features link is Failed");        
         reporter.reportLogWithScreenshot("RHP Dashboard page is opened correctly");
-        common_business_flows.scrollToMiddleOfWebPage();
+        getCommonBusinessFlows().scrollToMiddleOfWebPage();
 		reporter.reportLogWithScreenshot("Mid page view");
-		common_business_flows.scrollToBottomOfWebPage();
+		getCommonBusinessFlows().scrollToBottomOfWebPage();
 		reporter.reportLogWithScreenshot("Bottom View");
         
     }

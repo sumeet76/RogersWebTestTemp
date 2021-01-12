@@ -47,7 +47,7 @@ public class RogersSS_TC_95_AO_Validate_SuspendedCTNs_NSE_Legacy extends BaseTes
         }
         reporter.reportLogWithScreenshot("Account overview page.");
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Passed", "Login Failed");
-        common_business_flows.scrollToMiddleOfWebPage();
+        getCommonBusinessFlows().scrollToMiddleOfWebPage();
         reporter.reportLogWithScreenshot("CTNS View");
         
         reporter.hardAssert(getRogersAccountOverviewPage().isSuspendedCTNAvailable(),

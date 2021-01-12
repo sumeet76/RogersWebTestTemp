@@ -47,12 +47,12 @@ public class RogersSS_TC_076_ValidateScrollBarInFDMsectionOfWirelessDashboardWhe
 		getRogersLoginPage().clkSkipIFrame();
 		getRogersLoginPage().switchOutOfSignInIFrame();
 		
-		common_business_flows.scrollToMiddleOfWebPage();
+		getCommonBusinessFlows().scrollToMiddleOfWebPage();
 		reporter.reportLogWithScreenshot("Check the number of CTNs");
 		reporter.hardAssert(getRogersAccountOverviewPage().isCTNMoreThanSix(),
 				"The account has more than 5 CTNS",
 				"The account doesnt have more than 5 CTN's, please add more than 5 and rerun");
-		common_business_flows.scrollToTopOfWebPage();
+		getCommonBusinessFlows().scrollToTopOfWebPage();
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc7681.getAccountDetails().getBan());

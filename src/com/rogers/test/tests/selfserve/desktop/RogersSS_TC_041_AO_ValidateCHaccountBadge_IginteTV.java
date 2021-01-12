@@ -49,9 +49,9 @@ public class RogersSS_TC_041_AO_ValidateCHaccountBadge_IginteTV extends BaseTest
         		&& getRogersSolarisTVDashboardPage().verifyViewFlexChannelsDisplayed(), "Ignite TV dashboard page is displayed", "Ignite TV dashboard page NOT displayed correctly please investigate");
         
         reporter.reportLogWithScreenshot("Launched the Ignite TV dashboard Page");     
-        common_business_flows.scrollToMiddleOfWebPage();
+        getCommonBusinessFlows().scrollToMiddleOfWebPage();
 		reporter.reportLogWithScreenshot("Mid page view");
-		common_business_flows.scrollToBottomOfWebPage();
+		getCommonBusinessFlows().scrollToBottomOfWebPage();
 		reporter.reportLogWithScreenshot("Bottom View");
         
         
