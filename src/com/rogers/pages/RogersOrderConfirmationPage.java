@@ -24,14 +24,16 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	WebElement infoChangeOrderConfirmationnew;
 	
 	@FindBy(xpath = "//ins[@translate='global.message.orderConfirmationThanksV3']")
-	WebElement infoChangeOrderConfirmation;	
-	
+	WebElement infoChangeOrderConfirmation;
+	//ins[@translate='global.message.orderConfirmationThanksV3']
+
 	@FindBy(xpath = "//img[@src='/cms/rogers/page-specific/shop/ordersummary/thankyou/images/thankyou-badge-desktop.png']")
 	WebElement infoChangeOrderConfirmationLegacy;
 	
-	@FindBy(xpath = "//ins[@translate='global.message.orderConfirmationThanksV2']")
+	@FindBy(xpath = "//div[@class='confirmation-bubble']")
 	WebElement infoOrderConfirmation;
-	
+	//ins[@translate='global.message.orderConfirmationThanksV2']
+
 	@FindAll({
 		@FindBy(xpath = "//span[@class='thank-you']"),
 		@FindBy(xpath = "//span[@class='UConfirmationHeading']")
@@ -76,7 +78,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOrderConfirmation() {
-		return getReusableActionsInstance().isElementVisible(infoChangeOrderConfirmation, 120);
+		return getReusableActionsInstance().isElementVisible(infoOrderConfirmation, 120);
 	}
 	
 	/**

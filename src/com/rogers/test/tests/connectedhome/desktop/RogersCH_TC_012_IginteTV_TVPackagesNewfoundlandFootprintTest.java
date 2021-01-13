@@ -70,7 +70,7 @@ public class RogersCH_TC_012_IginteTV_TVPackagesNewfoundlandFootprintTest extend
 			reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
 	        getRogersOrderReviewPage().clkAcceptenceCheckboxUpdate();
 	        reporter.reportLogWithScreenshot("Agreement details");
-	        getRogersOrderReviewPage().clkSubmitUpdate();
+	        getRogersOrderReviewPage().clkSubmitUpdateTV();
 	        reporter.reportLogWithScreenshot("Launched the Confirmation page");
 	        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmation(),"Update order completed","Update order Failed");
 	        reporter.reportLogWithScreenshot("Verified the Confirmation page");

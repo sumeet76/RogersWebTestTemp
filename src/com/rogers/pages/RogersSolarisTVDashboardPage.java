@@ -51,19 +51,21 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	WebElement btnChangeTVPackage;
 	//ins[@translate='global.cta.changeTVPackage']
 
-	@FindBy(xpath = "//ins[@translate='global.cta.addChannelsOrThemePacksTv']")
+	@FindBy(xpath = "//span[@translate='global.dashboard.tv.manageChannelsAndThemePacks.buttonName']")
 	WebElement btnManageChannelsAndThemePacks;
-	
-	@FindBy(xpath = "//ins[@translate='global.cta.bysContinue']")
+	//ins[@translate='global.cta.addChannelsOrThemePacksTv']
+
+	@FindBy(xpath = "//span[contains(text(),'Continue')]/ancestor::a/span")
 	WebElement popupChangeTVPackage;
+	//ins[@translate='global.cta.bysContinue']
 
 	@FindBy(xpath = "//div[@class='popup-modal-component']//span[@class='ds-icon rds-icon-check-circle ds-color-success']")
 	WebElement popupContatUS;
 	//div[@class='live-support']
 
-	@FindBy(xpath = "//a[@id='swapChannelsButton']")
+	@FindBy(xpath = "//span[@translate='global.dashboard.tv.exchangeFlexChannels']")
 	WebElement lnkChangeFlexChannels;
-	
+
 	@FindBy(xpath = "//input[@id='searchFilter_swapout']")
 	WebElement infoChannelSwapoutSeach;
 
@@ -130,13 +132,13 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//h4[contains(normalize-space(.),'Ignite Flex 10') or contains(normalize-space(.),'Élan Flex 10')]")
 	WebElement txtIgniteFlex10;
 	
-	@FindBy(xpath = "//div[@class='modal-content']//ins[@usertype-translate='global.label.success']")
+	@FindBy(xpath = "//span[@class='ds-icon rds-icon-check-circle ds-color-success']")
 	WebElement successMessageParentalControlAndPinReset;
 	
-	@FindBy(xpath = "//div[@class='digital-box-settings']//ins[@translate='global.cta.resetParentalControlsPIN']")
+	@FindBy(xpath = "//span[contains(text(),'Réinitialiser le NIP pour le contrôle parental') or contains(text(),'Reset Parental Control PIN')]")
 	WebElement lnkResetParentalConrolsAndPin;
 	
-	@FindBy(xpath = "//div[@class='modal-content']//ins[contains(@ng-bind,'global.cta.yesResetPinNumber')]")
+	@FindBy(xpath = "//span[contains(text(),'Continue') or contains(text(),'Continue')]")
 	WebElement btnContinueParentalControlAndPinReset;	
 
 	@FindBy(xpath = "//i[@class='ute-icon-button-right']")
@@ -163,9 +165,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='loading']")
 	WebElement ldrThemepack2;
 	
-	@FindBy(xpath = "//h3[@class='copy-1 font-medium margin-0']")
+	@FindBy(xpath = "//h2[@class='all-channels__header']")
 	WebElement txtFlexChannels;
-	
+	//h3[@class='copy-1 font-medium margin-0']
 	
 	/**
 	 * Click on Reset Parental controls And Pin link
@@ -373,7 +375,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	    getReusableActionsInstance().executeJavaScriptClick(pkg);
 		}
 	}
-	
+
 	/**
 	 * Click the ChangeTV Package button on solaris TV dashboard page
 	 * @author chinnarao.vattam

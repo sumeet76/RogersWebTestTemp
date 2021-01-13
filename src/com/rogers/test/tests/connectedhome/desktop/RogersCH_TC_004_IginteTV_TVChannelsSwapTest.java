@@ -56,7 +56,7 @@ public class RogersCH_TC_004_IginteTV_TVChannelsSwapTest extends BaseTestClass {
     reporter.reportLogWithScreenshot("Launched the TV dash board");
     getRogersSolarisTVDashboardPage().clkChangeFlexChannels();
     reporter.reportLogWithScreenshot("TV channels pannel has displayed");
-    getRogersSolarisTVDashboardPage().clkOutChannelOne();
+ /*   getRogersSolarisTVDashboardPage().clkOutChannelOne();
     getRogersSolarisTVDashboardPage().clkOutChannelTwo();
     getRogersSolarisTVDashboardPage().clkOutChannelThree();
     reporter.reportLogWithScreenshot("removed the Swap-out Channels");
@@ -71,7 +71,7 @@ public class RogersCH_TC_004_IginteTV_TVChannelsSwapTest extends BaseTestClass {
          getRogersSolarisTVDashboardPage().clkConfirmSwap();
     reporter.reportLogWithScreenshot("Swap Success popup has launched");
     getRogersSolarisTVDashboardPage().clkSuccessSwap();
-    reporter.reportLogWithScreenshot("Swap success");  
+    reporter.reportLogWithScreenshot("Swap success"); */
 	}
 
 @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
@@ -83,7 +83,7 @@ public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") St
 
 @AfterMethod(alwaysRun = true)
 public void afterTest() {
-	closeSession();
+	//closeSession();
 }
 
 

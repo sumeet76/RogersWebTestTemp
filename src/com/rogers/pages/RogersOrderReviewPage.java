@@ -60,8 +60,9 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.cta.submit']")
 	WebElement clkSubmit;
 	
-	@FindBy(xpath = "//label[@for='tos_consent']")
+	@FindBy(xpath = "//div[@id='ds-checkbox-id-0-label-container']")
 	WebElement clkChangeAcceptCheckboxUpdate;
+	//label[@for='tos_consent']
 
 	@FindBy(xpath = "//label[@class='ds-checkboxLabel d-inline-flex align-items-start']")
 	WebElement clkChangeAcceptCheckboxUpdateInternet;
@@ -72,9 +73,14 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//button[@ng-reflect-variant='primary']//span[@ng-reflect-klass='ds-button__copy text-button te']")
 	WebElement btnContinueSession;
 
-	@FindBy(xpath = "//input[@class='ute-btn-primary']")
+	@FindBy(xpath = "//span[@translate='global.cta.submit']/ancestor::a")
 	WebElement clkSubmitUpdate;
-	//input[@name='submit]
+	//input[@name='submit']
+    //input[@class='ute-btn-primary']
+
+	@FindBy(xpath = "//span[@translate='global.cta.submitSmartStream']/ancestor::a")
+	WebElement clkSubmitUpdateSS;
+
 
 	@FindBy(xpath = "//span[@translate='global.cta.submit']")
 	WebElement clkSubmitUpdateInternet;
@@ -346,6 +352,14 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 */
 	public void clkSubmitUpdate() {
 		getReusableActionsInstance().getWhenReady(clkSubmitUpdate, 100).click();
+	}
+
+	/**
+	 * Click on the Submit button on the order review page
+	 * @author chinnarao.vattam
+	 */
+	public void clkSubmitUpdateTV() {
+		getReusableActionsInstance().getWhenReady(clkSubmitUpdateSS, 100).click();
 	}
 
 	/**

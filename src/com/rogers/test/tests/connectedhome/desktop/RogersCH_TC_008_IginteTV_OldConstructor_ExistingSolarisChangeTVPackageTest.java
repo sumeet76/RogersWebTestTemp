@@ -68,7 +68,7 @@ public class RogersCH_TC_008_IginteTV_OldConstructor_ExistingSolarisChangeTVPack
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
         getRogersOrderReviewPage().clkAcceptenceCheckboxUpdate();
         reporter.reportLogWithScreenshot("Agreement details");
-        getRogersOrderReviewPage().clkSubmitUpdate();
+        getRogersOrderReviewPage().clkSubmitUpdateTV();
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmation(),"Update order completed","Update order Failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
     	}
