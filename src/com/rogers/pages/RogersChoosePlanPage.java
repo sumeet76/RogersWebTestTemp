@@ -83,6 +83,9 @@ public class RogersChoosePlanPage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[@class='modal-body share-everything-modal']//a[@class='pull-right red-button']")
 	WebElement btnContinueOnModalSelectPrimaryLineForNewShareEverthingPlan;
+
+	@FindBy(xpath = "//h2[@translate='current_plan_title']")
+	WebElement lblYourCurrentPlan;
 	
 	/**
 	 * Clicks on continue button on Modal Select Primary Line For New Share Everthing Plan
@@ -179,7 +182,8 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void selectFirstAvailablePlan() {
-		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(btnSelect.get(0), 30));
+		getReusableActionsInstance().waitForElementVisibility(getReusableActionsInstance().getWhenReady(btnSelect.get(2) , 30));
+		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(btnSelect.get(2)));
 		getReusableActionsInstance().staticWait(3000);
 	}
 	
@@ -306,7 +310,17 @@ public class RogersChoosePlanPage extends BasePageClass {
 			}
 		}
 	}
-	
+
+	/**
+	 * Verify Choose Plan page
+	 * @return true if the page is visible else false
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyChoosePlanPage() {
+		return getReusableActionsInstance().isElementVisible(lblYourCurrentPlan,30);
+
+	}
+
 	/**
 	 * Validates if the Downgrade Fee overlay is displayed and clicks on the 'Continue' button
 	 * @return true if overlay is displayed; else false

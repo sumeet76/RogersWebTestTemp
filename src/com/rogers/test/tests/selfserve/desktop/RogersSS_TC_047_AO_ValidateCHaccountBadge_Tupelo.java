@@ -47,9 +47,9 @@ public class RogersSS_TC_047_AO_ValidateCHaccountBadge_Tupelo extends BaseTestCl
         		"Tupelo dashboard page is displayed", 
         		"Tupelo dashboard page NOT displayed correctly please investigate");        
         reporter.reportLogWithScreenshot("Tupelo dashboard Page");     
-        common_business_flows.scrollToMiddleOfWebPage();
+        getCommonBusinessFlows().scrollToMiddleOfWebPage();
 		reporter.reportLogWithScreenshot("Mid page view");
-		common_business_flows.scrollToBottomOfWebPage();
+		getCommonBusinessFlows().scrollToBottomOfWebPage();
 		reporter.reportLogWithScreenshot("Bottom View");
         
         

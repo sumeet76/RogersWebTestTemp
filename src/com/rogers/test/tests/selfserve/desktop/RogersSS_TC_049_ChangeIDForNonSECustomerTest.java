@@ -72,7 +72,7 @@ public class RogersSS_TC_049_ChangeIDForNonSECustomerTest extends BaseTestClass 
 			getRogersWirelessDashboardPage().clickOverview();
 			reporter.reportLogWithScreenshot("Back on overview page"); 
 			
-			common_business_flows.logOutAndReSignIn(strUserName, strPassword);     					
+			getCommonBusinessFlows().logOutAndReSignIn(strUserName, strPassword);     					
 			reporter.hardAssert(getRogersAccountOverviewPage().verifyWirelessCallerIdCTNBadgeName(strFirstName),
 					"Caller ID First Name" + strFirstName + " is updated in CTN badge",
 					"Caller ID First Name" + strFirstName + " is NOT updated in CTN badge");

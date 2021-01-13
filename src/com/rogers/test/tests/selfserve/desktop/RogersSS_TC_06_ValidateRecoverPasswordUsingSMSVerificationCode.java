@@ -47,7 +47,7 @@ public class RogersSS_TC_06_ValidateRecoverPasswordUsingSMSVerificationCode exte
 		try {
 			reporter.reportLogWithScreenshot("ENS");
 			String strPhoneNum = TestDataHandler.tc060809.getAccountDetails().getRecoveryNumber();
-			String strCode = ensVerifications.getVerifyCode(strPhoneNum);			
+			String strCode = getEnsVerifications().getVerifyCode(strPhoneNum);			
 			//switch to working test tab.
 			getDriver().switchTo().window(strTestingTab);
 			reporter.reportLogWithScreenshot("Set code");
@@ -90,7 +90,7 @@ public class RogersSS_TC_06_ValidateRecoverPasswordUsingSMSVerificationCode exte
 		//Login with old password:
 		getRogersRecoverPassOrNamePage().switchToDefaultContent();
 		getRogersLoginPage().switchToSignInIFrame();
-		common_business_flows.loginApplication(strUsername, strPassword);				
+		getCommonBusinessFlows().loginApplication(strUsername, strPassword);				
 		if(getRogersLoginPage().verifyLoginFailMsgIframe())
 		{			
 			reporter.reportLogWithScreenshot("Login attempt one not successful with old password, trying with new password:"+strNewPass);							
@@ -105,7 +105,7 @@ public class RogersSS_TC_06_ValidateRecoverPasswordUsingSMSVerificationCode exte
 		        	getRogersAccountOverviewPage().selectAccount(strAccount);
 		        }
 			reporter.reportLogWithScreenshot("Account overview page.");
-			common_business_flows.resetPasswordBack(strNewPass, strPassword);
+			getCommonBusinessFlows().resetPasswordBack(strNewPass, strPassword);
 		}else
 		{
 			getRogersLoginPage().clkSkipIFrame();
@@ -119,7 +119,7 @@ public class RogersSS_TC_06_ValidateRecoverPasswordUsingSMSVerificationCode exte
 			reporter.reportLogWithScreenshot("Login successful");
 			getRogersLoginPage().switchOutOfSignInIFrame();
 			reporter.reportLogWithScreenshot("Account overview page");
-			common_business_flows.resetPasswordBack(strNewPass, strPassword);
+			getCommonBusinessFlows().resetPasswordBack(strNewPass, strPassword);
 		}
 		
 		*/

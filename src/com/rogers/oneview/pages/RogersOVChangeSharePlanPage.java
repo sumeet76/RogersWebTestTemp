@@ -20,6 +20,17 @@ public class RogersOVChangeSharePlanPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@class='btn edit ng-scope']")
 	WebElement lbllineDetailData;
 
+	@FindBy(xpath = "//span[@translate='_total_bucket']")
+	WebElement lblTotalDataOnPlan;
+
+	/**
+	 * This function will verify edit button on change share plan page
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyChangeSharePlanPage() {
+		return getReusableActionsInstance().isElementVisible(lblTotalDataOnPlan , 60);
+	}
+
 	/**
 	 * This function will click edit button on change share plan page
 	 * @author Saurav.Goyal

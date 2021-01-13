@@ -57,7 +57,7 @@ public class RogersSS_TC_01_FDM_AssignDMRoleViaOverlayForFirstTimeLogin extends 
        double dataAlert = totalDataValue*0.8;
        String strDataAlert = Double.toString(dataAlert).replaceAll(",", ".");
        strDataAlert =  String.format("%.2f", new BigDecimal(Double.toString(dataAlert).replaceAll(",", ".")));
-       //common_business_flows.scrollToMiddleOfWebPage();
+       //getCommonBusinessFlows().scrollToMiddleOfWebPage();
        
        reporter.hardAssert(getRogersWirelessDashboardPage().isAddDataManagerDisplayed(),
     		   "Add data manager available for this account","Add data manager is not displayed for this account");

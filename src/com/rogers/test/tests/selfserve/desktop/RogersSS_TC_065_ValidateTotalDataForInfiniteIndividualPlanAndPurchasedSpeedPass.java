@@ -77,7 +77,7 @@ public class RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurcha
 		getRogersManageDataPage().clkBackOnManageDataUsagePage();
 		
 		
-		int totalAddedSpeedPass = common_business_flows.addSpeedPass();
+		int totalAddedSpeedPass = getCommonBusinessFlows().addSpeedPass();
 		Thread.sleep(3000);
 		reporter.hardAssert(getRogersManageDataPage().validateViewDetailsLink(),
 				"'Data details' page is displayed after click on view details link",

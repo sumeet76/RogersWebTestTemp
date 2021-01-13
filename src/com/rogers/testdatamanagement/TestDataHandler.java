@@ -97,20 +97,22 @@ public class TestDataHandler {
 	public static AccountData solarisConsumerGWPRhp;
 	public static AccountData solarisConsumerGWPRhpShm;
 	public static AccountData solarisHTOMigrationSignIn;
-	public static AALData testCase7;
-	public static HUPData testCase8;
-	public static PPCData testCase9;
-	public static AALData testCase02;
-	public static HUPData testCase05;
-	public static HUPData testCase06;
-	public static HUPData testCase07;
-	public static PPCData testCase08;
-	public static HUPData testCase09;
-	public static HUPData testCase10;
-	public static HUPData testCase12;
-	public static RedesignRpotgData testCase11;
-	public static RedesignRpotgData tc01NonRpotg;
-	public static RedesignRpotgData tc02Rpotg;
+	public static RedesignRpotgData tc01NACTermNpotgSS;
+	public static RedesignRpotgData tc02NACNoTermPotgSS;
+	public static RedesignRpotgData tc03NACTermPotgBopis;
+	public static RedesignRpotgData tc04NACNoTermRpotgBopis;
+	public static RedesignRpotgData tc05NACByodSS;
+	public static RedesignRpotgData tc06NACByodTermBopis;
+	public static AALData tc07AAL;
+	public static PPCData tc08PPC;
+	public static HUPData tc09HUPPotgSL;
+	public static HUPData tc10HUPAdditionalLine;
+	public static HUPData tc11HUPNpotgSL;
+	public static HUPData tc12HUPNonShareNoTermML;
+	public static HUPData tc13HUPShareEveryThingKeepCurrentPlanNoTermML;
+	public static HUPData tc14HUPShareEveryThingKeepCurrentPlanTermML;
+	public static HUPData tc15HUPNonShareKeepCurrentPlanML;
+	public static HUPData tc16HUPNonShareTermBopisSL;
 	public static HUPData buyFlowsOVtestCase01;
 	public static HUPData buyFlowsOVtestCase02;
 	public static HUPData buyFlowsOVtestCase05;
@@ -185,7 +187,7 @@ public class TestDataHandler {
 			chOneViewDataInit();
 			match = true;
 		}
-		if(strTestMethodName.contains("search.")) {
+		if(strTestMethodName.contains("search.")||strTestMethodName.contains("serviceability.")) {
 			//No yaml data files to initialize
 			match = true;
 		}
@@ -331,20 +333,23 @@ public class TestDataHandler {
 	private static void buyFlowsDataInit() throws FileNotFoundException {
 		rogersConfig = YamlHandler.getBFAConfig();
 		bfaConfig =  YamlHandler.getBFAConfig();
-		//sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/buyflows/SauceSettings.yml");
 		bfaPaymentInfo = YamlHandler.getBFAPaymentDetails();
-		testCase7 = YamlHandler.getAALdata("tc7AAL");
-		testCase8 = YamlHandler.getHUPdata("tc8HUP");
-    	testCase9 = YamlHandler.getPPCdata("tc9PPC");
-    	testCase02 = YamlHandler.getAALdata("tc02AAL");
-    	testCase05 = YamlHandler.getHUPdata("tc05HUP");
-    	testCase06 = YamlHandler.getHUPdata("tc06HUP");
-    	testCase10 = YamlHandler.getHUPdata("tc10HUP");
-    	testCase08 = YamlHandler.getPPCdata("tc08PPC");
-    	testCase11 = YamlHandler.getRedesignNACData("tc11NacByod");
-    	tc01NonRpotg=YamlHandler.getRedesignNACData("tc01NonRpotg");
-    	tc02Rpotg=YamlHandler.getRedesignNACData("tc02Rpotg");
-		testCase12 = YamlHandler.getHUPdata("tc12HUP");
+		tc01NACTermNpotgSS=YamlHandler.getRedesignNACData("tc01NACTermNpotgSS");
+		tc02NACNoTermPotgSS=YamlHandler.getRedesignNACData("tc02NACNoTermPotgSS");
+		tc03NACTermPotgBopis = YamlHandler.getRedesignNACData("tc03NACTermPotgBopis");
+		tc04NACNoTermRpotgBopis = YamlHandler.getRedesignNACData("tc04NACNoTermRpotgBopis");
+		tc05NACByodSS = YamlHandler.getRedesignNACData("tc05NACByodSS");
+		tc06NACByodTermBopis = YamlHandler.getRedesignNACData("tc06NACByodTermBopis");
+		tc07AAL = YamlHandler.getAALdata("tc07AAL");
+		tc08PPC = YamlHandler.getPPCdata("tc08PPC");
+		tc09HUPPotgSL = YamlHandler.getHUPdata("tc09HUPPotgSL");
+		tc10HUPAdditionalLine = YamlHandler.getHUPdata("tc10HUPAdditionalLine");
+		tc11HUPNpotgSL = YamlHandler.getHUPdata("tc11HUPNpotgSL");
+		tc12HUPNonShareNoTermML = YamlHandler.getHUPdata("tc12HUPNonShareNoTermML");
+		tc13HUPShareEveryThingKeepCurrentPlanNoTermML = YamlHandler.getHUPdata("tc13HUPShareEveryThingKeepCurrentPlanNoTermML");
+		tc14HUPShareEveryThingKeepCurrentPlanTermML = YamlHandler.getHUPdata("tc14HUPShareEveryThingKeepCurrentPlanTermML");
+		tc15HUPNonShareKeepCurrentPlanML = YamlHandler.getHUPdata("tc15HUPNonShareKeepCurrentPlanML");
+		tc16HUPNonShareTermBopisSL = YamlHandler.getHUPdata("tc16HUPNonShareTermBopisSL");
 	}
 	
 	private static void buyFlowsOneViewDataInit() throws FileNotFoundException {

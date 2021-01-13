@@ -44,7 +44,7 @@ public class RogersSS_TC_07_UserValidateRecoverUsernameAndResetPasswordUsingEmai
 		String strRecoveredUserName ="";
 		//Go to ENS to verify email and get reset password page.		
 
-		ensVerifications.getEmailVerifyPage(strUserName);
+		getEnsVerifications().getEmailVerifyPage(strUserName);
 		reporter.reportLogWithScreenshot("Get recovery code");
 		String recoveryCode = getRegisterOrAccountRecoveryPage().getVerificationCode();
 		getDriver().switchTo().window(strTestingTab);			

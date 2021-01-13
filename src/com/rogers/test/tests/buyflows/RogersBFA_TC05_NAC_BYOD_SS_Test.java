@@ -10,12 +10,16 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class RogersBFA_TC11_NAC_BYOD_Test extends BaseTestClass {
+/**
+ * TC05 - Regression - [RNAC BYOD] - Perform Rogers Net New Activation - BYOD with Standard Shipping_E2E
+ */
+
+public class RogersBFA_TC05_NAC_BYOD_SS_Test extends BaseTestClass {
 
 	@BeforeMethod (alwaysRun = true) @Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.redesignrogers, method);
+		startSession(System.getProperty("AWSBYODUrl"), strBrowser, strLanguage, RogersEnums.GroupName.redesignrogers, method);
 	}
 	
 	@AfterMethod(alwaysRun = true)
@@ -24,16 +28,16 @@ public class RogersBFA_TC11_NAC_BYOD_Test extends BaseTestClass {
 	}
 
 	@Test(groups = {"RegressionBFA","NACBFA"})
-	public void nacByodFlow() throws InterruptedException {
+	public void rogersNacByodSSTest() throws InterruptedException {
 		//############################Plan config page###############################
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(), "BreadCrumb on Plan config page is displaying fine","BreadCrumb is not displaying fine");
-		getRogersPlanConfigPage().clickPreCartSummaryContinueButton();
+		getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
 		getRogersPlanConfigPage().clickPreCartSummaryContinueButtonTalkOptions();
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
+		getRogersPlanConfigPage().clickGetBPOOffer();
 		getRogersPlanConfigPage().clickPreCartSummaryContinueButtonAddOns();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on your addon's");
-		getRogersPlanConfigPage().clickGetBPOOffer();
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on proceed to checkout");
 		//############################CheckoutPage############################//
@@ -47,10 +51,10 @@ public class RogersBFA_TC11_NAC_BYOD_Test extends BaseTestClass {
 		//	        String firstName = getRogersCheckoutPage().setFirstNameCreateProfilepage("AMARA");
 		//	        String lastName = getRogersCheckoutPage().setLastNameCreateProfilepage("SPEARS");
 		String fullNameCreateProfile=firstName+" "+lastName;
-		String contactNumberCreateProfile=TestDataHandler.testCase11.getContactNumber();
+		String contactNumberCreateProfile=TestDataHandler.tc05NACByodSS.getContactNumber();
 		getRogersCheckoutPage().setContactNumberCreateProfile(contactNumberCreateProfile);
 		reporter.reportLogPassWithScreenshot("Create Profile Page details Entered till ContactNumber");
-		getRogersCheckoutPage().setBillingAddressCreateProfile(TestDataHandler.testCase11.getBillingAddress());
+		getRogersCheckoutPage().setBillingAddressCreateProfile(TestDataHandler.tc05NACByodSS.getBillingAddress());
 		reporter.reportLogPassWithScreenshot("Create Profile Page details provided for email , name and Address");
 		getRogersCheckoutPage().switchToRecaptchaIFrame();
 		getRogersCheckoutPage().clkImNotRombotCheckbox();
@@ -60,18 +64,18 @@ public class RogersBFA_TC11_NAC_BYOD_Test extends BaseTestClass {
 		//***************Credit Evaluation Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(),"CreditEvaluation Title verified","CreditEvaluation Title not present");
 		//getRogersCheckoutPage().setDateOfBirth(TestDataHandler.redesignRpotgData.getDateOfBirth());
-		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.testCase11.getDateOfBirthYear());
+		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc05NACByodSS.getDateOfBirthYear());
 		//span[text()='No, thanks']
 		//getRogersCheckoutPage().clkNoThanks();
-		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.testCase11.getDateOfBirthMonth());
-		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.testCase11.getDateOfBirthDay());
+		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc05NACByodSS.getDateOfBirthMonth());
+		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc05NACByodSS.getDateOfBirthDay());
 		getRogersCheckoutPage().switchToCreditCardIFrame();
-		getRogersCheckoutPage().setCreditCardNumberIFrame(TestDataHandler.testCase11.getCreditCardDetails());
+		getRogersCheckoutPage().setCreditCardNumberIFrame(TestDataHandler.tc05NACByodSS.getCreditCardDetails());
 		reporter.reportLogPassWithScreenshot("DOB & Credit Card Details Entered Successfully");
 		getRogersCheckoutPage().switchOutOfCreditCardIFrame();
-		getRogersCheckoutPage().setExpiryDate(TestDataHandler.testCase11.getExpiryDate());
-		getRogersCheckoutPage().selectDropdownOption(TestDataHandler.testCase11.getDropdownOption());
-		getRogersCheckoutPage().setPassportNumber(TestDataHandler.testCase11.getPassportNumber());
+		getRogersCheckoutPage().setExpiryDate(TestDataHandler.tc05NACByodSS.getExpiryDate());
+		getRogersCheckoutPage().selectDropdownOption(TestDataHandler.tc05NACByodSS.getDropdownOption());
+		getRogersCheckoutPage().setPassportNumber(TestDataHandler.tc05NACByodSS.getPassportNumber());
 		reporter.reportLogPassWithScreenshot("PassportNumber Entered Successfully");
 		getRogersCheckoutPage().clkCreditAuthorizationChkBox();
 		getRogersCheckoutPage().clkCreditEvalContinue();
@@ -82,7 +86,7 @@ public class RogersBFA_TC11_NAC_BYOD_Test extends BaseTestClass {
 		// ***************Choose a Number Stepper*************//      
 		reporter.softAssert(getRogersCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed","Choose a Number Title not disaplayed");
 		reporter.softAssert(getRogersCheckoutPage().isChooseNumberTabsDisplayed(),"Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
-		getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.testCase11.getCityName());
+		getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc05NACByodSS.getCityName());
 		reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully" );
 		getRogersCheckoutPage().clkChosePhoneNumber();
 		reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
@@ -94,12 +98,12 @@ public class RogersBFA_TC11_NAC_BYOD_Test extends BaseTestClass {
 		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(),"Billing Options Title Displayed","Billing Options Title Not Present");
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed","Select Payment Method Dropdown not disaplayed");
 		getRogersCheckoutPage().clkNoThanks();
-		getRogersCheckoutPage().setNameOnCard(TestDataHandler.testCase11.getNameOnCard());
+		getRogersCheckoutPage().setNameOnCard(TestDataHandler.tc05NACByodSS.getNameOnCard());
 		getRogersCheckoutPage().switchToCreditCardIFrame();
-		getRogersCheckoutPage().setCreditCardNumberIFrame(TestDataHandler.testCase11.getBillingCreditCardNumber());
+		getRogersCheckoutPage().setCreditCardNumberIFrame(TestDataHandler.tc05NACByodSS.getBillingCreditCardNumber());
 		getRogersCheckoutPage().switchOutOfCreditCardIFrame();
-		getRogersCheckoutPage().setBillingExpiryDate(TestDataHandler.testCase11.getExpiryDate());
-		getRogersCheckoutPage().setCVVNumber(TestDataHandler.testCase11.getCvvNumber());
+		getRogersCheckoutPage().setBillingExpiryDate(TestDataHandler.tc05NACByodSS.getExpiryDate());
+		getRogersCheckoutPage().setCVVNumber(TestDataHandler.tc05NACByodSS.getCvvNumber());
 		reporter.reportLogPassWithScreenshot("Billing & Payment Details Entered Successfully");
 		getRogersCheckoutPage().clkAddCard();
 		getRogersCheckoutPage().clkBillingContinueButton();

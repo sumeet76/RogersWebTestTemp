@@ -76,7 +76,7 @@ public class RogersSS_TC_034_Postpaid_UpdateWirelessPhoneNumber extends BaseTest
     	//Go to ENS to verify email and get reset password page.		
 		try {
 			
-			verificationCode = ensVerifications.getVerifyCode(strWirelessPhoneNumer);			
+			verificationCode = getEnsVerifications().getVerifyCode(strWirelessPhoneNumer);			
 			getDriver().switchTo().window(strTestingTab);						
 			 						
 		} catch (Exception e) {

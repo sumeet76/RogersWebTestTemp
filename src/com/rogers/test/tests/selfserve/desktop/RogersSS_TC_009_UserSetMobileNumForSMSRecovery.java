@@ -61,7 +61,7 @@ public class RogersSS_TC_009_UserSetMobileNumForSMSRecovery extends BaseTestClas
         	
     		//Will open a new tab for ENS, to get verification code from ENS
     		
-			String strVerifyCode = ensVerifications.getVerifyCode(strRecoveryNumber);
+			String strVerifyCode = getEnsVerifications().getVerifyCode(strRecoveryNumber);
 			getDriver().switchTo().window(strTestingTab);
 			getRogersProfileAndSettingsPage().switchToSetRecoveryNumIFrame();
 			getRogersProfileAndSettingsPage().setVerifyCodeIframe(strVerifyCode);

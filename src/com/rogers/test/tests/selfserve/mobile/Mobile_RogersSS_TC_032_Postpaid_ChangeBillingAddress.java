@@ -66,7 +66,7 @@ public class Mobile_RogersSS_TC_032_Postpaid_ChangeBillingAddress extends BaseTe
 		reporter.reportLogWithScreenshot("Profile & Settings page");
 
     	//Change Billing settings
-		common_business_flows.scrollToMiddleOfWebPage();
+		getCommonBusinessFlows().scrollToMiddleOfWebPage();
 		getRogersProfileAndSettingsPage().clkCloseFeedbackIfAvailableMobile();
     	getRogersProfileAndSettingsPage().clkBtnBillingInfomation();
     	reporter.reportLogWithScreenshot("Billing address before make change.");

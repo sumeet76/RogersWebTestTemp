@@ -51,7 +51,7 @@ public class RogersSS_TC_103_PACMAN_VerifyTheOrderSummaryPageOfVASsubscriptionRe
         reporter.reportLogWithScreenshot("Account overview page.");
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Passed", "Login Failed");
         
-        common_business_flows.scrollToMiddleOfWebPage();
+        getCommonBusinessFlows().scrollToMiddleOfWebPage();
         reporter.reportLogWithScreenshot("CTNS or Subscriptions View");
         reporter.hardAssert(getRogersAccountOverviewPage().verifySubscriptionIsAvailableForRedeem(),
         		"The subscription is available for redeem", 
@@ -68,7 +68,7 @@ public class RogersSS_TC_103_PACMAN_VerifyTheOrderSummaryPageOfVASsubscriptionRe
         reporter.hardAssert(getRogersAccountOverviewPage().verifyIfRedeemSubscriptionDetailsIsDisplayedCorrectly(strCTN),
         		"The cancel subscription details matched", 
         		"The cancel subscription details did not matched");          
-        common_business_flows.scrollToMiddleOfWebPage();
+        getCommonBusinessFlows().scrollToMiddleOfWebPage();
         reporter.reportLogWithScreenshot("T and C page");
         reporter.hardAssert(getRogersAccountOverviewPage().verifyIfTnCForSubscriptionIsDisplayed(),
         		"The Subscription TnC is displayed", 

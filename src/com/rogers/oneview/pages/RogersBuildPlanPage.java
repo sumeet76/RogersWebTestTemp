@@ -77,6 +77,18 @@ public class RogersBuildPlanPage extends BasePageClass {
 	@FindBy(xpath = "//span[@res='select_existing_plan']/parent::button")
 	WebElement btnSelectExistingPlan;
 
+	@FindBy(xpath = "//div[@class='upfront-modal-popup ng-scope']")
+	WebElement modelOldPhoneOnUpfrontEdge;
+
+	/**
+	 * Verify build plan page loaded
+	 * @return true if the page is loaded else false
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyBuildPlanPage() {
+		return getReusableActionsInstance().isElementVisible(btnContinue , 60);
+	}
+
 	/**
 	 * Clicks on the 'Add' button against the first available price plan
 	 * @author Saurav.Goyal
@@ -84,7 +96,7 @@ public class RogersBuildPlanPage extends BasePageClass {
 	public void selectFirstPlanInPickNewPlan() {
 		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().javascriptScrollByVisibleElement(lblData);
-		getReusableActionsInstance().clickWhenReady(addPlan.get(0), 30);
+		getReusableActionsInstance().clickWhenReady(addPlan.get(1), 30);
 		getReusableActionsInstance().staticWait(2000);
 	}
 	
@@ -121,17 +133,24 @@ public class RogersBuildPlanPage extends BasePageClass {
 	 */
 	public void clkContinue() {
 		if(handleTodayOfferOverlay()) {
-			getReusableActionsInstance().clickWhenReady(btnContinue,120);
+			getReusableActionsInstance().clickWhenReady(btnContinue,30);
 		}
 
 		if(getReusableActionsInstance().isElementVisible(By.xpath("//span[@res='_upfront_amount']"),2)) {
 			getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(By.xpath("//div[@class='upfront-popup-button']/a[@translate='new_Confirm']")));
 		}
 
+		if(getReusableActionsInstance().isElementVisible(modelOldPhoneOnUpfrontEdge,30)) {
+			getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(By.xpath("//a[@class='confirm ng-scope']")));
+		}
+
+	/*
 		if(getReusableActionsInstance().isElementVisible(planSlider, 2)) {
 			getReusableActionsInstance().waitForElementVisibility(planSlider, 60);
 			//getReusableActionsInstance().clickIfAvailable(btnContinue, 120);
 		}
+
+		 */
 	}
 
 	/**

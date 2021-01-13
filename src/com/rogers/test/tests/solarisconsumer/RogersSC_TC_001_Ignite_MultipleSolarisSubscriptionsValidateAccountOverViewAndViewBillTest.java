@@ -64,20 +64,20 @@ public class RogersSC_TC_001_Ignite_MultipleSolarisSubscriptionsValidateAccountO
 		 */
 		getRogersAccountOverviewPage().clickViewYourBill();
 		reporter.reportLogWithScreenshot("Billing and payment page.");
-		if (!rogersBillingPage.verifyIfAccountHasNoBill()) {
-			rogersBillingPage.switchToBillViewIframe();
-	        reporter.hardAssert(rogersBillingPage.verifyBillingAndPaymentPageLoadIframe(),
+		if (!getRogersBillingPage().verifyIfAccountHasNoBill()) {
+			getRogersBillingPage().switchToBillViewIframe();
+	        reporter.hardAssert(getRogersBillingPage().verifyBillingAndPaymentPageLoadIframe(),
 	        						"Billing page loaded.",
 	        						"Billing page load Error. Refer screenshot");
 			reporter.reportLogWithScreenshot("View bill page.");
-	        reporter.hardAssert(rogersBillingPage.verifyYourBillDisplayedIFrame(), 
+	        reporter.hardAssert(getRogersBillingPage().verifyYourBillDisplayedIFrame(), 
 	        						"Bill viewed successfully.",
 	        						"View Your Bill Error. Refer screenshot");
-	        rogersBillingPage.switchOutOfBillViewIframe();
-	        rogersBillingPage.scrollToMiddlePage();
+	        getRogersBillingPage().switchOutOfBillViewIframe();
+	        getRogersBillingPage().scrollToMiddlePage();
 			reporter.reportLogWithScreenshot("Middle of view bill page.");
 		} else {
-			rogersBillingPage.scrollToMiddlePage();
+			getRogersBillingPage().scrollToMiddlePage();
 			reporter.reportLogWithScreenshot("There has no bill yet for the account.");
 		} 
     }

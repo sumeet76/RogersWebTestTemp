@@ -81,7 +81,7 @@ public class Mobile_RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_Infin
 		getRogersWirelessDashboardPage().scrollToTopOfDasboardPage();
 		getRogersManageDataPage().clkBackOnManageDataUsagePage();
 		
-		int totalAddedSpeedPass = common_business_flows.addSpeedPass();	
+		int totalAddedSpeedPass = getCommonBusinessFlows().addSpeedPass();	
 
 		reporter.hardAssert(getRogersManageDataPage().validateViewDetailsLink(),
 				"'Data details' page is displayed after click on view details link", 

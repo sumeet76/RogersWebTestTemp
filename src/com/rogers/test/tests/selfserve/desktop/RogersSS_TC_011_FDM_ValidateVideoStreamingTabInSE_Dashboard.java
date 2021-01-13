@@ -57,9 +57,9 @@ public class RogersSS_TC_011_FDM_ValidateVideoStreamingTabInSE_Dashboard extends
        getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible(); 
      
        reporter.reportLogWithScreenshot("Dashboard page");
-       common_business_flows.scrollToMiddleOfWebPage();
+       getCommonBusinessFlows().scrollToMiddleOfWebPage();
        reporter.reportLogWithScreenshot("Middle view of Dashboard page");
-       common_business_flows.scrollToTopOfWebPage();
+       getCommonBusinessFlows().scrollToTopOfWebPage();
     
        reporter.hardAssert(getRogersWirelessDashboardPage().verifyStreamSaverDisplayed(),
     		   "Stream saver is displayed",
@@ -76,7 +76,7 @@ public class RogersSS_TC_011_FDM_ValidateVideoStreamingTabInSE_Dashboard extends
        }
                   	   
     	   reporter.reportLogWithScreenshot("Stream saver if set to ON");
-    	   common_business_flows.scrollToTopOfWebPage();
+    	   getCommonBusinessFlows().scrollToTopOfWebPage();
            getRogersWirelessDashboardPage().clkStreamSaverOff();
            reporter.hardAssert(getRogersWirelessDashboardPage().isStreamSaverOFF(),
         		   "Stream Saver is switch off successfully",
