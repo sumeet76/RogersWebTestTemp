@@ -257,27 +257,14 @@ public class RogersSearchPage extends BasePageClass {
 
 
     public boolean isGrandParentFilterExpanded(String strFilterName) {
-     //   String strGrandParentFilterName = grandParentFilters.split("\\(");
-      //  String strExpectedTag = strGrandParentFilter.trim() + " - " ;
 
-        System.out.println("Starting Xpath");
         getReusableActionsInstance().staticWait(1000);
 
-       // WebElement expandedFilter = getDriver().findElement(By.xpath("//div[@class='ds-filter__listSet']/div/button/div/p[starts-with(text(),'" + strFilterName + "')]/ancestor::button//following-sibling::ds-expander[@class='ng-tns-c9-2']/div"));
         WebElement expandedFilter = getDriver().findElement(By.xpath("//button[contains(@id,'"+strFilterName+"-heading')]/following-sibling::ds-expander"));
-        System.out.println("Ending Xpath");
 
 
         return expandedFilter.getAttribute("ng-reflect-expanded").equals("true");
-        //return expandedFilter.getAttribute("ng-reflect-expanded=true");
-       /** if((expandedFilter.getAttribute("ng-reflect-expanded").equals(true))){
 
-            return true;
-        } else {
-
-            return false;
-            }
-*/
     }
 
 
@@ -831,11 +818,20 @@ public class RogersSearchPage extends BasePageClass {
         getReusableActionsInstance().clickWhenReady(resultLink);
     }
 
-    public boolean isParentFilterExpanded(String strGrandParentFilter, String strParentFilter) {
+ /*   public boolean isParentFilterExpanded(String strGrandParentFilter, String strParentFilter) {
         return isParentFilterExpanded(getDriver().findElement(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button" +
                 "//p[starts-with(text(),'"+strGrandParentFilter+"')]/ancestor::button/following-sibling::ds-expander" +
                 "//p[starts-with(text(),'"+strParentFilter+"')]")));
     }
+
+  */
+     public boolean isParentFilterExpanded(String strGrandParentFilter, String strParentFilter) {
+         WebElement isParentFilterExpanded = getDriver().findElement(By.xpath("//button[contains(@id,'" +strGrandParentFilter+ "-heading')]/following-sibling::ds-expander//button[contains(@id,'"+strParentFilter+ "')]/following-sibling::ds-expander"));
+
+         return isParentFilterExpanded.getAttribute("ng-reflect-expanded").equals("true");
+
+ }
+
 
     public void clkResetAllFilters() {
         getReusableActionsInstance().clickWhenReady(btnResetAllFilters);
