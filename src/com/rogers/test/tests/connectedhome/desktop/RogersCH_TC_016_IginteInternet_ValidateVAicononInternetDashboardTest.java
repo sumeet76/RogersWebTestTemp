@@ -52,9 +52,10 @@ public class RogersCH_TC_016_IginteInternet_ValidateVAicononInternetDashboardTes
         getRogersLoginPage().clkSkipIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.accountDetails.getBan());
+        //getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.accountDetails.getBan());
     	reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersInternetDashboardPage().clkSolarisInternetBadge();
+        getRogersInternetDashboardPage().clkInternetPopup();
         reporter.hardAssert(getRogersInternetDashboardPage().verifyInternetPage(),"Launched the internet dashboard Page","Internet dashboard Page dosen't launched");
         reporter.hardAssert(getRogersInternetDashboardPage().verifyVAButton(),"VA button is present","VA button is not present");
         getRogersInternetDashboardPage().clkVAButton();

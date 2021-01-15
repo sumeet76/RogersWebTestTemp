@@ -64,8 +64,9 @@ public class RogersOrderReviewPage extends BasePageClass {
 	WebElement clkChangeAcceptCheckboxUpdate;
 	//label[@for='tos_consent']
 
-	@FindBy(xpath = "//label[@class='ds-checkboxLabel d-inline-flex align-items-start']")
+	@FindBy(xpath = "//span[@class='checkout-authorize-copy']")
 	WebElement clkChangeAcceptCheckboxUpdateInternet;
+	//label[@class='ds-checkboxLabel d-inline-flex align-items-start']
 
 	@FindBy(xpath = "//div[@class='text-semi mt-3 -f24 ng-star-inserted']")
 	WebElement popupSessionModel;
@@ -81,9 +82,13 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.cta.submitSmartStream']/ancestor::a")
 	WebElement clkSubmitUpdateSS;
 
+	@FindBy(xpath = "//span[@translate='global.cta.submitSmartStream']")
+	WebElement clkSubmitUpdateMobile;
+
 
 	@FindBy(xpath = "//span[@translate='global.cta.submit']")
 	WebElement clkSubmitUpdateInternet;
+	//span[@translate='global.cta.submit']/ancestor::a
 
 	@FindBy(xpath = "//span[@translate='global.cta.submitSmartStream']")
 	WebElement clkSubmitUpdateSAI;
@@ -275,7 +280,8 @@ public class RogersOrderReviewPage extends BasePageClass {
 		getReusableActionsInstance().getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);
 		getReusableActionsInstance().getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);
 		getReusableActionsInstance().getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);
-		getReusableActionsInstance().getWhenReady(clkChangeAcceptCheckboxUpdateInternet, 90).click();
+		getReusableActionsInstance().moveToElementAndClick(clkChangeAcceptCheckboxUpdateInternet, 90);
+		//getReusableActionsInstance().getWhenReady(clkChangeAcceptCheckboxUpdateInternet, 90).click();
 	}
 	
 	/**
@@ -370,16 +376,16 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSubmitUpdateMobile() {
-		getReusableActionsInstance().waitForElementInvisibility(clkSubmitUpdate, 120);
-		getReusableActionsInstance().executeJavaScriptClick(clkSubmitUpdate);
+		getReusableActionsInstance().waitForElementVisibility(clkSubmitUpdateMobile, 120);
+		getReusableActionsInstance().executeJavaScriptClick(clkSubmitUpdateMobile);
 	}
 	/**
 	 * Click on the Submit button on the order review page
 	 * @author chinnarao.vattam
 	 */
 	public void clkSubmitUpdateInternet() {
-		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().getWhenReady(clkSubmitUpdateInternet, 90).click();
+		getReusableActionsInstance().getWhenReady(clkSubmitUpdateInternet, 90);
+		getReusableActionsInstance().executeJavaScriptClick(clkSubmitUpdateInternet);
 	}
 
 	/**

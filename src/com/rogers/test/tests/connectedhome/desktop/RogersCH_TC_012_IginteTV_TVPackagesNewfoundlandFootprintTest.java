@@ -48,14 +48,14 @@ public class RogersCH_TC_012_IginteTV_TVPackagesNewfoundlandFootprintTest extend
 	        reporter.reportLogWithScreenshot("Skip popup");
 	        getRogersLoginPage().clkSkipIFrame();
 	        getRogersLoginPage().switchOutOfSignInIFrame();
-	        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.accountDetails.getBan());
+	        //getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.accountDetails.getBan());
 	    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
             reporter.reportLogWithScreenshot("Launched the Account Page");                
 	        getRogersSolarisTVDashboardPage().clkTVBadge();
 	        reporter.reportLogWithScreenshot("Launched the TV dash board");
 	        getRogersSolarisTVDashboardPage().clkChangeTVPackage();
 	        reporter.reportLogWithScreenshot("Launched the TV packages page");
-	        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyIgniteTVStarterPackage(),"Ignite TV Starter Package is available for the Ontario footprint","Ignite TV Starter Package is not available for the Ontario footprint");
+	        //reporter.softAssert(getRogersSolarisTVDashboardPage().verifyIgniteTVStarterPackage(),"Ignite TV Starter Package is available for the Ontario footprint","Ignite TV Starter Package is not available for the Ontario footprint");
 	        getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.accountDetails.getUpgradePlanEn(),TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.accountDetails.getUpgradePlanFr());
 	        getRogersSolarisTVDashboardPage().clkPopupChangeTVPackage();
 	        reporter.reportLogWithScreenshot("Launched the personalize channel page");

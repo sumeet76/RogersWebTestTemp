@@ -45,7 +45,7 @@ public class RogersCH_TC_020_IginteInternet_InternetBundleofferChangePackageUpgr
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc20_SolarisInternetAccountForUpgrade.accountDetails.getBan());
+        //getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc20_SolarisInternetAccountForUpgrade.accountDetails.getBan());
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersHomePage().clkExistingCustomerShop();
@@ -54,7 +54,8 @@ public class RogersCH_TC_020_IginteInternet_InternetBundleofferChangePackageUpgr
     	getRogersHomePage().clkServiceabilityMigration();
         reporter.reportLogWithScreenshot("Address confirmation popup has lanched to select Ignite Internet speed button"); 
         getRogersBuyPage().clkIgniteInternetSpeed();
-        reporter.reportLogWithScreenshot("Launched the TV packge Page"); 
+        reporter.reportLogWithScreenshot("Launched the TV packge Page");
+        getRogersInternetDashboardPage().clkInternetPopup();
         getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tc20_SolarisInternetAccountForUpgrade.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc20_SolarisInternetAccountForUpgrade.getAccountDetails().getUpgradePlanFr());
         getRogersInternetDashboardPage().clkInternetChangeOK();
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
