@@ -49,7 +49,7 @@ public class RogersCH_TC_013_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannel
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc13_SolarisChangeTVPackageAdd4KChannelsAndThemePack.accountDetails.getBan());
+        //getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc13_SolarisChangeTVPackageAdd4KChannelsAndThemePack.accountDetails.getBan());
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersSolarisTVDashboardPage().clkTVBadge();
@@ -61,12 +61,12 @@ public class RogersCH_TC_013_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannel
         reporter.reportLogWithScreenshot("Launched the personalize channel page");
         getRogersSolarisTVChannelsAndThemepacksPage().clkExchangeLater();
         reporter.reportLogWithScreenshot("Launched the channels and themepacks page");
-        getRogersSolarisTVChannelsAndThemepacksPage().searchChannel(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getSwapInChannelThree());
+         getRogersSolarisTVChannelsAndThemepacksPage().SelectChannelGenres(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.accountDetails.getSwapInChannelOne());
         getRogersSolarisTVChannelsAndThemepacksPage().addChannel();
         reporter.reportLogWithScreenshot("Channel added");
         getRogersSolarisTVChannelsAndThemepacksPage().clkThemePacks();
         reporter.reportLogWithScreenshot("Clicked on themepack tab");
-        getRogersSolarisTVChannelsAndThemepacksPage().addThemePacks();
+         getRogersSolarisTVChannelsAndThemepacksPage().clkAddButtonOnThemePackListOnManageChannelsAndThemePacks();
         reporter.reportLogWithScreenshot("ThemePack added");
         getRogersSolarisTVChannelsAndThemepacksPage().clkContinueOnExistingChannelAlertWindow();
         reporter.reportLogWithScreenshot("Clicked continue on existing channel alert window ");        

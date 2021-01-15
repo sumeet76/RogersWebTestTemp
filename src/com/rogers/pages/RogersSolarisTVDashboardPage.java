@@ -168,6 +168,10 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//h2[@class='all-channels__header']")
 	WebElement txtFlexChannels;
 	//h3[@class='copy-1 font-medium margin-0']
+
+	@FindBy(xpath = "//i[@class='li-loader']")
+	WebElement loaderTVDashboard;
+
 	
 	/**
 	 * Click on Reset Parental controls And Pin link
@@ -291,8 +295,11 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkChangeTVPackage() {
-		getReusableActionsInstance().waitForElementVisibility(btnChangeTVPackage,90);
-		getReusableActionsInstance().getWhenReady(btnChangeTVPackage, 30).click();
+		getReusableActionsInstance().staticWait(12000);
+		//getReusableActionsInstance().waitForElementInvisibility(loaderTVDashboard,90);
+		getReusableActionsInstance().waitForElementVisibility(btnChangeTVPackage,120);
+		getReusableActionsInstance().moveToElementAndClick(btnChangeTVPackage, 90);
+		//getReusableActionsInstance().getWhenReady(btnChangeTVPackage, 60).click();
 	}
 
 	/**

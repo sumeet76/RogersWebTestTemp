@@ -48,6 +48,7 @@ public class RogersCH_TC_022_IginteInternet_ValidateStandaloneInternetDashboardU
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersInternetDashboardPage().clkSolarisInternetBadge();
         reporter.reportLogWithScreenshot("Launched the Interent dashboard");
+        getRogersInternetDashboardPage().clkInternetPopup();
 		reporter.hardAssert(getRogersInternetDashboardPage().verifyInternet(), "Verified the Internet page", "Internet page verification failed");
 		reporter.hardAssert(getRogersInternetDashboardPage().verifyUsageAndAlerts(), "Usage and Alerts link present on the internet dash page", "Usage and Alerts link is not present on the internet page");
         getRogersInternetDashboardPage().clkInternetUsageAlerts();
