@@ -150,8 +150,17 @@ public class RogersHomePage extends BasePageClass {
 	//button[@class='a-btnPrimary']	
 	
 	@FindBy(xpath = "//span[@translate='global.targetedOffer.label.noContinueInternet']")
-	WebElement lnkOnlyInternet;		
-	
+	WebElement lnkOnlyInternet;
+
+	@FindBy(xpath = "//ul[@class='dds_o-navLinkList']//span[contains(text(),'ON')]")
+	WebElement lnkOptedON;
+
+	@FindBy(xpath = "//li[@id='province']//span[@class='dds_m-navLink__chevron rds-icon-expand']")
+	WebElement lnkProvince;
+
+	@FindBy(xpath = "//a[@class='dds_m-navLink -dropdownNavbar' and @id='ON']")
+	WebElement lnkProvinceON;
+
 	@FindBy(xpath = "//ngx-smart-modal[@id='loadingModal']")
 	WebElement popupLoadingFingersciam;
 	
@@ -325,7 +334,11 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkShop() {
-		getReusableActionsInstance().getWhenReady(btnShop, 30).click();
+		if(!getReusableActionsInstance().isElementVisible(lnkOptedON,30)){
+			getReusableActionsInstance().getWhenReady(lnkProvince,10).click();
+			getReusableActionsInstance().getWhenReady(lnkProvinceON,10).click();
+		}
+		getReusableActionsInstance().getWhenReady(btnShop, 20).click();
 	}
 	
 	/**
