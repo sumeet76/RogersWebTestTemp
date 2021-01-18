@@ -54,8 +54,7 @@ public class RogersSS_TC_95_AO_Validate_SuspendedCTNs_NSE_Legacy extends BaseTes
         		"Suspended CTN is avialable",
         		"Suspended CTN is not available");
         
-        getRogersAccountOverviewPage().clkSuspendedCTN();
-       
+        getRogersAccountOverviewPage().clkSuspendedCTN();     
         reporter.hardAssert(getRogersAccountOverviewPage().isSuspendedCTNAvailable(),
         		"User is unable to click and navigate through suspended CTN Badge",
         		"It seems the user was able to click on suspended CTN");
