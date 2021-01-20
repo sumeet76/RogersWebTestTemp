@@ -634,14 +634,22 @@ public class BaseTestClass {
                 captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 break;
 
+            case "redesignrogers":
             case "buyflows":
                 setImplicitWait(getDriver(), 10);
-                getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language);
-                captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
+                if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("NAC_BYOD")) {
+                    getDriver().get(strUrl + "/phones/bring-your-own-device?flowType=byod" + "?setLanguage=" + language);
+                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
+                }else if(currentTestMethodName.getName().toUpperCase().contains("NAC")){
+                    getDriver().get(strUrl + "/phones/" + "?setLanguage=" + language);
+                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
+                }else{
+                    getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language);
+                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
+                }
                 break;
 
             case "serviceability":
-            case "redesignrogers":
             case "buyflowsoneview":
                 setImplicitWait(getDriver(), 10);
                 getDriver().get(strUrl);
