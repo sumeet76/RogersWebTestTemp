@@ -1,81 +1,79 @@
 package com.rogers.pages;
 
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+public class RogersSmartStreamDashboardPage extends BasePageClass {
 
-import com.rogers.pages.base.BasePageClass;
-
-public class RogersSHMDashboardPage extends BasePageClass {
-
-	public RogersSHMDashboardPage(WebDriver driver) {
+	public RogersSmartStreamDashboardPage(WebDriver driver) {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//span[@translate='shm_title']")
-	WebElement titleSHMPage;
+	@FindBy(xpath = "//a[@href='/customer/support/article/using-voice-commands']")
+	WebElement lnkUsingVoiceCommands;
 	
-	@FindBy(xpath = "//span[@translate='shm_insur_cert']")
-	WebElement lnkInsuranceCertificate;
+	@FindBy(xpath = "//a[@href='/customer/support/article/using-apps-on-ignite-tv']")
+	WebElement lnkUsingAppsOnIgniteTv;
 	
-	@FindBy(xpath = "//span[@translate='shm_shop_accessories']")	
-	WebElement lnkShopForAccessories;
+	@FindBy(xpath = "//a[@href='/customer/support/article/ignite-tv-power-saver']")
+	WebElement lnkIgniteTvPowerSaver;
 	
-	@FindBy(xpath = "//span[@translate='shm_get_started']")
-	WebElement lnkNewToSmartHome;
+	@FindBy(xpath = "//a[@href='/customer/support/article/ignite-tv-error-codes']")
+	WebElement lnkIgniteTvErrorCodes;
 	
-	@FindBy(xpath = "//span[@translate='shm_learn_more']")
-	WebElement lnkLearnSmartHomeMonitoring;
+	@FindBy(xpath = "//a[@href='/consumer/support/tv/IgniteTV']")
+	WebElement lnkGoToSupportSection;
 
 
 	/**
-	 *Checks if the SHM dashboard is open successfully
+	 *Checks if SmartStream Using Voice Commands link is displayed
 	 * @return true if the page is open, else false
-	 * @author Mirza.Kamran
+	 * @author chinnarao.vattam
 	 */
-	public Boolean verifySHMDashBoardPageIsDisplayed() {
-		return getReusableActionsInstance().isElementVisible(titleSHMPage,60);
+	public Boolean verifyUsingVoiceCommandsLinkdisplayed() {
+		return getReusableActionsInstance().isElementVisible(lnkUsingVoiceCommands,60);
 	}
 	
 	/**
-	 * Verifies if the link Shop for accessories is displayed
+	 * Checks if SmartStream Using Apps On Ignite Tv link is displayed
 	 * @return true if the link is available else false
-	 * @author Mirza.Kamran
+	 * @author chinnarao.vattam
 	 */
-	public Boolean verifyShopForAccessoriesLinkdisplayed()
+	public Boolean verifyUsingAppsOnIgniteTvLinkdisplayed()
 	{
-		return getReusableActionsInstance().isElementVisible(lnkShopForAccessories,30);
+		return getReusableActionsInstance().isElementVisible(lnkUsingAppsOnIgniteTv,30);
 	}
 	
 	/**
-	 * Verifies if the link New to smart home get started is displayed
+	 * Checks if SmartStream Ignite Tv Power Saver link is displayed
 	 * @return true if the link is available else false
-	 * @author Mirza.Kamran
+	 * @author chinnarao.vattam
 	 */
-	public Boolean verifyNewToSmartHomeLinkdisplayed()
+	public Boolean verifyIgniteTvPowerSaverLinkdisplayed()
 	{
-		return getReusableActionsInstance().isElementVisible(lnkNewToSmartHome,10);
+		return getReusableActionsInstance().isElementVisible(lnkIgniteTvPowerSaver,10);
 	}
 	
 	/**
-	 * Verifies if the link Inurance Certificate is displayed
+	 * Checks if SmartStream Ignite Tv Error Codes link is displayed
 	 * @return true if the link is available else false
-	 * @author Mirza.Kamran
+	 * @author chinnarao.vattam
 	 */
-	public Boolean verifyLearnAboutSmartHomeMonitoringLinkdisplayed()
+	public Boolean verifyIgniteTvErrorCodesLinkdisplayed()
 	{
-		return getReusableActionsInstance().isElementVisible(lnkLearnSmartHomeMonitoring,10);
+		return getReusableActionsInstance().isElementVisible(lnkIgniteTvErrorCodes,10);
 	}
 	
 	/**
-	 * Verifies if the link Insurance Certificate is displayed
+	 * Checks if SmartStream Go To Support Section link is displayed
 	 * @return true if the link is available else false
-	 * @author Mirza.Kamran
+	 * @author chinnarao.vattam
 	 */
-	public Boolean verifyInsuranceCertificateLinkdisplayed()
+	public Boolean verifyGoToSupportSectionLinkdisplayed()
 	{
-		return getReusableActionsInstance().isElementVisible(lnkInsuranceCertificate,10);
+		return getReusableActionsInstance().isElementVisible(lnkGoToSupportSection,10);
 	}
 	
 	

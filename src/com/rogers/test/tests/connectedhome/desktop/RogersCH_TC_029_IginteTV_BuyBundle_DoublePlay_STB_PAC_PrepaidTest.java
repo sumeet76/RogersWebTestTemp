@@ -1,6 +1,8 @@
 package com.rogers.test.tests.connectedhome.desktop;
+
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
+import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
@@ -50,21 +52,21 @@ public class RogersCH_TC_029_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest e
     @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
 	public void checkDoublePalyTVOffer() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-    	/*getRogersHomePage().clkTVBundle();*/
+    	getRogersHomePage().clkTVBundle();
     	
-        /*reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
+        reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
        	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	getRogersHomePage().clkServiceability();
-    	reporter.reportLogWithScreenshot("Launched the customer availability check popup");*/
+    	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
     	//getRogersHomePage().clkAddressCheck();
-/*    	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
+    	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+        String  strAddressLine1= TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");*/
-        /*getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
+        getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
         getRogersIgniteTVBuyPage().set4KTV();
@@ -128,7 +130,7 @@ public class RogersCH_TC_029_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest e
         getRogersOrderReviewPage().clkSubmit();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");      
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");*/
+        reporter.reportLogWithScreenshot("Launched the Confirmation page");
     }
 	
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

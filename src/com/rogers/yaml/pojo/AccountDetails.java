@@ -50,6 +50,7 @@ public class AccountDetails {
 	private String dob;
 	private String  imei;
 	private String flexChannelsCount;
+	private String totalChannelsCount;
 	
 	public String getRhmPackageEn() {
 		return rhmPackageEn;
@@ -576,5 +577,18 @@ public class AccountDetails {
 		this.flexChannelsCount = flexChannelsCount;
 	}
 
+	/**
+	 * @return the TotalChannelsCount
+	 */
+	public String getTotalChannelsCount() {
+		return totalChannelsCount;
+	}
+
+	/**
+	 * @param totalChannelsCount the TotalChannelsCount to set
+	 */
+	public void setTotalChannelsCount(String totalChannelsCount) {
+		this.totalChannelsCount = totalChannelsCount;
+	}
 
 }

@@ -138,6 +138,7 @@ public class BaseTestClass {
     protected static final ThreadLocal<RogersOVChannelsAndThemePacksPage> RogersOVChannelsAndThemePacksPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<HomePhoneAddonsPage> HomePhoneAddonsPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersSHMDashboardPage> RogersSHMDashboardPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<RogersSmartStreamDashboardPage> RogersSmartStreamDashboardPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<com.rogers.oneview.pages.RogersWirelessDetailsPage> RogersOVWirelessDetailsPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersOVChangeSharePlanPage> RogersOVChangeSharePlanPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<com.rogers.oneview.pages.RogersChoosePhonePage> RogersOVChoosePhonePageThreadLocal = new ThreadLocal<>();
@@ -478,6 +479,10 @@ public class BaseTestClass {
         return RogersSHMDashboardPageThreadLocal.get();
     }
 
+    public static RogersSmartStreamDashboardPage getRogersSmartStreamDashboardPage() {
+        return RogersSmartStreamDashboardPageThreadLocal.get();
+    }
+
     public static com.rogers.oneview.pages.RogersWirelessDetailsPage getRogersOVWirelessDetailsPage() {
         return RogersOVWirelessDetailsPageThreadLocal.get();
     }
@@ -803,6 +808,7 @@ public class BaseTestClass {
                 RogersDigitalTVDashboardPageThreadLocal.set(new RogersDigitalTVDashboardPage(getDriver()));
                 RogersAccountOverviewPageThreadLocal.set(new RogersAccountOverviewPage(getDriver()));
                 RogersSHMDashboardPageThreadLocal.set(new RogersSHMDashboardPage(getDriver()));
+                RogersSmartStreamDashboardPageThreadLocal.set(new RogersSmartStreamDashboardPage(getDriver()));
                 break;
 
             case "connectedhome_legacyanonymous":

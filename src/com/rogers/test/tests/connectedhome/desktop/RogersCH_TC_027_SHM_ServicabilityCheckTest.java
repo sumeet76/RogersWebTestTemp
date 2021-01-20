@@ -1,4 +1,5 @@
 package com.rogers.test.tests.connectedhome.desktop;
+
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
