@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  * TC02 - Regression - [RNAC TERM] - Perform Rogers Net New Activation - TERM with Standard Shipping(No Term plan)_E2E
  */
 
-public class RogersBFA_TC02_NAC_NoTermPotgSSTest extends BaseTestClass {
+public class RogersBFA_TC02_NAC_NoTermStandardShippingTest extends BaseTestClass {
 	String deviceName;
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
@@ -25,7 +25,7 @@ public class RogersBFA_TC02_NAC_NoTermPotgSSTest extends BaseTestClass {
 	}
 
 	@Test(groups = {"RegressionBFA","SanityBFA","NACBFA"})
-	public void rogersNACNoTermPotgSSTest() throws InterruptedException {
+	public void rogersNACNoTermStandardShippingTest() throws InterruptedException {
 
 		// **************************Device catalog page*****************************************
 
@@ -36,13 +36,13 @@ public class RogersBFA_TC02_NAC_NoTermPotgSSTest extends BaseTestClass {
 		getRogersDeviceCataloguePage().clickCloseButtonOnModal();
 		getRogersDeviceCataloguePage().clickCheckEligibilityRpotgBanner();
 		reporter.reportLogPassWithScreenshot("RPOTG Check Eligibility Banner");
-		getRogersDeviceCataloguePage().validateRpotgPostalCode(TestDataHandler.tc02NACNoTermPotgSS.getPostalCode());
+		getRogersDeviceCataloguePage().validateRpotgPostalCode(TestDataHandler.tc02NACNoTermStandardShipping.getPostalCode());
 		getRogersDeviceCataloguePage().clickCheckBtn();
 		reporter.reportLogPassWithScreenshot("RPOTG: Postal Code & Check Eligibility Success");
 		getRogersDeviceCataloguePage().clickContinueBtn();
 		String postalCode = getRogersDeviceCataloguePage().verifyeligiblePostalCodeinBanner();
-		reporter.hardAssert(postalCode.contains(TestDataHandler.tc02NACNoTermPotgSS.getPostalCode()), "RPOTG Banner has the eligible postal code displayed", "RPOTG Banner not displayed in banner");
-		String deviceName = TestDataHandler.tc02NACNoTermPotgSS.getDeviceName();
+		reporter.hardAssert(postalCode.contains(TestDataHandler.tc02NACNoTermStandardShipping.getPostalCode()), "RPOTG Banner has the eligible postal code displayed", "RPOTG Banner not displayed in banner");
+		String deviceName = TestDataHandler.tc02NACNoTermStandardShipping.getDeviceName();
 		getRogersDeviceCataloguePage().clickDeviceTileCTAButton(deviceName);
 		reporter.softAssert(getRogersDeviceCataloguePage().isModalDisplayed(), "Modal element is present on the screen", "Modal element is not present on the screen");
 		reporter.softAssert(getRogersDeviceCataloguePage().verifyGetStartedButtonOnModal(), "Get started button on the modal is present", "Get started button on the modal is not present");
@@ -51,8 +51,8 @@ public class RogersBFA_TC02_NAC_NoTermPotgSSTest extends BaseTestClass {
 
 		// ***************************Device config page************************************
 		System.out.println(getRogersDeviceConfigPage().verifyeligiblePostalCodeinBanner());
-		System.out.println(TestDataHandler.tc02NACNoTermPotgSS.getPostalCode());
-		reporter.softAssert(getRogersDeviceConfigPage().verifyeligiblePostalCodeinBanner().contains(TestDataHandler.tc02NACNoTermPotgSS.getPostalCode()),
+		System.out.println(TestDataHandler.tc02NACNoTermStandardShipping.getPostalCode());
+		reporter.softAssert(getRogersDeviceConfigPage().verifyeligiblePostalCodeinBanner().contains(TestDataHandler.tc02NACNoTermStandardShipping.getPostalCode()),
 				"Eligible postal code verified in Device Catalog page Banner is carried on to Device Config Page Banner as expected", "Postal Code not matching");
 		String rpotgLabelDeviceConfig = getRogersDeviceConfigPage().getRpotgLabelDeviceConfigPage();
 		reporter.reportLogWithScreenshot("RPOTG Promo Label and subcopy verified in Device Config Page as" + "-->" + rpotgLabelDeviceConfig);
@@ -74,13 +74,14 @@ public class RogersBFA_TC02_NAC_NoTermPotgSSTest extends BaseTestClass {
 		getRogersDeviceConfigPage().clickContinueButton();
 		// ****************************Plan config// page***************************************
 		System.out.print(getRogersPlanConfigPage().verifyeligiblePostalCodeinBanner());
-		System.out.println(TestDataHandler.tc02NACNoTermPotgSS.getPostalCode());
-		reporter.softAssert(getRogersPlanConfigPage().verifyeligiblePostalCodeinBanner().contains(TestDataHandler.tc02NACNoTermPotgSS.getPostalCode()),
+		System.out.println(TestDataHandler.tc02NACNoTermStandardShipping.getPostalCode());
+		reporter.softAssert(getRogersPlanConfigPage().verifyeligiblePostalCodeinBanner().contains(TestDataHandler.tc02NACNoTermStandardShipping.getPostalCode()),
 				"Eligible postal code verified in Device Catalog & Device Config page POTG Banner is carried on to Plan Config Page Banner as expected",
 				"Postal code not matching in Plan Config page");
 		String rpotgLabelPlanConfig = getRogersPlanConfigPage().getRpotgLabelPlanConfigPage();
 		reporter.reportLogWithScreenshot("RPOTG Label and subcopy verified in Plan Config Page verified as" + "--->" + rpotgLabelPlanConfig);
 		reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName), "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
+		getRogersPlanConfigPage().selectNoTermDeviceDeviceCost();
 		getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
 		getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
@@ -114,10 +115,10 @@ public class RogersBFA_TC02_NAC_NoTermPotgSSTest extends BaseTestClass {
 //		String firstName = getRogersCheckoutPage().setFirstNameCreateProfilepage("smisamvulamani");
 //		String lastName = getRogersCheckoutPage().setLastNameCreateProfilepage("marichale");
 		String fullNameCreateProfile = firstName + " " + lastName;
-		String contactNumberCreateProfile = TestDataHandler.tc02NACNoTermPotgSS.getContactNumber();
+		String contactNumberCreateProfile = TestDataHandler.tc02NACNoTermStandardShipping.getContactNumber();
 		getRogersCheckoutPage().setContactNumberCreateProfile(contactNumberCreateProfile);
 		reporter.reportLogPassWithScreenshot("Create Profile Page details Entered till ContactNumber");
-		String billingAddressCreateProfile = TestDataHandler.tc02NACNoTermPotgSS.getBillingAddress();
+		String billingAddressCreateProfile = TestDataHandler.tc02NACNoTermStandardShipping.getBillingAddress();
 		getRogersCheckoutPage().setBillingAddressCreateProfile(billingAddressCreateProfile);
 		getRogersCheckoutPage().getRpotgSuccessMessage();
 		reporter.reportLogPassWithScreenshot(
@@ -133,16 +134,16 @@ public class RogersBFA_TC02_NAC_NoTermPotgSSTest extends BaseTestClass {
 
 		// ***************Credit Evaluation Stepper***********//
 		reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(), "CreditEvaluation Title verified", "CreditEvaluation Title not present");
-		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc02NACNoTermPotgSS.getDateOfBirthYear());
-		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc02NACNoTermPotgSS.getDateOfBirthMonth());
-		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc02NACNoTermPotgSS.getDateOfBirthDay());
+		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc02NACNoTermStandardShipping.getDateOfBirthYear());
+		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc02NACNoTermStandardShipping.getDateOfBirthMonth());
+		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc02NACNoTermStandardShipping.getDateOfBirthDay());
 		getRogersCheckoutPage().switchToCreditCardIFrame();
-		getRogersCheckoutPage().setCreditCardNumberIFrame(TestDataHandler.tc02NACNoTermPotgSS.getCreditCardDetails());
+		getRogersCheckoutPage().setCreditCardNumberIFrame(TestDataHandler.tc02NACNoTermStandardShipping.getCreditCardDetails());
 		reporter.reportLogPassWithScreenshot("DOB & Credit Card Details Entered Successfully");
 		getRogersCheckoutPage().switchOutOfCreditCardIFrame();
-		getRogersCheckoutPage().setExpiryDate(TestDataHandler.tc02NACNoTermPotgSS.getExpiryDate());
-		getRogersCheckoutPage().selectDropdownOption(TestDataHandler.tc02NACNoTermPotgSS.getDropdownOption());
-		getRogersCheckoutPage().setPassportNumber(TestDataHandler.tc02NACNoTermPotgSS.getPassportNumber());
+		getRogersCheckoutPage().setExpiryDate(TestDataHandler.tc02NACNoTermStandardShipping.getExpiryDate());
+		getRogersCheckoutPage().selectDropdownOption(TestDataHandler.tc02NACNoTermStandardShipping.getDropdownOption());
+		getRogersCheckoutPage().setPassportNumber(TestDataHandler.tc02NACNoTermStandardShipping.getPassportNumber());
 		reporter.reportLogPassWithScreenshot("PassportNumber Entered Successfully");
 		getRogersCheckoutPage().clkCreditAuthorizationChkBox();
 		getRogersCheckoutPage().clkCreditEvalContinue();
@@ -156,7 +157,7 @@ public class RogersBFA_TC02_NAC_NoTermPotgSSTest extends BaseTestClass {
 		// ***************Choose a Number Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed", "Choose a Number Title not disaplayed");
 		reporter.softAssert(getRogersCheckoutPage().isChooseNumberTabsDisplayed(), "Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
-		getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc02NACNoTermPotgSS.getCityName());
+		getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc02NACNoTermStandardShipping.getCityName());
 		reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
 		getRogersCheckoutPage().clkChosePhoneNumber();
 		reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
@@ -166,7 +167,7 @@ public class RogersBFA_TC02_NAC_NoTermPotgSSTest extends BaseTestClass {
 		// ***************Billing & Payment Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(), "Billing Options Title Displayed", "Billing Options Title Not Present");
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not disaplayed");
-		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc02NACNoTermPotgSS.getPaymentMethod());
+		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc02NACNoTermStandardShipping.getPaymentMethod());
 		getRogersCheckoutPage().clkBillingContinueButton();
 
 		// ***************Shipping Stepper*************//
@@ -208,9 +209,9 @@ public class RogersBFA_TC02_NAC_NoTermPotgSSTest extends BaseTestClass {
 				"Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
 		getRogersOneTimePaymentPage().setNameonCard();
 		getRogersOneTimePaymentPage().switchToCreditCardIFrame();
-		getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc02NACNoTermPotgSS.getCreditCardDetailsOTP());
+		getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc02NACNoTermStandardShipping.getCreditCardDetailsOTP());
 		getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
-		getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc02NACNoTermPotgSS.getExpiryDateOTP());
+		getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc02NACNoTermStandardShipping.getExpiryDateOTP());
 		getRogersOneTimePaymentPage().setCVV();
 		reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
 		getRogersOneTimePaymentPage().clkSubmitOrderBtn();

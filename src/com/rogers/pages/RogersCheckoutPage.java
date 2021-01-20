@@ -1005,7 +1005,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	public void clkContinueBtnShipping() {
 		//wait.until(ExpectedConditions.elementToBeClickable(continueBtnShipping));
         //getReusableActionsInstance().javascriptScrollByVisibleElement(continueBtnShipping);
-		getReusableActionsInstance().clickWhenVisible(continueBtnShipping, 30);
+		getReusableActionsInstance().clickWhenReady(continueBtnShipping, 30);
 	}
 
 	/**

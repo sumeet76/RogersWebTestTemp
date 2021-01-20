@@ -99,9 +99,9 @@ public class TestDataHandler {
 	public static AccountData solarisConsumerGWPRhpShm;
 	public static AccountData solarisHTOMigrationSignIn;
 	public static RedesignRpotgData tc01NACTermNpotgSS;
-	public static RedesignRpotgData tc02NACNoTermPotgSS;
-	public static RedesignRpotgData tc03NACTermPotgBopis;
-	public static RedesignRpotgData tc04NACNoTermRpotgBopis;
+	public static RedesignRpotgData tc02NACNoTermStandardShipping;
+	public static RedesignRpotgData tc03NACTermPotgShipping;
+	public static RedesignRpotgData tc04NACTermBopis;
 	public static RedesignRpotgData tc05NACByodSS;
 	public static RedesignRpotgData tc06NACByodTermBopis;
 	public static AALData tc07AAL;
@@ -337,9 +337,9 @@ public class TestDataHandler {
 		bfaConfig =  YamlHandler.getBFAConfig();
 		bfaPaymentInfo = YamlHandler.getBFAPaymentDetails();
 		tc01NACTermNpotgSS=YamlHandler.getRedesignNACData("tc01NACTermNpotgSS");
-		tc02NACNoTermPotgSS=YamlHandler.getRedesignNACData("tc02NACNoTermPotgSS");
-		tc03NACTermPotgBopis = YamlHandler.getRedesignNACData("tc03NACTermPotgBopis");
-		tc04NACNoTermRpotgBopis = YamlHandler.getRedesignNACData("tc04NACNoTermRpotgBopis");
+		tc02NACNoTermStandardShipping=YamlHandler.getRedesignNACData("tc02NACNoTermStandardShipping");
+		tc03NACTermPotgShipping = YamlHandler.getRedesignNACData("tc03NACTermPotgShipping");
+		tc04NACTermBopis = YamlHandler.getRedesignNACData("tc04NACTermBopis");
 		tc05NACByodSS = YamlHandler.getRedesignNACData("tc05NACByodSS");
 		tc06NACByodTermBopis = YamlHandler.getRedesignNACData("tc06NACByodTermBopis");
 		tc07AAL = YamlHandler.getAALdata("tc07AAL");
