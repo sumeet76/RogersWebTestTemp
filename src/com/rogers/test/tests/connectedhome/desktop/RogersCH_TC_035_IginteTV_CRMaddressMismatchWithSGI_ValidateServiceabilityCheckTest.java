@@ -15,34 +15,18 @@ import java.lang.reflect.Method;
  * @author chinnarao.vattam
  * 
  * Test steps:
- *
- *1. Launch Rogers.com
- *2. Browse to Shop menu and select Ignite TV option
- *3. Scroll down to Ignite TV bundlessection and select one of available Bundle, click Add to Cart
- *4. Enter home address to validate the serviceability and click on Check Availability
- *5. Click on Continue
- *6. Click "No thanks Continue"
- *7. Click on Continue in Home phone add ons page
- *8. Select one option for   'Do you have a 4K TV'
- *9. Click checkout button on cart summary page.
- *10. Enter all personal information on user profile creation page - 1) Profile step
- *11. Click on Continue
- *12. In 2) Credit Evaluation page, enter the required info on Credit Check:
- *13. Click Submit
- *14. Enter 1 or 2 numbers in Choose a phone Number textbox and click on Generate numbers
- *15. Select any one phone number
- *16. Make sure Caller ID and Directory listing fields are populated
- *17. Click on Continue
- *18. Validate minicart
- *19. Select a time in Choose your Date and Time 
- *20. Enter any valid Mobile number and email address
- *21. Click on Confirm
- *22. Select Pre-Authorized credit card option from type of payment dropdown
- *23. Enter valid Credit Card number details in Credit Card related fields
- *24. Click on Continue
- *25. Validate appropriate information is displayed in Review order page
- *26. Scroll down all the way down in Agreement field and select "I have read understood….." checkbox
- *27. Click on Submit
+ * Browse Rogers.com in QA
+ * Click on Shop-> TV Bundles
+ * Click on See available Ignite Bundles
+ * Enter Address_2 in serviceability modal and click on check address
+ * Select any Bundle and add to cart
+ * Click on No I don’t have a Ignite TV and Click on Checkout
+ * In the Profile page Enter the details as per the RCIS rule sheet for Medium risk class with Different address (Row 74-77) to simulate Medium Risk class scenario.Email ID and Contact number should be used different as the one with which we created the account in RCIS for address_1 to simulate failed verification. Billing address should be same as serviceable address. Click on Proceed once we fill all the details
+ * In Credit evaluation page enter the same details which were used for creating Address_1 account in RCIS, also follow the RCIS rule sheet same as above to have the correct details respective to that to simulate Medium Risk Class and Click on Continue
+ * Clicking on Cancel and X button should take you back to credit Eval page
+ * As the Address retry is set to 2 , in the first retry enter any other address except Address_1 of the account which we created in RCIS and click on Proceed in the new modal
+ * In the 2nd retry enter the same address of the account which we created in RCIS i.e Address_1 and click on Proceed
+ * Select the required details in Fulfillment page to complete the E2E flow
  *
  **/
 

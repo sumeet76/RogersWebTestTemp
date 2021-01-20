@@ -138,6 +138,7 @@ public class BaseTestClass {
     protected static final ThreadLocal<RogersOVChannelsAndThemePacksPage> RogersOVChannelsAndThemePacksPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<HomePhoneAddonsPage> HomePhoneAddonsPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersSHMDashboardPage> RogersSHMDashboardPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<RogersSmartStreamDashboardPage> RogersSmartStreamDashboardPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<com.rogers.oneview.pages.RogersWirelessDetailsPage> RogersOVWirelessDetailsPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersOVChangeSharePlanPage> RogersOVChangeSharePlanPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<com.rogers.oneview.pages.RogersChoosePhonePage> RogersOVChoosePhonePageThreadLocal = new ThreadLocal<>();
@@ -478,6 +479,10 @@ public class BaseTestClass {
         return RogersSHMDashboardPageThreadLocal.get();
     }
 
+    public static RogersSmartStreamDashboardPage getRogersSmartStreamDashboardPage() {
+        return RogersSmartStreamDashboardPageThreadLocal.get();
+    }
+
     public static com.rogers.oneview.pages.RogersWirelessDetailsPage getRogersOVWirelessDetailsPage() {
         return RogersOVWirelessDetailsPageThreadLocal.get();
     }
@@ -634,14 +639,22 @@ public class BaseTestClass {
                 captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 break;
 
+            case "redesignrogers":
             case "buyflows":
                 setImplicitWait(getDriver(), 10);
-                getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language);
-                captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
+                if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("NAC_BYOD")) {
+                    getDriver().get(strUrl + "/phones/bring-your-own-device?flowType=byod" + "?setLanguage=" + language);
+                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
+                }else if(currentTestMethodName.getName().toUpperCase().contains("NAC")){
+                    getDriver().get(strUrl + "/phones/" + "?setLanguage=" + language);
+                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
+                }else{
+                    getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language);
+                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
+                }
                 break;
 
             case "serviceability":
-            case "redesignrogers":
             case "buyflowsoneview":
                 setImplicitWait(getDriver(), 10);
                 getDriver().get(strUrl);
@@ -795,6 +808,7 @@ public class BaseTestClass {
                 RogersDigitalTVDashboardPageThreadLocal.set(new RogersDigitalTVDashboardPage(getDriver()));
                 RogersAccountOverviewPageThreadLocal.set(new RogersAccountOverviewPage(getDriver()));
                 RogersSHMDashboardPageThreadLocal.set(new RogersSHMDashboardPage(getDriver()));
+                RogersSmartStreamDashboardPageThreadLocal.set(new RogersSmartStreamDashboardPage(getDriver()));
                 break;
 
             case "connectedhome_legacyanonymous":

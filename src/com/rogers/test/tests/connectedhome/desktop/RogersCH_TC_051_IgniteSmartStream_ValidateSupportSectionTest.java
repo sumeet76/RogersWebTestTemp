@@ -17,18 +17,24 @@ import java.lang.reflect.Method;
  * @author chinnarao.vattam
  * 
  * Test steps:
- *
- *1. Launch the Rogers.com url.
- *2. Login with valid credentials.
- *3. Click on the Homephone badge.
+ * Launch Rogers.com
+ * Click sign in in rogers homepage
+ * Login with valid credentials
+ * Click smart stream badge in account overview page
+ * Validate hyperlinks under Support section in dashboard footer displayed with below order and redirect to the respective URL's
+   1.Introducing Ignite SmartStream
+   2.How to use voice commands on Ignite SmartStream
+   3.How to rent or buy on Ignite SmartStream
+   4.Ignite SmartStream Error Codes
+   5.Go to support section
  *
  **/
 
 
 public class RogersCH_TC_051_IgniteSmartStream_ValidateSupportSectionTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","RhpAndRhmCH"})
-    public void checkSolarisRHPDasboard() {
+	@Test(groups = {"RegressionCH","New"})
+    public void checkIgniteSmartStreamDasboard() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
 		getRogersLoginPage().switchToSignInIFrame();
@@ -45,7 +51,17 @@ public class RogersCH_TC_051_IgniteSmartStream_ValidateSupportSectionTest extend
  	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc51_igniteSmartStream.accountDetails.getBan());
  		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersAccountOverviewPage().clkSmartStream();
-        reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");        
+		reporter.reportLogWithScreenshot("SmartStream dashboard page");
+		reporter.softAssert(getRogersSmartStreamDashboardPage().verifyUsingVoiceCommandsLinkdisplayed(),
+				"SmartStream Using Voice Commands Links displayed", "SmartStream Using Voice Commands Links not displayed correctly please investigate");
+		reporter.softAssert(getRogersSmartStreamDashboardPage().verifyUsingAppsOnIgniteTvLinkdisplayed(),
+				"SmartStream Using Apps On Ignite Tv Links displayed", "SmartStream Using Apps On Ignite Tv Links not displayed correctly please investigate");
+		reporter.softAssert(getRogersSmartStreamDashboardPage().verifyIgniteTvPowerSaverLinkdisplayed(),
+				"SmartStream Ignite Tv Power Saver Links displayed", "SmartStream Ignite Tv Power Saver Links not displayed correctly please investigate");
+		reporter.softAssert( getRogersSmartStreamDashboardPage().verifyIgniteTvErrorCodesLinkdisplayed(),
+				"SmartStream Ignite Tv Error Codes Links displayed", "SmartStream Ignite Tv Error Codes Links not displayed correctly please investigate");
+		reporter.softAssert( getRogersSmartStreamDashboardPage().verifyGoToSupportSectionLinkdisplayed(),
+				"SmartStream Go To Support Section Links displayed", "SmartStream Go To Support Section Links not displayed correctly please investigate");
 
     	}
 

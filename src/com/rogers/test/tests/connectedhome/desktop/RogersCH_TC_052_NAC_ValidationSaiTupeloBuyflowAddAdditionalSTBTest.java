@@ -16,18 +16,24 @@ import java.lang.reflect.Method;
  * @author chinnarao.vattam
  * 
  * Test steps:
- *
- *1. Launch Rogers.com
- *2. Browser to Shop menu and select Bundle option
- *3. Scroll down to  Bundles section and click on How to Get it button for a Bundle
- *4. Enter home address to validate the serviceability and click on Check button
- *5. Verify the customer care contact popup
+ * 1.Launch Rogers SAI Tupelo URL in QA Env and click on get it now and enter address and click on continue
+ * 2. Click on continue
+ * 3. Choose Internet, SmartStream checkbox and click on Load offers
+ * 4. Add 1 STB and click on Add to cart
+ * 5. Click on Continue
+ * 6. Click on Checkout
+ * 7. Click on Yes, continue
+ * 8. Click on Continue
+ * 9. Enter DOB, valid ID details and click on continue
+ * 10. Choose Installation type as enhanced self install and click on continue
+ * 11. Click on Continue
+ * 12. Click on Submit
  *
  **/
 
 public class RogersCH_TC_052_NAC_ValidationSaiTupeloBuyflowAddAdditionalSTBTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","saiCH"})
+	@Test(groups = {"RegressionCH","New"})
     public void checkBuyStandAloneInternetOffer() throws InterruptedException {
     	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
     	getRogersHomePage().clkEasyInternet();
