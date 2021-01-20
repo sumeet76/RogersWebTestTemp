@@ -13,16 +13,16 @@ package com.rogers.test.tests.buyflows;
 /**
  * TC14 - Regression - HUP-E2E-SL Shared(Fin)-Validate the HUP by selecting Keep current plan _Chrome_EN_ON
  */
-public class RogersBFA_TC14_HUPShareEveryThingKeepCurrentPlanTermML_Test extends BaseTestClass{
+public class RogersBFA_TC14_HUPShareKeepCurrentPlanTermML_Test extends BaseTestClass{
 
     @Test(groups = {"RegressionBFA","SanityBFA","HUPBFA"})
-    public void rogersHUPShareEveryThingKeepCurrentPlanTermMLTest() {
+    public void rogersHUPShareKeepCurrentPlanTermMLTest() {
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
         getRogersHomePage().clkSignIn();
         getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc14HUPShareEveryThingKeepCurrentPlanTermML.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc14HUPShareEveryThingKeepCurrentPlanTermML.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc14HUPShareKeepCurrentPlanTermML.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc14HUPShareKeepCurrentPlanTermML.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
@@ -31,7 +31,7 @@ public class RogersBFA_TC14_HUPShareEveryThingKeepCurrentPlanTermML_Test extends
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page");
         getDriver().get(System.getProperty("AWSUrl"));
-        String deviceName = TestDataHandler.tc14HUPShareEveryThingKeepCurrentPlanTermML.getDeviceName();
+        String deviceName = TestDataHandler.tc14HUPShareKeepCurrentPlanTermML.getDeviceName();
         reporter.hardAssert(getRogersDeviceCataloguePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
         getRogersDeviceCataloguePage().clickDeviceTileCTAButton(deviceName);
         reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed(), "Modal element is present on the screen",
@@ -40,7 +40,7 @@ public class RogersBFA_TC14_HUPShareEveryThingKeepCurrentPlanTermML_Test extends
         reporter.reportLogWithScreenshot("Upgrade button clicked on Modal window Popup");
         getRogersDeviceCataloguePage().isModalDisplayed();
         reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
-        getRogersDeviceCataloguePage().selectCTN(TestDataHandler.tc14HUPShareEveryThingKeepCurrentPlanTermML.getCtn());
+        getRogersDeviceCataloguePage().selectCTN(TestDataHandler.tc14HUPShareKeepCurrentPlanTermML.getCtn());
         getRogersDeviceCataloguePage().clickContinueBtn();
         reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
                 "Continue button on the device config page is present",

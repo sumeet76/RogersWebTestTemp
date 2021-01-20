@@ -643,13 +643,13 @@ public class BaseTestClass {
             case "buyflows":
                 setImplicitWait(getDriver(), 10);
                 if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("NAC_BYOD")) {
-                    getDriver().get(strUrl + "/phones/bring-your-own-device?flowType=byod" + "?setLanguage=" + language);
+                    getDriver().get(strUrl + "/phones/bring-your-own-device?flowType=byod" + "?setLanguage=" + language + "&?province=" + "ON");
                     captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
-                }else if(currentTestMethodName.getName().toUpperCase().contains("NAC")){
-                    getDriver().get(strUrl + "/phones/" + "?setLanguage=" + language);
+                }else if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("NAC") || currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("_CT_")){
+                    getDriver().get(strUrl + "/phones/" + "?setLanguage=" + language + "&?province=" + "ON");
                     captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 }else{
-                    getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language);
+                    getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language + "&?province=" + "ON");
                     captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 }
                 break;

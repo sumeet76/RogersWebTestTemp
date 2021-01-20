@@ -106,14 +106,14 @@ public class TestDataHandler {
 	public static RedesignRpotgData tc06NACByodTermBopis;
 	public static AALData tc07AAL;
 	public static PPCData tc08PPC;
-	public static HUPData tc09HUPPotgSL;
+	public static HUPData tc09HupPpcPotgSharedML;
 	public static HUPData tc10HUPAdditionalLine;
-	public static HUPData tc11HUPNpotgSL;
-	public static HUPData tc12HUPNonShareNoTermML;
-	public static HUPData tc13HUPShareEveryThingKeepCurrentPlanNoTermML;
-	public static HUPData tc14HUPShareEveryThingKeepCurrentPlanTermML;
-	public static HUPData tc15HUPNonShareKeepCurrentPlanML;
-	public static HUPData tc16HUPNonShareTermBopisSL;
+	public static HUPData tc11HUPNpotgML;
+	public static HUPData tc12HUPNonShareNoTermSL;
+	public static HUPData tc13HUPShareNoTermSL;
+	public static HUPData tc14HUPShareKeepCurrentPlanTermML;
+	public static HUPData tc15HUPNonShareKeepCurrentPlanSL;
+	public static HUPData tc16HUPShareTermBopisML;
 	public static HUPData buyFlowsOVtestCase01;
 	public static HUPData buyFlowsOVtestCase02;
 	public static HUPData buyFlowsOVtestCase05;
@@ -344,14 +344,14 @@ public class TestDataHandler {
 		tc06NACByodTermBopis = YamlHandler.getRedesignNACData("tc06NACByodTermBopis");
 		tc07AAL = YamlHandler.getAALdata("tc07AAL");
 		tc08PPC = YamlHandler.getPPCdata("tc08PPC");
-		tc09HUPPotgSL = YamlHandler.getHUPdata("tc09HUPPotgSL");
+		tc09HupPpcPotgSharedML = YamlHandler.getHUPdata("tc09HupPpcPotgSharedML");
 		tc10HUPAdditionalLine = YamlHandler.getHUPdata("tc10HUPAdditionalLine");
-		tc11HUPNpotgSL = YamlHandler.getHUPdata("tc11HUPNpotgSL");
-		tc12HUPNonShareNoTermML = YamlHandler.getHUPdata("tc12HUPNonShareNoTermML");
-		tc13HUPShareEveryThingKeepCurrentPlanNoTermML = YamlHandler.getHUPdata("tc13HUPShareEveryThingKeepCurrentPlanNoTermML");
-		tc14HUPShareEveryThingKeepCurrentPlanTermML = YamlHandler.getHUPdata("tc14HUPShareEveryThingKeepCurrentPlanTermML");
-		tc15HUPNonShareKeepCurrentPlanML = YamlHandler.getHUPdata("tc15HUPNonShareKeepCurrentPlanML");
-		tc16HUPNonShareTermBopisSL = YamlHandler.getHUPdata("tc16HUPNonShareTermBopisSL");
+		tc11HUPNpotgML = YamlHandler.getHUPdata("tc11HUPNpotgML");
+		tc12HUPNonShareNoTermSL = YamlHandler.getHUPdata("tc12HUPNonShareNoTermSL");
+		tc13HUPShareNoTermSL = YamlHandler.getHUPdata("tc13HUPShareNoTermSL");
+		tc14HUPShareKeepCurrentPlanTermML = YamlHandler.getHUPdata("tc14HUPShareKeepCurrentPlanTermML");
+		tc15HUPNonShareKeepCurrentPlanSL = YamlHandler.getHUPdata("tc15HUPNonShareKeepCurrentPlanSL");
+		tc16HUPShareTermBopisML = YamlHandler.getHUPdata("tc16HUPShareTermBopisML");
 	}
 	
 	private static void buyFlowsOneViewDataInit() throws FileNotFoundException {

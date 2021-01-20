@@ -283,7 +283,10 @@ public class RogersCheckoutPage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[@class='QSIPopOver SI_5Asif8K9VkSJZM9_PopOverContainer'][1]//following::span[text()='No, thanks']//ancestor::div[@tabindex='0']")
 	WebElement btnNoThanks;
-	
+
+	@FindBy(xpath = "//P[@data-test='timeslot-appointment']")
+	WebElement lblAppointmentTime;
+
 	
 	
 	/**
@@ -951,7 +954,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 
-	public void clkDeliveryMethodExpress(String deliveryMethod) {
+	public void clkDeliveryMethod(String deliveryMethod) {
 		if(deliveryMethod.equalsIgnoreCase("EXPRESS")){
 			getReusableActionsInstance().staticWait(5000);
 			getReusableActionsInstance().clickWhenReady(deliveryMethodExpress,30);
@@ -1004,6 +1007,16 @@ public class RogersCheckoutPage extends BasePageClass {
         //getReusableActionsInstance().javascriptScrollByVisibleElement(continueBtnShipping);
 		getReusableActionsInstance().clickWhenVisible(continueBtnShipping, 30);
 	}
+
+	/**
+	 * To verify the Apoointment label for pro on the go devices
+	 * @return true if label is available else false
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyAppointmentLabel() {
+		return getReusableActionsInstance().isElementVisible(lblAppointmentTime, 30);
+	}
+
 
 	
 	/**
