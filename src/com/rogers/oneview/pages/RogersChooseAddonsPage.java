@@ -27,7 +27,7 @@ public class RogersChooseAddonsPage extends BasePageClass {
 	
 	@FindAll({
 	@FindBy(xpath = "//section[contains(@class,'summary-section')]//span/span/span[@res='_continue']"),
-	//@FindBy(xpath = "//section[contains(@class,'summary-section')]//p[@class='col-sm-6 btn button-continue ng-scope']"),
+	@FindBy(xpath = "//section[contains(@class,'summary-section')]//p[@class='col-sm-6 btn button-continue ng-scope']"),
 	@FindBy(xpath = "//button[@name='button_continue']//span"),
 	@FindBy(xpath = "//div[contains(@class,'summary-strip-section hidden')]//button")
 	})

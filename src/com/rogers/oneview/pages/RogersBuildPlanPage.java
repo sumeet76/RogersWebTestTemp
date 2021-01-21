@@ -96,7 +96,7 @@ public class RogersBuildPlanPage extends BasePageClass {
 	public void selectFirstPlanInPickNewPlan() {
 		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().javascriptScrollByVisibleElement(lblData);
-		getReusableActionsInstance().clickWhenReady(addPlan.get(1), 30);
+		getReusableActionsInstance().clickWhenReady(addPlan.get(0), 30);
 		getReusableActionsInstance().staticWait(2000);
 	}
 	
