@@ -47,9 +47,6 @@ public class RogersBFA_TC05_NAC_BYOD_SS_Test extends BaseTestClass {
 		getRogersCheckoutPage().confirmEmailCreateProfile(emailCreateProfile);
 		String firstName = getRogersCheckoutPage().setFirstNameCreateProfile();
 		String lastName = getRogersCheckoutPage().setLastNameCreateProfile();
-		//*************** AVS Data Code- Commented for future issue ******//
-		//	        String firstName = getRogersCheckoutPage().setFirstNameCreateProfilepage("AMARA");
-		//	        String lastName = getRogersCheckoutPage().setLastNameCreateProfilepage("SPEARS");
 		String fullNameCreateProfile=firstName+" "+lastName;
 		String contactNumberCreateProfile=TestDataHandler.tc05NACByodSS.getContactNumber();
 		getRogersCheckoutPage().setContactNumberCreateProfile(contactNumberCreateProfile);
@@ -63,10 +60,7 @@ public class RogersBFA_TC05_NAC_BYOD_SS_Test extends BaseTestClass {
 		getRogersCheckoutPage().clkBtnGotoCreditEvalStepper();
 		//***************Credit Evaluation Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(),"CreditEvaluation Title verified","CreditEvaluation Title not present");
-		//getRogersCheckoutPage().setDateOfBirth(TestDataHandler.redesignRpotgData.getDateOfBirth());
 		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc05NACByodSS.getDateOfBirthYear());
-		//span[text()='No, thanks']
-		//getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc05NACByodSS.getDateOfBirthMonth());
 		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc05NACByodSS.getDateOfBirthDay());
 		getRogersCheckoutPage().switchToCreditCardIFrame();
@@ -97,26 +91,14 @@ public class RogersBFA_TC05_NAC_BYOD_SS_Test extends BaseTestClass {
 		// ***************Billing & Payment Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(),"Billing Options Title Displayed","Billing Options Title Not Present");
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed","Select Payment Method Dropdown not disaplayed");
-		getRogersCheckoutPage().clkNoThanks();
-		getRogersCheckoutPage().setNameOnCard(TestDataHandler.tc05NACByodSS.getNameOnCard());
-		getRogersCheckoutPage().switchToCreditCardIFrame();
-		getRogersCheckoutPage().setCreditCardNumberIFrame(TestDataHandler.tc05NACByodSS.getBillingCreditCardNumber());
-		getRogersCheckoutPage().switchOutOfCreditCardIFrame();
-		getRogersCheckoutPage().setBillingExpiryDate(TestDataHandler.tc05NACByodSS.getExpiryDate());
-		getRogersCheckoutPage().setCVVNumber(TestDataHandler.tc05NACByodSS.getCvvNumber());
-		reporter.reportLogPassWithScreenshot("Billing & Payment Details Entered Successfully");
-		getRogersCheckoutPage().clkAddCard();
+		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc05NACByodSS.getPaymentMethod());
 		getRogersCheckoutPage().clkBillingContinueButton();
-		reporter.hardAssert(getRogersCheckoutPage().isCardDetailsDisplayed(),"Card details disaplayed in Billing & Payment Options", "Card details not disaplayed in Billing & Payment Options");
-		//***************Billing Options Stepper*************//
-		/*
+		//***************Shipping Options Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().clkBillingAddress(),"Billing Address radio button is selected ","Billing Address is not selected");
 		getRogersCheckoutPage().clkDeliveryMethodStandard();
 		reporter.reportLogPassWithScreenshot("Billing Options Stepper");
-		Thread.sleep(1000);
 		getRogersCheckoutPage().clkContinueBtnShipping();
 		reporter.reportLogPassWithScreenshot("Continue button clicked from Billing Options Stepper");
-		*/
 		getRogersCheckoutPage().clksubmitBtnCheckoutPage();
 		//***************Order Review Page*************//
 		reporter.softAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(),"Order Review Page Title Present","Order Review Page Title is not Present");
@@ -126,9 +108,8 @@ public class RogersBFA_TC05_NAC_BYOD_SS_Test extends BaseTestClass {
 		String contactEmailReviewPage=getRogersReviewOrderPage().getContactEmail();
 		reporter.hardAssert(emailCreateProfile.equals(contactEmailReviewPage),"Contact email in Order Review Page matches as entered in Create Profile stepper","Contact email in Order Review Page not matches as entered in Create Profile stepper");
 		reporter.reportLogPassWithScreenshot("Order Review Page : Contact Details");
-		//getRogersReviewOrderPage().clkFinancingConsentCheckbox();
 		getRogersReviewOrderPage().clkAgreementConsentCheckbox();
-		//getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
+		getRogersReviewOrderPage().clkEmailConsentCheckbox();
 		reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
 		getRogersReviewOrderPage().clkSubmitOrderBtn();
 		//************Order Confirmation Page****************//
@@ -136,9 +117,6 @@ public class RogersBFA_TC05_NAC_BYOD_SS_Test extends BaseTestClass {
 		reporter.reportLogPassWithScreenshot("Order Confirmation Page");
 		String purchaseIncludesConfrimation=getRogersNACOrderConfirmationPage().getPurchaseIncludesText();
 		reporter.reportLogPassWithScreenshot("Purchase includes captured as" + "-->" +purchaseIncludesConfrimation);
-		//reporter.hardAssert(getRogersNACOrderConfirmationPage().isLearnMoreLinkDisplayed(),"Learn More Link Displayed","Learn More Link not Present");
-		//reporter.reportLogPassWithScreenshot("Order Review Page: LearnMore Link");
-
 	}
 
 }

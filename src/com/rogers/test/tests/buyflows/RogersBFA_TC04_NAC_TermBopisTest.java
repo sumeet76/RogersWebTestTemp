@@ -122,10 +122,6 @@ public class RogersBFA_TC04_NAC_TermBopisTest extends BaseTestClass {
 		String purchaseIncludes = getRogersCheckoutPage().getPurchaseIncludesText();
 		reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees" + totalMonthlyFees
 				+ "2. oneTimeFee" + oneTimeFee + "3. Purchase Include" + purchaseIncludes);
-		String labelRpotgPurchaseIncludesCheckout = getRogersCheckoutPage().getRpotgLabelPurchaseIncludes();
-		reporter.softAssert(purchaseIncludes.contains(labelRpotgPurchaseIncludesCheckout),
-				"RPOTG label verified in Purchase Includes section",
-				"RPOTG label not availble in Purchase Includes section");
 		// ***************Create Profile Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().verifyCreateProfileTitle(), "Create profile Title Present",
 				"Create profile Title not present");
@@ -139,10 +135,6 @@ public class RogersBFA_TC04_NAC_TermBopisTest extends BaseTestClass {
 		reporter.reportLogPassWithScreenshot("Create Profile Page details Entered till ContactNumber");
 		String billingAddressCreateProfile = TestDataHandler.tc04NACTermBopis.getBillingAddress();
 		getRogersCheckoutPage().setBillingAddressCreateProfile(billingAddressCreateProfile);
-		getRogersCheckoutPage().getRpotgSuccessMessage();
-		reporter.reportLogPassWithScreenshot(
-				"Billing Address entered is eligible for RPOTG - Success message validated");
-		//getRogersCheckoutPage().clkUseBillingAddressRadioBtnCreateProfile();
 		getRogersCheckoutPage().clkLanguageEnglishRadioBtnCreateProfile();
 		reporter.reportLogPassWithScreenshot(
 				"Create Profile Page details provided for Address,Shipping Address & Language Selected");
@@ -155,7 +147,6 @@ public class RogersBFA_TC04_NAC_TermBopisTest extends BaseTestClass {
 		// ***************Credit Evaluation Stepper***********//
 		reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(), "CreditEvaluation Title verified",
 				"CreditEvaluation Title not present");
-		// getRogersCheckoutPage().setDateOfBirth(TestDataHandler.redesignRpotgData.getDateOfBirth());
 		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc04NACTermBopis.getDateOfBirthYear());
 		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc04NACTermBopis.getDateOfBirthMonth());
 		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc04NACTermBopis.getDateOfBirthDay());
@@ -238,7 +229,10 @@ public class RogersBFA_TC04_NAC_TermBopisTest extends BaseTestClass {
 		reporter.reportLogPassWithScreenshot("Order Review Page : Contact Details");
 		getRogersReviewOrderPage().clkFinancingConsentCheckbox();
 		getRogersReviewOrderPage().clkAgreementConsentCheckbox();
+		getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
 		reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
+		getRogersReviewOrderPage().clkEmailConsentCheckbox();
+		reporter.reportLogPass("Email Communication consent box checked");
 		getRogersReviewOrderPage().clkSubmitOrderBtn();
 
 		// ************Order Confirmation Page***************************************************
@@ -246,22 +240,6 @@ public class RogersBFA_TC04_NAC_TermBopisTest extends BaseTestClass {
 		reporter.hardAssert(getRogersNACOrderConfirmationPage().isOrderConfirmationTitlePresent(),
 				"Order Confrimation Page Title Present", "Order Confrimation Page Title is not Present");
 		reporter.reportLogPassWithScreenshot("Order Confirmation Page");
-		reporter.hardAssert(getRogersNACOrderConfirmationPage().verifyRpotgTitle(), "RPOTG Title verified",
-				"RPOTG Title Not Present");
-		reporter.hardAssert(getRogersNACOrderConfirmationPage().verifyAppointmentDetailsTitle(),
-				"Appointment Details Title verified", "Your Appointment Details Title Not present");
-		reporter.hardAssert(getRogersNACOrderConfirmationPage().verifyAppointmentDateTitle(),
-				"Appointment Date Title Verified", "Appointment Date Title not Present");
-		String appointmentDateCnfPage = getRogersNACOrderConfirmationPage().getAppointmentDate();
-		//reporter.softAssert(appointmentDate.equals(appointmentDateCnfPage), "Appointment Date in Order Confirmation page matches with Shipping Stepper Date", "Appointment Date in Order Confirmation page not matches with Shipping Stepper Date");
-		String appointmentTimeCnfPage = getRogersNACOrderConfirmationPage().getAppointmentTime();
-		//reporter.hardAssert(appointmentTime.contains(appointmentTimeCnfPage), "Appointment Time in Order Confirmation page matches with Shipping Stepper Time", "Appointment Time not available in Confirmation page");
-		reporter.hardAssert(getRogersNACOrderConfirmationPage().verifyAppointmentAddressTitle(),
-				"Appointment Address Title Verified", "Appointment Address Title not present");
-		String appointmentAddress = getRogersNACOrderConfirmationPage().getAppointmentAddressText();
-		reporter.reportLogWithScreenshot("Appointment Address Details" + "-->" + appointmentAddress);
-		reporter.hardAssert(getRogersNACOrderConfirmationPage().verifyDeviceImage(),
-				"Device Image Present in Confirmation Page", "Device Image not present");
 		String totalMonthlyFeesConfirmationPage = getRogersNACOrderConfirmationPage().getMonthlyFeeAfterTax();
 		reporter.hardAssert(totalMonthlyFees.equals(totalMonthlyFeesConfirmationPage),
 				"Total Monthly Fee after tax matches with checkout page",
@@ -274,9 +252,6 @@ public class RogersBFA_TC04_NAC_TermBopisTest extends BaseTestClass {
 		reporter.hardAssert(purchaseIncludesConfrimation.equals(puchaseIncludeReviewPage),
 				"Purchase includes Matches in ORder Confirmation page", "Purchase Includes Not Matching");
 		reporter.reportLogPassWithScreenshot("Purchase includes captured as" + "-->" + purchaseIncludesConfrimation);
-//		reporter.hardAssert(getRogersNACOrderConfirmationPage().isLearnMoreLinkDisplayed(), "Learn More Link Displayed",
-//				"Learn More Link not Present");
-//		reporter.reportLogPassWithScreenshot("Order Review Page: LearnMore Link");
 	}
 
 	@AfterMethod(alwaysRun = true)

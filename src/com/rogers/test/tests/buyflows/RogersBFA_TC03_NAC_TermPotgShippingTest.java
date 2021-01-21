@@ -160,6 +160,7 @@ public class RogersBFA_TC03_NAC_TermPotgShippingTest extends BaseTestClass {
 		reporter.softAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ", "Billing Address is not selected");
 		String addressShippingStepper = getRogersCheckoutPage().getShippingAddress();
 		System.out.println(billingAddressCreateProfile+"and"+addressShippingStepper);
+		//check below softassert
 		reporter.softAssert(billingAddressCreateProfile.equals(addressShippingStepper), "Address in Shipping Stepper matches as entered in Create Profile stepper", "Address in Shipping Stepper not matches as entered in Create Profile stepper");
 		getRogersCheckoutPage().clkDeliveryMethod("PRO");
 		reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel() ,"Appointment label available", "Appointment label not available");
@@ -185,7 +186,7 @@ public class RogersBFA_TC03_NAC_TermPotgShippingTest extends BaseTestClass {
 		reporter.reportLogPassWithScreenshot("Order Review Page : Contact Details");
 		getRogersReviewOrderPage().clkFinancingConsentCheckbox();
 		getRogersReviewOrderPage().clkAgreementConsentCheckbox();
-		//getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
+		getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
 		reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
 		getRogersReviewOrderPage().clkEmailConsentCheckbox();
 		reporter.reportLogPass("Email Communication consent box checked");

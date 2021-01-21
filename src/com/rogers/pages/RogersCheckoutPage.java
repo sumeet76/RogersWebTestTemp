@@ -35,13 +35,13 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "(//div[contains(.,'E-mail Address')])[11]")
 	WebElement emailCreateProfile;
 
-	@FindBy(xpath = "//input[@formcontrolname='email']")
+	@FindBy(xpath = "//input[@id='email' or (contains(@formcontrolname,'email') and  not(contains(@formcontrolname,'Confirm')))]")
 	WebElement inputEmail;
 
 	@FindBy(xpath = "(//div[contains(.,'Confirm E-mail Address')])[11]")
 	WebElement confirmEmailCreateProfile;
 
-	@FindBy(xpath = "//input[@formcontrolname='confirmEmail']")
+	@FindBy(xpath = "//input[@id='confirmEmail' or @id='cemail' or contains(@formcontrolname,'Confirm') or contains(@formcontrolname,'confirm')]")
 	WebElement inputConfirmEmail;
 
 	@FindBy(xpath = "(//div[contains(.,'First Name')])[11]")
@@ -59,7 +59,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "(//div[contains(.,'Contact Number')])[11]")
 	WebElement contactNumberCreateProfile;
 
-	@FindBy(xpath = "//input[@formcontrolname='contact']")
+	@FindBy(xpath = "//input[contains(@formcontrolname,'contact')]")
 	WebElement inputContactNumber;
 
 	@FindBy(xpath = "(//div[contains(.,'Billing Address')])[13]")
@@ -309,6 +309,7 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public String getMonthlyFeeAfterTax() { 
 		getReusableActionsInstance().waitForElementVisibility(createProfileTitle, 50);
+		getReusableActionsInstance().waitForElementVisibility(monthlyFeeAfterTax, 50);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyFeeAfterTax);
 		return monthlyFeeAfterTax.getText().replaceAll("\\n",""); }
 
@@ -878,6 +879,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void clkBillingContinueButton() {
+		getReusableActionsInstance().waitForElementTobeClickable(btnBillingContinueButton , 30);
+		getReusableActionsInstance().scrollToElement(btnBillingContinueButton);
 		getReusableActionsInstance().getWhenReady(btnBillingContinueButton,30).click();
 	}
 
@@ -888,9 +891,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public boolean clkBillingAddress() {
-		getReusableActionsInstance().waitForElementVisibility(billingAddressShipping , 30);
-		getReusableActionsInstance().scrollToElementAndClick(billingAddressShipping);
-		//getReusableActionsInstance().clickWhenReady(billingAddressShipping,3);
+		getReusableActionsInstance().waitForElementTobeClickable(billingAddressShipping , 30);
+		getReusableActionsInstance().scrollToElement(billingAddressShipping);
+		getReusableActionsInstance().clickWhenReady(billingAddressShipping,30);
 		billingAddressShipping.isSelected();
 		return true;
 	}
@@ -1051,9 +1054,9 @@ public class RogersCheckoutPage extends BasePageClass {
 
     public void clksubmitBtnCheckoutPage(){
 		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().waitForElementVisibility(submitBtnCheckoutPage,30);
+		getReusableActionsInstance().waitForElementTobeClickable(submitBtnCheckoutPage,30);
 		getReusableActionsInstance().scrollToElementAndClick(submitBtnCheckoutPage);
-		getReusableActionsInstance().clickWhenReady(submitBtnCheckoutPage , 30);
+		//getReusableActionsInstance().clickWhenReady(submitBtnCheckoutPage , 30);
     }
 
 	/**

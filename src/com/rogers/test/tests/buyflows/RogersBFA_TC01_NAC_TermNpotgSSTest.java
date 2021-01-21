@@ -141,7 +141,7 @@ public class RogersBFA_TC01_NAC_TermNpotgSSTest extends BaseTestClass {
         reporter.reportLogPassWithScreenshot("Order Review Page : Contact Details");
         getRogersReviewOrderPage().clkFinancingConsentCheckbox();
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
-        getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
+        //getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         getRogersReviewOrderPage().clkSubmitOrderBtn();
         //************Order Confirmation Page****************//

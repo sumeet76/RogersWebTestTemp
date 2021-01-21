@@ -49,13 +49,17 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     @FindBy(xpath ="//button[@data-test='build-plan-checkout-flow-button']/span")
     WebElement continueButtonOnCartSummary;
-    
-    @FindBy(xpath = "//button[@id='get-bpo-offer-button' or @data-test='bpo-offer-modal-button-primary']")
+    @FindAll({
+            @FindBy(xpath = "//button[@id='get-bpo-offer-button' or @data-test='bpo-offer-modal-button-primary']"),
+            @FindBy(xpath = "//button[@data-test='bpo-offer-modal-button-primary']")
+    })
     WebElement getBPOOfferOnDeviceProtection;
 
     @FindAll({
-    @FindBy(xpath = "//button[@id='Skip the Offer']"),
-    @FindBy(xpath = "//div[@class='ds-modal__footer mb-24 mb-sm-40']//button[contains(@class,'-tertiary -large')]")})
+        @FindBy(xpath = "//button[@data-test='bpo-offer-modal-button-primary']"),
+        @FindBy(xpath = "//button[@id='Skip the Offer']"),
+        @FindBy(xpath = "//div[@class='ds-modal__footer mb-24 mb-sm-40']//button[contains(@class,'-tertiary -large')]")
+            })
     WebElement skipBPOOfferOnDeviceProtection;
 
     @FindBy(xpath = "//div[@class='d-flex flex-row']")
