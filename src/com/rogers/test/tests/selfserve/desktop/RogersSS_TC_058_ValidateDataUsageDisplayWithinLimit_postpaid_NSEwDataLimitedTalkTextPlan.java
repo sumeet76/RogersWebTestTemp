@@ -64,9 +64,9 @@ public class RogersSS_TC_058_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDa
 						"Total data bucket includes plan, paid OTTs, paid MDTs, promotional (zero-rated) bonus OTT and MDTs info should be displayed", 
 						"Total data bucket includes plan, paid OTTs, paid MDTs, promotional (zero-rated) bonus OTT and MDTs info NOT displayed");
         reporter.reportLogWithScreenshot("Navigated back to dashboard from manage data view");  
-        reporter.hardAssert(getRogersWirelessDashboardPage().verifyDaysRemainingInTheBillCycleIsDisplayed(),
-							"Days left remaining in the bill cycle is displayed", 
-							"Days left remaining in the bill cycle is NOT displayed");        
+        //reporter.hardAssert(getRogersWirelessDashboardPage().verifyDaysRemainingInTheBillCycleIsDisplayed(),
+		//					"Days left remaining in the bill cycle is displayed", 
+		//					"Days left remaining in the bill cycle is NOT displayed");        
         reporter.hardAssert(getRogersWirelessDashboardPage().verifyAddDataButtonIsDisplayed(),
 							"Add the Data top-up  button should be displayed", 
 							"Add the Data top-up  button is NOT displayed.");   		

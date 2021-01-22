@@ -320,7 +320,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@class,'residential_services')]//div[contains(@class,'subscription-detail')]//rss-subscription-detail//a")
 	List<WebElement> lstResidentialServicesCTNs;
 
-	@FindBy(xpath = "//*[@translate='acc_overview_top_up_now']")
+	@FindBy(xpath = "//*[@translate='acc_overview_top_up_now' or @title='Top Up Now']")
 	WebElement btnPrepaidTopUpNow;
 
 	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.current.account.balance']")

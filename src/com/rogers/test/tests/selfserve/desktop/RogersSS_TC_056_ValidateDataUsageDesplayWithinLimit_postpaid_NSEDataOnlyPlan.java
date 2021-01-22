@@ -68,9 +68,9 @@ public class RogersSS_TC_056_ValidateDataUsageDesplayWithinLimit_postpaid_NSEDat
         reporter.reportLogWithScreenshot("Manage data page view after we click on view details");  
         getRogersManageDataPage().clkBackOnManageDataUsagePage();
         reporter.reportLogWithScreenshot("Navigated back to dashboard from manage data view");  
-        reporter.hardAssert(getRogersWirelessDashboardPage().verifyDaysRemainingInTheBillCycleIsDisplayed(),
-							"Days left remaining in the bill cycle is displayed", 
-							"Days left remaining in the bill cycle is NOT displayed"); 
+       // reporter.hardAssert(getRogersWirelessDashboardPage().verifyDaysRemainingInTheBillCycleIsDisplayed(),
+		//					"Days left remaining in the bill cycle is displayed", 
+		//					"Days left remaining in the bill cycle is NOT displayed"); 
         getCommonBusinessFlows().addDataFlow();
         if(getRogersAddDataPage().verifyAddDataSuccessMsgIsDisplayed())
         {
