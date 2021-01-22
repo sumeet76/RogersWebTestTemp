@@ -51,6 +51,10 @@ public class AccountDetails {
 	private String  imei;
 	private String flexChannelsCount;
 	private String totalChannelsCount;
+	private String drivingLicence;
+	private String firstName;
+	private String lastName;
+	private String birthCertNumber;
 	
 	public String getRhmPackageEn() {
 		return rhmPackageEn;
@@ -589,6 +593,63 @@ public class AccountDetails {
 	 */
 	public void setTotalChannelsCount(String totalChannelsCount) {
 		this.totalChannelsCount = totalChannelsCount;
+	}
+
+	/**
+	 * @return the drivingLicence
+	 */
+	public String getDrivingLicence() {
+		return drivingLicence;
+	}
+
+	/**
+	 * @param drivingLicence the drivingLicence to set
+	 */
+	public void setDrivingLicence(String drivingLicence) {
+		this.drivingLicence = drivingLicence;
+	}
+
+	/**
+	 * @return the firstName
+	 */
+	public String getFirstName() {
+		return firstName;
+	}
+
+	/**
+	 * @param firstName the firstName to set
+	 */
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+	/**
+	 * @return the lastName
+	 */
+	public String getLastName() {
+		return lastName;
+	}
+
+	/**
+	 * @param lastName the lastName to set
+	 */
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	/**
+	 * @return the birthCertNumber
+	 */
+	public String getBirthCertNumber() {
+		return birthCertNumber;
+	}
+
+	/**
+	 * @param birthCertNumber the birthCertNumber to set
+	 */
+	public void setBirthCertNumber(String birthCertNumber) {
+		this.birthCertNumber = birthCertNumber;
 	}
 
 }

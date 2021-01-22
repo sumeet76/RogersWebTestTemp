@@ -47,63 +47,42 @@ public class RogersCH_TC_054_IginteTV_WirelessCRMaddressMismatchWithSGI_Validate
 		getRogersLoginPage().clkSkipIFrame();
 		getRogersLoginPage().switchOutOfSignInIFrame();
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc54_iginteTVWirelessCRMaddressMismatchWithSGI.accountDetails.getBan());
-		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersHomePage().clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
 		getRogersHomePage().clkIgniteTVExistingCustomer();
-		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-		getRogersHomePage().clkNoThnx();
-		getRogersHomePage().clkServiceability();
-		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-		getRogersHomePage().clkUseThisAddress();
-		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-		//reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-		getRogersIgniteTVBuyPage().clkHomephone();
-		getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
-		reporter.reportLogWithScreenshot("Launched the information popup");
-		getRogersIgniteTVBuyPage().clkIUnderstand();
-		reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
-		reporter.reportLogWithScreenshot("Launched the home phone selection page");
-		getRogersHomePhoneSelectionPage().clkSkipforNewNumber();
-		reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
-		getRogersIgniteTVBuyPage().clkHomePhone();
 
-		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");
+		reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
+		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+		getRogersHomePage().clkServiceability();
+		reporter.reportLogWithScreenshot("Launched the customer availability check popup");
+		String  strAddressLine1=TestDataHandler.tc54_iginteTVWirelessCRMaddressMismatchWithSGI.getAccountDetails().getAddress().get("line1");
+		String  strAddressLine2=TestDataHandler.tc54_iginteTVWirelessCRMaddressMismatchWithSGI.getAccountDetails().getAddress().get("line2");
+		getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+		getRogersHomePage().clkIgniteAddressLookupSubmit();
+		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
+		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
+		getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
+		reporter.reportLogWithScreenshot("Launched the port-in popup");
+
+		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
 		reporter.reportLogWithScreenshot("Launched the cart summary page");
 		getRogersIgniteTVBuyPage().set4KTV();
 		reporter.reportLogWithScreenshot("4k TV selected");
+		//getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
+		//getRogersIgniteTVBuyPage().clkUpdateCart();
 		getRogersIgniteTVBuyPage().clkCheckout();
+
+		//reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the create profile page");
 		getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
-		reporter.reportLogWithScreenshot("Launched the credit evalution page");
-		getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomerMigration(TestDataHandler.tc54_iginteTVWirelessCRMaddressMismatchWithSGI.getAccountDetails().getYear());
-		getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomerMigration(TestDataHandler.tc54_iginteTVWirelessCRMaddressMismatchWithSGI.getAccountDetails().getMonth());
-		getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomerMigration(TestDataHandler.tc54_iginteTVWirelessCRMaddressMismatchWithSGI.getAccountDetails().getDate());
-		reporter.reportLogWithScreenshot("Entered the DOB details");
-		getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
-		reporter.reportLogWithScreenshot("Launched the home phone selection page");
-		getRogersHomePhoneSelectionPage().clkContinueHomePhoneSelection();
 
 		reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
-		reporter.reportLogWithScreenshot("Launched the tech install page");
-		getRogersTechInstallPage().selTechInstalStartDate();
-		reporter.reportLogWithScreenshot("Selected Start date for Installation");
-		getRogersTechInstallPage().selectPreferredTimeSlot("1: AFT");
-		reporter.reportLogWithScreenshot("Selected Start date for Installation slot");
-		getRogersTechInstallPage().selTechInstalEndDate();
-		reporter.reportLogWithScreenshot("Selected End date for Installation");
-		getRogersTechInstallPage().selectBackupTimeSlot("1: AFT");
-		reporter.reportLogWithScreenshot("Selected End date for Installation slot");
-		reporter.reportLogWithScreenshot("tech install details");
-		getRogersTechInstallPage().setMobielNumber();
-		reporter.reportLogWithScreenshot("tech install details");
 		getRogersTechInstallPage().clkTechInstalConsent();
-
+		reporter.reportLogWithScreenshot("tech install details");
 		getRogersTechInstallPage().clkTechInstallContinue();
-		reporter.reportLogWithScreenshot("Launched the payment options page");
-
-		getRogersPaymentOptionsPage().clkPaymentConfirm();
+		reporter.reportLogWithScreenshot("Launched the order review page");
 		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");
 
@@ -112,7 +91,6 @@ public class RogersCH_TC_054_IginteTV_WirelessCRMaddressMismatchWithSGI_Validate
 		getRogersOrderReviewPage().clkAcceptenceCheckbox();
 		reporter.reportLogWithScreenshot("Agreement details");
 		getRogersOrderReviewPage().clkSubmit();
-		reporter.reportLogWithScreenshot("Launched the Confirmation page");
 		reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
 		reporter.reportLogWithScreenshot("Launched the Confirmation page");
 	}

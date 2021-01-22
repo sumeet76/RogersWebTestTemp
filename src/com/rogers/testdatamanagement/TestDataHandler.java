@@ -67,6 +67,7 @@ public class TestDataHandler {
 	public static AccountData tc37_internetAccountUpgrade;
 	public static AccountData tc45_digitalTVAccountUpgradePackage;
 	public static AccountData tc54_iginteTVWirelessCRMaddressMismatchWithSGI;
+	public static AccountData tc55_rCISandECIDLowRiskMediumRiskAddressRetry;
 	public static AccountData  tc46_legacyInternetAccount;
 	public static AccountData tcm04_SolarisInternetAccount;
 	public static AccountData tcm06_IgniteTVAccount;
@@ -248,7 +249,8 @@ public class TestDataHandler {
     	solarisInternetPackageChange = YamlHandler.getCableAccountData("SolarisInternetPackageChange");
     	tc31_SolarisInternetAccountWithUsageAndPackageUpgrade = YamlHandler.getCableAccountData("TC31_SolarisInternetAccountWithUsageAndPackageUpgrade");
 		tc54_iginteTVWirelessCRMaddressMismatchWithSGI=YamlHandler.getCableAccountData("TC54_IginteTVWirelessCRMaddressMismatchWithSGI");
-    	//Ignite TV test data
+		tc55_rCISandECIDLowRiskMediumRiskAddressRetry=YamlHandler.getCableAccountData("TC55_RCISandECIDLowRiskMediumRiskAddressRetry");
+		//Ignite TV test data
 		tcm05_SolarisTVAccountForUpgrade  = YamlHandler.getCableAccountData("TCM05_SolarisTVAccountForUpgrade");
 		tc35_CRMaddressMismatchWithSGI = YamlHandler.getCableAccountData("TC35_CRMaddressMismatchWithSGI");
 		tc01_02_03_IgniteTVAccount = YamlHandler.getCableAccountData("TC01_02_03_IgniteTVAccount");
