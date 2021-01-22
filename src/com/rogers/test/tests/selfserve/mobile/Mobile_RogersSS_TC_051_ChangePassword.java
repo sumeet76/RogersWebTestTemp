@@ -66,7 +66,7 @@ public class Mobile_RogersSS_TC_051_ChangePassword extends BaseTestClass {
 		changePassword(strPassword, strNewPassword);
 		reporter.reportLogWithScreenshot("Change password is done.");
         if (getRogersProfileAndSettingsPage().verifyUsername(strUsername)) {
-        	//Change password back after successfully changed password
+        	//Change password back after successfully changed password        	
             changePassword(strNewPassword, strPassword);
         }
     }
@@ -82,6 +82,7 @@ public class Mobile_RogersSS_TC_051_ChangePassword extends BaseTestClass {
     private void changePassword(String strPassword, String strNewPassword) {
 		getRogersProfileAndSettingsPage().clkLnkChangePassword();
 		//verify the change password overlay is displayed or not
+		getRogersProfileAndSettingsPage().clkCloseFeedbackIfAvailableMobile();
 		reporter.hardAssert(getRogersProfileAndSettingsPage().isOverlayChangePasswordDisplayed(),
 							"Change password process ready to set new password.",
 							"Change password overlay didn't present.");
