@@ -122,7 +122,6 @@ public class RogersBFA_TC01_NAC_TermNpotgSSTest extends BaseTestClass {
         reporter.softAssert(getRogersCheckoutPage().clkBillingAddress(),"Billing Address radio button is selected ","Billing Address is not selected");
         getRogersCheckoutPage().clkDeliveryMethodStandard();
         reporter.reportLogPassWithScreenshot("Billing Options Stepper");
-        Thread.sleep(1000);
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Continue button clicked from Billing Options Stepper");
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
@@ -142,7 +141,7 @@ public class RogersBFA_TC01_NAC_TermNpotgSSTest extends BaseTestClass {
         reporter.reportLogPassWithScreenshot("Order Review Page : Contact Details");
         getRogersReviewOrderPage().clkFinancingConsentCheckbox();
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
-        getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
+        //getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         getRogersReviewOrderPage().clkSubmitOrderBtn();
         //************Order Confirmation Page****************//

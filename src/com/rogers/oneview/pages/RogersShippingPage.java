@@ -68,7 +68,7 @@ public class RogersShippingPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyShippingPage() {
-		return getReusableActionsInstance().isElementVisible(btnContinue , 30);
+		return getReusableActionsInstance().isElementVisible(btnContinue , 50);
 	}
 
 

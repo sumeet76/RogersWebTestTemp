@@ -67,6 +67,7 @@ public class TestDataHandler {
 	public static AccountData tc37_internetAccountUpgrade;
 	public static AccountData tc45_digitalTVAccountUpgradePackage;
 	public static AccountData tc54_iginteTVWirelessCRMaddressMismatchWithSGI;
+	public static AccountData tc55_rCISandECIDLowRiskMediumRiskAddressRetry;
 	public static AccountData  tc46_legacyInternetAccount;
 	public static AccountData tcm04_SolarisInternetAccount;
 	public static AccountData tcm06_IgniteTVAccount;
@@ -99,21 +100,21 @@ public class TestDataHandler {
 	public static AccountData solarisConsumerGWPRhpShm;
 	public static AccountData solarisHTOMigrationSignIn;
 	public static RedesignRpotgData tc01NACTermNpotgSS;
-	public static RedesignRpotgData tc02NACNoTermPotgSS;
-	public static RedesignRpotgData tc03NACTermPotgBopis;
-	public static RedesignRpotgData tc04NACNoTermRpotgBopis;
+	public static RedesignRpotgData tc02NACNoTermStandardShipping;
+	public static RedesignRpotgData tc03NACTermPotgShipping;
+	public static RedesignRpotgData tc04NACTermBopis;
 	public static RedesignRpotgData tc05NACByodSS;
 	public static RedesignRpotgData tc06NACByodTermBopis;
 	public static AALData tc07AAL;
 	public static PPCData tc08PPC;
-	public static HUPData tc09HUPPotgSL;
+	public static HUPData tc09HupPpcPotgSharedML;
 	public static HUPData tc10HUPAdditionalLine;
-	public static HUPData tc11HUPNpotgSL;
-	public static HUPData tc12HUPNonShareNoTermML;
-	public static HUPData tc13HUPShareEveryThingKeepCurrentPlanNoTermML;
-	public static HUPData tc14HUPShareEveryThingKeepCurrentPlanTermML;
-	public static HUPData tc15HUPNonShareKeepCurrentPlanML;
-	public static HUPData tc16HUPNonShareTermBopisSL;
+	public static HUPData tc11HUPNpotgML;
+	public static HUPData tc12HUPNonShareNoTermSL;
+	public static HUPData tc13HUPShareNoTermSL;
+	public static HUPData tc14HUPShareKeepCurrentPlanTermML;
+	public static HUPData tc15HUPNonShareKeepCurrentPlanSL;
+	public static HUPData tc16HUPShareTermBopisML;
 	public static HUPData buyFlowsOVtestCase01;
 	public static HUPData buyFlowsOVtestCase02;
 	public static HUPData buyFlowsOVtestCase05;
@@ -248,7 +249,8 @@ public class TestDataHandler {
     	solarisInternetPackageChange = YamlHandler.getCableAccountData("SolarisInternetPackageChange");
     	tc31_SolarisInternetAccountWithUsageAndPackageUpgrade = YamlHandler.getCableAccountData("TC31_SolarisInternetAccountWithUsageAndPackageUpgrade");
 		tc54_iginteTVWirelessCRMaddressMismatchWithSGI=YamlHandler.getCableAccountData("TC54_IginteTVWirelessCRMaddressMismatchWithSGI");
-    	//Ignite TV test data
+		tc55_rCISandECIDLowRiskMediumRiskAddressRetry=YamlHandler.getCableAccountData("TC55_RCISandECIDLowRiskMediumRiskAddressRetry");
+		//Ignite TV test data
 		tcm05_SolarisTVAccountForUpgrade  = YamlHandler.getCableAccountData("TCM05_SolarisTVAccountForUpgrade");
 		tc35_CRMaddressMismatchWithSGI = YamlHandler.getCableAccountData("TC35_CRMaddressMismatchWithSGI");
 		tc01_02_03_IgniteTVAccount = YamlHandler.getCableAccountData("TC01_02_03_IgniteTVAccount");
@@ -337,21 +339,21 @@ public class TestDataHandler {
 		bfaConfig =  YamlHandler.getBFAConfig();
 		bfaPaymentInfo = YamlHandler.getBFAPaymentDetails();
 		tc01NACTermNpotgSS=YamlHandler.getRedesignNACData("tc01NACTermNpotgSS");
-		tc02NACNoTermPotgSS=YamlHandler.getRedesignNACData("tc02NACNoTermPotgSS");
-		tc03NACTermPotgBopis = YamlHandler.getRedesignNACData("tc03NACTermPotgBopis");
-		tc04NACNoTermRpotgBopis = YamlHandler.getRedesignNACData("tc04NACNoTermRpotgBopis");
+		tc02NACNoTermStandardShipping=YamlHandler.getRedesignNACData("tc02NACNoTermStandardShipping");
+		tc03NACTermPotgShipping = YamlHandler.getRedesignNACData("tc03NACTermPotgShipping");
+		tc04NACTermBopis = YamlHandler.getRedesignNACData("tc04NACTermBopis");
 		tc05NACByodSS = YamlHandler.getRedesignNACData("tc05NACByodSS");
 		tc06NACByodTermBopis = YamlHandler.getRedesignNACData("tc06NACByodTermBopis");
 		tc07AAL = YamlHandler.getAALdata("tc07AAL");
 		tc08PPC = YamlHandler.getPPCdata("tc08PPC");
-		tc09HUPPotgSL = YamlHandler.getHUPdata("tc09HUPPotgSL");
+		tc09HupPpcPotgSharedML = YamlHandler.getHUPdata("tc09HupPpcPotgSharedML");
 		tc10HUPAdditionalLine = YamlHandler.getHUPdata("tc10HUPAdditionalLine");
-		tc11HUPNpotgSL = YamlHandler.getHUPdata("tc11HUPNpotgSL");
-		tc12HUPNonShareNoTermML = YamlHandler.getHUPdata("tc12HUPNonShareNoTermML");
-		tc13HUPShareEveryThingKeepCurrentPlanNoTermML = YamlHandler.getHUPdata("tc13HUPShareEveryThingKeepCurrentPlanNoTermML");
-		tc14HUPShareEveryThingKeepCurrentPlanTermML = YamlHandler.getHUPdata("tc14HUPShareEveryThingKeepCurrentPlanTermML");
-		tc15HUPNonShareKeepCurrentPlanML = YamlHandler.getHUPdata("tc15HUPNonShareKeepCurrentPlanML");
-		tc16HUPNonShareTermBopisSL = YamlHandler.getHUPdata("tc16HUPNonShareTermBopisSL");
+		tc11HUPNpotgML = YamlHandler.getHUPdata("tc11HUPNpotgML");
+		tc12HUPNonShareNoTermSL = YamlHandler.getHUPdata("tc12HUPNonShareNoTermSL");
+		tc13HUPShareNoTermSL = YamlHandler.getHUPdata("tc13HUPShareNoTermSL");
+		tc14HUPShareKeepCurrentPlanTermML = YamlHandler.getHUPdata("tc14HUPShareKeepCurrentPlanTermML");
+		tc15HUPNonShareKeepCurrentPlanSL = YamlHandler.getHUPdata("tc15HUPNonShareKeepCurrentPlanSL");
+		tc16HUPShareTermBopisML = YamlHandler.getHUPdata("tc16HUPShareTermBopisML");
 	}
 	
 	private static void buyFlowsOneViewDataInit() throws FileNotFoundException {

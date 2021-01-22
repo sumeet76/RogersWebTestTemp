@@ -49,7 +49,7 @@ public class RogersBFA_TC10_HUPOnAdditonalLine_Test extends BaseTestClass {
         //getRogersLoginPage().clkSkipIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
          */
-        getRogersDeviceCataloguePage().isModalDisplayed();
+        reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
         reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
         getRogersDeviceCataloguePage().selectCTN(TestDataHandler.tc10HUPAdditionalLine.getCtn());
         getRogersDeviceCataloguePage().clickContinueBtn();

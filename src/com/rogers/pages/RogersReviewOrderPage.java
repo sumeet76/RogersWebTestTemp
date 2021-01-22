@@ -78,8 +78,7 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author nimmy.george
      */
     public boolean isOrderReviewPageTitlePresent() {
-    	getReusableActionsInstance().waitForElementVisibility(orderReviewPageTitle, 60);
-       return getReusableActionsInstance().isElementVisible(orderReviewPageTitle);
+       return getReusableActionsInstance().isElementVisible(orderReviewPageTitle , 60);
     }
 
     /**

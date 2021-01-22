@@ -11,20 +11,20 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * TC11 - Regression - Rogers HUP with NPOTG device e2e
- * @author Saurav.Goyal
+ * TC09 - Regression - Rogers HUP on POTG device on main line e2e
+ * @author rajesh.varalli1
  *
  */
-public class RogersBFA_TC11_HUPNpotgSL_Test extends BaseTestClass {
+public class RogersBFA_TC09_HUP_PPC_PotgML_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","SanityBFA","HUPBFA"})
-    public void rogersHUPNpotgSLTest() {
+    public void rogersHupPpcPotgMLTest() {
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
         getRogersHomePage().clkSignIn();
         getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc11HUPNpotgSL.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc11HUPNpotgSL.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc09HupPpcPotgSharedML.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc09HupPpcPotgSharedML.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
@@ -33,10 +33,9 @@ public class RogersBFA_TC11_HUPNpotgSL_Test extends BaseTestClass {
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page");
         getDriver().get(System.getProperty("AWSUrl"));
-        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        reporter.reportLogWithScreenshot("Rogers Home Page");
-        String deviceName = TestDataHandler.tc11HUPNpotgSL.getDeviceName();
-        getRogersDeviceCataloguePage().clickDeviceTileCTAButton(TestDataHandler.tc11HUPNpotgSL.getDeviceName());
+        String deviceName = TestDataHandler.tc09HupPpcPotgSharedML.getDeviceName();
+        reporter.hardAssert(getRogersDeviceCataloguePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
+        getRogersDeviceCataloguePage().clickDeviceTileCTAButton(TestDataHandler.tc09HupPpcPotgSharedML.getDeviceName());
         reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed(), "Modal element is present on the screen",
                 "Modal element is not present on the screen");
         reporter.reportLogWithScreenshot("Modal window Popup");
@@ -44,13 +43,17 @@ public class RogersBFA_TC11_HUPNpotgSL_Test extends BaseTestClass {
         reporter.reportLogWithScreenshot("upgrade myphone clicked on Modal window Popup");
         /*
         getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc11HUPNpotgSL.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc11HUPNpotgSL.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc09HUPPotgSL.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc09HUPPotgSL.getPassword());
         reporter.reportLogWithScreenshot("Rogers Login Page");
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
         getRogersLoginPage().switchOutOfSignInIFrame();
          */
+        reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
+        reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
+        getRogersDeviceCataloguePage().selectCTN(TestDataHandler.tc09HupPpcPotgSharedML.getCtn());
+        getRogersDeviceCataloguePage().clickContinueBtn();
         reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
                 "Continue button on the device config page is present",
                 "Continue button on the device config page is not present");
@@ -72,8 +75,9 @@ public class RogersBFA_TC11_HUPNpotgSL_Test extends BaseTestClass {
         reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                 "Billing Address is not selected");
         reporter.reportLogPassWithScreenshot("On Checkout page");
-        getRogersCheckoutPage().clkDeliveryMethodStandard();
-        reporter.reportLogPassWithScreenshot("Standard Delivery selected");
+        getRogersCheckoutPage().clkDeliveryMethod("PRO");
+        reporter.reportLogPassWithScreenshot("Pro on the go Delivery selected");
+        reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
@@ -99,7 +103,7 @@ public class RogersBFA_TC11_HUPNpotgSL_Test extends BaseTestClass {
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
         reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");
-    }
+   }
 
     @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {

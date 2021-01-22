@@ -1,13 +1,12 @@
 package com.rogers.pages;
 
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
-
-import com.rogers.pages.base.BasePageClass;
-
 import utils.FormFiller;
 
 public class RogersIgniteTVCreditCheckPage extends BasePageClass {
@@ -57,7 +56,19 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[@class='passport-component']//input[@aria-label='Please enter your passport number']")
 	WebElement txtPasportNumber;
-		
+
+	@FindBy(xpath = "//div[@class='birth-certificate-component']//input[contains(@id,'ds-form-input-id')]")
+	WebElement txtBirthCertificateNumber;
+
+	@FindBy(xpath = "//ds-modal")
+	WebElement popupAddressModal;
+
+	@FindBy(xpath = "//ds-modal//div[contains(@class,'ds-formField__inputContainer')]")
+	WebElement TxtAddressContainer;
+
+	@FindBy(xpath = "//ds-modal//input[@id='canada-post-address-complete-382']")
+	WebElement TxtEnterAddress;
+
 	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.passport_']//select[contains(@id,'ds-form-input-id-')])[1]")
 	WebElement ddlPassportExpiryYear;
 		
@@ -79,7 +90,10 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	
 	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
 	WebElement txtContainerPasportNumber;
-	
+
+	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
+	WebElement txtContainerBirthCertificateNumber;
+
 		@FindBy(xpath = "//form[@name='cartAbandonmentForm']")
 	WebElement popCartAbandonmentForm;
 	
@@ -101,6 +115,9 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='mini-body']//div[contains(@ng-bind-html,'$root.gwpDetails')]")
 	WebElement gwpYourCart;
 
+	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
+	WebElement btnIgniteAddressLookupSubmit;
+
 	/**
 	 * To click on the chevron on the credit check page
 	 * @author Saurav.Goyal
@@ -119,7 +136,37 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(gwpYourCart, 120);
 		return	getReusableActionsInstance().isElementVisible(gwpYourCart);
 	}
-	
+
+	/**
+	 * To verify Address Modal on the credit check page
+	 * @return true if the Address Modal is available else return false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyAddressModal() {
+		getReusableActionsInstance().waitForElementVisibility(popupAddressModal, 20);
+		return	getReusableActionsInstance().isElementVisible(popupAddressModal);
+	}
+
+	public void setIgniteAddressLookup(String strAddress) {
+		getReusableActionsInstance().waitForElementVisibility(TxtAddressContainer, 60);
+		getReusableActionsInstance().getWhenReady(TxtAddressContainer, 3).click();
+		getReusableActionsInstance().getWhenReady(TxtEnterAddress, 3).clear();
+		getReusableActionsInstance().getWhenReady(TxtEnterAddress, 5).sendKeys(strAddress);
+		getReusableActionsInstance().getWhenVisible(TxtEnterAddress).sendKeys(Keys.TAB);
+		getReusableActionsInstance().getWhenVisible(TxtEnterAddress, 5).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(TxtEnterAddress, 5).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(TxtEnterAddress, 5).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(TxtEnterAddress).sendKeys(Keys.ENTER);
+	}
+
+	/**
+	 * Click the Lookup Submit button to check service availability
+	 * @author chinnarao.vattam
+	 */
+	public void clkIgniteAddressLookupSubmit() {
+		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 60).click();
+	}
+
 	/**
 	 * To verify the Credit Check Year drop down to verify the Credit Evalution Page
 	 * @return true if it the credit check page displays the Credit Check Year drop down, else false
@@ -261,7 +308,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @param strYYYY Expire year
 	 * @author Chinnarao.Vattam
 	 */
-	public void selectExpiryYearYYYY(String strYYYY) {
+	public void selectExpiryYear(String strYYYY) {
 		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlExpiryYear, strYYYY);
 	}
 	
@@ -273,7 +320,15 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 		String strMM = FormFiller.generateNameOfMonth();
 		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlExpiryMonth, strMM);
 	}
-	
+
+	/**
+	 * Set dynamic expire month for the license on Credit check page
+	 * @author Chinnarao.Vattam
+	 */
+	public void selectExpiryMonth(String strMM) {
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlExpiryMonth, strMM);
+	}
+
 	/**
 	 * Set dynamic expire day for the license on Credit check page
 	 * @author Chinnarao.Vattam
@@ -282,7 +337,15 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 		String strDD = FormFiller.generateCalendarDay();
 		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlExpiryDay, strDD);
 	}
-	
+
+	/**
+	 * Set dynamic expire day for the license on Credit check page
+	 * @author Chinnarao.Vattam
+	 */
+	public void selectExpiryDay(String strDD) {
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlExpiryDay, strDD);
+	}
+
 	/**
 	 * Set dynamic license number for British Columbia  on Credit check page
 	 * @param province of address
@@ -296,6 +359,20 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 		txtLicenseNumber.clear();
 		txtLicenseNumber.sendKeys(strLicenseNumber);
 	}
+
+	/**
+	 * Set dynamic license number for British Columbia  on Credit check page
+	 * @param strLicenseNumber of address
+	 * @author Chinnarao.Vattam
+	 */
+	public void setDrivingLicense(String strLicenseNumber) {
+		getReusableActionsInstance().waitForElementVisibility(txtContainer,20);
+		getReusableActionsInstance().getWhenReady(txtContainer,10).click();
+		txtLicenseNumber.click();
+		txtLicenseNumber.clear();
+		txtLicenseNumber.sendKeys(strLicenseNumber);
+	}
+
 	/**
 	 * Set dynamic license number for British Columbia  on Credit check page
 	 * @param province of address
@@ -331,7 +408,19 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 		txtPasportNumber.clear();
 		txtPasportNumber.sendKeys(strPasportNumber);
 	}
-	
+
+	/**
+	 * Set dynamic passport number on Credit check page
+	 * @author Chinnarao.Vattam
+	 */
+	public void setBirthCertificateNumber(String strBirthCertificateNumber) {
+		getReusableActionsInstance().waitForElementVisibility(txtContainerBirthCertificateNumber,30);
+		getReusableActionsInstance().getWhenReady(txtContainerBirthCertificateNumber,10).click();
+		getReusableActionsInstance().clickWhenReady(txtBirthCertificateNumber);
+		txtPasportNumber.clear();
+		txtPasportNumber.sendKeys(strBirthCertificateNumber);
+	}
+
 	/**
 	 * Set dynamic passport number on Credit check page
 	 * @author Chinnarao.Vattam

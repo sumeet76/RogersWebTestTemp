@@ -11,25 +11,21 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * TC05 - Regression - [RNAC BYOD] - Perform Rogers Net New Activation - BYOD with Standard Shipping_E2E
+ * TC06 - Regression - [RNAC BYOD] - Perform Rogers Net New Activation - BYOD with Express Pickup Shipping - BOPIS_E2E
  */
+public class RogersBFA_TC06_NAC_BYOD_BopisTest extends BaseTestClass {
+	String deviceName;
 
-public class RogersBFA_TC05_NAC_BYOD_SS_Test extends BaseTestClass {
-
-	@BeforeMethod (alwaysRun = true) @Parameters({"strBrowser", "strLanguage"})
-	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(System.getProperty("AWSBYODUrl"), strBrowser, strLanguage, RogersEnums.GroupName.redesignrogers, method);
-	}
-	
-	@AfterMethod(alwaysRun = true)
-	public void afterTest () throws InterruptedException {
-		closeSession();
+		startSession(System.getProperty("AWSBYODUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-	@Test(groups = {"RegressionBFA","NACBFA"})
-	public void rogersNacByodSSTest() throws InterruptedException {
-		//############################Plan config page###############################
+	//https://rcom5.qa01.eks.rogers.com/phones/bring-your-own-device?flowType=byod
+	@Test(groups = {"RegressionBFA","SanityBFA","NACBFA"})
+	public void rogersNACBYODBopisTest() throws InterruptedException {
+//############################Plan config page###############################
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(), "BreadCrumb on Plan config page is displaying fine","BreadCrumb is not displaying fine");
 		getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
@@ -48,10 +44,10 @@ public class RogersBFA_TC05_NAC_BYOD_SS_Test extends BaseTestClass {
 		String firstName = getRogersCheckoutPage().setFirstNameCreateProfile();
 		String lastName = getRogersCheckoutPage().setLastNameCreateProfile();
 		String fullNameCreateProfile=firstName+" "+lastName;
-		String contactNumberCreateProfile=TestDataHandler.tc05NACByodSS.getContactNumber();
+		String contactNumberCreateProfile=TestDataHandler.tc06NACByodTermBopis.getContactNumber();
 		getRogersCheckoutPage().setContactNumberCreateProfile(contactNumberCreateProfile);
 		reporter.reportLogPassWithScreenshot("Create Profile Page details Entered till ContactNumber");
-		getRogersCheckoutPage().setBillingAddressCreateProfile(TestDataHandler.tc05NACByodSS.getBillingAddress());
+		getRogersCheckoutPage().setBillingAddressCreateProfile(TestDataHandler.tc06NACByodTermBopis.getBillingAddress());
 		reporter.reportLogPassWithScreenshot("Create Profile Page details provided for email , name and Address");
 		getRogersCheckoutPage().switchToRecaptchaIFrame();
 		getRogersCheckoutPage().clkImNotRombotCheckbox();
@@ -60,16 +56,16 @@ public class RogersBFA_TC05_NAC_BYOD_SS_Test extends BaseTestClass {
 		getRogersCheckoutPage().clkBtnGotoCreditEvalStepper();
 		//***************Credit Evaluation Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(),"CreditEvaluation Title verified","CreditEvaluation Title not present");
-		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc05NACByodSS.getDateOfBirthYear());
-		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc05NACByodSS.getDateOfBirthMonth());
-		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc05NACByodSS.getDateOfBirthDay());
+		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc06NACByodTermBopis.getDateOfBirthYear());
+		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc06NACByodTermBopis.getDateOfBirthMonth());
+		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc06NACByodTermBopis.getDateOfBirthDay());
 		getRogersCheckoutPage().switchToCreditCardIFrame();
-		getRogersCheckoutPage().setCreditCardNumberIFrame(TestDataHandler.tc05NACByodSS.getCreditCardDetails());
+		getRogersCheckoutPage().setCreditCardNumberIFrame(TestDataHandler.tc06NACByodTermBopis.getCreditCardDetails());
 		reporter.reportLogPassWithScreenshot("DOB & Credit Card Details Entered Successfully");
 		getRogersCheckoutPage().switchOutOfCreditCardIFrame();
-		getRogersCheckoutPage().setExpiryDate(TestDataHandler.tc05NACByodSS.getExpiryDate());
-		getRogersCheckoutPage().selectDropdownOption(TestDataHandler.tc05NACByodSS.getDropdownOption());
-		getRogersCheckoutPage().setPassportNumber(TestDataHandler.tc05NACByodSS.getPassportNumber());
+		getRogersCheckoutPage().setExpiryDate(TestDataHandler.tc06NACByodTermBopis.getExpiryDate());
+		getRogersCheckoutPage().selectDropdownOption(TestDataHandler.tc06NACByodTermBopis.getDropdownOption());
+		getRogersCheckoutPage().setPassportNumber(TestDataHandler.tc06NACByodTermBopis.getPassportNumber());
 		reporter.reportLogPassWithScreenshot("PassportNumber Entered Successfully");
 		getRogersCheckoutPage().clkCreditAuthorizationChkBox();
 		getRogersCheckoutPage().clkCreditEvalContinue();
@@ -77,10 +73,10 @@ public class RogersBFA_TC05_NAC_BYOD_SS_Test extends BaseTestClass {
 		reporter.softAssert(getRogersCheckoutPage().isCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed","Credit Evaluation Text not disaplayed on Modal");
 		reporter.reportLogWithScreenshot("Credit Evaluation processing popup");
 		reporter.hardAssert(getRogersCheckoutPage().isIdentificationLabel(),"Credit Evaluation Successful", "Credit Evaluation Identification Label not disaplayed");
-		// ***************Choose a Number Stepper*************//      
+		// ***************Choose a Number Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed","Choose a Number Title not disaplayed");
 		reporter.softAssert(getRogersCheckoutPage().isChooseNumberTabsDisplayed(),"Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
-		getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc05NACByodSS.getCityName());
+		getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc06NACByodTermBopis.getCityName());
 		reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully" );
 		getRogersCheckoutPage().clkChosePhoneNumber();
 		reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
@@ -91,15 +87,17 @@ public class RogersBFA_TC05_NAC_BYOD_SS_Test extends BaseTestClass {
 		// ***************Billing & Payment Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(),"Billing Options Title Displayed","Billing Options Title Not Present");
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed","Select Payment Method Dropdown not disaplayed");
-		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc05NACByodSS.getPaymentMethod());
+		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc06NACByodTermBopis.getPaymentMethod());
 		getRogersCheckoutPage().clkBillingContinueButton();
 		//***************Shipping Options Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().clkBillingAddress(),"Billing Address radio button is selected ","Billing Address is not selected");
-		getRogersCheckoutPage().clkDeliveryMethodStandard();
-		reporter.reportLogPassWithScreenshot("Billing Options Stepper");
+		getRogersCheckoutPage().clkDeliveryMethod("EXPRESS");
+		reporter.reportLogPass("Express Delivery selected");
+		reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent() ,"Express location map available", "Express location map not available");
 		getRogersCheckoutPage().clkContinueBtnShipping();
-		reporter.reportLogPassWithScreenshot("Continue button clicked from Billing Options Stepper");
+		reporter.reportLogPass("Clicked continue button in shipping stepper");
 		getRogersCheckoutPage().clksubmitBtnCheckoutPage();
+		reporter.reportLogPass("Clicked submit button below cart summary");
 		//***************Order Review Page*************//
 		reporter.softAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(),"Order Review Page Title Present","Order Review Page Title is not Present");
 		reporter.reportLogPass("Order Review Page");
@@ -119,4 +117,8 @@ public class RogersBFA_TC05_NAC_BYOD_SS_Test extends BaseTestClass {
 		reporter.reportLogPassWithScreenshot("Purchase includes captured as" + "-->" +purchaseIncludesConfrimation);
 	}
 
+	@AfterMethod(alwaysRun = true)
+	public void afterTest() throws InterruptedException {
+		closeSession();
+	}
 }

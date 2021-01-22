@@ -13,16 +13,16 @@ import java.lang.reflect.Method;
 /**
  * TC16 - Regression - Rogers HUP BOPIS
  */
-class RogersBFA_TC16_HUPNonShareTermBopisSL_Test extends BaseTestClass {
+class RogersBFA_TC16_HUPShareTermBopisML_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","SanityBFA","HUPBFA"})
-    public void rogersHUPNonShareTermBopisSLTest() {
+    public void rogersHUPShareTermBopisMLTest() {
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
         getRogersHomePage().clkSignIn();
         getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc16HUPNonShareTermBopisSL.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16HUPNonShareTermBopisSL.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc16HUPShareTermBopisML.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16HUPShareTermBopisML.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
@@ -31,10 +31,9 @@ class RogersBFA_TC16_HUPNonShareTermBopisSL_Test extends BaseTestClass {
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page");
         getDriver().get(System.getProperty("AWSUrl"));
-		//reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-		reporter.reportLogWithScreenshot("Rogers Home Page");
-        String deviceName = TestDataHandler.tc16HUPNonShareTermBopisSL.getDeviceName();
-        getRogersDeviceCataloguePage().clickDeviceTileCTAButton(TestDataHandler.tc16HUPNonShareTermBopisSL.getDeviceName());
+        String deviceName = TestDataHandler.tc16HUPShareTermBopisML.getDeviceName();
+        reporter.hardAssert(getRogersDeviceCataloguePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
+        getRogersDeviceCataloguePage().clickDeviceTileCTAButton(TestDataHandler.tc16HUPShareTermBopisML.getDeviceName());
         reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed(), "Modal element is present on the screen",
                 "Modal element is not present on the screen");
         reporter.reportLogWithScreenshot("Modal window Popup");
@@ -50,6 +49,10 @@ class RogersBFA_TC16_HUPNonShareTermBopisSL_Test extends BaseTestClass {
 		//getRogersLoginPage().clkSkipIFrame();
 		getRogersLoginPage().switchOutOfSignInIFrame();
          */
+        reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
+        reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
+        getRogersDeviceCataloguePage().selectCTN(TestDataHandler.tc16HUPShareTermBopisML.getCtn());
+        getRogersDeviceCataloguePage().clickContinueBtn();
         reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
                 "Continue button on the device config page is present",
                 "Continue button on the device config page is not present");
@@ -71,9 +74,9 @@ class RogersBFA_TC16_HUPNonShareTermBopisSL_Test extends BaseTestClass {
         reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                 "Billing Address is not selected");
         reporter.reportLogPassWithScreenshot("On Checkout page");
-        getRogersCheckoutPage().clkDeliveryMethodExpress("Express");
+        getRogersCheckoutPage().clkDeliveryMethod("Express");
         reporter.reportLogPassWithScreenshot("Bopis Delivery selected");
-        reporter.hardAssert(getRogersCheckoutPage().isAppointmentTimeAvailable(), "Appointment time is available",
+        reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent(), "Appointment time is available",
                 "Appointment time is not available");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
