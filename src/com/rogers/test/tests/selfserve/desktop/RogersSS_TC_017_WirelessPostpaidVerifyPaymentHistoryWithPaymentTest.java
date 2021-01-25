@@ -15,6 +15,7 @@ import java.lang.reflect.Method;
 public class RogersSS_TC_017_WirelessPostpaidVerifyPaymentHistoryWithPaymentTest extends BaseTestClass {
 	@DataProvider(name = "data-provider")
     public Object[][] dataProviderMethod() {
+		
         return new Object[][] {   
         	{TestDataHandler.tc1920.getUsername(),TestDataHandler.tc1920.getPassword()},
         	{TestDataHandler.tc44DigitalTVAccount.getUsername(),TestDataHandler.tc44DigitalTVAccount.getPassword()},

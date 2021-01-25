@@ -17,8 +17,8 @@ public class RogersSS_TC_037_ValidateAccountWithNoBill extends BaseTestClass {
     public void viewBillTest() {
         getRogersHomePage().clkSignIn();
 		getRogersLoginPage().switchToSignInIFrame();
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc36.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc36.getPassword());
+		getRogersLoginPage().setUsernameIFrame("AutoNDR121SS93@yahoo.com");
+		getRogersLoginPage().setPasswordIFrame("DigiAuto@123");
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
@@ -34,22 +34,15 @@ public class RogersSS_TC_037_ValidateAccountWithNoBill extends BaseTestClass {
         						"Login Error. Refer screenshot");
         getRogersAccountOverviewPage().clickViewYourBill();
 		reporter.reportLogWithScreenshot("Billing and payment page.");
-		if (!getRogersBillingPage().verifyIfAccountHasNoBill()) {
-			getRogersBillingPage().switchToBillViewIframe();
-	        reporter.hardAssert(getRogersBillingPage().verifyBillingAndPaymentPageLoadIframe(),
-	        						"Billing page loaded.",
-	        						"Billing page load Error. Refer screenshot");
-			reporter.reportLogWithScreenshot("View bill page.");
-	        reporter.hardAssert(getRogersBillingPage().verifyYourBillDisplayedIFrame(),
-	        						"Bill viewed successfully.",
-	        						"View Your Bill Error. Refer screenshot");
-	        getRogersBillingPage().scrollToMiddlePage();
-			reporter.reportLogWithScreenshot("Middle of view bill page.");
-		} else {
-	        getRogersBillingPage().scrollToMiddlePage();
-			reporter.reportLogWithScreenshot("There has no bill yet for the account.");
-		}
-
+		
+	        reporter.hardAssert(getRogersBillingPage().verifyIfAccountHasNoBill(),
+	        						"No bill error message displayed.",
+	        						"Billing page loaded");
+			reporter.reportLogWithScreenshot("View No bill display page.");
+			CommonBusinessFlowsThreadLocal.get().scrollToMiddleOfWebPage();
+			reporter.reportLogWithScreenshot("View No bill display page.");
+	       
+		
     }
 
     @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
