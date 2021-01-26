@@ -43,12 +43,16 @@ public class RogersCH_TC_028_SHM_ValidateAccountDashboardTest extends BaseTestCl
             reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
             getRogersSolarisTVDashboardPage().clkSHMBadge();
             reporter.reportLogWithScreenshot("SHM dashboard page");
+            reporter.hardAssert(getRogersSHMDashboardPage().verifySHMDashBoardPageIsDisplayed(),"Launched SHM dashboard successfully", "SHM dashboard failed");
             reporter.softAssert(getRogersSHMDashboardPage().verifyShopForAccessoriesLinkdisplayed(),
             		"SHM Shop For Accessories Link displayed", "SHM Shop For Accessories Link  not displayed correctly please investigate");
             reporter.softAssert(getRogersSHMDashboardPage().verifyLearnAboutSmartHomeMonitoringLinkdisplayed(),
                 "SHM Learn About Smart Home Monitoring displayed", "SHM Learn About SmartHome Monitoring not displayed correctly please investigate");
             reporter.softAssert( getRogersSHMDashboardPage().verifyInsuranceCertificateLinkdisplayed(),
                 "SHM Rogers SHM Dashboard page displayed", "SHM Rogers SHM Dashboard page not displayed correctly please investigate");
+              reporter.softAssert(getRogersSHMDashboardPage().verifyNewToSmartHomeLinkdisplayed(),
+                "New To SmartHome Link displayed", "New To SmartHome Link not displayed correctly please investigate");
+
     }
 
     @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})

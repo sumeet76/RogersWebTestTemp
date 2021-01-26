@@ -24,8 +24,9 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Yes, I have a 4k TV') or contains(text(),'ai un téléviseur 4k')]")
 	WebElement btnYesIHave4KMobile;
 
-	@FindBy(xpath = "//ds-icon[@name='chevron-right']/ancestor::button")
+	@FindBy(xpath = "//a//span[@translate='global.cta.continue']")
 	WebElement btn4KContent;
+	//ds-icon[@name='chevron-right']/ancestor::button
 	//button[contains(@class,'continue-btn-4k')]//ins[@translate='global.cta.continue']
 
 	@FindBy(xpath = "//span[@translate='global.cta.bysSwapLaterContinue']")
