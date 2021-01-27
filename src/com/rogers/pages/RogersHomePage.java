@@ -405,7 +405,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkIgniteTVExistingCustomer() {
-		getReusableActionsInstance().waitForElementVisibility(lnkExistingCustomerIgniteTV, 30);
+		getReusableActionsInstance().waitForElementVisibility(lnkExistingCustomerIgniteTV, 60);
 		getReusableActionsInstance().getWhenReady(lnkExistingCustomerIgniteTV).click();
 	}
 
