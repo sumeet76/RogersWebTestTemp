@@ -31,7 +31,7 @@ import java.lang.reflect.Method;
 public class RogersCH_TC_053_IHP_ValidateOrderInternet extends BaseTestClass {
 
 	@Test(groups = {"RegressionCH","New"})
-    public void checkSolarisRHPDasboard() {
+    public void checkSolarisIhpValidateOrderInternet() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
 		getRogersLoginPage().switchToSignInIFrame();
@@ -49,11 +49,10 @@ public class RogersCH_TC_053_IHP_ValidateOrderInternet extends BaseTestClass {
  		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersHomePage().clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        getRogersHomePage().clkEasyInternet();
+        getRogersHomePage().clkSmartInternet();
 		reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the Internet packages page");
 		getRogersHomePage().clkInternetAvailability();
-		reporter.reportLogWithScreenshot("Launched the customer availability check popup");
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 		String  strAddressLine1=TestDataHandler.tc53_iHPAccount.getAccountDetails().getAddress().get("line1");
 		String  strAddressLine2=TestDataHandler.tc53_iHPAccount.getAccountDetails().getAddress().get("line2");

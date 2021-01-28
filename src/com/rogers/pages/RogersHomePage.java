@@ -64,6 +64,10 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//a[@href='/web/consumer/internet']")
 	WebElement lnkInternet;
 
+	@FindBy(xpath = "//li[@class='o-headerNavDropdown__item']//a[contains(text(),'Internet')]")
+	WebElement lnkSmartInternet;
+
+
 	@FindBy(xpath = "//li[@class='dds_o-mobileNavDropdown__item']/a[@href='/web/consumer/internet']")
 	WebElement lnkInternetMobile;
 	
@@ -209,14 +213,17 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='View navigation']")
 	WebElement lnkViewNavigationMobile;
 	
-	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet ']/span")
+	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet at your address']/span")
 	WebElement lnkInternetAvailability;
+	//a[@title='Check availability of Ignite Internet ']/span
 
-	@FindBy(xpath = "(//div[@class='dsa-billboard__wrapper position-relative'])[2]")
+
+	@FindBy(xpath = "(//div[@class='dsa-billboard__wrapper position-relative'])[1]")
 	WebElement divInternetBuyPage;
 
-	@FindBy(xpath = "//h2[contains(@class,'dsa-billboard__copyHeading ng-star-inserted')]")
+	@FindBy(xpath = "//h1[contains(text(),'Internet')]")
 	WebElement txtInternetBuyPage;
+	//h2[contains(@class,'dsa-billboard__copyHeading ng-star-inserted')]
 
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement loaderInternetServiceability;
@@ -307,10 +314,17 @@ public class RogersHomePage extends BasePageClass {
 	 * Click the SignIn button from the top tile bar 
 	 * @author chinnarao.vattam 
 	 */
-	public void clkEasyInternet() {		
+	public void clkEasyInternet() {
 		getReusableActionsInstance().getWhenVisible(lnkEasyInternet, 30).click();
 	}
-		
+
+	/**
+	 * Click the SignIn button from the top tile bar
+	 * @author chinnarao.vattam
+	 */
+	public void clkSmartInternet() {
+		getReusableActionsInstance().getWhenVisible(lnkSmartInternet, 30).click();
+	}
 	/**
 	 * checks if the contenful url is displayed
 	 * @return true if the contentful url is displayed else false
@@ -405,7 +419,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkIgniteTVExistingCustomer() {
-		getReusableActionsInstance().waitForElementVisibility(lnkExistingCustomerIgniteTV, 30);
+		getReusableActionsInstance().waitForElementVisibility(lnkExistingCustomerIgniteTV, 60);
 		getReusableActionsInstance().getWhenReady(lnkExistingCustomerIgniteTV).click();
 	}
 
@@ -548,6 +562,7 @@ public class RogersHomePage extends BasePageClass {
 	}
 	
 	public void setIgniteAddressLookup(String strAddress) {
+		getReusableActionsInstance().staticWait(6000);
 		getReusableActionsInstance().waitForElementVisibility(txaIgniteAddressContainerExisting, 60);
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressContainerExisting, 3).click();
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();
@@ -709,6 +724,7 @@ public class RogersHomePage extends BasePageClass {
 	public void clkInternetAvailability() {
 		getReusableActionsInstance().waitForElementVisibility(lnkInternetAvailability,120);
 		getReusableActionsInstance().getWhenReady(lnkInternetAvailability,30).click();
+		getReusableActionsInstance().staticWait(6000);
 	}
 	
 }

@@ -21,8 +21,9 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	WebElement btnYesIHave4K;
 	//div[contains(@class,'ute-btn-group-set-accessibility')]//ins[@usertype-translate='global.cta.yesIHave4K']
 
-	@FindBy(xpath = "//span[contains(text(),'Yes, I have a 4k TV') or contains(text(),'ai un téléviseur 4k')]")
+	@FindBy(xpath = "//span[contains(text(),'Yes, they do') or contains(text(),'Oui, ils le font')]")
 	WebElement btnYesIHave4KMobile;
+	//span[contains(text(),'Yes, I have a 4k TV') or contains(text(),'ai un téléviseur 4k')]
 
 	@FindBy(xpath = "//a//span[@translate='global.cta.continue']")
 	WebElement btn4KContent;
@@ -285,6 +286,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkYesIHave4KMobile() {
+		getReusableActionsInstance().waitForElementVisibility(btnYesIHave4KMobile, 90);
 		getReusableActionsInstance().getWhenReady(btnYesIHave4KMobile, 90).click();
 	}
 

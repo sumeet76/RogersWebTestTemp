@@ -295,10 +295,12 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkChangeTVPackage() {
-		getReusableActionsInstance().staticWait(12000);
+		//NL and FL  Provinces taking loang loading time to pull the dashboard details
+		getReusableActionsInstance().staticWait(6000);
 		//getReusableActionsInstance().waitForElementInvisibility(loaderTVDashboard,90);
 		getReusableActionsInstance().waitForElementVisibility(btnChangeTVPackage,120);
-		getReusableActionsInstance().moveToElementAndClick(btnChangeTVPackage, 90);
+		//getReusableActionsInstance().moveToElementAndClick(btnChangeTVPackage, 90);
+		getReusableActionsInstance().executeJavaScriptClick(btnChangeTVPackage);
 		//getReusableActionsInstance().getWhenReady(btnChangeTVPackage, 60).click();
 	}
 

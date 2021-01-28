@@ -11,21 +11,39 @@ public class RogersSmartStreamDashboardPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//a[@href='/customer/support/article/using-voice-commands']")
+	@FindBy(xpath = "//a[@href='/customer/support/article/using-voice-commands']//span[@class='-mr4']")
 	WebElement lnkUsingVoiceCommands;
 	
-	@FindBy(xpath = "//a[@href='/customer/support/article/using-apps-on-ignite-tv']")
+	@FindBy(xpath = "//a[@href='/customer/support/article/using-apps-on-ignite-tv']//span[@class='-mr4']")
 	WebElement lnkUsingAppsOnIgniteTv;
 	
-	@FindBy(xpath = "//a[@href='/customer/support/article/ignite-tv-power-saver']")
+	@FindBy(xpath = "//a[@href='/customer/support/article/ignite-tv-power-saver']//span[@class='-mr4']")
 	WebElement lnkIgniteTvPowerSaver;
 	
-	@FindBy(xpath = "//a[@href='/customer/support/article/ignite-tv-error-codes']")
+	@FindBy(xpath = "//a[@href='/customer/support/article/ignite-tv-error-codes']//span[@class='-mr4']")
 	WebElement lnkIgniteTvErrorCodes;
 	
 	@FindBy(xpath = "//a[@href='/consumer/support/tv/IgniteTV']")
 	WebElement lnkGoToSupportSection;
 
+	@FindBy(xpath = "//h1[@class='ng-star-inserted']")
+	WebElement txtSmartStream;
+
+	@FindBy(xpath = "//i[@class='li-loader']")
+	WebElement popLoader;
+
+
+
+	/**
+	 *Checks if SmartStream dash board  displayed
+	 * @return true if the page is open, else false
+	 * @author chinnarao.vattam
+	 */
+	public Boolean verifySmartStreamdashboard() {
+		getReusableActionsInstance().waitForElementInvisibility(popLoader,90);
+		getReusableActionsInstance().waitForElementVisibility(txtSmartStream,60);
+		return getReusableActionsInstance().isElementVisible(txtSmartStream,20);
+	}
 
 	/**
 	 *Checks if SmartStream Using Voice Commands link is displayed
@@ -33,7 +51,9 @@ public class RogersSmartStreamDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public Boolean verifyUsingVoiceCommandsLinkdisplayed() {
-		return getReusableActionsInstance().isElementVisible(lnkUsingVoiceCommands,60);
+		getReusableActionsInstance().staticWait(7000);
+		getReusableActionsInstance().waitForElementVisibility(lnkUsingVoiceCommands,90);
+		return getReusableActionsInstance().isElementVisible(lnkUsingVoiceCommands,20);
 	}
 	
 	/**
