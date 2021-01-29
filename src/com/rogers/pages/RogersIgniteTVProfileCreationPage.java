@@ -29,13 +29,13 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	WebElement txtConfirmEmail;
 	//input[@id='ds-form-input-id-15']
 	
-	@FindBy(xpath = "//input[contains(@aria-label,'First Name')]")
+	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'First Name')]")
 	WebElement txtFirstName;
 	//input[@id='ds-form-input-id-9']
-	@FindBy(xpath = "//input[contains(@aria-label,'Last Name')]")
+	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'Last Name')]")
 	WebElement txtLastName;
 	//input[@id='ds-form-input-id-10']
-	@FindBy(xpath = "//input[contains(@aria-label,'your phone number')]")
+	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'your phone number')]")
 	WebElement btnPhone;
 	//input[@id='ds-form-input-id-12']
 	

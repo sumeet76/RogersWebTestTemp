@@ -42,8 +42,9 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::span[contains(@class,'ds-button__wrapper')]")
 	WebElement btnInternetBuyContinue;
 	
-	@FindBy(xpath = "//button[@aria-label='Add Ignite Internet 500u to your cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']")
+	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::span[@role='text']")
 	WebElement btnInternetPackage;
+	//button[@aria-label='Add Ignite Internet 500u to your cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']
 
 	/**
 	 * selects the Internet package if it visible and ready if not click on the next arrow to get the desired package
@@ -125,7 +126,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	}
 
 	public void clkInternetBuyContinue() {
-		if(getReusableActionsInstance().isElementVisible(popUpLoading, 10)) {
+		if(!getReusableActionsInstance().isElementVisible(btnInternetBuyContinue, 10)) {
 			getReusableActionsInstance().waitForElementInvisibility(popUpLoading, 30);
 		}
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();

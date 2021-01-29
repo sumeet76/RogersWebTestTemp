@@ -40,9 +40,7 @@ public class RogersSmartStreamDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public Boolean verifySmartStreamdashboard() {
-		getReusableActionsInstance().waitForElementInvisibility(popLoader,90);
-		getReusableActionsInstance().waitForElementVisibility(txtSmartStream,60);
-		return getReusableActionsInstance().isElementVisible(txtSmartStream,20);
+		return getReusableActionsInstance().isElementVisible(txtSmartStream,60);
 	}
 
 	/**
@@ -51,8 +49,6 @@ public class RogersSmartStreamDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public Boolean verifyUsingVoiceCommandsLinkdisplayed() {
-		getReusableActionsInstance().staticWait(7000);
-		getReusableActionsInstance().waitForElementVisibility(lnkUsingVoiceCommands,90);
 		return getReusableActionsInstance().isElementVisible(lnkUsingVoiceCommands,20);
 	}
 	

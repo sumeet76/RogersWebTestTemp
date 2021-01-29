@@ -776,8 +776,6 @@ public class BaseTestClass {
 
             case "selfserve":
             case "selfserve_login":
-
-
                 RogersHomePageThreadLocal.set(new RogersHomePage(getDriver()));
                 RogersLoginPageThreadLocal.set(new RogersLoginPage(getDriver()));
                 RogersShareEverythingPageThreadLocal.set(new RogersShareEverythingPage(getDriver()));
@@ -808,7 +806,6 @@ public class BaseTestClass {
                 RogersDigitalTVDashboardPageThreadLocal.set(new RogersDigitalTVDashboardPage(getDriver()));
                 RogersAccountOverviewPageThreadLocal.set(new RogersAccountOverviewPage(getDriver()));
                 RogersSHMDashboardPageThreadLocal.set(new RogersSHMDashboardPage(getDriver()));
-                RogersSmartStreamDashboardPageThreadLocal.set(new RogersSmartStreamDashboardPage(getDriver()));
                 break;
 
             case "connectedhome_legacyanonymous":
@@ -892,6 +889,8 @@ public class BaseTestClass {
                 RogersHomePhonePortInPageThreadLocal.set(new RogersHomePhonePortInPage(getDriver()));
                 RogersSolarisRHPDashboardPageThreadLocal.set(new RogersSolarisRHPDashboardPage(getDriver()));
                 RogersSolarisTVChannelsAndThemepacksPageThreadLocal.set(new RogersSolarisTVChannelsAndThemepacksPage(getDriver()));
+                RogersSmartStreamDashboardPageThreadLocal.set(new RogersSmartStreamDashboardPage(getDriver()));
+                RogersSHMDashboardPageThreadLocal.set(new RogersSHMDashboardPage(getDriver()));
                 break;
 
             case "connectedhome_login":
@@ -919,10 +918,11 @@ public class BaseTestClass {
                 RogersPaymentOptionsPageThreadLocal.set(new RogersPaymentOptionsPage(getDriver()));
                 RogersIgniteTVCreditCheckPageThreadLocal.set(new RogersIgniteTVCreditCheckPage(getDriver()));
                 RogersHomePhoneSelectionPageThreadLocal.set(new RogersHomePhoneSelectionPage(getDriver()));
+                RogersSHMDashboardPageThreadLocal.set(new RogersSHMDashboardPage(getDriver()));
+                RogersSmartStreamDashboardPageThreadLocal.set(new RogersSmartStreamDashboardPage(getDriver()));
                 break;
 
             case "buyflows":
-
                 RogersHomePageThreadLocal.set(new RogersHomePage(getDriver()));
                 RogersLoginPageThreadLocal.set(new RogersLoginPage(getDriver()));
                 RogersAccountOverviewPageThreadLocal.set(new RogersAccountOverviewPage(getDriver()));

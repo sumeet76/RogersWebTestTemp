@@ -24,8 +24,9 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//h1[@translate='global.label.OrderReview']")
 	WebElement txtAgreementPageInternet;
 	
-	@FindBy(xpath = "//h3[@translate='global.label.OrderReview']")
+	@FindBy(xpath = "//h2[@translate='global.label.OrderReview']")
 	WebElement txtAgreementPageBuy;
+	//h3[@translate='global.label.OrderReview']
 
 	@FindBy(xpath = "//ins[@translate='global.label.reviewHeading']")
 	WebElement infoAgreementMobile;

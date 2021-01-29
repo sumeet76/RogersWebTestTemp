@@ -562,7 +562,6 @@ public class RogersHomePage extends BasePageClass {
 	}
 	
 	public void setIgniteAddressLookup(String strAddress) {
-		getReusableActionsInstance().staticWait(6000);
 		getReusableActionsInstance().waitForElementVisibility(txaIgniteAddressContainerExisting, 60);
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressContainerExisting, 3).click();
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();

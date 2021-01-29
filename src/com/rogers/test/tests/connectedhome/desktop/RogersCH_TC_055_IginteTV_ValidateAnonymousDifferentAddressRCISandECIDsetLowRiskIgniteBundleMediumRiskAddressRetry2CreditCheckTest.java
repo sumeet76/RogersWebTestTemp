@@ -38,6 +38,7 @@ public class RogersCH_TC_055_IginteTV_ValidateAnonymousDifferentAddressRCISandEC
     public void checkAnonymousDifferentAddressRCISandECIDsetLowRiskIgniteBundleMediumRiskAddressRetry2CreditTest() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
 		getRogersHomePage().clkTVBundle();
+
 		reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 		getRogersHomePage().clkServiceability();
@@ -88,8 +89,9 @@ public class RogersCH_TC_055_IginteTV_ValidateAnonymousDifferentAddressRCISandEC
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 		String  strAddressLineOne=TestDataHandler.tc55_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddress().get("line1");
 		String  strAddressLineTwo=TestDataHandler.tc55_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddress().get("line2");
-		getRogersIgniteTVCreditCheckPage().setIgniteAddressLookup(strAddressLineOne+", "+strAddressLineTwo+", CANADA");
-		getRogersIgniteTVCreditCheckPage().clkIgniteAddressLookupSubmit();
+		getRogersIgniteTVCreditCheckPage().setIgniteAddressLookupSecond(strAddressLineOne+", "+strAddressLineTwo+", CANADA");
+		getRogersIgniteTVCreditCheckPage().clkIgniteAddressLookupSecondSubmit();
+
 		reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the tech install page");
 		getRogersTechInstallPage().clkTechInstalConsent();
@@ -123,13 +125,13 @@ public class RogersCH_TC_055_IginteTV_ValidateAnonymousDifferentAddressRCISandEC
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteAnonymous
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_ignitelogin, method);
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_igniteanonymous, method);
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+			closeSession();
 	}
 
 

@@ -45,13 +45,13 @@ public class RogersCH_TC_051_IgniteSmartStream_ValidateSupportSectionTest extend
  		getRogersLoginPage().clkSignInIFrame();
  		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
  	    reporter.reportLogWithScreenshot("Skip popup");
- 	    //getRogersLoginPage().clkSkipIFrame();
+ 	    getRogersLoginPage().clkSkipIFrame();
  	    getRogersLoginPage().switchOutOfSignInIFrame();
  		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
  		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersAccountOverviewPage().clkSmartStream();
 		reporter.hardAssert(getRogersSmartStreamDashboardPage().verifySmartStreamdashboard(),"SmartStream dashboard page","SmartStream dashboard page is not displaying");
-		reporter.softAssert(getRogersSmartStreamDashboardPage().verifyUsingVoiceCommandsLinkdisplayed(),
+		reporter.hardAssert(getRogersSmartStreamDashboardPage().verifyUsingVoiceCommandsLinkdisplayed(),
 				"SmartStream Using Voice Commands Links displayed", "SmartStream Using Voice Commands Links not displayed correctly please investigate");
 		reporter.softAssert(getRogersSmartStreamDashboardPage().verifyUsingAppsOnIgniteTvLinkdisplayed(),
 				"SmartStream Using Apps On Ignite Tv Links displayed", "SmartStream Using Apps On Ignite Tv Links not displayed correctly please investigate");
@@ -72,7 +72,7 @@ public class RogersCH_TC_051_IgniteSmartStream_ValidateSupportSectionTest extend
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 
