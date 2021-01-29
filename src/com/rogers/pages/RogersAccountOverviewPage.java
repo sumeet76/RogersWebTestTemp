@@ -566,9 +566,6 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void clkSmartStream() {
 		getReusableActionsInstance().getWhenReady(btnSmartStream, 90).click();
-		//getReusableActionsInstance().clickIfAvailable (btnSmartStream, 90);
-		//getReusableActionsInstance().staticWait(10000);
-		//getReusableActionsInstance().waitForElementInvisibility(popLoader,90);
 	}
 
 	/**
