@@ -91,6 +91,7 @@ public class BaseTestClass {
     protected static final ThreadLocal<RogersInternetPackageSelectionPage> RogersInternetPackageSelectionPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersDigitalTVDashboardPage> RogersDigitalTVDashboardPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersDigitalTVPackageSelectionPage> RogersDigitalTVPackageSelectionPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<RogersSolarisChannelsExchangePage> RogersSolarisChannelsExchangePageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersSolarisTVDashboardPage> RogersSolarisTVDashboardPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersBuyPage> RogersBuyPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersSolarisRHPDashboardPage> RogersSolarisRHPDashboardPageThreadLocal = new ThreadLocal<>();
@@ -293,6 +294,10 @@ public class BaseTestClass {
 
     public static RogersDigitalTVPackageSelectionPage getRogersDigitalTVPackageSelectionPage() {
         return RogersDigitalTVPackageSelectionPageThreadLocal.get();
+    }
+
+    public static RogersSolarisChannelsExchangePage getRogersSolarisChannelsExchangePage() {
+        return RogersSolarisChannelsExchangePageThreadLocal.get();
     }
 
     public static RogersSolarisTVDashboardPage getRogersSolarisTVDashboardPage() {
@@ -924,6 +929,7 @@ public class BaseTestClass {
                 RogersHomePhoneSelectionPageThreadLocal.set(new RogersHomePhoneSelectionPage(getDriver()));
                 RogersSHMDashboardPageThreadLocal.set(new RogersSHMDashboardPage(getDriver()));
                 RogersSmartStreamDashboardPageThreadLocal.set(new RogersSmartStreamDashboardPage(getDriver()));
+                RogersSolarisChannelsExchangePageThreadLocal.set(new RogersSolarisChannelsExchangePage(getDriver()));
                 break;
 
             case "buyflows":
