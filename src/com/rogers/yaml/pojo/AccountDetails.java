@@ -36,6 +36,9 @@ public class AccountDetails {
 	private String swapInChannelOne;
 	private String swapInChannelTwo;
 	private String swapInChannelThree;
+	private String swapOutChannelOne;
+	private String swapOutChannelTwo;
+	private String swapOutChannelThree;
 	private String year;
 	private String date;
 	private String month;
@@ -650,6 +653,44 @@ public class AccountDetails {
 	 */
 	public void setBirthCertNumber(String birthCertNumber) {
 		this.birthCertNumber = birthCertNumber;
+	}
+
+	/**
+	 * @return the swapOutChannelOne
+	 */
+	public String getSwapOutChannelOne() {
+		return swapOutChannelOne;
+	}
+	/**
+	 * @param swapOutChannelOne  the swapOutChannelOne to set
+	 */
+	public void setSwapOutChannelOne(String swapOutChannelOne) {
+		this.swapOutChannelOne = swapOutChannelOne;
+	}
+
+	/**
+	 * @return the swapOutChannelTwo
+	 */
+	public String getSwapOutChannelTwo() {
+		return swapOutChannelTwo;
+	}
+	/**
+	 * @param swapOutChannelTwo  the swapOutChannelTwo to set
+	 */
+	public void setSwapOutChannelTwo(String swapOutChannelTwo) {
+		this.swapOutChannelTwo = swapOutChannelTwo;
+	}
+	/**
+	 * @return the swapOutChannelThree
+	 */
+	public String getSwapOutChannelThree() {
+		return swapOutChannelThree;
+	}
+	/**
+	 * @param swapOutChannelThree  the swapOutChannelThree to set
+	 */
+	public void setSwapOutChannelThree(String swapOutChannelThree) {
+		this.swapOutChannelThree = swapOutChannelThree;
 	}
 
 }

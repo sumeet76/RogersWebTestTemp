@@ -48,14 +48,16 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.driving_l']//select[contains(@id,'ds-form-input-id-')])[3]")
 	WebElement ddlExpiryDay;
 		
-	@FindBy(xpath = "//input[contains(@aria-label,'license number') or  contains(@aria-label,'de licence') ]")
+	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'Please enter your driver')]")
 	WebElement txtLicenseNumber;
-	  	
+	//input[contains(@aria-label,'license number') or  contains(@aria-label,'de licence')]
+
 	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.secondIdO']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlSecondIdOption;
 	
-	@FindBy(xpath = "//div[@class='passport-component']//input[@aria-label='Please enter your passport number']")
+	@FindBy(xpath = "//input[@ng-reflect-a11y-description='Please enter your passport num']")
 	WebElement txtPasportNumber;
+	//div[@class='passport-component']//input[@aria-label='Please enter your passport number']
 
 	@FindBy(xpath = "//div[@class='birth-certificate-component']//input[contains(@id,'ds-form-input-id')]")
 	WebElement txtBirthCertificateNumber;
@@ -69,6 +71,9 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	@FindBy(xpath = "//ds-modal//input[@id='canada-post-address-complete-382']")
 	WebElement TxtEnterAddress;
 
+	@FindBy(xpath = "//ds-modal//input[contains(@id,'canada-post-address-complete')]")
+	WebElement TxtReskRuleaddress;
+
 	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.passport_']//select[contains(@id,'ds-form-input-id-')])[1]")
 	WebElement ddlPassportExpiryYear;
 		
@@ -81,9 +86,10 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	@FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]")
 	WebElement chkConsent;
 
-	@FindBy(xpath = "//button[contains(@class,'-primary -large')]")
+	@FindBy(xpath = "//span[contains(@translate,'global.cta.continue')]/ancestor::a")
 	WebElement btnCreditCheckSubmit;
 	//button[@class='ute-btn-primary']
+	//button[contains(@class,'-primary -large')]
 	
 	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
 	WebElement txtContainer;
@@ -159,6 +165,18 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 		getReusableActionsInstance().getWhenVisible(TxtEnterAddress).sendKeys(Keys.ENTER);
 	}
 
+	public void setIgniteAddressLookupSecond(String strAddress) {
+		getReusableActionsInstance().waitForElementVisibility(TxtAddressContainer, 60);
+		getReusableActionsInstance().getWhenReady(TxtAddressContainer, 3).click();
+		getReusableActionsInstance().getWhenReady(TxtReskRuleaddress, 3).clear();
+		getReusableActionsInstance().getWhenReady(TxtReskRuleaddress, 5).sendKeys(strAddress);
+		getReusableActionsInstance().getWhenVisible(TxtReskRuleaddress).sendKeys(Keys.TAB);
+		getReusableActionsInstance().getWhenVisible(TxtReskRuleaddress, 5).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(TxtReskRuleaddress, 5).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(TxtReskRuleaddress, 5).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(TxtReskRuleaddress).sendKeys(Keys.ENTER);
+	}
+
 	/**
 	 * Click the Lookup Submit button to check service availability
 	 * @author chinnarao.vattam
@@ -167,6 +185,16 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 60).click();
 	}
 
+	/**
+	 * Click the Lookup Submit button to check service availability
+	 * @author chinnarao.vattam
+	 */
+	public void clkIgniteAddressLookupSecondSubmit() {
+		getReusableActionsInstance().staticWait(10000);
+		getReusableActionsInstance().waitForElementVisibility(btnIgniteAddressLookupSubmit, 20);
+		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 60).click();
+		getReusableActionsInstance().staticWait(10000);
+	}
 	/**
 	 * To verify the Credit Check Year drop down to verify the Credit Evalution Page
 	 * @return true if it the credit check page displays the Credit Check Year drop down, else false
@@ -417,8 +445,8 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(txtContainerBirthCertificateNumber,30);
 		getReusableActionsInstance().getWhenReady(txtContainerBirthCertificateNumber,10).click();
 		getReusableActionsInstance().clickWhenReady(txtBirthCertificateNumber);
-		txtPasportNumber.clear();
-		txtPasportNumber.sendKeys(strBirthCertificateNumber);
+		txtBirthCertificateNumber.clear();
+		txtBirthCertificateNumber.sendKeys(strBirthCertificateNumber);
 	}
 
 	/**

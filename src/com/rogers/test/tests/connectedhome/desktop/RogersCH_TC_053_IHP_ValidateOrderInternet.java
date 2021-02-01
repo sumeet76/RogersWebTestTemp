@@ -32,6 +32,8 @@ public class RogersCH_TC_053_IHP_ValidateOrderInternet extends BaseTestClass {
 
 	@Test(groups = {"RegressionCH","New"})
     public void checkSolarisIhpValidateOrderInternet() {
+		String  strAddressLine1=TestDataHandler.tc53_iHPAccount.getAccountDetails().getAddress().get("line1");
+		String  strAddressLine2=TestDataHandler.tc53_iHPAccount.getAccountDetails().getAddress().get("line2");
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
 		getRogersLoginPage().switchToSignInIFrame();
@@ -54,11 +56,13 @@ public class RogersCH_TC_053_IHP_ValidateOrderInternet extends BaseTestClass {
 		reporter.reportLogWithScreenshot("Launched the Internet packages page");
 		getRogersHomePage().clkInternetAvailability();
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-		String  strAddressLine1=TestDataHandler.tc53_iHPAccount.getAccountDetails().getAddress().get("line1");
-		String  strAddressLine2=TestDataHandler.tc53_iHPAccount.getAccountDetails().getAddress().get("line2");
 		getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
 		getRogersHomePage().clkIgniteAddressLookupSubmit();
-
+		reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
+		getRogersInternetPackageSelectionPage().clkInternetPackage();
+		reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
+		getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
+		//reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
     	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

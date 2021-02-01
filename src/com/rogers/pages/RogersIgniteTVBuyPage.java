@@ -69,10 +69,14 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//button[@class='continue-addon ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
 	WebElement btnHomePhoneContinue;
 	//button[@class='continue-addon ds-button ds-focus ds-active -primary -large']
-	
-	@FindBy(xpath = "//input[@id='have4K-yes']")
+
+	@FindBy(xpath = "//h1[@class='cart-summary__header']")
+	WebElement txtCartSummary;
+
+	@FindBy(xpath = "//ds-radio-button[@aria-label='Select Yes']//div[contains(@id,'ds-radio-input')]")
 	WebElement rdo4KTV;
-	//label[@for='have4K-yes']
+	//ds-radio-button[@aria-label='Select Yes']//div[@class='ds-radioButton__innerCircle']
+	//input[@for='have4K-yes']
 
 	@FindBy(xpath = "//div[@class='mr-8 d-inline-block' and contains(text(),'Total')]")
 	WebElement txtTotalChannels;
@@ -129,8 +133,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//a[@title='MyRogers' or @title='MonRogers' and @class='m-navLink ng-star-inserted']")
 	WebElement lnkMyRogers;
 
-	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
+	@FindBy(xpath = "//span[@translate='global.cta.checkout']/ancestor::span[@role='text']")
 	WebElement btnCheckout;
+	//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']
 	//button[@class='mr-24 cart-summary-checkout ds-button ds-focus ds-active -primary -large']
 	//button[@class='mr-24 cart-summary-checkout ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']
 	
@@ -587,8 +592,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public void set4KTV() {	
 		getReusableActionsInstance().getWhenReady(rdo4KTV, 120);
-		//getReusableActionsInstance().scrollToElement(rdo4KTV);
-		getReusableActionsInstance().executeJavaScriptClick(rdo4KTV);
+		getReusableActionsInstance().scrollToElement(rdo4KTV);
+		getReusableActionsInstance().getWhenReady(rdo4KTV,30).click();
+		//getReusableActionsInstance().executeJavaScriptClick(rdo4KTV);
 	}
 	
 	/**
@@ -605,7 +611,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verify4KTV() {
-		return	getReusableActionsInstance().isElementVisible(rdo4KTV,90);
+		return	getReusableActionsInstance().isElementVisible(txtCartSummary,90);
 	}
 	
 	/**

@@ -91,6 +91,7 @@ public class BaseTestClass {
     protected static final ThreadLocal<RogersInternetPackageSelectionPage> RogersInternetPackageSelectionPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersDigitalTVDashboardPage> RogersDigitalTVDashboardPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersDigitalTVPackageSelectionPage> RogersDigitalTVPackageSelectionPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<RogersSolarisChannelsExchangePage> RogersSolarisChannelsExchangePageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersSolarisTVDashboardPage> RogersSolarisTVDashboardPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersBuyPage> RogersBuyPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersSolarisRHPDashboardPage> RogersSolarisRHPDashboardPageThreadLocal = new ThreadLocal<>();
@@ -293,6 +294,10 @@ public class BaseTestClass {
 
     public static RogersDigitalTVPackageSelectionPage getRogersDigitalTVPackageSelectionPage() {
         return RogersDigitalTVPackageSelectionPageThreadLocal.get();
+    }
+
+    public static RogersSolarisChannelsExchangePage getRogersSolarisChannelsExchangePage() {
+        return RogersSolarisChannelsExchangePageThreadLocal.get();
     }
 
     public static RogersSolarisTVDashboardPage getRogersSolarisTVDashboardPage() {
@@ -705,6 +710,10 @@ public class BaseTestClass {
                 sauceOptions.put(SauceCapabilities.platformName.toString(), TestDataHandler.sauceSettings.getMutableEdgeCapabilities().getPlatformName());
                 sauceOptions.put(SauceCapabilities.browserVersion.toString(), TestDataHandler.sauceSettings.getMutableEdgeCapabilities().getBrowserVersion());
                 break;
+            case "saucesafari":
+                sauceOptions.put(SauceCapabilities.platformName.toString(), TestDataHandler.sauceSettings.getMutableSafariCapabilities().getPlatformName());
+                sauceOptions.put(SauceCapabilities.browserVersion.toString(), TestDataHandler.sauceSettings.getMutableSafariCapabilities().getBrowserVersion());
+                break;
             case "sauceandroidchrome":
                 sauceOptions.put(SauceCapabilities.platformName.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getPlatformName());
                 sauceOptions.put(SauceCapabilities.platformVersion.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getPlatformVersion());
@@ -776,8 +785,6 @@ public class BaseTestClass {
 
             case "selfserve":
             case "selfserve_login":
-
-
                 RogersHomePageThreadLocal.set(new RogersHomePage(getDriver()));
                 RogersLoginPageThreadLocal.set(new RogersLoginPage(getDriver()));
                 RogersShareEverythingPageThreadLocal.set(new RogersShareEverythingPage(getDriver()));
@@ -808,7 +815,6 @@ public class BaseTestClass {
                 RogersDigitalTVDashboardPageThreadLocal.set(new RogersDigitalTVDashboardPage(getDriver()));
                 RogersAccountOverviewPageThreadLocal.set(new RogersAccountOverviewPage(getDriver()));
                 RogersSHMDashboardPageThreadLocal.set(new RogersSHMDashboardPage(getDriver()));
-                RogersSmartStreamDashboardPageThreadLocal.set(new RogersSmartStreamDashboardPage(getDriver()));
                 break;
 
             case "connectedhome_legacyanonymous":
@@ -892,6 +898,8 @@ public class BaseTestClass {
                 RogersHomePhonePortInPageThreadLocal.set(new RogersHomePhonePortInPage(getDriver()));
                 RogersSolarisRHPDashboardPageThreadLocal.set(new RogersSolarisRHPDashboardPage(getDriver()));
                 RogersSolarisTVChannelsAndThemepacksPageThreadLocal.set(new RogersSolarisTVChannelsAndThemepacksPage(getDriver()));
+                RogersSmartStreamDashboardPageThreadLocal.set(new RogersSmartStreamDashboardPage(getDriver()));
+                RogersSHMDashboardPageThreadLocal.set(new RogersSHMDashboardPage(getDriver()));
                 break;
 
             case "connectedhome_login":
@@ -919,10 +927,12 @@ public class BaseTestClass {
                 RogersPaymentOptionsPageThreadLocal.set(new RogersPaymentOptionsPage(getDriver()));
                 RogersIgniteTVCreditCheckPageThreadLocal.set(new RogersIgniteTVCreditCheckPage(getDriver()));
                 RogersHomePhoneSelectionPageThreadLocal.set(new RogersHomePhoneSelectionPage(getDriver()));
+                RogersSHMDashboardPageThreadLocal.set(new RogersSHMDashboardPage(getDriver()));
+                RogersSmartStreamDashboardPageThreadLocal.set(new RogersSmartStreamDashboardPage(getDriver()));
+                RogersSolarisChannelsExchangePageThreadLocal.set(new RogersSolarisChannelsExchangePage(getDriver()));
                 break;
 
             case "buyflows":
-
                 RogersHomePageThreadLocal.set(new RogersHomePage(getDriver()));
                 RogersLoginPageThreadLocal.set(new RogersLoginPage(getDriver()));
                 RogersAccountOverviewPageThreadLocal.set(new RogersAccountOverviewPage(getDriver()));

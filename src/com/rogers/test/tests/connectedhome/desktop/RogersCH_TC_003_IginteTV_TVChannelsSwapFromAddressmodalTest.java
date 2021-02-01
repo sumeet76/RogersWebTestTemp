@@ -58,21 +58,25 @@ public class RogersCH_TC_003_IginteTV_TVChannelsSwapFromAddressmodalTest extends
     reporter.reportLogWithScreenshot("Address confirmation popup has lanched to select Ignite Internet speed button"); 
     getRogersBuyPage().clkExchangeFlexChannel();
     reporter.reportLogWithScreenshot("TV channels pannel has displayed");
-    getRogersSolarisTVDashboardPage().clkOutChannelOne();
-    getRogersSolarisTVDashboardPage().clkOutChannelTwo();
-    getRogersSolarisTVDashboardPage().clkOutChannelThree();
-    reporter.reportLogWithScreenshot("removed the Swap-out Channels");
-    getRogersSolarisTVDashboardPage().swapChannelIn(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getSwapInChannelOne());
-    reporter.reportLogWithScreenshot("Selceted the Swap-in Channel one");
-        getRogersSolarisTVDashboardPage().btnClearSerachResults();
-        getRogersSolarisTVDashboardPage().swapChannelIn(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getSwapInChannelTwo());
-    reporter.reportLogWithScreenshot("Selceted the Swap-in Channel two");
-        getRogersSolarisTVDashboardPage().btnClearSerachResults();
-        getRogersSolarisTVDashboardPage().swapChannelIn(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getSwapInChannelThree());
+     getRogersSolarisChannelsExchangePage().verifyExchangeChannelPage();
+     reporter.reportLogWithScreenshot("TV channels exchange page has launched");
+     getRogersSolarisChannelsExchangePage().verifyChannelsPannel();
+     reporter.reportLogWithScreenshot("TV channels pannel has displayed");
+     getRogersSolarisChannelsExchangePage().swapChannelOut(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getSwapOutChannelOne());
+     reporter.reportLogWithScreenshot("removed the Swap-out Channel one");
+     getRogersSolarisChannelsExchangePage().swapChannelIn(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getSwapInChannelOne());
+     reporter.reportLogWithScreenshot("Selceted the Swap-in Channel one");
+     getRogersSolarisChannelsExchangePage().swapChannelOut(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getSwapOutChannelTwo());
+     reporter.reportLogWithScreenshot("removed the Swap-out Channel two");
+     getRogersSolarisChannelsExchangePage().swapChannelIn(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getSwapInChannelTwo());
+     reporter.reportLogWithScreenshot("Selceted the Swap-in Channel two");
+     getRogersSolarisChannelsExchangePage().swapChannelOut(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getSwapOutChannelThree());
+    reporter.reportLogWithScreenshot("removed the Swap-out Channel three");
+    getRogersSolarisChannelsExchangePage().swapChannelIn(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getSwapInChannelThree());
     reporter.reportLogWithScreenshot("Selceted the Swap-in Channel three");
-        getRogersSolarisTVDashboardPage().clkConfirmSwap();
+    getRogersSolarisChannelsExchangePage().clkConfirmSwap();
     reporter.reportLogWithScreenshot("Swap Success popup has launched");
-    getRogersSolarisTVDashboardPage().clkSuccessSwap();
+    getRogersSolarisChannelsExchangePage().clkSuccessSwap();
     reporter.reportLogWithScreenshot("Swap success");  
     }
 	
@@ -86,7 +90,7 @@ public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") St
 
 @AfterMethod(alwaysRun = true)
 public void afterTest() {
-	closeSession();
+	//closeSession();
 }
 
 

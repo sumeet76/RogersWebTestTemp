@@ -57,31 +57,49 @@ public class RogersCH_TC_054_IginteTV_WirelessCRMaddressMismatchWithSGI_Validate
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 		getRogersHomePage().clkServiceability();
 		reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-		String  strAddressLine1=TestDataHandler.tc54_iginteTVWirelessCRMaddressMismatchWithSGI.getAccountDetails().getAddress().get("line1");
-		String  strAddressLine2=TestDataHandler.tc54_iginteTVWirelessCRMaddressMismatchWithSGI.getAccountDetails().getAddress().get("line2");
-		getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
-		getRogersHomePage().clkIgniteAddressLookupSubmit();
+		getRogersHomePage().clkUseThisAddress();
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
 		getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
+
 		reporter.reportLogWithScreenshot("Launched the port-in popup");
 
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
 		reporter.reportLogWithScreenshot("Launched the cart summary page");
 		getRogersIgniteTVBuyPage().set4KTV();
 		reporter.reportLogWithScreenshot("4k TV selected");
-		//getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
-		//getRogersIgniteTVBuyPage().clkUpdateCart();
 		getRogersIgniteTVBuyPage().clkCheckout();
 
-		//reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
+		reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the create profile page");
 		getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
+		reporter.hardAssert(getRogersIgniteTVCreditCheckPage().verifyCreditEvalutionPage(),"Credit Evaluation page has Launched","Credit Evaluation page has not Launched");
+		reporter.reportLogWithScreenshot("Launched the credit evaluation page");
+		getRogersIgniteTVCreditCheckPage().selectDOBYear();
+		getRogersIgniteTVCreditCheckPage().selectDOBMonth();
+		getRogersIgniteTVCreditCheckPage().selectDOBDay();
+		reporter.reportLogWithScreenshot("Entered DOB details");
+		getRogersIgniteTVCreditCheckPage().selectFirstID("Driver's License");
+		getRogersIgniteTVCreditCheckPage().selectProvince("Ontario");
+		getRogersIgniteTVCreditCheckPage().selectExpiryYear();
+		getRogersIgniteTVCreditCheckPage().selectExpiryMonth();
+		getRogersIgniteTVCreditCheckPage().selectExpiryDay();
+		getRogersIgniteTVCreditCheckPage().setDrivingLicenseNumber("ON");
+		reporter.reportLogWithScreenshot("Driving License Details");
+		getRogersIgniteTVCreditCheckPage().selectSecondIDOption("Passport");
+		getRogersIgniteTVCreditCheckPage().setPassportNumber();
+		getRogersIgniteTVCreditCheckPage().selectPassportExpiryYear();
+		getRogersIgniteTVCreditCheckPage().selectPassportExpiryMonth();
+		getRogersIgniteTVCreditCheckPage().selectPassportExpiryDay();
+		getRogersIgniteTVCreditCheckPage().clkCreditConsent();
+		reporter.reportLogWithScreenshot("Passport Details");
+		getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
 
 		reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
 		getRogersTechInstallPage().clkTechInstalConsent();
 		reporter.reportLogWithScreenshot("tech install details");
 		getRogersTechInstallPage().clkTechInstallContinue();
+		getRogersPaymentOptionsPage().clkPaymentConfirm();
 		reporter.reportLogWithScreenshot("Launched the order review page");
 		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");

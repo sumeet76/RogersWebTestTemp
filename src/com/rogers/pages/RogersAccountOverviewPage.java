@@ -1,9 +1,6 @@
 package com.rogers.pages;
 
 import com.rogers.pages.base.BasePageClass;
-
-import utils.ReusableActions;
-
 import org.apache.commons.lang3.math.NumberUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -448,6 +445,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy (xpath = "//span[contains(text(),'Payment History') or contains(text(),'Historique de paiement')]")
 	WebElement lnkPaymentHistory;
 
+	@FindBy(xpath = "//i[@class='li-loader']")
+	WebElement popLoader;
+
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
 	 * @return true if more than one ban present else false
@@ -557,7 +557,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkRHPBadge() {
-		getReusableActionsInstance().getWhenReady(btnRHPBadge, 90).click();;
+		getReusableActionsInstance().getWhenReady(btnRHPBadge, 90).click();
 		}
 
 	/**
@@ -565,7 +565,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSmartStream() {
-		getReusableActionsInstance().getWhenReady(btnSmartStream, 90).click();;
+		getReusableActionsInstance().getWhenReady(btnSmartStream, 90).click();
 	}
 
 	/**

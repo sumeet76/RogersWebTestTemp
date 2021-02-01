@@ -88,9 +88,15 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath ="//label[@for='ds-checkbox-id-0']")
 	WebElement chkTechInstalConsentExistingCustomer;
 	
-	@FindBy(xpath ="//button[@aria-label='Click here to continue']")
+
+	@FindBy(xpath ="//span[@id='ariaClickToContinue']/ancestor::a")
 	WebElement btnTechInstallContinue;
 	//span[@translate='global.checkout.fulfillment.confirm']
+//button[@aria-label='Click here to continue']
+
+	@FindBy(xpath ="//span[@translate='global.checkout.fulfillment.confirm']")
+	WebElement btn3PTechInstallContinue;
+//button[@aria-label='Click here to continue']
 
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
@@ -188,6 +194,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyTechInstallPage() {
+		getReusableActionsInstance().staticWait(10000);
 		return	getReusableActionsInstance().isElementVisible(txtTechInstalpage, 120);
 	}
 	
@@ -554,6 +561,16 @@ public class RogersTechInstallPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementTobeClickable(btnTechInstallContinue, 60);
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 		getReusableActionsInstance().getWhenReady(btnTechInstallContinue, 30).click();
+	}
+
+	/**
+	 * Click the continue button to continue the TechInstall on installation page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clk3PTechInstallContinue() {
+		getReusableActionsInstance().waitForElementTobeClickable(btn3PTechInstallContinue, 60);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().getWhenReady(btn3PTechInstallContinue, 30).click();
 	}
 
 	/**
