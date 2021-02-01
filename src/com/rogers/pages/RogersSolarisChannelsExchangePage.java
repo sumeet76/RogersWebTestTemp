@@ -49,9 +49,13 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@class,'mobile')]//a[@aria-describedby='ariaExchangeChannelsPage' ]//span[@role='text']")
 	WebElement btnConfirmSwapMobile;
 
-	@FindBy(xpath = "//button[@class='ute-btn-primary ute-md']")
+	@FindBy(xpath = "//ds-icon[@ng-reflect-color='success']/ancestor::div//span[@class='ds-icon rds-icon-right']/ancestor::a/span")
 	WebElement btnContinueSwap;	
 	//button[@translate='global.dashboard.tv.exchangeFlexChannels.modalConfirmCTA']
+   //button[@class='ute-btn-primary ute-md']
+	@FindBy(xpath = "//ds-icon[@ng-reflect-color='success']")
+	WebElement icnSuccess;
+
 	@FindBy(xpath = "//button[@class='ute-btn-primary ute-md']")
 	WebElement btnOK;
 
@@ -60,6 +64,12 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 
 	@FindBy(xpath = "//div[@class='exchange-channels-page__header']//h1")
 	WebElement txtExchangeChannelPage;
+
+	@FindBy(xpath = "//button[contains(@class,'d-inline-block -secondary -large')]")
+	WebElement btnRemoveChannel;
+
+	@FindBy(xpath = "//button[contains(@class,'d-inline-block -secondary -large')]")
+	WebElement btnAddChannel;
 
 	/**
 	 * Click the Change FlexChannels link on solaris TV dashboard page
@@ -79,6 +89,16 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	 */
 	public boolean verifyExchangeChannelPage() {
 		return getReusableActionsInstance().isElementVisible(txtExchangeChannelPage, 90);
+	}
+
+	/**
+	 * To verify the  ExchangeChannel page
+	 * @return true if the Availability of Internet Menu is displayed; else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyExchangeSuccess() {
+		getReusableActionsInstance().waitForElementVisibility(icnSuccess, 90);
+		return getReusableActionsInstance().isElementVisible(icnSuccess, 20);
 	}
 
 	/**
@@ -171,7 +191,7 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void swapChannelIn(String strInChannel) {
-		By imgChannel = By.xpath("//span[contains(text(),'"+ strInChannel+"')]/ancestor::label//input[@type='checkbox']");
+		By imgChannel = By.xpath("//span[contains(text(),'"+ strInChannel+"')]/ancestor::div[@class='channel-chip']//span[@class='ds-icon rds-icon-info-circle ds-color-aqua']");
 			getReusableActionsInstance().getWhenReady(imgChannel, 30).click();
 	}
 
@@ -181,7 +201,7 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void swapChannelOut(String strOutChannel) {
-		By imgChannelOut = By.xpath("//span[contains(text(),'"+ strOutChannel+"')]/ancestor::label//input[@type='checkbox']");
+		By imgChannelOut = By.xpath("//span[contains(text(),'"+ strOutChannel+"')]/ancestor::div[@class='channel-chip']//span[@class='ds-icon rds-icon-info-circle ds-color-aqua']");
 		getReusableActionsInstance().getWhenReady(imgChannelOut, 30).click();
 	}
 
@@ -201,13 +221,21 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	}
 
 	/**
-	 * Click the Channel Add button 
+	 * Click the Channel Add button
 	 * @author chinnarao.vattam
 	 */
-	public void btnChannelAdd() {		
-		getReusableActionsInstance().getWhenReady(btnConfirmSelectedChannel, 90).click();
+	public void clkAddChannel() {
+		getReusableActionsInstance().getWhenReady(btnAddChannel, 90).click();
 	}
-	
+
+	/**
+	 * Click the Channel Remove button
+	 * @author chinnarao.vattam
+	 */
+	public void clkRemoveChannel() {
+		getReusableActionsInstance().getWhenReady(btnRemoveChannel, 90).click();
+	}
+
 	/**
 	 * Click the Serach Results on flex channels page
 	 * @author chinnarao.vattam
@@ -240,8 +268,7 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSuccessSwap() {	
-		getReusableActionsInstance().waitForElementVisibility(btnContinueSwap, 180);
-		getReusableActionsInstance().getWhenReady(btnContinueSwap, 180).click();
+		getReusableActionsInstance().getWhenReady(btnContinueSwap, 30).click();
 	}
 	
 	/**

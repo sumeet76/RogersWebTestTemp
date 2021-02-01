@@ -54,24 +54,35 @@ public class Mobile_RogersCH_TC_006_IginteTV_TVChannelsSwapTest extends BaseTest
     getRogersSolarisTVDashboardPage().clkTVBadgeMobile();
     reporter.reportLogWithScreenshot("Launched the TV dash board");
     getRogersSolarisTVDashboardPage().clkChangeFlexChannelsMobile();
-    reporter.reportLogWithScreenshot("TV channels pannel has displayed");
-/*    getRogersSolarisTVDashboardPage().clkOutChannelOne();
-    getRogersSolarisTVDashboardPage().clkOutChannelTwo();
-    getRogersSolarisTVDashboardPage().clkOutChannelThree();
-    reporter.reportLogWithScreenshot("removed the Swap-out Channels");
-    getRogersSolarisTVDashboardPage().swapChannelIn(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapInChannelOne());
-    reporter.reportLogWithScreenshot("Selceted the Swap-in Channel one");
-    getRogersSolarisTVDashboardPage().btnClearSerachResults();
-    getRogersSolarisTVDashboardPage().swapChannelIn(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapInChannelTwo());
-    reporter.reportLogWithScreenshot("Selceted the Swap-in Channel two");
-    getRogersSolarisTVDashboardPage().btnClearSerachResults();
-    getRogersSolarisTVDashboardPage().swapChannelIn(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapInChannelThree());
-    reporter.reportLogWithScreenshot("Selceted the Swap-in Channel three");
-    getRogersSolarisTVDashboardPage().clkConfirmSwap();
-    reporter.reportLogWithScreenshot("Swap Success popup has launched");
-    getRogersSolarisTVDashboardPage().clkSuccessSwap();*/
-    reporter.reportLogWithScreenshot("Swap success");  
-	}        
+        reporter.reportLogWithScreenshot("TV channels pannel has displayed");
+        getRogersSolarisChannelsExchangePage().swapChannelOut(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapOutChannelOne());
+        reporter.reportLogWithScreenshot("selected the Swap-out Channel one");
+        getRogersSolarisChannelsExchangePage().clkRemoveChannel();
+        reporter.reportLogWithScreenshot("removed the Swap-out Channel one");
+        getRogersSolarisChannelsExchangePage().swapChannelIn(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapInChannelOne());
+        reporter.reportLogWithScreenshot("Selected the Swap-in Channel one");
+        getRogersSolarisChannelsExchangePage().clkAddChannel();
+        reporter.reportLogWithScreenshot("Added the Swap-in Channel one");
+        getRogersSolarisChannelsExchangePage().swapChannelOut(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapOutChannelTwo());
+        reporter.reportLogWithScreenshot("selected the Swap-out Channel two");
+        getRogersSolarisChannelsExchangePage().clkRemoveChannel();
+        reporter.reportLogWithScreenshot("removed the Swap-out Channel two");
+        getRogersSolarisChannelsExchangePage().swapChannelIn(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapInChannelTwo());
+        reporter.reportLogWithScreenshot("Selected the Swap-in Channel two");
+        getRogersSolarisChannelsExchangePage().clkAddChannel();
+        reporter.reportLogWithScreenshot("Added the Swap-in Channel two");
+        getRogersSolarisChannelsExchangePage().swapChannelOut(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapOutChannelThree());
+        reporter.reportLogWithScreenshot("selected the Swap-out Channel three");
+        getRogersSolarisChannelsExchangePage().clkRemoveChannel();
+        reporter.reportLogWithScreenshot("removed the Swap-out Channel three");
+        getRogersSolarisChannelsExchangePage().swapChannelIn(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapInChannelThree());
+        reporter.reportLogWithScreenshot("Selected the Swap-in Channel three");
+        getRogersSolarisChannelsExchangePage().clkAddChannel();
+        reporter.reportLogWithScreenshot("Added the Swap-in Channel three");
+        getRogersSolarisChannelsExchangePage().clkConfirmSwap();
+        reporter.hardAssert(getRogersSolarisChannelsExchangePage().verifyExchangeSuccess(),"Swap Success","Swap failed");
+        reporter.reportLogWithScreenshot("Swap Success popup has launched");
+	}
 	
 
 @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
