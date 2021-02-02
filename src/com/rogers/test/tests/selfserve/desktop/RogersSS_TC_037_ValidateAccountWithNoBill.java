@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 public class RogersSS_TC_037_ValidateAccountWithNoBill extends BaseTestClass {
 
-    @Test(groups = {"SanitySS","BillingAndPaymentsSS"})
+    @Test(groups = {"BillingAndPaymentsSS"})
     public void viewBillTest() {
         getRogersHomePage().clkSignIn();
 		getRogersLoginPage().switchToSignInIFrame();

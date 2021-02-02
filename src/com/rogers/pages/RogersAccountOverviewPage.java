@@ -299,13 +299,13 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//rss-subscription-details//span[contains(text(),'Add a') or contains(text(),'Ajout d')]")
 	WebElement lnkAddALine;
 
-	@FindBy(xpath = "//h4[@translate='see.has_share_group_popup_title']")
+	@FindBy(xpath = "//*[text()='Choose a plan to add your new line to' or text()='Choisir un forfait auquel ajouter votre nouvelle ligne']")
 	WebElement headerOverlayforAddLink;
 	
-	@FindBy(xpath = "//*[@translate='see.add_to_shared_plan']")
+	@FindBy(xpath = "//*[@data-id='Add this line to my shared Rogers Infinite plan' or @data-id='Mon forfait Infini de Rogers à partager']")
 	WebElement btnAddToSharedPlan;
 		
-	@FindBy(xpath = "//*[@translate='see.add_non_shared_line']")
+	@FindBy(xpath = "//*[@data-id='Add this line to a separate plan on my account that doesn’t have data-sharing' or @data-id='Forfait distinct sans partage']")
 	WebElement btnAddToNonSharedPlan;
 
 	@FindBy(xpath = "//div[contains(@class,'share-everything')]//div[contains(@class,'subscription-detail')]//rss-subscription-detail//a")
@@ -1381,7 +1381,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(headerOverlayforAddLink,30)
 				&& getReusableActionsInstance().isElementVisible(btnAddToSharedPlan)
 				&& getReusableActionsInstance().isElementVisible(btnAddToNonSharedPlan)
-				&& get_Driver_Url().contains("rogers.com/web/totes/wireless/choose-phone");
+				&& get_Driver_Url().contains("choose-phone?");
 	}
 
 	/**
