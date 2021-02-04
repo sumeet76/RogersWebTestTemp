@@ -65,9 +65,10 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	WebElement chkConsentSai;
 
 
-	@FindBy(xpath = "//button[contains(@class,'-primary -large')]")
+	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::a")
 	WebElement btnCreditCheckSubmit;
-	
+	//button[contains(@class,'-primary -large')]
+
 	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
 	WebElement txtContainer;
 	

@@ -87,6 +87,8 @@ public class RogersCH_TC_004_IginteTV_TVChannelsSwapTest extends BaseTestClass {
          getRogersSolarisChannelsExchangePage().clkConfirmSwap();
          reporter.hardAssert(getRogersSolarisChannelsExchangePage().verifyExchangeSuccess(),"Swap Success","Swap failed");
          reporter.reportLogWithScreenshot("Swap Success popup has launched");
+         getRogersSolarisChannelsExchangePage().clkReturnToDashbaord();
+         reporter.reportLogWithScreenshot("Tv Dashboard has launched");
      }
 
 @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
@@ -98,7 +100,7 @@ public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") St
 
 @AfterMethod(alwaysRun = true)
 public void afterTest() {
-	//closeSession();
+	closeSession();
 }
 
 

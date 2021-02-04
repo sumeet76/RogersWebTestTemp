@@ -49,9 +49,9 @@ public class RogersCH_TC_009_IginteTV_TVPackageUpgradeTest extends BaseTestClass
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc09_SolarisTVAccountForUpgrade.accountDetails.getBan());
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        reporter.reportLogWithScreenshot("Launched the Account Page");               
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc09_SolarisTVAccountForUpgrade.accountDetails.getBan());
+    	reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersSolarisTVDashboardPage().clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         getRogersSolarisTVDashboardPage().clkChangeTVPackage();

@@ -66,8 +66,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//label[contains(@for,'global.modals.activateIgniteHomePhoneModal.messageForExistingNumber')]")
 	WebElement btnKeepMyNumber;
 	
-	@FindBy(xpath = "//button[@class='continue-addon ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
+	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::a")
 	WebElement btnHomePhoneContinue;
+	//button[@class='continue-addon ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']
 	//button[@class='continue-addon ds-button ds-focus ds-active -primary -large']
 
 	@FindBy(xpath = "//h1[@class='cart-summary__header']")
@@ -120,13 +121,13 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//button[@type='submit']//span[@translate='global.modals.cartAbandonment.triggerEmailModal.primaryButtonLabel']")
 	WebElement btnSubmit;
 
-	@FindBy(xpath = "//div[@class='ds-checkboxLabel__container ml-8 text-body my-12']")
+	@FindBy(xpath = "//div[@class='ds-checkbox__box my-12']")
 	WebElement clkEmailCheckbox;
 
-	@FindBy(xpath = "//button[@ng-reflect-variant='primary']//span")
+	@FindBy(xpath = "//span[@class='sr-only']/ancestor::a")
 	WebElement clkContinue;
 
-	@FindBy(xpath = "//h2[@translate='global.modals.cartAbandonment.triggerEmailModal.title']")
+	@FindBy(xpath = "//h1[@translate='global.modals.cartAbandonment.triggerEmailModal.title']")
 	WebElement popupEmailModal;
 
 

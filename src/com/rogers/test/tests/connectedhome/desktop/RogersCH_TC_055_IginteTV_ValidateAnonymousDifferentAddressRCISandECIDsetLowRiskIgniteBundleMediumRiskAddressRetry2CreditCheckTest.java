@@ -96,7 +96,7 @@ public class RogersCH_TC_055_IginteTV_ValidateAnonymousDifferentAddressRCISandEC
 		reporter.reportLogWithScreenshot("Launched the tech install page");
 		getRogersTechInstallPage().clkTechInstalConsent();
 		reporter.reportLogWithScreenshot("tech install details");
-		getRogersTechInstallPage().clkTechInstallContinue();
+		getRogersTechInstallPage().clkTechInstallContinueSelf();
 
 		reporter.hardAssert( getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the payment options page");
@@ -131,7 +131,7 @@ public class RogersCH_TC_055_IginteTV_ValidateAnonymousDifferentAddressRCISandEC
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-			closeSession();
+			//closeSession();
 	}
 
 

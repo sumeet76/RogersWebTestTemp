@@ -113,7 +113,7 @@ public class RogersCH_TC_041_IginteTV_ValidateWelcomeBackModalWhencxRetrievesCar
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 

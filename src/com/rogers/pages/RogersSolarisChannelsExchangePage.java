@@ -53,11 +53,12 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	WebElement btnContinueSwap;	
 	//button[@translate='global.dashboard.tv.exchangeFlexChannels.modalConfirmCTA']
    //button[@class='ute-btn-primary ute-md']
+
 	@FindBy(xpath = "//ds-icon[@ng-reflect-color='success']")
 	WebElement icnSuccess;
 
-	@FindBy(xpath = "//button[@class='ute-btn-primary ute-md']")
-	WebElement btnOK;
+	@FindBy(xpath = "//ds-icon[@ng-reflect-color='success']/ancestor::div//span[@class='ds-icon rds-icon-right']")
+	WebElement btnReturnToDashbaord;
 
 	@FindBy(xpath = "//div[@class='channel-list ng-star-inserted']")
 	WebElement lstChannelsPannel;
@@ -116,18 +117,10 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	 * Click the confirm exchange button on solaris TV dashboard page
 	 * @author chinnarao.vattam
 	 */
-	public void clkConfirmExchange() {		
+	public void clkConfirmExchange() {
 		getReusableActionsInstance().clickWhenReady(btnConfirmExchange, 30);
 	}
 
-	/**
-	 * Verify the successful exchange icon on solaris TV dashboard page
-	 * @return true if the solaris TV dashboard page display the successful exchange icon  , else false
-	 * @author chinnarao.vattam
-	 */
-	public boolean verifySuccessIcon() {		
-		return getReusableActionsInstance().isElementVisible(infoSuccessIcon, 180);
-	}
 
 	/**
 	 * It will take the channel list and search those channels on the in channel list panel, if it is available it will select and add to the channel list 
@@ -275,9 +268,8 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	 * Click the OK button on solaris TV dashboard page
 	 * @author chinnarao.vattam
 	 */
-	public void clkOkButton() {	
-		getReusableActionsInstance().waitForElementInvisibility(btnContinueSwap, 90);
-		getReusableActionsInstance().clickWhenReady(btnOK, 30);
+	public void clkReturnToDashbaord() {
+		getReusableActionsInstance().clickWhenReady(btnReturnToDashbaord, 30);
 	}
 
 }

@@ -592,7 +592,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void selectAccount(String strAccountNumber) {		
-	getReusableActionsInstance().clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 90);
+	getReusableActionsInstance().clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 30);
 	}
 	
 	/**
@@ -718,7 +718,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public boolean verifySuccessfulLogin() {	
 		 int counter = 0;
 		 boolean overviewPageLoaded = false;
-		 getReusableActionsInstance().waitForElementVisibility(menuAccountNumber,90);
+		 getReusableActionsInstance().waitForElementVisibility(menuAccountNumber,60);
 		 String strAccountNumber = getReusableActionsInstance().getWhenReady(menuAccountNumber,30).getText();
 		 while (counter<3) {
 			 

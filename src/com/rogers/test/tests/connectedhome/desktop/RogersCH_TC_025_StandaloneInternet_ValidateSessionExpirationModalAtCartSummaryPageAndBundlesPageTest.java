@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_025_StandaloneInternet_ValidateSessionExpirationModalAtCartSummaryPageAndBundlesPageTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","saiCH"})
+	@Test//(groups = {"RegressionCH","saiCH"})
     public void checkSessionExpirationModalatCartSummaryPage() throws InterruptedException {
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
         getRogersHomePage().clkEasyInternet();

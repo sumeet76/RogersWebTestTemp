@@ -45,9 +45,9 @@ public class RogersCH_TC_020_IginteInternet_InternetBundleofferChangePackageUpgr
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
-        //getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc20_SolarisInternetAccountForUpgrade.accountDetails.getBan());
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        reporter.reportLogWithScreenshot("Launched the Account Page");
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc20_SolarisInternetAccountForUpgrade.accountDetails.getBan());
+    	reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersHomePage().clkExistingCustomerShop();
         getRogersHomePage().clkIgniteTVExistingCustomer();
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");

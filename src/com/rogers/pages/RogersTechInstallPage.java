@@ -19,7 +19,7 @@ public class RogersTechInstallPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath ="//input[@id='26']/ancestor::label[@class='a-radio']")
+	@FindBy(xpath ="//input[@id='26']/ancestor::label[contains(@class,'ds-radioLabel')]//div[@class='ds-radioButton__outerCircle my-12']")
 	WebElement rdoTechInstallSlot;
 	
 	@FindBy(xpath ="//select[@id='preferredTimeSlot']")
@@ -89,8 +89,14 @@ public class RogersTechInstallPage extends BasePageClass {
 	WebElement chkTechInstalConsentExistingCustomer;
 	
 
-	@FindBy(xpath ="//span[@id='ariaClickToContinue']/ancestor::a")
+	@FindBy(xpath ="//a[@aria-describedby='ariaClickToContinue']")
 	WebElement btnTechInstallContinue;
+	//span[@translate='global.checkout.fulfillment.confirm']
+//button[@aria-label='Click here to continue']
+
+	@FindBy(xpath ="//span[@id='ariaClickToContinue']/ancestor::a")
+	WebElement btnTechInstallContinueSelf;
+
 	//span[@translate='global.checkout.fulfillment.confirm']
 //button[@aria-label='Click here to continue']
 
@@ -563,6 +569,15 @@ public class RogersTechInstallPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnTechInstallContinue, 30).click();
 	}
 
+	/**
+	 * Click the continue button to continue the TechInstall on installation page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkTechInstallContinueSelf() {
+		getReusableActionsInstance().waitForElementTobeClickable(btnTechInstallContinueSelf, 60);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().getWhenReady(btnTechInstallContinueSelf, 30).click();
+	}
 	/**
 	 * Click the continue button to continue the TechInstall on installation page
 	 * @author Chinnarao.Vattam

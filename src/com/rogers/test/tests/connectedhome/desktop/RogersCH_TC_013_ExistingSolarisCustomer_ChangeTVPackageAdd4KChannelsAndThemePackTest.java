@@ -49,9 +49,9 @@ public class RogersCH_TC_013_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannel
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
-        //getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc13_SolarisChangeTVPackageAdd4KChannelsAndThemePack.accountDetails.getBan());
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        reporter.reportLogWithScreenshot("Launched the Account Page");
+    	getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc13_SolarisChangeTVPackageAdd4KChannelsAndThemePack.accountDetails.getBan());
+    	reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersSolarisTVDashboardPage().clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         getRogersSolarisTVDashboardPage().clkChangeTVPackage();

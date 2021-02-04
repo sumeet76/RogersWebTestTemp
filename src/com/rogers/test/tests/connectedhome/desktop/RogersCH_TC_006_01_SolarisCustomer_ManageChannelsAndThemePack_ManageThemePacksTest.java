@@ -44,9 +44,9 @@ public class RogersCH_TC_006_01_SolarisCustomer_ManageChannelsAndThemePack_Manag
 	    reporter.reportLogWithScreenshot("Skip popup");
 	    getRogersLoginPage().clkSkipIFrame();
 	    getRogersLoginPage().switchOutOfSignInIFrame();
-	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc06_1_SolarisChangeTVManageThemePacks.accountDetails.getBan());
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        reporter.reportLogWithScreenshot("Launched the Account Page");
+		 getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc06_1_SolarisChangeTVManageThemePacks.accountDetails.getBan());
+		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersSolarisTVDashboardPage().clkTVBadge();
 		reporter.reportLogWithScreenshot("Launched the TV dash board");
 		getRogersSolarisTVDashboardPage().clkManageChannelsAndThemePacks();

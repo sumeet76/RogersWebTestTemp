@@ -48,9 +48,9 @@ public class RogersCH_TC_012_IginteTV_TVPackagesNewfoundlandFootprintTest extend
 	        reporter.reportLogWithScreenshot("Skip popup");
 	        getRogersLoginPage().clkSkipIFrame();
 	        getRogersLoginPage().switchOutOfSignInIFrame();
-	        //getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.accountDetails.getBan());
 	    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-            reporter.reportLogWithScreenshot("Launched the Account Page");                
+		    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.accountDetails.getBan());
+	    	reporter.reportLogWithScreenshot("Launched the Account Page");
 	        getRogersSolarisTVDashboardPage().clkTVBadge();
 	        reporter.reportLogWithScreenshot("Launched the TV dash board");
 	        getRogersSolarisTVDashboardPage().clkChangeTVPackage();

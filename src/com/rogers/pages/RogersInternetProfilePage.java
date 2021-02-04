@@ -37,13 +37,13 @@ public class RogersInternetProfilePage extends BasePageClass {
 	@FindBy(xpath = "//input[@name='confirmEmail']")
 	WebElement txtConfirmEmail;
 	
-	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @aria-label='Please enter your First Name.']")
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @ng-reflect-a11y-description='Please enter your First Name.']")
 	WebElement txtFirstName;
 	
-	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @aria-label='Please enter your Last Name.']")
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @ng-reflect-a11y-description='Please enter your Last Name.']")
 	WebElement txtLastName;
 	
-	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @aria-label='Please enter your phone number.']")
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @ng-reflect-a11y-description='Please enter your phone number']")
 	WebElement btnPhone;
 		
 	@FindBy(xpath = "//span[@translate='global.cta.continue']")

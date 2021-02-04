@@ -61,8 +61,9 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.cta.submit']")
 	WebElement clkSubmit;
 	
-	@FindBy(xpath = "//div[@id='ds-checkbox-id-0-label-container']")
+	@FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]")
 	WebElement clkChangeAcceptCheckboxUpdate;
+	//div[@id='ds-checkbox-id-0-label-container']
 	//label[@for='tos_consent']
 
 	@FindBy(xpath = "//span[@class='checkout-authorize-copy']")
@@ -275,13 +276,10 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkAcceptenceCheckboxUpdateInternet() {
-		getReusableActionsInstance().waitForElementVisibility(lnkAgreementPrivacyPolicy, 60);
-		getReusableActionsInstance().getWhenReady(lnkAgreementPrivacyPolicy, 30).click();
-		getReusableActionsInstance().getWhenVisible(lnkAgreementPrivacyPolicy, 30).sendKeys(Keys.PAGE_DOWN);
-		getReusableActionsInstance().getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);
-		getReusableActionsInstance().getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);
-		getReusableActionsInstance().getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);
-		getReusableActionsInstance().getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);
+		getReusableActionsInstance().waitForElementVisibility(lnkAgreementPrivacyPolicy, 30);
+		getReusableActionsInstance().getWhenReady(lnkAgreementPrivacyPolicy, 10).click();
+		getReusableActionsInstance().getWhenVisible(lnkAgreementToEnd, 30);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(lnkAgreementToEnd);
 		getReusableActionsInstance().moveToElementAndClick(clkChangeAcceptCheckboxUpdateInternet, 90);
 		//getReusableActionsInstance().getWhenReady(clkChangeAcceptCheckboxUpdateInternet, 90).click();
 	}
@@ -304,7 +302,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * Click on the Consent check box on the order review page
 	 * @author chinnarao.vattam
 	 */
-	public void clkAcceptenceCheckbox() {
+	public void clkAcceptenceCheckboxx() {
 		getReusableActionsInstance().waitForElementVisibility(lnkAgreementPrivacyPolicy, 30);
 		getReusableActionsInstance().getWhenReady(lnkAgreementPrivacyPolicy, 10).click();
 		getReusableActionsInstance().getWhenVisible(lnkAgreementPrivacyPolicy, 30).sendKeys(Keys.PAGE_DOWN);
@@ -312,9 +310,24 @@ public class RogersOrderReviewPage extends BasePageClass {
 		getReusableActionsInstance().getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);
 		getReusableActionsInstance().getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);
 		getReusableActionsInstance().getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);
+		getReusableActionsInstance().getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);
+		getReusableActionsInstance().getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);
 		getReusableActionsInstance().getWhenReady(clkChangeAcceptCheckbox, 90).click();
 	}
-	
+
+	/**
+	 * Click on the Consent check box on the order review page
+	 * @author chinnarao.vattam
+	 */
+	public void clkAcceptenceCheckbox() {
+		getReusableActionsInstance().waitForElementVisibility(lnkAgreementPrivacyPolicy, 30);
+		getReusableActionsInstance().getWhenReady(lnkAgreementPrivacyPolicy, 10).click();
+		getReusableActionsInstance().getWhenVisible(lnkAgreementToEnd, 30);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(lnkAgreementToEnd);
+
+		getReusableActionsInstance().getWhenReady(clkChangeAcceptCheckbox, 90).click();
+	}
+
 	/**
 	 * Click on the Consent check box on the order review page
 	 * @author chinnarao.vattam

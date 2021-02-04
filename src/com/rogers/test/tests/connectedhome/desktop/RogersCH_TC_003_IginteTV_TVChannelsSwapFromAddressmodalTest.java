@@ -57,7 +57,9 @@ public class RogersCH_TC_003_IginteTV_TVChannelsSwapFromAddressmodalTest extends
 	getRogersHomePage().clkServiceabilityMigration();
     reporter.reportLogWithScreenshot("Address confirmation popup has lanched to select Ignite Internet speed button"); 
     getRogersBuyPage().clkExchangeFlexChannel();
-    reporter.reportLogWithScreenshot("TV channels pannel has displayed");
+     reporter.reportLogWithScreenshot("Launched the TV dash board");
+     getRogersSolarisTVDashboardPage().clkChangeFlexChannels();
+     reporter.reportLogWithScreenshot("TV channels pannel has displayed");
      getRogersSolarisChannelsExchangePage().verifyExchangeChannelPage();
      reporter.reportLogWithScreenshot("TV channels exchange page has launched");
      getRogersSolarisChannelsExchangePage().verifyChannelsPannel();
@@ -89,6 +91,8 @@ public class RogersCH_TC_003_IginteTV_TVChannelsSwapFromAddressmodalTest extends
      getRogersSolarisChannelsExchangePage().clkConfirmSwap();
      reporter.hardAssert(getRogersSolarisChannelsExchangePage().verifyExchangeSuccess(),"Swap Success","Swap failed");
      reporter.reportLogWithScreenshot("Swap Success popup has launched");
+     getRogersSolarisChannelsExchangePage().clkReturnToDashbaord();
+     reporter.reportLogWithScreenshot("Tv Dashboard has launched");
     }
 	
 
