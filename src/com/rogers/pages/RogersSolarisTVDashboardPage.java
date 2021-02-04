@@ -302,8 +302,10 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkChangeFlexChannelsMobile() {
-		//getReusableActionsInstance().waitForElementInvisibility(By.className("QSIPopOverShadowBox"),90);
-		getReusableActionsInstance().waitForElementInvisibility(lnkChangeFlexChannels, 120);
+		getReusableActionsInstance().waitForElementInvisibility(By.className("QSIPopOverShadowBox"),90);
+		//Need ti to pull channels from ATG
+		getReusableActionsInstance().staticWait(6000);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 		getReusableActionsInstance().executeJavaScriptClick(lnkChangeFlexChannels);
 	}
 	/**

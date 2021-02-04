@@ -46,6 +46,10 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@class,'desktop')]//a[@aria-describedby='ariaExchangeChannelsPage' ]//span[@role='text']")
 	WebElement btnConfirmSwapDesktop;
 
+	@FindBy(xpath = "//span[@class='ds-icon rds-icon-chevron-up']/ancestor::button")
+	WebElement btnOpenConfirmSwap;
+
+
 	@FindBy(xpath = "//div[contains(@class,'mobile')]//a[@aria-describedby='ariaExchangeChannelsPage' ]//span[@role='text']")
 	WebElement btnConfirmSwapMobile;
 
@@ -68,6 +72,7 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 
 	@FindBy(xpath = "//button[contains(@class,'d-inline-block -secondary -large')]")
 	WebElement btnRemoveChannel;
+
 
 	@FindBy(xpath = "//button[contains(@class,'d-inline-block -secondary -large')]")
 	WebElement btnAddChannel;
@@ -189,6 +194,17 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	}
 
 	/**
+	 * Search for the required channel and will add it to the to be add list
+	 * @param strInChannel  are channels
+	 * @author chinnarao.vattam
+	 */
+	public void swapChannelInMobile(String strInChannel) {
+		By imgChannelIn = By.xpath("//span[contains(text(),'"+ strInChannel+"')]/ancestor::div[@class='channel-chip']//span[@class='ds-icon rds-icon-info-circle ds-color-aqua']");
+		WebElement imgChannel=getDriver().findElement(imgChannelIn);
+		getReusableActionsInstance().executeJavaScriptClick(imgChannel);
+	}
+
+	/**
 	 * Search for the required channel and will add it to the to be remove list
 	 * @param strOutChannel  are channels
 	 * @author chinnarao.vattam
@@ -199,11 +215,22 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	}
 
 	/**
+	 * Search for the required channel and will add it to the to be remove list
+	 * @param strOutChannel  are channels
+	 * @author chinnarao.vattam
+	 */
+	public void swapChannelOutMobile(String strOutChannel) {
+		By imgChannelOut = By.xpath("//span[contains(text(),'"+ strOutChannel+"')]/ancestor::div[@class='channel-chip']//span[@class='ds-icon rds-icon-info-circle ds-color-aqua']");
+		WebElement ChannelOut=getDriver().findElement(imgChannelOut);
+		getReusableActionsInstance().executeJavaScriptClick(ChannelOut );
+	}
+
+	/**
 	 * Search for the required channel and will add it to the to be add list
 	 * @param strInChannel  are channels
 	 * @author chinnarao.vattam
 	 */
-	public void swapChannelInMobile(String strInChannel) {
+	public void swapChannelInMobilee(String strInChannel) {
 		getReusableActionsInstance().getWhenReady(txtEnterChannelToSerach, 60).clear();
 		getReusableActionsInstance().getWhenReady(txtEnterChannelToSerach, 30).sendKeys(strInChannel);
 		getReusableActionsInstance().waitForElementVisibility(btnSearchChannel,60);
@@ -255,7 +282,18 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(btnConfirmSwapDesktop,30);
 		getReusableActionsInstance().executeJavaScriptClick(btnConfirmSwapDesktop);
 	}
-	
+
+	/**
+	 * Click the confirm channel swap
+	 * @author chinnarao.vattam
+	 */
+	public void clkConfirmSwapMobile() {
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
+		getReusableActionsInstance().getWhenReady(btnOpenConfirmSwap,30).click();
+		getReusableActionsInstance().waitForElementVisibility(btnConfirmSwapMobile,30);
+		getReusableActionsInstance().executeJavaScriptClick(btnConfirmSwapMobile);
+	}
+
 	/**
 	 * Click the continue channel swap 
 	 * @author chinnarao.vattam

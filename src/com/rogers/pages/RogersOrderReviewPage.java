@@ -84,7 +84,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.cta.submitSmartStream']/ancestor::a")
 	WebElement clkSubmitUpdateSS;
 
-	@FindBy(xpath = "//span[@translate='global.cta.submitSmartStream']")
+	@FindBy(xpath = "//span[@translate='global.cta.submitSmartStream']/ancestor::a")
 	WebElement clkSubmitUpdateMobile;
 
 
