@@ -5,6 +5,7 @@ import com.rogers.test.helpers.RogersEnums;
 import org.openqa.selenium.WebElement;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
+import utils.CSVReader;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -13,15 +14,32 @@ import java.util.List;
 
 public class RogersSearch_CBS_1684_Storage_Filter_Functioning_Test extends BaseTestClass {
 
-	@Test
-	public void validateStorageFilterSelection() {
+	@DataProvider(name = "FilterData",parallel=false)
+	public Object[] testData() throws IOException {
+		String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
+		List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
+		Object[] csvRowStrArray = new Object[csvData.size()];
+
+		for (int i = 0; i < csvData.size(); i++) {
+			csvRowStrArray[i] = csvData.get(i);
+		}
+
+		return csvRowStrArray;
+
+
+	}
+	@Test(dataProvider = "FilterData")
+	public void validateStorageFilterSelection(String[] csvRowStrArray) {
+
+		getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0]);
+
 		List<WebElement> resultLinks;
 		String strDeviceName;
 		String strSelectedStorage;
 		List<String> strStorageFilters;
-		String strSearchTerm = "iphone";
+		//String strSearchTerm = "iphone";
 
-		getDriver().get(System.getProperty("SearchUrl")+strSearchTerm);
+	//	getDriver().get(System.getProperty("SearchUrl")+strSearchTerm);
 
 		getRogersSearchPage().clkShopAndThenWirelessFilter();
 		reporter.reportLogWithScreenshot("Shop and Wireless Filters clicked");
@@ -43,7 +61,7 @@ public class RogersSearch_CBS_1684_Storage_Filter_Functioning_Test extends BaseT
 					getRogersDeviceConfigPage().navigateBack();
 				} else {
 					reporter.reportLogFailWithScreenshot("Failed to land on Device Config page");
-					getDriver().get(System.getProperty("SearchUrl")+strSearchTerm);
+					getDriver().get(System.getProperty("SearchUrl")+csvRowStrArray);
 					getRogersSearchPage().clkGrandParentFilter("Shop");
 					getRogersSearchPage().clkParentFilter("Shop","Wireless");
 					getRogersSearchPage().clkStorageType(strStorageFilters.get(i));
@@ -56,7 +74,7 @@ public class RogersSearch_CBS_1684_Storage_Filter_Functioning_Test extends BaseT
 
 	@BeforeMethod(alwaysRun = true)
 	@Parameters({"strBrowser", "strLanguage"})
-	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("fr") String strLanguage, ITestContext testContext, Method method) throws IOException {
 		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 		startSession(System.getProperty("SearchUrl") + "wireless", strBrowser, strLanguage, RogersEnums.GroupName.search, method);
 	}
