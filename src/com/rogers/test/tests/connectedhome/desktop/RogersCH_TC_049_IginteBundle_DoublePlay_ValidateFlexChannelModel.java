@@ -152,7 +152,7 @@ public class RogersCH_TC_049_IginteBundle_DoublePlay_ValidateFlexChannelModel ex
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 

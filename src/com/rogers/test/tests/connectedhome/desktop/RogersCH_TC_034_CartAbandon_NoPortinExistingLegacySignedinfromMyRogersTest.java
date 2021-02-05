@@ -93,7 +93,7 @@ public class RogersCH_TC_034_CartAbandon_NoPortinExistingLegacySignedinfromMyRog
 		getRogersIgniteTVBuyPage().set4KTV();
 		reporter.reportLogWithScreenshot("4k TV selected");
 		getRogersHomePage().clkSignOut();
-		getDriver().get(TestDataHandler.rogersConfig.getRogersURL()+"/consumer/easyloginriverpage");
+		getDriver().navigate().to(TestDataHandler.rogersConfig.getRogersURL()+"/consumer/easyloginriverpage");
 		getRogersHomePage().clkSignIn();
 		getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");

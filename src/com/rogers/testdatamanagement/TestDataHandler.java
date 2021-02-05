@@ -206,8 +206,8 @@ public class TestDataHandler {
 	
 	private static void connectedHomeDataInit() throws FileNotFoundException {
       	chPaymentInfo = YamlHandler.getCablePaymentDetails();
-      	//sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/connectedhome/SauceSettings.yml");
-      	//sacueConfig = YamlHandler.getSauceConfig();              	
+		rogersConfig = YamlHandler.getBFAConfig();
+
       	//Digital TV test data
 		tc51_igniteSmartStream = YamlHandler.getCableAccountData("TC51_IgniteSmartStream");
     	tc43_44_digitalTVAccount = YamlHandler.getCableAccountData("TC43_44_DigitalTVAccount");
