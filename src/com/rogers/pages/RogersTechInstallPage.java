@@ -4,6 +4,7 @@ import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import utils.FormFiller;
 
@@ -87,12 +88,14 @@ public class RogersTechInstallPage extends BasePageClass {
 	
 	@FindBy(xpath ="//label[@for='ds-checkbox-id-0']")
 	WebElement chkTechInstalConsentExistingCustomer;
-	
 
-	@FindBy(xpath ="//a[@aria-describedby='ariaClickToContinue']")
+
+	@FindAll({
+	@FindBy(xpath ="//a[@aria-describedby='ariaClickToContinue']"),
+	@FindBy(xpath ="//span[@translate='global.checkout.fulfillment.confirm']")})
 	WebElement btnTechInstallContinue;
-	//span[@translate='global.checkout.fulfillment.confirm']
 //button[@aria-label='Click here to continue']
+
 
 	@FindBy(xpath ="//span[@id='ariaClickToContinue']/ancestor::a")
 	WebElement btnTechInstallContinueSelf;

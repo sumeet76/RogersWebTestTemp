@@ -110,12 +110,13 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -primary -large ng-star-inserted']")
 	WebElement btnWelcomeback;	
 	//a[@title='Check if Ignite Bundles are available in your area']
-		
-	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large']")
+
+	@FindAll({
+	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large']"),
+	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -secondary -large']")})
 	WebElement btnAddress;	
 	//button[@class='a-btnSecondary']
-	//button[@class='ds-button ds-focus ds-active -secondary -large']
-	
+
 	@FindBy(xpath = "//button[@class='a-btnPrimary']")
 	WebElement btnAddressValidation;
 	
@@ -354,7 +355,14 @@ public class RogersHomePage extends BasePageClass {
 		}
 		getReusableActionsInstance().getWhenReady(btnShop, 20).click();
 	}
-	
+
+	/**
+	 * Click the shop dropdown list from the top tile bar on Home page
+	 * @author chinnarao.vattam
+	 */
+	public void clkShopCartAbondon() {
+		getReusableActionsInstance().getWhenReady(btnShop, 60).click();
+	}
 	/**
 	 * Click the shop dropdown list from the top tile bar on Home page
 	 * @author chinnarao.vattam 

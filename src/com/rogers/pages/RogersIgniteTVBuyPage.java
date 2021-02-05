@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import utils.FormFiller;
 
@@ -28,16 +29,24 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	WebElement btnSolarisSelectPackage;
 	//h4[contains(normalize-space(.),'Télé Élan ') or contains(normalize-space(.),'Ignite TV Popular')]/ancestor::div[@class='solaris-carousel-item']//ins[@translate='global.cta.addToCart']
 
-	@FindBy(xpath ="//span[@id='ariaBundlesAddToCart_Rogers Ignite Popular']/ancestor::a\"")
+	@FindBy(xpath ="//span[@id='ariaBundlesAddToCart_Rogers Ignite Popular']/ancestor::a")
 	WebElement btnSolarisPopularPackage;
 	//h4[contains(normalize-space(.),'Télé Élan ') or contains(normalize-space(.),'Ignite TV Popular')]/ancestor::div[@class='solaris-carousel-item']//ins[@translate='global.cta.addToCart']
 
-	@FindBy(xpath ="//span[@id='ariaBundlesAddToCart_Rogers Ignite Starter']/ancestor::a")
+
+	@FindAll({
+			@FindBy(xpath ="//span[@id='ariaBundlesAddToCart_Rogers Ignite Starter']/ancestor::a"),
+			@FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='allowedFlowAddToCart_Rogers Ignite Starter']/ancestor::a")})
 	WebElement btnSolarisStarterPackageNew;
 	//span[@translate='global.cta.addToCart']
 //h3[contains(text(),'Ignite Starter') or contains(text(),'Élan Découverte')]/ancestor::div[@class='bundle-tile-row']//span[@translate='global.cta.addToCart']
 
-	@FindBy(xpath ="//span[@id='ariaBundlesAddToCart_Rogers Ignite Premier']/ancestor::a")
+
+/*	@FindAll({
+			@FindBy(xpath ="//span[@id='ariaBundlesAddToCart_Rogers Ignite Premier']/ancestor::a"),
+			@FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Premier']/ancestor::a")})
+		*/
+   @FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Premier']/ancestor::a")
 	WebElement btnSolarisPremierPackage;
 //h3[contains(text(),'Ignite Premier') or contains(text(),'Élan Premier')]/ancestor::div[@class='bundle-tile-row']//span[@translate='global.cta.addToCart']
 
@@ -88,7 +97,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@aria-label,'4')]//span[@class='ds-icon rds-icon-info']")
 	WebElement hvr4kChannels;
 
-	@FindBy(xpath = "(//span[@class='ds-icon rds-icon-close'])[2]")
+	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
 	WebElement hvrClose;
 
 	@FindBy(xpath = "//button[contains(@aria-label,'What are Flex Channels?')]//span[@class='ds-icon rds-icon-info']")
@@ -149,7 +158,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//h3[contains(text(),'Ignite Premier') or contains(text(),'Élan Premier')]/ancestor::div[@class='dsa-rate-card__plan p-24']//h4[@class='bundle-tile__tv-channels__flex inline-block']")
 	WebElement txtFlexChannelsRateCardHead;
 
-	@FindBy(xpath = "//h3[contains(text(),'Ignite Premier') or contains(text(),'Élan Premier')]/ancestor::div[@class='dsa-rate-card ds-shadow ds-corners ds-no-overflow']//span[@class='ds-icon rds-icon-expand']")
+	@FindAll({
+			@FindBy(xpath = "//button[@aria-label='View more details about the Rogers Ignite Premier Bundle']"),
+			@FindBy(xpath ="//button[@aria-label='Hide more details about the Rogers Ignite Premier Bundle']")})
 	WebElement txtFlexChannelsRateCardExpansion;
 
 	@FindBy(xpath = "//h3[contains(text(),'Ignite Premier') or contains(text(),'Élan Premier')]/ancestor::div[@class='dsa-rate-card ds-shadow ds-corners ds-no-overflow']//span[@translate='global.label.totalChannels']")
@@ -654,6 +665,14 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	}
 
 	/**
+	 * Click Starter package button for anonymous customer
+	 * @author chinnarao.vattam
+	 */
+	public void selectSolarisPremier() {
+		getReusableActionsInstance().waitForElementVisibility(btnSolarisPremierPackage, 30);
+		getReusableActionsInstance().executeJavaScriptClick(btnSolarisPremierPackage);
+	}
+	/**
 	 * To verify Total Channel
 	 *@return true if the ExchangeFlex Channel link is displayed; else false
 	 * @author chinnarao.vattam
@@ -662,11 +681,11 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(btnSolarisPremierPackage, 120);
 		String strChannels=getReusableActionsInstance().getWhenReady(txtTotalChannelsRateCardHead, 50).getText();
 		String[] channels = strChannels.split("\\s+");
-		getReusableActionsInstance().getWhenReady(txtFlexChannelsRateCardExpansion, 60).click();
+		getReusableActionsInstance().getWhenReady(txtFlexChannelsRateCardExpansion,30).click();
 		String strDetailChannels=getReusableActionsInstance().getWhenReady(txtTotalChannelsRateCardDetails, 50).getText();
 		String[] detailChannels = strDetailChannels.split("\\s+");
 		String detailChannelsValue=detailChannels[0];
-		return channels[0].equals(detailChannels);
+		return channels[0].equals(detailChannelsValue);
 	}
 
 	/**
@@ -677,10 +696,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	public boolean verifyFlexChannelAtRateCard() {
 		String strFlexChannels=getReusableActionsInstance().getWhenReady(txtFlexChannelsRateCardHead, 50).getText();
 		String[] flexChannels = strFlexChannels.split("\\s+");
-		getReusableActionsInstance().getWhenReady(txtFlexChannelsRateCardExpansion, 60).click();
 		String strDetailFlexChannels=getReusableActionsInstance().getWhenReady(txtFlexChannelsRateCardDetails, 50).getText();
 		String[] detailFlexChannels = strDetailFlexChannels.split("\\s+");
 		String strFlexChannelsValue =detailFlexChannels[0];
+		getReusableActionsInstance().executeJavaScriptClick(txtFlexChannelsRateCardExpansion);
 		return flexChannels[0].equals(strFlexChannelsValue);
 	}
 

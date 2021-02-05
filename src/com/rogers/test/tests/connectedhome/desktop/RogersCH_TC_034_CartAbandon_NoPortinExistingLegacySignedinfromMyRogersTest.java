@@ -68,7 +68,7 @@ public class RogersCH_TC_034_CartAbandon_NoPortinExistingLegacySignedinfromMyRog
 	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc34_NoPortInAbondoneFlows.accountDetails.getBan());
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 	    reporter.reportLogWithScreenshot("Launched the Account Page"); 
-        getRogersHomePage().clkShop(); 
+        getRogersHomePage().clkShopCartAbondon();
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
      	getRogersHomePage().clkIgniteTVExistingCustomer();
      	getRogersHomePage().clkNoThnx();
@@ -78,15 +78,15 @@ public class RogersCH_TC_034_CartAbandon_NoPortinExistingLegacySignedinfromMyRog
         getRogersHomePage().clkUseThisAddress();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-		getRogersIgniteTVBuyPage().clkHomephone();
+		//getRogersIgniteTVBuyPage().clkHomephone();
 		getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
         reporter.reportLogWithScreenshot("Launched the information popup");
         getRogersIgniteTVBuyPage().clkIUnderstand();
-		reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
+		//reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the home phone selection page");
-		getRogersHomePhoneSelectionPage().clkSkipforNewNumber();
+		//getRogersHomePhoneSelectionPage().clkSkipforNewNumber();
 		reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
-		getRogersIgniteTVBuyPage().clkHomePhone();
+		//getRogersIgniteTVBuyPage().clkHomePhone();
         reporter.reportLogWithScreenshot("Launched the cart summary page");
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");
 		reporter.reportLogWithScreenshot("Launched the cart summary page");
@@ -128,7 +128,7 @@ public class RogersCH_TC_034_CartAbandon_NoPortinExistingLegacySignedinfromMyRog
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }

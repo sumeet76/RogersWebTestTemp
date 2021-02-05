@@ -451,7 +451,6 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkEmailDigitalCopy() {
-		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().waitForElementVisibility(rdbtnEmail,60);
 		getReusableActionsInstance().clickWhenVisible(rdbtnEmail,60);
 	}

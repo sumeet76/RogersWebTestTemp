@@ -61,9 +61,9 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='ds-checkbox__box my-12 rds-icon-check']")
 	WebElement chkConsent;
 
-	@FindBy(xpath = "//label[@for='ds-checkbox-id-0']")
+	@FindBy(xpath = "//span[@class='checkout-authorize-copy']")
 	WebElement chkConsentSai;
-
+//label[@for='ds-checkbox-id-0']
 
 	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::a")
 	WebElement btnCreditCheckSubmit;

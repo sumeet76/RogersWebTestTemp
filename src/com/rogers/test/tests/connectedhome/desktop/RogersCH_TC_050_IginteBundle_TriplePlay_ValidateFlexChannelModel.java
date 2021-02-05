@@ -46,7 +46,7 @@ public class RogersCH_TC_050_IginteBundle_TriplePlay_ValidateFlexChannelModel ex
        	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	getRogersHomePage().clkServiceability();
     	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-    	getRogersHomePage().clkAddressCheck();
+    	//getRogersHomePage().clkAddressCheck();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
@@ -60,8 +60,7 @@ public class RogersCH_TC_050_IginteBundle_TriplePlay_ValidateFlexChannelModel ex
         reporter.reportLogWithScreenshot("Rate card page");
         reporter.softAssert(getRogersIgniteTVBuyPage().verifyFlexChannelAtRateCard(),"Flex channels are verified","Flex channel verification Failed");
 
-        getRogersIgniteTVBuyPage().selectSolarisPremierPackage();
-
+        getRogersIgniteTVBuyPage().selectSolarisPremier();
         reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
         getRogersHomePhoneSelectionPage().clkSkipforNewNumber();
@@ -77,17 +76,11 @@ public class RogersCH_TC_050_IginteBundle_TriplePlay_ValidateFlexChannelModel ex
         getRogersIgniteTVBuyPage().clkHover4kChannels();
         reporter.reportLogWithScreenshot("what are flex channels Hover message ");
         getRogersIgniteTVBuyPage().clkHoverClose();
-        getRogersIgniteTVBuyPage().clkHoverFelxChannels() ;
-        reporter.reportLogWithScreenshot("How do I see 4K content Hover message");
-        getRogersIgniteTVBuyPage().clkHoverClose();
 
         getRogersIgniteTVBuyPage().clkViewFlexChannels();
         reporter.reportLogWithScreenshot("View Flex Channels");
         getRogersIgniteTVBuyPage().clkHoverPreSelectedChannels();
         reporter.reportLogWithScreenshot("Pre Selected Channels Hover message");
-        getRogersIgniteTVBuyPage().clkHoverClose();
-        getRogersIgniteTVBuyPage().clkHoverAvailableChannels();
-        reporter.reportLogWithScreenshot("Available Channels Hover message");
         getRogersIgniteTVBuyPage().clkHoverClose();
 
         getRogersIgniteTVBuyPage().set4KTV();
