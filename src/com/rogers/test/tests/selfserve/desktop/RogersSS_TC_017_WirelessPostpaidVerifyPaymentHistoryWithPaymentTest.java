@@ -13,21 +13,24 @@ import java.lang.reflect.Method;
 
 
 public class RogersSS_TC_017_WirelessPostpaidVerifyPaymentHistoryWithPaymentTest extends BaseTestClass {
-	@DataProvider(name = "data-provider")
-    public Object[][] dataProviderMethod() {
-		
-        return new Object[][] {   
-        	{TestDataHandler.tc1920.getUsername(),TestDataHandler.tc1920.getPassword()},
-        	{TestDataHandler.tc44DigitalTVAccount.getUsername(),TestDataHandler.tc44DigitalTVAccount.getPassword()},
-        	        	
-        };
-    }
+//	@DataProvider(name = "data-provider")
+//    public Object[][] dataProviderMethod() {
+//		
+//        return new Object[][] {   
+//        	{TestDataHandler.tc1920.getUsername(),TestDataHandler.tc1920.getPassword()},
+//        	{TestDataHandler.tc44DigitalTVAccount.getUsername(),TestDataHandler.tc44DigitalTVAccount.getPassword()},
+//        	        	
+//        };
+//    }
  
 
-    @Test(dataProvider = "data-provider",groups = {"RegressionSS","BillingAndPaymentsSS"})
-    public void verifyPaymentHistoryWithPayment(String strUsername, String Password) {
+    @Test(/*dataProvider = "data-provider",*/groups = {"RegressionSS","BillingAndPaymentsSS"})
+    public void verifyPaymentHistoryWithPayment( ) {
+    	String strUsername = TestDataHandler.tc1920.getUsername();
+    	String Password = TestDataHandler.tc1920.getPassword();
 		getRogersHomePage().clkSignIn();		
 		getRogersLoginPage().switchToSignInIFrame();
+
 		getRogersLoginPage().setUsernameIFrame(strUsername);
 		getRogersLoginPage().setPasswordIFrame(Password);
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
