@@ -3,6 +3,7 @@ package com.rogers.pages;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -22,10 +23,13 @@ public class RogersHomePhonePortInPage extends BasePageClass {
 
 	@FindBy(xpath = "//input[@name='phoneNumberIHP']")
 	WebElement txtHomePhoneNumber;
-	
-	@FindBy(xpath = "//button[@ng-reflect-variant='primary']//span[@class='ds-button__wrapper d-flex justify-content-center align-items-center']")
+
+	@FindAll({
+	@FindBy(xpath = "//span[@id='ariaContinuePortIn']/ancestor::span[@role='text']"),
+	@FindBy(xpath = "//button[@ng-reflect-variant='primary']//span[@class='ds-button__wrapper d-flex justify-content-center align-items-center']")})
 	WebElement btnPhoneNumberEligibiltyCheck;
-	
+
+
 	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -primary -large ng-star-inserted']")
 	WebElement btnConfirmPhone;
 	

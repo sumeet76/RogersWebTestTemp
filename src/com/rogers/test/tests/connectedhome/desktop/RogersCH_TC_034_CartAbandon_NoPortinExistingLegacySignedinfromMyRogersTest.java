@@ -74,7 +74,7 @@ public class RogersCH_TC_034_CartAbandon_NoPortinExistingLegacySignedinfromMyRog
      	getRogersHomePage().clkNoThnx();
     	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	getRogersHomePage().clkServiceabilityMigration();
-    	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");    	
+    	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         getRogersHomePage().clkUseThisAddress();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
@@ -93,6 +93,7 @@ public class RogersCH_TC_034_CartAbandon_NoPortinExistingLegacySignedinfromMyRog
 		getRogersIgniteTVBuyPage().set4KTV();
 		reporter.reportLogWithScreenshot("4k TV selected");
 		getRogersHomePage().clkSignOut();
+
 		getDriver().navigate().to(TestDataHandler.rogersConfig.getRogersURL()+"/consumer/easyloginriverpage");
 		getRogersHomePage().clkSignIn();
 		getRogersLoginPage().switchToSignInIFrame();
@@ -128,7 +129,7 @@ public class RogersCH_TC_034_CartAbandon_NoPortinExistingLegacySignedinfromMyRog
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 }

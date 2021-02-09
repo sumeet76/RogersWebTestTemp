@@ -1,4 +1,5 @@
-package com.rogers.test.tests.connectedhome.mobile;
+package com.rogers.test.tests.connectedhome.desktop;
+
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
@@ -9,46 +10,47 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-
-
 /**
- * This class contains the test method to test Legacy Internet Offer Buy flow for Rogers.com   
+ * This class contains the test method to validate the TV dashboard for Rogers.com   
  * 
- * @author chinnarao.vattam
+ * @author Mirza.Kamran
  * 
  * Test steps:
  *
- *1. Launch Rogers.com
- *2. Browser to Shop menu and select Bundle option
- *3. Scroll down to  Bundles section and click on How to Get it button for a Bundle
- *4. Enter home address to validate the serviceability and click on Check button
- *5. Verify the customer care contact popup
+1.Rogers.com landing page is opened successfully
+2. Sign in popup is displayed
+3. Account overview page displayed
+4. SHM dashboard page should be opened
  *
  **/
 
-public class Mobile_RogersCH_TC_002_Internet_BuyInternetOfferTest extends BaseTestClass {
+public class RogersCH_TC_057_Internet_SignedInSHMBuyInternetSameAddressTest extends BaseTestClass {
 
-    @Test//(groups = {"MobileRegressionCH"})
-    public void checkBuyInternetOfferMobile() throws InterruptedException {   	
-		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-    	getRogersHomePage().clkEasyInternet() ;
-
+	@Test(groups = {"RegressionCH","saiCH"})
+        public void checkSignedInSHMBuyInternetSameAddressTest() {
+        reporter.reportLogWithScreenshot("Launched the Home Page");
+        getRogersHomePage().clkSignIn();
+        getRogersLoginPage().switchToSignInIFrame();
+        reporter.reportLogWithScreenshot("Launched the SignIn popup");
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc57_sHMSignedInInternetBuy.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc57_sHMSignedInInternetBuy.getPassword());
+        reporter.reportLogWithScreenshot("Enter the account credentails");
+        getRogersLoginPage().clkSignInIFrame();
+        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        reporter.reportLogWithScreenshot("Skip popup");
+        getRogersLoginPage().clkSkipIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc57_sHMSignedInInternetBuy.accountDetails.getBan());
+        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+        reporter.reportLogWithScreenshot("Launched the Account Page");
+        getRogersHomePage().clkExistingCustomerShop();
+        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+        getRogersHomePage().clkExistingCustomerInternet();
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        //getRogersHomePage().clkAddressCheck();
-        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
-        getRogersHomePage().clkIgniteAddressLookupSubmit();
-        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
-        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
-        getRogersInternetPackageSelectionPage().clkInternetPackageMobile();
-        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
-        //getRogersHomePage().clkOnlyInternet();
-        getRogersInternetPackageSelectionPage().clkInternetBuyContinueMobile();
+        getRogersHomePage().clkUseThisAddress();
 
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
@@ -56,7 +58,7 @@ public class Mobile_RogersCH_TC_002_Internet_BuyInternetOfferTest extends BaseTe
         getRogersInternetProfilePage().setFirstname();
         getRogersInternetProfilePage().setLastName();
         getRogersInternetProfilePage().setPhone();
-        getRogersInternetProfilePage().clkSubmitProfileMobile();
+        getRogersInternetProfilePage().clkSubmitProfile();
 
         reporter.hardAssert(getRogersInternetCreditCheckPage().verifyCreditEvalutionPage(),"Credit Evalution page has Launched","Credit Evalution page has not Launched");
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
@@ -69,22 +71,22 @@ public class Mobile_RogersCH_TC_002_Internet_BuyInternetOfferTest extends BaseTe
         getRogersInternetCreditCheckPage().selectExpiryYear();
         getRogersInternetCreditCheckPage().selectExpiryMonth();
         getRogersInternetCreditCheckPage().selectExpiryDay();
-        getRogersInternetCreditCheckPage().setDrivingLicenseNumberMobile("ONTARIO");
+        getRogersInternetCreditCheckPage().setDrivingLicenseNumber("ONTARIO");
         reporter.reportLogWithScreenshot("Driving License Details");
         getRogersInternetCreditCheckPage().selectSecondIDOption("Passport");
         getRogersInternetCreditCheckPage().setPassportNumber();
         getRogersInternetCreditCheckPage().selectPassportExpiryYear();
         getRogersInternetCreditCheckPage().selectPassportExpiryMonth();
         getRogersInternetCreditCheckPage().selectPassportExpiryDay();
-        getRogersInternetCreditCheckPage().clkCreditConsentSaiMobile();
+        getRogersInternetCreditCheckPage().clkCreditConsentSai();
         reporter.reportLogWithScreenshot("Passport Details");
-        getRogersInternetCreditCheckPage().clkCreditConsentSubmitMobile();
+        getRogersInternetCreditCheckPage().clkCreditConsentSubmit();
 
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
         getRogersTechInstallPage().clkTechInstalConsent();
         reporter.reportLogWithScreenshot("tech install details");
-        getRogersTechInstallPage().clkTechInstallContinueMobile();
+        getRogersTechInstallPage().clkTechInstallContinue();
 
         reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
@@ -96,36 +98,35 @@ public class Mobile_RogersCH_TC_002_Internet_BuyInternetOfferTest extends BaseTe
         getRogersPaymentOptionsPage().selectExpiryMonth();
         getRogersPaymentOptionsPage().selectExpiryYear();
         reporter.reportLogWithScreenshot("Payment options Details");
-        getRogersPaymentOptionsPage().clkPaymentConfirmMobile();
+        getRogersPaymentOptionsPage().clkPaymentConfirm();
 
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
 
         reporter.hardAssert( getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
-        getRogersOrderReviewPage().clkAcceptenceCheckboxMobile();
+        getRogersOrderReviewPage().clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
-        getRogersOrderReviewPage().clkSubmitMobile();
+        getRogersOrderReviewPage().clkSubmit();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
     }
 
-
-	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
-	//legacyAnonymous
-	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_igniteanonymous, method);
-		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+    @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+	   // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+		startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login,method);
+				
 	}
+   	
 	
-
+	
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 
 
 }
-
 

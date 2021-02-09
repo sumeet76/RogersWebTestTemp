@@ -138,9 +138,9 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkContinueHomePhoneSelection() {
+		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().waitForElementVisibility(btnContinueHomePhoneSelection, 120);
 		getReusableActionsInstance().executeJavaScriptClick(btnContinueHomePhoneSelection);
-
 	}
 
 	/**

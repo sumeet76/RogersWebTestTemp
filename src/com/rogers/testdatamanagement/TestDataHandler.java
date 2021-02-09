@@ -83,11 +83,15 @@ public class TestDataHandler {
 	public static AccountData tc06_2_SolarisChangeTVManageChannels;
 	public static AccountData tc06_1_SolarisChangeTVManageThemePacks;
 	public static AccountData tc35_CRMaddressMismatchWithSGI;
+	public static AccountData tc56_wirelessSignedInInternetBuy;
+	public static AccountData tc57_sHMSignedInInternetBuy;
 	public static AccountData tc51_igniteSmartStream;
 	public static AccountData tc31_SolarisInternetAccountWithUsageAndPackageUpgrade;
 	public static AccountData tc23_standaloneInternetAccountforUpgrade;
 	public static AccountData solarisConsumerNoPortinCartAbandon;
 	public static AccountData solarisConsumerPortInCartAbandon;
+	public static AccountData tc58_saiAccountForIgniteBundleBuy;
+	public static AccountData tc59_saiforIgniteBundle;
 	public static AccountData solarisConsumerGWPDigitalTV;
 	public static AccountData solarisConsumerGWPInternetDTV;
 	public static AccountData solarisConsumerGWPRhpDtv ;
@@ -229,8 +233,12 @@ public class TestDataHandler {
 		
     	//Legacy Internet test data
 		tc46_legacyInternetAccount = YamlHandler.getCableAccountData("TC46_LegacyInternetAccount");
+		tc56_wirelessSignedInInternetBuy = YamlHandler.getCableAccountData("TC56_WirelessSignedInInternetBuy");
+		tc57_sHMSignedInInternetBuy = YamlHandler.getCableAccountData("TC57_SHMSignedInInternetBuy");
+		tc58_saiAccountForIgniteBundleBuy = YamlHandler.getCableAccountData("TC58_SaiAccountForIgniteBundleBuy");
+		tc59_saiforIgniteBundle = YamlHandler.getCableAccountData("TC59_SAIforIgniteBundle");
 
-    	//RHP test data
+		//RHP test data
 		tc48_legacyRHP = YamlHandler.getCableAccountData("TC48_LegacyRHP");
     	tc42_igniteRHP = YamlHandler.getCableAccountData("TC42_IgniteRHP");
     	tc27_28_RogersSHM = YamlHandler.getCableAccountData("TC27_28_RogersSHM");

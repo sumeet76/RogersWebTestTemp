@@ -68,21 +68,21 @@ public class RogersCH_TC_039_IgniteTV_SolarisHAWTFlowPortInwithExistingLineTest 
         getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
        // reporter.hardAssert(getRogersHomePhonePortInPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
-            getRogersHomePhonePortInPage().setHomePhoneNumber(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getPhoneNumber());
-            getRogersHomePhonePortInPage().clkPhoneNumberEligibiltyCheck();
+        getRogersHomePhonePortInPage().setHomePhoneNumber(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getPhoneNumber());
+        getRogersHomePhonePortInPage().clkPhoneNumberEligibiltyCheck();
 
         reporter.hardAssert(getRogersHomePhonePortInPage().verifyPhoneNumberSuccess(),"Port-in Number validation success","Port-in Number validation Failed");
         reporter.reportLogWithScreenshot("Port-in Number validation success");
-            getRogersHomePhonePortInPage().setFirstName();
-            getRogersHomePhonePortInPage().setLastName();
-            getRogersHomePhonePortInPage().setInvoiceAddress(strAddressLine1+", "+strAddressLine2+", CANADA");
-            getRogersHomePhonePortInPage().setCurrentPhoneNumber();
+        getRogersHomePhonePortInPage().setFirstName();
+        getRogersHomePhonePortInPage().setLastName();
+        getRogersHomePhonePortInPage().setInvoiceAddress(strAddressLine1+", "+strAddressLine2+", CANADA");
+        getRogersHomePhonePortInPage().setCurrentPhoneNumber();
         reporter.reportLogWithScreenshot("Port-in details set");
-            getRogersHomePhonePortInPage().selIMEI();
-            getRogersHomePhonePortInPage().setAccountNumberOrIMEI(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getImei()) ;
-            getRogersHomePhonePortInPage().clkPhoneNumberEligibiltyCheck();
+        getRogersHomePhonePortInPage().selIMEI();
+        getRogersHomePhonePortInPage().setAccountNumberOrIMEI(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getImei()) ;
+        getRogersHomePhonePortInPage().clkPhoneNumberEligibiltyCheck();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
-            getRogersIgniteTVBuyPage().clkHomePhone();
+        getRogersIgniteTVBuyPage().clkHomePhone();
 
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
@@ -103,19 +103,19 @@ public class RogersCH_TC_039_IgniteTV_SolarisHAWTFlowPortInwithExistingLineTest 
         getRogersIgniteTVCreditCheckPage().selectDOBDay();
         reporter.reportLogWithScreenshot("Entered DOB details");
 
-            getRogersIgniteTVCreditCheckPage().selectFirstID("Driver's License");
-            getRogersIgniteTVCreditCheckPage().selectProvince("Ontario");
-            getRogersIgniteTVCreditCheckPage().selectExpiryYear();
-            getRogersIgniteTVCreditCheckPage().selectExpiryMonth();
-            getRogersIgniteTVCreditCheckPage().selectExpiryDay();
-            getRogersIgniteTVCreditCheckPage().setDrivingLicenseNumber("ON");
+        getRogersIgniteTVCreditCheckPage().selectFirstID("Driver's License");
+        getRogersIgniteTVCreditCheckPage().selectProvince("Ontario");
+        getRogersIgniteTVCreditCheckPage().selectExpiryYear();
+        getRogersIgniteTVCreditCheckPage().selectExpiryMonth();
+        getRogersIgniteTVCreditCheckPage().selectExpiryDay();
+        getRogersIgniteTVCreditCheckPage().setDrivingLicenseNumber("ON");
         reporter.reportLogWithScreenshot("Driving License Details");
-            getRogersIgniteTVCreditCheckPage().selectSecondIDOption("Passport");
-            getRogersIgniteTVCreditCheckPage().setPassportNumber();
-            getRogersIgniteTVCreditCheckPage().selectPassportExpiryYear();
-            getRogersIgniteTVCreditCheckPage().selectPassportExpiryMonth();
-            getRogersIgniteTVCreditCheckPage().selectPassportExpiryDay();
-            getRogersIgniteTVCreditCheckPage().clkCreditConsent();
+        getRogersIgniteTVCreditCheckPage().selectSecondIDOption("Passport");
+        getRogersIgniteTVCreditCheckPage().setPassportNumber();
+        getRogersIgniteTVCreditCheckPage().selectPassportExpiryYear();
+        getRogersIgniteTVCreditCheckPage().selectPassportExpiryMonth();
+        getRogersIgniteTVCreditCheckPage().selectPassportExpiryDay();
+        getRogersIgniteTVCreditCheckPage().clkCreditConsent();
 
         reporter.reportLogWithScreenshot("Passport Details");
         getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
@@ -126,15 +126,16 @@ public class RogersCH_TC_039_IgniteTV_SolarisHAWTFlowPortInwithExistingLineTest 
         reporter.reportLogWithScreenshot("Launched the tech install page");
         getRogersTechInstallPage().selTechInstalStartDate();
         reporter.reportLogWithScreenshot("Selected Start date for Installation slot");
-        getRogersTechInstallPage().selectPreferredTimeSlot("1: AFT");
+        //getRogersTechInstallPage().selectPreferredTimeSlot(" Afternoon (2pm-6:30pm) ");
         reporter.reportLogWithScreenshot("Selected Start date for Installation slot");
         getRogersTechInstallPage().selTechInstalEndDate();
         reporter.reportLogWithScreenshot("Selected End date for Installation");
-        getRogersTechInstallPage().selectBackupTimeSlot("1: AFT");
+        //getRogersTechInstallPage().selectBackupTimeSlot("1: AFT");
         reporter.reportLogWithScreenshot("Selected End date for Installation slot");
         getRogersTechInstallPage().setContactNumber();
         getRogersTechInstallPage().setMobielNumber();
         reporter.reportLogWithScreenshot("tech install details");
+        getRogersTechInstallPage().clkTechInstalConsent();
         getRogersTechInstallPage().clkTechInstallContinue();
         getRogersPaymentOptionsPage().verifyPaymentModepage();
         reporter.reportLogWithScreenshot("Launched the payment options page");
@@ -161,7 +162,7 @@ public class RogersCH_TC_039_IgniteTV_SolarisHAWTFlowPortInwithExistingLineTest 
 	
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }

@@ -20,7 +20,10 @@ public class RogersHomePage extends BasePageClass {
 	
 	@FindBy(xpath = "//a[@href='/consumer/internet']")
 	WebElement lnkEasyInternet;
-	
+
+	@FindBy(xpath = "//a[@class='m-navLink -dropdown' and contains(text(),'Internet')]")
+	WebElement lnkExstingCustInternet;
+
 	@FindBy(xpath = "//a[@href='/web/consumer/ignite-bundles/tv-internet']")
 	WebElement lnkTVBundle;
 
@@ -29,8 +32,9 @@ public class RogersHomePage extends BasePageClass {
 			@FindBy(xpath = "//div[@class='rcl-navbar-nav']//a[@class='m-navLink -navbar -login']//span[text()='Sign in'  or text()='Connexion']")
 	})
 	WebElement lnkSignIn;
-
-	@FindBy(xpath = "//ul[@class='dds_o-headerNavDropdown -navbar']//a[@href='/web/preLogout.jsp']")
+	@FindAll({
+			@FindBy(xpath = "//ul[@class='dds_o-headerNavDropdown -navbar']//a[@href='/web/preLogout.jsp']"),
+			@FindBy(xpath = "//a[@title='Sign out' and contains(@class,'m-navLink')]")})
 	WebElement lnkSignOut;
 	
 	@FindAll({
@@ -107,8 +111,9 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath ="//div[@class='ng-star-inserted overlay']")
 	WebElement overlayHomePage;
 		
-	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -primary -large ng-star-inserted']")
-	WebElement btnWelcomeback;	
+	@FindBy(xpath = "//a[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large ng-star-inserted']")
+	WebElement btnWelcomeback;
+	//button[@class='ds-button ds-focus ds-active -primary -large ng-star-inserted']
 	//a[@title='Check if Ignite Bundles are available in your area']
 
 	@FindAll({
@@ -216,10 +221,9 @@ public class RogersHomePage extends BasePageClass {
 	
 	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet at your address']/span")
 	WebElement lnkInternetAvailability;
-	//a[@title='Check availability of Ignite Internet ']/span
+	//a[@title='Check availability of Ignite Internet']/span
 
-
-	@FindBy(xpath = "(//div[@class='dsa-billboard__wrapper position-relative'])[1]")
+	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet at your address']/span")
 	WebElement divInternetBuyPage;
 
 	@FindBy(xpath = "//h1[contains(text(),'Internet')]")
@@ -228,6 +232,10 @@ public class RogersHomePage extends BasePageClass {
 
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement loaderInternetServiceability;
+
+	@FindBy(xpath = "//span[@class='m-navLink__icon rds-icon-avatar']")
+	WebElement btnIconAvatar;
+
 	
 	/**
 	 * To verify the Home page
@@ -323,6 +331,14 @@ public class RogersHomePage extends BasePageClass {
 	 * Click the SignIn button from the top tile bar
 	 * @author chinnarao.vattam
 	 */
+	public void clkExistingCustomerInternet() {
+		getReusableActionsInstance().getWhenVisible(lnkExstingCustInternet, 30).click();
+	}
+
+	/**
+	 * Click the SignIn button from the top tile bar
+	 * @author chinnarao.vattam
+	 */
 	public void clkSmartInternet() {
 		getReusableActionsInstance().getWhenVisible(lnkSmartInternet, 30).click();
 	}
@@ -340,7 +356,8 @@ public class RogersHomePage extends BasePageClass {
 	 * Click the Sign Out button from the top tile bar 
 	 * @author chinnarao.vattam 
 	 */
-	public void clkSignOut() {		
+	public void clkSignOut() {
+		getReusableActionsInstance().getWhenVisible(btnIconAvatar,30).click();
 		getReusableActionsInstance().getWhenVisible(lnkSignOut, 30).click();
 	}
 	
@@ -522,9 +539,10 @@ public class RogersHomePage extends BasePageClass {
 	 * Clicks on the 'Service ability' button for Migration flow
 	 * @author chinnarao.vattam
 	 */
-	public void clkServiceabilityMigration() {		
-		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam, 90);
-		getReusableActionsInstance().getWhenReady(btnServiceability, 30).click();
+	public void clkServiceabilityMigration() {
+		getReusableActionsInstance().staticWait(10000);
+		//getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam, 90);
+		//getReusableActionsInstance().getWhenReady(btnServiceability, 30).click();
 	}
 	
 	/**

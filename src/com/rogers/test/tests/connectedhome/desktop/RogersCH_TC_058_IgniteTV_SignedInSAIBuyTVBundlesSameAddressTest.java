@@ -32,16 +32,16 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_058_StandaloneInternet_SignedInBuyTVBundlesDiffDddressTest extends BaseTestClass {
+public class RogersCH_TC_058_IgniteTV_SignedInSAIBuyTVBundlesSameAddressTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","saiCH"})
-    public void checkStandalonePackageUpgrade() {
+	@Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
+    public void checkSignedInSAIBuyTVBundlesSameAddressTest() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
         getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc23_standaloneInternetAccountforUpgrade.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc23_standaloneInternetAccountforUpgrade.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc58_saiAccountForIgniteBundleBuy.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc58_saiAccountForIgniteBundleBuy.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Skip popup");

@@ -178,9 +178,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//p[@id='ds-modal-title-1']")
 	WebElement popImportantInformation;
 	   
-	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
-	WebElement btnIUnderstand;	  
-	
+	@FindBy(xpath = "//span[contains(text(),' Yes, I understand') or contains(text(),'comprends')]/ancestor::span")
+	WebElement btnIUnderstand;
+	//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']
+
 	@FindBy(xpath ="//label[contains(@for,'global.modals.activateIgniteHomePhoneModal.messageForNewNumber')]")
 	WebElement rdoOptNewPhone;
 	////(//div[@class='a-radio'])[2]//label[contains(@for,'global.modals.activateIgniteHomePhoneModal.messageForNewNumber')]
