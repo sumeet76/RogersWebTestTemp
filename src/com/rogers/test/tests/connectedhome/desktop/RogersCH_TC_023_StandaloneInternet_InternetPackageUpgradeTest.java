@@ -41,8 +41,8 @@ public class RogersCH_TC_023_StandaloneInternet_InternetPackageUpgradeTest exten
         getRogersHomePage().clkSignIn();
         getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc23_standaloneInternetAccountforUpgrade.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc23_standaloneInternetAccountforUpgrade.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Skip popup");
@@ -51,7 +51,7 @@ public class RogersCH_TC_023_StandaloneInternet_InternetPackageUpgradeTest exten
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc23_standaloneInternetAccountforUpgrade.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.accountDetails.getBan());
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersInternetDashboardPage().clkSolarisInternetBadge();
@@ -59,7 +59,7 @@ public class RogersCH_TC_023_StandaloneInternet_InternetPackageUpgradeTest exten
         reporter.reportLogWithScreenshot("Launched the Interent dashboard");
         getRogersInternetDashboardPage().clkSolChangeInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Interent packages page");
-        getRogersInternetDashboardPage().selectStandAloneInternetPackage(TestDataHandler.tc23_standaloneInternetAccountforUpgrade.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc23_standaloneInternetAccountforUpgrade.getAccountDetails().getUpgradePlanFr());
+        getRogersInternetDashboardPage().selectStandAloneInternetPackage(TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getUpgradePlanFr());
         reporter.reportLogWithScreenshot("Launched the agreement page");
         getRogersInternetDashboardPage().clkInternetChangeOK();
 		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");

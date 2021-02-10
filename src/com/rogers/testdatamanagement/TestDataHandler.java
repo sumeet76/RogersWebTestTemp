@@ -87,7 +87,7 @@ public class TestDataHandler {
 	public static AccountData tc57_sHMSignedInInternetBuy;
 	public static AccountData tc51_igniteSmartStream;
 	public static AccountData tc31_SolarisInternetAccountWithUsageAndPackageUpgrade;
-	public static AccountData tc23_standaloneInternetAccountforUpgrade;
+	public static AccountData tc23_24_standaloneInternetAccountforUpgrade;
 	public static AccountData solarisConsumerNoPortinCartAbandon;
 	public static AccountData solarisConsumerPortInCartAbandon;
 	public static AccountData tc58_saiAccountForIgniteBundleBuy;
@@ -249,7 +249,7 @@ public class TestDataHandler {
 		tcm04_SolarisInternetAccount = YamlHandler.getCableAccountData("TCM04_SolarisInternetAccount");
     	tc16_17_18_19_SolarisInternetAccount = YamlHandler.getCableAccountData("TC16_17_18_19_SolarisInternetAccount");
     	tc37_internetAccountUpgrade   = YamlHandler.getCableAccountData("TC37_InternetAccountUpgrade");
-		tc23_standaloneInternetAccountforUpgrade   = YamlHandler.getCableAccountData("TC23_StandaloneInternetAccountforUpgrade");
+		tc23_24_standaloneInternetAccountforUpgrade   = YamlHandler.getCableAccountData("TC23_24_StandaloneInternetAccountforUpgrade");
     	tc15_SolarisInternetAccountWithUsage = YamlHandler.getCableAccountData("TC15_SolarisInternetAccountWithUsage");
 		tc20_SolarisInternetAccountForUpgrade = YamlHandler.getCableAccountData("TC20_SolarisInternetAccountForUpgrade");
     	tc22_StandaloneInternetAccountWithUsage = YamlHandler.getCableAccountData("TC22_StandaloneInternetAccountWithUsage");

@@ -58,7 +58,7 @@ public class RogersCH_TC_062_SignedInWirelessBuyInternetSameaddressBasementHouse
         reporter.reportLogWithScreenshot("Launched the Interent dashboard");
         getRogersInternetDashboardPage().clkSolChangeInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Interent packages page");
-        getRogersInternetDashboardPage().selectStandAloneInternetPackage(TestDataHandler.tc23_standaloneInternetAccountforUpgrade.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc23_standaloneInternetAccountforUpgrade.getAccountDetails().getUpgradePlanFr());
+        getRogersInternetDashboardPage().selectStandAloneInternetPackage(TestDataHandler.tc59_saiforIgniteBundle.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc59_saiforIgniteBundle.getAccountDetails().getUpgradePlanFr());
         reporter.reportLogWithScreenshot("Launched the agreement page");
         getRogersInternetDashboardPage().clkInternetChangeOK();
 		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
