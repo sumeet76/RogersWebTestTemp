@@ -4,6 +4,7 @@ package com.rogers.pages;
 import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -63,7 +64,148 @@ public class RogersBillingPage extends BasePageClass {
 	
 	@FindBy(xpath = "//*[@translate='ute.common.label.billAndAccountBalance']")
 	WebElement lblBillAndAccountBalanceHeader;
-	
+
+	@FindAll({
+		@FindBy(xpath = "//span[@class='suspended-message']"),
+		@FindBy(xpath = "//div[contains(@class,'warning-msg')]")
+	})
+	WebElement lblErrorMessageSuspendedAct;
+
+	@FindAll({
+			@FindBy (xpath = "//div[@chat-button='live-chat-link-suspended']"),
+			@FindBy(xpath = "//div[contains(@class,'warning-chat')]")
+	})
+	WebElement lnkLiveChat;
+
+	@FindBy(xpath = "//ds-modal//p")
+	WebElement lblOnSaveOrPrint;
+
+	@FindBy(xpath = "//ins[@translate='global.label.saveBillPDF']")
+	WebElement lnkSaveBillAsPDF;
+
+	@FindBy(xpath = "//button[contains(@class,'-primary -large')]")
+	WebElement btnDownloadBills;
+
+	@FindBy(xpath = "//ds-icon[@name='rds-icon-save']/preceding-sibling::span")
+	WebElement lnkSavePdf;
+
+	@FindBy(xpath = "//span[contains(@class,'-success')]")
+	WebElement lblSuccess;
+
+	@FindBy(xpath = "//ds-icon[@name='rds-icon-print']//preceding-sibling::span//span")
+	WebElement lnkPrintPdf;
+
+	@FindBy(xpath = "//div[contains(@class,'printBillModal-body')]")
+	WebElement modalPrintPdf;
+
+	@FindBy(xpath = "//span[@translate='viewBill.viewBillTitle']")
+	WebElement lblYourBillAndAccountBalance;
+
+	@FindBy(xpath = "//iframe[@class='viewBill_iframe']")
+	WebElement iframeCurrentBill;
+
+	/**
+	 * Verify if the current bill iframe is present or not
+	 * @return true if the current bill iframe is displayed else false
+	 * @author Saurav.Goyal
+	 */
+	public Boolean verifyBillIframe() {
+		return getReusableActionsInstance().isElementVisible(iframeCurrentBill, 20);
+	}
+
+
+	/**
+	 * Click on download bills button
+	 * @author Saurav.Goyal
+	 */
+	public void clkBtnDownloadBills() {
+		getReusableActionsInstance().getWhenReady(btnDownloadBills, 20).click();
+	}
+
+	/**
+	 * Click on link save bill as pdf link
+	 * @author Saurav.Goyal
+	 */
+	public void clkLnkSaveBillAsPdf() {
+		getReusableActionsInstance().getWhenReady(lnkSaveBillAsPDF, 20).click();
+	}
+
+	/**
+	 * Click on save pdf link
+	 * @author Saurav.Goyal
+	 */
+	public void clkLnkSavePdf() {
+		getReusableActionsInstance().getWhenReady(lnkSavePdf, 20).click();
+	}
+
+	/**
+	 * Click on print pdf link
+	 * @author Saurav.Goyal
+	 */
+	public void clkLnkPrintPdf() {
+		getReusableActionsInstance().getWhenReady(lnkPrintPdf, 20).click();
+	}
+
+	/**
+	 * Click on print pdf link
+	 * @return true if the print bill modal is displayed else false
+	 * @author Saurav.Goyal
+	 */
+	public Boolean isPrintBillModalDisplayed() {
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().waitForElementVisibility(modalPrintPdf, 30);
+		return getReusableActionsInstance().isElementVisible(modalPrintPdf);
+	}
+
+
+	/**
+	 * Checks if success message is displayed
+	 * @return true if the success message is displayed else false
+	 * @author Saurav.Goyal
+	 */
+	public Boolean isSuccessMessageDisplayed()
+	{
+		getReusableActionsInstance().waitForElementVisibility(lblSuccess, 30);
+		return getReusableActionsInstance().isElementVisible(lblSuccess);
+	}
+
+	/**
+	 * Checks if the label is present in the modal displayed
+	 * @return true if the label is displayed else false
+	 * @author Saurav.Goyal
+	 */
+	public Boolean isModalSaveOrPrintBillDisplayed()
+	{
+		getReusableActionsInstance().waitForElementVisibility(lblOnSaveOrPrint, 300);
+		return getReusableActionsInstance().isElementVisible(lblOnSaveOrPrint);
+	}
+	/**
+	 * Verify the Live chat link in wireless dashboard page
+	 * @return true if the Link to live chat is displayed else false
+	 * @author Saurav.Goyal
+	 */
+	public Boolean verifyLinkLiveChat() {
+		return getReusableActionsInstance().isElementVisible(lnkLiveChat, 20);
+	}
+
+	/**
+	 * Verify if the suspend message displayed or not.
+	 * @return true if the suspend message displayed else false
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifySuspendMessage() {
+		return getReusableActionsInstance().isElementVisible(lblErrorMessageSuspendedAct, 20);
+	}
+
+	/**
+	 * Checks if the page is loaded or not
+	 * @return true if the link is visible else false
+	 * @author Saurav.Goyal
+	 */
+	public Boolean verifyViewBillLoaded() {
+		return getReusableActionsInstance().isElementVisible(lblYourBillAndAccountBalance , 30);
+	}
+
 	/**
 	 * Verify if the account has no bill.
 	 * @return true if the account has no bill, else false
