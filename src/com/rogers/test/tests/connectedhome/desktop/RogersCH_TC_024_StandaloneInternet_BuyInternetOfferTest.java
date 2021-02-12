@@ -44,7 +44,7 @@ public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends Bas
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         getRogersInternetPackageSelectionPage().clkInternetPackage();
-        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
+        reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
         //getRogersHomePage().clkOnlyInternet();
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
@@ -118,7 +118,7 @@ public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends Bas
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 

@@ -32,7 +32,7 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_058_IgniteTV_SignedInSAIBuyTVBundlesSameAddressTest extends BaseTestClass {
+public class RogersCH_TC_058_IgniteTV_SignedInSAIBuySaiDiffBundlesSameAddressTest extends BaseTestClass {
 
 	@Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
     public void checkSignedInSAIBuyTVBundlesSameAddressTest() {

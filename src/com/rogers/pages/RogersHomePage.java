@@ -218,17 +218,17 @@ public class RogersHomePage extends BasePageClass {
 	
 	@FindBy(xpath = "//a[@aria-label='View navigation']")
 	WebElement lnkViewNavigationMobile;
-	
-	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet at your address']/span")
+
+	@FindAll({
+	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet at your address']//span[@class='ds-icon rds-icon-right']"),
+			@FindBy(xpath = "//a[@title='Check availability of Ignite Internet at your address']/span")})
 	WebElement lnkInternetAvailability;
-	//a[@title='Check availability of Ignite Internet']/span
+	//			@FindBy(xpath = "//a[@title='Check availability of Ignite Internet']/span"),
 
-	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet at your address']/span")
-	WebElement divInternetBuyPage;
-
-	@FindBy(xpath = "//h1[contains(text(),'Internet')]")
+	@FindAll({
+	@FindBy(xpath = "//h2[@class='-center text-title-1']"),
+			@FindBy(xpath = "//h1[contains(text(),'Internet')]")})
 	WebElement txtInternetBuyPage;
-	//h2[contains(@class,'dsa-billboard__copyHeading ng-star-inserted')]
 
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement loaderInternetServiceability;
@@ -738,8 +738,8 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public boolean verifyInternetpage() {
 		//page is taking more time to load , temporary wait
-		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().waitForElementVisibility(divInternetBuyPage,90);
+		getReusableActionsInstance().staticWait(4000);
+		getReusableActionsInstance().waitForElementVisibility(txtInternetBuyPage,90);
 		return getReusableActionsInstance().isElementVisible(txtInternetBuyPage, 30);
 	}
 	/**
@@ -749,6 +749,7 @@ public class RogersHomePage extends BasePageClass {
 	public void clkInternetAvailability() {
 		getReusableActionsInstance().waitForElementVisibility(lnkInternetAvailability,120);
 		getReusableActionsInstance().getWhenReady(lnkInternetAvailability,30).click();
+		getReusableActionsInstance().clickIfAvailable(lnkInternetAvailability,30);
 		getReusableActionsInstance().staticWait(6000);
 	}
 	

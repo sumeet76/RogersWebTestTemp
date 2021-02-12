@@ -67,9 +67,10 @@ public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends B
         getRogersIgniteTVBuyPage().set4KTV();
         reporter.reportLogWithScreenshot("4k TV selected");
         getRogersIgniteTVBuyPage().clkCheckout();
+        reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Launched the create profile page", "Profile page hasn't  Launched");
         reporter.reportLogWithScreenshot("Launched the profile page");
         getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
-        
+        reporter.hardAssert(getRogersIgniteTVCreditCheckPage().verifyCreditEvalutionPage(),"Launched the credit evalution page","Credit evalution page hasn't  Launched");
         
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
         getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomerMigration(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getYear());
@@ -84,17 +85,21 @@ public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends B
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
         getRogersTechInstallPage().selTechInstalStartDate();
-        getRogersTechInstallPage().selectPreferredTimeSlot("1: AFT");
+        reporter.reportLogWithScreenshot("Selected Start date for Installation slot");
+        //getRogersTechInstallPage().selectPreferredTimeSlot(" Afternoon (2pm-6:30pm) ");
         reporter.reportLogWithScreenshot("Selected Start date for Installation slot");
         getRogersTechInstallPage().selTechInstalEndDate();
         reporter.reportLogWithScreenshot("Selected End date for Installation");
-        getRogersTechInstallPage().selectBackupTimeSlot("1: AFT");
+        //getRogersTechInstallPage().selectBackupTimeSlot("1: AFT");
         reporter.reportLogWithScreenshot("Selected End date for Installation slot");
+        getRogersTechInstallPage().setContactNumber();
         getRogersTechInstallPage().setMobielNumber();
         reporter.reportLogWithScreenshot("tech install details");
+        getRogersTechInstallPage().clkTechInstalConsent();
         getRogersTechInstallPage().clkTechInstallContinue();
         reporter.reportLogWithScreenshot("Launched the payment options page");
 
+        reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(),"Launched the payment options page","Payment options page has not Launched");
         getRogersPaymentOptionsPage().clkPaymentConfirm();
     	reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");

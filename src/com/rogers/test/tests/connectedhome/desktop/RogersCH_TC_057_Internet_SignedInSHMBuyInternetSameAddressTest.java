@@ -46,18 +46,17 @@ public class RogersCH_TC_057_Internet_SignedInSHMBuyInternetSameAddressTest exte
         getRogersHomePage().clkExistingCustomerShop();
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
         getRogersHomePage().clkExistingCustomerInternet();
+        reporter.reportLogWithScreenshot("Launched the Internet page");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
         getRogersHomePage().clkUseThisAddress();
+        reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
+        getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
 
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
-        getRogersInternetProfilePage().setEmail();
-        getRogersInternetProfilePage().setFirstname();
-        getRogersInternetProfilePage().setLastName();
-        getRogersInternetProfilePage().setPhone();
         getRogersInternetProfilePage().clkSubmitProfile();
 
         reporter.hardAssert(getRogersInternetCreditCheckPage().verifyCreditEvalutionPage(),"Credit Evalution page has Launched","Credit Evalution page has not Launched");
@@ -90,19 +89,10 @@ public class RogersCH_TC_057_Internet_SignedInSHMBuyInternetSameAddressTest exte
 
         reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
-        getRogersPaymentOptionsPage().selectPaymentMode("Pre-authorized Credit Card");
-        getRogersPaymentOptionsPage().switchToCreditCardIFrame();
-        getRogersPaymentOptionsPage().setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
-        getRogersPaymentOptionsPage().switchOutOfCreditCardIFrame();
-        getRogersPaymentOptionsPage().setCVV();
-        getRogersPaymentOptionsPage().selectExpiryMonth();
-        getRogersPaymentOptionsPage().selectExpiryYear();
-        reporter.reportLogWithScreenshot("Payment options Details");
         getRogersPaymentOptionsPage().clkPaymentConfirm();
 
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
-
         reporter.hardAssert( getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
         getRogersOrderReviewPage().clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
@@ -123,7 +113,7 @@ public class RogersCH_TC_057_Internet_SignedInSHMBuyInternetSameAddressTest exte
 	
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 

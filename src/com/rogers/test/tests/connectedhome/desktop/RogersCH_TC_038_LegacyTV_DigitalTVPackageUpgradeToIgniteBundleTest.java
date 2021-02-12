@@ -76,7 +76,7 @@ public class RogersCH_TC_038_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");    	
         getRogersHomePage().clkUseThisAddress();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-        //reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
         getRogersIgniteTVBuyPage().clkHomephone();
         getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
         reporter.reportLogWithScreenshot("Launched the information popup");
@@ -106,18 +106,17 @@ public class RogersCH_TC_038_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
         getRogersTechInstallPage().selTechInstalStartDate();
-        reporter.reportLogWithScreenshot("Selected Start date for Installation");
-        getRogersTechInstallPage().selectPreferredTimeSlot("1: AFT");
+        reporter.reportLogWithScreenshot("Selected Start date for Installation slot");
+        //getRogersTechInstallPage().selectPreferredTimeSlot(" Afternoon (2pm-6:30pm) ");
         reporter.reportLogWithScreenshot("Selected Start date for Installation slot");
         getRogersTechInstallPage().selTechInstalEndDate();
         reporter.reportLogWithScreenshot("Selected End date for Installation");
-        getRogersTechInstallPage().selectBackupTimeSlot("1: AFT");
+        //getRogersTechInstallPage().selectBackupTimeSlot("1: AFT");
         reporter.reportLogWithScreenshot("Selected End date for Installation slot");
-        reporter.reportLogWithScreenshot("tech install details");
+        getRogersTechInstallPage().setContactNumber();
         getRogersTechInstallPage().setMobielNumber();
         reporter.reportLogWithScreenshot("tech install details");
         getRogersTechInstallPage().clkTechInstalConsent();
-
         getRogersTechInstallPage().clkTechInstallContinue();
         reporter.reportLogWithScreenshot("Launched the payment options page");
 

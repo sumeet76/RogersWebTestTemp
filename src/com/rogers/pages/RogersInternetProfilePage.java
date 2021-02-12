@@ -51,6 +51,10 @@ public class RogersInternetProfilePage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
+
+	@FindBy(xpath = "//i[contains(@class,'li-loader')]")
+	WebElement popupLoadingFingersPackage;
+
 	
 	/**
 	 * To verify the launch of Profile Page
@@ -68,6 +72,7 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyProfilePageSAI() {
+		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersPackage,60);
 		getReusableActionsInstance().waitForElementVisibility(txtSaiProfile,60);
 		return getReusableActionsInstance().isElementVisible(txtSaiProfile);
 	}
