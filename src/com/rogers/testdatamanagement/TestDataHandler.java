@@ -68,7 +68,9 @@ public class TestDataHandler {
 	public static AccountData tc45_digitalTVAccountUpgradePackage;
 	public static AccountData tc54_iginteTVWirelessCRMaddressMismatchWithSGI;
 	public static AccountData tc55_rCISandECIDLowRiskMediumRiskAddressRetry;
-	public static AccountData  tc46_legacyInternetAccount;
+	public static AccountData tc61_SHMSignedInInternetBuyDiffAddress;
+	public static AccountData tc62_WirelessSignedInInternetBuyBasement;
+	public static AccountData tc46_legacyInternetAccount;
 	public static AccountData tcm04_SolarisInternetAccount;
 	public static AccountData tcm06_IgniteTVAccount;
 	public static AccountData tc39_40_SolarisPortinFlows;
@@ -84,6 +86,8 @@ public class TestDataHandler {
 	public static AccountData tc06_1_SolarisChangeTVManageThemePacks;
 	public static AccountData tc35_CRMaddressMismatchWithSGI;
 	public static AccountData tc56_wirelessSignedInInternetBuy;
+	public static AccountData tc60_WirelessSignedInInternetBuyDiffAddress;
+	public static AccountData tc63_2PSignedInInternetBuyBasement;
 	public static AccountData tc57_sHMSignedInInternetBuy;
 	public static AccountData tc51_igniteSmartStream;
 	public static AccountData tc31_SolarisInternetAccountWithUsageAndPackageUpgrade;
@@ -258,6 +262,10 @@ public class TestDataHandler {
     	tc31_SolarisInternetAccountWithUsageAndPackageUpgrade = YamlHandler.getCableAccountData("TC31_SolarisInternetAccountWithUsageAndPackageUpgrade");
 		tc54_iginteTVWirelessCRMaddressMismatchWithSGI=YamlHandler.getCableAccountData("TC54_IginteTVWirelessCRMaddressMismatchWithSGI");
 		tc55_rCISandECIDLowRiskMediumRiskAddressRetry=YamlHandler.getCableAccountData("TC55_RCISandECIDLowRiskMediumRiskAddressRetry");
+		tc60_WirelessSignedInInternetBuyDiffAddress=YamlHandler.getCableAccountData("TC60_WirelessSignedInInternetBuyDiffAddress");
+		tc61_SHMSignedInInternetBuyDiffAddress=YamlHandler.getCableAccountData("TC61_SHMSignedInInternetBuyDiffAddress");
+		tc62_WirelessSignedInInternetBuyBasement=YamlHandler.getCableAccountData("TC62_WirelessSignedInInternetBuyBasement");
+		tc63_2PSignedInInternetBuyBasement=YamlHandler.getCableAccountData("TC63_2PSignedInInternetBuyBasement");
 		//Ignite TV test data
 		tcm05_SolarisTVAccountForUpgrade  = YamlHandler.getCableAccountData("TCM05_SolarisTVAccountForUpgrade");
 		tc35_CRMaddressMismatchWithSGI = YamlHandler.getCableAccountData("TC35_CRMaddressMismatchWithSGI");

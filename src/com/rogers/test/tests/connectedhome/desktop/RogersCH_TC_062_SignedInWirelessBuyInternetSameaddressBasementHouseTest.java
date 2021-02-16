@@ -40,8 +40,8 @@ public class RogersCH_TC_062_SignedInWirelessBuyInternetSameaddressBasementHouse
         getRogersHomePage().clkSignIn();
         getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc59_saiforIgniteBundle.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc59_saiforIgniteBundle.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc62_WirelessSignedInInternetBuyBasement.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc62_WirelessSignedInInternetBuyBasement.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Skip popup");
@@ -50,7 +50,7 @@ public class RogersCH_TC_062_SignedInWirelessBuyInternetSameaddressBasementHouse
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc59_saiforIgniteBundle.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc62_WirelessSignedInInternetBuyBasement.accountDetails.getBan());
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersInternetDashboardPage().clkSolarisInternetBadge();
@@ -58,7 +58,7 @@ public class RogersCH_TC_062_SignedInWirelessBuyInternetSameaddressBasementHouse
         reporter.reportLogWithScreenshot("Launched the Interent dashboard");
         getRogersInternetDashboardPage().clkSolChangeInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Interent packages page");
-        getRogersInternetDashboardPage().selectStandAloneInternetPackage(TestDataHandler.tc59_saiforIgniteBundle.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc59_saiforIgniteBundle.getAccountDetails().getUpgradePlanFr());
+        getRogersInternetDashboardPage().selectStandAloneInternetPackage(TestDataHandler.tc62_WirelessSignedInInternetBuyBasement.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc59_saiforIgniteBundle.getAccountDetails().getUpgradePlanFr());
         reporter.reportLogWithScreenshot("Launched the agreement page");
         getRogersInternetDashboardPage().clkInternetChangeOK();
 		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
