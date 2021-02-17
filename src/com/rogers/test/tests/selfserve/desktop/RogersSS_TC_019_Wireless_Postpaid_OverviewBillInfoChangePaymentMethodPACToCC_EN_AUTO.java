@@ -101,6 +101,40 @@ public class RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaymentMeth
 
     }
 
+	@Test(dependsOnMethods ="overviewBillInfoChangePaymentMethodPAC_To_CC", groups = {"SanitySS","BillingAndPaymentsSS"})
+	public void overviewBillInfoChangePaymentMethodCC_To_Manual() {
+
+		getRogersHomePage().clkSignIn();
+		String strUsername = TestDataHandler.tc1920.getUsername();
+		String strPassword = TestDataHandler.tc1920.getPassword();
+		tryLogin(strUsername, strPassword);
+		reporter.reportLogWithScreenshot("Account overveiew page");
+		//getRogersAccountOverviewPage().clkViewBill();
+
+
+		if(getRogersAccountOverviewPage().isAutoPaymentAlreadySet())
+		{
+			reporter.reportLogWithScreenshot("Automatic payment is already set, trying to switch to manual");
+			getRogersAccountOverviewPage().clkChangePaymentMethod();
+			getRogersChangePaymentMethodPage().clkSwitchToManualPayments();
+			getRogersChangePaymentMethodPage().clkYesCancelAutomaticPayment();
+			reporter.reportLogWithScreenshot("Switch to manual completed");
+			reporter.hardAssert(getRogersChangePaymentMethodPage().verifyChangePaymentMethodToManual(),
+					"Change payment to manual completed successfully",
+					"Change payment method to Manual failed. Refer screenshot");
+			getRogersChangePaymentMethodPage().clkButtonDoneChangePayment();
+			reporter.reportLogWithScreenshot("Account overveiew page");
+			getDriver().navigate().refresh();
+			reporter.reportLogWithScreenshot("Account overveiew page after change payment method.");
+		}else
+		{
+			reporter.reportLog("The payment option is already set to manual");
+		}
+	}
+
+
+
+
 
     
 }
