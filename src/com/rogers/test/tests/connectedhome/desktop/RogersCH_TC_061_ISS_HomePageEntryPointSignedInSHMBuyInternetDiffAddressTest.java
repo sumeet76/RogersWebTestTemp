@@ -34,7 +34,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_061_ISS_HomePageEntryPointSignedInSHMBuyInternetDiffAddressTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
+	@Test(groups = {"RegressionCH","saiCH"})
     public void checkIssHomePageEntryPointSignedInSHMBuyInternetDiffAddressTest() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
