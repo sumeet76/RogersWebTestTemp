@@ -259,7 +259,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 */
 	public void clkContinueFromThemepacks() {
 		//Need time to load all the TV packages
-		getReusableActionsInstance().staticWait(7000);
+		getReusableActionsInstance().staticWait(10000);
 /*		getReusableActionsInstance().waitForElementVisibility(addParticularChannelToCart.get(0), 240);*/
 		getReusableActionsInstance().getWhenReady(btnContinueFromThemepacks, 120).click();
 	}
