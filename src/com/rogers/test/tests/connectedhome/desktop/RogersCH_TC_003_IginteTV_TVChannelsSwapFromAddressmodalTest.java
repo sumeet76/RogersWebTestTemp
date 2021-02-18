@@ -105,7 +105,7 @@ public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") St
 
 @AfterMethod(alwaysRun = true)
 public void afterTest() {
-	//closeSession();
+	closeSession();
 }
 
 

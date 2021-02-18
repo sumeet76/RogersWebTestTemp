@@ -34,7 +34,7 @@ import java.lang.reflect.Method;
 
 public class Mobile_RogersCH_TC_006_IginteTV_TVChannelsSwapTest extends BaseTestClass {
 	
-    @Test//(groups = {"MobileRegressionCH"})
+    @Test(groups = {"MobileRegressionCH"})
 	
    public void checkSolarisTVSwapChannelsMobile() {
      reporter.reportLogWithScreenshot("Home Page");
@@ -100,7 +100,7 @@ public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") St
 
 @AfterMethod(alwaysRun = true)
 public void afterTest() {
-	//closeSession();
+	closeSession();
 }
 
 

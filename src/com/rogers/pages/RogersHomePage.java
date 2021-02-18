@@ -540,9 +540,8 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkServiceabilityMigration() {
-		getReusableActionsInstance().staticWait(10000);
-		//getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam, 90);
-		//getReusableActionsInstance().getWhenReady(btnServiceability, 30).click();
+		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam, 90);
+		getReusableActionsInstance().getWhenReady(btnServiceability, 30).click();
 	}
 	
 	/**
