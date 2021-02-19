@@ -871,7 +871,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public void clkSetUpAutomaticPaymentMethod() {
 		//getReusableActionsInstance().waitForElementVisibility(lnkBillingAndPayment);
 		//getReusableActionsInstance().clickIfAvailable(lnkBillingAndPayment);
-		getReusableActionsInstance().getWhenReady(lnkSetUpAutomaticPaymentMethod,30).click();
+		getReusableActionsInstance().getWhenReady(lnkSetUpAutomaticPaymentMethod,60).click();
 	}
 	
 	
@@ -1013,6 +1013,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyThatAutoPaymentWithCCIsDisplayedOnAccountOverViewPage() {
+		// buffer static wait added for pageload
+		getReusableActionsInstance().staticWait(4000);
 		getReusableActionsInstance().waitForElementVisibility(lblAutoPayment, 50);
 		return (getReusableActionsInstance().isElementVisible(lblAutoPayment,20)
 			 && getReusableActionsInstance().isElementVisible(imgCC,20));
