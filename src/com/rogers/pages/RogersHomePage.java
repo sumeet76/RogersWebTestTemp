@@ -168,8 +168,9 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//li[@id='province']//span[@class='dds_m-navLink__chevron rds-icon-expand']")
 	WebElement lnkProvince;
 
-	@FindBy(xpath = "//a[@class='dds_m-navLink -dropdownNavbar' and @id='ON']")
+	@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='Ontario']")
 	WebElement lnkProvinceON;
+	//a[@class='dds_m-navLink -dropdownNavbar' and @id='ON']
 
 	@FindBy(xpath = "//ngx-smart-modal[@id='loadingModal']")
 	WebElement popupLoadingFingersciam;
@@ -366,10 +367,14 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkShop() {
-		if(!getReusableActionsInstance().isElementVisible(lnkOptedON,30)){
+	/*	if(!getReusableActionsInstance().isElementVisible(lnkOptedON,60)){
 			getReusableActionsInstance().getWhenReady(lnkProvince,10).click();
 			getReusableActionsInstance().getWhenReady(lnkProvinceON,10).click();
-		}
+		}*/
+		getReusableActionsInstance().getWhenReady(btnShop, 20).click();
+	}
+
+	public void clkShopAbandon() {
 		getReusableActionsInstance().getWhenReady(btnShop, 20).click();
 	}
 

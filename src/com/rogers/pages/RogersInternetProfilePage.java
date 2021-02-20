@@ -72,8 +72,8 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyProfilePageSAI() {
-		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersPackage,60);
-		getReusableActionsInstance().waitForElementVisibility(txtSaiProfile,60);
+		//getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersPackage,60);
+		getReusableActionsInstance().waitForElementVisibility(txtSaiProfile,90);
 		return getReusableActionsInstance().isElementVisible(txtSaiProfile);
 	}
 

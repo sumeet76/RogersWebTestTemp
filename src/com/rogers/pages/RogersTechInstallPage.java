@@ -196,7 +196,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 */
 	public void selectPreferredTimeSlot(String slot) {
 		getReusableActionsInstance().waitForElementVisibility(selPreferredTimeSlot,30);
-		getReusableActionsInstance().selectWhenReadyByVisibleText(selPreferredTimeSlot,slot);
+		getReusableActionsInstance().selectWhenReady(selPreferredTimeSlot,1,10);
 	}
 	
 	/**
@@ -206,7 +206,8 @@ public class RogersTechInstallPage extends BasePageClass {
 	 */
 	public void selectBackupTimeSlot(String slot) {
 		getReusableActionsInstance().waitForElementVisibility(selBackupTimeSlot,30);
-		getReusableActionsInstance().selectWhenReadyByVisibleText(selBackupTimeSlot,slot);
+		getReusableActionsInstance().selectWhenReady(selBackupTimeSlot,1,20);
+
 	}
 	
 	/**
@@ -376,11 +377,11 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void setContactNumber() {
-		getReusableActionsInstance().staticWait(6000);
-/*		String strPhoneNumber = FormFiller.generatePhoneNumber();
-			getReusableActionsInstance().waitForElementVisibility(txtContainerContactNumber, 20);
-			getReusableActionsInstance().getWhenReady(txtContainerContactNumber, 10).click();
-			getReusableActionsInstance().getWhenReady(txtContactNumber, 10).clear();*/
+		String strPhoneNumber = FormFiller.generatePhoneNumber();
+		getReusableActionsInstance().waitForElementVisibility(txtContainerContactNumber, 20);
+		getReusableActionsInstance().getWhenReady(txtContainerContactNumber, 20).click();
+		getReusableActionsInstance().getWhenReady(txtContactNumber, 20).clear();
+		getReusableActionsInstance().getWhenReady(txtContactNumber, 30).sendKeys(strPhoneNumber);
 	}
 
 	/**
@@ -388,7 +389,6 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void setMobielNumber() {
-		getReusableActionsInstance().staticWait(6000);
 		String strPhoneNumber = FormFiller.generatePhoneNumber();
 		String strEmail = FormFiller.generateEmail();
 		if(getReusableActionsInstance().isElementVisible(txtEnroute,90)) {
@@ -532,21 +532,22 @@ public class RogersTechInstallPage extends BasePageClass {
 		Calendar calendar = Calendar.getInstance();
 		int intDate = calendar.get(Calendar.DATE);
 		int iDate = intDate + 10;
+		int iMonth=calendar.get(Calendar.MONTH) + 1;
 		if(iDate >= 30) {
 			int selDate = intDate - 14 ;
+			int selMonth= iMonth+1;
 			String strDate= Integer.toString(selDate+3);
-			String strStartDate= calendar.get(Calendar.MONTH)+"/"+strDate +"/"+calendar.get(Calendar.YEAR);
+			String strStartDate= selMonth+"/"+strDate +"/"+calendar.get(Calendar.YEAR);
 			getReusableActionsInstance().getWhenReady(txtStartDateContainer, 20).click();
 			getReusableActionsInstance().getWhenReady(txtStartDateNew, 20).sendKeys(strStartDate);
 		}
 		else
 		{
 			String strDate= Integer.toString(intDate+5);
-			String strStartDate= calendar.get(Calendar.MONTH)+"/"+strDate +"/"+calendar.get(Calendar.YEAR);
+			String strStartDate= iMonth+"/"+strDate +"/"+calendar.get(Calendar.YEAR);
 			getReusableActionsInstance().getWhenReady(txtStartDateContainer, 20).click();
 			getReusableActionsInstance().getWhenReady(txtStartDateNew, 20).sendKeys(strStartDate);
 		}
-		getReusableActionsInstance().staticWait(5000);
 	}
 	/**
 	 * To select the Technical Installation End Date
@@ -557,23 +558,24 @@ public class RogersTechInstallPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(imgEndingTechInstallSlot, 90).click();
 		Calendar calendar = Calendar.getInstance();
 		int intDate = calendar.get(Calendar.DATE);
+		int iMonth=calendar.get(Calendar.MONTH) + 1;
 		int iDate = intDate + 10;
-		if(iDate >= 90) {
+		if(iDate >= 30) {
 			int selDate = intDate - 6 ;
+			int selMonth= iMonth+1;
 			String strDate= Integer.toString(selDate+10);
-			String strStartDate= calendar.get(Calendar.MONTH)+"/"+strDate +"/"+calendar.get(Calendar.YEAR);
+			String strStartDate= selMonth+"/"+strDate +"/"+calendar.get(Calendar.YEAR);
 			getReusableActionsInstance().getWhenReady(txtEndDateContainer, 20).click();
 			getReusableActionsInstance().getWhenReady(txtEndDateNew, 20).sendKeys(strStartDate);
 		}
 		else
 		{
 			int endDate = intDate + 5;
-			String strDate= Integer.toString(endDate+10);
-			String strStartDate= calendar.get(Calendar.MONTH)+"/"+strDate +"/"+calendar.get(Calendar.YEAR);
+			String strDate= Integer.toString(endDate+4);
+			String strStartDate= iMonth+"/"+strDate +"/"+calendar.get(Calendar.YEAR);
 			getReusableActionsInstance().getWhenReady(txtEndDateContainer, 20).click();
 			getReusableActionsInstance().getWhenReady(txtEndDateNew, 20).sendKeys(strStartDate);
 		}
-		getReusableActionsInstance().staticWait(5000);
 	}
 	/**
 	 * To select the Technical Installation End Date
@@ -585,7 +587,7 @@ public class RogersTechInstallPage extends BasePageClass {
 		Calendar calendar = Calendar.getInstance();
 		int intDate = calendar.get(Calendar.DATE);
 		int iDate = intDate + 10;
-		if(iDate >= 90) {
+		if(iDate >= 30) {
 		getReusableActionsInstance().waitForElementVisibility(clkChevron, 60);
 		getReusableActionsInstance().getWhenReady(clkChevron, 60).click();
 		int selDate = intDate - 6 ;
