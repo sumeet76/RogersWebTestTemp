@@ -42,6 +42,9 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "(//div//a[@title='Get Ignite Internet + SmartStream now'])[1]")
 	WebElement btnSmartStream;
 
+	@FindBy(xpath = "//a[contains(@title,'Ignite Internet with SmartStream')]")
+	WebElement lnkSmartStream;
+
 	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::span[contains(@class,'ds-button__wrapper')]")
 	WebElement btnInternetBuyContinue;
 	
@@ -123,9 +126,15 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnSmartStreamPackage, 90).click();
 	}
 
-	public void clkbtnSmartStream() {
+	public void clkSmartStreamAvailability() {
 		getReusableActionsInstance().waitForElementVisibility(btnSmartStream, 90);
 		getReusableActionsInstance().executeJavaScriptClick(btnSmartStream);
+	}
+
+	public void clkSmartStream() {
+		getReusableActionsInstance().staticWait(10000);
+	/*	getReusableActionsInstance().waitForElementVisibility(lnkSmartStream, 90);
+		getReusableActionsInstance().executeJavaScriptClick(lnkSmartStream);*/
 	}
 
 	public void clkInternetPackageMobile() {

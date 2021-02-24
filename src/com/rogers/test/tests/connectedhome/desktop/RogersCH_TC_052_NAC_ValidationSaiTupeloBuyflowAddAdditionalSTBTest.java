@@ -48,7 +48,7 @@ public class RogersCH_TC_052_NAC_ValidationSaiTupeloBuyflowAddAdditionalSTBTest 
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         getDriver().navigate().to(TestDataHandler.rogersConfig.getRogersURL()+"/web/consumer/internet/streaming");
-        getRogersInternetPackageSelectionPage().clkbtnSmartStream();
+        getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
