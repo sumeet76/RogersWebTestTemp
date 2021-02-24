@@ -93,11 +93,15 @@ public class RogersCH_TC_034_CartAbandon_NoPortinExistingLegacySignedinfromMyRog
 		getRogersIgniteTVBuyPage().set4KTV();
 		reporter.reportLogWithScreenshot("4k TV selected");
 		getRogersHomePage().clkSignOut();
+		reporter.reportLogWithScreenshot("Signed Out");
+		}
 
-		getDriver().navigate().to(TestDataHandler.rogersConfig.getRogersURL()+"/consumer/easyloginriverpage");
+	@Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
+	public void checkCartAbandonTest() {
+		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
 		getRogersLoginPage().switchToSignInIFrame();
-        reporter.reportLogWithScreenshot("Launched the SignIn popup");
+		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc34_NoPortInAbondoneFlows.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc34_NoPortInAbondoneFlows.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
@@ -109,7 +113,7 @@ public class RogersCH_TC_034_CartAbandon_NoPortinExistingLegacySignedinfromMyRog
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc34_NoPortInAbondoneFlows.accountDetails.getBan());
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-		getRogersHomePage().clkShop();
+		getRogersHomePage().clkShopAbandon();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
 		getRogersHomePage().clkIgniteTVExistingCustomer();
 		reporter.hardAssert(getRogersHomePage().verifyWelcomeback(),"Welcome back popup has Launched","Welcome back popup has not Launched");
@@ -118,7 +122,7 @@ public class RogersCH_TC_034_CartAbandon_NoPortinExistingLegacySignedinfromMyRog
 		reporter.reportLogWithScreenshot("Launched the cart summary page");
 		getRogersIgniteTVBuyPage().clkCheckout();
 		reporter.reportLogWithScreenshot("Launched the information popup");
-		}
+	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
@@ -129,7 +133,7 @@ public class RogersCH_TC_034_CartAbandon_NoPortinExistingLegacySignedinfromMyRog
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }

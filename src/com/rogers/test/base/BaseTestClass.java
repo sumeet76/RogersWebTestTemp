@@ -2,6 +2,7 @@ package com.rogers.test.base;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 import com.rogers.oneview.pages.*;
 import com.rogers.pages.RogersBuildPlanPage;
 import com.rogers.pages.RogersChooseAddonsPage;
@@ -31,8 +32,8 @@ import org.testng.ITestContext;
 import org.testng.annotations.BeforeSuite;
 import utils.AppiumServerJava;
 import utils.BrowserDrivers;
+import utils.DigiAutoCustomException;
 import utils.Reporter;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -833,7 +834,6 @@ public class BaseTestClass {
                 break;
 
             case "connectedhome_igniteanonymous":
-
                 RogersHomePageThreadLocal.set(new RogersHomePage(getDriver()));
                 RogersBuyPageThreadLocal.set(new RogersBuyPage(getDriver()));
                 RogersLoginPageThreadLocal.set(new RogersLoginPage(getDriver()));
@@ -855,7 +855,6 @@ public class BaseTestClass {
                 break;
 
             case "connectedhome_legacylogin":
-
                 RogersHomePageThreadLocal.set(new RogersHomePage(getDriver()));
                 RogersBuyPageThreadLocal.set(new RogersBuyPage(getDriver()));
                 RogersLoginPageThreadLocal.set(new RogersLoginPage(getDriver()));
@@ -874,7 +873,6 @@ public class BaseTestClass {
                 RogersIgniteTVCreditCheckPageThreadLocal.set(new RogersIgniteTVCreditCheckPage(getDriver()));
 
             case "connectedhome_ignitelogin":
-
                 RogersHomePageThreadLocal.set(new RogersHomePage(getDriver()));
                 RogersBuyPageThreadLocal.set(new RogersBuyPage(getDriver()));
                 RogersLoginPageThreadLocal.set(new RogersLoginPage(getDriver()));
@@ -930,6 +928,8 @@ public class BaseTestClass {
                 RogersSHMDashboardPageThreadLocal.set(new RogersSHMDashboardPage(getDriver()));
                 RogersSmartStreamDashboardPageThreadLocal.set(new RogersSmartStreamDashboardPage(getDriver()));
                 RogersSolarisChannelsExchangePageThreadLocal.set(new RogersSolarisChannelsExchangePage(getDriver()));
+                RogersInternetProfilePageThreadLocal.set(new RogersInternetProfilePage(getDriver()));
+                RogersInternetCreditCheckPageThreadLocal.set(new RogersInternetCreditCheckPage(getDriver()));
                 break;
 
             case "buyflows":
@@ -1105,6 +1105,14 @@ public class BaseTestClass {
     @BeforeSuite(alwaysRun = true)
     public void beforeSuite(ITestContext iTestContext) throws FileNotFoundException {
         TestDataHandler.dataInit(iTestContext.getSuite().getAllMethods());
+        String strURL= System.getProperty("QaUrl");
+        if (strURL.toUpperCase().contains("ROGERS")) {
+            if (!strURL.contains("qa1.")  && !strURL.contains("qa5.")  && !strURL.contains("qa6.")  && !strURL.contains("qa7.") && !strURL.contains("qa2.") && !strURL.contains("qa3.") && !strURL.contains("qa4.") ) {
+                ExtentTestManager.startTest("Test result summary: Entire suite execution stopped, CookieDomain URL is not valid","");
+                ExtentTestManager.getTest().log(LogStatus.FAIL,"Suite Failed : CookieDomain URL is not valid"  );
+                throw new DigiAutoCustomException("CookieDomain URL is not valid");
+            }
+        }
     }
 
 }

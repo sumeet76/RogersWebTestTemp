@@ -326,7 +326,15 @@ public class RogersInternetDashboardPage extends BasePageClass {
 		}
 		return getReusableActionsInstance().isElementVisible(popupContatUSInternetDowngarde, 20);
 	}
-	
+
+	/**
+	 * Checks if the pop up contact us is visible
+	 * @return true when pop up contact us is visible else false
+	 * @author Chinnarao.Vattam
+	 */
+	public boolean verifyContatUSInternetDowngardeInternet() {
+		return getReusableActionsInstance().isElementVisible(popupContatUSInternetDowngarde, 20);
+	}
 	
 
 	/**

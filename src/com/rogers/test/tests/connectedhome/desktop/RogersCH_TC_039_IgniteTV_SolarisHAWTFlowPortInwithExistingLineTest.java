@@ -125,11 +125,11 @@ public class RogersCH_TC_039_IgniteTV_SolarisHAWTFlowPortInwithExistingLineTest 
         reporter.reportLogWithScreenshot("Launched the tech install page");
         getRogersTechInstallPage().selTechInstalStartDate();
         reporter.reportLogWithScreenshot("Selected Start date for Installation slot");
-        //getRogersTechInstallPage().selectPreferredTimeSlot(" Afternoon (2pm-6:30pm) ");
+        getRogersTechInstallPage().selectPreferredTimeSlot("24: AFT");
         reporter.reportLogWithScreenshot("Selected Start date for Installation slot");
         getRogersTechInstallPage().selTechInstalEndDate();
         reporter.reportLogWithScreenshot("Selected End date for Installation");
-        //getRogersTechInstallPage().selectBackupTimeSlot("1: AFT");
+        getRogersTechInstallPage().selectBackupTimeSlot("1: AFT");
         reporter.reportLogWithScreenshot("Selected End date for Installation slot");
         getRogersTechInstallPage().setContactNumber();
         getRogersTechInstallPage().setMobielNumber();
@@ -139,7 +139,7 @@ public class RogersCH_TC_039_IgniteTV_SolarisHAWTFlowPortInwithExistingLineTest 
 
         reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(),"Launched the payment options page","Payment options page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
-        getRogersPaymentOptionsPage().selectPaymentMode("invoice");
+        getRogersPaymentOptionsPage().selectPaymentMode("Monthly Bill");
         reporter.reportLogWithScreenshot("Payment options Details");
         getRogersPaymentOptionsPage().clkPaymentConfirm();
 
@@ -165,7 +165,7 @@ public class RogersCH_TC_039_IgniteTV_SolarisHAWTFlowPortInwithExistingLineTest 
 	
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 }

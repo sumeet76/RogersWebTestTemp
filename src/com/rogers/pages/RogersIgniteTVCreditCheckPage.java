@@ -17,10 +17,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	
 	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.year']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlCreditCheckYear;
-	
-	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.year']//select[contains(@id,'ds-form-input-id-')]")
-	WebElement ddlCreditCheckYearMigration;
-		
+
 	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.month']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlCreditCheckMonth;
 	
@@ -149,8 +146,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyAddressModal() {
-		getReusableActionsInstance().waitForElementVisibility(popupAddressModal, 20);
-		return	getReusableActionsInstance().isElementVisible(popupAddressModal);
+		return	getReusableActionsInstance().isElementVisible(popupAddressModal,60);
 	}
 
 	public void setIgniteAddressLookup(String strAddress) {
@@ -225,18 +221,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(ddlCreditCheckYear,20);
 		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlCreditCheckYear, strDOBYear);
 	}
-	
-	/**
-	 * Set dynamic date of birth year on Credit check page for an existing customer
-	 * @param strDOBYear year of birth
-	 * @author Chinnarao.Vattam
-	 */
-	public void selectDOBYearExistingCustomerMigration(String strDOBYear) {
-		//getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingers);
-		getReusableActionsInstance().waitForElementVisibility(ddlCreditCheckYearMigration,120);
-		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlCreditCheckYearMigration, strDOBYear);
-	}
-	
+
 	/**
 	 * Set dynamic date of birth Month on Credit check page
 	 * @author Chinnarao.Vattam
@@ -254,7 +239,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	public void selectDOBMonthExistingCustomer(String strDOBMonth) {
 		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlCreditCheckMonth, strDOBMonth);
 	}
-	
+
 	/**
 	 * Set dynamic date of birth Month on Credit check page
 	 * @param strDOBMonth month of birth
@@ -264,7 +249,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 		String dOBMonth = strDOBMonth+": Object";
 		getReusableActionsInstance().selectWhenReady(ddlCreditCheckMonthMigration, dOBMonth);
 	}
-	
+
 	/**
 	 * Set dynamic date of birth date on Credit check page
 	 * @author Chinnarao.Vattam
@@ -282,7 +267,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	public void selectDOBDayExistingCustomer(String strDOBDay) {
 		getReusableActionsInstance().selectWhenReady(ddlCreditCheckDay, strDOBDay);
 	}
-	
+
 	/**
 	 * Set dynamic date of birth date on Credit check page
 	 * @param strDOBDay date of birth
@@ -291,7 +276,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	public void selectDOBDayExistingCustomerMigration(String strDOBDay) {
 		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlCreditCheckDayMigration, strDOBDay);
 	}
-	
+
 	/**
 	 * Selects the first identification on Credit check page
 	 * @param strFirstID first identification for the credit check

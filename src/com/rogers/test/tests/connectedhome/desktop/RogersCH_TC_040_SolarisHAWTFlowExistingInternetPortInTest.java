@@ -35,10 +35,12 @@ public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends B
 	    	getRogersHomePage().clkNoThnx();
 	    	getRogersHomePage().clkServiceability();
 	    	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");    	
-	        getRogersHomePage().clkUseThisAddress();
+	        //getRogersHomePage().clkUseThisAddress();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
     	String  strAddressLine1=TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getAddress().get("line2");
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
+        getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
         getRogersIgniteTVBuyPage().clkHomephone();
@@ -70,14 +72,15 @@ public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends B
         reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Launched the create profile page", "Profile page hasn't  Launched");
         reporter.reportLogWithScreenshot("Launched the profile page");
         getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
-        reporter.hardAssert(getRogersIgniteTVCreditCheckPage().verifyCreditEvalutionPage(),"Launched the credit evalution page","Credit evalution page hasn't  Launched");
+        //reporter.hardAssert(getRogersIgniteTVCreditCheckPage().verifyCreditEvalutionPage(),"Launched the credit evalution page","Credit evalution page hasn't  Launched");
         
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
-        getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomerMigration(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getYear());
-        getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomerMigration(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getMonth());
-        getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomerMigration(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getDate());
-        reporter.reportLogWithScreenshot("Entered the DOB details");
-        getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
+        //getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomerMigration(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getYear());
+        //getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomerMigration(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getMonth());
+        //getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomerMigration(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getDate());
+        //reporter.reportLogWithScreenshot("Entered the DOB details");
+
+        //getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
         
         reporter.reportLogWithScreenshot("Home Phone selection page has launched");
         getRogersHomePhoneSelectionPage().clkContinueHomePhoneSelection();
@@ -86,11 +89,11 @@ public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends B
         reporter.reportLogWithScreenshot("Launched the tech install page");
         getRogersTechInstallPage().selTechInstalStartDate();
         reporter.reportLogWithScreenshot("Selected Start date for Installation slot");
-        //getRogersTechInstallPage().selectPreferredTimeSlot(" Afternoon (2pm-6:30pm) ");
+        getRogersTechInstallPage().selectPreferredTimeSlot("24: AFT");
         reporter.reportLogWithScreenshot("Selected Start date for Installation slot");
         getRogersTechInstallPage().selTechInstalEndDate();
         reporter.reportLogWithScreenshot("Selected End date for Installation");
-        //getRogersTechInstallPage().selectBackupTimeSlot("1: AFT");
+        getRogersTechInstallPage().selectBackupTimeSlot("1: AFT");
         reporter.reportLogWithScreenshot("Selected End date for Installation slot");
         getRogersTechInstallPage().setContactNumber();
         getRogersTechInstallPage().setMobielNumber();
@@ -99,8 +102,8 @@ public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends B
         getRogersTechInstallPage().clkTechInstallContinue();
         reporter.reportLogWithScreenshot("Launched the payment options page");
 
-        reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(),"Launched the payment options page","Payment options page has not Launched");
-        getRogersPaymentOptionsPage().clkPaymentConfirm();
+        //reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(),"Launched the payment options page","Payment options page has not Launched");
+       // getRogersPaymentOptionsPage().clkPaymentConfirm();
     	reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");
 		

@@ -58,9 +58,11 @@ public class RogersCH_TC_056_Internet_SignedInWirelessBuyInternetSameAddressTest
 		getRogersHomePage().clkInternetAvailability();
 		reporter.reportLogWithScreenshot("Launched the customer availability check popup");
 		getRogersHomePage().clkUseThisAddress();
+		reporter.reportLogWithScreenshot("Launched the Internet packages page");
+		getRogersInternetPackageSelectionPage().clkInternetPackage();
 		reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
-		getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
 
+		getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
 		reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the create profile page");
 		getRogersInternetProfilePage().clkSubmitProfile();
@@ -89,6 +91,11 @@ public class RogersCH_TC_056_Internet_SignedInWirelessBuyInternetSameAddressTest
 
 		reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the tech install page");
+
+/*		getRogersTechInstallPage().selSelffinstallDateAndTime();
+		reporter.reportLogWithScreenshot("Launched the tech install page");
+		getRogersTechInstallPage().setMobielNumber();*/
+
 		getRogersTechInstallPage().clkTechInstalConsent();
 		reporter.reportLogWithScreenshot("tech install details");
 		getRogersTechInstallPage().clkTechInstallContinue();
@@ -112,7 +119,7 @@ public class RogersCH_TC_056_Internet_SignedInWirelessBuyInternetSameAddressTest
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteAnonymous
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_ignitelogin, method);
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_login, method);
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 
