@@ -34,11 +34,12 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_060_ISS_HomePageEntryPointSignedInWirelessBuyInternetDiffAddressTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
+	@Test(groups = {"RegressionCH","saiCH"})
     public void checkIssHomePageEntryPointSignedInWirelessBuyInternetDiffAddressTest() {
-        reporter.reportLogWithScreenshot("Launched the Home Page");
+        getDriver().navigate().to(TestDataHandler.rogersConfig.getRogersURL()+"/web/consumer/internet/streaming");
+	    reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc60_WirelessSignedInInternetBuyDiffAddress.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc60_WirelessSignedInInternetBuyDiffAddress.getPassword());
@@ -56,22 +57,32 @@ public class RogersCH_TC_060_ISS_HomePageEntryPointSignedInWirelessBuyInternetDi
         getRogersHomePage().clkExistingCustomerShop();
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
         getRogersHomePage().clkExistingCustomerInternet();
-        reporter.reportLogWithScreenshot("Launched the Internet page");
+
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
-        reporter.reportLogWithScreenshot("Launched the customer availability check popup");
 
-        //getRogersHomePage().clkAddressCheck();
-        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+        reporter.reportLogWithScreenshot("Launched the customer availability check popup");
         String  strAddressLine1=TestDataHandler.tc60_WirelessSignedInInternetBuyDiffAddress.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc60_WirelessSignedInInternetBuyDiffAddress.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
-        getRogersInternetPackageSelectionPage().clkInternetPackage();
-        reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
+
+        getRogersInternetPackageSelectionPage().clkSmartStream();
+        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
+        getDriver().navigate().to(TestDataHandler.rogersConfig.getRogersURL()+"/web/consumer/internet/streaming?ecid=SMS_R_IGN_Aug_19_20_ISS_LYX78O");
+        getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
+        reporter.reportLogWithScreenshot("Launched the customer availability check popup");
+
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        getRogersHomePage().clkIgniteAddressLookupSubmit();
+        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
+        getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
+        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
+
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersInternetProfilePage().clkSubmitProfile();
@@ -100,20 +111,17 @@ public class RogersCH_TC_060_ISS_HomePageEntryPointSignedInWirelessBuyInternetDi
 
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
+
+    /*    getRogersTechInstallPage().selSelffinstallDateAndTime();
+        reporter.reportLogWithScreenshot("Launched the tech install page");
+        getRogersTechInstallPage().setMobielNumber();*/
+
         getRogersTechInstallPage().clkTechInstalConsent();
         reporter.reportLogWithScreenshot("tech install details");
         getRogersTechInstallPage().clkTechInstallContinue();
 
         reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
-        getRogersPaymentOptionsPage().selectPaymentMode("Pre-authorized Credit Card");
-        getRogersPaymentOptionsPage().switchToCreditCardIFrame();
-        getRogersPaymentOptionsPage().setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
-        getRogersPaymentOptionsPage().switchOutOfCreditCardIFrame();
-        getRogersPaymentOptionsPage().setCVV();
-        getRogersPaymentOptionsPage().selectExpiryMonth();
-        getRogersPaymentOptionsPage().selectExpiryYear();
-        reporter.reportLogWithScreenshot("Payment options Details");
         getRogersPaymentOptionsPage().clkPaymentConfirm();
 
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
@@ -137,7 +145,7 @@ public class RogersCH_TC_060_ISS_HomePageEntryPointSignedInWirelessBuyInternetDi
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 

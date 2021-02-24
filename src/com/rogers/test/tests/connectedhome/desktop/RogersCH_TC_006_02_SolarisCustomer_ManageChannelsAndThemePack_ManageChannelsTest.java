@@ -49,8 +49,8 @@ public class RogersCH_TC_006_02_SolarisCustomer_ManageChannelsAndThemePack_Manag
 		reporter.reportLogWithScreenshot("Launched the TV dash board");
 		getRogersSolarisTVDashboardPage().clkManageChannelsAndThemePacks();
 		
-		//getRogersSolarisTVChannelsAndThemepacksPage().searchChannel(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getSwapInChannelOne());
-		 getRogersSolarisTVChannelsAndThemepacksPage().SelectChannelGenres(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.accountDetails.getSwapInChannelOne());
+		 //getRogersSolarisTVChannelsAndThemepacksPage().searchChannel(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getSwapInChannelOne());
+		 //getRogersSolarisTVChannelsAndThemepacksPage().SelectChannelGenres(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.accountDetails.getSwapInChannelOne());
 		 reporter.reportLogWithScreenshot("Clicked on remove from your changes");
 		getRogersSolarisTVChannelsAndThemepacksPage().addChannel();
 		reporter.reportLogWithScreenshot("Channel again added");

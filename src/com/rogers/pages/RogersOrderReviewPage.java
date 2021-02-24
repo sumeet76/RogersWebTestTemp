@@ -66,9 +66,10 @@ public class RogersOrderReviewPage extends BasePageClass {
 	//div[@id='ds-checkbox-id-0-label-container']
 	//label[@for='tos_consent']
 
-	@FindBy(xpath = "//span[@class='checkout-authorize-copy']")
+	@FindAll({
+	@FindBy(xpath = "//span[@class='checkout-authorize-copy']"),
+			@FindBy(xpath = "//label[@class='ds-checkboxLabel d-inline-flex align-items-start']")})
 	WebElement clkChangeAcceptCheckboxUpdateInternet;
-	//label[@class='ds-checkboxLabel d-inline-flex align-items-start']
 
 	@FindBy(xpath = "//div[@class='text-semi mt-3 -f24 ng-star-inserted']")
 	WebElement popupSessionModel;
@@ -280,7 +281,8 @@ public class RogersOrderReviewPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(lnkAgreementPrivacyPolicy, 10).click();
 		getReusableActionsInstance().getWhenVisible(lnkAgreementToEnd, 30);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(lnkAgreementToEnd);
-		getReusableActionsInstance().moveToElementAndClick(clkChangeAcceptCheckboxUpdateInternet, 90);
+		getReusableActionsInstance().getWhenReady(clkChangeAcceptCheckboxUpdateInternet, 90);
+		getReusableActionsInstance().executeJavaScriptClick(clkChangeAcceptCheckboxUpdateInternet);
 		//getReusableActionsInstance().getWhenReady(clkChangeAcceptCheckboxUpdateInternet, 90).click();
 	}
 	

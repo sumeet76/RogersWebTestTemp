@@ -85,13 +85,13 @@ public class RogersCH_TC_055_IginteTV_ValidateAnonymousDifferentAddressRCISandEC
 		getRogersIgniteTVCreditCheckPage().clkCreditConsent();
 		reporter.reportLogWithScreenshot("Passport Details");
 		getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
-		reporter.hardAssert(getRogersIgniteTVCreditCheckPage().verifyAddressModal(),"Address Modal has Launched","Address Modal has not Launched");
-		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-		String  strAddressLineOne=TestDataHandler.tc55_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddress().get("line1");
-		String  strAddressLineTwo=TestDataHandler.tc55_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddress().get("line2");
-		getRogersIgniteTVCreditCheckPage().setIgniteAddressLookupSecond(strAddressLineOne+", "+strAddressLineTwo+", CANADA");
-		getRogersIgniteTVCreditCheckPage().clkIgniteAddressLookupSecondSubmit();
-
+		if (getRogersIgniteTVCreditCheckPage().verifyAddressModal()) {
+			reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+			String strAddressLineOne = TestDataHandler.tc55_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddress().get("line1");
+			String strAddressLineTwo = TestDataHandler.tc55_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddress().get("line2");
+			getRogersIgniteTVCreditCheckPage().setIgniteAddressLookupSecond(strAddressLineOne + ", " + strAddressLineTwo + ", CANADA");
+			getRogersIgniteTVCreditCheckPage().clkIgniteAddressLookupSecondSubmit();
+		}
 		reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the tech install page");
 		getRogersTechInstallPage().clkTechInstalConsent();
@@ -131,7 +131,7 @@ public class RogersCH_TC_055_IginteTV_ValidateAnonymousDifferentAddressRCISandEC
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-			//closeSession();
+			closeSession();
 	}
 
 
