@@ -28,8 +28,11 @@ public class RogersDeviceConfigPage extends BasePageClass {
     @FindBy(xpath = "//h1[@id='bfa-page-title']")
     WebElement deviceName;
 
-    @FindBy(xpath = "//label[@class='dsa-selection -color']//input[@checked='checked']")
-    WebElement deviceColor;
+    @FindBy(xpath = "//button[contains(@class,'ds-popover outline-none ds-pointer')]//span[contains(.,'Upfront')]")
+    WebElement deviceUpfrontEligibleCheck;
+
+    @FindBy(xpath = "//label[contains(@class,'position-relative -color')]//input[@checked='checked']")
+    WebElement checkedDeviceColor;
 
     @FindBy(xpath = "//span[@class='dsa-selection__caption text-center sr-only -absolute']/ancestor::label/input")
     List<WebElement> allDeviceColor;
@@ -88,6 +91,10 @@ public class RogersDeviceConfigPage extends BasePageClass {
 
     }
 
+    public boolean verifyIsDeviceUpfrontEligible() {
+        return getReusableActionsInstance().isElementVisible(deviceUpfrontEligibleCheck,30);
+    }
+
     /***
      * This method will click on Back Order Ship Home button
      * @author saurav.goyal
@@ -130,7 +137,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public boolean verifyDevicecolorWithDeepLink(String deeplink) {
-        String phoneColorFromPage = deviceColor.getAttribute("value");
+        String phoneColorFromPage = checkedDeviceColor.getAttribute("value");
         int colorIndexInDeepLink = deeplink.indexOf("colour=") + 7;
         String phoneColorFromDeepLink = deeplink.substring(colorIndexInDeepLink, deeplink.substring(colorIndexInDeepLink).indexOf("&") + colorIndexInDeepLink).replace("%20", " ");
         if (phoneColorFromPage.equalsIgnoreCase(phoneColorFromDeepLink)) {
@@ -301,14 +308,33 @@ public class RogersDeviceConfigPage extends BasePageClass {
         return colourText.getText().trim().toUpperCase();
     }
 
+    public boolean isSkuValid(List<WebElement> allDeviceSkus, String colorOfDevice) {
+        for(WebElement deviceSku : allDeviceSkus) {
+            if((deviceSku.getAttribute("value").equals(colorOfDevice)))
+                return true;
+        }
+        return false;
+    }
+
+    public String createXpathWithDeviceColor(String colorOfDevice) {
+        List<WebElement> allDeviceSkus = getDriver().findElements(By.xpath("//label[contains(@class,'position-relative -color')]//input"));
+        boolean isSkuColorExist = isSkuValid(allDeviceSkus,colorOfDevice);
+        if((colorOfDevice == null) || (colorOfDevice.isEmpty()) || !(isSkuColorExist)) {
+            WebElement element = allDeviceSkus.get(0);
+            String firstSkuColor = element.getAttribute("value");
+            return "//label[contains(@class,'position-relative -color')]//input[@value='"+firstSkuColor+"']/following::span[1]";
+        }
+        else return "//label[contains(@class,'position-relative -color')]//input[@value='"+colorOfDevice+"']/following::span[1]";
+    }
+
     /**
      * This method will select a device color on device config page
-     * @param deviceColor : color of the device which we need to select
+     * @param deviceColor : color of the device which we needs to be selected
      * @author saurav.goyal
      */
-    public void selectDeviceColor (String deviceColor){
-        getReusableActionsInstance().clickWhenReady(By.xpath("//input[@value='" + deviceColor + "']/ancestor::label//span[contains(@class,'dsa-selection__label')]"), 10);
-
+    public void selectDeviceColor(String deviceColor){
+        String xPathOfSkuToBeSelected = createXpathWithDeviceColor(deviceColor);
+        getReusableActionsInstance().clickWhenVisible(By.xpath(xPathOfSkuToBeSelected),30);
     }
 
     /**

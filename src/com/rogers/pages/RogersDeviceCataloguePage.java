@@ -24,6 +24,24 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "//ds-modal-container")
     WebElement modalContainer;
 
+    @FindBy(xpath = "//div[contains(@data-test,'credit-evaluation')]/ancestor::ds-modal-container")
+    WebElement popupCreditEval;
+
+    @FindBy(xpath = "//ds-modal-container//p[contains(text(),'Credit Evaluation')]")
+    WebElement txtCreditEval;
+
+    @FindBy(xpath = "//ds-modal[contains(@data-test,'sharedNonShared')]/ancestor::ds-modal-container")
+    WebElement sharedNonSharedModal;
+
+    @FindBy(xpath = "//ds-modal-container//label[contains(@class,'dsa-selection d-inline-block ds-pointer')][contains(@aria-label,'partager') or contains(@aria-label,'shared Rogers')]")
+    WebElement sharedOption;
+
+    @FindBy(xpath = "//ds-modal-container//label[contains(@class,'dsa-selection d-inline-block ds-pointer')][contains(@aria-label,'Forfait distinct sans') or contains(@aria-label,'separate plan')]")
+    WebElement nonSharedOption;
+
+    @FindBy(xpath = "//span[contains(text(),'Continue')]/ancestor::button[contains(@data-test,'shared-nonshared-continue')]")
+    WebElement modalContinueButton;
+
     @FindBy(xpath = "//a[@class='learMoreLink ds-pointer mw-100']")
     WebElement learnMoreBannerLearnMore;
 
@@ -51,7 +69,10 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "//button[@id='trident-cta-nac']")
     WebElement modalContainerGetStartedbutton;
 
-    @FindBy(xpath = "//ds-modal-container//*[@id=\"trident-cta11\"]")
+    @FindAll({
+            @FindBy(xpath = "//ds-modal-container//*[@id=\"trident-cta11\"]"),
+            @FindBy(xpath = "//button[@id='trident-cta-aal']//span[contains(@class,'ds-button__copy')]")
+    })
     WebElement modalContainerAddALinebutton;
 
     @FindBy(xpath = "(//button[contains(@variant,'icon')])[2]")
@@ -441,6 +462,59 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
     public void clickUpgradeMyPhoneButtonOnModal() {
         getReusableActionsInstance().clickWhenReady(modalContainerDeviceUpgradebutton , 20);
+    }
+
+    /**
+     *  This method clicks on Add a line button on the existing customer modal
+     *  @author praveeen.kumar7
+     */
+    public void clickAddALineButtonOnModal() {
+        getReusableActionsInstance().getWhenReady(modalContainerAddALinebutton,20).click();
+    }
+
+    /**
+     *  This method clicks on Add a line button on the existing customer modal
+     *  @return a boolean true if element is present else false
+     *  @author praveeen.kumar7
+     */
+    public boolean verifyCreditEvaluationPopupPresent() {
+        return getReusableActionsInstance().isElementVisible(popupCreditEval,30);
+    }
+
+    /**
+     *  This method checks whether Credit Evaluation text is present on the modal
+     *  @return a boolean true if element is present else false
+     *  @author praveeen.kumar7
+     */
+    public boolean verifyCreditEvalTextOnModalPresent() {
+        return getReusableActionsInstance().isElementVisible(txtCreditEval,10);
+    }
+
+    /**
+     *  This method verifies whether Sharing option modal to Add a line is present on the modal
+     *  @return a boolean true if element is present else false
+     *  @author praveeen.kumar7
+     */
+    public boolean verifySharedNonSharedModalPresent() {
+        return getReusableActionsInstance().isElementVisible(sharedNonSharedModal,30);
+    }
+
+    /**
+     *  This method select shared or nonshared sharing type based on the string passed
+     *  @param sharingType passing the value of sharingType to select the sharing option
+     *  @author praveeen.kumar7
+     */
+    public void selectAALSharingType(String sharingType) {
+        if(sharingType.equalsIgnoreCase("shared")) {
+            getReusableActionsInstance().clickWhenReady(sharedOption, 20);
+        }
+        else if(sharingType.equalsIgnoreCase("nonshared")){
+            getReusableActionsInstance().clickWhenReady(nonSharedOption, 20);
+        }
+    }
+
+    public void clickContinueButtonOnModal() {
+        getReusableActionsInstance().clickWhenReady(modalContinueButton,30);
     }
 
     /**

@@ -9,6 +9,11 @@ public class AALData {
 	private String ctnCity;
 	private String ctn;
 	private String postalCode;
+	private String sharingType;
+	private String deviceColor;
+	private String deviceCostIndex;
+	private String dataOptionIndex;
+	private String talkOptionIndex;
 	
 	/**
 	 * @return the postalCode
@@ -97,5 +102,65 @@ public class AALData {
 	public void setCtnCity(String ctnCity) {
 		this.ctnCity = ctnCity;
 	}
-	
+	/**
+	 * @return the sharingType
+	 */
+	public String getSharingType() {
+		return sharingType;
+	}
+	/**
+	 * @param sharingType the sharingType to set
+	 */
+	public void setSharingType(String sharingType) {
+		this.sharingType = sharingType;
+	}
+	/**
+	 * @return the devieColor
+	 */
+	public String getDeviceColor() {
+		return deviceColor;
+	}
+	/**
+	 * @param deviceColor the deviceColor to set
+	 */
+	public void setDeviceColor(String deviceColor) {
+		this.deviceColor = deviceColor;
+	}
+	/**
+	 * @return the deviceCostIndex
+	 */
+	public String getDeviceCostIndex() {
+		return deviceCostIndex;
+	}
+	/**
+	 * @param deviceCostIndex the deviceCostIndex to set
+	 */
+	public void setDeviceCostIndex(String deviceCostIndex) {
+		this.deviceCostIndex = deviceCostIndex;
+	}
+	/**
+	 * @return the dataOptionIndex
+	 */
+	public String getDataOptionIndex() {
+		return dataOptionIndex;
+	}
+	/**
+	 * @param dataOptionIndex the dataOptionIndex to set
+	 */
+	public void setdataOptionIndex(String dataOptionIndex) {
+		this.dataOptionIndex = dataOptionIndex;
+	}
+	/**
+	 * @return the talkOptionIndex
+	 */
+	public String getTalkOptionIndex() {
+		return talkOptionIndex;
+	}
+	/**
+	 * @param talkOptionIndex the dataOptionIndex to set
+	 */
+	public void setTalkOptionIndex(String talkOptionIndex) {
+		this.talkOptionIndex = talkOptionIndex;
+	}
+
 }

@@ -272,7 +272,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath ="//div[@data-test='delivery-information']//child::div/p[3]")
 	WebElement appointmentTime;
 
-	@FindBy(xpath = "//button[@id='main-continue-button']//span[contains(@class,'ds-button__copy')]")
+	@FindBy(xpath = "//button[@id='main-continue-button']")
 	WebElement submitBtnCheckoutPage;
 
 	@FindBy(xpath = "//p[@class='text-body mb-8']")
@@ -753,7 +753,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void clkChosePhoneNumber() {
-		getReusableActionsInstance().getWhenReady(rdoChosePhoneNumber, 60).click();
+		getReusableActionsInstance().getWhenReady(rdoChosePhoneNumber, 80).click();
 	}
 
 	/**
@@ -1056,7 +1056,7 @@ public class RogersCheckoutPage extends BasePageClass {
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementTobeClickable(submitBtnCheckoutPage,30);
 		getReusableActionsInstance().scrollToElementAndClick(submitBtnCheckoutPage);
-		//getReusableActionsInstance().clickWhenReady(submitBtnCheckoutPage , 30);
+		getReusableActionsInstance().clickWhenReady(submitBtnCheckoutPage , 60);
     }
 
 	/**

@@ -123,6 +123,7 @@ public class TestDataHandler {
 	public static HUPData tc14HUPShareKeepCurrentPlanTermML;
 	public static HUPData tc15HUPNonShareKeepCurrentPlanSL;
 	public static HUPData tc16HUPShareTermBopisML;
+	public static AALData tc17AALShareTermBopis;
 	public static HUPData buyFlowsOVtestCase01;
 	public static HUPData buyFlowsOVtestCase02;
 	public static HUPData buyFlowsOVtestCase05;
@@ -370,6 +371,7 @@ public class TestDataHandler {
 		tc14HUPShareKeepCurrentPlanTermML = YamlHandler.getHUPdata("tc14HUPShareKeepCurrentPlanTermML");
 		tc15HUPNonShareKeepCurrentPlanSL = YamlHandler.getHUPdata("tc15HUPNonShareKeepCurrentPlanSL");
 		tc16HUPShareTermBopisML = YamlHandler.getHUPdata("tc16HUPShareTermBopisML");
+		tc17AALShareTermBopis = YamlHandler.getAALdata("tc17AALShareTermBopis");
 	}
 	
 	private static void buyFlowsOneViewDataInit() throws FileNotFoundException {

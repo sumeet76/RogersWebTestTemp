@@ -11,11 +11,25 @@ import java.util.List;
 
 public class RogersPlanConfigPage extends BasePageClass {
     public String xpathDeviceName;
+
     public RogersPlanConfigPage(WebDriver driver) {
         super(driver);
     }
+
     String xpathDcDoTo;
     String dataProtectionOption;
+
+    @FindBy(xpath = "//button[contains(@class,'ds-button ds-corners')]//span[contains(text(),'options')]")
+    WebElement viewMoreOptions;
+
+    @FindBy(xpath = "//button[contains(@class,'ds-button ds-corners')]//span[contains(text(),' Show More') or contains(text(),' Afficher les ')]")
+    WebElement showMoreDetails;
+
+    @FindBy(xpath = "//span[contains(text(),'Monthly device financing payment') or contains(text(),'Paiement mensualité')]")
+    WebElement financingOptionCheck;
+
+    @FindBy(xpath = "//span[contains(text(),'Monthly device financing payment – with Upfront') or contains(text(),'Paiement mensuel de financement de l’appareil – avec Voie')]")
+    WebElement upfrontOptionCheck;
 
     @FindBy(xpath = "//button[contains(@class,'active text-semi')]")
     WebElement deviceProtectiontab;
@@ -25,29 +39,29 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     @FindBy(xpath = "//nav[@class='ds-breadcrumb']")
     WebElement breadCrumb;
-    
+
     @FindBy(xpath = "//button[@data-test='stepper-1-edit-step-continue-button']")
     WebElement preCartDeviceCostContinueButton;
-    
+
     @FindBy(xpath = "//button[@data-test='stepper-2-edit-step-continue-button']")
     WebElement preCartDataOtionContinueButton;
-    
+
     @FindBy(xpath = "//button[@data-test='stepper-3-edit-step-continue-button']")
     WebElement preCartTalkOptionContinueButton;
-    
+
     @FindBy(xpath = "//button[@data-test='stepper-4-edit-step-continue-button']")
     WebElement preCartAddonsContinueButton;
-    
+
     @FindBy(xpath = "//div[contains(@class,'ds-step__content ds-border-bottom ds-brcolor-concrete p-16 p-md-24 ds-bgcolor-misty')]//button[contains(@class,'primary -large')]")
     WebElement preCartSummaryContinueButton;
-    
+
     @FindBy(xpath = "//div[contains(@class,'ds-step__hide ng-trigger ng-trigger-bodyExpansion ds-step__show')]//button[contains(@class,'primary -large')]")
     WebElement preCartSummaryContinueButtonTalkOptions;
-    
+
     @FindBy(xpath = "//ds-step[@id='stepper-addons']//div[@class='d-flex flex-row-reverse']//button")
     WebElement preCartSummaryContinueButtonAddOns;
 
-    @FindBy(xpath ="//button[@data-test='build-plan-checkout-flow-button']/span")
+    @FindBy(xpath = "//button[@data-test='build-plan-checkout-flow-button']/span")
     WebElement continueButtonOnCartSummary;
     @FindAll({
             @FindBy(xpath = "//button[@id='get-bpo-offer-button' or @data-test='bpo-offer-modal-button-primary']"),
@@ -56,10 +70,10 @@ public class RogersPlanConfigPage extends BasePageClass {
     WebElement getBPOOfferOnDeviceProtection;
 
     @FindAll({
-        @FindBy(xpath = "//button[@data-test='bpo-offer-modal-button-primary']"),
-        @FindBy(xpath = "//button[@id='Skip the Offer']"),
-        @FindBy(xpath = "//div[@class='ds-modal__footer mb-24 mb-sm-40']//button[contains(@class,'-tertiary -large')]")
-            })
+            @FindBy(xpath = "//button[@data-test='bpo-offer-modal-button-primary']"),
+            @FindBy(xpath = "//button[@id='Skip the Offer']"),
+            @FindBy(xpath = "//div[@class='ds-modal__footer mb-24 mb-sm-40']//button[contains(@class,'-tertiary -large')]")
+    })
     WebElement skipBPOOfferOnDeviceProtection;
 
     @FindBy(xpath = "//div[@class='d-flex flex-row']")
@@ -68,18 +82,18 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//div[contains(@class,'dsa-orderTable__row')]")
     List<WebElement> cartSummaryElements;
 
-    @FindBy(xpath = "//ds-expander[@id='orderTable-refId-0']//div[contains(@class,'dsa-orderTable__totalRow')]")
+    @FindBy(xpath = "//div[@class='dsa-orderTable']/preceding::div[@class='ds-price'][1]")
     WebElement monthlyFeesAmount;
 
-    @FindBy(xpath = "//ds-expander[@id='orderTable-refId-1']//div[contains(@class,'dsa-orderTable__totalRow')]")
+    @FindBy(xpath = "//span[contains(text(),'One-time')]/following::div[@class='ds-price'][2]")
     WebElement oneTimeFeesAmount;
 
     //@FindBy(xpath = "//p[contains(text(),'1.')]//following-sibling::r-data-block-selection//input[@checked='checked']//following-sibling::span//span[contains(@class,'dsa-selection__caption')]")
-    @FindBy(xpath ="//p[contains(text(),'1.')]/./following-sibling::div/div[@class='pb-16 ng-star-inserted']//input[@checked='checked']//following-sibling::span//span[contains(@class,'dsa-dataBlock__tileLeftFeatureInfo text-body-sm ds-color-grey ng-star-inserted')]")
+    @FindBy(xpath = "//p[contains(text(),'1.')]/./following-sibling::div/div[@class='pb-16 ng-star-inserted']//input[@checked='checked']//following-sibling::span//span[contains(@class,'dsa-dataBlock__tileLeftFeatureInfo text-body-sm ds-color-grey ng-star-inserted')]")
     WebElement priceForSelectedDeviceCost;
 
     //@FindBy(xpath = "//div[@class='dsa-promoBlock ds-bgcolor-misty ng-star-inserted']")
-    @FindBy(xpath ="//div[@class='dsa-promoBlock p-md-24 p-16 ds-bgcolor-misty']")
+    @FindBy(xpath = "//div[@class='dsa-promoBlock p-md-24 p-16 ds-bgcolor-misty']")
     WebElement promoBlock;
 
     @FindBy(xpath = "//div[@class='dsa-dataBlock']//div[contains(text(), 'upfront savings') or contains(text(),'sur le montant initial')]")
@@ -119,25 +133,63 @@ public class RogersPlanConfigPage extends BasePageClass {
         getReusableActionsInstance().clickIfAvailable(deviceProtectiontab);
     }
 
+    public String getDeviceCostTierSelected() {
+        String tierOption="noterm";
+        if(getReusableActionsInstance().isElementVisible(financingOptionCheck,60)) {
+           tierOption="financing";
+           return tierOption;
+        }
+        if(getReusableActionsInstance().isElementVisible(upfrontOptionCheck,60)) {
+            tierOption="upfront";
+            return tierOption;
+        }
+        return tierOption;
+    }
+
+    /**
+     * This method verifies if the selected device section is displayed
+     * @param deviceName String alue of the device
+     * @return a boolean true if selected device section is displayed else returns false
+     * @author praveen.kumar7
+     */
+    public boolean verifySelectedDeviceSection(String deviceName) {
+        return getReusableActionsInstance().isElementVisible(By.xpath("//div[@class='ng-tns-c17-6 ng-star-inserted']//p[contains(.,'" +deviceName +"')]"),30);
+    }
+
+    public void clickViewMoreOptionsIfAvailable() {
+        getReusableActionsInstance().clickIfAvailable(viewMoreOptions,30);
+    }
+
+    public void clickShowMoreDetailsIfAvailable() {
+        getReusableActionsInstance().clickIfAvailable(showMoreDetails,40);
+    }
+
     /**
      * This method creates Xpath of a Device Cost , data option , Talk Options
-     * @param	dC_DO_TO : String value of Device Cost , data option , Talk Options
+     *
      * @return returns a String value having xpath for the Device Cost or  data option or Talk Options
      * DC_DO_TO stands for device cost , data option , talk options
+     * @param    dC_DO_TO : String value of Device Cost , data option , Talk Options
      * @author saurav.goyal
      */
-    public String createXpathWithInputData(String dC_DO_TO) {
-        if(dC_DO_TO != null && !dC_DO_TO.isEmpty())
-            xpathDcDoTo = "//div[@class='pb-16 ng-star-inserted'][contains(@data-id,'"+ dC_DO_TO + "')]";
-        else
-            xpathDcDoTo = "(//div[@class='pb-16 ng-star-inserted'][contains(@data-id,'')])[1]";
-        return xpathDcDoTo;
+    public String createXpathWithInputData(String dC_DO_TO,int stepper) {
+        if (stepper == 1) {
+            return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
+        }
+        if (stepper == 2) {
+            return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-infinite-" + dC_DO_TO + "')]//label[1]";
+        }
+        if (stepper == 3) {
+            return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
+        }
+        return null;
     }
 
     /**
      * This method creates Xpath for protection plan
-     * @param	protectionPlanDetails : String value of protection plan
+     *
      * @return returns a String value having xpath for the protection plan
+     * @param    protectionPlanDetails : String value of protection plan
      * @author saurav.goyal
      */
     public String createXpathWithInputDataForProtectionPlan(String protectionPlanDetails) {
@@ -146,103 +198,135 @@ public class RogersPlanConfigPage extends BasePageClass {
         return xpathProtectionPlan;
     }
 
+    public String getUpdatedDeviceCostIndex(String deviceCostIndex) {
+        if((deviceCostIndex == null) || (deviceCostIndex.isEmpty())) {
+            deviceCostIndex="0";
+            return deviceCostIndex;
+        }
+        return deviceCostIndex;
+    }
+
+    public String getupdatedDataOptionIndex(String dataOptionIndex) {
+        if ((dataOptionIndex == null) || (dataOptionIndex.isEmpty())) {
+            dataOptionIndex = "0";
+            return dataOptionIndex;
+        }
+        return dataOptionIndex;
+    }
+
+    public String getupdatedTalkOptionIndex(String talkOptionIndex) {
+        if ((talkOptionIndex == null) || (talkOptionIndex.isEmpty())) {
+            talkOptionIndex = "0";
+            return talkOptionIndex;
+        }
+        return talkOptionIndex;
+    }
 
     /**
      * Select Device Cost on Plan config page
-     * @param	deviceCost : String value of Device Cost to be selected
-     * @author saurav.goyal
+     *
+     * @param    deviceCostIndex : String value of Device Cost to be selected
+     * @author praveen.kumar
      */
-    public void selectDeviceCost(String deviceCost) {
-        if(deviceCost != null) {
-            xpathDcDoTo = createXpathWithInputData(deviceCost);
-            List<WebElement> noOfTiers = getDriver().findElements(By.xpath(xpathDcDoTo));
-            if(noOfTiers.size() == 1)
-                getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo));
-            else
-                getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo + "[1]"));
-        }else{
-            xpathDcDoTo = createXpathWithInputData(deviceCost);
-            getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo));
+    public void selectDeviceCostAndClickOnContinueButton(String deviceCostIndex) {
+        int stepper = 1;
+        String xpathDcDoTo = createXpathWithInputData(deviceCostIndex, stepper);
+        List<WebElement> noOfDeviceTiers = getDriver().findElements(By.xpath("//dsa-selection[contains(@data-test,'stepper-1-edit-step-selection-option-')]//label[1]"));
+        if (((noOfDeviceTiers.size() == 2) && ((Integer.parseInt(deviceCostIndex)) > noOfDeviceTiers.size()-1)) || ((noOfDeviceTiers.size() == 2) && ((Integer.parseInt(deviceCostIndex)) == 0))) {
+            getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton, 40);
+        }
+        if (((noOfDeviceTiers.size() == 3) && ((Integer.parseInt(deviceCostIndex)) > noOfDeviceTiers.size()-1)) || ((noOfDeviceTiers.size() == 3) && ((Integer.parseInt(deviceCostIndex)) == 0))) {
+            getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton, 40);
+        }
+        if (((noOfDeviceTiers.size() == 3) && ((Integer.parseInt(deviceCostIndex)) == 1)) || ((noOfDeviceTiers.size() == 3) && ((Integer.parseInt(deviceCostIndex)) == 2))) {
+            getReusableActionsInstance().clickWhenVisible(By.xpath(xpathDcDoTo), 60);
+            getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton, 60);
+        }
+        if ((noOfDeviceTiers.size() == 2) && ((Integer.parseInt(deviceCostIndex)) == 1)) {
+            getReusableActionsInstance().clickWhenVisible(By.xpath(xpathDcDoTo), 20);
+            getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton, 30);
         }
     }
 
     /**
      * Select No term Device Cost on Plan config page
+     *
      * @author saurav.goyal
      */
-    public void selectNoTermDeviceDeviceCost(){
-        getReusableActionsInstance().clickWhenReady(By.xpath("//span[@data-caption='NOTERM_false']//ancestor::label") , 30);
+    public void selectNoTermDeviceDeviceCost() {
+        getReusableActionsInstance().clickWhenReady(By.xpath("//span[@data-caption='NOTERM_false']//ancestor::label"), 30);
     }
 
     /**
      * Select No term Device Cost on Plan config page
+     *
      * @author saurav.goyal
      */
-    public void setCheckBoxKeepMyCurrentPlan(){
-        getReusableActionsInstance().clickWhenReady(checkBoxKeepMyCurrentPlan , 30);
+    public void setCheckBoxKeepMyCurrentPlan() {
+        getReusableActionsInstance().clickWhenReady(checkBoxKeepMyCurrentPlan, 30);
     }
 
     /**
      * Select data option on Plan config page
-     * @param	dataOption : String value of data option to be selected
+     *
+     * @param    dataOptionIndex : String value of data option to be selected
      * @author saurav.goyal
      */
-    public void selectDataOption(String dataOption) {
-        if(dataOption != null) {
-            xpathDcDoTo = createXpathWithInputData(dataOption);
-            List<WebElement> noOfTiers = getDriver().findElements(By.xpath(xpathDcDoTo));
-            if(noOfTiers.size() == 1)
-                getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo));
-            else
-                getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo + "[1]"));
-        }else{
-            xpathDcDoTo = "//p[contains(text(),'2.')]//following-sibling::div//div[@class='pb-16 ng-star-inserted'][1]";
-            getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo));
+    public void selectDataOptionAndClickonContinueButton(String dataOptionIndex) {
+        int stepper=2;
+        String xpathDcDoTo = createXpathWithInputData(dataOptionIndex,stepper);
+        List<WebElement> noOfDataOptions = getDriver().findElements(By.xpath("//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-infinite-')]//label[1]"));
+        if((Integer.parseInt(dataOptionIndex) == 0) || (Integer.parseInt(dataOptionIndex) > noOfDataOptions.size()-1)) {
+            getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton,40);
+        }
+        else {
+            getReusableActionsInstance().clickWhenVisible(By.xpath(xpathDcDoTo),40);
+            getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton,40);
         }
     }
 
     /**
      * Select data option on Plan config page
-     * @param	dataOption : String value of data option to be selected
-     * @author saurav.goyal
+     *
      * @return true if the difference between dataStrikedPriceValue and dataNonStrikedPriceValue is 1000 for MSF in gerenal it should be 10.00 but we have removed dot from that
+     * @param    dataOption : String value of data option to be selected
+     * @author saurav.goyal
      */
     public boolean verifyDataOptionMSFValue(String dataOption) {
         final String dataStrikedPrice;
         final String dataNonStrikedPrice;
         final int dataStrikedPriceValue;
         final int dataNonStrikedPriceValue;
-        if(dataOption != null) {
-            xpathDcDoTo = createXpathWithInputData(dataOption);
+        if (dataOption != null) {
+            xpathDcDoTo = createXpathWithInputData(dataOption,3);
             List<WebElement> noOfTiers = getDriver().findElements(By.xpath(xpathDcDoTo));
-            if(noOfTiers.size() == 1) {
-                dataStrikedPrice = getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo+"//p[@class='text-line-through text-body-sm mb-0 ng-star-inserted']")).getText();
-                dataNonStrikedPrice = getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo+"//p[@class='text-body-lg text-semi mb-0 ng-star-inserted']")).getText();
+            if (noOfTiers.size() == 1) {
+                dataStrikedPrice = getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo + "//p[@class='text-line-through text-body-sm mb-0 ng-star-inserted']")).getText();
+                dataNonStrikedPrice = getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo + "//p[@class='text-body-lg text-semi mb-0 ng-star-inserted']")).getText();
                 dataStrikedPriceValue = Integer.parseInt(dataStrikedPrice.replaceAll("[^-?0-9]+", ""));
                 dataNonStrikedPriceValue = Integer.parseInt(dataNonStrikedPrice.replaceAll("[^-?0-9]+", ""));
-                if(dataStrikedPriceValue - dataNonStrikedPriceValue == 1000 )
+                if (dataStrikedPriceValue - dataNonStrikedPriceValue == 1000)
                     return true;
                 else
                     return false;
-            }
-            else {
-                dataStrikedPrice = getReusableActionsInstance().getWhenReady(By.xpath(By.xpath(xpathDcDoTo + "[1]")+"//p[@class='text-line-through text-body-sm mb-0 ng-star-inserted']")).getText();
-                dataNonStrikedPrice = getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo+"//p[@class='text-body-lg text-semi mb-0 ng-star-inserted']")).getText();
+            } else {
+                dataStrikedPrice = getReusableActionsInstance().getWhenReady(By.xpath(By.xpath(xpathDcDoTo + "[1]") + "//p[@class='text-line-through text-body-sm mb-0 ng-star-inserted']")).getText();
+                dataNonStrikedPrice = getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo + "//p[@class='text-body-lg text-semi mb-0 ng-star-inserted']")).getText();
                 dataStrikedPriceValue = Integer.parseInt(dataStrikedPrice.replaceAll("[^-?0-9]+", ""));
                 dataNonStrikedPriceValue = Integer.parseInt(dataNonStrikedPrice.replaceAll("[^-?0-9]+", ""));
-                if(dataStrikedPriceValue - dataNonStrikedPriceValue == 1000 )
+                if (dataStrikedPriceValue - dataNonStrikedPriceValue == 1000)
                     return true;
                 else
                     return false;
 
             }
-        }else{
+        } else {
             xpathDcDoTo = "//p[contains(text(),'2.')]//following-sibling::div//div[@class='pb-16 ng-star-inserted'][1]//p[@class='text-line-through text-body-sm mb-0 ng-star-inserted']";
             dataStrikedPrice = getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo)).getText();
-            dataNonStrikedPrice = getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo+"//following-sibling::p")).getText();
+            dataNonStrikedPrice = getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo + "//following-sibling::p")).getText();
             dataStrikedPriceValue = Integer.parseInt(dataStrikedPrice.replaceAll("[^-?0-9]+", ""));
             dataNonStrikedPriceValue = Integer.parseInt(dataNonStrikedPrice.replaceAll("[^-?0-9]+", ""));
-            if(dataStrikedPriceValue - dataNonStrikedPriceValue == 1000 )
+            if (dataStrikedPriceValue - dataNonStrikedPriceValue == 1000)
                 return true;
             else
                 return false;
@@ -252,26 +336,35 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     /**
      * Select talk option on Plan config page
-     * @param	talkOptions : String value of data option to be selected
+     *
+     * @param    talkOptions : String value of data option to be selected
      * @author saurav.goyal
      */
-    public void selectTalkOptions(String talkOptions) {
-        if(talkOptions != null) {
-            xpathDcDoTo = createXpathWithInputData(talkOptions);
-            List<WebElement> noOfTiers = getDriver().findElements(By.xpath(xpathDcDoTo));
-            if(noOfTiers.size() == 1)
-                getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo));
-            else
-                getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo + "[1]"));
-        }else{
-            xpathDcDoTo = "//p[contains(text(),'3.')]//following-sibling::div//div[@class='pb-16 ng-star-inserted'][1]";
-            getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo + "[1]"));
+    public boolean verifyTalkOptionsSelection(String talkOptions) {
+        int stepper = 3;
+        String xpathDcDoTo = createXpathWithInputData(talkOptions, stepper);
+        List<WebElement> noOfTalkOptions = getDriver().findElements(By.xpath("//dsa-selection[contains(@data-test,'stepper-3-edit-step-selection-option-')]//label[1]"));
+        if(Integer.parseInt(talkOptions) > noOfTalkOptions.size()-1) {
+            talkOptions = "0";
         }
+        if ((noOfTalkOptions.size() == 1) && (getReusableActionsInstance().isElementVisible(preCartAddonsContinueButton,30))) {
+            return true;
+        }
+        if ((noOfTalkOptions.size() == 2) && (Integer.parseInt(talkOptions) == 0)) {
+            getReusableActionsInstance().clickWhenVisible((preCartSummaryContinueButtonTalkOptions),30);
+            return true;
+        }
+        if ((noOfTalkOptions.size() == 2) && (Integer.parseInt(talkOptions) == 1)) {
+            getReusableActionsInstance().clickWhenVisible(By.xpath(xpathDcDoTo),30);
+            getReusableActionsInstance().clickWhenVisible((preCartSummaryContinueButtonTalkOptions),30);
+            return true;
+        }
+        return getReusableActionsInstance().isElementVisible(preCartAddonsContinueButton,30);
     }
-
 
     /**
      * This method creates Xpath for device protection option
+     *
      * @param dataProtectionOption : String value of data protection option
      * @return returns a String value having xpath for data protection option
      * @author saurav.goyal
@@ -283,19 +376,21 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     /**
      * This method will Click Data Protection on Plan config page
+     *
      * @param dataProtectionOption : String for the data Protection plan option
      * @author saurav.goyal
      */
     public void clickOptionInDataProtection(String dataProtectionOption) {
-        if(dataProtectionOption != null && !dataProtectionOption.isEmpty()) {
+        if (dataProtectionOption != null && !dataProtectionOption.isEmpty()) {
             xpathDcDoTo = createXpathWithInputDataForProtectionPlan(dataProtectionOption);
             getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo));
-        }else
+        } else
             getReusableActionsInstance().clickIfAvailable(noDeviceProtection, 10);
     }
 
     /**
      * Verify tooltip in Data protection on Plan config page
+     *
      * @param dataProtectionOption : This will verify the tooltip for the data protection option
      * @return String having tooltip value for that particular data protection option
      * @author saurav.goyal
@@ -308,63 +403,71 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     /**
      * Click continue on Plan config page before cart summary
+     *
      * @author saurav.goyal
      */
     public void clickPreCartSummaryContinueButton() {
         getReusableActionsInstance().clickIfAvailable(preCartSummaryContinueButton, 5);
     }
-    
+
     /**
      * Click continue on modal what would you like to do with your old phone
+     *
      * @author saurav.goyal
      */
     public void clickContinueOnModalToDoWithOldPhone() {
-        if(getReusableActionsInstance().isElementVisible(modalToDoWithOldPhone, 20))
+        if (getReusableActionsInstance().isElementVisible(modalToDoWithOldPhone, 20))
             getReusableActionsInstance().clickWhenReady(btnContinueOnModalToDoWithOldPhone, 5);
     }
 
     /**
      * Click continue on Plan config page before cart summary
+     *
      * @author saurav.goyal
      */
     public void clickPreCartSummaryContinueButtonTalkOptions() {
         getReusableActionsInstance().clickIfAvailable(preCartSummaryContinueButtonTalkOptions, 5);
     }
-    
+
     /**
      * Click continue on Device Cost Section
+     *
      * @author karthic.hasan
      */
     public void clickPreCartDeviceCostContinueButton() {
         getReusableActionsInstance().clickWhenReady(preCartDeviceCostContinueButton);
     }
-    
+
     /**
      * Click continue on Data Option Section
+     *
      * @author karthic.hasan
      */
     public void clickPreCartDataOptionContinueButton() {
         getReusableActionsInstance().clickIfAvailable(preCartDataOtionContinueButton);
     }
-    
+
     /**
      * Click continue on Talk Option Section
+     *
      * @author karthic.hasan
      */
     public void clickPreCartTalkOptionContinueButton() {
         getReusableActionsInstance().clickIfAvailable(preCartTalkOptionContinueButton);
     }
-    
+
     /**
      * Click continue on Addons Section
+     *
      * @author karthic.hasan
      */
     public void clickPreCartAddonsContinueButton() {
         getReusableActionsInstance().clickIfAvailable(preCartAddonsContinueButton);
     }
-    
+
     /**
      * Click continue on Plan config page before cart summary
+     *
      * @author saurav.goyal
      */
     public void clickPreCartSummaryContinueButtonAddOns() {
@@ -373,15 +476,16 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     /**
      * This is to verify the data option price in cart summary
+     *
      * @return boolean true if data price in cart summary matches with the selected data price else return false
      * @author saurav.goyal
      */
     public boolean verifyDataPriceOnCartSummary() {
-        for(WebElement cartSummaryElement: cartSummaryElements) {
-            if(cartSummaryElement.getText().toLowerCase().contains("data") || cartSummaryElement.getText().toLowerCase().contains("données")) {
-                for(WebElement buildPlanElement: buildPlanDetails) {
-                    if(buildPlanElement.getText().toLowerCase().contains("data") || buildPlanElement.getText().toLowerCase().contains("données")) {
-                        return buildPlanElement.getText().contains(cartSummaryElement.getText().toString().substring(cartSummaryElement.getText().toString().indexOf("\\n")+1));
+        for (WebElement cartSummaryElement : cartSummaryElements) {
+            if (cartSummaryElement.getText().toLowerCase().contains("data") || cartSummaryElement.getText().toLowerCase().contains("données")) {
+                for (WebElement buildPlanElement : buildPlanDetails) {
+                    if (buildPlanElement.getText().toLowerCase().contains("data") || buildPlanElement.getText().toLowerCase().contains("données")) {
+                        return buildPlanElement.getText().contains(cartSummaryElement.getText().toString().substring(cartSummaryElement.getText().toString().indexOf("\\n") + 1));
                     }
                 }
 
@@ -392,15 +496,16 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     /**
      * This is to verify the talk option price on cart summary
+     *
      * @return boolean true if talk price in cart summary matches with the selected talk price else return false
      * @author saurav.goyal
      */
     public boolean verifyTalkPriceOnCartSummary() {
-        for(WebElement cartSummaryElement:  cartSummaryElements) {
-            if(cartSummaryElement.getText().toLowerCase().contains("calling") || cartSummaryElement.getText().toLowerCase().contains("appel")) {
-                for(WebElement buildPlanElement: buildPlanDetails) {
-                    if(buildPlanElement.getText().toLowerCase().contains("calling") || buildPlanElement.getText().toLowerCase().contains("calling")) {
-                        return buildPlanElement.getText().contains(cartSummaryElement.getText().toString().substring(cartSummaryElement.getText().toString().indexOf("\\n")+1));
+        for (WebElement cartSummaryElement : cartSummaryElements) {
+            if (cartSummaryElement.getText().toLowerCase().contains("calling") || cartSummaryElement.getText().toLowerCase().contains("appel")) {
+                for (WebElement buildPlanElement : buildPlanDetails) {
+                    if (buildPlanElement.getText().toLowerCase().contains("calling") || buildPlanElement.getText().toLowerCase().contains("calling")) {
+                        return buildPlanElement.getText().contains(cartSummaryElement.getText().toString().substring(cartSummaryElement.getText().toString().indexOf("\\n") + 1));
                     }
                 }
 
@@ -412,15 +517,16 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     /**
      * This is to verify the protection price on cart summary
+     *
      * @return boolean true if protection price in cart summary matches with the selected protection price else return false
      * @author saurav.goyal
      */
     public boolean verifyProtectionPriceOnCartSummary() {
-        for(WebElement cartSummaryElement: cartSummaryElements) {
-            if(cartSummaryElement.getText().toLowerCase().contains("protection") || cartSummaryElement.getText().toLowerCase().contains("protection")) {
-                for(WebElement buildPlanElement: buildPlanDetails) {
-                    if(buildPlanElement.getText().toLowerCase().contains("protection") || buildPlanElement.getText().toLowerCase().contains("protection ")) {
-                        return buildPlanElement.getText().contains(cartSummaryElement.getText().toString().substring(cartSummaryElement.getText().toString().indexOf("\\n")+1));
+        for (WebElement cartSummaryElement : cartSummaryElements) {
+            if (cartSummaryElement.getText().toLowerCase().contains("protection") || cartSummaryElement.getText().toLowerCase().contains("protection")) {
+                for (WebElement buildPlanElement : buildPlanDetails) {
+                    if (buildPlanElement.getText().toLowerCase().contains("protection") || buildPlanElement.getText().toLowerCase().contains("protection ")) {
+                        return buildPlanElement.getText().contains(cartSummaryElement.getText().toString().substring(cartSummaryElement.getText().toString().indexOf("\\n") + 1));
                     }
                 }
 
@@ -431,16 +537,17 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     /**
      * This is to verify the device price on cart summary
+     *
      * @param deviceName : give the name of the device as given in the cart summary
      * @return boolean true if device price in cart summary matches with the selected device price else return false
      * @author saurav.goyal
      */
     public boolean verifyDevicePriceOnCartSummary(String deviceName) {
-        for(WebElement cartSummaryElement: cartSummaryElements) {
-            if(cartSummaryElement.getText().toLowerCase().contains(deviceName.toLowerCase())) {
-                for(WebElement buildPlanElement: buildPlanDetails) {
-                    if(buildPlanElement.getText().toLowerCase().contains("Device cost") || buildPlanElement.getText().toLowerCase().contains("le coût de votre appareil")) {
-                        return buildPlanElement.getText().contains(cartSummaryElement.getText().toString().substring(cartSummaryElement.getText().toString().indexOf("\\n")+1));
+        for (WebElement cartSummaryElement : cartSummaryElements) {
+            if (cartSummaryElement.getText().toLowerCase().contains(deviceName.toLowerCase())) {
+                for (WebElement buildPlanElement : buildPlanDetails) {
+                    if (buildPlanElement.getText().toLowerCase().contains("Device cost") || buildPlanElement.getText().toLowerCase().contains("le coût de votre appareil")) {
+                        return buildPlanElement.getText().contains(cartSummaryElement.getText().toString().substring(cartSummaryElement.getText().toString().indexOf("\\n") + 1));
 
                     }
                 }
@@ -451,10 +558,11 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     /**
      * Click continue on cart summary in Plan config page
+     *
      * @author saurav.goyal
      */
     public void clickCartSummaryContinueButton() {
-    	getReusableActionsInstance().javascriptScrollByVisibleElement(continueButtonOnCartSummary);
+        getReusableActionsInstance().javascriptScrollByVisibleElement(continueButtonOnCartSummary);
         getReusableActionsInstance().executeJavaScriptClick(continueButtonOnCartSummary);
 //        getReusableActionsInstance().waitForElementTobeClickable(continueButtonOnCartSummary, 10);
 //        getReusableActionsInstance().clickWhenReady(continueButtonOnCartSummary);
@@ -462,6 +570,7 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     /**
      * Select BPO offer on Plan config page
+     *
      * @author saurav.goyal
      */
     public void clickGetBPOOffer() {
@@ -470,6 +579,7 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     /**
      * Select first edit button i.e. in device cost
+     *
      * @author saurav.goyal
      */
     public void clickEditButtonDeviceCost() {
@@ -478,27 +588,32 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     /**
      * skip BPO offer on Plan config page
+     *
      * @author saurav.goyal
      */
     public void skipBPOOffer() {
-        if(getReusableActionsInstance().isElementVisible(skipBPOOfferOnDeviceProtection, 20))
+        if (getReusableActionsInstance().isElementVisible(skipBPOOfferOnDeviceProtection, 20))
             getReusableActionsInstance().clickIfAvailable(skipBPOOfferOnDeviceProtection, 5);
     }
 
     /**
      * This method will get the monthly fees amount from the cart summary
+     *
      * @return String having monthly fees amount from the cart summary
      * @author saurav.goyal
      */
     public String getMonthlyFeesAmount() {
-        return monthlyFeesAmount.getText().replaceAll("\\n","");
+        String monthlyFees =  monthlyFeesAmount.getAttribute("aria-label");
+        String strMonthlyFees[] = monthlyFees.split("\\s");
+        return strMonthlyFees[0].trim();
     }
 
-    @FindBy(xpath="//p[contains(@data-test,'stepper-0-completed-step-device-name')]")
+    @FindBy(xpath = "//p[contains(@data-test,'stepper-0-completed-step-device-name')]")
     WebElement deviceInfo;
 
     /**
      * This method will get the selected device info
+     *
      * @return String having device info
      * @author nimmy.george
      */
@@ -506,7 +621,7 @@ public class RogersPlanConfigPage extends BasePageClass {
         return deviceInfo.getText().toUpperCase();
     }
 
-    @FindBy(xpath="//p[@class='ng-star-inserted']")
+    @FindBy(xpath = "//p[@class='ng-star-inserted']")
     WebElement labelRpotg;
 
     /**
@@ -522,87 +637,93 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     /**
      * This method will get the one time fees amount from the cart summary
+     *
      * @return String having one time fees amount from the cart summary
      * @author saurav.goyal
      */
     public String getOneTimeFeesAmount() {
-    	getReusableActionsInstance().javascriptScrollByVisibleElement(oneTimeFeesAmount);
-        return oneTimeFeesAmount.getText().replaceAll("\\n","");
+        getReusableActionsInstance().javascriptScrollByVisibleElement(oneTimeFeesAmount);
+        return oneTimeFeesAmount.getAttribute("aria-label");
     }
 
     /**
      * This method will verify BreadCrumb on Plan config Page
+     *
      * @param deviceName: String of device name
      * @return true if breadcrumb is displayed fine else false
      * @author saurav.goyal
      */
     public boolean verifyBreadCrumb(String deviceName) {
-        if(getReusableActionsInstance().isElementVisible(devicesInBreadCrumb) && getReusableActionsInstance().isElementVisible(buildPlanInBreadCrumb) && breadCrumb.getText().toUpperCase().contains((deviceName).toUpperCase()))
+        if (getReusableActionsInstance().isElementVisible(devicesInBreadCrumb) && getReusableActionsInstance().isElementVisible(buildPlanInBreadCrumb) && breadCrumb.getText().toUpperCase().contains((deviceName).toUpperCase()))
             return true;
         return false;
     }
-    
+
     /**
      * This method will verify BreadCrumb on Plan config Page for NAC BYOD
+     *
      * @return true if breadcrumb is displayed fine else false
      * @author saurav.goyal
      */
     public boolean verifyBreadCrumb() {
-        if(getReusableActionsInstance().isElementVisible(plansInBreadCrumb) && getReusableActionsInstance().isElementVisible(buildPlanInBreadCrumb) && getReusableActionsInstance().isElementVisible(bringYourOwnDeviceInBreadCrumb))
+        if (getReusableActionsInstance().isElementVisible(plansInBreadCrumb) && getReusableActionsInstance().isElementVisible(buildPlanInBreadCrumb) && getReusableActionsInstance().isElementVisible(bringYourOwnDeviceInBreadCrumb))
             return true;
         return false;
     }
 
     /**
      * This method will verify the Device info on the plan config page
+     *
      * @param deviceInfoConfigPage : String of device infor from config page
-     * @param deviceName: String of device name
+     * @param deviceName:          String of device name
      * @return boolean true if Device info on plan config page and matches with device info on device config page
      * @author saurav.goyal
      */
-    public boolean verifyDeviceInfo(String deviceInfoConfigPage , String deviceName) {
+    public boolean verifyDeviceInfo(String deviceInfoConfigPage, String deviceName) {
         String deviceInfoXpath = "//p[contains(text(),'" + deviceName + "')]";
-        if(getReusableActionsInstance().getWhenReady(By.xpath(deviceInfoXpath), 10).getText().replace(" ", "").toUpperCase().equalsIgnoreCase(deviceInfoConfigPage.replace(" ", "").toUpperCase()))
+        if (getReusableActionsInstance().getWhenReady(By.xpath(deviceInfoXpath), 10).getText().replace(" ", "").toUpperCase().equalsIgnoreCase(deviceInfoConfigPage.replace(" ", "").toUpperCase()))
             return true;
         return false;
     }
 
     /**
      * This method will verify the default price on the device catalogue page with the default selected price on Plan config page
+     *
      * @param downPriceValueCataloguePage : down price on device catalogue page
      * @return boolean: true if both the value will match else return false
      * @author saurav.goyal
      */
     public boolean verifyDefaultPrice(String downPriceValueCataloguePage) {
-        if(getReusableActionsInstance().getWhenReady(priceForSelectedDeviceCost, 30).getText().toUpperCase().replace(" ", "").contains(downPriceValueCataloguePage.toUpperCase().replaceAll("/", "").replace(" ", "")))
+        if (getReusableActionsInstance().getWhenReady(priceForSelectedDeviceCost, 30).getText().toUpperCase().replace(" ", "").contains(downPriceValueCataloguePage.toUpperCase().replaceAll("/", "").replace(" ", "")))
             return true;
         return false;
     }
 
     /**
      * This method will get the promo block text from Plan config page displayed below the cart summary
+     *
      * @return String : Return the promo block text from Plan config page displayed below the cart summary
      * @author Pranav.Shaligram
      */
-    public String getPromoBlockText(){
-        return getReusableActionsInstance().getWhenReady(promoBlock,10).getText().trim().replaceAll("\\n", " ");
+    public String getPromoBlockText() {
+        return getReusableActionsInstance().getWhenReady(promoBlock, 10).getText().trim().replaceAll("\\n", " ");
     }
 
     /**
      * This method will get the label text from Plan config page displayed on the tier
+     *
      * @return String : Return label text from Plan config page displayed on the tier
      * @author Pranav.Shaligram
      */
-    public String getLabelText(){
+    public String getLabelText() {
         return getReusableActionsInstance().getWhenReady(tierLabel, 10).getText().trim();
     }
 
-    @FindBy(xpath="//p[contains(@class,'dsa-info__contentBody text-body mb-0')]")
+    @FindBy(xpath = "//p[contains(@class,'dsa-info__contentBody text-body mb-0')]")
     WebElement eligiblePostalCodeinBanner;
 
-    public String verifyeligiblePostalCodeinBanner(){
-        getReusableActionsInstance().getWhenVisible(eligiblePostalCodeinBanner,20);
-        return eligiblePostalCodeinBanner.getText().replaceAll("\\s+","");
+    public String verifyeligiblePostalCodeinBanner() {
+        getReusableActionsInstance().getWhenVisible(eligiblePostalCodeinBanner, 20);
+        return eligiblePostalCodeinBanner.getText().replaceAll("\\s+", "");
     }
-
 }
