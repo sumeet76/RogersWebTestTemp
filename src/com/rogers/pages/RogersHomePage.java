@@ -29,9 +29,10 @@ public class RogersHomePage extends BasePageClass {
 
 	@FindAll({
 			@FindBy(xpath = "//div[@class='dds-navbar-nav']//a[@aria-label='Sign in to My Rogers']//span[text()='Sign in'  or text()='Connexion']"),
-			@FindBy(xpath = "//div[@class='rcl-navbar-nav']//a[@class='m-navLink -navbar -login']//span[text()='Sign in'  or text()='Connexion']")
-	})
+			@FindBy(xpath = "//div[@class='rcl-navbar-nav']//a[@class='m-navLink -navbar -login']//span[text()='Sign in'  or text()='Connexion']"),
+			@FindBy(xpath = "//a[@title='Sign in' and contains(@class,'m-navLink')]")})
 	WebElement lnkSignIn;
+
 	@FindAll({
 			@FindBy(xpath = "//ul[@class='dds_o-headerNavDropdown -navbar']//a[@href='/web/preLogout.jsp']"),
 			@FindBy(xpath = "//a[@title='Sign out' and contains(@class,'m-navLink')]")})
@@ -168,8 +169,9 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//li[@id='province']//span[@class='dds_m-navLink__chevron rds-icon-expand']")
 	WebElement lnkProvince;
 
-	@FindBy(xpath = "//a[@class='dds_m-navLink -dropdownNavbar' and @id='ON']")
+	@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='Ontario']")
 	WebElement lnkProvinceON;
+	//a[@class='dds_m-navLink -dropdownNavbar' and @id='ON']
 
 	@FindBy(xpath = "//ngx-smart-modal[@id='loadingModal']")
 	WebElement popupLoadingFingersciam;
@@ -299,8 +301,7 @@ public class RogersHomePage extends BasePageClass {
 	 * Click the SignIn button from the top tile bar 
 	 * @author chinnarao.vattam 
 	 */
-	public void clkSignIn() {		
-		getReusableActionsInstance().getWhenVisible(lnkSignIn, 60).click();
+	public void clkSignIn() { getReusableActionsInstance().getWhenVisible(lnkSignIn, 60).click();
 	}
 	
 	/**
@@ -366,10 +367,14 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkShop() {
-		if(!getReusableActionsInstance().isElementVisible(lnkOptedON,30)){
+	/*	if(!getReusableActionsInstance().isElementVisible(lnkOptedON,60)){
 			getReusableActionsInstance().getWhenReady(lnkProvince,10).click();
 			getReusableActionsInstance().getWhenReady(lnkProvinceON,10).click();
-		}
+		}*/
+		getReusableActionsInstance().getWhenReady(btnShop, 20).click();
+	}
+
+	public void clkShopAbandon() {
 		getReusableActionsInstance().getWhenReady(btnShop, 20).click();
 	}
 
@@ -737,7 +742,7 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public boolean verifyInternetpage() {
 		//page is taking more time to load , temporary wait
-		getReusableActionsInstance().staticWait(4000);
+		getReusableActionsInstance().staticWait(8000);
 		getReusableActionsInstance().waitForElementVisibility(txtInternetBuyPage,90);
 		return getReusableActionsInstance().isElementVisible(txtInternetBuyPage, 30);
 	}
@@ -749,7 +754,6 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(lnkInternetAvailability,120);
 		getReusableActionsInstance().getWhenReady(lnkInternetAvailability,30).click();
 		getReusableActionsInstance().clickIfAvailable(lnkInternetAvailability,30);
-		getReusableActionsInstance().staticWait(6000);
 	}
 	
 }

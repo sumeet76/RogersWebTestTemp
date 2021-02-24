@@ -72,8 +72,9 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyProfilePageSAI() {
-		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersPackage,60);
-		getReusableActionsInstance().waitForElementVisibility(txtSaiProfile,60);
+		//getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersPackage,60);
+		getReusableActionsInstance().staticWait(6000);
+		getReusableActionsInstance().waitForElementVisibility(txtSaiProfile,90);
 		return getReusableActionsInstance().isElementVisible(txtSaiProfile);
 	}
 
@@ -159,7 +160,7 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSubmitProfileMobile() {
-		getReusableActionsInstance().waitForElementVisibility(btnProfielSubmit, 60);
+		getReusableActionsInstance().waitForElementVisibility(btnProfielSubmit, 90);
 		getReusableActionsInstance().executeJavaScriptClick(btnProfielSubmit);
 	}
 

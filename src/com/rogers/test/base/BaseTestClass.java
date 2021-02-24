@@ -834,7 +834,6 @@ public class BaseTestClass {
                 break;
 
             case "connectedhome_igniteanonymous":
-
                 RogersHomePageThreadLocal.set(new RogersHomePage(getDriver()));
                 RogersBuyPageThreadLocal.set(new RogersBuyPage(getDriver()));
                 RogersLoginPageThreadLocal.set(new RogersLoginPage(getDriver()));
@@ -856,7 +855,6 @@ public class BaseTestClass {
                 break;
 
             case "connectedhome_legacylogin":
-
                 RogersHomePageThreadLocal.set(new RogersHomePage(getDriver()));
                 RogersBuyPageThreadLocal.set(new RogersBuyPage(getDriver()));
                 RogersLoginPageThreadLocal.set(new RogersLoginPage(getDriver()));
@@ -875,7 +873,6 @@ public class BaseTestClass {
                 RogersIgniteTVCreditCheckPageThreadLocal.set(new RogersIgniteTVCreditCheckPage(getDriver()));
 
             case "connectedhome_ignitelogin":
-
                 RogersHomePageThreadLocal.set(new RogersHomePage(getDriver()));
                 RogersBuyPageThreadLocal.set(new RogersBuyPage(getDriver()));
                 RogersLoginPageThreadLocal.set(new RogersLoginPage(getDriver()));
@@ -931,6 +928,8 @@ public class BaseTestClass {
                 RogersSHMDashboardPageThreadLocal.set(new RogersSHMDashboardPage(getDriver()));
                 RogersSmartStreamDashboardPageThreadLocal.set(new RogersSmartStreamDashboardPage(getDriver()));
                 RogersSolarisChannelsExchangePageThreadLocal.set(new RogersSolarisChannelsExchangePage(getDriver()));
+                RogersInternetProfilePageThreadLocal.set(new RogersInternetProfilePage(getDriver()));
+                RogersInternetCreditCheckPageThreadLocal.set(new RogersInternetCreditCheckPage(getDriver()));
                 break;
 
             case "buyflows":
