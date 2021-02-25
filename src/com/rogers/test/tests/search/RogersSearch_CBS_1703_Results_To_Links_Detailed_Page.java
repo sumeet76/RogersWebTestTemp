@@ -39,7 +39,7 @@ public class RogersSearch_CBS_1703_Results_To_Links_Detailed_Page extends BaseTe
     public void validateParentFilterDeselection(String[] csvRow) {
 
         getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
-
+        getRogersSearchPage().isPageLoaded();
         List<WebElement> lstParentFilters;
         String strParentFilterName;
         String[] strFilters = Arrays.copyOfRange(csvRow, 1, csvRow.length);

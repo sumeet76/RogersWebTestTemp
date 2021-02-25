@@ -32,7 +32,7 @@ public class RogersSearch_CBS_1684_Storage_Filter_Functioning_Test extends BaseT
 	public void validateStorageFilterSelection(String[] csvRowStrArray) {
 
 		getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0]);
-
+		getRogersSearchPage().isPageLoaded();
 		List<WebElement> resultLinks;
 		String strDeviceName;
 		String strSelectedStorage;
@@ -41,13 +41,14 @@ public class RogersSearch_CBS_1684_Storage_Filter_Functioning_Test extends BaseT
 
 	//	getDriver().get(System.getProperty("SearchUrl")+strSearchTerm);
 
-		getRogersSearchPage().clkShopAndThenWirelessFilter();
-		reporter.reportLogWithScreenshot("Shop and Wireless Filters clicked");
+		getRogersSearchPage().clkShopFilter();
+		reporter.reportLogWithScreenshot("Shop Filters clicked");
+		getRogersSearchPage().clkWirelessFilter();
+		reporter.reportLogWithScreenshot("Wireless Filters clicked");
 		strStorageFilters = getRogersSearchPage().getStorageSelections();
 		for(int i=0;i<strStorageFilters.size();i++) {
 			getRogersSearchPage().clkStorageType(strStorageFilters.get(i));
 			reporter.reportLogWithScreenshot(strStorageFilters.get(i) + " - Selected");
-
 			resultLinks = getRogersSearchPage().getAllResultLinks();
 			for(int k=0;k< resultLinks.size();k++) {
 				getRogersSearchPage().clkResultLink(resultLinks.get(k));

@@ -20,7 +20,6 @@ public class RogersSearch_CBS_1673_Parent_Filter_Selection_Deselection_Test exte
 		String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
 		List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
 		Object[] csvRow = new Object[csvData.size()];
-		 
         for(int i =0; i < csvData.size();i++){
         	csvRow[i] = csvData.get(i);
         }
@@ -33,7 +32,7 @@ public class RogersSearch_CBS_1673_Parent_Filter_Selection_Deselection_Test exte
 	
 		String strGrandParentText;
 		getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
-	
+		getRogersSearchPage().isPageLoaded();
 		List<WebElement> lstParentFilters;
 		String strParentFilterName;
 		String[] strFilters = Arrays.copyOfRange(csvRow, 1, csvRow.length);

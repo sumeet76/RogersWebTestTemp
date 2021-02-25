@@ -25,7 +25,7 @@ public class RogersSearch_CBS_1704_URL_Persist_Selected_State_Test extends BaseT
 		String strCurrentUrl;
 
 		getDriver().get(System.getProperty("SearchUrl")+"wireless");
-
+		getRogersSearchPage().isPageLoaded();
 		getRogersSearchPage().clkGrandParentFilter("Support");
 		getRogersSearchPage().clkParentFilter("Support","Billing/Accounts");
 		reporter.reportLogWithScreenshot("Support-Billing/Accounts Expanded");

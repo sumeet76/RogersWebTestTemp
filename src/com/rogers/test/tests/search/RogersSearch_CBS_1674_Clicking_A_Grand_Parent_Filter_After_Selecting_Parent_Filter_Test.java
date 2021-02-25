@@ -27,17 +27,14 @@ public class RogersSearch_CBS_1674_Clicking_A_Grand_Parent_Filter_After_Selectin
 
 	@Test(dataProvider = "FilterData")
 	public void validateNavigationFromParentToGrandParent(String[] csvRow) {
-
 		getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
+		getRogersSearchPage().isPageLoaded();
 		String strResultWindowText;
 		List<WebElement> lstParentFilters;
 		String strParentFilterName;
-
 		getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
 		strResultWindowText = getRogersSearchPage().getResultWindowText();
-	
 		String[] strFilters = Arrays.copyOfRange(csvRow, 1, csvRow.length);
-
 		for(int i=0; i<strFilters.length; i++) {
 
 			getRogersSearchPage().clkGrandParentFilter(strFilters[i]);

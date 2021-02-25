@@ -3,6 +3,7 @@ package com.rogers.test.tests.search;
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import org.apache.http.client.ClientProtocolException;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
@@ -30,7 +31,7 @@ public class RogersSearch_CBS_1663_Only_One_Grand_Parent_Filter_Can_Be_Selected_
 	@Test(dataProvider = "FilterData")
 	public void validateGrandParentFilterSelection(String[] csvRow) {
 	    getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
-
+         getRogersSearchPage().isPageLoaded();
         for(int i=1; i<csvRow.length; i++) {
             getRogersSearchPage().clkGrandParentFilter(csvRow[i]);
             reporter.reportLogWithScreenshot(csvRow[i]+" is selected");
@@ -56,6 +57,7 @@ public class RogersSearch_CBS_1663_Only_One_Grand_Parent_Filter_Can_Be_Selected_
     public void afterTest() {
         closeSession();
     }
+
 
 
 }

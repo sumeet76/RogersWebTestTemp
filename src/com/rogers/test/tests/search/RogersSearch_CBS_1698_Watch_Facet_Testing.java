@@ -39,6 +39,7 @@ public class RogersSearch_CBS_1698_Watch_Facet_Testing extends BaseTestClass {
         String strSelectedColor;
 
         getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
+        getRogersSearchPage().isPageLoaded();
 
       //  reporter.hardAssert(getRogersSearchPage().isGrandParentFilterDisplayed("Shop")
         //        ,"Shop filter is Displayed","Shop filter is Not Displayed");
