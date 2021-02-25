@@ -56,7 +56,6 @@ public class RogersBFA_TC17_AALShareTerm_BopisShipping_Test extends BaseTestClas
         getRogersDeviceCataloguePage().clickContinueButtonOnModal();
         //------------------------------------Device Config page--------------------------------------------
         getRogersDeviceConfigPage().selectDeviceColor(TestDataHandler.tc17AALShareTermBopis.getDeviceColor());
-        boolean isDeviceUpfrontEligible = getRogersDeviceConfigPage().verifyIsDeviceUpfrontEligible();
         reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
                 "Continue button on the device config page is present",
                 "Continue button on the device config page is not present");
@@ -73,11 +72,9 @@ public class RogersBFA_TC17_AALShareTerm_BopisShipping_Test extends BaseTestClas
         getRogersPlanConfigPage().clickShowMoreDetailsIfAvailable();
         getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc17AALShareTermBopis.getDataOptionIndex()));
         reporter.reportLogPassWithScreenshot("Data option selected");
-        getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
-        reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionsSelection(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc17AALShareTermBopis.getTalkOptionIndex())),
+        reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc17AALShareTermBopis.getTalkOptionIndex())),
                 "Talk option selected and Addons page in expanded state","Addons page not in expanded state");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
-        //String deviceTier = getRogersPlanConfigPage().getDeviceCostTierSelected();
         String monthlyFeesAmountWithTax = getRogersPlanConfigPage().getMonthlyFeesAmount();
         String oneTimeFeesAmountWithTax = getRogersPlanConfigPage().getOneTimeFeesAmount();
         reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees " + monthlyFeesAmountWithTax + "2. oneTimeFee " + oneTimeFeesAmountWithTax);
@@ -109,21 +106,6 @@ public class RogersBFA_TC17_AALShareTerm_BopisShipping_Test extends BaseTestClas
                 "Order Review Page Title is not Present");
         reporter.reportLogPassWithScreenshot("Order Review Page");
         getRogersReviewOrderPage().clkAllConsentCheckbox();
-        /*if(deviceTier.equalsIgnoreCase("upfront")) {
-            getRogersReviewOrderPage().clkFinancingConsentCheckbox();
-            getRogersReviewOrderPage().clkAgreementConsentCheckbox();
-            getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
-
-        }
-        if(deviceTier.equalsIgnoreCase("financing")) {
-            getRogersReviewOrderPage().clkFinancingConsentCheckbox();
-            getRogersReviewOrderPage().clkAgreementConsentCheckbox();
-        }
-        if(deviceTier.equalsIgnoreCase("noterm")) {
-            getRogersReviewOrderPage().clkFinancingConsentCheckbox();
-            getRogersReviewOrderPage().clkAgreementConsentCheckbox();
-        }
-        getRogersReviewOrderPage().clkBopisConsentCheckbox(); */
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         if (getRogersOrderReviewPage().isPaymentRequired()) {
             getRogersOrderReviewPage().clkContinue();

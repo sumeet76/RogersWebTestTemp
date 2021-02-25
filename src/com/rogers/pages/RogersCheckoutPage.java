@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.FormFiller;
 
 public class RogersCheckoutPage extends BasePageClass {
@@ -162,7 +163,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//label[@for='ds-radio-input-id-4']")
 	WebElement lblFrenchLanguage;
 
-	@FindBy(xpath = "//div[@id='step-3-open']/h2")
+	@FindBy(xpath = "//div[@id='step-3-open']//h2")
 	WebElement chooseNumberTitle;
 
 	@FindBy(xpath = "//div[@role='tablist']/button[@tabindex='0']")
@@ -176,12 +177,12 @@ public class RogersCheckoutPage extends BasePageClass {
 	WebElement cityDropdown;
 
 	@FindBy(xpath = "//ds-radio-group[@formcontrolname='newNumber']/div/div[1]")
-	WebElement rdoChosePhoneNumber;
+	WebElement rdoChoosePhoneNumber;
 
 	@FindBy(xpath = "//div[@class='my-16']/button")
 	WebElement btnFindMoreAvlNumber;
 
-	@FindBy(xpath = "//button[@data-test='choose-number-continue']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']")
+	@FindBy(xpath = "//button[contains(@data-test,'choose-number-continue')]//span[contains(@class,'ds-button__copy text-button text-nowrap')]")
 	WebElement btnChooseNumberContinue;
 
 	@FindBy(xpath = "//ds-icon[@data-test='choose-number-complete']/../div/p[1]")
@@ -753,7 +754,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void clkChosePhoneNumber() {
-		getReusableActionsInstance().getWhenReady(rdoChosePhoneNumber, 80).click();
+		getReusableActionsInstance().getWhenReady(rdoChoosePhoneNumber, 80).click();
 	}
 
 	/**
@@ -1006,8 +1007,8 @@ public class RogersCheckoutPage extends BasePageClass {
 
 
 	public void clkContinueBtnShipping() {
-		//wait.until(ExpectedConditions.elementToBeClickable(continueBtnShipping));
-        //getReusableActionsInstance().javascriptScrollByVisibleElement(continueBtnShipping);
+		wait.until(ExpectedConditions.elementToBeClickable(continueBtnShipping));
+        getReusableActionsInstance().javascriptScrollByVisibleElement(continueBtnShipping);
 		getReusableActionsInstance().clickWhenReady(continueBtnShipping, 30);
 	}
 

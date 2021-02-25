@@ -25,6 +25,15 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[contains(@class,'ds-button ds-corners')]//span[contains(text(),' Show More') or contains(text(),' Afficher les ')]")
     WebElement showMoreDetails;
 
+    @FindBy(xpath = "/dsa-selection[contains(@data-test,'stepper-1-edit-step-selection-option-')]//label[1]")
+    List<WebElement> noOfDeviceTiers;
+
+    @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-infinite-')]//label[1]")
+    List<WebElement> noofDataOptions;
+
+    @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-3-edit-step-selection-option-')]//label[1]")
+    List<WebElement> noOfTalkOptions;
+
     @FindBy(xpath = "//span[contains(text(),'Monthly device financing payment') or contains(text(),'Paiement mensualité')]")
     WebElement financingOptionCheck;
 
@@ -63,6 +72,7 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     @FindBy(xpath = "//button[@data-test='build-plan-checkout-flow-button']/span")
     WebElement continueButtonOnCartSummary;
+
     @FindAll({
             @FindBy(xpath = "//button[@id='get-bpo-offer-button' or @data-test='bpo-offer-modal-button-primary']"),
             @FindBy(xpath = "//button[@data-test='bpo-offer-modal-button-primary']")
@@ -164,14 +174,7 @@ public class RogersPlanConfigPage extends BasePageClass {
         getReusableActionsInstance().clickIfAvailable(showMoreDetails,40);
     }
 
-    /**
-     * This method creates Xpath of a Device Cost , data option , Talk Options
-     *
-     * @return returns a String value having xpath for the Device Cost or  data option or Talk Options
-     * DC_DO_TO stands for device cost , data option , talk options
-     * @param    dC_DO_TO : String value of Device Cost , data option , Talk Options
-     * @author saurav.goyal
-     */
+
     public String createXpathWithInputData(String dC_DO_TO,int stepper) {
         if (stepper == 1) {
             return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
@@ -198,24 +201,43 @@ public class RogersPlanConfigPage extends BasePageClass {
         return xpathProtectionPlan;
     }
 
+    /**
+     *
+     * @param deviceCostIndex String value of deviceCostIndex
+     * @return returs the String value of index
+     * @author praveen.kumar
+     */
     public String getUpdatedDeviceCostIndex(String deviceCostIndex) {
-        if((deviceCostIndex == null) || (deviceCostIndex.isEmpty())) {
+        if((deviceCostIndex == null) || (deviceCostIndex.isEmpty()) || (Integer.parseInt(deviceCostIndex) > noOfDeviceTiers.size()-1)) {
             deviceCostIndex="0";
             return deviceCostIndex;
         }
         return deviceCostIndex;
     }
 
+    /**
+     *
+     * @param dataOptionIndex String value of dataOptionIndex
+     * @return returs the String value of index
+     * @author praveen.kumar
+     */
     public String getupdatedDataOptionIndex(String dataOptionIndex) {
-        if ((dataOptionIndex == null) || (dataOptionIndex.isEmpty())) {
+        if ((dataOptionIndex == null) || (dataOptionIndex.isEmpty()) || (Integer.parseInt(dataOptionIndex) > noofDataOptions.size()-1)) {
             dataOptionIndex = "0";
             return dataOptionIndex;
         }
         return dataOptionIndex;
     }
 
+    /**
+     *
+     * @param talkOptionIndex String value of talkOptionIndex
+     * @return returs the String value of index
+     * @author praveen.kumar
+     */
+
     public String getupdatedTalkOptionIndex(String talkOptionIndex) {
-        if ((talkOptionIndex == null) || (talkOptionIndex.isEmpty())) {
+        if ((talkOptionIndex == null) || (talkOptionIndex.isEmpty()) || (Integer.parseInt(talkOptionIndex) > noOfTalkOptions.size()-1)) {
             talkOptionIndex = "0";
             return talkOptionIndex;
         }
@@ -223,27 +245,18 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
 
     /**
-     * Select Device Cost on Plan config page
-     *
+     * Select Device Cost tier on Plan config page and clicks on continue button
      * @param    deviceCostIndex : String value of Device Cost to be selected
      * @author praveen.kumar
      */
     public void selectDeviceCostAndClickOnContinueButton(String deviceCostIndex) {
         int stepper = 1;
         String xpathDcDoTo = createXpathWithInputData(deviceCostIndex, stepper);
-        List<WebElement> noOfDeviceTiers = getDriver().findElements(By.xpath("//dsa-selection[contains(@data-test,'stepper-1-edit-step-selection-option-')]//label[1]"));
-        if (((noOfDeviceTiers.size() == 2) && ((Integer.parseInt(deviceCostIndex)) > noOfDeviceTiers.size()-1)) || ((noOfDeviceTiers.size() == 2) && ((Integer.parseInt(deviceCostIndex)) == 0))) {
-            getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton, 40);
+        if(Integer.parseInt(deviceCostIndex) == 0) {
+            getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton, 30);
         }
-        if (((noOfDeviceTiers.size() == 3) && ((Integer.parseInt(deviceCostIndex)) > noOfDeviceTiers.size()-1)) || ((noOfDeviceTiers.size() == 3) && ((Integer.parseInt(deviceCostIndex)) == 0))) {
-            getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton, 40);
-        }
-        if (((noOfDeviceTiers.size() == 3) && ((Integer.parseInt(deviceCostIndex)) == 1)) || ((noOfDeviceTiers.size() == 3) && ((Integer.parseInt(deviceCostIndex)) == 2))) {
+        else {
             getReusableActionsInstance().clickWhenVisible(By.xpath(xpathDcDoTo), 60);
-            getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton, 60);
-        }
-        if ((noOfDeviceTiers.size() == 2) && ((Integer.parseInt(deviceCostIndex)) == 1)) {
-            getReusableActionsInstance().clickWhenVisible(By.xpath(xpathDcDoTo), 20);
             getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton, 30);
         }
     }
@@ -270,14 +283,13 @@ public class RogersPlanConfigPage extends BasePageClass {
      * Select data option on Plan config page
      *
      * @param    dataOptionIndex : String value of data option to be selected
-     * @author saurav.goyal
+     * @author praveen.kumar7
      */
     public void selectDataOptionAndClickonContinueButton(String dataOptionIndex) {
         int stepper=2;
         String xpathDcDoTo = createXpathWithInputData(dataOptionIndex,stepper);
-        List<WebElement> noOfDataOptions = getDriver().findElements(By.xpath("//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-infinite-')]//label[1]"));
-        if((Integer.parseInt(dataOptionIndex) == 0) || (Integer.parseInt(dataOptionIndex) > noOfDataOptions.size()-1)) {
-            getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton,40);
+        if(Integer.parseInt(dataOptionIndex) == 0) {
+            getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton, 30);
         }
         else {
             getReusableActionsInstance().clickWhenVisible(By.xpath(xpathDcDoTo),40);
@@ -337,27 +349,18 @@ public class RogersPlanConfigPage extends BasePageClass {
     /**
      * Select talk option on Plan config page
      *
-     * @param    talkOptions : String value of data option to be selected
-     * @author saurav.goyal
+     * @param    talkOptionIndex : String value of talk option to be selected
+     * @author praveen.kumar7
      */
-    public boolean verifyTalkOptionsSelection(String talkOptions) {
+    public boolean verifyTalkOptionSelectionAndAddonsContinueButton(String talkOptionIndex) {
         int stepper = 3;
-        String xpathDcDoTo = createXpathWithInputData(talkOptions, stepper);
-        List<WebElement> noOfTalkOptions = getDriver().findElements(By.xpath("//dsa-selection[contains(@data-test,'stepper-3-edit-step-selection-option-')]//label[1]"));
-        if(Integer.parseInt(talkOptions) > noOfTalkOptions.size()-1) {
-            talkOptions = "0";
+        String xpathDcDoTo = createXpathWithInputData(talkOptionIndex, stepper);
+        if(Integer.parseInt(talkOptionIndex) == 0) {
+            getReusableActionsInstance().clickIfAvailable((preCartSummaryContinueButtonTalkOptions),30);
         }
-        if ((noOfTalkOptions.size() == 1) && (getReusableActionsInstance().isElementVisible(preCartAddonsContinueButton,30))) {
-            return true;
-        }
-        if ((noOfTalkOptions.size() == 2) && (Integer.parseInt(talkOptions) == 0)) {
-            getReusableActionsInstance().clickWhenVisible((preCartSummaryContinueButtonTalkOptions),30);
-            return true;
-        }
-        if ((noOfTalkOptions.size() == 2) && (Integer.parseInt(talkOptions) == 1)) {
+        if(Integer.parseInt(talkOptionIndex) == 1) {
             getReusableActionsInstance().clickWhenVisible(By.xpath(xpathDcDoTo),30);
-            getReusableActionsInstance().clickWhenVisible((preCartSummaryContinueButtonTalkOptions),30);
-            return true;
+            getReusableActionsInstance().clickWhenVisible(preCartSummaryContinueButtonTalkOptions);
         }
         return getReusableActionsInstance().isElementVisible(preCartAddonsContinueButton,30);
     }

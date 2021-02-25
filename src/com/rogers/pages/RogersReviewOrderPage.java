@@ -214,7 +214,7 @@ public class RogersReviewOrderPage extends BasePageClass {
         getReusableActionsInstance().javascriptScrollByVisibleElement(txtPleaseReadAgreement);
         //getReusableActionsInstance().staticWait(1000);
         for(WebElement element : chAllConsent)
-            getReusableActionsInstance().clickWhenReady(element,20);
+            getReusableActionsInstance().clickIfAvailable(element,20);
     }
 
     /**
