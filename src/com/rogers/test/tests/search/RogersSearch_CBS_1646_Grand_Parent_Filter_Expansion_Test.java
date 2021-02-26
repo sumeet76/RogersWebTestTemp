@@ -28,6 +28,7 @@ public class RogersSearch_CBS_1646_Grand_Parent_Filter_Expansion_Test extends Ba
     public void validateResultsGrandParentFilter(String[] csvRowStrArray) {
         getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0]);
         getRogersSearchPage().isPageLoaded();
+        getRogersSearchPage().waitTime();
         for(int i=1;i< csvRowStrArray.length;i++) {
             getRogersSearchPage().clkGrandParentFilter(csvRowStrArray[i]);
             reporter.reportLogWithScreenshot(csvRowStrArray[i]+" filter selected");

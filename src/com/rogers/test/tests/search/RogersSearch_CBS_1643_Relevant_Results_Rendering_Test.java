@@ -37,7 +37,8 @@ public class RogersSearch_CBS_1643_Relevant_Results_Rendering_Test extends BaseT
     public void validateResults(String[] csvRowStrArray) {
 
         getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0]);
-
+        getRogersSearchPage().isPageLoaded();
+        getRogersSearchPage().waitTime();
         reporter.reportLogWithScreenshot("Search Results page");
         String[] strFilters = Arrays.copyOfRange(csvRowStrArray, 1, csvRowStrArray.length);
         reporter.softAssert(getRogersSearchPage().verifyResultsCategoryTagRelevancy(strFilters),

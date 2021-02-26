@@ -33,6 +33,7 @@ public class RogersSearch_CBS_1673_Parent_Filter_Selection_Deselection_Test exte
 		String strGrandParentText;
 		getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
 		getRogersSearchPage().isPageLoaded();
+		getRogersSearchPage().waitTime();
 		List<WebElement> lstParentFilters;
 		String strParentFilterName;
 		String[] strFilters = Arrays.copyOfRange(csvRow, 1, csvRow.length);

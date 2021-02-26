@@ -30,6 +30,7 @@ public class RogersSearch_CBS_1619_Relevant_Filters_Rendering_Test extends BaseT
     public void validateFilters(String[] csvRowStrArray) {
         getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0]);
         getRogersSearchPage().isPageLoaded();
+        getRogersSearchPage().waitTime();
         reporter.reportLogWithScreenshot("Search QA Page Result is displayed");
         for (int i = 1; i < csvRowStrArray.length; i++) {
             reporter.softAssert(getRogersSearchPage().isFilterDisplayed(csvRowStrArray[i]), "Filter " + csvRowStrArray[i] + " is Displayed successfully", "Filter " + csvRowStrArray[i] + " is NOT Displayed");

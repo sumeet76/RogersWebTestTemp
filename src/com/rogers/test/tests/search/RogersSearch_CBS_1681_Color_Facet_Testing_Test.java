@@ -27,7 +27,8 @@ public class RogersSearch_CBS_1681_Color_Facet_Testing_Test extends BaseTestClas
 	public void validateColorFilterSelection() {
 		List<String> strColorFilters;
 		getDriver().get(System.getProperty("SearchUrl")+"wireless");
-	
+		getRogersSearchPage().isPageLoaded();
+		getRogersSearchPage().waitTime();
 		getRogersSearchPage().clkShopAndThenWirelessFilter();
 		reporter.reportLogWithScreenshot("Shop and Wireless Filters clicked");
 		strColorFilters = getRogersSearchPage().getColorFilters();

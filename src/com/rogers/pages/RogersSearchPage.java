@@ -63,6 +63,9 @@ public class RogersSearchPage extends BasePageClass {
     @FindBy(xpath = "//div[@class='resultList']/div[contains(@class,'pt-4')]")
     WebElement resultsCountAndPageDetails;
 
+    @FindBy(xpath = "//div[@class='resultList']/div[1]")
+    WebElement resultsCount;
+
     @FindBy(xpath = "//app-search-results/div[@class='resultList']")
     WebElement resultsWindow;
 
@@ -547,7 +550,7 @@ public class RogersSearchPage extends BasePageClass {
             getReusableActionsInstance().clickWhenReady(
                     By.xpath("//ds-checkbox[@ng-reflect-value='" + getDriver().findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value") + "']"));
             //   By.xpath("//ds-checkbox[@ng-reflect-value='" +strSizeFilter + " ']"));
-
+            // "//ds-checkbox[@id='Shop_Wireless_storage_"+strStorage+"-host']"
 
             getReusableActionsInstance().staticWait(2000);
 
@@ -680,11 +683,12 @@ public class RogersSearchPage extends BasePageClass {
     }
 
     public boolean validateResultsTag(String strGrandParentFilter) {
+        isPageLoaded();
         String strExpectedTag = strGrandParentFilter.trim() + " - ";
         List<WebElement> resultlinkTags = getDriver().findElements(By.xpath("//app-search-results//span[contains(@id,'searchcategory')]"));
         for (int counter = 0; counter < resultlinkTags.size(); counter++) {
-
-            if (!(resultlinkTags.get(counter).getText().startsWith(strExpectedTag))) {
+            String tag = (resultlinkTags.get(counter).getText());
+            if (!tag.startsWith(strExpectedTag)) {
                 return false;
             }
         }
@@ -809,7 +813,7 @@ public class RogersSearchPage extends BasePageClass {
     public void clkColorType(String strColor) {
         getReusableActionsInstance().javascriptScrollToTopOfPage();
         getReusableActionsInstance().clickWhenReady(By.xpath("//span[contains(@class,'color') and starts-with(text(),'" + strColor + "')]"));
-        getReusableActionsInstance().staticWait(1000);
+        isPageLoaded();
     }
 
     public List<WebElement> getAllResultLinks() {
@@ -852,14 +856,14 @@ public class RogersSearchPage extends BasePageClass {
     }
 
     public void clkDeviceType(String strDeviceType) {
-        getReusableActionsInstance().javascriptScrollToTopOfPage();
-        getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='" + strDeviceType + "']"));
+        //getReusableActionsInstance().javascriptScrollToTopOfPage();
+        getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@id='Shop_Wireless_devicetype_"+strDeviceType+"-host']"));
         getReusableActionsInstance().staticWait(1000);
     }
 
     public void clkBrandType(String strBrandType) {
-        getReusableActionsInstance().javascriptScrollToTopOfPage();
-        getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='" + strBrandType + "']"));
+       // getReusableActionsInstance().javascriptScrollToTopOfPage();
+        getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@id='Shop_Wireless_brand_"+strBrandType+"-host']"));
         getReusableActionsInstance().staticWait(1000);
     }
 
@@ -1131,5 +1135,31 @@ public class RogersSearchPage extends BasePageClass {
         getReusableActionsInstance().scrollToElement(Wireless);
         getReusableActionsInstance().clickWhenReady(Wireless);
         isPageLoaded();
+    }
+    public String numberOfResults() {
+        return getReusableActionsInstance().getElementText(resultsCount);
+    }
+
+    public boolean stringMatch(String a, String b)
+    {
+        boolean equalFlag = true;
+        if(!a.equals(b))
+        {
+            equalFlag = false;
+        }
+        return equalFlag;
+    }
+    public boolean waitTime() {
+        boolean status;
+        Long loadTime;
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        try {
+            loadTime = (Long) js.executeScript("return performance.timing.loadEventEnd - performance.timing.navigationStart;");
+            Thread.sleep(loadTime);
+            status = true;
+        } catch (TimeoutException | InterruptedException e) {
+            status = false;
+        }
+        return status;
     }
 }

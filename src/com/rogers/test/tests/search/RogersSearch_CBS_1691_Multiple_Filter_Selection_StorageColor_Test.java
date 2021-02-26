@@ -38,7 +38,8 @@ public class RogersSearch_CBS_1691_Multiple_Filter_Selection_StorageColor_Test e
 		String strSelectedColor;
 
 		getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
-
+		getRogersSearchPage().isPageLoaded();
+		getRogersSearchPage().waitTime();
 		//reporter.hardAssert(getRogersSearchPage().isGrandParentFilterDisplayed("Shop")
 		//		,"Shop filter is Displayed","Shop filter is Not Displayed");
 		getRogersSearchPage().clkGrandParentFilter("Shop");

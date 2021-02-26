@@ -31,6 +31,7 @@ public class RogersSearch_CBS_1667_RogersSearch_CBS_Only_One_Parent_Filter_Can_B
 	public void validateParentFilterSelection(String[] csvRow) {
 		getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
 		getRogersSearchPage().isPageLoaded();
+		getRogersSearchPage().waitTime();
 		List<WebElement> lstParentFilters;
 		String strParentFilter;
 		String[] strFilters = Arrays.copyOfRange(csvRow, 1, csvRow.length);

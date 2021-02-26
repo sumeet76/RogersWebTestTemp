@@ -31,7 +31,8 @@ public class RogersSearch_CBS_1686_Clicking_On_A_Parent_Filter_After_Selecting_A
 		int intCounter = 0;
 
 		getDriver().get(System.getProperty("SearchUrl")+"wireless");
-
+		getRogersSearchPage().isPageLoaded();
+		getRogersSearchPage().waitTime();
 
 		 getRogersSearchPage().clkGrandParentFilter("Shop");
 		reporter.reportLogWithScreenshot("Shop is clicked");

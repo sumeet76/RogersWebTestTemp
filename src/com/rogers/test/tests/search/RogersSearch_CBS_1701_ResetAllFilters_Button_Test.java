@@ -18,9 +18,10 @@ public class RogersSearch_CBS_1701_ResetAllFilters_Button_Test extends BaseTestC
 
 		List<String> strStorageOptions;
 		List<String> strColorOptions;
-
 		getDriver().get(System.getProperty("SearchUrl")+"wireless");
-
+		getRogersSearchPage().isPageLoaded();
+		getRogersSearchPage().waitTime();
+		String resultBeforeReset = getRogersSearchPage().numberOfResults();
 		getRogersSearchPage().clkGrandParentFilter("Support");
 		reporter.hardAssert(getRogersSearchPage().isGrandParentFilterExpanded("Support"),
 				"Support filter expanded","Support filter expanded");
@@ -32,11 +33,13 @@ public class RogersSearch_CBS_1701_ResetAllFilters_Button_Test extends BaseTestC
 		reporter.reportLogWithScreenshot("Support-Billing/Accounts Expanded");
 		getRogersSearchPage().clkResetAllFilters();
 		reporter.reportLogWithScreenshot("Reset All Filters button clicked");
+		getRogersSearchPage().isPageLoaded();
+		String resultAfterReset = getRogersSearchPage().numberOfResults();
 		reporter.hardAssert(getRogersSearchPage().validateAllFiltersCollapsed(),
 				"All Filters are Reset","Filters Not Reset");
-		reporter.hardAssert(getRogersSearchPage().validateResultsTag("Support"),
+		reporter.hardAssert(getRogersSearchPage().stringMatch(resultBeforeReset,resultAfterReset), "Results refreshed", "Results not refreshed");
+			reporter.hardAssert(getRogersSearchPage().validateResultsTag("Shop"),
 				"All Results Refreshed","Results Not Refreshed");
-
 		getRogersSearchPage().clkGrandParentFilter("Shop");
 		reporter.hardAssert(getRogersSearchPage().isGrandParentFilterExpanded("Shop"),
 				"Shop filter expanded","Shop filter expanded");
@@ -44,7 +47,9 @@ public class RogersSearch_CBS_1701_ResetAllFilters_Button_Test extends BaseTestC
 		//reporter.hardAssert(getRogersSearchPage().isParentFilterExpanded("Shop","Wireless"),
 		//		"Wireless filter expanded","Wireless filter expanded");
 		getRogersSearchPage().clkDeviceType("Smartphone");
+		reporter.reportLogWithScreenshot("Smartphone clicked");
 		getRogersSearchPage().clkBrandType("Apple");
+		reporter.reportLogWithScreenshot("Apple clicked");
 		strStorageOptions = getRogersSearchPage().getStorageSelections();
 		getRogersSearchPage().clkStorageType(strStorageOptions.get(0));
 		strColorOptions = getRogersSearchPage().getColorSelections();
@@ -55,7 +60,7 @@ public class RogersSearch_CBS_1701_ResetAllFilters_Button_Test extends BaseTestC
 		reporter.reportLogWithScreenshot("Reset All Filters button clicked");
 		reporter.hardAssert(getRogersSearchPage().validateAllFiltersCollapsed(),
 				"All Filters are Reset","Filters Not Reset");
-		reporter.hardAssert(getRogersSearchPage().validateResultsTag("Support"),
+		reporter.hardAssert(getRogersSearchPage().validateResultsTag("Shop"),
 				"All Results Refreshed","Results Not Refreshed");
 	}
 

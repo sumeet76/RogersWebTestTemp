@@ -23,7 +23,8 @@ public class RogersSearch_CBS_1683_Clicking_On_Results_With_Selected_Color_Test 
 		List<String> resultColorOptions;
 
 		getDriver().get(System.getProperty("SearchUrl")+strSearchTerm);
-
+		getRogersSearchPage().isPageLoaded();
+		getRogersSearchPage().waitTime();
 		getRogersSearchPage().clkShopAndThenWirelessFilter();
 		reporter.reportLogWithScreenshot("Shop and Wireless Filters clicked");
 		//getRogersSearchPage().clkGrandParentFilter("Shop");

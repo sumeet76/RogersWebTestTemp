@@ -33,6 +33,7 @@ public class RogersSearch_CBS_1684_Storage_Filter_Functioning_Test extends BaseT
 
 		getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0]);
 		getRogersSearchPage().isPageLoaded();
+		getRogersSearchPage().waitTime();
 		List<WebElement> resultLinks;
 		String strDeviceName;
 		String strSelectedStorage;

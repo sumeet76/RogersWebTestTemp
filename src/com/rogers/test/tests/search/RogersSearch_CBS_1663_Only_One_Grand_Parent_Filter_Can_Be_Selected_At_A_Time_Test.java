@@ -31,7 +31,8 @@ public class RogersSearch_CBS_1663_Only_One_Grand_Parent_Filter_Can_Be_Selected_
 	@Test(dataProvider = "FilterData")
 	public void validateGrandParentFilterSelection(String[] csvRow) {
 	    getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
-         getRogersSearchPage().isPageLoaded();
+        getRogersSearchPage().isPageLoaded();
+        getRogersSearchPage().waitTime();
         for(int i=1; i<csvRow.length; i++) {
             getRogersSearchPage().clkGrandParentFilter(csvRow[i]);
             reporter.reportLogWithScreenshot(csvRow[i]+" is selected");

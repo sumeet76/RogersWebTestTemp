@@ -40,6 +40,7 @@ public class RogersSearch_CBS_1664_Functioning_Of_Parent_Filter_Test extends Bas
 
         getDriver().get(System.getProperty("SearchUrl") + csvRow[0]);
         getRogersSearchPage().isPageLoaded();
+        getRogersSearchPage().waitTime();
         for (int i=1;i< csvRow.length;i++) {
             getRogersSearchPage().clkGrandParentFilter(csvRow[i]);
             reporter.reportLogWithScreenshot(csvRow[i]+" is clicked");
