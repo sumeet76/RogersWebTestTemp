@@ -39,9 +39,9 @@ public class RogersSS_TC_033_Postpaid_ChangeBillingAddressInEligibleUser extends
 	@Test(groups = {"ProfileAndSettingsSS"})
 	public void validateUserChangeBillingAddress() {
     	getRogersHomePage().clkSignIn();
-    	String strUsername = TestDataHandler.tc013132.getUsername();
-    	String strPassword = TestDataHandler.tc013132.getPassword();
-    	String strBan = TestDataHandler.tc013132.getAccountDetails().getBan();
+    	String strUsername = TestDataHandler.tc060809.getUsername();
+    	String strPassword = TestDataHandler.tc060809.getPassword();
+    	String strBan = TestDataHandler.tc060809.getAccountDetails().getBan();
 
 		getRogersLoginPage().switchToSignInIFrame();
 		getRogersLoginPage().setUsernameIFrame(strUsername);
