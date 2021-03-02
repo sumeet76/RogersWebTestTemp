@@ -365,7 +365,6 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//a[contains(@title,'Cancel the Apple Music subscription for') or contains(@title,'Annuler l’abonnement')]")
 	WebElement btnCancelSubscription;
 
-	
 	@FindBy(xpath = "//h1[text()='Cancel subscription' or contains(text(),'Annuler l’abonnement')]")
 	WebElement headerCancelSubscription;
 
@@ -447,6 +446,12 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement popLoader;
+
+	@FindBy (xpath = "//span[contains(text(),'Change payment method') or contains(text(),'Changer le mode de paiement')]")
+	WebElement lnkChangePaymentMethodButton;
+
+	@FindBy (xpath = "//span[contains(text(),' bank account ending') or contains(text(),' compte bancaire se terminant par')]")
+	WebElement lblBankPaymentMethodLabel;
 
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
@@ -1808,9 +1813,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		}
 		
 		
-		public void getCurrentPaymentMethod() {
+		//public void getCurrentPaymentMethod() {
 			//getReusableActionsInstance().getWhenReady(locator)
-		}
+		//}
 
 		/**
 		 * 
@@ -1827,4 +1832,41 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		public void clkChangePaymentMethod() {
 			getReusableActionsInstance().getWhenReady(lnkChangePaymentMethodQuickLin).click();
 		}
+
+	/**
+	 * Click on the "Change Payment Method" link
+	 * @author Rohit.Kumar
+	 */
+	public void clkChangePaymentMethodLink() {
+		getReusableActionsInstance().clickWhenReady(lnkChangePaymentMethodButton, 10);
+	}
+
+	/**
+	 * Checks if the Bank payment is displayed
+	 * @return true if set Bank payment sub menu is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isBankPaymentDisplayed() {
+		return getReusableActionsInstance().isElementVisible(lblBankPaymentMethodLabel);
+	}
+
+
+	/**
+	 * Returns the type of Payment Method currently setup on the account
+	 * @return Returns either: | Credit | Bank | Manual |
+	 * @author Rohit.Kumar
+	 */
+	public String getCurrentAccountPaymentMethod(){
+
+		if(isLnkSetAutoPaymentDisplayed()){
+			return "Manual";
+		} else if (isBankPaymentDisplayed()){
+			return "Bank";
+		} else {
+			return "Credit";
+		}
+
+	}
+
+
 }

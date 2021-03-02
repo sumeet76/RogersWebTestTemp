@@ -56,6 +56,10 @@ public class BaseTestClass {
         WIN, LIN, MAC
     }
 
+    public enum PaymentMethodType {
+        CREDIT, BANK, MANUAL
+    }
+
     ;// Operating systems.
 
     public static ExtentReports report;
