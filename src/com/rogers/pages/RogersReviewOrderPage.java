@@ -66,6 +66,9 @@ public class RogersReviewOrderPage extends BasePageClass {
     @FindBy(xpath ="//ds-checkbox[@name='credit-check']")
     WebElement chEmailConsent;
 
+    @FindBy(xpath ="//ds-checkbox[@data-test='bopis-consent']")
+    WebElement chBopisConsent;
+
     
 	 @FindBy(xpath ="//button[@title='Submit order - test1']")
 	 WebElement submitOrderBtn;
@@ -89,7 +92,7 @@ public class RogersReviewOrderPage extends BasePageClass {
 
     public String getMonthlyFeeAfterTax() {
     	getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyFeeAfterTax);
-    	getReusableActionsInstance().staticWait(3000);
+    	getReusableActionsInstance().staticWait(4000);
     	System.out.println(monthlyFeeAfterTax.getText());
     	return monthlyFeeAfterTax.getText().replaceAll("\\n",""); }
 
@@ -228,13 +231,16 @@ public class RogersReviewOrderPage extends BasePageClass {
         getReusableActionsInstance().clickWhenReady(chEmailConsent,2);
     }
 
-    
+    public void clkBopisConsentCheckbox() {
+        getReusableActionsInstance().clickWhenReady(chBopisConsent,2);
+    }
+
     /**
      * Click on the 'Submit Order' Button
      * @author karthic.hasan
      */
     public void clkSubmitOrderBtn() {
-        getReusableActionsInstance().clickWhenReady(submitOrderBtn,2);
+        getReusableActionsInstance().clickWhenReady(submitOrderBtn,5);
         getReusableActionsInstance().staticWait(9000);
     }
 

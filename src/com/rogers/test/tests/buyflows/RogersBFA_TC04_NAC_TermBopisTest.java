@@ -20,7 +20,7 @@ public class RogersBFA_TC04_NAC_TermBopisTest extends BaseTestClass {
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(System.getProperty("AWSUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
 	@Test(groups = {"RegressionBFA","SanityBFA","NACBFA"})
@@ -45,6 +45,7 @@ public class RogersBFA_TC04_NAC_TermBopisTest extends BaseTestClass {
 		String postalCode = getRogersDeviceCataloguePage().verifyeligiblePostalCodeinBanner();
 		reporter.hardAssert(postalCode.contains(TestDataHandler.tc04NACTermBopis.getPostalCode()),
 				"RPOTG Banner has the eligible postal code displayed", "RPOTG Banner not displayed in banner");
+		reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		String deviceName = TestDataHandler.tc04NACTermBopis.getDeviceName();
 		getRogersDeviceCataloguePage().clickDeviceTileCTAButton(deviceName);
 		reporter.softAssert(getRogersDeviceCataloguePage().isModalDisplayed(), "Modal element is present on the screen",
@@ -231,7 +232,7 @@ public class RogersBFA_TC04_NAC_TermBopisTest extends BaseTestClass {
 		getRogersReviewOrderPage().clkAgreementConsentCheckbox();
 		getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
 		reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
-		getRogersReviewOrderPage().clkEmailConsentCheckbox();
+		getRogersReviewOrderPage().clkBopisConsentCheckbox();
 		reporter.reportLogPass("Email Communication consent box checked");
 		getRogersReviewOrderPage().clkSubmitOrderBtn();
 

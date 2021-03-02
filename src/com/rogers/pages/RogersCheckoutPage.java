@@ -156,13 +156,13 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//*[@id='ds-stepper-id-2-completedContent-1']//div[@class='w-100']/p")
 	WebElement identificationLabel;
 	
-	@FindBy(xpath = "//div[@id='rc-anchor-container']")
+	@FindBy(xpath = "(//div[contains(@class,'recaptcha-checkbox-border')])[1]")
 	WebElement radioCheckboxCreateProfile;
 	
 	@FindBy(xpath = "//label[@for='ds-radio-input-id-4']")
 	WebElement lblFrenchLanguage;
 
-	@FindBy(xpath = "//div[@id='step-3-open']/h2")
+	@FindBy(xpath = "//div[@id='step-3-open']//h2")
 	WebElement chooseNumberTitle;
 
 	@FindBy(xpath = "//div[@role='tablist']/button[@tabindex='0']")
@@ -602,7 +602,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void selectYearDropdownOption(String strYear) {
-		
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().moveToElementAndClick(inputYearDOB,5);
 		getReusableActionsInstance().selectWhenReady(inputYearDOB, strYear);
 
@@ -626,6 +626,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void selectDayDropdownOption(String strDay) {
+			getReusableActionsInstance().staticWait(5000);
 			clkNoThanks();
 			getReusableActionsInstance().javascriptScrollByVisibleElement(creditEvaluationTitle);
 			getReusableActionsInstance().clickWhenReady(inputDayDOB);

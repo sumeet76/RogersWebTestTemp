@@ -17,9 +17,9 @@ import java.lang.reflect.Method;
 public class RogersBFA_TC05_NAC_BYOD_SS_Test extends BaseTestClass {
 
 	@BeforeMethod (alwaysRun = true) @Parameters({"strBrowser", "strLanguage"})
-	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("isIdentificationLabelen") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(System.getProperty("AWSBYODUrl"), strBrowser, strLanguage, RogersEnums.GroupName.redesignrogers, method);
+		startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.redesignrogers, method);
 	}
 	
 	@AfterMethod(alwaysRun = true)
@@ -109,7 +109,7 @@ public class RogersBFA_TC05_NAC_BYOD_SS_Test extends BaseTestClass {
 		reporter.hardAssert(emailCreateProfile.equals(contactEmailReviewPage),"Contact email in Order Review Page matches as entered in Create Profile stepper","Contact email in Order Review Page not matches as entered in Create Profile stepper");
 		reporter.reportLogPassWithScreenshot("Order Review Page : Contact Details");
 		getRogersReviewOrderPage().clkAgreementConsentCheckbox();
-		getRogersReviewOrderPage().clkEmailConsentCheckbox();
+		//getRogersReviewOrderPage().clkEmailConsentCheckbox();
 		reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
 		getRogersReviewOrderPage().clkSubmitOrderBtn();
 		//************Order Confirmation Page****************//
