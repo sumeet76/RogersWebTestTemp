@@ -4,6 +4,7 @@ import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -11,6 +12,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class RogersSearchPage extends BasePageClass {
 
@@ -74,6 +76,44 @@ public class RogersSearchPage extends BasePageClass {
 
     @FindBy(xpath = "//div[contains(@id,'Shop-body')]/div/button[contains(@id,'Wireless-heading')]")
     WebElement Wireless;
+
+    /**
+     * @author naina.agarwal
+     */
+    @FindBy(xpath = "//span[@class='m-navLink__icon rds-icon-search -open']")
+    WebElement searchTextIcon;
+
+    @FindBy(xpath = "//input[@id='searchInput']")
+    WebElement searchTextBox;
+
+    @FindBy(xpath = "//span[@class='a-icon rds-icon-search']")
+    WebElement submitSearchIcon;
+
+    @FindBy(xpath = "//div[@class=' my-16 pt-4 pb-8']")
+    WebElement searchResults;
+
+    @FindBy(xpath = "//button[contains (@class, 'active') and @title='Page 1']")
+    WebElement firstPagePaginationHighlighted;
+
+    @FindBy(xpath = "//button[contains (@class, 'active') and @title='Page 2']")
+    WebElement secondPagePaginationHighlighted;
+
+    @FindBy(xpath = "//button[contains (@class, 'active')]/div")
+    WebElement currentPageNumberHighlighted;
+
+    @FindBy(xpath = "//button[@title='Page 1']")
+    WebElement page1;
+
+    @FindBy(xpath = "//button[@title='Page 2']")
+    WebElement page2;
+
+    @FindBy(xpath = "//button[@title='Page 3']")
+    WebElement page3;
+
+    public static final By numberOfPagesDisplayedAtBottom = By.xpath("//div[@class='d-flex ng-star-inserted']/button");
+
+    @FindBy(xpath = "//select[@id='ds-form-input-id-0']")
+    WebElement resultPerPageDropdown;
 
     //ds-checkbox[@ng-reflect-value='" + strStorage + "']/label/div[1]
 
@@ -803,10 +843,10 @@ public class RogersSearchPage extends BasePageClass {
 
     public void clkStorageType(String strStorage) {
         //getReusableActionsInstance().javascriptScrollToTopOfPage();
-        WebElement element = getDriver().findElement(By.xpath("//ds-checkbox[@id='Shop_Wireless_storage_"+strStorage+"-host']"));
+        WebElement element = getDriver().findElement(By.xpath("//ds-checkbox[@id='Shop_Wireless_storage_" + strStorage + "-host']"));
         Actions action = new Actions(getDriver());
         action.moveToElement(element).click().build().perform();
-       // getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='" + strStorage + "']/label/div[1]"));
+        // getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='" + strStorage + "']/label/div[1]"));
         getReusableActionsInstance().staticWait(1000);
     }
 
@@ -857,13 +897,13 @@ public class RogersSearchPage extends BasePageClass {
 
     public void clkDeviceType(String strDeviceType) {
         //getReusableActionsInstance().javascriptScrollToTopOfPage();
-        getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@id='Shop_Wireless_devicetype_"+strDeviceType+"-host']"));
+        getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@id='Shop_Wireless_devicetype_" + strDeviceType + "-host']"));
         getReusableActionsInstance().staticWait(1000);
     }
 
     public void clkBrandType(String strBrandType) {
-       // getReusableActionsInstance().javascriptScrollToTopOfPage();
-        getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@id='Shop_Wireless_brand_"+strBrandType+"-host']"));
+        // getReusableActionsInstance().javascriptScrollToTopOfPage();
+        getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@id='Shop_Wireless_brand_" + strBrandType + "-host']"));
         getReusableActionsInstance().staticWait(1000);
     }
 
@@ -1125,6 +1165,7 @@ public class RogersSearchPage extends BasePageClass {
 
         }
     }
+
     public void clkShopFilter() {
 
         getReusableActionsInstance().clickWhenReady(By.xpath("//button[contains(@id,'Shop-heading')]"));
@@ -1136,19 +1177,19 @@ public class RogersSearchPage extends BasePageClass {
         getReusableActionsInstance().clickWhenReady(Wireless);
         isPageLoaded();
     }
+
     public String numberOfResults() {
         return getReusableActionsInstance().getElementText(resultsCount);
     }
 
-    public boolean stringMatch(String a, String b)
-    {
+    public boolean stringMatch(String a, String b) {
         boolean equalFlag = true;
-        if(!a.equals(b))
-        {
+        if (!a.equals(b)) {
             equalFlag = false;
         }
         return equalFlag;
     }
+
     public boolean waitTime() {
         boolean status;
         Long loadTime;
@@ -1162,4 +1203,235 @@ public class RogersSearchPage extends BasePageClass {
         }
         return status;
     }
+
+    /**
+     * Click on the top search icon
+     *
+     * @author naina.agarwal
+     */
+    public void clickSearchIcon() {
+        getReusableActionsInstance().clickWhenReady(searchTextIcon);
+    }
+
+    /**
+     * Enter the search text in the search text box
+     *
+     * @author naina.agarwal
+     */
+    public void enterTextToBeSearched(String searchText) {
+        getReusableActionsInstance().enterText(searchTextBox, searchText, 1000);
+    }
+
+    /**
+     * Check the number of results displayed or return no result if none are found
+     *
+     * @author naina.agarwal
+     */
+    public String getSearchResults() {
+        if (getReusableActionsInstance().isElementVisible(searchResults) == true) {
+            return getReusableActionsInstance().getElementText(resultsCount);
+        } else {
+            return "No result";
+        }
+    }
+
+    /**
+     * Click the submit search icon in the search text box after entering text
+     *
+     * @author naina.agarwal
+     */
+    public void clickSubmitSearchIcon() {
+        getReusableActionsInstance().clickWhenReady(submitSearchIcon);
+    }
+
+    /**
+     * Check if Page 1 of the pagination is highlighted
+     *
+     * @author naina.agarwal
+     */
+    public boolean isFirstPageNumberHighlighted() {
+        return getReusableActionsInstance().isElementVisible(firstPagePaginationHighlighted);
+    }
+
+    /**
+     * Click on page 2 from the bottom pagination
+     *
+     * @author naina.agarwal
+     */
+    public void selectPageTwo() {
+        getReusableActionsInstance().scrollToElement(page2);
+        getReusableActionsInstance().clickWhenReady(page2);
+    }
+
+    /**
+     * Check if Page 2 of the pagination is highlighted
+     *
+     * @author naina.agarwal
+     */
+    public boolean isSecondPageNumberHighlighted() {
+        return getReusableActionsInstance().isElementVisible(secondPagePaginationHighlighted);
+    }
+
+    /**
+     * Check if url contains page number info same as selected from the pagination component.
+     * For eg : URL should contain 2 if page 2 was selected in pagination
+     *
+     * @author naina.agarwal
+     */
+    public boolean validatePageNumberInURL(String url) {
+        Boolean urlFlag = true;
+        String currentPageNumberInPagination = getReusableActionsInstance().getElementText(currentPageNumberHighlighted);
+        if (!url.endsWith("=" + currentPageNumberInPagination)) {
+            urlFlag = false;
+        }
+        return urlFlag;
+    }
+
+    public boolean validateSearchResultNumberAreInSyncWithPagination() {
+        boolean expectedSearchResultNumber = true;
+        int currentPageNumberInPagination = Integer.parseInt(getReusableActionsInstance().getElementText(currentPageNumberHighlighted));
+        String expectedSearchResultNumberStartsWith = Integer.toString((currentPageNumberInPagination - 1) * 10 + 1);
+        String actualSearchResultOnPage = getReusableActionsInstance().getElementText(searchResults);
+        String firstPartOfSearchResult = actualSearchResultOnPage.split("-")[0];
+        if (!firstPartOfSearchResult.equals(expectedSearchResultNumberStartsWith)) {
+            return expectedSearchResultNumber = false;
+        }
+        return expectedSearchResultNumber;
+    }
+
+    /**
+     * Clicking on a random page number out of the total pages in the pagination component
+     *
+     * @author naina.agarwal
+     */
+    public int clickOnRandomPageNumber() {
+        List<WebElement> elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
+        int numberOfPages = elementName.size();
+        int randomNumber = randomNumber(numberOfPages);
+        String randomPageXpath = "//button[@title='Page " + randomNumber + "']";
+        System.out.println("xpath is" + randomPageXpath);
+        WebElement randomPageTobeSelected = getDriver().findElement(By.xpath(randomPageXpath));
+        getReusableActionsInstance().executeJavaScriptClick(randomPageTobeSelected);
+        isPageLoaded();
+        return randomNumber;
+    }
+
+    /**
+     * To generate a random number between 1 and a upperlimit passed by user
+     *
+     * @author naina.agarwal
+     */
+    public int randomNumber(int upperLimit) {
+        Random rand = new Random();
+        int n = rand.nextInt(upperLimit);
+        n += 1;
+        return n;
+    }
+
+    /**
+     * To method will check the number of results on a page should be <=10 by default
+     *
+     * @author naina.agarwal
+     */
+    public boolean validateNumberOfSearchResultsOnPage(List resultsInPage) {
+        Boolean numberOfResultsOnAPage = false;
+        int numberOfResults = resultsInPage.size();
+        System.out.println("The number of results are" + numberOfResults);
+        if (numberOfResults <= 10) {
+            numberOfResultsOnAPage = true;
+        }
+        return numberOfResultsOnAPage;
+    }
+    /**
+     * To method will select a random value from the result per page dropdown
+     *
+     * @author naina.agarwal
+     */
+    public String selectRandomValueFromResultPerPageDropdown() {
+
+        int list = 0;
+        Select dropdown = new Select(resultPerPageDropdown);
+        //Get all options
+        List<WebElement> dd = dropdown.getOptions();
+        //Get the length
+        System.out.println("size dropdown size " + dd.size());
+        // Loop to print one by one
+        for (int j = 0; j < dd.size(); j++) {
+            System.out.println("**" + dd.get(j).getText());
+        }
+        Random rand = new Random();
+        for (WebElement select : dd) {
+
+            list = rand.nextInt(dd.size());
+            dd.get(list).click();
+            System.out.println("element selected is" + dd.get(list).getText());
+            break;
+        }
+        return dd.get(list).getText();
+
+    }
+    /**
+     * To method extracts the total results displayed for the searched term
+     *
+     * @author naina.agarwal
+     */
+    public int totalResult() {
+        int totalResultDisplayed = 0;
+        String totalResult = getReusableActionsInstance().getElementText(resultsCount);
+        String[] numbers = totalResult.split(" ");
+        System.out.print("the result is " + numbers[2]);
+        totalResultDisplayed = Integer.parseInt(numbers[2]);
+        return totalResultDisplayed;
+    }
+    /**
+     * To check if the result list is displayed correctly based on the random page selected from the dropdown
+     *
+     * @author naina.agarwal
+     */
+    public boolean validateResultsAfterPageSizeSelection(String randomPageSize, int totalResults) {
+        int pageSize = 0;
+        List<WebElement> resultLinks;
+        resultLinks = getAllResultLinks();
+        int resultSize = resultLinks.size();
+        pageSize = Integer.parseInt(randomPageSize.trim());
+        System.out.println("Total result displayed on top is " + totalResults);
+        System.out.println("Page size selected is " + pageSize);
+        System.out.println("Total result in list is " + resultSize);
+        if (pageSize < totalResults && resultSize == pageSize)
+            return true;
+        else if (pageSize > totalResults && resultSize == totalResults)
+            return true;
+        else return false;
+    }
+    /**
+     * To check if the number of results on the top is displayed correctly based on the random page selected from the dropdown
+     *
+     * @author naina.agarwal
+     */
+    public boolean verifyResultsOnTop(String randomPageSize, int totalResults) {
+        int pageSize = 0;
+        boolean verifyResult = false;
+        String results;
+        List<WebElement> resultLinks;
+        resultLinks = getAllResultLinks();
+        int resultSize = resultLinks.size();
+        pageSize = Integer.parseInt(randomPageSize.trim());
+        String searchResult = getReusableActionsInstance().getElementText(searchResults);
+        String[] numbers = searchResult.split(" ");
+        if (pageSize < totalResults && resultSize == pageSize) {
+            results = "1-".concat(randomPageSize.trim());
+            System.out.println("First if , result concat is " + results + "number[0] is " +numbers[0]);
+            if (results.equals(numbers[0]))
+                verifyResult=true;
+        }
+        else if  (pageSize > totalResults && resultSize == totalResults) {
+            results = "1-".concat(String.valueOf(totalResults));
+            System.out.println("under else if , result concat is " + results + "number[0] is " +numbers[0]);
+            if (results.equals(numbers[0]))
+                return true;
+        }
+        return verifyResult;
+    }
 }
+
+

@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 
-public class RogersSearch_CBS_1742_InvalidTerm_NoResultsPage_Test extends BaseTestClass {
+public class Typehead_RogersSearch_CBS_1742_InvalidTerm_NoResultsPage_Test extends BaseTestClass {
     @DataProvider(name = "FilterData",parallel=true)
     public Object[] testData() throws IOException
     {

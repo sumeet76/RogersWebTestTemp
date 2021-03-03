@@ -55,6 +55,8 @@ public class RogersSearch_CBS_1683_Clicking_On_Results_With_Selected_Color_Test 
 							"Color: Expected="+resultColorOptions.get(j)+"; Actual=" + strSelectedColor,
 							"Color: Expected="+resultColorOptions.get(j)+"; Actual=" + strSelectedColor);
 					getRogersDeviceConfigPage().navigateBack();
+					getRogersSearchPage().isPageLoaded();
+					getRogersSearchPage().waitTime();
 				} else {
 					reporter.reportLogFailWithScreenshot("Failed to land on Device Config page for following device: "  + linkDetails + " & following color: " + resultColorOptions.get(j));
 					getDriver().get(System.getProperty("SearchUrl")+strSearchTerm);
@@ -67,6 +69,8 @@ public class RogersSearch_CBS_1683_Clicking_On_Results_With_Selected_Color_Test 
 						getRogersSearchPage().clkColorType(strColorFilters.get(i));
 					}
 				}
+				getRogersSearchPage().isPageLoaded();
+				getRogersSearchPage().waitTime();
 				resultLinks = getRogersSearchPage().getAllResultLinks();
 				resultColorOptions = getRogersSearchPage().getResultColorOptions(resultLinks.get(k));
 			}

@@ -40,7 +40,7 @@ public class RogersSearch_CBS_1703_Results_To_Links_Detailed_Page extends BaseTe
 
         getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
         getRogersSearchPage().isPageLoaded();
-        getRogersSearchPage().waitTime();
+       getRogersSearchPage().waitTime();
         List<WebElement> lstParentFilters;
         String strParentFilterName;
         String[] strFilters = Arrays.copyOfRange(csvRow, 1, csvRow.length);

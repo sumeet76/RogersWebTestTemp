@@ -61,6 +61,8 @@ public class RogersSearch_CBS_1684_Storage_Filter_Functioning_Test extends BaseT
 							"Storage: Expected="+strStorageFilters.get(i)+"; Actual=" + strSelectedStorage,
 							"Storage: Expected="+strStorageFilters.get(i)+"; Actual=" + strSelectedStorage);
 					getRogersDeviceConfigPage().navigateBack();
+					getRogersSearchPage().isPageLoaded();
+					getRogersSearchPage().waitTime();
 				} else {
 					reporter.reportLogFailWithScreenshot("Failed to land on Device Config page");
 					getDriver().get(System.getProperty("SearchUrl")+csvRowStrArray);
@@ -68,8 +70,12 @@ public class RogersSearch_CBS_1684_Storage_Filter_Functioning_Test extends BaseT
 					getRogersSearchPage().clkParentFilter("Shop","Wireless");
 					getRogersSearchPage().clkStorageType(strStorageFilters.get(i));
 				}
+				getRogersSearchPage().isPageLoaded();
+				getRogersSearchPage().waitTime();
 				resultLinks = getRogersSearchPage().getAllResultLinks();
 			}
+			getRogersSearchPage().isPageLoaded();
+			getRogersSearchPage().waitTime();
 			getRogersSearchPage().clkStorageType(strStorageFilters.get(i));
 		}
 	}

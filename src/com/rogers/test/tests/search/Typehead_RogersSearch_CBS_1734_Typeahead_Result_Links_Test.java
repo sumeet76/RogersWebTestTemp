@@ -1,24 +1,18 @@
 package com.rogers.test.tests.search;
 
+import com.rogers.test.base.BaseTestClass;
+import com.rogers.test.helpers.RogersEnums;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+import utils.CSVReader;
+
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
-import com.rogers.test.base.BaseTestClass;
-import com.rogers.test.helpers.RogersEnums;
-
-import utils.CSVReader;
-
-public class RogersSearch_CBS_1732_Refreshing_Results_Based_On_The_Search_Terms_Test extends BaseTestClass {
+public class Typehead_RogersSearch_CBS_1734_Typeahead_Result_Links_Test extends BaseTestClass {
     @DataProvider(name = "FilterData",parallel=true)
     public Object[] testData() throws IOException
     {
@@ -33,15 +27,9 @@ public class RogersSearch_CBS_1732_Refreshing_Results_Based_On_The_Search_Terms_
     }
 
     @Test(dataProvider = "FilterData")
-    public void validateResultsBasedOnSearchTerms(String[] csvRow) {
+    public void validateResultsBasedOnSearchTerms(String[] csvRow) throws UnsupportedEncodingException {
 
         List<String> strSuggestionOptions;
-        String strPrevLeftPaneInnerhtml = null;
-        String strPrevSupportInnerHtml = null;
-        String strCurLeftPaneInnerhtml = null;
-        String strCurSupportInnerHtml = null;
-        boolean blnPrevLeftPane = false;
-        boolean blnPrevSupport = false;
         boolean blnCurLeftPane = false;
         boolean blnCurSupport = false;
 
@@ -63,42 +51,19 @@ public class RogersSearch_CBS_1732_Refreshing_Results_Based_On_The_Search_Terms_
             reporter.reportLogWithScreenshot("Hovered on " +strSuggestionOptions.get(j));
             blnCurLeftPane = getRogersSearchPage().isLeftSectionPopulated();
             blnCurSupport = getRogersSearchPage().isSupportSectionPopulated();
+            if(blnCurSupport) {
+                reporter.softAssert(getRogersSearchPage().validateSupportLinks(),
+                        "All Support Results are Links","All Support Results are Not Links");
+            }
             if(blnCurSupport || blnCurLeftPane) {
-                strCurLeftPaneInnerhtml = getRogersSearchPage().getLeftSectionInnerhtml();
-                strCurSupportInnerHtml = getRogersSearchPage().getSupportInnerhtml();
-                if(j!=0){
-                    boolean leftPaneRefreshStatus = true;
-                    boolean supportPaneRefreshStatus = true;
-                    if(blnPrevLeftPane) {
-                        if(strCurLeftPaneInnerhtml.equals(strPrevLeftPaneInnerhtml)){
-                            leftPaneRefreshStatus=false;
-                        }
-                    }
-                    if(blnPrevSupport) {
-                        if(strCurSupportInnerHtml.equals(strPrevSupportInnerHtml)){
-                            supportPaneRefreshStatus=false;
-                        }
-                    }
-                    String refreshedPaneStatus="";
-                    if (leftPaneRefreshStatus==true&&supportPaneRefreshStatus==true)
-                        refreshedPaneStatus= "Results on both the panes have refreshed";
-                    else if(leftPaneRefreshStatus!=true&&supportPaneRefreshStatus!=true)
-                        refreshedPaneStatus= "Results on neither of the panes have refreshed";
-                    else if(leftPaneRefreshStatus==true)
-                        refreshedPaneStatus= "Results on the left pane has refreshed";
-                    else if(supportPaneRefreshStatus==true)
-                        refreshedPaneStatus= "Results on the support pane has refreshed";
-
-
-                    reporter.softAssert(!(leftPaneRefreshStatus==false&&supportPaneRefreshStatus==false),refreshedPaneStatus,refreshedPaneStatus);
-                }
-                strPrevLeftPaneInnerhtml = strCurLeftPaneInnerhtml;
-                strPrevSupportInnerHtml = strCurLeftPaneInnerhtml;
+                getRogersSearchPage().clkSuggestionsType(strSuggestionOptions.get(j));
+                reporter.hardAssert(getRogersSearchPage().validateURLContains(strSuggestionOptions.get(j)),
+                        "Result Landing Page displayed", "Result Landing Page not displayed");
+                reporter.reportLogWithScreenshot("Landing page for suggested result click");
             } else {
                 reporter.reportLogFailWithScreenshot("Both Left and Support sections are not displayed");
             }
-            blnPrevLeftPane = blnCurLeftPane;
-            blnPrevSupport = blnCurSupport;
+            getRogersSearchPage().enterTextSearch(csvRow[0]);
         }
     }
 

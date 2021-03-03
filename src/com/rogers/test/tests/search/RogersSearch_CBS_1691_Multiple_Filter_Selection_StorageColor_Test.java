@@ -79,10 +79,16 @@ public class RogersSearch_CBS_1691_Multiple_Filter_Selection_StorageColor_Test e
 						reporter.reportLogFailWithScreenshot("Failed to land on Device Config page");
 					}
 					getRogersDeviceConfigPage().navigateBack();
+					getRogersSearchPage().isPageLoaded();
+					getRogersSearchPage().waitTime();
 					resultLinks = getRogersSearchPage().getAllResultLinks();
 				}
+				getRogersSearchPage().isPageLoaded();
+				getRogersSearchPage().waitTime();
 				getRogersSearchPage().clkColorType(strColorOptions.get(j));
 			}
+			getRogersSearchPage().isPageLoaded();
+			getRogersSearchPage().waitTime();
 			getRogersSearchPage().clkStorageType(strStorageOptions.get(i));
 		}
 	}
