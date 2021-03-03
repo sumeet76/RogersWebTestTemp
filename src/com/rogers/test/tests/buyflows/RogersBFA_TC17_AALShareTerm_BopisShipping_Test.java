@@ -66,10 +66,10 @@ public class RogersBFA_TC17_AALShareTerm_BopisShipping_Test extends BaseTestClas
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
         reporter.hardAssert(getRogersPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
         reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
-        getRogersPlanConfigPage().clickViewMoreOptionsIfAvailable();
+        getRogersPlanConfigPage().clickViewMoreOptions();
         getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc17AALShareTermBopis.getDeviceCostIndex()));
         reporter.reportLogPassWithScreenshot("Device cost option selected");
-        getRogersPlanConfigPage().clickShowMoreDetailsIfAvailable();
+        getRogersPlanConfigPage().clickShowMoreDetails();
         getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc17AALShareTermBopis.getDataOptionIndex()));
         reporter.reportLogPassWithScreenshot("Data option selected");
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc17AALShareTermBopis.getTalkOptionIndex())),

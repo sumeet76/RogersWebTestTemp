@@ -166,11 +166,11 @@ public class RogersPlanConfigPage extends BasePageClass {
         return getReusableActionsInstance().isElementVisible(By.xpath("//div[@class='ng-tns-c17-6 ng-star-inserted']//p[contains(.,'" +deviceName +"')]"),30);
     }
 
-    public void clickViewMoreOptionsIfAvailable() {
+    public void clickViewMoreOptions() {
         getReusableActionsInstance().clickIfAvailable(viewMoreOptions,30);
     }
 
-    public void clickShowMoreDetailsIfAvailable() {
+    public void clickShowMoreDetails() {
         getReusableActionsInstance().clickIfAvailable(showMoreDetails,40);
     }
 
@@ -179,13 +179,13 @@ public class RogersPlanConfigPage extends BasePageClass {
         if (stepper == 1) {
             return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
         }
-        if (stepper == 2) {
+        else if (stepper == 2) {
             return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-infinite-" + dC_DO_TO + "')]//label[1]";
         }
-        if (stepper == 3) {
+        else if(stepper == 3) {
             return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
         }
-        return null;
+        else return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
     }
 
     /**
@@ -359,8 +359,8 @@ public class RogersPlanConfigPage extends BasePageClass {
             getReusableActionsInstance().clickIfAvailable((preCartSummaryContinueButtonTalkOptions),30);
         }
         if(Integer.parseInt(talkOptionIndex) == 1) {
-            getReusableActionsInstance().clickWhenVisible(By.xpath(xpathDcDoTo),30);
-            getReusableActionsInstance().clickWhenVisible(preCartSummaryContinueButtonTalkOptions);
+            getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo),30);
+            getReusableActionsInstance().clickIfAvailable(preCartSummaryContinueButtonTalkOptions);
         }
         return getReusableActionsInstance().isElementVisible(preCartAddonsContinueButton,30);
     }

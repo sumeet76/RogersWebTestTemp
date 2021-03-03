@@ -959,6 +959,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void clkDeliveryMethod(String deliveryMethod) {
+		getReusableActionsInstance().staticWait(2000);
 		if(deliveryMethod.equalsIgnoreCase("EXPRESS")){
 			getReusableActionsInstance().staticWait(5000);
 			getReusableActionsInstance().clickWhenReady(deliveryMethodExpress,30);
@@ -1007,8 +1008,8 @@ public class RogersCheckoutPage extends BasePageClass {
 
 
 	public void clkContinueBtnShipping() {
-		wait.until(ExpectedConditions.elementToBeClickable(continueBtnShipping));
-        getReusableActionsInstance().javascriptScrollByVisibleElement(continueBtnShipping);
+		getReusableActionsInstance().getWhenReady(continueBtnShipping,30);
+        getReusableActionsInstance().scrollToElement(continueBtnShipping);
 		getReusableActionsInstance().clickWhenReady(continueBtnShipping, 30);
 	}
 
@@ -1056,7 +1057,7 @@ public class RogersCheckoutPage extends BasePageClass {
     public void clksubmitBtnCheckoutPage(){
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementTobeClickable(submitBtnCheckoutPage,30);
-		getReusableActionsInstance().scrollToElementAndClick(submitBtnCheckoutPage);
+		getReusableActionsInstance().scrollToElement(submitBtnCheckoutPage);
 		getReusableActionsInstance().clickWhenReady(submitBtnCheckoutPage , 60);
     }
 

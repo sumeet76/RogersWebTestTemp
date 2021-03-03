@@ -38,7 +38,7 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'SearchUrl', test_searchURL
 	systemProperty 'URIautoRegister', test_URIautoRegister
 	systemProperty 'URIEmailer', test_URIEmailer
-	systemProperty 'PageLoadStrategy', test_PageLoadStrategy
+	//systemProperty 'PageLoadStrategy', test_PageLoadStrategy
 
 
 	useTestNG(){
@@ -73,7 +73,7 @@ task "localTest"(type: Test) {
 	systemProperty 'SearchUrl', test_searchURL
 	systemProperty 'URIautoRegister', test_URIautoRegister
 	systemProperty 'URIEmailer', test_URIEmailer
-	systemProperty 'PageLoadStrategy', test_PageLoadStrategy
+	//systemProperty 'PageLoadStrategy', test_PageLoadStrategy
 
 	systemProperties(System.getProperties())
 	outputs.upToDateWhen { false }  // Always run tests

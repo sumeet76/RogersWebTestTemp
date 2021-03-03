@@ -501,16 +501,17 @@ public class RogersDeviceCataloguePage extends BasePageClass {
 
     /**
      *  This method select shared or nonshared sharing type based on the string passed
-     *  @param sharingType passing the value of sharingType to select the sharing option
+     *  @param sharingType passing the String value of sharingType to select the sharing option
      *  @author praveeen.kumar7
      */
     public void selectAALSharingType(String sharingType) {
-        if(sharingType.equalsIgnoreCase("shared")) {
+        if(sharingType.equalsIgnoreCase("SHARED")) {
             getReusableActionsInstance().clickWhenReady(sharedOption, 20);
         }
-        else if(sharingType.equalsIgnoreCase("nonshared")){
+        else if(sharingType.equalsIgnoreCase("NONSHARED")){
             getReusableActionsInstance().clickWhenReady(nonSharedOption, 20);
         }
+        else getReusableActionsInstance().clickWhenReady(sharedOption, 20);
     }
 
     public void clickContinueButtonOnModal() {
