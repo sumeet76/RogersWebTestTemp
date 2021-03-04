@@ -32,7 +32,7 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_061_ISS_HomePageEntryPointSignedInSHMBuyInternetDiffAddressTest extends BaseTestClass {
+public class RogersCH_TC_067_Regression_SAI_NAC_AnonymousCxentersInternetShopPage_ISStogglecheckedOffTest extends BaseTestClass {
 
 	@Test(groups = {"RegressionCH","SmartStreamCH"})
     public void checkIssHomePageEntryPointSignedInSHMBuyInternetDiffAddressTest() {

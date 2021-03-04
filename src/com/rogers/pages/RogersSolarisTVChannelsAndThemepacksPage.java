@@ -44,7 +44,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='channel-list-row']//button[@class='ute-btn-primary ute-sm ute-short']//ins")
 	WebElement addChannelToCart1;
 
-	@FindBy(xpath = "//span[contains(text(),'FAITHTV')]/ancestor::tr//span[@translate='global.cta.add']")
+	@FindBy(xpath = "//span[contains(text(),'FAITHTV') or contains(text(),'Baby TV')]/ancestor::tr//span[@translate='global.cta.add']")
 	WebElement addChannelToCart;
 	//Baby TV
 
@@ -267,7 +267,9 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 		//Need time to load all the TV packages
 		getReusableActionsInstance().staticWait(10000);
 		//getReusableActionsInstance().waitForElementVisibility(addParticularChannelToCart.get(0), 240);
-		getReusableActionsInstance().getWhenReady(btnContinueFromThemepacks, 120).click();
+		getReusableActionsInstance().getWhenReady(btnContinueFromThemepacks, 120);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().executeJavaScriptClick(btnContinueFromThemepacks);
 	}
 
 	/**
@@ -285,6 +287,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkYesIHave4K() {
+		getReusableActionsInstance().waitForElementVisibility(btnYesIHave4K, 90);
 		getReusableActionsInstance().getWhenReady(btnYesIHave4K, 90).click();
 	}
 

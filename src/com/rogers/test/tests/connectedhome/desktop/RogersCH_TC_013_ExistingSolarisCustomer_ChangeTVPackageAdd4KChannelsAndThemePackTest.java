@@ -54,7 +54,7 @@ public class RogersCH_TC_013_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannel
     	reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersSolarisTVDashboardPage().clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
-        getRogersSolarisTVDashboardPage().clkChangeTVPackage();
+        getRogersSolarisTVDashboardPage().clkChangeTVPackageLatency();
         reporter.reportLogWithScreenshot("Launched the TV packages page");
         getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc13_SolarisChangeTVPackageAdd4KChannelsAndThemePack.accountDetails.getUpgradePlanEn(),TestDataHandler.tc13_SolarisChangeTVPackageAdd4KChannelsAndThemePack.accountDetails.getUpgradePlanFr());
         getRogersSolarisTVDashboardPage().clkPopupChangeTVPackage();
@@ -62,7 +62,7 @@ public class RogersCH_TC_013_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannel
         getRogersSolarisTVChannelsAndThemepacksPage().clkExchangeLater();
         reporter.reportLogWithScreenshot("Launched the channels and themepacks page");
          getRogersSolarisTVChannelsAndThemepacksPage().SelectChannelGenres(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.accountDetails.getSwapInChannelOne());
-        getRogersSolarisTVChannelsAndThemepacksPage().addChannel();
+        //getRogersSolarisTVChannelsAndThemepacksPage().addChannel();
         reporter.reportLogWithScreenshot("Channel added");
         getRogersSolarisTVChannelsAndThemepacksPage().clkThemePacks();
         reporter.reportLogWithScreenshot("Clicked on themepack tab");
@@ -94,7 +94,7 @@ public class RogersCH_TC_013_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannel
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 
