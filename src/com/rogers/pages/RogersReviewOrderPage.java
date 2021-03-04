@@ -3,10 +3,7 @@ package com.rogers.pages;
 import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
 
 public class RogersReviewOrderPage extends BasePageClass {
     /**
@@ -53,27 +50,29 @@ public class RogersReviewOrderPage extends BasePageClass {
     
     @FindBy(xpath="//p[@class='text-body text-bold mt-40']")
     WebElement txtPleaseReadAgreement;
-
-    @FindBy(xpath = "//input[contains(@name,'financingConsent')]/..")
+    
+    @FindBy(xpath="//input[contains(@name,'financingConsent')]/..")
     WebElement chFinancingConsent;
 
-    @FindBy(xpath = "//input[contains(@name,'agreementConsent')]/..")
+    @FindBy(xpath="//input[contains(@name,'agreementConsent')]/..")
     WebElement chAgreementConsent;
+
+    @FindBy(xpath="//input[contains(@name,'returningUEDeviceConsent')]/parent::label")
+    WebElement chReturningUTDeviceConsent;
 
     @FindBy(xpath = "//input[contains(@name,'upfrontConsent')]/..")
     WebElement chUpfrontConsent;
-
-    @FindBy(xpath = "//ds-checkbox[@name='credit-check']")
+    
+    @FindBy(xpath ="//ds-checkbox[@name='credit-check']")
     WebElement chEmailConsent;
 
-    @FindBy(xpath = "//ds-checkbox[contains(@data-test,'bopis-consent')]")
-    WebElement chBopisEmailConsent;
+    @FindBy(xpath ="//ds-checkbox[@data-test='bopis-consent']")
+    WebElement chBopisConsent;
 
-    @FindBy(xpath = "//input[contains(@name,'returningUEDeviceConsent')]/parent::label")
-    WebElement chReturningUTDeviceConsent;
-
-    @FindBy(xpath ="//button[@title='Submit order - test1']")
+    
+	 @FindBy(xpath ="//button[@title='Submit order - test1']")
 	 WebElement submitOrderBtn;
+
 
 
     /**
@@ -82,7 +81,7 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author nimmy.george
      */
     public boolean isOrderReviewPageTitlePresent() {
-       return getReusableActionsInstance().isElementVisible(orderReviewPageTitle , 80);
+       return getReusableActionsInstance().isElementVisible(orderReviewPageTitle , 60);
     }
 
     /**
@@ -93,7 +92,7 @@ public class RogersReviewOrderPage extends BasePageClass {
 
     public String getMonthlyFeeAfterTax() {
     	getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyFeeAfterTax);
-    	getReusableActionsInstance().staticWait(3000);
+    	getReusableActionsInstance().staticWait(4000);
     	System.out.println(monthlyFeeAfterTax.getText());
     	return monthlyFeeAfterTax.getText().replaceAll("\\n",""); }
 
@@ -197,27 +196,7 @@ public class RogersReviewOrderPage extends BasePageClass {
     public void clkFinancingConsentCheckbox() {
         getReusableActionsInstance().javascriptScrollByVisibleElement(txtPleaseReadAgreement);
         getReusableActionsInstance().staticWait(1000);
-        getReusableActionsInstance().clickWhenReady(chFinancingConsent,20);
-    }
-
-    public void clkAllAgreementConsentCheckbox(String isSelectedDeviceTier) {
-        if(isSelectedDeviceTier.equalsIgnoreCase("UPFRONT")) {
-            getReusableActionsInstance().clickWhenReady(chFinancingConsent,10);
-            getReusableActionsInstance().clickWhenReady(chAgreementConsent,10);
-            getReusableActionsInstance().clickWhenReady(chUpfrontConsent,10);
-        }
-        else if(isSelectedDeviceTier.equalsIgnoreCase("FINANCING")) {
-            getReusableActionsInstance().clickWhenReady(chFinancingConsent,10);
-            getReusableActionsInstance().clickWhenReady(chAgreementConsent,10);
-        }
-        else {
-            getReusableActionsInstance().clickWhenReady(chFinancingConsent, 10);
-            getReusableActionsInstance().clickWhenReady(chAgreementConsent, 10);
-        }
-    }
-
-    public void clkBopisConsentCheckBox() {
-        getReusableActionsInstance().clickWhenReady(chBopisEmailConsent,10);
+        getReusableActionsInstance().clickWhenReady(chFinancingConsent,2);
     }
 
     /**
@@ -251,13 +230,17 @@ public class RogersReviewOrderPage extends BasePageClass {
     public void clkEmailConsentCheckbox() {
         getReusableActionsInstance().clickWhenReady(chEmailConsent,2);
     }
-    
+
+    public void clkBopisConsentCheckbox() {
+        getReusableActionsInstance().clickWhenReady(chBopisConsent,2);
+    }
+
     /**
      * Click on the 'Submit Order' Button
      * @author karthic.hasan
      */
     public void clkSubmitOrderBtn() {
-        getReusableActionsInstance().clickWhenReady(submitOrderBtn,2);
+        getReusableActionsInstance().clickWhenReady(submitOrderBtn,5);
         getReusableActionsInstance().staticWait(9000);
     }
 
