@@ -34,12 +34,12 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_061_ISS_HomePageEntryPointSignedInSHMBuyInternetDiffAddressTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","saiCH"})
+    @Test(groups = {"RegressionCH","SmartStreamCH"})
     public void checkIssHomePageEntryPointSignedInSHMBuyInternetDiffAddressTest() {
         getDriver().navigate().to(TestDataHandler.rogersConfig.getRogersURL()+"/web/consumer/internet/streaming");
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc61_SHMSignedInInternetBuyDiffAddress.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc61_SHMSignedInInternetBuyDiffAddress.getPassword());
@@ -60,6 +60,7 @@ public class RogersCH_TC_061_ISS_HomePageEntryPointSignedInSHMBuyInternetDiffAdd
         reporter.reportLogWithScreenshot("Launched the Internet page");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
+        //getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
         getRogersHomePage().clkInternetAvailability();
 
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
@@ -69,15 +70,7 @@ public class RogersCH_TC_061_ISS_HomePageEntryPointSignedInSHMBuyInternetDiffAdd
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
 
-        getRogersInternetPackageSelectionPage().clkSmartStream();
-        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
-        getDriver().navigate().to(TestDataHandler.rogersConfig.getRogersURL()+"/web/consumer/internet/streaming?ecid=SMS_R_IGN_Aug_19_20_ISS_LYX78O");
-        getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
-        reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-
-        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
-        getRogersHomePage().clkIgniteAddressLookupSubmit();
+       // getRogersInternetPackageSelectionPage().clkSmartStream();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");

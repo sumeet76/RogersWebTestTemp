@@ -12,9 +12,9 @@ import java.lang.reflect.Method;
 
 /**
  * This class contains the test method to test Legacy Internet Offer Buy flow for Rogers.com   
- * 
+ *
  * @author chinnarao.vattam
- * 
+ *
  * Test steps:
  * 1.Launch Rogers SAI Tupelo URL in QA Env and click on get it now and enter address and click on continue
  * 2. Click on continue
@@ -33,25 +33,19 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_052_NAC_ValidationSaiTupeloBuyflowAddAdditionalSTBTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","New"})
-    public void checkSaiTupeloBuyflowAddAdditionalSTB() throws InterruptedException {
-   	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
-    	getRogersHomePage().clkEasyInternet();
-    	reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the Internet packages page");
-        getRogersHomePage().clkInternetAvailability();
-        reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-    	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+    @Test(groups = {"RegressionCH","SmartStreamCH"})
+    public void checkSaiTupeloBuyflowAddAdditionalSTB() {
+        getDriver().navigate().to(TestDataHandler.rogersConfig.getRogersURL()+"/web/consumer/internet/streaming");
+        reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
+        getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
         String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
-        getRogersHomePage().clkIgniteAddressLookupSubmit();
-        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
-        getDriver().navigate().to(TestDataHandler.rogersConfig.getRogersURL()+"/web/consumer/internet/streaming");
-        getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
+        getRogersHomePage().clkIgniteAddressLookupSubmitSS();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
-        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
+        getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
+        getRogersIgniteTVBuyPage().clkUpdateCart();
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
 
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
@@ -115,18 +109,18 @@ public class RogersCH_TC_052_NAC_ValidationSaiTupeloBuyflowAddAdditionalSTBTest 
     }
 
 
-	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
-	//legacyAnonymous
-	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_igniteanonymous, method);
-		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-	}
-	
+    @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
+    //legacyAnonymous
+    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+        startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_igniteanonymous, method);
+        // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+    }
 
-	@AfterMethod(alwaysRun = true)
-	public void afterTest() {
-		closeSession();
-	}
+
+    @AfterMethod(alwaysRun = true)
+    public void afterTest() {
+        closeSession();
+    }
 
 
 
