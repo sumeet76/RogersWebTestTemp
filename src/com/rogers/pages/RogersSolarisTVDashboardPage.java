@@ -262,24 +262,14 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkChangeTVPackage() {
+		//NL and FL  Provinces taking long loading time to pull the dashboard details
 		getReusableActionsInstance().staticWait(6000);
+		//getReusableActionsInstance().waitForElementInvisibility(loaderTVDashboard,90);
 		getReusableActionsInstance().waitForElementVisibility(btnChangeTVPackage,120);
 		//getReusableActionsInstance().executeJavaScriptClick(btnChangeTVPackage);
 		getReusableActionsInstance().getWhenReady(btnChangeTVPackage, 60).click();
 	}
 
-	/**
-	 * Click the ChangeTV Package link on solaris TV dashboard page
-	 * @author chinnarao.vattam
-	 */
-	public void clkChangeTVPackageLatency() {
-		//NL and FL  Provinces taking long loading time to pull the dashboard details
-		getReusableActionsInstance().waitForElementInvisibility(loaderTVDashboard,120);
-		getReusableActionsInstance().staticWait(4000);
-		getReusableActionsInstance().waitForElementVisibility(btnChangeTVPackage,120);
-		//getReusableActionsInstance().executeJavaScriptClick(btnChangeTVPackage);
-		getReusableActionsInstance().getWhenReady(btnChangeTVPackage, 60).click();
-	}
 	/**
 	 * Click the ChangeTV Package link on solaris TV dashboard page
 	 * @author chinnarao.vattam

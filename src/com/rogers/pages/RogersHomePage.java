@@ -610,15 +610,7 @@ public class RogersHomePage extends BasePageClass {
 	public void clkIgniteAddressLookupSubmit() {
 		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 60).click();
 	}
-
-	/**
-	 * Click the Lookup Submit button to check service availability
-	 * @author chinnarao.vattam
-	 */
-	public void clkIgniteAddressLookupSubmitSS() {
-		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 60).click();
-		getReusableActionsInstance().staticWait(7000);
-	}
+	
 	/**
 	 * Click the OnlyInternet lick to check service availability
 	 * @author chinnarao.vattam

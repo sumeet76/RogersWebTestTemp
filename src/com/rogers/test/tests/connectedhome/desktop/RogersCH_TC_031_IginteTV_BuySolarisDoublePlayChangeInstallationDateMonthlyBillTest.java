@@ -86,6 +86,8 @@ public class RogersCH_TC_031_IginteTV_BuySolarisDoublePlayChangeInstallationDate
 		reporter.reportLogWithScreenshot("Launched the cart summary page");
 		getRogersIgniteTVBuyPage().set4KTV();
 		reporter.reportLogWithScreenshot("4k TV selected");
+		//getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
+		//getRogersIgniteTVBuyPage().clkUpdateCart();
 		getRogersIgniteTVBuyPage().clkCheckout();
 		
 		//reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
