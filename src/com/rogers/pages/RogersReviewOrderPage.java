@@ -54,16 +54,6 @@ public class RogersReviewOrderPage extends BasePageClass {
     @FindBy(xpath="//p[@class='text-body text-bold mt-40']")
     WebElement txtPleaseReadAgreement;
 
-    @FindAll({
-            @FindBy(xpath = "//input[contains(@name,'financingConsent')]/.."),
-            @FindBy(xpath = "//input[contains(@name,'agreementConsent')]/.."),
-            @FindBy(xpath = "//input[contains(@name,'upfrontConsent')]/.."),
-            @FindBy(xpath = "//ds-checkbox[@name='credit-check']"),
-            @FindBy(xpath = "//ds-checkbox[contains(@data-test,'bopis-consent')]"),
-            @FindBy(xpath = "//input[contains(@name,'returningUEDeviceConsent')]/parent::label")
-    })
-    List<WebElement> chAllConsent;
-
     @FindBy(xpath = "//input[contains(@name,'financingConsent')]/..")
     WebElement chFinancingConsent;
 
@@ -210,11 +200,24 @@ public class RogersReviewOrderPage extends BasePageClass {
         getReusableActionsInstance().clickWhenReady(chFinancingConsent,20);
     }
 
-    public void clkAllConsentCheckbox() {
-        getReusableActionsInstance().javascriptScrollByVisibleElement(txtPleaseReadAgreement);
-        //getReusableActionsInstance().staticWait(1000);
-        for(WebElement element : chAllConsent)
-            getReusableActionsInstance().clickIfAvailable(element,20);
+    public void clkAllAgreementConsentCheckbox(String isSelectedDeviceTier) {
+        if(isSelectedDeviceTier.equalsIgnoreCase("UPFRONT")) {
+            getReusableActionsInstance().clickWhenReady(chFinancingConsent,10);
+            getReusableActionsInstance().clickWhenReady(chAgreementConsent,10);
+            getReusableActionsInstance().clickWhenReady(chUpfrontConsent,10);
+        }
+        else if(isSelectedDeviceTier.equalsIgnoreCase("FINANCING")) {
+            getReusableActionsInstance().clickWhenReady(chFinancingConsent,10);
+            getReusableActionsInstance().clickWhenReady(chAgreementConsent,10);
+        }
+        else {
+            getReusableActionsInstance().clickWhenReady(chFinancingConsent, 10);
+            getReusableActionsInstance().clickWhenReady(chAgreementConsent, 10);
+        }
+    }
+
+    public void clkBopisConsentCheckBox() {
+        getReusableActionsInstance().clickWhenReady(chBopisEmailConsent,10);
     }
 
     /**

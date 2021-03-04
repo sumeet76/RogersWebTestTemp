@@ -34,10 +34,10 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-3-edit-step-selection-option-')]//label[1]")
     List<WebElement> noOfTalkOptions;
 
-    @FindBy(xpath = "//span[contains(text(),'Monthly device financing payment') or contains(text(),'Paiement mensualité')]")
+    @FindBy(xpath = "//span[text()='Monthly device financing payment' or text()='Paiement mensualité']")
     WebElement financingOptionCheck;
 
-    @FindBy(xpath = "//span[contains(text(),'Monthly device financing payment – with Upfront') or contains(text(),'Paiement mensuel de financement de l’appareil – avec Voie')]")
+    @FindBy(xpath = "//span[contains(text(),'with Upfront') or contains(text(),'avec Voie')]")
     WebElement upfrontOptionCheck;
 
     @FindBy(xpath = "//button[contains(@class,'active text-semi')]")
@@ -48,6 +48,9 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     @FindBy(xpath = "//nav[@class='ds-breadcrumb']")
     WebElement breadCrumb;
+
+    @FindBy(xpath = "(//div[contains(@class,'dsa-orderTable')])[1]")
+    WebElement monthlyFeesCartSummarySection;
 
     @FindBy(xpath = "//button[@data-test='stepper-1-edit-step-continue-button']")
     WebElement preCartDeviceCostContinueButton;
@@ -145,15 +148,16 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     public String getDeviceCostTierSelected() {
         String tierOption="noterm";
-        if(getReusableActionsInstance().isElementVisible(financingOptionCheck,60)) {
-           tierOption="financing";
+        getReusableActionsInstance().scrollToElement(monthlyFeesCartSummarySection);
+        if(getReusableActionsInstance().isElementVisible(upfrontOptionCheck,40)) {
+           tierOption="upfront";
            return tierOption;
         }
-        if(getReusableActionsInstance().isElementVisible(upfrontOptionCheck,60)) {
-            tierOption="upfront";
+        else if(getReusableActionsInstance().isElementVisible(financingOptionCheck,40)) {
+            tierOption="financing";
             return tierOption;
         }
-        return tierOption;
+        else return tierOption;
     }
 
     /**

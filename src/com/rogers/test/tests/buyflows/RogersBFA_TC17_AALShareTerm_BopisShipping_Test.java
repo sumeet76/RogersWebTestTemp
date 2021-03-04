@@ -78,6 +78,7 @@ public class RogersBFA_TC17_AALShareTerm_BopisShipping_Test extends BaseTestClas
         String monthlyFeesAmountWithTax = getRogersPlanConfigPage().getMonthlyFeesAmount();
         String oneTimeFeesAmountWithTax = getRogersPlanConfigPage().getOneTimeFeesAmount();
         reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees " + monthlyFeesAmountWithTax + "2. oneTimeFee " + oneTimeFeesAmountWithTax);
+        String isSelectedDeviceTier = getRogersPlanConfigPage().getDeviceCostTierSelected();
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         //---------------------------------------Checkout pages---------------------------------------------------------
         reporter.softAssert(getRogersCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed", "Choose a Number Title not disaplayed");
@@ -101,11 +102,12 @@ public class RogersBFA_TC17_AALShareTerm_BopisShipping_Test extends BaseTestClas
         getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary");
-
+        //--------------------------------------Review Order Page-------------------------------------------------------
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                 "Order Review Page Title is not Present");
         reporter.reportLogPassWithScreenshot("Order Review Page");
-        getRogersReviewOrderPage().clkAllConsentCheckbox();
+        getRogersReviewOrderPage().clkAllAgreementConsentCheckbox(isSelectedDeviceTier);
+        getRogersReviewOrderPage().clkBopisConsentCheckBox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         if (getRogersOrderReviewPage().isPaymentRequired()) {
             getRogersOrderReviewPage().clkContinue();

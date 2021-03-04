@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import java.util.List;
 
 import com.rogers.pages.base.BasePageClass;
 
@@ -35,6 +36,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	//ins[@translate='global.message.orderConfirmationThanksV2']
 
 	@FindAll({
+		@FindBy(xpath = "//p[contains(text(),'Thank you')]"),
 		@FindBy(xpath = "//span[@class='thank-you']"),
 		@FindBy(xpath = "//span[@class='UConfirmationHeading']"),
 		@FindBy(xpath = "//p[@class='text-body mb-40 ng-star-inserted']")
@@ -66,7 +68,16 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 			@FindBy(xpath = "//ds-expander[@id='orderTable-refId-11']//div[@class='ds-price']"),
 			@FindBy(xpath = "//span[@checkout-res='checkout_order_summary_total']")
 	})
-	WebElement lblOrderSummaryTotal;	
+	WebElement lblOrderSummaryTotal;
+
+	@FindBy(xpath = "//div[contains(@class,'dsa-orderTable__priceRows')]")
+	List<WebElement> cartSummarySection;
+
+	@FindAll({
+			@FindBy(xpath = "//div[contains(@class,'my-12 ng-star-inserted')]"),
+			@FindBy(xpath = "//div[contains(@class,'col-xs-5 ng-star-inserted')]")
+	})
+	List<WebElement> bopisContent;
 	
 	
 	/**
@@ -132,11 +143,22 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyThankYouDisplayed() {
-		getReusableActionsInstance().waitForElementVisibility(lblOrderSummaryTotal, 60);
+		getReusableActionsInstance().waitForAllElementsVisible(cartSummarySection,60);
 		if(lblThankYou.isDisplayed()) {
 			return getReusableActionsInstance().isElementVisible(lblThankYou,60);
 		}
 		return false;
+	}
+
+	public boolean verifyBopisContentDisplayed() {
+		boolean isElementPresent = true;
+		for(WebElement element : bopisContent) {
+			isElementPresent = getReusableActionsInstance().isElementVisible(element, 40);
+			if(isElementPresent==false) {
+				return isElementPresent;
+			}
+		}
+		return isElementPresent;
 	}
 	
 	/**
