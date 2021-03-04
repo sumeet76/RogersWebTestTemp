@@ -44,7 +44,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_049_IginteBundle_DoublePlay_ValidateFlexChannelModel extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
+    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
     public void checkBuyDigitalTVOfferDoublePlayValidateChannels() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	getRogersHomePage().clkTVBundle();

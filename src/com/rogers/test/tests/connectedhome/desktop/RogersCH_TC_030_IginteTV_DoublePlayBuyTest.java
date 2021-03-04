@@ -48,7 +48,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_030_IginteTV_DoublePlayBuyTest extends BaseTestClass {
 
-    @Test(groups = {"SanityCH","RegressionCH","RogersIgniteBuyCH"})
+    @Test(groups = {"SanityCH","RegressionCH","RogersIgniteBuyAnonymousCH"})
     public void checkBuyDigitalTVOffer() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	getRogersHomePage().clkTVBundle();

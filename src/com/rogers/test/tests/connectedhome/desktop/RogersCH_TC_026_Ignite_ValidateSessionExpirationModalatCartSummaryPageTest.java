@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_026_Ignite_ValidateSessionExpirationModalatCartSummaryPageTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
+	@Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
     public void checkSessionExpirationModalatCartSummaryPage() throws InterruptedException {
         reporter.reportLogWithScreenshot("Launched the Easy Login Page");
         getRogersHomePage().clkTVBundle();
