@@ -42,7 +42,6 @@ public class RogersSearch_CBS_Pagination_1769_Changing_Page_Size_Validation exte
     @Test(dataProvider = "FilterData")
     public void contextPageValidation(String[] csvRowStrArray)
     {
-        String searchText = "Iphone";
         String url;
         int pageNumber;
         List<WebElement> resultLinks;

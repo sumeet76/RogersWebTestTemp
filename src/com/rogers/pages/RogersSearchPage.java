@@ -77,6 +77,8 @@ public class RogersSearchPage extends BasePageClass {
     @FindBy(xpath = "//div[contains(@id,'Shop-body')]/div/button[contains(@id,'Wireless-heading')]")
     WebElement Wireless;
 
+    List<WebElement> elementName;
+
     /**
      * @author naina.agarwal
      */
@@ -110,12 +112,23 @@ public class RogersSearchPage extends BasePageClass {
     @FindBy(xpath = "//button[@title='Page 3']")
     WebElement page3;
 
-    public static final By numberOfPagesDisplayedAtBottom = By.xpath("//div[@class='d-flex ng-star-inserted']/button");
+    public static final By numberOfPagesDisplayedAtBottom = By.xpath("//div[@class='d-flex ng-star-inserted']/button/div");
 
     @FindBy(xpath = "//select[@id='ds-form-input-id-0']")
     WebElement resultPerPageDropdown;
 
-    //ds-checkbox[@ng-reflect-value='" + strStorage + "']/label/div[1]
+    @FindBy(xpath = "//span[@class='ds-icon rds-icon-right']")
+    WebElement firstForwardArrowKey;
+
+    @FindBy(xpath = "//span[@class='ds-icon rds-icon-left']")
+    WebElement firstBackwardArrowKey;
+
+    @FindBy(xpath = "//span[@class='ds-icon rds-icon-last']")
+    WebElement lastForwardArrowKey;
+
+    @FindBy(xpath = "//span[@class='ds-icon rds-icon-first']")
+    WebElement lastBackwardArrowKey;
+
 
     /**
      * check if expected filters displayed or not
@@ -1342,6 +1355,7 @@ public class RogersSearchPage extends BasePageClass {
         }
         return numberOfResultsOnAPage;
     }
+
     /**
      * To method will select a random value from the result per page dropdown
      *
@@ -1370,6 +1384,7 @@ public class RogersSearchPage extends BasePageClass {
         return dd.get(list).getText();
 
     }
+
     /**
      * To method extracts the total results displayed for the searched term
      *
@@ -1383,6 +1398,7 @@ public class RogersSearchPage extends BasePageClass {
         totalResultDisplayed = Integer.parseInt(numbers[2]);
         return totalResultDisplayed;
     }
+
     /**
      * To check if the result list is displayed correctly based on the random page selected from the dropdown
      *
@@ -1403,6 +1419,7 @@ public class RogersSearchPage extends BasePageClass {
             return true;
         else return false;
     }
+
     /**
      * To check if the number of results on the top is displayed correctly based on the random page selected from the dropdown
      *
@@ -1420,18 +1437,72 @@ public class RogersSearchPage extends BasePageClass {
         String[] numbers = searchResult.split(" ");
         if (pageSize < totalResults && resultSize == pageSize) {
             results = "1-".concat(randomPageSize.trim());
-            System.out.println("First if , result concat is " + results + "number[0] is " +numbers[0]);
+            System.out.println("First if , result concat is " + results + "number[0] is " + numbers[0]);
             if (results.equals(numbers[0]))
-                verifyResult=true;
-        }
-        else if  (pageSize > totalResults && resultSize == totalResults) {
+                verifyResult = true;
+        } else if (pageSize > totalResults && resultSize == totalResults) {
             results = "1-".concat(String.valueOf(totalResults));
-            System.out.println("under else if , result concat is " + results + "number[0] is " +numbers[0]);
+            System.out.println("under else if , result concat is " + results + "number[0] is " + numbers[0]);
             if (results.equals(numbers[0]))
                 return true;
         }
         return verifyResult;
     }
+
+    public String clickFirstForwardArrow() {
+
+        String message = null;
+        elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
+        int numberOfPages = elementName.size();
+        if (numberOfPages > 1) {
+            getReusableActionsInstance().clickWhenReady(firstForwardArrowKey);
+            message = "Clicked on the forward arrow key";
+        } else {
+            message = "Cannot click on forward arraw key because available page is 1";
+        }
+        return message;
+    }
+
+    public boolean clickFirstBackwardArrow() {
+        boolean page = true;
+        elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
+        int numberOfPages = elementName.size();
+        if (numberOfPages > 1) {
+            getReusableActionsInstance().executeJavaScriptClick(firstBackwardArrowKey);
+        } else {
+            page = false;
+        }
+        return page;
+    }
+
+    public boolean clickLastForwardArrow() {
+        boolean page = true;
+        elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
+        int numberOfPages = elementName.size();
+        if (numberOfPages > 1) {
+            getReusableActionsInstance().executeJavaScriptClick(lastForwardArrowKey);
+        } else {
+            page = false;
+        }
+        return page;
+    }
+
+    public boolean lastPageIsHighlighted() {
+        Boolean highlighted = true;
+        String currentPageNumberInPagination = getReusableActionsInstance().getElementText(currentPageNumberHighlighted);
+        elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
+        int page1 = elementName.size();
+        String pageSelected = elementName.get(page1 - 1).getText();
+        if (!currentPageNumberInPagination.trim().equals(pageSelected.trim())) {
+            highlighted = false;
+        }
+        return highlighted;
+    }
+
+    public void clickLastBackwardArrow() {
+        getReusableActionsInstance().executeJavaScriptClick(lastBackwardArrowKey);
+    }
 }
+
 
 

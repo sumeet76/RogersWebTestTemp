@@ -13,18 +13,19 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * This class contains the test method to validate the current page context validation for search
+ * This class contains the test method to validate the changing page size validation for search
  *
  * @author naina.agarwal
  *
  * Test steps:
  *
  *1. Search for a term and scroll down to pagination component
- *2. Select page number 2
- *3. Select any page no. visible .
- *
+ *2. Click on the forward arrow key at the right end of the page numbers, Tester should be directed to page number 2 (if page 1 was selected)
+ *3. Click on the back arrow key at the left end of the page numbers, Tester should be directed back to page number 1
+ *4. Select the forward arrow key (at the extreme right end) of the pagination component ,Tester should land on the last page directly
+ *   Select the backward arrow key (at the extreme left end) of the pagination component,Tester should land on the first page directly
  **/
-public class RogersSearch_CBS_Pagination_1759_Current_Page_Context_Validation extends BaseTestClass {
+public class RogersSearch_CBS_Pagination_1770_Jumping_to_previous_next_page extends BaseTestClass {
 
     @DataProvider(name = "FilterData", parallel = false)
     public Object[] testData() throws IOException {
@@ -43,6 +44,8 @@ public class RogersSearch_CBS_Pagination_1759_Current_Page_Context_Validation ex
     {
         String url;
         int pageNumber;
+        String message=null;
+        List<WebElement> resultLinks;
         getDriver().get(System.getProperty("SearchUrl"));
         reporter.reportLogWithScreenshot("Search URL is launched");
         getRogersSearchPage().waitTime();
@@ -53,20 +56,17 @@ public class RogersSearch_CBS_Pagination_1759_Current_Page_Context_Validation ex
         getRogersSearchPage().clickSubmitSearchIcon();
         getRogersSearchPage().waitTime();
         reporter.reportLogPass(getRogersSearchPage().getSearchResults() + " are displayed");
-        reporter.softAssert(getRogersSearchPage().isFirstPageNumberHighlighted(),"First page is highlighted under pagination", "First page is not highlighted under pagination");
-        getRogersSearchPage().selectPageTwo();
-        getRogersSearchPage().isPageLoaded();
-        reporter.reportLogWithScreenshot("Page 2 is clicked from the below Pagination");
+        message =getRogersSearchPage().clickFirstForwardArrow();
+        reporter.reportLogPassWithScreenshot(message);
         reporter.softAssert(getRogersSearchPage().isSecondPageNumberHighlighted(),"Second page is highlighted under pagination", "Second page is not highlighted under pagination");
-        url = getDriver().getCurrentUrl();
-        reporter.softAssert(getRogersSearchPage().validatePageNumberInURL(url),"The page info in the URL matches the page number selected at the bottom pagination", "The page info in the URL does not match with the page number selected at the bottom pagination");
-        reporter.softAssert(getRogersSearchPage().validateSearchResultNumberAreInSyncWithPagination(), "The search result number at the top are displayed based on page number selected", "The search result number at the top are not displayed based on page number selected");
-        pageNumber = getRogersSearchPage().clickOnRandomPageNumber();
-        reporter.reportLogPassWithScreenshot("A random page number " + pageNumber+ " in the pagination component is clicked");
-        url = getDriver().getCurrentUrl();
-        reporter.softAssert(getRogersSearchPage().validatePageNumberInURL(url),"The page info in the URL matches the page number selected at the bottom pagination", "The page info in the URL does not match with the page number selected at the bottom pagination");
-        reporter.softAssert(getRogersSearchPage().validateSearchResultNumberAreInSyncWithPagination(), "The search result number at the top are displayed based on page number selected", "The search result number at the top are not displayed based on page number selected");
-
+        reporter.softAssert(getRogersSearchPage().clickFirstBackwardArrow(),"Clicked on backward arrow key","Unable to click on backward arrow key");
+        reporter.softAssert(getRogersSearchPage().isFirstPageNumberHighlighted(),"First page is highlighted under pagination", "First page is not highlighted under pagination");
+        reporter.softAssert(getRogersSearchPage().clickLastForwardArrow(),"Clicked on the last forward arrow key", "Unable to click on the last forward arrow key");
+        reporter.softAssert(getRogersSearchPage().lastPageIsHighlighted(),"Last page is highlighted", "Last page is not highlighted");
+        getRogersSearchPage().isPageLoaded();
+        getRogersSearchPage().clickLastBackwardArrow();
+        reporter.reportLogWithScreenshot("User has clicked on Last Backward Arrow");
+        reporter.softAssert(getRogersSearchPage().isFirstPageNumberHighlighted(),"First page is highlighted under pagination", "First page is not highlighted under pagination");
     }
 
     @BeforeMethod(alwaysRun = true)
