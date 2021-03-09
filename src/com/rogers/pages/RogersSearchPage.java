@@ -1525,28 +1525,30 @@ public class RogersSearchPage extends BasePageClass {
         return message;
     }
 
-    public boolean clickFirstBackwardArrow() {
-        boolean page = true;
+    public String clickFirstBackwardArrow() {
+        String message = null;
         elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
         int numberOfPages = elementName.size();
         if (numberOfPages > 1) {
             getReusableActionsInstance().executeJavaScriptClick(firstBackwardArrowKey);
+            message = "Clicked on backward arrow key";
         } else {
-            page = false;
+            message = "Cannot click on backward arraw key because available page is 1";
         }
-        return page;
+        return message;
     }
 
-    public boolean clickLastForwardArrow() {
-        boolean page = true;
+    public String clickLastForwardArrow() {
+        String message = null;
         elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
         int numberOfPages = elementName.size();
         if (numberOfPages > 1) {
             getReusableActionsInstance().executeJavaScriptClick(lastForwardArrowKey);
+            message = "Clicked on Last Forward arrow key";
         } else {
-            page = false;
+            message = "Cannot click on last forward arrow key because available page is 1";
         }
-        return page;
+        return message;
     }
 
     public boolean lastPageIsHighlighted() {
@@ -1561,8 +1563,18 @@ public class RogersSearchPage extends BasePageClass {
         return highlighted;
     }
 
-    public void clickLastBackwardArrow() {
-        getReusableActionsInstance().executeJavaScriptClick(lastBackwardArrowKey);
+    public String clickLastBackwardArrow() {
+        String message = null;
+        elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
+        int numberOfPages = elementName.size();
+        if (numberOfPages > 1) {
+            getReusableActionsInstance().executeJavaScriptClick(lastBackwardArrowKey);
+            message = "Clicked on Last Backward arrow key";
+        } else {
+            message = "Cannot click on last Backward arrow key because available page is 1";
+        }
+        return message;
+
     }
 
     public String updateURLWithValidData()

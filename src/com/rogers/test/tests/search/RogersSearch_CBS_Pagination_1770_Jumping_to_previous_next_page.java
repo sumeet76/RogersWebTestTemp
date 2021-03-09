@@ -60,13 +60,15 @@ public class RogersSearch_CBS_Pagination_1770_Jumping_to_previous_next_page exte
         reporter.reportLogPassWithScreenshot(message);
         message =getRogersSearchPage().isSecondPageNumberHighlighted();
         reporter.reportLogPassWithScreenshot(message);
-        reporter.softAssert(getRogersSearchPage().clickFirstBackwardArrow(),"Clicked on backward arrow key","Unable to click on backward arrow key");
+        message =getRogersSearchPage().clickFirstBackwardArrow();
+        reporter.reportLogPassWithScreenshot(message);
         reporter.softAssert(getRogersSearchPage().isFirstPageNumberHighlighted(),"First page is highlighted under pagination", "First page is not highlighted under pagination");
-        reporter.softAssert(getRogersSearchPage().clickLastForwardArrow(),"Clicked on the last forward arrow key", "Unable to click on the last forward arrow key");
+        message =getRogersSearchPage().clickLastForwardArrow();
+        reporter.reportLogPassWithScreenshot(message);
         reporter.softAssert(getRogersSearchPage().lastPageIsHighlighted(),"Last page is highlighted", "Last page is not highlighted");
         getRogersSearchPage().isPageLoaded();
-        getRogersSearchPage().clickLastBackwardArrow();
-        reporter.reportLogWithScreenshot("User has clicked on Last Backward Arrow");
+        message =getRogersSearchPage().clickLastBackwardArrow();
+        reporter.reportLogPassWithScreenshot(message);
         reporter.softAssert(getRogersSearchPage().isFirstPageNumberHighlighted(),"First page is highlighted under pagination", "First page is not highlighted under pagination");
     }
 
