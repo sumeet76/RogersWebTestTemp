@@ -43,6 +43,7 @@ public class RogersSearch_CBS_Pagination_1759_Current_Page_Context_Validation ex
     {
         String url;
         int pageNumber;
+        String message=null;
         getDriver().get(System.getProperty("SearchUrl"));
         reporter.reportLogWithScreenshot("Search URL is launched");
         getRogersSearchPage().waitTime();
@@ -54,17 +55,20 @@ public class RogersSearch_CBS_Pagination_1759_Current_Page_Context_Validation ex
         getRogersSearchPage().waitTime();
         reporter.reportLogPass(getRogersSearchPage().getSearchResults() + " are displayed");
         reporter.softAssert(getRogersSearchPage().isFirstPageNumberHighlighted(),"First page is highlighted under pagination", "First page is not highlighted under pagination");
-        getRogersSearchPage().selectPageTwo();
+        message =getRogersSearchPage().selectPageTwo();
         getRogersSearchPage().isPageLoaded();
-        reporter.reportLogWithScreenshot("Page 2 is clicked from the below Pagination");
-        reporter.softAssert(getRogersSearchPage().isSecondPageNumberHighlighted(),"Second page is highlighted under pagination", "Second page is not highlighted under pagination");
+        reporter.reportLogPassWithScreenshot(message);
+        message =getRogersSearchPage().isSecondPageNumberHighlighted();
+        reporter.reportLogPassWithScreenshot(message);
         url = getDriver().getCurrentUrl();
-        reporter.softAssert(getRogersSearchPage().validatePageNumberInURL(url),"The page info in the URL matches the page number selected at the bottom pagination", "The page info in the URL does not match with the page number selected at the bottom pagination");
+        message =getRogersSearchPage().validatePageNumberInURL(url);
+        reporter.reportLogPassWithScreenshot(message);
         reporter.softAssert(getRogersSearchPage().validateSearchResultNumberAreInSyncWithPagination(), "The search result number at the top are displayed based on page number selected", "The search result number at the top are not displayed based on page number selected");
         pageNumber = getRogersSearchPage().clickOnRandomPageNumber();
         reporter.reportLogPassWithScreenshot("A random page number " + pageNumber+ " in the pagination component is clicked");
         url = getDriver().getCurrentUrl();
-        reporter.softAssert(getRogersSearchPage().validatePageNumberInURL(url),"The page info in the URL matches the page number selected at the bottom pagination", "The page info in the URL does not match with the page number selected at the bottom pagination");
+        message =getRogersSearchPage().validatePageNumberInURL(url);
+        reporter.reportLogPassWithScreenshot(message);
         reporter.softAssert(getRogersSearchPage().validateSearchResultNumberAreInSyncWithPagination(), "The search result number at the top are displayed based on page number selected", "The search result number at the top are not displayed based on page number selected");
 
     }

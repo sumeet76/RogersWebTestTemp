@@ -53,17 +53,19 @@ public class RogersSearch_CBS_Pagination_1785_Changing_the_pagination_values_via
         getRogersSearchPage().clickSubmitSearchIcon();
         getRogersSearchPage().waitTime();
         reporter.reportLogPass(getRogersSearchPage().getSearchResults() + " are displayed");
-        message =getRogersSearchPage().clickFirstForwardArrow();
-        reporter.reportLogPassWithScreenshot(message);
-        reporter.softAssert(getRogersSearchPage().isSecondPageNumberHighlighted(),"Second page is highlighted under pagination", "Second page is not highlighted under pagination");
-        reporter.softAssert(getRogersSearchPage().clickFirstBackwardArrow(),"Clicked on backward arrow key","Unable to click on backward arrow key");
-        reporter.softAssert(getRogersSearchPage().isFirstPageNumberHighlighted(),"First page is highlighted under pagination", "First page is not highlighted under pagination");
-        reporter.softAssert(getRogersSearchPage().clickLastForwardArrow(),"Clicked on the last forward arrow key", "Unable to click on the last forward arrow key");
-        reporter.softAssert(getRogersSearchPage().lastPageIsHighlighted(),"Last page is highlighted", "Last page is not highlighted");
+        String newURL=getRogersSearchPage().updateURLWithValidData();
+        reporter.reportLogPassWithScreenshot("URL is updated with valid page number and page size, new URL is: " +newURL);
         getRogersSearchPage().isPageLoaded();
-        getRogersSearchPage().clickLastBackwardArrow();
-        reporter.reportLogWithScreenshot("User has clicked on Last Backward Arrow");
+        message =getRogersSearchPage().validatePageNumberInURL(newURL);
+        reporter.reportLogPassWithScreenshot(message);
+        getRogersSearchPage().isPageLoaded();
+        reporter.softAssert(getRogersSearchPage().validatePageSizeInURL(newURL),"The paze size matches with the URL", "The page size does not match with the URL");
+        String newInvalidURL=getRogersSearchPage().updateURLWithInvalidData();
+        reporter.reportLogPassWithScreenshot("URL is updated with invalid page number and page size");
+        getRogersSearchPage().isPageLoaded();
         reporter.softAssert(getRogersSearchPage().isFirstPageNumberHighlighted(),"First page is highlighted under pagination", "First page is not highlighted under pagination");
+        reporter.softAssert(getRogersSearchPage().validateDefaultResultDropdownValue(),"Default page is displayed as expected","Default page size is not displayed as expected");
+
     }
 
     @BeforeMethod(alwaysRun = true)

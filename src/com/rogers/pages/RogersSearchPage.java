@@ -129,6 +129,8 @@ public class RogersSearchPage extends BasePageClass {
     @FindBy(xpath = "//span[@class='ds-icon rds-icon-first']")
     WebElement lastBackwardArrowKey;
 
+    Boolean isPagePresent=true;
+
 
     /**
      * check if expected filters displayed or not
@@ -1271,9 +1273,20 @@ public class RogersSearchPage extends BasePageClass {
      *
      * @author naina.agarwal
      */
-    public void selectPageTwo() {
-        getReusableActionsInstance().scrollToElement(page2);
-        getReusableActionsInstance().clickWhenReady(page2);
+    public String selectPageTwo() {
+
+        String message =null;
+        isPagePresent = getDriver().findElements(numberOfPagesDisplayedAtBottom).size() > 1;
+        if(isPagePresent) {
+            getReusableActionsInstance().scrollToElement(page2);
+            getReusableActionsInstance().clickWhenReady(page2);
+            message ="Page 2 is present and it is clicked";
+        }
+        else
+        {
+            message = "Cannot select page 2 as only one page exist";
+        }
+        return message;
     }
 
     /**
@@ -1281,8 +1294,19 @@ public class RogersSearchPage extends BasePageClass {
      *
      * @author naina.agarwal
      */
-    public boolean isSecondPageNumberHighlighted() {
-        return getReusableActionsInstance().isElementVisible(secondPagePaginationHighlighted);
+    public String isSecondPageNumberHighlighted() {
+
+        String message =null;
+        isPagePresent = getDriver().findElements(numberOfPagesDisplayedAtBottom).size() > 1;
+        if(isPagePresent) {
+            getReusableActionsInstance().isElementVisible(secondPagePaginationHighlighted);
+            message ="Page 2 is highlighted";
+        }
+        else
+        {
+            message = "Page 2 is not highlighted";
+        }
+        return message;
     }
 
     /**
@@ -1291,10 +1315,33 @@ public class RogersSearchPage extends BasePageClass {
      *
      * @author naina.agarwal
      */
-    public boolean validatePageNumberInURL(String url) {
-        Boolean urlFlag = true;
+    public String validatePageNumberInURL(String url) {
+        String message =null;
         String currentPageNumberInPagination = getReusableActionsInstance().getElementText(currentPageNumberHighlighted);
-        if (!url.endsWith("=" + currentPageNumberInPagination)) {
+        isPagePresent = getDriver().findElements(numberOfPagesDisplayedAtBottom).size() > 1;
+        if (isPagePresent) {
+            if (!url.endsWith("=" + currentPageNumberInPagination)) {
+                message = "Page number on Pagination and URL does not match";
+            }
+            else
+            {
+                message = "Page number on Pagination and URL match";
+            }
+        }
+        else {
+            message = "There is only one page";
+        }
+        return message;
+    }
+    public boolean validatePageSizeInURL(String url) {
+        Boolean urlFlag = true;
+        int list = 0;
+        Select dropdown = new Select(resultPerPageDropdown);
+        //Get all options
+        WebElement option = dropdown.getFirstSelectedOption();
+        String defaultItem = option.getText().trim();
+        String pageSize="psize="+defaultItem;
+        if (!url.contains(pageSize)) {
             urlFlag = false;
         }
         return urlFlag;
@@ -1314,6 +1361,7 @@ public class RogersSearchPage extends BasePageClass {
 
     /**
      * Clicking on a random page number out of the total pages in the pagination component
+     * and this method will return a random page number of out of all pages
      *
      * @author naina.agarwal
      */
@@ -1383,6 +1431,20 @@ public class RogersSearchPage extends BasePageClass {
         }
         return dd.get(list).getText();
 
+    }
+
+    public boolean validateDefaultResultDropdownValue()
+    {
+        boolean pageSizeDefaultValue=true;
+        Select dropdown = new Select(resultPerPageDropdown);
+        //Get all options
+        WebElement option = dropdown.getFirstSelectedOption();
+        String defaultItem = option.getText().trim();
+        if (!defaultItem.equals("10"))
+        {
+            pageSizeDefaultValue=false;
+        }
+        return pageSizeDefaultValue;
     }
 
     /**
@@ -1501,6 +1563,36 @@ public class RogersSearchPage extends BasePageClass {
 
     public void clickLastBackwardArrow() {
         getReusableActionsInstance().executeJavaScriptClick(lastBackwardArrowKey);
+    }
+
+    public String updateURLWithValidData()
+    {
+        String url1 =getDriver().getCurrentUrl();
+        int index=0;
+        int validPageNumber = clickOnRandomPageNumber();
+        Select dropdown = new Select(resultPerPageDropdown);
+        List<WebElement> list = dropdown.getOptions();
+        String firstOption=list.get(0).getText().trim();
+        System.out.println("first option is " + firstOption);
+        //String validPazeSize = selectRandomValueFromResultPerPageDropdown().trim();
+        int indexOfPsize=url1.indexOf("psize");
+        String firstHalfURL=url1.substring(0,indexOfPsize);
+        String secondHalfURL=url1.substring(indexOfPsize);
+        secondHalfURL=secondHalfURL.replace(secondHalfURL,"psize=" +firstOption + "&pg=" +validPageNumber);
+        String updatedURL=firstHalfURL.concat(secondHalfURL);
+        getDriver().get(updatedURL);
+        return updatedURL;
+    }
+    public String updateURLWithInvalidData()
+    {
+        String url1 =getDriver().getCurrentUrl();
+        int indexOfPsize=url1.indexOf("psize");
+        String firstHalfURL=url1.substring(0,indexOfPsize);
+        String secondHalfURL=url1.substring(indexOfPsize);
+        secondHalfURL=secondHalfURL.replace(secondHalfURL,"psize=0&pg=0");
+        String updatedURL=firstHalfURL.concat(secondHalfURL);
+        getDriver().get(updatedURL);
+        return updatedURL;
     }
 }
 
