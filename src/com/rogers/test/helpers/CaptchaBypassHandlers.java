@@ -74,6 +74,12 @@ public class CaptchaBypassHandlers {
 		
 		
 		Cookie captchBypass = new Cookie ("temp_token_r",CookieFetcher.setAndFetchCookie(strCookieUserName, strCookieUserPassword, strUrl));
+		//Add wait time for the add cookie to work on Firefox.
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		getDriver().manage().addCookie(captchBypass);
 	}
 
