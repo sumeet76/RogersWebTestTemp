@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class RogersSS_TC_017_WirelessPostpaidVerifyPaymentHistoryWithPaymentTest extends BaseTestClass {
+public class RogersSS_TC_017_116_WirelessPostpaidVerifyPaymentHistoryWithPaymentTest extends BaseTestClass {
     @DataProvider(name = "data-provider")
     public Object[][] dataProviderMethod() {
         return new Object[][]{

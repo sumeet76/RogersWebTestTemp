@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 
 
 
-public class RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaymentMethodPACToCC_EN_AUTO extends BaseTestClass {	
+public class RogersSS_TC_019_115_Wireless_Postpaid_OverviewBillInfoChangePaymentMethodPACToCC_EN_AUTO extends BaseTestClass {	
     
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
