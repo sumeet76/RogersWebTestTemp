@@ -116,7 +116,9 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Success! Your payment method has been changed.')]/ancestor::p")
 	WebElement msgChangePaymentSuccess;
 
-	@FindBy(id = "sema")
+	@FindAll({
+	@FindBy(id = "sema"),
+	@FindBy(id="//ss-semafone-credit-card/iframe")})
 	WebElement fraSemaphone;
 
 	@FindBy(xpath = "//input[@id='pan']")
@@ -459,7 +461,11 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 
 		//clkUseCCForAutomaticPayments();
 
-		setCreditCardNumber(strCreditCardNumber);
+		//setCreditCardNumber(strCreditCardNumber);
+		getReusableActionsInstance().waitForFrameToBeAvailableAndSwitchToIt(fraSemaphone, 30);
+		getReusableActionsInstance().getWhenReady(txtCardNumber,40).click();
+		getReusableActionsInstance().getWhenReady(txtCardNumber).sendKeys(strCreditCardNumber);
+		getDriver().switchTo().defaultContent();
 		//getReusableActionsInstance().waitForFrameToBeAvailableAndSwitchToIt(fraSemaphone, 30);
 		//getReusableActionsInstance().waitForElementVisibility(txtCardNumber, 60);
 		//getReusableActionsInstance().clickIfAvailable(txtCardNumber);
@@ -478,6 +484,9 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 		getReusableActionsInstance().clickIfAvailable(txtCVV);
 		getReusableActionsInstance().getWhenReady(txtCVV).sendKeys(strCVV);
 
+		
+		
+		
 		clkContinue();
 
 		clkContinueOnReviewPg();

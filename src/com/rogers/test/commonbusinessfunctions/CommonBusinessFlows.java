@@ -182,7 +182,10 @@ public class CommonBusinessFlows {
 	public void switchPaymentMethodTo(BaseTestClass.PaymentMethodType paymentMethodType)
 	{
 		String currentMethod =  baseTestClass.getRogersAccountOverviewPage().getCurrentAccountPaymentMethod();
-
+		if (paymentMethodType.toString().trim().contains(currentMethod.toUpperCase().trim()))
+		{			
+			return;
+		}
 		switch (paymentMethodType) {
 			case CREDIT:
 
@@ -195,6 +198,26 @@ public class CommonBusinessFlows {
 				}
 
 				baseTestClass.reporter.reportLogWithScreenshot("Rogers Change Payment Method Page");
+				baseTestClass.getRogersSecurePaymentPage().setCardNumberNew(TestDataHandler.paymentInfo.getCreditCardDetails().getNumber());
+			    String strDDMM = TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryMonth() + 
+			        			TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryYear().substring(2);
+			    baseTestClass.getRogersSecurePaymentPage().setCardExpiry(strDDMM);	       
+			    baseTestClass.getRogersSecurePaymentPage().setSecurityCode(TestDataHandler.paymentInfo.getCreditCardDetails().getCVV());
+			    baseTestClass.reporter.reportLogWithScreenshot("CC details entered");
+			    baseTestClass.getRogersChangePaymentMethodPage().clkContinueSettingCC();
+			    baseTestClass.reporter.hardAssert(baseTestClass.getRogersChangePaymentMethodPage().isReviewCCDetailsPageDisplayed(),
+						"CC Details encrypted msg displayed",
+						"CC Details encrypted msg NOT displayed");
+			    baseTestClass.reporter.reportLogWithScreenshot("CC secured details");
+				
+			    baseTestClass.getRogersChangePaymentMethodPage().clkContinueOnReviewPg();
+			    baseTestClass.reporter.hardAssert(baseTestClass.getRogersChangePaymentMethodPage().verifySuccessMessageIsDisplayed(),
+						"Set up auto payment is successful",
+						"Set up auto payment is not successful");
+			    baseTestClass.reporter.reportLogWithScreenshot("Payment complete page.");
+			    baseTestClass.getRogersChangePaymentMethodPage().clkOnDone();
+				
+				/*
 				baseTestClass.reporter.hardAssert(baseTestClass.getRogersChangePaymentMethodPage().setCreditInformation(TestDataHandler.paymentInfo.getCreditCardDetails().getNumber(),
 						TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryMonth(), TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryYear(),
 						TestDataHandler.paymentInfo.getCreditCardDetails().getCVV()),
@@ -202,6 +225,7 @@ public class CommonBusinessFlows {
 						"Set up Credit Card payment is not successful");
 				baseTestClass.reporter.reportLogWithScreenshot("Set up Credit Card payment is successful");
 				baseTestClass.getRogersChangePaymentMethodPage().clkButtonDoneChangePayment();
+				*/
 				break;
 
 			case BANK:
