@@ -16,7 +16,7 @@ public class RogersSS_TC_017_116_WirelessPostpaidVerifyPaymentHistoryWithPayment
     public Object[][] dataProviderMethod() {
         return new Object[][]{
                 new Object[]{TestDataHandler.tc1920.getUsername(), TestDataHandler.tc1920.getPassword()},
-                new Object[]{TestDataHandler.tc44DigitalTVAccount.getUsername(), TestDataHandler.tc44DigitalTVAccount.getPassword()}
+                //new Object[]{TestDataHandler.tc44DigitalTVAccount.getUsername(), TestDataHandler.tc44DigitalTVAccount.getPassword()}
         };
     }
 

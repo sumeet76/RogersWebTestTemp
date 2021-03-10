@@ -24,10 +24,18 @@ public class RogersSS_TC_111_TC_112_BnP_ValidateTheSetUpPTPflowForDelinquentCxWh
 	public void afterTest() throws InterruptedException {
 		closeSession();
 	}
-	
-	
-	@Test(groups = {"AccountOverviewSS","PTP"})
-    public void validateSignInAndAccountOverview() {
+
+    @DataProvider(name = "data-provider")
+    public Object[][] dataProviderMethod() {
+        return new Object[][]{
+                new Object[]{TestDataHandler.tc111.getUsername(), TestDataHandler.tc111.getPassword()},
+                new Object[]{TestDataHandler.tc112.getUsername(), TestDataHandler.tc111.getPassword()}
+        };
+    }
+
+
+    @Test(dataProvider = "data-provider",groups = {"AccountOverviewSS","PTP"})
+    public void validateSignInAndAccountOverview(String[] dataRow) {
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
     	getRogersHomePage().clkSignIn();
