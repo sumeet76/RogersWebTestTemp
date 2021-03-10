@@ -5,6 +5,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
+import utils.DigiAutoCustomException;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -1267,7 +1268,17 @@ public class RogersSearchPage extends BasePageClass {
     public boolean isFirstPageNumberHighlighted() {
         return getReusableActionsInstance().isElementVisible(firstPagePaginationHighlighted);
     }
-
+public void javascriptClickWithPerform(WebElement element)
+{
+    try {
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        js.executeScript("arguments[0].scrollIntoView();", element);
+        js.executeScript("arguments[0].click();", element);
+    }
+    catch (Exception e)
+    {
+        throw new DigiAutoCustomException(e);}
+}
     /**
      * Click on page 2 from the bottom pagination
      *
@@ -1278,8 +1289,7 @@ public class RogersSearchPage extends BasePageClass {
         String message =null;
         isPagePresent = getDriver().findElements(numberOfPagesDisplayedAtBottom).size() > 1;
         if(isPagePresent) {
-            getReusableActionsInstance().scrollToElement(page2);
-            getReusableActionsInstance().clickWhenReady(page2);
+            javascriptClickWithPerform(page2);
             message ="Page 2 is present and it is clicked";
         }
         else
@@ -1333,6 +1343,11 @@ public class RogersSearchPage extends BasePageClass {
         }
         return message;
     }
+    /**
+     * This method will check if page size selected mataches with the URL
+     *
+     * @author naina.agarwal
+     */
     public boolean validatePageSizeInURL(String url) {
         Boolean urlFlag = true;
         int list = 0;
@@ -1432,7 +1447,11 @@ public class RogersSearchPage extends BasePageClass {
         return dd.get(list).getText();
 
     }
-
+    /**
+     * This method will check if default value of page size dropdown is 10
+     *
+     * @author naina.agarwal
+     */
     public boolean validateDefaultResultDropdownValue()
     {
         boolean pageSizeDefaultValue=true;
@@ -1510,7 +1529,11 @@ public class RogersSearchPage extends BasePageClass {
         }
         return verifyResult;
     }
-
+    /**
+     * This method will click on the first forward arrow key if more than one page is present
+     *
+     * @author naina.agarwal
+     */
     public String clickFirstForwardArrow() {
 
         String message = null;
@@ -1524,7 +1547,11 @@ public class RogersSearchPage extends BasePageClass {
         }
         return message;
     }
-
+    /**
+     * This method will click on the first backward arrow key if more than one page is present
+     *
+     * @author naina.agarwal
+     */
     public String clickFirstBackwardArrow() {
         String message = null;
         elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
@@ -1537,7 +1564,11 @@ public class RogersSearchPage extends BasePageClass {
         }
         return message;
     }
-
+    /**
+     * This method will click on the last forward arrow key if more than one page is present
+     *
+     * @author naina.agarwal
+     */
     public String clickLastForwardArrow() {
         String message = null;
         elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
@@ -1551,6 +1582,11 @@ public class RogersSearchPage extends BasePageClass {
         return message;
     }
 
+    /**
+     * This method will check if last page is highlighted
+     *
+     * @author naina.agarwal
+     */
     public boolean lastPageIsHighlighted() {
         Boolean highlighted = true;
         String currentPageNumberInPagination = getReusableActionsInstance().getElementText(currentPageNumberHighlighted);
@@ -1563,6 +1599,11 @@ public class RogersSearchPage extends BasePageClass {
         return highlighted;
     }
 
+    /**
+     * This method will click on the last backward arrow if more than one page is present
+     *
+     * @author naina.agarwal
+     */
     public String clickLastBackwardArrow() {
         String message = null;
         elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
@@ -1576,7 +1617,11 @@ public class RogersSearchPage extends BasePageClass {
         return message;
 
     }
-
+    /**
+     * This method will send a valid page number and page size to the url
+     *
+     * @author naina.agarwal
+     */
     public String updateURLWithValidData()
     {
         String url1 =getDriver().getCurrentUrl();
@@ -1595,6 +1640,11 @@ public class RogersSearchPage extends BasePageClass {
         getDriver().get(updatedURL);
         return updatedURL;
     }
+    /**
+     * This method will send a invalid page number and page size as 0 to the url
+     *
+     * @author naina.agarwal
+     */
     public String updateURLWithInvalidData()
     {
         String url1 =getDriver().getCurrentUrl();
