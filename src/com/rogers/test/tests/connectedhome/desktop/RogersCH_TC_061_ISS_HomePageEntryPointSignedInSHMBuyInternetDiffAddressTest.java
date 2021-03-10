@@ -36,7 +36,7 @@ public class RogersCH_TC_061_ISS_HomePageEntryPointSignedInSHMBuyInternetDiffAdd
 
     @Test(groups = {"RegressionCH","SmartStreamCH"})
     public void checkIssHomePageEntryPointSignedInSHMBuyInternetDiffAddressTest() {
-        getDriver().navigate().to(TestDataHandler.rogersConfig.getRogersURL()+"/web/consumer/internet/streaming");
+        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();

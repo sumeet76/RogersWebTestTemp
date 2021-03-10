@@ -35,7 +35,7 @@ public class RogersCH_TC_066_Regression_SAI_NAC_AnonymousCxentersInternetShopPag
 
     @Test(groups = {"RegressionCH","SmartStreamCH"})
     public void checkSaiTupeloBuyflowAddAdditionalSTB() {
-        getDriver().navigate().to(TestDataHandler.rogersConfig.getRogersURL()+"/web/consumer/internet/streaming");
+        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
         String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
