@@ -8,10 +8,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
 public class RogersAccountOverviewPage extends BasePageClass {
+
+
+
 
 	public RogersAccountOverviewPage(WebDriver driver) {
 		super(driver);
@@ -447,6 +451,38 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement popLoader;
+
+	// **********  PTP ***************** //
+
+	@FindBy(xpath = "//rss-promise-to-pay-alert/dsa-alert")
+	WebElement divPTP;
+
+	@FindBy(xpath = "//rss-promise-to-pay-alert/dsa-alert//a")
+	WebElement lnkSetUpPromiseToPay;
+
+	@FindBy(xpath = "//select[@formcontrolname='paymentMethod']")
+	WebElement selectPayType;
+
+	@FindBy(xpath = "//select[@formcontrolname='paymentDate']")
+	WebElement selectDate;
+
+	@FindBy(xpath = "//*[@translate='promise-to-pay.setup-ptp.setup-btn']")
+	WebElement btnSetUpPromise;
+
+	@FindBy(xpath = "//h1[@translate='promise-to-pay.header']")
+	WebElement headerSetUpPromise;
+
+	@FindBy(xpath = "//span[@translate='promise-to-pay.setup-ptp.total-balance']")
+	WebElement lblTotalBalanceToPay;
+
+	@FindBy(xpath = "//select[@formcontrolname='paymentMethod']/parent::div")
+	WebElement selectPayTypeDiv;
+
+	@FindBy(xpath = "//*[@translate='promise-to-pay.success-ptp.header']")
+	WebElement headerSetUpPromiseSuccessFul;
+
+	@FindBy(xpath = "//*[@translate='promise-to-pay.success-ptp.done-btn']")
+	WebElement btnDoneAfterSetUpPromiseSuccessFul;
 
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
@@ -1829,4 +1865,65 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		public void clkChangePaymentMethod() {
 			getReusableActionsInstance().getWhenReady(lnkChangePaymentMethodQuickLin).click();
 		}
+
+    public boolean verifyPTPWidgetIsDisplayed() {
+			return getReusableActionsInstance().isElementVisible(divPTP);
+    }
+
+	/**
+	 *
+	 * @return
+	 */
+	public String selectWhenYouWillIkeToPayThePromise() {
+		Select dropdown = new Select(selectDate);
+		getReusableActionsInstance().selectWhenReady(selectDate, dropdown.getOptions().size()-1);
+		getReusableActionsInstance().staticWait(1000);
+		return getReusableActionsInstance().getSelectedValue(selectDate);
+	}
+
+	public void clkSetUpPromise() {
+
+		getReusableActionsInstance().getWhenReady(btnSetUpPromise).click();
+	}
+
+	public boolean verifySetUpPromiseToPayPageIsLoaded() {
+
+
+		return (getReusableActionsInstance().isElementVisible(headerSetUpPromise) &&
+				getReusableActionsInstance().isElementVisible(lblTotalBalanceToPay));
+	}
+
+	public boolean verifyPromiseToSetUpSuccessFul() {
+
+		return getReusableActionsInstance().isElementVisible(headerSetUpPromiseSuccessFul,30);
+		//&& reusableActions.getWhenReady(By.xpath("//*[@translate='promise-to-pay.success-ptp.th-1']/parent::div/following-sibling::div")).getText().trim().replace("$", "").replaceAll(",", ".").contains(strBalanceValue.replaceAll(",", "."))
+		//&& reusableActions.getWhenReady(By.xpath("//*[@translate='promise-to-pay.success-ptp.th-2']/parent::div/following-sibling::div")).getText().trim().contains(strDate));
+	}
+
+	public void clkDoneSetUpPromiseAfterSuccess() {
+
+		getReusableActionsInstance().getWhenReady(btnDoneAfterSetUpPromiseSuccessFul).click();
+	}
+
+	public String getBalanceValueForPromise() {
+
+		return getReusableActionsInstance().getWhenReady(By.xpath("//*[@class='ds-price']")).getAttribute("aria-label").trim().replace("$", "");
+	}
+
+	public void clkSetUpAPromiseToPay() {
+		getReusableActionsInstance().getWhenReady(lnkSetUpPromiseToPay).click();
+	}
+
+	public void selectHowWouldYouLikeToPromiseToPay(String strPaymentType) {
+		if(strPaymentType.contains("Credit Card"))
+		{
+			getReusableActionsInstance().selectWhenReady(selectPayType, 0);
+		}else
+		{
+			getReusableActionsInstance().selectWhenReady(selectPayType, 1);
+		}
+
+	}
+
+
 }
