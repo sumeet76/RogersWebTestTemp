@@ -630,11 +630,14 @@ public class BaseTestClass {
 			
 		case "redesignrogers":	
 		case "buyflowsoneview": setImplicitWait(getDriver(), 10);getDriver().get(strUrl);
-			break; 
+			break;
 			
 		case "search": //getDriver().get(strUrl);
+//			setImplicitWait(getDriver(), 10);
+//			getDriver().get(strUrl+"?setLanguage="+ language);
+//			captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
 			setImplicitWait(getDriver(), 1);
-		break;
+		//break;
 		
  		default :
 			setImplicitWait(getDriver(), 10);

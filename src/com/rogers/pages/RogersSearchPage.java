@@ -1656,6 +1656,18 @@ public void javascriptClickWithPerform(WebElement element)
         getDriver().get(updatedURL);
         return updatedURL;
     }
+    public void openURLInNewTab(String url)
+    {
+        //Open new tab
+        JavascriptExecutor jse = (JavascriptExecutor)getDriver();
+        jse.executeScript("window.open()");
+
+        //Switch to new tab
+        ArrayList<String> tabs = new ArrayList<String> (getDriver().getWindowHandles());
+        getDriver().switchTo().window(tabs.get(1));
+        getDriver().get(url);
+
+    }
 }
 
 
