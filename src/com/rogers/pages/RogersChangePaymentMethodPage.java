@@ -368,7 +368,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifySuccessMessageIsDisplayed() {
-		return getReusableActionsInstance().isElementVisible(lblYouAutomaticPaymentWillStart,60);
+		return getReusableActionsInstance().isElementVisible(lblYouAutomaticPaymentWillStart,120);
 	}
 	
 	/**

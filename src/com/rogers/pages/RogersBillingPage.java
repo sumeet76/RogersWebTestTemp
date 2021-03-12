@@ -2,6 +2,7 @@ package com.rogers.pages;
 
 
 import com.rogers.pages.base.BasePageClass;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -379,11 +380,10 @@ public class RogersBillingPage extends BasePageClass {
 	 * @author Rohit.Kumar
 	 */
 	public void clkChangePaymentMethodLink() {
-		//getReusableActionsInstance().waitForElementVisibility(lnkChangePaymentMethod, 60);
-		//getReusableActionsInstance().executeJavaScriptClick(lnkChangePaymentMethod);
-
 		getReusableActionsInstance().waitForElementTobeClickable(lnkChangePaymentMethod, 60);
-		getReusableActionsInstance().clickWhenReady(lnkChangePaymentMethod);
+		getReusableActionsInstance().getWhenReady(lnkChangePaymentMethod).click();
+
+
 	}
 
 

@@ -453,6 +453,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy (xpath = "//span[contains(text(),' bank account ending') or contains(text(),' compte bancaire se terminant par')]")
 	WebElement lblBankPaymentMethodLabel;
 
+	@FindBy (xpath = "//div[@class='ds-price']")
+	WebElement lblTotalBalance;
+
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
 	 * @return true if more than one ban present else false
@@ -1809,6 +1812,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		 * 
 		 */
 		public void clkSetUpAutoPaymentQuickLink() {
+			getReusableActionsInstance().waitForElementTobeClickable(lnkSetUpAutoPayment, 60);
 			getReusableActionsInstance().getWhenReady(lnkSetUpAutoPayment).click();
 		}
 		
@@ -1864,6 +1868,23 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			return "Bank";
 		} else {
 			return "Credit";
+		}
+
+	}
+
+	/**
+	 * Verifies if the balance label is displayed correctly
+	 * @return true if the balance label is present ; else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean verifyBillingWidgetBalance() {
+		String totalBalanceString = lblTotalBalance.getAttribute("aria-label").replaceAll("[^0-9\\.,$-]","");;
+
+		if(totalBalanceString.startsWith("$") || totalBalanceString.endsWith("$")){
+			return true;
+		} else {
+
+			return false;
 		}
 
 	}

@@ -44,9 +44,9 @@ public class RogersSS_TC_113_ValidateTheChangCreditCardToBank extends BaseTestCl
         tryLogin(strUsername, strPassword);
 
         reporter.reportLogWithScreenshot("Account Overview page");
-        getCommonBusinessFlows().switchPaymentMethodTo(PaymentMethodType.BANK);
-        reporter.reportLogWithScreenshot("Account Overview page");
         getCommonBusinessFlows().switchPaymentMethodTo(PaymentMethodType.CREDIT);
+        reporter.reportLogWithScreenshot("Account Overview page");
+        getCommonBusinessFlows().switchPaymentMethodTo(PaymentMethodType.BANK);
 
     }
 }
