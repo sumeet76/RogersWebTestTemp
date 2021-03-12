@@ -53,7 +53,7 @@ public class RogersCH_TC_012_IginteTV_TVPackagesNewfoundlandFootprintTest extend
 	    	reporter.reportLogWithScreenshot("Launched the Account Page");
 	        getRogersSolarisTVDashboardPage().clkTVBadge();
 	        reporter.reportLogWithScreenshot("Launched the TV dash board");
-	        getRogersSolarisTVDashboardPage().clkChangeTVPackage();
+	        getRogersSolarisTVDashboardPage().clkChangeTVPackageLetency();
 	        reporter.reportLogWithScreenshot("Launched the TV packages page");
 	        //reporter.softAssert(getRogersSolarisTVDashboardPage().verifyIgniteTVStarterPackage(),"Ignite TV Starter Package is available for the Ontario footprint","Ignite TV Starter Package is not available for the Ontario footprint");
 	        getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.accountDetails.getUpgradePlanEn(),TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.accountDetails.getUpgradePlanFr());
