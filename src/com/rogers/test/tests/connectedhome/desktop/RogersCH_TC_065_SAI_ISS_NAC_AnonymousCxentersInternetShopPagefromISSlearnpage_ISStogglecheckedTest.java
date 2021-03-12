@@ -31,7 +31,7 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_066_Regression_SAI_NAC_AnonymousCxentersInternetShopPage_ISStogglecheckedOffTest extends BaseTestClass {
+public class RogersCH_TC_065_SAI_ISS_NAC_AnonymousCxentersInternetShopPagefromISSlearnpage_ISStogglecheckedTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","SmartStreamCH"})
     public void checkSaiTupeloBuyflowAddAdditionalSTB() {
