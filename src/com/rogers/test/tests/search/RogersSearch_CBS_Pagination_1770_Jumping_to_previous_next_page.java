@@ -46,7 +46,6 @@ public class RogersSearch_CBS_Pagination_1770_Jumping_to_previous_next_page exte
         int pageNumber;
         String message=null;
         List<WebElement> resultLinks;
-        getDriver().get(System.getProperty("SearchUrl"));
         reporter.reportLogWithScreenshot("Search URL is launched");
         getRogersSearchPage().waitTime();
         reporter.reportLogWithScreenshot("Page is loaded");
@@ -76,7 +75,7 @@ public class RogersSearch_CBS_Pagination_1770_Jumping_to_previous_next_page exte
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
         xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-        startSession(System.getProperty("SearchUrl") + "wireless", strBrowser, strLanguage, RogersEnums.GroupName.search, method);
+        startSession(System.getProperty("SearchUrl") , strBrowser, strLanguage, RogersEnums.GroupName.search, method);
     }
 
     @AfterMethod(alwaysRun = true)

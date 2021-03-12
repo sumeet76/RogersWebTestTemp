@@ -45,7 +45,6 @@ public class RogersSearch_CBS_Pagination_1769_Changing_Page_Size_Validation exte
         String url;
         int pageNumber;
         List<WebElement> resultLinks;
-        getDriver().get(System.getProperty("SearchUrl"));
         reporter.reportLogWithScreenshot("Search URL is launched");
         getRogersSearchPage().waitTime();
         reporter.reportLogWithScreenshot("Page is loaded");

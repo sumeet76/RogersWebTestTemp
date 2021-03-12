@@ -1656,17 +1656,29 @@ public void javascriptClickWithPerform(WebElement element)
         getDriver().get(updatedURL);
         return updatedURL;
     }
+    /**
+     * This method will open a new tab in the browser with the current tab URL
+     *
+     * @author naina.agarwal
+     */
     public void openURLInNewTab(String url)
     {
         //Open new tab
-        JavascriptExecutor jse = (JavascriptExecutor)getDriver();
-        jse.executeScript("window.open()");
-
-        //Switch to new tab
-        ArrayList<String> tabs = new ArrayList<String> (getDriver().getWindowHandles());
-        getDriver().switchTo().window(tabs.get(1));
+        ((JavascriptExecutor)getDriver()).executeScript("window.open('about:blank','_blank');");
+        getReusableActionsInstance().switchToNewWindow();
         getDriver().get(url);
-
+    }
+    /**
+     * This method will refresh the current page 5 times
+     *
+     * @author naina.agarwal
+     */
+    public void refreshPage()
+    {
+        for(int i=0; i<5;i++) {
+            getDriver().navigate().refresh();
+            isPageLoaded();
+        }
     }
 }
 

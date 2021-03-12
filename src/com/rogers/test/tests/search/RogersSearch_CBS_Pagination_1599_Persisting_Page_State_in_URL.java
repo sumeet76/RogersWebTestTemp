@@ -43,9 +43,8 @@ public class RogersSearch_CBS_Pagination_1599_Persisting_Page_State_in_URL exten
         String url;
         int pageNumber;
         String message=null;
-        getDriver().get(System.getProperty("SearchUrl"));
         reporter.reportLogWithScreenshot("Search URL is launched");
-        getRogersSearchPage().waitTime();
+        getRogersSearchPage().isPageLoaded();
         reporter.reportLogWithScreenshot("Page is loaded");
         getRogersSearchPage().clickSearchIcon();
         getRogersSearchPage().enterTextToBeSearched(csvRowStrArray[0]);
@@ -63,14 +62,19 @@ public class RogersSearch_CBS_Pagination_1599_Persisting_Page_State_in_URL exten
         url = getDriver().getCurrentUrl();
         reporter.softAssert(getRogersSearchPage().validatePageSizeInURL(url)," Page size at the bottom pagination and the url matches", "Page size at the bottom pagination and the url does not match");
         getRogersSearchPage().openURLInNewTab(url);
-
+        reporter.reportLogPassWithScreenshot("New tab is launched with the same URL: " +url);
+        getRogersSearchPage().refreshPage();
+        reporter.reportLogPassWithScreenshot("The page is refreshed a couple of times");
+        message =getRogersSearchPage().validatePageNumberInURL(url);
+        reporter.reportLogPassWithScreenshot(message);
+        reporter.softAssert(getRogersSearchPage().validatePageSizeInURL(url),"The paze size matches with the URL", "The page size does not match with the URL");
     }
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
         xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-        startSession(System.getProperty("SearchUrl") + "wireless", strBrowser, strLanguage, RogersEnums.GroupName.search, method);
+        startSession(System.getProperty("SearchUrl"), strBrowser, strLanguage, RogersEnums.GroupName.search, method);
     }
 
     @AfterMethod(alwaysRun = true)
