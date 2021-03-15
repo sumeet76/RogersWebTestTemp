@@ -40,37 +40,88 @@ public class RogersCH_TC_063_SignedInIgnite2PBundlesBuyInternetSameAddressBaseme
         getRogersHomePage().clkSignIn();
         getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc63_2PSignedInInternetBuyBasement.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc63_2PSignedInInternetBuyBasement.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc56_wirelessSignedInInternetBuy.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc56_wirelessSignedInInternetBuy.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
-    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc63_2PSignedInInternetBuyBasement.accountDetails.getBan());
-    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc56_wirelessSignedInInternetBuy.accountDetails.getBan());
+        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
-        getRogersInternetDashboardPage().clkSolarisInternetBadge();
-        getRogersInternetDashboardPage().clkInternetPopup();
-        reporter.reportLogWithScreenshot("Launched the Interent dashboard");
-        getRogersInternetDashboardPage().clkSolChangeInternetPackage();
-        reporter.reportLogWithScreenshot("Launched the Interent packages page");
-        getRogersInternetDashboardPage().selectStandAloneInternetPackage(TestDataHandler.tc63_2PSignedInInternetBuyBasement.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc59_saiforIgniteBundle.getAccountDetails().getUpgradePlanFr());
-        reporter.reportLogWithScreenshot("Launched the agreement page");
-        getRogersInternetDashboardPage().clkInternetChangeOK();
-		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
-		reporter.reportLogWithScreenshot("Launched the order review page");
-		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
-		
-        getRogersOrderReviewPage().clkAcceptenceCheckboxUpdateInternet();
+        getRogersHomePage().clkExistingCustomerShop();
+        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+        getRogersHomePage().clkExistingCustomerInternet();
+        reporter.reportLogWithScreenshot("Launched the Internet page");
+        reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the Internet packages page");
+        getRogersHomePage().clkInternetAvailability();
+        reporter.reportLogWithScreenshot("Launched the customer availability check popup");
+        getRogersHomePage().clkUseThisAddress();
+        reporter.reportLogWithScreenshot("Launched the customer availability check popup for address");
+
+
+        String  strAddressLine1=TestDataHandler.tc60_WirelessSignedInInternetBuyDiffAddress.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc60_WirelessSignedInInternetBuyDiffAddress.getAccountDetails().getAddress().get("line2");
+
+
+
+        getRogersHomePage().clkIgniteAddressLookupSubmit();
+        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
+
+        reporter.reportLogWithScreenshot("Launched the Internet packages page");
+        getRogersInternetPackageSelectionPage().clkInternetPackage();
+        reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
+
+        getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
+        reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the create profile page");
+        getRogersInternetProfilePage().clkSubmitProfile();
+
+        reporter.hardAssert(getRogersInternetCreditCheckPage().verifyCreditEvalutionPage(),"Credit Evalution page has Launched","Credit Evalution page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the credit evalution page");
+        getRogersInternetCreditCheckPage().selectDOBYear();
+        getRogersInternetCreditCheckPage().selectDOBMonth();
+        getRogersInternetCreditCheckPage().selectDOBDay();
+        reporter.reportLogWithScreenshot("Entered DOB details");
+        getRogersInternetCreditCheckPage().selectFirstID("Driver's License");
+        getRogersInternetCreditCheckPage().selectProvince("Ontario");
+        getRogersInternetCreditCheckPage().selectExpiryYear();
+        getRogersInternetCreditCheckPage().selectExpiryMonth();
+        getRogersInternetCreditCheckPage().selectExpiryDay();
+        getRogersInternetCreditCheckPage().setDrivingLicenseNumber("ONTARIO");
+        reporter.reportLogWithScreenshot("Driving License Details");
+        getRogersInternetCreditCheckPage().selectSecondIDOption("Passport");
+        getRogersInternetCreditCheckPage().setPassportNumber();
+        getRogersInternetCreditCheckPage().selectPassportExpiryYear();
+        getRogersInternetCreditCheckPage().selectPassportExpiryMonth();
+        getRogersInternetCreditCheckPage().selectPassportExpiryDay();
+        getRogersInternetCreditCheckPage().clkCreditConsentSai();
+        reporter.reportLogWithScreenshot("Passport Details");
+        getRogersInternetCreditCheckPage().clkCreditConsentSubmit();
+
+        reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the tech install page");
+
+        getRogersTechInstallPage().clkTechInstalConsent();
+        reporter.reportLogWithScreenshot("tech install details");
+        getRogersTechInstallPage().clkTechInstallContinue();
+
+        reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the payment options page");
+        getRogersPaymentOptionsPage().clkPaymentConfirm();
+
+        reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the order review page");
+        reporter.hardAssert( getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
+        getRogersOrderReviewPage().clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
-        getRogersOrderReviewPage().clkSubmitUpdateSAI();
+        getRogersOrderReviewPage().clkSubmit();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.softAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Update order completed","Update order Failed");
-        reporter.reportLogWithScreenshot("Verified the Confirmation page");
+        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
+        reporter.reportLogWithScreenshot("Launched the Confirmation page");
     	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
