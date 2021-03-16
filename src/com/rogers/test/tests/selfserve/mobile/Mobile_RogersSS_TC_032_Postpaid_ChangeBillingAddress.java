@@ -45,9 +45,9 @@ public class Mobile_RogersSS_TC_032_Postpaid_ChangeBillingAddress extends BaseTe
 	@Test(groups = {"MobileSanitySS"})
 	public void validateUserChangeContactInformationAndBillingAddress() {
     	getRogersHomePage().clkSignInMobile();
-    	String strUsername = TestDataHandler.tc013132.getUsername();
-    	String strPassword = TestDataHandler.tc013132.getPassword();
-    	String strBan = TestDataHandler.tc013132.getAccountDetails().getBan();
+    	String strUsername = TestDataHandler.tc060809.getUsername();
+    	String strPassword = TestDataHandler.tc060809.getPassword();
+    	String strBan = TestDataHandler.tc060809.getAccountDetails().getBan();
 
 		getRogersLoginPage().switchToSignInIFrame();
 		getRogersLoginPage().setUsernameIFrame(strUsername);
@@ -66,7 +66,7 @@ public class Mobile_RogersSS_TC_032_Postpaid_ChangeBillingAddress extends BaseTe
 		reporter.reportLogWithScreenshot("Profile & Settings page");
 
     	//Change Billing settings
-		common_business_flows.scrollToMiddleOfWebPage();
+		getCommonBusinessFlows().scrollToMiddleOfWebPage();
 		getRogersProfileAndSettingsPage().clkCloseFeedbackIfAvailableMobile();
     	getRogersProfileAndSettingsPage().clkBtnBillingInfomation();
     	reporter.reportLogWithScreenshot("Billing address before make change.");
@@ -96,25 +96,24 @@ public class Mobile_RogersSS_TC_032_Postpaid_ChangeBillingAddress extends BaseTe
     		strBillingAddress = "ON N5Y4J";
     		
     	}    	 	
-    	getRogersProfileAndSettingsPage().clkLnkChangeBillingAddressMobile();
-		getRogersProfileAndSettingsPage().setStreetNumber(strStreetNumber);
-    	getRogersProfileAndSettingsPage().setStreetname(strStreetName);
-    	getRogersProfileAndSettingsPage().selectStreetType(strStreetType);
-    	getRogersProfileAndSettingsPage().setApartment(strApartment);
-    	getRogersProfileAndSettingsPage().selectAprtmentType(strApartmentType);
-    	getRogersProfileAndSettingsPage().setCityName(strCityName);
-    	getRogersProfileAndSettingsPage().selectProvince(strProvince);
-    	getRogersProfileAndSettingsPage().setPostalCode(strPostalCode);
-		reporter.reportLogWithScreenshot("Update billing address page.");
-    	getRogersProfileAndSettingsPage().clkChangeAddresContinueButton();
-    	getRogersProfileAndSettingsPage().selectAndSubmit();
-    	//getRogersProfileAndSettingsPage().clkSubmit();
-		reporter.reportLogWithScreenshot("New billing address submitted.");
-    	reporter.softAssert((getRogersProfileAndSettingsPage().clickDoneChangeBillingAddress()
-    			&& getRogersProfileAndSettingsPage().verifyBillingAddress(strBillingAddress)),
-				"Billing address change was done successfully", 
-				"Billing address was not updated, please investigate");
-    	reporter.reportLogWithScreenshot("New billing address updated successful");
+    	getRogersProfileAndSettingsPage().clkLnkChangeBillingAddress();
+    	reporter.reportLogWithScreenshot("Change billing address clicked");
+    	if(getRogersProfileAndSettingsPage().isVerifyYourIdentityOverlayDisplayed())
+    	{
+    		reporter.reportLogWithScreenshot("Your identity overlay is displayed");
+    		getRogersProfileAndSettingsPage().switchToVerifyIdentityIFrame();
+    		getRogersProfileAndSettingsPage().clkContinueVerifyIdentity();
+    		reporter.hardAssert(getRogersProfileAndSettingsPage().isInEligibleUser(),
+    				"User is taken to eligibility failure modal",
+    				"User is NOT taken to eligibility failure modal");
+    		reporter.reportLogWithScreenshot("User is taken to eligibility failure modal");
+    		getRogersProfileAndSettingsPage().clkClose();
+    		reporter.reportLogWithScreenshot("Clicks on close");
+    		reporter.hardAssert(getRogersProfileAndSettingsPage().IsBillingAddressDisplayed(),
+    				"Profile and Settings page is displayed"
+    				, "Profile and Settings page not displayed");
+    		
+    	}
 	}
 
 }

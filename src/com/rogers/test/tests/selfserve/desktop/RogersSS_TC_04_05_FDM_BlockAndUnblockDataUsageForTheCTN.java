@@ -52,9 +52,9 @@ public class RogersSS_TC_04_05_FDM_BlockAndUnblockDataUsageForTheCTN extends Bas
        getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
      
        reporter.reportLogWithScreenshot("Dashboard page");
-       common_business_flows.scrollToMiddleOfWebPage();
+       getCommonBusinessFlows().scrollToMiddleOfWebPage();
        reporter.reportLogWithScreenshot("Middle view of Dashboard page");
-       common_business_flows.scrollToTopOfWebPage();
+       getCommonBusinessFlows().scrollToTopOfWebPage();
     
        reporter.hardAssert(getRogersWirelessDashboardPage().isDataAccessDisplayed(),
     		   "Data access ON is displayed",
@@ -101,9 +101,9 @@ public class RogersSS_TC_04_05_FDM_BlockAndUnblockDataUsageForTheCTN extends Bas
        getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();
      
        reporter.reportLogWithScreenshot("Dashboard page");
-       common_business_flows.scrollToMiddleOfWebPage();
+       getCommonBusinessFlows().scrollToMiddleOfWebPage();
        reporter.reportLogWithScreenshot("Middle view of Dashboard page");
-       common_business_flows.scrollToTopOfWebPage();
+       getCommonBusinessFlows().scrollToTopOfWebPage();
     
        reporter.hardAssert(getRogersWirelessDashboardPage().isDataAccessDisplayed(),
     		   "Data access ON is displayed",

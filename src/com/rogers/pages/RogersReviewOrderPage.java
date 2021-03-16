@@ -57,6 +57,9 @@ public class RogersReviewOrderPage extends BasePageClass {
     @FindBy(xpath="//input[contains(@name,'agreementConsent')]/..")
     WebElement chAgreementConsent;
 
+    @FindBy(xpath="//input[contains(@name,'returningUEDeviceConsent')]/parent::label")
+    WebElement chReturningUTDeviceConsent;
+
     @FindBy(xpath = "//input[contains(@name,'upfrontConsent')]/..")
     WebElement chUpfrontConsent;
     
@@ -75,8 +78,7 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author nimmy.george
      */
     public boolean isOrderReviewPageTitlePresent() {
-    	getReusableActionsInstance().waitForElementVisibility(orderReviewPageTitle, 60);
-       return getReusableActionsInstance().isElementVisible(orderReviewPageTitle);
+       return getReusableActionsInstance().isElementVisible(orderReviewPageTitle , 60);
     }
 
     /**
@@ -200,6 +202,14 @@ public class RogersReviewOrderPage extends BasePageClass {
      */
     public void clkAgreementConsentCheckbox() {
         getReusableActionsInstance().clickWhenReady(chAgreementConsent,2);
+    }
+
+    /**
+     * Clicks on the 'Returning UE device consent' checkbox
+     * @author saurav.goyal
+     */
+    public void clkReturningUEDeviceConsentCheckbox() {
+        getReusableActionsInstance().clickWhenReady(chReturningUTDeviceConsent,2);
     }
 
     /**

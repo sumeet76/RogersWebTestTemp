@@ -57,13 +57,13 @@ public class RogersSS_TC_060_ValidateCopyChangesOfDataUsageDisplayWithInLimitsPo
         
         
        reporter.reportLogWithScreenshot("Account overview page.");
-       common_business_flows.scrollToMiddleOfWebPage();
+       getCommonBusinessFlows().scrollToMiddleOfWebPage();
        reporter.reportLogWithScreenshot("Check the number of CTNs");
        int totalCTN = getRogersAccountOverviewPage().getTotalCTN();
 		reporter.hardAssert((totalCTN>1),
 				"The account has more than 1 CTNS",
 				"The account doesnt have more than 1 CTN's, please add more CTNS and rerun");
-		common_business_flows.scrollToTopOfWebPage();
+		getCommonBusinessFlows().scrollToTopOfWebPage();
        
        
        getRogersAccountOverviewPage().clkMenuUsageAndService();
@@ -115,7 +115,7 @@ public class RogersSS_TC_060_ValidateCopyChangesOfDataUsageDisplayWithInLimitsPo
     	    						"'Manage Data' page is displayed after click on view details link", 
     	    						"'Manage Data' page is NOT displayed after click on view details link");  
     	    		reporter.reportLogWithScreenshot("Manage data page view after we click on view details"); 
-    	    		common_business_flows.scrollToTopOfWebPage();
+    	    		getCommonBusinessFlows().scrollToTopOfWebPage();
     	    		getRogersManageDataPage().clkBackOnManageDataUsagePage();
     	    		reporter.reportLogWithScreenshot("Navigated back to dashboard from manage data view"); 
     	    		
@@ -145,11 +145,11 @@ public class RogersSS_TC_060_ValidateCopyChangesOfDataUsageDisplayWithInLimitsPo
     	            		"data usage details is not the same for CTN Number: "+ctnCount);    	                	            
     	            }
     	            
-    	    		common_business_flows.scrollToMiddleOfWebPage();
+    	    		getCommonBusinessFlows().scrollToMiddleOfWebPage();
     	    		reporter.reportLogWithScreenshot("Middle of Wireless dashboard page.");        
-    	    		common_business_flows.scrollToBottomOfWebPage();
+    	    		getCommonBusinessFlows().scrollToBottomOfWebPage();
     	    		reporter.reportLogWithScreenshot("Bottom of Wireless dashboard page.");
-    	    		common_business_flows.scrollToTopOfWebPage();
+    	    		getCommonBusinessFlows().scrollToTopOfWebPage();
     	   
        }
     	   

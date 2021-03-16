@@ -19,7 +19,6 @@ public class RogersInternetProfilePage extends BasePageClass {
 	@FindBy(xpath = "//h2[@translate='global.checkout.profile.createProfile']")
 	WebElement txtSaiProfile;
 
-
 	@FindBy(xpath = "//div[@class='text-semi mt-3 -f24 ng-star-inserted']")
 	WebElement popupSessionModel;
 
@@ -38,13 +37,13 @@ public class RogersInternetProfilePage extends BasePageClass {
 	@FindBy(xpath = "//input[@name='confirmEmail']")
 	WebElement txtConfirmEmail;
 	
-	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @aria-label='Please enter your First Name.']")
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @ng-reflect-a11y-description='Please enter your First Name.']")
 	WebElement txtFirstName;
 	
-	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @aria-label='Please enter your Last Name.']")
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @ng-reflect-a11y-description='Please enter your Last Name.']")
 	WebElement txtLastName;
 	
-	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @aria-label='Please enter your phone number.']")
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @ng-reflect-a11y-description='Please enter your phone number']")
 	WebElement btnPhone;
 		
 	@FindBy(xpath = "//span[@translate='global.cta.continue']")
@@ -52,6 +51,10 @@ public class RogersInternetProfilePage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
+
+	@FindBy(xpath = "//i[contains(@class,'li-loader')]")
+	WebElement popupLoadingFingersPackage;
+
 	
 	/**
 	 * To verify the launch of Profile Page
@@ -69,7 +72,9 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyProfilePageSAI() {
-		getReusableActionsInstance().waitForElementVisibility(txtSaiProfile,60);
+		//getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersPackage,60);
+		getReusableActionsInstance().staticWait(6000);
+		getReusableActionsInstance().waitForElementVisibility(txtSaiProfile,90);
 		return getReusableActionsInstance().isElementVisible(txtSaiProfile);
 	}
 
@@ -155,7 +160,7 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSubmitProfileMobile() {
-		getReusableActionsInstance().waitForElementVisibility(btnProfielSubmit, 60);
+		getReusableActionsInstance().waitForElementVisibility(btnProfielSubmit, 90);
 		getReusableActionsInstance().executeJavaScriptClick(btnProfielSubmit);
 	}
 

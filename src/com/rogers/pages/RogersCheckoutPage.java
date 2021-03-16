@@ -1,6 +1,7 @@
 package com.rogers.pages;
 
 import com.rogers.pages.base.BasePageClass;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,13 +35,13 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "(//div[contains(.,'E-mail Address')])[11]")
 	WebElement emailCreateProfile;
 
-	@FindBy(xpath = "//input[@formcontrolname='email']")
+	@FindBy(xpath = "//input[@id='email' or (contains(@formcontrolname,'email') and  not(contains(@formcontrolname,'Confirm')))]")
 	WebElement inputEmail;
 
 	@FindBy(xpath = "(//div[contains(.,'Confirm E-mail Address')])[11]")
 	WebElement confirmEmailCreateProfile;
 
-	@FindBy(xpath = "//input[@formcontrolname='confirmEmail']")
+	@FindBy(xpath = "//input[@id='confirmEmail' or @id='cemail' or contains(@formcontrolname,'Confirm') or contains(@formcontrolname,'confirm')]")
 	WebElement inputConfirmEmail;
 
 	@FindBy(xpath = "(//div[contains(.,'First Name')])[11]")
@@ -58,13 +59,13 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "(//div[contains(.,'Contact Number')])[11]")
 	WebElement contactNumberCreateProfile;
 
-	@FindBy(xpath = "//input[@formcontrolname='contact']")
+	@FindBy(xpath = "//input[contains(@formcontrolname,'contact')]")
 	WebElement inputContactNumber;
 
 	@FindBy(xpath = "(//div[contains(.,'Billing Address')])[13]")
 	WebElement billingAddressCreateProfile;
 
-	@FindBy(xpath = "(//div[contains(.,'Billing Address')])[13]/input")
+	@FindBy(xpath = "(//div[contains(.,'Billing Address')])[13]//input[contains(@id,'ds-form-input-id')]")
 	WebElement inputBillingAddress;
 
 	@FindBy(xpath = "//r-address-auto-complete[@data-test='personal-info-address']//li[@class='ng-star-inserted'][1]")
@@ -241,6 +242,18 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath ="//ds-radio-button[@data-test='standard-delivery']/label")
 	WebElement deliveryMethodStandard;
 
+	@FindBy(xpath ="//ds-radio-button[@data-test='potg-delivery']/label")
+	WebElement deliveryMethodProOnTheGo;
+
+	@FindBy(xpath ="//ds-radio-button[@data-test='in-store-pickup']/label")
+	WebElement deliveryMethodExpress;
+
+	@FindBy(xpath ="//location-container//div[@id='store-map-div']")
+	WebElement deliveryMethodExpressLocationMap;
+
+	@FindBy(xpath ="//p[@data-test='timeslot-appointment']")
+	WebElement deliveryAppointmentTime;
+
 	@FindBy(xpath="//span[@data-test='email-address']")
 	WebElement txtEmailAddress;
 	
@@ -259,7 +272,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath ="//div[@data-test='delivery-information']//child::div/p[3]")
 	WebElement appointmentTime;
 
-	@FindBy(xpath = "//button[@id='main-continue-button']")
+	@FindBy(xpath = "//button[@id='main-continue-button']//span[contains(@class,'ds-button__copy')]")
 	WebElement submitBtnCheckoutPage;
 
 	@FindBy(xpath = "//p[@class='text-body mb-8']")
@@ -270,7 +283,10 @@ public class RogersCheckoutPage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[@class='QSIPopOver SI_5Asif8K9VkSJZM9_PopOverContainer'][1]//following::span[text()='No, thanks']//ancestor::div[@tabindex='0']")
 	WebElement btnNoThanks;
-	
+
+	@FindBy(xpath = "//P[@data-test='timeslot-appointment']")
+	WebElement lblAppointmentTime;
+
 	
 	
 	/**
@@ -293,6 +309,7 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public String getMonthlyFeeAfterTax() { 
 		getReusableActionsInstance().waitForElementVisibility(createProfileTitle, 50);
+		getReusableActionsInstance().waitForElementVisibility(monthlyFeeAfterTax, 50);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyFeeAfterTax);
 		return monthlyFeeAfterTax.getText().replaceAll("\\n",""); }
 
@@ -342,6 +359,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public String setEmailCreateProfile() {
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
 		getReusableActionsInstance().clickWhenReady(emailCreateProfile);
 		getReusableActionsInstance().getWhenReady(inputEmail,40).sendKeys(FormFiller.generateEmail());
 		return getReusableActionsInstance().getWhenReady(inputEmail,40).getAttribute("value");
@@ -436,7 +454,8 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public String setBillingAddressCreateProfile(String billingAddress) {
 		getReusableActionsInstance().clickWhenReady(billingAddressCreateProfile);
-		getReusableActionsInstance().getWhenReady(inputBillingAddress,3).sendKeys(billingAddress);
+		inputBillingAddress.sendKeys(billingAddress);
+		//getReusableActionsInstance().getWhenReady(inputBillingAddress,15).sendKeys(billingAddress);
 		getReusableActionsInstance().moveToElementAndClick(billingAddressSelection, 5);
 		return getReusableActionsInstance().getWhenReady(inputBillingAddress,20).getAttribute("value");
 	}
@@ -670,6 +689,18 @@ public class RogersCheckoutPage extends BasePageClass {
 	public boolean isCreditEvalTextOnModalPresent() { return getReusableActionsInstance().isElementVisible(txtCreditEval); }
 
 	/**
+	 * To return true if the express location map is available else false
+	 * @return True or False
+	 * @author Saurav.Goyal
+	 */
+
+	public boolean verifyExpressLocationMapPresent() {
+		return getReusableActionsInstance().isElementVisible(deliveryMethodExpressLocationMap,30);
+	}
+
+
+
+	/**
 	 * WaitUntill Credit Evaluation text get invisible from the Credit Evaluation Model
 	 * @author karthic.hasan
 	 */
@@ -692,7 +723,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author karthic.hasan
 	 */
 
-	public boolean isChooseaNumberTitleDisplayed() { return getReusableActionsInstance().isElementVisible(chooseNumberTitle); }
+	public boolean isChooseaNumberTitleDisplayed() { return getReusableActionsInstance().isElementVisible(chooseNumberTitle,60); }
 
 	/**
 	 * To verify Select A Number Tab UseAnExistingNumber Tab is present in the Choose a Number stepper and return boolean value.
@@ -848,7 +879,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void clkBillingContinueButton() {
-		getReusableActionsInstance().getWhenReady(btnBillingContinueButton).click();
+		getReusableActionsInstance().waitForElementTobeClickable(btnBillingContinueButton , 30);
+		getReusableActionsInstance().scrollToElement(btnBillingContinueButton);
+		getReusableActionsInstance().getWhenReady(btnBillingContinueButton,30).click();
 	}
 
 	/**
@@ -858,8 +891,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public boolean clkBillingAddress() {
-		getReusableActionsInstance().scrollToElementAndClick(billingAddressShipping);
-		//getReusableActionsInstance().clickWhenReady(billingAddressShipping,3);
+		getReusableActionsInstance().waitForElementTobeClickable(billingAddressShipping , 30);
+		getReusableActionsInstance().scrollToElement(billingAddressShipping);
+		getReusableActionsInstance().clickWhenReady(billingAddressShipping,30);
 		billingAddressShipping.isSelected();
 		return true;
 	}
@@ -919,6 +953,33 @@ public class RogersCheckoutPage extends BasePageClass {
 	}
 
 	/**
+	 * To click on Express Delivery Method in the shipping stepper
+	 * @author Saurav.Goyal
+	 */
+
+	public void clkDeliveryMethod(String deliveryMethod) {
+		if(deliveryMethod.equalsIgnoreCase("EXPRESS")){
+			getReusableActionsInstance().staticWait(5000);
+			getReusableActionsInstance().clickWhenReady(deliveryMethodExpress,30);
+		}else if(deliveryMethod.equalsIgnoreCase("PRO")){
+			getReusableActionsInstance().staticWait(5000);
+			getReusableActionsInstance().clickWhenReady(deliveryMethodProOnTheGo,30);
+		}else{
+			getReusableActionsInstance().staticWait(5000);
+			getReusableActionsInstance().clickWhenReady(deliveryMethodStandard,30);
+		}
+	}
+
+	/**
+	 * To Verify the appointment time
+	 * @return true if Appointment time is available else false
+	 * @author saurav.goyal
+	 */
+	public boolean isAppointmentTimeAvailable() {
+		return getReusableActionsInstance().isElementVisible(deliveryAppointmentTime , 30);
+	}
+
+	/**
 	 * To Select Date from the Shipping stepper
 	 * @author karthic.hasan
 	 */
@@ -947,8 +1008,18 @@ public class RogersCheckoutPage extends BasePageClass {
 	public void clkContinueBtnShipping() {
 		//wait.until(ExpectedConditions.elementToBeClickable(continueBtnShipping));
         //getReusableActionsInstance().javascriptScrollByVisibleElement(continueBtnShipping);
-		getReusableActionsInstance().clickWhenVisible(continueBtnShipping, 30);
+		getReusableActionsInstance().clickWhenReady(continueBtnShipping, 30);
 	}
+
+	/**
+	 * To verify the Apoointment label for pro on the go devices
+	 * @return true if label is available else false
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyAppointmentLabel() {
+		return getReusableActionsInstance().isElementVisible(lblAppointmentTime, 30);
+	}
+
 
 	
 	/**
@@ -982,7 +1053,10 @@ public class RogersCheckoutPage extends BasePageClass {
      */
 
     public void clksubmitBtnCheckoutPage(){
-        getReusableActionsInstance().moveToElementAndClick(submitBtnCheckoutPage,20);
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().waitForElementTobeClickable(submitBtnCheckoutPage,30);
+		getReusableActionsInstance().scrollToElementAndClick(submitBtnCheckoutPage);
+		//getReusableActionsInstance().clickWhenReady(submitBtnCheckoutPage , 30);
     }
 
 	/**

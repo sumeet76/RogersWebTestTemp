@@ -170,7 +170,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
      * @author nimmy.george
      */
 
-    @FindBy(xpath="(//p[contains(@class,'dsa-info__contentBody text-body mb-0')])[2]")
+    @FindBy(xpath="//dsa-info[contains(@class,'d-block mb-40')]//p[contains(@class,'dsa-info__contentBody text-body mb-0')]")
     WebElement eligiblePostalCodeinBanner;
 
     public String verifyeligiblePostalCodeinBanner(){

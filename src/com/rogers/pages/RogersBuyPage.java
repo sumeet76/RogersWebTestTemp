@@ -16,7 +16,7 @@ public class RogersBuyPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Ignite Internet speed') or contains(text(),'Vitesse Internet Élan')]")
 	WebElement btnIgniteInternetSpeed;	
 
-	@FindBy(xpath = "//span[contains(text(),'Exchange Flex Channels') or contains(text(),'Échanger chaînes flexibles')]")
+	@FindBy(xpath = "//span[contains(text(),'Exchange Flex Channels') or contains(text(),'Échanger chaînes flexibles')]/ancestor::a")
 	WebElement btnExchangeFlexChannel;
 
 	@FindBy(xpath = "//label[@for='existingActiveAddress-1']")
@@ -87,7 +87,6 @@ public class RogersBuyPage extends BasePageClass {
 	 */
 	public void clkExchangeFlexChannel() {
 		getReusableActionsInstance().getWhenReady(btnExchangeFlexChannel, 90).click();
-		getReusableActionsInstance().clickIfAvailable(btnExchangeFlexChannel, 60);
        }
 	
 	
@@ -139,7 +138,7 @@ public class RogersBuyPage extends BasePageClass {
 	public boolean verifyInternetMenuMobile() {
 		return getReusableActionsInstance().isElementVisible(btnInternetMenuMobile, 90);
 	}
-	
+
 	/**
 	 * To select the Internet package on the Internet buy page
 	 * @param strInternetBundle internet bundle to be select to buy

@@ -38,12 +38,23 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	
 	@FindBy(xpath = "//input[@class='checkoutButton']")
 	WebElement btnCheckout;
-	
+
+	@FindBy(xpath = "(//div//a[@title='Get Ignite Internet + SmartStream now'])[1]")
+	WebElement btnSmartStream;
+
+	@FindBy(xpath = "//a[contains(@title,'Ignite Internet with SmartStream')]")
+	WebElement lnkSmartStream;
+
 	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::span[contains(@class,'ds-button__wrapper')]")
 	WebElement btnInternetBuyContinue;
 	
-	@FindBy(xpath = "//button[@aria-label='Add Ignite Internet 500u to your cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']")
+	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::span[@role='text']")
 	WebElement btnInternetPackage;
+	//button[@aria-label='Add Ignite Internet 500u to your cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']
+
+	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::span[@role='text']")
+	WebElement btnSmartStreamPackage;
+
 
 	/**
 	 * selects the Internet package if it visible and ready if not click on the next arrow to get the desired package
@@ -111,11 +122,25 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnInternetPackage, 90).click();
 	}
 
+	public void clkSmartStreamPackage() {
+		getReusableActionsInstance().getWhenReady(btnSmartStreamPackage, 90).click();
+	}
+
+	public void clkSmartStreamAvailability() {
+		getReusableActionsInstance().waitForElementVisibility(btnSmartStream, 90);
+		getReusableActionsInstance().executeJavaScriptClick(btnSmartStream);
+	}
+
+	public void clkSmartStream() {
+		getReusableActionsInstance().staticWait(10000);
+	/*	getReusableActionsInstance().waitForElementVisibility(lnkSmartStream, 90);
+		getReusableActionsInstance().executeJavaScriptClick(lnkSmartStream);*/
+	}
+
 	public void clkInternetPackageMobile() {
 		getReusableActionsInstance().waitForElementVisibility(btnInternetPackage, 90);
 		getReusableActionsInstance().executeJavaScriptClick(btnInternetPackage);
 	}
-		
 	public void clkInternetBuyContinueMobile() {
 		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
@@ -125,7 +150,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	}
 
 	public void clkInternetBuyContinue() {
-		if(getReusableActionsInstance().isElementVisible(popUpLoading, 10)) {
+		if(!getReusableActionsInstance().isElementVisible(btnInternetBuyContinue, 20)) {
 			getReusableActionsInstance().waitForElementInvisibility(popUpLoading, 30);
 		}
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();

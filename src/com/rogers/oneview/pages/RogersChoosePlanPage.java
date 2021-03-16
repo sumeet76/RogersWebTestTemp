@@ -52,6 +52,11 @@ public class RogersChoosePlanPage extends BasePageClass {
 	
 	@FindBy(xpath = "//a[@data-dtname='downgradeFeeAccept-continue']")
 	WebElement btnDowngradeFeeContinue;
+
+	@FindBy(xpath = "//a[@data-dtname='discountCancellationWarning-confirm']")
+	WebElement btnDiscountCancellationWanringConfirm;
+
+
 	
 	@FindBy(xpath = "//span[@translate='_required']/ancestor::a")
 	List<WebElement> lnkAdditionalLinesTabs;
@@ -85,7 +90,20 @@ public class RogersChoosePlanPage extends BasePageClass {
 	
 	@FindBy(xpath = "//li[contains(@class,'line-tab ng-scope')]")
 	List<WebElement> linkLine;
-	
+
+
+	@FindBy(xpath = "//h2[@translate='current_plan_title']")
+	WebElement lblYourCurrentPlan;
+
+	/**
+	 * Verify Choose Plan page
+	 * @return true if the page is visible else false
+	 * @author Saurav.Goyal
+	 */
+	public boolean verifyChoosePlanPage() {
+		return getReusableActionsInstance().isElementVisible(lblYourCurrentPlan,30);
+
+	}
 	
 	/**
 	 * Click on shared line 1
@@ -110,7 +128,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkMakeChangesToExistingPlan() {
-		getReusableActionsInstance().clickIfAvailable(lblChangesToExistingPlan,60);
+		getReusableActionsInstance().clickIfAvailable(lblChangesToExistingPlan,30);
 	}
 	
 	/**
@@ -158,7 +176,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkButtonModalContinue() {
-		getReusableActionsInstance().clickIfAvailable(btnModalContinue,60);
+		getReusableActionsInstance().clickIfAvailable(btnModalContinue,30);
 	}
 	
 	/**
@@ -174,7 +192,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void selectFirstAvailablePlan() {
-		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(btnSelect.get(0), 30));
+		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(btnSelect.get(1), 30));
 		getReusableActionsInstance().staticWait(3000);
 	}
 	
@@ -226,6 +244,9 @@ public class RogersChoosePlanPage extends BasePageClass {
 			strPlanCat = "no tab";
 			break;
 		}
+		getReusableActionsInstance().clickIfAvailable(By.xpath("//md-backdrop"),20);
+		getReusableActionsInstance().waitForElementVisibility(icnPlanCategory , 30);
+		getReusableActionsInstance().scrollToElement(icnPlanCategory);
 		getReusableActionsInstance().clickWhenReady(icnPlanCategory, 60);
 		getReusableActionsInstance().clickWhenReady(By.xpath("//md-option[@value='" + strPlanCat +"']"));
 		getReusableActionsInstance().staticWait(3000);
@@ -311,10 +332,13 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyAndClickDowngradeFeeContinue() {
-		if(getReusableActionsInstance().isElementVisible(btnDowngradeFeeContinue, 30)) {
+		if(getReusableActionsInstance().isElementVisible(btnDowngradeFeeContinue, 20)) {
 			getReusableActionsInstance().executeJavaScriptClick(btnDowngradeFeeContinue);
 			return true;			
-		} else {
+		} else if(getReusableActionsInstance().isElementVisible(btnDiscountCancellationWanringConfirm, 20)){
+			getReusableActionsInstance().executeJavaScriptClick(btnDiscountCancellationWanringConfirm);
+			return true;
+		}else{
 			return false;
 		}
 	}

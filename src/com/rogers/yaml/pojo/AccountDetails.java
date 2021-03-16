@@ -36,6 +36,9 @@ public class AccountDetails {
 	private String swapInChannelOne;
 	private String swapInChannelTwo;
 	private String swapInChannelThree;
+	private String swapOutChannelOne;
+	private String swapOutChannelTwo;
+	private String swapOutChannelThree;
 	private String year;
 	private String date;
 	private String month;
@@ -50,6 +53,11 @@ public class AccountDetails {
 	private String dob;
 	private String  imei;
 	private String flexChannelsCount;
+	private String totalChannelsCount;
+	private String drivingLicence;
+	private String firstName;
+	private String lastName;
+	private String birthCertNumber;
 	
 	public String getRhmPackageEn() {
 		return rhmPackageEn;
@@ -576,5 +584,113 @@ public class AccountDetails {
 		this.flexChannelsCount = flexChannelsCount;
 	}
 
+	/**
+	 * @return the TotalChannelsCount
+	 */
+	public String getTotalChannelsCount() {
+		return totalChannelsCount;
+	}
+
+	/**
+	 * @param totalChannelsCount the TotalChannelsCount to set
+	 */
+	public void setTotalChannelsCount(String totalChannelsCount) {
+		this.totalChannelsCount = totalChannelsCount;
+	}
+
+	/**
+	 * @return the drivingLicence
+	 */
+	public String getDrivingLicence() {
+		return drivingLicence;
+	}
+
+	/**
+	 * @param drivingLicence the drivingLicence to set
+	 */
+	public void setDrivingLicence(String drivingLicence) {
+		this.drivingLicence = drivingLicence;
+	}
+
+	/**
+	 * @return the firstName
+	 */
+	public String getFirstName() {
+		return firstName;
+	}
+
+	/**
+	 * @param firstName the firstName to set
+	 */
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+	/**
+	 * @return the lastName
+	 */
+	public String getLastName() {
+		return lastName;
+	}
+
+	/**
+	 * @param lastName the lastName to set
+	 */
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	/**
+	 * @return the birthCertNumber
+	 */
+	public String getBirthCertNumber() {
+		return birthCertNumber;
+	}
+
+	/**
+	 * @param birthCertNumber the birthCertNumber to set
+	 */
+	public void setBirthCertNumber(String birthCertNumber) {
+		this.birthCertNumber = birthCertNumber;
+	}
+
+	/**
+	 * @return the swapOutChannelOne
+	 */
+	public String getSwapOutChannelOne() {
+		return swapOutChannelOne;
+	}
+	/**
+	 * @param swapOutChannelOne  the swapOutChannelOne to set
+	 */
+	public void setSwapOutChannelOne(String swapOutChannelOne) {
+		this.swapOutChannelOne = swapOutChannelOne;
+	}
+
+	/**
+	 * @return the swapOutChannelTwo
+	 */
+	public String getSwapOutChannelTwo() {
+		return swapOutChannelTwo;
+	}
+	/**
+	 * @param swapOutChannelTwo  the swapOutChannelTwo to set
+	 */
+	public void setSwapOutChannelTwo(String swapOutChannelTwo) {
+		this.swapOutChannelTwo = swapOutChannelTwo;
+	}
+	/**
+	 * @return the swapOutChannelThree
+	 */
+	public String getSwapOutChannelThree() {
+		return swapOutChannelThree;
+	}
+	/**
+	 * @param swapOutChannelThree  the swapOutChannelThree to set
+	 */
+	public void setSwapOutChannelThree(String swapOutChannelThree) {
+		this.swapOutChannelThree = swapOutChannelThree;
+	}
 
 }

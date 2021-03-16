@@ -10,7 +10,8 @@ public class SauceSettings {
 	private MutableCapabilities mutableFireFoxCapabilities;
 	private MutableCapabilities mutableChromeCapabilities;
 	private MutableCapabilities mutableEdgeCapabilities;
-	private AndroidCapabilities androidChromeCapabilities;	
+	private AndroidCapabilities androidChromeCapabilities;
+	private MutableCapabilities mutableSafariCapabilities;
 	/**
 	 * @return the sauceUser
 	 */
@@ -120,5 +121,12 @@ public class SauceSettings {
 		this.androidChromeCapabilities = androidChromeCapabilities;
 	}
 
+	public MutableCapabilities getMutableSafariCapabilities() {
+		return mutableSafariCapabilities;
+	}
+
+	public void setMutableSafariCapabilities(MutableCapabilities mutableSafariCapabilities) {
+		this.mutableSafariCapabilities = mutableSafariCapabilities;
+	}
 
 }

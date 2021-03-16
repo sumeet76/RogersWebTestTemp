@@ -16,52 +16,52 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_OV_TC01_HUPWithPPCMultiLine_ChooseDifferentPlan_Test extends BaseTestClass {
 
-	@Test
+	@Test(groups = {"RegressionBFA","RegressionOVBFA","SanityBFA","HupOvBFA"})
 	public void hupWithPPCMultiLineChooseDifferentPlanFlow() {
-		getEnvironmentSelectionPage().presenceOfTheGoButton();
-		reporter.reportLogWithScreenshot("Rogers Choose Phone page");
+		reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
+		reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");
 		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
-		//getEnvironmentSelectionPage().clkGo();
+		reporter.reportLogWithScreenshot("Rogers OV environment selected" + TestDataHandler.bfaOneViewConfig.getEnvironmentName());
 		//getAccountOverViewPage().enterDealerCodeDialogue();
 		//getAccountOverViewPage().clkSubmitBtnDealerCodeDialogue();
 		reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
+		reporter.reportLogWithScreenshot("Rogers Account overview page");
 		reporter.hardAssert(getAccountOverViewPage().verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase01.getCtn()),"CTN Found","CTN Not Found");
 		getAccountOverViewPage().clkCloseBtnAssignDataManager();
 		//getAccountOverViewPage().clkBtnOkOneViewDialoue();
-		getRogersOVWirelessDetailsPage().verifyWirelessPageLoad();
+		reporter.hardAssert(getRogersOVWirelessDetailsPage().verifyWirelessPageLoad() ,"Wireless page loaded" , "Wireless page not loaded" );
 		reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
 		getRogersOVWirelessDetailsPage().clkUpgradeMyDevice();
-		reporter.reportLogWithScreenshot("Rogers Choose Phone Page");
+		reporter.reportLogWithScreenshot("Device upgrade button clicked");
+		reporter.hardAssert(getRogersOVChoosePhonePage().verifyChoosePhonePage() , "Choose Phone page loaded" , "Choose Phone page not loaded");
 		getRogersOVChoosePhonePage().searchDevice(TestDataHandler.buyFlowsOVtestCase01.getNewDevice());
-		Boolean proOnTheGoAddressFlag  = getRogersOVChoosePhonePage().checkProOnTheGoAtAddress(TestDataHandler.buyFlowsOVtestCase01.getPostalCode());
-		Boolean proOnTheGoFlag = false;
-		if(proOnTheGoAddressFlag) {
-			proOnTheGoFlag = getRogersOVChoosePhonePage().checkProOnTheGo();
-		}
 		getRogersOVChoosePhonePage().selectFirstAvailableDevice();
-		reporter.reportLogWithScreenshot("Rogers Choose Phone Page");
-		getRogersOVBuildPlanPage().selectFirstPlanInPickNewPlan();
+		reporter.reportLogWithScreenshot("Rogers Choose Phone Page , device selected " + TestDataHandler.buyFlowsOVtestCase01.getNewDevice());
+		reporter.hardAssert(getRogersOVBuildPlanPage().verifyBuildPlanPage() , "Build plan page loaded" , "Build plan page not loaded");
 		reporter.reportLogWithScreenshot("Rogers Build Plan Page");
+		getRogersOVBuildPlanPage().selectFirstPlanInPickNewPlan();
+		reporter.reportLogWithScreenshot("Plan selected");
 		getRogersOVBuildPlanPage().clkContinue();
+		reporter.hardAssert(getRogersOVChooseAddonsPage().verifyChooseAddOnPage() , "Addons page loaded" , "Addons page not loaded");
 		reporter.reportLogWithScreenshot("Rogers Additional line option page");
 		getRogersOVChooseAddonsPage().clkCheckBoxKeepCurrentPlanLine2();
 		getRogersOVChooseAddonsPage().clkContinueHUP();
 		reporter.reportLogWithScreenshot("Rogers Choose Addons Page");
 		getRogersOVChooseAddonsPage().clkContinueHUP();
+		reporter.hardAssert(getRogersOVShippingPage().verifyShippingPage() , "Shipping page loaded" , "Shipping page not loaded");
 		reporter.reportLogWithScreenshot("Rogers Shipping Page");
 		getRogersOVShippingPage().clkRadioBillingAddress();
-		if(proOnTheGoFlag) {
-			getRogersOVShippingPage().setEmailIDAndSave();
-			getRogersOVShippingPage().setPhoneNumberAndSave();
-			getRogersOVShippingPage().clkSelectAvailableTime();
-			getRogersOVShippingPage().clkReserve();
-		}
+		getRogersOVShippingPage().setEmailIDAndSave();
+		getRogersOVShippingPage().setPhoneNumberAndSave();
+		getRogersOVShippingPage().clkSelectAvailableTime();
+		getRogersOVShippingPage().clkReserve();
 		reporter.reportLogWithScreenshot("Rogers Shipping Page before clicking continue");
 		getRogersOVShippingPage().clkContinue();
-		reporter.reportLogWithScreenshot("Rogers review page");
+		reporter.hardAssert(getRogersOVOrderReviewPage().verifyOrderReviewPage() , "Order review page loaded" , "Order review page not loaded");
+		reporter.reportLogWithScreenshot("Rogers Order review page");
 		getRogersOVOrderReviewPage().clkAllTermsAgreementCheckboxs();
 		getRogersOVOrderReviewPage().selectEmailDigitalCopy(TestDataHandler.buyFlowsOVtestCase01.getUsername());
-		reporter.reportLogWithScreenshot("Rogers Order Review Page");
+		reporter.reportLogWithScreenshot("Rogers Order Review Page after selecting terms and conditions");
 		if(getRogersOVOrderReviewPage().isPaymentRequired()) {
 			getRogersOVOrderReviewPage().clkContinue();
 			getRogersOVPaymentPage().setCreditCardDetails(TestDataHandler.bfaOneViewPaymentInfo.getCreditCardDetails().getNumber(),
@@ -80,8 +80,7 @@ public class RogersBFA_OV_TC01_HUPWithPPCMultiLine_ChooseDifferentPlan_Test exte
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startOVSession(System.getProperty("QaUrl"),strBrowser, strLanguage,RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim(), TestDataHandler.buyFlowsOVtestCase01.getContactID(),TestDataHandler.buyFlowsOVtestCase01.getBanNo(),TestDataHandler.bfaOneViewConfig.getUsrID(), TestDataHandler.bfaOneViewConfig.getLoginID(),  method);
+		startOVSession(System.getProperty("QaOVUrl"),strBrowser, strLanguage,RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim(), TestDataHandler.buyFlowsOVtestCase01.getContactID(),TestDataHandler.buyFlowsOVtestCase01.getBanNo(),TestDataHandler.bfaOneViewConfig.getUsrID(), TestDataHandler.bfaOneViewConfig.getLoginID(),  method);
 	}
 
 	@AfterMethod(alwaysRun = true)

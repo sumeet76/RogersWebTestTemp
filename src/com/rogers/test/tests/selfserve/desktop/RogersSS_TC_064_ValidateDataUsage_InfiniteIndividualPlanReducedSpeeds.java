@@ -75,7 +75,7 @@ public class RogersSS_TC_064_ValidateDataUsage_InfiniteIndividualPlanReducedSpee
 						"Click on close call out message successful",
 						"Click on close call out message didnt succeed");
         reporter.reportLogWithScreenshot("Closed Call out message to Add speed pass on dashboard page.");  
-        common_business_flows.logOutAndReSignIn(strUsername, strPassword);   
+        getCommonBusinessFlows().logOutAndReSignIn(strUsername, strPassword);   
 //	        getRogersAccountOverviewPage().clkCtnBadge(last4Digit);
 	        getRogersAccountOverviewPage().clkMenuUsageAndService();
 	        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");

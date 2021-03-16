@@ -11,33 +11,20 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * TC01-Validate user able to perform AAL on SL with Fin offer
- * 
- * Launch rogers.com page 
- * Select SHOP-->Wireless-->View all devices
- * Select the device
- * Select "Add a line" option
- * Enter the User name and password
- * Select a talk and text plan for the new line and click Continue
- * Select a Addon(optional) and Click continue
- * Click continue
- * Select Choose a number and click continue
- * Click continue
- * Enter the payment details and click "Submit order"
- * 
+ * TC07 - Regression - Rogers AAL - e2e
  * @author rajesh.varalli1
- *
+ * //Pending Tobe updated after 27th Jan
  */
 public class RogersBFA_TC07_AAL_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","SanityBFA","AALBFA"})
-	public void aalFlowTest() {
+	public void rogersAalTest() {
 		reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		reporter.reportLogWithScreenshot("Home Page");
 		getRogersHomePage().clkSignIn();
 		getRogersLoginPage().switchToSignInIFrame();
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.testCase7.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.testCase7.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc07AAL.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc07AAL.getPassword());
 		reporter.reportLogWithScreenshot("Login Page");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
@@ -53,8 +40,8 @@ public class RogersBFA_TC07_AAL_Test extends BaseTestClass {
 		getRogersHomePage().clkAddDeviceToSharedPlan();
 		reporter.hardAssert(getRogersChoosePhonePage().verifyRogersChoosePhonePage(), "Rogers Choose Phone Page loaded properly", "Rogers Choose Phone Page load failed");
 		reporter.reportLogWithScreenshot("Rogers Choose Phone page");
-		getRogersChoosePhonePage().searchDevice(TestDataHandler.testCase7.getNewDevice());
-		Boolean proOnTheGoAddressFlag  = getRogersChoosePhonePage().checkProOnTheGoAtAddress(TestDataHandler.testCase7.getPostalCode());
+		getRogersChoosePhonePage().searchDevice(TestDataHandler.tc07AAL.getNewDevice());
+		Boolean proOnTheGoAddressFlag  = getRogersChoosePhonePage().checkProOnTheGoAtAddress(TestDataHandler.tc07AAL.getPostalCode());
 		Boolean proOnTheGoFlag = false;
 		if(proOnTheGoAddressFlag) {
 			proOnTheGoFlag = getRogersChoosePhonePage().checkProOnTheGo();
@@ -84,7 +71,7 @@ public class RogersBFA_TC07_AAL_Test extends BaseTestClass {
 		getRogersChooseNumberPage().verifyChooseNumberPageLoadedSuccessfully();
 		reporter.reportLogWithScreenshot("Rogers Choose Number page");
 		getRogersChooseNumberPage().clkSelectNewNumber();
-		getRogersChooseNumberPage().selectCity(TestDataHandler.testCase7.getCtnCity());
+		getRogersChooseNumberPage().selectCity(TestDataHandler.tc07AAL.getCtnCity());
 		getRogersChooseNumberPage().clkFindAvailableNumbers();
 		getRogersChooseNumberPage().selectFirstAvailableNumber();
 		getRogersChooseNumberPage().clkSave();
@@ -95,7 +82,7 @@ public class RogersBFA_TC07_AAL_Test extends BaseTestClass {
 		getRogersOrderReviewPage().clkTermsAgreementCheckbox();
 		getRogersOrderReviewPage().clkShieldAgreementCheckbox();
 		getRogersOrderReviewPage().clkUpfrontTermsCheckbox();
-		getRogersOrderReviewPage().selectEmailDigitalCopy(TestDataHandler.testCase7.getUsername());
+		getRogersOrderReviewPage().selectEmailDigitalCopy(TestDataHandler.tc07AAL.getUsername());
 		reporter.reportLogWithScreenshot("Rogers Order Review page before clicking submit");
 		if(getRogersOrderReviewPage().isPaymentRequired()) {
 			getRogersOrderReviewPage().clkContinue();

@@ -76,17 +76,10 @@ public class RogersCH_TC_038_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");    	
         getRogersHomePage().clkUseThisAddress();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-        //reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-        getRogersIgniteTVBuyPage().clkHomephone();
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
         getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
         reporter.reportLogWithScreenshot("Launched the information popup");
         getRogersIgniteTVBuyPage().clkIUnderstand();
-        reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        getRogersHomePhoneSelectionPage().clkSkipforNewNumber();
-        reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
-        getRogersIgniteTVBuyPage().clkHomePhone();
-
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
         getRogersIgniteTVBuyPage().set4KTV();
@@ -95,29 +88,15 @@ public class RogersCH_TC_038_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
-        getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomerMigration(TestDataHandler.tc38_DigitalTVUpgradeToIgnite.getAccountDetails().getYear());
+        getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomer(TestDataHandler.tc38_DigitalTVUpgradeToIgnite.getAccountDetails().getYear());
         getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomerMigration(TestDataHandler.tc38_DigitalTVUpgradeToIgnite.getAccountDetails().getMonth());
         getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomerMigration(TestDataHandler.tc38_DigitalTVUpgradeToIgnite.getAccountDetails().getDate());
         reporter.reportLogWithScreenshot("Entered the DOB details");
         getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
-        reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        getRogersHomePhoneSelectionPage().clkContinueHomePhoneSelection();
 
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
-        getRogersTechInstallPage().selTechInstalStartDate();
-        reporter.reportLogWithScreenshot("Selected Start date for Installation");
-        getRogersTechInstallPage().selectPreferredTimeSlot("1: AFT");
-        reporter.reportLogWithScreenshot("Selected Start date for Installation slot");
-        getRogersTechInstallPage().selTechInstalEndDate();
-        reporter.reportLogWithScreenshot("Selected End date for Installation");
-        getRogersTechInstallPage().selectBackupTimeSlot("1: AFT");
-        reporter.reportLogWithScreenshot("Selected End date for Installation slot");
-        reporter.reportLogWithScreenshot("tech install details");
-        getRogersTechInstallPage().setMobielNumber();
-        reporter.reportLogWithScreenshot("tech install details");
         getRogersTechInstallPage().clkTechInstalConsent();
-
         getRogersTechInstallPage().clkTechInstallContinue();
         reporter.reportLogWithScreenshot("Launched the payment options page");
 

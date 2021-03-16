@@ -24,39 +24,48 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='col-md-12 loading']")
 	WebElement loaderTVdashboard;
 	
-	@FindBy(xpath = "//ins[@usertype-translate='global.dashboard.tv.viewMyChannelLineup']")
+	@FindBy(xpath = "//span[@translate='global.dashboard.tv.viewFlexChannels']")
 	WebElement lnkViewMyChannelLineup;
+    //ins[@usertype-translate='global.dashboard.tv.viewMyChannelLineup']
 
-	@FindBy(xpath = "//ins[@translate='global.modals.viewMyChannelsModal.viewAsPdf']")
+	@FindBy(xpath = "//span[@translate='global.modals.viewMyChannelsModal.viewAsPdf']")
 	WebElement lnkViewAsPDF;
+	//ins[@translate='global.modals.viewMyChannelsModal.viewAsPdf']
 
 	@FindBy(xpath = "//embed[@id='plugin']")
 	WebElement lnkPDFPage;
 
-	@FindBy(xpath = "//div[@class='channel-list-block']")
+	@FindBy(xpath = "//div[@class='channels-container']")
 	WebElement lstChannelList;
+	//div[@class='channel-list-block']
 
-	@FindBy(xpath = "//button[@class='closeModalBtn']")
+	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
 	WebElement popupCloseChannel;
+	//button[@class='closeModalBtn']
 
-	@FindBy(xpath = "//ins[@usertype-translate='global.dashboard.tv.viewMyFlexChannels']")
+	@FindBy(xpath = "//span[@translate='global.dashboard.tv.viewLineup']")
 	WebElement lnkViewfelxChannels;
+	//ins[@usertype-translate='global.dashboard.tv.viewMyFlexChannels']
 
-	@FindBy(xpath = "//ins[@translate='global.cta.changeTVPackage']")
+	@FindBy(xpath = "//button[contains(@aria-label,'Change TV package') or  contains(@aria-label,'Modifier le forfait Télé')]")
 	WebElement btnChangeTVPackage;
+	//ins[@translate='global.cta.changeTVPackage']
 
-	@FindBy(xpath = "//ins[@translate='global.cta.addChannelsOrThemePacksTv']")
+	@FindBy(xpath = "//span[@translate='global.dashboard.tv.manageChannelsAndThemePacks.buttonName']")
 	WebElement btnManageChannelsAndThemePacks;
-	
-	@FindBy(xpath = "//ins[@translate='global.cta.bysContinue']")
+	//ins[@translate='global.cta.addChannelsOrThemePacksTv']
+
+	@FindBy(xpath = "//span[contains(text(),'Continue')]/ancestor::a/span")
 	WebElement popupChangeTVPackage;
+	//ins[@translate='global.cta.bysContinue']
 
-	@FindBy(xpath = "//div[@class='live-support']")
+	@FindBy(xpath = "//div[@class='popup-modal-component']//span[@class='ds-icon rds-icon-check-circle ds-color-success']")
 	WebElement popupContatUS;
+	//div[@class='live-support']
 
-	@FindBy(xpath = "//a[@id='swapChannelsButton']")
+	@FindBy(xpath = "//span[@translate='global.dashboard.tv.exchangeFlexChannels']")
 	WebElement lnkChangeFlexChannels;
-	
+
 	@FindBy(xpath = "//input[@id='searchFilter_swapout']")
 	WebElement infoChannelSwapoutSeach;
 
@@ -69,39 +78,6 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@id='tvPopupTitle']/i[@class='ute-icon']")
 	WebElement infoSuccessIcon;	
 
-	@FindBy(xpath = "((//div[@ng-repeat='channelsArray in listofChannelsArray'])[1]//div[@class='channel-logo-body'])[1]")
-	WebElement btnSelectChannelOne;
-	
-	@FindBy(xpath = "((//div[@ng-repeat='channelsArray in listofChannelsArray'])[1]//div[@class='channel-logo-body'])[2]")
-	WebElement btnSelectChannelTwo;
-	
-	@FindBy(xpath = "((//div[@ng-repeat='channelsArray in listofChannelsArray'])[1]//div[@class='channel-logo-body'])[3]")
-	WebElement btnSelectChannelThree;
-	
-	@FindBy(xpath = "//input[contains(@class,'ng-empty')]")
-	WebElement txtEnterChannelToSerach;
-	
-	@FindBy(xpath = "//span[contains(@class,'ute-icon-circle-x')]")
-	WebElement btnClearSerachResults;
-		
-	@FindBy(xpath = "//span[@class='ute-icon-search2']")
-	WebElement btnSearchChannel;
-	
-	@FindBy(xpath = "//span[@class='ute-icon-info']")
-	WebElement btnSelectChannel;
-	
-	@FindBy(xpath = "//button[@translate='global.dashboard.tv.exchangeFlexChannels.modalCTA']")
-	WebElement btnConfirmSelectedChannel;
-	
-	@FindBy(xpath = "//button[@translate='global.dashboard.tv.exchangeFlexChannels.CTAGreyedOut']")
-	WebElement btnConfirmSwap;
-	
-	@FindBy(xpath = "//button[@class='ute-btn-primary ute-md']")
-	WebElement btnContinueSwap;	
-	//button[@translate='global.dashboard.tv.exchangeFlexChannels.modalConfirmCTA']
-	@FindBy(xpath = "//button[@class='ute-btn-primary ute-md']")
-	WebElement btnOK;
-	
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
 	
@@ -123,13 +99,13 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//h4[contains(normalize-space(.),'Ignite Flex 10') or contains(normalize-space(.),'Élan Flex 10')]")
 	WebElement txtIgniteFlex10;
 	
-	@FindBy(xpath = "//div[@class='modal-content']//ins[@usertype-translate='global.label.success']")
+	@FindBy(xpath = "//span[@class='ds-icon rds-icon-check-circle ds-color-success']")
 	WebElement successMessageParentalControlAndPinReset;
 	
-	@FindBy(xpath = "//div[@class='digital-box-settings']//ins[@translate='global.cta.resetParentalControlsPIN']")
+	@FindBy(xpath = "//span[contains(text(),'Réinitialiser le NIP pour le contrôle parental') or contains(text(),'Reset Parental Control PIN')]")
 	WebElement lnkResetParentalConrolsAndPin;
 	
-	@FindBy(xpath = "//div[@class='modal-content']//ins[contains(@ng-bind,'global.cta.yesResetPinNumber')]")
+	@FindBy(xpath = "//span[contains(text(),'Continue') or contains(text(),'Continue')]")
 	WebElement btnContinueParentalControlAndPinReset;	
 
 	@FindBy(xpath = "//i[@class='ute-icon-button-right']")
@@ -147,7 +123,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//ins[@translate='global.dashboard.tv.digitalBoxSettings']")
 	WebElement lblBoxSettings;
 
-	@FindBy(xpath = "//h1[@class='tv-dashboard-hdr']")
+	@FindBy(xpath = "//h1[@class='tv-dashboard-hdr' or text()='Ignite SmartStream']")
 	WebElement lblHeaderTV;
 	
 	@FindBy(xpath = "//div[@class='col-md-12 loading']")
@@ -156,9 +132,13 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='loading']")
 	WebElement ldrThemepack2;
 	
-	@FindBy(xpath = "//h3[@class='copy-1 font-medium margin-0']")
+	@FindBy(xpath = "//h2[@class='all-channels__header']")
 	WebElement txtFlexChannels;
-	
+	//h3[@class='copy-1 font-medium margin-0']
+
+	@FindBy(xpath = "//i[@class='li-loader']")
+	WebElement loaderTVDashboard;
+
 	
 	/**
 	 * Click on Reset Parental controls And Pin link
@@ -232,7 +212,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		getReusableActionsInstance().switchToNewWindow(mainWindow);
 		//the page is moving to new window
 		getReusableActionsInstance().staticWait(1000);
-		getReusableActionsInstance().isElementVisible(lnkPDFPage);
+		//getReusableActionsInstance().isElementVisible(lnkPDFPage);
 		getReusableActionsInstance().closeCurrentWindow();
 		getReusableActionsInstance().switchToMainWindow(mainWindow);
 		//the page is moving to original window
@@ -282,8 +262,24 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkChangeTVPackage() {
-		getReusableActionsInstance().waitForElementVisibility(btnChangeTVPackage,90);
-		getReusableActionsInstance().getWhenReady(btnChangeTVPackage, 30).click();
+		//NL and FL  Provinces taking long loading time to pull the dashboard details
+		getReusableActionsInstance().staticWait(6000);
+		getReusableActionsInstance().waitForElementVisibility(btnChangeTVPackage,120);
+		//getReusableActionsInstance().executeJavaScriptClick(btnChangeTVPackage);
+		getReusableActionsInstance().getWhenReady(btnChangeTVPackage, 60).click();
+	}
+
+	/**
+	 * Click the ChangeTV Package link on solaris TV dashboard page
+	 * @author chinnarao.vattam
+	 */
+	public void clkChangeTVPackageLetency() {
+		//NL and FL  Provinces taking long loading time to pull the dashboard details
+		getReusableActionsInstance().waitForElementInvisibility(loaderTVDashboard,120);
+		getReusableActionsInstance().staticWait(6000);
+		getReusableActionsInstance().waitForElementVisibility(btnChangeTVPackage,120);
+		//getReusableActionsInstance().executeJavaScriptClick(btnChangeTVPackage);
+		getReusableActionsInstance().getWhenReady(btnChangeTVPackage, 60).click();
 	}
 
 	/**
@@ -318,8 +314,10 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkChangeFlexChannelsMobile() {
-		//getReusableActionsInstance().waitForElementInvisibility(By.className("QSIPopOverShadowBox"),90);
-		getReusableActionsInstance().waitForElementInvisibility(lnkChangeFlexChannels, 120);
+		getReusableActionsInstance().waitForElementInvisibility(By.className("QSIPopOverShadowBox"),90);
+		//Need ti to pull channels from ATG
+		getReusableActionsInstance().staticWait(6000);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 		getReusableActionsInstance().executeJavaScriptClick(lnkChangeFlexChannels);
 	}
 	/**
@@ -350,7 +348,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
-		By packageNameLocator = By.xpath("//h4[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'owl-item')]//ins[@translate='global.cta.select']");
+		By packageNameLocator = By.xpath("//h3[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'tv-bundle-tile__row')]//span[contains(text(),'Select')]");
 		if(getReusableActionsInstance().isElementVisible(packageNameLocator,60))
 		{		
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 20);
@@ -366,7 +364,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	    getReusableActionsInstance().executeJavaScriptClick(pkg);
 		}
 	}
-	
+
 	/**
 	 * Click the ChangeTV Package button on solaris TV dashboard page
 	 * @author chinnarao.vattam
@@ -463,132 +461,6 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 */
 	public boolean verifyIgniteTVStarterPackage() {		
 		return getReusableActionsInstance().isElementVisible(txtIgniteTVStarter);
-	}
-	
-	/**
-	 * Click the cross button to cancel the channel 
-	 * @author chinnarao.vattam
-	 */
-	public void clkOutChannelOne() {		
-		getReusableActionsInstance().getWhenReady(btnSelectChannelOne, 90).click();
-	}
-	
-	/**
-	 * Click the cross button to cancel the channel 
-	 * @author chinnarao.vattam
-	 */
-	public void clkOutChannelTwo() {		
-		getReusableActionsInstance().getWhenReady(btnSelectChannelTwo, 90).click();
-	}
-
-	/**
-	 * Click the cross button to cancel the channel 
-	 * @author chinnarao.vattam
-	 */
-	public void clkOutChannelThree() {		
-		getReusableActionsInstance().getWhenReady(btnSelectChannelThree, 60).click();
-	}
-	
-	/**
-	 * Search for the required channel and will add it to the to be add list
-	 * @param strInChannellist  are array of channels 
-	 * @author chinnarao.vattam
-	 */
-	public void swapChannelIn(String[] strInChannellist) {
-		String strInChannel[] = strInChannellist;
-		for (String channel : strInChannel) {			
-		getReusableActionsInstance().getWhenReady(txtEnterChannelToSerach, 90).clear();
-		getReusableActionsInstance().getWhenReady(txtEnterChannelToSerach, 10).sendKeys(channel);
-		getReusableActionsInstance().getWhenReady(btnSearchChannel, 30).click();
-		getReusableActionsInstance().waitForElementVisibility(btnSelectChannel, 90);
-		getReusableActionsInstance().scrollToElement(btnSelectChannel);
-		getReusableActionsInstance().getWhenReady(btnSelectChannel, 90).click();
-		getReusableActionsInstance().getWhenReady(btnConfirmSelectedChannel, 60).click();
-		getReusableActionsInstance().getWhenReady(btnClearSerachResults, 180).click();
-		}
-	}
-
-	/**
-	 * Search for the required channel and will add it to the to be add list
-	 * @param strInChannel  are channels 
-	 * @author chinnarao.vattam
-	 */
-	public void swapChannelIn(String strInChannel) {
-			getReusableActionsInstance().getWhenReady(txtEnterChannelToSerach, 60).clear();
-			getReusableActionsInstance().getWhenReady(txtEnterChannelToSerach, 30).sendKeys(strInChannel);
-			getReusableActionsInstance().waitForElementVisibility(btnSearchChannel,60);
-			getReusableActionsInstance().executeJavaScriptClick(btnSearchChannel);
-		    By imgChannel = By.xpath("//div[@class='channel-title' and contains(text(), '"+ strInChannel+"')]/ancestor::div[@class='genre-channel']//div[@class='channel-logo-body']");
-			getReusableActionsInstance().waitForElementVisibility(btnSearchChannel,90);
-			getReusableActionsInstance().getWhenReady(imgChannel, 30).click();
-	}
-
-	/**
-	 * Search for the required channel and will add it to the to be add list
-	 * @param strInChannel  are channels
-	 * @author chinnarao.vattam
-	 */
-	public void swapChannelInMobile(String strInChannel) {
-		getReusableActionsInstance().getWhenReady(txtEnterChannelToSerach, 60).clear();
-		getReusableActionsInstance().getWhenReady(txtEnterChannelToSerach, 30).sendKeys(strInChannel);
-		getReusableActionsInstance().waitForElementVisibility(btnSearchChannel,60);
-		getReusableActionsInstance().executeJavaScriptClick(btnSearchChannel);
-		By imgChannel = By.xpath("//div[@class='channel-title' and contains(text(), '"+ strInChannel+"')]/ancestor::div[@class='genre-channel']//span[@class='ute-icon-info']");
-		getReusableActionsInstance().waitForElementVisibility(btnSearchChannel,90);
-		getReusableActionsInstance().executeJavaScriptClick((WebElement) imgChannel);
-	}
-
-	/**
-	 * Click the Channel Add button 
-	 * @author chinnarao.vattam
-	 */
-	public void btnChannelAdd() {		
-		getReusableActionsInstance().getWhenReady(btnConfirmSelectedChannel, 90).click();
-	}
-	
-	/**
-	 * Click the Serach Results on flex channels page
-	 * @author chinnarao.vattam
-	 */
-		public void btnClearSerachResults() {	
-			getReusableActionsInstance().waitForElementVisibility(btnClearSerachResults, 60);
-			getReusableActionsInstance().scrollToElement(btnClearSerachResults);
-			getReusableActionsInstance().executeJavaScriptClick(btnClearSerachResults);
-		}
-	
-	/**
-	 * Click the confirm channel list for swap 
-	 * @author chinnarao.vattam
-	 */
-	public void clkConfirmChannels() {		
-		getReusableActionsInstance().getWhenReady(btnConfirmSelectedChannel, 30).click();
-	}
-	
-	/**
-	 * Click the confirm channel swap 
-	 * @author chinnarao.vattam
-	 */
-	public void clkConfirmSwap() {
-		getReusableActionsInstance().waitForElementVisibility(btnConfirmSwap,30);
-		getReusableActionsInstance().executeJavaScriptClick(btnConfirmSwap);
-	}
-	
-	/**
-	 * Click the continue channel swap 
-	 * @author chinnarao.vattam
-	 */
-	public void clkSuccessSwap() {	
-		getReusableActionsInstance().waitForElementVisibility(btnContinueSwap, 180);
-		getReusableActionsInstance().getWhenReady(btnContinueSwap, 180).click();
-	}
-	
-	/**
-	 * Click the OK button on solaris TV dashboard page
-	 * @author chinnarao.vattam
-	 */
-	public void clkOkButton() {	
-		getReusableActionsInstance().waitForElementInvisibility(btnContinueSwap, 90);
-		getReusableActionsInstance().clickWhenReady(btnOK, 30);
 	}
 	
 	/**

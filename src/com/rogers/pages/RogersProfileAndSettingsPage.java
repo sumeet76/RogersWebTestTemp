@@ -152,6 +152,12 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//input[@id='email']")
 	WebElement inputContactEmail;
 	
+	@FindBy (xpath = "//input[@id='pinCode']//parent::div")	
+	WebElement lblSetCodeForWireLess;
+	
+	@FindBy (xpath = "//input[@id='pinCode']")
+	WebElement inputSetCodeForWireLess;
+	
 	@FindBy (xpath = "//button[@title='Continue' or @title='Continuer']")
 	WebElement btnAddContactEmailContinue;
 	
@@ -303,17 +309,26 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy(xpath = "//p[text()='Due to recent changes on your account, we are unable to proceed with this transaction.' or text()='En raison de modifications récentes de votre compte, nous ne pouvons pas procéder avec cette transaction.']")
 	WebElement msgUnableToProceed;
 
-	@FindBy(xpath = "//rss-contact-info//button[@title='Add a wireless contact number']")
+	@FindBy(xpath = "//rss-contact-info//button[@title='Add a wireless contact number' or @title='Update wireless contact number' or contains(@title,'numéro de sans-fil')]")
 	WebElement lnkAddWirelessNumber;
 
-	@FindBy(xpath = "//input[@title='Enter new wireless contact number']/parent::div")
+	@FindBy(xpath = "//input[@title='Enter new wireless contact number' or @id='mobilePhone']/parent::div")
 	WebElement lblWirelessNumber;
 
-	@FindBy(xpath = "//input[@title='Enter new wireless contact number']")
+	@FindBy(xpath = "//input[@title='Enter new wireless contact number' or @id='mobilePhone']")
 	WebElement inputWirelessNumber;
 	
-	@FindBy(xpath = "//button[@title='Send code']")
+	@FindBy(xpath = "//button[@title='Send code' or @title='Envoyer le code']")
 	WebElement btnSendCode;
+	
+	@FindBy(xpath = "//button[@title='Done' or @title='Terminé']")
+	WebElement btnDoneSetCodeForWireless;
+
+	@FindBy(xpath = "//button[@title='Submit code' or @title='Soumettre le code']")
+	WebElement btnSubmitCode;
+
+	@FindBy(xpath = "//*[text()='Wireless number verified' or text()='Numéro de sans-fil confirmé']")
+	WebElement msgWirelessVerified;
 	
 	/**
 	 * Click on setup recovery number link
@@ -703,7 +718,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkLnkChangeBillingAddress() {
-		getReusableActionsInstance().clickWhenReady(lnkChangeBillingAddress, 30);
+		getReusableActionsInstance().getWhenReady(lnkChangeBillingAddress, 30).click();
 	}
 	
 	/**
@@ -1290,5 +1305,37 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void clkBtnSendCode() {
 		getReusableActionsInstance().getWhenReady(btnSendCode).click();
+	}
+
+	public void setVerificationCode(String verifivationCode) {
+		getReusableActionsInstance().getWhenReady(lblSetCodeForWireLess).click();
+		//getReusableActionsInstance().getWhenReady(inputContactEmail,20).clear();
+		getReusableActionsInstance().getWhenReady(inputSetCodeForWireLess).sendKeys(verifivationCode);
+		
+	}
+
+	public void clkBtnSubmitCode() {
+		getReusableActionsInstance().getWhenReady(btnSubmitCode).click();
+	}
+
+	public void clkDone() {
+		getReusableActionsInstance().getWhenReady(btnDoneSetCodeForWireless,30).click();
+	}
+
+	public boolean clkBtnDoneWirelessVerification() {
+		getReusableActionsInstance().staticWait(1000);
+		if(getReusableActionsInstance().isElementVisible(msgWirelessVerified,30))
+		{
+			clkDone();
+		 return true;
+		}
+			
+		//getReusableActionsInstance().clickIfAvailable(btnClose);
+		return false;
+		
+	}
+
+	public boolean verifyWirelessNumber(String strWirelessNumber) {
+		return getReusableActionsInstance().isElementVisible(By.xpath("//div[contains(text(),'" + strWirelessNumber + "')]"), 30);
 	}
 }

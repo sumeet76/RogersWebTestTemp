@@ -63,14 +63,14 @@ public class RogersSS_TC_061_ValidateDataUsageDisplayRunningLow_postpaid_SE_AddD
 							"Add the Data top-up button is displayed", 
 							"Add the Data top-up  button is NOT displayed."); 
         //Validate add data flow
-        common_business_flows.addDataFlow();
+        getCommonBusinessFlows().addDataFlow();
         if(getRogersAddDataPage().verifyAddDataSuccessMsgIsDisplayed())
         {
         	addedData = getRogersAddDataPage().getAddedDataVolume();
         	getRogersAddDataPage().clkCloseOnAddDataOverlay();
         	//Sign out and re sign in to verify if added data reflected.
 	        reporter.reportLogWithScreenshot("Wireless dashboard page.");  
-	        common_business_flows.logOutAndReSignIn(strUsername, strPassword);      
+	        getCommonBusinessFlows().logOutAndReSignIn(strUsername, strPassword);      
 	        getRogersAccountOverviewPage().clkMenuUsageAndService();
 	        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");        
 	        getRogersAccountOverviewPage().clkSubMenuWirelessUsage();

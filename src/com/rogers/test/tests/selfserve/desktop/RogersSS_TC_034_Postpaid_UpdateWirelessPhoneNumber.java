@@ -35,7 +35,7 @@ public class RogersSS_TC_034_Postpaid_UpdateWirelessPhoneNumber extends BaseTest
 		closeSession();
 	}
 	
-	@Test(groups = {"SanitySS","ProfileAndSettingsSS"})
+	@Test(groups = {"ProfileAndSettingsSS"})
 	public void validateUpdateWirelessPhoneNumber() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc013132.getUsername();
@@ -72,23 +72,23 @@ public class RogersSS_TC_034_Postpaid_UpdateWirelessPhoneNumber extends BaseTest
     	reporter.reportLogWithScreenshot("Click on set code");
     	getRogersProfileAndSettingsPage().clkBtnSendCode();
     	String strTestingTab = getDriver().getWindowHandle();
-		String strRecoveredUserName ="";
+		String verificationCode ="";
     	//Go to ENS to verify email and get reset password page.		
 		try {
 			
-			ensVerifications.getEmailVerifyPage(strUsername);
-			String recoveryCode = getRegisterOrAccountRecoveryPage().getVerificationCode();
-			getDriver().switchTo().window(strTestingTab);			
-			reporter.reportLogWithScreenshot("Close the Overlay");
-			getRogersProfileAndSettingsPage().switchToVerifyIdentityIFrame();
-			getRegisterOrAccountRecoveryPage().setVerificationCode(recoveryCode);
-			getRegisterOrAccountRecoveryPage().clkBtnContinue();    						
-						
+			verificationCode = getEnsVerifications().getVerifyCode(strWirelessPhoneNumer);			
+			getDriver().switchTo().window(strTestingTab);						
+			 						
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
     	
-	
+		getRogersProfileAndSettingsPage().setVerificationCode(verificationCode);
+		getRogersProfileAndSettingsPage().clkBtnSubmitCode();		
+		reporter.hardAssert((getRogersProfileAndSettingsPage().clkBtnDoneWirelessVerification()
+    			&& getRogersProfileAndSettingsPage().verifyWirelessNumber(strWirelessPhoneNumer.substring(strWirelessPhoneNumer.length()-4))),
+    			"Wireless phone number was successfully set/updated",
+    			"Wireless phone number failed"); 	
 	}
 
 }

@@ -46,12 +46,12 @@ public class RogersSS_TC_03_FDM_ReassignDataManagerRole extends BaseTestClass {
             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc7681.getAccountDetails().getBan());
         }
         
-       common_business_flows.scrollToMiddleOfWebPage();
+       getCommonBusinessFlows().scrollToMiddleOfWebPage();
 	   reporter.reportLogWithScreenshot("Check the number of CTNs");
 	   reporter.hardAssert(getRogersAccountOverviewPage().isCTNMoreThanOne(),
 				"The account has more than 1 CTNS",
 				"The account doesnt have more than 1 CTNs, please add more than 1 and rerun");
-	   common_business_flows.scrollToTopOfWebPage();
+	   getCommonBusinessFlows().scrollToTopOfWebPage();
        reporter.reportLogWithScreenshot("Account overview page.");     
        getRogersAccountOverviewPage().clkMenuUsageAndService();
        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");

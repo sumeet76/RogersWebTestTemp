@@ -26,7 +26,7 @@ public class RogersChooseAddonsPage extends BasePageClass {
 	WebElement btnContinue;
 	
 	@FindAll({
-	//@FindBy(xpath = "//section[contains(@class,'summary-section')]//span/span/span[@res='_continue']")
+	@FindBy(xpath = "//section[contains(@class,'summary-section')]//span/span/span[@res='_continue']"),
 	@FindBy(xpath = "//section[contains(@class,'summary-section')]//p[@class='col-sm-6 btn button-continue ng-scope']"),
 	@FindBy(xpath = "//button[@name='button_continue']//span"),
 	@FindBy(xpath = "//div[contains(@class,'summary-strip-section hidden')]//button")
@@ -41,12 +41,22 @@ public class RogersChooseAddonsPage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[contains(@data-ng-repeat,\"subscriber in vm.additionalSubscribers\")]//input[@type='checkbox']/..//label")
 	WebElement checkBoxKeepCurrentPlanLine2;
-	
+
+	/**
+	 * Verify choose addons page
+	 * @return true if the page loaded properly else false
+	 * @author Saurav.Goyal
+	 */
+	public Boolean verifyChooseAddOnPage() {
+		return getReusableActionsInstance().isElementVisible(btnContinueHUP , 30);
+	}
+
 	/**
 	 * Clicks on the 'Continue' button at the bottom of the page
 	 * @author rajesh.varalli1
 	 */
 	public void clkCheckBoxKeepCurrentPlanLine2() {
+		getReusableActionsInstance().waitForElementVisibility(checkBoxKeepCurrentPlanLine2,30);
 		getReusableActionsInstance().executeJavaScriptClick(checkBoxKeepCurrentPlanLine2);
 		//getReusableActionsInstance().clickIfAvailable(checkBoxKeepCurrentPlanLine2,30);
 	}
@@ -56,6 +66,7 @@ public class RogersChooseAddonsPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkContinueHUP() {
+		getReusableActionsInstance().waitForElementVisibility(btnContinueHUP , 30);
 		getReusableActionsInstance().executeJavaScriptClick(btnContinueHUP);
 		getReusableActionsInstance().clickIfAvailable(By.xpath("//div[@class='ngdialog-content']//button[@res='_continue']"),30);
 	}

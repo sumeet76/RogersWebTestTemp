@@ -4,6 +4,7 @@ import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -48,11 +49,17 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     @FindBy(xpath ="//button[@data-test='build-plan-checkout-flow-button']/span")
     WebElement continueButtonOnCartSummary;
-    
-    @FindBy(xpath = "//button[@id='get-bpo-offer-button' or @data-test='bpo-offer-modal-button-primary']")
+    @FindAll({
+            @FindBy(xpath = "//button[@id='get-bpo-offer-button' or @data-test='bpo-offer-modal-button-primary']"),
+            @FindBy(xpath = "//button[@data-test='bpo-offer-modal-button-primary']")
+    })
     WebElement getBPOOfferOnDeviceProtection;
 
-    @FindBy(xpath = "//button[@id='Skip the Offer']")
+    @FindAll({
+        @FindBy(xpath = "//button[@data-test='bpo-offer-modal-button-primary']"),
+        @FindBy(xpath = "//button[@id='Skip the Offer']"),
+        @FindBy(xpath = "//div[@class='ds-modal__footer mb-24 mb-sm-40']//button[contains(@class,'-tertiary -large')]")
+            })
     WebElement skipBPOOfferOnDeviceProtection;
 
     @FindBy(xpath = "//div[@class='d-flex flex-row']")
@@ -95,6 +102,15 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     @FindBy(xpath = "//span[contains(text(),'Apportez votre propre appareil') or contains(text(),'Bring Your Own Device')]")
     WebElement bringYourOwnDeviceInBreadCrumb;
+
+    @FindBy(xpath = "//ds-checkbox//div[@class='ds-checkbox__box my-12']")
+    WebElement checkBoxKeepMyCurrentPlan;
+
+    @FindBy(xpath = "//ds-modal")
+    WebElement modalToDoWithOldPhone;
+
+    @FindBy(xpath = "//ds-modal//button[@title='Continue']")
+    WebElement btnContinueOnModalToDoWithOldPhone;
 
     /**
      * Select Device Protection Header on Plan config page
@@ -148,6 +164,22 @@ public class RogersPlanConfigPage extends BasePageClass {
             xpathDcDoTo = createXpathWithInputData(deviceCost);
             getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo));
         }
+    }
+
+    /**
+     * Select No term Device Cost on Plan config page
+     * @author saurav.goyal
+     */
+    public void selectNoTermDeviceDeviceCost(){
+        getReusableActionsInstance().clickWhenReady(By.xpath("//span[@data-caption='NOTERM_false']//ancestor::label") , 30);
+    }
+
+    /**
+     * Select No term Device Cost on Plan config page
+     * @author saurav.goyal
+     */
+    public void setCheckBoxKeepMyCurrentPlan(){
+        getReusableActionsInstance().clickWhenReady(checkBoxKeepMyCurrentPlan , 30);
     }
 
     /**
@@ -283,6 +315,15 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
     
     /**
+     * Click continue on modal what would you like to do with your old phone
+     * @author saurav.goyal
+     */
+    public void clickContinueOnModalToDoWithOldPhone() {
+        if(getReusableActionsInstance().isElementVisible(modalToDoWithOldPhone, 20))
+            getReusableActionsInstance().clickWhenReady(btnContinueOnModalToDoWithOldPhone, 5);
+    }
+
+    /**
      * Click continue on Plan config page before cart summary
      * @author saurav.goyal
      */
@@ -303,7 +344,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clickPreCartDataOptionContinueButton() {
-        getReusableActionsInstance().clickWhenReady(preCartDataOtionContinueButton);
+        getReusableActionsInstance().clickIfAvailable(preCartDataOtionContinueButton);
     }
     
     /**
@@ -311,7 +352,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clickPreCartTalkOptionContinueButton() {
-        getReusableActionsInstance().clickWhenReady(preCartTalkOptionContinueButton);
+        getReusableActionsInstance().clickIfAvailable(preCartTalkOptionContinueButton);
     }
     
     /**
@@ -319,7 +360,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clickPreCartAddonsContinueButton() {
-        getReusableActionsInstance().clickWhenReady(preCartAddonsContinueButton);
+        getReusableActionsInstance().clickIfAvailable(preCartAddonsContinueButton);
     }
     
     /**
@@ -440,7 +481,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void skipBPOOffer() {
-        if(getReusableActionsInstance().isElementVisible(skipBPOOfferOnDeviceProtection, 5))
+        if(getReusableActionsInstance().isElementVisible(skipBPOOfferOnDeviceProtection, 20))
             getReusableActionsInstance().clickIfAvailable(skipBPOOfferOnDeviceProtection, 5);
     }
 

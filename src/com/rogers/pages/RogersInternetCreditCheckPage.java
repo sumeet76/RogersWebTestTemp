@@ -16,58 +16,59 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 		super(driver);
 	}
 	
-	@FindBy(xpath = "//select[@id='ds-form-input-id-13']")
+	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.year']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlCreditCheckYear;
 		
-	@FindBy(xpath = "//select[@id='ds-form-input-id-14']")
+	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.month']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlCreditCheckMonth;
 	
-	@FindBy(xpath = "//select[@id='ds-form-input-id-15']")
+	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.day']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlCreditCheckDay;
 	
-	@FindBy(xpath = "//select[@id='ds-form-input-id-16']")
+	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.firstIdOp']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlFirstID;
 	
-	@FindBy(xpath = "//select[@id='ds-form-input-id-19']")
+	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.enterYour']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlProvince;
-		
-	@FindBy(xpath = "//select[@id='ds-form-input-id-20']")
+
+	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.driving_l']//select[contains(@id,'ds-form-input-id-')])[1]")
 	WebElement ddlExpiryYear;
-	
-	@FindBy(xpath = "//select[@id='ds-form-input-id-21']")
+
+	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.driving_l']//select[contains(@id,'ds-form-input-id-')])[2]")
 	WebElement ddlExpiryMonth;
 
-	@FindBy(xpath = "//select[@id='ds-form-input-id-22']")
+	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.driving_l']//select[contains(@id,'ds-form-input-id-')])[3]")
 	WebElement ddlExpiryDay;
-		
-	@FindBy(xpath = "//input[@id='ds-form-input-id-18']")
+
+	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'Please enter your driver')]")
 	WebElement txtLicenseNumber;
-	  	
-	@FindBy(xpath = "//select[@id='ds-form-input-id-17']")
+
+	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.secondIdO']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlSecondIdOption;
-	
-	@FindBy(xpath = "//input[@id='ds-form-input-id-23']")
+
+	@FindBy(xpath = "//input[@ng-reflect-a11y-description='Please enter your passport num']")
 	WebElement txtPasportNumber;
-		
-	@FindBy(xpath = "//select[@id='ds-form-input-id-24']")
+
+	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.passport_']//select[contains(@id,'ds-form-input-id-')])[1]")
 	WebElement ddlPassportExpiryYear;
-		
-	@FindBy(xpath = "//select[@id='ds-form-input-id-25']")
+
+	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.passport_']//select[contains(@id,'ds-form-input-id-')])[2]")
 	WebElement ddlPassportExpiryMonth;
-	
-	@FindBy(xpath = "//select[@id='ds-form-input-id-26']")
+
+	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.passport_']//select[contains(@id,'ds-form-input-id-')])[3]")
 	WebElement ddlPassportExpiryDay;
 
 	@FindBy(xpath = "//div[@class='ds-checkbox__box my-12 rds-icon-check']")
 	WebElement chkConsent;
 
-	@FindBy(xpath = "//label[@for='ds-checkbox-id-0']")
+	@FindBy(xpath = "//span[@class='checkout-authorize-copy']")
 	WebElement chkConsentSai;
+//label[@for='ds-checkbox-id-0']
 
-
-	@FindBy(xpath = "//button[contains(@class,'-primary -large')]")
+	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::a")
 	WebElement btnCreditCheckSubmit;
-	
+	//button[contains(@class,'-primary -large')]
+
 	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
 	WebElement txtContainer;
 	

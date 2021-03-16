@@ -56,23 +56,40 @@ public class RogersCH_TC_004_IginteTV_TVChannelsSwapTest extends BaseTestClass {
     reporter.reportLogWithScreenshot("Launched the TV dash board");
     getRogersSolarisTVDashboardPage().clkChangeFlexChannels();
     reporter.reportLogWithScreenshot("TV channels pannel has displayed");
-    getRogersSolarisTVDashboardPage().clkOutChannelOne();
-    getRogersSolarisTVDashboardPage().clkOutChannelTwo();
-    getRogersSolarisTVDashboardPage().clkOutChannelThree();
-    reporter.reportLogWithScreenshot("removed the Swap-out Channels");
-    getRogersSolarisTVDashboardPage().swapChannelIn(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getSwapInChannelOne());
-    reporter.reportLogWithScreenshot("Selceted the Swap-in Channel one");
-         getRogersSolarisTVDashboardPage().btnClearSerachResults();
-         getRogersSolarisTVDashboardPage().swapChannelIn(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getSwapInChannelTwo());
-    reporter.reportLogWithScreenshot("Selceted the Swap-in Channel two");
-         getRogersSolarisTVDashboardPage().btnClearSerachResults();
-         getRogersSolarisTVDashboardPage().swapChannelIn(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getSwapInChannelThree());
-    reporter.reportLogWithScreenshot("Selceted the Swap-in Channel three");
-         getRogersSolarisTVDashboardPage().clkConfirmSwap();
-    reporter.reportLogWithScreenshot("Swap Success popup has launched");
-    getRogersSolarisTVDashboardPage().clkSuccessSwap();
-    reporter.reportLogWithScreenshot("Swap success");  
-	}
+         getRogersSolarisChannelsExchangePage().verifyExchangeChannelPage();
+         reporter.reportLogWithScreenshot("TV channels exchange page has launched");
+         getRogersSolarisChannelsExchangePage().verifyChannelsPannel();
+         reporter.reportLogWithScreenshot("TV channels pannel has displayed");
+         getRogersSolarisChannelsExchangePage().swapChannelOut(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getSwapOutChannelOne());
+         reporter.reportLogWithScreenshot("selected the Swap-out Channel one");
+         getRogersSolarisChannelsExchangePage().clkRemoveChannel();
+         reporter.reportLogWithScreenshot("removed the Swap-out Channel one");
+         getRogersSolarisChannelsExchangePage().swapChannelIn(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getSwapInChannelOne());
+         reporter.reportLogWithScreenshot("Selected the Swap-in Channel one");
+         getRogersSolarisChannelsExchangePage().clkAddChannel();
+         reporter.reportLogWithScreenshot("Added the Swap-in Channel one");
+         getRogersSolarisChannelsExchangePage().swapChannelOut(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getSwapOutChannelTwo());
+         reporter.reportLogWithScreenshot("selected the Swap-out Channel two");
+         getRogersSolarisChannelsExchangePage().clkRemoveChannel();
+         reporter.reportLogWithScreenshot("removed the Swap-out Channel two");
+         getRogersSolarisChannelsExchangePage().swapChannelIn(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getSwapInChannelTwo());
+         reporter.reportLogWithScreenshot("Selected the Swap-in Channel two");
+         getRogersSolarisChannelsExchangePage().clkAddChannel();
+         reporter.reportLogWithScreenshot("Added the Swap-in Channel two");
+         getRogersSolarisChannelsExchangePage().swapChannelOut(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getSwapOutChannelThree());
+         reporter.reportLogWithScreenshot("selected the Swap-out Channel three");
+         getRogersSolarisChannelsExchangePage().clkRemoveChannel();
+         reporter.reportLogWithScreenshot("removed the Swap-out Channel three");
+         getRogersSolarisChannelsExchangePage().swapChannelIn(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getSwapInChannelThree());
+         reporter.reportLogWithScreenshot("Selected the Swap-in Channel three");
+         getRogersSolarisChannelsExchangePage().clkAddChannel();
+         reporter.reportLogWithScreenshot("Added the Swap-in Channel three");
+         getRogersSolarisChannelsExchangePage().clkConfirmSwap();
+         reporter.hardAssert(getRogersSolarisChannelsExchangePage().verifyExchangeSuccess(),"Swap Success","Swap failed");
+         reporter.reportLogWithScreenshot("Swap Success popup has launched");
+         getRogersSolarisChannelsExchangePage().clkReturnToDashbaord();
+         reporter.reportLogWithScreenshot("Tv Dashboard has launched");
+     }
 
 @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 //login flow

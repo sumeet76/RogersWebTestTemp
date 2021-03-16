@@ -17,8 +17,9 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//h1[@class='rhp-port-in__header']")
 	WebElement btnPortInOutPage;
 
-	@FindBy(xpath = "//h1[@class='fr-spacing-top-30 -text-semi']")
+	@FindBy(xpath = "//h2[@class='fr-spacing-top-30 -text-semi']")
 	WebElement txtPhoneNumberSelectionPage;
+	//h1[@class='fr-spacing-top-30 -text-semi']
 
 	@FindBy(xpath = "//span[@class='ng-star-inserted']/ancestor::button[@type='submit']")
 	WebElement btnGeneratePhoneNumber;
@@ -26,15 +27,15 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement loaderPhoneNumberPage;
 
-	@FindBy(xpath = "//span[contains(text(),'new number') or contains(text(),'Je veux choisir un nouveau')]//ancestor::button")
+	@FindBy(xpath = "//span[@id='ariaPickNewNumber']//ancestor::a//span[@role='text']")
 	WebElement btnSkipforNewNumber;
+	//span[contains(text(),'new number') or contains(text(),'Je veux choisir un nouveau')]//ancestor::button
 
 	@FindBy(xpath = "//label[@for='number-1']")
 	WebElement rdoChosePhoneNumber;
 	
-	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::button")
+	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::a")
 	WebElement btnContinueHomePhoneSelection;
-	
 
 	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -tertiary -large ng-star-inserted']")
 	WebElement popupNoContinue;
@@ -137,8 +138,9 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkContinueHomePhoneSelection() {
+		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().waitForElementVisibility(btnContinueHomePhoneSelection, 120);
-		getReusableActionsInstance().moveToElementAndClick(btnContinueHomePhoneSelection,90);
+		getReusableActionsInstance().executeJavaScriptClick(btnContinueHomePhoneSelection);
 	}
 
 	/**

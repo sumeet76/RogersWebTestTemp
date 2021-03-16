@@ -67,9 +67,10 @@ public class EnvironmentSelectionPage extends BasePageClass {
 	
 	/**
 	 * Check the presence of the go button
+	 * @return true if environment selection page displayed else false
 	 * @author Saurav.Goyal
 	 */
-	public void presenceOfTheGoButton() {
-		getReusableActionsInstance().isElementVisible(btnGo, 10);
+	public boolean presenceOfTheGoButton() {
+		return getReusableActionsInstance().isElementVisible(btnGo, 30);
 	}
 }

@@ -61,8 +61,7 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 	     * @author Karthic.hasan
 	     */
 	    public boolean isOrderConfirmationTitlePresent() {
-	    	getReusableActionsInstance().waitForElementVisibility(orderConfirmationTitle,60);
-	       return getReusableActionsInstance().isElementVisible(orderConfirmationTitle);
+	       return getReusableActionsInstance().isElementVisible(orderConfirmationTitle , 60);
 	    }
 	    
 		/**

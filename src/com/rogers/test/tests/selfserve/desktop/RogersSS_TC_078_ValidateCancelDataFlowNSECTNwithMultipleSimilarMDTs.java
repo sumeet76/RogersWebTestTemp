@@ -128,10 +128,10 @@ public class RogersSS_TC_078_ValidateCancelDataFlowNSECTNwithMultipleSimilarMDTs
 			getRogersManageDataPage().clkCloseButtonOnCancelSuccessOverlay();
 			reporter.reportLogWithScreenshot("Close overlay");
 			
-			common_business_flows.scrollToTopOfWebPage();
+			getCommonBusinessFlows().scrollToTopOfWebPage();
 			getRogersManageDataPage().clkBackOnManageDataUsagePage();
 			reporter.reportLogWithScreenshot("Back on dashboard");
-			common_business_flows.logOutAndReSignIn(strUsername, strPassword);				        
+			getCommonBusinessFlows().logOutAndReSignIn(strUsername, strPassword);				        
 			//rechange to the original one
 			if(getRogersAccountOverviewPage().verifySuccessfulLogin())
 			{

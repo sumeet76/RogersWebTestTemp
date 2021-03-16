@@ -4,6 +4,7 @@ import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import utils.FormFiller;
 
@@ -19,7 +20,7 @@ public class RogersTechInstallPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath ="//input[@id='26']/ancestor::label[@class='a-radio']")
+	@FindBy(xpath ="//input[@id='26']/ancestor::label[contains(@class,'ds-radioLabel')]//div[@class='ds-radioButton__outerCircle my-12']")
 	WebElement rdoTechInstallSlot;
 	
 	@FindBy(xpath ="//select[@id='preferredTimeSlot']")
@@ -87,10 +88,24 @@ public class RogersTechInstallPage extends BasePageClass {
 	
 	@FindBy(xpath ="//label[@for='ds-checkbox-id-0']")
 	WebElement chkTechInstalConsentExistingCustomer;
-	
-	@FindBy(xpath ="//button[@aria-label='Click here to continue']")
+
+
+	@FindAll({
+	@FindBy(xpath ="//a[@aria-describedby='ariaClickToContinue']"),
+	@FindBy(xpath ="//span[@translate='global.checkout.fulfillment.confirm']/ancestor::a")})
 	WebElement btnTechInstallContinue;
+//button[@aria-label='Click here to continue']
+
+
+	@FindBy(xpath ="//span[@id='ariaClickToContinue']/ancestor::a")
+	WebElement btnTechInstallContinueSelf;
+
 	//span[@translate='global.checkout.fulfillment.confirm']
+//button[@aria-label='Click here to continue']
+
+	@FindBy(xpath ="//span[@translate='global.checkout.fulfillment.confirm']")
+	WebElement btn3PTechInstallContinue;
+//button[@aria-label='Click here to continue']
 
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
@@ -124,7 +139,19 @@ public class RogersTechInstallPage extends BasePageClass {
 	
 	@FindBy(xpath ="//h2[@translate='global.checkout.fulfillment.title']")
 	WebElement txtTechInstalpage;
-	
+
+	@FindBy(xpath ="(//input[@format='MM/DD/YYYY']/ancestor::ds-form-field/div/div)[1]")
+	WebElement txtStartDateContainer;
+
+	@FindBy(xpath ="(//input[@id='backupDate']/ancestor::ds-form-field/div/div)[1]")
+	WebElement txtEndDateContainer;
+
+	@FindBy(xpath ="//input[@format='MM/DD/YYYY']")
+	WebElement txtStartDateNew;
+
+	@FindBy(xpath ="//input[@id='backupDate']")
+	WebElement txtEndDateNew;
+
 	/**
 	 * To click on the chevron on the tech Install page
 	 * @author Saurav.Goyal
@@ -169,7 +196,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 */
 	public void selectPreferredTimeSlot(String slot) {
 		getReusableActionsInstance().waitForElementVisibility(selPreferredTimeSlot,30);
-		getReusableActionsInstance().selectElementFromList(selPreferredTimeSlot,slot);
+		getReusableActionsInstance().selectWhenReady(selPreferredTimeSlot,1,10);
 	}
 	
 	/**
@@ -179,7 +206,8 @@ public class RogersTechInstallPage extends BasePageClass {
 	 */
 	public void selectBackupTimeSlot(String slot) {
 		getReusableActionsInstance().waitForElementVisibility(selBackupTimeSlot,30);
-		getReusableActionsInstance().selectElementFromList(selBackupTimeSlot,slot);
+		getReusableActionsInstance().selectWhenReady(selBackupTimeSlot,1,20);
+
 	}
 	
 	/**
@@ -188,10 +216,10 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyTechInstallPage() {
-		return	getReusableActionsInstance().isElementVisible(txtTechInstalpage, 120);
+		getReusableActionsInstance().waitForElementVisibility(txtTechInstalpage, 120);
+		return	getReusableActionsInstance().isElementVisible(txtTechInstalpage, 20);
 	}
-	
-	
+
 	public void clkPersonalizedInstall() {
 		getReusableActionsInstance().waitForElementVisibility(chkPersonalizedInstall, 60);
 		getReusableActionsInstance().getWhenReady(chkPersonalizedInstall, 30).click();
@@ -349,11 +377,11 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void setContactNumber() {
-		getReusableActionsInstance().staticWait(6000);
-/*		String strPhoneNumber = FormFiller.generatePhoneNumber();
-			getReusableActionsInstance().waitForElementVisibility(txtContainerContactNumber, 20);
-			getReusableActionsInstance().getWhenReady(txtContainerContactNumber, 10).click();
-			getReusableActionsInstance().getWhenReady(txtContactNumber, 10).clear();*/
+		String strPhoneNumber = FormFiller.generatePhoneNumber();
+		getReusableActionsInstance().waitForElementVisibility(txtContainerContactNumber, 20);
+		getReusableActionsInstance().getWhenReady(txtContainerContactNumber, 20).click();
+		getReusableActionsInstance().getWhenReady(txtContactNumber, 20).clear();
+		getReusableActionsInstance().getWhenReady(txtContactNumber, 30).sendKeys(strPhoneNumber);
 	}
 
 	/**
@@ -361,7 +389,6 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void setMobielNumber() {
-		getReusableActionsInstance().staticWait(6000);
 		String strPhoneNumber = FormFiller.generatePhoneNumber();
 		String strEmail = FormFiller.generateEmail();
 		if(getReusableActionsInstance().isElementVisible(txtEnroute,90)) {
@@ -474,9 +501,8 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * To select the Technical Installation Start Date
 	 * @author chinnarao.vattam
 	 */
-	public void selTechInstalStartDate() {
-		getReusableActionsInstance().staticWait(5000);
-/*		getReusableActionsInstance().waitForElementVisibility(imgStartingTechInstallSlot,180);
+	public void selTechInstalStartDateOld() {
+		getReusableActionsInstance().waitForElementVisibility(imgStartingTechInstallSlot,180);
 		getReusableActionsInstance().getWhenReady(imgStartingTechInstallSlot, 60).click();
 		Calendar calendar = Calendar.getInstance();
 		int intDate = calendar.get(Calendar.DATE);
@@ -494,21 +520,74 @@ public class RogersTechInstallPage extends BasePageClass {
 			String strStartDate= Integer.toString(intDate+5);
 			By selStartDate = By.xpath("//tr[@class='ng-star-inserted']//td//span[contains(text(),'" + strStartDate + "')]");
 			getReusableActionsInstance().getWhenReady(selStartDate, 60).click();
-		}*/
-		getReusableActionsInstance().staticWait(5000);
+		}
 	}
-	
+
+	/**
+	 * To select the Technical Installation Start Date
+	 * @author chinnarao.vattam
+	 */
+	public void selTechInstalStartDate() {
+		getReusableActionsInstance().waitForElementVisibility(imgStartingTechInstallSlot,180);
+		Calendar calendar = Calendar.getInstance();
+		int intDate = calendar.get(Calendar.DATE);
+		int iDate = intDate + 10;
+		int iMonth=calendar.get(Calendar.MONTH) + 1;
+		if(iDate >= 30) {
+			int selDate = intDate - 14 ;
+			int selMonth= iMonth+1;
+			String strDate= Integer.toString(selDate+3);
+			String strStartDate= selMonth+"/"+strDate +"/"+calendar.get(Calendar.YEAR);
+			getReusableActionsInstance().getWhenReady(txtStartDateContainer, 20).click();
+			getReusableActionsInstance().getWhenReady(txtStartDateNew, 20).sendKeys(strStartDate);
+		}
+		else
+		{
+			String strDate= Integer.toString(intDate+5);
+			String strStartDate= iMonth+"/"+strDate +"/"+calendar.get(Calendar.YEAR);
+			getReusableActionsInstance().getWhenReady(txtStartDateContainer, 20).click();
+			getReusableActionsInstance().getWhenReady(txtStartDateNew, 20).sendKeys(strStartDate);
+		}
+	}
 	/**
 	 * To select the Technical Installation End Date
 	 * @author chinnarao.vattam
 	 */
 	public void selTechInstalEndDate() {
-/*		getReusableActionsInstance().waitForElementVisibility(imgEndingTechInstallSlot,90);
+		getReusableActionsInstance().waitForElementVisibility(imgEndingTechInstallSlot,90);
 		getReusableActionsInstance().getWhenReady(imgEndingTechInstallSlot, 90).click();
 		Calendar calendar = Calendar.getInstance();
-		int intDate = calendar.get(Calendar.DATE);	
-		int iDate = intDate + 10; 
-		if(iDate >= 90) {
+		int intDate = calendar.get(Calendar.DATE);
+		int iMonth=calendar.get(Calendar.MONTH) + 1;
+		int iDate = intDate + 10;
+		if(iDate >= 30) {
+			int selDate = intDate - 6 ;
+			int selMonth= iMonth+1;
+			String strDate= Integer.toString(selDate+10);
+			String strStartDate= selMonth+"/"+strDate +"/"+calendar.get(Calendar.YEAR);
+			getReusableActionsInstance().getWhenReady(txtEndDateContainer, 20).click();
+			getReusableActionsInstance().getWhenReady(txtEndDateNew, 20).sendKeys(strStartDate);
+		}
+		else
+		{
+			int endDate = intDate + 5;
+			String strDate= Integer.toString(endDate+4);
+			String strStartDate= iMonth+"/"+strDate +"/"+calendar.get(Calendar.YEAR);
+			getReusableActionsInstance().getWhenReady(txtEndDateContainer, 20).click();
+			getReusableActionsInstance().getWhenReady(txtEndDateNew, 20).sendKeys(strStartDate);
+		}
+	}
+	/**
+	 * To select the Technical Installation End Date
+	 * @author chinnarao.vattam
+	 */
+	public void selTechInstalEndDateOld() {
+		getReusableActionsInstance().waitForElementVisibility(imgEndingTechInstallSlot,90);
+		getReusableActionsInstance().getWhenReady(imgEndingTechInstallSlot, 90).click();
+		Calendar calendar = Calendar.getInstance();
+		int intDate = calendar.get(Calendar.DATE);
+		int iDate = intDate + 10;
+		if(iDate >= 30) {
 		getReusableActionsInstance().waitForElementVisibility(clkChevron, 60);
 		getReusableActionsInstance().getWhenReady(clkChevron, 60).click();
 		int selDate = intDate - 6 ;
@@ -522,8 +601,7 @@ public class RogersTechInstallPage extends BasePageClass {
 			String strEndDate= Integer.toString(endDate+10);
 			By selEndDate = By.xpath("//tr[@class='ng-star-inserted']//td//span[contains(text(),'" + strEndDate + "')]");
 			getReusableActionsInstance().getWhenReady(selEndDate, 90).click();
-		}*/
-		getReusableActionsInstance().staticWait(7000);
+		}
 	}
 	
 	/**
@@ -554,6 +632,26 @@ public class RogersTechInstallPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementTobeClickable(btnTechInstallContinue, 60);
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 		getReusableActionsInstance().getWhenReady(btnTechInstallContinue, 30).click();
+		getReusableActionsInstance().clickIfAvailable(btnTechInstallContinue, 30);
+	}
+
+	/**
+	 * Click the continue button to continue the TechInstall on installation page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkTechInstallContinueSelf() {
+		getReusableActionsInstance().waitForElementTobeClickable(btnTechInstallContinueSelf, 60);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().getWhenReady(btnTechInstallContinueSelf, 30).click();
+	}
+	/**
+	 * Click the continue button to continue the TechInstall on installation page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clk3PTechInstallContinue() {
+		getReusableActionsInstance().waitForElementTobeClickable(btn3PTechInstallContinue, 60);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().getWhenReady(btn3PTechInstallContinue, 30).click();
 	}
 
 	/**

@@ -48,7 +48,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_030_IginteTV_DoublePlayBuyTest extends BaseTestClass {
 
-    @Test(groups = {"SanityCH","RegressionCH","RogersIgniteBuyCH"})
+    @Test(groups = {"SanityCH","RegressionCH","RogersIgniteBuyAnonymousCH"})
     public void checkBuyDigitalTVOffer() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	getRogersHomePage().clkTVBundle();
@@ -107,7 +107,7 @@ public class RogersCH_TC_030_IginteTV_DoublePlayBuyTest extends BaseTestClass {
        reporter.reportLogWithScreenshot("Launched the tech install page");
        getRogersTechInstallPage().clkTechInstalConsent();
        reporter.reportLogWithScreenshot("tech install details");
-       getRogersTechInstallPage().clkTechInstallContinue();
+       getRogersTechInstallPage().clkTechInstallContinueSelf();
        
         reporter.hardAssert( getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");

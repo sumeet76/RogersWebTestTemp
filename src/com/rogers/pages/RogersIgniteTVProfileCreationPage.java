@@ -29,13 +29,13 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	WebElement txtConfirmEmail;
 	//input[@id='ds-form-input-id-15']
 	
-	@FindBy(xpath = "//input[contains(@aria-label,'First Name')]")
+	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'First Name')]")
 	WebElement txtFirstName;
 	//input[@id='ds-form-input-id-9']
-	@FindBy(xpath = "//input[contains(@aria-label,'Last Name')]")
+	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'Last Name')]")
 	WebElement txtLastName;
 	//input[@id='ds-form-input-id-10']
-	@FindBy(xpath = "//input[contains(@aria-label,'your phone number')]")
+	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'your phone number')]")
 	WebElement btnPhone;
 	//input[@id='ds-form-input-id-12']
 	
@@ -107,6 +107,21 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	}
 
 	/**
+	 * Set dynamic email and confirm email on profile page
+	 * @author Chinnarao.Vattam
+	 */
+	public void setEmail(String strEmail) {
+		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail,90);
+		getReusableActionsInstance().getWhenReady(txtContainerEmail,10).click();
+		getReusableActionsInstance().clickWhenReady(txtEmail);
+		txtEmail.clear();
+		txtEmail.sendKeys(strEmail);
+		getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
+		txtConfirmEmail.clear();
+		txtConfirmEmail.sendKeys(strEmail);
+	}
+
+	/**
 	 * Set dynamic first name on profile page
 	 * @author Chinnarao.Vattam
 	 */
@@ -115,6 +130,26 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(txtFirstName);
 		txtFirstName.clear();
 		txtFirstName.sendKeys(strName);
+	}
+
+	/**
+	 * Set dynamic first name on profile page
+	 * @author Chinnarao.Vattam
+	 */
+	public void setFirstname(String strName) {
+		getReusableActionsInstance().executeJavaScriptClick(txtFirstName);
+		txtFirstName.clear();
+		txtFirstName.sendKeys(strName);
+	}
+
+	/**
+	 * Set dynamic last name on profile page
+	 * @author Chinnarao.Vattam
+	 */
+	public void setLastName(String strName) {
+		getReusableActionsInstance().executeJavaScriptClick(txtLastName);
+		txtLastName.clear();
+		txtLastName.sendKeys(strName);
 	}
 
 	/**
@@ -138,7 +173,17 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 		btnPhone.clear();
 		btnPhone.sendKeys(strPhoneNumber);
 	}
-	
+
+	/**
+	 * Set dynamic phone number on profile page
+	 * @author Chinnarao.Vattam
+	 */
+	public void setPhone(String strPhoneNumber) {
+		getReusableActionsInstance().executeJavaScriptClick(btnPhone);
+		btnPhone.clear();
+		btnPhone.sendKeys(strPhoneNumber);
+	}
+
 	/**
 	 * To click on the chevron on the TV profile creation page
 	 * @author Saurav.Goyal

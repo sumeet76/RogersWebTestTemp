@@ -31,7 +31,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_015_IginteInternet_ValidateInternetDashboardUsageTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","RogersInternetCH"})
+	@Test(groups = {"RegressionCH","RogersInternetCH","AKS"})
     public void checkInternetDashboard() {
     	            reporter.reportLogWithScreenshot("Launched the Home Page");
                     getRogersHomePage().clkSignIn();
@@ -50,6 +50,7 @@ public class RogersCH_TC_015_IginteInternet_ValidateInternetDashboardUsageTest e
                     reporter.reportLogWithScreenshot("Launched the Account Page");
                     getRogersInternetDashboardPage().clkSolarisInternetBadge();
                     reporter.reportLogWithScreenshot("Launched the Interent dashboard");
+                    getRogersInternetDashboardPage().clkInternetPopup();
             		reporter.hardAssert(getRogersInternetDashboardPage().verifyInternet(), "Verified the Internet page", "Internet page verification failed");
             		reporter.hardAssert(getRogersInternetDashboardPage().verifyUsageAndAlerts(), "Usage and Alerts link present on the internet dash page", "Usage and Alerts link is not present on the internet page");
                     getRogersInternetDashboardPage().clkInternetUsageAlerts();

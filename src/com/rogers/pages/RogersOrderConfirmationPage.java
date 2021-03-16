@@ -24,21 +24,27 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	WebElement infoChangeOrderConfirmationnew;
 	
 	@FindBy(xpath = "//ins[@translate='global.message.orderConfirmationThanksV3']")
-	WebElement infoChangeOrderConfirmation;	
-	
+	WebElement infoChangeOrderConfirmation;
+	//ins[@translate='global.message.orderConfirmationThanksV3']
+
 	@FindBy(xpath = "//img[@src='/cms/rogers/page-specific/shop/ordersummary/thankyou/images/thankyou-badge-desktop.png']")
 	WebElement infoChangeOrderConfirmationLegacy;
 	
-	@FindBy(xpath = "//ins[@translate='global.message.orderConfirmationThanksV2']")
+	@FindBy(xpath = "//div[@class='confirmation-bubble']")
 	WebElement infoOrderConfirmation;
-	
+	//ins[@translate='global.message.orderConfirmationThanksV2']
+
 	@FindAll({
 		@FindBy(xpath = "//span[@class='thank-you']"),
-		@FindBy(xpath = "//span[@class='UConfirmationHeading']")
+		@FindBy(xpath = "//span[@class='UConfirmationHeading']"),
+		@FindBy(xpath = "//p[@class='text-body mb-40 ng-star-inserted']")
 	})	
 	WebElement lblThankYou;
-	
-	@FindBy(xpath = "//span[@checkout-res='checkout_order_confirmation']")
+
+	@FindAll({
+		@FindBy(xpath = "//h1[@id='bfa-page-title']"),
+		@FindBy(xpath = "//span[@checkout-res='checkout_order_confirmation']")
+	})
 	WebElement lblOrderConfirmation;
 	
 	@FindBy(xpath = "//div[@class='orderSummary']")
@@ -54,9 +60,12 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	WebElement popupLoadingFingersciam;
 	
 	@FindBy(xpath = "//i[@class='li-loader']")
-	WebElement popupLoadingFingersInternet;	
-	
-	@FindBy(xpath = "//span[@checkout-res='checkout_order_summary_total']")
+	WebElement popupLoadingFingersInternet;
+
+	@FindAll({
+			@FindBy(xpath = "//ds-expander[@id='orderTable-refId-11']//div[@class='ds-price']"),
+			@FindBy(xpath = "//span[@checkout-res='checkout_order_summary_total']")
+	})
 	WebElement lblOrderSummaryTotal;	
 	
 	
@@ -76,7 +85,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOrderConfirmation() {
-		return getReusableActionsInstance().isElementVisible(infoChangeOrderConfirmation, 120);
+		return getReusableActionsInstance().isElementVisible(infoOrderConfirmation, 120);
 	}
 	
 	/**
@@ -113,6 +122,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyOrderConfirmationPageLoad() {
+		getReusableActionsInstance().staticWait(10000);
 		return getReusableActionsInstance().isElementVisible(lblOrderConfirmation, 60);
 	}
 	

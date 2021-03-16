@@ -48,9 +48,9 @@ public class RogersSS_TC_045_AO_ValidateCHAccountBadge_LegacyInternet extends Ba
 		getRogersAccountOverviewPage().clkInternetPopup();
 		reporter.hardAssert(getRogersInternetDashboardPage().verifyInternetUsage(),"Verifed the Internet dashboard","Internet dashboard Verification has failed");
 		reporter.reportLogWithScreenshot("The Internet Dashboard Page");		   
-        common_business_flows.scrollToMiddleOfWebPage();
+        getCommonBusinessFlows().scrollToMiddleOfWebPage();
 		reporter.reportLogWithScreenshot("Mid page view");
-		common_business_flows.scrollToBottomOfWebPage();
+		getCommonBusinessFlows().scrollToBottomOfWebPage();
 		reporter.reportLogWithScreenshot("Bottom View");
 
 	}

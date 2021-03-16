@@ -303,8 +303,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 		getReusableActionsInstance().clickIfAvailable(lblAccount);
 		getReusableActionsInstance().getWhenReady(txtAccount).sendKeys(strAccountNumber);
 		getReusableActionsInstance().staticWait(1000);
-		//getReusableActionsInstance().getWhenReady(txtAccount).sendKeys(Keys.TAB);
-		//getReusableActionsInstance().staticWait(1000);
+
 	}
 
 	/**

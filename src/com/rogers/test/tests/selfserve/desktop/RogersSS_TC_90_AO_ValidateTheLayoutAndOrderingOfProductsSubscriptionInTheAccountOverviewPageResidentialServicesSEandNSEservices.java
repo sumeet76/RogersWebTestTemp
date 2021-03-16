@@ -47,7 +47,7 @@ public class RogersSS_TC_90_AO_ValidateTheLayoutAndOrderingOfProductsSubscriptio
         }
         reporter.reportLogWithScreenshot("Account overview page.");
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Passed", "Login Failed");
-        common_business_flows.scrollToMiddleOfWebPage();
+        getCommonBusinessFlows().scrollToMiddleOfWebPage();
         reporter.reportLogWithScreenshot("CTNS View");
         
         reporter.hardAssert(getRogersAccountOverviewPage().isShareEverythingDisplayed(),

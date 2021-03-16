@@ -66,7 +66,11 @@ public class TestDataHandler {
 	public static AccountData tc11_SolarisTVAccountForUpgradeNB;
 	public static AccountData tc37_internetAccountUpgrade;
 	public static AccountData tc45_digitalTVAccountUpgradePackage;
-	public static AccountData  tc46_legacyInternetAccount;
+	public static AccountData tc54_iginteTVWirelessCRMaddressMismatchWithSGI;
+	public static AccountData tc55_rCISandECIDLowRiskMediumRiskAddressRetry;
+	public static AccountData tc61_SHMSignedInInternetBuyDiffAddress;
+	public static AccountData tc62_WirelessSignedInInternetBuyBasement;
+	public static AccountData tc46_legacyInternetAccount;
 	public static AccountData tcm04_SolarisInternetAccount;
 	public static AccountData tcm06_IgniteTVAccount;
 	public static AccountData tc39_40_SolarisPortinFlows;
@@ -81,11 +85,17 @@ public class TestDataHandler {
 	public static AccountData tc06_2_SolarisChangeTVManageChannels;
 	public static AccountData tc06_1_SolarisChangeTVManageThemePacks;
 	public static AccountData tc35_CRMaddressMismatchWithSGI;
+	public static AccountData tc56_wirelessSignedInInternetBuy;
+	public static AccountData tc60_WirelessSignedInInternetBuyDiffAddress;
+	public static AccountData tc63_2PSignedInInternetBuyBasement;
+	public static AccountData tc57_sHMSignedInInternetBuy;
 	public static AccountData tc51_igniteSmartStream;
 	public static AccountData tc31_SolarisInternetAccountWithUsageAndPackageUpgrade;
-	public static AccountData tc23_standaloneInternetAccountforUpgrade;
+	public static AccountData tc23_24_standaloneInternetAccountforUpgrade;
 	public static AccountData solarisConsumerNoPortinCartAbandon;
 	public static AccountData solarisConsumerPortInCartAbandon;
+	public static AccountData tc58_saiAccountForIgniteBundleBuy;
+	public static AccountData tc59_saiforIgniteBundle;
 	public static AccountData solarisConsumerGWPDigitalTV;
 	public static AccountData solarisConsumerGWPInternetDTV;
 	public static AccountData solarisConsumerGWPRhpDtv ;
@@ -97,20 +107,22 @@ public class TestDataHandler {
 	public static AccountData solarisConsumerGWPRhp;
 	public static AccountData solarisConsumerGWPRhpShm;
 	public static AccountData solarisHTOMigrationSignIn;
-	public static AALData testCase7;
-	public static HUPData testCase8;
-	public static PPCData testCase9;
-	public static AALData testCase02;
-	public static HUPData testCase05;
-	public static HUPData testCase06;
-	public static HUPData testCase07;
-	public static PPCData testCase08;
-	public static HUPData testCase09;
-	public static HUPData testCase10;
-	public static HUPData testCase12;
-	public static RedesignRpotgData testCase11;
-	public static RedesignRpotgData tc01NonRpotg;
-	public static RedesignRpotgData tc02Rpotg;
+	public static RedesignRpotgData tc01NACTermNpotgSS;
+	public static RedesignRpotgData tc02NACNoTermStandardShipping;
+	public static RedesignRpotgData tc03NACTermPotgShipping;
+	public static RedesignRpotgData tc04NACTermBopis;
+	public static RedesignRpotgData tc05NACByodSS;
+	public static RedesignRpotgData tc06NACByodTermBopis;
+	public static AALData tc07AAL;
+	public static PPCData tc08PPC;
+	public static HUPData tc09HupPpcPotgSharedML;
+	public static HUPData tc10HUPAdditionalLine;
+	public static HUPData tc11HUPNpotgML;
+	public static HUPData tc12HUPNonShareNoTermSL;
+	public static HUPData tc13HUPShareNoTermSL;
+	public static HUPData tc14HUPShareKeepCurrentPlanTermML;
+	public static HUPData tc15HUPNonShareKeepCurrentPlanSL;
+	public static HUPData tc16HUPShareTermBopisML;
 	public static HUPData buyFlowsOVtestCase01;
 	public static HUPData buyFlowsOVtestCase02;
 	public static HUPData buyFlowsOVtestCase05;
@@ -133,6 +145,7 @@ public class TestDataHandler {
 	public static AccountData tc44DigitalTVAccount;
 	public static AccountData tc45LegacyInternetAccount;
 	public static AccountData tc46LegacyRHP;
+	public static AccountData tc53_iHPAccount;
 	public static AccountData shmAccount;
 	public static AccountData tupeloAccount;
 	public static Config bfaOneViewConfig;
@@ -154,6 +167,8 @@ public class TestDataHandler {
 	public static AccountData tc104;
 	public static AccountData tc22;
 	public static AccountData tc23;
+	public static AccountData tc111;
+	public static AccountData tc112;
 	
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
  		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
@@ -185,7 +200,7 @@ public class TestDataHandler {
 			chOneViewDataInit();
 			match = true;
 		}
-		if(strTestMethodName.contains("search.")) {
+		if(strTestMethodName.contains("search.")||strTestMethodName.contains("serviceability.")) {
 			//No yaml data files to initialize
 			match = true;
 		}
@@ -201,8 +216,8 @@ public class TestDataHandler {
 	
 	private static void connectedHomeDataInit() throws FileNotFoundException {
       	chPaymentInfo = YamlHandler.getCablePaymentDetails();
-      	//sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/connectedhome/SauceSettings.yml");
-      	//sacueConfig = YamlHandler.getSauceConfig();              	
+		rogersConfig = YamlHandler.getBFAConfig();
+
       	//Digital TV test data
 		tc51_igniteSmartStream = YamlHandler.getCableAccountData("TC51_IgniteSmartStream");
     	tc43_44_digitalTVAccount = YamlHandler.getCableAccountData("TC43_44_DigitalTVAccount");
@@ -224,27 +239,36 @@ public class TestDataHandler {
 		
     	//Legacy Internet test data
 		tc46_legacyInternetAccount = YamlHandler.getCableAccountData("TC46_LegacyInternetAccount");
+		tc56_wirelessSignedInInternetBuy = YamlHandler.getCableAccountData("TC56_WirelessSignedInInternetBuy");
+		tc57_sHMSignedInInternetBuy = YamlHandler.getCableAccountData("TC57_SHMSignedInInternetBuy");
+		tc58_saiAccountForIgniteBundleBuy = YamlHandler.getCableAccountData("TC58_SaiAccountForIgniteBundleBuy");
+		tc59_saiforIgniteBundle = YamlHandler.getCableAccountData("TC59_SAIforIgniteBundle");
 
-    	//RHP test data
+		//RHP test data
 		tc48_legacyRHP = YamlHandler.getCableAccountData("TC48_LegacyRHP");
     	tc42_igniteRHP = YamlHandler.getCableAccountData("TC42_IgniteRHP");
     	tc27_28_RogersSHM = YamlHandler.getCableAccountData("TC27_28_RogersSHM");
     	solarisMultipleSubscriptions = YamlHandler.getCableAccountData("SolarisMultipleSubscriptions");
-    	
+		tc53_iHPAccount = YamlHandler.getCableAccountData("TC53_IHPAccount");
     	//Ignite Internet test data
 		tcm06_IgniteTVAccount=YamlHandler.getCableAccountData("TCM06_IgniteTVAccount");
 		tcm04_SolarisInternetAccount = YamlHandler.getCableAccountData("TCM04_SolarisInternetAccount");
     	tc16_17_18_19_SolarisInternetAccount = YamlHandler.getCableAccountData("TC16_17_18_19_SolarisInternetAccount");
     	tc37_internetAccountUpgrade   = YamlHandler.getCableAccountData("TC37_InternetAccountUpgrade");
-		tc23_standaloneInternetAccountforUpgrade   = YamlHandler.getCableAccountData("TC23_StandaloneInternetAccountforUpgrade");
+		tc23_24_standaloneInternetAccountforUpgrade   = YamlHandler.getCableAccountData("TC23_24_StandaloneInternetAccountforUpgrade");
     	tc15_SolarisInternetAccountWithUsage = YamlHandler.getCableAccountData("TC15_SolarisInternetAccountWithUsage");
 		tc20_SolarisInternetAccountForUpgrade = YamlHandler.getCableAccountData("TC20_SolarisInternetAccountForUpgrade");
     	tc22_StandaloneInternetAccountWithUsage = YamlHandler.getCableAccountData("TC22_StandaloneInternetAccountWithUsage");
 		tc21_SolarisInternetOldConstructor = YamlHandler.getCableAccountData("TC21_SolarisInternetOldConstructor");
     	solarisInternetPackageChange = YamlHandler.getCableAccountData("SolarisInternetPackageChange");
     	tc31_SolarisInternetAccountWithUsageAndPackageUpgrade = YamlHandler.getCableAccountData("TC31_SolarisInternetAccountWithUsageAndPackageUpgrade");
-
-    	//Ignite TV test data
+		tc54_iginteTVWirelessCRMaddressMismatchWithSGI=YamlHandler.getCableAccountData("TC54_IginteTVWirelessCRMaddressMismatchWithSGI");
+		tc55_rCISandECIDLowRiskMediumRiskAddressRetry=YamlHandler.getCableAccountData("TC55_RCISandECIDLowRiskMediumRiskAddressRetry");
+		tc60_WirelessSignedInInternetBuyDiffAddress=YamlHandler.getCableAccountData("TC60_WirelessSignedInInternetBuyDiffAddress");
+		tc61_SHMSignedInInternetBuyDiffAddress=YamlHandler.getCableAccountData("TC61_SHMSignedInInternetBuyDiffAddress");
+		tc62_WirelessSignedInInternetBuyBasement=YamlHandler.getCableAccountData("TC62_WirelessSignedInInternetBuyBasement");
+		tc63_2PSignedInInternetBuyBasement=YamlHandler.getCableAccountData("TC63_2PSignedInInternetBuyBasement");
+		//Ignite TV test data
 		tcm05_SolarisTVAccountForUpgrade  = YamlHandler.getCableAccountData("TCM05_SolarisTVAccountForUpgrade");
 		tc35_CRMaddressMismatchWithSGI = YamlHandler.getCableAccountData("TC35_CRMaddressMismatchWithSGI");
 		tc01_02_03_IgniteTVAccount = YamlHandler.getCableAccountData("TC01_02_03_IgniteTVAccount");
@@ -326,25 +350,30 @@ public class TestDataHandler {
     	tc40SHMAccount = YamlHandler.getSSAccountData("tc40SHMAccount");
     	tc47TupeloAccount = YamlHandler.getSSAccountData("tc47TupeloAccount");
     	tc0610 = YamlHandler.getSSAccountData("tc06_10DemolineSEPlanMultiLine");
+		tc111 = YamlHandler.getSSAccountData("tc111PTPdeliquent");
+		tc112 = YamlHandler.getSSAccountData("tc112PTPdeliquent");
 	}
 	
 	private static void buyFlowsDataInit() throws FileNotFoundException {
 		rogersConfig = YamlHandler.getBFAConfig();
 		bfaConfig =  YamlHandler.getBFAConfig();
-		//sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/buyflows/SauceSettings.yml");
 		bfaPaymentInfo = YamlHandler.getBFAPaymentDetails();
-		testCase7 = YamlHandler.getAALdata("tc7AAL");
-		testCase8 = YamlHandler.getHUPdata("tc8HUP");
-    	testCase9 = YamlHandler.getPPCdata("tc9PPC");
-    	testCase02 = YamlHandler.getAALdata("tc02AAL");
-    	testCase05 = YamlHandler.getHUPdata("tc05HUP");
-    	testCase06 = YamlHandler.getHUPdata("tc06HUP");
-    	testCase10 = YamlHandler.getHUPdata("tc10HUP");
-    	testCase08 = YamlHandler.getPPCdata("tc08PPC");
-    	testCase11 = YamlHandler.getRedesignNACData("tc11NacByod");
-    	tc01NonRpotg=YamlHandler.getRedesignNACData("tc01NonRpotg");
-    	tc02Rpotg=YamlHandler.getRedesignNACData("tc02Rpotg");
-		testCase12 = YamlHandler.getHUPdata("tc12HUP");
+		tc01NACTermNpotgSS=YamlHandler.getRedesignNACData("tc01NACTermNpotgSS");
+		tc02NACNoTermStandardShipping=YamlHandler.getRedesignNACData("tc02NACNoTermStandardShipping");
+		tc03NACTermPotgShipping = YamlHandler.getRedesignNACData("tc03NACTermPotgShipping");
+		tc04NACTermBopis = YamlHandler.getRedesignNACData("tc04NACTermBopis");
+		tc05NACByodSS = YamlHandler.getRedesignNACData("tc05NACByodSS");
+		tc06NACByodTermBopis = YamlHandler.getRedesignNACData("tc06NACByodTermBopis");
+		tc07AAL = YamlHandler.getAALdata("tc07AAL");
+		tc08PPC = YamlHandler.getPPCdata("tc08PPC");
+		tc09HupPpcPotgSharedML = YamlHandler.getHUPdata("tc09HupPpcPotgSharedML");
+		tc10HUPAdditionalLine = YamlHandler.getHUPdata("tc10HUPAdditionalLine");
+		tc11HUPNpotgML = YamlHandler.getHUPdata("tc11HUPNpotgML");
+		tc12HUPNonShareNoTermSL = YamlHandler.getHUPdata("tc12HUPNonShareNoTermSL");
+		tc13HUPShareNoTermSL = YamlHandler.getHUPdata("tc13HUPShareNoTermSL");
+		tc14HUPShareKeepCurrentPlanTermML = YamlHandler.getHUPdata("tc14HUPShareKeepCurrentPlanTermML");
+		tc15HUPNonShareKeepCurrentPlanSL = YamlHandler.getHUPdata("tc15HUPNonShareKeepCurrentPlanSL");
+		tc16HUPShareTermBopisML = YamlHandler.getHUPdata("tc16HUPShareTermBopisML");
 	}
 	
 	private static void buyFlowsOneViewDataInit() throws FileNotFoundException {

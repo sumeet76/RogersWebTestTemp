@@ -1,9 +1,6 @@
 package com.rogers.pages;
 
 import com.rogers.pages.base.BasePageClass;
-
-import utils.ReusableActions;
-
 import org.apache.commons.lang3.math.NumberUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -11,10 +8,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
 public class RogersAccountOverviewPage extends BasePageClass {
+
+
+
 
 	public RogersAccountOverviewPage(WebDriver driver) {
 		super(driver);
@@ -302,13 +303,13 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//rss-subscription-details//span[contains(text(),'Add a') or contains(text(),'Ajout d')]")
 	WebElement lnkAddALine;
 
-	@FindBy(xpath = "//h4[@translate='see.has_share_group_popup_title']")
+	@FindBy(xpath = "//*[text()='Choose a plan to add your new line to' or text()='Choisir un forfait auquel ajouter votre nouvelle ligne']")
 	WebElement headerOverlayforAddLink;
 	
-	@FindBy(xpath = "//*[@translate='see.add_to_shared_plan']")
+	@FindBy(xpath = "//*[@data-id='Add this line to my shared Rogers Infinite plan' or @data-id='Mon forfait Infini de Rogers à partager']")
 	WebElement btnAddToSharedPlan;
 		
-	@FindBy(xpath = "//*[@translate='see.add_non_shared_line']")
+	@FindBy(xpath = "//*[@data-id='Add this line to a separate plan on my account that doesn’t have data-sharing' or @data-id='Forfait distinct sans partage']")
 	WebElement btnAddToNonSharedPlan;
 
 	@FindBy(xpath = "//div[contains(@class,'share-everything')]//div[contains(@class,'subscription-detail')]//rss-subscription-detail//a")
@@ -320,7 +321,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@class,'residential_services')]//div[contains(@class,'subscription-detail')]//rss-subscription-detail//a")
 	List<WebElement> lstResidentialServicesCTNs;
 
-	@FindBy(xpath = "//*[@translate='acc_overview_top_up_now']")
+	@FindBy(xpath = "//*[@translate='acc_overview_top_up_now' or @title='Top Up Now']")
 	WebElement btnPrepaidTopUpNow;
 
 	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.current.account.balance']")
@@ -448,6 +449,41 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy (xpath = "//span[contains(text(),'Payment History') or contains(text(),'Historique de paiement')]")
 	WebElement lnkPaymentHistory;
 
+	@FindBy(xpath = "//i[@class='li-loader']")
+	WebElement popLoader;
+
+	// **********  PTP ***************** //
+
+	@FindBy(xpath = "//rss-promise-to-pay-alert/dsa-alert")
+	WebElement divPTP;
+
+	@FindBy(xpath = "//rss-promise-to-pay-alert/dsa-alert//a")
+	WebElement lnkSetUpPromiseToPay;
+
+	@FindBy(xpath = "//select[@formcontrolname='paymentMethod']")
+	WebElement selectPayType;
+
+	@FindBy(xpath = "//select[@formcontrolname='paymentDate']")
+	WebElement selectDate;
+
+	@FindBy(xpath = "//*[@translate='promise-to-pay.setup-ptp.setup-btn']")
+	WebElement btnSetUpPromise;
+
+	@FindBy(xpath = "//h1[@translate='promise-to-pay.header']")
+	WebElement headerSetUpPromise;
+
+	@FindBy(xpath = "//span[@translate='promise-to-pay.setup-ptp.total-balance']")
+	WebElement lblTotalBalanceToPay;
+
+	@FindBy(xpath = "//select[@formcontrolname='paymentMethod']/parent::div")
+	WebElement selectPayTypeDiv;
+
+	@FindBy(xpath = "//*[@translate='promise-to-pay.success-ptp.header']")
+	WebElement headerSetUpPromiseSuccessFul;
+
+	@FindBy(xpath = "//*[@translate='promise-to-pay.success-ptp.done-btn']")
+	WebElement btnDoneAfterSetUpPromiseSuccessFul;
+
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
 	 * @return true if more than one ban present else false
@@ -557,7 +593,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkRHPBadge() {
-		getReusableActionsInstance().getWhenReady(btnRHPBadge, 90).click();;
+		getReusableActionsInstance().getWhenReady(btnRHPBadge, 90).click();
 		}
 
 	/**
@@ -565,7 +601,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSmartStream() {
-		getReusableActionsInstance().getWhenReady(btnSmartStream, 90).click();;
+		getReusableActionsInstance().getWhenReady(btnSmartStream, 90).click();
 	}
 
 	/**
@@ -592,7 +628,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void selectAccount(String strAccountNumber) {		
-	getReusableActionsInstance().clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 90);
+	getReusableActionsInstance().clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 30);
 	}
 	
 	/**
@@ -718,7 +754,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public boolean verifySuccessfulLogin() {	
 		 int counter = 0;
 		 boolean overviewPageLoaded = false;
-		 getReusableActionsInstance().waitForElementVisibility(menuAccountNumber,90);
+		 getReusableActionsInstance().waitForElementVisibility(menuAccountNumber,60);
 		 String strAccountNumber = getReusableActionsInstance().getWhenReady(menuAccountNumber,30).getText();
 		 while (counter<3) {
 			 
@@ -871,7 +907,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public void clkSetUpAutomaticPaymentMethod() {
 		//getReusableActionsInstance().waitForElementVisibility(lnkBillingAndPayment);
 		//getReusableActionsInstance().clickIfAvailable(lnkBillingAndPayment);
-		getReusableActionsInstance().getWhenReady(lnkSetUpAutomaticPaymentMethod,30).click();
+		getReusableActionsInstance().getWhenReady(lnkSetUpAutomaticPaymentMethod,60).click();
 	}
 	
 	
@@ -1013,6 +1049,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyThatAutoPaymentWithCCIsDisplayedOnAccountOverViewPage() {
+		// buffer static wait added for pageload
+		getReusableActionsInstance().staticWait(4000);
 		getReusableActionsInstance().waitForElementVisibility(lblAutoPayment, 50);
 		return (getReusableActionsInstance().isElementVisible(lblAutoPayment,20)
 			 && getReusableActionsInstance().isElementVisible(imgCC,20));
@@ -1381,7 +1419,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(headerOverlayforAddLink,30)
 				&& getReusableActionsInstance().isElementVisible(btnAddToSharedPlan)
 				&& getReusableActionsInstance().isElementVisible(btnAddToNonSharedPlan)
-				&& get_Driver_Url().contains("rogers.com/web/totes/wireless/choose-phone");
+				&& get_Driver_Url().contains("choose-phone?");
 	}
 
 	/**
@@ -1827,4 +1865,65 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		public void clkChangePaymentMethod() {
 			getReusableActionsInstance().getWhenReady(lnkChangePaymentMethodQuickLin).click();
 		}
+
+    public boolean verifyPTPWidgetIsDisplayed() {
+			return getReusableActionsInstance().isElementVisible(divPTP);
+    }
+
+	/**
+	 *
+	 * @return
+	 */
+	public String selectWhenYouWillIkeToPayThePromise() {
+		Select dropdown = new Select(selectDate);
+		getReusableActionsInstance().selectWhenReady(selectDate, dropdown.getOptions().size()-1);
+		getReusableActionsInstance().staticWait(1000);
+		return getReusableActionsInstance().getSelectedValue(selectDate);
+	}
+
+	public void clkSetUpPromise() {
+
+		getReusableActionsInstance().getWhenReady(btnSetUpPromise).click();
+	}
+
+	public boolean verifySetUpPromiseToPayPageIsLoaded() {
+
+
+		return (getReusableActionsInstance().isElementVisible(headerSetUpPromise) &&
+				getReusableActionsInstance().isElementVisible(lblTotalBalanceToPay));
+	}
+
+	public boolean verifyPromiseToSetUpSuccessFul() {
+
+		return getReusableActionsInstance().isElementVisible(headerSetUpPromiseSuccessFul,30);
+		//&& reusableActions.getWhenReady(By.xpath("//*[@translate='promise-to-pay.success-ptp.th-1']/parent::div/following-sibling::div")).getText().trim().replace("$", "").replaceAll(",", ".").contains(strBalanceValue.replaceAll(",", "."))
+		//&& reusableActions.getWhenReady(By.xpath("//*[@translate='promise-to-pay.success-ptp.th-2']/parent::div/following-sibling::div")).getText().trim().contains(strDate));
+	}
+
+	public void clkDoneSetUpPromiseAfterSuccess() {
+
+		getReusableActionsInstance().getWhenReady(btnDoneAfterSetUpPromiseSuccessFul).click();
+	}
+
+	public String getBalanceValueForPromise() {
+
+		return getReusableActionsInstance().getWhenReady(By.xpath("//*[@class='ds-price']")).getAttribute("aria-label").trim().replace("$", "");
+	}
+
+	public void clkSetUpAPromiseToPay() {
+		getReusableActionsInstance().getWhenReady(lnkSetUpPromiseToPay).click();
+	}
+
+	public void selectHowWouldYouLikeToPromiseToPay(String strPaymentType) {
+		if(strPaymentType.contains("Credit Card"))
+		{
+			getReusableActionsInstance().selectWhenReady(selectPayType, 0);
+		}else
+		{
+			getReusableActionsInstance().selectWhenReady(selectPayType, 1);
+		}
+
+	}
+
+
 }

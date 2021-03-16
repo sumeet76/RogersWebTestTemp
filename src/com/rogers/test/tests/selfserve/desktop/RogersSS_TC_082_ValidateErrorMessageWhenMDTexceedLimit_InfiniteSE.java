@@ -74,7 +74,7 @@ public class RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE e
 		//Add speed pass to reach limit 10
 		if (countOfExistSpeedPass < 10) {
 			for (int counter = 0; counter + countOfExistSpeedPass < 10; counter++) {
-				common_business_flows.addSpeedPass();	
+				getCommonBusinessFlows().addSpeedPass();	
 			}
 		}
 		getRogersWirelessDashboardPage().clkBtnSpeedPass();

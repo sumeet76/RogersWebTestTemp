@@ -61,7 +61,7 @@ public class RogersSS_TC_02_AccountRegistration extends BaseTestClass {
 		{
 			String strTestingTab = getDriver().getWindowHandle();
 			//Go to ENS to verify email and get reset password page.		
-			ensVerifications.getEmailVerifyPage(strEmail);
+			getEnsVerifications().getEmailVerifyPage(strEmail);
 			reporter.reportLogWithScreenshot("Get recovery code");
 			String verificationCode = getRegisterOrAccountRecoveryPage().getVerificationCode();			
 			getDriver().switchTo().window(strTestingTab);			

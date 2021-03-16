@@ -30,7 +30,21 @@ public class CaptchaBypassHandlers {
 				}
 		        getDriver().get(strUrl+"/consumer/easyloginriverpage"+"?setLanguage="+ strLanguage);
         }
-	
+
+	/**
+	 * To Bypass Captcha for Legacy Anonymous Buy Flows
+	 * @param strUrl                     string of test url
+	 * @param strLanguage                string of language to use
+	 */
+	public void captchaBypassURLIgniteAnonymousBuyFlows(String strUrl, String strLanguage) throws IOException {
+		try {
+			Thread.sleep(20000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		getDriver().get(strUrl+"?setLanguage="+ strLanguage);
+	}
+
 	/**
 	 * To Bypass Captcha for Legacy login Flows
 	 * @param strUrl                     string of test url
@@ -60,6 +74,12 @@ public class CaptchaBypassHandlers {
 		
 		
 		Cookie captchBypass = new Cookie ("temp_token_r",CookieFetcher.setAndFetchCookie(strCookieUserName, strCookieUserPassword, strUrl));
+		//Add wait time for the add cookie to work on Firefox.
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		getDriver().manage().addCookie(captchBypass);
 	}
 
