@@ -35,10 +35,12 @@ public class RogersSearch_CBS_1643_Relevant_Results_Rendering_Test extends BaseT
     @Test(dataProvider = "FilterData")
 
     public void validateResults(String[] csvRowStrArray) {
-
-        getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0]);
+        //https://qa4.rogers.com/search?q=samsung&language=en&psize=10
+       // getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0] + "&language=" + System.getProperty("Language").toLowerCase());
+        getRogersSearchPage().clickSearchIcon();
+        getRogersSearchPage().enterTextToBeSearched(csvRowStrArray[0]);
+        getRogersSearchPage().clickSubmitSearchIcon();
         getRogersSearchPage().isPageLoaded();
-        getRogersSearchPage().waitTime();
         reporter.reportLogWithScreenshot("Search Results page");
         String[] strFilters = Arrays.copyOfRange(csvRowStrArray, 1, csvRowStrArray.length);
         reporter.softAssert(getRogersSearchPage().verifyResultsCategoryTagRelevancy(strFilters),
@@ -50,7 +52,7 @@ public class RogersSearch_CBS_1643_Relevant_Results_Rendering_Test extends BaseT
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
         xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-        startSession(System.getProperty("SearchUrl") + "wireless", strBrowser, strLanguage, RogersEnums.GroupName.search, method);
+        startSession(System.getProperty("SearchUrl") , strBrowser, strLanguage, RogersEnums.GroupName.search, method);
     }
 
     @AfterMethod(alwaysRun = true)

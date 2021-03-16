@@ -115,6 +115,8 @@ public class RogersSearchPage extends BasePageClass {
 
     public static final By numberOfPagesDisplayedAtBottom = By.xpath("//div[@class='d-flex ng-star-inserted']/button/div");
 
+    public static final By allGrandParentFilters = By.xpath("//button[contains(@id,'-heading')]/following-sibling::ds-expander/div");
+
     @FindBy(xpath = "//select[@id='ds-form-input-id-0']")
     WebElement resultPerPageDropdown;
 
@@ -129,6 +131,21 @@ public class RogersSearchPage extends BasePageClass {
 
     @FindBy(xpath = "//span[@class='ds-icon rds-icon-first']")
     WebElement lastBackwardArrowKey;
+
+    @FindBy(xpath = "(//a[@class='m-navLink -navbar']/span[@class='m-navLink__caption'])[3]")
+    WebElement toggleLanguage;
+
+    @FindBy(xpath = "//button[@id='Shop-heading-0' and @aria-expanded='false']")
+    WebElement ShopFilterUnexpanded;
+
+    @FindBy(xpath = "//button[@id='Support-heading-1' and @aria-expanded='false']")
+    WebElement SupportFilterUnexpanded;
+
+    @FindBy(xpath = "//button[@id='Other-heading-0' and @aria-expanded='false']")
+    WebElement OtherFilterUnexpanded;
+
+    @FindBy(xpath = "//button[contains(@id,'-heading')]/following-sibling::ds-expander/div")
+    WebElement AllFilterUnexpanded;
 
     Boolean isPagePresent=true;
 
@@ -1679,6 +1696,35 @@ public void javascriptClickWithPerform(WebElement element)
             getDriver().navigate().refresh();
             isPageLoaded();
         }
+    }
+    /**
+     * This method will select the language *en/fr* from the search page to toggle to other language
+     *
+     * @author naina.agarwal
+     */
+    public void toggleLanguage()
+    {
+        getReusableActionsInstance().clickWhenReady(toggleLanguage);
+    }
+    public boolean isGrandParentFilterUnexpanded() {
+        Boolean filterExpanded=true;
+        List <WebElement> listofItems = getDriver().findElements(allGrandParentFilters);
+        for (int i=0;i<listofItems.size();i++)
+        {
+            if(listofItems.get(i).getAttribute("aria-hidden").equals("false"))
+            filterExpanded =false;
+        }
+        return filterExpanded;
+    }
+    public boolean searchTermRetained(String searchTerm)
+    {
+        Boolean termIsRetained=true;
+        String termInSearchResult= getReusableActionsInstance().getElementText(searchResults);
+        if(!termInSearchResult.endsWith(searchTerm))
+        {
+            termIsRetained=false;
+        }
+        return termIsRetained;
     }
 }
 
