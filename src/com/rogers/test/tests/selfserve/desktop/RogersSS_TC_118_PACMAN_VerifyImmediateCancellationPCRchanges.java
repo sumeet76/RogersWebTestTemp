@@ -113,6 +113,45 @@ public class RogersSS_TC_118_PACMAN_VerifyImmediateCancellationPCRchanges extend
                 "The Subscription management page shows the cancelled CTN subscription ended immediately",
                 "The Subscription management page does NOT shows the cancelled CTN subscription");
 
+        //==============  Deferred cancel flow =============================
+
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfSubscriptionIsAvailableForCancellation(),
+                "The subscription is available for Cancellation",
+                "The subscription is NOT available for Cancellation");
+        getRogersAccountOverviewPage().clkManageOnSubscription();
+
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCurrentlySubscribedPaneIsDisplayed(),
+                "The current subscription is displayed",
+                "The current subscription is NOT displayed");
+        reporter.reportLogWithScreenshot("Current subscription");
+        getRogersAccountOverviewPage().clkCancelSubscription();
+        reporter.reportLogWithScreenshot("Cancel subscription details is displayed");
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfHeaderCancelSubscriptionIsDisplayed(),
+                "The header cancel subscription is displayed",
+                "The header cancel subscription is NOT displayed");
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCancelSubscriptionDetailsIsDisplayedCorrectly("4162780970"),
+                "The cancel subscription details matched",
+                "The cancel subscription details did not matched");
+        getRogersAccountOverviewPage().selectReasonForCancelSubscription("deferred");
+        reporter.reportLogWithScreenshot("reason for cancel subscription is selected");
+        getRogersAccountOverviewPage().clkConfirmCancelSubscription();
+        reporter.reportLogWithScreenshot("Confirm button clicked");
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCancelSuccessfulOverLayDisplayed(),
+                "The cancel subscription success overlay is displayed",
+                "The cancel subscription success overlay not displayed");
+
+        reporter.reportLogWithScreenshot("cancel success overlay displayed");
+        getRogersAccountOverviewPage().clkOKButtonOnCancelSuccessOverlay();
+        reporter.reportLogWithScreenshot("Clicked on OKay button");
+
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfSMPIsDisplayedWithCancelledSubscription(),
+                "The effective cancel date for these cancellations is deferred to a future date and all the cancelled subscriptions (CTNs)",
+                "The effective cancel date for these cancellations seems NOT deferred to a future date and all the cancelled subscriptions (CTNs)");
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfEffectiveCancelDateForSubscriptionIsDefferred(System.getProperty("test_language")),
+                "The Subscription management page shows the deferred cancel subscription date",
+                "The Subscription management page does NOT shows the cancelled CTN subscription");
+
+        //============ Defrred cancel flow ends ============================
         reporter.hardAssert(getRogersAccountOverviewPage().verifyIfTheOrderOfTheCancelledCTNsWillBeDisplayedBasedOnEffectiveCancelDatesForImmediateAndDeferredCancelledCTNs(),
                 "The order of the cancelled CTNs  will be displayed based on effective cancel dates for immediate and deferred cancelled CTNs",
                 "The order of the cancelled CTNs  seems NOT displayed based on effective cancel dates for immediate and deferred cancelled CTNs");
