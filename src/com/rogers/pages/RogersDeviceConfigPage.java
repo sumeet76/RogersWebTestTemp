@@ -308,6 +308,13 @@ public class RogersDeviceConfigPage extends BasePageClass {
         return colourText.getText().trim().toUpperCase();
     }
 
+    /**
+     * This method checks if
+     * @param colorOfDevice : color of the device
+     * @param allDeviceSkus List of all device SKUs
+     * @return boolean true if device color is present in device config page else false
+     * @author praveen.kumar7
+     */
     public boolean isSkuValid(List<WebElement> allDeviceSkus, String colorOfDevice) {
         for(WebElement deviceSku : allDeviceSkus) {
             if((deviceSku.getAttribute("value").equals(colorOfDevice)))
@@ -316,6 +323,12 @@ public class RogersDeviceConfigPage extends BasePageClass {
         return false;
     }
 
+    /**
+     * This method creates a xpath for the device color based on the string passed
+     * @param colorOfDevice : color of the device to be selected
+     * @return a string format of xpath
+     * @author praveen.kumar7
+     */
     public String createXpathWithDeviceColor(String colorOfDevice) {
         List<WebElement> allDeviceSkus = getDriver().findElements(By.xpath("//label[contains(@class,'position-relative -color')]//input"));
         boolean isSkuColorExist = isSkuValid(allDeviceSkus,colorOfDevice);
@@ -330,7 +343,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
     /**
      * This method will select a device color on device config page
      * @param deviceColor : color of the device which we needs to be selected
-     * @author saurav.goyal
+     * @author praveen.kumar7
      */
     public void selectDeviceColor(String deviceColor){
         String xPathOfSkuToBeSelected = createXpathWithDeviceColor(deviceColor);

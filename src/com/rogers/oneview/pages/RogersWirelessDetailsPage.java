@@ -62,7 +62,7 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyWirelessPageLoad() {
-		return getReusableActionsInstance().isElementVisible(lblMyWlsUsage , 30);
+		return getReusableActionsInstance().isElementVisible(lblMyWlsUsage , 40);
 	}
 	
 	/**

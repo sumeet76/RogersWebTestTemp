@@ -124,6 +124,11 @@ public class TestDataHandler {
 	public static HUPData tc15HUPNonShareKeepCurrentPlanSL;
 	public static HUPData tc16HUPShareTermBopisML;
 	public static AALData tc17AALShareTermBopis;
+	public static AALData tc18AALFinPlanPotgShipping;
+	public static AALData tc19AALNoTermStandardShipping;
+	public static AALData tc20AALTermTablet;
+	public static AALData tc21AALBYODBopisShipping;
+	public static AALData tc22AALBYODStandardShipping;
 	public static HUPData buyFlowsOVtestCase01;
 	public static HUPData buyFlowsOVtestCase02;
 	public static HUPData buyFlowsOVtestCase05;
@@ -372,6 +377,11 @@ public class TestDataHandler {
 		tc15HUPNonShareKeepCurrentPlanSL = YamlHandler.getHUPdata("tc15HUPNonShareKeepCurrentPlanSL");
 		tc16HUPShareTermBopisML = YamlHandler.getHUPdata("tc16HUPShareTermBopisML");
 		tc17AALShareTermBopis = YamlHandler.getAALdata("tc17AALShareTermBopis");
+		tc18AALFinPlanPotgShipping = YamlHandler.getAALdata("tc18AALFinPlanPOTGShipping");
+		tc19AALNoTermStandardShipping = YamlHandler.getAALdata("tc19AALNoTermStandardShipping");
+		tc20AALTermTablet = YamlHandler.getAALdata("tc20AALTabletDevice");
+		tc21AALBYODBopisShipping = YamlHandler.getAALdata("tc21AALBYODBopis");
+		tc22AALBYODStandardShipping = YamlHandler.getAALdata("tc22AALBYODStdShipping");
 	}
 	
 	private static void buyFlowsOneViewDataInit() throws FileNotFoundException {

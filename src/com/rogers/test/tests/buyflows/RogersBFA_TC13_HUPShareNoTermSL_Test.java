@@ -62,7 +62,7 @@ public class RogersBFA_TC13_HUPShareNoTermSL_Test extends BaseTestClass{
             getRogersPlanConfigPage().clickCartSummaryContinueButton();
             reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                     "Billing Address is not selected");
-            getRogersCheckoutPage().clkDeliveryMethodStandard();
+            getRogersCheckoutPage().clkDeliveryMethod("standard");
             reporter.reportLogPass("Standard Delivery selected");
             getRogersCheckoutPage().clkContinueBtnShipping();
             reporter.reportLogPass("Clicked continue button in shipping stepper");

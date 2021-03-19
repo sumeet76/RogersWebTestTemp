@@ -84,7 +84,6 @@ public class RogersBFA_TC03_NAC_TermPotgShippingTest extends BaseTestClass {
 		reporter.reportLogPassWithScreenshot(
 				"Cart summary: Monthly & OneTimeFees" + monthlyFeesAmount + "&" + oneTimeFeesAmount);
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
-
 		// ***************Create Profile Stepper*************//
 		reporter.hardAssert(getRogersCheckoutPage().verifyCreateProfileTitle(), "Create profile Title Present", "Create profile Title not present");
 		String totalMonthlyFees = getRogersCheckoutPage().getMonthlyFeeAfterTax();

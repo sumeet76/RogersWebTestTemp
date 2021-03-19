@@ -60,7 +60,7 @@ public class RogersBFA_TC15_HUPNonShareKeepCurrentPlanSL_Test extends BaseTestCl
             reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                     "Billing Address is not selected");
             reporter.reportLogPassWithScreenshot("On Checkout page");
-            getRogersCheckoutPage().clkDeliveryMethodStandard();
+            getRogersCheckoutPage().clkDeliveryMethod("standard");
             reporter.reportLogPass("Standard Delivery selected");
             getRogersCheckoutPage().clkContinueBtnShipping();
             reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
@@ -71,7 +71,7 @@ public class RogersBFA_TC15_HUPNonShareKeepCurrentPlanSL_Test extends BaseTestCl
             reporter.reportLogPass("Order Review Page");
             getRogersReviewOrderPage().clkFinancingConsentCheckbox();
             getRogersReviewOrderPage().clkAgreementConsentCheckbox();
-            getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
+            getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
             reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
             if(getRogersOrderReviewPage().isPaymentRequired()) {
                 getRogersOrderReviewPage().clkContinue();

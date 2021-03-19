@@ -25,7 +25,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[contains(@class,'ds-button ds-corners')]//span[contains(text(),' Show More') or contains(text(),' Afficher les ')]")
     WebElement showMoreDetails;
 
-    @FindBy(xpath = "/dsa-selection[contains(@data-test,'stepper-1-edit-step-selection-option-')]//label[1]")
+    @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-1-edit-step-selection-option-')]//label[1]")
     List<WebElement> noOfDeviceTiers;
 
     @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-infinite-')]//label[1]")
@@ -76,11 +76,8 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[@data-test='build-plan-checkout-flow-button']/span")
     WebElement continueButtonOnCartSummary;
 
-    @FindAll({
-            @FindBy(xpath = "//button[@id='get-bpo-offer-button' or @data-test='bpo-offer-modal-button-primary']"),
-            @FindBy(xpath = "//button[@data-test='bpo-offer-modal-button-primary']")
-    })
-    WebElement getBPOOfferOnDeviceProtection;
+    @FindBy(xpath = "//button[contains(@data-test,'bpo-offer-modal') or @id='get-bpo-offer-button']")
+    WebElement getBPOOffer;
 
     @FindAll({
             @FindBy(xpath = "//button[@data-test='bpo-offer-modal-button-primary']"),
@@ -95,10 +92,10 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//div[contains(@class,'dsa-orderTable__row')]")
     List<WebElement> cartSummaryElements;
 
-    @FindBy(xpath = "//div[@class='dsa-orderTable']/preceding::div[@class='ds-price'][1]")
+    @FindBy(xpath = "(//div[contains(@class,'dsa-orderTable__totalRow')])[1]")
     WebElement monthlyFeesAmount;
 
-    @FindBy(xpath = "//span[contains(text(),'One-time')]/following::div[@class='ds-price'][2]")
+    @FindBy(xpath = "(//div[contains(@class,'dsa-orderTable__totalRow')])[2]")
     WebElement oneTimeFeesAmount;
 
     //@FindBy(xpath = "//p[contains(text(),'1.')]//following-sibling::r-data-block-selection//input[@checked='checked']//following-sibling::span//span[contains(@class,'dsa-selection__caption')]")
@@ -136,7 +133,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//ds-modal")
     WebElement modalToDoWithOldPhone;
 
-    @FindBy(xpath = "//ds-modal//button[@title='Continue']")
+    @FindBy(xpath = "//ds-modal//button[contains(@title,'Continue')]")
     WebElement btnContinueOnModalToDoWithOldPhone;
 
     /**
@@ -146,39 +143,43 @@ public class RogersPlanConfigPage extends BasePageClass {
         getReusableActionsInstance().clickIfAvailable(deviceProtectiontab);
     }
 
-    public String getDeviceCostTierSelected() {
-        String tierOption="noterm";
-        getReusableActionsInstance().scrollToElement(monthlyFeesCartSummarySection);
-        if(getReusableActionsInstance().isElementVisible(upfrontOptionCheck,40)) {
-           tierOption="upfront";
-           return tierOption;
-        }
-        else if(getReusableActionsInstance().isElementVisible(financingOptionCheck,40)) {
-            tierOption="financing";
-            return tierOption;
-        }
-        else return tierOption;
-    }
-
     /**
      * This method verifies if the selected device section is displayed
-     * @param deviceName String alue of the device
+     * @param deviceName String value of the device
      * @return a boolean true if selected device section is displayed else returns false
      * @author praveen.kumar7
      */
     public boolean verifySelectedDeviceSection(String deviceName) {
-        return getReusableActionsInstance().isElementVisible(By.xpath("//div[@class='ng-tns-c17-6 ng-star-inserted']//p[contains(.,'" +deviceName +"')]"),30);
+       return getReusableActionsInstance().isElementVisible(By.xpath("//div[contains(@class,'completed')]//p[contains(.,'" +deviceName+ "')]"),40);
     }
 
+    public boolean verifyByodSelectedDeviceSection() {
+        return getReusableActionsInstance().isElementVisible(By.xpath("//div[contains(@class,'completed')]//p[contains(.,'Bring') or contains(.,'Apportez')]"));
+    }
+
+    /**
+     * Clicks on View More Options to expand device cost stepper
+     * @author praveen.kumar7
+     */
     public void clickViewMoreOptions() {
-        getReusableActionsInstance().clickIfAvailable(viewMoreOptions,30);
+        getReusableActionsInstance().clickIfAvailable(viewMoreOptions);
     }
 
+    /**
+     * Clicks on Show More details to expand Data stepper
+     * @author praveen.kumar7
+     */
     public void clickShowMoreDetails() {
         getReusableActionsInstance().clickIfAvailable(showMoreDetails,40);
     }
 
-
+    /**
+     * Creates an xpath for the provided stepper with index value which is passed as parameter
+     * @param dC_DO_TO string value of device cost, data option and talk option stepper
+     * @param stepper String value of the stepper index
+     * @return String value of an xpath
+     * @author praveen.kumar7
+     */
     public String createXpathWithInputData(String dC_DO_TO,int stepper) {
         if (stepper == 1) {
             return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
@@ -189,7 +190,9 @@ public class RogersPlanConfigPage extends BasePageClass {
         else if(stepper == 3) {
             return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
         }
-        else return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
+        else {
+            return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
+        }
     }
 
     /**
@@ -206,7 +209,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
 
     /**
-     *
+     * This method sets the value for deviceCostIndex
      * @param deviceCostIndex String value of deviceCostIndex
      * @return returs the String value of index
      * @author praveen.kumar
@@ -220,7 +223,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
 
     /**
-     *
+     * This method sets the value for dataOptionIndex
      * @param dataOptionIndex String value of dataOptionIndex
      * @return returs the String value of index
      * @author praveen.kumar
@@ -234,12 +237,11 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
 
     /**
-     *
+     * This method sets the value for talkOptionIndex
      * @param talkOptionIndex String value of talkOptionIndex
      * @return returs the String value of index
      * @author praveen.kumar
      */
-
     public String getupdatedTalkOptionIndex(String talkOptionIndex) {
         if ((talkOptionIndex == null) || (talkOptionIndex.isEmpty()) || (Integer.parseInt(talkOptionIndex) > noOfTalkOptions.size()-1)) {
             talkOptionIndex = "0";
@@ -256,14 +258,14 @@ public class RogersPlanConfigPage extends BasePageClass {
     public void selectDeviceCostAndClickOnContinueButton(String deviceCostIndex) {
         int stepper = 1;
         String xpathDcDoTo = createXpathWithInputData(deviceCostIndex, stepper);
-        if(Integer.parseInt(deviceCostIndex) == 0) {
+        if (Integer.parseInt(deviceCostIndex) == 0) {
             getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton, 30);
-        }
-        else {
+        } else {
             getReusableActionsInstance().clickWhenVisible(By.xpath(xpathDcDoTo), 60);
             getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton, 30);
         }
     }
+
 
     /**
      * Select No term Device Cost on Plan config page
@@ -271,6 +273,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void selectNoTermDeviceDeviceCost() {
+        clickViewMoreOptions();
         getReusableActionsInstance().clickWhenReady(By.xpath("//span[@data-caption='NOTERM_false']//ancestor::label"), 30);
     }
 
@@ -351,21 +354,23 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
 
     /**
-     * Select talk option on Plan config page
-     *
-     * @param    talkOptionIndex : String value of talk option to be selected
+     * Selects talk option and verifies if addons stepper continue button is displayed
+     * @param talkOptionIndex : String value of talk option to be selected
+     * return boolean true if continue button is displayed in addons stepper else false
      * @author praveen.kumar7
      */
     public boolean verifyTalkOptionSelectionAndAddonsContinueButton(String talkOptionIndex) {
+        clickGetBPOOffer();
         int stepper = 3;
         String xpathDcDoTo = createXpathWithInputData(talkOptionIndex, stepper);
         if(Integer.parseInt(talkOptionIndex) == 0) {
-            getReusableActionsInstance().clickIfAvailable((preCartSummaryContinueButtonTalkOptions),30);
+            getReusableActionsInstance().clickIfAvailable((preCartTalkOptionContinueButton),20);
         }
         if(Integer.parseInt(talkOptionIndex) == 1) {
             getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo),30);
-            getReusableActionsInstance().clickIfAvailable(preCartSummaryContinueButtonTalkOptions);
+            getReusableActionsInstance().clickIfAvailable(preCartTalkOptionContinueButton);
         }
+        clickGetBPOOffer();
         return getReusableActionsInstance().isElementVisible(preCartAddonsContinueButton,30);
     }
 
@@ -469,6 +474,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clickPreCartAddonsContinueButton() {
+        clickGetBPOOffer();
         getReusableActionsInstance().clickIfAvailable(preCartAddonsContinueButton);
     }
 
@@ -571,6 +577,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     public void clickCartSummaryContinueButton() {
         getReusableActionsInstance().javascriptScrollByVisibleElement(continueButtonOnCartSummary);
         getReusableActionsInstance().executeJavaScriptClick(continueButtonOnCartSummary);
+        clickGetBPOOffer();
 //        getReusableActionsInstance().waitForElementTobeClickable(continueButtonOnCartSummary, 10);
 //        getReusableActionsInstance().clickWhenReady(continueButtonOnCartSummary);
     }
@@ -581,7 +588,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void clickGetBPOOffer() {
-        getReusableActionsInstance().clickIfAvailable(getBPOOfferOnDeviceProtection, 5);
+        getReusableActionsInstance().clickIfAvailable(getBPOOffer, 5);
     }
 
     /**
@@ -610,9 +617,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public String getMonthlyFeesAmount() {
-        String monthlyFees =  monthlyFeesAmount.getAttribute("aria-label");
-        String strMonthlyFees[] = monthlyFees.split("\\s");
-        return strMonthlyFees[0].trim();
+        return getReusableActionsInstance().getWhenReady(monthlyFeesAmount,10).getText().replaceAll("\\n","");
     }
 
     @FindBy(xpath = "//p[contains(@data-test,'stepper-0-completed-step-device-name')]")
@@ -649,8 +654,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public String getOneTimeFeesAmount() {
-        getReusableActionsInstance().javascriptScrollByVisibleElement(oneTimeFeesAmount);
-        return oneTimeFeesAmount.getAttribute("aria-label");
+        return getReusableActionsInstance().getWhenReady(oneTimeFeesAmount,10).getText().replaceAll("\\n","");
     }
 
     /**
@@ -661,9 +665,22 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public boolean verifyBreadCrumb(String deviceName) {
-        if (getReusableActionsInstance().isElementVisible(devicesInBreadCrumb) && getReusableActionsInstance().isElementVisible(buildPlanInBreadCrumb) && breadCrumb.getText().toUpperCase().contains((deviceName).toUpperCase()))
+        if (getReusableActionsInstance().isElementVisible(devicesInBreadCrumb) && getReusableActionsInstance().isElementVisible(buildPlanInBreadCrumb) && breadCrumb.getText().toUpperCase().contains((deviceName).toUpperCase())) {
             return true;
+        }
         return false;
+    }
+
+    public boolean verifyAalByodBreadCrumb() {
+        if(getReusableActionsInstance().isElementVisible(devicesInBreadCrumb) && getReusableActionsInstance().isElementVisible(buildPlanInBreadCrumb) &&
+                (breadCrumb.getText().toUpperCase().contains("BRING") || breadCrumb.getText().toUpperCase().contains("APPORTEZ"))) {
+            return true;
+        }
+        return false;
+    }
+
+    public void staticWaitTime() {
+        getReusableActionsInstance().staticWait(2000);
     }
 
     /**
@@ -733,4 +750,37 @@ public class RogersPlanConfigPage extends BasePageClass {
         getReusableActionsInstance().getWhenVisible(eligiblePostalCodeinBanner, 20);
         return eligiblePostalCodeinBanner.getText().replaceAll("\\s+", "");
     }
+
+    /**
+     * Checks for the selected device tier in plan config page
+     * @return a String value of tieroption
+     * @author praveen.kumar7
+     */
+    public String getDeviceCostTierSelected() {
+        String tierOption="noterm";
+        getReusableActionsInstance().scrollToElement(monthlyFeesCartSummarySection);
+        if(getReusableActionsInstance().isElementVisible(upfrontOptionCheck,40)) {
+            tierOption="upfront";
+            return tierOption;
+        }
+        else if(getReusableActionsInstance().isElementVisible(financingOptionCheck,40)) {
+            tierOption="financing";
+            return tierOption;
+        }
+        else {
+            return tierOption;
+        }
+    }
+
+    public boolean verifyDeviceCostContinueButton() {
+        getReusableActionsInstance().scrollToElement(preCartDeviceCostContinueButton);
+        return getReusableActionsInstance().isElementVisible(preCartDeviceCostContinueButton,30);
+    }
+
+    public boolean verifyTabletDataTalkOptionSelected() {
+        getReusableActionsInstance().clickIfAvailable(preCartDataOtionContinueButton,10);
+        getReusableActionsInstance().clickIfAvailable(preCartTalkOptionContinueButton,10);
+        return getReusableActionsInstance().isElementVisible(preCartAddonsContinueButton,30);
+    }
+
 }

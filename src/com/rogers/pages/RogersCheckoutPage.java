@@ -282,7 +282,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//ds-accordion-panel[@data-test='shipping-delivery-options']//button")
 	WebElement viewAnotherOption;
 	
-	@FindBy(xpath = "//div[@class='QSIPopOver SI_5Asif8K9VkSJZM9_PopOverContainer'][1]//following::span[text()='No, thanks']//ancestor::div[@tabindex='0']")
+	@FindBy(xpath = "(//span[text()='No, thanks']//ancestor::div[@tabindex='0'])[1]")
 	WebElement btnNoThanks;
 
 	@FindBy(xpath = "//P[@data-test='timeslot-appointment']")
@@ -417,9 +417,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	}
 
 	
-	public void clkNoThanks()
-	{
-		getReusableActionsInstance().clickIfAvailable(btnNoThanks,5);
+	public void clkNoThanks() {
+		getReusableActionsInstance().clickIfAvailable(btnNoThanks,8);
 	}
 	/**
 	 * Enter the lastName on the Create Profile stepper, Last Name field
@@ -603,8 +602,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void selectYearDropdownOption(String strYear) {
-		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().moveToElementAndClick(inputYearDOB,5);
+		getReusableActionsInstance().staticWait(8000);
+		getReusableActionsInstance().moveToElementAndClick(inputYearDOB,10);
 		getReusableActionsInstance().selectWhenReady(inputYearDOB, strYear);
 
 	}
@@ -1009,6 +1008,7 @@ public class RogersCheckoutPage extends BasePageClass {
 
 
 	public void clkContinueBtnShipping() {
+		clkNoThanks();
 		getReusableActionsInstance().getWhenReady(continueBtnShipping,30);
         getReusableActionsInstance().scrollToElement(continueBtnShipping);
 		getReusableActionsInstance().clickWhenReady(continueBtnShipping, 30);
@@ -1059,7 +1059,8 @@ public class RogersCheckoutPage extends BasePageClass {
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementTobeClickable(submitBtnCheckoutPage,30);
 		getReusableActionsInstance().scrollToElement(submitBtnCheckoutPage);
-		getReusableActionsInstance().clickWhenReady(submitBtnCheckoutPage , 60);
+		getReusableActionsInstance().getWhenReady(submitBtnCheckoutPage,30);
+		getReusableActionsInstance().executeJavaScriptClick(submitBtnCheckoutPage);
     }
 
 	/**

@@ -248,7 +248,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(icnPlanCategory , 30);
 		getReusableActionsInstance().scrollToElement(icnPlanCategory);
 		getReusableActionsInstance().clickWhenReady(icnPlanCategory, 60);
-		getReusableActionsInstance().clickWhenReady(By.xpath("//md-option[@value='" + strPlanCat +"']"));
+		getReusableActionsInstance().clickIfAvailable(By.xpath("//md-option[@value='" + strPlanCat +"']"));
 		getReusableActionsInstance().staticWait(3000);
 	}
 	

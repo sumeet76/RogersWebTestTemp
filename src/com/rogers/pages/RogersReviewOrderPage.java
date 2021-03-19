@@ -69,9 +69,8 @@ public class RogersReviewOrderPage extends BasePageClass {
     @FindBy(xpath ="//ds-checkbox[@data-test='bopis-consent']")
     WebElement chBopisConsent;
 
-    
-	 @FindBy(xpath ="//button[@title='Submit order - test1']")
-	 WebElement submitOrderBtn;
+    @FindBy(xpath ="//button[@title='Submit order - test1']")
+    WebElement submitOrderBtn;
 
 
 
@@ -228,11 +227,36 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clkEmailConsentCheckbox() {
-        getReusableActionsInstance().clickWhenReady(chEmailConsent,2);
+        getReusableActionsInstance().clickWhenReady(chEmailConsent,5);
     }
 
+    /**
+     * This method clicks on the BOPIS consent checkbox
+     * @author praveen.kumar7
+     */
     public void clkBopisConsentCheckbox() {
-        getReusableActionsInstance().clickWhenReady(chBopisConsent,2);
+        getReusableActionsInstance().clickWhenReady(chBopisConsent,5);
+    }
+
+    /**
+     * Clicks on all Agreement consent checkboxes based on device tier
+     * @param isSelectedDeviceTier String value of the deviceTier
+     * @author praveen.kumar7
+     */
+    public void clkAllAgreementConsentCheckbox(String isSelectedDeviceTier) {
+        if(isSelectedDeviceTier.equalsIgnoreCase("UPFRONT")) {
+            getReusableActionsInstance().clickWhenReady(chFinancingConsent,10);
+            getReusableActionsInstance().clickWhenReady(chAgreementConsent,10);
+            getReusableActionsInstance().clickWhenReady(chUpfrontConsent,10);
+        }
+        else if(isSelectedDeviceTier.equalsIgnoreCase("FINANCING")) {
+            getReusableActionsInstance().clickWhenReady(chFinancingConsent,10);
+            getReusableActionsInstance().clickWhenReady(chAgreementConsent,10);
+        }
+        else {
+            getReusableActionsInstance().clickWhenReady(chFinancingConsent, 10);
+            getReusableActionsInstance().clickWhenReady(chAgreementConsent, 10);
+        }
     }
 
     /**

@@ -30,7 +30,7 @@ public class RogersBFA_TC02_NAC_NoTermStandardShippingTest extends BaseTestClass
 		// **************************Device catalog page*****************************************
 
 		reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-		String deviceName=TestDataHandler.tc01NACTermNpotgSS.getDeviceName();
+		String deviceName=TestDataHandler.tc02NACNoTermStandardShipping.getDeviceName();
 		getRogersDeviceCataloguePage().clickDeviceTileCTAButton(deviceName);
 		reporter.softAssert(getRogersDeviceCataloguePage().isModalDisplayed(), "Modal element is present on the screen", "Modal element is not present on the screen");
 		reporter.softAssert(getRogersDeviceCataloguePage().verifyGetStartedButtonOnModal(), "Get started button on the modal is present" ,"Get started button on the modal is not present");
@@ -130,7 +130,7 @@ public class RogersBFA_TC02_NAC_NoTermStandardShippingTest extends BaseTestClass
 		String addressShippingStepper = getRogersCheckoutPage().getShippingAddress();
 		System.out.println(billingAddressCreateProfile+"and"+addressShippingStepper);
 		reporter.softAssert(billingAddressCreateProfile.equals(addressShippingStepper), "Address in Shipping Stepper matches as entered in Create Profile stepper", "Address in Shipping Stepper not matches as entered in Create Profile stepper");
-		getRogersCheckoutPage().clkDeliveryMethodStandard();
+		getRogersCheckoutPage().clkDeliveryMethod("standard");
 		reporter.reportLogPass("Standard Delivery selected");
 		getRogersCheckoutPage().clkContinueBtnShipping();
 		reporter.reportLogPass("Clicked continue button in shipping stepper");

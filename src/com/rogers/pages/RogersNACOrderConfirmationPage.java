@@ -81,8 +81,8 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 		 * @author Karthic.hasan
 		 */
 
-	    public String getMonthlyFeeAfterTax() 
-	    { 
+	    public String getMonthlyFeeAfterTax() {
+	    	getReusableActionsInstance().scrollToElement(monthlyFeeAfterTax);
 	    	return monthlyFeeAfterTax.getText().replaceAll("\\n","");
 	    }
 	    
@@ -104,8 +104,8 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 		 * @author Karthic.hasan
 		 */
 
-		public String getPurchaseIncludesText()
-		{ 
+		public String getPurchaseIncludesText() {
+			getReusableActionsInstance().scrollToElement(purchaseIncludes);
 			return getReusableActionsInstance().getWhenReady(purchaseIncludes,10).getText().trim().replaceAll("\\n", " ");
 			
 		}
@@ -130,7 +130,7 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 		
 		public boolean verifyRpotgTitle()
 		{
-			getReusableActionsInstance().staticWait(1000);
+			getReusableActionsInstance().staticWait(2000);
 			return rpotgTitle.isDisplayed();
 		}
 		
@@ -209,7 +209,8 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 		 * @author karthic.hasan
 		 */
 
-		public String getAppointmentAddressText() { 
+		public String getAppointmentAddressText() {
+			getReusableActionsInstance().scrollToElement(appointmentCompleteAddress);
 			return getReusableActionsInstance().getWhenReady(appointmentCompleteAddress,10).getText().trim().replaceAll("\\n", " ");
 		}
 		

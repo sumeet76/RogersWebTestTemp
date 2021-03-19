@@ -33,6 +33,7 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'QaOVUrl', test_qaOVURL
 	systemProperty 'AWSUrl', test_awsURL
 	systemProperty 'AWSBYODUrl', test_awsBYODURL
+	systemProperty 'AWSAALUrl', test_awsAALURL
 	systemProperty 'Browser', test_browser
 	systemProperty 'Language', test_language
 	systemProperty 'SearchUrl', test_searchURL
@@ -67,6 +68,7 @@ task "localTest"(type: Test) {
 	systemProperty 'QaUrl', test_qaURL
 	systemProperty 'QaOVUrl', test_qaOVURL
 	systemProperty 'AWSUrl', test_awsURL
+	systemProperty 'AWSAALUrl', test_awsAALURL
 	systemProperty 'AWSBYODUrl', test_awsBYODURL
 	systemProperty 'Browser', test_browser
 	systemProperty 'Language', test_language

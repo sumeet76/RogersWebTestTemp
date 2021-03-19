@@ -78,6 +78,30 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 			@FindBy(xpath = "//div[contains(@class,'col-xs-5 ng-star-inserted')]")
 	})
 	List<WebElement> bopisContent;
+
+	@FindBy(xpath="//h4[@data-test='rpotgTitle']")
+	WebElement rpotgTitle;
+
+	@FindBy(xpath="//h5[@class='text-title-5 my-24']")
+	WebElement appointmentDetailsTitle;
+
+	@FindBy(xpath="//p[@class='text-bold text-title-6' and contains(text(),'Appointment date:')]")
+	WebElement appointmentDateTitle;
+
+	@FindBy(xpath="//p[@class='text-bold text-title-6' and contains(text(),'Appointment address:')]")
+	WebElement appointmentAddressTitle;
+
+	@FindBy(xpath="//img[@alt='largeImage_1']")
+	WebElement deviceImage;
+
+	@FindBy(xpath="//div[@class='my-12 ng-star-inserted']/p[@class='text-bold text-title-6']/..")
+	WebElement appointmentCompleteAddress;
+
+	@FindBy(xpath="(//div[contains(@class,'totalRow d-flex align-items-center')])[1]")
+	WebElement monthlyFeeAfterTax;
+
+	@FindBy(xpath="(//div[contains(@class,'dsa-orderTable__totalRow d-flex align-items-center')])[2]")
+	WebElement oneTimeFeeAfterTax;
 	
 	
 	/**
@@ -150,15 +174,21 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 		return false;
 	}
 
+	/**
+	 * This method verifies if BOPIS contents are displayed in order confirmation page
+	 * @return a boolean true if BOPIS contents are displayed else false
+	 * @author praveen.kumar7
+	 */
 	public boolean verifyBopisContentDisplayed() {
 		boolean isElementPresent = true;
 		for(WebElement element : bopisContent) {
 			isElementPresent = getReusableActionsInstance().isElementVisible(element, 40);
-			if(isElementPresent==false) {
-				return isElementPresent;
+			if(!isElementPresent) {
+				return false;
 			}
 		}
-		return isElementPresent;
+		getReusableActionsInstance().scrollToElement(bopisContent.get(0));
+		return true;
 	}
 	
 	/**
@@ -178,4 +208,81 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(btnUpgradeCartCheckOutButton, 180);
 		getReusableActionsInstance().executeJavaScriptClick(btnUpgradeCartCheckOutButton);
 	}
+
+	/**
+	 * verifies RPOTG title in confirmation page
+	 * @return true if RPOTG title is present; else false
+	 * @author praveen.kumar7
+	 */
+	public boolean verifyRpotgTitle() {
+		getReusableActionsInstance().staticWait(1000);
+		return getReusableActionsInstance().isElementVisible(rpotgTitle,5);
+	}
+
+	/**
+	 * verifies if AppointmentDetails Title is present in confirmation page
+	 * @return true if AppointmentDetails title is present; else false
+	 * @author praveen.kumar7
+	 */
+	public boolean verifyAppointmentDetailsTitle() {
+		return getReusableActionsInstance().isElementVisible(appointmentDetailsTitle,5);
+	}
+
+	/**
+	 * verifies if AppointmentDate Title is present in confirmation page
+	 * @return true if AppointmentDate title is present; else false
+	 * @author praveen.kumar7
+	 */
+	public boolean verifyAppointmentDateTitle() {
+		return getReusableActionsInstance().isElementVisible(appointmentDateTitle,5);
+	}
+
+	/**
+	 * verifies if Appointment address Title is present in confirmation page
+	 * @return true if Appointment Address title is present; else false
+	 * @author praveen.kumar7
+	 */
+	public boolean verifyAppointmentAddressTitle() {
+		return getReusableActionsInstance().isElementVisible(appointmentAddressTitle,5);
+	}
+
+	/**
+	 * verifies if device image is present in confirmation page
+	 * @return true if device image is present; else false
+	 * @author praveen.kumar7
+	 */
+	public boolean verifyDeviceImage() {
+		return getReusableActionsInstance().isElementVisible(deviceImage,5);
+	}
+
+	/**
+	 * This method checks for appointment address in confirmation page
+	 * @return String value of Appointment address
+	 * @author praveen.kumar7
+	 */
+	public String getAppointmentAddressText() {
+		getReusableActionsInstance().scrollToElement(appointmentCompleteAddress);
+		return getReusableActionsInstance().getWhenReady(appointmentCompleteAddress,10).getText().trim().replaceAll("\\n", " ");
+	}
+
+	/**
+	 * This method looks for monthly fee after tax in confirmation page
+	 * @return String value of Monthly fee after tax
+	 * @author praveen.kumar7
+	 */
+	public String getMonthlyFeeAfterTax() {
+		getReusableActionsInstance().scrollToElement(monthlyFeeAfterTax);
+		return monthlyFeeAfterTax.getText().replaceAll("\\n","");
+	}
+
+	/**
+	 * This method looks for one time fee after tax in confirmation page
+	 * @return String value of one time fee after tax
+	 * @author praveen.kumar7
+	 */
+	public String getOneTimeFeeAfterTax() {
+		getReusableActionsInstance().scrollToElement(oneTimeFeeAfterTax);
+		return oneTimeFeeAfterTax.getText().replaceAll("\\n","");
+	}
+	
 }

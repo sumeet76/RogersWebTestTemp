@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class RogersBFA_TC17_AALShareTerm_BopisShipping_Test extends BaseTestClass {
+public class RogersBFA_TC21_AAL_BYOD_BopisShipping_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -25,65 +25,45 @@ public class RogersBFA_TC17_AALShareTerm_BopisShipping_Test extends BaseTestClas
         reporter.reportLogWithScreenshot("Home Page");
         getRogersHomePage().clkSignIn();
         getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc17AALShareTermBopis.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc17AALShareTermBopis.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc21AALBYODBopisShipping.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc21AALBYODBopisShipping.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");
-        getDriver().get(System.getProperty("AWSUrl"));
+        getDriver().get(System.getProperty("AWSAALUrl"));
         //------------------------------------Device Catalog page--------------------------------------------
-        String deviceName = TestDataHandler.tc17AALShareTermBopis.getNewDevice();
-        reporter.hardAssert(getRogersDeviceCataloguePage().verifyDeviceTileCTAButton(deviceName),
-                "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
-        reporter.reportLogWithScreenshot("Device Catalog Page");
-        getRogersDeviceCataloguePage().clickDeviceTileCTAButton(deviceName);
-        reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed(),
-                "Existing Customer Modal element is present on the screen",
-                "Existing Customer Modal element is not present on the screen");
-        reporter.reportLogWithScreenshot("Existing Customer Modal window Popup");
-        reporter.hardAssert(getRogersDeviceCataloguePage().verifyAddALineButtonOnModal(), "Add a line button displayed", "Add a line button not displayed");
-        getRogersDeviceCataloguePage().clickAddALineButtonOnModal();
         reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvaluationPopupPresent(), "Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
         reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed", "Credit Evaluation Text not disaplayed on Modal");
         reporter.hardAssert(getRogersDeviceCataloguePage().verifySharedNonSharedModalPresent(), "Shared/Nonshared modal displayed", "Shared/Nonshared modal not displayed");
         reporter.reportLogWithScreenshot("Shared/Nonshared modal popup");
-        String aalSharingType = TestDataHandler.tc17AALShareTermBopis.getSharingType();
+        String aalSharingType = TestDataHandler.tc21AALBYODBopisShipping.getSharingType();
         getRogersDeviceCataloguePage().selectAALSharingType(aalSharingType);
         reporter.reportLogPassWithScreenshot(aalSharingType+ " option selected successfully");
         getRogersDeviceCataloguePage().clickContinueButtonOnModal();
-        //------------------------------------Device Config page--------------------------------------------
-        getRogersDeviceConfigPage().selectDeviceColor(TestDataHandler.tc17AALShareTermBopis.getDeviceColor());
-        reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
-                "Continue button on the device config page is present",
-                "Continue button on the device config page is not present");
-        reporter.reportLogPassWithScreenshot("Device config page displayed");
-        getRogersDeviceConfigPage().clickContinueButton();
+        reporter.hardAssert(getRogersDeviceCataloguePage().verifyByodDeviceTile(), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
+        reporter.reportLogWithScreenshot("Device Catalog Page");
+        getRogersDeviceCataloguePage().clkByodDeviceTileContinueBtn();
         //-------------------------------------Plan config page---------------------------------------------
         getRogersPlanConfigPage().staticWaitTime();
-        reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
+        reporter.softAssert(getRogersPlanConfigPage().verifyAalByodBreadCrumb(),
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
-        reporter.hardAssert(getRogersPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
-        reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
-        getRogersPlanConfigPage().clickViewMoreOptions();
-        getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc17AALShareTermBopis.getDeviceCostIndex()));
-        reporter.reportLogPassWithScreenshot("Device cost option selected");
+        reporter.hardAssert(getRogersPlanConfigPage().verifyByodSelectedDeviceSection(), "Plan Config loaded", "Plan config page not loaded");
         getRogersPlanConfigPage().clickShowMoreDetails();
-        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc17AALShareTermBopis.getDataOptionIndex()));
+        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc21AALBYODBopisShipping.getDataOptionIndex()));
         reporter.reportLogPassWithScreenshot("Data option selected");
-        reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc17AALShareTermBopis.getTalkOptionIndex())),
+        reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc21AALBYODBopisShipping.getTalkOptionIndex())),
                 "Talk option selected and Addons page in expanded state","Addons page not in expanded state");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         String monthlyFeesAmountWithTax = getRogersPlanConfigPage().getMonthlyFeesAmount();
         String oneTimeFeesAmountWithTax = getRogersPlanConfigPage().getOneTimeFeesAmount();
         reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees " + monthlyFeesAmountWithTax + "2. oneTimeFee " + oneTimeFeesAmountWithTax);
-        String isSelectedDeviceTier = getRogersPlanConfigPage().getDeviceCostTierSelected();
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         //---------------------------------------Checkout pages---------------------------------------------------------
         reporter.softAssert(getRogersCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed", "Choose a Number Title not disaplayed");
         reporter.softAssert(getRogersCheckoutPage().isChooseNumberTabsDisplayed(), "Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
-        getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc17AALShareTermBopis.getCtnCity());
+        getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc21AALBYODBopisShipping.getCtnCity());
         reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
         getRogersCheckoutPage().clkChosePhoneNumber();
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
@@ -106,26 +86,17 @@ public class RogersBFA_TC17_AALShareTerm_BopisShipping_Test extends BaseTestClas
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                 "Order Review Page Title is not Present");
         reporter.reportLogPassWithScreenshot("Order Review Page");
-        getRogersReviewOrderPage().clkAllAgreementConsentCheckbox(isSelectedDeviceTier);
+        getRogersReviewOrderPage().clkAllAgreementConsentCheckbox("financing");
         getRogersReviewOrderPage().clkBopisConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
-        if (getRogersOrderReviewPage().isPaymentRequired()) {
-            getRogersOrderReviewPage().clkContinue();
-            getRogersPaymentPage().setCreditCardDetails(TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getNumber(),
-                    TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getExpiryMonth(),
-                    TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getExpiryYear(),
-                    TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getCVV());
-            reporter.reportLogWithScreenshot("Rogers Payment Page");
-            getRogersPaymentPage().clkSubmit();
-        } else {
-            getRogersReviewOrderPage().clkSubmitOrderBtn();
-            reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
-            reporter.hardAssert(getRogersOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
-            reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");
-            reporter.hardAssert(getRogersOrderConfirmationPage().verifyBopisContentDisplayed(),
-                    "Express pickup details displayed and device image displayed", "Express pickup details and device details not displayed");
-            reporter.reportLogWithScreenshot("BOPIS contents displayed in order confirmation page");
-        }
+        getRogersReviewOrderPage().clkSubmitOrderBtn();
+        //--------------------------------------Order Confirmation Page-------------------------------------------------------
+        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
+        reporter.hardAssert(getRogersOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
+        reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");
+        reporter.hardAssert(getRogersOrderConfirmationPage().verifyBopisContentDisplayed(),
+                "Express pickup details displayed and device image displayed", "Express pickup details and device details not displayed");
+        reporter.reportLogWithScreenshot("BOPIS contents displayed in order confirmation page");
     }
 
     @AfterMethod(alwaysRun = true)
@@ -133,4 +104,3 @@ public class RogersBFA_TC17_AALShareTerm_BopisShipping_Test extends BaseTestClas
         closeSession();
     }
 }
-

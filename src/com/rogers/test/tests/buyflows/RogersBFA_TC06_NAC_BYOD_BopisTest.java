@@ -108,8 +108,6 @@ public class RogersBFA_TC06_NAC_BYOD_BopisTest extends BaseTestClass {
 		reporter.reportLogPassWithScreenshot("Order Review Page : Contact Details");
 		getRogersReviewOrderPage().clkAgreementConsentCheckbox();
 		getRogersReviewOrderPage().clkBopisConsentCheckbox();
-		//getRogersReviewOrderPage().clkEmailConsentCheckbox();
-
 		reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
 		getRogersReviewOrderPage().clkSubmitOrderBtn();
 		//************Order Confirmation Page****************//

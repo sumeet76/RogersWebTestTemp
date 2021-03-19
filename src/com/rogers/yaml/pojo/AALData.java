@@ -14,6 +14,11 @@ public class AALData {
 	private String deviceCostIndex;
 	private String dataOptionIndex;
 	private String talkOptionIndex;
+	private String ccNumberOTP;
+	private String expiryDateOTP;
+	private String nameOnCard;
+	private String cvvNumber;
+
 	
 	/**
 	 * @return the postalCode
@@ -162,5 +167,47 @@ public class AALData {
 	public void setTalkOptionIndex(String talkOptionIndex) {
 		this.talkOptionIndex = talkOptionIndex;
 	}
+	/**
+	 * @return the ccNumberOTP
+	 */
+	public String getCcNumberOTP() {
+		return ccNumberOTP;
+	}
+	/**
+	 * @param ccNumberOTP the ccNumberOTP to set
+	 */
+	public void setCcNumberOTP(String ccNumberOTP) {
+		this.ccNumberOTP = ccNumberOTP;
+	}
+	/**
+	 * @return the expiryDateOTP
+	 */
+	public String getExpiryDateOTP() {
+		return expiryDateOTP;
+	}
+	/**
+	 * @param expiryDateOTP the ccNumberOTP to set
+	 */
+	public void setExpiryDateOTP(String expiryDateOTP) {
+		this.expiryDateOTP = expiryDateOTP;
+	}
+	/**
+	 * @return the nameOnCard
+	 */
+	public String getNameOnCard() {
+		return nameOnCard;
+	}
+	/**
+	 * @param nameOnCard the nameOnCard to set
+	 */
+	public void setNameOnCard(String nameOnCard) { this.nameOnCard = nameOnCard; }
+	/**
+	 * @return the cvvNumber
+	 */
+	public String getCvvNumber() { return cvvNumber; }
+	/**
+	 * @param cvvNumber the cvvNumber to set
+	 */
+	public void setCvvNumber(String cvvNumber) { this.cvvNumber = cvvNumber; }
 
 }

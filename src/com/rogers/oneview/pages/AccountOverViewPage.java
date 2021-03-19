@@ -63,6 +63,7 @@ public class AccountOverViewPage  extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkCloseBtnAssignDataManager() {
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().clickIfAvailable(btnOneViewDataManagerDialogue,30);
 	}
 	
@@ -126,10 +127,12 @@ public class AccountOverViewPage  extends BasePageClass {
 		strCTN = strCTN.replace("-", "").replace(" ", "");
 		strCTN = "(" + strCTN.substring(0, 3) + ") " + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);		
 		String strCTNXpath = "//*[contains(text(),'" + strCTN + "')]";
+		WebElement subNumber = getDriver().findElement(By.xpath("//*[contains(text(),'"+strCTN+"')]"));
 		getReusableActionsInstance().clickIfAvailable(By.xpath("//div[@class='rep-notifications permitted']//div[@class='blocker']"));
 		if(getReusableActionsInstance().isElementVisible(By.xpath(strCTNXpath))) {
 			getReusableActionsInstance().javascriptScrollToBottomOfPage();
-			getReusableActionsInstance().clickWhenReady(By.xpath(strCTNXpath), 120);
+			//getReusableActionsInstance().clickWhenReady(By.xpath(strCTNXpath), 120);
+			getReusableActionsInstance().executeJavaScriptClick(subNumber);
 			return true;
 		} else if (verifyAndClickShareEverythingCTN(strCTN)) {
 			return true;

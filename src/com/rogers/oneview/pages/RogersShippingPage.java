@@ -26,8 +26,8 @@ public class RogersShippingPage extends BasePageClass {
 	@FindBy(xpath = "//h2/span[@checkout-res='checkout_shipping_info']")
 	WebElement lblShippingTitle;
 
-	@FindBy(xpath = "//span[@class='text-lowercase ng-binding']")
-	List<WebElement> lblSelectAvailableTime;
+	@FindBy(xpath = "(//span[@class='text-lowercase ng-binding'])[1]")
+	WebElement lblSelectAvailableTime;
 
 	@FindBy(xpath = "//span[@checkout-res='reserveTime']")
 	WebElement btnReserve;
@@ -99,7 +99,9 @@ public class RogersShippingPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(lblShippingTitle,60);
 		getReusableActionsInstance().staticWait(2000);
 		getReusableActionsInstance().waitForElementVisibility(btnContinue,60);
-		getReusableActionsInstance().clickWhenReady(btnContinue);
+		getReusableActionsInstance().scrollToElement(btnContinue);
+		getReusableActionsInstance().staticWait(2000);
+		getReusableActionsInstance().clickWhenReady(btnContinue,60);
 	}
 
 	/**
@@ -115,8 +117,8 @@ public class RogersShippingPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkSelectAvailableTime() {
-		getReusableActionsInstance().scrollToElement(lblSelectAvailableTime.get(0));
-		getReusableActionsInstance().clickWhenReady(lblSelectAvailableTime.get(0) , 60);
+		getReusableActionsInstance().scrollToElement(lblSelectAvailableTime);
+		getReusableActionsInstance().clickWhenReady(lblSelectAvailableTime, 60);
 	}
 
 	/**

@@ -655,7 +655,7 @@ public class BaseTestClass {
                     getDriver().get(strUrl + "/phones/" + "?setLanguage=" + language + "&?province=" + "ON");
                     captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 }else{
-                    getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language + "&?province=" + "ON");
+                    getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language + "&setProvince=" + "ON");
                     captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 }
                 break;
@@ -1110,7 +1110,7 @@ public class BaseTestClass {
             if (!strURL.contains("qa1.")  && !strURL.contains("qa5.")  && !strURL.contains("qa6.")  && !strURL.contains("qa7.") && !strURL.contains("qa2.") && !strURL.contains("qa3.") && !strURL.contains("qa4.") ) {
                 ExtentTestManager.startTest("Test result summary: Entire suite execution stopped, CookieDomain URL is not valid","");
                 ExtentTestManager.getTest().log(LogStatus.FAIL,"Suite Failed : CookieDomain URL is not valid"  );
-                throw new DigiAutoCustomException("CookieDomain URL is not valid");
+                //throw new DigiAutoCustomException("CookieDomain URL is not valid");
             }
         }
     }
