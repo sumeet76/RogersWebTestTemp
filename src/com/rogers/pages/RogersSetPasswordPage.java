@@ -26,14 +26,14 @@ public class RogersSetPasswordPage extends BasePageClass {
 	@FindBy (xpath = "//input[@name='password' or @id='password']")
 	WebElement inputPassword;
 	
-	@FindBy (xpath = "//input[@name='confirmPassword' or @id='cpassword']")
+	@FindBy (xpath = "//input[@name='confirmPassword' or @id='cpassword' or @id='confirmPassword']")
 	WebElement inputConfirmPassword;
 	
 	@FindBy (xpath = "//div[@class='ute-elr-password']")
 	WebElement divSetPassword;
 		
 	
-	@FindBy (xpath = "//button[text()='Set password' or text()='Enregistrer un mot de passe' or @title='Submit password' or @title='Soumettre le mot de passe']")
+	@FindBy (xpath = "//button[text()='Set password' or text()='Enregistrer un mot de passe' or @title='Submit password' or @title='Soumettre le mot de passe' or @type='submit']")
 	WebElement btnSetPassword;
 
 	
