@@ -38,6 +38,8 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'SearchUrl', test_searchURL
 	systemProperty 'URIautoRegister', test_URIautoRegister
 	systemProperty 'URIEmailer', test_URIEmailer
+	systemProperty 'PageLoadStrategy', test_PageLoadStrategy
+	systemProperty 'CookieFetcherMapping', test_CookieFetcherMapping
 
 	useTestNG(){
 		parallel = test_parallel
@@ -70,7 +72,9 @@ task "localTest"(type: Test) {
 	systemProperty 'Language', test_language
 	systemProperty 'SearchUrl', test_searchURL
 	systemProperty 'URIautoRegister', test_URIautoRegister
-	systemProperty 'URIEmailer', test_URIEmailer			
+	systemProperty 'URIEmailer', test_URIEmailer
+	systemProperty 'PageLoadStrategy', test_PageLoadStrategy
+	systemProperty 'CookieFetcherMapping', test_CookieFetcherMapping
 
 	systemProperties(System.getProperties())
 	outputs.upToDateWhen { false }  // Always run tests
