@@ -104,7 +104,9 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='rch-modal']//button[@class='ds-button ds-focus ds-active -primary -large']//span[@class='ds-button__copy w-100']")
 	WebElement continueBtnIgniteMultipleAddressLookupSubmit;
 
-	@FindBy(xpath = "//a[contains(@title,'See available bundles') or  contains(@title,'Voir les offres groupées')]")
+	@FindAll({
+			@FindBy(xpath = "//a[contains(@title,'See available bundles') or  contains(@title,'Voir les offres groupées')]"),
+			@FindBy(xpath = "//a[contains(@title,'See bundles') or  contains(@title,'Voir les offres groupées')]")})
 	WebElement btnServiceability;
 	//a[contains(@title,'See available Ignite Bundles') or  contains(@title,'Voyez les offres groupées Élan accessibles')]
 	//a[@title='Check if Ignite Bundles are available in your area' or @title='Vérifiez si les offres groupées Élan sont disponibles dans votre secteur.']
