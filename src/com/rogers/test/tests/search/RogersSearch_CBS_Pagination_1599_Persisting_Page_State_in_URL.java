@@ -37,7 +37,7 @@ public class RogersSearch_CBS_Pagination_1599_Persisting_Page_State_in_URL exten
     }
 
 
-    @Test(dataProvider = "FilterData") @Parameters({"strLanguage"})
+    @Test(dataProvider = "FilterData", groups = {"Pagination"}) @Parameters({"strLanguage"} )
     public void contextPageValidation(String[] csvRowStrArray)
     {
         String url;
@@ -64,6 +64,8 @@ public class RogersSearch_CBS_Pagination_1599_Persisting_Page_State_in_URL exten
         getRogersSearchPage().openURLInNewTab(url);
         reporter.reportLogPassWithScreenshot("New tab is launched with the same URL: " +url);
         getRogersSearchPage().refreshPage();
+        getRogersSearchPage().isPageLoaded();
+        getRogersSearchPage().waitForPage();
         reporter.reportLogPassWithScreenshot("The page is refreshed a couple of times");
         message =getRogersSearchPage().validatePageNumberInURL(url);
         reporter.reportLogPassWithScreenshot(message);

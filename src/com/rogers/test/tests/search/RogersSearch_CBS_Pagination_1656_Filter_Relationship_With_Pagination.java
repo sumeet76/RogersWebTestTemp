@@ -8,23 +8,24 @@ import org.testng.annotations.*;
 import utils.CSVReader;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
 /**
- * This class contains the test method to validate the current page context validation for search
+ * This class contains the test method to validate that if any filter state is selected then it should not be affected (stay put)
+ * on performing any pagination functionality
  *
  * @author naina.agarwal
  *
  * Test steps:
  *
- * Validate that on toggling language (EN/FR), irrespective of any number of filters or pagination
- * functionality (page number, page size, current highlighted page) selected, everything should reset
- * except for the term on which the search was performed.
+ * Select any combination of parent- child(s) filter,The pagination component should be displayed with 1st page highlighted and 10 results on the screen
+ * Navigate to different page numbers and select first and last page button,The selected filter state should be persistent when the results refresh
+ * Change the page size,The selected filter state should be persistent when the results refresh
  **/
-public class RogersSearch_CBS_Pagination_1675_Pagination_On_Toggling_Language extends BaseTestClass {
+public class RogersSearch_CBS_Pagination_1656_Filter_Relationship_With_Pagination extends BaseTestClass {
 
     @DataProvider(name = "FilterData", parallel = false)
     public Object[] testData() throws IOException {
@@ -43,12 +44,12 @@ public class RogersSearch_CBS_Pagination_1675_Pagination_On_Toggling_Language ex
     }
 
 
-    @Test(dataProvider = "FilterData") @Parameters({"strLanguage"})
-    public void contextPageValidation(String[] csvRow)
-    {
+    @Test(dataProvider = "FilterData", groups = {"Pagination"}) @Parameters({"strLanguage"})
+    public void contextPageValidation(String[] csvRow) throws UnsupportedEncodingException {
         String url;
         int pageNumber;
         String message=null;
+        String grandParentFilter=null;
         String strParentFilterName=null;
         List<WebElement> lstParentFilters;
         reporter.reportLogWithScreenshot("Search URL is launched");
@@ -60,30 +61,30 @@ public class RogersSearch_CBS_Pagination_1675_Pagination_On_Toggling_Language ex
         getRogersSearchPage().clickSubmitSearchIcon();
         getRogersSearchPage().waitTime();
         reporter.reportLogPass(getRogersSearchPage().getSearchResults() + " are displayed");
-        getRogersSearchPage().clkGrandParentFilter(csvRow[1]);
-        reporter.reportLogWithScreenshot(csvRow[1] + " grandparent filter is clicked");
+        grandParentFilter=csvRow[1];
+        getRogersSearchPage().clkGrandParentFilter(grandParentFilter);
+        reporter.reportLogWithScreenshot(grandParentFilter + " grandparent filter is clicked");
         lstParentFilters = getRogersSearchPage().getParentFilters(csvRow[1]);
-        getRogersSearchPage().clkParentFilter(lstParentFilters.get(0));
-        strParentFilterName = lstParentFilters.get(0).getText();
+        int size=lstParentFilters.size();
+        getRogersSearchPage().clkParentFilter(lstParentFilters.get(size-1));
+        strParentFilterName = lstParentFilters.get(size-1).getText();
         reporter.reportLogWithScreenshot(strParentFilterName + " parent filter is selected");
+        reporter.softAssert(getRogersSearchPage().isFirstPageNumberHighlighted(),"First page is highlighted under pagination", "First page is not highlighted under pagination");
+        reporter.softAssert(getRogersSearchPage().validateDefaultResultDropdownValue(),"Default page is displayed as expected","Default page size is not displayed as expected");
+        message =getRogersSearchPage().clickLastForwardArrow();
+        reporter.reportLogPassWithScreenshot(message);
+        reporter.softAssert(getRogersSearchPage().lastPageIsHighlighted(),"Last page is highlighted", "Last page is not highlighted");
+        getRogersSearchPage().isPageLoaded();
+        reporter.softAssert(getRogersSearchPage().validateFiltersInUrl(grandParentFilter,strParentFilterName), "Filters are retained", "Filters are not retained");
+        message =getRogersSearchPage().clickLastBackwardArrow();
+        reporter.reportLogPassWithScreenshot(message);
+        reporter.softAssert(getRogersSearchPage().isFirstPageNumberHighlighted(),"First page is highlighted under pagination", "First page is not highlighted under pagination");
+        getRogersSearchPage().isPageLoaded();
+        reporter.softAssert(getRogersSearchPage().validateFiltersInUrl(grandParentFilter,strParentFilterName), "Filters are retained", "Filters are not retained");
         String randomPageSize= getRogersSearchPage().selectRandomValueFromResultPerPageDropdown();
         reporter.reportLogPassWithScreenshot("Selected a random Page size from result per page dropdown : " + randomPageSize);
-        message =getRogersSearchPage().selectPageTwo();
         getRogersSearchPage().isPageLoaded();
-        reporter.reportLogPassWithScreenshot(message);
-        message =getRogersSearchPage().isSecondPageNumberHighlighted();
-        reporter.reportLogPassWithScreenshot(message);
-        url = getDriver().getCurrentUrl();
-        message =getRogersSearchPage().validatePageNumberInURL(url);
-        reporter.reportLogPassWithScreenshot(message);
-        reporter.softAssert(getRogersSearchPage().validatePageSizeInURL(url)," Page size at the bottom pagination and the url matches", "Page size at the bottom pagination and the url does not match");
-        getRogersSearchPage().toggleLanguage();
-        getRogersSearchPage().isPageLoaded();
-        reporter.reportLogWithScreenshot("Toggle Language is clicked");
-        reporter.softAssert(getRogersSearchPage().isFirstPageNumberHighlighted(),"First page is highlighted under pagination", "First page is not highlighted under pagination");
-        reporter.softAssert(getRogersSearchPage().isGrandParentFilterUnexpanded(),"Filter is reset", "Filter is not reset");
-        reporter.softAssert(getRogersSearchPage().searchTermRetained(csvRow[0]),"Search term is retained", "Search term is not retained");
-
+        reporter.softAssert(getRogersSearchPage().validateFiltersInUrl(grandParentFilter,strParentFilterName), "Filters are retained", "Filters are not retained");
     }
 
     @BeforeMethod(alwaysRun = true)

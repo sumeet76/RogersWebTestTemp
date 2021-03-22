@@ -4,7 +4,9 @@ import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.DigiAutoCustomException;
 
 import java.io.UnsupportedEncodingException;
@@ -147,8 +149,20 @@ public class RogersSearchPage extends BasePageClass {
     @FindBy(xpath = "//button[contains(@id,'-heading')]/following-sibling::ds-expander/div")
     WebElement AllFilterUnexpanded;
 
-    Boolean isPagePresent=true;
+    @FindBy(xpath = "(//span[@class='m-navLink__chevron rds-icon-expand'])[1]")
+    WebElement provinceDropdown;
 
+    public static final By FilterComponent = By.xpath("//div[@class='ds-filter__listWrapper']");
+
+    public static final By PaginationComponent = By.xpath("//div[@class='d-flex ng-star-inserted']");
+
+    public static final By titleOnDetailsPage = By.xpath("//h1[@id='bfa-page-title']");
+
+    public static final By provinceDropdownValues = By.xpath("//ul[@class='o-headerNavDropdown -navbar nav-list-opened']/li/a");
+
+    public static final By provinceInToggle= By.xpath("(//a[@class='m-navLink -navbar'])[2]");
+
+    Boolean isPagePresent=true;
 
     /**
      * check if expected filters displayed or not
@@ -1072,7 +1086,9 @@ public class RogersSearchPage extends BasePageClass {
     }
 
     public boolean validateFiltersInUrl(String strGrandParentFilter, String strParentFilter) throws UnsupportedEncodingException {
-        String strQuery = "f=" + strGrandParentFilter.trim() + "_" + strParentFilter.trim();
+        String[] parts = strParentFilter.split("[/\\s@&.?$+-]+");
+        String part1 = parts[0];
+        String strQuery = "f=" + strGrandParentFilter.trim() + "_" + part1.trim();
         return validateURLContains(strQuery);
     }
 
@@ -1684,6 +1700,7 @@ public void javascriptClickWithPerform(WebElement element)
         ((JavascriptExecutor)getDriver()).executeScript("window.open('about:blank','_blank');");
         getReusableActionsInstance().switchToNewWindow();
         getDriver().get(url);
+        getReusableActionsInstance().staticWait(10000);
     }
     /**
      * This method will refresh the current page 5 times
@@ -1692,7 +1709,7 @@ public void javascriptClickWithPerform(WebElement element)
      */
     public void refreshPage()
     {
-        for(int i=0; i<5;i++) {
+        for(int i=0; i<3;i++) {
             getDriver().navigate().refresh();
             isPageLoaded();
         }
@@ -1702,17 +1719,28 @@ public void javascriptClickWithPerform(WebElement element)
      *
      * @author naina.agarwal
      */
-    public void toggleLanguage()
+    public String toggleLanguage()
     {
+        String currentLanguageBeforeToggle= getReusableActionsInstance().getElementText(toggleLanguage);
         getReusableActionsInstance().clickWhenReady(toggleLanguage);
+        return currentLanguageBeforeToggle;
     }
     public boolean isGrandParentFilterUnexpanded() {
         Boolean filterExpanded=true;
-        List <WebElement> listofItems = getDriver().findElements(allGrandParentFilters);
-        for (int i=0;i<listofItems.size();i++)
-        {
-            if(listofItems.get(i).getAttribute("aria-hidden").equals("false"))
-            filterExpanded =false;
+        int attempts=0;
+        while(attempts<2) {
+            try {
+                List<WebElement> listofItems = getDriver().findElements(allGrandParentFilters);
+                for (int i = 0; i < listofItems.size(); i++) {
+                    if (listofItems.get(i).getAttribute("aria-hidden").equals("false"))
+                        filterExpanded = false;
+                }
+            }
+            catch(StaleElementReferenceException e)
+            {
+                e.printStackTrace();
+            }
+            attempts++;
         }
         return filterExpanded;
     }
@@ -1725,6 +1753,122 @@ public void javascriptClickWithPerform(WebElement element)
             termIsRetained=false;
         }
         return termIsRetained;
+    }
+    public boolean validateLanguageInUrl(String language) throws UnsupportedEncodingException {
+
+        String strQuery = "language=" + language.trim().toLowerCase();
+        return validateURLContains(strQuery);
+    }
+
+    public String updateURLWithDifferentLanguage()
+    {
+        String currentLanguage= getReusableActionsInstance().getElementText(toggleLanguage);
+        String currentURL =getDriver().getCurrentUrl();
+        int indexOfLanguage=currentURL.indexOf("language");
+        String firstHalfURL=currentURL.substring(0,indexOfLanguage);
+        String secondHalfURL=currentURL.substring(indexOfLanguage);
+        secondHalfURL=secondHalfURL.replace(secondHalfURL,"language=" +currentLanguage);
+        String updatedURL=firstHalfURL.concat(secondHalfURL);
+        getDriver().get(updatedURL);
+        return updatedURL;
+
+    }
+    public boolean checkLanguageDisplayedOnPage()
+    {
+        Boolean toggleUpdate=true;
+        String currentURL =getDriver().getCurrentUrl();
+        String currentDisplayedLanguageOnToggle=getReusableActionsInstance().getElementText(toggleLanguage);
+        if(!currentURL.contains("language=en") && (currentDisplayedLanguageOnToggle.equals("FR")))
+        {
+         if(!currentURL.contains("language=fr") && (currentDisplayedLanguageOnToggle.equals("EN")))
+            {
+                toggleUpdate=false;
+            }
+        }
+        return toggleUpdate;
+    }
+
+    public boolean isFilterDisplayedForSingleResult()
+    {
+        Boolean singleResult=true;
+        List<WebElement> filter = getDriver().findElements(FilterComponent);
+        if(filter.size()>0)
+            singleResult=false;
+        return singleResult;
+
+    }
+    public boolean isPaginationDisplayedForSingleResult()
+    {
+        Boolean singleResult=true;
+        List<WebElement> pagination = getDriver().findElements(PaginationComponent);
+        if(pagination.size()>0)
+            singleResult=false;
+        return singleResult;
+
+    }
+    public boolean defaultLanguageInURL()
+    {
+        Boolean defaultLanguage=true;
+        String url=getDriver().getCurrentUrl();
+        if(!url.contains("language=en"))
+            defaultLanguage=false;
+        return  defaultLanguage;
+    }
+    public boolean isDetailsPageDisplayed(String searchTerm)
+    {
+        Boolean titleDetailsPage=true;
+        String title =getDriver().findElement(titleOnDetailsPage).getText();
+        if(!title.toLowerCase().contains(searchTerm.toLowerCase()))
+            titleDetailsPage=false;
+        return  titleDetailsPage;
+    }
+    public  void waitForDetailsPage()
+    {
+        WebDriverWait wait = new WebDriverWait(getDriver(), 15);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(titleOnDetailsPage));
+    }
+    public void waitForPage()
+    {
+        getReusableActionsInstance().staticWait(5000);
+    }
+
+    public String selectRandomProvince()
+    {
+        getReusableActionsInstance().clickWhenReady(provinceDropdown);
+        List<WebElement>province= getDriver().findElements(provinceDropdownValues);
+        int numberOfProvinces= province.size();
+        int randomNumber = randomNumber(numberOfProvinces);
+        String provinceSelected =province.get(randomNumber).getText();
+        isPageLoaded();
+        province.get(randomNumber).click();
+        return provinceSelected;
+    }
+
+    public boolean validateProvinceAfterToggle(String province)
+    {
+    Boolean provinceMatch=true;
+        String currentProvince= getDriver().findElement(provinceInToggle).getAttribute("aria-label");
+            if(!province.equals(currentProvince))
+                provinceMatch=false;
+            return provinceMatch;
+    }
+
+    public boolean searchResultMatch(String searchResult)
+    {
+        Boolean searchResultMatch=true;
+        waitTime();
+        String currentSearchResult=getReusableActionsInstance().getElementText(searchResults);
+        if(!searchResult.trim().equals(currentSearchResult.trim()))
+            searchResultMatch=false;
+        return  searchResultMatch;
+    }
+    public boolean validateHomeURL()
+    {
+        Boolean homeURL=true;
+        String currentURL = getDriver().getCurrentUrl();
+        if(!currentURL.contains("home"))
+            homeURL=false;
+        return homeURL;
     }
 }
 
