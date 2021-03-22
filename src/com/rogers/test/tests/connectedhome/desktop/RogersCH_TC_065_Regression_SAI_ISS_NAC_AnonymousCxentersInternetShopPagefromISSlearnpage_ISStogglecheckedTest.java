@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
 
 
 /**
- * This class contains the test method to test Legacy Internet Offer Buy flow for Rogers.com   
+ * This class contains the test method to test Legacy Internet Offer Buy flow for Rogers.com
  *
  * @author chinnarao.vattam
  *
@@ -31,7 +31,7 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_052_NAC_ValidationSaiTupeloBuyflowAddAdditionalSTBTest extends BaseTestClass {
+public class RogersCH_TC_065_Regression_SAI_ISS_NAC_AnonymousCxentersInternetShopPagefromISSlearnpage_ISStogglecheckedTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","SmartStreamCH"})
     public void checkSaiTupeloBuyflowAddAdditionalSTB() {

@@ -252,7 +252,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	WebElement buttonAddIgniteTVBoxes;
 	//button[contains(@class,'stb-button increment')]//span[@class='ds-button__copy w-100']
 		
-	@FindBy(xpath = "//span[@translate='global.cta.updateCart']")
+	@FindBy(xpath = "//span[@translate='global.cta.updateCart']/ancestor::button")
 	WebElement buttonUpdateCart;
 	
 	@FindBy(xpath = "//ds-modal-container[contains(@id,'ds-modal-container')]")
@@ -624,6 +624,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verify4KTV() {
+		getReusableActionsInstance().waitForElementVisibility(txtCartSummary,120);
 		return	getReusableActionsInstance().isElementVisible(txtCartSummary,90);
 	}
 	

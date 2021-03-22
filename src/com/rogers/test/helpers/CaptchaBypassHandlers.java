@@ -1,5 +1,6 @@
 package com.rogers.test.helpers;
 
+import org.apache.http.entity.StringEntity;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import utils.CookieFetcher;
@@ -70,11 +71,64 @@ public class CaptchaBypassHandlers {
 			intRandom = 4;
 		}
 		String strCookieUserName= "rogers"+ new Date().getDay()+new Date().getHours()+intRandom+"@hmail.com";//TestDataHandler.fidoConfig.getCookieUserName();
-		String strCookieUserPassword= strCookieUserName;//Not a sensitive information  //TestDataHandler.fidoConfig.getCookieUserPassword();			
-		
-		
-		Cookie captchBypass = new Cookie ("temp_token_r",CookieFetcher.setAndFetchCookie(strCookieUserName, strCookieUserPassword, strUrl));
+		String strCookieUserPassword= strCookieUserName;
+		String strCookieFetchURL = generateCookieFetchURL(strUrl);
+		String strCookieRegistrationURL = generateCookieRegistrationURL(strUrl);
+		String strCookieFileType = "rogers";
+		String strCookieName = "temp_token_r";
+		Cookie captchBypass = new Cookie ("temp_token_r",CookieFetcher.setAndFetchCookie(strCookieUserName, strCookieUserPassword, strUrl, strCookieFetchURL, strCookieRegistrationURL , strCookieFileType , strCookieName));
+		//Add wait time for the add cookie to work on Firefox.
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		getDriver().manage().addCookie(captchBypass);
+	}
+
+	/**
+	 * To Bypass Captcha for login Flows
+	 * @param strUrl                     string of test url
+	 */
+	public String generateCookieRegistrationURL(String strUrl) {
+		String strCookieRegistrationURL=null;
+		String cookieEnv=null;
+		if (strUrl.contains("qa1.") || strUrl.contains("qa5.") || strUrl.contains("qa6.") || strUrl.contains("qa7.")) {
+			cookieEnv = "https://qa0" + strUrl.split("qa")[1].charAt(0);
+		} else if (strUrl.contains("qa2.")) {
+			cookieEnv = "https://qa03";
+		} else if (strUrl.contains("qa3.")) {
+			cookieEnv = "https://qa04";
+		} else if (strUrl.contains("qa4.")) {
+			cookieEnv = "https://qa02";
+		} else {
+			cookieEnv = System.getProperty("test_CookieFetcherMapping");
+		}
+
+		strCookieRegistrationURL = cookieEnv + "-mservices.rogers.com/v1/user/recaptchaBypass/register";
+		return strCookieRegistrationURL;
+	}
+
+	/**
+	 * To Bypass Captcha for login Flows
+	 * @param strUrl                     string of test url
+	 */
+	public String generateCookieFetchURL(String strUrl) {
+		String strCookieFetchURL=null;
+		String cookieEnv=null;
+		if (strUrl.contains("qa1.") || strUrl.contains("qa5.") || strUrl.contains("qa6.") || strUrl.contains("qa7.")) {
+			cookieEnv = "https://qa0" + strUrl.split("qa")[1].charAt(0);
+		} else if (strUrl.contains("qa2.")) {
+			cookieEnv = "https://qa03";
+		} else if (strUrl.contains("qa3.")) {
+			cookieEnv = "https://qa04";
+		} else if (strUrl.contains("qa4.")) {
+			cookieEnv = "https://qa02";
+		} else {
+			cookieEnv = System.getProperty("CookieFetcherMapping");
+		}
+		strCookieFetchURL = cookieEnv + "-mservices.rogers.com/v1/user/recaptchaBypass/login";
+		return strCookieFetchURL;
 	}
 
 	/**
