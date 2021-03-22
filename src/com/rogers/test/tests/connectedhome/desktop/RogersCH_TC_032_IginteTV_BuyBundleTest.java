@@ -117,9 +117,9 @@ public class RogersCH_TC_032_IginteTV_BuyBundleTest extends BaseTestClass {
        reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
        reporter.reportLogWithScreenshot("Launched the tech install page");
        //getRogersTechInstallPage().clkPersonalizedInstall();
-       getRogersTechInstallPage().selSelffinstallDateAndTime();
+      /* getRogersTechInstallPage().selSelffinstallDateAndTime();
        reporter.reportLogWithScreenshot("Launched the tech install page");
-       getRogersTechInstallPage().setMobielNumber();
+       getRogersTechInstallPage().setMobielNumber();*/
        getRogersTechInstallPage().clkTechInstalConsent();
        reporter.reportLogWithScreenshot("tech install details");
        getRogersTechInstallPage().clkTechInstallContinue();
