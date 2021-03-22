@@ -35,7 +35,7 @@ public class RogersSS_TC_069_ValidateTotalDataAndPurchasedSpeedPass_InfiniteSE e
 	
 	
 	
-    @Test(groups = {"AddDataFlow","WirelessDashboardSS"})
+    @Test(groups = {"AddDataFlow","WirelessDashboardSS","AddDataSpeedPass"})
     public void validateTotalDataForInfiniteSEIndividualPlan() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc6269.getUsername();

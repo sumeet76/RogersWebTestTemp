@@ -36,7 +36,7 @@ public class RogersSS_TC_081_ValidateErrorMessageWhenMDTandProfileMaximumLimitFo
 	
 	Integer counterOfAddedData =0;
 	
-    @Test(groups = {"AddDataFlow","WirelessDashboardSS"})
+    @Test(groups = {"AddDataFlow","WirelessDashboardSS","AddDataSpeedPass"})
     public void validateErrorMessageWhenMDTandProfileMaximumLimitForSE() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc7681.getUsername();
