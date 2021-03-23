@@ -61,7 +61,9 @@ public class RogersSearch_CBS_Pagination_1962_Province_Toggling_Functioning exte
         reporter.reportLogWithScreenshot("Selected province is: " +selectedProvince);
         searchResult= getRogersSearchPage().getSearchResults();
         reporter.reportLogPass( searchResult + " are displayed");
-        getRogersSearchPage().refreshPage();
+        getDriver().navigate().refresh();
+        reporter.reportLogWithScreenshot("Page is refreshed");
+        getRogersSearchPage().waitForToggleToBeDisplayed();
         reporter.softAssert(getRogersSearchPage().validateProvinceAfterToggle(selectedProvince), "Same province is displayed in Language toggle after page refresh", "Same province is displayed in Language toggle after page refresh");
         reporter.softAssert(getRogersSearchPage().searchResultMatch(searchResult),"Search results match after page refresh", "Search result does not match after page refresh");
         getRogersSearchPage().clkGrandParentFilter(csvRow[1]);
@@ -78,7 +80,9 @@ public class RogersSearch_CBS_Pagination_1962_Province_Toggling_Functioning exte
         reporter.reportLogWithScreenshot("Selected province is: " +selectedProvince);
         searchResult= getRogersSearchPage().getSearchResults();
         reporter.reportLogPass( searchResult + " are displayed");
-        getRogersSearchPage().refreshPage();
+        getDriver().navigate().refresh();
+        reporter.reportLogWithScreenshot("Page is refreshed");
+        getRogersSearchPage().waitForToggleToBeDisplayed();
         reporter.softAssert(getRogersSearchPage().validateProvinceAfterToggle(selectedProvince), "Same province is displayed in Language toggle after page refresh", "Same province is displayed in Language toggle after page refresh");
         reporter.softAssert(getRogersSearchPage().searchResultMatch(searchResult),"Search results match after page refresh", "Search result does not match after page refresh");
         reporter.softAssert(getRogersSearchPage().isGrandParentFilterUnexpanded(),"Filter is reset", "Filter is not reset");

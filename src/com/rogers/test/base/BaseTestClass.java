@@ -1112,7 +1112,7 @@ public class BaseTestClass {
             if (!strURL.contains("qa1.") && !strURL.contains("qa5.") && !strURL.contains("qa6.") && !strURL.contains("qa7.") && !strURL.contains("qa2.") && !strURL.contains("qa3.") && !strURL.contains("qa4.")) {
                 ExtentTestManager.startTest("Test result summary: Entire suite execution stopped, CookieDomain URL is not valid", "");
                 ExtentTestManager.getTest().log(LogStatus.FAIL, "Suite Failed : CookieDomain URL is not valid");
-                throw new DigiAutoCustomException("CookieDomain URL is not valid");
+            //throw new DigiAutoCustomException("CookieDomain URL is not valid");
             }
         }
     }

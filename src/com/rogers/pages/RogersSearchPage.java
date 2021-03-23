@@ -1827,6 +1827,11 @@ public void javascriptClickWithPerform(WebElement element)
         WebDriverWait wait = new WebDriverWait(getDriver(), 15);
         wait.until(ExpectedConditions.visibilityOfElementLocated(titleOnDetailsPage));
     }
+    public  void waitForToggleToBeDisplayed()
+    {
+        WebDriverWait wait = new WebDriverWait(getDriver(), 15);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(provinceInToggle));
+    }
     public void waitForPage()
     {
         getReusableActionsInstance().staticWait(5000);
@@ -1835,6 +1840,8 @@ public void javascriptClickWithPerform(WebElement element)
     public String selectRandomProvince()
     {
         getReusableActionsInstance().clickWhenReady(provinceDropdown);
+        WebDriverWait wait = new WebDriverWait(getDriver(), 15);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(provinceDropdownValues));
         List<WebElement>province= getDriver().findElements(provinceDropdownValues);
         int numberOfProvinces= province.size();
         int randomNumber = randomNumber(numberOfProvinces);
