@@ -31,9 +31,9 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_064_Regression_SAI_ISS_NAC_LearnPage_ISS_ToggleTest extends BaseTestClass {
+public class RogersCH_TC_070_IgniteNAC_CartAbandon_CancelCartatProfileCreationPage_StartOver_newBeforeYouGoModal_B_DisplayAsPerCopy_saveCartAndRetrieveTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","SmartStreamCH"})
+    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
     public void checkSaiTupeloBuyflowAddAdditionalSTB() {
         getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");

@@ -10,7 +10,13 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class RogersAccountOverviewPage extends BasePageClass {
 
@@ -391,6 +397,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	@FindBy(xpath = "//p[text()='Subscription cancelled' or contains(text(),'Abonnement annul')]")
 	WebElement headerCancelSuccess;
+
+	@FindBy(xpath = "//span[contains(text(),'This Apple Music subscription has been cancelled immediately and you will not be charged.')]")
+	WebElement lblImmediateCancelSuccess;
+
 	
 	@FindBy(xpath = "//*[contains(text(),'Subscription successful') or contains(text(),'Abonnement réussi')]")
 	WebElement headerSubscriptionSuccess;
@@ -398,12 +408,31 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//option[@value='0: Object']")
 	WebElement optReasonOne;
 
+	@FindBy(xpath = "//option[contains(text(),'I’m already paying for an Apple Music subscription') or contains(text(),'Je paie déjà un abonnement à Apple Music.') or @value='5: Object']")
+	WebElement optReasonForImmediateCancel;
+
+	@FindBy(xpath = "//option[contains(text(),' I don't need a music service anymore  ') or contains(text(),'Je n’ai plus besoin de service de musique') or @value='5: Object']")
+	WebElement optReasonForDefferedCancel;
+
+	@FindBy(xpath = "//span[@aria-relevant='additions' or text()='This Apple Music subscription will be cancelled immediately and you will not be charged.' or text()='Cet abonnement à Apple Music sera annulé immédiatement, et aucuns frais ne seront exigés.']")
+	WebElement lblImmediateCancelReason;
+
+	@FindBy(xpath = "//span[@aria-relevant='additions' and text()='This Apple Music subscription will be cancelled at the end of the 1-month promotional period and you will not be charged. Keep listening until then!' or text()='Cet abonnement à Apple Music sera annulé à la fin de la période promotionnelle de 1 mois, et aucuns frais ne seront exigés. Continuez d’en profiter jusqu’à ce moment!']")
+	WebElement lblDeferredCancel;
+
 	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[text()=' Cancelled ' or contains(text(),' Service annul')]")
 	WebElement paneSMPCancelled;
 	
 	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[contains(text(),'Promotion ends') or contains(text(),'La promotion prend fin le')]")
 	WebElement lblSMPpromotionEnds;
-	
+
+	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span/following-sibling::span[contains(text(),'This number is not on an eligible plan') or contains(text(),'Ce numéro n’est pas associé à un forfait admissible')]")
+	WebElement lblSMPpromotionInEligile;
+
+	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[contains(text(),'Promotion ended') or contains(text(),'La promotion prend fin le')]")
+	WebElement lblSMPpromotionEnded;
+
+
 	@FindBy(xpath = "//span[contains(text(),'Promotion started') or contains(text(),' La promotion a commencé')]")
 	WebElement lblSMPpromotionStarted;
 
@@ -1661,8 +1690,32 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			getReusableActionsInstance().waitForElementTobeClickable(optReasonOne, 5);
 			getReusableActionsInstance().getWhenReady(optReasonOne).click();
 			//getReusableActionsInstance().selectWhenReadyByVisibleText(selectReasonForCancel, " I'm switching to another music service provider ");
-		} 
-	
+		}
+
+	/**
+	 * Selects the cancellation reason
+	 * @author Mirza.Kamran
+	 */
+	public void selectReasonForCancelSubscription(String strReason) {
+		getReusableActionsInstance().getWhenReady(selectReasonForCancel).click();
+		switch (strReason.toLowerCase())
+		{
+
+			case "immediate":
+			{
+				getReusableActionsInstance().waitForElementTobeClickable(optReasonForImmediateCancel, 5);
+				getReusableActionsInstance().getWhenReady(optReasonForImmediateCancel).click();
+				break;
+			}
+			case "deferred":
+			{
+				getReusableActionsInstance().waitForElementTobeClickable(optReasonForDefferedCancel, 5);
+				getReusableActionsInstance().getWhenReady(optReasonForDefferedCancel).click();
+				break;
+			}
+		}
+	}
+
 		/**
 		 * Selects confirm cancel subscription
 		 * @author Mirza.Kamran
@@ -1678,10 +1731,18 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		 */
 		public boolean verifyIfCancelSuccessfulOverLayDisplayed() {
 			return getReusableActionsInstance().isElementVisible(headerCancelSuccess);
-		} 
-		
-		
-		/**
+		}
+
+	/**
+	 * verifies if the cancel success overlay is displayed
+	 * @return true if displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyIfCancelSuccessfulOverLayMentionsEffectiveImmediate() {
+		return getReusableActionsInstance().isElementVisible(lblImmediateCancelSuccess);
+	}
+
+	/**
 		 * Selects okay on cancel success overlay
 		 * @author Mirza.Kamran
 		 */
@@ -1698,6 +1759,18 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			return (getReusableActionsInstance().isElementVisible(paneSMPCancelled)
 					&& getReusableActionsInstance().isElementVisible(lblSMPpromotionEnds));
 		}
+
+
+
+	/**
+	 *
+	 * @return true if displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyIfSMPIsDisplayedWithSubscriptionEnded() {
+		return (getReusableActionsInstance().isElementVisible(paneSMPCancelled)
+				&& getReusableActionsInstance().isElementVisible(lblSMPpromotionEnded));
+	}
 
 		/**
 		 * Clicks on sign up subscription
@@ -1925,5 +1998,83 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	}
 
+
+	public boolean verifyIfEffectiveCancelDateForSubscriptionISImmediate(String test_language) {
+		String cancelledEndDate= getReusableActionsInstance().getWhenReady(lblSMPpromotionEnded).getText();
+		cancelledEndDate = cancelledEndDate.split("ended")[1].trim();
+		Locale locale=Locale.CANADA;;
+		String datePattern = "MMM. d, u";
+		ZoneId defaultZoneId = ZoneId.systemDefault();
+		if(test_language=="en")
+		{
+			locale =Locale.CANADA;
+			datePattern = "MMM. d, u";
+		}else if(test_language=="fr"){
+			locale =Locale.FRENCH;
+			datePattern = "dd MMM yyyy";
+		}
+		LocalDate cancelEffectiveDate = parseDate(cancelledEndDate, datePattern,locale);
+
+		if(isDateEqulas(Date.from(cancelEffectiveDate.atStartOfDay(defaultZoneId).toInstant()),Date.from(getTodaysDate().atStartOfDay(defaultZoneId).toInstant())))
+		{
+			return true;
+		}
+		return false;
+	}
+
+
+	public boolean verifyIfTheOrderOfTheCancelledCTNsWillBeDisplayedBasedOnEffectiveCancelDatesForImmediateAndDeferredCancelledCTNs() {
+
+
+		return ((getReusableActionsInstance().getWhenReady(lblSMPpromotionEnded).getLocation().x <
+				getReusableActionsInstance().getWhenReady(lblSMPpromotionEnds).getLocation().x)
+				&& (getReusableActionsInstance().getWhenReady(lblSMPpromotionEnds).getLocation().x<
+				getReusableActionsInstance().getWhenReady(lblSMPpromotionInEligile).getLocation().x));
+	}
+
+
+	public boolean verifyIfEffectiveCancelDateForSubscriptionIsDefferred(String test_language) {
+		String cancelledEndDate= getReusableActionsInstance().getWhenReady(lblSMPpromotionEnds).getText();
+		cancelledEndDate = cancelledEndDate.split("ends |fin le ")[1].trim();
+		Locale locale=Locale.CANADA;;
+		String datePattern = "MMM. d, u";
+		ZoneId defaultZoneId = ZoneId.systemDefault();
+		if(test_language=="en")
+		{
+			locale =Locale.CANADA;
+			datePattern = "MMM. d, u";
+		}else if(test_language=="fr"){
+			locale =Locale.FRENCH;
+			datePattern = "dd MMM yyyy";
+		}
+		LocalDate cancelEffectiveDate = parseDate(cancelledEndDate, datePattern,locale);
+
+		if(isDateGreaterThan(Date.from(cancelEffectiveDate.atStartOfDay(defaultZoneId).toInstant()),Date.from(getTodaysDate().atStartOfDay(defaultZoneId).toInstant())))
+		{
+			return true;
+		}
+		return false;
+	}
+
+	public boolean isDateGreaterThan(Date date1, Date date2)
+	{
+		return date1.after(date2);
+	}
+
+	public boolean isDateEqulas(Date date1, Date date2)
+	{
+		return date1.equals(date2);
+	}
+	public LocalDate getTodaysDate(){
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDateTime now = LocalDateTime.now();
+		return now.toLocalDate();
+	}
+
+	public LocalDate parseDate(String strDate, String pattern, Locale locale){
+		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern,locale);
+		LocalDate date = LocalDate.parse(strDate, dateFormatter);
+		return date;
+	}
 
 }

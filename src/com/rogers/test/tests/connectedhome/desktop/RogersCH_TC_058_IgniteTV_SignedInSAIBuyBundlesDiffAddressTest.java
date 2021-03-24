@@ -34,7 +34,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_058_IgniteTV_SignedInSAIBuyBundlesDiffAddressTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
+	@Test(groups = {"RegressionCH","saiCH"})
     public void checkSignedInSAIBuyTVBundlesSameAddressTest() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();

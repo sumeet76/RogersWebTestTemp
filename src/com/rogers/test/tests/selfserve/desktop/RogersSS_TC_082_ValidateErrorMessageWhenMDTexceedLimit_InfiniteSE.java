@@ -34,7 +34,7 @@ public class RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE e
 	}
 	
 	
-    @Test(groups = {"AddDataFlow","WirelessDashboardSS"})
+    @Test(groups = {"AddDataFlow","WirelessDashboardSS","AddDataSpeedPass"})
     public void validateErrorMessageWhenExceedLimitForInfiniteSEPlan() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc82.getUsername();

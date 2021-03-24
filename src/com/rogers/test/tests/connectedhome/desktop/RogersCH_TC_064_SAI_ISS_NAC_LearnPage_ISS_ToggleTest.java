@@ -31,10 +31,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_066_Regression_SAI_NAC_AnonymousCxentersInternetShopPage_ISStogglecheckedOffTest extends BaseTestClass {
+public class RogersCH_TC_064_SAI_ISS_NAC_LearnPage_ISS_ToggleTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","SmartStreamCH"})
-    public void checkSaiTupeloBuyflowAddAdditionalSTB() {
+    public void checkIssNzcLearnPageToggleONTest() {
         getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
