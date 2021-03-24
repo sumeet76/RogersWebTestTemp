@@ -1858,7 +1858,7 @@ public void javascriptClickWithPerform(WebElement element)
         WebDriverWait wait = new WebDriverWait(getDriver(), 15);
         wait.until(ExpectedConditions.visibilityOfElementLocated(provinceDropdownValues));
         List<WebElement>province= getDriver().findElements(provinceDropdownValues);
-        int numberOfProvinces= province.size();
+        int numberOfProvinces= province.size()-1;
         int randomNumber = randomNumber(numberOfProvinces);
         String provinceSelected =province.get(randomNumber).getText();
         isPageLoaded();
