@@ -30,11 +30,10 @@ public class RogersSearch_CBS_Pagination_1656_Filter_Relationship_With_Paginatio
     @DataProvider(name = "FilterData", parallel = false)
     public Object[] testData() throws IOException {
         String csvFileName=null;
-        if(System.getProperty("Language").toLowerCase().equals("en")) {
-            csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv"; }
-        else if (System.getProperty("Language").toLowerCase().equals("fr"))
-        {
-            csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataFR.csv"; }
+        if(System.getProperty("Language").equalsIgnoreCase("en"))
+            csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
+        else if (System.getProperty("Language").equalsIgnoreCase("fr"))
+            csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataFR.csv";
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
         Object[] csvRowStrArray = new Object[csvData.size()];
         for (int i = 0; i < csvData.size(); i++) {
@@ -46,11 +45,9 @@ public class RogersSearch_CBS_Pagination_1656_Filter_Relationship_With_Paginatio
 
     @Test(dataProvider = "FilterData", groups = {"Pagination"}) @Parameters({"strLanguage"})
     public void contextPageValidation(String[] csvRow) throws UnsupportedEncodingException {
-        String url;
-        int pageNumber;
-        String message=null;
-        String grandParentFilter=null;
-        String strParentFilterName=null;
+        String message;
+        String grandParentFilter;
+        String strParentFilterName;
         List<WebElement> lstParentFilters;
         reporter.reportLogWithScreenshot("Search URL is launched");
         getRogersSearchPage().isPageLoaded();
@@ -59,8 +56,9 @@ public class RogersSearch_CBS_Pagination_1656_Filter_Relationship_With_Paginatio
         getRogersSearchPage().enterTextToBeSearched(csvRow[0]);
         reporter.reportLogWithScreenshot("Search string " + csvRow[0] + " is entered in the search text box");
         getRogersSearchPage().clickSubmitSearchIcon();
-        getRogersSearchPage().waitTime();
-        reporter.reportLogPass(getRogersSearchPage().getSearchResults() + " are displayed");
+        getRogersSearchPage().isPageLoaded();
+        String results=getRogersSearchPage().getSearchResults();
+        reporter.reportLogPass(results + " displayed for search term :" + csvRow[0]);
         grandParentFilter=csvRow[1];
         getRogersSearchPage().clkGrandParentFilter(grandParentFilter);
         reporter.reportLogWithScreenshot(grandParentFilter + " grandparent filter is clicked");
@@ -70,7 +68,7 @@ public class RogersSearch_CBS_Pagination_1656_Filter_Relationship_With_Paginatio
         strParentFilterName = lstParentFilters.get(size-1).getText();
         reporter.reportLogWithScreenshot(strParentFilterName + " parent filter is selected");
         reporter.softAssert(getRogersSearchPage().isFirstPageNumberHighlighted(),"First page is highlighted under pagination", "First page is not highlighted under pagination");
-        reporter.softAssert(getRogersSearchPage().validateDefaultResultDropdownValue(),"Default page is displayed as expected","Default page size is not displayed as expected");
+        reporter.softAssert(getRogersSearchPage().validateDefaultResultDropdownValue(),"Default page size is displayed as expected","Default page size is not displayed as expected");
         message =getRogersSearchPage().clickLastForwardArrow();
         reporter.reportLogPassWithScreenshot(message);
         reporter.softAssert(getRogersSearchPage().lastPageIsHighlighted(),"Last page is highlighted", "Last page is not highlighted");

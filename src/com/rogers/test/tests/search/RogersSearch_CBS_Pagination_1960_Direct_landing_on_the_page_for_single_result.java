@@ -50,6 +50,7 @@ public class RogersSearch_CBS_Pagination_1960_Direct_landing_on_the_page_for_sin
         getRogersSearchPage().isPageLoaded();
         getRogersSearchPage().waitForDetailsPage();
         reporter.softAssert(getRogersSearchPage().isDetailsPageDisplayed(csvRowStrArray[0]), "Product details page is displayed for single result", "Product details page is not displayed for single result");
+        reporter.reportLogWithScreenshot("Product Details Page for: " + csvRowStrArray[0]);
         reporter.softAssert(getRogersSearchPage().isFilterDisplayedForSingleResult(),"Filter Component is not displayed for single result", "Filter Component is displayed");
         reporter.softAssert(getRogersSearchPage().isPaginationDisplayedForSingleResult(),"Pagination Component is not displayed for single result", "Pagination Component is displayed");
     }

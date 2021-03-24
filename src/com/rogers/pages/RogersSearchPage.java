@@ -119,6 +119,8 @@ public class RogersSearchPage extends BasePageClass {
 
     public static final By allGrandParentFilters = By.xpath("//button[contains(@id,'-heading')]/following-sibling::ds-expander/div");
 
+    public static final By searchResultsDisplayed= By.xpath("//div[@id='searchDescription']");
+
     @FindBy(xpath = "//select[@id='ds-form-input-id-0']")
     WebElement resultPerPageDropdown;
 
@@ -163,6 +165,19 @@ public class RogersSearchPage extends BasePageClass {
     public static final By provinceInToggle= By.xpath("(//a[@class='m-navLink -navbar'])[2]");
 
     Boolean isPagePresent=true;
+    JavascriptExecutor js = null;
+    String pageTwoPresent="Page 2 is present and it is clicked";
+    String pageTwoNotPresent="Cannot select page 2 as only one page exist";
+    String pageTwoHighlighted="Page 2 is highlighted";
+    String pageTwoNotHighlighted="Page 2 is not highlighted";
+    String expectedDefaultPageSize="10";
+    String cannotClickLastForwKey="Cannot click on last forward arrow key because available page is 1";
+    String clickLastForwKey="Clicked on last forward arrow key";
+    String cannotClickLastBackKey="Cannot click on last backward arrow key because available page is 1";
+    String clickLastBackKey="Clicked on last backward arrow key";
+    String invalidSearchTerm="@!#";
+
+
 
     /**
      * check if expected filters displayed or not
@@ -1200,9 +1215,13 @@ public class RogersSearchPage extends BasePageClass {
         WebElement resultColor = resultLink.findElement(By.xpath("parent::div/following-sibling::ds-radio-group//ds-selection[@ng-reflect-value='" + strColor + "']"));
         getReusableActionsInstance().clickWhenReady(resultColor);
     }
-
+    /**
+     * Click on the top search icon
+     *
+     * @author naina.agarwal
+     */
     public void isPageLoaded() {
-        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        js = (JavascriptExecutor) getDriver();
         for (int i = 0; i < 60; i++) {
             try {
                 Thread.sleep(500);
@@ -1211,7 +1230,6 @@ public class RogersSearchPage extends BasePageClass {
             if (js.executeScript("return document.readyState").toString().equals("complete")) {
                 break;
             }
-
         }
     }
 
@@ -1242,7 +1260,7 @@ public class RogersSearchPage extends BasePageClass {
     public boolean waitTime() {
         boolean status;
         Long loadTime;
-        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        js = (JavascriptExecutor) getDriver();
         try {
             loadTime = (Long) js.executeScript("return performance.timing.loadEventEnd - performance.timing.navigationStart;");
             Thread.sleep(loadTime);
@@ -1277,12 +1295,12 @@ public class RogersSearchPage extends BasePageClass {
      * @author naina.agarwal
      */
     public String getSearchResults() {
-        if (getReusableActionsInstance().isElementVisible(searchResults) == true) {
-            return getReusableActionsInstance().getElementText(resultsCount);
-        } else {
-            return "No result";
-        }
+        if (getReusableActionsInstance().isElementVisible(searchResults)) {
+            return getReusableActionsInstance().getElementText(searchResults);
+       } else
+        return "No result";
     }
+
 
     /**
      * Click the submit search icon in the search text box after entering text
@@ -1319,16 +1337,14 @@ public void javascriptClickWithPerform(WebElement element)
      */
     public String selectPageTwo() {
 
-        String message =null;
+        String message;
         isPagePresent = getDriver().findElements(numberOfPagesDisplayedAtBottom).size() > 1;
         if(isPagePresent) {
             javascriptClickWithPerform(page2);
-            message ="Page 2 is present and it is clicked";
+            message =pageTwoPresent;
         }
         else
-        {
-            message = "Cannot select page 2 as only one page exist";
-        }
+            message = pageTwoNotPresent;
         return message;
     }
 
@@ -1339,16 +1355,14 @@ public void javascriptClickWithPerform(WebElement element)
      */
     public String isSecondPageNumberHighlighted() {
 
-        String message =null;
+        String message;
         isPagePresent = getDriver().findElements(numberOfPagesDisplayedAtBottom).size() > 1;
         if(isPagePresent) {
             getReusableActionsInstance().isElementVisible(secondPagePaginationHighlighted);
-            message ="Page 2 is highlighted";
+            message =pageTwoHighlighted;
         }
         else
-        {
-            message = "Page 2 is not highlighted";
-        }
+            message = pageTwoNotHighlighted;
         return message;
     }
 
@@ -1359,7 +1373,7 @@ public void javascriptClickWithPerform(WebElement element)
      * @author naina.agarwal
      */
     public String validatePageNumberInURL(String url) {
-        String message =null;
+        String message;
         String currentPageNumberInPagination = getReusableActionsInstance().getElementText(currentPageNumberHighlighted);
         isPagePresent = getDriver().findElements(numberOfPagesDisplayedAtBottom).size() > 1;
         if (isPagePresent) {
@@ -1367,25 +1381,20 @@ public void javascriptClickWithPerform(WebElement element)
                 message = "Page number on Pagination and URL does not match";
             }
             else
-            {
                 message = "Page number on Pagination and URL match";
-            }
         }
-        else {
+        else
             message = "There is only one page";
-        }
         return message;
     }
     /**
-     * This method will check if page size selected mataches with the URL
+     * This method will check if page size selected matches with the URL
      *
      * @author naina.agarwal
      */
     public boolean validatePageSizeInURL(String url) {
         Boolean urlFlag = true;
-        int list = 0;
         Select dropdown = new Select(resultPerPageDropdown);
-        //Get all options
         WebElement option = dropdown.getFirstSelectedOption();
         String defaultItem = option.getText().trim();
         String pageSize="psize="+defaultItem;
@@ -1459,44 +1468,38 @@ public void javascriptClickWithPerform(WebElement element)
      */
     public String selectRandomValueFromResultPerPageDropdown() {
 
-        int list = 0;
-        Select dropdown = new Select(resultPerPageDropdown);
-        //Get all options
-        List<WebElement> dd = dropdown.getOptions();
-        //Get the length
-        System.out.println("size dropdown size " + dd.size());
-        // Loop to print one by one
-        for (int j = 0; j < dd.size(); j++) {
-            System.out.println("**" + dd.get(j).getText());
+        int pageSizeNumber;
+        String pageSize;
+        try {
+            Select dropdown = new Select(resultPerPageDropdown);
+            List<WebElement> dd = dropdown.getOptions();
+            Random rand = new Random();
+            pageSizeNumber = rand.nextInt(dd.size());
+            dd.get(pageSizeNumber).click();
+            pageSize = dd.get(pageSizeNumber).getText();
+            return pageSize;
         }
-        Random rand = new Random();
-        for (WebElement select : dd) {
-
-            list = rand.nextInt(dd.size());
-            dd.get(list).click();
-            System.out.println("element selected is" + dd.get(list).getText());
-            break;
+        catch (Exception e) {
+            throw new DigiAutoCustomException(e);
         }
-        return dd.get(list).getText();
-
     }
     /**
      * This method will check if default value of page size dropdown is 10
      *
      * @author naina.agarwal
      */
-    public boolean validateDefaultResultDropdownValue()
-    {
-        boolean pageSizeDefaultValue=true;
-        Select dropdown = new Select(resultPerPageDropdown);
-        //Get all options
-        WebElement option = dropdown.getFirstSelectedOption();
-        String defaultItem = option.getText().trim();
-        if (!defaultItem.equals("10"))
-        {
-            pageSizeDefaultValue=false;
+    public boolean validateDefaultResultDropdownValue() {
+        boolean pageSizeDefaultValue = true;
+        try {
+            Select dropdown = new Select(resultPerPageDropdown);
+            WebElement option = dropdown.getFirstSelectedOption();
+            String defaultItem = option.getText().trim();
+            if (!defaultItem.equals(expectedDefaultPageSize))
+                pageSizeDefaultValue = false;
+            return pageSizeDefaultValue;
+        } catch (Exception e) {
+            throw new DigiAutoCustomException(e);
         }
-        return pageSizeDefaultValue;
     }
 
     /**
@@ -1604,13 +1607,15 @@ public void javascriptClickWithPerform(WebElement element)
      */
     public String clickLastForwardArrow() {
         String message = null;
+        Boolean isPresent = getDriver().findElements(numberOfPagesDisplayedAtBottom).size() > 0;
         elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
         int numberOfPages = elementName.size();
-        if (numberOfPages > 1) {
-            getReusableActionsInstance().executeJavaScriptClick(lastForwardArrowKey);
-            message = "Clicked on Last Forward arrow key";
-        } else {
-            message = "Cannot click on last forward arrow key because available page is 1";
+        if (isPresent) {
+            if (numberOfPages > 1) {
+                getReusableActionsInstance().executeJavaScriptClick(lastForwardArrowKey);
+                message = clickLastForwKey;
+            } else
+                message = cannotClickLastForwKey;
         }
         return message;
     }
@@ -1624,8 +1629,8 @@ public void javascriptClickWithPerform(WebElement element)
         Boolean highlighted = true;
         String currentPageNumberInPagination = getReusableActionsInstance().getElementText(currentPageNumberHighlighted);
         elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
-        int page1 = elementName.size();
-        String pageSelected = elementName.get(page1 - 1).getText();
+        int pages = elementName.size();
+        String pageSelected = elementName.get(pages - 1).getText();
         if (!currentPageNumberInPagination.trim().equals(pageSelected.trim())) {
             highlighted = false;
         }
@@ -1638,15 +1643,14 @@ public void javascriptClickWithPerform(WebElement element)
      * @author naina.agarwal
      */
     public String clickLastBackwardArrow() {
-        String message = null;
+        String message;
         elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
         int numberOfPages = elementName.size();
         if (numberOfPages > 1) {
             getReusableActionsInstance().executeJavaScriptClick(lastBackwardArrowKey);
-            message = "Clicked on Last Backward arrow key";
-        } else {
-            message = "Cannot click on last Backward arrow key because available page is 1";
-        }
+            message = clickLastBackKey;
+        } else
+            message = cannotClickLastBackKey;
         return message;
 
     }
@@ -1700,10 +1704,10 @@ public void javascriptClickWithPerform(WebElement element)
         ((JavascriptExecutor)getDriver()).executeScript("window.open('about:blank','_blank');");
         getReusableActionsInstance().switchToNewWindow();
         getDriver().get(url);
-        getReusableActionsInstance().staticWait(10000);
+        getReusableActionsInstance().staticWait(5000);
     }
     /**
-     * This method will refresh the current page 5 times
+     * This method will refresh the current page 3 times
      *
      * @author naina.agarwal
      */
@@ -1768,6 +1772,17 @@ public void javascriptClickWithPerform(WebElement element)
         String firstHalfURL=currentURL.substring(0,indexOfLanguage);
         String secondHalfURL=currentURL.substring(indexOfLanguage);
         secondHalfURL=secondHalfURL.replace(secondHalfURL,"language=" +currentLanguage);
+        String updatedURL=firstHalfURL.concat(secondHalfURL);
+        getDriver().get(updatedURL);
+        return updatedURL;
+    }
+    public String updateURLwithSearchTerm()
+    {
+        String currentURL =System.getProperty("SearchUrl");
+        int indexOfSearchTerm=currentURL.indexOf("q=");
+        String firstHalfURL=currentURL.substring(0,indexOfSearchTerm);
+        String secondHalfURL=currentURL.substring(indexOfSearchTerm);
+        secondHalfURL=secondHalfURL.replace(secondHalfURL,"q=" +invalidSearchTerm);
         String updatedURL=firstHalfURL.concat(secondHalfURL);
         getDriver().get(updatedURL);
         return updatedURL;

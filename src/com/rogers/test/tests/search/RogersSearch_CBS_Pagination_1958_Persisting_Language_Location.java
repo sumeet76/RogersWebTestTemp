@@ -27,7 +27,7 @@ public class RogersSearch_CBS_Pagination_1958_Persisting_Language_Location exten
         String languageBeforeToggle=null; String currentURL=null, freshCurrentURL=null;
         getRogersSearchPage().isPageLoaded();
         languageBeforeToggle= getRogersSearchPage().toggleLanguage();
-        reporter.reportLogWithScreenshot("Clicked on Toggle Language : Language before toggle was " + languageBeforeToggle);
+        reporter.reportLogWithScreenshot("Clicked on Toggle Language : Language displayed before on the toggle was " + languageBeforeToggle);
         currentURL=getDriver().getCurrentUrl();
         reporter.softAssert(getRogersSearchPage().validateLanguageInUrl(languageBeforeToggle),"URL reflects correct language after language toggle. Expected language is " +languageBeforeToggle + " The new url is " + currentURL,"URL reflects correct language after language toggletoggle. Expected language is " +languageBeforeToggle + " The new url is " + currentURL);
         String newURL=getRogersSearchPage().updateURLWithDifferentLanguage();
@@ -36,14 +36,14 @@ public class RogersSearch_CBS_Pagination_1958_Persisting_Language_Location exten
         currentURL=getDriver().getCurrentUrl();
         languageBeforeToggle= getRogersSearchPage().toggleLanguage();
         freshCurrentURL=getDriver().getCurrentUrl();
-        reporter.reportLogWithScreenshot("Clicked on Toggle Language : Language before toggle was " + languageBeforeToggle +"and URL is" + freshCurrentURL);
+        reporter.reportLogWithScreenshot("Clicked on Toggle Language : Language before toggle was " + languageBeforeToggle +" and URL is" + freshCurrentURL);
         reporter.softAssert(getRogersSearchPage().validateLanguageInUrl(languageBeforeToggle),"URL reflects correct language after language toggle. Expected language is " +languageBeforeToggle + " The new url is " + currentURL,"URL reflects correct language after language toggletoggle. Expected language is " +languageBeforeToggle + " The new url is " + currentURL);
         getDriver().navigate().back();
         reporter.reportLogPassWithScreenshot("Clicked on the back button on browser");
-        if(getDriver().getCurrentUrl().equals(currentURL)) {
-        reporter.reportLogPass("The previous selected state in the URL is displayed "); }
-        else {
-            reporter.reportLogFail("The previous selected state in the URL is not displayed "); }
+        if(getDriver().getCurrentUrl().equals(currentURL))
+        reporter.reportLogPass("The previous selected state in the URL is displayed ");
+        else
+            reporter.reportLogFail("The previous selected state in the URL is not displayed ");
     }
 
     @BeforeMethod(alwaysRun = true)

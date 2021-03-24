@@ -28,7 +28,11 @@ public class RogersSearch_CBS_Pagination_1962_Province_Toggling_Functioning exte
 
     @DataProvider(name = "FilterData", parallel = false)
     public Object[] testData() throws IOException {
-        String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
+        String csvFileName=null;
+        if(System.getProperty("Language").equalsIgnoreCase("en"))
+            csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
+        else if (System.getProperty("Language").equalsIgnoreCase("fr"))
+            csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataFR.csv";
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
         Object[] csvRowStrArray = new Object[csvData.size()];
         for (int i = 0; i < csvData.size(); i++) {

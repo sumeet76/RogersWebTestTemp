@@ -38,7 +38,6 @@ public class RogersSearch_CBS_Pagination_1959_Testing_various_URL_pattern_and_re
 
     @Test(dataProvider = "FilterData", groups = {"Pagination"}) @Parameters({"strLanguage"} )
     public void contextPageValidation(String[] csvRow) {
-        String url="https://qa4.rogers.com/search?q=@@@";
         reporter.reportLogWithScreenshot("Search URL is launched");
         getRogersSearchPage().isPageLoaded();
         reporter.reportLogWithScreenshot("Page is loaded");
@@ -48,10 +47,12 @@ public class RogersSearch_CBS_Pagination_1959_Testing_various_URL_pattern_and_re
         getRogersSearchPage().clickSubmitSearchIcon();
         getRogersSearchPage().isPageLoaded();
         reporter.softAssert(getRogersSearchPage().validateHomeURL(),"Directed to home page", "Not directed to home page");
-        getDriver().get(url);
-        reporter.reportLogWithScreenshot("Url is updayed with invalid search term, url is: " +url);
+        reporter.reportLogWithScreenshot("Home Page");
+        String updatedURL=getRogersSearchPage().updateURLwithSearchTerm();
+        reporter.reportLogWithScreenshot("Url is updated with invalid search term, url is: " + updatedURL);
         getRogersSearchPage().isPageLoaded();
         reporter.softAssert(getRogersSearchPage().validateHomeURL(),"Directed to home page", "Not directed to home page");
+        reporter.reportLogWithScreenshot("Home Page");
     }
 
     @BeforeMethod(alwaysRun = true)
