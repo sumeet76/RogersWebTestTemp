@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_027_SHM_ServicabilityCheckTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","RhpAndRhmCH"})
+	@Test
     public void checkServicabilityRHMTest() throws InterruptedException {
     	reporter.reportLogWithScreenshot("Launched the Home Page");
     	getRogersHomePage().clkShop();
