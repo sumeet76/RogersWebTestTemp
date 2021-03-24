@@ -532,7 +532,20 @@ public class RogersHomePage extends BasePageClass {
 		}
 	getReusableActionsInstance().getWhenReady(btnServiceability, 30).click();
 	}
-	
+
+	/**
+	 * Clicks on the 'Service ability' button
+	 * @author chinnarao.vattam
+	 */
+	public void clkServiceabilityMobile() {
+		if(getReusableActionsInstance().isElementVisible(overlayHomePage,2))
+		{
+			getReusableActionsInstance().waitForElementInvisibility(overlayHomePage,5);
+		}
+		getReusableActionsInstance().getWhenReady(btnServiceability, 30);
+		getReusableActionsInstance().executeJavaScriptClick(btnServiceability);
+	}
+
 	/**
 	 * To verify the Ignite page
 	 * @return true if the Service ability button is available on Ignite page, else false 

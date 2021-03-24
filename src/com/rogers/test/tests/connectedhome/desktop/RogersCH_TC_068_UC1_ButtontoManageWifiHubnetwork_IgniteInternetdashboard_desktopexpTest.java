@@ -33,7 +33,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_068_UC1_ButtontoManageWifiHubnetwork_IgniteInternetdashboard_desktopexpTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","SmartStreamCH"})
+    @Test(groups = {"RegressionCH","new"})
     public void checkSaiTupeloBuyflowAddAdditionalSTB() {
         getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
