@@ -38,7 +38,7 @@ public class RogersSearch_CBS_Pagination_1759_Current_Page_Context_Validation ex
     }
 
 
-    @Test(dataProvider = "FilterData")
+    @Test(dataProvider = "FilterData", groups = {"Pagination"})
     public void contextPageValidation(String[] csvRowStrArray)
     {
         String url;
