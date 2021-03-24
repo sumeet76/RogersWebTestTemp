@@ -61,7 +61,7 @@ public class RogersSS_TC_119_PACMAN_VerifyDeferredCancelPCRchanges extends BaseT
         reporter.reportLog("Home Page Launched");
         getRogersHomePage().clkSignIn();
         getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame("Autodatar321SS03@yahoo.com");
+        getRogersLoginPage().setUsernameIFrame("Autodatar221BFA50@yahoo.com");
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc102.getPassword());
         reporter.reportLogWithScreenshot("Login Credential is entered.");
         getRogersLoginPage().clkSignInIFrame();
@@ -71,7 +71,7 @@ public class RogersSS_TC_119_PACMAN_VerifyDeferredCancelPCRchanges extends BaseT
 
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
-            getRogersAccountOverviewPage().selectAccount("946468832");
+            getRogersAccountOverviewPage().selectAccount("946481009");
         }
         reporter.reportLogWithScreenshot("Account overview page.");
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Passed", "Login Failed");
@@ -92,7 +92,7 @@ public class RogersSS_TC_119_PACMAN_VerifyDeferredCancelPCRchanges extends BaseT
         reporter.hardAssert(getRogersAccountOverviewPage().verifyIfHeaderCancelSubscriptionIsDisplayed(),
                 "The header cancel subscription is displayed",
                 "The header cancel subscription is NOT displayed");
-        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCancelSubscriptionDetailsIsDisplayedCorrectly("4162780970"),
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCancelSubscriptionDetailsIsDisplayedCorrectly("4163120324"),
                 "The cancel subscription details matched",
                 "The cancel subscription details did not matched");
         getRogersAccountOverviewPage().selectReasonForCancelSubscription("deferred");

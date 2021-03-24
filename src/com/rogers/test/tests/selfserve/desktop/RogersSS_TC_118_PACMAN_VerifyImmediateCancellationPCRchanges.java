@@ -61,17 +61,19 @@ public class RogersSS_TC_118_PACMAN_VerifyImmediateCancellationPCRchanges extend
         reporter.reportLog("Home Page Launched");
         getRogersHomePage().clkSignIn();
         getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame("Autodatar321SS03@yahoo.com");
+        getRogersLoginPage().setUsernameIFrame("Autodatar221BFA51@yahoo.com");
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc102.getPassword());
         reporter.reportLogWithScreenshot("Login Credential is entered.");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
         getRogersLoginPage().clkSkipIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
+        String strImmediateCancelCTN="4163120327";
+        String strDefferredCTN="4163120334";
 
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
-            getRogersAccountOverviewPage().selectAccount("946468832");
+            getRogersAccountOverviewPage().selectAccount("946481058");
         }
         reporter.reportLogWithScreenshot("Account overview page.");
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Passed", "Login Failed");
@@ -87,12 +89,12 @@ public class RogersSS_TC_118_PACMAN_VerifyImmediateCancellationPCRchanges extend
                 "The current subscription is displayed",
                 "The current subscription is NOT displayed");
         reporter.reportLogWithScreenshot("Current subscription");
-        getRogersAccountOverviewPage().clkCancelSubscription();
+        getRogersAccountOverviewPage().clkCancelSubscription(strImmediateCancelCTN);
         reporter.reportLogWithScreenshot("Cancel subscription details is displayed");
         reporter.hardAssert(getRogersAccountOverviewPage().verifyIfHeaderCancelSubscriptionIsDisplayed(),
                 "The header cancel subscription is displayed",
                 "The header cancel subscription is NOT displayed");
-        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCancelSubscriptionDetailsIsDisplayedCorrectly("4163120248"),
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCancelSubscriptionDetailsIsDisplayedCorrectly(strImmediateCancelCTN),
                 "The cancel subscription details matched",
                 "The cancel subscription details did not matched");
         getRogersAccountOverviewPage().selectReasonForCancelSubscription("immediate");
@@ -114,22 +116,16 @@ public class RogersSS_TC_118_PACMAN_VerifyImmediateCancellationPCRchanges extend
                 "The Subscription management page does NOT shows the cancelled CTN subscription");
 
         //==============  Deferred cancel flow =============================
-
-        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfSubscriptionIsAvailableForCancellation(),
-                "The subscription is available for Cancellation",
-                "The subscription is NOT available for Cancellation");
-        getRogersAccountOverviewPage().clkManageOnSubscription();
-
         reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCurrentlySubscribedPaneIsDisplayed(),
                 "The current subscription is displayed",
                 "The current subscription is NOT displayed");
         reporter.reportLogWithScreenshot("Current subscription");
-        getRogersAccountOverviewPage().clkCancelSubscription();
+        getRogersAccountOverviewPage().clkCancelSubscription(strDefferredCTN);
         reporter.reportLogWithScreenshot("Cancel subscription details is displayed");
         reporter.hardAssert(getRogersAccountOverviewPage().verifyIfHeaderCancelSubscriptionIsDisplayed(),
                 "The header cancel subscription is displayed",
                 "The header cancel subscription is NOT displayed");
-        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCancelSubscriptionDetailsIsDisplayedCorrectly("4162780970"),
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCancelSubscriptionDetailsIsDisplayedCorrectly(strDefferredCTN),
                 "The cancel subscription details matched",
                 "The cancel subscription details did not matched");
         getRogersAccountOverviewPage().selectReasonForCancelSubscription("deferred");

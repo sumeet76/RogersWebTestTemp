@@ -411,7 +411,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//option[contains(text(),'I’m already paying for an Apple Music subscription') or contains(text(),'Je paie déjà un abonnement à Apple Music.') or @value='5: Object']")
 	WebElement optReasonForImmediateCancel;
 
-	@FindBy(xpath = "//option[contains(text(),' I don't need a music service anymore  ') or contains(text(),'Je n’ai plus besoin de service de musique') or @value='5: Object']")
+	@FindBy(xpath = "//option[contains(text(),'need a music service anymore') or contains(text(),'Je n’ai plus besoin de service de musique') or @value='0: Object']")
 	WebElement optReasonForDefferedCancel;
 
 	@FindBy(xpath = "//span[@aria-relevant='additions' or text()='This Apple Music subscription will be cancelled immediately and you will not be charged.' or text()='Cet abonnement à Apple Music sera annulé immédiatement, et aucuns frais ne seront exigés.']")
@@ -1659,9 +1659,18 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void clkCancelSubscription() {
 		getReusableActionsInstance().getWhenReady(btnCancelSubscription).click();
-	} 
-	
-		
+	}
+
+
+	/**
+	 * Clicks on cancel subscription button
+	 * @author Mirza.Kamran
+	 */
+	public void clkCancelSubscription(String strCTN) {
+
+		getReusableActionsInstance().getWhenReady(By.xpath("//span[@class='vas-subscriber-number' and contains(text(),'"+strCTN.substring(strCTN.length()-4)+"')]/ancestor::div[contains(@class,'vas-subscriber')]//a[contains(@title,'Cancel the Apple Music subscription for') or contains(@title,'Annuler l’abonnement')]")).click();
+	}
+
 		/**
 		 * Verifies if the button cancel subscription is displayed
 		 * @return true if available else false
