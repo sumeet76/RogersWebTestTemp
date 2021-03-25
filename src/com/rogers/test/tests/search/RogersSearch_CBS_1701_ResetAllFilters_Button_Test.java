@@ -13,7 +13,7 @@ import java.util.List;
 
 public class RogersSearch_CBS_1701_ResetAllFilters_Button_Test extends BaseTestClass {
 
-	@Test
+	@Test(groups={"Search","Filter"})
 	public void validateParentFilterDeselection() {
 
 		List<String> strStorageOptions;

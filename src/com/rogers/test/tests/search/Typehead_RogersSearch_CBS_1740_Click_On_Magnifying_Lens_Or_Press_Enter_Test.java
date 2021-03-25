@@ -34,7 +34,7 @@ public class Typehead_RogersSearch_CBS_1740_Click_On_Magnifying_Lens_Or_Press_En
         return csvRow;
     }
 
-    @Test(dataProvider = "FilterData")
+    @Test(dataProvider = "FilterData",groups={"Typehead"})
     public void validateResultLandingPage(String[] csvRow) throws UnsupportedEncodingException {
         getDriver().get(System.getProperty("SearchUrl"));
         reporter.reportLogWithScreenshot("CBS Search Page");

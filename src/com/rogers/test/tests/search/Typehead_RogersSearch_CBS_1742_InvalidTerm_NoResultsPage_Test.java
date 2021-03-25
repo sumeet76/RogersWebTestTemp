@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Typehead_RogersSearch_CBS_1742_InvalidTerm_NoResultsPage_Test extends BaseTestClass {
-    @DataProvider(name = "FilterData",parallel=true)
+    @DataProvider(name = "FilterData",parallel=false)
     public Object[] testData() throws IOException
     {
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/InvalidTerms.csv";
@@ -27,7 +27,7 @@ public class Typehead_RogersSearch_CBS_1742_InvalidTerm_NoResultsPage_Test exten
         return csvRow;
     }
 
-    @Test(dataProvider = "FilterData")
+    @Test(dataProvider = "FilterData",groups={"Search","Filter","Typehead"})
     public void validateResultLandingPage(String[] csvRow) throws UnsupportedEncodingException {
         getDriver().get(System.getProperty("SearchUrl"));
         reporter.reportLogWithScreenshot("CBS Search Page");

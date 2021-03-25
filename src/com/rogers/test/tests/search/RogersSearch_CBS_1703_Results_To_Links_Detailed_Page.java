@@ -35,7 +35,7 @@ public class RogersSearch_CBS_1703_Results_To_Links_Detailed_Page extends BaseTe
         return csvRow;
     }
 
-    @Test(dataProvider = "FilterData")
+    @Test(dataProvider = "FilterData",groups={"Search","Filter"})
     public void validateParentFilterDeselection(String[] csvRow) {
 
         getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);

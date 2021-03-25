@@ -43,7 +43,7 @@ public class RogersSearch_CBS_Pagination_1656_Filter_Relationship_With_Paginatio
     }
 
 
-    @Test(dataProvider = "FilterData", groups = {"Pagination"}) @Parameters({"strLanguage"})
+    @Test(dataProvider = "FilterData", groups = {"Search","Pagination"}) @Parameters({"strLanguage"})
     public void contextPageValidation(String[] csvRow) throws UnsupportedEncodingException {
         String message;
         String grandParentFilter;
@@ -61,10 +61,12 @@ public class RogersSearch_CBS_Pagination_1656_Filter_Relationship_With_Paginatio
         reporter.reportLogPass(results + " displayed for search term :" + csvRow[0]);
         grandParentFilter=csvRow[1];
         getRogersSearchPage().clkGrandParentFilter(grandParentFilter);
+        getRogersSearchPage().isPageLoaded();
         reporter.reportLogWithScreenshot(grandParentFilter + " grandparent filter is clicked");
         lstParentFilters = getRogersSearchPage().getParentFilters(csvRow[1]);
         int size=lstParentFilters.size();
         getRogersSearchPage().clkParentFilter(lstParentFilters.get(size-1));
+        getRogersSearchPage().isPageLoaded();
         strParentFilterName = lstParentFilters.get(size-1).getText();
         reporter.reportLogWithScreenshot(strParentFilterName + " parent filter is selected");
         reporter.softAssert(getRogersSearchPage().isFirstPageNumberHighlighted(),"First page is highlighted under pagination", "First page is not highlighted under pagination");

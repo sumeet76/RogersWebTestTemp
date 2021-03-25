@@ -36,7 +36,7 @@ public class RogersSearch_CBS_Pagination_1785_Changing_the_pagination_values_via
     }
 
 
-    @Test(dataProvider = "FilterData", groups = {"Pagination"})
+    @Test(dataProvider = "FilterData", groups = {"Search","Pagination"})
     public void contextPageValidation(String[] csvRowStrArray)
     {
         String url;

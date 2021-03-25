@@ -39,7 +39,7 @@ public class RogersSearch_CBS_Pagination_1770_Jumping_to_previous_next_page exte
     }
 
 
-    @Test(dataProvider = "FilterData", groups = {"Pagination"})
+    @Test(dataProvider = "FilterData", groups = {"Search","Pagination"})
     public void contextPageValidation(String[] csvRowStrArray)
     {
         String url;

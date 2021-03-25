@@ -35,7 +35,7 @@ public class Typehead_RogersSearch_CBS_1714_Label_Visible extends BaseTestClass 
         return csvRow;
 	}
 	
-	@Test(dataProvider = "FilterData")	
+	@Test(dataProvider = "FilterData",groups={"Typehead"})
 	public void validateLabelVisible(String[] csvRow) {
 	
 		getDriver().get(System.getProperty("SearchUrl"));
