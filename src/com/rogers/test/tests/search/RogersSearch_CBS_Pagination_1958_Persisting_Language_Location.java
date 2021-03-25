@@ -22,7 +22,7 @@ import java.util.List;
 public class RogersSearch_CBS_Pagination_1958_Persisting_Language_Location extends BaseTestClass {
 
 
-    @Test (groups = {"Pagination"})  @Parameters({"strLanguage"})
+    @Test (groups = {"Search","Pagination"})  @Parameters({"strLanguage"})
     public void contextPageValidation() throws UnsupportedEncodingException {
         String languageBeforeToggle=null; String currentURL=null, freshCurrentURL=null;
         getRogersSearchPage().isPageLoaded();

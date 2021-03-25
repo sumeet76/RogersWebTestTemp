@@ -28,7 +28,7 @@ public class RogersSearch_CBS_1684_Storage_Filter_Functioning_Test extends BaseT
 
 
 	}
-	@Test(dataProvider = "FilterData")
+	@Test(dataProvider = "FilterData",groups={"Search","Filter"})
 	public void validateStorageFilterSelection(String[] csvRowStrArray) {
 
 		getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0]);

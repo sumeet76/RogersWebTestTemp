@@ -43,7 +43,7 @@ public class RogersSearch_CBS_Pagination_1657_Pagination_On_Toggling_Language ex
     }
 
 
-    @Test(dataProvider = "FilterData", groups = {"Pagination"}) @Parameters({"strLanguage"})
+    @Test(dataProvider = "FilterData", groups = {"Search","Pagination"}) @Parameters({"strLanguage"})
     public void contextPageValidation(String[] csvRow)
     {
         String url;

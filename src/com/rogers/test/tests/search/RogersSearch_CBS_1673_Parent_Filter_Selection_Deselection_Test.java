@@ -27,7 +27,7 @@ public class RogersSearch_CBS_1673_Parent_Filter_Selection_Deselection_Test exte
         return csvRow;
 	}
 	
-	@Test(dataProvider = "FilterData")
+	@Test(dataProvider = "FilterData",groups={"Search","Filter"})
 	public void validateParentFilterSelectionDeselection(String[] csvRow) {
 	
 		String strGrandParentText;

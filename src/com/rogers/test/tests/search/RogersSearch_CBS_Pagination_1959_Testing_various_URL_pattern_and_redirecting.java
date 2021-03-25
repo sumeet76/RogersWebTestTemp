@@ -36,7 +36,7 @@ public class RogersSearch_CBS_Pagination_1959_Testing_various_URL_pattern_and_re
     }
 
 
-    @Test(dataProvider = "FilterData", groups = {"Pagination"}) @Parameters({"strLanguage"} )
+    @Test(dataProvider = "FilterData", groups = {"Search","Pagination"}) @Parameters({"strLanguage"} )
     public void contextPageValidation(String[] csvRow) {
         reporter.reportLogWithScreenshot("Search URL is launched");
         getRogersSearchPage().isPageLoaded();

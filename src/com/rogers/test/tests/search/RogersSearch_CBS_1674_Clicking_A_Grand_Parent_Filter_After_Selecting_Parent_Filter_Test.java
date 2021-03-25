@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class RogersSearch_CBS_1674_Clicking_A_Grand_Parent_Filter_After_Selecting_Parent_Filter_Test extends BaseTestClass {
-	@DataProvider(name = "FilterData",parallel = true)
+	@DataProvider(name = "FilterData",parallel = false)
 	public Object[] testData() throws IOException {
 		String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
 		List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
@@ -25,7 +25,7 @@ public class RogersSearch_CBS_1674_Clicking_A_Grand_Parent_Filter_After_Selectin
         return csvRow;
 	}
 
-	@Test(dataProvider = "FilterData")
+	@Test(dataProvider = "FilterData",groups={"Search","Filter"})
 	public void validateNavigationFromParentToGrandParent(String[] csvRow) {
 		getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
 		getRogersSearchPage().isPageLoaded();

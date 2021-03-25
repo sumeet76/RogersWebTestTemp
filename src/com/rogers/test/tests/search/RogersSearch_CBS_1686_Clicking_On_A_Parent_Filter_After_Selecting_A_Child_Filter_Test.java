@@ -23,7 +23,7 @@ import utils.CSVReader;
 
 public class RogersSearch_CBS_1686_Clicking_On_A_Parent_Filter_After_Selecting_A_Child_Filter_Test extends BaseTestClass {
 
-	@Test
+	@Test(groups={"Search","Filter"})
 	public void validateChildAndParentFilterSelection() {
 		List<WebElement> lstParentFilters;
 		List<String> strColorFilters;

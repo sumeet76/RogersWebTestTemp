@@ -16,7 +16,7 @@ import utils.CSVReader;
 
 public class RogersSearch_CBS_1667_RogersSearch_CBS_Only_One_Parent_Filter_Can_Be_Selected_At_A_Time_Test extends BaseTestClass {
 
-	@DataProvider(name = "FilterData",parallel=true)
+	@DataProvider(name = "FilterData",parallel=false)
 	public Object[] testData() throws IOException {
 		String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
 		List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
@@ -27,7 +27,7 @@ public class RogersSearch_CBS_1667_RogersSearch_CBS_Only_One_Parent_Filter_Can_B
         return csvRow;
 	}
 	
-	@Test(dataProvider = "FilterData")
+	@Test(dataProvider = "FilterData",groups={"Search","Filter"})
 	public void validateParentFilterSelection(String[] csvRow) {
 		getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
 		getRogersSearchPage().isPageLoaded();

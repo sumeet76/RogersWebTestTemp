@@ -40,7 +40,7 @@ public class RogersSearch_CBS_1685_Size_Filter_Validation_Test extends BaseTestC
 		
 	}
 	
-	@Test(dataProvider = "FilterData")
+	@Test(dataProvider = "FilterData",groups={"Search","Filter"})
 	
 	public void validateSizeFilterSelection(String[] csvRow) {
 	getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);

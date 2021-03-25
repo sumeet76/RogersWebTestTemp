@@ -32,7 +32,7 @@ public class RogersSearch_CBS_1664_Functioning_Of_Parent_Filter_Test extends Bas
 
     }
 
-    @Test(dataProvider = "FilterData")
+    @Test(dataProvider = "FilterData",groups={"Search","Filter"})
 
     public void validateResultsForSubFilter(String[] csvRow) {
         List<WebElement> lstParentFilters;

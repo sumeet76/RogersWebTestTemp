@@ -26,7 +26,7 @@ public class Typehead_RogersSearch_CBS_1734_Typeahead_Result_Links_Test extends 
         return csvRow;
     }
 
-    @Test(dataProvider = "FilterData")
+    @Test(dataProvider = "FilterData",groups={"Typehead"})
     public void validateResultsBasedOnSearchTerms(String[] csvRow) throws UnsupportedEncodingException {
 
         List<String> strSuggestionOptions;

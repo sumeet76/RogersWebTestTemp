@@ -32,7 +32,7 @@ public class RogersSearch_CBS_1643_Relevant_Results_Rendering_Test extends BaseT
 
     }
 
-    @Test(dataProvider = "FilterData")
+    @Test(dataProvider = "FilterData",groups={"Search","Filter"})
 
     public void validateResults(String[] csvRowStrArray) {
         //https://qa4.rogers.com/search?q=samsung&language=en&psize=10

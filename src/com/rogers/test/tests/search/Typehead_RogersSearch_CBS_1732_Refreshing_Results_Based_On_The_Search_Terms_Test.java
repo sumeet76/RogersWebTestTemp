@@ -32,7 +32,7 @@ public class Typehead_RogersSearch_CBS_1732_Refreshing_Results_Based_On_The_Sear
         return csvRow;
     }
 
-    @Test(dataProvider = "FilterData")
+    @Test(dataProvider = "FilterData",groups={"Typehead"})
     public void validateResultsBasedOnSearchTerms(String[] csvRow) {
 
         List<String> strSuggestionOptions;

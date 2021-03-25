@@ -37,7 +37,7 @@ public class RogersSearch_CBS_Pagination_1599_Persisting_Page_State_in_URL exten
     }
 
 
-    @Test(dataProvider = "FilterData", groups = {"Pagination"}) @Parameters({"strLanguage"} )
+    @Test(dataProvider = "FilterData", groups = {"Search","Pagination"}) @Parameters({"strLanguage"} )
     public void contextPageValidation(String[] csvRowStrArray)
     {
         String url,message,randomPageSize;

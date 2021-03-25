@@ -42,7 +42,7 @@ public class RogersSearch_CBS_Pagination_1962_Province_Toggling_Functioning exte
     }
 
 
-    @Test(dataProvider = "FilterData", groups = {"Pagination"}) @Parameters({"strLanguage"} )
+    @Test(dataProvider = "FilterData", groups = {"Search","Pagination"}) @Parameters({"strLanguage"} )
     public void contextPageValidation(String[] csvRow)
     {
         String url;

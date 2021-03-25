@@ -28,7 +28,7 @@ public class RogersSearch_CBS_1698_Watch_Facet_Testing extends BaseTestClass {
         return csvRow;
     }
 
-    @Test(dataProvider = "FilterData")
+    @Test(dataProvider = "FilterData",groups={"Search","Filter"})
     public void validateWatchSizeAndColorFilterSelection(String[] csvRow) {
 
         List<String> strSizeOptions;

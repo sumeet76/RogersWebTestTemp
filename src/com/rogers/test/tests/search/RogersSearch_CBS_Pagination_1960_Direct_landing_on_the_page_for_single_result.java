@@ -35,7 +35,7 @@ public class RogersSearch_CBS_Pagination_1960_Direct_landing_on_the_page_for_sin
     }
 
 
-    @Test(dataProvider = "FilterData", groups = {"Pagination"}) @Parameters({"strLanguage"})
+    @Test(dataProvider = "FilterData", groups = {"Search","Pagination"}) @Parameters({"strLanguage"})
     public void contextPageValidation(String[] csvRowStrArray) {
         String url;
         int pageNumber;
