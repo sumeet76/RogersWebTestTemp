@@ -1887,6 +1887,8 @@ public void javascriptClickWithPerform(WebElement element)
     public boolean validateHomeURL()
     {
         Boolean homeURL=true;
+        wait = new WebDriverWait(getDriver(),2000);
+        wait.until(ExpectedConditions.urlContains("home"));
         String currentURL = getDriver().getCurrentUrl();
         if(!currentURL.contains("home"))
             homeURL=false;
