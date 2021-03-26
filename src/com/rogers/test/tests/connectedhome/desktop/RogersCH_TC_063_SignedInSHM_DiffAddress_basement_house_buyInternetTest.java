@@ -32,7 +32,7 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_063_SignedInIgnite2PBundlesBuyInternetSameAddressBasementHouseTest extends BaseTestClass {
+public class RogersCH_TC_063_SignedInSHM_DiffAddress_basement_house_buyInternetTest extends BaseTestClass {
 
 	@Test(groups = {"RegressionCH","New"})
     public void checkSignedInIgnite2PBundlesBuyInternetSameAddressBasementHouseTest() {
@@ -40,15 +40,15 @@ public class RogersCH_TC_063_SignedInIgnite2PBundlesBuyInternetSameAddressBaseme
         getRogersHomePage().clkSignIn();
         getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc56_wirelessSignedInInternetBuy.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc56_wirelessSignedInInternetBuy.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc63_ShmSignedInInternetBuyBasement.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc63_ShmSignedInInternetBuyBasement.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc56_wirelessSignedInInternetBuy.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc63_ShmSignedInInternetBuyBasement.accountDetails.getBan());
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersHomePage().clkExistingCustomerShop();
@@ -59,19 +59,17 @@ public class RogersCH_TC_063_SignedInIgnite2PBundlesBuyInternetSameAddressBaseme
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        getRogersHomePage().clkUseThisAddress();
-        reporter.reportLogWithScreenshot("Launched the customer availability check popup for address");
-
-
-        String  strAddressLine1=TestDataHandler.tc60_WirelessSignedInInternetBuyDiffAddress.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc60_WirelessSignedInInternetBuyDiffAddress.getAccountDetails().getAddress().get("line2");
-
-
-
+        String  strAddressLine1=TestDataHandler.tc63_ShmSignedInInternetBuyBasement.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc63_ShmSignedInInternetBuyBasement.getAccountDetails().getAddress().get("line2");
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
 
-        reporter.reportLogWithScreenshot("Launched the Internet packages page");
+        getRogersHomePage().setIgniteAddressLookupBasement();
+        reporter.reportLogWithScreenshot("Launched the customer availability check popup for basement address");
+        getRogersHomePage().clkIgniteAddressLookupSubmit();
+        reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
+
         getRogersInternetPackageSelectionPage().clkInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
 

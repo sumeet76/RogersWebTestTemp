@@ -133,7 +133,11 @@ public class RogersHomePage extends BasePageClass {
 	//input[contains(@class,'cdk-text-field-autofill-monitored')]
 	//span[contains(@class,'ds-formField__labelWrapper position-absolute')]
 	//input[contains(@id,'canada-post-address-complete')]
-	
+
+	@FindBy(xpath = "//div[@id='multipleUnitsModal'] ")
+	WebElement popupIgniteAddressLookupLable;
+
+
 	@FindBy(xpath = "//span[contains(@class,'ds-formField__labelWrapper')]")
 	WebElement txaIgniteAddressLookupLable;
 	
@@ -145,8 +149,10 @@ public class RogersHomePage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement txaIgniteAddressContainerExisting;
-	
-	
+
+	@FindBy(xpath = "//div[contains(text(),'BSMT')]")
+	WebElement rdoBasement;
+
 	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c15-0 ds-formField__typeds-input')]")
 	WebElement txaIgniteLookup;
 	
@@ -418,7 +424,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkNoThnx() {	
-		getReusableActionsInstance().clickIfAvailable(btnNoThnx, 30);
+		getReusableActionsInstance().clickIfAvailable(btnNoThnx, 60);
 	}
 	
 	/**
@@ -617,7 +623,11 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
 	}
-	
+
+	public void setIgniteAddressLookupBasement() {
+		getReusableActionsInstance().waitForElementVisibility(popupIgniteAddressLookupLable, 60);
+		getReusableActionsInstance().getWhenReady(rdoBasement, 10).click();
+	}
 	/**
 	 * Click the Lookup Submit button to check service availability
 	 * @author chinnarao.vattam

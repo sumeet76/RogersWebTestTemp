@@ -26,7 +26,7 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_026_Ignite_ValidateSessionExpirationModalatCartSummaryPageTest extends BaseTestClass {
+public class RogersCH_TC_025_Ignite_ValidateSessionExpirationModalatCartSummaryPageTest extends BaseTestClass {
 
 	@Test(groups = {"RegressionCH","RogersIgniteBuyAnonymous"})
     public void checkSessionExpirationModalatCartSummaryPage() throws InterruptedException {

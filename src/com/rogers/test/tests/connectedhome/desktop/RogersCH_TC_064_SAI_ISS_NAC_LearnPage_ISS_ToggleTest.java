@@ -34,7 +34,7 @@ import java.lang.reflect.Method;
 public class RogersCH_TC_064_SAI_ISS_NAC_LearnPage_ISS_ToggleTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","SmartStreamCH"})
-    public void checkIssNzcLearnPageToggleONTest() {
+    public void checkIssNacLearnPageToggleONTest() {
         getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
@@ -44,8 +44,6 @@ public class RogersCH_TC_064_SAI_ISS_NAC_LearnPage_ISS_ToggleTest extends BaseTe
         getRogersHomePage().clkIgniteAddressLookupSubmitSS();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
-        getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
-        getRogersIgniteTVBuyPage().clkUpdateCart();
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
 
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");

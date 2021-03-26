@@ -33,86 +33,36 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_068_UC1_ButtontoManageWifiHubnetwork_IgniteInternetdashboard_desktopexpTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","new"})
-    public void checkSaiTupeloBuyflowAddAdditionalSTB() {
-        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
-        reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
-        getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
-        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
-        getRogersHomePage().clkIgniteAddressLookupSubmitSS();
-        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
-        getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
-        getRogersIgniteTVBuyPage().clkUpdateCart();
-        getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
-
-        reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the create profile page");
-        getRogersInternetProfilePage().setEmail();
-        getRogersInternetProfilePage().setFirstname();
-        getRogersInternetProfilePage().setLastName();
-        getRogersInternetProfilePage().setPhone();
-        getRogersInternetProfilePage().clkSubmitProfile();
-
-        reporter.hardAssert(getRogersInternetCreditCheckPage().verifyCreditEvalutionPage(),"Credit Evalution page has Launched","Credit Evalution page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the credit evalution page");
-        getRogersInternetCreditCheckPage().selectDOBYear();
-        getRogersInternetCreditCheckPage().selectDOBMonth();
-        getRogersInternetCreditCheckPage().selectDOBDay();
-        reporter.reportLogWithScreenshot("Entered DOB details");
-        getRogersInternetCreditCheckPage().selectFirstID("Driver's License");
-        getRogersInternetCreditCheckPage().selectProvince("Ontario");
-        getRogersInternetCreditCheckPage().selectExpiryYear();
-        getRogersInternetCreditCheckPage().selectExpiryMonth();
-        getRogersInternetCreditCheckPage().selectExpiryDay();
-        getRogersInternetCreditCheckPage().setDrivingLicenseNumber("ONTARIO");
-        reporter.reportLogWithScreenshot("Driving License Details");
-        getRogersInternetCreditCheckPage().selectSecondIDOption("Passport");
-        getRogersInternetCreditCheckPage().setPassportNumber();
-        getRogersInternetCreditCheckPage().selectPassportExpiryYear();
-        getRogersInternetCreditCheckPage().selectPassportExpiryMonth();
-        getRogersInternetCreditCheckPage().selectPassportExpiryDay();
-        getRogersInternetCreditCheckPage().clkCreditConsentSai();
-        reporter.reportLogWithScreenshot("Passport Details");
-        getRogersInternetCreditCheckPage().clkCreditConsentSubmit();
-
-        reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the tech install page");
-        getRogersTechInstallPage().clkTechInstalConsent();
-        reporter.reportLogWithScreenshot("tech install details");
-        getRogersTechInstallPage().clkTechInstallContinue();
-
-        reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the payment options page");
-        getRogersPaymentOptionsPage().selectPaymentMode("Pre-authorized Credit Card");
-        getRogersPaymentOptionsPage().switchToCreditCardIFrame();
-        getRogersPaymentOptionsPage().setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
-        getRogersPaymentOptionsPage().switchOutOfCreditCardIFrame();
-        getRogersPaymentOptionsPage().setCVV();
-        getRogersPaymentOptionsPage().selectExpiryMonth();
-        getRogersPaymentOptionsPage().selectExpiryYear();
-        reporter.reportLogWithScreenshot("Payment options Details");
-        getRogersPaymentOptionsPage().clkPaymentConfirm();
-
-        reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the order review page");
-
-        reporter.hardAssert( getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
-        getRogersOrderReviewPage().clkAcceptenceCheckbox();
-        reporter.reportLogWithScreenshot("Agreement details");
-        getRogersOrderReviewPage().clkSubmit();
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");
+    @Test(groups = {"RegressionCH","RogersInternetCH"})
+    public void checkIgniteInternetdashboardButtontoManageWifiHubnetwork() {
+        getRogersHomePage().clkSignIn();
+        getRogersLoginPage().switchToSignInIFrame();
+        reporter.reportLogWithScreenshot("Launched the SignIn popup");
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getPassword());
+        reporter.reportLogWithScreenshot("Enter the account credentails");
+        getRogersLoginPage().clkSignInIFrame();
+        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        reporter.reportLogWithScreenshot("Skip popup");
+        getRogersLoginPage().clkSkipIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();
+        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+        //getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.accountDetails.getBan());
+        reporter.reportLogWithScreenshot("Launched the Account Page");
+        getRogersInternetDashboardPage().clkSolarisInternetBadge();
+        reporter.reportLogWithScreenshot("Launched the Interent dashboard");
+        getRogersInternetDashboardPage().clkInternetPopup();
+        getRogersInternetDashboardPage().clkWifiPassword();
+        getRogersInternetDashboardPage().SwitchIgnitewifiPage();
+        reporter.reportLogWithScreenshot("Launched the Ignite WifiHub");
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyIgniteWifiHub(),"Launched the Ignitewifi Page ","Ignitewifi Page hasn't launched");
     }
 
 
     @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
     //legacyAnonymous
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-        startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_igniteanonymous, method);
+        startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
         // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
     }
 
