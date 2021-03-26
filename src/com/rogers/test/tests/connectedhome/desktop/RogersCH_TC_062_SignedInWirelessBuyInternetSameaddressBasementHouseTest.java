@@ -40,15 +40,15 @@ public class RogersCH_TC_062_SignedInWirelessBuyInternetSameaddressBasementHouse
         getRogersHomePage().clkSignIn();
         getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc56_wirelessSignedInInternetBuy.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc56_wirelessSignedInInternetBuy.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc62_WirelessSignedInInternetBuyBasement.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc62_WirelessSignedInInternetBuyBasement.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc56_wirelessSignedInInternetBuy.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc62_WirelessSignedInInternetBuyBasement.accountDetails.getBan());
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersHomePage().clkExistingCustomerShop();
@@ -60,16 +60,10 @@ public class RogersCH_TC_062_SignedInWirelessBuyInternetSameaddressBasementHouse
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
         getRogersHomePage().clkUseThisAddress();
-        reporter.reportLogWithScreenshot("Launched the customer availability check popup for address");
-
-
-        String  strAddressLine1=TestDataHandler.tc60_WirelessSignedInInternetBuyDiffAddress.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc60_WirelessSignedInInternetBuyDiffAddress.getAccountDetails().getAddress().get("line2");
-
-
-
+        getRogersHomePage().setIgniteAddressLookupBasement();
+        reporter.reportLogWithScreenshot("Launched the customer availability check popup for basement address");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
-        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
+        reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
 
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersInternetPackageSelectionPage().clkInternetPackage();

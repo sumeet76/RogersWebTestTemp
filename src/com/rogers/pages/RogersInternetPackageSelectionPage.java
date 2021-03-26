@@ -55,6 +55,8 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::span[@role='text']")
 	WebElement btnSmartStreamPackage;
 
+	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::div[@class='internet-bundle-tile']//div[@class='ds-checkbox__box my-12 rds-icon-check']")
+	WebElement chkSmartStream;
 
 	/**
 	 * selects the Internet package if it visible and ready if not click on the next arrow to get the desired package
@@ -104,6 +106,9 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 				+ "') and contains(normalize-space(.) ,'" + part[1].trim() + "')]"));
 	}
 
+	public boolean verifyInternetPacakesPage() {
+		return getReusableActionsInstance().isElementVisible(btnInternetPackage,90);
+	}
 	/**
 	 * Verify the  down grade Ways To Buy Box when we do on the Internet down grade process
 	 * @return true if the Down grade Ways popup displayed  else false
@@ -122,19 +127,24 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnInternetPackage, 90).click();
 	}
 
+
 	public void clkSmartStreamPackage() {
 		getReusableActionsInstance().getWhenReady(btnSmartStreamPackage, 90).click();
 	}
 
+	public void clkSmartStreamCheckBox() {
+		getReusableActionsInstance().getWhenReady(chkSmartStream, 90).click();
+	}
 	public void clkSmartStreamAvailability() {
 		getReusableActionsInstance().waitForElementVisibility(btnSmartStream, 90);
 		getReusableActionsInstance().executeJavaScriptClick(btnSmartStream);
+		getReusableActionsInstance().staticWait(8000);
+		getReusableActionsInstance().staticWait(8000);
 	}
 
 	public void clkSmartStream() {
-		getReusableActionsInstance().staticWait(10000);
-	/*	getReusableActionsInstance().waitForElementVisibility(lnkSmartStream, 90);
-		getReusableActionsInstance().executeJavaScriptClick(lnkSmartStream);*/
+		getReusableActionsInstance().waitForElementVisibility(lnkSmartStream, 90);
+		getReusableActionsInstance().executeJavaScriptClick(lnkSmartStream);
 	}
 
 	public void clkInternetPackageMobile() {
