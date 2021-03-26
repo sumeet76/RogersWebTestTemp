@@ -26,7 +26,7 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_025_StandaloneInternet_ValidateSessionExpirationModalAtCartSummaryPageAndBundlesPageTest extends BaseTestClass {
+public class RogersCH_TC_026_StandaloneInternet_ValidateSessionExpirationModalAtCartSummaryPageAndBundlesPageTest extends BaseTestClass {
 
 	@Test(groups = {"RegressionCH","saiCH"})
     public void checkSessionExpirationModalatCartSummaryPage() throws InterruptedException {

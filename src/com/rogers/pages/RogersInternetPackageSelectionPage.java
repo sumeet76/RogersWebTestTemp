@@ -161,7 +161,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 
 	public void clkInternetBuyContinue() {
 		if(!getReusableActionsInstance().isElementVisible(btnInternetBuyContinue, 20)) {
-			getReusableActionsInstance().waitForElementInvisibility(popUpLoading, 30);
+			getReusableActionsInstance().waitForElementInvisibility(popUpLoading, 90);
 		}
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 		getReusableActionsInstance().getWhenReady(btnInternetBuyContinue, 60).click();
