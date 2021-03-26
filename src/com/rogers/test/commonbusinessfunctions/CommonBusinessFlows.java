@@ -109,11 +109,11 @@ public class CommonBusinessFlows {
 	 */
 	public void addDataFlow() {
 		BaseTestClass.getRogersWirelessDashboardPage().clkAddData();
-		baseTestClass.reporter.hardAssert(BaseTestClass.getRogersAddDataPage().verifyAddDataOverlayIsDisplayed(),
+		baseTestClass.reporter.hardAssert(BaseTestClass.getRogersAddDataPage().verifyAddDataOverlayIsDisplayedNew(),
 							"Add the Data top-up  window should be displayed. (completd an MDT add on)", 
 						"Add the Data top-up  window is NOT displayed.");        
 		baseTestClass.reporter.reportLogWithScreenshot("Add Data Add on");  
-		BaseTestClass.getRogersAddDataPage().selectDataAddOnOption(1);
+		BaseTestClass.getRogersAddDataPage().selectDataAddOnOptionNew(1);
 		baseTestClass.reporter.reportLogWithScreenshot("Select Add on option");  
 		BaseTestClass.getRogersAddDataPage().clkContinue();
 		baseTestClass.reporter.reportLogWithScreenshot("Select Purchase");  
