@@ -12,8 +12,8 @@ import java.lang.reflect.Method;
 
 public class RogersBFA_TC20_AALShareTerm_TabletDevice_Test extends BaseTestClass {
 
-    @Test(groups = {"RegressionBFA", "SanityBFA", "AALBFA"})
-    public void rogersAalTermBopisTest() {
+    @Test(groups = {"RegressionBFA", "SanityBFA"})
+    public void rogersAalTabletTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
@@ -49,7 +49,6 @@ public class RogersBFA_TC20_AALShareTerm_TabletDevice_Test extends BaseTestClass
         reporter.reportLogPassWithScreenshot("Device config page displayed");
         getRogersDeviceConfigPage().clickContinueButton();
         //-------------------------------------Plan config page---------------------------------------------
-        getRogersPlanConfigPage().staticWaitTime();
         reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
         reporter.hardAssert(getRogersPlanConfigPage().verifyDeviceCostContinueButton(), "Plan Config loaded", "Plan config page not loaded");

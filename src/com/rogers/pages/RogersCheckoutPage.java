@@ -733,6 +733,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public boolean isChooseNumberTabsDisplayed() {
+		clkNoThanks();
 		return (getReusableActionsInstance().isElementVisible(selectaNewNumberTab) && getReusableActionsInstance().isElementVisible(useAnExistingNumberTab));
 	}
 

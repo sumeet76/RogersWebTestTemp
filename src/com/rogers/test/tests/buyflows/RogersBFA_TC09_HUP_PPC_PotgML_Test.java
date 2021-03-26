@@ -53,7 +53,7 @@ public class RogersBFA_TC09_HUP_PPC_PotgML_Test extends BaseTestClass {
         reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
         reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
         getRogersDeviceCataloguePage().selectCTN(TestDataHandler.tc09HupPpcPotgSharedML.getCtn());
-        getRogersDeviceCataloguePage().clickContinueBtn();
+        getRogersDeviceCataloguePage().clkContinueBtnHupCtnSelectionModal();
         reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
                 "Continue button on the device config page is present",
                 "Continue button on the device config page is not present");

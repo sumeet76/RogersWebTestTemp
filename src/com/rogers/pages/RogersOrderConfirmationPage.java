@@ -44,7 +44,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	WebElement lblThankYou;
 
 	@FindAll({
-		@FindBy(xpath = "//h1[@id='bfa-page-title']"),
+		@FindBy(xpath = "//h1[@id='bfa-page-title'][contains(text(),'Confirmation')]"),
 		@FindBy(xpath = "//span[@checkout-res='checkout_order_confirmation']")
 	})
 	WebElement lblOrderConfirmation;
@@ -82,13 +82,13 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	@FindBy(xpath="//h4[@data-test='rpotgTitle']")
 	WebElement rpotgTitle;
 
-	@FindBy(xpath="//h5[@class='text-title-5 my-24']")
+	@FindBy(xpath="//h5[contains(@class,'text-title-5')]")
 	WebElement appointmentDetailsTitle;
 
-	@FindBy(xpath="//p[@class='text-bold text-title-6' and contains(text(),'Appointment date:')]")
+	@FindBy(xpath="//p[contains(@class,'text-bold text-title')][contains(text(),'Appointment date') or contains(text(),'Date du rendez-vous')]")
 	WebElement appointmentDateTitle;
 
-	@FindBy(xpath="//p[@class='text-bold text-title-6' and contains(text(),'Appointment address:')]")
+	@FindBy(xpath="//p[contains(@class,'text-bold text-title')][contains(text(),'Appointment address') or contains(text(),'Adresse où le rendez-vous se tiendra')]")
 	WebElement appointmentAddressTitle;
 
 	@FindBy(xpath="//img[@alt='largeImage_1']")

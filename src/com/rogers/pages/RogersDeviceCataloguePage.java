@@ -27,7 +27,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "//div[contains(@data-test,'credit-evaluation')]/ancestor::ds-modal-container")
     WebElement popupCreditEval;
 
-    @FindBy(xpath = "//ds-modal-container//p[contains(text(),'Credit Evaluation')]")
+    @FindBy(xpath = "//ds-modal-container//p[contains(text(),'Credit Evaluation') or contains(text(),'Évaluation de crédit')]")
     WebElement txtCreditEval;
 
     @FindBy(xpath = "//ds-modal[contains(@data-test,'sharedNonShared')]/ancestor::ds-modal-container")
@@ -54,7 +54,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "//a[@class='learMoreLink ds-pointer mw-100']")
     WebElement learnMoreBannerLearnMore;
 
-    @FindBy(xpath = "(//span[contains(.,'Check eligibility')])[2]")
+    @FindBy(xpath = "(//span[contains(.,'Check eligibility') or contains(.,'Disponibilité')])[2]")
     WebElement checkEligibilityRpotgBanner;
 
     @FindBy(xpath="//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
@@ -105,14 +105,14 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "//p[contains(@class,'dsa-info__contentHeader align-self-center text')]")
     WebElement rpotgBannerText;
 
-    @FindBy(xpath = "//button[@title='Check']")
-    WebElement checkBtn;
+    @FindBy(xpath = "//button[@title='Check' or @title='Vérifier']")
+    WebElement  checkBtn;
 
-    @FindAll({
-            @FindBy(xpath = "//button[@title='Continue']"),
-            @FindBy(xpath = "//ds-modal-container//button[contains(@class,'-primary -large')]")
-    })
+    @FindBy(xpath = "//button[@title='Continue' or @title='Continuer']")
     WebElement continueBtn;
+
+    @FindBy(xpath = "(//button[contains(@class,'ds-button ds-corners ds-pointer')])[3]")
+    WebElement continueBtnHupCtnSelectionModal;
 
     @FindBy(xpath = "//dsa-info[contains(@class,'d-block mb-40')]//p[contains(@class,'dsa-info__contentBody text-body mb-0')]")
     WebElement eligiblePostalCodeinBanner;
@@ -173,6 +173,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
     public void clkByodDeviceTileContinueBtn() {
         getReusableActionsInstance().clickWhenReady(byodTileContinueButton);
+        getReusableActionsInstance().staticWait(2000);
     }
 
     /**
@@ -591,6 +592,14 @@ public class RogersDeviceCataloguePage extends BasePageClass {
 
     public void clickContinueBtn() {
         getReusableActionsInstance().clickWhenReady(continueBtn, 60);
+    }
+
+    /**
+     * This method will click on the continue button in the ctn selection modal during HUP flow
+     * @author praveen.kumar7
+     */
+    public void clkContinueBtnHupCtnSelectionModal() {
+        getReusableActionsInstance().clickWhenReady(continueBtnHupCtnSelectionModal);
     }
 
     /**

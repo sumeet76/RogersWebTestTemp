@@ -15,7 +15,7 @@ public class RogersReviewOrderPage extends BasePageClass {
         super(driver);
     }
 
-    @FindBy(xpath = "//h1[@id='bfa-page-title' and text()='Review Your Order']")
+    @FindBy(xpath = "//h1[@id='bfa-page-title'][text()='Review Your Order' or contains(text(),'Vérifiez votre')]")
     WebElement orderReviewPageTitle;
 
     @FindBy(xpath="(//div[contains(@class,'totalRow d-flex align-items-center')])[1]")
@@ -69,7 +69,7 @@ public class RogersReviewOrderPage extends BasePageClass {
     @FindBy(xpath ="//ds-checkbox[@data-test='bopis-consent']")
     WebElement chBopisConsent;
 
-    @FindBy(xpath ="//button[@title='Submit order - test1']")
+    @FindBy(xpath ="//button[@title='Submit order - test1' or @title='Soumettre la commande']")
     WebElement submitOrderBtn;
 
 

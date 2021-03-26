@@ -18,7 +18,7 @@ public class RogersBFA_TC17_AALShareTerm_BopisShipping_Test extends BaseTestClas
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA", "SanityBFA", "AALBFA"})
+    @Test(groups = {"RegressionBFA", "SanityBFA"})
     public void rogersAalTermBopisTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
@@ -61,7 +61,6 @@ public class RogersBFA_TC17_AALShareTerm_BopisShipping_Test extends BaseTestClas
         reporter.reportLogPassWithScreenshot("Device config page displayed");
         getRogersDeviceConfigPage().clickContinueButton();
         //-------------------------------------Plan config page---------------------------------------------
-        getRogersPlanConfigPage().staticWaitTime();
         reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
         reporter.hardAssert(getRogersPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");

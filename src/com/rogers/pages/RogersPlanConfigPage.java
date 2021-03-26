@@ -273,6 +273,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void selectNoTermDeviceDeviceCost() {
+        getReusableActionsInstance().scrollToElement(viewMoreOptions);
         clickViewMoreOptions();
         getReusableActionsInstance().clickWhenReady(By.xpath("//span[@data-caption='NOTERM_false']//ancestor::label"), 30);
     }
@@ -671,16 +672,17 @@ public class RogersPlanConfigPage extends BasePageClass {
         return false;
     }
 
+    /**
+     * This method verifies the BreadCrumb on Plan config Page for BYOD device
+     * @return true if breadcrumb is displayed, else false
+     * @author saurav.goyal
+     */
     public boolean verifyAalByodBreadCrumb() {
         if(getReusableActionsInstance().isElementVisible(devicesInBreadCrumb) && getReusableActionsInstance().isElementVisible(buildPlanInBreadCrumb) &&
                 (breadCrumb.getText().toUpperCase().contains("BRING") || breadCrumb.getText().toUpperCase().contains("APPORTEZ"))) {
             return true;
         }
         return false;
-    }
-
-    public void staticWaitTime() {
-        getReusableActionsInstance().staticWait(2000);
     }
 
     /**

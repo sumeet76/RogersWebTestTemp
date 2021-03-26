@@ -18,8 +18,8 @@ public class RogersBFA_TC22_AAL_BYOD_NonShareStdShipping_Test extends BaseTestCl
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA", "SanityBFA", "AALBFA"})
-    public void rogersAalTermBopisTest() {
+    @Test(groups = {"RegressionBFA", "SanityBFA"})
+    public void rogersAalByodNonShareStdShippingTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
@@ -46,7 +46,6 @@ public class RogersBFA_TC22_AAL_BYOD_NonShareStdShipping_Test extends BaseTestCl
         reporter.reportLogWithScreenshot("Device Catalog Page");
         getRogersDeviceCataloguePage().clkByodDeviceTileContinueBtn();
         //-------------------------------------Plan config page---------------------------------------------
-        getRogersPlanConfigPage().staticWaitTime();
         reporter.softAssert(getRogersPlanConfigPage().verifyAalByodBreadCrumb(),
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
         reporter.hardAssert(getRogersPlanConfigPage().verifyByodSelectedDeviceSection(), "Plan Config loaded", "Plan config page not loaded");
