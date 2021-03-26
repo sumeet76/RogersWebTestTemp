@@ -492,6 +492,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//*[@translate='promise-to-pay.success-ptp.done-btn']")
 	WebElement btnDoneAfterSetUpPromiseSuccessFul;
 
+	@FindBy(xpath = "//a[@class='c-navbar-link dropdown-toggle menu-click' and contains(text(),'Utilisation et services ') or contains(text(),'Usage & Services ')]")
+	WebElement btnUsageAndServicesDropDown;
+
+
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
 	 * @return true if more than one ban present else false
@@ -1984,6 +1988,20 @@ public boolean verifyPTPWidgetIsDisplayed() {
 			getReusableActionsInstance().selectWhenReady(selectPayType, 1);
 		}
 
+	}
+
+
+	/**
+	 * clicks the drop and and checks to see if the account show in Menu UsageAndService drop down on account overview page.
+	 * @param strLast4DigAcctNum string account number
+	 * @return true if element visible else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean checkIfAccountIsShowInDropDown(String strLast4DigAcctNum) {
+		getReusableActionsInstance().getWhenReady(btnUsageAndServicesDropDown).click();
+		return getReusableActionsInstance().isElementVisible(
+				(By.xpath("//span[contains(@data-translate-values,'" + strLast4DigAcctNum + "') or contains(text(),'" + strLast4DigAcctNum + "')]")),
+				10);
 	}
 }
 
