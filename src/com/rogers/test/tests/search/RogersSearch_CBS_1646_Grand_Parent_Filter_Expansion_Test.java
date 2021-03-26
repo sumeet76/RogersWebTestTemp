@@ -9,13 +9,23 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
+
 import utils.CSVReader;
 
+/**
+ * This class will validate results have tags consistent to the grandparent filter selected
+ *
+ * @author pankaj.patil
+ **/
 public class RogersSearch_CBS_1646_Grand_Parent_Filter_Expansion_Test extends BaseTestClass {
 
-    @DataProvider(name = "FilterData",parallel=false)
+    @DataProvider(name = "FilterData", parallel = false)
     public Object[] testData() throws IOException {
-        String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
+        String csvFileName = null;
+        if (System.getProperty("Language").equalsIgnoreCase("en"))
+            csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
+        else if (System.getProperty("Language").equalsIgnoreCase("fr"))
+            csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataFR.csv";
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
         Object[] csvRowStrArray = new Object[csvData.size()];
         for (int i = 0; i < csvData.size(); i++) {
@@ -24,16 +34,16 @@ public class RogersSearch_CBS_1646_Grand_Parent_Filter_Expansion_Test extends Ba
         return csvRowStrArray;
     }
 
-    @Test(dataProvider = "FilterData",groups={"Search","Filter"})
+    @Test(dataProvider = "FilterData", groups = {"Search", "Filter"})
     public void validateResultsGrandParentFilter(String[] csvRowStrArray) {
         getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0]);
         getRogersSearchPage().isPageLoaded();
-        getRogersSearchPage().waitTime();
-        for(int i=1;i< csvRowStrArray.length;i++) {
+        for (int i = 1; i < csvRowStrArray.length; i++) {
             getRogersSearchPage().clkGrandParentFilter(csvRowStrArray[i]);
-            reporter.reportLogWithScreenshot(csvRowStrArray[i]+" filter selected");
+            getRogersSearchPage().isPageLoaded();
+            reporter.reportLogWithScreenshot(csvRowStrArray[i] + " filter selected");
             reporter.softAssert(getRogersSearchPage().validateResultsTag(csvRowStrArray[i]),
-                    "Results have tag " +csvRowStrArray[i], "Results do Not have tag " +csvRowStrArray[i]);
+                    "Results have expected tag " + csvRowStrArray[i], "Results do not have expected tag " + csvRowStrArray[i]);
         }
     }
 
@@ -41,12 +51,11 @@ public class RogersSearch_CBS_1646_Grand_Parent_Filter_Expansion_Test extends Ba
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
         xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-        startSession(System.getProperty("SearchUrl") + "wireless", strBrowser, strLanguage, RogersEnums.GroupName.search, method);
+        startSession(System.getProperty("SearchUrl"), strBrowser, strLanguage, RogersEnums.GroupName.search, method);
     }
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
         closeSession();
     }
-
 }
