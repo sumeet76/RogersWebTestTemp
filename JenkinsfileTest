@@ -23,6 +23,7 @@ void toolSh(String command) {
 }
 
 def REPORT_URL = "https://qa1.rogers.com/Digital-QE/"
+def readProp;
 pipeline {
     agent {
         kubernetes {
@@ -92,6 +93,7 @@ pipeline {
 
                 stage('Regression Tests') {
                     steps {
+                        script {
                             readProp = readProperties file: 'gradle.properties';
                             String urlLink="";
                             if(!params.QaUrl.isEmpty()){
