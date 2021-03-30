@@ -34,7 +34,7 @@ public class RogersSearch_CBS_1646_Grand_Parent_Filter_Expansion_Test extends Ba
         return csvRowStrArray;
     }
 
-    @Test(dataProvider = "FilterData", groups = {"Search", "Filter"})
+    @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual"})
     public void validateResultsGrandParentFilter(String[] csvRowStrArray) {
         getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0]);
         getRogersSearchPage().isPageLoaded();

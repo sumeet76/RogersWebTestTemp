@@ -35,7 +35,7 @@ public class RogersSearch_CBS_1667_RogersSearch_CBS_Only_One_Parent_Filter_Can_B
         return csvRowStrArray;
     }
 
-    @Test(dataProvider = "FilterData", groups = {"Search", "Filter"})
+    @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual"})
     public void validateParentFilterSelection(String[] csvRow) {
         getDriver().get(System.getProperty("SearchUrl") + csvRow[0]);
         getRogersSearchPage().isPageLoaded();
