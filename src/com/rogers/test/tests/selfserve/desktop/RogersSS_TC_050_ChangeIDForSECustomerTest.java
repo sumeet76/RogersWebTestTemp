@@ -92,9 +92,9 @@ public class RogersSS_TC_050_ChangeIDForSECustomerTest extends BaseTestClass {
 					"Caller ID First Name" + strFirstName + " is NOT updated in CTN badge");			
 
 
-			reporter.hardAssert(getRogersWirelessDashboardPage().verifyWirelessCallerIdUpdatedInSeCtnTab(strFirstName),
-					"Caller ID First Name" + strFirstName + " is updated in SE CTN Tab",
-					"Caller ID First Name" + strFirstName + " is NOT updated in SE CTN Tab");			
+			//reporter.hardAssert(getRogersWirelessDashboardPage().verifyWirelessCallerIdUpdatedInSeCtnTab(strFirstName),
+			//		"Caller ID First Name" + strFirstName + " is updated in SE CTN Tab",
+			//		"Caller ID First Name" + strFirstName + " is NOT updated in SE CTN Tab");
 		}
 
 	}
