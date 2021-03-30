@@ -17,7 +17,8 @@ import utils.CSVReader;
 /**
  * Validates only one parent filter is expanded at a time
  * @author pankaj.patil
- */public class RogersSearch_CBS_1667_RogersSearch_CBS_Only_One_Parent_Filter_Can_Be_Selected_At_A_Time_Test extends BaseTestClass {
+ */
+public class RogersSearch_CBS_1667_RogersSearch_CBS_Only_One_Parent_Filter_Can_Be_Selected_At_A_Time_Test extends BaseTestClass {
 
     @DataProvider(name = "FilterData", parallel = false)
     public Object[] testData() throws IOException {

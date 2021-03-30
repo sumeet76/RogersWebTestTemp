@@ -50,9 +50,6 @@ public class RogersSearchPage extends BasePageClass {
     @FindBy(xpath = "//div[@ng-reflect-heading='Suggestions']/parent::section//a")
     List<WebElement> suggestionsSectionLinks;
 
-    @FindBy(xpath = "//div[@class='resultList']/div[contains(@class,'pt-4')]")
-    WebElement resultsCountAndPageDetails;
-
     @FindBy(xpath = "//div[@class='resultList']/div[1]")
     WebElement resultsCount;
 
@@ -122,6 +119,9 @@ public class RogersSearchPage extends BasePageClass {
     public static final By allGrandParentFilters = By.xpath("//button[contains(@id,'-heading')]/following-sibling::ds-expander/div");
 
     public static final By categoryLabelInResults = By.xpath("//span[contains(@class,'categorylbl')]");
+
+    public static final By storageLabelInFilter = By.xpath("//input[@name='storage']");
+
 
     Boolean isPagePresent = true;
     JavascriptExecutor js = null;
@@ -205,6 +205,11 @@ public class RogersSearchPage extends BasePageClass {
         getReusableActionsInstance().waitForAttributeToBe(parentFilter, "aria-expanded", "false", 5);
     }
 
+    /**
+     * Get list of parent filters from the grandparent filter
+     *
+     * @author pankaj.patil
+     */
     public List<WebElement> getParentFilters(String strGrandParentFilterName) {
         return getDriver().findElements(By.xpath("//div[contains(@id,'" + strGrandParentFilterName + "-body')]/div/button"));
     }
@@ -352,10 +357,13 @@ public class RogersSearchPage extends BasePageClass {
         getReusableActionsInstance().clickWhenReady(By.xpath("//div[contains(@id,'" + strGrandParentFilterName + "-body')]/div/button[contains(@id,'" + strParentFilterName + "')]"));
         getReusableActionsInstance().staticWait(1500);
     }
-
+    /**
+     * This method will return a list of all storage values under wireless filter
+     * @author pankaj.patil
+     */
     public List<String> getStorageSelections() {
         List<String> strStorageSelections = new ArrayList<String>();
-        List<WebElement> chkStorageSelections = getDriver().findElements(By.xpath("//input[@name='storage']"));
+        List<WebElement> chkStorageSelections = getDriver().findElements(storageLabelInFilter);
         for (int i = 0; i < chkStorageSelections.size(); i++) {
             strStorageSelections.add(chkStorageSelections.get(i).getAttribute("value"));
         }
@@ -372,12 +380,11 @@ public class RogersSearchPage extends BasePageClass {
     }
 
     public void clkStorageType(String strStorage) {
-        //getReusableActionsInstance().javascriptScrollToTopOfPage();
         WebElement element = getDriver().findElement(By.xpath("//ds-checkbox[@id='Shop_Wireless_storage_" + strStorage + "-host']"));
         Actions action = new Actions(getDriver());
         action.moveToElement(element).click().build().perform();
-        // getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='" + strStorage + "']/label/div[1]"));
         getReusableActionsInstance().staticWait(1000);
+        isPageLoaded();
     }
 
     public void clkColorType(String strColor) {
@@ -583,9 +590,14 @@ public class RogersSearchPage extends BasePageClass {
                 .getAttribute("aria-checked").equals("true");
     }
 
+    /**
+     * Fetch the number of results from result window
+     *
+     * @author pankaj.patil
+     */
     public String getResultWindowText() {
-        getReusableActionsInstance().waitForElementTextToBe(resultsCountAndPageDetails, " ", 10);
-        return resultsCountAndPageDetails.getText();
+        getReusableActionsInstance().waitForElementTextToBe(searchResults, " ", 10);
+        return searchResults.getText();
     }
 
     public List<String> getColorFilters() {

@@ -23,38 +23,35 @@ import utils.CSVReader;
 
 public class RogersSearch_CBS_1681_Color_Facet_Testing_Test extends BaseTestClass {
 
-	@Test(groups={"Search","Filter"})
-	public void validateColorFilterSelection() {
-		List<String> strColorFilters;
-		getDriver().get(System.getProperty("SearchUrl")+"wireless");
-		getRogersSearchPage().isPageLoaded();
-		getRogersSearchPage().waitTime();
-		getRogersSearchPage().clkShopAndThenWirelessFilter();
-		reporter.reportLogWithScreenshot("Shop and Wireless Filters clicked");
-		strColorFilters = getRogersSearchPage().getColorFilters();
-		for(int i=0;i<strColorFilters.size();i++) {
-			getRogersSearchPage().clkColorType(strColorFilters.get(i));
-			reporter.reportLogWithScreenshot(strColorFilters.get(i) + " - Color Selected");
+    @Test(groups = {"Search", "Filter"})
+    public void validateColorFilterSelection() {
+        List<String> strColorFilters;
+        getDriver().get(System.getProperty("SearchUrl") + "wireless");
+        getRogersSearchPage().isPageLoaded();
+        getRogersSearchPage().clkShopAndThenWirelessFilter();
+        reporter.reportLogWithScreenshot("Shop and Wireless Filters clicked");
+        strColorFilters = getRogersSearchPage().getColorFilters();
+        for (int i = 0; i < strColorFilters.size(); i++) {
+            getRogersSearchPage().clkColorType(strColorFilters.get(i));
+            getRogersSearchPage().isPageLoaded();
+            reporter.reportLogWithScreenshot(strColorFilters.get(i) + " - Color Selected");
+            reporter.softAssert(getRogersSearchPage().validateResultsColor(strColorFilters.get(i)),
+                    "All Results belong to color" + strColorFilters.get(i),
+                    "All Results do Not belong to color" + strColorFilters.get(i));
+            reporter.reportLogWithScreenshot(strColorFilters.get(i) + " - Color Results");
+            getRogersSearchPage().clkColorType(strColorFilters.get(i));
+        }
+    }
 
-			reporter.softAssert(getRogersSearchPage().validateResultsColor(strColorFilters.get(i)),
-					"All Results belong to color"+strColorFilters.get(i),
-					"All Results do Not belong to color"+strColorFilters.get(i));
+    @BeforeMethod(alwaysRun = true)
+    @Parameters({"strBrowser", "strLanguage"})
+    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
+        xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+        startSession(System.getProperty("SearchUrl") + "wireless", strBrowser, strLanguage, RogersEnums.GroupName.search, method);
+    }
 
-			reporter.reportLogWithScreenshot(strColorFilters.get(i) + " - Color Results");
-			getRogersSearchPage().clkColorType(strColorFilters.get(i));
-		}
-	}
-
-	@BeforeMethod(alwaysRun = true)
-	@Parameters({"strBrowser", "strLanguage"})
-	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(System.getProperty("SearchUrl") + "wireless", strBrowser, strLanguage, RogersEnums.GroupName.search, method);
-	}
-
-	@AfterMethod(alwaysRun = true)
-	public void afterTest() {
-		closeSession();
-	}
-
+    @AfterMethod(alwaysRun = true)
+    public void afterTest() {
+        closeSession();
+    }
 }
