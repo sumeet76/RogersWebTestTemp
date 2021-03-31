@@ -15,11 +15,10 @@ import java.lang.reflect.Method;
 2. Click on Sign-in
 3. Sign-in with valid credentials
 4. Click on the Apple music badge in the AO page.
-5. Click on the cancel trial on the free trial subscribed CTN
-6. Choose the reason for cancellation to be "I don't need a music service anymore "and verify the cancellation timeline text displayed below. Click Confirm.
-7. Click on Done button on the success modal
-8. Verify the subscription management page
-and FE appearence as per PCR21
+5. Click on the cancel trial for the employee trial subscribed CTN
+6. Choose the reason for cancellation to be "I’m already paying for an Apple Music subscription "and verify the cancellation timeline text displayed below. Click on Confirm cancellation.
+7. Click on Close button "X" on the success modal
+8. Verify the subscription management page and FE appearence as per PCR21
 
 
 
@@ -28,19 +27,20 @@ and FE appearence as per PCR21
 3. Account overview page will be displayed
 4. The Cx should be directed and displayed onto the subscription management page
 5. The Cx should be initiated with the cancel flow and be displayed with the Cancel Apple Music Subsciption page.
-6. The cancellation timeline text displayed should be deferred or is to be future dated of expiry of service as per copy and mock. FE will call <TBD> Domain Service
-THEN Domain Service will return the deferred cancellation SubscriptionState
+6. The cancellation timeline text displayed should be immediate and not future dated for this specific reason of cancellation as per copy and mock. FE will call <TBD> Domain Service THEN Domain Service will return the cancelled SubscriptionState
 7. The Cx should be redirected to the Subscription management page
 8. As per PCR21:
-* The effective cancel date for these cancellations is deferred to a future date and all the cancelled subscriptions (CTNs)  and the effective cancel date on the "Not eligible for this promotion" section of the Subscription Management Page.
-* CTN with Deferred Cancelled Status should be displayed with promotion ends OR subscription ends message as per OfferType
-* The order of the cancelled CTNs  will be displayed based on effective cancel dates for immediate and deferred cancelled CTNs
+    * The the effective cancel date for these cancellations is immediate and all the cancelled subscriptions (CTNs)
+    and the immediate cancel date on the "Not eligible for this promotion" section of the Subscription Management Page.
+    * CTN with Cancelled Status should be displayed with promotion Ended, subscription ended message as per Offer Type
+    *  The order of the cancelled CTNs  will be displayed based on effective cancel dates for immediate and deferred
+    cancelled CTNs
 
 
 
  */
 
-public class RogersSS_TC_119_PACMAN_VerifyDeferredCancelPCRchanges extends BaseTestClass {
+public class RogersSS_TC_118_119_PACMAN_VerifyImmediateAndDefferedCancellationPCRchanges extends BaseTestClass {
     
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
@@ -61,17 +61,19 @@ public class RogersSS_TC_119_PACMAN_VerifyDeferredCancelPCRchanges extends BaseT
         reporter.reportLog("Home Page Launched");
         getRogersHomePage().clkSignIn();
         getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame("Autodatar221BFA50@yahoo.com");
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc102.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc118.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc118.getPassword());
         reporter.reportLogWithScreenshot("Login Credential is entered.");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
         getRogersLoginPage().clkSkipIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
+        String strImmediateCancelCTN=TestDataHandler.tc118.getAccountDetails().getimmediateCancelCTN();
+        String strDefferredCTN=TestDataHandler.tc118.getAccountDetails().getdeferredCancelCTN();
 
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
-            getRogersAccountOverviewPage().selectAccount("946481009");
+            getRogersAccountOverviewPage().selectAccount("946481058");
         }
         reporter.reportLogWithScreenshot("Account overview page.");
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Passed", "Login Failed");
@@ -87,12 +89,43 @@ public class RogersSS_TC_119_PACMAN_VerifyDeferredCancelPCRchanges extends BaseT
                 "The current subscription is displayed",
                 "The current subscription is NOT displayed");
         reporter.reportLogWithScreenshot("Current subscription");
-        getRogersAccountOverviewPage().clkCancelSubscription();
+        getRogersAccountOverviewPage().clkCancelSubscription(strImmediateCancelCTN);
         reporter.reportLogWithScreenshot("Cancel subscription details is displayed");
         reporter.hardAssert(getRogersAccountOverviewPage().verifyIfHeaderCancelSubscriptionIsDisplayed(),
                 "The header cancel subscription is displayed",
                 "The header cancel subscription is NOT displayed");
-        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCancelSubscriptionDetailsIsDisplayedCorrectly("4163120324"),
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCancelSubscriptionDetailsIsDisplayedCorrectly(strImmediateCancelCTN),
+                "The cancel subscription details matched",
+                "The cancel subscription details did not matched");
+        getRogersAccountOverviewPage().selectReasonForCancelSubscription("immediate");
+        reporter.reportLogWithScreenshot("reason for cancel subscription is selected");
+        getRogersAccountOverviewPage().clkConfirmCancelSubscription();
+        reporter.reportLogWithScreenshot("Confirm button clicked");
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCancelSuccessfulOverLayDisplayed(),
+                "The cancel subscription success overlay is displayed",
+                "The cancel subscription success overlay not displayed");
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCancelSuccessfulOverLayMentionsEffectiveImmediate(),
+                "Verify is success message shows immediate effecyive",
+                "The cancel subscription success overlay not displayed");
+
+        reporter.reportLogWithScreenshot("cancel success overlay displayed");
+        getRogersAccountOverviewPage().clkOKButtonOnCancelSuccessOverlay();
+        reporter.reportLogWithScreenshot("Clicked on OKay button");
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfEffectiveCancelDateForSubscriptionISImmediate(System.getProperty("test_language")),
+                "The Subscription management page shows the cancelled CTN subscription ended immediately",
+                "The Subscription management page does NOT shows the cancelled CTN subscription");
+
+        //==============  Deferred cancel flow =============================
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCurrentlySubscribedPaneIsDisplayed(),
+                "The current subscription is displayed",
+                "The current subscription is NOT displayed");
+        reporter.reportLogWithScreenshot("Current subscription");
+        getRogersAccountOverviewPage().clkCancelSubscription(strDefferredCTN);
+        reporter.reportLogWithScreenshot("Cancel subscription details is displayed");
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfHeaderCancelSubscriptionIsDisplayed(),
+                "The header cancel subscription is displayed",
+                "The header cancel subscription is NOT displayed");
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCancelSubscriptionDetailsIsDisplayedCorrectly(strDefferredCTN),
                 "The cancel subscription details matched",
                 "The cancel subscription details did not matched");
         getRogersAccountOverviewPage().selectReasonForCancelSubscription("deferred");
@@ -113,6 +146,8 @@ public class RogersSS_TC_119_PACMAN_VerifyDeferredCancelPCRchanges extends BaseT
         reporter.hardAssert(getRogersAccountOverviewPage().verifyIfEffectiveCancelDateForSubscriptionIsDefferred(System.getProperty("test_language")),
                 "The Subscription management page shows the deferred cancel subscription date",
                 "The Subscription management page does NOT shows the cancelled CTN subscription");
+
+        //============ Defrred cancel flow ends ============================
         reporter.hardAssert(getRogersAccountOverviewPage().verifyIfTheOrderOfTheCancelledCTNsWillBeDisplayedBasedOnEffectiveCancelDatesForImmediateAndDeferredCancelledCTNs(),
                 "The order of the cancelled CTNs  will be displayed based on effective cancel dates for immediate and deferred cancelled CTNs",
                 "The order of the cancelled CTNs  seems NOT displayed based on effective cancel dates for immediate and deferred cancelled CTNs");
@@ -120,15 +155,14 @@ public class RogersSS_TC_119_PACMAN_VerifyDeferredCancelPCRchanges extends BaseT
         reporter.reportLogWithScreenshot("Subscription management page shows the cancelled subscription");
 
     }
+/*
+ * The the effective cancel date for these cancellations is immediate and all the cancelled subscriptions (CTNs)
+    and the immediate cancel date on the "Not eligible for this promotion" section of the Subscription Management Page.
+    * CTN with Cancelled Status should be displayed with promotion Ended, subscription ended message as per Offer Type
+    *  The order of the cancelled CTNs  will be displayed based on effective cancel dates for immediate and deferred
+    cancelled CTNs
 
-
-  /*
-   * The effective cancel date for these cancellations is deferred to a future date and all the cancelled subscriptions (CTNs)
-   *   and the effective cancel date on the "Not eligible for this promotion" section of the Subscription Management Page.
-   * CTN with Deferred Cancelled Status should be displayed with promotion ends OR subscription ends message as per OfferType
-   * The order of the cancelled CTNs  will be displayed based on effective cancel dates for immediate and deferred
-   * cancelled CTNs
-
-   */
+ */
+  
 
 }
