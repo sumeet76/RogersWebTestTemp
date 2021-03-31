@@ -34,7 +34,7 @@ public class RogersSearch_CBS_1673_Parent_Filter_Selection_Deselection_Test exte
         return csvRowStrArray;
     }
 
-    @Test(dataProvider = "FilterData", groups = {"Search", "Filter"})
+    @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual"})
     public void validateParentFilterSelectionDeselection(String[] csvRow) {
         String strGrandParentText;
         getDriver().get(System.getProperty("SearchUrl") + csvRow[0]);

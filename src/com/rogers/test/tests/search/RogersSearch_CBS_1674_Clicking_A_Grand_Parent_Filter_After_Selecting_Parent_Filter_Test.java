@@ -29,7 +29,7 @@ public class RogersSearch_CBS_1674_Clicking_A_Grand_Parent_Filter_After_Selectin
         return csvRowStrArray;
     }
 
-    @Test(dataProvider = "FilterData", groups = {"Search", "Filter"})
+    @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual"})
     public void validateNavigationFromParentToGrandParent(String[] csvRow) {
         getDriver().get(System.getProperty("SearchUrl") + csvRow[0]);
         getRogersSearchPage().isPageLoaded();
