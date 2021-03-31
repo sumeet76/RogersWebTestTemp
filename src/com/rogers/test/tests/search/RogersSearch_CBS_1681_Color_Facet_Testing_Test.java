@@ -21,6 +21,12 @@ import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 import utils.CSVReader;
 
+/**
+ * This test case will select all colors one by one and validate whether the results
+ * have same color highlighted as selected from the filter
+ *
+ * @author pankaj.patil
+ */
 public class RogersSearch_CBS_1681_Color_Facet_Testing_Test extends BaseTestClass {
 
     @Test(groups = {"Search", "Filter"})
@@ -28,17 +34,19 @@ public class RogersSearch_CBS_1681_Color_Facet_Testing_Test extends BaseTestClas
         List<String> strColorFilters;
         getDriver().get(System.getProperty("SearchUrl") + "wireless");
         getRogersSearchPage().isPageLoaded();
-        getRogersSearchPage().clkShopAndThenWirelessFilter();
-        reporter.reportLogWithScreenshot("Shop and Wireless Filters clicked");
+        getRogersSearchPage().clkShopFilter();
+        reporter.reportLogWithScreenshot("Shop Filter clicked");
+        getRogersSearchPage().clkWirelessFilter();
+        reporter.reportLogWithScreenshot("Wireless Filter clicked");
         strColorFilters = getRogersSearchPage().getColorFilters();
         for (int i = 0; i < strColorFilters.size(); i++) {
             getRogersSearchPage().clkColorType(strColorFilters.get(i));
             getRogersSearchPage().isPageLoaded();
             reporter.reportLogWithScreenshot(strColorFilters.get(i) + " - Color Selected");
             reporter.softAssert(getRogersSearchPage().validateResultsColor(strColorFilters.get(i)),
-                    "All Results belong to color" + strColorFilters.get(i),
-                    "All Results do Not belong to color" + strColorFilters.get(i));
-            reporter.reportLogWithScreenshot(strColorFilters.get(i) + " - Color Results");
+                    "All Results belong to color: " + strColorFilters.get(i),
+                    "All Results do Not belong to color: " + strColorFilters.get(i));
+            reporter.reportLogWithScreenshot(strColorFilters.get(i) + " - Color Result Screenshot");
             getRogersSearchPage().clkColorType(strColorFilters.get(i));
         }
     }
