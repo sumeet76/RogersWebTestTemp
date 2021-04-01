@@ -60,7 +60,6 @@ public class RogersCH_TC_060_ISS_HomePageEntryPointSignedInWirelessBuyInternetDi
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         getRogersHomePage().clkInternetAvailability();
-        reporter.reportLogWithScreenshot("Launched the Internet page");
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
         String  strAddressLine1=TestDataHandler.tc60_WirelessSignedInInternetBuyDiffAddress.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc60_WirelessSignedInInternetBuyDiffAddress.getAccountDetails().getAddress().get("line2");

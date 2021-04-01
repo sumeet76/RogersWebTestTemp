@@ -62,8 +62,8 @@ public class RogersSS_TC_011_TC04_ValidateUserTryToLinkAccountToRegisteredProfil
         }
         reporter.reportLogWithScreenshot("Link account successful");
 	}
-	
-	@Test (dependsOnMethods = "validateUserLinkAccountToRegisteredProfile")
+
+	@Test (dependsOnMethods = "validateUserLinkAccountToRegisteredProfile", groups = {"RegressionSS","ProfileAndSettingsSS"})
 	public void validateUserRemoveAccount() {
 		
 		getRogersHomePage().clkSignIn();

@@ -39,6 +39,9 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.dashboard.common.changeInternetPackage']")
 	WebElement btnSolChangeInternetPackage;
 
+	@FindBy(xpath = "//h1[@class='header-1 primary']")
+	WebElement txtIgniteWifiHub;
+
 	@FindBy(xpath = "//div[@class='live-support']")
 	WebElement popupContatUS;
 	
@@ -47,7 +50,10 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
 	WebElement popUpInternetPopup;
-	
+
+	@FindBy(xpath = "//span[@id='ariaChangeWifiPassword']/ancestor::span[@role='text']")
+	WebElement btnWifiPassword;
+
 	@FindBy(xpath = "//div[@id='terms-conditions']")
 	WebElement infoAgreement;
 	
@@ -179,6 +185,32 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public void clkInternetPopup() {
 		getReusableActionsInstance().clickIfAvailable(popUpInternetPopup, 60);
+	}
+
+	/**
+	 * Clicks on the 'InternetPopup' option on the dash board
+	 * @author chinnarao.vattam
+	 */
+	public void clkWifiPassword() {
+		getReusableActionsInstance().clickIfAvailable(btnWifiPassword, 60);
+	}
+
+	/**
+	 * Click the PDF link on MyChannelLineup popup
+	 * @return true if the PDF is displaying in new tab, else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean SwitchIgnitewifiPage() {
+		String mainWindow = getDriver().getWindowHandle();
+		getReusableActionsInstance().waitForNumberOfWindowsToBe(2);
+		getReusableActionsInstance().switchToNewWindow(mainWindow);
+		//the page is moving to new window
+		getReusableActionsInstance().staticWait(1000);
+		return true;
+	}
+
+	public boolean verifyIgniteWifiHub() {
+		return getReusableActionsInstance().isElementVisible(txtIgniteWifiHub, 90);
 	}
 
 	/**

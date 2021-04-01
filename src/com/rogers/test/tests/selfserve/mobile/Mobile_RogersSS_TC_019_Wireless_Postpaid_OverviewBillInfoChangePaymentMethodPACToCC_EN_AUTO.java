@@ -33,8 +33,10 @@ public class Mobile_RogersSS_TC_019_Wireless_Postpaid_OverviewBillInfoChangePaym
 		   
     private void tryLogin(String strUsername, String strPassword) {
     	 getRogersLoginPage().switchToSignInIFrame();
+		reporter.reportLogWithScreenshot("Switch to iframe");
     	 getRogersLoginPage().setUsernameIFrame(strUsername);
-         getRogersLoginPage().setPasswordIFrame(strPassword);
+		reporter.reportLogWithScreenshot("username");
+         getRogersLoginPage().setPasswordIFrameMobile(strPassword);
  		 reporter.reportLogWithScreenshot("Login Credential is entered.");
          getRogersLoginPage().clkSignInIFrame();
          getRogersLoginPage().clkSkipIFrame();
