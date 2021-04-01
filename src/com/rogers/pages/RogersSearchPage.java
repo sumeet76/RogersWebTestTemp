@@ -53,6 +53,9 @@ public class RogersSearchPage extends BasePageClass {
     @FindBy(xpath = "//div[@class='resultList']/div[1]")
     WebElement resultsCount;
 
+    @FindBy(xpath = "//dsa-selector[@data-test='storage-selector']//span[@class='dsa-selector__header text-title-5']/following-sibling::span")
+    WebElement lblStorageValue;
+
     /**
      * @author naina.agarwal
      */
@@ -125,6 +128,8 @@ public class RogersSearchPage extends BasePageClass {
     public static final By allColorsSwatchInResults = By.xpath("//ds-selection[@type='color']/label");
 
     public static final By allResultLinksTitle = By.xpath("//a[contains(@id,'searchtitle')]");
+
+    public static final By allColorsInFilter =By.xpath("//span[contains(@class,'checkbox-color-copy')]");
 
     Boolean isPagePresent = true;
     JavascriptExecutor js = null;
@@ -300,7 +305,6 @@ public class RogersSearchPage extends BasePageClass {
                 break;
             }
             getReusableActionsInstance().waitForElementVisibility(getDriver().findElement(By.xpath("//input[contains(@id,'size')]")), 40);
-            //getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='"+lstStorageFilter.get(i).getAttribute("value")+"']"));
             getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='" + strSizeFilter + "']"));
         }
         return blnFlag;
@@ -385,10 +389,11 @@ public class RogersSearchPage extends BasePageClass {
     }
 
     public void clkStorageType(String strStorage) {
-        WebElement element = getDriver().findElement(By.xpath("//ds-checkbox[@id='Shop_Wireless_storage_" + strStorage + "-host']"));
+        WebDriverWait wait = new WebDriverWait(getDriver(), 1000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ds-checkbox[contains(@id,'" +strStorage +"-host')]")));
+        WebElement element = getDriver().findElement(By.xpath("//ds-checkbox[contains(@id,'" +strStorage +"-host')]"));
         Actions action = new Actions(getDriver());
         action.moveToElement(element).click().build().perform();
-        getReusableActionsInstance().staticWait(1000);
         isPageLoaded();
     }
 
@@ -564,7 +569,7 @@ public class RogersSearchPage extends BasePageClass {
     public boolean validateDeviceTypesInUrl(String[] strDeviceType) throws UnsupportedEncodingException {
         String strQuery = "devicetype:";
         for (int i = 0; i < strDeviceType.length; i++) {
-            strQuery = strQuery + strDeviceType[i].trim();
+            strQuery = strQuery.concat(strDeviceType[i].trim());
             if (i != strDeviceType.length - 1) {
                 strQuery = strQuery + ",";
             }
@@ -575,7 +580,7 @@ public class RogersSearchPage extends BasePageClass {
     public boolean validateBrandsInUrl(String[] strBrand) throws UnsupportedEncodingException {
         String strQuery = "brand:";
         for (int i = 0; i < strBrand.length; i++) {
-            strQuery = strQuery + strBrand[i].trim();
+            strQuery = strQuery.concat(strBrand[i].trim());
             if (i != strBrand.length - 1) {
                 strQuery = strQuery + ",";
             }
@@ -586,7 +591,7 @@ public class RogersSearchPage extends BasePageClass {
     public boolean validateStoragesInUrl(String[] strStorage) throws UnsupportedEncodingException {
         String strQuery = "storage:";
         for (int i = 0; i < strStorage.length; i++) {
-            strQuery = strQuery + strStorage[i].trim();
+            strQuery = strQuery.concat(strStorage[i].trim());
             if (i != strStorage.length - 1) {
                 strQuery = strQuery + ",";
             }
@@ -597,7 +602,7 @@ public class RogersSearchPage extends BasePageClass {
     public boolean validateColorsInUrl(String[] strColor) throws UnsupportedEncodingException {
         String strQuery = "color:";
         for (int i = 0; i < strColor.length; i++) {
-            strQuery = strQuery + strColor[i].trim();
+            strQuery = strQuery.concat(strColor[i].trim());
             if (i != strColor.length - 1) {
                 strQuery = strQuery + ",";
             }
@@ -622,7 +627,7 @@ public class RogersSearchPage extends BasePageClass {
 
     public List<String> getColorFilters() {
         List<String> colorFilters = new ArrayList<>();
-        List<WebElement> colorFilterElements = getDriver().findElements(By.xpath("//span[contains(@class,'checkbox-color-copy')]"));
+        List<WebElement> colorFilterElements = getDriver().findElements(allColorsInFilter);
         for (int i = 0; i < colorFilterElements.size(); i++) {
             colorFilters.add(colorFilterElements.get(i).getText().split("\\(")[0].trim());
         }
@@ -704,7 +709,7 @@ public class RogersSearchPage extends BasePageClass {
         return systemLanguage;
     }
 
-    public void clkShopFilter() {
+    public String clkShopFilter() {
         String filter = null;
         String language = getSystemLanguage();
         if (language.equalsIgnoreCase("en"))
@@ -714,9 +719,10 @@ public class RogersSearchPage extends BasePageClass {
         if (filter != null)
             getReusableActionsInstance().clickWhenReady(By.xpath("//button[contains(@id,'" + filter + "-heading')]"), 5);
         isPageLoaded();
+        return filter;
     }
 
-    public void clkWirelessFilter() {
+    public String clkWirelessFilter() {
         String filter = null;
         String language = getSystemLanguage();
         if (language.equalsIgnoreCase("en"))
@@ -726,10 +732,15 @@ public class RogersSearchPage extends BasePageClass {
         if (filter != null)
             getReusableActionsInstance().clickWhenReady(By.xpath("//button[contains(@id,'" + filter + "-heading')]"), 5);
         isPageLoaded();
+        return filter;
     }
 
     public String numberOfResults() {
         return getReusableActionsInstance().getElementText(resultsCount);
+    }
+
+    public String getSelectedStorage() {
+        return lblStorageValue.getText().trim().replace(" ","");
     }
 
     public boolean stringMatch(String a, String b) {
