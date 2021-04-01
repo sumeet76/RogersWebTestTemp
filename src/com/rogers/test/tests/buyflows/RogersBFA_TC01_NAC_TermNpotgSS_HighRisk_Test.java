@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
  * TC01 - Regression - [RNAC TERM] - Perform Rogers Net New Activation - TERM with Standard Shipping(Finance plan with Non POTG)_E2E
  */
 
-public class RogersBFA_TC01_NAC_TermNpotgSSTest extends BaseTestClass {
+public class RogersBFA_TC01_NAC_TermNpotgSS_HighRisk_Test extends BaseTestClass {
 
   
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
@@ -101,6 +101,15 @@ public class RogersBFA_TC01_NAC_TermNpotgSSTest extends BaseTestClass {
         reporter.softAssert(getRogersCheckoutPage().isCreditEvalPopupPresent(),"Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
         reporter.softAssert(getRogersCheckoutPage().isCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed","Credit Evaluation Text not disaplayed on Modal");
         reporter.reportLogWithScreenshot("Credit Evaluation processing popup");
+        reporter.hardAssert(getRogersCheckoutPage().verifyClaSecurityDepositModalPresent(),
+                "CLA and Security deposit modal is displayed", "Cla and Security Deposit Modal is not dislayed");
+        reporter.softAssert(getRogersCheckoutPage().verifySecurityDepositTextPresent(),
+                "Security deposit information is dislayed in modal", "Security deposit information is not displayed in modal");
+        reporter.reportLogWithScreenshot("CLA/Security Deposit Modal");
+        reporter.hardAssert(getRogersCheckoutPage().verifySecurityDepositAmount(TestDataHandler.tc01NACTermNpotgSS.getDepositAmount()),
+                "Security deposit amount is displayed correctly", "Security Deposit amoount is not displayed correctly");
+        reporter.hardAssert(getRogersCheckoutPage().verifyClaTextOnModal(), "CLA text on modal displayed properly", "CLA text on modal not displayed");
+        getRogersCheckoutPage().clkAcceptButton();
         reporter.hardAssert(getRogersCheckoutPage().isIdentificationLabel(),"Credit Evaluation Successful", "Credit Evaluation Identification Label not disaplayed");
        // ***************Choose a Number Stepper*************//      
         reporter.softAssert(getRogersCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed","Choose a Number Title not disaplayed");
@@ -117,11 +126,13 @@ public class RogersBFA_TC01_NAC_TermNpotgSSTest extends BaseTestClass {
         reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(),"Billing Options Title Displayed","Billing Options Title Not Present");
         reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed","Select Payment Method Dropdown not disaplayed");
 		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc01NACTermNpotgSS.getPaymentMethod());
+        reporter.hardAssert(getRogersCheckoutPage().verifyOneTimeFeesAfterSecDeposit(TestDataHandler.tc01NACTermNpotgSS.getDepositAmount()),
+                "Security deposit amount displayed correctly in cart summary", "Security deposit amount not displayed correctly in cart summary");
         getRogersCheckoutPage().clkBillingContinueButton();
-        //***************Billing Options Stepper*************//
+        //***************Shipping Stepper*************//
         reporter.softAssert(getRogersCheckoutPage().clkBillingAddress(),"Billing Address radio button is selected ","Billing Address is not selected");
         getRogersCheckoutPage().clkDeliveryMethodStandard();
-        reporter.reportLogPassWithScreenshot("Billing Options Stepper");
+        reporter.reportLogWithScreenshot("Shipping stepper");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Continue button clicked from Billing Options Stepper");
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
@@ -131,7 +142,8 @@ public class RogersBFA_TC01_NAC_TermNpotgSSTest extends BaseTestClass {
         String totalMonthlyFeesReviewPage=getRogersReviewOrderPage().getMonthlyFeeAfterTax();
         reporter.hardAssert(totalMonthlyFees.equals(totalMonthlyFeesReviewPage),"Total Monthly Fee after tax matches with checkout page","Total Monthly Fee after tax not matches with checkout page");
         String oneTimeFeesReviewPage=getRogersReviewOrderPage().getOneTimeFeeAfterTax();
-        reporter.hardAssert(oneTimeFee.equals(oneTimeFeesReviewPage),"Total One time fee after tax matches with checkout page","Total One time fee after tax not matches with checkout page");
+        reporter.hardAssert(oneTimeFeesReviewPage.contains(TestDataHandler.tc01NACTermNpotgSS.getDepositAmount()),
+                "Security deposit amount is displayed correctly in one time fees section","Security deposit amount is not displayed correctly in one time fees section");
         String puchaseIncludeReviewPage=getRogersReviewOrderPage().getPurchaseIncludesText();
         reporter.reportLogPassWithScreenshot("Order Review Page"+"1.Monthly Fees"+totalMonthlyFeesReviewPage+"2. OnetimeFees:"+oneTimeFeesReviewPage+"3.Purchase Include :"+puchaseIncludeReviewPage);
         String contactNameReviewPage=getRogersReviewOrderPage().getContactName();
@@ -144,13 +156,26 @@ public class RogersBFA_TC01_NAC_TermNpotgSSTest extends BaseTestClass {
         //getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         getRogersReviewOrderPage().clkSubmitOrderBtn();
+        //---------------------One Time Payment page------------------------------//
+        reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),
+                "Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
+        getRogersOneTimePaymentPage().setNameonCard();
+        getRogersOneTimePaymentPage().switchToCreditCardIFrame();
+        getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc01NACTermNpotgSS.getCreditCardDetailsOTP());
+        getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
+        getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc01NACTermNpotgSS.getExpiryDateOTP());
+        getRogersOneTimePaymentPage().setCVV();
+        reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
+        
+        getRogersOneTimePaymentPage().clkSubmitOrderBtn();
         //************Order Confirmation Page****************//
         reporter.hardAssert(getRogersNACOrderConfirmationPage().isOrderConfirmationTitlePresent(),"Order Confrimation Page Title Present","Order Confrimation Page Title is not Present");
         reporter.reportLogPassWithScreenshot("Order Confirmation Page");
         String totalMonthlyFeesConfirmationPage=getRogersNACOrderConfirmationPage().getMonthlyFeeAfterTax();
         reporter.hardAssert(totalMonthlyFees.equals(totalMonthlyFeesConfirmationPage),"Total Monthly Fee after tax matches with checkout page","Total Monthly Fee after tax not matches with checkout page");
         String oneTimeFeesConfirmationPage=getRogersNACOrderConfirmationPage().getOneTimeFeeAfterTax();
-        reporter.hardAssert(oneTimeFee.equals(oneTimeFeesConfirmationPage),"Total One time fee after tax matches with checkout page","Total One time fee after tax not matches with checkout page");
+        reporter.hardAssert(oneTimeFeesConfirmationPage.contains(TestDataHandler.tc01NACTermNpotgSS.getDepositAmount()),
+                "Security deposit amount is displayed correctly in one time fees section","Security deposit amount is not displayed correctly in one time fees section");
         String purchaseIncludesConfrimation=getRogersNACOrderConfirmationPage().getPurchaseIncludesText();
         reporter.reportLogPassWithScreenshot("Purchase includes captured as" + "-->" +purchaseIncludesConfrimation);
   }

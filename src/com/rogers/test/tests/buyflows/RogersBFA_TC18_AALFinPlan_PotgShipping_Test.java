@@ -10,6 +10,11 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
+/**
+ * TC18 - Rogers Add a line by selecting financing plan with PRO ON THE GO shipping option - E2E
+ * @author praveen.kumar7
+ */
+
 public class RogersBFA_TC18_AALFinPlan_PotgShipping_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)
@@ -18,7 +23,7 @@ public class RogersBFA_TC18_AALFinPlan_PotgShipping_Test extends BaseTestClass {
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA", "SanityBFA"})
+    @Test(groups = {"RegressionBFA", "SanityBFA", "AALBFA"})
     public void rogersAalFinPlanPotgTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");

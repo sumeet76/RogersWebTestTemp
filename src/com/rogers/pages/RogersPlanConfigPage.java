@@ -576,6 +576,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void clickCartSummaryContinueButton() {
+        clickGetBPOOffer();
         getReusableActionsInstance().javascriptScrollByVisibleElement(continueButtonOnCartSummary);
         getReusableActionsInstance().executeJavaScriptClick(continueButtonOnCartSummary);
         clickGetBPOOffer();

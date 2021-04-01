@@ -10,6 +10,11 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
+/**
+ * TC21 - Rogers Add a line BYOD with EXPRESS PICKUP shipping option - E2E
+ * @author praveen.kumar7
+ */
+
 public class RogersBFA_TC21_AAL_BYOD_BopisShipping_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)

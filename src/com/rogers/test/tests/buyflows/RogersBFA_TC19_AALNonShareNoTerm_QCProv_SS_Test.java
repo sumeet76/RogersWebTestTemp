@@ -10,6 +10,11 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
+/**
+ * TC19 - Rogers Add a line by selecting Non share option and No term tier for QC account - E2E
+ * @author praveen.kumar7
+ */
+
 public class RogersBFA_TC19_AALNonShareNoTerm_QCProv_SS_Test extends BaseTestClass{
 
     @Test(groups = {"RegressionBFA", "SanityBFA", "AALBFA"})

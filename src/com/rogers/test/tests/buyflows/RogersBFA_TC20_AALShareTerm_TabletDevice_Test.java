@@ -10,9 +10,14 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
+/**
+ * TC20 - Rogers Add a line by selecting TABLET device - E2E
+ * @author praveen.kumar7
+ */
+
 public class RogersBFA_TC20_AALShareTerm_TabletDevice_Test extends BaseTestClass {
 
-    @Test(groups = {"RegressionBFA", "SanityBFA"})
+    @Test(groups = {"RegressionBFA", "SanityBFA", "AALBFA"})
     public void rogersAalTabletTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");

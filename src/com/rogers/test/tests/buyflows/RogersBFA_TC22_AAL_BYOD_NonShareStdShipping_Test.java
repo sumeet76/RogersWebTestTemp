@@ -10,6 +10,11 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
+/**
+ * TC22 - Rogers Add a line with by selecting Non share option and Standard shipping - E2E
+ * @author praveen.kumar7
+ */
+
 public class RogersBFA_TC22_AAL_BYOD_NonShareStdShipping_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)
@@ -18,7 +23,7 @@ public class RogersBFA_TC22_AAL_BYOD_NonShareStdShipping_Test extends BaseTestCl
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA", "SanityBFA"})
+    @Test(groups = {"RegressionBFA", "SanityBFA", "AALBFA"})
     public void rogersAalByodNonShareStdShippingTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");

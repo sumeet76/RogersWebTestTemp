@@ -154,6 +154,21 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//ds-modal-container//p[contains(text(),'Credit Evaluation')]")
 	WebElement txtCreditEval;
 
+	@FindBy(xpath = "//ds-modal-container//div[@data-state='SECURITY_DEPOSIT']")
+	WebElement claSecurityDepositModal;
+
+	@FindBy(xpath = "//ds-modal-container//p[contains(.,'you will need to pay') or contains(.,'un dépôt de garantie')]")
+	WebElement txtSecurityDeposit;
+
+	@FindBy(xpath = "((//div[@data-state='SECURITY_DEPOSIT']//div)[2]//p)[3]")
+	WebElement depositAmt;
+
+	@FindBy(xpath = "//div[@data-test='modal-credit-evaluation-cla']//p[contains(.,'$300.00 credit limit') or contains(.,'de crédit de 300,00 $')]")
+	WebElement txtCla;
+
+	@FindBy(xpath = "//button[@title='I Accept' or contains(@title,'accepte')]")
+	WebElement acceptButton;
+
 	@FindBy(xpath = "//*[@id='ds-stepper-id-2-completedContent-1']//div[@class='w-100']/p")
 	WebElement identificationLabel;
 	
@@ -321,6 +336,21 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public String getOneTimeFeeAfterTax() { return oneTimeFeeAfterTax.getText().replaceAll("\\n",""); }
+
+	/**
+	 * Verifies the security depopist amount in one time fees section
+	 * @param depositAmount security deposit amount from yml file
+	 * @return true if deposit amount is displayed correctly in one time fees section, else false
+	 * @author praveen.kumar7
+	 */
+	public boolean verifyOneTimeFeesAfterSecDeposit(String depositAmount) {
+		getReusableActionsInstance().scrollToElement(oneTimeFeeAfterTax);
+		if(oneTimeFeeAfterTax.getText().replaceAll("\\n","").contains(depositAmount)) {
+			return true;
+		}
+		else
+			return false;
+	}
 
 	/**
 	 * This method will get the purchase includes section displayed below the cart summary
@@ -688,6 +718,54 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public boolean isCreditEvalTextOnModalPresent() { return getReusableActionsInstance().isElementVisible(txtCreditEval); }
+
+	/**
+	 * Verifies if CLA/Security Deposit modal is present after credit evaluation
+	 * @return true if modal is present, else false
+	 * @author praveen.kumar7
+	 */
+	public boolean verifyClaSecurityDepositModalPresent() {
+		return getReusableActionsInstance().isElementVisible(claSecurityDepositModal, 30);
+	}
+
+	/**
+	 * Verifies if Security Deposit content is present in the CLA/Security Deposit modal
+	 * @return true if security deposit content is displayed, else false
+	 * @author praveen.kumar7
+	 */
+	public boolean verifySecurityDepositTextPresent() {
+		return getReusableActionsInstance().isElementVisible(txtSecurityDeposit);
+	}
+
+	/**
+	 * This method verifies if security deposit amount is displayed properly
+	 * @param depositAmount security deposit amount from yml file
+	 * @return true if deposit is displayed correctly, else false
+	 * @author praveen.kumar7
+	 */
+	public boolean verifySecurityDepositAmount(String depositAmount) {
+		if(getReusableActionsInstance().getWhenReady(depositAmt).getText().trim().contains(depositAmount)) {
+			return true;
+		}
+		else return false;
+	}
+
+	/**
+	 * This method verifies if CLA text is displayed properly
+	 * @return true if CLA text is displayed correctly, else false
+	 * @author praveen.kumar7
+	 */
+	public boolean verifyClaTextOnModal() {
+		return getReusableActionsInstance().isElementVisible(txtCla);
+	}
+
+	/**
+	 * This method clicks on the Accpet button in security deposit modal
+	 * @author praveen.kumar7
+	 */
+	public void clkAcceptButton() {
+		getReusableActionsInstance().clickWhenReady(acceptButton, 30);
+	}
 
 	/**
 	 * To return true if the express location map is available else false

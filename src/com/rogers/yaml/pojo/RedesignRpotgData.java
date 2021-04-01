@@ -21,6 +21,7 @@ public class RedesignRpotgData {
 	private String postalCode;
 	private String paymentMethod;
 	private String creditCardDetailsOTP;
+	private String depositAmount;
 
 	public String getCreditCardDetailsOTP() {
 		return creditCardDetailsOTP;
@@ -185,6 +186,10 @@ public class RedesignRpotgData {
 	public void setBillingNameOnCard(String billingNameOnCard) {
 		this.billingNameOnCard = billingNameOnCard;
 	}
+
+	public String getDepositAmount() { return depositAmount; }
+
+	public void setDepositAmount(String depositAmount) { this.depositAmount = depositAmount; }
     
 	
 }

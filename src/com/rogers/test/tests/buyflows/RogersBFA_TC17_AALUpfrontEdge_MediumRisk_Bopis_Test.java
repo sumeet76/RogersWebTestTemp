@@ -10,7 +10,12 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class RogersBFA_TC17_AALShareTerm_BopisShipping_Test extends BaseTestClass {
+/**
+ * TC17 - Rogers Add a line with BOPIS shipping option - E2E
+ * @author praveen.kumar7
+ */
+
+public class RogersBFA_TC17_AALUpfrontEdge_MediumRisk_Bopis_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -18,7 +23,7 @@ public class RogersBFA_TC17_AALShareTerm_BopisShipping_Test extends BaseTestClas
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA", "SanityBFA"})
+    @Test(groups = {"RegressionBFA", "SanityBFA", "AALBFA"})
     public void rogersAalTermBopisTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
