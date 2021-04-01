@@ -73,7 +73,7 @@ public class Mobile_RogersSS_TC_051_ChangePassword extends BaseTestClass {
 
     private void tryLogin(String strUsername, String strPassword) {
         getRogersLoginPage().setUsernameIFrame(strUsername);
-        getRogersLoginPage().setPasswordIFrame(strPassword);
+        getRogersLoginPage().setPasswordIFrameMobile(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
         getRogersLoginPage().clkSignInIFrame();
 

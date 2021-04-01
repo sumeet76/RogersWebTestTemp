@@ -53,7 +53,7 @@ public class RogersSS_TC_043_AO_ValidateCHaccountBadge_IgniteRHP extends BaseTes
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc43IgniteRHP.accountDetails.getBan());
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Login Success","Login Failed");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-        getRogersSolarisRHPDashboardPage().clkSolarisRHPBadge(xmlTestParameters.get("strBrowser"));
+        getRogersSolarisRHPDashboardPage().clkSolarisRHPBadge(System.getProperty("test_browser"));
         reporter.reportLogWithScreenshot("Clicked on RHP badge");
         reporter.hardAssert(getRogersSolarisRHPDashboardPage().verifyConfigureYourCurrentFeatures(),
         		"Verification of Configure Your Current Features link is success",
