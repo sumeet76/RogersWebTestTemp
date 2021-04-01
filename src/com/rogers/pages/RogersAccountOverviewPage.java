@@ -2085,7 +2085,7 @@ public boolean verifyPTPWidgetIsDisplayed() {
 				(By.xpath("//span[contains(@data-translate-values,'" + strLast4DigAcctNum + "') or contains(text(),'" + strLast4DigAcctNum + "')]")),
 				10);
 	}
-}
+
 	public boolean verifyIfEffectiveCancelDateForSubscriptionISImmediate(String test_language) {
 		String cancelledEndDate= getReusableActionsInstance().getWhenReady(lblSMPpromotionEnded).getText();
 		cancelledEndDate = cancelledEndDate.split("ended")[1].trim();
@@ -2111,7 +2111,7 @@ public boolean verifyPTPWidgetIsDisplayed() {
 
 
 
-}
+
 	public boolean verifyIfTheOrderOfTheCancelledCTNsWillBeDisplayedBasedOnEffectiveCancelDatesForImmediateAndDeferredCancelledCTNs() {
 
 
