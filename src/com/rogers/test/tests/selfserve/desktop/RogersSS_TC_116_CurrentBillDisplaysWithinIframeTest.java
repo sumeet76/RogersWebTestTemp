@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class RogersSS_TC_003_CurrentBillDisplaysWithinIframeTest extends BaseTestClass {
+public class RogersSS_TC_116_CurrentBillDisplaysWithinIframeTest extends BaseTestClass {
 
     @Test(groups = {"RegressionSS","BillingAndPaymentsSS"})
     public void currentBillDisplaysWithinIframeTest() {
