@@ -29,7 +29,7 @@ import utils.CSVReader;
  */
 public class RogersSearch_CBS_1681_Color_Facet_Testing_Test extends BaseTestClass {
 
-    @Test(groups = {"Search", "Filter"})
+    @Test(groups = {"Search", "Filter", "Multilingual"})
     public void validateColorFilterSelection() {
         List<String> strColorFilters;
         getDriver().get(System.getProperty("SearchUrl") + "wireless");
