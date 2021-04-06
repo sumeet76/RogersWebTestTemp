@@ -23,52 +23,39 @@ import utils.CSVReader;
 
 public class RogersSearch_CBS_1685_Size_Filter_Validation_Test extends BaseTestClass {
 
-
-	@DataProvider(name = "FilterData",parallel=false)
-	public Object[] testData() throws IOException
-	{
-		String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataSizeFilter.csv";
-		List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
-		Object[] csvRow = new Object[csvData.size()];
-		 
-        for(int i =0; i < csvData.size();i++){
-        	csvRow[i] = csvData.get(i);
+    @DataProvider(name = "FilterData", parallel = false)
+    public Object[] testData() throws IOException {
+        String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataSizeFilter.csv";
+        List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
+        Object[] csvRow = new Object[csvData.size()];
+        for (int i = 0; i < csvData.size(); i++) {
+            csvRow[i] = csvData.get(i);
         }
- 
         return csvRow;
-		 
-		
-	}
-	
-	@Test(dataProvider = "FilterData",groups={"Search","Filter"})
-	
-	public void validateSizeFilterSelection(String[] csvRow) {
-	getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
-		getRogersSearchPage().isPageLoaded();
-		getRogersSearchPage().waitTime();
-	getRogersSearchPage().clkShopAndThenWirelessFilter();
-	reporter.reportLogWithScreenshot("Shop and Wireless Filters clicked");
+    }
 
-	reporter.hardAssert(getRogersSearchPage().verifyResultsSizeLabelWithSelectedSize(), "Size label displayed correctly", "Size label not displayed correctly");
-				
-				
-	}
+    @Test(dataProvider = "FilterData", groups = {"Search", "Filter"})
+    public void validateSizeFilterSelection(String[] csvRow) {
+        getDriver().get(System.getProperty("SearchUrl") + csvRow[0]);
+        getRogersSearchPage().isPageLoaded();
+        getRogersSearchPage().clkShopFilter();
+        reporter.reportLogWithScreenshot("Shop Filter clicked");
+        getRogersSearchPage().clkWirelessFilter();
+        reporter.reportLogWithScreenshot("Wireless Filter clicked");
+        reporter.hardAssert(getRogersSearchPage().verifyResultsSizeLabelWithSelectedSize(), "Size label displayed correctly", "Size label not displayed correctly");
+    }
 
+    @BeforeMethod(alwaysRun = true)
+    @Parameters({"strBrowser", "strLanguage"})
+    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
+        xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+        startSession(System.getProperty("SearchUrl") , strBrowser, strLanguage, RogersEnums.GroupName.search, method);
+    }
 
-
-	@BeforeMethod(alwaysRun = true)
-	@Parameters({"strBrowser", "strLanguage"})
-	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(System.getProperty("SearchUrl") + "wireless", strBrowser, strLanguage, RogersEnums.GroupName.search, method);
-	}
-
-	@AfterMethod(alwaysRun = true)
-	public void afterTest() {
-		closeSession();
-	}
-	
-	
+    @AfterMethod(alwaysRun = true)
+    public void afterTest() {
+        closeSession();
+    }
 }
 
 
