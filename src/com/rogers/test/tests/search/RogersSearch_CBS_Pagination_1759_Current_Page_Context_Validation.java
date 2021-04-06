@@ -51,7 +51,7 @@ public class RogersSearch_CBS_Pagination_1759_Current_Page_Context_Validation ex
         getRogersSearchPage().enterTextToBeSearched(csvRowStrArray[0]);
         reporter.reportLogWithScreenshot("Search string " + csvRowStrArray[0] + " is entered in the search text box");
         getRogersSearchPage().clickSubmitSearchIcon();
-        getRogersSearchPage().waitTime();
+        getRogersSearchPage().isPageLoaded();
         reporter.reportLogPass(getRogersSearchPage().getSearchResults() + " are displayed");
         reporter.softAssert(getRogersSearchPage().isFirstPageNumberHighlighted(),"First page is highlighted under pagination", "First page is not highlighted under pagination");
         message =getRogersSearchPage().selectPageTwo();

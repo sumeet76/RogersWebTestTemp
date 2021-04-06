@@ -5,75 +5,100 @@ import com.rogers.test.helpers.RogersEnums;
 import org.openqa.selenium.WebElement;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
+import utils.CSVReader;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
 public class RogersSearch_CBS_1701_ResetAllFilters_Button_Test extends BaseTestClass {
+    @DataProvider(name = "FilterData", parallel = false)
+    public Object[] testData() throws IOException {
+        String csvFileName = null;
+        if (System.getProperty("Language").equalsIgnoreCase("en"))
+            csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
+        else if (System.getProperty("Language").equalsIgnoreCase("fr"))
+            csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataFR.csv";
+        List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
+        Object[] csvRowStrArray = new Object[csvData.size()];
+        for (int i = 0; i < csvData.size(); i++) {
+            csvRowStrArray[i] = csvData.get(i);
+        }
+        return csvRowStrArray;
+    }
 
-	@Test(groups={"Search","Filter"})
-	public void validateParentFilterDeselection() {
+    @Test(dataProvider = "FilterData", groups = {"Search", "Filter"})
+    public void validateParentFilterDeselection(String[] csvRowStrArray) {
+        List<String> strColorFilters;
+        String[] strFilters;
+        String gpfilter, pfilter;
+        List<String> strSizeOptions;
+        String resultAfterReset, resultBeforeReset;
+        int i = 0;
+        reporter.reportLogWithScreenshot("Search URL is launched");
+        getRogersSearchPage().isPageLoaded();
+        reporter.reportLogWithScreenshot("Page is loaded");
+        getRogersSearchPage().clickSearchIcon();
+        getRogersSearchPage().enterTextToBeSearched(csvRowStrArray[0]);
+        reporter.reportLogWithScreenshot("Search string " + csvRowStrArray[0] + " is entered in the search text box");
+        getRogersSearchPage().clickSubmitSearchIcon();
+        getRogersSearchPage().waitTime();
+        resultBeforeReset = getRogersSearchPage().numberOfResults();
+        gpfilter = getRogersSearchPage().clkShopFilter();
+        reporter.reportLogWithScreenshot(gpfilter + " Filter clicked");
+        pfilter = getRogersSearchPage().clkWirelessFilter();
+        reporter.reportLogWithScreenshot(pfilter + " Filter clicked");
+        strColorFilters = getRogersSearchPage().getColorFilters();
+        getRogersSearchPage().clkColorType(strColorFilters.get(i));
+        reporter.reportLogWithScreenshot(strColorFilters.get(i) + ": Color is selected");
+        getRogersSearchPage().isPageLoaded();
+        getRogersSearchPage().clkResetAllFilters();
+        getRogersSearchPage().waitTime();
+        reporter.reportLogWithScreenshot("Reset All Filters button clicked");
+        resultAfterReset = getRogersSearchPage().numberOfResults();
+        reporter.hardAssert(getRogersSearchPage().validateAllFiltersCollapsed(),
+                "All Filters are Reset", "Filters Not Reset");
+        reporter.softAssert(getRogersSearchPage().filterCount(),"Filter Count is set to 0", "Filter count is not set to 0");
+        reporter.hardAssert(getRogersSearchPage().stringMatch(resultBeforeReset, resultAfterReset), "Results refreshed", "Results not refreshed");
+        strFilters = Arrays.copyOfRange(csvRowStrArray, 1, csvRowStrArray.length);
+        reporter.softAssert(getRogersSearchPage().verifyResultsCategoryTagRelevancy(strFilters),
+                "Relevant Results tags Displayed are displayed on the landing page for the search filters", "Relevant Results tags are not displayed on the landing page for the search filters");
+        resultBeforeReset = getRogersSearchPage().numberOfResults();
+        gpfilter = getRogersSearchPage().clkShopFilter();
+        reporter.reportLogWithScreenshot(gpfilter + " Filter clicked");
+        pfilter = getRogersSearchPage().clkWirelessFilter();
+        reporter.reportLogWithScreenshot(pfilter + " Filter clicked");
+        getRogersSearchPage().clkWatchDeviceType();
+        reporter.reportLogWithScreenshot("Selected device Watch");
+        strSizeOptions = getRogersSearchPage().getSizeSelections();
+        reporter.hardAssert(strSizeOptions.size() != 0, "Size Options Available", "Size Options Unavailable");
+        for (int j = 0; i < strSizeOptions.size(); i++) {
+            getRogersSearchPage().clkSizeType(strSizeOptions.get(i));
+            reporter.reportLogWithScreenshot("Size: " + strSizeOptions.get(i) + " is selected");
+        }
+        getRogersSearchPage().clkResetAllFilters();
+        reporter.reportLogWithScreenshot("Reset All Filters button clicked");
+        resultAfterReset = getRogersSearchPage().numberOfResults();
+        reporter.hardAssert(getRogersSearchPage().validateAllFiltersCollapsed(),
+                "All Filters are Reset", "Filters Not Reset");
+        reporter.softAssert(getRogersSearchPage().filterCount(),"Filter Count is set to 0", "Filter count is not set to 0");
+        reporter.hardAssert(getRogersSearchPage().stringMatch(resultBeforeReset, resultAfterReset), "Results refreshed", "Results not refreshed");
+        strFilters = Arrays.copyOfRange(csvRowStrArray, 1, csvRowStrArray.length);
+        reporter.softAssert(getRogersSearchPage().verifyResultsCategoryTagRelevancy(strFilters),
+                "Relevant Results tags Displayed are displayed on the landing page for the search filters", "Relevant Results tags are not displayed on the landing page for the search filters");
+    }
 
-		List<String> strStorageOptions;
-		List<String> strColorOptions;
-		getDriver().get(System.getProperty("SearchUrl")+"wireless");
-		getRogersSearchPage().isPageLoaded();
-		getRogersSearchPage().waitTime();
-		String resultBeforeReset = getRogersSearchPage().numberOfResults();
-		getRogersSearchPage().clkGrandParentFilter("Support");
-		reporter.hardAssert(getRogersSearchPage().isGrandParentFilterExpanded("Support"),
-				"Support filter expanded","Support filter expanded");
-		getRogersSearchPage().clkParentFilter("Support","Billing/Accounts");
-	//	reporter.hardAssert(getRogersSearchPage().isParentFilterExpanded("Support","Billing/Accounts"),
-			//	"Billing/Accounts filter expanded","Billing/Accounts filter expanded");
-		reporter.hardAssert(getRogersSearchPage().validateResultsTag("Support","Billing/Accounts")
-				,"Results' tags verified", "Results' tags mismatch");
-		reporter.reportLogWithScreenshot("Support-Billing/Accounts Expanded");
-		getRogersSearchPage().clkResetAllFilters();
-		reporter.reportLogWithScreenshot("Reset All Filters button clicked");
-		getRogersSearchPage().isPageLoaded();
-		String resultAfterReset = getRogersSearchPage().numberOfResults();
-		reporter.hardAssert(getRogersSearchPage().validateAllFiltersCollapsed(),
-				"All Filters are Reset","Filters Not Reset");
-		reporter.hardAssert(getRogersSearchPage().stringMatch(resultBeforeReset,resultAfterReset), "Results refreshed", "Results not refreshed");
-			reporter.hardAssert(getRogersSearchPage().validateResultsTag("Shop"),
-				"All Results Refreshed","Results Not Refreshed");
-		getRogersSearchPage().clkGrandParentFilter("Shop");
-		reporter.hardAssert(getRogersSearchPage().isGrandParentFilterExpanded("Shop"),
-				"Shop filter expanded","Shop filter expanded");
-		getRogersSearchPage().clkParentFilter("Shop","Wireless");
-		//reporter.hardAssert(getRogersSearchPage().isParentFilterExpanded("Shop","Wireless"),
-		//		"Wireless filter expanded","Wireless filter expanded");
-		getRogersSearchPage().clkDeviceType("Smartphone");
-		reporter.reportLogWithScreenshot("Smartphone clicked");
-		getRogersSearchPage().clkBrandType("Apple");
-		reporter.reportLogWithScreenshot("Apple clicked");
-		strStorageOptions = getRogersSearchPage().getStorageSelections();
-		getRogersSearchPage().clkStorageType(strStorageOptions.get(0));
-		strColorOptions = getRogersSearchPage().getColorSelections();
-		getRogersSearchPage().clkColorType(strColorOptions.get(0));
-		reporter.reportLogWithScreenshot("Device:Smartphone; Brand:Apple; Storage:" + strStorageOptions.get(0)
-				+"; Color:" + strColorOptions.get(0) + " is Selected");
-		getRogersSearchPage().clkResetAllFilters();
-		reporter.reportLogWithScreenshot("Reset All Filters button clicked");
-		reporter.hardAssert(getRogersSearchPage().validateAllFiltersCollapsed(),
-				"All Filters are Reset","Filters Not Reset");
-		reporter.hardAssert(getRogersSearchPage().validateResultsTag("Shop"),
-				"All Results Refreshed","Results Not Refreshed");
-	}
+    @BeforeMethod(alwaysRun = true)
+    @Parameters({"strBrowser", "strLanguage"})
+    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
+        xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+        startSession(System.getProperty("SearchUrl") + "wireless", strBrowser, strLanguage, RogersEnums.GroupName.search, method);
+    }
 
-	@BeforeMethod(alwaysRun = true)
-	@Parameters({"strBrowser", "strLanguage"})
-	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(System.getProperty("SearchUrl") + "wireless", strBrowser, strLanguage, RogersEnums.GroupName.search, method);
-	}
-
-	@AfterMethod(alwaysRun = true)
-	public void afterTest() {
-		closeSession();
-	}
-
+    @AfterMethod(alwaysRun = true)
+    public void afterTest() {
+        closeSession();
+    }
 }

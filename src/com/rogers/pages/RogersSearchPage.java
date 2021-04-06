@@ -32,7 +32,7 @@ public class RogersSearchPage extends BasePageClass {
     @FindBy(xpath = "//button[@title='Close search']")
     WebElement txtSearchCloseIcon;
 
-    @FindBy(xpath = "//app-search-noresults//span[contains(text(),'Sorry! No results found on')]")
+    @FindBy(xpath = "//span[@class='text-title-5 dsa-promoBlock__headingCopy mb-0']")
     WebElement lblNoResultsMsg;
 
     @FindBy(xpath = "//div[@ng-reflect-heading='Suggestions']/parent::section/parent::div/section[1]/div")
@@ -50,15 +50,15 @@ public class RogersSearchPage extends BasePageClass {
     @FindBy(xpath = "//div[@ng-reflect-heading='Suggestions']/parent::section//a")
     List<WebElement> suggestionsSectionLinks;
 
+    @FindBy(xpath = "//span[@class='text-overline mb-0']/following-sibling::span")
+    WebElement filterCount;
+
     @FindBy(xpath = "//div[@class='resultList']/div[1]")
     WebElement resultsCount;
 
     @FindBy(xpath = "//dsa-selector[@data-test='storage-selector']//span[@class='dsa-selector__header text-title-5']/following-sibling::span")
     WebElement lblStorageValue;
 
-    /**
-     * @author naina.agarwal
-     */
     @FindBy(xpath = "//span[@class='m-navLink__icon rds-icon-search -open']")
     WebElement searchTextIcon;
 
@@ -129,7 +129,13 @@ public class RogersSearchPage extends BasePageClass {
 
     public static final By allResultLinksTitle = By.xpath("//a[contains(@id,'searchtitle')]");
 
-    public static final By allColorsInFilter =By.xpath("//span[contains(@class,'checkbox-color-copy')]");
+    public static final By allColorsInFilter = By.xpath("//span[contains(@class,'checkbox-color-copy')]");
+
+    public static final By allLinksInResults = By.xpath("//span[contains(@class,'categorylbl')]/preceding-sibling::a");
+
+    public static final By filterSection = By.xpath("//div[@class='ds-filter']");
+
+    public static final By watchSize = By.xpath("//input[contains(@id,'size')]");
 
     Boolean isPagePresent = true;
     JavascriptExecutor js = null;
@@ -155,6 +161,10 @@ public class RogersSearchPage extends BasePageClass {
         return getReusableActionsInstance().isElementVisible(
                 By.xpath("//div[@class='ds-filter__listSet']/div/button/div/p[starts-with(text(),'"
                         + strFilterName + "')]"));
+    }
+
+    public boolean isFilterSectionDisplayed() {
+        return getReusableActionsInstance().isElementVisible(filterSection);
     }
 
     /**
@@ -252,13 +262,8 @@ public class RogersSearchPage extends BasePageClass {
      * @author pankaj.patil
      */
 
-    public void clkShopAndThenWirelessFilter() {
-        getReusableActionsInstance().clickWhenReady(By.xpath("//button[contains(@id,'Shop-heading')]"));
-        getReusableActionsInstance().clickWhenReady(By.xpath("//div[contains(@id,'Shop-body')]/div/button[contains(@id,'Wireless-heading')]"));
-    }
-
-    public boolean validateResultsLinks(String strGrandParentFilter, String strParentFilter) {
-        List<WebElement> resultlinks = getDriver().findElements(By.xpath("//app-search-results//span[contains(@class,'categorylbl')]/preceding-sibling::a"));
+    public boolean validateResultsLinks() {
+        List<WebElement> resultlinks = getDriver().findElements(allLinksInResults);
         for (int counter = 0; counter < resultlinks.size(); counter++) {
             if (!(resultlinks.get(counter).getAttribute("href").equals(""))) {
                 return true;
@@ -381,17 +386,17 @@ public class RogersSearchPage extends BasePageClass {
 
     public List<String> getColorSelections() {
         List<String> strColorSelections = new ArrayList<>();
-        List<WebElement> chkColorSelections = getDriver().findElements(By.xpath("//input[@name='color']"));
+        List<WebElement> chkColorSelections = getDriver().findElements(allColorsInFilter);
         for (int i = 0; i < chkColorSelections.size(); i++) {
-            strColorSelections.add(chkColorSelections.get(i).getAttribute("value"));
+            strColorSelections.add(chkColorSelections.get(i).getText());
         }
         return strColorSelections;
     }
 
     public void clkStorageType(String strStorage) {
         WebDriverWait wait = new WebDriverWait(getDriver(), 1000);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ds-checkbox[contains(@id,'" +strStorage +"-host')]")));
-        WebElement element = getDriver().findElement(By.xpath("//ds-checkbox[contains(@id,'" +strStorage +"-host')]"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ds-checkbox[contains(@id,'" + strStorage + "-host')]")));
+        WebElement element = getDriver().findElement(By.xpath("//ds-checkbox[contains(@id,'" + strStorage + "-host')]"));
         Actions action = new Actions(getDriver());
         action.moveToElement(element).click().build().perform();
         isPageLoaded();
@@ -406,8 +411,9 @@ public class RogersSearchPage extends BasePageClass {
         int attempt = 0;
         while (attempt < 2) {
             try {
-                getReusableActionsInstance().javascriptScrollToTopOfPage();
-                getReusableActionsInstance().clickWhenReady(By.xpath("//span[contains(@class,'color') and starts-with(text(),'" + strColor + "')]"));
+                WebElement element = getDriver().findElement(By.xpath("//span[contains(@class,'color') and starts-with(text(),'" + strColor + "')]"));
+                getReusableActionsInstance().scrollToElement(element);
+                getReusableActionsInstance().clickWhenReady(element);
                 isPageLoaded();
                 break;
             } catch (StaleElementReferenceException e) {
@@ -448,9 +454,25 @@ public class RogersSearchPage extends BasePageClass {
     }
 
     public void clkDeviceType(String strDeviceType) {
-        //getReusableActionsInstance().javascriptScrollToTopOfPage();
+        getReusableActionsInstance().javascriptScrollToTopOfPage();
         getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@id='Shop_Wireless_devicetype_" + strDeviceType + "-host']"));
         getReusableActionsInstance().staticWait(1000);
+    }
+
+    public void clkWatchDeviceType() {
+        String strDeviceType = null;
+        getReusableActionsInstance().javascriptScrollToTopOfPage();
+        String language = getSystemLanguage();
+        switch (language) {
+            case "en":
+                strDeviceType = "Watch";
+                break;
+            case "fr":
+                strDeviceType = "la montre";
+                break;
+        }
+        getReusableActionsInstance().clickWhenReady(By.xpath("//div[contains(@id, 'devicetype_" + strDeviceType + "-label-container')]"));
+        isPageLoaded();
     }
 
     public void clkBrandType(String strBrandType) {
@@ -460,14 +482,14 @@ public class RogersSearchPage extends BasePageClass {
     }
 
     public void clkSizeType(String strSize) {
-        getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='" + strSize + "']"));
+        getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[contains (@id, 'size_" + strSize + "')]"));
         getReusableActionsInstance().javascriptScrollToTopOfPage();
-        getReusableActionsInstance().staticWait(1500);
+        isPageLoaded();
     }
 
     public List<String> getSizeSelections() {
         List<String> strSizeSelections = new ArrayList<>();
-        List<WebElement> chkSizeSelections = getDriver().findElements(By.xpath("//input[contains(@id,'size')]"));
+        List<WebElement> chkSizeSelections = getDriver().findElements(watchSize);
         for (int i = 0; i < chkSizeSelections.size(); i++) {
             strSizeSelections.add(chkSizeSelections.get(i).getAttribute("value"));
         }
@@ -503,7 +525,13 @@ public class RogersSearchPage extends BasePageClass {
     }
 
     public boolean isNoResultsDisplayed() {
-        return getReusableActionsInstance().isElementVisible(lblNoResultsMsg);
+        boolean noResult = false;
+        String message = null;
+        boolean noResultIsVisible = getReusableActionsInstance().isElementVisible(lblNoResultsMsg);
+        if (noResultIsVisible)
+            message = getReusableActionsInstance().getElementText(lblNoResultsMsg);
+        if (message != null) noResult = true;
+        return noResult;
     }
 
     public void hoverSuggestionsType(String strSuggestions) {
@@ -564,6 +592,15 @@ public class RogersSearchPage extends BasePageClass {
         String part1 = parts[0];
         String strQuery = "f=" + strGrandParentFilter.trim() + "_" + part1.trim();
         return validateURLContains(strQuery);
+    }
+
+    public boolean filterCount() {
+        String filterCountInFilterSection = null;
+        filterCountInFilterSection = getReusableActionsInstance().getElementText(filterCount).trim();
+        if((filterCountInFilterSection!=null && filterCountInFilterSection.contains("(0)"))) {
+            return  true;
+        }
+        return false;
     }
 
     public boolean validateDeviceTypesInUrl(String[] strDeviceType) throws UnsupportedEncodingException {
@@ -711,13 +748,15 @@ public class RogersSearchPage extends BasePageClass {
 
     public String clkShopFilter() {
         String filter = null;
+        Actions act = new Actions(getDriver());
         String language = getSystemLanguage();
         if (language.equalsIgnoreCase("en"))
             filter = "Shop";
         else if (language.equalsIgnoreCase("fr"))
             filter = "Magasiner";
         if (filter != null)
-            getReusableActionsInstance().clickWhenReady(By.xpath("//button[contains(@id,'" + filter + "-heading')]"), 5);
+            act.moveToElement(getDriver().findElement(By.xpath("//button[contains(@id,'" + filter + "-heading')]"))).click().perform();
+        //  getReusableActionsInstance().clickWhenReady(By.xpath("//button[contains(@id,'" + filter + "-heading')]"), 5);
         isPageLoaded();
         return filter;
     }
@@ -740,7 +779,7 @@ public class RogersSearchPage extends BasePageClass {
     }
 
     public String getSelectedStorage() {
-        return lblStorageValue.getText().trim().replace(" ","");
+        return lblStorageValue.getText().trim().replace(" ", "");
     }
 
     public boolean stringMatch(String a, String b) {
