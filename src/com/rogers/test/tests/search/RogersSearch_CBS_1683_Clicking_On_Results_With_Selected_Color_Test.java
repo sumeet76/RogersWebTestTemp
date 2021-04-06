@@ -13,7 +13,7 @@ import java.util.List;
 
 public class RogersSearch_CBS_1683_Clicking_On_Results_With_Selected_Color_Test extends BaseTestClass {
 
-    @Test(groups = {"Search", "Filter"})
+    @Test(groups = {"Search", "Filter", "Multilingual"})
     public void validateResultsWithSelectedColors() {
         List<WebElement> resultLinks;
         String strDeviceName;
