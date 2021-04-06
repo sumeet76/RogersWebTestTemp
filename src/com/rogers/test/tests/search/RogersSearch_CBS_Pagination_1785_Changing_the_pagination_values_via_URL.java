@@ -44,7 +44,7 @@ public class RogersSearch_CBS_Pagination_1785_Changing_the_pagination_values_via
         String message=null;
         List<WebElement> resultLinks;
         reporter.reportLogWithScreenshot("Search URL is launched");
-        getRogersSearchPage().waitTime();
+        getRogersSearchPage().isPageLoaded();
         reporter.reportLogWithScreenshot("Page is loaded");
         getRogersSearchPage().clickSearchIcon();
         getRogersSearchPage().enterTextToBeSearched(csvRowStrArray[0]);
