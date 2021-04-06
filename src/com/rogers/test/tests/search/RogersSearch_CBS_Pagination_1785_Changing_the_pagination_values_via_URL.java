@@ -24,7 +24,7 @@ import java.util.List;
  **/
 public class RogersSearch_CBS_Pagination_1785_Changing_the_pagination_values_via_URL extends BaseTestClass {
 
-    @DataProvider(name = "FilterData", parallel = false)
+    @DataProvider(name = "FilterData", parallel = true)
     public Object[] testData() throws IOException {
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);

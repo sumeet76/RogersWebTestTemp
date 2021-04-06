@@ -26,7 +26,7 @@ import java.util.List;
  **/
 public class RogersSearch_CBS_Pagination_1962_Province_Toggling_Functioning extends BaseTestClass {
 
-    @DataProvider(name = "FilterData", parallel = false)
+    @DataProvider(name = "FilterData", parallel = true)
     public Object[] testData() throws IOException {
         String csvFileName=null;
         if(System.getProperty("Language").equalsIgnoreCase("en"))

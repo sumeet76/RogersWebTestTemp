@@ -27,7 +27,7 @@ import java.util.List;
  **/
 public class RogersSearch_CBS_Pagination_1769_Changing_Page_Size_Validation extends BaseTestClass {
 
-    @DataProvider(name = "FilterData", parallel = false)
+    @DataProvider(name = "FilterData", parallel = true)
     public Object[] testData() throws IOException {
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
