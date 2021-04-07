@@ -14,7 +14,7 @@ import java.util.List;
 
 public class RogersSearch_CBS_1704_URL_Persist_Selected_State_Test extends BaseTestClass {
 
-	@Test(groups={"Search","Filter"})
+	@Test(groups={"Filter"})
 	public void validateParentFilterDeselection() throws UnsupportedEncodingException {
 
 		String[] strDeviceType = {"Smartphone"};
