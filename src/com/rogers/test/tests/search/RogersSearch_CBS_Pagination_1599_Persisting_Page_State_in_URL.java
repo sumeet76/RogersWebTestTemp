@@ -25,7 +25,7 @@ import java.util.List;
  **/
 public class RogersSearch_CBS_Pagination_1599_Persisting_Page_State_in_URL extends BaseTestClass {
 
-    @DataProvider(name = "FilterData", parallel = false)
+    @DataProvider(name = "FilterData", parallel = true)
     public Object[] testData() throws IOException {
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
@@ -41,7 +41,6 @@ public class RogersSearch_CBS_Pagination_1599_Persisting_Page_State_in_URL exten
     public void contextPageValidation(String[] csvRowStrArray)
     {
         String url,message,randomPageSize;
-        reporter.reportLogWithScreenshot("Search URL is launched");
         getRogersSearchPage().isPageLoaded();
         reporter.reportLogWithScreenshot("Page is loaded");
         getRogersSearchPage().clickSearchIcon();
