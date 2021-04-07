@@ -77,7 +77,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	@FindBy(xpath = "//button[@id='add-themepack-button']")
 	List<WebElement> addThemePackListOnManageChannelsAndThemePacks;
 	
-	@FindBy(xpath = "//h3[@class='themepack-detail__header']//span[contains(text(),'Sports Lite')]/ancestor::div[@class='themepack-detail channels-container']//span[@translate='global.cta.add']/ancestor::button")
+	@FindBy(xpath = "//h3[@class='themepack-detail__header']//span[contains(text(),'Hollywood Suite')]/ancestor::div[@class='themepack-detail channels-container']//span[@translate='global.cta.add']/ancestor::button")
 	WebElement addThemePackClassicTVThemePacks;
 	//h3[@class='themepack-detail__header']//span[contains(text(),'Classic TV & Movies')]/ancestor::div[@class='themepack-detail channels-container']//span[@translate='global.cta.add']/ancestor::button
 
