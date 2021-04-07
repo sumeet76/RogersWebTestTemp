@@ -2,7 +2,6 @@ package com.rogers.test.base;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
 import com.rogers.oneview.pages.*;
 import com.rogers.pages.RogersBuildPlanPage;
 import com.rogers.pages.RogersChooseAddonsPage;
@@ -32,7 +31,6 @@ import org.testng.ITestContext;
 import org.testng.annotations.BeforeSuite;
 import utils.AppiumServerJava;
 import utils.BrowserDrivers;
-import utils.DigiAutoCustomException;
 import utils.Reporter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -54,6 +52,10 @@ public class BaseTestClass {
 
     public enum OS {
         WIN, LIN, MAC
+    }
+
+    public enum PaymentMethodType {
+        CREDIT, BANK, MANUAL
     }
 
     ;// Operating systems.
@@ -158,6 +160,7 @@ public class BaseTestClass {
     protected static final ThreadLocal<RogersNACOrderConfirmationPage> RogersNACOrderConfirmationPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersOneTimePaymentPage> RogersOneTimePaymentPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersHomePageServiceability> RogersHomePageServiceabilityThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<RogersSecurityPackagesPage> RogersSecurityPackagesPageThreadLocal = new ThreadLocal<>();
     AppiumServerJava appiumServer = new AppiumServerJava();
     //int port = 4723;
     private CaptchaBypassHandlers captcha_bypass_handlers;
@@ -191,6 +194,10 @@ public class BaseTestClass {
 
     public static RogersAccountOverviewPage getRogersAccountOverviewPage() {
         return RogersAccountOverviewPageThreadLocal.get();
+    }
+
+    public static RogersSecurityPackagesPage getRogersSecurityPackagesPage() {
+        return RogersSecurityPackagesPageThreadLocal.get();
     }
 
     public static RogersProfileAndSettingsPage getRogersProfileAndSettingsPage() {
@@ -655,7 +662,7 @@ public class BaseTestClass {
                     getDriver().get(strUrl + "/phones/" + "?setLanguage=" + language + "&?province=" + "ON");
                     captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 }else{
-                    getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language + "&setProvince=" + "ON");
+                    getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language + "&?province=" + "ON");
                     captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 }
                 break;
@@ -852,6 +859,7 @@ public class BaseTestClass {
                 RogersHomePhonePortInPageThreadLocal.set(new RogersHomePhonePortInPage(getDriver()));
                 RogersInternetProfilePageThreadLocal.set(new RogersInternetProfilePage(getDriver()));
                 RogersInternetCreditCheckPageThreadLocal.set(new RogersInternetCreditCheckPage(getDriver()));
+                RogersSecurityPackagesPageThreadLocal.set(new RogersSecurityPackagesPage(getDriver()));
                 break;
 
             case "connectedhome_legacylogin":
@@ -1105,14 +1113,6 @@ public class BaseTestClass {
     @BeforeSuite(alwaysRun = true)
     public void beforeSuite(ITestContext iTestContext) throws FileNotFoundException {
         TestDataHandler.dataInit(iTestContext.getSuite().getAllMethods());
-        String strURL= System.getProperty("QaUrl");
-        if (strURL.toUpperCase().contains("ROGERS")) {
-            if (!strURL.contains("qa1.")  && !strURL.contains("qa5.")  && !strURL.contains("qa6.")  && !strURL.contains("qa7.") && !strURL.contains("qa2.") && !strURL.contains("qa3.") && !strURL.contains("qa4.") ) {
-                ExtentTestManager.startTest("Test result summary: Entire suite execution stopped, CookieDomain URL is not valid","");
-                ExtentTestManager.getTest().log(LogStatus.FAIL,"Suite Failed : CookieDomain URL is not valid"  );
-                //throw new DigiAutoCustomException("CookieDomain URL is not valid");
-            }
-        }
     }
 
 }

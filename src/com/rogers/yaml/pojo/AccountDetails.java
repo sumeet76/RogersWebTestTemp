@@ -58,7 +58,36 @@ public class AccountDetails {
 	private String firstName;
 	private String lastName;
 	private String birthCertNumber;
-	
+	private String deferredCancelCTN;
+	private String immediateCancelCTN;
+
+	/**
+	 * @return the immediateCancelCTN
+	 */
+	public String getimmediateCancelCTN() {
+		return immediateCancelCTN;
+	}
+	/**
+	 * @param immediateCancelCTN the immediateCancelCTN to set
+	 */
+	public void setimmediateCancelCTN(String immediateCancelCTN) {
+		this.immediateCancelCTN = immediateCancelCTN;
+	}
+
+	/**
+	 * @return the deferredCancelCTN
+	 */
+	public String getdeferredCancelCTN() {
+		return deferredCancelCTN;
+	}
+	/**
+	 * @param deferredCancelCTN the deferredCancelCTN to set
+	 */
+	public void setdeferredCancelCTN(String deferredCancelCTN) {
+		this.deferredCancelCTN = deferredCancelCTN;
+	}
+
+
 	public String getRhmPackageEn() {
 		return rhmPackageEn;
 	}

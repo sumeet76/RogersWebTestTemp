@@ -1,5 +1,6 @@
 package com.rogers.test.commonbusinessfunctions;
 
+import com.rogers.testdatamanagement.TestDataHandler;
 import org.testng.annotations.Listeners;
 
 import com.rogers.test.base.BaseTestClass;
@@ -11,7 +12,7 @@ import com.rogers.test.base.BaseTestClass;
 
 
 public class CommonBusinessFlows {
-		
+
 	BaseTestClass baseTestClass; 
 	public CommonBusinessFlows(BaseTestClass baseTestClass) {
 		this.baseTestClass = baseTestClass;
@@ -109,11 +110,11 @@ public class CommonBusinessFlows {
 	 */
 	public void addDataFlow() {
 		BaseTestClass.getRogersWirelessDashboardPage().clkAddData();
-		baseTestClass.reporter.hardAssert(BaseTestClass.getRogersAddDataPage().verifyAddDataOverlayIsDisplayed(),
+		baseTestClass.reporter.hardAssert(BaseTestClass.getRogersAddDataPage().verifyAddDataOverlayIsDisplayedNew(),
 							"Add the Data top-up  window should be displayed. (completd an MDT add on)", 
 						"Add the Data top-up  window is NOT displayed.");        
 		baseTestClass.reporter.reportLogWithScreenshot("Add Data Add on");  
-		BaseTestClass.getRogersAddDataPage().selectDataAddOnOption(2);
+		BaseTestClass.getRogersAddDataPage().selectDataAddOnOptionNew(1);
 		baseTestClass.reporter.reportLogWithScreenshot("Select Add on option");  
 		BaseTestClass.getRogersAddDataPage().clkContinue();
 		baseTestClass.reporter.reportLogWithScreenshot("Select Purchase");  
@@ -171,5 +172,108 @@ public class CommonBusinessFlows {
         baseTestClass.reporter.reportLogWithScreenshot("Sign In clicked");  
         BaseTestClass.getRogersLoginPage().switchOutOfSignInIFrame();		       
         baseTestClass.reporter.reportLogWithScreenshot("Account overview page.");   
+	}
+
+	/**
+	 * Switches Payment method to one of Credit, Bank or Manual Payment Types
+	 * @param paymentMethodType takes a PaymenType that the test case will switch to
+	 * @author Rohit.Kumar
+	 */
+	public void switchPaymentMethodTo(BaseTestClass.PaymentMethodType paymentMethodType)
+	{
+		String currentMethod =  baseTestClass.getRogersAccountOverviewPage().getCurrentAccountPaymentMethod();
+		if (paymentMethodType.toString().trim().contains(currentMethod.toUpperCase().trim()))
+		{			
+			return;
+		}
+		switch (paymentMethodType) {
+			case CREDIT:
+
+				baseTestClass.getRogersAccountOverviewPage().clkViewBill();
+
+				if(currentMethod.equals("Manual")){
+					baseTestClass.getRogersBillingPage().clkSetUpAutomaticPaymentsLink();
+				} else {
+					baseTestClass.getRogersBillingPage().clkChangePaymentMethodLink();
+				}
+
+				baseTestClass.reporter.reportLogWithScreenshot("Rogers Change Payment Method Page");
+				baseTestClass.getRogersSecurePaymentPage().setCardNumberNew(TestDataHandler.paymentInfo.getCreditCardDetails().getNumber());
+			    String strDDMM = TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryMonth() + 
+			        			TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryYear().substring(2);
+			    baseTestClass.getRogersSecurePaymentPage().setCardExpiry(strDDMM);	       
+			    baseTestClass.getRogersSecurePaymentPage().setSecurityCode(TestDataHandler.paymentInfo.getCreditCardDetails().getCVV());
+			    baseTestClass.reporter.reportLogWithScreenshot("CC details entered");
+			    baseTestClass.getRogersChangePaymentMethodPage().clkContinueSettingCC();
+			    baseTestClass.reporter.hardAssert(baseTestClass.getRogersChangePaymentMethodPage().isReviewCCDetailsPageDisplayed(),
+						"CC Details encrypted msg displayed",
+						"CC Details encrypted msg NOT displayed");
+			    baseTestClass.reporter.reportLogWithScreenshot("CC secured details");
+				
+			    baseTestClass.getRogersChangePaymentMethodPage().clkContinueOnReviewPg();
+			    baseTestClass.reporter.hardAssert(baseTestClass.getRogersChangePaymentMethodPage().verifySuccessMessageIsDisplayed(),
+						"Set up auto payment is successful",
+						"Set up auto payment is not successful");
+			    baseTestClass.reporter.reportLogWithScreenshot("Payment complete page.");
+			    baseTestClass.getRogersChangePaymentMethodPage().clkOnDone();
+				
+				/*
+				baseTestClass.reporter.hardAssert(baseTestClass.getRogersChangePaymentMethodPage().setCreditInformation(TestDataHandler.paymentInfo.getCreditCardDetails().getNumber(),
+						TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryMonth(), TestDataHandler.paymentInfo.getCreditCardDetails().getExpiryYear(),
+						TestDataHandler.paymentInfo.getCreditCardDetails().getCVV()),
+						"Set up Credit Card payment is successful",
+						"Set up Credit Card payment is not successful");
+				baseTestClass.reporter.reportLogWithScreenshot("Set up Credit Card payment is successful");
+				baseTestClass.getRogersChangePaymentMethodPage().clkButtonDoneChangePayment();
+				*/
+				break;
+
+			case BANK:
+
+				baseTestClass.getRogersAccountOverviewPage().clkViewBill();
+
+				if(currentMethod.equals("Manual")){
+					baseTestClass.getRogersBillingPage().clkSetUpAutomaticPaymentsLink();
+				} else {
+					baseTestClass.getRogersBillingPage().clkChangePaymentMethodLink();
+				}
+				baseTestClass.getRogersChangePaymentMethodPage().clkUseBankAccountForAutomaticPayments();
+				baseTestClass.getRogersChangePaymentMethodPage().setTransitCode(TestDataHandler.paymentInfo.getBankDetails().getTransitCode());
+				baseTestClass.getRogersChangePaymentMethodPage().setBankCode(TestDataHandler.paymentInfo.getBankDetails().getBankCode());
+				baseTestClass.getRogersChangePaymentMethodPage().setAccountNumber(TestDataHandler.paymentInfo.getBankDetails().getAccountNumber());
+				baseTestClass.getRogersChangePaymentMethodPage().clkContinue();
+				baseTestClass.getRogersChangePaymentMethodPage().clkTermsAndCond();
+				baseTestClass.getRogersChangePaymentMethodPage().clkSubmit();
+				baseTestClass.reporter.hardAssert(baseTestClass.getRogersChangePaymentMethodPage().verifySuccessMessageIsDisplayed(),
+						"Set up Bank payment is successful",
+						"Set up Bank payment is not successful");
+
+				baseTestClass.reporter.reportLogWithScreenshot("Set up Bank payment is successful");
+
+				baseTestClass.getRogersChangePaymentMethodPage().clkButtonDoneChangePayment();
+				break;
+
+			case MANUAL:
+
+				if(currentMethod.equals("Manual")){
+					baseTestClass.reporter.hardAssert(false,
+							"",
+							"Current Payment Method Type Is Manual - You Cannot Switch Payment Method Type from Manual to Manual");
+				} else {
+
+					baseTestClass.getRogersAccountOverviewPage().clkViewBill();
+					baseTestClass.getRogersBillingPage().clkChangePaymentMethodLink();
+					baseTestClass.getRogersChangePaymentMethodPage().clkSwitchToManualPayments();
+					baseTestClass.getRogersChangePaymentMethodPage().clkContinue();
+					baseTestClass.getRogersChangePaymentMethodPage().clkYesCancelAutomaticPayment();
+					baseTestClass.reporter.hardAssert(baseTestClass.getRogersChangePaymentMethodPage().verifySuccessMessageIsDisplayed(),
+							"Set up Manual payment is successful",
+							"Set up Manual payment is not successful");
+					baseTestClass.getRogersChangePaymentMethodPage().clkButtonDoneChangePayment();
+				}
+				break;
+		}
+
+
 	}
 }

@@ -20,6 +20,9 @@ public class RogersAddDataPage extends BasePageClass {
 	
 	@FindBy (xpath = "//select[@formcontrolname='selectedDataTopup']/option")
 	List<WebElement> divListAddDataOpt;
+
+	@FindBy (xpath = "//div[@class='selected-plan-details-item']")
+	List<WebElement> divListAddDataOptNew;
 	
 	@FindBy (xpath = "//span[contains(text(),'Continue') or contains(text(),'Continuer')]")
 	WebElement btnContinue;
@@ -50,7 +53,16 @@ public class RogersAddDataPage extends BasePageClass {
 	public boolean verifyAddDataOverlayIsDisplayed() {			
 		return getReusableActionsInstance().isElementVisible(divListAddDataOpt.get(1), 60);
 	}
-	
+
+	/**
+	 * Verifies if Add data overlay displayed
+	 * @return true if element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyAddDataOverlayIsDisplayedNew() {
+		return getReusableActionsInstance().isElementVisible(divListAddDataOptNew.get(1), 60);
+	}
+
 	/**
 	 * Clicks on first add data option
 	 * @author Mirza.Kamran
@@ -60,7 +72,16 @@ public class RogersAddDataPage extends BasePageClass {
 		getReusableActionsInstance().clickWhenReady(divListAddDataOpt.get(index), 60);
 		
 	}
-	
+
+	/**
+	 * Clicks on first add data option
+	 * @author Mirza.Kamran
+	 */
+	public void selectDataAddOnOptionNew(Integer index) {
+		getReusableActionsInstance().waitForElementVisibility(divListAddDataOptNew.get(index),60);
+		getReusableActionsInstance().clickWhenReady(divListAddDataOptNew.get(index), 60);
+
+	}
 	/**
 	 * Selctes an add data option
 	 * @param strAddOn string add on value

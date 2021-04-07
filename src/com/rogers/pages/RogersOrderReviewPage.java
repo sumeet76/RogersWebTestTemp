@@ -225,6 +225,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyAgreementPage() {
+		getReusableActionsInstance().waitForElementVisibility(txtAgreementPageBuy, 120);
 		return	getReusableActionsInstance().isElementVisible(txtAgreementPageBuy, 60);
 	}
 

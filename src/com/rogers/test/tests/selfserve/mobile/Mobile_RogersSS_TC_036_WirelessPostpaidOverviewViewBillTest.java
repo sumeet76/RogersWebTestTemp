@@ -24,7 +24,7 @@ public class Mobile_RogersSS_TC_036_WirelessPostpaidOverviewViewBillTest extends
     	getRogersHomePage().clkSignInMobile();
 		getRogersLoginPage().switchToSignInIFrame();
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc36.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc36.getPassword());
+		getRogersLoginPage().setPasswordIFrameMobile(TestDataHandler.tc36.getPassword());
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
