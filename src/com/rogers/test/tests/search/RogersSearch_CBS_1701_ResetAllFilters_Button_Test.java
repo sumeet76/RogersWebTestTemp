@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class RogersSearch_CBS_1701_ResetAllFilters_Button_Test extends BaseTestClass {
-    @DataProvider(name = "FilterData", parallel = false)
+    @DataProvider(name = "FilterData", parallel = true)
     public Object[] testData() throws IOException {
         String csvFileName = null;
         if (System.getProperty("Language").equalsIgnoreCase("en"))

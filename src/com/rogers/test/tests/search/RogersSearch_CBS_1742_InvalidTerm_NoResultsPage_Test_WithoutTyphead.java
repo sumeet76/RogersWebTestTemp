@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class RogersSearch_CBS_1742_InvalidTerm_NoResultsPage_Test_WithoutTyphead extends BaseTestClass {
-    @DataProvider(name = "FilterData", parallel = false)
+    @DataProvider(name = "FilterData", parallel = true)
     public Object[] testData() throws IOException {
         String csvFileName = null;
         csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/InvalidTerms.csv";

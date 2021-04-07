@@ -19,7 +19,7 @@ import utils.CSVReader;
  */
 public class RogersSearch_CBS_1664_Functioning_Of_Parent_Filter_Test extends BaseTestClass {
 
-    @DataProvider(name = "FilterData", parallel = false)
+    @DataProvider(name = "FilterData", parallel = true)
     public Object[] testData() throws IOException {
         String csvFileName = null;
         if (System.getProperty("Language").equalsIgnoreCase("en"))
