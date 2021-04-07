@@ -62,6 +62,7 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyWirelessPageLoad() {
+		//getReusableActionsInstance().waitForElementVisibility(lblMyWlsUsage);
 		return getReusableActionsInstance().isElementVisible(lblMyWlsUsage , 40);
 	}
 	
@@ -97,6 +98,7 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickChangePlanButton() {
+		getReusableActionsInstance().scrollToElement(btnChangePlan);
 		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(btnChangePlan, 60));
 	}
 	

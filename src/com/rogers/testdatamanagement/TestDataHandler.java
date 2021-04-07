@@ -136,6 +136,7 @@ public class TestDataHandler {
 	public static PPCData buyFlowsOVtestCase03;
 	public static PPCData buyFlowsOVtestCase04;
 	public static PPCData buyFlowsOVtestCase07;
+	public static AALOVData buyFlowsOVtestCase08;
 	public static SauceSettings sauceSettings;
 	public static AccountData igniteTVParentalcontrols;
 	public static AccountData solarisAccount;
@@ -398,7 +399,8 @@ public class TestDataHandler {
 		buyFlowsOVtestCase04 = YamlHandler.getPPCdataOneView("tc04OVPPCMultilineAccount");
 		buyFlowsOVtestCase05 = YamlHandler.getHUPdataOneView("tc05OVHUPWithPPCSinglelineAccount");
 		buyFlowsOVtestCase06 = YamlHandler.getHUPdataOneView("tc06OVHUPExistingPlanSinglelineAccount");
-		buyFlowsOVtestCase07 = YamlHandler.getPPCdataOneView("tc07OVPPCSinglelineAccount");		
+		buyFlowsOVtestCase07 = YamlHandler.getPPCdataOneView("tc07OVPPCSinglelineAccount");
+		buyFlowsOVtestCase08 = YamlHandler.getAALdataOneView("tc08OVAALSinglelineBopisShippingAccount");
 	}
 	
 	private static void chOneViewDataInit() throws FileNotFoundException {

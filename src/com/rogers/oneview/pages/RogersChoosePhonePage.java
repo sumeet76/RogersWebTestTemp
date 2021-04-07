@@ -2,6 +2,7 @@ package com.rogers.oneview.pages;
 
 import java.util.List;
 
+import com.rogers.testdatamanagement.TestDataHandler;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,6 +20,8 @@ public class RogersChoosePhonePage extends BasePageClass {
 	public RogersChoosePhonePage(WebDriver driver) {
 		super(driver);
 	}
+
+	String customerType = null;
 
 	@FindBy(xpath = "//div[contains(@class,'button') and (@res='details_devicemodel' or @res='upgrade')]")
 	WebElement btnDetails;
@@ -75,8 +78,40 @@ public class RogersChoosePhonePage extends BasePageClass {
 	
 	@FindBy(xpath = "//button[@res='eligible_cancel']")
 	WebElement formProOnTheGoCancel;
-	
-	
+
+	@FindAll({
+			@FindBy(xpath = "(//td[contains(@class,'text-title-5 text-bold text-right py-12')])[2]"),
+			@FindBy(xpath = "//p[contains(text(),'Security deposit required')]//following::p[1]")
+	})
+	WebElement securityDepositAmount;
+
+	@FindAll({
+			@FindBy(xpath = "(//td[contains(@class,'text-title-5 text-bold text-right py-12')])[3]"),
+			@FindBy(xpath = "//p[contains(text(),'Security deposit required')]//following::p[3]")
+	})
+	WebElement cLMAmount;
+
+	@FindAll({
+			@FindBy(xpath = "(//td[contains(@class,'text-title-5 text-bold text-right py-12')])[4]"),
+			@FindBy(xpath = "//p[contains(text(),'Security deposit required')]//following::p[5]")
+	})
+	WebElement riskLevel;
+
+	@FindBy(xpath = "//span[contains(text(),' Accept and Continue ')]")
+	WebElement acceptAndContinueOnCreditEvalModal;
+
+	@FindBy(xpath = "//ds-modal[contains(@data-test,'sharedNonShared')]/ancestor::ds-modal-container")
+	WebElement sharedNonSharedModal;
+
+	@FindBy(xpath = "//ds-modal-container//label[contains(@class,'dsa-selection d-inline-block ds-pointer')][contains(@aria-label,'partager') or contains(@aria-label,'shared Rogers')]")
+	WebElement sharedOption;
+
+	@FindBy(xpath = "//ds-modal-container//label[contains(@class,'dsa-selection d-inline-block ds-pointer')][contains(@aria-label,'Forfait distinct sans') or contains(@aria-label,'separate plan')]")
+	WebElement nonSharedOption;
+
+	@FindBy(xpath = "//span[contains(text(),'Continue')]")
+	WebElement modalContinueButton;
+
 	/**
 	 * Clicks on the 'Details' button on the first available device
 	 * @author rajesh.varalli1
@@ -210,5 +245,95 @@ public class RogersChoosePhonePage extends BasePageClass {
 			getReusableActionsInstance().clickWhenReady(formProOnTheGoCancel, 30);
 		}
 		return false;
+	}
+
+	/**
+	 * Checks for the presence of 'Accept and Continue' Button on Crdit Evaluation Modal
+	 * @return returns if the element is visible or not
+	 * @author sidhartha.vadrevu
+	 */
+	public boolean checkAcceptAndContinueOnCreditEvalModal() {
+		getReusableActionsInstance().waitForElementVisibility(acceptAndContinueOnCreditEvalModal,30);
+		return getReusableActionsInstance().isElementVisible(acceptAndContinueOnCreditEvalModal);
+	}
+
+	/**
+	 * Checks the customer type based on the attribute values present on the Credit Evaluation Modal
+	 * @return returns the customerType value
+	 * @author sidhartha.vadrevu
+	 */
+	public String checkCustomerType() {
+		String[] security = securityDepositAmount.getText().split("\\$");
+		String[] clmValue = cLMAmount.getText().split("\\$");
+		Double securityDeposit = Double.parseDouble(security[1]);
+		Double clm = Double.parseDouble(clmValue[1]);
+		String risk = riskLevel.getText();
+		if (securityDeposit <= 0 && clm <=0 && risk.equalsIgnoreCase("Low")) {
+			customerType = "Low Risk";
+		} else if(securityDeposit == 500 && (clm >0 && clm<450) && risk.equalsIgnoreCase("Medium")) {
+			customerType = "Medium Risk";
+		} else if(securityDeposit == 300 && clm >= 450 && risk.equalsIgnoreCase("High")) {
+			customerType = "High Risk";
+		}
+		System.out.println(customerType);
+		return customerType;
+	}
+
+	/**
+	 * Validates whether the customer type of the provided data matches to the customer type deduced from the data provided on the Credit Evaluation Modal
+	 * @return true if customer types match, false if they don't match
+	 * @author sidhartha.vadrevu
+	 */
+	public boolean validateCustomerType() {
+		checkCustomerType();
+		String customer = TestDataHandler.buyFlowsOVtestCase08.getCustomerRiskLevel();
+		if (customer!=null && !customer.isEmpty() && customerType.matches(customer)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * Clicks on the 'Accept and Continue' Button from the Crdit Evaluation Modal
+	 * @author sidhartha.vadrevu
+	 */
+	public void clickAcceptAndContinueOnCreditEvalModal() {
+		getReusableActionsInstance().waitForElementVisibility(acceptAndContinueOnCreditEvalModal);
+		getReusableActionsInstance().executeJavaScriptClick(acceptAndContinueOnCreditEvalModal);
+	}
+
+	/**
+	 *  This method verifies whether Shared/NonShared modal is displayed
+	 *  @return a boolean true if element is present else false
+	 *  @author praveeen.kumar7
+	 */
+	public boolean verifySharedNonSharedModalPresent() {
+		return getReusableActionsInstance().isElementVisible(sharedNonSharedModal,30);
+	}
+
+	/**
+	 *  This method selects shared or nonshared sharing type based on the string passed
+	 *  @param sharingType passing the String value of sharingType to select the sharing option
+	 *  @author praveeen.kumar7
+	 */
+	public void selectAALSharingType(String sharingType) {
+		if(sharingType.equalsIgnoreCase("SHARE")) {
+			getReusableActionsInstance().clickWhenReady(sharedOption, 20);
+		}
+		else if(sharingType.equalsIgnoreCase("NONSHARE")){
+			getReusableActionsInstance().clickWhenReady(nonSharedOption, 20);
+		}
+		else {
+			getReusableActionsInstance().clickWhenReady(sharedOption, 20);
+		}
+	}
+
+	/**
+	 *  This method clicks on the Continue button on shared/nonshared modal
+	 *  @author praveeen.kumar7
+	 */
+	public void clickContinueButtonOnModal() {
+		getReusableActionsInstance().clickWhenReady(modalContinueButton,40);
 	}
 }

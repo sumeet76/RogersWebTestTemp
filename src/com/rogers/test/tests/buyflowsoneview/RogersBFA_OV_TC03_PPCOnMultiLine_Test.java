@@ -26,6 +26,7 @@ public class RogersBFA_OV_TC03_PPCOnMultiLine_Test extends BaseTestClass {
 		//getAccountOverViewPage().clkSubmitBtnDealerCodeDialogue();
 		reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
 		reporter.reportLogWithScreenshot("Account Overview page");
+		getAccountOverViewPage().setSkipNotification();
 		reporter.hardAssert(getAccountOverViewPage().verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase03.getCtn()), "Select CTN Passed", "Select CTN Failed");
 		getAccountOverViewPage().clkCloseBtnAssignDataManager();
 		//getAccountOverViewPage().clkBtnOkOneViewDialoue();

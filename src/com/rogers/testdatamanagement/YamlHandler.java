@@ -188,6 +188,18 @@ public class YamlHandler {
 		
 	}
 
+	public static AALOVData getAALdataOneView(String dataFileName) throws FileNotFoundException {
+		Yaml yaml = new Yaml(new Constructor(AALOVData.class));
+		InputStream inputStream;
+
+		inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/buyflowsoneview/" + dataFileName + ".yml"));
+		AALOVData aalData = yaml.load(inputStream);
+		return aalData;
+
+
+
+	}
+
 	public static HUPData getHUPdata(String dataFileName) throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(HUPData.class));
 		InputStream inputStream;
