@@ -35,13 +35,7 @@ public class RogersSearch_CBS_Pagination_1959_Testing_various_URL_pattern_and_re
         return csvRowStrArray;
     }
 
-<<<<<<< HEAD
-
     @Test(dataProvider = "FilterData", groups = {"Search","Pagination", "Sanity"}) @Parameters({"strLanguage"} )
-=======
-    @Test(dataProvider = "FilterData", groups = {"Search", "Pagination"})
-    @Parameters({"strLanguage"})
->>>>>>> 3faab5b647064ad575e7cbfffbcbf14bb990e906
     public void contextPageValidation(String[] csvRow) {
         String searchString = "Wireless";
         getRogersSearchPage().isPageLoaded();
