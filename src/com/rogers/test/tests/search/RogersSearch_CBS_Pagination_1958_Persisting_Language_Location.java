@@ -32,7 +32,7 @@ public class RogersSearch_CBS_Pagination_1958_Persisting_Language_Location exten
         return csvRowStrArray;
     }
 
-    @Test(dataProvider = "FilterData", groups = {"Search", "Pagination"})
+    @Test(dataProvider = "FilterData", groups = {"Search", "Pagination", "Sanity"})
     @Parameters({"strLanguage"})
     public void contextPageValidation(String[] csvRowStrArray) throws UnsupportedEncodingException {
         String languageBeforeToggle;

@@ -26,7 +26,7 @@ public class RogersSearch_CBS_1691_Multiple_Filter_Selection_StorageColor_Test e
 		return csvRow;
 	}
 
-	@Test(dataProvider = "FilterData",groups={"Search","Filter"})
+	@Test(dataProvider = "FilterData",groups={"Search","Filter", "Sanity"})
 	public void validateParentFilterDeselection(String[] csvRow) {
 
 		List<String> strStorageOptions;

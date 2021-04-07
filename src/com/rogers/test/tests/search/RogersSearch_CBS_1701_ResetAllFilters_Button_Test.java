@@ -29,7 +29,7 @@ public class RogersSearch_CBS_1701_ResetAllFilters_Button_Test extends BaseTestC
         return csvRowStrArray;
     }
 
-    @Test(dataProvider = "FilterData", groups = {"Search", "Filter"})
+    @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual", "Sanity"})
     public void validateParentFilterDeselection(String[] csvRowStrArray) {
         List<String> strColorFilters;
         String[] strFilters;

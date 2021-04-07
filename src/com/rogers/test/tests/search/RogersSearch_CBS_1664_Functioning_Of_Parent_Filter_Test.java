@@ -34,7 +34,7 @@ public class RogersSearch_CBS_1664_Functioning_Of_Parent_Filter_Test extends Bas
         return csvRowStrArray;
     }
 
-    @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual"})
+    @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual", "Sanity"})
     public void validateResultsForSubFilter(String[] csvRow) {
         List<WebElement> lstParentFilters;
         String strParentFilter;

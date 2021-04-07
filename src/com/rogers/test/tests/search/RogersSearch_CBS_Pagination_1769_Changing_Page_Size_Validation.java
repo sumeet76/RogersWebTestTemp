@@ -39,7 +39,7 @@ public class RogersSearch_CBS_Pagination_1769_Changing_Page_Size_Validation exte
     }
 
 
-    @Test(dataProvider = "FilterData", groups = {"Search","Pagination"})
+    @Test(dataProvider = "FilterData", groups = {"Search","Pagination", "Sanity"})
     public void contextPageValidation(String[] csvRowStrArray)
     {
         String url;

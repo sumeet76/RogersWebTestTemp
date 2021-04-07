@@ -14,7 +14,7 @@ import com.rogers.test.helpers.RogersEnums;
 
 public class RogersSearch_CBS_1686_Clicking_On_A_Parent_Filter_After_Selecting_A_Child_Filter_Test extends BaseTestClass {
 
-    @Test(groups = {"Search", "Filter"})
+    @Test(groups = {"Search", "Filter", "Multilingual"})
     public void validateChildAndParentFilterSelection() {
         List<WebElement> lstParentFilters;
         List<String> strColorFilters;
