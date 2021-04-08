@@ -15,8 +15,8 @@ public class RogersOVOrderConfirmationPage  extends BasePageClass {
 	WebElement orderConfirmation;
 	
 	@FindAll({
-		@FindBy(xpath = "//span[@class='thank-you']"),
-		@FindBy(xpath = "//span[@class='UConfirmationHeading']")
+		@FindBy(xpath = "//span[@class='UConfirmationHeading']"),
+		@FindBy(xpath = "//span[@class='thank-you']")
 	})	
 	WebElement lblThankYou;
 	
