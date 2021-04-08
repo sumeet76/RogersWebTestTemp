@@ -21,7 +21,7 @@ import com.rogers.test.helpers.RogersEnums;
 import utils.CSVReader;
 
 public class RogersSearch_CBS_1703_Results_To_Links_Detailed_Page extends BaseTestClass {
-    @DataProvider(name = "FilterData", parallel = false)
+    @DataProvider(name = "FilterData", parallel = true)
     public Object[] testData() throws IOException {
         String csvFileName = null;
         if (System.getProperty("Language").equalsIgnoreCase("en"))
