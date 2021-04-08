@@ -36,7 +36,7 @@ public class RogersSearch_CBS_1703_Results_To_Links_Detailed_Page extends BaseTe
         return csvRowStrArray;
     }
 
-    @Test(dataProvider = "FilterData", groups = {"Search", "Filter"})
+    @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual"})
     public void validateParentFilterDeselection(String[] csvRowStrArray) {
         List<WebElement> lstParentFilters;
         String strParentFilterName;

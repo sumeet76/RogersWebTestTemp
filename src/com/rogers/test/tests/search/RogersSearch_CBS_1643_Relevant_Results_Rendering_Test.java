@@ -20,7 +20,7 @@ import utils.CSVReader;
  **/
 public class RogersSearch_CBS_1643_Relevant_Results_Rendering_Test extends BaseTestClass {
 
-    @DataProvider(name = "FilterData", parallel = false)
+    @DataProvider(name = "FilterData", parallel = true)
     public Object[] testData() throws IOException {
         String csvFileName = null;
         if (System.getProperty("Language").equalsIgnoreCase("en"))
@@ -35,7 +35,7 @@ public class RogersSearch_CBS_1643_Relevant_Results_Rendering_Test extends BaseT
         return csvRowStrArray;
     }
 
-    @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual"})
+    @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual", "Sanity"})
     public void validateResults(String[] csvRowStrArray) {
         getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0]);
         getRogersSearchPage().isPageLoaded();

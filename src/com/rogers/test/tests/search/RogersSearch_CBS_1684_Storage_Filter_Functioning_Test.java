@@ -14,7 +14,7 @@ import java.util.List;
 
 public class RogersSearch_CBS_1684_Storage_Filter_Functioning_Test extends BaseTestClass {
 
-    @Test(groups = {"Search", "Filter"})
+    @Test(groups = {"Search", "Filter", "Multilingual"})
     public void validateStorageFilterSelection() {
         getDriver().get(System.getProperty("SearchUrl") + "iphone");
         getRogersSearchPage().isPageLoaded();
