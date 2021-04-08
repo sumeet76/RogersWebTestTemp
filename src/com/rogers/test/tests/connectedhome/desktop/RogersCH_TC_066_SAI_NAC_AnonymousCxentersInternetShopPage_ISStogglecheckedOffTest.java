@@ -31,10 +31,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_065_Regression_SAI_ISS_NAC_AnonymousCxentersInternetShopPagefromISSlearnpage_ISStogglecheckedTest extends BaseTestClass {
+public class RogersCH_TC_066_SAI_NAC_AnonymousCxentersInternetShopPage_ISStogglecheckedOffTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","SmartStreamCH"})
-    public void checkSaiTupeloBuyflowAddAdditionalSTB() {
+    public void checkIssNacLearnPageToggleOffTest() {
         getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
@@ -43,9 +43,9 @@ public class RogersCH_TC_065_Regression_SAI_ISS_NAC_AnonymousCxentersInternetSho
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         getRogersHomePage().clkIgniteAddressLookupSubmitSS();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+        getRogersInternetPackageSelectionPage().clkSmartStreamCheckBox();
+        reporter.reportLogWithScreenshot("Unchecked the SmartStream");
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
-        getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
-        getRogersIgniteTVBuyPage().clkUpdateCart();
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
 
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
@@ -119,7 +119,7 @@ public class RogersCH_TC_065_Regression_SAI_ISS_NAC_AnonymousCxentersInternetSho
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
 

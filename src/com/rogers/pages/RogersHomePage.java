@@ -104,7 +104,9 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='rch-modal']//button[@class='ds-button ds-focus ds-active -primary -large']//span[@class='ds-button__copy w-100']")
 	WebElement continueBtnIgniteMultipleAddressLookupSubmit;
 
-	@FindBy(xpath = "//a[contains(@title,'See available bundles') or  contains(@title,'Voir les offres groupées')]")
+	@FindAll({
+			@FindBy(xpath = "//a[contains(@title,'See available bundles') or  contains(@title,'Voir les offres groupées')]"),
+			@FindBy(xpath = "//a[contains(@title,'See bundles') or  contains(@title,'Voir les offres groupées')]")})
 	WebElement btnServiceability;
 	//a[contains(@title,'See available Ignite Bundles') or  contains(@title,'Voyez les offres groupées Élan accessibles')]
 	//a[@title='Check if Ignite Bundles are available in your area' or @title='Vérifiez si les offres groupées Élan sont disponibles dans votre secteur.']
@@ -131,7 +133,11 @@ public class RogersHomePage extends BasePageClass {
 	//input[contains(@class,'cdk-text-field-autofill-monitored')]
 	//span[contains(@class,'ds-formField__labelWrapper position-absolute')]
 	//input[contains(@id,'canada-post-address-complete')]
-	
+
+	@FindBy(xpath = "//div[@id='multipleUnitsModal'] ")
+	WebElement popupIgniteAddressLookupLable;
+
+
 	@FindBy(xpath = "//span[contains(@class,'ds-formField__labelWrapper')]")
 	WebElement txaIgniteAddressLookupLable;
 	
@@ -143,8 +149,10 @@ public class RogersHomePage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement txaIgniteAddressContainerExisting;
-	
-	
+
+	@FindBy(xpath = "//div[contains(text(),'BSMT')]")
+	WebElement rdoBasement;
+
 	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c15-0 ds-formField__typeds-input')]")
 	WebElement txaIgniteLookup;
 	
@@ -416,7 +424,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkNoThnx() {	
-		getReusableActionsInstance().clickIfAvailable(btnNoThnx, 30);
+		getReusableActionsInstance().clickIfAvailable(btnNoThnx, 60);
 	}
 	
 	/**
@@ -530,7 +538,20 @@ public class RogersHomePage extends BasePageClass {
 		}
 	getReusableActionsInstance().getWhenReady(btnServiceability, 30).click();
 	}
-	
+
+	/**
+	 * Clicks on the 'Service ability' button
+	 * @author chinnarao.vattam
+	 */
+	public void clkServiceabilityMobile() {
+		if(getReusableActionsInstance().isElementVisible(overlayHomePage,2))
+		{
+			getReusableActionsInstance().waitForElementInvisibility(overlayHomePage,5);
+		}
+		getReusableActionsInstance().getWhenReady(btnServiceability, 30);
+		getReusableActionsInstance().executeJavaScriptClick(btnServiceability);
+	}
+
 	/**
 	 * To verify the Ignite page
 	 * @return true if the Service ability button is available on Ignite page, else false 
@@ -602,7 +623,11 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
 	}
-	
+
+	public void setIgniteAddressLookupBasement() {
+		getReusableActionsInstance().waitForElementVisibility(popupIgniteAddressLookupLable, 60);
+		getReusableActionsInstance().getWhenReady(rdoBasement, 10).click();
+	}
 	/**
 	 * Click the Lookup Submit button to check service availability
 	 * @author chinnarao.vattam

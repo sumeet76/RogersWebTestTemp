@@ -38,7 +38,10 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'your phone number')]")
 	WebElement btnPhone;
 	//input[@id='ds-form-input-id-12']
-	
+
+	@FindBy(xpath = "//span[@translate='global.cta.cancel']")
+	WebElement btnProfielSubmitCancel;
+
 	@FindBy(xpath = "//span[@translate='global.cta.continue']")
 	WebElement btnProfielSubmit;	
 	//input[@class='ute-btn-primary profile-submit-button']
@@ -211,7 +214,16 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnProfielSubmit, 60);
 		getReusableActionsInstance().executeJavaScriptClick(btnProfielSubmit);
 	}
-	
+
+	/**
+	 * Click the Submit button on the profile page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkSubmitCancel() {
+		getReusableActionsInstance().getWhenReady(btnProfielSubmitCancel, 60);
+		getReusableActionsInstance().executeJavaScriptClick(btnProfielSubmitCancel);
+	}
+
 	/**
 	 * Click the Submit button on the profile page
 	 * @author Chinnarao.Vattam

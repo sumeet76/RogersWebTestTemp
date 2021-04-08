@@ -75,22 +75,26 @@ public class RogersSS_TC_050_ChangeIDForSECustomerTest extends BaseTestClass {
 			getRogersWirelessDashboardPage().clickOverview();
 			reporter.reportLogWithScreenshot("Back on overview page"); 
 			
-			getCommonBusinessFlows().logOutAndReSignIn(strUserName, strPassword);	
-									
+			getCommonBusinessFlows().logOutAndReSignIn(strUserName, strPassword);
+			getRogersAccountOverviewPage().clkMenuUsageAndService();
+			reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");
+			if (getRogersAccountOverviewPage().isAccountShowInDropDown(strLast4Dig)) {
+				getRogersAccountOverviewPage().clkDropDownAccount(strLast4Dig);
+			} else {
+				getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
+			}
+			//for CTN refresh go on overview and come back
+			getRogersWirelessDashboardPage().clickOverview();
+			reporter.reportLogWithScreenshot("Back on overview page");
+
 			reporter.hardAssert(getRogersAccountOverviewPage().verifyWirelessCallerIdCTNBadgeName(strFirstName),
 					"Caller ID First Name" + strFirstName + " is updated in CTN badge",
 					"Caller ID First Name" + strFirstName + " is NOT updated in CTN badge");			
-			getRogersAccountOverviewPage().clkMenuUsageAndService();
-	        reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");	        
-	        if (getRogersAccountOverviewPage().isAccountShowInDropDown(strLast4Dig)) {
-	        	getRogersAccountOverviewPage().clkDropDownAccount(strLast4Dig);
-	        } else {
-	        	getRogersAccountOverviewPage().clkSubMenuWirelessUsage();
-	        }
-	        getRogersAccountOverviewPage().clkCloseInNewLookPopupIfVisible();	        	        
-			reporter.hardAssert(getRogersWirelessDashboardPage().verifyWirelessCallerIdUpdatedInSeCtnTab(strFirstName),
-					"Caller ID First Name" + strFirstName + " is updated in SE CTN Tab",
-					"Caller ID First Name" + strFirstName + " is NOT updated in SE CTN Tab");			
+
+
+			//reporter.hardAssert(getRogersWirelessDashboardPage().verifyWirelessCallerIdUpdatedInSeCtnTab(strFirstName),
+			//		"Caller ID First Name" + strFirstName + " is updated in SE CTN Tab",
+			//		"Caller ID First Name" + strFirstName + " is NOT updated in SE CTN Tab");
 		}
 
 	}

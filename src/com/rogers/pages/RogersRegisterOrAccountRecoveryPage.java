@@ -118,7 +118,7 @@ public class RogersRegisterOrAccountRecoveryPage extends BasePageClass {
 	@FindBy(xpath = "//ds-code-input/div/div[1]/input")
 	WebElement inputCode;
 
-	@FindBy(xpath = "//span[text()='Create a new MyRogers password for ' or contains(text(),'ez un nouveau mot de passe MonRogers pour')]/following-sibling::span")
+	@FindBy(xpath = "//span[text()='Create a new MyRogers password for ' or text()='Create a new My Account password for: ' or contains(text(),'ez un nouveau mot de passe MonRogers pour')]/following-sibling::span")
 	WebElement lblSetPasswordForUserName;
 
 	@FindBy(xpath = "//h1//span[text()='Success!' or contains(text(),'ussi!')]")

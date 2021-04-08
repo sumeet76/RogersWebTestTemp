@@ -27,7 +27,7 @@ public class RogersSS_TC_79_ValidateCancelDataFlowMultipleCTNwithSingleRegularMD
 		closeSession();
 	}
 
-    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
+    @Test(groups = {"RegressionSS","WirelessDashboardSS","AddDataSpeedPass"})
     public void validateCancelSingleMDTFlowNSEWithMultiline() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc56.getUsername();

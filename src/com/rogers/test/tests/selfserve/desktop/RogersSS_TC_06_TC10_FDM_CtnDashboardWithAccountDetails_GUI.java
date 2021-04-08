@@ -80,9 +80,9 @@ button should be displayed n Share Everything Dashboard
        reporter.hardAssert(getRogersWirelessDashboardPage().verifyDataRemainingOutOfTotalDataBucket(),
     		   "data remaining out of total data bucket is dsiplayed", 
     		   "data remaining out of total data bucket is NOT displayed");
-       reporter.hardAssert(getRogersWirelessDashboardPage().verifyDaysRemainingInTheBillCycleIsDisplayed(),
-    		   "Days remaining in the bill cycle is displayed",
-    		   "Days remaining in the bill cycle is not displayed");
+       //reporter.hardAssert(getRogersWirelessDashboardPage().verifyDaysRemainingInTheBillCycleIsDisplayed(),
+    	//	   "Days remaining in the bill cycle is displayed",
+    	//	   "Days remaining in the bill cycle is not displayed");
        
        getCommonBusinessFlows().scrollToMiddleOfWebPage();
        reporter.reportLogWithScreenshot("Price Plan details along with Change Plan & Change number button");
