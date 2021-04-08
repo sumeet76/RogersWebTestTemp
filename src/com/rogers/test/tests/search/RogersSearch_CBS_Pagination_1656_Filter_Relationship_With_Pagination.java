@@ -45,20 +45,20 @@ public class RogersSearch_CBS_Pagination_1656_Filter_Relationship_With_Paginatio
 
     @Test(dataProvider = "FilterData", groups = {"Search","Pagination"}) @Parameters({"strLanguage"})
     public void contextPageValidation(String[] csvRow) throws UnsupportedEncodingException {
-        String message;
+        String message,results;
         String grandParentFilter;
         String strParentFilterName;
         List<WebElement> lstParentFilters;
-        reporter.reportLogWithScreenshot("Search URL is launched");
+        reporter.reportLogWithScreenshot("Launching URL");
         getRogersSearchPage().isPageLoaded();
-        reporter.reportLogWithScreenshot("Page is loaded");
+        reporter.reportLogWithScreenshot("Page is launched");
         getRogersSearchPage().clickSearchIcon();
         getRogersSearchPage().enterTextToBeSearched(csvRow[0]);
         reporter.reportLogWithScreenshot("Search string " + csvRow[0] + " is entered in the search text box");
         getRogersSearchPage().clickSubmitSearchIcon();
         getRogersSearchPage().isPageLoaded();
-        String results=getRogersSearchPage().getSearchResults();
-        reporter.reportLogPass(results + " displayed for search term :" + csvRow[0]);
+        results = getRogersSearchPage().getSearchResults();
+        reporter.reportLogPass("Displayed results are : " + results);
         grandParentFilter=csvRow[1];
         getRogersSearchPage().clkGrandParentFilter(grandParentFilter);
         getRogersSearchPage().isPageLoaded();

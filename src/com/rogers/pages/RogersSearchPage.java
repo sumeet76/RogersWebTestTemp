@@ -68,7 +68,7 @@ public class RogersSearchPage extends BasePageClass {
     @FindBy(xpath = "//span[@class='a-icon rds-icon-search']")
     WebElement submitSearchIcon;
 
-    @FindBy(xpath = "//div[@class=' my-16 pt-4 pb-8']")
+    @FindBy(xpath = "//div[@id='searchDescription']")
     WebElement searchResults;
 
     @FindBy(xpath = "//button[contains (@class, 'active') and @title='Page 1']")
@@ -137,9 +137,10 @@ public class RogersSearchPage extends BasePageClass {
 
     public static final By watchSize = By.xpath("//input[contains(@id,'size')]");
 
-    Boolean isPagePresent = true;
+    Boolean isPagePresent = false;
     JavascriptExecutor js = null;
     List<WebElement> elementName;
+    int expectedDefaultSearchResults = 10;
     String pageTwoPresent = "Page 2 is present and it is clicked";
     String pageTwoNotPresent = "Cannot select page 2 as only one page exist";
     String pageTwoHighlighted = "Page 2 is highlighted";
@@ -149,7 +150,11 @@ public class RogersSearchPage extends BasePageClass {
     String clickLastForwKey = "Clicked on last forward arrow key";
     String cannotClickLastBackKey = "Cannot click on last backward arrow key because available page is 1";
     String clickLastBackKey = "Clicked on last backward arrow key";
+    String cannotClickFwdKey = "Cannot click on forward arraw key because available page is 1";
+    String clkFwdKey = "Clicked on Forward arrow key";
     String invalidSearchTerm = "@!#";
+    String cannotClkBackKey = "Cannot click on backward arraw key because available page is 1";
+    String clkBackKey = "Clicked on backward arrow key";
 
     /**
      * check if expected filters displayed or not
@@ -276,43 +281,6 @@ public class RogersSearchPage extends BasePageClass {
         txtSearch.click();
         txtSearch.clear();
         txtSearch.sendKeys(searchText);
-    }
-
-    public boolean verifyResultsSizeLabelWithSelectedSize() {
-        boolean blnFlag = true;
-        List<WebElement> lstSizeFilter = getDriver().findElements(By.xpath("//input[contains(@id,'size')]"));
-        for (int i = 0; i < lstSizeFilter.size(); i++) {
-            String strSizeFilter = getDriver().findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value");
-            System.out.println("value of size filter is:" + getDriver().findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value"));
-            getReusableActionsInstance().clickWhenReady(
-                    By.xpath("//ds-checkbox[@ng-reflect-value='" + getDriver().findElements(By.xpath("//input[contains(@id,'size')]")).get(i).getAttribute("value") + "']"));
-            getReusableActionsInstance().staticWait(2000);
-            List<WebElement> lstSizeResultsLink = getDriver().findElements(By.xpath("//a[contains(@href,'watch')]"));
-            for (int j = 0; j < lstSizeResultsLink.size(); j++) {
-                System.out.println("Size results link list:" + getDriver().findElements(By.xpath("//a[contains(@href,'watch')]")).get(j).getText());
-                getReusableActionsInstance().getWhenVisible(getDriver().findElements(By.xpath("//a[contains(@href,'watch')]")).get(j)).sendKeys(Keys.ENTER);
-                getReusableActionsInstance().staticWait(5000);
-                WebElement sizelabel = getDriver().findElement(By.xpath("//div[contains(@class,'common-devices') and contains(@class,'active')]//div[contains(@class,'size-switch') and contains(@class,'active')]/a"));
-                getReusableActionsInstance().waitForElementVisibility(sizelabel);
-                System.out.println("Size Label is:" + sizelabel.getText());
-                System.out.println("Size filter value is:" + strSizeFilter);
-                if (!strSizeFilter.equalsIgnoreCase(sizelabel.getText())) {
-                    blnFlag = false;
-                    System.out.println("Inside if loop");
-                    break;
-                }
-                System.out.println("Before Navigation");
-                getDriver().navigate().back();
-                System.out.println("After Navigation");
-                getReusableActionsInstance().staticWait(4000);
-            }
-            if (!blnFlag) {
-                break;
-            }
-            getReusableActionsInstance().waitForElementVisibility(getDriver().findElement(By.xpath("//input[contains(@id,'size')]")), 40);
-            getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@ng-reflect-value='" + strSizeFilter + "']"));
-        }
-        return blnFlag;
     }
 
     /**
@@ -587,20 +555,26 @@ public class RogersSearchPage extends BasePageClass {
         getReusableActionsInstance().clickWhenReady(By.xpath("//div[@ng-reflect-heading='Suggestions']//span[starts-with(text(),' " + strSuggestion + "')]"));
     }
 
+    /**
+     * This method check "strGrandParentFilter_strParentFilter" is displayed in URL
+     *
+     * @author naina.agarwal
+     */
     public boolean validateFiltersInUrl(String strGrandParentFilter, String strParentFilter) throws UnsupportedEncodingException {
-        String[] parts = strParentFilter.split("[/\\s@&.?$+-]+");
-        String part1 = parts[0];
-        String strQuery = "f=" + strGrandParentFilter.trim() + "_" + part1.trim();
-        return validateURLContains(strQuery);
+        try {
+            String[] parts = strParentFilter.split("[\\s@&.?$+-]+");
+            String part1 = parts[0];
+            String strQuery = "f=" + strGrandParentFilter.trim() + "_" + part1.trim();
+            return validateURLContains(strQuery);
+        } catch (Exception e) {
+            throw new DigiAutoCustomException(e);
+        }
     }
 
     public boolean filterCount() {
-        String filterCountInFilterSection = null;
+        String filterCountInFilterSection;
         filterCountInFilterSection = getReusableActionsInstance().getElementText(filterCount).trim();
-        if((filterCountInFilterSection!=null && filterCountInFilterSection.contains("(0)"))) {
-            return  true;
-        }
-        return false;
+        return filterCountInFilterSection.contains("(0)");
     }
 
     public boolean validateDeviceTypesInUrl(String[] strDeviceType) throws UnsupportedEncodingException {
@@ -662,6 +636,11 @@ public class RogersSearchPage extends BasePageClass {
         return searchResults.getText();
     }
 
+    /**
+     * Fetch all the colors from the colors filter
+     *
+     * @author pankaj.patil
+     */
     public List<String> getColorFilters() {
         List<String> colorFilters = new ArrayList<>();
         List<WebElement> colorFilterElements = getDriver().findElements(allColorsInFilter);
@@ -719,7 +698,7 @@ public class RogersSearchPage extends BasePageClass {
     }
 
     /**
-     * Click on the top search icon
+     * Wait for page to load
      *
      * @author naina.agarwal
      */
@@ -737,6 +716,11 @@ public class RogersSearchPage extends BasePageClass {
         }
     }
 
+    /**
+     * Fetch the language parameter passed through framework properties
+     *
+     * @author naina.agarwal
+     */
     public String getSystemLanguage() {
         String systemLanguage = null;
         if (System.getProperty("Language").equalsIgnoreCase("en"))
@@ -746,6 +730,11 @@ public class RogersSearchPage extends BasePageClass {
         return systemLanguage;
     }
 
+    /**
+     * Check on shop/magasiner filter based on language
+     *
+     * @author naina.agarwal
+     */
     public String clkShopFilter() {
         String filter = null;
         Actions act = new Actions(getDriver());
@@ -790,18 +779,15 @@ public class RogersSearchPage extends BasePageClass {
         return equalFlag;
     }
 
-    public boolean waitTime() {
-        boolean status;
+    public void waitTime() {
         Long loadTime;
         js = (JavascriptExecutor) getDriver();
         try {
             loadTime = (Long) js.executeScript("return performance.timing.loadEventEnd - performance.timing.navigationStart;");
             Thread.sleep(loadTime);
-            status = true;
         } catch (TimeoutException | InterruptedException e) {
-            status = false;
+            e.printStackTrace();
         }
-        return status;
     }
 
     /**
@@ -823,15 +809,13 @@ public class RogersSearchPage extends BasePageClass {
     }
 
     /**
-     * Check the number of results displayed or return no result if none are found
+     * Return the number of results if they are displayed
      *
      * @author naina.agarwal
      */
     public String getSearchResults() {
-        if (getReusableActionsInstance().isElementVisible(searchResults)) {
-            return getReusableActionsInstance().getElementText(searchResults);
-        } else
-            return "No result";
+        if (getReusableActionsInstance().isElementVisible(searchResults)) ;
+        return getReusableActionsInstance().getElementText(searchResults);
     }
 
     /**
@@ -852,6 +836,11 @@ public class RogersSearchPage extends BasePageClass {
         return getReusableActionsInstance().isElementVisible(firstPagePaginationHighlighted);
     }
 
+    /**
+     * Clicking on element with help of Javascript executor
+     *
+     * @author naina.agarwal
+     */
     public void javascriptClickWithPerform(WebElement element) {
         try {
             JavascriptExecutor js = (JavascriptExecutor) getDriver();
@@ -863,7 +852,7 @@ public class RogersSearchPage extends BasePageClass {
     }
 
     /**
-     * Click on page 2 from the bottom pagination
+     * Click on page 2 from the bottom pagination if more than 1 page is present
      *
      * @author naina.agarwal
      */
@@ -901,15 +890,17 @@ public class RogersSearchPage extends BasePageClass {
      * @author naina.agarwal
      */
     public String validatePageNumberInURL(String url) {
-        String message;
+        String message = null;
+        int pageNumberSize;
         String currentPageNumberInPagination = getReusableActionsInstance().getElementText(currentPageNumberHighlighted);
-        isPagePresent = getDriver().findElements(numberOfPagesDisplayedAtBottom).size() > 1;
+        pageNumberSize = getDriver().findElements(numberOfPagesDisplayedAtBottom).size();
+        isPagePresent = pageNumberSize > 1;
         if (isPagePresent) {
-            if (!url.endsWith("=" + currentPageNumberInPagination)) {
+            if (!url.endsWith("pg=" + currentPageNumberInPagination))
                 message = "Page number on Pagination and URL does not match";
-            } else
+            else
                 message = "Page number on Pagination and URL match";
-        } else
+        } else if (pageNumberSize == 1)
             message = "There is only one page";
         return message;
     }
@@ -920,27 +911,32 @@ public class RogersSearchPage extends BasePageClass {
      * @author naina.agarwal
      */
     public boolean validatePageSizeInURL(String url) {
-        boolean urlFlag = true;
-        Select dropdown = new Select(resultPerPageDropdown);
-        WebElement option = dropdown.getFirstSelectedOption();
-        String defaultItem = option.getText().trim();
-        String pageSize = "psize=" + defaultItem;
-        if (!url.contains(pageSize)) {
-            urlFlag = false;
+        String pageSize = null;
+        try {
+            Select dropdown = new Select(resultPerPageDropdown);
+            WebElement option = dropdown.getFirstSelectedOption();
+            String defaultItem = option.getText().trim();
+            pageSize = "psize=" + defaultItem;
+        } catch (Exception e) {
+            throw new DigiAutoCustomException(e);
         }
-        return urlFlag;
+        return url.contains(pageSize);
     }
 
+    /**
+     * Validate the search result number on top is displayed based on page number highlighted
+     *
+     * @author naina.agarwal
+     */
     public boolean validateSearchResultNumberAreInSyncWithPagination() {
-        boolean expectedSearchResultNumber = true;
+        Select dropdown = new Select(resultPerPageDropdown);
+        WebElement option = dropdown.getFirstSelectedOption();
+        int currentPageSize=Integer.parseInt(option.getText().trim());
         int currentPageNumberInPagination = Integer.parseInt(getReusableActionsInstance().getElementText(currentPageNumberHighlighted));
-        String expectedSearchResultNumberStartsWith = Integer.toString((currentPageNumberInPagination - 1) * 10 + 1);
+        String expectedSearchResultNumberStartsWith = Integer.toString((currentPageNumberInPagination - 1) * currentPageSize + 1);
         String actualSearchResultOnPage = getReusableActionsInstance().getElementText(searchResults);
         String firstPartOfSearchResult = actualSearchResultOnPage.split("-")[0];
-        if (!firstPartOfSearchResult.equals(expectedSearchResultNumberStartsWith)) {
-            return expectedSearchResultNumber = false;
-        }
-        return expectedSearchResultNumber;
+        return firstPartOfSearchResult.equals(expectedSearchResultNumberStartsWith);
     }
 
     /**
@@ -979,13 +975,9 @@ public class RogersSearchPage extends BasePageClass {
      * @author naina.agarwal
      */
     public boolean validateNumberOfSearchResultsOnPage(List resultsInPage) {
-        boolean numberOfResultsOnAPage = false;
         int numberOfResults = resultsInPage.size();
-        System.out.println("The number of results are" + numberOfResults);
-        if (numberOfResults <= 10) {
-            numberOfResultsOnAPage = true;
-        }
-        return numberOfResultsOnAPage;
+        if (numberOfResults <= expectedDefaultSearchResults) return true;
+        return false;
     }
 
     /**
@@ -998,11 +990,12 @@ public class RogersSearchPage extends BasePageClass {
         String pageSize;
         try {
             Select dropdown = new Select(resultPerPageDropdown);
-            List<WebElement> dd = dropdown.getOptions();
+            List<WebElement> dropdownOptions = dropdown.getOptions();
             Random rand = new Random();
-            pageSizeNumber = rand.nextInt(dd.size());
-            dd.get(pageSizeNumber).click();
-            pageSize = dd.get(pageSizeNumber).getText();
+            pageSizeNumber = rand.nextInt(dropdownOptions.size());
+            dropdownOptions.get(pageSizeNumber).click();
+            isPageLoaded();
+            pageSize = dropdownOptions.get(pageSizeNumber).getText();
             return pageSize;
         } catch (Exception e) {
             throw new DigiAutoCustomException(e);
@@ -1030,6 +1023,7 @@ public class RogersSearchPage extends BasePageClass {
 
     /**
      * To method extracts the total results displayed for the searched term
+     * For eg if "1-10 of 464 results" is displayed, 464 will be returned
      *
      * @author naina.agarwal
      */
@@ -1043,7 +1037,7 @@ public class RogersSearchPage extends BasePageClass {
     }
 
     /**
-     * To check if the result list is displayed correctly based on the random page selected from the dropdown
+     * To check if the result links count is displayed correctly based on the random page size selected from the dropdown
      *
      * @author naina.agarwal
      */
@@ -1053,11 +1047,7 @@ public class RogersSearchPage extends BasePageClass {
         resultLinks = getAllResultLinks();
         int resultSize = resultLinks.size();
         pageSize = Integer.parseInt(randomPageSize.trim());
-        System.out.println("Total result displayed on top is " + totalResults);
-        System.out.println("Page size selected is " + pageSize);
-        System.out.println("Total result in list is " + resultSize);
-        if (pageSize < totalResults && resultSize == pageSize)
-            return true;
+        if ((pageSize < totalResults) && (resultSize == pageSize)) return true;
         else return pageSize > totalResults && resultSize == totalResults;
     }
 
@@ -1078,12 +1068,10 @@ public class RogersSearchPage extends BasePageClass {
         String[] numbers = searchResult.split(" ");
         if (pageSize < totalResults && resultSize == pageSize) {
             results = "1-".concat(randomPageSize.trim());
-            System.out.println("First if , result concat is " + results + "number[0] is " + numbers[0]);
             if (results.equals(numbers[0]))
                 verifyResult = true;
         } else if (pageSize > totalResults && resultSize == totalResults) {
             results = "1-".concat(String.valueOf(totalResults));
-            System.out.println("under else if , result concat is " + results + "number[0] is " + numbers[0]);
             if (results.equals(numbers[0]))
                 return true;
         }
@@ -1096,15 +1084,13 @@ public class RogersSearchPage extends BasePageClass {
      * @author naina.agarwal
      */
     public String clickFirstForwardArrow() {
-        String message;
+        String message = null;
         elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
         int numberOfPages = elementName.size();
         if (numberOfPages > 1) {
             getReusableActionsInstance().clickWhenReady(firstForwardArrowKey);
-            message = "Clicked on the forward arrow key";
-        } else {
-            message = "Cannot click on forward arraw key because available page is 1";
-        }
+            message = clkFwdKey;
+        } else if (numberOfPages == 1) message = cannotClickFwdKey;
         return message;
     }
 
@@ -1119,10 +1105,8 @@ public class RogersSearchPage extends BasePageClass {
         int numberOfPages = elementName.size();
         if (numberOfPages > 1) {
             getReusableActionsInstance().executeJavaScriptClick(firstBackwardArrowKey);
-            message = "Clicked on backward arrow key";
-        } else {
-            message = "Cannot click on backward arraw key because available page is 1";
-        }
+            message = clkBackKey;
+        } else message = cannotClkBackKey;
         return message;
     }
 
@@ -1133,16 +1117,13 @@ public class RogersSearchPage extends BasePageClass {
      */
     public String clickLastForwardArrow() {
         String message = null;
-        boolean isPresent = getDriver().findElements(numberOfPagesDisplayedAtBottom).size() > 0;
         elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
         int numberOfPages = elementName.size();
-        if (isPresent) {
-            if (numberOfPages > 1) {
-                getReusableActionsInstance().executeJavaScriptClick(lastForwardArrowKey);
-                message = clickLastForwKey;
-            } else
-                message = cannotClickLastForwKey;
-        }
+        if (numberOfPages > 1) {
+            getReusableActionsInstance().executeJavaScriptClick(lastForwardArrowKey);
+            message = clickLastForwKey;
+        } else
+            message = cannotClickLastForwKey;
         return message;
     }
 
@@ -1152,15 +1133,11 @@ public class RogersSearchPage extends BasePageClass {
      * @author naina.agarwal
      */
     public boolean lastPageIsHighlighted() {
-        boolean highlighted = true;
         String currentPageNumberInPagination = getReusableActionsInstance().getElementText(currentPageNumberHighlighted);
         elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
         int pages = elementName.size();
         String pageSelected = elementName.get(pages - 1).getText();
-        if (!currentPageNumberInPagination.trim().equals(pageSelected.trim())) {
-            highlighted = false;
-        }
-        return highlighted;
+        return currentPageNumberInPagination.trim().equals(pageSelected.trim());
     }
 
     /**
@@ -1245,6 +1222,7 @@ public class RogersSearchPage extends BasePageClass {
     /**
      * This method will select the language *en/fr* from the search page to toggle to other language
      *
+     * @return the language before Toggle
      * @author naina.agarwal
      */
     public String toggleLanguage() {
@@ -1271,12 +1249,16 @@ public class RogersSearchPage extends BasePageClass {
         return filterExpanded;
     }
 
+    /**
+     * Validate that search term in search results matches the passed search term.
+     *
+     * @param : Search Term
+     * @author naina.agarwal
+     */
     public boolean searchTermRetained(String searchTerm) {
-        boolean termIsRetained = true;
+        boolean termIsRetained = false;
         String termInSearchResult = getReusableActionsInstance().getElementText(searchResults);
-        if (!termInSearchResult.endsWith(searchTerm)) {
-            termIsRetained = false;
-        }
+        if (termInSearchResult.endsWith(searchTerm)) termIsRetained = true;
         return termIsRetained;
     }
 
@@ -1320,6 +1302,12 @@ public class RogersSearchPage extends BasePageClass {
         return toggleUpdate;
     }
 
+    /**
+     * Validate if filter component is displayed when single result is found.
+     * Return true when no component is found.
+     *
+     * @author naina.agarwal
+     */
     public boolean isFilterDisplayedForSingleResult() {
         boolean singleResult = true;
         List<WebElement> filter = getDriver().findElements(FilterComponent);
@@ -1344,6 +1332,11 @@ public class RogersSearchPage extends BasePageClass {
         return titleDetailsPage;
     }
 
+    /**
+     * This method will wait for the product details page
+     *
+     * @author naina.agarwal
+     */
     public void waitForDetailsPage() {
         WebDriverWait wait = new WebDriverWait(getDriver(), 15);
         wait.until(ExpectedConditions.visibilityOfElementLocated(titleOnDetailsPage));
@@ -1366,6 +1359,11 @@ public class RogersSearchPage extends BasePageClass {
         return lblColorValue.getText();
     }
 
+    /**
+     * This method will select a random province from the province dropdown
+     *
+     * @author naina.agarwal
+     */
     public String selectRandomProvince() {
         getReusableActionsInstance().clickWhenReady(provinceDropdown);
         WebDriverWait wait = new WebDriverWait(getDriver(), 15);
@@ -1396,6 +1394,11 @@ public class RogersSearchPage extends BasePageClass {
         return searchResultMatch;
     }
 
+    /**
+     * This method will check if home page is displayed for search
+     *
+     * @author naina.agarwal
+     */
     public boolean validateHomeURL() {
         boolean homeURL = true;
         wait = new WebDriverWait(getDriver(), 2000);

@@ -667,7 +667,7 @@ public class BaseTestClass {
                 getDriver().get(strUrl);
                 break;
 
-            case "search": //getDriver().get(strUrl);
+            case "search":
                 getDriver().get(strUrl + "&language=" + System.getProperty("Language").toLowerCase());
                 setImplicitWait(getDriver(), 1);
                 break;

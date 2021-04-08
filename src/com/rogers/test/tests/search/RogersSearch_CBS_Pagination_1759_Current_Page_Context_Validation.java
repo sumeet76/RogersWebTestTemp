@@ -16,13 +16,10 @@ import java.util.List;
  * This class contains the test method to validate the current page context validation for search
  *
  * @author naina.agarwal
- *
  * Test steps:
- *
- *1. Search for a term and scroll down to pagination component
- *2. Select page number 2
- *3. Select any page no. visible .
- *
+ * 1. Search for a term and scroll down to pagination component
+ * 2. Select page number 2
+ * 3. Select any page no. visible .
  **/
 public class RogersSearch_CBS_Pagination_1759_Current_Page_Context_Validation extends BaseTestClass {
 
@@ -37,51 +34,46 @@ public class RogersSearch_CBS_Pagination_1759_Current_Page_Context_Validation ex
         return csvRowStrArray;
     }
 
-
-    @Test(dataProvider = "FilterData", groups = {"Search","Pagination"})
-    public void contextPageValidation(String[] csvRowStrArray)
-    {
+    @Test(dataProvider = "FilterData", groups = {"Search", "Pagination"})
+    public void contextPageValidation(String[] csvRowStrArray) {
         String url;
-        int pageNumber;
-        String message=null;
-        reporter.reportLogWithScreenshot("Search URL is launched");
+        String message, results;
+        reporter.reportLogWithScreenshot("Launching URL");
         getRogersSearchPage().isPageLoaded();
-        reporter.reportLogWithScreenshot("Page is loaded");
         getRogersSearchPage().clickSearchIcon();
         getRogersSearchPage().enterTextToBeSearched(csvRowStrArray[0]);
         reporter.reportLogWithScreenshot("Search string " + csvRowStrArray[0] + " is entered in the search text box");
         getRogersSearchPage().clickSubmitSearchIcon();
         getRogersSearchPage().isPageLoaded();
-        reporter.reportLogPass(getRogersSearchPage().getSearchResults() + " are displayed");
-        reporter.softAssert(getRogersSearchPage().isFirstPageNumberHighlighted(),"First page is highlighted under pagination", "First page is not highlighted under pagination");
-        message =getRogersSearchPage().selectPageTwo();
+        results = getRogersSearchPage().getSearchResults();
+        reporter.reportLogPass("Displayed results are : " + results);
+        reporter.softAssert(getRogersSearchPage().isFirstPageNumberHighlighted(), "First page is highlighted under pagination", "First page is not highlighted under pagination");
+        message = getRogersSearchPage().selectPageTwo();
         getRogersSearchPage().isPageLoaded();
         reporter.reportLogPassWithScreenshot(message);
-        message =getRogersSearchPage().isSecondPageNumberHighlighted();
+        message = getRogersSearchPage().isSecondPageNumberHighlighted();
         reporter.reportLogPassWithScreenshot(message);
         url = getDriver().getCurrentUrl();
-        message =getRogersSearchPage().validatePageNumberInURL(url);
+        message = getRogersSearchPage().validatePageNumberInURL(url);
         reporter.reportLogPassWithScreenshot(message);
         reporter.softAssert(getRogersSearchPage().validateSearchResultNumberAreInSyncWithPagination(), "The search result number at the top are displayed based on page number selected", "The search result number at the top are not displayed based on page number selected");
-        pageNumber = getRogersSearchPage().clickOnRandomPageNumber();
-        reporter.reportLogPassWithScreenshot("A random page number " + pageNumber+ " in the pagination component is clicked");
+        int pageNumber = getRogersSearchPage().clickOnRandomPageNumber();
+        reporter.reportLogPassWithScreenshot("A random page number " + pageNumber + " in the pagination component is clicked");
         url = getDriver().getCurrentUrl();
-        message =getRogersSearchPage().validatePageNumberInURL(url);
+        message = getRogersSearchPage().validatePageNumberInURL(url);
         reporter.reportLogPassWithScreenshot(message);
         reporter.softAssert(getRogersSearchPage().validateSearchResultNumberAreInSyncWithPagination(), "The search result number at the top are displayed based on page number selected", "The search result number at the top are not displayed based on page number selected");
-
     }
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
         xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-        startSession(System.getProperty("SearchUrl") , strBrowser, strLanguage, RogersEnums.GroupName.search, method);
+        startSession(System.getProperty("SearchUrl"), strBrowser, strLanguage, RogersEnums.GroupName.search, method);
     }
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
         closeSession();
     }
-
 }

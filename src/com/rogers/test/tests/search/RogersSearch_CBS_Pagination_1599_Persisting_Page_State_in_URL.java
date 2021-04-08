@@ -15,10 +15,10 @@ import java.util.List;
  * This class contains the test method to validate the current page context validation for search
  *
  * @author naina.agarwal
- *
+ * <p>
  * Test steps:
- *
- *Search for a term and go to page number 2,Tester should see the pagination details updated in the query string
+ * <p>
+ * Search for a term and go to page number 2,Tester should see the pagination details updated in the query string
  * Change the page size, Tester should see the pagination details updated in the query string
  * Copy+paste  the Url in another browser, The page should render back in the exact same way
  * Now refresh the page a couple of times, The page should render back in the exact same way every time
@@ -36,36 +36,36 @@ public class RogersSearch_CBS_Pagination_1599_Persisting_Page_State_in_URL exten
         return csvRowStrArray;
     }
 
-
-    @Test(dataProvider = "FilterData", groups = {"Search","Pagination"}) @Parameters({"strLanguage"} )
-    public void contextPageValidation(String[] csvRowStrArray)
-    {
-        String url,message,randomPageSize;
+    @Test(dataProvider = "FilterData", groups = {"Search", "Pagination"})
+    @Parameters({"strLanguage"})
+    public void contextPageValidation(String[] csvRowStrArray) {
+        String url, message, randomPageSize;
+        reporter.reportLogWithScreenshot("Launching URL");
         getRogersSearchPage().isPageLoaded();
-        reporter.reportLogWithScreenshot("Page is loaded");
+        reporter.reportLogWithScreenshot("Page is launched");
         getRogersSearchPage().clickSearchIcon();
         getRogersSearchPage().enterTextToBeSearched(csvRowStrArray[0]);
         reporter.reportLogWithScreenshot("Search string " + csvRowStrArray[0] + " is entered in the search text box");
         getRogersSearchPage().clickSubmitSearchIcon();
         getRogersSearchPage().isPageLoaded();
         reporter.reportLogPass(getRogersSearchPage().getSearchResults() + " displayed for search term :" + csvRowStrArray[0]);
-        message =getRogersSearchPage().selectPageTwo();
+        message = getRogersSearchPage().selectPageTwo();
         getRogersSearchPage().isPageLoaded();
         reporter.reportLogPassWithScreenshot(message);
-        message =getRogersSearchPage().isSecondPageNumberHighlighted();
+        message = getRogersSearchPage().isSecondPageNumberHighlighted();
         reporter.reportLogPassWithScreenshot(message);
-        randomPageSize= getRogersSearchPage().selectRandomValueFromResultPerPageDropdown();
+        randomPageSize = getRogersSearchPage().selectRandomValueFromResultPerPageDropdown();
         reporter.reportLogPassWithScreenshot("Selected a random Page size from result per page dropdown : " + randomPageSize);
         url = getDriver().getCurrentUrl();
-        reporter.softAssert(getRogersSearchPage().validatePageSizeInURL(url)," Page size at the bottom pagination and the url matches", "Page size at the bottom pagination and the url does not match");
+        reporter.softAssert(getRogersSearchPage().validatePageSizeInURL(url), " Page size at the bottom pagination and the url matches", "Page size at the bottom pagination and the url does not match");
         getRogersSearchPage().openURLInNewTab(url);
-        reporter.reportLogPassWithScreenshot("New tab is launched with the same URL: " +url);
+        reporter.reportLogPassWithScreenshot("New tab is launched with the same URL: " + url);
         getRogersSearchPage().refreshPage();
         getRogersSearchPage().waitForPage();
         reporter.reportLogPassWithScreenshot("The page is refreshed a couple of times");
-        message =getRogersSearchPage().validatePageNumberInURL(url);
+        message = getRogersSearchPage().validatePageNumberInURL(url);
         reporter.reportLogPassWithScreenshot(message);
-        reporter.softAssert(getRogersSearchPage().validatePageSizeInURL(url),"The page size matches with the URL", "The page size does not match with the URL");
+        reporter.softAssert(getRogersSearchPage().validatePageSizeInURL(url), "The page size matches with the URL", "The page size does not match with the URL");
     }
 
     @BeforeMethod(alwaysRun = true)
@@ -79,5 +79,4 @@ public class RogersSearch_CBS_Pagination_1599_Persisting_Page_State_in_URL exten
     public void afterTest() {
         closeSession();
     }
-
 }

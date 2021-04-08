@@ -12,6 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.http.client.ClientProtocolException;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
@@ -36,20 +37,44 @@ public class RogersSearch_CBS_1685_Size_Filter_Validation_Test extends BaseTestC
 
     @Test(dataProvider = "FilterData", groups = {"Search", "Filter"})
     public void validateSizeFilterSelection(String[] csvRow) {
+        boolean blnFlag = true;
+        List<WebElement> resultLinks;
+        List<String> strSizeOptions;
+        String strSelectedSize;
         getDriver().get(System.getProperty("SearchUrl") + csvRow[0]);
         getRogersSearchPage().isPageLoaded();
         getRogersSearchPage().clkShopFilter();
         reporter.reportLogWithScreenshot("Shop Filter clicked");
         getRogersSearchPage().clkWirelessFilter();
         reporter.reportLogWithScreenshot("Wireless Filter clicked");
-        reporter.hardAssert(getRogersSearchPage().verifyResultsSizeLabelWithSelectedSize(), "Size label displayed correctly", "Size label not displayed correctly");
+        strSizeOptions = getRogersSearchPage().getSizeSelections();
+        reporter.hardAssert(strSizeOptions.size() != 0, "Size Options Available", "Size Options Unavailable");
+        for (int i = 0; i < strSizeOptions.size(); i++) {
+            getRogersSearchPage().clkSizeType(strSizeOptions.get(i));
+            reporter.reportLogWithScreenshot("Size: " + strSizeOptions.get(i) + " is selected");
+            resultLinks = getRogersSearchPage().getAllResultLinks();
+            for (int k = 0; k < resultLinks.size(); k++) {
+                getRogersSearchPage().clkResultLink(resultLinks.get(k));
+                reporter.reportLogWithScreenshot((k + 1) + ": Result link is clicked");
+                strSelectedSize = getRogersDeviceConfigPage().getSelectedSize();
+                reporter.softAssert(strSelectedSize.equalsIgnoreCase(strSizeOptions.get(i)),
+                        "Size Expected=" + strSizeOptions.get(i) + "; Actual=" + strSelectedSize,
+                        "Size Expected=" + strSizeOptions.get(i) + "; Actual=" + strSelectedSize);
+                getRogersDeviceConfigPage().navigateBack();
+                getRogersSearchPage().isPageLoaded();
+                resultLinks = getRogersSearchPage().getAllResultLinks();
+            }
+            getRogersSearchPage().clkSizeType(strSizeOptions.get(i));
+            reporter.reportLogWithScreenshot("Size: " + strSizeOptions.get(i) + " is selected");
+            getRogersSearchPage().isPageLoaded();
+        }
     }
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
         xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-        startSession(System.getProperty("SearchUrl") , strBrowser, strLanguage, RogersEnums.GroupName.search, method);
+        startSession(System.getProperty("SearchUrl"), strBrowser, strLanguage, RogersEnums.GroupName.search, method);
     }
 
     @AfterMethod(alwaysRun = true)
