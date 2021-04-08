@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class RogersSS_TC_002_Wireless_SuspendAccountBillDisplayErrorMessageTest extends BaseTestClass {
+public class RogersSS_TC_115_Wireless_SuspendAccountBillDisplayErrorMessageTest extends BaseTestClass {
 
 
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})

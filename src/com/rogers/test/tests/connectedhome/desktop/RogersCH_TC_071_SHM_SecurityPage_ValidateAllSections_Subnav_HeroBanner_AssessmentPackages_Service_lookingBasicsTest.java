@@ -1,4 +1,5 @@
 package com.rogers.test.tests.connectedhome.desktop;
+
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import org.apache.http.client.ClientProtocolException;
@@ -31,11 +32,152 @@ import java.lang.reflect.Method;
  **/
 
 public class RogersCH_TC_071_SHM_SecurityPage_ValidateAllSections_Subnav_HeroBanner_AssessmentPackages_Service_lookingBasicsTest extends BaseTestClass {
+    final String strLanguage=System.getProperty("Language");
 
     @Test(groups = {"RegressionCH","RhpAndRhmCH"})
     public void checkIssNacLearnPageToggleONTest() {
         getDriver().get(System.getProperty("QaUrl")+"/home-security/security-packages");
+        String actualTitle = getDriver().getTitle();
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesPageTitle(actualTitle, strLanguage),"Title is Verified","Title Verification is failed");
+        reporter.reportLogWithScreenshot("Launched the security package Home Page");
+        getRogersSecurityPackagesPage().clkHowToGetSecurityPackages();
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesModelDisplayed(),"Security Packages Model is Verified","Security Packages Model Verification is failed");
+        reporter.reportLogWithScreenshot("Security Packages options Model");
+        getRogersSecurityPackagesPage().clkSecurityPackagesByCall();
+        reporter.reportLogWithScreenshot("Options to call CC for security package Order");
+        getRogersSecurityPackagesPage().clkSecurityPackagesByLivechat();
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyIfrmLiveChatDisplayed(),"LiveChat frame is Verified","LiveChat frame Verification is failed");
+        reporter.reportLogWithScreenshot("Options to Live chat for security package Order");
+        getRogersSecurityPackagesPage().switchToLivechatIFrame();
+        getRogersSecurityPackagesPage().clkNoShmOption();
+        reporter.reportLogWithScreenshot("Options Live chat window questions");
+        getRogersSecurityPackagesPage().clkCloseLivechat();
+        getRogersSecurityPackagesPage().clkSecurityPackagesFromStore();
+        reporter.reportLogWithScreenshot("Options to Store for security package Order");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyStorePageDisplayed(),"Store has displayed","Store is not displayed");
 
+        getDriver().get(System.getProperty("QaUrl")+"/home-security/security-packages");
+        reporter.reportLogWithScreenshot("Launched the security package Home Page");
+        getRogersSecurityPackagesPage().clkProtectPackDetails();
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifypopupPackageDetails(),"Protect Package Details model has displayed","Protect Package Details model is not displayed");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyProtectPackageDetails(),"Protect Package Details displayed","Protect Package Details model is not displayed");
+        getRogersSecurityPackagesPage().clkPackageDetailsCloseModal();
+        getRogersSecurityPackagesPage().clkHowToGetItProtectPack();
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesModelDisplayed(),"Security Packages Model is Verified","Security Packages Model Verification is failed");
+        reporter.reportLogWithScreenshot("Security Packages options Model");
+        getRogersSecurityPackagesPage().clkSecurityPackagesByCall();
+        reporter.reportLogWithScreenshot("Options to call CC for security package Order");
+        getRogersSecurityPackagesPage().clkSecurityPackagesByLivechat();
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyIfrmLiveChatDisplayed(),"LiveChat frame is Verified","LiveChat frame Verification is failed");
+        reporter.reportLogWithScreenshot("Options to Live chat for security package Order");
+        getRogersSecurityPackagesPage().switchToLivechatIFrame();
+        getRogersSecurityPackagesPage().clkNoShmOption();
+        reporter.reportLogWithScreenshot("Options Live chat window questions");
+        getRogersSecurityPackagesPage().clkCloseLivechat();
+        getRogersSecurityPackagesPage().clkSecurityPackagesFromStore();
+        reporter.reportLogWithScreenshot("Options to Store for security package Order");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyStorePageDisplayed(),"Store has displayed","Store is not displayed");
+
+        getDriver().get(System.getProperty("QaUrl")+"/home-security/security-packages");
+
+        getRogersSecurityPackagesPage().clkPackageDetailsCloseModal();
+        getRogersSecurityPackagesPage().clkAssurePackDetails();
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifypopupPackageDetails(),"Assure Package Details model has displayed","Assure Package Details model is not displayed");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyAssurePackageDetails(),"Assure Package Details displayed","Assure Package Details model is not displayed");
+        getRogersSecurityPackagesPage().clkPackageDetailsCloseModal();
+        getRogersSecurityPackagesPage().clkHowToGetItAssurePack();
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesModelDisplayed(),"Security Packages Model is Verified","Security Packages Model Verification is failed");
+        reporter.reportLogWithScreenshot("Security Packages options Model");
+        getRogersSecurityPackagesPage().clkSecurityPackagesByCall();
+        reporter.reportLogWithScreenshot("Options to call CC for security package Order");
+        getRogersSecurityPackagesPage().clkSecurityPackagesByLivechat();
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyIfrmLiveChatDisplayed(),"LiveChat frame is Verified","LiveChat frame Verification is failed");
+        reporter.reportLogWithScreenshot("Options to Live chat for security package Order");
+        getRogersSecurityPackagesPage().switchToLivechatIFrame();
+        getRogersSecurityPackagesPage().clkNoShmOption();
+        reporter.reportLogWithScreenshot("Options Live chat window questions");
+        getRogersSecurityPackagesPage().clkCloseLivechat();
+        getRogersSecurityPackagesPage().clkSecurityPackagesFromStore();
+        reporter.reportLogWithScreenshot("Options to Store for security package Order");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyStorePageDisplayed(),"Store has displayed","Store is not displayed");
+
+        getDriver().get(System.getProperty("QaUrl")+"/home-security/security-packages");
+
+        getRogersSecurityPackagesPage().clkControlPackDetails();
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifypopupPackageDetails(),"Control Package Details model has displayed","Control Package Details model is not displayed");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyControlPackageDetails(),"Control Package Details displayed","Control Package Details model is not displayed");
+        getRogersSecurityPackagesPage().clkPackageDetailsCloseModal();
+        getRogersSecurityPackagesPage().clkHowToGetItControlPack();
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesModelDisplayed(),"Security Packages Model is Verified","Security Packages Model Verification is failed");
+        reporter.reportLogWithScreenshot("Security Packages options Model");
+        getRogersSecurityPackagesPage().clkSecurityPackagesByCall();
+        reporter.reportLogWithScreenshot("Options to call CC for security package Order");
+        getRogersSecurityPackagesPage().clkSecurityPackagesByLivechat();
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyIfrmLiveChatDisplayed(),"LiveChat frame is Verified","LiveChat frame Verification is failed");
+        reporter.reportLogWithScreenshot("Options to Live chat for security package Order");
+        getRogersSecurityPackagesPage().switchToLivechatIFrame();
+        getRogersSecurityPackagesPage().clkNoShmOption();
+        reporter.reportLogWithScreenshot("Options Live chat window questions");
+        getRogersSecurityPackagesPage().clkCloseLivechat();
+        getRogersSecurityPackagesPage().clkSecurityPackagesFromStore();
+        reporter.reportLogWithScreenshot("Options to Store for security package Order");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyStorePageDisplayed(),"Store has displayed","Store is not displayed");
+
+        getDriver().get(System.getProperty("QaUrl")+"/home-security/security-packages");
+
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyViewHardware(),"View Hardware button is displayed","View Hardware button is not displayed");
+        reporter.reportLogWithScreenshot("View Hardware button");
+        getRogersSecurityPackagesPage().clkViewHardware();
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHardwarePage(),"View Hardware Page is displayed","View Hardware page is not displayed");
+        reporter.reportLogWithScreenshot("View Hardware page");
+        getRogersSecurityPackagesPage().ViewHardwarePackages();
+        reporter.reportLogWithScreenshot("View Hardware packages");
+        getDriver().get(System.getProperty("QaUrl")+"/home-security/security-packages");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySHMfeatures(),"SHM features button is displayed","SHM features button is not displayed");
+        reporter.reportLogWithScreenshot("SHM features button");
+        getRogersSecurityPackagesPage().clkSHMfeatures();
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySHMFeasturePage(),"SHM features page is displayed","SHM features page is not displayed");
+        reporter.reportLogWithScreenshot("SHM Feasture page");
+        getRogersSecurityPackagesPage().ViewSHMFeasture();
+        reporter.reportLogWithScreenshot("SHM Feasture packages");
+
+        getDriver().get(System.getProperty("QaUrl")+"/home-security/security-packages");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHomeMonitoringapp(),"Home Monitoring app button is displayed","Home Monitoring app button is not displayed");
+        reporter.reportLogWithScreenshot("Home Monitoring app button");
+        getRogersSecurityPackagesPage().clkHomeMonitoringapp();
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySHMAppPage(),"Home Monitoring app page is displayed","Home Monitoring app page is not displayed");
+
+        reporter.reportLogWithScreenshot("Home Monitoring app page");
+        getRogersSecurityPackagesPage().ViewSHMAppPage();
+        reporter.reportLogWithScreenshot("Home Monitoring app packages");
+        getDriver().get(System.getProperty("QaUrl")+"/home-security/security-packages");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyViewAutomatePackage(),"View Automate Package button is displayed","View Automate Package button is not displayed");
+        reporter.reportLogWithScreenshot("View Automate Package button");
+        getRogersSecurityPackagesPage().clkViewAutomatePackage() ;
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyAutomationPackagePage(),"View Automate Package page is displayed","View Automate Package page is not displayed");
+        reporter.reportLogWithScreenshot("Home Monitoring app page");
+        getRogersSecurityPackagesPage().ViewAutomationPackagePage();
+        reporter.reportLogWithScreenshot("Home Monitoring app packages");
+        getDriver().get(System.getProperty("QaUrl")+"/home-security/security-packages");
+
+        getRogersSecurityPackagesPage().clkSHMCustomerCare();
+        reporter.reportLogWithScreenshot("Smart Home Monitoring Customer care");
+
+        getRogersSecurityPackagesPage().clkLiveChatwithRogers();
+        reporter.reportLogWithScreenshot("Smart Home Monitoring Customer care");
+        getRogersSecurityPackagesPage().switchToLivechatIFrame();
+        getRogersSecurityPackagesPage().clkNoShmOption();
+        reporter.reportLogWithScreenshot("Options Live chat window questions");
+        getRogersSecurityPackagesPage().clkCloseLivechat();
+
+        getRogersSecurityPackagesPage().clkFindRogersStore();
+        reporter.reportLogWithScreenshot("Smart Home Monitoring Customer care");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyStorePageDisplayed(),"Store has displayed","Store is not displayed");
+
+        getDriver().get(System.getProperty("QaUrl")+"/home-security/security-packages");
+
+        getRogersSecurityPackagesPage().clkSeefullDetails();
+        
     }
 
 
