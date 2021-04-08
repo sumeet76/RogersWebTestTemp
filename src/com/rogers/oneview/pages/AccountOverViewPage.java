@@ -12,6 +12,9 @@ public class AccountOverViewPage  extends BasePageClass {
 	public AccountOverViewPage(WebDriver driver) {
 		super(driver);
 	}
+
+	@FindBy(xpath = "//agent-notifications[contains(@state,'autopop')]/div[contains(@class,'blocker')]")
+	WebElement skipNotification;
 	
 	@FindBy(xpath = "//span[@class='ute-icon-tv']")
 	WebElement btnTVBadge;
@@ -42,6 +45,17 @@ public class AccountOverViewPage  extends BasePageClass {
 
 	@FindBy(xpath = "//button[@class='hup-button red']")
 	WebElement btnSubmitOneViewDialogue;
+
+	@FindBy(xpath = "//t[contains(text(),'Add new wireless line')]")
+	WebElement addNewWirelessLineButton;
+
+	/**
+	 * To skip notification panel with a bell icon
+	 * @author sidhartha.vadrevu
+	 */
+	public void setSkipNotification() {
+		getReusableActionsInstance().clickIfAvailable(skipNotification, 50);
+	}
 
 	/**
 	 * To enter dealer code in dealer code dialogue box
@@ -164,6 +178,16 @@ public class AccountOverViewPage  extends BasePageClass {
 	 */
 	public boolean verifySuccessfulLogin() {
 		return getReusableActionsInstance().isElementVisible(infoBalanceLable,60);
+	}
+
+	/**
+	 * Selects the Add a Wireless Line Button on the account dashbaord
+	 * @author Sidhartha.Vadrevu
+	 */
+	public void selectAddAWirelessLineButton() {
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().waitForElementVisibility(addNewWirelessLineButton);
+		getReusableActionsInstance().clickWhenReady(addNewWirelessLineButton,45);
 	}
 }
 
