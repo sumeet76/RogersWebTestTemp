@@ -34,41 +34,53 @@ import java.lang.reflect.Method;
 public class RogersCH_TC_071_SHM_SecurityPage_ValidateAllSections_Subnav_HeroBanner_AssessmentPackages_Service_lookingBasicsTest extends BaseTestClass {
     final String strLanguage=System.getProperty("Language");
 
-    @Test(groups = {"RegressionCH","RhpAndRhmCH"})
-    public void checkIssNacLearnPageToggleONTest() {
-        getDriver().get(System.getProperty("QaUrl")+"/home-security/security-packages");
+   @Test(groups = {"RegressionCH","RhpAndRhmCH"})
+    public void checkShmSecurityPageDsaBillboardTest() {
+        getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages");
         String actualTitle = getDriver().getTitle();
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesPageTitle(actualTitle, strLanguage),"Title is Verified","Title Verification is failed");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesPageTitle(actualTitle, strLanguage), "Title is Verified", "Title Verification is failed");
         reporter.reportLogWithScreenshot("Launched the security package Home Page");
         getRogersSecurityPackagesPage().clkHowToGetSecurityPackages();
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesModelDisplayed(),"Security Packages Model is Verified","Security Packages Model Verification is failed");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesModelDisplayed(), "Security Packages Model is Verified", "Security Packages Model Verification is failed");
         reporter.reportLogWithScreenshot("Security Packages options Model");
-        getRogersSecurityPackagesPage().clkSecurityPackagesByCall();
-        reporter.reportLogWithScreenshot("Options to call CC for security package Order");
+
         getRogersSecurityPackagesPage().clkSecurityPackagesByLivechat();
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyIfrmLiveChatDisplayed(),"LiveChat frame is Verified","LiveChat frame Verification is failed");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyIfrmLiveChatDisplayed(), "LiveChat frame is Verified", "LiveChat frame Verification is failed");
         reporter.reportLogWithScreenshot("Options to Live chat for security package Order");
         getRogersSecurityPackagesPage().switchToLivechatIFrame();
         getRogersSecurityPackagesPage().clkNoShmOption();
         reporter.reportLogWithScreenshot("Options Live chat window questions");
         getRogersSecurityPackagesPage().clkCloseLivechat();
-        getRogersSecurityPackagesPage().clkSecurityPackagesFromStore();
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesModelDisplayed(), "Security Packages Model is Verified", "Security Packages Model Verification is failed");
         reporter.reportLogWithScreenshot("Options to Store for security package Order");
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyStorePageDisplayed(),"Store has displayed","Store is not displayed");
+        getRogersSecurityPackagesPage().clkSecurityPackagesFromStore();
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyStorePageDisplayed(), "Store has displayed", "Store is not displayed");
+        reporter.reportLogWithScreenshot("Stores page for security package Order");
 
-        getDriver().get(System.getProperty("QaUrl")+"/home-security/security-packages");
+        getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages");
+        getRogersSecurityPackagesPage().clkHowToGetSecurityPackages();
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesModelDisplayed(), "Security Packages Model is Verified", "Security Packages Model Verification is failed");
+        reporter.reportLogWithScreenshot("Options for security package Order");
+        getRogersSecurityPackagesPage().clkSecurityPackagesByCall();
+        reporter.reportLogWithScreenshot("Options to call CC for security package Order");
+    }
+
+   @Test(groups = {"RegressionCH","RhpAndRhmCH"})
+    public void checkShmSecurityPageProtectTest() {
+        getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
         reporter.reportLogWithScreenshot("Launched the security package Home Page");
         getRogersSecurityPackagesPage().clkProtectPackDetails();
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifypopupPackageDetails(),"Protect Package Details model has displayed","Protect Package Details model is not displayed");
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyProtectPackageDetails(),"Protect Package Details displayed","Protect Package Details model is not displayed");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifypopupPackageDetails(), "Protect Package Details model has displayed", "Protect Package Details model is not displayed");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyProtectPackageDetails(), "Protect Package Details displayed", "Protect Package Details model is not displayed");
+        reporter.reportLogWithScreenshot("Protect Package Details displayed");
         getRogersSecurityPackagesPage().clkPackageDetailsCloseModal();
         getRogersSecurityPackagesPage().clkHowToGetItProtectPack();
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesModelDisplayed(),"Security Packages Model is Verified","Security Packages Model Verification is failed");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesModelDisplayed(), "Security Packages Model is Verified", "Security Packages Model Verification is failed");
         reporter.reportLogWithScreenshot("Security Packages options Model");
-        getRogersSecurityPackagesPage().clkSecurityPackagesByCall();
-        reporter.reportLogWithScreenshot("Options to call CC for security package Order");
+
         getRogersSecurityPackagesPage().clkSecurityPackagesByLivechat();
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyIfrmLiveChatDisplayed(),"LiveChat frame is Verified","LiveChat frame Verification is failed");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyIfrmLiveChatDisplayed(), "LiveChat frame is Verified", "LiveChat frame Verification is failed");
         reporter.reportLogWithScreenshot("Options to Live chat for security package Order");
         getRogersSecurityPackagesPage().switchToLivechatIFrame();
         getRogersSecurityPackagesPage().clkNoShmOption();
@@ -76,22 +88,37 @@ public class RogersCH_TC_071_SHM_SecurityPage_ValidateAllSections_Subnav_HeroBan
         getRogersSecurityPackagesPage().clkCloseLivechat();
         getRogersSecurityPackagesPage().clkSecurityPackagesFromStore();
         reporter.reportLogWithScreenshot("Options to Store for security package Order");
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyStorePageDisplayed(),"Store has displayed","Store is not displayed");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyStorePageDisplayed(), "Store has displayed", "Store is not displayed");
 
-        getDriver().get(System.getProperty("QaUrl")+"/home-security/security-packages");
+        getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
+        reporter.reportLogWithScreenshot("Launched the security package Home Page");
 
-        getRogersSecurityPackagesPage().clkPackageDetailsCloseModal();
+        getRogersSecurityPackagesPage().clkHowToGetItProtectPack();
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesModelDisplayed(), "Security Packages Model is Verified", "Security Packages Model Verification is failed");
+        reporter.reportLogWithScreenshot("Security Packages options Model");
+        getRogersSecurityPackagesPage().clkSecurityPackagesByCall();
+        reporter.reportLogWithScreenshot("Options to call CC for security package Order");
+    }
+
+    @Test(groups = {"RegressionCH","RhpAndRhmCH"})
+    public void checkShmSecurityPageAssureTest() {
+        getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
+        reporter.reportLogWithScreenshot("Launched the security package Home Page");
+
         getRogersSecurityPackagesPage().clkAssurePackDetails();
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifypopupPackageDetails(),"Assure Package Details model has displayed","Assure Package Details model is not displayed");
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyAssurePackageDetails(),"Assure Package Details displayed","Assure Package Details model is not displayed");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifypopupPackageDetails(), "Assure Package Details model has displayed", "Assure Package Details model is not displayed");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyAssurePackageDetails(), "Assure Package Details displayed", "Assure Package Details model is not displayed");
+        reporter.reportLogWithScreenshot("Assure Package Details displayed");
         getRogersSecurityPackagesPage().clkPackageDetailsCloseModal();
+
         getRogersSecurityPackagesPage().clkHowToGetItAssurePack();
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesModelDisplayed(),"Security Packages Model is Verified","Security Packages Model Verification is failed");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesModelDisplayed(), "Security Packages Model is Verified", "Security Packages Model Verification is failed");
         reporter.reportLogWithScreenshot("Security Packages options Model");
-        getRogersSecurityPackagesPage().clkSecurityPackagesByCall();
-        reporter.reportLogWithScreenshot("Options to call CC for security package Order");
+
         getRogersSecurityPackagesPage().clkSecurityPackagesByLivechat();
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyIfrmLiveChatDisplayed(),"LiveChat frame is Verified","LiveChat frame Verification is failed");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyIfrmLiveChatDisplayed(), "LiveChat frame is Verified", "LiveChat frame Verification is failed");
         reporter.reportLogWithScreenshot("Options to Live chat for security package Order");
         getRogersSecurityPackagesPage().switchToLivechatIFrame();
         getRogersSecurityPackagesPage().clkNoShmOption();
@@ -99,87 +126,197 @@ public class RogersCH_TC_071_SHM_SecurityPage_ValidateAllSections_Subnav_HeroBan
         getRogersSecurityPackagesPage().clkCloseLivechat();
         getRogersSecurityPackagesPage().clkSecurityPackagesFromStore();
         reporter.reportLogWithScreenshot("Options to Store for security package Order");
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyStorePageDisplayed(),"Store has displayed","Store is not displayed");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyStorePageDisplayed(), "Store has displayed", "Store is not displayed");
 
-        getDriver().get(System.getProperty("QaUrl")+"/home-security/security-packages");
+
+        getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
+        reporter.reportLogWithScreenshot("Launched the security package Home Page");
+        getRogersSecurityPackagesPage().clkHowToGetItAssurePack();
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesModelDisplayed(), "Security Packages Model is Verified", "Security Packages Model Verification is failed");
+        reporter.reportLogWithScreenshot("Security Packages options Model");
+        getRogersSecurityPackagesPage().clkSecurityPackagesByCall();
+        reporter.reportLogWithScreenshot("Options to call CC for security package Order");
+    }
+
+    @Test(groups = {"RegressionCH","RhpAndRhmCH"})
+    public void checkShmSecurityPageControlTest() {
+        getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
+        reporter.reportLogWithScreenshot("Launched the security package Home Page");
 
         getRogersSecurityPackagesPage().clkControlPackDetails();
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifypopupPackageDetails(),"Control Package Details model has displayed","Control Package Details model is not displayed");
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyControlPackageDetails(),"Control Package Details displayed","Control Package Details model is not displayed");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifypopupPackageDetails(), "Control Package Details model has displayed", "Control Package Details model is not displayed");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyControlPackageDetails(), "Control Package Details displayed", "Control Package Details model is not displayed");
+        reporter.reportLogWithScreenshot("Control Package Details displayed");
         getRogersSecurityPackagesPage().clkPackageDetailsCloseModal();
+
         getRogersSecurityPackagesPage().clkHowToGetItControlPack();
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesModelDisplayed(),"Security Packages Model is Verified","Security Packages Model Verification is failed");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesModelDisplayed(), "Security Packages Model is Verified", "Security Packages Model Verification is failed");
         reporter.reportLogWithScreenshot("Security Packages options Model");
-        getRogersSecurityPackagesPage().clkSecurityPackagesByCall();
-        reporter.reportLogWithScreenshot("Options to call CC for security package Order");
+
         getRogersSecurityPackagesPage().clkSecurityPackagesByLivechat();
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyIfrmLiveChatDisplayed(),"LiveChat frame is Verified","LiveChat frame Verification is failed");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyIfrmLiveChatDisplayed(), "LiveChat frame is Verified", "LiveChat frame Verification is failed");
         reporter.reportLogWithScreenshot("Options to Live chat for security package Order");
         getRogersSecurityPackagesPage().switchToLivechatIFrame();
         getRogersSecurityPackagesPage().clkNoShmOption();
         reporter.reportLogWithScreenshot("Options Live chat window questions");
         getRogersSecurityPackagesPage().clkCloseLivechat();
-        getRogersSecurityPackagesPage().clkSecurityPackagesFromStore();
-        reporter.reportLogWithScreenshot("Options to Store for security package Order");
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyStorePageDisplayed(),"Store has displayed","Store is not displayed");
+        getRogersSecurityPackagesPage().clkSecurityPackagesFromStore();        reporter.reportLogWithScreenshot("Options to Store for security package Order");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyStorePageDisplayed(), "Store has displayed", "Store is not displayed");
 
-        getDriver().get(System.getProperty("QaUrl")+"/home-security/security-packages");
+        getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
+        reporter.reportLogWithScreenshot("Launched the security package Home Page");
 
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyViewHardware(),"View Hardware button is displayed","View Hardware button is not displayed");
+        getRogersSecurityPackagesPage().clkHowToGetItControlPack();
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesModelDisplayed(), "Security Packages Model is Verified", "Security Packages Model Verification is failed");
+        reporter.reportLogWithScreenshot("Security Packages options Model");
+        getRogersSecurityPackagesPage().clkSecurityPackagesByCall();
+        reporter.reportLogWithScreenshot("Options to call CC for security package Order");
+
+    }
+
+    @Test(groups = {"RegressionCH","RhpAndRhmCH"})
+    public void checkShmSecurityPageHardwareTest() {
+        getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages");
+
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyViewHardware(), "View Hardware button is displayed", "View Hardware button is not displayed");
         reporter.reportLogWithScreenshot("View Hardware button");
         getRogersSecurityPackagesPage().clkViewHardware();
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHardwarePage(),"View Hardware Page is displayed","View Hardware page is not displayed");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHardwarePage(), "View Hardware Page is displayed", "View Hardware page is not displayed");
         reporter.reportLogWithScreenshot("View Hardware page");
         getRogersSecurityPackagesPage().ViewHardwarePackages();
         reporter.reportLogWithScreenshot("View Hardware packages");
-        getDriver().get(System.getProperty("QaUrl")+"/home-security/security-packages");
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySHMfeatures(),"SHM features button is displayed","SHM features button is not displayed");
+    }
+
+    @Test(groups = {"RegressionCH","RhpAndRhmCH"})
+    public void checkShmSecurityPageSHMfeaturesTest() {
+        getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySHMfeatures(), "SHM features button is displayed", "SHM features button is not displayed");
         reporter.reportLogWithScreenshot("SHM features button");
         getRogersSecurityPackagesPage().clkSHMfeatures();
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySHMFeasturePage(),"SHM features page is displayed","SHM features page is not displayed");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySHMFeasturePage(), "SHM features page is displayed", "SHM features page is not displayed");
         reporter.reportLogWithScreenshot("SHM Feasture page");
         getRogersSecurityPackagesPage().ViewSHMFeasture();
         reporter.reportLogWithScreenshot("SHM Feasture packages");
+    }
 
-        getDriver().get(System.getProperty("QaUrl")+"/home-security/security-packages");
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHomeMonitoringapp(),"Home Monitoring app button is displayed","Home Monitoring app button is not displayed");
+    @Test(groups = {"RegressionCH","RhpAndRhmCH"})
+    public void checkHomeMonitoringAppTest() {
+        getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHomeMonitoringapp(), "Home Monitoring app button is displayed", "Home Monitoring app button is not displayed");
         reporter.reportLogWithScreenshot("Home Monitoring app button");
         getRogersSecurityPackagesPage().clkHomeMonitoringapp();
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySHMAppPage(),"Home Monitoring app page is displayed","Home Monitoring app page is not displayed");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySHMAppPage(), "Home Monitoring app page is displayed", "Home Monitoring app page is not displayed");
 
         reporter.reportLogWithScreenshot("Home Monitoring app page");
         getRogersSecurityPackagesPage().ViewSHMAppPage();
         reporter.reportLogWithScreenshot("Home Monitoring app packages");
-        getDriver().get(System.getProperty("QaUrl")+"/home-security/security-packages");
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyViewAutomatePackage(),"View Automate Package button is displayed","View Automate Package button is not displayed");
+    }
+
+    @Test(groups = {"RegressionCH","RhpAndRhmCH"})
+    public void checkShmSecurityPageViewAutomatePackageTest() {
+        getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyViewAutomatePackage(), "View Automate Package button is displayed", "View Automate Package button is not displayed");
         reporter.reportLogWithScreenshot("View Automate Package button");
-        getRogersSecurityPackagesPage().clkViewAutomatePackage() ;
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyAutomationPackagePage(),"View Automate Package page is displayed","View Automate Package page is not displayed");
+        getRogersSecurityPackagesPage().clkViewAutomatePackage();
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyAutomationPackagePage(), "View Automate Package page is displayed", "View Automate Package page is not displayed");
         reporter.reportLogWithScreenshot("Home Monitoring app page");
         getRogersSecurityPackagesPage().ViewAutomationPackagePage();
         reporter.reportLogWithScreenshot("Home Monitoring app packages");
-        getDriver().get(System.getProperty("QaUrl")+"/home-security/security-packages");
+        getRogersSecurityPackagesPage().clkSeefullDetails();
+        reporter.reportLogWithScreenshot("full Details");
+    }
 
-        getRogersSecurityPackagesPage().clkSHMCustomerCare();
-        reporter.reportLogWithScreenshot("Smart Home Monitoring Customer care");
-
+    @Test(groups = {"RegressionCH","RhpAndRhmCH"})
+    public void checkShmSecurityPageContactUsTest() {
+        getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
+        reporter.reportLogWithScreenshot("Launched the security package Home Page");
         getRogersSecurityPackagesPage().clkLiveChatwithRogers();
         reporter.reportLogWithScreenshot("Smart Home Monitoring Customer care");
         getRogersSecurityPackagesPage().switchToLivechatIFrame();
         getRogersSecurityPackagesPage().clkNoShmOption();
         reporter.reportLogWithScreenshot("Options Live chat window questions");
         getRogersSecurityPackagesPage().clkCloseLivechat();
-
         getRogersSecurityPackagesPage().clkFindRogersStore();
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyStorePageDisplayed(), "Store has displayed", "Store is not displayed");
         reporter.reportLogWithScreenshot("Smart Home Monitoring Customer care");
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyStorePageDisplayed(),"Store has displayed","Store is not displayed");
 
-        getDriver().get(System.getProperty("QaUrl")+"/home-security/security-packages");
-
-        getRogersSecurityPackagesPage().clkSeefullDetails();
-        
+        getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages");
+        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
+        reporter.reportLogWithScreenshot("Launched the security package Home Page");
+        getRogersSecurityPackagesPage().clkSHMCustomerCare();
+        reporter.reportLogWithScreenshot("Smart Home Monitoring Customer care");
     }
 
+  @Test(groups = {"RegressionCH","RhpAndRhmCH"})
+   public void checkShmSecurityPageSubnavValidationTest() {
+   getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages");
+   getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
+   reporter.reportLogWithScreenshot("Launched the security package Home Page");
+   getRogersSecurityPackagesPage().clkProducts();
+   reporter.reportLogWithScreenshot("SHM Products");
+   getRogersSecurityPackagesPage().clkWhySHM();
+   reporter.reportLogWithScreenshot("Why SHM");
+
+   getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages");
+   getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
+   reporter.reportLogWithScreenshot("Launched the security package Home Page");
+   getRogersSecurityPackagesPage().clkProducts();
+   reporter.reportLogWithScreenshot("SHM Products");
+   getRogersSecurityPackagesPage().clkAutomatePackage();
+   getReporter().hardAssert(getRogersSecurityPackagesPage().verifyAutomationPackagePage(), "View Automate Package page is displayed", "View Automate Package page is not displayed");
+   reporter.reportLogWithScreenshot("Home Monitoring app page");
+   getRogersSecurityPackagesPage().ViewAutomationPackagePage();
+   reporter.reportLogWithScreenshot("Home Monitoring app packages");
+
+   getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages");
+   getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
+   reporter.reportLogWithScreenshot("Launched the security package Home Page");
+   getRogersSecurityPackagesPage().clkProducts();
+   reporter.reportLogWithScreenshot("SHM Products");
+   getRogersSecurityPackagesPage().clkSecurityPackage();
+   getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
+   reporter.reportLogWithScreenshot("Launched the security package Home Page");
+
+   getRogersSecurityPackagesPage().clkProducts();
+   reporter.reportLogWithScreenshot("SHM Products");
+   getRogersSecurityPackagesPage().ViewHardwarePackages();
+   reporter.reportLogWithScreenshot("View Hardware packages");
+
+   getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages");
+   getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
+   reporter.reportLogWithScreenshot("Launched the security package Home Page");
+   getRogersSecurityPackagesPage().clkProducts();
+   reporter.reportLogWithScreenshot("SHM Products");
+   getRogersSecurityPackagesPage().clkFeatures();
+   reporter.reportLogWithScreenshot("SHM Feasture page");
+
+   getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages");
+   getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
+   reporter.reportLogWithScreenshot("Launched the security package Home Page");
+   getRogersSecurityPackagesPage().clkApp();
+   reporter.reportLogWithScreenshot("SHM App");
+
+   getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages");
+   getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
+   reporter.reportLogWithScreenshot("Launched the security package Home Page");
+   getRogersSecurityPackagesPage().clkHelpAndSupport();
+   reporter.reportLogWithScreenshot("Help And Support");
+   getRogersSecurityPackagesPage().clkSHMSupport();
+   reporter.reportLogWithScreenshot("SHM Support");
+
+   getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages");
+   getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
+   reporter.reportLogWithScreenshot("Launched the security package Home Page");
+   getRogersSecurityPackagesPage().clkHelpAndSupport();
+   reporter.reportLogWithScreenshot("Help And Support");
+
+   getRogersSecurityPackagesPage().clkMovingYourServices();
+   reporter.reportLogWithScreenshot("Moving Your Services");
+  }
 
     @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
     //legacyAnonymous
@@ -193,8 +330,6 @@ public class RogersCH_TC_071_SHM_SecurityPage_ValidateAllSections_Subnav_HeroBan
     public void afterTest() {
         closeSession();
     }
-
-
 
 }
 
