@@ -31,7 +31,7 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_070_IgniteNAC_CartAbandon_CancelCartatProfileCreationPage_StartOver_newBeforeYouGoModal_B_DisplayAsPerCopy_saveCartAndRetrieveTest extends BaseTestClass {
+public class RogersCH_TC_070_IgniteNAC_CartAbandon_CancelCartatProfileCreationPage_StartOver_newBeforeYouGoModal_saveCartAndRetrieveTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
     public void checkCartAbandonCancelCartatProfileCreationPage_StartOver_NewBeforeYouGoModal_BPage() {
