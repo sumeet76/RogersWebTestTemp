@@ -46,7 +46,7 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_041_IginteTV_ValidateWelcomeBackModalWhencxRetrievesCartTest extends BaseTestClass {
+public class RogersCH_TC_041_IginteTV_CartAbandon_ValidateWelcomeBackModalWhencxRetrievesCartTest extends BaseTestClass {
 
 	@Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
     public void checkWelcomeBackModalWhencxCart() {

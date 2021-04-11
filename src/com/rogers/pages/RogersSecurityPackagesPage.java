@@ -78,11 +78,17 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	@FindBy(xpath = "//p[contains(text(),'Control') or contains(text(),'Contrôle')]/ancestor::ds-tile//button[@title='View more details about the Control package' or @title='Afficher plus de détails sur le forfait Contrôle']")
 	WebElement btnControlPackDetails;
 
+	@FindBy(xpath = "//button[@title='How to get the Automate package'  or @title='Comment obtenir le forfait Protection']//ds-icon//span")
+	WebElement btnHowToGetItAutomatePack;
+
 	@FindBy(xpath = "//p[contains(text(),'Control') or contains(text(),'Contrôle')]/ancestor::ds-tile//button[@title='How to get the Control package'  or @title='Comment obtenir le forfait Contrôle']//ds-icon//span")
 	WebElement btnHowToGetItControl;
 
 	@FindBy(xpath = "//ds-modal-container[@id='ds-modal-container-0']")
 	WebElement popupPackageDetails;
+
+	@FindBy(xpath = "//span[@class='ds-icon rds-icon-info-circle']")
+	WebElement btnAutomatePackageDetails;
 
 	@FindBy(xpath = "//button[@title='close modal']")
 	WebElement popupPackageDetailsCloseModal;
@@ -117,6 +123,9 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	@FindBy(xpath = "//a[contains(@title,'View Automate package') or contains(@title,'View Automate package')]")
 	WebElement btnViewAutomatePackage;
 
+	@FindBy(xpath = "//a[contains(@title,'View Security packages') or contains(@title,'View Security packages')]")
+	WebElement btnViewSecurityPackage;
+
 	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[@href='/consumer/support/homemonitoring']")
 	WebElement lnkSHMSupport;
 
@@ -138,16 +147,16 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[@href='/home-monitoring/why']")
 	WebElement lnkWhySHM;
 
-	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[@href='automation-packages']")
+	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@href,'automation-packages')]")
 	WebElement lnkAutomatePackage;
 
-	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[@href='security-packages']")
+	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@href,'security-packages')]")
 	WebElement lnkSecurityPackage;
 
-	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[@href='/home-monitoring/hardware']")
+	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@href,'/home-monitoring/hardware')]")
 	WebElement lnkHardwarePackage;
 
-	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[@href='/home-monitoring/features']")
+	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@href,'/home-monitoring/features')]")
 	WebElement lnkFeatures;
 
 	//+++++++++++++++++++++++++++++++++++++++++//
@@ -324,6 +333,16 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(btnHowToGetItProtectPack, 90);
 		getReusableActionsInstance().getWhenReady(btnHowToGetItProtectPack, 60).click();
 	}
+
+	/**
+	 * Click on How To Get It Automate Pack Button
+	 * @author chinnarao.vattam
+	 */
+	public void clkHowToGetItAutomatePack() {
+		getReusableActionsInstance().waitForElementVisibility(btnHowToGetItAutomatePack, 90);
+		getReusableActionsInstance().getWhenReady(btnHowToGetItAutomatePack, 60).click();
+	}
+
 	/**
 	 * Click on Assure Pack Details button
 	 * @author chinnarao.vattam
@@ -365,6 +384,27 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(popupPackageDetails, 30);
 		return getReusableActionsInstance().isElementVisible(popupPackageDetails);
 	}
+
+
+	/**
+	 * Checks if Package Details popup is displayed
+	 * @return true if the Package Details popup is displayed else false
+	 * @author chinnarao.vattam
+	 */
+	public Boolean verifyAutomatePackageDetails()
+	{
+		getReusableActionsInstance().waitForElementVisibility(btnAutomatePackageDetails, 30);
+		return getReusableActionsInstance().isElementVisible(btnAutomatePackageDetails);
+	}
+
+	/**
+	 * Click on Automate Package Details button
+	 * @author chinnarao.vattam
+	 */
+	public void clkAutomatePackageDetails() {
+		getReusableActionsInstance().getWhenReady(btnAutomatePackageDetails, 60).click();
+	}
+
 
 	/**
 	 * Click on Package Details Close button
@@ -535,11 +575,30 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	}
 
 	/**
+	 * Checks if View Security Package button is displayed
+	 * @return true if the View Security Package button is displayed else false
+	 * @author chinnarao.vattam
+	 */
+	public Boolean verifyViewSecurityPackage()
+	{
+		getReusableActionsInstance().waitForElementVisibility(btnViewSecurityPackage, 30);
+		return getReusableActionsInstance().isElementVisible(btnViewSecurityPackage);
+	}
+
+	/**
 	 * Click on View Automate Package button
 	 * @author chinnarao.vattam
 	 */
 	public void clkViewAutomatePackage() {
 		getReusableActionsInstance().getWhenReady(btnViewAutomatePackage, 60).click();
+	}
+
+	/**
+	 * Click on View Security Package button
+	 * @author chinnarao.vattam
+	 */
+	public void clkViewSecurityPackage() {
+		getReusableActionsInstance().getWhenReady(btnViewSecurityPackage, 60).click();
 	}
 
 	/**
@@ -558,6 +617,14 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void ViewAutomationPackagePage() {
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+	}
+
+	/**
+	 * Click on Security Package Page
+	 * @author chinnarao.vattam
+	 */
+	public void ViewSecurityPackagePage() {
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 	}
 

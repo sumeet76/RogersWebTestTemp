@@ -222,11 +222,9 @@ public class RogersCH_TC_071_SHM_SecurityPage_ValidateAllSections_Subnav_HeroBan
         reporter.reportLogWithScreenshot("View Automate Package button");
         getRogersSecurityPackagesPage().clkViewAutomatePackage();
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyAutomationPackagePage(), "View Automate Package page is displayed", "View Automate Package page is not displayed");
-        reporter.reportLogWithScreenshot("Home Monitoring app page");
+        reporter.reportLogWithScreenshot("Automation page");
         getRogersSecurityPackagesPage().ViewAutomationPackagePage();
-        reporter.reportLogWithScreenshot("Home Monitoring app packages");
-        getRogersSecurityPackagesPage().clkSeefullDetails();
-        reporter.reportLogWithScreenshot("full Details");
+        reporter.reportLogWithScreenshot("Automation packages");
     }
 
     @Test(groups = {"RegressionCH","RhpAndRhmCH"})
@@ -316,6 +314,10 @@ public class RogersCH_TC_071_SHM_SecurityPage_ValidateAllSections_Subnav_HeroBan
 
    getRogersSecurityPackagesPage().clkMovingYourServices();
    reporter.reportLogWithScreenshot("Moving Your Services");
+
+   getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages");
+   getRogersSecurityPackagesPage().clkSeefullDetails();
+   reporter.reportLogWithScreenshot("full Details");
   }
 
     @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
