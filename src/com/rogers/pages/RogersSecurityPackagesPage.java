@@ -18,23 +18,23 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//a[@title='Learn how to get a Security package']")
+	@FindBy(xpath = "//a[contains(@title,'Learn how to get a Security package') or contains(@title,'Voyez comment obtenir le forfait Sécurité')]")
 	WebElement lnkHowToGetSecurityPackages;
 	
 	@FindBy(xpath = "//shm-ways-to-buy-modal//p[@class='ds-modal__heading text-title-3 mb-24']")
 	WebElement popupSecurityPackagesModel;
 
 	@FindAll({@FindBy(xpath = "//a[@href='1-855-214-6825']"),
-	@FindBy(xpath = "//a[@href='1 855 214-6825']")})
+	@FindBy(xpath = "//a[@href='1 855 214 6825']")})
 	WebElement lnkSecurityPackagesByCall;
 
-	@FindBy(xpath = "//a[contains(@title,'Call Rogers at') or contains(@title,'Call Rogers at')]")
+	@FindBy(xpath = "//a[contains(@title,'Call Rogers at') or contains(@title,'Appelez Rogers au')]")
 	WebElement lnkSHMCC;
 
 	@FindBy(xpath = "//a[@href='livechat']")
 	WebElement lnkSecurityPackagesByLivechat;
 
-	@FindBy(xpath = "//a[@title='Live Chat with Rogers']")
+	@FindBy(xpath = "//a[@title='Live Chat with Rogers' or @title='Clavardez avec Rogers']")
 	WebElement lnkLiveChatwithRogers;
 
 	@FindAll({
@@ -42,7 +42,7 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	@FindBy(xpath = "//a[@href='https://www.rogers.com/stores/']")})
 	WebElement lnkSecurityPackagesFromStore;
 
-	@FindBy(xpath = "//a[@title='Find a Rogers store']")
+	@FindBy(xpath = "//a[@title='Find a Rogers store' or @title='Trouver un magasin']")
 	WebElement lnkFindRogersStore;
 
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-chevron-down']")
@@ -78,7 +78,7 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	@FindBy(xpath = "//p[contains(text(),'Control') or contains(text(),'Contrôle')]/ancestor::ds-tile//button[@title='View more details about the Control package' or @title='Afficher plus de détails sur le forfait Contrôle']")
 	WebElement btnControlPackDetails;
 
-	@FindBy(xpath = "//button[@title='How to get the Automate package'  or @title='Comment obtenir le forfait Protection']//ds-icon//span")
+	@FindBy(xpath = "//button[@title='How to get the Automate package'  or @title='Comment obtenir le forfait Automatique']//ds-icon//span")
 	WebElement btnHowToGetItAutomatePack;
 
 	@FindBy(xpath = "//p[contains(text(),'Control') or contains(text(),'Contrôle')]/ancestor::ds-tile//button[@title='How to get the Control package'  or @title='Comment obtenir le forfait Contrôle']//ds-icon//span")
@@ -102,28 +102,32 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	@FindBy(xpath = "//p[contains(text(),'Control') or contains(text(),'Contrôle')]")
 	WebElement txtControlPackageDetails;
 
-	@FindBy(xpath = "//a[contains(@title,'View Smart Home Monitoring hardware') or contains(@title,'View Smart Home Monitoring hardware')]")
+	@FindAll({
+	@FindBy(xpath = "//a[contains(@title,'View Smart Home Monitoring hardware') or contains(@title,'Voir l’équipement du Système de domotique Rogers')]"),
+			@FindBy(xpath = "//a[contains(@title,'View Smart Home Monitoring hardware') or contains(@title,'Voir l’équipement domotique Rogers')]")})
 	WebElement btnViewHardware;
 
 	@FindBy(xpath = "//h1[@class='dsa-hero-billboard__headingH1 mb-16 mb-md-24 ng-star-inserted']")
 	WebElement txtHardwarePage;
 
-	@FindBy(xpath = "//a[contains(@title,'View Smart Home Monitoring features') or contains(@title,'View Smart Home Monitoring features')]")
+	@FindAll({
+	@FindBy(xpath = "//a[contains(@title,'View Smart Home Monitoring features') or contains(@title,'Voir l’équipement domotique Rogers')]"),
+			@FindBy(xpath = "//a[contains(@title,'View Smart Home Monitoring features') or contains(@title,'Voir fonctions domotique Rogers')]")})
 	WebElement btnSHMfeatures;
 
 	@FindBy(xpath = "//h1[@class='dsa-hero-billboard__headingH1 mb-16 mb-md-24 ng-star-inserted']")
 	WebElement txtSHMFeasturePage;
 
-	@FindBy(xpath = "//a[contains(@title,'Learn more about the Smart Home Monitoring app') or contains(@title,'Learn more about the Smart Home Monitoring app')]")
+	@FindBy(xpath = "//a[contains(@title,'Learn more about the Smart Home Monitoring app') or contains(@title,'Obtenez plus de renseignements sur l’application Système de domotique Rogers')]")
 	WebElement btnHomeMonitoringapp;
 
 	@FindBy(xpath = "//img[contains(@src,'English-AppHero.png')]")
 	WebElement txtSHMAppPage;
 
-	@FindBy(xpath = "//a[contains(@title,'View Automate package') or contains(@title,'View Automate package')]")
+	@FindBy(xpath = "//a[contains(@title,'View Automate package') or contains(@title,'Voir le forfait Automatique')]")
 	WebElement btnViewAutomatePackage;
 
-	@FindBy(xpath = "//a[contains(@title,'View Security packages') or contains(@title,'View Security packages')]")
+	@FindBy(xpath = "//a[contains(@title,'View Security packages') or contains(@title,'Voir les forfaits Sécurité')]")
 	WebElement btnViewSecurityPackage;
 
 	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[@href='/consumer/support/homemonitoring']")
@@ -132,13 +136,13 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	@FindBy(xpath = "//h1[@class='dsa-billboard__copyHeading mb-16 mb-md-24 ng-star-inserted']")
 	WebElement txtAutomationPackagePage;
 
-	@FindBy(xpath = "//ul[@class='list-none d-flex']//span[@data-text='Products']/ancestor::a//ds-icon[@name='down']")
+	@FindBy(xpath = "//ul[@class='list-none d-flex']//span[@data-text='Products' or @data-text='Produits']/ancestor::a//ds-icon[@name='down']")
 	WebElement subNavProducts;
 
-	@FindBy(xpath = "//ul[@class='list-none d-flex']//span[@data-text='App']/ancestor::a//ds-icon[@name='right']")
+	@FindBy(xpath = "//ul[@class='list-none d-flex']//span[@data-text='App' or @data-text='Appli']/ancestor::a//ds-icon[@name='right']")
 	WebElement subNavApp;
 
-	@FindBy(xpath = "//ul[@class='list-none d-flex']//span[@data-text='Help and Support']/ancestor::a//ds-icon[@name='down']")
+	@FindBy(xpath = "//ul[@class='list-none d-flex']//span[@data-text='Help and Support' or @data-text='Soutien']/ancestor::a//ds-icon[@name='down']")
 	WebElement subNavHelpAndSupport;
 
 	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[@href='/support/moving-your-services']")
@@ -156,11 +160,11 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@href,'/home-monitoring/hardware')]")
 	WebElement lnkHardwarePackage;
 
-	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@href,'/home-monitoring/features')]")
+	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@href,'/home-monitoring/features') or contains(@href,'/home-monitoring/fonctions')]")
 	WebElement lnkFeatures;
 
 	//+++++++++++++++++++++++++++++++++++++++++//
-	@FindBy(xpath = "//a[@title='Learn how to get the Automate package']")
+	@FindBy(xpath = "//a[@title='Learn how to get the Automate package' or @title='Voyez comment obtenir le forfait Automatique']")
 	WebElement btnHowToGetAutomatePackage;
 
 
@@ -180,8 +184,8 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 			return true;
 		}
 		else
-		{//by the time of scripting, application is not impemented for french
-			String strExpectedTitle = "Shop Home Security, Monitoring, Video Surveillance Packages | Rogers";
+		{
+			String strExpectedTitle = "Forfaits – Sécurité résidentielle et vidéosurveillance | Rogers";
 			strExpectedTitle.equalsIgnoreCase(strActualTitle);
 			getReusableActionsInstance().getWhenReady(lnkHowToGetSecurityPackages, 60);
 			return true;
@@ -205,8 +209,8 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 			return true;
 		}
 		else
-		{//by the time of scripting, application is not impemented for french
-			String strExpectedTitle = "Shop Home Automation | Rogers";
+		{
+			String strExpectedTitle = "Magasiner les solutions de domotique | Rogers";
 			strExpectedTitle.equalsIgnoreCase(strActualTitle);
 			getReusableActionsInstance().getWhenReady(txtAutomationPackagePage, 60);
 			return true;
@@ -285,7 +289,7 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	 */
 	public void switchToLivechatIFrame() {
 		getReusableActionsInstance().staticWait(3000);
-		getReusableActionsInstance().getWhenReady(ifrmLiveChat,10);
+		getReusableActionsInstance().getWhenReady(ifrmLiveChat,30);
 		getDriver().switchTo().frame(ifrmLiveChat);
 	}
 
