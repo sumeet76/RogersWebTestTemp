@@ -169,6 +169,7 @@ public class TestDataHandler {
 	public static AccountData tc23;
 	public static AccountData tc111;
 	public static AccountData tc112;
+	public static AccountData tc01FinanceNotPaidOff_ON;
 	public static AccountData tc37_NoBills;
 	public static  AccountData tc118;
 	
@@ -341,6 +342,7 @@ public class TestDataHandler {
     	tc104 = YamlHandler.getSSAccountData("tc104Infinite10RedeemCancel");
     	tc22 = YamlHandler.getSSAccountData("tc22_PreRegister_Auto");
     	tc23 = YamlHandler.getSSAccountData("tc23_PreRegister_Auto");
+		tc01FinanceNotPaidOff_ON = YamlHandler.getSSAccountData("tc01_FinanceNotPaidOff_ON");
     			
     	//================ Connected home =========================
     	tc43IgniteRHP = YamlHandler.getSSAccountData("tc43IgniteRHP");

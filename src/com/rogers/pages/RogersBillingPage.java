@@ -2,6 +2,7 @@ package com.rogers.pages;
 
 
 import com.rogers.pages.base.BasePageClass;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -103,6 +104,13 @@ public class RogersBillingPage extends BasePageClass {
 
 	@FindBy(xpath = "//iframe[@class='viewBill_iframe']")
 	WebElement iframeCurrentBill;
+
+	@FindBy(xpath = "//span[contains(text(),'Set up automatic payments') or contains(text(),'Configurer les paiements automatiques')]")
+	WebElement linkSetUpAutomaticPayments;
+
+	@FindBy(xpath = "//span[contains(text(),'Change payment method') or contains(text(),'Changer le mode de paiement')]")
+	WebElement lnkChangePaymentMethod;
+
 
 	/**
 	 * Verify if the current bill iframe is present or not
@@ -348,4 +356,36 @@ public class RogersBillingPage extends BasePageClass {
 	{
 		return getReusableActionsInstance().isElementVisible(lblBillAndAccountBalanceHeader);
 	}
+
+	/**
+	 *
+	 * @return true if manual payment is set up
+	 * @author Rohit.Kumar
+	 */
+	public boolean isManualPaymentEnabled() {
+
+		return getReusableActionsInstance().isElementVisible(linkSetUpAutomaticPayments);
+	}
+
+	/**
+	 * Clicks on Set up automatic payments link
+	 * @author Rohit.Kumar
+	 */
+	public void clkSetUpAutomaticPaymentsLink() {
+		getReusableActionsInstance().clickWhenReady(linkSetUpAutomaticPayments);
+	}
+
+	/**
+	 * Clicks on Change Payment Method Link link
+	 * @author Rohit.Kumar
+	 */
+	public void clkChangePaymentMethodLink() {
+		getReusableActionsInstance().waitForElementTobeClickable(lnkChangePaymentMethod, 60);
+		getReusableActionsInstance().getWhenReady(lnkChangePaymentMethod).click();
+
+
+	}
+
+
+
 }

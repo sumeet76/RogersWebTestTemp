@@ -42,7 +42,7 @@ public class Mobile_RogersSS_TC_057_ValidateDataUsageDisplayWithinLimit_postpaid
     	String strPassword = TestDataHandler.tc57.getPassword();
     	getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(strUsername);
-        getRogersLoginPage().setPasswordIFrame(strPassword);
+        getRogersLoginPage().setPasswordIFrameMobile(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");

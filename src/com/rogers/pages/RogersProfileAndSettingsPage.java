@@ -462,6 +462,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnUnlinkThisAccount() {
+		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().clickWhenReady(btnUnlinkThisAcct, 30);
 	}
 	
@@ -481,6 +482,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnUnlinkDone() {
+		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().clickWhenReady(btnUnlinkDone, 30);
 		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().javascriptScrollToTopOfPage();

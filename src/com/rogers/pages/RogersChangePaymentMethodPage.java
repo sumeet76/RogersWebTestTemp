@@ -35,10 +35,12 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[@class='current-pm']//div[@class='current-pm-value']/span")
 	WebElement lblCurrentPaymentMethod;
-	
-	@FindBy(xpath = "//span[contains(text(),'Use a bank account for automatic payments') or contains(text(),' Effectuer des paiements automatiques à partir d’un compte bancaire ')]/ancestor::label")
+
+	@FindAll({
+			@FindBy(xpath = "//span[contains(text(),' Use a different bank account for automatic payments ') or contains(text(),' Effectuer des paiements automatiques à partir d’un compte bancaire ')]/ancestor::label"),
+			@FindBy(xpath = "//span[contains(text(),'Use a bank account for automatic payments') or contains(text(),' Effectuer des paiements automatiques à partir d’un compte bancaire ')]/ancestor::label")})
 	WebElement optBankAccount;
-	
+
 	@FindBy(xpath = "//span[contains(text(),' Use a credit card for automatic payments ') or contains(text(),' Effectuer des paiements automatiques à partir d’un compte de carte de crédit ')]/ancestor::label")
 	WebElement optCardAccount;
 	
@@ -70,7 +72,11 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	@FindBy(xpath = "//span[text()=' Continue ']"),
 	@FindBy(xpath = "//button[@translate='ute.payment.method.manual_payment_continue']")})	
 	WebElement btnContinue;
-	
+
+	@FindBy(xpath = "(//span[text()=' Continue '])[2]")
+	WebElement btnReviewContinueButton;
+
+
 	@FindBy(xpath = "//div[@class='confirm-review']/button[@translate='ute.payment.method.manual_payment_continue']")
 	WebElement btnContinueOnSecuredCC;
 	
@@ -94,9 +100,12 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[@class='pm-success-text-content']/div[@class='success-header-text']")
 	WebElement lblSuccessHeader;
-	
-	@FindBy(xpath = "//span[text()='Success! Starting next month your bill payments will be made automatically.' or text()='C’est réussi! À partir du mois prochain, vos paiements de facture se feront automatiquement.']")
+
+	@FindAll({
+			@FindBy(xpath = "//span[text()='Success! Starting next month your bill payments will be made automatically.' or text()='C’est réussi! À partir du mois prochain, vos paiements de facture se feront automatiquement.']"),
+			@FindBy(xpath = "//span[text()='Success! Your payment method has been changed.' or text()='C’est fait! Votre mode de paiement a été modifié.']")})
 	WebElement lblYouAutomaticPaymentWillStart;
+
 	
 	@FindBy(xpath = "//button[@translate='ute.payment.method.pm_done' or @translate='ute.payment.method.close_button']")
 	WebElement btnDone;
@@ -107,13 +116,22 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Success! Your payment method has been changed.')]/ancestor::p")
 	WebElement msgChangePaymentSuccess;
 
-	@FindBy(id = "sema")
+	@FindAll({
+	@FindBy(id = "sema"),
+	@FindBy(id="//ss-semafone-credit-card/iframe")})
 	WebElement fraSemaphone;
 
 	@FindBy(xpath = "//input[@id='pan']")
 	WebElement txtCardNumber;
 
+	/* check if i should edit or create new one
 	@FindBy(id = "securityCode")
+	WebElement txtCVV;
+	*/
+
+	@FindAll({
+			@FindBy(id = "//span[text()=' Continue ']"),
+			@FindBy(xpath = "//input[@formcontrolname='cvc']")})
 	WebElement txtCVV;
 
 	@FindBy(xpath = "//select[@name='month']")
@@ -136,7 +154,20 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 
 	@FindBy(xpath = "//ds-picture/following-sibling::div//button[@title='Continue' or @title='Continuer']")
 	WebElement btnContinueBank;
-	
+
+	@FindBy(xpath = "//input[@formcontrolname='expiryDate']")
+	WebElement txtExpiryDate;
+
+	@FindBy(xpath = "//span[contains(text(),'Success! Starting next month your bill payments will be made automatically.') or contains(text(),'C’est réussi! À partir du mois prochain, vos paiements de facture se feront automatiquement.')]")
+	WebElement lblSuccessCreditCardChange;
+
+	@FindBy(xpath = "//p[contains(text(),' Automatic payments - Bank account ') or contains(text(),' Paiements automatiques – Compte bancaire ')]")
+	WebElement lblAutoBankPaymentLabel;
+
+	@FindBy(xpath = "//p[contains(text(),' Automatic payments - Credit Card ') or contains(text(),' Paiements automatiques – Carte de crédit ')]")
+	WebElement lblAutoCreditCardPaymentLabel;
+
+
 	/**
 	 * Validates that the 'Change Payment Method' overlay is loaded successfully
 	 * @return true if 'Change Payment Method' title is displayed; else false
@@ -337,7 +368,7 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifySuccessMessageIsDisplayed() {
-		return getReusableActionsInstance().isElementVisible(lblYouAutomaticPaymentWillStart,60);
+		return getReusableActionsInstance().isElementVisible(lblYouAutomaticPaymentWillStart,120);
 	}
 	
 	/**
@@ -414,6 +445,77 @@ public class RogersChangePaymentMethodPage extends BasePageClass {
 	 */
 	public void clkContinueBank() {
 		getReusableActionsInstance().getWhenReady(btnContinueBank).click();
-	}	
-	
+	}
+
+	/**
+	 * Enters the credit card number, expiry date and CVV numbers inorder to change payment
+	 * @param strCreditCardNumber credit card number
+	 * @param strExpiryMonth expiry month of credit card
+	 * @param strExpiryYear expiry year of credit card
+	 * @param strCVV cvv of credit card
+	 * @return true if the credit card was changed successfully
+	 * @author Rohit.Kumar
+	 */
+	public boolean setCreditInformation(String strCreditCardNumber, String strExpiryMonth, String strExpiryYear, String strCVV) {
+		boolean successfulChange = false;
+
+		//clkUseCCForAutomaticPayments();
+
+		//setCreditCardNumber(strCreditCardNumber);
+		getReusableActionsInstance().waitForFrameToBeAvailableAndSwitchToIt(fraSemaphone, 30);
+		getReusableActionsInstance().getWhenReady(txtCardNumber,40).click();
+		getReusableActionsInstance().getWhenReady(txtCardNumber).sendKeys(strCreditCardNumber);
+		getDriver().switchTo().defaultContent();
+		//getReusableActionsInstance().waitForFrameToBeAvailableAndSwitchToIt(fraSemaphone, 30);
+		//getReusableActionsInstance().waitForElementVisibility(txtCardNumber, 60);
+		//getReusableActionsInstance().clickIfAvailable(txtCardNumber);
+		//getReusableActionsInstance().enterText(txtCardNumber, strCreditCardNumber, 60);
+		//getReusableActionsInstance().getWhenReady(txtCardNumber).sendKeys(strCreditCardNumber);
+
+		String expiryLastTwoDigits = null;
+		if(strExpiryYear != null && strExpiryYear.length() >=2){
+			expiryLastTwoDigits = strExpiryYear.substring(strExpiryYear.length() - 2);
+		}
+		getReusableActionsInstance().waitForElementVisibility(txtExpiryDate, 60);
+		getReusableActionsInstance().clickIfAvailable(txtExpiryDate);
+		getReusableActionsInstance().getWhenReady(txtExpiryDate).sendKeys(strExpiryMonth + expiryLastTwoDigits);
+
+		getReusableActionsInstance().waitForElementVisibility(txtCVV, 60);
+		getReusableActionsInstance().clickIfAvailable(txtCVV);
+		getReusableActionsInstance().getWhenReady(txtCVV).sendKeys(strCVV);
+
+		
+		
+		
+		clkContinue();
+
+		clkContinueOnReviewPg();
+
+		successfulChange = getReusableActionsInstance().isElementVisible(lblSuccessCreditCardChange, 20);
+
+		clkOnDone();
+
+		return successfulChange;
+	}
+
+	/**
+	 *
+	 * @return true if Bank Account is set up as automatic payment
+	 */
+	public boolean isBankPaymentSet() {
+
+		return getReusableActionsInstance().isElementVisible(lblAutoBankPaymentLabel);
+	}
+
+	/**
+	 *
+	 * @return true if Bank Account is set up as automatic payment
+	 */
+	public boolean isCreditCardPaymentSet() {
+
+		return getReusableActionsInstance().isElementVisible(lblAutoCreditCardPaymentLabel);
+	}
+
+
+
 }

@@ -1,30 +1,24 @@
-package com.rogers.test.tests.selfserve.mobile;
+package com.rogers.test.tests.selfserve.desktop;
+
+import com.rogers.test.base.BaseTestClass;
+import com.rogers.test.helpers.RogersEnums;
+import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-import org.apache.http.client.ClientProtocolException;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;     
-import org.testng.annotations.Optional;                     
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+public class RogersSS_TC_110_SOHOViewBillTest extends BaseTestClass {
 
-import com.rogers.test.base.BaseTestClass;
-import com.rogers.test.helpers.RogersEnums;
-import com.rogers.testdatamanagement.TestDataHandler;
-
-
-public class Mobile_RogersSS_TC_036_WirelessPostpaidOverviewViewBillTest extends BaseTestClass {
-
-    @Test(groups = {"MobileSanitySS"})
+    @Test(groups = {"SanitySS","BillingAndPaymentsSS"})
     public void viewBillTest() {
-    	getRogersHomePage().clkSignInMobile();
+        getRogersHomePage().clkSignIn();
 		getRogersLoginPage().switchToSignInIFrame();
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc36.getUsername());
-		getRogersLoginPage().setPasswordIFrameMobile(TestDataHandler.tc36.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc101.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc101.getPassword());
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
@@ -32,10 +26,10 @@ public class Mobile_RogersSS_TC_036_WirelessPostpaidOverviewViewBillTest extends
 		getRogersLoginPage().switchOutOfSignInIFrame();
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account overlay.");
-            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc36.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc101.getAccountDetails().getBan());
         }
 		reporter.reportLogWithScreenshot("Page after login.");
-        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLoginMobile(),
+        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),
         						"Login success.",
         						"Login Error. Refer screenshot");
         getRogersAccountOverviewPage().clickViewYourBill();
@@ -61,7 +55,7 @@ public class Mobile_RogersSS_TC_036_WirelessPostpaidOverviewViewBillTest extends
     @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
    	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
    		startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
-   		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
+   		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
    	}
       	
    	

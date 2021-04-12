@@ -51,7 +51,7 @@ public class Mobile_RogersSS_TC_032_Postpaid_ChangeBillingAddress extends BaseTe
 
 		getRogersLoginPage().switchToSignInIFrame();
 		getRogersLoginPage().setUsernameIFrame(strUsername);
-		getRogersLoginPage().setPasswordIFrame(strPassword);
+		getRogersLoginPage().setPasswordIFrameMobile(strPassword);
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
 		getRogersLoginPage().clkSignInIFrame();
 		getRogersLoginPage().clkSkipIFrame();

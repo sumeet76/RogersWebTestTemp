@@ -375,7 +375,6 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//a[contains(@title,'Cancel the Apple Music subscription for') or contains(@title,'Annuler l’abonnement')]")
 	WebElement btnCancelSubscription;
 
-	
 	@FindBy(xpath = "//h1[text()='Cancel subscription' or contains(text(),'Annuler l’abonnement')]")
 	WebElement headerCancelSubscription;
 
@@ -481,6 +480,15 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement popLoader;
 
+	@FindBy (xpath = "//span[contains(text(),'Change payment method') or contains(text(),'Changer le mode de paiement')]")
+	WebElement lnkChangePaymentMethodButton;
+
+	@FindBy (xpath = "//span[contains(text(),' bank account ending') or contains(text(),' compte bancaire se terminant par')]")
+	WebElement lblBankPaymentMethodLabel;
+
+	@FindBy (xpath = "//div[@class='ds-price']")
+	WebElement lblTotalBalance;
+
 	// **********  PTP ***************** //
 
 	@FindBy(xpath = "//rss-promise-to-pay-alert/dsa-alert")
@@ -512,6 +520,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	@FindBy(xpath = "//*[@translate='promise-to-pay.success-ptp.done-btn']")
 	WebElement btnDoneAfterSetUpPromiseSuccessFul;
+
+	@FindBy(xpath = "//a[@class='c-navbar-link dropdown-toggle menu-click' and contains(text(),'Utilisation et services ') or contains(text(),'Usage & Services ')]")
+	WebElement btnUsageAndServicesDropDown;
+
 
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
@@ -1924,13 +1936,14 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		 * 
 		 */
 		public void clkSetUpAutoPaymentQuickLink() {
+			getReusableActionsInstance().waitForElementTobeClickable(lnkSetUpAutoPayment, 60);
 			getReusableActionsInstance().getWhenReady(lnkSetUpAutoPayment).click();
 		}
 		
 		
-		public void getCurrentPaymentMethod() {
+		//public void getCurrentPaymentMethod() {
 			//getReusableActionsInstance().getWhenReady(locator)
-		}
+		//}
 
 		/**
 		 * 
@@ -1948,7 +1961,59 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			getReusableActionsInstance().getWhenReady(lnkChangePaymentMethodQuickLin).click();
 		}
 
-    public boolean verifyPTPWidgetIsDisplayed() {
+	/**
+	 * Click on the "Change Payment Method" link
+	 * @author Rohit.Kumar
+	 */
+	public void clkChangePaymentMethodLink() {
+		getReusableActionsInstance().clickWhenReady(lnkChangePaymentMethodButton, 10);
+	}
+
+	/**
+	 * Checks if the Bank payment is displayed
+	 * @return true if set Bank payment sub menu is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isBankPaymentDisplayed() {
+		return getReusableActionsInstance().isElementVisible(lblBankPaymentMethodLabel);
+	}
+
+
+	/**
+	 * Returns the type of Payment Method currently setup on the account
+	 * @return Returns either: | Credit | Bank | Manual |
+	 * @author Rohit.Kumar
+	 */
+	public String getCurrentAccountPaymentMethod(){
+
+		if(isLnkSetAutoPaymentDisplayed()){
+			return "Manual";
+		} else if (isBankPaymentDisplayed()){
+			return "Bank";
+		} else {
+			return "Credit";
+		}
+
+	}
+
+	/**
+	 * Verifies if the balance label is displayed correctly
+	 * @return true if the balance label is present ; else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean verifyBillingWidgetBalance() {
+		String totalBalanceString = lblTotalBalance.getAttribute("aria-label").replaceAll("[^0-9\\.,$-]","");;
+
+		if(totalBalanceString.startsWith("$") || totalBalanceString.endsWith("$")){
+			return true;
+		} else {
+
+			return false;
+		}
+
+	}
+
+public boolean verifyPTPWidgetIsDisplayed() {
 			return getReusableActionsInstance().isElementVisible(divPTP);
     }
 
@@ -2008,6 +2073,19 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	}
 
 
+	/**
+	 * clicks the drop and and checks to see if the account show in Menu UsageAndService drop down on account overview page.
+	 * @param strLast4DigAcctNum string account number
+	 * @return true if element visible else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean checkIfAccountIsShowInDropDown(String strLast4DigAcctNum) {
+		getReusableActionsInstance().getWhenReady(btnUsageAndServicesDropDown).click();
+		return getReusableActionsInstance().isElementVisible(
+				(By.xpath("//span[contains(@data-translate-values,'" + strLast4DigAcctNum + "') or contains(text(),'" + strLast4DigAcctNum + "')]")),
+				10);
+	}
+
 	public boolean verifyIfEffectiveCancelDateForSubscriptionISImmediate(String test_language) {
 		String cancelledEndDate= getReusableActionsInstance().getWhenReady(lblSMPpromotionEnded).getText();
 		cancelledEndDate = cancelledEndDate.split("ended")[1].trim();
@@ -2030,6 +2108,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		}
 		return false;
 	}
+
+
 
 
 	public boolean verifyIfTheOrderOfTheCancelledCTNsWillBeDisplayedBasedOnEffectiveCancelDatesForImmediateAndDeferredCancelledCTNs() {

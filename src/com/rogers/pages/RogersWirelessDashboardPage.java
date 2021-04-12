@@ -553,6 +553,61 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	
 	@FindBy(xpath = "//span[contains(text(),'See offers on new phones') or contains(text(),'Voir les offres sur les nouveaux téléphones')]")
 	WebElement btnSeeOffersOnNewPhones;
+
+	//device details section
+	@FindBy(xpath = "//button[@variant='tertiary']")
+	WebElement btnViewFinancingDetails;
+
+	@FindBy(xpath = "//div[contains(@aria-label,'Device financing payment:') or contains(@aria-label,'Paiement de financement de l’appareil :')]")
+	WebElement monthlyFinancingAmount;
+
+	@FindBy(xpath = "//span[contains(text(),'Remaining financing balance: ') or contains(@aria-label,'Solde de financement restant : ')]/following-sibling::ds-price")
+	WebElement remainingFinancingBalance;
+
+	@FindBy(xpath = "//span[contains(text(),'Financing agreement start date: ') or contains(text(),'Date de début de l’entente de financement : ')]/following-sibling::span")
+	WebElement financingAgreementStartDate;
+
+	@FindBy(xpath = "//span[contains(text(),'Financing agreement end date: ') or contains(text(),'Date de fin de l’entente de financement : ')]/following-sibling::span")
+	WebElement financingAgreementEndDate;
+
+
+	//device details modal
+	@FindBy(xpath = "//span[contains(text(),'Device purchased on:') or contains(text(),'Appareil acheté le :')]/following-sibling::span")
+	WebElement modalActivationDate;
+
+	@FindBy(xpath = "//span[contains(text(),'Your financing balance will be $0 on:') or contains(text(),'Votre solde de financement sera de 0 $ le :')]/following-sibling::span")
+	WebElement modalFinancingEndDate;
+
+
+	@FindBy(xpath = "//span[contains(text(),'Total remaining financing balance:') or contains(text(),'Solde total du financement :')]/following-sibling::ds-price")
+	WebElement modalTotalRemainingDeviceFinancingBalance;
+
+	@FindBy(xpath = "//span[contains(text(),'Remaining device financing balance:') or contains(text(),'Solde restant du financement d’appareil :')]/following-sibling::ds-price")
+	WebElement modalRemainingDeviceFinancingBalance;
+
+	@FindBy(xpath = "//span[contains(text(),'Remaining financed taxes:') or contains(text(),'Taxes restantes du financement :')]/following-sibling::ds-price")
+	WebElement modalRemainingFinancedTaxes;
+
+
+	@FindBy(xpath = "//span[contains(text(),'Total monthly financing payment:') or contains(text(),'Total mensuel du paiement pour le financement :')]/following-sibling::ds-price")
+	WebElement modalMonthlyFinancingAmountTotal;
+
+	@FindBy(xpath = "//span[contains(text(),'Monthly financing payment:') or contains(text(),'Paiement mensuel pour le financement :')]/following-sibling::ds-price")
+	WebElement modalMonthlyFinancingAmountBase;
+
+	@FindBy(xpath = "//span[contains(text(),'Monthly financed taxes:') or contains(text(),'Taxes mensuelles sur le financement :')]/following-sibling::ds-price")
+	WebElement modalMonthlyFinancingTaxes;
+
+	@FindBy(xpath = "//span[contains(text(),'Months remaining:') or contains(text(),'Mois restants :')]/following-sibling::span")
+	WebElement modalMonthsRemaining;
+
+	@FindBy(xpath = "//button[contains(@title,'Show device financing details') or contains(@title,'Afficher les détails sur le financement de l’appareil')]")
+	WebElement deviceFinancingDetailsButton;
+
+	@FindBy(xpath = "//p[contains(text(),'Your remaining financing balance is the amount you financed when you purchased your device less any monthly payments.') or contains(text(),'Votre solde de financement correspond au montant financé lorsque vous avez acheté l’appareil, moins les paiements mensuels.')]")
+	WebElement legalCopyForFinancingProgram;
+
+
 	
 	/**
 	 * To click the link of lost or stolen device on wireless dashboard page
@@ -2433,4 +2488,177 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	public void closeChatImage() {
 		getReusableActionsInstance().executeJavaScript("return document.getElementsByClassName('floating-live-chat')[0].remove();");
 	}
+
+	/**
+	 * Clicks View Financing Details button
+	 * @author Rohit.Kumar
+	 */
+	public void clkViewFinancingDetails() {
+		getReusableActionsInstance().waitForElementTobeClickable(btnViewFinancingDetails, 60);
+		getReusableActionsInstance().getWhenReady(btnViewFinancingDetails,60).click();
+
+	}
+
+	/**
+	 * Checks if the View Financing Details Button is visible
+	 * @return true if the element is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isViewFinancingDetailsButtonDisplayed() {
+		return (getReusableActionsInstance().isElementVisible(btnViewFinancingDetails)
+				&& getReusableActionsInstance().isElementVisible(btnViewFinancingDetails));
+	}
+
+	/**
+	 * Checks if the Monthly Financing Amount is visible
+	 * @return true if the element is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isMonthlyFinancingAmountDisplayed() {
+		return (getReusableActionsInstance().isElementVisible(monthlyFinancingAmount)
+				&& getReusableActionsInstance().isElementVisible(monthlyFinancingAmount));
+	}
+
+
+	/**
+	 * Checks if the Remaining Financing Balance is visible
+	 * @return true if the element is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isRemainingFinancingBalanceDisplayed() {
+		return (getReusableActionsInstance().isElementVisible(remainingFinancingBalance)
+				&& getReusableActionsInstance().isElementVisible(remainingFinancingBalance));
+	}
+
+	/**
+	 * Checks if the Financing Agreement Start Date is visible
+	 * @return true if the element is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isFinancingAgreementStartDateDisplayed() {
+		return (getReusableActionsInstance().isElementVisible(financingAgreementStartDate)
+				&& getReusableActionsInstance().isElementVisible(financingAgreementStartDate));
+	}
+
+
+	/**
+	 * Checks if the Financing Agreement End Date is visible
+	 * @return true if the element is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isFinancingAgreementEndDateDisplayed() {
+		return (getReusableActionsInstance().isElementVisible(financingAgreementEndDate)
+				&& getReusableActionsInstance().isElementVisible(financingAgreementEndDate));
+	}
+
+	/**
+	 * Checks if the Activation Date is visible
+	 * @return true if the element is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isActivationDateDisplayed() {
+		return (getReusableActionsInstance().isElementVisible(modalActivationDate)
+				&& getReusableActionsInstance().isElementVisible(modalActivationDate));
+	}
+
+	/**
+	 * Checks if the Financing End Date is visible
+	 * @return true if the element is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isFinancingEndDateDisplayed() {
+		return (getReusableActionsInstance().isElementVisible(modalFinancingEndDate)
+				&& getReusableActionsInstance().isElementVisible(modalFinancingEndDate));
+	}
+
+	/**
+	 * Checks if the Total Remaining Device Financing Balance is visible
+	 * @return true if the element is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isTotalRemainingDeviceFinancingBalanceDisplayed() {
+		return (getReusableActionsInstance().isElementVisible(modalTotalRemainingDeviceFinancingBalance)
+				&& getReusableActionsInstance().isElementVisible(modalTotalRemainingDeviceFinancingBalance));
+	}
+
+	/**
+	 * Checks if the Remaining Device Financing Balance is visible
+	 * @return true if the element is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isRemainingDeviceFinancingBalanceDisplayed() {
+		return (getReusableActionsInstance().isElementVisible(modalRemainingDeviceFinancingBalance)
+				&& getReusableActionsInstance().isElementVisible(modalRemainingDeviceFinancingBalance));
+	}
+
+	/**
+	 * Checks if the Remaining Financed Taxes is visible
+	 * @return true if the element is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isRemainingFinancedTaxesDisplayed() {
+		return (getReusableActionsInstance().isElementVisible(modalRemainingFinancedTaxes)
+				&& getReusableActionsInstance().isElementVisible(modalRemainingFinancedTaxes));
+	}
+
+	/**
+	 * Checks if the Monthly Financing Amount Total is visible
+	 * @return true if the element is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isMonthlyFinancingAmountTotalDisplayed() {
+		return (getReusableActionsInstance().isElementVisible(modalMonthlyFinancingAmountTotal)
+				&& getReusableActionsInstance().isElementVisible(modalMonthlyFinancingAmountTotal));
+	}
+
+	/**
+	 * Checks if the Monthly Financing Amount Base is visible
+	 * @return true if the element is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isMonthlyFinancingAmountBaseDisplayed() {
+		return (getReusableActionsInstance().isElementVisible(modalMonthlyFinancingAmountBase)
+				&& getReusableActionsInstance().isElementVisible(modalMonthlyFinancingAmountBase));
+	}
+
+	/**
+	 * Checks if the Monthly Financing Taxes is visible
+	 * @return true if the element is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isMonthlyFinancingTaxesDisplayed() {
+		return (getReusableActionsInstance().isElementVisible(modalMonthlyFinancingTaxes)
+				&& getReusableActionsInstance().isElementVisible(modalMonthlyFinancingTaxes));
+	}
+
+	/**
+	 * Checks if the Months Remaining is visible
+	 * @return true if the element is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isMonthsRemainingDisplayed() {
+		return (getReusableActionsInstance().isElementVisible(modalMonthsRemaining)
+				&& getReusableActionsInstance().isElementVisible(modalMonthsRemaining));
+	}
+
+	/**
+	 * Checks if the Legal Copy For Financing Program is visible
+	 * @return true if the element is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isLegalCopyForFinancingProgramDisplayed() {
+		return (getReusableActionsInstance().isElementVisible(legalCopyForFinancingProgram)
+				&& getReusableActionsInstance().isElementVisible(legalCopyForFinancingProgram));
+	}
+
+	/**
+	 * To click Device Financing Details Button
+	 * @author Rohit.Kumar
+	 */
+	public void clkDeviceFinancingDetailsButton() {
+		getReusableActionsInstance().getWhenReady(deviceFinancingDetailsButton, 30).click();
+	}
+
+
+
 }

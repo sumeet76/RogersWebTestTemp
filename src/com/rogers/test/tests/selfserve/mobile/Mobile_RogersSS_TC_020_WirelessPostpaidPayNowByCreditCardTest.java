@@ -25,7 +25,7 @@ public class Mobile_RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest exten
         getRogersHomePage().clkSignInMobile();
         getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc1920.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc1920.getPassword());
+        getRogersLoginPage().setPasswordIFrameMobile(TestDataHandler.tc1920.getPassword());
 		reporter.reportLogWithScreenshot("Login credential is entered.");
         getRogersLoginPage().clkSignInIFrame();
         getRogersLoginPage().clkSkipIFrame();
