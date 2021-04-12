@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_TC11_HUPNpotgML_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","SanityBFA","HUPBFA"})
+	@Test(groups = {"RegressionBFA","HUPBFA"})
     public void rogersHUPNpotgMLTest() {
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");

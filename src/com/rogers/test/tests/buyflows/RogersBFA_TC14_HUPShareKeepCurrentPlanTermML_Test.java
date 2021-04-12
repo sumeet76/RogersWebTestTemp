@@ -15,7 +15,7 @@ package com.rogers.test.tests.buyflows;
  */
 public class RogersBFA_TC14_HUPShareKeepCurrentPlanTermML_Test extends BaseTestClass{
 
-    @Test(groups = {"RegressionBFA","SanityBFA","HUPBFA"})
+    @Test(groups = {"RegressionBFA","HUPBFA"})
     public void rogersHUPShareKeepCurrentPlanTermMLTest() {
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
