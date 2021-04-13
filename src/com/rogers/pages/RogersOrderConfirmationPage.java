@@ -66,9 +66,10 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 			@FindBy(xpath = "//ds-expander[@id='orderTable-refId-11']//div[@class='ds-price']"),
 			@FindBy(xpath = "//span[@checkout-res='checkout_order_summary_total']")
 	})
-	WebElement lblOrderSummaryTotal;	
-	
-	
+	WebElement lblOrderSummaryTotal;
+
+	@FindBy(xpath="//div[@class='contact-information__content']/p[contains(text(),'BAN')]")
+	WebElement txtBAN;
 	/**
 	 * Verify the the yellow banner with order success information
 	 * @return true if the page display the yellow banner with order success information , else false
@@ -155,5 +156,15 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	public void clkUpgradeCartCheckOutButton() {
 		getReusableActionsInstance().waitForElementVisibility(btnUpgradeCartCheckOutButton, 180);
 		getReusableActionsInstance().executeJavaScriptClick(btnUpgradeCartCheckOutButton);
+	}
+
+	/**
+	 * get the BAN from order confirmation page
+	 */
+
+	public String getBAN() {
+		String nameText = getReusableActionsInstance().getNameText(txtBAN);
+		String[] split = nameText.split(" ");
+		return split[1];
 	}
 }
