@@ -12,46 +12,6 @@ public class DBValidation extends BaseTestClass{
     public static Statement statement;
     public static Map<Object, Object> resultMap;
 
-
-    /**
-     * This constructor method will establish the db connection
-     *
-     * @param url      DB connection string
-     * @param username for DB connection
-     * @param password for DB connection
-     */
-    /**
-    public DBValidation(String url, String username, String password) {
-        try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            connect = DriverManager.getConnection(url, username, password);
-            connect.setAutoCommit(false);
-            statement = connect.createStatement();
-        } catch (ClassNotFoundException | SQLException e) {
-            reporter.reportLog("DB Connection error" + e.getMessage());
-        }
-    }
-
-    public DBValidation(String dbEnv) {
-        System.out.println("DB Environment details" + dbEnv);
-        try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            switch (dbEnv.toLowerCase()) {
-                case "sft06":
-                    connect = DriverManager.getConnection("jdbc:oracle:thin:@BHPDB474:1526:V21QA6", System.getenv("SFT06"), System.getenv("SFT06"));
-                case "sft02":
-                    connect = DriverManager.getConnection("jdbc:oracle:thin:@BHPDB471:1526:V21QA2", System.getenv("SFT02"), System.getenv("SFT02"));
-                default:
-                    connect = DriverManager.getConnection("jdbc:oracle:thin:@BHPDB471:1526:V21QA2", System.getenv("SFT02"), System.getenv("SFT02"));
-            }
-            connect.setAutoCommit(false);
-            statement = connect.createStatement();
-        } catch (ClassNotFoundException | SQLException e) {
-            new BaseTestClass().reporter.reportLog("DB Connection error" + e.getMessage());
-        }
-
-    }
-**/
     /**
      * Method will execute the query in the DB, if commit is true then the executed code will be committed.
      *
@@ -114,11 +74,7 @@ public class DBValidation extends BaseTestClass{
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             switch (dbEnv.toLowerCase()) {
-
                 case "sft04":
-                    System.out.println("inside SFT04 case connection manager");
-                    System.out.println(System.getenv("SFT04"));
-                    System.out.println(System.getenv("SFT02"));
                     connect = DriverManager.getConnection("jdbc:oracle:thin:@BHPDB473:1526:V21QA4",System.getenv("SFT04"),System.getenv("SFT04"));
                     break;
                 case "sft06":
@@ -127,9 +83,6 @@ public class DBValidation extends BaseTestClass{
                 case "sft02":
                     connect = DriverManager.getConnection("jdbc:oracle:thin:@BHPDB471:1526:V21QA2", System.getenv("SFT02"), System.getenv("SFT02"));
                     break;
-                default:
-                    System.out.println("Default");
-                    //connect = DriverManager.getConnection("jdbc:oracle:thin:@BHPDB471:1526:V21QA2", System.getenv("SFT02"), System.getenv("SFT02"));
             }
             connect.setAutoCommit(false);
             statement = connect.createStatement();
