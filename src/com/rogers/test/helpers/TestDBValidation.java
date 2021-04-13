@@ -15,17 +15,17 @@ public class TestDBValidation extends BaseTestClass {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
-        DBValidation db = new DBValidation();
-        db.connectionMethod("sft02");
-        db.executeDBQuery("select * from subscriber where SUBSCRIBER_NO='2042272133'", false);
-        System.out.println(" DB Value retrieved from the list : " + db.getDBValue("CUSTOMER_BAN"));
-        List<Object> dbValues = db.getDBValues(new String[]{"CUSTOMER_ID", "SUBSCRIBER_NO", "CTN_SEQ_NO", "EFFECTIVE_DATE"});
-        System.out.println(dbValues);
+//        DBValidation db = new DBValidation();
+//        db.connectionMethod("sft04");
+//        db.executeDBQuery("select * from subscriber where customer_id=947824371", false);
+//        System.out.println(" DB Value retrieved from the list : " + db.getDBValue("CUSTOMER_BAN"));
+//        List<Object> dbValues = db.getDBValues(new String[]{"CUSTOMER_ID", "SUBSCRIBER_NO", "CTN_SEQ_NO", "EFFECTIVE_DATE"});
+//        System.out.println(dbValues);
 
         System.out.println("Base Class");
-        List<Object> sft02 = getDbConnection().connectionMethod("sft02")
-                .executeDBQuery("select * from subscriber where SUBSCRIBER_NO='2042272133'", false)
-                .getDBValues(new String[]{"CUSTOMER_ID", "SUBSCRIBER_NO", "CTN_SEQ_NO", "EFFECTIVE_DATE"});
+        getDbConnection().connectionMethod("sft04")
+                .executeDBQuery("select * from subscriber where customer_id='947824371'", false);
+                //.getDBValues(new String[]{"CUSTOMER_ID", "SUBSCRIBER_NO", "CTN_SEQ_NO", "EFFECTIVE_DATE"});
 
 
     }

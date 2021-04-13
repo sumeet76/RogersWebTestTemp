@@ -59,7 +59,7 @@ public class DBValidation extends BaseTestClass{
      * @param commit   set true if you want to commit the changes in the data base.
      * @return Map - Results are returned as map
      */
-    public DBValidation executeDBQuery( String sqlQuery, boolean commit) {
+    public DBValidation executeDBQuery(String sqlQuery, boolean commit) {
         resultMap = new HashMap<>();
         try {
             ResultSet result = statement.executeQuery(sqlQuery);
@@ -70,7 +70,7 @@ public class DBValidation extends BaseTestClass{
             ResultSetMetaData meta = result.getMetaData();
             while (result.next()) {
                 for (int count = 1; count < columnCount; count++) {
-                    //System.out.println(meta.getColumnLabel(count) + ":" + result.getString(count));
+                    System.out.println(meta.getColumnLabel(count) + ":" + result.getString(count));
                     resultMap.put(meta.getColumnLabel(count), result.getString(count));
                 }
             }
@@ -114,12 +114,22 @@ public class DBValidation extends BaseTestClass{
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             switch (dbEnv.toLowerCase()) {
+
+                case "sft04":
+                    System.out.println("inside SFT04 case connection manager");
+                    System.out.println(System.getenv("SFT04"));
+                    System.out.println(System.getenv("SFT02"));
+                    connect = DriverManager.getConnection("jdbc:oracle:thin:@BHPDB473:1526:V21QA4",System.getenv("SFT04"),System.getenv("SFT04"));
+                    break;
                 case "sft06":
                     connect = DriverManager.getConnection("jdbc:oracle:thin:@BHPDB474:1526:V21QA6", System.getenv("SFT06"), System.getenv("SFT06"));
+                    break;
                 case "sft02":
                     connect = DriverManager.getConnection("jdbc:oracle:thin:@BHPDB471:1526:V21QA2", System.getenv("SFT02"), System.getenv("SFT02"));
+                    break;
                 default:
-                    connect = DriverManager.getConnection("jdbc:oracle:thin:@BHPDB471:1526:V21QA2", System.getenv("SFT02"), System.getenv("SFT02"));
+                    System.out.println("Default");
+                    //connect = DriverManager.getConnection("jdbc:oracle:thin:@BHPDB471:1526:V21QA2", System.getenv("SFT02"), System.getenv("SFT02"));
             }
             connect.setAutoCommit(false);
             statement = connect.createStatement();

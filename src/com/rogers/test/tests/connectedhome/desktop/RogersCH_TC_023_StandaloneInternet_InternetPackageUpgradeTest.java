@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-
+import java.util.List;
 
 
 /**
@@ -72,7 +72,10 @@ public class RogersCH_TC_023_StandaloneInternet_InternetPackageUpgradeTest exten
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.softAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Update order completed","Update order Failed");
         reporter.reportLogWithScreenshot("Verified the Confirmation page");
-    	}
+
+
+
+    }
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
