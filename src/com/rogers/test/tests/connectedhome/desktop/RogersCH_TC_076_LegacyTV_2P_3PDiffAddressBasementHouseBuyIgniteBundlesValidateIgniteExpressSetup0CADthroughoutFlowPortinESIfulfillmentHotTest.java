@@ -48,9 +48,9 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_038_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest extends BaseTestClass {
+public class RogersCH_TC_076_LegacyTV_2P_3PDiffAddressBasementHouseBuyIgniteBundlesValidateIgniteExpressSetup0CADthroughoutFlowPortinESIfulfillmentHotTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
+    @Test(groups = {"RegressionCH",""})
 	public void checkTVPackageUpgradeTest() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
@@ -75,6 +75,11 @@ public class RogersCH_TC_038_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
     	getRogersHomePage().clkServiceability();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");    	
         getRogersHomePage().clkUseThisAddress();
+		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+
+		getRogersHomePage().setIgniteAddressLookupBasement();
+		reporter.reportLogWithScreenshot("Launched the customer availability check popup for basement address");
+		getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
         getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();

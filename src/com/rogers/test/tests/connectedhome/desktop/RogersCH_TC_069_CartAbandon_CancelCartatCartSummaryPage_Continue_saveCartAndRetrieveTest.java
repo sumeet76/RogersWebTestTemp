@@ -31,10 +31,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_070_IgniteNAC_CartAbandon_CancelCartatProfileCreationPage_StartOver_newBeforeYouGoModal_B_DisplayAsPerCopy_saveCartAndRetrieveTest extends BaseTestClass {
+public class RogersCH_TC_069_CartAbandon_CancelCartatCartSummaryPage_Continue_saveCartAndRetrieveTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
-    public void checkCartAbandonCancelCartatProfileCreationPage_StartOver_NewBeforeYouGoModal_BPage() {
+    @Test(groups = {"RegressionCH","RogersCartAbandon"})
+    public void checkCartAbandonCancelCartatCartSummary_Continue_NewBeforeYouGoModalPage() {
         reporter.reportLogWithScreenshot("Launched the Easy Login Page");
         getRogersHomePage().clkTVBundle();
         reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
@@ -60,19 +60,35 @@ public class RogersCH_TC_070_IgniteNAC_CartAbandon_CancelCartatProfileCreationPa
         reporter.reportLogWithScreenshot("Launched the cart summary page");
         getRogersIgniteTVBuyPage().set4KTV();
         reporter.reportLogWithScreenshot("4k TV selected");
-        getRogersIgniteTVBuyPage().clkCheckout();
+        getRogersIgniteTVBuyPage().clkCheckoutCancel();
 
-        reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyEmailModal(),"Email Modal is availabe","EmailModal is not availabe");
+        reporter.reportLogWithScreenshot("Launched the Email Modal");
+        getRogersIgniteTVBuyPage().setEmail();
+        getRogersIgniteTVBuyPage().clickEmailCheckbox();
+        getRogersIgniteTVBuyPage().clickSubmit();
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyConfirmation(),"Email Modal is availabe","EmailModal is not availabe");
+        getRogersIgniteTVBuyPage().clickOkay();
+        reporter.reportLogWithScreenshot("launched the login page");
+        getDriver().get(System.getProperty("QaUrl")+"/consumer/easyloginriverpage");
+        reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+        getRogersHomePage().clkShop();
+        getRogersHomePage().clkIgniteTV();
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyWelcomeBackPopup(),"Ignite page has Launched","Ignite page has not Launched");
+        getRogersIgniteTVBuyPage().clickContinue();
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
+        reporter.reportLogWithScreenshot("Launched the cart summary page");
+        getRogersIgniteTVBuyPage().set4KTV();
+        reporter.reportLogWithScreenshot("4k TV selected");
+        getRogersIgniteTVBuyPage().clkCheckout();
+        //reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersIgniteTVProfileCreationPage().setEmail();
         getRogersIgniteTVProfileCreationPage().setFirstname();
         getRogersIgniteTVProfileCreationPage().setLastName();
         getRogersIgniteTVProfileCreationPage().setPhone();
-        getRogersIgniteTVProfileCreationPage().clkSubmitCancel();
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyEmailModal(),"Email Modal is availabe","EmailModal is not availabe");
-        reporter.reportLogWithScreenshot("Launched the Email Modal");
-        getRogersIgniteTVBuyPage().clickStartOver();
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
+        getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
+        reporter.hardAssert(getRogersIgniteTVCreditCheckPage().verifyCreditEvalutionPage(),"Credit Evaluation page has Launched","Credit Evaluation page has not Launched");
     }
 
 

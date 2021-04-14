@@ -632,6 +632,16 @@ public class BaseTestClass {
                 getDriver().get(strUrl + "?setLanguage=" + language);
                 break;
 
+            case "connectedhome_shm":
+                setImplicitWait(getDriver(), 10);
+                getDriver().get(strUrl + "/home-security/security-packages"+ "?setLanguage=" + language);
+                break;
+
+            case "connectedhome_shmautomation":
+                setImplicitWait(getDriver(), 10);
+                getDriver().get(strUrl + "/home-security/automation-packages"+ "?setLanguage=" + language);
+                break;
+
             case "connectedhome_legacylogin":
                 setImplicitWait(getDriver(), 10);
                 getDriver().get(strUrl + "/web/totes/api/v1/bypassCaptchaAuth");
@@ -859,6 +869,10 @@ public class BaseTestClass {
                 RogersHomePhonePortInPageThreadLocal.set(new RogersHomePhonePortInPage(getDriver()));
                 RogersInternetProfilePageThreadLocal.set(new RogersInternetProfilePage(getDriver()));
                 RogersInternetCreditCheckPageThreadLocal.set(new RogersInternetCreditCheckPage(getDriver()));
+                break;
+
+            case "connectedhome_shm":
+            case "connectedhome_shmautomation":
                 RogersSecurityPackagesPageThreadLocal.set(new RogersSecurityPackagesPage(getDriver()));
                 break;
 

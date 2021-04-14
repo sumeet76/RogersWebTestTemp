@@ -34,36 +34,21 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_074_SAI_BaselineAndHouseAddress_ValidateServiceability_checkAnotherAddressTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","New"})
+	@Test(groups = {"RegressionCH",""})
     public void checkSignedInIgnite2PBundlesBuyInternetSameAddressBasementHouseTest() {
-        reporter.reportLogWithScreenshot("Launched the Home Page");
-        getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
-        reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc63_ShmSignedInInternetBuyBasement.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc63_ShmSignedInInternetBuyBasement.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
-        getRogersLoginPage().clkSignInIFrame();
-        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc63_ShmSignedInInternetBuyBasement.accountDetails.getBan());
-        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
-        reporter.reportLogWithScreenshot("Launched the Account Page");
-        getRogersHomePage().clkExistingCustomerShop();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        getRogersHomePage().clkExistingCustomerInternet();
-        reporter.reportLogWithScreenshot("Launched the Internet page");
+        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
+        getRogersHomePage().clkEasyInternet();
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        String  strAddressLine1=TestDataHandler.tc63_ShmSignedInInternetBuyBasement.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc63_ShmSignedInInternetBuyBasement.getAccountDetails().getAddress().get("line2");
+        //getRogersHomePage().clkAddressCheck();
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+        String  strAddressLine1=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
-        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 
         getRogersHomePage().setIgniteAddressLookupBasement();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup for basement address");
@@ -126,7 +111,7 @@ public class RogersCH_TC_074_SAI_BaselineAndHouseAddress_ValidateServiceability_
 	//login flow
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_igniteanonymous, method);
 	}
 
 	@AfterMethod(alwaysRun = true)

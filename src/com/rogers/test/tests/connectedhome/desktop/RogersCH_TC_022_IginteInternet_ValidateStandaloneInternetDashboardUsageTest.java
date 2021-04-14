@@ -30,7 +30,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_022_IginteInternet_ValidateStandaloneInternetDashboardUsageTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","saiCH","AKS"})
+	@Test(groups = {"RegressionCH","saiCH"})
     public void checkStandaloneInternetDashboard() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
