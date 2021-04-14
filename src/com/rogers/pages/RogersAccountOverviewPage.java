@@ -441,7 +441,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//a[@title='Sign up for Apple Music' or contains(@title,'S’abonner à Apple Music')]")
 	WebElement btnSignUp;
 
-	@FindBy(xpath = "//h1[@class='signup-page-title']")
+	@FindAll({
+	@FindBy(xpath = "//h2[text()='Terms & Conditions' or text()='']"),
+	@FindBy(xpath = "//h1[@class='signup-page-title']")})
 	WebElement headerTnC;
 
 	@FindBy(xpath = "//ds-checkbox")

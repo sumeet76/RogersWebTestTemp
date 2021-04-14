@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 public class RogersSS_TC_110_SOHOViewBillTest extends BaseTestClass {
 
-    @Test(groups = {"SanitySS","BillingAndPaymentsSS"})
+    @Test(groups = {"BillingAndPaymentsSS"})
     public void viewBillTest() {
         getRogersHomePage().clkSignIn();
 		getRogersLoginPage().switchToSignInIFrame();
