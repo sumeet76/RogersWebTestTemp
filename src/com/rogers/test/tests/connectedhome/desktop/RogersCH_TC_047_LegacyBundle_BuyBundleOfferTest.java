@@ -35,7 +35,7 @@ import java.lang.reflect.Method;
 public class RogersCH_TC_047_LegacyBundle_BuyBundleOfferTest extends BaseTestClass {
 	private String strLanguage=System.getProperty("Language");
 
-	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH"})
+	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH","DryRunCH"})
     public void checkLegacyBundleOffer() throws InterruptedException {
     	reporter.reportLogWithScreenshot("Launched the Home Page");
     	getRogersHomePage().clkShop();

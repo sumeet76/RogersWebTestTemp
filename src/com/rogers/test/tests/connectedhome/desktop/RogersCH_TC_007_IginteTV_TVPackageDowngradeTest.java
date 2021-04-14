@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_007_IginteTV_TVPackageDowngradeTest extends BaseTestClass {
 
-	 @Test(groups = {"SanityCH","RegressionCH","TVPlanUpgardeCH"})
+	 @Test(groups = {"SanityCH","RegressionCH","TVPlanUpgardeCH","DryRunCH"})
     public void checkSolarisTVPackageDowngrade() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();

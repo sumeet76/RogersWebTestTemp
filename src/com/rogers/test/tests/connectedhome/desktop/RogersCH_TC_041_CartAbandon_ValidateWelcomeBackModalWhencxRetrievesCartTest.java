@@ -48,7 +48,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_041_CartAbandon_ValidateWelcomeBackModalWhencxRetrievesCartTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","RogersCartAbandon"})
+	@Test(groups = {"RegressionCH","RogersCartAbandon","DryRunCH"})
     public void checkWelcomeBackModalWhencxCart() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	getRogersHomePage().clkTVBundle();

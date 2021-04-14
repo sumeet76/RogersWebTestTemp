@@ -33,7 +33,7 @@ import java.lang.reflect.Method;
 public class RogersCH_TC_072_SHM_AutomatePage_NavigatefromSubnav_ValidateAlltheSections_HeroBanner_Assessment_Packages_ServiceTest extends BaseTestClass {
     final String strLanguage=System.getProperty("Language");
 
-/*   @Test(groups = {"RegressionCH","RhpAndRhmCH"})
+   @Test(groups = {"RegressionCH","RhpAndRhmCH","DryRunCH"})
     public void checkShmAutomationPageDsaBillboardTest() {
         String actualTitle = getDriver().getTitle();
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyAutomationPackagesPageTitle(actualTitle, strLanguage), "Title is Verified", "Title Verification is failed");
@@ -147,7 +147,7 @@ public class RogersCH_TC_072_SHM_AutomatePage_NavigatefromSubnav_ValidateAlltheS
         reporter.reportLogWithScreenshot("security packages");
 
     }
-*/
+
    @Test(groups = {"RegressionCH","RhpAndRhmCH"})
     public void checkAutomationPageContactUsTest() {
        String actualTitle = getDriver().getTitle();

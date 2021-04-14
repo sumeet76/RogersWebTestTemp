@@ -48,7 +48,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_077_IginteTV_CartAbandon_2PNac_ValidateChannelCountwhenCXRetrievesAbandonedcartSummaryPageTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH",""})
+	@Test(groups = {"DryRunCH","RegressionCH",""})
     public void checkWelcomeBackModalWhencxCart() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	getRogersHomePage().clkTVBundle();

@@ -34,7 +34,7 @@ import java.lang.reflect.Method;
 public class RogersCH_TC_071_SHM_SecurityPage_ValidateAllSections_Subnav_HeroBanner_AssessmentPackages_Service_lookingBasicsTest extends BaseTestClass {
     final String strLanguage=System.getProperty("Language");
 
-   @Test(groups = {"RegressionCH","RhpAndRhmCH"})
+   @Test(groups = {"RegressionCH","RhpAndRhmCH","DryRunCH"})
     public void checkShmSecurityPageDsaBillboardTest() {
        String actualTitle = getDriver().getTitle();
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesPageTitle(actualTitle, strLanguage), "Title is Verified", "Title Verification is failed");

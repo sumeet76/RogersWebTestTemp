@@ -33,7 +33,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_068_UC1_ButtontoManageWifiHubnetwork_IgniteInternetdashboard_desktopexpTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersInternetCH"})
+    @Test(groups = {"RegressionCH","RogersInternetCH","DryRunCH"})
     public void checkIgniteInternetdashboardButtontoManageWifiHubnetwork() {
         getRogersHomePage().clkSignIn();
         getRogersLoginPage().switchToSignInIFrame();

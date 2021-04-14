@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends BaseTestClass {
 
-	@Test(groups = {"SanityCH","RegressionCH","saiCH"})
+	@Test(groups = {"SanityCH","RegressionCH","saiCH","DryRunCH"})
     public void checkBuyStandAloneInternetOffer() throws InterruptedException {
     	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
     	getRogersHomePage().clkEasyInternet();

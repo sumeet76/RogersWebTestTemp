@@ -33,7 +33,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_064_SAI_ISS_NAC_LearnPage_ISS_ToggleTest extends BaseTestClass {
 
-    @Test(groups = {"SanityCH","RegressionCH","SmartStreamCH"})
+    @Test(groups = {"SanityCH","RegressionCH","SmartStreamCH","DryRunCH"})
     public void checkIssNacLearnPageToggleONTest() {
         getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");

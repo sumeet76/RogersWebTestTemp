@@ -35,7 +35,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_016_IginteInternet_ValidateVAicononInternetDashboardTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","RogersInternetCH","AKS"})
+	@Test(groups = {"RegressionCH","RogersInternetCH","DryRunCH"})
     public void checkVAicononInternetDashboard() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();

@@ -33,7 +33,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_051_IgniteSmartStream_ValidateSupportSectionTest extends BaseTestClass {
 
-	@Test(groups = {"SanityCH","RegressionCH","SmartStreamCH"})
+	@Test(groups = {"SanityCH","RegressionCH","SmartStreamCH","DryRunCH"})
     public void checkIgniteSmartStreamDasboard() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
