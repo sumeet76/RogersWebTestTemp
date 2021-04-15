@@ -53,6 +53,7 @@ public class TestDataHandler {
 	public static AccountData tc48_legacyRHP;
 	public static AccountData tc42_igniteRHP;
 	public static AccountData tc27_28_RogersSHM;
+	public static AccountData tc63_ShmSignedInInternetBuyBasement;
 	public static AccountData tc15_SolarisInternetAccountWithUsage;
 	public static AccountData tc42SolarisInternetAccountWithUsage;
 	public static AccountData tc20_SolarisInternetAccountForUpgrade;
