@@ -108,7 +108,10 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "//button[@title='Check' or @title='Vérifier']")
     WebElement  checkBtn;
 
-    @FindBy(xpath = "//button[@title='Continue' or @title='Continuer']")
+    @FindAll({
+            @FindBy(xpath = "//button[@title='Continue' or @title='Continuer']"),
+            @FindBy(xpath = "(//ds-modal//button)[3]")
+    })
     WebElement continueBtn;
 
     @FindBy(xpath = "(//button[contains(@class,'ds-button ds-corners ds-pointer')])[3]")

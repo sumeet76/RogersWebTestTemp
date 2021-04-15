@@ -136,6 +136,17 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//ds-modal//button[contains(@title,'Continue')]")
     WebElement btnContinueOnModalToDoWithOldPhone;
 
+    @FindBy(xpath = "//div[@class='dsa-layout container']//ds-checkbox")
+    WebElement checkBoxAdditionalLineOPtion;
+
+    @FindBy(xpath = "//button[@data-test='add-to-cart-btn']")
+    WebElement btnAddToCart;
+
+    @FindBy(xpath = "//button[@data-test='continue-btn']")
+    WebElement btnProceedToCheckout;
+
+
+
     /**
      * Select Device Protection Header on Plan config page
      */
@@ -449,6 +460,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public void clickPreCartDeviceCostContinueButton() {
         getReusableActionsInstance().clickWhenReady(preCartDeviceCostContinueButton);
+        getReusableActionsInstance().clickIfAvailable(btnContinueOnModalToDoWithOldPhone, 30);
     }
 
     /**
@@ -582,6 +594,17 @@ public class RogersPlanConfigPage extends BasePageClass {
         clickGetBPOOffer();
 //        getReusableActionsInstance().waitForElementTobeClickable(continueButtonOnCartSummary, 10);
 //        getReusableActionsInstance().clickWhenReady(continueButtonOnCartSummary);
+    }
+
+    /**
+     * This method select the additional line plan option and Clicks on proceed to checkout button
+     * @author praveen.kumar7
+     */
+    public void clkAdditionalLineOptions() {
+        getReusableActionsInstance().clickWhenReady(checkBoxAdditionalLineOPtion, 30);
+        getReusableActionsInstance().clickWhenReady(btnAddToCart);
+        getReusableActionsInstance().scrollToElement(btnProceedToCheckout);
+        getReusableActionsInstance().clickWhenReady(btnProceedToCheckout, 30);
     }
 
     /**

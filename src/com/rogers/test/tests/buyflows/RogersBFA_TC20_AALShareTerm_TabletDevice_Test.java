@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
 
 public class RogersBFA_TC20_AALShareTerm_TabletDevice_Test extends BaseTestClass {
 
-    @Test(groups = {"RegressionBFA", "SanityBFA", "AALBFA"})
+    @Test(groups = {"RegressionBFA","AALBFA"})
     public void rogersAalTabletTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");

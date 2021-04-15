@@ -23,7 +23,7 @@ public class RogersBFA_TC21_AAL_BYOD_BopisShipping_Test extends BaseTestClass {
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA", "SanityBFA", "AALBFA"})
+    @Test(groups = {"RegressionBFA","AALBFA"})
     public void rogersAalByodBopisTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");

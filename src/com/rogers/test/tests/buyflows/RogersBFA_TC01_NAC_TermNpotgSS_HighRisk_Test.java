@@ -22,7 +22,7 @@ public class RogersBFA_TC01_NAC_TermNpotgSS_HighRisk_Test extends BaseTestClass 
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-    @Test(groups = {"RegressionBFA","SanityBFA","NACBFA"})
+    @Test(groups = {"RegressionBFA","NACBFA"})
     public void rogersNACTermNpotgSSTest() throws InterruptedException {
     	 //**************************Device catalog page****************************************
         reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");

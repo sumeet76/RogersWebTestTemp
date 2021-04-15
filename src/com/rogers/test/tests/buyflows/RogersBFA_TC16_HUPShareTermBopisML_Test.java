@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  */
 class RogersBFA_TC16_HUPShareTermBopisML_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","SanityBFA","HUPBFA"})
+	@Test(groups = {"RegressionBFA","HUPBFA"})
     public void rogersHUPShareTermBopisMLTest() {
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
