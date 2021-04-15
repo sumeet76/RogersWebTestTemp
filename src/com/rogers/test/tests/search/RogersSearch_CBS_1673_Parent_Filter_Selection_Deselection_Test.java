@@ -19,7 +19,7 @@ import java.util.List;
  * @author pankaj.patil
  */
 public class RogersSearch_CBS_1673_Parent_Filter_Selection_Deselection_Test extends BaseTestClass {
-    @DataProvider(name = "FilterData", parallel = false)
+    @DataProvider(name = "FilterData", parallel = true)
     public Object[] testData() throws IOException {
         String csvFileName = null;
         if (System.getProperty("Language").equalsIgnoreCase("en"))

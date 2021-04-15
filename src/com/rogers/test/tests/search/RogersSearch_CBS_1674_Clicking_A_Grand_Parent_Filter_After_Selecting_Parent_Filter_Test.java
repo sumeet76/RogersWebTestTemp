@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class RogersSearch_CBS_1674_Clicking_A_Grand_Parent_Filter_After_Selecting_Parent_Filter_Test extends BaseTestClass {
-    @DataProvider(name = "FilterData", parallel = false)
+    @DataProvider(name = "FilterData", parallel = true)
     public Object[] testData() throws IOException {
         String csvFileName = null;
         if (System.getProperty("Language").equalsIgnoreCase("en"))

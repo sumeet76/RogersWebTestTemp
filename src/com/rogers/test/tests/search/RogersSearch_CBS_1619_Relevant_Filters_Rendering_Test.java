@@ -17,7 +17,7 @@ import java.util.List;
 
 public class RogersSearch_CBS_1619_Relevant_Filters_Rendering_Test extends BaseTestClass {
 
-    @DataProvider(name = "FilterData", parallel = false)
+    @DataProvider(name = "FilterData", parallel = true)
     public Object[] testData() throws IOException {
         String csvFileName = null;
         if (System.getProperty("Language").equalsIgnoreCase("en"))

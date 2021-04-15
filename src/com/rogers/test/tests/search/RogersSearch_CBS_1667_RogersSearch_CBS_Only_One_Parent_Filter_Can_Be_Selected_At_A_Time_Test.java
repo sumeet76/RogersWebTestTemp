@@ -20,7 +20,7 @@ import utils.CSVReader;
  */
 public class RogersSearch_CBS_1667_RogersSearch_CBS_Only_One_Parent_Filter_Can_Be_Selected_At_A_Time_Test extends BaseTestClass {
 
-    @DataProvider(name = "FilterData", parallel = false)
+    @DataProvider(name = "FilterData", parallel = true)
     public Object[] testData() throws IOException {
         String csvFileName = null;
         if (System.getProperty("Language").equalsIgnoreCase("en"))
