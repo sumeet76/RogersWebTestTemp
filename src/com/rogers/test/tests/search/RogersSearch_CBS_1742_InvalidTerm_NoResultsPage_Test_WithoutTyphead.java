@@ -31,6 +31,7 @@ public class RogersSearch_CBS_1742_InvalidTerm_NoResultsPage_Test_WithoutTyphead
         getRogersSearchPage().isPageLoaded();
         reporter.reportLogWithScreenshot("Page is loaded");
         getRogersSearchPage().clickSearchIcon();
+        reporter.reportLogWithScreenshot("Clicked on search icon");
         getRogersSearchPage().enterTextToBeSearched(csvRowStrArray[0]);
         reporter.reportLogWithScreenshot("Search string " + csvRowStrArray[0] + " is entered in the search text box");
         getRogersSearchPage().clickSubmitSearchIcon();
@@ -40,14 +41,14 @@ public class RogersSearch_CBS_1742_InvalidTerm_NoResultsPage_Test_WithoutTyphead
         reporter.hardAssert(getRogersSearchPage().isNoResultsDisplayed(),
                 "No Results Found message is displayed", "No Results found message not displayed");
         reporter.hardAssert(!getRogersSearchPage().isFilterSectionDisplayed(),
-                "Filter Support is Not Displayed", "Filter Support is Displayed");
+                "Filter Section is Not Displayed", "Filter Section is Displayed");
     }
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
         xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-        startSession(System.getProperty("SearchUrl") + "wireless", strBrowser, strLanguage, RogersEnums.GroupName.search, method);
+        startSession(System.getProperty("SearchUrl"), strBrowser, strLanguage, RogersEnums.GroupName.search, method);
     }
 
     @AfterMethod(alwaysRun = true)

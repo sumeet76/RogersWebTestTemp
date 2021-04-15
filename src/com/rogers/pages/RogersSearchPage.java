@@ -32,7 +32,7 @@ public class RogersSearchPage extends BasePageClass {
     @FindBy(xpath = "//button[@title='Close search']")
     WebElement txtSearchCloseIcon;
 
-    @FindBy(xpath = "//span[@class='text-title-5 dsa-promoBlock__headingCopy mb-0']")
+    @FindBy(xpath = "//span[contains(@class,'text-title')]")
     WebElement lblNoResultsMsg;
 
     @FindBy(xpath = "//div[@ng-reflect-heading='Suggestions']/parent::section/parent::div/section[1]/div")
@@ -59,7 +59,7 @@ public class RogersSearchPage extends BasePageClass {
     @FindBy(xpath = "//dsa-selector[@data-test='storage-selector']//span[@class='dsa-selector__header text-title-5']/following-sibling::span")
     WebElement lblStorageValue;
 
-    @FindBy(xpath = "//span[@class='m-navLink__icon rds-icon-search -open']")
+    @FindBy(xpath = "//span[@class='m-navLink__icon rds-icon-search -open' or @class='rds-navLink__icon rds-icon-search -open']")
     WebElement searchTextIcon;
 
     @FindBy(xpath = "//input[@id='searchInput']")
@@ -77,25 +77,25 @@ public class RogersSearchPage extends BasePageClass {
     @FindBy(xpath = "//button[contains (@class, 'active') and @title='Page 2']")
     WebElement secondPagePaginationHighlighted;
 
-    @FindBy(xpath = "//button[contains (@class, 'active')]/div")
+    @FindBy(xpath = "//button[contains (@class, 'active ds-paginationButton')]/div")
     WebElement currentPageNumberHighlighted;
 
     @FindBy(xpath = "//button[@title='Page 2']")
     WebElement page2;
 
-    @FindBy(xpath = "//select[@id='ds-form-input-id-0']")
+    @FindBy(xpath = "//select[contains(@id,'form-input-id')]")
     WebElement resultPerPageDropdown;
 
-    @FindBy(xpath = "//span[@class='ds-icon rds-icon-right']")
+    @FindBy(xpath = "//span[contains(@class,'icon-right')]")
     WebElement firstForwardArrowKey;
 
-    @FindBy(xpath = "//span[@class='ds-icon rds-icon-left']")
+    @FindBy(xpath = "//span[contains(@class,'icon-left')]")
     WebElement firstBackwardArrowKey;
 
-    @FindBy(xpath = "//span[@class='ds-icon rds-icon-last']")
+    @FindBy(xpath = "//span[contains(@class,'icon-last')]")
     WebElement lastForwardArrowKey;
 
-    @FindBy(xpath = "//span[@class='ds-icon rds-icon-first']")
+    @FindBy(xpath = "//span[contains(@class,'icon-first')]")
     WebElement lastBackwardArrowKey;
 
     @FindBy(xpath = "(//a[@class='m-navLink -navbar']/span[@class='m-navLink__caption'])[3]")
@@ -117,13 +117,15 @@ public class RogersSearchPage extends BasePageClass {
 
     public static final By provinceInToggle = By.xpath("(//a[@class='m-navLink -navbar'])[2]");
 
-    public static final By numberOfPagesDisplayedAtBottom = By.xpath("//div[@class='d-flex ng-star-inserted']/button/div");
+    public static final By numberOfPagesDisplayedAtBottom = By.xpath("//button[contains(@class,'paginationButton')]/div");
 
-    public static final By allGrandParentFilters = By.xpath("//button[contains(@id,'-heading')]/following-sibling::ds-expander/div");
+    public static final By allGrandParentFilters = By.xpath("//button[contains(@class,'filter')]/following-sibling::ds-expander/div");
 
     public static final By categoryLabelInResults = By.xpath("//span[contains(@class,'categorylbl')]");
 
     public static final By storageLabelInFilter = By.xpath("//input[@name='storage']");
+
+    public static final By allDevicesInFilter = By.xpath("//input[@name='devicetype']");
 
     public static final By allColorsSwatchInResults = By.xpath("//ds-selection[@type='color']/label");
 
@@ -136,6 +138,13 @@ public class RogersSearchPage extends BasePageClass {
     public static final By filterSection = By.xpath("//div[@class='ds-filter']");
 
     public static final By watchSize = By.xpath("//input[contains(@id,'size')]");
+    //Mobile Page Objects
+
+    @FindBy(xpath = "//span[contains(@class,'icon-filter')]")
+    WebElement filterIconMobile;
+
+    @FindBy(xpath = "//button[contains(@class,'inline-block -primary -large')]")
+    WebElement showResultBtnMobile;
 
     Boolean isPagePresent = false;
     JavascriptExecutor js = null;
@@ -164,8 +173,7 @@ public class RogersSearchPage extends BasePageClass {
      */
     public boolean isFilterDisplayed(String strFilterName) {
         return getReusableActionsInstance().isElementVisible(
-                By.xpath("//div[@class='ds-filter__listSet']/div/button/div/p[starts-with(text(),'"
-                        + strFilterName + "')]"));
+                By.xpath("//button[contains(@id,'" + strFilterName + "-heading')]/div/p[starts-with(text(),'" + strFilterName + "')]"));
     }
 
     public boolean isFilterSectionDisplayed() {
@@ -186,8 +194,8 @@ public class RogersSearchPage extends BasePageClass {
             getReusableActionsInstance().waitForElementVisibility(searchResults);
             List<WebElement> categoryTags = getDriver().findElements(categoryLabelInResults);
             List<String> strFilterValues = Arrays.asList(strFilterArray);
-            for (int i = 0; i < categoryTags.size(); i++) {
-                String[] strTagText = categoryTags.get(i).getText().split("-");
+            for (WebElement categoryTag : categoryTags) {
+                String[] strTagText = categoryTag.getText().split("-");
                 if (!strFilterValues.contains(strTagText[0].trim())) {
                     count++;
                     break;
@@ -269,8 +277,8 @@ public class RogersSearchPage extends BasePageClass {
 
     public boolean validateResultsLinks() {
         List<WebElement> resultlinks = getDriver().findElements(allLinksInResults);
-        for (int counter = 0; counter < resultlinks.size(); counter++) {
-            if (!(resultlinks.get(counter).getAttribute("href").equals(""))) {
+        for (WebElement resultlink : resultlinks) {
+            if (!(resultlink.getAttribute("href").equals(""))) {
                 return true;
             }
         }
@@ -295,8 +303,8 @@ public class RogersSearchPage extends BasePageClass {
         String strExpectedTag = strGrandParentFilter.trim() + " - " + strParentFilterName[0].trim();
         getReusableActionsInstance().waitForAllElementsToBeRefreshedAndVisible(categoryLabelInResults, 10);
         List<WebElement> resultlinkTags = getDriver().findElements(categoryLabelInResults);
-        for (int counter = 0; counter < resultlinkTags.size(); counter++) {
-            String actualValue = resultlinkTags.get(counter).getText();
+        for (WebElement resultlinkTag : resultlinkTags) {
+            String actualValue = resultlinkTag.getText();
             if (!(actualValue.equalsIgnoreCase(strExpectedTag))) {
                 count++;
             }
@@ -318,8 +326,8 @@ public class RogersSearchPage extends BasePageClass {
         try {
             String strExpectedTag = strGrandParentFilter.trim() + " - ";
             List<WebElement> resultlinkTags = getDriver().findElements(categoryLabelInResults);
-            for (int i = 0; i < resultlinkTags.size(); i++) {
-                String tag = (resultlinkTags.get(i).getText());
+            for (WebElement resultlinkTag : resultlinkTags) {
+                String tag = (resultlinkTag.getText());
                 if (!tag.startsWith(strExpectedTag)) {
                     count++;
                     break;
@@ -346,28 +354,59 @@ public class RogersSearchPage extends BasePageClass {
     public List<String> getStorageSelections() {
         List<String> strStorageSelections = new ArrayList<>();
         List<WebElement> chkStorageSelections = getDriver().findElements(storageLabelInFilter);
-        for (int i = 0; i < chkStorageSelections.size(); i++) {
-            strStorageSelections.add(chkStorageSelections.get(i).getAttribute("value"));
+        for (WebElement chkStorageSelection : chkStorageSelections) {
+            strStorageSelections.add(chkStorageSelection.getAttribute("value"));
         }
         return strStorageSelections;
+    }
+
+    /**
+     * This method will return a list of all device values under wireless filter
+     *
+     * @author pankaj.patil
+     */
+    public List<String> getDeviceSelections() {
+        List<String> strDeviceSelections = new ArrayList<>();
+        List<WebElement> chkDeviceSelections = getDriver().findElements(allDevicesInFilter);
+        for (WebElement chkDeviceSelection : chkDeviceSelections) {
+            strDeviceSelections.add(chkDeviceSelection.getAttribute("value"));
+        }
+        return strDeviceSelections;
     }
 
     public List<String> getColorSelections() {
         List<String> strColorSelections = new ArrayList<>();
         List<WebElement> chkColorSelections = getDriver().findElements(allColorsInFilter);
-        for (int i = 0; i < chkColorSelections.size(); i++) {
-            strColorSelections.add(chkColorSelections.get(i).getText());
+        for (WebElement chkColorSelection : chkColorSelections) {
+            strColorSelections.add(chkColorSelection.getText());
         }
         return strColorSelections;
     }
 
     public void clkStorageType(String strStorage) {
-        WebDriverWait wait = new WebDriverWait(getDriver(), 1000);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ds-checkbox[contains(@id,'" + strStorage + "-host')]")));
-        WebElement element = getDriver().findElement(By.xpath("//ds-checkbox[contains(@id,'" + strStorage + "-host')]"));
-        Actions action = new Actions(getDriver());
-        action.moveToElement(element).click().build().perform();
-        isPageLoaded();
+        try {
+            WebDriverWait wait = new WebDriverWait(getDriver(), 1000);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ds-checkbox[contains(@id,'" + strStorage + "-host')]")));
+            WebElement element = getDriver().findElement(By.xpath("//ds-checkbox[contains(@id,'" + strStorage + "-host')]"));
+            Actions action = new Actions(getDriver());
+            action.moveToElement(element).click().build().perform();
+            isPageLoaded();
+        } catch (Exception e) {
+            throw new DigiAutoCustomException(e);
+        }
+    }
+
+    public void clickingOnDevice(String device) {
+        try {
+            WebDriverWait wait = new WebDriverWait(getDriver(), 1000);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ds-checkbox[contains(@id,'" + device + "-host')]")));
+            WebElement element = getDriver().findElement(By.xpath("//ds-checkbox[contains(@id,'" + device + "-host')]"));
+            Actions action = new Actions(getDriver());
+            action.moveToElement(element).click().build().perform();
+            isPageLoaded();
+        } catch (Exception e) {
+            throw new DigiAutoCustomException(e);
+        }
     }
 
     /**
@@ -391,6 +430,27 @@ public class RogersSearchPage extends BasePageClass {
         }
     }
 
+    /**
+     * This method will click on a device passed in the method argument
+     *
+     * @author naina.agarwal
+     */
+    public void clkDevice(String deviceType) {
+        int attempt = 0;
+        while (attempt < 2) {
+            try {
+                WebElement element = getDriver().findElement(By.xpath("//ds-checkbox[contains(@id,'" + deviceType + "-host')]"));
+                getReusableActionsInstance().scrollToElement(element);
+                getReusableActionsInstance().clickWhenReady(element);
+                isPageLoaded();
+                break;
+            } catch (StaleElementReferenceException e) {
+                e.printStackTrace();
+            }
+            attempt++;
+        }
+    }
+
     public List<WebElement> getAllResultLinks() {
         return getDriver().findElements(allResultLinksTitle);
     }
@@ -401,9 +461,13 @@ public class RogersSearchPage extends BasePageClass {
         isPageLoaded();
     }
 
-    public boolean isParentFilterExpanded(String strGrandParentFilter, String strParentFilter) {
-        WebElement isParentFilterExpanded = getDriver().findElement(By.xpath("//button[contains(@id,'" + strGrandParentFilter + "-heading')]/following-sibling::ds-expander//button[contains(@id,'" + strParentFilter + "')]/following-sibling::ds-expander"));
-        return isParentFilterExpanded.getAttribute("ng-reflect-expanded").equals("true");
+    public boolean isParentFilterExpanded(String strParentFilter) {
+        try {
+            WebElement expandedFilter = getDriver().findElement(By.xpath("//button[contains(@id,'" + strParentFilter + "-heading')]"));
+            return expandedFilter.getAttribute("aria-expanded").equals("true");
+        } catch (Exception e) {
+            throw new DigiAutoCustomException(e);
+        }
     }
 
     public void clkResetAllFilters() {
@@ -413,18 +477,12 @@ public class RogersSearchPage extends BasePageClass {
     public boolean validateAllFiltersCollapsed() {
         boolean collapsedFlag = true;
         List<WebElement> grandParentFilters = getDriver().findElements(By.xpath("//ds-accordion-panel[contains(@class,'-main-level')]/div/button//p"));
-        for (int i = 0; i < grandParentFilters.size(); i++) {
-            if (isGrandParentFilterExpanded(grandParentFilters.get(i).getText())) {
+        for (WebElement grandParentFilter : grandParentFilters) {
+            if (isGrandParentFilterExpanded(grandParentFilter.getText())) {
                 collapsedFlag = false;
             }
         }
         return collapsedFlag;
-    }
-
-    public void clkDeviceType(String strDeviceType) {
-        getReusableActionsInstance().javascriptScrollToTopOfPage();
-        getReusableActionsInstance().clickWhenReady(By.xpath("//ds-checkbox[@id='Shop_Wireless_devicetype_" + strDeviceType + "-host']"));
-        getReusableActionsInstance().staticWait(1000);
     }
 
     public void clkWatchDeviceType() {
@@ -458,8 +516,8 @@ public class RogersSearchPage extends BasePageClass {
     public List<String> getSizeSelections() {
         List<String> strSizeSelections = new ArrayList<>();
         List<WebElement> chkSizeSelections = getDriver().findElements(watchSize);
-        for (int i = 0; i < chkSizeSelections.size(); i++) {
-            strSizeSelections.add(chkSizeSelections.get(i).getAttribute("value"));
+        for (WebElement chkSizeSelection : chkSizeSelections) {
+            strSizeSelections.add(chkSizeSelection.getAttribute("value"));
         }
         return strSizeSelections;
     }
@@ -512,8 +570,8 @@ public class RogersSearchPage extends BasePageClass {
     public List<String> getSuggestionSelections() {
         List<String> strSuggestionSelections = new ArrayList<>();
         List<WebElement> hoverSuggestionSelections = getDriver().findElements(By.xpath("//div[@ng-reflect-heading='Suggestions']/a/div/span/span[@class='ds-link__copy']"));
-        for (int i = 0; i < hoverSuggestionSelections.size(); i++) {
-            strSuggestionSelections.add(hoverSuggestionSelections.get(i).getText());
+        for (WebElement hoverSuggestionSelection : hoverSuggestionSelections) {
+            strSuggestionSelections.add(hoverSuggestionSelection.getText());
         }
         return strSuggestionSelections;
     }
@@ -543,8 +601,8 @@ public class RogersSearchPage extends BasePageClass {
     }
 
     public boolean validateSupportLinks() {
-        for (int i = 0; i < suggestionsSectionLinks.size(); i++) {
-            if (suggestionsSectionLinks.get(i).getAttribute("href") == null) {
+        for (WebElement suggestionsSectionLink : suggestionsSectionLinks) {
+            if (suggestionsSectionLink.getAttribute("href") == null) {
                 return false;
             }
         }
@@ -560,7 +618,7 @@ public class RogersSearchPage extends BasePageClass {
      *
      * @author naina.agarwal
      */
-    public boolean validateFiltersInUrl(String strGrandParentFilter, String strParentFilter) throws UnsupportedEncodingException {
+    public boolean validateFiltersInUrl(String strGrandParentFilter, String strParentFilter) {
         try {
             String[] parts = strParentFilter.split("[\\s@&.?$+-]+");
             String part1 = parts[0];
@@ -577,46 +635,36 @@ public class RogersSearchPage extends BasePageClass {
         return filterCountInFilterSection.contains("(0)");
     }
 
-    public boolean validateDeviceTypesInUrl(String[] strDeviceType) throws UnsupportedEncodingException {
-        String strQuery = "devicetype:";
-        for (int i = 0; i < strDeviceType.length; i++) {
-            strQuery = strQuery.concat(strDeviceType[i].trim());
-            if (i != strDeviceType.length - 1) {
-                strQuery = strQuery + ",";
-            }
-        }
-        return validateURLContains(strQuery);
-    }
-
-    public boolean validateBrandsInUrl(String[] strBrand) throws UnsupportedEncodingException {
-        String strQuery = "brand:";
-        for (int i = 0; i < strBrand.length; i++) {
-            strQuery = strQuery.concat(strBrand[i].trim());
-            if (i != strBrand.length - 1) {
-                strQuery = strQuery + ",";
-            }
-        }
-        return validateURLContains(strQuery);
-    }
-
     public boolean validateStoragesInUrl(String[] strStorage) throws UnsupportedEncodingException {
         String strQuery = "storage:";
-        for (int i = 0; i < strStorage.length; i++) {
-            strQuery = strQuery.concat(strStorage[i].trim());
-            if (i != strStorage.length - 1) {
-                strQuery = strQuery + ",";
+        try {
+            for (int i = 0; i < strStorage.length; i++) {
+                if (strStorage[i] != null) {
+                    strQuery = strQuery.concat(strStorage[i].trim());
+                    if (i != strStorage.length - 1) {
+                        strQuery = strQuery + ",";
+                    }
+                }
             }
+        } catch (NullPointerException e) {
+            throw new DigiAutoCustomException(e);
         }
         return validateURLContains(strQuery);
     }
 
     public boolean validateColorsInUrl(String[] strColor) throws UnsupportedEncodingException {
         String strQuery = "color:";
-        for (int i = 0; i < strColor.length; i++) {
-            strQuery = strQuery.concat(strColor[i].trim());
-            if (i != strColor.length - 1) {
-                strQuery = strQuery + ",";
+        try {
+            for (int i = 0; i < strColor.length; i++) {
+                if (strColor[i] != null) {
+                    strQuery = strQuery.concat(strColor[i].trim());
+                    if (i != strColor.length - 1) {
+                        strQuery = strQuery + ",";
+                    }
+                }
             }
+        } catch (NullPointerException e) {
+            throw new DigiAutoCustomException(e);
         }
         return validateURLContains(strQuery);
     }
@@ -624,6 +672,32 @@ public class RogersSearchPage extends BasePageClass {
     public boolean isFilterChecked(String strFilter) {
         return getReusableActionsInstance().getWhenReady(By.xpath("//ds-checkbox//input[@value='" + strFilter.trim() + "']"))
                 .getAttribute("aria-checked").equals("true");
+    }
+
+    public ArrayList<String> filters(List<String> filterData, String filter) {
+        int count = 0;
+        ArrayList<String> listArrayFilter = new ArrayList<>();
+        for (int i = 0; i < filterData.size(); i++) {
+            switch (filter) {
+                case "Color":
+                    clkColorType(filterData.get(i));
+                    break;
+                case "Storage":
+                    clkStorageType(filterData.get(i));
+                    break;
+                case "Brand":
+                    clkBrandType(filterData.get(i));
+                    break;
+                case "Device":
+                    clickingOnDevice(filterData.get(i));
+                    break;
+            }
+            listArrayFilter.add(filterData.get(i));
+            count++;
+            if (count == 2)
+                break;
+        }
+        return listArrayFilter;
     }
 
     /**
@@ -644,8 +718,8 @@ public class RogersSearchPage extends BasePageClass {
     public List<String> getColorFilters() {
         List<String> colorFilters = new ArrayList<>();
         List<WebElement> colorFilterElements = getDriver().findElements(allColorsInFilter);
-        for (int i = 0; i < colorFilterElements.size(); i++) {
-            colorFilters.add(colorFilterElements.get(i).getText().split("\\(")[0].trim());
+        for (WebElement colorFilterElement : colorFilterElements) {
+            colorFilters.add(colorFilterElement.getText().split("\\(")[0].trim());
         }
         return colorFilters;
     }
@@ -684,8 +758,8 @@ public class RogersSearchPage extends BasePageClass {
     public List<String> getResultColorOptions(WebElement resultLink) {
         List<String> colorOptions = new ArrayList<>();
         List<WebElement> resultColorOptions = resultLink.findElements(By.xpath("parent::div/following-sibling::ds-radio-group//ds-selection/label"));
-        for (int i = 0; i < resultColorOptions.size(); i++) {
-            colorOptions.add(resultColorOptions.get(i).getAttribute("title"));
+        for (WebElement resultColorOption : resultColorOptions) {
+            colorOptions.add(resultColorOption.getAttribute("title"));
         }
         return colorOptions;
     }
@@ -814,7 +888,7 @@ public class RogersSearchPage extends BasePageClass {
      * @author naina.agarwal
      */
     public String getSearchResults() {
-        if (getReusableActionsInstance().isElementVisible(searchResults)) ;
+        getReusableActionsInstance().waitForElementVisibility(searchResults);
         return getReusableActionsInstance().getElementText(searchResults);
     }
 
@@ -911,7 +985,7 @@ public class RogersSearchPage extends BasePageClass {
      * @author naina.agarwal
      */
     public boolean validatePageSizeInURL(String url) {
-        String pageSize = null;
+        String pageSize;
         try {
             Select dropdown = new Select(resultPerPageDropdown);
             WebElement option = dropdown.getFirstSelectedOption();
@@ -931,7 +1005,7 @@ public class RogersSearchPage extends BasePageClass {
     public boolean validateSearchResultNumberAreInSyncWithPagination() {
         Select dropdown = new Select(resultPerPageDropdown);
         WebElement option = dropdown.getFirstSelectedOption();
-        int currentPageSize=Integer.parseInt(option.getText().trim());
+        int currentPageSize = Integer.parseInt(option.getText().trim());
         int currentPageNumberInPagination = Integer.parseInt(getReusableActionsInstance().getElementText(currentPageNumberHighlighted));
         String expectedSearchResultNumberStartsWith = Integer.toString((currentPageNumberInPagination - 1) * currentPageSize + 1);
         String actualSearchResultOnPage = getReusableActionsInstance().getElementText(searchResults);
@@ -976,8 +1050,7 @@ public class RogersSearchPage extends BasePageClass {
      */
     public boolean validateNumberOfSearchResultsOnPage(List resultsInPage) {
         int numberOfResults = resultsInPage.size();
-        if (numberOfResults <= expectedDefaultSearchResults) return true;
-        return false;
+        return numberOfResults <= expectedDefaultSearchResults;
     }
 
     /**
@@ -1116,7 +1189,7 @@ public class RogersSearchPage extends BasePageClass {
      * @author naina.agarwal
      */
     public String clickLastForwardArrow() {
-        String message = null;
+        String message;
         elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
         int numberOfPages = elementName.size();
         if (numberOfPages > 1) {
@@ -1237,8 +1310,8 @@ public class RogersSearchPage extends BasePageClass {
         while (attempts < 2) {
             try {
                 List<WebElement> listofItems = getDriver().findElements(allGrandParentFilters);
-                for (int i = 0; i < listofItems.size(); i++) {
-                    if (listofItems.get(i).getAttribute("aria-hidden").equals("false"))
+                for (WebElement listofItem : listofItems) {
+                    if (listofItem.getAttribute("aria-hidden").equals("false"))
                         filterExpanded = false;
                 }
             } catch (StaleElementReferenceException e) {
@@ -1252,7 +1325,6 @@ public class RogersSearchPage extends BasePageClass {
     /**
      * Validate that search term in search results matches the passed search term.
      *
-     * @param : Search Term
      * @author naina.agarwal
      */
     public boolean searchTermRetained(String searchTerm) {
@@ -1291,14 +1363,11 @@ public class RogersSearchPage extends BasePageClass {
     }
 
     public boolean checkLanguageDisplayedOnPage() {
-        boolean toggleUpdate = true;
+        boolean toggleUpdate = false;
         String currentURL = getDriver().getCurrentUrl();
         String currentDisplayedLanguageOnToggle = getReusableActionsInstance().getElementText(toggleLanguage);
-        if (!currentURL.contains("language=en") && (currentDisplayedLanguageOnToggle.equals("FR"))) {
-            if (!currentURL.contains("language=fr") && (currentDisplayedLanguageOnToggle.equals("EN"))) {
-                toggleUpdate = false;
-            }
-        }
+        if ((currentURL.contains("language=en") && (currentDisplayedLanguageOnToggle.equals("FR"))) | (currentURL.contains("language=fr") && (currentDisplayedLanguageOnToggle.equals("EN"))))
+            toggleUpdate = true;
         return toggleUpdate;
     }
 
@@ -1407,5 +1476,32 @@ public class RogersSearchPage extends BasePageClass {
         if (!currentURL.contains("home"))
             homeURL = false;
         return homeURL;
+    }
+    //Mobile Methods
+
+    /**
+     * This method will click on the filter icon displayed on the mobile browser.
+     *
+     * @author naina.agarwal
+     */
+    public void clkFilterIconMobile() {
+        getReusableActionsInstance().clickWhenReady(filterIconMobile);
+    }
+
+    /**
+     * This method will fetch the current browser value.
+     *
+     * @return true if browser equals androidchrome,sauceandroidchrome,sauceioschrome,chromemobile
+     * @author naina.agarwal
+     */
+    public boolean Mobile() {
+        String browser = System.getProperty("Browser");
+        if (browser != null && browser.equals("androidchrome") || browser.equals("sauceandroidchrome") || browser.equals("sauceioschrome") || browser.equals("chromemobile"))
+            return true;
+        else return false;
+    }
+
+    public void clkShowResultBtnMobile() {
+        getReusableActionsInstance().clickWhenReady(showResultBtnMobile);
     }
 }
