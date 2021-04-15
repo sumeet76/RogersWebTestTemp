@@ -25,7 +25,7 @@ public class RogersSearch_CBS_1742_InvalidTerm_NoResultsPage_Test_WithoutTyphead
         return csvRowStrArray;
     }
 
-    @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Typehead", "Multilingual", "Sanity"})
+    @Test(dataProvider = "FilterData", groups = {"Search","Typehead", "Multilingual", "Sanity"})
     public void validateResultLandingPage(String[] csvRowStrArray) throws UnsupportedEncodingException {
         reporter.reportLogWithScreenshot("Search URL is launched");
         getRogersSearchPage().isPageLoaded();
