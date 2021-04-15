@@ -23,7 +23,7 @@ public class RogersBFA_TC17_AALUpfrontEdge_MediumRisk_Bopis_Test extends BaseTes
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA", "SanityBFA", "AALBFA"})
+    @Test(groups = {"RegressionBFA","AALBFA"})
     public void rogersAalTermBopisTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");

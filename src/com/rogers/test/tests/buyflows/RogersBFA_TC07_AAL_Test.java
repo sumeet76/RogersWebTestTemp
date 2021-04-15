@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_TC07_AAL_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","SanityBFA"})
+	@Test(groups = {"RegressionBFA"})
 	public void rogersAalTest() {
 		reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		reporter.reportLogWithScreenshot("Home Page");

@@ -24,7 +24,7 @@ public class RogersBFA_TC02_NAC_NoTermStandardShippingTest extends BaseTestClass
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-	@Test(groups = {"RegressionBFA","SanityBFA","NACBFA"})
+	@Test(groups = {"RegressionBFA","NACBFA"})
 	public void rogersNACNoTermStandardShippingTest() throws InterruptedException {
 
 		// **************************Device catalog page*****************************************

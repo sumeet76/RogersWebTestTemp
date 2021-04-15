@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_TC15_HUPNonShareKeepCurrentPlanSL_Test extends BaseTestClass{
 
-        @Test(groups = {"RegressionBFA","SanityBFA","HUPBFA"})
+        @Test(groups = {"RegressionBFA","HUPBFA"})
         public void rogersHUPNonShareKeepCurrentPlanSLTest() {
             reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
             reporter.reportLogWithScreenshot("Home Page");
