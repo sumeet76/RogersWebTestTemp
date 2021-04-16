@@ -32,7 +32,7 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_055_IginteTV_ValidateAnonymousDifferentAddressRCISandECIDsetLowRiskIgniteBundleMediumRiskAddressRetry2CreditCheckTest extends BaseTestClass {
+public class RogersCH_TC_055_IginteTV_NacDifferentAddressRCISandECIDsetLowRiskIgniteBundleMediumRiskAddressRetry2CreditCheckTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
     public void checkAnonymousDifferentAddressRCISandECIDsetLowRiskIgniteBundleMediumRiskAddressRetry2CreditTest() {
