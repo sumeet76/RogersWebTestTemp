@@ -428,7 +428,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span/following-sibling::span[contains(text(),'This number is not on an eligible plan') or contains(text(),'Ce numéro n’est pas associé à un forfait admissible')]")
 	WebElement lblSMPpromotionInEligile;
 
-	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[contains(text(),'Promotion ended') or contains(text(),'La promotion prend fin le')]")
+	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[contains(text(),'Promotion ended') or contains(text(),'ended') or contains(text(),'La promotion prend fin le')]")
 	WebElement lblSMPpromotionEnded;
 
 
