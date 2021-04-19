@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class RogersSS_TC_04_ValidateDeviceSectionAndDeviceDetailsModalForCXWithSubsidyPaidOFF_Upfront_Edge_ON extends BaseTestClass {
+public class RogersSS_TC_02_ValidateDeviceSectionAndDeviceDetailsModalForCXWithSubsidyPaidOFF extends BaseTestClass {
 
 	private String strAltEmail;
 
@@ -79,7 +79,6 @@ public class RogersSS_TC_04_ValidateDeviceSectionAndDeviceDetailsModalForCXWithS
 
 
 
-
 		reporter.hardAssert(getRogersWirelessDashboardPage().isMyDeviceDetailsLinkDisplayed(),
 				"My Device Details Link is visible",
 				"My Device Details Link is not visible");
@@ -91,11 +90,7 @@ public class RogersSS_TC_04_ValidateDeviceSectionAndDeviceDetailsModalForCXWithS
 				"Upgrade my device Link is not visible");
 
 
-		getRogersWirelessDashboardPage().clkMyDeviceDetailsLink();
-		reporter.reportLogWithScreenshot("Device Details Modal.");
-		//verify stuff here accroding to test case
-
-
+		
 
 
 

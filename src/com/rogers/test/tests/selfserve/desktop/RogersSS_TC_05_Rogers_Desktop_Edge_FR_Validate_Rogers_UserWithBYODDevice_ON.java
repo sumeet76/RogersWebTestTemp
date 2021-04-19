@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class RogersSS_TC_04_ValidateDeviceSectionAndDeviceDetailsModalForCXWithSubsidyPaidOFF_Upfront_Edge_ON extends BaseTestClass {
+public class RogersSS_TC_05_Rogers_Desktop_Edge_FR_Validate_Rogers_UserWithBYODDevice_ON extends BaseTestClass {
 
 	private String strAltEmail;
 
@@ -29,7 +29,7 @@ public class RogersSS_TC_04_ValidateDeviceSectionAndDeviceDetailsModalForCXWithS
 	}
 	
 	@Test(groups = {"SanitySS","ProfileAndSettingsSS"})
-	public void validateRogersDeviceSectionAndDeviceDetailsModalForCXWithSubsidyPaidOFF() {
+	public void Validate_Rogers_UserWithBYODDevice_ON() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc01FinanceNotPaidOff_ON.getUsername();
     	String strPassword = TestDataHandler.tc01FinanceNotPaidOff_ON.getPassword();
@@ -57,45 +57,17 @@ public class RogersSS_TC_04_ValidateDeviceSectionAndDeviceDetailsModalForCXWithS
 
 		reporter.reportLogWithScreenshot("Wireless Usage Details");
 
-		reporter.hardAssert(getRogersWirelessDashboardPage().verifyMyDeviceDetailsModalOfDeviceSection(),
-				"My Device Section is visible",
-				"My Device Section is not visible");
+		reporter.hardAssert(getRogersWirelessDashboardPage().isBroughtYourOwnPhoneVisible(),
+				"You brought your own phone with this plan. is visible",
+				"You brought your own phone with this plan. is not visible");
 
-		reporter.hardAssert(getRogersWirelessDashboardPage().verifyLinkMyDeviceDetailsOfDeviceSection(),
-				"Device Details Model is visible",
-				"Device Details Model is not visible");
+		reporter.hardAssert(getRogersWirelessDashboardPage().isSeeOffersOnNewPhonesDisplayed(),
+				"See Offers On New Phones is visible",
+				"See Offers On New Phones is not visible");
 
+		getRogersWirelessDashboardPage().clkSeeOffersOnNewPhones();
 
-
-
-		reporter.hardAssert(getRogersWirelessDashboardPage().verifyDeviceRemainingBalanceExists(),
-				"Remaining Device Balance is visible",
-				"Remaining Device Balance is visible is not visible");
-
-		reporter.hardAssert(getRogersWirelessDashboardPage().isDeviceBalanceDateDisplayed(),
-				"Date on which the device balance will be $0 is visible",
-				"Date on which the device balance will be $0 is not visible");
-
-
-
-
-
-		reporter.hardAssert(getRogersWirelessDashboardPage().isMyDeviceDetailsLinkDisplayed(),
-				"My Device Details Link is visible",
-				"My Device Details Link is not visible");
-
-
-
-		reporter.hardAssert(getRogersWirelessDashboardPage().verifyLinkUpgradeMyDevice(),
-				"Upgrade my device Link is visible",
-				"Upgrade my device Link is not visible");
-
-
-		getRogersWirelessDashboardPage().clkMyDeviceDetailsLink();
-		reporter.reportLogWithScreenshot("Device Details Modal.");
-		//verify stuff here accroding to test case
-
-
+		reporter.reportLogWithScreenshot("See Offers on new phones");
 
 
 

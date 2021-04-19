@@ -617,7 +617,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Device balance (excluding ') or contains(text(),'Solde de votre appareil (excluant le montant ')]/following-sibling::ds-price/div")
 	WebElement deviceBalanceAsOfToday;
 
-
+	@FindBy(xpath = "//div[contains(text(),' You brought your own phone with this plan. ') or contains(text(),' Vous avez apporté votre téléphone pour ce forfait. ')]")
+	WebElement lblYouBroughtYourOwnPhone;
 
 
 	/**
@@ -2709,5 +2710,22 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		return deviceBalance.contains("$");
 	}
 
+
+	/**
+	 * Checks if the "You brought your own phone with this plan." label is visible
+	 * @return true if the element is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isBroughtYourOwnPhoneVisible() {
+		return getReusableActionsInstance().isElementVisible(lblYouBroughtYourOwnPhone);
+	}
+
+	/**
+	 * click See Offers On New Phones Button
+	 * @author Rohit.Kumar
+	 */
+	public void clkSeeOffersOnNewPhones() {
+		getReusableActionsInstance().getWhenReady(btnSeeOffersOnNewPhones, 30).click();
+	}
 
 }
