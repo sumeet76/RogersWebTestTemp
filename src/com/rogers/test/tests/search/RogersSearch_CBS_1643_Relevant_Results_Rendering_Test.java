@@ -23,10 +23,15 @@ public class RogersSearch_CBS_1643_Relevant_Results_Rendering_Test extends BaseT
     @DataProvider(name = "FilterData", parallel = true)
     public Object[] testData() throws IOException {
         String csvFileName = null;
-        if (System.getProperty("Language").equalsIgnoreCase("en"))
-            csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
-        else if (System.getProperty("Language").equalsIgnoreCase("fr"))
-            csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataFR.csv";
+        String language = System.getProperty("Language").toLowerCase();
+        switch (language) {
+            case "en":
+                csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
+                break;
+            case "fr":
+                csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataFR.csv";
+                break;
+        }
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
         Object[] csvRowStrArray = new Object[csvData.size()];
         for (int i = 0; i < csvData.size(); i++) {
@@ -35,11 +40,11 @@ public class RogersSearch_CBS_1643_Relevant_Results_Rendering_Test extends BaseT
         return csvRowStrArray;
     }
 
-    @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual", "Sanity"})
+    @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual", "Sanity", "Mobile"})
     public void validateResults(String[] csvRowStrArray) {
         getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0]);
         getRogersSearchPage().isPageLoaded();
-        reporter.reportLogWithScreenshot("Search Page Result is displayed");
+        reporter.reportLogWithScreenshot("Launching URL");
         String[] strFilters = Arrays.copyOfRange(csvRowStrArray, 1, csvRowStrArray.length);
         reporter.softAssert(getRogersSearchPage().verifyResultsCategoryTagRelevancy(strFilters),
                 "Relevant Results tags Displayed are displayed on the landing page for the search filters", "Relevant Results tags are not displayed on the landing page for the search filters");

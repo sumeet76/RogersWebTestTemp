@@ -17,10 +17,15 @@ public class RogersSearch_CBS_1674_Clicking_A_Grand_Parent_Filter_After_Selectin
     @DataProvider(name = "FilterData", parallel = true)
     public Object[] testData() throws IOException {
         String csvFileName = null;
-        if (System.getProperty("Language").equalsIgnoreCase("en"))
-            csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
-        else if (System.getProperty("Language").equalsIgnoreCase("fr"))
-            csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataFR.csv";
+        String language = System.getProperty("Language").toLowerCase();
+        switch (language) {
+            case "en":
+                csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
+                break;
+            case "fr":
+                csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataFR.csv";
+                break;
+        }
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
         Object[] csvRowStrArray = new Object[csvData.size()];
         for (int i = 0; i < csvData.size(); i++) {

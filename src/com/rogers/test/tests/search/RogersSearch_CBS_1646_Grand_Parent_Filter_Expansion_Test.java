@@ -22,10 +22,15 @@ public class RogersSearch_CBS_1646_Grand_Parent_Filter_Expansion_Test extends Ba
     @DataProvider(name = "FilterData", parallel = true)
     public Object[] testData() throws IOException {
         String csvFileName = null;
-        if (System.getProperty("Language").equalsIgnoreCase("en"))
-            csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
-        else if (System.getProperty("Language").equalsIgnoreCase("fr"))
-            csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataFR.csv";
+        String language = System.getProperty("Language").toLowerCase();
+        switch (language) {
+            case "en":
+                csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
+                break;
+            case "fr":
+                csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataFR.csv";
+                break;
+        }
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
         Object[] csvRowStrArray = new Object[csvData.size()];
         for (int i = 0; i < csvData.size(); i++) {
@@ -34,16 +39,31 @@ public class RogersSearch_CBS_1646_Grand_Parent_Filter_Expansion_Test extends Ba
         return csvRowStrArray;
     }
 
-    @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual"})
+    @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual", "Mobile"})
     public void validateResultsGrandParentFilter(String[] csvRowStrArray) {
+        boolean isMobile;
         getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0]);
         getRogersSearchPage().isPageLoaded();
+        isMobile = getRogersSearchPage().isMobileSelected();
+        if (isMobile) {
+            getRogersSearchPage().clkFilterIconMobile();
+            reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+        }
         for (int i = 1; i < csvRowStrArray.length; i++) {
             getRogersSearchPage().clkGrandParentFilter(csvRowStrArray[i]);
             getRogersSearchPage().isPageLoaded();
             reporter.reportLogWithScreenshot(csvRowStrArray[i] + " filter selected");
+            if (isMobile) {
+                getRogersSearchPage().clkShowResultBtnMobile();
+                reporter.reportLogWithScreenshot("Show results button clicked");
+            }
             reporter.softAssert(getRogersSearchPage().validateResultsTag(csvRowStrArray[i]),
                     "Results have expected tag " + csvRowStrArray[i], "Results do not have expected tag " + csvRowStrArray[i]);
+            isMobile = getRogersSearchPage().isMobileSelected();
+            if (isMobile) {
+                getRogersSearchPage().clkFilterIconMobile();
+                reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+            }
         }
     }
 

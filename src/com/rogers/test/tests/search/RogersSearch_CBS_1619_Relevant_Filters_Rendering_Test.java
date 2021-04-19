@@ -20,10 +20,15 @@ public class RogersSearch_CBS_1619_Relevant_Filters_Rendering_Test extends BaseT
     @DataProvider(name = "FilterData", parallel = true)
     public Object[] testData() throws IOException {
         String csvFileName = null;
-        if (System.getProperty("Language").equalsIgnoreCase("en"))
-            csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
-        else if (System.getProperty("Language").equalsIgnoreCase("fr"))
-            csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataFR.csv";
+        String language = System.getProperty("Language").toLowerCase();
+        switch (language) {
+            case "en":
+                csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
+                break;
+            case "fr":
+                csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataFR.csv";
+                break;
+        }
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
         Object[] csvRowStrArray = new Object[csvData.size()];
         for (int i = 0; i < csvData.size(); i++) {
@@ -32,13 +37,19 @@ public class RogersSearch_CBS_1619_Relevant_Filters_Rendering_Test extends BaseT
         return csvRowStrArray;
     }
 
-    @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual"})
+    @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual", "Mobile"})
     public void validateFilters(String[] csvRowStrArray) {
+        boolean isMobile;
         getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0]);
         getRogersSearchPage().isPageLoaded();
-        reporter.reportLogWithScreenshot("Search Page Result is displayed");
+        reporter.reportLogWithScreenshot("Launching URL");
+        isMobile = getRogersSearchPage().isMobileSelected();
+        if (isMobile) {
+            getRogersSearchPage().clkFilterIconMobile();
+            reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+        }
         for (int i = 1; i < csvRowStrArray.length; i++) {
-            reporter.softAssert(getRogersSearchPage().isFilterDisplayed(csvRowStrArray[i]), "Filter " + csvRowStrArray[i] + " is Displayed successfully", "Filter " + csvRowStrArray[i] + " is NOT Displayed");
+            reporter.softAssert(getRogersSearchPage().isFilterDisplayed(csvRowStrArray[i]), "Filter " + csvRowStrArray[i] + " is Displayed successfully", "Filter " + csvRowStrArray[i] + " is not Displayed");
         }
     }
 

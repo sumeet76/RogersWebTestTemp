@@ -5,6 +5,7 @@ import com.rogers.test.helpers.RogersEnums;
 import org.openqa.selenium.WebElement;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
+import utils.CSVReader;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -13,20 +14,38 @@ import java.util.List;
 
 public class RogersSearch_CBS_1683_Clicking_On_Results_With_Selected_Color_Test extends BaseTestClass {
 
-    @Test(groups = {"Search", "Filter", "Multilingual"})
-    public void validateResultsWithSelectedColors() {
+    @DataProvider(name = "FilterData", parallel = true)
+    public Object[] testData() throws IOException {
+        String csvFileName = null;
+        String language = System.getProperty("Language").toLowerCase();
+        switch (language) {
+            case "en":
+                csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
+                break;
+            case "fr":
+                csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataFR.csv";
+                break;
+        }
+        List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
+        Object[] csvRowStrArray = new Object[csvData.size()];
+        for (int i = 0; i < csvData.size(); i++) {
+            csvRowStrArray[i] = csvData.get(i);
+        }
+        return csvRowStrArray;
+    }
+    @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual"})
+    public void validateResultsWithSelectedColors(String[] csvRow) {
         List<WebElement> resultLinks;
-        String strDeviceName;
+        String strDeviceName, gpfilter, pfilter;
         String strSelectedColor;
         List<String> strColorFilters;
-        String strSearchTerm = "iphone";
         List<String> resultColorOptions;
-        getDriver().get(System.getProperty("SearchUrl") + strSearchTerm);
+        getDriver().get(System.getProperty("SearchUrl") + csvRow[0]);
         getRogersSearchPage().isPageLoaded();
-        getRogersSearchPage().clkShopFilter();
-        reporter.reportLogWithScreenshot("Shop Filter clicked");
-        getRogersSearchPage().clkWirelessFilter();
-        reporter.reportLogWithScreenshot("Wireless Filter clicked");
+        gpfilter = getRogersSearchPage().clkShopFilter();
+        reporter.reportLogWithScreenshot(gpfilter + " Filter clicked");
+        pfilter = getRogersSearchPage().clkWirelessFilter();
+        reporter.reportLogWithScreenshot(pfilter + " Filter clicked");
         strColorFilters = getRogersSearchPage().getColorFilters();
         for (int i = 0; i < strColorFilters.size(); i++) {
             getRogersSearchPage().clkColorType(strColorFilters.get(i));
@@ -52,7 +71,7 @@ public class RogersSearch_CBS_1683_Clicking_On_Results_With_Selected_Color_Test 
                     getRogersSearchPage().waitForResultPage();
                 } else {
                     reporter.reportLogFailWithScreenshot("Failed to land on Device Config page for following device: " + linkDetails + " & following color: " + resultColorOptions.get(j));
-                    getDriver().get(System.getProperty("SearchUrl") + strSearchTerm);
+                    getDriver().get(System.getProperty("SearchUrl") + csvRow[0]);
                     getRogersSearchPage().clkShopFilter();
                     reporter.reportLogWithScreenshot("Shop Filter clicked");
                     getRogersSearchPage().clkWirelessFilter();

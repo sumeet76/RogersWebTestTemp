@@ -13,19 +13,38 @@ import java.util.HashMap;
 import java.util.List;
 
 public class RogersSearch_CBS_1684_Storage_Filter_Functioning_Test extends BaseTestClass {
+    @DataProvider(name = "FilterData", parallel = true)
+    public Object[] testData() throws IOException {
+        String csvFileName = null;
+        String language = System.getProperty("Language").toLowerCase();
+        switch (language) {
+            case "en":
+                csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
+                break;
+            case "fr":
+                csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataFR.csv";
+                break;
+        }
+        List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
+        Object[] csvRowStrArray = new Object[csvData.size()];
+        for (int i = 0; i < csvData.size(); i++) {
+            csvRowStrArray[i] = csvData.get(i);
+        }
+        return csvRowStrArray;
+    }
 
-    @Test(groups = {"Search", "Filter", "Multilingual"})
-    public void validateStorageFilterSelection() {
-        getDriver().get(System.getProperty("SearchUrl") + "iphone");
+    @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual"})
+    public void validateStorageFilterSelection(String[] csvRow) {
+        getDriver().get(System.getProperty("SearchUrl") + csvRow[0]);
         getRogersSearchPage().isPageLoaded();
         List<WebElement> resultLinks;
-        String strDeviceName;
+        String strDeviceName, gpfilter, pfilter;
         String strSelectedStorage;
         List<String> strStorageFilters;
-        getRogersSearchPage().clkShopFilter();
-        reporter.reportLogWithScreenshot("Shop Filter clicked");
-        getRogersSearchPage().clkWirelessFilter();
-        reporter.reportLogWithScreenshot("Wireless Filter clicked");
+        gpfilter = getRogersSearchPage().clkShopFilter();
+        reporter.reportLogWithScreenshot(gpfilter + " Filter clicked");
+        pfilter = getRogersSearchPage().clkWirelessFilter();
+        reporter.reportLogWithScreenshot(pfilter + " Filter clicked");
         strStorageFilters = getRogersSearchPage().getStorageSelections();
         for (int i = 0; i < strStorageFilters.size(); i++) {
             getRogersSearchPage().clkStorageType(strStorageFilters.get(i));
@@ -45,7 +64,7 @@ public class RogersSearch_CBS_1684_Storage_Filter_Functioning_Test extends BaseT
                     getRogersSearchPage().waitForResultPage();
                 } else {
                     reporter.reportLogFailWithScreenshot("Failed to land on Device Config page");
-                    getDriver().get(System.getProperty("SearchUrl") + "iphone");
+                    getDriver().get(System.getProperty("SearchUrl") + csvRow[0]);
                     getRogersSearchPage().clkShopFilter();
                     getRogersSearchPage().clkWirelessFilter();
                     getRogersSearchPage().clkStorageType(strStorageFilters.get(i));

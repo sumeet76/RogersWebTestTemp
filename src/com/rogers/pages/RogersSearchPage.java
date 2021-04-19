@@ -107,15 +107,15 @@ public class RogersSearchPage extends BasePageClass {
     @FindBy(xpath = "//dsa-selector[@data-test='color-selector']//span[@class='dsa-selector__header text-title-5']/following-sibling::span[1]")
     WebElement lblColorValue;
 
+    public static final By provinceDropdownValues = By.xpath("//ul[@class='o-headerNavDropdown -navbar nav-list-opened']/li/a");
+
+    public static final By provinceInToggle = By.xpath("(//a[@class='m-navLink -navbar'])[2]");
+
     public static final By FilterComponent = By.xpath("//div[@class='ds-filter__listWrapper']");
 
     public static final By PaginationComponent = By.xpath("//div[@class='d-flex ng-star-inserted']");
 
     public static final By titleOnDetailsPage = By.xpath("//h1[@id='bfa-page-title']");
-
-    public static final By provinceDropdownValues = By.xpath("//ul[@class='o-headerNavDropdown -navbar nav-list-opened']/li/a");
-
-    public static final By provinceInToggle = By.xpath("(//a[@class='m-navLink -navbar'])[2]");
 
     public static final By numberOfPagesDisplayedAtBottom = By.xpath("//button[contains(@class,'paginationButton')]/div");
 
@@ -732,8 +732,7 @@ public class RogersSearchPage extends BasePageClass {
     public boolean validateResultsColor(String strColor) {
         List<WebElement> resultColoursList = getDriver().findElements(allColorsSwatchInResults);
         boolean colorFlag = false;
-        int count = 0;
-        int attempt = 0;
+        int count = 0,attempt = 0;
         while (attempt < 2) {
             try {
                 for (int i = 0; i < resultColoursList.size(); i++) {
@@ -819,7 +818,6 @@ public class RogersSearchPage extends BasePageClass {
             filter = "Magasiner";
         if (filter != null)
             act.moveToElement(getDriver().findElement(By.xpath("//button[contains(@id,'" + filter + "-heading')]"))).click().perform();
-        //  getReusableActionsInstance().clickWhenReady(By.xpath("//button[contains(@id,'" + filter + "-heading')]"), 5);
         isPageLoaded();
         return filter;
     }
@@ -1494,7 +1492,7 @@ public class RogersSearchPage extends BasePageClass {
      * @return true if browser equals androidchrome,sauceandroidchrome,sauceioschrome,chromemobile
      * @author naina.agarwal
      */
-    public boolean Mobile() {
+    public boolean isMobileSelected() {
         String browser = System.getProperty("Browser");
         if (browser != null && browser.equals("androidchrome") || browser.equals("sauceandroidchrome") || browser.equals("sauceioschrome") || browser.equals("chromemobile"))
             return true;
