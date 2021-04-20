@@ -413,7 +413,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public void selectStandAloneInternetPackage(String strPackageNameEn,String strPackageNameFr) {
 		//By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='internet-bundle-tile__row']//button[contains(@aria-label,'Add Ignite Internet')]");
-		By packageNameLocator = By.xpath("//div[@class='change-internet-bundle-tile__price']//button[contains(@aria-label,'" + strPackageNameEn+ "') or contains(@aria-label,'" + strPackageNameFr+ "')]/span");
+		By packageNameLocator = By.xpath("//div[@class='change-internet-sai-tile__price']//button[contains(@aria-label,'" + strPackageNameEn+ "') or contains(@aria-label,'" + strPackageNameFr+ "')]/span");
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 90);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
