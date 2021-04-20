@@ -119,7 +119,7 @@ public class RogersCH_TC_066_SAI_NAC_AnonymousCxentersInternetShopPage_ISStoggle
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
 

@@ -1,3 +1,3 @@
 [submodule "test-data"]
 	path = test-data
-	url = C:\\Automation\\RogersWebTestAutomation\\test-data
+	url = https://github.com/RogersCommunications/DigitalQEAutomationData.git
