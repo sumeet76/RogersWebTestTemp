@@ -41,17 +41,34 @@ public class RogersBFA_OV_TC08_AALShareTerm_BopisShipping_Test extends BaseTestC
 		reporter.reportLogPassWithScreenshot(aalSharingType+ " option selected successfully");
 		getRogersOVChoosePhonePage().clickContinueButtonOnModal();
 		reporter.reportLogWithScreenshot("Continue button is clicked");
-		reporter.hardAssert(getAccountOverViewPage().verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase01.getCtn()),"CTN Found","CTN Not Found");
-		getAccountOverViewPage().clkCloseBtnAssignDataManager();
-		//getAccountOverViewPage().clkBtnOkOneViewDialoue();
-		reporter.hardAssert(getRogersOVWirelessDetailsPage().verifyWirelessPageLoad() ,"Wireless page loaded" , "Wireless page not loaded" );
-		reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
-		getRogersOVWirelessDetailsPage().clkUpgradeMyDevice();
-		reporter.reportLogWithScreenshot("Device upgrade button clicked");
-		reporter.hardAssert(getRogersOVChoosePhonePage().verifyChoosePhonePage() , "Choose Phone page loaded" , "Choose Phone page not loaded");
-		getRogersOVChoosePhonePage().searchDevice(TestDataHandler.buyFlowsOVtestCase01.getNewDevice());
-		getRogersOVChoosePhonePage().selectFirstAvailableDevice();
-		reporter.reportLogWithScreenshot("Rogers Choose Phone Page , device selected " + TestDataHandler.buyFlowsOVtestCase01.getNewDevice());
+		String deviceName = TestDataHandler.buyFlowsOVtestCase08.getDeviceName();
+		reporter.hardAssert(getRogersOVChoosePhonePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
+		getRogersOVChoosePhonePage().clickDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase08.getDeviceName());
+		getRogersOVChoosePhonePage().clickContinueButton();
+		//-------------------------------------Plan config page---------------------------------------------
+		reporter.softAssert(getRogersOVPlanConfigPage().verifyBreadCrumb(deviceName),
+				"BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
+		reporter.hardAssert(getRogersOVPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
+		reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
+		getRogersOVPlanConfigPage().clickViewMoreOptions();
+		getRogersOVPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersOVPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.buyFlowsOVtestCase08.getDeviceCostIndex()));
+		reporter.reportLogPassWithScreenshot("Device cost option selected");
+		getRogersOVPlanConfigPage().clickShowMoreDetails();
+		getRogersOVPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersOVPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.buyFlowsOVtestCase08.getDataOptionIndex()));
+		reporter.reportLogPassWithScreenshot("Data option selected");
+		reporter.hardAssert(getRogersOVPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersOVPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.buyFlowsOVtestCase08.getTalkOptionIndex())),
+				"Talk option selected and Addons page in expanded state","Addons page not in expanded state");
+		getRogersOVPlanConfigPage().clickPreCartAddonsContinueButton();
+		String monthlyFeesAmountWithTax = getRogersOVPlanConfigPage().getMonthlyFeesAmount();
+		String oneTimeFeesAmountWithTax = getRogersOVPlanConfigPage().getOneTimeFeesAmount();
+		reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees " + monthlyFeesAmountWithTax + "2. oneTimeFee " + oneTimeFeesAmountWithTax);
+		String isSelectedDeviceTier = getRogersOVPlanConfigPage().getDeviceCostTierSelected();
+		getRogersOVPlanConfigPage().clickCartSummaryContinueButton();
+
+
+
+
+
 		reporter.hardAssert(getRogersOVBuildPlanPage().verifyBuildPlanPage() , "Build plan page loaded" , "Build plan page not loaded");
 		reporter.reportLogWithScreenshot("Rogers Build Plan Page");
 		getRogersOVBuildPlanPage().selectFirstPlanInPickNewPlan();

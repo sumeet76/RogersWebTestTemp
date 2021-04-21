@@ -8,9 +8,13 @@ public class AALOVData {
 	private String newPlanType;
 	private String newPlanCategory;
 	private String contactID;
+	private String deviceName;
 	private String banNo;
 	private String customerRiskLevel;
 	private String sharingType;
+	private String deviceCostIndex;
+	private String dataOptionIndex;
+	private String talkOptionIndex;
 
 	public String getBanNo() {
 		return banNo;
@@ -86,6 +90,18 @@ public class AALOVData {
 		this.newPlanCategory = newPlanCategory;
 	}
 	/**
+	 * @return the getDeviceName
+	 */
+	public String getDeviceName() {
+		return deviceName;
+	}
+	/**
+	 * @param deviceName the deviceName to set
+	 */
+	public void setDeviceName(String deviceName) {
+		this.deviceName = deviceName;
+	}
+	/**
 	 * @return the customerRiskLevel
 	 */
 	public String getCustomerRiskLevel() {
@@ -109,5 +125,40 @@ public class AALOVData {
 	public void setSharingType(String sharingType) {
 		this.sharingType = sharingType;
 	}
-
+	/**
+	 * @return the deviceCostIndex
+	 */
+	public String getDeviceCostIndex() {
+		return deviceCostIndex;
+	}
+	/**
+	 * @param deviceCostIndex the deviceCostIndex to set
+	 */
+	public void setDeviceCostIndex(String deviceCostIndex) {
+		this.deviceCostIndex = deviceCostIndex;
+	}
+	/**
+	 * @return the dataOptionIndex
+	 */
+	public String getDataOptionIndex() {
+		return dataOptionIndex;
+	}
+	/**
+	 * @param dataOptionIndex the dataOptionIndex to set
+	 */
+	public void setdataOptionIndex(String dataOptionIndex) {
+		this.dataOptionIndex = dataOptionIndex;
+	}
+	/**
+	 * @return the talkOptionIndex
+	 */
+	public String getTalkOptionIndex() {
+		return talkOptionIndex;
+	}
+	/**
+	 * @param talkOptionIndex the dataOptionIndex to set
+	 */
+	public void setTalkOptionIndex(String talkOptionIndex) {
+		this.talkOptionIndex = talkOptionIndex;
+	}
 }
