@@ -287,8 +287,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkChangeTVPackageMobile() {
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementVisibility(btnChangeTVPackage,90);
-		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().executeJavaScriptClick(btnChangeTVPackage);
 	}
 	/**
