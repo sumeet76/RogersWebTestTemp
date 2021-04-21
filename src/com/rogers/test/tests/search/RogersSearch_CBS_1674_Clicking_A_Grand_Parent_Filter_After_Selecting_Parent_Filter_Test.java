@@ -36,12 +36,18 @@ public class RogersSearch_CBS_1674_Clicking_A_Grand_Parent_Filter_After_Selectin
 
     @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual"})
     public void validateNavigationFromParentToGrandParent(String[] csvRow) {
+        boolean isMobile;
         getDriver().get(System.getProperty("SearchUrl") + csvRow[0]);
         getRogersSearchPage().isPageLoaded();
         String strResultWindowText;
         List<WebElement> lstParentFilters;
         String strParentFilterName;
         strResultWindowText = getRogersSearchPage().getResultWindowText();
+        isMobile = getRogersSearchPage().isMobileSelected();
+        if (isMobile) {
+            getRogersSearchPage().clkFilterIconMobile();
+            reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+        }
         String[] strFilters = Arrays.copyOfRange(csvRow, 1, csvRow.length);
         for (int i = 0; i < strFilters.length; i++) {
             getRogersSearchPage().clkGrandParentFilter(strFilters[i]);
@@ -53,13 +59,21 @@ public class RogersSearch_CBS_1674_Clicking_A_Grand_Parent_Filter_After_Selectin
                 getRogersSearchPage().isPageLoaded();
                 strParentFilterName = lstParentFilters.get(j).getText();
                 reporter.reportLogWithScreenshot(strParentFilterName + " is selected");
+                if (isMobile)
+                    getRogersSearchPage().clkShowResultBtnMobile();
                 reporter.hardAssert(getRogersSearchPage().validateResultsTag(strFilters[i], strParentFilterName),
                         "Results tags verified", "Results tags mismatch");
+                if (isMobile)
+                    getRogersSearchPage().clkFilterIconMobile();
                 getRogersSearchPage().clkGrandParentFilter(strFilters[i]);
                 getRogersSearchPage().isPageLoaded();
                 reporter.reportLogWithScreenshot(strFilters[i] + " is clicked");
+                if (isMobile)
+                    getRogersSearchPage().clkShowResultBtnMobile();
                 reporter.hardAssert(strResultWindowText.equals(getRogersSearchPage().getResultWindowText()),
                         "Successfully navigated to GrandParent from Parent filter", "Navigation from Parent to GrandParent filter failed");
+                if (isMobile)
+                    getRogersSearchPage().clkFilterIconMobile();
                 getRogersSearchPage().clkGrandParentFilter(strFilters[i]);
             }
         }

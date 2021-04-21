@@ -50,10 +50,16 @@ public class RogersSearch_CBS_1681_Color_Facet_Testing_Test extends BaseTestClas
 
     @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual", "Sanity"})
     public void validateColorFilterSelection(String[] csvRow) {
+        boolean isMobile;
         List<String> strColorFilters;
         String gpfilter, pfilter;
         getDriver().get(System.getProperty("SearchUrl") + csvRow[0]);
         getRogersSearchPage().isPageLoaded();
+        isMobile = getRogersSearchPage().isMobileSelected();
+        if (isMobile) {
+            getRogersSearchPage().clkFilterIconMobile();
+            reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+        }
         gpfilter = getRogersSearchPage().clkShopFilter();
         reporter.reportLogWithScreenshot(gpfilter + " Filter clicked");
         pfilter = getRogersSearchPage().clkWirelessFilter();
@@ -63,10 +69,18 @@ public class RogersSearch_CBS_1681_Color_Facet_Testing_Test extends BaseTestClas
             getRogersSearchPage().clkColorType(strColorFilters.get(i));
             getRogersSearchPage().isPageLoaded();
             reporter.reportLogWithScreenshot(strColorFilters.get(i) + " - Color Selected");
+            if (isMobile) {
+                getRogersSearchPage().clkShowResultBtnMobile();
+                reporter.reportLogWithScreenshot("Clicked on Show Results button");
+            }
             reporter.softAssert(getRogersSearchPage().validateResultsColor(strColorFilters.get(i)),
                     "All Results belong to color: " + strColorFilters.get(i),
                     "All Results do Not belong to color: " + strColorFilters.get(i));
             reporter.reportLogWithScreenshot(strColorFilters.get(i) + " - Color Result Screenshot");
+            if (isMobile) {
+                getRogersSearchPage().clkFilterIconMobile();
+                reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+            }
             getRogersSearchPage().clkColorType(strColorFilters.get(i));
         }
     }

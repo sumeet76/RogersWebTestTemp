@@ -37,21 +37,30 @@ public class RogersSearch_CBS_1685_Size_Filter_Validation_Test extends BaseTestC
 
     @Test(dataProvider = "FilterData", groups = {"Search", "Filter"})
     public void validateSizeFilterSelection(String[] csvRow) {
-        boolean blnFlag = true;
+        boolean isMobile;
         List<WebElement> resultLinks;
         List<String> strSizeOptions;
-        String strSelectedSize;
+        String strSelectedSize, gpfilter, pfilter;
         getDriver().get(System.getProperty("SearchUrl") + csvRow[0]);
         getRogersSearchPage().isPageLoaded();
-        getRogersSearchPage().clkShopFilter();
-        reporter.reportLogWithScreenshot("Shop Filter clicked");
-        getRogersSearchPage().clkWirelessFilter();
-        reporter.reportLogWithScreenshot("Wireless Filter clicked");
+        isMobile = getRogersSearchPage().isMobileSelected();
+        if (isMobile) {
+            getRogersSearchPage().clkFilterIconMobile();
+            reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+        }
+        gpfilter = getRogersSearchPage().clkShopFilter();
+        reporter.reportLogWithScreenshot(gpfilter + " Filter clicked");
+        pfilter = getRogersSearchPage().clkWirelessFilter();
+        reporter.reportLogWithScreenshot(pfilter + " Filter clicked");
         strSizeOptions = getRogersSearchPage().getSizeSelections();
         reporter.hardAssert(strSizeOptions.size() != 0, "Size Options Available", "Size Options Unavailable");
         for (int i = 0; i < strSizeOptions.size(); i++) {
             getRogersSearchPage().clkSizeType(strSizeOptions.get(i));
             reporter.reportLogWithScreenshot("Size: " + strSizeOptions.get(i) + " is selected");
+            if (isMobile) {
+                getRogersSearchPage().clkShowResultBtnMobile();
+                reporter.reportLogWithScreenshot("Clicked on Show Results button");
+            }
             resultLinks = getRogersSearchPage().getAllResultLinks();
             for (int k = 0; k < resultLinks.size(); k++) {
                 getRogersSearchPage().clkResultLink(resultLinks.get(k));
@@ -64,8 +73,12 @@ public class RogersSearch_CBS_1685_Size_Filter_Validation_Test extends BaseTestC
                 getRogersSearchPage().isPageLoaded();
                 resultLinks = getRogersSearchPage().getAllResultLinks();
             }
+            if (isMobile) {
+                getRogersSearchPage().clkFilterIconMobile();
+                reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+            }
             getRogersSearchPage().clkSizeType(strSizeOptions.get(i));
-            reporter.reportLogWithScreenshot("Size: " + strSizeOptions.get(i) + " is selected");
+            reporter.reportLogWithScreenshot("Size: " + strSizeOptions.get(i) + " is deselected");
             getRogersSearchPage().isPageLoaded();
         }
     }

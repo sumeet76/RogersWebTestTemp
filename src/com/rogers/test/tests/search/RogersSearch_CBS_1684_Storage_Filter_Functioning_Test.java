@@ -35,12 +35,18 @@ public class RogersSearch_CBS_1684_Storage_Filter_Functioning_Test extends BaseT
 
     @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual"})
     public void validateStorageFilterSelection(String[] csvRow) {
+        boolean isMobile;
         getDriver().get(System.getProperty("SearchUrl") + csvRow[0]);
         getRogersSearchPage().isPageLoaded();
         List<WebElement> resultLinks;
         String strDeviceName, gpfilter, pfilter;
         String strSelectedStorage;
         List<String> strStorageFilters;
+        isMobile = getRogersSearchPage().isMobileSelected();
+        if (isMobile) {
+            getRogersSearchPage().clkFilterIconMobile();
+            reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+        }
         gpfilter = getRogersSearchPage().clkShopFilter();
         reporter.reportLogWithScreenshot(gpfilter + " Filter clicked");
         pfilter = getRogersSearchPage().clkWirelessFilter();
@@ -49,9 +55,14 @@ public class RogersSearch_CBS_1684_Storage_Filter_Functioning_Test extends BaseT
         for (int i = 0; i < strStorageFilters.size(); i++) {
             getRogersSearchPage().clkStorageType(strStorageFilters.get(i));
             reporter.reportLogWithScreenshot(strStorageFilters.get(i) + " - Selected");
+            if (isMobile) {
+                getRogersSearchPage().clkShowResultBtnMobile();
+                reporter.reportLogWithScreenshot("Clicked on Show Results button");
+            }
             resultLinks = getRogersSearchPage().getAllResultLinks();
             for (int k = 0; k < resultLinks.size(); k++) {
                 getRogersSearchPage().clkResultLink(resultLinks.get(k));
+                reporter.reportLogWithScreenshot((k + 1) + ": Result link is clicked");
                 strDeviceName = getRogersDeviceConfigPage().getDeviceName();
                 if (strDeviceName != null && !strDeviceName.equals("Phones")) {
                     reporter.reportLogPassWithScreenshot(strDeviceName + " Page");
@@ -65,14 +76,26 @@ public class RogersSearch_CBS_1684_Storage_Filter_Functioning_Test extends BaseT
                 } else {
                     reporter.reportLogFailWithScreenshot("Failed to land on Device Config page");
                     getDriver().get(System.getProperty("SearchUrl") + csvRow[0]);
+                    if (isMobile) {
+                        getRogersSearchPage().clkFilterIconMobile();
+                        reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+                    }
                     getRogersSearchPage().clkShopFilter();
                     getRogersSearchPage().clkWirelessFilter();
                     getRogersSearchPage().clkStorageType(strStorageFilters.get(i));
+                    if (isMobile) {
+                        getRogersSearchPage().clkShowResultBtnMobile();
+                        reporter.reportLogWithScreenshot("Clicked on Show Results button");
+                    }
                 }
                 resultLinks = getRogersSearchPage().getAllResultLinks();
             }
             getRogersSearchPage().isPageLoaded();
             getRogersSearchPage().waitForResultPage();
+            if (isMobile) {
+                getRogersSearchPage().clkFilterIconMobile();
+                reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+            }
             getRogersSearchPage().clkStorageType(strStorageFilters.get(i));
         }
     }

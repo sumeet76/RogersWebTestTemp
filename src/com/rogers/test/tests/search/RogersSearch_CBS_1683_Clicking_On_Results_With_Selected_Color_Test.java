@@ -33,15 +33,22 @@ public class RogersSearch_CBS_1683_Clicking_On_Results_With_Selected_Color_Test 
         }
         return csvRowStrArray;
     }
+
     @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual"})
     public void validateResultsWithSelectedColors(String[] csvRow) {
+        boolean isMobile;
         List<WebElement> resultLinks;
         String strDeviceName, gpfilter, pfilter;
         String strSelectedColor;
         List<String> strColorFilters;
         List<String> resultColorOptions;
-        getDriver().get(System.getProperty("SearchUrl") + csvRow[0]);
+        getDriver().get(System.getProperty("SearchUrl") + "iphone11");
         getRogersSearchPage().isPageLoaded();
+        isMobile = getRogersSearchPage().isMobileSelected();
+        if (isMobile) {
+            getRogersSearchPage().clkFilterIconMobile();
+            reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+        }
         gpfilter = getRogersSearchPage().clkShopFilter();
         reporter.reportLogWithScreenshot(gpfilter + " Filter clicked");
         pfilter = getRogersSearchPage().clkWirelessFilter();
@@ -51,6 +58,10 @@ public class RogersSearch_CBS_1683_Clicking_On_Results_With_Selected_Color_Test 
             getRogersSearchPage().clkColorType(strColorFilters.get(i));
             reporter.reportLogWithScreenshot(strColorFilters.get(i) + " - Color Selected");
         }
+        if (isMobile) {
+            getRogersSearchPage().clkShowResultBtnMobile();
+            reporter.reportLogWithScreenshot("Clicked on Show Results button");
+        }
         resultLinks = getRogersSearchPage().getAllResultLinks();
         for (int k = 0; k < resultLinks.size(); k++) {
             String linkDetails = resultLinks.get(k).getText();
@@ -59,6 +70,7 @@ public class RogersSearch_CBS_1683_Clicking_On_Results_With_Selected_Color_Test 
                 getRogersSearchPage().clkResultColor(resultLinks.get(k), resultColorOptions.get(j));
                 reporter.reportLogWithScreenshot(resultColorOptions.get(j) + " color selected for Result link-" + (k + 1));
                 getRogersSearchPage().clkResultLink(resultLinks.get(k));
+                reporter.reportLogWithScreenshot((j+1) + " color of " + (k + 1) + ": Result link is clicked");
                 strDeviceName = getRogersDeviceConfigPage().getDeviceName();
                 if (strDeviceName != null && !strDeviceName.equals("Phones")) {
                     reporter.reportLogPassWithScreenshot(strDeviceName + " Page");
@@ -72,6 +84,10 @@ public class RogersSearch_CBS_1683_Clicking_On_Results_With_Selected_Color_Test 
                 } else {
                     reporter.reportLogFailWithScreenshot("Failed to land on Device Config page for following device: " + linkDetails + " & following color: " + resultColorOptions.get(j));
                     getDriver().get(System.getProperty("SearchUrl") + csvRow[0]);
+                    if (isMobile) {
+                        getRogersSearchPage().clkFilterIconMobile();
+                        reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+                    }
                     getRogersSearchPage().clkShopFilter();
                     reporter.reportLogWithScreenshot("Shop Filter clicked");
                     getRogersSearchPage().clkWirelessFilter();
@@ -79,6 +95,10 @@ public class RogersSearch_CBS_1683_Clicking_On_Results_With_Selected_Color_Test 
                     strColorFilters = getRogersSearchPage().getColorFilters();
                     for (int i = 0; i < strColorFilters.size(); i++) {
                         getRogersSearchPage().clkColorType(strColorFilters.get(i));
+                    }
+                    if (isMobile) {
+                        getRogersSearchPage().clkShowResultBtnMobile();
+                        reporter.reportLogWithScreenshot("Clicked on Show Results button");
                     }
                 }
                 getRogersSearchPage().isPageLoaded();

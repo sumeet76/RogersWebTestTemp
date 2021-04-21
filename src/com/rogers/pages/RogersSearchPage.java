@@ -732,7 +732,7 @@ public class RogersSearchPage extends BasePageClass {
     public boolean validateResultsColor(String strColor) {
         List<WebElement> resultColoursList = getDriver().findElements(allColorsSwatchInResults);
         boolean colorFlag = false;
-        int count = 0,attempt = 0;
+        int count = 0, attempt = 0;
         while (attempt < 2) {
             try {
                 for (int i = 0; i < resultColoursList.size(); i++) {
@@ -766,7 +766,8 @@ public class RogersSearchPage extends BasePageClass {
     public void clkResultColor(WebElement resultLink, String strColor) {
         getReusableActionsInstance().javascriptScrollToTopOfPage();
         WebElement resultColor = resultLink.findElement(By.xpath("parent::div/following-sibling::ds-radio-group//ds-selection/label[@title='" + strColor + "']"));
-        getReusableActionsInstance().clickWhenReady(resultColor);
+        //getReusableActionsInstance().clickWhenReady(resultColor);
+        javascriptClickWithPerform(resultColor);
         isPageLoaded();
     }
 
@@ -1483,7 +1484,7 @@ public class RogersSearchPage extends BasePageClass {
      * @author naina.agarwal
      */
     public void clkFilterIconMobile() {
-        getReusableActionsInstance().clickWhenReady(filterIconMobile);
+        javascriptClickWithPerform(filterIconMobile);
     }
 
     /**
