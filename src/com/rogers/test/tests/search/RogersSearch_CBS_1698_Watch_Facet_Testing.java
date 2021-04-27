@@ -14,71 +14,69 @@ import java.util.HashMap;
 import java.util.List;
 
 public class RogersSearch_CBS_1698_Watch_Facet_Testing extends BaseTestClass {
-    @DataProvider(name = "FilterData",parallel=true)
-    public Object[] testData() throws IOException
-    {
+    @DataProvider(name = "FilterData", parallel = true)
+    public Object[] testData() throws IOException {
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataWatchFilter.csv";
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
         Object[] csvRow = new Object[csvData.size()];
-
-        for(int i =0; i < csvData.size();i++){
+        for (int i = 0; i < csvData.size(); i++) {
             csvRow[i] = csvData.get(i);
         }
-
         return csvRow;
     }
 
-    @Test(dataProvider = "FilterData")
-    public void validateWatchSizeAndColorFilterSelection(String[] csvRow) {
-
+    @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual"})
+    public void validateWatchSizeAndColorFilterSelection(String[] csvRowStrArray) {
         List<String> strSizeOptions;
         List<String> strColorOptions;
         List<WebElement> resultLinks;
-        String strDeviceName;
         String strSelectedSize;
         String strSelectedColor;
-
-        getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
-
-        reporter.hardAssert(getRogersSearchPage().isGrandParentFilterDisplayed("Shop")
-                ,"Shop filter is Displayed","Shop filter is Not Displayed");
-        getRogersSearchPage().clkGrandParentFilter("Shop");
-        reporter.hardAssert(getRogersSearchPage().isParentFilterDisplayed("Shop","Wireless")
-                ,"Shop-Wireless filter is Displayed","Shop-Wireless filter is Not Displayed");
-        getRogersSearchPage().clkParentFilter("Shop","Wireless");
-        reporter.hardAssert(getRogersSearchPage().validateResultsTag("Shop","Wireless")
-                ,"Results' tags verified", "Results' tags mismatch");
-        reporter.reportLogWithScreenshot("Shop-Wireless Expanded");
-        getRogersSearchPage().clkDeviceType("Watch");
-
+        reporter.reportLogWithScreenshot("Search URL is launched");
+        getRogersSearchPage().isPageLoaded();
+        reporter.reportLogWithScreenshot("Page is loaded");
+        getRogersSearchPage().clickSearchIcon();
+        getRogersSearchPage().enterTextToBeSearched(csvRowStrArray[0]);
+        reporter.reportLogWithScreenshot("Search string " + csvRowStrArray[0] + " is entered in the search text box");
+        getRogersSearchPage().clickSubmitSearchIcon();
+        getRogersSearchPage().isPageLoaded();
+        String gpfilter = getRogersSearchPage().clkShopFilter();
+        reporter.reportLogWithScreenshot(gpfilter + " Filter clicked");
+        String pfilter = getRogersSearchPage().clkWirelessFilter();
+        reporter.reportLogWithScreenshot(pfilter + " Filter clicked");
+        getRogersSearchPage().clkWatchDeviceType();
         strSizeOptions = getRogersSearchPage().getSizeSelections();
-        reporter.hardAssert(strSizeOptions.size()!=0,"Size Options Available","Size Options Unavailable");
-        for(int i=0;i< strSizeOptions.size();i++) {
+        reporter.hardAssert(strSizeOptions.size() != 0, "Size Options Available", "Size Options Unavailable");
+        for (int i = 0; i < strSizeOptions.size(); i++) {
             getRogersSearchPage().clkSizeType(strSizeOptions.get(i));
-
+            reporter.reportLogWithScreenshot("Size: " + strSizeOptions.get(i) + " is selected");
             strColorOptions = getRogersSearchPage().getColorSelections();
-            for(int j=0;j< strColorOptions.size();j++) {
+            for (int j = 0; j < strColorOptions.size(); j++) {
                 getRogersSearchPage().clkColorType(strColorOptions.get(j));
-                reporter.reportLogWithScreenshot("Size: " + strSizeOptions.get(i)
-                        +" and Color:" + strColorOptions.get(j) + " is Selected");
-
+                reporter.reportLogWithScreenshot("Color:" + strColorOptions.get(j) + " is Selected");
                 resultLinks = getRogersSearchPage().getAllResultLinks();
-                for(int k=0;k< resultLinks.size();k++) {
+                for (int k = 0; k < resultLinks.size(); k++) {
                     getRogersSearchPage().clkResultLink(resultLinks.get(k));
+                    reporter.reportLogWithScreenshot((k + 1) + ": Result link is clicked");
                     strSelectedSize = getRogersDeviceConfigPage().getSelectedSize();
                     strSelectedColor = getRogersDeviceConfigPage().getSelectedWatchColor();
-                    reporter.softAssert(strSelectedSize.equals(strSizeOptions.get(i)),
-                            "Size Expected="+strSizeOptions.get(i)+"; Actual=" + strSelectedSize,
-                            "Size Expected="+strSizeOptions.get(i)+"; Actual=" + strSelectedSize);
-                    reporter.softAssert(strSelectedColor.equals(strColorOptions.get(j)),
-                            "Color Expected="+strColorOptions.get(j)+"; Actual=" + strSelectedColor,
-                            "Color Expected="+strColorOptions.get(j)+"; Actual=" + strSelectedColor);
+                    reporter.softAssert(strSelectedSize.equalsIgnoreCase(strSizeOptions.get(i)),
+                            "Size Expected=" + strSizeOptions.get(i) + "; Actual=" + strSelectedSize,
+                            "Size Expected=" + strSizeOptions.get(i) + "; Actual=" + strSelectedSize);
+                    reporter.softAssert(strSelectedColor.equalsIgnoreCase(strColorOptions.get(j)),
+                            "Color Expected=" + strColorOptions.get(j) + "; Actual=" + strSelectedColor,
+                            "Color Expected=" + strColorOptions.get(j) + "; Actual=" + strSelectedColor);
                     getRogersDeviceConfigPage().navigateBack();
+                    getRogersSearchPage().isPageLoaded();
                     resultLinks = getRogersSearchPage().getAllResultLinks();
                 }
                 getRogersSearchPage().clkColorType(strColorOptions.get(j));
+                reporter.reportLogWithScreenshot("Color:" + strColorOptions.get(j) + " is De-Selected");
+                getRogersSearchPage().isPageLoaded();
             }
             getRogersSearchPage().clkSizeType(strSizeOptions.get(i));
+            reporter.reportLogWithScreenshot("Size: " + strSizeOptions.get(i) + " is selected");
+            getRogersSearchPage().isPageLoaded();
         }
     }
 
@@ -93,5 +91,4 @@ public class RogersSearch_CBS_1698_Watch_Facet_Testing extends BaseTestClass {
     public void afterTest() {
         closeSession();
     }
-
 }
