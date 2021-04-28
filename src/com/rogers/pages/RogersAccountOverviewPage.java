@@ -449,7 +449,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//ds-checkbox")
 	WebElement chkTnC;
 	
-	@FindBy(xpath = "//button[@title='Continue and activate this Apple Music subscription' or contains(@title,'Continuer et activer cet abonnement')]")
+	@FindBy(xpath = "//button[@title='Continue and activate this Apple Music subscription' or @title='Continue and start this Apple Music subscription' or contains(@title,'Continuer et activer cet abonnement')]")
 	WebElement btnSubscribeToSubsscription;
 
 	@FindBy(xpath = "//a[text()='Yes' or contains(text(),'Oui')]")

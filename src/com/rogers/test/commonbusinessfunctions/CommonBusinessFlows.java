@@ -81,6 +81,9 @@ public class CommonBusinessFlows {
 		if (BaseTestClass.getRogersSpeedPassPage().verifySpeedPassPopupIsDisplayed()) {
 			baseTestClass.reporter.hardAssert(BaseTestClass.getRogersSpeedPassPage().verifySpeedPassPopupIsDisplayed(),
 					"Speed Pass popup is displayed", "Speed Pass popup is NOT displayed");
+			baseTestClass.reporter.hardAssert(BaseTestClass.getRogersSpeedPassPage().verifyIfTopUpPriceIsCorrect(),
+					"3GB speed pass to $20",
+					"Add speed pass overlay failed.");
 			BaseTestClass.getRogersSpeedPassPage().clkMaxSpeedDataInSpeedPassPopup();
 			baseTestClass.reporter.reportLogWithScreenshot("Select Add on option");  
 			BaseTestClass.getRogersSpeedPassPage().clkBtnContinueInSpeedPassPopup();
