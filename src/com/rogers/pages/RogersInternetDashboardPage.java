@@ -217,7 +217,9 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * Click the Change Internet Package button on Solaris Internet dash board
 	 * @author Chinnarao.Vattam
 	 */
-	public void clkSolChangeInternetPackage() {	
+	public void clkSolChangeInternetPackage() {
+		getReusableActionsInstance().staticWait(10000);
+
 		getReusableActionsInstance().waitForElementVisibility(btnSolChangeInternetPackage, 120);
 		getReusableActionsInstance().getWhenReady(btnSolChangeInternetPackage, 60).click();
 	}
@@ -397,11 +399,25 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @param strPackageNameFr package name
 	 * @author Chinnarao.Vattam
 	 */
-	public void selectSolarisInternetPackage(String strPackageNameEn,String strPackageNameFr) {	
+	public void selectSolarisInternetPackage(String strPackageNameEn,String strPackageNameFr) {
+		getReusableActionsInstance().staticWait(3000);
 		By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='change-internet-bundle-tile__row']//button[contains(@aria-label,'Add Rogers Ignite')]/span");
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 90);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
-		//getReusableActionsInstance().getWhenReady(pkg,60).click();
+		getReusableActionsInstance().getWhenReady(pkg,60).click();
+	}
+
+	/**
+	 * Select Solaris Internet Package
+	 * @param strPackageNameEn package name
+	 * @param strPackageNameFr package name
+	 * @author Chinnarao.Vattam
+	 */
+	public void selectSolarisInternetPackageMobile(String strPackageNameEn,String strPackageNameFr) {
+		getReusableActionsInstance().staticWait(3000);
+		By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='change-internet-bundle-tile__row']//button[contains(@aria-label,'Add Rogers Ignite')]/span");
+		getReusableActionsInstance().getWhenReady(packageNameLocator, 90);
+		WebElement pkg = getDriver().findElement(packageNameLocator);
 		getReusableActionsInstance().executeJavaScriptClick(pkg);
 	}
 
@@ -425,7 +441,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @param strPackageNameFr Internet package to be selected
 	 * @author Chinnarao.Vattam
 	 */
-	public void selectSolarisInternetPackageMobile(String strPackageNameEn,String strPackageNameFr) {
+	public void selectInternetPackageMobile(String strPackageNameEn,String strPackageNameFr) {
 		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersMobile,120);
 		By btnPackageSelection = By.xpath("//span[contains(normalize-space(text()),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]");
 		if(getReusableActionsInstance().isElementVisible(btnPackageSelection, 60))
