@@ -27,24 +27,25 @@ public class RogersSearch_CBS_1698_Watch_Facet_Testing extends BaseTestClass {
 
     @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual"})
     public void validateWatchSizeAndColorFilterSelection(String[] csvRowStrArray) {
+        boolean isMobile;
         List<String> strSizeOptions;
         List<String> strColorOptions;
         List<WebElement> resultLinks;
         String strSelectedSize;
         String strSelectedColor;
-        reporter.reportLogWithScreenshot("Search URL is launched");
-        getRogersSearchPage().isPageLoaded();
-        reporter.reportLogWithScreenshot("Page is loaded");
-        getRogersSearchPage().clickSearchIcon();
-        getRogersSearchPage().enterTextToBeSearched(csvRowStrArray[0]);
-        reporter.reportLogWithScreenshot("Search string " + csvRowStrArray[0] + " is entered in the search text box");
-        getRogersSearchPage().clickSubmitSearchIcon();
-        getRogersSearchPage().isPageLoaded();
+        getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0]);
+        getRogersSearchPage().waitTime();
+        isMobile = getRogersSearchPage().isMobileSelected();
+        if (isMobile) {
+            getRogersSearchPage().clkFilterIconMobile();
+            reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+        }
         String gpfilter = getRogersSearchPage().clkShopFilter();
         reporter.reportLogWithScreenshot(gpfilter + " Filter clicked");
         String pfilter = getRogersSearchPage().clkWirelessFilter();
         reporter.reportLogWithScreenshot(pfilter + " Filter clicked");
         getRogersSearchPage().clkWatchDeviceType();
+        reporter.reportLogWithScreenshot("Watch is Selected");
         strSizeOptions = getRogersSearchPage().getSizeSelections();
         reporter.hardAssert(strSizeOptions.size() != 0, "Size Options Available", "Size Options Unavailable");
         for (int i = 0; i < strSizeOptions.size(); i++) {
@@ -54,6 +55,10 @@ public class RogersSearch_CBS_1698_Watch_Facet_Testing extends BaseTestClass {
             for (int j = 0; j < strColorOptions.size(); j++) {
                 getRogersSearchPage().clkColorType(strColorOptions.get(j));
                 reporter.reportLogWithScreenshot("Color:" + strColorOptions.get(j) + " is Selected");
+                if (isMobile) {
+                    getRogersSearchPage().clkShowResultBtnMobile();
+                    reporter.reportLogWithScreenshot("Clicked on Show Results button");
+                }
                 resultLinks = getRogersSearchPage().getAllResultLinks();
                 for (int k = 0; k < resultLinks.size(); k++) {
                     getRogersSearchPage().clkResultLink(resultLinks.get(k));
@@ -70,12 +75,18 @@ public class RogersSearch_CBS_1698_Watch_Facet_Testing extends BaseTestClass {
                     getRogersSearchPage().isPageLoaded();
                     resultLinks = getRogersSearchPage().getAllResultLinks();
                 }
+                if (isMobile) {
+                    getRogersSearchPage().clkFilterIconMobile();
+                }
                 getRogersSearchPage().clkColorType(strColorOptions.get(j));
                 reporter.reportLogWithScreenshot("Color:" + strColorOptions.get(j) + " is De-Selected");
                 getRogersSearchPage().isPageLoaded();
             }
+            if (isMobile) {
+                getRogersSearchPage().clkFilterIconMobile();
+            }
             getRogersSearchPage().clkSizeType(strSizeOptions.get(i));
-            reporter.reportLogWithScreenshot("Size: " + strSizeOptions.get(i) + " is selected");
+            reporter.reportLogWithScreenshot("Size: " + strSizeOptions.get(i) + " is de-selected");
             getRogersSearchPage().isPageLoaded();
         }
     }

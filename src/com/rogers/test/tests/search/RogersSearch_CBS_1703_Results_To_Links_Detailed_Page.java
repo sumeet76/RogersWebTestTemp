@@ -38,18 +38,18 @@ public class RogersSearch_CBS_1703_Results_To_Links_Detailed_Page extends BaseTe
 
     @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual"})
     public void validateParentFilterDeselection(String[] csvRowStrArray) {
+        boolean isMobile;
         List<WebElement> lstParentFilters;
         String strParentFilterName;
-        reporter.reportLogWithScreenshot("Search URL is launched");
-        getRogersSearchPage().isPageLoaded();
-        reporter.reportLogWithScreenshot("Page is loaded");
-        getRogersSearchPage().clickSearchIcon();
-        getRogersSearchPage().enterTextToBeSearched(csvRowStrArray[0]);
-        reporter.reportLogWithScreenshot("Search string " + csvRowStrArray[0] + " is entered in the search text box");
-        getRogersSearchPage().clickSubmitSearchIcon();
-        getRogersSearchPage().isPageLoaded();
+        getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0]);
+        getRogersSearchPage().waitTime();
         String[] strFilters = Arrays.copyOfRange(csvRowStrArray, 1, csvRowStrArray.length);
         for (int i = 0; i < strFilters.length; i++) {
+            isMobile = getRogersSearchPage().isMobileSelected();
+            if (isMobile) {
+                getRogersSearchPage().clkFilterIconMobile();
+                reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+            }
             getRogersSearchPage().clkGrandParentFilter(strFilters[i]);
             reporter.reportLogWithScreenshot("Grand Parent Filter " + strFilters[i] + " is clicked");
             lstParentFilters = getRogersSearchPage().getParentFilters(strFilters[i]);
@@ -57,8 +57,17 @@ public class RogersSearch_CBS_1703_Results_To_Links_Detailed_Page extends BaseTe
                 getRogersSearchPage().clkParentFilter(lstParentFilters.get(j));
                 strParentFilterName = lstParentFilters.get(j).getText();
                 reporter.reportLogWithScreenshot("Parent filter " + strParentFilterName + " is selected");
+                if (isMobile) {
+                    getRogersSearchPage().clkShowResultBtnMobile();
+                    getRogersSearchPage().isPageLoaded();
+                    reporter.reportLogWithScreenshot("Clicked on Show Results button");
+                }
                 reporter.hardAssert(getRogersSearchPage().validateResultsLinks(),
                         "Displayed Results are Links", "Displayed Results are Links");
+                if (isMobile) {
+                    getRogersSearchPage().clkFilterIconMobile();
+                    reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+                }
             }
         }
     }

@@ -15,17 +15,27 @@ import java.util.List;
 public class RogersSearch_CBS_1691_Multiple_Filter_Selection_StorageColor_Test extends BaseTestClass {
     @DataProvider(name = "FilterData", parallel = true)
     public Object[] testData() throws IOException {
-        String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
-        List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
-        Object[] csvRow = new Object[csvData.size()];
-        for (int i = 0; i < csvData.size(); i++) {
-            csvRow[i] = csvData.get(i);
+        String csvFileName = null;
+        String language = System.getProperty("Language").toLowerCase();
+        switch (language) {
+            case "en":
+                csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
+                break;
+            case "fr":
+                csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataFR.csv";
+                break;
         }
-        return csvRow;
+        List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
+        Object[] csvRowStrArray = new Object[csvData.size()];
+        for (int i = 0; i < csvData.size(); i++) {
+            csvRowStrArray[i] = csvData.get(i);
+        }
+        return csvRowStrArray;
     }
 
     @Test(dataProvider = "FilterData", groups = {"Search", "Filter"})
     public void validateParentFilterDeselection(String[] csvRow) {
+        boolean isMobile;
         List<String> strStorageOptions;
         List<String> strColorOptions;
         List<WebElement> resultLinks;
@@ -34,12 +44,15 @@ public class RogersSearch_CBS_1691_Multiple_Filter_Selection_StorageColor_Test e
         String strSelectedColor;
         getDriver().get(System.getProperty("SearchUrl") + csvRow[0]);
         getRogersSearchPage().isPageLoaded();
+        isMobile = getRogersSearchPage().isMobileSelected();
+        if (isMobile) {
+            getRogersSearchPage().clkFilterIconMobile();
+            reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+        }
         String gpfilter = getRogersSearchPage().clkShopFilter();
         reporter.reportLogWithScreenshot(gpfilter + " Filter clicked");
         String pfilter = getRogersSearchPage().clkWirelessFilter();
         reporter.reportLogWithScreenshot(pfilter + " Filter clicked");
-        reporter.hardAssert(getRogersSearchPage().validateResultsTag(gpfilter, pfilter)
-                , "Results' tags verified", "Results' tags mismatch");
         strStorageOptions = getRogersSearchPage().getStorageSelections();
         reporter.hardAssert(strStorageOptions.size() != 0, "Storage Options Available", "Storage Options Unavailable");
         for (int i = 0; i < strStorageOptions.size(); i++) {
@@ -49,8 +62,12 @@ public class RogersSearch_CBS_1691_Multiple_Filter_Selection_StorageColor_Test e
             for (int j = 0; j < strColorOptions.size(); j++) {
                 getRogersSearchPage().clkColorType(strColorOptions.get(j));
                 reporter.reportLogWithScreenshot(" Color:" + strColorOptions.get(j) + " is Selected");
+                if (isMobile) {
+                    getRogersSearchPage().clkShowResultBtnMobile();
+                    reporter.reportLogWithScreenshot("Clicked on Show Results button");
+                }
                 resultLinks = getRogersSearchPage().getAllResultLinks();
-                for (int k = 0; k < 1; k++) {
+                for (int k = 0; k < resultLinks.size(); k++) {
                     String resultLink = resultLinks.get(k).getText();
                     getRogersSearchPage().clkResultLink(resultLinks.get(k));
                     reporter.reportLogWithScreenshot("Clicked on link:" + resultLink);
@@ -73,9 +90,17 @@ public class RogersSearch_CBS_1691_Multiple_Filter_Selection_StorageColor_Test e
                     resultLinks = getRogersSearchPage().getAllResultLinks();
                 }
                 getRogersSearchPage().isPageLoaded();
+                if (isMobile) {
+                    getRogersSearchPage().clkFilterIconMobile();
+                    reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+                }
                 getRogersSearchPage().clkColorType(strColorOptions.get(j));
             }
             getRogersSearchPage().isPageLoaded();
+            if (isMobile) {
+                getRogersSearchPage().clkFilterIconMobile();
+                reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+            }
             getRogersSearchPage().clkStorageType(strStorageOptions.get(i));
         }
     }

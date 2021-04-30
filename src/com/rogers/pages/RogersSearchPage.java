@@ -86,16 +86,16 @@ public class RogersSearchPage extends BasePageClass {
     @FindBy(xpath = "//select[contains(@id,'form-input-id')]")
     WebElement resultPerPageDropdown;
 
-    @FindBy(xpath = "//span[contains(@class,'icon-right')]")
+    @FindBy(xpath = "//button[@title='Next page']")
     WebElement firstForwardArrowKey;
 
-    @FindBy(xpath = "//span[contains(@class,'icon-left')]")
+    @FindBy(xpath = "//button[@title='Previous page']")
     WebElement firstBackwardArrowKey;
 
-    @FindBy(xpath = "//span[contains(@class,'icon-last')]")
+    @FindBy(xpath = "//button[@title='Last page']")
     WebElement lastForwardArrowKey;
 
-    @FindBy(xpath = "//span[contains(@class,'icon-first')]")
+    @FindBy(xpath = "//button[@title='First page']")
     WebElement lastBackwardArrowKey;
 
     @FindBy(xpath = "(//a[@class='m-navLink -navbar']/span[@class='m-navLink__caption'])[3]")
@@ -145,6 +145,26 @@ public class RogersSearchPage extends BasePageClass {
 
     @FindBy(xpath = "//button[contains(@class,'inline-block -primary -large')]")
     WebElement showResultBtnMobile;
+
+    @FindBy(xpath = "//span[@class='rds-navLink__icon rds-icon-search -open']")
+    WebElement searchTextIconMobile;
+
+    @FindBy(xpath = "//input[@id='searchInputMobile']")
+    WebElement searchTextBoxMbl;
+
+    @FindBy(xpath = "//button[@class='o-mobileSearchBar__submit']/span[@class='a-icon rds-icon-search']")
+    WebElement submitSearchIconMbl;
+
+    @FindBy(xpath = "//a[@class='m-mobileNavLink']/span[@aria-label]")
+    WebElement toggleLanguageMbl;
+
+    @FindBy(xpath = "//button[@class='rcl-header-mobilenav']")
+    WebElement topFilterMbl;
+
+    @FindBy(xpath = "(//span[@class='m-mobileNavLink__chevron rds-icon-expand'])[1]")
+    WebElement provinceDropdownMbl;
+
+    public static final By provinceDropdownValuesMbl = By.xpath("//ul[@class='o-mobileNavDropdown nav-list-opened']/li/a");
 
     Boolean isPagePresent = false;
     JavascriptExecutor js = null;
@@ -419,11 +439,11 @@ public class RogersSearchPage extends BasePageClass {
         while (attempt < 2) {
             try {
                 WebElement element = getDriver().findElement(By.xpath("//span[contains(@class,'color') and starts-with(text(),'" + strColor + "')]"));
-                getReusableActionsInstance().scrollToElement(element);
-                getReusableActionsInstance().clickWhenReady(element);
+                // getReusableActionsInstance().scrollToElement(element);
+                javascriptClickWithPerform(element);
                 isPageLoaded();
                 break;
-            } catch (StaleElementReferenceException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             attempt++;
@@ -869,7 +889,11 @@ public class RogersSearchPage extends BasePageClass {
      * @author naina.agarwal
      */
     public void clickSearchIcon() {
-        getReusableActionsInstance().clickWhenReady(searchTextIcon);
+        boolean isMobile = isMobileSelected();
+        if (isMobile)
+            getReusableActionsInstance().clickWhenReady(searchTextIconMobile);
+        else
+            getReusableActionsInstance().clickWhenReady(searchTextIcon);
     }
 
     /**
@@ -878,7 +902,11 @@ public class RogersSearchPage extends BasePageClass {
      * @author naina.agarwal
      */
     public void enterTextToBeSearched(String searchText) {
-        getReusableActionsInstance().enterText(searchTextBox, searchText, 1000);
+        boolean isMobile = isMobileSelected();
+        if (isMobile)
+            getReusableActionsInstance().enterText(searchTextBoxMbl, searchText, 1000);
+        else
+            getReusableActionsInstance().enterText(searchTextBox, searchText, 1000);
     }
 
     /**
@@ -887,7 +915,7 @@ public class RogersSearchPage extends BasePageClass {
      * @author naina.agarwal
      */
     public String getSearchResults() {
-        getReusableActionsInstance().waitForElementVisibility(searchResults);
+        getReusableActionsInstance().waitForElementVisibility(searchResults, 3000);
         return getReusableActionsInstance().getElementText(searchResults);
     }
 
@@ -897,7 +925,11 @@ public class RogersSearchPage extends BasePageClass {
      * @author naina.agarwal
      */
     public void clickSubmitSearchIcon() {
-        getReusableActionsInstance().clickWhenReady(submitSearchIcon);
+        boolean isMobile = isMobileSelected();
+        if (isMobile)
+            javascriptClickWithPerform(submitSearchIconMbl);
+        else
+            getReusableActionsInstance().clickWhenReady(submitSearchIcon);
     }
 
     /**
@@ -930,13 +962,23 @@ public class RogersSearchPage extends BasePageClass {
      * @author naina.agarwal
      */
     public String selectPageTwo() {
-        String message;
-        isPagePresent = getDriver().findElements(numberOfPagesDisplayedAtBottom).size() > 1;
-        if (isPagePresent) {
-            javascriptClickWithPerform(page2);
-            message = pageTwoPresent;
-        } else
-            message = pageTwoNotPresent;
+        String message = null;
+        boolean isMobile = isMobileSelected();
+        if (isMobile) {
+            boolean isRightArrowKeyEnabled = firstForwardArrowKey.isEnabled();
+            if (isRightArrowKeyEnabled) {
+                javascriptClickWithPerform(firstForwardArrowKey);
+                message = pageTwoPresent;
+            } else
+                message = pageTwoNotPresent;
+        } else {
+            isPagePresent = getDriver().findElements(numberOfPagesDisplayedAtBottom).size() > 1;
+            if (isPagePresent) {
+                javascriptClickWithPerform(page2);
+                message = pageTwoPresent;
+            } else
+                message = pageTwoNotPresent;
+        }
         return message;
     }
 
@@ -947,12 +989,22 @@ public class RogersSearchPage extends BasePageClass {
      */
     public String isSecondPageNumberHighlighted() {
         String message;
-        isPagePresent = getDriver().findElements(numberOfPagesDisplayedAtBottom).size() > 1;
-        if (isPagePresent) {
-            getReusableActionsInstance().isElementVisible(secondPagePaginationHighlighted);
-            message = pageTwoHighlighted;
-        } else
-            message = pageTwoNotHighlighted;
+        boolean isMobile = isMobileSelected();
+        if (isMobile) {
+            boolean isRightArrowKeyEnabled = firstForwardArrowKey.isEnabled();
+            if (isRightArrowKeyEnabled) {
+                getReusableActionsInstance().isElementVisible(secondPagePaginationHighlighted);
+                message = pageTwoHighlighted;
+            } else
+                message = pageTwoNotHighlighted;
+        } else {
+            isPagePresent = getDriver().findElements(numberOfPagesDisplayedAtBottom).size() > 1;
+            if (isPagePresent) {
+                getReusableActionsInstance().isElementVisible(secondPagePaginationHighlighted);
+                message = pageTwoHighlighted;
+            } else
+                message = pageTwoNotHighlighted;
+        }
         return message;
     }
 
@@ -964,17 +1016,13 @@ public class RogersSearchPage extends BasePageClass {
      */
     public String validatePageNumberInURL(String url) {
         String message = null;
-        int pageNumberSize;
+        getReusableActionsInstance().clickWhenReady(currentPageNumberHighlighted);
         String currentPageNumberInPagination = getReusableActionsInstance().getElementText(currentPageNumberHighlighted);
-        pageNumberSize = getDriver().findElements(numberOfPagesDisplayedAtBottom).size();
-        isPagePresent = pageNumberSize > 1;
-        if (isPagePresent) {
-            if (!url.endsWith("pg=" + currentPageNumberInPagination))
-                message = "Page number on Pagination and URL does not match";
-            else
-                message = "Page number on Pagination and URL match";
-        } else if (pageNumberSize == 1)
-            message = "There is only one page";
+        if (!url.endsWith("pg=" + currentPageNumberInPagination))
+            message = "Page number on Pagination and URL does not match";
+        else
+            message = "Page number on Pagination and URL match";
+//
         return message;
     }
 
@@ -1157,12 +1205,22 @@ public class RogersSearchPage extends BasePageClass {
      */
     public String clickFirstForwardArrow() {
         String message = null;
-        elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
-        int numberOfPages = elementName.size();
-        if (numberOfPages > 1) {
-            getReusableActionsInstance().clickWhenReady(firstForwardArrowKey);
-            message = clkFwdKey;
-        } else if (numberOfPages == 1) message = cannotClickFwdKey;
+        boolean isMobile = isMobileSelected();
+        if (isMobile) {
+            boolean isFirstFwKeyEnabled = firstForwardArrowKey.isEnabled();
+            if (isFirstFwKeyEnabled) {
+                javascriptClickWithPerform(firstForwardArrowKey);
+                message = clkFwdKey;
+            } else
+                message = cannotClickFwdKey;
+        } else {
+            elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
+            int numberOfPages = elementName.size();
+            if (numberOfPages > 1) {
+                getReusableActionsInstance().clickWhenReady(firstForwardArrowKey);
+                message = clkFwdKey;
+            } else if (numberOfPages == 1) message = cannotClickFwdKey;
+        }
         return message;
     }
 
@@ -1173,12 +1231,22 @@ public class RogersSearchPage extends BasePageClass {
      */
     public String clickFirstBackwardArrow() {
         String message;
-        elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
-        int numberOfPages = elementName.size();
-        if (numberOfPages > 1) {
-            getReusableActionsInstance().executeJavaScriptClick(firstBackwardArrowKey);
-            message = clkBackKey;
-        } else message = cannotClkBackKey;
+        boolean isMobile = isMobileSelected();
+        if (isMobile) {
+            boolean isFirstBkKeyEnabled = firstBackwardArrowKey.isEnabled();
+            if (isFirstBkKeyEnabled) {
+                javascriptClickWithPerform(firstBackwardArrowKey);
+                message = clkBackKey;
+            } else
+                message = cannotClkBackKey;
+        } else {
+            elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
+            int numberOfPages = elementName.size();
+            if (numberOfPages > 1) {
+                getReusableActionsInstance().executeJavaScriptClick(firstBackwardArrowKey);
+                message = clkBackKey;
+            } else message = cannotClkBackKey;
+        }
         return message;
     }
 
@@ -1189,13 +1257,23 @@ public class RogersSearchPage extends BasePageClass {
      */
     public String clickLastForwardArrow() {
         String message;
-        elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
-        int numberOfPages = elementName.size();
-        if (numberOfPages > 1) {
-            getReusableActionsInstance().executeJavaScriptClick(lastForwardArrowKey);
-            message = clickLastForwKey;
-        } else
-            message = cannotClickLastForwKey;
+        boolean isMobile = isMobileSelected();
+        if (isMobile) {
+            boolean islastFwKeyEnabled = lastForwardArrowKey.isEnabled();
+            if (islastFwKeyEnabled) {
+                javascriptClickWithPerform(lastForwardArrowKey);
+                message = clickLastForwKey;
+            } else
+                message = cannotClickLastForwKey;
+        } else {
+            elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
+            int numberOfPages = elementName.size();
+            if (numberOfPages > 1) {
+                getReusableActionsInstance().executeJavaScriptClick(lastForwardArrowKey);
+                message = clickLastForwKey;
+            } else
+                message = cannotClickLastForwKey;
+        }
         return message;
     }
 
@@ -1205,11 +1283,19 @@ public class RogersSearchPage extends BasePageClass {
      * @author naina.agarwal
      */
     public boolean lastPageIsHighlighted() {
-        String currentPageNumberInPagination = getReusableActionsInstance().getElementText(currentPageNumberHighlighted);
-        elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
-        int pages = elementName.size();
-        String pageSelected = elementName.get(pages - 1).getText();
-        return currentPageNumberInPagination.trim().equals(pageSelected.trim());
+        boolean lastPageHighlighted = false;
+        boolean isMobile = isMobileSelected();
+        if (isMobile) {
+            if (currentPageNumberHighlighted.isDisplayed())
+                lastPageHighlighted = true;
+        } else {
+            String currentPageNumberInPagination = getReusableActionsInstance().getElementText(currentPageNumberHighlighted);
+            elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
+            int pages = elementName.size();
+            String pageSelected = elementName.get(pages - 1).getText();
+            lastPageHighlighted = currentPageNumberInPagination.trim().equals(pageSelected.trim());
+        }
+        return lastPageHighlighted;
     }
 
     /**
@@ -1219,13 +1305,23 @@ public class RogersSearchPage extends BasePageClass {
      */
     public String clickLastBackwardArrow() {
         String message;
-        elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
-        int numberOfPages = elementName.size();
-        if (numberOfPages > 1) {
-            getReusableActionsInstance().executeJavaScriptClick(lastBackwardArrowKey);
-            message = clickLastBackKey;
-        } else
-            message = cannotClickLastBackKey;
+        boolean isMobile = isMobileSelected();
+        if (isMobile) {
+            boolean islastBkKeyEnabled = lastBackwardArrowKey.isEnabled();
+            if (islastBkKeyEnabled) {
+                javascriptClickWithPerform(lastBackwardArrowKey);
+                message = clickLastBackKey;
+            } else
+                message = cannotClickLastBackKey;
+        } else {
+            elementName = getDriver().findElements(numberOfPagesDisplayedAtBottom);
+            int numberOfPages = elementName.size();
+            if (numberOfPages > 1) {
+                getReusableActionsInstance().executeJavaScriptClick(lastBackwardArrowKey);
+                message = clickLastBackKey;
+            } else
+                message = cannotClickLastBackKey;
+        }
         return message;
     }
 
@@ -1240,7 +1336,6 @@ public class RogersSearchPage extends BasePageClass {
         Select dropdown = new Select(resultPerPageDropdown);
         List<WebElement> list = dropdown.getOptions();
         String firstOption = list.get(0).getText().trim();
-        System.out.println("first option is " + firstOption);
         int indexOfPsize = url1.indexOf("psize");
         String firstHalfURL = url1.substring(0, indexOfPsize);
         String secondHalfURL = url1.substring(indexOfPsize);
@@ -1274,7 +1369,10 @@ public class RogersSearchPage extends BasePageClass {
     public void openURLInNewTab(String url) {
         //Open new tab
         ((JavascriptExecutor) getDriver()).executeScript("window.open('about:blank','_blank');");
-        getReusableActionsInstance().switchToNewWindow();
+        boolean isMobile = isMobileSelected();
+        if (!isMobile) {
+            getReusableActionsInstance().switchToNewWindow();
+        }
         getDriver().get(url);
         getReusableActionsInstance().staticWait(5000);
     }
@@ -1298,8 +1396,19 @@ public class RogersSearchPage extends BasePageClass {
      * @author naina.agarwal
      */
     public String toggleLanguage() {
-        String currentLanguageBeforeToggle = getReusableActionsInstance().getElementText(toggleLanguage);
-        getReusableActionsInstance().clickWhenReady(toggleLanguage);
+        boolean isMobile = isMobileSelected();
+        String currentLanguageBeforeToggle = null;
+        if (isMobile) {
+            getReusableActionsInstance().clickWhenReady(topFilterMbl);
+            isPageLoaded();
+            currentLanguageBeforeToggle = getReusableActionsInstance().getElementText(toggleLanguageMbl);
+            currentLanguageBeforeToggle = currentLanguageBeforeToggle.substring(0, 2);
+            getReusableActionsInstance().clickWhenReady(toggleLanguageMbl);
+        } else {
+            currentLanguageBeforeToggle = getReusableActionsInstance().getElementText(toggleLanguage);
+            getReusableActionsInstance().clickWhenReady(toggleLanguage);
+            isPageLoaded();
+        }
         return currentLanguageBeforeToggle;
     }
 
@@ -1339,7 +1448,9 @@ public class RogersSearchPage extends BasePageClass {
     }
 
     public String updateURLWithDifferentLanguage() {
-        String currentLanguage = getReusableActionsInstance().getElementText(toggleLanguage);
+        boolean isMobile = isMobileSelected();
+        String currentLanguage;
+        currentLanguage = toggleLanguage();
         String currentURL = getDriver().getCurrentUrl();
         int indexOfLanguage = currentURL.indexOf("language");
         String firstHalfURL = currentURL.substring(0, indexOfLanguage);
@@ -1364,8 +1475,8 @@ public class RogersSearchPage extends BasePageClass {
     public boolean checkLanguageDisplayedOnPage() {
         boolean toggleUpdate = false;
         String currentURL = getDriver().getCurrentUrl();
-        String currentDisplayedLanguageOnToggle = getReusableActionsInstance().getElementText(toggleLanguage);
-        if ((currentURL.contains("language=en") && (currentDisplayedLanguageOnToggle.equals("FR"))) | (currentURL.contains("language=fr") && (currentDisplayedLanguageOnToggle.equals("EN"))))
+        String currentDisplayedLanguageOnToggle = toggleLanguage().toLowerCase();
+        if ((currentURL.contains("language=en") && (currentDisplayedLanguageOnToggle.contains("fr"))) | (currentURL.contains("language=fr") && (currentDisplayedLanguageOnToggle.equals("en"))))
             toggleUpdate = true;
         return toggleUpdate;
     }
@@ -1433,15 +1544,30 @@ public class RogersSearchPage extends BasePageClass {
      * @author naina.agarwal
      */
     public String selectRandomProvince() {
-        getReusableActionsInstance().clickWhenReady(provinceDropdown);
-        WebDriverWait wait = new WebDriverWait(getDriver(), 15);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(provinceDropdownValues));
-        List<WebElement> province = getDriver().findElements(provinceDropdownValues);
-        int numberOfProvinces = province.size() - 1;
-        int randomNumber = randomNumber(numberOfProvinces);
-        String provinceSelected = province.get(randomNumber).getText();
-        isPageLoaded();
-        province.get(randomNumber).click();
+        boolean isMobile = isMobileSelected();
+        List<WebElement> province;
+        String provinceSelected;
+        try {
+            if (isMobile) {
+                getReusableActionsInstance().clickWhenReady(topFilterMbl);
+                getReusableActionsInstance().clickWhenReady(provinceDropdown);
+                WebDriverWait wait = new WebDriverWait(getDriver(), 15);
+                wait.until(ExpectedConditions.visibilityOfElementLocated(provinceDropdownValuesMbl));
+                province = getDriver().findElements(provinceDropdownValuesMbl);
+            } else {
+                getReusableActionsInstance().clickWhenReady(provinceDropdown);
+                WebDriverWait wait = new WebDriverWait(getDriver(), 15);
+                wait.until(ExpectedConditions.visibilityOfElementLocated(provinceDropdownValues));
+                province = getDriver().findElements(provinceDropdownValues);
+            }
+            int numberOfProvinces = province.size() - 1;
+            int randomNumber = randomNumber(numberOfProvinces);
+            provinceSelected = province.get(randomNumber).getText();
+            isPageLoaded();
+            province.get(randomNumber).click();
+        } catch (Exception e) {
+            throw new DigiAutoCustomException(e);
+        }
         return provinceSelected;
     }
 
@@ -1468,12 +1594,24 @@ public class RogersSearchPage extends BasePageClass {
      * @author naina.agarwal
      */
     public boolean validateHomeURL() {
-        boolean homeURL = true;
-        wait = new WebDriverWait(getDriver(), 2000);
-        wait.until(ExpectedConditions.urlContains("home"));
-        String currentURL = getDriver().getCurrentUrl();
-        if (!currentURL.contains("home"))
-            homeURL = false;
+        boolean homeURL = false;
+        String currentURL = null;
+        try {
+            wait = new WebDriverWait(getDriver(), 2000);
+            String defaultURL = System.getProperty("SearchUrl");
+            if (defaultURL.contains("qa")) {
+                wait.until(ExpectedConditions.urlContains("home"));
+                currentURL = getDriver().getCurrentUrl();
+                if (currentURL.contains("home"))
+                    homeURL = true;
+            } else {
+                currentURL = getDriver().getCurrentUrl();
+                if (currentURL.equals("https://www.rogers.com/"))
+                    homeURL = true;
+            }
+        } catch (Exception e) {
+            throw new DigiAutoCustomException(e);
+        }
         return homeURL;
     }
     //Mobile Methods

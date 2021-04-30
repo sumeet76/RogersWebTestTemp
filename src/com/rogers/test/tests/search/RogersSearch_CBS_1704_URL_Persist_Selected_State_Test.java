@@ -41,9 +41,9 @@ public class RogersSearch_CBS_1704_URL_Persist_Selected_State_Test extends BaseT
     public void urlPersistSelectedState(String[] csvRowStrArray) throws UnsupportedEncodingException {
         String strCurrentUrl, grandParentFilter, strParentFilterName;
         List<WebElement> lstParentFilters;
-        List<String> strColorFilters, strStorageFilters, deviceFilters, brandFilters;
-        String[] myArrayColor, myArrayStorage, myArrayBrand, myArrayDevice;
-        ArrayList<String> listArrayColor, listArrayDevice, listArrayBrand, listArrayStorage;
+        List<String> strColorFilters, strStorageFilters;
+        String[] myArrayColor, myArrayStorage;
+        ArrayList<String> listArrayColor, listArrayStorage;
         reporter.reportLogWithScreenshot("Launching URL");
         getRogersSearchPage().isPageLoaded();
         reporter.reportLogWithScreenshot("Page is launched");

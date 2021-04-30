@@ -31,21 +31,21 @@ public class RogersSearch_CBS_1701_ResetAllFilters_Button_Test extends BaseTestC
 
     @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual", "Sanity"})
     public void validateParentFilterDeselection(String[] csvRowStrArray) {
+        boolean isMobile;
         List<String> strColorFilters;
         String[] strFilters;
         String gpfilter, pfilter;
         List<String> strSizeOptions;
-        String resultAfterReset, resultBeforeReset;
+        String resultAfterReset = null, resultBeforeReset;
         int i = 0;
-        reporter.reportLogWithScreenshot("Search URL is launched");
-        getRogersSearchPage().isPageLoaded();
-        reporter.reportLogWithScreenshot("Page is loaded");
-        getRogersSearchPage().clickSearchIcon();
-        getRogersSearchPage().enterTextToBeSearched(csvRowStrArray[0]);
-        reporter.reportLogWithScreenshot("Search string " + csvRowStrArray[0] + " is entered in the search text box");
-        getRogersSearchPage().clickSubmitSearchIcon();
+        getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0]);
         getRogersSearchPage().waitTime();
         resultBeforeReset = getRogersSearchPage().numberOfResults();
+        isMobile = getRogersSearchPage().isMobileSelected();
+        if (isMobile) {
+            getRogersSearchPage().clkFilterIconMobile();
+            reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+        }
         gpfilter = getRogersSearchPage().clkShopFilter();
         reporter.reportLogWithScreenshot(gpfilter + " Filter clicked");
         pfilter = getRogersSearchPage().clkWirelessFilter();
@@ -57,15 +57,24 @@ public class RogersSearch_CBS_1701_ResetAllFilters_Button_Test extends BaseTestC
         getRogersSearchPage().clkResetAllFilters();
         getRogersSearchPage().waitTime();
         reporter.reportLogWithScreenshot("Reset All Filters button clicked");
-        resultAfterReset = getRogersSearchPage().numberOfResults();
         reporter.hardAssert(getRogersSearchPage().validateAllFiltersCollapsed(),
                 "All Filters are Reset", "Filters Not Reset");
-        reporter.softAssert(getRogersSearchPage().filterCount(),"Filter Count is set to 0", "Filter count is not set to 0");
+        reporter.softAssert(getRogersSearchPage().filterCount(), "Filter Count is set to 0", "Filter count is not set to 0");
+        if (isMobile) {
+            getRogersSearchPage().clkShowResultBtnMobile();
+            getRogersSearchPage().isPageLoaded();
+            reporter.reportLogWithScreenshot("Clicked on Show Results button");
+        }
+        resultAfterReset = getRogersSearchPage().numberOfResults();
         reporter.hardAssert(getRogersSearchPage().stringMatch(resultBeforeReset, resultAfterReset), "Results refreshed", "Results not refreshed");
         strFilters = Arrays.copyOfRange(csvRowStrArray, 1, csvRowStrArray.length);
         reporter.softAssert(getRogersSearchPage().verifyResultsCategoryTagRelevancy(strFilters),
                 "Relevant Results tags Displayed are displayed on the landing page for the search filters", "Relevant Results tags are not displayed on the landing page for the search filters");
         resultBeforeReset = getRogersSearchPage().numberOfResults();
+        if (isMobile) {
+            getRogersSearchPage().clkFilterIconMobile();
+            reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+        }
         gpfilter = getRogersSearchPage().clkShopFilter();
         reporter.reportLogWithScreenshot(gpfilter + " Filter clicked");
         pfilter = getRogersSearchPage().clkWirelessFilter();
@@ -80,10 +89,14 @@ public class RogersSearch_CBS_1701_ResetAllFilters_Button_Test extends BaseTestC
         }
         getRogersSearchPage().clkResetAllFilters();
         reporter.reportLogWithScreenshot("Reset All Filters button clicked");
-        resultAfterReset = getRogersSearchPage().numberOfResults();
         reporter.hardAssert(getRogersSearchPage().validateAllFiltersCollapsed(),
                 "All Filters are Reset", "Filters Not Reset");
-        reporter.softAssert(getRogersSearchPage().filterCount(),"Filter Count is set to 0", "Filter count is not set to 0");
+        reporter.softAssert(getRogersSearchPage().filterCount(), "Filter Count is set to 0", "Filter count is not set to 0");
+        if (isMobile) {
+            getRogersSearchPage().clkShowResultBtnMobile();
+            reporter.reportLogWithScreenshot("Clicked on Show Results button");
+        }
+        resultAfterReset = getRogersSearchPage().numberOfResults();
         reporter.hardAssert(getRogersSearchPage().stringMatch(resultBeforeReset, resultAfterReset), "Results refreshed", "Results not refreshed");
         strFilters = Arrays.copyOfRange(csvRowStrArray, 1, csvRowStrArray.length);
         reporter.softAssert(getRogersSearchPage().verifyResultsCategoryTagRelevancy(strFilters),
