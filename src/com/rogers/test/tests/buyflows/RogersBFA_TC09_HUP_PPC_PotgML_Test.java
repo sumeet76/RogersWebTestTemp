@@ -87,8 +87,10 @@ public class RogersBFA_TC09_HUP_PPC_PotgML_Test extends BaseTestClass {
         reporter.reportLogPassWithScreenshot("Order Review Page");
         getRogersReviewOrderPage().clkFinancingConsentCheckbox();
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
+        getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
         getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
+        getRogersReviewOrderPage().clkEmailConsentCheckbox();
         if(getRogersOrderReviewPage().isPaymentRequired()) {
             getRogersOrderReviewPage().clkContinue();
             getRogersPaymentPage().setCreditCardDetails(TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getNumber(),

@@ -1,17 +1,17 @@
-package com.rogers.pages;
+package com.rogers.oneview.pages;
 
 import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class RogersReviewOrderPage extends BasePageClass {
+public class RogersOVReviewOrderPage extends BasePageClass {
     /**
      * Instantiates a new Base page class.
      *
      * @param driver the driver
      */
-    public RogersReviewOrderPage(WebDriver driver) {
+    public RogersOVReviewOrderPage(WebDriver driver) {
         super(driver);
     }
 
@@ -62,6 +62,9 @@ public class RogersReviewOrderPage extends BasePageClass {
 
     @FindBy(xpath = "//input[contains(@name,'upfrontConsent')]/..")
     WebElement chUpfrontConsent;
+
+    @FindBy(xpath = "//input[contains(@name,'points-to-mention-check')]/..")
+    WebElement pointsToMentionCheck;
     
     @FindBy(xpath ="//ds-checkbox[@name='credit-check']")
     WebElement chEmailConsent;
@@ -219,7 +222,15 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author nimmy.george
      */
     public void clkUpfrontConsentCheckbox() {
-        getReusableActionsInstance().clickIfAvailable(chUpfrontConsent,2);
+        getReusableActionsInstance().clickWhenReady(chUpfrontConsent,2);
+    }
+
+    /**
+     * Clicks on the 'Points To Mention' checkbox
+     * @author sidhartha.vadrevu
+     */
+    public void clkPointsToMentionCheckbox() {
+        getReusableActionsInstance().clickWhenReady(pointsToMentionCheck,2);
     }
 
     /**
@@ -227,7 +238,7 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clkEmailConsentCheckbox() {
-        getReusableActionsInstance().clickWhenReady(chEmailConsent,5);
+        getReusableActionsInstance().clickIfAvailable(chEmailConsent,5);
     }
 
     /**

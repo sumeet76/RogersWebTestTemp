@@ -15,6 +15,7 @@ public class AALOVData {
 	private String deviceCostIndex;
 	private String dataOptionIndex;
 	private String talkOptionIndex;
+	private String ctnCity;
 
 	public String getBanNo() {
 		return banNo;
@@ -160,5 +161,17 @@ public class AALOVData {
 	 */
 	public void setTalkOptionIndex(String talkOptionIndex) {
 		this.talkOptionIndex = talkOptionIndex;
+	}
+	/**
+	 * @return the ctnCity
+	 */
+	public String getCtnCity() {
+		return ctnCity;
+	}
+	/**
+	 * @param ctnCity the ctnCity to set
+	 */
+	public void setCtnCity(String ctnCity) {
+		this.ctnCity = ctnCity;
 	}
 }

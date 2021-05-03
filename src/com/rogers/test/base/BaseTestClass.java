@@ -152,6 +152,9 @@ public class BaseTestClass {
     protected static final ThreadLocal<com.rogers.oneview.pages.RogersOVPaymentPage> RogersOVPaymentPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<com.rogers.oneview.pages.RogersChoosePlanPage> RogersOVChoosePlanPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<com.rogers.oneview.pages.RogersOVPlanConfigPage> RogersOVPlanConfigPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<com.rogers.oneview.pages.RogersOVCheckoutPage> RogersOVCheckoutPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<com.rogers.oneview.pages.RogersOVReviewOrderPage> RogersOVReviewOrderPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<com.rogers.oneview.pages.RogersOVOneTimePaymentPage> RogersOVOneTimePaymentPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersSearchPage> RogersSearchPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersDeviceCataloguePage> RogersDeviceCataloguePageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersDeviceConfigPage> RogersDeviceConfigPageThreadLocal = new ThreadLocal<>();
@@ -535,6 +538,18 @@ public class BaseTestClass {
 
     public static com.rogers.oneview.pages.RogersOVPlanConfigPage getRogersOVPlanConfigPage() {
         return RogersOVPlanConfigPageThreadLocal.get();
+    }
+
+    public static com.rogers.oneview.pages.RogersOVCheckoutPage getRogersOVCheckoutPage() {
+        return RogersOVCheckoutPageThreadLocal.get();
+    }
+
+    public static com.rogers.oneview.pages.RogersOVReviewOrderPage getRogersOVReviewOrderPage() {
+        return RogersOVReviewOrderPageThreadLocal.get();
+    }
+
+    public static com.rogers.oneview.pages.RogersOVOneTimePaymentPage getRogersOVOneTimePaymentPage() {
+        return RogersOVOneTimePaymentPageThreadLocal.get();
     }
 
     public static RogersSearchPage getRogersSearchPage() {
@@ -1018,6 +1033,9 @@ public class BaseTestClass {
                 RogersOVPaymentPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVPaymentPage(getDriver()));
                 RogersOVChoosePlanPageThreadLocal.set(new com.rogers.oneview.pages.RogersChoosePlanPage(getDriver()));
                 RogersOVPlanConfigPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVPlanConfigPage(getDriver()));
+                RogersOVCheckoutPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVCheckoutPage(getDriver()));
+                RogersOVReviewOrderPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVReviewOrderPage(getDriver()));
+                RogersOVOneTimePaymentPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVOneTimePaymentPage(getDriver()));
                 break;
 
 

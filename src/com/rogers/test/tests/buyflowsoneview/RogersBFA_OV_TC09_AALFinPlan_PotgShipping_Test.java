@@ -5,7 +5,10 @@ import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -14,7 +17,7 @@ import java.lang.reflect.Method;
  * TC01-OV-AAL_Singleline Account_Validate if user is able to place an order in HUP flow and choose a different plan_EN
  * @author Saurav.Goyal
  */
-public class RogersBFA_OV_TC08_AALShareTerm_BopisShipping_Test extends BaseTestClass {
+public class RogersBFA_OV_TC09_AALFinPlan_PotgShipping_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","RegressionOVBFA","SanityBFA","HupOvBFA"})
 	public void aALSingleLineShareTermBopisShippingFlow() {
@@ -30,20 +33,20 @@ public class RogersBFA_OV_TC08_AALShareTerm_BopisShipping_Test extends BaseTestC
 		getAccountOverViewPage().selectAddAWirelessLineButton();
 		reporter.reportLogWithScreenshot("Add a Wireless Line Button is Selected");
 		reporter.hardAssert(getRogersOVChoosePhonePage().checkAcceptAndContinueOnCreditEvalModal() , "Credit Evaluation modal with credit information displayed","Credit Evaluation modal doesn't contain credit info");
-		reporter.hardAssert(getRogersOVChoosePhonePage().validateCustomerType(),"Given customer risk type "+TestDataHandler.buyFlowsOVtestCase08.getCustomerRiskLevel()+" matches the risk type "+getRogersOVChoosePhonePage().checkCustomerType()+" from the credit evaluation modal","Given customer risk type "+TestDataHandler.buyFlowsOVtestCase08.getCustomerRiskLevel()+" does not match the risk type "+getRogersOVChoosePhonePage().checkCustomerType()+" from the credit evaluation modal");
+		reporter.hardAssert(getRogersOVChoosePhonePage().validateCustomerType(),"Given customer risk type "+TestDataHandler.buyFlowsOVtestCase09.getCustomerRiskLevel()+" matches the risk type "+getRogersOVChoosePhonePage().checkCustomerType()+" from the credit evaluation modal","Given customer risk type "+TestDataHandler.buyFlowsOVtestCase09.getCustomerRiskLevel()+" does not match the risk type "+getRogersOVChoosePhonePage().checkCustomerType()+" from the credit evaluation modal");
 		reporter.reportLogWithScreenshot("Credit Evaluation Modal");
 		getRogersOVChoosePhonePage().clickAcceptAndContinueOnCreditEvalModal();
 		reporter.reportLogWithScreenshot("clicked on Accept and Continue button");
 		reporter.hardAssert(getRogersOVChoosePhonePage().verifySharedNonSharedModalPresent(), "Shared/Nonshared modal displayed", "Shared/Nonshared modal not displayed");
 		reporter.reportLogWithScreenshot("Shared/Nonshared modal popup");
-		String aalSharingType = TestDataHandler.buyFlowsOVtestCase08.getSharingType();
+		String aalSharingType = TestDataHandler.buyFlowsOVtestCase09.getSharingType();
 		getRogersOVChoosePhonePage().selectAALSharingType(aalSharingType);
 		reporter.reportLogPassWithScreenshot(aalSharingType+ " option selected successfully");
 		getRogersOVChoosePhonePage().clickContinueButtonOnModal();
 		reporter.reportLogWithScreenshot("Continue button is clicked");
-		String deviceName = TestDataHandler.buyFlowsOVtestCase08.getDeviceName();
+		String deviceName = TestDataHandler.buyFlowsOVtestCase09.getDeviceName();
 		reporter.hardAssert(getRogersOVChoosePhonePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
-		getRogersOVChoosePhonePage().clickDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase08.getDeviceName());
+		getRogersOVChoosePhonePage().clickDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase09.getDeviceName());
 		getRogersOVChoosePhonePage().clickContinueButton();
 		//-------------------------------------Plan config page---------------------------------------------
 		reporter.softAssert(getRogersOVPlanConfigPage().verifyBreadCrumb(deviceName),
@@ -51,14 +54,14 @@ public class RogersBFA_OV_TC08_AALShareTerm_BopisShipping_Test extends BaseTestC
 		reporter.hardAssert(getRogersOVPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
 		reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
 		getRogersOVPlanConfigPage().clickViewMoreOptions();
-		getRogersOVPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersOVPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.buyFlowsOVtestCase08.getDeviceCostIndex()));
+		getRogersOVPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersOVPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.buyFlowsOVtestCase09.getDeviceCostIndex()));
 		reporter.reportLogPassWithScreenshot("Device cost option selected");
 		getRogersOVPlanConfigPage().clickShowMoreDetails();
-		getRogersOVPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersOVPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.buyFlowsOVtestCase08.getDataOptionIndex()));
+		getRogersOVPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersOVPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.buyFlowsOVtestCase09.getDataOptionIndex()));
 		reporter.reportLogPassWithScreenshot("Data option selected");
 		//getRogersOVPlanConfigPage().clickGetBPOOffer();
 		//reporter.reportLogPassWithScreenshot("BPO offer selected");
-		reporter.hardAssert(getRogersOVPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersOVPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.buyFlowsOVtestCase08.getTalkOptionIndex())),
+		reporter.hardAssert(getRogersOVPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersOVPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.buyFlowsOVtestCase09.getTalkOptionIndex())),
 				"Talk option selected and Addons page in expanded state","Addons page not in expanded state");
 		getRogersOVPlanConfigPage().clickPreCartAddonsContinueButton();
 		getRogersOVPlanConfigPage().clkContinueCallerID();
@@ -70,7 +73,7 @@ public class RogersBFA_OV_TC08_AALShareTerm_BopisShipping_Test extends BaseTestC
 //---------------------------------------Checkout pages---------------------------------------------------------
 		reporter.softAssert(getRogersOVCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed", "Choose a Number Title not disaplayed");
 		reporter.softAssert(getRogersOVCheckoutPage().isChooseNumberTabsDisplayed(), "Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
-		getRogersOVCheckoutPage().selectCityDropdownOption(TestDataHandler.buyFlowsOVtestCase08.getCtnCity());
+		getRogersOVCheckoutPage().selectCityDropdownOption(TestDataHandler.buyFlowsOVtestCase09.getCtnCity());
 		reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
 		getRogersOVCheckoutPage().clkChosePhoneNumber();
 		reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
@@ -85,10 +88,9 @@ public class RogersBFA_OV_TC08_AALShareTerm_BopisShipping_Test extends BaseTestC
 		reporter.hardAssert(getRogersOVCheckoutPage().verifyExpressLocationMapPresent(), "Express pickup location map is present",
 				"Express pickup location map is not available");*/
 		//reporter.reportLogPassWithScreenshot("On Checkout page");
-		getRogersOVCheckoutPage().clkDeliveryMethod("STANDARD");
+		getRogersOVCheckoutPage().clkDeliveryMethod("PRO");
 		reporter.reportLogPassWithScreenshot("Pro on the go Delivery selected");
-
-		//reporter.hardAssert(getRogersOVCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");
+		reporter.hardAssert(getRogersOVCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");
 		getRogersOVCheckoutPage().clkContinueBtnShipping();
 		reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
 /*		getRogersOVCheckoutPage().clkContinueBtnShipping();
@@ -125,7 +127,7 @@ public class RogersBFA_OV_TC08_AALShareTerm_BopisShipping_Test extends BaseTestC
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		startOVSession(System.getProperty("QaOVUrl"),strBrowser, strLanguage,RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim(), TestDataHandler.buyFlowsOVtestCase08.getContactID(),TestDataHandler.buyFlowsOVtestCase08.getBanNo(),TestDataHandler.bfaOneViewConfig.getUsrID(), TestDataHandler.bfaOneViewConfig.getLoginID(),  method);
+		startOVSession(System.getProperty("QaOVUrl"),strBrowser, strLanguage,RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim(), TestDataHandler.buyFlowsOVtestCase09.getContactID(),TestDataHandler.buyFlowsOVtestCase09.getBanNo(),TestDataHandler.bfaOneViewConfig.getUsrID(), TestDataHandler.bfaOneViewConfig.getLoginID(),  method);
 	}
 
 /*	@AfterMethod(alwaysRun = true)

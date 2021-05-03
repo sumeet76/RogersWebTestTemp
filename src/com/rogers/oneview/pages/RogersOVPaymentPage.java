@@ -2,6 +2,7 @@ package com.rogers.oneview.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -36,8 +37,11 @@ public class RogersOVPaymentPage extends BasePageClass {
 	
 	@FindBy(xpath = "//input[@name='securityCode']")
 	WebElement txtSecurityCode;
-	
-	@FindBy(xpath = "//span[@checkout-res='checkout_submit_order']/parent::button")
+
+	@FindAll({
+			@FindBy(xpath = "//button[@data-test='continue-btn']"),
+			@FindBy(xpath = "//span[@checkout-res='checkout_submit_order']/parent::button")
+	})
 	WebElement btnSubmit;
 
 	/**

@@ -83,22 +83,36 @@ public class RogersChoosePhonePage extends BasePageClass {
 	@FindBy(xpath = "//button[@res='eligible_cancel']")
 	WebElement formProOnTheGoCancel;
 
-	@FindAll({
-			@FindBy(xpath = "(//td[contains(@class,'text-title-5 text-bold text-right py-12')])[2]"),
-			@FindBy(xpath = "//p[contains(text(),'Security deposit required')]//following::p[1]")
+	/*@FindAll({
+			//@FindBy(xpath = "(//td[contains(@class,'text-title-5 text-bold text-right py-12')])[3]"),//2
+			@FindBy(xpath = "//p[contains(text(),'Security deposit required')]//following::p[1]"),
+			@FindBy(xpath = "//th[contains(text(),' Security deposit required ')]//following-sibling::td")
 	})
+	WebElement securityDepositAmount;*/
+
+	@FindBy(xpath = "//th[contains(text(),' Security deposit required ')]//following-sibling::td")
 	WebElement securityDepositAmount;
 
-	@FindAll({
-			@FindBy(xpath = "(//td[contains(@class,'text-title-5 text-bold text-right py-12')])[3]"),
-			@FindBy(xpath = "//p[contains(text(),'Security deposit required')]//following::p[3]")
+/*	@FindAll({
+			//@FindBy(xpath = "(//td[contains(@class,'text-title-5 text-bold text-right py-12')])[4]"),//3
+			@FindBy(xpath = "//p[contains(text(),'Security deposit required')]//following::p[3]"),
+			@FindBy(xpath = "//th[contains(text(),' CLM ')]//following-sibling::td")
 	})
+	WebElement cLMAmount;*/
+
+	@FindBy(xpath = "//th[contains(text(),' CLM ')]//following-sibling::td")
 	WebElement cLMAmount;
 
+/*
 	@FindAll({
-			@FindBy(xpath = "(//td[contains(@class,'text-title-5 text-bold text-right py-12')])[4]"),
-			@FindBy(xpath = "//p[contains(text(),'Security deposit required')]//following::p[5]")
+			//@FindBy(xpath = "(//td[contains(@class,'text-title-5 text-bold text-right py-12')])[5]"),//4
+			@FindBy(xpath = "//p[contains(text(),'Security deposit required')]//following::p[5]"),
+			@FindBy(xpath = "//th[contains(text(),' Risk level ')]//following-sibling::td")
 	})
+	WebElement riskLevel;
+*/
+
+	@FindBy(xpath = "//th[contains(text(),' Risk level ')]//following-sibling::td")
 	WebElement riskLevel;
 
 	@FindBy(xpath = "//span[contains(text(),' Accept and Continue ')]")

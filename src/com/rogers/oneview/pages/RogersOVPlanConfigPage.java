@@ -2,10 +2,12 @@ package com.rogers.oneview.pages;
 
 import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import utils.FormFiller;
 
 import java.util.List;
 
@@ -145,7 +147,20 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[@data-test='continue-btn']")
     WebElement btnProceedToCheckout;
 
+    @FindBy(xpath = "//input[@id='ds-form-input-id-0']/parent::div//input")
+    WebElement inputFirstName;
 
+    @FindBy(xpath = "//input[@id='ds-form-input-id-0']/parent::div")
+    WebElement inputFirstNameDiv;
+
+    @FindBy(xpath = "//input[@id='ds-form-input-id-1']/parent::div//input")
+    WebElement inputLastName;
+
+    @FindBy(xpath = "//input[@id='ds-form-input-id-1']/parent::div")
+    WebElement inputLastNameDiv;
+
+    @FindBy(xpath = "//span[contains(text(),'CONTINUE')]")
+    WebElement callerIDContinue;
 
     /**
      * Select Device Protection Header on Plan config page
@@ -273,6 +288,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
             getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton, 30);
         } else {
             getReusableActionsInstance().clickWhenVisible(By.xpath(xpathDcDoTo), 60);
+            getReusableActionsInstance().staticWait(5000);
             getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton, 30);
         }
     }
@@ -372,7 +388,6 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public boolean verifyTalkOptionSelectionAndAddonsContinueButton(String talkOptionIndex) {
-        clickGetBPOOffer();
         int stepper = 3;
         String xpathDcDoTo = createXpathWithInputData(talkOptionIndex, stepper);
         if(Integer.parseInt(talkOptionIndex) == 0) {
@@ -382,7 +397,6 @@ public class RogersOVPlanConfigPage extends BasePageClass {
             getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo),30);
             getReusableActionsInstance().clickIfAvailable(preCartTalkOptionContinueButton);
         }
-        clickGetBPOOffer();
         return getReusableActionsInstance().isElementVisible(preCartAddonsContinueButton,30);
     }
 
@@ -487,7 +501,6 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clickPreCartAddonsContinueButton() {
-        clickGetBPOOffer();
         getReusableActionsInstance().clickIfAvailable(preCartAddonsContinueButton);
     }
 
@@ -588,10 +601,9 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void clickCartSummaryContinueButton() {
-        clickGetBPOOffer();
         getReusableActionsInstance().javascriptScrollByVisibleElement(continueButtonOnCartSummary);
         getReusableActionsInstance().executeJavaScriptClick(continueButtonOnCartSummary);
-        clickGetBPOOffer();
+        //clickGetBPOOffer();
 //        getReusableActionsInstance().waitForElementTobeClickable(continueButtonOnCartSummary, 10);
 //        getReusableActionsInstance().clickWhenReady(continueButtonOnCartSummary);
     }
@@ -807,6 +819,44 @@ public class RogersOVPlanConfigPage extends BasePageClass {
         getReusableActionsInstance().clickIfAvailable(preCartDataOtionContinueButton,10);
         getReusableActionsInstance().clickIfAvailable(preCartTalkOptionContinueButton,10);
         return getReusableActionsInstance().isElementVisible(preCartAddonsContinueButton,30);
+    }
+
+    /**
+     * Enter First name on the phone plans page
+     * @author Sidhartha.Vadrevu
+     */
+    public void enterFirstName() {
+        String strFirstName = FormFiller.generateRandomName();
+        getReusableActionsInstance().getWhenReady(inputFirstNameDiv, 30).click();
+        getReusableActionsInstance().getWhenReady(inputFirstName, 3).sendKeys(strFirstName);
+    }
+
+    /**
+     * Enter Last name on the phone plans page
+     * @author Saurav.Goyal
+     */
+    public void enterSecondName() {
+        String strLastName = FormFiller.generateRandomName();
+        getReusableActionsInstance().getWhenReady(inputLastNameDiv, 30).click();
+        getReusableActionsInstance().getWhenReady(inputLastName, 3).sendKeys(strLastName);
+    }
+
+    /**
+     * Clicks on the 'Continue' button after giving first name and last name details. Tablet has default values which is covered with try/catch block.
+     * @author Sidhartha.Vadrevu
+     */
+    public void clkContinueCallerID() {
+        try {
+            enterFirstName();
+            enterSecondName();
+            getReusableActionsInstance().waitForElementVisibility(callerIDContinue, 20);
+            getReusableActionsInstance().executeJavaScriptClick(callerIDContinue);
+            //getReusableActionsInstance().clickIfAvailable(callerIDContinue, 20);
+        }catch (ElementClickInterceptedException except){
+            getReusableActionsInstance().waitForElementVisibility(callerIDContinue, 20);
+            getReusableActionsInstance().executeJavaScriptClick(callerIDContinue);
+            //getReusableActionsInstance().clickIfAvailable(callerIDContinue, 20);
+        }
     }
 
 }
