@@ -26,7 +26,7 @@ import java.util.List;
  **/
 public class RogersSearch_CBS_Pagination_1962_Province_Toggling_Functioning extends BaseTestClass {
 
-    @DataProvider(name = "FilterData", parallel = true)
+    @DataProvider(name = "FilterData", parallel = false)
     public Object[] testData() throws IOException {
         String csvFileName = null;
         if (System.getProperty("Language").equalsIgnoreCase("en"))
@@ -44,14 +44,15 @@ public class RogersSearch_CBS_Pagination_1962_Province_Toggling_Functioning exte
     @Test(dataProvider = "FilterData", groups = {"Search", "Pagination"})
     @Parameters({"strLanguage"})
     public void contextPageValidation(String[] csvRow) {
-        String message = null;
         String searchResult = null;
         String strParentFilterName = null;
         List<WebElement> lstParentFilters;
         String selectedProvince = null;
-        reporter.reportLogWithScreenshot("Search URL is launched");
+        boolean isMobile;
+        reporter.reportLogWithScreenshot("Launching URL");
         getRogersSearchPage().isPageLoaded();
-        reporter.reportLogWithScreenshot("Page is loaded");
+        getRogersSearchPage().isEnvQA();
+        reporter.reportLogWithScreenshot("Page is launched");
         getRogersSearchPage().clickSearchIcon();
         getRogersSearchPage().enterTextToBeSearched(csvRow[0]);
         reporter.reportLogWithScreenshot("Search string " + csvRow[0] + " is entered in the search text box");
@@ -64,9 +65,16 @@ public class RogersSearch_CBS_Pagination_1962_Province_Toggling_Functioning exte
         reporter.reportLogPass(searchResult + " are displayed");
         getDriver().navigate().refresh();
         reporter.reportLogWithScreenshot("Page is refreshed");
-        getRogersSearchPage().waitForToggleToBeDisplayed();
-        reporter.softAssert(getRogersSearchPage().validateProvinceAfterToggle(selectedProvince), "Same province is displayed in Language toggle after page refresh", "Same province is displayed in Language toggle after page refresh");
+        getRogersSearchPage().waitForPage();
         reporter.softAssert(getRogersSearchPage().searchResultMatch(searchResult), "Search results match after page refresh", "Search result does not match after page refresh");
+        reporter.softAssert(getRogersSearchPage().validateProvinceAfterToggle(selectedProvince), "Same province is displayed in Language toggle after page refresh", "Same province is displayed in Language toggle after page refresh");
+        isMobile = getRogersSearchPage().isMobileSelected();
+        if (isMobile) {
+            getRogersSearchPage().clkOnCrossMarkMbl();
+            reporter.reportLogWithScreenshot("Clicked on Cross Mark");
+            getRogersSearchPage().clkFilterIconMobile();
+            reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+        }
         getRogersSearchPage().clkGrandParentFilter(csvRow[1]);
         getRogersSearchPage().isPageLoaded();
         reporter.reportLogWithScreenshot(csvRow[1] + " grandparent filter is clicked");
@@ -76,6 +84,11 @@ public class RogersSearch_CBS_Pagination_1962_Province_Toggling_Functioning exte
         strParentFilterName = lstParentFilters.get(0).getText();
         reporter.reportLogWithScreenshot(strParentFilterName + " parent filter is selected");
         getRogersSearchPage().isPageLoaded();
+        if (isMobile) {
+            getRogersSearchPage().clkShowResultBtnMobile();
+            getRogersSearchPage().isPageLoaded();
+            reporter.reportLogWithScreenshot("Clicked on Show Results button");
+        }
         selectedProvince = getRogersSearchPage().selectRandomProvince();
         getRogersSearchPage().isPageLoaded();
         reporter.reportLogWithScreenshot("Selected province is: " + selectedProvince);
@@ -83,9 +96,15 @@ public class RogersSearch_CBS_Pagination_1962_Province_Toggling_Functioning exte
         reporter.reportLogPass(searchResult + " are displayed");
         getDriver().navigate().refresh();
         reporter.reportLogWithScreenshot("Page is refreshed");
-        getRogersSearchPage().waitForToggleToBeDisplayed();
-        reporter.softAssert(getRogersSearchPage().validateProvinceAfterToggle(selectedProvince), "Same province is displayed in Language toggle after page refresh", "Same province is displayed in Language toggle after page refresh");
+        getRogersSearchPage().waitForPage();
         reporter.softAssert(getRogersSearchPage().searchResultMatch(searchResult), "Search results match after page refresh", "Search result does not match after page refresh");
+        reporter.softAssert(getRogersSearchPage().validateProvinceAfterToggle(selectedProvince), "Same province is displayed in Language toggle after page refresh", "Same province is displayed in Language toggle after page refresh");
+        if (isMobile) {
+            getRogersSearchPage().clkOnCrossMarkMbl();
+            reporter.reportLogWithScreenshot("Clicked on Cross Mark");
+            getRogersSearchPage().clkFilterIconMobile();
+            reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+        }
         reporter.softAssert(getRogersSearchPage().isGrandParentFilterUnexpanded(), "Filter is reset", "Filter is not reset");
     }
 

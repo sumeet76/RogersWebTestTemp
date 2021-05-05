@@ -27,7 +27,7 @@ import java.util.List;
  **/
 public class RogersSearch_CBS_Pagination_1656_Filter_Relationship_With_Pagination extends BaseTestClass {
 
-    @DataProvider(name = "FilterData", parallel = true)
+    @DataProvider(name = "FilterData", parallel = false)
     public Object[] testData() throws IOException {
         String csvFileName = null;
         if (System.getProperty("Language").equalsIgnoreCase("en"))
@@ -50,6 +50,7 @@ public class RogersSearch_CBS_Pagination_1656_Filter_Relationship_With_Paginatio
         List<WebElement> lstParentFilters;
         reporter.reportLogWithScreenshot("Launching URL");
         getRogersSearchPage().isPageLoaded();
+        getRogersSearchPage().isEnvQA();
         reporter.reportLogWithScreenshot("Page is launched");
         getRogersSearchPage().clickSearchIcon();
         getRogersSearchPage().enterTextToBeSearched(csvRow[0]);

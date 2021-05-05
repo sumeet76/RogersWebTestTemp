@@ -1664,4 +1664,13 @@ public class RogersSearchPage extends BasePageClass {
     public void clkOnCrossMarkMbl() {
         getReusableActionsInstance().clickWhenReady(crossMarkTopMbl);
     }
+
+    public void isEnvQA() {
+        String url = null;
+        url = getDriver().getCurrentUrl();
+        if (url.contains("qa")) {
+            getDriver().get(System.getProperty("SearchUrl") + "wireless");
+            isPageLoaded();
+        }
+    }
 }

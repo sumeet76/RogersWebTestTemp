@@ -24,7 +24,7 @@ import java.util.List;
  **/
 public class RogersSearch_CBS_Pagination_1785_Changing_the_pagination_values_via_URL extends BaseTestClass {
 
-    @DataProvider(name = "FilterData", parallel = true)
+    @DataProvider(name = "FilterData", parallel = false)
     public Object[] testData() throws IOException {
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
@@ -38,9 +38,10 @@ public class RogersSearch_CBS_Pagination_1785_Changing_the_pagination_values_via
     @Test(dataProvider = "FilterData", groups = {"Search", "Pagination", "Sanity"})
     public void contextPageValidation(String[] csvRowStrArray) {
         String message = null;
-        reporter.reportLogWithScreenshot("Search URL is launched");
+        reporter.reportLogWithScreenshot("Launching URL");
         getRogersSearchPage().isPageLoaded();
-        reporter.reportLogWithScreenshot("Page is loaded");
+        getRogersSearchPage().isEnvQA();
+        reporter.reportLogWithScreenshot("Page is launched");
         getRogersSearchPage().clickSearchIcon();
         getRogersSearchPage().enterTextToBeSearched(csvRowStrArray[0]);
         reporter.reportLogWithScreenshot("Search string " + csvRowStrArray[0] + " is entered in the search text box");

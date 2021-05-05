@@ -25,7 +25,7 @@ import java.util.List;
  **/
 public class RogersSearch_CBS_Pagination_1657_Pagination_On_Toggling_Language extends BaseTestClass {
 
-    @DataProvider(name = "FilterData", parallel = true)
+    @DataProvider(name = "FilterData", parallel = false)
     public Object[] testData() throws IOException {
         String csvFileName = null;
         if (System.getProperty("Language").equalsIgnoreCase("en")) {
@@ -49,6 +49,7 @@ public class RogersSearch_CBS_Pagination_1657_Pagination_On_Toggling_Language ex
         List<WebElement> lstParentFilters;
         reporter.reportLogWithScreenshot("Launching URL");
         getRogersSearchPage().isPageLoaded();
+        getRogersSearchPage().isEnvQA();
         reporter.reportLogWithScreenshot("Page is launched");
         getRogersSearchPage().clickSearchIcon();
         getRogersSearchPage().enterTextToBeSearched(csvRow[0]);

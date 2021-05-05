@@ -23,7 +23,7 @@ import java.util.List;
  **/
 public class RogersSearch_CBS_Pagination_1759_Current_Page_Context_Validation extends BaseTestClass {
 
-    @DataProvider(name = "FilterData", parallel = true)
+    @DataProvider(name = "FilterData", parallel = false)
     public Object[] testData() throws IOException {
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
@@ -40,6 +40,8 @@ public class RogersSearch_CBS_Pagination_1759_Current_Page_Context_Validation ex
         String url,message, results;
         reporter.reportLogWithScreenshot("Launching URL");
         getRogersSearchPage().isPageLoaded();
+        getRogersSearchPage().isEnvQA();
+        reporter.reportLogWithScreenshot("Page is launched");
         getRogersSearchPage().clickSearchIcon();
         getRogersSearchPage().enterTextToBeSearched(csvRowStrArray[0]);
         reporter.reportLogWithScreenshot("Search string " + csvRowStrArray[0] + " is entered in the search text box");

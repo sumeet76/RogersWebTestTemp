@@ -24,7 +24,7 @@ import java.util.List;
  **/
 public class RogersSearch_CBS_Pagination_1959_Testing_various_URL_pattern_and_redirecting extends BaseTestClass {
 
-    @DataProvider(name = "FilterData", parallel = true)
+    @DataProvider(name = "FilterData", parallel = false)
     public Object[] testData() throws IOException {
         String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/InvalidSearchTerm.csv";
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
@@ -38,10 +38,10 @@ public class RogersSearch_CBS_Pagination_1959_Testing_various_URL_pattern_and_re
     @Test(dataProvider = "FilterData", groups = {"Search","Pagination", "Sanity"}) @Parameters({"strLanguage"} )
     public void contextPageValidation(String[] csvRow) {
         String searchString = "Wireless";
+        reporter.reportLogWithScreenshot("Launching URL");
         getRogersSearchPage().isPageLoaded();
-        reporter.reportLogWithScreenshot("Search URL is launched");
-        getRogersSearchPage().isPageLoaded();
-        reporter.reportLogWithScreenshot("Page is loaded");
+        getRogersSearchPage().isEnvQA();
+        reporter.reportLogWithScreenshot("Page is launched");
         getRogersSearchPage().clickSearchIcon();
         getRogersSearchPage().enterTextToBeSearched(searchString);
         reporter.reportLogWithScreenshot("Search string " + searchString + " is entered in the search text box");
