@@ -35,7 +35,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 
 	@FindAll({
-			@FindBy(xpath ="//span[@id='ariaBundlesAddToCart_Rogers Ignite Starter']/ancestor::a"),
+			@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Starter']/ancestor::a"),
 			@FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='allowedFlowAddToCart_Rogers Ignite Starter']/ancestor::a")})
 	WebElement btnSolarisStarterPackageNew;
 	//span[@translate='global.cta.addToCart']

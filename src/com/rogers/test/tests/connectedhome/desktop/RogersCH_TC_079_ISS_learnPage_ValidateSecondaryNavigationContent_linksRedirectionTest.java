@@ -1,4 +1,5 @@
 package com.rogers.test.tests.connectedhome.desktop;
+
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
@@ -11,35 +12,66 @@ import java.lang.reflect.Method;
 
 
 /**
- * This class contains the test method to test Legacy Internet Offer Buy flow for Rogers.com
- *
+ * This class contains the test method to verify the Solaris Internet package downgarde flow for Rogers.com   
+ * 
  * @author chinnarao.vattam
- *
+ * 
  * Test steps:
- * 1.Launch Rogers SAI Tupelo URL in QA Env and click on get it now and enter address and click on continue
- * 2. Click on continue
- * 3. Choose Internet, SmartStream checkbox and click on Load offers
- * 4. Add 1 STB and click on Add to cart
- * 5. Click on Continue
- * 6. Click on Checkout
- * 7. Click on Yes, continue
- * 8. Click on Continue
- * 9. Enter DOB, valid ID details and click on continue
- * 10. Choose Installation type as enhanced self install and click on continue
- * 11. Click on Continue
- * 12. Click on Submit
+ *
+ *1. Launch the Rogers.com url.
+ *2. Log into rogers.com url with valid credentials.
+ *3. Click on internet package.
+ *4. Click on chage package button.
+ *5. Select a package which has price higher to the current package.
+ *6. Scroll down to the last in the page and Click on Checkout.
+ *7. Enter appropriate Contact details.
+ *8. Pick a date time in step 2 - Most Convenient Time for us to call.
+ *9. Click on Continue.
+ *10. Go to Agreement section section,  scroll down all the way,  and click on "I have read………." check box
+ *11. Click on Submit.
  *
  **/
 
-public class RogersCH_TC_065_SAI_ISS_NAC_AnonymousCxentersInternetShopPagefromISSlearnpage_ISStoggleCheckedNLTest extends BaseTestClass {
+public class RogersCH_TC_079_ISS_learnPage_ValidateSecondaryNavigationContent_linksRedirectionTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","SmartStreamCH","DryRunCH"})
-    public void checkIssNacLearnPageToggleNLTest() {
+	@Test(groups = {"RegressionCH","DryRunCH","SmartStreamCH"})
+    public void checkISSlearnPageValidateSecondaryNavigationContentlinksRedirectionTest() {
         getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
+        reporter.hardAssert(getRogersHomePage().isSubnavIgniteInternetPresent(),"Ignite Internet Sub nav is Present","Ignite Internet Sub nav is not Present");
+        getRogersHomePage().clkSubnavIgniteInternet();
+        reporter.reportLogWithScreenshot("Ignite Internet Sub nav");
+        reporter.hardAssert(getRogersHomePage().isSubnavIgniteSmartStream(),"Smart Stream Sub nav is Present","Smart Stream Sub nav is not Present");
+        getRogersHomePage().clkSubnavIgniteSmartStream() ;
+        reporter.reportLogWithScreenshot("Smart Stream Sub nav");
+        reporter.hardAssert(getRogersHomePage().isSubnavHelpAndSupport(),"Help And Support Sub nav is Present","Help And Support Sub nav is not Present");
+        reporter.reportLogWithScreenshot("Help And Support Sub nav");
+        getRogersHomePage().clkSubnavHelpAndSupport();
+        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
+        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
+        reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
+        reporter.hardAssert(getRogersHomePage().isSubnavIgniteInternetPresent(),"Ignite Internet Sub nav is Present","Ignite Internet Sub nav is not Present");
+        getRogersHomePage().clkSubnavIgniteInternet();
+        reporter.reportLogWithScreenshot("Ignite Internet Sub nav");
+        reporter.hardAssert(getRogersHomePage().isAboutIgniteInternetLinkPresent(),"About Ignite Internet Link is present","About Ignite Internet Link is not present");
+        getRogersHomePage().clkIgniteWiFiPromise();
+        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
+        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
+        reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
+        getRogersHomePage().clkSubnavIgniteInternet();
+        getRogersHomePage().clkIgniteWiFiHub();
+        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
+        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
+        reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
+        getRogersHomePage().clkSubnavIgniteInternet();
+        reporter.reportLogWithScreenshot("Launched the Internet packages page");
+        reporter.hardAssert(getRogersHomePage().isSubnavIgniteSmartStream(),"Smart Stream Sub nav is Present","Smart Stream Sub nav is not Present");
+        getRogersHomePage().clkSubnavIgniteSmartStream() ;
+        reporter.reportLogWithScreenshot("Smart Stream Sub nav");
+        reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
-        String  strAddressLine1=TestDataHandler.tc65_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc65_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         getRogersHomePage().clkIgniteAddressLookupSubmitSS();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
@@ -104,24 +136,20 @@ public class RogersCH_TC_065_SAI_ISS_NAC_AnonymousCxentersInternetShopPagefromIS
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-    }
+	}
 
+	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
+	//login flow
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_igniteanonymous, method);
+	}
 
-    @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
-    //legacyAnonymous
-    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-        startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_igniteanonymous, method);
-        // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-    }
-
-
-    @AfterMethod(alwaysRun = true)
-    public void afterTest() {
-        closeSession();
-    }
-
+	@AfterMethod(alwaysRun = true)
+	public void afterTest() {
+		closeSession();
+	}
 
 
 }
-
 

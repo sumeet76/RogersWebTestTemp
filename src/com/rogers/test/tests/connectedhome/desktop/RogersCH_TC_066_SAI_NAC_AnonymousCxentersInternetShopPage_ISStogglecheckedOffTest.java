@@ -33,21 +33,25 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_066_SAI_NAC_AnonymousCxentersInternetShopPage_ISStogglecheckedOffTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","SmartStreamCH","DryRunCH"})
-    public void checkIssNacLearnPageToggleOffTest() {
-        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
-        reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
-        getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
-        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
-        getRogersHomePage().clkIgniteAddressLookupSubmitSS();
+    @Test(groups = {"RegressionCH","saiCH","DryRunCH"})
+    public void checkIssNacLearnPageToggleOffHotTest() {
+        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
+        getRogersHomePage().clkEasyInternet();
+        reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the Internet packages page");
+        getRogersHomePage().clkInternetAvailability();
+        reporter.reportLogWithScreenshot("Launched the customer availability check popup");
+        //getRogersHomePage().clkAddressCheck();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        getRogersInternetPackageSelectionPage().clkSmartStreamCheckBox();
-        reporter.reportLogWithScreenshot("Unchecked the SmartStream");
-        getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
+        String  strAddressLine1=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line2");
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        getRogersHomePage().clkIgniteAddressLookupSubmit();
+        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
+        getRogersInternetPackageSelectionPage().clkInternetPackage();
+        reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
+        //getRogersHomePage().clkOnlyInternet();
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
-
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersInternetProfilePage().setEmail();
