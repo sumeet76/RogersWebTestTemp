@@ -77,7 +77,7 @@ public class RogersSearchPage extends BasePageClass {
     @FindBy(xpath = "//button[contains (@class, 'active') and @title='Page 2']")
     WebElement secondPagePaginationHighlighted;
 
-    @FindBy(xpath = "//button[contains (@class, 'active ds-paginationButton')]/div")
+    @FindBy(xpath = "//button[contains (@class, '-active')]/div")
     WebElement currentPageNumberHighlighted;
 
     @FindBy(xpath = "//button[@title='Page 2']")
@@ -161,9 +161,13 @@ public class RogersSearchPage extends BasePageClass {
     @FindBy(xpath = "//button[@class='rcl-header-mobilenav']")
     WebElement topFilterMbl;
 
-    @FindBy(xpath = "(//span[@class='m-mobileNavLink__chevron rds-icon-expand'])[1]")
+    @FindBy(xpath = "(//a[@class='m-mobileNavLink -dropdown'])[5]")
     WebElement provinceDropdownMbl;
 
+    @FindBy(xpath = "//button[@title='Navigation']")
+    WebElement crossMarkTopMbl;
+
+    //button[@title='Navigation']
     public static final By provinceDropdownValuesMbl = By.xpath("//ul[@class='o-mobileNavDropdown nav-list-opened']/li/a");
 
     Boolean isPagePresent = false;
@@ -1016,13 +1020,16 @@ public class RogersSearchPage extends BasePageClass {
      */
     public String validatePageNumberInURL(String url) {
         String message = null;
-        getReusableActionsInstance().clickWhenReady(currentPageNumberHighlighted);
-        String currentPageNumberInPagination = getReusableActionsInstance().getElementText(currentPageNumberHighlighted);
-        if (!url.endsWith("pg=" + currentPageNumberInPagination))
-            message = "Page number on Pagination and URL does not match";
-        else
-            message = "Page number on Pagination and URL match";
-//
+        try {
+            javascriptClickWithPerform(currentPageNumberHighlighted);
+            String currentPageNumberInPagination = getReusableActionsInstance().getElementText(currentPageNumberHighlighted);
+            if (!url.endsWith("pg=" + currentPageNumberInPagination))
+                message = "Page number on Pagination and URL does not match";
+            else
+                message = "Page number on Pagination and URL match";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return message;
     }
 
@@ -1546,11 +1553,11 @@ public class RogersSearchPage extends BasePageClass {
     public String selectRandomProvince() {
         boolean isMobile = isMobileSelected();
         List<WebElement> province;
-        String provinceSelected;
+        String provinceSelected = null;
         try {
             if (isMobile) {
                 getReusableActionsInstance().clickWhenReady(topFilterMbl);
-                getReusableActionsInstance().clickWhenReady(provinceDropdown);
+                javascriptClickWithPerform(provinceDropdownMbl);
                 WebDriverWait wait = new WebDriverWait(getDriver(), 15);
                 wait.until(ExpectedConditions.visibilityOfElementLocated(provinceDropdownValuesMbl));
                 province = getDriver().findElements(provinceDropdownValuesMbl);
@@ -1564,18 +1571,30 @@ public class RogersSearchPage extends BasePageClass {
             int randomNumber = randomNumber(numberOfProvinces);
             provinceSelected = province.get(randomNumber).getText();
             isPageLoaded();
-            province.get(randomNumber).click();
+            javascriptClickWithPerform(province.get(randomNumber));
         } catch (Exception e) {
-            throw new DigiAutoCustomException(e);
+            e.printStackTrace();
         }
         return provinceSelected;
     }
 
     public boolean validateProvinceAfterToggle(String province) {
-        boolean provinceMatch = true;
-        String currentProvince = getDriver().findElement(provinceInToggle).getAttribute("aria-label");
-        if (!province.equals(currentProvince))
-            provinceMatch = false;
+        boolean isMobile = isMobileSelected();
+        boolean provinceMatch = false;
+        try {
+            if (isMobile) {
+                getReusableActionsInstance().clickWhenReady(topFilterMbl);
+                String currentProvince = (provinceDropdownMbl).getAttribute("aria-label");
+                if (province.equals(currentProvince))
+                    provinceMatch = true;
+            } else {
+                String currentProvince = getDriver().findElement(provinceInToggle).getAttribute("aria-label");
+                if (province.equals(currentProvince))
+                    provinceMatch = true;
+            }
+        } catch (Exception e) {
+            throw new DigiAutoCustomException(e);
+        }
         return provinceMatch;
     }
 
@@ -1640,5 +1659,9 @@ public class RogersSearchPage extends BasePageClass {
 
     public void clkShowResultBtnMobile() {
         getReusableActionsInstance().clickWhenReady(showResultBtnMobile);
+    }
+
+    public void clkOnCrossMarkMbl() {
+        getReusableActionsInstance().clickWhenReady(crossMarkTopMbl);
     }
 }
