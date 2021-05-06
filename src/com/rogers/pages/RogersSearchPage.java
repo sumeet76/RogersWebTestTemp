@@ -414,7 +414,7 @@ public class RogersSearchPage extends BasePageClass {
             WebElement element = getDriver().findElement(By.xpath("//ds-checkbox[contains(@id,'" + strStorage + "-host')]"));
             Actions action = new Actions(getDriver());
             action.moveToElement(element).click().build().perform();
-            isPageLoaded();
+            waitTime();
         } catch (Exception e) {
             throw new DigiAutoCustomException(e);
         }
@@ -921,6 +921,21 @@ public class RogersSearchPage extends BasePageClass {
     public String getSearchResults() {
         getReusableActionsInstance().waitForElementVisibility(searchResults, 3000);
         return getReusableActionsInstance().getElementText(searchResults);
+    }
+
+    public boolean presenceOfResults() {
+        boolean resultPresent = false;
+        int numberOfResult = 0;
+        try {
+            WebElement element = getDriver().findElement(allLinksInResults);
+            getReusableActionsInstance().waitForElementVisibility(element);
+            numberOfResult = getDriver().findElements(allLinksInResults).size();
+            if (numberOfResult >= 1)
+                resultPresent = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return resultPresent;
     }
 
     /**
@@ -1494,28 +1509,32 @@ public class RogersSearchPage extends BasePageClass {
      *
      * @author naina.agarwal
      */
-    public boolean isFilterDisplayedForSingleResult() {
-        boolean singleResult = true;
+    public boolean isFilterDisplayed() {
+        boolean singleResult = false;
         List<WebElement> filter = getDriver().findElements(FilterComponent);
         if (filter.size() > 0)
-            singleResult = false;
+            singleResult = true;
         return singleResult;
     }
 
-    public boolean isPaginationDisplayedForSingleResult() {
-        boolean singleResult = true;
+    public boolean isPaginationDisplayed() {
+        boolean singleResult = false;
         List<WebElement> pagination = getDriver().findElements(PaginationComponent);
         if (pagination.size() > 0)
-            singleResult = false;
+            singleResult = true;
         return singleResult;
     }
 
     public boolean isDetailsPageDisplayed(String searchTerm) {
-        boolean titleDetailsPage = true;
-        String title = getDriver().findElement(titleOnDetailsPage).getText();
-        if (!title.toLowerCase().contains(searchTerm.toLowerCase()))
-            titleDetailsPage = false;
-        return titleDetailsPage;
+        boolean detailsPage, detailsPageNotPresent = false;
+        try {
+            detailsPage = getDriver().findElement(titleOnDetailsPage).isDisplayed();
+            if (detailsPage)
+                detailsPageNotPresent = false;
+        } catch (Exception e) {
+            detailsPageNotPresent = true;
+        }
+        return detailsPageNotPresent;
     }
 
     /**

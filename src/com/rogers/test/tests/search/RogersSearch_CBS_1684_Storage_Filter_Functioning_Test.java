@@ -89,6 +89,7 @@ public class RogersSearch_CBS_1684_Storage_Filter_Functioning_Test extends BaseT
                     }
                 }
                 resultLinks = getRogersSearchPage().getAllResultLinks();
+                reporter.reportLogWithScreenshot("Results Page");
             }
             getRogersSearchPage().isPageLoaded();
             getRogersSearchPage().waitForResultPage();
