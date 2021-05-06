@@ -20,7 +20,7 @@ import utils.CSVReader;
  **/
 public class RogersSearch_CBS_1643_Relevant_Results_Rendering_Test extends BaseTestClass {
 
-    @DataProvider(name = "FilterData", parallel = false)
+    @DataProvider(name = "FilterData", parallel = true)
     public Object[] testData() throws IOException {
         String csvFileName = null;
         String language = System.getProperty("Language").toLowerCase();
