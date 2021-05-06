@@ -113,17 +113,13 @@ public class RogersCH_TC_076_LegacyTV_2P_3PDiffAddressBasementHouseBuyIgniteBund
 		reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Launched the create profile page", "Profile page hasn't  Launched");
 		reporter.reportLogWithScreenshot("Launched the profile page");
 		getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
-		reporter.reportLogWithScreenshot("Launched the credit evalution page");
-        getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomer(TestDataHandler.tc76_Legact2Pto3PIgniteBasementHousePortinHot.getAccountDetails().getYear());
-        getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomerMigration(TestDataHandler.tc76_Legact2Pto3PIgniteBasementHousePortinHot.getAccountDetails().getMonth());
-        getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomerMigration(TestDataHandler.tc76_Legact2Pto3PIgniteBasementHousePortinHot.getAccountDetails().getDate());
-        reporter.reportLogWithScreenshot("Entered the DOB details");
-        getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
 		reporter.reportLogWithScreenshot("Home Phone selection page has launched");
 		getRogersHomePhoneSelectionPage().clkContinueHomePhoneSelection();
 
 		reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the tech install page");
+		reporter.hardAssert(getRogersTechInstallPage().verifyIgniteExpressSetup(),"Ignite Express Setup is present","Ignite Express Setup is not present");
+		reporter.hardAssert(getRogersTechInstallPage().clktxtIgniteExpressSetupCost(),"Ignite Express Setup Cost verified","Ignite Express Setup Cost verification is failed");
 		getRogersTechInstallPage().selTechInstalStartDate();
 		reporter.reportLogWithScreenshot("Selected Start date for Installation slot");
 		getRogersTechInstallPage().selectPreferredTimeSlot("24: AFT");
@@ -138,19 +134,18 @@ public class RogersCH_TC_076_LegacyTV_2P_3PDiffAddressBasementHouseBuyIgniteBund
 		getRogersTechInstallPage().clkTechInstalConsent();
 		getRogersTechInstallPage().clkTechInstallContinue();
 		reporter.reportLogWithScreenshot("Launched the payment options page");
-		reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(),"Launched the payment options page","Payment options page has not Launched");
-        getRogersPaymentOptionsPage().clkPaymentConfirm();
-    	reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
+
+		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");
-		
+
 		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
-        
-        getRogersOrderReviewPage().clkAcceptenceCheckbox();
-        reporter.reportLogWithScreenshot("Agreement details");
-        getRogersOrderReviewPage().clkSubmit();
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");      
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");
+
+		getRogersOrderReviewPage().clkAcceptenceCheckbox();
+		reporter.reportLogWithScreenshot("Agreement details");
+		getRogersOrderReviewPage().clkSubmit();
+		reporter.reportLogWithScreenshot("Launched the Confirmation page");
+		reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
+		reporter.reportLogWithScreenshot("Launched the Confirmation page");
     	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

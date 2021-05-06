@@ -140,6 +140,12 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath ="//h2[@translate='global.checkout.fulfillment.title']")
 	WebElement txtTechInstalpage;
 
+	@FindBy(xpath ="//div[@class='row ng-star-inserted']//h3")
+	WebElement txtIgniteExpressSetup;
+
+	@FindBy(xpath ="//div[@class='row ng-star-inserted']//div[@class='ds-price__amountDollars text-semi ng-star-inserted']")
+	WebElement txtIgniteExpressSetupCost;
+
 	@FindBy(xpath ="(//input[@format='MM/DD/YYYY']/ancestor::ds-form-field/div/div)[1]")
 	WebElement txtStartDateContainer;
 
@@ -218,6 +224,16 @@ public class RogersTechInstallPage extends BasePageClass {
 	public boolean verifyTechInstallPage() {
 		getReusableActionsInstance().waitForElementVisibility(txtTechInstalpage, 120);
 		return	getReusableActionsInstance().isElementVisible(txtTechInstalpage, 20);
+	}
+
+	/**
+	 * To verify the launch of Technical  Install Page
+	 * @return true if the TechInstallSlot ratio has available, else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyIgniteExpressSetup() {
+		getReusableActionsInstance().waitForElementVisibility(txtIgniteExpressSetup, 90);
+		return	getReusableActionsInstance().isElementVisible(txtIgniteExpressSetup, 20);
 	}
 
 	public void clkPersonalizedInstall() {
@@ -342,7 +358,17 @@ public class RogersTechInstallPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(rdoTechInstallSlot, 180);
 		getReusableActionsInstance().getWhenReady(rdoTechInstallSlot, 180).click();
 	}
-	
+
+	/**
+	 * Select the slot from the available list of slots from installation page
+	 *@return true if the ExchangeFlex Channel link is displayed; else false
+	 * @author Chinnarao.Vattam
+	 */
+	public boolean clktxtIgniteExpressSetupCost() {
+		String strCost=getReusableActionsInstance().getWhenReady(txtIgniteExpressSetupCost, 50).getText();
+		return strCost.equals("0");
+	}
+
 	/**
 	 * Select the slot from the available list of slots from installation page
 	 * @author Chinnarao.Vattam

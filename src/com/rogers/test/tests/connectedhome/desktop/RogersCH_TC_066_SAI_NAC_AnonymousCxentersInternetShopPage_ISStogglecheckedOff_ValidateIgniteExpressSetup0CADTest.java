@@ -31,7 +31,7 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_066_SAI_NAC_AnonymousCxentersInternetShopPage_ISStogglecheckedOffTest extends BaseTestClass {
+public class RogersCH_TC_066_SAI_NAC_AnonymousCxentersInternetShopPage_ISStogglecheckedOff_ValidateIgniteExpressSetup0CADTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","saiCH","DryRunCH"})
     public void checkIssNacLearnPageToggleOffHotTest() {
@@ -84,6 +84,8 @@ public class RogersCH_TC_066_SAI_NAC_AnonymousCxentersInternetShopPage_ISStoggle
 
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
+        reporter.hardAssert(getRogersTechInstallPage().verifyIgniteExpressSetup(),"Ignite Express Setup is present","Ignite Express Setup is not present");
+        reporter.hardAssert(getRogersTechInstallPage().clktxtIgniteExpressSetupCost(),"Ignite Express Setup Cost verified","Ignite Express Setup Cost verification is failed");
         getRogersTechInstallPage().clkTechInstalConsent();
         reporter.reportLogWithScreenshot("tech install details");
         getRogersTechInstallPage().clkTechInstallContinue();

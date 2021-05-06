@@ -151,6 +151,9 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement txaIgniteAddressContainerExisting;
 
+	@FindBy(xpath = "//div[@class='pca-address-lookup-component ng-star-inserted']//div[contains(@class,'ds-formField__inputContainer')]")
+	WebElement txaAnotherAddressContainer;
+
 	@FindBy(xpath = "//div[contains(text(),'BSMT')]")
 	WebElement rdoBasement;
 
@@ -162,13 +165,19 @@ public class RogersHomePage extends BasePageClass {
 	
 	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large']")
 	WebElement btnUseThisAddress;
-	//button[@class='ds-button ds-focus ds-active -secondary -large']
-	
-	
-	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
-	WebElement btnIgniteAddressLookupSubmit;		
-	//button[@class='a-btnPrimary']	
-	
+
+	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']/span")
+	WebElement btnIgniteAddressLookupSubmit;
+
+	@FindBy(xpath = "//div[@class='serviceability__cta ng-star-inserted']//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']/span")
+	WebElement btnAnotherAddressLookupSubmit;
+
+	@FindBy(xpath = "//div[@footer]//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']/span")
+	WebElement btnAnotherLookupSubmit;
+
+	@FindBy(xpath = "//ds-icon[@name='location']")
+	WebElement lnkCheckAnotherAddress;
+
 	@FindBy(xpath = "//span[@translate='global.targetedOffer.label.noContinueInternet']")
 	WebElement lnkOnlyInternet;
 
@@ -709,7 +718,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void setIgniteAddressLookupLearn(String strAddress) {
-		getReusableActionsInstance().waitForElementVisibility(txaIgniteAddressContainer, 90);
+		getReusableActionsInstance().waitForElementVisibility(txaIgniteAddressContainer, 20);
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressContainer, 3).click();
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).sendKeys(strAddress);
@@ -725,14 +734,22 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 5).sendKeys(strAddress);
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.TAB);
-		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);
-		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);
-		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 5).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup ).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 1).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 2).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
 	}
 
+	public void setIgniteAddressLookupRetry() {
+		getReusableActionsInstance().waitForElementVisibility(popupIgniteAddressLookupLable, 30);
+		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 60);
+		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 60).click();
+	}
+
 	public void setIgniteAddressLookupBasement() {
-		getReusableActionsInstance().waitForElementVisibility(popupIgniteAddressLookupLable, 60);
+		getReusableActionsInstance().waitForElementVisibility(popupIgniteAddressLookupLable, 30);
 		getReusableActionsInstance().getWhenReady(rdoBasement, 10).click();
 	}
 	/**
@@ -743,6 +760,41 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 60).click();
 	}
 
+	/**
+	 * Click the Lookup Submit button to check service availability
+	 * @author chinnarao.vattam
+	 */
+	public void clkAnotherAddressLookupSubmit() {
+		getReusableActionsInstance().getWhenReady(btnAnotherAddressLookupSubmit, 60).click();
+	}
+
+	/**
+	 * Click the Lookup Submit button to check service availability
+	 * @author chinnarao.vattam
+	 */
+	public void clkAnotherLookupSubmit() {
+		getReusableActionsInstance().getWhenReady(btnAnotherLookupSubmit, 60).click();
+	}
+
+	/**
+	 * Click the Lookup Submit button to check service availability
+	 * @author chinnarao.vattam
+	 */
+	public void clkCheckAnotherAddress() {
+		getReusableActionsInstance().getWhenReady(lnkCheckAnotherAddress, 90).click();
+	}
+
+	public void setAnotherAddressLookup(String strAddress) {
+		getReusableActionsInstance().waitForElementVisibility(txaAnotherAddressContainer, 60);
+		getReusableActionsInstance().getWhenReady(txaAnotherAddressContainer, 3).click();
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 5).sendKeys(strAddress);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.TAB);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup ).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 1).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 2).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
+	}
 	/**
 	 * Click the Lookup Submit button to check service availability
 	 * @author chinnarao.vattam

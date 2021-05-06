@@ -48,12 +48,18 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::span[contains(@class,'ds-button__wrapper')]")
 	WebElement btnInternetBuyContinue;
 	
-	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 75u']/ancestor::span[@role='text']")
+	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 150u']/ancestor::span[@role='text']")
 	WebElement btnInternetPackage;
 	//button[@aria-label='Add Ignite Internet 500u to your cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']
 
+	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::span[@role='text']")
+	WebElement btnInternet500uPackage;
+
 	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 75u']/ancestor::span[@role='text']")
 	WebElement btnSmartStreamPackage;
+
+	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::span[@role='text']")
+	WebElement btnSmartStream500uPackage;
 
 	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::div[@class='internet-bundle-tile']//div[@class='ds-checkbox__box my-12 rds-icon-check']")
 	WebElement chkSmartStream;
@@ -127,9 +133,16 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnInternetPackage, 90).click();
 	}
 
+	public void clkInternet500uPackage() {
+		getReusableActionsInstance().getWhenReady(btnInternet500uPackage, 90).click();
+	}
 
 	public void clkSmartStreamPackage() {
 		getReusableActionsInstance().getWhenReady(btnSmartStreamPackage, 90).click();
+	}
+
+	public void clkSmartStream500uPackage() {
+		getReusableActionsInstance().getWhenReady(btnSmartStream500uPackage, 90).click();
 	}
 
 	public void clkSmartStreamCheckBox() {

@@ -42,25 +42,34 @@ public class RogersCH_TC_074_SAI_BaselineAndHouseAddress_ValidateServiceability_
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        //getRogersHomePage().clkAddressCheck();
+
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc74_SaiBaseLineHomeAddress.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc74_SaiBaseLineHomeAddress.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to opt the address");
+        getRogersHomePage().setIgniteAddressLookupRetry();
+        reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
+        getRogersHomePage().clkCheckAnotherAddress();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-
+        getRogersHomePage().setAnotherAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        getRogersHomePage().clkAnotherAddressLookupSubmit();
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         getRogersHomePage().setIgniteAddressLookupBasement();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup for basement address");
-        getRogersHomePage().clkIgniteAddressLookupSubmit();
+        getRogersHomePage().clkAnotherLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
 
         getRogersInternetPackageSelectionPage().clkInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
-
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
+        getRogersInternetProfilePage().setEmail();
+        getRogersInternetProfilePage().setFirstname();
+        getRogersInternetProfilePage().setLastName();
+        getRogersInternetProfilePage().setPhone();
         getRogersInternetProfilePage().clkSubmitProfile();
 
         reporter.hardAssert(getRogersInternetCreditCheckPage().verifyCreditEvalutionPage(),"Credit Evalution page has Launched","Credit Evalution page has not Launched");
@@ -87,13 +96,20 @@ public class RogersCH_TC_074_SAI_BaselineAndHouseAddress_ValidateServiceability_
 
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
-
         getRogersTechInstallPage().clkTechInstalConsent();
         reporter.reportLogWithScreenshot("tech install details");
         getRogersTechInstallPage().clkTechInstallContinue();
 
         reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
+        getRogersPaymentOptionsPage().selectPaymentMode("Pre-authorized Credit Card");
+        getRogersPaymentOptionsPage().switchToCreditCardIFrame();
+        getRogersPaymentOptionsPage().setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
+        getRogersPaymentOptionsPage().switchOutOfCreditCardIFrame();
+        getRogersPaymentOptionsPage().setCVV();
+        getRogersPaymentOptionsPage().selectExpiryMonth();
+        getRogersPaymentOptionsPage().selectExpiryYear();
+        reporter.reportLogWithScreenshot("Payment options Details");
         getRogersPaymentOptionsPage().clkPaymentConfirm();
 
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");

@@ -49,11 +49,17 @@ public class RogersCH_TC_075_IgniteTV_BaselineAndHouseAddress_ValidateServiceabi
         String  strAddressLine2=TestDataHandler.tc75_IgniteTVBaseLineHomeAddress.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to opt the address");
+        getRogersHomePage().setIgniteAddressLookupRetry();
+        reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
+        getRogersHomePage().clkCheckAnotherAddress();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-
+        getRogersHomePage().setAnotherAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        getRogersHomePage().clkAnotherAddressLookupSubmit();
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         getRogersHomePage().setIgniteAddressLookupBasement();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup for basement address");
-        getRogersHomePage().clkIgniteAddressLookupSubmit();
+        getRogersHomePage().clkAnotherLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
         getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
