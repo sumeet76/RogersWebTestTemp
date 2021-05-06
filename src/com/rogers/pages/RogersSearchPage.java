@@ -86,16 +86,16 @@ public class RogersSearchPage extends BasePageClass {
     @FindBy(xpath = "//select[contains(@id,'form-input-id')]")
     WebElement resultPerPageDropdown;
 
-    @FindBy(xpath = "//button[@title='Next page']")
+    @FindBy(xpath = "//span[@class='ds-icon rds-icon-right']")
     WebElement firstForwardArrowKey;
 
-    @FindBy(xpath = "//button[@title='Previous page']")
+    @FindBy(xpath = "//span[@class='ds-icon rds-icon-left']")
     WebElement firstBackwardArrowKey;
 
-    @FindBy(xpath = "//button[@title='Last page']")
+    @FindBy(xpath = "//span[@class='ds-icon rds-icon-last']")
     WebElement lastForwardArrowKey;
 
-    @FindBy(xpath = "//button[@title='First page']")
+    @FindBy(xpath = "//span[@class='ds-icon rds-icon-first']")
     WebElement lastBackwardArrowKey;
 
     @FindBy(xpath = "(//a[@class='m-navLink -navbar']/span[@class='m-navLink__caption'])[3]")
