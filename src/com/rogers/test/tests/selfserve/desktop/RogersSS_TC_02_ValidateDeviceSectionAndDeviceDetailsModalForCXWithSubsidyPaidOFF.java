@@ -57,11 +57,11 @@ public class RogersSS_TC_02_ValidateDeviceSectionAndDeviceDetailsModalForCXWithS
 
 		reporter.reportLogWithScreenshot("Wireless Usage Details");
 
-		reporter.hardAssert(getRogersWirelessDashboardPage().verifyMyDeviceDetailsModalOfDeviceSection(),
+		reporter.hardAssert(getRogersWirelessDashboardPage().verifyHeaderOfDeviceSection(),
 				"My Device Section is visible",
 				"My Device Section is not visible");
 
-		reporter.hardAssert(getRogersWirelessDashboardPage().verifyLinkMyDeviceDetailsOfDeviceSection(),
+		reporter.hardAssert(getRogersWirelessDashboardPage().isViewDeviceDetailsDisplayed(),
 				"Device Details Model is visible",
 				"Device Details Model is not visible");
 

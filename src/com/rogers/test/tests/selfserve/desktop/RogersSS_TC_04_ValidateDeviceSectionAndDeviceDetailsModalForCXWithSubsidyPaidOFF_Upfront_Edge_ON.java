@@ -61,22 +61,18 @@ public class RogersSS_TC_04_ValidateDeviceSectionAndDeviceDetailsModalForCXWithS
 				"My Device Section is visible",
 				"My Device Section is not visible");
 
-		reporter.hardAssert(getRogersWirelessDashboardPage().verifyLinkMyDeviceDetailsOfDeviceSection(),
+		reporter.hardAssert(getRogersWirelessDashboardPage(). isMyDeviceDetailsLinkDisplayed(),
 				"Device Details Model is visible",
 				"Device Details Model is not visible");
-
-
 
 
 		reporter.hardAssert(getRogersWirelessDashboardPage().verifyDeviceRemainingBalanceExists(),
 				"Remaining Device Balance is visible",
 				"Remaining Device Balance is visible is not visible");
 
-		reporter.hardAssert(getRogersWirelessDashboardPage().isDeviceBalanceDateDisplayed(),
+		reporter.hardAssert(getRogersWirelessDashboardPage().isFinancingEndDateDisplayed(),
 				"Date on which the device balance will be $0 is visible",
 				"Date on which the device balance will be $0 is not visible");
-
-
 
 
 
@@ -91,9 +87,56 @@ public class RogersSS_TC_04_ValidateDeviceSectionAndDeviceDetailsModalForCXWithS
 				"Upgrade my device Link is not visible");
 
 
-		getRogersWirelessDashboardPage().clkMyDeviceDetailsLink();
+		//getRogersWirelessDashboardPage().clkViewFinancingDetailsLink();
 		reporter.reportLogWithScreenshot("Device Details Modal.");
-		//verify stuff here accroding to test case
+
+
+		reporter.hardAssert(getRogersWirelessDashboardPage().isUpFrontEdgeDisplayed(),
+				"Is Up Front Edge is visible",
+				"Is Up Front Edge is not visible");
+
+		reporter.hardAssert(getRogersWirelessDashboardPage().isReturnYourDeviceDateDisplayed(),
+				"Return your device date is visible",
+				"Return your device date is not visible");
+
+
+		reporter.hardAssert(getRogersWirelessDashboardPage().isTotalRemainingDeviceFinancingBalanceDisplayed(),
+				"Total Remaining Device Financing Balance is visible",
+				"Total Remaining Device Financing Balance is not visible");
+
+		reporter.hardAssert(getRogersWirelessDashboardPage().isRemainingDeviceFinancingBalanceDisplayed(),
+				"Remaining Financing Balance is visible",
+				"Remaining Financing Balance is not visible");
+
+		reporter.hardAssert(getRogersWirelessDashboardPage().isRemainingFinancedTaxesDisplayed(),
+				"Remaining Financed Taxes is visible",
+				"Remaining Financed Taxes is not visible");
+
+		reporter.hardAssert(getRogersWirelessDashboardPage().isMonthlyFinancingAmountTotalDisplayed(),
+				"Monthly Financing Total is visible",
+				"Monthly Financing Total is not visible");
+
+		reporter.hardAssert(getRogersWirelessDashboardPage().isMonthlyFinancingAmountBaseDisplayed(),
+				"Monthly Financing Amount Base is visible",
+				"Monthly Financing Amount Base is not visible");
+
+		reporter.hardAssert(getRogersWirelessDashboardPage().isMonthlyFinancingTaxesDisplayed(),
+				"Monthly Financing Tax is visible",
+				"Monthly Financing Tax is not visible");
+
+		reporter.hardAssert(getRogersWirelessDashboardPage().isMonthsRemainingDisplayed(),
+				"Months Remaining is visible",
+				"Months Remaining is not visible");
+
+
+		getRogersWirelessDashboardPage().clkDeviceFinancingDetailsButton();
+
+		reporter.reportLogWithScreenshot("Legal Copy For Financing Program");
+
+		reporter.hardAssert(getRogersWirelessDashboardPage().isLegalCopyForFinancingProgramDisplayed(),
+				"Legal Copy For Financing Program is visible",
+				"Legal Copy For Financing Program is not visible");
+
 
 
 

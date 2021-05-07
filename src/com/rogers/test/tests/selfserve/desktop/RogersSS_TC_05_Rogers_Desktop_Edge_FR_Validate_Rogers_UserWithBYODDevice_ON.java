@@ -67,7 +67,12 @@ public class RogersSS_TC_05_Rogers_Desktop_Edge_FR_Validate_Rogers_UserWithBYODD
 
 		getRogersWirelessDashboardPage().clkSeeOffersOnNewPhones();
 
-		reporter.reportLogWithScreenshot("See Offers on new phones");
+		reporter.hardAssert(getRogersWirelessDashboardPage().verifySeeOfferOnNewPhonesURL(),
+				"Navigates to the correct link",
+				"Does not navigate to the correct link - check link");
+
+
+		reporter.reportLogWithScreenshot("See Offers on new phones Page");
 
 
 

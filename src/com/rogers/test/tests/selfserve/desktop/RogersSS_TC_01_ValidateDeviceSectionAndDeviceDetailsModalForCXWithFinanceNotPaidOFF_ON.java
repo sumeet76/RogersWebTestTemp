@@ -73,10 +73,6 @@ public class RogersSS_TC_01_ValidateDeviceSectionAndDeviceDetailsModalForCXWithF
 				"Financing Agreement End Date is visible",
 				"Financing Agreement End Date is not visible");
 
-		reporter.hardAssert(getRogersWirelessDashboardPage().isFinancingAgreementEndDateDisplayed(),
-				"Financing Agreement End Date is visible",
-				"Financing Agreement End Date is not visible");
-
 
 		reporter.hardAssert(getRogersWirelessDashboardPage().isViewFinancingDetailsButtonDisplayed(),
 				"View Financing Details Button is visible",

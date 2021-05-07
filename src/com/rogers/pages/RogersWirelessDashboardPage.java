@@ -555,7 +555,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	WebElement btnSeeOffersOnNewPhones;
 
 	//device details section
-	@FindBy(xpath = "//button[@variant='tertiary']")
+	@FindBy(xpath = "//span[contains(text(),' View financing details ') or contains(text(),' Voir les détails sur le financement ')]")
 	WebElement btnViewFinancingDetails;
 
 	@FindBy(xpath = "//div[contains(@aria-label,'Device financing payment:') or contains(@aria-label,'Paiement de financement de l’appareil :')]")
@@ -607,7 +607,6 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//p[contains(text(),'Your remaining financing balance is the amount you financed when you purchased your device less any monthly payments.') or contains(text(),'Votre solde de financement correspond au montant financé lorsque vous avez acheté l’appareil, moins les paiements mensuels.')]")
 	WebElement legalCopyForFinancingProgram;
 
-
 	@FindBy(xpath = "//div[@class='ds-price']")
 	WebElement deviceRemainingBalance;
 
@@ -619,6 +618,22 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//div[contains(text(),' You brought your own phone with this plan. ') or contains(text(),' Vous avez apporté votre téléphone pour ce forfait. ')]")
 	WebElement lblYouBroughtYourOwnPhone;
+
+	@FindBy(xpath = "//h1[@id='bfa-page-title']")
+	WebElement visibleElement;
+
+	@FindBy(xpath = "//span[contains(text(),' View financing details ') or contains(text(),' Voir les détails sur le financement ')]")
+	WebElement viewFinancingDetailsLink;
+
+	//modal
+	@FindBy(xpath = "//span[contains(text(),'Upfront Edge amount:') or contains(text(),'Votre solde de financement sera de 0 $ le :')]/following-sibling::ds-price")
+	WebElement upFrontEdgeAmount;
+
+	@FindBy(xpath = "//span[contains(text(),'You will need to return your device by:') or contains(text(),'Votre solde de financement sera de 0 $ le :')]/following::span")
+	WebElement returnYourDevice;
+
+
+
 
 
 	/**
@@ -2727,5 +2742,47 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	public void clkSeeOffersOnNewPhones() {
 		getReusableActionsInstance().getWhenReady(btnSeeOffersOnNewPhones, 30).click();
 	}
+
+	/**
+	 * verifies the correct link after clicking "See offers on new phone" button
+	 * @author Rohit.Kumar
+	 */
+	public boolean verifySeeOfferOnNewPhonesURL() {
+
+		getReusableActionsInstance().waitForElementVisibility(visibleElement);
+
+		return get_Driver_Url().contains("/web/totes/upgrade/#/choose-phone");
+
+
+	}
+
+	/**
+	 * Checks if the up front edge is visible
+	 * @return true if the element is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isUpFrontEdgeDisplayed() {
+		return getReusableActionsInstance().isElementVisible(upFrontEdgeAmount);
+	}
+
+
+	/**
+	 * Checks if return your device date is visible
+	 * @return true if the element is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isReturnYourDeviceDateDisplayed() {
+		return getReusableActionsInstance().isElementVisible(returnYourDevice);
+	}
+
+
+	/**
+	 * clicks the view financing detials link
+	 * @author Rohit.Kumar
+	 */
+	public void clkViewFinancingDetailsLink() {
+		getReusableActionsInstance().getWhenReady(viewFinancingDetailsLink, 10).click();
+	}
+
 
 }

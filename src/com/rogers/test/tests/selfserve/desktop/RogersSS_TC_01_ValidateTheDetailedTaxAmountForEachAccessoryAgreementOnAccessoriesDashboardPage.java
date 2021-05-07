@@ -57,6 +57,8 @@ public class RogersSS_TC_01_ValidateTheDetailedTaxAmountForEachAccessoryAgreemen
 
 
 
+
+
 		String strAccountNum = TestDataHandler.tc01FinanceNotPaidOff_ON.getAccountDetails().getCtn();
 		String strLast4DigitAccount = strAccountNum.substring(strAccountNum.length()-4);
 		if (getRogersAccountOverviewPage().checkIfAccountIsShowInDropDown(strLast4DigitAccount)) {
