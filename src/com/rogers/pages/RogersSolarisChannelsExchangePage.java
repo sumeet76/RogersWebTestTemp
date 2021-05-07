@@ -7,6 +7,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+
 public class RogersSolarisChannelsExchangePage extends BasePageClass {
 
 	public RogersSolarisChannelsExchangePage(WebDriver driver) {
@@ -310,4 +315,25 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 		getReusableActionsInstance().clickWhenReady(btnReturnToDashbaord, 30);
 	}
 
+
+	public List<WebElement> uncheckTVChannels() {
+		//reusableActions.waitForAllElementsVisible(selectedChannels, 120);
+
+		List<WebElement> availableChannels = getDriver().findElements(By.xpath("//rch-selector[@ng-reflect-selected='false']//span[contains(@id,'aria-checkbox-id')]"));
+		for(int iuncheck=0;iuncheck<3;iuncheck++) {
+			System.out.println("In method Uncheck TV Channels loop");
+			List<WebElement> selected = getDriver().findElements(By.xpath("//rch-selector[@ng-reflect-selected='true']//input/.. | "
+					+ "//span[@translate='global.dashboard.tv.exchangeFlexChannels.logoSelected']/.."));
+			getReusableActionsInstance().clickIfAvailable(selected.get(0),45);
+			System.out.println(selected.get(0).getText());
+		}
+		return availableChannels;
+	}
+
+	public void checkTVChannels(List<WebElement> channels){
+		for(int icheck =0;icheck<3;icheck++){
+			getReusableActionsInstance().clickWhenReady(channels.get(icheck),45);
+			System.out.println("Selected the channels : " + channels.get(icheck).getText());
+		}
+	}
 }
