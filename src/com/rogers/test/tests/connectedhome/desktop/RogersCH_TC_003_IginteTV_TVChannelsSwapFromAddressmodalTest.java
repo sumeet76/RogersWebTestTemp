@@ -50,7 +50,7 @@ public class RogersCH_TC_003_IginteTV_TVChannelsSwapFromAddressmodalTest extends
     reporter.reportLogWithScreenshot("Skip popup");
     getRogersLoginPage().clkSkipIFrame();
     getRogersLoginPage().switchOutOfSignInIFrame();
-    //getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getBan());
+    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getBan());
 	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
     reporter.reportLogWithScreenshot("Launched the Account Page");
     getRogersHomePage().clkExistingCustomerShop();
