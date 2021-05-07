@@ -4,11 +4,13 @@ import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
+import org.openqa.selenium.WebElement;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.List;
 
 
 /**
@@ -64,6 +66,10 @@ public class RogersCH_TC_003_IginteTV_TVChannelsSwapFromAddressmodalTest extends
      reporter.reportLogWithScreenshot("TV channels exchange page has launched");
      getRogersSolarisChannelsExchangePage().verifyChannelsPannel();
      reporter.reportLogWithScreenshot("TV channels pannel has displayed");
+     List<WebElement> availableChannels = getRogersSolarisChannelsExchangePage().uncheckTVChannels();
+     reporter.reportLogWithScreenshot("TV Channels are unchecked");
+     getRogersSolarisChannelsExchangePage().checkTVChannels(availableChannels);
+     /**
      getRogersSolarisChannelsExchangePage().swapChannelOut(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getSwapOutChannelOne());
      reporter.reportLogWithScreenshot("selected the Swap-out Channel one");
      getRogersSolarisChannelsExchangePage().clkRemoveChannel();
@@ -86,6 +92,7 @@ public class RogersCH_TC_003_IginteTV_TVChannelsSwapFromAddressmodalTest extends
      reporter.reportLogWithScreenshot("removed the Swap-out Channel three");
      getRogersSolarisChannelsExchangePage().swapChannelIn(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getSwapInChannelThree());
      reporter.reportLogWithScreenshot("Selected the Swap-in Channel three");
+      **/
      getRogersSolarisChannelsExchangePage().clkAddChannel();
      reporter.reportLogWithScreenshot("Added the Swap-in Channel three");
      getRogersSolarisChannelsExchangePage().clkConfirmSwap();
@@ -93,8 +100,8 @@ public class RogersCH_TC_003_IginteTV_TVChannelsSwapFromAddressmodalTest extends
      reporter.reportLogWithScreenshot("Swap Success popup has launched");
      getRogersSolarisChannelsExchangePage().clkReturnToDashbaord();
      reporter.reportLogWithScreenshot("Tv Dashboard has launched");
+
     }
-	
 
 @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 //login flow
@@ -107,8 +114,6 @@ public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") St
 public void afterTest() {
 	closeSession();
 }
-
-
 
 }
 
