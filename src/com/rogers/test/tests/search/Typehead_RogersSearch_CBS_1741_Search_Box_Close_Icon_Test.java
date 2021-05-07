@@ -20,9 +20,9 @@ import com.rogers.test.helpers.RogersEnums;
 
 import utils.CSVReader;
 
-public class RogersSearch_CBS_1741_Search_Box_Close_Icon_Test extends BaseTestClass {
+public class Typehead_RogersSearch_CBS_1741_Search_Box_Close_Icon_Test extends BaseTestClass {
 
-    @Test
+    @Test(groups={"Typehead"})
     public void validateSearchBoxCloseIcon() {
 
         getDriver().get(System.getProperty("SearchUrl"));
