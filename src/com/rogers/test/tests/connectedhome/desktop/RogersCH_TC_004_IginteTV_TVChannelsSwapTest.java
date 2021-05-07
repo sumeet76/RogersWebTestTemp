@@ -4,11 +4,13 @@ import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
+import org.openqa.selenium.WebElement;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.List;
 
 
 /**
@@ -60,7 +62,11 @@ public class RogersCH_TC_004_IginteTV_TVChannelsSwapTest extends BaseTestClass {
          reporter.reportLogWithScreenshot("TV channels exchange page has launched");
          getRogersSolarisChannelsExchangePage().verifyChannelsPannel();
          reporter.reportLogWithScreenshot("TV channels pannel has displayed");
-         getRogersSolarisChannelsExchangePage().swapChannelOut(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getSwapOutChannelOne());
+         List<WebElement> availableChannels = getRogersSolarisChannelsExchangePage().uncheckTVChannels();
+         reporter.reportLogWithScreenshot("TV Channels are unchecked");
+         getRogersSolarisChannelsExchangePage().checkTVChannels(availableChannels);
+
+/*         getRogersSolarisChannelsExchangePage().swapChannelOut(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getSwapOutChannelOne());
          reporter.reportLogWithScreenshot("selected the Swap-out Channel one");
          getRogersSolarisChannelsExchangePage().clkRemoveChannel();
          reporter.reportLogWithScreenshot("removed the Swap-out Channel one");
@@ -81,7 +87,8 @@ public class RogersCH_TC_004_IginteTV_TVChannelsSwapTest extends BaseTestClass {
          getRogersSolarisChannelsExchangePage().clkRemoveChannel();
          reporter.reportLogWithScreenshot("removed the Swap-out Channel three");
          getRogersSolarisChannelsExchangePage().swapChannelIn(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getSwapInChannelThree());
-         reporter.reportLogWithScreenshot("Selected the Swap-in Channel three");
+         reporter.reportLogWithScreenshot("Selected the Swap-in Channel three");*/
+
          getRogersSolarisChannelsExchangePage().clkAddChannel();
          reporter.reportLogWithScreenshot("Added the Swap-in Channel three");
          getRogersSolarisChannelsExchangePage().clkConfirmSwap();
@@ -100,7 +107,7 @@ public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") St
 
 @AfterMethod(alwaysRun = true)
 public void afterTest() {
-	closeSession();
+	//closeSession();
 }
 
 
