@@ -34,7 +34,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_075_IgniteTV_BaselineAndHouseAddress_ValidateServiceability_checkAnotherAddressTest extends BaseTestClass {
 
-	@Test(groups = {"DryRunCH","RegressionCH",""})
+	@Test(groups = {"DryRunCH","RegressionCH","RogersCustomerIgniteBuyCH"})
     public void checkSignedInIgnite2PBundlesBuyInternetSameAddressBasementHouseTest() {
         reporter.reportLogWithScreenshot("Launched the Easy Login Page");
         getRogersHomePage().clkTVBundle();
@@ -45,15 +45,21 @@ public class RogersCH_TC_075_IgniteTV_BaselineAndHouseAddress_ValidateServiceabi
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
         //getRogersHomePage().clkAddressCheck();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1= TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1= TestDataHandler.tc75_IgniteTVBaseLineHomeAddress.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc75_IgniteTVBaseLineHomeAddress.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to opt the address");
+        getRogersHomePage().setIgniteAddressLookupRetry();
+        reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
+        getRogersHomePage().clkCheckAnotherAddress();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-
+        getRogersHomePage().setAnotherAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        getRogersHomePage().clkAnotherAddressLookupSubmit();
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         getRogersHomePage().setIgniteAddressLookupBasement();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup for basement address");
-        getRogersHomePage().clkIgniteAddressLookupSubmit();
+        getRogersHomePage().clkAnotherLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
         getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
