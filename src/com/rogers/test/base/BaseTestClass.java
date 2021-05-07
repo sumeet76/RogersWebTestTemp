@@ -695,7 +695,7 @@ public class BaseTestClass {
         }
 
         getDriver().manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-        if (!browser.contains("sauceandroid")) {
+        if (!(browser.contains("sauceandroid") || browser.contains("sauceios"))) {
             getDriver().manage().window().maximize();
         }
         init(strGroupName);
