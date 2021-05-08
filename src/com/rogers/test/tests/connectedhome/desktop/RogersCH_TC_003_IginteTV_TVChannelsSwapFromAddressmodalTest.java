@@ -66,10 +66,6 @@ public class RogersCH_TC_003_IginteTV_TVChannelsSwapFromAddressmodalTest extends
      reporter.reportLogWithScreenshot("TV channels exchange page has launched");
      getRogersSolarisChannelsExchangePage().verifyChannelsPannel();
      reporter.reportLogWithScreenshot("TV channels pannel has displayed");
-     List<WebElement> availableChannels = getRogersSolarisChannelsExchangePage().uncheckTVChannels();
-     reporter.reportLogWithScreenshot("TV Channels are unchecked");
-     getRogersSolarisChannelsExchangePage().checkTVChannels(availableChannels);
-     /**
      getRogersSolarisChannelsExchangePage().swapChannelOut(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getSwapOutChannelOne());
      reporter.reportLogWithScreenshot("selected the Swap-out Channel one");
      getRogersSolarisChannelsExchangePage().clkRemoveChannel();
@@ -92,7 +88,6 @@ public class RogersCH_TC_003_IginteTV_TVChannelsSwapFromAddressmodalTest extends
      reporter.reportLogWithScreenshot("removed the Swap-out Channel three");
      getRogersSolarisChannelsExchangePage().swapChannelIn(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getSwapInChannelThree());
      reporter.reportLogWithScreenshot("Selected the Swap-in Channel three");
-      **/
      getRogersSolarisChannelsExchangePage().clkAddChannel();
      reporter.reportLogWithScreenshot("Added the Swap-in Channel three");
      getRogersSolarisChannelsExchangePage().clkConfirmSwap();
