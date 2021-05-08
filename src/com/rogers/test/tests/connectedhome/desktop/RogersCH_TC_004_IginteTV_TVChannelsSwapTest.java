@@ -36,7 +36,7 @@ import java.util.List;
 
 public class RogersCH_TC_004_IginteTV_TVChannelsSwapTest extends BaseTestClass {
 	
-	 @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
+	 @Test(groups = {"SanityCH","RegressionCH","IgniteTVDashboardCH"})
 	
    public void checkSolarisTVSwapChannels() {
     reporter.reportLogWithScreenshot("Launched the Home Page");
@@ -107,7 +107,7 @@ public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") St
 
 @AfterMethod(alwaysRun = true)
 public void afterTest() {
-	//closeSession();
+	closeSession();
 }
 
 
