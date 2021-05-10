@@ -39,8 +39,9 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//input[@class='checkoutButton']")
 	WebElement btnCheckout;
 
-	@FindBy(xpath = "(//div//a[@title='Get Ignite Internet + SmartStream now'])[1]")
+	@FindBy(xpath = "//div//a[@title='Get it now']")
 	WebElement btnSmartStream;
+	//(//div//a[@title='Get Ignite Internet + SmartStream now'])[1]
 
 	@FindBy(xpath = "//a[contains(@title,'Ignite Internet with SmartStream')]")
 	WebElement lnkSmartStream;
@@ -55,7 +56,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::span[@role='text']")
 	WebElement btnInternet500uPackage;
 
-	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 75u']/ancestor::span[@role='text']")
+	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 150u']/ancestor::span[@role='text']")
 	WebElement btnSmartStreamPackage;
 
 	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::span[@role='text']")
@@ -149,6 +150,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(chkSmartStream, 90).click();
 	}
 	public void clkSmartStreamAvailability() {
+		getReusableActionsInstance().staticWait(8000);
 		getReusableActionsInstance().waitForElementVisibility(btnSmartStream, 90);
 		getReusableActionsInstance().executeJavaScriptClick(btnSmartStream);
 		getReusableActionsInstance().staticWait(8000);

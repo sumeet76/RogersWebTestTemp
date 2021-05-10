@@ -235,8 +235,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkCloseChannelsPopup() {
-		getReusableActionsInstance().getWhenReady(popupCloseChannel,40).click();
-		}
+		getReusableActionsInstance().getWhenReady(popupCloseChannel,40);
+		getReusableActionsInstance().executeJavaScriptClick(popupCloseChannel);
+	}
 
 	/**
 	 * Click the ViewfelxChannels link on Solaris TV dashboard page
