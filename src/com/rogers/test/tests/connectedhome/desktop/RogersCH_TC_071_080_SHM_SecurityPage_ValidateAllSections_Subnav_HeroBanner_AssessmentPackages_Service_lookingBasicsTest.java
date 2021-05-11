@@ -31,7 +31,7 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_071_SHM_SecurityPage_ValidateAllSections_Subnav_HeroBanner_AssessmentPackages_Service_lookingBasicsTest extends BaseTestClass {
+public class RogersCH_TC_071_080_SHM_SecurityPage_ValidateAllSections_Subnav_HeroBanner_AssessmentPackages_Service_lookingBasicsTest extends BaseTestClass {
     final String strLanguage=System.getProperty("Language");
 
    @Test(groups = {"RegressionCH","RhpAndRhmCH","DryRunCH"})
@@ -215,7 +215,7 @@ public class RogersCH_TC_071_SHM_SecurityPage_ValidateAllSections_Subnav_HeroBan
     }
 
     @Test(groups = {"RegressionCH","RhpAndRhmCH"})
-    public void checkShmSecurityPageViewAutomatePackageTest() {
+    public void check_80_ShmSecurityPageViewAutomatePackage_RedirectTopOfAutomatePackageTest() {
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
         reporter.reportLogWithScreenshot("Launched the security package Home Page");
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyViewAutomatePackage(), "View Automate Package button is displayed", "View Automate Package button is not displayed");

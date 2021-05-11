@@ -32,7 +32,7 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_055_IginteTV_NacDifferentAddressRCISandECIDsetLowRiskIgniteBundleMediumRiskAddressRetry2CreditCheckTest extends BaseTestClass {
+public class RogersCH_TC_055_IginteTV_ValidateAnonymousDifferentAddressRCISandECIDsetLowRiskIgniteBundleMediumRiskAddressRetry2CreditCheckTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
     public void checkAnonymousDifferentAddressRCISandECIDsetLowRiskIgniteBundleMediumRiskAddressRetry2CreditTest() {
@@ -45,8 +45,8 @@ public class RogersCH_TC_055_IginteTV_NacDifferentAddressRCISandECIDsetLowRiskIg
 		reporter.reportLogWithScreenshot("Launched the customer availability check popup");
 		//getRogersHomePage().clkAddressCheck();
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-		String  strAddressLine1=TestDataHandler.tc55_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddress().get("line1");
-		String  strAddressLine2=TestDataHandler.tc55_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddress().get("line2");
+		String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
+		String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
 		getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
 		getRogersHomePage().clkIgniteAddressLookupSubmit();
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");

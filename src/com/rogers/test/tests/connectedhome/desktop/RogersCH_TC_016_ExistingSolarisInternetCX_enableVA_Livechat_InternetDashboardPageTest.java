@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-
 /**
  * This class contains the test method to verify the Solaris Internet package downgarde flow for Rogers.com   
  * 
@@ -33,16 +32,16 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_023_StandaloneInternet_InternetPackageUpgradeTest extends BaseTestClass {
+public class RogersCH_TC_016_ExistingSolarisInternetCX_enableVA_Livechat_InternetDashboardPageTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","saiCH"})
-    public void checkStandalonePackageUpgrade() {
+	@Test(groups = {"RegressionCH","RogersInternetCH","DryRunCH"})
+    public void checkVAicononInternetDashboard() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
         getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Skip popup");
@@ -51,30 +50,25 @@ public class RogersCH_TC_023_StandaloneInternet_InternetPackageUpgradeTest exten
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.accountDetails.getBan());
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        reporter.reportLogWithScreenshot("Launched the Account Page");
+        //getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.accountDetails.getBan());
+    	reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersInternetDashboardPage().clkSolarisInternetBadge();
         getRogersInternetDashboardPage().clkInternetPopup();
-        reporter.reportLogWithScreenshot("Launched the Interent dashboard");
-        getRogersInternetDashboardPage().clkSolChangeInternetPackage();
-        reporter.reportLogWithScreenshot("Launched the Interent packages page");
-        getRogersInternetDashboardPage().selectStandAloneInternetPackage(TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getUpgradePlanFr());
-        reporter.reportLogWithScreenshot("Launched the agreement page");
-        getRogersInternetDashboardPage().clkSmartstreamPack();
-        reporter.reportLogWithScreenshot("Launched the Smart stream Pack");
-        getRogersInternetDashboardPage().clkInternetChangeOK();
-		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
-		reporter.reportLogWithScreenshot("Launched the order review page");
-		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
-		
-        getRogersOrderReviewPage().clkAcceptenceCheckboxUpdateInternet();
-        reporter.reportLogWithScreenshot("Agreement details");
-        getRogersOrderReviewPage().clkSubmitUpdateSAI();
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.softAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Update order completed","Update order Failed");
-        reporter.reportLogWithScreenshot("Verified the Confirmation page");
-    	}
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyInternetPage(),"Launched the internet dashboard Page","Internet dashboard Page dosen't launched");
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyVAButton(),"VA button is present","VA button is not present");
+        getRogersInternetDashboardPage().clkVAButton();
+        getRogersInternetDashboardPage().switchToVAIFrame();
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyVaWelcome(),"VA chat tab has launched","VA chat tab hasn't launched");
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyVaTopicList(),"VA chat Topic list is available","VA chat Topic list is not available");
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyVaWelcomeSend(),"VA chat Continue button is available","VA chat Continue button  is not available");
+        getRogersInternetDashboardPage().clkVaWelcomeSend();
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyVAOptions(),"VA chat options are available","VA chat options are not available");
+        reporter.reportLogWithScreenshot("VA chat options ");
+        getRogersInternetDashboardPage().clkIgniteInternetOption();
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyInternetIssues(),"Internet issues list","Internet issues list not displayed");
+        reporter.reportLogWithScreenshot("Internet issues list");
+	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow

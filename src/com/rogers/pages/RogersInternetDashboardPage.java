@@ -60,6 +60,10 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Continue')]/ancestor::a/span")
 	WebElement btnInternetChangeOK;
 
+
+	@FindBy(xpath = "//span[@id='ariaNoInternetOnly']/ancestor::a//ds-icon[@name='chevron-right']")
+	WebElement btnSmartstreamPack;
+
 	@FindBy(xpath = "//button[contains(@class,'-primary -large ng-star-inserted')]")
 	WebElement btnSAInternetChangeOK;
 	
@@ -81,7 +85,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='owl-item active']//ins[@translate='global.cta.select']")
 	WebElement btnSelectInternetPackageMobile;
 	
-	@FindBy(xpath = "//button[@id='va-button']")
+	@FindBy(xpath = "//a[@href='#']/img")
 	WebElement btnVaButton;
 	
 	@FindBy(xpath = "//h1[@translate='global.label.internet']")
@@ -112,7 +116,16 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	
 	@FindBy(xpath = "//button[@id='va-menu-close-button']")
 	WebElement btnVAClose;
-	
+
+	@FindBy(xpath = "//div[@id='va-chat-canned-responses1']")
+	WebElement btnVAOptions;
+
+	@FindBy(xpath = "//a[@href='#' and  text()='Ignite Internet']")
+	WebElement optsIgniteInternet;
+
+	@FindBy(xpath = "//div[@id='va-chat-canned-responses4']")
+	WebElement optsInternetIssues;
+
 	
 	/**
 	 * Verify the Internet usage on the Internet dash board page
@@ -191,6 +204,23 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * Clicks on the 'InternetPopup' option on the dash board
 	 * @author chinnarao.vattam
 	 */
+	public void clkIgniteInternetOption() {
+		getReusableActionsInstance().clickIfAvailable(optsIgniteInternet, 60);
+	}
+
+	/**
+	 * Verify the Internet Usage Alerts link on Solaris Internet dash board
+	 * @return true if the Internet Usage Alerts link displayed; else false
+	 * @author Chinnarao.Vattam
+	 */
+	public boolean verifyInternetIssues() {
+		return getReusableActionsInstance().isElementVisible(optsInternetIssues,30);
+	}
+
+	/**
+	 * Clicks on the 'InternetPopup' option on the dash board
+	 * @author chinnarao.vattam
+	 */
 	public void clkWifiPassword() {
 		getReusableActionsInstance().clickIfAvailable(btnWifiPassword, 60);
 	}
@@ -239,6 +269,14 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public void clkInternetChangeOK() {		
 		getReusableActionsInstance().clickIfAvailable(btnInternetChangeOK, 30);
+	}
+
+	/**
+	 * Click the Change Internet Package OK button on Solaris Internet dash board
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkSmartstreamPack() {
+		getReusableActionsInstance().clickIfAvailable(btnSmartstreamPack, 30);
 	}
 
 	/**
@@ -338,6 +376,24 @@ public class RogersInternetDashboardPage extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(btnVaWelcomeSend, 30);
 	}
 
+	/**
+	 * Checks if the pop up contact us is visible
+	 * @return true when pop up contact us is visible else false
+	 * @author Chinnarao.Vattam
+	 */
+	public boolean verifyVAOptions() {
+		return getReusableActionsInstance().isElementVisible(btnVAOptions, 30);
+	}
+
+	/**
+	 * Click the Change Internet Package OK button on Solaris Internet dash board
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkVaWelcomeSend() {
+		getReusableActionsInstance().getWhenReady(btnVaWelcomeSend, 10);
+		getReusableActionsInstance().executeJavaScriptClick(btnVaWelcomeSend);
+	}
+
 
 	/**
 	 * Checks if the pop up contact us is visible
@@ -367,6 +423,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyContatUSInternetDowngardeInternet() {
+		getReusableActionsInstance().waitForElementVisibility(popupContatUSInternetDowngarde, 60);
 		return getReusableActionsInstance().isElementVisible(popupContatUSInternetDowngarde, 20);
 	}
 	
@@ -400,7 +457,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectSolarisInternetPackage(String strPackageNameEn,String strPackageNameFr) {
-		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().staticWait(5000);
 		By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='change-internet-bundle-tile__row']//button[contains(@aria-label,'Add Rogers Ignite')]/span");
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 90);
 		WebElement pkg = getDriver().findElement(packageNameLocator);

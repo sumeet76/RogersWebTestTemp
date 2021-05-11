@@ -30,8 +30,9 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_072_SHM_AutomatePage_NavigatefromSubnav_ValidateAlltheSections_HeroBanner_Assessment_Packages_ServiceTest extends BaseTestClass {
+public class RogersCH_TC_072_081_SHM_AutomatePage_NavigatefromSubnav_ValidateAlltheSections_HeroBanner_Assessment_Packages_ServiceTest extends BaseTestClass {
     final String strLanguage=System.getProperty("Language");
+
 
    @Test(groups = {"RegressionCH","RhpAndRhmCH","DryRunCH"})
     public void checkShmAutomationPageDsaBillboardTest() {
@@ -135,8 +136,9 @@ public class RogersCH_TC_072_SHM_AutomatePage_NavigatefromSubnav_ValidateAlltheS
     }
 
 
+
     @Test(groups = {"RegressionCH","RhpAndRhmCH"})
-    public void checkShmAutomationPageViewSecurityPackagesTest() {
+    public void check_81_ShmAutomationPageViewSecurityPackages_RedirectTopOfSecurityPackageTestTest() {
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyViewSecurityPackage(), "View Security Package button is displayed", "View Security Package button is not displayed");
         reporter.reportLogWithScreenshot("View Security Package button");
         getRogersSecurityPackagesPage().clkViewSecurityPackage();
@@ -147,6 +149,7 @@ public class RogersCH_TC_072_SHM_AutomatePage_NavigatefromSubnav_ValidateAlltheS
         reporter.reportLogWithScreenshot("security packages");
 
     }
+
 
    @Test(groups = {"RegressionCH","RhpAndRhmCH"})
     public void checkAutomationPageContactUsTest() {
@@ -242,6 +245,7 @@ public class RogersCH_TC_072_SHM_AutomatePage_NavigatefromSubnav_ValidateAlltheS
     }
 
 
+
     @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
     //legacyAnonymous
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
@@ -252,7 +256,7 @@ public class RogersCH_TC_072_SHM_AutomatePage_NavigatefromSubnav_ValidateAlltheS
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
 
