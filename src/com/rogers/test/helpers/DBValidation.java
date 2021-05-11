@@ -19,7 +19,7 @@ public class DBValidation extends BaseTestClass{
      * @param commit   set true if you want to commit the changes in the data base.
      * @return Map - Results are returned as map
      */
-    public DBValidation executeDBQuery(String sqlQuery, boolean commit) {
+    public synchronized Map<Object, Object> executeDBQuery(String sqlQuery, boolean commit) {
         resultMap = new HashMap<>();
         try {
             ResultSet result = statement.executeQuery(sqlQuery);
@@ -42,34 +42,16 @@ public class DBValidation extends BaseTestClass{
             e.printStackTrace();
         }
 
-        return this;
+        return resultMap;
     }
+
 
     /**
-     * Method to return the single value retrieved from the Database.
-     *
-     * @param key - Table Column value
-     * @return String
+     * This method will create a connection and return DBValidation object
+     * @param dbEnv
+     * @return
      */
-    public String getDBValue(String key) {
-        return resultMap.get(key).toString();
-    }
-
-    /**
-     * Method to return the list of values from the Database. User has to send the column values as a list in the parameters.
-     *
-     * @param keyList - List of column values
-     * @return List<Object> - results are returned as List
-     */
-    public List<Object> getDBValues(String[] keyList) {
-        List<Object> objects = new ArrayList<>();
-        for (String key : keyList) {
-            objects.add(resultMap.get(key).toString());
-        }
-        return objects;
-    }
-
-    public DBValidation connectionMethod(String dbEnv) {
+    public synchronized DBValidation connectionMethod(String dbEnv) {
         System.out.println("DB Environment details" + dbEnv);
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
