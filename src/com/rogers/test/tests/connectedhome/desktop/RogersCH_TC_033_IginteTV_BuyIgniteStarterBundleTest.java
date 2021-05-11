@@ -48,7 +48,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_033_IginteTV_BuyIgniteStarterBundleTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
+    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH","DryRunCH"})
 	    public void checkBuyStarterTVOffer() {
 			reporter.reportLogWithScreenshot("Launched the Easy Login Page");
 	    	getRogersHomePage().clkTVBundle();

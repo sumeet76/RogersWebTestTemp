@@ -88,6 +88,13 @@ public class TestDataHandler {
 	public static AccountData tc56_wirelessSignedInInternetBuy;
 	public static AccountData tc60_WirelessSignedInInternetBuyDiffAddress;
 	public static AccountData tc63_ShmSignedInInternetBuyBasement;
+	public static AccountData tc65_IgniteSmartStreamNL;
+	public static AccountData tc73_IgniteTVAccountMultipleSwap;
+	public static AccountData tc74_SaiBaseLineHomeAddress;
+	public static AccountData tc75_IgniteTVBaseLineHomeAddress;
+	public static AccountData tc76_Legact2Pto3PIgniteBasementHousePortinHot;
+	public static AccountData tc82_Legacy1PtoIgnite2P;
+	public static AccountData tc83_Legacy2PtoIgnite2P;
 	public static AccountData tc57_sHMSignedInInternetBuy;
 	public static AccountData tc51_igniteSmartStream;
 	public static AccountData tc31_SolarisInternetAccountWithUsageAndPackageUpgrade;
@@ -300,7 +307,14 @@ public class TestDataHandler {
     	tc06_2_SolarisChangeTVManageChannels = YamlHandler.getCableAccountData("TC06_2_SolarisChangeTVManageChannels");
     	tc06_1_SolarisChangeTVManageThemePacks = YamlHandler.getCableAccountData("TC06_1_SolarisChangeTVManageThemePacks");
     	solarisHTOMigrationSignIn = YamlHandler.getCableAccountData("SolarisHTOMigrationSignIn");
-	}
+		tc65_IgniteSmartStreamNL= YamlHandler.getCableAccountData("TC65_IgniteSmartStreamNL");
+		tc73_IgniteTVAccountMultipleSwap= YamlHandler.getCableAccountData("TC73_IgniteTVAccountMultipleSwap");
+		tc74_SaiBaseLineHomeAddress= YamlHandler.getCableAccountData("TC74_SaiBaseLineHomeAddress");
+		tc75_IgniteTVBaseLineHomeAddress= YamlHandler.getCableAccountData("TC75_IgniteTVBaseLineHomeAddress");
+		tc76_Legact2Pto3PIgniteBasementHousePortinHot= YamlHandler.getCableAccountData("TC76_Legact2Pto3PIgniteBasementHousePortinHot");
+		tc82_Legacy1PtoIgnite2P= YamlHandler.getCableAccountData("TC82_Legacy1PtoIgnite2P");
+		tc83_Legacy2PtoIgnite2P= YamlHandler.getCableAccountData("TC83_Legacy2PtoIgnite2P");
+		}
 	
 	private static void selfserveDataInit() throws FileNotFoundException {
     	ssConfig =  YamlHandler.getSSConfig();

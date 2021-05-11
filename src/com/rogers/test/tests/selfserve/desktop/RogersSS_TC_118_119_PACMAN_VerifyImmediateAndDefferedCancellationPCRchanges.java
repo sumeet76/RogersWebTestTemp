@@ -41,21 +41,21 @@ import java.lang.reflect.Method;
  */
 
 public class RogersSS_TC_118_119_PACMAN_VerifyImmediateAndDefferedCancellationPCRchanges extends BaseTestClass {
-    
-	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
-	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-	    //xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		 
-		startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
-				
-	}
-	   	
-	@AfterMethod(alwaysRun = true)
-	public void afterTest() throws InterruptedException {
-		closeSession();
-	}
-	
-	
-	@Test(groups = {"RegressionSS","CancelSubscription"})
+
+    @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
+    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+        //xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+        startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve,method);
+
+    }
+
+    @AfterMethod(alwaysRun = true)
+    public void afterTest() throws InterruptedException {
+        closeSession();
+    }
+
+
+    @Test(groups = {"RegressionSS","CancelSubscription"})
     public void validateSignInAndAccountOverview() {
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
@@ -163,6 +163,6 @@ public class RogersSS_TC_118_119_PACMAN_VerifyImmediateAndDefferedCancellationPC
     cancelled CTNs
 
  */
-  
+
 
 }

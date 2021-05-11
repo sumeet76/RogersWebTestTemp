@@ -55,7 +55,7 @@ public class RogersCH_TC_006_01_SolarisCustomer_ManageChannelsAndThemePack_Manag
 		reporter.reportLogWithScreenshot("Clicked on themepack tab");
 		getRogersSolarisTVChannelsAndThemepacksPage().clkAddButtonOnThemePackListOnManageChannelsAndThemePacks();
 		reporter.reportLogWithScreenshot("Clicked on confirm button");
-		getRogersSolarisTVChannelsAndThemepacksPage().clkContinueOnExistingChannelAlertWindow();
+		//getRogersSolarisTVChannelsAndThemepacksPage().clkContinueOnExistingChannelAlertWindow();
 		reporter.reportLogWithScreenshot("ThemePack added");    
 		getRogersSolarisTVChannelsAndThemepacksPage().clkConfirmChangesOnManageChannelsAndThemePacks();
 		reporter.reportLogWithScreenshot("Clicked in confirm changes on manage channels and theme packs");

@@ -4,11 +4,13 @@ import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
+import org.openqa.selenium.WebElement;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.List;
 
 
 /**
@@ -93,8 +95,8 @@ public class RogersCH_TC_003_IginteTV_TVChannelsSwapFromAddressmodalTest extends
      reporter.reportLogWithScreenshot("Swap Success popup has launched");
      getRogersSolarisChannelsExchangePage().clkReturnToDashbaord();
      reporter.reportLogWithScreenshot("Tv Dashboard has launched");
+
     }
-	
 
 @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 //login flow
@@ -107,8 +109,6 @@ public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") St
 public void afterTest() {
 	closeSession();
 }
-
-
 
 }
 

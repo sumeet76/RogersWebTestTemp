@@ -62,9 +62,9 @@ public class RogersCH_TC_057_Internet_SignedInSHMBuyInternetSameAddressTest exte
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
 
-        /*getRogersTechInstallPage().selSelffinstallDateAndTime();
+        getRogersTechInstallPage().selSelffinstallDateAndTime();
         reporter.reportLogWithScreenshot("Launched the tech install page");
-        getRogersTechInstallPage().setMobielNumber();*/
+        getRogersTechInstallPage().setMobielNumber();
 
         getRogersTechInstallPage().clkTechInstalConsent();
         reporter.reportLogWithScreenshot("tech install details");

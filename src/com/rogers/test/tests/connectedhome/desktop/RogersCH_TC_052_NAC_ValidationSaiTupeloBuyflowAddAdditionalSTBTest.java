@@ -33,7 +33,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_052_NAC_ValidationSaiTupeloBuyflowAddAdditionalSTBTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","SmartStreamCH"})
+    @Test(groups = {"RegressionCH","SmartStreamCH","DryRunCH"})
     public void checkSaiTupeloBuyflowAddAdditionalSTB() {
         getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");

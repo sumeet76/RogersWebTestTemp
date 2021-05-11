@@ -19,7 +19,7 @@ import com.rogers.test.helpers.RogersEnums;
 
 import utils.CSVReader;
 
-public class RogersSearch_CBS_1740_Click_On_Magnifying_Lens_Or_Press_Enter_Test extends BaseTestClass {
+public class Typehead_RogersSearch_CBS_1740_Click_On_Magnifying_Lens_Or_Press_Enter_Test extends BaseTestClass {
     @DataProvider(name = "FilterData",parallel=true)
     public Object[] testData() throws IOException
     {
@@ -34,7 +34,7 @@ public class RogersSearch_CBS_1740_Click_On_Magnifying_Lens_Or_Press_Enter_Test 
         return csvRow;
     }
 
-    @Test(dataProvider = "FilterData")
+    @Test(dataProvider = "FilterData",groups={"Typehead"})
     public void validateResultLandingPage(String[] csvRow) throws UnsupportedEncodingException {
         getDriver().get(System.getProperty("SearchUrl"));
         reporter.reportLogWithScreenshot("CBS Search Page");

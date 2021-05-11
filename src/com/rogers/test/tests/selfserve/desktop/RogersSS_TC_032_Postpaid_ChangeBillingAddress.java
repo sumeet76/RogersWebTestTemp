@@ -37,7 +37,7 @@ public class RogersSS_TC_032_Postpaid_ChangeBillingAddress extends BaseTestClass
 		closeSession();
 	}
 	
-	@Test(groups = {"SanitySS","ProfileAndSettingsSS"})
+	@Test(groups = {"ProfileAndSettingsSS"})
 	public void validateUserChangeBillingAddress() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc013132.getUsername();

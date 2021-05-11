@@ -34,7 +34,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_063_SignedInSHM_DiffAddress_basement_house_buyInternetTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","New"})
+	@Test(groups = {"RegressionCH","saiCH"})
     public void checkSignedInIgnite2PBundlesBuyInternetSameAddressBasementHouseTest() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();

@@ -652,6 +652,16 @@ public class BaseTestClass {
                 getDriver().get(strUrl + "?setLanguage=" + language);
                 break;
 
+            case "connectedhome_shm":
+                setImplicitWait(getDriver(), 10);
+                getDriver().get(strUrl + "/home-security/security-packages"+ "?setLanguage=" + language);
+                break;
+
+            case "connectedhome_shmautomation":
+                setImplicitWait(getDriver(), 10);
+                getDriver().get(strUrl + "/home-security/automation-packages"+ "?setLanguage=" + language);
+                break;
+
             case "connectedhome_legacylogin":
                 setImplicitWait(getDriver(), 10);
                 getDriver().get(strUrl + "/web/totes/api/v1/bypassCaptchaAuth");
@@ -693,8 +703,9 @@ public class BaseTestClass {
                 getDriver().get(strUrl);
                 break;
 
-            case "search": //getDriver().get(strUrl);
-                setImplicitWait(getDriver(), 1);
+            case "search":
+                getDriver().get(strUrl + "&language=" + System.getProperty("Language").toLowerCase());
+                setImplicitWait(getDriver(), 30);
                 break;
 
             default:
@@ -704,7 +715,7 @@ public class BaseTestClass {
         }
 
         getDriver().manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-        if (!browser.contains("sauceandroid")) {
+        if (!(browser.contains("sauceandroid") || browser.contains("sauceios"))) {
             getDriver().manage().window().maximize();
         }
         init(strGroupName);
@@ -748,6 +759,13 @@ public class BaseTestClass {
                 sauceOptions.put(SauceCapabilities.appiumVersion.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getAppiumVersion());
                 sauceOptions.put(SauceCapabilities.deviceName.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getDeviceName());
                 sauceOptions.put(SauceCapabilities.deviceOrientation.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getDeviceOrientation());
+                break;
+            case "sauceioschrome":
+                sauceOptions.put(SauceCapabilities.appiumVersion.toString(), TestDataHandler.sauceSettings.getIosSafariCapabilities().getAppiumVersion());
+                sauceOptions.put(SauceCapabilities.deviceName.toString(), TestDataHandler.sauceSettings.getIosSafariCapabilities().getDeviceName());
+                sauceOptions.put(SauceCapabilities.deviceOrientation.toString(), TestDataHandler.sauceSettings.getIosSafariCapabilities().getDeviceOrientation());
+                sauceOptions.put(SauceCapabilities.platformVersion.toString(), TestDataHandler.sauceSettings.getIosSafariCapabilities().getPlatformVersion());
+                sauceOptions.put(SauceCapabilities.platformName.toString(), TestDataHandler.sauceSettings.getIosSafariCapabilities().getPlatformName());
                 break;
         }
 
@@ -879,6 +897,10 @@ public class BaseTestClass {
                 RogersHomePhonePortInPageThreadLocal.set(new RogersHomePhonePortInPage(getDriver()));
                 RogersInternetProfilePageThreadLocal.set(new RogersInternetProfilePage(getDriver()));
                 RogersInternetCreditCheckPageThreadLocal.set(new RogersInternetCreditCheckPage(getDriver()));
+                break;
+
+            case "connectedhome_shm":
+            case "connectedhome_shmautomation":
                 RogersSecurityPackagesPageThreadLocal.set(new RogersSecurityPackagesPage(getDriver()));
                 break;
 

@@ -49,7 +49,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_029_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
+    @Test(groups = {"SanityCH","RegressionCH","RogersIgniteBuyAnonymousCH","DryRunCH"})
 	public void checkDoublePalyTVOffer() {
         reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	getRogersHomePage().clkTVBundle();
