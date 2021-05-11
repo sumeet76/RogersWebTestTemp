@@ -60,6 +60,10 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Continue')]/ancestor::a/span")
 	WebElement btnInternetChangeOK;
 
+
+	@FindBy(xpath = "//span[@id='ariaNoInternetOnly']/ancestor::a//ds-icon[@name='chevron-right']")
+	WebElement btnSmartstreamPack;
+
 	@FindBy(xpath = "//button[contains(@class,'-primary -large ng-star-inserted')]")
 	WebElement btnSAInternetChangeOK;
 	
@@ -265,6 +269,14 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public void clkInternetChangeOK() {		
 		getReusableActionsInstance().clickIfAvailable(btnInternetChangeOK, 30);
+	}
+
+	/**
+	 * Click the Change Internet Package OK button on Solaris Internet dash board
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkSmartstreamPack() {
+		getReusableActionsInstance().clickIfAvailable(btnSmartstreamPack, 30);
 	}
 
 	/**
