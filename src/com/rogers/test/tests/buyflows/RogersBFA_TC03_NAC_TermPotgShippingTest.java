@@ -25,7 +25,7 @@ public class RogersBFA_TC03_NAC_TermPotgShippingTest extends BaseTestClass {
 		startSession(System.getProperty("AWSUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-	@Test(groups = {"RegressionBFA","SanityBFA","NACBFA"})
+	@Test(groups = {"RegressionBFA","NACBFA"})
 	public void rogersNACTermPotgShippingTest() throws InterruptedException {
 		// **************************Device catalog page*****************************************
 		reporter.softAssert(getRogersDeviceCataloguePage().isRpotgBannerPresent(),

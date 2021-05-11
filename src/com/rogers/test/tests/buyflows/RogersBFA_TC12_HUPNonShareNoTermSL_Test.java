@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_TC12_HUPNonShareNoTermSL_Test extends BaseTestClass{
 
-        @Test(groups = {"RegressionBFA","SanityBFA","HUPBFA"})
+        @Test(groups = {"RegressionBFA","HUPBFA"})
         public void rogersHUPNonShareNoTermSLTest() {
             reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
             reporter.reportLogWithScreenshot("Home Page");

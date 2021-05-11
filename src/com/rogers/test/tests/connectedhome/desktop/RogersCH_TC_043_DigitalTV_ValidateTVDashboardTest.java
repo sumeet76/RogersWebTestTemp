@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 public class RogersCH_TC_043_DigitalTV_ValidateTVDashboardTest extends BaseTestClass {
 
 
-	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH"})
+	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH","DryRunCH"})
 	public void checkLegacyTVDashboard () {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();

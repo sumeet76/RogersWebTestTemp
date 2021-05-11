@@ -18,9 +18,9 @@ import com.rogers.test.helpers.RogersEnums;
 
 import utils.CSVReader;
 
-public class RogersSearch_CBS_1383_Rendering_Suggestion_Post_THree_Character extends BaseTestClass {
+public class Typehead_RogersSearch_CBS_1383_Rendering_Suggestion_Post_THree_Character extends BaseTestClass {
 
-    @Test
+    @Test(groups={"Typehead"})
     public void validateLabelVisible() {
         getDriver().get(System.getProperty("SearchUrl"));
         reporter.reportLogWithScreenshot("CBS Search Page");

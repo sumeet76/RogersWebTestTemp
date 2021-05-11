@@ -79,8 +79,7 @@ public class RogersCH_TC_020_IginteInternet_InternetBundleofferChangePackageUpgr
 	}
 
 	@AfterMethod(alwaysRun = true)
-	public void afterTest() {
-		closeSession();
+	public void afterTest() { closeSession();
 	}
 
 

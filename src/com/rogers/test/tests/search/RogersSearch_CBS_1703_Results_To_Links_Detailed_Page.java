@@ -21,44 +21,55 @@ import com.rogers.test.helpers.RogersEnums;
 import utils.CSVReader;
 
 public class RogersSearch_CBS_1703_Results_To_Links_Detailed_Page extends BaseTestClass {
-    @DataProvider(name = "FilterData",parallel=true)
-    public Object[] testData() throws IOException
-    {
-        String csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
+    @DataProvider(name = "FilterData", parallel = true)
+    public Object[] testData() throws IOException {
+        String csvFileName = null;
+        if (System.getProperty("Language").equalsIgnoreCase("en"))
+            csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
+        else if (System.getProperty("Language").equalsIgnoreCase("fr"))
+            csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataFR.csv";
         List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
-        Object[] csvRow = new Object[csvData.size()];
-
-        for(int i =0; i < csvData.size();i++){
-            csvRow[i] = csvData.get(i);
+        Object[] csvRowStrArray = new Object[csvData.size()];
+        for (int i = 0; i < csvData.size(); i++) {
+            csvRowStrArray[i] = csvData.get(i);
         }
-
-        return csvRow;
+        return csvRowStrArray;
     }
 
-    @Test(dataProvider = "FilterData")
-    public void validateParentFilterDeselection(String[] csvRow) {
-
-        getDriver().get(System.getProperty("SearchUrl")+csvRow[0]);
-
+    @Test(dataProvider = "FilterData", groups = {"Search", "Filter", "Multilingual"})
+    public void validateParentFilterDeselection(String[] csvRowStrArray) {
+        boolean isMobile;
         List<WebElement> lstParentFilters;
         String strParentFilterName;
-        String[] strFilters = Arrays.copyOfRange(csvRow, 1, csvRow.length);
-        for(int i=0; i<strFilters.length; i++) {
-
+        getDriver().get(System.getProperty("SearchUrl") + csvRowStrArray[0]);
+        getRogersSearchPage().waitTime();
+        String[] strFilters = Arrays.copyOfRange(csvRowStrArray, 1, csvRowStrArray.length);
+        for (int i = 0; i < strFilters.length; i++) {
+            isMobile = getRogersSearchPage().isMobileSelected();
+            if (isMobile) {
+                getRogersSearchPage().clkFilterIconMobile();
+                reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+            }
             getRogersSearchPage().clkGrandParentFilter(strFilters[i]);
-            reporter.reportLogWithScreenshot("Grand Parent Filter "+strFilters[i]+" is clicked");
+            reporter.reportLogWithScreenshot("Grand Parent Filter " + strFilters[i] + " is clicked");
             lstParentFilters = getRogersSearchPage().getParentFilters(strFilters[i]);
-
-            for(int j=0; j<lstParentFilters.size(); j++) {
+            for (int j = 0; j < lstParentFilters.size(); j++) {
                 getRogersSearchPage().clkParentFilter(lstParentFilters.get(j));
                 strParentFilterName = lstParentFilters.get(j).getText();
-                reporter.reportLogWithScreenshot("Parent filter "+strParentFilterName +" is selected");
-                reporter.hardAssert(getRogersSearchPage().validateResultsLinks(strFilters[i],strParentFilterName),
+                reporter.reportLogWithScreenshot("Parent filter " + strParentFilterName + " is selected");
+                if (isMobile) {
+                    getRogersSearchPage().clkShowResultBtnMobile();
+                    getRogersSearchPage().isPageLoaded();
+                    reporter.reportLogWithScreenshot("Clicked on Show Results button");
+                }
+                reporter.hardAssert(getRogersSearchPage().validateResultsLinks(),
                         "Displayed Results are Links", "Displayed Results are Links");
+                if (isMobile) {
+                    getRogersSearchPage().clkFilterIconMobile();
+                    reporter.reportLogWithScreenshot("Clicked on Filter Icon");
+                }
             }
-            System.out.println("end of set");
         }
-
     }
 
     @BeforeMethod(alwaysRun = true)
@@ -72,5 +83,4 @@ public class RogersSearch_CBS_1703_Results_To_Links_Detailed_Page extends BaseTe
     public void afterTest() {
         closeSession();
     }
-
 }
