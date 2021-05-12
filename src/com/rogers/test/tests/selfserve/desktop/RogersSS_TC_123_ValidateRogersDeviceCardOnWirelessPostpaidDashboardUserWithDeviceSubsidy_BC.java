@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class RogersSS_TC_02_ValidateRogersDeviceCardOnWirelessPostpaidDashboardUserWithDeviceSubsidy_BC extends BaseTestClass {
+public class RogersSS_TC_123_ValidateRogersDeviceCardOnWirelessPostpaidDashboardUserWithDeviceSubsidy_BC extends BaseTestClass {
 
 	private String strAltEmail;
 

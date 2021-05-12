@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class RogersSS_TC_05_Rogers_Desktop_Edge_FR_Validate_Rogers_UserWithBYODDevice_ON extends BaseTestClass {
+public class RogersSS_TC_125_Rogers_Desktop_Edge_FR_Validate_Rogers_UserWithBYODDevice_ON extends BaseTestClass {
 
 	private String strAltEmail;
 

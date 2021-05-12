@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class RogersSS_TC_02_ValidateDeviceSectionAndDeviceDetailsModalForCXWithSubsidyPaidOFF extends BaseTestClass {
+public class RogersSS_TC_129_ValidateDeviceSectionAndDeviceDetailsModalForCXWithSubsidyPaidOFF extends BaseTestClass {
 
 	private String strAltEmail;
 

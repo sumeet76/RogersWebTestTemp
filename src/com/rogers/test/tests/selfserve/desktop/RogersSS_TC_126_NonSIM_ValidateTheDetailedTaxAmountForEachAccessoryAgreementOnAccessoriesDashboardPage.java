@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class RogersSS_TC_01_ValidateTheDetailedTaxAmountForEachAccessoryAgreementOnAccessoriesDashboardPage extends BaseTestClass {
+public class RogersSS_TC_126_NonSIM_ValidateTheDetailedTaxAmountForEachAccessoryAgreementOnAccessoriesDashboardPage extends BaseTestClass {
 
 	private String strAltEmail;
 
