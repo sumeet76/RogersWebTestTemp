@@ -32,7 +32,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_035_IginteTV_CRMaddressMismatchWithSGI_ValidateServiceabilityCheckTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
+    @Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
     public void checkCRMaddressMismatchWithSGI_ServiceabilityTest() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
@@ -60,13 +60,7 @@ public class RogersCH_TC_035_IginteTV_CRMaddressMismatchWithSGI_ValidateServicea
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
 		getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
-
-		/*reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
-		reporter.reportLogWithScreenshot("Launched the home phone selection page");
-		getRogersHomePhoneSelectionPage().clkSkipforNewNumber();
-		reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
-		getRogersHomePhoneSelectionPage().clkContinueHomePhoneSelection();*/
-
+		getRogersIgniteTVBuyPage().clkIUnderstand();
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");
 		reporter.reportLogWithScreenshot("Launched the cart summary page");
 		getRogersIgniteTVBuyPage().set4KTV();

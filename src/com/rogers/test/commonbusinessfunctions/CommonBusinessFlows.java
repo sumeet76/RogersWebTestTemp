@@ -5,6 +5,8 @@ import org.testng.annotations.Listeners;
 
 import com.rogers.test.base.BaseTestClass;
 
+import java.util.HashMap;
+
 
 @Listeners ({com.rogers.test.listeners.TestListener.class ,
 	com.rogers.test.listeners.AnnotationTransformer.class ,
@@ -81,6 +83,9 @@ public class CommonBusinessFlows {
 		if (BaseTestClass.getRogersSpeedPassPage().verifySpeedPassPopupIsDisplayed()) {
 			baseTestClass.reporter.hardAssert(BaseTestClass.getRogersSpeedPassPage().verifySpeedPassPopupIsDisplayed(),
 					"Speed Pass popup is displayed", "Speed Pass popup is NOT displayed");
+			baseTestClass.reporter.hardAssert(BaseTestClass.getRogersSpeedPassPage().verifyIfTopUpPriceIsCorrect(),
+					"New Top up price Price plan is reflected correctly",
+					"Add speed pass overlay failed.");
 			BaseTestClass.getRogersSpeedPassPage().clkMaxSpeedDataInSpeedPassPopup();
 			baseTestClass.reporter.reportLogWithScreenshot("Select Add on option");  
 			BaseTestClass.getRogersSpeedPassPage().clkBtnContinueInSpeedPassPopup();
@@ -120,6 +125,26 @@ public class CommonBusinessFlows {
 		baseTestClass.reporter.reportLogWithScreenshot("Select Purchase");  
 		BaseTestClass.getRogersAddDataPage().clkPurchase();
 		baseTestClass.reporter.reportLogWithScreenshot("Purchase status");  
+
+	}
+
+	/**
+	 * Add data flow, it will complete the flow from click "add data" button to click "purchase" button,
+	 * but will not verify after click purchase.
+	 * @author ning.xue
+	 */
+	public void addDataFlow(HashMap<String, String> addDataPricing) {
+		BaseTestClass.getRogersWirelessDashboardPage().clkAddData();
+		baseTestClass.reporter.hardAssert(BaseTestClass.getRogersAddDataPage().verifyAddDataOverlayIsDisplayedNew(),
+				"Add the Data top-up  window should be displayed. (completd an MDT add on)",
+				"Add the Data top-up  window is NOT displayed.");
+		baseTestClass.reporter.reportLogWithScreenshot("Add Data Add on");
+		BaseTestClass.getRogersAddDataPage().selectDataAddOnOptionNew(1);
+		baseTestClass.reporter.reportLogWithScreenshot("Select Add on option");
+		BaseTestClass.getRogersAddDataPage().clkContinue();
+		baseTestClass.reporter.reportLogWithScreenshot("Select Purchase");
+		BaseTestClass.getRogersAddDataPage().clkPurchase();
+		baseTestClass.reporter.reportLogWithScreenshot("Purchase status");
 
 	}
 

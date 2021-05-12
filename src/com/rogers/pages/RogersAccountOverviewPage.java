@@ -375,7 +375,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//a[contains(@title,'Cancel the Apple Music subscription for') or contains(@title,'Annuler l’abonnement')]")
 	WebElement btnCancelSubscription;
 
-	@FindBy(xpath = "//h1[text()='Cancel subscription' or contains(text(),'Annuler l’abonnement')]")
+	@FindBy(xpath = "//h1[text()='Cancel subscription' or contains(text(),'Annuler l’abonnement') or contains(text(),'Cancel Apple') or contains(text(),'Annuler ')]")
 	WebElement headerCancelSubscription;
 
 	@FindBy(xpath = "//rss-subscriber-info")
@@ -388,10 +388,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//rss-cancel//ds-form-field/div/div[contains(@class,'select')]")
 	WebElement selectReasonForCancel;
 
-	@FindBy(xpath = "//*[contains(text(),'Confirm') or contains(text(),'Confirmer')]")
+	@FindBy(xpath = "//*[contains(text(),'Confirm') or contains(text(),'Continue') or contains(text(),'Confirmer') or contains(text(),'Continuer')]")
 	WebElement btnConfirm;
 
-	@FindBy(xpath = "//button[@title='Return to subscription management page' or @title='Revenir à la page de gestion des abonnements']")
+	@FindBy(xpath = "//*[text()='OK']")
 	WebElement btnOK;
 
 	@FindBy(xpath = "//p[text()='Subscription cancelled' or contains(text(),'Abonnement annul')]")
@@ -422,17 +422,17 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[text()=' Cancelled ' or contains(text(),' Service annul')]")
 	WebElement paneSMPCancelled;
 	
-	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[contains(text(),'Promotion ends') or contains(text(),'La promotion prend fin le')]")
+	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[contains(text(),'Promotion ends') or contains(text(),'Subscription ends') or contains(text(),'La promotion prend fin le') or contains(text(),'L’abonnement prend fin le')]")
 	WebElement lblSMPpromotionEnds;
 
 	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span/following-sibling::span[contains(text(),'This number is not on an eligible plan') or contains(text(),'Ce numéro n’est pas associé à un forfait admissible')]")
 	WebElement lblSMPpromotionInEligile;
 
-	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[contains(text(),'Promotion ended') or contains(text(),'La promotion prend fin le')]")
+	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[contains(text(),'Promotion ended') or contains(text(),'ended') or contains(text(),'La promotion prend fin le')]")
 	WebElement lblSMPpromotionEnded;
 
 
-	@FindBy(xpath = "//span[contains(text(),'Promotion started') or contains(text(),' La promotion a commencé')]")
+	@FindBy(xpath = "//span[contains(text(),'Promotion started') or contains(text(),'Paid subscription started') or contains(text(),' L’abonnement payant a commencé le') or contains(text(),' La promotion a commencé')]")
 	WebElement lblSMPpromotionStarted;
 
 	@FindBy(xpath = "//ds-checkbox")
@@ -441,13 +441,15 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//a[@title='Sign up for Apple Music' or contains(@title,'S’abonner à Apple Music')]")
 	WebElement btnSignUp;
 
-	@FindBy(xpath = "//h1[@class='signup-page-title']")
+	@FindAll({
+	@FindBy(xpath = "//h2[text()='Terms & Conditions' or text()='']"),
+	@FindBy(xpath = "//h1[@class='signup-page-title']")})
 	WebElement headerTnC;
 
 	@FindBy(xpath = "//ds-checkbox")
 	WebElement chkTnC;
 	
-	@FindBy(xpath = "//button[@title='Continue and activate this Apple Music subscription' or contains(@title,'Continuer et activer cet abonnement')]")
+	@FindBy(xpath = "//button[@title='Continue and activate this Apple Music subscription' or @title='Continue and start this Apple Music subscription' or contains(@title,'Continuer et activer cet abonnement')]")
 	WebElement btnSubscribeToSubsscription;
 
 	@FindBy(xpath = "//a[text()='Yes' or contains(text(),'Oui')]")

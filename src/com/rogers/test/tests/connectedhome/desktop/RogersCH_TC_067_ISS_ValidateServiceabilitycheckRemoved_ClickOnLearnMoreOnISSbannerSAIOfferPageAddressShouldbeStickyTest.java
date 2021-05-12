@@ -33,7 +33,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_067_ISS_ValidateServiceabilitycheckRemoved_ClickOnLearnMoreOnISSbannerSAIOfferPageAddressShouldbeStickyTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","SmartStreamCH"})
+    @Test(groups = {"RegressionCH","SmartStreamCH","DryRunCH"})
     public void checkServiceabilitycheckRemovedClickOnLearnMoreOnISSbannerSAIOfferPageAddresShouldbeSticky() {
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
         getRogersHomePage().clkEasyInternet();

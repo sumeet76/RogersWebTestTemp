@@ -28,7 +28,7 @@ public class RogersSS_TC_102_PACMAN_ValidateTheVAScancelFlowFreeTrialNSEInfinite
 	}
 	
 	
-	@Test(groups = {"RegressionSS","CancelSubscription"})
+	@Test(groups = {"RegressionSS","PACMAN"})
     public void validateSignInAndAccountOverview() {
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");

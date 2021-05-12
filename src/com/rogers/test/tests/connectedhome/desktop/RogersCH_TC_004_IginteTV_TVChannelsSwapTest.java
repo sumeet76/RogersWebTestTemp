@@ -4,11 +4,13 @@ import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
+import org.openqa.selenium.WebElement;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.List;
 
 
 /**
@@ -34,9 +36,8 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_004_IginteTV_TVChannelsSwapTest extends BaseTestClass {
 	
-	 @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
-	
-   public void checkSolarisTVSwapChannels() {
+    @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
+    public void checkSolarisTVSwapChannels() {
     reporter.reportLogWithScreenshot("Launched the Home Page");
     getRogersHomePage().clkSignIn();
     getRogersLoginPage().switchToSignInIFrame();
@@ -90,6 +91,44 @@ public class RogersCH_TC_004_IginteTV_TVChannelsSwapTest extends BaseTestClass {
          getRogersSolarisChannelsExchangePage().clkReturnToDashbaord();
          reporter.reportLogWithScreenshot("Tv Dashboard has launched");
      }
+
+    @Test(groups = {"SanityCH"})
+    public void checkSolarisTVSwapChannelsSanity() {
+        reporter.reportLogWithScreenshot("Launched the Home Page");
+        getRogersHomePage().clkSignIn();
+        getRogersLoginPage().switchToSignInIFrame();
+        reporter.reportLogWithScreenshot("Launched the SignIn popup");
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc04_07_SolarisTVAccount.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc04_07_SolarisTVAccount.getPassword());
+        reporter.reportLogWithScreenshot("Enter the account credentails");
+        getRogersLoginPage().clkSignInIFrame();
+        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        reporter.reportLogWithScreenshot("Skip popup");
+        getRogersLoginPage().clkSkipIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getBan());
+        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+        reporter.reportLogWithScreenshot("Launched the Account Page");
+        getRogersSolarisTVDashboardPage().clkTVBadge();
+        reporter.reportLogWithScreenshot("Launched the TV dash board");
+        getRogersSolarisTVDashboardPage().clkChangeFlexChannels();
+        reporter.reportLogWithScreenshot("TV channels pannel has displayed");
+        getRogersSolarisChannelsExchangePage().verifyExchangeChannelPage();
+        reporter.reportLogWithScreenshot("TV channels exchange page has launched");
+        getRogersSolarisChannelsExchangePage().verifyChannelsPannel();
+        reporter.reportLogWithScreenshot("TV channels pannel has displayed");
+        List<WebElement> availableChannels = getRogersSolarisChannelsExchangePage().uncheckTVChannels();
+        reporter.reportLogWithScreenshot("TV Channels are removed");
+        getRogersSolarisChannelsExchangePage().checkTVChannels(availableChannels);
+        reporter.reportLogWithScreenshot("TV Channels are added");
+        getRogersSolarisChannelsExchangePage().clkAddChannel();
+        reporter.reportLogWithScreenshot("Added the Swap-in Channel three");
+        getRogersSolarisChannelsExchangePage().clkConfirmSwap();
+        reporter.hardAssert(getRogersSolarisChannelsExchangePage().verifyExchangeSuccess(),"Swap Success","Swap failed");
+        reporter.reportLogWithScreenshot("Swap Success popup has launched");
+        getRogersSolarisChannelsExchangePage().clkReturnToDashbaord();
+        reporter.reportLogWithScreenshot("Tv Dashboard has launched");
+    }
 
 @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 //login flow

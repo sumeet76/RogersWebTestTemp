@@ -30,7 +30,7 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_056_Internet_SignedInWirelessBuyInternetSameAddressTest extends BaseTestClass {
+public class RogersCH_TC_062_Internet_SignedInWirelessBuyInternetSameAddressTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","saiCH"})
     public void checkSignedInWirelessBuyInternetSameAddressTest() {
