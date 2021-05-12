@@ -35,7 +35,8 @@ public class RogersCH_TC_072_SHM_AutomatePage_NavigatefromSubnav_ValidateAlltheS
     @Test(groups = {"RegressionCH","RhpAndRhmCH"})
     public void checkIssNacLearnPageToggleONTest() {
         getDriver().get(System.getProperty("QaUrl")+"/home-security/security-packages");
-
+        reporter.reportLogWithScreenshot("Launched the Home Page");
+        getRogersSecurityPackagesPage().clkHowToGetSecurityPackages();
     }
 
 
