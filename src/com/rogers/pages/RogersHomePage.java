@@ -482,7 +482,7 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public void clkSignOut() {
 		getReusableActionsInstance().getWhenVisible(btnIconAvatar,30).click();
-		getReusableActionsInstance().getWhenReady(lnkSignOut, 60).click();
+		getReusableActionsInstance().getWhenReady(lnkSignOut, 10).click();
 	}
 	
 	/**
@@ -651,7 +651,6 @@ public class RogersHomePage extends BasePageClass {
 		{
 		getReusableActionsInstance().waitForElementInvisibility(overlayHomePage,5);
 		}
-		getReusableActionsInstance().staticWait(10000);
 	getReusableActionsInstance().getWhenReady(btnServiceability, 30).click();
 	}
 
@@ -682,6 +681,8 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkServiceabilityMigration() {
+		//Migration flow loading for long to ger serviceability model
+		getReusableActionsInstance().staticWait(6000);
 		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam, 90);
 		getReusableActionsInstance().getWhenReady(btnServiceability, 30).click();
 	}
