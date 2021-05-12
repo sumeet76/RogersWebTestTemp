@@ -2656,7 +2656,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	public boolean isTotalRemainingDeviceFinancingBalanceDisplayed(String strValue) {
 		String value =getReusableActionsInstance().getWhenReady(modalTotalRemainingDeviceFinancingBalance).getText().trim();
 		value = value.replaceAll("\n","");
-		return (value.replaceAll("$","").replaceAll(",",".").trim().equals(strValue))
+		return (value.replaceAll("$","").replaceAll(",",".").trim().contains(strValue))
 				&& currencySymbolValidator(value);
 	}
 
@@ -2677,7 +2677,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	public boolean isRemainingDeviceFinancingBalanceDisplayed(String strValue) {
 		String value =getReusableActionsInstance().getWhenReady(modalRemainingDeviceFinancingBalance).getText().trim();
 		value = value.replaceAll("\n","");
-		return (value.replaceAll("$","").replaceAll(",",".").trim().equals(strValue))
+		return (value.replaceAll("$","").replaceAll(",",".").trim().contains(strValue))
 				&& currencySymbolValidator(value);
 
 	}
@@ -2700,7 +2700,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	public boolean isRemainingFinancedTaxesDisplayed(String strValue) {
 		String value =getReusableActionsInstance().getWhenReady(modalRemainingFinancedTaxes).getText().trim();
 		value = value.replaceAll("\n","");
-		return (value.replaceAll("$","").replaceAll(",",".").trim().equals(strValue))
+		return (value.replaceAll("$","").replaceAll(",",".").trim().contains(strValue))
 				&& currencySymbolValidator(value);
 	}
 
@@ -2721,7 +2721,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	public boolean isMonthlyFinancingAmountTotalDisplayed(String strValue) {
 		String value =getReusableActionsInstance().getWhenReady(modalMonthlyFinancingAmountTotal).getText().trim();
 		value = value.replaceAll("\n","");
-		return (value.replaceAll("$","").replaceAll(",",".").trim().equals(strValue))
+		return (value.replaceAll("$","").replaceAll(",",".").trim().contains(strValue))
 				&& currencySymbolValidator(value);
 	}
 
@@ -2742,7 +2742,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	public boolean isMonthlyFinancingAmountBaseDisplayed(String strValue) {
 		String value =getReusableActionsInstance().getWhenReady(modalMonthlyFinancingAmountBase).getText().trim();
 		value = value.replaceAll("\n","");
-		return (value.replaceAll("$","").replaceAll(",",".").trim().equals(strValue))
+		return (value.replaceAll("$","").replaceAll(",",".").trim().contains(strValue))
 				&& currencySymbolValidator(value);
 	}
 
@@ -2763,7 +2763,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	public boolean isMonthlyFinancingTaxesDisplayed(String strValue) {
 		String value =getReusableActionsInstance().getWhenReady(modalMonthlyFinancingTaxes).getText().trim();
 		value = value.replaceAll("\n","");
-		return (value.replaceAll("$","").replaceAll(",",".").trim().equals(strValue))
+		return (value.replaceAll("$","").replaceAll(",",".").trim().contains(strValue))
 				&& currencySymbolValidator(value);
 	}
 
