@@ -35,6 +35,7 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'AWSBYODUrl', test_awsBYODURL
 	systemProperty 'Browser', test_browser
 	systemProperty 'Language', test_language
+	systemProperty 'DbEnvUrl', test_DbEnvUrl
 	systemProperty 'SearchUrl', test_searchURL
 	systemProperty 'URIautoRegister', test_URIautoRegister
 	systemProperty 'URIEmailer', test_URIEmailer
@@ -70,6 +71,7 @@ task "localTest"(type: Test) {
 	systemProperty 'AWSBYODUrl', test_awsBYODURL
 	systemProperty 'Browser', test_browser
 	systemProperty 'Language', test_language
+	systemProperty 'DbEnvUrl', test_DbEnvUrl
 	systemProperty 'SearchUrl', test_searchURL
 	systemProperty 'URIautoRegister', test_URIautoRegister
 	systemProperty 'URIEmailer', test_URIEmailer

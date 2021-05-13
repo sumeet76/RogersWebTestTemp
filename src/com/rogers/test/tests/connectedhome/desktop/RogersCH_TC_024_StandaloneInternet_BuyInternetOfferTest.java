@@ -114,7 +114,7 @@ public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends Bas
          * DB Validations in the subscriber table
          */
 
-        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("dbEnvUrl"))
+        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
                 .executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from billing_account where BAN='" + ban + "'", false);
 
         reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
