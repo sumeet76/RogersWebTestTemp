@@ -42,6 +42,7 @@ pipeline {
         string(name: 'IndividualTests', defaultValue: "", description: "Individual tests to be passed as Test1 Test2 Test3 Test4 and so on ")
         string(name: 'PageLoadStrategy', defaultValue: "NORMAL", description: "Give the strategy as NORMAL , EAGER or NONE")
         string(name: 'QaUrl', defaultValue: "", description: "Test QA URL Link")
+        string(name: 'DbEnvUrl', defaultValue: "", description: "Database URL")
         string(name: 'SearchUrl', defaultValue: "", description: "Search URL Link")
         string(name: 'QaOVUrl', defaultValue: "", description: "QA OV URL Link")
         string(name: 'AWSBYODUrl', defaultValue: "", description: "BFA AWS BYOD URL")
