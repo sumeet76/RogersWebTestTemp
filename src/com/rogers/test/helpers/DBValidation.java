@@ -57,13 +57,13 @@ public class DBValidation extends BaseTestClass{
             Class.forName("oracle.jdbc.driver.OracleDriver");
             switch (dbEnv.toLowerCase()) {
                 case "sft04":
-                    connect = DriverManager.getConnection("jdbc:oracle:thin:@BHPDB473:1526:V21QA4",System.getenv("SFT04"),System.getenv("SFT04"));
+                    connect = DriverManager.getConnection("jdbc:oracle:thin:@BHPDB473:1526:V21QA4",System.getenv("SFT04"),System.getenv("SFT04"));//QA4APPBL19
                     break;
                 case "sft06":
-                    connect = DriverManager.getConnection("jdbc:oracle:thin:@BHPDB474:1526:V21QA6", System.getenv("SFT06"), System.getenv("SFT06"));
+                    connect = DriverManager.getConnection("jdbc:oracle:thin:@BHPDB474:1526:V21QA6", System.getenv("SFT06"), System.getenv("SFT06"));//QA6APPBL26
                     break;
                 case "sft02":
-                    connect = DriverManager.getConnection("jdbc:oracle:thin:@BHPDB471:1526:V21QA2", System.getenv("SFT02"), System.getenv("SFT02"));
+                    connect = DriverManager.getConnection("jdbc:oracle:thin:@BHPDB471:1526:V21QA2", "QA2APPBL02", "QA2APPBL02");//QA2APPBL02
                     break;
             }
             connect.setAutoCommit(false);
