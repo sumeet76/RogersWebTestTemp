@@ -109,6 +109,9 @@ pipeline {
                             if(!params.QaOVUrl.isEmpty()){
                                 urlLink = urlLink + "-Ptest_qaOVURL=${params.QaOVUrl}";
                             }
+                            if(!params.DbEnvUrl.isEmpty()){
+                                urlLink = urlLink + "-Ptest_DbEnvUrl=${params.DbEnvUrl}";
+                             }
                             if(!params.AWSUrl.isEmpty()){
                                 urlLink = urlLink + "-Ptest_awsURL=${params.AWSUrl}";
                             }
