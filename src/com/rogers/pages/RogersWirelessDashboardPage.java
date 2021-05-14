@@ -10,6 +10,7 @@ import java.time.format.DateTimeParseException;
 import java.util.*;
 import java.util.regex.Pattern;
 
+import com.rogers.test.helpers.DateHelpersFunctions;
 import org.apache.commons.validator.routines.BigDecimalValidator;
 import org.apache.commons.validator.routines.CurrencyValidator;
 import org.openqa.selenium.By;
@@ -2863,7 +2864,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	public boolean isYouWIllNeedToReturnYourDeviceByDateDisplayedCorrectly() {
 		String strDate = getReusableActionsInstance().getWhenReady(modalneedToReturnDeviceOn).getText().trim();
 		return (getReusableActionsInstance().isElementVisible(modalneedToReturnDeviceOn)
-				&& isValidDAte(strDate));
+				&& DateHelpersFunctions.isValidDAte(strDate));
 
 	}
 

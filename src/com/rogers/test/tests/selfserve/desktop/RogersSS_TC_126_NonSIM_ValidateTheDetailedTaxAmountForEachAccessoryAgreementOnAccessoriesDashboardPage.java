@@ -29,12 +29,12 @@ public class RogersSS_TC_126_NonSIM_ValidateTheDetailedTaxAmountForEachAccessory
 	}
 
 	@Test(groups = {"SanitySS","ProfileAndSettingsSS","CAMShiled"})
-	public void Validate_Rogers_UserWithBYODDevice_ON() {
+	public void validateTheDetailedTaxAmountForEachAccessoryAgreementOnAccessoriesDashboardPage() {
     	getRogersHomePage().clkSignIn();
-    	String strUsername = TestDataHandler.tc01FinanceNotPaidOff_ON.getUsername();
-    	String strPassword = TestDataHandler.tc01FinanceNotPaidOff_ON.getPassword();
-    	String strBan = TestDataHandler.tc01FinanceNotPaidOff_ON.getAccountDetails().getBan();
-    	String strEmail = TestDataHandler.tc01FinanceNotPaidOff_ON.getAccountDetails().getContactemail();
+    	String strUsername = TestDataHandler.tc126.getUsername();
+    	String strPassword = TestDataHandler.tc126.getPassword();
+    	String strBan = TestDataHandler.tc126.getAccountDetails().getBan();
+    	String strEmail = TestDataHandler.tc126.getAccountDetails().getContactemail();
     	strAltEmail = FormFiller.generateEmail();
 		getRogersLoginPage().switchToSignInIFrame();
 		getRogersLoginPage().setUsernameIFrame(strUsername);
@@ -48,13 +48,36 @@ public class RogersSS_TC_126_NonSIM_ValidateTheDetailedTaxAmountForEachAccessory
 
 		reporter.reportLogWithScreenshot("Account overveiew page");
 
+		//4. The accessories entry point widget should be displayed for the eligible CTN on AO page as per copy.
 		reporter.hardAssert(getRogersAccountOverviewPage().verifyFinancedAccessoriesIsDisplayed(),
 				"Financed Accessories Is visible",
 				"Financed Accessories is not visible");
 
 		getRogersAccountOverviewPage().clkFinancedAccessories();
 
+		//5. The user will be presented with the Non-Sim Accessory Dashboard
+		// (Accessories Images and description as expected) with the tax breakdown of the prices
+		// and CTA button to see more details.
 
+
+
+		/*
+
+
+		6. The user will be presented with a Modal that displays following Information about my tax breakdown along with other info
+		Header with last date of payment - 'Votre solde de financement sera de 0 $ le : [DATE]'
+		Start Date of Accessories Contract
+		Agreement Number
+		Total Financing Term
+		Monthly Instalment Amount
+		Monthly Finance Balance (PreTax)
+		Monthly Finance Tax (TaxOn)
+		Total Remaining Balance for Agreement
+		Remaning Finance Balance (Pre Tax)
+		Tax on Remaining Finance Balance (Tax On)
+		7. The modal should get disappear and the user should be displayed with Non SIM Dashboard
+		8. Financial info is verified against FE using V21 successfully.
+		 */
 
 
 		String strAccountNum = TestDataHandler.tc01FinanceNotPaidOff_ON.getAccountDetails().getCtn();
