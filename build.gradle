@@ -221,7 +221,7 @@ artifactory {
 			publishIvy = false
 		}
 	}
-	gitPullCheck()
+//	gitPullCheck()
 }
 
 artifactoryPublish {
