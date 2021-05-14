@@ -76,13 +76,15 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@class,'d-inline-block -secondary -large')]")
 	WebElement btnRemoveChannel;
 
-    @FindAll({
+/*    @FindAll({
 			@FindBy(xpath = "//button[contains(@class,'d-inline-block -secondary -large')] | " +
 					"//div[@class='exchange-channels__selected__desktop']//span[@id='ariaExchangeChannelsPage']//" +
 					"ancestor::a[@aria-describedby='ariaExchangeChannelsPage']"),
-			@FindBy(xpath = "//button[@ng-reflect-variant='secondary']/span/span")})
-	WebElement btnAddChannel;
+			@FindBy(xpath = "//button[contains(@class,'d-inline-block -secondary -large')]")})
+	WebElement btnAddChannel;*/
 
+	@FindBy(xpath = "//button[contains(@class,'d-inline-block -secondary -large')]")
+		WebElement btnAddChannel;
 	/**
 	 * Click the Change FlexChannels link on solaris TV dashboard page
 	 * @author chinnarao.vattam

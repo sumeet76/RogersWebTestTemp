@@ -41,6 +41,9 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath ="//input[@formcontrolname='contactNumber']")
 	WebElement txtContactNumber;
 
+	@FindBy(xpath ="//label[@for='contactNumber']/ancestor::span")
+	WebElement txtContactNumbersapn;
+
 	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
 	WebElement txtContainerMobileExistingCustomer;
 	
@@ -198,20 +201,20 @@ public class RogersTechInstallPage extends BasePageClass {
 	/**
 	 * Select slot from the available list of slots from installation page
 	 * @author chinnarao.vattam
-	 * @param slot which slot to be entered
 	 */
-	public void selectPreferredTimeSlot(String slot) {
+	public void selectPreferredTimeSlot() {
 		getReusableActionsInstance().waitForElementVisibility(selPreferredTimeSlot,30);
+		getReusableActionsInstance().getWhenReady(selPreferredTimeSlot,20).click();
 		getReusableActionsInstance().selectWhenReady(selPreferredTimeSlot,1,10);
 	}
 	
 	/**
 	 * Select slot from the available list of slots from installation page
 	 * @author chinnarao.vattam
-	 * @param slot which slot to be entered
 	 */
-	public void selectBackupTimeSlot(String slot) {
+	public void selectBackupTimeSlot() {
 		getReusableActionsInstance().waitForElementVisibility(selBackupTimeSlot,30);
+		getReusableActionsInstance().getWhenReady(selPreferredTimeSlot,20).click();
 		getReusableActionsInstance().selectWhenReady(selBackupTimeSlot,1,20);
 
 	}
@@ -403,9 +406,12 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void setContactNumber() {
+		getReusableActionsInstance().staticWait(5000);
 		String strPhoneNumber = FormFiller.generatePhoneNumber();
-		getReusableActionsInstance().waitForElementVisibility(txtContainerContactNumber, 20);
+		getReusableActionsInstance().waitForElementVisibility(txtContainerContactNumber, 90);
 		getReusableActionsInstance().getWhenReady(txtContainerContactNumber, 20).click();
+		getReusableActionsInstance().getWhenReady(txtContactNumber, 20);
+		getReusableActionsInstance().getWhenReady(txtContactNumber, 20).click();
 		getReusableActionsInstance().getWhenReady(txtContactNumber, 20).clear();
 		getReusableActionsInstance().getWhenReady(txtContactNumber, 30).sendKeys(strPhoneNumber);
 	}
