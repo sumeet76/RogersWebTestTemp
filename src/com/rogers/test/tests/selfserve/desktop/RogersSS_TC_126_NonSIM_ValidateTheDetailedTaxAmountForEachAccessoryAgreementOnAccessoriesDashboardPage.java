@@ -59,7 +59,9 @@ public class RogersSS_TC_126_NonSIM_ValidateTheDetailedTaxAmountForEachAccessory
 		// (Accessories Images and description as expected) with the tax breakdown of the prices
 		// and CTA button to see more details.
 
-
+		reporter.hardAssert(getRogersAccountOverviewPage().verifyFinancedAccessoriesIsDisplayed(),
+				"the Non-Sim Accessory Dashboard is diaplayed",
+				"the Non-Sim Accessory Dashboard is not visible");
 
 		/*
 

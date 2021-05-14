@@ -2,12 +2,16 @@ package com.rogers.pages;
 
 import com.rogers.pages.base.BasePageClass;
 import com.rogers.test.helpers.CurrencyHelpers;
+import com.rogers.test.helpers.DateHelpersFunctions;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 /**
- * @author rajesh.varalli1
+ * @author Mirza.Kamran
  *
  */
 public class RogersFinanceAccessoriesPage extends BasePageClass {
@@ -50,6 +54,9 @@ public class RogersFinanceAccessoriesPage extends BasePageClass {
 			@FindBy(xpath = "//span[contains(text(),'Financing term:') or contains(text(),'Durée du financement :')]")
 			WebElement lblFinTerm;
 
+			@FindBy(xpath = "//span[contains(text(),' Monthly financing payment: ') or contains(text(),' Paiement mensuel pour le financement : ')]/following-sibling::ds-price")
+			WebElement lblMnthlyFinPayments;
+
 			@FindBy(xpath = "//span[contains(text(),'Balance remaining:') or contains(text(),'Paiement mensuel pour le financement :')]/following-sibling::ds-price")
 			WebElement lblBalanceRemaining;
 
@@ -58,13 +65,13 @@ public class RogersFinanceAccessoriesPage extends BasePageClass {
 
 
 			@FindBy(xpath = "//div[contains(@class,'accessory-item')]")
-			WebElement paneAccecoryItem;
+			List<WebElement> paneAccecoryItem;
 
 			@FindBy(xpath = "//div[contains(@class,'accessory-item')]/img")
-			WebElement paneAccessoryImage;
+			List<WebElement> paneAccessoryImage;
 
 			@FindBy(xpath = "//div[contains(@class,'accessory-item')]/div")
-			WebElement getPaneAccecoryDetails;
+			List<WebElement> paneAccecoryDetails;
 
 
 			@FindBy(xpath = "//h2[contains(text(),'Your financing balance will be $0 on:') or contains(text(),'Votre solde de financement sera de 0 $ le :')]")
@@ -97,6 +104,12 @@ public class RogersFinanceAccessoriesPage extends BasePageClass {
 			@FindBy(xpath = "//rss-accessories-details-modal//span[text()='Remaining financed taxes: ' or text()='Taxes restantes du financement : ']/following-sibling::ds-price")
 			WebElement modalRemFinTax;
 
+	@FindBy(xpath = "//button[@title='Close']")
+	WebElement btnCloseModal;
+
+
+
+
 			public boolean isAccessoryPageOpen(){
 				return getReusableActionsInstance().isElementVisible(headerFinancedAccessories);
 
@@ -106,84 +119,186 @@ public class RogersFinanceAccessoriesPage extends BasePageClass {
 			public boolean validateTotalMonthlyFinancingPayment(){
 				String strValue =getReusableActionsInstance().getWhenReady(lblTotalMonthlyFinPayment).getText().trim();
 				strValue = CurrencyHelpers.removeLineBreaksFromString(strValue);
-				strValue
-				return ;
+				if(System.getProperty("test_language")=="en")
+				{
+					strValue = strValue.split("/mo")[0];
+				}else if(System.getProperty("test_language")=="fr"){
+					strValue = strValue.split("/mois")[0];
+				}
+
+				return CurrencyHelpers.validateCurrency(strValue);
 			}
 
 	public boolean validateMonthlyFinancingPayment(){
-		return false;
+		String strValue =getReusableActionsInstance().getWhenReady(lblMonthlyFinPayment).getText().trim();
+		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue);
+		if(System.getProperty("test_language")=="en")
+		{
+			strValue = strValue.split("/mo")[0];
+		}else if(System.getProperty("test_language")=="fr"){
+			strValue = strValue.split("/mois")[0];
+		}
+
+		return CurrencyHelpers.validateCurrency(strValue);
 	}
 
 	public boolean validateMonthlyFinancedTaxes(){
-		return false;
+		String strValue =getReusableActionsInstance().getWhenReady(lblMonthlyFinTaxes).getText().trim();
+		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue);
+		if(System.getProperty("test_language")=="en")
+		{
+			strValue = strValue.split("/mo")[0];
+		}else if(System.getProperty("test_language")=="fr"){
+			strValue = strValue.split("/mois")[0];
+		}
+
+		return CurrencyHelpers.validateCurrency(strValue);
 	}
 
 	public boolean validateTotalRemainingFinancingBalance(){
-		return false;
+		String strValue =getReusableActionsInstance().getWhenReady(lblTotalRemainingFinBalance).getText().trim();
+		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue);
+		return CurrencyHelpers.validateCurrency(strValue);
 	}
 
 	public boolean validateRemainingFinancingBalance(){
-		return false;
+		String strValue =getReusableActionsInstance().getWhenReady(lblRemainingFinBalance).getText().trim();
+		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue);
+		return CurrencyHelpers.validateCurrency(strValue);
 	}
 
 	public boolean validateRemainingFinancedTaxes(){
-		return false;
+		String strValue =getReusableActionsInstance().getWhenReady(lblRemainingFinTaxes).getText().trim();
+		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue);
+		return CurrencyHelpers.validateCurrency(strValue);
 	}
 
 
 	public boolean validateFinancingEnding(){
-		return false;
+		String strValue =getReusableActionsInstance().getWhenReady(lblFinEnding).getText().trim();
+		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue).split(":")[1].trim();
+		return DateHelpersFunctions.isValidDAte(strValue);
 	}
 	public boolean validateStarted(){
-		return false;
+		String strValue =getReusableActionsInstance().getWhenReady(lblStarted).getText().trim();
+		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue).split(":")[1].trim();
+		return DateHelpersFunctions.isValidDAte(strValue);
 	}
 	public boolean validateAgreementID(){
-		return false;
+		String strValue =getReusableActionsInstance().getWhenReady(lblAgreementID).getText().trim();
+		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue).split(":")[1].trim();
+		return NumberUtils.isDigits(strValue);
 	}
 	public boolean validateFinancingTerm(){
-		return false;
-	}
-	public boolean validateMonthlyFinancingPaymentOfAnAgreement(){
-		return false;
-	}
-	public boolean validateBalanceRemaining(){
-		return false;
+		return getReusableActionsInstance().isElementVisible(lblFinTerm);
 	}
 
+
+	public boolean validateMonthlyFinancingPaymentOfAnAgreement(){
+		String strValue =getReusableActionsInstance().getWhenReady(lblMnthlyFinPayments).getText().trim();
+		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue);
+		if(System.getProperty("test_language")=="en")
+		{
+			strValue = strValue.split("/mo")[0];
+		}else if(System.getProperty("test_language")=="fr"){
+			strValue = strValue.split("/mois")[0];
+		}
+
+		return CurrencyHelpers.validateCurrency(strValue);
+	}
+
+	public boolean validateBalanceRemaining(){
+		String strValue =getReusableActionsInstance().getWhenReady(lblBalanceRemaining).getText().trim();
+		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue);
+		return CurrencyHelpers.validateCurrency(strValue);
+	}
+
+	public void clkBtnSeeMoreDetails(){
+
+				getReusableActionsInstance().getWhenReady(btnSeeMoreDetails).click();
+	}
 
 	public boolean validateYourFinancingBalanceWillBeZeroOn(){
-		return false;
-	}
-	public boolean clickCloseModal(){
-		return false;
-	}
-	public boolean validateAccessoryPurchaseDate(){
-		return false;
-	}
-	public boolean validateAgreementIDOndetailsModal(){
-		return false;
-	}
-	public boolean validateFinancingTermOndetailsModal(){
-		return false;
-	}
-	public boolean validateTotalMonthlyFinancingPaymentOndetailsModal(){
-		return false;
-	}
-	public boolean validateMonthlyFinancingPaymentOndetailsModal(){
-		return false;
-	}
-	public boolean validateMonthlyFinancedTaxesOndetailsModal(){
-		return false;
-	}
-	public boolean validateTotalRemainingFinancingBalanceOndetailsModal(){
-		return false;
-	}
-	public boolean validateRemainingFinancingBalanceOndetailsModal(){
-		return false;
-	}
-	public boolean validateRemainingFinancedTaxesOndetailsModal(){
-		return false;
+		String strValue =getReusableActionsInstance().getWhenReady(modalHeaderYourFinBalanceWillBeZeroOn).getText().trim();
+		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue).split(":")[1].trim();
+		return DateHelpersFunctions.isValidDAte(strValue);
 	}
 
+	public boolean validateAccessoryPurchaseDate(){
+		String strValue =getReusableActionsInstance().getWhenReady(modalAccessoryPurchaseDate).getText().trim();
+		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue).split(":")[1].trim();
+		return DateHelpersFunctions.isValidDAte(strValue);
+	}
+	public boolean validateAgreementIDOndetailsModal(){
+		String strValue =getReusableActionsInstance().getWhenReady(modalAgreementID).getText().trim();
+		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue).split(":")[1].trim();
+		return NumberUtils.isDigits(strValue);
+	}
+	public boolean validateFinancingTermOndetailsModal(){
+		return getReusableActionsInstance().isElementVisible(lblFinTerm);
+	}
+	public boolean validateTotalMonthlyFinancingPaymentOndetailsModal(){
+		String strValue =getReusableActionsInstance().getWhenReady(modalTotalMonthlyFin).getText().trim();
+		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue);
+		if(System.getProperty("test_language")=="en")
+		{
+			strValue = strValue.split("/mo")[0];
+		}else if(System.getProperty("test_language")=="fr"){
+			strValue = strValue.split("/mois")[0];
+		}
+
+		return CurrencyHelpers.validateCurrency(strValue);
+	}
+	public boolean validateMonthlyFinancingPaymentOndetailsModal(){
+		String strValue =getReusableActionsInstance().getWhenReady(modalMonthlyFinPayment).getText().trim();
+		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue);
+		if(System.getProperty("test_language")=="en")
+		{
+			strValue = strValue.split("/mo")[0];
+		}else if(System.getProperty("test_language")=="fr"){
+			strValue = strValue.split("/mois")[0];
+		}
+
+		return CurrencyHelpers.validateCurrency(strValue);
+	}
+	public boolean validateMonthlyFinancedTaxesOndetailsModal(){
+		String strValue =getReusableActionsInstance().getWhenReady(modalFinTaxes).getText().trim();
+		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue);
+		if(System.getProperty("test_language")=="en")
+		{
+			strValue = strValue.split("/mo")[0];
+		}else if(System.getProperty("test_language")=="fr"){
+			strValue = strValue.split("/mois")[0];
+		}
+
+		return CurrencyHelpers.validateCurrency(strValue);
+	}
+	public boolean validateTotalRemainingFinancingBalanceOndetailsModal(){
+		String strValue =getReusableActionsInstance().getWhenReady(modalTotalRemFinBal).getText().trim();
+		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue);
+		return CurrencyHelpers.validateCurrency(strValue);
+	}
+	public boolean validateRemainingFinancingBalanceOndetailsModal(){
+		String strValue =getReusableActionsInstance().getWhenReady(modalRemFinBal).getText().trim();
+		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue);
+		return CurrencyHelpers.validateCurrency(strValue);
+	}
+	public boolean validateRemainingFinancedTaxesOndetailsModal(){
+		String strValue =getReusableActionsInstance().getWhenReady(modalRemFinTax).getText().trim();
+		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue);
+		return CurrencyHelpers.validateCurrency(strValue);
+	}
+
+	public void clickCLoseModal(){
+		getReusableActionsInstance().getWhenReady(btnCloseModal).click();
+	}
+
+	public boolean validateAccessoryContentAndImageDisplayedCorrectly(){
+		int countOfAccessories = paneAccecoryItem.size();
+		if(countOfAccessories== paneAccessoryImage.size()
+		&& countOfAccessories== paneAccecoryDetails.size()){ return true }
+		else {return false};
+
+	}
 
 }
