@@ -70,6 +70,14 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 
 	@FindBy(xpath="//div[@class='contact-information__content']/p[contains(text(),'BAN')]")
 	WebElement txtBAN;
+
+	@FindBy(xpath="//div[@class='my-12 ng-star-inserted']/p[@class='text-bold text-title-6']/..")
+	WebElement appointmentCompleteAddress;
+	@FindBy(xpath="(//div[contains(@class,'totalRow d-flex align-items-center')])[1]")
+	WebElement monthlyFeeAfterTax;
+	@FindBy(xpath="(//div[contains(@class,'dsa-orderTable__totalRow d-flex align-items-center')])[2]")
+	WebElement oneTimeFeeAfterTax;
+
 	/**
 	 * Verify the the yellow banner with order success information
 	 * @return true if the page display the yellow banner with order success information , else false
@@ -167,4 +175,35 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 		String[] split = nameText.split(" ");
 		return split[1];
 	}
+
+	/**
+	 * This method checks for appointment address in confirmation page
+	 * @return String value of Appointment address
+	 * @author praveen.kumar7
+	 */
+	public String getAppointmentAddressText() {
+		getReusableActionsInstance().scrollToElement(appointmentCompleteAddress);
+		return getReusableActionsInstance().getWhenReady(appointmentCompleteAddress,10).getText().trim().replaceAll("\\n", " ");
+	}
+
+	/**
+	 * This method looks for monthly fee after tax in confirmation page
+	 * @return String value of Monthly fee after tax
+	 * @author praveen.kumar7
+	 */
+	public String getMonthlyFeeAfterTax() {
+		getReusableActionsInstance().scrollToElement(monthlyFeeAfterTax);
+		return monthlyFeeAfterTax.getText().replaceAll("\\n","");
+	}
+
+	/**
+	 * This method looks for one time fee after tax in confirmation page
+	 * @return String value of one time fee after tax
+	 * @author praveen.kumar7
+	 */
+	public String getOneTimeFeeAfterTax() {
+		getReusableActionsInstance().scrollToElement(oneTimeFeeAfterTax);
+		return oneTimeFeeAfterTax.getText().replaceAll("\\n","");
+	}
+
 }
