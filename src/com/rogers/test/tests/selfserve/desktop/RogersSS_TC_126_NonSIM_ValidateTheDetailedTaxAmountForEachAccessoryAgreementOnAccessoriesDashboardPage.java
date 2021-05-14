@@ -28,7 +28,7 @@ public class RogersSS_TC_126_NonSIM_ValidateTheDetailedTaxAmountForEachAccessory
 		closeSession();
 	}
 
-	@Test(groups = {"SanitySS","ProfileAndSettingsSS"})
+	@Test(groups = {"SanitySS","ProfileAndSettingsSS","CAMShiled"})
 	public void Validate_Rogers_UserWithBYODDevice_ON() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc01FinanceNotPaidOff_ON.getUsername();
@@ -53,8 +53,6 @@ public class RogersSS_TC_126_NonSIM_ValidateTheDetailedTaxAmountForEachAccessory
 				"Financed Accessories is not visible");
 
 		getRogersAccountOverviewPage().clkFinancedAccessories();
-
-
 
 
 

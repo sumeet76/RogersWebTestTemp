@@ -28,7 +28,7 @@ public class RogersSS_TC_125_Rogers_Desktop_Edge_FR_Validate_Rogers_UserWithBYOD
 		closeSession();
 	}
 	
-	@Test(groups = {"SanitySS","ProfileAndSettingsSS"})
+	@Test(groups = {"SanitySS","ProfileAndSettingsSS","CAMShiled"})
 	public void Validate_Rogers_UserWithBYODDevice_ON() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc01FinanceNotPaidOff_ON.getUsername();
