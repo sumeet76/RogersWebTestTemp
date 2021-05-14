@@ -61,6 +61,9 @@ public class RogersChoosePhonePage extends BasePageClass {
 	
 	@FindBy(xpath = "//span[text()='$0' or text()='0']/ancestor::section[@class='phoneModel']//div[@res='_add']")
 	List<WebElement> btnZeroUpfrontDeviceAdd;
+
+	@FindBy(xpath = "//h3[contains(text(),'Bring Your Own Device')]//..//span")
+	WebElement btnBringYourOwnDeviceViewDetails;
 	
 	@FindBy(xpath = "//div[@class='choose-ctn-modal']")
 	WebElement lblChooseALine;
@@ -388,7 +391,11 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 * @author saurav.goyal
 	 */
 	public void clickDeviceTileCTAButton(String deviceName) {
-		getReusableActionsInstance().clickWhenVisible(By.xpath(createXpathForCTAButton(deviceName)), 30);
+		if (deviceName.equalsIgnoreCase("Bring Your Own Device")) {
+			getReusableActionsInstance().clickWhenVisible(btnBringYourOwnDeviceViewDetails, 15);
+		} else {
+			getReusableActionsInstance().clickWhenVisible(By.xpath(createXpathForCTAButton(deviceName)), 30);
+		}
 	}
 
 	/**
@@ -398,7 +405,11 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 * @author saurav.goyal
 	 */
 	public boolean verifyDeviceTileCTAButton(String deviceName) {
-		return getReusableActionsInstance().isElementVisible(By.xpath(createXpathForCTAButton(deviceName)), 60);
+		if (deviceName.equalsIgnoreCase("Bring Your Own Device")) {
+			return getReusableActionsInstance().isElementVisible(btnBringYourOwnDeviceViewDetails,15);
+		} else {
+			return getReusableActionsInstance().isElementVisible(By.xpath(createXpathForCTAButton(deviceName)), 60);
+		}
 	}
 
 	/**

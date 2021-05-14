@@ -113,6 +113,7 @@ public class TestDataHandler {
 	public static RedesignRpotgData tc04NACTermBopis;
 	public static RedesignRpotgData tc05NACByodSS;
 	public static RedesignRpotgData tc06NACByodTermBopis;
+	public static RedesignRpotgData buyFlowsOVtestCase14;
 	public static AALData tc07AAL;
 	public static PPCData tc08PPC;
 	public static HUPData tc09HupPpcPotgSharedML;
@@ -139,6 +140,8 @@ public class TestDataHandler {
 	public static AALOVData buyFlowsOVtestCase08;
 	public static AALOVData buyFlowsOVtestCase09;
 	public static AALOVData buyFlowsOVtestCase10;
+	public static AALOVData buyFlowsOVtestCase11;
+	public static AALOVData buyFlowsOVtestCase12;
 	public static SauceSettings sauceSettings;
 	public static AccountData igniteTVParentalcontrols;
 	public static AccountData solarisAccount;
@@ -411,6 +414,9 @@ public class TestDataHandler {
 		buyFlowsOVtestCase08 = YamlHandler.getAALdataOneView("tc08OVAALSinglelineBopisShippingAccount");
 		buyFlowsOVtestCase09 = YamlHandler.getAALdataOneView("tc09OVAALSinglelinePOTGShippingAccount");
 		buyFlowsOVtestCase10 = YamlHandler.getAALdataOneView("tc10OVAALNonShareNoTermQCStandardShippingAccount");
+		buyFlowsOVtestCase11 = YamlHandler.getAALdataOneView("tc11OVAALTabletShareTermStandardShippingAccount");
+		buyFlowsOVtestCase12 = YamlHandler.getAALdataOneView("tc12OVAALBYODBopisShippingAccount");
+		buyFlowsOVtestCase14 = YamlHandler.getRedesignNACData("tc14OVNAC");
 	}
 	
 	private static void chOneViewDataInit() throws FileNotFoundException {

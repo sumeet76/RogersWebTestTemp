@@ -285,10 +285,11 @@ public class RogersOVPlanConfigPage extends BasePageClass {
         int stepper = 1;
         String xpathDcDoTo = createXpathWithInputData(deviceCostIndex, stepper);
         if (Integer.parseInt(deviceCostIndex) == 0) {
+            getReusableActionsInstance().staticWait(3000);
             getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton, 30);
         } else {
             getReusableActionsInstance().clickWhenVisible(By.xpath(xpathDcDoTo), 60);
-            getReusableActionsInstance().staticWait(5000);
+            getReusableActionsInstance().staticWait(3000);
             getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton, 30);
         }
     }
@@ -828,7 +829,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     public void enterFirstName() {
         String strFirstName = FormFiller.generateRandomName();
         getReusableActionsInstance().getWhenReady(inputFirstNameDiv, 30).click();
-        getReusableActionsInstance().getWhenReady(inputFirstName, 3).sendKeys(strFirstName);
+        getReusableActionsInstance().getWhenReady(inputFirstName, 30).sendKeys(strFirstName);
     }
 
     /**
@@ -836,9 +837,10 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * @author Saurav.Goyal
      */
     public void enterSecondName() {
+        getReusableActionsInstance().waitForElementVisibility(inputLastNameDiv, 5);
         String strLastName = FormFiller.generateRandomName();
         getReusableActionsInstance().getWhenReady(inputLastNameDiv, 30).click();
-        getReusableActionsInstance().getWhenReady(inputLastName, 3).sendKeys(strLastName);
+        getReusableActionsInstance().getWhenReady(inputLastName, 30).sendKeys(strLastName);
     }
 
     /**

@@ -1136,7 +1136,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
     public void clksubmitBtnCheckoutPage(){
 		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().waitForElementTobeClickable(submitBtnCheckoutPage,30);
+		getReusableActionsInstance().waitForElementTobeClickable(submitBtnCheckoutPage,50);
 		getReusableActionsInstance().scrollToElement(submitBtnCheckoutPage);
 		getReusableActionsInstance().getWhenReady(submitBtnCheckoutPage,30);
 		getReusableActionsInstance().executeJavaScriptClick(submitBtnCheckoutPage);

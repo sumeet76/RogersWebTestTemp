@@ -797,6 +797,33 @@ public class BaseTestClass {
     }
 
     /**
+     * To start a session using given url, browser, language and test case group name.
+     *
+     * @param strUrl                string of test url
+     * @param strBrowser            string of browser name
+     * @param strLanguage           string of language to use
+     * @param strGroupName          string of group name of the test case
+     * @param currentTestMethodName
+     * @throws ClientProtocolException org.apache.http.client.ClientProtocolException, Signals an error in the HTTP protocol.
+     * @throws IOException             java.io.IOException, Signals that an I/O exception of some sort has occurred, produced by failed or interrupted I/O operations.
+     */
+    public void startOVNACSession(String strUrl, String strBrowser, String strLanguage, String strGroupName, String strContactID, String strLoginID, String strLanID, Method currentTestMethodName) throws ClientProtocolException, IOException {
+        RunParameters = getExecutionParameters(strBrowser, strLanguage);
+        String browser = RunParameters.get("Browser").toLowerCase();
+        String language = RunParameters.get("Language").toLowerCase();
+        if (browser.contains("sauce")) {
+            sauceParameters = initializeSauceParamsMap(browser);
+        }
+        webDriverThreadLocal.set(browserdriver.driverInit(browser, sauceParameters, currentTestMethodName, strGroupName));
+        System.out.println(strUrl + "----------------------------------------------------------------------------");
+        captcha_bypass_handlers = new CaptchaBypassHandlers(getDriver());
+        captcha_bypass_handlers.chOnewviewNACFlows(strUrl, strLoginID, strLanID, language, browser, currentTestMethodName, strContactID);
+        setImplicitWait(getDriver(), 10);
+        init(strGroupName);
+    }
+
+
+    /**
      * To initiate the page objects based on test case group, will read group name from xml file.
      *
      * @param strGroupName string of group name.

@@ -57,7 +57,7 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	WebElement rdbtnEmail;
 
 	@FindAll({
-			@FindBy(xpath = "//h1[contains(@id,'bfa-page-title')]"),
+			@FindBy(xpath = "//h1[contains(text(),'One-time payment')]"),
 			@FindBy(xpath = "//span[@checkout-res='checkout_step_pay']")
 	})
 	WebElement lblPaymentStep;

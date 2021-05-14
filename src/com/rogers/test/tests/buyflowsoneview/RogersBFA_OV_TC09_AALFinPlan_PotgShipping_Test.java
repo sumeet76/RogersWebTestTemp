@@ -20,7 +20,7 @@ import java.lang.reflect.Method;
 public class RogersBFA_OV_TC09_AALFinPlan_PotgShipping_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","RegressionOVBFA","SanityBFA","HupOvBFA"})
-	public void aALSingleLineShareTermBopisShippingFlow() {
+	public void aALSingleLineFinPlanPOTGShippingFlow() {
 		reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
 		reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");
 		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
@@ -64,7 +64,7 @@ public class RogersBFA_OV_TC09_AALFinPlan_PotgShipping_Test extends BaseTestClas
 		reporter.hardAssert(getRogersOVPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersOVPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.buyFlowsOVtestCase09.getTalkOptionIndex())),
 				"Talk option selected and Addons page in expanded state","Addons page not in expanded state");
 		getRogersOVPlanConfigPage().clickPreCartAddonsContinueButton();
-		getRogersOVPlanConfigPage().clkContinueCallerID();
+		//getRogersOVPlanConfigPage().clkContinueCallerID();
 		//String monthlyFeesAmountWithTax = getRogersOVPlanConfigPage().getMonthlyFeesAmount();
 		//String oneTimeFeesAmountWithTax = getRogersOVPlanConfigPage().getOneTimeFeesAmount();
 		//reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees " + monthlyFeesAmountWithTax + "2. oneTimeFee " + oneTimeFeesAmountWithTax);
