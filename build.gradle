@@ -177,18 +177,18 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 	from javadoc.destinationDir
 }
 
-def gitPullCheck(){
-	System.out.println("******************GIT PULL CHECK**************")
-	def gitCommitCount =  'git rev-list HEAD..origin/develop --count'.execute().getText()
-	def count = Integer.parseInt(gitCommitCount.trim())
-	if(count>0){
-		print " ************************* Your current branch is "+ count +" commits behind from the develop branch and Pull is needed *************************\n"
-	} else if (count==0){
-		print "************************* Your current branch is up to date with develop and no pull request is required at present*************************\n"
-	} else {
-		print " ************************* Your current branch is "+ -count +" commits ahead of the develop branch and Push is needed *************************\n"
-	}
-}
+//def gitPullCheck(){
+//	System.out.println("******************GIT PULL CHECK**************")
+//	def gitCommitCount =  'git rev-list HEAD..origin/develop --count'.execute().getText()
+//	def count = Integer.parseInt(gitCommitCount.trim())
+//	if(count>0){
+//		print " ************************* Your current branch is "+ count +" commits behind from the develop branch and Pull is needed *************************\n"
+//	} else if (count==0){
+//		print "************************* Your current branch is up to date with develop and no pull request is required at present*************************\n"
+//	} else {
+//		print " ************************* Your current branch is "+ -count +" commits ahead of the develop branch and Push is needed *************************\n"
+//	}
+//}
 
 artifacts {
 	published sourceJar
