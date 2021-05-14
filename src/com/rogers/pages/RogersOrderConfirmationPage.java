@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-import java.util.List;
 
 import com.rogers.pages.base.BasePageClass;
 
@@ -36,7 +35,6 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	//ins[@translate='global.message.orderConfirmationThanksV2']
 
 	@FindAll({
-		@FindBy(xpath = "//p[contains(text(),'Thank you')]"),
 		@FindBy(xpath = "//span[@class='thank-you']"),
 		@FindBy(xpath = "//span[@class='UConfirmationHeading']"),
 		@FindBy(xpath = "//p[@class='text-body mb-40 ng-star-inserted']")
@@ -44,7 +42,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	WebElement lblThankYou;
 
 	@FindAll({
-		@FindBy(xpath = "//h1[@id='bfa-page-title'][contains(text(),'Confirmation')]"),
+		@FindBy(xpath = "//h1[@id='bfa-page-title']"),
 		@FindBy(xpath = "//span[@checkout-res='checkout_order_confirmation']")
 	})
 	WebElement lblOrderConfirmation;
@@ -70,40 +68,8 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	})
 	WebElement lblOrderSummaryTotal;
 
-	@FindBy(xpath = "//div[contains(@class,'dsa-orderTable__priceRows')]")
-	List<WebElement> cartSummarySection;
-
-	@FindAll({
-			@FindBy(xpath = "//div[contains(@class,'my-12 ng-star-inserted')]"),
-			@FindBy(xpath = "//div[contains(@class,'col-xs-5 ng-star-inserted')]")
-	})
-	List<WebElement> bopisContent;
-
-	@FindBy(xpath="//h4[@data-test='rpotgTitle']")
-	WebElement rpotgTitle;
-
-	@FindBy(xpath="//h5[contains(@class,'text-title-5')]")
-	WebElement appointmentDetailsTitle;
-
-	@FindBy(xpath="//p[contains(@class,'text-bold text-title')][contains(text(),'Appointment date') or contains(text(),'Date du rendez-vous')]")
-	WebElement appointmentDateTitle;
-
-	@FindBy(xpath="//p[contains(@class,'text-bold text-title')][contains(text(),'Appointment address') or contains(text(),'Adresse où le rendez-vous se tiendra')]")
-	WebElement appointmentAddressTitle;
-
-	@FindBy(xpath="//img[@alt='largeImage_1']")
-	WebElement deviceImage;
-
-	@FindBy(xpath="//div[@class='my-12 ng-star-inserted']/p[@class='text-bold text-title-6']/..")
-	WebElement appointmentCompleteAddress;
-
-	@FindBy(xpath="(//div[contains(@class,'totalRow d-flex align-items-center')])[1]")
-	WebElement monthlyFeeAfterTax;
-
-	@FindBy(xpath="(//div[contains(@class,'dsa-orderTable__totalRow d-flex align-items-center')])[2]")
-	WebElement oneTimeFeeAfterTax;
-	
-	
+	@FindBy(xpath="//div[@class='contact-information__content']/p[contains(text(),'BAN')]")
+	WebElement txtBAN;
 	/**
 	 * Verify the the yellow banner with order success information
 	 * @return true if the page display the yellow banner with order success information , else false
@@ -167,28 +133,11 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyThankYouDisplayed() {
-		getReusableActionsInstance().waitForAllElementsVisible(cartSummarySection,60);
+		getReusableActionsInstance().waitForElementVisibility(lblOrderSummaryTotal, 60);
 		if(lblThankYou.isDisplayed()) {
 			return getReusableActionsInstance().isElementVisible(lblThankYou,60);
 		}
 		return false;
-	}
-
-	/**
-	 * This method verifies if BOPIS contents are displayed in order confirmation page
-	 * @return a boolean true if BOPIS contents are displayed else false
-	 * @author praveen.kumar7
-	 */
-	public boolean verifyBopisContentDisplayed() {
-		boolean isElementPresent = true;
-		for(WebElement element : bopisContent) {
-			isElementPresent = getReusableActionsInstance().isElementVisible(element, 40);
-			if(!isElementPresent) {
-				return false;
-			}
-		}
-		getReusableActionsInstance().scrollToElement(bopisContent.get(0));
-		return true;
 	}
 	
 	/**
@@ -210,79 +159,12 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	}
 
 	/**
-	 * verifies RPOTG title in confirmation page
-	 * @return true if RPOTG title is present; else false
-	 * @author praveen.kumar7
+	 * get the BAN from order confirmation page
 	 */
-	public boolean verifyRpotgTitle() {
-		getReusableActionsInstance().staticWait(1000);
-		return getReusableActionsInstance().isElementVisible(rpotgTitle,5);
-	}
 
-	/**
-	 * verifies if AppointmentDetails Title is present in confirmation page
-	 * @return true if AppointmentDetails title is present; else false
-	 * @author praveen.kumar7
-	 */
-	public boolean verifyAppointmentDetailsTitle() {
-		return getReusableActionsInstance().isElementVisible(appointmentDetailsTitle,5);
+	public String getBAN() {
+		String nameText = getReusableActionsInstance().getNameText(txtBAN);
+		String[] split = nameText.split(" ");
+		return split[1];
 	}
-
-	/**
-	 * verifies if AppointmentDate Title is present in confirmation page
-	 * @return true if AppointmentDate title is present; else false
-	 * @author praveen.kumar7
-	 */
-	public boolean verifyAppointmentDateTitle() {
-		return getReusableActionsInstance().isElementVisible(appointmentDateTitle,5);
-	}
-
-	/**
-	 * verifies if Appointment address Title is present in confirmation page
-	 * @return true if Appointment Address title is present; else false
-	 * @author praveen.kumar7
-	 */
-	public boolean verifyAppointmentAddressTitle() {
-		return getReusableActionsInstance().isElementVisible(appointmentAddressTitle,5);
-	}
-
-	/**
-	 * verifies if device image is present in confirmation page
-	 * @return true if device image is present; else false
-	 * @author praveen.kumar7
-	 */
-	public boolean verifyDeviceImage() {
-		return getReusableActionsInstance().isElementVisible(deviceImage,5);
-	}
-
-	/**
-	 * This method checks for appointment address in confirmation page
-	 * @return String value of Appointment address
-	 * @author praveen.kumar7
-	 */
-	public String getAppointmentAddressText() {
-		getReusableActionsInstance().scrollToElement(appointmentCompleteAddress);
-		return getReusableActionsInstance().getWhenReady(appointmentCompleteAddress,10).getText().trim().replaceAll("\\n", " ");
-	}
-
-	/**
-	 * This method looks for monthly fee after tax in confirmation page
-	 * @return String value of Monthly fee after tax
-	 * @author praveen.kumar7
-	 */
-	public String getMonthlyFeeAfterTax() {
-		getReusableActionsInstance().scrollToElement(monthlyFeeAfterTax);
-		return monthlyFeeAfterTax.getText().replaceAll("\\n","");
-	}
-
-	/**
-	 * This method looks for one time fee after tax in confirmation page
-	 * @return String value of one time fee after tax
-	 * @author praveen.kumar7
-	 */
-	public String getOneTimeFeeAfterTax() {
-		getReusableActionsInstance().scrollToElement(oneTimeFeeAfterTax);
-		return oneTimeFeeAfterTax.getText().replaceAll("\\n","");
-	}
-	
 }

@@ -5,6 +5,7 @@ import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.*;
@@ -75,10 +76,11 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@class,'d-inline-block -secondary -large')]")
 	WebElement btnRemoveChannel;
 
-
-	@FindBy(xpath = "//button[contains(@class,'d-inline-block -secondary -large')] | " +
-			"//div[@class='exchange-channels__selected__desktop']//span[@id='ariaExchangeChannelsPage']//" +
-			"ancestor::a[@aria-describedby='ariaExchangeChannelsPage']")
+    @FindAll({
+			@FindBy(xpath = "//button[contains(@class,'d-inline-block -secondary -large')] | " +
+					"//div[@class='exchange-channels__selected__desktop']//span[@id='ariaExchangeChannelsPage']//" +
+					"ancestor::a[@aria-describedby='ariaExchangeChannelsPage']"),
+			@FindBy(xpath = "//button[@ng-reflect-variant='secondary']/span/span")})
 	WebElement btnAddChannel;
 
 	/**
@@ -249,7 +251,8 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkAddChannel() {
-		getReusableActionsInstance().getWhenReady(btnAddChannel, 90).click();
+		getReusableActionsInstance().getWhenReady(btnAddChannel, 90);
+		getReusableActionsInstance().executeJavaScriptClick(btnAddChannel);
 	}
 
 	/**

@@ -15,6 +15,7 @@ import com.rogers.pages.ens.EnsNotificationViewPage;
 import com.rogers.test.commonbusinessfunctions.CommonBusinessFlows;
 import com.rogers.test.commonbusinessfunctions.VerifyInEns;
 import com.rogers.test.helpers.CaptchaBypassHandlers;
+import com.rogers.test.helpers.DBValidation;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.test.helpers.RogersEnums.SauceCapabilities;
 import com.rogers.testdatamanagement.TestDataHandler;
@@ -63,6 +64,7 @@ public class BaseTestClass {
     public static ExtentReports report;
     public static ExtentTest logger;
     public Reporter reporter;
+    public static DBValidation dbConnection;
     protected static final ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersHomePage> RogersHomePageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersLoginPage> RogersLoginPageThreadLocal = new ThreadLocal<>();
@@ -165,6 +167,8 @@ public class BaseTestClass {
     protected static final ThreadLocal<RogersOneTimePaymentPage> RogersOneTimePaymentPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersHomePageServiceability> RogersHomePageServiceabilityThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersSecurityPackagesPage> RogersSecurityPackagesPageThreadLocal = new ThreadLocal<>();
+
+
     AppiumServerJava appiumServer = new AppiumServerJava();
     //int port = 4723;
     private CaptchaBypassHandlers captcha_bypass_handlers;
@@ -173,7 +177,10 @@ public class BaseTestClass {
 
     public BaseTestClass() {
         browserdriver = new BrowserDrivers();
+    }
 
+    public static DBValidation getDbConnection(){
+        return new DBValidation();
     }
 
     public static ExtentReports getReport() {
@@ -600,10 +607,10 @@ public class BaseTestClass {
         return RogersPaymentHistoryPageThreadLocal.get();
     }
 
-
     public static RogersHomePageServiceability getRogersHomePageRogersHomePageServiceability() {
         return RogersHomePageServiceabilityThreadLocal.get();
     }
+
 
     public Map<String, String> getRunParameters() {
         return RunParameters;
