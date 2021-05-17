@@ -195,14 +195,7 @@ public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends Bas
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        String ban = getRogersOrderConfirmationPage().getBAN();
-        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
-                .executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from billing_account where BAN='" + ban + "'", false);
-
-        reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
-        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
-
-    }
+      }
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//legacyAnonymous
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
