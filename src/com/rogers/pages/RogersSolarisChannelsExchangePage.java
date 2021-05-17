@@ -76,15 +76,14 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@class,'d-inline-block -secondary -large')]")
 	WebElement btnRemoveChannel;
 
-/*    @FindAll({
-			@FindBy(xpath = "//button[contains(@class,'d-inline-block -secondary -large')] | " +
+	@FindBy(xpath = "//button[contains(@class,'d-inline-block -secondary -large')] | " +
 					"//div[@class='exchange-channels__selected__desktop']//span[@id='ariaExchangeChannelsPage']//" +
-					"ancestor::a[@aria-describedby='ariaExchangeChannelsPage']"),
-			@FindBy(xpath = "//button[contains(@class,'d-inline-block -secondary -large')]")})
-	WebElement btnAddChannel;*/
+					"ancestor::a[@aria-describedby='ariaExchangeChannelsPage']")
+	WebElement btnAddChannel;
 
 	@FindBy(xpath = "//button[contains(@class,'d-inline-block -secondary -large')]")
-		WebElement btnAddChannel;
+		WebElement btnAddChannelDifferentLogic;
+
 	/**
 	 * Click the Change FlexChannels link on solaris TV dashboard page
 	 * @author chinnarao.vattam
@@ -255,6 +254,15 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	public void clkAddChannel() {
 		getReusableActionsInstance().getWhenReady(btnAddChannel, 90);
 		getReusableActionsInstance().executeJavaScriptClick(btnAddChannel);
+	}
+
+	/**
+	 * Click the Channel Add button
+	 * @author chinnarao.vattam
+	 */
+	public void clkAddChannelDifferentLogic() {
+		getReusableActionsInstance().getWhenReady(btnAddChannelDifferentLogic, 90);
+		getReusableActionsInstance().executeJavaScriptClick(btnAddChannelDifferentLogic);
 	}
 
 	/**

@@ -64,7 +64,7 @@ public class Mobile_RogersCH_TC_006_IginteTV_TVChannelsSwapTest extends BaseTest
         reporter.reportLogWithScreenshot("removed the Swap-out Channel one");
         getRogersSolarisChannelsExchangePage().swapChannelIn(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapInChannelOne());
         reporter.reportLogWithScreenshot("Selected the Swap-in Channel one");
-        getRogersSolarisChannelsExchangePage().clkAddChannel();
+        getRogersSolarisChannelsExchangePage().clkAddChannelDifferentLogic();
         reporter.reportLogWithScreenshot("Added the Swap-in Channel one");
         getRogersSolarisChannelsExchangePage().swapChannelOutMobile(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapOutChannelTwo());
         reporter.reportLogWithScreenshot("selected the Swap-out Channel two");
@@ -72,7 +72,7 @@ public class Mobile_RogersCH_TC_006_IginteTV_TVChannelsSwapTest extends BaseTest
         reporter.reportLogWithScreenshot("removed the Swap-out Channel two");
         getRogersSolarisChannelsExchangePage().swapChannelInMobile(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapInChannelTwo());
         reporter.reportLogWithScreenshot("Selected the Swap-in Channel two");
-        getRogersSolarisChannelsExchangePage().clkAddChannel();
+        getRogersSolarisChannelsExchangePage().clkAddChannelDifferentLogic();
         reporter.reportLogWithScreenshot("Added the Swap-in Channel two");
         getRogersSolarisChannelsExchangePage().swapChannelOutMobile(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapOutChannelThree());
         reporter.reportLogWithScreenshot("selected the Swap-out Channel three");
@@ -80,7 +80,7 @@ public class Mobile_RogersCH_TC_006_IginteTV_TVChannelsSwapTest extends BaseTest
         reporter.reportLogWithScreenshot("removed the Swap-out Channel three");
         getRogersSolarisChannelsExchangePage().swapChannelInMobile(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapInChannelThree());
         reporter.reportLogWithScreenshot("Selected the Swap-in Channel three");
-        getRogersSolarisChannelsExchangePage().clkAddChannel();
+        getRogersSolarisChannelsExchangePage().clkAddChannelDifferentLogic();
         reporter.reportLogWithScreenshot("Added the Swap-in Channel three");
         getRogersSolarisChannelsExchangePage().clkConfirmSwapMobile();
         reporter.hardAssert(getRogersSolarisChannelsExchangePage().verifyExchangeSuccess(),"Swap Success","Swap failed");
