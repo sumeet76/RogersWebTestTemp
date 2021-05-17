@@ -188,6 +188,8 @@ public class TestDataHandler {
 	public static AccountData tc01FinanceNotPaidOff_ON;
 	public static AccountData tc37_NoBills;
 	public static  AccountData tc118;
+	public static AccountData tc124;
+	public static AccountData tc126;
 	
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
  		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
@@ -366,7 +368,7 @@ public class TestDataHandler {
     	tc22 = YamlHandler.getSSAccountData("tc22_PreRegister_Auto");
     	tc23 = YamlHandler.getSSAccountData("tc23_PreRegister_Auto");
 		tc01FinanceNotPaidOff_ON = YamlHandler.getSSAccountData("tc01_FinanceNotPaidOff_ON");
-    			
+    	tc124 = YamlHandler.getSSAccountData("tc124FinancePaidOffUpfrontEdgeNotPaidON");
     	//================ Connected home =========================
     	tc43IgniteRHP = YamlHandler.getSSAccountData("tc43IgniteRHP");
     	tc42SolarisInternetAccountWithUsage = YamlHandler.getSSAccountData("tc42SolarisInternetAccountWithUsage");
@@ -381,6 +383,7 @@ public class TestDataHandler {
 		tc112 = YamlHandler.getSSAccountData("tc112PTPdeliquent");
 		tc37_NoBills =YamlHandler.getSSAccountData("tc37PostpaidWithNoBill");
 		tc118 = YamlHandler.getSSAccountData("tc118SEInfinite50ImmediateCancel");
+		tc126 = YamlHandler.getSSAccountData("tc126NSEPlanAddAccessories");
 	}
 	
 	private static void buyFlowsDataInit() throws FileNotFoundException {
