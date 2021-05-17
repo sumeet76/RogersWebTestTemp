@@ -35,6 +35,7 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'AWSBYODUrl', test_awsBYODURL
 	systemProperty 'Browser', test_browser
 	systemProperty 'Language', test_language
+	systemProperty 'DbEnvUrl', test_DbEnvUrl
 	systemProperty 'SearchUrl', test_searchURL
 	systemProperty 'URIautoRegister', test_URIautoRegister
 	systemProperty 'URIEmailer', test_URIEmailer
@@ -70,6 +71,7 @@ task "localTest"(type: Test) {
 	systemProperty 'AWSBYODUrl', test_awsBYODURL
 	systemProperty 'Browser', test_browser
 	systemProperty 'Language', test_language
+	systemProperty 'DbEnvUrl', test_DbEnvUrl
 	systemProperty 'SearchUrl', test_searchURL
 	systemProperty 'URIautoRegister', test_URIautoRegister
 	systemProperty 'URIEmailer', test_URIEmailer
@@ -116,6 +118,8 @@ dependencies {
 	api 'io.rest-assured:json-path:4.3.1'
 	api 'org.json:json:20180813'
 	api 'org.yaml:snakeyaml:1.24'
+	//implementation group: 'com.oracle.database.jdbc', name: 'ojdbc8', version: '21.1.0.0'
+	api 'com.oracle.database.jdbc:ojdbc8:21.1.0.0'
 }
 
 group = 'com.rogers'
@@ -173,7 +177,18 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 	from javadoc.destinationDir
 }
 
-
+//def gitPullCheck(){
+//	System.out.println("******************GIT PULL CHECK**************")
+//	def gitCommitCount =  'git rev-list HEAD..origin/develop --count'.execute().getText()
+//	def count = Integer.parseInt(gitCommitCount.trim())
+//	if(count>0){
+//		print " ************************* Your current branch is "+ count +" commits behind from the develop branch and Pull is needed *************************\n"
+//	} else if (count==0){
+//		print "************************* Your current branch is up to date with develop and no pull request is required at present*************************\n"
+//	} else {
+//		print " ************************* Your current branch is "+ -count +" commits ahead of the develop branch and Push is needed *************************\n"
+//	}
+//}
 
 artifacts {
 	published sourceJar
@@ -206,6 +221,7 @@ artifactory {
 			publishIvy = false
 		}
 	}
+//	gitPullCheck()
 }
 
 artifactoryPublish {

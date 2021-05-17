@@ -15,6 +15,7 @@ import com.rogers.pages.ens.EnsNotificationViewPage;
 import com.rogers.test.commonbusinessfunctions.CommonBusinessFlows;
 import com.rogers.test.commonbusinessfunctions.VerifyInEns;
 import com.rogers.test.helpers.CaptchaBypassHandlers;
+import com.rogers.test.helpers.DBValidation;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.test.helpers.RogersEnums.SauceCapabilities;
 import com.rogers.testdatamanagement.TestDataHandler;
@@ -63,6 +64,7 @@ public class BaseTestClass {
     public static ExtentReports report;
     public static ExtentTest logger;
     public Reporter reporter;
+    public static DBValidation dbConnection;
     protected static final ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersHomePage> RogersHomePageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersLoginPage> RogersLoginPageThreadLocal = new ThreadLocal<>();
@@ -151,6 +153,10 @@ public class BaseTestClass {
     protected static final ThreadLocal<com.rogers.oneview.pages.RogersShippingPage> RogersOVShippingPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<com.rogers.oneview.pages.RogersOVPaymentPage> RogersOVPaymentPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<com.rogers.oneview.pages.RogersChoosePlanPage> RogersOVChoosePlanPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<com.rogers.oneview.pages.RogersOVPlanConfigPage> RogersOVPlanConfigPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<com.rogers.oneview.pages.RogersOVCheckoutPage> RogersOVCheckoutPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<com.rogers.oneview.pages.RogersOVReviewOrderPage> RogersOVReviewOrderPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<com.rogers.oneview.pages.RogersOVOneTimePaymentPage> RogersOVOneTimePaymentPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersSearchPage> RogersSearchPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersDeviceCataloguePage> RogersDeviceCataloguePageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersDeviceConfigPage> RogersDeviceConfigPageThreadLocal = new ThreadLocal<>();
@@ -161,6 +167,8 @@ public class BaseTestClass {
     protected static final ThreadLocal<RogersOneTimePaymentPage> RogersOneTimePaymentPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersHomePageServiceability> RogersHomePageServiceabilityThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersSecurityPackagesPage> RogersSecurityPackagesPageThreadLocal = new ThreadLocal<>();
+
+
     AppiumServerJava appiumServer = new AppiumServerJava();
     //int port = 4723;
     private CaptchaBypassHandlers captcha_bypass_handlers;
@@ -172,7 +180,10 @@ public class BaseTestClass {
 
     public BaseTestClass() {
         browserdriver = new BrowserDrivers();
+    }
 
+    public static DBValidation getDbConnection(){
+        return new DBValidation();
     }
 
     public static ExtentReports getReport() {
@@ -535,6 +546,22 @@ public class BaseTestClass {
         return RogersOVChoosePlanPageThreadLocal.get();
     }
 
+    public static com.rogers.oneview.pages.RogersOVPlanConfigPage getRogersOVPlanConfigPage() {
+        return RogersOVPlanConfigPageThreadLocal.get();
+    }
+
+    public static com.rogers.oneview.pages.RogersOVCheckoutPage getRogersOVCheckoutPage() {
+        return RogersOVCheckoutPageThreadLocal.get();
+    }
+
+    public static com.rogers.oneview.pages.RogersOVReviewOrderPage getRogersOVReviewOrderPage() {
+        return RogersOVReviewOrderPageThreadLocal.get();
+    }
+
+    public static com.rogers.oneview.pages.RogersOVOneTimePaymentPage getRogersOVOneTimePaymentPage() {
+        return RogersOVOneTimePaymentPageThreadLocal.get();
+    }
+
     public static RogersSearchPage getRogersSearchPage() {
         return RogersSearchPageThreadLocal.get();
     }
@@ -582,7 +609,6 @@ public class BaseTestClass {
     public static RogersPaymentHistoryPage getRogersPaymentHistoryPage() {
         return RogersPaymentHistoryPageThreadLocal.get();
     }
-
 
     public static RogersHomePageServiceability getRogersHomePageRogersHomePageServiceability() {
         return RogersHomePageServiceabilityThreadLocal.get();
@@ -1045,6 +1071,10 @@ public class BaseTestClass {
                 RogersOVShippingPageThreadLocal.set(new com.rogers.oneview.pages.RogersShippingPage(getDriver()));
                 RogersOVPaymentPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVPaymentPage(getDriver()));
                 RogersOVChoosePlanPageThreadLocal.set(new com.rogers.oneview.pages.RogersChoosePlanPage(getDriver()));
+                RogersOVPlanConfigPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVPlanConfigPage(getDriver()));
+                RogersOVCheckoutPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVCheckoutPage(getDriver()));
+                RogersOVReviewOrderPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVReviewOrderPage(getDriver()));
+                RogersOVOneTimePaymentPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVOneTimePaymentPage(getDriver()));
                 break;
 
 

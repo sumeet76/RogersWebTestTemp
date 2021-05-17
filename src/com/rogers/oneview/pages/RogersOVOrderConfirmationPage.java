@@ -1,4 +1,5 @@
 package com.rogers.oneview.pages;
+import com.rogers.testdatamanagement.TestDataHandler;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -15,13 +16,19 @@ public class RogersOVOrderConfirmationPage  extends BasePageClass {
 	WebElement orderConfirmation;
 	
 	@FindAll({
-		@FindBy(xpath = "//span[@class='thank-you']"),
-		@FindBy(xpath = "//span[@class='UConfirmationHeading']")
+		@FindBy(xpath = "//span[@class='UConfirmationHeading']"),
+		@FindBy(xpath = "//span[@class='thank-you']")
 	})	
 	WebElement lblThankYou;
-	
-	@FindBy(xpath = "//span[@checkout-res='checkout_order_confirmation']")
+
+	@FindAll({
+			@FindBy(xpath = "//h1[contains(@id,'bfa-page-title')]"),
+			@FindBy(xpath = "//span[@checkout-res='checkout_order_confirmation']")
+	})
 	WebElement lblOrderConfirmation;
+
+	@FindBy(xpath = "//span[(@class='text-bold')]")
+	WebElement BANOrderConfirmation;
 	
 	/**
 	 * Verify Order is Placed
@@ -49,6 +56,22 @@ public class RogersOVOrderConfirmationPage  extends BasePageClass {
 	 */
 	public boolean verifyThankYouDisplayed() {
 		return getReusableActionsInstance().isElementVisible(lblThankYou,60);
+	}
+
+	/**
+	 * Validates whether BAN shown in the Order Confirmation page matches to the BAN of the account given
+	 * @return true if 'Order Confirmation' header displayed; else false
+	 * @author rajesh.varalli1
+	 */
+	public boolean verifyBANOrderConfirmationPage() {
+		getReusableActionsInstance().staticWait(5000);
+		String BAN = TestDataHandler.buyFlowsOVtestCase08.getBanNo();
+		String Ban = BANOrderConfirmation.getText();
+		if (Ban.equalsIgnoreCase(BAN)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
 

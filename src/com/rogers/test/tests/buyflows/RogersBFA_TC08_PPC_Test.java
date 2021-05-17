@@ -53,7 +53,7 @@ public class RogersBFA_TC08_PPC_Test extends BaseTestClass {
         getRogersOrderReviewPage().verifyOrderReviewPageLoadedSuccessfully();
         reporter.reportLogWithScreenshot("Rogers Order review page");
         getRogersOrderReviewPage().clkTermsAgreementCheckbox();
-        getRogersOrderReviewPage().clkUpfrontTermsCheckbox();
+        //getRogersOrderReviewPage().clkUpfrontTermsCheckbox();
         getRogersOrderReviewPage().selectEmailDigitalCopy(TestDataHandler.tc08PPC.getUsername());
         reporter.reportLogWithScreenshot("All terms and conditions selected");
         if(getRogersOrderReviewPage().isPaymentRequired()) {

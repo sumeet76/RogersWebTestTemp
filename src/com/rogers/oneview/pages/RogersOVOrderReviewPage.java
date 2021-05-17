@@ -55,8 +55,11 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 		@FindBy(xpath = "//input[@id='cxEmail']/../label"),
 		@FindBy(xpath = "//input[@id='digital-copy']/../label")})
 	WebElement rdbtnEmail;
-	
-	@FindBy(xpath = "//span[@checkout-res='checkout_step_pay']")
+
+	@FindAll({
+			@FindBy(xpath = "//h1[contains(@id,'bfa-page-title')]"),
+			@FindBy(xpath = "//span[@checkout-res='checkout_step_pay']")
+	})
 	WebElement lblPaymentStep;
 	
 	@FindBy(xpath = "//span[@checkout-res='checkout_continue_lbl']/parent::button")

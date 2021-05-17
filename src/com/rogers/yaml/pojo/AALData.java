@@ -9,6 +9,16 @@ public class AALData {
 	private String ctnCity;
 	private String ctn;
 	private String postalCode;
+	private String sharingType;
+	private String deviceColor;
+	private String deviceCostIndex;
+	private String dataOptionIndex;
+	private String talkOptionIndex;
+	private String ccNumberOTP;
+	private String expiryDateOTP;
+	private String nameOnCard;
+	private String cvvNumber;
+
 	
 	/**
 	 * @return the postalCode
@@ -97,5 +107,107 @@ public class AALData {
 	public void setCtnCity(String ctnCity) {
 		this.ctnCity = ctnCity;
 	}
-	
+	/**
+	 * @return the sharingType
+	 */
+	public String getSharingType() {
+		return sharingType;
+	}
+	/**
+	 * @param sharingType the sharingType to set
+	 */
+	public void setSharingType(String sharingType) {
+		this.sharingType = sharingType;
+	}
+	/**
+	 * @return the devieColor
+	 */
+	public String getDeviceColor() {
+		return deviceColor;
+	}
+	/**
+	 * @param deviceColor the deviceColor to set
+	 */
+	public void setDeviceColor(String deviceColor) {
+		this.deviceColor = deviceColor;
+	}
+	/**
+	 * @return the deviceCostIndex
+	 */
+	public String getDeviceCostIndex() {
+		return deviceCostIndex;
+	}
+	/**
+	 * @param deviceCostIndex the deviceCostIndex to set
+	 */
+	public void setDeviceCostIndex(String deviceCostIndex) {
+		this.deviceCostIndex = deviceCostIndex;
+	}
+	/**
+	 * @return the dataOptionIndex
+	 */
+	public String getDataOptionIndex() {
+		return dataOptionIndex;
+	}
+	/**
+	 * @param dataOptionIndex the dataOptionIndex to set
+	 */
+	public void setdataOptionIndex(String dataOptionIndex) {
+		this.dataOptionIndex = dataOptionIndex;
+	}
+	/**
+	 * @return the talkOptionIndex
+	 */
+	public String getTalkOptionIndex() {
+		return talkOptionIndex;
+	}
+	/**
+	 * @param talkOptionIndex the dataOptionIndex to set
+	 */
+	public void setTalkOptionIndex(String talkOptionIndex) {
+		this.talkOptionIndex = talkOptionIndex;
+	}
+	/**
+	 * @return the ccNumberOTP
+	 */
+	public String getCcNumberOTP() {
+		return ccNumberOTP;
+	}
+	/**
+	 * @param ccNumberOTP the ccNumberOTP to set
+	 */
+	public void setCcNumberOTP(String ccNumberOTP) {
+		this.ccNumberOTP = ccNumberOTP;
+	}
+	/**
+	 * @return the expiryDateOTP
+	 */
+	public String getExpiryDateOTP() {
+		return expiryDateOTP;
+	}
+	/**
+	 * @param expiryDateOTP the ccNumberOTP to set
+	 */
+	public void setExpiryDateOTP(String expiryDateOTP) {
+		this.expiryDateOTP = expiryDateOTP;
+	}
+	/**
+	 * @return the nameOnCard
+	 */
+	public String getNameOnCard() {
+		return nameOnCard;
+	}
+	/**
+	 * @param nameOnCard the nameOnCard to set
+	 */
+	public void setNameOnCard(String nameOnCard) { this.nameOnCard = nameOnCard; }
+	/**
+	 * @return the cvvNumber
+	 */
+	public String getCvvNumber() { return cvvNumber; }
+	/**
+	 * @param cvvNumber the cvvNumber to set
+	 */
+	public void setCvvNumber(String cvvNumber) { this.cvvNumber = cvvNumber; }
+
 }

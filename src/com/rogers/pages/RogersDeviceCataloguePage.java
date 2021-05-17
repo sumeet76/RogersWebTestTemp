@@ -24,16 +24,43 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "//ds-modal-container")
     WebElement modalContainer;
 
+    @FindBy(xpath = "//div[contains(@data-test,'credit-evaluation')]/ancestor::ds-modal-container")
+    WebElement popupCreditEval;
+
+    @FindBy(xpath = "//ds-modal-container//p[contains(text(),'Credit Evaluation') or contains(text(),'Évaluation de crédit')]")
+    WebElement txtCreditEval;
+
+    @FindBy(xpath = "//ds-modal[contains(@data-test,'sharedNonShared')]/ancestor::ds-modal-container")
+    WebElement sharedNonSharedModal;
+
+    @FindBy(xpath = "//ds-modal-container//label[contains(@class,'dsa-selection d-inline-block ds-pointer')][contains(@aria-label,'partager') or contains(@aria-label,'shared Rogers')]")
+    WebElement sharedOption;
+
+    @FindBy(xpath = "//ds-modal-container//label[contains(@class,'dsa-selection d-inline-block ds-pointer')][contains(@aria-label,'Forfait distinct sans') or contains(@aria-label,'separate plan')]")
+    WebElement nonSharedOption;
+
+    @FindBy(xpath = "//span[contains(text(),'Continue')]/ancestor::button[contains(@data-test,'shared-nonshared-continue')]")
+    WebElement modalContinueButton;
+
+    @FindBy(xpath = "//div[contains(@class,'dsa-tile-teaser')]//h3[contains(text(),'Bring') or contains(text(),'Apportez')]")
+    WebElement byodDeviceTile;
+
+    @FindBy(xpath = "//h3[contains(text(),'Bring') or contains(text(),'Apportez')]/parent::div[contains(@class,'dsa-tile-teaser')]//span[contains(@class,'ds-button__copy')]")
+    WebElement byodTileContinueButton;
+
+    @FindBy(xpath = "//span[contains(text(),'postal')]/ancestor::span[contains(@class,'ds-button__copy text-button text')]")
+    WebElement changePostalCodeRpotgBanner;
+
     @FindBy(xpath = "//a[@class='learMoreLink ds-pointer mw-100']")
     WebElement learnMoreBannerLearnMore;
 
-    @FindBy(xpath = "(//span[contains(.,'Check eligibility')])[2]")
+    @FindBy(xpath = "(//span[contains(.,'Check eligibility') or contains(.,'Disponibilité')])[2]")
     WebElement checkEligibilityRpotgBanner;
 
     @FindBy(xpath="//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
     WebElement postalCodeRpotgBanner;
 
-    @FindBy(xpath = "//input[@id='ds-form-input-id-0']")
+    @FindBy(xpath = "//input[contains(@id,'ds-form-input-id')]")
     WebElement inputPostalCodeRpotgBanner;
 
     @FindBy(xpath = "//div[@class='tippy-content']")
@@ -51,7 +78,10 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "//button[@id='trident-cta-nac']")
     WebElement modalContainerGetStartedbutton;
 
-    @FindBy(xpath = "//ds-modal-container//*[@id=\"trident-cta11\"]")
+    @FindAll({
+            @FindBy(xpath = "//button[@id='trident-cta-aal']//span[contains(@class,'ds-button__copy')]"),
+            @FindBy(xpath = "//ds-modal-container//*[@id=\"trident-cta11\"]")
+    })
     WebElement modalContainerAddALinebutton;
 
     @FindBy(xpath = "(//button[contains(@variant,'icon')])[2]")
@@ -72,19 +102,22 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "//div[@class='m-buttonSet']")
     WebElement resetAllFiltersbutton;
 
-    @FindBy(xpath = "(//p[@class='dsa-info__contentHeader align-self-center text-title-4 mb-0'])[2]")
+    @FindBy(xpath = "//p[contains(@class,'dsa-info__contentHeader align-self-center text')]")
     WebElement rpotgBannerText;
 
-    @FindBy(xpath = "//button[@title='Check']")
-    WebElement checkBtn;
+    @FindBy(xpath = "//button[@title='Check' or @title='Vérifier']")
+    WebElement  checkBtn;
 
     @FindAll({
-            @FindBy(xpath = "//button[@title='Continue']"),
-            @FindBy(xpath = "//ds-modal-container//button[contains(@class,'-primary -large')]")
+            @FindBy(xpath = "//button[@title='Continue' or @title='Continuer']"),
+            @FindBy(xpath = "(//ds-modal//button)[3]")
     })
     WebElement continueBtn;
 
-    @FindBy(xpath = "(//p[contains(@class,'dsa-info__contentBody text-body mb-0')])[2]")
+    @FindBy(xpath = "(//button[contains(@class,'ds-button ds-corners ds-pointer')])[3]")
+    WebElement continueBtnHupCtnSelectionModal;
+
+    @FindBy(xpath = "//dsa-info[contains(@class,'d-block mb-40')]//p[contains(@class,'dsa-info__contentBody text-body mb-0')]")
     WebElement eligiblePostalCodeinBanner;
 
 
@@ -128,7 +161,33 @@ public class RogersDeviceCataloguePage extends BasePageClass {
         return xpathDeviceName;
     }
 
+    /**
+     * verifies if BYOD device tile is present in device catalog page
+     * @return: true if BYOD tile is present, else false
+     * @author praveen.kumar7
+     */
+    public boolean verifyByodDeviceTile() {
+        return getReusableActionsInstance().isElementVisible(byodDeviceTile,40);
+    }
 
+    /**
+     * Clicks on BYOD device tile in device catalog page
+     * @author praveen.kumar7
+     */
+    public void clkByodDeviceTileContinueBtn() {
+        getReusableActionsInstance().clickWhenReady(byodTileContinueButton);
+        getReusableActionsInstance().staticWait(2000);
+    }
+
+    /**
+     * verifies if device is eligible for upfront edge
+     * @param deviceName Name of the device that needs to be verified
+     * @return: true if BYOD device is eligible for upfront edge, else false
+     * @author praveen.kumar7
+     */
+    public boolean isDeviceUpfrontEdgeEligible(String deviceName) {
+       return getReusableActionsInstance().isElementVisible(By.xpath("//p[contains(@class,'text-title-5 ')][.='"+deviceName+"']/ancestor::div[@class='dsa-nacTile__top']/following-sibling::div//span[contains(.,'Upfront') or contains(.,'express')]"),40);
+    }
 
     /**
      * This method will get Down price of a phone
@@ -444,9 +503,69 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     }
 
     /**
+     *  This method clicks on Add a line button on the existing customer modal
+     *  @author praveeen.kumar7
+     */
+    public void clickAddALineButtonOnModal() {
+        getReusableActionsInstance().clickWhenReady(modalContainerAddALinebutton,20);
+    }
+
+    /**
+     *  This method verifies if credit evaluation modal is displayed
+     *  @return a boolean true if element is present else false
+     *  @author praveeen.kumar7
+     */
+    public boolean verifyCreditEvaluationPopupPresent() {
+        return getReusableActionsInstance().isElementVisible(popupCreditEval,30);
+    }
+
+    /**
+     *  This method checks whether Credit Evaluation text is present on the modal
+     *  @return a boolean true if element is present else false
+     *  @author praveeen.kumar7
+     */
+    public boolean verifyCreditEvalTextOnModalPresent() {
+        return getReusableActionsInstance().isElementVisible(txtCreditEval,10);
+    }
+
+    /**
+     *  This method verifies whether Shared/NonShared modal is displayed
+     *  @return a boolean true if element is present else false
+     *  @author praveeen.kumar7
+     */
+    public boolean verifySharedNonSharedModalPresent() {
+        return getReusableActionsInstance().isElementVisible(sharedNonSharedModal,30);
+    }
+
+    /**
+     *  This method selects shared or nonshared sharing type based on the string passed
+     *  @param sharingType passing the String value of sharingType to select the sharing option
+     *  @author praveeen.kumar7
+     */
+    public void selectAALSharingType(String sharingType) {
+        if(sharingType.equalsIgnoreCase("SHARE")) {
+            getReusableActionsInstance().clickWhenReady(sharedOption, 20);
+        }
+        else if(sharingType.equalsIgnoreCase("NONSHARE")){
+            getReusableActionsInstance().clickWhenReady(nonSharedOption, 20);
+        }
+        else {
+            getReusableActionsInstance().clickWhenReady(sharedOption, 20);
+        }
+    }
+
+    /**
+     *  This method clicks on the Continue button on shared/nonshared modal
+     *  @author praveeen.kumar7
+     */
+    public void clickContinueButtonOnModal() {
+        getReusableActionsInstance().clickWhenReady(modalContinueButton,30);
+    }
+
+    /**
      * This method verifies whether or not Add a line button is available in a model
      * @return a boolean true if element is present else false
-     * @author saurav.goyal
+     * @author praveen.kumar7
      */
     public Boolean verifyAddALineButtonOnModal() {
         return getReusableActionsInstance().isElementVisible(modalContainerAddALinebutton);
@@ -476,6 +595,14 @@ public class RogersDeviceCataloguePage extends BasePageClass {
 
     public void clickContinueBtn() {
         getReusableActionsInstance().clickWhenReady(continueBtn, 60);
+    }
+
+    /**
+     * This method will click on the continue button in the ctn selection modal during HUP flow
+     * @author praveen.kumar7
+     */
+    public void clkContinueBtnHupCtnSelectionModal() {
+        getReusableActionsInstance().clickWhenReady(continueBtnHupCtnSelectionModal);
     }
 
     /**
@@ -554,6 +681,13 @@ public class RogersDeviceCataloguePage extends BasePageClass {
          return getReusableActionsInstance().isElementVisible(rpotgBannerText,40);
     }
 
+    /**
+     * Clicks on Change postal code in RPOTG Banner
+     * @author praveen.kumar7
+     */
+    public void clkPostalCodeEligibilityBanner() {
+        getReusableActionsInstance().clickWhenReady(changePostalCodeRpotgBanner);
+    }
 
     /**
      * This method will click on Rpotg Banner LearnMore link
@@ -606,7 +740,6 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      *
      * @author nimmy.george
      */
-
     public String verifyeligiblePostalCodeinBanner() {
         getReusableActionsInstance().getWhenVisible(eligiblePostalCodeinBanner, 20);
         return eligiblePostalCodeinBanner.getText().replaceAll("\\s+", "");
