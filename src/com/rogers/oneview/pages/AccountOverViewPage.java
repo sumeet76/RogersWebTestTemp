@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 public class AccountOverViewPage  extends BasePageClass {
@@ -12,6 +13,13 @@ public class AccountOverViewPage  extends BasePageClass {
 	public AccountOverViewPage(WebDriver driver) {
 		super(driver);
 	}
+
+	@FindAll({
+			@FindBy(xpath = "//agent-notifications[contains(@state,'autopop')]/div[contains(@class,'blocker')]"),
+			@FindBy(xpath = "//div[contains(@class,'blocker ng')]"),
+			@FindBy(xpath = "//agent-notifications/div[contains(@class,'blocker')]"),
+	})
+	WebElement skipNotification;
 	
 	@FindBy(xpath = "//span[@class='ute-icon-tv']")
 	WebElement btnTVBadge;
@@ -43,6 +51,17 @@ public class AccountOverViewPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@class='hup-button red']")
 	WebElement btnSubmitOneViewDialogue;
 
+	@FindBy(xpath = "//t[contains(text(),'Add new wireless line')]")
+	WebElement addNewWirelessLineButton;
+
+	/**
+	 * To skip notification panel with a bell icon
+	 * @author sidhartha.vadrevu
+	 */
+	public void setSkipNotification() {
+		getReusableActionsInstance().clickIfAvailable(skipNotification, 50);
+	}
+
 	/**
 	 * To enter dealer code in dealer code dialogue box
 	 * @author Saurav.Goyal
@@ -63,6 +82,7 @@ public class AccountOverViewPage  extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkCloseBtnAssignDataManager() {
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().clickIfAvailable(btnOneViewDataManagerDialogue,30);
 	}
 	
@@ -126,10 +146,12 @@ public class AccountOverViewPage  extends BasePageClass {
 		strCTN = strCTN.replace("-", "").replace(" ", "");
 		strCTN = "(" + strCTN.substring(0, 3) + ") " + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);		
 		String strCTNXpath = "//*[contains(text(),'" + strCTN + "')]";
+		WebElement subNumber = getDriver().findElement(By.xpath("//*[contains(text(),'"+strCTN+"')]"));
 		getReusableActionsInstance().clickIfAvailable(By.xpath("//div[@class='rep-notifications permitted']//div[@class='blocker']"));
 		if(getReusableActionsInstance().isElementVisible(By.xpath(strCTNXpath))) {
 			getReusableActionsInstance().javascriptScrollToBottomOfPage();
-			getReusableActionsInstance().clickWhenReady(By.xpath(strCTNXpath), 120);
+			//getReusableActionsInstance().clickWhenReady(By.xpath(strCTNXpath), 120);
+			getReusableActionsInstance().executeJavaScriptClick(subNumber);
 			return true;
 		} else if (verifyAndClickShareEverythingCTN(strCTN)) {
 			return true;
@@ -161,6 +183,16 @@ public class AccountOverViewPage  extends BasePageClass {
 	 */
 	public boolean verifySuccessfulLogin() {
 		return getReusableActionsInstance().isElementVisible(infoBalanceLable,60);
+	}
+
+	/**
+	 * Selects the Add a Wireless Line Button on the account dashbaord
+	 * @author Sidhartha.Vadrevu
+	 */
+	public void selectAddAWirelessLineButton() {
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().waitForElementVisibility(addNewWirelessLineButton);
+		getReusableActionsInstance().clickWhenReady(addNewWirelessLineButton,45);
 	}
 }
 

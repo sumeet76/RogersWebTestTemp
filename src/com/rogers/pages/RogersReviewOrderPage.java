@@ -15,7 +15,7 @@ public class RogersReviewOrderPage extends BasePageClass {
         super(driver);
     }
 
-    @FindBy(xpath = "//h1[@id='bfa-page-title' and text()='Review Your Order']")
+    @FindBy(xpath = "//h1[@id='bfa-page-title'][text()='Review Your Order' or contains(text(),'Vérifiez votre')]")
     WebElement orderReviewPageTitle;
 
     @FindBy(xpath="(//div[contains(@class,'totalRow d-flex align-items-center')])[1]")
@@ -66,9 +66,11 @@ public class RogersReviewOrderPage extends BasePageClass {
     @FindBy(xpath ="//ds-checkbox[@name='credit-check']")
     WebElement chEmailConsent;
 
-    
-	 @FindBy(xpath ="//button[@title='Submit order - test1']")
-	 WebElement submitOrderBtn;
+    @FindBy(xpath ="//ds-checkbox[@data-test='bopis-consent']")
+    WebElement chBopisConsent;
+
+    @FindBy(xpath ="//button[@title='Submit order - test1' or @title='Soumettre la commande']")
+    WebElement submitOrderBtn;
 
 
 
@@ -89,7 +91,7 @@ public class RogersReviewOrderPage extends BasePageClass {
 
     public String getMonthlyFeeAfterTax() {
     	getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyFeeAfterTax);
-    	getReusableActionsInstance().staticWait(3000);
+    	getReusableActionsInstance().staticWait(4000);
     	System.out.println(monthlyFeeAfterTax.getText());
     	return monthlyFeeAfterTax.getText().replaceAll("\\n",""); }
 
@@ -217,7 +219,7 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author nimmy.george
      */
     public void clkUpfrontConsentCheckbox() {
-        getReusableActionsInstance().clickWhenReady(chUpfrontConsent,2);
+        getReusableActionsInstance().clickIfAvailable(chUpfrontConsent,2);
     }
 
     /**
@@ -225,16 +227,44 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clkEmailConsentCheckbox() {
-        getReusableActionsInstance().clickWhenReady(chEmailConsent,2);
+        getReusableActionsInstance().clickWhenReady(chEmailConsent,5);
     }
 
-    
+    /**
+     * This method clicks on the BOPIS consent checkbox
+     * @author praveen.kumar7
+     */
+    public void clkBopisConsentCheckbox() {
+        getReusableActionsInstance().clickWhenReady(chBopisConsent,5);
+    }
+
+    /**
+     * Clicks on all Agreement consent checkboxes based on device tier
+     * @param isSelectedDeviceTier String value of the deviceTier
+     * @author praveen.kumar7
+     */
+    public void clkAllAgreementConsentCheckbox(String isSelectedDeviceTier) {
+        if(isSelectedDeviceTier.equalsIgnoreCase("UPFRONT")) {
+            getReusableActionsInstance().clickWhenReady(chFinancingConsent,10);
+            getReusableActionsInstance().clickWhenReady(chAgreementConsent,10);
+            getReusableActionsInstance().clickWhenReady(chUpfrontConsent,10);
+        }
+        else if(isSelectedDeviceTier.equalsIgnoreCase("FINANCING")) {
+            getReusableActionsInstance().clickWhenReady(chFinancingConsent,10);
+            getReusableActionsInstance().clickWhenReady(chAgreementConsent,10);
+        }
+        else {
+            getReusableActionsInstance().clickWhenReady(chFinancingConsent, 10);
+            getReusableActionsInstance().clickWhenReady(chAgreementConsent, 10);
+        }
+    }
+
     /**
      * Click on the 'Submit Order' Button
      * @author karthic.hasan
      */
     public void clkSubmitOrderBtn() {
-        getReusableActionsInstance().clickWhenReady(submitOrderBtn,2);
+        getReusableActionsInstance().clickWhenReady(submitOrderBtn,5);
         getReusableActionsInstance().staticWait(9000);
     }
 

@@ -494,4 +494,5 @@ public class RogersOrderReviewPage extends BasePageClass {
 	public boolean isPaymentRequired() {
 		return getReusableActionsInstance().isElementVisible(lblPaymentStep, 30);
 	}
+
 }

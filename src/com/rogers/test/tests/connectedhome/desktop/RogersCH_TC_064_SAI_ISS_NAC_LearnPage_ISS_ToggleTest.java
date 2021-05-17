@@ -8,6 +8,7 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.Map;
 
 
 /**
@@ -33,7 +34,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_064_SAI_ISS_NAC_LearnPage_ISS_ToggleTest extends BaseTestClass {
 
-    @Test(groups = {"SanityCH","RegressionCH","SmartStreamCH","DryRunCH"})
+    @Test(groups = {"RegressionCH","SmartStreamCH","DryRunCH"})
     public void checkIssNacLearnPageToggleONTest() {
         getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
@@ -104,8 +105,91 @@ public class RogersCH_TC_064_SAI_ISS_NAC_LearnPage_ISS_ToggleTest extends BaseTe
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
+        String ban = getRogersOrderConfirmationPage().getBAN();
+        System.out.println("BAN from the portal : " + ban);
+        /**
+         * DB Validations in the subscriber table
+         */
+
+        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
+                .executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from billing_account where BAN='" + ban + "'", false);
+
+        reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
+        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
     }
 
+    @Test(groups = {"SanityCH"})
+    public void checkIssNacLearnPageToggleONTestSanity() {
+        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
+        reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
+        getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
+        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        getRogersHomePage().clkIgniteAddressLookupSubmitSS();
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+        getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
+        getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
+
+        reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the create profile page");
+        getRogersInternetProfilePage().setEmail();
+        getRogersInternetProfilePage().setFirstname();
+        getRogersInternetProfilePage().setLastName();
+        getRogersInternetProfilePage().setPhone();
+        getRogersInternetProfilePage().clkSubmitProfile();
+
+        reporter.hardAssert(getRogersInternetCreditCheckPage().verifyCreditEvalutionPage(),"Credit Evalution page has Launched","Credit Evalution page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the credit evalution page");
+        getRogersInternetCreditCheckPage().selectDOBYear();
+        getRogersInternetCreditCheckPage().selectDOBMonth();
+        getRogersInternetCreditCheckPage().selectDOBDay();
+        reporter.reportLogWithScreenshot("Entered DOB details");
+        getRogersInternetCreditCheckPage().selectFirstID("Driver's License");
+        getRogersInternetCreditCheckPage().selectProvince("Ontario");
+        getRogersInternetCreditCheckPage().selectExpiryYear();
+        getRogersInternetCreditCheckPage().selectExpiryMonth();
+        getRogersInternetCreditCheckPage().selectExpiryDay();
+        getRogersInternetCreditCheckPage().setDrivingLicenseNumber("ONTARIO");
+        reporter.reportLogWithScreenshot("Driving License Details");
+        getRogersInternetCreditCheckPage().selectSecondIDOption("Passport");
+        getRogersInternetCreditCheckPage().setPassportNumber();
+        getRogersInternetCreditCheckPage().selectPassportExpiryYear();
+        getRogersInternetCreditCheckPage().selectPassportExpiryMonth();
+        getRogersInternetCreditCheckPage().selectPassportExpiryDay();
+        getRogersInternetCreditCheckPage().clkCreditConsentSai();
+        reporter.reportLogWithScreenshot("Passport Details");
+        getRogersInternetCreditCheckPage().clkCreditConsentSubmit();
+
+        reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the tech install page");
+        getRogersTechInstallPage().clkTechInstalConsent();
+        reporter.reportLogWithScreenshot("tech install details");
+        getRogersTechInstallPage().clkTechInstallContinue();
+
+        reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the payment options page");
+        getRogersPaymentOptionsPage().selectPaymentMode("Pre-authorized Credit Card");
+        getRogersPaymentOptionsPage().switchToCreditCardIFrame();
+        getRogersPaymentOptionsPage().setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
+        getRogersPaymentOptionsPage().switchOutOfCreditCardIFrame();
+        getRogersPaymentOptionsPage().setCVV();
+        getRogersPaymentOptionsPage().selectExpiryMonth();
+        getRogersPaymentOptionsPage().selectExpiryYear();
+        reporter.reportLogWithScreenshot("Payment options Details");
+        getRogersPaymentOptionsPage().clkPaymentConfirm();
+
+        reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the order review page");
+
+        reporter.hardAssert( getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
+        getRogersOrderReviewPage().clkAcceptenceCheckbox();
+        reporter.reportLogWithScreenshot("Agreement details");
+        getRogersOrderReviewPage().clkSubmit();
+        reporter.reportLogWithScreenshot("Launched the Confirmation page");
+        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
+        reporter.reportLogWithScreenshot("Launched the Confirmation page");
+ }
 
     @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
     //legacyAnonymous
@@ -119,8 +203,6 @@ public class RogersCH_TC_064_SAI_ISS_NAC_LearnPage_ISS_ToggleTest extends BaseTe
     public void afterTest() {
         closeSession();
     }
-
-
 
 }
 

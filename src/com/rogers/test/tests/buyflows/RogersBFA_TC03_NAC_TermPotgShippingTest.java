@@ -22,7 +22,7 @@ public class RogersBFA_TC03_NAC_TermPotgShippingTest extends BaseTestClass {
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(System.getProperty("AWSUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
 	@Test(groups = {"RegressionBFA","NACBFA"})
@@ -84,7 +84,6 @@ public class RogersBFA_TC03_NAC_TermPotgShippingTest extends BaseTestClass {
 		reporter.reportLogPassWithScreenshot(
 				"Cart summary: Monthly & OneTimeFees" + monthlyFeesAmount + "&" + oneTimeFeesAmount);
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
-
 		// ***************Create Profile Stepper*************//
 		reporter.hardAssert(getRogersCheckoutPage().verifyCreateProfileTitle(), "Create profile Title Present", "Create profile Title not present");
 		String totalMonthlyFees = getRogersCheckoutPage().getMonthlyFeeAfterTax();
@@ -92,10 +91,10 @@ public class RogersBFA_TC03_NAC_TermPotgShippingTest extends BaseTestClass {
 		String purchaseIncludes = getRogersCheckoutPage().getPurchaseIncludesText();
 		reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees" + totalMonthlyFees
 				+ "2. oneTimeFee" + oneTimeFee + "3. Purchase Include" + purchaseIncludes);
-		String labelRpotgPurchaseIncludesCheckout = getRogersCheckoutPage().getRpotgLabelPurchaseIncludes();
-		reporter.softAssert(purchaseIncludes.contains(labelRpotgPurchaseIncludesCheckout),
-				"RPOTG label verified in Purchase Includes section",
-				"RPOTG label not availble in Purchase Includes section");
+		//String labelRpotgPurchaseIncludesCheckout = getRogersCheckoutPage().getRpotgLabelPurchaseIncludes();
+		//reporter.softAssert(purchaseIncludes.contains(labelRpotgPurchaseIncludesCheckout),
+				//"RPOTG label verified in Purchase Includes section",
+				//"RPOTG label not availble in Purchase Includes section");
 		String emailCreateProfile = getRogersCheckoutPage().setEmailCreateProfile();
 		getRogersCheckoutPage().confirmEmailCreateProfile(emailCreateProfile);
 		String firstName = getRogersCheckoutPage().setFirstNameCreateProfile();

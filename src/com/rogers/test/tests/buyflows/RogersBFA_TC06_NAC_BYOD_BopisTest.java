@@ -19,7 +19,7 @@ public class RogersBFA_TC06_NAC_BYOD_BopisTest extends BaseTestClass {
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(System.getProperty("AWSBYODUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
 	//https://rcom5.qa01.eks.rogers.com/phones/bring-your-own-device?flowType=byod
@@ -107,7 +107,7 @@ public class RogersBFA_TC06_NAC_BYOD_BopisTest extends BaseTestClass {
 		reporter.hardAssert(emailCreateProfile.equals(contactEmailReviewPage),"Contact email in Order Review Page matches as entered in Create Profile stepper","Contact email in Order Review Page not matches as entered in Create Profile stepper");
 		reporter.reportLogPassWithScreenshot("Order Review Page : Contact Details");
 		getRogersReviewOrderPage().clkAgreementConsentCheckbox();
-		getRogersReviewOrderPage().clkEmailConsentCheckbox();
+		getRogersReviewOrderPage().clkBopisConsentCheckbox();
 		reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
 		getRogersReviewOrderPage().clkSubmitOrderBtn();
 		//************Order Confirmation Page****************//

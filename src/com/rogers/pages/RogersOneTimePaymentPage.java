@@ -98,6 +98,8 @@ public class RogersOneTimePaymentPage extends BasePageClass {
         getReusableActionsInstance().getWhenReady(inputExpiryDate, 10).sendKeys(strExpiryDate);
     }
 
+
+
     /**
      * Click on the 'Submit Order' Button on the onetime payment page
      * @author saurav.goyal
