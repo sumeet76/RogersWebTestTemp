@@ -75,11 +75,11 @@ public class RogersCH_TC_049_IginteBundle_DoublePlay_ValidateFlexChannelModel ex
         getRogersIgniteTVBuyPage().clkHover4kChannels();
         reporter.reportLogWithScreenshot("what are flex channels Hover message ");
         getRogersIgniteTVBuyPage().clkHoverClose();
-        getRogersIgniteTVBuyPage().clkViewFlexChannels();
+/*        getRogersIgniteTVBuyPage().clkViewFlexChannels();
         reporter.reportLogWithScreenshot("View Flex Channels");
         getRogersIgniteTVBuyPage().clkHoverPreSelectedChannels();
         reporter.reportLogWithScreenshot("Pre Selected Channels Hover message");
-        getRogersIgniteTVBuyPage().clkHoverClose();
+        getRogersIgniteTVBuyPage().clkHoverClose();*/
         getRogersIgniteTVBuyPage().set4KTV();
         reporter.reportLogWithScreenshot("4k TV selected");
         getRogersIgniteTVBuyPage().clkCheckout();
@@ -144,11 +144,7 @@ public class RogersCH_TC_049_IginteBundle_DoublePlay_ValidateFlexChannelModel ex
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         String ban = getRogersOrderConfirmationPage().getBAN();
         System.out.println("BAN from the portal : " + ban);
-        /**
-         * DB Validations in the subscriber table
-         */
-
-        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
+         Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
                 .executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from billing_account where BAN='" + ban + "'", false);
 
         reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");

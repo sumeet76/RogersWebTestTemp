@@ -74,7 +74,7 @@ public class RogersCH_TC_001_IginteTV_ValidateTVDashboardTest extends BaseTestCl
 	
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 

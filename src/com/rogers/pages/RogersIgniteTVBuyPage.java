@@ -97,7 +97,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@aria-label,'4')]//span[@class='ds-icon rds-icon-info']")
 	WebElement hvr4kChannels;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
+	@FindBy(xpath = "//div[@class='ds-modal__header d-flex align-items-start']//span[@class='ds-icon rds-icon-close']")
 	WebElement hvrClose;
 
 	@FindBy(xpath = "//button[contains(@aria-label,'What are Flex Channels?')]//span[@class='ds-icon rds-icon-info']")
@@ -1020,7 +1020,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkHoverClose() {
-		getReusableActionsInstance().getWhenReady(hvrClose, 20).click();
+		getReusableActionsInstance().getWhenReady(hvrClose, 20);
+		getReusableActionsInstance().executeJavaScriptClick(hvrClose);
 	}
 
 	/**
