@@ -86,11 +86,11 @@ public class RogersCH_TC_077_IginteTV_CartAbandon_2PNac_ValidateChannelCountwhen
         reporter.reportLogWithScreenshot("what are flex channels Hover message ");
         getRogersIgniteTVBuyPage().clkHoverClose();
 
-        getRogersIgniteTVBuyPage().clkViewFlexChannels();
+/*        getRogersIgniteTVBuyPage().clkViewFlexChannels();
         reporter.reportLogWithScreenshot("View Flex Channels");
         getRogersIgniteTVBuyPage().clkHoverPreSelectedChannels();
         reporter.reportLogWithScreenshot("Pre Selected Channels Hover message");
-        getRogersIgniteTVBuyPage().clkHoverClose();
+        getRogersIgniteTVBuyPage().clkHoverClose();*/
         getRogersIgniteTVBuyPage().clickMyRogers();
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyEmailModal(),"Email Modal is availabe","EmailModal is not availabe");
         reporter.reportLogWithScreenshot("Launched the Email Modal");
@@ -116,11 +116,11 @@ public class RogersCH_TC_077_IginteTV_CartAbandon_2PNac_ValidateChannelCountwhen
         reporter.reportLogWithScreenshot("what are flex channels Hover message ");
         getRogersIgniteTVBuyPage().clkHoverClose();
 
-        getRogersIgniteTVBuyPage().clkViewFlexChannels();
+/*        getRogersIgniteTVBuyPage().clkViewFlexChannels();
         reporter.reportLogWithScreenshot("View Flex Channels");
         getRogersIgniteTVBuyPage().clkHoverPreSelectedChannels();
         reporter.reportLogWithScreenshot("Pre Selected Channels Hover message");
-        getRogersIgniteTVBuyPage().clkHoverClose();
+        getRogersIgniteTVBuyPage().clkHoverClose();*/
         getRogersIgniteTVBuyPage().set4KTV();
         reporter.reportLogWithScreenshot("4k TV selected");
         getRogersIgniteTVBuyPage().clkCheckout();
@@ -169,11 +169,11 @@ public class RogersCH_TC_077_IginteTV_CartAbandon_2PNac_ValidateChannelCountwhen
         reporter.reportLogWithScreenshot("what are flex channels Hover message ");
         getRogersIgniteTVBuyPage().clkHoverClose();
 
-        getRogersIgniteTVBuyPage().clkViewFlexChannels();
+/*        getRogersIgniteTVBuyPage().clkViewFlexChannels();
         reporter.reportLogWithScreenshot("View Flex Channels");
         getRogersIgniteTVBuyPage().clkHoverPreSelectedChannels();
         reporter.reportLogWithScreenshot("Pre Selected Channels Hover message");
-        getRogersIgniteTVBuyPage().clkHoverClose();
+        getRogersIgniteTVBuyPage().clkHoverClose();*/
         getRogersIgniteTVBuyPage().clickMyRogers();
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyEmailModal(),"Email Modal is availabe","EmailModal is not availabe");
         reporter.reportLogWithScreenshot("Launched the Email Modal");
@@ -199,11 +199,11 @@ public class RogersCH_TC_077_IginteTV_CartAbandon_2PNac_ValidateChannelCountwhen
         reporter.reportLogWithScreenshot("what are flex channels Hover message ");
         getRogersIgniteTVBuyPage().clkHoverClose();
 
-        getRogersIgniteTVBuyPage().clkViewFlexChannels();
+/*        getRogersIgniteTVBuyPage().clkViewFlexChannels();
         reporter.reportLogWithScreenshot("View Flex Channels");
         getRogersIgniteTVBuyPage().clkHoverPreSelectedChannels();
         reporter.reportLogWithScreenshot("Pre Selected Channels Hover message");
-        getRogersIgniteTVBuyPage().clkHoverClose();
+        getRogersIgniteTVBuyPage().clkHoverClose();*/
         getRogersIgniteTVBuyPage().set4KTV();
         reporter.reportLogWithScreenshot("4k TV selected");
         getRogersIgniteTVBuyPage().clkCheckout();
