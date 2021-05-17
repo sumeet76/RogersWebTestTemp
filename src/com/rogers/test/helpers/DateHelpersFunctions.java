@@ -10,14 +10,14 @@ public class DateHelpersFunctions {
 
     public  static boolean isValidDAte(String strDate){
         Locale locale=Locale.CANADA;;
-        String datePattern = "MMM. d, u";
+        String datePattern = "MMM d, u";
         ZoneId defaultZoneId = ZoneId.systemDefault();
-        if(System.getProperty("test_language")=="en")
+        if(System.getProperty("Language").toString().equals("en"))
         {
             locale =Locale.CANADA;
-            datePattern = "MMM. d, u";
-        }else if(System.getProperty("test_language")=="fr"){
-            locale =Locale.FRENCH;
+            datePattern = "MMM d, u";
+        }else if(System.getProperty("Language").toString().equals("fr")){
+            locale =Locale.CANADA_FRENCH;
             datePattern = "dd MMM yyyy";
         }
 

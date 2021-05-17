@@ -27,19 +27,19 @@ public class RogersFinanceAccessoriesPage extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Total monthly financing payment: ' or text()='Total mensuel du paiement pour le financement : ']/parent::div//ds-price")
 	WebElement lblTotalMonthlyFinPayment;
 
-	@FindBy(xpath = "//span[text()='Monthly financing payment:  ' or text()='Paiement mensuel pour le financement :  ']/parent::div//ds-price")
+	@FindBy(xpath = "//rss-accessories-balance//span[contains(text(),'Monthly financing payment:') or contains(text(),'Paiement mensuel pour le financement :')]/parent::div//ds-price")
 	WebElement lblMonthlyFinPayment;
 
-	@FindBy(xpath = "//span[contains(text(),'Monthly financed taxes:') or contains(text(),'Taxes mensuelles sur le financement')]/parent::div//ds-price")
+	@FindBy(xpath = "//rss-accessories-balance//span[contains(text(),'Monthly financed taxes:') or contains(text(),'Taxes mensuelles sur le financement')]/parent::div//ds-price")
 	WebElement lblMonthlyFinTaxes;
 
-	@FindBy(xpath = "//span[contains(text(),'Total remaining financing balance:') or contains(text(),'Solde total du financement :')]/parent::div//ds-price")
+	@FindBy(xpath = "//rss-accessories-balance//span[contains(text(),'Total remaining financing balance:') or contains(text(),'Solde total du financement :')]/parent::div//ds-price")
 	WebElement lblTotalRemainingFinBalance;
 
-	@FindBy(xpath = "//span[contains(text(),'Remaining financing balance:') or contains(text(),'Solde restant du financement :')]/parent::div//ds-price")
+	@FindBy(xpath = "//rss-accessories-balance//span[contains(text(),'Remaining financing balance:') or contains(text(),'Solde restant du financement :')]/parent::div//ds-price")
 	WebElement lblRemainingFinBalance;
 
-	@FindBy(xpath = "//span[contains(text(),'Remaining financed taxes:') or contains(text(),'Taxes restantes du financement :')]/parent::div//ds-price")
+	@FindBy(xpath = "//rss-accessories-balance//span[contains(text(),'Remaining financed taxes:') or contains(text(),'Taxes restantes du financement :')]/parent::div//ds-price")
 	WebElement lblRemainingFinTaxes;
 
 	@FindBy(xpath = "//span[contains(text(),'Financing ending:') or contains(text(),'Fin du financement :')]")
@@ -54,13 +54,13 @@ public class RogersFinanceAccessoriesPage extends BasePageClass {
 			@FindBy(xpath = "//span[contains(text(),'Financing term:') or contains(text(),'Durée du financement :')]")
 			WebElement lblFinTerm;
 
-			@FindBy(xpath = "//span[contains(text(),' Monthly financing payment: ') or contains(text(),' Paiement mensuel pour le financement : ')]/following-sibling::ds-price")
+			@FindBy(xpath = "//rss-accessories-details//span[contains(text(),' Monthly financing payment: ') or contains(text(),' Paiement mensuel pour le financement : ')]/following-sibling::ds-price")
 			WebElement lblMnthlyFinPayments;
 
-			@FindBy(xpath = "//span[contains(text(),'Balance remaining:') or contains(text(),'Paiement mensuel pour le financement :')]/following-sibling::ds-price")
+			@FindBy(xpath = "//span[contains(text(),'Balance remaining:') or contains(text(),'Solde restant :')]/following-sibling::span")
 			WebElement lblBalanceRemaining;
 
-			@FindBy(xpath = "//button[@title='See more details about your accessory financing agreement' or @title=' Voir plus de détails ']")
+			@FindBy(xpath = "//button[@title='See more details about your accessory financing agreement' or @title='Voir plus de détails sur votre entente de financement d’accessoires']")
 			WebElement btnSeeMoreDetails;
 
 
@@ -104,10 +104,8 @@ public class RogersFinanceAccessoriesPage extends BasePageClass {
 			@FindBy(xpath = "//rss-accessories-details-modal//span[text()='Remaining financed taxes: ' or text()='Taxes restantes du financement : ']/following-sibling::ds-price")
 			WebElement modalRemFinTax;
 
-	@FindBy(xpath = "//button[@title='Close']")
-	WebElement btnCloseModal;
-
-
+			@FindBy(xpath = "//button[@title='Close' or @title='Fermer']")
+			WebElement btnCloseModal;
 
 
 			public boolean isAccessoryPageOpen(){
@@ -116,42 +114,25 @@ public class RogersFinanceAccessoriesPage extends BasePageClass {
 			}
 
 
+
 			public boolean validateTotalMonthlyFinancingPayment(){
 				String strValue =getReusableActionsInstance().getWhenReady(lblTotalMonthlyFinPayment).getText().trim();
 				strValue = CurrencyHelpers.removeLineBreaksFromString(strValue);
-				if(System.getProperty("test_language")=="en")
-				{
-					strValue = strValue.split("/mo")[0];
-				}else if(System.getProperty("test_language")=="fr"){
-					strValue = strValue.split("/mois")[0];
-				}
-
+				strValue= CurrencyHelpers.removeMonth(strValue);
 				return CurrencyHelpers.validateCurrency(strValue);
 			}
 
 	public boolean validateMonthlyFinancingPayment(){
 		String strValue =getReusableActionsInstance().getWhenReady(lblMonthlyFinPayment).getText().trim();
 		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue);
-		if(System.getProperty("test_language")=="en")
-		{
-			strValue = strValue.split("/mo")[0];
-		}else if(System.getProperty("test_language")=="fr"){
-			strValue = strValue.split("/mois")[0];
-		}
-
+		strValue= CurrencyHelpers.removeMonth(strValue);
 		return CurrencyHelpers.validateCurrency(strValue);
 	}
 
 	public boolean validateMonthlyFinancedTaxes(){
 		String strValue =getReusableActionsInstance().getWhenReady(lblMonthlyFinTaxes).getText().trim();
 		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue);
-		if(System.getProperty("test_language")=="en")
-		{
-			strValue = strValue.split("/mo")[0];
-		}else if(System.getProperty("test_language")=="fr"){
-			strValue = strValue.split("/mois")[0];
-		}
-
+		strValue= CurrencyHelpers.removeMonth(strValue);
 		return CurrencyHelpers.validateCurrency(strValue);
 	}
 
@@ -197,13 +178,7 @@ public class RogersFinanceAccessoriesPage extends BasePageClass {
 	public boolean validateMonthlyFinancingPaymentOfAnAgreement(){
 		String strValue =getReusableActionsInstance().getWhenReady(lblMnthlyFinPayments).getText().trim();
 		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue);
-		if(System.getProperty("test_language")=="en")
-		{
-			strValue = strValue.split("/mo")[0];
-		}else if(System.getProperty("test_language")=="fr"){
-			strValue = strValue.split("/mois")[0];
-		}
-
+		strValue= CurrencyHelpers.removeMonth(strValue);
 		return CurrencyHelpers.validateCurrency(strValue);
 	}
 
@@ -226,12 +201,12 @@ public class RogersFinanceAccessoriesPage extends BasePageClass {
 
 	public boolean validateAccessoryPurchaseDate(){
 		String strValue =getReusableActionsInstance().getWhenReady(modalAccessoryPurchaseDate).getText().trim();
-		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue).split(":")[1].trim();
+		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue);
 		return DateHelpersFunctions.isValidDAte(strValue);
 	}
 	public boolean validateAgreementIDOndetailsModal(){
 		String strValue =getReusableActionsInstance().getWhenReady(modalAgreementID).getText().trim();
-		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue).split(":")[1].trim();
+		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue);
 		return NumberUtils.isDigits(strValue);
 	}
 	public boolean validateFinancingTermOndetailsModal(){
@@ -240,37 +215,19 @@ public class RogersFinanceAccessoriesPage extends BasePageClass {
 	public boolean validateTotalMonthlyFinancingPaymentOndetailsModal(){
 		String strValue =getReusableActionsInstance().getWhenReady(modalTotalMonthlyFin).getText().trim();
 		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue);
-		if(System.getProperty("test_language")=="en")
-		{
-			strValue = strValue.split("/mo")[0];
-		}else if(System.getProperty("test_language")=="fr"){
-			strValue = strValue.split("/mois")[0];
-		}
-
+		strValue= CurrencyHelpers.removeMonth(strValue);
 		return CurrencyHelpers.validateCurrency(strValue);
 	}
 	public boolean validateMonthlyFinancingPaymentOndetailsModal(){
 		String strValue =getReusableActionsInstance().getWhenReady(modalMonthlyFinPayment).getText().trim();
 		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue);
-		if(System.getProperty("test_language")=="en")
-		{
-			strValue = strValue.split("/mo")[0];
-		}else if(System.getProperty("test_language")=="fr"){
-			strValue = strValue.split("/mois")[0];
-		}
-
+		strValue= CurrencyHelpers.removeMonth(strValue);
 		return CurrencyHelpers.validateCurrency(strValue);
 	}
 	public boolean validateMonthlyFinancedTaxesOndetailsModal(){
 		String strValue =getReusableActionsInstance().getWhenReady(modalFinTaxes).getText().trim();
 		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue);
-		if(System.getProperty("test_language")=="en")
-		{
-			strValue = strValue.split("/mo")[0];
-		}else if(System.getProperty("test_language")=="fr"){
-			strValue = strValue.split("/mois")[0];
-		}
-
+		strValue= CurrencyHelpers.removeMonth(strValue);
 		return CurrencyHelpers.validateCurrency(strValue);
 	}
 	public boolean validateTotalRemainingFinancingBalanceOndetailsModal(){
@@ -296,8 +253,8 @@ public class RogersFinanceAccessoriesPage extends BasePageClass {
 	public boolean validateAccessoryContentAndImageDisplayedCorrectly(){
 		int countOfAccessories = paneAccecoryItem.size();
 		if(countOfAccessories== paneAccessoryImage.size()
-		&& countOfAccessories== paneAccecoryDetails.size()){ return true }
-		else {return false};
+		&& countOfAccessories== paneAccecoryDetails.size()){ return true; }
+		else {return false;}
 
 	}
 

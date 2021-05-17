@@ -12,11 +12,25 @@ public  static  boolean validateCurrency(String strValue){
     }else{
         symbolMatched =false;
     }
-
-    Pattern p=Pattern.compile("^(?:0|[1-9]\\d{0,2}(?:\\.\\d{3})*),\\d{2}$");
+    strValue=strValue.replaceAll(",",".").replaceAll("[^\\d.]+", "");
+    //\d+\.\d{2}
+    Pattern p=Pattern.compile("^\\d+\\.\\d{2}$");
     Matcher m=p.matcher(strValue);
-    if (m.matches() && symbolMatched)return true;
+    if (m.matches() && symbolMatched)
+        return true;
     else return false;
+}
+
+public static String removeMonth(String strValue)
+{
+    if(strValue.contains("/mo"))
+    {
+        strValue = strValue.split("/mo")[0];
+    }else if(strValue.contains("/mois")){
+        strValue = strValue.split("/mois")[0];
+    }
+
+    return strValue;
 }
 
 public static String removeLineBreaksFromString(String strValue)
