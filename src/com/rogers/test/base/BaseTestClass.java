@@ -126,6 +126,7 @@ public class BaseTestClass {
     protected static final ThreadLocal<RogersPaymentPage> RogersPaymentPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersChoosePlanPage> RogersChoosePlanPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<EnvironmentSelectionPage> EnvironmentSelectionPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<NacDashboardPage> NacDashboardPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<AccountOverViewPage> AccountOverViewPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<TVDashboardPage> TVDashboardPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<InternetDashboardPage> InternetDashboardPageThreadLocal = new ThreadLocal<>();
@@ -434,6 +435,10 @@ public class BaseTestClass {
 
     public static EnvironmentSelectionPage getEnvironmentSelectionPage() {
         return EnvironmentSelectionPageThreadLocal.get();
+    }
+
+    public static NacDashboardPage getNacDashboardPage() {
+        return NacDashboardPageThreadLocal.get();
     }
 
     public static AccountOverViewPage getAccountOverViewPage() {
@@ -1048,6 +1053,7 @@ public class BaseTestClass {
             case "buyflowsoneview":
 
                 EnvironmentSelectionPageThreadLocal.set(new EnvironmentSelectionPage(getDriver()));
+                NacDashboardPageThreadLocal.set(new NacDashboardPage(getDriver()));
                 AccountOverViewPageThreadLocal.set(new AccountOverViewPage(getDriver()));
                 RogersOVOrderConfirmationPageThreadLocal.set(new RogersOVOrderConfirmationPage(getDriver()));
                 RogersOVOrderReviewPageThreadLocal.set(new RogersOVOrderReviewPage(getDriver()));

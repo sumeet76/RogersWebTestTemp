@@ -113,7 +113,7 @@ public class TestDataHandler {
 	public static RedesignRpotgData tc04NACTermBopis;
 	public static RedesignRpotgData tc05NACByodSS;
 	public static RedesignRpotgData tc06NACByodTermBopis;
-	public static RedesignRpotgData buyFlowsOVtestCase14;
+	public static RedesignRpotgOVData buyFlowsOVtestCase14;
 	public static AALData tc07AAL;
 	public static PPCData tc08PPC;
 	public static HUPData tc09HupPpcPotgSharedML;
@@ -142,6 +142,7 @@ public class TestDataHandler {
 	public static AALOVData buyFlowsOVtestCase10;
 	public static AALOVData buyFlowsOVtestCase11;
 	public static AALOVData buyFlowsOVtestCase12;
+	public static AALOVData buyFlowsOVtestCase13;
 	public static SauceSettings sauceSettings;
 	public static AccountData igniteTVParentalcontrols;
 	public static AccountData solarisAccount;
@@ -183,7 +184,7 @@ public class TestDataHandler {
 	public static AccountData tc112;
 	public static AccountData tc01FinanceNotPaidOff_ON;
 	public static AccountData tc37_NoBills;
-	public static  AccountData tc118;
+	public static AccountData tc118;
 	
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
  		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
@@ -416,7 +417,8 @@ public class TestDataHandler {
 		buyFlowsOVtestCase10 = YamlHandler.getAALdataOneView("tc10OVAALNonShareNoTermQCStandardShippingAccount");
 		buyFlowsOVtestCase11 = YamlHandler.getAALdataOneView("tc11OVAALTabletShareTermStandardShippingAccount");
 		buyFlowsOVtestCase12 = YamlHandler.getAALdataOneView("tc12OVAALBYODBopisShippingAccount");
-		buyFlowsOVtestCase14 = YamlHandler.getRedesignNACData("tc14OVNAC");
+		buyFlowsOVtestCase13 = YamlHandler.getAALdataOneView("tc13OVAALBYODNonShareStandardShippingAccount");
+		buyFlowsOVtestCase14 = YamlHandler.getRedesignOVNACData("tc14OVNAC");
 	}
 	
 	private static void chOneViewDataInit() throws FileNotFoundException {

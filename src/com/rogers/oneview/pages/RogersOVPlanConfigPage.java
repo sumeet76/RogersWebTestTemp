@@ -284,7 +284,8 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     public void selectDeviceCostAndClickOnContinueButton(String deviceCostIndex) {
         int stepper = 1;
         String xpathDcDoTo = createXpathWithInputData(deviceCostIndex, stepper);
-        if (Integer.parseInt(deviceCostIndex) == 0) {
+        //if (Integer.parseInt(deviceCostIndex) == 0) {
+          if ((deviceCostIndex == null) || (deviceCostIndex.isEmpty()) || (Integer.parseInt(deviceCostIndex) > noOfDeviceTiers.size()-1)) {
             getReusableActionsInstance().staticWait(3000);
             getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton, 30);
         } else {
@@ -292,6 +293,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
             getReusableActionsInstance().staticWait(3000);
             getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton, 30);
         }
+
     }
 
 

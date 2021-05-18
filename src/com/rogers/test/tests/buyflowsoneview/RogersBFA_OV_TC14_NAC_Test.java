@@ -22,11 +22,83 @@ public class RogersBFA_OV_TC14_NAC_Test extends BaseTestClass {
 		reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");
 		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
 		reporter.reportLogWithScreenshot("Rogers OV environment selected" + TestDataHandler.bfaOneViewConfig.getEnvironmentName());
+		//-------------------------------------NAC Dashboard page---------------------------------------------
 		//getAccountOverViewPage().enterDealerCodeDialogue();
 		//getAccountOverViewPage().clkSubmitBtnDealerCodeDialogue();
+		reporter.hardAssert(getNacDashboardPage().verifyNewCustomerDashboard(), "Login Successful", "Login Failed");
+		reporter.reportLogWithScreenshot("Rogers OV NAC Dashboard page");
+		getNacDashboardPage().clkCustomerButton();
+		reporter.reportLogWithScreenshot("Services under customer button");
+		getNacDashboardPage().clkWirelessButton();
+		reporter.reportLogWithScreenshot("Active Wireless Service Modal");
+		getNacDashboardPage().fillShippingAddressField(TestDataHandler.buyFlowsOVtestCase14.getShippingAddress());
+		reporter.hardAssert(getNacDashboardPage().verifyPOTGAddressEligibility(), "Address is Eligible for POTG", "Address is not Eligible for POTG");
+		reporter.reportLogWithScreenshot("POTG address is selected");
+		getNacDashboardPage().clkGetANewPhoneButton();
+		//-------------------------------------Choose Phone page---------------------------------------------
+		reporter.hardAssert(getRogersOVChoosePhonePage().verifyDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase14.getDeviceName()), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
+		String deviceName = TestDataHandler.buyFlowsOVtestCase14.getDeviceName();
+		reporter.hardAssert(getRogersOVChoosePhonePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
+		getRogersOVChoosePhonePage().clickDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase14.getDeviceName());
+		getRogersOVChoosePhonePage().clickContinueButton();
+		//-------------------------------------Plan config page---------------------------------------------
+		reporter.softAssert(getRogersOVPlanConfigPage().verifyBreadCrumb(deviceName),
+				"BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
+		reporter.hardAssert(getRogersOVPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
+		reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
+		getRogersOVPlanConfigPage().clickViewMoreOptions();
+		getRogersOVPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersOVPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.buyFlowsOVtestCase14.getDeviceCostIndex()));
+		reporter.reportLogPassWithScreenshot("Device cost option selected");
+		getRogersOVPlanConfigPage().clickShowMoreDetails();
+		getRogersOVPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersOVPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.buyFlowsOVtestCase14.getDataOptionIndex()));
+		reporter.reportLogPassWithScreenshot("Data option selected");
+		//getRogersOVPlanConfigPage().clickGetBPOOffer();
+		//reporter.reportLogPassWithScreenshot("BPO offer selected");
+		reporter.hardAssert(getRogersOVPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersOVPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.buyFlowsOVtestCase14.getTalkOptionIndex())),
+				"Talk option selected and Addons page in expanded state","Addons page not in expanded state");
+		getRogersOVPlanConfigPage().clickPreCartAddonsContinueButton();
+		getRogersOVPlanConfigPage().clickCartSummaryContinueButton();
+		//############################CheckoutPage############################//
+		//***************Create Profile Stepper*************//
+		reporter.softAssert(getRogersOVCheckoutPage().verifyCreateProfileTitle(),"Create profile Title Present","Create profile Title not present");
+		String emailCreateProfile=getRogersOVCheckoutPage().setEmailCreateProfile();
+		String firstName = getRogersOVCheckoutPage().setFirstNameCreateProfile();
+		String lastName = getRogersOVCheckoutPage().setLastNameCreateProfile();
+		String fullNameCreateProfile=firstName+" "+lastName;
+		String contactNumberCreateProfile=TestDataHandler.buyFlowsOVtestCase14.getContactNumber();
+		getRogersOVCheckoutPage().setContactNumberCreateProfile(contactNumberCreateProfile);
+		reporter.reportLogPassWithScreenshot("Create Profile Page details Entered till ContactNumber");
+		//getRogersOVCheckoutPage().clkUseBillingAddressRadioBtnCreateProfile();
+		//getRogersCheckoutPage().setBillingAddressCreateProfile(TestDataHandler.tc01NACTermNpotgSS.getBillingAddress());
+		//getRogersCheckoutPage().clkUseBillingAddressRadioBtnCreateProfile();
+		//getRogersCheckoutPage().clkLanguageEnglishRadioBtnCreateProfile();
+		reporter.reportLogPassWithScreenshot("Create Profile Page details provided for Address,Shipping Address & Language Selected");
+		getRogersOVCheckoutPage().clkBtnGotoCreditEvalStepper();
+		//***************Credit Evaluation Stepper*************//
+		reporter.softAssert(getRogersOVCheckoutPage().verifyCreditEvaluationTitle(),"CreditEvaluation Title verified","CreditEvaluation Title not present");
+		//getRogersCheckoutPage().setDateOfBirth(TestDataHandler.redesignRpotgData.getDateOfBirth());
+		getRogersOVCheckoutPage().selectYearDropdownOption(TestDataHandler.buyFlowsOVtestCase14.getDateOfBirthYear());
+		getRogersOVCheckoutPage().selectMonthDropdownOption(TestDataHandler.buyFlowsOVtestCase14.getDateOfBirthMonth());
+		getRogersOVCheckoutPage().selectDayDropdownOption(TestDataHandler.buyFlowsOVtestCase14.getDateOfBirthDay());
+		getRogersOVCheckoutPage().selectDropdownOption(TestDataHandler.buyFlowsOVtestCase14.getDropdownOption());
+		getRogersOVCheckoutPage().setPassportNumber(TestDataHandler.buyFlowsOVtestCase14.getPassportNumber());
+		reporter.reportLogPassWithScreenshot("PassportNumber Entered Successfully");
+		getRogersOVCheckoutPage().selectSecondDropdownOption(TestDataHandler.buyFlowsOVtestCase14.getSecondIdOption());
+		getRogersOVCheckoutPage().setSINNumber(TestDataHandler.buyFlowsOVtestCase14.getSinNumber());
+		reporter.reportLogPassWithScreenshot("SIN Number Entered Successfully");
+		getRogersOVCheckoutPage().clkCreditAuthorizationChkBox();
+		getRogersOVCheckoutPage().clkCreditEvalContinue();
+		reporter.reportLogWithScreenshot("Credit Evaluation modal displayed");
+
+
+
+
+
+
+
 		reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
 		reporter.reportLogWithScreenshot("Rogers Account overview page");
-		reporter.hardAssert(getAccountOverViewPage().verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase01.getCtn()),"CTN Found","CTN Not Found");
+		//reporter.hardAssert(getAccountOverViewPage().verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase14.getCtn()),"CTN Found","CTN Not Found");
 		getAccountOverViewPage().clkCloseBtnAssignDataManager();
 		//getAccountOverViewPage().clkBtnOkOneViewDialoue();
 		reporter.hardAssert(getRogersOVWirelessDetailsPage().verifyWirelessPageLoad() ,"Wireless page loaded" , "Wireless page not loaded" );
@@ -34,9 +106,9 @@ public class RogersBFA_OV_TC14_NAC_Test extends BaseTestClass {
 		getRogersOVWirelessDetailsPage().clkUpgradeMyDevice();
 		reporter.reportLogWithScreenshot("Device upgrade button clicked");
 		reporter.hardAssert(getRogersOVChoosePhonePage().verifyChoosePhonePage() , "Choose Phone page loaded" , "Choose Phone page not loaded");
-		getRogersOVChoosePhonePage().searchDevice(TestDataHandler.buyFlowsOVtestCase01.getNewDevice());
+		//getRogersOVChoosePhonePage().searchDevice(TestDataHandler.buyFlowsOVtestCase14.getNewDevice());
 		getRogersOVChoosePhonePage().selectFirstAvailableDevice();
-		reporter.reportLogWithScreenshot("Rogers Choose Phone Page , device selected " + TestDataHandler.buyFlowsOVtestCase01.getNewDevice());
+		//reporter.reportLogWithScreenshot("Rogers Choose Phone Page , device selected " + TestDataHandler.buyFlowsOVtestCase14.getNewDevice());
 		reporter.hardAssert(getRogersOVBuildPlanPage().verifyBuildPlanPage() , "Build plan page loaded" , "Build plan page not loaded");
 		reporter.reportLogWithScreenshot("Rogers Build Plan Page");
 		getRogersOVBuildPlanPage().selectFirstPlanInPickNewPlan();
@@ -60,7 +132,7 @@ public class RogersBFA_OV_TC14_NAC_Test extends BaseTestClass {
 		reporter.hardAssert(getRogersOVOrderReviewPage().verifyOrderReviewPage() , "Order review page loaded" , "Order review page not loaded");
 		reporter.reportLogWithScreenshot("Rogers Order review page");
 		getRogersOVOrderReviewPage().clkAllTermsAgreementCheckboxs();
-		getRogersOVOrderReviewPage().selectEmailDigitalCopy(TestDataHandler.buyFlowsOVtestCase01.getUsername());
+		//getRogersOVOrderReviewPage().selectEmailDigitalCopy(TestDataHandler.buyFlowsOVtestCase14.getUsername());
 		reporter.reportLogWithScreenshot("Rogers Order Review Page after selecting terms and conditions");
 		if(getRogersOVOrderReviewPage().isPaymentRequired()) {
 			getRogersOVOrderReviewPage().clkContinue();
@@ -80,12 +152,12 @@ public class RogersBFA_OV_TC14_NAC_Test extends BaseTestClass {
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		startOVNACSession(System.getProperty("QaOVUrl"),strBrowser, strLanguage,RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim(), TestDataHandler.buyFlowsOVtestCase01.getContactID(),TestDataHandler.bfaOneViewConfig.getUsrID(), TestDataHandler.bfaOneViewConfig.getLoginID(),  method);
+		startOVNACSession(System.getProperty("QaOVUrl"),strBrowser, strLanguage,RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim(), TestDataHandler.buyFlowsOVtestCase14.getContactID(),TestDataHandler.bfaOneViewConfig.getUsrID(), TestDataHandler.bfaOneViewConfig.getLoginID(),  method);
 	}
 
-	@AfterMethod(alwaysRun = true)
+/*	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
 		closeSession();
-	}
+	}*/
 
 }

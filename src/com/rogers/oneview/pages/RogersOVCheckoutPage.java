@@ -134,11 +134,20 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//option[@value='PASSPORT']/..")
 	WebElement dropdownidclick;
 
+	@FindBy(xpath = "//select[contains(@formcontrolname,'secondaryId')]")
+	WebElement secondDropdownIdClick;
+
 	@FindBy(xpath = "//input[@formcontrolname='passport']/..")
 	WebElement txtPasportNumber;
 
 	@FindBy(xpath = "//input[@formcontrolname='passport']")
 	WebElement inputPasportNumber;
+
+	@FindBy(xpath = "//input[@formcontrolname='sin']/..")
+	WebElement txtSINNumber;
+
+	@FindBy(xpath = "//input[@formcontrolname='sin']")
+	WebElement inputSINNumber;
 
 	@FindBy(xpath = "//div[@class='ds-checkbox__box my-12']")
 	WebElement chkCreditAuthorization;
@@ -683,6 +692,30 @@ public class RogersOVCheckoutPage extends BasePageClass {
 		// getReusableActionsInstance().javascriptScrollByVisibleElement(txtPasportNumber);
 		getReusableActionsInstance().clickWhenReady(txtPasportNumber);
 		getReusableActionsInstance().getWhenReady(inputPasportNumber, 3).sendKeys(strPasportNumber);
+	}
+
+	/**
+	 * Select Secondary Dropdown Option on the Credit Evaluation stepper, Id Dropdown Field
+	 * @param selectYourSecondIdOption value from yaml file
+	 * @author Sidhartha.Vadrevu
+	 */
+
+	public void selectSecondDropdownOption(String selectYourSecondIdOption) {
+		getReusableActionsInstance().waitForElementVisibility(secondDropdownIdClick, 20);
+		getReusableActionsInstance().clickWhenReady(secondDropdownIdClick);
+		getReusableActionsInstance().selectWhenReady(secondDropdownIdClick, selectYourSecondIdOption);
+	}
+
+	/**
+	 * Enter the SIN Number on the Credit Evaluation Stepper , SecondaryID SIN NumberField
+	 * @param strSINNumber from Yaml file
+	 * @author Sidhartha.Vadrevu
+	 */
+
+	public void setSINNumber(String strSINNumber) {
+		// getReusableActionsInstance().javascriptScrollByVisibleElement(txtPasportNumber);
+		getReusableActionsInstance().clickWhenReady(txtSINNumber);
+		getReusableActionsInstance().getWhenReady(inputSINNumber, 3).sendKeys(strSINNumber);
 	}
 
 	/**

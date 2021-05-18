@@ -332,4 +332,18 @@ public class YamlHandler {
 
 	}
 
+	public static RedesignRpotgOVData getRedesignOVNACData(String dataFileName) throws FileNotFoundException {
+		Yaml yaml = new Yaml(new Constructor(RedesignRpotgOVData.class));
+		InputStream inputStream;
+
+		inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/buyflowsoneview/" + dataFileName + ".yml"));
+		RedesignRpotgOVData redesignRpotgOVData = yaml.load(inputStream);
+		return redesignRpotgOVData;
+
+
+
+
+
+	}
+
 }
