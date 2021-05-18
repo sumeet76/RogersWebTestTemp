@@ -175,6 +175,9 @@ public class BaseTestClass {
     private Map<String, String> sauceParameters;
     private Map<String, String> RunParameters;
 
+
+    private static final ThreadLocal<RogersFinanceAccessoriesPage> RogersFinanceAccessoriesPagePageThreadLocal = new ThreadLocal<>();
+
     public BaseTestClass() {
         browserdriver = new BrowserDrivers();
     }
@@ -611,6 +614,11 @@ public class BaseTestClass {
         return RogersHomePageServiceabilityThreadLocal.get();
     }
 
+    public static RogersFinanceAccessoriesPage getRogersFinanceAccessoriesPagePage() {
+        return RogersFinanceAccessoriesPagePageThreadLocal.get();
+    }
+
+
 
     public Map<String, String> getRunParameters() {
         return RunParameters;
@@ -868,7 +876,9 @@ public class BaseTestClass {
                 RogersDigitalTVDashboardPageThreadLocal.set(new RogersDigitalTVDashboardPage(getDriver()));
                 RogersAccountOverviewPageThreadLocal.set(new RogersAccountOverviewPage(getDriver()));
                 RogersSHMDashboardPageThreadLocal.set(new RogersSHMDashboardPage(getDriver()));
-                break;
+                RogersFinanceAccessoriesPagePageThreadLocal.set(new RogersFinanceAccessoriesPage(getDriver()));
+
+            break;
 
             case "connectedhome_legacyanonymous":
 

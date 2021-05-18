@@ -110,7 +110,11 @@ public class RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE extends B
 		getRogersWirelessDashboardPage().clkBtnSpeedPass();
 		reporter.hardAssert(getRogersSpeedPassPage().verifySpeedPassPopupIsDisplayed(),
 				"Add speed pass overlay openned successfully.", 
-				"Add speed pass overlay failed.");  
+				"Add speed pass overlay failed.");
+		// adding changes for  Rogers Speed Pass and Fido DOP Top-up Price Increase
+		reporter.hardAssert(getRogersSpeedPassPage().verifyIfTopUpPriceIsCorrect(),
+				"Top ups price verified successfully",
+				"Top ups price NOT verified successfully");
 		getRogersSpeedPassPage().clkBtnCloseInSpeedPassPopup();
 		getRogersWirelessDashboardPage().scrollToMidOfDasboardPage();
 		reporter.reportLogWithScreenshot("Middle of Wireless dashboard page.");        

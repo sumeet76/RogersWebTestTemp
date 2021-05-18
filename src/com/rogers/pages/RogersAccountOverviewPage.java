@@ -449,7 +449,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//ds-checkbox")
 	WebElement chkTnC;
 	
-	@FindBy(xpath = "//button[@title='Continue and activate this Apple Music subscription' or contains(@title,'Continuer et activer cet abonnement')]")
+	@FindBy(xpath = "//button[@title='Continue and activate this Apple Music subscription' or @title='Continue and start this Apple Music subscription' or contains(@title,'Continuer et activer cet abonnement')]")
 	WebElement btnSubscribeToSubsscription;
 
 	@FindBy(xpath = "//a[text()='Yes' or contains(text(),'Oui')]")
@@ -526,6 +526,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//a[@class='c-navbar-link dropdown-toggle menu-click' and contains(text(),'Utilisation et services ') or contains(text(),'Usage & Services ')]")
 	WebElement btnUsageAndServicesDropDown;
 
+	@FindBy(xpath = "//span[contains(text(),' Financed accessories ') or contains(text(),' Accessoires financés ')]")
+	WebElement btnFinancedAccessories;
 
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
@@ -1957,7 +1959,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		}
 
 		/**
-		 * 
+		 *
 		 */
 		public void clkChangePaymentMethod() {
 			getReusableActionsInstance().getWhenReady(lnkChangePaymentMethodQuickLin).click();
@@ -1997,6 +1999,24 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		}
 
 	}
+
+	/**
+	 * clicks the financed accessories
+	 * @author Rohit.Kumar
+	 */
+	public void clkFinancedAccessories() {
+		getReusableActionsInstance().getWhenReady(btnFinancedAccessories).click();
+	}
+
+	/**
+	 * Verifies if the financed accessories button is visible
+	 * @return true if present ; else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean verifyFinancedAccessoriesIsDisplayed() {
+		return getReusableActionsInstance().isElementVisible(btnFinancedAccessories);
+	}
+
 
 	/**
 	 * Verifies if the balance label is displayed correctly

@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class RogersSS_TC_01_ValidateDeviceSectionAndDeviceDetailsModalForCXWithFinanceNotPaidOFF_ON extends BaseTestClass {
+public class RogersSS_TC_122_ValidateDeviceSectionAndDeviceDetailsModalForCXWithFinanceNotPaidOFF_ON extends BaseTestClass {
 
 	private String strAltEmail;
 
@@ -68,10 +68,6 @@ public class RogersSS_TC_01_ValidateDeviceSectionAndDeviceDetailsModalForCXWithF
 		reporter.hardAssert(getRogersWirelessDashboardPage().isFinancingAgreementStartDateDisplayed(),
 				"Financing Agreement Start Date is visible",
 				"Financing Agreement Start Date is not visible");
-
-		reporter.hardAssert(getRogersWirelessDashboardPage().isFinancingAgreementEndDateDisplayed(),
-				"Financing Agreement End Date is visible",
-				"Financing Agreement End Date is not visible");
 
 		reporter.hardAssert(getRogersWirelessDashboardPage().isFinancingAgreementEndDateDisplayed(),
 				"Financing Agreement End Date is visible",

@@ -3,14 +3,16 @@ package com.rogers.pages;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Locale;
+import java.util.*;
 import java.util.regex.Pattern;
+
+import com.rogers.test.helpers.DateHelpersFunctions;
+import org.apache.commons.validator.routines.BigDecimalValidator;
+import org.apache.commons.validator.routines.CurrencyValidator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -20,8 +22,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import com.rogers.pages.base.BasePageClass;
-
-import utils.ReusableActions;
 
 
 /**
@@ -297,7 +297,10 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		@FindBy (xpath = "//div[@class='ds-price -inline']//div[@class='ds-price__amountDollars text-semi']")
 	})
 	WebElement devicePriceMain;
-	
+
+	@FindBy(xpath = "//div[@class='device-title-section']/following-sibling::div/ds-price//div[contains(@class,'ds-price__amountDollars')]")
+	WebElement lblMonthlyDeviceFinance;
+
 	@FindAll({
 		@FindBy (xpath = "//div[@class='ds-price -inline']//div[contains(@class,'ds-price__amountCents')]"),
 		@FindBy (xpath = "//div[@class='card-price-info']//span[@class='cents']")
@@ -555,7 +558,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	WebElement btnSeeOffersOnNewPhones;
 
 	//device details section
-	@FindBy(xpath = "//button[@variant='tertiary']")
+	@FindBy(xpath = "//span[contains(text(),' View financing details ') or contains(text(),' Voir les détails sur le financement ')]")
 	WebElement btnViewFinancingDetails;
 
 	@FindBy(xpath = "//div[contains(@aria-label,'Device financing payment:') or contains(@aria-label,'Paiement de financement de l’appareil :')]")
@@ -578,6 +581,11 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Your financing balance will be $0 on:') or contains(text(),'Votre solde de financement sera de 0 $ le :')]/following-sibling::span")
 	WebElement modalFinancingEndDate;
 
+	@FindBy(xpath = "//div[contains(@aria-label,'device.detail-modal.upfront-edge-amount')]")
+	WebElement modalUpFrontEdgeAmount;
+
+	@FindBy(xpath = "//span[contains(text(),'You will need to return your device by:') or contains(text(),'Solde total du financement :')]/following-sibling::span")
+	WebElement modalneedToReturnDeviceOn;
 
 	@FindBy(xpath = "//span[contains(text(),'Total remaining financing balance:') or contains(text(),'Solde total du financement :')]/following-sibling::ds-price")
 	WebElement modalTotalRemainingDeviceFinancingBalance;
@@ -607,8 +615,35 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//p[contains(text(),'Your remaining financing balance is the amount you financed when you purchased your device less any monthly payments.') or contains(text(),'Votre solde de financement correspond au montant financé lorsque vous avez acheté l’appareil, moins les paiements mensuels.')]")
 	WebElement legalCopyForFinancingProgram;
 
+	@FindBy(xpath = "//div[@class='ds-price']")
+	WebElement deviceRemainingBalance;
 
-	
+	@FindBy(xpath = "//span[contains(text(),'Device balance will be/was $0 on: ') or contains(text(),'Le solde de l’appareil sera/était de 0 $ le : ')]/following-sibling::span")
+	WebElement dateDeviceBalanceWillBeZero;
+
+	@FindBy(xpath = "//span[contains(text(),'Device balance (excluding ') or contains(text(),'Solde de votre appareil (excluant le montant ')]/following-sibling::ds-price/div")
+	WebElement deviceBalanceAsOfToday;
+
+	@FindBy(xpath = "//div[contains(text(),' You brought your own phone with this plan. ') or contains(text(),' Vous avez apporté votre téléphone pour ce forfait. ')]")
+	WebElement lblYouBroughtYourOwnPhone;
+
+	@FindBy(xpath = "//h1[@id='bfa-page-title']")
+	WebElement visibleElement;
+
+	@FindBy(xpath = "//span[contains(text(),' View financing details ') or contains(text(),' Voir les détails sur le financement ')]")
+	WebElement viewFinancingDetailsLink;
+
+	//modal
+	@FindBy(xpath = "//span[contains(text(),'Upfront Edge amount:') or contains(text(),'Votre solde de financement sera de 0 $ le :')]/following-sibling::ds-price")
+	WebElement upFrontEdgeAmount;
+
+	@FindBy(xpath = "//span[contains(text(),'You will need to return your device by:') or contains(text(),'Votre solde de financement sera de 0 $ le :')]/following::span")
+	WebElement returnYourDevice;
+
+
+
+
+
 	/**
 	 * To click the link of lost or stolen device on wireless dashboard page
 	 * @author ning.xue
@@ -1544,7 +1579,11 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	public boolean verifyHeaderOfDeviceSection() {
 		return getReusableActionsInstance().isElementVisible(headerMyDevice,30);
 	}
-	
+
+	public boolean verifyHeaderOfDeviceSection(String strDeviceSectionHeader) {
+		return getReusableActionsInstance().getWhenReady(headerMyDevice).getText().trim().contains(strDeviceSectionHeader);
+	}
+
 	/**
 	 * Validates Device Balance of device section is displayed in $XXXX.XX format
 	 * @return true if the format matches; else false
@@ -1570,7 +1609,33 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		}
 		
 	}
-	
+
+	public boolean verifyDeviceBalanceOfDeviceSection(String value) {
+		String strPriceMain = devicePriceMain.getText();
+		String strPriceCents = devicePriceCents.getText();
+		if (strPriceCents.startsWith(",")) {
+			strPriceCents = strPriceCents.replace(',', '.');
+		}
+		String strBalance = "$" + strPriceMain.concat(strPriceCents);
+		Number number = null;
+		try {
+			number = NumberFormat.getCurrencyInstance(Locale.CANADA).parse(strBalance);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		if(number != null && strPriceMain.concat(strPriceCents).equals(value)) {
+			return true;
+		}else {
+			return false;
+		}
+
+	}
+
+	public boolean verifyDeviceMonthlyFinancingAmount(String value) {
+
+			return getReusableActionsInstance().getWhenReady(lblMonthlyDeviceFinance).getText().trim().equals(value);
+	}
+
 	/**
 	 * To click link upgrade My device in device section
 	 * @author ning.xue
@@ -2505,8 +2570,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Rohit.Kumar
 	 */
 	public boolean isViewFinancingDetailsButtonDisplayed() {
-		return (getReusableActionsInstance().isElementVisible(btnViewFinancingDetails)
-				&& getReusableActionsInstance().isElementVisible(btnViewFinancingDetails));
+		return (getReusableActionsInstance().isElementVisible(btnViewFinancingDetails));
 	}
 
 	/**
@@ -2515,8 +2579,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Rohit.Kumar
 	 */
 	public boolean isMonthlyFinancingAmountDisplayed() {
-		return (getReusableActionsInstance().isElementVisible(monthlyFinancingAmount)
-				&& getReusableActionsInstance().isElementVisible(monthlyFinancingAmount));
+		return getReusableActionsInstance().isElementVisible(monthlyFinancingAmount);
 	}
 
 
@@ -2526,8 +2589,17 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Rohit.Kumar
 	 */
 	public boolean isRemainingFinancingBalanceDisplayed() {
-		return (getReusableActionsInstance().isElementVisible(remainingFinancingBalance)
-				&& getReusableActionsInstance().isElementVisible(remainingFinancingBalance));
+		return getReusableActionsInstance().isElementVisible(remainingFinancingBalance);
+	}
+
+	/**
+	 * Checks if the Remaining Financing Balance is visible
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean checkRemainingFinancingBalanceAmount(String strRemainingFinanceAmount) {
+		String amount = getReusableActionsInstance().getWhenReady(remainingFinancingBalance).getText().replaceAll("\n","").replaceAll(",",".").trim();
+		return (amount.contains(strRemainingFinanceAmount));
 	}
 
 	/**
@@ -2536,8 +2608,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Rohit.Kumar
 	 */
 	public boolean isFinancingAgreementStartDateDisplayed() {
-		return (getReusableActionsInstance().isElementVisible(financingAgreementStartDate)
-				&& getReusableActionsInstance().isElementVisible(financingAgreementStartDate));
+		return (getReusableActionsInstance().isElementVisible(financingAgreementStartDate));
 	}
 
 
@@ -2547,8 +2618,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Rohit.Kumar
 	 */
 	public boolean isFinancingAgreementEndDateDisplayed() {
-		return (getReusableActionsInstance().isElementVisible(financingAgreementEndDate)
-				&& getReusableActionsInstance().isElementVisible(financingAgreementEndDate));
+		return (getReusableActionsInstance().isElementVisible(financingAgreementEndDate));
 	}
 
 	/**
@@ -2557,8 +2627,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Rohit.Kumar
 	 */
 	public boolean isActivationDateDisplayed() {
-		return (getReusableActionsInstance().isElementVisible(modalActivationDate)
-				&& getReusableActionsInstance().isElementVisible(modalActivationDate));
+		return (getReusableActionsInstance().isElementVisible(modalActivationDate));
 	}
 
 	/**
@@ -2567,8 +2636,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Rohit.Kumar
 	 */
 	public boolean isFinancingEndDateDisplayed() {
-		return (getReusableActionsInstance().isElementVisible(modalFinancingEndDate)
-				&& getReusableActionsInstance().isElementVisible(modalFinancingEndDate));
+		return (getReusableActionsInstance().isElementVisible(modalFinancingEndDate));
 	}
 
 	/**
@@ -2577,8 +2645,20 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Rohit.Kumar
 	 */
 	public boolean isTotalRemainingDeviceFinancingBalanceDisplayed() {
-		return (getReusableActionsInstance().isElementVisible(modalTotalRemainingDeviceFinancingBalance)
-				&& getReusableActionsInstance().isElementVisible(modalTotalRemainingDeviceFinancingBalance));
+		return (getReusableActionsInstance().isElementVisible(modalTotalRemainingDeviceFinancingBalance));
+	}
+
+	/**
+	 *
+	 * @param strValue
+	 * @return
+	 * @author Mirza.Kamran
+	 */
+	public boolean isTotalRemainingDeviceFinancingBalanceDisplayed(String strValue) {
+		String value =getReusableActionsInstance().getWhenReady(modalTotalRemainingDeviceFinancingBalance).getText().trim();
+		value = value.replaceAll("\n","");
+		return (value.replaceAll("$","").replaceAll(",",".").trim().contains(strValue))
+				&& currencySymbolValidator(value);
 	}
 
 	/**
@@ -2587,8 +2667,20 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Rohit.Kumar
 	 */
 	public boolean isRemainingDeviceFinancingBalanceDisplayed() {
-		return (getReusableActionsInstance().isElementVisible(modalRemainingDeviceFinancingBalance)
-				&& getReusableActionsInstance().isElementVisible(modalRemainingDeviceFinancingBalance));
+		return getReusableActionsInstance().isElementVisible(modalRemainingDeviceFinancingBalance);
+	}
+
+	/**
+	 * Checks if the Remaining Device Financing Balance is visible
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isRemainingDeviceFinancingBalanceDisplayed(String strValue) {
+		String value =getReusableActionsInstance().getWhenReady(modalRemainingDeviceFinancingBalance).getText().trim();
+		value = value.replaceAll("\n","");
+		return (value.replaceAll("$","").replaceAll(",",".").trim().contains(strValue))
+				&& currencySymbolValidator(value);
+
 	}
 
 	/**
@@ -2597,8 +2689,20 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Rohit.Kumar
 	 */
 	public boolean isRemainingFinancedTaxesDisplayed() {
-		return (getReusableActionsInstance().isElementVisible(modalRemainingFinancedTaxes)
-				&& getReusableActionsInstance().isElementVisible(modalRemainingFinancedTaxes));
+		return getReusableActionsInstance().isElementVisible(modalRemainingFinancedTaxes);
+	}
+
+
+	/**
+	 * Checks if the Remaining Financed Taxes is visible
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isRemainingFinancedTaxesDisplayed(String strValue) {
+		String value =getReusableActionsInstance().getWhenReady(modalRemainingFinancedTaxes).getText().trim();
+		value = value.replaceAll("\n","");
+		return (value.replaceAll("$","").replaceAll(",",".").trim().contains(strValue))
+				&& currencySymbolValidator(value);
 	}
 
 	/**
@@ -2607,8 +2711,19 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Rohit.Kumar
 	 */
 	public boolean isMonthlyFinancingAmountTotalDisplayed() {
-		return (getReusableActionsInstance().isElementVisible(modalMonthlyFinancingAmountTotal)
-				&& getReusableActionsInstance().isElementVisible(modalMonthlyFinancingAmountTotal));
+		return getReusableActionsInstance().isElementVisible(modalMonthlyFinancingAmountTotal);
+	}
+
+	/**
+	 * Checks if the Monthly Financing Amount Total is visible
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isMonthlyFinancingAmountTotalDisplayed(String strValue) {
+		String value =getReusableActionsInstance().getWhenReady(modalMonthlyFinancingAmountTotal).getText().trim();
+		value = value.replaceAll("\n","");
+		return (value.replaceAll("$","").replaceAll(",",".").trim().contains(strValue))
+				&& currencySymbolValidator(value);
 	}
 
 	/**
@@ -2617,8 +2732,19 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Rohit.Kumar
 	 */
 	public boolean isMonthlyFinancingAmountBaseDisplayed() {
-		return (getReusableActionsInstance().isElementVisible(modalMonthlyFinancingAmountBase)
-				&& getReusableActionsInstance().isElementVisible(modalMonthlyFinancingAmountBase));
+		return getReusableActionsInstance().isElementVisible(modalMonthlyFinancingAmountBase);
+	}
+
+	/**
+	 * Checks if the Monthly Financing Amount Base is visible
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isMonthlyFinancingAmountBaseDisplayed(String strValue) {
+		String value =getReusableActionsInstance().getWhenReady(modalMonthlyFinancingAmountBase).getText().trim();
+		value = value.replaceAll("\n","");
+		return (value.replaceAll("$","").replaceAll(",",".").trim().contains(strValue))
+				&& currencySymbolValidator(value);
 	}
 
 	/**
@@ -2627,8 +2753,19 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Rohit.Kumar
 	 */
 	public boolean isMonthlyFinancingTaxesDisplayed() {
-		return (getReusableActionsInstance().isElementVisible(modalMonthlyFinancingTaxes)
-				&& getReusableActionsInstance().isElementVisible(modalMonthlyFinancingTaxes));
+		return getReusableActionsInstance().isElementVisible(modalMonthlyFinancingTaxes);
+	}
+
+	/**
+	 * Checks if the Monthly Financing Taxes is visible
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isMonthlyFinancingTaxesDisplayed(String strValue) {
+		String value =getReusableActionsInstance().getWhenReady(modalMonthlyFinancingTaxes).getText().trim();
+		value = value.replaceAll("\n","");
+		return (value.replaceAll("$","").replaceAll(",",".").trim().contains(strValue))
+				&& currencySymbolValidator(value);
 	}
 
 	/**
@@ -2637,8 +2774,17 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Rohit.Kumar
 	 */
 	public boolean isMonthsRemainingDisplayed() {
+		return getReusableActionsInstance().isElementVisible(modalMonthsRemaining);
+	}
+
+	/**
+	 * Checks if the Months Remaining is visible
+	 * @return true if the element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean isMonthsRemainingDisplayed(String strMonths) {
 		return (getReusableActionsInstance().isElementVisible(modalMonthsRemaining)
-				&& getReusableActionsInstance().isElementVisible(modalMonthsRemaining));
+				&& getReusableActionsInstance().getWhenReady(modalMonthsRemaining).getText().trim().equals(strMonths));
 	}
 
 	/**
@@ -2647,8 +2793,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author Rohit.Kumar
 	 */
 	public boolean isLegalCopyForFinancingProgramDisplayed() {
-		return (getReusableActionsInstance().isElementVisible(legalCopyForFinancingProgram)
-				&& getReusableActionsInstance().isElementVisible(legalCopyForFinancingProgram));
+		return (getReusableActionsInstance().isElementVisible(legalCopyForFinancingProgram));
 	}
 
 	/**
@@ -2659,6 +2804,168 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(deviceFinancingDetailsButton, 30).click();
 	}
 
+	/**
+	 * checks if the Device remaining balance exits
+	 * @return true if the amount is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean verifyDeviceRemainingBalanceExists() {
 
+		String deviceBalance = deviceRemainingBalance.getAttribute("aria-label").replaceAll("[^0-9\\$.," +
+				"]", "").replace(",", ".");
+		
+
+		return deviceBalance.contains("$");
+	}
+
+		public void  clkViewFinancedetailsButton(){
+					getReusableActionsInstance().getWhenReady(btnViewFinancingDetails, 30).click();
+				}
+
+	public boolean  isViewFinancedetailsButtonDisplayedInTheBottom(){
+
+		return getReusableActionsInstance().isElementVisible(btnViewFinancingDetails);
+	}
+
+	public boolean isFinancingActivationAndEndDateIsSameForFullyPaidOff() {
+		return getReusableActionsInstance().getWhenReady(modalFinancingEndDate).getText().trim().equals(
+				getReusableActionsInstance().getWhenReady(modalActivationDate).getText().trim());
+	}
+
+	public boolean isUpfrontEdgeAmountDisplayedCorrect() {
+		String currencyValue = getReusableActionsInstance().getWhenReady(modalUpFrontEdgeAmount).getText().trim();
+		currencyValue = currencyValue.replaceAll("\n","");
+		return currencySymbolValidator(currencyValue);
+	}
+
+	public boolean currencySymbolValidator(String strCurrencyValue){
+		if(strCurrencyValue.startsWith("$") || strCurrencyValue.endsWith("$")){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public boolean currencyValueValidator(String strCurrencyValue){
+		strCurrencyValue = strCurrencyValue.replaceAll("$","").trim();
+		BigDecimalValidator validator = CurrencyValidator.getInstance();
+		BigDecimal amount =null;
+		if(System.getProperty("test_language")=="en") {
+			amount = validator.validate(strCurrencyValue, Locale.CANADA);
+		}else if(System.getProperty("test_language")=="fr"){
+			amount = validator.validate(strCurrencyValue, Locale.CANADA_FRENCH);
+		}
+		return amount!=null;
+
+
+
+	}
+
+	public boolean isYouWIllNeedToReturnYourDeviceByDateDisplayedCorrectly() {
+		String strDate = getReusableActionsInstance().getWhenReady(modalneedToReturnDeviceOn).getText().trim();
+		return (getReusableActionsInstance().isElementVisible(modalneedToReturnDeviceOn)
+				&& DateHelpersFunctions.isValidDAte(strDate));
+
+	}
+
+	public  boolean isValidDAte(String strDate){
+		Locale locale=Locale.CANADA;;
+		String datePattern = "MMM. d, u";
+		ZoneId defaultZoneId = ZoneId.systemDefault();
+		if(System.getProperty("test_language")=="en")
+		{
+			locale =Locale.CANADA;
+			datePattern = "MMM. d, u";
+		}else if(System.getProperty("test_language")=="fr"){
+			locale =Locale.FRENCH;
+			datePattern = "dd MMM yyyy";
+		}
+
+		try
+		{
+			DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(datePattern,locale);
+			LocalDate date = LocalDate.parse(strDate, dateFormatter);
+		}
+		/* Date format is invalid */
+		catch (DateTimeParseException e)
+		{
+			return false;
+		}
+		/* Return true if date format is valid */
+		return true;
+	}
+
+	/**
+	 * Checks if the "You brought your own phone with this plan." label is visible
+	 * @return true if the element is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isBroughtYourOwnPhoneVisible() {
+		return getReusableActionsInstance().isElementVisible(lblYouBroughtYourOwnPhone);
+	}
+
+	/**
+	 * click See Offers On New Phones Button
+	 * @author Rohit.Kumar
+	 */
+	public void clkSeeOffersOnNewPhones() {
+		getReusableActionsInstance().getWhenReady(btnSeeOffersOnNewPhones, 30).click();
+	}
+	/**
+	 * Checks if the Device Balance date will be $0 is visible
+	 * @return true if the element is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isDeviceBalanceDateDisplayed() {
+		return getReusableActionsInstance().isElementVisible(dateDeviceBalanceWillBeZero);
+	}
+
+	/**
+	 * Checks if the My Device Details Link is visible
+	 * @return true if the element is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isMyDeviceDetailsLinkDisplayed() {
+		return getReusableActionsInstance().isElementVisible(lnkViewDeviceDetails);
+	}
+
+	/**
+	 * checks if the Device balance as of today exists
+	 * @return true if the amount is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean verifyDeviceBalanceAsOfTodayExists() {
+		String deviceBalance = deviceBalanceAsOfToday.getAttribute("aria-label").replaceAll("[^0-9\\$.," +
+				"]", "").replace(",", ".");
+		return deviceBalance.contains("$");
+	}
+
+	/**
+	 * Checks if the up front edge is visible
+	 * @return true if the element is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isUpFrontEdgeDisplayed() {
+		return getReusableActionsInstance().isElementVisible(upFrontEdgeAmount);
+	}
+
+	/**
+	 * verifies the correct link after clicking "See offers on new phone" button
+	 * @author Rohit.Kumar
+	 */
+	public boolean verifySeeOfferOnNewPhonesURL() {
+		getReusableActionsInstance().waitForElementVisibility(visibleElement);
+		return get_Driver_Url().contains("/web/totes/upgrade/#/choose-phone");
+
+	}
+
+	/**
+	 * Checks if return your device date is visible
+	 * @return true if the element is displayed else false
+	 * @author Rohit.Kumar
+	 */
+	public boolean isReturnYourDeviceDateDisplayed() {
+		return getReusableActionsInstance().isElementVisible(returnYourDevice);
+	}
 
 }

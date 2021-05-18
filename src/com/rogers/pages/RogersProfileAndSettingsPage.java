@@ -128,7 +128,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//span[contains(text(),'email') or contains(text(),'adresse courriel')]")
 	WebElement lnkAddContactEmail;
 	
-	@FindBy (xpath = "//span[contains(text(),'Change billing address') or contains(text(),'adresse de facturation')]")
+	@FindBy (xpath = "//*[contains(text(),'Change billing address') or @title='Change billing address' or contains(text(),'adresse de facturation')]")
 	WebElement lnkChangeBillingAddress;
 	
 	@FindBy(xpath = "//button[@title='Change billing address' or @title='Changer l’adresse de facturation']")

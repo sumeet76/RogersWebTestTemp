@@ -43,7 +43,20 @@ public class RogersAddDataPage extends BasePageClass {
 	WebElement msgError;
 
 	@FindBy (xpath = "//h2[text()='Limit reached' or text()='Limite atteinte']")
-	WebElement lblLimitReached;	
+	WebElement lblLimitReached;
+
+	@FindBy (xpath = "//ss-data-topup-dropdown")
+	WebElement dropdown;
+
+	@FindBy (xpath = "//button/span[text()='Select amount']")
+	WebElement selectAmountInDropdown;
+
+	@FindBy (xpath = "//ss-data-topup-dropdown//li")
+	List<WebElement> listInDropdown;
+
+
+	@FindBy (xpath = "//select[@formcontrolname='selectedDataTopup']")
+	WebElement selectAddDataTopUp;
 
 	/**
 	 * Verifies if Add data overlay displayed
@@ -60,7 +73,10 @@ public class RogersAddDataPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean verifyAddDataOverlayIsDisplayedNew() {
-		return getReusableActionsInstance().isElementVisible(divListAddDataOptNew.get(1), 60);
+		return (getReusableActionsInstance().isElementVisible(dropdown)
+		|| getReusableActionsInstance().isElementVisible(divListAddDataOptNew.get(1), 60));
+
+
 	}
 
 	/**
@@ -78,8 +94,18 @@ public class RogersAddDataPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void selectDataAddOnOptionNew(Integer index) {
-		getReusableActionsInstance().waitForElementVisibility(divListAddDataOptNew.get(index),60);
-		getReusableActionsInstance().clickWhenReady(divListAddDataOptNew.get(index), 60);
+
+		if(getReusableActionsInstance().isElementVisible(dropdown))
+		{
+			//reusableActions.getWhenReady(selectAmountInDropdown).click();
+			getReusableActionsInstance().selectWhenReady(selectAddDataTopUp,index);
+			//getReusableActionsInstance().getWhenReady(listInDropdown.get(index)).click();
+		}else
+		{
+			getReusableActionsInstance().waitForElementVisibility(divListAddDataOptNew.get(index),60);
+			getReusableActionsInstance().clickWhenReady(divListAddDataOptNew.get(index), 60);
+		}
+
 
 	}
 	/**
