@@ -75,11 +75,11 @@ public class RogersCH_TC_049_IginteBundle_DoublePlay_ValidateFlexChannelModel ex
         getRogersIgniteTVBuyPage().clkHover4kChannels();
         reporter.reportLogWithScreenshot("what are flex channels Hover message ");
         getRogersIgniteTVBuyPage().clkHoverClose();
-/*        getRogersIgniteTVBuyPage().clkViewFlexChannels();
+        getRogersIgniteTVBuyPage().clkViewFlexChannels();
         reporter.reportLogWithScreenshot("View Flex Channels");
         getRogersIgniteTVBuyPage().clkHoverPreSelectedChannels();
         reporter.reportLogWithScreenshot("Pre Selected Channels Hover message");
-        getRogersIgniteTVBuyPage().clkHoverClose();*/
+        getRogersIgniteTVBuyPage().clkHoverClose();
         getRogersIgniteTVBuyPage().set4KTV();
         reporter.reportLogWithScreenshot("4k TV selected");
         getRogersIgniteTVBuyPage().clkCheckout();

@@ -89,7 +89,7 @@ public class RogersCH_TC_071_080_SHM_SecurityPage_ValidateAllSections_Subnav_Her
         reporter.reportLogWithScreenshot("Options to Store for security package Order");
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyStorePageDisplayed(), "Store has displayed", "Store is not displayed");
 
-              getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages" + "?setLanguage=" + strLanguage);
+        getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages" + "?setLanguage=" + strLanguage);
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
         reporter.reportLogWithScreenshot("Launched the security package Home Page");
 
@@ -100,7 +100,7 @@ public class RogersCH_TC_071_080_SHM_SecurityPage_ValidateAllSections_Subnav_Her
         reporter.reportLogWithScreenshot("Options to call CC for security package Order");
     }
 
-    @Test(groups = {"RegressionCH","RhpAndRhmCH"})
+   @Test(groups = {"RegressionCH","RhpAndRhmCH"})
     public void checkShmSecurityPageAssureTest() {
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
         reporter.reportLogWithScreenshot("Launched the security package Home Page");
@@ -137,7 +137,7 @@ public class RogersCH_TC_071_080_SHM_SecurityPage_ValidateAllSections_Subnav_Her
         reporter.reportLogWithScreenshot("Options to call CC for security package Order");
     }
 
-    @Test(groups = {"RegressionCH","RhpAndRhmCH"})
+   @Test(groups = {"RegressionCH","RhpAndRhmCH"})
     public void checkShmSecurityPageControlTest() {
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
         reporter.reportLogWithScreenshot("Launched the security package Home Page");
@@ -159,7 +159,8 @@ public class RogersCH_TC_071_080_SHM_SecurityPage_ValidateAllSections_Subnav_Her
         getRogersSecurityPackagesPage().clkNoShmOption();
         reporter.reportLogWithScreenshot("Options Live chat window questions");
         getRogersSecurityPackagesPage().clkCloseLivechat();
-        getRogersSecurityPackagesPage().clkSecurityPackagesFromStore();        reporter.reportLogWithScreenshot("Options to Store for security package Order");
+        getRogersSecurityPackagesPage().clkSecurityPackagesFromStore();
+        reporter.reportLogWithScreenshot("Options to Store for security package Order");
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyStorePageDisplayed(), "Store has displayed", "Store is not displayed");
 
        getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages" + "?setLanguage=" + strLanguage);
@@ -200,7 +201,7 @@ public class RogersCH_TC_071_080_SHM_SecurityPage_ValidateAllSections_Subnav_Her
         reporter.reportLogWithScreenshot("SHM Feasture packages");
     }
 
-    @Test(groups = {"RegressionCH","RhpAndRhmCH"})
+   @Test(groups = {"RegressionCH","RhpAndRhmCH"})
     public void checkHomeMonitoringAppTest() {
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
         reporter.reportLogWithScreenshot("Launched the security package Home Page");
@@ -208,7 +209,6 @@ public class RogersCH_TC_071_080_SHM_SecurityPage_ValidateAllSections_Subnav_Her
         reporter.reportLogWithScreenshot("Home Monitoring app button");
         getRogersSecurityPackagesPage().clkHomeMonitoringapp();
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifySHMAppPage(), "Home Monitoring app page is displayed", "Home Monitoring app page is not displayed");
-
         reporter.reportLogWithScreenshot("Home Monitoring app page");
         getRogersSecurityPackagesPage().ViewSHMAppPage();
         reporter.reportLogWithScreenshot("Home Monitoring app packages");
@@ -226,6 +226,7 @@ public class RogersCH_TC_071_080_SHM_SecurityPage_ValidateAllSections_Subnav_Her
         getRogersSecurityPackagesPage().ViewAutomationPackagePage();
         reporter.reportLogWithScreenshot("Automation packages");
     }
+
 
     @Test(groups = {"RegressionCH","RhpAndRhmCH"})
     public void checkShmSecurityPageContactUsTest() {
@@ -248,6 +249,7 @@ public class RogersCH_TC_071_080_SHM_SecurityPage_ValidateAllSections_Subnav_Her
         reporter.reportLogWithScreenshot("Smart Home Monitoring Customer care");
     }
 
+
   @Test(groups = {"RegressionCH","RhpAndRhmCH"})
    public void checkShmSecurityPageSubnavValidationTest() {
    getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
@@ -255,9 +257,7 @@ public class RogersCH_TC_071_080_SHM_SecurityPage_ValidateAllSections_Subnav_Her
    getRogersSecurityPackagesPage().clkProducts();
    reporter.reportLogWithScreenshot("SHM Products");
    getRogersSecurityPackagesPage().clkWhySHM();
-   reporter.reportLogWithScreenshot("Why SHM");
-
-   getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages" + "?setLanguage=" + strLanguage);
+   getRogersSecurityPackagesPage().clkSecurityPack();
    getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
    reporter.reportLogWithScreenshot("Launched the security package Home Page");
    getRogersSecurityPackagesPage().clkProducts();
@@ -267,10 +267,7 @@ public class RogersCH_TC_071_080_SHM_SecurityPage_ValidateAllSections_Subnav_Her
    reporter.reportLogWithScreenshot("Home Monitoring app page");
    getRogersSecurityPackagesPage().ViewAutomationPackagePage();
    reporter.reportLogWithScreenshot("Home Monitoring app packages");
-
-   getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages" + "?setLanguage=" + strLanguage);
-   getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
-   reporter.reportLogWithScreenshot("Launched the security package Home Page");
+   getRogersSecurityPackagesPage().MoveToTopOfPage();
    getRogersSecurityPackagesPage().clkProducts();
    reporter.reportLogWithScreenshot("SHM Products");
    getRogersSecurityPackagesPage().clkSecurityPackage();
@@ -282,21 +279,20 @@ public class RogersCH_TC_071_080_SHM_SecurityPage_ValidateAllSections_Subnav_Her
    getRogersSecurityPackagesPage().ViewHardwarePackages();
    reporter.reportLogWithScreenshot("View Hardware packages");
 
-   getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages" + "?setLanguage=" + strLanguage);
-   getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
-   reporter.reportLogWithScreenshot("Launched the security package Home Page");
+   getRogersSecurityPackagesPage().MoveToTopOfPage();
    getRogersSecurityPackagesPage().clkProducts();
    reporter.reportLogWithScreenshot("SHM Products");
+   getRogersSecurityPackagesPage().clkProducts();
    getRogersSecurityPackagesPage().clkFeatures();
    reporter.reportLogWithScreenshot("SHM Feasture page");
 
-   getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages" + "?setLanguage=" + strLanguage);
+   getRogersSecurityPackagesPage().clkSecurityPack();
    getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
    reporter.reportLogWithScreenshot("Launched the security package Home Page");
    getRogersSecurityPackagesPage().clkApp();
    reporter.reportLogWithScreenshot("SHM App");
 
-   getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages" + "?setLanguage=" + strLanguage);
+   getRogersSecurityPackagesPage().clkSecurityPack();
    getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
    reporter.reportLogWithScreenshot("Launched the security package Home Page");
    getRogersSecurityPackagesPage().clkHelpAndSupport();
@@ -309,11 +305,10 @@ public class RogersCH_TC_071_080_SHM_SecurityPage_ValidateAllSections_Subnav_Her
    reporter.reportLogWithScreenshot("Launched the security package Home Page");
    getRogersSecurityPackagesPage().clkHelpAndSupport();
    reporter.reportLogWithScreenshot("Help And Support");
-
    getRogersSecurityPackagesPage().clkMovingYourServices();
    reporter.reportLogWithScreenshot("Moving Your Services");
 
-   getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages" + "?setLanguage=" + strLanguage);
+   getRogersSecurityPackagesPage().clkSecurityPack();
    getRogersSecurityPackagesPage().clkSeefullDetails();
    reporter.reportLogWithScreenshot("full Details");
   }
