@@ -94,7 +94,7 @@ public class OneViewCH_TC_025_EndtoEndFlowAnonymousCustomerTriplePlayTest extend
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 }

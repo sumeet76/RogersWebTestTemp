@@ -35,7 +35,7 @@ public class ContactData {
 		return planFr;
 	}
 	/**
-	 * @param Plan the Plan in French to set
+	 * @param planFr the Plan in French to set
 	 */
 	public void setplanFr(String planFr) {
 		this.planFr = planFr;

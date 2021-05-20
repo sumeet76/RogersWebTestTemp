@@ -149,14 +149,14 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Yes, they do' or text()='Oui, il en a un']/ancestor::button")
 	WebElement btnContinueOn4kTv;
 
-	@FindBy(xpath = "//span[text()='Select Change Date']/parent::div/parent::div//span[text()='Continuer' or text()='Continue']/ancestor::button")
+	@FindBy(xpath = "//p[text()='Select Change Date']/ancestor::div//span[text()='Continue']")
 	WebElement btnContinueChangeDate;
 
 	@FindBy(xpath = "//div[@class='rch-modal']//button[@class='a-btnPrimary ng-star-inserted']")
 	WebElement btnContinueOn4kTVPack;
 
 
-	@FindBy(xpath = "//div[@class='rch-modal']//span[text()='Continuer' or text()='Continue']/ancestor::button")
+	@FindBy(xpath = "(//span[text()='Continuer' or text()='Continue']/ancestor::button)[2]")
 	WebElement btnContinueOn4kChannelPack;
 
 	@FindBy(xpath = "//div[@class='button-set set-end-to-end']//button[@translate='global.cta.submit']")
@@ -196,7 +196,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 */
 	public void clickContinueChangeTVPackage() {
 		getReusableActionsInstance().getWhenReady(btnContnueReset, 90).click();
-		getReusableActionsInstance().waitForElementVisibility(minicartContinue,120);
+		//getReusableActionsInstance().waitForElementVisibility(minicartContinue,120);
 		}
 	
 	/**

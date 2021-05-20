@@ -97,7 +97,7 @@ public class OneViewCH_TC_004_MigrationTriplePlayON extends BaseTestClass {
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 }

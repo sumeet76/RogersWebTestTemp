@@ -9,7 +9,6 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-
 public class OneViewCH_TC_022_TV_PackageDowngradeTest extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV","SanityCHOV"})
     public void checkTVPackageDowngrade() {
@@ -23,27 +22,21 @@ public class OneViewCH_TC_022_TV_PackageDowngradeTest extends BaseTestClass {
 		reporter.reportLogWithScreenshot("Lowest TV Package selected");
 		getTVDashboardPage().clickContinueChangeTVPackage();
 		reporter.reportLogWithScreenshot("Continue clicked on change TV Package");
-		getTVDashboardPage().clickContinue4kChannelPack();
-		getRogersOVChannelsAndThemePacksPage().clkMinicartContinue();
-		reporter.reportLogWithScreenshot("Continue clicked on channels and theme pack page");
 		getTVDashboardPage().clickContinueOn4kTv();
 		reporter.reportLogWithScreenshot("Continue clicked on 4k TV dailog"); 
 		getTVDashboardPage().clickContinue4kChannelPack();
 		reporter.reportLogWithScreenshot("Continue clicked on 4k channels pack");
-		getTVDashboardPage().clickContinueOnSelectDateChange();
-		reporter.reportLogWithScreenshot("Continue clicked on select change date dailog");
 		reporter.softAssert(getRogersOVOrderReviewPage().verifyMonthlyCharges(),"Monthly Charges Displayed","Failed to Navigate to Monthly Charges Page");
 		getRogersOVOrderReviewPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
-
     }
 
 	@BeforeMethod (alwaysRun=true)
 	@Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage,RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.igniteTVParentalcontrols.contactDetails.getContactID(), TestDataHandler.igniteTVParentalcontrols.accountDetails.getBan(), System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage,RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.solarisTV.contactDetails.getContactID(), TestDataHandler.solarisTV.accountDetails.getBan(), System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
 	}
 
 
