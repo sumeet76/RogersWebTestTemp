@@ -2,6 +2,7 @@ package com.rogers.yaml.pojo;
 
 public class AccountData {
 
+	public ContactDetails contactDetails;
 	private String username;
 	private String password;
 	private String newUsername;
@@ -9,7 +10,6 @@ public class AccountData {
 	public AccountDetails accountDetails;	
 	public String name;
 	private String dealerCode;
-	
 
 	/**
 	 * @return the accountDetails

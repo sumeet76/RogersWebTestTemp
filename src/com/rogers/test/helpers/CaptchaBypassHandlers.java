@@ -168,7 +168,7 @@ public class CaptchaBypassHandlers {
     }
 
     public static String urlOneViewMigration(String strUrl, String strLoginID, String strLanID, String strAccNo, String strLanguage, String strContactID) {
-        String queryParam = "LoginId=" + strLanID + "&UserRole=CSR,OneviewBRT-1,R76,BT User,R33,R45,R47,R52,R54,R55,R65,R68,R75,R77,R246,R252,R261,R167,R306,R307,R304,R311,BRT Authorized CSR-3,BRT Authorized CSR-4,Ignite Learning Lab Additive Role&AccNo=" + strAccNo + "&Target=UTE&TimeStamp=2020-02-18T11:29:45.442-04:00&ContactID=" + strContactID + "&Lang=" + strLanguage + "&AppId=CRM&li=" + strLoginID;
+        String queryParam = "LoginId="+strLoginID+"&UserRole=CSR,BRT%20Authorized%20CSR-3,Oneview Pilot-1,Oneview Pilot-2,Oneview Pilot-4,Oneview BRT-1,Oneview BRT-2,Oneview BRT-3,Oneview BRT-4,R76,BT User,R21,R39,R60,R75,R77,R180,R182,R185,R246,R252,R261,R167,R306,R307,R304,R309,R311,R310,BRT Authorized CSR-1,BRT Authorized CSR-3,BRT Authorized CSR-4&AccNo="+strAccNo+"&Target=UTE&TimeStamp=2021-02-11T11:29:45.442-04:00&Lang="+strLanguage+"&AppId=CRM&li="+strLanID;
         String oneViewUrl = strUrl + queryParam;
         return oneViewUrl;
     }

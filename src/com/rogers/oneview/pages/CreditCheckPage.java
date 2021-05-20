@@ -71,7 +71,7 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @param yearofBirth is the Birth Year to set
 	 * @param monthofBirth is the Birth Month to set
 	 * @param dayofBirth is the Birth day to set
-	 * @author Harpartap.Virk
+	 * @author chinnarao.vattam
 	 */	
 	public void setDOB(String yearofBirth,String monthofBirth,String dayofBirth) {	
 		getReusableActionsInstance().selectWhenReadyByVisibleText(year, yearofBirth);
@@ -84,7 +84,7 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @param idExpiryMonth is ID Expiry Month to set
 	 * @param idExpiryDay is the ID Expiry Day to set 
 	 * @param passportNo is the Passport no. to set
-	 * @author Harpartap.Virk
+	 * @author chinnarao.vattam
 	 */	
 	public void setPassport(String expiryYear, String idExpiryMonth,String idExpiryDay,String passportNo ) {	
 		getReusableActionsInstance().javascriptScrollByVisibleElement(secondID);
@@ -107,7 +107,7 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @param idExpiryMonth is ID Expiry Month to set
 	 * @param idExpiryDay is the ID Expiry Day to set 
 	 * @param licenseNo is the DL No. to set
-	 * @author Harpartap.Virk
+	 * @author chinnarao.vattam
 	 */	
 	public void setDriversLicense(String provinc,String expiryYear, String idExpiryMonth,String idExpiryDay,String licenseNo) {	
 		//getReusableActionsInstance().selectWhenReadyByVisibleText(iD, iD1);
@@ -127,28 +127,28 @@ public class CreditCheckPage  extends BasePageClass {
 	/**
 	 * Verify Credit Check Information is correct
 	 * @return true if Continue Button in Enable else return False
-	 * @author Harpartap.Virk
+	 * @author chinnarao.vattam
 	 */	
 	public boolean verifyCreditInfo() {	
 		return getReusableActionsInstance().isElementVisible(continueButton);
 	}
 	/**
 	 * Click Continue Button after Credit Information Entered 
-	 * @author Harpartap.Virk
+	 * @author chinnarao.vattam
 	 */	
 	public void clkContinue() {	
 		getReusableActionsInstance().clickWhenReady(continueButton);
 	}
 	/**
 	 * Click Authorization Checkbox 
-	 * @author Harpartap.Virk
+	 * @author chinnarao.vattam
 	 */	
 	public void clkAuthorize() {	
 		getReusableActionsInstance().clickWhenReady(authorizecheckbox);
 	}
 	/**
 	 * Click Collapse(Down Arrow)
-	 * @author Harpartap.Virk
+	 * @author chinnarao.vattam
 	 */	
 	public void clkCollapse() {
 		getReusableActionsInstance().clickIfAvailable(collapse,60);

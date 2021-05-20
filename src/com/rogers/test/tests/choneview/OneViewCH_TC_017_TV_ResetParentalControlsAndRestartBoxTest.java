@@ -2,6 +2,7 @@ package com.rogers.test.tests.choneview;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
+import com.rogers.test.helpers.RogersEnums;
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
@@ -13,18 +14,12 @@ import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.testdatamanagement.TestDataHandler;
 
-
-
 public class OneViewCH_TC_017_TV_ResetParentalControlsAndRestartBoxTest extends BaseTestClass {
-    @Test @Parameters("strBrowser")
-    public void checkIgniteTVResetPINandResetParentalControlsTest(String strBrowser) {
-		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.chOneViewConfig.getOneViewenv());
-/*		reporter.reportLogWithScreenshot("OneView Interface has Launched");
-		getEnvironmentSelectionPage().enterDealerCode(TestDataHandler.igniteTVParentalcontrols.getDealercode());
-		reporter.reportLogWithScreenshot("Enter the dealer code");
-		getEnvironmentSelectionPage().submitDealerCode();	*/
+	@Test (groups = {"RegressionCHOV","SanityCHOV"})
+    public void checkIgniteTVResetPINandResetParentalControlsTest() {
+		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("Launched the account dashboard page");
-		getAccountOverViewPage().selectTVBadage(strBrowser);
+		getAccountOverViewPage().selectTVBadage();
 		reporter.reportLogWithScreenshot("Launched the TV dashboard page");
 		getTVDashboardPage().clickResetParentalControl();
 		reporter.reportLogWithScreenshot("Reset Parental Controls popup has launched");		
@@ -42,12 +37,13 @@ public class OneViewCH_TC_017_TV_ResetParentalControlsAndRestartBoxTest extends 
         reporter.reportLogWithScreenshot("reset success");
 		getTVDashboardPage().clickSuccessOk() ;
     }
-    
-	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
-	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, String strGroupName,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+
+	@BeforeMethod (alwaysRun=true)
+	@Parameters({"strBrowser", "strLanguage"})
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startOVSession(System.getProperty("QaUrl"),  strBrowser, strLanguage,strGroupName,"", TestDataHandler.igniteTVParentalcontrols.accountDetails.getBan(),TestDataHandler.chOneViewConfig.getUsrID(), TestDataHandler.chOneViewConfig.getLoginID(),method);
-		  	}
+		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage,RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.igniteTVParentalcontrols.contactDetails.getContactID(), TestDataHandler.igniteTVParentalcontrols.accountDetails.getBan(), System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+	}
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {

@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
+import com.rogers.test.helpers.RogersEnums;
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
@@ -17,10 +18,10 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 
 
-public class OneViewCH_TC_018f_TV_ChannelLineupViewPDFTest extends BaseTestClass {
-    @Test
+public class OneViewCH_TC_018d_TV_ChannelLineupViewPDFTest extends BaseTestClass {
+	@Test (groups = {"RegressionCHOV","SanityCHOV"})
     public void checkChannelLineupAndViewPdf() {
-		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.chOneViewConfig.getOneViewenv());
+		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("Launched the account dashboard page");
 		getAccountOverViewPage().selectTVBadage();
 		reporter.reportLogWithScreenshot("Lanched the HomePhone dashboard page ");
@@ -30,12 +31,13 @@ public class OneViewCH_TC_018f_TV_ChannelLineupViewPDFTest extends BaseTestClass
 		getTVDashboardPage().clickViewPdf();
 		reporter.reportLogWithScreenshot("PDF view clicked");
     }
-    
-	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
-	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  String strGroupName, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+
+	@BeforeMethod (alwaysRun=true)
+	@Parameters({"strBrowser", "strLanguage"})
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startOVSession(System.getProperty("QaUrl"),strBrowser, strLanguage,strGroupName, "",TestDataHandler.solarisAccount.accountDetails.getBan(),TestDataHandler.chOneViewConfig.getUsrID(), TestDataHandler.chOneViewConfig.getLoginID(),  method);
-  	}
+		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage,RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.igniteTVParentalcontrols.contactDetails.getContactID(), TestDataHandler.igniteTVParentalcontrols.accountDetails.getBan(), System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+	}
 
 
 	@AfterMethod(alwaysRun = true)

@@ -27,33 +27,31 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 	WebElement checkOut;
 	/**
 	 * Click Exchange Later btn
-	 * @author Harpartap.Virk
+	 * @author Chinnarao.Vattam
 	 */	
 	public void clkexchangeLater() {
 		getReusableActionsInstance().clickWhenReady(exchangeLaterbtn);
 	}
 	
-	
-	/**
+		/**
 	 * Click Collapse(Down Arrow)
-	 * @author Harpartap.Virk
+	 * @author Chinnarao.Vattam
 	 */	
 	public void clkCollapse() {
 		getReusableActionsInstance().clickIfAvailable(collapse,60);
 	}
 	/**
 	 * Click Customer Add-On review
-	 * @author harpartap.virk
+	 * @author Chinnarao.Vattam
 	 */
 	public void clkCustomerAddonReview() {
-			//getReusableActionsInstance().javascriptScrollByVisibleElement(btnGetIgniteTVBadge);
 			getReusableActionsInstance().getWhenReady(customerAddonReveiwLink,120).click();
 		}
 	
 	/**
 	 * Verify reviewed all of the customer’s legacy add-ons.
 	 * @return true if reviewed, else false
-	 * @author Harpartap.Virk
+	 * @author Chinnarao.Vattam
 	 */	
 	public boolean verifyreviewed() {	
 		return getReusableActionsInstance().isElementVisible(continueButton,120);
@@ -62,21 +60,17 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 	
 	/**
 	 * Click Checkout for channels Exchange
-	 * @author Harpartap.Virk
+	 * @author Chinnarao.Vattam
 	 */	
 	public void clkCheckOut() {
 		getReusableActionsInstance().clickWhenReady(checkOut,120);
-		//getReusableActionsInstance().clickIfAvailable(checkOut,45);
-		//getReusableActionsInstance().clickIfAvailable(continueforCheckout,45);
 	}
 	/**
 	 * Click Continue
-	 * @author Harpartap.Virk
+	 * @author Chinnarao.Vattam
 	 */	
 	public void clkContinue() {
 		getReusableActionsInstance().getWhenReady(continueButton,120).sendKeys(Keys.ENTER);
-		//getReusableActionsInstance().clickIfAvailable(checkOut,45);
-		//getReusableActionsInstance().clickIfAvailable(continueforCheckout,45);
 	}
 }
 

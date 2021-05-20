@@ -1,6 +1,7 @@
 package com.rogers.oneview.pages;
 
 import com.rogers.pages.base.BasePageClass;
+import com.rogers.testdatamanagement.TestDataHandler;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -20,23 +21,25 @@ public class AccountOverViewPage  extends BasePageClass {
 			@FindBy(xpath = "//agent-notifications/div[contains(@class,'blocker')]"),
 	})
 	WebElement skipNotification;
-	
-	@FindBy(xpath = "//span[@class='ute-icon-tv']")
-	WebElement btnTVBadge;
-	
-	@FindBy(xpath = "//span[@class='ute-icon-internet']")
-	WebElement btnInternetBadge;
-	
 
-	@FindBy(xpath = "//span[@class='ute-icon-home-phone']")
+	@FindBy(xpath = "//div[contains(@class,'IPTV')]")
+	WebElement btnTVBadge;
+
+	@FindBy(xpath = "//span[@class='icon rui-icon-internet-v2']")
+	WebElement btnInternetBadge;
+
+	@FindAll({
+	@FindBy(xpath = "//t[text()='Ignite Home Phone']"),
+			@FindBy(xpath = "//span[@class='ute-icon-home-phone']")})
 	WebElement btnHomePhoneBadge;
-	
-	@FindBy(xpath = "//div[@translate='myaccoverview_get_ignite_bundle']/ancestor::div[@role='button']")
+	@FindAll({
+	@FindBy(xpath = "//div[@translate='myaccoverview_get_ignite_bundle']/ancestor::div[@role='button']"),
+	@FindBy(xpath = "//div[@class='service-badge tv active-ind IPTV']")})
 	WebElement btnGetIgniteTVBadge;
-	
+
 	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.total_balance' or text()='Total balance' or text()='Total du solde'  or text()='Total Balance']")
 	WebElement infoBalanceLable;
-	
+
 	//ToDo Change the index
 	//@FindBy(xpath = "//div[@class='oneview-dialog']//button")
 	@FindBy(xpath = "(//app-dialog//i[@class='close rui-icon-mobile-menu-exit'])[2]")
@@ -85,21 +88,21 @@ public class AccountOverViewPage  extends BasePageClass {
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().clickIfAvailable(btnOneViewDataManagerDialogue,30);
 	}
-	
+
 	/**
 	 * Selects the Internet Badge on the account dashbaord
-	 * @author Drashti.Patel
+	 * @author chinnarao.vattam
 	 */
 	public void selectInternetBadage() {
 		WebElement btn=getReusableActionsInstance().getWhenReady(btnInternetBadge,120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
 		getReusableActionsInstance().clickWhenReady(btnInternetBadge,45);
-		
+
 		}
-		
+
 	/**
 	 * Selects the Home Phone Badge on the account dashbaord
-	 * @author Drashti.Patel
+	 * @author chinnarao.vattam
 	 */
 	public void selectHomePhoneBadge() {
 		WebElement btn=getReusableActionsInstance().getWhenReady(btnHomePhoneBadge,120);
@@ -107,35 +110,30 @@ public class AccountOverViewPage  extends BasePageClass {
 		getReusableActionsInstance().clickWhenReady(btnHomePhoneBadge,45);
 		}
 
-	
 	/**
 	 * Selects the TV Badge on the account dashbaord
-	 * @param   strBrowser is the browser to be run 
 	 * @author Chinnarao.Vattam
 	 */
-	public void selectTVBadage(String strBrowser) {
-		WebElement btn=getReusableActionsInstance().getWhenReady(btnTVBadge,120);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
-		getReusableActionsInstance().clickWhenReady(btnTVBadge,45);
-		
-		}
-	/**
-	 * Selects the TV Badge on the account dashbaord
-	 * @author Drashti.Patel
-	 */
 	public void selectTVBadage() {
-		WebElement btn=getReusableActionsInstance().getWhenReady(btnTVBadge,120);
+		if(getReusableActionsInstance().isElementVisible(delearCodeOneViewDialogue,30)) {
+			getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 50).sendKeys("0MAAA");
+			getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue,30);
+		}
+		WebElement btn=getReusableActionsInstance().getWhenReady(btnTVBadge,90);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
 		getReusableActionsInstance().clickWhenReady(btnTVBadge,45);
 		}
 	/**
 	 * Selects the Get Ignite TV Badge on the account dashbaord
-	 * @author harpartap.virk
+	 * @author Chinnarao.Vattam
 	 */
 	public void selectGetIgniteTVBadge() {
-			//getReusableActionsInstance().javascriptScrollByVisibleElement(btnGetIgniteTVBadge);
+		if(getReusableActionsInstance().isElementVisible(delearCodeOneViewDialogue,30)) {
+			getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 50).sendKeys("0MAAA");
+			getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue,30);
+		}
 			getReusableActionsInstance().getWhenReady(btnGetIgniteTVBadge, 50).sendKeys(Keys.ENTER);
-		}	
+		}
 	/**
 	 * Validates and clicks on the Wireless Phone Number
 	 * @param strCTN - Phone Number
@@ -144,7 +142,7 @@ public class AccountOverViewPage  extends BasePageClass {
 	 */
 	public boolean verifyAndClickWirelessCTN(String strCTN) {
 		strCTN = strCTN.replace("-", "").replace(" ", "");
-		strCTN = "(" + strCTN.substring(0, 3) + ") " + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);		
+		strCTN = "(" + strCTN.substring(0, 3) + ") " + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);
 		String strCTNXpath = "//*[contains(text(),'" + strCTN + "')]";
 		WebElement subNumber = getDriver().findElement(By.xpath("//*[contains(text(),'"+strCTN+"')]"));
 		getReusableActionsInstance().clickIfAvailable(By.xpath("//div[@class='rep-notifications permitted']//div[@class='blocker']"));
@@ -175,7 +173,7 @@ public class AccountOverViewPage  extends BasePageClass {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * To verify the successful login
 	 * @return true if the balance label is present ; else false

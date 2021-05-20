@@ -23,7 +23,7 @@ public class CustomerProfilePage  extends BasePageClass {
 	/**
 	 * Verify the Customer Profile Page is Displayed
 	 * @return true if Customer Profile is Displayed, else false
-	 * @author Harpartap.Virk
+	 * @author chinnarao.vattam
 	 */	
 	public boolean verifyCustomerProfile() {
 		getReusableActionsInstance().clickIfAvailable(collapse,60);
@@ -32,7 +32,7 @@ public class CustomerProfilePage  extends BasePageClass {
 	}
 	/**
 	 * Click Continue Button 
-	 * @author Harpartap.Virk
+	 * @author chinnarao.vattam
 	 */	
 	public void clkContinue() {	
 		getReusableActionsInstance().getWhenReady(continueButton,120).sendKeys(Keys.ENTER);

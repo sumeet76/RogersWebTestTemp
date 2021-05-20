@@ -35,7 +35,7 @@ public class FulfillmentPage  extends BasePageClass {
 	WebElement dates;
 	/**
 	 * Click First Available Appointment
-	 * @author Harpartap.Virk
+	 * @author Chinnarao.Vattam
 	 */	
 	public void clkFirstAvailableAppointment() {
 		String ki="";
@@ -64,20 +64,18 @@ public class FulfillmentPage  extends BasePageClass {
 		}
 		getReusableActionsInstance().getWhenReady(firstAvailableAppointment,60);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(firstAvailableAppointment);
-		//getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().executeJavaScriptClick(firstAvailableAppointment);
 	}
 	/**
 	 * Click Continue Button  
-	 * @author Harpartap.Virk
+	 * @author Chinnarao.Vattam
 	 */	
 	public void clkContinue() {	
-		//getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().getWhenReady(continueButton).sendKeys(Keys.ENTER);
 	}
 	/**
 	 * Click Agree Condition  
-	 * @author Harpartap.Virk
+	 * @author Chinnarao.Vattam
 	 */	
 	public void selectChkboxAgreeCondition() {	
 		WebElement btn=getReusableActionsInstance().getWhenReady(agreeCondition,120);

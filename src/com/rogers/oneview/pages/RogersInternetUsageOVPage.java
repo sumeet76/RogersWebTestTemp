@@ -13,7 +13,7 @@ public class RogersInternetUsageOVPage extends BasePageClass {
 
 	@FindBy(xpath = "//table[@class='usage-table']")
 	WebElement tblDailyBreakdown;
-	
+
 	@FindBy(xpath = "//button[@translate='global.dashboard.internetUsage.monthlyUsage']")
 	WebElement btnMonthlyUsage;
 
@@ -23,12 +23,11 @@ public class RogersInternetUsageOVPage extends BasePageClass {
 	@FindBy(xpath = "//button[@translate='global.dashboard.internetUsage.usageAlerts']")
 	WebElement btnUsageAlerts;
 
-
 	/**
 	 * Verify the Internet Daily Breakdown table on daily usage page
 	 * @param   strBrowser is the browser to be run 
 	 * @return true if element is visible, else false
-	 * @author Drashti.Patel
+	 * @author chinnarao.vattam
 	 */
 	public boolean verifyDailyBreakdownTable(String strBrowser) {
 		if (strBrowser.equalsIgnoreCase("firefox"))
@@ -39,14 +38,13 @@ public class RogersInternetUsageOVPage extends BasePageClass {
 	{
 		getReusableActionsInstance().scrollToElement(tblDailyBreakdown);
 		return getReusableActionsInstance().isElementVisible(tblDailyBreakdown,120);
-		
-	}
+			}
 	}
 
 	/**
 	 * Click on the Internet Monthly usage link
 	 * @param   strBrowser is the browser to be run  
-	 * @author Drashti.Patel
+	 * @author chinnarao.vattam
 	 */
 	public void clkMonthlyUsage(String strBrowser) {
 		if (strBrowser.equalsIgnoreCase("firefox"))
@@ -57,14 +55,13 @@ public class RogersInternetUsageOVPage extends BasePageClass {
 		}else {
 		getReusableActionsInstance().scrollToElement(btnMonthlyUsage);
 		getReusableActionsInstance().clickWhenReady(btnMonthlyUsage,120);
-
 	}
 	}
 	/**
 	 * Verify the Internet Monthly Breakdown table Internet usage page
 	 * @param   strBrowser is the browser to be run 
 	 * @return true if element is visible, else false
-	 * @author Drashti.Patel
+	 * @author chinnarao.vattam
 	 */
 	public boolean verifyMonthlyBreakdownTable(String strBrowser) {	
 		if (strBrowser.equalsIgnoreCase("firefox"))
@@ -77,11 +74,10 @@ public class RogersInternetUsageOVPage extends BasePageClass {
 		}
 	}
 
-	
 	/**
 	 * Click on the Usage Alerts link on Solaris Internet usage page
 	 * @param   strBrowser is the browser to be run 
-	 * @author Drashti.Patel
+	 * @author chinnarao.vattam
 	 */
 	public void clkUsageAlerts(String strBrowser) {		
 		getReusableActionsInstance().javascriptScrollToTopOfPage();

@@ -11,57 +11,53 @@ public class InternetDashboardPage  extends BasePageClass {
 	public InternetDashboardPage(WebDriver driver) {
 		super(driver);
 	}
-	
-	
-	
 	@FindBy(xpath = "//button[@class='a-btnPrimary ng-star-inserted']")
 	WebElement btnContnue;
-	
+
 	@FindBy(xpath = "//div[@class='nsm-dialog success nsm-dialog-open']//preceding::i[@class='rch-icon']")
 	WebElement imgSuccess;
-	
+
 	@FindBy(xpath = "//button[@class='a-btnPrimary ng-star-inserted']")
 	WebElement btnSuccessOk;
-	
-	
+
+
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement popupLoadingFinger;
-	
+
 	@FindBy(xpath = "//div[@class='header']")
 	WebElement icnHeader;
-	
+
 	@FindBy(xpath = "//div[@class='header']")
 	WebElement icnFooter;
-	
+
 	@FindBy(xpath = "//div[@class='second-level-nav__cta']//button[@class='b-linkCta']")
 	WebElement btnBackToAccountOverview;
-	
-	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -secondary -large ng-star-inserted']")
+
+	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large']")
 	WebElement btnUsageAndAlerts;
-	
+
 	@FindBy(xpath = "//a[@href='https://www.rogers.com/consumer/internet/mesh-whole-home-wifi-network?ipn=1']")
 	WebElement lnkLearnMoreWallToWallWifi;
-		
+
 	@FindBy(xpath = "//a[@href='/customer/support/article/understanding-wi-fi']")
 	WebElement lnkUnderstandingWifi;
-	
+
 	@FindBy(xpath = "//a[@href='/customer/support/article/tips-for-placing-eeros']")
 	WebElement lnkTipsForPlacingEero;
-	
+
 	@FindBy(xpath = "//a[@href='/customer/support/article/internet-speedtest']")
 	WebElement lnkTestInternetSpeed;
-	
+
 	@FindBy(xpath = "//a[@href='/customer/support/article/how-to-optimize-your-internet-speed-and-wi-fi']")
 	WebElement lnkHowToOptimizeSpeed;
-	
+
 	@FindBy(xpath = "//a[@href='/consumer/support/internet/IgniteInternet']")
 	WebElement lnkGoToSupportSection;
-	
-	
+
 	/**
 	 * Verify the result
 	 * @return true if link is visible, else false
-	 * @author Drashti.Patel
+	 * @author chinnarao.vattam
 	 */	
 	public boolean verifLlnkLearnMoreWallToWallWifi() {
 		getReusableActionsInstance().waitForElementVisibility(lnkLearnMoreWallToWallWifi, 120);
@@ -73,7 +69,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	/**
 	 * Verify the result
 	 * @return true if link is visible, else false
-	 * @author Drashti.Patel
+	 * @author chinnarao.vattam
 	 */	
 	public boolean verifyLnkUnderstandingWifi() {		
 		return getReusableActionsInstance().isElementVisible(lnkUnderstandingWifi,120);
@@ -82,7 +78,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	/**
 	 * Verify the result
 	 * @return true if link is visible, else false
-	 * @author Drashti.Patel
+	 * @author chinnarao.vattam
 	 */	
 	public boolean verifyLnkTipsForPlacingEero() {		
 		return getReusableActionsInstance().isElementVisible(lnkTipsForPlacingEero,120);
@@ -91,7 +87,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	/**
 	 * Verify the result
 	 * @return true if link is visible, else false
-	 * @author Drashti.Patel
+	 * @author chinnarao.vattam
 	 */	
 	public boolean verifyLnkTestInternetSpeed() {		
 		return getReusableActionsInstance().isElementVisible(lnkTestInternetSpeed,120);
@@ -101,7 +97,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	/**
 	 * Verify the result
 	 * @return true if link is visible, else false
-	 * @author Drashti.Patel
+	 * @author chinnarao.vattam
 	 */	
 	public boolean verifyLnkHowToOptimizeSpeed() {		
 		return getReusableActionsInstance().isElementVisible(lnkHowToOptimizeSpeed,120);
@@ -110,7 +106,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	/**
 	 * Verify the result
 	 * @return true if link is visible, else false
-	 * @author Drashti.Patel
+	 * @author chinnarao.vattam
 	 */	
 	public boolean verifyLnkGoToSupportSection() {		
 		return getReusableActionsInstance().isElementVisible(lnkGoToSupportSection,120);
@@ -119,31 +115,25 @@ public class InternetDashboardPage  extends BasePageClass {
 	
 	/**
 	 * Click the view usage and alerts button
-	 * @author Drashti.Patel
+	 * @author chinnarao.vattam
 	 */
 	public void clickbtnUsageAndAlerts() {
 		WebElement btn=getReusableActionsInstance().getWhenReady(btnUsageAndAlerts,120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
 		getReusableActionsInstance().clickWhenReady(btnUsageAndAlerts,45);
 		}
-	
-	/**
-		
-	
+
 	/**
 	 * Click the back to overview button which brings the account overview page up
-	 * @author Drashti.Patel
+	 * @author chinnarao.vattam
 	 */
 	public void clickBacktoAccountOverview() {
 		getReusableActionsInstance().getWhenReady(btnBackToAccountOverview,120).click();
 		}
-	
-	/**
-		
-	
+
 	/**
 	 *click continue for the ongoing activity on Internet dashboard page
-	 * @author Drashti.Patel
+	 * @author chinnarao.vattam
 	 */
 	public void clickContinue() {
 		getReusableActionsInstance().getWhenReady(btnContnue,120).click();
@@ -152,7 +142,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	/**
 	 * Verify the result
 	 * @return true if operation is successful, else false
-	 * @author Drashti.Patel
+	 * @author chinnarao.vattam
 	 */	
 	public boolean verifySuccess() {
 		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFinger, 120);
@@ -161,7 +151,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	
 	/**
 	 * Click "Ok" on success popup
-	 * @author Drashti.Patel
+	 * @author chinnarao.vattam
 	 */
 	public void clickSuccessOk() {
 		getReusableActionsInstance().getWhenReady(btnSuccessOk, 120).click();
@@ -170,7 +160,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	/**
 	 * Verify the header availability
 	 * @return true if header is available on TV DashboardPage, else false
-	 * @author Drashti.Patel
+	 * @author chinnarao.vattam
 	 */	
 	public boolean verifyHeader() {	
 		getReusableActionsInstance().waitForElementVisibility(icnHeader,120);
@@ -180,7 +170,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	/**
 	 * Verify the footer availability
 	 * @return true if footer is available on TV DashboardPage, else false
-	 * @author Drashti.Patel
+	 * @author chinnarao.vattam
 	 */	
 	public boolean verifyFooter() {
 		
@@ -189,7 +179,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	
 	/**
 	 * Go to Page bottom
-	 * @author Drashti.Patel
+	 * @author chinnarao.vattam
 	 */	
 	public void goToPageBottom() {		
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
@@ -198,7 +188,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	
 	/**
 	 * Go to Page bottom
-	 * @author Drashti.Patel
+	 * @author chinnarao.vattam
 	 */	
 	public void goToPageMid() {		
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();;

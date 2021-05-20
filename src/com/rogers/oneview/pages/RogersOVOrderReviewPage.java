@@ -80,17 +80,16 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(rdbtnEmail, 60);
 	}
 
-	
 	/**
 	 * Expand Monthly Bill
-	 * @author Harpartap.Virk
+	 * @author chinnarao.vattam
 	 */	
 	public void expandMonthlyBill() {
 		getReusableActionsInstance().clickWhenReady(monthlyBill,120);
 	}
 	/**
 	 * Expand Monthly Bill
-	 * @author Harpartap.Virk
+	 * @author chinnarao.vattam
 	 */	
 	public void expandOneTimeFees() {
 		if(getReusableActionsInstance().isElementVisible(oneTimeFees,120))
@@ -100,18 +99,17 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	}
 	/**
 	 * Click Submit Button  
-	 * @author Harpartap.Virk
+	 * @author chinnarao.vattam
 	 */	
 	public void clkSubmit() {	
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().clickWhenReady(submitButton);
-		//getReusableActionsInstance().staticWait(8000);
 	}
 	/**
 	 * Verify Monthly Charges Appear
 	 * @return true if Monthly Charges Appear, else false
-	 * @author Harpartap.Virk
+	 * @author chinnarao.vattam
 	 */	
 	public boolean verifyMonthlyCharges() {	
 	if(getReusableActionsInstance().isElementVisible(totalMonthlyFees,120)){
@@ -120,7 +118,6 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 		return true;
 	}else
 		return false;
-	
 	}
 	
 	/**
