@@ -45,7 +45,6 @@ public class RogersSS_TC_015_ValidatePaymentHistoryOfWirelessPostpaid_NoPayment 
 				"Login Error. Refer screenshot");
 
 		getRogersAccountOverviewPage().clkPaymentHistory();
-
 		reporter.hardAssert(getRogersPaymentHistoryPage().verifyPaymentHistoryIsDisplayed(), 
 				"Payment history is displayed",
 				"Payment history is not displayed as expected.");

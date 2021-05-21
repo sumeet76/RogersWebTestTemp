@@ -51,36 +51,36 @@ public class RogersSS_TC_98_AO_ValidateAccountOverviewAndCTAdetailsForThePrepaid
         
         reporter.hardAssert(getRogersAccountOverviewPage().isTopUpButtonDisplayed(),
         		"Top up button is displayed on AO page","Top up button not displayed on AO page");
-        reporter.hardAssert(getRogersAccountOverviewPage().isCurrentAccountBalanceDisplayed(),"Current acount balance is displayed","Current acount balance is NOT displayed");
-        reporter.hardAssert(getRogersAccountOverviewPage().isBalanceExpiresOnDisplayedOnAOPage(),"Balance expires on is displayed","Balance expires on is NOT displayed");
-        reporter.hardAssert(getRogersAccountOverviewPage().isLnkUpdatePaymentMethodDisplayedOnAOPage(),"Link Update payment method is displayed","Link Update payment method is NOT displayed");
-        reporter.hardAssert(getRogersAccountOverviewPage().isLnkViewCallTransactionHistoryDisplayedOnAOPage(),"Link View Call Transaction history is displayed","Link View Call Transaction history is NOT displayed");
-        reporter.hardAssert(getRogersAccountOverviewPage().isBalanceExpiresOnDisplayedOnAOPage(),"Balance expires on is displayed","Balance expires on is not displayed");
-        reporter.hardAssert(getRogersAccountOverviewPage().isCTNWidgetIsDisplayedOnAOPg(),"CTN widget is displayed","CTN widget is not displayed");
+        reporter.softAssert(getRogersAccountOverviewPage().isCurrentAccountBalanceDisplayed(),"Current acount balance is displayed","Current acount balance is NOT displayed");
+        reporter.softAssert(getRogersAccountOverviewPage().isBalanceExpiresOnDisplayedOnAOPage(),"Balance expires on is displayed","Balance expires on is NOT displayed");
+        reporter.softAssert(getRogersAccountOverviewPage().isLnkUpdatePaymentMethodDisplayedOnAOPage(),"Link Update payment method is displayed","Link Update payment method is NOT displayed");
+        reporter.softAssert(getRogersAccountOverviewPage().isLnkViewCallTransactionHistoryDisplayedOnAOPage(),"Link View Call Transaction history is displayed","Link View Call Transaction history is NOT displayed");
+        //reporter.hardAssert(getRogersAccountOverviewPage().isBalanceExpiresOnDisplayedOnAOPage(),"Balance expires on is displayed","Balance expires on is not displayed");
+        reporter.softAssert(getRogersAccountOverviewPage().isCTNWidgetIsDisplayedOnAOPg(TestDataHandler.tc5398.getAccountDetails().getCtn()),"CTN widget is displayed","CTN widget is not displayed");
         
         getCommonBusinessFlows().scrollToMiddleOfWebPage();
         reporter.reportLogWithScreenshot("Account overview middle view");
-        reporter.hardAssert(getRogersAccountOverviewPage().isAccountPreferencesSectionDisplayedAOPg(),"Account preference section is displayed","Account preference section is NOT displayed");
-        reporter.hardAssert(getRogersAccountOverviewPage().isOtherServicesDisplayedOnAOPg(),"Other service is displayed","Other service is not displayed");
+        //reporter.hardAssert(getRogersAccountOverviewPage().isAccountPreferencesSectionDisplayedAOPg(),"Account preference section is displayed","Account preference section is NOT displayed");
+        //reporter.hardAssert(getRogersAccountOverviewPage().isOtherServicesDisplayedOnAOPg(),"Other service is displayed","Other service is not displayed");
         getCommonBusinessFlows().scrollToTopOfWebPage();
-        getRogersAccountOverviewPage().clkCTNWidget();
+        getRogersAccountOverviewPage().clkCTNWidget(TestDataHandler.tc5398.getAccountDetails().getCtn());
         reporter.reportLogWithScreenshot("Prepaid Dashboard view");
         
-        reporter.hardAssert(getRogersWirelessDashboardPage().isPrepaidHeaderDisplayed(),"Prepaid header is displayed on Dashboard page","Prepaid header is NOT displayed on Dashboard page");
-        reporter.hardAssert(getRogersWirelessDashboardPage().isPrepaidManageMyPlanAndDataAddOnheaderDisplayed(),"Manage my plan and data add on header is displayed","Manage my plan and data add on header is NOT displayed");
-        reporter.hardAssert(getRogersWirelessDashboardPage().isPrepaidPlanDetailsSectionDisplayed(),"Plan details section is displayed","Plan details section is NOT displayed");
-        reporter.hardAssert(getRogersWirelessDashboardPage().isPrepaidNextPaymentDateSectionDisplayed(),"Next payment date section is displayed","Next payment date section is NOT displayed");
-        reporter.hardAssert(getRogersWirelessDashboardPage().isPrepaidTopUpNowButtonDisplayed(),"Top up now button is displayed","Top up now button is NOT displayed");
-        reporter.hardAssert(getRogersWirelessDashboardPage().isPrepaidChangeMyPlanDisplayed(),"Prepaid Change my Plan is displayed","Prepaid Change my Plan is NOT displayed");
+        reporter.softAssert(getRogersWirelessDashboardPage().isPrepaidHeaderDisplayed(),"Prepaid header is displayed on Dashboard page","Prepaid header is NOT displayed on Dashboard page");
+        reporter.softAssert(getRogersWirelessDashboardPage().isPrepaidManageMyPlanAndDataAddOnheaderDisplayed(),"Manage my plan and data add on header is displayed","Manage my plan and data add on header is NOT displayed");
+        reporter.softAssert(getRogersWirelessDashboardPage().isPrepaidPlanDetailsSectionDisplayed(),"Plan details section is displayed","Plan details section is NOT displayed");
+        reporter.softAssert(getRogersWirelessDashboardPage().isPrepaidNextPaymentDateSectionDisplayed(),"Next payment date section is displayed","Next payment date section is NOT displayed");
+        reporter.softAssert(getRogersWirelessDashboardPage().isPrepaidTopUpNowButtonDisplayed(),"Top up now button is displayed","Top up now button is NOT displayed");
+        reporter.softAssert(getRogersWirelessDashboardPage().isPrepaidChangeMyPlanDisplayed(),"Prepaid Change my Plan is displayed","Prepaid Change my Plan is NOT displayed");
         
-        reporter.hardAssert(getRogersWirelessDashboardPage().isPrepaidManageMyAddOnsDisplayed(),"Manage my add ons is displayed","Manage my add ons is NOT displayed");
-        reporter.hardAssert(getRogersWirelessDashboardPage().isMyWirelessNumberSectionDisplayed(),"Wireless number section is displayed","Wireless number section is NOT displayed");
-        reporter.hardAssert(getRogersWirelessDashboardPage().isPrepaidPinCodeDisplayed(),"Prepaid pin code is displayed","Prepaid pin code is NOT displayed");
-        reporter.hardAssert(getRogersWirelessDashboardPage().isPrepaidChangeMyPinCodeDisplayed(),"Change my pin code is displayed","Change my pin code is NOT displayed");
+        reporter.softAssert(getRogersWirelessDashboardPage().isPrepaidManageMyAddOnsDisplayed(),"Manage my add ons is displayed","Manage my add ons is NOT displayed");
+        reporter.softAssert(getRogersWirelessDashboardPage().isMyWirelessNumberSectionDisplayed(),"Wireless number section is displayed","Wireless number section is NOT displayed");
+        reporter.softAssert(getRogersWirelessDashboardPage().isPrepaidPinCodeDisplayed(),"Prepaid pin code is displayed","Prepaid pin code is NOT displayed");
+        reporter.softAssert(getRogersWirelessDashboardPage().isPrepaidChangeMyPinCodeDisplayed(),"Change my pin code is displayed","Change my pin code is NOT displayed");
         getCommonBusinessFlows().scrollToMiddleOfWebPage();
         reporter.reportLogWithScreenshot("Dashboard Middle view");
         
-        reporter.hardAssert(getRogersWirelessDashboardPage().isPrepaidStartOrTrackAPhoneRepairClaimDisplayed(),"Start or track a phone repair is displayed","Start or track a phone repair is NOT displayed");
+        reporter.softAssert(getRogersWirelessDashboardPage().isPrepaidStartOrTrackAPhoneRepairClaimDisplayed(),"Start or track a phone repair is displayed","Start or track a phone repair is NOT displayed");
           
         getCommonBusinessFlows().scrollToBottomOfWebPage();
         reporter.reportLogWithScreenshot("Dashboard Bottom view");
