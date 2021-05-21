@@ -30,7 +30,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ute-icon-internet']")
 	WebElement btnInternetBadge;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-tv']")
+	@FindAll({
+	@FindBy(xpath = "//span[@class='ds-icon rds-icon-tv']"),
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-tv']")})
 	WebElement btnSmartStream;
 
 	@FindAll({
@@ -642,7 +644,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		}
 
 	/**
-	 * Clicks on the 'RHP Badge' option on the dash board
+	 * Clicks on the 'Smart Stream Badge' option on the dash board
 	 * @author chinnarao.vattam
 	 */
 	public void clkSmartStream() {
