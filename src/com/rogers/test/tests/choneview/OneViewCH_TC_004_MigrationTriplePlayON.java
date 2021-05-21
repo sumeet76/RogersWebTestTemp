@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_TC_004_MigrationTriplePlayON extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
-    public void endToEndFlowAnonymousCustomerTriplePlayTest(){
+    public void endToEndMigrationTriplePlayTest(){
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().selectGetIgniteTVBadge();

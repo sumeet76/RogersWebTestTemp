@@ -17,7 +17,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 
 public class OneViewCH_TC_018b_Internet_HeaderFooterUsageTest extends BaseTestClass {
-	@Test (groups = {"RegressionCHOV","SanityCHOV"})
+	@Test (groups = {"RegressionCHOV"})
     public void checkInternetHeaderFooterAndUsage() {
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("Launched the account dashboard page");
@@ -50,7 +50,7 @@ public class OneViewCH_TC_018b_Internet_HeaderFooterUsageTest extends BaseTestCl
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest(ITestResult res) {
-		closeSession();
+		//closeSession();
 	}
 
 }
