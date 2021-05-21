@@ -28,7 +28,7 @@ public class RogersSS_TC_122_ValidateDeviceSectionAndDeviceDetailsModalForCXWith
 		closeSession();
 	}
 	
-	@Test(groups = {"RegressionSS","WirelessDashboardSS","CAMShiled"})
+	@Test(groups = {"CAMShiled"})
 	public void validateDeviceSectionAndDeviceDetailsModalForCXWithFinanceNotPaidOFF_ON_chrome_EN() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc01FinanceNotPaidOff_ON.getUsername();
