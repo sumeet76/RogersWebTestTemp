@@ -55,7 +55,7 @@ pipeline {
                     # we let the build run with the default name
                     00 05 * * 1-5 %Browser=saucechrome;Language=en;Groups=SanityCH;ThreadCount=2;TestProfile=ConnectedHome
                     30 05 * * 1-5 %Browser=saucechrome;Language=en;Groups=SanitySS;ThreadCount=3;TestProfile=SelfServe
-                    00 07 * * 1-5 %Browser=saucechrome;Language=en;Groups=SanityBFA;ThreadCount=3;TestProfile=BuyFlows
+                    20 18 * * 1-5 %Browser=saucechrome;Language=en;Groups=SanityBFA;ThreadCount=3;TestProfile=BuyFlows
                     
                 ''':'')
     }
