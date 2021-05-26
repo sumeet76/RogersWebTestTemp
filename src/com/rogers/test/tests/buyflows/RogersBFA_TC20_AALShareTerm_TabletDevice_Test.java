@@ -63,6 +63,8 @@ public class RogersBFA_TC20_AALShareTerm_TabletDevice_Test extends BaseTestClass
         getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc20AALTermTablet.getDeviceCostIndex()));
         reporter.hardAssert(getRogersPlanConfigPage().verifyTabletDataTalkOptionSelected(),"Data and Talk option selected successfully","Data and Talk option not selected");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
+        getRogersPlanConfigPage().clkCallerIDContinueBtnForTablet();
+        reporter.reportLogWithScreenshot("CalledID details entered");
         String monthlyFeesAmountWithTax = getRogersPlanConfigPage().getMonthlyFeesAmount();
         String oneTimeFeesAmountWithTax = getRogersPlanConfigPage().getOneTimeFeesAmount();
         reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees " + monthlyFeesAmountWithTax + "2. oneTimeFee " + oneTimeFeesAmountWithTax);

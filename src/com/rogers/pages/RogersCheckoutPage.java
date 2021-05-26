@@ -4,6 +4,7 @@ import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.FormFiller;
@@ -69,7 +70,10 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "(//div[contains(.,'Billing Address')])[13]//input[contains(@id,'ds-form-input-id')]")
 	WebElement inputBillingAddress;
 
-	@FindBy(xpath = "//r-address-auto-complete[@data-test='personal-info-address']//li[@class='ng-star-inserted'][1]")
+	@FindAll({
+			@FindBy(xpath = "(//ds-auto-complete//li)[1]"),
+			@FindBy(xpath = "//r-address-auto-complete[@data-test='personal-info-address']//li[@class='ng-star-inserted'][1]")
+	})
 	WebElement billingAddressSelection;
 
 	@FindBy(xpath = "//div[@data-test='ba-eligible']/div")
@@ -485,8 +489,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	public String setBillingAddressCreateProfile(String billingAddress) {
 		getReusableActionsInstance().clickWhenReady(billingAddressCreateProfile);
 		inputBillingAddress.sendKeys(billingAddress);
-		//getReusableActionsInstance().getWhenReady(inputBillingAddress,15).sendKeys(billingAddress);
-		getReusableActionsInstance().moveToElementAndClick(billingAddressSelection, 5);
+		getReusableActionsInstance().waitForElementVisibility(billingAddressSelection,20);
+		getReusableActionsInstance().executeJavaScriptClick(billingAddressSelection);
 		return getReusableActionsInstance().getWhenReady(inputBillingAddress,20).getAttribute("value");
 	}
 

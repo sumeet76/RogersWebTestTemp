@@ -336,6 +336,8 @@ public class RogersBuildPlanPage extends BasePageClass {
 	 */
 	public void selectExistingPlan() {
 		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(lnkKeepExisting, 40));
+		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(By.xpath("(//div[contains(@class,'btn button')])[2]")));
+		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(lnkKeepExisting, 40));
 		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(btnSelectExistingPlan, 30));
 	}
 
