@@ -31,7 +31,7 @@ public class RogersBFA_TC19_AALNonShareNoTerm_QCProv_SS_Test extends BaseTestCla
         getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");
-        getDriver().get(System.getProperty("AWSAALUrl")+"&province=qc");
+        getDriver().get(System.getProperty("AWSUrl")+"?flowType=aal&province=qc");
         //------------------------------------Device Catalog page--------------------------------------------
         reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvaluationPopupPresent(), "Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
         reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed", "Credit Evaluation Text not disaplayed on Modal");

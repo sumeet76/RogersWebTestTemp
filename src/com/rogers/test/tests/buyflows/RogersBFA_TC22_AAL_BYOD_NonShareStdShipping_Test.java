@@ -37,7 +37,7 @@ public class RogersBFA_TC22_AAL_BYOD_NonShareStdShipping_Test extends BaseTestCl
         getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");
-        getDriver().get(System.getProperty("AWSAALUrl"));
+        getDriver().get(System.getProperty("AWSUrl")+"?flowType=aal");
         //------------------------------------Device Catalog page--------------------------------------------
         reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvaluationPopupPresent(), "Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
         reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed", "Credit Evaluation Text not disaplayed on Modal");
