@@ -393,7 +393,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//*[contains(text(),'Confirm') or contains(text(),'Continue') or contains(text(),'Confirmer') or contains(text(),'Continuer')]")
 	WebElement btnConfirm;
 
-	@FindBy(xpath = "//*[text()='OK']")
+	@FindBy(xpath = "//*[text()='OK' or text()='Continue']")
 	WebElement btnOK;
 
 	@FindBy(xpath = "//p[text()='Subscription cancelled' or contains(text(),'Abonnement annul')]")

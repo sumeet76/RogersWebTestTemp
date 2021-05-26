@@ -27,7 +27,7 @@ public class RogersAddDataPage extends BasePageClass {
 	@FindBy (xpath = "//span[contains(text(),'Continue') or contains(text(),'Continuer')]")
 	WebElement btnContinue;
 	
-	@FindBy (xpath = "//ins[@translate='purchaseData.purchaseBtn']")
+	@FindBy (xpath = "//*[@translate='purchaseData.purchaseBtn' or text()='Purchase' or text()='Acheter']")
 	WebElement btnPurchase;
 	
 	@FindBy (xpath = "//h2[@class='add-data-modal-title success-title']")

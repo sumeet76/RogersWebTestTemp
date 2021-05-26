@@ -3,6 +3,7 @@ package com.rogers.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -39,8 +40,10 @@ public class RogersSpeedPassPage extends BasePageClass {
 	
 	@FindBy (xpath = "//h2[@class='add-data-modal-title success-title']")
 	WebElement msgSuccessAddedSP;
-	
-	@FindBy (xpath = "//span[@class='ds-icon rds-icon-error' or @class='ds-icon rds-icon-close']")
+
+	@FindAll({
+	@FindBy(xpath = "//ds-modal-container//button[@title='Close']"),
+	@FindBy (xpath = "//span[@class='ds-icon rds-icon-error' or @class='ds-icon rds-icon-close']")})
 	WebElement btnCloseSpeedPassTopup;
 	
 	@FindBy(xpath = "//h2[@class='add-data-modal-title error-title']")

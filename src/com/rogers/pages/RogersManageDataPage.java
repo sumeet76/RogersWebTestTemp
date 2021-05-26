@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -74,8 +75,11 @@ public class RogersManageDataPage extends BasePageClass {
 
 	@FindBy(xpath = "//p[text()='Add-on cancelled' or contains(text(),'Option annul')]")
 	WebElement titleAddOnCancelled;
-	
-	@FindBy(xpath = "//button[@title='Close' or @title='Fermer']//span[contains(text(),'Fermer') or contains(text(),'Close')]/parent::span/parent::button")
+
+	@FindAll({
+	@FindBy(xpath = "//button[@title='common.cta.close']"),
+			@FindBy(xpath = "//button[@title='Close' or @title='Fermer']//span[contains(text(),'Fermer') or contains(text(),'Close')]/parent::span/parent::button")}
+	)
 	WebElement btnCloseAddOnCancelled;
 
 
