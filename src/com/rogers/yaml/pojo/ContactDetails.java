@@ -45,22 +45,22 @@ public class ContactDetails {
 		this.lastName = lastName;
 	}
 	/**
-	 * @return the ContactID
-	 */
-	public String getContactID() {
-		return contactID;
-	}
-	/**
 	 * @return the ContactID for Dual Play
 	 */
 	public String getContactIDforDualPlay() {
 		return contactIDforDualPlay;
 	}
 	/**
-	 * @param contactID the ContactID for dual play to set
+	 * @param contactIDforDualPlay the contactIDforDualPlay for dual play to set
 	 */
 	public void setContactIDforDualPlay(String contactIDforDualPlay) {
 		this.contactIDforDualPlay = contactIDforDualPlay;
+	}
+	/**
+	 * @return the ContactID
+	 */
+	public String getContactID() {
+		return contactID;
 	}
 	/**
 	 * @param contactID the ContactID to set

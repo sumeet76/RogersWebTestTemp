@@ -10,7 +10,6 @@ public class TestDataHandler {
 	public static Config ssConfig;
 	public static PaymentDetails paymentInfo;
 	public static Config bfaConfig;
-	public static CHOneViewConfig chOneViewConfig;
 	public static PaymentDetails bfaPaymentInfo;
 	public static PaymentDetails chPaymentInfo;	
 	public static AccountData tc013132;
@@ -437,7 +436,6 @@ public class TestDataHandler {
 	}
 	
 	private static void chOneViewDataInit() throws FileNotFoundException {
-		chOneViewConfig = YamlHandler.getCHOneViewConfig();
 		ovPaymentInfo = YamlHandler.getOVPaymentDetails();
 		igniteTVParentalcontrols = YamlHandler.getOVAccountData("IgniteTVParentalcontrols");
 		solarisAccount = YamlHandler.getOVAccountData("SolarisAccount");

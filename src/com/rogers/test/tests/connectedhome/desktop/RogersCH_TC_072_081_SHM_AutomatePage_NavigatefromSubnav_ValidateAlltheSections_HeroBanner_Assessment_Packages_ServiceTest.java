@@ -34,7 +34,7 @@ public class RogersCH_TC_072_081_SHM_AutomatePage_NavigatefromSubnav_ValidateAll
     final String strLanguage=System.getProperty("Language");
 
 
-   @Test(groups = {"RegressionCH","RhpAndRhmCH","DryRunCH"})
+  @Test(groups = {"RegressionCH","RhpAndRhmCH","DryRunCH"})
     public void checkShmAutomationPageDsaBillboardTest() {
         String actualTitle = getDriver().getTitle();
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyAutomationPackagesPageTitle(actualTitle, strLanguage), "Title is Verified", "Title Verification is failed");
@@ -42,7 +42,6 @@ public class RogersCH_TC_072_081_SHM_AutomatePage_NavigatefromSubnav_ValidateAll
         getRogersSecurityPackagesPage().clkHowToGetAutomatePackage();
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesModelDisplayed(), "Security Packages Model is Verified", "Security Packages Model Verification is failed");
         reporter.reportLogWithScreenshot("Security Packages options Model");
-
         getRogersSecurityPackagesPage().clkSecurityPackagesByLivechat();
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyIfrmLiveChatDisplayed(), "LiveChat frame is Verified", "LiveChat frame Verification is failed");
         reporter.reportLogWithScreenshot("Options to Live chat for security package Order");
@@ -52,16 +51,13 @@ public class RogersCH_TC_072_081_SHM_AutomatePage_NavigatefromSubnav_ValidateAll
         getRogersSecurityPackagesPage().clkCloseLivechat();
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesModelDisplayed(), "Security Packages Model is Verified", "Security Packages Model Verification is failed");
         reporter.reportLogWithScreenshot("Options to Store for security package Order");
-
         getRogersSecurityPackagesPage().clkSecurityPackagesFromStore();
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyStorePageDisplayed(), "Store has displayed", "Store is not displayed");
         reporter.reportLogWithScreenshot("Stores page for security package Order");
-
         getDriver().get(System.getProperty("QaUrl") + "/home-security/automation-packages"+ "?setLanguage=" + strLanguage);
         getRogersSecurityPackagesPage().clkHowToGetAutomatePackage();
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesModelDisplayed(), "Security Packages Model is Verified", "Security Packages Model Verification is failed");
         reporter.reportLogWithScreenshot("Security Packages options Model");
-
         getRogersSecurityPackagesPage().clkSecurityPackagesByCall();
         reporter.reportLogWithScreenshot("Options to call CC for security package Order");
     }
@@ -135,8 +131,6 @@ public class RogersCH_TC_072_081_SHM_AutomatePage_NavigatefromSubnav_ValidateAll
         reporter.reportLogWithScreenshot("Home Monitoring app packages");
     }
 
-
-
     @Test(groups = {"RegressionCH","RhpAndRhmCH"})
     public void check_81_ShmAutomationPageViewSecurityPackages_RedirectTopOfSecurityPackageTestTest() {
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyViewSecurityPackage(), "View Security Package button is displayed", "View Security Package button is not displayed");
@@ -149,7 +143,6 @@ public class RogersCH_TC_072_081_SHM_AutomatePage_NavigatefromSubnav_ValidateAll
         reporter.reportLogWithScreenshot("security packages");
 
     }
-
 
    @Test(groups = {"RegressionCH","RhpAndRhmCH"})
     public void checkAutomationPageContactUsTest() {
@@ -182,8 +175,7 @@ public class RogersCH_TC_072_081_SHM_AutomatePage_NavigatefromSubnav_ValidateAll
         reporter.reportLogWithScreenshot("SHM Products");
         getRogersSecurityPackagesPage().clkWhySHM();
         reporter.reportLogWithScreenshot("Why SHM");
-
-         getDriver().get(System.getProperty("QaUrl") + "/home-security/automation-packages"+ "?setLanguage=" + strLanguage);
+        getRogersSecurityPackagesPage().clkAutmationPack();
          getReporter().hardAssert(getRogersSecurityPackagesPage().verifyAutomationPackagesPageTitle(actualTitle, strLanguage), "Title is Verified", "Title Verification is failed");
          reporter.reportLogWithScreenshot("Launched the Automation package Home Page");
         getRogersSecurityPackagesPage().clkProducts();
@@ -193,57 +185,45 @@ public class RogersCH_TC_072_081_SHM_AutomatePage_NavigatefromSubnav_ValidateAll
         reporter.reportLogWithScreenshot("Home Monitoring app page");
         getRogersSecurityPackagesPage().ViewAutomationPackagePage();
         reporter.reportLogWithScreenshot("Home Monitoring app packages");
-
-         getDriver().get(System.getProperty("QaUrl") + "/home-security/automation-packages"+ "?setLanguage=" + strLanguage);
-         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyAutomationPackagesPageTitle(actualTitle, strLanguage), "Title is Verified", "Title Verification is failed");
-         reporter.reportLogWithScreenshot("Launched the Automation package Home Page");
+         getRogersSecurityPackagesPage().MoveToTopOfPage();
         getRogersSecurityPackagesPage().clkProducts();
         reporter.reportLogWithScreenshot("SHM Products");
         getRogersSecurityPackagesPage().clkSecurityPackage();
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
         reporter.reportLogWithScreenshot("Launched the security package Home Page");
-
         getRogersSecurityPackagesPage().clkProducts();
         reporter.reportLogWithScreenshot("SHM Products");
         getRogersSecurityPackagesPage().ViewHardwarePackages();
         reporter.reportLogWithScreenshot("View Hardware packages");
-
-         getDriver().get(System.getProperty("QaUrl") + "/home-security/automation-packages"+ "?setLanguage=" + strLanguage);
-         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyAutomationPackagesPageTitle(actualTitle, strLanguage), "Title is Verified", "Title Verification is failed");
-         reporter.reportLogWithScreenshot("Launched the Automation package Home Page");
-        getRogersSecurityPackagesPage().clkProducts();
+         getRogersSecurityPackagesPage().MoveToTopOfPage();
+         getRogersSecurityPackagesPage().clkProducts();
         reporter.reportLogWithScreenshot("SHM Products");
+         getRogersSecurityPackagesPage().clkProducts();
         getRogersSecurityPackagesPage().clkFeatures();
         reporter.reportLogWithScreenshot("SHM Feasture page");
-
-         getDriver().get(System.getProperty("QaUrl") + "/home-security/automation-packages"+ "?setLanguage=" + strLanguage);
+         getRogersSecurityPackagesPage().clkAutmationPack();
          getReporter().hardAssert(getRogersSecurityPackagesPage().verifyAutomationPackagesPageTitle(actualTitle, strLanguage), "Title is Verified", "Title Verification is failed");
          reporter.reportLogWithScreenshot("Launched the Automation package Home Page");
         getRogersSecurityPackagesPage().clkApp();
         reporter.reportLogWithScreenshot("SHM App");
-
-         getDriver().get(System.getProperty("QaUrl") + "/home-security/automation-packages"+ "?setLanguage=" + strLanguage);
+         getRogersSecurityPackagesPage().clkAutmationPack();
          getReporter().hardAssert(getRogersSecurityPackagesPage().verifyAutomationPackagesPageTitle(actualTitle, strLanguage), "Title is Verified", "Title Verification is failed");
          reporter.reportLogWithScreenshot("Launched the Automation package Home Page");
         getRogersSecurityPackagesPage().clkHelpAndSupport();
         reporter.reportLogWithScreenshot("Help And Support");
         getRogersSecurityPackagesPage().clkSHMSupport();
         reporter.reportLogWithScreenshot("SHM Support");
-
          getDriver().get(System.getProperty("QaUrl") + "/home-security/automation-packages"+ "?setLanguage=" + strLanguage);
          getReporter().hardAssert(getRogersSecurityPackagesPage().verifyAutomationPackagesPageTitle(actualTitle, strLanguage), "Title is Verified", "Title Verification is failed");
          reporter.reportLogWithScreenshot("Launched the Automation package Home Page");
         getRogersSecurityPackagesPage().clkHelpAndSupport();
         reporter.reportLogWithScreenshot("Help And Support");
-
         getRogersSecurityPackagesPage().clkMovingYourServices();
         reporter.reportLogWithScreenshot("Moving Your Services");
-
-        getDriver().get(System.getProperty("QaUrl") + "/home-security/automation-packages"+ "?setLanguage=" + strLanguage);
+         getRogersSecurityPackagesPage().clkAutmationPack();
         getRogersSecurityPackagesPage().clkSeefullDetails();
        reporter.reportLogWithScreenshot("full Details");
     }
-
 
 
     @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
@@ -256,7 +236,7 @@ public class RogersCH_TC_072_081_SHM_AutomatePage_NavigatefromSubnav_ValidateAll
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
 

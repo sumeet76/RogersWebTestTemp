@@ -18,15 +18,15 @@ public class EnvironmentSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//button[@class='btn']")
 	WebElement btnGo;
 	
-	@FindBy(xpath = "//div[@class='dialog'] ")
+	@FindBy(xpath = "//div[@class='oneview-dialog']")
 	WebElement dlgDealerCode;
-	
+
 	@FindBy(xpath = "//input[@placeholder='Enter dealer code']")
 	WebElement txtDealerCode;
 	
-	@FindBy(xpath = "//div[@class='ute-dc-padding-zero col-xs-8']//button[@translate='ute.rogers.captureDealerCode.submit']")
+	@FindBy(xpath = "//div[@class='input']//button")
 	WebElement btnSubmit;
-	
+
 	/**
 	 * Selects the first identification on Credit check page
 	 * @param env to select on oneview portal

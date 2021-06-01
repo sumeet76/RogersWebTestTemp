@@ -1,5 +1,6 @@
 package com.rogers.test.tests.choneview;
 import com.rogers.test.base.BaseTestClass;
+import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
@@ -12,14 +13,10 @@ import java.lang.reflect.Method;
 
 
 public class OneViewCH_TC_004_MigrationTriplePlayON extends BaseTestClass {
-    @Test @Parameters("strBrowser")
-    public void endToEndFlowAnonymousCustomerTriplePlayTest(String browser){
-		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.chOneViewConfig.getOneViewenv());
-			reporter.reportLogWithScreenshot("OneView Interface has Launched");
-			/*		getEnvironmentSelectionPage().enterDealerCode(TestDataHandler.igniteTVParentalcontrols.getDealercode());
-				reporter.reportLogWithScreenshot("Enter the dealer code");
-				getEnvironmentSelectionPage().submitDealerCode();	*/
-		reporter.reportLogWithScreenshot("Launched the account dashboard page");
+	@Test (groups = {"RegressionCHOV"})
+    public void endToEndMigrationTriplePlayTest(){
+		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().selectGetIgniteTVBadge();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCheckAvailabilityPopUp(),"Check availability pop up appears","Failed to Load check availability pop up");
 		reporter.reportLogWithScreenshot("Check Availability Pop Up");
@@ -90,12 +87,12 @@ public class OneViewCH_TC_004_MigrationTriplePlayON extends BaseTestClass {
 		reporter.reportLogWithScreenshot("Order Placed");
 		
     }
-    
-	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
-	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, String strGroupName,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+
+	@BeforeMethod (alwaysRun=true)
+	@Parameters({"strBrowser", "strLanguage"})
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startOVSession(System.getProperty("QaUrl"), strBrowser, strLanguage,strGroupName,TestDataHandler.migrationData.getContactID(), TestDataHandler.migrationData.getAccountNo(),TestDataHandler.chOneViewConfig.getUsrID(), TestDataHandler.chOneViewConfig.getLoginID(), method);
-	
+		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),TestDataHandler.migrationData.getContactID(), TestDataHandler.migrationData.getAccountNo(),System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
 	}
 
 	@AfterMethod(alwaysRun = true)

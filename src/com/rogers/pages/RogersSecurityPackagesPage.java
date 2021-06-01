@@ -25,6 +25,7 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	WebElement popupSecurityPackagesModel;
 
 	@FindAll({@FindBy(xpath = "//a[@href='1-855-214-6825']"),
+			@FindBy(xpath = "//a[@href='1 855 214-6825']"),
 	@FindBy(xpath = "//a[@href='1 855 214 6825']")})
 	WebElement lnkSecurityPackagesByCall;
 
@@ -163,10 +164,16 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@href,'/home-monitoring/features') or contains(@href,'/home-monitoring/fonctions')]")
 	WebElement lnkFeatures;
 
+
+	@FindBy(xpath = "//a[@href='/home-security/security-packages']")
+	WebElement btnSecurityPack;
+
 	//+++++++++++++++++++++++++++++++++++++++++//
 	@FindBy(xpath = "//a[@title='Learn how to get the Automate package' or @title='Voyez comment obtenir le forfait Automatique']")
 	WebElement btnHowToGetAutomatePackage;
 
+	@FindBy(xpath = "//a[@href='/home-security/automation-packages']")
+	WebElement btnAutmationPack;
 
 	/**
 	 * Verify the Title of the page
@@ -291,6 +298,21 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().getWhenReady(ifrmLiveChat,30);
 		getDriver().switchTo().frame(ifrmLiveChat);
+	}
+
+	/**
+	 * Click the SignIn button from the top tile bar
+	 * @author chinnarao.vattam
+	 */
+	public void clkSecurityPack() {
+		getReusableActionsInstance().getWhenVisible(btnSecurityPack, 60).click();
+	}
+
+	/**
+	 * Click the SignIn button from the top tile bar
+	 * @author chinnarao.vattam
+	 */
+	public void clkAutmationPack() { getReusableActionsInstance().getWhenVisible(btnAutmationPack, 60).click();
 	}
 
 	/**
@@ -625,6 +647,14 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	}
 
 	/**
+	 * Click on Automation Package Page
+	 * @author chinnarao.vattam
+	 */
+	public void MoveToTopOfPage() {
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
+	}
+
+	/**
 	 * Click on Security Package Page
 	 * @author chinnarao.vattam
 	 */
@@ -744,6 +774,7 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkFeatures() {
+		getReusableActionsInstance().getWhenReady(lnkFeatures, 60);
 		getReusableActionsInstance().getWhenReady(lnkFeatures, 60).click();
 	}
 
