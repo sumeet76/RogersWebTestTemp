@@ -373,6 +373,12 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//a//span[contains(@class,'ds-button__copy') and (contains(text(),'Manage') or contains(text(),'Gérer'))]")
 	WebElement btnSubscriptionManage;
 
+	@FindBy(xpath = "//a//span[contains(@class,'ds-button__copy') and (contains(text(),'Manage') or contains(text(),'Gérer'))]")
+	WebElement btnDPSubscriptionManage;
+
+	@FindBy(xpath = "//rss-value-prop-wrapper[@title='Start your Disney+ subscription' or @title='Commencer l’abonnement Disney+']//span[contains(text(),'Sign up') or contains(text(),'S’inscrire')]")
+	WebElement btnDPSubscriptionSignUp;
+
 	@FindBy(xpath = "//h2[text()='Currently subscribed' or text()='Abonnement en cours']")
 	WebElement headerCurrentlySubscribed;
 
@@ -1648,6 +1654,17 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public boolean verifyIfSubscriptionIsAvailableForCancellation() {
 		return getReusableActionsInstance().isElementVisible(btnSubscriptionManage);
 	}
+
+	/**
+	 * Verifies if the account has subscription available which can be redeem
+	 * @return true if available else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyIfDPSubscriptionIsAvailableForCancellation() {
+		return getReusableActionsInstance().isElementVisible(btnDPSubscriptionManage);
+	}
+
+
 
 	/**
 	 * Clicks on Manage button
