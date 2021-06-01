@@ -95,7 +95,7 @@ public class RogersCH_TC_083_2PLeg_2PIgniteTV_E2E_ValidateOrdersAutomatedGoestoM
         getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomerMigration(TestDataHandler.tc83_Legacy2PtoIgnite2P.getAccountDetails().getDate());
         reporter.reportLogWithScreenshot("Entered the DOB details");
         getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
-
+		//Validate flowType="AUTL" from continueBuy call, will be adding with selenium4
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
         getRogersTechInstallPage().clkTechInstalConsent();

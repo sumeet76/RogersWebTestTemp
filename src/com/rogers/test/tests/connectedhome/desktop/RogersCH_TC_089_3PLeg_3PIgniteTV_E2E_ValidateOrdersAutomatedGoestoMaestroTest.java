@@ -49,7 +49,7 @@ import java.util.Map;
  *
  **/
 
-public class RogersCH_TC_082_1PLegInt_2PIgniteTV_E2E_ValidateOrdersAutomatedGoestoMaestroTest extends BaseTestClass {
+public class RogersCH_TC_089_3PLeg_3PIgniteTV_E2E_ValidateOrdersAutomatedGoestoMaestroTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
 	public void checkTVPackageUpgradeTest() {
@@ -57,15 +57,15 @@ public class RogersCH_TC_082_1PLegInt_2PIgniteTV_E2E_ValidateOrdersAutomatedGoes
 		getRogersHomePage().clkSignIn();
 		getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc82_Legacy1PtoIgnite2P.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc82_Legacy1PtoIgnite2P.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc89_Legacy3pToIgnite3P.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc89_Legacy3pToIgnite3P.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    reporter.reportLogWithScreenshot("Skip popup");
 	    getRogersLoginPage().clkSkipIFrame();
 	    getRogersLoginPage().switchOutOfSignInIFrame();
-	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc82_Legacy1PtoIgnite2P.accountDetails.getBan());
+	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc89_Legacy3pToIgnite3P.accountDetails.getBan());
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page"); 
 		 getRogersHomePage().clkExistingCustomerShop();
@@ -78,6 +78,7 @@ public class RogersCH_TC_082_1PLegInt_2PIgniteTV_E2E_ValidateOrdersAutomatedGoes
         getRogersHomePage().clkUseThisAddress();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
+
         getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
         reporter.reportLogWithScreenshot("Launched the information popup");
         getRogersIgniteTVBuyPage().clkIUnderstand();
@@ -89,24 +90,10 @@ public class RogersCH_TC_082_1PLegInt_2PIgniteTV_E2E_ValidateOrdersAutomatedGoes
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
-        getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomer(TestDataHandler.tc82_Legacy1PtoIgnite2P.getAccountDetails().getYear());
-        getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomerMigration(TestDataHandler.tc82_Legacy1PtoIgnite2P.getAccountDetails().getMonth());
-        getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomerMigration(TestDataHandler.tc82_Legacy1PtoIgnite2P.getAccountDetails().getDate());
+        getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomer(TestDataHandler.tc89_Legacy3pToIgnite3P.getAccountDetails().getYear());
+        getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomerMigration(TestDataHandler.tc89_Legacy3pToIgnite3P.getAccountDetails().getMonth());
+        getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomerMigration(TestDataHandler.tc89_Legacy3pToIgnite3P.getAccountDetails().getDate());
         reporter.reportLogWithScreenshot("Entered the DOB details");
-		getRogersIgniteTVCreditCheckPage().selectFirstID("Driver's License");
-		getRogersIgniteTVCreditCheckPage().selectProvince("Ontario");
-		getRogersIgniteTVCreditCheckPage().selectExpiryYear();
-		getRogersIgniteTVCreditCheckPage().selectExpiryMonth();
-		getRogersIgniteTVCreditCheckPage().selectExpiryDay();
-		getRogersIgniteTVCreditCheckPage().setDrivingLicenseNumber("ONTARIO");
-		reporter.reportLogWithScreenshot("Driving License Details");
-		getRogersIgniteTVCreditCheckPage().selectSecondIDOption("Passport");
-		getRogersIgniteTVCreditCheckPage().setPassportNumber();
-		getRogersIgniteTVCreditCheckPage().selectPassportExpiryYear();
-		getRogersIgniteTVCreditCheckPage().selectPassportExpiryMonth();
-		getRogersIgniteTVCreditCheckPage().selectPassportExpiryDay();
-		getRogersIgniteTVCreditCheckPage().clkCreditConsent();
-		reporter.reportLogWithScreenshot("Passport Details");
         getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
 		//Validate flowType="AUTL" from continueBuy call, will be adding with selenium4
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
@@ -132,7 +119,6 @@ public class RogersCH_TC_082_1PLegInt_2PIgniteTV_E2E_ValidateOrdersAutomatedGoes
 		/**
 		 * DB Validations in the subscriber table
 		 */
-
 		Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
 				.executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from billing_account where BAN='" + ban + "'", false);
 

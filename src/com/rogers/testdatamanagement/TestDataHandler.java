@@ -94,6 +94,9 @@ public class TestDataHandler {
 	public static AccountData tc76_Legact2Pto3PIgniteBasementHousePortinHot;
 	public static AccountData tc82_Legacy1PtoIgnite2P;
 	public static AccountData tc83_Legacy2PtoIgnite2P;
+	public static AccountData tc88_Legacy2PTVIntToIgnite3P;
+	public static AccountData tc89_Legacy3pToIgnite3P;
+	public static AccountData tc90_Legacy1PTVtoIgnite2P;
 	public static AccountData tc57_sHMSignedInInternetBuy;
 	public static AccountData tc51_igniteSmartStream;
 	public static AccountData tc31_SolarisInternetAccountWithUsageAndPackageUpgrade;
@@ -263,7 +266,11 @@ public class TestDataHandler {
 		tc57_sHMSignedInInternetBuy = YamlHandler.getCableAccountData("TC57_SHMSignedInInternetBuy");
 		tc58_saiAccountForIgniteBundleBuy = YamlHandler.getCableAccountData("TC58_SaiAccountForIgniteBundleBuy");
 		tc59_saiforIgniteBundle = YamlHandler.getCableAccountData("TC59_SAIforIgniteBundle");
-
+		tc82_Legacy1PtoIgnite2P= YamlHandler.getCableAccountData("TC82_Legacy1PtoIgnite2P");
+		tc83_Legacy2PtoIgnite2P= YamlHandler.getCableAccountData("TC83_Legacy2PtoIgnite2P");
+		tc88_Legacy2PTVIntToIgnite3P= YamlHandler.getCableAccountData("TC88_Legacy2PTVIntToIgnite3P");
+		tc89_Legacy3pToIgnite3P= YamlHandler.getCableAccountData("TC89_Legacy3pToIgnite3P");
+		tc90_Legacy1PTVtoIgnite2P= YamlHandler.getCableAccountData("TC90_Legacy1PTVtoIgnite2P");
 		//RHP test data
 		tc48_legacyRHP = YamlHandler.getCableAccountData("TC48_LegacyRHP");
     	tc42_igniteRHP = YamlHandler.getCableAccountData("TC42_IgniteRHP");
@@ -313,8 +320,6 @@ public class TestDataHandler {
 		tc74_SaiBaseLineHomeAddress= YamlHandler.getCableAccountData("TC74_SaiBaseLineHomeAddress");
 		tc75_IgniteTVBaseLineHomeAddress= YamlHandler.getCableAccountData("TC75_IgniteTVBaseLineHomeAddress");
 		tc76_Legact2Pto3PIgniteBasementHousePortinHot= YamlHandler.getCableAccountData("TC76_Legact2Pto3PIgniteBasementHousePortinHot");
-		tc82_Legacy1PtoIgnite2P= YamlHandler.getCableAccountData("TC82_Legacy1PtoIgnite2P");
-		tc83_Legacy2PtoIgnite2P= YamlHandler.getCableAccountData("TC83_Legacy2PtoIgnite2P");
 		}
 	
 	private static void selfserveDataInit() throws FileNotFoundException {
