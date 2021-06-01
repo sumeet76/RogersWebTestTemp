@@ -47,18 +47,15 @@ import java.util.Map;
  *
  **/
 
-public class RogersCH_TC_033_IginteTV_BuyIgniteStarterBundleTest extends BaseTestClass {
+public class RogersCH_TC_087_IginteTV_3P_NAC_Validate0CADexpressSetupFeefor3P_NativeTNwithCourierFulfilment_HotTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH","DryRunCH"})
-	    public void checkBuyStarterTVOffer() {
+	    public void checkBuy3PValidate0CADexpressSetupFeefor3PNativeTNwithCourierFulfilmentHot() {
 			reporter.reportLogWithScreenshot("Launched the Easy Login Page");
 	    	getRogersHomePage().clkTVBundle();
-	    	
 	        reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
 	       	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 	    	getRogersHomePage().clkServiceability();
-	    	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-	    	//getRogersHomePage().clkAddressCheck();
 	    	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 	        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
 	        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");

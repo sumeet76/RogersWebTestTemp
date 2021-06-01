@@ -44,7 +44,7 @@ public class RogersSC_TC_004_ExistingLegacyCustomer_PortIn_CartAbandonTest exten
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 		getRogersHomePage().clkUseThisAddress();
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-		getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
+		getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
 		getRogersIgniteTVBuyPage().verifyImportantInformation();
 		getRogersIgniteTVBuyPage().clkIUnderstand();
 		reporter.reportLogWithScreenshot("Launched the port-in popup");

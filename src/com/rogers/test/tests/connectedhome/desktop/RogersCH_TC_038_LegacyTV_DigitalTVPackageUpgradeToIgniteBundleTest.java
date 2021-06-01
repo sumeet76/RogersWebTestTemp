@@ -78,7 +78,7 @@ public class RogersCH_TC_038_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
         getRogersHomePage().clkUseThisAddress();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-        getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
+        getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
         reporter.reportLogWithScreenshot("Launched the information popup");
         getRogersIgniteTVBuyPage().clkIUnderstand();
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");

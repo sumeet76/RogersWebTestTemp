@@ -1,4 +1,5 @@
 package com.rogers.test.tests.connectedhome.desktop;
+
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
@@ -13,9 +14,9 @@ import java.util.Map;
 /**
  * This class contains the test method to test the IgniteTV buy flow for Rogers.com   
  * 
- * @author chinnarao.vattam
+ * @author Saurav.Goyal
  * 
- * Test steps:`
+ * Test steps:
  *
  *1. Launch Rogers.com
  *2. Browse to Shop menu and select Ignite TV option
@@ -47,34 +48,30 @@ import java.util.Map;
  *
  **/
 
-public class RogersCH_TC_030_084_IginteTV_DoublePlayBuyValidateMonthAsteriskTest extends BaseTestClass {
+public class RogersCH_TC_086_IginteTV_2P_NAC_ESI_Minicart_legalText_installFee_asPerCopy_UnwiredCableTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH","DryRunCH"})
-    public void checkBuyDigitalTVOffer() {
-		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
+	public void checkDoublePaly2PMinicartLegalTextInstallFeePerCopyUnwiredCable() {
+        reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	getRogersHomePage().clkTVBundle();
     	
         reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
        	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	getRogersHomePage().clkServiceability();
-    	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-    	//getRogersHomePage().clkAddressCheck();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine1= TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
+        //Validate cableCondition="Unwired" from addressServices call, will be adding with selenium4
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-        reporter.softAssert(getRogersIgniteTVBuyPage().verifyFlex5PackageCost(),"Flex5 Package Cost having the mo*","Flex5 Package Cost is not having the mo*");
-        reporter.softAssert(getRogersIgniteTVBuyPage().verifyFlex10PackageCost(),"Flex10 Package Cost having the mo*","Flex10 Package Cost is not having the mo*");
-        reporter.softAssert(getRogersIgniteTVBuyPage().verifyFlex20PackageCost(),"Flex20+ Package Cost having the mo*","Flex20+ Package Cost is not having the mo*");
-        reporter.softAssert(getRogersIgniteTVBuyPage().verifyPremierPackageCost(),"Premier Package Cost having the mo*","Premier Package Cost is not having the mo*");
-        reporter.softAssert(getRogersIgniteTVBuyPage().verifyStarterPackageCost(),"Starter Package Cost having the mo*","Starter Package Cost is not having the mo*");
         getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
-
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
+        getRogersIgniteTVBuyPage().clkChevronDownYourCart();
+        reporter.reportLogWithScreenshot("Launched the cart summary page");
+        getRogersIgniteTVBuyPage().clkChevronUpYourCart();
         getRogersIgniteTVBuyPage().set4KTV();
         reporter.reportLogWithScreenshot("4k TV selected");
         getRogersIgniteTVBuyPage().clkCheckout();
@@ -153,7 +150,7 @@ public class RogersCH_TC_030_084_IginteTV_DoublePlayBuyValidateMonthAsteriskTest
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteAnonymous
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_igniteanonymous, method);
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_igniteanonymous, method);
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 
@@ -161,8 +158,6 @@ public class RogersCH_TC_030_084_IginteTV_DoublePlayBuyValidateMonthAsteriskTest
 	public void afterTest() {
 		closeSession();
 	}
-
-
 
 }
 

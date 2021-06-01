@@ -81,7 +81,7 @@ public class RogersCH_TC_036_IginteTV_ExistingSolarisCustomerBuyBundleWithNewAdd
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
 		 reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
 		 getRogersIgniteTVBuyPage().clkHomephone();
-		 getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
+		 getRogersIgniteTVBuyPage().selectSolarisStarterPackageNe();
 		reporter.reportLogWithScreenshot("Launched the port-in popup");
 
 		 reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");

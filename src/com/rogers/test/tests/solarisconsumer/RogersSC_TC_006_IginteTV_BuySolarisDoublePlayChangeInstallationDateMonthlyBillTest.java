@@ -65,7 +65,7 @@ public class RogersSC_TC_006_IginteTV_BuySolarisDoublePlayChangeInstallationDate
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-        getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
+        getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
         getRogersIgniteTVBuyPage().verifyOptNewPhone();
         reporter.reportLogWithScreenshot("Launched the port-in popup");
         getRogersIgniteTVBuyPage().selectOptNewPhone();

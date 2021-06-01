@@ -259,7 +259,7 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Internet')]/ancestor::ul[@class='list-none d-flex']//ds-icon[@name='down']")
 	WebElement subnavIgniteInternet;
 
-	@FindBy(xpath = "//span[contains(text(),'Ignite SmartStream') or contains(text(),'Élan Diffusion futée')]/ancestor::li[@role='menuitem']//ds-icon[@name='right']")
+	@FindBy(xpath = "//span[contains(text(),'TV & Streaming') or contains(text(),'Télé et Diffusion en continu')]/ancestor::li[@role='menuitem']//ds-icon[@name='down']")
 	WebElement subnavIgniteSmartStream;
 
 	@FindBy(xpath = "//span[contains(text(),'Help and Support') or contains(text(),'Soutien')]/ancestor::li[@role='menuitem']//ds-icon[@name='right']")
@@ -673,6 +673,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyIgnitepage() {
+		getReusableActionsInstance().staticWait(10000);
 		return getReusableActionsInstance().isElementVisible(btnServiceability, 60);
 	}
 

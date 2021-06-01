@@ -33,7 +33,8 @@ import java.util.Map;
  *
  **/
 
-public class RogersCH_TC_060_ISS_HomePageEntryPointSignedInWirelessBuyInternetDiffAddressTest extends BaseTestClass {
+public class
+RogersCH_TC_060_ISS_HomePageEntryPointSignedInWirelessBuyInternetDiffAddressTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","SmartStreamCH"})
     public void checkIssHomePageEntryPointSignedInWirelessBuyInternetDiffAddressTest() {

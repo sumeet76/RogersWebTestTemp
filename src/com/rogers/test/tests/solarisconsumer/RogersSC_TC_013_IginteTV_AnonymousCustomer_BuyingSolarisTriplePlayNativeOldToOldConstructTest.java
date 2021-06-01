@@ -71,7 +71,7 @@ public class RogersSC_TC_013_IginteTV_AnonymousCustomer_BuyingSolarisTriplePlayN
 		}
         getRogersHomePage().clkContinueIgniteMultipleAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-        getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
+        getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
         getRogersIgniteTVBuyPage().verifyOptNewPhone();
         reporter.reportLogWithScreenshot("Launched the port-in popup");
         getRogersIgniteTVBuyPage().selectOptNewPhone();
