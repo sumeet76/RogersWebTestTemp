@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class RogersSS_TC_126_PSEF_DP_Rogers_CR_EN_SubscribedSection_NSEInfinite50 extends BaseTestClass {
+public class RogersSS_TC_130_PSEF_DP_Rogers_CR_EN_SubscribedSection_NSEInfinite50 extends BaseTestClass {
     
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {

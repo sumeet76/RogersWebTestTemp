@@ -192,6 +192,7 @@ public class TestDataHandler {
     public static AccountData tc123;
 	public static AccountData tc125;
 	public static AccountData tc129;
+	public static AccountData tc130;
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
  		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
@@ -389,6 +390,7 @@ public class TestDataHandler {
 		tc123 = YamlHandler.getSSAccountData("tc123DeviceSubsidy_BC");
 		tc125 = YamlHandler.getSSAccountData("tc125UserWithBYODDevice_ON");
 		tc129 = YamlHandler.getSSAccountData("tc129SubsidyPaisOff");
+		tc130 = YamlHandler.getSSAccountData("tc130PSEFsubscribeNSEInfinte50");
 	}
 	
 	private static void buyFlowsDataInit() throws FileNotFoundException {
