@@ -91,6 +91,7 @@ public class Mobile_RogersSS_TC_051_ChangePassword extends BaseTestClass {
 		getRogersProfileAndSettingsPage().setConfirmPassword(strNewPassword);
 		reporter.reportLogWithScreenshot("New password is entered.");
 		getRogersProfileAndSettingsPage().clkBtnChangePasswordSubmit();
+		getRogersProfileAndSettingsPage().clkBtnChangePasswordSubmitMobile();
 		//verify success message --
         reporter.hardAssert(getRogersProfileAndSettingsPage().verifyChangePasswordSuccessMsg(),
         						"Successfully changed password.", 

@@ -77,6 +77,8 @@ public class RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE e
 				getCommonBusinessFlows().addSpeedPass();	
 			}
 		}
+
+		reporter.reportLogWithScreenshot("Existing Number of Speed pass is: "+countOfExistSpeedPass);
 		getRogersWirelessDashboardPage().clkBtnSpeedPass();
 		reporter.hardAssert(getRogersSpeedPassPage().verifyCannotAddSpeedPassHeaderIsDisplayed(),
 				"Cannot Add Speed Pass error message is displayed", 

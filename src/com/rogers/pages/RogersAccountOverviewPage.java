@@ -2115,6 +2115,7 @@ public boolean verifyPTPWidgetIsDisplayed() {
 	public boolean verifyIfEffectiveCancelDateForSubscriptionISImmediate(String test_language) {
 		String cancelledEndDate= getReusableActionsInstance().getWhenReady(lblSMPpromotionEnded).getText();
 		cancelledEndDate = cancelledEndDate.split("ended")[1].trim();
+		DateHelpersFunctions.isValidDAte(cancelledEndDate);
 		Locale locale=Locale.CANADA;;
 		String datePattern = "MMM. d, u";
 		ZoneId defaultZoneId = ZoneId.systemDefault();

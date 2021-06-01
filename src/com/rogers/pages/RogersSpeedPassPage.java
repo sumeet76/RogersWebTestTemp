@@ -29,16 +29,18 @@ public class RogersSpeedPassPage extends BasePageClass {
 	@FindBy (xpath = "//div[@class='selected-plan-details-item']")
 	List<WebElement> SpeedPasses;
 	
-	@FindBy (xpath = "//a[contains(@class,'continue-button')]")
+	@FindBy (xpath = "//*[contains(@class,'continue-button') or contains(text(),'Continue') or contains(text(),'Continuer')]")
 	WebElement btnContinueSpeedPass;
 	
-	@FindBy (xpath = "//span[@translate='purchaseData.purchasingPlansConfirmationModal.titleSP']")
+	@FindBy (xpath = "//span[@translate='purchaseData.purchasingPlansConfirmationModal.titleSP' or contains(text(),'Confirm purchase') or contains(text(),'Confirmer l’achat')]")
 	WebElement headerConfirmPurchase;
-	
-	@FindBy (xpath = "//ins[@translate='purchaseData.purchaseBtn']")
+
+	@FindAll({
+	@FindBy(xpath = "//button//span[contains(text(),'Purchase') or contains(text(),'Acheter')]"),
+	@FindBy (xpath = "//ins[@translate='purchaseData.purchaseBtn']")})
 	WebElement btnPurchaseSP;
 	
-	@FindBy (xpath = "//h2[@class='add-data-modal-title success-title']")
+	@FindBy (xpath = "//h2[contains(@class,'add-data-modal-title success-title')]")
 	WebElement msgSuccessAddedSP;
 
 	@FindAll({
@@ -46,7 +48,7 @@ public class RogersSpeedPassPage extends BasePageClass {
 	@FindBy (xpath = "//span[@class='ds-icon rds-icon-error' or @class='ds-icon rds-icon-close']")})
 	WebElement btnCloseSpeedPassTopup;
 	
-	@FindBy(xpath = "//h2[@class='add-data-modal-title error-title']")
+	@FindBy(xpath = "//h2[@class='add-data-modal-title error-title' or contains(text(),'Cannot add Speed Pass') or contains(text(),'Impossible d’ajouter un Accès Rapido')]")
 	WebElement lblCannotAddSpeedPass;
 	
 	@FindBy(xpath = "//div[@class='selected-plan-details']")

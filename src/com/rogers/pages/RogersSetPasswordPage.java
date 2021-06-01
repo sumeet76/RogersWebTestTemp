@@ -28,6 +28,9 @@ public class RogersSetPasswordPage extends BasePageClass {
 	
 	@FindBy (xpath = "//input[@name='confirmPassword' or @id='cpassword' or @id='confirmPassword']")
 	WebElement inputConfirmPassword;
+
+	@FindBy (xpath = "//input[@name='confirmPassword' or @id='cpassword' or @id='confirmPassword']/parent::div")
+	WebElement lblConfirmPassword;
 	
 	@FindBy (xpath = "//div[@class='ute-elr-password']")
 	WebElement divSetPassword;
@@ -98,7 +101,7 @@ public class RogersSetPasswordPage extends BasePageClass {
 	 * @param strPassword, string of the password
 	 */
 	public void setConfirmPassword(String strPassword) {
-		getReusableActionsInstance().getWhenReady(inputConfirmPassword, 30).click();
+		getReusableActionsInstance().getWhenReady(By.xpath("//input[@name='confirmPassword' or @id='cpassword' or @id='confirmPassword']/parent::div"), 30).click();
 		getReusableActionsInstance().getWhenReady(inputConfirmPassword, 30).sendKeys(strPassword);
 	}
 	
