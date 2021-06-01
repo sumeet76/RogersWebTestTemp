@@ -94,7 +94,21 @@ public class RogersCH_TC_088_2PLegTVandInt_3PIgniteTV_NativePhone_E2E_ValidateOr
         getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomerMigration(TestDataHandler.tc88_Legacy2PTVIntToIgnite3P.getAccountDetails().getMonth());
         getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomerMigration(TestDataHandler.tc88_Legacy2PTVIntToIgnite3P.getAccountDetails().getDate());
         reporter.reportLogWithScreenshot("Entered the DOB details");
-        getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
+		getRogersIgniteTVCreditCheckPage().selectFirstID("Driver's License");
+		getRogersIgniteTVCreditCheckPage().selectProvince("Ontario");
+		getRogersIgniteTVCreditCheckPage().selectExpiryYear();
+		getRogersIgniteTVCreditCheckPage().selectExpiryMonth();
+		getRogersIgniteTVCreditCheckPage().selectExpiryDay();
+		getRogersIgniteTVCreditCheckPage().setDrivingLicenseNumber("ONTARIO");
+		reporter.reportLogWithScreenshot("Driving License Details");
+		getRogersIgniteTVCreditCheckPage().selectSecondIDOption("Passport");
+		getRogersIgniteTVCreditCheckPage().setPassportNumber();
+		getRogersIgniteTVCreditCheckPage().selectPassportExpiryYear();
+		getRogersIgniteTVCreditCheckPage().selectPassportExpiryMonth();
+		getRogersIgniteTVCreditCheckPage().selectPassportExpiryDay();
+		getRogersIgniteTVCreditCheckPage().clkCreditConsent();
+		reporter.reportLogWithScreenshot("Passport Details");
+		getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
 		//Validate flowType="AUTL" from continueBuy call, will be adding with selenium4
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");

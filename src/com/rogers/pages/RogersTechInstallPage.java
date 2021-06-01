@@ -218,7 +218,11 @@ public class RogersTechInstallPage extends BasePageClass {
 		getReusableActionsInstance().selectWhenReady(selBackupTimeSlot,1,20);
 
 	}
-	
+
+	public void  verifyAPICallTemp() {
+		getReusableActionsInstance().staticWait(6000);
+	}
+
 	/**
 	 * To verify the launch of Technical  Install Page
 	 * @return true if the TechInstallSlot ratio has available, else false 

@@ -70,7 +70,7 @@ public class RogersCH_TC_075_IgniteTV_BaselineAndHouseAddress_ValidateServiceabi
         reporter.reportLogWithScreenshot("4k TV selected");
         getRogersIgniteTVBuyPage().clkCheckout();
 
-        //reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
+        reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersIgniteTVProfileCreationPage().setEmail();
         getRogersIgniteTVProfileCreationPage().setFirstname();

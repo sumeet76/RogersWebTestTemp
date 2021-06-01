@@ -93,7 +93,21 @@ public class RogersCH_TC_038_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
         getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomerMigration(TestDataHandler.tc38_DigitalTVUpgradeToIgnite.getAccountDetails().getMonth());
         getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomerMigration(TestDataHandler.tc38_DigitalTVUpgradeToIgnite.getAccountDetails().getDate());
         reporter.reportLogWithScreenshot("Entered the DOB details");
-        getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
+		getRogersIgniteTVCreditCheckPage().selectFirstID("Driver's License");
+		getRogersIgniteTVCreditCheckPage().selectProvince("Ontario");
+		getRogersIgniteTVCreditCheckPage().selectExpiryYear();
+		getRogersIgniteTVCreditCheckPage().selectExpiryMonth();
+		getRogersIgniteTVCreditCheckPage().selectExpiryDay();
+		getRogersIgniteTVCreditCheckPage().setDrivingLicenseNumber("ONTARIO");
+		reporter.reportLogWithScreenshot("Driving License Details");
+		getRogersIgniteTVCreditCheckPage().selectSecondIDOption("Passport");
+		getRogersIgniteTVCreditCheckPage().setPassportNumber();
+		getRogersIgniteTVCreditCheckPage().selectPassportExpiryYear();
+		getRogersIgniteTVCreditCheckPage().selectPassportExpiryMonth();
+		getRogersIgniteTVCreditCheckPage().selectPassportExpiryDay();
+		getRogersIgniteTVCreditCheckPage().clkCreditConsent();
+		reporter.reportLogWithScreenshot("Passport Details");
+		getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
 
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");

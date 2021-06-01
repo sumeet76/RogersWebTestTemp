@@ -67,16 +67,18 @@ public class RogersCH_TC_029_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest e
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
+        //getRogersTechInstallPage().verifyAPICallTemp();
         getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
+        //getRogersTechInstallPage().verifyAPICallTemp();
         getRogersIgniteTVBuyPage().set4KTV();
         reporter.reportLogWithScreenshot("4k TV selected");
         //getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
         //getRogersIgniteTVBuyPage().clkUpdateCart();
         getRogersIgniteTVBuyPage().clkCheckout();
         
-       //reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
+       reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersIgniteTVProfileCreationPage().setEmail();
         getRogersIgniteTVProfileCreationPage().setFirstname();
@@ -173,7 +175,7 @@ public class RogersCH_TC_029_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest e
         //getRogersIgniteTVBuyPage().clkUpdateCart();
         getRogersIgniteTVBuyPage().clkCheckout();
 
-        //reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
+        reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersIgniteTVProfileCreationPage().setEmail();
         getRogersIgniteTVProfileCreationPage().setFirstname();
