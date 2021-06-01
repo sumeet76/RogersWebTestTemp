@@ -115,7 +115,7 @@ public class RogersSS_TC_081_ValidateErrorMessageWhenMDTandProfileMaximumLimitFo
              {
              reporter.softAssert(getRogersAddDataPage().verifyAddDataSuccessMsgIsDisplayed(),
 						"Add the Data top-up  window should be displayed. (completd an MDT add on)", 
-						"Add the Data top-up  window is NOT displayed.");
+						"Add the Data top-up  window success not displayed it seems");
              getRogersSpeedPassPage().clkBtnCloseInSpeedPassPopup();
              counterOfAddedData++;
              }else if(itr>intMaxNumberOfTimesToAdd || counterOfAddedData==10)

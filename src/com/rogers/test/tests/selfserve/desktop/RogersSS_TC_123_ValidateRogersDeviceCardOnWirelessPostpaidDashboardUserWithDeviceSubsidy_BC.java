@@ -28,13 +28,13 @@ public class RogersSS_TC_123_ValidateRogersDeviceCardOnWirelessPostpaidDashboard
 		closeSession();
 	}
 	
-	@Test(groups = {"SanitySS","ProfileAndSettingsSS","CAMShiled"})
+	@Test(groups = {"CAMShiled"})
 	public void validateRogersDeviceCardOnWirelessPostpaidDashboardUserWithDeviceSubsidy_BC() {
     	getRogersHomePage().clkSignIn();
-    	String strUsername = TestDataHandler.tc01FinanceNotPaidOff_ON.getUsername();
-    	String strPassword = TestDataHandler.tc01FinanceNotPaidOff_ON.getPassword();
-    	String strBan = TestDataHandler.tc01FinanceNotPaidOff_ON.getAccountDetails().getBan();
-    	String strEmail = TestDataHandler.tc01FinanceNotPaidOff_ON.getAccountDetails().getContactemail();
+    	String strUsername = TestDataHandler.tc123.getUsername();
+    	String strPassword = TestDataHandler.tc123.getPassword();
+    	String strBan = TestDataHandler.tc123.getAccountDetails().getBan();
+    	String strEmail = TestDataHandler.tc123.getAccountDetails().getContactemail();
     	strAltEmail = FormFiller.generateEmail();
 		getRogersLoginPage().switchToSignInIFrame();
 		getRogersLoginPage().setUsernameIFrame(strUsername);
@@ -47,7 +47,7 @@ public class RogersSS_TC_123_ValidateRogersDeviceCardOnWirelessPostpaidDashboard
         
 
 		reporter.reportLogWithScreenshot("Account overveiew page");
-		String strAccountNum = TestDataHandler.tc01FinanceNotPaidOff_ON.getAccountDetails().getCtn();
+		String strAccountNum = TestDataHandler.tc123.getAccountDetails().getCtn();
 		String strLast4DigitAccount = strAccountNum.substring(strAccountNum.length()-4);
 		if (getRogersAccountOverviewPage().checkIfAccountIsShowInDropDown(strLast4DigitAccount)) {
 			getRogersAccountOverviewPage().clkDropDownAccount(strLast4DigitAccount);

@@ -28,13 +28,13 @@ public class RogersSS_TC_125_Rogers_Desktop_Edge_FR_Validate_Rogers_UserWithBYOD
 		closeSession();
 	}
 	
-	@Test(groups = {"SanitySS","ProfileAndSettingsSS","CAMShiled"})
+	@Test(groups = {"CAMShiled"})
 	public void Validate_Rogers_UserWithBYODDevice_ON() {
     	getRogersHomePage().clkSignIn();
-    	String strUsername = TestDataHandler.tc01FinanceNotPaidOff_ON.getUsername();
-    	String strPassword = TestDataHandler.tc01FinanceNotPaidOff_ON.getPassword();
-    	String strBan = TestDataHandler.tc01FinanceNotPaidOff_ON.getAccountDetails().getBan();
-    	String strEmail = TestDataHandler.tc01FinanceNotPaidOff_ON.getAccountDetails().getContactemail();
+    	String strUsername = TestDataHandler.tc125.getUsername();
+    	String strPassword = TestDataHandler.tc125.getPassword();
+    	String strBan = TestDataHandler.tc125.getAccountDetails().getBan();
+    	String strEmail = TestDataHandler.tc125.getAccountDetails().getContactemail();
     	strAltEmail = FormFiller.generateEmail();
 		getRogersLoginPage().switchToSignInIFrame();
 		getRogersLoginPage().setUsernameIFrame(strUsername);
@@ -47,7 +47,7 @@ public class RogersSS_TC_125_Rogers_Desktop_Edge_FR_Validate_Rogers_UserWithBYOD
         
 
 		reporter.reportLogWithScreenshot("Account overveiew page");
-		String strAccountNum = TestDataHandler.tc01FinanceNotPaidOff_ON.getAccountDetails().getCtn();
+		String strAccountNum = TestDataHandler.tc125.getAccountDetails().getCtn();
 		String strLast4DigitAccount = strAccountNum.substring(strAccountNum.length()-4);
 		if (getRogersAccountOverviewPage().checkIfAccountIsShowInDropDown(strLast4DigitAccount)) {
 			getRogersAccountOverviewPage().clkDropDownAccount(strLast4DigitAccount);

@@ -30,10 +30,10 @@ public class RogersSS_TC_03_FDM_ReassignDataManagerRole extends BaseTestClass {
     @Test(groups = {"RegressionSS","FDMSS"})
     public void validateReassignDataManagerRole() {
     	getRogersHomePage().clkSignIn();
-    	String strUsername = TestDataHandler.tc7681.getUsername();
+    	String strUsername = TestDataHandler.tc60.getUsername();
     	getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(strUsername);
-        String strPassword = TestDataHandler.tc7681.getPassword();    	
+        String strPassword = TestDataHandler.tc60.getPassword();
         getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		getRogersLoginPage().clkSignInIFrame();
@@ -43,7 +43,7 @@ public class RogersSS_TC_03_FDM_ReassignDataManagerRole extends BaseTestClass {
 		
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc7681.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc60.getAccountDetails().getBan());
         }
         
        getCommonBusinessFlows().scrollToMiddleOfWebPage();

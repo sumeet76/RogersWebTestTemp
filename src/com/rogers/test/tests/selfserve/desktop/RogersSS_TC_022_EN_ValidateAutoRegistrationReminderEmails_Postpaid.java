@@ -54,24 +54,20 @@ public class RogersSS_TC_022_EN_ValidateAutoRegistrationReminderEmails_Postpaid 
 				getRogersSetPasswordPage().setConfirmPassword(strPassword);
 				reporter.reportLogWithScreenshot("Set password page.");
 				getRogersSetPasswordPage().clkBtnSetPassword();
-				reporter.hardAssert(getRogersSetPasswordPage().verifyMsgReigistrationCompleteIsDisplayed(),
-						"Registration completed message displayed",
-						"Registration completed message does Not displayed");
-				reporter.reportLogWithScreenshot("Set password completed.");
-				getRogersSetPasswordPage().clkButtonSignIn();
-				//getRogersLoginPage().switchToSignInIFrame();
-		        getRogersLoginPage().setUsernameIFrame(strEmail);
-		        getRogersLoginPage().setPasswordIFrame(strPassword);
-		        reporter.reportLogWithScreenshot("Login Credential is entered.");
-		        getRogersLoginPage().clkSignInIFrame();
-		        getRogersLoginPage().clkSkipIFrame();
-				getRogersLoginPage().switchOutOfSignInIFrame();
-		        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
-		        	reporter.reportLogWithScreenshot("Select an account.");
-		        	
-					getRogersAccountOverviewPage().selectAccount(strBan);
-		        }
-		        reporter.reportLogWithScreenshot("Account overview page.");
+		reporter.hardAssert(getRegisterOrAccountRecoveryPage().isPasswordSuccessfullySet(),
+				"passowrd reset successful for recover password flow",
+				"passowrd reset NOT successful for recover password flow");
+		reporter.reportLogWithScreenshot("Password success page");
+		getRegisterOrAccountRecoveryPage().clkGoToMyRogers();
+		reporter.reportLogWithScreenshot("Go to my rogers clicked");
+		getRegisterOrAccountRecoveryPage().switchToDefaultContent();
+		reporter.reportLogWithScreenshot("Switch to default content");
+		reporter.reportLogWithScreenshot("waiting for account overview....");
+		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),
+				"username successfully recovered", "username NOT recovered successfully, please investigate");
+		reporter.reportLogWithScreenshot("Account overview");
+		reporter.reportLogWithScreenshot("Account overview page.");
+
 			}
 	
 		public void autoregisterUser(String strURI, String strEmail,String strBan) {

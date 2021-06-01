@@ -20,7 +20,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//rss-sms-recovery//button")
 	WebElement lnkSetupRecoveryNum;
 	
-	@FindBy (xpath = "//iframe[@src='/web/totes/easylogin/sms/input']")
+	@FindBy (xpath = "//iframe[contains(@src,'/web/totes/easylogin/sms/input')]")
 	WebElement iframeSmsRecovery;
 	
 	@FindBy (xpath = "//input[@formcontrolname='phoneNumber']")
@@ -118,11 +118,13 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	
 	@FindBy (xpath = "//strong")
 	WebElement btnChangePassDone;
-	
-	@FindBy (xpath = "//button[@title='Display contact information' or @title='Afficher les coordonnées' or @title='Hide contact information' or @title='Masquer les coordonnées']")
+
+	//button[@title='Display contact information' or @title='Afficher les coordonnées' or @title='Hide contact information' or @title='Masquer les coordonnées']
+	@FindBy (xpath = "//p[text()='Contact information' or text()='Coordonnées']/ancestor::button")
 	WebElement btnContactInfo;
-	
-	@FindBy (xpath = "//button[@title='Display billing settings' or @title='Afficher les préférences de facturation']")
+
+	//button[@title='Display billing settings' or @title='Afficher les préférences de facturation']
+	@FindBy (xpath = "//p[text()='Billing settings' or text()='Préférences de facturation']/ancestor::button")
 	WebElement btnBilingAddressInfo;
 	
 	@FindBy (xpath = "//span[contains(text(),'email') or contains(text(),'adresse courriel')]")
@@ -163,10 +165,13 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	
 	@FindBy (xpath = "//button[@title='Submit' or @title='Soumettre']")
 	WebElement btnAddContactEmailSubmit;
-	
-	@FindBy (xpath = "//div[@footer]//span[contains(text(),'Done') or contains(text(),'Termin')]")
+
+	@FindAll({
+	@FindBy(xpath = "//span[contains(text(),'Done') or contains(text(),'Termin')]"),
+	@FindBy (xpath = "//div[@footer]//span[contains(text(),'Done') or contains(text(),'Termin')]")}
+	)
 	WebElement btnAddContactEmailDone;
-	
+
 	@FindBy (xpath = "//input[@id='homePhone' or @id='mobilePhone']//parent::div")
 	WebElement lblHomePhone;
 	
@@ -178,8 +183,11 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	
 	@FindBy (xpath = "//button[@title='Submit' or @title='Soumettre']")
 	WebElement btnUpdateHomeNumberSubmit;
-	
-	@FindBy (xpath = "//div[@footer]//span[contains(text(),'Done') or contains(text(),'Termin')]")
+
+	@FindAll({
+			@FindBy(xpath = "//span[contains(text(),'Done') or contains(text(),'Termin')]"),
+			@FindBy (xpath = "//div[@footer]//span[contains(text(),'Done') or contains(text(),'Termin')]")}
+	)
 	WebElement btnUpdateHomeNumberDone;  
 	
 	@FindBy (xpath = "//input[@id='businessPhone']//parent::div")
@@ -193,8 +201,11 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	
 	@FindBy (xpath = "//button[@title='Submit' or @title='Soumettre']")
 	WebElement btnAddBusinessNumberSubmit;
-	
-	@FindBy (xpath = "//div[@footer]//span[contains(text(),'Done') or contains(text(),'Termin')]")
+
+	@FindAll({
+			@FindBy(xpath = "//span[contains(text(),'Done') or contains(text(),'Termin')]"),
+			@FindBy (xpath = "//div[@footer]//span[contains(text(),'Done') or contains(text(),'Termin')]")}
+	)
 	WebElement btnAddBusinessNumberDone;
 	
 	@FindBy (xpath = "//div[@footer]//span[contains(text(),'Done') or contains(text(),'Termin')]")
@@ -656,7 +667,15 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	public void clkBtnChangePasswordSubmit() {
 		getReusableActionsInstance().clickWhenReady(btnChangePassSubmit, 30);
 	}
-	
+
+	/**
+	 * Click the button "Submit" in change password flow
+	 * @author Mirza.Kamran
+	 */
+	public void clkBtnChangePasswordSubmitMobile() {
+		getReusableActionsInstance().clickIfAvailable(btnChangePassSubmit, 30);
+	}
+
 	/**
 	 * Check if change password success message is displayed
 	 * @return true if success message is displayed, otherwise false.
@@ -1160,7 +1179,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public void clkLanguage(String strlanguage) {
-		getReusableActionsInstance().clickWhenReady(By.xpath("//span[text()='"+strlanguage+"']"));
+		getReusableActionsInstance().clickWhenReady(By.xpath("//label//div[contains(text(),'"+strlanguage+"')]"));
 		
 	}
 
