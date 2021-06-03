@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.*;
+
 public class RogersSolarisChannelsExchangePage extends BasePageClass {
 
 	public RogersSolarisChannelsExchangePage(WebDriver driver) {
@@ -74,7 +76,9 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	WebElement btnRemoveChannel;
 
 
-	@FindBy(xpath = "//button[contains(@class,'d-inline-block -secondary -large')]")
+	@FindBy(xpath = "//button[contains(@class,'d-inline-block -secondary -large')] | " +
+			"//div[@class='exchange-channels__selected__desktop']//span[@id='ariaExchangeChannelsPage']//" +
+			"ancestor::a[@aria-describedby='ariaExchangeChannelsPage']")
 	WebElement btnAddChannel;
 
 	/**
@@ -310,4 +314,36 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 		getReusableActionsInstance().clickWhenReady(btnReturnToDashbaord, 30);
 	}
 
+
+	public List<WebElement> uncheckTVChannels() {
+		//reusableActions.waitForAllElementsVisible(selectedChannels, 120);
+
+		List<WebElement> availableChannels = getDriver().findElements(
+				By.xpath("//rch-selector[@ng-reflect-selected='false']//span[contains(@id,'aria-checkbox-id')]//ancestor::button//input/.."));
+		//System.out.println(availableChannels.toString());
+
+		for(int iuncheck=0;iuncheck<3;iuncheck++) {
+			System.out.println("In method Uncheck TV Channels loop");
+			List<WebElement> selected = getDriver().findElements(By.xpath("//rch-selector[@ng-reflect-selected='true']//input/.. | "
+					+ "//span[@translate='global.dashboard.tv.exchangeFlexChannels.logoSelected']/.."));
+			Collections.reverse(selected);
+			getReusableActionsInstance().clickIfAvailable(selected.get(0),45);
+			System.out.println(selected.get(0).getText());
+		}
+		return availableChannels;
+	}
+
+	public void checkTVChannels(List<WebElement> channels){
+		System.out.println("Channel size: " + channels.size());
+
+		int counter =0;
+		for (WebElement channel: channels ) {
+			if(counter<3){
+				getActionsInstance().moveToElement(channel).click().build().perform();
+				System.out.println(channel.getText());
+				counter++;
+			}
+		}
+		System.out.println("Checked channels count:" + counter);
+	}
 }

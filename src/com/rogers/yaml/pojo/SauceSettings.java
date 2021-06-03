@@ -12,7 +12,7 @@ public class SauceSettings {
 	private MutableCapabilities mutableEdgeCapabilities;
 	private AndroidCapabilities androidChromeCapabilities;
 	private MutableCapabilities mutableSafariCapabilities;
-
+	private AndroidCapabilities iosSafariCapabilities;
 	/**
 	 * @return the sauceUser
 	 */
@@ -25,6 +25,15 @@ public class SauceSettings {
 	public void setSauceUser(String sauceUser) {
 		this.sauceUser = sauceUser;
 	}
+
+	public AndroidCapabilities getIosSafariCapabilities() {
+		return iosSafariCapabilities;
+	}
+
+	public void setIosSafariCapabilities(AndroidCapabilities iosSafariCapabilities) {
+		this.iosSafariCapabilities = iosSafariCapabilities;
+	}
+
 	/**
 	 * @return the browserVersion
 	 */
@@ -131,3 +140,4 @@ public class SauceSettings {
 	}
 
 }
+

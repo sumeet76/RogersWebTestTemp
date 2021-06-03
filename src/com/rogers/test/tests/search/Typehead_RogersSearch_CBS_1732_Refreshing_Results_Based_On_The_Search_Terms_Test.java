@@ -18,7 +18,7 @@ import com.rogers.test.helpers.RogersEnums;
 
 import utils.CSVReader;
 
-public class RogersSearch_CBS_1732_Refreshing_Results_Based_On_The_Search_Terms_Test extends BaseTestClass {
+public class Typehead_RogersSearch_CBS_1732_Refreshing_Results_Based_On_The_Search_Terms_Test extends BaseTestClass {
     @DataProvider(name = "FilterData",parallel=true)
     public Object[] testData() throws IOException
     {
@@ -32,7 +32,7 @@ public class RogersSearch_CBS_1732_Refreshing_Results_Based_On_The_Search_Terms_
         return csvRow;
     }
 
-    @Test(dataProvider = "FilterData")
+    @Test(dataProvider = "FilterData",groups={"Typehead"})
     public void validateResultsBasedOnSearchTerms(String[] csvRow) {
 
         List<String> strSuggestionOptions;

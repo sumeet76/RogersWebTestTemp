@@ -285,4 +285,5 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 		return oneTimeFeeAfterTax.getText().replaceAll("\\n","");
 	}
 	
+	
 }

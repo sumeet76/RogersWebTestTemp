@@ -32,7 +32,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_054_IginteTV_WirelessCRMaddressMismatchWithSGI_ValidateServiceabilityCheckTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
+    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
     public void checkCRMaddressMismatchWithSGI_ServiceabilityTest() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();

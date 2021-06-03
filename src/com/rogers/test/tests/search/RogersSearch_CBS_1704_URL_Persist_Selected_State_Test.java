@@ -2,109 +2,121 @@ package com.rogers.test.tests.search;
 
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
+import org.openqa.selenium.WebElement;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
+import utils.CSVReader;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
 public class RogersSearch_CBS_1704_URL_Persist_Selected_State_Test extends BaseTestClass {
 
-	@Test
-	public void validateParentFilterDeselection() throws UnsupportedEncodingException {
+    @DataProvider(name = "FilterData", parallel = false)
+    public Object[] testData() throws IOException {
+        String csvFileName = null;
+        String language = getRogersSearchPage().getSystemLanguage().toLowerCase();
+        switch (language) {
+            case "en":
+                csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterData.csv";
+                break;
+            case "fr":
+                csvFileName = System.getProperty("user.dir") + "/test-data/rogers/search/FilterDataFR.csv";
+                break;
+        }
+        List<String[]> csvData = CSVReader.parseCsvData(csvFileName);
+        Object[] csvRowStrArray = new Object[csvData.size()];
+        for (int i = 0; i < csvData.size(); i++) {
+            csvRowStrArray[i] = csvData.get(i);
+        }
+        return csvRowStrArray;
+    }
 
-		String[] strDeviceType = {"Smartphone"};
-		String[] strBrandType = {"Apple","Samsung"};
-		String[] strStorageType = {"128GB","256GB"};
-		String[] strColorType = {"Black","Blue"};
-		int intIndex;
-		String strCurrentUrl;
+    @Test(dataProvider = "FilterData", groups = {"Search", "Filter"})
+    public void urlPersistSelectedState(String[] csvRowStrArray) throws UnsupportedEncodingException {
+        String strCurrentUrl, grandParentFilter, strParentFilterName;
+        List<WebElement> lstParentFilters;
+        List<String> strColorFilters, strStorageFilters;
+        String[] myArrayColor, myArrayStorage;
+        ArrayList<String> listArrayColor, listArrayStorage;
+        reporter.reportLogWithScreenshot("Launching URL");
+        getRogersSearchPage().isPageLoaded();
+        reporter.reportLogWithScreenshot("Page is launched");
+        getRogersSearchPage().clickSearchIcon();
+        getRogersSearchPage().enterTextToBeSearched(csvRowStrArray[0]);
+        reporter.reportLogWithScreenshot("Search string " + csvRowStrArray[0] + " is entered in the search text box");
+        getRogersSearchPage().clickSubmitSearchIcon();
+        getRogersSearchPage().isPageLoaded();
+        grandParentFilter = csvRowStrArray[1];
+        getRogersSearchPage().clkGrandParentFilter(grandParentFilter);
+        getRogersSearchPage().isPageLoaded();
+        reporter.reportLogWithScreenshot(grandParentFilter + " grandparent filter is clicked");
+        lstParentFilters = getRogersSearchPage().getParentFilters(csvRowStrArray[1]);
+        int size = lstParentFilters.size();
+        getRogersSearchPage().clkParentFilter(lstParentFilters.get(size - 1));
+        getRogersSearchPage().isPageLoaded();
+        strParentFilterName = lstParentFilters.get(size - 1).getText();
+        reporter.reportLogWithScreenshot(strParentFilterName + " parent filter is selected");
+        reporter.softAssert(getRogersSearchPage().validateFiltersInUrl(grandParentFilter, strParentFilterName),
+                "URL is appended with correct filters", "URL is not appended with correct filters");
+        strCurrentUrl = getDriver().getCurrentUrl();
+        getDriver().get("about:blank");
+        reporter.reportLogWithScreenshot("Blank Page Launched");
+        getDriver().get(strCurrentUrl);
+        getRogersSearchPage().waitTime();
+        reporter.reportLogWithScreenshot("Browser re-launched with url - " + strCurrentUrl);
+        reporter.softAssert(getRogersSearchPage().isGrandParentFilterExpanded(grandParentFilter),
+                "Grandparent filter expanded: " + grandParentFilter, "Grandparent filter Not expanded: " + grandParentFilter);
+        reporter.softAssert(getRogersSearchPage().isParentFilterExpanded(strParentFilterName), "Parent filter expanded: " + strParentFilterName, "Parent filter Not expanded: " + strParentFilterName);
+        grandParentFilter = getRogersSearchPage().clkShopFilter();
+        reporter.reportLogWithScreenshot(grandParentFilter + " grandparent filter is clicked");
+        strParentFilterName = getRogersSearchPage().clkWirelessFilter();
+        reporter.reportLogWithScreenshot(strParentFilterName + " parent filter is selected");
+        reporter.softAssert(getRogersSearchPage().validateFiltersInUrl(grandParentFilter, strParentFilterName),
+                "URL is appended with correct filters", "URL is not appended with correct filters");
+        strColorFilters = getRogersSearchPage().getColorFilters();
+        listArrayColor = getRogersSearchPage().filters(strColorFilters, "Color");
+        myArrayColor = new String[listArrayColor.size()];
+        reporter.softAssert(getRogersSearchPage().validateColorsInUrl(myArrayColor),
+                "Colors appended in URL", "Colors not appended in URL");
+        strStorageFilters = getRogersSearchPage().getStorageSelections();
+        listArrayStorage = getRogersSearchPage().filters(strStorageFilters, "Storage");
+        myArrayStorage = new String[listArrayStorage.size()];
+        reporter.softAssert(getRogersSearchPage().validateStoragesInUrl(myArrayStorage),
+                "Storage appended in URL", "Storage not appended in URL");
+        strCurrentUrl = getDriver().getCurrentUrl();
+        getDriver().get("about:blank");
+        reporter.reportLogWithScreenshot("Blank Page Launched");
+        getDriver().get(strCurrentUrl);
+        getRogersSearchPage().waitTime();
+        reporter.reportLogWithScreenshot("Browser re-launched with url - " + strCurrentUrl);
+        reporter.hardAssert(getRogersSearchPage().isGrandParentFilterExpanded(grandParentFilter),
+                "Grandparent filter expanded: " + grandParentFilter, "Grandparent filter Not expanded: " + grandParentFilter);
+        reporter.hardAssert(getRogersSearchPage().isParentFilterExpanded(strParentFilterName), "Parent filter expanded: " + strParentFilterName, "Parent filter Not expanded: " + strParentFilterName);
+        for (int i = 0; i < listArrayColor.size(); i++) {
+            reporter.softAssert(getRogersSearchPage().isFilterChecked(strColorFilters.get(i)
+            ), strColorFilters.get(i) + " is Checked", strColorFilters.get(i) + " is Not Checked");
+        }
+        for (int i = 0; i < listArrayStorage.size(); i++) {
+            reporter.softAssert(getRogersSearchPage().isFilterChecked(strStorageFilters.get(i)),
+                    strStorageFilters.get(i) + " is Checked", strStorageFilters.get(i) + " is Not Checked");
+        }
+    }
 
-		getDriver().get(System.getProperty("SearchUrl")+"wireless");
+    @BeforeMethod(alwaysRun = true)
+    @Parameters({"strBrowser", "strLanguage"})
+    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
+        xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+        startSession(System.getProperty("SearchUrl"), strBrowser, strLanguage, RogersEnums.GroupName.search, method);
+    }
 
-		getRogersSearchPage().clkGrandParentFilter("Support");
-		getRogersSearchPage().clkParentFilter("Support","Billing/Accounts");
-		reporter.reportLogWithScreenshot("Support-Billing/Accounts Expanded");
-		reporter.softAssert(getRogersSearchPage().validateFiltersInUrl("Support","Billing/Accounts"),
-				"Support_Billing/Accounts appended in URL","Support_Billing/Accounts NOT appended in URL");
-		strCurrentUrl = getDriver().getCurrentUrl();
-		getDriver().get("about:blank");
-		reporter.reportLogWithScreenshot("Blank Page Launched");
-
-		getDriver().get(strCurrentUrl);
-		reporter.reportLogWithScreenshot("Browser re-launched with url - " + strCurrentUrl);
-		reporter.hardAssert(getRogersSearchPage().isGrandParentFilterExpanded("Support"),
-				"Support filter expanded","Support filter Not expanded");
-		reporter.hardAssert(getRogersSearchPage().isParentFilterExpanded("Support","Billing/Accounts"),
-				"Billing/Accounts filter expanded","Billing/Accounts filter Not expanded");
-
-		getRogersSearchPage().clkGrandParentFilter("Shop");
-		getRogersSearchPage().clkParentFilter("Shop","Wireless");
-		for (intIndex=0;intIndex<strDeviceType.length;intIndex++) {
-			getRogersSearchPage().clkDeviceType(strDeviceType[intIndex]);
-		}
-		for (intIndex=0;intIndex<strBrandType.length;intIndex++) {
-			getRogersSearchPage().clkBrandType(strBrandType[intIndex]);
-		}
-		for (intIndex=0;intIndex<strStorageType.length;intIndex++) {
-			getRogersSearchPage().clkStorageType(strStorageType[intIndex]);
-		}
-		for (intIndex=0;intIndex<strColorType.length;intIndex++) {
-			getRogersSearchPage().clkColorType(strColorType[intIndex]);
-		}
-		reporter.reportLogWithScreenshot("Filters Selected");
-		reporter.softAssert(getRogersSearchPage().validateFiltersInUrl("Shop","Wireless"),
-				"Shop_Wireless appended in URL","Shop_Wireless NOT appended in URL");
-		reporter.softAssert(getRogersSearchPage().validateDeviceTypesInUrl(strDeviceType),
-				Arrays.toString(strDeviceType) + " appended in URL",Arrays.toString(strDeviceType) + " NOT appended in URL");
-		reporter.softAssert(getRogersSearchPage().validateBrandsInUrl(strBrandType),
-				Arrays.toString(strBrandType) + " appended in URL",Arrays.toString(strBrandType) + " NOT appended in URL");
-		reporter.softAssert(getRogersSearchPage().validateStoragesInUrl(strStorageType),
-				Arrays.toString(strStorageType) + " appended in URL",Arrays.toString(strStorageType) + " NOT appended in URL");
-		reporter.softAssert(getRogersSearchPage().validateColorsInUrl(strColorType),
-				Arrays.toString(strColorType) + " appended in URL",Arrays.toString(strColorType) + " NOT appended in URL");
-		strCurrentUrl = getDriver().getCurrentUrl();
-		getDriver().get("about:blank");
-		reporter.reportLogWithScreenshot("Blank Page Launched");
-
-		getDriver().get(strCurrentUrl);
-		reporter.reportLogWithScreenshot("Browser re-launched with url - " + strCurrentUrl);
-		reporter.softAssert(getRogersSearchPage().isGrandParentFilterExpanded("Shop"),
-				"Shop filter expanded","Shop filter expanded");
-		reporter.softAssert(getRogersSearchPage().isParentFilterExpanded("Shop","Wireless"),
-				"Wireless filter expanded","Wireless filter NOT expanded");
-		for (intIndex=0;intIndex<strDeviceType.length;intIndex++) {
-			reporter.softAssert(getRogersSearchPage().isFilterChecked(strDeviceType[intIndex]),
-					strDeviceType[intIndex] + " is Checked",strDeviceType[intIndex] + " is Not Checked");
-		}
-		for (intIndex=0;intIndex<strBrandType.length;intIndex++) {
-			reporter.softAssert(getRogersSearchPage().isFilterChecked(strBrandType[intIndex]),
-					strBrandType[intIndex] + " is Checked",strBrandType[intIndex] + " is Not Checked");
-		}
-		for (intIndex=0;intIndex<strStorageType.length;intIndex++) {
-			reporter.softAssert(getRogersSearchPage().isFilterChecked(strStorageType[intIndex]),
-					strStorageType[intIndex] + " is Checked",strStorageType[intIndex] + " is Not Checked");
-		}
-		for (intIndex=0;intIndex<strColorType.length;intIndex++) {
-			reporter.softAssert(getRogersSearchPage().isFilterChecked(strColorType[intIndex]),
-					strColorType[intIndex] + " is Checked",strColorType[intIndex] + " is Not Checked");
-		}
-	}
-
-	@BeforeMethod(alwaysRun = true)
-	@Parameters({"strBrowser", "strLanguage"})
-	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
-		xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(System.getProperty("SearchUrl") + "wireless", strBrowser, strLanguage, RogersEnums.GroupName.search, method);
-	}
-
-	@AfterMethod(alwaysRun = true)
-	public void afterTest() {
-		closeSession();
-	}
-
+    @AfterMethod(alwaysRun = true)
+    public void afterTest() {
+        closeSession();
+    }
 }

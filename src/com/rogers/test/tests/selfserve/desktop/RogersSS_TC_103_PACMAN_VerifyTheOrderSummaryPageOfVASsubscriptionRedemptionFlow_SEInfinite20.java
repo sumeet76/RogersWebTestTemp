@@ -28,7 +28,7 @@ public class RogersSS_TC_103_PACMAN_VerifyTheOrderSummaryPageOfVASsubscriptionRe
 	}
 	
 	
-	@Test(groups = {"RegressionSS","PACMANRedeem"})
+	@Test(groups = {"RegressionSS","PACMAN"})
     public void verifyTheOrderSummaryPageOfVASsubscriptionRedemptionFlow_SEInfinite20() {
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
