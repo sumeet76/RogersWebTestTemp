@@ -84,6 +84,7 @@ public class TestDataHandler {
 	public static AccountData tc06_2_SolarisChangeTVManageChannels;
 	public static AccountData tc06_1_SolarisChangeTVManageThemePacks;
 	public static AccountData tc35_CRMaddressMismatchWithSGI;
+	public static AccountData tc29_IgniteServiceabilityAddressNB;
 	public static AccountData tc62_wirelessSignedInInternetBuy;
 	public static AccountData tc60_WirelessSignedInInternetBuyDiffAddress;
 	public static AccountData tc63_ShmSignedInInternetBuyBasement;
@@ -262,7 +263,7 @@ public class TestDataHandler {
 		solarisConsumerGWPInternetSHM = YamlHandler.getCableAccountData("solarisConsumerGWPInternetSHM");
 		solarisConsumerGWPRhp = YamlHandler.getCableAccountData("solarisConsumerGWPRhp");
 		solarisConsumerGWPRhpShm = YamlHandler.getCableAccountData("solarisConsumerGWPRhpShm");
-		
+		tc29_IgniteServiceabilityAddressNB=YamlHandler.getCableAccountData("TC29_IgniteServiceabilityAddressNB");
     	//Legacy Internet test data
 		tc46_legacyInternetAccount = YamlHandler.getCableAccountData("TC46_LegacyInternetAccount");
 		tc62_wirelessSignedInInternetBuy = YamlHandler.getCableAccountData("TC62_WirelessSignedInInternetBuy");
