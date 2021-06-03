@@ -83,7 +83,21 @@ public class YamlHandler {
 		
 
 	}
-	
+
+	public static LoginDetails getBFAOneViewLoginDetails() throws FileNotFoundException {
+		Yaml yaml = new Yaml(new Constructor(LoginDetails.class));
+		InputStream inputStream;
+
+		inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/buyflowsoneview/LoginDetails.yml"));
+		LoginDetails login = yaml.load(inputStream);
+		return login;
+
+
+
+
+
+	}
+
 	public static CHOneViewConfig getCHOneViewConfig() throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(CHOneViewConfig.class));
 		InputStream inputStream;

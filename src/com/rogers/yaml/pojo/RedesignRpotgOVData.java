@@ -2,7 +2,9 @@ package com.rogers.yaml.pojo;
 
 public class RedesignRpotgOVData {
 	private String contactID;
+	private String language;
 	private String shippingAddress;
+	private String apartment;
     private String deviceName;
 	private String deviceCostIndex;
 	private String dataOptionIndex;
@@ -44,9 +46,17 @@ public class RedesignRpotgOVData {
 		this.contactID = contactID;
 	}
 
+	public String getLanguage() { return language; }
+
+	public void setLanguage(String language) { this.language = language; }
+
 	public String getShippingAddress() { return shippingAddress; }
 
 	public void setShippingAddress(String shippingAddress) { this.shippingAddress = shippingAddress; }
+
+	public String getApartment() { return apartment; }
+
+	public void setApartment(String apartment) { this.apartment = apartment; }
 
 	public String getCreditCardDetailsOTP() {
 		return creditCardDetailsOTP;

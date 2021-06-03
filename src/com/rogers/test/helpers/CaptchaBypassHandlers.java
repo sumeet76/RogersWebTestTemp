@@ -154,7 +154,7 @@ public class CaptchaBypassHandlers {
 	public void chOnewviewNACFlows(String strUrl,  String strLoginID, String strLanID, String strLanguage,String strBrowser,  Method currentTestMethodName ,String strContactID) throws IOException {
 		String oneViewUrl="";
 		if(strContactID.equals(""))
-			oneViewUrl= CaptchaBypassHandlers.urlOneViewNAC(strUrl, strLoginID, strLanID, strLanguage);
+			oneViewUrl= CaptchaBypassHandlers.urlOneViewNAC(strUrl, strLoginID, strLanID, strLanguage, currentTestMethodName);
 		System.out.println(oneViewUrl + "----------------------------------------------------------------------------");
 		getDriver().get(oneViewUrl);
 	}
@@ -169,9 +169,15 @@ public class CaptchaBypassHandlers {
 		return oneViewUrl;
 	}
 
-	public static String  urlOneViewNAC(String strUrl, String strLoginID, String strLanID, String strLanguage) {
+	public static String  urlOneViewNAC(String strUrl, String strLoginID, String strLanID, String strLanguage, Method currentTestMethodName) {
 		String queryParam="";
-		queryParam="LoginId="+strLoginID+"&UserRole=CSR,BRT%20Authorized%20CSR-3,Oneview Pilot-1,Oneview Pilot-2,Oneview Pilot-4,Oneview BRT-1,Oneview BRT-2,Oneview BRT-3,Oneview BRT-4,R76,BT User,R21,R39,R60,R75,R77,R180,R182,R185,R246,R252,R261,R167,R306,R307,R304,R309,R311,R310,BRT Authorized CSR-1,BRT Authorized CSR-3,BRT Authorized CSR-4&Target=UTE&TimeStamp=2021-02-11T11:29:45.442-04:00&Lang="+strLanguage+"&AppId=CRM&li="+strLanID;
+		if (currentTestMethodName.getName().contains("Outbound")){
+			queryParam="LoginId="+strLoginID+"&UserRole=CSR,BRT%20Authorized%20CSR-3,Oneview Pilot-1,Oneview Pilot-2,Oneview Pilot-4,Oneview BRT-1,Oneview BRT-2,Oneview BRT-3,Oneview BRT-4,R76,BT User,R21,R39,R60,R75,R77,R180,R182,R185,R246,R252,R261,R167,R306,R307,R304,R309,R311,R310,BRT Authorized CSR-1,BRT Authorized CSR-3,BRT Authorized CSR-4&Target=UTE&TimeStamp=2021-02-11T11:29:45.442-04:00&Lang="+strLanguage+"&AppId=CRM&li="+strLanID;
+		} else if(currentTestMethodName.getName().contains("FieldSales")) {
+			queryParam="LoginId=" + strLoginID + "&UserRole=R59,R57&AccNo=&Target=UTE&TimeStamp=2021-02-11T11:29:45.442-04:00&Lang="+strLanguage+"&AppId=CRM&li="+strLanID;
+		} else {
+			queryParam="LoginId="+strLoginID+"&UserRole=CSR&AccNo=&Target=UTE&TimeStamp=2021-02-11T11:29:45.442-04:00&Lang="+strLanguage+"&AppId=CRM&li="+strLanID;
+		}
 		String oneViewUrl= strUrl+queryParam;
 		return oneViewUrl;
 	}

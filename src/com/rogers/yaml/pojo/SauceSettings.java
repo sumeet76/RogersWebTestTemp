@@ -12,6 +12,7 @@ public class SauceSettings {
 	private MutableCapabilities mutableEdgeCapabilities;
 	private AndroidCapabilities androidChromeCapabilities;
 	private MutableCapabilities mutableSafariCapabilities;
+
 	/**
 	 * @return the sauceUser
 	 */

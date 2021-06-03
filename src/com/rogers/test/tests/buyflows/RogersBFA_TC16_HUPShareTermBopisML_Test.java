@@ -71,6 +71,7 @@ class RogersBFA_TC16_HUPShareTermBopisML_Test extends BaseTestClass {
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
+        getRogersPlanConfigPage().skipBPOOffer();
         reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                 "Billing Address is not selected");
         reporter.reportLogPassWithScreenshot("On Checkout page");
@@ -114,9 +115,9 @@ class RogersBFA_TC16_HUPShareTermBopisML_Test extends BaseTestClass {
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows , method);
     }
 
-    @AfterMethod(alwaysRun = true)
+/*    @AfterMethod(alwaysRun = true)
     public void afterTest() {
         closeSession();
-    }
+    }*/
     
 }

@@ -114,6 +114,8 @@ public class TestDataHandler {
 	public static RedesignRpotgData tc05NACByodSS;
 	public static RedesignRpotgData tc06NACByodTermBopis;
 	public static RedesignRpotgOVData buyFlowsOVtestCase14;
+	public static RedesignRpotgOVData buyFlowsOVtestCase15;
+	public static RedesignRpotgOVData buyFlowsOVtestCase16;
 	public static AALData tc07AAL;
 	public static PPCData tc08PPC;
 	public static HUPData tc09HupPpcPotgSharedML;
@@ -162,6 +164,7 @@ public class TestDataHandler {
 	public static AccountData shmAccount;
 	public static AccountData tupeloAccount;
 	public static Config bfaOneViewConfig;
+	public static LoginDetails bfaOneViewLogin;
 	public static PaymentDetails bfaOneViewPaymentInfo;
 	public static AccountData tc0610;
 	public static Config rogersConfig;
@@ -403,6 +406,7 @@ public class TestDataHandler {
 	
 	private static void buyFlowsOneViewDataInit() throws FileNotFoundException {
 		bfaOneViewConfig =  YamlHandler.getBFAOneViewConfig();
+		bfaOneViewLogin = YamlHandler.getBFAOneViewLoginDetails();
 		//sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/buyflows/SauceSettings.yml");
 		bfaOneViewPaymentInfo = YamlHandler.getBFAOneViewPaymentDetails();
 		buyFlowsOVtestCase01 = YamlHandler.getHUPdataOneView("tc01OVHUPWithPPCMultilineAccount");
@@ -419,6 +423,8 @@ public class TestDataHandler {
 		buyFlowsOVtestCase12 = YamlHandler.getAALdataOneView("tc12OVAALBYODBopisShippingAccount");
 		buyFlowsOVtestCase13 = YamlHandler.getAALdataOneView("tc13OVAALBYODNonShareStandardShippingAccount");
 		buyFlowsOVtestCase14 = YamlHandler.getRedesignOVNACData("tc14OVNAC");
+		buyFlowsOVtestCase15 = YamlHandler.getRedesignOVNACData("tc15OVNACCSR");
+		buyFlowsOVtestCase16 = YamlHandler.getRedesignOVNACData("tc16OVNACFieldSales");
 	}
 	
 	private static void chOneViewDataInit() throws FileNotFoundException {
