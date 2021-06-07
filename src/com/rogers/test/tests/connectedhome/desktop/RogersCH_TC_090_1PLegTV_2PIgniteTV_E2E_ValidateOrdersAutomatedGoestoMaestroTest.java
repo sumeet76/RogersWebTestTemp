@@ -51,7 +51,7 @@ import java.util.Map;
 
 public class RogersCH_TC_090_1PLegTV_2PIgniteTV_E2E_ValidateOrdersAutomatedGoestoMaestroTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
+    @Test//(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
 	public void checkTVPackageUpgradeTest() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
