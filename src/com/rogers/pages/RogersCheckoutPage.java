@@ -768,7 +768,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author praveen.kumar7
 	 */
 	public void clkAcceptButton() {
-		getReusableActionsInstance().clickWhenReady(acceptButton, 30);
+		getReusableActionsInstance().clickIfAvailable(acceptButton, 30);
 	}
 
 	/**

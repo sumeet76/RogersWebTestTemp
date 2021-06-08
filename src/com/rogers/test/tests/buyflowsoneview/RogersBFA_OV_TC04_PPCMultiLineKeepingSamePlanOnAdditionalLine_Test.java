@@ -16,7 +16,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  * @author Saurav.Goyal
  */
 public class RogersBFA_OV_TC04_PPCMultiLineKeepingSamePlanOnAdditionalLine_Test extends BaseTestClass {
-    @Test(groups = {"RegressionBFA","RegressionOVBFA","SanityBFA","PPCOvBFA"})
+    @Test(groups = {"RegressionBFA","RegressionOVBFA","PPCOvBFA"})
     public void ppcOnMultiLineKeepingSamePlanOnAdditionalLineFlowTest() {
         reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
         reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");

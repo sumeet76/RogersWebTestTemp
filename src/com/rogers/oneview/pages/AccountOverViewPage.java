@@ -51,7 +51,10 @@ public class AccountOverViewPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@class='hup-button red']")
 	WebElement btnSubmitOneViewDialogue;
 
-	@FindBy(xpath = "//t[contains(text(),'Add new wireless line')]")
+	@FindAll({
+			@FindBy(xpath = "//t[contains(text(),'Add new wireless line')]"),
+			@FindBy(xpath = "//t[contains(text(),'Add a line')]")
+	})
 	WebElement addNewWirelessLineButton;
 
 	/**
