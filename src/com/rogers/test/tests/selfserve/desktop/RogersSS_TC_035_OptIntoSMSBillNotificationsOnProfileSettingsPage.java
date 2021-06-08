@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 public class RogersSS_TC_035_OptIntoSMSBillNotificationsOnProfileSettingsPage extends BaseTestClass {
 
-    @Test(groups = {"RegressionSS","BillingAndPaymentsSS"})
+    @Test
     public void downloadPdfBillViewBillPageTest() {
         getRogersHomePage().clkSignIn();
 		getRogersLoginPage().switchToSignInIFrame();

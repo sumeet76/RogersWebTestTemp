@@ -34,7 +34,7 @@ public class RogersSS_TC_111_TC_112_BnP_ValidateTheSetUpPTPflowForDelinquentCxWh
     }
 
 
-    @Test(dataProvider = "data-provider",groups = {"AccountOverviewSS","PTP"})
+    @Test(dataProvider = "data-provider",groups = {"BillingAndPaymentsSS","PTP"})
     public void validateSignInAndAccountOverview(String[] dataRow) {
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
