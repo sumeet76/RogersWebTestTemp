@@ -35,7 +35,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 
 	@FindAll({
-			@FindBy(xpath ="//span[@id='ariaBundlesAddToCart_Rogers Ignite Starter']/ancestor::a"),
+			@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Starter']/ancestor::a"),
 			@FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='allowedFlowAddToCart_Rogers Ignite Starter']/ancestor::a")})
 	WebElement btnSolarisStarterPackageNew;
 	//span[@translate='global.cta.addToCart']
@@ -97,7 +97,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@aria-label,'4')]//span[@class='ds-icon rds-icon-info']")
 	WebElement hvr4kChannels;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
+	@FindBy(xpath = "//div[@class='ds-modal__header d-flex align-items-start']//span[@class='ds-icon rds-icon-close']")
 	WebElement hvrClose;
 
 	@FindBy(xpath = "//button[contains(@aria-label,'What are Flex Channels?')]//span[@class='ds-icon rds-icon-info']")
@@ -130,6 +130,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//button[@type='submit']//span[@translate='global.modals.cartAbandonment.triggerEmailModal.primaryButtonLabel']")
 	WebElement btnSubmit;
 
+	@FindBy(xpath = "//span[@translate='global.modals.cartAbandonment.triggerEmailModal.startOverButtonLabel']/ancestor::button")
+	WebElement btnStartOver;
+
 	@FindBy(xpath = "//div[@class='ds-checkbox__box my-12']")
 	WebElement clkEmailCheckbox;
 
@@ -142,6 +145,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	@FindBy(xpath = "//a[@title='MyRogers' or @title='MonRogers' and @class='m-navLink ng-star-inserted']")
 	WebElement lnkMyRogers;
+
+	@FindBy(xpath = "//span[@translate='global.cta.cancel']/ancestor::span[@role='text']")
+	WebElement btnCheckoutCancel;
 
 	@FindBy(xpath = "//span[@translate='global.cta.checkout']/ancestor::span[@role='text']")
 	WebElement btnCheckout;
@@ -637,7 +643,16 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnCheckout, 20).click();
 		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
 	}
-	
+
+	/**
+	 * Click checkout button on Ignite-bundles/tv-internet page
+	 * @author chinnarao.vattam
+	 */
+	public void clkCheckoutCancel() {
+		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
+		getReusableActionsInstance().getWhenReady(btnCheckoutCancel, 20).click();
+	}
+
 	/**
 	 * Click checkout button on Ignite-bundles/tv-internet page
 	 * @author chinnarao.vattam
@@ -783,8 +798,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public void setEmail() {
 		String strEmail = FormFiller.generateEmail();
-		getReusableActionsInstance().waitForElementVisibility(txtEmailContainer,30);
-		getReusableActionsInstance().getWhenReady(txtEmailContainer,10).click();
+		getReusableActionsInstance().waitForElementVisibility(txtEmailContainer,60);
+		getReusableActionsInstance().getWhenReady(txtEmailContainer,30).click();
 		getReusableActionsInstance().clickWhenReady(txtEmail);
 		txtEmail.clear();
 		txtEmail.sendKeys(strEmail);
@@ -806,6 +821,17 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	public void clickSubmit() {
 		getReusableActionsInstance().clickWhenReady(btnSubmit, 20);
 	}
+
+	/**
+	 * Click the StartOver button
+	 * @author chinnarao.vattam
+	 */
+
+	public void clickStartOver() {
+		getReusableActionsInstance().clickWhenReady(btnStartOver, 20);
+	}
+
+
 	/**
 	 * Click the Email Checkbox
 	 * @author chinnarao.vattam
@@ -994,7 +1020,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkHoverClose() {
-		getReusableActionsInstance().getWhenReady(hvrClose, 20).click();
+		getReusableActionsInstance().getWhenReady(hvrClose, 20);
+		getReusableActionsInstance().executeJavaScriptClick(hvrClose);
 	}
 
 	/**

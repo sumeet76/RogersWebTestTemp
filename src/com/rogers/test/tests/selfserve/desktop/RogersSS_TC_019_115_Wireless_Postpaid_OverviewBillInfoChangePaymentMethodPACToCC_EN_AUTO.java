@@ -101,7 +101,7 @@ public class RogersSS_TC_019_115_Wireless_Postpaid_OverviewBillInfoChangePayment
 
     }
 
-	@Test(dependsOnMethods ="overviewBillInfoChangePaymentMethodPAC_To_CC", groups = {"SanitySS","BillingAndPaymentsSS"})
+	@Test(dependsOnMethods ="overviewBillInfoChangePaymentMethodPAC_To_CC", groups = {"BillingAndPaymentsSS"})
 	public void overviewBillInfoChangePaymentMethodCC_To_Manual() {
 
 		getRogersHomePage().clkSignIn();

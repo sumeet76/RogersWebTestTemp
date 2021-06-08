@@ -2,6 +2,7 @@ package com.rogers.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import com.rogers.pages.base.BasePageClass;
 
@@ -36,14 +37,17 @@ public class RogersInternetProfilePage extends BasePageClass {
 	
 	@FindBy(xpath = "//input[@name='confirmEmail']")
 	WebElement txtConfirmEmail;
-	
-	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @ng-reflect-a11y-description='Please enter your First Name.']")
+
+	@FindAll({@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and contains(@a11ydescription,'First Name')]"),
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @ng-reflect-a11y-description='Please enter your First Name.']")})
 	WebElement txtFirstName;
-	
-	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @ng-reflect-a11y-description='Please enter your Last Name.']")
+
+	@FindAll({@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and contains(@a11ydescription,'Last Name')]"),
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @ng-reflect-a11y-description='Please enter your Last Name.']")})
 	WebElement txtLastName;
-	
-	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @ng-reflect-a11y-description='Please enter your phone number']")
+
+	@FindAll({@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and contains(@a11ydescription,'Please enter your phone number')]"),
+			@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @a11ydescription='Please enter your phone number']")})
 	WebElement btnPhone;
 		
 	@FindBy(xpath = "//span[@translate='global.cta.continue']")

@@ -9,6 +9,7 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.Map;
 
 
 /**
@@ -60,7 +61,6 @@ public class RogersCH_TC_060_ISS_HomePageEntryPointSignedInWirelessBuyInternetDi
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         getRogersHomePage().clkInternetAvailability();
-        reporter.reportLogWithScreenshot("Launched the Internet page");
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
         String  strAddressLine1=TestDataHandler.tc60_WirelessSignedInInternetBuyDiffAddress.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc60_WirelessSignedInInternetBuyDiffAddress.getAccountDetails().getAddress().get("line2");
@@ -125,6 +125,17 @@ public class RogersCH_TC_060_ISS_HomePageEntryPointSignedInWirelessBuyInternetDi
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
+        String ban = getRogersOrderConfirmationPage().getBAN();
+        System.out.println("BAN from the portal : " + ban);
+        /**
+         * DB Validations in the subscriber table
+         */
+
+        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
+                .executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from billing_account where BAN='" + ban + "'", false);
+
+        reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
+        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
     	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

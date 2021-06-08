@@ -3,6 +3,7 @@ package com.rogers.pages;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -28,17 +29,25 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	@FindBy(xpath = "//input[@name='confirmEmail']")
 	WebElement txtConfirmEmail;
 	//input[@id='ds-form-input-id-15']
-	
-	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'First Name')]")
+
+	@FindAll({
+	@FindBy(xpath = "//input[contains(@a11ydescription,'First Name')]"),
+	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'First Name')]")})
 	WebElement txtFirstName;
-	//input[@id='ds-form-input-id-9']
-	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'Last Name')]")
+
+	@FindAll({
+			@FindBy(xpath = "//input[contains(@a11ydescription,'Last Name')]"),
+	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'Last Name')]")})
 	WebElement txtLastName;
-	//input[@id='ds-form-input-id-10']
-	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'your phone number')]")
+
+	@FindAll({
+			@FindBy(xpath = "//input[contains(@a11ydescription,'your phone number')]"),
+	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'your phone number')]")})
 	WebElement btnPhone;
-	//input[@id='ds-form-input-id-12']
-	
+
+	@FindBy(xpath = "//span[@translate='global.cta.cancel']")
+	WebElement btnProfielSubmitCancel;
+
 	@FindBy(xpath = "//span[@translate='global.cta.continue']")
 	WebElement btnProfielSubmit;	
 	//input[@class='ute-btn-primary profile-submit-button']
@@ -211,7 +220,16 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnProfielSubmit, 60);
 		getReusableActionsInstance().executeJavaScriptClick(btnProfielSubmit);
 	}
-	
+
+	/**
+	 * Click the Submit button on the profile page
+	 * @author Chinnarao.Vattam
+	 */
+	public void clkSubmitCancel() {
+		getReusableActionsInstance().getWhenReady(btnProfielSubmitCancel, 60);
+		getReusableActionsInstance().executeJavaScriptClick(btnProfielSubmitCancel);
+	}
+
 	/**
 	 * Click the Submit button on the profile page
 	 * @author Chinnarao.Vattam

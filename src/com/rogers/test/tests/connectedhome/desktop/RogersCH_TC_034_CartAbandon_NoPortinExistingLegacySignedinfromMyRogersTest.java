@@ -51,7 +51,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_034_CartAbandon_NoPortinExistingLegacySignedinfromMyRogersTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
+    @Test(groups = {"RegressionCH","RogersCartAbandon"})
 	public void checkCartAbandonNoPortinExistingLegacySignedinfromMyRogersTest() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
@@ -90,8 +90,6 @@ public class RogersCH_TC_034_CartAbandon_NoPortinExistingLegacySignedinfromMyRog
         reporter.reportLogWithScreenshot("Launched the cart summary page");
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");
 		reporter.reportLogWithScreenshot("Launched the cart summary page");
-		getRogersIgniteTVBuyPage().set4KTV();
-		reporter.reportLogWithScreenshot("4k TV selected");
 		getRogersHomePage().clkSignOut();
 		reporter.reportLogWithScreenshot("Signed Out");
 		}

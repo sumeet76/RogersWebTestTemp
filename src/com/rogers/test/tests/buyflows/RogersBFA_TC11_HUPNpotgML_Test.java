@@ -87,6 +87,7 @@ public class RogersBFA_TC11_HUPNpotgML_Test extends BaseTestClass {
         reporter.reportLogPassWithScreenshot("Order Review Page");
         getRogersReviewOrderPage().clkFinancingConsentCheckbox();
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
+        getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
         getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         if(getRogersOrderReviewPage().isPaymentRequired()) {

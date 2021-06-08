@@ -35,7 +35,7 @@ public class RogersSS_TC_09_FDM_AddDataUpsell extends BaseTestClass {
 	}
 		
 	Integer counterOfAddedData =0;
-    @Test(groups = {"AddDataFlow","FDMSS"})
+    @Test(groups = {"AddDataFlow","FDMSS","AddDataSpeedPass"})
     public void validateDataUsageDisplayForRunningLowAndAddData() {
     	reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");

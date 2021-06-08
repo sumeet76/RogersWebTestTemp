@@ -20,6 +20,9 @@ public class RogersAddDataPage extends BasePageClass {
 	
 	@FindBy (xpath = "//select[@formcontrolname='selectedDataTopup']/option")
 	List<WebElement> divListAddDataOpt;
+
+	@FindBy (xpath = "//div[@class='selected-plan-details-item']")
+	List<WebElement> divListAddDataOptNew;
 	
 	@FindBy (xpath = "//span[contains(text(),'Continue') or contains(text(),'Continuer')]")
 	WebElement btnContinue;
@@ -40,7 +43,20 @@ public class RogersAddDataPage extends BasePageClass {
 	WebElement msgError;
 
 	@FindBy (xpath = "//h2[text()='Limit reached' or text()='Limite atteinte']")
-	WebElement lblLimitReached;	
+	WebElement lblLimitReached;
+
+	@FindBy (xpath = "//ss-data-topup-dropdown")
+	WebElement dropdown;
+
+	@FindBy (xpath = "//button/span[text()='Select amount']")
+	WebElement selectAmountInDropdown;
+
+	@FindBy (xpath = "//ss-data-topup-dropdown//li")
+	List<WebElement> listInDropdown;
+
+
+	@FindBy (xpath = "//select[@formcontrolname='selectedDataTopup']")
+	WebElement selectAddDataTopUp;
 
 	/**
 	 * Verifies if Add data overlay displayed
@@ -50,7 +66,19 @@ public class RogersAddDataPage extends BasePageClass {
 	public boolean verifyAddDataOverlayIsDisplayed() {			
 		return getReusableActionsInstance().isElementVisible(divListAddDataOpt.get(1), 60);
 	}
-	
+
+	/**
+	 * Verifies if Add data overlay displayed
+	 * @return true if element is displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyAddDataOverlayIsDisplayedNew() {
+		return (getReusableActionsInstance().isElementVisible(dropdown)
+		|| getReusableActionsInstance().isElementVisible(divListAddDataOptNew.get(1), 60));
+
+
+	}
+
 	/**
 	 * Clicks on first add data option
 	 * @author Mirza.Kamran
@@ -60,7 +88,26 @@ public class RogersAddDataPage extends BasePageClass {
 		getReusableActionsInstance().clickWhenReady(divListAddDataOpt.get(index), 60);
 		
 	}
-	
+
+	/**
+	 * Clicks on first add data option
+	 * @author Mirza.Kamran
+	 */
+	public void selectDataAddOnOptionNew(Integer index) {
+
+		if(getReusableActionsInstance().isElementVisible(dropdown))
+		{
+			//reusableActions.getWhenReady(selectAmountInDropdown).click();
+			getReusableActionsInstance().selectWhenReady(selectAddDataTopUp,index);
+			//getReusableActionsInstance().getWhenReady(listInDropdown.get(index)).click();
+		}else
+		{
+			getReusableActionsInstance().waitForElementVisibility(divListAddDataOptNew.get(index),60);
+			getReusableActionsInstance().clickWhenReady(divListAddDataOptNew.get(index), 60);
+		}
+
+
+	}
 	/**
 	 * Selctes an add data option
 	 * @param strAddOn string add on value

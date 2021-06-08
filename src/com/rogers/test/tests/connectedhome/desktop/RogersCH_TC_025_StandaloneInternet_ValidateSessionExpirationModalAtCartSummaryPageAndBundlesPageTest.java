@@ -8,7 +8,7 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-
+import java.util.Map;
 
 
 /**
@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_025_StandaloneInternet_ValidateSessionExpirationModalAtCartSummaryPageAndBundlesPageTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","saiCH"})
+	@Test(groups = {"RegressionCH","SessionExpaire"})
     public void checkSessionExpirationModalatCartSummaryPage() throws InterruptedException {
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
         getRogersHomePage().clkEasyInternet();
@@ -107,7 +107,23 @@ public class RogersCH_TC_025_StandaloneInternet_ValidateSessionExpirationModalAt
         getRogersPaymentOptionsPage().clkPaymentConfirm();
 
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
+        getRogersOrderReviewPage().clkAcceptenceCheckbox();
+        reporter.reportLogWithScreenshot("Agreement details");
+        getRogersOrderReviewPage().clkSubmit();
+        reporter.reportLogWithScreenshot("Launched the Confirmation page");
+        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
+        reporter.reportLogWithScreenshot("Launched the Confirmation page");
+        String ban = getRogersOrderConfirmationPage().getBAN();
+        System.out.println("BAN from the portal : " + ban);
+        /**
+         * DB Validations in the subscriber table
+         */
 
+        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
+                .executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from billing_account where BAN='" + ban + "'", false);
+
+        reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
+        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
     }
 
 

@@ -8,10 +8,11 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.Map;
 
 public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
+    @Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
     public void checkBuyIginteTVOfferPortIn() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
@@ -89,11 +90,11 @@ public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends B
         reporter.reportLogWithScreenshot("Launched the tech install page");
         getRogersTechInstallPage().selTechInstalStartDate();
         reporter.reportLogWithScreenshot("Selected Start date for Installation slot");
-        getRogersTechInstallPage().selectPreferredTimeSlot("24: AFT");
+        getRogersTechInstallPage().selectPreferredTimeSlot();
         reporter.reportLogWithScreenshot("Selected Start date for Installation slot");
         getRogersTechInstallPage().selTechInstalEndDate();
         reporter.reportLogWithScreenshot("Selected End date for Installation");
-        getRogersTechInstallPage().selectBackupTimeSlot("1: AFT");
+        getRogersTechInstallPage().selectBackupTimeSlot();
         reporter.reportLogWithScreenshot("Selected End date for Installation slot");
         getRogersTechInstallPage().setContactNumber();
         getRogersTechInstallPage().setMobielNumber();
@@ -115,7 +116,7 @@ public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends B
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-    	}
+     }
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin

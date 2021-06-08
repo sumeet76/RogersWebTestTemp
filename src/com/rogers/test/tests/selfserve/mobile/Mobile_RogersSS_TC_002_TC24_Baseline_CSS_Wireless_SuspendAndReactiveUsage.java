@@ -88,8 +88,10 @@ public class Mobile_RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiv
     	String strUsername = TestDataHandler.tc0224.getUsername();
     	String strPassword = TestDataHandler.tc0224.getPassword();
     	getRogersLoginPage().switchToSignInIFrame();
+		reporter.reportLogWithScreenshot("switch to iframe");
         getRogersLoginPage().setUsernameIFrame(strUsername);
-        getRogersLoginPage().setPasswordIFrame(strPassword);
+		reporter.reportLogWithScreenshot("Username entered");
+        getRogersLoginPage().setPasswordIFrameMobile(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");

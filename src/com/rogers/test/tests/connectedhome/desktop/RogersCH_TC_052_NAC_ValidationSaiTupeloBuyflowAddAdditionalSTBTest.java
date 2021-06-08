@@ -8,6 +8,7 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.Map;
 
 
 /**
@@ -33,7 +34,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_052_NAC_ValidationSaiTupeloBuyflowAddAdditionalSTBTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","SmartStreamCH"})
+    @Test(groups = {"RegressionCH","SmartStreamCH","DryRunCH"})
     public void checkSaiTupeloBuyflowAddAdditionalSTB() {
         getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
@@ -44,8 +45,8 @@ public class RogersCH_TC_052_NAC_ValidationSaiTupeloBuyflowAddAdditionalSTBTest 
         getRogersHomePage().clkIgniteAddressLookupSubmitSS();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
-        getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
-        getRogersIgniteTVBuyPage().clkUpdateCart();
+        /*getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
+        getRogersIgniteTVBuyPage().clkUpdateCart();*/
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
 
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
@@ -106,6 +107,17 @@ public class RogersCH_TC_052_NAC_ValidationSaiTupeloBuyflowAddAdditionalSTBTest 
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
+        String ban = getRogersOrderConfirmationPage().getBAN();
+        System.out.println("BAN from the portal : " + ban);
+        /**
+         * DB Validations in the subscriber table
+         */
+
+        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
+                .executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from billing_account where BAN='" + ban + "'", false);
+
+        reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
+        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
     }
 
 

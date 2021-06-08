@@ -219,7 +219,7 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author nimmy.george
      */
     public void clkUpfrontConsentCheckbox() {
-        getReusableActionsInstance().clickWhenReady(chUpfrontConsent,2);
+        getReusableActionsInstance().clickIfAvailable(chUpfrontConsent,2);
     }
 
     /**

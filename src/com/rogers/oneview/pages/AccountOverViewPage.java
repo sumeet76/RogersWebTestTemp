@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 public class AccountOverViewPage  extends BasePageClass {
@@ -13,7 +14,11 @@ public class AccountOverViewPage  extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//agent-notifications[contains(@state,'autopop')]/div[contains(@class,'blocker')]")
+	@FindAll({
+			@FindBy(xpath = "//agent-notifications[contains(@state,'autopop')]/div[contains(@class,'blocker')]"),
+			@FindBy(xpath = "//div[contains(@class,'blocker ng')]"),
+			@FindBy(xpath = "//agent-notifications/div[contains(@class,'blocker')]"),
+	})
 	WebElement skipNotification;
 	
 	@FindBy(xpath = "//span[@class='ute-icon-tv']")

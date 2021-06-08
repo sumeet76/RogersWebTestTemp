@@ -69,7 +69,7 @@ public class RogersSS_TC_077_ValidateSupportSectionInWirelessDasboard_NSEInfinit
 				"Something wrong with FAQ: Unlocking Device link in Support section.");
         reporter.reportLogWithScreenshot("After click FAQ: Unlocking Device link."); 
         getRogersWirelessDashboardPage().navigateBacktoDashboardPage();
-        
+
         reporter.hardAssert(getRogersWirelessDashboardPage().verifyLinkDeviceProtection(strBaseUrl),
 				"Device Protection link in Support section is validated successfully.", 
 				"Something wrong with Device protection link in Support section.");

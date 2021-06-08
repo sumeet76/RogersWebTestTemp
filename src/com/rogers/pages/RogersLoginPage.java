@@ -1,5 +1,6 @@
 package com.rogers.pages;
 
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -123,9 +124,41 @@ public class RogersLoginPage extends BasePageClass {
 	 */
 	public void setPasswordIFrame(String strPassword) {
 		//getReusableActionsInstance().waitForElementTobeClickable(txtPassword, 30);
-		getReusableActionsInstance().getWhenReady(lblPassword).click();
-		getReusableActionsInstance().getWhenVisible(txtPassword,20).clear();
-		getReusableActionsInstance().getWhenVisible(txtPassword).sendKeys(strPassword);
+		try {
+			getReusableActionsInstance().scrollToElement(lblPassword);
+			getReusableActionsInstance().getWhenReady(lblPassword).click();
+			getReusableActionsInstance().getWhenVisible(txtPassword, 20).clear();
+			getReusableActionsInstance().getWhenVisible(txtPassword).sendKeys(strPassword);
+		}catch (Exception ex)
+		{
+			getReusableActionsInstance().scrollToElement(lblPassword);
+			getReusableActionsInstance().getWhenReady(lblPassword).click();
+			getReusableActionsInstance().getWhenVisible(txtPassword, 20).clear();
+			getReusableActionsInstance().getWhenVisible(txtPassword).sendKeys(strPassword);
+		}
+
+	}
+
+	/**
+	 * Enter the password on Sign in frame
+	 * @param strPassword user password to be login
+	 * @author chinnarao.vattam
+	 */
+	public void setPasswordIFrameMobile(String strPassword) {
+		//getReusableActionsInstance().waitForElementTobeClickable(txtPassword, 30);
+		try {
+			getReusableActionsInstance().scrollToElement(btnSignIn);
+			getReusableActionsInstance().getWhenReady(lblPassword).click();
+			getReusableActionsInstance().getWhenVisible(txtPassword, 20).clear();
+			getReusableActionsInstance().getWhenVisible(txtPassword).sendKeys(strPassword);
+		}catch (Exception ex)
+		{
+			getReusableActionsInstance().scrollToElement(btnSignIn);
+			getReusableActionsInstance().getWhenReady(lblPassword).click();
+			getReusableActionsInstance().getWhenVisible(txtPassword, 20).clear();
+			getReusableActionsInstance().getWhenVisible(txtPassword).sendKeys(strPassword);
+		}
+
 	}
 
 	/**
@@ -133,15 +166,22 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSignInIFrame() {
-		getReusableActionsInstance().getWhenReady(btnSignIn,30).click();
-		
+		try {
+			getReusableActionsInstance().scrollToElement(btnSignIn);
+			getReusableActionsInstance().waitForElementTobeClickable(btnSignIn, 2);
+			getReusableActionsInstance().getWhenReady(btnSignIn, 30).click();
+		}catch (ElementClickInterceptedException ex)
+		{
+			//for mobile browsers
+			getReusableActionsInstance().getWhenReady(btnSignIn, 30).click();
+		}
 	}
-	
+	//*[text()='Remember username']
 	/**
 	 * Check if the login failed message displayed
 	 * @return true if login fail message is displayed, otherwise false.
 	 */
-	public Boolean verifyLoginFailMsgIframe() {
+	public boolean verifyLoginFailMsgIframe() {
 		return getReusableActionsInstance().isElementVisible(failLoginMsg, 10);
 	}
 
@@ -150,6 +190,7 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSkipIFrame() {
+		getReusableActionsInstance().clickIfAvailable(btnSignIn,2);
 		getReusableActionsInstance().clickIfAvailable(btnSkip,10);
 	}
 	

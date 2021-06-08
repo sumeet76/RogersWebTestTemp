@@ -16,6 +16,7 @@ public class RogersSS_TC_05_UserValidateRecoverPasswordUsingEmailI extends BaseT
 
 	@BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+		System.setProperty("PageLoadStrategy", "NONE");
 		startSession(System.getProperty("QaUrl"),strBrowser,strLanguage,RogersEnums.GroupName.selfserve_login,method);
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());		
 	}
@@ -35,11 +36,9 @@ public class RogersSS_TC_05_UserValidateRecoverPasswordUsingEmailI extends BaseT
 		reporter.reportLogWithScreenshot("Switched to sign in iFrame");
 		getRogersLoginPage().clkForgotPasswordIframe();							
 		reporter.reportLogWithScreenshot("Forgot username link is clicked.");
-		String strUserName = TestDataHandler.tc07.getUsername();
-		String strPassword = TestDataHandler.tc07.getPassword();
+		String strUserName = TestDataHandler.tc013132.getUsername();
+		String strPassword = TestDataHandler.tc013132.getPassword();
 		//getRogersRecoverPassOrNamePage().clkBtnUserName();
-		String strEmail = TestDataHandler.tc07.getAccountDetails().getContactemail();
-		String strBan = TestDataHandler.tc07.getAccountDetails().getBan();
 		getRegisterOrAccountRecoveryPage().setUsernameIFrame(strUserName);
 		reporter.reportLogWithScreenshot("Set username for recover password.");
 		getRegisterOrAccountRecoveryPage().clkBtnContinue();

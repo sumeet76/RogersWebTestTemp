@@ -100,9 +100,9 @@ public class RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE extends B
 		reporter.reportLogWithScreenshot("Navigated back to dashboard from manage data view"); 
 		
 		//8. Remaining days in bill cycle displayed below the total data
-		reporter.hardAssert(getRogersWirelessDashboardPage().verifyDaysRemainingInTheBillCycleIsDisplayed(),
-						"Days left remaining in the bill cycle is displayed", 
-						"Days left remaining in the bill cycle is NOT displayed");  
+		//reporter.hardAssert(getRogersWirelessDashboardPage().verifyDaysRemainingInTheBillCycleIsDisplayed(),
+		//				"Days left remaining in the bill cycle is displayed",
+		//				"Days left remaining in the bill cycle is NOT displayed");
 		reporter.hardAssert(!getRogersWirelessDashboardPage().verifyDataDelayMessage(),
 						"Data delayed 12 hours message doesn't display, this is Demo line.", 
 						"Data delayed 12 hours message doesn't display, please check.");  
@@ -110,7 +110,11 @@ public class RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE extends B
 		getRogersWirelessDashboardPage().clkBtnSpeedPass();
 		reporter.hardAssert(getRogersSpeedPassPage().verifySpeedPassPopupIsDisplayed(),
 				"Add speed pass overlay openned successfully.", 
-				"Add speed pass overlay failed.");  
+				"Add speed pass overlay failed.");
+		// adding changes for  Rogers Speed Pass and Fido DOP Top-up Price Increase
+		reporter.hardAssert(getRogersSpeedPassPage().verifyIfTopUpPriceIsCorrect(),
+				"Top ups price verified successfully",
+				"Top ups price NOT verified successfully");
 		getRogersSpeedPassPage().clkBtnCloseInSpeedPassPopup();
 		getRogersWirelessDashboardPage().scrollToMidOfDasboardPage();
 		reporter.reportLogWithScreenshot("Middle of Wireless dashboard page.");        

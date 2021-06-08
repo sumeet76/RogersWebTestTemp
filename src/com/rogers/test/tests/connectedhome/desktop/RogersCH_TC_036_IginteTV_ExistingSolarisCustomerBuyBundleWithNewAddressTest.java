@@ -8,6 +8,7 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.Map;
 
 /**
  * This class contains the test method to test the IgniteTV buy flow for Rogers.com   
@@ -48,7 +49,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_036_IginteTV_ExistingSolarisCustomerBuyBundleWithNewAddressTest extends BaseTestClass {
 
-	 @Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
+	 @Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
     public void checkExistingSolarisCustomerBuyBundleWithNewAddress() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
@@ -106,11 +107,11 @@ public class RogersCH_TC_036_IginteTV_ExistingSolarisCustomerBuyBundleWithNewAdd
 		 getRogersHomePhoneSelectionPage().clkContinueHomePhoneSelection();
 
 	        reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
-	    	getRogersTechInstallPage().selSelffinstallDateAndTimeMigrartion();
+	    	//getRogersTechInstallPage().selSelffinstallDateAndTimeMigrartion();
 	        reporter.reportLogWithScreenshot("Launched the tech install page");	        
 	        //getRogersTechInstallPage().clkTechInstallSlot();
 	        reporter.reportLogWithScreenshot("tech install details");
-	        getRogersTechInstallPage().setMobielNumber();
+	        //getRogersTechInstallPage().setMobielNumber();
 	        getRogersTechInstallPage().clkTechInstalConsent();
 	        reporter.reportLogWithScreenshot("tech install details");
 	        getRogersTechInstallPage().clkTechInstallContinue();
@@ -125,6 +126,17 @@ public class RogersCH_TC_036_IginteTV_ExistingSolarisCustomerBuyBundleWithNewAdd
         getRogersOrderReviewPage().clkSubmit();
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
+		 String ban = getRogersOrderConfirmationPage().getBAN();
+		 System.out.println("BAN from the portal : " + ban);
+		 /**
+		  * DB Validations in the subscriber table
+		  */
+
+		 Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
+				 .executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from billing_account where BAN='" + ban + "'", false);
+
+		 reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
+		 reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
     	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

@@ -2,7 +2,6 @@ package com.rogers.test.base;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
 import com.rogers.oneview.pages.*;
 import com.rogers.pages.RogersBuildPlanPage;
 import com.rogers.pages.RogersChooseAddonsPage;
@@ -16,6 +15,7 @@ import com.rogers.pages.ens.EnsNotificationViewPage;
 import com.rogers.test.commonbusinessfunctions.CommonBusinessFlows;
 import com.rogers.test.commonbusinessfunctions.VerifyInEns;
 import com.rogers.test.helpers.CaptchaBypassHandlers;
+import com.rogers.test.helpers.DBValidation;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.test.helpers.RogersEnums.SauceCapabilities;
 import com.rogers.testdatamanagement.TestDataHandler;
@@ -32,7 +32,6 @@ import org.testng.ITestContext;
 import org.testng.annotations.BeforeSuite;
 import utils.AppiumServerJava;
 import utils.BrowserDrivers;
-import utils.DigiAutoCustomException;
 import utils.Reporter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -56,11 +55,16 @@ public class BaseTestClass {
         WIN, LIN, MAC
     }
 
+    public enum PaymentMethodType {
+        CREDIT, BANK, MANUAL
+    }
+
     ;// Operating systems.
 
     public static ExtentReports report;
     public static ExtentTest logger;
     public Reporter reporter;
+    public static DBValidation dbConnection;
     protected static final ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersHomePage> RogersHomePageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersLoginPage> RogersLoginPageThreadLocal = new ThreadLocal<>();
@@ -149,6 +153,10 @@ public class BaseTestClass {
     protected static final ThreadLocal<com.rogers.oneview.pages.RogersShippingPage> RogersOVShippingPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<com.rogers.oneview.pages.RogersOVPaymentPage> RogersOVPaymentPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<com.rogers.oneview.pages.RogersChoosePlanPage> RogersOVChoosePlanPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<com.rogers.oneview.pages.RogersOVPlanConfigPage> RogersOVPlanConfigPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<com.rogers.oneview.pages.RogersOVCheckoutPage> RogersOVCheckoutPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<com.rogers.oneview.pages.RogersOVReviewOrderPage> RogersOVReviewOrderPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<com.rogers.oneview.pages.RogersOVOneTimePaymentPage> RogersOVOneTimePaymentPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersSearchPage> RogersSearchPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersDeviceCataloguePage> RogersDeviceCataloguePageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersDeviceConfigPage> RogersDeviceConfigPageThreadLocal = new ThreadLocal<>();
@@ -158,15 +166,24 @@ public class BaseTestClass {
     protected static final ThreadLocal<RogersNACOrderConfirmationPage> RogersNACOrderConfirmationPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersOneTimePaymentPage> RogersOneTimePaymentPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersHomePageServiceability> RogersHomePageServiceabilityThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<RogersSecurityPackagesPage> RogersSecurityPackagesPageThreadLocal = new ThreadLocal<>();
+
+
     AppiumServerJava appiumServer = new AppiumServerJava();
     //int port = 4723;
     private CaptchaBypassHandlers captcha_bypass_handlers;
     private Map<String, String> sauceParameters;
     private Map<String, String> RunParameters;
 
+
+    private static final ThreadLocal<RogersFinanceAccessoriesPage> RogersFinanceAccessoriesPagePageThreadLocal = new ThreadLocal<>();
+
     public BaseTestClass() {
         browserdriver = new BrowserDrivers();
+    }
 
+    public static DBValidation getDbConnection(){
+        return new DBValidation();
     }
 
     public static ExtentReports getReport() {
@@ -191,6 +208,10 @@ public class BaseTestClass {
 
     public static RogersAccountOverviewPage getRogersAccountOverviewPage() {
         return RogersAccountOverviewPageThreadLocal.get();
+    }
+
+    public static RogersSecurityPackagesPage getRogersSecurityPackagesPage() {
+        return RogersSecurityPackagesPageThreadLocal.get();
     }
 
     public static RogersProfileAndSettingsPage getRogersProfileAndSettingsPage() {
@@ -525,6 +546,22 @@ public class BaseTestClass {
         return RogersOVChoosePlanPageThreadLocal.get();
     }
 
+    public static com.rogers.oneview.pages.RogersOVPlanConfigPage getRogersOVPlanConfigPage() {
+        return RogersOVPlanConfigPageThreadLocal.get();
+    }
+
+    public static com.rogers.oneview.pages.RogersOVCheckoutPage getRogersOVCheckoutPage() {
+        return RogersOVCheckoutPageThreadLocal.get();
+    }
+
+    public static com.rogers.oneview.pages.RogersOVReviewOrderPage getRogersOVReviewOrderPage() {
+        return RogersOVReviewOrderPageThreadLocal.get();
+    }
+
+    public static com.rogers.oneview.pages.RogersOVOneTimePaymentPage getRogersOVOneTimePaymentPage() {
+        return RogersOVOneTimePaymentPageThreadLocal.get();
+    }
+
     public static RogersSearchPage getRogersSearchPage() {
         return RogersSearchPageThreadLocal.get();
     }
@@ -573,10 +610,15 @@ public class BaseTestClass {
         return RogersPaymentHistoryPageThreadLocal.get();
     }
 
-
     public static RogersHomePageServiceability getRogersHomePageRogersHomePageServiceability() {
         return RogersHomePageServiceabilityThreadLocal.get();
     }
+
+    public static RogersFinanceAccessoriesPage getRogersFinanceAccessoriesPagePage() {
+        return RogersFinanceAccessoriesPagePageThreadLocal.get();
+    }
+
+
 
     public Map<String, String> getRunParameters() {
         return RunParameters;
@@ -625,6 +667,16 @@ public class BaseTestClass {
                 getDriver().get(strUrl + "?setLanguage=" + language);
                 break;
 
+            case "connectedhome_shm":
+                setImplicitWait(getDriver(), 10);
+                getDriver().get(strUrl + "/home-security/security-packages"+ "?setLanguage=" + language);
+                break;
+
+            case "connectedhome_shmautomation":
+                setImplicitWait(getDriver(), 10);
+                getDriver().get(strUrl + "/home-security/automation-packages"+ "?setLanguage=" + language);
+                break;
+
             case "connectedhome_legacylogin":
                 setImplicitWait(getDriver(), 10);
                 getDriver().get(strUrl + "/web/totes/api/v1/bypassCaptchaAuth");
@@ -655,7 +707,7 @@ public class BaseTestClass {
                     getDriver().get(strUrl + "/phones/" + "?setLanguage=" + language + "&?province=" + "ON");
                     captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 }else{
-                    getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language + "&setProvince=" + "ON");
+                    getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language + "&?province=" + "ON");
                     captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 }
                 break;
@@ -666,8 +718,9 @@ public class BaseTestClass {
                 getDriver().get(strUrl);
                 break;
 
-            case "search": //getDriver().get(strUrl);
-                setImplicitWait(getDriver(), 1);
+            case "search":
+                getDriver().get(strUrl + "&language=" + System.getProperty("Language").toLowerCase());
+                setImplicitWait(getDriver(), 30);
                 break;
 
             default:
@@ -677,7 +730,7 @@ public class BaseTestClass {
         }
 
         getDriver().manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-        if (!browser.contains("sauceandroid")) {
+        if (!(browser.contains("sauceandroid") || browser.contains("sauceios"))) {
             getDriver().manage().window().maximize();
         }
         init(strGroupName);
@@ -721,6 +774,13 @@ public class BaseTestClass {
                 sauceOptions.put(SauceCapabilities.appiumVersion.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getAppiumVersion());
                 sauceOptions.put(SauceCapabilities.deviceName.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getDeviceName());
                 sauceOptions.put(SauceCapabilities.deviceOrientation.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getDeviceOrientation());
+                break;
+            case "sauceioschrome":
+                sauceOptions.put(SauceCapabilities.appiumVersion.toString(), TestDataHandler.sauceSettings.getIosSafariCapabilities().getAppiumVersion());
+                sauceOptions.put(SauceCapabilities.deviceName.toString(), TestDataHandler.sauceSettings.getIosSafariCapabilities().getDeviceName());
+                sauceOptions.put(SauceCapabilities.deviceOrientation.toString(), TestDataHandler.sauceSettings.getIosSafariCapabilities().getDeviceOrientation());
+                sauceOptions.put(SauceCapabilities.platformVersion.toString(), TestDataHandler.sauceSettings.getIosSafariCapabilities().getPlatformVersion());
+                sauceOptions.put(SauceCapabilities.platformName.toString(), TestDataHandler.sauceSettings.getIosSafariCapabilities().getPlatformName());
                 break;
         }
 
@@ -816,7 +876,9 @@ public class BaseTestClass {
                 RogersDigitalTVDashboardPageThreadLocal.set(new RogersDigitalTVDashboardPage(getDriver()));
                 RogersAccountOverviewPageThreadLocal.set(new RogersAccountOverviewPage(getDriver()));
                 RogersSHMDashboardPageThreadLocal.set(new RogersSHMDashboardPage(getDriver()));
-                break;
+                RogersFinanceAccessoriesPagePageThreadLocal.set(new RogersFinanceAccessoriesPage(getDriver()));
+
+            break;
 
             case "connectedhome_legacyanonymous":
 
@@ -852,6 +914,11 @@ public class BaseTestClass {
                 RogersHomePhonePortInPageThreadLocal.set(new RogersHomePhonePortInPage(getDriver()));
                 RogersInternetProfilePageThreadLocal.set(new RogersInternetProfilePage(getDriver()));
                 RogersInternetCreditCheckPageThreadLocal.set(new RogersInternetCreditCheckPage(getDriver()));
+                break;
+
+            case "connectedhome_shm":
+            case "connectedhome_shmautomation":
+                RogersSecurityPackagesPageThreadLocal.set(new RogersSecurityPackagesPage(getDriver()));
                 break;
 
             case "connectedhome_legacylogin":
@@ -1004,6 +1071,10 @@ public class BaseTestClass {
                 RogersOVShippingPageThreadLocal.set(new com.rogers.oneview.pages.RogersShippingPage(getDriver()));
                 RogersOVPaymentPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVPaymentPage(getDriver()));
                 RogersOVChoosePlanPageThreadLocal.set(new com.rogers.oneview.pages.RogersChoosePlanPage(getDriver()));
+                RogersOVPlanConfigPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVPlanConfigPage(getDriver()));
+                RogersOVCheckoutPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVCheckoutPage(getDriver()));
+                RogersOVReviewOrderPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVReviewOrderPage(getDriver()));
+                RogersOVOneTimePaymentPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVOneTimePaymentPage(getDriver()));
                 break;
 
 
@@ -1105,14 +1176,6 @@ public class BaseTestClass {
     @BeforeSuite(alwaysRun = true)
     public void beforeSuite(ITestContext iTestContext) throws FileNotFoundException {
         TestDataHandler.dataInit(iTestContext.getSuite().getAllMethods());
-        String strURL= System.getProperty("QaUrl");
-        if (strURL.toUpperCase().contains("ROGERS")) {
-            if (!strURL.contains("qa1.")  && !strURL.contains("qa5.")  && !strURL.contains("qa6.")  && !strURL.contains("qa7.") && !strURL.contains("qa2.") && !strURL.contains("qa3.") && !strURL.contains("qa4.") ) {
-                ExtentTestManager.startTest("Test result summary: Entire suite execution stopped, CookieDomain URL is not valid","");
-                ExtentTestManager.getTest().log(LogStatus.FAIL,"Suite Failed : CookieDomain URL is not valid"  );
-                //throw new DigiAutoCustomException("CookieDomain URL is not valid");
-            }
-        }
     }
 
 }

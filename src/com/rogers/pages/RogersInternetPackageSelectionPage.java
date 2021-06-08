@@ -39,8 +39,9 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//input[@class='checkoutButton']")
 	WebElement btnCheckout;
 
-	@FindBy(xpath = "(//div//a[@title='Get Ignite Internet + SmartStream now'])[1]")
+	@FindBy(xpath = "//div//a[@title='Get it now']")
 	WebElement btnSmartStream;
+	//(//div//a[@title='Get Ignite Internet + SmartStream now'])[1]
 
 	@FindBy(xpath = "//a[contains(@title,'Ignite Internet with SmartStream')]")
 	WebElement lnkSmartStream;
@@ -48,13 +49,21 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::span[contains(@class,'ds-button__wrapper')]")
 	WebElement btnInternetBuyContinue;
 	
-	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::span[@role='text']")
+	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 150u']/ancestor::span[@role='text']")
 	WebElement btnInternetPackage;
 	//button[@aria-label='Add Ignite Internet 500u to your cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']
 
 	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::span[@role='text']")
+	WebElement btnInternet500uPackage;
+
+	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 150u']/ancestor::span[@role='text']")
 	WebElement btnSmartStreamPackage;
 
+	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::span[@role='text']")
+	WebElement btnSmartStream500uPackage;
+
+	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::div[@class='internet-bundle-tile']//div[@class='ds-checkbox__box my-12 rds-icon-check']")
+	WebElement chkSmartStream;
 
 	/**
 	 * selects the Internet package if it visible and ready if not click on the next arrow to get the desired package
@@ -104,6 +113,9 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 				+ "') and contains(normalize-space(.) ,'" + part[1].trim() + "')]"));
 	}
 
+	public boolean verifyInternetPacakesPage() {
+		return getReusableActionsInstance().isElementVisible(btnInternetPackage,90);
+	}
 	/**
 	 * Verify the  down grade Ways To Buy Box when we do on the Internet down grade process
 	 * @return true if the Down grade Ways popup displayed  else false
@@ -122,19 +134,32 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnInternetPackage, 90).click();
 	}
 
+	public void clkInternet500uPackage() {
+		getReusableActionsInstance().getWhenReady(btnInternet500uPackage, 90).click();
+	}
+
 	public void clkSmartStreamPackage() {
 		getReusableActionsInstance().getWhenReady(btnSmartStreamPackage, 90).click();
 	}
 
+	public void clkSmartStream500uPackage() {
+		getReusableActionsInstance().getWhenReady(btnSmartStream500uPackage, 90).click();
+	}
+
+	public void clkSmartStreamCheckBox() {
+		getReusableActionsInstance().getWhenReady(chkSmartStream, 90).click();
+	}
 	public void clkSmartStreamAvailability() {
+		getReusableActionsInstance().staticWait(8000);
 		getReusableActionsInstance().waitForElementVisibility(btnSmartStream, 90);
 		getReusableActionsInstance().executeJavaScriptClick(btnSmartStream);
+		getReusableActionsInstance().staticWait(8000);
+		getReusableActionsInstance().staticWait(8000);
 	}
 
 	public void clkSmartStream() {
-		getReusableActionsInstance().staticWait(10000);
-	/*	getReusableActionsInstance().waitForElementVisibility(lnkSmartStream, 90);
-		getReusableActionsInstance().executeJavaScriptClick(lnkSmartStream);*/
+		getReusableActionsInstance().waitForElementVisibility(lnkSmartStream, 90);
+		getReusableActionsInstance().executeJavaScriptClick(lnkSmartStream);
 	}
 
 	public void clkInternetPackageMobile() {
@@ -150,9 +175,9 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	}
 
 	public void clkInternetBuyContinue() {
-		if(!getReusableActionsInstance().isElementVisible(btnInternetBuyContinue, 20)) {
-			getReusableActionsInstance().waitForElementInvisibility(popUpLoading, 30);
-		}
+		/*if(!getReusableActionsInstance().isElementVisible(btnInternetBuyContinue, 20)) {
+			getReusableActionsInstance().waitForElementInvisibility(popUpLoading, 90);
+		}*/
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 		getReusableActionsInstance().getWhenReady(btnInternetBuyContinue, 60).click();
 	}

@@ -22,6 +22,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	}
 
 	String customerType = null;
+	public String xpathDeviceName;
 
 	@FindBy(xpath = "//div[contains(@class,'button') and (@res='details_devicemodel' or @res='upgrade')]")
 	WebElement btnDetails;
@@ -43,6 +44,9 @@ public class RogersChoosePhonePage extends BasePageClass {
 	
 	@FindBy(xpath = "//section[@class='phoneModel']")
 	List<WebElement> deviceModal;
+
+	@FindBy(xpath = "//ds-modal-container")
+	WebElement modalContainer;
 	
 	//2nd findby: https://qa06-ciam.rogers.com/
 	@FindAll({
@@ -79,22 +83,36 @@ public class RogersChoosePhonePage extends BasePageClass {
 	@FindBy(xpath = "//button[@res='eligible_cancel']")
 	WebElement formProOnTheGoCancel;
 
-	@FindAll({
-			@FindBy(xpath = "(//td[contains(@class,'text-title-5 text-bold text-right py-12')])[2]"),
-			@FindBy(xpath = "//p[contains(text(),'Security deposit required')]//following::p[1]")
+	/*@FindAll({
+			//@FindBy(xpath = "(//td[contains(@class,'text-title-5 text-bold text-right py-12')])[3]"),//2
+			@FindBy(xpath = "//p[contains(text(),'Security deposit required')]//following::p[1]"),
+			@FindBy(xpath = "//th[contains(text(),' Security deposit required ')]//following-sibling::td")
 	})
+	WebElement securityDepositAmount;*/
+
+	@FindBy(xpath = "//th[contains(text(),' Security deposit required ')]//following-sibling::td")
 	WebElement securityDepositAmount;
 
-	@FindAll({
-			@FindBy(xpath = "(//td[contains(@class,'text-title-5 text-bold text-right py-12')])[3]"),
-			@FindBy(xpath = "//p[contains(text(),'Security deposit required')]//following::p[3]")
+/*	@FindAll({
+			//@FindBy(xpath = "(//td[contains(@class,'text-title-5 text-bold text-right py-12')])[4]"),//3
+			@FindBy(xpath = "//p[contains(text(),'Security deposit required')]//following::p[3]"),
+			@FindBy(xpath = "//th[contains(text(),' CLM ')]//following-sibling::td")
 	})
+	WebElement cLMAmount;*/
+
+	@FindBy(xpath = "//th[contains(text(),' CLM ')]//following-sibling::td")
 	WebElement cLMAmount;
 
+/*
 	@FindAll({
-			@FindBy(xpath = "(//td[contains(@class,'text-title-5 text-bold text-right py-12')])[4]"),
-			@FindBy(xpath = "//p[contains(text(),'Security deposit required')]//following::p[5]")
+			//@FindBy(xpath = "(//td[contains(@class,'text-title-5 text-bold text-right py-12')])[5]"),//4
+			@FindBy(xpath = "//p[contains(text(),'Security deposit required')]//following::p[5]"),
+			@FindBy(xpath = "//th[contains(text(),' Risk level ')]//following-sibling::td")
 	})
+	WebElement riskLevel;
+*/
+
+	@FindBy(xpath = "//th[contains(text(),' Risk level ')]//following-sibling::td")
 	WebElement riskLevel;
 
 	@FindBy(xpath = "//span[contains(text(),' Accept and Continue ')]")
@@ -111,6 +129,10 @@ public class RogersChoosePhonePage extends BasePageClass {
 
 	@FindBy(xpath = "//span[contains(text(),'Continue')]")
 	WebElement modalContinueButton;
+
+	@FindBy(xpath = "//button[@title='Select' or @title='Continue' or @title='Continuer' or @title='Ship to home' or @title='Expédier à la maison']")
+	public
+	WebElement continueButton;
 
 	/**
 	 * Clicks on the 'Details' button on the first available device
@@ -335,5 +357,66 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 */
 	public void clickContinueButtonOnModal() {
 		getReusableActionsInstance().clickWhenReady(modalContinueButton,40);
+	}
+
+	/**
+	 * This method creates Xpath of a particular device with device name
+	 * @param	deviceName : Name of the device to be used as reference for creating the xpath
+	 * @return a String value which is an xpath for a device name
+	 * @author nimmy.george
+	 */
+	public String createXpathWithDeviceName(String deviceName) {
+		xpathDeviceName="//p[contains(@class,'text-title-5 ')][contains(text(),'"+deviceName+"')]";
+		return xpathDeviceName;
+	}
+
+	/**
+	 * This method creates Xpath of a particular CTA button
+	 * @param	deviceName : name of the device used to create the xpath
+	 * @return a String value which is an xpath for a CTA button
+	 * @author saurav.goyal
+	 */
+	public String createXpathForCTAButton(String deviceName) {
+		xpathDeviceName = createXpathWithDeviceName(deviceName);
+		String ctaButtonXpath = xpathDeviceName + "/ancestor::div[@class='dsa-nacTile__top']//following-sibling::div//span[contains(@class,'ds-button__copy')]";
+		return ctaButtonXpath;
+	}
+
+	/**
+	 * This method Clicks on a device Tile CTA button for a particular phone
+	 * @param deviceName : name of the Device to be used to generate Xpath
+	 * @author saurav.goyal
+	 */
+	public void clickDeviceTileCTAButton(String deviceName) {
+		getReusableActionsInstance().clickWhenVisible(By.xpath(createXpathForCTAButton(deviceName)), 30);
+	}
+
+	/**
+	 * This method will verify that the device tile CTA button is present or not
+	 * @param deviceName : name of the Device for which we want to verify device tile CTA button
+	 * @return boolean true if the CTA button is present else false
+	 * @author saurav.goyal
+	 */
+	public boolean verifyDeviceTileCTAButton(String deviceName) {
+		return getReusableActionsInstance().isElementVisible(By.xpath(createXpathForCTAButton(deviceName)), 60);
+	}
+
+	/**
+	 * This method check whether a Modal page is getting displayed or not
+	 * @return a boolean value true if a modal window will appear else false
+	 * @author saurav.goyal
+	 */
+	public boolean isModalDisplayed() {
+		return getReusableActionsInstance().isElementVisible(modalContainer,30);
+	}
+
+	/***
+	 * This method will click on the continue button
+	 * @author saurav.goyal
+	 */
+	public void clickContinueButton() {
+		if (getReusableActionsInstance().isElementVisible(continueButton))
+			getReusableActionsInstance().clickWhenReady(continueButton);
+		getReusableActionsInstance().staticWait(3000);
 	}
 }

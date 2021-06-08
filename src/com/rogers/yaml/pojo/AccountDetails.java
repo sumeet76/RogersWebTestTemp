@@ -36,9 +36,11 @@ public class AccountDetails {
 	private String swapInChannelOne;
 	private String swapInChannelTwo;
 	private String swapInChannelThree;
+	private String swapInChannelFour;
 	private String swapOutChannelOne;
 	private String swapOutChannelTwo;
 	private String swapOutChannelThree;
+	private String swapOutChannelFour;
 	private String year;
 	private String date;
 	private String month;
@@ -58,7 +60,36 @@ public class AccountDetails {
 	private String firstName;
 	private String lastName;
 	private String birthCertNumber;
-	
+	private String deferredCancelCTN;
+	private String immediateCancelCTN;
+
+	/**
+	 * @return the immediateCancelCTN
+	 */
+	public String getimmediateCancelCTN() {
+		return immediateCancelCTN;
+	}
+	/**
+	 * @param immediateCancelCTN the immediateCancelCTN to set
+	 */
+	public void setimmediateCancelCTN(String immediateCancelCTN) {
+		this.immediateCancelCTN = immediateCancelCTN;
+	}
+
+	/**
+	 * @return the deferredCancelCTN
+	 */
+	public String getdeferredCancelCTN() {
+		return deferredCancelCTN;
+	}
+	/**
+	 * @param deferredCancelCTN the deferredCancelCTN to set
+	 */
+	public void setdeferredCancelCTN(String deferredCancelCTN) {
+		this.deferredCancelCTN = deferredCancelCTN;
+	}
+
+
 	public String getRhmPackageEn() {
 		return rhmPackageEn;
 	}
@@ -501,7 +532,20 @@ public class AccountDetails {
 	public void setSwapInChannelThree(String swapInChannelThree) {
 		this.swapInChannelThree = swapInChannelThree;
 	}
-	
+
+	/**
+	 * @return the swapInChannelFour
+	 */
+	public String getSwapInChannelFour() {
+		return swapInChannelFour;
+	}
+	/**
+	 * @param swapInChannelFour  the swapInChannelFour to set
+	 */
+	public void setSwapInChannelFour(String swapInChannelFour) {
+		this.swapInChannelFour = swapInChannelFour;
+	}
+
 	public String getYear() {
 		return year;
 	}
@@ -691,6 +735,19 @@ public class AccountDetails {
 	 */
 	public void setSwapOutChannelThree(String swapOutChannelThree) {
 		this.swapOutChannelThree = swapOutChannelThree;
+	}
+
+	/**
+	 * @return the swapOutChannelFour
+	 */
+	public String getSwapOutChannelFour() {
+		return swapOutChannelFour;
+	}
+	/**
+	 * @param swapOutChannelFour  the swapOutChannelFour to set
+	 */
+	public void setSwapOutChannelFour(String swapOutChannelFour) {
+		this.swapOutChannelFour = swapOutChannelFour;
 	}
 
 }

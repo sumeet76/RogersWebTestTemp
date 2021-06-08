@@ -4,6 +4,7 @@ public class PaymentDetails {
 	
 	private CreditCardDetails creditCardDetails;
 	private BankDetails bankDetails;
+	private TokenDetails tokenDetails;
 	/**
 	 * @return the creditCardDetails
 	 */
@@ -27,6 +28,19 @@ public class PaymentDetails {
 	 */
 	public void setBankDetails(BankDetails bankDetails) {
 		this.bankDetails = bankDetails;
+	}
+
+	/**
+	 * @return the tokenDetails
+	 */
+	public TokenDetails getTokenDetails() {
+		return tokenDetails;
+	}
+	/**
+	 * @param tokenDetails the tokenDetails to set
+	 */
+	public void setTokenDetails(TokenDetails tokenDetails) {
+		this.tokenDetails = tokenDetails;
 	}
 
 	public CreditCardDetails getCablePaymentDetails() {

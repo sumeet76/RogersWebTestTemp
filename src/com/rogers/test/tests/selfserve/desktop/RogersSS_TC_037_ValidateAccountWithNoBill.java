@@ -17,8 +17,8 @@ public class RogersSS_TC_037_ValidateAccountWithNoBill extends BaseTestClass {
     public void viewBillTest() {
         getRogersHomePage().clkSignIn();
 		getRogersLoginPage().switchToSignInIFrame();
-		getRogersLoginPage().setUsernameIFrame("Autodatar221BFA06@yahoo.com");
-		getRogersLoginPage().setPasswordIFrame("DigiAuto@123");
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc37_NoBills.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc37_NoBills.getPassword());
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
@@ -26,7 +26,7 @@ public class RogersSS_TC_037_ValidateAccountWithNoBill extends BaseTestClass {
 		getRogersLoginPage().switchOutOfSignInIFrame();
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account overlay.");
-            getRogersAccountOverviewPage().selectAccount("941765042");
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc37_NoBills.getAccountDetails().getBan());
         }
 		reporter.reportLogWithScreenshot("Page after login.");
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),

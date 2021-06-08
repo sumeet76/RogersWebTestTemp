@@ -16,51 +16,51 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 
 	@FindBy(xpath = "//div[@class='info-bubble ute-large-right']")
 	WebElement infoSubmit;
-	
+
 	@FindBy(xpath = "//a[@href='/consumer/rogers-internet' and @class='rui-cta-button']")
 	WebElement btnContinueShopping;
-	
-	// Thanks! We received your order. 
+
+	// Thanks! We received your order.
 	@FindBy(xpath = "//div[@class='confirmation-bubble']")
 	WebElement infoChangeOrderConfirmationnew;
-	
+
 	@FindBy(xpath = "//ins[@translate='global.message.orderConfirmationThanksV3']")
 	WebElement infoChangeOrderConfirmation;
 	//ins[@translate='global.message.orderConfirmationThanksV3']
 
 	@FindBy(xpath = "//img[@src='/cms/rogers/page-specific/shop/ordersummary/thankyou/images/thankyou-badge-desktop.png']")
 	WebElement infoChangeOrderConfirmationLegacy;
-	
+
 	@FindBy(xpath = "//div[@class='confirmation-bubble']")
 	WebElement infoOrderConfirmation;
 	//ins[@translate='global.message.orderConfirmationThanksV2']
 
 	@FindAll({
-		@FindBy(xpath = "//p[contains(text(),'Thank you')]"),
-		@FindBy(xpath = "//span[@class='thank-you']"),
-		@FindBy(xpath = "//span[@class='UConfirmationHeading']"),
-		@FindBy(xpath = "//p[@class='text-body mb-40 ng-star-inserted']")
-	})	
+			@FindBy(xpath = "//p[contains(text(),'Thank you')]"),
+			@FindBy(xpath = "//span[@class='thank-you']"),
+			@FindBy(xpath = "//span[@class='UConfirmationHeading']"),
+			@FindBy(xpath = "//p[@class='text-body mb-40 ng-star-inserted']")
+	})
 	WebElement lblThankYou;
 
 	@FindAll({
-		@FindBy(xpath = "//h1[@id='bfa-page-title'][contains(text(),'Confirmation')]"),
-		@FindBy(xpath = "//span[@checkout-res='checkout_order_confirmation']")
+			@FindBy(xpath = "//h1[@id='bfa-page-title'][contains(text(),'Confirmation')]"),
+			@FindBy(xpath = "//span[@checkout-res='checkout_order_confirmation']")
 	})
 	WebElement lblOrderConfirmation;
-	
+
 	@FindBy(xpath = "//div[@class='orderSummary']")
 	WebElement btnDTVOrderSummary;
-	
+
 	@FindBy(className = "shoppingCartCheckOutButton")
 	WebElement btnUpgradeCartCheckOutButton;
-	
+
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
-	
+
 	@FindBy(xpath = "//ngx-smart-modal[@id='loadingModal']")
 	WebElement popupLoadingFingersciam;
-	
+
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement popupLoadingFingersInternet;
 
@@ -102,8 +102,19 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 
 	@FindBy(xpath="(//div[contains(@class,'dsa-orderTable__totalRow d-flex align-items-center')])[2]")
 	WebElement oneTimeFeeAfterTax;
-	
-	
+
+	@FindBy(xpath="//div[@class='contact-information__content']/p[contains(text(),'BAN')]")
+	WebElement txtBAN;
+
+	/**
+	 * get the BAN from order confirmation page
+	 */
+	public String getBAN() {
+		String nameText = getReusableActionsInstance().getNameText(txtBAN);
+		String[] split = nameText.split(" ");
+		return split[1];
+	}
+
 	/**
 	 * Verify the the yellow banner with order success information
 	 * @return true if the page display the yellow banner with order success information , else false
@@ -113,7 +124,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(infoChangeOrderConfirmationLegacy,90);
 		return getReusableActionsInstance().isElementVisible(infoChangeOrderConfirmationLegacy, 30);
 	}
-	
+
 	/**
 	 * Verify the the yellow banner with order success information
 	 * @return true if the page display the yellow banner with order success information , else false
@@ -122,7 +133,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	public boolean verifyOrderConfirmation() {
 		return getReusableActionsInstance().isElementVisible(infoOrderConfirmation, 120);
 	}
-	
+
 	/**
 	 * Verify the the yellow banner with order success information
 	 * @return true if the page display the yellow banner with order success information , else false
@@ -140,8 +151,8 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(infoOrderConfirmation,90);
 		return getReusableActionsInstance().isElementVisible(infoOrderConfirmation, 30);
 	}
-	
-	
+
+
 	/**
 	 * Verify the Continue Shopping button on order confirmation page
 	 * @return true if the page display Continue Shopping button, else false
@@ -150,7 +161,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	public boolean verifyContinueShopping() {
 		return getReusableActionsInstance().isElementVisible(btnContinueShopping, 10);
 	}
-	
+
 	/**
 	 * Validates whether the Order Confirmation page has loaded
 	 * @return true if 'Order Confirmation' header displayed; else false
@@ -160,7 +171,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 		getReusableActionsInstance().staticWait(10000);
 		return getReusableActionsInstance().isElementVisible(lblOrderConfirmation, 60);
 	}
-	
+
 	/**
 	 * Validates if the 'Thank You' message id displayed
 	 * @return true if displayed; else false
@@ -190,7 +201,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 		getReusableActionsInstance().scrollToElement(bopisContent.get(0));
 		return true;
 	}
-	
+
 	/**
 	 * Verify the the yellow banner with order success information
 	 * @return true if the page display the yellow banner with order success information , else false
@@ -199,7 +210,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	public boolean verifyLegacyUpgardeOrderConfirmation() {
 		return getReusableActionsInstance().isElementVisible(btnDTVOrderSummary, 180);
 	}
-	
+
 	/**
 	 * click on  the CheckOut Button
 	 * @author chinnarao.vattam
@@ -284,5 +295,6 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 		getReusableActionsInstance().scrollToElement(oneTimeFeeAfterTax);
 		return oneTimeFeeAfterTax.getText().replaceAll("\\n","");
 	}
-	
+
+
 }
