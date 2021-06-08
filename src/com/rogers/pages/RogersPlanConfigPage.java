@@ -20,8 +20,11 @@ public class RogersPlanConfigPage extends BasePageClass {
     String xpathDcDoTo;
     String dataProtectionOption;
 
-    @FindBy(xpath = "//button[contains(@class,'ds-button ds-corners')]//span[contains(text(),'options')]")
-    WebElement viewMoreOptions;
+    @FindBy(xpath = "(//div[contains(@id,'ds-radio-input-id')])[2]")
+    WebElement noTermRadioBtn;
+
+    @FindBy(xpath = "(//div[contains(@id,'ds-radio-input-id')])[1]")
+    WebElement financingRadioBtn;
 
     @FindBy(xpath = "//button[contains(@class,'ds-button ds-corners')]//span[contains(text(),' Show More') or contains(text(),' Afficher les ')]")
     WebElement showMoreDetails;
@@ -55,6 +58,9 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     @FindBy(xpath = "(//div[contains(@class,'dsa-orderTable')])[1]")
     WebElement monthlyFeesCartSummarySection;
+
+    @FindBy(xpath="//ds-checkbox[contains(@data-test,'vdp-checkbox')]")
+    WebElement downPaymentChkBox;
 
     @FindBy(xpath = "//button[@data-test='stepper-1-edit-step-continue-button']")
     WebElement preCartDeviceCostContinueButton;
@@ -182,11 +188,12 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
 
     /**
-     * Clicks on View More Options to expand device cost stepper
+     * Clicks on NO TERM radio button in device cost stepper
      * @author praveen.kumar7
      */
-    public void clickViewMoreOptions() {
-        getReusableActionsInstance().clickIfAvailable(viewMoreOptions);
+    public void clkRadioButtonNoTerm() {
+        getReusableActionsInstance().scrollToElement(noTermRadioBtn);
+        getReusableActionsInstance().clickWhenReady(noTermRadioBtn,30);
     }
 
     /**
@@ -305,18 +312,6 @@ public class RogersPlanConfigPage extends BasePageClass {
         }
     }
 
-
-    /**
-     * Select No term Device Cost on Plan config page
-     *
-     * @author saurav.goyal
-     */
-    public void selectNoTermDeviceDeviceCost() {
-        getReusableActionsInstance().scrollToElement(viewMoreOptions);
-        clickViewMoreOptions();
-        getReusableActionsInstance().clickWhenReady(By.xpath("//span[@data-caption='NOTERM_false']//ancestor::label"), 30);
-    }
-
     /**
      * Select No term Device Cost on Plan config page
      *
@@ -339,7 +334,7 @@ public class RogersPlanConfigPage extends BasePageClass {
             getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton, 30);
         }
         else {
-            getReusableActionsInstance().clickWhenVisible(By.xpath(xpathDcDoTo),40);
+            getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo),30));
             getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton,40);
         }
     }
@@ -479,6 +474,20 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public void clickPreCartSummaryContinueButtonTalkOptions() {
         getReusableActionsInstance().clickIfAvailable(preCartSummaryContinueButtonTalkOptions, 5);
+    }
+
+    /*public boolean verifyFinancingRadioBtnIsSelected() {
+        getReusableActionsInstance().isElementVisible(financingRadioBtn,30);
+        getReusableActionsInstance().getWhenReady(c)
+    }*/
+
+    /**
+     * This method clicks on downpaymment checkbox in device cost stepper
+     * @author praveen.kumar7
+     */
+    public void clkDownPaymentChkBox() {
+        getReusableActionsInstance().scrollToElement(downPaymentChkBox);
+        getReusableActionsInstance().clickWhenReady(downPaymentChkBox,30);
     }
 
     /**

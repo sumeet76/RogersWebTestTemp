@@ -58,9 +58,10 @@ public class RogersBFA_TC20_AALShareTerm_TabletDevice_Test extends BaseTestClass
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
         reporter.hardAssert(getRogersPlanConfigPage().verifyDeviceCostContinueButton(), "Plan Config loaded", "Plan config page not loaded");
         reporter.reportLogPassWithScreenshot("Device cost option displayed");
-        getRogersPlanConfigPage().clickViewMoreOptions();
+        //getRogersPlanConfigPage().clickViewMoreOptions();
         reporter.reportLogWithScreenshot("In Plan config page");
-        getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc20AALTermTablet.getDeviceCostIndex()));
+        getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
+        //getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc20AALTermTablet.getDeviceCostIndex()));
         reporter.hardAssert(getRogersPlanConfigPage().verifyTabletDataTalkOptionSelected(),"Data and Talk option selected successfully","Data and Talk option not selected");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         getRogersPlanConfigPage().clkCallerIDContinueBtnForTablet();

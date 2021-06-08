@@ -45,7 +45,8 @@ public class RogersBFA_TC12_HUPNonShareNoTermSL_Test extends BaseTestClass{
             getRogersDeviceConfigPage().clickContinueButton();
             reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
                     "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
-            getRogersPlanConfigPage().selectNoTermDeviceDeviceCost();
+            getRogersPlanConfigPage().clkRadioButtonNoTerm();
+            //getRogersPlanConfigPage().selectNoTermDeviceDeviceCost();
             reporter.reportLogPassWithScreenshot("No term selected");
             getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
             reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
