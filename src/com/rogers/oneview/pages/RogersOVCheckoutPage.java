@@ -1122,7 +1122,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * Select City Dropdown Option on the Choose a Number stepper, City Dropdown Field
-	 * @param selectYourOption value from yaml file.
+	 * @param selectExistingNumber value from yaml file.
 	 * @author karthic.hasan
 	 */
 

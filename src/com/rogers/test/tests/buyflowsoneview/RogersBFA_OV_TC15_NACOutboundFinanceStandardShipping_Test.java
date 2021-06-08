@@ -104,6 +104,7 @@ public class RogersBFA_OV_TC15_NACOutboundFinanceStandardShipping_Test extends B
 		// ***************Choose a Number Stepper*************//
 		reporter.softAssert(getRogersOVCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed", "Choose a Number Title not disaplayed");
 		reporter.softAssert(getRogersOVCheckoutPage().isChooseNumberTabsDisplayed(), "Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
+		getRogersOVCheckoutPage().chooseExistingNumberOption("");
 		getRogersOVCheckoutPage().selectCityDropdownOption(TestDataHandler.buyFlowsOVtestCase15.getCtnCity());
 		reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
 		getRogersOVCheckoutPage().clkChosePhoneNumber();
