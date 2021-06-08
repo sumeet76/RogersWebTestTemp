@@ -373,7 +373,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//a//span[contains(@class,'ds-button__copy') and (contains(text(),'Manage') or contains(text(),'Gérer'))]")
 	WebElement btnSubscriptionManage;
 
-	@FindBy(xpath = "//a//span[contains(@class,'ds-button__copy') and (contains(text(),'Manage') or contains(text(),'Gérer'))]")
+	@FindBy(xpath = "//rss-value-prop-wrapper[@aria-label='Manage your Disney+ subscription' or @aria-label='Gérer l’abonnement Disney+']//a//span[contains(@class,'ds-button__copy') and (contains(text(),'Manage') or contains(text(),'Gérer'))]")
 	WebElement btnDPSubscriptionManage;
 
 	@FindBy(xpath = "//rss-value-prop-wrapper[@title='Start your Disney+ subscription' or @title='Commencer l’abonnement Disney+']//span[contains(text(),'Sign up') or contains(text(),'S’inscrire')]")
@@ -461,6 +461,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	
 	@FindBy(xpath = "//button[@title='Continue and activate this Apple Music subscription' or @title='Continue and start this Apple Music subscription' or contains(@title,'Continuer et activer cet abonnement')]")
 	WebElement btnSubscribeToSubsscription;
+
+	@FindBy(xpath = "//button[@title='Continue and start this Disney+ subscription' or @title='Continue and start this Apple Music subscription' or contains(@title,'Continuer et commencer l’abonnement Disney+')]")
+	WebElement btnSubscribeToDisneyPlus;
 
 	@FindBy(xpath = "//a[text()='Yes' or contains(text(),'Oui')]")
 	WebElement btnCloseFAQ;
@@ -1672,8 +1675,16 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void clkManageOnSubscription() {
 		getReusableActionsInstance().getWhenReady(btnSubscriptionManage).click();
-	} 
-		
+	}
+
+	/**
+	 * Clicks on Manage button
+	 * @author Mirza.Kamran
+	 */
+	public void clkManageOnSubscriptionDisneyPlus() {
+		getReusableActionsInstance().getWhenReady(btnDPSubscriptionManage).click();
+	}
+
 	/**
 	 * Verifies if the currently subscribed pane is displayed
 	 * @return true if available else false

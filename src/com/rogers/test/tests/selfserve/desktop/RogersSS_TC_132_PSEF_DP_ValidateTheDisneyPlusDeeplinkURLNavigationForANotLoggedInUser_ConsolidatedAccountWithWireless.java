@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class RogersSS_TC_130_PSEF_DP_Rogers_CR_EN_SubscribedSection_NSEInfinite50 extends BaseTestClass {
+public class RogersSS_TC_132_PSEF_DP_ValidateTheDisneyPlusDeeplinkURLNavigationForANotLoggedInUser_ConsolidatedAccountWithWireless extends BaseTestClass {
     
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
@@ -24,7 +24,7 @@ public class RogersSS_TC_130_PSEF_DP_Rogers_CR_EN_SubscribedSection_NSEInfinite5
 	public void afterTest() throws InterruptedException {
 		closeSession();
 	}
-
+	
 	
 	@Test(groups = {"RegressionSS","PACMAN"})
     public void validateSignInAndAccountOverview() {
@@ -50,22 +50,35 @@ public class RogersSS_TC_130_PSEF_DP_Rogers_CR_EN_SubscribedSection_NSEInfinite5
         getCommonBusinessFlows().scrollToMiddleOfWebPage();
         reporter.reportLogWithScreenshot("CTNS or Subscriptions View");
         reporter.hardAssert(getRogersAccountOverviewPage().verifyIfDPSubscriptionIsAvailableForCancellation(),
-        		"Subscription Management page is displayed ",
-        		"Subscription Management page is Not displayed ");
-        getRogersAccountOverviewPage().clkManageOnSubscriptionDisneyPlus();
+        		"The subscription is available for Cancellation", 
+        		"The subscription is NOT available for Cancellation");
+        getRogersAccountOverviewPage().clkManageOnSubscription();
         reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCurrentlySubscribedPaneIsDisplayed(), 
         		"The current subscription is displayed", 
         		"The current subscription is NOT displayed");
         reporter.reportLogWithScreenshot("Current subscription");
-        reporter.softAssert(getRogersPSEFPage().verifyIfSMPDisplaysActiveTrialWLSubscriptionsInAlphabeticalOrder(),
-                "SMP displays Active Trial WL Subscriptions in alphabetical order",
-                "SMP did NOT display Active Trial WL Subscriptions in alphabetical order");
-        getCommonBusinessFlows().scrollToMiddleOfWebPage();
-        reporter.reportLogWithScreenshot("Current subscription mid view");
-        reporter.softAssert(getRogersPSEFPage().verifyIfSMPDisplaysPendinTrialWLSubscriptionsInAlphabeticalOrder(),
-                "SMP displays Pending WL Subscription  in alphabetical order",
-                "SMP did NOT display Pending WL Subscription  in alphabetical order");
-
+        getRogersAccountOverviewPage().clkCancelSubscription();
+        reporter.reportLogWithScreenshot("Cancel subscription details is displayed");
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfHeaderCancelSubscriptionIsDisplayed(), 
+        		"The header cancel subscription is displayed", 
+        		"The header cancel subscription is NOT displayed");
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCancelSubscriptionDetailsIsDisplayedCorrectly(TestDataHandler.tc102.getAccountDetails().getCtn()), 
+        		"The cancel subscription details matched", 
+        		"The cancel subscription details did not matched");        
+        getRogersAccountOverviewPage().selectReasonForCancelSubscription();
+        reporter.reportLogWithScreenshot("reason for cancel subscription is selected");
+        getRogersAccountOverviewPage().clkConfirmCancelSubscription();
+        reporter.reportLogWithScreenshot("Confirm button clicked");
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCancelSuccessfulOverLayDisplayed(), 
+        		"The cancel subscription success overlay is displayed", 
+        		"The cancel subscription success overlay not displayed");  
+        reporter.reportLogWithScreenshot("cancel success overlay displayed");
+        getRogersAccountOverviewPage().clkOKButtonOnCancelSuccessOverlay();
+        reporter.reportLogWithScreenshot("Cliked on OKay button");
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfSMPIsDisplayedWithCancelledSubscription(), 
+        		"The Subscription management page shows the cancelled CTN subscription", 
+        		"The Subscription management page does NOT shows the cancelled CTN subscription");
+        reporter.reportLogWithScreenshot("Subscription management page shows the cancelled subscription");
         		
     }
 
