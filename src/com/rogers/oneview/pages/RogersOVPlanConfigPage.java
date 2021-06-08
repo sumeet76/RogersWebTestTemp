@@ -9,7 +9,9 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import utils.FormFiller;
 
+import java.lang.reflect.Method;
 import java.util.List;
+import java.util.logging.XMLFormatter;
 
 public class RogersOVPlanConfigPage extends BasePageClass {
     public String xpathDeviceName;
@@ -19,6 +21,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     }
 
     String xpathDcDoTo;
+    String updatedXpathDcDoTo;
     String dataProtectionOption;
 
     @FindBy(xpath = "//button[contains(@class,'ds-button ds-corners')]//span[contains(text(),'options')]")
@@ -26,6 +29,12 @@ public class RogersOVPlanConfigPage extends BasePageClass {
 
     @FindBy(xpath = "//button[contains(@class,'ds-button ds-corners')]//span[contains(text(),' Show More') or contains(text(),' Afficher les ')]")
     WebElement showMoreDetails;
+
+    @FindBy(xpath = "//button[contains(@title,'Plan')]")
+    WebElement showPlans;
+
+    @FindBy(xpath = "//button[contains(@title,'Plan')]//span/span[contains(text(),'')]")
+    WebElement showPlansText;
 
     @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-1-edit-step-selection-option-')]//label[1]")
     List<WebElement> noOfDeviceTiers;
@@ -53,6 +62,12 @@ public class RogersOVPlanConfigPage extends BasePageClass {
 
     @FindBy(xpath = "(//div[contains(@class,'dsa-orderTable')])[1]")
     WebElement monthlyFeesCartSummarySection;
+
+    @FindBy(xpath = "//ds-radio-button[contains(@data-test,'device-payment-type-financing')]//div/div")
+    WebElement financingRadioButton;
+
+    @FindBy(xpath = "//ds-radio-button[contains(@data-test,'device-payment-type-fullPrice')]//div/div")
+    WebElement fullPriceRadioButton;
 
     @FindBy(xpath = "//button[@data-test='stepper-1-edit-step-continue-button']")
     WebElement preCartDeviceCostContinueButton;
@@ -196,6 +211,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clickShowMoreDetails() {
+        getReusableActionsInstance().clickIfAvailable(showPlans, 40);
         getReusableActionsInstance().clickIfAvailable(showMoreDetails,40);
     }
 
@@ -219,6 +235,16 @@ public class RogersOVPlanConfigPage extends BasePageClass {
         else {
             return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
         }
+    }
+
+    public String createXpathWithInputData(String dataOption) {
+        String a = showPlansText.getText();
+        if (showPlansText.getText().contains("Outbound")) {
+            return updatedXpathDcDoTo = "(//div[contains(@data-test,'outbound-plans')]//label)["+dataOption+"]";
+        } else if (showPlansText.getText().contains("Field Sales")) {
+            return updatedXpathDcDoTo = "(//div[contains(@data-test,'field-sales-plans')]//label)["+dataOption+"]";
+        }
+        return updatedXpathDcDoTo;
     }
 
     /**
@@ -285,7 +311,27 @@ public class RogersOVPlanConfigPage extends BasePageClass {
         int stepper = 1;
         String xpathDcDoTo = createXpathWithInputData(deviceCostIndex, stepper);
         //if (Integer.parseInt(deviceCostIndex) == 0) {
-          if ((deviceCostIndex == null) || (deviceCostIndex.isEmpty()) || (Integer.parseInt(deviceCostIndex) > noOfDeviceTiers.size()-1)) {
+        if ((deviceCostIndex == null) || (deviceCostIndex.isEmpty()) || (Integer.parseInt(deviceCostIndex) > noOfDeviceTiers.size()-1)) {
+            getReusableActionsInstance().staticWait(3000);
+            getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton, 30);
+        } else {
+            getReusableActionsInstance().clickWhenVisible(By.xpath(xpathDcDoTo), 60);
+            getReusableActionsInstance().staticWait(3000);
+            getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton, 30);
+        }
+
+    }
+
+    public void selectDeviceCostAndClickOnContinueButton(String deviceCostIndex, String deviceCostType) {
+        if (deviceCostType.equalsIgnoreCase("Finance")) {
+            getReusableActionsInstance().executeJavaScriptClick(financingRadioButton);
+        } else {
+            getReusableActionsInstance().executeJavaScriptClick(fullPriceRadioButton);
+        }
+        int stepper = 1;
+        String xpathDcDoTo = createXpathWithInputData(deviceCostIndex, stepper);
+        //if (Integer.parseInt(deviceCostIndex) == 0) {
+        if ((deviceCostIndex == null) || (deviceCostIndex.isEmpty()) || (Integer.parseInt(deviceCostIndex) > noOfDeviceTiers.size()-1)) {
             getReusableActionsInstance().staticWait(3000);
             getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton, 30);
         } else {
@@ -326,6 +372,17 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     public void selectDataOptionAndClickonContinueButton(String dataOptionIndex) {
         int stepper=2;
         String xpathDcDoTo = createXpathWithInputData(dataOptionIndex,stepper);
+        if(Integer.parseInt(dataOptionIndex) == 0) {
+            getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton, 30);
+        }
+        else {
+            getReusableActionsInstance().clickWhenVisible(By.xpath(xpathDcDoTo),40);
+            getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton,40);
+        }
+    }
+
+    public void selectDataOptionButton(String dataOptionIndex) {
+        String xpathDcDoTo = createXpathWithInputData(dataOptionIndex);
         if(Integer.parseInt(dataOptionIndex) == 0) {
             getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton, 30);
         }
@@ -504,7 +561,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clickPreCartAddonsContinueButton() {
-        getReusableActionsInstance().clickIfAvailable(preCartAddonsContinueButton);
+        getReusableActionsInstance().clickIfAvailable(preCartAddonsContinueButton, 10);
     }
 
     /**
@@ -605,10 +662,11 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      */
     public void clickCartSummaryContinueButton() {
         getReusableActionsInstance().javascriptScrollByVisibleElement(continueButtonOnCartSummary);
+        getReusableActionsInstance().staticWait(3000);
         getReusableActionsInstance().executeJavaScriptClick(continueButtonOnCartSummary);
         //clickGetBPOOffer();
 //        getReusableActionsInstance().waitForElementTobeClickable(continueButtonOnCartSummary, 10);
-//        getReusableActionsInstance().clickWhenReady(continueButtonOnCartSummary);
+        //getReusableActionsInstance().clickWhenReady(continueButtonOnCartSummary);
     }
 
     /**

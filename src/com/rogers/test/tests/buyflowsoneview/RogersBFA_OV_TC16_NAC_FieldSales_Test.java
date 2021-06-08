@@ -54,7 +54,7 @@ public class RogersBFA_OV_TC16_NAC_FieldSales_Test extends BaseTestClass {
 		getRogersOVPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersOVPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.buyFlowsOVtestCase16.getDeviceCostIndex()));
 		reporter.reportLogPassWithScreenshot("Device cost option selected");
 		getRogersOVPlanConfigPage().clickShowMoreDetails();
-		getRogersOVPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersOVPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.buyFlowsOVtestCase16.getDataOptionIndex()));
+		getRogersOVPlanConfigPage().selectDataOptionButton(getRogersOVPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.buyFlowsOVtestCase16.getDataOptionIndex()));
 		reporter.reportLogPassWithScreenshot("Data option selected");
 		//getRogersOVPlanConfigPage().clickGetBPOOffer();
 		//reporter.reportLogPassWithScreenshot("BPO offer selected");
@@ -87,7 +87,7 @@ public class RogersBFA_OV_TC16_NAC_FieldSales_Test extends BaseTestClass {
 		getRogersOVCheckoutPage().selectDropdownOption(TestDataHandler.buyFlowsOVtestCase16.getDropdownOption());
 		getRogersOVCheckoutPage().setPassportNumber(TestDataHandler.buyFlowsOVtestCase16.getPassportNumber());
 		reporter.reportLogPassWithScreenshot("PassportNumber Entered Successfully");
-		getRogersOVCheckoutPage().selectSecondDropdownOption(TestDataHandler.buyFlowsOVtestCase16.getSecondIdOption());
+		//getRogersOVCheckoutPage().selectSecondDropdownOption(TestDataHandler.buyFlowsOVtestCase16.getSecondIdOption());
 		getRogersOVCheckoutPage().setSINNumber(TestDataHandler.buyFlowsOVtestCase16.getSinNumber());
 		reporter.reportLogPassWithScreenshot("SIN Number Entered Successfully");
 		getRogersOVCheckoutPage().clkCreditAuthorizationChkBox();

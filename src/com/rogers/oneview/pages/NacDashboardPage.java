@@ -100,6 +100,7 @@ public class NacDashboardPage extends BasePageClass {
 		getReusableActionsInstance().clickWhenVisible(shippingAddressField,5);
 		getReusableActionsInstance().getWhenReady(inputShippingAddressField,5).sendKeys(shippingAddress);
 		getReusableActionsInstance().clickWhenVisible(clkListBox,5);
+		getReusableActionsInstance().staticWait(3000);
 	}
 
 	/**

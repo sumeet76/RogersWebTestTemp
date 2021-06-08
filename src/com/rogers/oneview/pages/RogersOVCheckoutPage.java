@@ -1,9 +1,13 @@
 package com.rogers.oneview.pages;
 
 import com.rogers.pages.base.BasePageClass;
+import com.rogers.testdatamanagement.TestDataHandler;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 import utils.FormFiller;
 
 public class RogersOVCheckoutPage extends BasePageClass {
@@ -11,6 +15,8 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	@FindBy(xpath = "//h1[@id='bfa-page-title']")
 	WebElement checkoutTitle;
+	String customerType = null;
+	String strTokenNumber = null;
 
 	//***Cart summary*****
 
@@ -125,6 +131,12 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//*[@class='d-flex']//input/..")
 	WebElement txtExpiryDate;
 
+	@FindAll({
+			@FindBy(xpath = "//ds-form-field[@data-test='expiry-date']//input"),
+			@FindBy(xpath = "//ds-form-field[@data-test='expiry-date']//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	})
+	WebElement txtDateOfExpiry;
+
 	@FindBy(xpath = "//*[@class='d-flex']//input")
 	WebElement inputExpiryDate;
 
@@ -143,17 +155,69 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//input[@formcontrolname='passport']")
 	WebElement inputPasportNumber;
 
+	@FindBy(xpath = "//input[@formcontrolname='number']/..")
+	WebElement txtLicenseNumber;
+
+	@FindBy(xpath = "//input[@formcontrolname='number']")
+	WebElement inputLicenseNumber;
+
+	@FindBy(xpath = "//input[@formcontrolname='expiryDate']/..")
+	WebElement txtLicenseExpiryDate;
+
+	@FindBy(xpath = "//input[@formcontrolname='expiryDate']")
+	WebElement inputLicenseExpiryDate;
+
+	@FindBy(xpath = "//input[@formcontrolname='provincialId']/..")
+	WebElement txtProvincialIDNumber;
+
+	@FindBy(xpath = "//input[@formcontrolname='provincialId']")
+	WebElement inputProvincialIDNumber;
+
 	@FindBy(xpath = "//input[@formcontrolname='sin']/..")
 	WebElement txtSINNumber;
 
 	@FindBy(xpath = "//input[@formcontrolname='sin']")
 	WebElement inputSINNumber;
 
+	@FindBy(xpath = "//input[@formcontrolname='birthCertificate']/..")
+	WebElement txtBirthCertificateNumber;
+
+	@FindBy(xpath = "//input[@formcontrolname='birthCertificate']")
+	WebElement inputBirthCertificateNumber;
+
+	@FindBy(xpath = "//ds-form-field[@data-test='name']")
+	WebElement nameOnTheCard;
+
+	@FindBy(xpath = "//ds-form-field[@data-test='name']//input")
+	WebElement inputNameOnTheCard;
+
+	@FindBy(xpath = "//ds-form-field[@data-test='number']//input")
+	WebElement txtInputTokenNumber;
+
+	@FindBy(xpath = "//span[@class='ds-inputLabel d-block ds-no-overflow'][contains(text(),'CVV')]/ancestor::div/input")
+	WebElement inputTxtCVV;
+
+	//@FindBy(xpath = "//span[@class='ds-inputLabel d-block ds-no-overflow'][contains(text(),'CVV')]")
+	@FindBy(xpath = "//ds-form-field[@data-test='cvv']//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	WebElement txtContainerCVV;
+
 	@FindBy(xpath = "//div[@class='ds-checkbox__box my-12']")
 	WebElement chkCreditAuthorization;
 
 	@FindBy(xpath = "//button[@data-test='credit-eval-continue']")
 	WebElement btnCreditEvalContinue;
+
+	@FindBy(xpath = "//span[contains(text(),' Accept and Continue ')]")
+	WebElement acceptAndContinueOnCreditEvalModal;
+
+	@FindBy(xpath = "//th[contains(text(),' Security deposit required ')]//following-sibling::td")
+	WebElement securityDepositAmount;
+
+	@FindBy(xpath = "//th[contains(text(),' CLM ')]//following-sibling::td")
+	WebElement cLMAmount;
+
+	@FindBy(xpath = "//th[contains(text(),' Risk level ')]//following-sibling::td")
+	WebElement riskLevel;
 
 	@FindBy(xpath = "//ds-modal-container")
 	WebElement popCreditEval;
@@ -192,6 +256,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	WebElement selectaNewNumberTab;
 
 	@FindBy(xpath = "//div[@role='tablist']/button[@tabindex='-1']")
+	//button[contains(@id,'ds-tabs-3-tab-1')]
 	WebElement useAnExistingNumberTab;
 
 	//@FindBy(xpath = "//select[@id='ds-form-input-id-13']")
@@ -200,6 +265,12 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	@FindBy(xpath = "//ds-radio-group[@formcontrolname='newNumber']/div/div[1]")
 	WebElement rdoChoosePhoneNumber;
+
+	@FindBy(xpath = "//input[contains(@formcontrolname,'existingNumber')]//..")
+	WebElement clickExistingPhoneNumber;
+
+	@FindBy(xpath = "//input[contains(@formcontrolname,'existingNumber')]")
+	WebElement fillExistingPhoneNumber;
 
 	@FindBy(xpath = "//div[@class='my-16']/button")
 	WebElement btnFindMoreAvlNumber;
@@ -562,6 +633,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	public void clkBtnGotoCreditEvalStepper() {
 //		WebDriverWait wait = new WebDriverWait(driver, 10);
 //		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[@data-test='personal-info-continue']")));
+
 		getReusableActionsInstance().clickWhenReady(btnGotoCreditEvalStepper, 40);
 	}
 
@@ -689,21 +761,34 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	 */
 
 	public void setPassportNumber(String strPasportNumber) {
-		// getReusableActionsInstance().javascriptScrollByVisibleElement(txtPasportNumber);
+		//getReusableActionsInstance().javascriptScrollByVisibleElement(txtPasportNumber);
 		getReusableActionsInstance().clickWhenReady(txtPasportNumber);
 		getReusableActionsInstance().getWhenReady(inputPasportNumber, 3).sendKeys(strPasportNumber);
 	}
 
 	/**
-	 * Select Secondary Dropdown Option on the Credit Evaluation stepper, Id Dropdown Field
-	 * @param selectYourSecondIdOption value from yaml file
+	 * Enter the Driver's License Number on the Credit Evaluation Stepper , Driver's License NumberField
+	 * @param strLicenseNumber from Yaml file
 	 * @author Sidhartha.Vadrevu
 	 */
 
-	public void selectSecondDropdownOption(String selectYourSecondIdOption) {
-		getReusableActionsInstance().waitForElementVisibility(secondDropdownIdClick, 20);
-		getReusableActionsInstance().clickWhenReady(secondDropdownIdClick);
-		getReusableActionsInstance().selectWhenReady(secondDropdownIdClick, selectYourSecondIdOption);
+	public void setLicenseNumber(String strLicenseNumber) {
+		//new Select(getDriver().findElement(By.xpath("//select[contains(@formcontrolname,'province')]"))).selectByVisibleText(province);
+		getReusableActionsInstance().clickWhenReady(txtLicenseNumber);
+		getReusableActionsInstance().getWhenReady(inputLicenseNumber, 3).sendKeys(strLicenseNumber);
+		getReusableActionsInstance().clickWhenReady(txtLicenseExpiryDate);
+		getReusableActionsInstance().getWhenReady(inputLicenseExpiryDate).sendKeys("07312024");
+	}
+
+	/**
+	 * Enter the Provincial ID Number on the Credit Evaluation Stepper , Provincial ID NumberField
+	 * @param strProvincialIDNumber from Yaml file
+	 * @author Sidhartha.Vadrevu
+	 */
+
+	public void setProvincialIDNumber(String strProvincialIDNumber) {
+		getReusableActionsInstance().clickWhenReady(txtProvincialIDNumber);
+		getReusableActionsInstance().getWhenReady(inputProvincialIDNumber, 3).sendKeys(strProvincialIDNumber);
 	}
 
 	/**
@@ -716,6 +801,83 @@ public class RogersOVCheckoutPage extends BasePageClass {
 		// getReusableActionsInstance().javascriptScrollByVisibleElement(txtPasportNumber);
 		getReusableActionsInstance().clickWhenReady(txtSINNumber);
 		getReusableActionsInstance().getWhenReady(inputSINNumber, 3).sendKeys(strSINNumber);
+	}
+
+	/**
+	 * Enter the Birth Certificate Number on the Credit Evaluation Stepper , SecondaryID Birth Certificate NumberField
+	 * @param strBirthNumber from Yaml file
+	 * @author Sidhartha.Vadrevu
+	 */
+
+	public void setBirthCertificateNumber(String strBirthNumber) {
+		// getReusableActionsInstance().javascriptScrollByVisibleElement(txtPasportNumber);
+		getReusableActionsInstance().clickWhenReady(txtBirthCertificateNumber);
+		getReusableActionsInstance().getWhenReady(inputBirthCertificateNumber, 3).sendKeys(strBirthNumber);
+	}
+
+	/**
+	 * Enter the Pre Authorized Credit Card Token Number on the Credit Evaluation Stepper , SecondaryID Pre Authorized Credit Card Token NumberField
+	 * @param strTokenNumber from Yaml file
+	 * @author Sidhartha.Vadrevu
+	 */
+
+	public void setPreAuthCreditTokenNumber(String strTokenNumber) {
+		getReusableActionsInstance().clickWhenReady(nameOnTheCard);
+		getReusableActionsInstance().getWhenReady(inputNameOnTheCard,3).sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
+		txtInputTokenNumber.click();
+		txtInputTokenNumber.sendKeys(strTokenNumber);
+		txtExpiryDate.click();
+		String strCCExpMonth = TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getExpiryMonth3();
+		String strCCExpYear = TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getExpiryYear3();
+		getReusableActionsInstance().getWhenReady(txtDateOfExpiry, 10).sendKeys(strCCExpMonth+strCCExpYear);
+		String strCVV = FormFiller.generateCVVNumber();
+		getReusableActionsInstance().waitForElementVisibility(txtContainerCVV,50);
+		getReusableActionsInstance().getWhenReady(txtContainerCVV,10).click();
+		inputTxtCVV.click();
+		getReusableActionsInstance().getWhenReady(inputTxtCVV).sendKeys(strCVV);
+	}
+
+	/**
+	 * Select Primary Dropdown Option on the Credit Evaluation stepper, Id Dropdown Field
+	 * @param selectYourPrimaryIdOption value from yaml file
+	 * @author Sidhartha.Vadrevu
+	 */
+
+	public void selectPrimaryDropdownOption(String selectYourPrimaryIdOption, String number) {
+		new Select(getDriver().findElement(By.xpath("//select[contains(@formcontrolname,'thirdIdType')]"))).selectByVisibleText(selectYourPrimaryIdOption);
+		if (selectYourPrimaryIdOption != null && !selectYourPrimaryIdOption.isEmpty() && selectYourPrimaryIdOption.contains("Canadian Passport")) {
+			setPassportNumber(number);
+		} else if (selectYourPrimaryIdOption != null && !selectYourPrimaryIdOption.isEmpty() && selectYourPrimaryIdOption.contains("Driver's License")) {
+			setLicenseNumber(number);
+		} else if (selectYourPrimaryIdOption != null && !selectYourPrimaryIdOption.isEmpty() && selectYourPrimaryIdOption.contains("Provincial ID")) {
+			setProvincialIDNumber(number);
+		} else if (selectYourPrimaryIdOption != null && !selectYourPrimaryIdOption.isEmpty() && selectYourPrimaryIdOption.contains("Social Insurance Number")) {
+			setSINNumber(number);
+		} else {
+			setLicenseNumber(number);
+		}
+
+	}
+
+	/**
+	 * Select Secondary Dropdown Option on the Credit Evaluation stepper, Id Dropdown Field
+	 * @param selectYourSecondIdOption value from yaml file
+	 * @author Sidhartha.Vadrevu
+	 */
+
+	public void selectSecondDropdownOption(String selectYourSecondIdOption, String secondNumber) {
+		new Select(getDriver().findElement(By.xpath("//select[contains(@formcontrolname,'secondaryId')]"))).selectByVisibleText(selectYourSecondIdOption);
+		if (selectYourSecondIdOption != null && !selectYourSecondIdOption.isEmpty() && selectYourSecondIdOption.contains("Canadian Passport")) {
+			setPassportNumber(secondNumber);
+		} else if (selectYourSecondIdOption != null && !selectYourSecondIdOption.isEmpty() && selectYourSecondIdOption.contains("Pre-authorized Credit Card - Token")) {
+			setPreAuthCreditTokenNumber(secondNumber);
+		} else if (selectYourSecondIdOption != null && !selectYourSecondIdOption.isEmpty() && selectYourSecondIdOption.contains("Provincial ID")) {
+			setProvincialIDNumber(secondNumber);
+		} else if (selectYourSecondIdOption != null && !selectYourSecondIdOption.isEmpty() && selectYourSecondIdOption.contains("Social Insurance Number")) {
+			setSINNumber(secondNumber);
+		} else if (selectYourSecondIdOption != null && !selectYourSecondIdOption.isEmpty() && selectYourSecondIdOption.contains("Birth Certificate")) {
+			setBirthCertificateNumber(secondNumber);
+		}
 	}
 
 	/**
@@ -749,6 +911,62 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	 */
 
 	public boolean isCreditEvalTextOnModalPresent() { return getReusableActionsInstance().isElementVisible(txtCreditEval); }
+
+	/**
+	 * Checks for the presence of 'Accept and Continue' Button on Crdit Evaluation Modal
+	 * @return returns if the element is visible or not
+	 * @author sidhartha.vadrevu
+	 */
+	public boolean checkAcceptAndContinueOnCreditEvalModal() {
+		getReusableActionsInstance().waitForElementVisibility(acceptAndContinueOnCreditEvalModal,30);
+		return getReusableActionsInstance().isElementVisible(acceptAndContinueOnCreditEvalModal);
+	}
+
+	/**
+	 * Checks the customer type based on the attribute values present on the Credit Evaluation Modal
+	 * @return returns the customerType value
+	 * @author sidhartha.vadrevu
+	 */
+	public String checkCustomerType() {
+		String[] security = securityDepositAmount.getText().split("\\$");
+		String[] clmValue = cLMAmount.getText().split("\\$");
+		Double securityDeposit = Double.parseDouble(security[1]);
+		Double clm = Double.parseDouble(clmValue[1]);
+		String risk = riskLevel.getText();
+		if (securityDeposit <= 0 && clm <=0 && risk.equalsIgnoreCase("Low")) {
+			customerType = "Low Risk";
+		} else if(securityDeposit == 500 && (clm >0 && clm<450) && risk.equalsIgnoreCase("Medium")) {
+			customerType = "Medium Risk";
+		} else if(securityDeposit == 300 && clm >= 450 && risk.equalsIgnoreCase("High")) {
+			customerType = "High Risk";
+		}
+		System.out.println(customerType);
+		return customerType;
+	}
+
+	/**
+	 * Validates whether the customer type of the provided data matches to the customer type deduced from the data provided on the Credit Evaluation Modal
+	 * @return true if customer types match, false if they don't match
+	 * @author sidhartha.vadrevu
+	 */
+	public boolean validateCustomerType() {
+		checkCustomerType();
+		String customer = TestDataHandler.buyFlowsOVtestCase08.getCustomerRiskLevel();
+		if (customer!=null && !customer.isEmpty() && customerType.matches(customer)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * Clicks on the 'Accept and Continue' Button from the Crdit Evaluation Modal
+	 * @author sidhartha.vadrevu
+	 */
+	public void clickAcceptAndContinueOnCreditEvalModal() {
+		getReusableActionsInstance().waitForElementVisibility(acceptAndContinueOnCreditEvalModal);
+		getReusableActionsInstance().executeJavaScriptClick(acceptAndContinueOnCreditEvalModal);
+	}
 
 	/**
 	 * Verifies if CLA/Security Deposit modal is present after credit evaluation
@@ -856,8 +1074,10 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	public void selectCityDropdownOption(String selectYourOption) {
 		getReusableActionsInstance().waitForElementVisibility(cityDropdown, 20);
+		new Select(getDriver().findElement(By.xpath("//ds-form-field[@data-test='choose-number-city']//select"))).selectByVisibleText(selectYourOption);
+		/*getReusableActionsInstance().waitForElementVisibility(cityDropdown, 20);
 		getReusableActionsInstance().clickWhenReady(cityDropdown);
-		getReusableActionsInstance().selectWhenReadyByVisibleText(cityDropdown, selectYourOption);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(cityDropdown, selectYourOption);*/
 	}
 
 	/**
@@ -901,6 +1121,17 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	}
 
 	/**
+	 * Select City Dropdown Option on the Choose a Number stepper, City Dropdown Field
+	 * @param selectYourOption value from yaml file.
+	 * @author karthic.hasan
+	 */
+
+	public void chooseExistingNumberOption(String selectExistingNumber) {
+		getReusableActionsInstance().clickWhenReady(clickExistingPhoneNumber);
+		getReusableActionsInstance().getWhenReady(fillExistingPhoneNumber,10).sendKeys(selectExistingNumber);
+	}
+
+	/**
 	 * To Verify the Title of Billing Options stepper Displayed 
 	 * @return True or False Boolean Value.
 	 * @author nimmy.george
@@ -927,8 +1158,14 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	 * @author karthic.hasan
 	 */	
 	public void selectPaymentMethodDropdownOption(String strPaymentMethod) {
-		getReusableActionsInstance().scrollToElementAndClick(drpSelectPaymentMethod);
-		getReusableActionsInstance().selectWhenReady(drpSelectPaymentMethod, strPaymentMethod);
+		//getReusableActionsInstance().scrollToElementAndClick(drpSelectPaymentMethod);
+		new Select(getDriver().findElement(By.xpath("//select[@data-test='select-payment-option']"))).selectByVisibleText(strPaymentMethod);
+		if (strPaymentMethod.equalsIgnoreCase("Pre-authorized Credit Card - Token")) {
+			strTokenNumber = TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getNumber3();
+			setPreAuthCreditTokenNumber(strTokenNumber);
+		}
+/*		getReusableActionsInstance().scrollToElementAndClick(drpSelectPaymentMethod);
+		getReusableActionsInstance().selectWhenReady(drpSelectPaymentMethod, strPaymentMethod);*/
 
 	}
 

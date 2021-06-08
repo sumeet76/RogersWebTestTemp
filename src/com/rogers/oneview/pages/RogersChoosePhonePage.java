@@ -295,9 +295,9 @@ public class RogersChoosePhonePage extends BasePageClass {
 		String risk = riskLevel.getText();
 		if (securityDeposit <= 0 && clm <=0 && risk.equalsIgnoreCase("Low")) {
 			customerType = "Low Risk";
-		} else if(securityDeposit == 500 && (clm >0 && clm<450) && risk.equalsIgnoreCase("Medium")) {
+		} else if(securityDeposit == 300 && (clm >0 && clm<450) && risk.equalsIgnoreCase("Medium")) {
 			customerType = "Medium Risk";
-		} else if(securityDeposit == 300 && clm >= 450 && risk.equalsIgnoreCase("High")) {
+		} else if(securityDeposit == 500 && clm >= 450 && risk.equalsIgnoreCase("High")) {
 			customerType = "High Risk";
 		}
 		System.out.println(customerType);
@@ -410,6 +410,48 @@ public class RogersChoosePhonePage extends BasePageClass {
 		} else {
 			return getReusableActionsInstance().isElementVisible(By.xpath(createXpathForCTAButton(deviceName)), 60);
 		}
+	}
+
+	/**
+	 * This method creates a xpath for the device color based on the string passed
+	 * @param colorOfDevice : color of the device to be selected
+	 * @return a string format of xpath
+	 * @author praveen.kumar7
+	 */
+	public String createXpathWithDeviceColor(String colorOfDevice) {
+		List<WebElement> allDeviceSkus = getDriver().findElements(By.xpath("//label[contains(@class,'position-relative -color')]//input"));
+		boolean isSkuColorExist = isSkuValid(allDeviceSkus,colorOfDevice);
+		if((colorOfDevice == null) || (colorOfDevice.isEmpty()) || !(isSkuColorExist)) {
+			WebElement element = allDeviceSkus.get(0);
+			String firstSkuColor = element.getAttribute("value");
+			return "//label[contains(@class,'position-relative -color')]//input[@value='"+firstSkuColor+"']/following::span[1]";
+		}
+		else return "//label[contains(@class,'position-relative -color')]//input[@value='"+colorOfDevice+"']/following::span[1]";
+	}
+
+	/**
+	 * This method checks if
+	 * @param colorOfDevice : color of the device
+	 * @param allDeviceSkus List of all device SKUs
+	 * @return boolean true if device color is present in device config page else false
+	 * @author praveen.kumar7
+	 */
+	public boolean isSkuValid(List<WebElement> allDeviceSkus, String colorOfDevice) {
+		for(WebElement deviceSku : allDeviceSkus) {
+			if((deviceSku.getAttribute("value").equals(colorOfDevice)))
+				return true;
+		}
+		return false;
+	}
+
+	/**
+	 * This method will select a device color on device config page
+	 * @param deviceColor : color of the device which we needs to be selected
+	 * @author praveen.kumar7
+	 */
+	public void selectDeviceColor(String deviceColor){
+		String xPathOfSkuToBeSelected = createXpathWithDeviceColor(deviceColor);
+		getReusableActionsInstance().clickWhenVisible(By.xpath(xPathOfSkuToBeSelected),30);
 	}
 
 	/**

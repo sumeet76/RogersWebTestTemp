@@ -6,7 +6,9 @@ public class RedesignRpotgOVData {
 	private String shippingAddress;
 	private String apartment;
     private String deviceName;
+	private String deviceColor;
 	private String deviceCostIndex;
+	private String deviceCostType;
 	private String dataOptionIndex;
 	private String talkOptionIndex;
     private String firstName;
@@ -17,9 +19,14 @@ public class RedesignRpotgOVData {
     private String creditCardDetails;
     private String expiryDate;
     private String dropdownOption;
+	private String selectYourPrimaryIdOption;
+	private String number;
+	private String selectYourSecondIdOption;
+	private String secondNumber;
     private String passportNumber;
 	private String secondIdOption;
 	private String sinNumber;
+	private String ctnCity;
     private String cityName;
     private String contactNumber;
     private String billingAddress;
@@ -76,7 +83,6 @@ public class RedesignRpotgOVData {
 
 	private String expiryDateOTP;
 
-	
 	public String getPaymentMethod() {
 		return paymentMethod;
 	}
@@ -117,12 +123,12 @@ public class RedesignRpotgOVData {
 				this.dateOfBirthDay = dateOfBirthDay;
 			}
 
-	public String getDeviceName() {
-        return deviceName;
+	public String getDeviceCostType() {
+        return deviceCostType;
     }
 
-    public void setDeviceName(String deviceName) {
-        this.deviceName = deviceName;
+    public void setDeviceCostType(String deviceCostType) {
+        this.deviceCostType = deviceCostType;
     }
 
 	/**
@@ -136,6 +142,22 @@ public class RedesignRpotgOVData {
 	 */
 	public void setDeviceCostIndex(String deviceCostIndex) {
 		this.deviceCostIndex = deviceCostIndex;
+	}
+
+	public String getDeviceColor() {
+		return deviceColor;
+	}
+
+	public void setDeviceColor(String deviceColor) {
+		this.deviceColor = deviceColor;
+	}
+
+	public String getDeviceName() {
+		return deviceName;
+	}
+
+	public void setDeviceName(String deviceName) {
+		this.deviceName = deviceName;
 	}
 	/**
 	 * @return the dataOptionIndex
@@ -218,12 +240,53 @@ public class RedesignRpotgOVData {
 		this.passportNumber = passportNumber;
 	}
 
+	public String getSelectYourPrimaryIdOption() {
+		return selectYourPrimaryIdOption;
+	}
+
+	public void setSelectYourPrimaryIdOption(String selectYourPrimaryIdOption) {
+		this.selectYourPrimaryIdOption = selectYourPrimaryIdOption;
+	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
+	}
+
+	public String getSelectYourSecondIdOption() {
+		return selectYourSecondIdOption;
+	}
+
+	public void setSelectYourSecondIdOption(String selectYourSecondIdOption) {
+		this.selectYourSecondIdOption = selectYourSecondIdOption;
+	}
+
+	public String getSecondNumber() {
+		return secondNumber;
+	}
+
+	public void setSecondNumber(String secondNumber) {
+		this.secondNumber = secondNumber;
+	}
+
 	public String getDropdownOption() {
 		return dropdownOption;
 	}
 
 	public void setDropdownOption(String dropdownOption) {
 		this.dropdownOption = dropdownOption;
+	}
+
+
+	public String getCtnCity() {
+		return ctnCity;
+	}
+
+	public void setCtnCity(String ctnCity) {
+		this.ctnCity = ctnCity;
 	}
 
 	public String getCityName() {

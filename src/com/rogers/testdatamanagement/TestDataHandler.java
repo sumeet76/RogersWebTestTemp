@@ -123,6 +123,7 @@ public class TestDataHandler {
 	public static RedesignRpotgOVData buyFlowsOVtestCase14;
 	public static RedesignRpotgOVData buyFlowsOVtestCase15;
 	public static RedesignRpotgOVData buyFlowsOVtestCase16;
+	public static RedesignRpotgOVData buyFlowsOVtestCase17;
 	public static AALData tc07AAL;
 	public static PPCData tc08PPC;
 	public static HUPData tc09HupPpcPotgSharedML;
@@ -436,9 +437,10 @@ public class TestDataHandler {
 		buyFlowsOVtestCase11 = YamlHandler.getAALdataOneView("tc11OVAALTabletShareTermStandardShippingAccount");
 		buyFlowsOVtestCase12 = YamlHandler.getAALdataOneView("tc12OVAALBYODBopisShippingAccount");
 		buyFlowsOVtestCase13 = YamlHandler.getAALdataOneView("tc13OVAALBYODNonShareStandardShippingAccount");
-		buyFlowsOVtestCase14 = YamlHandler.getRedesignOVNACData("tc14OVNAC");
-		buyFlowsOVtestCase15 = YamlHandler.getRedesignOVNACData("tc15OVNACCSR");
+		buyFlowsOVtestCase14 = YamlHandler.getRedesignOVNACData("tc14OVNACOutboundNoTermStandardShipping");
+		buyFlowsOVtestCase15 = YamlHandler.getRedesignOVNACData("tc15OVNACOutboundFinanceStandardShipping");
 		buyFlowsOVtestCase16 = YamlHandler.getRedesignOVNACData("tc16OVNACFieldSales");
+		buyFlowsOVtestCase17 = YamlHandler.getRedesignOVNACData("tc17OVNACCSR");
 	}
 	
 	private static void chOneViewDataInit() throws FileNotFoundException {
