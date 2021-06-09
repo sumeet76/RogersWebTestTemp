@@ -70,7 +70,8 @@ public class RogersCH_TC_034_CartAbandon_NoPortinExistingLegacySignedinfromMyRog
 	    reporter.reportLogWithScreenshot("Launched the Account Page"); 
         getRogersHomePage().clkShopCartAbondon();
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-     	getRogersHomePage().clkIgniteTVExistingCustomer();
+     	//getRogersHomePage().clkIgniteTVExistingCustomer();
+		getDriver().get(System.getProperty("QaUrl")+"/web/consumer/ignite-bundles/tv-internet");
      	getRogersHomePage().clkNoThnx();
     	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	getRogersHomePage().clkServiceabilityMigration();
@@ -113,7 +114,8 @@ public class RogersCH_TC_034_CartAbandon_NoPortinExistingLegacySignedinfromMyRog
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersHomePage().clkShopAbandon();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-		getRogersHomePage().clkIgniteTVExistingCustomer();
+		//getRogersHomePage().clkIgniteTVExistingCustomer();
+		getDriver().get(System.getProperty("QaUrl")+"/web/consumer/ignite-bundles/tv-internet");
 		reporter.hardAssert(getRogersHomePage().verifyWelcomeback(),"Welcome back popup has Launched","Welcome back popup has not Launched");
 		reporter.reportLogWithScreenshot("Launched the Welcome back popup");
 		getRogersHomePage().clkWelcomeback();

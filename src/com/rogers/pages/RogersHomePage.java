@@ -131,13 +131,9 @@ public class RogersHomePage extends BasePageClass {
 	
 	@FindBy(xpath = "//input[contains(@id,'canada-post-address-complete')]")
 	WebElement txaIgniteAddressLookup;		
-	//input[contains(@class,'cdk-text-field-autofill-monitored')]
-	//span[contains(@class,'ds-formField__labelWrapper position-absolute')]
-	//input[contains(@id,'canada-post-address-complete')]
 
 	@FindBy(xpath = "//div[@id='multipleUnitsModal'] ")
 	WebElement popupIgniteAddressLookupLable;
-
 
 	@FindBy(xpath = "//span[contains(@class,'ds-formField__labelWrapper')]")
 	WebElement txaIgniteAddressLookupLable;

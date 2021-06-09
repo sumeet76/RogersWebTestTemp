@@ -20,17 +20,21 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	
 	@FindBy(xpath ="//button[@class='ute-btn-secondary']//ins[@translate='global.cta.yes']")
 	WebElement btnActivateLater;
-	
+
 	@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Select']/ancestor::a")
 	WebElement btnSolarisSelectPackage;
 
 	@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Popular']/ancestor::a")
 	WebElement btnSolarisPopularPackage;
 
-	@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Starter']/ancestor::a")
+	@FindAll({
+	@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Starter']/ancestor::a"),
+	@FindBy(xpath = "//div[@class='bundle-tile-row']//span[@id='allowedFlowAddToCart_Rogers Ignite Starter']/ancestor::a")})
 	WebElement btnSolarisStarterPackage;
 
-   @FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Premier']/ancestor::a")
+	@FindAll({
+   @FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Premier']/ancestor::a"),
+	@FindBy(xpath = "//div[@class='bundle-tile-price']//a[@aria-describedby='allowedFlowAddToCart_Rogers Ignite Premier']")})
 	WebElement btnSolarisPremierPackage;
 
 	@FindBy(xpath = "//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Flex 5']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']")

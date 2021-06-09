@@ -71,8 +71,8 @@ public class RogersCH_TC_037_InternetPackageUpgradeToSolarisFromShopOptionTest e
 	    reporter.reportLogWithScreenshot("Launched the Interent dashboard");
 	    getRogersHomePage().clkExistingCustomerShop();
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        getRogersHomePage().clkIgniteTVExistingCustomer();
-    	
+        //getRogersHomePage().clkIgniteTVExistingCustomer();
+		getDriver().get(System.getProperty("QaUrl")+"/web/consumer/ignite-bundles/tv-internet");
     	reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
     	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	getRogersHomePage().clkServiceability();
