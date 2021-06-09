@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import utils.FormFiller;
 
 import java.util.List;
 
@@ -19,8 +20,11 @@ public class RogersPlanConfigPage extends BasePageClass {
     String xpathDcDoTo;
     String dataProtectionOption;
 
-    @FindBy(xpath = "//button[contains(@class,'ds-button ds-corners')]//span[contains(text(),'options')]")
-    WebElement viewMoreOptions;
+    @FindBy(xpath = "(//div[contains(@id,'ds-radio-input-id')])[2]")
+    WebElement noTermRadioBtn;
+
+    @FindBy(xpath = "(//div[contains(@id,'ds-radio-input-id')])[1]")
+    WebElement financingRadioBtn;
 
     @FindBy(xpath = "//button[contains(@class,'ds-button ds-corners')]//span[contains(text(),' Show More') or contains(text(),' Afficher les ')]")
     WebElement showMoreDetails;
@@ -28,7 +32,10 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-1-edit-step-selection-option-')]//label[1]")
     List<WebElement> noOfDeviceTiers;
 
-    @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-infinite-')]//label[1]")
+    @FindAll({
+            @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-infinite-')]//label[1]"),
+            @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-')]//label[1]")
+    })
     List<WebElement> noofDataOptions;
 
     @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-3-edit-step-selection-option-')]//label[1]")
@@ -52,6 +59,9 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "(//div[contains(@class,'dsa-orderTable')])[1]")
     WebElement monthlyFeesCartSummarySection;
 
+    @FindBy(xpath="//ds-checkbox[contains(@data-test,'vdp-checkbox')]")
+    WebElement downPaymentChkBox;
+
     @FindBy(xpath = "//button[@data-test='stepper-1-edit-step-continue-button']")
     WebElement preCartDeviceCostContinueButton;
 
@@ -63,6 +73,15 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     @FindBy(xpath = "//button[@data-test='stepper-4-edit-step-continue-button']")
     WebElement preCartAddonsContinueButton;
+
+    @FindBy(xpath = "(//input[contains(@id,'ds-form-input-id')])[1]")
+    WebElement setFirstName;
+
+    @FindBy(xpath = "(//input[contains(@id,'ds-form-input-id')])[2]")
+    WebElement setLastName;
+
+    @FindBy(xpath = "//button[contains(@data-test,'stepper-5')]")
+    WebElement continueCallerID;
 
     @FindBy(xpath = "//div[contains(@class,'ds-step__content ds-border-bottom ds-brcolor-concrete p-16 p-md-24 ds-bgcolor-misty')]//button[contains(@class,'primary -large')]")
     WebElement preCartSummaryContinueButton;
@@ -136,13 +155,13 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//ds-modal//button[contains(@title,'Continue')]")
     WebElement btnContinueOnModalToDoWithOldPhone;
 
-    @FindBy(xpath = "//div[@class='dsa-layout container']//ds-checkbox")
+    @FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]/parent::ds-checkbox")
     WebElement checkBoxAdditionalLineOPtion;
 
-    @FindBy(xpath = "//button[@data-test='add-to-cart-btn']")
+    @FindBy(xpath = "//button[contains(@data-test,'add-to-cart')]")
     WebElement btnAddToCart;
 
-    @FindBy(xpath = "//button[@data-test='continue-btn']")
+    @FindBy(xpath = "//button[contains(@id,'main-continue-button')]")
     WebElement btnProceedToCheckout;
 
 
@@ -169,11 +188,12 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
 
     /**
-     * Clicks on View More Options to expand device cost stepper
+     * Clicks on NO TERM radio button in device cost stepper
      * @author praveen.kumar7
      */
-    public void clickViewMoreOptions() {
-        getReusableActionsInstance().clickIfAvailable(viewMoreOptions);
+    public void clkRadioButtonNoTerm() {
+        getReusableActionsInstance().scrollToElement(noTermRadioBtn);
+        getReusableActionsInstance().clickWhenReady(noTermRadioBtn,30);
     }
 
     /**
@@ -236,7 +256,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     /**
      * This method sets the value for dataOptionIndex
      * @param dataOptionIndex String value of dataOptionIndex
-     * @return returs the String value of index
+     * @return returns the String value of index
      * @author praveen.kumar
      */
     public String getupdatedDataOptionIndex(String dataOptionIndex) {
@@ -245,6 +265,21 @@ public class RogersPlanConfigPage extends BasePageClass {
             return dataOptionIndex;
         }
         return dataOptionIndex;
+    }
+
+    /**
+     * This method selects the individual data option and click on continue
+     * @param dataOptionIndex String value of dataOptionIndex
+     * @author praveen.kumar
+     */
+    public void selectNonShareDataAndClkContinue(String dataOptionIndex) {
+        if(Integer.parseInt(dataOptionIndex) == 0) {
+            getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton, 30);
+        }
+        else {
+            getReusableActionsInstance().clickWhenVisible(By.xpath("//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-" + dataOptionIndex + "')]//label[1]"),40);
+            getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton,40);
+        }
     }
 
     /**
@@ -277,18 +312,6 @@ public class RogersPlanConfigPage extends BasePageClass {
         }
     }
 
-
-    /**
-     * Select No term Device Cost on Plan config page
-     *
-     * @author saurav.goyal
-     */
-    public void selectNoTermDeviceDeviceCost() {
-        getReusableActionsInstance().scrollToElement(viewMoreOptions);
-        clickViewMoreOptions();
-        getReusableActionsInstance().clickWhenReady(By.xpath("//span[@data-caption='NOTERM_false']//ancestor::label"), 30);
-    }
-
     /**
      * Select No term Device Cost on Plan config page
      *
@@ -311,7 +334,7 @@ public class RogersPlanConfigPage extends BasePageClass {
             getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton, 30);
         }
         else {
-            getReusableActionsInstance().clickWhenVisible(By.xpath(xpathDcDoTo),40);
+            getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo),30));
             getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton,40);
         }
     }
@@ -453,6 +476,20 @@ public class RogersPlanConfigPage extends BasePageClass {
         getReusableActionsInstance().clickIfAvailable(preCartSummaryContinueButtonTalkOptions, 5);
     }
 
+    /*public boolean verifyFinancingRadioBtnIsSelected() {
+        getReusableActionsInstance().isElementVisible(financingRadioBtn,30);
+        getReusableActionsInstance().getWhenReady(c)
+    }*/
+
+    /**
+     * This method clicks on downpaymment checkbox in device cost stepper
+     * @author praveen.kumar7
+     */
+    public void clkDownPaymentChkBox() {
+        getReusableActionsInstance().scrollToElement(downPaymentChkBox);
+        getReusableActionsInstance().clickWhenReady(downPaymentChkBox,30);
+    }
+
     /**
      * Click continue on Device Cost Section
      *
@@ -489,6 +526,27 @@ public class RogersPlanConfigPage extends BasePageClass {
     public void clickPreCartAddonsContinueButton() {
         clickGetBPOOffer();
         getReusableActionsInstance().clickIfAvailable(preCartAddonsContinueButton);
+    }
+
+    /**
+     * This method set the callerID details and clicks on continue button
+     * @author praveen.kumar7
+     */
+    public void setUserNameCallerID() {
+        getReusableActionsInstance().staticWait(3000);
+        getReusableActionsInstance().executeJavaScriptClick(setFirstName);
+        getReusableActionsInstance().getWhenReady(setFirstName,5).sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
+        getReusableActionsInstance().executeJavaScriptClick(setLastName);
+        getReusableActionsInstance().getWhenReady(setLastName,5).sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
+        getReusableActionsInstance().clickWhenReady(continueCallerID, 30);
+    }
+
+    /**
+     * This method clicks on continue button in callerID
+     * @author praveen.kumar7
+     */
+    public void clkCallerIDContinueBtnForTablet() {
+        getReusableActionsInstance().clickWhenReady(continueCallerID, 30);
     }
 
     /**
@@ -600,10 +658,10 @@ public class RogersPlanConfigPage extends BasePageClass {
      * This method select the additional line plan option and Clicks on proceed to checkout button
      * @author praveen.kumar7
      */
-    public void clkAdditionalLineOptions() {
+    public void selectAdditionalLinePlanOptions() {
         getReusableActionsInstance().clickWhenReady(checkBoxAdditionalLineOPtion, 30);
         getReusableActionsInstance().clickWhenReady(btnAddToCart);
-        getReusableActionsInstance().scrollToElement(btnProceedToCheckout);
+        getReusableActionsInstance().javascriptScrollByVisibleElement(btnProceedToCheckout);
         getReusableActionsInstance().clickWhenReady(btnProceedToCheckout, 30);
     }
 
