@@ -20,6 +20,7 @@ public class RogersEnums {
 		connectedhome_login,
 		connectedhome_shm,
 		connectedhome_shmautomation,
+		connectedhome_oneview,
 		selfserve_login,
 		selfserve,
 		mobile_selfserve,

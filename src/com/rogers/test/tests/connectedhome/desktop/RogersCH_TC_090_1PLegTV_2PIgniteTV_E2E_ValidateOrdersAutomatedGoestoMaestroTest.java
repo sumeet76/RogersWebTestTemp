@@ -49,23 +49,23 @@ import java.util.Map;
  *
  **/
 
-public class RogersCH_TC_038_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest extends BaseTestClass {
+public class RogersCH_TC_090_1PLegTV_2PIgniteTV_E2E_ValidateOrdersAutomatedGoestoMaestroTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
+    @Test//(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
 	public void checkTVPackageUpgradeTest() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
 		getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc38_DigitalTVUpgradeToIgnite.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc38_DigitalTVUpgradeToIgnite.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc90_Legacy1PTVtoIgnite2P.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc90_Legacy1PTVtoIgnite2P.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    reporter.reportLogWithScreenshot("Skip popup");
 	    getRogersLoginPage().clkSkipIFrame();
 	    getRogersLoginPage().switchOutOfSignInIFrame();
-	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc38_DigitalTVUpgradeToIgnite.accountDetails.getBan());
+	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc90_Legacy1PTVtoIgnite2P.accountDetails.getBan());
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page"); 
 		 getRogersHomePage().clkExistingCustomerShop();
@@ -73,7 +73,7 @@ public class RogersCH_TC_038_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
 		 getRogersHomePage().clkIgniteTVExistingCustomer();
     	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	getRogersHomePage().clkNoThnx();
-		getRogersHomePage().clkServiceabilityMigration();
+    	getRogersHomePage().clkServiceability();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");    	
         getRogersHomePage().clkUseThisAddress();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
@@ -89,9 +89,9 @@ public class RogersCH_TC_038_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
-        getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomer(TestDataHandler.tc38_DigitalTVUpgradeToIgnite.getAccountDetails().getYear());
-        getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomerMigration(TestDataHandler.tc38_DigitalTVUpgradeToIgnite.getAccountDetails().getMonth());
-        getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomerMigration(TestDataHandler.tc38_DigitalTVUpgradeToIgnite.getAccountDetails().getDate());
+        getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomer(TestDataHandler.tc90_Legacy1PTVtoIgnite2P.getAccountDetails().getYear());
+        getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomerMigration(TestDataHandler.tc90_Legacy1PTVtoIgnite2P.getAccountDetails().getMonth());
+        getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomerMigration(TestDataHandler.tc90_Legacy1PTVtoIgnite2P.getAccountDetails().getDate());
         reporter.reportLogWithScreenshot("Entered the DOB details");
 		getRogersIgniteTVCreditCheckPage().selectFirstID("Driver's License");
 		getRogersIgniteTVCreditCheckPage().selectProvince("Ontario");
@@ -107,8 +107,8 @@ public class RogersCH_TC_038_LegacyTV_DigitalTVPackageUpgradeToIgniteBundleTest 
 		getRogersIgniteTVCreditCheckPage().selectPassportExpiryDay();
 		getRogersIgniteTVCreditCheckPage().clkCreditConsent();
 		reporter.reportLogWithScreenshot("Passport Details");
-		getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
-
+        getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
+		//Validate flowType="AUTL" from continueBuy call, will be adding with selenium4
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
         getRogersTechInstallPage().clkTechInstalConsent();

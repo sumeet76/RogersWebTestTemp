@@ -1,6 +1,8 @@
 package com.rogers.pages;
 
 import com.rogers.pages.base.BasePageClass;
+import com.rogers.test.helpers.CurrencyHelpers;
+import com.rogers.test.helpers.DateHelpersFunctions;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -30,7 +32,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ute-icon-internet']")
 	WebElement btnInternetBadge;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-tv']")
+	@FindAll({
+	@FindBy(xpath = "//span[@class='ds-icon rds-icon-tv']"),
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-tv']")})
 	WebElement btnSmartStream;
 
 	@FindAll({
@@ -330,22 +334,22 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//*[@translate='acc_overview_top_up_now' or @title='Top Up Now']")
 	WebElement btnPrepaidTopUpNow;
 
-	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.current.account.balance']")
+	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.current.account.balance' or contains(text(),'Current Account Balance') or contains(text(),'Solde actuel du compte')]")
 	WebElement lblCurrentAccountBalance;
 
-	@FindBy(xpath = "//*[@class='rogers-amount']")
+	@FindBy(xpath = "//*[@class='rogers-amount' or contains(@aria-label,'Current Account Balance') or contains(@aria-label,'Solde actuel du compte')]")
 	WebElement lblCurrentBalanceAmount;
 
-	@FindBy(xpath = "//*[@translate='acc_overview_expires_on']")
+	@FindBy(xpath = "//*[@translate='acc_overview_expires_on' or contains(text(),'Expires on:') or contains(text(),'Expire le :')]")
 	WebElement lblBalanceExpiresOn;
 
 	@FindBy(xpath = "//*[@data-test-id='myr-accountBalance-expiryDate']")
 	WebElement lblExpiryMonth;
 
-	@FindBy(xpath = "//*[@translate='change_method_update']")
+	@FindBy(xpath = "//*[@translate='change_method_update' or contains(text(),'Update Payment Method') or contains(text(),'Mettre à jour le mode de paiement')]")
 	WebElement lnkUpdatePaymentMethod;
 
-	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.view.call']")
+	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.view.call' or contains(text(),'View Call/Transaction History') or contains(text(),'Voir les appels/Historique des transactions')]")
 	WebElement lnkViewCallTransactionHistory;
 
 	@FindBy(xpath = "//div[@ng-if='!ao.mss.loadingData && ao.mss.selectedAccountDetail.isPrepaid']//*[@translate='service_wireless_prepaid']")
@@ -391,7 +395,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//*[contains(text(),'Confirm') or contains(text(),'Continue') or contains(text(),'Confirmer') or contains(text(),'Continuer')]")
 	WebElement btnConfirm;
 
-	@FindBy(xpath = "//*[text()='OK']")
+	@FindBy(xpath = "//*[text()='OK' or text()='Continue']")
 	WebElement btnOK;
 
 	@FindBy(xpath = "//p[text()='Subscription cancelled' or contains(text(),'Abonnement annul')]")
@@ -642,7 +646,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		}
 
 	/**
-	 * Clicks on the 'RHP Badge' option on the dash board
+	 * Clicks on the 'Smart Stream Badge' option on the dash board
 	 * @author chinnarao.vattam
 	 */
 	public void clkSmartStream() {
@@ -1561,8 +1565,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isBalanceExpiresOnDisplayedOnAOPage() {
-		return (getReusableActionsInstance().isElementVisible(lblBalanceExpiresOn)
-				&& getReusableActionsInstance().isElementVisible(lblExpiryMonth));
+		String strValue =getReusableActionsInstance().getWhenReady(lblBalanceExpiresOn).getText().trim();
+		strValue = CurrencyHelpers.removeLineBreaksFromString(strValue).split(":")[1].trim();
+		return DateHelpersFunctions.isValidDAte(strValue);
+		//return (DateHelpersFunctions.isValidDAte(getReusableActionsInstance().getWhenReady(lblBalanceExpiresOn).getText().trim().split(":")[1].trim()));
 	}
 
 	
@@ -1590,8 +1596,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @return true if the element is displayed else false
 	 * @author Mirza.Kamran
 	 */
-	public boolean isCTNWidgetIsDisplayedOnAOPg() {
-		return getReusableActionsInstance().isElementVisible(btnCTNWidgetPrepaid);
+	public boolean isCTNWidgetIsDisplayedOnAOPg(String strCTN) {
+		return getReusableActionsInstance().isElementVisible(By.xpath("//rss-subscription-detail//span[contains(text(),'"+strCTN.substring(strCTN.length()-4)+"')]"));
 	}
 
 	/**
@@ -1620,8 +1626,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * Clicks on CTN widget is clicked
 	 * @author Mirza.Kamran
 	 */
-	public void clkCTNWidget() {
-		getReusableActionsInstance().getWhenReady(btnCTNWidgetPrepaid).click();
+	public void clkCTNWidget(String strCTN) {
+		getReusableActionsInstance().getWhenReady(By.xpath("//rss-subscription-detail//span[contains(text(),'"+strCTN.substring(strCTN.length()-4)+"')]")).click();
 		
 	}
 
@@ -2111,6 +2117,7 @@ public boolean verifyPTPWidgetIsDisplayed() {
 	public boolean verifyIfEffectiveCancelDateForSubscriptionISImmediate(String test_language) {
 		String cancelledEndDate= getReusableActionsInstance().getWhenReady(lblSMPpromotionEnded).getText();
 		cancelledEndDate = cancelledEndDate.split("ended")[1].trim();
+		DateHelpersFunctions.isValidDAte(cancelledEndDate);
 		Locale locale=Locale.CANADA;;
 		String datePattern = "MMM. d, u";
 		ZoneId defaultZoneId = ZoneId.systemDefault();

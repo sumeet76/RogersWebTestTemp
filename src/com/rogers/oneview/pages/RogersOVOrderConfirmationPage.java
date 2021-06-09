@@ -33,7 +33,7 @@ public class RogersOVOrderConfirmationPage  extends BasePageClass {
 	/**
 	 * Verify Order is Placed
 	 * @return true if Confirmation Message appeared, else false
-	 * @author Harpartap.Virk
+	 * @author chinnarao.vattam
 	 */	
 	public boolean verifyOrder() {	
 		return getReusableActionsInstance().isElementVisible(orderConfirmation,120);

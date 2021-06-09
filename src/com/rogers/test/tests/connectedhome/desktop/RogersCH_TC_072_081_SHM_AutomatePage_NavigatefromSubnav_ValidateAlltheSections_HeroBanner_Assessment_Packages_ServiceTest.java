@@ -42,7 +42,6 @@ public class RogersCH_TC_072_081_SHM_AutomatePage_NavigatefromSubnav_ValidateAll
         getRogersSecurityPackagesPage().clkHowToGetAutomatePackage();
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesModelDisplayed(), "Security Packages Model is Verified", "Security Packages Model Verification is failed");
         reporter.reportLogWithScreenshot("Security Packages options Model");
-
         getRogersSecurityPackagesPage().clkSecurityPackagesByLivechat();
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyIfrmLiveChatDisplayed(), "LiveChat frame is Verified", "LiveChat frame Verification is failed");
         reporter.reportLogWithScreenshot("Options to Live chat for security package Order");
@@ -52,16 +51,13 @@ public class RogersCH_TC_072_081_SHM_AutomatePage_NavigatefromSubnav_ValidateAll
         getRogersSecurityPackagesPage().clkCloseLivechat();
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesModelDisplayed(), "Security Packages Model is Verified", "Security Packages Model Verification is failed");
         reporter.reportLogWithScreenshot("Options to Store for security package Order");
-
         getRogersSecurityPackagesPage().clkSecurityPackagesFromStore();
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyStorePageDisplayed(), "Store has displayed", "Store is not displayed");
         reporter.reportLogWithScreenshot("Stores page for security package Order");
-
         getDriver().get(System.getProperty("QaUrl") + "/home-security/automation-packages"+ "?setLanguage=" + strLanguage);
         getRogersSecurityPackagesPage().clkHowToGetAutomatePackage();
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesModelDisplayed(), "Security Packages Model is Verified", "Security Packages Model Verification is failed");
         reporter.reportLogWithScreenshot("Security Packages options Model");
-
         getRogersSecurityPackagesPage().clkSecurityPackagesByCall();
         reporter.reportLogWithScreenshot("Options to call CC for security package Order");
     }
@@ -135,8 +131,6 @@ public class RogersCH_TC_072_081_SHM_AutomatePage_NavigatefromSubnav_ValidateAll
         reporter.reportLogWithScreenshot("Home Monitoring app packages");
     }
 
-
-
     @Test(groups = {"RegressionCH","RhpAndRhmCH"})
     public void check_81_ShmAutomationPageViewSecurityPackages_RedirectTopOfSecurityPackageTestTest() {
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyViewSecurityPackage(), "View Security Package button is displayed", "View Security Package button is not displayed");
@@ -149,7 +143,6 @@ public class RogersCH_TC_072_081_SHM_AutomatePage_NavigatefromSubnav_ValidateAll
         reporter.reportLogWithScreenshot("security packages");
 
     }
-
 
    @Test(groups = {"RegressionCH","RhpAndRhmCH"})
     public void checkAutomationPageContactUsTest() {
@@ -233,7 +226,6 @@ public class RogersCH_TC_072_081_SHM_AutomatePage_NavigatefromSubnav_ValidateAll
     }
 
 
-
     @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
     //legacyAnonymous
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
@@ -244,7 +236,7 @@ public class RogersCH_TC_072_081_SHM_AutomatePage_NavigatefromSubnav_ValidateAll
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
 

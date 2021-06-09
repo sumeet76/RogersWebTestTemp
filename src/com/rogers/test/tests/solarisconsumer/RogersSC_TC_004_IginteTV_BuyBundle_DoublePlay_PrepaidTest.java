@@ -64,7 +64,7 @@ public class RogersSC_TC_004_IginteTV_BuyBundle_DoublePlay_PrepaidTest extends B
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-        getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
+        getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
         getRogersIgniteTVBuyPage().verifyOptNewPhone();
         reporter.reportLogWithScreenshot("Launched the port-in popup");
         getRogersIgniteTVBuyPage().selectOptNewPhone();

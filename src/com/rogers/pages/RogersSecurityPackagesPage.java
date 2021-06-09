@@ -25,6 +25,7 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	WebElement popupSecurityPackagesModel;
 
 	@FindAll({@FindBy(xpath = "//a[@href='1-855-214-6825']"),
+			@FindBy(xpath = "//a[@href='1 855 214-6825']"),
 	@FindBy(xpath = "//a[@href='1 855 214 6825']")})
 	WebElement lnkSecurityPackagesByCall;
 

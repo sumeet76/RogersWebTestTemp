@@ -66,7 +66,12 @@ public class RogersCH_TC_030_084_IginteTV_DoublePlayBuyValidateMonthAsteriskTest
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-        getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
+        reporter.softAssert(getRogersIgniteTVBuyPage().verifyFlex5PackageCost(),"Flex5 Package Cost having the mo*","Flex5 Package Cost is not having the mo*");
+        reporter.softAssert(getRogersIgniteTVBuyPage().verifyFlex10PackageCost(),"Flex10 Package Cost having the mo*","Flex10 Package Cost is not having the mo*");
+        reporter.softAssert(getRogersIgniteTVBuyPage().verifyFlex20PackageCost(),"Flex20+ Package Cost having the mo*","Flex20+ Package Cost is not having the mo*");
+        reporter.softAssert(getRogersIgniteTVBuyPage().verifyPremierPackageCost(),"Premier Package Cost having the mo*","Premier Package Cost is not having the mo*");
+        reporter.softAssert(getRogersIgniteTVBuyPage().verifyStarterPackageCost(),"Starter Package Cost having the mo*","Starter Package Cost is not having the mo*");
+        getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
 
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");

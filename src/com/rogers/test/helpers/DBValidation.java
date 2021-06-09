@@ -36,9 +36,9 @@ public class DBValidation extends BaseTestClass{
             statement.close();
             connect.close();
         } catch (SQLException e) {
-            new BaseTestClass().reporter.reportLog("Exception occurred while executing the Query, please " +
-                    "check the query" + e.getMessage());
             e.printStackTrace();
+            getReporter().reportLog("Exception occurred while executing the Query, please " +
+                    "check the query" + e.getMessage());
         }
 
         return resultMap;
@@ -68,7 +68,8 @@ public class DBValidation extends BaseTestClass{
             connect.setAutoCommit(false);
             statement = connect.createStatement();
         } catch (ClassNotFoundException | SQLException e) {
-            new BaseTestClass().reporter.reportLog("DB Connection error" + e.getMessage());
+            e.printStackTrace();
+            getReporter().reportLog("DB Connection error" + e.getMessage());
         }
         return this;
     }

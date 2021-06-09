@@ -1028,7 +1028,7 @@ public class BaseTestClass {
                 RogersReviewOrderPageThreadLocal.set(new RogersReviewOrderPage(getDriver()));
                 break;
 
-            case "choneview":
+            case "connectedhome_oneview":
 
                 EnvironmentSelectionPageThreadLocal.set(new EnvironmentSelectionPage(getDriver()));
                 AccountOverViewPageThreadLocal.set(new AccountOverViewPage(getDriver()));
@@ -1046,6 +1046,22 @@ public class BaseTestClass {
                 RogersOVOrderConfirmationPageThreadLocal.set(new RogersOVOrderConfirmationPage(getDriver()));
                 RogersOVChannelsAndThemePacksPageThreadLocal.set(new RogersOVChannelsAndThemePacksPage(getDriver()));
                 HomePhoneAddonsPageThreadLocal.set(new HomePhoneAddonsPage(getDriver()));
+                RogersInternetUsageOVPageThreadLocal.set(new RogersInternetUsageOVPage(getDriver()));
+
+                //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+                RogersOVOrderReviewPageThreadLocal.set(new RogersOVOrderReviewPage(getDriver()));
+                RogersOVChangeSharePlanPageThreadLocal.set(new RogersOVChangeSharePlanPage(getDriver()));
+                RogersOVWirelessDetailsPageThreadLocal.set(new com.rogers.oneview.pages.RogersWirelessDetailsPage(getDriver()));
+                RogersOVChoosePhonePageThreadLocal.set(new com.rogers.oneview.pages.RogersChoosePhonePage(getDriver()));
+                RogersOVBuildPlanPageThreadLocal.set(new com.rogers.oneview.pages.RogersBuildPlanPage(getDriver()));
+                RogersOVChooseAddonsPageThreadLocal.set(new com.rogers.oneview.pages.RogersChooseAddonsPage(getDriver()));
+                RogersOVShippingPageThreadLocal.set(new com.rogers.oneview.pages.RogersShippingPage(getDriver()));
+                RogersOVPaymentPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVPaymentPage(getDriver()));
+                RogersOVChoosePlanPageThreadLocal.set(new com.rogers.oneview.pages.RogersChoosePlanPage(getDriver()));
+                RogersOVPlanConfigPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVPlanConfigPage(getDriver()));
+                RogersOVCheckoutPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVCheckoutPage(getDriver()));
+                RogersOVReviewOrderPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVReviewOrderPage(getDriver()));
+                RogersOVOneTimePaymentPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVOneTimePaymentPage(getDriver()));
                 break;
 
             case "redesignrogers":

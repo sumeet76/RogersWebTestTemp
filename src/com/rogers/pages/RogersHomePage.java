@@ -184,12 +184,17 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//ul[@class='dds_o-navLinkList']//span[contains(text(),'ON')]")
 	WebElement lnkOptedON;
 
-	@FindBy(xpath = "//li[@id='province']//span[@class='dds_m-navLink__chevron rds-icon-expand']")
+	@FindBy(xpath = "//a[@aria-label='Ontario']//span[@class='m-navLink__chevron rds-icon-expand']")
 	WebElement lnkProvince;
 
 	@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='Ontario']")
 	WebElement lnkProvinceON;
-	//a[@class='dds_m-navLink -dropdownNavbar' and @id='ON']
+
+	@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='New Brunswick']")
+	WebElement lnkProvinceNB;
+
+	@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='Newfoundland and Labrador']")
+	WebElement lnkProvinceNL;
 
 	@FindBy(xpath = "//ngx-smart-modal[@id='loadingModal']")
 	WebElement popupLoadingFingersciam;
@@ -259,7 +264,7 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Internet')]/ancestor::ul[@class='list-none d-flex']//ds-icon[@name='down']")
 	WebElement subnavIgniteInternet;
 
-	@FindBy(xpath = "//span[contains(text(),'Ignite SmartStream') or contains(text(),'Élan Diffusion futée')]/ancestor::li[@role='menuitem']//ds-icon[@name='right']")
+	@FindBy(xpath = "//span[contains(text(),'TV & Streaming') or contains(text(),'Télé et Diffusion en continu')]/ancestor::li[@role='menuitem']//ds-icon[@name='down']")
 	WebElement subnavIgniteSmartStream;
 
 	@FindBy(xpath = "//span[contains(text(),'Help and Support') or contains(text(),'Soutien')]/ancestor::li[@role='menuitem']//ds-icon[@name='right']")
@@ -346,10 +351,10 @@ public class RogersHomePage extends BasePageClass {
 	 * Click the SignIn button from the top tile bar 
 	 * @author chinnarao.vattam 
 	 */
-	public void clkTVBundle() {		
+	public void clkTVBundle() {
 		getReusableActionsInstance().getWhenVisible(lnkTVBundle, 30).click();
 	}
-	
+
 	/**
 	 * Click the SignIn button from the top tile bar 
 	 * @author chinnarao.vattam 
@@ -490,10 +495,10 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkShop() {
-	/*	if(!getReusableActionsInstance().isElementVisible(lnkOptedON,60)){
+		if(!getReusableActionsInstance().isElementVisible(lnkOptedON,60)){
 			getReusableActionsInstance().getWhenReady(lnkProvince,10).click();
 			getReusableActionsInstance().getWhenReady(lnkProvinceON,10).click();
-		}*/
+		}
 		getReusableActionsInstance().getWhenReady(btnShop, 20).click();
 	}
 
@@ -643,6 +648,28 @@ public class RogersHomePage extends BasePageClass {
 	}
 
 	/**
+	 * Click the SignIn button from the top tile bar
+	 * @author chinnarao.vattam
+	 */
+	public void clkTVBundlesForNL() {
+		getReusableActionsInstance().isElementVisible(lnkOptedON,20);
+		getReusableActionsInstance().getWhenReady(lnkProvince, 20).click();
+		getReusableActionsInstance().getWhenReady(lnkProvinceNL, 30);
+		getReusableActionsInstance().executeJavaScriptClick(lnkProvinceNL);
+	}
+
+	/**
+	 * Click the SignIn button from the top tile bar
+	 * @author chinnarao.vattam
+	 */
+	public void clkTVBundlesForNB() {
+		getReusableActionsInstance().isElementVisible(lnkOptedON,20);
+		getReusableActionsInstance().getWhenReady(lnkProvince, 20).click();
+		getReusableActionsInstance().getWhenReady(lnkProvinceNB, 30);
+		getReusableActionsInstance().executeJavaScriptClick(lnkProvinceNB);
+	}
+
+	/**
 	 * Clicks on the 'Service ability' button
 	 * @author chinnarao.vattam
 	 */
@@ -673,6 +700,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyIgnitepage() {
+		getReusableActionsInstance().staticWait(10000);
 		return getReusableActionsInstance().isElementVisible(btnServiceability, 60);
 	}
 

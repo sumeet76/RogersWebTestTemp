@@ -80,7 +80,7 @@ public class RogersCH_TC_031_IginteTV_BuySolarisDoublePlayChangeInstallationDate
 		getRogersHomePage().clkIgniteAddressLookupSubmit();
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-		getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
+		getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
 		reporter.reportLogWithScreenshot("Launched the port-in popup");
 
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
@@ -89,7 +89,7 @@ public class RogersCH_TC_031_IginteTV_BuySolarisDoublePlayChangeInstallationDate
 		reporter.reportLogWithScreenshot("4k TV selected");
 		getRogersIgniteTVBuyPage().clkCheckout();
 		
-		//reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
+		reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the create profile page");
 		getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
         

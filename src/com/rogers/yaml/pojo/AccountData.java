@@ -2,6 +2,7 @@ package com.rogers.yaml.pojo;
 
 public class AccountData {
 
+	public ContactDetails contactDetails;
 	private String username;
 	private String password;
 	private String newUsername;
@@ -9,7 +10,7 @@ public class AccountData {
 	public AccountDetails accountDetails;	
 	public String name;
 	private String dealerCode;
-	
+	private String contactID;
 
 	/**
 	 * @return the accountDetails
@@ -101,5 +102,17 @@ public class AccountData {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+	/**
+	 * @return the ContactID
+	 */
+	public String getContactID() {
+		return contactID;
+	}
+	/**
+	 * @param contactID the ContactID to set
+	 */
+	public void setContactID(String contactID) {
+		this.contactID = contactID;
 	}
 }

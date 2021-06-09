@@ -28,7 +28,7 @@ public class RogersSS_TC_126_NonSIM_ValidateTheDetailedTaxAmountForEachAccessory
 		closeSession();
 	}
 
-	@Test(groups = {"SanitySS","ProfileAndSettingsSS","CAMShiled"})
+	@Test(groups = {"CAMShiled"})
 	public void validateTheDetailedTaxAmountForEachAccessoryAgreementOnAccessoriesDashboardPage() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc126.getUsername();

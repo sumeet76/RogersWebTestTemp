@@ -66,7 +66,7 @@ public class RogersSC_TC_014_IgniteTV_AnonymousCustomerTriplePlayPortInTest exte
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-        getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
+        getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
         reporter.reportLogWithScreenshot("Launched the port-in popup");
         getRogersIgniteTVBuyPage().clickOptPhone();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");

@@ -61,7 +61,7 @@ public class RogersCH_TC_054_IginteTV_WirelessCRMaddressMismatchWithSGI_Validate
 		getRogersHomePage().clkUseThisAddress();
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-		getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
+		getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
 
 		reporter.reportLogWithScreenshot("Launched the port-in popup");
 

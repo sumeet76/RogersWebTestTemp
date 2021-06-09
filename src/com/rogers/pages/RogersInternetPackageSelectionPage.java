@@ -1,9 +1,6 @@
 package com.rogers.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -64,6 +61,30 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 
 	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::div[@class='internet-bundle-tile']//div[@class='ds-checkbox__box my-12 rds-icon-check']")
 	WebElement chkSmartStream;
+
+	@FindBy(xpath = "//button[contains(@class,'getPromoCodeBtn')]")
+	WebElement btnPromoCode;
+
+	@FindBy(xpath = "//div[@class='expanded']//input[contains(@id,'ds-form-input-id-')]")
+	WebElement txtPromoCodeFormInput;
+
+	@FindBy(xpath = "//div[contains(@class,'ds-formField__inputContainer')]")
+	WebElement txaPromoCodeContainer;
+
+	@FindBy(xpath = "//span[contains(text(),'Check') or contains(text(),'Chèque')]/ancestor::button")
+	WebElement btnPromoCodeCheck;
+
+	@FindBy(xpath = "//span[@class='ds-icon rds-icon-warning-circle ds-color-error']")
+	WebElement imgInvalidPromoCodeError;
+
+	@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='Newfoundland and Labrador']")
+	WebElement lnkProvinceNL;
+
+	@FindBy(xpath = "//ul[@class='dds_o-navLinkList']//span[contains(text(),'ON')]")
+	WebElement lnkOptedON;
+
+	@FindBy(xpath = "//a[@aria-label='Ontario']//span[@class='m-navLink__chevron rds-icon-expand']")
+	WebElement lnkProvince;
 
 	/**
 	 * selects the Internet package if it visible and ready if not click on the next arrow to get the desired package
@@ -154,7 +175,17 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(btnSmartStream, 90);
 		getReusableActionsInstance().executeJavaScriptClick(btnSmartStream);
 		getReusableActionsInstance().staticWait(8000);
-		getReusableActionsInstance().staticWait(8000);
+	}
+
+	/**
+	 * Click the SignIn button from the top tile bar
+	 * @author chinnarao.vattam
+	 */
+	public void clkISSforNL() {
+		getReusableActionsInstance().isElementVisible(lnkOptedON,20);
+		getReusableActionsInstance().getWhenReady(lnkProvince, 20).click();
+		getReusableActionsInstance().getWhenReady(lnkProvinceNL, 30);
+		getReusableActionsInstance().executeJavaScriptClick(lnkProvinceNL);
 	}
 
 	public void clkSmartStream() {
@@ -175,9 +206,10 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	}
 
 	public void clkInternetBuyContinue() {
-		/*if(!getReusableActionsInstance().isElementVisible(btnInternetBuyContinue, 20)) {
+		if(!getReusableActionsInstance().isElementVisible(btnInternetBuyContinue, 20)) {
 			getReusableActionsInstance().waitForElementInvisibility(popUpLoading, 90);
-		}*/
+		}
+		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 		getReusableActionsInstance().getWhenReady(btnInternetBuyContinue, 60).click();
 	}
@@ -187,4 +219,51 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		getReusableActionsInstance().scrollToElement(btnCheckout);
 		getReusableActionsInstance().getWhenReady(btnCheckout, 90).click();
 	}
+
+	/**
+	 * Verify the Promo Code Button
+	 * @return true if the Promo Code Button displayed  else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyPromoCodeButton() {
+		return getReusableActionsInstance().isElementVisible(btnPromoCode,60);
+	}
+
+	/**
+	 * Click on the Promo Code Button
+	 * @author chinnarao.vattam
+	 */
+	public void clkPromoCode() {
+		getReusableActionsInstance().getWhenReady(btnPromoCode, 10).click();
+	}
+
+	/**
+	 * Enter on the Promo Code
+	 * @author chinnarao.vattam
+	 */
+	public void setIgniteAddressLookup(String strPromoCode) {
+		getReusableActionsInstance().waitForElementVisibility(txaPromoCodeContainer, 20);
+		getReusableActionsInstance().getWhenReady(txaPromoCodeContainer, 3).click();
+		getReusableActionsInstance().getWhenReady(txtPromoCodeFormInput, 3).clear();
+		getReusableActionsInstance().getWhenReady(txtPromoCodeFormInput, 5).sendKeys(strPromoCode);
+	}
+
+	/**
+	 * Click on the Promo Code Check button
+	 * @author chinnarao.vattam
+	 */
+	public void clkPromoCodeCheck() {
+		getReusableActionsInstance().getWhenReady(btnPromoCodeCheck, 10).click();
+	}
+
+	/**
+	 * Verify the Promo Code Error message
+	 * @return true if the Promo Code Error message displayed  else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyPromoCodeError() {
+		return getReusableActionsInstance().isElementVisible(imgInvalidPromoCodeError,60);
+	}
+
+
 }

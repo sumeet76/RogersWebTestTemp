@@ -76,7 +76,7 @@ public class RogersSC_TC_006_IginteTV_ExistingCustomerBuySolarisDoublePlayChange
 		getRogersHomePage().clkIgniteAddressLookupSubmit();
 		//getRogersHomePage().clkContinueIgniteMultipleAddressLookupSubmit();
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-		getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
+		getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
 		reporter.reportLogWithScreenshot("Launched the port-in popup");
 		getRogersIgniteTVBuyPage().verify4KTV();
 		reporter.reportLogWithScreenshot("Launched the cart summary page");

@@ -2,6 +2,7 @@ package com.rogers.test.tests.choneview;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
+import com.rogers.test.helpers.RogersEnums;
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
@@ -15,15 +16,11 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 
 public class OneViewCH_TC_020_TV_ChannelSwapTest extends BaseTestClass {
-    @Test @Parameters("strBrowser")
-    public void checkChannelSwapTest(String strBrowser) {
-		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.chOneViewConfig.getOneViewenv());
-/*		reporter.reportLogWithScreenshot("OneView Interface has Launched");
-		getEnvironmentSelectionPage().enterDealerCode(TestDataHandler.igniteTVParentalcontrols.getDealercode());
-		reporter.reportLogWithScreenshot("Enter the dealer code");
-		getEnvironmentSelectionPage().submitDealerCode();	*/
+	@Test (groups = {"RegressionCHOV","SanityCHOV"})
+    public void checkChannelSwapTest() {
+		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("Launched the account dashboard page");
-		getAccountOverViewPage().selectTVBadage(strBrowser);
+		getAccountOverViewPage().selectTVBadage();
 		reporter.reportLogWithScreenshot("Launched the TV dashboard page");
 		getTVDashboardPage().clickExchangeFlexChannels();
 		reporter.reportLogWithScreenshot("Exchange Flex Channel button clicked");	
@@ -47,7 +44,7 @@ public class OneViewCH_TC_020_TV_ChannelSwapTest extends BaseTestClass {
 		reporter.reportLogWithScreenshot("Second Channel on the add list clicked");
 		getTVDashboardPage().clickSelectChannelAdd();
 		reporter.reportLogWithScreenshot("Select button clicked");
-		getTVDashboardPage().clickConfirmExchange(strBrowser);
+		getTVDashboardPage().clickConfirmExchange(System.getProperty("Browser"));
 		reporter.reportLogWithScreenshot("Confirm Exchange button clicked");
 		getTVDashboardPage().clickOK();
 		reporter.reportLogWithScreenshot("Clicked Ok on the exhange channel pop up");
@@ -56,13 +53,13 @@ public class OneViewCH_TC_020_TV_ChannelSwapTest extends BaseTestClass {
 		getTVDashboardPage().clickSuccessOk() ;
 		
     }
-    
-	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
-	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, String strGroupName, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startOVSession(System.getProperty("QaUrl"),strBrowser, strLanguage,strGroupName, "",TestDataHandler.solarisAccount.accountDetails.getBan(),TestDataHandler.chOneViewConfig.getUsrID(), TestDataHandler.chOneViewConfig.getLoginID(),  method);
-  	}
 
+	@BeforeMethod (alwaysRun=true)
+	@Parameters({"strBrowser", "strLanguage"})
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage,RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.solarisTV.getContactID(), TestDataHandler.solarisTV.accountDetails.getBan(), System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+    }
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
