@@ -129,9 +129,9 @@ public class RogersBFA_OV_TC08_AALShareTerm_BopisShipping_Test extends BaseTestC
 		startOVSession(System.getProperty("QaOVUrl"),strBrowser, strLanguage,RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim(), TestDataHandler.buyFlowsOVtestCase08.getContactID(),TestDataHandler.buyFlowsOVtestCase08.getBanNo(),TestDataHandler.bfaOneViewConfig.getUsrID(), TestDataHandler.bfaOneViewConfig.getLoginID(),  method);
 	}
 
-/*	@AfterMethod(alwaysRun = true)
+	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
 		closeSession();
-	}*/
+	}
 
 }
