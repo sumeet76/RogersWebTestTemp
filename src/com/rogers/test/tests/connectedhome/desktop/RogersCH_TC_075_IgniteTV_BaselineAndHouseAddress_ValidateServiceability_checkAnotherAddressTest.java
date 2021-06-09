@@ -39,12 +39,10 @@ public class RogersCH_TC_075_IgniteTV_BaselineAndHouseAddress_ValidateServiceabi
     public void checkSignedInIgnite2PBundlesBuyInternetSameAddressBasementHouseTest() {
         reporter.reportLogWithScreenshot("Launched the Easy Login Page");
         getRogersHomePage().clkTVBundle();
-
         reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
         getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        //getRogersHomePage().clkAddressCheck();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1= TestDataHandler.tc75_IgniteTVBaseLineHomeAddress.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc75_IgniteTVBaseLineHomeAddress.getAccountDetails().getAddress().get("line2");

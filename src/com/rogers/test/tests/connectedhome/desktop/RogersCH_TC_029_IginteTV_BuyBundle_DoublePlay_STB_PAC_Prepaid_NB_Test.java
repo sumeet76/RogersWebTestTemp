@@ -54,9 +54,9 @@ public class RogersCH_TC_029_IginteTV_BuyBundle_DoublePlay_STB_PAC_Prepaid_NB_Te
 	public void checkDoublePalyTVOffer() {
         reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	getRogersHomePage().clkTVBundle();
-    	
         reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
        	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+        getRogersHomePage().clkTVBundlesForNB();
     	getRogersHomePage().clkServiceability();
     	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
     	//getRogersHomePage().clkAddressCheck();
@@ -156,6 +156,7 @@ public class RogersCH_TC_029_IginteTV_BuyBundle_DoublePlay_STB_PAC_Prepaid_NB_Te
 
         reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+        getRogersHomePage().clkTVBundlesForNB();
         getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
         //getRogersHomePage().clkAddressCheck();

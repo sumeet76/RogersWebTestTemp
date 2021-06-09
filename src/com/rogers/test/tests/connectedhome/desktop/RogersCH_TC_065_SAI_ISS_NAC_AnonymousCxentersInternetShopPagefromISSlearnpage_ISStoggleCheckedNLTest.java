@@ -38,6 +38,7 @@ public class RogersCH_TC_065_SAI_ISS_NAC_AnonymousCxentersInternetShopPagefromIS
     public void checkIssNacLearnPageToggleNLTest() {
         getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
+        getRogersInternetPackageSelectionPage().clkISSforNL();
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
         String  strAddressLine1=TestDataHandler.tc65_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc65_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line2");
@@ -129,7 +130,7 @@ public class RogersCH_TC_065_SAI_ISS_NAC_AnonymousCxentersInternetShopPagefromIS
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
 

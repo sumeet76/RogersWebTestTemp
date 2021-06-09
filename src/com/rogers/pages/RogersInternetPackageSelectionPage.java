@@ -77,6 +77,15 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-warning-circle ds-color-error']")
 	WebElement imgInvalidPromoCodeError;
 
+	@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='Newfoundland and Labrador']")
+	WebElement lnkProvinceNL;
+
+	@FindBy(xpath = "//ul[@class='dds_o-navLinkList']//span[contains(text(),'ON')]")
+	WebElement lnkOptedON;
+
+	@FindBy(xpath = "//a[@aria-label='Ontario']//span[@class='m-navLink__chevron rds-icon-expand']")
+	WebElement lnkProvince;
+
 	/**
 	 * selects the Internet package if it visible and ready if not click on the next arrow to get the desired package
 	 * @param strPackageNameEn Internet package to be selected 
@@ -166,7 +175,17 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(btnSmartStream, 90);
 		getReusableActionsInstance().executeJavaScriptClick(btnSmartStream);
 		getReusableActionsInstance().staticWait(8000);
-		getReusableActionsInstance().staticWait(8000);
+	}
+
+	/**
+	 * Click the SignIn button from the top tile bar
+	 * @author chinnarao.vattam
+	 */
+	public void clkISSforNL() {
+		getReusableActionsInstance().isElementVisible(lnkOptedON,20);
+		getReusableActionsInstance().getWhenReady(lnkProvince, 20).click();
+		getReusableActionsInstance().getWhenReady(lnkProvinceNL, 30);
+		getReusableActionsInstance().executeJavaScriptClick(lnkProvinceNL);
 	}
 
 	public void clkSmartStream() {
