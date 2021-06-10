@@ -154,9 +154,9 @@ public class RogersBFA_OV_TC14_NACOutboundNoTermStandardShipping_Test extends Ba
 	}
 
 
-/*	@AfterMethod(alwaysRun = true)
+	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
 		closeSession();
-	}*/
+	}
 
 }
