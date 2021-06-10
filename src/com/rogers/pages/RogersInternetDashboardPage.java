@@ -126,7 +126,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@id='va-chat-canned-responses4']")
 	WebElement optsInternetIssues;
 
-	
+
 	/**
 	 * Verify the Internet usage on the Internet dash board page
 	 * @return true if the Internet usage displayed; else false
@@ -223,6 +223,16 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public void clkWifiPassword() {
 		getReusableActionsInstance().clickIfAvailable(btnWifiPassword, 60);
+	}
+
+	/**
+	 * Verify the Internet Usage Alerts link on Solaris Internet dash board
+	 * @return true if the Internet Usage Alerts link displayed; else false
+	 * @author Chinnarao.Vattam
+	 */
+	public boolean verifyChangeWifiPassword() {
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		return getReusableActionsInstance().isElementVisible(btnWifiPassword,30);
 	}
 
 	/**

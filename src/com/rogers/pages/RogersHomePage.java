@@ -79,20 +79,19 @@ public class RogersHomePage extends BasePageClass {
 	
 	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/home-monitoring']")
 	WebElement lnkHomeMonitering;
-    //li[@class='o-headerNavDropdown__item']/a[@class='m-navLink -dropdown' and contains(text(),' Home Monitoring')]
-
 
 	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/bundles']")
 	WebElement lnkBundle;
 
-
 	@FindBy(xpath = "//a[@href='/consumer/easyloginriverpage']")
 	WebElement lnkMyRogersLink;
-	
+
+	@FindBy(xpath = "//a[@title='MyRogers']//span[@class='m-navLink__caption']")
+	WebElement lnkMyRogersfromAccount;
+
 	@FindBy(xpath = "//a[@href='/web/totes/#/easylogin/main']")
 	WebElement btnRegisterNowFromMyRogers;
-	
-	//@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/wireless']")
+
 	@FindAll({
 		@FindBy(xpath = "(//li[@class='o-headerNavDropdown__item'])[1]//a"),
 		@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/wireless']")
@@ -109,22 +108,17 @@ public class RogersHomePage extends BasePageClass {
 			@FindBy(xpath = "//a[contains(@title,'See available bundles') or  contains(@title,'Voir les offres groupées')]"),
 			@FindBy(xpath = "//a[contains(@title,'See bundles') or  contains(@title,'Voir les offres groupées')]")})
 	WebElement btnServiceability;
-	//a[contains(@title,'See available Ignite Bundles') or  contains(@title,'Voyez les offres groupées Élan accessibles')]
-	//a[@title='Check if Ignite Bundles are available in your area' or @title='Vérifiez si les offres groupées Élan sont disponibles dans votre secteur.']
-	
+
 	@FindBy(xpath ="//div[@class='ng-star-inserted overlay']")
 	WebElement overlayHomePage;
 		
 	@FindBy(xpath = "//a[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large ng-star-inserted']")
 	WebElement btnWelcomeback;
-	//button[@class='ds-button ds-focus ds-active -primary -large ng-star-inserted']
-	//a[@title='Check if Ignite Bundles are available in your area']
 
 	@FindAll({
 	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large']"),
 	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -secondary -large']")})
 	WebElement btnAddress;	
-	//button[@class='a-btnSecondary']
 
 	@FindBy(xpath = "//button[@class='a-btnPrimary']")
 	WebElement btnAddressValidation;
@@ -155,10 +149,7 @@ public class RogersHomePage extends BasePageClass {
 
 	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c15-0 ds-formField__typeds-input')]")
 	WebElement txaIgniteLookup;
-	
-	@FindBy(xpath = "//a[@title='MyRogers']//span[@class='m-navLink__caption']")
-	WebElement lnkMyRogers;
-	
+
 	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large']")
 	WebElement btnUseThisAddress;
 
@@ -244,7 +235,6 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet at your address']//span[@class='ds-icon rds-icon-right']"),
 			@FindBy(xpath = "//a[@title='Check availability of Ignite Internet at your address']/span")})
 	WebElement lnkInternetAvailability;
-	//			@FindBy(xpath = "//a[@title='Check availability of Ignite Internet']/span"),
 
 	@FindAll({
 	@FindBy(xpath = "//h2[@class='-center text-title-1']"),
@@ -277,6 +267,9 @@ public class RogersHomePage extends BasePageClass {
 
 	@FindBy(xpath = "//li[@class='mb-0 ng-star-inserted']//a[contains(@title,'Check availability of Ignite') or contains(@title,'d’Élan Internet à votre adresse')]")
 	WebElement lnkIgniteInternet;
+
+	@FindBy(xpath = "//a[@class='c-navbar-link' and @translate='nav.overview.header']")
+	WebElement btnAccOverview;
 
 	/**
 	 * To verify the Home page
@@ -311,7 +304,15 @@ public class RogersHomePage extends BasePageClass {
 	public void clkAddNow() {	
 		getReusableActionsInstance().clickWhenReady(btnAddNow, 90);
 	}
-	
+
+	/**
+	 * click Add a line to my account add now
+	 * @author chinnarao.vattam
+	 */
+	public void clkAccOverview() {
+		getReusableActionsInstance().clickWhenReady(btnAccOverview, 30);
+	}
+
 	/**
 	 * Click on myAccount button on the home page
 	 * @author chinnarao.vattam
@@ -532,9 +533,19 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkMyRogers() {
-		getReusableActionsInstance().getWhenReady(lnkMyRogers, 30).click();
+		getReusableActionsInstance().getWhenReady(lnkMyRogersfromAccount, 30).click();
 	}
-	
+
+
+	/**
+	 * Click the MyRogers link from Home page
+	 * @author chinnarao.vattam
+	 */
+	public void clkMyRogersLink() {
+		getReusableActionsInstance().getWhenReady(lnkMyRogersLink).click();
+
+	}
+
 	/**
 	 * To Click No thanks on welcome back page
 	 * @author chinnarao.vattam 
@@ -609,16 +620,7 @@ public class RogersHomePage extends BasePageClass {
 	public void clkBundle() {		
 		getReusableActionsInstance().getWhenVisible(lnkBundle, 30).click();
 	}
-	
-	/**
-	 * Click the MyRogers link from Home page
-	 * @author chinnarao.vattam 
-	 */
-	public void clkMyRogersLink() {
-		getReusableActionsInstance().getWhenReady(lnkMyRogersLink).click();
-		
-	}
-	
+
 	/**
 	 * Click the Register Now button from Home page
 	 * @author chinnarao.vattam 
