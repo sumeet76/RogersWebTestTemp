@@ -48,7 +48,10 @@ public class AccountOverViewPage  extends BasePageClass {
 	@FindBy(xpath = "//div[@class='oneview-dialog']//button")
 	WebElement btnOkOneViewDialogue;
 
-	@FindBy(xpath = "//input[@class='hup-input']")
+	@FindAll({
+			@FindBy(xpath = "//input[@class='hup-input']"),
+			@FindBy(xpath = "//input[@name='dealerCode']")
+	})
 	WebElement delearCodeOneViewDialogue;
 
 	@FindBy(xpath = "//button[@class='hup-button red']")
@@ -73,7 +76,9 @@ public class AccountOverViewPage  extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void enterDealerCodeDialogue() {
-		getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 50).sendKeys("0MAAA");
+		if (getReusableActionsInstance().isElementVisible(delearCodeOneViewDialogue)) {
+			getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 50).sendKeys("0MAAA");
+		}
 	}
 
 	/**

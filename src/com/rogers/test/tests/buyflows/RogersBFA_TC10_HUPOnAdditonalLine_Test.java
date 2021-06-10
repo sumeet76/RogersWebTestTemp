@@ -106,9 +106,9 @@ public class RogersBFA_TC10_HUPOnAdditonalLine_Test extends BaseTestClass {
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows , method);
     }
 
-    @AfterMethod(alwaysRun = true)
+    /*@AfterMethod(alwaysRun = true)
     public void afterTest() {
         closeSession();
-    }
+    }*/
     
 }
