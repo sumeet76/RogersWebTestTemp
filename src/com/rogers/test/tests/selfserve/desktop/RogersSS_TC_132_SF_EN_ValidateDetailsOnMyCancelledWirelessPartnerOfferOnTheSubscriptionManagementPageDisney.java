@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class RogersSS_TC_131_PSEF_DP_Rogers_CR_EN_SubscribedSection_NSEInfinite50 extends BaseTestClass {
+public class RogersSS_TC_132_SF_EN_ValidateDetailsOnMyCancelledWirelessPartnerOfferOnTheSubscriptionManagementPageDisney extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
@@ -45,45 +45,44 @@ public class RogersSS_TC_131_PSEF_DP_Rogers_CR_EN_SubscribedSection_NSEInfinite5
 
         getCommonBusinessFlows().scrollToMiddleOfWebPage();
         reporter.reportLogWithScreenshot("CTNS or Subscriptions View");
-        getRogersPSEFPage().clickDPlusSignUporManageButton();
+        getRogersAccountOverviewPage().clickDPlusSignUporManageButton();
         reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCurrentlySubscribedPaneIsDisplayed(),
                 "The current subscription is displayed",
                 "The current subscription is NOT displayed");
         reporter.reportLogWithScreenshot("Current subscription");
         getCommonBusinessFlows().scrollToMiddleOfWebPage();
-        reporter.hardAssert(getRogersPSEFPage().verifyIfDPAvaialbleForSubscription(),
-                "The current subscription is displayed",
-                "The current subscription is NOT displayed");
+        reporter.hardAssert(getRogersPSEFPage().verifyIfDPAvaialbleForCancellation(),
+                "The Sunscription is available for  Cancellation",
+                "The Sunscription is available for  Cancellation is NOT available for cancellation");
 
-        reporter.reportLogWithScreenshot("Current subscription for redeem");
-        String strSelectedCTNForRedeem = getRogersPSEFPage().checkFirstDefaultCTNForRedeem();
-        getRogersPSEFPage().clkSignUp();
-        reporter.hardAssert(getRogersPSEFPage().verifyIfRedeemSubscriptionDetailsIsDisplayedCorrectly(strSelectedCTNForRedeem.substring(strSelectedCTNForRedeem.length()-4)),
+        reporter.reportLogWithScreenshot("Current subscription for cancel");
+        String strSelectedCTNForCancel = getRogersPSEFPage().checkFirstDefaultCTNForCancel();
+        reporter.reportLogWithScreenshot("CTN selected for cancellation");
+
+        reporter.reportLogWithScreenshot("Cancel subscription details is displayed");
+        reporter.hardAssert(getRogersPSEFPage().verifyIfHeaderCancelSubscriptionIsDisplayed(),
+                "The header cancel subscription is displayed",
+                "The header cancel subscription is NOT displayed");
+        reporter.hardAssert(getRogersPSEFPage().verifyIfCancelSubscriptionDetailsIsDisplayedCorrectly(strSelectedCTNForCancel),
                 "The cancel subscription details matched",
                 "The cancel subscription details did not matched");
-        getCommonBusinessFlows().scrollToMiddleOfWebPage();
-        reporter.reportLogWithScreenshot("T and C page");
-        reporter.hardAssert(getRogersPSEFPage().verifyIfTnCForSubscriptionIsDisplayed(),
-                "The Subscription TnC is displayed",
-                "The Subscription TnC is NOT displayed");
+        getRogersPSEFPage().selectReasonForCancelSubscription("immediate");
+        reporter.reportLogWithScreenshot("reason for cancel subscription is selected");
+        getRogersPSEFPage().clkConfirmCancelSubscription();
+        reporter.reportLogWithScreenshot("Confirm button clicked");
+        reporter.hardAssert(getRogersPSEFPage().verifyIfCancelSuccessfulOverLayDisplayed(),
+                "The cancel subscription success overlay is displayed",
+                "The cancel subscription success overlay not displayed");
+        reporter.hardAssert(getRogersPSEFPage().verifyIfCancelSuccessfulOverLayMentionsEffectiveImmediate(),
+                "Verify is success message shows immediate effecyive",
+                "The cancel subscription success overlay not displayed");
 
-        getRogersPSEFPage().checkTnC();
-        reporter.reportLogWithScreenshot("T and C check box is selected");
-
-        getRogersPSEFPage().clkSubscribeToSubs();
-        reporter.reportLogWithScreenshot("Subscription button clicked");
-        reporter.hardAssert(getRogersPSEFPage().verifyIfSubscriptionSuccessfulOverLayDisplayed(),
-                "The subscription success overlay is displayed",
-                "The subscription success overlay not displayed");
-        reporter.reportLogWithScreenshot("Subscription success overlay displayed");
-        getRogersPSEFPage().clkOKButtonOnSubscriptionSuccessOverlay();
+        reporter.reportLogWithScreenshot("cancel success overlay displayed");
+        getRogersPSEFPage().clkOKButtonOnCancelSuccessOverlay();
         reporter.reportLogWithScreenshot("Clicked on OKay button");
-        getCommonBusinessFlows().scrollToMiddleOfWebPage();
-        reporter.hardAssert(getRogersPSEFPage().verifyIfSMPIsDisplayedWithSubscribedCTN(strSelectedCTNForRedeem),
-                "The Subscription management page SMP shows the subscribed CTNs in Currently Subscribed Section",
-                "The Subscription management page does NOT shows the SMP shows the subscribed CTNs in Currently Subscribed Section");
-        reporter.reportLogWithScreenshot("Subscription management page shows the subscribed CTNs in Currently Subscribed Section");
-
+        reporter.hardAssert(getRogersPSEFPage().verifyIfEffectiveCancelDateForSubscriptionISImmediate(System.getProperty("test_language"),strSelectedCTNForCancel),
+                "The Subscription management page shows the cancelled CTN subscription ended immediately",
+                "The Subscription management page does NOT shows the cancelled CTN subscription");
 
 
     }

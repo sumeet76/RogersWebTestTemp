@@ -71,10 +71,6 @@ public class RogersSS_TC_118_119_PACMAN_VerifyImmediateAndDefferedCancellationPC
         String strImmediateCancelCTN=TestDataHandler.tc118.getAccountDetails().getimmediateCancelCTN();
         String strDefferredCTN=TestDataHandler.tc118.getAccountDetails().getdeferredCancelCTN();
 
-        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
-            reporter.reportLogWithScreenshot("Select an account.");
-            getRogersAccountOverviewPage().selectAccount("946481058");
-        }
         reporter.reportLogWithScreenshot("Account overview page.");
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Passed", "Login Failed");
 

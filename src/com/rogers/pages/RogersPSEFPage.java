@@ -18,23 +18,34 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.logging.FileHandler;
 import java.util.stream.Collectors;
 
 public class RogersPSEFPage extends BasePageClass {
 
 
 	private By btnUsageAndServicesDropDown;
-	private By lblSMPpromotionEnded;
 	private By lblSMPpromotionEnds;
+
+
 
 	public RogersPSEFPage(WebDriver driver) {
 		super(driver);
 	}
 
+	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[contains(text(),'Promotion ended') or contains(text(),'ended') or contains(text(),'La promotion prend fin le')]")
+	WebElement lblSMPpromotionEnded;
+
 	@FindBy(xpath = "//h3/following-sibling::rss-subscribed-ctn-item//span[@class='vas-subscriber-name']")
 	List<WebElement> lblPendingTrialCTNName;
 
-	@FindBy(xpath = "//span[text()='The following subscriptions are still waiting to be activated on Disney+' or text()='Les abonnements suivants sont en attente d’activation sur Disney+']/ancestor::h3/parent::div//span[@class='vas-subscriber-number']")
+	@FindBy(xpath = "//h3/following-sibling::rss-subscribed-ctn-item//button[@title='Activate your Disney+ subscription now' or @title='Activer l’abonnement Disney+ maintenant']")
+	List<WebElement> btnActivatePendingTrialCTN;
+
+	@FindBy(xpath = "//h3/following-sibling::rss-subscribed-ctn-item//a[contains(@aria-label,'Cancel the Disney+ subscription for ')]")
+	List<WebElement> btnCancelPendingTrialCTN;
+
+	@FindBy(xpath = "//h3/following-sibling::rss-subscribed-ctn-item//span[@class='vas-subscriber-number']")
 	List<WebElement> lblPendingTrialCTNNumber;
 
 	@FindBy(xpath = "//h3/preceding-sibling::rss-subscribed-ctn-item//span[@class='vas-subscriber-name']")
@@ -55,8 +66,6 @@ public class RogersPSEFPage extends BasePageClass {
 	@FindBy(xpath = "//ds-checkbox")
 	WebElement chkTnC;
 
-
-
 	@FindAll({
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-tv']"),
 	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-tv']")})
@@ -66,17 +75,76 @@ public class RogersPSEFPage extends BasePageClass {
         @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'Internet')]"),
         @FindBy(xpath = "//span[contains(@class,'rui-icon-internet icon')]/ancestor::div[@role='button']")})
 	WebElement btnLegacyInternetBadge;
-	
-		//Subscribe ctn
+
+	@FindBy(xpath = "//ds-checkbox")
+	List<WebElement> chkListCTnForDplusRedeem;
+
+	@FindBy(xpath = "//a[@title='Sign up for Disney+'or @title='Abonnez-vous à Disney+']")
+	WebElement btnSignUp;
+
+	@FindBy(xpath = "//rss-subscriber-info")
+	List<WebElement> lblRogersRedeemForSubs;
+
+	@FindBy(xpath = "//button[@title='Continue and start this Disney+ subscription' or @title='Continuer et commencer l’abonnement Disney+']")
+	WebElement btnSubscribeToSubsscription;
+
+	@FindBy(xpath = "//*[text()='OK' or text()='Continue']")
+	WebElement btnOK;
+
+	@FindBy(xpath = "//span[contains(text(),'Promotion started') or contains(text(),'Paid subscription started') or contains(text(),' L’abonnement payant a commencé le') or contains(text(),' La promotion a commencé')]")
+	WebElement lblSMPpromotionStarted;
+
+	@FindBy(xpath = "//span[@class='vas-subscriber-number']")
+	WebElement paneSMPSubsCTN;
+
+	@FindBy(xpath = "//a[contains(@title,'Cancel the Apple Music subscription for') or contains(@title,'Annuler l’abonnement')]")
+	WebElement btnCancelSubscription;
+
+	@FindBy(xpath = "//ancestor::rss-subscribed-ctn-item//button[@title='Activate your Disney+ subscription now' or @title='Activer l’abonnement Disney+ maintenant']")
+	WebElement btnActivateTrail;
+
+	@FindBy(xpath = "//rss-value-prop-wrapper[@aria-label='Manage your Disney+ subscription' or @aria-label='Gérer l’abonnement Disney+']//a//span[contains(@class,'ds-button__copy') and (contains(text(),'Manage') or contains(text(),'Gérer'))]")
+	WebElement btnDPSubscriptionManage;
+
+	@FindBy(xpath = "//h1[text()='Cancel Disney+ Subscription' or contains(text(),'Annuler l’abonnement') or contains(text(),'Cancel Apple') or contains(text(),'abonnement à Disney+')]")
+	WebElement headerCancelSubscription;
+
+	@FindBy(xpath = "//rss-subscriber-info")
+	WebElement lblRogersCancellationForSubs;
+
+	@FindBy(xpath = "//rss-cancel//ds-form-field/div/div[contains(@class,'select')]")
+	WebElement selectReasonForCancel;
+
+	@FindBy(xpath = "//option[contains(text(),'I’m already paying for a Disney+ subscription') or contains(text(),' Je paie déjà un abonnement à Disney+') or @value='0: Object']")
+	WebElement optReasonForImmediateCancel;
+
+	@FindBy(xpath = "//option[contains(text(),\"I don't need Disney+ anymore\") or contains(text(),\"Je n'ai plus besoin de Disney+\") or@value=\"1: Object\"]")
+	WebElement optReasonForDefferedCancel;
+
+	@FindBy(xpath = "//*[contains(text(),'Continue') or contains(text(),'Continuer') or contains(text(),'Confirmer') or contains(text(),'Continuer')]")
+	WebElement btnConfirm;
+
+
+	@FindBy(xpath = "//p[text()='Subscription cancelled' or contains(text(),'Abonnement annul')]")
+	WebElement headerCancelSuccess;
+
+
+	@FindBy(xpath = "//span[contains(text(),' This Disney+ subscription has been cancelled immediately and you will not be charged.')]")
+	WebElement lblImmediateCancelSuccess;
+	//Subscribe ctn
 	//span[text()=' 416 817-3435 ']/ancestor::rss-subscribed-ctn-item//button[@title='Activate your Disney+ subscription now']
     //span[text()=' 416 817-3435 ']/ancestor::rss-subscribed-ctn-item//a[contains(@aria-label,'Cancel the Disney+ subscription for ')]
-
-
 	//subscribe
-//span[@class="vas-subscriber-number" and contains(text(),'416 817-3428')]/ancestor::rss-subscriber-info/parent::div/preceding-sibling::ds-checkbox
+    //span[@class="vas-subscriber-number" and contains(text(),'416 817-3428')]/ancestor::rss-subscriber-info/parent::div/preceding-sibling::ds-checkbox
 
+	@FindBy(xpath = "//h2[text()='Currently subscribed' or text()='Abonnement en cours']")
+	WebElement headerCurrentlySubscribed;
 
+	@FindBy(xpath = "//a[text()='Overview' or text()='Survol']")
+	WebElement lnkAccountOverviewPage;
 
+	@FindBy(xpath = "//img[@class='vas-tab-logo' and @alt='contentful.disney-plus.image-alt-text']")
+	WebElement imgDisneyPlus;
 	/**
 	 * clicks the drop and and checks to see if the account show in Menu UsageAndService drop down on account overview page.
 	 * @param strLast4DigAcctNum string account number
@@ -90,8 +158,8 @@ public class RogersPSEFPage extends BasePageClass {
 				10);
 	}
 
-	public boolean verifyIfEffectiveCancelDateForSubscriptionISImmediate(String test_language) {
-		String cancelledEndDate= getReusableActionsInstance().getWhenReady(lblSMPpromotionEnded).getText();
+	public boolean verifyIfEffectiveCancelDateForSubscriptionISImmediate(String test_language,String strCancelledCTN) {
+		String cancelledEndDate= getReusableActionsInstance().getWhenReady(By.xpath("//span[@class=\"vas-subscriber-number\" and contains(text(),'"+strCancelledCTN.substring(strCancelledCTN.length()-4)+"')]/ancestor::rss-subscriber-info/following-sibling::span//span[contains(text(),'Promotion ended') or contains(text(),'ended') or contains(text(),'La promotion prend fin le')]")).getText();
 		cancelledEndDate = cancelledEndDate.split("ended")[1].trim();
 		DateHelpersFunctions.isValidDAte(cancelledEndDate);
 		Locale locale=Locale.CANADA;;
@@ -218,4 +286,224 @@ public class RogersPSEFPage extends BasePageClass {
 		}
 		return  sorted;
 	}
+
+    public boolean verifyIfDPAvaialbleForSubscription() {
+		return chkListCTnForDplusRedeem.size()>0;
+    }
+
+	public boolean verifyIfDPAvaialbleForCancellation() {
+		return lblPendingTrialCTNNumber.size()>0;
+	}
+
+	/**
+	 * Verifies if the currently subscribed pane is displayed
+	 * @return true if available else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyIfCurrentlySubscribedPaneIsDisplayed() {
+		return getReusableActionsInstance().isElementVisible(headerCurrentlySubscribed)
+				;
+	}
+
+
+	/**
+	 * Verifies if the currently subscribed pane is displayed
+	 * @return true if available else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyIfDisneyPlusSMPViewPageIsDisplayed() {
+		return getReusableActionsInstance().isElementVisible(imgDisneyPlus)
+				;
+	}
+
+	public String checkFirstDefaultCTNForRedeem() {
+		String ctnSelected = chkListCTnForDplusRedeem.get(0).getAttribute("title").trim();
+		getReusableActionsInstance().getWhenReady(chkListCTnForDplusRedeem.get(0)).click();
+		return CurrencyHelpers.extractNumberFromString(ctnSelected);
+	}
+
+	public String checkFirstDefaultCTNForCancel() {
+		String ctnSelected = lblPendingTrialCTNNumber.get(0).getText().trim();
+		ctnSelected = CurrencyHelpers.extractNumberFromString(ctnSelected);
+		getReusableActionsInstance().getWhenReady(By.xpath("//span[contains(text(),'"+ctnSelected.substring(ctnSelected.length()-4)+"')]/ancestor::rss-subscribed-ctn-item//a[contains(@aria-label,'Cancel the Disney+ subscription for ') or contains(@aria-label,'Annuler l’abonnement à Disney+ de')]")).click();
+		return ctnSelected;
+	}
+
+	public void clkSignUp() {
+
+		getReusableActionsInstance().getWhenReady(btnSignUp).click();
+	}
+
+	/**
+	 * Verifies if redeem details matches with CTN
+	 * @param strSubscriberNumber CTN for which the subscription is redeem
+	 * @return true if details match else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyIfRedeemSubscriptionDetailsIsDisplayedCorrectly(String strSubscriberNumber) {
+		return getReusableActionsInstance().getWhenReady(lblRogersRedeemForSubs.get(0)).getText().trim().replaceAll(" ","").replaceAll("-","").contains(strSubscriberNumber);
+	}
+
+	/**
+	 * Verifies if TnC is displayed
+	 * @return true if displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyIfTnCForSubscriptionIsDisplayed() {
+		return getReusableActionsInstance().isElementVisible(headerTnC);
+	}
+
+	/**
+	 * selects the TnC check box
+	 * @author Mirza.Kamran
+	 */
+	public void checkTnC() {
+		getReusableActionsInstance().getWhenReady(chkTnC).click();
+
+	}
+
+	/**
+	 * Clicks subscribe button
+	 * @author Mirza.Kamran
+	 */
+	public void clkSubscribeToSubs() {
+		getReusableActionsInstance().getWhenReady(btnSubscribeToSubsscription).click();
+
+	}
+
+	/**
+	 * verifies if the Subscription success overlay is displayed
+	 * @return true if displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyIfSubscriptionSuccessfulOverLayDisplayed() {
+		return getReusableActionsInstance().isElementVisible(By.xpath("//*[contains(text(),'Subscription successful') or contains(text(),'Abonnement réussi')]"));
+
+	}
+
+	/**
+	 * Selects okay on Subscription success overlay
+	 * @author Mirza.Kamran
+	 */
+	public void clkOKButtonOnSubscriptionSuccessOverlay() {
+		getReusableActionsInstance().staticWait(15000);
+		getReusableActionsInstance().getWhenReady(btnOK).click();
+		getReusableActionsInstance().staticWait(3000);
+	}
+
+	/**
+	 * Verifies if the subscribed details match
+	 * @param strSubscriberNumber
+	 * @return true if the details match else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyIfSMPIsDisplayedWithSubscribedCTN(String strSubscriberNumber) {
+		return getReusableActionsInstance().isElementVisible(By.xpath("//h3/following-sibling::rss-subscribed-ctn-item//span[@class='vas-subscriber-number' and contains(text(),'"+strSubscriberNumber.substring(strSubscriberNumber.length()-4)+"')]"));
+
+	}
+
+	/**
+	 * Verifies if the button cancel subscription is displayed
+	 * @return true if available else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyIfHeaderCancelSubscriptionIsDisplayed() {
+		return getReusableActionsInstance().isElementVisible(headerCancelSubscription);
+	}
+
+	/**
+	 * Verifies if the cancel subscription details are correctly displayed
+	 * @return true if available else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyIfCancelSubscriptionDetailsIsDisplayedCorrectly(String strSubscriberNumber) {
+		return getReusableActionsInstance().getWhenReady(lblRogersCancellationForSubs).getText().trim().replaceAll(" ","").replaceAll("-","").contains(strSubscriberNumber);
+	}
+
+	/**
+	 * Selects the cancellation reason
+	 * @author Mirza.Kamran
+	 */
+	public void selectReasonForCancelSubscription(String strReason) {
+		getReusableActionsInstance().getWhenReady(selectReasonForCancel).click();
+		switch (strReason.toLowerCase())
+		{
+
+			case "immediate":
+			{
+				getReusableActionsInstance().waitForElementTobeClickable(optReasonForImmediateCancel, 5);
+				getReusableActionsInstance().getWhenReady(optReasonForImmediateCancel).click();
+				break;
+			}
+			case "deferred":
+			{
+				getReusableActionsInstance().waitForElementTobeClickable(optReasonForDefferedCancel, 5);
+				getReusableActionsInstance().getWhenReady(optReasonForDefferedCancel).click();
+				break;
+			}
+		}
+	}
+
+
+	/**
+	 * Selects confirm cancel subscription
+	 * @author Mirza.Kamran
+	 */
+	public void clkConfirmCancelSubscription() {
+		getReusableActionsInstance().getWhenReady(btnConfirm).click();
+	}
+
+	/**
+	 * verifies if the cancel success overlay is displayed
+	 * @return true if displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyIfCancelSuccessfulOverLayDisplayed() {
+		return getReusableActionsInstance().isElementVisible(headerCancelSuccess);
+	}
+
+	/**
+	 * verifies if the cancel success overlay is displayed
+	 * @return true if displayed else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyIfCancelSuccessfulOverLayMentionsEffectiveImmediate() {
+		return getReusableActionsInstance().isElementVisible(lblImmediateCancelSuccess);
+	}
+
+	/**
+	 * Selects okay on cancel success overlay
+	 * @author Mirza.Kamran
+	 */
+	public void clkOKButtonOnCancelSuccessOverlay() {
+		getReusableActionsInstance().getWhenReady(btnOK).click();
+	}
+
+
+	public void clkAccountOverview() {
+		getReusableActionsInstance().getWhenReady(lnkAccountOverviewPage).click();
+	}
+
+
+	public boolean verifyIfDisneyPlusIsDisplayedOnAO() {
+	return	(getReusableActionsInstance().isElementVisible(btnSubscriptionSignUp)
+		|| getReusableActionsInstance().isElementVisible(btnDPSubscriptionManage));
+	}
+
+
+	/**
+	 * Verifies if the account has subscription available which can be redeem
+	 * @author Mirza.Kamran
+	 */
+	public void clickDPlusSignUporManageButton() {
+		if(getReusableActionsInstance().isElementVisible(btnSubscriptionSignUp))
+		{
+			getReusableActionsInstance().getWhenReady(btnSubscriptionSignUp).click();
+		}else if(getReusableActionsInstance().isElementVisible(btnDPSubscriptionManage))
+		{
+			getReusableActionsInstance().getWhenReady(btnDPSubscriptionManage).click();
+		}
+
+	}
+
 }

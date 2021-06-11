@@ -1667,7 +1667,20 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(btnDPSubscriptionManage);
 	}
 
+	/**
+	 * Verifies if the account has subscription available which can be redeem
+	 * @author Mirza.Kamran
+	 */
+	public void clickDPlusSignUporManageButton() {
+		if(getReusableActionsInstance().isElementVisible(btnSubscriptionSignUp))
+		{
+			getReusableActionsInstance().getWhenReady(btnSubscriptionSignUp).click();
+		}else if(getReusableActionsInstance().isElementVisible(btnDPSubscriptionManage))
+		{
+			getReusableActionsInstance().getWhenReady(btnDPSubscriptionManage).click();
+		}
 
+	}
 
 	/**
 	 * Clicks on Manage button
