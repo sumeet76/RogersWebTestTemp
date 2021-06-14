@@ -174,7 +174,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
 
     /**
-     * This method verifies if the selected device section is displayed
+     * This method verifies if the selected device section is displayed for selected device
      * @param deviceName String value of the device
      * @return a boolean true if selected device section is displayed else returns false
      * @author praveen.kumar7
@@ -183,6 +183,11 @@ public class RogersPlanConfigPage extends BasePageClass {
        return getReusableActionsInstance().isElementVisible(By.xpath("//div[contains(@class,'completed')]//p[contains(.,'" +deviceName+ "')]"),40);
     }
 
+    /**
+     * This method verifies if the selected device section is displayed for BYOD
+     * @return a boolean true if BYOD device section is displayed else returns false
+     * @author praveen.kumar7
+     */
     public boolean verifyByodSelectedDeviceSection() {
         return getReusableActionsInstance().isElementVisible(By.xpath("//div[contains(@class,'completed')]//p[contains(.,'Bring') or contains(.,'Apportez')]"));
     }

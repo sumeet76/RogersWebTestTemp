@@ -118,7 +118,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	@FindBy(xpath = "//th[contains(text(),' Risk level ')]//following-sibling::td")
 	WebElement riskLevel;
 
-	@FindBy(xpath = "//span[contains(text(),' Accept and Continue ')]")
+	@FindBy(xpath = "//span[contains(text(),'Accept') or contains(text(),'accepte')]")
 	WebElement acceptAndContinueOnCreditEvalModal;
 
 	@FindBy(xpath = "//ds-modal[contains(@data-test,'sharedNonShared')]/ancestor::ds-modal-container")
@@ -311,7 +311,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 */
 	public boolean validateCustomerType() {
 		checkCustomerType();
-		String customer = TestDataHandler.buyFlowsOVtestCase08.getCustomerRiskLevel();
+		String customer = TestDataHandler.buyFlowsOVtestCase18.getCustomerRiskLevel();
 		if (customer!=null && !customer.isEmpty() && customerType.matches(customer)) {
 			return true;
 		} else {
@@ -394,6 +394,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 		if (deviceName.equalsIgnoreCase("Bring Your Own Device")) {
 			getReusableActionsInstance().clickWhenVisible(btnBringYourOwnDeviceViewDetails, 15);
 		} else {
+			getReusableActionsInstance().scrollToElement(getReusableActionsInstance().getWhenReady(By.xpath(createXpathForCTAButton(deviceName))));
 			getReusableActionsInstance().clickWhenVisible(By.xpath(createXpathForCTAButton(deviceName)), 30);
 		}
 	}
@@ -452,6 +453,18 @@ public class RogersChoosePhonePage extends BasePageClass {
 	public void selectDeviceColor(String deviceColor){
 		String xPathOfSkuToBeSelected = createXpathWithDeviceColor(deviceColor);
 		getReusableActionsInstance().clickWhenVisible(By.xpath(xPathOfSkuToBeSelected),30);
+	}
+
+	/**
+	 * This method will get the NOTERM cost of the device
+	 * @return full price of the device
+	 * @author praveen.kumar7
+	 */
+	public String getDeviceFullPriceFrench() {
+		String deviceFullPrice =  getReusableActionsInstance().getWhenReady(By.xpath("(//div[contains(@data-test,'device-config')]//p)[2]")).getText().trim();
+		String fullPrice[] =  deviceFullPrice.split("\\$");
+		String price = fullPrice[0].trim();
+		return price;
 	}
 
 	/**

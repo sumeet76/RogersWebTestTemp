@@ -42,6 +42,12 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-infinite-')]//label[1]")
     List<WebElement> noofDataOptions;
 
+    @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-')]//label[1]")
+    List<WebElement> noOfTTPlans;
+
+    @FindBy(xpath = "//div[contains(@data-test,'outbound')]")
+    List<WebElement> noOfOutboundPlans;
+
     @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-3-edit-step-selection-option-')]//label[1]")
     List<WebElement> noOfTalkOptions;
 
@@ -177,6 +183,12 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(),'CONTINUE')]")
     WebElement callerIDContinue;
 
+    @FindBy(xpath = "//span[contains(@class,'cartSummary')]")
+    WebElement cartSummaryLabel;
+
+    @FindBy(xpath = "//button[contains(@data-test,'outbound')]")
+    WebElement outboundAccordion;
+
     /**
      * Select Device Protection Header on Plan config page
      */
@@ -275,13 +287,43 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     }
 
     /**
-     * This method sets the value for dataOptionIndex
+     * This method sets the value for dataOptionIndex for regular plans
+     * @param dataOptionIndex String value of dataOptionIndex
+     * @return the String value of index
+     * @author praveen.kumar7
+     */
+    public String getupdatedDataOptionIndex(String dataOptionIndex) {
+        if ((dataOptionIndex == null) || (dataOptionIndex.isEmpty()) || (Integer.parseInt(dataOptionIndex) > noofDataOptions.size() - 1)) {
+                dataOptionIndex = "0";
+                return dataOptionIndex;
+        }
+        return dataOptionIndex;
+    }
+
+    /**
+     * This method sets the value for Plan Index for Talk and Text plans
+     * @param talkPlanIndex String value of talkPlanIndex
+     * @return the String value of index
+     * @author praveen.kumar7
+     */
+    public String getupdatedPlanIndexForTalkPlans(String talkPlanIndex) {
+        if ((talkPlanIndex == null) || (talkPlanIndex.isEmpty()) || (Integer.parseInt(talkPlanIndex) > noOfTTPlans.size() - 1)) {
+            talkPlanIndex = "0";
+            return talkPlanIndex;
+        }
+        return talkPlanIndex;
+    }
+
+
+
+    /**
+     * This method sets the value for dataOptionIndex for Outbound plans
      * @param dataOptionIndex String value of dataOptionIndex
      * @return returs the String value of index
      * @author praveen.kumar
      */
-    public String getupdatedDataOptionIndex(String dataOptionIndex) {
-        if ((dataOptionIndex == null) || (dataOptionIndex.isEmpty()) || (Integer.parseInt(dataOptionIndex) > noofDataOptions.size()-1)) {
+    public String getupdatedDataOptionIndexForOutbound(String dataOptionIndex) {
+        if ((dataOptionIndex == null) || (dataOptionIndex.isEmpty()) || (Integer.parseInt(dataOptionIndex) > noOfOutboundPlans.size() - 1)) {
             dataOptionIndex = "0";
             return dataOptionIndex;
         }
@@ -377,6 +419,21 @@ public class RogersOVPlanConfigPage extends BasePageClass {
         }
         else {
             getReusableActionsInstance().clickWhenVisible(By.xpath(xpathDcDoTo),40);
+            getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton,40);
+        }
+    }
+
+    /**
+     * This method selects the individual data option and click on continue
+     * @param dataOptionIndex String value of dataOptionIndex
+     * @author praveen.kumar
+     */
+    public void selectNonShareDataAndClkContinue(String dataOptionIndex) {
+        if(Integer.parseInt(dataOptionIndex) == 0) {
+            getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton, 30);
+        }
+        else {
+            getReusableActionsInstance().clickWhenVisible(By.xpath("//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-" + dataOptionIndex + "')]//label[1]"),40);
             getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton,40);
         }
     }
@@ -535,6 +592,14 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     public void clickPreCartDeviceCostContinueButton() {
         getReusableActionsInstance().clickWhenReady(preCartDeviceCostContinueButton);
         getReusableActionsInstance().clickIfAvailable(btnContinueOnModalToDoWithOldPhone, 30);
+    }
+
+    /**
+     * Click continue on Device Cost Section in NAC flow
+     * @author praveen.kumar
+     */
+    public void clkPreCartDeviceCostContinueButtonForNac() {
+        getReusableActionsInstance().clickWhenReady(preCartDeviceCostContinueButton,20);
     }
 
     /**
@@ -919,6 +984,24 @@ public class RogersOVPlanConfigPage extends BasePageClass {
             getReusableActionsInstance().executeJavaScriptClick(callerIDContinue);
             //getReusableActionsInstance().clickIfAvailable(callerIDContinue, 20);
         }
+    }
+
+    /**
+     * Verifies if Plan config page is loaded successfully
+     * @return True if plan config page is loaded, else false
+     * @author Praveen.Kumar7
+     */
+    public boolean verifyPlanConfigPageLoaded() {
+       return getReusableActionsInstance().isElementVisible(cartSummaryLabel,30);
+    }
+
+    /**
+     * This method expands on outbound plan accordion
+     * @author Praveen.Kumar7
+     */
+    public void clickOutBoundAccordion() {
+        getReusableActionsInstance().scrollToElement(outboundAccordion);
+        getReusableActionsInstance().clickWhenReady(outboundAccordion,30);
     }
 
 }

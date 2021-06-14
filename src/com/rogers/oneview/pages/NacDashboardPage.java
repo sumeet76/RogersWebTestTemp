@@ -28,13 +28,13 @@ public class NacDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//p[contains(text(),'Wireless') or contains(text(),'Sans-fil')]")
 	WebElement wirelessButton;
 
-	@FindBy(xpath = "//oneview-canada-post[contains(@placeholder,'Address') or contains(@placeholder,'Adresse')]")
+	@FindBy(xpath = "//input[contains(@class,'address-input')]")
 	WebElement shippingAddressField;
 
 	@FindBy(xpath = "//input[contains(@placeholder,'Address') or contains(@placeholder,'Adresse')]")
 	WebElement inputShippingAddressField;
 
-	@FindBy(xpath = "//ul[contains(@role,'listbox')]")
+	@FindBy(xpath = "//ul[contains(@class,'list')]//li[1]")
 	WebElement clkListBox;
 
 	@FindBy(xpath = "//oneview-text-field[contains(@class,'apt-tb')]")
@@ -49,10 +49,10 @@ public class NacDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//t[contains(text(),'Get a new phone') or contains(text(),'Obtenez un nouveau téléphone')]")
 	WebElement getANewPhoneButton;
 
-	@FindBy(xpath = "//t[contains(text(),'Bring your own phone') or contains(text(),'Apportez votre téléphone')]")
+	@FindBy(xpath = "//t[contains(text(),'Bring your own phone') or contains(text(),'Apportez votre téléphone')]/../..")
 	WebElement bringYourOwnPhoneButton;
 
-	@FindBy(xpath = "//t[contains(text(),'Continue') or contains(text(),'Continuer')]")
+	@FindBy(xpath = "//button[contains(@class,'confirm-btn')]")
 	WebElement continueButton;
 	
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-expand']/ancestor::button")
@@ -64,13 +64,17 @@ public class NacDashboardPage extends BasePageClass {
 	 * @author Sidhartha.Vadrevu
 	 */	
 	public boolean verifyNewCustomerDashboard() {
-		String language = TestDataHandler.buyFlowsOVtestCase16.getLanguage();
-		if (language.equalsIgnoreCase("fr")) {
-			getReusableActionsInstance().clickWhenReady(changeLanguage);
-		}
 		//getReusableActionsInstance().clickIfAvailable(collapse,60);
 		return getReusableActionsInstance().isElementVisible(newCustomerTitle,10);
 	
+	}
+
+	/**
+	 * This method selects french language
+	 * @author praveen.kumar7
+	 */
+	public void selectFrenchLanguage() {
+		getReusableActionsInstance().clickWhenReady(changeLanguage,20);
 	}
 
 	/**
@@ -78,7 +82,7 @@ public class NacDashboardPage extends BasePageClass {
 	 * @author Sidhartha.Vadrevu
 	 */	
 	public void clkCustomerButton() {
-		getReusableActionsInstance().clickIfAvailable(customerButton,10);
+		getReusableActionsInstance().clickWhenReady(customerButton,10);
 	}
 
 	/**
@@ -87,7 +91,7 @@ public class NacDashboardPage extends BasePageClass {
 	 */
 	public void clkWirelessButton() {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(wirelessButton);
-		getReusableActionsInstance().clickIfAvailable(wirelessButton,10);
+		getReusableActionsInstance().clickWhenReady(wirelessButton,10);
 
 	}
 
@@ -97,9 +101,11 @@ public class NacDashboardPage extends BasePageClass {
 	 * @author Sidhartha.Vadrevu
 	 */
 	public void fillShippingAddressField(String shippingAddress) {
-		getReusableActionsInstance().clickWhenVisible(shippingAddressField,5);
-		getReusableActionsInstance().getWhenReady(inputShippingAddressField,5).sendKeys(shippingAddress);
-		getReusableActionsInstance().clickWhenVisible(clkListBox,5);
+		getReusableActionsInstance().executeJavaScriptClick(shippingAddressField);
+		getReusableActionsInstance().staticWait(2000);
+		shippingAddressField.sendKeys(shippingAddress);
+		//getReusableActionsInstance().getWhenReady(inputShippingAddressField,5).sendKeys(shippingAddress);
+		getReusableActionsInstance().clickWhenReady(clkListBox,5);
 		getReusableActionsInstance().staticWait(3000);
 	}
 

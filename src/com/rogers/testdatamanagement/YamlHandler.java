@@ -98,19 +98,6 @@ public class YamlHandler {
 
 	}
 
-	public static CHOneViewConfig getCHOneViewConfig() throws FileNotFoundException {
-		Yaml yaml = new Yaml(new Constructor(CHOneViewConfig.class));
-		InputStream inputStream;
-		
-			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/choneview/CHOneViewConfig.yml"));
-			CHOneViewConfig config = yaml.load(inputStream);
-			return config;
-		
-
-			
-		
-
-	}
 	
 	public static PaymentDetails getSSPaymentDetails() throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(PaymentDetails.class));

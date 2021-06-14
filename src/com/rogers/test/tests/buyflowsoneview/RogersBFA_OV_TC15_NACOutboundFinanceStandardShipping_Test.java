@@ -70,7 +70,7 @@ public class RogersBFA_OV_TC15_NACOutboundFinanceStandardShipping_Test extends B
 		String firstName = getRogersOVCheckoutPage().setFirstNameCreateProfile();
 		String lastName = getRogersOVCheckoutPage().setLastNameCreateProfile();
 		String fullNameCreateProfile=firstName+" "+lastName;
-		String contactNumberCreateProfile=TestDataHandler.buyFlowsOVtestCase15.getContactNumber();
+		String contactNumberCreateProfile=TestDataHandler.buyFlowsOVtestCase19.getContactNumber();
 		getRogersOVCheckoutPage().setContactNumberCreateProfile(contactNumberCreateProfile);
 		reporter.reportLogPassWithScreenshot("Create Profile Page details Entered till ContactNumber");
 		//getRogersOVCheckoutPage().clkUseBillingAddressRadioBtnCreateProfile();

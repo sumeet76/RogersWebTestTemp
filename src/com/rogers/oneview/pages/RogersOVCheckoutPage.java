@@ -37,7 +37,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//h2[@data-test='personal-info-title']")
 	WebElement createProfileTitle;
 
-	@FindBy(xpath = "(//div[contains(.,'E-mail Address')])[11]")
+	@FindBy(xpath = "(//div[contains(@class,'ds-formField')])[2]")
 	WebElement emailCreateProfile;
 
 	@FindBy(xpath = "//input[@id='email' or (contains(@formcontrolname,'email') and  not(contains(@formcontrolname,'Confirm')))]")
@@ -49,19 +49,19 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//input[@id='confirmEmail' or @id='cemail' or contains(@formcontrolname,'Confirm') or contains(@formcontrolname,'confirm')]")
 	WebElement inputConfirmEmail;
 
-	@FindBy(xpath = "(//div[contains(.,'First Name')])[11]")
+	@FindBy(xpath = "//input[@formcontrolname='lastName']/parent::div")
 	WebElement firstNameCreateProfile;
 
 	@FindBy(xpath = "//input[@formcontrolname='firstName']")
 	WebElement inputFirstName;
 
-	@FindBy(xpath = "(//div[contains(.,'Last Name')])[11]")
+	@FindBy(xpath = "//input[@formcontrolname='lastName']/parent::div")
 	WebElement lastNameCreateProfile;
 
 	@FindBy(xpath = "//input[@formcontrolname='lastName']")
 	WebElement inputLastName;
 
-	@FindBy(xpath = "(//div[contains(.,'Contact Number')])[11]")
+	@FindBy(xpath = "//input[contains(@formcontrolname,'contact')]/parent::div")
 	WebElement contactNumberCreateProfile;
 
 	@FindBy(xpath = "//input[contains(@formcontrolname,'contact')]")
@@ -201,7 +201,10 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//ds-form-field[@data-test='cvv']//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
 	WebElement txtContainerCVV;
 
-	@FindBy(xpath = "//div[@class='ds-checkbox__box my-12']")
+	@FindAll({
+			@FindBy(xpath = "//div[@class='ds-checkbox__box my-12']"),
+			@FindBy(xpath = "//ds-checkbox[@name='credit-check']")
+	})
 	WebElement chkCreditAuthorization;
 
 	@FindBy(xpath = "//button[@data-test='credit-eval-continue']")
@@ -252,12 +255,21 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//div[@id='step-3-open']//h2")
 	WebElement chooseNumberTitle;
 
-	@FindBy(xpath = "//div[@role='tablist']/button[@tabindex='0']")
+	@FindBy(xpath = "(//button[contains(@id,'ds-tabs')])[2]")
+	WebElement useAnExistingNumberTab;
+
+	@FindBy(xpath = "(//button[contains(@id,'ds-tabs')])[1]")
+	//button[contains(@id,'ds-tabs-3-tab-1')]
 	WebElement selectaNewNumberTab;
 
-	@FindBy(xpath = "//div[@role='tablist']/button[@tabindex='-1']")
-	//button[contains(@id,'ds-tabs-3-tab-1')]
-	WebElement useAnExistingNumberTab;
+	@FindBy(xpath = "//button[contains(@data-test,'port-in')]")
+	WebElement portinEligibilityCheckBtn;
+
+	@FindBy(xpath = "//button[contains(@data-test,'port-in')]/following::p[2]")
+	WebElement portinSuccessTxt;
+
+	@FindBy(xpath = "//button[contains(@data-test,'port-in')]/following::p[3]")
+	WebElement tempNumberTxt;
 
 	//@FindBy(xpath = "//select[@id='ds-form-input-id-13']")
 	@FindBy(xpath = "//ds-form-field[@data-test='choose-number-city']//select")
@@ -381,6 +393,9 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//P[@data-test='timeslot-appointment']")
 	WebElement lblAppointmentTime;
 
+	@FindBy(xpath = "(//table[contains(@data-test,'ov-credit-eval')]//td)[2]")
+	WebElement downPaymentAmt;
+
 	
 	
 	/**
@@ -493,8 +508,8 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	public String setFirstNameCreateProfile() {
 
-		getReusableActionsInstance().clickWhenReady(firstNameCreateProfile);
-		getReusableActionsInstance().getWhenReady(inputFirstName,3).sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
+		getReusableActionsInstance().clickWhenReady(firstNameCreateProfile,20);
+		inputFirstName.sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
 		return getReusableActionsInstance().getWhenReady(inputFirstName,20).getAttribute("value");
 	}
 	
@@ -536,7 +551,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	public String setLastNameCreateProfile() {
 		getReusableActionsInstance().clickWhenReady(lastNameCreateProfile);
-		getReusableActionsInstance().getWhenReady(inputLastName,3).sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
+		inputLastName.sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
 		return getReusableActionsInstance().getWhenReady(inputLastName,20).getAttribute("value");
 	}
 
@@ -827,9 +842,9 @@ public class RogersOVCheckoutPage extends BasePageClass {
 		txtInputTokenNumber.click();
 		txtInputTokenNumber.sendKeys(strTokenNumber);
 		txtExpiryDate.click();
-		String strCCExpMonth = TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getExpiryMonth3();
-		String strCCExpYear = TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getExpiryYear3();
-		getReusableActionsInstance().getWhenReady(txtDateOfExpiry, 10).sendKeys(strCCExpMonth+strCCExpYear);
+		//String strCCExpMonth = TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getExpiryMonth3();
+		//String strCCExpYear = TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getExpiryYear3();
+		getReusableActionsInstance().getWhenReady(txtDateOfExpiry, 10).sendKeys("1223");
 		String strCVV = FormFiller.generateCVVNumber();
 		getReusableActionsInstance().waitForElementVisibility(txtContainerCVV,50);
 		getReusableActionsInstance().getWhenReady(txtContainerCVV,10).click();
@@ -845,7 +860,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	public void selectPrimaryDropdownOption(String selectYourPrimaryIdOption, String number) {
 		new Select(getDriver().findElement(By.xpath("//select[contains(@formcontrolname,'thirdIdType')]"))).selectByVisibleText(selectYourPrimaryIdOption);
-		if (selectYourPrimaryIdOption != null && !selectYourPrimaryIdOption.isEmpty() && selectYourPrimaryIdOption.contains("Canadian Passport")) {
+		if (selectYourPrimaryIdOption != null && !selectYourPrimaryIdOption.isEmpty() && (selectYourPrimaryIdOption.contains("Canadian Passport") || selectYourPrimaryIdOption.contains("Passeport Canadien"))) {
 			setPassportNumber(number);
 		} else if (selectYourPrimaryIdOption != null && !selectYourPrimaryIdOption.isEmpty() && selectYourPrimaryIdOption.contains("Driver's License")) {
 			setLicenseNumber(number);
@@ -869,7 +884,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 		new Select(getDriver().findElement(By.xpath("//select[contains(@formcontrolname,'secondaryId')]"))).selectByVisibleText(selectYourSecondIdOption);
 		if (selectYourSecondIdOption != null && !selectYourSecondIdOption.isEmpty() && selectYourSecondIdOption.contains("Canadian Passport")) {
 			setPassportNumber(secondNumber);
-		} else if (selectYourSecondIdOption != null && !selectYourSecondIdOption.isEmpty() && selectYourSecondIdOption.contains("Pre-authorized Credit Card - Token")) {
+		} else if (selectYourSecondIdOption != null && !selectYourSecondIdOption.isEmpty() && (selectYourSecondIdOption.contains("Pre-authorized Credit Card - Token") || selectYourSecondIdOption.contains("Carte de crédit préautorisée"))) {
 			setPreAuthCreditTokenNumber(secondNumber);
 		} else if (selectYourSecondIdOption != null && !selectYourSecondIdOption.isEmpty() && selectYourSecondIdOption.contains("Provincial ID")) {
 			setProvincialIDNumber(secondNumber);
@@ -884,17 +899,14 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	 * To click on the Authorization Checkbox in the Create Profile stepper
 	 * @author karthic.hasan
 	 */
-
-	public void clkCreditAuthorizationChkBox() 
-	{
+	public void clkCreditAuthorizationChkBox() {
 		getReusableActionsInstance().getWhenReady(chkCreditAuthorization).click();
-		}
+	}
 
 	/**
 	 * To click on the Credit Evaluation Continue button in the Credit Evaluation stepper
 	 * @author karthic.hasan
 	 */
-
 	public void clkCreditEvalContinue() { getReusableActionsInstance().getWhenReady(btnCreditEvalContinue).click(); }
 
 	/**
@@ -1121,15 +1133,55 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	}
 
 	/**
-	 * Select City Dropdown Option on the Choose a Number stepper, City Dropdown Field
+	 * This method enters the portin number in the portin number field
 	 * @param selectExistingNumber value from yaml file.
-	 * @author karthic.hasan
+	 * @author praveen.kumar
 	 */
-
 	public void chooseExistingNumberOption(String selectExistingNumber) {
 		getReusableActionsInstance().clickWhenReady(clickExistingPhoneNumber);
 		getReusableActionsInstance().getWhenReady(fillExistingPhoneNumber,10).sendKeys(selectExistingNumber);
 	}
+
+	/**
+	 * Clicks on Existing number(portin) tab in Choose phone number stepper
+	 * @author praveen.kumar7
+	 */
+	public void selectPortinOption() {
+		getReusableActionsInstance().clickWhenReady(useAnExistingNumberTab,20);
+	}
+
+	/**
+	 * This method verifies if the entered number is eligible to portin
+	 * @return true if eligible, else false
+	 * @author praveen.kumar
+	 */
+	public boolean verifyPortinEligibility () {
+		getReusableActionsInstance().waitForElementVisibility(portinEligibilityCheckBtn, 30);
+		getReusableActionsInstance().clickWhenReady(portinEligibilityCheckBtn, 30);
+		getReusableActionsInstance().staticWait(5000);
+		return getReusableActionsInstance().isElementVisible(By.xpath("//span[@data-test='port-in-success']"), 30);
+	}
+
+	/**
+	 * This method gets the portin success message
+	 * @return string value of portin success message and temporary number
+	 * @author praveen.kumar
+	 */
+	public String getPortinSuccessMessage() {
+		String successMsg= getReusableActionsInstance().getWhenReady(portinSuccessTxt,20).getText();
+		String tempNumber = getReusableActionsInstance().getWhenReady(tempNumberTxt,20).getText();
+		return successMsg+" and here is your "+tempNumber;
+	}
+
+	/**
+	 * This method clicks on continue button in portin stepper
+	 * @author praveen.kumar
+	 */
+	public void clkContinueBtnPorinStepper() {
+		getReusableActionsInstance().scrollToElement(getReusableActionsInstance().getWhenReady(By.xpath("//button[@data-test='choose-number-continue']")));
+		getReusableActionsInstance().clickWhenReady(By.xpath("//button[@data-test='choose-number-continue']"),20);
+	}
+
 
 	/**
 	 * To Verify the Title of Billing Options stepper Displayed 
@@ -1420,6 +1472,16 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	public boolean verifyBillingDetails() {
 		return getReusableActionsInstance().isElementVisible(txtBillingDetails);
+	}
+
+	public boolean verifyDownPayment(String deviceCost) {
+		double expectedDownPayment = Double.parseDouble(deviceCost)/100.0*40.0;
+		String actualDownPayment = getReusableActionsInstance().getWhenReady(downPaymentAmt,20).getText().trim();
+		String actualDP[] = actualDownPayment.split("$");
+		if(expectedDownPayment==(Double.parseDouble(actualDP[0]))) {
+			return true;
+		}
+		else return false;
 	}
 
 

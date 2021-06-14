@@ -38,6 +38,8 @@ public class RedesignRpotgOVData {
 	private String paymentMethod;
 	private String creditCardDetailsOTP;
 	private String depositAmount;
+	private String customerRiskLevel;
+	public String portinNumber;
 
 	/**
 	 * @return the contactID
@@ -178,7 +180,7 @@ public class RedesignRpotgOVData {
 		return talkOptionIndex;
 	}
 	/**
-	 * @param talkOptionIndex the dataOptionIndex to set
+	 * @param talkOptionIndex the talkOptionIndex to set
 	 */
 	public void setTalkOptionIndex(String talkOptionIndex) {
 		this.talkOptionIndex = talkOptionIndex;
@@ -340,6 +342,31 @@ public class RedesignRpotgOVData {
 	public String getDepositAmount() { return depositAmount; }
 
 	public void setDepositAmount(String depositAmount) { this.depositAmount = depositAmount; }
-    
+
+	/**
+	 * @return the customerRiskLevel
+	 */
+	public String getCustomerRiskLevel() {
+		return customerRiskLevel;
+	}
+	/**
+	 * @param customerRiskLevel the newPlanCategory to set
+	 */
+	public void setCustomerRiskLevel(String customerRiskLevel) {
+		this.customerRiskLevel = customerRiskLevel;
+	}
+
+	/**
+	 * @return the portin number
+	 */
+	public String getPortinNumber() {
+		return customerRiskLevel;
+	}
+	/**
+	 * @param portinNumber the portin number to set
+	 */
+	public void setPortinNumber(String portinNumber) {
+		this.portinNumber = portinNumber;
+	}
 	
 }
