@@ -61,7 +61,7 @@ public class RogersCH_TC_086_IginteTV_2P_NAC_ESI_Minicart_legalText_installFee_a
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1= TestDataHandler.tc04_07_SolarisTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc04_07_SolarisTVAccount.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         //Validate cableCondition="Unwired" from addressServices call, will be adding with selenium4
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");

@@ -47,7 +47,7 @@ public class RogersCH_TC_074_SAI_BaselineAndHouseAddress_ValidateServiceability_
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc74_SaiBaseLineHomeAddress.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc74_SaiBaseLineHomeAddress.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to opt the address");
         getRogersHomePage().setIgniteAddressLookupRetry();

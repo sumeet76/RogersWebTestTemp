@@ -362,7 +362,9 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSubmit() {
+		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().getWhenReady(clkSubmit, 30).click();
+		getReusableActionsInstance().clickIfAvailable(clkSubmit, 30);
 	}
 	/**
 	 * Click on the Submit button on the order review page

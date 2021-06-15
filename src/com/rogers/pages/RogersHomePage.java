@@ -1,6 +1,7 @@
 package com.rogers.pages;
 
 import com.rogers.pages.base.BasePageClass;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -122,8 +123,10 @@ public class RogersHomePage extends BasePageClass {
 
 	@FindBy(xpath = "//button[@class='a-btnPrimary']")
 	WebElement btnAddressValidation;
-	
-	@FindBy(xpath = "//input[contains(@id,'canada-post-address-complete')]")
+
+	@FindAll({
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-')]"),
+	@FindBy(xpath = "//input[contains(@id,'canada-post-address-complete')]")})
 	WebElement txaIgniteAddressLookup;		
 
 	@FindBy(xpath = "//div[@id='multipleUnitsModal'] ")
@@ -492,10 +495,10 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkShop() {
-		if(!getReusableActionsInstance().isElementVisible(lnkOptedON,60)){
+	/*	if(!getReusableActionsInstance().isElementVisible(lnkOptedON,60)){
 			getReusableActionsInstance().getWhenReady(lnkProvince,10).click();
 			getReusableActionsInstance().getWhenReady(lnkProvinceON,10).click();
-		}
+		}*/
 		getReusableActionsInstance().getWhenReady(btnShop, 20).click();
 	}
 
@@ -755,19 +758,35 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
 	}
 	
-	public void setIgniteAddressLookup(String strAddress) {
+	public void setIgniteAddressLookup1(String strAddress) {
 		getReusableActionsInstance().waitForElementVisibility(txaIgniteAddressContainerExisting, 60);
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressContainerExisting, 3).click();
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 5).sendKeys(strAddress);
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.TAB);
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup ).sendKeys(Keys.ARROW_DOWN);
-		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 1).sendKeys(Keys.ARROW_DOWN);
-		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 2).sendKeys(Keys.ARROW_DOWN);
-		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 10).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 10).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup,10).sendKeys(Keys.ENTER);
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
 	}
+
+	public void setIgniteAddressLookup(String strAddress) {
+		getReusableActionsInstance().waitForElementVisibility(txaIgniteAddressContainerExisting, 60);
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressContainerExisting, 3).click();
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 5).sendKeys(strAddress);
+		String strAddressResultXpath = "//ul[@role='listbox']/li[contains(@ng-reflect-result,'') and contains(text(),'address')]";
+		try{
+			getReusableActionsInstance().getWhenReady(By.xpath(strAddressResultXpath.replace("address", strAddress.trim())), 10).click();
+
+		}catch (Exception e){
+			getReusableActionsInstance().getWhenReady(By.xpath("//ul[@role='listbox']/li[contains(@ng-reflect-result,'')]"), 10).click();
+		}
+	}
+
+	//ul[@role='listbox']/li[contains(@ng-reflect-result,'')]
 
 	public void setIgniteAddressLookupRetry() {
 		getReusableActionsInstance().waitForElementVisibility(popupIgniteAddressLookupLable, 30);
@@ -792,6 +811,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkAnotherAddressLookupSubmit() {
+		getReusableActionsInstance().staticWait(6000);
 		getReusableActionsInstance().getWhenReady(btnAnotherAddressLookupSubmit, 60).click();
 	}
 

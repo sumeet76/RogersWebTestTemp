@@ -56,7 +56,7 @@ public class RogersCH_TC_053_IHP_ValidateOrderInternet extends BaseTestClass {
 		reporter.reportLogWithScreenshot("Launched the Internet packages page");
 		getRogersHomePage().clkInternetAvailability();
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-		getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+		getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
 		getRogersHomePage().clkIgniteAddressLookupSubmit();
 		reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
 		getRogersInternetPackageSelectionPage().clkInternetPackage();

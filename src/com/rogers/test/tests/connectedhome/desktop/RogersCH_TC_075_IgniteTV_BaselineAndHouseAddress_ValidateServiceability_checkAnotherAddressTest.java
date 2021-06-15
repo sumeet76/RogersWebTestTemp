@@ -46,7 +46,7 @@ public class RogersCH_TC_075_IgniteTV_BaselineAndHouseAddress_ValidateServiceabi
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1= TestDataHandler.tc75_IgniteTVBaseLineHomeAddress.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc75_IgniteTVBaseLineHomeAddress.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to opt the address");
         getRogersHomePage().setIgniteAddressLookupRetry();
