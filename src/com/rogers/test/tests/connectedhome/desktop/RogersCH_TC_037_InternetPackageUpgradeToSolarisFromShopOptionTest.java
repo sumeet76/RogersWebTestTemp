@@ -148,6 +148,6 @@ public class RogersCH_TC_037_InternetPackageUpgradeToSolarisFromShopOptionTest e
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 }

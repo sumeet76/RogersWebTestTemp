@@ -786,8 +786,6 @@ public class RogersHomePage extends BasePageClass {
 		}
 	}
 
-	//ul[@role='listbox']/li[contains(@ng-reflect-result,'')]
-
 	public void setIgniteAddressLookupRetry() {
 		getReusableActionsInstance().waitForElementVisibility(popupIgniteAddressLookupLable, 30);
 		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 60);
@@ -798,6 +796,21 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(popupIgniteAddressLookupLable, 30);
 		getReusableActionsInstance().getWhenReady(rdoBasement, 10).click();
 	}
+
+	public void selectIgniteAddressLookupBasement(String strAddress) {
+		getReusableActionsInstance().waitForElementVisibility(txaIgniteAddressContainerExisting, 60);
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressContainerExisting, 3).click();
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 5).sendKeys(strAddress);
+		String strAddressResultXpath = "//ul[@role='listbox']/li[contains(@ng-reflect-result,'') and contains(text(),'address')]";
+		try{
+			getReusableActionsInstance().getWhenReady(By.xpath(strAddressResultXpath.replace("address", "BSMT-"+strAddress.trim())), 10).click();
+
+		}catch (Exception e){
+			getReusableActionsInstance().getWhenReady(By.xpath("//ul[@role='listbox']/li[contains(@ng-reflect-result,'')]"), 10).click();
+		}
+	}
+
 	/**
 	 * Click the Lookup Submit button to check service availability
 	 * @author chinnarao.vattam
@@ -828,10 +841,12 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkCheckAnotherAddress() {
-		getReusableActionsInstance().getWhenReady(lnkCheckAnotherAddress, 90).click();
+		getReusableActionsInstance().staticWait(6000);
+		getReusableActionsInstance().getWhenReady(lnkCheckAnotherAddress, 90);
+		getReusableActionsInstance().executeJavaScriptClick(lnkCheckAnotherAddress);
 	}
 
-	public void setAnotherAddressLookup(String strAddress) {
+	public void setAnotherAddressLookup1(String strAddress) {
 		getReusableActionsInstance().waitForElementVisibility(txaAnotherAddressContainer, 60);
 		getReusableActionsInstance().getWhenReady(txaAnotherAddressContainer, 3).click();
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();
@@ -841,6 +856,20 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 1).sendKeys(Keys.ARROW_DOWN);
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 2).sendKeys(Keys.ARROW_DOWN);
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
+	}
+
+	public void setAnotherAddressLookup(String strAddress) {
+		getReusableActionsInstance().waitForElementVisibility(txaIgniteAddressContainerExisting, 60);
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressContainerExisting, 3).click();
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 5).sendKeys(strAddress);
+		String strAddressResultXpath = "//ul[@role='listbox']/li[contains(@ng-reflect-result,'') and contains(text(),'address')]";
+		try{
+			getReusableActionsInstance().getWhenReady(By.xpath(strAddressResultXpath.replace("address", strAddress.trim())), 10).click();
+
+		}catch (Exception e){
+			getReusableActionsInstance().getWhenReady(By.xpath("//ul[@role='listbox']/li[contains(@ng-reflect-result,'')]"), 10).click();
+		}
 	}
 	/**
 	 * Click the Lookup Submit button to check service availability

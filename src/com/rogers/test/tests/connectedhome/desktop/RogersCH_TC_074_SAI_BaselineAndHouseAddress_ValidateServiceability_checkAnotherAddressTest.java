@@ -50,16 +50,17 @@ public class RogersCH_TC_074_SAI_BaselineAndHouseAddress_ValidateServiceability_
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to opt the address");
-        getRogersHomePage().setIgniteAddressLookupRetry();
+        //getRogersHomePage().setIgniteAddressLookupRetry();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         getRogersHomePage().clkCheckAnotherAddress();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        getRogersHomePage().setAnotherAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
-        getRogersHomePage().clkAnotherAddressLookupSubmit();
+        getRogersHomePage().setAnotherAddressLookup(strAddressLine1+","+strAddressLine2);
+        //getRogersHomePage().clkAnotherAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        getRogersHomePage().setIgniteAddressLookupBasement();
-        reporter.reportLogWithScreenshot("Launched the customer availability check popup for basement address");
-        getRogersHomePage().clkAnotherLookupSubmit();
+        //getRogersHomePage().setIgniteAddressLookupBasement();
+        //reporter.reportLogWithScreenshot("Launched the customer availability check popup for basement address");
+        //getRogersHomePage().clkAnotherLookupSubmit();
+        getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
 
         getRogersInternetPackageSelectionPage().clkInternetPackage();

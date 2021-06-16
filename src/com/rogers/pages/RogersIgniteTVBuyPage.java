@@ -81,7 +81,19 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	@FindBy(xpath = "//ds-checkbox[@ng-reflect-name=\"homephone\"]//div[contains(@class,'ds-checkbox__box')]")
 	WebElement checkboxHomephone;
-	
+
+	@FindBy(xpath = "//h2[@id='channels-tab']")
+	WebElement btnChannelsTab;
+
+	@FindBy(xpath = "//h2[@id='themepacks-tab']")
+	WebElement btnThemepacksTab;
+
+	@FindBy(xpath = "//span[@translate='global.message.priceIncreseAlert.priceIncreaseChannelCopy']")
+	WebElement bnrPriceIncreaseChannelCopy;
+
+	@FindBy(xpath = "//span[@translate='global.message.priceIncreseAlert.priceIncreaseThemeCopy']")
+	WebElement bnrPriceIncreaseThemeCopy;
+
 	@FindBy(xpath = "//div[contains(@class,'ute-btn-group-set-accessibility')]//ins[@translate='global.cta.continue']")
 	WebElement btnGoodNewsContinue;
 
@@ -316,6 +328,40 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	public void clkHomephoneMobile() {
 		getReusableActionsInstance().waitForElementVisibility(checkboxHomephone, 60);
 		getReusableActionsInstance().executeJavaScriptClick(checkboxHomephone);
+	}
+
+	/**
+	 * To click on  Home phone checkbox
+	 * @author chinnarao.vattam
+	 */
+	public void clkChannelsTab() {
+		getReusableActionsInstance().getWhenReady(btnChannelsTab, 60).click();
+	}
+
+	/**
+	 * To click on  Home phone checkbox
+	 * @author chinnarao.vattam
+	 */
+	public void clkThemepacksTab() {
+		getReusableActionsInstance().getWhenReady(btnThemepacksTab, 60).click();
+	}
+	/**
+	 * To verify Price Increase Channel Copy banner
+	 * @return true if the Price Increase Channel Copy banner is available else return false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyPriceIncreaseChannelCopy() {
+		getReusableActionsInstance().waitForElementVisibility(bnrPriceIncreaseChannelCopy, 120);
+		return	getReusableActionsInstance().isElementVisible(bnrPriceIncreaseChannelCopy);
+	}
+	/**
+	 * To verify Price Increase Theme Copy banner
+	 * @return true if the Price Increase Theme Copy banner is available else return false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyPriceIncreaseThemeCopy() {
+		getReusableActionsInstance().waitForElementVisibility(bnrPriceIncreaseThemeCopy, 120);
+		return	getReusableActionsInstance().isElementVisible(bnrPriceIncreaseThemeCopy);
 	}
 
 	/**
