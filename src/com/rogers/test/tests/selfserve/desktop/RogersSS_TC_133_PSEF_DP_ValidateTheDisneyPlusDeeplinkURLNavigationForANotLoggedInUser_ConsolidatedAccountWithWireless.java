@@ -26,7 +26,7 @@ public class RogersSS_TC_133_PSEF_DP_ValidateTheDisneyPlusDeeplinkURLNavigationF
 	}
 	
 	
-	@Test(groups = {"RegressionSS","PACMAN"})
+	@Test(groups = {"RegressionSS","PSEF","DisneyPlus"})
     public void validateSignInAndAccountOverview() {
         reporter.reportLogWithScreenshot("Rogers launched");
         String strDeepLinkURL = System.getProperty("QaUrl").split(".com")[0]+".com"+"/consumer/self-serve/vas/disney-plus";

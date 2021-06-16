@@ -26,7 +26,8 @@ public class RogersPSEFPage extends BasePageClass {
 
 	private By btnUsageAndServicesDropDown;
 	private By lblSMPpromotionEnds;
-
+	private By tabDisneyPlus;
+	private By tabAppleMusic;
 
 
 	public RogersPSEFPage(WebDriver driver) {
@@ -322,6 +323,17 @@ public class RogersPSEFPage extends BasePageClass {
 		return CurrencyHelpers.extractNumberFromString(ctnSelected);
 	}
 
+	public void checkCTNForRedeem(String strCTN) {
+		for (WebElement ctn:
+		chkListCTnForDplusRedeem) {
+			if(ctn.getAttribute("title").trim().contains(strCTN.substring(strCTN.length()-4)))
+			{
+				getReusableActionsInstance().getWhenReady(ctn).click();
+				break;
+			}
+		}
+	}
+
 	public String checkFirstDefaultCTNForCancel() {
 		String ctnSelected = lblPendingTrialCTNNumber.get(0).getText().trim();
 		ctnSelected = CurrencyHelpers.extractNumberFromString(ctnSelected);
@@ -506,4 +518,11 @@ public class RogersPSEFPage extends BasePageClass {
 
 	}
 
+	public void clkDisneyPlusTab() {
+		getReusableActionsInstance().getWhenReady(tabDisneyPlus).click();
+	}
+
+	public void clkAppleMusicTab() {
+		getReusableActionsInstance().getWhenReady(tabAppleMusic).click();
+	}
 }

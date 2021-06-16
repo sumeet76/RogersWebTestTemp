@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class RogersSS_TC_132_SF_EN_ValidateDetailsOnMyCancelledWirelessPartnerOfferOnTheSubscriptionManagementPageDisney extends BaseTestClass {
+public class RogersSS_TC_138_PSEF_ValidateCTNCancellationForDPMultipleBANprofile extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
@@ -84,6 +84,17 @@ public class RogersSS_TC_132_SF_EN_ValidateDetailsOnMyCancelledWirelessPartnerOf
                 "The Subscription management page shows the cancelled CTN subscription ended immediately",
                 "The Subscription management page does NOT shows the cancelled CTN subscription");
 
+        getRogersPSEFPage().clkAccountOverview();
+        reporter.reportLogWithScreenshot("Account Overview");
+        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),
+                "Account overview displayed correctly",
+                "Account overview didnt load");
+        getCommonBusinessFlows().scrollToMiddleOfWebPage();
+        getRogersPSEFPage().clickDPlusSignUporManageButton();
+        reporter.hardAssert(getRogersPSEFPage().verifyIfSMPIsDisplayedWithSubscribedCTN(strSelectedCTNForCancel),
+                "The Subscription management page SMP shows the subscribed CTNs in Currently Subscribed Section,No change for CTN enrolled to AM: The same CTN is listed in Subscribed section with the status Subscribed",
+                "The Subscription management page does NOT shows the SMP shows the subscribed CTNs in Currently Subscribed Section");
+        reporter.reportLogWithScreenshot("Subscription management page shows the subscribed CTNs in Currently Subscribed Section");
 
     }
   

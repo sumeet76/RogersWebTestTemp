@@ -26,7 +26,7 @@ public class RogersSS_TC_131_PSEF_DP_Rogers_CR_EN_SubscribedSection_NSEInfinite5
     }
 
 
-    @Test(groups = {"RegressionSS","PACMAN"})
+    @Test(groups = {"RegressionSS","PSEF","DisneyPlus"})
     public void validateSignInAndAccountOverview() {
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");

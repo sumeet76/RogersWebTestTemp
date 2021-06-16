@@ -53,8 +53,11 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//ds-icon/following-sibling::span[contains(text(),'Suspended')]")
 	WebElement suspendedCTN;
 	
-	@FindBy(xpath = "//rss-subscription-detail//span[text()=' Suspended ' or text()=' Suspendu ']")
+	@FindBy(xpath = "//rss-subscription-detail//span[text()=' Suspended ' or text()=' Suspendu ']//ancestor::rss-subscription-detail//span[@class='subscription-number']")
 	List<WebElement> lstSuspendedCTNs;
+
+	@FindBy(xpath = "//rss-subscription-detail//span[not(text()=' Suspended ') or not(text()=' Suspendu ')]//ancestor::rss-subscription-detail//span[@class='subscription-number']")
+	List<WebElement> lstActiveCTNs;
 	
 	@FindBy(xpath = "//div[@class='row modal-content-header']//button[@class='close']")
 	WebElement popUpInternetPopup;
@@ -2236,4 +2239,22 @@ public boolean verifyPTPWidgetIsDisplayed() {
 		return date;
 	}
 
+	public List<String> getSuspendedCTNAvailable() {
+		List<String> suspendedCTNslst =null;
+		for (WebElement ctn:lstSuspendedCTNs
+			 ) {
+			suspendedCTNslst.add(CurrencyHelpers.extractNumberFromString(ctn.getText().trim()));
+		}
+		return  suspendedCTNslst;
+	}
+
+
+	public List<String> getActiveCTNAvailable() {
+		List<String> activeCTNslst =null;
+		for (WebElement ctn:lstActiveCTNs
+		) {
+			activeCTNslst.add(CurrencyHelpers.extractNumberFromString(ctn.getText().trim()));
+		}
+		return  activeCTNslst;
+	}
 }
