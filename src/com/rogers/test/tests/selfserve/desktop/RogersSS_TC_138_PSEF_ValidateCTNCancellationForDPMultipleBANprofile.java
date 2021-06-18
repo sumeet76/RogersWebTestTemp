@@ -32,8 +32,8 @@ public class RogersSS_TC_138_PSEF_ValidateCTNCancellationForDPMultipleBANprofile
         reporter.reportLog("Home Page Launched");
         getRogersHomePage().clkSignIn();
         getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc130.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc130.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc138.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc138.getPassword());
         reporter.reportLogWithScreenshot("Login Credential is entered.");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");

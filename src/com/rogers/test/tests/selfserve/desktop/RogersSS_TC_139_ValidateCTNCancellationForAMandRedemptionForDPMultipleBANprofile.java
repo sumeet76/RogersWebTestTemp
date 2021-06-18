@@ -32,9 +32,9 @@ public class RogersSS_TC_139_ValidateCTNCancellationForAMandRedemptionForDPMulti
         reporter.reportLog("Home Page Launched");
     	getRogersHomePage().clkSignIn();
 		getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc102.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc102.getPassword());
-        String strCTN = TestDataHandler.tc102.getAccountDetails().getCtn();
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc139.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc139.getPassword());
+        String strCTN = TestDataHandler.tc139.getAccountDetails().getCtn();
         reporter.reportLogWithScreenshot("Login Credential is entered.");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
@@ -43,7 +43,7 @@ public class RogersSS_TC_139_ValidateCTNCancellationForAMandRedemptionForDPMulti
 
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
-        	getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc102.getAccountDetails().getBan());       
+        	getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc139.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account overview page.");
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Passed", "Login Failed");

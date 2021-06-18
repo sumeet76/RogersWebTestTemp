@@ -33,26 +33,21 @@ public class RogersSS_TC_136_PSEF_DP_ValidateCTNRedemptionForAMthenDP_SingleAcco
         reporter.reportLog("Home Page Launched");
     	getRogersHomePage().clkSignIn();
 		getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc134.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc134.getPassword());
-        String strCTN = TestDataHandler.tc134.getAccountDetails().getCtn();
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc136.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc136.getPassword());
+        String strCTN = TestDataHandler.tc136.getAccountDetails().getCtn();
         reporter.reportLogWithScreenshot("Login Credential is entered.");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
         getRogersLoginPage().clkSkipIFrame();
 		getRogersLoginPage().switchOutOfSignInIFrame();
-
-        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
-        	reporter.reportLogWithScreenshot("Select an account.");
-        	getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc134.getAccountDetails().getBan());
-        }
         reporter.reportLogWithScreenshot("Account overview page.");
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Passed", "Login Failed");
         
         getCommonBusinessFlows().scrollToMiddleOfWebPage();
        //Apple Music redemption flow:
 
-        getCommonBusinessFlows().scrollToMiddleOfWebPage();
+/*
         reporter.reportLogWithScreenshot("CTNS or Subscriptions View");
         reporter.hardAssert(getRogersAccountOverviewPage().verifySubscriptionIsAvailableForRedeem(),
                 "The subscription is available for redeem",
@@ -96,18 +91,15 @@ public class RogersSS_TC_136_PSEF_DP_ValidateCTNRedemptionForAMthenDP_SingleAcco
                 "Account overview displayed correctly",
                 "Account overview didnt load");
         getCommonBusinessFlows().scrollToMiddleOfWebPage();
+*/
+        //=================Disney Plus redemption flow=================================================================================
 
-        //Disney Plus redemption flow
         reporter.reportLogWithScreenshot("CTNS or Subscriptions View");
         getRogersPSEFPage().clickDPlusSignUporManageButton();
-        reporter.hardAssert(getRogersAccountOverviewPage().verifyIfCurrentlySubscribedPaneIsDisplayed(),
-                "The current subscription is displayed",
-                "The current subscription is NOT displayed");
-        reporter.reportLogWithScreenshot("Current subscription");
         getCommonBusinessFlows().scrollToMiddleOfWebPage();
         reporter.hardAssert(getRogersPSEFPage().verifyIfDPAvaialbleForSubscription(),
-                "The current subscription is displayed",
-                "The current subscription is NOT displayed");
+                "The SMP is displayed for Disney Plus",
+                "The SMP is NOT displayed for Disney Plus");
 
         reporter.reportLogWithScreenshot("Current subscription for redeem");
         getRogersPSEFPage().checkCTNForRedeem(strCTN);
@@ -138,14 +130,8 @@ public class RogersSS_TC_136_PSEF_DP_ValidateCTNRedemptionForAMthenDP_SingleAcco
                 "The Subscription management page does NOT shows the SMP shows the subscribed CTNs in Currently Subscribed Section");
         reporter.reportLogWithScreenshot("Subscription management page shows the subscribed CTNs in Currently Subscribed Section");
 
-        getRogersPSEFPage().clkAccountOverview();
-        reporter.reportLogWithScreenshot("Account Overview");
-        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),
-                "Account overview displayed correctly",
-                "Account overview didnt load");
-        getCommonBusinessFlows().scrollToMiddleOfWebPage();
-        getRogersAccountOverviewPage().clkManageOnSubscription();
-
+        getRogersPSEFPage().clkAppleMusicTab();
+        reporter.reportLogWithScreenshot("Apple Music Tab clicked");
         reporter.hardAssert(getRogersAccountOverviewPage().verifyIfSMPIsDisplayedWithSubscribedCTN(strCTN),
                 "The Subscription management page SMP shows the subscribed CTNs in Currently Subscribed Section",
                 "The Subscription management page does NOT shows the SMP shows the subscribed CTNs in Currently Subscribed Section");

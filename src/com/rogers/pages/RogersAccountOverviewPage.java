@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -2240,7 +2241,7 @@ public boolean verifyPTPWidgetIsDisplayed() {
 	}
 
 	public List<String> getSuspendedCTNAvailable() {
-		List<String> suspendedCTNslst =null;
+		List<String> suspendedCTNslst = new ArrayList<>();
 		for (WebElement ctn:lstSuspendedCTNs
 			 ) {
 			suspendedCTNslst.add(CurrencyHelpers.extractNumberFromString(ctn.getText().trim()));
@@ -2250,11 +2251,39 @@ public boolean verifyPTPWidgetIsDisplayed() {
 
 
 	public List<String> getActiveCTNAvailable() {
-		List<String> activeCTNslst =null;
+		List<String> activeCTNslst = new ArrayList<>();
+		List<String> suspendedCTNslst = new ArrayList<>();
+		for (WebElement ctn:lstSuspendedCTNs
+		) {
+			suspendedCTNslst.add(CurrencyHelpers.extractNumberFromString(ctn.getText().trim()));
+		}
+
+
 		for (WebElement ctn:lstActiveCTNs
 		) {
-			activeCTNslst.add(CurrencyHelpers.extractNumberFromString(ctn.getText().trim()));
+			if(!checkIfListContainsCTN(suspendedCTNslst,CurrencyHelpers.extractNumberFromString(ctn.getText().trim())))
+			{
+				activeCTNslst.add(CurrencyHelpers.extractNumberFromString(ctn.getText().trim()));
+			}
+
+
 		}
+
+
+
 		return  activeCTNslst;
+	}
+
+	private boolean checkIfListContainsCTN(List<String> suspendedCTNslst,String strCTNS){
+		boolean found = false;
+		for (String ctn:suspendedCTNslst
+		) {
+			if(ctn.equals(strCTNS))
+			{
+				found = true;
+				break;
+			}
+		}
+		return  found;
 	}
 }

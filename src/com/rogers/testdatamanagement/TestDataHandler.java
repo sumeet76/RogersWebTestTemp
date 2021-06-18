@@ -194,6 +194,10 @@ public class TestDataHandler {
 	public static AccountData tc129;
 	public static AccountData tc130;
 	public static AccountData tc134;
+	public static AccountData tc136;
+	public static AccountData tc137;
+	public static AccountData tc138;
+	public static AccountData tc139;
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
  		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
@@ -393,6 +397,10 @@ public class TestDataHandler {
 		tc129 = YamlHandler.getSSAccountData("tc129SubsidyPaisOff");
 		tc130 = YamlHandler.getSSAccountData("tc130PSEFsubscribeNSEInfinte50");
 		tc134 =YamlHandler.getSSAccountData("tc134PSEFDPRedeemedActiveAndCancalledMLBAN");
+		tc136 = YamlHandler.getSSAccountData("tc136PSEF_DP_AM_RedemptionSingleAc");
+		tc137 = YamlHandler.getSSAccountData("tc137PSEF_CTNRedemptionforDP_ThenAM_MultipleAC");
+		tc138 = YamlHandler.getSSAccountData("tc138PSEF_CTNCancelnforDPMultiBANCTNsSE_NSEInfiniteRedeemedTheSameCTNForAMandDP");
+		tc139 = YamlHandler.getSSAccountData("tc139PSEF_MultipleBANCTNs_SE_NSEInfinite_RedeemedCTNforAMandEligibleCTNforDP");
 	}
 	
 	private static void buyFlowsDataInit() throws FileNotFoundException {
