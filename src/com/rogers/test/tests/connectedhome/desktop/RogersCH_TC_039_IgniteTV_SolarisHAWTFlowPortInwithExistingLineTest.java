@@ -48,7 +48,7 @@ import java.util.Map;
 
 public class RogersCH_TC_039_IgniteTV_SolarisHAWTFlowPortInwithExistingLineTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH","DryRunCH"})
+    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
     public void checkBuyIginteTVOffer() {
         reporter.reportLogWithScreenshot("Launched the Easy Login Page");
         getRogersHomePage().clkTVBundle();

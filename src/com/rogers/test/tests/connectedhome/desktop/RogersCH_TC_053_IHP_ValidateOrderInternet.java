@@ -30,7 +30,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_053_IHP_ValidateOrderInternet extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","IHP","saiCH","DryRunCH"})
+	@Test(groups = {"RegressionCH","IHP","saiCH"})
     public void checkSolarisIhpValidateOrderInternet() {
 		String  strAddressLine1=TestDataHandler.tc53_iHPAccount.getAccountDetails().getAddress().get("line1");
 		String  strAddressLine2=TestDataHandler.tc53_iHPAccount.getAccountDetails().getAddress().get("line2");

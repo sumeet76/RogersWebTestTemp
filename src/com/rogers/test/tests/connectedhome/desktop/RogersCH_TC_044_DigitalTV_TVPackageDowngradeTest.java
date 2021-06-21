@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 public class RogersCH_TC_044_DigitalTV_TVPackageDowngradeTest extends BaseTestClass {
 	private String strLanguage=System.getProperty("Language");
 
-	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH","DryRunCH"})
+	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH"})
 	public void checkTVPackageDowngrade() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();

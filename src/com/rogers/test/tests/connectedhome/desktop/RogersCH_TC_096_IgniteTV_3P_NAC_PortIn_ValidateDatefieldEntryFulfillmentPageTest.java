@@ -47,7 +47,6 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_096_IgniteTV_3P_NAC_PortIn_ValidateDatefieldEntryFulfillmentPageTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
     public void checkBuyIginteTVOffer() {
         reporter.reportLogWithScreenshot("Launched the Easy Login Page");
         getRogersHomePage().clkTVBundle();

@@ -49,7 +49,7 @@ import java.util.Map;
 
 public class RogersCH_TC_030_084_IginteTV_DoublePlayBuyValidateMonthAsteriskTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH","DryRunCH"})
+    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
     public void checkBuyDigitalTVOffer() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	getRogersHomePage().clkTVBundle();

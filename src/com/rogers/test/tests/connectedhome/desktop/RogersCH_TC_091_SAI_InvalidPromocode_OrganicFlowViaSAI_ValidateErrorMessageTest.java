@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class RogersCH_TC_091_SAI_InvalidPromocode_OrganicFlowViaSAI_ValidateErrorMessageTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","saiCH","DryRunCH"})
+	@Test(groups = {"RegressionCH","saiCH"})
     public void checkOrganicFlowViaSAI_ValidateErrorMessageTest() throws InterruptedException {
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
         getRogersHomePage().clkEasyInternet();

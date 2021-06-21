@@ -34,7 +34,7 @@ import java.util.Map;
 
 public class RogersCH_TC_066_SAI_NAC_AnonymousCxentersInternetShopPage_ISStogglecheckedOff_ValidateIgniteExpressSetup0CADTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","saiCH","DryRunCH"})
+    @Test(groups = {"RegressionCH","saiCH"})
     public void checkIssNacLearnPageToggleOffHotTest() {
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
         getRogersHomePage().clkEasyInternet();

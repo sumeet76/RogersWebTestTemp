@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","saiCH","DryRunCH"})
+	@Test(groups = {"RegressionCH","saiCH"})
     public void checkBuyStandAloneInternetOffer() throws InterruptedException {
 
     	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");

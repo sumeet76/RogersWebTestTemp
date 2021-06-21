@@ -35,7 +35,7 @@ import java.util.Map;
 
 public class RogersCH_TC_078_SAI_learnPage_ValidateSecondaryNavigationContent_linksRedirectionTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","DryRunCH","saiCH"})
+	@Test(groups = {"RegressionCH","saiCH"})
     public void checkSAIlearnPage_ValidateSecondaryNavigationContent_linksRedirectionTest() {
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
 		getRogersHomePage().clkEasyInternet();
@@ -67,7 +67,7 @@ public class RogersCH_TC_078_SAI_learnPage_ValidateSecondaryNavigationContent_li
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
 	    }
 
-		@Test(groups = {"RegressionCH","DryRunCH","saiCH"})
+		@Test(groups = {"RegressionCH","saiCH"})
 		public void checkSAIlearnPage_ValidateSecondaryNavigationContentTest() {
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
 		getRogersHomePage().clkEasyInternet();

@@ -34,7 +34,7 @@ import java.util.Map;
 
 public class RogersCH_TC_052_NAC_ValidationSaiTupeloBuyflowAddAdditionalSTBTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","SmartStreamCH","DryRunCH"})
+    @Test(groups = {"RegressionCH","SmartStreamCH"})
     public void checkSaiTupeloBuyflowAddAdditionalSTB() {
         getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");

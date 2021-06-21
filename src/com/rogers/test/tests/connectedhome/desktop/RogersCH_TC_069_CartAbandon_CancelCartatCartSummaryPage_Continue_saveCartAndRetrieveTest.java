@@ -33,7 +33,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_069_CartAbandon_CancelCartatCartSummaryPage_Continue_saveCartAndRetrieveTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersCartAbandon","DryRunCH"})
+    @Test(groups = {"RegressionCH","RogersCartAbandon"})
     public void checkCartAbandonCancelCartatCartSummary_Continue_NewBeforeYouGoModalPage() {
         reporter.reportLogWithScreenshot("Launched the Easy Login Page");
         getRogersHomePage().clkTVBundle();

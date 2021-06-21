@@ -34,7 +34,7 @@ import java.util.Map;
 
 public class RogersCH_TC_065_SAI_ISS_NAC_AnonymousCxentersInternetShopPagefromISSlearnpage_ISStoggleCheckedNLTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","SmartStreamCH","DryRunCH"})
+    @Test(groups = {"RegressionCH","SmartStreamCH"})
     public void checkIssNacLearnPageToggleNLTest() {
         getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");

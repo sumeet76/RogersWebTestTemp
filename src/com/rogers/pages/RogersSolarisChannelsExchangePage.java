@@ -46,20 +46,17 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	@FindBy(xpath = "//button[@translate='global.dashboard.tv.exchangeFlexChannels.modalCTA']")
 	WebElement btnConfirmSelectedChannel;
 	
-	@FindBy(xpath = "//div[contains(@class,'desktop')]//a[@aria-describedby='ariaExchangeChannelsPage' ]//span[@role='text']")
+	@FindBy(xpath = "//div[contains(@class,'desktop')]//button[@aria-describedby='ariaExchangeChannelsPage' ]/span")
 	WebElement btnConfirmSwapDesktop;
 
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-chevron-up']/ancestor::button")
 	WebElement btnOpenConfirmSwap;
 
-
-	@FindBy(xpath = "//div[contains(@class,'mobile')]//a[@aria-describedby='ariaExchangeChannelsPage' ]//span[@role='text']")
+	@FindBy(xpath = "//div[contains(@class,'mobile')]//button[@aria-describedby='ariaExchangeChannelsPage' ]/span")
 	WebElement btnConfirmSwapMobile;
 
 	@FindBy(xpath = "//ds-icon[@ng-reflect-color='success']/ancestor::div//span[@class='ds-icon rds-icon-right']/ancestor::a/span")
 	WebElement btnContinueSwap;	
-	//button[@translate='global.dashboard.tv.exchangeFlexChannels.modalConfirmCTA']
-   //button[@class='ute-btn-primary ute-md']
 
 	@FindBy(xpath = "//ds-icon[@ng-reflect-color='success']")
 	WebElement icnSuccess;

@@ -49,7 +49,7 @@ import java.util.Map;
 
 public class RogersCH_TC_087_IginteTV_3P_NAC_Validate0CADexpressSetupFeefor3P_NativeTNwithCourierFulfilment_HotTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH","DryRunCH"})
+    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
 	    public void checkBuy3PValidate0CADexpressSetupFeefor3PNativeTNwithCourierFulfilmentHot() {
     	reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	getRogersHomePage().clkTVBundle();

@@ -35,7 +35,7 @@ import java.util.Map;
 
 public class RogersCH_TC_079_ISS_learnPage_ValidateSecondaryNavigationContent_linksRedirectionTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","DryRunCH","SmartStreamCH"})
+	@Test(groups = {"RegressionCH","SmartStreamCH"})
     public void checkISSlearnPageValidateSecondaryNavigationContentlinksRedirectionTest() {
         getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");

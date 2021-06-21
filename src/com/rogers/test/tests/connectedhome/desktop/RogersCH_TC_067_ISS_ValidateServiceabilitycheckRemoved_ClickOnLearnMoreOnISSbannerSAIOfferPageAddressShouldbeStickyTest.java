@@ -34,7 +34,7 @@ import java.util.Map;
 
 public class RogersCH_TC_067_ISS_ValidateServiceabilitycheckRemoved_ClickOnLearnMoreOnISSbannerSAIOfferPageAddressShouldbeStickyTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","SmartStreamCH","DryRunCH"})
+    @Test(groups = {"RegressionCH","SmartStreamCH"})
     public void checkServiceabilitycheckRemovedClickOnLearnMoreOnISSbannerSAIOfferPageAddresShouldbeSticky() {
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
         getRogersHomePage().clkEasyInternet();

@@ -35,7 +35,7 @@ import java.util.Map;
 
 public class RogersCH_TC_074_SAI_BaselineAndHouseAddress_ValidateServiceability_checkAnotherAddressTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","DryRunCH","saiCH"})
+	@Test(groups = {"RegressionCH","saiCH"})
     public void checkSignedInIgnite2PBundlesBuyInternetSameAddressBasementHouseTest() {
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
         getRogersHomePage().clkEasyInternet();

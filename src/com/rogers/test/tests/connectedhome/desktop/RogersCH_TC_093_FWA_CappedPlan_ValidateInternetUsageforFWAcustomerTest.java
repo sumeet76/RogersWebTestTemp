@@ -30,7 +30,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_093_FWA_CappedPlan_ValidateInternetUsageforFWAcustomerTest extends BaseTestClass {
 
-	@Test(groups = {"SanityCH","RegressionCH","RogersInternetCH"})
+	@Test//(groups = {"RegressionCH","RogersInternetCH"})
     public void checkInternetDashboard() {
     	            reporter.reportLogWithScreenshot("Launched the Home Page");
                     getRogersHomePage().clkSignIn();

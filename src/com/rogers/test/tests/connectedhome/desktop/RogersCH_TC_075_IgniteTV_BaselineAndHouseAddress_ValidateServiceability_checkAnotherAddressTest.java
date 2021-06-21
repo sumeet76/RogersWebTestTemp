@@ -35,7 +35,7 @@ import java.util.Map;
 
 public class RogersCH_TC_075_IgniteTV_BaselineAndHouseAddress_ValidateServiceability_checkAnotherAddressTest extends BaseTestClass {
 
-	@Test(groups = {"DryRunCH","RegressionCH","RogersCustomerIgniteBuyCH"})
+	@Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
     public void checkSignedInIgnite2PBundlesBuyInternetSameAddressBasementHouseTest() {
         reporter.reportLogWithScreenshot("Launched the Easy Login Page");
         getRogersHomePage().clkTVBundle();
