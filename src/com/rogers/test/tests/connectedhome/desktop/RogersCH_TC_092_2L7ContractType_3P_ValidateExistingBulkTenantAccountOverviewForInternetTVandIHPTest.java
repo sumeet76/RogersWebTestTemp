@@ -29,8 +29,8 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_092_2L7ContractType_3P_ValidateExistingBulkTenantAccountOverviewForInternetTVandIHPTest extends BaseTestClass {
 
-	 @Test//groups = {"RegressionCH","IgniteTVDashboardCH"})
-    public void checkTVDashboard() {
+	 @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
+    public void check2L7ContractType_3P_ValidateExistingBulkTenantAccountOverviewForInternetTVandIHP() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
         getRogersLoginPage().switchToSignInIFrame();

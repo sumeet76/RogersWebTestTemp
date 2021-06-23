@@ -50,8 +50,8 @@ import java.util.Map;
 
 public class RogersCH_TC_095_NAC3P_ChannelsAndThemePack_MonthlyFeeBannerValidationNLTest extends BaseTestClass {
 
-    @Test//(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
-	public void checkBuyStarterTVOffer() {
+    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
+	public void checkNAC3P_ChannelsAndThemePack_MonthlyFeeBannerValidationNL() {
 	reporter.reportLogWithScreenshot("Launched the Easy Login Page");
 	getRogersHomePage().clkTVBundle();
 	reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
@@ -59,8 +59,8 @@ public class RogersCH_TC_095_NAC3P_ChannelsAndThemePack_MonthlyFeeBannerValidati
 	getRogersHomePage().clkServiceability();
 	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
 	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-	String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
-	String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
+	String  strAddressLine1=TestDataHandler.tc65_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line1");
+	String  strAddressLine2=TestDataHandler.tc65_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line2");
 	getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
 	getRogersHomePage().clkIgniteAddressLookupSubmit();
 	reporter.reportLogWithScreenshot("Launched the ignite-bundles page");

@@ -47,7 +47,8 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_096_IgniteTV_3P_NAC_PortIn_ValidateDatefieldEntryFulfillmentPageTest extends BaseTestClass {
 
-    public void checkBuyIginteTVOffer() {
+    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
+    public void check3P_NAC_PortIn_ValidateDatefieldEntryFulfillmentPageTest() {
         reporter.reportLogWithScreenshot("Launched the Easy Login Page");
         getRogersHomePage().clkTVBundle();
         reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
@@ -99,7 +100,6 @@ public class RogersCH_TC_096_IgniteTV_3P_NAC_PortIn_ValidateDatefieldEntryFulfil
         getRogersIgniteTVCreditCheckPage().selectDOBMonth();
         getRogersIgniteTVCreditCheckPage().selectDOBDay();
         reporter.reportLogWithScreenshot("Entered DOB details");
-
         getRogersIgniteTVCreditCheckPage().selectFirstID("Driver's License");
         getRogersIgniteTVCreditCheckPage().selectProvince("Ontario");
         getRogersIgniteTVCreditCheckPage().selectExpiryYear();
@@ -113,12 +113,10 @@ public class RogersCH_TC_096_IgniteTV_3P_NAC_PortIn_ValidateDatefieldEntryFulfil
         getRogersIgniteTVCreditCheckPage().selectPassportExpiryMonth();
         getRogersIgniteTVCreditCheckPage().selectPassportExpiryDay();
         getRogersIgniteTVCreditCheckPage().clkCreditConsent();
-
         reporter.reportLogWithScreenshot("Passport Details");
         getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
         reporter.reportLogWithScreenshot("Home Phone selection page has launched");
         getRogersHomePhoneSelectionPage().clkContinueHomePhoneSelection();
-
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
         getRogersTechInstallPage().selTechInstalStartDate();
@@ -130,22 +128,20 @@ public class RogersCH_TC_096_IgniteTV_3P_NAC_PortIn_ValidateDatefieldEntryFulfil
         getRogersTechInstallPage().selectBackupTimeSlot();
         reporter.reportLogWithScreenshot("Selected End date for Installation slot");
         getRogersTechInstallPage().setContactNumber();
+        reporter.reportLogWithScreenshot("Entered Contact Number");
         getRogersTechInstallPage().setMobielNumber();
         reporter.reportLogWithScreenshot("tech install details");
         getRogersTechInstallPage().clkTechInstalConsent();
+        reporter.reportLogWithScreenshot("Consent chek has done");
         getRogersTechInstallPage().clkTechInstallContinue();
-
         reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(),"Launched the payment options page","Payment options page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
         getRogersPaymentOptionsPage().selectPaymentMode("Monthly Bill");
         reporter.reportLogWithScreenshot("Payment options Details");
         getRogersPaymentOptionsPage().clkPaymentConfirm();
-
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
-
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
-
         getRogersOrderReviewPage().clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
         getRogersOrderReviewPage().clkSubmit();
@@ -163,7 +159,7 @@ public class RogersCH_TC_096_IgniteTV_3P_NAC_PortIn_ValidateDatefieldEntryFulfil
 	
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 }

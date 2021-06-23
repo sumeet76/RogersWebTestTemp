@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_094_2PSolarisCustomer_ManageChannelsAndThemePack_MonthlyFeeBannerValidationTest extends BaseTestClass {
 
-	 @Test//(groups = {"RegressionCH","IgniteTVDashboardCH"})
+	 @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
 	public void check2PSolarisCustomer_ManageChannelsAndThemePack_MonthlyFeeBannerValidationFlow() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();

@@ -99,6 +99,7 @@ public class TestDataHandler {
 	public static AccountData tc89_Legacy3pToIgnite3P;
 	public static AccountData tc90_Legacy1PTVtoIgnite2P;
 	public static AccountData tc92_2L7ContractType3PBulkTenant;
+	public static AccountData tc93_FWACappedPlan;
 	public static AccountData tc57_sHMSignedInInternetBuy;
 	public static AccountData tc51_igniteSmartStream;
 	public static AccountData tc31_SolarisInternetAccountWithUsageAndPackageUpgrade;
@@ -301,6 +302,7 @@ public class TestDataHandler {
 		tc61_SHMSignedInInternetBuyDiffAddress=YamlHandler.getCableAccountData("TC61_SHMSignedInInternetBuyDiffAddress");
 		tc56_WirelessSignedInInternetBuyBasement=YamlHandler.getCableAccountData("TC56_WirelessSignedInInternetBuyBasement");
 		tc63_ShmSignedInInternetBuyBasement=YamlHandler.getCableAccountData("TC63_ShmSignedInInternetBuyBasement");
+		tc93_FWACappedPlan=YamlHandler.getCableAccountData("TC93_FWACappedPlan");
 		//Ignite TV test data
 		tcm05_SolarisTVAccountForUpgrade  = YamlHandler.getCableAccountData("TCM05_SolarisTVAccountForUpgrade");
 		tc35_CRMaddressMismatchWithSGI = YamlHandler.getCableAccountData("TC35_CRMaddressMismatchWithSGI");
