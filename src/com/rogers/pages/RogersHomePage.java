@@ -250,13 +250,17 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='m-navLink__icon rds-icon-avatar']")
 	WebElement btnIconAvatar;
 
-	@FindBy(xpath = "//span[contains(text(),'Internet')]/ancestor::ul[@class='list-none d-flex']//ds-icon[@name='down']")
+	@FindBy(xpath = "//dsa-subnav-desktop//a[@title='View links to Ignite Internet Information Pages']")
 	WebElement subnavIgniteInternet;
 
-	@FindBy(xpath = "//span[contains(text(),'TV & Streaming') or contains(text(),'Télé et Diffusion en continu')]/ancestor::li[@role='menuitem']//ds-icon[@name='down']")
+	@FindAll({
+	@FindBy(xpath = "//dsa-subnav-desktop//a[@title='View links to TV & Streaming information pages']"),
+	@FindBy(xpath = "//span[contains(text(),'TV & Streaming') or contains(text(),'Télé et Diffusion en continu')]/ancestor::li[@role='menuitem']//ds-icon[@name='right']")})
 	WebElement subnavIgniteSmartStream;
 
-	@FindBy(xpath = "//span[contains(text(),'Help and Support') or contains(text(),'Soutien')]/ancestor::li[@role='menuitem']//ds-icon[@name='right']")
+	@FindAll({
+	@FindBy(xpath = "//dsa-subnav-desktop//a[@title='Open for help on Ignite SmartStream']"),
+	@FindBy(xpath = "//dsa-subnav-desktop//a[@title='Open for help on Ignite Internet products']")})
 	WebElement subnavHelpAndSupport;
 
 	@FindBy(xpath = "//li[@class='mb-0 ng-star-inserted']//a[contains(@title,'Open to learn more about Ignite Internet') or contains(@title,'Ouvrir pour en savoir plus sur Élan Internet')]")

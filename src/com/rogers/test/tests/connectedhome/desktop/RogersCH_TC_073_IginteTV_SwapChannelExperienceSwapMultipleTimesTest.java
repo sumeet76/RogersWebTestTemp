@@ -65,8 +65,6 @@ public class RogersCH_TC_073_IginteTV_SwapChannelExperienceSwapMultipleTimesTest
          reporter.reportLogWithScreenshot("TV Channels are removed");
          getRogersSolarisChannelsExchangePage().checkTVChannels(availableChannels);
          reporter.reportLogWithScreenshot("TV Channels are added");
-         getRogersSolarisChannelsExchangePage().clkAddChannel();
-         reporter.reportLogWithScreenshot("Added the Swap-in Channel three");
          getRogersSolarisChannelsExchangePage().clkConfirmSwap();
          reporter.hardAssert(getRogersSolarisChannelsExchangePage().verifyExchangeSuccess(),"Swap Success","Swap failed");
          reporter.reportLogWithScreenshot("Swap Success popup has launched");
@@ -103,8 +101,6 @@ public class RogersCH_TC_073_IginteTV_SwapChannelExperienceSwapMultipleTimesTest
         reporter.reportLogWithScreenshot("TV Channels are removed");
         getRogersSolarisChannelsExchangePage().checkTVChannels(availableChannels);
         reporter.reportLogWithScreenshot("TV Channels are added");
-        getRogersSolarisChannelsExchangePage().clkAddChannel();
-        reporter.reportLogWithScreenshot("Added the Swap-in Channel three");
         getRogersSolarisChannelsExchangePage().clkConfirmSwap();
         reporter.hardAssert(getRogersSolarisChannelsExchangePage().verifyExchangeSuccess(),"Swap Success","Swap failed");
         reporter.reportLogWithScreenshot("Swap Success popup has launched");
