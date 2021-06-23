@@ -40,6 +40,7 @@ public class RedesignRpotgOVData {
 	private String depositAmount;
 	private String customerRiskLevel;
 	public String portinNumber;
+	private String sharingType;
 
 	/**
 	 * @return the contactID
@@ -360,13 +361,26 @@ public class RedesignRpotgOVData {
 	 * @return the portin number
 	 */
 	public String getPortinNumber() {
-		return customerRiskLevel;
+		return portinNumber;
 	}
 	/**
 	 * @param portinNumber the portin number to set
 	 */
 	public void setPortinNumber(String portinNumber) {
 		this.portinNumber = portinNumber;
+	}
+
+	/**
+	 * @return the sharingType
+	 */
+	public String getSharingType() {
+		return sharingType;
+	}
+	/**
+	 * @param sharingType the sharingType to set
+	 */
+	public void setSharingType(String sharingType) {
+		this.sharingType = sharingType;
 	}
 	
 }

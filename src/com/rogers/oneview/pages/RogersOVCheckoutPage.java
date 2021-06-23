@@ -1213,7 +1213,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 		//getReusableActionsInstance().scrollToElementAndClick(drpSelectPaymentMethod);
 		new Select(getDriver().findElement(By.xpath("//select[@data-test='select-payment-option']"))).selectByVisibleText(strPaymentMethod);
 		if (strPaymentMethod.equalsIgnoreCase("Pre-authorized Credit Card - Token")) {
-			strTokenNumber = TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getNumber3();
+			strTokenNumber = TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getNumber1();
 			setPreAuthCreditTokenNumber(strTokenNumber);
 		}
 /*		getReusableActionsInstance().scrollToElementAndClick(drpSelectPaymentMethod);

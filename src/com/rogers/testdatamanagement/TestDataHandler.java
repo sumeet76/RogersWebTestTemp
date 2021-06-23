@@ -130,6 +130,7 @@ public class TestDataHandler {
 	public static RedesignRpotgOVData buyFlowsOVtestCase18;
 	public static RedesignRpotgOVData buyFlowsOVtestCase19;
 	public static RedesignRpotgOVData buyFlowsOVtestCase20;
+	public static RedesignRpotgOVData buyFlowsOVtestCase21;
 	public static AALData tc07AAL;
 	public static PPCData tc08PPC;
 	public static HUPData tc09HupPpcPotgSharedML;
@@ -456,12 +457,12 @@ public class TestDataHandler {
 		buyFlowsOVtestCase13 = YamlHandler.getAALdataOneView("tc13OVAALBYODNonShareStandardShippingAccount");
 		buyFlowsOVtestCase14 = YamlHandler.getRedesignOVNACData("tc14OVNACOutboundNoTermStandardShipping");
 		buyFlowsOVtestCase15 = YamlHandler.getRedesignOVNACData("tc15OVNACOutboundFinanceStandardShipping");
-		buyFlowsOVtestCase16 = YamlHandler.getRedesignOVNACData("tc16OVNACFieldSales");
+		buyFlowsOVtestCase16 = YamlHandler.getRedesignOVNACData("tc16OVNACFieldSalesUpfrontExpressShipping");
 		buyFlowsOVtestCase17 = YamlHandler.getRedesignOVNACData("tc17OVNACCSR");
 		buyFlowsOVtestCase18 = YamlHandler.getRedesignOVNACData("tc18OVNACBYODOutboundPlanPortin");
 		buyFlowsOVtestCase19 = YamlHandler.getRedesignOVNACData("tc19OVNACOutboundHighRiskQCFrench");
 		buyFlowsOVtestCase20 = YamlHandler.getRedesignOVNACData("tc20OVNACOutboundBasicPhoneTTPlanMB");
-
+		buyFlowsOVtestCase21 = YamlHandler.getRedesignOVNACData("tc21OVNACFieldSalesNACToAALNoTermStandardShipping");
 	}
 
 	private static void chOneViewDataInit() throws FileNotFoundException {

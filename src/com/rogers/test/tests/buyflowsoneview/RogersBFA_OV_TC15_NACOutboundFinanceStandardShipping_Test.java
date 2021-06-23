@@ -54,7 +54,8 @@ public class RogersBFA_OV_TC15_NACOutboundFinanceStandardShipping_Test extends B
 		getRogersOVPlanConfigPage().clickViewMoreOptions();
 		getRogersOVPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersOVPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.buyFlowsOVtestCase15.getDeviceCostIndex()),TestDataHandler.buyFlowsOVtestCase15.getDeviceCostType());
 		reporter.reportLogPassWithScreenshot("Device cost option selected");
-		getRogersOVPlanConfigPage().clickShowMoreDetails();
+		//getRogersOVPlanConfigPage().clickShowMoreOutDetails();
+		getRogersOVPlanConfigPage().clickOutBoundAccordion();
 		getRogersOVPlanConfigPage().selectDataOptionButton(getRogersOVPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.buyFlowsOVtestCase15.getDataOptionIndex()));
 		reporter.reportLogPassWithScreenshot("Data option selected");
 		//getRogersOVPlanConfigPage().clickGetBPOOffer();
@@ -70,7 +71,7 @@ public class RogersBFA_OV_TC15_NACOutboundFinanceStandardShipping_Test extends B
 		String firstName = getRogersOVCheckoutPage().setFirstNameCreateProfile();
 		String lastName = getRogersOVCheckoutPage().setLastNameCreateProfile();
 		String fullNameCreateProfile=firstName+" "+lastName;
-		String contactNumberCreateProfile=TestDataHandler.buyFlowsOVtestCase19.getContactNumber();
+		String contactNumberCreateProfile=TestDataHandler.buyFlowsOVtestCase15.getContactNumber();
 		getRogersOVCheckoutPage().setContactNumberCreateProfile(contactNumberCreateProfile);
 		reporter.reportLogPassWithScreenshot("Create Profile Page details Entered till ContactNumber");
 		//getRogersOVCheckoutPage().clkUseBillingAddressRadioBtnCreateProfile();
@@ -89,27 +90,27 @@ public class RogersBFA_OV_TC15_NACOutboundFinanceStandardShipping_Test extends B
 		getRogersOVCheckoutPage().selectPrimaryDropdownOption(TestDataHandler.buyFlowsOVtestCase15.getSelectYourPrimaryIdOption(), TestDataHandler.buyFlowsOVtestCase15.getNumber());
 		reporter.reportLogPassWithScreenshot("Driver's License Number Entered Successfully");
 		getRogersOVCheckoutPage().selectSecondDropdownOption(TestDataHandler.buyFlowsOVtestCase15.getSelectYourSecondIdOption(),TestDataHandler.buyFlowsOVtestCase15.getSecondNumber());
-		reporter.reportLogPassWithScreenshot("Provincial ID Number Entered Successfully");
+		reporter.reportLogPassWithScreenshot("Birth Certificate Number Entered Successfully");
 		getRogersOVCheckoutPage().clkCreditAuthorizationChkBox();
 		getRogersOVCheckoutPage().clkCreditEvalContinue();
 		reporter.reportLogWithScreenshot("Credit Evaluation modal displayed");
 		reporter.hardAssert(getRogersOVChoosePhonePage().checkAcceptAndContinueOnCreditEvalModal() , "Credit Evaluation modal with credit information displayed","Credit Evaluation modal doesn't contain credit info");
-		reporter.hardAssert(getRogersOVChoosePhonePage().validateCustomerType(),"Given customer risk type "+TestDataHandler.buyFlowsOVtestCase08.getCustomerRiskLevel()+" matches the risk type "+getRogersOVChoosePhonePage().checkCustomerType()+" from the credit evaluation modal","Given customer risk type "+TestDataHandler.buyFlowsOVtestCase08.getCustomerRiskLevel()+" does not match the risk type "+getRogersOVChoosePhonePage().checkCustomerType()+" from the credit evaluation modal");
+		//reporter.hardAssert(getRogersOVChoosePhonePage().validateCustomerType(),"Given customer risk type "+TestDataHandler.buyFlowsOVtestCase08.getCustomerRiskLevel()+" matches the risk type "+getRogersOVChoosePhonePage().checkCustomerType()+" from the credit evaluation modal","Given customer risk type "+TestDataHandler.buyFlowsOVtestCase08.getCustomerRiskLevel()+" does not match the risk type "+getRogersOVChoosePhonePage().checkCustomerType()+" from the credit evaluation modal");
 		reporter.reportLogWithScreenshot("Credit Evaluation Modal");
 		getRogersOVChoosePhonePage().clickAcceptAndContinueOnCreditEvalModal();
 		reporter.reportLogWithScreenshot("clicked on Accept and Continue button");
 		// ***************Choose a Number Stepper*************//
 		reporter.softAssert(getRogersOVCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed", "Choose a Number Title not disaplayed");
 		reporter.softAssert(getRogersOVCheckoutPage().isChooseNumberTabsDisplayed(), "Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
-		getRogersOVCheckoutPage().chooseExistingNumberOption("");
-		getRogersOVCheckoutPage().selectCityDropdownOption(TestDataHandler.buyFlowsOVtestCase15.getCtnCity());
-		reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
-		getRogersOVCheckoutPage().clkChosePhoneNumber();
-		reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
-		reporter.softAssert(getRogersOVCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");
-		getRogersOVCheckoutPage().clkChooseNumberbutton();
-		reporter.hardAssert(getRogersOVCheckoutPage().isChooseaNumberLabelDisplayed(), "Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
-		reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
+		reporter.reportLogPassWithScreenshot("Choose phone number page loaded successfully");
+		getRogersOVCheckoutPage().selectPortinOption();
+		getRogersOVCheckoutPage().chooseExistingNumberOption(TestDataHandler.buyFlowsOVtestCase15.getPortinNumber());
+		reporter.hardAssert(getRogersOVCheckoutPage().verifyPortinEligibility(),
+				"Entered number is eligible to portin", "Entered number not eligible to portin");
+		reporter.reportLogPassWithScreenshot("Portin number verified successfully");
+		String portinSuccessMessage = getRogersOVCheckoutPage().getPortinSuccessMessage();
+		reporter.reportLogWithScreenshot(portinSuccessMessage);
+		getRogersOVCheckoutPage().clkContinueBtnPorinStepper();
 		// ***************Billing & Payment Stepper*************//
 		reporter.softAssert(getRogersOVCheckoutPage().isBillingOptionsTitleDisplayed(), "Billing Options Title Displayed",
 				"Billing Options Title Not Present");
@@ -139,9 +140,9 @@ public class RogersBFA_OV_TC15_NACOutboundFinanceStandardShipping_Test extends B
 			//getRogersOVOrderReviewPage().clkContinue();
 			getRogersOVOneTimePaymentPage().clkPreAuthorizedCreditCardTokenButton();
 			getRogersOVOneTimePaymentPage().setNameonCard();
-			getRogersOVOneTimePaymentPage().setTokenDetails(TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getNumber3(),
-					TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getExpiryMonth3(),
-					TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getExpiryYear3());
+			getRogersOVOneTimePaymentPage().setTokenDetails(TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getNumber1(),
+					TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getExpiryMonth1(),
+					TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getExpiryYear1());
 			reporter.reportLogWithScreenshot("Rogers Payment Page");
 			getRogersOVPaymentPage().clkSubmit();
 		} /*else {
@@ -160,7 +161,7 @@ public class RogersBFA_OV_TC15_NACOutboundFinanceStandardShipping_Test extends B
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }
