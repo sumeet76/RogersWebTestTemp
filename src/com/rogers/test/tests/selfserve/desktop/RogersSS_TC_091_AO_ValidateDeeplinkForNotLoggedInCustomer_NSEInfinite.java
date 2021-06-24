@@ -38,7 +38,7 @@ public class RogersSS_TC_091_AO_ValidateDeeplinkForNotLoggedInCustomer_NSEInfini
 
 "	
  */
-    @Test(groups = {"RegressionSS","WirelessDashboardSS"})
+    @Test(groups = {"RegressionSS","AccountOverviewSS"})
     public void validateDeeplinkForNotLoggedInCustomerNSEInfinite() {
     	reporter.reportLogWithScreenshot("Rogers launhced");
     	String strDeepLinkURL = System.getProperty("QaUrl").split(".com")[0]+".com/consumer/self-serve/payments/history";

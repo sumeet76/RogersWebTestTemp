@@ -25,8 +25,8 @@ public class RogersSS_TC_117_Rogers_SGI_BillingWidgetValidateBalance extends Bas
 		closeSession();
 	}
 	
-	
-	@Test(groups = {"SanitySS","AccountOverviewSS"})
+	@Ignore
+	@Test(groups = {"",""})
     public void validateSignInAndAccountOverview() {
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
