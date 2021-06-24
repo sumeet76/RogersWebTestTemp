@@ -168,6 +168,11 @@ public class BaseTestClass {
     protected static final ThreadLocal<RogersHomePageServiceability> RogersHomePageServiceabilityThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersSecurityPackagesPage> RogersSecurityPackagesPageThreadLocal = new ThreadLocal<>();
 
+    public static RogersPSEFPage getRogersPSEFPage() {
+        return RogersPSEFPageThreadLocal.get();
+    }
+
+    protected static final ThreadLocal<RogersPSEFPage> RogersPSEFPageThreadLocal = new ThreadLocal<>();
 
     AppiumServerJava appiumServer = new AppiumServerJava();
     //int port = 4723;
@@ -877,7 +882,7 @@ public class BaseTestClass {
                 RogersAccountOverviewPageThreadLocal.set(new RogersAccountOverviewPage(getDriver()));
                 RogersSHMDashboardPageThreadLocal.set(new RogersSHMDashboardPage(getDriver()));
                 RogersFinanceAccessoriesPagePageThreadLocal.set(new RogersFinanceAccessoriesPage(getDriver()));
-
+                RogersPSEFPageThreadLocal.set(new RogersPSEFPage(getDriver()));
             break;
 
             case "connectedhome_legacyanonymous":

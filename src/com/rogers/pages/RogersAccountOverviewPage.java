@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -53,8 +54,11 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//ds-icon/following-sibling::span[contains(text(),'Suspended')]")
 	WebElement suspendedCTN;
 	
-	@FindBy(xpath = "//rss-subscription-detail//span[text()=' Suspended ' or text()=' Suspendu ']")
+	@FindBy(xpath = "//rss-subscription-detail//span[text()=' Suspended ' or text()=' Suspendu ']//ancestor::rss-subscription-detail//span[@class='subscription-number']")
 	List<WebElement> lstSuspendedCTNs;
+
+	@FindBy(xpath = "//rss-subscription-detail//span[not(text()=' Suspended ') or not(text()=' Suspendu ')]//ancestor::rss-subscription-detail//span[@class='subscription-number']")
+	List<WebElement> lstActiveCTNs;
 	
 	@FindBy(xpath = "//div[@class='row modal-content-header']//button[@class='close']")
 	WebElement popUpInternetPopup;
@@ -373,6 +377,12 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//a//span[contains(@class,'ds-button__copy') and (contains(text(),'Manage') or contains(text(),'Gérer'))]")
 	WebElement btnSubscriptionManage;
 
+	@FindBy(xpath = "//rss-value-prop-wrapper[@aria-label='Manage your Disney+ subscription' or @aria-label='Gérer l’abonnement Disney+']//a//span[contains(@class,'ds-button__copy') and (contains(text(),'Manage') or contains(text(),'Gérer'))]")
+	WebElement btnDPSubscriptionManage;
+
+	@FindBy(xpath = "//rss-value-prop-wrapper[@title='Start your Disney+ subscription' or @title='Commencer l’abonnement Disney+']//span[contains(text(),'Sign up') or contains(text(),'S’inscrire')]")
+	WebElement btnDPSubscriptionSignUp;
+
 	@FindBy(xpath = "//h2[text()='Currently subscribed' or text()='Abonnement en cours']")
 	WebElement headerCurrentlySubscribed;
 
@@ -455,6 +465,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	
 	@FindBy(xpath = "//button[@title='Continue and activate this Apple Music subscription' or @title='Continue and start this Apple Music subscription' or contains(@title,'Continuer et activer cet abonnement')]")
 	WebElement btnSubscribeToSubsscription;
+
+	@FindBy(xpath = "//button[@title='Continue and start this Disney+ subscription' or @title='Continue and start this Apple Music subscription' or contains(@title,'Continuer et commencer l’abonnement Disney+')]")
+	WebElement btnSubscribeToDisneyPlus;
 
 	@FindBy(xpath = "//a[text()='Yes' or contains(text(),'Oui')]")
 	WebElement btnCloseFAQ;
@@ -1650,13 +1663,45 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	}
 
 	/**
+	 * Verifies if the account has subscription available which can be redeem
+	 * @return true if available else false
+	 * @author Mirza.Kamran
+	 */
+	public boolean verifyIfDPSubscriptionIsAvailableForCancellation() {
+		return getReusableActionsInstance().isElementVisible(btnDPSubscriptionManage);
+	}
+
+	/**
+	 * Verifies if the account has subscription available which can be redeem
+	 * @author Mirza.Kamran
+	 */
+	public void clickDPlusSignUporManageButton() {
+		if(getReusableActionsInstance().isElementVisible(btnSubscriptionSignUp))
+		{
+			getReusableActionsInstance().getWhenReady(btnSubscriptionSignUp).click();
+		}else if(getReusableActionsInstance().isElementVisible(btnDPSubscriptionManage))
+		{
+			getReusableActionsInstance().getWhenReady(btnDPSubscriptionManage).click();
+		}
+
+	}
+
+	/**
 	 * Clicks on Manage button
 	 * @author Mirza.Kamran
 	 */
 	public void clkManageOnSubscription() {
 		getReusableActionsInstance().getWhenReady(btnSubscriptionManage).click();
-	} 
-		
+	}
+
+	/**
+	 * Clicks on Manage button
+	 * @author Mirza.Kamran
+	 */
+	public void clkManageOnSubscriptionDisneyPlus() {
+		getReusableActionsInstance().getWhenReady(btnDPSubscriptionManage).click();
+	}
+
 	/**
 	 * Verifies if the currently subscribed pane is displayed
 	 * @return true if available else false
@@ -2195,4 +2240,50 @@ public boolean verifyPTPWidgetIsDisplayed() {
 		return date;
 	}
 
+	public List<String> getSuspendedCTNAvailable() {
+		List<String> suspendedCTNslst = new ArrayList<>();
+		for (WebElement ctn:lstSuspendedCTNs
+			 ) {
+			suspendedCTNslst.add(CurrencyHelpers.extractNumberFromString(ctn.getText().trim()));
+		}
+		return  suspendedCTNslst;
+	}
+
+
+	public List<String> getActiveCTNAvailable() {
+		List<String> activeCTNslst = new ArrayList<>();
+		List<String> suspendedCTNslst = new ArrayList<>();
+		for (WebElement ctn:lstSuspendedCTNs
+		) {
+			suspendedCTNslst.add(CurrencyHelpers.extractNumberFromString(ctn.getText().trim()));
+		}
+
+
+		for (WebElement ctn:lstActiveCTNs
+		) {
+			if(!checkIfListContainsCTN(suspendedCTNslst,CurrencyHelpers.extractNumberFromString(ctn.getText().trim())))
+			{
+				activeCTNslst.add(CurrencyHelpers.extractNumberFromString(ctn.getText().trim()));
+			}
+
+
+		}
+
+
+
+		return  activeCTNslst;
+	}
+
+	private boolean checkIfListContainsCTN(List<String> suspendedCTNslst,String strCTNS){
+		boolean found = false;
+		for (String ctn:suspendedCTNslst
+		) {
+			if(ctn.equals(strCTNS))
+			{
+				found = true;
+				break;
+			}
+		}
+		return  found;
+	}
 }
