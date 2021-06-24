@@ -35,7 +35,7 @@ public class RogersSS_TC_135_PSEF_DP_ValidateSMPafterResumingCTNfromCancelledSta
 		getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc134.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc134.getPassword());
-        String strCTNResotedAfterCancel = TestDataHandler.tc134.getAccountDetails().getCtn();
+        String strCTNRestoredFromV21AfterCancel = TestDataHandler.tc134.getAccountDetails().getCtn();
         reporter.reportLogWithScreenshot("Login Credential is entered.");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
@@ -64,10 +64,14 @@ public class RogersSS_TC_135_PSEF_DP_ValidateSMPafterResumingCTNfromCancelledSta
         getCommonBusinessFlows().scrollToMiddleOfWebPage();
         reporter.reportLogWithScreenshot("Current subscription mid view");
 
-        reporter.hardAssert(getRogersPSEFPage().verifyIfRedeemSubscriptionDetailsIsDisplayedCorrectly(strCTNResotedAfterCancel),
+        reporter.hardAssert(getRogersPSEFPage().verifyIfCancelledDPIsShown(strCTNRestoredFromV21AfterCancel),
                 "CTN displayed under Subscribed section with cancelled CTA next to CTN," +
                         " and Disney+  subscription  restored with it's original subscription start date",
-                "The current subscription is NOT displayed");
+                "It seems the CTN did not get displayed under Subscribed section with cancelled CTA next to CTN,\" +\n" +
+                        "                        \" and Disney+  subscription  restored with it's original subscription start date");
+
+
+
     }
 
   
