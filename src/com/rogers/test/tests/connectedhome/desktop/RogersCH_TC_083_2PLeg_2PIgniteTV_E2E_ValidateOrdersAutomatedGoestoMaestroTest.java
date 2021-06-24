@@ -70,7 +70,8 @@ public class RogersCH_TC_083_2PLeg_2PIgniteTV_E2E_ValidateOrdersAutomatedGoestoM
         reporter.reportLogWithScreenshot("Launched the Account Page"); 
 		 getRogersHomePage().clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-		 getRogersHomePage().clkIgniteTVExistingCustomer();
+		 //getRogersHomePage().clkIgniteTVExistingCustomer();
+		getDriver().get(System.getProperty("QaUrl")+"/web/consumer/ignite-bundles/tv-internet");
     	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	getRogersHomePage().clkNoThnx();
     	getRogersHomePage().clkServiceability();
@@ -79,7 +80,7 @@ public class RogersCH_TC_083_2PLeg_2PIgniteTV_E2E_ValidateOrdersAutomatedGoestoM
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
 
-        getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
+        getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
         reporter.reportLogWithScreenshot("Launched the information popup");
         getRogersIgniteTVBuyPage().clkIUnderstand();
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");
@@ -94,8 +95,22 @@ public class RogersCH_TC_083_2PLeg_2PIgniteTV_E2E_ValidateOrdersAutomatedGoestoM
         getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomerMigration(TestDataHandler.tc83_Legacy2PtoIgnite2P.getAccountDetails().getMonth());
         getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomerMigration(TestDataHandler.tc83_Legacy2PtoIgnite2P.getAccountDetails().getDate());
         reporter.reportLogWithScreenshot("Entered the DOB details");
-        getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
-
+		getRogersIgniteTVCreditCheckPage().selectFirstID("Driver's License");
+		getRogersIgniteTVCreditCheckPage().selectProvince("Ontario");
+		getRogersIgniteTVCreditCheckPage().selectExpiryYear();
+		getRogersIgniteTVCreditCheckPage().selectExpiryMonth();
+		getRogersIgniteTVCreditCheckPage().selectExpiryDay();
+		getRogersIgniteTVCreditCheckPage().setDrivingLicenseNumber("ONTARIO");
+		reporter.reportLogWithScreenshot("Driving License Details");
+		getRogersIgniteTVCreditCheckPage().selectSecondIDOption("Passport");
+		getRogersIgniteTVCreditCheckPage().setPassportNumber();
+		getRogersIgniteTVCreditCheckPage().selectPassportExpiryYear();
+		getRogersIgniteTVCreditCheckPage().selectPassportExpiryMonth();
+		getRogersIgniteTVCreditCheckPage().selectPassportExpiryDay();
+		getRogersIgniteTVCreditCheckPage().clkCreditConsent();
+		reporter.reportLogWithScreenshot("Passport Details");
+		getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
+		//Validate flowType="AUTL" from continueBuy call, will be adding with selenium4
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
         getRogersTechInstallPage().clkTechInstalConsent();

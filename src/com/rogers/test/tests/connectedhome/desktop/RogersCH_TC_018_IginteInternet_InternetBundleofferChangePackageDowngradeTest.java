@@ -29,7 +29,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_018_IginteInternet_InternetBundleofferChangePackageDowngradeTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","RogersInternetCH","DryRunCH"})
+	@Test(groups = {"RegressionCH","RogersInternetCH"})
     public void checkInternetBundleofferChangePackageDowngrade() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();

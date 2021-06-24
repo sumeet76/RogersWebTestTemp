@@ -159,7 +159,10 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//input[@id='ds-form-input-id-1']/parent::div")
     WebElement inputLastNameDiv;
 
-    @FindBy(xpath = "//span[contains(text(),'CONTINUE')]")
+    @FindAll({
+            @FindBy(xpath = "//span[contains(text(),'CONTINUE')]"),
+            @FindBy(xpath = "//button[contains(@title,'Continue caller Id')]")
+    })
     WebElement callerIDContinue;
 
     /**
@@ -827,7 +830,8 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      */
     public void enterFirstName() {
         String strFirstName = FormFiller.generateRandomName();
-        getReusableActionsInstance().getWhenReady(inputFirstNameDiv, 30).click();
+        getReusableActionsInstance().executeJavaScriptClick(inputFirstNameDiv);
+        //getReusableActionsInstance().getWhenReady(inputFirstNameDiv, 30).click();
         getReusableActionsInstance().getWhenReady(inputFirstName, 3).sendKeys(strFirstName);
     }
 
@@ -849,7 +853,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
         try {
             enterFirstName();
             enterSecondName();
-            getReusableActionsInstance().waitForElementVisibility(callerIDContinue, 20);
+            //getReusableActionsInstance().waitForElementVisibility(callerIDContinue, 20);
             getReusableActionsInstance().executeJavaScriptClick(callerIDContinue);
             //getReusableActionsInstance().clickIfAvailable(callerIDContinue, 20);
         }catch (ElementClickInterceptedException except){

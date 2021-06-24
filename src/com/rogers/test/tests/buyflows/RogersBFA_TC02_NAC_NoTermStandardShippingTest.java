@@ -43,7 +43,7 @@ public class RogersBFA_TC02_NAC_NoTermStandardShippingTest extends BaseTestClass
 		getRogersDeviceConfigPage().clickContinueButton();
 		// ****************************Plan config// page***************************************
 		reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName), "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
-		getRogersPlanConfigPage().selectNoTermDeviceDeviceCost();
+		getRogersPlanConfigPage().clkRadioButtonNoTerm();
 		getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
 		getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();

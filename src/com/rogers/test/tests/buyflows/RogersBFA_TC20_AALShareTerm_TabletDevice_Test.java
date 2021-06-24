@@ -31,7 +31,7 @@ public class RogersBFA_TC20_AALShareTerm_TabletDevice_Test extends BaseTestClass
         getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");
-        getDriver().get(System.getProperty("AWSAALUrl"));
+        getDriver().get(System.getProperty("AWSUrl")+"?flowType=aal");
         //------------------------------------Device Catalog page--------------------------------------------
         reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvaluationPopupPresent(), "Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
         reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed", "Credit Evaluation Text not disaplayed on Modal");
@@ -58,11 +58,14 @@ public class RogersBFA_TC20_AALShareTerm_TabletDevice_Test extends BaseTestClass
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
         reporter.hardAssert(getRogersPlanConfigPage().verifyDeviceCostContinueButton(), "Plan Config loaded", "Plan config page not loaded");
         reporter.reportLogPassWithScreenshot("Device cost option displayed");
-        getRogersPlanConfigPage().clickViewMoreOptions();
+        //getRogersPlanConfigPage().clickViewMoreOptions();
         reporter.reportLogWithScreenshot("In Plan config page");
-        getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc20AALTermTablet.getDeviceCostIndex()));
+        getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
+        //getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc20AALTermTablet.getDeviceCostIndex()));
         reporter.hardAssert(getRogersPlanConfigPage().verifyTabletDataTalkOptionSelected(),"Data and Talk option selected successfully","Data and Talk option not selected");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
+        getRogersPlanConfigPage().clkCallerIDContinueBtnForTablet();
+        reporter.reportLogWithScreenshot("CalledID details entered");
         String monthlyFeesAmountWithTax = getRogersPlanConfigPage().getMonthlyFeesAmount();
         String oneTimeFeesAmountWithTax = getRogersPlanConfigPage().getOneTimeFeesAmount();
         reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees " + monthlyFeesAmountWithTax + "2. oneTimeFee " + oneTimeFeesAmountWithTax);

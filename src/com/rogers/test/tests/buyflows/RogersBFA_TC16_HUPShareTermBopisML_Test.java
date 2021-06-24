@@ -71,6 +71,8 @@ class RogersBFA_TC16_HUPShareTermBopisML_Test extends BaseTestClass {
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
+        reporter.reportLogWithScreenshot("Clicked on Proceed to checkout button in plan builder");
+        getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
         reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                 "Billing Address is not selected");
         reporter.reportLogPassWithScreenshot("On Checkout page");

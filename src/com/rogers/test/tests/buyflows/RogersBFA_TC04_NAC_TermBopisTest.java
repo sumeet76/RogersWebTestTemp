@@ -23,7 +23,7 @@ public class RogersBFA_TC04_NAC_TermBopisTest extends BaseTestClass {
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-	@Test(groups = {"RegressionBFA","SanityBFA","NACBFA"})
+	@Test(groups = {"SanityBFA","RegressionBFA","NACBFA"})
 	public void rogersNACTermBopisTest() throws InterruptedException {
 
 		// **************************Device catalog page*****************************************

@@ -20,35 +20,52 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	
 	@FindBy(xpath ="//button[@class='ute-btn-secondary']//ins[@translate='global.cta.yes']")
 	WebElement btnActivateLater;
-	
-	@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Starter']/ancestor::span[@role='text']")
-	WebElement btnSolarisStarterPackage;
-	//h4[contains(normalize-space(.),'Télé Élan Découverte') or contains(normalize-space(.),'Ignite TV Starter')]/ancestor::div[@class='box-shadow-targeted-offer']//ins[@translate='global.cta.addToCart']
 
-	@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Select']/ancestor::span[@role='text']")
+	@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Select']/ancestor::a")
 	WebElement btnSolarisSelectPackage;
-	//h4[contains(normalize-space(.),'Télé Élan ') or contains(normalize-space(.),'Ignite TV Popular')]/ancestor::div[@class='solaris-carousel-item']//ins[@translate='global.cta.addToCart']
 
-	@FindBy(xpath ="//span[@id='ariaBundlesAddToCart_Rogers Ignite Popular']/ancestor::a")
+	@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Popular']/ancestor::a")
 	WebElement btnSolarisPopularPackage;
-	//h4[contains(normalize-space(.),'Télé Élan ') or contains(normalize-space(.),'Ignite TV Popular')]/ancestor::div[@class='solaris-carousel-item']//ins[@translate='global.cta.addToCart']
-
 
 	@FindAll({
-			@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Starter']/ancestor::a"),
-			@FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='allowedFlowAddToCart_Rogers Ignite Starter']/ancestor::a")})
-	WebElement btnSolarisStarterPackageNew;
-	//span[@translate='global.cta.addToCart']
-//h3[contains(text(),'Ignite Starter') or contains(text(),'Élan Découverte')]/ancestor::div[@class='bundle-tile-row']//span[@translate='global.cta.addToCart']
+	@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Starter']/ancestor::a"),
+	@FindBy(xpath = "//div[@class='bundle-tile-row']//span[@id='allowedFlowAddToCart_Rogers Ignite Starter']/ancestor::a")})
+	WebElement btnSolarisStarterPackage;
 
-
-/*	@FindAll({
-			@FindBy(xpath ="//span[@id='ariaBundlesAddToCart_Rogers Ignite Premier']/ancestor::a"),
-			@FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Premier']/ancestor::a")})
-		*/
-   @FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Premier']/ancestor::a")
+	@FindAll({
+   @FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Premier']/ancestor::a"),
+	@FindBy(xpath = "//div[@class='bundle-tile-price']//a[@aria-describedby='allowedFlowAddToCart_Rogers Ignite Premier']")})
 	WebElement btnSolarisPremierPackage;
-//h3[contains(text(),'Ignite Premier') or contains(text(),'Élan Premier')]/ancestor::div[@class='bundle-tile-row']//span[@translate='global.cta.addToCart']
+
+	@FindBy(xpath = "//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Flex 5']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']")
+	WebElement txtFlex5PackageCost;
+
+	@FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Flex 10']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']")
+	WebElement txtFlex10PackageCost;
+
+	@FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Flex 20+']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']")
+	WebElement txtFlex20PackageCost;
+
+	@FindBy(xpath = "//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Starter']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']")
+	WebElement txtStarterPackageCost;
+
+	@FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Premier']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']")
+	WebElement txtPremierPackageCost;
+
+	@FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Popular']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']")
+	WebElement txtPopularPackageCost;
+
+	@FindBy(xpath = "//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Select']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']")
+	WebElement txtSelectPackageCost;
+
+	@FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Flex 5']/ancestor::a")
+	WebElement btnFlex5Package;
+
+	@FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Flex 10']/ancestor::a")
+	WebElement btnFlex10Package;
+
+	@FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Flex 20+']/ancestor::a")
+	WebElement btnFlex20Package;
 
 	@FindBy(id = "addressLookup-modal")
 	WebElement txaIgniteAddressLookup;
@@ -64,11 +81,22 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	@FindBy(xpath = "//ds-checkbox[@ng-reflect-name=\"homephone\"]//div[contains(@class,'ds-checkbox__box')]")
 	WebElement checkboxHomephone;
-	
+
+	@FindBy(xpath = "//h2[@id='channels-tab']")
+	WebElement btnChannelsTab;
+
+	@FindBy(xpath = "//h2[@id='themepacks-tab']")
+	WebElement btnThemepacksTab;
+
+	@FindBy(xpath = "//span[@translate='global.message.priceIncreseAlert.priceIncreaseChannelCopy']")
+	WebElement bnrPriceIncreaseChannelCopy;
+
+	@FindBy(xpath = "//span[@translate='global.message.priceIncreseAlert.priceIncreaseThemeCopy']")
+	WebElement bnrPriceIncreaseThemeCopy;
+
 	@FindBy(xpath = "//div[contains(@class,'ute-btn-group-set-accessibility')]//ins[@translate='global.cta.continue']")
 	WebElement btnGoodNewsContinue;
-	
-		
+
 	@FindBy(xpath = "//div[@class='buttons-block hidden-xs']//ins[@translate='global.common.buttons.noThanksContinue']")
 	WebElement btnNoThanksContinue;
 	
@@ -77,16 +105,12 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	
 	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::a")
 	WebElement btnHomePhoneContinue;
-	//button[@class='continue-addon ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']
-	//button[@class='continue-addon ds-button ds-focus ds-active -primary -large']
 
 	@FindBy(xpath = "//h1[@class='cart-summary__header']")
 	WebElement txtCartSummary;
 
 	@FindBy(xpath = "//ds-radio-button[@aria-label='Select Yes']//div[contains(@id,'ds-radio-input')]")
 	WebElement rdo4KTV;
-	//ds-radio-button[@aria-label='Select Yes']//div[@class='ds-radioButton__innerCircle']
-	//input[@for='have4K-yes']
 
 	@FindBy(xpath = "//div[@class='mr-8 d-inline-block' and contains(text(),'Total')]")
 	WebElement txtTotalChannels;
@@ -142,7 +166,6 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//h1[@translate='global.modals.cartAbandonment.triggerEmailModal.title']")
 	WebElement popupEmailModal;
 
-
 	@FindBy(xpath = "//a[@title='MyRogers' or @title='MonRogers' and @class='m-navLink ng-star-inserted']")
 	WebElement lnkMyRogers;
 
@@ -151,10 +174,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	@FindBy(xpath = "//span[@translate='global.cta.checkout']/ancestor::span[@role='text']")
 	WebElement btnCheckout;
-	//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']
-	//button[@class='mr-24 cart-summary-checkout ds-button ds-focus ds-active -primary -large']
-	//button[@class='mr-24 cart-summary-checkout ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']
-	
+
 	@FindBy(xpath ="//div[@class='mt-auto w-100']//button[@aria-label='Order Rogers Ignite Starter online now' or @aria-label='Commandez Élan Découverte maintenant'] ")
 	WebElement btnSolarisStarterPackageServiceability;	
 
@@ -186,20 +206,16 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	   
 	@FindBy(xpath = "//span[contains(text(),' Yes, I understand') or contains(text(),'comprends')]/ancestor::span")
 	WebElement btnIUnderstand;
-	//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']
 
 	@FindBy(xpath ="//label[contains(@for,'global.modals.activateIgniteHomePhoneModal.messageForNewNumber')]")
 	WebElement rdoOptNewPhone;
-	////(//div[@class='a-radio'])[2]//label[contains(@for,'global.modals.activateIgniteHomePhoneModal.messageForNewNumber')]
-	
+
 	@FindBy(xpath ="//label[contains(@for,'global.modals.activateIgniteHomePhoneModal.messageForExistingNumber')]")
 	WebElement rdoOptNewPhoneEnable;
 	
 	@FindBy(xpath ="//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
 	WebElement btnOptPhone;
-	//button[@class='ds-button ds-focus ds-active -primary -large']
-	
-	
+
 	@FindBy(xpath ="//h2[@ute-content-source='atg']//span[contains(normalize-space(.),'Ignite Starter') or contains(normalize-space(.),'Élan Découverte')]/ancestor::div[@class='bundle-offer__tile']")
 	WebElement elmStarterRatecard;
 	
@@ -256,8 +272,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	
 	@FindBy(xpath = "//button[contains(@class,'stb-button increment')]//span[@class='ds-button__wrapper d-flex justify-content-center align-items-center']")
 	WebElement buttonAddIgniteTVBoxes;
-	//button[contains(@class,'stb-button increment')]//span[@class='ds-button__copy w-100']
-		
+
 	@FindBy(xpath = "//span[@translate='global.cta.updateCart']/ancestor::button")
 	WebElement buttonUpdateCart;
 	
@@ -267,10 +282,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -primary -large']//span[@class='ds-button__copy w-100']")
 	WebElement okayUpgradingToIgnitebundelsModal;
 	
-	@FindBy(xpath = "//i[contains(@class,'rch-icon-chevron-down')]")
+	@FindBy(xpath = "//span[contains(@class,'ds-icon rds-icon-chevron-down')]")
 	WebElement downChevronCartSummary;
 	
-	@FindBy(xpath = "//i[contains(@class,'rch-icon-chevron-up')]")
+	@FindBy(xpath = "//span[contains(@class,'ds-icon rds-icon-chevron-up')]")
 	WebElement upChevronCartSummary;
 	
 	@FindBy(xpath = "//div[contains(@class,'mini-cart-ss__body')]//tr[contains(@class,'cms-promotions-gwp ng-tns-c')]")
@@ -291,7 +306,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	
 	/**
 	 * To click on the chevron of your cart
-	 * @author Saurav.Goyal
+	 * @author chinnarao.vattam
 	 */
 	public void clkChevronDownYourCart() {
 		getReusableActionsInstance().waitForElementVisibility(downChevronCartSummary, 120);
@@ -316,8 +331,42 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	}
 
 	/**
+	 * To click on  Home phone checkbox
+	 * @author chinnarao.vattam
+	 */
+	public void clkChannelsTab() {
+		getReusableActionsInstance().getWhenReady(btnChannelsTab, 60).click();
+	}
+
+	/**
+	 * To click on  Home phone checkbox
+	 * @author chinnarao.vattam
+	 */
+	public void clkThemepacksTab() {
+		getReusableActionsInstance().getWhenReady(btnThemepacksTab, 60).click();
+	}
+	/**
+	 * To verify Price Increase Channel Copy banner
+	 * @return true if the Price Increase Channel Copy banner is available else return false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyPriceIncreaseChannelCopy() {
+		getReusableActionsInstance().waitForElementVisibility(bnrPriceIncreaseChannelCopy, 120);
+		return	getReusableActionsInstance().isElementVisible(bnrPriceIncreaseChannelCopy);
+	}
+	/**
+	 * To verify Price Increase Theme Copy banner
+	 * @return true if the Price Increase Theme Copy banner is available else return false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyPriceIncreaseThemeCopy() {
+		getReusableActionsInstance().waitForElementVisibility(bnrPriceIncreaseThemeCopy, 120);
+		return	getReusableActionsInstance().isElementVisible(bnrPriceIncreaseThemeCopy);
+	}
+
+	/**
 	 * To click on the chevron of your cart
-	 * @author Saurav.Goyal
+	 * @author Chinnarao.vattam
 	 */
 	public void clkChevronUpYourCart() {
 		getReusableActionsInstance().getWhenReady(upChevronCartSummary, 120).click();
@@ -510,15 +559,6 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		getReusableActionsInstance().clickWhenReady(btnActivateLater, 30);
 		
 	}
-
-	/**
-	 * To select the  Ignite TV Starter package on ignite-bundles/tv-internet page
-	 * @author chinnarao.vattam
-	 */
-	public void selectSolarisStarterPackage() {
-		getReusableActionsInstance().clickWhenReady(btnSolarisStarterPackage, 60);
-	}
-	
 	/**
 	 * To select the  Ignite TV Select package 
 	 * @author chinnarao.vattam
@@ -667,9 +707,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * Click Starter package button for anonymous customer
 	 * @author chinnarao.vattam
 	 */
-	public void selectSolarisStarterPackageNew() {
-		getReusableActionsInstance().waitForElementVisibility(btnSolarisStarterPackageNew, 120);
-		getReusableActionsInstance().getWhenReady(btnSolarisStarterPackageNew, 60).click();
+	public void selectSolarisStarterPackage() {
+		getReusableActionsInstance().waitForElementVisibility(btnSolarisStarterPackage, 120);
+		getReusableActionsInstance().getWhenReady(btnSolarisStarterPackage, 60).click();
 	}
 
 	/**
@@ -725,8 +765,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisStarterPackageMobile() {
-		getReusableActionsInstance().waitForElementVisibility(btnSolarisStarterPackageNew, 120);
-		getReusableActionsInstance().executeJavaScriptClick(btnSolarisStarterPackageNew);
+		getReusableActionsInstance().waitForElementVisibility(btnSolarisStarterPackage, 120);
+		getReusableActionsInstance().executeJavaScriptClick(btnSolarisStarterPackage);
 		//getReusableActionsInstance().getWhenReady(btnSolarisStarterPackageMobile, 60).click();
 	}
 
@@ -1057,4 +1097,73 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(hvrAvailableChannels, 60).click();
 	}
 
+	/**
+	 * To verify Select Package Cost
+	 * @return true if the Select Package Cost is available else return false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifySelectPackageCost() {
+		return	getReusableActionsInstance().isElementVisible(txtSelectPackageCost,10);
+	}
+
+	/**
+	 * To verify Popular Package Cost
+	 * @return true if the Popular Package Cost is available else return false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyPopularPackageCost() {
+		return	getReusableActionsInstance().isElementVisible(txtPopularPackageCost,10);
+	}
+
+	/**
+	 * To verify Premier Package Cost
+	 * @return true if the Premier Package Cost is available else return false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyPremierPackageCost() {
+		return	getReusableActionsInstance().isElementVisible(txtPremierPackageCost,10);
+	}
+
+	/**
+	 * To verify Starter Package Cost
+	 * @return true if the Starter Package Cost is available else return false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyStarterPackageCost() {
+		return	getReusableActionsInstance().isElementVisible(txtStarterPackageCost,10);
+	}
+
+	/**
+	 * To verify Flex20 Package Cost
+	 * @return true if the Flex20 Package Cost is available else return false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyFlex20PackageCost() {
+		return	getReusableActionsInstance().isElementVisible(txtFlex20PackageCost,10);
+	}
+
+	/**
+	 * To verify Flex10 Package Cost
+	 * @return true if the Flex10 Package Cost is available else return false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyFlex10PackageCost() {
+		return	getReusableActionsInstance().isElementVisible(txtFlex10PackageCost,10);
+	}
+
+	/**
+	 * To verify Flex5 Package Cost
+	 * @return true if the Flex5 Package Cost is available else return false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyFlex5PackageCost() {
+		return	getReusableActionsInstance().isElementVisible(txtFlex5PackageCost,30);
+	}
+;
+;
+;
+;
+;
+;
+;
 }

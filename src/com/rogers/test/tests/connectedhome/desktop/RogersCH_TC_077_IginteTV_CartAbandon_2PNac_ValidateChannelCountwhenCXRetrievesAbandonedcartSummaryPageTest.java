@@ -48,7 +48,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_077_IginteTV_CartAbandon_2PNac_ValidateChannelCountwhenCXRetrievesAbandonedcartSummaryPageTest extends BaseTestClass {
 
-	@Test(groups = {"DryRunCH","RegressionCH","RogersCartAbandon"})
+	@Test(groups = {"RegressionCH","RogersCartAbandon"})
     public void checkNACAbandonChannelvalidation3p() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	getRogersHomePage().clkTVBundle();
@@ -124,7 +124,7 @@ public class RogersCH_TC_077_IginteTV_CartAbandon_2PNac_ValidateChannelCountwhen
         getRogersIgniteTVBuyPage().set4KTV();
         reporter.reportLogWithScreenshot("4k TV selected");
         getRogersIgniteTVBuyPage().clkCheckout();
-        //reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
+        reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersIgniteTVProfileCreationPage().setEmail();
         getRogersIgniteTVProfileCreationPage().setFirstname();
@@ -207,7 +207,7 @@ public class RogersCH_TC_077_IginteTV_CartAbandon_2PNac_ValidateChannelCountwhen
         getRogersIgniteTVBuyPage().set4KTV();
         reporter.reportLogWithScreenshot("4k TV selected");
         getRogersIgniteTVBuyPage().clkCheckout();
-        //reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
+        reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersIgniteTVProfileCreationPage().setEmail();
         getRogersIgniteTVProfileCreationPage().setFirstname();

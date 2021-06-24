@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_OV_TC02_HUPMultiLine_ChooseExistingPlan_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","RegressionOVBFA","SanityBFA","HupOvBFA"})
+	@Test(groups = {"RegressionBFA","RegressionOVBFA","HupOvBFA"})
     public void hupMultiLineChooseExistingPlanFlow() {
 		reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
 		reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");

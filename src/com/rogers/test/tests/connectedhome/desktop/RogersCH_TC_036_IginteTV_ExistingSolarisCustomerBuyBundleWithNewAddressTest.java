@@ -68,20 +68,20 @@ public class RogersCH_TC_036_IginteTV_ExistingSolarisCustomerBuyBundleWithNewAdd
         reporter.reportLogWithScreenshot("Launched the Account Page"); 
 		 getRogersHomePage().clkExistingCustomerShop();
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        getRogersHomePage().clkIgniteTVExistingCustomer();
-    	
+        //getRogersHomePage().clkIgniteTVExistingCustomer();
+		 getDriver().get(System.getProperty("QaUrl")+"/web/consumer/ignite-bundles/tv-internet");
     	reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
     	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	getRogersHomePage().clkServiceability();
     	reporter.reportLogWithScreenshot("Launched the csutomer availability check popup");
         String  strAddressLine1=TestDataHandler.tc04_07_SolarisTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc04_07_SolarisTVAccount.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
 		 reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
 		 getRogersIgniteTVBuyPage().clkHomephone();
-		 getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
+		 getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
 		reporter.reportLogWithScreenshot("Launched the port-in popup");
 
 		 reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");

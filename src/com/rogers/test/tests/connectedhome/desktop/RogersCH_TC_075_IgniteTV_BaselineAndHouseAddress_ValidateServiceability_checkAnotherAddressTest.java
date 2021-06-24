@@ -35,42 +35,41 @@ import java.util.Map;
 
 public class RogersCH_TC_075_IgniteTV_BaselineAndHouseAddress_ValidateServiceability_checkAnotherAddressTest extends BaseTestClass {
 
-	@Test(groups = {"DryRunCH","RegressionCH","RogersCustomerIgniteBuyCH"})
+	@Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
     public void checkSignedInIgnite2PBundlesBuyInternetSameAddressBasementHouseTest() {
         reporter.reportLogWithScreenshot("Launched the Easy Login Page");
         getRogersHomePage().clkTVBundle();
-
         reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
         getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        //getRogersHomePage().clkAddressCheck();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1= TestDataHandler.tc75_IgniteTVBaseLineHomeAddress.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc75_IgniteTVBaseLineHomeAddress.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
-        getRogersHomePage().clkIgniteAddressLookupSubmit();
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
+        //getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to opt the address");
-        getRogersHomePage().setIgniteAddressLookupRetry();
+        //getRogersHomePage().setIgniteAddressLookupRetry();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         getRogersHomePage().clkCheckAnotherAddress();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        getRogersHomePage().setAnotherAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
-        getRogersHomePage().clkAnotherAddressLookupSubmit();
+        getRogersHomePage().setAnotherAddressLookup(strAddressLine1+","+strAddressLine2);
+        //getRogersHomePage().clkAnotherAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        getRogersHomePage().setIgniteAddressLookupBasement();
-        reporter.reportLogWithScreenshot("Launched the customer availability check popup for basement address");
-        getRogersHomePage().clkAnotherLookupSubmit();
+        //getRogersHomePage().setIgniteAddressLookupBasement();
+        //reporter.reportLogWithScreenshot("Launched the customer availability check popup for basement address");
+        //getRogersHomePage().clkAnotherLookupSubmit();
+        getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-        getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
+        getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
         getRogersIgniteTVBuyPage().set4KTV();
         reporter.reportLogWithScreenshot("4k TV selected");
         getRogersIgniteTVBuyPage().clkCheckout();
 
-        //reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
+        reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersIgniteTVProfileCreationPage().setEmail();
         getRogersIgniteTVProfileCreationPage().setFirstname();

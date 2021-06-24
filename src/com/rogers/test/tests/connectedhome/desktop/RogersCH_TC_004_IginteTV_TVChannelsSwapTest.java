@@ -35,7 +35,6 @@ import java.util.List;
  **/
 
 public class RogersCH_TC_004_IginteTV_TVChannelsSwapTest extends BaseTestClass {
-	
 
 
     @Test(groups = {"SanityCH","RegressionCH","IgniteTVDashboardCH"})
@@ -67,8 +66,6 @@ public class RogersCH_TC_004_IginteTV_TVChannelsSwapTest extends BaseTestClass {
         reporter.reportLogWithScreenshot("TV Channels are removed");
         getRogersSolarisChannelsExchangePage().checkTVChannels(availableChannels);
         reporter.reportLogWithScreenshot("TV Channels are added");
-        getRogersSolarisChannelsExchangePage().clkAddChannel();
-        reporter.reportLogWithScreenshot("Added the Swap-in Channel three");
         getRogersSolarisChannelsExchangePage().clkConfirmSwap();
         reporter.hardAssert(getRogersSolarisChannelsExchangePage().verifyExchangeSuccess(),"Swap Success","Swap failed");
         reporter.reportLogWithScreenshot("Swap Success popup has launched");

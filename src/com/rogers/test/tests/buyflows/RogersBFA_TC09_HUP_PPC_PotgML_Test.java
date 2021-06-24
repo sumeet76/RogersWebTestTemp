@@ -61,6 +61,7 @@ public class RogersBFA_TC09_HUP_PPC_PotgML_Test extends BaseTestClass {
         getRogersDeviceConfigPage().clickContinueButton();
         reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
+        getRogersPlanConfigPage().clkDownPaymentChkBox();
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
         getRogersPlanConfigPage().clickContinueOnModalToDoWithOldPhone();
@@ -72,6 +73,7 @@ public class RogersBFA_TC09_HUP_PPC_PotgML_Test extends BaseTestClass {
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
+        getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
         reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                 "Billing Address is not selected");
         reporter.reportLogPassWithScreenshot("On Checkout page");

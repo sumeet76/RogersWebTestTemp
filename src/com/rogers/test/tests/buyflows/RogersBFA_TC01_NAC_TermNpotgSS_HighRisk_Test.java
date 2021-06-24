@@ -38,6 +38,7 @@ public class RogersBFA_TC01_NAC_TermNpotgSS_HighRisk_Test extends BaseTestClass 
         getRogersDeviceConfigPage().clickContinueButton();
         //############################Plan config page###############################
         reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName), "BreadCrumb on Plan config page is working fine","BreadCrumb is not working fine");
+        getRogersPlanConfigPage().clkDownPaymentChkBox();
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page data option selected");
         getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
@@ -101,14 +102,14 @@ public class RogersBFA_TC01_NAC_TermNpotgSS_HighRisk_Test extends BaseTestClass 
         reporter.softAssert(getRogersCheckoutPage().isCreditEvalPopupPresent(),"Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
         reporter.softAssert(getRogersCheckoutPage().isCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed","Credit Evaluation Text not disaplayed on Modal");
         reporter.reportLogWithScreenshot("Credit Evaluation processing popup");
-        reporter.hardAssert(getRogersCheckoutPage().verifyClaSecurityDepositModalPresent(),
-                "CLA and Security deposit modal is displayed", "Cla and Security Deposit Modal is not dislayed");
-        reporter.softAssert(getRogersCheckoutPage().verifySecurityDepositTextPresent(),
-                "Security deposit information is dislayed in modal", "Security deposit information is not displayed in modal");
-        reporter.reportLogWithScreenshot("CLA/Security Deposit Modal");
-        reporter.hardAssert(getRogersCheckoutPage().verifySecurityDepositAmount(TestDataHandler.tc01NACTermNpotgSS.getDepositAmount()),
-                "Security deposit amount is displayed correctly", "Security Deposit amoount is not displayed correctly");
-        reporter.hardAssert(getRogersCheckoutPage().verifyClaTextOnModal(), "CLA text on modal displayed properly", "CLA text on modal not displayed");
+        //reporter.hardAssert(getRogersCheckoutPage().verifyClaSecurityDepositModalPresent(),
+                //"CLA and Security deposit modal is displayed", "Cla and Security Deposit Modal is not dislayed");
+        //reporter.softAssert(getRogersCheckoutPage().verifySecurityDepositTextPresent(),
+                //"Security deposit information is dislayed in modal", "Security deposit information is not displayed in modal");
+        //reporter.reportLogWithScreenshot("CLA/Security Deposit Modal");
+        //reporter.hardAssert(getRogersCheckoutPage().verifySecurityDepositAmount(TestDataHandler.tc01NACTermNpotgSS.getDepositAmount()),
+                //"Security deposit amount is displayed correctly", "Security Deposit amoount is not displayed correctly");
+        //reporter.hardAssert(getRogersCheckoutPage().verifyClaTextOnModal(), "CLA text on modal displayed properly", "CLA text on modal not displayed");
         getRogersCheckoutPage().clkAcceptButton();
         reporter.hardAssert(getRogersCheckoutPage().isIdentificationLabel(),"Credit Evaluation Successful", "Credit Evaluation Identification Label not disaplayed");
        // ***************Choose a Number Stepper*************//      
@@ -126,8 +127,8 @@ public class RogersBFA_TC01_NAC_TermNpotgSS_HighRisk_Test extends BaseTestClass 
         reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(),"Billing Options Title Displayed","Billing Options Title Not Present");
         reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed","Select Payment Method Dropdown not disaplayed");
 		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc01NACTermNpotgSS.getPaymentMethod());
-        reporter.hardAssert(getRogersCheckoutPage().verifyOneTimeFeesAfterSecDeposit(TestDataHandler.tc01NACTermNpotgSS.getDepositAmount()),
-                "Security deposit amount displayed correctly in cart summary", "Security deposit amount not displayed correctly in cart summary");
+        //reporter.hardAssert(getRogersCheckoutPage().verifyOneTimeFeesAfterSecDeposit(TestDataHandler.tc01NACTermNpotgSS.getDepositAmount()),
+                //"Security deposit amount displayed correctly in cart summary", "Security deposit amount not displayed correctly in cart summary");
         getRogersCheckoutPage().clkBillingContinueButton();
         //***************Shipping Stepper*************//
         reporter.softAssert(getRogersCheckoutPage().clkBillingAddress(),"Billing Address radio button is selected ","Billing Address is not selected");

@@ -51,7 +51,8 @@ public class RogersCH_TC_035_IginteTV_CRMaddressMismatchWithSGI_ValidateServicea
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersHomePage().clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-		getRogersHomePage().clkIgniteTVExistingCustomer();
+		//getRogersHomePage().clkIgniteTVExistingCustomer();
+		getDriver().get(System.getProperty("QaUrl")+"/web/consumer/ignite-bundles/tv-internet");
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 		getRogersHomePage().clkNoThnx();
 		getRogersHomePage().clkServiceability();
@@ -59,7 +60,7 @@ public class RogersCH_TC_035_IginteTV_CRMaddressMismatchWithSGI_ValidateServicea
 		getRogersHomePage().clkUseThisAddress();
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-		getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
+		getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
 		getRogersIgniteTVBuyPage().clkIUnderstand();
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");
 		reporter.reportLogWithScreenshot("Launched the cart summary page");

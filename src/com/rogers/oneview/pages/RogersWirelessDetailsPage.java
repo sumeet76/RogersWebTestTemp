@@ -42,7 +42,7 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	WebElement lblResetVoicemailPwdSuccess;
 	
 	//@FindBy(xpath = "//ins[@translate='plans.btnText']/ancestor::button")
-	@FindBy(xpath = "//div[@class='manage-plan']//preceding-sibling::div//button")
+	@FindBy(xpath = "(//div[contains(@class,'upgrade-button')])[1]//button[1]")
 	WebElement btnChangePlan;
 	
 	@FindBy(xpath = "//span[@translate='mppc_entry_1_change_current_plan']")
@@ -51,6 +51,7 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	//@FindBy(xpath = "//span[@class='plan-cta-text']")
 	
 	@FindAll({
+			@FindBy(xpath = "(//div[contains(@class,'upgrade-button')])[2]//button[1]"),
 		@FindBy(xpath = "//button[@title='Changer mon appareil pour un nouveau' or @title='Upgrade my device to a new one']"),
 		@FindBy(xpath = "//div[@class='device-details']//button[@class='upgrade-button no-bg']")
 	})

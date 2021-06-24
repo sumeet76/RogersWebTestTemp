@@ -68,7 +68,7 @@ public class TestDataHandler {
 	public static AccountData tc54_iginteTVWirelessCRMaddressMismatchWithSGI;
 	public static AccountData tc55_rCISandECIDLowRiskMediumRiskAddressRetry;
 	public static AccountData tc61_SHMSignedInInternetBuyDiffAddress;
-	public static AccountData tc62_WirelessSignedInInternetBuyBasement;
+	public static AccountData tc56_WirelessSignedInInternetBuyBasement;
 	public static AccountData tc46_legacyInternetAccount;
 	public static AccountData tcm04_SolarisInternetAccount;
 	public static AccountData tcm06_IgniteTVAccount;
@@ -84,7 +84,8 @@ public class TestDataHandler {
 	public static AccountData tc06_2_SolarisChangeTVManageChannels;
 	public static AccountData tc06_1_SolarisChangeTVManageThemePacks;
 	public static AccountData tc35_CRMaddressMismatchWithSGI;
-	public static AccountData tc56_wirelessSignedInInternetBuy;
+	public static AccountData tc29_IgniteServiceabilityAddressNB;
+	public static AccountData tc62_wirelessSignedInInternetBuy;
 	public static AccountData tc60_WirelessSignedInInternetBuyDiffAddress;
 	public static AccountData tc63_ShmSignedInInternetBuyBasement;
 	public static AccountData tc65_IgniteSmartStreamNL;
@@ -94,6 +95,11 @@ public class TestDataHandler {
 	public static AccountData tc76_Legact2Pto3PIgniteBasementHousePortinHot;
 	public static AccountData tc82_Legacy1PtoIgnite2P;
 	public static AccountData tc83_Legacy2PtoIgnite2P;
+	public static AccountData tc88_Legacy2PTVIntToIgnite3P;
+	public static AccountData tc89_Legacy3pToIgnite3P;
+	public static AccountData tc90_Legacy1PTVtoIgnite2P;
+	public static AccountData tc92_2L7ContractType3PBulkTenant;
+	public static AccountData tc93_FWACappedPlan;
 	public static AccountData tc57_sHMSignedInInternetBuy;
 	public static AccountData tc51_igniteSmartStream;
 	public static AccountData tc31_SolarisInternetAccountWithUsageAndPackageUpgrade;
@@ -265,14 +271,19 @@ public class TestDataHandler {
 		solarisConsumerGWPInternetSHM = YamlHandler.getCableAccountData("solarisConsumerGWPInternetSHM");
 		solarisConsumerGWPRhp = YamlHandler.getCableAccountData("solarisConsumerGWPRhp");
 		solarisConsumerGWPRhpShm = YamlHandler.getCableAccountData("solarisConsumerGWPRhpShm");
-		
-    	//Legacy Internet test data
+		tc29_IgniteServiceabilityAddressNB=YamlHandler.getCableAccountData("TC29_IgniteServiceabilityAddressNB");
+		tc92_2L7ContractType3PBulkTenant=YamlHandler.getCableAccountData("TC92_2L7ContractType3PBulkTenant");
+		//Legacy Internet test data
 		tc46_legacyInternetAccount = YamlHandler.getCableAccountData("TC46_LegacyInternetAccount");
-		tc56_wirelessSignedInInternetBuy = YamlHandler.getCableAccountData("TC56_WirelessSignedInInternetBuy");
+		tc62_wirelessSignedInInternetBuy = YamlHandler.getCableAccountData("TC62_WirelessSignedInInternetBuy");
 		tc57_sHMSignedInInternetBuy = YamlHandler.getCableAccountData("TC57_SHMSignedInInternetBuy");
 		tc58_saiAccountForIgniteBundleBuy = YamlHandler.getCableAccountData("TC58_SaiAccountForIgniteBundleBuy");
 		tc59_saiforIgniteBundle = YamlHandler.getCableAccountData("TC59_SAIforIgniteBundle");
-
+		tc82_Legacy1PtoIgnite2P= YamlHandler.getCableAccountData("TC82_Legacy1PtoIgnite2P");
+		tc83_Legacy2PtoIgnite2P= YamlHandler.getCableAccountData("TC83_Legacy2PtoIgnite2P");
+		tc88_Legacy2PTVIntToIgnite3P= YamlHandler.getCableAccountData("TC88_Legacy2PTVIntToIgnite3P");
+		tc89_Legacy3pToIgnite3P= YamlHandler.getCableAccountData("TC89_Legacy3pToIgnite3P");
+		tc90_Legacy1PTVtoIgnite2P= YamlHandler.getCableAccountData("TC90_Legacy1PTVtoIgnite2P");
 		//RHP test data
 		tc48_legacyRHP = YamlHandler.getCableAccountData("TC48_LegacyRHP");
     	tc42_igniteRHP = YamlHandler.getCableAccountData("TC42_IgniteRHP");
@@ -295,8 +306,9 @@ public class TestDataHandler {
 		tc55_rCISandECIDLowRiskMediumRiskAddressRetry=YamlHandler.getCableAccountData("TC55_RCISandECIDLowRiskMediumRiskAddressRetry");
 		tc60_WirelessSignedInInternetBuyDiffAddress=YamlHandler.getCableAccountData("TC60_WirelessSignedInInternetBuyDiffAddress");
 		tc61_SHMSignedInInternetBuyDiffAddress=YamlHandler.getCableAccountData("TC61_SHMSignedInInternetBuyDiffAddress");
-		tc62_WirelessSignedInInternetBuyBasement=YamlHandler.getCableAccountData("TC62_WirelessSignedInInternetBuyBasement");
+		tc56_WirelessSignedInInternetBuyBasement=YamlHandler.getCableAccountData("TC56_WirelessSignedInInternetBuyBasement");
 		tc63_ShmSignedInInternetBuyBasement=YamlHandler.getCableAccountData("TC63_ShmSignedInInternetBuyBasement");
+		tc93_FWACappedPlan=YamlHandler.getCableAccountData("TC93_FWACappedPlan");
 		//Ignite TV test data
 		tcm05_SolarisTVAccountForUpgrade  = YamlHandler.getCableAccountData("TCM05_SolarisTVAccountForUpgrade");
 		tc35_CRMaddressMismatchWithSGI = YamlHandler.getCableAccountData("TC35_CRMaddressMismatchWithSGI");
@@ -322,8 +334,6 @@ public class TestDataHandler {
 		tc74_SaiBaseLineHomeAddress= YamlHandler.getCableAccountData("TC74_SaiBaseLineHomeAddress");
 		tc75_IgniteTVBaseLineHomeAddress= YamlHandler.getCableAccountData("TC75_IgniteTVBaseLineHomeAddress");
 		tc76_Legact2Pto3PIgniteBasementHousePortinHot= YamlHandler.getCableAccountData("TC76_Legact2Pto3PIgniteBasementHousePortinHot");
-		tc82_Legacy1PtoIgnite2P= YamlHandler.getCableAccountData("TC82_Legacy1PtoIgnite2P");
-		tc83_Legacy2PtoIgnite2P= YamlHandler.getCableAccountData("TC83_Legacy2PtoIgnite2P");
 		}
 	
 	private static void selfserveDataInit() throws FileNotFoundException {
@@ -443,8 +453,8 @@ public class TestDataHandler {
 		buyFlowsOVtestCase06 = YamlHandler.getHUPdataOneView("tc06OVHUPExistingPlanSinglelineAccount");
 		buyFlowsOVtestCase07 = YamlHandler.getPPCdataOneView("tc07OVPPCSinglelineAccount");
 		buyFlowsOVtestCase08 = YamlHandler.getAALdataOneView("tc08OVAALSinglelineBopisShippingAccount");
-		buyFlowsOVtestCase09 = YamlHandler.getAALdataOneView("tc09OVAALSinglelinePOTGShippingAccount");
-		buyFlowsOVtestCase10 = YamlHandler.getAALdataOneView("tc10OVAALNonShareNoTermQCStandardShippingAccount");
+		//buyFlowsOVtestCase09 = YamlHandler.getAALdataOneView("tc09OVAALSinglelinePOTGShippingAccount");
+		//buyFlowsOVtestCase10 = YamlHandler.getAALdataOneView("tc10OVAALNonShareNoTermQCStandardShippingAccount");
 	}
 	
 	private static void chOneViewDataInit() throws FileNotFoundException {

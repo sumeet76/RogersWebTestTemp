@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_017_IginteInternet_InternetPackageDowngradeTest extends BaseTestClass {
 
-	@Test(groups = {"SanityCH","RegressionCH","RogersInternetCH","DryRunCH"})
+	@Test(groups = {"SanityCH","RegressionCH","RogersInternetCH"})
     public void checkInternetPackageDowngrade() {
         getRogersHomePage().clkSignIn();
         getRogersLoginPage().switchToSignInIFrame();
