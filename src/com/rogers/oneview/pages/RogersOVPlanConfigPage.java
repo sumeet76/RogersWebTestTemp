@@ -30,11 +30,20 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[contains(@class,'ds-button ds-corners')]//span[contains(text(),' Show More') or contains(text(),' Afficher les ')]")
     WebElement showMoreDetails;
 
-    @FindBy(xpath = "//button[contains(@title,'Plan')]")
-    WebElement showPlans;
+    @FindBy(xpath = "//button[contains(@title,'Plan') or contains(@title,'Show Retention Plans')]")
+    WebElement showRetPlans;
 
-    @FindBy(xpath = "//button[contains(@title,'Plan')]//span/span[contains(text(),'')]")
-    WebElement showPlansText;
+    @FindBy(xpath = "//button[contains(@title,'Show Outbound Plans')]")
+    WebElement showOutPlans;
+
+    @FindBy(xpath = "//button[contains(@title,'Retention')]//span/span[contains(text(),' Show Retention Plans ')]")
+    WebElement showRetPlansText;
+
+    @FindAll({
+            @FindBy(xpath = "//button[contains(@title,'Outbound')]//span//span[contains(text(),' Outbound Plans ')]"),
+            @FindBy(xpath = "//button[contains(@title,'Field')]//span//span[contains(text(),' Field Sales Plan ')]")
+    })
+    WebElement showOutFieldPlansText;
 
     @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-1-edit-step-selection-option-')]//label[1]")
     List<WebElement> noOfDeviceTiers;
@@ -180,7 +189,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//input[@id='ds-form-input-id-1']/parent::div")
     WebElement inputLastNameDiv;
 
-    @FindBy(xpath = "//button[@data-test='stepper-5-edit-step-continue-button']")
+    @FindBy(xpath = "//span[contains(text(),'CONTINUE')]")
     WebElement callerIDContinue;
 
     @FindBy(xpath = "//span[contains(@class,'cartSummary')]")
@@ -189,8 +198,11 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[contains(@data-test,'outbound')]")
     WebElement outboundAccordion;
 
-    @FindBy(xpath = "(//div[contains(@id,'ds-radio-input-id')])[2]")
-    WebElement noTermRadioBtn;
+    @FindAll({
+            @FindBy(xpath = "//button[contains(@data-test,'field')]"),
+            @FindBy(xpath = "//button[contains(@data-test,'outbound')]")
+    })
+    WebElement outboundFieldAccordion;
 
     /**
      * Select Device Protection Header on Plan config page
@@ -209,22 +221,16 @@ public class RogersOVPlanConfigPage extends BasePageClass {
        return getReusableActionsInstance().isElementVisible(By.xpath("//div[contains(@class,'completed')]//p[contains(.,'" +deviceName+ "')]"),40);
     }
 
-    /**
-     * Clicks on NO TERM radio button in device cost stepper
-     * @author praveen.kumar7
-     */
-    public void clkRadioButtonNoTerm() {
-        getReusableActionsInstance().scrollToElement(noTermRadioBtn);
-        getReusableActionsInstance().clickWhenReady(noTermRadioBtn,30);
+    public boolean verifyByodSelectedDeviceSection() {
+        return getReusableActionsInstance().isElementVisible(By.xpath("//div[contains(@class,'completed')]//p[contains(.,'Bring') or contains(.,'Apportez')]"));
     }
-
 
     /**
      * Clicks on View More Options to expand device cost stepper
      * @author praveen.kumar7
      */
     public void clickViewMoreOptions() {
-        getReusableActionsInstance().clickIfAvailable(viewMoreOptions,10);
+        getReusableActionsInstance().clickIfAvailable(viewMoreOptions);
     }
 
     /**
@@ -232,9 +238,23 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clickShowMoreDetails() {
-        getReusableActionsInstance().clickIfAvailable(showPlans, 20);
-        getReusableActionsInstance().clickIfAvailable(showMoreDetails,20);
+        getReusableActionsInstance().clickIfAvailable(showMoreDetails,40);
     }
+
+    public void clickShowMoreOutDetails() {
+        if (showOutFieldPlansText.getText().contains("Outbound")) {
+            getReusableActionsInstance().clickIfAvailable(showOutPlans, 40);
+        } else if(showOutFieldPlansText.getText().contains("Field Sales")) {
+            getReusableActionsInstance().clickIfAvailable(showOutPlans, 40);
+        }
+        getReusableActionsInstance().clickIfAvailable(showMoreDetails,40);
+    }
+
+    public void clickShowMoreRetDetails() {
+        getReusableActionsInstance().clickIfAvailable(showRetPlans, 40);
+        getReusableActionsInstance().clickIfAvailable(showMoreDetails,40);
+    }
+
 
     /**
      * Creates an xpath for the provided stepper with index value which is passed as parameter
@@ -259,11 +279,11 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     }
 
     public String createXpathWithInputData(String dataOption) {
-        String a = showPlansText.getText();
-        if (showPlansText.getText().contains("Outbound")) {
-            return updatedXpathDcDoTo = "(//div[contains(@data-test,'outbound-plans')]//label)["+dataOption+"]";
-        } else if (showPlansText.getText().contains("Field Sales")) {
-            return updatedXpathDcDoTo = "(//div[contains(@data-test,'field-sales-plans')]//label)["+dataOption+"]";
+        String a = showOutFieldPlansText.getText();
+        if (showOutFieldPlansText.getText().contains("Outbound")) {
+            updatedXpathDcDoTo = "(//div[contains(@data-test,'outbound-plans')]//label)["+dataOption+"]";
+        } else if (showOutFieldPlansText.getText().contains("Field Sales")) {
+            updatedXpathDcDoTo = "(//div[contains(@data-test,'field-sales-plans')]//label)["+dataOption+"]";
         }
         return updatedXpathDcDoTo;
     }
@@ -356,7 +376,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     /**
      * Select Device Cost tier on Plan config page and clicks on continue button
      * @param    deviceCostIndex : String value of Device Cost to be selected
-     * @author praveen.kumar7
+     * @author praveen.kumar
      */
     public void selectDeviceCostAndClickOnContinueButton(String deviceCostIndex) {
         int stepper = 1;
@@ -520,10 +540,10 @@ public class RogersOVPlanConfigPage extends BasePageClass {
             getReusableActionsInstance().clickIfAvailable((preCartTalkOptionContinueButton),20);
         }
         if(Integer.parseInt(talkOptionIndex) == 1) {
-            getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo),20);
+            getReusableActionsInstance().clickIfAvailable(By.xpath(xpathDcDoTo),30);
             getReusableActionsInstance().clickIfAvailable(preCartTalkOptionContinueButton);
         }
-        return getReusableActionsInstance().isElementVisible(preCartAddonsContinueButton,20);
+        return getReusableActionsInstance().isElementVisible(preCartAddonsContinueButton,30);
     }
 
     /**
@@ -605,7 +625,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
 
     /**
      * Click continue on Device Cost Section in NAC flow
-     * @author praveen.kumar7
+     * @author praveen.kumar
      */
     public void clkPreCartDeviceCostContinueButtonForNac() {
         getReusableActionsInstance().clickWhenReady(preCartDeviceCostContinueButton,20);
@@ -1011,6 +1031,11 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     public void clickOutBoundAccordion() {
         getReusableActionsInstance().scrollToElement(outboundAccordion);
         getReusableActionsInstance().clickWhenReady(outboundAccordion,30);
+    }
+
+    public void clickOutBoundFieldAccordion() {
+        getReusableActionsInstance().scrollToElement(outboundFieldAccordion);
+        getReusableActionsInstance().clickWhenReady(outboundFieldAccordion,30);
     }
 
 }

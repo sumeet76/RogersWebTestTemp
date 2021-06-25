@@ -50,7 +50,7 @@ public class RogersBFA_OV_TC14_NACOutboundNoTermStandardShipping_Test extends Ba
 		getRogersOVPlanConfigPage().clickViewMoreOptions();
 		getRogersOVPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersOVPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.buyFlowsOVtestCase14.getDeviceCostIndex()),TestDataHandler.buyFlowsOVtestCase14.getDeviceCostType());
 		reporter.reportLogPassWithScreenshot("Device cost option selected");
-		getRogersOVPlanConfigPage().clickShowMoreDetails();
+		getRogersOVPlanConfigPage().clickShowMoreOutDetails();
 		getRogersOVPlanConfigPage().selectDataOptionButton(getRogersOVPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.buyFlowsOVtestCase14.getDataOptionIndex()));
 		reporter.reportLogPassWithScreenshot("Data option selected");
 		//getRogersOVPlanConfigPage().clickGetBPOOffer();
@@ -134,9 +134,9 @@ public class RogersBFA_OV_TC14_NACOutboundNoTermStandardShipping_Test extends Ba
 			//getRogersOVOrderReviewPage().clkContinue();
 			getRogersOVOneTimePaymentPage().clkPreAuthorizedCreditCardTokenButton();
 			getRogersOVOneTimePaymentPage().setNameonCard();
-			getRogersOVOneTimePaymentPage().setTokenDetails(TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getNumber3(),
-					TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getExpiryMonth3(),
-					TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getExpiryYear3());
+			getRogersOVOneTimePaymentPage().setTokenDetails(TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getNumber1(),
+					TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getExpiryMonth1(),
+					TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getExpiryYear1());
 			reporter.reportLogWithScreenshot("Rogers Payment Page");
 			getRogersOVPaymentPage().clkSubmit();
 		} /*else {
