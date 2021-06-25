@@ -28,8 +28,8 @@ public class RogersSS_TC_111_TC_112_BnP_ValidateTheSetUpPTPflowForDelinquentCxWh
     @DataProvider(name = "data-provider")
     public Object[][] dataProviderMethod() {
         return new Object[][]{
-                new Object[]{TestDataHandler.tc111.getUsername(), TestDataHandler.tc111.getPassword(),TestDataHandler.tc111.getAccountDetails().getBan(),"Credit Card"},
-                //new Object[]{TestDataHandler.tc112.getUsername(), TestDataHandler.tc112.getPassword(),TestDataHandler.tc112.getAccountDetails().getBan(),"Telephone/Online banking"}
+                //new Object[]{TestDataHandler.tc111.getUsername(), TestDataHandler.tc111.getPassword(),TestDataHandler.tc111.getAccountDetails().getBan(),"Credit Card"},
+                new Object[]{TestDataHandler.tc112.getUsername(), TestDataHandler.tc112.getPassword(),TestDataHandler.tc112.getAccountDetails().getBan(),"Telephone/Online banking"}
         };
     }
 

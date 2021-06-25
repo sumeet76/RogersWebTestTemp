@@ -5,7 +5,13 @@ import java.util.regex.Pattern;
 
 public class CurrencyHelpers {
 
-public  static  boolean validateCurrency(String strValue){
+    /**
+     *
+     * @param strValue
+     * @return
+     * @author Mirza.Kamran
+     */
+    public  static  boolean validateCurrency(String strValue){
     boolean symbolMatched = false;
     if(strValue.startsWith("$") || strValue.endsWith("$")){
         symbolMatched =true;
@@ -21,6 +27,12 @@ public  static  boolean validateCurrency(String strValue){
     else return false;
 }
 
+    /**
+     *
+     * @param strValue
+     * @return
+     * @author Mirza.Kamran
+     */
 public static String removeMonth(String strValue)
 {
     if(strValue.contains("/mo"))
@@ -33,9 +45,33 @@ public static String removeMonth(String strValue)
     return strValue;
 }
 
+    /**
+     *
+     * @param strValue
+     * @return
+     * @author Mirza.Kamran
+     */
 public static String removeLineBreaksFromString(String strValue)
 {
     return strValue.replaceAll("\n","");
 }
+
+    /**
+     *
+     * @param strValue
+     * @return
+     * @author Mirza.Kamran
+     */
+    public static String extractNumberFromString(String strValue) {
+        Pattern p = Pattern.compile("\\d+");
+        Matcher m = p.matcher(strValue);
+        String strNumber="";
+        while(m.find()) {
+            strNumber = strNumber + m.group();
+        }
+
+        return strNumber;
+    }
+
 
 }

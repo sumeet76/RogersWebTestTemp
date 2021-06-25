@@ -34,7 +34,8 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy (xpath = "//ds-alert[@variant='error']")
 	WebElement failLoginMsg;
 
-	@FindBy(xpath = "//button[contains(text(),'Skip') or contains(text(),'Continuer')]")
+
+	@FindBy(xpath = "//button[contains(text(),'Skip') or contains(text(),'Continuer') or @title=\"Skip\"]")
 	WebElement btnSkip;
 	
 	@FindBy(xpath = "//h5[@class='registerButton']//*[text()='Register' or text()=\"S'inscrire\"]")
@@ -170,6 +171,7 @@ public class RogersLoginPage extends BasePageClass {
 			getReusableActionsInstance().scrollToElement(btnSignIn);
 			getReusableActionsInstance().waitForElementTobeClickable(btnSignIn, 2);
 			getReusableActionsInstance().getWhenReady(btnSignIn, 30).click();
+			getReusableActionsInstance().clickIfAvailable(btnSkip);
 		}catch (ElementClickInterceptedException ex)
 		{
 			//for mobile browsers

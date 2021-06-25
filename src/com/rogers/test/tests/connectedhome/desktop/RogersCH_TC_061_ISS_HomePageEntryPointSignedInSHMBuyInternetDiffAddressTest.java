@@ -67,7 +67,7 @@ public class RogersCH_TC_061_ISS_HomePageEntryPointSignedInSHMBuyInternetDiffAdd
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
         String  strAddressLine1=TestDataHandler.tc61_SHMSignedInInternetBuyDiffAddress.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc61_SHMSignedInInternetBuyDiffAddress.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
 

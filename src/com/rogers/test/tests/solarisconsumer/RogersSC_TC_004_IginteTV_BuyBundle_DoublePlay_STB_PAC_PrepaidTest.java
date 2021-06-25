@@ -71,7 +71,7 @@ import java.lang.reflect.Method;
 		reporter.reportLogWithScreenshot("Launched the customer availability check popup");
 		String  strAddressLine1=TestDataHandler.tc31_SolarisInternetAccountWithUsageAndPackageUpgrade.getAccountDetails().getAddress().get("line1");
 		String  strAddressLine2=TestDataHandler.tc31_SolarisInternetAccountWithUsageAndPackageUpgrade.getAccountDetails().getAddress().get("line2");
-		getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+		getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
 		getRogersHomePage().clkIgniteAddressLookupSubmit();
 		//getRogersHomePage().clkContinueIgniteMultipleAddressLookupSubmit();
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");

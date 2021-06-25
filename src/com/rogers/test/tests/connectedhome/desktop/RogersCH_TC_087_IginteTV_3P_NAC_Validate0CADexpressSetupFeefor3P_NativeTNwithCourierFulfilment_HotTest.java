@@ -49,7 +49,7 @@ import java.util.Map;
 
 public class RogersCH_TC_087_IginteTV_3P_NAC_Validate0CADexpressSetupFeefor3P_NativeTNwithCourierFulfilment_HotTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH","DryRunCH"})
+    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
 	    public void checkBuy3PValidate0CADexpressSetupFeefor3PNativeTNwithCourierFulfilmentHot() {
     	reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	getRogersHomePage().clkTVBundle();
@@ -59,7 +59,7 @@ public class RogersCH_TC_087_IginteTV_3P_NAC_Validate0CADexpressSetupFeefor3P_Na
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
     	String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
     	String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
-    	getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+    	getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
     	getRogersHomePage().clkIgniteAddressLookupSubmit();
 		//Validate cableCondition="Hot" from addressServices call, will be adding with selenium4
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");

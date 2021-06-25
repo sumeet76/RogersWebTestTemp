@@ -80,8 +80,8 @@ public class Mobile_RogersCH_TC_006_IginteTV_TVChannelsSwapTest extends BaseTest
         reporter.reportLogWithScreenshot("removed the Swap-out Channel three");
         getRogersSolarisChannelsExchangePage().swapChannelInMobile(TestDataHandler.tcm06_IgniteTVAccount.accountDetails.getSwapInChannelThree());
         reporter.reportLogWithScreenshot("Selected the Swap-in Channel three");
-        getRogersSolarisChannelsExchangePage().clkAddChannelDifferentLogic();
-        reporter.reportLogWithScreenshot("Added the Swap-in Channel three");
+/*        getRogersSolarisChannelsExchangePage().clkAddChannelDifferentLogic();
+        reporter.reportLogWithScreenshot("Added the Swap-in Channel three");*/
         getRogersSolarisChannelsExchangePage().clkConfirmSwapMobile();
         reporter.hardAssert(getRogersSolarisChannelsExchangePage().verifyExchangeSuccess(),"Swap Success","Swap failed");
         reporter.reportLogWithScreenshot("Swap Success popup has launched");

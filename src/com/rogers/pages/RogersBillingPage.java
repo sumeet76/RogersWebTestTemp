@@ -57,7 +57,7 @@ public class RogersBillingPage extends BasePageClass {
 	@FindBy(xpath =  "//iframe[@id = 'bb_iframe_container bb_iframe' or @id='viewBill_iframe']")
 	WebElement frameBillDetails;
 	
-	@FindBy (xpath = "//div[@translate='bb_error_message_no_bill' or @translate='bb_error_message_header_system_issue']")
+	@FindBy (xpath = "//div[@translate='bb_error_message_no_bill' or @translate='bb_error_message_header_system_issue' or @translate='viewBill.viewBillInfo.Info_message_header_no_bill']")
 	WebElement noBillNote;
 
 	@FindBy (xpath = "//span[@translate='ute.payment.method.history']")
