@@ -81,6 +81,9 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//ds-radio-button[contains(@data-test,'device-payment-type-financing')]//div/div")
     WebElement financingRadioButton;
 
+    @FindBy(xpath = "(//div[contains(@id,'ds-radio-input-id')])[2]")
+    WebElement noTermRadioBtn;
+
     @FindBy(xpath = "//ds-radio-button[contains(@data-test,'device-payment-type-fullPrice')]//div/div")
     WebElement fullPriceRadioButton;
 
@@ -371,6 +374,15 @@ public class RogersOVPlanConfigPage extends BasePageClass {
             return talkOptionIndex;
         }
         return talkOptionIndex;
+    }
+
+    /**
+     * Clicks on NO TERM radio button in device cost stepper
+     * @author praveen.kumar7
+     */
+    public void clkRadioButtonNoTerm() {
+        getReusableActionsInstance().scrollToElement(noTermRadioBtn);
+        getReusableActionsInstance().clickWhenReady(noTermRadioBtn,30);
     }
 
     /**

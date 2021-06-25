@@ -5,35 +5,35 @@ public class RedesignRpotgOVData {
 	private String language;
 	private String shippingAddress;
 	private String apartment;
-    private String deviceName;
+	private String deviceName;
 	private String deviceColor;
 	private String deviceCostIndex;
 	private String deviceCostType;
 	private String dataOptionIndex;
 	private String talkOptionIndex;
-    private String firstName;
-    private String lastName;
-    private String dateOfBirthYear;
-    private String dateOfBirthMonth;
-    private String dateOfBirthDay;
-    private String creditCardDetails;
-    private String expiryDate;
-    private String dropdownOption;
+	private String firstName;
+	private String lastName;
+	private String dateOfBirthYear;
+	private String dateOfBirthMonth;
+	private String dateOfBirthDay;
+	private String creditCardDetails;
+	private String expiryDate;
+	private String dropdownOption;
 	private String selectYourPrimaryIdOption;
 	private String number;
 	private String selectYourSecondIdOption;
 	private String secondNumber;
-    private String passportNumber;
+	private String passportNumber;
 	private String secondIdOption;
 	private String sinNumber;
 	private String ctnCity;
-    private String cityName;
-    private String contactNumber;
-    private String billingAddress;
-    private String nameOnCard;
-    private String billingCreditCardNumber;
-    private String cvvNumber;
-    private String billingNameOnCard;
+	private String cityName;
+	private String contactNumber;
+	private String billingAddress;
+	private String nameOnCard;
+	private String billingCreditCardNumber;
+	private String cvvNumber;
+	private String billingNameOnCard;
 	private String postalCode;
 	private String paymentMethod;
 	private String creditCardDetailsOTP;
@@ -42,6 +42,7 @@ public class RedesignRpotgOVData {
 	public String portinNumber;
 	public String banNo;
 	public String tokenNumber;
+	public String sharingType;
 
 	/**
 	 * @return the contactID
@@ -57,17 +58,29 @@ public class RedesignRpotgOVData {
 		this.contactID = contactID;
 	}
 
-	public String getLanguage() { return language; }
+	public String getLanguage() {
+		return language;
+	}
 
-	public void setLanguage(String language) { this.language = language; }
+	public void setLanguage(String language) {
+		this.language = language;
+	}
 
-	public String getShippingAddress() { return shippingAddress; }
+	public String getShippingAddress() {
+		return shippingAddress;
+	}
 
-	public void setShippingAddress(String shippingAddress) { this.shippingAddress = shippingAddress; }
+	public void setShippingAddress(String shippingAddress) {
+		this.shippingAddress = shippingAddress;
+	}
 
-	public String getApartment() { return apartment; }
+	public String getApartment() {
+		return apartment;
+	}
 
-	public void setApartment(String apartment) { this.apartment = apartment; }
+	public void setApartment(String apartment) {
+		this.apartment = apartment;
+	}
 
 	public String getCreditCardDetailsOTP() {
 		return creditCardDetailsOTP;
@@ -103,37 +116,37 @@ public class RedesignRpotgOVData {
 		this.postalCode = postalCode;
 	}
 
-    public String getDateOfBirthYear() {
+	public String getDateOfBirthYear() {
 		return dateOfBirthYear;
 	}
 
 	public void setDateOfBirthYear(String dateOfBirthYear) {
 		this.dateOfBirthYear = dateOfBirthYear;
 	}
-	
-	  public String getDateOfBirthMonth() {
-			return dateOfBirthMonth;
-		}
 
-		public void setDateOfBirthMonth(String dateOfBirthMonth) {
-			this.dateOfBirthMonth = dateOfBirthMonth;
-		}
-		
-		  public String getDateOfBirthDay() {
-				return dateOfBirthDay;
-			}
+	public String getDateOfBirthMonth() {
+		return dateOfBirthMonth;
+	}
 
-			public void setDateOfBirthDay(String dateOfBirthDay) {
-				this.dateOfBirthDay = dateOfBirthDay;
-			}
+	public void setDateOfBirthMonth(String dateOfBirthMonth) {
+		this.dateOfBirthMonth = dateOfBirthMonth;
+	}
+
+	public String getDateOfBirthDay() {
+		return dateOfBirthDay;
+	}
+
+	public void setDateOfBirthDay(String dateOfBirthDay) {
+		this.dateOfBirthDay = dateOfBirthDay;
+	}
 
 	public String getDeviceCostType() {
-        return deviceCostType;
-    }
+		return deviceCostType;
+	}
 
-    public void setDeviceCostType(String deviceCostType) {
-        this.deviceCostType = deviceCostType;
-    }
+	public void setDeviceCostType(String deviceCostType) {
+		this.deviceCostType = deviceCostType;
+	}
 
 	/**
 	 * @return the deviceCostIndex
@@ -141,6 +154,7 @@ public class RedesignRpotgOVData {
 	public String getDeviceCostIndex() {
 		return deviceCostIndex;
 	}
+
 	/**
 	 * @param deviceCostIndex the deviceCostIndex to set
 	 */
@@ -163,31 +177,35 @@ public class RedesignRpotgOVData {
 	public void setDeviceName(String deviceName) {
 		this.deviceName = deviceName;
 	}
+
 	/**
 	 * @return the dataOptionIndex
 	 */
 	public String getDataOptionIndex() {
 		return dataOptionIndex;
 	}
+
 	/**
 	 * @param dataOptionIndex the dataOptionIndex to set
 	 */
 	public void setdataOptionIndex(String dataOptionIndex) {
 		this.dataOptionIndex = dataOptionIndex;
 	}
+
 	/**
 	 * @return the talkOptionIndex
 	 */
 	public String getTalkOptionIndex() {
 		return talkOptionIndex;
 	}
+
 	/**
 	 * @param talkOptionIndex the talkOptionIndex to set
 	 */
 	public void setTalkOptionIndex(String talkOptionIndex) {
 		this.talkOptionIndex = talkOptionIndex;
 	}
-    
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -301,13 +319,21 @@ public class RedesignRpotgOVData {
 		this.cityName = cityName;
 	}
 
-    public String getContactNumber() { return contactNumber; }
+	public String getContactNumber() {
+		return contactNumber;
+	}
 
-    public void setContactNumber(String contactNumber) { this.contactNumber = contactNumber; }
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
+	}
 
-    public String getBillingAddress() { return billingAddress; }
+	public String getBillingAddress() {
+		return billingAddress;
+	}
 
-    public void setBillingAddress(String billingAddress) { this.billingAddress = billingAddress; }
+	public void setBillingAddress(String billingAddress) {
+		this.billingAddress = billingAddress;
+	}
 
 	public String getNameOnCard() {
 		return nameOnCard;
@@ -341,9 +367,13 @@ public class RedesignRpotgOVData {
 		this.billingNameOnCard = billingNameOnCard;
 	}
 
-	public String getDepositAmount() { return depositAmount; }
+	public String getDepositAmount() {
+		return depositAmount;
+	}
 
-	public void setDepositAmount(String depositAmount) { this.depositAmount = depositAmount; }
+	public void setDepositAmount(String depositAmount) {
+		this.depositAmount = depositAmount;
+	}
 
 	/**
 	 * @return the customerRiskLevel
@@ -351,6 +381,7 @@ public class RedesignRpotgOVData {
 	public String getCustomerRiskLevel() {
 		return customerRiskLevel;
 	}
+
 	/**
 	 * @param customerRiskLevel the newPlanCategory to set
 	 */
@@ -364,6 +395,7 @@ public class RedesignRpotgOVData {
 	public String getPortinNumber() {
 		return portinNumber;
 	}
+
 	/**
 	 * @param portinNumber the portin number to set
 	 */
@@ -374,6 +406,7 @@ public class RedesignRpotgOVData {
 	public String getBanNo() {
 		return banNo;
 	}
+
 	public void setBanNo(String banNo) {
 		this.banNo = banNo;
 	}
@@ -381,8 +414,22 @@ public class RedesignRpotgOVData {
 	public String getTokenNumber() {
 		return tokenNumber;
 	}
+
 	public void setTokenNumber(String tokenNumber) {
 		this.tokenNumber = tokenNumber;
 	}
-	
+
+	/**
+	 * @return the sharingType
+	 */
+	public String getSharingType() {
+		return sharingType;
+	}
+
+	/**
+	 * @param sharingType the sharingType to set
+	 */
+	public void setSharingType(String sharingType) {
+		this.sharingType = sharingType;
+	}
 }
