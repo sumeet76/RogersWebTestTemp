@@ -20,7 +20,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     String xpathDcDoTo;
     String dataProtectionOption;
 
-    @FindBy(xpath = "(//div[contains(@id,'ds-radio-input-id')])[2]")
+    @FindBy(xpath = "//ds-radio-button[contains(@data-test,'fullPrice')]")
     WebElement noTermRadioBtn;
 
     @FindBy(xpath = "(//div[contains(@id,'ds-radio-input-id')])[1]")

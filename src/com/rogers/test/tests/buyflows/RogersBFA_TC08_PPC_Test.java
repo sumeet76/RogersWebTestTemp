@@ -28,14 +28,13 @@ public class RogersBFA_TC08_PPC_Test extends BaseTestClass {
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
-        getRogersLoginPage().clkSkipIFrame();
+        //getRogersLoginPage().clkSkipIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page");
         reporter.hardAssert(getRogersAccountOverviewPage().verifyAndClickWirelessCTN(TestDataHandler.tc08PPC.getCtn()), "Select CTN Passed", "Select CTN Failed");
         getRogersWirelessDetailsPage().verifyWirelessPageLoad();
         reporter.reportLogWithScreenshot("Wireless Dashboard Page");
-        //getDriver().get("https://qa5.rogers.com/web/totes/wireless-plan-change/#/choose-plan");
         getRogersWirelessDetailsPage().clickChangePlanButton();
         getRogersChoosePlanPage().verifyAndClickDowngradeFeeContinue();
         /*
