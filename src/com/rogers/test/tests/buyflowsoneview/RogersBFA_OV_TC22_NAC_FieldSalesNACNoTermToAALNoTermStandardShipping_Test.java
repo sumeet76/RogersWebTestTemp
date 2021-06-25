@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
  * TC01-OV-HUP with PPC_Multiline Account_Validate if user is able to place an order in HUP flow and choose a different plan_EN
  * @author Saurav.Goyal
  */
-public class RogersBFA_OV_TC21_NAC_FieldSalesNACNoTermToAALNoTermStandardShipping_Test extends BaseTestClass {
+public class RogersBFA_OV_TC22_NAC_FieldSalesNACNoTermToAALNoTermStandardShipping_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","RegressionOVBFA","SanityBFA","HupOvBFA"})
 	public void rogersNACFieldSalesNACNoTermToAALNoTermStandardShippingPlanFlow() {
@@ -34,16 +34,16 @@ public class RogersBFA_OV_TC21_NAC_FieldSalesNACNoTermToAALNoTermStandardShippin
 		reporter.reportLogWithScreenshot("Services under customer button");
 		getNacDashboardPage().clkWirelessButton();
 		reporter.reportLogWithScreenshot("Active Wireless Service Modal");
-		getNacDashboardPage().fillShippingAddressField(TestDataHandler.buyFlowsOVtestCase21.getShippingAddress());
-		getNacDashboardPage().fillApartmentField(TestDataHandler.buyFlowsOVtestCase21.getApartment());
+		getNacDashboardPage().fillShippingAddressField(TestDataHandler.buyFlowsOVtestCase22.getShippingAddress());
+		getNacDashboardPage().fillApartmentField(TestDataHandler.buyFlowsOVtestCase22.getApartment());
 		//reporter.hardAssert(getNacDashboardPage().verifyPOTGAddressEligibility(), "Address is Eligible for POTG", "Address is not Eligible for POTG");
 		//reporter.reportLogWithScreenshot("POTG address is selected");
 		getNacDashboardPage().clkGetANewPhoneButton();
 		//-------------------------------------Choose Phone page---------------------------------------------
-		reporter.hardAssert(getRogersOVChoosePhonePage().verifyDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase21.getDeviceName()), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
-		String deviceName = TestDataHandler.buyFlowsOVtestCase21.getDeviceName();
+		reporter.hardAssert(getRogersOVChoosePhonePage().verifyDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase22.getDeviceName()), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
+		String deviceName = TestDataHandler.buyFlowsOVtestCase22.getDeviceName();
 		reporter.hardAssert(getRogersOVChoosePhonePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
-		getRogersOVChoosePhonePage().clickDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase21.getDeviceName());
+		getRogersOVChoosePhonePage().clickDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase22.getDeviceName());
 		getRogersOVChoosePhonePage().clickContinueButton();
 		//-------------------------------------Plan config page---------------------------------------------
 		reporter.softAssert(getRogersOVPlanConfigPage().verifyBreadCrumb(deviceName),
@@ -51,14 +51,14 @@ public class RogersBFA_OV_TC21_NAC_FieldSalesNACNoTermToAALNoTermStandardShippin
 		reporter.hardAssert(getRogersOVPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
 		reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
 		getRogersOVPlanConfigPage().clickViewMoreOptions();
-		getRogersOVPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersOVPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.buyFlowsOVtestCase21.getDeviceCostIndex()),TestDataHandler.buyFlowsOVtestCase21.getDeviceCostType());
+		getRogersOVPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersOVPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.buyFlowsOVtestCase22.getDeviceCostIndex()),TestDataHandler.buyFlowsOVtestCase22.getDeviceCostType());
 		reporter.reportLogPassWithScreenshot("Device cost option selected");
 		getRogersOVPlanConfigPage().clickOutBoundFieldAccordion();
-		getRogersOVPlanConfigPage().selectDataOptionButton(getRogersOVPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.buyFlowsOVtestCase21.getDataOptionIndex()));
+		getRogersOVPlanConfigPage().selectDataOptionButton(getRogersOVPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.buyFlowsOVtestCase22.getDataOptionIndex()));
 		reporter.reportLogPassWithScreenshot("Data option selected");
 		//getRogersOVPlanConfigPage().clickGetBPOOffer();
 		//reporter.reportLogPassWithScreenshot("BPO offer selected");
-		reporter.hardAssert(getRogersOVPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersOVPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.buyFlowsOVtestCase21.getTalkOptionIndex())),
+		reporter.hardAssert(getRogersOVPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersOVPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.buyFlowsOVtestCase22.getTalkOptionIndex())),
 				"Talk option selected and Addons page in expanded state","Addons page not in expanded state");
 		getRogersOVPlanConfigPage().clickPreCartAddonsContinueButton();
 		getRogersOVPlanConfigPage().clickCartSummaryContinueButton();
@@ -69,7 +69,7 @@ public class RogersBFA_OV_TC21_NAC_FieldSalesNACNoTermToAALNoTermStandardShippin
 		String firstName = getRogersOVCheckoutPage().setFirstNameCreateProfile();
 		String lastName = getRogersOVCheckoutPage().setLastNameCreateProfile();
 		String fullNameCreateProfile=firstName+" "+lastName;
-		String contactNumberCreateProfile=TestDataHandler.buyFlowsOVtestCase21.getContactNumber();
+		String contactNumberCreateProfile=TestDataHandler.buyFlowsOVtestCase22.getContactNumber();
 		getRogersOVCheckoutPage().setContactNumberCreateProfile(contactNumberCreateProfile);
 		reporter.reportLogPassWithScreenshot("Create Profile Page details Entered till ContactNumber");
 		//getRogersOVCheckoutPage().clkUseBillingAddressRadioBtnCreateProfile();
@@ -81,13 +81,13 @@ public class RogersBFA_OV_TC21_NAC_FieldSalesNACNoTermToAALNoTermStandardShippin
 		//***************Credit Evaluation Stepper*************//
 		reporter.softAssert(getRogersOVCheckoutPage().verifyCreditEvaluationTitle(),"CreditEvaluation Title verified","CreditEvaluation Title not present");
 		//getRogersCheckoutPage().setDateOfBirth(TestDataHandler.redesignRpotgData.getDateOfBirth());
-		getRogersOVCheckoutPage().selectYearDropdownOption(TestDataHandler.buyFlowsOVtestCase21.getDateOfBirthYear());
-		getRogersOVCheckoutPage().selectMonthDropdownOption(TestDataHandler.buyFlowsOVtestCase21.getDateOfBirthMonth());
-		getRogersOVCheckoutPage().selectDayDropdownOption(TestDataHandler.buyFlowsOVtestCase21.getDateOfBirthDay());
-		//getRogersOVCheckoutPage().selectDropdownOption(TestDataHandler.buyFlowsOVtestCase21.getDropdownOption());
-		getRogersOVCheckoutPage().selectPrimaryDropdownOption(TestDataHandler.buyFlowsOVtestCase21.getSelectYourPrimaryIdOption(), TestDataHandler.buyFlowsOVtestCase21.getNumber());
+		getRogersOVCheckoutPage().selectYearDropdownOption(TestDataHandler.buyFlowsOVtestCase22.getDateOfBirthYear());
+		getRogersOVCheckoutPage().selectMonthDropdownOption(TestDataHandler.buyFlowsOVtestCase22.getDateOfBirthMonth());
+		getRogersOVCheckoutPage().selectDayDropdownOption(TestDataHandler.buyFlowsOVtestCase22.getDateOfBirthDay());
+		//getRogersOVCheckoutPage().selectDropdownOption(TestDataHandler.buyFlowsOVtestCase22.getDropdownOption());
+		getRogersOVCheckoutPage().selectPrimaryDropdownOption(TestDataHandler.buyFlowsOVtestCase22.getSelectYourPrimaryIdOption(), TestDataHandler.buyFlowsOVtestCase22.getNumber());
 		reporter.reportLogPassWithScreenshot("Driver's License Number Entered Successfully");
-		getRogersOVCheckoutPage().selectSecondDropdownOption(TestDataHandler.buyFlowsOVtestCase21.getSelectYourSecondIdOption(),TestDataHandler.buyFlowsOVtestCase21.getSecondNumber());
+		getRogersOVCheckoutPage().selectSecondDropdownOption(TestDataHandler.buyFlowsOVtestCase22.getSelectYourSecondIdOption(),TestDataHandler.buyFlowsOVtestCase22.getSecondNumber());
 		reporter.reportLogPassWithScreenshot("Provincial ID Number Entered Successfully");
 		getRogersOVCheckoutPage().clkCreditAuthorizationChkBox();
 		getRogersOVCheckoutPage().clkCreditEvalContinue();
@@ -100,7 +100,7 @@ public class RogersBFA_OV_TC21_NAC_FieldSalesNACNoTermToAALNoTermStandardShippin
 		// ***************Choose a Number Stepper*************//
 		reporter.softAssert(getRogersOVCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed", "Choose a Number Title not disaplayed");
 		reporter.softAssert(getRogersOVCheckoutPage().isChooseNumberTabsDisplayed(), "Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
-		getRogersOVCheckoutPage().selectCityDropdownOption(TestDataHandler.buyFlowsOVtestCase21.getCtnCity());
+		getRogersOVCheckoutPage().selectCityDropdownOption(TestDataHandler.buyFlowsOVtestCase22.getCtnCity());
 		reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
 		getRogersOVCheckoutPage().clkChosePhoneNumber();
 		reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
@@ -113,7 +113,7 @@ public class RogersBFA_OV_TC21_NAC_FieldSalesNACNoTermToAALNoTermStandardShippin
 				"Billing Options Title Not Present");
 		reporter.softAssert(getRogersOVCheckoutPage().isPaymentMethodDropdownPresent(),
 				"Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not disaplayed");
-		getRogersOVCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.buyFlowsOVtestCase21.getPaymentMethod());
+		getRogersOVCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.buyFlowsOVtestCase22.getPaymentMethod());
 		getRogersOVCheckoutPage().clkBillingContinueButton();
 		// ***************Shipping Stepper*************//
 		reporter.hardAssert(getRogersOVCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
@@ -165,7 +165,7 @@ public class RogersBFA_OV_TC21_NAC_FieldSalesNACNoTermToAALNoTermStandardShippin
 		reporter.reportLogWithScreenshot("clicked on Accept and Continue button");
 		reporter.hardAssert(getRogersOVChoosePhonePage().verifySharedNonSharedModalPresent(), "Shared/Nonshared modal displayed", "Shared/Nonshared modal not displayed");
 		reporter.reportLogWithScreenshot("Shared/Nonshared modal popup");
-		String aalSharingType = TestDataHandler.buyFlowsOVtestCase21.getSharingType();
+		String aalSharingType = TestDataHandler.buyFlowsOVtestCase22.getSharingType();
 		getRogersOVChoosePhonePage().selectAALSharingType(aalSharingType);
 		reporter.reportLogPassWithScreenshot(aalSharingType+ " option selected successfully");
 		getRogersOVChoosePhonePage().clickContinueButtonOnModal();
@@ -173,8 +173,8 @@ public class RogersBFA_OV_TC21_NAC_FieldSalesNACNoTermToAALNoTermStandardShippin
 		//-------------------------------------Choose Phone page AAL---------------------------------------------
 		//String deviceName1 = TestDataHandler.buyFlowsOVtestCase08.getDeviceName();
 		reporter.hardAssert(getRogersOVChoosePhonePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
-		getRogersOVChoosePhonePage().clickDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase21.getDeviceName());
-		getRogersOVChoosePhonePage().selectDeviceColor(TestDataHandler.buyFlowsOVtestCase21.getDeviceColor());
+		getRogersOVChoosePhonePage().clickDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase22.getDeviceName());
+		getRogersOVChoosePhonePage().selectDeviceColor(TestDataHandler.buyFlowsOVtestCase22.getDeviceColor());
 		reporter.reportLogPassWithScreenshot("Device config page displayed");
 		getRogersOVChoosePhonePage().clickContinueButton();
 		//-------------------------------------Plan config page AAL---------------------------------------------
@@ -183,21 +183,21 @@ public class RogersBFA_OV_TC21_NAC_FieldSalesNACNoTermToAALNoTermStandardShippin
 		reporter.hardAssert(getRogersOVPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
 		reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
 		getRogersOVPlanConfigPage().clickViewMoreOptions();
-		getRogersOVPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersOVPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.buyFlowsOVtestCase21.getDeviceCostIndex()),TestDataHandler.buyFlowsOVtestCase21.getDeviceCostType());
+		getRogersOVPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersOVPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.buyFlowsOVtestCase22.getDeviceCostIndex()),TestDataHandler.buyFlowsOVtestCase22.getDeviceCostType());
 		reporter.reportLogPassWithScreenshot("Device cost option selected");
 		getRogersOVPlanConfigPage().clickShowMoreDetails();
 		getRogersOVPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersOVPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.buyFlowsOVtestCase08.getDataOptionIndex()));
 		reporter.reportLogPassWithScreenshot("Data option selected");
 		//getRogersOVPlanConfigPage().clickGetBPOOffer();
 		//reporter.reportLogPassWithScreenshot("BPO offer selected");
-		reporter.hardAssert(getRogersOVPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersOVPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.buyFlowsOVtestCase21.getTalkOptionIndex())),
+		reporter.hardAssert(getRogersOVPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersOVPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.buyFlowsOVtestCase22.getTalkOptionIndex())),
 				"Talk option selected and Addons page in expanded state","Addons page not in expanded state");
 		getRogersOVPlanConfigPage().clickPreCartAddonsContinueButton();
 		getRogersOVPlanConfigPage().clickCartSummaryContinueButton();
 		// ***************Choose a Number Steppe AALr*************//
 		reporter.softAssert(getRogersOVCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed", "Choose a Number Title not disaplayed");
 		reporter.softAssert(getRogersOVCheckoutPage().isChooseNumberTabsDisplayed(), "Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
-		getRogersOVCheckoutPage().selectCityDropdownOption(TestDataHandler.buyFlowsOVtestCase21.getCtnCity());
+		getRogersOVCheckoutPage().selectCityDropdownOption(TestDataHandler.buyFlowsOVtestCase22.getCtnCity());
 		reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
 		getRogersOVCheckoutPage().clkChosePhoneNumber();
 		reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
@@ -210,7 +210,7 @@ public class RogersBFA_OV_TC21_NAC_FieldSalesNACNoTermToAALNoTermStandardShippin
 				"Billing Options Title Not Present");
 		reporter.softAssert(getRogersOVCheckoutPage().isPaymentMethodDropdownPresent(),
 				"Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not disaplayed");
-		getRogersOVCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.buyFlowsOVtestCase21.getPaymentMethod());
+		getRogersOVCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.buyFlowsOVtestCase22.getPaymentMethod());
 		getRogersOVCheckoutPage().clkBillingContinueButton();
 		// ***************Shipping Stepper AAL*************//
 		reporter.hardAssert(getRogersOVCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
