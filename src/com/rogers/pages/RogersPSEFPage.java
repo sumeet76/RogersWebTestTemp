@@ -3,22 +3,17 @@ package com.rogers.pages;
 import com.rogers.pages.base.BasePageClass;
 import com.rogers.test.helpers.CurrencyHelpers;
 import com.rogers.test.helpers.DateHelpersFunctions;
-import javafx.collections.transformation.SortedList;
-import org.apache.commons.lang3.math.NumberUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.logging.FileHandler;
 import java.util.stream.Collectors;
 
 public class RogersPSEFPage extends BasePageClass {
