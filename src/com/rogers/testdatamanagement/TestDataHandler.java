@@ -480,6 +480,7 @@ public class TestDataHandler {
 		buyFlowsOVtestCase20 = YamlHandler.getRedesignOVNACData("tc20OVNACOutboundBasicPhoneTTPlanMB");
 		buyFlowsOVtestCase21 = YamlHandler.getRedesignOVNACData("tc21OVNACCableCustomerPassportAndSIN");
 		buyFlowsOVtestCase22 = YamlHandler.getRedesignOVNACData("tc21OVNACFieldSalesNACToAALNoTermStandardShipping");
+		bfaOneViewLogin = YamlHandler.getBFAOneViewLoginDetails();
 	}
 	
 	private static void chOneViewDataInit() throws FileNotFoundException {
