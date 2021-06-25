@@ -29,7 +29,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_001_IginteTV_ValidateTVDashboardTest extends BaseTestClass {
 
-	 @Test(groups = {"SanityCH","RegressionCH","DryRunCH","IgniteTVDashboardCH"})
+	 @Test(groups = {"SanityCH","RegressionCH","IgniteTVDashboardCH"})
     public void checkTVDashboard() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();

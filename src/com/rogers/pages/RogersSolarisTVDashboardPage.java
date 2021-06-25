@@ -101,12 +101,33 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-check-circle ds-color-success']")
 	WebElement successMessageParentalControlAndPinReset;
-	
+
+	@FindBy(xpath = "//span[@class='ds-icon rds-icon-check-circle ds-color-success']")
+	WebElement successRefreshYourIgniteTVBox;
+
+	@FindBy(xpath = "//span[@class='ds-icon rds-icon-check-circle ds-color-success']")
+	WebElement successResetPurchasePIN;
+
+	@FindBy(xpath = "//span[contains(text(),'OK')]")
+	WebElement btnOk;
+
 	@FindBy(xpath = "//span[contains(text(),'Réinitialiser le NIP pour le contrôle parental') or contains(text(),'Reset Parental Control PIN')]")
 	WebElement lnkResetParentalConrolsAndPin;
-	
+
+	@FindBy(xpath = "//span[contains(text(),'Actualiser vos terminaux Télé Élan') or contains(text(),'Refresh your Ignite TV Box(es)') ]")
+	WebElement lnkRefreshYourIgniteTVBox;
+
+	@FindBy(xpath = "//span[contains(text(),'Reset Purchase PIN') or contains(text(),'Réinitialiser le NIP d’achat')]")
+	WebElement lnkResetPurchasePIN;
+
 	@FindBy(xpath = "//span[contains(text(),'Continue') or contains(text(),'Continue')]")
-	WebElement btnContinueParentalControlAndPinReset;	
+	WebElement btnContinueParentalControlAndPinReset;
+
+	@FindBy(xpath = "//span[contains(text(),'Continue') or contains(text(),'Continue')]")
+	WebElement btnRefreshYourIgniteTVBox;
+
+	@FindBy(xpath = "//span[contains(text(),'Continue') or contains(text(),'Continue')]")
+	WebElement btnResetPurchasePIN;
 
 	@FindBy(xpath = "//i[@class='ute-icon-button-right']")
 	WebElement imgNext;
@@ -147,7 +168,23 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	public void clkResetParentalConrolsAndPin() {
 		getReusableActionsInstance().clickWhenReady(lnkResetParentalConrolsAndPin,40);
 	}
-	
+
+	/**
+	 * Click on Reset Parental controls And Pin link
+	 * @author chinnarao.vattam
+	 */
+	public void clkRefreshYourIgniteTVBox() {
+		getReusableActionsInstance().clickWhenReady(lnkRefreshYourIgniteTVBox,40);
+	}
+
+	/**
+	 * Click on Reset Parental controls And Pin link
+	 * @author chinnarao.vattam
+	 */
+	public void clkResetPurchasePIN() {
+		getReusableActionsInstance().clickWhenReady(lnkResetPurchasePIN,40);
+	}
+
 	/**
 	 * Click on continue button on the Parental controls And Pin reset alert window
 	 * @author chinnarao.vattam
@@ -155,7 +192,31 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	public void clkContinueParentalControlAndPinReset() {
 		getReusableActionsInstance().clickWhenReady(btnContinueParentalControlAndPinReset,90);
 	}
-	
+
+	/**
+	 * Click on continue button on the Parental controls And Pin reset alert window
+	 * @author chinnarao.vattam
+	 */
+	public void clkRefreshYourIgniteTVBoxContinue() {
+		getReusableActionsInstance().clickWhenReady(btnRefreshYourIgniteTVBox,90);
+	}
+
+	/**
+	 * Click on continue button on the Parental controls And Pin reset alert window
+	 * @author chinnarao.vattam
+	 */
+	public void clkResetPurchasePINContinue() {
+		getReusableActionsInstance().clickWhenReady(btnResetPurchasePIN,90);
+	}
+
+	/**
+	 * Click on continue button on the Parental controls And Pin reset alert window
+	 * @author chinnarao.vattam
+	 */
+	public void clkOkContinue() {
+		getReusableActionsInstance().clickWhenReady(btnOk,90);
+	}
+
 	/**
 	 * Click the TV badge on  account details page
 	 * @author Chinnarao.Vattam
@@ -416,7 +477,25 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	public boolean verifyResetParentalControlsAndPinSuccess() {		
 		return getReusableActionsInstance().isElementVisible(successMessageParentalControlAndPinReset, 90);
 	}
-	
+
+	/**
+	 * Verify successful reset message of the Parental Controls And Pin
+	 * @return true if success message is displayed successfully, else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifysuccessRefreshYourIgniteTVBox() {
+		return getReusableActionsInstance().isElementVisible(successRefreshYourIgniteTVBox, 90);
+	}
+
+	/**
+	 * Verify successful reset message of the Parental Controls And Pin
+	 * @return true if success message is displayed successfully, else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifysuccessResetPurchasePIN() {
+		return getReusableActionsInstance().isElementVisible(successResetPurchasePIN, 90);
+	}
+
 	/**
 	 * It will take the channel list and search those channels on the in channel list panel, if it is available it will select and add to the channel list 
 	 * @param strInChannellist channel list and search those channels on the in channel list panel

@@ -1,6 +1,7 @@
 package com.rogers.pages;
 
 import com.rogers.pages.base.BasePageClass;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -79,20 +80,19 @@ public class RogersHomePage extends BasePageClass {
 	
 	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/home-monitoring']")
 	WebElement lnkHomeMonitering;
-    //li[@class='o-headerNavDropdown__item']/a[@class='m-navLink -dropdown' and contains(text(),' Home Monitoring')]
-
 
 	@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/bundles']")
 	WebElement lnkBundle;
 
-
 	@FindBy(xpath = "//a[@href='/consumer/easyloginriverpage']")
 	WebElement lnkMyRogersLink;
-	
+
+	@FindBy(xpath = "//a[@title='MyRogers']//span[@class='m-navLink__caption']")
+	WebElement lnkMyRogersfromAccount;
+
 	@FindBy(xpath = "//a[@href='/web/totes/#/easylogin/main']")
 	WebElement btnRegisterNowFromMyRogers;
-	
-	//@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/wireless']")
+
 	@FindAll({
 		@FindBy(xpath = "(//li[@class='o-headerNavDropdown__item'])[1]//a"),
 		@FindBy(xpath = "//li[@class='dds_o-headerNavDropdown__item']/a[@href='/consumer/wireless']")
@@ -109,35 +109,28 @@ public class RogersHomePage extends BasePageClass {
 			@FindBy(xpath = "//a[contains(@title,'See available bundles') or  contains(@title,'Voir les offres groupées')]"),
 			@FindBy(xpath = "//a[contains(@title,'See bundles') or  contains(@title,'Voir les offres groupées')]")})
 	WebElement btnServiceability;
-	//a[contains(@title,'See available Ignite Bundles') or  contains(@title,'Voyez les offres groupées Élan accessibles')]
-	//a[@title='Check if Ignite Bundles are available in your area' or @title='Vérifiez si les offres groupées Élan sont disponibles dans votre secteur.']
-	
+
 	@FindBy(xpath ="//div[@class='ng-star-inserted overlay']")
 	WebElement overlayHomePage;
 		
 	@FindBy(xpath = "//a[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large ng-star-inserted']")
 	WebElement btnWelcomeback;
-	//button[@class='ds-button ds-focus ds-active -primary -large ng-star-inserted']
-	//a[@title='Check if Ignite Bundles are available in your area']
 
 	@FindAll({
 	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large']"),
 	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -secondary -large']")})
 	WebElement btnAddress;	
-	//button[@class='a-btnSecondary']
 
 	@FindBy(xpath = "//button[@class='a-btnPrimary']")
 	WebElement btnAddressValidation;
-	
-	@FindBy(xpath = "//input[contains(@id,'canada-post-address-complete')]")
+
+	@FindAll({
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-')]"),
+	@FindBy(xpath = "//input[contains(@id,'canada-post-address-complete')]")})
 	WebElement txaIgniteAddressLookup;		
-	//input[contains(@class,'cdk-text-field-autofill-monitored')]
-	//span[contains(@class,'ds-formField__labelWrapper position-absolute')]
-	//input[contains(@id,'canada-post-address-complete')]
 
 	@FindBy(xpath = "//div[@id='multipleUnitsModal'] ")
 	WebElement popupIgniteAddressLookupLable;
-
 
 	@FindBy(xpath = "//span[contains(@class,'ds-formField__labelWrapper')]")
 	WebElement txaIgniteAddressLookupLable;
@@ -159,10 +152,7 @@ public class RogersHomePage extends BasePageClass {
 
 	@FindBy(xpath = "//ds-form-field[contains(@class,'ds-formField ng-tns-c15-0 ds-formField__typeds-input')]")
 	WebElement txaIgniteLookup;
-	
-	@FindBy(xpath = "//a[@title='MyRogers']//span[@class='m-navLink__caption']")
-	WebElement lnkMyRogers;
-	
+
 	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large']")
 	WebElement btnUseThisAddress;
 
@@ -184,12 +174,17 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//ul[@class='dds_o-navLinkList']//span[contains(text(),'ON')]")
 	WebElement lnkOptedON;
 
-	@FindBy(xpath = "//li[@id='province']//span[@class='dds_m-navLink__chevron rds-icon-expand']")
+	@FindBy(xpath = "//a[@aria-label='Ontario']//span[@class='m-navLink__chevron rds-icon-expand']")
 	WebElement lnkProvince;
 
 	@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='Ontario']")
 	WebElement lnkProvinceON;
-	//a[@class='dds_m-navLink -dropdownNavbar' and @id='ON']
+
+	@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='New Brunswick']")
+	WebElement lnkProvinceNB;
+
+	@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='Newfoundland and Labrador']")
+	WebElement lnkProvinceNL;
 
 	@FindBy(xpath = "//ngx-smart-modal[@id='loadingModal']")
 	WebElement popupLoadingFingersciam;
@@ -243,7 +238,6 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet at your address']//span[@class='ds-icon rds-icon-right']"),
 			@FindBy(xpath = "//a[@title='Check availability of Ignite Internet at your address']/span")})
 	WebElement lnkInternetAvailability;
-	//			@FindBy(xpath = "//a[@title='Check availability of Ignite Internet']/span"),
 
 	@FindAll({
 	@FindBy(xpath = "//h2[@class='-center text-title-1']"),
@@ -256,13 +250,17 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='m-navLink__icon rds-icon-avatar']")
 	WebElement btnIconAvatar;
 
-	@FindBy(xpath = "//span[contains(text(),'Internet')]/ancestor::ul[@class='list-none d-flex']//ds-icon[@name='down']")
+	@FindBy(xpath = "//dsa-subnav-desktop//a[@title='View links to Ignite Internet Information Pages']")
 	WebElement subnavIgniteInternet;
 
-	@FindBy(xpath = "//span[contains(text(),'Ignite SmartStream') or contains(text(),'Élan Diffusion futée')]/ancestor::li[@role='menuitem']//ds-icon[@name='right']")
+	@FindAll({
+	@FindBy(xpath = "//dsa-subnav-desktop//a[@title='View links to TV & Streaming information pages']"),
+	@FindBy(xpath = "//span[contains(text(),'TV & Streaming') or contains(text(),'Télé et Diffusion en continu')]/ancestor::li[@role='menuitem']//ds-icon[@name='right']")})
 	WebElement subnavIgniteSmartStream;
 
-	@FindBy(xpath = "//span[contains(text(),'Help and Support') or contains(text(),'Soutien')]/ancestor::li[@role='menuitem']//ds-icon[@name='right']")
+	@FindAll({
+	@FindBy(xpath = "//dsa-subnav-desktop//a[@title='Open for help on Ignite SmartStream']"),
+	@FindBy(xpath = "//dsa-subnav-desktop//a[@title='Open for help on Ignite Internet products']")})
 	WebElement subnavHelpAndSupport;
 
 	@FindBy(xpath = "//li[@class='mb-0 ng-star-inserted']//a[contains(@title,'Open to learn more about Ignite Internet') or contains(@title,'Ouvrir pour en savoir plus sur Élan Internet')]")
@@ -276,6 +274,9 @@ public class RogersHomePage extends BasePageClass {
 
 	@FindBy(xpath = "//li[@class='mb-0 ng-star-inserted']//a[contains(@title,'Check availability of Ignite') or contains(@title,'d’Élan Internet à votre adresse')]")
 	WebElement lnkIgniteInternet;
+
+	@FindBy(xpath = "//a[@class='c-navbar-link' and @translate='nav.overview.header']")
+	WebElement btnAccOverview;
 
 	/**
 	 * To verify the Home page
@@ -310,7 +311,15 @@ public class RogersHomePage extends BasePageClass {
 	public void clkAddNow() {	
 		getReusableActionsInstance().clickWhenReady(btnAddNow, 90);
 	}
-	
+
+	/**
+	 * click Add a line to my account add now
+	 * @author chinnarao.vattam
+	 */
+	public void clkAccOverview() {
+		getReusableActionsInstance().clickWhenReady(btnAccOverview, 30);
+	}
+
 	/**
 	 * Click on myAccount button on the home page
 	 * @author chinnarao.vattam
@@ -346,10 +355,10 @@ public class RogersHomePage extends BasePageClass {
 	 * Click the SignIn button from the top tile bar 
 	 * @author chinnarao.vattam 
 	 */
-	public void clkTVBundle() {		
+	public void clkTVBundle() {
 		getReusableActionsInstance().getWhenVisible(lnkTVBundle, 30).click();
 	}
-	
+
 	/**
 	 * Click the SignIn button from the top tile bar 
 	 * @author chinnarao.vattam 
@@ -531,9 +540,19 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkMyRogers() {
-		getReusableActionsInstance().getWhenReady(lnkMyRogers, 30).click();
+		getReusableActionsInstance().getWhenReady(lnkMyRogersfromAccount, 30).click();
 	}
-	
+
+
+	/**
+	 * Click the MyRogers link from Home page
+	 * @author chinnarao.vattam
+	 */
+	public void clkMyRogersLink() {
+		getReusableActionsInstance().getWhenReady(lnkMyRogersLink).click();
+
+	}
+
 	/**
 	 * To Click No thanks on welcome back page
 	 * @author chinnarao.vattam 
@@ -608,16 +627,7 @@ public class RogersHomePage extends BasePageClass {
 	public void clkBundle() {		
 		getReusableActionsInstance().getWhenVisible(lnkBundle, 30).click();
 	}
-	
-	/**
-	 * Click the MyRogers link from Home page
-	 * @author chinnarao.vattam 
-	 */
-	public void clkMyRogersLink() {
-		getReusableActionsInstance().getWhenReady(lnkMyRogersLink).click();
-		
-	}
-	
+
 	/**
 	 * Click the Register Now button from Home page
 	 * @author chinnarao.vattam 
@@ -640,6 +650,28 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public void clkViewAllDevices() {
 		getReusableActionsInstance().clickWhenVisible(btnViewAllDevices);
+	}
+
+	/**
+	 * Click the SignIn button from the top tile bar
+	 * @author chinnarao.vattam
+	 */
+	public void clkTVBundlesForNL() {
+		getReusableActionsInstance().isElementVisible(lnkOptedON,20);
+		getReusableActionsInstance().getWhenReady(lnkProvince, 20).click();
+		getReusableActionsInstance().getWhenReady(lnkProvinceNL, 30);
+		getReusableActionsInstance().executeJavaScriptClick(lnkProvinceNL);
+	}
+
+	/**
+	 * Click the SignIn button from the top tile bar
+	 * @author chinnarao.vattam
+	 */
+	public void clkTVBundlesForNB() {
+		getReusableActionsInstance().isElementVisible(lnkOptedON,20);
+		getReusableActionsInstance().getWhenReady(lnkProvince, 20).click();
+		getReusableActionsInstance().getWhenReady(lnkProvinceNB, 30);
+		getReusableActionsInstance().executeJavaScriptClick(lnkProvinceNB);
 	}
 
 	/**
@@ -673,6 +705,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyIgnitepage() {
+		getReusableActionsInstance().staticWait(10000);
 		return getReusableActionsInstance().isElementVisible(btnServiceability, 60);
 	}
 
@@ -729,18 +762,32 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
 	}
 	
-	public void setIgniteAddressLookup(String strAddress) {
+	public void setIgniteAddressLookup1(String strAddress) {
 		getReusableActionsInstance().waitForElementVisibility(txaIgniteAddressContainerExisting, 60);
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressContainerExisting, 3).click();
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 5).sendKeys(strAddress);
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.TAB);
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup ).sendKeys(Keys.ARROW_DOWN);
-		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 1).sendKeys(Keys.ARROW_DOWN);
-		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 2).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 10).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 10).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup,10).sendKeys(Keys.ENTER);
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
-		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
+	}
+
+	public void setIgniteAddressLookup(String strAddress) {
+		getReusableActionsInstance().waitForElementVisibility(txaIgniteAddressContainerExisting, 60);
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressContainerExisting, 3).click();
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 5).sendKeys(strAddress);
+		String strAddressResultXpath = "//ul[@role='listbox']/li[contains(@ng-reflect-result,'') and contains(text(),'address')]";
+		try{
+			getReusableActionsInstance().getWhenReady(By.xpath(strAddressResultXpath.replace("address", strAddress.trim())), 10).click();
+
+		}catch (Exception e){
+			getReusableActionsInstance().getWhenReady(By.xpath("//ul[@role='listbox']/li[contains(@ng-reflect-result,'')]"), 10).click();
+		}
 	}
 
 	public void setIgniteAddressLookupRetry() {
@@ -753,6 +800,21 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(popupIgniteAddressLookupLable, 30);
 		getReusableActionsInstance().getWhenReady(rdoBasement, 10).click();
 	}
+
+	public void selectIgniteAddressLookupBasement(String strAddress) {
+		getReusableActionsInstance().waitForElementVisibility(txaIgniteAddressContainerExisting, 60);
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressContainerExisting, 3).click();
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 5).sendKeys(strAddress);
+		String strAddressResultXpath = "//ul[@role='listbox']/li[contains(@ng-reflect-result,'') and contains(text(),'address')]";
+		try{
+			getReusableActionsInstance().getWhenReady(By.xpath(strAddressResultXpath.replace("address", "BSMT-"+strAddress.trim())), 10).click();
+
+		}catch (Exception e){
+			getReusableActionsInstance().getWhenReady(By.xpath("//ul[@role='listbox']/li[contains(@ng-reflect-result,'')]"), 10).click();
+		}
+	}
+
 	/**
 	 * Click the Lookup Submit button to check service availability
 	 * @author chinnarao.vattam
@@ -766,6 +828,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkAnotherAddressLookupSubmit() {
+		getReusableActionsInstance().staticWait(6000);
 		getReusableActionsInstance().getWhenReady(btnAnotherAddressLookupSubmit, 60).click();
 	}
 
@@ -782,10 +845,12 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkCheckAnotherAddress() {
-		getReusableActionsInstance().getWhenReady(lnkCheckAnotherAddress, 90).click();
+		getReusableActionsInstance().staticWait(6000);
+		getReusableActionsInstance().getWhenReady(lnkCheckAnotherAddress, 90);
+		getReusableActionsInstance().executeJavaScriptClick(lnkCheckAnotherAddress);
 	}
 
-	public void setAnotherAddressLookup(String strAddress) {
+	public void setAnotherAddressLookup1(String strAddress) {
 		getReusableActionsInstance().waitForElementVisibility(txaAnotherAddressContainer, 60);
 		getReusableActionsInstance().getWhenReady(txaAnotherAddressContainer, 3).click();
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();
@@ -795,6 +860,20 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 1).sendKeys(Keys.ARROW_DOWN);
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup, 2).sendKeys(Keys.ARROW_DOWN);
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
+	}
+
+	public void setAnotherAddressLookup(String strAddress) {
+		getReusableActionsInstance().waitForElementVisibility(txaIgniteAddressContainerExisting, 60);
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressContainerExisting, 3).click();
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 5).sendKeys(strAddress);
+		String strAddressResultXpath = "//ul[@role='listbox']/li[contains(@ng-reflect-result,'') and contains(text(),'address')]";
+		try{
+			getReusableActionsInstance().getWhenReady(By.xpath(strAddressResultXpath.replace("address", strAddress.trim())), 10).click();
+
+		}catch (Exception e){
+			getReusableActionsInstance().getWhenReady(By.xpath("//ul[@role='listbox']/li[contains(@ng-reflect-result,'')]"), 10).click();
+		}
 	}
 	/**
 	 * Click the Lookup Submit button to check service availability

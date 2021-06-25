@@ -34,7 +34,7 @@ public class RogersCH_TC_072_081_SHM_AutomatePage_NavigatefromSubnav_ValidateAll
     final String strLanguage=System.getProperty("Language");
 
 
-  @Test(groups = {"RegressionCH","RhpAndRhmCH","DryRunCH"})
+  @Test(groups = {"RegressionCH","RhpAndRhmCH"})
     public void checkShmAutomationPageDsaBillboardTest() {
         String actualTitle = getDriver().getTitle();
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyAutomationPackagesPageTitle(actualTitle, strLanguage), "Title is Verified", "Title Verification is failed");

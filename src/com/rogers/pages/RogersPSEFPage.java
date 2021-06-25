@@ -25,7 +25,7 @@ public class RogersPSEFPage extends BasePageClass {
 
 
 	private By btnUsageAndServicesDropDown;
-	private By lblSMPpromotionEnds;
+
 	private By tabDisneyPlus;
 	private By tabAppleMusic;
 
@@ -34,7 +34,10 @@ public class RogersPSEFPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[contains(text(),'Promotion ended') or contains(text(),'ended') or contains(text(),'La promotion prend fin le')]")
+	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[contains(text(),'Promotion ends') or contains(text(),'ends') or contains(text(),'La promotion prend fin le')]")
+	WebElement lblSMPpromotionEnds;
+
+	@FindBy(xpath = "//rss-subscriber-info/following-sibling::span//span[contains(text(),'Promotion ended') or contains(text(),'ended') or contains(text(),'La promotion a pris fin le')]")
 	WebElement lblSMPpromotionEnded;
 
 	@FindBy(xpath = "//h3/following-sibling::rss-subscribed-ctn-item//span[@class='vas-subscriber-name']")
@@ -205,6 +208,13 @@ public class RogersPSEFPage extends BasePageClass {
 			return true;
 		}
 		return false;
+	}
+
+	public boolean verifyIfCancelledDPIsShown(String strCancelledCTN) {
+
+		return (getReusableActionsInstance().isElementVisible(By.xpath("//span[contains(@class,'vas-subscriber-number') and contains(text(),'"+strCancelledCTN.substring(strCancelledCTN.length()-4)+"')]/ancestor::rss-subscriber-info/following-sibling::span//span[contains(text(),'Promotion ended') or contains(text(),'ended') or contains(text(),'La promotion a pris fin le')]"))
+		|| getReusableActionsInstance().isElementVisible(By.xpath("//span[contains(@class,'vas-subscriber-number') and contains(text(),'"+strCancelledCTN.substring(strCancelledCTN.length()-4)+"')]/ancestor::rss-subscriber-info/following-sibling::span//span[contains(text(),'Promotion ended') or contains(text(),'ends') or contains(text(),'La promotion prend fin le')]")));
+
 	}
 
 	public boolean isDateGreaterThan(Date date1, Date date2)

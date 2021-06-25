@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","saiCH","DryRunCH"})
+	@Test(groups = {"RegressionCH","saiCH"})
     public void checkBuyStandAloneInternetOffer() throws InterruptedException {
 
     	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
@@ -43,7 +43,7 @@ public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends Bas
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         getRogersInternetPackageSelectionPage().clkInternetPackage();
@@ -130,7 +130,7 @@ public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends Bas
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         getRogersInternetPackageSelectionPage().clkInternetPackage();

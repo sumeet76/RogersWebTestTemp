@@ -25,20 +25,23 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='ute.rogers.rhpDashboard.homePhone']")
 	WebElement infoLegacyrhpDashboard;
 
-	@FindBy(xpath = "//span[contains(text(),'Configure your current features') or contains(text(),'Configuration des fonctions')]")
+	@FindBy(xpath = "//span[contains(text(),'Configure your current features') or contains(text(),'Configuration des fonctions')]/ancestor::a")
 	WebElement lnkConfigureYourCurrentFeatures;
     //ins[@usertype-translate='global.cta.configureYourFeatures']
 
-	@FindBy(xpath = "//span[contains(text(),'Access your voicemail settings') or contains(text(),'Paramètres de messagerie vocale')]")
+	@FindBy(xpath = "//span[contains(text(),'Access your voicemail settings') or contains(text(),'Paramètres de messagerie vocale')]/ancestor::a")
 	WebElement lnkAccessYourVoicemailSettings;
 	//ins[@usertype-translate='global.cta.accessYourVoicemailSettings']
 
-	@FindBy(xpath = "//span[contains(text(),'Reset your voicemail password') or contains(text(),'Mot de passe de la messagerie')]")
+	@FindBy(xpath = "//span[contains(text(),'Reset your voicemail password') or contains(text(),'Mot de passe de la messagerie')]/ancestor::button")
 	WebElement lnkResetYourVoicemailPassword;
    //ins[@usertype-translate='global.cta.resetVoicemailPassword']
 
 	@FindBy(xpath = "//a[@aria-label='Need help? Chat with a Rogers agent.']")
 	WebElement lnkLiveChatOnRHPDashboard;
+
+	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
+	WebElement btnCancelResetVoicemailpswd;
 
 	/**
 	 * Click on the Solaris RHP badge 
@@ -96,6 +99,64 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	 */
 	public boolean verfyLiveChatOnRHPDashboard() {
 		return getReusableActionsInstance().isElementVisible(lnkLiveChatOnRHPDashboard);
+	}
+
+	/**
+	 * Click the Configure Your Current Features link
+	 * @return true if the Configure Your Current Features is displaying in new tab, else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean clkConfigureYourCurrentFeatures() {
+		String mainWindow = getDriver().getWindowHandle();
+		getReusableActionsInstance().getWhenReady(lnkConfigureYourCurrentFeatures,90).click();
+		getReusableActionsInstance().waitForNumberOfWindowsToBe(2);
+		getReusableActionsInstance().switchToNewWindow(mainWindow);
+		//the page is moving to new window
+		getReusableActionsInstance().staticWait(1000);
+		//getReusableActionsInstance().isElementVisible(lnkPDFPage);
+		getReusableActionsInstance().closeCurrentWindow();
+		getReusableActionsInstance().switchToMainWindow(mainWindow);
+		//the page is moving to original window
+		getReusableActionsInstance().staticWait(1000);
+		getReusableActionsInstance().waitForNumberOfWindowsToBe(1);
+		return true;
+	}
+
+	/**
+	 * Clicks on ConfigureYourCurrentFeatures
+	 * @author chinnarao.vattam
+	 */
+	public void clkCancelResetVoicemailpswd() {
+		getReusableActionsInstance().getWhenReady(btnCancelResetVoicemailpswd,60).click();
+	}
+
+	/**
+	 * Click the Access Your Voicemail Settings link
+	 * @return true if the Access Your Voicemail Settings is displaying in new tab, else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean  clkAccessYourVoicemailSettings() {
+		String mainWindow = getDriver().getWindowHandle();
+		getReusableActionsInstance().getWhenReady(lnkAccessYourVoicemailSettings,90).click();
+		getReusableActionsInstance().waitForNumberOfWindowsToBe(2);
+		getReusableActionsInstance().switchToNewWindow(mainWindow);
+		//the page is moving to new window
+		getReusableActionsInstance().staticWait(1000);
+		//getReusableActionsInstance().isElementVisible(lnkPDFPage);
+		getReusableActionsInstance().closeCurrentWindow();
+		getReusableActionsInstance().switchToMainWindow(mainWindow);
+		//the page is moving to original window
+		getReusableActionsInstance().staticWait(1000);
+		getReusableActionsInstance().waitForNumberOfWindowsToBe(1);
+		return true;
+	}
+
+	/**
+	 * Clicks on ResetYourVoicemailPassword
+	 * @author chinnarao.vattam
+	 */
+	public void clkResetYourVoicemailPassword() {
+		getReusableActionsInstance().getWhenReady(lnkResetYourVoicemailPassword,60).click();
 	}
 
 }

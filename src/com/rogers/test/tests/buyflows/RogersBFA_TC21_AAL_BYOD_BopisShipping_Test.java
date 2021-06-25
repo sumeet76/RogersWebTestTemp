@@ -37,7 +37,7 @@ public class RogersBFA_TC21_AAL_BYOD_BopisShipping_Test extends BaseTestClass {
         getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");
-        getDriver().get(System.getProperty("AWSAALUrl"));
+        getDriver().get(System.getProperty("AWSUrl")+"?flowType=aal");
         //------------------------------------Device Catalog page--------------------------------------------
         reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvaluationPopupPresent(), "Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
         reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed", "Credit Evaluation Text not disaplayed on Modal");
@@ -60,6 +60,8 @@ public class RogersBFA_TC21_AAL_BYOD_BopisShipping_Test extends BaseTestClass {
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc21AALBYODBopisShipping.getTalkOptionIndex())),
                 "Talk option selected and Addons page in expanded state","Addons page not in expanded state");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
+        getRogersPlanConfigPage().setUserNameCallerID();
+        reporter.reportLogWithScreenshot("CalledID details entered");
         String monthlyFeesAmountWithTax = getRogersPlanConfigPage().getMonthlyFeesAmount();
         String oneTimeFeesAmountWithTax = getRogersPlanConfigPage().getOneTimeFeesAmount();
         reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees " + monthlyFeesAmountWithTax + "2. oneTimeFee " + oneTimeFeesAmountWithTax);

@@ -48,35 +48,37 @@ import java.util.Map;
  *
  **/
 
-public class RogersCH_TC_029_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest extends BaseTestClass {
+public class RogersCH_TC_029_IginteTV_BuyBundle_DoublePlay_STB_PAC_Prepaid_NB_Test extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH","DryRunCH"})
+    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
 	public void checkDoublePalyTVOffer() {
         reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	getRogersHomePage().clkTVBundle();
-    	
         reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
        	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+        getRogersHomePage().clkTVBundlesForNB();
     	getRogersHomePage().clkServiceability();
     	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
     	//getRogersHomePage().clkAddressCheck();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1= TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        String  strAddressLine1= TestDataHandler.tc29_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc29_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-        getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
+        //getRogersTechInstallPage().verifyAPICallTemp();
+        getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
+        //getRogersTechInstallPage().verifyAPICallTemp();
         getRogersIgniteTVBuyPage().set4KTV();
         reporter.reportLogWithScreenshot("4k TV selected");
         //getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
         //getRogersIgniteTVBuyPage().clkUpdateCart();
         getRogersIgniteTVBuyPage().clkCheckout();
         
-       //reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
+       reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersIgniteTVProfileCreationPage().setEmail();
         getRogersIgniteTVProfileCreationPage().setFirstname();
@@ -154,17 +156,18 @@ public class RogersCH_TC_029_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest e
 
         reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+        getRogersHomePage().clkTVBundlesForNB();
         getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
         //getRogersHomePage().clkAddressCheck();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1= TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        String  strAddressLine1= TestDataHandler.tc29_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc29_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-        getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
+        getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
         getRogersIgniteTVBuyPage().set4KTV();
@@ -173,7 +176,7 @@ public class RogersCH_TC_029_IginteTV_BuyBundle_DoublePlay_STB_PAC_PrepaidTest e
         //getRogersIgniteTVBuyPage().clkUpdateCart();
         getRogersIgniteTVBuyPage().clkCheckout();
 
-        //reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
+        reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersIgniteTVProfileCreationPage().setEmail();
         getRogersIgniteTVProfileCreationPage().setFirstname();

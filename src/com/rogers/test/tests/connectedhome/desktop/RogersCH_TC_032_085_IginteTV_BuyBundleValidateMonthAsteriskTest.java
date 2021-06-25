@@ -49,7 +49,7 @@ import java.util.Map;
 
 public class RogersCH_TC_032_085_IginteTV_BuyBundleValidateMonthAsteriskTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH","DryRunCH"})
+    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
     public void checkBuyIgniteTVOffer() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	getRogersHomePage().clkTVBundle();
@@ -61,12 +61,17 @@ public class RogersCH_TC_032_085_IginteTV_BuyBundleValidateMonthAsteriskTest ext
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
         getRogersIgniteTVBuyPage().clkHomephone();
-        getRogersIgniteTVBuyPage().selectSolarisPremier();;
+        reporter.softAssert(getRogersIgniteTVBuyPage().verifyFlex5PackageCost(),"Flex5 Package Cost having the mo*","Flex5 Package Cost is not having the mo*");
+        reporter.softAssert(getRogersIgniteTVBuyPage().verifyFlex10PackageCost(),"Flex10 Package Cost having the mo*","Flex10 Package Cost is not having the mo*");
+        reporter.softAssert(getRogersIgniteTVBuyPage().verifyFlex20PackageCost(),"Flex20+ Package Cost having the mo*","Flex20+ Package Cost is not having the mo*");
+        reporter.softAssert(getRogersIgniteTVBuyPage().verifyPremierPackageCost(),"Premier Package Cost having the mo*","Premier Package Cost is not having the mo*");
+        reporter.softAssert(getRogersIgniteTVBuyPage().verifyStarterPackageCost(),"Starter Package Cost having the mo*","Starter Package Cost is not having the mo*");
+        getRogersIgniteTVBuyPage().selectSolarisPremier();
 
         reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
         reporter.reportLogWithScreenshot("Launched the home phone selection page");

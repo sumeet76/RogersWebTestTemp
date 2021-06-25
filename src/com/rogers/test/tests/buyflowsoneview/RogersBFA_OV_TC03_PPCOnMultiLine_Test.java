@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_OV_TC03_PPCOnMultiLine_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","RegressionOVBFA","SanityBFA","PPCOvBFA"})
+	@Test(groups = {"RegressionBFA","RegressionOVBFA","PPCOvBFA"})
 	public void ppcOnMultiLineFlowTest() {
 		reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
 		reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");

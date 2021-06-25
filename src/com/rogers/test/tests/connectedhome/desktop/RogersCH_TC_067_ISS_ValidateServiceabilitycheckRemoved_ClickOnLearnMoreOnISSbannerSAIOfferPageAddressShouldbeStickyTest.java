@@ -34,7 +34,7 @@ import java.util.Map;
 
 public class RogersCH_TC_067_ISS_ValidateServiceabilitycheckRemoved_ClickOnLearnMoreOnISSbannerSAIOfferPageAddressShouldbeStickyTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","SmartStreamCH","DryRunCH"})
+    @Test(groups = {"RegressionCH","SmartStreamCH"})
     public void checkServiceabilitycheckRemovedClickOnLearnMoreOnISSbannerSAIOfferPageAddresShouldbeSticky() {
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
         getRogersHomePage().clkEasyInternet();
@@ -46,7 +46,7 @@ public class RogersCH_TC_067_ISS_ValidateServiceabilitycheckRemoved_ClickOnLearn
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2+", CANADA");
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyInternetPacakesPage(),"Packages page has Launched","Packages page has not Launched");

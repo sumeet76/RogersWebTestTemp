@@ -34,7 +34,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_016_ExistingSolarisInternetCX_enableVA_Livechat_InternetDashboardPageTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","RogersInternetCH","DryRunCH"})
+	@Test(groups = {"RegressionCH","RogersInternetCH"})
     public void checkVAicononInternetDashboard() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();

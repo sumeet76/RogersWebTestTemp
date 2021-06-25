@@ -92,16 +92,11 @@ public class RogersSS_TC_137_PSEF_DP_ValidateCTNRedemptionforDPthenAM_MultipleAc
         reporter.reportLogWithScreenshot("Subscription management page shows the subscribed CTNs in Currently Subscribed Section");
 
 
-        getRogersPSEFPage().clkAccountOverview();
-        reporter.reportLogWithScreenshot("Account Overview");
-        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),
-                "Account overview displayed correctly",
-                "Account overview didnt load");
-        getCommonBusinessFlows().scrollToMiddleOfWebPage();
+        getRogersPSEFPage().clkAppleMusicTab();
 
         //Apple Music redemption flow:
 
-        reporter.reportLogWithScreenshot("CTNS or Subscriptions View");
+        reporter.reportLogWithScreenshot("Apple Music Tab selected");
         reporter.hardAssert(getRogersAccountOverviewPage().verifySubscriptionIsAvailableForRedeem(),
                 "The subscription is available for redeem",
                 "The subscription is NOT available for redeem");

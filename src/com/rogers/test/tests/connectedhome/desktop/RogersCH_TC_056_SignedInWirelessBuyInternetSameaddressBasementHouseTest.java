@@ -41,15 +41,15 @@ public class RogersCH_TC_056_SignedInWirelessBuyInternetSameaddressBasementHouse
         getRogersHomePage().clkSignIn();
         getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc62_WirelessSignedInInternetBuyBasement.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc62_WirelessSignedInInternetBuyBasement.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc56_WirelessSignedInInternetBuyBasement.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc56_WirelessSignedInInternetBuyBasement.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc62_WirelessSignedInInternetBuyBasement.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc56_WirelessSignedInInternetBuyBasement.accountDetails.getBan());
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersHomePage().clkExistingCustomerShop();

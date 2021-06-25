@@ -47,7 +47,8 @@ public class RogersBFA_TC13_HUPShareNoTermSL_Test extends BaseTestClass{
                     "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
             /*getRogersPlanConfigPage().setCheckBoxKeepMyCurrentPlan();
             reporter.reportLogPassWithScreenshot("Checkbox for keep my current plan selected");*/
-            getRogersPlanConfigPage().selectNoTermDeviceDeviceCost();
+            getRogersPlanConfigPage().clkRadioButtonNoTerm();
+            //getRogersPlanConfigPage().selectNoTermDeviceDeviceCost();
             reporter.reportLogPassWithScreenshot("No term selected");
             getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
             reporter.reportLogPassWithScreenshot("Plan config page device cost selected");

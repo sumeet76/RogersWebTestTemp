@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_OV_TC07_PPCSingleLine_Test extends BaseTestClass {
 
-    @Test(groups = {"RegressionBFA","RegressionOVBFA","SanityBFA","PPCOvBFA"})
+    @Test(groups = {"RegressionBFA","RegressionOVBFA","PPCOvBFA"})
     public void ppcSingleLineFlowTest() {
         reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
         reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");

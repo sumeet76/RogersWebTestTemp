@@ -3,6 +3,7 @@ package com.rogers.pages;
 
 import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -46,20 +47,17 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	@FindBy(xpath = "//button[@translate='global.dashboard.tv.exchangeFlexChannels.modalCTA']")
 	WebElement btnConfirmSelectedChannel;
 	
-	@FindBy(xpath = "//div[contains(@class,'desktop')]//a[@aria-describedby='ariaExchangeChannelsPage' ]//span[@role='text']")
+	@FindBy(xpath = "//div[contains(@class,'desktop')]//button[@aria-describedby='ariaExchangeChannelsPage' ]/span")
 	WebElement btnConfirmSwapDesktop;
 
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-chevron-up']/ancestor::button")
 	WebElement btnOpenConfirmSwap;
 
-
-	@FindBy(xpath = "//div[contains(@class,'mobile')]//a[@aria-describedby='ariaExchangeChannelsPage' ]//span[@role='text']")
+	@FindBy(xpath = "//div[contains(@class,'mobile')]//button[@aria-describedby='ariaExchangeChannelsPage' ]/span")
 	WebElement btnConfirmSwapMobile;
 
 	@FindBy(xpath = "//ds-icon[@ng-reflect-color='success']/ancestor::div//span[@class='ds-icon rds-icon-right']/ancestor::a/span")
 	WebElement btnContinueSwap;	
-	//button[@translate='global.dashboard.tv.exchangeFlexChannels.modalConfirmCTA']
-   //button[@class='ute-btn-primary ute-md']
 
 	@FindBy(xpath = "//ds-icon[@ng-reflect-color='success']")
 	WebElement icnSuccess;
@@ -76,9 +74,7 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@class,'d-inline-block -secondary -large')]")
 	WebElement btnRemoveChannel;
 
-	@FindBy(xpath = "//button[contains(@class,'d-inline-block -secondary -large')] | " +
-					"//div[@class='exchange-channels__selected__desktop']//span[@id='ariaExchangeChannelsPage']//" +
-					"ancestor::a[@aria-describedby='ariaExchangeChannelsPage']")
+	@FindBy(xpath = "//button[contains(@class,'d-inline-block -secondary -large')] | " + "//div[@class='exchange-channels__selected__desktop']//span[@id='ariaExchangeChannelsPage']//" + "ancestor::a[@aria-describedby='ariaExchangeChannelsPage']")
 	WebElement btnAddChannel;
 
 	@FindBy(xpath = "//button[contains(@class,'d-inline-block -secondary -large')]")
@@ -327,36 +323,26 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 		getReusableActionsInstance().clickWhenReady(btnReturnToDashbaord, 30);
 	}
 
-
 	public List<WebElement> uncheckTVChannels() {
-		//reusableActions.waitForAllElementsVisible(selectedChannels, 120);
-
 		List<WebElement> availableChannels = getDriver().findElements(
 				By.xpath("//rch-selector[@ng-reflect-selected='false']//span[contains(@id,'aria-checkbox-id')]//ancestor::button//input/.."));
-		//System.out.println(availableChannels.toString());
-
 		for(int iuncheck=0;iuncheck<3;iuncheck++) {
-			System.out.println("In method Uncheck TV Channels loop");
-			List<WebElement> selected = getDriver().findElements(By.xpath("//rch-selector[@ng-reflect-selected='true']//input/.. | "
-					+ "//span[@translate='global.dashboard.tv.exchangeFlexChannels.logoSelected']/.."));
+			List<WebElement> selected = getDriver().findElements(By.xpath("//rch-selector[@ng-reflect-selected='true']//input/.. | "+"//span[@translate='global.dashboard.tv.exchangeFlexChannels.logoSelected']/.."));
 			Collections.reverse(selected);
 			getReusableActionsInstance().clickIfAvailable(selected.get(0),45);
-			System.out.println(selected.get(0).getText());
 		}
 		return availableChannels;
 	}
 
 	public void checkTVChannels(List<WebElement> channels){
-		System.out.println("Channel size: " + channels.size());
-
 		int counter =0;
+		Collections.reverse(channels);
 		for (WebElement channel: channels ) {
 			if(counter<3){
 				getActionsInstance().moveToElement(channel).click().build().perform();
-				System.out.println(channel.getText());
 				counter++;
+				getReusableActionsInstance().getWhenReady(channel, 30).sendKeys(Keys.TAB);
 			}
 		}
-		System.out.println("Checked channels count:" + counter);
 	}
 }

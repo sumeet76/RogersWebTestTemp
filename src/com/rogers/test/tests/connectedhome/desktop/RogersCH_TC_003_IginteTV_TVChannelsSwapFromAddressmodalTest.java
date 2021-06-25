@@ -54,7 +54,8 @@ public class RogersCH_TC_003_IginteTV_TVChannelsSwapFromAddressmodalTest extends
 	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
     reporter.reportLogWithScreenshot("Launched the Account Page");
     getRogersHomePage().clkExistingCustomerShop();
-    getRogersHomePage().clkIgniteTVExistingCustomer();
+    //getRogersHomePage().clkIgniteTVExistingCustomer();
+     getDriver().get(System.getProperty("QaUrl")+"/web/consumer/ignite-bundles/tv-internet");
     reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 	getRogersHomePage().clkServiceabilityMigration();
     reporter.reportLogWithScreenshot("Address confirmation popup has lanched to select Ignite Internet speed button"); 
@@ -88,8 +89,8 @@ public class RogersCH_TC_003_IginteTV_TVChannelsSwapFromAddressmodalTest extends
      reporter.reportLogWithScreenshot("removed the Swap-out Channel three");
      getRogersSolarisChannelsExchangePage().swapChannelIn(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getSwapInChannelThree());
      reporter.reportLogWithScreenshot("Selected the Swap-in Channel three");
-     getRogersSolarisChannelsExchangePage().clkAddChannelDifferentLogic();
-     reporter.reportLogWithScreenshot("Added the Swap-in Channel three");
+     //getRogersSolarisChannelsExchangePage().clkAddChannelDifferentLogic();
+     //reporter.reportLogWithScreenshot("Added the Swap-in Channel three");
      getRogersSolarisChannelsExchangePage().clkConfirmSwap();
      reporter.hardAssert(getRogersSolarisChannelsExchangePage().verifyExchangeSuccess(),"Swap Success","Swap failed");
      reporter.reportLogWithScreenshot("Swap Success popup has launched");

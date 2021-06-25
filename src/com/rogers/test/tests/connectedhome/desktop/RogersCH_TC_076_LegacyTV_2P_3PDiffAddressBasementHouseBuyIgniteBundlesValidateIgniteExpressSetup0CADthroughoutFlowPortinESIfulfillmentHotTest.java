@@ -51,7 +51,7 @@ import java.util.Map;
 
 public class RogersCH_TC_076_LegacyTV_2P_3PDiffAddressBasementHouseBuyIgniteBundlesValidateIgniteExpressSetup0CADthroughoutFlowPortinESIfulfillmentHotTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
+    @Test//(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
 	public void checkTVPackageUpgradeTest() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
@@ -70,7 +70,8 @@ public class RogersCH_TC_076_LegacyTV_2P_3PDiffAddressBasementHouseBuyIgniteBund
         reporter.reportLogWithScreenshot("Launched the Account Page"); 
 		 getRogersHomePage().clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-		 getRogersHomePage().clkIgniteTVExistingCustomer();
+		 //getRogersHomePage().clkIgniteTVExistingCustomer();
+		getDriver().get(System.getProperty("QaUrl")+"/web/consumer/ignite-bundles/tv-internet");
     	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	getRogersHomePage().clkNoThnx();
     	getRogersHomePage().clkServiceability();
@@ -84,7 +85,7 @@ public class RogersCH_TC_076_LegacyTV_2P_3PDiffAddressBasementHouseBuyIgniteBund
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
 		getRogersIgniteTVBuyPage().clkHomephone();
-        getRogersIgniteTVBuyPage().selectSolarisStarterPackageNew();
+        getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
 
 		reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the home phone selection page");

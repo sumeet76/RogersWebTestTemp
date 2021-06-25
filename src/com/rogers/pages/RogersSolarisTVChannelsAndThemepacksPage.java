@@ -122,7 +122,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 */
 	public void clkAddButtonOnThemePackListOnManageChannelsAndThemePacks4plus1() {
 		//Taking more time to load all the themepacks from ATG
-		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().staticWait(6000);
 		getReusableActionsInstance().waitForElementVisibility(addThemePackClassicTVThemePacks4plus1, 120);
 		getReusableActionsInstance().executeJavaScriptClick(addThemePackClassicTVThemePacks4plus1);
 	}
