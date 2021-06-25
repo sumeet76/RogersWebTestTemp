@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_TC08_PPC_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","SanityyBFA","PPCBFA"})
+	@Test(groups = {"RegressionBFA","SanityBFA","PPCBFA"})
     public void rogersPpcTest() {
 		reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		reporter.reportLogWithScreenshot("Home Page");
@@ -35,6 +35,7 @@ public class RogersBFA_TC08_PPC_Test extends BaseTestClass {
         reporter.hardAssert(getRogersAccountOverviewPage().verifyAndClickWirelessCTN(TestDataHandler.tc08PPC.getCtn()), "Select CTN Passed", "Select CTN Failed");
         getRogersWirelessDetailsPage().verifyWirelessPageLoad();
         reporter.reportLogWithScreenshot("Wireless Dashboard Page");
+        //getDriver().get("https://qa5.rogers.com/web/totes/wireless-plan-change/#/choose-plan");
         getRogersWirelessDetailsPage().clickChangePlanButton();
         getRogersChoosePlanPage().verifyAndClickDowngradeFeeContinue();
         /*

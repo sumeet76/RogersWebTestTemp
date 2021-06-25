@@ -275,7 +275,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     /**
      * This method selects the individual data option and click on continue
      * @param dataOptionIndex String value of dataOptionIndex
-     * @author praveen.kumar
+     * @author praveen.kumar7
      */
     public void selectNonShareDataAndClkContinue(String dataOptionIndex) {
         if(Integer.parseInt(dataOptionIndex) == 0) {
@@ -291,7 +291,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * This method sets the value for talkOptionIndex
      * @param talkOptionIndex String value of talkOptionIndex
      * @return returs the String value of index
-     * @author praveen.kumar
+     * @author praveen.kumar7
      */
     public String getupdatedTalkOptionIndex(String talkOptionIndex) {
         if ((talkOptionIndex == null) || (talkOptionIndex.isEmpty()) || (Integer.parseInt(talkOptionIndex) > noOfTalkOptions.size()-1)) {
@@ -304,7 +304,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     /**
      * Select Device Cost tier on Plan config page and clicks on continue button
      * @param    deviceCostIndex : String value of Device Cost to be selected
-     * @author praveen.kumar
+     * @author praveen.kumar7
      */
     public void selectDeviceCostAndClickOnContinueButton(String deviceCostIndex) {
         int stepper = 1;
@@ -666,7 +666,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     public void selectAdditionalLinePlanOptions() {
         getReusableActionsInstance().clickWhenReady(checkBoxAdditionalLineOPtion, 30);
         getReusableActionsInstance().clickWhenReady(btnAddToCart);
-        getReusableActionsInstance().javascriptScrollByVisibleElement(btnProceedToCheckout);
+        getReusableActionsInstance().scrollToElement(btnProceedToCheckout);
         getReusableActionsInstance().clickWhenReady(btnProceedToCheckout, 30);
     }
 

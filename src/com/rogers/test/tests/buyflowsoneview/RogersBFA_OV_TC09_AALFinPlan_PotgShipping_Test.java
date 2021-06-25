@@ -19,7 +19,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_OV_TC09_AALFinPlan_PotgShipping_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","RegressionOVBFA","SanityBFA","HupOvBFA"})
+	@Test(groups = {"RegressionBFA","RegressionOVBFA","OVAALBFA"})
 	public void aALSingleLineFinPlanPOTGShippingFlow() {
 		reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
 		reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");
@@ -53,10 +53,8 @@ public class RogersBFA_OV_TC09_AALFinPlan_PotgShipping_Test extends BaseTestClas
 				"BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
 		reporter.hardAssert(getRogersOVPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
 		reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
-		getRogersOVPlanConfigPage().clickViewMoreOptions();
 		getRogersOVPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersOVPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.buyFlowsOVtestCase09.getDeviceCostIndex()));
 		reporter.reportLogPassWithScreenshot("Device cost option selected");
-		getRogersOVPlanConfigPage().clickShowMoreDetails();
 		getRogersOVPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersOVPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.buyFlowsOVtestCase09.getDataOptionIndex()));
 		reporter.reportLogPassWithScreenshot("Data option selected");
 		//getRogersOVPlanConfigPage().clickGetBPOOffer();
@@ -64,7 +62,7 @@ public class RogersBFA_OV_TC09_AALFinPlan_PotgShipping_Test extends BaseTestClas
 		reporter.hardAssert(getRogersOVPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersOVPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.buyFlowsOVtestCase09.getTalkOptionIndex())),
 				"Talk option selected and Addons page in expanded state","Addons page not in expanded state");
 		getRogersOVPlanConfigPage().clickPreCartAddonsContinueButton();
-		//getRogersOVPlanConfigPage().clkContinueCallerID();
+		getRogersOVPlanConfigPage().clkContinueCallerID();
 		//String monthlyFeesAmountWithTax = getRogersOVPlanConfigPage().getMonthlyFeesAmount();
 		//String oneTimeFeesAmountWithTax = getRogersOVPlanConfigPage().getOneTimeFeesAmount();
 		//reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees " + monthlyFeesAmountWithTax + "2. oneTimeFee " + oneTimeFeesAmountWithTax);
@@ -116,12 +114,10 @@ public class RogersBFA_OV_TC09_AALFinPlan_PotgShipping_Test extends BaseTestClas
 					TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getExpiryYear3());
 			reporter.reportLogWithScreenshot("Rogers Payment Page");
 			getRogersOVPaymentPage().clkSubmit();
-		} else {
-			getRogersOVOrderReviewPage().clkSubmitOrder();
 		}
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
 		//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyBANOrderConfirmationPage(), "BAN displayed is the same as the given BAN", "BAN displayed isn't the same as the given BAN");
+		//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyBANOrderConfirmationPage(), "BAN displayed is the same as the given BAN", "BAN displayed isn't the same as the given BAN");
 		reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");
 	}
 

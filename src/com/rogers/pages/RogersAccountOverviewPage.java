@@ -803,7 +803,6 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public boolean verifySuccessfulLogin() {	
 		 int counter = 0;
 		 boolean overviewPageLoaded = false;
-		 getReusableActionsInstance().staticWait(30000);
 		 getReusableActionsInstance().waitForElementVisibility(menuAccountNumber,60);
 		 String strAccountNumber = getReusableActionsInstance().getWhenReady(menuAccountNumber,30).getText();
 		 while (counter<3) {

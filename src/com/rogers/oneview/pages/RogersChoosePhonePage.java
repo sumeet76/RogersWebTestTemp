@@ -62,7 +62,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	@FindBy(xpath = "//span[text()='$0' or text()='0']/ancestor::section[@class='phoneModel']//div[@res='_add']")
 	List<WebElement> btnZeroUpfrontDeviceAdd;
 
-	@FindBy(xpath = "//h3[contains(text(),'Bring Your Own Device')]//..//span")
+	@FindBy(xpath = "//h3[contains(text(),'Bring') or contains(text(),'Apportez')]/parent::div[contains(@class,'dsa-tile-teaser')]//span[contains(@class,'ds-button__copy')]")
 	WebElement btnBringYourOwnDeviceViewDetails;
 	
 	@FindBy(xpath = "//div[@class='choose-ctn-modal']")
@@ -392,11 +392,22 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 */
 	public void clickDeviceTileCTAButton(String deviceName) {
 		if (deviceName.equalsIgnoreCase("Bring Your Own Device")) {
-			getReusableActionsInstance().clickWhenVisible(btnBringYourOwnDeviceViewDetails, 15);
+			getReusableActionsInstance().javascriptScrollToTopOfPage();
+			getReusableActionsInstance().clickWhenVisible(btnBringYourOwnDeviceViewDetails, 20);
 		} else {
 			getReusableActionsInstance().scrollToElement(getReusableActionsInstance().getWhenReady(By.xpath(createXpathForCTAButton(deviceName))));
 			getReusableActionsInstance().clickWhenVisible(By.xpath(createXpathForCTAButton(deviceName)), 30);
 		}
+	}
+
+	/**
+	 * This method Clicks on a continue button in tablet sharing option popup
+	 * @param deviceName : name of the Device to be used to generate Xpath
+	 * @author praveen.kumar7
+	 */
+	public void clkContinueBtnOnTabletShareOnlyModal(String deviceName) {
+		getReusableActionsInstance().clickIfAvailable(By.xpath("//button[@title='Continue']"),10);
+		getReusableActionsInstance().clickIfAvailable(By.xpath(createXpathForCTAButton(deviceName)), 30);
 	}
 
 	/**
@@ -407,7 +418,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 */
 	public boolean verifyDeviceTileCTAButton(String deviceName) {
 		if (deviceName.equalsIgnoreCase("Bring Your Own Device")) {
-			return getReusableActionsInstance().isElementVisible(btnBringYourOwnDeviceViewDetails,15);
+			return getReusableActionsInstance().isElementVisible(btnBringYourOwnDeviceViewDetails,20);
 		} else {
 			return getReusableActionsInstance().isElementVisible(By.xpath(createXpathForCTAButton(deviceName)), 60);
 		}

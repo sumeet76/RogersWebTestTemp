@@ -22,7 +22,7 @@ public class RogersOVOrderConfirmationPage  extends BasePageClass {
 	WebElement lblThankYou;
 
 	@FindAll({
-			@FindBy(xpath = "//h1[contains(@id,'bfa-page-title')]"),
+			@FindBy(xpath = "//h1[contains(@id,'bfa-page-title') and contains(.,'Confirmation')]"),
 			@FindBy(xpath = "//span[@checkout-res='checkout_order_confirmation']")
 	})
 	WebElement lblOrderConfirmation;

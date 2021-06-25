@@ -19,7 +19,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_OV_TC12_AAL_BYOD_BopisShipping_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","RegressionOVBFA","SanityBFA","HupOvBFA"})
+	@Test(groups = {"RegressionBFA","RegressionOVBFA","OVAALBFA"})
 	public void aALBYODBopisShippingFlow() {
 		reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
 		reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");
@@ -33,7 +33,7 @@ public class RogersBFA_OV_TC12_AAL_BYOD_BopisShipping_Test extends BaseTestClass
 		getAccountOverViewPage().selectAddAWirelessLineButton();
 		reporter.reportLogWithScreenshot("Add a Wireless Line Button is Selected");
 		reporter.hardAssert(getRogersOVChoosePhonePage().checkAcceptAndContinueOnCreditEvalModal() , "Credit Evaluation modal with credit information displayed","Credit Evaluation modal doesn't contain credit info");
-		reporter.hardAssert(getRogersOVChoosePhonePage().validateCustomerType(),"Given customer risk type "+TestDataHandler.buyFlowsOVtestCase12.getCustomerRiskLevel()+" matches the risk type "+getRogersOVChoosePhonePage().checkCustomerType()+" from the credit evaluation modal","Given customer risk type "+TestDataHandler.buyFlowsOVtestCase12.getCustomerRiskLevel()+" does not match the risk type "+getRogersOVChoosePhonePage().checkCustomerType()+" from the credit evaluation modal");
+		//reporter.hardAssert(getRogersOVChoosePhonePage().validateCustomerType(),"Given customer risk type "+TestDataHandler.buyFlowsOVtestCase12.getCustomerRiskLevel()+" matches the risk type "+getRogersOVChoosePhonePage().checkCustomerType()+" from the credit evaluation modal","Given customer risk type "+TestDataHandler.buyFlowsOVtestCase12.getCustomerRiskLevel()+" does not match the risk type "+getRogersOVChoosePhonePage().checkCustomerType()+" from the credit evaluation modal");
 		reporter.reportLogWithScreenshot("Credit Evaluation Modal");
 		getRogersOVChoosePhonePage().clickAcceptAndContinueOnCreditEvalModal();
 		reporter.reportLogWithScreenshot("clicked on Accept and Continue button");
@@ -49,14 +49,10 @@ public class RogersBFA_OV_TC12_AAL_BYOD_BopisShipping_Test extends BaseTestClass
 		getRogersOVChoosePhonePage().clickDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase12.getDeviceName());
 		//getRogersOVChoosePhonePage().clickContinueButton();
 		//-------------------------------------Plan config page---------------------------------------------
-		reporter.softAssert(getRogersOVPlanConfigPage().verifyBreadCrumb(deviceName),
-				"BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
-		//reporter.hardAssert(getRogersOVPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
-		//reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
-		//getRogersOVPlanConfigPage().clickViewMoreOptions();
-		//getRogersOVPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersOVPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.buyFlowsOVtestCase12.getDeviceCostIndex()));
-		//reporter.reportLogPassWithScreenshot("Device cost option selected");
-		getRogersOVPlanConfigPage().clickShowMoreDetails();
+		reporter.hardAssert(getRogersOVPlanConfigPage().verifyPlanConfigPageLoaded(),
+				"Plan config page loaded successfully", "Plan config page not loaded");
+		reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
+		//getRogersOVPlanConfigPage().clickShowMoreDetails();
 		getRogersOVPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersOVPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.buyFlowsOVtestCase12.getDataOptionIndex()));
 		reporter.reportLogPassWithScreenshot("Data option selected");
 		//getRogersOVPlanConfigPage().clickGetBPOOffer();
@@ -116,12 +112,10 @@ public class RogersBFA_OV_TC12_AAL_BYOD_BopisShipping_Test extends BaseTestClass
 					TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getExpiryYear3());
 			reporter.reportLogWithScreenshot("Rogers Payment Page");
 			getRogersOVPaymentPage().clkSubmit();
-		} /*else {
-			getRogersOVOrderReviewPage().clkSubmitOrder();
-		}*/
+		}
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
 		//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyBANOrderConfirmationPage(), "BAN displayed is the same as the given BAN", "BAN displayed isn't the same as the given BAN");
+		//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyBANOrderConfirmationPage(), "BAN displayed is the same as the given BAN", "BAN displayed isn't the same as the given BAN");
 		reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");
 	}
 

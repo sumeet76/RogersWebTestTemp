@@ -23,7 +23,7 @@ public class RogersBFA_TC18_AALFinPlan_PotgShipping_Test extends BaseTestClass {
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA", "SanityyBFA", "AALBFA"})
+    @Test(groups = {"RegressionBFA","SanityBFA","AALBFA"})
     public void rogersAalFinPlanPotgTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
@@ -66,9 +66,12 @@ public class RogersBFA_TC18_AALFinPlan_PotgShipping_Test extends BaseTestClass {
         reporter.reportLogWithScreenshot("Existing Customer Modal window Popup");
         reporter.hardAssert(getRogersDeviceCataloguePage().verifyAddALineButtonOnModal(), "Add a line button displayed", "Add a line button not displayed");
         getRogersDeviceCataloguePage().clickAddALineButtonOnModal();
-        reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvaluationPopupPresent(), "Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
-        reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed", "Credit Evaluation Text not disaplayed on Modal");
-        reporter.hardAssert(getRogersDeviceCataloguePage().verifySharedNonSharedModalPresent(), "Shared/Nonshared modal displayed", "Shared/Nonshared modal not displayed");
+        /*reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvaluationPopupPresent(),
+                "Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
+        reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvalTextOnModalPresent(),
+                "Credit Evaluation Text Displayed", "Credit Evaluation Text not disaplayed on Modal");*/
+        reporter.hardAssert(getRogersDeviceCataloguePage().verifySharedNonSharedModalPresent(),
+                "Shared/Nonshared modal displayed", "Shared/Nonshared modal not displayed");
         reporter.reportLogWithScreenshot("Shared/Nonshared modal popup");
         String aalSharingType = TestDataHandler.tc18AALFinPlanPotgShipping.getSharingType();
         getRogersDeviceCataloguePage().selectAALSharingType(aalSharingType);
@@ -95,7 +98,7 @@ public class RogersBFA_TC18_AALFinPlan_PotgShipping_Test extends BaseTestClass {
         reporter.hardAssert(getRogersPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
         reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
         //getRogersPlanConfigPage().clickViewMoreOptions();
-        getRogersPlanConfigPage().clkDownPaymentChkBox();
+        //getRogersPlanConfigPage().clkDownPaymentChkBox();
         getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc18AALFinPlanPotgShipping.getDeviceCostIndex()));
         reporter.reportLogPassWithScreenshot("Device cost option selected");
         getRogersPlanConfigPage().clickShowMoreDetails();
@@ -138,17 +141,18 @@ public class RogersBFA_TC18_AALFinPlan_PotgShipping_Test extends BaseTestClass {
         getRogersReviewOrderPage().clkAllAgreementConsentCheckbox(isSelectedDeviceTier);
         getRogersReviewOrderPage().clkEmailConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
-        if(getRogersOrderReviewPage().isPaymentRequired()) {
-            getRogersOrderReviewPage().clkContinue();
-            getRogersPaymentPage().setCreditCardDetails(TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getNumber(),
-                    TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getExpiryMonth(),
-                    TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getExpiryYear(),
-                    TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getCVV());
-            reporter.reportLogWithScreenshot("Rogers Payment Page");
-            getRogersPaymentPage().clkSubmit();
-        } else {
-            getRogersOrderReviewPage().clkSubmitOrder();
-        }
+        getRogersOrderReviewPage().clkSubmitOrder();
+        //----------------------------------OTP Page------------------------------------------------
+        /*reporter.reportLogWithScreenshot("Rogers Payment Page");
+        reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),"Payment page displayed successfully","Payment page did not display");
+        getRogersOneTimePaymentPage().setNameonCard();
+        getRogersOneTimePaymentPage().switchToCreditCardIFrame();
+        getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc18AALFinPlanPotgShipping.getCcNumberOTP());
+        getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
+        getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc18AALFinPlanPotgShipping.getExpiryDateOTP());
+        getRogersOneTimePaymentPage().setCVV();
+        reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
+        getRogersOneTimePaymentPage().clkSubmitOrderBtn();*/
         //---------------------------Order Confirmation Page--------------------------------------
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(),
                 "Order Confirmation page loaded", "Order Confirmation Error");

@@ -11,7 +11,9 @@ import org.openqa.selenium.support.ui.Select;
 import utils.FormFiller;
 
 public class RogersOVCheckoutPage extends BasePageClass {
-	public RogersOVCheckoutPage(WebDriver driver){super(driver);}
+	public RogersOVCheckoutPage(WebDriver driver) {
+		super(driver);
+	}
 
 	@FindBy(xpath = "//h1[@id='bfa-page-title']")
 	WebElement checkoutTitle;
@@ -20,19 +22,19 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	//***Cart summary*****
 
-    @FindBy(xpath="(//div[contains(@class,'totalRow d-flex align-items-center')])[1]")
-    WebElement monthlyFeeAfterTax;
+	@FindBy(xpath = "(//div[contains(@class,'totalRow d-flex align-items-center')])[1]")
+	WebElement monthlyFeeAfterTax;
 
-    @FindBy(xpath="(//div[contains(@class,'dsa-orderTable__totalRow d-flex align-items-center')])[2]")
-    WebElement oneTimeFeeAfterTax;
+	@FindBy(xpath = "(//div[contains(@class,'dsa-orderTable__totalRow d-flex align-items-center')])[2]")
+	WebElement oneTimeFeeAfterTax;
 
-    @FindBy(xpath="//div[contains(@class,'dsa-promoBlock p-md-24 p-16 ds-bgcolor-misty')]")
-    WebElement purchaseIncludes;
+	@FindBy(xpath = "//div[contains(@class,'dsa-promoBlock p-md-24 p-16 ds-bgcolor-misty')]")
+	WebElement purchaseIncludes;
 
-    @FindBy(xpath="//span[contains(@class,'px-24 ds-borders ds-bgcolor-white ds-label px-8 mw-100 ng-star-inserted')]")
+	@FindBy(xpath = "//span[contains(@class,'px-24 ds-borders ds-bgcolor-white ds-label px-8 mw-100 ng-star-inserted')]")
 	WebElement labelRpotg;
 
-    //****Create Profile stepper*****
+	//****Create Profile stepper*****
 
 	@FindBy(xpath = "//h2[@data-test='personal-info-title']")
 	WebElement createProfileTitle;
@@ -87,7 +89,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	@FindBy(xpath = "//ngx-recaptcha2[@data-test='recaptcha']//iframe[@role='presentation']")
 	WebElement fraGoolgeRecaptcha;
-	
+
 	@FindBy(xpath = "//button[@data-test='personal-info-continue']")
 	WebElement btnGotoCreditEvalStepper;
 
@@ -96,30 +98,30 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//*[@data-test='credit-eval-title']")
 	WebElement creditEvaluationTitle;
 
-	@FindBy(xpath="//*[@id='step-2-open']/form//p[contains(text(),'Date of Birth')]")
+	@FindBy(xpath = "//*[@id='step-2-open']/form//p[contains(text(),'Date of Birth')]")
 	WebElement dateOfBirthLabel;
 
-	@FindBy(xpath="//*[@id='step-2-open']/form/div[1]/ds-form-field/div[1]/div[1]")
+	@FindBy(xpath = "//*[@id='step-2-open']/form/div[1]/ds-form-field/div[1]/div[1]")
 	//@FindBy(xpath="//ds-form-field[@data-test='credit-eval-dob']//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-bgcolor-errorField ds-brcolor-error']")
 	WebElement txtDOB;
 
 	//@FindBy(xpath= "//*[@id='step-2-open']/form/div[1]/ds-form-field/div[1]/div[1]/input[@format='DD/MM/YYYY']")
-	@FindBy(xpath= "//ds-form-field[@data-test='credit-eval-dob']//input[@formcontrolname='dateOfBirth']")
+	@FindBy(xpath = "//ds-form-field[@data-test='credit-eval-dob']//input[@formcontrolname='dateOfBirth']")
 	WebElement inputTxtDOB;
 
-	@FindBy(xpath= "//select[@data-test='dob-select-year']")
+	@FindBy(xpath = "//select[@data-test='dob-select-year']")
 	WebElement inputYearDOB;
-	
-	@FindBy(xpath= "//*[@data-test='dob-select-month']")
+
+	@FindBy(xpath = "//*[@data-test='dob-select-month']")
 	WebElement inputMonthDOB;
-	
-	@FindBy(xpath= "//*[@data-test='dob-select-day']")
+
+	@FindBy(xpath = "//*[@data-test='dob-select-day']")
 	WebElement inputDayDOB;
-	
-	@FindBy(xpath="//*[@id='step-2-open']/form//p[contains(text(),'Credit Card')]")
+
+	@FindBy(xpath = "//*[@id='step-2-open']/form//p[contains(text(),'Credit Card')]")
 	WebElement creditCardTitle;
 
-	@FindBy(xpath="//*[@class='ds-inputLabel d-block ds-no-overflow']/span[contains(text(),'Card Number')]")
+	@FindBy(xpath = "//*[@class='ds-inputLabel d-block ds-no-overflow']/span[contains(text(),'Card Number')]")
 	WebElement cardNumberLabel;
 
 	@FindBy(xpath = "//*[@class='ds-formField__wrapper']//iframe")
@@ -245,10 +247,10 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	@FindBy(xpath = "//*[@id='ds-stepper-id-2-completedContent-1']//div[@class='w-100']/p")
 	WebElement identificationLabel;
-	
+
 	@FindBy(xpath = "(//div[contains(@class,'recaptcha-checkbox-border')])[1]")
 	WebElement radioCheckboxCreateProfile;
-	
+
 	@FindBy(xpath = "//label[@for='ds-radio-input-id-4']")
 	WebElement lblFrenchLanguage;
 
@@ -330,39 +332,39 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	//*****Shipping stepper******
 
-	@FindBy(xpath="//ds-radio-button[@data-test='from-value-same-shipping']/label")
+	@FindBy(xpath = "//ds-radio-button[@data-test='from-value-same-shipping']/label")
 	WebElement billingAddressShipping;
-	
-	@FindBy(xpath="//ds-radio-button[@data-test='from-value-same-shipping']/parent::div//p")
+
+	@FindBy(xpath = "//ds-radio-button[@data-test='from-value-same-shipping']/parent::div//p")
 	WebElement prepopulatedShippingAddress;
-	
-	@FindBy(xpath="//div[@data-test='delivery-information']//p[@class='text-body']/button/..")
+
+	@FindBy(xpath = "//div[@data-test='delivery-information']//p[@class='text-body']/button/..")
 	WebElement contactNumberDetails;
-	
-	@FindBy(xpath="//span[@data-test='email-address']")
+
+	@FindBy(xpath = "//span[@data-test='email-address']")
 	WebElement prepopulatedEmailId;
 
-	@FindBy(xpath="//p[@data-test='step-title-shipping']")
+	@FindBy(xpath = "//p[@data-test='step-title-shipping']")
 	WebElement deliveryMethodHeader;
-	
-	@FindBy(xpath ="//ds-radio-button[@data-test='standard-delivery']/label")
+
+	@FindBy(xpath = "//ds-radio-button[@data-test='standard-delivery']/label")
 	WebElement deliveryMethodStandard;
 
-	@FindBy(xpath ="//ds-radio-button[@data-test='potg-delivery']/label")
+	@FindBy(xpath = "//ds-radio-button[@data-test='potg-delivery']/label")
 	WebElement deliveryMethodProOnTheGo;
 
-	@FindBy(xpath ="//ds-radio-button[@data-test='in-store-pickup']/label")
+	@FindBy(xpath = "//ds-radio-button[@data-test='in-store-pickup']/label")
 	WebElement deliveryMethodExpress;
 
-	@FindBy(xpath ="//location-container//div[@id='store-map-div']")
+	@FindBy(xpath = "//location-container//div[@id='store-map-div']")
 	WebElement deliveryMethodExpressLocationMap;
 
-	@FindBy(xpath ="//p[@data-test='timeslot-appointment']")
+	@FindBy(xpath = "//p[@data-test='timeslot-appointment']")
 	WebElement deliveryAppointmentTime;
 
-	@FindBy(xpath="//span[@data-test='email-address']")
+	@FindBy(xpath = "//span[@data-test='email-address']")
 	WebElement txtEmailAddress;
-	
+
 	@FindBy(xpath = "//td[last()-1]/button[@class='w-100 h-100 p-6 p-sm-16']")
 	WebElement selDate;
 
@@ -371,11 +373,11 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	@FindBy(xpath = "//button[@data-test='shipping-continue']")
 	WebElement continueBtnShipping;
-	
-	@FindBy(xpath ="//div[@data-test='delivery-information']//child::div/p[2]")
+
+	@FindBy(xpath = "//div[@data-test='delivery-information']//child::div/p[2]")
 	WebElement appointmentDate;
-	
-	@FindBy(xpath ="//div[@data-test='delivery-information']//child::div/p[3]")
+
+	@FindBy(xpath = "//div[@data-test='delivery-information']//child::div/p[3]")
 	WebElement appointmentTime;
 
 	@FindBy(xpath = "//button[@id='main-continue-button']")
@@ -386,7 +388,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	@FindBy(xpath = "//ds-accordion-panel[@data-test='shipping-delivery-options']//button")
 	WebElement viewAnotherOption;
-	
+
 	@FindBy(xpath = "(//span[text()='No, thanks']//ancestor::div[@tabindex='0'])[1]")
 	WebElement btnNoThanks;
 
@@ -396,88 +398,100 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "(//table[contains(@data-test,'ov-credit-eval')]//td)[2]")
 	WebElement downPaymentAmt;
 
-	
-	
+
 	/**
 	 * To get the Title of post checkout page
+	 *
 	 * @return checkoutTitle
 	 * @author nimmy.george
 	 */
 
-	public WebElement getCheckoutTitle()
-	{
+	public WebElement getCheckoutTitle() {
 		getReusableActionsInstance().getWhenReady(checkoutTitle);
 		return checkoutTitle;
 	}
 
 	/**
 	 * This method will get the total monthly fees amount after tax from the cart summary
+	 *
 	 * @return String having total monthly fees amount after tax from the cart summary
 	 * @author nimmy.george
 	 */
 
-	public String getMonthlyFeeAfterTax() { 
+	public String getMonthlyFeeAfterTax() {
 		getReusableActionsInstance().waitForElementVisibility(createProfileTitle, 50);
 		getReusableActionsInstance().waitForElementVisibility(monthlyFeeAfterTax, 50);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyFeeAfterTax);
-		return monthlyFeeAfterTax.getText().replaceAll("\\n",""); }
+		return monthlyFeeAfterTax.getText().replaceAll("\\n", "");
+	}
 
 	/**
 	 * This method will get the total one time fees amount after tax from the cart summary
+	 *
 	 * @return String having total monthly fees amount after tax from the cart summary
 	 * @author nimmy.george
 	 */
 
-	public String getOneTimeFeeAfterTax() { return oneTimeFeeAfterTax.getText().replaceAll("\\n",""); }
+	public String getOneTimeFeeAfterTax() {
+		return oneTimeFeeAfterTax.getText().replaceAll("\\n", "");
+	}
 
 	/**
 	 * Verifies the security depopist amount in one time fees section
+	 *
 	 * @param depositAmount security deposit amount from yml file
 	 * @return true if deposit amount is displayed correctly in one time fees section, else false
 	 * @author praveen.kumar7
 	 */
 	public boolean verifyOneTimeFeesAfterSecDeposit(String depositAmount) {
 		getReusableActionsInstance().scrollToElement(oneTimeFeeAfterTax);
-		if(oneTimeFeeAfterTax.getText().replaceAll("\\n","").contains(depositAmount)) {
+		if (oneTimeFeeAfterTax.getText().replaceAll("\\n", "").contains(depositAmount)) {
 			return true;
-		}
-		else
+		} else
 			return false;
 	}
 
 	/**
 	 * This method will get the purchase includes section displayed below the cart summary
+	 *
 	 * @return String : Return the purchase includes text displayed below the cart summary
 	 * @author nimmy.george
 	 */
 
-	public String getPurchaseIncludesText(){ return getReusableActionsInstance().getWhenReady(purchaseIncludes,10).getText().trim().replaceAll("\\n", " "); }
+	public String getPurchaseIncludesText() {
+		return getReusableActionsInstance().getWhenReady(purchaseIncludes, 10).getText().trim().replaceAll("\\n", " ");
+	}
 
 	/**
 	 * This method will get the RPOTG label from the purchase includes section displayed below the cart summary
+	 *
 	 * @return String : Return the RPOTG label from the the cart summary
 	 * @author nimmy.george
 	 */
 
-	public String getRpotgLabelPurchaseIncludes(){ return getReusableActionsInstance().getWhenReady(labelRpotg,10).getText().trim(); }
+	public String getRpotgLabelPurchaseIncludes() {
+		return getReusableActionsInstance().getWhenReady(labelRpotg, 10).getText().trim();
+	}
 
 
 	/**
 	 * To Verify Title of Create Profile stepper
+	 *
 	 * @return boolean value
 	 * @author nimmy.george
 	 */
-	public boolean  verifyCreateProfileTitle() { 
+	public boolean verifyCreateProfileTitle() {
 		getReusableActionsInstance().javascriptScrollToTopOfPage();
-		if(getReusableActionsInstance().getWhenReady(createProfileTitle,30)!= null)
+		if (getReusableActionsInstance().getWhenReady(createProfileTitle, 30) != null)
 			return true;
-				else
-					return false;
-					}
-	
+		else
+			return false;
+	}
+
 
 	/**
 	 * Enter the email on the Create Profile stepper, email address field
+	 *
 	 * @return the generated email address
 	 * @author nimmy.george
 	 */
@@ -485,12 +499,13 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	public String setEmailCreateProfile() {
 		getReusableActionsInstance().javascriptScrollToTopOfPage();
 		getReusableActionsInstance().clickWhenReady(emailCreateProfile);
-		getReusableActionsInstance().getWhenReady(inputEmail,40).sendKeys(FormFiller.generateEmail());
-		return getReusableActionsInstance().getWhenReady(inputEmail,40).getAttribute("value");
+		getReusableActionsInstance().getWhenReady(inputEmail, 40).sendKeys(FormFiller.generateEmail());
+		return getReusableActionsInstance().getWhenReady(inputEmail, 40).getAttribute("value");
 	}
 
 	/**
 	 * Enter the email on the Create Profile stepper, confirm email address field
+	 *
 	 * @param confirmEmail email address to create a profile
 	 * @author nimmy.george
 	 */
@@ -502,76 +517,83 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * Enter the firstName on the Create Profile stepper, First Name field
-	 *@return FirstName
+	 *
+	 * @return FirstName
 	 * @author nimmy.george
 	 */
 
 	public String setFirstNameCreateProfile() {
 
-		getReusableActionsInstance().clickWhenReady(firstNameCreateProfile,20);
-		inputFirstName.sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
-		return getReusableActionsInstance().getWhenReady(inputFirstName,20).getAttribute("value");
+		getReusableActionsInstance().clickWhenReady(firstNameCreateProfile, 20);
+		inputFirstName.sendKeys(FormFiller.generateRandomName() + FormFiller.generateRandomName());
+		return getReusableActionsInstance().getWhenReady(inputFirstName, 20).getAttribute("value");
 	}
-	
+
 	/**
 	 * Enter the firstName on the Create Profile stepper, First Name field [AVS DATA]
-	 * @return FirstName Value
+	 *
 	 * @param firstName xpath
+	 * @return FirstName Value
 	 * @author karthic.hasan
 	 */
 
 	public String setFirstNameCreateProfilepage(String firstName) {
 		getReusableActionsInstance().clickWhenReady(firstNameCreateProfile);
-		getReusableActionsInstance().getWhenReady(inputFirstName,3).sendKeys(firstName);
-		return getReusableActionsInstance().getWhenReady(inputFirstName,20).getAttribute("value");
+		getReusableActionsInstance().getWhenReady(inputFirstName, 3).sendKeys(firstName);
+		return getReusableActionsInstance().getWhenReady(inputFirstName, 20).getAttribute("value");
 	}
 
 	/**
 	 * Enter the lastName on the Create Profile stepper, Last Name field [AVS DATA]
-	 * @return LastName
+	 *
 	 * @param lastName xpath
+	 * @return LastName
 	 * @author karthic.hasan
 	 */
 
 	public String setLastNameCreateProfilepage(String lastName) {
 		getReusableActionsInstance().clickWhenReady(lastNameCreateProfile);
-		getReusableActionsInstance().getWhenReady(inputLastName,3).sendKeys(lastName);
-		return getReusableActionsInstance().getWhenReady(inputLastName,20).getAttribute("value");
+		getReusableActionsInstance().getWhenReady(inputLastName, 3).sendKeys(lastName);
+		return getReusableActionsInstance().getWhenReady(inputLastName, 20).getAttribute("value");
 	}
 
-	
+
 	public void clkNoThanks() {
-		getReusableActionsInstance().clickIfAvailable(btnNoThanks,8);
+		getReusableActionsInstance().clickIfAvailable(btnNoThanks, 8);
 	}
+
 	/**
 	 * Enter the lastName on the Create Profile stepper, Last Name field
+	 *
 	 * @return LastName
 	 * @author nimmy.george
 	 */
 
 	public String setLastNameCreateProfile() {
 		getReusableActionsInstance().clickWhenReady(lastNameCreateProfile);
-		inputLastName.sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
-		return getReusableActionsInstance().getWhenReady(inputLastName,20).getAttribute("value");
+		inputLastName.sendKeys(FormFiller.generateRandomName() + FormFiller.generateRandomName());
+		return getReusableActionsInstance().getWhenReady(inputLastName, 20).getAttribute("value");
 	}
 
 	/**
 	 * Enter the contact number on the Create Profile stepper, Contact number field
-	 * @return contactNumber Contact number to create a profile
+	 *
 	 * @param contactNumber from yml file
+	 * @return contactNumber Contact number to create a profile
 	 * @author nimmy.george
 	 */
 
 	public String setContactNumberCreateProfile(String contactNumber) {
 		getReusableActionsInstance().clickWhenReady(contactNumberCreateProfile);
-		getReusableActionsInstance().getWhenReady(inputContactNumber,3).sendKeys(contactNumber);
-		return getReusableActionsInstance().getWhenReady(inputContactNumber,20).getAttribute("value").trim();
+		getReusableActionsInstance().getWhenReady(inputContactNumber, 3).sendKeys(contactNumber);
+		return getReusableActionsInstance().getWhenReady(inputContactNumber, 20).getAttribute("value").trim();
 	}
 
 	/**
 	 * Enter the Billing Address on the Create Profile stepper, Billing Address field and select it from the dropdown
-	 * @return billingAddress Billing Address to create a profile
+	 *
 	 * @param billingAddress from yaml file
+	 * @return billingAddress Billing Address to create a profile
 	 * @author nimmy.george
 	 */
 
@@ -580,7 +602,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 		inputBillingAddress.sendKeys(billingAddress);
 		//getReusableActionsInstance().getWhenReady(inputBillingAddress,15).sendKeys(billingAddress);
 		getReusableActionsInstance().moveToElementAndClick(billingAddressSelection, 5);
-		return getReusableActionsInstance().getWhenReady(inputBillingAddress,20).getAttribute("value");
+		return getReusableActionsInstance().getWhenReady(inputBillingAddress, 20).getAttribute("value");
 	}
 
 	/**
@@ -595,20 +617,22 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * To click on the Use billing address radio button in the Create Profile stepper
+	 *
 	 * @author nimmy.george
 	 */
 
 	public void clkUseBillingAddressRadioBtnCreateProfile() {
-		getReusableActionsInstance().clickWhenReady(useBillingAddressRadioBtnCreateProfile,3);
+		getReusableActionsInstance().clickWhenReady(useBillingAddressRadioBtnCreateProfile, 3);
 	}
 
 	/**
 	 * To click on the Language English radio button in the Create Profile stepper
+	 *
 	 * @author nimmy.george
 	 */
 
 	public void clkLanguageEnglishRadioBtnCreateProfile() {
-		getReusableActionsInstance().clickWhenReady(languageEnglishRadioBtnCreateProfile,3);
+		getReusableActionsInstance().clickWhenReady(languageEnglishRadioBtnCreateProfile, 3);
 	}
 
 	/**
@@ -617,20 +641,21 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	 * @author Karthic.hasan
 	 */
 
-	public void switchToRecaptchaIFrame() { 
+	public void switchToRecaptchaIFrame() {
 		getDriver().switchTo().frame(getReusableActionsInstance().getWhenVisible(fraGoolgeRecaptcha));
 		System.out.println("Switched to iframe");
-		}
+	}
 
 	/**
 	 * To click on the I'm not robot in the Create Profile stepper.
+	 *
 	 * @author nimmy.george
 	 */
 
 	public void clkImNotRombotCheckbox() {
 		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().scrollToElement(radioCheckboxCreateProfile);
-		getReusableActionsInstance().clickWhenReady(radioCheckboxCreateProfile,10);
+		getReusableActionsInstance().clickWhenReady(radioCheckboxCreateProfile, 10);
 	}
 
 	/**
@@ -639,10 +664,13 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	 * @author Karthic.hasan
 	 */
 
-	public void switchOutOfGoogleIFrame() { getDriver().switchTo().defaultContent(); }
-	
+	public void switchOutOfGoogleIFrame() {
+		getDriver().switchTo().defaultContent();
+	}
+
 	/**
 	 * To click "Continue" button in Create profile stepper, that takes you to Credit Evaluation stepper
+	 *
 	 * @author nimmy.george
 	 */
 	public void clkBtnGotoCreditEvalStepper() {
@@ -653,20 +681,19 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	}
 
 	/**
-	 * To Verify the Title of Credit Evaluation stepper 
+	 * To Verify the Title of Credit Evaluation stepper
+	 *
 	 * @return True or false
 	 * author Karthic.Hasan
 	 */
 
 	public boolean verifyCreditEvaluationTitle() {
 		//getReusableActionsInstance().getWhenReady(creditEvaluationTitle);
-		if(getReusableActionsInstance().isElementVisible(creditEvaluationTitle,10))
-		{
-		getReusableActionsInstance().javascriptScrollByVisibleElement(creditEvaluationTitle);
-		   return true;
-		}
-		else 
-	        return false;
+		if (getReusableActionsInstance().isElementVisible(creditEvaluationTitle, 10)) {
+			getReusableActionsInstance().javascriptScrollByVisibleElement(creditEvaluationTitle);
+			return true;
+		} else
+			return false;
 	}
 
 //	/**
@@ -680,17 +707,21 @@ public class RogersOVCheckoutPage extends BasePageClass {
 //		getReusableActionsInstance().getWhenVisible(inputTxtDOB).sendKeys(strDOB);
 //	}
 
-	
+
 	/**
 	 * Switch to Credit Card Iframe in Credit Evaluation stepper
+	 *
 	 * @author Karthic.hasan
 	 */
 
-	public void switchToCreditCardIFrame() { getDriver().switchTo().frame(getReusableActionsInstance().getWhenVisible(fraSemaphone)); }
+	public void switchToCreditCardIFrame() {
+		getDriver().switchTo().frame(getReusableActionsInstance().getWhenVisible(fraSemaphone));
+	}
 
 	/**
 	 * Enter the Credit Card Number on the Credit Evaluation stepper, Credit Card Field
-	 *@param strAccountNumber xpath
+	 *
+	 * @param strAccountNumber xpath
 	 * @author karthic.hasan
 	 */
 
@@ -706,10 +737,13 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	 * @author Karthic.hasan
 	 */
 
-	public void switchOutOfCreditCardIFrame() { getDriver().switchTo().defaultContent(); }
+	public void switchOutOfCreditCardIFrame() {
+		getDriver().switchTo().defaultContent();
+	}
 
 	/**
 	 * Enter the Expiry Date on the Credit Evaluation stepper, Expiry Date Field
+	 *
 	 * @param strExpiryDate xpath
 	 * @author karthic.hasan
 	 */
@@ -719,46 +753,53 @@ public class RogersOVCheckoutPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(txtExpiryDate).click();
 		getReusableActionsInstance().getWhenReady(inputExpiryDate, 10).sendKeys(strExpiryDate);
 	}
+
 	/**
 	 * Select DOB-Year Dropdown Option on the Credit Evaluation stepper.
-	 * @param strYear from Yaml file 
+	 *
+	 * @param strYear from Yaml file
 	 * @author karthic.hasan
 	 */
 
 	public void selectYearDropdownOption(String strYear) {
 		getReusableActionsInstance().staticWait(8000);
-		getReusableActionsInstance().moveToElementAndClick(inputYearDOB,10);
+		getReusableActionsInstance().moveToElementAndClick(inputYearDOB, 10);
 		getReusableActionsInstance().selectWhenReady(inputYearDOB, strYear);
 
 	}
+
 	/**
 	 * Select DOB-Month Dropdown Option on the Credit Evaluation stepper.
+	 *
 	 * @param strMonth from Yaml file
 	 * @author karthic.hasan
 	 */
 
 	public void selectMonthDropdownOption(String strMonth) {
-			clkNoThanks();
-			getReusableActionsInstance().javascriptScrollByVisibleElement(creditEvaluationTitle);
-			getReusableActionsInstance().clickWhenReady(inputMonthDOB);
-			getReusableActionsInstance().selectWhenReady(inputMonthDOB, strMonth);
+		clkNoThanks();
+		getReusableActionsInstance().javascriptScrollByVisibleElement(creditEvaluationTitle);
+		getReusableActionsInstance().clickWhenReady(inputMonthDOB);
+		getReusableActionsInstance().selectWhenReady(inputMonthDOB, strMonth);
 	}
+
 	/**
 	 * Select DOB-Date Dropdown Option on the Credit Evaluation stepper.
+	 *
 	 * @param strDay from yaml file
 	 * @author karthic.hasan
 	 */
 
 	public void selectDayDropdownOption(String strDay) {
-			getReusableActionsInstance().staticWait(5000);
-			clkNoThanks();
-			getReusableActionsInstance().javascriptScrollByVisibleElement(creditEvaluationTitle);
-			getReusableActionsInstance().clickWhenReady(inputDayDOB);
-			getReusableActionsInstance().selectWhenReady(inputDayDOB, strDay);
+		getReusableActionsInstance().staticWait(5000);
+		clkNoThanks();
+		getReusableActionsInstance().javascriptScrollByVisibleElement(creditEvaluationTitle);
+		getReusableActionsInstance().clickWhenReady(inputDayDOB);
+		getReusableActionsInstance().selectWhenReady(inputDayDOB, strDay);
 	}
 
 	/**
 	 * Select Dropdown Option on the Credit Evaluation stepper, Id Dropdown Field
+	 *
 	 * @param selectYourIdOption value from yaml file
 	 * @author karthic.hasan
 	 */
@@ -771,6 +812,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * Enter the Passport Number on the Credit Evaluation Stepper , Passport NumberField
+	 *
 	 * @param strPasportNumber from Yaml file
 	 * @author karthic.hasan
 	 */
@@ -783,6 +825,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * Enter the Driver's License Number on the Credit Evaluation Stepper , Driver's License NumberField
+	 *
 	 * @param strLicenseNumber from Yaml file
 	 * @author Sidhartha.Vadrevu
 	 */
@@ -797,6 +840,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * Enter the Provincial ID Number on the Credit Evaluation Stepper , Provincial ID NumberField
+	 *
 	 * @param strProvincialIDNumber from Yaml file
 	 * @author Sidhartha.Vadrevu
 	 */
@@ -808,6 +852,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * Enter the SIN Number on the Credit Evaluation Stepper , SecondaryID SIN NumberField
+	 *
 	 * @param strSINNumber from Yaml file
 	 * @author Sidhartha.Vadrevu
 	 */
@@ -820,6 +865,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * Enter the Birth Certificate Number on the Credit Evaluation Stepper , SecondaryID Birth Certificate NumberField
+	 *
 	 * @param strBirthNumber from Yaml file
 	 * @author Sidhartha.Vadrevu
 	 */
@@ -832,28 +878,31 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * Enter the Pre Authorized Credit Card Token Number on the Credit Evaluation Stepper , SecondaryID Pre Authorized Credit Card Token NumberField
+	 *
 	 * @param strTokenNumber from Yaml file
 	 * @author Sidhartha.Vadrevu
 	 */
 
 	public void setPreAuthCreditTokenNumber(String strTokenNumber) {
 		getReusableActionsInstance().clickWhenReady(nameOnTheCard);
-		getReusableActionsInstance().getWhenReady(inputNameOnTheCard,3).sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
+		getReusableActionsInstance().getWhenReady(inputNameOnTheCard, 3).sendKeys(FormFiller.generateRandomName() + FormFiller.generateRandomName());
 		txtInputTokenNumber.click();
 		txtInputTokenNumber.sendKeys(strTokenNumber);
+		getReusableActionsInstance().staticWait(3000);
 		txtExpiryDate.click();
 		//String strCCExpMonth = TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getExpiryMonth3();
 		//String strCCExpYear = TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getExpiryYear3();
 		getReusableActionsInstance().getWhenReady(txtDateOfExpiry, 10).sendKeys("1223");
 		String strCVV = FormFiller.generateCVVNumber();
-		getReusableActionsInstance().waitForElementVisibility(txtContainerCVV,50);
-		getReusableActionsInstance().getWhenReady(txtContainerCVV,10).click();
+		getReusableActionsInstance().waitForElementVisibility(txtContainerCVV, 50);
+		getReusableActionsInstance().getWhenReady(txtContainerCVV, 10).click();
 		inputTxtCVV.click();
 		getReusableActionsInstance().getWhenReady(inputTxtCVV).sendKeys(strCVV);
 	}
 
 	/**
 	 * Select Primary Dropdown Option on the Credit Evaluation stepper, Id Dropdown Field
+	 *
 	 * @param selectYourPrimaryIdOption value from yaml file
 	 * @author Sidhartha.Vadrevu
 	 */
@@ -876,6 +925,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * Select Secondary Dropdown Option on the Credit Evaluation stepper, Id Dropdown Field
+	 *
 	 * @param selectYourSecondIdOption value from yaml file
 	 * @author Sidhartha.Vadrevu
 	 */
@@ -888,7 +938,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 			setPreAuthCreditTokenNumber(secondNumber);
 		} else if (selectYourSecondIdOption != null && !selectYourSecondIdOption.isEmpty() && selectYourSecondIdOption.contains("Provincial ID")) {
 			setProvincialIDNumber(secondNumber);
-		} else if (selectYourSecondIdOption != null && !selectYourSecondIdOption.isEmpty() && selectYourSecondIdOption.contains("Social Insurance Number")) {
+		} else if (selectYourSecondIdOption != null && !selectYourSecondIdOption.isEmpty() && (selectYourSecondIdOption.contains("Social Insurance Number") || selectYourSecondIdOption.contains("Numéro d'assurance sociale(SIN)"))) {
 			setSINNumber(secondNumber);
 		} else if (selectYourSecondIdOption != null && !selectYourSecondIdOption.isEmpty() && selectYourSecondIdOption.contains("Birth Certificate")) {
 			setBirthCertificateNumber(secondNumber);
@@ -897,6 +947,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * To click on the Authorization Checkbox in the Create Profile stepper
+	 *
 	 * @author karthic.hasan
 	 */
 	public void clkCreditAuthorizationChkBox() {
@@ -905,37 +956,48 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * To click on the Credit Evaluation Continue button in the Credit Evaluation stepper
+	 *
 	 * @author karthic.hasan
 	 */
-	public void clkCreditEvalContinue() { getReusableActionsInstance().getWhenReady(btnCreditEvalContinue).click(); }
+	public void clkCreditEvalContinue() {
+		getReusableActionsInstance().getWhenReady(btnCreditEvalContinue).click();
+	}
 
 	/**
 	 * To verify Credit Evaluation popup is present in the Credit Evaluation stepper
+	 *
 	 * @return True or False
 	 * @author karthic.hasan
 	 */
-	public boolean isCreditEvalPopupPresent() { return getReusableActionsInstance().isElementVisible(popCreditEval); }
+	public boolean isCreditEvalPopupPresent() {
+		return getReusableActionsInstance().isElementVisible(popCreditEval);
+	}
 
 	/**
 	 * To verify Credit Evaluation text is present in the Credit Evaluation Model and return Boolean value.
+	 *
 	 * @return True or False
 	 * @author karthic.hasan
 	 */
 
-	public boolean isCreditEvalTextOnModalPresent() { return getReusableActionsInstance().isElementVisible(txtCreditEval); }
+	public boolean isCreditEvalTextOnModalPresent() {
+		return getReusableActionsInstance().isElementVisible(txtCreditEval);
+	}
 
 	/**
 	 * Checks for the presence of 'Accept and Continue' Button on Crdit Evaluation Modal
+	 *
 	 * @return returns if the element is visible or not
 	 * @author sidhartha.vadrevu
 	 */
 	public boolean checkAcceptAndContinueOnCreditEvalModal() {
-		getReusableActionsInstance().waitForElementVisibility(acceptAndContinueOnCreditEvalModal,30);
+		getReusableActionsInstance().waitForElementVisibility(acceptAndContinueOnCreditEvalModal, 30);
 		return getReusableActionsInstance().isElementVisible(acceptAndContinueOnCreditEvalModal);
 	}
 
 	/**
 	 * Checks the customer type based on the attribute values present on the Credit Evaluation Modal
+	 *
 	 * @return returns the customerType value
 	 * @author sidhartha.vadrevu
 	 */
@@ -945,11 +1007,11 @@ public class RogersOVCheckoutPage extends BasePageClass {
 		Double securityDeposit = Double.parseDouble(security[1]);
 		Double clm = Double.parseDouble(clmValue[1]);
 		String risk = riskLevel.getText();
-		if (securityDeposit <= 0 && clm <=0 && risk.equalsIgnoreCase("Low")) {
+		if (securityDeposit <= 0 && clm <= 0 && risk.equalsIgnoreCase("Low")) {
 			customerType = "Low Risk";
-		} else if(securityDeposit == 500 && (clm >0 && clm<450) && risk.equalsIgnoreCase("Medium")) {
+		} else if (securityDeposit == 500 && (clm > 0 && clm < 450) && risk.equalsIgnoreCase("Medium")) {
 			customerType = "Medium Risk";
-		} else if(securityDeposit == 300 && clm >= 450 && risk.equalsIgnoreCase("High")) {
+		} else if (securityDeposit == 300 && clm >= 450 && risk.equalsIgnoreCase("High")) {
 			customerType = "High Risk";
 		}
 		System.out.println(customerType);
@@ -958,13 +1020,14 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * Validates whether the customer type of the provided data matches to the customer type deduced from the data provided on the Credit Evaluation Modal
+	 *
 	 * @return true if customer types match, false if they don't match
 	 * @author sidhartha.vadrevu
 	 */
 	public boolean validateCustomerType() {
 		checkCustomerType();
 		String customer = TestDataHandler.buyFlowsOVtestCase08.getCustomerRiskLevel();
-		if (customer!=null && !customer.isEmpty() && customerType.matches(customer)) {
+		if (customer != null && !customer.isEmpty() && customerType.matches(customer)) {
 			return true;
 		} else {
 			return false;
@@ -973,6 +1036,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * Clicks on the 'Accept and Continue' Button from the Crdit Evaluation Modal
+	 *
 	 * @author sidhartha.vadrevu
 	 */
 	public void clickAcceptAndContinueOnCreditEvalModal() {
@@ -982,6 +1046,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * Verifies if CLA/Security Deposit modal is present after credit evaluation
+	 *
 	 * @return true if modal is present, else false
 	 * @author praveen.kumar7
 	 */
@@ -991,6 +1056,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * Verifies if Security Deposit content is present in the CLA/Security Deposit modal
+	 *
 	 * @return true if security deposit content is displayed, else false
 	 * @author praveen.kumar7
 	 */
@@ -1000,19 +1066,20 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * This method verifies if security deposit amount is displayed properly
+	 *
 	 * @param depositAmount security deposit amount from yml file
 	 * @return true if deposit is displayed correctly, else false
 	 * @author praveen.kumar7
 	 */
 	public boolean verifySecurityDepositAmount(String depositAmount) {
-		if(getReusableActionsInstance().getWhenReady(depositAmt).getText().trim().contains(depositAmount)) {
+		if (getReusableActionsInstance().getWhenReady(depositAmt).getText().trim().contains(depositAmount)) {
 			return true;
-		}
-		else return false;
+		} else return false;
 	}
 
 	/**
 	 * This method verifies if CLA text is displayed properly
+	 *
 	 * @return true if CLA text is displayed correctly, else false
 	 * @author praveen.kumar7
 	 */
@@ -1022,6 +1089,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * This method clicks on the Accpet button in security deposit modal
+	 *
 	 * @author praveen.kumar7
 	 */
 	public void clkAcceptButton() {
@@ -1030,25 +1098,29 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * To return true if the express location map is available else false
+	 *
 	 * @return True or False
 	 * @author Saurav.Goyal
 	 */
 
 	public boolean verifyExpressLocationMapPresent() {
-		return getReusableActionsInstance().isElementVisible(deliveryMethodExpressLocationMap,30);
+		return getReusableActionsInstance().isElementVisible(deliveryMethodExpressLocationMap, 30);
 	}
-
 
 
 	/**
 	 * WaitUntill Credit Evaluation text get invisible from the Credit Evaluation Model
+	 *
 	 * @author karthic.hasan
 	 */
 
-	public void waitUntilCreditEvalPopupClose() { getReusableActionsInstance().waitForElementVisibility(identificationLabel); }
+	public void waitUntilCreditEvalPopupClose() {
+		getReusableActionsInstance().waitForElementVisibility(identificationLabel);
+	}
 
 	/**
 	 * To verify Credit Evaluation Identification Label is present in the Credit Evaluation stepper
+	 *
 	 * @author karthic.hasan
 	 */
 	public boolean isIdentificationLabel() {
@@ -1059,16 +1131,18 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * To verify Choose A Number Title in the Choose a Number stepper
+	 *
 	 * @return True or False
 	 * @author karthic.hasan
 	 */
 
 	public boolean isChooseaNumberTitleDisplayed() {
-		return getReusableActionsInstance().isElementVisible(chooseNumberTitle,60);
+		return getReusableActionsInstance().isElementVisible(chooseNumberTitle, 60);
 	}
 
 	/**
 	 * To verify Select A Number Tab UseAnExistingNumber Tab is present in the Choose a Number stepper and return boolean value.
+	 *
 	 * @return True or False
 	 * @author karthic.hasan
 	 */
@@ -1080,6 +1154,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * Select City Dropdown Option on the Choose a Number stepper, City Dropdown Field
+	 *
 	 * @param selectYourOption value from yaml file.
 	 * @author karthic.hasan
 	 */
@@ -1094,6 +1169,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * To click on the first Available Phone number Radio button in the Choose a Number stepper
+	 *
 	 * @author karthic.hasan
 	 */
 
@@ -1103,6 +1179,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * To verify Find More Avaialble Number Button in the Choose a Number stepper
+	 *
 	 * @return True or false
 	 * @author karthic.hasan
 	 */
@@ -1113,6 +1190,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * To click on the Choose Number button in the Credit Evaluation stepper
+	 *
 	 * @author karthic.hasan
 	 */
 
@@ -1122,7 +1200,8 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	}
 
 	/**
-	 * To verify Choose A Number Label in the Choose a Number stepper 
+	 * To verify Choose A Number Label in the Choose a Number stepper
+	 *
 	 * @return boolean value
 	 * @author karthic.hasan
 	 */
@@ -1134,28 +1213,31 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * This method enters the portin number in the portin number field
+	 *
 	 * @param selectExistingNumber value from yaml file.
 	 * @author praveen.kumar
 	 */
 	public void chooseExistingNumberOption(String selectExistingNumber) {
 		getReusableActionsInstance().clickWhenReady(clickExistingPhoneNumber);
-		getReusableActionsInstance().getWhenReady(fillExistingPhoneNumber,10).sendKeys(selectExistingNumber);
+		fillExistingPhoneNumber.sendKeys(selectExistingNumber);
 	}
 
 	/**
 	 * Clicks on Existing number(portin) tab in Choose phone number stepper
+	 *
 	 * @author praveen.kumar7
 	 */
 	public void selectPortinOption() {
-		getReusableActionsInstance().clickWhenReady(useAnExistingNumberTab,20);
+		getReusableActionsInstance().clickWhenReady(useAnExistingNumberTab, 20);
 	}
 
 	/**
 	 * This method verifies if the entered number is eligible to portin
+	 *
 	 * @return true if eligible, else false
 	 * @author praveen.kumar
 	 */
-	public boolean verifyPortinEligibility () {
+	public boolean verifyPortinEligibility() {
 		getReusableActionsInstance().waitForElementVisibility(portinEligibilityCheckBtn, 30);
 		getReusableActionsInstance().clickWhenReady(portinEligibilityCheckBtn, 30);
 		getReusableActionsInstance().staticWait(5000);
@@ -1164,27 +1246,30 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * This method gets the portin success message
+	 *
 	 * @return string value of portin success message and temporary number
 	 * @author praveen.kumar
 	 */
 	public String getPortinSuccessMessage() {
-		String successMsg= getReusableActionsInstance().getWhenReady(portinSuccessTxt,20).getText();
-		String tempNumber = getReusableActionsInstance().getWhenReady(tempNumberTxt,20).getText();
-		return successMsg+" and here is your "+tempNumber;
+		String successMsg = getReusableActionsInstance().getWhenReady(portinSuccessTxt, 20).getText();
+		String tempNumber = getReusableActionsInstance().getWhenReady(tempNumberTxt, 20).getText();
+		return successMsg + " and here is your " + tempNumber;
 	}
 
 	/**
 	 * This method clicks on continue button in portin stepper
+	 *
 	 * @author praveen.kumar
 	 */
 	public void clkContinueBtnPorinStepper() {
 		getReusableActionsInstance().scrollToElement(getReusableActionsInstance().getWhenReady(By.xpath("//button[@data-test='choose-number-continue']")));
-		getReusableActionsInstance().clickWhenReady(By.xpath("//button[@data-test='choose-number-continue']"),20);
+		getReusableActionsInstance().clickWhenReady(By.xpath("//button[@data-test='choose-number-continue']"), 20);
 	}
 
 
 	/**
-	 * To Verify the Title of Billing Options stepper Displayed 
+	 * To Verify the Title of Billing Options stepper Displayed
+	 *
 	 * @return True or False Boolean Value.
 	 * @author nimmy.george
 	 */
@@ -1196,6 +1281,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * To verify Payment Method Dropdown is Present in the Billing Payment option stepper
+	 *
 	 * @return True or False
 	 * @author karthic.hasan
 	 */
@@ -1206,23 +1292,29 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * To Select Payment Method from Billing Payment option stepper
+	 *
 	 * @param strPaymentMethod from yaml file.
 	 * @author karthic.hasan
-	 */	
+	 */
 	public void selectPaymentMethodDropdownOption(String strPaymentMethod) {
 		//getReusableActionsInstance().scrollToElementAndClick(drpSelectPaymentMethod);
 		new Select(getDriver().findElement(By.xpath("//select[@data-test='select-payment-option']"))).selectByVisibleText(strPaymentMethod);
-		if (strPaymentMethod.equalsIgnoreCase("Pre-authorized Credit Card - Token")) {
+		if (strPaymentMethod.equalsIgnoreCase("Pre-authorized Credit Card - Token") || strPaymentMethod.equalsIgnoreCase("Pre-authorized Credit Card - Token-fr")) {
 			strTokenNumber = TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getNumber3();
 			setPreAuthCreditTokenNumber(strTokenNumber);
 		}
 /*		getReusableActionsInstance().scrollToElementAndClick(drpSelectPaymentMethod);
 		getReusableActionsInstance().selectWhenReady(drpSelectPaymentMethod, strPaymentMethod);*/
+	}
 
+	public void selectPayWithExistingCard() {
+		getReusableActionsInstance().clickWhenVisible(By.xpath("//ds-radio-button[@data-test='payment-credit-card-type-new']"),10);
+		getReusableActionsInstance().clickWhenVisible(By.xpath("//ds-radio-button[@data-test='payment-credit-card-type-existing']"),10);
 	}
 
 	/**
 	 * Enter Name on Card in the Billing Payment Option Stepper , Name on Card Field
+	 *
 	 * @param strNameOnCard from yaml file.
 	 * @author karthic.hasan
 	 */
@@ -1235,7 +1327,8 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * Enter Billing Expiry Date in the Billing Payment Option Stepper , Expir Date Field
-	 *@param strBillingExpiryDate from Yaml file
+	 *
+	 * @param strBillingExpiryDate from Yaml file
 	 * @author karthic.hasan
 	 */
 	public void setBillingExpiryDate(String strBillingExpiryDate) {
@@ -1246,6 +1339,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * Enter CVVNumber in the Billing Payment Option Stepper , CVV Number Field
+	 *
 	 * @param strCVVNumber from yaml file.
 	 * @author karthic.hasan
 	 */
@@ -1258,6 +1352,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * To click Add Card button in the Billing Payment Option stepper
+	 *
 	 * @author karthic.hasan
 	 */
 
@@ -1267,123 +1362,131 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * To verify Card Details displayed in the Billing Payment option stepper
-	 *@return True or False
+	 *
+	 * @return True or False
 	 * @author karthic.hasan
 	 */
 
 	public boolean isCardDetailsDisplayed() {
-		return getReusableActionsInstance().isElementVisible(txtCreditDetails,30);
+		return getReusableActionsInstance().isElementVisible(txtCreditDetails, 30);
 	}
 
 	/**
 	 * To click Billing Payment Continue Button from the Billing Payment Option stepper
+	 *
 	 * @author karthic.hasan
 	 */
 
 	public void clkBillingContinueButton() {
-		getReusableActionsInstance().waitForElementTobeClickable(btnBillingContinueButton , 30);
+		getReusableActionsInstance().waitForElementTobeClickable(btnBillingContinueButton, 30);
 		getReusableActionsInstance().scrollToElement(btnBillingContinueButton);
-		getReusableActionsInstance().getWhenReady(btnBillingContinueButton,30).click();
+		getReusableActionsInstance().getWhenReady(btnBillingContinueButton, 30).click();
 	}
 
 	/**
 	 * To click on the Billing Address radio button in the Shipping stepper
+	 *
 	 * @return true if selected, else false.
 	 * @author nimmy.george
 	 */
 
 	public boolean clkBillingAddress() {
-		getReusableActionsInstance().waitForElementTobeClickable(billingAddressShipping , 30);
+		getReusableActionsInstance().waitForElementTobeClickable(billingAddressShipping, 30);
 		getReusableActionsInstance().scrollToElement(billingAddressShipping);
-		getReusableActionsInstance().clickWhenReady(billingAddressShipping,30);
+		getReusableActionsInstance().clickWhenReady(billingAddressShipping, 30);
 		billingAddressShipping.isSelected();
 		return true;
 	}
 
-	
+
 	/**
-     * to get the Complete Address from the Shipping Stepper
-     * @return The Complete Address
-     ** @author karthic.hasan
-     */
-    public String getShippingAddress() {
-    	getReusableActionsInstance().javascriptScrollToTopOfPage();
-        return getReusableActionsInstance().getWhenReady(prepopulatedShippingAddress).getText();
-    }
-    
-    /**
+	 * to get the Complete Address from the Shipping Stepper
+	 *
+	 * @return The Complete Address
+	 * * @author karthic.hasan
+	 */
+	public String getShippingAddress() {
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
+		return getReusableActionsInstance().getWhenReady(prepopulatedShippingAddress).getText();
+	}
+
+	/**
 	 * This method will get Complete Contact Number details from Shipping Stepper
+	 *
 	 * @return Complete Contact Number from Shipping stepper
 	 * @author karthic.hasan
 	 */
 
-	public String getContactNumber() { 
+	public String getContactNumber() {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(contactNumberDetails);
-   	    getReusableActionsInstance().staticWait(3000);
-		return contactNumberDetails.getText().replaceAll("\\n",""); 
+		getReusableActionsInstance().staticWait(3000);
+		return contactNumberDetails.getText().replaceAll("\\n", "");
 	}
-    
-    /**
-     * to get the Email ID from the Shipping Stepper
-     * @return the Email ID
-     * @author karthic.hasan
-     */
-    public String getEmailId() {
-    	getReusableActionsInstance().javascriptScrollToTopOfPage();
-        return getReusableActionsInstance().getWhenReady(prepopulatedEmailId).getText();
-    }  
-    
+
+	/**
+	 * to get the Email ID from the Shipping Stepper
+	 *
+	 * @return the Email ID
+	 * @author karthic.hasan
+	 */
+	public String getEmailId() {
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
+		return getReusableActionsInstance().getWhenReady(prepopulatedEmailId).getText();
+	}
+
 	/**
 	 * To click on Standard Delivery Method in the shipping stepper
+	 *
 	 * @author nimmy.george
 	 */
 
 	public void clkDeliveryMethodStandard() {
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(deliveryMethodHeader);
-		if(getReusableActionsInstance().isElementVisible(viewAnotherOption))
-		{
-		System.out.println("inside loop");
-		getReusableActionsInstance().scrollToElementAndClick(viewAnotherOption);
-		getReusableActionsInstance().clickWhenReady(deliveryMethodStandard);
-		
+		if (getReusableActionsInstance().isElementVisible(viewAnotherOption)) {
+			System.out.println("inside loop");
+			getReusableActionsInstance().scrollToElementAndClick(viewAnotherOption);
+			getReusableActionsInstance().clickWhenReady(deliveryMethodStandard);
+
+		} else {
+			getReusableActionsInstance().clickWhenReady(deliveryMethodStandard, 30);
 		}
-		else {
-			getReusableActionsInstance().clickWhenReady(deliveryMethodStandard,30);
-		}
-		
+
 	}
 
 	/**
 	 * To click on Express Delivery Method in the shipping stepper
+	 *
 	 * @author Saurav.Goyal
 	 */
 
 	public void clkDeliveryMethod(String deliveryMethod) {
 		getReusableActionsInstance().staticWait(2000);
-		if(deliveryMethod.equalsIgnoreCase("EXPRESS")){
+		if (deliveryMethod.equalsIgnoreCase("EXPRESS")) {
 			getReusableActionsInstance().staticWait(5000);
-			getReusableActionsInstance().clickWhenReady(deliveryMethodExpress,30);
-		}else if(deliveryMethod.equalsIgnoreCase("PRO")){
+			getReusableActionsInstance().clickWhenReady(deliveryMethodExpress, 30);
+		} else if (deliveryMethod.equalsIgnoreCase("PRO")) {
 			getReusableActionsInstance().staticWait(5000);
-			getReusableActionsInstance().clickWhenReady(deliveryMethodProOnTheGo,30);
-		}else{
+			getReusableActionsInstance().clickWhenReady(deliveryMethodProOnTheGo, 30);
+		} else {
 			getReusableActionsInstance().staticWait(5000);
-			getReusableActionsInstance().clickWhenReady(deliveryMethodStandard,30);
+			getReusableActionsInstance().clickWhenReady(deliveryMethodStandard, 30);
 		}
 	}
 
 	/**
 	 * To Verify the appointment time
+	 *
 	 * @return true if Appointment time is available else false
 	 * @author saurav.goyal
 	 */
 	public boolean isAppointmentTimeAvailable() {
-		return getReusableActionsInstance().isElementVisible(deliveryAppointmentTime , 30);
+		return getReusableActionsInstance().isElementVisible(deliveryAppointmentTime, 30);
 	}
 
 	/**
 	 * To Select Date from the Shipping stepper
+	 *
 	 * @author karthic.hasan
 	 */
 
@@ -1394,6 +1497,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * To Select Time from the Shipping stepper
+	 *
 	 * @author karthic.hasan
 	 */
 
@@ -1410,13 +1514,14 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	public void clkContinueBtnShipping() {
 		clkNoThanks();
-		getReusableActionsInstance().getWhenReady(continueBtnShipping,30);
-        getReusableActionsInstance().scrollToElement(continueBtnShipping);
+		getReusableActionsInstance().getWhenReady(continueBtnShipping, 30);
+		getReusableActionsInstance().scrollToElement(continueBtnShipping);
 		getReusableActionsInstance().clickWhenReady(continueBtnShipping, 30);
 	}
 
 	/**
 	 * To verify the Apoointment label for pro on the go devices
+	 *
 	 * @return true if label is available else false
 	 * @author Saurav.Goyal
 	 */
@@ -1425,47 +1530,49 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	}
 
 
-	
 	/**
 	 * This method will get Appointment Date from Shipping Stepper
+	 *
 	 * @return String having Appointment Date from Shipping stepper
 	 * @author karthic.hasan
 	 */
 
-	public String getAppointmentDate() { 
+	public String getAppointmentDate() {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(appointmentDate);
-   	    getReusableActionsInstance().staticWait(3000);
-		return appointmentDate.getText().replaceAll("\\n",""); 
+		getReusableActionsInstance().staticWait(3000);
+		return appointmentDate.getText().replaceAll("\\n", "");
 	}
 
 	/**
 	 * This method will get Appointment Time from Shipping Stepper
+	 *
 	 * @return String having Appointment Time from Shipping stepper
 	 * @author karthic.hasan
 	 */
 
-	public String getAppointmentTime() { 
+	public String getAppointmentTime() {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(appointmentTime);
-   	    getReusableActionsInstance().staticWait(3000);
-		return appointmentTime.getText().replaceAll("\\s",""); 
+		getReusableActionsInstance().staticWait(3000);
+		return appointmentTime.getText().replaceAll("\\s", "");
 	}
-	
-    /**
-     * To click on submit button below cart summary in the checkout page, that takes you to Order Review Page
-     *
-     * @author nimmy.george
-     */
 
-    public void clksubmitBtnCheckoutPage(){
+	/**
+	 * To click on submit button below cart summary in the checkout page, that takes you to Order Review Page
+	 *
+	 * @author nimmy.george
+	 */
+
+	public void clksubmitBtnCheckoutPage() {
 		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().waitForElementTobeClickable(submitBtnCheckoutPage,50);
+		getReusableActionsInstance().waitForElementTobeClickable(submitBtnCheckoutPage, 50);
 		getReusableActionsInstance().scrollToElement(submitBtnCheckoutPage);
-		getReusableActionsInstance().getWhenReady(submitBtnCheckoutPage,30);
+		getReusableActionsInstance().getWhenReady(submitBtnCheckoutPage, 30);
 		getReusableActionsInstance().executeJavaScriptClick(submitBtnCheckoutPage);
-    }
+	}
 
 	/**
 	 * To verify Billing Details in the Billing Payment option stepper
+	 *
 	 * @return True or False
 	 * @author karthic.hasan
 	 */
@@ -1474,15 +1581,50 @@ public class RogersOVCheckoutPage extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(txtBillingDetails);
 	}
 
-	public boolean verifyDownPayment(String deviceCost) {
-		double expectedDownPayment = Double.parseDouble(deviceCost)/100.0*40.0;
-		String actualDownPayment = getReusableActionsInstance().getWhenReady(downPaymentAmt,20).getText().trim();
-		String actualDP[] = actualDownPayment.split("$");
-		if(expectedDownPayment==(Double.parseDouble(actualDP[0]))) {
-			return true;
+	public boolean verifyDownPayment(String deviceCost, String riskClass) {
+		if (riskClass.toLowerCase().contains("high")) {
+			String deviceCost1 = deviceCost.replaceAll(",", ".");
+			double expectedDownPayment = (Double.parseDouble(deviceCost1)) / 100.0 * 40.0;
+			String expectedDP[] = String.valueOf(expectedDownPayment).split("\\.");
+			String actualDownPayment[] = getReusableActionsInstance().getWhenReady(downPaymentAmt, 20).getText().trim().split("\\$");
+			//String actualDownPayment1[] = actualDownPayment.split("\\$");
+			String actualDP[] = actualDownPayment[0].replaceAll(",", ".").split("\\.");
+			if (expectedDP[0].equals(actualDP[0])) {
+				return true;
+			} else return false;
+		} else if (riskClass.toLowerCase().contains("medium")) {
+			String deviceCost1 = deviceCost.replaceAll(",", ".");
+			double expectedDownPayment = (Double.parseDouble(deviceCost1)) / 100.0 * 20.0;
+			String expectedDP[] = String.valueOf(expectedDownPayment).split("\\.");
+			String actualDownPayment = getReusableActionsInstance().getWhenReady(downPaymentAmt, 20).getText().trim();
+			String actualDownPayment1[] = actualDownPayment.split("\\$");
+			String actualDP[] = actualDownPayment1[0].replaceAll(",", ".").split("\\.");
+			if (expectedDP[0].equals(actualDP[0])) {
+				return true;
+			} else return false;
+
+		} else {
+			return false;
 		}
-		else return false;
+
 	}
 
-
+	public boolean verifyCLMAmount(String riskClass) {
+		if (riskClass.toLowerCase().contains("low")) {
+			String actualCLMAmount = getReusableActionsInstance().getWhenReady(cLMAmount, 20).getText().trim();
+			if (actualCLMAmount.equals("$0.00") || actualCLMAmount.equals("0,00 $")) {
+				return true;
+			} else return false;
+		} else if (riskClass.toLowerCase().contains("medium")) {
+			String actualCLMAmount = getReusableActionsInstance().getWhenReady(cLMAmount, 20).getText().trim();
+			if (actualCLMAmount.equals("$500.00") || actualCLMAmount.equals("500,00 $")) {
+				return true;
+			} else return false;
+		} else if (riskClass.toLowerCase().contains("high")) {
+			String actualCLMAmount = getReusableActionsInstance().getWhenReady(cLMAmount, 20).getText().trim();
+			if (actualCLMAmount.equals("$300.00") || actualCLMAmount.equals("300,00 $")) {
+				return true;
+			} else return false;
+		} else return false;
+	}
 }

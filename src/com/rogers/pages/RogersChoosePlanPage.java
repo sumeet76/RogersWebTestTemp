@@ -27,10 +27,10 @@ public class RogersChoosePlanPage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@class,'new-customer')]/a")
 	WebElement lnkBuyOnline;
 	
-	@FindBy(xpath = "//md-select[@ng-model='model.filterByCategory']//span[@class='md-select-icon']")
+	@FindBy(xpath = "//md-select[@ng-model='model.filterByCategory']")
 	WebElement icnPlanCategory;
 	
-	@FindBy(xpath = "//md-select[@ng-model='model.filterByType']//span[@class='md-select-icon']")
+	@FindBy(xpath = "//md-select[@ng-model='model.filterByType']")
 	WebElement icnPlanType;
 	
 	@FindBy(xpath = "//span[@translate='ppc_checkout_review_checkout']/../parent::div[contains(@class,'summary')]")
@@ -117,7 +117,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 */
 	public void clkMakeChangesToExistingPlan() {
 		getReusableActionsInstance().javascriptScrollToTopOfPage();
-		getReusableActionsInstance().clickIfAvailable(lblChangesToExistingPlan,30);
+		getReusableActionsInstance().clickIfAvailable(lblChangesToExistingPlan,20);
 	}
 	
 	/**
@@ -182,8 +182,8 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void selectFirstAvailablePlan() {
-		getReusableActionsInstance().waitForElementVisibility(getReusableActionsInstance().getWhenReady(btnSelect.get(2) , 30));
-		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(btnSelect.get(2)));
+		getReusableActionsInstance().waitForElementVisibility(getReusableActionsInstance().getWhenReady(By.xpath("(//button[contains(@class,'btn-select')])[1]"), 30));
+		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(By.xpath("(//button[contains(@class,'btn-select')])[1]")));
 		getReusableActionsInstance().staticWait(3000);
 	}
 	
@@ -231,6 +231,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 			strPlanCat = "no tab";
 			break;
 		}
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
 		getReusableActionsInstance().clickWhenReady(icnPlanCategory, 60);
 		getReusableActionsInstance().clickWhenReady(By.xpath("//md-option[@value='" + strPlanCat +"']"));
 		getReusableActionsInstance().staticWait(3000);
@@ -250,7 +251,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 		
 		getReusableActionsInstance().clickWhenReady(icnPlanType, 60);
 		getReusableActionsInstance().clickWhenReady(By.xpath("//md-option[@value='"+ strPlanType +"']"));
-		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().staticWait(5000);
 	}
 	
 	/**
@@ -317,6 +318,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyChoosePlanPage() {
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
 		return getReusableActionsInstance().isElementVisible(lblYourCurrentPlan,30);
 
 	}

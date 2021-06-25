@@ -40,6 +40,8 @@ public class RedesignRpotgOVData {
 	private String depositAmount;
 	private String customerRiskLevel;
 	public String portinNumber;
+	public String banNo;
+	public String tokenNumber;
 
 	/**
 	 * @return the contactID
@@ -360,13 +362,27 @@ public class RedesignRpotgOVData {
 	 * @return the portin number
 	 */
 	public String getPortinNumber() {
-		return customerRiskLevel;
+		return portinNumber;
 	}
 	/**
 	 * @param portinNumber the portin number to set
 	 */
 	public void setPortinNumber(String portinNumber) {
 		this.portinNumber = portinNumber;
+	}
+
+	public String getBanNo() {
+		return banNo;
+	}
+	public void setBanNo(String banNo) {
+		this.banNo = banNo;
+	}
+
+	public String getTokenNumber() {
+		return tokenNumber;
+	}
+	public void setTokenNumber(String tokenNumber) {
+		this.tokenNumber = tokenNumber;
 	}
 	
 }

@@ -130,6 +130,7 @@ public class TestDataHandler {
 	public static RedesignRpotgOVData buyFlowsOVtestCase18;
 	public static RedesignRpotgOVData buyFlowsOVtestCase19;
 	public static RedesignRpotgOVData buyFlowsOVtestCase20;
+	public static RedesignRpotgOVData buyFlowsOVtestCase21;
 	public static AALData tc07AAL;
 	public static PPCData tc08PPC;
 	public static HUPData tc09HupPpcPotgSharedML;
@@ -461,7 +462,7 @@ public class TestDataHandler {
 		buyFlowsOVtestCase18 = YamlHandler.getRedesignOVNACData("tc18OVNACBYODOutboundPlanPortin");
 		buyFlowsOVtestCase19 = YamlHandler.getRedesignOVNACData("tc19OVNACOutboundHighRiskQCFrench");
 		buyFlowsOVtestCase20 = YamlHandler.getRedesignOVNACData("tc20OVNACOutboundBasicPhoneTTPlanMB");
-
+		buyFlowsOVtestCase21 = YamlHandler.getRedesignOVNACData("tc21OVNACCableCustomerPassportAndSIN");
 	}
 
 	private static void chOneViewDataInit() throws FileNotFoundException {

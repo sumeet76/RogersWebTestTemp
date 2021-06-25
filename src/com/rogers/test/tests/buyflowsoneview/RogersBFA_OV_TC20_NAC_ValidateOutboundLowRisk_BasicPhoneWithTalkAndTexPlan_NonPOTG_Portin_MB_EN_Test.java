@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * TC18 - Validate OV NAC TERM flow for Outbound-Low Risk customer by selecting T&T plan_Port-in_Passport + Safe Send combination in Credit Evaluation_MB_EN
+ * TC20 - Validate OV NAC TERM flow for Outbound-Low Risk customer by selecting T&T plan_Port-in_Passport + Safe Send combination in Credit Evaluation_MB_EN
  * @author Praveen.Kumar7
  */
 
@@ -33,12 +33,12 @@ public class RogersBFA_OV_TC20_NAC_ValidateOutboundLowRisk_BasicPhoneWithTalkAnd
     }
 
     @Test(groups = {"RegressionBFA","RegressionOVBFA","OVNACBFA"})
-    public void rogersNACBYODOutboundPlanPortinInvoiceOnTest() {
+    public void rogersNACBOutboundBasicPhoneWithTalkandTextPlanMBTest() {
         reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed", "Rogers OV environment selection page not displayed");
         reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");
         getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
         reporter.reportLogWithScreenshot("Rogers OV environment selected" + TestDataHandler.bfaOneViewConfig.getEnvironmentName());
-        //-------------------------------------NAC Dashboard page---------------------------------------------
+        //-------------------------------------NAC Dashboard page-----------------------------------------------------------
         reporter.hardAssert(getNacDashboardPage().verifyNewCustomerDashboard(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Rogers OV NAC Dashboard page");
         getNacDashboardPage().clkCustomerButton();
@@ -47,23 +47,23 @@ public class RogersBFA_OV_TC20_NAC_ValidateOutboundLowRisk_BasicPhoneWithTalkAnd
         reporter.reportLogWithScreenshot("Active Wireless Service Modal");
         getNacDashboardPage().fillShippingAddressField(TestDataHandler.buyFlowsOVtestCase20.getShippingAddress());
         getNacDashboardPage().clkGetANewPhoneButton();
-        //-------------------------------------Choose Phone page--------------------------------------------------
+        //-------------------------------------Choose Phone page-------------------------------------------------------------
         reporter.hardAssert(getRogersOVChoosePhonePage().verifyDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase20.getDeviceName()), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
         String deviceName = TestDataHandler.buyFlowsOVtestCase20.getDeviceName();
         getRogersOVChoosePhonePage().clickDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase20.getDeviceName());
-        //-------------------------------------Device Config page-------------------------------------------------
+        //-------------------------------------Device Config page-------------------------------------------------------------
         getRogersOVChoosePhonePage().selectDeviceColor(TestDataHandler.buyFlowsOVtestCase20.getDeviceColor());
         reporter.reportLogPassWithScreenshot("Device config page displayed");
         getRogersOVChoosePhonePage().clickContinueButton();
-        //-------------------------------------Plan config page---------------------------------------------------
+        //-------------------------------------Plan config page----------------------------------------------------------------
         reporter.softAssert(getRogersOVPlanConfigPage().verifyBreadCrumb(deviceName),
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
         reporter.hardAssert(getRogersOVPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
         reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
         getRogersOVPlanConfigPage().clkPreCartDeviceCostContinueButtonForNac();
         reporter.reportLogPassWithScreenshot("Device cost option selected");
-        getRogersPlanConfigPage().selectNonShareDataAndClkContinue(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc19AALNoTermStandardShipping.getDataOptionIndex()));
-        reporter.hardAssert(getRogersOVPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersOVPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.buyFlowsOVtestCase15.getTalkOptionIndex())),
+        getRogersOVPlanConfigPage().selectNonShareDataAndClkContinue(getRogersOVPlanConfigPage().getupdatedPlanIndexForTalkPlans(TestDataHandler.buyFlowsOVtestCase20.getDataOptionIndex()));
+        reporter.hardAssert(getRogersOVPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersOVPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.buyFlowsOVtestCase20.getTalkOptionIndex())),
                 "Talk option selected and Addons page in expanded state","Addons page not in expanded state");
         getRogersOVPlanConfigPage().clickPreCartAddonsContinueButton();
         getRogersOVPlanConfigPage().clickCartSummaryContinueButton();
@@ -112,8 +112,8 @@ public class RogersBFA_OV_TC20_NAC_ValidateOutboundLowRisk_BasicPhoneWithTalkAnd
         reporter.softAssert(getRogersOVCheckoutPage().isBillingOptionsTitleDisplayed(), "Billing Options Title Displayed", "Billing Options Title Not Present");
         reporter.softAssert(getRogersOVCheckoutPage().isPaymentMethodDropdownPresent(),
                 "Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not disaplayed");
-        getRogersOVCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.buyFlowsOVtestCase20.getPaymentMethod());
-        reporter.reportLogWithScreenshot("Invoice option is selected");
+        getRogersOVCheckoutPage().selectPayWithExistingCard();
+        reporter.reportLogWithScreenshot("CC option is selected");
         getRogersOVCheckoutPage().clkBillingContinueButton();
         //----------------------------------------------Shipping Stepper----------------------------------------------------------
         reporter.hardAssert(getRogersOVCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
@@ -145,7 +145,7 @@ public class RogersBFA_OV_TC20_NAC_ValidateOutboundLowRisk_BasicPhoneWithTalkAnd
         }
         reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
         //reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
-        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyBANOrderConfirmationPage(), "BAN displayed is the same as the given BAN", "BAN displayed isn't the same as the given BAN");
+        //reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyBANOrderConfirmationPage(), "BAN displayed is the same as the given BAN", "BAN displayed isn't the same as the given BAN");
         reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");
     }
 

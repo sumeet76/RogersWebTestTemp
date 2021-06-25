@@ -68,7 +68,18 @@ public class AccountOverViewPage  extends BasePageClass {
 	 * @author sidhartha.vadrevu
 	 */
 	public void setSkipNotification() {
-		getReusableActionsInstance().clickIfAvailable(skipNotification, 50);
+		getReusableActionsInstance().clickIfAvailable(skipNotification, 30);
+	}
+
+	/**
+	 * This method clicks on wireless link to add a new wireless line
+	 * @author praveen.kumar7
+	 */
+	public void clkWirelessLink() {
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().staticWait(2000);
+		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(By.xpath("//t[contains(.,'Wireless') or contains(.,'Sans-fil')]/ancestor::a[contains(@class,'nac-link')]"),20));
+
 	}
 
 	/**

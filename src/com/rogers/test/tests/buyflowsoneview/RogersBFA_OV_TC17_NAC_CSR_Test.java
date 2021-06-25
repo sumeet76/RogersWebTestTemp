@@ -19,7 +19,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_OV_TC17_NAC_CSR_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","RegressionOVBFA","SanityBFA","HupOvBFA"})
+	@Test(groups = {"RegressionBFA","RegressionOVBFA","OVNACBFA"})
 	public void rogersNACCSRPPCMultiLineChooseDifferentPlanFlow() {
 		reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
 		reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");

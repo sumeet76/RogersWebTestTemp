@@ -34,7 +34,7 @@ public class RogersBFA_OV_TC18_NAC_BYOD_OutboundPlans_Portin_Invoice_ON_Test ext
     }
 
     @Test(groups = {"RegressionBFA","RegressionOVBFA","OVNACBFA"})
-    public void rogersNACBYODOutboundPlanPortinInvoiceOnTest() {
+    public void rogersNACBYODOutboundPlanPortinInvoiceONTest() {
         reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
         reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");
         getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
@@ -53,7 +53,6 @@ public class RogersBFA_OV_TC18_NAC_BYOD_OutboundPlans_Portin_Invoice_ON_Test ext
         reporter.reportLogPassWithScreenshot("Shipping address entered successfully");
         getNacDashboardPage().clkBringYourOwnPhoneButton();
         //-------------------------------------PLAN CONFIG PAGE-------------------------------------------------
-        reporter.softAssert(getRogersOVPlanConfigPage().verifyAalByodBreadCrumb(), "","");
         reporter.hardAssert(getRogersOVPlanConfigPage().verifyPlanConfigPageLoaded(),
                 "Plan config page loaded successfully", "Plan config page not loaded");
         getRogersOVPlanConfigPage().clickOutBoundAccordion();
