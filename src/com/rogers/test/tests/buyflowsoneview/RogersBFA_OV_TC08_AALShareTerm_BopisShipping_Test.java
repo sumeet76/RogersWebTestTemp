@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_OV_TC08_AALShareTerm_BopisShipping_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","RegressionOVBFA","SanityBFA","OVAALBFA"})
+	@Test(groups = {"RegressionBFA","RegressionOVBFA","SanityOVBFA","OVAALBFA"})
 	public void aALSingleLineShareTermBopisShippingFlow() {
 		reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
 		reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");
@@ -117,7 +117,7 @@ public class RogersBFA_OV_TC08_AALShareTerm_BopisShipping_Test extends BaseTestC
 		}
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
 		//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyBANOrderConfirmationPage(), "BAN displayed is the same as the given BAN", "BAN displayed isn't the same as the given BAN");
+		//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyBANOrderConfirmationPage(), "BAN displayed is the same as the given BAN", "BAN displayed isn't the same as the given BAN");
 		reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");
 	}
 

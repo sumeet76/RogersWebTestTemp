@@ -68,7 +68,7 @@ public class RogersBFA_TC08_PPC_Test extends BaseTestClass {
         	getRogersOrderReviewPage().clkSubmitOrder();
         }
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
-        reporter.hardAssert(getRogersOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
+        //reporter.hardAssert(getRogersOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
         reporter.reportLogWithScreenshot("Order Confirmation page");
    }
 

@@ -520,7 +520,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clickPreCartTalkOptionContinueButton() {
-        getReusableActionsInstance().clickIfAvailable(preCartTalkOptionContinueButton);
+        getReusableActionsInstance().clickIfAvailable(preCartTalkOptionContinueButton,10);
     }
 
     /**
@@ -531,6 +531,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     public void clickPreCartAddonsContinueButton() {
         clickGetBPOOffer();
         getReusableActionsInstance().clickIfAvailable(preCartAddonsContinueButton);
+        clickGetBPOOffer();
     }
 
     /**

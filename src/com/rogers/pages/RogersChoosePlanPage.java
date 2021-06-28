@@ -86,6 +86,15 @@ public class RogersChoosePlanPage extends BasePageClass {
 
 	@FindBy(xpath = "//h2[@translate='current_plan_title']")
 	WebElement lblYourCurrentPlan;
+
+	@FindBy(xpath = "(//button[contains(@class,'btn-select')])[1]")
+	WebElement firstPlanSelectBtn;
+
+	@FindBy(xpath = "//button[contains(@class,'btn-select')]//span[contains(.,'Selected')]")
+	WebElement selectedPlan;
+
+	@FindBy(xpath = "(//span[text()='No, thanks']//ancestor::div[@tabindex='0'])[1]")
+	WebElement btnNoThanks;
 	
 	/**
 	 * Clicks on continue button on Modal Select Primary Line For New Share Everthing Plan
@@ -182,9 +191,16 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void selectFirstAvailablePlan() {
-		getReusableActionsInstance().waitForElementVisibility(getReusableActionsInstance().getWhenReady(By.xpath("(//button[contains(@class,'btn-select')])[1]"), 30));
-		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(By.xpath("(//button[contains(@class,'btn-select')])[1]")));
-		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(lblYourCurrentPlan);
+		getReusableActionsInstance().staticWait(2000);
+		//getReusableActionsInstance().waitForElementVisibility(getReusableActionsInstance().getWhenReady(By.xpath("(//button[contains(@class,'btn-select')])[1]"), 30));
+		if(getReusableActionsInstance().isElementVisible(selectedPlan,30)) {
+			getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		}
+		else {
+			getReusableActionsInstance().executeJavaScriptClick(firstPlanSelectBtn);
+			getReusableActionsInstance().staticWait(8000);
+		}
 	}
 	
 	/**
@@ -232,9 +248,18 @@ public class RogersChoosePlanPage extends BasePageClass {
 			break;
 		}
 		getReusableActionsInstance().javascriptScrollToTopOfPage();
+		clkNoThanks();
 		getReusableActionsInstance().clickWhenReady(icnPlanCategory, 60);
 		getReusableActionsInstance().clickWhenReady(By.xpath("//md-option[@value='" + strPlanCat +"']"));
 		getReusableActionsInstance().staticWait(3000);
+	}
+
+	/**
+	 * This method clicks on no,Thanks button if available
+	 * @author praveen.kumar7
+	 */
+	public void clkNoThanks() {
+		getReusableActionsInstance().clickIfAvailable(btnNoThanks,8);
 	}
 	
 	/**
@@ -329,7 +354,7 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyAndClickDowngradeFeeContinue() {
-		if(getReusableActionsInstance().isElementVisible(btnDowngradeFeeContinue, 60)) {
+		if(getReusableActionsInstance().isElementVisible(btnDowngradeFeeContinue, 30)) {
 			getReusableActionsInstance().executeJavaScriptClick(btnDowngradeFeeContinue);
 			return true;			
 		} else {
