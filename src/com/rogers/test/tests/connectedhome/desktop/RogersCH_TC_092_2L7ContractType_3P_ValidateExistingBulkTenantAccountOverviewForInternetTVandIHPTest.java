@@ -64,13 +64,7 @@ public class RogersCH_TC_092_2L7ContractType_3P_ValidateExistingBulkTenantAccoun
          reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersSolarisTVDashboardPage().clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dashboard Page");
-        //Verifying the My Channel Line up
-        getRogersSolarisTVDashboardPage().clkViewMyChannelLineup();
-        reporter.reportLogWithScreenshot("Displayed the available channels"); 
-        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChannelList(),"Channels are avilable","None of the Channels are avialabe");
-        reporter.softAssert(getRogersSolarisTVDashboardPage().clklAndVerifyViewPDF(),"all the channels are displayed in PDF","PDF is not displying");
-        getRogersSolarisTVDashboardPage().clkCloseChannelsPopup();
-        //Verifying the Flexchannels                     
+        //Verifying the Flexchannels
         getRogersSolarisTVDashboardPage().clkViewfelxChannels();
         reporter.reportLogWithScreenshot("Displayed the available flex channels");
         reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChannelList(),"flex channels are avilable","There are no felx channels");
@@ -119,7 +113,7 @@ public class RogersCH_TC_092_2L7ContractType_3P_ValidateExistingBulkTenantAccoun
 	
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 }
 

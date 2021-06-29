@@ -148,6 +148,5 @@ public class RogersCH_TC_074_SAI_BaselineAndHouseAddress_ValidateServiceability_
 		closeSession();
 	}
 
-
 }
 
