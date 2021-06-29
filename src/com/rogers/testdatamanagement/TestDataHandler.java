@@ -125,6 +125,16 @@ public class TestDataHandler {
 	public static RedesignRpotgData tc04NACTermBopis;
 	public static RedesignRpotgData tc05NACByodSS;
 	public static RedesignRpotgData tc06NACByodTermBopis;
+	public static RedesignRpotgOVData buyFlowsOVtestCase14;
+	public static RedesignRpotgOVData buyFlowsOVtestCase15;
+	public static RedesignRpotgOVData buyFlowsOVtestCase16;
+	public static RedesignRpotgOVData buyFlowsOVtestCase17;
+	public static RedesignRpotgOVData buyFlowsOVtestCase18;
+	public static RedesignRpotgOVData buyFlowsOVtestCase19;
+	public static RedesignRpotgOVData buyFlowsOVtestCase20;
+	public static RedesignRpotgOVData buyFlowsOVtestCase21;
+	public static RedesignRpotgOVData buyFlowsOVtestCase22;
+	public static LoginDetails bfaOneViewLogin;
 	public static AALData tc07AAL;
 	public static PPCData tc08PPC;
 	public static HUPData tc09HupPpcPotgSharedML;
@@ -151,6 +161,9 @@ public class TestDataHandler {
 	public static AALOVData buyFlowsOVtestCase08;
 	public static AALOVData buyFlowsOVtestCase09;
 	public static AALOVData buyFlowsOVtestCase10;
+	public static AALOVData buyFlowsOVtestCase11;
+	public static AALOVData buyFlowsOVtestCase12;
+	public static AALOVData buyFlowsOVtestCase13;
 	public static SauceSettings sauceSettings;
 	public static AccountData igniteTVParentalcontrols;
 	public static AccountData solarisAccount;
@@ -453,8 +466,21 @@ public class TestDataHandler {
 		buyFlowsOVtestCase06 = YamlHandler.getHUPdataOneView("tc06OVHUPExistingPlanSinglelineAccount");
 		buyFlowsOVtestCase07 = YamlHandler.getPPCdataOneView("tc07OVPPCSinglelineAccount");
 		buyFlowsOVtestCase08 = YamlHandler.getAALdataOneView("tc08OVAALSinglelineBopisShippingAccount");
-		//buyFlowsOVtestCase09 = YamlHandler.getAALdataOneView("tc09OVAALSinglelinePOTGShippingAccount");
-		//buyFlowsOVtestCase10 = YamlHandler.getAALdataOneView("tc10OVAALNonShareNoTermQCStandardShippingAccount");
+		buyFlowsOVtestCase09 = YamlHandler.getAALdataOneView("tc09OVAALSinglelinePOTGShippingAccount");
+		buyFlowsOVtestCase10 = YamlHandler.getAALdataOneView("tc10OVAALNonShareNoTermQCStandardShippingAccount");
+		buyFlowsOVtestCase11 = YamlHandler.getAALdataOneView("tc11OVAALTabletShareTermStandardShippingAccount");
+		buyFlowsOVtestCase12 = YamlHandler.getAALdataOneView("tc12OVAALBYODBopisShippingAccount");
+		buyFlowsOVtestCase13 = YamlHandler.getAALdataOneView("tc13OVAALBYODNonShareStandardShippingAccount");
+		buyFlowsOVtestCase14 = YamlHandler.getRedesignOVNACData("tc14OVNACOutboundNoTermStandardShipping");
+		buyFlowsOVtestCase15 = YamlHandler.getRedesignOVNACData("tc15OVNACOutboundFinanceStandardShipping");
+		buyFlowsOVtestCase16 = YamlHandler.getRedesignOVNACData("tc16OVNACFieldSalesUpfrontExpressShipping");
+		buyFlowsOVtestCase17 = YamlHandler.getRedesignOVNACData("tc17OVNACCSR");
+		buyFlowsOVtestCase18 = YamlHandler.getRedesignOVNACData("tc18OVNACBYODOutboundPlanPortin");
+		buyFlowsOVtestCase19 = YamlHandler.getRedesignOVNACData("tc19OVNACOutboundHighRiskQCFrench");
+		buyFlowsOVtestCase20 = YamlHandler.getRedesignOVNACData("tc20OVNACOutboundBasicPhoneTTPlanMB");
+		buyFlowsOVtestCase21 = YamlHandler.getRedesignOVNACData("tc21OVNACCableCustomerPassportAndSIN");
+		buyFlowsOVtestCase22 = YamlHandler.getRedesignOVNACData("tc21OVNACFieldSalesNACToAALNoTermStandardShipping");
+		bfaOneViewLogin = YamlHandler.getBFAOneViewLoginDetails();
 	}
 	
 	private static void chOneViewDataInit() throws FileNotFoundException {

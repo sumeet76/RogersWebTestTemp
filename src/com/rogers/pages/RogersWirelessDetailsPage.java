@@ -1,5 +1,6 @@
 package com.rogers.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -20,6 +21,9 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	@FindAll({@FindBy(xpath = "//h2[contains(text(),'My Wireless Usage')]"),
 			@FindBy(xpath = "//t[contains(text(),'My Wireless')]")})
 	WebElement lblMyWlsUsage;
+
+	@FindBy(xpath = "//div[contains(@class,'wireless_unavailable')]//h1[contains(@class,'unavailable_text')]")
+	WebElement detailsNotAvailableTxt;
 
 	@FindBy(xpath = "//a[@class='my-line-change-number']")
 	WebElement lnkChangeMyCallerId;
@@ -62,7 +66,13 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyWirelessPageLoad() {
-		return getReusableActionsInstance().isElementVisible(lblMyWlsUsage);
+		/*if(getReusableActionsInstance().isElementVisible(detailsNotAvailableTxt)) {
+			getDriver().navigate().back();
+			getDriver().get("https://qa5.rogers.com/web/totes/wireless-plan-change/#/choose-plan");
+			return true;
+		}
+		else*/
+			return getReusableActionsInstance().isElementVisible(lblMyWlsUsage);
 	}
 	
 	/**

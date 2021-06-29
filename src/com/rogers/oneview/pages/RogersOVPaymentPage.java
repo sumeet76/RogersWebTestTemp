@@ -81,7 +81,7 @@ public class RogersOVPaymentPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkSubmit() {
-		getReusableActionsInstance().clickWhenVisible(btnSubmit);
+		getReusableActionsInstance().clickWhenVisible(btnSubmit,10);
 	}
 
 }
