@@ -168,6 +168,7 @@ public class BaseTestClass {
     protected static final ThreadLocal<RogersOneTimePaymentPage> RogersOneTimePaymentPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersHomePageServiceability> RogersHomePageServiceabilityThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersSecurityPackagesPage> RogersSecurityPackagesPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<RogersOVInstallationPage> RogersOVInstallationPageThreadLocal = new ThreadLocal<>();
 
     public static RogersPSEFPage getRogersPSEFPage() {
         return RogersPSEFPageThreadLocal.get();
@@ -180,6 +181,10 @@ public class BaseTestClass {
     private CaptchaBypassHandlers captcha_bypass_handlers;
     private Map<String, String> sauceParameters;
     private Map<String, String> RunParameters;
+
+    public static RogersOVInstallationPage getRogersOVInstallationPage() {
+        return RogersOVInstallationPageThreadLocal.get();
+    }
 
 
     private static final ThreadLocal<RogersFinanceAccessoriesPage> RogersFinanceAccessoriesPagePageThreadLocal = new ThreadLocal<>();
@@ -1084,6 +1089,7 @@ public class BaseTestClass {
                 RogersOVChannelsAndThemePacksPageThreadLocal.set(new RogersOVChannelsAndThemePacksPage(getDriver()));
                 HomePhoneAddonsPageThreadLocal.set(new HomePhoneAddonsPage(getDriver()));
                 RogersInternetUsageOVPageThreadLocal.set(new RogersInternetUsageOVPage(getDriver()));
+                RogersOVInstallationPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVInstallationPage(getDriver()));
 
                 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
                 RogersOVOrderReviewPageThreadLocal.set(new RogersOVOrderReviewPage(getDriver()));
@@ -1129,7 +1135,7 @@ public class BaseTestClass {
                 RogersOVCheckoutPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVCheckoutPage(getDriver()));
                 RogersOVReviewOrderPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVReviewOrderPage(getDriver()));
                 RogersOVOneTimePaymentPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVOneTimePaymentPage(getDriver()));
-                break;
+               break;
 
 
             case "serviceability":

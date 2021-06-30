@@ -192,7 +192,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//input[@id='ds-form-input-id-1']/parent::div")
     WebElement inputLastNameDiv;
 
-    @FindBy(xpath = "//span[contains(text(),'CONTINUE')]")
+    @FindBy(xpath = "//button[@data-test='stepper-5-edit-step-continue-button']")
     WebElement callerIDContinue;
 
     @FindBy(xpath = "//span[contains(@class,'cartSummary')]")
@@ -244,6 +244,10 @@ public class RogersOVPlanConfigPage extends BasePageClass {
         getReusableActionsInstance().clickIfAvailable(showMoreDetails,40);
     }
 
+    /**
+     * This method clicks on the accordion for price plan based the visible text
+     * @author Sidhartha Vadrevu
+     */
     public void clickShowMoreOutDetails() {
         if (showOutFieldPlansText.getText().contains("Outbound")) {
             getReusableActionsInstance().clickIfAvailable(showOutPlans, 40);
@@ -281,6 +285,12 @@ public class RogersOVPlanConfigPage extends BasePageClass {
         }
     }
 
+    /**
+     * This method creates xpath based on the accordion displayed in data option stepper
+     * @param dataOption index value of price plan to be selected
+     * @return String value of xpath
+     * @author Sidhartha Vadrevu
+     */
     public String createXpathWithInputData(String dataOption) {
         String a = showOutFieldPlansText.getText();
         if (showOutFieldPlansText.getText().contains("Outbound")) {
@@ -308,7 +318,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * This method sets the value for deviceCostIndex
      * @param deviceCostIndex String value of deviceCostIndex
      * @return returs the String value of index
-     * @author praveen.kumar
+     * @author praveen.kumar7
      */
     public String getUpdatedDeviceCostIndex(String deviceCostIndex) {
         if((deviceCostIndex == null) || (deviceCostIndex.isEmpty()) || (Integer.parseInt(deviceCostIndex) > noOfDeviceTiers.size()-1)) {
@@ -352,7 +362,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * This method sets the value for dataOptionIndex for Outbound plans
      * @param dataOptionIndex String value of dataOptionIndex
      * @return returs the String value of index
-     * @author praveen.kumar
+     * @author praveen.kumar7
      */
     public String getupdatedDataOptionIndexForOutbound(String dataOptionIndex) {
         if ((dataOptionIndex == null) || (dataOptionIndex.isEmpty()) || (Integer.parseInt(dataOptionIndex) > noOfOutboundPlans.size() - 1)) {
@@ -366,7 +376,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * This method sets the value for talkOptionIndex
      * @param talkOptionIndex String value of talkOptionIndex
      * @return returs the String value of index
-     * @author praveen.kumar
+     * @author praveen.kumar7
      */
     public String getupdatedTalkOptionIndex(String talkOptionIndex) {
         if ((talkOptionIndex == null) || (talkOptionIndex.isEmpty()) || (Integer.parseInt(talkOptionIndex) > noOfTalkOptions.size()-1)) {
@@ -388,7 +398,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     /**
      * Select Device Cost tier on Plan config page and clicks on continue button
      * @param    deviceCostIndex : String value of Device Cost to be selected
-     * @author praveen.kumar
+     * @author praveen.kumar7
      */
     public void selectDeviceCostAndClickOnContinueButton(String deviceCostIndex) {
         int stepper = 1;
@@ -467,7 +477,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     /**
      * This method selects the individual data option and click on continue
      * @param dataOptionIndex String value of dataOptionIndex
-     * @author praveen.kumar
+     * @author praveen.kumar7
      */
     public void selectNonShareDataAndClkContinue(String dataOptionIndex) {
         if(Integer.parseInt(dataOptionIndex) == 0) {
@@ -995,7 +1005,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     public void enterFirstName() {
         String strFirstName = FormFiller.generateRandomName();
         getReusableActionsInstance().getWhenReady(inputFirstNameDiv, 30).click();
-        getReusableActionsInstance().getWhenReady(inputFirstName, 30).sendKeys(strFirstName);
+        inputFirstName.sendKeys(strFirstName);
     }
 
     /**
@@ -1006,7 +1016,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
         getReusableActionsInstance().waitForElementVisibility(inputLastNameDiv, 5);
         String strLastName = FormFiller.generateRandomName();
         getReusableActionsInstance().getWhenReady(inputLastNameDiv, 30).click();
-        getReusableActionsInstance().getWhenReady(inputLastName, 30).sendKeys(strLastName);
+        inputLastName.sendKeys(strLastName);
     }
 
     /**

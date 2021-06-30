@@ -119,6 +119,11 @@ public class TestDataHandler {
 	public static AccountData solarisConsumerGWPRhp;
 	public static AccountData solarisConsumerGWPRhpShm;
 	public static AccountData solarisHTOMigrationSignIn;
+	public static AccountData TC023_TVPackageDowngrade;
+	public static AccountData TC026_TVPackageUpgrade;
+	public static AccountData TC028_InternetPackageDowngrade;
+	public static AccountData TC032_SAI_AddingSmartStream;
+	public static AccountData TC030_Internet_PackageUpgrade;
 	public static RedesignRpotgData tc01NACTermNpotgSS;
 	public static RedesignRpotgData tc02NACNoTermStandardShipping;
 	public static RedesignRpotgData tc03NACTermPotgShipping;
@@ -490,5 +495,10 @@ public class TestDataHandler {
 		solarisTV = YamlHandler.getOVAccountData("SolarisTV");
 		anonymousData = YamlHandler.getContactData("AnonymousData");
 		migrationData = YamlHandler.getMigrationData("MigrationData");
+		TC023_TVPackageDowngrade= YamlHandler.getOVAccountData("TC_023_TV_PackageDowngrade");
+		TC026_TVPackageUpgrade= YamlHandler.getOVAccountData("TC026_TVPackageUpgrade");
+		TC028_InternetPackageDowngrade= YamlHandler.getOVAccountData("TC_028_Internet_PackageDowngrade");
+		TC032_SAI_AddingSmartStream =YamlHandler.getOVAccountData("TC32_SAI_AddingSmartstream");
+		TC030_Internet_PackageUpgrade =YamlHandler.getOVAccountData("TC_030_Internet_PackageUpgrade");
 	}
 }

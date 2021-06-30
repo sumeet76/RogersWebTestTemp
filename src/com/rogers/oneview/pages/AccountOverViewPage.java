@@ -113,11 +113,18 @@ public class AccountOverViewPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectInternetBadage() {
+		if(getReusableActionsInstance().isElementVisible(delearCodeOneViewDialogue,30)) {
+			getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 50).sendKeys("0MAAA");
+			getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue,30);
+		}
+		if(getReusableActionsInstance().isElementVisible(skipNotification,50))
+		{
+			getReusableActionsInstance().clickWhenReady(skipNotification);
+		}
 		WebElement btn=getReusableActionsInstance().getWhenReady(btnInternetBadge,120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
 		getReusableActionsInstance().clickWhenReady(btnInternetBadge,45);
-
-		}
+	}
 
 	/**
 	 * Selects the Home Phone Badge on the account dashbaord
@@ -137,6 +144,10 @@ public class AccountOverViewPage  extends BasePageClass {
 		if(getReusableActionsInstance().isElementVisible(delearCodeOneViewDialogue,30)) {
 			getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 50).sendKeys("0MAAA");
 			getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue,30);
+		}
+		if(getReusableActionsInstance().isElementVisible(skipNotification,50))
+		{
+			getReusableActionsInstance().clickWhenReady(skipNotification);
 		}
 		WebElement btn=getReusableActionsInstance().getWhenReady(btnTVBadge,90);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
