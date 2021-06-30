@@ -20,12 +20,19 @@ public class OneViewCH_TC_022_TV_PackageDowngradeTest extends BaseTestClass {
 		reporter.reportLogWithScreenshot("Changed TV Package clicked");
 		getTVDashboardPage().clickSelectLowestTVPackage();
 		reporter.reportLogWithScreenshot("Lowest TV Package selected");
-		getTVDashboardPage().clickContinueChangeTVPackage();
-		reporter.reportLogWithScreenshot("Continue clicked on change TV Package");
+
+		//For Flex Channels - Exchange Later
+        getTVDashboardPage().clickContinueChangeTVPackage();
+        reporter.reportLogWithScreenshot("Continue clicked on change TV Package");
+        getTVDashboardPage().clickExchangeLater();
+        reporter.reportLogWithScreenshot("Exchange later is selected");
+
+		getTVDashboardPage().clickContinueChannelsAndThemePacks();
 		getTVDashboardPage().clickContinueOn4kTv();
 		reporter.reportLogWithScreenshot("Continue clicked on 4k TV dailog"); 
 		getTVDashboardPage().clickContinue4kChannelPack();
 		reporter.reportLogWithScreenshot("Continue clicked on 4k channels pack");
+		getTVDashboardPage().clickContinueOnSelectDateChange();
 		reporter.softAssert(getRogersOVOrderReviewPage().verifyMonthlyCharges(),"Monthly Charges Displayed","Failed to Navigate to Monthly Charges Page");
 		getRogersOVOrderReviewPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
@@ -36,7 +43,7 @@ public class OneViewCH_TC_022_TV_PackageDowngradeTest extends BaseTestClass {
 	@Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage,RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.solarisTV.getContactID(), TestDataHandler.solarisTV.accountDetails.getBan(), System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage,RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.TC023_TVPackageDowngrade.getContactID(), TestDataHandler.TC023_TVPackageDowngrade.accountDetails.getBan(), System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
 	}
 
 

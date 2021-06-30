@@ -1,6 +1,7 @@
 package com.rogers.oneview.pages;
 
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -159,6 +160,9 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "(//span[text()='Continuer' or text()='Continue']/ancestor::button)[2]")
 	WebElement btnContinueOn4kChannelPack;
 
+	@FindBy(xpath = "//div[contains(@id,'ds-radio-input-id-1-label-container')]/preceding-sibling::div[contains(@class,'ds-radioButton')]")
+	WebElement btnImmediateBill;
+
 	@FindBy(xpath = "//div[@class='button-set set-end-to-end']//button[@translate='global.cta.submit']")
 	WebElement btnSubmit;
 
@@ -167,6 +171,12 @@ public class TVDashboardPage  extends BasePageClass {
 
 	@FindBy(xpath = "//div[@class='mini-cart-ss']//span[text()='Continuer' or text()='Continue']/ancestor::button[@ng-reflect-disabled='false']")
 	WebElement minicartContinue;
+
+	@FindBy(xpath="//span[contains(text(),'Exchange later') or contains(text(),'Échanger plus tard')]/ancestor::button")
+	WebElement exchangeLater;
+
+	@FindBy(xpath="//span[@ng-reflect-translate='global.cta.continue']/ancestor::button")
+	WebElement continueChannlesAndThemePacks;
 
 	/**
 	 * Clicks submit button for changing the TV package
@@ -187,16 +197,24 @@ public class TVDashboardPage  extends BasePageClass {
 		WebElement btn=getReusableActionsInstance().getWhenReady(btnSelectLowestTvPackage, 60);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
 		getReusableActionsInstance().getWhenReady(btnSelectLowestTvPackage, 60).click();
-		getReusableActionsInstance().waitForElementVisibility(btnContnueReset,120);
 				}
-
+	/*
+	* To Select the TV package based on the inputted package name
+	* @author suganya P
+	* */
+	public void selectTVPackage(String strPackageNameEn, String strPackageNameFr) {
+		getReusableActionsInstance().waitForElementVisibility(btnSelectChannel, 90);
+		By packageNameLocator = By.xpath("//span[contains(text(),'"+strPackageNameEn+"')or contains(text(),'"+strPackageNameFr+"')]/parent::div/following-sibling::div[@class='internet-tile__body']//span[text()='Select'or text()='Sélectionner']/ancestor::button");
+		getReusableActionsInstance().getWhenReady(packageNameLocator, 20);
+			WebElement pkg = getDriver().findElement(packageNameLocator);
+			getReusableActionsInstance().executeJavaScriptClick(pkg);
+		}
 	/**
 	 * Clicks continue on change TV package
 	 * @author chinnarao.vattam
 	 */
 	public void clickContinueChangeTVPackage() {
 		getReusableActionsInstance().getWhenReady(btnContnueReset, 90).click();
-		//getReusableActionsInstance().waitForElementVisibility(minicartContinue,120);
 		}
 	
 	/**
@@ -206,7 +224,6 @@ public class TVDashboardPage  extends BasePageClass {
 	public void clickContinue4kChannelPack() {
 		getReusableActionsInstance().getWhenReady(btnContinueOn4kChannelPack,60).click();
 		getReusableActionsInstance().waitForElementVisibility(btnContinueChangeDate,120);
-		
 		}
 	
 	/**
@@ -216,8 +233,6 @@ public class TVDashboardPage  extends BasePageClass {
 	public void clickContinueOn4kTv() {
 		if(getReusableActionsInstance().isElementVisible(btnContinueOn4kTv,120))
 		getReusableActionsInstance().getWhenReady(btnContinueOn4kTv,60).click();
-		getReusableActionsInstance().waitForElementVisibility(btnContinueOn4kChannelPack,120);
-		
 		}
 	
 	/**
@@ -225,8 +240,8 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clickContinueOnSelectDateChange() {
-		getReusableActionsInstance().getWhenReady(btnContinueChangeDate,60).click();
-		getReusableActionsInstance().waitForElementVisibility(btnSubmit, 120);
+		getReusableActionsInstance().waitForElementVisibility(btnContinueChangeDate,60);
+		getReusableActionsInstance().getWhenReady(btnContinueChangeDate,20).click();
 	   }
 
 	/**
@@ -287,7 +302,6 @@ public class TVDashboardPage  extends BasePageClass {
 		WebElement select=getReusableActionsInstance().getWhenReady(btnChangeTvPackage, 120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,select.getLocation().y-300);
 		getReusableActionsInstance().getWhenReady(btnChangeTvPackage, 120).click();
-		getReusableActionsInstance().waitForElementVisibility(btnSelectChannel, 120);
 		}
 	
 	
@@ -549,6 +563,28 @@ public class TVDashboardPage  extends BasePageClass {
 	public void goToPageMid() {		
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();;
 	}
+	/*
+	*To select immediate billing option
+	* @author suganya.p
+	* */
+	public void clickImmediateBill() {
+		getReusableActionsInstance().getWhenReady(btnImmediateBill,60).click();
+	}
+	/*
+	* To select Exchange later in channel personalisation page
+	* @author suganya p
+	* */
+	public void clickExchangeLater() {
+		getReusableActionsInstance().getWhenReady(exchangeLater,60).click();
 
+	}
+	/*
+	* To click on Continue in Channels and Theme pack page
+	* @author suganya P
+	* */
+	public void clickContinueChannelsAndThemePacks() {
+		getReusableActionsInstance().getWhenReady(continueChannlesAndThemePacks,60).click();
+
+	}
 }
 
