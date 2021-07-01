@@ -89,8 +89,8 @@ public class RogersCH_TC_003_IginteTV_TVChannelsSwapFromAddressmodalTest extends
      reporter.reportLogWithScreenshot("removed the Swap-out Channel three");
      getRogersSolarisChannelsExchangePage().swapChannelIn(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getSwapInChannelThree());
      reporter.reportLogWithScreenshot("Selected the Swap-in Channel three");
-     //getRogersSolarisChannelsExchangePage().clkAddChannelDifferentLogic();
-     //reporter.reportLogWithScreenshot("Added the Swap-in Channel three");
+     getRogersSolarisChannelsExchangePage().clkAddChannelDifferentLogic();
+     reporter.reportLogWithScreenshot("Added the Swap-in Channel three");
      getRogersSolarisChannelsExchangePage().clkConfirmSwap();
      reporter.hardAssert(getRogersSolarisChannelsExchangePage().verifyExchangeSuccess(),"Swap Success","Swap failed");
      reporter.reportLogWithScreenshot("Swap Success popup has launched");

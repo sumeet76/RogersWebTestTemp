@@ -975,9 +975,10 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public boolean clkBillingAddress() {
-		getReusableActionsInstance().waitForElementTobeClickable(billingAddressShipping , 30);
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
+		getReusableActionsInstance().waitForElementTobeClickable(billingAddressShipping , 20);
 		getReusableActionsInstance().scrollToElement(billingAddressShipping);
-		getReusableActionsInstance().clickWhenReady(billingAddressShipping,30);
+		getReusableActionsInstance().clickWhenReady(billingAddressShipping,20);
 		billingAddressShipping.isSelected();
 		return true;
 	}

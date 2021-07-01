@@ -18,7 +18,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		
 	@FindAll({
         @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'TV')]"),
-        @FindBy(xpath = "//span[@class='ds-icon rds-icon-tv']")})
+        @FindBy(xpath = "//span[@class='ds-icon rds-icon-tv' or @class='ds-icon d-inline-flex rds-icon-tv']")})
 	WebElement btnSolaristvBadge;
 	
 	@FindBy(xpath = "//div[@class='col-md-12 loading']")
@@ -231,7 +231,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 */
 	public void clkTVBadgeMobile() {
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
-		getReusableActionsInstance().getWhenReady(btnSolaristvBadge,90).click();
+		getReusableActionsInstance().getWhenReady(btnSolaristvBadge,90);
+		getReusableActionsInstance().executeJavaScriptClick(btnSolaristvBadge);
 	}
 	
 	/**
@@ -338,6 +339,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	public void clkChangeTVPackageLetency() {
 		//NL and FL  Provinces taking long loading time to pull the dashboard details
 		//getReusableActionsInstance().waitForElementInvisibility(loaderTVDashboard,120);
+		getReusableActionsInstance().staticWait(6000);
 		getReusableActionsInstance().staticWait(6000);
 		getReusableActionsInstance().waitForElementVisibility(btnChangeTVPackage,120);
 		//getReusableActionsInstance().executeJavaScriptClick(btnChangeTVPackage);

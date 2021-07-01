@@ -100,9 +100,9 @@ public class RogersBFA_TC14_HUPShareKeepCurrentPlanTermML_Test extends BaseTestC
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows , method);
     }
 
-    @AfterMethod(alwaysRun = true)
+/*    @AfterMethod(alwaysRun = true)
     public void afterTest() {
         closeSession();
-    }
+    }*/
 
 }

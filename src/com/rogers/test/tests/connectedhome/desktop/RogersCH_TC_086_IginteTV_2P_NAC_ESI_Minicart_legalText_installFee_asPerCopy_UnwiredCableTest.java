@@ -115,7 +115,7 @@ public class RogersCH_TC_086_IginteTV_2P_NAC_ESI_Minicart_legalText_installFee_a
        getRogersTechInstallPage().setMobielNumber();
        getRogersTechInstallPage().clkTechInstalConsent();
        reporter.reportLogWithScreenshot("tech install details");
-       getRogersTechInstallPage().clkTechInstallContinueSelf();
+       getRogersTechInstallPage().clkTechInstallContinue();
        
         reporter.hardAssert( getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");

@@ -22,13 +22,16 @@ public class RogersOVOrderConfirmationPage  extends BasePageClass {
 	WebElement lblThankYou;
 
 	@FindAll({
-			@FindBy(xpath = "//h1[contains(@id,'bfa-page-title')]"),
+			@FindBy(xpath = "//h1[contains(@id,'bfa-page-title') and contains(.,'Confirmation')]"),
 			@FindBy(xpath = "//span[@checkout-res='checkout_order_confirmation']")
 	})
 	WebElement lblOrderConfirmation;
 
 	@FindBy(xpath = "//span[(@class='text-bold')]")
 	WebElement BANOrderConfirmation;
+
+	@FindBy(xpath = "//span[contains(text(),'Add a line ')]")
+	WebElement aalButtonOrderConfirmation;
 	
 	/**
 	 * Verify Order is Placed
@@ -72,6 +75,15 @@ public class RogersOVOrderConfirmationPage  extends BasePageClass {
 		} else {
 			return false;
 		}
+	}
+
+	/**
+	 * Clicks 'Add A Line' button
+	 * @author sidhartha.vadrevu
+	 */
+	public void clickAddALineOrderConfirmation() {
+		getReusableActionsInstance().scrollToElement(aalButtonOrderConfirmation);
+		getReusableActionsInstance().executeJavaScriptClick(aalButtonOrderConfirmation);
 	}
 }
 

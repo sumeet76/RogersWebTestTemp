@@ -1,5 +1,6 @@
 package com.rogers.oneview.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -54,6 +55,35 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//a[@href='/consumer/support/internet/IgniteInternet']")
 	WebElement lnkGoToSupportSection;
 
+	@FindBy(xpath="//span[(contains(text(),'Change internet package') or contains(text(),'Changer de forfait Internet')) or @translate='global.dashboard.common.changeInternetPackage']/ancestor::button")
+	WebElement btnChangeInternetPackage;
+
+	@FindBy(xpath = "//span[text()='Sélectionner' or text()='Select']/ancestor::button")
+	WebElement btnSelectPackage;
+
+	@FindBy(xpath="(//span[text()='Sélectionner' or text()='Select']/ancestor::button)[1]")
+	WebElement firstLowestPackage;
+
+	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button")
+	WebElement btnContnueReset;
+
+	@FindBy(xpath = "//p[text()='Select Change Date' or text()='Sélectionner la date du changement' ]/ancestor::div//span[text()='Continue' or text()='Continuer']")
+	WebElement btnContinueChangeDate;
+
+	@FindBy(xpath = "//div[contains(@id,'ds-radio-input-id-1-label-container')]/preceding-sibling::div[contains(@class,'ds-radioButton')]")
+	WebElement btnImmediateBill;
+
+	@FindBy(xpath="//span[contains(text(),'Add SmartStream') or contains(text(),'Ajouter le service Diffusion futée')]/ancestor::button")
+	WebElement btnAddSmartStream;
+
+	@FindBy(xpath="//span[contains(text(),'Select') or contains(text(),'Sélectionner')]/ancestor::button")
+	WebElement btnSmartStreamSelect;
+
+	@FindBy(xpath="//span[contains(text(),'Continue') or contains(text(),'Continuer')]/ancestor::button")
+	WebElement btnContinueAddingStream;
+
+
+
 	/**
 	 * Verify the result
 	 * @return true if link is visible, else false
@@ -83,7 +113,8 @@ public class InternetDashboardPage  extends BasePageClass {
 	public boolean verifyLnkTipsForPlacingEero() {		
 		return getReusableActionsInstance().isElementVisible(lnkTipsForPlacingEero,120);
 	}
-	
+
+
 	/**
 	 * Verify the result
 	 * @return true if link is visible, else false
@@ -193,7 +224,75 @@ public class InternetDashboardPage  extends BasePageClass {
 	public void goToPageMid() {		
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();;
 	}
-	
-	
-}
+    /*
+    * Clicks on change Internet package button
+    * @author suganya P
+    * */
+	public void clickChangeInternetPackage() {
+		WebElement select = getReusableActionsInstance().getWhenReady(btnChangeInternetPackage, 120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, select.getLocation().y - 300);
+		getReusableActionsInstance().getWhenReady(btnChangeInternetPackage, 120).click();
+	}
+    /*
+    * Selects the first lowest internet package
+    * @author suganya P
+    * */
+	public void selectFirstLowestPackage() {
+		WebElement btn = getReusableActionsInstance().getWhenReady(firstLowestPackage, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
+		getReusableActionsInstance().getWhenReady(firstLowestPackage, 60).click();
+	}
+	/*
+	* Clicks continue on change Internet package
+	* @author suganay P
+	* */
+	public void clickContinueChangeInternetPackage() {
+		getReusableActionsInstance().getWhenReady(btnContnueReset, 90).click();
+	}
+    /*
+    * Click on continue in Select billing date pop up
+    * @author suganya P
+    * */
+	public void clickContinueOnSelectDateChange() {
+		getReusableActionsInstance().getWhenReady(btnContinueChangeDate,60).click();
+	}
+	/*Selects the Immediate Billing option
+	* @author suganya p
+	* */
+	public void clickImmediateBill() {
+		getReusableActionsInstance().getWhenReady(btnImmediateBill,60).click();
+	}
+    /*Clicks on add smart stream button
+    * @author suganya p
+    * */
+	public void clickAddSmartStream() {
+		WebElement select=getReusableActionsInstance().getWhenReady(btnAddSmartStream, 120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,select.getLocation().y-300);
+		getReusableActionsInstance().getWhenReady(btnAddSmartStream, 120).click();
+	}
+    /*Choose the first avaialble smart stream package
+    * @author suganya P
+    * */
+	public void clickSelectSmartStream() {
+		WebElement btn=getReusableActionsInstance().getWhenReady(btnSmartStreamSelect, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		getReusableActionsInstance().getWhenReady(btnSmartStreamSelect,60).click(); }
+    /*
+    * clicks continue on the Smart Stream
+    * @author suganya p
+    * */
+	public void clickContinueAddingStream() {
+		getReusableActionsInstance().getWhenReady(btnContinueAddingStream,60).click();
+	}
+	/* Selects the internet package based on the inputted package name
+	* @autho suganya P
+	* */
+	public void selectInternetPackage(String strUpgradePlanEn, String strUpgradePlanFr) {
+		By packageNameLocator = By.xpath("//p[contains(text(),'"+strUpgradePlanEn+"') or contains(text(),'"+strUpgradePlanFr+"')]/ancestor::div[@class='internet-tile__body']//span[contains(text(),'Select')]/ancestor::button");
+		getReusableActionsInstance().getWhenReady(packageNameLocator, 20);
+		WebElement pkg = getDriver().findElement(packageNameLocator);
+		getReusableActionsInstance().executeJavaScriptClick(pkg);
+	}
+
+	}
 

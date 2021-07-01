@@ -46,6 +46,7 @@ public class RogersBFA_TC15_HUPNonShareKeepCurrentPlanSL_Test extends BaseTestCl
                     "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
             getRogersPlanConfigPage().setCheckBoxKeepMyCurrentPlan();
             reporter.reportLogPassWithScreenshot("Checkbox for keep my current plan selected");
+            getRogersPlanConfigPage().clkDownPaymentChkBox();
             getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
             reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
             getRogersPlanConfigPage().clickContinueOnModalToDoWithOldPhone();
@@ -54,7 +55,6 @@ public class RogersBFA_TC15_HUPNonShareKeepCurrentPlanSL_Test extends BaseTestCl
             /*getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
             reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
             getRogersPlanConfigPage().skipBPOOffer();*/
-            getRogersPlanConfigPage().clkDownPaymentChkBox();
             getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
             reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
             getRogersPlanConfigPage().clickCartSummaryContinueButton();
@@ -73,18 +73,19 @@ public class RogersBFA_TC15_HUPNonShareKeepCurrentPlanSL_Test extends BaseTestCl
             getRogersReviewOrderPage().clkFinancingConsentCheckbox();
             getRogersReviewOrderPage().clkAgreementConsentCheckbox();
             getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
+            getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
             reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
-            if(getRogersOrderReviewPage().isPaymentRequired()) {
-                getRogersOrderReviewPage().clkContinue();
-                getRogersPaymentPage().setCreditCardDetails(TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getNumber(),
-                        TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getExpiryMonth(),
-                        TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getExpiryYear(),
-                        TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getCVV());
-                reporter.reportLogWithScreenshot("Rogers Payment Page");
-                getRogersPaymentPage().clkSubmit();
-            } else {
-                getRogersOrderReviewPage().clkSubmitOrder();
-            }
+            getRogersOrderReviewPage().clkSubmitOrder();
+            reporter.reportLogWithScreenshot("Rogers Payment Page");
+            reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),"Payment page displayed successfully","Payment page did not display");
+            getRogersOneTimePaymentPage().setNameonCard();
+            getRogersOneTimePaymentPage().switchToCreditCardIFrame();
+            getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc19AALNoTermStandardShipping.getCcNumberOTP());
+            getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
+            getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc19AALNoTermStandardShipping.getExpiryDateOTP());
+            getRogersOneTimePaymentPage().setCVV();
+            reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
+            getRogersOneTimePaymentPage().clkSubmitOrderBtn();
             reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
             reporter.hardAssert(getRogersOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
             reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");

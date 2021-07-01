@@ -93,17 +93,17 @@ public class RogersBFA_TC09_HUP_PPC_PotgML_Test extends BaseTestClass {
         getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         getRogersReviewOrderPage().clkEmailConsentCheckbox();
-        if(getRogersOrderReviewPage().isPaymentRequired()) {
-            getRogersOrderReviewPage().clkContinue();
-            getRogersPaymentPage().setCreditCardDetails(TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getNumber(),
-                    TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getExpiryMonth(),
-                    TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getExpiryYear(),
-                    TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getCVV());
-            reporter.reportLogWithScreenshot("Rogers Payment Page");
-            getRogersPaymentPage().clkSubmit();
-        } else {
-            getRogersOrderReviewPage().clkSubmitOrder();
-        }
+        getRogersOrderReviewPage().clkSubmitOrder();
+        reporter.reportLogWithScreenshot("Rogers Payment Page");
+        reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),"Payment page displayed successfully","Payment page did not display");
+        getRogersOneTimePaymentPage().setNameonCard();
+        getRogersOneTimePaymentPage().switchToCreditCardIFrame();
+        getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc19AALNoTermStandardShipping.getCcNumberOTP());
+        getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
+        getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc19AALNoTermStandardShipping.getExpiryDateOTP());
+        getRogersOneTimePaymentPage().setCVV();
+        reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
+        getRogersOneTimePaymentPage().clkSubmitOrderBtn();
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
         reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");

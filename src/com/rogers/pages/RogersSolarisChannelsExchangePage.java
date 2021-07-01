@@ -193,7 +193,8 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	 */
 	public void swapChannelIn(String strInChannel) {
 		By imgChannel = By.xpath("//span[contains(text(),'"+ strInChannel+"')]/ancestor::div[@class='channel-chip']//span[@class='ds-icon rds-icon-info-circle ds-color-aqua']");
-			getReusableActionsInstance().getWhenReady(imgChannel, 30).click();
+		getReusableActionsInstance().getWhenReady(imgChannel, 30).click();
+		getReusableActionsInstance().clickIfAvailable(imgChannel, 30);
 	}
 
 	/**
@@ -204,6 +205,7 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	public void swapChannelInMobile(String strInChannel) {
 		By imgChannelIn = By.xpath("//span[contains(text(),'"+ strInChannel+"')]/ancestor::div[@class='channel-chip']//span[@class='ds-icon rds-icon-info-circle ds-color-aqua']");
 		WebElement imgChannel=getDriver().findElement(imgChannelIn);
+		getReusableActionsInstance().getWhenReady(imgChannel, 30);
 		getReusableActionsInstance().executeJavaScriptClick(imgChannel);
 	}
 
@@ -225,6 +227,7 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	public void swapChannelOutMobile(String strOutChannel) {
 		By imgChannelOut = By.xpath("//span[contains(text(),'"+ strOutChannel+"')]/ancestor::div[@class='channel-chip']//span[@class='ds-icon rds-icon-info-circle ds-color-aqua']");
 		WebElement ChannelOut=getDriver().findElement(imgChannelOut);
+		getReusableActionsInstance().getWhenReady(ChannelOut, 30);
 		getReusableActionsInstance().executeJavaScriptClick(ChannelOut );
 	}
 
@@ -301,9 +304,8 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkConfirmSwapMobile() {
-		getReusableActionsInstance().javascriptScrollToTopOfPage();
-		getReusableActionsInstance().getWhenReady(btnOpenConfirmSwap,30).click();
 		getReusableActionsInstance().waitForElementVisibility(btnConfirmSwapMobile,30);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(btnConfirmSwapMobile);
 		getReusableActionsInstance().executeJavaScriptClick(btnConfirmSwapMobile);
 	}
 

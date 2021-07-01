@@ -128,6 +128,7 @@ public class BaseTestClass {
     protected static final ThreadLocal<RogersPaymentPage> RogersPaymentPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersChoosePlanPage> RogersChoosePlanPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<EnvironmentSelectionPage> EnvironmentSelectionPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<NacDashboardPage> NacDashboardPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<AccountOverViewPage> AccountOverViewPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<TVDashboardPage> TVDashboardPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<InternetDashboardPage> InternetDashboardPageThreadLocal = new ThreadLocal<>();
@@ -167,6 +168,7 @@ public class BaseTestClass {
     protected static final ThreadLocal<RogersOneTimePaymentPage> RogersOneTimePaymentPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersHomePageServiceability> RogersHomePageServiceabilityThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersSecurityPackagesPage> RogersSecurityPackagesPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<RogersOVInstallationPage> RogersOVInstallationPageThreadLocal = new ThreadLocal<>();
 
     public static RogersPSEFPage getRogersPSEFPage() {
         return RogersPSEFPageThreadLocal.get();
@@ -179,6 +181,10 @@ public class BaseTestClass {
     private CaptchaBypassHandlers captcha_bypass_handlers;
     private Map<String, String> sauceParameters;
     private Map<String, String> RunParameters;
+
+    public static RogersOVInstallationPage getRogersOVInstallationPage() {
+        return RogersOVInstallationPageThreadLocal.get();
+    }
 
 
     private static final ThreadLocal<RogersFinanceAccessoriesPage> RogersFinanceAccessoriesPagePageThreadLocal = new ThreadLocal<>();
@@ -449,6 +455,10 @@ public class BaseTestClass {
 
     public static EnvironmentSelectionPage getEnvironmentSelectionPage() {
         return EnvironmentSelectionPageThreadLocal.get();
+    }
+
+    public static NacDashboardPage getNacDashboardPage() {
+        return NacDashboardPageThreadLocal.get();
     }
 
     public static AccountOverViewPage getAccountOverViewPage() {
@@ -835,6 +845,33 @@ public class BaseTestClass {
     }
 
     /**
+     * To start a session using given url, browser, language and test case group name.
+     *
+     * @param strUrl                string of test url
+     * @param strBrowser            string of browser name
+     * @param strLanguage           string of language to use
+     * @param strGroupName          string of group name of the test case
+     * @param currentTestMethodName
+     * @throws ClientProtocolException org.apache.http.client.ClientProtocolException, Signals an error in the HTTP protocol.
+     * @throws IOException             java.io.IOException, Signals that an I/O exception of some sort has occurred, produced by failed or interrupted I/O operations.
+     */
+    public void startOVNACSession(String strUrl, String strBrowser, String strLanguage, String strGroupName, String strContactID, String strLoginID, String strLanID, Method currentTestMethodName) throws ClientProtocolException, IOException {
+        RunParameters = getExecutionParameters(strBrowser, strLanguage);
+        String browser = RunParameters.get("Browser").toLowerCase();
+        String language = RunParameters.get("Language").toLowerCase();
+        if (browser.contains("sauce")) {
+            sauceParameters = initializeSauceParamsMap(browser);
+        }
+        webDriverThreadLocal.set(browserdriver.driverInit(browser, sauceParameters, currentTestMethodName, strGroupName));
+        System.out.println(strUrl + "----------------------------------------------------------------------------");
+        captcha_bypass_handlers = new CaptchaBypassHandlers(getDriver());
+        captcha_bypass_handlers.chOnewviewNACFlows(strUrl, strLoginID, strLanID, language, browser, currentTestMethodName, strContactID);
+        setImplicitWait(getDriver(), 10);
+        init(strGroupName);
+    }
+
+
+    /**
      * To initiate the page objects based on test case group, will read group name from xml file.
      *
      * @param strGroupName string of group name.
@@ -1052,6 +1089,7 @@ public class BaseTestClass {
                 RogersOVChannelsAndThemePacksPageThreadLocal.set(new RogersOVChannelsAndThemePacksPage(getDriver()));
                 HomePhoneAddonsPageThreadLocal.set(new HomePhoneAddonsPage(getDriver()));
                 RogersInternetUsageOVPageThreadLocal.set(new RogersInternetUsageOVPage(getDriver()));
+                RogersOVInstallationPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVInstallationPage(getDriver()));
 
                 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
                 RogersOVOrderReviewPageThreadLocal.set(new RogersOVOrderReviewPage(getDriver()));
@@ -1081,6 +1119,7 @@ public class BaseTestClass {
             case "buyflowsoneview":
 
                 EnvironmentSelectionPageThreadLocal.set(new EnvironmentSelectionPage(getDriver()));
+                NacDashboardPageThreadLocal.set(new NacDashboardPage(getDriver()));
                 AccountOverViewPageThreadLocal.set(new AccountOverViewPage(getDriver()));
                 RogersOVOrderConfirmationPageThreadLocal.set(new RogersOVOrderConfirmationPage(getDriver()));
                 RogersOVOrderReviewPageThreadLocal.set(new RogersOVOrderReviewPage(getDriver()));
@@ -1096,7 +1135,7 @@ public class BaseTestClass {
                 RogersOVCheckoutPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVCheckoutPage(getDriver()));
                 RogersOVReviewOrderPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVReviewOrderPage(getDriver()));
                 RogersOVOneTimePaymentPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVOneTimePaymentPage(getDriver()));
-                break;
+               break;
 
 
             case "serviceability":

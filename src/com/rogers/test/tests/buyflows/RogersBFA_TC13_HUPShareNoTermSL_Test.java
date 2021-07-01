@@ -26,7 +26,7 @@ public class RogersBFA_TC13_HUPShareNoTermSL_Test extends BaseTestClass{
             reporter.reportLogWithScreenshot("Login Page");
             getRogersLoginPage().clkSignInIFrame();
             reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
-            getRogersLoginPage().clkSkipIFrame();
+            //getRogersLoginPage().clkSkipIFrame();
             getRogersLoginPage().switchOutOfSignInIFrame();
             reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
             reporter.reportLogWithScreenshot("Account Overview page");

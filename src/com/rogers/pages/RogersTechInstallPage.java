@@ -143,10 +143,14 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath ="//h2[@translate='global.checkout.fulfillment.title']")
 	WebElement txtTechInstalpage;
 
-	@FindBy(xpath ="//div[@class='row ng-star-inserted']//h3")
+	@FindAll({
+	@FindBy(xpath ="//div[@class='col-md-8 col-sm-8']//h3"),
+	@FindBy(xpath ="//div[@class='row ng-star-inserted']//h3")})
 	WebElement txtIgniteExpressSetup;
 
-	@FindBy(xpath ="//div[@class='row ng-star-inserted']//div[@class='ds-price__amountDollars text-semi ng-star-inserted']")
+	@FindAll({
+	@FindBy(xpath ="//div[@class='row -mb40 ng-star-inserted']//div[@class='ds-price__amountDollars text-semi ng-star-inserted']"),
+	@FindBy(xpath ="//div[@class='row ng-star-inserted']//div[@class='ds-price__amountDollars text-semi ng-star-inserted']")})
 	WebElement txtIgniteExpressSetupCost;
 
 	@FindBy(xpath ="(//input[@format='MM/DD/YYYY']/ancestor::ds-form-field/div/div)[1]")

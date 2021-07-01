@@ -48,7 +48,10 @@ public class AccountOverViewPage  extends BasePageClass {
 	@FindBy(xpath = "//div[@class='oneview-dialog']//button")
 	WebElement btnOkOneViewDialogue;
 
-	@FindBy(xpath = "//input[@class='hup-input']")
+	@FindAll({
+			@FindBy(xpath = "//input[@class='hup-input']"),
+			@FindBy(xpath = "//input[@name='dealerCode']")
+	})
 	WebElement delearCodeOneViewDialogue;
 
 	@FindBy(xpath = "//button[@class='hup-button red']")
@@ -65,7 +68,18 @@ public class AccountOverViewPage  extends BasePageClass {
 	 * @author sidhartha.vadrevu
 	 */
 	public void setSkipNotification() {
-		getReusableActionsInstance().clickIfAvailable(skipNotification, 50);
+		getReusableActionsInstance().clickIfAvailable(skipNotification, 30);
+	}
+
+	/**
+	 * This method clicks on wireless link to add a new wireless line
+	 * @author praveen.kumar7
+	 */
+	public void clkWirelessLink() {
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().staticWait(2000);
+		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(By.xpath("//t[contains(.,'Wireless') or contains(.,'Sans-fil')]/ancestor::a[contains(@class,'nac-link')]"),20));
+
 	}
 
 	/**
@@ -73,7 +87,9 @@ public class AccountOverViewPage  extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void enterDealerCodeDialogue() {
-		getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 50).sendKeys("0MAAA");
+		if (getReusableActionsInstance().isElementVisible(delearCodeOneViewDialogue)) {
+			getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 50).sendKeys("0MAAA");
+		}
 	}
 
 	/**
@@ -97,11 +113,18 @@ public class AccountOverViewPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectInternetBadage() {
+		if(getReusableActionsInstance().isElementVisible(delearCodeOneViewDialogue,30)) {
+			getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 50).sendKeys("0MAAA");
+			getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue,30);
+		}
+		if(getReusableActionsInstance().isElementVisible(skipNotification,50))
+		{
+			getReusableActionsInstance().clickWhenReady(skipNotification);
+		}
 		WebElement btn=getReusableActionsInstance().getWhenReady(btnInternetBadge,120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
 		getReusableActionsInstance().clickWhenReady(btnInternetBadge,45);
-
-		}
+	}
 
 	/**
 	 * Selects the Home Phone Badge on the account dashbaord
@@ -121,6 +144,10 @@ public class AccountOverViewPage  extends BasePageClass {
 		if(getReusableActionsInstance().isElementVisible(delearCodeOneViewDialogue,30)) {
 			getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 50).sendKeys("0MAAA");
 			getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue,30);
+		}
+		if(getReusableActionsInstance().isElementVisible(skipNotification,50))
+		{
+			getReusableActionsInstance().clickWhenReady(skipNotification);
 		}
 		WebElement btn=getReusableActionsInstance().getWhenReady(btnTVBadge,90);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);

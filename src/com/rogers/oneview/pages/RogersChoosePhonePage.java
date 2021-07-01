@@ -61,6 +61,9 @@ public class RogersChoosePhonePage extends BasePageClass {
 	
 	@FindBy(xpath = "//span[text()='$0' or text()='0']/ancestor::section[@class='phoneModel']//div[@res='_add']")
 	List<WebElement> btnZeroUpfrontDeviceAdd;
+
+	@FindBy(xpath = "//h3[contains(text(),'Bring') or contains(text(),'Apportez')]/parent::div[contains(@class,'dsa-tile-teaser')]//span[contains(@class,'ds-button__copy')]")
+	WebElement btnBringYourOwnDeviceViewDetails;
 	
 	@FindBy(xpath = "//div[@class='choose-ctn-modal']")
 	WebElement lblChooseALine;
@@ -115,7 +118,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	@FindBy(xpath = "//th[contains(text(),' Risk level ')]//following-sibling::td")
 	WebElement riskLevel;
 
-	@FindBy(xpath = "//span[contains(text(),' Accept and Continue ')]")
+	@FindBy(xpath = "//span[contains(text(),'Accept') or contains(text(),'accepte')]")
 	WebElement acceptAndContinueOnCreditEvalModal;
 
 	@FindBy(xpath = "//ds-modal[contains(@data-test,'sharedNonShared')]/ancestor::ds-modal-container")
@@ -292,9 +295,9 @@ public class RogersChoosePhonePage extends BasePageClass {
 		String risk = riskLevel.getText();
 		if (securityDeposit <= 0 && clm <=0 && risk.equalsIgnoreCase("Low")) {
 			customerType = "Low Risk";
-		} else if(securityDeposit == 500 && (clm >0 && clm<450) && risk.equalsIgnoreCase("Medium")) {
+		} else if(securityDeposit == 300 && (clm >0 && clm<450) && risk.equalsIgnoreCase("Medium")) {
 			customerType = "Medium Risk";
-		} else if(securityDeposit == 300 && clm >= 450 && risk.equalsIgnoreCase("High")) {
+		} else if(securityDeposit == 500 && clm >= 450 && risk.equalsIgnoreCase("High")) {
 			customerType = "High Risk";
 		}
 		System.out.println(customerType);
@@ -308,7 +311,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 */
 	public boolean validateCustomerType() {
 		checkCustomerType();
-		String customer = TestDataHandler.buyFlowsOVtestCase08.getCustomerRiskLevel();
+		String customer = TestDataHandler.buyFlowsOVtestCase18.getCustomerRiskLevel();
 		if (customer!=null && !customer.isEmpty() && customerType.matches(customer)) {
 			return true;
 		} else {
@@ -388,7 +391,23 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 * @author saurav.goyal
 	 */
 	public void clickDeviceTileCTAButton(String deviceName) {
-		getReusableActionsInstance().clickWhenVisible(By.xpath(createXpathForCTAButton(deviceName)), 30);
+		if (deviceName.equalsIgnoreCase("Bring Your Own Device")) {
+			getReusableActionsInstance().javascriptScrollToTopOfPage();
+			getReusableActionsInstance().clickWhenVisible(btnBringYourOwnDeviceViewDetails, 20);
+		} else {
+			getReusableActionsInstance().scrollToElement(getReusableActionsInstance().getWhenReady(By.xpath(createXpathForCTAButton(deviceName))));
+			getReusableActionsInstance().clickWhenVisible(By.xpath(createXpathForCTAButton(deviceName)), 30);
+		}
+	}
+
+	/**
+	 * This method Clicks on a continue button in tablet sharing option popup
+	 * @param deviceName : name of the Device to be used to generate Xpath
+	 * @author praveen.kumar7
+	 */
+	public void clkContinueBtnOnTabletShareOnlyModal(String deviceName) {
+		getReusableActionsInstance().clickIfAvailable(By.xpath("//button[@title='Continue']"),10);
+		getReusableActionsInstance().clickIfAvailable(By.xpath(createXpathForCTAButton(deviceName)), 30);
 	}
 
 	/**
@@ -398,7 +417,65 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 * @author saurav.goyal
 	 */
 	public boolean verifyDeviceTileCTAButton(String deviceName) {
-		return getReusableActionsInstance().isElementVisible(By.xpath(createXpathForCTAButton(deviceName)), 60);
+		if (deviceName.equalsIgnoreCase("Bring Your Own Device")) {
+			return getReusableActionsInstance().isElementVisible(btnBringYourOwnDeviceViewDetails,20);
+		} else {
+			return getReusableActionsInstance().isElementVisible(By.xpath(createXpathForCTAButton(deviceName)), 60);
+		}
+	}
+
+	/**
+	 * This method creates a xpath for the device color based on the string passed
+	 * @param colorOfDevice : color of the device to be selected
+	 * @return a string format of xpath
+	 * @author praveen.kumar7
+	 */
+	public String createXpathWithDeviceColor(String colorOfDevice) {
+		List<WebElement> allDeviceSkus = getDriver().findElements(By.xpath("//label[contains(@class,'position-relative -color')]//input"));
+		boolean isSkuColorExist = isSkuValid(allDeviceSkus,colorOfDevice);
+		if((colorOfDevice == null) || (colorOfDevice.isEmpty()) || !(isSkuColorExist)) {
+			WebElement element = allDeviceSkus.get(0);
+			String firstSkuColor = element.getAttribute("value");
+			return "//label[contains(@class,'position-relative -color')]//input[@value='"+firstSkuColor+"']/following::span[1]";
+		}
+		else return "//label[contains(@class,'position-relative -color')]//input[@value='"+colorOfDevice+"']/following::span[1]";
+	}
+
+	/**
+	 * This method checks if
+	 * @param colorOfDevice : color of the device
+	 * @param allDeviceSkus List of all device SKUs
+	 * @return boolean true if device color is present in device config page else false
+	 * @author praveen.kumar7
+	 */
+	public boolean isSkuValid(List<WebElement> allDeviceSkus, String colorOfDevice) {
+		for(WebElement deviceSku : allDeviceSkus) {
+			if((deviceSku.getAttribute("value").equals(colorOfDevice)))
+				return true;
+		}
+		return false;
+	}
+
+	/**
+	 * This method will select a device color on device config page
+	 * @param deviceColor : color of the device which we needs to be selected
+	 * @author praveen.kumar7
+	 */
+	public void selectDeviceColor(String deviceColor){
+		String xPathOfSkuToBeSelected = createXpathWithDeviceColor(deviceColor);
+		getReusableActionsInstance().clickWhenVisible(By.xpath(xPathOfSkuToBeSelected),30);
+	}
+
+	/**
+	 * This method will get the NOTERM cost of the device
+	 * @return full price of the device
+	 * @author praveen.kumar7
+	 */
+	public String getDeviceFullPriceFrench() {
+		String deviceFullPrice =  getReusableActionsInstance().getWhenReady(By.xpath("(//div[contains(@data-test,'device-config')]//p)[2]")).getText().trim();
+		String fullPrice[] =  deviceFullPrice.split("\\$");
+		String price = fullPrice[0].trim();
+		return price;
 	}
 
 	/**

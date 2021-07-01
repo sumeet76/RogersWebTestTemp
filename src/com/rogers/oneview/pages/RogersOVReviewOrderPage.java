@@ -75,6 +75,9 @@ public class RogersOVReviewOrderPage extends BasePageClass {
     @FindBy(xpath ="//button[@title='Submit order - test1' or @title='Soumettre la commande']")
     WebElement submitOrderBtn;
 
+    @FindBy(xpath = "(//div[contains(@class,'dsa-orderTable__totalRow')])[2]//div[contains(@class,'ds-price__amountDollars')]")
+    WebElement oneTimeFeeAmt;
+
 
 
     /**
@@ -231,6 +234,19 @@ public class RogersOVReviewOrderPage extends BasePageClass {
      */
     public void clkPointsToMentionCheckbox() {
         getReusableActionsInstance().clickWhenReady(pointsToMentionCheck,2);
+    }
+
+    /**
+     * This method checks if one time payment is required or not
+     * @return true if One time fees is not equal to 0, else false
+     * @author Praveen.Kumar7
+     */
+    public boolean verifyPaymentRequired() {
+        String oneTimeFee = oneTimeFeeAmt.getText();
+        if(!oneTimeFee.equals("0")) {
+            return true;
+        }
+        return false;
     }
 
     /**
