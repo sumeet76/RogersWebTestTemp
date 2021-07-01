@@ -28,7 +28,7 @@ public class RogersSS_TC_125_Rogers_Desktop_Edge_FR_Validate_Rogers_UserWithBYOD
 		closeSession();
 	}
 	
-	@Test(groups = {"CAMShiled"})
+	@Test(groups = {"CAMShiled","RegressionSS"})
 	public void Validate_Rogers_UserWithBYODDevice_ON() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc125.getUsername();

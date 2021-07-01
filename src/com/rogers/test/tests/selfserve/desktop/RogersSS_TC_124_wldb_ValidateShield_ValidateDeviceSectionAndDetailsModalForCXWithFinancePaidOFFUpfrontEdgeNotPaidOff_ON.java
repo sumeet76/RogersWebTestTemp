@@ -26,7 +26,7 @@ public class RogersSS_TC_124_wldb_ValidateShield_ValidateDeviceSectionAndDetails
 	}
 	
 	
-    @Test(groups = {"CAMShiled"})
+    @Test(groups = {"CAMShiled","RegressionSS"})
     public void validateDeviceSectionOnWirelessDashboardPage() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc124.getUsername();

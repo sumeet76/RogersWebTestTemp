@@ -28,7 +28,7 @@ public class RogersSS_TC_123_ValidateRogersDeviceCardOnWirelessPostpaidDashboard
 		closeSession();
 	}
 	
-	@Test(groups = {"CAMShiled"})
+	@Test(groups = {"CAMShiled","RegressionSS"})
 	public void validateRogersDeviceCardOnWirelessPostpaidDashboardUserWithDeviceSubsidy_BC() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc123.getUsername();
