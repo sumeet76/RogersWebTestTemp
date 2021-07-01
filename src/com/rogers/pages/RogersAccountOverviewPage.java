@@ -377,7 +377,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//a//span[contains(@class,'ds-button__copy') and (contains(text(),'Manage') or contains(text(),'Gérer'))]")
 	WebElement btnSubscriptionManage;
 
-	@FindBy(xpath = "//rss-value-prop-wrapper[@aria-label='Manage your Disney+ subscription' or @aria-label='Gérer l’abonnement Disney+']//a//span[contains(@class,'ds-button__copy') and (contains(text(),'Manage') or contains(text(),'Gérer'))]")
+	@FindAll({
+			@FindBy(xpath = "//rss-value-prop-wrapper[@aria-label='Manage your Disney+ subscription' or @aria-label='Gérer l’abonnement Disney+']//a//span[contains(@class,'ds-button__copy') and (contains(text(),'Manage') or contains(text(),'Gérer'))]"),
+			@FindBy(xpath = "//rss-value-prop-wrapper//a[@aria-label='Manage your Disney+ subscription' or @aria-label='Gérer l’abonnement Disney+']//span[contains(@class,'ds-button__copy') and (contains(text(),'Manage') or contains(text(),'Gérer'))]")
+	})
 	WebElement btnDPSubscriptionManage;
 
 	@FindBy(xpath = "//rss-value-prop-wrapper[@title='Start your Disney+ subscription' or @title='Commencer l’abonnement Disney+']//span[contains(text(),'Sign up') or contains(text(),'S’inscrire')]")
