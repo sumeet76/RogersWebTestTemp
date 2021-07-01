@@ -28,7 +28,7 @@ public class RogersSS_TC_129_ValidateDeviceSectionAndDeviceDetailsModalForCXWith
 		closeSession();
 	}
 	
-	@Test(groups = {"CAMShiled"})
+	@Test(groups = {"CAMShiled","RegressionSS"})
 	public void validateRogersDeviceSectionAndDeviceDetailsModalForCXWithSubsidyPaidOFF() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc129.getUsername();
