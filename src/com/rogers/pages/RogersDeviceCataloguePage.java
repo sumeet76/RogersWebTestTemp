@@ -128,7 +128,11 @@ public class RogersDeviceCataloguePage extends BasePageClass {
             @FindBy(xpath = "//div[@class='rcl-navbar-nav']//a[@class='m-navLink -navbar -login']//span[text()='Sign in'  or text()='Connexion']")
     })
     WebElement lnkSignIn;
-
+    
+    @FindBy(xpath = "//span[contains(@class,'m-navLink__chevron')]/parent::a[@role='button']")
+    WebElement provinceDropDown;
+    
+    
     /**
      * To verify the Home page
      * @return true if the signin link is available on home page, else false
@@ -765,7 +769,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void setProvince(String province) {
-        getReusableActionsInstance().clickWhenReady(By.xpath("//span[contains(@class,'m-navLink__chevron')]/parent::a[@role='button']"),10);
+        getReusableActionsInstance().clickWhenReady(provinceDropDown, 10);
         getReusableActionsInstance().clickWhenReady(By.xpath("//span[contains(@class,'m-navLink__chevron')]/parent::a[@role='button']/following-sibling::ul//a[@title='"+province+"']"),10);
     }
 }
