@@ -53,7 +53,8 @@ public class RogersBFA_TC13_HUPShareNoTermSL_Test extends BaseTestClass{
             getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
             reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
             getRogersPlanConfigPage().clickContinueOnModalToDoWithOldPhone();
-            getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
+            getRogersPlanConfigPage().clickShowMoreDetails();
+            getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc04NACTermBopis.getDataOptionIndex()));
             reporter.reportLogPassWithScreenshot("Plan config page data option selected");
             getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
             reporter.reportLogPassWithScreenshot("Plan config page talk option selected");

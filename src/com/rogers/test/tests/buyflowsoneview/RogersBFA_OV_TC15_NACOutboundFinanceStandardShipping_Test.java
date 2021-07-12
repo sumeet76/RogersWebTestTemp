@@ -33,6 +33,7 @@ public class RogersBFA_OV_TC15_NACOutboundFinanceStandardShipping_Test extends B
 		reporter.reportLogWithScreenshot("Active Wireless Service Modal");
 		//getAccountOverViewPage().enterDealerCodeDialogue();
 		//getAccountOverViewPage().clkSubmitBtnDealerCodeDialogue();
+		getNacDashboardPage().setDelearCode();
 		getNacDashboardPage().fillShippingAddressField(TestDataHandler.buyFlowsOVtestCase15.getShippingAddress());
 		getNacDashboardPage().fillApartmentField(TestDataHandler.buyFlowsOVtestCase15.getApartment());
 		//reporter.hardAssert(getNacDashboardPage().verifyPOTGAddressEligibility(), "Address is Eligible for POTG", "Address is not Eligible for POTG");
@@ -150,7 +151,7 @@ public class RogersBFA_OV_TC15_NACOutboundFinanceStandardShipping_Test extends B
 		}*/
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
 		//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyBANOrderConfirmationPage(), "BAN displayed is the same as the given BAN", "BAN displayed isn't the same as the given BAN");
+		//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyBANOrderConfirmationPage(), "BAN displayed is the same as the given BAN", "BAN displayed isn't the same as the given BAN");
 		reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");
 	}
 

@@ -42,10 +42,10 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(),'Continue')]/ancestor::button[contains(@data-test,'shared-nonshared-continue')]")
     WebElement modalContinueButton;
 
-    @FindBy(xpath = "//div[contains(@class,'dsa-tile-teaser')]//h3[contains(text(),'Bring') or contains(text(),'Apportez')]")
+    @FindBy(xpath = "//div[contains(@class,'dsa-tile-teaser')]//p[contains(text(),'Bring') or contains(text(),'Apportez')]")
     WebElement byodDeviceTile;
 
-    @FindBy(xpath = "//h3[contains(text(),'Bring') or contains(text(),'Apportez')]/parent::div[contains(@class,'dsa-tile-teaser')]//span[contains(@class,'ds-button__copy')]")
+    @FindBy(xpath = "//p[contains(text(),'Bring') or contains(text(),'Apportez')]/parent::div[contains(@class,'dsa-tile-teaser')]//a")
     WebElement byodTileContinueButton;
 
     @FindBy(xpath = "//span[contains(text(),'postal')]/ancestor::span[contains(@class,'ds-button__copy text-button text')]")
@@ -128,7 +128,11 @@ public class RogersDeviceCataloguePage extends BasePageClass {
             @FindBy(xpath = "//div[@class='rcl-navbar-nav']//a[@class='m-navLink -navbar -login']//span[text()='Sign in'  or text()='Connexion']")
     })
     WebElement lnkSignIn;
-
+    
+    @FindBy(xpath = "//span[contains(@class,'m-navLink__chevron')]/parent::a[@role='button']")
+    WebElement provinceDropDown;
+    
+    
     /**
      * To verify the Home page
      * @return true if the signin link is available on home page, else false
@@ -757,5 +761,15 @@ public class RogersDeviceCataloguePage extends BasePageClass {
         xpathDeviceName=createXpathWithDeviceName(deviceName);
         String deviceTileRpotgLabelXpath = xpathDeviceName + "/../../..//span[@variant='custom']";
         return getReusableActionsInstance().getWhenReady(By.xpath(deviceTileRpotgLabelXpath),20).getText();
+    }
+
+    /**
+     * This method will select the province based on the input
+     * @param province
+     * @author praveen.kumar7
+     */
+    public void setProvince(String province) {
+        getReusableActionsInstance().clickWhenReady(provinceDropDown, 10);
+        getReusableActionsInstance().clickWhenReady(By.xpath("//span[contains(@class,'m-navLink__chevron')]/parent::a[@role='button']/following-sibling::ul//a[@title='"+province+"']"),10);
     }
 }

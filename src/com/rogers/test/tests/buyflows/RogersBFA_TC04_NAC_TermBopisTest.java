@@ -23,7 +23,7 @@ public class RogersBFA_TC04_NAC_TermBopisTest extends BaseTestClass {
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-	@Test(groups = {"RegressionBFA","NACBFAA","SanityBFA"})
+	@Test(groups = {"RegressionBFA","NACBFA","SanityBFA"})
 	public void rogersNACTermBopisTest() throws InterruptedException {
 
 		// **************************Device catalog page*****************************************
@@ -45,6 +45,7 @@ public class RogersBFA_TC04_NAC_TermBopisTest extends BaseTestClass {
 		String postalCode = getRogersDeviceCataloguePage().verifyeligiblePostalCodeinBanner();
 		reporter.hardAssert(postalCode.contains(TestDataHandler.tc04NACTermBopis.getPostalCode()),
 				"RPOTG Banner has the eligible postal code displayed", "RPOTG Banner not displayed in banner");*/
+		getRogersDeviceCataloguePage().setProvince("Ontario");
 		reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		String deviceName = TestDataHandler.tc04NACTermBopis.getDeviceName();
 		getRogersDeviceCataloguePage().clickDeviceTileCTAButton(deviceName);
@@ -103,8 +104,9 @@ public class RogersBFA_TC04_NAC_TermBopisTest extends BaseTestClass {
 				"BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
 		//reporter.hardAssert(getRogersPlanConfigPage().verifyDefaultPrice(fullPriceValueCataloguePage),"Default  price is same as it is shown in device catalogue & Config page page","Default price is not same as it is shown in device catalogue page");
 		getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
-		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
-		getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
+		reporter.reportLogPassWithScreenshot("Device cost option selected");
+		getRogersPlanConfigPage().clickShowMoreDetails();
+		getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc04NACTermBopis.getDataOptionIndex()));
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
 		getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data protection selected");

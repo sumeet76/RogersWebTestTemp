@@ -62,7 +62,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	@FindBy(xpath = "//span[text()='$0' or text()='0']/ancestor::section[@class='phoneModel']//div[@res='_add']")
 	List<WebElement> btnZeroUpfrontDeviceAdd;
 
-	@FindBy(xpath = "//h3[contains(text(),'Bring') or contains(text(),'Apportez')]/parent::div[contains(@class,'dsa-tile-teaser')]//span[contains(@class,'ds-button__copy')]")
+	@FindBy(xpath = "//p[contains(text(),'Bring') or contains(text(),'Apportez')]/parent::div[contains(@class,'dsa-tile-teaser')]//span[contains(@class,'ds-button__copy')]")
 	WebElement btnBringYourOwnDeviceViewDetails;
 	
 	@FindBy(xpath = "//div[@class='choose-ctn-modal']")
