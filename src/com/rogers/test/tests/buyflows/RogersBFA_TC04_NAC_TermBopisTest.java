@@ -45,6 +45,7 @@ public class RogersBFA_TC04_NAC_TermBopisTest extends BaseTestClass {
 		String postalCode = getRogersDeviceCataloguePage().verifyeligiblePostalCodeinBanner();
 		reporter.hardAssert(postalCode.contains(TestDataHandler.tc04NACTermBopis.getPostalCode()),
 				"RPOTG Banner has the eligible postal code displayed", "RPOTG Banner not displayed in banner");*/
+		getRogersDeviceCataloguePage().setProvince("Ontario");
 		reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		String deviceName = TestDataHandler.tc04NACTermBopis.getDeviceName();
 		getRogersDeviceCataloguePage().clickDeviceTileCTAButton(deviceName);

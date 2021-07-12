@@ -758,4 +758,14 @@ public class RogersDeviceCataloguePage extends BasePageClass {
         String deviceTileRpotgLabelXpath = xpathDeviceName + "/../../..//span[@variant='custom']";
         return getReusableActionsInstance().getWhenReady(By.xpath(deviceTileRpotgLabelXpath),20).getText();
     }
+
+    /**
+     * This method will select the province based on the input
+     * @param province
+     * @author praveen.kumar7
+     */
+    public void setProvince(String province) {
+        getReusableActionsInstance().clickWhenReady(By.xpath("//span[contains(@class,'m-navLink__chevron')]/parent::a[@role='button']"),10);
+        getReusableActionsInstance().clickWhenReady(By.xpath("//span[contains(@class,'m-navLink__chevron')]/parent::a[@role='button']/following-sibling::ul//a[@title='"+province+"']"),10);
+    }
 }
