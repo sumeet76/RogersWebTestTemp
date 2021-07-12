@@ -22,6 +22,7 @@ public class RedesignRpotgData {
 	private String paymentMethod;
 	private String creditCardDetailsOTP;
 	private String depositAmount;
+	private String dataOptionIndex;
 
 	public String getCreditCardDetailsOTP() {
 		return creditCardDetailsOTP;
@@ -190,6 +191,14 @@ public class RedesignRpotgData {
 	public String getDepositAmount() { return depositAmount; }
 
 	public void setDepositAmount(String depositAmount) { this.depositAmount = depositAmount; }
+
+	public String getDataOptionIndex() {
+		return dataOptionIndex;
+	}
+
+	public void setdataOptionIndex(String dataOptionIndex) {
+		this.dataOptionIndex = dataOptionIndex;
+	}
     
 	
 }

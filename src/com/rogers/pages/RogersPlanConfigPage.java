@@ -26,7 +26,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "(//div[contains(@id,'ds-radio-input-id')])[1]")
     WebElement financingRadioBtn;
 
-    @FindBy(xpath = "//button[contains(@class,'ds-button ds-corners')]//span[contains(text(),' Show More') or contains(text(),' Afficher les ')]")
+    @FindBy(xpath = "//button[@data-test='stepper-2-edit-step-continue-button']/preceding-sibling::button")
     WebElement showMoreDetails;
 
     @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-1-edit-step-selection-option-')]//label[1]")

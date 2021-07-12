@@ -9,6 +9,7 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.Map;
 
 /**
  * TC01 - Regression - [RNAC TERM] - Perform Rogers Net New Activation - TERM with Standard Shipping(Finance plan with Non POTG)_E2E
@@ -45,7 +46,7 @@ public class RogersBFA_TC01_NAC_TermNpotgSS_HighRisk_Test extends BaseTestClass 
         reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
         getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page data protection selected");
-        getRogersPlanConfigPage().clickOptionInDataProtection(deviceName);
+        //getRogersPlanConfigPage().clickOptionInDataProtection(deviceName);
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
         String monthlyFeesAmount = getRogersPlanConfigPage().getMonthlyFeesAmount();
@@ -179,7 +180,14 @@ public class RogersBFA_TC01_NAC_TermNpotgSS_HighRisk_Test extends BaseTestClass 
                 "Security deposit amount is displayed correctly in one time fees section","Security deposit amount is not displayed correctly in one time fees section");
         String purchaseIncludesConfrimation=getRogersNACOrderConfirmationPage().getPurchaseIncludesText();
         reporter.reportLogPassWithScreenshot("Purchase includes captured as" + "-->" +purchaseIncludesConfrimation);*/
-  }
+
+        /*Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
+                .executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from billing_account where BAN='" + ban + "'", false);
+
+        reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
+        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
+*/
+    }
 
 
         @AfterMethod(alwaysRun = true)

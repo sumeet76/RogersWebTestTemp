@@ -23,7 +23,7 @@ public class RogersBFA_TC04_NAC_TermBopisTest extends BaseTestClass {
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-	@Test(groups = {"RegressionBFA","NACBFAA","SanityBFA"})
+	@Test(groups = {"RegressionBFA","NACBFA","SanityBFA"})
 	public void rogersNACTermBopisTest() throws InterruptedException {
 
 		// **************************Device catalog page*****************************************
@@ -103,8 +103,9 @@ public class RogersBFA_TC04_NAC_TermBopisTest extends BaseTestClass {
 				"BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
 		//reporter.hardAssert(getRogersPlanConfigPage().verifyDefaultPrice(fullPriceValueCataloguePage),"Default  price is same as it is shown in device catalogue & Config page page","Default price is not same as it is shown in device catalogue page");
 		getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
-		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
-		getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
+		reporter.reportLogPassWithScreenshot("Device cost option selected");
+		getRogersPlanConfigPage().clickShowMoreDetails();
+		getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc04NACTermBopis.getDataOptionIndex()));
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
 		getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data protection selected");

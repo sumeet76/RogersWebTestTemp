@@ -42,10 +42,10 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(),'Continue')]/ancestor::button[contains(@data-test,'shared-nonshared-continue')]")
     WebElement modalContinueButton;
 
-    @FindBy(xpath = "//div[contains(@class,'dsa-tile-teaser')]//h3[contains(text(),'Bring') or contains(text(),'Apportez')]")
+    @FindBy(xpath = "//div[contains(@class,'dsa-tile-teaser')]//p[contains(text(),'Bring') or contains(text(),'Apportez')]")
     WebElement byodDeviceTile;
 
-    @FindBy(xpath = "//h3[contains(text(),'Bring') or contains(text(),'Apportez')]/parent::div[contains(@class,'dsa-tile-teaser')]//span[contains(@class,'ds-button__copy')]")
+    @FindBy(xpath = "//p[contains(text(),'Bring') or contains(text(),'Apportez')]/parent::div[contains(@class,'dsa-tile-teaser')]//a")
     WebElement byodTileContinueButton;
 
     @FindBy(xpath = "//span[contains(text(),'postal')]/ancestor::span[contains(@class,'ds-button__copy text-button text')]")

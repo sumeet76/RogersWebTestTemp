@@ -149,7 +149,7 @@ public class RogersBFA_OV_TC17_NAC_CSR_Test extends BaseTestClass {
 			getRogersOVOrderReviewPage().clkSubmitOrder();
 		}
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
+		//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
 		reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");
 	}
 

@@ -46,7 +46,7 @@ public class RogersBFA_TC15_HUPNonShareKeepCurrentPlanSL_Test extends BaseTestCl
                     "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
             getRogersPlanConfigPage().setCheckBoxKeepMyCurrentPlan();
             reporter.reportLogPassWithScreenshot("Checkbox for keep my current plan selected");
-            getRogersPlanConfigPage().clkDownPaymentChkBox();
+            //getRogersPlanConfigPage().clkDownPaymentChkBox();
             getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
             reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
             getRogersPlanConfigPage().clickContinueOnModalToDoWithOldPhone();
@@ -76,7 +76,7 @@ public class RogersBFA_TC15_HUPNonShareKeepCurrentPlanSL_Test extends BaseTestCl
             getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
             reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
             getRogersOrderReviewPage().clkSubmitOrder();
-            reporter.reportLogWithScreenshot("Rogers Payment Page");
+            /*reporter.reportLogWithScreenshot("Rogers Payment Page");
             reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),"Payment page displayed successfully","Payment page did not display");
             getRogersOneTimePaymentPage().setNameonCard();
             getRogersOneTimePaymentPage().switchToCreditCardIFrame();
@@ -85,7 +85,7 @@ public class RogersBFA_TC15_HUPNonShareKeepCurrentPlanSL_Test extends BaseTestCl
             getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc19AALNoTermStandardShipping.getExpiryDateOTP());
             getRogersOneTimePaymentPage().setCVV();
             reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
-            getRogersOneTimePaymentPage().clkSubmitOrderBtn();
+            getRogersOneTimePaymentPage().clkSubmitOrderBtn();*/
             reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
             reporter.hardAssert(getRogersOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
             reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");

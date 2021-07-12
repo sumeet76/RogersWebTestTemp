@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_TC08_PPC_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","SanityBFA","PPCBFA"})
+	@Test(groups = {"RegressionBFA","SanityBF","PPCBFA"})
     public void rogersPpcTest() {
 		reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		reporter.reportLogWithScreenshot("Home Page");

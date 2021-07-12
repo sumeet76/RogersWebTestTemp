@@ -103,10 +103,10 @@ public class RogersBFA_TC05_NAC_BYOD_SS_Test extends BaseTestClass {
 		//***************Order Review Page*************//
 		reporter.softAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(),"Order Review Page Title Present","Order Review Page Title is not Present");
 		reporter.reportLogPass("Order Review Page");
-		String contactNameReviewPage=getRogersReviewOrderPage().getContactName();
-		reporter.hardAssert(fullNameCreateProfile.equals(contactNameReviewPage),"Contact Name in Order Review Page matches as entered in Create Profile stepper","Contact Name in Order Review Page not matches as entered in Create Profile stepper");
-		String contactEmailReviewPage=getRogersReviewOrderPage().getContactEmail();
-		reporter.hardAssert(emailCreateProfile.equals(contactEmailReviewPage),"Contact email in Order Review Page matches as entered in Create Profile stepper","Contact email in Order Review Page not matches as entered in Create Profile stepper");
+//		String contactNameReviewPage=getRogersReviewOrderPage().getContactName();
+//		reporter.hardAssert(fullNameCreateProfile.equals(contactNameReviewPage),"Contact Name in Order Review Page matches as entered in Create Profile stepper","Contact Name in Order Review Page not matches as entered in Create Profile stepper");
+//		String contactEmailReviewPage=getRogersReviewOrderPage().getContactEmail();
+//		reporter.hardAssert(emailCreateProfile.equals(contactEmailReviewPage),"Contact email in Order Review Page matches as entered in Create Profile stepper","Contact email in Order Review Page not matches as entered in Create Profile stepper");
 		reporter.reportLogPassWithScreenshot("Order Review Page : Contact Details");
 		getRogersReviewOrderPage().clkAgreementConsentCheckbox();
 		//getRogersReviewOrderPage().clkEmailConsentCheckbox();

@@ -2,6 +2,7 @@ package com.rogers.oneview.pages;
 
 import com.rogers.pages.base.BasePageClass;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,6 +28,12 @@ public class NacDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//p[contains(text(),'Wireless') or contains(text(),'Sans-fil')]")
 	WebElement wirelessButton;
+
+	@FindBy(xpath = "//div[contains(@class,'header dealer-code')]")
+	WebElement dealerCodeModal;
+
+	@FindBy(xpath = "//input[contains(@name,'dealerCode')]")
+	WebElement dealerCodeField;
 
 	@FindBy(xpath = "//input[contains(@class,'address-input')]")
 	WebElement shippingAddressField;
@@ -93,6 +100,21 @@ public class NacDashboardPage extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(wirelessButton);
 		getReusableActionsInstance().clickWhenReady(wirelessButton,10);
 
+	}
+
+	/**
+	 * This method clicks set the dealer code value and clicks on continue button
+	 * @author praveen.kumar7
+	 */
+	public void setDelearCode() {
+		if(getReusableActionsInstance().isElementVisible(dealerCodeModal,10)) {
+			getReusableActionsInstance().getWhenReady(dealerCodeField,20).click();
+			dealerCodeField.sendKeys("0MAAA");
+			getReusableActionsInstance().clickWhenReady(By.xpath("//button[contains(@class,'hup-button')]"),20);
+		}
+		else {
+			System.out.println("Dealer code modal not displayed");
+		}
 	}
 
 	/**

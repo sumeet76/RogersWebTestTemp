@@ -19,7 +19,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_OV_TC22_NAC_FieldSalesNACNoTermToAALNoTermStandardShipping_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","RegressionOVBFA","HupOvBFA"})
+	@Test(groups = {"RegressionBFA","RegressionOVBFA","OVNACBFA"})
 	public void rogersNACFieldSalesNACNoTermToAALNoTermStandardShippingPlanFlow() {
 		reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
 		reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");
@@ -244,7 +244,7 @@ public class RogersBFA_OV_TC22_NAC_FieldSalesNACNoTermToAALNoTermStandardShippin
 		}*/
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
 		//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyBANOrderConfirmationPage(), "BAN displayed is the same as the given BAN", "BAN displayed isn't the same as the given BAN");
+		//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyBANOrderConfirmationPage(), "BAN displayed is the same as the given BAN", "BAN displayed isn't the same as the given BAN");
 		reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");
 	}
 
