@@ -349,14 +349,16 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkTVCheckbox() {
-		getReusableActionsInstance().clickWhenReady(tvCheckbox,120);
+		getReusableActionsInstance().waitForElementVisibility(tvCheckbox, 120);
+		getReusableActionsInstance().executeJavaScriptClick(tvCheckbox);
 	}
 	/**
 	 * Click Internet checkbox
 	 * @author chinnarao.vattam
 	 */	
 	public void clkInternetCheckbox() {
-		getReusableActionsInstance().clickWhenReady(internetCheckbox,120);
+		getReusableActionsInstance().waitForElementVisibility(internetCheckbox, 120);
+		getReusableActionsInstance().executeJavaScriptClick(internetCheckbox);
 	}
 	/**
 	 * Click SmartStream
@@ -371,7 +373,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkHomePhoneCheckbox() {
-		getReusableActionsInstance().clickWhenReady(homePhoneCheckbox,120);
+		getReusableActionsInstance().waitForElementVisibility(homePhoneCheckbox, 120);
+		getReusableActionsInstance().executeJavaScriptClick(homePhoneCheckbox);
 	}	
 	/**
 	 * Click Exchange Later btn
