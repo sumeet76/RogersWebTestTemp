@@ -62,6 +62,26 @@ public class AccountOverViewPage  extends BasePageClass {
 			@FindBy(xpath = "//t[contains(text(),'Add a line')]")
 	})
 	WebElement addNewWirelessLineButton;
+	@FindAll({
+			@FindBy(xpath = "//button[contains(text(),'View all alerts') or contains(text(), 'Voir toutes les alertes')]"),
+			@FindBy(xpath = "//div[@class='agent-notifications-popup ng-star-inserted']")
+	})
+	WebElement viewAllAlerts;
+
+	@FindAll({
+			@FindBy(xpath = "//div[@class='blocker ng-star-inserted']"),
+			@FindBy(xpath = "//div[@class='user']")
+	})
+	WebElement notificationBell;
+
+	@FindBy(xpath = "//div[@class='button-set set-left ng-star-inserted']/descendant::span[contains(text(),'TV')]")
+	WebElement changeTVBundle;
+
+	@FindBy(xpath = "//span[@class='rui-icon-plus']/following-sibling::t[contains(text(), 'Ignite') or contains(text(), 'Élan')]")
+	WebElement migrateToIgnite;
+
+	@FindBy(xpath = "//span[contains(text(),'OK')]")
+	WebElement OK;
 
 	/**
 	 * To skip notification panel with a bell icon
@@ -90,6 +110,49 @@ public class AccountOverViewPage  extends BasePageClass {
 		if (getReusableActionsInstance().isElementVisible(delearCodeOneViewDialogue)) {
 			getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 50).sendKeys("0MAAA");
 		}
+	}
+	/**
+	 * Click notification bell if any notificaiton is present
+	 * @author aditi.jain
+	 */
+	public void clickNotificationIfPresent() {
+
+		if(getReusableActionsInstance().isElementVisible(viewAllAlerts,240)) {
+			getReusableActionsInstance().waitForElementVisibility(notificationBell);
+			getReusableActionsInstance().executeJavaScriptClick(notificationBell);
+		}
+	}
+	/**
+	 * Selects the Get Ignite TV Badge on the account dashbaord
+	 * @author aditi.jain
+	 */
+	public void clickIgniteTVBadge() {
+
+		if(getReusableActionsInstance().isElementVisible(viewAllAlerts,240)) {
+			getReusableActionsInstance().waitForElementVisibility(notificationBell);
+			getReusableActionsInstance().executeJavaScriptClick(notificationBell);
+		}
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().clickWhenReady(btnGetIgniteTVBadge, 120);
+	}
+	/**
+	 * This method clicks on Ignite link
+	 * @author aditi.jain
+	 */
+	public void clickIgnite() {
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().executeJavaScriptClick(migrateToIgnite);
+		if(getReusableActionsInstance().isElementVisible(OK,120)) {
+			getReusableActionsInstance().executeJavaScriptClick(OK);
+		}
+	}
+
+	/**
+	 * Change TV Bundle, if present
+	 * @author Aditi.jain
+	 */
+	public void selectBundleChangeIfPresent() {
+		getReusableActionsInstance().clickIfAvailable(changeTVBundle,30);
 	}
 
 	/**

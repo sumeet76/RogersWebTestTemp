@@ -1,6 +1,7 @@
 package com.rogers.oneview.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import com.rogers.pages.base.BasePageClass;
 
@@ -66,6 +67,64 @@ public class CreditCheckPage  extends BasePageClass {
 	
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-expand']/ancestor::button")
 	WebElement collapse;
+
+	@FindBy(xpath = "//h2[@translate='global.checkout.fulfillment.installationOption']")
+	WebElement installationOption;
+
+
+	@FindAll({
+			@FindBy(xpath ="//div[@class='ds-checkbox__box my-12']"),
+			@FindBy(xpath = "//div[@id='ds-checkbox-id-2-label-container']")
+	})
+	WebElement customerAgreement;
+
+	@FindBy(xpath = "//h2[@translate='global.checkout.billingAndPay']")
+	WebElement billingAndPaymentOption;
+
+	@FindBy(xpath ="//span[@translate='chc.creditCard.options.digitalFrontline']")
+	WebElement digitalFrontline;
+
+	/**
+	 * Validates that the 'Installation Option(s)' is displayed
+	 * @author aditi.jain
+	 */
+	public boolean verifyInstallationOption() {
+		return getReusableActionsInstance().isElementVisible(installationOption,60);
+	}
+
+	/**
+	 * Go to Page bottom
+	 * @author aditi.jain
+	 */
+	public void goToPageBottom() {
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+	}
+	/**
+	 * Validates that the label 'Billing and Payment Options' is displayed
+	 * @author aditi.jain
+	 */
+	public boolean verifyBillingAndPaymentOption() {
+		return getReusableActionsInstance().isElementVisible(billingAndPaymentOption,120);
+	}
+
+	/**
+	 * Choose option digital frontline
+	 * @author aditi.jain
+	 */
+	public void clickDigitalFrontline() {
+		getReusableActionsInstance().javascriptScrollByVisibleElement(digitalFrontline);
+		getReusableActionsInstance().executeJavaScriptClick(digitalFrontline);
+	}
+
+	/**
+	 * Customer agree for in person delivery
+	 * @author aditi.jain
+	 */
+	public void clickInPersonDelivery() {
+		getReusableActionsInstance().waitForElementVisibility(customerAgreement, 240);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().getWhenReady(customerAgreement, 30).click();
+	}
 	/**
 	 * Select Date of Birth
 	 * @param yearofBirth is the Birth Year to set
