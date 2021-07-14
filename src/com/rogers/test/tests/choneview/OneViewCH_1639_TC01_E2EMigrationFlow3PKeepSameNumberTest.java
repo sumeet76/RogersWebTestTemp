@@ -40,9 +40,6 @@ public class OneViewCH_1639_TC01_E2EMigrationFlow3PKeepSameNumberTest extends Ba
 		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().contiue4KContent();
-
-//		getRogersIgniteBundlesPage().clkCollapse();
-
 		getRogersIgniteBundlesPage().clickExchangeLater();
 		getTVDashboardPage().clickAddChannel();
 		getTVDashboardPage().clickThemepacksTab();

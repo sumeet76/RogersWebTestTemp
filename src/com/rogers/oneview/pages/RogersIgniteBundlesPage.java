@@ -38,13 +38,14 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[text()='This address is serviceable!' or text()='Cette adresse peut être desservie!']")
 	WebElement serviceavailableMessage;
 
-	@FindBy(xpath = "//div[contains(text(),'TV')]/ancestor::label")
+//	@FindBy(xpath = "//div[contains(text(),'TV')]/ancestor::label  | //div[@id='ds-checkbox-id-0-label-container'] | //div[contains(text(), ' TV ')]")
+	@FindBy(xpath = "//div[contains(text(),' TV ')]/ancestor::ds-checkbox")
 	WebElement tvCheckbox;
 
-	@FindBy(xpath = "//div[contains(text(),'Internet')]/ancestor::label")
+	@FindBy (xpath = "//div[contains(text(),'Internet')]/ancestor::label | //div[@id='ds-checkbox-id-1-label-container'] | //div[contains(text(), ' Internet ')]")
 	WebElement internetCheckbox;
 
-	@FindBy(xpath = "//div[contains(text(),'Home Phone')]/ancestor::label")
+	@FindBy(xpath = "//div[contains(text(),'Home Phone')]/ancestor::label  | //div[@id='ds-checkbox-id-3-label-container'] | //div[contains(text(), ' Home Phone ')]")
 	WebElement homePhoneCheckbox;
 
 	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button")
@@ -350,7 +351,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */	
 	public void clkTVCheckbox() {
 		getReusableActionsInstance().waitForElementVisibility(tvCheckbox, 120);
-		getReusableActionsInstance().executeJavaScriptClick(tvCheckbox);
+		getReusableActionsInstance().clickWhenReady(tvCheckbox);
 	}
 	/**
 	 * Click Internet checkbox
