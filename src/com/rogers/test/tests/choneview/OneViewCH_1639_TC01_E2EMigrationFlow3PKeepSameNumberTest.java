@@ -29,9 +29,7 @@ public class OneViewCH_1639_TC01_E2EMigrationFlow3PKeepSameNumberTest extends Ba
 		reporter.reportLogWithScreenshot("Smart Stream - SAI ISS Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		getRogersIgniteBundlesPage().clkAddtoCart(TestDataHandler.anonymousData.getplanEng(),TestDataHandler.anonymousData.getplanFr());
-
 		getRogersIgniteBundlesPage().clkKeepNumberbtn();
-
 		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
@@ -44,17 +42,17 @@ public class OneViewCH_1639_TC01_E2EMigrationFlow3PKeepSameNumberTest extends Ba
 		getTVDashboardPage().clickAddChannel();
 		getTVDashboardPage().clickThemepacksTab();
 		getTVDashboardPage().addThemepack();
+		getTVDashboardPage().clickAddOnIfPresent();
 		getCustomerProfilePage().clkContinue();
 		getTVDashboardPage().addToCartCallingPackage();
 		getCustomerProfilePage().clkContinue();
-
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		getRogersIgniteBundlesPage().clkCheckOut();
 		reporter.reportLogWithScreenshot("Cart Summary");
-		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		getRogersIgniteBundlesPage().customerWishtoContinue();
 		reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
 		reporter.reportLogWithScreenshot("Customer Profile");
+		getCreditCheckPage().goToPageBottom();
 		getCustomerProfilePage().clkContinue();
 		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
 		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));

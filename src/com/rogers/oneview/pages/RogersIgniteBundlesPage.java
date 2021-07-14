@@ -38,8 +38,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[text()='This address is serviceable!' or text()='Cette adresse peut être desservie!']")
 	WebElement serviceavailableMessage;
 
-//	@FindBy(xpath = "//div[contains(text(),'TV')]/ancestor::label  | //div[@id='ds-checkbox-id-0-label-container'] | //div[contains(text(), ' TV ')]")
-	@FindBy(xpath = "//div[contains(text(),' TV ')]/ancestor::ds-checkbox")
+	@FindBy(xpath = "//div[contains(text(),'TV')]/ancestor::label  | //div[@id='ds-checkbox-id-0-label-container'] | //div[contains(text(), ' TV ')]")
 	WebElement tvCheckbox;
 
 	@FindBy (xpath = "//div[contains(text(),'Internet')]/ancestor::label | //div[@id='ds-checkbox-id-1-label-container'] | //div[contains(text(), ' Internet ')]")
@@ -296,7 +295,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkCheckOut() {
-		getReusableActionsInstance().clickWhenReady(checkOut,120);
+		getReusableActionsInstance().waitForElementVisibility(checkOut, 60);
+		getReusableActionsInstance().executeJavaScriptClick(checkOut);
 	}
 	/**
 	 * Click Checkout for Cart Summary
@@ -351,7 +351,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */	
 	public void clkTVCheckbox() {
 		getReusableActionsInstance().waitForElementVisibility(tvCheckbox, 120);
-		getReusableActionsInstance().clickWhenReady(tvCheckbox);
+		getReusableActionsInstance().executeJavaScriptClick(tvCheckbox);
 	}
 	/**
 	 * Click Internet checkbox

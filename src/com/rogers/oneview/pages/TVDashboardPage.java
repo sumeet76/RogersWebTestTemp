@@ -197,6 +197,13 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
 	WebElement cancel;
 
+	@FindBy(xpath = "//span[@translate='global.label.reviewAddons']")
+	WebElement reviewAddOns;
+
+	@FindBy(xpath = "//span[@translate='global.cta.reviewAddonsLink']")
+	WebElement addOnLink;
+
+
 
 	@FindAll({
 			@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks']"),
@@ -219,6 +226,12 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "(//span[@translate='global.cta.addToCart']/ancestor::button)[1]")
 	WebElement callingAddToCart;
 
+
+	@FindBy(xpath = "(//span[@ng-reflect-translate='global.modals.conflictWarnings'])[1] | //span[text()='Oui, continuer' or text()='Yes, continue']/ancestor::button")
+	WebElement yesToContinue;
+
+
+
 //	String dollarAmount = "//div[@class='ect-body']/descendant::div[@class='ds-price__amountDollars text-semi ng-star-inserted']";
 //	String centsAmount = "(//div[@class='ect-body']/descendant::span[@class='ds-price__amountCents text-body mb-0 ng-star-inserted'])";
 
@@ -239,6 +252,20 @@ public class TVDashboardPage  extends BasePageClass {
 	public void addThemepack() {
 		getReusableActionsInstance().waitForElementVisibility(addThemepack, 300);
 		getReusableActionsInstance().executeJavaScriptClick(addThemepack);
+		if(getReusableActionsInstance().isElementVisible(yesToContinue, 120)){
+			getReusableActionsInstance().clickWhenReady(yesToContinue);
+		}
+	}
+
+	/**
+	 * click AddOn notification if available
+	 * @author Aditi.jain
+	 */
+	public void clickAddOnIfPresent() {
+		if(getReusableActionsInstance().isElementVisible(reviewAddOns, 120)){
+			getReusableActionsInstance().waitForElementVisibility(addOnLink, 120);
+			getReusableActionsInstance().executeJavaScriptClick(addOnLink);
+		}
 	}
 
 	/**

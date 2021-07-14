@@ -18,7 +18,7 @@ public class OneViewCH_1437_TC01_EndtoEndFlowAnonymousCustomerTriplePlayTest ext
 			getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 			getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress(),System.getProperty("Browser"));
 			reporter.reportLogWithScreenshot("Service Availability");
-			getRogersIgniteBundlesPage().clkContinue();
+//			getRogersIgniteBundlesPage().clkContinue();
 			getRogersIgniteBundlesPage().clkTVCheckbox();
 			getRogersIgniteBundlesPage().clkInternetCheckbox();
 			getRogersIgniteBundlesPage().clkHomePhoneCheckbox();

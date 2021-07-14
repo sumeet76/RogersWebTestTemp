@@ -10,55 +10,58 @@ public class CreditCheckPage  extends BasePageClass {
 	public CreditCheckPage(WebDriver driver) {
 		super(driver);
 	}
-	
-	@FindBy(xpath = "//span[contains(text(),'Date of Birth') or contains(text(),'Date de naissance')]/ancestor::div[@class='row']//span[text()='Année' or text()='Year']/ancestor::span/preceding-sibling::select")
+
+	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[1]")
 	WebElement year;
-	
-	@FindBy(xpath = "//span[contains(text(),'Date of Birth') or contains(text(),'Date de naissance')]/ancestor::div[@class='row']//span[text()='Mois' or text()='Month']/ancestor::span/preceding-sibling::select")
+
+	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[2]")
 	WebElement month;
-	
-	@FindBy(xpath = "//span[contains(text(),'Date of Birth') or contains(text(),'Date de naissance')]/ancestor::div[@class='row']//span[text()='Jour' or text()='Day']/ancestor::span/preceding-sibling::select")
+
+	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[3]")
 	WebElement date;
-	
-	@FindBy(xpath = "//span[contains(text(),'Votre première pièce')or contains(text(),'Your first ID option')]/ancestor::span/preceding-sibling::select")
+
+	@FindBy(xpath = "//span[contains(text(),'Your first ID option')]/ancestor::span//following-sibling::select")
 	WebElement iD;
-	
-	@FindBy(xpath = "//span[contains(text(),'Sélectionner une province')or contains(text(),'Select Province')]/ancestor::span/preceding-sibling::select")
+
+	@FindBy(xpath = "//div[@translate='chc.label.creditCheckMessageForTenure']")
+	WebElement noIDRequired;
+
+	@FindBy(xpath = "//span[contains(text(),'Select Province')]/ancestor::span//following-sibling::select")
 	WebElement province;
-	
-	@FindBy(xpath = "//span[contains(text(),'ID options') or contains(text(),'Options d’identification')]/ancestor::div[@class='row']/parent::div//span[text()='Année' or text()='Year']/ancestor::span/preceding-sibling::select")
+
+	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[1]")
 	WebElement licenseExpiryYear;
-	
-	@FindBy(xpath = "//span[contains(text(),'ID options') or contains(text(),'Options d’identification')]/ancestor::div[@class='row']/parent::div//span[text()='Mois' or text()='Month']/ancestor::span/preceding-sibling::select")
-	WebElement licenseExpiryMonth;
-	
-	@FindBy(xpath = "//span[contains(text(),'ID options') or contains(text(),'Options d’identification')]/ancestor::div[@class='row']/parent::div//span[text()='Jour' or text()='Day']/ancestor::span/preceding-sibling::select")
+
+	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[3]")
 	WebElement licenseExpiryDay;
-	
-	@FindBy(xpath = "//span[contains(text(),'2. ID')  or contains(text(),'identification (deux pie')]/parent::div/parent::div/parent::div//input/parent::div")
+
+	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[2]")
+	WebElement licenseExpiryMonth;
+
+	@FindBy(xpath = "//span[contains(text(),'License Number')]/ancestor::span/parent::div")
 	WebElement licenseNoContainer;
-	
-	@FindBy(xpath = "//span[contains(text(),'2. ID')  or contains(text(),'identification (deux pie')]/parent::div/parent::div/parent::div//input")
+
+	@FindBy(xpath = "//span[contains(text(),'License Number')]/ancestor::span//following-sibling::div/child::input")
 	WebElement licenseNoInput;
-	
-	@FindBy(xpath = "//span[contains(text(),'Your second ID option') or contains(text(),'Deuxieme piece d’identite')]/ancestor::span/preceding-sibling::select")
+
+	@FindBy(xpath = "//span[contains(text(),'Your second ID option')]/ancestor::span//following-sibling::select")
 	WebElement secondID;
-	
+
 	@FindBy(xpath = "//span[contains(text(),'Second ID') or contains(text(),'Deuxième pièce')]/parent::div/parent::div//input/parent::div")
 	WebElement passportContainer;
-	
-	@FindBy(xpath = "//span[contains(text(),'Passport number') or contains(text(),'Numéro de passeport')]/ancestor::span/parent::div//input")
+
+	@FindBy(xpath = "//span[contains(text(),'Passport number')]/ancestor::span//following-sibling::div/child::input")
 	WebElement passportInput;
-	
-	@FindBy(xpath = "//span[contains(text(),'Second ID option') or contains(text(),'Deuxième pièce')]/parent::div/parent::div//span[text()='Année' or text()='Year']/ancestor::span/preceding-sibling::select")
+
+	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-passport/descendant::select)[1]")
 	WebElement passportExpiryYear;
-	
-	@FindBy(xpath = "//span[contains(text(),'Second ID option') or contains(text(),'Deuxième pièce')]/parent::div/parent::div//span[text()='Mois' or text()='Month']/ancestor::span/preceding-sibling::select")
+
+	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-passport/descendant::select)[2]")
 	WebElement passportExpiryMonth;
-	
-	@FindBy(xpath = "//span[contains(text(),'Second ID option') or contains(text(),'Deuxième pièce')]/parent::div/parent::div//span[text()='Jour' or text()='Day']/ancestor::span/preceding-sibling::select")
+
+	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-passport/descendant::select)[3]")
 	WebElement passportExpiryDay;
-	
+
 	@FindBy(xpath = "//span[contains(text(),'The customer authorizes') or contains(text(),'Le client autorise Rogers à obtenir des renseignements')]/parent::div/ancestor::ds-checkbox//div[1]")
 	WebElement authorizecheckbox;
 	
