@@ -87,6 +87,9 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath ="//span[@translate='chc.creditCard.options.digitalFrontline']")
 	WebElement digitalFrontline;
 
+	@FindBy(xpath ="//span[contains(text(), 'No, continue')]/ancestor::button")
+	WebElement noContinue;
+
 	/**
 	 * Validates that the 'Installation Option(s)' is displayed
 	 * @author aditi.jain
@@ -200,6 +203,15 @@ public class CreditCheckPage  extends BasePageClass {
 	 */	
 	public void clkContinue() {	
 		getReusableActionsInstance().clickWhenReady(continueButton);
+	}
+	/**
+	 * Click "No, continue" button to negate cancellation
+	 * @author aditi.jain
+	 */
+	public void continueConfirmation() {
+		if(getReusableActionsInstance().isElementVisible(noContinue, 30)){
+			getReusableActionsInstance().clickWhenReady(noContinue);
+		}
 	}
 	/**
 	 * Click Authorization Checkbox 
