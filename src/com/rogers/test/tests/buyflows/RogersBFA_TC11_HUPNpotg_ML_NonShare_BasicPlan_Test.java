@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  * @author Saurav.Goyal
  *
  */
-public class RogersBFA_TC11_HUPNpotgML_Test extends BaseTestClass {
+public class RogersBFA_TC11_HUPNpotg_ML_NonShare_BasicPlan_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","HUPBFA"})
     public void rogersHUPNpotgMLTest() {
@@ -42,15 +42,6 @@ public class RogersBFA_TC11_HUPNpotgML_Test extends BaseTestClass {
         reporter.reportLogWithScreenshot("Modal window Popup");
         getRogersDeviceCataloguePage().clickUpgradeMyPhoneButtonOnModal();
         reporter.reportLogWithScreenshot("upgrade myphone clicked on Modal window Popup");
-        /*
-        getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc11HUPNpotgSL.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc11HUPNpotgSL.getPassword());
-        reporter.reportLogWithScreenshot("Rogers Login Page");
-        getRogersLoginPage().clkSignInIFrame();
-        reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
-        getRogersLoginPage().switchOutOfSignInIFrame();
-         */
         reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
         reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
         getRogersDeviceCataloguePage().selectCTN(TestDataHandler.tc11HUPNpotgML.getCtn());
@@ -62,10 +53,11 @@ public class RogersBFA_TC11_HUPNpotgML_Test extends BaseTestClass {
         getRogersDeviceConfigPage().clickContinueButton();
         reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
+        getRogersPlanConfigPage().clkRadioButtonNoTerm();
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
-        getRogersPlanConfigPage().clickContinueOnModalToDoWithOldPhone();
-        getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
+        getRogersPlanConfigPage().clkBasicTab();
+        getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc11HUPNpotgML.getDataOptionIndex());
         reporter.reportLogPassWithScreenshot("Plan config page data option selected");
         getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
@@ -89,7 +81,6 @@ public class RogersBFA_TC11_HUPNpotgML_Test extends BaseTestClass {
         reporter.reportLogPassWithScreenshot("Order Review Page");
         getRogersReviewOrderPage().clkFinancingConsentCheckbox();
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
-        getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
         getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         if(getRogersOrderReviewPage().isPaymentRequired()) {

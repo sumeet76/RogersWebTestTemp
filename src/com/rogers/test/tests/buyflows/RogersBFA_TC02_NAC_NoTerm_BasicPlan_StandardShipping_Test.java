@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  * TC02 - Regression - [RNAC TERM] - Perform Rogers Net New Activation - TERM with Standard Shipping(No Term plan)_E2E
  */
 
-public class RogersBFA_TC02_NAC_NoTermStandardShippingTest extends BaseTestClass {
+public class RogersBFA_TC02_NAC_NoTerm_BasicPlan_StandardShipping_Test extends BaseTestClass {
 	String deviceName;
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
@@ -46,7 +46,8 @@ public class RogersBFA_TC02_NAC_NoTermStandardShippingTest extends BaseTestClass
 		getRogersPlanConfigPage().clkRadioButtonNoTerm();
 		getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
-		getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
+		getRogersPlanConfigPage().clkBasicTab();
+		getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc05NACByodSS.getDataOptionIndex());
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
 		getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data protection selected");

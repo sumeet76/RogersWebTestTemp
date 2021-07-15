@@ -29,7 +29,7 @@ public class RogersBFA_TC18_AALFinPlan_PotgShipping_Test extends BaseTestClass {
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc18AALFinPlanPotgShipping.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc18AALFinPlanPotgShipping.getPassword());
         reporter.reportLogWithScreenshot("Login Page");

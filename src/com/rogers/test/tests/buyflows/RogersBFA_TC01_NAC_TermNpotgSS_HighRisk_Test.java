@@ -41,8 +41,8 @@ public class RogersBFA_TC01_NAC_TermNpotgSS_HighRisk_Test extends BaseTestClass 
         reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName), "BreadCrumb on Plan config page is working fine","BreadCrumb is not working fine");
         getRogersPlanConfigPage().clkDownPaymentChkBox();
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
-        reporter.reportLogPassWithScreenshot("Plan config page data option selected");
-        getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
+        getRogersPlanConfigPage().clickShowMoreDetails();
+        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc04NACTermBopis.getDataOptionIndex()));
         reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
         getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page data protection selected");
@@ -111,7 +111,7 @@ public class RogersBFA_TC01_NAC_TermNpotgSS_HighRisk_Test extends BaseTestClass 
         //reporter.hardAssert(getRogersCheckoutPage().verifySecurityDepositAmount(TestDataHandler.tc01NACTermNpotgSS.getDepositAmount()),
                 //"Security deposit amount is displayed correctly", "Security Deposit amoount is not displayed correctly");
         //reporter.hardAssert(getRogersCheckoutPage().verifyClaTextOnModal(), "CLA text on modal displayed properly", "CLA text on modal not displayed");
-        getRogersCheckoutPage().clkAcceptButton();
+        //getRogersCheckoutPage().clkAcceptButton();
         reporter.hardAssert(getRogersCheckoutPage().isIdentificationLabel(),"Credit Evaluation Successful", "Credit Evaluation Identification Label not disaplayed");
        // ***************Choose a Number Stepper*************//      
         reporter.softAssert(getRogersCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed","Choose a Number Title not disaplayed");
@@ -130,9 +130,10 @@ public class RogersBFA_TC01_NAC_TermNpotgSS_HighRisk_Test extends BaseTestClass 
 		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc01NACTermNpotgSS.getPaymentMethod());
         //reporter.hardAssert(getRogersCheckoutPage().verifyOneTimeFeesAfterSecDeposit(TestDataHandler.tc01NACTermNpotgSS.getDepositAmount()),
                 //"Security deposit amount displayed correctly in cart summary", "Security deposit amount not displayed correctly in cart summary");
+        Long ctn = getRogersCheckoutPage().getSelectedCtn();
         getRogersCheckoutPage().clkBillingContinueButton();
         //***************Shipping Stepper*************//
-        reporter.softAssert(getRogersCheckoutPage().clkBillingAddress(),"Billing Address radio button is selected ","Billing Address is not selected");
+        //reporter.softAssert(getRogersCheckoutPage().clkBillingAddress(),"Billing Address radio button is selected ","Billing Address is not selected");
         getRogersCheckoutPage().clkDeliveryMethodStandard();
         reporter.reportLogWithScreenshot("Shipping stepper");
         getRogersCheckoutPage().clkContinueBtnShipping();

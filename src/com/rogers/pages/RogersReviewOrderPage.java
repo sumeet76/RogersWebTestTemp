@@ -211,7 +211,7 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void clkReturningUEDeviceConsentCheckbox() {
-        getReusableActionsInstance().clickWhenReady(chReturningUTDeviceConsent,2);
+        getReusableActionsInstance().clickIfAvailable(chReturningUTDeviceConsent,5);
     }
 
     /**

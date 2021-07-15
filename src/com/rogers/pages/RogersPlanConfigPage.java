@@ -20,7 +20,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     String xpathDcDoTo;
     String dataProtectionOption;
 
-    @FindBy(xpath = "//ds-radio-button[contains(@data-test,'fullPrice')]")
+    @FindBy(xpath = "(//label[contains(@class,'ds-radioLabel')])[2]")
     WebElement noTermRadioBtn;
 
     @FindBy(xpath = "(//div[contains(@id,'ds-radio-input-id')])[1]")
@@ -59,7 +59,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "(//div[contains(@class,'dsa-orderTable')])[1]")
     WebElement monthlyFeesCartSummarySection;
 
-    @FindBy(xpath="//ds-checkbox[contains(@data-test,'vdp-checkbox')]")
+    @FindBy(xpath="//p[contains(.,'Financing options')]")
     WebElement downPaymentChkBox;
 
     @FindBy(xpath = "//button[@data-test='stepper-1-edit-step-continue-button']")
@@ -164,6 +164,9 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[contains(@id,'main-continue-button')]")
     WebElement btnProceedToCheckout;
 
+    @FindBy(xpath = "//button[contains(@id,'tab-2')]")
+    WebElement btnBasicPlan;
+
 
 
     /**
@@ -197,8 +200,8 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clkRadioButtonNoTerm() {
-        getReusableActionsInstance().scrollToElement(noTermRadioBtn);
-        getReusableActionsInstance().clickWhenReady(noTermRadioBtn,30);
+        getReusableActionsInstance().scrollToElement(downPaymentChkBox);
+        getReusableActionsInstance().clickWhenVisible(noTermRadioBtn,30);
     }
 
     /**
@@ -206,7 +209,13 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clickShowMoreDetails() {
-        getReusableActionsInstance().clickIfAvailable(showMoreDetails,40);
+        if(getReusableActionsInstance().getWhenReady(showMoreDetails).getAttribute("title").contains("Hide More Details")) {
+            System.out.println("Show more details accordion already in expanded state");
+        }
+        else {
+            getReusableActionsInstance().scrollToElement(showMoreDetails);
+            getReusableActionsInstance().clickIfAvailable(showMoreDetails, 20);
+        }
     }
 
     /**
@@ -336,12 +345,22 @@ public class RogersPlanConfigPage extends BasePageClass {
         int stepper=2;
         String xpathDcDoTo = createXpathWithInputData(dataOptionIndex,stepper);
         if(Integer.parseInt(dataOptionIndex) == 0) {
-            getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton, 30);
+            getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton, 20);
         }
         else {
-            getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo),30));
-            getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton,40);
+            getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo),20));
+            getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton,20);
         }
+    }
+
+    /**
+     * This menthod selects basic plan based on the index value
+     * @param dataOptionIndex : String value of data option to be selected
+     * @author praveen.kumar7
+     */
+    public void selectBasicPlanAndClkContinueBtn(String dataOptionIndex) {
+        getReusableActionsInstance().clickWhenVisible(By.xpath("//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-basic-"+dataOptionIndex+"')]//label[1]"),20);
+        getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton,20);
     }
 
     /**
@@ -468,7 +487,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void clickContinueOnModalToDoWithOldPhone() {
-        if (getReusableActionsInstance().isElementVisible(modalToDoWithOldPhone, 20))
+        if (getReusableActionsInstance().isElementVisible(modalToDoWithOldPhone, 10))
             getReusableActionsInstance().clickWhenReady(btnContinueOnModalToDoWithOldPhone, 5);
     }
 
@@ -502,7 +521,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public void clickPreCartDeviceCostContinueButton() {
         getReusableActionsInstance().clickWhenReady(preCartDeviceCostContinueButton);
-        getReusableActionsInstance().clickIfAvailable(btnContinueOnModalToDoWithOldPhone, 30);
+        getReusableActionsInstance().clickIfAvailable(btnContinueOnModalToDoWithOldPhone, 10);
     }
 
     /**
@@ -695,7 +714,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void skipBPOOffer() {
-        if (getReusableActionsInstance().isElementVisible(skipBPOOfferOnDeviceProtection, 20))
+        if (getReusableActionsInstance().isElementVisible(skipBPOOfferOnDeviceProtection, 10))
             getReusableActionsInstance().clickIfAvailable(skipBPOOfferOnDeviceProtection, 5);
     }
 
@@ -862,15 +881,33 @@ public class RogersPlanConfigPage extends BasePageClass {
         }
     }
 
+    /**
+     * This method verifies if continue btn in device cost stepper is displayed or not
+     * @return true if continue btn is displayed else false
+     * @author praveen.kumar7
+     */
     public boolean verifyDeviceCostContinueButton() {
         getReusableActionsInstance().scrollToElement(preCartDeviceCostContinueButton);
         return getReusableActionsInstance().isElementVisible(preCartDeviceCostContinueButton,30);
     }
 
+    /**
+     * This method verifies if continue btn in addons stepper is displayed or not
+     * @return true if continue btn is displayed else false
+     * @author praveen.kumar7
+     */
     public boolean verifyTabletDataTalkOptionSelected() {
         getReusableActionsInstance().clickIfAvailable(preCartDataOtionContinueButton,10);
         getReusableActionsInstance().clickIfAvailable(preCartTalkOptionContinueButton,10);
         return getReusableActionsInstance().isElementVisible(preCartAddonsContinueButton,30);
+    }
+
+    /**
+     * This method clicks on basic plan tab in plan config page
+     * @author praveen.kumar7
+     */
+    public void clkBasicTab() {
+        getReusableActionsInstance().clickWhenReady(btnBasicPlan,20);
     }
 
 }
