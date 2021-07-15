@@ -307,6 +307,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//P[@data-test='timeslot-appointment']")
 	WebElement lblAppointmentTime;
 
+	@FindBy(xpath = "//div[contains(@id,'completedContent-2')]//p[3]")
+	WebElement txtCtn;
+
 	
 	
 	/**
@@ -768,7 +771,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author praveen.kumar7
 	 */
 	public void clkAcceptButton() {
-		getReusableActionsInstance().clickIfAvailable(acceptButton, 30);
+		getReusableActionsInstance().clickIfAvailable(acceptButton, 20);
 	}
 
 	/**
@@ -963,9 +966,10 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void clkBillingContinueButton() {
-		getReusableActionsInstance().waitForElementTobeClickable(btnBillingContinueButton , 30);
+		getReusableActionsInstance().waitForElementTobeClickable(btnBillingContinueButton , 10);
 		getReusableActionsInstance().scrollToElement(btnBillingContinueButton);
 		getReusableActionsInstance().getWhenReady(btnBillingContinueButton,30).click();
+		getReusableActionsInstance().staticWait(3000);
 	}
 
 	/**
@@ -1157,5 +1161,10 @@ public class RogersCheckoutPage extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(txtBillingDetails);
 	}
 
-
+	public long getSelectedCtn() {
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
+		String ctn = getReusableActionsInstance().getWhenReady(txtCtn,10).getText().trim().replace(" ", "");
+		String updatedCtn = ctn.substring(1,4)+ctn.substring(5,8)+ctn.substring(9);
+		return Long.parseLong(updatedCtn);
+	}
 }

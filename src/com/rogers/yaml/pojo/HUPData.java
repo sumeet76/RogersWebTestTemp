@@ -13,6 +13,7 @@ public class HUPData {
 	private String deviceName;
 	private String creditCardDetails;
 	private String expiryDate;
+	private String dataOptionIndex;
 
 	public String getCreditCardDetails() {
 		return creditCardDetails;
@@ -135,6 +136,18 @@ public class HUPData {
 	 */
 	public void setCtn(String ctn) {
 		this.ctn = ctn;
+	}
+	/**
+	 * @return the dataOptionIndex
+	 */
+	public String getDataOptionIndex() {
+		return dataOptionIndex;
+	}
+	/**
+	 * @param dataOptionIndex the dataOptionIndex to set
+	 */
+	public void setdataOptionIndex(String dataOptionIndex) {
+		this.dataOptionIndex = dataOptionIndex;
 	}
 
 }

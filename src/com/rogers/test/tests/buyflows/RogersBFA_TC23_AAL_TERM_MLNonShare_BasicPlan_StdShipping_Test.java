@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  * @author praveen.kumar7
  */
 
-public class RogersBFA_TC22_AAL_BYOD_NonShareStdShipping_Test extends BaseTestClass {
+public class RogersBFA_TC23_AAL_TERM_MLNonShare_BasicPlan_StdShipping_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -24,14 +24,14 @@ public class RogersBFA_TC22_AAL_BYOD_NonShareStdShipping_Test extends BaseTestCl
     }
 
     @Test(groups = {"RegressionBFA","AALBFA"})
-    public void rogersAalByodNonShareStdShippingTest() {
+    public void rogersAalTermMLNonSEBasicPlanSSTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
         getRogersHomePage().clkSignIn();
         getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc22AALBYODStandardShipping.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc22AALBYODStandardShipping.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc23AALTermMLNonSEBasicPlanStdShipping.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc23AALTermMLNonSEBasicPlanStdShipping.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
@@ -39,25 +39,37 @@ public class RogersBFA_TC22_AAL_BYOD_NonShareStdShipping_Test extends BaseTestCl
         reporter.reportLogWithScreenshot("Account Overview Page");
         getDriver().get(System.getProperty("AWSUrl")+"?flowType=aal");
         //------------------------------------Device Catalog page--------------------------------------------
-        //reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvaluationPopupPresent(), "Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
-        //reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed", "Credit Evaluation Text not disaplayed on Modal");
         reporter.hardAssert(getRogersDeviceCataloguePage().verifySharedNonSharedModalPresent(), "Shared/Nonshared modal displayed", "Shared/Nonshared modal not displayed");
         reporter.reportLogWithScreenshot("Shared/Nonshared modal popup");
-        String aalSharingType = TestDataHandler.tc22AALBYODStandardShipping.getSharingType();
+        String aalSharingType = TestDataHandler.tc23AALTermMLNonSEBasicPlanStdShipping.getSharingType();
         getRogersDeviceCataloguePage().selectAALSharingType(aalSharingType);
         reporter.reportLogPassWithScreenshot(aalSharingType+ " option selected successfully");
         getRogersDeviceCataloguePage().clickContinueButtonOnModal();
-        reporter.hardAssert(getRogersDeviceCataloguePage().verifyByodDeviceTile(), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
+        String deviceName = TestDataHandler.tc23AALTermMLNonSEBasicPlanStdShipping.getNewDevice();
+        reporter.hardAssert(getRogersDeviceCataloguePage().verifyDeviceTileCTAButton(deviceName),
+                "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
         reporter.reportLogWithScreenshot("Device Catalog Page");
-        getRogersDeviceCataloguePage().clkByodDeviceTileContinueBtn();
-        //-------------------------------------Plan config page---------------------------------------------
-        reporter.softAssert(getRogersPlanConfigPage().verifyAalByodBreadCrumb(),
+        getRogersDeviceCataloguePage().clickDeviceTileCTAButton(deviceName);
+        //------------------------------------Device Config page--------------------------------------------
+        getRogersDeviceConfigPage().selectDeviceColor(TestDataHandler.tc23AALTermMLNonSEBasicPlanStdShipping.getDeviceColor());
+        reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
+                "Continue button on the device config page is present",
+                "Continue button on the device config page is not present");
+        reporter.reportLogPassWithScreenshot("Device config page displayed");
+        getRogersDeviceConfigPage().clickContinueButton();
+        //-------------------------------------Plan config page----------------------------------------------
+        reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
-        reporter.hardAssert(getRogersPlanConfigPage().verifyByodSelectedDeviceSection(), "Plan Config loaded", "Plan config page not loaded");
+        reporter.hardAssert(getRogersPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
+        reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
+        getRogersPlanConfigPage().clkRadioButtonNoTerm();
+        getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
+        //getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc23AALTermMLNonSEBasicPlanStdShipping.getDeviceCostIndex()));
+        reporter.reportLogPassWithScreenshot("Device cost option selected");
         getRogersPlanConfigPage().clkBasicTab();
-        getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc05NACByodSS.getDataOptionIndex());
+        getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc23AALTermMLNonSEBasicPlanStdShipping.getDataOptionIndex());
         reporter.reportLogPassWithScreenshot("Data option selected");
-        reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc22AALBYODStandardShipping.getTalkOptionIndex())),
+        reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc23AALTermMLNonSEBasicPlanStdShipping.getTalkOptionIndex())),
                 "Talk option selected and Addons page in expanded state","Addons page not in expanded state");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         getRogersPlanConfigPage().setUserNameCallerID();
@@ -65,11 +77,12 @@ public class RogersBFA_TC22_AAL_BYOD_NonShareStdShipping_Test extends BaseTestCl
         String monthlyFeesAmountWithTax = getRogersPlanConfigPage().getMonthlyFeesAmount();
         String oneTimeFeesAmountWithTax = getRogersPlanConfigPage().getOneTimeFeesAmount();
         reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees " + monthlyFeesAmountWithTax + "2. oneTimeFee " + oneTimeFeesAmountWithTax);
+        String isSelectedDeviceTier = getRogersPlanConfigPage().getDeviceCostTierSelected();
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         //---------------------------------------Checkout pages---------------------------------------------------------
         reporter.softAssert(getRogersCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed", "Choose a Number Title not disaplayed");
         reporter.softAssert(getRogersCheckoutPage().isChooseNumberTabsDisplayed(), "Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
-        getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc22AALBYODStandardShipping.getCtnCity());
+        getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc23AALTermMLNonSEBasicPlanStdShipping.getCtnCity());
         reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
         getRogersCheckoutPage().clkChosePhoneNumber();
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
@@ -90,10 +103,19 @@ public class RogersBFA_TC22_AAL_BYOD_NonShareStdShipping_Test extends BaseTestCl
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                 "Order Review Page Title is not Present");
         reporter.reportLogPassWithScreenshot("Order Review Page");
-        getRogersReviewOrderPage().clkAllAgreementConsentCheckbox("financing");
+        getRogersReviewOrderPage().clkAllAgreementConsentCheckbox(isSelectedDeviceTier);
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
-        getRogersReviewOrderPage().clkSubmitOrderBtn();
-        //--------------------------------------Order Confirmation Page-------------------------------------------------------
+        getRogersOrderReviewPage().clkSubmitOrder();
+        reporter.reportLogWithScreenshot("Rogers Payment Page");
+        reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),"Payment page displayed successfully","Payment page did not display");
+        getRogersOneTimePaymentPage().setNameonCard();
+        getRogersOneTimePaymentPage().switchToCreditCardIFrame();
+        getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc23AALTermMLNonSEBasicPlanStdShipping.getCcNumberOTP());
+        getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
+        getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc23AALTermMLNonSEBasicPlanStdShipping.getExpiryDateOTP());
+        getRogersOneTimePaymentPage().setCVV();
+        reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
+        getRogersOneTimePaymentPage().clkSubmitOrderBtn();
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
         String totalMonthlyFeesConfirmationPage = getRogersOrderConfirmationPage().getMonthlyFeeAfterTax();
         reporter.reportLogWithScreenshot("Cart summary of Order confirmation page");
@@ -105,6 +127,7 @@ public class RogersBFA_TC22_AAL_BYOD_NonShareStdShipping_Test extends BaseTestCl
                 "Total One time fee after tax matches with checkout page", "Total One time fee after tax not matches with checkout page");
 
     }
+
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() throws InterruptedException {

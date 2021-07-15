@@ -156,6 +156,7 @@ public class TestDataHandler {
 	public static AALData tc20AALTermTablet;
 	public static AALData tc21AALBYODBopisShipping;
 	public static AALData tc22AALBYODStandardShipping;
+	public static AALData tc23AALTermMLNonSEBasicPlanStdShipping;
 	public static HUPData buyFlowsOVtestCase01;
 	public static HUPData buyFlowsOVtestCase02;
 	public static HUPData buyFlowsOVtestCase05;
@@ -457,6 +458,7 @@ public class TestDataHandler {
 		tc20AALTermTablet = YamlHandler.getAALdata("tc20AALTabletDevice");
 		tc21AALBYODBopisShipping = YamlHandler.getAALdata("tc21AALBYODBopis");
 		tc22AALBYODStandardShipping = YamlHandler.getAALdata("tc22AALBYODStdShipping");
+		tc23AALTermMLNonSEBasicPlanStdShipping = YamlHandler.getAALdata("tc23AALTermMLNonSEBasicPlanStdShipping");
 	}
 	
 	private static void buyFlowsOneViewDataInit() throws FileNotFoundException {

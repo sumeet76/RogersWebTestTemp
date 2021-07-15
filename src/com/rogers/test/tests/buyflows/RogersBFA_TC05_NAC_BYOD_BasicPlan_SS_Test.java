@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
  * TC05 - Regression - [RNAC BYOD] - Perform Rogers Net New Activation - BYOD with Standard Shipping_E2E
  */
 
-public class RogersBFA_TC05_NAC_BYOD_SS_Test extends BaseTestClass {
+public class RogersBFA_TC05_NAC_BYOD_BasicPlan_SS_Test extends BaseTestClass {
 
 	@BeforeMethod (alwaysRun = true) @Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("isIdentificationLabelen") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
@@ -31,7 +31,8 @@ public class RogersBFA_TC05_NAC_BYOD_SS_Test extends BaseTestClass {
 	public void rogersNacByodSSTest() throws InterruptedException {
 		//############################Plan config page###############################
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(), "BreadCrumb on Plan config page is displaying fine","BreadCrumb is not displaying fine");
-		getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
+		getRogersPlanConfigPage().clkBasicTab();
+		getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc05NACByodSS.getDataOptionIndex());
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
 		getRogersPlanConfigPage().clickPreCartSummaryContinueButtonTalkOptions();
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
