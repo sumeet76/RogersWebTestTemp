@@ -43,14 +43,14 @@ public class RogersSS_TC_031_Postpaid_ChangeContactInfo extends BaseTestClass {
     	String strBan = TestDataHandler.tc013132.getAccountDetails().getBan();
     	String strEmail = TestDataHandler.tc013132.getAccountDetails().getContactemail();
     	strAltEmail = FormFiller.generateEmail();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		getRogersLoginPage().setUsernameIFrame(strUsername);
 		getRogersLoginPage().setPasswordIFrame(strPassword);
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
         
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select BAN.");

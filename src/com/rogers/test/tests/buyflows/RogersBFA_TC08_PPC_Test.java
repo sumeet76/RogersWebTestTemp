@@ -22,14 +22,14 @@ public class RogersBFA_TC08_PPC_Test extends BaseTestClass {
 		reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		reporter.reportLogWithScreenshot("Home Page");
 		getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc08PPC.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc08PPC.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
         //getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
+        //getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page");
         reporter.hardAssert(getRogersAccountOverviewPage().verifyAndClickWirelessCTN(TestDataHandler.tc08PPC.getCtn()), "Select CTN Passed", "Select CTN Failed");

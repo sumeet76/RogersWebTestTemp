@@ -34,7 +34,7 @@ public class RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurcha
 	public void validateTotalDataForInfiniteIndividualPlan() throws InterruptedException {
 		getRogersHomePage().clkSignIn();
 		String strUsername = TestDataHandler.tc6577.getUsername();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		getRogersLoginPage().setUsernameIFrame(strUsername);
 		String strPassword = TestDataHandler.tc6577.getPassword();
 		getRogersLoginPage().setPasswordIFrame(strPassword);
@@ -42,7 +42,7 @@ public class RogersSS_TC_065_ValidateTotalDataForInfiniteIndividualPlanAndPurcha
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login proceed without error.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 
 		if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
 			reporter.reportLogWithScreenshot("Select an account.");

@@ -16,14 +16,14 @@ public class RogersSS_TC_035_OptIntoSMSBillNotificationsOnProfileSettingsPage ex
     @Test
     public void downloadPdfBillViewBillPageTest() {
         getRogersHomePage().clkSignIn();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc46LegacyRHP.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc46LegacyRHP.getPassword());
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 
 		reporter.reportLogWithScreenshot("Account overview Page");
 

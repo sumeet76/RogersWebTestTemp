@@ -42,7 +42,7 @@ public class RogersSS_TC_042_AO_ValidateCHaccountBadge_IginteInternet extends Ba
     public void checkInternetDashboard() {
     	            reporter.reportLogWithScreenshot("Launched the Home Page");
                     getRogersHomePage().clkSignIn();
-                    getRogersLoginPage().switchToSignInIFrame();
+                    //getRogersLoginPage().switchToSignInIFrame();
                     reporter.reportLogWithScreenshot("Launched the SignIn popup");
                     getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc42SolarisInternetAccountWithUsage.getUsername());
                     getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc42SolarisInternetAccountWithUsage.getPassword());
@@ -51,7 +51,7 @@ public class RogersSS_TC_042_AO_ValidateCHaccountBadge_IginteInternet extends Ba
                     reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
                     reporter.reportLogWithScreenshot("Skip popup");
                     getRogersLoginPage().clkSkipIFrame();
-                    getRogersLoginPage().switchOutOfSignInIFrame();
+                    //getRogersLoginPage().switchOutOfSignInIFrame();
                     getRogersAccountOverviewPage().selectAccount((TestDataHandler.tc42SolarisInternetAccountWithUsage.accountDetails.getBan()));
             		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), 
             				"Logged in successfully", "Login failed");

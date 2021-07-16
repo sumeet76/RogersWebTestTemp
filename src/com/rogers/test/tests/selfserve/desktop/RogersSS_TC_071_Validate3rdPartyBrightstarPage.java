@@ -39,13 +39,13 @@ public class RogersSS_TC_071_Validate3rdPartyBrightstarPage extends BaseTestClas
     	String strUsername = TestDataHandler.tc495271.getUsername();
     	String strPassword = TestDataHandler.tc495271.getPassword();
         String strUrlExpected = TestDataHandler.ssConfig.getPhoneRepairUrl();
-    	getRogersLoginPage().switchToSignInIFrame();
+    	//getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(strUsername);
         getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		getRogersLoginPage().clkSignInIFrame();
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 		if (getRogersWirelessDashboardPage().verifyRepairClaimModalIsDisplayed()) {
 	        reporter.reportLogWithScreenshot("Repair claim page.");
 	        getRogersWirelessDashboardPage().clkFirstCtnInListForRepairClaim();

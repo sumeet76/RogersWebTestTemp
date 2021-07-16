@@ -26,7 +26,7 @@ public class RogersSS_TC_049_ChangeIDForNonSECustomerTest extends BaseTestClass 
 		String strFirstName = FormFiller.generateRandomName().toUpperCase();
 		String strLastName = FormFiller.generateRandomName().toUpperCase();		
         getRogersHomePage().clkSignIn();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		String strUserName = TestDataHandler.tc495271.getUsername();
 		String strPassword = TestDataHandler.tc495271.getPassword();
 		getRogersLoginPage().setUsernameIFrame(strUserName);
@@ -34,7 +34,7 @@ public class RogersSS_TC_049_ChangeIDForNonSECustomerTest extends BaseTestClass 
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 		 if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
 	        	reporter.reportLogWithScreenshot("Select an account.");
 	            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc495271.getAccountDetails().getBan());

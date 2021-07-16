@@ -33,7 +33,7 @@ public class RogersSS_TC_053_ValidateBrightstarLinkInWirelessDashbard_prepaidCon
     	String strUsername = TestDataHandler.tc5398.getUsername();
     	String strPassword = TestDataHandler.tc5398.getPassword();
         String strAccountNum = TestDataHandler.tc5398.getAccountDetails().getCtn();
-    	getRogersLoginPage().switchToSignInIFrame();
+    	//getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(strUsername);
         getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
@@ -41,7 +41,7 @@ public class RogersSS_TC_053_ValidateBrightstarLinkInWirelessDashbard_prepaidCon
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersAccountOverviewPage().removeCookieAfterLogin("temp_token_r");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 
         reporter.reportLogWithScreenshot("Account overview page.");
        // getRogersAccountOverviewPage().removeCookieAfterLogin("temp_token_r");

@@ -36,14 +36,14 @@ public class RogersSS_TC_126_NonSIM_ValidateTheDetailedTaxAmountForEachAccessory
     	String strBan = TestDataHandler.tc126.getAccountDetails().getBan();
     	String strEmail = TestDataHandler.tc126.getAccountDetails().getContactemail();
     	strAltEmail = FormFiller.generateEmail();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		getRogersLoginPage().setUsernameIFrame(strUsername);
 		getRogersLoginPage().setPasswordIFrame(strPassword);
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 		reporter.reportLogWithScreenshot("Account overveiew page");
 
 		//4. The accessories entry point widget should be displayed for the eligible CTN on AO page as per copy.

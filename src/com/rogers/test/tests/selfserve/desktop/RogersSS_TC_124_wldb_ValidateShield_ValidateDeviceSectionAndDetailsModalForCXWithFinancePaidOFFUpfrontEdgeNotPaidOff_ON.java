@@ -30,7 +30,7 @@ public class RogersSS_TC_124_wldb_ValidateShield_ValidateDeviceSectionAndDetails
     public void validateDeviceSectionOnWirelessDashboardPage() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc124.getUsername();
-    	getRogersLoginPage().switchToSignInIFrame();
+    	//getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc124.getPassword();
         getRogersLoginPage().setPasswordIFrame(strPassword);
@@ -38,7 +38,7 @@ public class RogersSS_TC_124_wldb_ValidateShield_ValidateDeviceSectionAndDetails
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 		
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");

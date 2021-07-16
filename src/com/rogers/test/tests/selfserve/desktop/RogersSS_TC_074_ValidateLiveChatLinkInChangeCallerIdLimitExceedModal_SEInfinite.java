@@ -34,13 +34,13 @@ public class RogersSS_TC_074_ValidateLiveChatLinkInChangeCallerIdLimitExceedModa
     public void validateLiveChatBadgeInChangeCallerIdLimitExceedModal() {
 	
         getRogersHomePage().clkSignIn();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc5074.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc5074.getPassword());
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 		 if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
 	        	reporter.reportLogWithScreenshot("Select an account.");
 	            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc5074.getAccountDetails().getBan());

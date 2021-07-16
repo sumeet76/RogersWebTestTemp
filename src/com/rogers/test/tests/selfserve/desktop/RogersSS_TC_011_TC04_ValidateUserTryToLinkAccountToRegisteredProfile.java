@@ -18,14 +18,14 @@ public class RogersSS_TC_011_TC04_ValidateUserTryToLinkAccountToRegisteredProfil
 		
 		getRogersHomePage().clkSignIn();
 		reporter.reportLogWithScreenshot("Sign In page");
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc041139.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc041139.getPassword());
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 		String strNewBan = TestDataHandler.tc041139.getAccountDetails().getNewBan();
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select account.");

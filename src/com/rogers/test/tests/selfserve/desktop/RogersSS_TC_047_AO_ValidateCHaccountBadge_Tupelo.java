@@ -27,7 +27,7 @@ public class RogersSS_TC_047_AO_ValidateCHaccountBadge_Tupelo extends BaseTestCl
     public void checkTVDashboard() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc47TupeloAccount.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc47TupeloAccount.getPassword());
@@ -36,7 +36,7 @@ public class RogersSS_TC_047_AO_ValidateCHaccountBadge_Tupelo extends BaseTestCl
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
+        //getRogersLoginPage().switchOutOfSignInIFrame();
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc47TupeloAccount.accountDetails.getBan());
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");

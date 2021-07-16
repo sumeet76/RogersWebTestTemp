@@ -31,14 +31,14 @@ public class RogersSS_TC_132_SF_EN_ValidateDetailsOnMyCancelledWirelessPartnerOf
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc130.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc130.getPassword());
         reporter.reportLogWithScreenshot("Login Credential is entered.");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
+        //getRogersLoginPage().switchOutOfSignInIFrame();
 
         reporter.reportLogWithScreenshot("Account overview page.");
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Passed", "Login Failed");

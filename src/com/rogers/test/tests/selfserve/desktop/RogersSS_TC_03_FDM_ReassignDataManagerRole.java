@@ -31,7 +31,7 @@ public class RogersSS_TC_03_FDM_ReassignDataManagerRole extends BaseTestClass {
     public void validateReassignDataManagerRole() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc60.getUsername();
-    	getRogersLoginPage().switchToSignInIFrame();
+    	//getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc60.getPassword();
         getRogersLoginPage().setPasswordIFrame(strPassword);
@@ -39,7 +39,7 @@ public class RogersSS_TC_03_FDM_ReassignDataManagerRole extends BaseTestClass {
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 		
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");

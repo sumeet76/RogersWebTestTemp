@@ -37,14 +37,14 @@ public class RogersSS_TC_009_UserSetMobileNumForSMSRecovery extends BaseTestClas
 		String strUserName = TestDataHandler.tc060809.getUsername();
 		String strRecoveryNumber = TestDataHandler.tc060809.getAccountDetails().getRecoveryNumber();
     	getRogersHomePage().clkSignIn();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		getRogersLoginPage().setUsernameIFrame(strUserName);
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc060809.getPassword());
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc060809.getAccountDetails().getBan());

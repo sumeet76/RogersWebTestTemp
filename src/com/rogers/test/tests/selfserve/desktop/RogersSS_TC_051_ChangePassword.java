@@ -40,7 +40,7 @@ public class RogersSS_TC_051_ChangePassword extends BaseTestClass {
     	String strUsername = TestDataHandler.tc2751.getUsername();
     	String strPassword = TestDataHandler.tc2751.getPassword();
 		String strNewPassword = TestDataHandler.tc2751.getNewpassword();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		tryLogin(strUsername, strPassword);
         //If login fail message show, change password and try login again 
         if (getRogersLoginPage().verifyLoginFailMsgIframe()) {
@@ -54,7 +54,7 @@ public class RogersSS_TC_051_ChangePassword extends BaseTestClass {
         			"Both login with original and new user name atemp failed, please investigate.");
         }
         getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
+        //getRogersLoginPage().switchOutOfSignInIFrame();
         //Account selection when there have multiple BAN.
 //        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
 //        	reporter.reportLogWithScreenshot("Select an account.");

@@ -31,14 +31,14 @@ public class RogersSS_TC_015_ValidatePaymentHistoryOfWirelessPostpaid_NoPayment 
 		getRogersHomePage().clkSignIn();
 		String strUsername = TestDataHandler.tc161825.getUsername();
 		String strPassword = TestDataHandler.tc161825.getPassword();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		getRogersLoginPage().setUsernameIFrame(strUsername);
 		getRogersLoginPage().setPasswordIFrame(strPassword);
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login proceed without error.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 		reporter.reportLogWithScreenshot("Account overveiew page");
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), 
 				"Login successful",

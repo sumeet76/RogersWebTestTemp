@@ -63,14 +63,14 @@ public class RogersSS_TC_016_Baseline_CSS_Wireless_Pay_Now_Through_Bank_AUTO ext
     }
 
     private void tryLogin(String strUsername, String strPassword) {
-    	 getRogersLoginPage().switchToSignInIFrame();
+    	 //getRogersLoginPage().switchToSignInIFrame();
     	 getRogersLoginPage().setUsernameIFrame(strUsername);
          getRogersLoginPage().setPasswordIFrame(strPassword);
   		 reporter.reportLogWithScreenshot("Login Credential is entered.");
          getRogersLoginPage().clkSignInIFrame();
          reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
          getRogersLoginPage().clkSkipIFrame();
-         getRogersLoginPage().switchOutOfSignInIFrame();
+         //getRogersLoginPage().switchOutOfSignInIFrame();
     }         
     
 }

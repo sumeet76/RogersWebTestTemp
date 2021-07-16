@@ -16,14 +16,14 @@ public class RogersSS_TC_007_PrintPdfBillViewBillPageTest extends BaseTestClass 
     @Test(groups = {"RegressionSS","BillingAndPaymentsSS"})
     public void printPdfBillViewBillPageTest() {
         getRogersHomePage().clkSignIn();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc36.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc36.getPassword());
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account overlay.");
             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc36.getAccountDetails().getBan());

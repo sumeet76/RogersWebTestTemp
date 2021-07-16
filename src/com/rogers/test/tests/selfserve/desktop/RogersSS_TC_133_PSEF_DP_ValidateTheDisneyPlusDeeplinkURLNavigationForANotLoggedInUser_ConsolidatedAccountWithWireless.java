@@ -38,13 +38,13 @@ public class RogersSS_TC_133_PSEF_DP_ValidateTheDisneyPlusDeeplinkURLNavigationF
         String strUsername = TestDataHandler.tc130.getUsername();
         String strPassword = TestDataHandler.tc130.getPassword();
         String strUrlExpected = TestDataHandler.ssConfig.getPhoneRepairUrl();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(strUsername);
         getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
         getRogersLoginPage().clkSignInIFrame();
         getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
+        //getRogersLoginPage().switchOutOfSignInIFrame();
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
         	getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc130.getAccountDetails().getBan());
