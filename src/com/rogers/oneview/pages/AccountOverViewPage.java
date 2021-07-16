@@ -117,7 +117,7 @@ public class AccountOverViewPage  extends BasePageClass {
 	 */
 	public void clickNotificationIfPresent() {
 
-		if(getReusableActionsInstance().isElementVisible(viewAllAlerts,240)) {
+		if(getReusableActionsInstance().isElementVisible(viewAllAlerts,30)) {
 			getReusableActionsInstance().waitForElementVisibility(notificationBell);
 			getReusableActionsInstance().executeJavaScriptClick(notificationBell);
 		}
@@ -128,7 +128,7 @@ public class AccountOverViewPage  extends BasePageClass {
 	 */
 	public void clickIgniteTVBadge() {
 
-		if(getReusableActionsInstance().isElementVisible(viewAllAlerts,240)) {
+		if(getReusableActionsInstance().isElementVisible(viewAllAlerts,30)) {
 			getReusableActionsInstance().waitForElementVisibility(notificationBell);
 			getReusableActionsInstance().executeJavaScriptClick(notificationBell);
 		}
