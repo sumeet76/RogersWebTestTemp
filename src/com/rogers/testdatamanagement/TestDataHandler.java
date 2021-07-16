@@ -176,6 +176,11 @@ public class TestDataHandler {
 	public static AccountData solarisTV;
 	public static ContactData anonymousData;
 	public static MigrationData migrationData;
+	public static MigrationData migrationDataToSAI;
+	public static MigrationData migrationData1PTo2P;
+	public static MigrationData migrationData1PTo3P;
+	public static MigrationData migrationDataToISS;
+	public static MigrationData migrationData3PSameNumber;
 	public static PaymentDetails ovPaymentInfo;
 	public static AccountData tc60;
 	public static RedesignConfig redesignConfig;
@@ -497,6 +502,11 @@ public class TestDataHandler {
 		solarisTV = YamlHandler.getOVAccountData("SolarisTV");
 		anonymousData = YamlHandler.getContactData("AnonymousData");
 		migrationData = YamlHandler.getMigrationData("MigrationData");
+		migrationDataToSAI = YamlHandler.getMigrationData("MigrationData1PToSAI");
+		migrationDataToISS = YamlHandler.getMigrationData("MigrationData1PToISS");
+		migrationData1PTo2P = YamlHandler.getMigrationData("MigrationData1PTo2P");
+		migrationData1PTo3P = YamlHandler.getMigrationData("MigrationData1PTo3P");
+		migrationData3PSameNumber = YamlHandler.getMigrationData("MigrationData3PSameNumber");
 		TC023_TVPackageDowngrade= YamlHandler.getOVAccountData("TC_023_TV_PackageDowngrade");
 		TC026_TVPackageUpgrade= YamlHandler.getOVAccountData("TC026_TVPackageUpgrade");
 		TC028_InternetPackageDowngrade= YamlHandler.getOVAccountData("TC_028_Internet_PackageDowngrade");

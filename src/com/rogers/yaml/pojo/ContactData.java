@@ -3,7 +3,50 @@ package com.rogers.yaml.pojo;
 public class ContactData {
 	public ContactDetails contactDetails;
 	public String planEng;
+	public String planEngISS;
+	public String planEngSAI;
 	public String planFr;
+	public CreditCardDetails creditCardDetails;
+
+	/**
+	 * @return the plan in English for SAI flow
+	 */
+	public String getPlanEngSAI() {
+		return planEngSAI;
+	}
+	/**
+	 * @param planEngSAI the Plan in English to set
+	 */
+	public void setPlanEngSAI(String planEngSAI) {
+		this.planEngSAI = planEngSAI;
+	}
+
+	/**
+	 * @return the plan in English for ISS flow
+	 */
+	public String getPlanEngISS() {
+		return planEngISS;
+	}
+	/**
+	 * @param planEngISS the Plan in English to set
+	 */
+	public void setPlanEngISS(String planEngISS) {
+		this.planEngISS = planEngISS;
+	}
+
+	/**
+	 * @return the cardDetails
+	 */
+	public CreditCardDetails getCreditCardDetails() {
+		return creditCardDetails;
+	}
+	/**
+	 * @param creditCardDetails the credit card Details to set
+	 */
+	public void setCreditCardDetails(CreditCardDetails creditCardDetails) {
+		this.creditCardDetails = creditCardDetails;
+	}
+
 	/**
 	 * @return the contactDetails
 	 */
@@ -23,7 +66,7 @@ public class ContactData {
 		return planEng;
 	}
 	/**
-	 * @param Plan the Plan in English to set
+	 * @param planEng the Plan in English to set
 	 */
 	public void setplanEng(String planEng) {
 		this.planEng = planEng;

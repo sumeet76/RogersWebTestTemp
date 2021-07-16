@@ -131,6 +131,21 @@ public class CaptchaBypassHandlers {
 		return strCookieFetchURL;
 	}
 
+//	/**
+//	 * To Bypass Captcha for login Flows
+//	 * @param strUrl                     string of test url
+//	 * @param strLanguage                string of language to use
+//	 */
+//	public void chOnewviewFlows(String strUrl, String strAccNo,  String strLoginID, String strLanID, String strLanguage,String strBrowser,  Method currentTestMethodName ,String strContactID) throws IOException {
+//		String oneViewUrl="";
+//		if(strContactID.equals(""))
+//		oneViewUrl= CaptchaBypassHandlers.urlOneViewExistingCustomer(strUrl, strLoginID, strLanID, strAccNo, strLanguage);
+//		else
+//			oneViewUrl=CaptchaBypassHandlers.urlOneViewMigration(strUrl, strLoginID, strLanID, strAccNo, strLanguage, strContactID);
+//		System.out.println(oneViewUrl + "----------------------------------------------------------------------------");
+//		getDriver().get(oneViewUrl);
+//  }
+
 	/**
 	 * To Bypass Captcha for login Flows
 	 * @param strUrl                     string of test url
@@ -139,12 +154,14 @@ public class CaptchaBypassHandlers {
 	public void chOnewviewFlows(String strUrl, String strAccNo,  String strLoginID, String strLanID, String strLanguage,String strBrowser,  Method currentTestMethodName ,String strContactID) throws IOException {
 		String oneViewUrl="";
 		if(strContactID.equals(""))
-		oneViewUrl= CaptchaBypassHandlers.urlOneViewExistingCustomer(strUrl, strLoginID, strLanID, strAccNo, strLanguage);	
+			oneViewUrl = CaptchaBypassHandlers.urlOneViewExistingCustomer(strUrl, strLoginID, strLanID, strAccNo, strLanguage);
+		else if (strAccNo.isEmpty())
+			oneViewUrl = CaptchaBypassHandlers.urlOneViewAnonymous(strUrl, strLoginID, strLanID, strAccNo, strLanguage, strContactID);
 		else
-			oneViewUrl=CaptchaBypassHandlers.urlOneViewMigration(strUrl, strLoginID, strLanID, strAccNo, strLanguage, strContactID);	
-		System.out.println(oneViewUrl + "----------------------------------------------------------------------------");	
+			oneViewUrl = CaptchaBypassHandlers.urlOneViewMigration(strUrl, strLoginID, strLanID, strAccNo, strLanguage, strContactID);
+		System.out.println(oneViewUrl + "----------------------------------------------------------------------------");
 		getDriver().get(oneViewUrl);
-  }
+	}
 
 	/**
 	 * To Bypass Captcha for login Flows
@@ -182,11 +199,12 @@ public class CaptchaBypassHandlers {
 		return oneViewUrl;
 	}
 
-	public static String urlOneViewAnonymous(String strUrl, String strLoginID, String strLanID, String strAccNo, String strLanguage) {
-		String queryParam="LoginId="+strLoginID+"&UserRole=CSR,BRT%20Authorized%20CSR-3,Ignite Learning Lab Additive Role,R252&IntID=&AccNo=&Target=UTE&TimeStamp=2020-01-20T11:29:45.442-04:00&Lang="+strLanguage+"&AppId=CRM&li="+strLanID+"&ContactID="+strAccNo+"&targetURL=IgniteNAC&connid=";
-		String oneViewUrl= strUrl+queryParam;
+	public static String urlOneViewAnonymous(String strUrl, String strLoginID, String strLanID, String strAccNo, String strLanguage, String strContactID) {
+		String queryParam = "LoginId="+strLoginID+"64&UserRole=CSR,Oneview Pilot-1,Oneview BRT-1,R76,BT User,R33,R45,R21,R75,R77,R180,R182,R252,R47,R52,R54,R55,R65,R68,R75,R77,R246,Telesales,R188,R252,R261,R167,R306,R307,R304,R311,BRT Authorized CSR-3,BRT Authorized CSR-4,Ignite Learning Lab Additive Role&IntID=&Target=UTE&TimeStamp=2021-05-16T11:29:45.4412-04:00&Lang="+strLanguage+"&AppId=CRM&li="+strLanID+"&AccNo=&ContactID="+strContactID+"&targetURL=IgniteNAC";
+		String oneViewUrl = strUrl + queryParam;
 		return oneViewUrl;
 	}
+
 	public static String urlOneViewMigration(String strUrl, String strLoginID, String strLanID, String strAccNo,String strLanguage,String strContactID) {
 		String queryParam="LoginId="+strLanID+"&UserRole=CSR,Oneview Pilot-1,Oneview BRT-1,R76,BT User,R33,R45,R21,R75,R77,R180,R182,R252,R47,R52,R54,R55,R65,R68,R75,R77,R246,Telesales,R188,R252,R261,R167,R306,R307,R304,R311,BRT Authorized CSR-3,BRT Authorized CSR-4,Ignite Learning Lab Additive Role&IntID=&Target=UTE&TimeStamp=2021-06-30T11:29:45.4412-04:00&Lang="+strLanguage+"&AppId=CRM&li="+strLoginID+"&AccNo="+strAccNo+"&ContactID="+strContactID+"";
 		String oneViewUrl= strUrl+queryParam;
