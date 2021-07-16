@@ -30,7 +30,7 @@ public class RogersSS_TC_045_AO_ValidateCHAccountBadge_LegacyInternet extends Ba
 	public void checkLegacyInternetUsage() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
-		 getRogersLoginPage().switchToSignInIFrame();
+		 //getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc45LegacyInternetAccount.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc45LegacyInternetAccount.getPassword());
@@ -39,7 +39,7 @@ public class RogersSS_TC_045_AO_ValidateCHAccountBadge_LegacyInternet extends Ba
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		reporter.reportLogWithScreenshot("Skip popup");
 		getRogersLoginPage().clkSkipIFrame();
-		 getRogersLoginPage().switchOutOfSignInIFrame();
+		 //getRogersLoginPage().switchOutOfSignInIFrame();
 		getRogersAccountOverviewPage()
 				.selectAccount(TestDataHandler.tc45LegacyInternetAccount.getAccountDetails().getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Overview Page");

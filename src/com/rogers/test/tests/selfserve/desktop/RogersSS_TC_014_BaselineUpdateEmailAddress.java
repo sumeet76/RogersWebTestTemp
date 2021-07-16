@@ -39,7 +39,7 @@ public class RogersSS_TC_014_BaselineUpdateEmailAddress extends BaseTestClass {
     	String strUsername = TestDataHandler.tc1314.getUsername();
     	String strPassword = TestDataHandler.tc1314.getPassword();
 		String strNewUsername = TestDataHandler.tc1314.getNewUsername();
-    	getRogersLoginPage().switchToSignInIFrame();
+    	//getRogersLoginPage().switchToSignInIFrame();
 		tryLogin(strUsername, strPassword);
         if (getRogersLoginPage().verifyLoginFailMsgIframe()) {
         	reporter.reportLogWithScreenshot("Login failed, update username.");
@@ -52,7 +52,7 @@ public class RogersSS_TC_014_BaselineUpdateEmailAddress extends BaseTestClass {
         						"Both login with original and new user name atemp failed, please investigate.");
         }
         getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
+        //getRogersLoginPage().switchOutOfSignInIFrame();
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
         	getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc1314.getAccountDetails().getBan());       

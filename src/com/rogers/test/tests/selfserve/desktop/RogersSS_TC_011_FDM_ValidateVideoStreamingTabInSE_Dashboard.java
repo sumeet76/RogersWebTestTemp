@@ -36,7 +36,7 @@ public class RogersSS_TC_011_FDM_ValidateVideoStreamingTabInSE_Dashboard extends
     public void blockFDMDataUsageForTheCTN() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc01030405.getUsername();
-    	getRogersLoginPage().switchToSignInIFrame();
+    	//getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc01030405.getPassword();    	
         getRogersLoginPage().setPasswordIFrame(strPassword);
@@ -44,7 +44,7 @@ public class RogersSS_TC_011_FDM_ValidateVideoStreamingTabInSE_Dashboard extends
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 		
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");

@@ -60,14 +60,14 @@ public class RogersSS_TC_118_119_PACMAN_VerifyImmediateAndDefferedCancellationPC
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc118.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc118.getPassword());
         reporter.reportLogWithScreenshot("Login Credential is entered.");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
+        //getRogersLoginPage().switchOutOfSignInIFrame();
         String strImmediateCancelCTN=TestDataHandler.tc118.getAccountDetails().getimmediateCancelCTN();
         String strDefferredCTN=TestDataHandler.tc118.getAccountDetails().getdeferredCancelCTN();
 

@@ -26,14 +26,14 @@ public class RogersSS_TC_093_AO_ValidateAutomaticPaymentsCreditCardSEInfinite ex
 	}
 		   
     private void tryLogin(String strUsername, String strPassword) {
-    	 getRogersLoginPage().switchToSignInIFrame();
+    	 //getRogersLoginPage().switchToSignInIFrame();
     	 getRogersLoginPage().setUsernameIFrame(strUsername);
          getRogersLoginPage().setPasswordIFrame(strPassword);
  		reporter.reportLogWithScreenshot("Login Credential is entered.");
          getRogersLoginPage().clkSignInIFrame();
          reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
          getRogersLoginPage().clkSkipIFrame();
-         getRogersLoginPage().switchOutOfSignInIFrame();
+         //getRogersLoginPage().switchOutOfSignInIFrame();
     }
     
     @Test(groups = {"RegressionSS","BillingAndPaymentsSS","AccountOverviewSS"})

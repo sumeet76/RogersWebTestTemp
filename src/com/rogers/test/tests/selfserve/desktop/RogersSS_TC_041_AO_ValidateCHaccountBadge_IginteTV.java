@@ -30,7 +30,7 @@ public class RogersSS_TC_041_AO_ValidateCHaccountBadge_IginteTV extends BaseTest
     public void checkTVDashboard() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc41IgniteTVAccount.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc41IgniteTVAccount.getPassword());
@@ -39,7 +39,7 @@ public class RogersSS_TC_041_AO_ValidateCHaccountBadge_IginteTV extends BaseTest
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame(); 
-        getRogersLoginPage().switchOutOfSignInIFrame();
+        //getRogersLoginPage().switchOutOfSignInIFrame();
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc41IgniteTVAccount.accountDetails.getBan());
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");

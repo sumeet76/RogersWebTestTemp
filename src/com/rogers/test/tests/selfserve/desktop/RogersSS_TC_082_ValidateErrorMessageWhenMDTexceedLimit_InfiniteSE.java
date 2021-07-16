@@ -38,7 +38,7 @@ public class RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE e
     public void validateErrorMessageWhenExceedLimitForInfiniteSEPlan() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc82.getUsername();
-    	getRogersLoginPage().switchToSignInIFrame();
+    	//getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc82.getPassword();    	
         getRogersLoginPage().setPasswordIFrame(strPassword);
@@ -46,7 +46,7 @@ public class RogersSS_TC_082_ValidateErrorMessageWhenMDTexceedLimit_InfiniteSE e
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 		
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");

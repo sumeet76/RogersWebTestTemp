@@ -26,7 +26,7 @@ public class RogersSS_TC_017_116_WirelessPostpaidVerifyPaymentHistoryWithPayment
     	String strUsername = csvRow[0];
     	String Password = csvRow[1];
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
 
         getRogersLoginPage().setUsernameIFrame(strUsername);
         getRogersLoginPage().setPasswordIFrame(Password);
@@ -34,7 +34,7 @@ public class RogersSS_TC_017_116_WirelessPostpaidVerifyPaymentHistoryWithPayment
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login proceed without error.", "Login got error.");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
+        //getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.reportLogWithScreenshot("Account overveiew page");
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login successful",
                 "Login Error. Refer screenshot");

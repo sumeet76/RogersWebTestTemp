@@ -16,14 +16,14 @@ public class RogersSS_TC_110_SOHOViewBillTest extends BaseTestClass {
     @Test(groups = {"BillingAndPaymentsSS"})
     public void viewBillTest() {
         getRogersHomePage().clkSignIn();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc101.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc101.getPassword());
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account overlay.");
             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc101.getAccountDetails().getBan());

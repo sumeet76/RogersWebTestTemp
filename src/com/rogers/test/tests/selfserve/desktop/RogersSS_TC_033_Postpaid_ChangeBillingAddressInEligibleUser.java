@@ -43,14 +43,14 @@ public class RogersSS_TC_033_Postpaid_ChangeBillingAddressInEligibleUser extends
     	String strPassword = TestDataHandler.tc060809.getPassword();
     	String strBan = TestDataHandler.tc060809.getAccountDetails().getBan();
 
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		getRogersLoginPage().setUsernameIFrame(strUsername);
 		getRogersLoginPage().setPasswordIFrame(strPassword);
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
         
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select BAN.");

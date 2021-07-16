@@ -669,6 +669,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public boolean verifyServiceSuspendedMsgDisplayed() {
+		getReusableActionsInstance().waitForElementVisibility(msgServiceSuspended,10);
 		return getReusableActionsInstance().isElementVisible(msgServiceSuspended, 30);
 	}
 	

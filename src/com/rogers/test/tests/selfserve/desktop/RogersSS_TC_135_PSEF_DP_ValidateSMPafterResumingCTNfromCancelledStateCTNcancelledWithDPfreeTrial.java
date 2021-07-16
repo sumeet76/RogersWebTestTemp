@@ -32,7 +32,7 @@ public class RogersSS_TC_135_PSEF_DP_ValidateSMPafterResumingCTNfromCancelledSta
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
     	getRogersHomePage().clkSignIn();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc134.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc134.getPassword());
         String strCTNRestoredFromV21AfterCancel = TestDataHandler.tc134.getAccountDetails().getCtn();
@@ -40,7 +40,7 @@ public class RogersSS_TC_135_PSEF_DP_ValidateSMPafterResumingCTNfromCancelledSta
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
         getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");

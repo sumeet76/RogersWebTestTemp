@@ -31,7 +31,7 @@ public class RogersSS_TC_063_ValidateDataUsageRunningLowOnMaxSpeedDataInfiniteIn
     public void validateDataUsageDisplayForRunningLowAndAddData() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc63.getUsername();
-    	getRogersLoginPage().switchToSignInIFrame();
+    	//getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc63.getPassword();    	
         getRogersLoginPage().setPasswordIFrame(strPassword);
@@ -39,7 +39,7 @@ public class RogersSS_TC_063_ValidateDataUsageRunningLowOnMaxSpeedDataInfiniteIn
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 		
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");

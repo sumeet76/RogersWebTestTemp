@@ -36,7 +36,7 @@ public class RogersSS_TC_056_ValidateDataUsageDesplayWithinLimit_postpaid_NSEDat
     public void validateDataUsageDisplayForDataOnlyPlan() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc56.getUsername();
-    	getRogersLoginPage().switchToSignInIFrame();
+    	//getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc56.getPassword();    	
         getRogersLoginPage().setPasswordIFrame(strPassword);
@@ -44,7 +44,7 @@ public class RogersSS_TC_056_ValidateDataUsageDesplayWithinLimit_postpaid_NSEDat
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.reportLogWithScreenshot("Account overview page.");       
         getRogersAccountOverviewPage().clkMenuUsageAndService();
         reporter.reportLogWithScreenshot("Menu Usage & Service is clicked.");

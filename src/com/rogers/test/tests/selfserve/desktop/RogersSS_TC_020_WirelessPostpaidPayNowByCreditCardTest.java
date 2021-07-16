@@ -18,14 +18,14 @@ public class RogersSS_TC_020_WirelessPostpaidPayNowByCreditCardTest extends Base
     @Test(groups = {"SanitySS","BillingAndPaymentsSS"})
     public void payNowByCreditCard() {
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc1920.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc1920.getPassword());
 		reporter.reportLogWithScreenshot("Login credential is entered.");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();                   
+        //getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),
 			        		"Login successful",
 			        		"Login Error. Refer screenshot");

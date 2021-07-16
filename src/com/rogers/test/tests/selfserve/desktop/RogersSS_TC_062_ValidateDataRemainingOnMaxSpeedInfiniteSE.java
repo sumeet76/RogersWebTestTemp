@@ -37,7 +37,7 @@ public class RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE extends B
     public void validateDataRemainingOnMaxSpeedInfiniteSE() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc6269.getUsername();
-    	getRogersLoginPage().switchToSignInIFrame();
+    	//getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc6269.getPassword();    	
         getRogersLoginPage().setPasswordIFrame(strPassword);
@@ -45,7 +45,7 @@ public class RogersSS_TC_062_ValidateDataRemainingOnMaxSpeedInfiniteSE extends B
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 		
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");

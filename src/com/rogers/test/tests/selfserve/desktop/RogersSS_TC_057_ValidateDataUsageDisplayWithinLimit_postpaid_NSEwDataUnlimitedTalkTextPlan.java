@@ -32,14 +32,14 @@ public class RogersSS_TC_057_ValidateDataUsageDisplayWithinLimit_postpaid_NSEwDa
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc57.getUsername();
     	String strPassword = TestDataHandler.tc57.getPassword();
-    	getRogersLoginPage().switchToSignInIFrame();
+    	//getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(strUsername);
         getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 		
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");

@@ -32,7 +32,7 @@ public class RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE ext
     public void validateDataUsageDisplayForRunningLowAndAddData() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc59.getUsername();
-    	getRogersLoginPage().switchToSignInIFrame();
+    	//getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc59.getPassword();    	
         getRogersLoginPage().setPasswordIFrame(strPassword);
@@ -40,7 +40,7 @@ public class RogersSS_TC_059_ValidateDataUsageDisplayRunningLow_postpaid_NSE ext
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 		
 //        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
 //        	reporter.reportLogWithScreenshot("Select an account.");

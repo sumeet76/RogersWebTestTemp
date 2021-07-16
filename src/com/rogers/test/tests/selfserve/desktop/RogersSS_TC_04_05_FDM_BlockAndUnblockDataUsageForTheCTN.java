@@ -31,7 +31,7 @@ public class RogersSS_TC_04_05_FDM_BlockAndUnblockDataUsageForTheCTN extends Bas
     public void blockFDMDataUsageForTheCTN() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc01030405.getUsername();
-    	getRogersLoginPage().switchToSignInIFrame();
+    	//getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc01030405.getPassword();    	
         getRogersLoginPage().setPasswordIFrame(strPassword);
@@ -39,7 +39,7 @@ public class RogersSS_TC_04_05_FDM_BlockAndUnblockDataUsageForTheCTN extends Bas
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 		
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");

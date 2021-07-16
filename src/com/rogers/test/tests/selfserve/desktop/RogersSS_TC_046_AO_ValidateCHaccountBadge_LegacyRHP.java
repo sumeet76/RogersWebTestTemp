@@ -35,7 +35,7 @@ public class RogersSS_TC_046_AO_ValidateCHaccountBadge_LegacyRHP extends BaseTes
 	public void checkLegacyRHPDashboard () throws InterruptedException {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc46LegacyRHP.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc46LegacyRHP.getPassword());
@@ -44,7 +44,7 @@ public class RogersSS_TC_046_AO_ValidateCHaccountBadge_LegacyRHP extends BaseTes
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		reporter.reportLogWithScreenshot("Skip popup");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc46LegacyRHP.getAccountDetails().getBan());
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Login Success","Login Failed");
 		reporter.reportLogWithScreenshot("Launched the Account Page");

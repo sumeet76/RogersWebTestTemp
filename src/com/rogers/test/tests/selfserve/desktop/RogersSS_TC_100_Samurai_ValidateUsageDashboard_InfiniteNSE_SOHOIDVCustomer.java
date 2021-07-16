@@ -34,7 +34,7 @@ public class RogersSS_TC_100_Samurai_ValidateUsageDashboard_InfiniteNSE_SOHOIDVC
 	public void validateUsageDashboardOfInfiniteNSESohoIDVCustomer() throws InterruptedException {
 		getRogersHomePage().clkSignIn();
 		String strUsername = TestDataHandler.tc100.getUsername();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		getRogersLoginPage().setUsernameIFrame(strUsername);
 		String strPassword = TestDataHandler.tc100.getPassword();
 		getRogersLoginPage().setPasswordIFrame(strPassword);
@@ -42,7 +42,7 @@ public class RogersSS_TC_100_Samurai_ValidateUsageDashboard_InfiniteNSE_SOHOIDVC
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login proceed without error.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),
 				"Login succeed, account overview page openned.", 

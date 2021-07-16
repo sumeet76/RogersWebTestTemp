@@ -38,7 +38,7 @@ public class RogersSS_TC_101_ValidateAddSpeedPass_SohoCustomer_InfiniteSE extend
     public void validateAddSpeedPassForInfiniteSESohoCustomer() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc101.getUsername();
-    	getRogersLoginPage().switchToSignInIFrame();
+    	//getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc101.getPassword();    	
         getRogersLoginPage().setPasswordIFrame(strPassword);
@@ -46,7 +46,7 @@ public class RogersSS_TC_101_ValidateAddSpeedPass_SohoCustomer_InfiniteSE extend
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 
         reporter.reportLogWithScreenshot("Account overview page.");   
         getRogersAccountOverviewPage().clkMenuUsageAndService();

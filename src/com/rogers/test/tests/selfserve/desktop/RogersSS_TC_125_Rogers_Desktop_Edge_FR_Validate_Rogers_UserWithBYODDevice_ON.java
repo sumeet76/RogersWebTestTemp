@@ -36,14 +36,14 @@ public class RogersSS_TC_125_Rogers_Desktop_Edge_FR_Validate_Rogers_UserWithBYOD
     	String strBan = TestDataHandler.tc125.getAccountDetails().getBan();
     	String strEmail = TestDataHandler.tc125.getAccountDetails().getContactemail();
     	strAltEmail = FormFiller.generateEmail();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		getRogersLoginPage().setUsernameIFrame(strUsername);
 		getRogersLoginPage().setPasswordIFrame(strPassword);
 		reporter.reportLogWithScreenshot("Login Credential is entered.");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
         
 
 		reporter.reportLogWithScreenshot("Account overveiew page");

@@ -30,7 +30,7 @@ public class RogersSS_TC_040_AO_ValidateCHaccountBadge_SHM extends BaseTestClass
     public void checkTVDashboard() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc40SHMAccount.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc40SHMAccount.getPassword());
@@ -39,7 +39,7 @@ public class RogersSS_TC_040_AO_ValidateCHaccountBadge_SHM extends BaseTestClass
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
+        //getRogersLoginPage().switchOutOfSignInIFrame();
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc40SHMAccount.accountDetails.getBan());
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),
         		"Logged in successfully", "Login failed");

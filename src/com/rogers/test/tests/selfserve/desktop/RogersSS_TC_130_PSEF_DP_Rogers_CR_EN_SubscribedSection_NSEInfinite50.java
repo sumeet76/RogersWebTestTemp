@@ -31,14 +31,14 @@ public class RogersSS_TC_130_PSEF_DP_Rogers_CR_EN_SubscribedSection_NSEInfinite5
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
     	getRogersHomePage().clkSignIn();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc130.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc130.getPassword());
         reporter.reportLogWithScreenshot("Login Credential is entered.");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
         getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");

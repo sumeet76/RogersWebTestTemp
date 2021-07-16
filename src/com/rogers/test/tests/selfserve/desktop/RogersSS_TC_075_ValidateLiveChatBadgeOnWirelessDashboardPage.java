@@ -36,7 +36,7 @@ public class RogersSS_TC_075_ValidateLiveChatBadgeOnWirelessDashboardPage extend
     public void validateLiveChatBadgeOnWirelessDashboardPage() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc727375.getUsername();
-    	getRogersLoginPage().switchToSignInIFrame();
+    	//getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc727375.getPassword();    	
         getRogersLoginPage().setPasswordIFrame(strPassword);
@@ -44,7 +44,7 @@ public class RogersSS_TC_075_ValidateLiveChatBadgeOnWirelessDashboardPage extend
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 		
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");

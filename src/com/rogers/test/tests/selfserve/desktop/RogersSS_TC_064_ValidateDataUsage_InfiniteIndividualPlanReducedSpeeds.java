@@ -31,7 +31,7 @@ public class RogersSS_TC_064_ValidateDataUsage_InfiniteIndividualPlanReducedSpee
     public void validateDataUsageForInfiniteNsePlanReducedSpeed() {
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc64.getUsername();
-    	getRogersLoginPage().switchToSignInIFrame();
+    	//getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(strUsername);
         String strPassword = TestDataHandler.tc64.getPassword();    	
         getRogersLoginPage().setPasswordIFrame(strPassword);
@@ -39,7 +39,7 @@ public class RogersSS_TC_064_ValidateDataUsage_InfiniteIndividualPlanReducedSpee
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 		
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");

@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 
 
 
-public class RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage extends BaseTestClass {	
+public class RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage extends BaseTestClass {
     
 	 @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})
 		public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
@@ -80,14 +80,14 @@ public class RogersSS_TC_002_TC24_Baseline_CSS_Wireless_SuspendAndReactiveUsage 
     	getRogersHomePage().clkSignIn();
     	String strUsername = TestDataHandler.tc0224.getUsername();
     	String strPassword = TestDataHandler.tc0224.getPassword();
-    	getRogersLoginPage().switchToSignInIFrame();
+    	//getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(strUsername);
         getRogersLoginPage().setPasswordIFrame(strPassword);
         reporter.reportLogWithScreenshot("Login Credential is entered.");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 		
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");

@@ -32,7 +32,7 @@ public class RogersSS_TC_136_PSEF_DP_ValidateCTNRedemptionForAMthenDP_SingleAcco
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
     	getRogersHomePage().clkSignIn();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc136.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc136.getPassword());
         String strCTN = TestDataHandler.tc136.getAccountDetails().getCtn();
@@ -40,7 +40,7 @@ public class RogersSS_TC_136_PSEF_DP_ValidateCTNRedemptionForAMthenDP_SingleAcco
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login proceed.", "Login got error.");
         getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.reportLogWithScreenshot("Account overview page.");
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Passed", "Login Failed");
         

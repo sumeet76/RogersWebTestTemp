@@ -33,7 +33,7 @@ public class RogersSS_TC_104_PACMAN_ValidateTheVASredeemptionAndCancelFlowInSing
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
     	getRogersHomePage().clkSignIn();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc104.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc104.getPassword());
         String strCTN =TestDataHandler.tc104.getAccountDetails().getCtn();
@@ -42,7 +42,7 @@ public class RogersSS_TC_104_PACMAN_ValidateTheVASredeemptionAndCancelFlowInSing
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login proceed.",
         		"Login got error.");
         getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		//getRogersLoginPage().switchOutOfSignInIFrame();
 
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
