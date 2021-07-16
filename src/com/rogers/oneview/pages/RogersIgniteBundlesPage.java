@@ -4,9 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
+
+import java.util.List;
 
 public class RogersIgniteBundlesPage extends BasePageClass{
 
@@ -26,7 +29,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//button[@ng-reflect-rch-track-click-event='checkServiceability']")
 	WebElement checkAvailabilitybtn;
 
-	@FindBy(xpath = "//div[@ng-reflect-klass='ds-formField__inputContainer d']")
+	@FindBy(xpath = "//*[@id='ds-modal-container-0']/ds-modal/div[2]/div[1]/div/div[2]/div/div/rch-pca-address-lookup/div/ds-form-field/div/div[1]")
 	WebElement inputContainer;
 
 	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button")
@@ -35,13 +38,13 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[text()='This address is serviceable!' or text()='Cette adresse peut être desservie!']")
 	WebElement serviceavailableMessage;
 
-	@FindBy(xpath = "//div[contains(text(),'TV')]/ancestor::label")
+	@FindBy(xpath = "//div[contains(text(),'TV')]/ancestor::label  | //div[@id='ds-checkbox-id-0-label-container'] | //div[contains(text(), ' TV ')]")
 	WebElement tvCheckbox;
 
-	@FindBy(xpath = "//div[contains(text(),'Internet')]/ancestor::label")
+	@FindBy (xpath = "//div[contains(text(),'Internet')]/ancestor::label | //div[@id='ds-checkbox-id-1-label-container'] | //div[contains(text(), ' Internet ')]")
 	WebElement internetCheckbox;
 
-	@FindBy(xpath = "//div[contains(text(),'Home Phone')]/ancestor::label")
+	@FindBy(xpath = "//div[contains(text(),'Home Phone')]/ancestor::label  | //div[@id='ds-checkbox-id-3-label-container'] | //div[contains(text(), ' Home Phone ')]")
 	WebElement homePhoneCheckbox;
 
 	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button")
@@ -100,6 +103,103 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 	@FindBy(xpath = "//div[@class='rch-modal']//span[text()='Yes' or text()='Oui']/ancestor::button")
 	WebElement yesBtn;
+
+
+	@FindAll({
+			@FindBy(xpath = "//span[text()='Load offers']/ancestor::button"),
+			@FindBy(xpath = "//span[@translate='global.cta.loadOffer']/ancestor::button")
+	})
+	WebElement loadOffers;
+
+	@FindBy(xpath = "//span[text()='No' or text()='Non']/ancestor::button")
+	WebElement noPortInServices;
+
+	@FindBy(xpath = "//*[@id=\"ds-modal-container-7\"]/rch-tv4k-modal/ds-modal/div[2]/div[2]/div[2]/div/button")
+	WebElement fourKContinue;
+
+
+
+
+	@FindAll({
+			@FindBy(xpath = "//rch-tv4k-modal/descendant::button/descendant::span[@translate='global.cta.continue']/ancestor::button"),
+			@FindBy(xpath = "//rch-tv4k-modal/descendant::span[text()='Continuer' or text()='Continue']/ancestor::button")
+	})
+	WebElement continue4KContent;
+
+
+	@FindAll({
+			@FindBy(xpath = "//div[contains(text(),'SmartStream')]/ancestor::label"),
+			@FindBy(xpath = "//div[@id='ds-checkbox-id-2-label-container']"),
+			@FindBy(xpath = "//div[contains(text(), ' SmartStream ')]")
+	})
+	WebElement smartStreamCheckbox;
+
+	@FindBy(xpath = "//h1[text()='Cart Summary']")
+	WebElement cartSummaryLabel;
+
+	@FindBy(xpath = "//button[@rchtrackclickevent='exchangeLater']")
+	WebElement exchangeLater;
+
+	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']")
+	WebElement reviewTermsAndCondition;
+
+	String collapsible = "(//rch-collapsible[@ng-reflect-is-open='false'])";
+
+	@FindBy(xpath = "//div[@class='serviceability-ptm-modal-footer']/descendant::span[@translate='global.cta.continue']/ancestor::button")
+	WebElement continueFromPointsToMention;
+
+	/**
+	 * Click Load Offers button
+	 * @author aditi.jain
+	 */
+	public void clickContinueFromPointsToMention() {
+		getReusableActionsInstance().waitForElementVisibility(continueFromPointsToMention, 120);
+		getReusableActionsInstance().executeJavaScriptClick(continueFromPointsToMention);
+	}
+
+	/**
+	 * Review Terms & Condition
+	 * @author aditi.jain
+	 */
+	public void reviewTermsAndCondition() {
+
+		List<WebElement> allCollapsible = getDriver().findElements(By.xpath(collapsible));
+		for (int i=1; i<=allCollapsible.size(); i++) {
+			getReusableActionsInstance().staticWait(5000);
+			WebElement currentCollapisble = getReusableActionsInstance().getWhenReady(By.xpath(collapsible +"[1]"));
+			getReusableActionsInstance().scrollToElement(currentCollapisble);
+			getReusableActionsInstance().clickWhenReady(currentCollapisble);
+		}
+
+		getReusableActionsInstance().waitForElementVisibility(reviewTermsAndCondition, 120);
+		getReusableActionsInstance().scrollToElement(reviewTermsAndCondition);
+		getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);
+	}
+	/**
+	 * Click Load Offers button
+	 * @author aditi.jain
+	 */
+	public void clkLoadOffers() {
+		getReusableActionsInstance().waitForElementVisibility(loadOffers, 120);
+		getReusableActionsInstance().executeJavaScriptClick(loadOffers);
+	}
+
+	/**
+	 * Port-in not supported Pop UP
+	 * @author aditi.jain
+	 */
+	public void noPortInPopup() {
+		getReusableActionsInstance().clickWhenReady(noPortInServices,120);
+	}
+
+	/**
+	 * click Add To Cart for Smartstream
+	 * @author aditi.jain
+	 */
+	public void clkAddtoCartISS(String planEn) {
+		getReusableActionsInstance().getWhenReady(By.xpath("//span[text()='"+planEn+"']/parent::div/parent::div//span[text()='Add to cart']/ancestor::button"),120).sendKeys(Keys.ENTER);
+	}
+
 	/**
 	 * Enter the address to search for service availability
 	 * @param address is the Address to check for availability
@@ -195,7 +295,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkCheckOut() {
-		getReusableActionsInstance().clickWhenReady(checkOut,120);
+		getReusableActionsInstance().waitForElementVisibility(checkOut, 60);
+		getReusableActionsInstance().executeJavaScriptClick(checkOut);
 	}
 	/**
 	 * Click Checkout for Cart Summary
@@ -203,6 +304,23 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */	
 	public void clkCheckOutforCartSummary() {
 		getReusableActionsInstance().getWhenReady(checkOut,120).sendKeys(Keys.ENTER);
+	}
+
+	/**
+	 * CLick Continue for four K
+	 * @author aditi.jain
+	 */
+	public void fourKContinue() {
+		getReusableActionsInstance().clickWhenReady(fourKContinue, 120);
+	}
+
+	/**
+	 * CLick Continue
+	 * @author aditi.jain
+	 */
+	public void contiue4KContent() {
+		getReusableActionsInstance().waitForElementVisibility(continue4KContent, 120);
+		getReusableActionsInstance().clickWhenReady(continue4KContent, 120);
 	}
 	/**
 	 * Customer Wish to Continue Popup
@@ -218,26 +336,46 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	public void clkCollapse() {
 		getReusableActionsInstance().clickIfAvailable(collapse,45);
 	}
+
+	/**
+	 * click exchange later button
+	 * @author Aditi.Jain
+	 */
+	public void clickExchangeLater() {
+		getReusableActionsInstance().clickWhenReady(exchangeLater,120);
+	}
+
 	/**
 	 * Click TV checkbox
 	 * @author chinnarao.vattam
 	 */	
 	public void clkTVCheckbox() {
-		getReusableActionsInstance().clickWhenReady(tvCheckbox,120);
+		getReusableActionsInstance().waitForElementVisibility(tvCheckbox, 120);
+		getReusableActionsInstance().executeJavaScriptClick(tvCheckbox);
 	}
 	/**
 	 * Click Internet checkbox
 	 * @author chinnarao.vattam
 	 */	
 	public void clkInternetCheckbox() {
-		getReusableActionsInstance().clickWhenReady(internetCheckbox,120);
+		getReusableActionsInstance().waitForElementVisibility(internetCheckbox, 120);
+		getReusableActionsInstance().executeJavaScriptClick(internetCheckbox);
+	}
+	/**
+	 * Click SmartStream
+	 * @author aditi.jain
+	 */
+	public void clkSmartStream() {
+		getReusableActionsInstance().scrollToElement(smartStreamCheckbox);
+		getReusableActionsInstance().executeJavaScriptClick(smartStreamCheckbox);
 	}
 	/**
 	 * Click Home Phone checkbox
 	 * @author chinnarao.vattam
 	 */	
 	public void clkHomePhoneCheckbox() {
-		getReusableActionsInstance().clickWhenReady(homePhoneCheckbox,120);
+		getReusableActionsInstance().waitForElementVisibility(homePhoneCheckbox, 120);
+		getReusableActionsInstance().executeJavaScriptClick(homePhoneCheckbox);
 	}	
 	/**
 	 * Click Exchange Later btn

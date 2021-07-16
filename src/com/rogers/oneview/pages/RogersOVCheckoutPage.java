@@ -398,6 +398,55 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "(//table[contains(@data-test,'ov-credit-eval')]//td)[2]")
 	WebElement downPaymentAmt;
 
+	@FindBy(xpath = "//rch-security-code//ds-form-field")
+	WebElement cvvCode;
+
+	@FindBy(xpath = "//rch-security-code//ds-form-field/child::div/child::div/child::input")
+	WebElement cardCVV;
+
+	@FindBy(xpath = "//div[@class='input_container']/child::ds-form-field/child::div/child::div/child::div/child::input")
+	WebElement token;
+
+	@FindBy(xpath = "//div[@class='rch-payment-options']/child::div/child::div/child::rch-pre-authorized-credit-card/child::div/child::div/child::rch-credit-card/child::rch-expiry-date-credit-card/child::div/child::div/following-sibling::div/following-sibling::div//child::ds-form-field/child::div/child::div/child::select")
+	WebElement cardExpiryYear;
+
+	@FindBy(xpath = "//div[@class='rch-payment-options']/child::div/child::div/child::rch-pre-authorized-credit-card/child::div/child::div/child::rch-credit-card/child::rch-expiry-date-credit-card/child::div/child::div/child::ds-form-field/child::div/child::div/child::select")
+	WebElement cardExpiryMonth;
+
+	@FindBy(xpath = "//span[@translate='global.cta.submit']")
+	WebElement submitButton;
+
+	/**
+	 * Set expiry month and year of credit card
+	 * @author aditi.jain
+	 */
+	public void setCardExpiryMonthAndYear() {
+		getReusableActionsInstance().javascriptScrollByVisibleElement(cardExpiryMonth);
+		getReusableActionsInstance().selectWhenReady(cardExpiryMonth, 3);
+		getReusableActionsInstance().staticWait(10000);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(cardExpiryYear);
+		getReusableActionsInstance().selectWhenReady(cardExpiryYear, 3);
+	}
+
+	/**
+	 * Enter CVV
+	 * @author aditi.jain
+	 */
+	public void setCardCVV(String cvv) {
+		getReusableActionsInstance().javascriptScrollByVisibleElement(cvvCode);
+		getReusableActionsInstance().clickWhenReady(cvvCode);
+		cardCVV.clear();
+		cardCVV.sendKeys(cvv);
+	}
+
+	/**
+	 * Enter credit card number
+	 * @author aditi.jain
+	 */
+	public void enterCardToken(String ccdNumber){
+		token.clear();
+		token.sendKeys(ccdNumber);
+	}
 
 	/**
 	 * To get the Title of post checkout page
@@ -1570,6 +1619,15 @@ public class RogersOVCheckoutPage extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(submitBtnCheckoutPage);
 	}
 
+	/**
+	 * Click Submit Button
+	 * @author Aditi.jain
+	 */
+	public void clkSubmit() {
+		getReusableActionsInstance().staticWait(120000);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().clickWhenReady(submitButton);
+	}
 	/**
 	 * To verify Billing Details in the Billing Payment option stepper
 	 *

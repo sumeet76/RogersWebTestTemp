@@ -5,6 +5,9 @@ public class ContactDetails {
 	private String lastName;
 	private String contactID;
 	private String contactIDforDualPlay;
+	private String contactIDTriple;
+	private String contactIDISS;
+	private String contactIDSAI;
 	private String address;
 	private String yearOfBirth;
 	private String monthOfBirth;
@@ -20,6 +23,45 @@ public class ContactDetails {
 	public ContactDetails() {
 		
 	}
+	/**
+	 * @return the ContactID for Dual Play
+	 */
+	public String getContactIDTriple() {
+		return contactIDTriple;
+	}
+	/**
+	 * @param contactIDTriple the contactIDTriple for Triple play to set
+	 */
+	public void setContactIDTriple(String contactIDTriple) {
+		this.contactIDTriple = contactIDTriple;
+	}
+
+	/**
+	 * @return the ContactID for Dual Play
+	 */
+	public String getContactIDISS() {
+		return contactIDISS;
+	}
+	/**
+	 * @param contactIDISS the contactIDISS for dual play to set
+	 */
+	public void setContactIDISS(String contactIDISS) {
+		this.contactIDISS = contactIDISS;
+	}
+
+	/**
+	 * @return the ContactID for Dual Play
+	 */
+	public String getContactIDSAI() {
+		return contactIDSAI;
+	}
+	/**
+	 * @param contactIDSAI the contactIDSAI for dual play to set
+	 */
+	public void setContactIDSAI(String contactIDSAI) {
+		this.contactIDSAI = contactIDSAI;
+	}
+
 	/**
 	 * @return the First Name
 	 */

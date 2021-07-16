@@ -177,5 +177,15 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	public void clkSubmitOrder() {
 		getReusableActionsInstance().clickWhenVisible(btnSubmitOrder,60);
 	}
+
+	/**
+	 * Click Submit Button for Channel/ThemePack change
+	 * @author Aditi.Jain
+	 */
+	public void clickSubmitToManageThemepackOrChannel() {
+		getReusableActionsInstance().waitForElementVisibility(submitButton, 300);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().executeJavaScriptClick(submitButton);
+	}
 }
 

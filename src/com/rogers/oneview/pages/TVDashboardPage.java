@@ -4,6 +4,7 @@ package com.rogers.oneview.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 
@@ -178,6 +179,185 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath="//span[@ng-reflect-translate='global.cta.continue']/ancestor::button")
 	WebElement continueChannlesAndThemePacks;
 
+	@FindBy(xpath = "//span[@translate='global.dashboard.tv.manageChannelsAndThemePacks.buttonName']")
+	WebElement manageChannelsAndThemeparks;
+
+	@FindBy(xpath = "//button[@translate='global.cta.tabs.channels']")
+	WebElement channelsTab;
+
+	@FindBy(xpath = "//div[@role='tablist']")
+	WebElement goToChannelOrThemepackTabs;
+
+	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[2]")
+	WebElement addChannel;
+
+	@FindBy(xpath = "(//label[@class='ds-radioLabel d-inline-flex align-items-start'])[2]")
+	WebElement immediateDateChange;
+
+	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
+	WebElement cancel;
+
+	@FindBy(xpath = "//span[@translate='global.label.reviewAddons']")
+	WebElement reviewAddOns;
+
+	@FindBy(xpath = "//span[@translate='global.cta.reviewAddonsLink']")
+	WebElement addOnLink;
+
+
+
+	@FindAll({
+			@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks']"),
+			@FindBy(xpath = "//span[contains(text(),'Theme Packs') or contains(text(), 'Forfaits à thème')]/ancestor::button")
+	})
+	WebElement themePacksTab;
+
+	@FindBy(xpath = "//div[@class='themepack-detail channels-container']/descendant::span[@translate='global.cta.add']")
+	WebElement addThemepack;
+
+	@FindBy(xpath = "(//div[@class='with-question']/descendant::button)[1]")
+	WebElement continueToAddThemepack;
+
+	@FindBy(xpath = "//span[contains(text(), 'Your Changes')]")
+	WebElement yourChanges;
+
+	@FindBy(xpath = "//h3[@translate='global.dashboard.tv.customerHasTheFollowing']")
+	WebElement existingPackages;
+
+	@FindBy(xpath = "(//span[@translate='global.cta.addToCart']/ancestor::button)[1]")
+	WebElement callingAddToCart;
+
+
+	@FindBy(xpath = "(//span[@ng-reflect-translate='global.modals.conflictWarnings'])[1] | //span[text()='Oui, continuer' or text()='Yes, continue']/ancestor::button")
+	WebElement yesToContinue;
+
+
+
+//	String dollarAmount = "//div[@class='ect-body']/descendant::div[@class='ds-price__amountDollars text-semi ng-star-inserted']";
+//	String centsAmount = "(//div[@class='ect-body']/descendant::span[@class='ds-price__amountCents text-body mb-0 ng-star-inserted'])";
+
+
+	/**
+	 * Click Add to Cart for calling package
+	 * @author Aditi.jain
+	 */
+	public void addToCartCallingPackage() {
+		getReusableActionsInstance().waitForElementVisibility(callingAddToCart, 120);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(callingAddToCart);
+		getReusableActionsInstance().getWhenReady(callingAddToCart, 120).click();
+	}
+	/**
+	 * Click Add Themepack
+	 * @author Aditi.jain
+	 */
+	public void addThemepack() {
+		getReusableActionsInstance().waitForElementVisibility(addThemepack, 300);
+		getReusableActionsInstance().executeJavaScriptClick(addThemepack);
+		if(getReusableActionsInstance().isElementVisible(yesToContinue, 120)){
+			getReusableActionsInstance().clickWhenReady(yesToContinue);
+		}
+	}
+
+	/**
+	 * click AddOn notification if available
+	 * @author Aditi.jain
+	 */
+	public void clickAddOnIfPresent() {
+		if(getReusableActionsInstance().isElementVisible(reviewAddOns, 120)){
+			getReusableActionsInstance().waitForElementVisibility(addOnLink, 120);
+			getReusableActionsInstance().executeJavaScriptClick(addOnLink);
+		}
+	}
+
+	/**
+	 * To click Manage channels and themeparks
+	 * @author Aditi.jain
+	 */
+	public void clickManageChannelsAndThemeparks() {
+		getReusableActionsInstance().waitForElementVisibility(manageChannelsAndThemeparks, 240);
+		getReusableActionsInstance().scrollToElement(manageChannelsAndThemeparks);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(manageChannelsAndThemeparks);
+		getReusableActionsInstance().executeJavaScriptClick(manageChannelsAndThemeparks);
+	}
+
+	/**
+	 * To click Click Channel Tab
+	 * @author Aditi.jain
+	 */
+	public void clickThemepacksTab() {
+		getReusableActionsInstance().waitForElementVisibility(goToChannelOrThemepackTabs, 120);
+		getReusableActionsInstance().scrollToElement(goToChannelOrThemepackTabs);
+		if(getReusableActionsInstance().isElementVisible(cancel)){
+			getReusableActionsInstance().waitForElementVisibility(cancel);
+			getReusableActionsInstance().getWhenReady(cancel, 300).click();
+		}
+		getReusableActionsInstance().getWhenReady(themePacksTab, 120).click();
+	}
+
+	/**
+	 * Click Continue to Add Themepack
+	 * @author Aditi.jain
+	 */
+	public void continueToAddThemepack() {
+		getReusableActionsInstance().waitForElementVisibility(continueToAddThemepack, 300);
+		getReusableActionsInstance().executeJavaScriptClick(continueToAddThemepack);
+
+	}
+	/**
+	 * To click Click Channel Tab
+	 * @author Aditi.jain
+	 */
+	public void clickChannelTab() {
+		getReusableActionsInstance().waitForElementVisibility(goToChannelOrThemepackTabs, 120);
+		getReusableActionsInstance().scrollToElement(goToChannelOrThemepackTabs);
+		getReusableActionsInstance().getWhenReady(channelsTab, 120).click();
+	}
+
+	/**
+	 * To click add channel
+	 * @author Aditi.jain
+	 */
+	public void clickAddChannel() {
+		WebElement bTn=getReusableActionsInstance().getWhenReady(addChannel, 300);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,bTn.getLocation().y-300);
+		getReusableActionsInstance().getWhenReady(addChannel, 60).click();
+		getReusableActionsInstance().staticWait(3000);
+	}
+
+
+	/**
+	 * continue making more selections
+	 * @author aditi.jain
+	 */
+	public void clickYourChanges() {
+		getReusableActionsInstance().waitForElementVisibility(yourChanges);
+		getReusableActionsInstance().executeJavaScriptClick(yourChanges);
+	}
+
+	/**
+	 * Clicks continue on change TV package
+	 * @author chinnarao.vattam
+	 */
+	public void clickContinueForPackage() {
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().waitForElementVisibility(btnContnueReset, 120);
+		getReusableActionsInstance().getWhenReady(btnContnueReset, 90).click();
+	}
+	/**
+	 * Click immediate date change
+	 * @author Aditi.jain
+	 */
+	public void immediateDateChangeOption() {
+		getReusableActionsInstance().waitForElementVisibility(immediateDateChange, 120);
+		getReusableActionsInstance().getWhenReady(immediateDateChange, 120).click();
+	}
+	/**
+	 * Click conitnue to add channel
+	 * @author Aditi.jain
+	 */
+	public void clickContinueToManageChannel() {
+		getReusableActionsInstance().waitForElementVisibility(cancel);
+		getReusableActionsInstance().getWhenReady(cancel, 300).click();
+	}
 	/**
 	 * Clicks submit button for changing the TV package
 	 * @return true if the element is visible, else false
