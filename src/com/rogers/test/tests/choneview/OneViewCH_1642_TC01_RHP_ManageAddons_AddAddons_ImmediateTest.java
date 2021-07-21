@@ -14,10 +14,8 @@ public class OneViewCH_1642_TC01_RHP_ManageAddons_AddAddons_ImmediateTest extend
     @Test
    public void checkManageAddOns(){
         getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
-        /*getAccountOverViewPage().enterDealerCodeDialogue();
-         getAccountOverViewPage().clkSubmitBtnDealerCodeDialogue();
-         getAccountOverViewPage().setSkipNotification();*/
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
+        getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().selectHomePhoneBadge();
         reporter.reportLogWithScreenshot("Launched the Home Phone dashboard page");
         getHomePhonedashboard().clickManageAddOns();

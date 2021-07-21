@@ -195,10 +195,6 @@ public class AccountOverViewPage  extends BasePageClass {
 	 */
 	public void selectHomePhoneBadge() {
 
-		if(getReusableActionsInstance().isElementVisible(delearCodeOneViewDialogue,30)) {
-			getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 10).sendKeys("0MAAA");
-			getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue,30);
-		}
 		if(getReusableActionsInstance().isElementVisible(skipNotification,10))
 		{
 			getReusableActionsInstance().clickWhenReady(skipNotification);
