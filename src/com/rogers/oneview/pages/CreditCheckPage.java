@@ -151,19 +151,21 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @param passportNo is the Passport no. to set
 	 * @author chinnarao.vattam
 	 */	
-	public void setPassport(String expiryYear, String idExpiryMonth,String idExpiryDay,String passportNo ) {	
-		getReusableActionsInstance().javascriptScrollByVisibleElement(secondID);
-		getReusableActionsInstance().selectWhenReady(secondID,3);
-		getReusableActionsInstance().javascriptScrollByVisibleElement(passportContainer);
-		getReusableActionsInstance().clickWhenReady(passportContainer);
-		getReusableActionsInstance().javascriptScrollByVisibleElement(passportInput);
-		getReusableActionsInstance().enterText(passportInput, passportNo, 30);
-		getReusableActionsInstance().javascriptScrollByVisibleElement(passportExpiryYear);
-		getReusableActionsInstance().selectWhenReadyByVisibleText(passportExpiryYear, expiryYear);
-		getReusableActionsInstance().javascriptScrollByVisibleElement(passportExpiryMonth);
-		getReusableActionsInstance().selectWhenReady(passportExpiryMonth,Integer.parseInt(idExpiryMonth));
-		getReusableActionsInstance().javascriptScrollByVisibleElement(passportExpiryDay);
-		getReusableActionsInstance().selectWhenReadyByVisibleText(passportExpiryDay, idExpiryDay);
+	public void setPassport(String expiryYear, String idExpiryMonth,String idExpiryDay,String passportNo ) {
+		if(!getReusableActionsInstance().isElementVisible(noIDRequired, 5)) {
+			getReusableActionsInstance().javascriptScrollByVisibleElement(secondID);
+			getReusableActionsInstance().selectWhenReady(secondID, 3);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(passportContainer);
+			getReusableActionsInstance().clickWhenReady(passportContainer);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(passportInput);
+			getReusableActionsInstance().enterText(passportInput, passportNo, 30);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(passportExpiryYear);
+			getReusableActionsInstance().selectWhenReadyByVisibleText(passportExpiryYear, expiryYear);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(passportExpiryMonth);
+			getReusableActionsInstance().selectWhenReady(passportExpiryMonth, Integer.parseInt(idExpiryMonth));
+			getReusableActionsInstance().javascriptScrollByVisibleElement(passportExpiryDay);
+			getReusableActionsInstance().selectWhenReadyByVisibleText(passportExpiryDay, idExpiryDay);
+		}
 	}
 	/**
 	 * Select ID's Type and Details
@@ -174,20 +176,22 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @param licenseNo is the DL No. to set
 	 * @author chinnarao.vattam
 	 */	
-	public void setDriversLicense(String provinc,String expiryYear, String idExpiryMonth,String idExpiryDay,String licenseNo) {	
-		//getReusableActionsInstance().selectWhenReadyByVisibleText(iD, iD1);
-		getReusableActionsInstance().selectWhenReady(iD,2);
-		getReusableActionsInstance().selectWhenReadyByVisibleText(province, provinc);
-		getReusableActionsInstance().javascriptScrollByVisibleElement(licenseExpiryYear);
-		getReusableActionsInstance().selectWhenReadyByVisibleText(licenseExpiryYear, expiryYear);
-		getReusableActionsInstance().javascriptScrollByVisibleElement(licenseExpiryMonth);
-		getReusableActionsInstance().selectWhenReady(licenseExpiryMonth,Integer.parseInt(idExpiryMonth));
-		getReusableActionsInstance().javascriptScrollByVisibleElement(licenseExpiryDay);
-		getReusableActionsInstance().selectWhenReadyByVisibleText(licenseExpiryDay, idExpiryDay);
-		getReusableActionsInstance().javascriptScrollByVisibleElement(licenseNoContainer);
-		getReusableActionsInstance().clickWhenReady(licenseNoContainer);
-		getReusableActionsInstance().javascriptScrollByVisibleElement(licenseNoInput);
-		getReusableActionsInstance().enterText(licenseNoInput, licenseNo, 30);
+	public void setDriversLicense(String provinc,String expiryYear, String idExpiryMonth,String idExpiryDay,String licenseNo) {
+		if(!getReusableActionsInstance().isElementVisible(noIDRequired, 5)) {
+			//getReusableActionsInstance().selectWhenReadyByVisibleText(iD, iD1);
+			getReusableActionsInstance().selectWhenReady(iD, 2);
+			getReusableActionsInstance().selectWhenReadyByVisibleText(province, provinc);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(licenseExpiryYear);
+			getReusableActionsInstance().selectWhenReadyByVisibleText(licenseExpiryYear, expiryYear);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(licenseExpiryMonth);
+			getReusableActionsInstance().selectWhenReady(licenseExpiryMonth, Integer.parseInt(idExpiryMonth));
+			getReusableActionsInstance().javascriptScrollByVisibleElement(licenseExpiryDay);
+			getReusableActionsInstance().selectWhenReadyByVisibleText(licenseExpiryDay, idExpiryDay);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(licenseNoContainer);
+			getReusableActionsInstance().clickWhenReady(licenseNoContainer);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(licenseNoInput);
+			getReusableActionsInstance().enterText(licenseNoInput, licenseNo, 30);
+		}
 	}
 	/**
 	 * Verify Credit Check Information is correct

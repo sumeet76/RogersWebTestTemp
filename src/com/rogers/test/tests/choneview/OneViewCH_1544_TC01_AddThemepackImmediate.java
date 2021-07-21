@@ -20,7 +20,7 @@ public class OneViewCH_1544_TC01_AddThemepackImmediate extends BaseTestClass {
 		getAccountOverViewPage().clickIgniteTVBadge();
 		getAccountOverViewPage().selectBundleChangeIfPresent();
 		reporter.reportLogWithScreenshot("Ignite TV Bundle selected");
-		getTVDashboardPage().clickManageChannelsAndThemeparks();
+		getTVDashboardPage().clickManageChannelsAndThemepacks();
 		getTVDashboardPage().clickThemepacksTab();
 		getTVDashboardPage().addThemepack();
 		getTVDashboardPage().clickContinueForPackage();

@@ -10,6 +10,9 @@ import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TVDashboardPage  extends BasePageClass {
 
 	public TVDashboardPage(WebDriver driver) {
@@ -80,7 +83,8 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "(//div[@class='col-12 exchange-channels-grid'])[1]//i[@class='rch-icon-search' and @_ngcontent-c33='']")
 	WebElement icnSearchChannelToRemove;
 
-	@FindBy(xpath = "(//div[@class='exchange-container x-out']//button[@role='button'])[1]")
+//	@FindBy(xpath = "(//div[@class='exchange-container x-out']//button[@role='button'])[1] | (//h4[@translate='global.dashboard.tv.manageChannelsAndThemePacks.vpAlacartes']/parent::div/following-sibling::div/descendant::span[text()='Remove'])[1]")
+	@FindBy(xpath = "(//h4[@translate='global.dashboard.tv.manageChannelsAndThemePacks.vpAlacartes']/parent::div/following-sibling::div/descendant::span[text()='Remove'])[1]")
 	WebElement btnFirstChannelToRemove;
 
 	@FindBy(xpath = "(//div[@class='exchange-container x-out']//button[@role='button'])[3]")
@@ -204,6 +208,9 @@ public class TVDashboardPage  extends BasePageClass {
 	WebElement addOnLink;
 
 
+	@FindBy(xpath = "//ds-modal[@identifier='planChangeDateModal']/descendant::span[@translate='global.cta.continue']")
+	WebElement continueChangeDate;
+
 
 	@FindAll({
 			@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks']"),
@@ -231,10 +238,33 @@ public class TVDashboardPage  extends BasePageClass {
 	WebElement yesToContinue;
 
 
-
 //	String dollarAmount = "//div[@class='ect-body']/descendant::div[@class='ds-price__amountDollars text-semi ng-star-inserted']";
 //	String centsAmount = "(//div[@class='ect-body']/descendant::span[@class='ds-price__amountCents text-body mb-0 ng-star-inserted'])";
 
+
+	String existingChannels = "(//h4[@translate='global.dashboard.tv.manageChannelsAndThemePacks.vpAlacartes']/parent::div/following-sibling::div/descendant::span[text()='Remove'])";
+	String existingThemepacks = "(//h4[@translate='global.dashboard.tv.manageChannelsAndThemePacks.vpThemepacks']/parent::div/following-sibling::div/descendant::span[text()='Remove'])";
+
+
+	/**
+	 * Get list of all channels and themepacks and remove them one by one
+	 * @author Aditi.jain
+	 */
+	public void getAllChannelAndThemepacks() {
+		WebElement banner =getReusableActionsInstance().getWhenReady(existingPackages, 300);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,banner.getLocation().y-300);
+
+		List<WebElement> allExistingChannels = getDriver().findElements(By.xpath(existingChannels));
+		List<WebElement> allExistingThemepacks = getDriver().findElements(By.xpath(existingThemepacks));
+		for (int i=0; i<allExistingChannels.size(); i++) {
+			WebElement channel = getReusableActionsInstance().getWhenReady(By.xpath(existingChannels +"[1]"));
+			getReusableActionsInstance().executeJavaScriptClick(channel);
+		}
+		for (int i=0; i<allExistingThemepacks.size(); i++) {
+			WebElement themepack = getReusableActionsInstance().getWhenReady(By.xpath(existingThemepacks +"[1]"));
+			getReusableActionsInstance().executeJavaScriptClick(themepack);
+		}
+	}
 
 	/**
 	 * Click Add to Cart for calling package
@@ -272,7 +302,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * To click Manage channels and themeparks
 	 * @author Aditi.jain
 	 */
-	public void clickManageChannelsAndThemeparks() {
+	public void clickManageChannelsAndThemepacks() {
 		getReusableActionsInstance().waitForElementVisibility(manageChannelsAndThemeparks, 240);
 		getReusableActionsInstance().scrollToElement(manageChannelsAndThemeparks);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(manageChannelsAndThemeparks);
@@ -288,18 +318,18 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().scrollToElement(goToChannelOrThemepackTabs);
 		if(getReusableActionsInstance().isElementVisible(cancel)){
 			getReusableActionsInstance().waitForElementVisibility(cancel);
-			getReusableActionsInstance().getWhenReady(cancel, 300).click();
+			getReusableActionsInstance().getWhenReady(cancel, 240).click();
 		}
 		getReusableActionsInstance().getWhenReady(themePacksTab, 120).click();
 	}
 
 	/**
-	 * Click Continue to Add Themepack
+	 * Click Continue from date change
 	 * @author Aditi.jain
 	 */
-	public void continueToAddThemepack() {
-		getReusableActionsInstance().waitForElementVisibility(continueToAddThemepack, 300);
-		getReusableActionsInstance().executeJavaScriptClick(continueToAddThemepack);
+	public void continueFromChangeDate() {
+		getReusableActionsInstance().waitForElementVisibility(continueChangeDate, 60);
+		getReusableActionsInstance().executeJavaScriptClick(continueChangeDate);
 
 	}
 	/**
@@ -317,7 +347,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void clickAddChannel() {
-		WebElement bTn=getReusableActionsInstance().getWhenReady(addChannel, 300);
+		WebElement bTn=getReusableActionsInstance().getWhenReady(addChannel, 120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,bTn.getLocation().y-300);
 		getReusableActionsInstance().getWhenReady(addChannel, 60).click();
 		getReusableActionsInstance().staticWait(3000);
@@ -347,8 +377,8 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void immediateDateChangeOption() {
-		getReusableActionsInstance().waitForElementVisibility(immediateDateChange, 120);
-		getReusableActionsInstance().getWhenReady(immediateDateChange, 120).click();
+		getReusableActionsInstance().waitForElementVisibility(immediateDateChange, 90);
+		getReusableActionsInstance().getWhenReady(immediateDateChange, 90).click();
 	}
 	/**
 	 * Click conitnue to add channel
@@ -356,7 +386,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 */
 	public void clickContinueToManageChannel() {
 		getReusableActionsInstance().waitForElementVisibility(cancel);
-		getReusableActionsInstance().getWhenReady(cancel, 300).click();
+		getReusableActionsInstance().getWhenReady(cancel, 180).click();
 	}
 	/**
 	 * Clicks submit button for changing the TV package

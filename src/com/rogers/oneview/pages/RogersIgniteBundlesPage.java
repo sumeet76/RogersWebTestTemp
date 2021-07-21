@@ -153,7 +153,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void clickContinueFromPointsToMention() {
-		getReusableActionsInstance().waitForElementVisibility(continueFromPointsToMention, 120);
+		getReusableActionsInstance().waitForElementVisibility(continueFromPointsToMention, 90);
 		getReusableActionsInstance().executeJavaScriptClick(continueFromPointsToMention);
 	}
 
@@ -180,7 +180,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void clkLoadOffers() {
-		getReusableActionsInstance().waitForElementVisibility(loadOffers, 120);
+		getReusableActionsInstance().waitForElementVisibility(loadOffers, 90);
 		getReusableActionsInstance().executeJavaScriptClick(loadOffers);
 	}
 
@@ -319,8 +319,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void contiue4KContent() {
-		getReusableActionsInstance().waitForElementVisibility(continue4KContent, 120);
-		getReusableActionsInstance().clickWhenReady(continue4KContent, 120);
+		getReusableActionsInstance().waitForElementVisibility(continue4KContent, 90);
+		getReusableActionsInstance().clickWhenReady(continue4KContent, 90);
 	}
 	/**
 	 * Customer Wish to Continue Popup
@@ -342,7 +342,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author Aditi.Jain
 	 */
 	public void clickExchangeLater() {
-		getReusableActionsInstance().clickWhenReady(exchangeLater,120);
+		getReusableActionsInstance().clickWhenReady(exchangeLater,90);
 	}
 
 	/**

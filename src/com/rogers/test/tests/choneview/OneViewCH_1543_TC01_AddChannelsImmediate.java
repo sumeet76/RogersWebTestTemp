@@ -20,7 +20,7 @@ public class OneViewCH_1543_TC01_AddChannelsImmediate extends BaseTestClass {
 		getAccountOverViewPage().clickIgniteTVBadge();
 		getAccountOverViewPage().selectBundleChangeIfPresent();
 		reporter.reportLogWithScreenshot("Ignite TV widget selected");
-		getTVDashboardPage().clickManageChannelsAndThemeparks();
+		getTVDashboardPage().clickManageChannelsAndThemepacks();
 		getTVDashboardPage().clickChannelTab();
 		getTVDashboardPage().clickAddChannel();
 		getTVDashboardPage().clickContinueForPackage();

@@ -20,11 +20,11 @@ public class OneViewCH_1539_TC01_AddChannelAndThemepackImmediate extends BaseTes
 		getAccountOverViewPage().clickIgniteTVBadge();
 		getAccountOverViewPage().selectBundleChangeIfPresent();
 		reporter.reportLogWithScreenshot("Ignite TV widget selected");
-		getTVDashboardPage().clickManageChannelsAndThemeparks();
+		getTVDashboardPage().clickManageChannelsAndThemepacks();
 		getTVDashboardPage().clickChannelTab();
 		getTVDashboardPage().clickAddChannel();
 		getTVDashboardPage().clickYourChanges();
-		getTVDashboardPage().clickManageChannelsAndThemeparks();
+		getTVDashboardPage().clickManageChannelsAndThemepacks();
 		getTVDashboardPage().clickThemepacksTab();
 		getTVDashboardPage().addThemepack();
 		getTVDashboardPage().clickYourChanges();

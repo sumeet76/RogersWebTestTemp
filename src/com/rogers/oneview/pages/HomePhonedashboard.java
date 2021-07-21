@@ -1,5 +1,6 @@
 package com.rogers.oneview.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -35,12 +36,6 @@ public class HomePhonedashboard  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Reset voicemail password' or text()='Réinitialiser le mot de passe de Messagerie vocale']/ancestor::button")
 	WebElement btnResetVoiceMail;
 
-	@FindBy(xpath = "//span[text()='Yes, reset password' or text()='Oui, réinitialiser le mot de passe']/ancestor::button")
-	WebElement btnYesResetPassword;
-
-	@FindBy(xpath = "//span[text()='Manage Add-Ons' or text()='Gérer les options']/ancestor::button")
-	WebElement manageAddOns;
-
 	@FindBy(xpath = "//span[text()='Confirmer' or text()='Confirm']/ancestor::button")
 	WebElement confirm;
 
@@ -49,16 +44,35 @@ public class HomePhonedashboard  extends BasePageClass {
 
 	@FindBy(xpath = "//span[contains(text(),'Immédiatement') or contains(text(),'Immediately')]/parent::div")
 	WebElement immediately;
+
+	@FindBy(xpath = "//span[text()='Manage Add-Ons' or text()='Gérer les options']/ancestor::button")
+	WebElement manageAddOns;
+
+	@FindBy(xpath = "//span[text()='Yes, reset password' or text()='Oui, réinitialiser le mot de passe']/ancestor::button")
+	WebElement btnYesResetPassword;
+
+
 	/**
 	 * Click Yes,reset password button on the pop up "Reset Voicemail Password"
 	 * @author Chinnarao.Vattam
-	 */	
+	 */
 	public void clickYesResetPassword() {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(btnYesResetPassword);
 		getReusableActionsInstance().getWhenReady(btnYesResetPassword,120).click();
-		
+
 	}
-	
+
+	/*
+	 * Click on Manage Add ons
+	 * @author suganya P
+	 **/
+	public void clickManageAddOns()
+	{
+		WebElement btn=getReusableActionsInstance().getWhenReady(manageAddOns,60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		getReusableActionsInstance().clickWhenReady(manageAddOns,45);
+
+	}
 	
 	/**
 	 * Click Reset password button
