@@ -221,8 +221,10 @@ public class CreditCheckPage  extends BasePageClass {
 	 * Click Authorization Checkbox 
 	 * @author chinnarao.vattam
 	 */	
-	public void clkAuthorize() {	
-		getReusableActionsInstance().clickWhenReady(authorizecheckbox);
+	public void clkAuthorize() {
+		if(!getReusableActionsInstance().isElementVisible(noIDRequired, 5)) {
+			getReusableActionsInstance().clickWhenReady(authorizecheckbox);
+		}
 	}
 	/**
 	 * Click Collapse(Down Arrow)

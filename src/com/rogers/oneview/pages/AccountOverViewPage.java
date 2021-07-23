@@ -128,10 +128,15 @@ public class AccountOverViewPage  extends BasePageClass {
 	 */
 	public void clickIgniteTVBadge() {
 
-		if(getReusableActionsInstance().isElementVisible(viewAllAlerts,30)) {
-			getReusableActionsInstance().waitForElementVisibility(notificationBell);
-			getReusableActionsInstance().executeJavaScriptClick(notificationBell);
+		if(getReusableActionsInstance().isElementVisible(skipNotification,10))
+		{
+			getReusableActionsInstance().clickWhenReady(skipNotification);
 		}
+
+//		if(getReusableActionsInstance().isElementVisible(viewAllAlerts,30)) {
+//			getReusableActionsInstance().waitForElementVisibility(notificationBell);
+//			getReusableActionsInstance().executeJavaScriptClick(notificationBell);
+//		}
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().clickWhenReady(btnGetIgniteTVBadge, 120);
 	}

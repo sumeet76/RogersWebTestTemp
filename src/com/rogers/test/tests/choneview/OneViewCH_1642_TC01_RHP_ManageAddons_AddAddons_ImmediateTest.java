@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class OneViewCH_1642_TC01_RHP_ManageAddons_AddAddons_ImmediateTest extends BaseTestClass {
-    @Test
+    @Test (groups = {"RegressionCHOV"})
    public void checkManageAddOns(){
         getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         reporter.reportLogWithScreenshot("Launched the account dashboard page");

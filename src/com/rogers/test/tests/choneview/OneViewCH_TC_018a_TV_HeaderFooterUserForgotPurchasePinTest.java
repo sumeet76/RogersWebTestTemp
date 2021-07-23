@@ -19,7 +19,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 
 public class OneViewCH_TC_018a_TV_HeaderFooterUserForgotPurchasePinTest extends BaseTestClass {
-	@Test (groups = {"RegressionCHOV","SanityCHOV"})
+	@Test (groups = {"RegressionCHOV","SanityCHOV","SanityCHOVTemp"})
     public void checkUserForgotPurchasePin() {
     			getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
     			reporter.reportLogWithScreenshot("Launched the account dashboard page");
