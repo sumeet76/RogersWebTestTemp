@@ -24,7 +24,7 @@ public class RogersLoginPage extends BasePageClass {
 	WebElement txtPassword;
 
 	@FindAll({
-		@FindBy(xpath = "//div[@class='text-center signInButton']"),
+		@FindBy(xpath = "//div[contains(@class,'signInButton')]"),
 		@FindBy(xpath = "//button[@data-dtname='signin submit']")})		
 	WebElement btnSignIn;
 
