@@ -30,7 +30,7 @@ public class OneViewCH_1539_TC01_AddChannelAndThemepackImmediate extends BaseTes
 		getTVDashboardPage().clickYourChanges();
 		getTVDashboardPage().clickContinueForPackage();
 		getTVDashboardPage().immediateDateChangeOption();
-		getTVDashboardPage().clickContinueToManageChannel();
+		getTVDashboardPage().clickCancel();
 		getRogersOVOrderReviewPage().clickSubmitToManageThemepackOrChannel();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");

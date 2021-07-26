@@ -24,7 +24,7 @@ public class OneViewCH_1543_TC01_AddChannelsImmediate extends BaseTestClass {
 		getTVDashboardPage().clickAddChannel();
 		getTVDashboardPage().clickContinueForPackage();
 		getTVDashboardPage().immediateDateChangeOption();
-		getTVDashboardPage().clickContinueToManageChannel();
+		getTVDashboardPage().clickCancel();
 //		getRogersOVOrderReviewPage().clickSubmitToManageThemepackOrChannel();
 //		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
 //		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");

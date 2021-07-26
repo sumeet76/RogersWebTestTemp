@@ -171,7 +171,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 			getReusableActionsInstance().clickWhenReady(currentCollapisble);
 		}
 
-		getReusableActionsInstance().waitForElementVisibility(reviewTermsAndCondition, 120);
+		getReusableActionsInstance().waitForElementVisibility(reviewTermsAndCondition, 30);
 		getReusableActionsInstance().scrollToElement(reviewTermsAndCondition);
 		getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);
 	}
@@ -180,7 +180,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void clkLoadOffers() {
-		getReusableActionsInstance().waitForElementVisibility(loadOffers, 90);
+		getReusableActionsInstance().waitForElementVisibility(loadOffers, 30);
 		getReusableActionsInstance().executeJavaScriptClick(loadOffers);
 	}
 
@@ -189,7 +189,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void noPortInPopup() {
-		getReusableActionsInstance().clickWhenReady(noPortInServices,120);
+		getReusableActionsInstance().clickWhenReady(noPortInServices,30);
 	}
 
 	/**
@@ -311,7 +311,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void fourKContinue() {
-		getReusableActionsInstance().clickWhenReady(fourKContinue, 120);
+		getReusableActionsInstance().clickWhenReady(fourKContinue, 30);
 	}
 
 	/**
@@ -319,8 +319,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void contiue4KContent() {
-		getReusableActionsInstance().waitForElementVisibility(continue4KContent, 90);
-		getReusableActionsInstance().clickWhenReady(continue4KContent, 90);
+		getReusableActionsInstance().waitForElementVisibility(continue4KContent, 30);
+		getReusableActionsInstance().clickWhenReady(continue4KContent, 30);
 	}
 	/**
 	 * Customer Wish to Continue Popup

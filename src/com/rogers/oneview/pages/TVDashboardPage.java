@@ -328,7 +328,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void continueFromChangeDate() {
-		getReusableActionsInstance().waitForElementVisibility(continueChangeDate, 60);
+		getReusableActionsInstance().waitForElementVisibility(continueChangeDate, 45);
 		getReusableActionsInstance().executeJavaScriptClick(continueChangeDate);
 
 	}
@@ -339,7 +339,7 @@ public class TVDashboardPage  extends BasePageClass {
 	public void clickChannelTab() {
 		getReusableActionsInstance().waitForElementVisibility(goToChannelOrThemepackTabs, 120);
 		getReusableActionsInstance().scrollToElement(goToChannelOrThemepackTabs);
-		getReusableActionsInstance().getWhenReady(channelsTab, 120).click();
+		getReusableActionsInstance().getWhenReady(channelsTab, 60).click();
 	}
 
 	/**
@@ -347,7 +347,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void clickAddChannel() {
-		WebElement bTn=getReusableActionsInstance().getWhenReady(addChannel, 120);
+		WebElement bTn=getReusableActionsInstance().getWhenReady(addChannel, 90);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,bTn.getLocation().y-300);
 		getReusableActionsInstance().getWhenReady(addChannel, 60).click();
 		getReusableActionsInstance().staticWait(3000);
@@ -377,16 +377,16 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void immediateDateChangeOption() {
-		getReusableActionsInstance().waitForElementVisibility(immediateDateChange, 90);
-		getReusableActionsInstance().getWhenReady(immediateDateChange, 90).click();
+		getReusableActionsInstance().waitForElementVisibility(immediateDateChange, 45);
+		getReusableActionsInstance().getWhenReady(immediateDateChange, 45).click();
 	}
 	/**
 	 * Click conitnue to add channel
 	 * @author Aditi.jain
 	 */
-	public void clickContinueToManageChannel() {
+	public void clickCancel() {
 		getReusableActionsInstance().waitForElementVisibility(cancel);
-		getReusableActionsInstance().getWhenReady(cancel, 180).click();
+		getReusableActionsInstance().getWhenReady(cancel, 60).click();
 	}
 	/**
 	 * Clicks submit button for changing the TV package
@@ -397,7 +397,7 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().getWhenReady(btnSubmit, 60).click();
 		return getReusableActionsInstance().isElementVisible(orderConfirmation);
-				}
+	}
 
 	/**
 	 * Clicks select the lowest TV package available
