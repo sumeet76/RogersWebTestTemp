@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_1437_TC01_EndtoEndFlowAnonymousCustomerTriplePlayTest extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV","SanityCHOV"})
-    public void endToEndFlowAnonymousCustomerTriplePlayTest(){
+    public void oneViewCH_1437_TC01_EndtoEndFlowAnonymousCustomerTriplePlayTest(){
 			getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 			getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress(),System.getProperty("Browser"));
 			reporter.reportLogWithScreenshot("Service Availability");

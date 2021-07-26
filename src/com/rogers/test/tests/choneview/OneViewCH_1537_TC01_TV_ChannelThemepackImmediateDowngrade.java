@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_1537_TC01_TV_ChannelThemepackImmediateDowngrade extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
-    public void checkChannelSwapTest() {
+    public void oneViewCH_1537_TC01_TV_ChannelThemepackImmediateDowngrade() {
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();

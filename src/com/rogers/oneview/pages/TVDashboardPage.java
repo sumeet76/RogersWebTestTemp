@@ -303,9 +303,12 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void clickManageChannelsAndThemepacks() {
-		getReusableActionsInstance().waitForElementVisibility(manageChannelsAndThemeparks, 180);
+		//TODO: Put a comment on timeout
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().waitForElementVisibility(manageChannelsAndThemeparks, 60);
 		getReusableActionsInstance().scrollToElement(manageChannelsAndThemeparks);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(manageChannelsAndThemeparks);
+		getReusableActionsInstance().waitForElementVisibility(manageChannelsAndThemeparks, 60);
 		getReusableActionsInstance().executeJavaScriptClick(manageChannelsAndThemeparks);
 	}
 

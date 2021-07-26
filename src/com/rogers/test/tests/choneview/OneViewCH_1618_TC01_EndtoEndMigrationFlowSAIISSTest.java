@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_1618_TC01_EndtoEndMigrationFlowSAIISSTest extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
-    public void endToEndToEndMigrationFlowSAIISSTest(){
+    public void oneViewCH_1618_TC01_EndtoEndMigrationFlowSAIISSTest(){
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();

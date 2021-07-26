@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_1645_TC01_RHP_ManageAddons_RemoveAddOns_ImmediateTest extends BaseTestClass {
     @Test (groups = {"RegressionCHOV"})
-    public void checkManageAddOns(){
+    public void oneViewCH_1645_TC01_RHP_ManageAddons_RemoveAddOns_ImmediateTest(){
         getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
         getAccountOverViewPage().enterDealerCodeDialogue();

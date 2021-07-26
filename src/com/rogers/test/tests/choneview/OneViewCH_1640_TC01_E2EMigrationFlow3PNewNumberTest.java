@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_1640_TC01_E2EMigrationFlow3PNewNumberTest extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
-    public void endToEndMigrationDoubleToTriplePlay(){
+    public void oneViewCH_1640_TC01_E2EMigrationFlow3PNewNumberTest(){
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();

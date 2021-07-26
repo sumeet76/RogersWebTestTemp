@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_1619_TC01_EndtoEndMigrationFlowDoublePlayTest extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
-    public void endToEndToEndMigrationFlowDoublePlayTest(){
+    public void oneViewCH_1619_TC01_EndtoEndMigrationFlowDoublePlayTest(){
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();

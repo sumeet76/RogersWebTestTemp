@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_1436_TC01_EndtoEndFlowAnonymousCustomerSAITest extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
-    public void endToEndFlowAnonymousInternalOnlySAITest(){
+    public void oneViewCH_1436_TC01_EndtoEndFlowAnonymousCustomerSAITest(){
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress(),System.getProperty("Browser"));
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");

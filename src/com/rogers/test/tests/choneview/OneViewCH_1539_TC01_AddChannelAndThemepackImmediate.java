@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_1539_TC01_AddChannelAndThemepackImmediate extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
-    public void addChannelAndThemepackImmediate(){
+    public void oneViewCH_1539_TC01_AddChannelAndThemepackImmediate(){
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
