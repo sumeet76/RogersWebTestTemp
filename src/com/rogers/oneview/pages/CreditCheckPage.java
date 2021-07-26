@@ -110,7 +110,7 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @author aditi.jain
 	 */
 	public boolean verifyBillingAndPaymentOption() {
-		return getReusableActionsInstance().isElementVisible(billingAndPaymentOption,120);
+		return getReusableActionsInstance().isElementVisible(billingAndPaymentOption,60);
 	}
 
 	/**
