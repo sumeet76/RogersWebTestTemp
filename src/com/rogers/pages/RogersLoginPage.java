@@ -24,7 +24,7 @@ public class RogersLoginPage extends BasePageClass {
 	WebElement txtPassword;
 
 	@FindAll({
-		@FindBy(xpath = "//div[@class='text-center signInButton ']"),
+		@FindBy(xpath = "//div[contains(@class,'signInButton')]"),
 		@FindBy(xpath = "//button[@data-dtname='signin submit']")})		
 	WebElement btnSignIn;
 
@@ -33,7 +33,6 @@ public class RogersLoginPage extends BasePageClass {
 	
 	@FindBy (xpath = "//ds-alert[@variant='error']")
 	WebElement failLoginMsg;
-
 
 	@FindBy(xpath = "//button[contains(text(),'Skip') or contains(text(),'Continuer') or @title=\"Skip\"]")
 	WebElement btnSkip;
@@ -168,7 +167,7 @@ public class RogersLoginPage extends BasePageClass {
 	 */
 	public void clkSignInIFrame() {
 		try {
-			getReusableActionsInstance().scrollToElement(btnSignIn);
+			//getReusableActionsInstance().scrollToElement(btnSignIn);
 			getReusableActionsInstance().waitForElementTobeClickable(btnSignIn, 2);
 			getReusableActionsInstance().getWhenReady(btnSignIn, 30).click();
 			getReusableActionsInstance().clickIfAvailable(btnSkip);

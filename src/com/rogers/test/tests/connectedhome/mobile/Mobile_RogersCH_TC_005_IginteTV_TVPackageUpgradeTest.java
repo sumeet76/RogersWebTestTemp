@@ -38,7 +38,7 @@ public class Mobile_RogersCH_TC_005_IginteTV_TVPackageUpgradeTest extends BaseTe
     public void checkSolarisTVPackageUpgradeMobile() {
         reporter.reportLogWithScreenshot("Home Page");
     	getRogersHomePage().clkSignInMobile();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.getPassword());
@@ -86,8 +86,7 @@ public class Mobile_RogersCH_TC_005_IginteTV_TVPackageUpgradeTest extends BaseTe
 	}
 
 	@AfterMethod(alwaysRun = true)
-	public void afterTest() {
-		//closeSession();
+	public void afterTest() { closeSession();
 	}
 
 

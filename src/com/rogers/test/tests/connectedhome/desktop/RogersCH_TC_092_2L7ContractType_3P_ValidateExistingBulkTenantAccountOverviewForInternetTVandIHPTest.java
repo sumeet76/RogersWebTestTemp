@@ -33,7 +33,7 @@ public class RogersCH_TC_092_2L7ContractType_3P_ValidateExistingBulkTenantAccoun
     public void check2L7ContractType_3P_ValidateExistingBulkTenantAccountOverviewForInternetTVandIHP() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc92_2L7ContractType3PBulkTenant.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc92_2L7ContractType3PBulkTenant.getPassword());
