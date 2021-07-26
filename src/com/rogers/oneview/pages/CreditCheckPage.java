@@ -152,7 +152,7 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */	
 	public void setPassport(String expiryYear, String idExpiryMonth,String idExpiryDay,String passportNo ) {
-		if(!getReusableActionsInstance().isElementVisible(noIDRequired, 5)) {
+		if(!getReusableActionsInstance().isElementVisible(noIDRequired, 2)) {
 			getReusableActionsInstance().javascriptScrollByVisibleElement(secondID);
 			getReusableActionsInstance().selectWhenReady(secondID, 3);
 			getReusableActionsInstance().javascriptScrollByVisibleElement(passportContainer);
@@ -177,7 +177,7 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */	
 	public void setDriversLicense(String provinc,String expiryYear, String idExpiryMonth,String idExpiryDay,String licenseNo) {
-		if(!getReusableActionsInstance().isElementVisible(noIDRequired, 5)) {
+		if(!getReusableActionsInstance().isElementVisible(noIDRequired, 2)) {
 			//getReusableActionsInstance().selectWhenReadyByVisibleText(iD, iD1);
 			getReusableActionsInstance().selectWhenReady(iD, 2);
 			getReusableActionsInstance().selectWhenReadyByVisibleText(province, provinc);
