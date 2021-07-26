@@ -153,7 +153,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void clickContinueFromPointsToMention() {
-		getReusableActionsInstance().waitForElementVisibility(continueFromPointsToMention, 90);
+		getReusableActionsInstance().waitForElementVisibility(continueFromPointsToMention, 60);
 		getReusableActionsInstance().executeJavaScriptClick(continueFromPointsToMention);
 	}
 
@@ -342,7 +342,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author Aditi.Jain
 	 */
 	public void clickExchangeLater() {
-		getReusableActionsInstance().clickWhenReady(exchangeLater,90);
+		getReusableActionsInstance().clickWhenReady(exchangeLater,60);
 	}
 
 	/**

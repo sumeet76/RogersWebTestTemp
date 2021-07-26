@@ -251,7 +251,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void getAllChannelAndThemepacks() {
-		WebElement banner =getReusableActionsInstance().getWhenReady(existingPackages, 300);
+		WebElement banner =getReusableActionsInstance().getWhenReady(existingPackages, 180);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,banner.getLocation().y-300);
 
 		List<WebElement> allExistingChannels = getDriver().findElements(By.xpath(existingChannels));
@@ -303,7 +303,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void clickManageChannelsAndThemepacks() {
-		getReusableActionsInstance().waitForElementVisibility(manageChannelsAndThemeparks, 240);
+		getReusableActionsInstance().waitForElementVisibility(manageChannelsAndThemeparks, 180);
 		getReusableActionsInstance().scrollToElement(manageChannelsAndThemeparks);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(manageChannelsAndThemeparks);
 		getReusableActionsInstance().executeJavaScriptClick(manageChannelsAndThemeparks);
@@ -318,7 +318,7 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().scrollToElement(goToChannelOrThemepackTabs);
 		if(getReusableActionsInstance().isElementVisible(cancel)){
 			getReusableActionsInstance().waitForElementVisibility(cancel);
-			getReusableActionsInstance().getWhenReady(cancel, 240).click();
+			getReusableActionsInstance().getWhenReady(cancel, 180).click();
 		}
 		getReusableActionsInstance().getWhenReady(themePacksTab, 120).click();
 	}
