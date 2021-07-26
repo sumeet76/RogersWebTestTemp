@@ -117,8 +117,8 @@ public class AccountOverViewPage  extends BasePageClass {
 	 */
 	public void clickNotificationIfPresent() {
 
-		if(getReusableActionsInstance().isElementVisible(viewAllAlerts,30)) {
-			getReusableActionsInstance().waitForElementVisibility(notificationBell);
+		if(getReusableActionsInstance().isElementVisible(viewAllAlerts,60)) {
+			getReusableActionsInstance().waitForElementVisibility(notificationBell, 60);
 			getReusableActionsInstance().executeJavaScriptClick(notificationBell);
 		}
 	}
@@ -128,10 +128,15 @@ public class AccountOverViewPage  extends BasePageClass {
 	 */
 	public void clickIgniteTVBadge() {
 
-		if(getReusableActionsInstance().isElementVisible(viewAllAlerts,30)) {
-			getReusableActionsInstance().waitForElementVisibility(notificationBell);
-			getReusableActionsInstance().executeJavaScriptClick(notificationBell);
+		if(getReusableActionsInstance().isElementVisible(skipNotification,10))
+		{
+			getReusableActionsInstance().clickWhenReady(skipNotification);
 		}
+
+//		if(getReusableActionsInstance().isElementVisible(viewAllAlerts,30)) {
+//			getReusableActionsInstance().waitForElementVisibility(notificationBell);
+//			getReusableActionsInstance().executeJavaScriptClick(notificationBell);
+//		}
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().clickWhenReady(btnGetIgniteTVBadge, 120);
 	}
@@ -194,6 +199,12 @@ public class AccountOverViewPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectHomePhoneBadge() {
+
+		if(getReusableActionsInstance().isElementVisible(skipNotification,10))
+		{
+			getReusableActionsInstance().clickWhenReady(skipNotification);
+		}
+
 		WebElement btn=getReusableActionsInstance().getWhenReady(btnHomePhoneBadge,120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
 		getReusableActionsInstance().clickWhenReady(btnHomePhoneBadge,45);

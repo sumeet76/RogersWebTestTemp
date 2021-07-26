@@ -1,4 +1,5 @@
 package com.rogers.oneview.pages;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,6 +26,65 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 	
 	@FindBy(xpath = "//span[text()='Passer à la caisse' or text()='Checkout']/ancestor::button")
 	WebElement checkOut;
+
+	@FindBy(xpath = "//div[contains(@id,'ds-radio-input-id-1-label-container')]/preceding-sibling::div[contains(@class,'ds-radioButton')]")
+	WebElement btnImmediateBill;
+
+	@FindBy(xpath = "//p[text()='Select Change Date' or text()='Sélectionner la date du changement' ]/ancestor::div//span[text()='Continue' or text()='Continuer']")
+	WebElement btnContinueChangeDate;
+
+	@FindBy(xpath="//span[@translate='global.cta.confirm']/ancestor::button")
+	WebElement confirmButton;
+
+	/*
+	 * Select the specified add on
+	 * @author suganya P
+	 */
+	public void chooseAddon(String AddOnEn, String AddOnFr)
+	{
+		By addonlocator= By.xpath("//h3[contains(text(),'"+AddOnEn+"') or contains(text(),'"+AddOnFr+"')]/parent::div[@class='card-content']//div[@class='add-on-button-set']//button");
+		getReusableActionsInstance().getWhenReady(addonlocator,60);
+		WebElement addon= getDriver().findElement(addonlocator);
+		getReusableActionsInstance().executeJavaScriptClick(addon);
+	}
+
+
+
+	public void removeAddon(String AddOnEn, String AddOnFr)
+	{
+		By addonlocator= By.xpath("//h3[contains(text(),'"+AddOnEn+"') or contains(text(),'"+AddOnFr+"')]/parent::div[@class='card-content']//div[@class='add-on-button-set']//span[contains(text(),'Remove') or contains(text(),'Retirer')]//ancestor::button");
+		getReusableActionsInstance().getWhenReady(addonlocator,60);
+		WebElement addon= getDriver().findElement(addonlocator);
+		getReusableActionsInstance().executeJavaScriptClick(addon);
+	}
+
+	/*Selects the Immediate Billing option
+	 * @author suganya p
+	 * */
+	public void clickImmediateBill() {
+		getReusableActionsInstance().getWhenReady(btnImmediateBill,60).click();
+	}
+	/*
+	 * Click on continue in Select billing date pop up
+	 * @author suganya P
+	 * */
+	public void clickContinueOnSelectDateChange() {
+		getReusableActionsInstance().getWhenReady(btnContinueChangeDate,60).click();
+	}
+
+
+
+	/*
+	 * To click on confirm button
+	 * @author suganya p
+	 */
+	public void clickConfirmButton()
+	{
+		getReusableActionsInstance().getWhenReady(confirmButton,60).click();
+	}
+
+
+
 	/**
 	 * Click Exchange Later btn
 	 * @author Chinnarao.Vattam

@@ -20,15 +20,15 @@ public class OneViewCH_1544_TC01_AddThemepackImmediate extends BaseTestClass {
 		getAccountOverViewPage().clickIgniteTVBadge();
 		getAccountOverViewPage().selectBundleChangeIfPresent();
 		reporter.reportLogWithScreenshot("Ignite TV Bundle selected");
-		getTVDashboardPage().clickManageChannelsAndThemeparks();
+		getTVDashboardPage().clickManageChannelsAndThemepacks();
 		getTVDashboardPage().clickThemepacksTab();
 		getTVDashboardPage().addThemepack();
 		getTVDashboardPage().clickContinueForPackage();
 		getTVDashboardPage().immediateDateChangeOption();
-		getTVDashboardPage().clickContinueToManageChannel();
-		getRogersOVOrderReviewPage().clickSubmitToManageThemepackOrChannel();
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
+		getTVDashboardPage().clickCancel();
+//		getRogersOVOrderReviewPage().clickSubmitToManageThemepackOrChannel();
+//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
+//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
 		reporter.reportLogWithScreenshot("Order Confirmation page");
 	}
 

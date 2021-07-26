@@ -12,30 +12,41 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_1443_TC01_EndtoEndFlowAnonymousCustomerSAIISSTest extends BaseTestClass {
+public class OneViewCH_1624_TC01_E2EMigrationFlow1P_RHPTo3PTest extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
-    public void endToEndFlowAnonymousISSAndSAISmartStreamTest(){
+    public void endToEndMigrationDoubleToTriplePlay(){
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
-		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress(),System.getProperty("Browser"));
-		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
+		reporter.reportLogWithScreenshot("OneView Interface has Launched");
+		getAccountOverViewPage().enterDealerCodeDialogue();
+		getAccountOverViewPage().clickNotificationIfPresent();
+		getAccountOverViewPage().clickIgnite();
+		getRogersIgniteBundlesPage().clkUsethisAddress();
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
+		getRogersIgniteBundlesPage().clkTVCheckbox();
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
-		getRogersIgniteBundlesPage().clkSmartStream();
+		getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
 		reporter.reportLogWithScreenshot("Smart Stream - SAI ISS Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
-		getRogersIgniteBundlesPage().clkAddtoCartISS(TestDataHandler.anonymousData.getPlanEngISS());
+		getRogersIgniteBundlesPage().clkAddtoCart(TestDataHandler.anonymousData.getplanEng(),TestDataHandler.anonymousData.getplanFr());
+		getRogersIgniteBundlesPage().clkKeepNumberbtn();
 		getRogersIgniteBundlesPage().noPortInPopup();
 		getRogersIgniteBundlesPage().clkCollapse();
-		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
-		reporter.reportLogWithScreenshot("Product Added");
-		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
+		getRogersIgniteBundlesPage().clkContinue();
+		getRogersIgniteBundlesPage().reviewTermsAndCondition();
+		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
+		getRogersIgniteBundlesPage().fourKTVPopup();
+		getRogersIgniteBundlesPage().contiue4KContent();
+		getRogersIgniteBundlesPage().clickExchangeLater();
+		getCustomerProfilePage().clkContinue();
+		getCustomerProfilePage().clkContinue();
+		reporter.reportLogWithScreenshot("CheckOut for Cart Summary");
 		getRogersIgniteBundlesPage().clkCheckOut();
 		reporter.reportLogWithScreenshot("Cart Summary");
-		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		getRogersIgniteBundlesPage().customerWishtoContinue();
-        reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
-        reporter.reportLogWithScreenshot("Customer Profile");
+		reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
+		reporter.reportLogWithScreenshot("Customer Profile");
+		getCreditCheckPage().goToPageBottom();
 		getCustomerProfilePage().clkContinue();
 		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
 		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
@@ -44,6 +55,10 @@ public class OneViewCH_1443_TC01_EndtoEndFlowAnonymousCustomerSAIISSTest extends
 		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
 		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
+		getHomePhoneSelectionPage().clkContinue();
+		getCreditCheckPage().continueConfirmation();
+		getCreditCheckPage().goToPageBottom();
+		getPaymentOptionsPage().clkContinue();
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
 		getCreditCheckPage().clickInPersonDelivery();
@@ -53,9 +68,9 @@ public class OneViewCH_1443_TC01_EndtoEndFlowAnonymousCustomerSAIISSTest extends
 		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-//		getPaymentOptionsPage().clkContinue();
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+	    //getPaymentOptionsPage().clkContinue();
+		//getPaymentOptionsPage().clkContinue();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
 
     }
@@ -63,7 +78,9 @@ public class OneViewCH_1443_TC01_EndtoEndFlowAnonymousCustomerSAIISSTest extends
 	@BeforeMethod (alwaysRun=true)
 	@Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.anonymousData.contactDetails.getContactIDISS(), "", System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+		String s = TestDataHandler.migrationData1PRHPTo3P.getAccountNo();
+		System.out.println(TestDataHandler.migrationData1PRHPTo3P.getAccountNo());
+		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),TestDataHandler.migrationData1PRHPTo3P.getContactID(), TestDataHandler.migrationData1PRHPTo3P.getAccountNo(),System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
 	}
 
 	@AfterMethod(alwaysRun = true)
