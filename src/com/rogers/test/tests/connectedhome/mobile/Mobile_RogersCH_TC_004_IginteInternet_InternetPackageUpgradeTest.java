@@ -39,7 +39,7 @@ public class Mobile_RogersCH_TC_004_IginteInternet_InternetPackageUpgradeTest ex
     public void checkInternetPackageUpgradeMobile() {
         reporter.reportLogWithScreenshot("Home Page");
     	getRogersHomePage().clkSignInMobile();    	
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tcm04_SolarisInternetAccount.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tcm04_SolarisInternetAccount.getPassword());

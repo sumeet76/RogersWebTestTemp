@@ -32,7 +32,7 @@ public class RogersCH_TC_045_DigitalTV_TVPackageUpgradeTest extends BaseTestClas
 	public void checkTVPackageUpgrade() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc45_digitalTVAccountUpgradePackage.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc45_digitalTVAccountUpgradePackage.getPassword());
@@ -79,6 +79,6 @@ public class RogersCH_TC_045_DigitalTV_TVPackageUpgradeTest extends BaseTestClas
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 }
