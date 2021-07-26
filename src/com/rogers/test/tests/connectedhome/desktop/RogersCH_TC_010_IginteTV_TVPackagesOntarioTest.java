@@ -38,7 +38,7 @@ public class RogersCH_TC_010_IginteTV_TVPackagesOntarioTest extends BaseTestClas
     public void checkSolarisTVPackageUpgrade() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc10_SolarisTVAccountForUpgradeON.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc10_SolarisTVAccountForUpgradeON.getPassword());

@@ -39,7 +39,7 @@ public class RogersCH_TC_056_SignedInWirelessBuyInternetSameaddressBasementHouse
     public void checkSignedInWirelessBuyInternetSameaddressBasementHouseTest() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc56_WirelessSignedInInternetBuyBasement.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc56_WirelessSignedInInternetBuyBasement.getPassword());

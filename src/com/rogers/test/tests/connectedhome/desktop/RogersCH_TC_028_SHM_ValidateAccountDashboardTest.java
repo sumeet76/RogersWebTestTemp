@@ -30,7 +30,7 @@ public class RogersCH_TC_028_SHM_ValidateAccountDashboardTest extends BaseTestCl
         public void checkSHMaccountDashboard() {
             reporter.reportLogWithScreenshot("Launched the Home Page");
             getRogersHomePage().clkSignIn();
-            getRogersLoginPage().switchToSignInIFrame();
+            //getRogersLoginPage().switchToSignInIFrame();
             reporter.reportLogWithScreenshot("Launched the SignIn popup");
             getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc27_28_RogersSHM.getUsername());
             getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc27_28_RogersSHM.getPassword());

@@ -34,7 +34,7 @@ public class RogersCH_TC_093_FWA_CappedPlan_ValidateInternetUsageforFWAcustomerT
     public void checkCappedPlan_ValidateInternetUsageforFWAcustomer() {
     	            reporter.reportLogWithScreenshot("Launched the Home Page");
                     getRogersHomePage().clkSignIn();
-                    getRogersLoginPage().switchToSignInIFrame();
+                    //getRogersLoginPage().switchToSignInIFrame();
                     reporter.reportLogWithScreenshot("Launched the SignIn popup");
                     getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc93_FWACappedPlan.getUsername());
                     getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc93_FWACappedPlan.getPassword());

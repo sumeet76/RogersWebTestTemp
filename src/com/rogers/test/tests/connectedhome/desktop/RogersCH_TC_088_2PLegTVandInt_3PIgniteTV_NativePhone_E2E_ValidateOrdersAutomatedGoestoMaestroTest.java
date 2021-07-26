@@ -55,7 +55,7 @@ public class RogersCH_TC_088_2PLegTVandInt_3PIgniteTV_NativePhone_E2E_ValidateOr
 	public void checkTVPackageUpgradeTest() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc88_Legacy2PTVIntToIgnite3P.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc88_Legacy2PTVIntToIgnite3P.getPassword());

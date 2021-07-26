@@ -32,7 +32,7 @@ public class RogersCH_TC_006_01_SolarisCustomer_ManageChannelsAndThemePack_Manag
 	public void checkSolarisManageChannelsAndThemePack_ManageThemePacksFlow() { 
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc06_1_SolarisChangeTVManageThemePacks.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc06_1_SolarisChangeTVManageThemePacks.getPassword());

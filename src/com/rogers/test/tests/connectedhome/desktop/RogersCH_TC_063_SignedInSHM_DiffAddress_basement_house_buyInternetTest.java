@@ -39,7 +39,7 @@ public class RogersCH_TC_063_SignedInSHM_DiffAddress_basement_house_buyInternetT
     public void checkSignedInSHM_DiffAddress_basement_house_buyInternetTest() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc63_ShmSignedInInternetBuyBasement.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc63_ShmSignedInInternetBuyBasement.getPassword());

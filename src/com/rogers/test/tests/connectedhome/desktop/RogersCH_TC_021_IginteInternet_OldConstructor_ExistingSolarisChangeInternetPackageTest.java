@@ -39,7 +39,7 @@ public class RogersCH_TC_021_IginteInternet_OldConstructor_ExistingSolarisChange
     public void checkIginteInternetOldConstructorExistingSolarisChangeInternetPackageTest() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc21_SolarisInternetOldConstructor.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc21_SolarisInternetOldConstructor.getPassword());

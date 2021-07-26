@@ -40,7 +40,7 @@ public class RogersCH_TC_073_IginteTV_SwapChannelExperienceSwapMultipleTimesTest
    public void checkSolarisTVSwapChannels() {
     reporter.reportLogWithScreenshot("Launched the Home Page");
     getRogersHomePage().clkSignIn();
-    getRogersLoginPage().switchToSignInIFrame();
+    //getRogersLoginPage().switchToSignInIFrame();
     reporter.reportLogWithScreenshot("Launched the SignIn popup");
     getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc73_IgniteTVAccountMultipleSwap.getUsername());
     getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc73_IgniteTVAccountMultipleSwap.getPassword());

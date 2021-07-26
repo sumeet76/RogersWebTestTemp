@@ -34,7 +34,7 @@ public class RogersCH_TC_022_IginteInternet_ValidateStandaloneInternetDashboardU
     public void checkStandaloneInternetDashboard() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc22_StandaloneInternetAccountWithUsage.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc22_StandaloneInternetAccountWithUsage.getPassword());

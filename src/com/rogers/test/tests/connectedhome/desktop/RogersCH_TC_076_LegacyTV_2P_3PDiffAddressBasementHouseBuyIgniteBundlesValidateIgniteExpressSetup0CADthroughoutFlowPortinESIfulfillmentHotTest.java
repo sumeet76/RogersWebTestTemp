@@ -55,7 +55,7 @@ public class RogersCH_TC_076_LegacyTV_2P_3PDiffAddressBasementHouseBuyIgniteBund
 	public void checkTVPackageUpgradeTest() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc76_Legact2Pto3PIgniteBasementHousePortinHot.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc76_Legact2Pto3PIgniteBasementHousePortinHot.getPassword());

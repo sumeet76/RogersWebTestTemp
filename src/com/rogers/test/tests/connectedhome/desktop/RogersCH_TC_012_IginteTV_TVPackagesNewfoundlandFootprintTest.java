@@ -38,7 +38,7 @@ public class RogersCH_TC_012_IginteTV_TVPackagesNewfoundlandFootprintTest extend
 	    public void checkSolarisTVPackageUpgrade() {
 	        reporter.reportLogWithScreenshot("Launched the Home Page");
 	        getRogersHomePage().clkSignIn();
-	        getRogersLoginPage().switchToSignInIFrame();
+	        //getRogersLoginPage().switchToSignInIFrame();
 	        reporter.reportLogWithScreenshot("Launched the SignIn popup");
 	        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.getUsername());
 	        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.getPassword());

@@ -55,7 +55,7 @@ public class RogersCH_TC_090_1PLegTV_2PIgniteTV_E2E_ValidateOrdersAutomatedGoest
 	public void checkTVPackageUpgradeTest() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc90_Legacy1PTVtoIgnite2P.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc90_Legacy1PTVtoIgnite2P.getPassword());

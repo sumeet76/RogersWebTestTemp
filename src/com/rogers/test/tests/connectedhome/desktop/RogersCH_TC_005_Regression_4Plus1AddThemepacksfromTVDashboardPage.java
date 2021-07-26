@@ -32,7 +32,7 @@ public class RogersCH_TC_005_Regression_4Plus1AddThemepacksfromTVDashboardPage e
 	public void check4Plus1AddThemepacksfromTVDashboardPage() { 
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc05_IgniteTV4Plus1Account.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc05_IgniteTV4Plus1Account.getPassword());

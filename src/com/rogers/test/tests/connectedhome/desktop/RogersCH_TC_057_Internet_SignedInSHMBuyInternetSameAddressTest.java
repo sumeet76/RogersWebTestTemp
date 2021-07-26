@@ -31,7 +31,7 @@ public class RogersCH_TC_057_Internet_SignedInSHMBuyInternetSameAddressTest exte
         public void checkSignedInSHMBuyInternetSameAddressTest() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc57_sHMSignedInInternetBuy.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc57_sHMSignedInInternetBuy.getPassword());

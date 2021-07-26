@@ -33,7 +33,7 @@ public class RogersCH_TC_014_IginteTV_ValidateStarterPackDashboardButtonsReposit
     public void checkStarterPackDashboardButtonsRepositioning() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc14_solarisTVAccountStarterPackage.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc14_solarisTVAccountStarterPackage.getPassword());
