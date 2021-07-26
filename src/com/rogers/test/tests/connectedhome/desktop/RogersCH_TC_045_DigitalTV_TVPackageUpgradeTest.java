@@ -79,6 +79,6 @@ public class RogersCH_TC_045_DigitalTV_TVPackageUpgradeTest extends BaseTestClas
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 }
