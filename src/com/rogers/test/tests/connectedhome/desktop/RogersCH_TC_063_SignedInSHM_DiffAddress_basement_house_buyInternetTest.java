@@ -138,7 +138,7 @@ public class RogersCH_TC_063_SignedInSHM_DiffAddress_basement_house_buyInternetT
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 

@@ -159,7 +159,7 @@ public class RogersCH_TC_030_084_IginteTV_DoublePlayBuyValidateMonthAsteriskTest
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 

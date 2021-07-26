@@ -32,10 +32,12 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//*[@translate='global.label.internet']")})
 	WebElement infoInternet;
 
-	@FindBy(xpath = "//span[@translate='global.dashboard.internetUsage.usageAndAlerts']")
+	//@FindBy(xpath = "//span[@translate='global.dashboard.internetUsage.usageAndAlerts']")
+	@FindBy(xpath = "//*[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large ng-star-inserted']")
 	WebElement lnkInternetUsageAlerts;
-	
-	@FindBy(xpath = "//*[@usertype-translate='global.label.usageAndAlerts' or @translate='global.dashboard.internet.usage']")
+
+	@FindBy(xpath = "//*[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large ng-star-inserted']")
+	//@FindBy(xpath = "//*[@usertype-translate='global.label.usageAndAlerts' or @translate='global.dashboard.internet.usage']")
 	WebElement infoUsageAndAlerts;
 
 	@FindBy(xpath = "//span[@translate='global.dashboard.common.changeInternetPackage']")
@@ -53,7 +55,8 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
 	WebElement popUpInternetPopup;
 
-	@FindBy(xpath = "//span[@id='ariaChangeWifiPassword']/ancestor::span[@role='text']")
+	//@FindBy(xpath = "//span[@id='ariaChangeWifiPassword']/ancestor::span[@role='text']")
+	@FindBy(xpath = "//a[@aria-label='Change your WiFi password. The link will open a new tab in your browser.']//span[@class='ds-icon rds-icon-open-new']")
 	WebElement btnWifiPassword;
 
 	@FindBy(xpath = "//div[@id='terms-conditions']")

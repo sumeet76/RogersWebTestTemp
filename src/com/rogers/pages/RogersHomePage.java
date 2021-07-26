@@ -107,7 +107,7 @@ public class RogersHomePage extends BasePageClass {
 
 	@FindAll({
 			@FindBy(xpath = "//a[contains(@title,'See available bundles') or  contains(@title,'Voir les offres groupées')]"),
-			@FindBy(xpath = "//a[contains(@title,'See bundles') or  contains(@title,'Voir les offres groupées')]")})
+			@FindBy(xpath = "//a[contains(@title,'View Ignite TV + Internet bundles available to you') or  contains(@title,'Voir les offres groupées Télé Élan + Internet qui vous sont proposées')]")})
 	WebElement btnServiceability;
 
 	@FindBy(xpath ="//div[@class='ng-star-inserted overlay']")
@@ -236,12 +236,13 @@ public class RogersHomePage extends BasePageClass {
 
 	@FindAll({
 	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet at your address']//span[@class='ds-icon rds-icon-right']"),
-			@FindBy(xpath = "//a[@title='Check availability of Ignite Internet at your address']/span")})
+			@FindBy(xpath = "//a[@title='View internet bundles available to you']/span")})
 	WebElement lnkInternetAvailability;
 
 	@FindAll({
 	@FindBy(xpath = "//h2[@class='-center text-title-1']"),
-			@FindBy(xpath = "//h1[contains(text(),'Internet')]")})
+	@FindBy(xpath = "//p[@class='text-title-4 mb-0 py-16']"),
+	@FindBy(xpath = "//h1[contains(text(),'Internet')]")})
 	WebElement txtInternetBuyPage;
 
 	@FindBy(xpath = "//i[@class='li-loader']")

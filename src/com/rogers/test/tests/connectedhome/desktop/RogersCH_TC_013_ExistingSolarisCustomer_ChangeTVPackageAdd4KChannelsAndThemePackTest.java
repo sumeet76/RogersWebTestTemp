@@ -94,7 +94,7 @@ public class RogersCH_TC_013_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannel
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 

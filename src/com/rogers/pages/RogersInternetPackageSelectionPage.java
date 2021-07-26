@@ -36,7 +36,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//input[@class='checkoutButton']")
 	WebElement btnCheckout;
 
-	@FindBy(xpath = "//div//a[@title='Get it now']")
+	@FindBy(xpath = "//div//a[@title='View internet bundles available to you']")
 	WebElement btnSmartStream;
 	//(//div//a[@title='Get Ignite Internet + SmartStream now'])[1]
 
