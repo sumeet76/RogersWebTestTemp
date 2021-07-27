@@ -23,7 +23,7 @@ public class RogersSS_TC_071_Validate3rdPartyBrightstarPage extends BaseTestClas
 		
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() throws InterruptedException {
-		closeSession();
+		//closeSession();
 	}
 	
 	

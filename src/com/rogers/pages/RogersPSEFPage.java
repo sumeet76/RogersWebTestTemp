@@ -21,7 +21,7 @@ public class RogersPSEFPage extends BasePageClass {
 
 	private By btnUsageAndServicesDropDown;
 
-	private By tabDisneyPlus;
+	//private By tabDisneyPlus;
 	private By tabAppleMusic;
 
 
@@ -144,6 +144,9 @@ public class RogersPSEFPage extends BasePageClass {
 
 	@FindBy(xpath = "//img[@class='vas-tab-logo' and @alt='contentful.disney-plus.image-alt-text']")
 	WebElement imgDisneyPlus;
+
+	@FindBy(xpath = "//p[contains(text(), ' Disney+')]//../..")
+	WebElement tabDisneyPlus;
 	/**
 	 * clicks the drop and and checks to see if the account show in Menu UsageAndService drop down on account overview page.
 	 * @param strLast4DigAcctNum string account number

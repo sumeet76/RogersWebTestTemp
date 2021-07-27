@@ -187,15 +187,16 @@ public class CommonBusinessFlows {
         	BaseTestClass.getRogersHomePage().clkEasyLogin();
 		}
         baseTestClass.reporter.reportLogWithScreenshot("Sign-in is being clicked");  
-        BaseTestClass.getRogersLoginPage().clkSignInAs();
+        //BaseTestClass.getRogersLoginPage().clkSignInAs();
+		BaseTestClass.getRogersHomePage().clkSignIn();
         baseTestClass.reporter.reportLogWithScreenshot("Re sign In");  
-        BaseTestClass.getRogersLoginPage().switchToSignInIFrame();
+        //BaseTestClass.getRogersLoginPage().switchToSignInIFrame();
         baseTestClass.reporter.reportLogWithScreenshot("Set password");             
         BaseTestClass.getRogersLoginPage().setPasswordIFrame(strPassword);               
         baseTestClass.reporter.reportLogWithScreenshot("Login Credential is entered.");
         BaseTestClass.getRogersLoginPage().clkSignInIFrame();	
         baseTestClass.reporter.reportLogWithScreenshot("Sign In clicked");  
-        BaseTestClass.getRogersLoginPage().switchOutOfSignInIFrame();		       
+        //BaseTestClass.getRogersLoginPage().switchOutOfSignInIFrame();
         baseTestClass.reporter.reportLogWithScreenshot("Account overview page.");   
 	}
 

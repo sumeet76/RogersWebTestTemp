@@ -84,6 +84,20 @@ public class YamlHandler {
 
 	}
 
+	public static DBConnection getDBConnection() throws FileNotFoundException {
+		Yaml yaml = new Yaml(new Constructor(DBConnection.class));
+		InputStream inputStream;
+
+		inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/selfserve/DBConnection.yml"));
+		DBConnection dbConnection = yaml.load(inputStream);
+		return dbConnection;
+
+
+
+
+
+	}
+
 	public static LoginDetails getBFAOneViewLoginDetails() throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(LoginDetails.class));
 		InputStream inputStream;

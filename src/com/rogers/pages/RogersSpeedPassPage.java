@@ -130,7 +130,7 @@ public class RogersSpeedPassPage extends BasePageClass {
 
     public boolean verifyIfTopUpPriceIsCorrect() {
 		HashMap<String,String> speedPassPrice = new HashMap<String,String>();
-		speedPassPrice.put("3","20.00");
+		speedPassPrice.put("3","15.00");
 		speedPassPrice.put("10","40.00");
 		for(int opt=0; opt<=SpeedPasses.size()-1;opt++)
 		{

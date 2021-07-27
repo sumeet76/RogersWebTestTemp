@@ -11,6 +11,7 @@ public class AccountData {
 	public String name;
 	private String dealerCode;
 	private String contactID;
+	//private String dbQuery;
 
 	/**
 	 * @return the accountDetails
@@ -115,4 +116,12 @@ public class AccountData {
 	public void setContactID(String contactID) {
 		this.contactID = contactID;
 	}
+
+/*	public String getDBQuery() {
+		return dbQuery;
+	}
+
+	public void setDBQuery(String dbQuery) {
+		this.dbQuery = dbQuery;
+	}*/
 }
