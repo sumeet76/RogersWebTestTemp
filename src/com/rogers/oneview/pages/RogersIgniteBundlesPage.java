@@ -148,6 +148,23 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[@class='serviceability-ptm-modal-footer']/descendant::span[@translate='global.cta.continue']/ancestor::button")
 	WebElement continueFromPointsToMention;
 
+
+
+	@FindBy(xpath = "//span[@translate='global.label.learnPageText']")
+	WebElement selectServiceCustomerWant;
+
+	@FindBy(xpath = "//span[@translate='global.label.totalMonthlyFees']")
+	WebElement monthFeesInCollapse;
+
+	@FindBy(xpath = "//h1[@translate='global.label.personalizeYourChannels']")
+	WebElement personalizeYourChannels;
+
+	@FindBy(xpath = "//h1[@translate='global.label.cartSummary']")
+	WebElement cartSummaryHeader;
+
+
+
+
 	/**
 	 * Click Load Offers button
 	 * @author aditi.jain
@@ -472,4 +489,45 @@ public void clkCustomerAddonReview() {
 public void activateHomePhoneltrPopUp() {	
 	getReusableActionsInstance().getWhenReady(yesBtn,120).click();
 }
+
+	/**
+	 * Verify Select services customer may opt for available
+	 * @return true if available, else false
+	 * @author Aditi.jain
+	 */
+	public boolean verifyAvailableServicesCheckboxes() {
+		return getReusableActionsInstance().isElementVisible(selectServiceCustomerWant,45);
+	}
+
+
+	/**
+	 * Verify Monthly Fees available
+	 * @return true if available, else false
+	 * @author Aditi.jain
+	 */
+	public boolean verifyMonthlyFeesInCollapsible() {
+		return getReusableActionsInstance().isElementVisible(monthFeesInCollapse,45);
+	}
+
+	/**
+	 * Verify Personalize Your Channel header
+	 * @return true if available, else false
+	 * @author Aditi.jain
+	 */
+	public boolean verifyPersonalizeYourChannels() {
+		return getReusableActionsInstance().isElementVisible(personalizeYourChannels,45);
+	}
+
+	/**
+	 * Verify Cart Summary Header
+	 * @return true if available, else false
+	 * @author Aditi.jain
+	 */
+	public boolean verifyCartSummaryHeader() {
+		return getReusableActionsInstance().isElementVisible(cartSummaryHeader,45);
+	}
+
+
+
+
 }

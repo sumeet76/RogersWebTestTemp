@@ -81,7 +81,7 @@ public class CreditCheckPage  extends BasePageClass {
 	})
 	WebElement customerAgreement;
 
-	@FindBy(xpath = "//h2[@translate='global.checkout.billingAndPay']")
+	@FindBy(xpath = "//h1[@translate='global.checkout.billingAndPayment.title']")
 	WebElement billingAndPaymentOption;
 
 	@FindBy(xpath ="//span[@translate='chc.creditCard.options.digitalFrontline']")
@@ -89,6 +89,15 @@ public class CreditCheckPage  extends BasePageClass {
 
 	@FindBy(xpath ="//span[contains(text(), 'No, continue')]/ancestor::button")
 	WebElement noContinue;
+
+	@FindBy(xpath = "//h1[@translate='global.checkout.billingAndPayment.title']")
+	WebElement billingAndPaymentHeader;
+
+	@FindBy(xpath = "//h1[@translate='global.checkout.fulfillment.title']")
+	WebElement installationHeader;
+
+	@FindBy(xpath = "//span[contains(text(),'Credit Evaluation') or contains(text(),'Évaluation de crédit')]")
+	WebElement creditEvaluationHeader;
 
 	/**
 	 * Validates that the 'Installation Option(s)' is displayed
@@ -110,7 +119,7 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @author aditi.jain
 	 */
 	public boolean verifyBillingAndPaymentOption() {
-		return getReusableActionsInstance().isElementVisible(billingAndPaymentOption,60);
+		return getReusableActionsInstance().isElementVisible(billingAndPaymentOption,45);
 	}
 
 	/**
@@ -232,6 +241,35 @@ public class CreditCheckPage  extends BasePageClass {
 	 */	
 	public void clkCollapse() {
 		getReusableActionsInstance().clickIfAvailable(collapse,60);
+	}
+
+
+	/**
+	 * Verify Billing And Payment
+	 * @return true if available, else false
+	 * @author Aditi.jain
+	 */
+	public boolean verifyBillingAndPayment() {
+		return getReusableActionsInstance().isElementVisible(billingAndPaymentHeader,45);
+	}
+
+
+	/**
+	 * Verify Installation Header
+	 * @return true if available, else false
+	 * @author Aditi.jain
+	 */
+	public boolean verifyInstallationHeader() {
+		return getReusableActionsInstance().isElementVisible(installationHeader,45);
+	}
+
+	/**
+	 * Verify Credit Evaluation Header
+	 * @return true if available, else false
+	 * @author Aditi.jain
+	 */
+	public boolean verifyCreditEvaluationHeader() {
+		return getReusableActionsInstance().isElementVisible(creditEvaluationHeader,45);
 	}
 }
 
