@@ -38,7 +38,6 @@ public class Mobile_RogersCH_TC_006_IginteTV_TVChannelsSwapTest extends BaseTest
    public void checkSolarisTVSwapChannelsMobile() {
      reporter.reportLogWithScreenshot("Home Page");
      getRogersHomePage().clkSignInMobile();
-     //getRogersLoginPage().switchToSignInIFrame();
      reporter.reportLogWithScreenshot("Launched the SignIn popup");
     getRogersLoginPage().setUsernameIFrame(TestDataHandler.tcm06_IgniteTVAccount.getUsername());
     getRogersLoginPage().setPasswordIFrame(TestDataHandler.tcm06_IgniteTVAccount.getPassword());

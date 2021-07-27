@@ -30,7 +30,6 @@ public class Mobile_RogersCH_TC_007_LegacyInternet_ValidateInternetUsageTest ext
 	public void checkLegacyInternetUsageMobile() {
         reporter.reportLogWithScreenshot("Home Page");
     	getRogersHomePage().clkSignInMobile();    	
-        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc46_legacyInternetAccount.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc46_legacyInternetAccount.getPassword());
