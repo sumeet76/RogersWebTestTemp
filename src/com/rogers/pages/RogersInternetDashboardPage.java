@@ -40,8 +40,9 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	//@FindBy(xpath = "//*[@usertype-translate='global.label.usageAndAlerts' or @translate='global.dashboard.internet.usage']")
 	WebElement infoUsageAndAlerts;
 
-	@FindBy(xpath = "//span[@translate='global.dashboard.common.changeInternetPackage']")
+	@FindBy(xpath = "//div[contains(@class,'change-internet-button')]//button")
 	WebElement btnSolChangeInternetPackage;
+	//span[@translate='global.dashboard.common.changeInternetPackage']
 
 	@FindBy(xpath = "//h1[@class='header-1 primary']")
 	WebElement txtIgniteWifiHub;

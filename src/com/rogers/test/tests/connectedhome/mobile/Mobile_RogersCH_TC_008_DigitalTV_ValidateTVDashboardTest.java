@@ -32,7 +32,6 @@ public class Mobile_RogersCH_TC_008_DigitalTV_ValidateTVDashboardTest extends Ba
 	public void checkLegacyTVDashboardMobile() {
         reporter.reportLogWithScreenshot("Home Page");
     	getRogersHomePage().clkSignInMobile();
-        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc43_44_digitalTVAccount.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc43_44_digitalTVAccount.getPassword());
