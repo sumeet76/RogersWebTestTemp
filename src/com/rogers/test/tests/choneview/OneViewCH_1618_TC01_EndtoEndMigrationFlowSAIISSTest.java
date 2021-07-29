@@ -18,7 +18,6 @@ public class OneViewCH_1618_TC01_EndtoEndMigrationFlowSAIISSTest extends BaseTes
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
-		getAccountOverViewPage().clickNotificationIfPresent();
 		getAccountOverViewPage().clickIgnite();
 		getRogersIgniteBundlesPage().clkUsethisAddress();
 		reporter.reportLogWithScreenshot("Service Availability");

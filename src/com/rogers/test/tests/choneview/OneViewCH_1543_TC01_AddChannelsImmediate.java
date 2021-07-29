@@ -9,7 +9,6 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-
 public class OneViewCH_1543_TC01_AddChannelsImmediate extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
     public void oneViewCH_1543_TC01_AddChannelsImmediate(){
@@ -18,8 +17,11 @@ public class OneViewCH_1543_TC01_AddChannelsImmediate extends BaseTestClass {
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		getAccountOverViewPage().clickIgniteTVBadge();
 		getAccountOverViewPage().selectBundleChangeIfPresent();
+//		reporter.hardAssert(getAccountOverViewPage().verifyTVOrChannelHeader(),"TV or Channel header displayed","TV or Channel header did not Displayed");
 		reporter.reportLogWithScreenshot("Ignite TV widget selected");
 		getTVDashboardPage().clickManageChannelsAndThemepacks();
+		reporter.hardAssert(getAccountOverViewPage().verifyCustomerFollowingsHeader(),"Customer followings displayed","Customer followings did not Displayed");
+		reporter.reportLogWithScreenshot("Customer followed channels and themepacks");
 		getTVDashboardPage().clickChannelTab();
 		getTVDashboardPage().clickAddChannel();
 		getTVDashboardPage().clickContinueForPackage();
