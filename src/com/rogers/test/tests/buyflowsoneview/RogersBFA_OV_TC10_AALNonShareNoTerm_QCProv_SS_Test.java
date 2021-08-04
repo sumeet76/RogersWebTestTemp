@@ -59,7 +59,7 @@ public class RogersBFA_OV_TC10_AALNonShareNoTerm_QCProv_SS_Test extends BaseTest
 		getRogersOVPlanConfigPage().clkPreCartDeviceCostContinueButtonForNac();
 		reporter.reportLogPassWithScreenshot("Device cost option selected");
 		getRogersOVPlanConfigPage().clickShowMoreDetails();
-		getRogersOVPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersOVPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.buyFlowsOVtestCase10.getDataOptionIndex()));
+		getRogersOVPlanConfigPage().selectNonShareDataAndClkContinue(getRogersOVPlanConfigPage().getupdatedPlanIndexForTalkPlans(TestDataHandler.buyFlowsOVtestCase10.getDataOptionIndex()));
 		reporter.reportLogPassWithScreenshot("Data option selected");
 		//getRogersOVPlanConfigPage().clickGetBPOOffer();
 		//reporter.reportLogPassWithScreenshot("BPO offer selected");

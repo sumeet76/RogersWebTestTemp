@@ -81,6 +81,7 @@ public class RogersBFA_TC21_AAL_BYOD_BopisShipping_Test extends BaseTestClass {
                 "Billing Address is not selected");*/
         getRogersCheckoutPage().clkDeliveryMethod("Express");
         reporter.reportLogPassWithScreenshot("Bopis Delivery selected");
+        getRogersCheckoutPage().setEmailShippingPage();
         reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent(), "Express pickup location map is present",
                 "Express pickup location map is not available");
         getRogersCheckoutPage().clkContinueBtnShipping();

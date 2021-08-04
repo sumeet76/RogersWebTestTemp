@@ -56,7 +56,10 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 		@FindBy(xpath = "//div[@class='device-details']//button[@class='upgrade-button no-bg']")
 	})
 	WebElement btnUpgradeMyDevice;
-	
+
+	@FindBy(xpath = "//h4[contains(.,'customer type') or contains(.,'type de client')]/following-sibling::div//t[contains(.,'Consumer') or contains(.,'Consommateur')]")
+	WebElement btnConsumerCusType;
+
 	/**
 	 * Validates whether Wireless page has loaded successfully
 	 * @return true on successful load; else false
@@ -110,6 +113,14 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	public void clkUpgradeMyDevice() {
 		getReusableActionsInstance().waitForElementVisibility(btnUpgradeMyDevice , 30);
 		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(btnUpgradeMyDevice));
+	}
+
+	/**
+	 * This method selects the consumer customer type in dashboard page
+	 * @author praveen.kumar7
+	 */
+	public void setCustomerType() {
+		getReusableActionsInstance().clickIfAvailable(btnConsumerCusType,20);
 	}
 
 }
