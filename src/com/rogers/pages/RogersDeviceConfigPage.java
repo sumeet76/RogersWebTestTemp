@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.ITestResult;
 import utils.DigiAutoCustomException;
 
 import java.util.List;
@@ -77,6 +78,13 @@ public class RogersDeviceConfigPage extends BasePageClass {
 
     @FindBy(xpath = "//dsa-selector[@data-test='color-selector']//span[text()='Colour:']/following-sibling::span[1]")
     WebElement lblColorValue;
+
+    @FindBy(xpath = "//div[contains(@data-test,'device-config')]//p[contains(.,'Full') or contains(.,'Plein')]//span")
+    WebElement txtDeviceCost;
+
+    @FindBy(xpath = "//span[@class='d-block' and (contains(.,'Upfront') or contains(.,'Voie'))]/following::div[1]")
+    WebElement upfrontAmtTxt;
+
 
     /***
      * This method will check the presence of continue button and will return true if present else false
@@ -435,4 +443,43 @@ public class RogersDeviceConfigPage extends BasePageClass {
         String btnWatchColor = getDriver().findElement(By.xpath("//div[contains(@class,'color-switch') and contains(@class,'active') and @style='display: block;']/a")).getAttribute("class").split("-")[0];
         return btnWatchColor.trim().replace(" ","");
     }
+
+    /**
+     * This method will get the NOTERM cost of the device
+     * @param className name of the classname from where the method is called
+     * @return full price of the device
+     * @author praveen.kumar7
+     */
+    public String getDeviceFullPrice(String className) {
+        if (className.toUpperCase().contains("_FR")) {
+            String deviceFullPriceFR = getReusableActionsInstance().getWhenReady(txtDeviceCost).getText().trim();
+            return deviceFullPriceFR.substring(0, deviceFullPriceFR.indexOf(","));
+        } else {
+            String deviceFullPriceEN = getReusableActionsInstance().getWhenReady(txtDeviceCost).getText().trim();
+            return deviceFullPriceEN.substring(1, deviceFullPriceEN.indexOf(".")).replace(",", "");
+        }
+    }
+
+    /**
+     * This method will get the upfront edge amount of the device
+     * @param className className name of the classname from where the method is called
+     * @return upfront edge amount of the device
+     * @author praveen.kumar7
+     */
+    public String getUpfrontEdgeAmt(String className) {
+        if(className.toUpperCase().contains("_FR")) {
+            getReusableActionsInstance().clickWhenVisible(By.xpath("//ds-icon[contains(@class,'ds-popover__icon')]"),10);
+            String upfrontEdgeAmt = getReusableActionsInstance().getWhenReady(upfrontAmtTxt).getText().trim();
+            getReusableActionsInstance().clickWhenVisible(By.xpath("//button[contains(@class,'close')]//ds-icon[@name='close']"),10);
+            return upfrontEdgeAmt.substring(1, upfrontEdgeAmt.indexOf(","));
+        }
+        else {
+            getReusableActionsInstance().clickWhenVisible(By.xpath("//ds-icon[contains(@class,'ds-popover__icon')]"));
+            String upfrontEdgeAmt = getReusableActionsInstance().getWhenReady(upfrontAmtTxt).getText().trim();
+            getReusableActionsInstance().clickWhenVisible(By.xpath("//button[contains(@class,'close')]//ds-icon[@name='close']"),10);
+            return upfrontEdgeAmt.substring(2, upfrontEdgeAmt.indexOf("."));
+        }
+    }
+
+
 }

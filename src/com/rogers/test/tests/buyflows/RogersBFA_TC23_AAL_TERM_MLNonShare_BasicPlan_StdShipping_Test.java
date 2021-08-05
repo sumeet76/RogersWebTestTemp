@@ -29,7 +29,7 @@ public class RogersBFA_TC23_AAL_TERM_MLNonShare_BasicPlan_StdShipping_Test exten
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc23AALTermMLNonSEBasicPlanStdShipping.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc23AALTermMLNonSEBasicPlanStdShipping.getPassword());
         reporter.reportLogWithScreenshot("Login Page");

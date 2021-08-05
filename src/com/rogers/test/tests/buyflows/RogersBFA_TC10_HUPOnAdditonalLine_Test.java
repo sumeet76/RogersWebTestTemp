@@ -21,7 +21,7 @@ public class RogersBFA_TC10_HUPOnAdditonalLine_Test extends BaseTestClass {
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc10HUPAdditionalLine.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc10HUPAdditionalLine.getPassword());
         reporter.reportLogWithScreenshot("Login Page");

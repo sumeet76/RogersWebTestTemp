@@ -296,5 +296,16 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 		return oneTimeFeeAfterTax.getText().replaceAll("\\n","");
 	}
 
+	/**
+	 * This method calculates the device full price with tax
+	 * @param oneTimeFeeWithoutTax full price of the device
+	 * @return the full price of device with tax
+	 * @author praveen.kumar7
+	 */
+	public String getTotalOneTimeFeeWithTax(String oneTimeFeeWithoutTax) {
+		Double noTermPriceWithTax = Double.parseDouble(oneTimeFeeWithoutTax)+(Double.parseDouble(oneTimeFeeWithoutTax)*0.13);
+		return String.valueOf(noTermPriceWithTax);
+	}
+
 
 }

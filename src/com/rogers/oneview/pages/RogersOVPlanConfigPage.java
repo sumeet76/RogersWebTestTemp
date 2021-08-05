@@ -777,6 +777,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void clickCartSummaryContinueButton() {
+        getReusableActionsInstance().javascriptScrollToTopOfPage();
         getReusableActionsInstance().javascriptScrollByVisibleElement(continueButtonOnCartSummary);
         getReusableActionsInstance().staticWait(3000);
         getReusableActionsInstance().executeJavaScriptClick(continueButtonOnCartSummary);

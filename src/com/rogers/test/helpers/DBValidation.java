@@ -28,7 +28,7 @@ public class DBValidation extends BaseTestClass{
             int columnCount = result.getMetaData().getColumnCount();
             ResultSetMetaData meta = result.getMetaData();
             while (result.next()) {
-                for (int count = 1; count < columnCount; count++) {
+                for (int count = 1; count <= columnCount; count++) {
                     System.out.println(meta.getColumnLabel(count) + ":" + result.getString(count));
                     resultMap.put(meta.getColumnLabel(count), result.getString(count));
                 }

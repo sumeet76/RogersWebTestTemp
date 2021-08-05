@@ -23,7 +23,7 @@ public class RogersBFA_TC19_AALNonShareNoTerm_QCProv_SS_Test extends BaseTestCla
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc19AALNoTermStandardShipping.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc19AALNoTermStandardShipping.getPassword());
         reporter.reportLogWithScreenshot("Login Page");

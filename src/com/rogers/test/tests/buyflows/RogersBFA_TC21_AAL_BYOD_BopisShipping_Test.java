@@ -29,7 +29,7 @@ public class RogersBFA_TC21_AAL_BYOD_BopisShipping_Test extends BaseTestClass {
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc21AALBYODBopisShipping.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc21AALBYODBopisShipping.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
@@ -81,6 +81,7 @@ public class RogersBFA_TC21_AAL_BYOD_BopisShipping_Test extends BaseTestClass {
                 "Billing Address is not selected");*/
         getRogersCheckoutPage().clkDeliveryMethod("Express");
         reporter.reportLogPassWithScreenshot("Bopis Delivery selected");
+        getRogersCheckoutPage().setEmailShippingPage();
         reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent(), "Express pickup location map is present",
                 "Express pickup location map is not available");
         getRogersCheckoutPage().clkContinueBtnShipping();

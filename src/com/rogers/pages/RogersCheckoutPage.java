@@ -167,6 +167,12 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "((//div[@data-state='SECURITY_DEPOSIT']//div)[2]//p)[3]")
 	WebElement depositAmt;
 
+	@FindAll({
+		@FindBy(xpath = "//p[contains(.,'Total')]/following::p[1]"),
+		@FindBy(xpath = "//div[contains(@class,'ds-price__amountDollars')]")
+	})
+	WebElement downPaymentAmt;
+
 	@FindBy(xpath = "//div[@data-test='modal-credit-evaluation-cla']//p[contains(.,'$300.00 credit limit') or contains(.,'de crédit de 300,00 $')]")
 	WebElement txtCla;
 
@@ -309,6 +315,9 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	@FindBy(xpath = "//div[contains(@id,'completedContent-2')]//p[3]")
 	WebElement txtCtn;
+
+	@FindBy(xpath = "//input[@formcontrolname='emailAddressField']")
+	WebElement txtEmailShipping;
 
 	
 	
@@ -727,11 +736,11 @@ public class RogersCheckoutPage extends BasePageClass {
 	public boolean isCreditEvalTextOnModalPresent() { return getReusableActionsInstance().isElementVisible(txtCreditEval); }
 
 	/**
-	 * Verifies if CLA/Security Deposit modal is present after credit evaluation
+	 * Verifies if CLA/Downpayment modal is present after credit evaluation
 	 * @return true if modal is present, else false
 	 * @author praveen.kumar7
 	 */
-	public boolean verifyClaSecurityDepositModalPresent() {
+	public boolean verifyClaDownPaymentModalPresent() {
 		return getReusableActionsInstance().isElementVisible(claSecurityDepositModal, 30);
 	}
 
@@ -740,22 +749,47 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @return true if security deposit content is displayed, else false
 	 * @author praveen.kumar7
 	 */
-	public boolean verifySecurityDepositTextPresent() {
+	public boolean verifyDownPaymentTextPresent() {
 		return getReusableActionsInstance().isElementVisible(txtSecurityDeposit);
 	}
 
 	/**
-	 * This method verifies if security deposit amount is displayed properly
-	 * @param depositAmount security deposit amount from yml file
+	 * This method verifies if mandatory downpayment amount is displayed properly
+	 * @param expectedDownPayment min DownPayment for the device
 	 * @return true if deposit is displayed correctly, else false
 	 * @author praveen.kumar7
 	 */
-	public boolean verifySecurityDepositAmount(String depositAmount) {
-		if(getReusableActionsInstance().getWhenReady(depositAmt).getText().trim().contains(depositAmount)) {
-			return true;
-		}
-		else return false;
+	public boolean verifyDownPaymentAmt(String expectedDownPayment) {
+		//if(riskClass.toUpperCase().contains("HIGH")) {
+			String actualDownPayment = getReusableActionsInstance().getWhenReady(downPaymentAmt, 20).getText().trim();
+			if(actualDownPayment.contains(expectedDownPayment) || actualDownPayment.replace(",", ".").contains(expectedDownPayment)) {
+				return true;
+			} else return false;
+		/*} else if (riskClass.toUpperCase().contains("MEDIUM")) {
+			double expectedDownPayment = (Double.parseDouble(deviceCost)) / 100.0 * 20.0;
+			String actualDownPayment = getReusableActionsInstance().getWhenReady(downPaymentAmt, 20).getText().trim();
+			if(actualDownPayment.contains(String.valueOf(expectedDownPayment)) ||
+					actualDownPayment.replace(",", ".").contains(String.valueOf(expectedDownPayment))) {
+				return true;
+			} else return false;
+		} else {
+			return false;
+		}*/
 	}
+
+
+	public String setDownPayment(String riskClass, String deviceCost) {
+		if(riskClass.toUpperCase().contains("HIGH")) {
+			double expectedDownPayment = (Double.parseDouble(deviceCost)) / 100.0 * 40.0;
+			return String.valueOf(expectedDownPayment);
+		}
+		else if(riskClass.toUpperCase().contains("MEDIUM")) {
+			double expectedDownPayment = (Double.parseDouble(deviceCost)) / 100.0 * 20.0;
+			return String.valueOf(expectedDownPayment);
+		}
+		else return "0";
+	}
+
 
 	/**
 	 * This method verifies if CLA text is displayed properly
@@ -1161,10 +1195,26 @@ public class RogersCheckoutPage extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(txtBillingDetails);
 	}
 
+	/**
+	 * This method will get the subscriber number selected in choose number stepper
+	 * @return CTN number in long data type
+	 * @author praveen.kumar7
+	 */
 	public long getSelectedCtn() {
 		getReusableActionsInstance().javascriptScrollToTopOfPage();
 		String ctn = getReusableActionsInstance().getWhenReady(txtCtn,10).getText().trim().replace(" ", "");
 		String updatedCtn = ctn.substring(1,4)+ctn.substring(5,8)+ctn.substring(9);
 		return Long.parseLong(updatedCtn);
+	}
+
+	/**
+	 * This method enters the value in email address field in shipping page
+	 * @author praveen.kumar7
+	 */
+	public void setEmailShippingPage() {
+		if (getReusableActionsInstance().isElementVisible(txtEmailShipping, 20)) {
+			getReusableActionsInstance().getWhenReady(txtEmailShipping, 20).click();
+			getReusableActionsInstance().getWhenReady(txtEmailShipping,10).sendKeys(FormFiller.generateEmail());
+		}
 	}
 }
