@@ -21,7 +21,7 @@ public class RogersBFA_TC12_HUPNonShareNoTermSL_Test extends BaseTestClass{
             reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
             reporter.reportLogWithScreenshot("Home Page");
             getRogersHomePage().clkSignIn();
-            getRogersLoginPage().switchToSignInIFrame();
+            //getRogersLoginPage().switchToSignInIFrame();
             getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc12HUPNonShareNoTermSL.getUsername());
             getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc12HUPNonShareNoTermSL.getPassword());
             reporter.reportLogWithScreenshot("Login Page");

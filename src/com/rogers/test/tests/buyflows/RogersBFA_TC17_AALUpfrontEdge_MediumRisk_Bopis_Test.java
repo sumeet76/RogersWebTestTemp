@@ -30,7 +30,7 @@ public class RogersBFA_TC17_AALUpfrontEdge_MediumRisk_Bopis_Test extends BaseTes
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc17AALShareTermBopis.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc17AALShareTermBopis.getPassword());
         reporter.reportLogWithScreenshot("Login Page");

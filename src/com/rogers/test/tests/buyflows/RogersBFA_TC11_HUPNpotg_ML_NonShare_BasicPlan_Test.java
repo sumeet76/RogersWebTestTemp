@@ -22,7 +22,7 @@ public class RogersBFA_TC11_HUPNpotg_ML_NonShare_BasicPlan_Test extends BaseTest
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc11HUPNpotgML.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc11HUPNpotgML.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
