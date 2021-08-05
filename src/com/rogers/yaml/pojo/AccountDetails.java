@@ -17,7 +17,8 @@ public class AccountDetails {
 	private String sim;
 	private String voicemailPassword;
 	private String newpassword;
-	
+	private String addOnNameEn;
+	private String addOnNameFr;
 	private String type;
 	private String upgradePlan;
 	private String downgradePlanEn;
@@ -62,6 +63,33 @@ public class AccountDetails {
 	private String birthCertNumber;
 	private String deferredCancelCTN;
 	private String immediateCancelCTN;
+
+
+	/**
+	 * @return the addOnNameEn
+	 */
+	public String getAddOnNameEn() {
+		return addOnNameEn;
+	}
+	/**
+	 * @param addOnNameEn the addOnNameEn to set
+	 */
+	public void setAddOnNameEn(String addOnNameEn) {
+		this.addOnNameEn= addOnNameEn;
+	}
+
+	/**
+	 * @return the addOnNameFr
+	 */
+	public String getAddOnNameFr() {
+		return addOnNameFr;
+	}
+	/**
+	 * @param addOnNameFr the addOnNameFr to set
+	 */
+	public void setAddOnNameFr(String addOnNameFr) {
+		this.addOnNameFr= addOnNameFr;
+	}
 
 	/**
 	 * @return the immediateCancelCTN

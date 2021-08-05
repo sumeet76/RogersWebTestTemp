@@ -14,18 +14,24 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_1437_TC01_EndtoEndFlowAnonymousCustomerTriplePlayTest extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV","SanityCHOV"})
-    public void endToEndFlowAnonymousCustomerTriplePlayTest(){
+    public void oneViewCH_1437_TC01_EndtoEndFlowAnonymousCustomerTriplePlayTest(){
 			getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 			getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress(),System.getProperty("Browser"));
 			reporter.reportLogWithScreenshot("Service Availability");
-//			getRogersIgniteBundlesPage().clkContinue();
+			getRogersIgniteBundlesPage().clkContinue();
+			reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
+			reporter.reportLogWithScreenshot("Select Services Customer Wants");
 			getRogersIgniteBundlesPage().clkTVCheckbox();
 			getRogersIgniteBundlesPage().clkInternetCheckbox();
 			getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
 			reporter.reportLogWithScreenshot("Triple Play Selected");
 			getRogersIgniteBundlesPage().clkLoadOffers();
+
 			getRogersIgniteBundlesPage().clkAddtoCart(TestDataHandler.anonymousData.getplanEng(),TestDataHandler.anonymousData.getplanFr());
 			getRogersIgniteBundlesPage().noPortInPopup();
+			reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
+			reporter.reportLogWithScreenshot("Product in cart");
+
 			getRogersIgniteBundlesPage().clkCollapse();
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 			reporter.reportLogWithScreenshot("Product Added");
@@ -33,7 +39,6 @@ public class OneViewCH_1437_TC01_EndtoEndFlowAnonymousCustomerTriplePlayTest ext
 			getRogersIgniteBundlesPage().fourKTVPopup();
 			getRogersIgniteBundlesPage().fourKContinue();
 			getRogersIgniteBundlesPage().clkCollapse();
-
 			getRogersIgniteBundlesPage().clickExchangeLater();
 			getTVDashboardPage().clickAddChannel();
 			getTVDashboardPage().clickThemepacksTab();
@@ -41,10 +46,10 @@ public class OneViewCH_1437_TC01_EndtoEndFlowAnonymousCustomerTriplePlayTest ext
 			getCustomerProfilePage().clkContinue();
 			getTVDashboardPage().addToCartCallingPackage();
 			getCustomerProfilePage().clkContinue();
-
 			reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 			getRogersIgniteBundlesPage().clkCheckOut();
 			reporter.reportLogWithScreenshot("Cart Summary");
+			reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 			getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 			getRogersIgniteBundlesPage().customerWishtoContinue();
 			reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
@@ -62,10 +67,13 @@ public class OneViewCH_1437_TC01_EndtoEndFlowAnonymousCustomerTriplePlayTest ext
 			reporter.reportLogWithScreenshot("Phone Number Selected");
 			getCreditCheckPage().goToPageBottom();
 			getCreditCheckPage().clkContinue();
+			reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
+			reporter.reportLogWithScreenshot("Installation options");
 			getCreditCheckPage().verifyInstallationOption();
 			getCreditCheckPage().goToPageBottom();
 			getCreditCheckPage().clickInPersonDelivery();
 			getPaymentOptionsPage().clkContinue();
+			reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 			getCreditCheckPage().verifyBillingAndPaymentOption();
 			getCreditCheckPage().clickDigitalFrontline();
 			getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());

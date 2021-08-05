@@ -32,9 +32,12 @@ public class AccountOverViewPage  extends BasePageClass {
 	@FindBy(xpath = "//t[text()='Ignite Home Phone']"),
 			@FindBy(xpath = "//span[@class='ute-icon-home-phone']")})
 	WebElement btnHomePhoneBadge;
-	@FindAll({
-	@FindBy(xpath = "//div[@translate='myaccoverview_get_ignite_bundle']/ancestor::div[@role='button']"),
-	@FindBy(xpath = "//t[contains(text(),'Ignite')]/ancestor::a")})
+//	@FindAll({
+//	@FindBy(xpath = "//div[@translate='myaccoverview_get_ignite_bundle']/ancestor::div[@role='button']"),
+//	@FindBy(xpath = "//t[contains(text(),'Ignite')]/ancestor::a")})
+
+
+	@FindBy(xpath = "//app-service-badge-tv-care/descendant::div[@class='service-detail service-address'] | //div[@class='service-badge tv active-ind IPTV'] | //div[@class='service-badge tv active-ind DigitalTV']")
 	WebElement btnGetIgniteTVBadge;
 
 	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.total_balance' or text()='Total balance' or text()='Total du solde'  or text()='Total Balance']")
@@ -68,10 +71,7 @@ public class AccountOverViewPage  extends BasePageClass {
 	})
 	WebElement viewAllAlerts;
 
-	@FindAll({
-			@FindBy(xpath = "//div[@class='blocker ng-star-inserted']"),
-			@FindBy(xpath = "//div[@class='user']")
-	})
+	@FindBy(xpath = "//img[@class='bell-icon'] | //a[@class='agent-notifications-icon']")
 	WebElement notificationBell;
 
 	@FindBy(xpath = "//div[@class='button-set set-left ng-star-inserted']/descendant::span[contains(text(),'TV')]")
@@ -82,6 +82,29 @@ public class AccountOverViewPage  extends BasePageClass {
 
 	@FindBy(xpath = "//span[contains(text(),'OK')]")
 	WebElement OK;
+
+	@FindBy(xpath = "//h2[@ng-reflect-translate='global.label.noOfChannels']")
+	WebElement tvOrChannelHeader;
+
+	@FindBy(xpath = "//h3[@translate='global.dashboard.tv.customerHasTheFollowing']")
+	WebElement customerFollowingHeader;
+
+
+	/**
+	 * Validate if either TV or channel header is visible
+	 * @author aditi.jain
+	 */
+	public boolean verifyTVOrChannelHeader() {
+		return getReusableActionsInstance().isElementVisible(tvOrChannelHeader, 90);
+	}
+
+	/**
+	 * Validate if customer following header is visible
+	 * @author aditi.jain
+	 */
+	public boolean verifyCustomerFollowingsHeader() {
+		return getReusableActionsInstance().isElementVisible(customerFollowingHeader, 60);
+	}
 
 	/**
 	 * To skip notification panel with a bell icon
@@ -109,7 +132,9 @@ public class AccountOverViewPage  extends BasePageClass {
 	public void enterDealerCodeDialogue() {
 		if (getReusableActionsInstance().isElementVisible(delearCodeOneViewDialogue)) {
 			getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 50).sendKeys("0MAAA");
+			getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue,30);
 		}
+
 	}
 	/**
 	 * Click notification bell if any notificaiton is present
@@ -117,8 +142,8 @@ public class AccountOverViewPage  extends BasePageClass {
 	 */
 	public void clickNotificationIfPresent() {
 
-		if(getReusableActionsInstance().isElementVisible(viewAllAlerts,30)) {
-			getReusableActionsInstance().waitForElementVisibility(notificationBell);
+		if(getReusableActionsInstance().isElementVisible(viewAllAlerts,60)) {
+			getReusableActionsInstance().waitForElementVisibility(notificationBell, 60);
 			getReusableActionsInstance().executeJavaScriptClick(notificationBell);
 		}
 	}
@@ -128,12 +153,16 @@ public class AccountOverViewPage  extends BasePageClass {
 	 */
 	public void clickIgniteTVBadge() {
 
-		if(getReusableActionsInstance().isElementVisible(viewAllAlerts,30)) {
-			getReusableActionsInstance().waitForElementVisibility(notificationBell);
-			getReusableActionsInstance().executeJavaScriptClick(notificationBell);
+		if(getReusableActionsInstance().isElementVisible(viewAllAlerts)) {
+			getReusableActionsInstance().clickWhenReady(skipNotification);
 		}
-		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().clickWhenReady(btnGetIgniteTVBadge, 120);
+		if(getReusableActionsInstance().isElementVisible(btnGetIgniteTVBadge, 30)){
+//			getReusableActionsInstance().executeJavaScriptClick(btnGetIgniteTVBadge);
+			getReusableActionsInstance().scrollToElementAndClick(btnGetIgniteTVBadge);
+			getReusableActionsInstance().clickWhenReady(btnGetIgniteTVBadge);
+		}
+//		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+//		getReusableActionsInstance().clickWhenReady(btnGetIgniteTVBadge, 120);
 	}
 	/**
 	 * This method clicks on Ignite link
@@ -152,7 +181,7 @@ public class AccountOverViewPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void selectBundleChangeIfPresent() {
-		getReusableActionsInstance().clickIfAvailable(changeTVBundle,30);
+		getReusableActionsInstance().clickIfAvailable(changeTVBundle,45);
 	}
 
 	/**
@@ -194,6 +223,12 @@ public class AccountOverViewPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectHomePhoneBadge() {
+
+		if(getReusableActionsInstance().isElementVisible(skipNotification,10))
+		{
+			getReusableActionsInstance().clickWhenReady(skipNotification);
+		}
+
 		WebElement btn=getReusableActionsInstance().getWhenReady(btnHomePhoneBadge,120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
 		getReusableActionsInstance().clickWhenReady(btnHomePhoneBadge,45);

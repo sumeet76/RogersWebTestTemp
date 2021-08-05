@@ -47,7 +47,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[contains(text(),'Home Phone')]/ancestor::label  | //div[@id='ds-checkbox-id-3-label-container'] | //div[contains(text(), ' Home Phone ')]")
 	WebElement homePhoneCheckbox;
 
-	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button")
+	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[1]")
 	WebElement addToCart;
 
 	@FindBy(xpath = "//span[text()='No, continue' or text()='Non, continuer']/ancestor::button")
@@ -59,7 +59,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()='Yes, they do' or text()='Oui, il en a un']/ancestor::button")
 	WebElement yesFor4K;
 
-	@FindBy(xpath = "//p[text()='The following 4K content is available to the customer:']/parent::div//span[text()='Continuer' or text()='Continue']/ancestor::button")
+	@FindBy(xpath = "//p[text()='The following 4K content is available to the customer:']/parent::div//span[text()='Continuer' or text()='Continue']/ancestor::button  | //rch-tv4k-modal/descendant::span[@translate='global.cta.continue']/ancestor::button")
 	WebElement continueFor4K;
 
 	@FindBy(xpath = "//span[text()='Passer à la caisse' or text()='Checkout']/ancestor::button")
@@ -148,12 +148,29 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[@class='serviceability-ptm-modal-footer']/descendant::span[@translate='global.cta.continue']/ancestor::button")
 	WebElement continueFromPointsToMention;
 
+
+
+	@FindBy(xpath = "//span[@translate='global.label.learnPageText']")
+	WebElement selectServiceCustomerWant;
+
+	@FindBy(xpath = "//span[@translate='global.label.totalMonthlyFees']")
+	WebElement monthFeesInCollapse;
+
+	@FindBy(xpath = "//h1[@translate='global.label.personalizeYourChannels']")
+	WebElement personalizeYourChannels;
+
+	@FindBy(xpath = "//h1[@translate='global.label.cartSummary']")
+	WebElement cartSummaryHeader;
+
+
+
+
 	/**
 	 * Click Load Offers button
 	 * @author aditi.jain
 	 */
 	public void clickContinueFromPointsToMention() {
-		getReusableActionsInstance().waitForElementVisibility(continueFromPointsToMention, 120);
+		getReusableActionsInstance().waitForElementVisibility(continueFromPointsToMention, 60);
 		getReusableActionsInstance().executeJavaScriptClick(continueFromPointsToMention);
 	}
 
@@ -171,7 +188,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 			getReusableActionsInstance().clickWhenReady(currentCollapisble);
 		}
 
-		getReusableActionsInstance().waitForElementVisibility(reviewTermsAndCondition, 120);
+		getReusableActionsInstance().waitForElementVisibility(reviewTermsAndCondition, 30);
 		getReusableActionsInstance().scrollToElement(reviewTermsAndCondition);
 		getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);
 	}
@@ -180,7 +197,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void clkLoadOffers() {
-		getReusableActionsInstance().waitForElementVisibility(loadOffers, 120);
+		getReusableActionsInstance().waitForElementVisibility(loadOffers, 30);
 		getReusableActionsInstance().executeJavaScriptClick(loadOffers);
 	}
 
@@ -189,7 +206,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void noPortInPopup() {
-		getReusableActionsInstance().clickWhenReady(noPortInServices,120);
+		getReusableActionsInstance().clickWhenReady(noPortInServices,30);
 	}
 
 	/**
@@ -197,7 +214,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void clkAddtoCartISS(String planEn) {
-		getReusableActionsInstance().getWhenReady(By.xpath("//span[text()='"+planEn+"']/parent::div/parent::div//span[text()='Add to cart']/ancestor::button"),120).sendKeys(Keys.ENTER);
+//		getReusableActionsInstance().getWhenReady(By.xpath("//span[text()='"+planEn+"']/parent::div/parent::div//span[text()='Add to cart']/ancestor::button"),120).sendKeys(Keys.ENTER);
+		getReusableActionsInstance().clickWhenReady(addToCart,30);
 	}
 
 	/**
@@ -311,7 +329,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void fourKContinue() {
-		getReusableActionsInstance().clickWhenReady(fourKContinue, 120);
+		getReusableActionsInstance().clickWhenReady(fourKContinue, 30);
 	}
 
 	/**
@@ -319,8 +337,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void contiue4KContent() {
-		getReusableActionsInstance().waitForElementVisibility(continue4KContent, 120);
-		getReusableActionsInstance().clickWhenReady(continue4KContent, 120);
+		getReusableActionsInstance().waitForElementVisibility(continue4KContent, 30);
+		getReusableActionsInstance().clickWhenReady(continue4KContent, 30);
 	}
 	/**
 	 * Customer Wish to Continue Popup
@@ -342,7 +360,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author Aditi.Jain
 	 */
 	public void clickExchangeLater() {
-		getReusableActionsInstance().clickWhenReady(exchangeLater,120);
+		getReusableActionsInstance().clickWhenReady(exchangeLater,60);
 	}
 
 	/**
@@ -472,4 +490,45 @@ public void clkCustomerAddonReview() {
 public void activateHomePhoneltrPopUp() {	
 	getReusableActionsInstance().getWhenReady(yesBtn,120).click();
 }
+
+	/**
+	 * Verify Select services customer may opt for available
+	 * @return true if available, else false
+	 * @author Aditi.jain
+	 */
+	public boolean verifyAvailableServicesCheckboxes() {
+		return getReusableActionsInstance().isElementVisible(selectServiceCustomerWant,45);
+	}
+
+
+	/**
+	 * Verify Monthly Fees available
+	 * @return true if available, else false
+	 * @author Aditi.jain
+	 */
+	public boolean verifyMonthlyFeesInCollapsible() {
+		return getReusableActionsInstance().isElementVisible(monthFeesInCollapse,45);
+	}
+
+	/**
+	 * Verify Personalize Your Channel header
+	 * @return true if available, else false
+	 * @author Aditi.jain
+	 */
+	public boolean verifyPersonalizeYourChannels() {
+		return getReusableActionsInstance().isElementVisible(personalizeYourChannels,45);
+	}
+
+	/**
+	 * Verify Cart Summary Header
+	 * @return true if available, else false
+	 * @author Aditi.jain
+	 */
+	public boolean verifyCartSummaryHeader() {
+		return getReusableActionsInstance().isElementVisible(cartSummaryHeader,45);
+	}
+
+
+
+
 }
