@@ -1195,19 +1195,6 @@ public class BaseTestClass {
         HttpClientBuilder.create().build().execute(putRequest);
     }
 
-    /**
-     * Launch OneView Test
-     * @param env
-     * @param contactId
-     * @param accountNumber
-     */
-    public void launchOneView(String env, String contactId, String accountNumber) {
-        getEnvironmentSelectionPage().enterAccountNumber(accountNumber);
-        getEnvironmentSelectionPage().enterContactId(contactId);
-        getEnvironmentSelectionPage().enterUserRoles("CSR,Oneview Pilot-1,Oneview BRT-1,R76,BT User,R33,R45,R47,R52,R54,R55,R65,R68,R75,R77,R246,R252,R261,R167,R306,R307,R304,R311,BRT Authorized CSR-3,BRT Authorized CSR-4,Ignite Learning Lab Additive Role");
-        getEnvironmentSelectionPage().selectOneViewUrl(env);
-        getEnvironmentSelectionPage().launch();
-    }
 
     /**
      * To start a session using given url, browser, language and test case group name.
