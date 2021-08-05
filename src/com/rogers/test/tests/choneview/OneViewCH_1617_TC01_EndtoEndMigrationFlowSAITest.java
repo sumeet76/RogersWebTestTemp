@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
 public class OneViewCH_1617_TC01_EndtoEndMigrationFlowSAITest extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
     public void oneViewCH_1617_TC01_EndtoEndMigrationFlowSAITest(){
-		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationDataToSAI.getAccountNo(), TestDataHandler.migrationDataToSAI.getContactID() );
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		getAccountOverViewPage().clickIgnite();
@@ -69,7 +69,8 @@ public class OneViewCH_1617_TC01_EndtoEndMigrationFlowSAITest extends BaseTestCl
 	@BeforeMethod (alwaysRun=true)
 	@Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),TestDataHandler.migrationData.getContactID(), TestDataHandler.migrationData.getAccountNo(),System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+		startOVSession("", strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"", "","", "", method);
+
 	}
 
 	@AfterMethod(alwaysRun = true)

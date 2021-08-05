@@ -150,15 +150,14 @@ public class CaptchaBypassHandlers {
 	 * @param strLanguage                string of language to use
 	 */
 	public void chOnewviewFlows(String strUrl, String strAccNo,  String strLoginID, String strLanID, String strLanguage,String strBrowser,  Method currentTestMethodName ,String strContactID) throws IOException {
-//		strLoginID = "abcddd.ye";
-//		strLanID = "2384732423";
 		String oneViewUrl="";
-		if(strContactID.equals(""))
+		if (strUrl.isEmpty())
+			oneViewUrl = "https://dev-entry-oneview.rogers.com/#/";
+		else if(strContactID.equals(""))
 			oneViewUrl = CaptchaBypassHandlers.urlOneViewExistingCustomer(strUrl, strLoginID, strLanID, strAccNo, strLanguage);
-		else if (strAccNo.isEmpty())
-			oneViewUrl = CaptchaBypassHandlers.urlOneViewAnonymous(strUrl, strLoginID, strLanID, strAccNo, strLanguage, strContactID);
 		else
-			oneViewUrl = CaptchaBypassHandlers.urlOneViewMigration(strUrl, strLoginID, strLanID, strAccNo, strLanguage, strContactID);
+			oneViewUrl = CaptchaBypassHandlers.urlOneViewAnonymous(strUrl, strLoginID, strLanID, strAccNo, strLanguage, strContactID);
+
 		System.out.println(oneViewUrl + "----------------------------------------------------------------------------");
 		getDriver().get(oneViewUrl);
 	}
@@ -208,6 +207,7 @@ public class CaptchaBypassHandlers {
 	public static String urlOneViewMigration(String strUrl, String strLoginID, String strLanID, String strAccNo,String strLanguage,String strContactID) {
 		String queryParam="LoginId="+strLanID+"&UserRole=CSR,Oneview Pilot-1,Oneview BRT-1,R76,BT User,R33,R45,R21,R75,R77,R180,R182,R252,R47,R52,R54,R55,R65,R68,R75,R77,R246,Telesales,R188,R252,R261,R167,R306,R307,R304,R311,BRT Authorized CSR-3,BRT Authorized CSR-4,Ignite Learning Lab Additive Role&IntID=&Target=UTE&TimeStamp=2021-06-30T11:29:45.4412-04:00&Lang="+strLanguage+"&AppId=CRM&li="+strLoginID+"&AccNo="+strAccNo+"&ContactID="+strContactID+"";
 		String oneViewUrl= strUrl+queryParam;
+		oneViewUrl = "https://dev01-oneview.rogers.com/web/a/dashboard?source=icm&lang=en&jwt=eyJhbGciOiJSU0EtT0FFUC0yNTYiLCJlbmMiOiJBMjU2R0NNIn0.SVakUVueuffNzondc1tUmcx11JNfMn7NewAZDss_4S9e2BjHcYy5fkXjIT2l8-LjzkPrsCr9-i3QQbBQrxDFeb2DnpLwEopZmPJBltBEGHl8Pe5C2c6saOZhpTI5c50vJ4Q8p3zZNgY5y6ajiczQywOaqgojAR-Z7YV1UUYfuD2hKNi6gJnDjtPSbHgXqRw6daJet8mTtsj20tdvcW5c5kAFJMEBQ-uJsxP90fJHaepGcDZ3nhMf5D2jhjBUfT9FQjutqy7VqFVnN5VCiad0QuzwVmgCF0XuxEkVhiP-LFLu-YE9e5e-Px8GW6KDHsIpHJKceaOTyU70-4MS2bD1Ng.f2fTqs8DhvLQDnJF.djQqWtEGXusazzJ4oa_oOGAdWDqh9-TF9Go88OVuyp9UH4aP74dCS7Gk6RtkK3y6ub5AYeNE_sEVEiPrapB_mwjeG6OmB54ilmggcwsNnsjYF2fezHJdpOIQ5UisFr4I4a6Hx1NzKloGCY97oOQhugFF7aUkJxwGPUckLW2nE3qbz1P2diZdYjne7Es_36qGp0QeUoe3tVnNCJ0OJvrmXLP9C4YcAMMzjP-0veVTURxctwStgePRxwwpfYB0blHyvmr68uF04_69l4nehzv6oQxWfsWEkv7GywTbrXrRPDlLU-GevdkpwRK4fc7Nh3F-DE-rU-7NwpziQeW7EcjDU-C7Jza8bzjeJGWaBj2OKtCUgKOBGqkgwphPrbeKZPjXcDeheiT6phcu8TWcAL6hA4bqVeJBk9EE3pM9vzfRa8fviQeOBWARWT-3LXj6DAIIO0G72aDFfs506EbYRbaIx1Xnkhl-8BIPjooJcKP78dnyUwxndNDP9Wcm9-ld5-FZxQcH7v5tQw27MNfjd2AdXjh27YQIkfP0kgfvfe1CprQMYRZAkT7sBT1RLhTfhKW88Ft2Ft3CS_0VtXfW_88jCQFkx7HJfeIXbSNHhwzSy-_6LxSSrHfcHGC7Dg4jmpVZxTf3xHGd1y-oWCR_O3gZ9K_HeBvqGgMqrBpTgVrlcoYQ30RnKwF_bOY.Dy6SbUyfMUB2BPJlgaPAxQ";
 		return oneViewUrl;
 	}
 	

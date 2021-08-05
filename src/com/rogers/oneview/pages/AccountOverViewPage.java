@@ -37,7 +37,7 @@ public class AccountOverViewPage  extends BasePageClass {
 //	@FindBy(xpath = "//t[contains(text(),'Ignite')]/ancestor::a")})
 
 
-	@FindBy(xpath = "//app-service-badge-tv-care/descendant::div[@class='service-detail service-address'] | //div[@class='service-badge tv active-ind IPTV']")
+	@FindBy(xpath = "//app-service-badge-tv-care/descendant::div[@class='service-detail service-address'] | //div[@class='service-badge tv active-ind IPTV'] | //div[@class='service-badge tv active-ind DigitalTV']")
 	WebElement btnGetIgniteTVBadge;
 
 	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.total_balance' or text()='Total balance' or text()='Total du solde'  or text()='Total Balance']")
@@ -71,10 +71,6 @@ public class AccountOverViewPage  extends BasePageClass {
 	})
 	WebElement viewAllAlerts;
 
-//	@FindAll({
-//			@FindBy(xpath = "//div[@class='blocker ng-star-inserted'] | //img[@class='bell-icon']"),
-//			@FindBy(xpath = "//img[@class='bell-icon']")
-//	})
 	@FindBy(xpath = "//img[@class='bell-icon'] | //a[@class='agent-notifications-icon']")
 	WebElement notificationBell;
 
@@ -185,7 +181,7 @@ public class AccountOverViewPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void selectBundleChangeIfPresent() {
-		getReusableActionsInstance().clickIfAvailable(changeTVBundle,30);
+		getReusableActionsInstance().clickIfAvailable(changeTVBundle,45);
 	}
 
 	/**

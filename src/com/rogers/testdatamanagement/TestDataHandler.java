@@ -182,6 +182,9 @@ public class TestDataHandler {
 	public static MigrationData migrationDataToISS;
 	public static MigrationData migrationData3PSameNumber;
 	public static MigrationData migrationData1PRHPTo3P;
+	public static MigrationData addChannelImmediate;
+	public static MigrationData addThemepackImmediate;
+	public static MigrationData addChannelAndThempackImmediate;
 	public static PaymentDetails ovPaymentInfo;
 	public static AccountData tc60;
 	public static RedesignConfig redesignConfig;
@@ -510,6 +513,9 @@ public class TestDataHandler {
 		migrationData1PTo3P = YamlHandler.getMigrationData("MigrationData1PTo3P");
 		migrationData3PSameNumber = YamlHandler.getMigrationData("MigrationData3PSameNumber");
 		migrationData1PRHPTo3P = YamlHandler.getMigrationData("MigrationData1P_RHP_To3P");
+		addChannelImmediate = YamlHandler.getMigrationData("1543_AddChannelsImmediate");
+		addThemepackImmediate = YamlHandler.getMigrationData("1544_AddThemepackImmediate");
+		addChannelAndThempackImmediate = YamlHandler.getMigrationData("1539_AddChannelandThemepackImmediate");
 		TC023_TVPackageDowngrade= YamlHandler.getOVAccountData("TC_023_TV_PackageDowngrade");
 		TC026_TVPackageUpgrade= YamlHandler.getOVAccountData("TC026_TVPackageUpgrade");
 		TC028_InternetPackageDowngrade= YamlHandler.getOVAccountData("TC_028_Internet_PackageDowngrade");

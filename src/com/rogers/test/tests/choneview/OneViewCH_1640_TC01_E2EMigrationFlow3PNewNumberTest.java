@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
 public class OneViewCH_1640_TC01_E2EMigrationFlow3PNewNumberTest extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
     public void oneViewCH_1640_TC01_E2EMigrationFlow3PNewNumberTest(){
-		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData.getAccountNo(), TestDataHandler.migrationData.getContactID());
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		getAccountOverViewPage().clickIgnite();
@@ -99,7 +99,7 @@ public class OneViewCH_1640_TC01_E2EMigrationFlow3PNewNumberTest extends BaseTes
 	@BeforeMethod (alwaysRun=true)
 	@Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),TestDataHandler.migrationData3PSameNumber.getContactID(), TestDataHandler.migrationData3PSameNumber.getAccountNo(),System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+		startOVSession("", strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"", "","", "", method);
 	}
 
 	@AfterMethod(alwaysRun = true)

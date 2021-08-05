@@ -13,18 +13,16 @@ import java.lang.reflect.Method;
 public class OneViewCH_1544_TC01_AddThemepackImmediate extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
     public void oneViewCH_1544_TC01_AddThemepackImmediate(){
-		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+		getEnvironmentSelectionPage().launchOneView(TestDataHandler.addThemepackImmediate.getAccountNo(), TestDataHandler.addThemepackImmediate.getContactID());
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		getAccountOverViewPage().clickIgniteTVBadge();
-		getAccountOverViewPage().selectBundleChangeIfPresent();
-		reporter.hardAssert(getAccountOverViewPage().verifyTVOrChannelHeader(),"TV or Channel header displayed","TV or Channel header did not Displayed");
-		reporter.reportLogWithScreenshot("Ignite TV widget selected");
 		getTVDashboardPage().clickManageChannelsAndThemepacks();
 		reporter.hardAssert(getAccountOverViewPage().verifyCustomerFollowingsHeader(),"Customer followings displayed","Customer followings did not Displayed");
 		reporter.reportLogWithScreenshot("Customer followed channels and themepacks");
 		getTVDashboardPage().clickThemepacksTab();
 		getTVDashboardPage().addThemepack();
+		getTVDashboardPage().clickYesContinueIfPresent();
 		getTVDashboardPage().clickContinueForPackage();
 		getTVDashboardPage().immediateDateChangeOption();
 		getTVDashboardPage().clickCancel();
@@ -37,8 +35,7 @@ public class OneViewCH_1544_TC01_AddThemepackImmediate extends BaseTestClass {
 	@BeforeMethod (alwaysRun=true)
 	@Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),TestDataHandler.migrationData.getContactID(), TestDataHandler.migrationData.getAccountNo(),System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+		startOVSession("", strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"", "","", "", method);
 	}
 
 	@AfterMethod(alwaysRun = true)
