@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import utils.FormFiller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RogersPlanConfigPage extends BasePageClass {
@@ -60,7 +61,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     WebElement monthlyFeesCartSummarySection;
 
     @FindBy(xpath="//p[contains(.,'Financing options')]")
-    WebElement downPaymentChkBox;
+    WebElement txtFinancingOptions;
 
     @FindBy(xpath = "//button[@data-test='stepper-1-edit-step-continue-button']")
     WebElement preCartDeviceCostContinueButton;
@@ -164,9 +165,14 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[contains(@id,'main-continue-button')]")
     WebElement btnProceedToCheckout;
 
-    @FindBy(xpath = "//button[contains(@id,'tab-2')]")
+    @FindBy(xpath = "//p[contains(.,'Basic Plans') or contains(.,'De base')]/ancestor::button")
     WebElement btnBasicPlan;
 
+    @FindBy(xpath = "//p[contains(@data-test,'stepper-2-completed')]/following-sibling::div//p")
+    WebElement planData;
+
+    @FindBy(xpath = "//ds-checkbox[@data-test='vdp-checkbox']")
+    WebElement vdpCheckBox;
 
 
     /**
@@ -200,7 +206,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clkRadioButtonNoTerm() {
-        getReusableActionsInstance().scrollToElement(downPaymentChkBox);
+        getReusableActionsInstance().scrollToElement(txtFinancingOptions);
         getReusableActionsInstance().clickWhenVisible(noTermRadioBtn,30);
     }
 
@@ -209,12 +215,13 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clickShowMoreDetails() {
-        if(getReusableActionsInstance().getWhenReady(showMoreDetails).getAttribute("title").contains("Hide More Details")) {
-            System.out.println("Show more details accordion already in expanded state");
-        }
-        else {
-            getReusableActionsInstance().scrollToElement(showMoreDetails);
-            getReusableActionsInstance().clickIfAvailable(showMoreDetails, 20);
+        if(getReusableActionsInstance().isElementVisible(showMoreDetails,20)) {
+            if (getReusableActionsInstance().getWhenReady(showMoreDetails).getAttribute("title").contains("Hide More Details")) {
+                System.out.println("Show more details accordion already in expanded state");
+            } else {
+                getReusableActionsInstance().scrollToElement(showMoreDetails);
+                getReusableActionsInstance().clickWhenVisible(showMoreDetails, 20);
+            }
         }
     }
 
@@ -359,7 +366,17 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void selectBasicPlanAndClkContinueBtn(String dataOptionIndex) {
-        getReusableActionsInstance().clickWhenVisible(By.xpath("//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-basic-"+dataOptionIndex+"')]//label[1]"),20);
+        getReusableActionsInstance().clickWhenVisible(By.xpath("//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-basic-"+dataOptionIndex+"')]//label"),20);
+        getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton,20);
+    }
+
+    /**
+     * This menthod selects basic plan based on the index value
+     * @param dataOptionIndex : String value of data option to be selected
+     * @author praveen.kumar7
+     */
+    public void selectBasicIndividualPlanAndClkContinueBtn(String dataOptionIndex) {
+        getReusableActionsInstance().clickWhenVisible(By.xpath("//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-"+dataOptionIndex+"')]//label"),20);
         getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton,20);
     }
 
@@ -510,8 +527,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clkDownPaymentChkBox() {
-        getReusableActionsInstance().scrollToElement(downPaymentChkBox);
-        getReusableActionsInstance().clickWhenReady(downPaymentChkBox,30);
+        getReusableActionsInstance().clickWhenReady(vdpCheckBox,30);
     }
 
     /**
@@ -910,4 +926,29 @@ public class RogersPlanConfigPage extends BasePageClass {
         getReusableActionsInstance().clickWhenReady(btnBasicPlan,20);
     }
 
+    /**
+     * This method will get the data value and its respective MSF
+     * @return List with plan data and msf value
+     * @author praveen.kumar7
+     */
+    public List<String> getPlanData() {
+        String dataBucket = "";
+        String planPrice = "";
+        List<String> planDetails = new ArrayList<String>();
+        String data = getReusableActionsInstance().getWhenReady(planData, 20).getText().trim().replaceAll(" ", "");
+        for (int i = 0; i < data.length(); i++) {
+            if (!(data.charAt(i) == 'G')) {
+                dataBucket = dataBucket.concat(Character.toString(data.charAt(i)));
+            } else break;
+        }
+        planDetails.add(dataBucket);
+        String planMSF[] = getReusableActionsInstance().getWhenReady(planData, 20).getText().trim().split("\\$");
+        for (int i = 0; i < planMSF[1].length(); i++) {
+            if (!(planMSF[1].charAt(i) == '.')) {
+                planPrice = planPrice.concat(Character.toString(planMSF[1].charAt(i)));
+            } else break;
+        }
+        planDetails.add(planPrice);
+        return planDetails;
+    }
 }

@@ -118,7 +118,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	@FindBy(xpath = "//th[contains(text(),' Risk level ')]//following-sibling::td")
 	WebElement riskLevel;
 
-	@FindBy(xpath = "//span[contains(text(),'Accept') or contains(text(),'accepte')]")
+	@FindBy(xpath = "//button[@data-test='modal-credit-evaluation-accept']")
 	WebElement acceptAndContinueOnCreditEvalModal;
 
 	@FindBy(xpath = "//ds-modal[contains(@data-test,'sharedNonShared')]/ancestor::ds-modal-container")
@@ -472,7 +472,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 * @author praveen.kumar7
 	 */
 	public String getDeviceFullPriceFrench() {
-		String deviceFullPrice =  getReusableActionsInstance().getWhenReady(By.xpath("(//div[contains(@data-test,'device-config')]//p)[2]")).getText().trim();
+		String deviceFullPrice =  getReusableActionsInstance().getWhenReady(By.xpath("//div[contains(@data-test,'device-config')]//p[2]")).getText().trim();
 		String fullPrice[] =  deviceFullPrice.split("\\$");
 		String price = fullPrice[0].trim();
 		return price;

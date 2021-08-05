@@ -20,7 +20,7 @@ class RogersBFA_TC16_HUPShareTermBopisML_Test extends BaseTestClass {
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc16HUPShareTermBopisML.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16HUPShareTermBopisML.getPassword());
         reporter.reportLogWithScreenshot("Login Page");

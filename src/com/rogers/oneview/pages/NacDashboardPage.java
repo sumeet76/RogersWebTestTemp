@@ -17,7 +17,7 @@ public class NacDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//a[contains(@class,'other-language')]")
 	WebElement changeLanguage;
 
-	@FindBy(xpath = "//div[contains(text(),'New Customer')]")
+	@FindBy(xpath = "//div[contains(@class,'customer-name-address')]")
 	WebElement newCustomerTitle;
 
 	@FindBy(xpath = "//p[contains(text(),'Consumer') or contains(text(),'Consommateur')]")

@@ -18,8 +18,9 @@ public class AALData {
 	private String expiryDateOTP;
 	private String nameOnCard;
 	private String cvvNumber;
+	private String riskClass;
 
-	
+
 	/**
 	 * @return the postalCode
 	 */
@@ -209,5 +210,18 @@ public class AALData {
 	 * @param cvvNumber the cvvNumber to set
 	 */
 	public void setCvvNumber(String cvvNumber) { this.cvvNumber = cvvNumber; }
+	/**
+	 * @return the risk class
+	 */
+	public String getRiskClass() {
+		return riskClass;
+	}
+	/**
+	 * @param riskClass the risk class value to set
+	 */
+	public void setRiskClass(String riskClass) {
+		this.riskClass = riskClass;
+	}
+
 
 }

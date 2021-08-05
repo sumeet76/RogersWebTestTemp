@@ -130,6 +130,7 @@ public class RogersBFA_TC18_AALFinPlan_PotgShipping_Test extends BaseTestClass {
         getRogersCheckoutPage().clkDeliveryMethod("PRO");
         reporter.reportLogPassWithScreenshot("Pro on the go Delivery selected");
         reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");
+        getRogersCheckoutPage().setEmailShippingPage();
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();

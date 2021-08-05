@@ -28,14 +28,14 @@ public class RogersBFA_OV_TC22_NAC_FieldSalesNACNoTermToAALNoTermStandardShippin
 		//-------------------------------------NAC Dashboard page---------------------------------------------
 		//getAccountOverViewPage().enterDealerCodeDialogue();
 		//getAccountOverViewPage().clkSubmitBtnDealerCodeDialogue();
-		reporter.hardAssert(getNacDashboardPage().verifyNewCustomerDashboard(), "Login Successful", "Login Failed");
+		//reporter.hardAssert(getNacDashboardPage().verifyNewCustomerDashboard(), "Login Successful", "Login Failed");
 		reporter.reportLogWithScreenshot("Rogers OV NAC Dashboard page");
 		getNacDashboardPage().clkCustomerButton();
 		reporter.reportLogWithScreenshot("Services under customer button");
 		getNacDashboardPage().clkWirelessButton();
 		reporter.reportLogWithScreenshot("Active Wireless Service Modal");
 		getNacDashboardPage().fillShippingAddressField(TestDataHandler.buyFlowsOVtestCase22.getShippingAddress());
-		getNacDashboardPage().fillApartmentField(TestDataHandler.buyFlowsOVtestCase22.getApartment());
+		//getNacDashboardPage().fillApartmentField(TestDataHandler.buyFlowsOVtestCase22.getApartment());
 		//reporter.hardAssert(getNacDashboardPage().verifyPOTGAddressEligibility(), "Address is Eligible for POTG", "Address is not Eligible for POTG");
 		//reporter.reportLogWithScreenshot("POTG address is selected");
 		getNacDashboardPage().clkGetANewPhoneButton();
@@ -46,8 +46,8 @@ public class RogersBFA_OV_TC22_NAC_FieldSalesNACNoTermToAALNoTermStandardShippin
 		getRogersOVChoosePhonePage().clickDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase22.getDeviceName());
 		getRogersOVChoosePhonePage().clickContinueButton();
 		//-------------------------------------Plan config page---------------------------------------------
-		reporter.softAssert(getRogersOVPlanConfigPage().verifyBreadCrumb(deviceName),
-				"BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
+		/*reporter.softAssert(getRogersOVPlanConfigPage().verifyBreadCrumb(deviceName),
+				"BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");*/
 		reporter.hardAssert(getRogersOVPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
 		reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
 		getRogersOVPlanConfigPage().clickViewMoreOptions();
@@ -193,6 +193,7 @@ public class RogersBFA_OV_TC22_NAC_FieldSalesNACNoTermToAALNoTermStandardShippin
 		reporter.hardAssert(getRogersOVPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersOVPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.buyFlowsOVtestCase22.getTalkOptionIndex())),
 				"Talk option selected and Addons page in expanded state","Addons page not in expanded state");
 		getRogersOVPlanConfigPage().clickPreCartAddonsContinueButton();
+		getRogersOVPlanConfigPage().clkContinueCallerID();
 		getRogersOVPlanConfigPage().clickCartSummaryContinueButton();
 		// ***************Choose a Number Steppe AALr*************//
 		reporter.softAssert(getRogersOVCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed", "Choose a Number Title not disaplayed");
@@ -205,13 +206,6 @@ public class RogersBFA_OV_TC22_NAC_FieldSalesNACNoTermToAALNoTermStandardShippin
 		getRogersOVCheckoutPage().clkChooseNumberbutton();
 		reporter.hardAssert(getRogersOVCheckoutPage().isChooseaNumberLabelDisplayed(), "Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
 		reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
-		// ***************Billing & Payment Stepper AAL*************//
-		reporter.softAssert(getRogersOVCheckoutPage().isBillingOptionsTitleDisplayed(), "Billing Options Title Displayed",
-				"Billing Options Title Not Present");
-		reporter.softAssert(getRogersOVCheckoutPage().isPaymentMethodDropdownPresent(),
-				"Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not disaplayed");
-		getRogersOVCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.buyFlowsOVtestCase22.getPaymentMethod());
-		getRogersOVCheckoutPage().clkBillingContinueButton();
 		// ***************Shipping Stepper AAL*************//
 		reporter.hardAssert(getRogersOVCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
 				"Billing Address is not selected");

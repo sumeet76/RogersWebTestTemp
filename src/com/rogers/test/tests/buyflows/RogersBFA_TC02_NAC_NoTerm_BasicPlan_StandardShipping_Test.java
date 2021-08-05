@@ -128,9 +128,9 @@ public class RogersBFA_TC02_NAC_NoTerm_BasicPlan_StandardShipping_Test extends B
 
 		// ***************Shipping Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ", "Billing Address is not selected");
-		String addressShippingStepper = getRogersCheckoutPage().getShippingAddress();
-		System.out.println(billingAddressCreateProfile+"and"+addressShippingStepper);
-		reporter.softAssert(billingAddressCreateProfile.equals(addressShippingStepper), "Address in Shipping Stepper matches as entered in Create Profile stepper", "Address in Shipping Stepper not matches as entered in Create Profile stepper");
+		//String addressShippingStepper = getRogersCheckoutPage().getShippingAddress();
+		//System.out.println(billingAddressCreateProfile+"and"+addressShippingStepper);
+		//reporter.softAssert(billingAddressCreateProfile.equals(addressShippingStepper), "Address in Shipping Stepper matches as entered in Create Profile stepper", "Address in Shipping Stepper not matches as entered in Create Profile stepper");
 		getRogersCheckoutPage().clkDeliveryMethod("standard");
 		reporter.reportLogPass("Standard Delivery selected");
 		getRogersCheckoutPage().clkContinueBtnShipping();
