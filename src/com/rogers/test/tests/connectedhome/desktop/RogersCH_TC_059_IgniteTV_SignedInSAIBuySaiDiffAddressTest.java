@@ -39,7 +39,7 @@ public class RogersCH_TC_059_IgniteTV_SignedInSAIBuySaiDiffAddressTest extends B
     public void checkSignedInSAIBuyTVBundlesDiffAddressTest() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc59_saiforIgniteBundle.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc59_saiforIgniteBundle.getPassword());

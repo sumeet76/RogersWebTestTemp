@@ -274,7 +274,7 @@ public class RogersCH_TC_032_085_IginteTV_BuyBundleValidateMonthAsteriskTest ext
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 

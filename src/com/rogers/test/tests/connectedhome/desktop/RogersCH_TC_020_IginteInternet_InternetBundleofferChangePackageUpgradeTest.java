@@ -35,7 +35,7 @@ public class RogersCH_TC_020_IginteInternet_InternetBundleofferChangePackageUpgr
     public void checkSolarisBundleofferChangePackageUpgrade() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc20_SolarisInternetAccountForUpgrade.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc20_SolarisInternetAccountForUpgrade.getPassword());

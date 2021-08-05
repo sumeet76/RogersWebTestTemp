@@ -36,7 +36,7 @@ public class RogersCH_TC_068_UC1_ButtontoManageWifiHubnetwork_IgniteInternetdash
     @Test(groups = {"RegressionCH","RogersInternetCH"})
     public void checkIgniteInternetdashboardButtontoManageWifiHubnetwork() {
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getPassword());

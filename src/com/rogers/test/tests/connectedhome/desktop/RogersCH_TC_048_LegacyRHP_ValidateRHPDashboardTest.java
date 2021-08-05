@@ -30,7 +30,7 @@ public class RogersCH_TC_048_LegacyRHP_ValidateRHPDashboardTest extends BaseTest
 	public void checkLegacyRHPDashboard () {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc48_legacyRHP.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc48_legacyRHP.getPassword());

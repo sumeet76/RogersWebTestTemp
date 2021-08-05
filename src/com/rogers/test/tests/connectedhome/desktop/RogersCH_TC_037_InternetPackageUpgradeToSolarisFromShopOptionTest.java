@@ -56,7 +56,7 @@ public class RogersCH_TC_037_InternetPackageUpgradeToSolarisFromShopOptionTest e
 	public void checkInternetPackageUpgrade() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc37_internetAccountUpgrade.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc37_internetAccountUpgrade.getPassword());

@@ -16,7 +16,7 @@ public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends B
     public void checkBuyIginteTVOfferPortIn() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
    		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc39_40_SolarisPortinFlows.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc39_40_SolarisPortinFlows.getPassword());

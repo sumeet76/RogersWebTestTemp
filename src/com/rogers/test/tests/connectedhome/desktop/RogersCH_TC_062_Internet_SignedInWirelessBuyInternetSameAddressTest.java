@@ -37,7 +37,7 @@ public class RogersCH_TC_062_Internet_SignedInWirelessBuyInternetSameAddressTest
     public void checkSignedInWirelessBuyInternetSameAddressTest() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc62_wirelessSignedInInternetBuy.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc62_wirelessSignedInInternetBuy.getPassword());

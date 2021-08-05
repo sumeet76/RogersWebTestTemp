@@ -39,7 +39,7 @@ public class RogersCH_TC_013_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannel
     public void checkSolarisChangeTVPackageAdd4KChannelsAndThemePackFlow() { 
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc13_SolarisChangeTVPackageAdd4KChannelsAndThemePack.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc13_SolarisChangeTVPackageAdd4KChannelsAndThemePack.getPassword());
@@ -94,7 +94,7 @@ public class RogersCH_TC_013_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannel
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 

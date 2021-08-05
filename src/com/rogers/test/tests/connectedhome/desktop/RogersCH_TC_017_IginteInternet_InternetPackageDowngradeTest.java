@@ -31,7 +31,7 @@ public class RogersCH_TC_017_IginteInternet_InternetPackageDowngradeTest extends
 	@Test(groups = {"SanityCH","RegressionCH","RogersInternetCH"})
     public void checkInternetPackageDowngrade() {
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getPassword());

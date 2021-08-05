@@ -30,7 +30,7 @@ public class RogersCH_TC_046_LegacyInternet_ValidateInternetUsageTest extends Ba
 	public void checkLegacyInternetUsage() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
-	 	 getRogersLoginPage().switchToSignInIFrame();
+	 	 //getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc46_legacyInternetAccount.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc46_legacyInternetAccount.getPassword());

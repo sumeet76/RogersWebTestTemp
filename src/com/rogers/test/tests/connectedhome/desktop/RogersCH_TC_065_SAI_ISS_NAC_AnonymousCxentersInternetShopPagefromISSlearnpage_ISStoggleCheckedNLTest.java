@@ -130,7 +130,7 @@ public class RogersCH_TC_065_SAI_ISS_NAC_AnonymousCxentersInternetShopPagefromIS
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
 

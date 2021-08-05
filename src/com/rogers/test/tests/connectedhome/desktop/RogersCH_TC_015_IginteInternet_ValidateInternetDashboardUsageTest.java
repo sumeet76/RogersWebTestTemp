@@ -35,7 +35,7 @@ public class RogersCH_TC_015_IginteInternet_ValidateInternetDashboardUsageTest e
     public void checkInternetDashboard() {
     	            reporter.reportLogWithScreenshot("Launched the Home Page");
                     getRogersHomePage().clkSignIn();
-                    getRogersLoginPage().switchToSignInIFrame();
+                    //getRogersLoginPage().switchToSignInIFrame();
                     reporter.reportLogWithScreenshot("Launched the SignIn popup");
                     getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc15_SolarisInternetAccountWithUsage.getUsername());
                     getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc15_SolarisInternetAccountWithUsage.getPassword());

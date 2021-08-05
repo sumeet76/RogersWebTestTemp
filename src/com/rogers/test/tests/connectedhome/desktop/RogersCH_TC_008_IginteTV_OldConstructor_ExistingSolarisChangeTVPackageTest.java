@@ -38,7 +38,7 @@ public class RogersCH_TC_008_IginteTV_OldConstructor_ExistingSolarisChangeTVPack
     public void checkIginteTVOldConstructorExistingSolarisChangeTVPackageTest() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc08_SolarisTVOldConstructor.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc08_SolarisTVOldConstructor.getPassword());
