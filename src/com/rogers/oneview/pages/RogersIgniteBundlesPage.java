@@ -47,7 +47,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[contains(text(),'Home Phone')]/ancestor::label  | //div[@id='ds-checkbox-id-3-label-container'] | //div[contains(text(), ' Home Phone ')]")
 	WebElement homePhoneCheckbox;
 
-	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button")
+	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[1]")
 	WebElement addToCart;
 
 	@FindBy(xpath = "//span[text()='No, continue' or text()='Non, continuer']/ancestor::button")
@@ -148,6 +148,23 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[@class='serviceability-ptm-modal-footer']/descendant::span[@translate='global.cta.continue']/ancestor::button")
 	WebElement continueFromPointsToMention;
 
+
+
+	@FindBy(xpath = "//span[@translate='global.label.learnPageText']")
+	WebElement selectServiceCustomerWant;
+
+	@FindBy(xpath = "//span[@translate='global.label.totalMonthlyFees']")
+	WebElement monthFeesInCollapse;
+
+	@FindBy(xpath = "//h1[@translate='global.label.personalizeYourChannels']")
+	WebElement personalizeYourChannels;
+
+	@FindBy(xpath = "//h1[@translate='global.label.cartSummary']")
+	WebElement cartSummaryHeader;
+
+
+
+
 	/**
 	 * Click Load Offers button
 	 * @author aditi.jain
@@ -197,7 +214,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void clkAddtoCartISS(String planEn) {
-		getReusableActionsInstance().getWhenReady(By.xpath("//span[text()='"+planEn+"']/parent::div/parent::div//span[text()='Add to cart']/ancestor::button"),120).sendKeys(Keys.ENTER);
+//		getReusableActionsInstance().getWhenReady(By.xpath("//span[text()='"+planEn+"']/parent::div/parent::div//span[text()='Add to cart']/ancestor::button"),120).sendKeys(Keys.ENTER);
+		getReusableActionsInstance().clickWhenReady(addToCart,30);
 	}
 
 	/**
@@ -472,4 +490,45 @@ public void clkCustomerAddonReview() {
 public void activateHomePhoneltrPopUp() {	
 	getReusableActionsInstance().getWhenReady(yesBtn,120).click();
 }
+
+	/**
+	 * Verify Select services customer may opt for available
+	 * @return true if available, else false
+	 * @author Aditi.jain
+	 */
+	public boolean verifyAvailableServicesCheckboxes() {
+		return getReusableActionsInstance().isElementVisible(selectServiceCustomerWant,45);
+	}
+
+
+	/**
+	 * Verify Monthly Fees available
+	 * @return true if available, else false
+	 * @author Aditi.jain
+	 */
+	public boolean verifyMonthlyFeesInCollapsible() {
+		return getReusableActionsInstance().isElementVisible(monthFeesInCollapse,45);
+	}
+
+	/**
+	 * Verify Personalize Your Channel header
+	 * @return true if available, else false
+	 * @author Aditi.jain
+	 */
+	public boolean verifyPersonalizeYourChannels() {
+		return getReusableActionsInstance().isElementVisible(personalizeYourChannels,45);
+	}
+
+	/**
+	 * Verify Cart Summary Header
+	 * @return true if available, else false
+	 * @author Aditi.jain
+	 */
+	public boolean verifyCartSummaryHeader() {
+		return getReusableActionsInstance().isElementVisible(cartSummaryHeader,45);
+	}
+
+
+
+
 }

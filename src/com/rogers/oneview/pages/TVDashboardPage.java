@@ -31,7 +31,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='View my channel lineup' or text()='Voir ma liste de chaînes']/ancestor::button")
 	WebElement btnViewChannelLineUp;
 
-	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button")
+	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button | (//rch-conflict-modals/descendant::span[@ng-reflect-translate='global.modals.conflictWarnings'])[1]")
 	WebElement btnContnueReset;
 
 	@FindBy(xpath = "//div[@class='ds-modal__header d-flex align-items-start']")
@@ -189,8 +189,8 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@translate='global.cta.tabs.channels']")
 	WebElement channelsTab;
 
-	@FindBy(xpath = "//div[@role='tablist']")
-	WebElement goToChannelOrThemepackTabs;
+//	@FindBy(xpath = "//div[@role='tablist'] | //button[@ng-reflect-translate='global.cta.tabs.themePacks']")
+//	WebElement goToChannelOrThemepackTabs;
 
 	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[2]")
 	WebElement addChannel;
@@ -303,9 +303,12 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void clickManageChannelsAndThemepacks() {
-		getReusableActionsInstance().waitForElementVisibility(manageChannelsAndThemeparks, 180);
+		//TODO: Put a comment on timeout
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().waitForElementVisibility(manageChannelsAndThemeparks, 60);
 		getReusableActionsInstance().scrollToElement(manageChannelsAndThemeparks);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(manageChannelsAndThemeparks);
+		getReusableActionsInstance().waitForElementVisibility(manageChannelsAndThemeparks, 60);
 		getReusableActionsInstance().executeJavaScriptClick(manageChannelsAndThemeparks);
 	}
 
@@ -314,13 +317,13 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void clickThemepacksTab() {
-		getReusableActionsInstance().waitForElementVisibility(goToChannelOrThemepackTabs, 120);
-		getReusableActionsInstance().scrollToElement(goToChannelOrThemepackTabs);
 		if(getReusableActionsInstance().isElementVisible(cancel)){
-			getReusableActionsInstance().waitForElementVisibility(cancel);
-			getReusableActionsInstance().getWhenReady(cancel, 180).click();
+			clickCancel();
 		}
-		getReusableActionsInstance().getWhenReady(themePacksTab, 120).click();
+		getReusableActionsInstance().waitForElementVisibility(themePacksTab, 45);
+		getReusableActionsInstance().scrollToElement(themePacksTab);
+		getReusableActionsInstance().executeJavaScriptClick(themePacksTab);
+//		getReusableActionsInstance().getWhenReady(themePacksTab, 30).click();
 	}
 
 	/**
@@ -337,9 +340,9 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void clickChannelTab() {
-		getReusableActionsInstance().waitForElementVisibility(goToChannelOrThemepackTabs, 120);
-		getReusableActionsInstance().scrollToElement(goToChannelOrThemepackTabs);
-		getReusableActionsInstance().getWhenReady(channelsTab, 60).click();
+		getReusableActionsInstance().waitForElementVisibility(channelsTab, 60);
+		getReusableActionsInstance().scrollToElement(channelsTab);
+		getReusableActionsInstance().getWhenReady(channelsTab, 30).click();
 	}
 
 	/**
@@ -363,21 +366,30 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(yourChanges);
 	}
 
+
+	/**
+	 * Clicks continue on change TV package
+	 * @author aditi.jain
+	 */
+	public void clickYesContinueIfPresent() {
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().waitForElementVisibility(yesToContinue, 30);
+		getReusableActionsInstance().getWhenReady(yesToContinue).click();
+	}
 	/**
 	 * Clicks continue on change TV package
 	 * @author chinnarao.vattam
 	 */
 	public void clickContinueForPackage() {
-		getReusableActionsInstance().staticWait(3000);
-		getReusableActionsInstance().waitForElementVisibility(btnContnueReset, 120);
-		getReusableActionsInstance().getWhenReady(btnContnueReset, 90).click();
+		getReusableActionsInstance().waitForElementVisibility(btnContnueReset, 30);
+		getReusableActionsInstance().getWhenReady(btnContnueReset, 30).click();
 	}
 	/**
 	 * Click immediate date change
 	 * @author Aditi.jain
 	 */
 	public void immediateDateChangeOption() {
-		getReusableActionsInstance().waitForElementVisibility(immediateDateChange, 45);
+		getReusableActionsInstance().waitForElementVisibility(immediateDateChange, 60);
 		getReusableActionsInstance().getWhenReady(immediateDateChange, 45).click();
 	}
 	/**

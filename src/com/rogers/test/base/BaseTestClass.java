@@ -1195,6 +1195,7 @@ public class BaseTestClass {
         HttpClientBuilder.create().build().execute(putRequest);
     }
 
+
     /**
      * To start a session using given url, browser, language and test case group name.
      *

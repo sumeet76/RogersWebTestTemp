@@ -62,14 +62,14 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 	 * @author suganya p
 	 * */
 	public void clickImmediateBill() {
-		getReusableActionsInstance().getWhenReady(btnImmediateBill,60).click();
+		getReusableActionsInstance().getWhenReady(btnImmediateBill,30).click();
 	}
 	/*
 	 * Click on continue in Select billing date pop up
 	 * @author suganya P
 	 * */
 	public void clickContinueOnSelectDateChange() {
-		getReusableActionsInstance().getWhenReady(btnContinueChangeDate,60).click();
+		getReusableActionsInstance().getWhenReady(btnContinueChangeDate,30).click();
 	}
 
 

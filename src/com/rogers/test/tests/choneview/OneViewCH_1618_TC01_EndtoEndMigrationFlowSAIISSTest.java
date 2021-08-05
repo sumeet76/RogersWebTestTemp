@@ -14,11 +14,11 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_1618_TC01_EndtoEndMigrationFlowSAIISSTest extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
-    public void endToEndToEndMigrationFlowSAIISSTest(){
-		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+    public void oneViewCH_1618_TC01_EndtoEndMigrationFlowSAIISSTest(){
+		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationDataToISS.getAccountNo(), TestDataHandler.migrationDataToISS.getContactID());
+
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
-		getAccountOverViewPage().clickNotificationIfPresent();
 		getAccountOverViewPage().clickIgnite();
 		getRogersIgniteBundlesPage().clkUsethisAddress();
 		reporter.reportLogWithScreenshot("Service Availability");
@@ -56,7 +56,7 @@ public class OneViewCH_1618_TC01_EndtoEndMigrationFlowSAIISSTest extends BaseTes
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 //		getPaymentOptionsPage().clkContinue();
 //		getRogersOVCheckoutPage().clkSubmit();
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
 
     }
@@ -64,7 +64,7 @@ public class OneViewCH_1618_TC01_EndtoEndMigrationFlowSAIISSTest extends BaseTes
 	@BeforeMethod (alwaysRun=true)
 	@Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),TestDataHandler.migrationData.getContactID(), TestDataHandler.migrationData.getAccountNo(),System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+		startOVSession("", strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"", "","", "", method);
 	}
 
 	@AfterMethod(alwaysRun = true)
