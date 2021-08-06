@@ -47,6 +47,7 @@ pipeline {
         string(name: 'QaOVUrl', defaultValue: "", description: "QA OV URL Link")
         string(name: 'AWSBYODUrl', defaultValue: "", description: "BFA AWS BYOD URL")
         string(name: 'AWSUrl', defaultValue: "", description: "BFA AWS URL")
+        string(name: 'OneViewEnv', defaultValue: "", description: "One View Env")
     }
 
     triggers {
@@ -120,6 +121,9 @@ pipeline {
                             }
                             if(!params.SearchUrl.isEmpty()){
                                 urlLink = urlLink + "-Ptest_searchURL=${params.SearchUrl}";
+                            }
+                            if(!params.OneViewEnv.isEmpty()){
+                                urlLink = urlLink + "-Ptest_oneViewEnv=${params.OneViewEnv}";
                             }
                             if (params.IndividualTests.isEmpty()){
                                 if(urlLink.isEmpty()){
