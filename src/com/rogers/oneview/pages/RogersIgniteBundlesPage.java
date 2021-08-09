@@ -50,6 +50,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[1]")
 	WebElement addToCart;
 
+	@FindBy(xpath = "(//span[@translate='global.cta.addToCart'])[1]")
+	WebElement firstAddToCart;
+
 	@FindBy(xpath = "//span[text()='No, continue' or text()='Non, continuer']/ancestor::button")
 	WebElement noPortin;
 
@@ -218,8 +221,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void clickFirstAddToCart(String planEn) {
-		getReusableActionsInstance().waitForElementVisibility(addToCart,45);
-		getReusableActionsInstance().executeJavaScriptClick(addToCart);
+		getReusableActionsInstance().waitForElementVisibility(firstAddToCart,45);
+		getReusableActionsInstance().executeJavaScriptClick(firstAddToCart);
 	}
 
 	/**
