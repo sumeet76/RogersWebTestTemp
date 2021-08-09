@@ -26,8 +26,8 @@ public class OneViewCH_1437_TC01_EndtoEndFlowAnonymousCustomerTriplePlayTest ext
 			getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
 			reporter.reportLogWithScreenshot("Triple Play Selected");
 			getRogersIgniteBundlesPage().clkLoadOffers();
-
-			getRogersIgniteBundlesPage().clkAddtoCart(TestDataHandler.anonymousData.getplanEng(),TestDataHandler.anonymousData.getplanFr());
+		getRogersIgniteBundlesPage().clickFirstAddToCart(TestDataHandler.anonymousData.getplanEng());
+//			getRogersIgniteBundlesPage().clkAddtoCart(TestDataHandler.anonymousData.getplanEng(),TestDataHandler.anonymousData.getplanFr());
 			getRogersIgniteBundlesPage().noPortInPopup();
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
 			reporter.reportLogWithScreenshot("Product in cart");

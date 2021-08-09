@@ -65,6 +65,10 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()='Passer à la caisse' or text()='Checkout']/ancestor::button")
 	WebElement checkOut;
 
+	@FindBy(xpath = "//span[@translate='global.cta.checkout']/ancestor::button")
+	WebElement checkOutFromCartSummary;
+
+
 	@FindBy(xpath = "//span[text()='Oui, continuer' or text()='Yes, continue']/ancestor::button")
 	WebElement continueforCheckout;
 
@@ -213,9 +217,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * click Add To Cart for Smartstream
 	 * @author aditi.jain
 	 */
-	public void clkAddtoCartISS(String planEn) {
-//		getReusableActionsInstance().getWhenReady(By.xpath("//span[text()='"+planEn+"']/parent::div/parent::div//span[text()='Add to cart']/ancestor::button"),120).sendKeys(Keys.ENTER);
-		getReusableActionsInstance().clickWhenReady(addToCart,30);
+	public void clickFirstAddToCart(String planEn) {
+		getReusableActionsInstance().waitForElementVisibility(addToCart,45);
+		getReusableActionsInstance().executeJavaScriptClick(addToCart);
 	}
 
 	/**
@@ -313,8 +317,10 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkCheckOut() {
-		getReusableActionsInstance().waitForElementVisibility(checkOut, 60);
-		getReusableActionsInstance().executeJavaScriptClick(checkOut);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().waitForElementVisibility(checkOutFromCartSummary, 30);
+		getReusableActionsInstance().getWhenReady(checkOutFromCartSummary,30).sendKeys(Keys.ENTER);
+
 	}
 	/**
 	 * Click Checkout for Cart Summary
@@ -345,7 +351,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void customerWishtoContinue() {
-		getReusableActionsInstance().clickWhenReady(continueforCheckout,120);
+		getReusableActionsInstance().clickWhenReady(continueforCheckout,30);
 	}
 	/**
 	 * Click Collapse(Down Arrow)
