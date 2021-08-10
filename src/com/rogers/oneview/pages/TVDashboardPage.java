@@ -382,7 +382,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clickContinueForPackage() {
-		getReusableActionsInstance().waitForElementVisibility(btnContnueReset, 30);
+		getReusableActionsInstance().waitForElementVisibility(btnContnueReset, 60);
 		getReusableActionsInstance().getWhenReady(btnContnueReset, 30).click();
 	}
 	/**
