@@ -1,6 +1,7 @@
 package com.rogers.pages;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -36,11 +37,12 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//input[@class='checkoutButton']")
 	WebElement btnCheckout;
 
-	@FindBy(xpath = "//div//a[@title='View internet bundles available to you']")
+	@FindBy(xpath = "//a[@title='View internet bundles available to you']/span")
 	WebElement btnSmartStream;
+	//div//a[@title='View internet bundles available to you']
 	//(//div//a[@title='Get Ignite Internet + SmartStream now'])[1]
 
-	@FindBy(xpath = "//a[contains(@title,'Ignite Internet with SmartStream')]")
+	@FindBy(xpath = "//a[contains(@title,'View internet bundles available to you')]")
 	WebElement lnkSmartStream;
 
 	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::span[contains(@class,'ds-button__wrapper')]")

@@ -52,7 +52,8 @@ public class RogersCH_TC_095_NAC3P_ChannelsAndThemePack_MonthlyFeeBannerValidati
 
     @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
 	public void checkNAC3P_ChannelsAndThemePack_MonthlyFeeBannerValidationNL() {
-	reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+    reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+    reporter.reportLogWithScreenshot("Launched the Easy Login Page");
 	getRogersHomePage().clkTVBundle();
 	reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
 	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
@@ -85,7 +86,7 @@ public class RogersCH_TC_095_NAC3P_ChannelsAndThemePack_MonthlyFeeBannerValidati
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+    	closeSession();
 	}
 
 

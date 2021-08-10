@@ -80,7 +80,7 @@ public class Mobile_RogersCH_TC_004_IginteInternet_InternetPackageUpgradeTest ex
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 

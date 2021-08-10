@@ -107,6 +107,7 @@ public class RogersHomePage extends BasePageClass {
 
 	@FindAll({
 			@FindBy(xpath = "//a[contains(@title,'See available bundles') or  contains(@title,'Voir les offres groupées')]"),
+			//@FindBy(xpath = "//a[contains(@title,'See bundles with Ignite TV and Internet') or  contains(@title,'Voir les offres groupées avec la Télé Élan et Élan Internet')]"),
 			@FindBy(xpath = "//a[contains(@title,'View Ignite TV + Internet bundles available to you') or  contains(@title,'Voir les offres groupées Télé Élan + Internet qui vous sont proposées')]")})
 	WebElement btnServiceability;
 
@@ -235,15 +236,19 @@ public class RogersHomePage extends BasePageClass {
 	WebElement lnkViewNavigationMobile;
 
 	@FindAll({
-	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet at your address']//span[@class='ds-icon rds-icon-right']"),
-			@FindBy(xpath = "//a[@title='View internet bundles available to you']/span")})
+	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet ']"),
+	//@FindBy(xpath = "//a[@title='View internet bundles available to you']/span")
+	})
 	WebElement lnkInternetAvailability;
 
+	@FindAll({@FindBy(xpath = "//a[@title='View internet bundles available to you']/span")})
+	WebElement lnkInternetwithSSAvailability;
+
 	@FindAll({
-	@FindBy(xpath = "//h2[@class='-center text-title-1']"),
-	@FindBy(xpath = "//p[@class='text-title-4 mb-0 py-16']"),
-	@FindBy(xpath = "//h1[contains(text(),'Internet')]")})
+	//@FindBy(xpath = "//span[@class='mb-0 flex-grow-1 text-title-4']"),
+	@FindBy(xpath = "//p[@class='text-title-4 mb-0 py-16']")})
 	WebElement txtInternetBuyPage;
+  //@FindBy(xpath = "//h1[contains(text(),'Internet')]")
 
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement loaderInternetServiceability;
@@ -706,7 +711,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyIgnitepage() {
-		getReusableActionsInstance().staticWait(10000);
+		getReusableActionsInstance().staticWait(6000);
 		return getReusableActionsInstance().isElementVisible(btnServiceability, 60);
 	}
 
@@ -1016,7 +1021,7 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public boolean verifyInternetpage() {
 		//page is taking more time to load , temporary wait
-		getReusableActionsInstance().staticWait(8000);
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementVisibility(txtInternetBuyPage,90);
 		return getReusableActionsInstance().isElementVisible(txtInternetBuyPage, 30);
 	}

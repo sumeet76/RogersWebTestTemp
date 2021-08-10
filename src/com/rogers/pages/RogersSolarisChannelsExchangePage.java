@@ -340,7 +340,7 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 		int counter =0;
 		Collections.reverse(channels);
 		for (WebElement channel: channels ) {
-			if(counter<3){
+			if(counter<4){
 				getActionsInstance().moveToElement(channel).click().build().perform();
 				counter++;
 				getReusableActionsInstance().getWhenReady(channel, 30).sendKeys(Keys.TAB);
