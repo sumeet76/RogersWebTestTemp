@@ -37,7 +37,7 @@ public class RogersCH_TC_079_ISS_learnPage_ValidateSecondaryNavigationContent_li
 
 	@Test(groups = {"RegressionCH","SmartStreamCH"})
     public void checkISSlearnPageValidateSecondaryNavigationContentlinksRedirectionTest() {
-        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
+        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming?env=qa");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         reporter.hardAssert(getRogersHomePage().isSubnavIgniteInternetPresent(),"Ignite Internet Sub nav is Present","Ignite Internet Sub nav is not Present");
         getRogersHomePage().clkSubnavIgniteInternet();
@@ -49,7 +49,7 @@ public class RogersCH_TC_079_ISS_learnPage_ValidateSecondaryNavigationContent_li
         reporter.reportLogWithScreenshot("Help And Support Sub nav");
         getRogersHomePage().clkSubnavHelpAndSupport();
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
-        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
+        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming?env=qa");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         reporter.hardAssert(getRogersHomePage().isSubnavIgniteInternetPresent(),"Ignite Internet Sub nav is Present","Ignite Internet Sub nav is not Present");
         getRogersHomePage().clkSubnavIgniteInternet();
@@ -57,12 +57,12 @@ public class RogersCH_TC_079_ISS_learnPage_ValidateSecondaryNavigationContent_li
         reporter.hardAssert(getRogersHomePage().isAboutIgniteInternetLinkPresent(),"About Ignite Internet Link is present","About Ignite Internet Link is not present");
         getRogersHomePage().clkIgniteWiFiPromise();
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
-        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
+        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming?env=qa");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         getRogersHomePage().clkSubnavIgniteInternet();
         getRogersHomePage().clkIgniteWiFiHub();
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
-        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
+        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming?env=qa");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         getRogersHomePage().clkSubnavIgniteInternet();
         reporter.reportLogWithScreenshot("Launched the Internet packages page");

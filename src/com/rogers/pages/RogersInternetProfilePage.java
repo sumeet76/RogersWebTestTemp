@@ -47,7 +47,7 @@ public class RogersInternetProfilePage extends BasePageClass {
 	@FindAll({
 	//@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and contains(@a11ydescription,'Last Name')]"),
 	//@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @ng-reflect-a11y-description='Please enter your Last Name.']")}),
-	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @aria-label='lease enter your Last Name.']")})
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @aria-label='Please enter your Last Name.']")})
 	WebElement txtLastName;
 
 	@FindAll({
