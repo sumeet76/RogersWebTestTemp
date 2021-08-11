@@ -53,7 +53,7 @@ public class RogersInternetProfilePage extends BasePageClass {
 	@FindAll({
 	//@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and contains(@a11ydescription,'Please enter your phone number')]"),
 	//@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @a11ydescription='Please enter your phone number']")}),
-	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @aria-label='Please enter your phone number']")})
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and contains(@aria-label,'Please enter your phone number')]")})
 	WebElement btnPhone;
 		
 	@FindBy(xpath = "//span[@translate='global.cta.continue']")
