@@ -26,7 +26,8 @@ public class OneViewCH_1435_TC01_EndtoEndFlowAnonymousCustomerDoublePlayTest ext
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
 		reporter.reportLogWithScreenshot("Double Play Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
-		getRogersIgniteBundlesPage().clkAddtoCart(TestDataHandler.anonymousData.getplanEng(),TestDataHandler.anonymousData.getplanFr());
+//		getRogersIgniteBundlesPage().clkAddtoCart(TestDataHandler.anonymousData.getplanEng(),TestDataHandler.anonymousData.getplanFr());
+		getRogersIgniteBundlesPage().clickFirstAddToCart(TestDataHandler.anonymousData.getplanEng());
 		getRogersIgniteBundlesPage().noPortInPopup();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
 		reporter.reportLogWithScreenshot("Product in cart");

@@ -24,7 +24,8 @@ public class OneViewCH_1443_TC01_EndtoEndFlowAnonymousCustomerSAIISSTest extends
 		getRogersIgniteBundlesPage().clkSmartStream();
 		reporter.reportLogWithScreenshot("Smart Stream - SAI ISS Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
-		getRogersIgniteBundlesPage().clkAddtoCartISS(TestDataHandler.anonymousData.getPlanEngISS());
+//		getRogersIgniteBundlesPage().clickFirstAddToCart(TestDataHandler.anonymousData.getPlanEngISS());
+		getRogersIgniteBundlesPage().clickFirstAddToCart(TestDataHandler.anonymousData.getplanEng());
 		getRogersIgniteBundlesPage().noPortInPopup();
 		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
@@ -56,10 +57,10 @@ public class OneViewCH_1443_TC01_EndtoEndFlowAnonymousCustomerSAIISSTest extends
 		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-		getPaymentOptionsPage().clkContinue();
-		getRogersOVCheckoutPage().clkSubmit();
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		reporter.reportLogWithScreenshot("Order Placed");
+//		getPaymentOptionsPage().clkContinue();
+//		getRogersOVCheckoutPage().clkSubmit();
+//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//		reporter.reportLogWithScreenshot("Order Placed");
 
     }
 

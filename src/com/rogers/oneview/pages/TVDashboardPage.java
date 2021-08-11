@@ -342,7 +342,8 @@ public class TVDashboardPage  extends BasePageClass {
 	public void clickChannelTab() {
 		getReusableActionsInstance().waitForElementVisibility(channelsTab, 60);
 		getReusableActionsInstance().scrollToElement(channelsTab);
-		getReusableActionsInstance().getWhenReady(channelsTab, 30).click();
+//		getReusableActionsInstance().getWhenReady(channelsTab, 30).click();
+		getReusableActionsInstance().executeJavaScriptClick(channelsTab);
 	}
 
 	/**
@@ -381,7 +382,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clickContinueForPackage() {
-		getReusableActionsInstance().waitForElementVisibility(btnContnueReset, 30);
+		getReusableActionsInstance().waitForElementVisibility(btnContnueReset, 60);
 		getReusableActionsInstance().getWhenReady(btnContnueReset, 30).click();
 	}
 	/**
