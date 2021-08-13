@@ -1,9 +1,6 @@
 package com.rogers.oneview.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
@@ -169,9 +166,29 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//h1[@translate='global.label.cartSummary']")
 	WebElement cartSummaryHeader;
 
+	@FindBy(xpath = "//span[contains(text(),'Account Number')]/ancestor::span//following-sibling::div/child::input")
+	WebElement inputAccountNumber;
 
+	@FindBy(xpath = "//span/following-sibling::select")
+	WebElement provider;
 
+	@FindBy(xpath = "(//*/parent::div/parent::div//input/parent::div)[1]")
+	WebElement inputAccountNumberContainer;
 
+	@FindBy(xpath = "//rch-service-provider-selector/descendant::span[@translate='global.cta.continue']/ancestor::button")
+	WebElement portInContinue;
+
+	@FindBy(xpath = "//span[@translate='global.cta.cancel']//ancestor::button/following-sibling::button")
+	WebElement continueFromPort;
+
+	@FindBy(xpath = "//rch-port-in-service-selector/descendant::span[@translate='global.cta.continue']/ancestor::button")
+	WebElement clickContinue3PPortIn;
+
+	@FindBy(xpath = "//rch-popup-modal/descendant::span[text()='Yes' or text()='Oui']/ancestor::button")
+	WebElement yesPortInServices;
+
+	@FindBy(xpath = "//h2[text()='Port-In Services' or text()='Transfert de services']")
+	WebElement headerPortInServices;
 	/**
 	 * Click Load Offers button
 	 * @author aditi.jain
@@ -537,7 +554,65 @@ public void activateHomePhoneltrPopUp() {
 		return getReusableActionsInstance().isElementVisible(cartSummaryHeader,45);
 	}
 
+	/**
+	 * Port-in opted as yes
+	 * @author aditi.jain
+	 */
+	public void yesPortInPopup() {
+		getReusableActionsInstance().clickWhenReady(yesPortInServices,30);
+	}
+	/**
+	 * Port-in Services Header
+	 * @author aditi.jain
+	 */
+	public boolean headerPortInService() {
+		return getReusableActionsInstance().isElementVisible(headerPortInServices,30);
+	}
+
+	/**
+	 * Select Provider
+	 * @param providerName is the provider name
+	 * @author Aditi.Jain
+	 */
+	public void setProvider(String providerName) {
+		getReusableActionsInstance().selectWhenReadyByVisibleText(provider, providerName);
+	}
+
+	/**
+	 * Enter the account number
+	 * @param accountNumber is the account number of the provider
+	 * @author aditi.jain
+	 */
+	public void enterAccountNumber(String accountNumber) {
+		Point point = inputAccountNumber.getLocation();
+		getReusableActionsInstance().javascriptScrollByCoordinates(point.getX()-20, point.getY()-200);
+		getReusableActionsInstance().executeJavaScriptClick(inputAccountNumberContainer);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(inputAccountNumber);
+		getReusableActionsInstance().enterText(inputAccountNumber, accountNumber, 30);
+	}
 
 
+	/**
+	 * CLick Continue from Port In screen
+	 * @author aditi.jain
+	 */
+	public void contiueFromPortIn() {
+		getReusableActionsInstance().clickWhenReady(portInContinue, 30);
+	}
+	/**
+	 * CLick Continue from Port In screen
+	 * @author aditi.jain
+	 */
+	public void contiueToCartSummary() {
+		getReusableActionsInstance().clickWhenReady(continueFromPort, 10);
+	}
 
+	/**
+	 * Click Continue Button
+	 * @author aditi.jain
+	 */
+	public void clkContinueFor3PPortIn() {
+		getReusableActionsInstance().scrollToElement(clickContinue3PPortIn);
+		getReusableActionsInstance().executeJavaScriptClick(clickContinue3PPortIn);
+	}
 }

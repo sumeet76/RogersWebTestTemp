@@ -19,7 +19,9 @@ public class ContactDetails {
 	private String licenseNo;
 	private String passportNo;
 	private String paymentOption;
-	
+	private String contactID3PPortIn;
+	private String contactIDSAIPortIn;
+
 	public ContactDetails() {
 		
 	}
@@ -242,5 +244,32 @@ public class ContactDetails {
 	public void setPaymentOption(String paymentOption) {
 		this.paymentOption = paymentOption;
 	}
-	
+	/**
+	 * @return the ID contactId For SAI Port-In as Yes test
+	 */
+	public String getContactIDSAIPortIn() {
+		return contactIDSAIPortIn;
+	}
+	/**
+	 * @param contactIDSAIPortIn for SAI Port-In test
+	 */
+	public void setContactIDSAIPortIn(String contactIDSAIPortIn) {
+		this.contactIDSAIPortIn = contactIDSAIPortIn;
+	}
+
+
+	/**
+	 * @return the ID contactId For 3P Port-In as Yes test
+	 */
+	public String getContactID3PPortIn() {
+		return contactID3PPortIn;
+	}
+
+	/**
+	 * @param contactID3PPortIn for 3P Port-In test
+	 */
+	public void setContactID3PPortIn(String contactID3PPortIn) {
+		this.contactID3PPortIn = contactID3PPortIn;
+	}
+
 }
