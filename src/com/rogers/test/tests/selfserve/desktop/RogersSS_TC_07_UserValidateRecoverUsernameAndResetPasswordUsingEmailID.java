@@ -32,7 +32,7 @@ public class RogersSS_TC_07_UserValidateRecoverUsernameAndResetPasswordUsingEmai
 		reporter.reportLogWithScreenshot("Rogers Launch page");
     	getRogersHomePage().clkSignIn();
     	reporter.reportLogWithScreenshot("Sign In Overlay");
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		getRogersLoginPage().clkForgotUsernameIframe();
 		reporter.reportLogWithScreenshot("Forgot username link is clicked.");
 		String strUserName = TestDataHandler.tc07.getUsername();
@@ -49,7 +49,7 @@ public class RogersSS_TC_07_UserValidateRecoverUsernameAndResetPasswordUsingEmai
 		reporter.reportLogWithScreenshot("Get recovery code");
 		String recoveryCode = getRegisterOrAccountRecoveryPage().getVerificationCode();
 		getDriver().switchTo().window(strTestingTab);			
-		getRegisterOrAccountRecoveryPage().switchToSetCodeIframe();
+		//getRegisterOrAccountRecoveryPage().switchToSetCodeIframe();
 		getRegisterOrAccountRecoveryPage().setVerificationCode(recoveryCode);
 		reporter.reportLogWithScreenshot("Set recovery code");
 		getRegisterOrAccountRecoveryPage().clkBtnContinue();

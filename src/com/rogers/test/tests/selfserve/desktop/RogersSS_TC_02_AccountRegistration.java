@@ -36,7 +36,7 @@ public class RogersSS_TC_02_AccountRegistration extends BaseTestClass {
     	String strEmail = TestDataHandler.tc02.getUsername();
     	String strPostalCode = TestDataHandler.tc02.getAccountDetails().getPostalcode();  
     	String strDOB = TestDataHandler.tc02.getAccountDetails().getDob();
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		getRogersLoginPage().clickRegister();
 		reporter.reportLogWithScreenshot("Register Now");
 		//=== commenting due  to changes in story DC-3077 		
@@ -66,7 +66,7 @@ public class RogersSS_TC_02_AccountRegistration extends BaseTestClass {
 			reporter.reportLogWithScreenshot("Get recovery code");
 			String verificationCode = getRegisterOrAccountRecoveryPage().getVerificationCode();			
 			getDriver().switchTo().window(strTestingTab);			
-			getRegisterOrAccountRecoveryPage().switchToSetCodeIframe();
+			//getRegisterOrAccountRecoveryPage().switchToSetCodeIframe();
 			getRegisterOrAccountRecoveryPage().setVerificationCode(verificationCode);
 			reporter.reportLogWithScreenshot("Set verification code");
 			getRegisterOrAccountRecoveryPage().clkBtnContinue();

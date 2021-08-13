@@ -20,7 +20,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	@FindBy (xpath = "//rss-sms-recovery//button")
 	WebElement lnkSetupRecoveryNum;
 	
-	@FindBy (xpath = "//iframe[contains(@src,'/web/totes/easylogin/sms/input')]")
+	@FindBy (xpath = "//iframe[contains(@src,'/consumer/profile/recoverynumber?lang=en')]")  //iframe[contains(@src,'/web/totes/easylogin/sms/input')]
 	WebElement iframeSmsRecovery;
 	
 	@FindBy (xpath = "//input[@formcontrolname='phoneNumber']")

@@ -32,7 +32,7 @@ public class RogersSS_TC_05_UserValidateRecoverPasswordUsingEmailI extends BaseT
 		reporter.reportLogWithScreenshot("Rogers Launch page");
     	getRogersHomePage().clkSignIn();
     	reporter.reportLogWithScreenshot("Clicked SIgn IN");
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Switched to sign in iFrame");
 		getRogersLoginPage().clkForgotPasswordIframe();							
 		reporter.reportLogWithScreenshot("Forgot username link is clicked.");
@@ -51,7 +51,7 @@ public class RogersSS_TC_05_UserValidateRecoverPasswordUsingEmailI extends BaseT
 			String recoveryCode = getRegisterOrAccountRecoveryPage().getVerificationCode();
 			getDriver().switchTo().window(strTestingTab);			
 			reporter.reportLogWithScreenshot("Close the Overlay");
-			getRegisterOrAccountRecoveryPage().switchToSetCodeIframe();
+			//getRegisterOrAccountRecoveryPage().switchToSetCodeIframe();
 			getRegisterOrAccountRecoveryPage().setVerificationCode(recoveryCode);
 			getRegisterOrAccountRecoveryPage().clkBtnContinue();
 			strRecoveredUserName= getRegisterOrAccountRecoveryPage().getRecoveryUsernameNew();
