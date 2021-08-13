@@ -23,6 +23,7 @@ public class RedesignRpotgData {
 	private String creditCardDetailsOTP;
 	private String depositAmount;
 	private String dataOptionIndex;
+	private String riskClass;
 
 	public String getCreditCardDetailsOTP() {
 		return creditCardDetailsOTP;
@@ -199,6 +200,12 @@ public class RedesignRpotgData {
 	public void setdataOptionIndex(String dataOptionIndex) {
 		this.dataOptionIndex = dataOptionIndex;
 	}
-    
-	
+
+	public String getRiskClass() {
+		return riskClass;
+	}
+	public void setRiskClass(String riskClass) {
+		this.riskClass = riskClass;
+	}
+
 }

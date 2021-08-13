@@ -9,40 +9,43 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-
 public class OneViewCH_1543_TC01_AddChannelsImmediate extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
-    public void addChannelImmediate(){
-		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+    public void oneViewCH_1543_TC01_AddChannelsImmediate(){
+		getEnvironmentSelectionPage().launchOneView(TestDataHandler.addChannelImmediate.getAccountNo(), TestDataHandler.addChannelImmediate.getContactID());
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
-		getAccountOverViewPage().clickNotificationIfPresent();
 		getAccountOverViewPage().clickIgniteTVBadge();
 		getAccountOverViewPage().selectBundleChangeIfPresent();
+		reporter.hardAssert(getAccountOverViewPage().verifyTVOrChannelHeader(),"TV or Channel header displayed","TV or Channel header did not Displayed");
 		reporter.reportLogWithScreenshot("Ignite TV widget selected");
-		getTVDashboardPage().clickManageChannelsAndThemeparks();
+		getTVDashboardPage().clickManageChannelsAndThemepacks();
+		reporter.hardAssert(getAccountOverViewPage().verifyCustomerFollowingsHeader(),"Customer followings displayed","Customer followings did not Displayed");
+		reporter.reportLogWithScreenshot("Customer followed channels and themepacks");
 		getTVDashboardPage().clickChannelTab();
 		getTVDashboardPage().clickAddChannel();
 		getTVDashboardPage().clickContinueForPackage();
 		getTVDashboardPage().immediateDateChangeOption();
-		getTVDashboardPage().clickContinueToManageChannel();
-		getRogersOVOrderReviewPage().clickSubmitToManageThemepackOrChannel();
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
+		getTVDashboardPage().clickCancel();
+//		getRogersOVOrderReviewPage().clickSubmitToManageThemepackOrChannel();
+//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
+//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
 		reporter.reportLogWithScreenshot("Order Confirmation page");
     }
 
 	@BeforeMethod (alwaysRun=true)
 	@Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),TestDataHandler.migrationData.getContactID(), TestDataHandler.migrationData.getAccountNo(),System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+		startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"", "","", "", method);
+
 	}
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
 		closeSession();
 	}
+
+
 
 }
 

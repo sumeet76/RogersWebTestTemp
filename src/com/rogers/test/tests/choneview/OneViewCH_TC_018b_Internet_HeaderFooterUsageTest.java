@@ -19,7 +19,8 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class OneViewCH_TC_018b_Internet_HeaderFooterUsageTest extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
     public void checkInternetHeaderFooterAndUsage() {
-		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+		//getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+		getEnvironmentSelectionPage().launchOneView(TestDataHandler.solarisAccount.accountDetails.getBan(),TestDataHandler.solarisAccount.getContactID());
 		reporter.reportLogWithScreenshot("Launched the account dashboard page");
 		getAccountOverViewPage().selectInternetBadage();
 		reporter.reportLogWithScreenshot("Lanched the internet dashboard page ");
@@ -44,7 +45,7 @@ public class OneViewCH_TC_018b_Internet_HeaderFooterUsageTest extends BaseTestCl
 	@Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage,RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.solarisAccount.getContactID(), TestDataHandler.solarisAccount.accountDetails.getBan(), System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+		startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage,RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"","","","", method);
     }
 
 

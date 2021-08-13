@@ -1639,13 +1639,19 @@ public class RogersOVCheckoutPage extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(txtBillingDetails);
 	}
 
+	/**
+	 * This method compares the downpayment amount displayed in FE with required value
+	 * @param deviceCost NOTERM cost of the device
+	 * @param riskClass risk class of the customer
+	 * @return true if downpayment amt is matched, else false
+	 * @author praveen.kumar7
+	 */
 	public boolean verifyDownPayment(String deviceCost, String riskClass) {
 		if (riskClass.toLowerCase().contains("high")) {
 			String deviceCost1 = deviceCost.replaceAll(",", ".");
 			double expectedDownPayment = (Double.parseDouble(deviceCost1)) / 100.0 * 40.0;
 			String expectedDP[] = String.valueOf(expectedDownPayment).split("\\.");
 			String actualDownPayment[] = getReusableActionsInstance().getWhenReady(downPaymentAmt, 20).getText().trim().split("\\$");
-			//String actualDownPayment1[] = actualDownPayment.split("\\$");
 			String actualDP[] = actualDownPayment[0].replaceAll(",", ".").split("\\.");
 			if (expectedDP[0].equals(actualDP[0])) {
 				return true;
@@ -1654,19 +1660,21 @@ public class RogersOVCheckoutPage extends BasePageClass {
 			String deviceCost1 = deviceCost.replaceAll(",", ".");
 			double expectedDownPayment = (Double.parseDouble(deviceCost1)) / 100.0 * 20.0;
 			String expectedDP[] = String.valueOf(expectedDownPayment).split("\\.");
-			String actualDownPayment = getReusableActionsInstance().getWhenReady(downPaymentAmt, 20).getText().trim();
-			String actualDownPayment1[] = actualDownPayment.split("\\$");
-			String actualDP[] = actualDownPayment1[0].replaceAll(",", ".").split("\\.");
+			String actualDownPayment[] = getReusableActionsInstance().getWhenReady(downPaymentAmt, 20).getText().trim().split("\\$");
+			String actualDP[] = actualDownPayment[0].replaceAll(",", ".").split("\\.");
 			if (expectedDP[0].equals(actualDP[0])) {
 				return true;
 			} else return false;
 
-		} else {
-			return false;
-		}
-
+		} else { return false; }
 	}
 
+	/**
+	 * This method verifies the CLM amount with the expected value
+	 * @param riskClass risk class of customer
+	 * @return true if CLM amt is matched else false
+	 * @author praveen.kumar7
+	 */
 	public boolean verifyCLMAmount(String riskClass) {
 		if (riskClass.toLowerCase().contains("low")) {
 			String actualCLMAmount = getReusableActionsInstance().getWhenReady(cLMAmount, 20).getText().trim();

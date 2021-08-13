@@ -12,7 +12,9 @@ import java.lang.reflect.Method;
 public class OneViewCH_TC_022_TV_PackageDowngradeTest extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV","SanityCHOV"})
     public void checkTVPackageDowngrade() {
-		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+		//getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+		getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC023_TVPackageDowngrade.getAccountDetails().getBan(), TestDataHandler.TC023_TVPackageDowngrade.getContactID());
+		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		reporter.reportLogWithScreenshot("Launched the account dashboard page");
 		getAccountOverViewPage().selectTVBadage();
 		reporter.reportLogWithScreenshot("Launched the TV dashboard page");
@@ -43,7 +45,7 @@ public class OneViewCH_TC_022_TV_PackageDowngradeTest extends BaseTestClass {
 	@Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage,RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.TC023_TVPackageDowngrade.getContactID(), TestDataHandler.TC023_TVPackageDowngrade.accountDetails.getBan(), System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+		startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage,RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"", "", "", "", method);
 	}
 
 

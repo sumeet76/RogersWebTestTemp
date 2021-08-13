@@ -38,7 +38,7 @@ RogersCH_TC_060_ISS_HomePageEntryPointSignedInWirelessBuyInternetDiffAddressTest
 
     @Test(groups = {"RegressionCH","SmartStreamCH"})
     public void checkIssHomePageEntryPointSignedInWirelessBuyInternetDiffAddressTest() {
-        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
+        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming?env=qa");
         reporter.reportLogWithScreenshot("Launched Smart Stream login Page");
         getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();

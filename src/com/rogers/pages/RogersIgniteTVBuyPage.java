@@ -88,10 +88,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//h2[@id='themepacks-tab']")
 	WebElement btnThemepacksTab;
 
-	@FindBy(xpath = "//span[@translate='global.message.priceIncreseAlert.priceIncreaseChannelCopy']")
+	@FindBy(xpath = "//div[@translate='global.message.buyChannelsLater']")
 	WebElement bnrPriceIncreaseChannelCopy;
 
-	@FindBy(xpath = "//span[@translate='global.message.priceIncreseAlert.priceIncreaseThemeCopy']")
+	@FindBy(xpath = "//div[@translate='global.message.buyThemepacksLater']")
 	WebElement bnrPriceIncreaseThemeCopy;
 
 	@FindBy(xpath = "//div[contains(@class,'ute-btn-group-set-accessibility')]//ins[@translate='global.cta.continue']")

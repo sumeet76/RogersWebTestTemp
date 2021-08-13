@@ -36,7 +36,7 @@ public class RogersCH_TC_065_SAI_ISS_NAC_AnonymousCxentersInternetShopPagefromIS
 
     @Test(groups = {"RegressionCH","SmartStreamCH"})
     public void checkIssNacLearnPageToggleNLTest() {
-        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
+        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming?env=qa");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         getRogersInternetPackageSelectionPage().clkISSforNL();
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;

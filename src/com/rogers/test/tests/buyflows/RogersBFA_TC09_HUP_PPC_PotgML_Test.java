@@ -22,7 +22,7 @@ public class RogersBFA_TC09_HUP_PPC_PotgML_Test extends BaseTestClass {
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc09HupPpcPotgSharedML.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc09HupPpcPotgSharedML.getPassword());
         reporter.reportLogWithScreenshot("Login Page");

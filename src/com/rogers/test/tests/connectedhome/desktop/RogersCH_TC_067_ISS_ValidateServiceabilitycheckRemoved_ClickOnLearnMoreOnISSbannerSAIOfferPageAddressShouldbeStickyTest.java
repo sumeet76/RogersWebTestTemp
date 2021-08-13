@@ -50,7 +50,7 @@ public class RogersCH_TC_067_ISS_ValidateServiceabilitycheckRemoved_ClickOnLearn
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyInternetPacakesPage(),"Packages page has Launched","Packages page has not Launched");
-        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming");
+        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming?env=qa");
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
 
         getRogersInternetPackageSelectionPage().clkInternetPackage();

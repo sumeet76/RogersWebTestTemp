@@ -29,7 +29,7 @@ public class RogersBFA_TC22_AAL_BYOD_NonShareStdShipping_Test extends BaseTestCl
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc22AALBYODStandardShipping.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc22AALBYODStandardShipping.getPassword());
         reporter.reportLogWithScreenshot("Login Page");

@@ -20,7 +20,7 @@ public class RogersBFA_TC15_HUPNonShareKeepCurrentPlanSL_Test extends BaseTestCl
             reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
             reporter.reportLogWithScreenshot("Home Page");
             getRogersHomePage().clkSignIn();
-            getRogersLoginPage().switchToSignInIFrame();
+            //getRogersLoginPage().switchToSignInIFrame();
             getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc15HUPNonShareKeepCurrentPlanSL.getUsername());
             getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc15HUPNonShareKeepCurrentPlanSL.getPassword());
             reporter.reportLogWithScreenshot("Login Page");

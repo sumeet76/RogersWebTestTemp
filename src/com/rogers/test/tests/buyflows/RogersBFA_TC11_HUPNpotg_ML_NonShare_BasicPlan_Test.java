@@ -22,7 +22,7 @@ public class RogersBFA_TC11_HUPNpotg_ML_NonShare_BasicPlan_Test extends BaseTest
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
         getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
+        //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc11HUPNpotgML.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc11HUPNpotgML.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
@@ -66,7 +66,7 @@ public class RogersBFA_TC11_HUPNpotg_ML_NonShare_BasicPlan_Test extends BaseTest
         reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         reporter.reportLogWithScreenshot("Clicked on Proceed to checkout button in plan builder");
-        getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
+        //getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
         reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                 "Billing Address is not selected");
         reporter.reportLogPassWithScreenshot("On Checkout page");
@@ -83,17 +83,17 @@ public class RogersBFA_TC11_HUPNpotg_ML_NonShare_BasicPlan_Test extends BaseTest
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
         getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
-        if(getRogersOrderReviewPage().isPaymentRequired()) {
-            getRogersOrderReviewPage().clkContinue();
-            getRogersPaymentPage().setCreditCardDetails(TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getNumber(),
-                    TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getExpiryMonth(),
-                    TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getExpiryYear(),
-                    TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getCVV());
-            reporter.reportLogWithScreenshot("Rogers Payment Page");
-            getRogersPaymentPage().clkSubmit();
-        } else {
-            getRogersOrderReviewPage().clkSubmitOrder();
-        }
+        getRogersOrderReviewPage().clkSubmitOrder();
+        reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),
+                "Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
+        getRogersOneTimePaymentPage().setNameonCard();
+        getRogersOneTimePaymentPage().switchToCreditCardIFrame();
+        getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc13HUPShareNoTermSL.getCreditCardDetails());
+        getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
+        getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc13HUPShareNoTermSL.getExpiryDate());
+        getRogersOneTimePaymentPage().setCVV();
+        reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
+        getRogersOneTimePaymentPage().clkSubmitOrderBtn();
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
         reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");
