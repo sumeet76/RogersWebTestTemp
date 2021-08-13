@@ -13,7 +13,8 @@ import java.lang.reflect.Method;
 public class OneViewCH_TC_026_TV_PackageUpgrade_ImmediateTest extends BaseTestClass {
     @Test(groups = {"Baseline","ChangePackage","RunOV1"})
     public void checkTVPackageDowngrade() {
-        getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+        //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+        getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC026_TVPackageUpgrade.accountDetails.getBan(),TestDataHandler.TC026_TVPackageUpgrade.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
         /*getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().clkSubmitBtnDealerCodeDialogue();
@@ -49,7 +50,7 @@ public class OneViewCH_TC_026_TV_PackageUpgrade_ImmediateTest extends BaseTestCl
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
         // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-        startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.TC026_TVPackageUpgrade.getContactID(), TestDataHandler.TC026_TVPackageUpgrade.accountDetails.getBan(), System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+        startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"","","", "", method);
     }
 
 
