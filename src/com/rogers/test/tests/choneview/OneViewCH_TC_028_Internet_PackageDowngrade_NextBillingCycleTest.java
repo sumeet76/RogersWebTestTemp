@@ -13,6 +13,7 @@ import java.lang.reflect.Method;
 public class OneViewCH_TC_028_Internet_PackageDowngrade_NextBillingCycleTest extends BaseTestClass {
     @Test(groups = {"Baseline","ChangePackage"})
     public void checkTVPackageDowngrade() {
+        getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getBan(),TestDataHandler.TC028_InternetPackageDowngrade.getContactID());
         getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
         getAccountOverViewPage().selectInternetBadage();
@@ -34,7 +35,7 @@ public class OneViewCH_TC_028_Internet_PackageDowngrade_NextBillingCycleTest ext
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
         // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-        startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.TC028_InternetPackageDowngrade.getContactID(), TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getBan(), System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+        startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"","","","", method);
     }
 
 

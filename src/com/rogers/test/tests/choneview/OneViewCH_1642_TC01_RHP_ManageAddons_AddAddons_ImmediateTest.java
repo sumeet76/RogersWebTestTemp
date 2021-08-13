@@ -13,7 +13,8 @@ import java.lang.reflect.Method;
 public class OneViewCH_1642_TC01_RHP_ManageAddons_AddAddons_ImmediateTest extends BaseTestClass {
     @Test (groups = {"RegressionCHOV"})
    public void oneViewCH_1642_TC01_RHP_ManageAddons_AddAddons_ImmediateTest(){
-        getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+        //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+        getEnvironmentSelectionPage().launchOneView(TestDataHandler.RHPManage_AddOns.accountDetails.getBan(),TestDataHandler.RHPManage_AddOns.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
         getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().selectHomePhoneBadge();
@@ -37,7 +38,7 @@ public class OneViewCH_1642_TC01_RHP_ManageAddons_AddAddons_ImmediateTest extend
     @Parameters({"strBrowser","strLanguage"})
     public void beforeTest(@Optional("chrome")String strBrowser, @Optional("en")String strLanguage, ITestContext testContext, Method method)throws ClientProtocolException, IOException {
 //xmlTestParameters=newHashMap<String,String>(testContext.getCurrentXmlTest().getAllParameters());
-        startOVSession(System.getProperty("QaOVUrl"),strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),TestDataHandler.RHPManage_AddOns.getContactID(),TestDataHandler.RHPManage_AddOns.accountDetails.getBan(),System.getenv("MaestroLoginID"),System.getenv("MaestroUsrID"),method);
+        startOVSession(System.getProperty("OVUrl"),strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"","","","",method);
     }
 
 

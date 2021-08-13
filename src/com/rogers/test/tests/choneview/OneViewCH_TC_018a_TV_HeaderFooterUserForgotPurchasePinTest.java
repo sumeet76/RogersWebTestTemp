@@ -21,7 +21,8 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class OneViewCH_TC_018a_TV_HeaderFooterUserForgotPurchasePinTest extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV","SanityCHOV","SanityCHOVTemp"})
     public void checkUserForgotPurchasePin() {
-    			getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+    			//getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+		getEnvironmentSelectionPage().launchOneView(TestDataHandler.igniteTVParentalcontrols.accountDetails.getBan(),TestDataHandler.solarisTV.getContactID());
     			reporter.reportLogWithScreenshot("Launched the account dashboard page");
     			getAccountOverViewPage().selectTVBadage();
     			reporter.reportLogWithScreenshot("Launched the TV dashboard page");
@@ -43,7 +44,7 @@ public class OneViewCH_TC_018a_TV_HeaderFooterUserForgotPurchasePinTest extends 
 	@Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage,RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.solarisTV.getContactID(), TestDataHandler.igniteTVParentalcontrols.accountDetails.getBan(), System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+		startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage,RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"","","","", method);
 	}
 
 	@AfterMethod(alwaysRun = true)

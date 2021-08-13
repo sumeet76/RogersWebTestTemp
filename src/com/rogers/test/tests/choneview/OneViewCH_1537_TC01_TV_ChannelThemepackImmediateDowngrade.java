@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 public class OneViewCH_1537_TC01_TV_ChannelThemepackImmediateDowngrade extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
     public void oneViewCH_1537_TC01_TV_ChannelThemepackImmediateDowngrade() {
-		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData.getAccountNo(),TestDataHandler.migrationData.getContactID() );
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		getAccountOverViewPage().clickIgniteTVBadge();
@@ -44,7 +44,7 @@ public class OneViewCH_1537_TC01_TV_ChannelThemepackImmediateDowngrade extends B
 	@BeforeMethod (alwaysRun=true)
 	@Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),TestDataHandler.migrationData.getContactID(), TestDataHandler.migrationData.getAccountNo(),System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+		startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"","","","", method);
     }
 
 	@AfterMethod(alwaysRun = true)
