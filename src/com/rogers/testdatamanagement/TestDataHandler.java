@@ -186,6 +186,10 @@ public class TestDataHandler {
 	public static MigrationData addChannelImmediate;
 	public static MigrationData addThemepackImmediate;
 	public static MigrationData addChannelAndThempackImmediate;
+	public static MigrationData targetedMigration1PInternetToSAI;
+	public static MigrationData targetedMigration1PInternetToSAIISS;
+	public static MigrationData targetedMigration1PInternetTo2P;
+	public static MigrationData targetedMigration1PInternetTo3P;
 	public static PaymentDetails ovPaymentInfo;
 	public static AccountData tc60;
 	public static RedesignConfig redesignConfig;
@@ -524,5 +528,9 @@ public class TestDataHandler {
 		TC032_SAI_AddingSmartStream =YamlHandler.getOVAccountData("TC32_SAI_AddingSmartstream");
 		TC030_Internet_PackageUpgrade =YamlHandler.getOVAccountData("TC_030_Internet_PackageUpgrade");
 		RHPManage_AddOns =YamlHandler.getOVAccountData("RHPManageAddon");
+		targetedMigration1PInternetToSAI=YamlHandler.getMigrationData("1545_TargetedMigrationFlow_1P_Internet_to_SAITest");
+		targetedMigration1PInternetToSAIISS=YamlHandler.getMigrationData("1546_TargetedMigrationFlow_1P_Internet_to_SAIISS");
+		targetedMigration1PInternetTo2P=YamlHandler.getMigrationData("1547_TargetedMigrationFlow_1P_Internet_to_2P");
+		targetedMigration1PInternetTo3P= YamlHandler.getMigrationData("1548_TargetedMigrationFlow_1P_Internet_to_3P");
 	}
 }
