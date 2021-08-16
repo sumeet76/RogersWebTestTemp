@@ -38,7 +38,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[contains(text(),'TV')]/ancestor::label  | //div[@id='ds-checkbox-id-0-label-container'] | //div[contains(text(), ' TV ')]")
 	WebElement tvCheckbox;
 
-	@FindBy (xpath = "//div[contains(text(),'Internet')]/ancestor::label | //div[@id='ds-checkbox-id-1-label-container'] | //div[contains(text(), ' Internet ')]")
+	@FindBy (xpath = "//input[@id='ds-checkbox-id-1']/following-sibling::div[1]")
 	WebElement internetCheckbox;
 
 	@FindBy(xpath = "//div[contains(text(),'Home Phone')]/ancestor::label  | //div[@id='ds-checkbox-id-3-label-container'] | //div[contains(text(), ' Home Phone ')]")
@@ -189,6 +189,13 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 	@FindBy(xpath = "//h2[text()='Port-In Services' or text()='Transfert de services']")
 	WebElement headerPortInServices;
+
+	@FindBy(xpath ="//p[contains(text(),'Recommended Offer(s)') or contains(text(),'Offres recommandées')]")
+	WebElement recommendedOffer;
+
+	@FindBy(xpath="//span[text()='BEST' or 'MEILLEUR' and ng-reflect-translate='global.dynamic.offerLevel.1']/parent::div/following-sibling::div//button//span[@translate='global.cta.addToCart']")
+	WebElement clickBstOffer;
+
 	/**
 	 * Click Load Offers button
 	 * @author aditi.jain
@@ -402,7 +409,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkInternetCheckbox() {
-		getReusableActionsInstance().waitForElementVisibility(internetCheckbox, 120);
+		getReusableActionsInstance().waitForElementVisibility(internetCheckbox, 30);
 		getReusableActionsInstance().executeJavaScriptClick(internetCheckbox);
 	}
 	/**
@@ -614,5 +621,22 @@ public void activateHomePhoneltrPopUp() {
 	public void clkContinueFor3PPortIn() {
 		getReusableActionsInstance().scrollToElement(clickContinue3PPortIn);
 		getReusableActionsInstance().executeJavaScriptClick(clickContinue3PPortIn);
+	}
+	/*
+	* To Verify the display of targeted offer for the customer
+	* @author suganya.p
+	*/
+	public void verifyRecommendedOffers() {
+		getReusableActionsInstance().javascriptScrollByVisibleElement(recommendedOffer);
+
+
+	}
+	/*
+	*Click Add to cart for the recommended offer
+	* @author suganya p
+	*/
+	public void clkAddToCartForBestOffer() {
+		getReusableActionsInstance().javascriptScrollByVisibleElement(clickBstOffer);
+		getReusableActionsInstance().executeJavaScriptClick(clickBstOffer);
 	}
 }
