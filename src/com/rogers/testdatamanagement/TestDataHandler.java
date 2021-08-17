@@ -176,6 +176,7 @@ public class TestDataHandler {
 	public static AccountData solarisAccount;
 	public static AccountData solarisTV;
 	public static ContactData anonymousData;
+	public static ContactData nacTMP;
 	public static MigrationData migrationData;
 	public static MigrationData migrationDataToSAI;
 	public static MigrationData migrationData1PTo2P;
@@ -512,6 +513,7 @@ public class TestDataHandler {
 		solarisAccount = YamlHandler.getOVAccountData("SolarisAccount");
 		solarisTV = YamlHandler.getOVAccountData("SolarisTV");
 		anonymousData = YamlHandler.getContactData("AnonymousData");
+		nacTMP = YamlHandler.getContactData("NAC_TMP");
 		migrationData = YamlHandler.getMigrationData("MigrationData");
 		migrationDataToSAI = YamlHandler.getMigrationData("MigrationData1PToSAI");
 		migrationDataToISS = YamlHandler.getMigrationData("MigrationData1PToISS");
