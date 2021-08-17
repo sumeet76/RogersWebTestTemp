@@ -80,12 +80,7 @@ public class RogersIgniteCampaignPage extends BasePageClass{
 		getReusableActionsInstance().executeJavaScriptClick(couponInputContainer);
 		getReusableActionsInstance().clickWhenReady(couponInput);
 		getReusableActionsInstance().clickWhenReady(couponInput);
-//		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().enterText(couponInput, couponInputValue, 30);
-
-//		getReusableActionsInstance().getWhenReady(couponInput,60).clear();
-//		getReusableActionsInstance().getWhenReady(couponInput, 10).sendKeys(couponInputValue);
-
 	}
 
 

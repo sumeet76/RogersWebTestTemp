@@ -26,7 +26,7 @@ public class OneViewCH_1415_TC01_E2E_NAC_SAI_TMP_Test extends BaseTestClass {
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		String promoCode = getRogersIgniteCampaignPage().getPromoCode();
 		System.out.println("promoCode :: " +  promoCode);
-		getRogersIgniteBundlesPage().clickFirstAddToCart(TestDataHandler.anonymousData.getPlanEngSAI());
+		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		getRogersIgniteBundlesPage().noPortInPopup();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
 		reporter.reportLogWithScreenshot("Product in cart");

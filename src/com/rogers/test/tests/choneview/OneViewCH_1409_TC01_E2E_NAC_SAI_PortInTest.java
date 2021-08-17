@@ -27,7 +27,7 @@ public class OneViewCH_1409_TC01_E2E_NAC_SAI_PortInTest extends BaseTestClass {
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		System.out.println(TestDataHandler.anonymousData.getPlanEngSAI());
 		System.out.println(TestDataHandler.anonymousData.getplanFr());
-		getRogersIgniteBundlesPage().clickFirstAddToCart(TestDataHandler.anonymousData.getPlanEngSAI());
+		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		getRogersIgniteBundlesPage().yesPortInPopup();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
 		reporter.reportLogWithScreenshot("Product in cart");
