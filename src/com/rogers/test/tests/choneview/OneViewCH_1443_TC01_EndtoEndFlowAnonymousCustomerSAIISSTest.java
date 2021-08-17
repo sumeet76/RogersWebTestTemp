@@ -25,7 +25,7 @@ public class OneViewCH_1443_TC01_EndtoEndFlowAnonymousCustomerSAIISSTest extends
 		reporter.reportLogWithScreenshot("Smart Stream - SAI ISS Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
 //		getRogersIgniteBundlesPage().clickFirstAddToCart(TestDataHandler.anonymousData.getPlanEngISS());
-		getRogersIgniteBundlesPage().clickFirstAddToCart(TestDataHandler.anonymousData.getplanEng());
+		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		getRogersIgniteBundlesPage().noPortInPopup();
 		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");

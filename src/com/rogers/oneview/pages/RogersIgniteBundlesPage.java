@@ -244,7 +244,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * click Add To Cart for Smartstream
 	 * @author aditi.jain
 	 */
-	public void clickFirstAddToCart(String planEn) {
+	public void clickFirstAddToCart() {
 		getReusableActionsInstance().waitForElementVisibility(firstAddToCart,45);
 		getReusableActionsInstance().executeJavaScriptClick(firstAddToCart);
 	}

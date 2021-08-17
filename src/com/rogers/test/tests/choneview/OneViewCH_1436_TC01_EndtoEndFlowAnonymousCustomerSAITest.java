@@ -27,7 +27,7 @@ public class OneViewCH_1436_TC01_EndtoEndFlowAnonymousCustomerSAITest extends Ba
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		System.out.println(TestDataHandler.anonymousData.getPlanEngSAI());
 		System.out.println(TestDataHandler.anonymousData.getplanFr());
-		getRogersIgniteBundlesPage().clickFirstAddToCart(TestDataHandler.anonymousData.getPlanEngSAI());
+		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		getRogersIgniteBundlesPage().noPortInPopup();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
 		reporter.reportLogWithScreenshot("Product in cart");

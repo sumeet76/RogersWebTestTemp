@@ -27,8 +27,7 @@ public class OneViewCH_1640_TC01_E2EMigrationFlow3PNewNumberTest extends BaseTes
 		getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
 		reporter.reportLogWithScreenshot("Smart Stream - SAI ISS Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
-		getRogersIgniteBundlesPage().clkAddtoCart(TestDataHandler.anonymousData.getplanEng(),TestDataHandler.anonymousData.getplanFr());
-//		getRogersIgniteBundlesPage().clkKeepNumberbtn();
+		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		getRogersIgniteBundlesPage().clkChooseNewNumberbtn();
 		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
@@ -72,9 +71,6 @@ public class OneViewCH_1640_TC01_E2EMigrationFlow3PNewNumberTest extends BaseTes
 		reporter.reportLogWithScreenshot("Payment Options Page");
 		getPaymentOptionsPage().clkContinue();
 		getRogersOVOrderReviewPage().expandMonthlyBill();
-//		getHomePhoneSelectionPage().clkGeneratePhoneNo();
-//		reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
-//		reporter.reportLogWithScreenshot("Phone Number Selected");
 		getCreditCheckPage().goToPageBottom();
 		getPaymentOptionsPage().clkContinue();
 		getCreditCheckPage().continueConfirmation();
