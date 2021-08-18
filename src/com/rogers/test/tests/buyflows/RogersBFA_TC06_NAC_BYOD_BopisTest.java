@@ -23,7 +23,7 @@ public class RogersBFA_TC06_NAC_BYOD_BopisTest extends BaseTestClass {
 	}
 
 	//https://rcom5.qa01.eks.rogers.com/phones/bring-your-own-device?flowType=byod
-	@Test(groups = {"RegressionBFA","NACBF"})
+	@Test(groups = {"RegressionBFA","NACBFA"})
 	public void rogersNACBYODBopisTest() throws InterruptedException {
 //############################Plan config page###############################
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(), "BreadCrumb on Plan config page is displaying fine","BreadCrumb is not displaying fine");

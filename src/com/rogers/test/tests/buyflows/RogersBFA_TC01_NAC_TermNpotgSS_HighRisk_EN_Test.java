@@ -44,7 +44,7 @@ public class RogersBFA_TC01_NAC_TermNpotgSS_HighRisk_EN_Test extends BaseTestCla
         //getRogersPlanConfigPage().clkDownPaymentChkBox();
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         getRogersPlanConfigPage().clickShowMoreDetails();
-        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc04NACTermBopis.getDataOptionIndex()));
+        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc04NACTermBopis.getDataOptionIndex()),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
         getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page data protection selected");
@@ -198,7 +198,8 @@ public class RogersBFA_TC01_NAC_TermNpotgSS_HighRisk_EN_Test extends BaseTestCla
         reporter.softAssert(dblists.get("SOC_DESCRIPTION").toString().contains(planDetails.get(0)),"Plan data is updated properly as "+planDetails.get(0)+" GB","Plan data is not updated properly");
         reporter.softAssert(dblists.get("TOTAL_NONTERMED_MSF").toString().equals(planDetails.get(1)),"Plan cost is updated properly as "+planDetails.get(1)+" GB","Plan data is not updated properly");
         //reporter.softAssert(dblists.get("FN_CREDIT_TERM").toString().equals("24"),"Financing credit term is verified as 24 months","Financing credit term is verified as 24 months");
-        reporter.softAssert(dblists.get("MANDATORY_CHG").toString().equals(expectedDownPayment.substring(0,expectedDownPayment.indexOf("."))),"Downpayment amt is verified successfully","Downpayment amt is not verified");
+        reporter.softAssert(dblists.get("MANDATORY_CHG").toString().equals(expectedDownPayment.substring(0,expectedDownPayment.indexOf("."))),
+                "Downpayment amt is verified successfully as "+expectedDownPayment+"","Downpayment amt is not verified as "+expectedDownPayment+"");
         reporter.softAssert(dblists.get("PYM_METHOD").equals("CC"), "Payment type is verified successflly as CC", "Payment type is not verified as CC");
         reporter.softAssert(dblists.get("CAS_TOTAL_APPROVE_CTN").equals("1"),"Approved CTN is verified as 1","Approved CTN is not verified as 1");
 

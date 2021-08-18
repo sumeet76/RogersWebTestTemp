@@ -143,6 +143,13 @@ public class TestDataHandler {
 	public static LoginDetails bfaOneViewLogin;
 	public static AALData tc07AAL;
 	public static PPCData tc08PPC;
+	public static PPCData tc24PPCSLNonSEDTTPlan;
+	public static PPCData tc25PPCMLNonSESubsidyPlan;
+	public static PPCData tc26PPCMLNonSESharedGroupDTTPlan;
+	public static PPCData tc27PPCSLSEBYODPlan;
+	public static PPCData tc28PPCMLSESubsidyPlanToDTTPLan;
+	public static PPCData tc29PPCMLSEAdditionalLineDTTPlan;
+	public static PPCData tc30PPCSLNonSEFinToTTPlan;
 	public static HUPData tc09HupPpcPotgSharedML;
 	public static HUPData tc10HUPAdditionalLine;
 	public static HUPData tc11HUPNpotgML;
@@ -476,6 +483,13 @@ public class TestDataHandler {
 		tc21AALBYODBopisShipping = YamlHandler.getAALdata("tc21AALBYODBopis");
 		tc22AALBYODStandardShipping = YamlHandler.getAALdata("tc22AALBYODStdShipping");
 		tc23AALTermMLNonSEBasicPlanStdShipping = YamlHandler.getAALdata("tc23AALTermMLNonSEBasicPlanStdShipping");
+		tc24PPCSLNonSEDTTPlan = YamlHandler.getPPCdata("tc24PPCSLNonSEDTTPlan");
+		tc25PPCMLNonSESubsidyPlan = YamlHandler.getPPCdata("tc25PPCMLNonSESubsidyPlan");
+		tc26PPCMLNonSESharedGroupDTTPlan = YamlHandler.getPPCdata("tc26PPCMLNonSESharedGroupDTTPlan");
+		tc27PPCSLSEBYODPlan = YamlHandler.getPPCdata("tc27PPCSLSEBYODPlan");
+		tc28PPCMLSESubsidyPlanToDTTPLan = YamlHandler.getPPCdata("tc28PPCMLSESubsidyPlanToDTTPLan");
+		tc29PPCMLSEAdditionalLineDTTPlan = YamlHandler.getPPCdata("tc29PPCMLSEAdditionalLineDTTPlan");
+		tc30PPCSLNonSEFinToTTPlan = YamlHandler.getPPCdata("tc30PPCSLNonSEFinToTTPlan");
 	}
 	
 	private static void buyFlowsOneViewDataInit() throws FileNotFoundException {

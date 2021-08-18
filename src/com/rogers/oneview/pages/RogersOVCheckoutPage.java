@@ -428,7 +428,11 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//th[@translate='global.label.campaignTable.savings']")
 	WebElement savingsExists;
 
+	@FindBy(xpath = "//input[@formcontrolname='emailAddressField']")
+	WebElement txtEmailShipping;
 
+	@FindBy(xpath = "//div[@data-test='delivery-information']//ds-form-field")
+	WebElement shippingEmailFormField;
 
 	/**
 	 * Verify Savings exists
@@ -437,8 +441,6 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	public boolean verifySavingsExist() {
 		return getReusableActionsInstance().isElementVisible(savingsExists, 30);
 	}
-
-
 
 	/**
 	 * Set expiry month and year of credit card
@@ -1736,5 +1738,14 @@ public class RogersOVCheckoutPage extends BasePageClass {
 		return (getReusableActionsInstance().isElementVisible(totalSavingAppliedExists, 15) && getReusableActionsInstance().isElementVisible(appliedCouponExists, 15));
 	}
 
-
+	/**
+	 * This method enters the value in email address field in shipping page
+	 * @author praveen.kumar7
+	 */
+	public void setEmailShippingPage() {
+		if (getReusableActionsInstance().isElementVisible(shippingEmailFormField, 20)) {
+			getReusableActionsInstance().getWhenReady(txtEmailShipping, 20).click();
+			getReusableActionsInstance().getWhenReady(txtEmailShipping,10).sendKeys(FormFiller.generateEmail());
+		}
+	}
 }

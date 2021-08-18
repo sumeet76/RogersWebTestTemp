@@ -56,8 +56,9 @@ public class RogersBFA_TC11_HUPNpotg_ML_NonShare_BasicPlan_Test extends BaseTest
         getRogersPlanConfigPage().clkRadioButtonNoTerm();
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
-        getRogersPlanConfigPage().clkBasicTab();
-        getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc11HUPNpotgML.getDataOptionIndex());
+        getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
+        /*getRogersPlanConfigPage().clkBasicTab();
+        getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc11HUPNpotgML.getDataOptionIndex());*/
         reporter.reportLogPassWithScreenshot("Plan config page data option selected");
         getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
@@ -66,7 +67,7 @@ public class RogersBFA_TC11_HUPNpotg_ML_NonShare_BasicPlan_Test extends BaseTest
         reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         reporter.reportLogWithScreenshot("Clicked on Proceed to checkout button in plan builder");
-        //getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
+        getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
         reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                 "Billing Address is not selected");
         reporter.reportLogPassWithScreenshot("On Checkout page");

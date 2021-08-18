@@ -138,8 +138,8 @@ public class NacDashboardPage extends BasePageClass {
 	 * @author Sidhartha.Vadrevu
 	 */
 	public void fillApartmentField(String apartment) {
-		getReusableActionsInstance().clickWhenVisible(apartmentField,5);
-		getReusableActionsInstance().getWhenReady(inputApartmentField,5).sendKeys(apartment);
+		/*getReusableActionsInstance().clickWhenVisible(apartmentField,5);
+		getReusableActionsInstance().getWhenReady(inputApartmentField,5).sendKeys(apartment);*/
 	}
 
 	/**
