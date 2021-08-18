@@ -38,7 +38,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[contains(text(),'TV')]/ancestor::label  | //div[@id='ds-checkbox-id-0-label-container'] | //div[contains(text(), ' TV ')]")
 	WebElement tvCheckbox;
 
-	@FindBy (xpath = "//input[@id='ds-checkbox-id-1']/following-sibling::div[1]")
+	@FindBy (xpath = "//input[@id='ds-checkbox-id-1']/following-sibling::div[1] | //div[contains(text(), ' Internet ')]")
 	WebElement internetCheckbox;
 
 	@FindBy(xpath = "//div[contains(text(),'Home Phone')]/ancestor::label  | //div[@id='ds-checkbox-id-3-label-container'] | //div[contains(text(), ' Home Phone ')]")
@@ -65,7 +65,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()='Passer à la caisse' or text()='Checkout']/ancestor::button")
 	WebElement checkOut;
 
-	@FindBy(xpath = "//span[@translate='global.cta.checkout']/ancestor::button")
+	@FindBy(xpath = "//span[@translate='global.cta.checkout']/ancestor::button | //span[contains(text(), 'Checkout') or contains(text(), 'Passer à la caisse')]" )
 	WebElement checkOutFromCartSummary;
 
 
@@ -249,6 +249,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().executeJavaScriptClick(firstAddToCart);
 	}
 
+
+
 	/**
 	 * Enter the address to search for service availability
 	 * @param address is the Address to check for availability
@@ -257,7 +259,6 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */
 	public void checkAvailability(String address,String browser) {
 		getReusableActionsInstance().clickWhenReady(inputContainer,120);
-		//getReusableActionsInstance().enterText(addressInput,address,60);
 		if(browser.equals("chrome")) {
 			getReusableActionsInstance().enterText(addressInput,address+Keys.BACK_SPACE,120);
 			getReusableActionsInstance().staticWait(8000);

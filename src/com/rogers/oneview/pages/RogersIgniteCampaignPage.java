@@ -4,6 +4,7 @@ import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import utils.FormFiller;
 
 import java.util.List;
 
@@ -19,8 +20,16 @@ public class RogersIgniteCampaignPage extends BasePageClass{
 	@FindBy(xpath = "(//*/parent::div/parent::div//input/parent::div)[3]")
 	WebElement couponInputContainer;
 
-	@FindBy(xpath = "//span[contains(text(),'Enter') or contains(text(),'Entrer')]/ancestor::span/following-sibling::input")
+//	@FindBy(xpath = "//span[contains(text(),'Enter') or contains(text(),'Entrer')]/ancestor::span/following-sibling::input | //div[@class='campaign-codes disabled']/descendant::label")
+	@FindBy(xpath = "(//input[contains(@id,'ds-form-input-id')])[1]")
 	WebElement couponInput;
+
+
+
+	@FindBy(xpath = "//div[@class='campaign-codes disabled']/descendant::label")
+	WebElement couponInputSpan;
+
+
 
 	@FindBy(xpath = "//span[@translate='global.checkout.campaign.apply']/ancestor::button")
 	WebElement applyCoupon;
@@ -77,10 +86,24 @@ public class RogersIgniteCampaignPage extends BasePageClass{
 	 * @author Aditi.Jain
 	 */
 	public void enterCoupon(String couponInputValue) {
-		getReusableActionsInstance().executeJavaScriptClick(couponInputContainer);
-		getReusableActionsInstance().clickWhenReady(couponInput);
-		getReusableActionsInstance().clickWhenReady(couponInput);
-		getReusableActionsInstance().enterText(couponInput, couponInputValue, 30);
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().executeJavaScriptClick(couponInput);
+		getReusableActionsInstance().getWhenReady(couponInput,5).sendKeys(couponInputValue);
+
+
+//		getReusableActionsInstance().executeJavaScriptClick(couponInputContainer);
+//		getReusableActionsInstance().executeJavaScriptClick(couponInput);
+//		getReusableActionsInstance().waitForElementVisibility(couponInput);
+
+//		getReusableActionsInstance().enterText(couponInput, couponInputValue, 30);
+//		couponInput.click();
+//		couponInput.clear();
+//		couponInput.sendKeys(couponInputValue);
+
+
+//		JavascriptExecutor jse = (JavascriptExecutor) getDriver();
+//		jse.executeScript("document.getElementById('"+couponInput+"').value = 'mukeshotwani';");
+
 	}
 
 
