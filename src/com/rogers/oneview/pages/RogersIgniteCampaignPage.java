@@ -89,21 +89,6 @@ public class RogersIgniteCampaignPage extends BasePageClass{
 		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().executeJavaScriptClick(couponInput);
 		getReusableActionsInstance().getWhenReady(couponInput,5).sendKeys(couponInputValue);
-
-
-//		getReusableActionsInstance().executeJavaScriptClick(couponInputContainer);
-//		getReusableActionsInstance().executeJavaScriptClick(couponInput);
-//		getReusableActionsInstance().waitForElementVisibility(couponInput);
-
-//		getReusableActionsInstance().enterText(couponInput, couponInputValue, 30);
-//		couponInput.click();
-//		couponInput.clear();
-//		couponInput.sendKeys(couponInputValue);
-
-
-//		JavascriptExecutor jse = (JavascriptExecutor) getDriver();
-//		jse.executeScript("document.getElementById('"+couponInput+"').value = 'mukeshotwani';");
-
 	}
 
 
