@@ -16,7 +16,7 @@ public class OneViewCH_1437_TC01_EndtoEndFlowAnonymousCustomerTriplePlayTest ext
 	@Test (groups = {"RegressionCHOV","SanityCHOV"})
     public void oneViewCH_1437_TC01_EndtoEndFlowAnonymousCustomerTriplePlayTest(){
 			getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
-			getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress(),System.getProperty("Browser"));
+			getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
 			reporter.reportLogWithScreenshot("Service Availability");
 			getRogersIgniteBundlesPage().clkContinue();
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");

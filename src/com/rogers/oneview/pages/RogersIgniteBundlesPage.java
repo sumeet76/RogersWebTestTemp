@@ -249,7 +249,20 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().executeJavaScriptClick(firstAddToCart);
 	}
 
-
+	/**
+	 * Enter the address to search for service availability
+	 * @param address is the Address to check for availability
+	 * @author Aditi.jain
+	 */
+	public void checkAvailability(String address) {
+		getReusableActionsInstance().clickWhenReady(inputContainer,45);
+		getReusableActionsInstance().enterText(addressInput,address+Keys.BACK_SPACE,60);
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().clickAndHoldFor(searchResult, 333);//.clickWhenReady(searchResult);
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().clickWhenReady(checkAvailabilitybtn);
+		getReusableActionsInstance().clickIfAvailable(continueButton);
+	}
 
 	/**
 	 * Enter the address to search for service availability
