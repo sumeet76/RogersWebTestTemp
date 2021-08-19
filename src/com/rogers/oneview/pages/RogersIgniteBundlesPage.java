@@ -35,13 +35,16 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[text()='This address is serviceable!' or text()='Cette adresse peut être desservie!']")
 	WebElement serviceavailableMessage;
 
-	@FindBy(xpath = "//div[contains(text(),'TV')]/ancestor::label  | //div[@id='ds-checkbox-id-0-label-container'] | //div[contains(text(), ' TV ')]")
+	@FindBy(xpath = "//input[@id='ds-checkbox-id-0']/following-sibling::div")
 	WebElement tvCheckbox;
 
-	@FindBy (xpath = "//input[@id='ds-checkbox-id-1']/following-sibling::div[1] | //div[contains(text(), ' Internet ')]")
+	@FindBy(xpath="//span[contains(text(),'reviewed the customer’s add-ons') or contains(text(),'revue les options du client')]")
+	WebElement reviewAddons;
+
+	@FindBy (xpath = "//input[@id='ds-checkbox-id-1']/following-sibling::div")
 	WebElement internetCheckbox;
 
-	@FindBy(xpath = "//div[contains(text(),'Home Phone')]/ancestor::label  | //div[@id='ds-checkbox-id-3-label-container'] | //div[contains(text(), ' Home Phone ')]")
+	@FindBy(xpath = "//input[@id='ds-checkbox-id-3']/following-sibling::div")
 	WebElement homePhoneCheckbox;
 
 	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[1]")
@@ -652,5 +655,14 @@ public void activateHomePhoneltrPopUp() {
 	public void clkAddToCartForBestOffer() {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(clickBstOffer);
 		getReusableActionsInstance().executeJavaScriptClick(clickBstOffer);
+	}
+
+	/*To click review addon link in channels and theme packs page
+	* @author suganya p
+	*
+	*/
+	public void clickReviewAddons() {
+		if (getReusableActionsInstance().isElementVisible(reviewAddons,30))
+		getReusableActionsInstance().clickWhenReady(reviewAddons);
 	}
 }
