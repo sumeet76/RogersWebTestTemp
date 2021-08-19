@@ -16,7 +16,7 @@ public class OneViewCH_1409_TC01_E2E_NAC_SAI_PortInTest extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
     public void oneViewCH_1409_TC01_E2E_NAC_SAI_PortInTest(){
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
-		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress(),System.getProperty("Browser"));
+		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();

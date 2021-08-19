@@ -16,7 +16,7 @@ public class OneViewCH_1415_TC01_E2E_NAC_SAI_TMP_Test extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
     public void oneViewCH_1415_TC01_E2E_NAC_SAI_TMP_Test(){
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
-		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress(),System.getProperty("Browser"));
+		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
@@ -77,7 +77,7 @@ public class OneViewCH_1415_TC01_E2E_NAC_SAI_TMP_Test extends BaseTestClass {
 	@BeforeMethod (alwaysRun=true)
 	@Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.nacTMP.contactDetails.getContactID(), "", System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.nacTMP.contactDetails.getContactIDSAI(), "", System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
 	}
 
 	@AfterMethod(alwaysRun = true)
