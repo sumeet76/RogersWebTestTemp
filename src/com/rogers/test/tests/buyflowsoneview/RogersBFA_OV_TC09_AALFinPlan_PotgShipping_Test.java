@@ -89,6 +89,7 @@ public class RogersBFA_OV_TC09_AALFinPlan_PotgShipping_Test extends BaseTestClas
 		getRogersOVCheckoutPage().clkDeliveryMethod("PRO");
 		reporter.reportLogPassWithScreenshot("Pro on the go Delivery selected");
 		reporter.hardAssert(getRogersOVCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");
+		getRogersOVCheckoutPage().setEmailShippingPage();
 		getRogersOVCheckoutPage().clkContinueBtnShipping();
 		reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
 /*		getRogersOVCheckoutPage().clkContinueBtnShipping();

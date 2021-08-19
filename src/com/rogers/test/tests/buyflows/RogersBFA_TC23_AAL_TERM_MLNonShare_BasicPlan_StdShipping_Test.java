@@ -66,8 +66,9 @@ public class RogersBFA_TC23_AAL_TERM_MLNonShare_BasicPlan_StdShipping_Test exten
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         //getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc23AALTermMLNonSEBasicPlanStdShipping.getDeviceCostIndex()));
         reporter.reportLogPassWithScreenshot("Device cost option selected");
-        getRogersPlanConfigPage().clkBasicTab();
-        getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc23AALTermMLNonSEBasicPlanStdShipping.getDataOptionIndex());
+        //getRogersPlanConfigPage().clkBasicTab();
+        //getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc23AALTermMLNonSEBasicPlanStdShipping.getDataOptionIndex());
+        getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
         reporter.reportLogPassWithScreenshot("Data option selected");
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc23AALTermMLNonSEBasicPlanStdShipping.getTalkOptionIndex())),
                 "Talk option selected and Addons page in expanded state","Addons page not in expanded state");
@@ -103,7 +104,8 @@ public class RogersBFA_TC23_AAL_TERM_MLNonShare_BasicPlan_StdShipping_Test exten
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                 "Order Review Page Title is not Present");
         reporter.reportLogPassWithScreenshot("Order Review Page");
-        getRogersReviewOrderPage().clkAllAgreementConsentCheckbox(isSelectedDeviceTier);
+        //getRogersReviewOrderPage().clkAllAgreementConsentCheckbox(isSelectedDeviceTier);
+        getRogersReviewOrderPage().clkAgreementConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         getRogersOrderReviewPage().clkSubmitOrder();
         reporter.reportLogWithScreenshot("Rogers Payment Page");

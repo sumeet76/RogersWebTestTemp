@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_OV_TC08_AALShareTerm_BopisShipping_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","RegressionOVBFA","SanityOVBFA","OVAALBFA"})
+	@Test(groups = {"RegressionBFA","RegressionOVBFA","OVSanityBFA","OVAALBFA"})
 	public void aALSingleLineShareTermBopisShippingFlow() {
 		reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
 		reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");
@@ -80,20 +80,14 @@ public class RogersBFA_OV_TC08_AALShareTerm_BopisShipping_Test extends BaseTestC
 		reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
 		reporter.hardAssert(getRogersOVCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
 				"Billing Address is not selected");
-	/*	getRogersOVCheckoutPage().clkDeliveryMethod("Express");
+		getRogersOVCheckoutPage().clkDeliveryMethod("Express");
 		reporter.reportLogPassWithScreenshot("Bopis Delivery selected");
+		getRogersOVCheckoutPage().setEmailShippingPage();
 		reporter.hardAssert(getRogersOVCheckoutPage().verifyExpressLocationMapPresent(), "Express pickup location map is present",
-				"Express pickup location map is not available");*/
-		//reporter.reportLogPassWithScreenshot("On Checkout page");
-		getRogersOVCheckoutPage().clkDeliveryMethod("STANDARD");
-		reporter.reportLogPassWithScreenshot("Pro on the go Delivery selected");
-
-		//reporter.hardAssert(getRogersOVCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");
+				"Express pickup location map is not available");
 		getRogersOVCheckoutPage().clkContinueBtnShipping();
 		reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
-/*		getRogersOVCheckoutPage().clkContinueBtnShipping();
-		reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");*/
-		//getRogersOVCheckoutPage().clkNoThanks();
+		getRogersOVCheckoutPage().clkNoThanks();
 		getRogersOVCheckoutPage().clksubmitBtnCheckoutPage();
 		reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary");
 		//--------------------------------------Review Order Page-------------------------------------------------------

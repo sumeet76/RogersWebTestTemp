@@ -9,6 +9,9 @@ public class PPCData {
 	private String newPlanCategory;
 	private String contactID;
 	private String banNo;
+	private String dataOptionIndex;
+	private String talkOptionIndex;
+	private String ctn2;
 	
 	public String getBanNo() {
 		return banNo;
@@ -83,5 +86,43 @@ public class PPCData {
 	public void setNewPlanCategory(String newPlanCategory) {
 		this.newPlanCategory = newPlanCategory;
 	}
-	
+	/**
+	 * @return index value of price plan
+	 */
+	public String getDataOptionIndex() {
+		return dataOptionIndex;
+	}
+	/**
+	 * @param dataOptionIndex data option index to set
+	 */
+	public void setDataOptionIndex(String dataOptionIndex) {
+		this.dataOptionIndex = dataOptionIndex;
+	}
+	/**
+	 * @return index value of talk option
+	 */
+	public String getTalkOptionIndex() {
+		return talkOptionIndex;
+	}
+	/**
+	 * @param talkOptionIndex talk option index to set
+	 */
+	public void setTalkOptionIndex(String talkOptionIndex) {
+		this.talkOptionIndex = talkOptionIndex;
+	}
+	/**
+	 * @return string value of CTN2
+	 */
+	public String getCtn2() {
+		return ctn2;
+	}
+	/**
+	 * @param ctn2 value to set
+	 */
+	public void setCtn2(String ctn2) {
+		this.ctn2 = ctn2;
+	}
+
+
+
 }

@@ -319,6 +319,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//input[@formcontrolname='emailAddressField']")
 	WebElement txtEmailShipping;
 
+	@FindBy(xpath = "//div[@data-test='delivery-information']//ds-form-field")
+	WebElement shippingEmailFormField;
+
 	
 	
 	/**
@@ -1212,7 +1215,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author praveen.kumar7
 	 */
 	public void setEmailShippingPage() {
-		if (getReusableActionsInstance().isElementVisible(txtEmailShipping, 20)) {
+		if (getReusableActionsInstance().isElementVisible(shippingEmailFormField, 20)) {
 			getReusableActionsInstance().getWhenReady(txtEmailShipping, 20).click();
 			getReusableActionsInstance().getWhenReady(txtEmailShipping,10).sendKeys(FormFiller.generateEmail());
 		}

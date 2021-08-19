@@ -111,6 +111,10 @@ public class RogersBFA_OV_TC18_NAC_BYOD_OutboundPlans_Portin_Invoice_ON_Test ext
         getRogersOVCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.buyFlowsOVtestCase18.getPaymentMethod());
         reporter.reportLogWithScreenshot("Invoice option is selected");
         getRogersOVCheckoutPage().clkBillingContinueButton();
+        getRogersOVCheckoutPage().clkDeliveryMethod("EXPRESS");
+        reporter.reportLogPass("Express Delivery selected");
+        reporter.hardAssert(getRogersOVCheckoutPage().verifyExpressLocationMapPresent() ,"Express location map available", "Express location map not available");
+        getRogersOVCheckoutPage().clkContinueBtnShipping();
         getRogersOVCheckoutPage().clksubmitBtnCheckoutPage();
         //-------------------------------------------------Order Review Page-----------------------------------------------------
         reporter.hardAssert(getRogersOVReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
