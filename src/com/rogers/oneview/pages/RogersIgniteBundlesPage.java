@@ -199,6 +199,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath="//span[text()='BEST' or 'MEILLEUR' and ng-reflect-translate='global.dynamic.offerLevel.1']/parent::div/following-sibling::div//button//span[@translate='global.cta.addToCart']")
 	WebElement clickBstOffer;
 
+	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-selected-key='0']//select[contains(@id,'ds-form-input-id') and contains(@class,'select')])[1]")
+	WebElement additionalIgniteTVBoxes;
+
 	/**
 	 * Click Load Offers button
 	 * @author aditi.jain
@@ -235,6 +238,18 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().executeJavaScriptClick(loadOffers);
 	}
 
+
+	/**
+	 * Selects the additional ignite TV boxes
+	 * @author aditi.jain
+	 */
+	public void selectAdditionalIgniteTVBoxes() {
+		getReusableActionsInstance().getWhenReady(additionalIgniteTVBoxes,30);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(additionalIgniteTVBoxes, "1");
+		getReusableActionsInstance().staticWait(5000);
+	}
+
+
 	/**
 	 * Port-in not supported Pop UP
 	 * @author aditi.jain
@@ -260,9 +275,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	public void checkAvailability(String address) {
 		getReusableActionsInstance().clickWhenReady(inputContainer,45);
 		getReusableActionsInstance().enterText(addressInput,address+Keys.BACK_SPACE,60);
-		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().clickAndHoldFor(searchResult, 333);//.clickWhenReady(searchResult);
 		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().clickAndHoldFor(searchResult, 333);//.clickWhenReady(searchResult);
+		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().clickWhenReady(checkAvailabilitybtn);
 		getReusableActionsInstance().clickIfAvailable(continueButton);
 	}

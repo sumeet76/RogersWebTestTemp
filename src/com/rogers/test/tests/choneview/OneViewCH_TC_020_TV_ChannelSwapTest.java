@@ -49,7 +49,7 @@ public class OneViewCH_TC_020_TV_ChannelSwapTest extends BaseTestClass {
 		reporter.reportLogWithScreenshot("Confirm Exchange button clicked");
 		getTVDashboardPage().clickOK();
 		reporter.reportLogWithScreenshot("Clicked Ok on the exhange channel pop up");
-		reporter.hardAssert(getTVDashboardPage().verifyResetSuccess(),"Channel exchange completed successfully- Passed","Channel exchange not completed - Failed");	
+		reporter.hardAssert(getTVDashboardPage().verifyResetSuccess(),"Channel exchange completed successfully- Passed","Channel exchange not completed - Failed");
         reporter.reportLogWithScreenshot("Swap channel success");
 		getTVDashboardPage().clickSuccessOk() ;
 		
