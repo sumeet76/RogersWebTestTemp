@@ -38,13 +38,6 @@ public class OneViewCH_1413_TC01_E2E_NAC_3P_STBs_Test extends BaseTestClass {
 			getRogersIgniteBundlesPage().fourKTVPopup();
 			getRogersIgniteBundlesPage().fourKContinue();
 			getRogersIgniteBundlesPage().clkCollapse();
-//			getRogersIgniteBundlesPage().clickExchangeLater();
-//			getTVDashboardPage().clickAddChannel();
-//			getTVDashboardPage().clickThemepacksTab();
-//			getTVDashboardPage().addThemepack();
-//			getCustomerProfilePage().clkContinue();
-//			getTVDashboardPage().addToCartCallingPackage();
-//			getCustomerProfilePage().clkContinue();
 			reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 			getRogersIgniteBundlesPage().clkCheckOut();
 			reporter.reportLogWithScreenshot("Cart Summary");
