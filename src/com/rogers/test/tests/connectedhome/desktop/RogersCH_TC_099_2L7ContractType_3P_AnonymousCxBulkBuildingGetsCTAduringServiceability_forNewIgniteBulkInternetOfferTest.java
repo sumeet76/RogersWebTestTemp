@@ -56,7 +56,7 @@ public class RogersCH_TC_099_2L7ContractType_3P_AnonymousCxBulkBuildingGetsCTAdu
 	
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+        closeSession();
 	}
 }
 
