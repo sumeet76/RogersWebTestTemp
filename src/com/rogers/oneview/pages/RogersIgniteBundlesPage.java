@@ -275,7 +275,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	public void checkAvailability(String address) {
 		getReusableActionsInstance().clickWhenReady(inputContainer,45);
 		getReusableActionsInstance().enterText(addressInput,address+Keys.BACK_SPACE,60);
-		getReusableActionsInstance().staticWait(8000);
+		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().clickAndHoldFor(searchResult, 333);//.clickWhenReady(searchResult);
 		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().clickWhenReady(checkAvailabilitybtn);
