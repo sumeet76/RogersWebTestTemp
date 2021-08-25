@@ -124,6 +124,8 @@ public class TestDataHandler {
 	public static AccountData TC023_TVPackageDowngrade;
 	public static AccountData TC026_TVPackageUpgrade;
 	public static AccountData TC028_InternetPackageDowngrade;
+	public static AccountData tupeloDowngradeTest;
+	public static AccountData tupeloUpgradeTest;
 	public static AccountData TC032_SAI_AddingSmartStream;
 	public static AccountData TC030_Internet_PackageUpgrade;
 	public static RedesignRpotgData tc01NACTermNpotgSS;
@@ -547,6 +549,8 @@ public class TestDataHandler {
 		TC023_TVPackageDowngrade= YamlHandler.getOVAccountData("TC_023_TV_PackageDowngrade");
 		TC026_TVPackageUpgrade= YamlHandler.getOVAccountData("TC026_TVPackageUpgrade");
 		TC028_InternetPackageDowngrade= YamlHandler.getOVAccountData("TC_028_Internet_PackageDowngrade");
+		tupeloDowngradeTest= YamlHandler.getOVAccountData("1460_Tupelo_Internet_Downgrade");
+		tupeloUpgradeTest= YamlHandler.getOVAccountData("1464_Tupelo_Internet_Upgrade");
 		TC032_SAI_AddingSmartStream =YamlHandler.getOVAccountData("TC32_SAI_AddingSmartstream");
 		TC030_Internet_PackageUpgrade =YamlHandler.getOVAccountData("TC_030_Internet_PackageUpgrade");
 		RHPManage_AddOns =YamlHandler.getOVAccountData("RHPManageAddon");
