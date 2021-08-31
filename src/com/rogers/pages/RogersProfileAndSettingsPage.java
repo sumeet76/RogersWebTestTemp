@@ -64,11 +64,17 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	
 	@FindBy (xpath = "//button[@title='Change username' or @title='Changer le nom d’utilisateur']")
 	WebElement lnkChangeUsername;
-	
-	@FindBy (xpath = "//input[@id='username']//parent::div")
+
+	@FindAll({
+		@FindBy(xpath = "//input[contains(@title,'New Username')]//.."),
+		@FindBy (xpath = "//input[@id='username']//parent::div")
+	})
 	WebElement labelNewUsername;
-	
-	@FindBy (xpath = "//input[@id='username']")
+
+	@FindAll({
+		@FindBy(xpath = "//input[contains(@title,'New Username')]"),
+		@FindBy (xpath = "//input[@id='username']")
+	})
 	WebElement inputNewUsername;
 	
 	@FindBy(xpath = "//span[@class='badge-ind-wireless-name']")
@@ -207,8 +213,9 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 			@FindBy (xpath = "//div[@footer]//span[contains(text(),'Done') or contains(text(),'Termin')]")}
 	)
 	WebElement btnAddBusinessNumberDone;
-	
-	@FindBy (xpath = "//div[@footer]//span[contains(text(),'Done') or contains(text(),'Termin')]")
+
+	//div[@footer]//span[contains(text(),'Done') or contains(text(),'Termin')]
+	@FindBy (xpath = "//span[contains(text(),'Done') or contains(text(),'Termin')]")
 	WebElement btnChangeLanguageDone;
 
 	@FindBy(xpath = "//button[@title='Close' or @title='Fermer']")
@@ -724,6 +731,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void clkLnkAddContactEmail() {
 		getReusableActionsInstance().clickWhenReady(lnkAddContactEmail, 30);
+		getReusableActionsInstance().staticWait(5000);
 	}
 	
 	/**
@@ -756,6 +764,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void clkLnkUpdateHomeNumber() {
 		getReusableActionsInstance().clickWhenReady(By.xpath("//span[contains(text(),'home contact number') or contains(text(),'home number') or contains(text(),'numéro à la maison')]"), 30);
+		getReusableActionsInstance().staticWait(5000);
 	}
 	
 	/**
@@ -764,6 +773,7 @@ public class RogersProfileAndSettingsPage extends BasePageClass {
 	 */
 	public void clkLnkAddBusinessNumber() {
 		getReusableActionsInstance().clickWhenReady(lnkAddBusinessNumber, 30);
+		getReusableActionsInstance().staticWait(5000);
 	}
 	
 	/**

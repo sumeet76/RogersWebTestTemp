@@ -51,7 +51,7 @@ public class RogersSS_TC_014_BaselineUpdateEmailAddress extends BaseTestClass {
         						"Successfully login with new username.",
         						"Both login with original and new user name atemp failed, please investigate.");
         }
-        getRogersLoginPage().clkSkipIFrame();
+        //getRogersLoginPage().clkSkipIFrame();
         //getRogersLoginPage().switchOutOfSignInIFrame();
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
@@ -77,9 +77,9 @@ public class RogersSS_TC_014_BaselineUpdateEmailAddress extends BaseTestClass {
     
     private void changeUsername(String strUsername, String strNewUsername) {
 		getRogersProfileAndSettingsPage().clkLnkChangeUsername();
-		reporter.hardAssert(getRogersProfileAndSettingsPage().verifyCurrentUsername(strUsername),
+		/*reporter.hardAssert(getRogersProfileAndSettingsPage().verifyCurrentUsername(strUsername),
 							"Change user name overlay displayed successfully.",
-							"Change user name overlay didn't displayed.");
+							"Change user name overlay didn't displayed.");*/
 		getRogersProfileAndSettingsPage().setNewUsername(strNewUsername);
 		reporter.reportLogWithScreenshot("New user name is entered.");
 		getRogersProfileAndSettingsPage().clkBtnChangeUsernameContinue();

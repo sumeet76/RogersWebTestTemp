@@ -669,7 +669,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	public void clkBtnSwitchOffMyService() {
 //		getReusableActionsInstance().waitForElementTobeClickable(btnSwitchOffService, 10);
 //		getReusableActionsInstance().javascriptScrollByVisibleElement(btnSwitchOffService);
-		getReusableActionsInstance().getWhenReady(btnSwitchOffService, 20).click();
+		getReusableActionsInstance().getWhenReady(btnSwitchOffService, 40).click();
 
 	}
 	
