@@ -48,7 +48,10 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-1-edit-step-selection-option-')]//label[1]")
     List<WebElement> noOfDeviceTiers;
 
-    @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-infinite-')]//label[1]")
+    @FindAll({
+            @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-infinite-')]//label[1]"),
+            @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-')]//label[1]")
+    })
     List<WebElement> noofDataOptions;
 
     @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-')]//label[1]")
@@ -778,7 +781,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      */
     public void clickCartSummaryContinueButton() {
         getReusableActionsInstance().javascriptScrollToTopOfPage();
-        getReusableActionsInstance().javascriptScrollByVisibleElement(continueButtonOnCartSummary);
+        getReusableActionsInstance().javascriptScrollByVisibleElement(getReusableActionsInstance().getWhenReady(By.xpath("//p[contains(.,'Data option')]")));
         getReusableActionsInstance().staticWait(3000);
         getReusableActionsInstance().executeJavaScriptClick(continueButtonOnCartSummary);
         //clickGetBPOOffer();

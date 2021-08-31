@@ -106,7 +106,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     WebElement rpotgBannerText;
 
     @FindBy(xpath = "//button[@title='Check' or @title='Vérifier']")
-    WebElement  checkBtn;
+    WebElement checkBtn;
 
     @FindAll({
             @FindBy(xpath = "//button[@title='Continue' or @title='Continuer']"),
@@ -116,6 +116,9 @@ public class RogersDeviceCataloguePage extends BasePageClass {
 
     @FindBy(xpath = "(//button[contains(@class,'ds-button ds-corners ds-pointer')])[3]")
     WebElement continueBtnHupCtnSelectionModal;
+
+    @FindBy(xpath = "//button[@data-id='continue']")
+    WebElement btnPPCshareNonShareModalContinue;
 
     @FindBy(xpath = "//dsa-info[contains(@class,'d-block mb-40')]//p[contains(@class,'dsa-info__contentBody text-body mb-0')]")
     WebElement eligiblePostalCodeinBanner;
@@ -607,6 +610,14 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
     public void clkContinueBtnHupCtnSelectionModal() {
         getReusableActionsInstance().clickWhenReady(continueBtnHupCtnSelectionModal);
+    }
+
+    /**
+     * This method will click on the continue button in the ctn selection modal during HUP flow
+     * @author praveen.kumar7
+     */
+    public void clkContinueBtnPPCShareNonShareModal() {
+        getReusableActionsInstance().clickWhenReady(btnPPCshareNonShareModalContinue);
     }
 
     /**

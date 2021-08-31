@@ -35,7 +35,8 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     @FindAll({
             @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-infinite-')]//label[1]"),
-            @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-')]//label[1]")
+            @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-')]//label[1]"),
+            @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-talkAndText-')]")
     })
     List<WebElement> noofDataOptions;
 
@@ -174,6 +175,51 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//ds-checkbox[@data-test='vdp-checkbox']")
     WebElement vdpCheckBox;
 
+    @FindBy(xpath = "//div[contains(@class,'dsa-infoWidget__ctnInfo')]//span[contains(@class,'dsa-infoWidget__ctnCopy')]")
+    WebElement infoWidgetCtnCopy;
+
+    @FindBy(xpath = "//button[@data-test='stepper-0-edit-step-continue-button']")
+    WebElement btnChangePlan;
+
+    @FindBy(xpath = "//ds-modal[@data-test='ppc-sharedNonShared-modal']")
+    WebElement ppcSharedNonSharedModal;
+
+    @FindBy(xpath = "//label[contains(@class,'dsa-selection')][contains(.,'existing') or contains(.,'actuel')]")
+    WebElement lblSelectExistingPlan;
+
+    @FindBy(xpath = "//label[contains(@class,'dsa-selection')][contains(.,'Create a shared plan') or contains(.,'forfait partagé')]")
+    WebElement lblSelectSharedPlan;
+
+    @FindBy(xpath = "//button[@data-test='shared-nonshared-continue']")
+    WebElement btnPPCShareNonShareContune;
+
+    @FindBy(xpath = "//p[contains(.,'Individu')]")
+    WebElement txtIndividualTab;
+
+    @FindBy(xpath = "//button[@data-test='ppc-ctnSelection-modal-add']")
+    WebElement btnAddInModal;
+
+    @FindBy(xpath = "//button[@data-test='ppc-choosePrimaryLine-modal-Continue']")
+    WebElement btnSelectPrimaryLineModalContinue;
+
+    @FindBy(xpath = "//h1[contains(.,'Select Plan Options') or contains(.,'Sélectionner un forfait')]")
+    WebElement titleAdditionalLinePage;
+
+    @FindBy(xpath = "//select[@data-test='additional-plan-types-option']")
+    WebElement planTypeDropDown;
+
+    @FindBy(xpath="//button[contains(@class,'plan-dropdown')]")
+    WebElement dataDropDown;
+
+    @FindBy(xpath = "//select[@data-test='additional-talk-option']")
+    WebElement talkDropDown;
+
+    @FindBy(xpath = "//button[@data-test='downgrade-modal-proceed']")
+    WebElement btnDowngradeFeeModalConitnue;
+
+    @FindBy(xpath = "//button[@data-test='addons-removal-modal-button-primary']")
+    WebElement btnExistingAddonModalContinue;
+
 
     /**
      * Select Device Protection Header on Plan config page
@@ -219,7 +265,6 @@ public class RogersPlanConfigPage extends BasePageClass {
             if (getReusableActionsInstance().getWhenReady(showMoreDetails).getAttribute("title").contains("Hide More Details")) {
                 System.out.println("Show more details accordion already in expanded state");
             } else {
-                getReusableActionsInstance().scrollToElement(showMoreDetails);
                 getReusableActionsInstance().clickWhenVisible(showMoreDetails, 20);
             }
         }
@@ -344,19 +389,26 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     /**
      * Select data option on Plan config page
-     *
      * @param    dataOptionIndex : String value of data option to be selected
      * @author praveen.kumar7
      */
-    public void selectDataOptionAndClickonContinueButton(String dataOptionIndex) {
-        int stepper=2;
-        String xpathDcDoTo = createXpathWithInputData(dataOptionIndex,stepper);
-        if(Integer.parseInt(dataOptionIndex) == 0) {
-            getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton, 20);
+    public void selectDataOptionAndClickonContinueButton(String dataOptionIndex, String className) {
+        if(noofDataOptions.size()!=1) {
+            int stepper = 2;
+            String xpathDcDoTo = createXpathWithInputData(dataOptionIndex, stepper);
+            if (Integer.parseInt(dataOptionIndex) == 0) {
+                getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton, 20);
+            } else {
+                getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo), 20));
+                if (className.toUpperCase().contains("_PPC_")) {
+                    getReusableActionsInstance().staticWait(13000);
+                    getReusableActionsInstance().clickIfAvailable(btnDowngradeFeeModalConitnue, 5);
+                }
+                getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton, 20);
+            }
         }
         else {
-            getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo),20));
-            getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton,20);
+            getReusableActionsInstance().clickIfAvailable(preCartDataOtionContinueButton,5);
         }
     }
 
@@ -707,6 +759,49 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
 
     /**
+     * This method verifies if additional line option page is displayed
+     * @return true if additional line option page title is present, else false
+     * @author praveen.kumar7
+     */
+    public boolean verifyAdditionalLinePageDisplayed() {
+        return getReusableActionsInstance().isElementVisible(titleAdditionalLinePage,30);
+    }
+
+    /**
+     * This method selects the data and talk for the additional line
+     * @param planType plan type to select in dropdown
+     * @param additionalLineDataIndex Plan index for additional line
+     * @author praveen.kumar7
+     */
+    public void changePlanForAdditionalLine(String planType, String additionalLineDataIndex) {
+        getReusableActionsInstance().javascriptScrollByVisibleElement(getReusableActionsInstance().getWhenReady(By.xpath("//span[contains(@class,'dsa-cartSummary')]")));
+        getReusableActionsInstance().clickWhenVisible(planTypeDropDown,10);
+        getReusableActionsInstance().selectWhenReady(planTypeDropDown,planType);
+        getReusableActionsInstance().clickWhenVisible(dataDropDown,10);
+        if(getReusableActionsInstance().isElementVisible(By.xpath("(//ul[@class='dropdown-menu-plan']//li)["+additionalLineDataIndex+"]"))) {
+            getReusableActionsInstance().clickWhenVisible(By.xpath("(//ul[@class='dropdown-menu-plan']//li)["+additionalLineDataIndex+"]"));
+        }
+        else {
+            getReusableActionsInstance().clickWhenVisible(By.xpath("(//ul[@class='dropdown-menu-plan']//li)[1]"));
+        }
+        getReusableActionsInstance().clickIfAvailable(talkDropDown);
+        getReusableActionsInstance().selectWhenReady(talkDropDown,1);
+    }
+
+    /**
+     * This method clicks on add to cart and proceed to checkout button in additional line option page
+     * @author praveen.kumar7
+     */
+    public void clkAddToCartAndProceedToCheckout(String className, String newPlanType) {
+        getReusableActionsInstance().clickWhenVisible(By.xpath("//button[contains(@id,'ds-accordion-panel')]"));
+        getReusableActionsInstance().clickWhenReady(btnAddToCart);
+        if(className.toUpperCase().contains("SUBSIDY") && newPlanType.equalsIgnoreCase("FINANCING")) {
+            getReusableActionsInstance().staticWait(15000);
+        }
+        getReusableActionsInstance().clickWhenReady(btnProceedToCheckout);
+    }
+
+    /**
      * Select BPO offer on Plan config page
      *
      * @author saurav.goyal
@@ -951,4 +1046,118 @@ public class RogersPlanConfigPage extends BasePageClass {
         planDetails.add(planPrice);
         return planDetails;
     }
+
+    /**
+     * This method verifies if info widget is properly displayed in plan config page
+     * @return true if info widget is loaded successfully, else false
+     * @author praveen.kumar7
+     */
+    public boolean verifyPPCPlanConfigPage() {
+        getReusableActionsInstance().javascriptScrollToTopOfPage();
+        return getReusableActionsInstance().isElementVisible(infoWidgetCtnCopy,30);
+    }
+
+    /**
+     * This method verifies if PPC Shared-Nonshared modal is displayed in plan config page
+     * @return true if PPC shared-nonshared modal is displayed, else false
+     * @author praveen.kumar7
+     */
+    public boolean verifyPPCSharedNonSharedModal() {
+        return getReusableActionsInstance().isElementVisible(ppcSharedNonSharedModal);
+    }
+
+    /**
+     * This method clicks on make changes to current plan option
+     * @author praveen.kumar7
+     */
+    public void clkMakeChangesToCurrentPlanInModal() {
+        getReusableActionsInstance().clickWhenVisible(lblSelectExistingPlan);
+    }
+
+    /**
+     * This method clicks on create shared group in modal
+     * @author praveen.kumar7
+     */
+    public void clkCreateSharedGroupInModal() {
+        getReusableActionsInstance().clickWhenVisible(lblSelectSharedPlan);
+    }
+
+    /**
+     * This method clicks on continue button in PPC share-nonshare modal
+     * @author praveen.kumar7
+     */
+    public void clkContinueInPPCShareNonShareModal() {
+        getReusableActionsInstance().clickWhenVisible(btnPPCShareNonShareContune);
+    }
+
+    /**
+     *  This method clicks on checkbox of the CTN passed as parameter
+     * @param ctn2 string value of CTN2
+     * @author praveen.kumar7
+     */
+    public void clkSecondLineCheckBox(String ctn2) {
+        getReusableActionsInstance().clickWhenReady(By.xpath("//div[contains(.,'"+ctn2+"') and contains(@id,'ds-checkbox')]/.."));
+        getReusableActionsInstance().clickWhenReady(btnAddInModal,10);
+    }
+
+    /**
+     * This menthod clicks on primary line radio button in select primary line modal
+     * @param ctn1 to select in modal
+     */
+    public void clkRadioBtnPrimaryLine(String ctn1) {
+        getReusableActionsInstance().clickWhenVisible(By.xpath("//div[contains(.,'"+ctn1+"') and contains(@class,'ds-radioLabel')]/.."));
+    }
+
+    /**
+     * This method clicks on continue button in select primary line modal
+     * @author praveen.kumar7
+     */
+    public void clkContinueInPrimaryLineSelectionModal() {
+        getReusableActionsInstance().clickWhenVisible(btnSelectPrimaryLineModalContinue);
+    }
+
+    /**
+     * This method clicks on Change plan CTA
+     * @author praveen.kumar7
+     */
+    public void clkChangePlan() {
+       getReusableActionsInstance().javascriptScrollByVisibleElement(infoWidgetCtnCopy);
+       getReusableActionsInstance().clickIfAvailable(btnChangePlan);
+    }
+
+    /**
+     * This method selects the plan type based on the input
+     * @param planType plan type to be selected
+     * @author praveen.kumar7
+     */
+    public void selectPlanType(String planType) {
+        getReusableActionsInstance().clickWhenVisible(By.xpath("//dsa-selection[contains(@data-test,'stepper-1-edit-step-selection-option-')]//label[@aria-label='"+planType+"']"));
+        getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton);
+        getReusableActionsInstance().staticWait(13000);
+    }
+
+    /**
+     * This method clicks on individual tab if present
+     * @author praveen.kumar7
+     */
+    public void clkIndividualTab() {
+        getReusableActionsInstance().clickIfAvailable(txtIndividualTab,10);
+    }
+
+    /**
+     * This method clicks on continue button in downgrade fee modal
+     * @author praveen.kumar7
+     */
+    public void verifyDowngradeFeeModalAndClkContinue() {
+        getReusableActionsInstance().clickWhenVisible(btnDowngradeFeeModalConitnue);
+    }
+
+    /**
+     * This method clicks on continue button in addon removal modal if present
+     * @author praveen.kumar7
+     */
+    public void clkContinueOnExistingAddonModal() {
+        getReusableActionsInstance().clickIfAvailable(btnExistingAddonModalContinue);
+    }
+
 }

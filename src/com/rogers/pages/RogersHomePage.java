@@ -831,6 +831,16 @@ public class RogersHomePage extends BasePageClass {
 
 	/**
 	 * Click the Lookup Submit button to check service availability
+	 * @return true if the Serviceability success model is available, else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyIgniteAddressLookupSubmit() {
+		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 60);
+		return getReusableActionsInstance().isElementVisible(btnIgniteAddressLookupSubmit, 60);
+	}
+
+	/**
+	 * Click the Lookup Submit button to check service availability
 	 * @author chinnarao.vattam
 	 */
 	public void clkAnotherAddressLookupSubmit() {

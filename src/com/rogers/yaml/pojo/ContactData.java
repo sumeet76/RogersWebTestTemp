@@ -7,6 +7,7 @@ public class ContactData {
 	public String planEngSAI;
 	public String planFr;
 	public CreditCardDetails creditCardDetails;
+	public String coupon;
 
 	/**
 	 * @return the plan in English for SAI flow
@@ -83,4 +84,19 @@ public class ContactData {
 	public void setplanFr(String planFr) {
 		this.planFr = planFr;
 	}
+
+	/**
+	 * get coupon code
+	 */
+	public String getCoupon() {
+		return coupon;
+	}
+	/**
+	 * @param coupon code to apply discount on a plan
+	 */
+	public void setCoupon(String coupon) {
+		this.coupon = coupon;
+	}
+
+
 }

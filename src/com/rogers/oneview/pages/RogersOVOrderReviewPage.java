@@ -21,7 +21,7 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	@FindBy(xpath = "//*[text()='One-Time Fees and Credits' or text()='Frais et crédits uniques']/ancestor::button")
 	WebElement oneTimeFees;
 	
-	@FindBy(xpath = "//span[text()='Submit' or text()='Soumettre']/ancestor::button")
+	@FindBy(xpath = "//span[text()='Submit' or text()='Soumettre']/ancestor::button | //span[@translate='global.cta.submit']/ancestor::button")
 	WebElement submitButton;
 	
 	@FindBy(xpath = "//span[text()='Campaign Codes' or text()='Codes de campagne']/ancestor::button")
@@ -103,8 +103,8 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	 */	
 	public void clkSubmit() {	
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().staticWait(3000);
-		getReusableActionsInstance().clickWhenReady(submitButton);
+		getReusableActionsInstance().waitForElementVisibility(submitButton, 60);
+		getReusableActionsInstance().executeJavaScriptClick(submitButton);
 	}
 	/**
 	 * Verify Monthly Charges Appear

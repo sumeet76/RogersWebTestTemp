@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_OV_TC15_NACOutboundFinanceStandardShipping_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","RegressionOVBFA","OVNACBFA"})
+	@Test(groups = {"RegressionBFA","RegressionOVBFA","OVSanityBFA","OVNACBFA"})
 	public void rogersNACOutboundFinanceStandardShippingDifferentPlanFlow() {
 		reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
 		reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");

@@ -29,7 +29,10 @@ public class RogersDigitalTVDashboardPage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[@class='ute-btn-primary']//a[@href='/web/consumer/ignite-bundles/tv-internet']")
 	WebElement btnBuyNowIgnite;
-	
+
+	@FindBy(xpath = "//div[@class='view-my-channels']/div/a")
+	WebElement lnkViewMyChannels;
+
 	
 	
 	/**
@@ -51,6 +54,14 @@ public class RogersDigitalTVDashboardPage extends BasePageClass {
 	public void clkChangeMyPackage() {
 		getReusableActionsInstance().isElementVisible(btnChangeMyPackage,90);
 		getReusableActionsInstance().getWhenReady(btnChangeMyPackage,30).click();
+	}
+	/**
+	 * Click on the  the View my channels link on the legacy TV dash board
+	 * @author dharani.up
+	 */
+	public void clkViewMyChannelsLink() {
+		getReusableActionsInstance().isElementVisible(lnkViewMyChannels,90);
+		getReusableActionsInstance().getWhenReady(lnkViewMyChannels,30).click();
 	}
 	
 	/**

@@ -35,13 +35,16 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[text()='This address is serviceable!' or text()='Cette adresse peut être desservie!']")
 	WebElement serviceavailableMessage;
 
-	@FindBy(xpath = "//div[contains(text(),'TV')]/ancestor::label  | //div[@id='ds-checkbox-id-0-label-container'] | //div[contains(text(), ' TV ')]")
+	@FindBy(xpath = "//input[@id='ds-checkbox-id-0']/following-sibling::div")
 	WebElement tvCheckbox;
 
-	@FindBy (xpath = "//div[contains(text(),'Internet')]/ancestor::label | //div[@id='ds-checkbox-id-1-label-container'] | //div[contains(text(), ' Internet ')]")
+	@FindBy(xpath="//span[contains(text(),'reviewed the customer’s add-ons') or contains(text(),'revue les options du client')]")
+	WebElement reviewAddons;
+
+	@FindBy (xpath = "//input[@id='ds-checkbox-id-1']/following-sibling::div")
 	WebElement internetCheckbox;
 
-	@FindBy(xpath = "//div[contains(text(),'Home Phone')]/ancestor::label  | //div[@id='ds-checkbox-id-3-label-container'] | //div[contains(text(), ' Home Phone ')]")
+	@FindBy(xpath = "//input[@id='ds-checkbox-id-3']/following-sibling::div")
 	WebElement homePhoneCheckbox;
 
 	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[1]")
@@ -65,7 +68,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()='Passer à la caisse' or text()='Checkout']/ancestor::button")
 	WebElement checkOut;
 
-	@FindBy(xpath = "//span[@translate='global.cta.checkout']/ancestor::button")
+	@FindBy(xpath = "//span[@translate='global.cta.checkout']/ancestor::button | //span[contains(text(), 'Checkout') or contains(text(), 'Passer à la caisse')]" )
 	WebElement checkOutFromCartSummary;
 
 
@@ -189,6 +192,16 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 	@FindBy(xpath = "//h2[text()='Port-In Services' or text()='Transfert de services']")
 	WebElement headerPortInServices;
+
+	@FindBy(xpath ="//p[contains(text(),'Recommended Offer(s)') or contains(text(),'Offres recommandées')]")
+	WebElement recommendedOffer;
+
+	@FindBy(xpath="//span[text()='BEST' or 'MEILLEUR' and ng-reflect-translate='global.dynamic.offerLevel.1']/parent::div/following-sibling::div//button//span[@translate='global.cta.addToCart']")
+	WebElement clickBstOffer;
+
+	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-selected-key='0']//select[contains(@id,'ds-form-input-id') and contains(@class,'select')])[1]")
+	WebElement additionalIgniteTVBoxes;
+
 	/**
 	 * Click Load Offers button
 	 * @author aditi.jain
@@ -225,6 +238,18 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().executeJavaScriptClick(loadOffers);
 	}
 
+
+	/**
+	 * Selects the additional ignite TV boxes
+	 * @author aditi.jain
+	 */
+	public void selectAdditionalIgniteTVBoxes() {
+		getReusableActionsInstance().getWhenReady(additionalIgniteTVBoxes,30);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(additionalIgniteTVBoxes, "1");
+		getReusableActionsInstance().staticWait(5000);
+	}
+
+
 	/**
 	 * Port-in not supported Pop UP
 	 * @author aditi.jain
@@ -237,9 +262,24 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * click Add To Cart for Smartstream
 	 * @author aditi.jain
 	 */
-	public void clickFirstAddToCart(String planEn) {
+	public void clickFirstAddToCart() {
 		getReusableActionsInstance().waitForElementVisibility(firstAddToCart,45);
 		getReusableActionsInstance().executeJavaScriptClick(firstAddToCart);
+	}
+
+	/**
+	 * Enter the address to search for service availability
+	 * @param address is the Address to check for availability
+	 * @author Aditi.jain
+	 */
+	public void checkAvailability(String address) {
+		getReusableActionsInstance().clickWhenReady(inputContainer,45);
+		getReusableActionsInstance().enterText(addressInput,address+Keys.BACK_SPACE,60);
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().clickAndHoldFor(searchResult, 333);//.clickWhenReady(searchResult);
+		getReusableActionsInstance().staticWait(10000);
+		getReusableActionsInstance().clickWhenReady(checkAvailabilitybtn);
+		getReusableActionsInstance().clickIfAvailable(continueButton);
 	}
 
 	/**
@@ -250,7 +290,6 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */
 	public void checkAvailability(String address,String browser) {
 		getReusableActionsInstance().clickWhenReady(inputContainer,120);
-		//getReusableActionsInstance().enterText(addressInput,address,60);
 		if(browser.equals("chrome")) {
 			getReusableActionsInstance().enterText(addressInput,address+Keys.BACK_SPACE,120);
 			getReusableActionsInstance().staticWait(8000);
@@ -347,6 +386,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkCheckOutforCartSummary() {
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().getWhenReady(checkOut,120).sendKeys(Keys.ENTER);
 	}
 
@@ -402,7 +442,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkInternetCheckbox() {
-		getReusableActionsInstance().waitForElementVisibility(internetCheckbox, 120);
+		getReusableActionsInstance().waitForElementVisibility(internetCheckbox, 30);
 		getReusableActionsInstance().executeJavaScriptClick(internetCheckbox);
 	}
 	/**
@@ -614,5 +654,31 @@ public void activateHomePhoneltrPopUp() {
 	public void clkContinueFor3PPortIn() {
 		getReusableActionsInstance().scrollToElement(clickContinue3PPortIn);
 		getReusableActionsInstance().executeJavaScriptClick(clickContinue3PPortIn);
+	}
+	/*
+	* To Verify the display of targeted offer for the customer
+	* @author suganya.p
+	*/
+	public void verifyRecommendedOffers() {
+		getReusableActionsInstance().javascriptScrollByVisibleElement(recommendedOffer);
+
+
+	}
+	/*
+	*Click Add to cart for the recommended offer
+	* @author suganya p
+	*/
+	public void clkAddToCartForBestOffer() {
+		getReusableActionsInstance().javascriptScrollByVisibleElement(clickBstOffer);
+		getReusableActionsInstance().executeJavaScriptClick(clickBstOffer);
+	}
+
+	/*To click review addon link in channels and theme packs page
+	* @author suganya p
+	*
+	*/
+	public void clickReviewAddons() {
+		if (getReusableActionsInstance().isElementVisible(reviewAddons,30))
+		getReusableActionsInstance().clickWhenReady(reviewAddons);
 	}
 }

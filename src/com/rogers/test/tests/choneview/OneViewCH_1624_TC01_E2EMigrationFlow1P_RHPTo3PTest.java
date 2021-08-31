@@ -29,7 +29,7 @@ public class OneViewCH_1624_TC01_E2EMigrationFlow1P_RHPTo3PTest extends BaseTest
 		reporter.reportLogWithScreenshot("3p selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
 //		getRogersIgniteBundlesPage().clkAddtoCart(TestDataHandler.anonymousData.getplanEng(),TestDataHandler.anonymousData.getplanFr());
-		getRogersIgniteBundlesPage().clickFirstAddToCart(TestDataHandler.anonymousData.getPlanEngSAI());
+		getRogersIgniteBundlesPage().clickFirstAddToCart();
 
 		getRogersIgniteBundlesPage().clkKeepNumberbtn();
 		getRogersIgniteBundlesPage().noPortInPopup();

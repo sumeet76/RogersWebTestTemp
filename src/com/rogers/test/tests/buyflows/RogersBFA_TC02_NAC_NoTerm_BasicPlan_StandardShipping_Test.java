@@ -46,8 +46,9 @@ public class RogersBFA_TC02_NAC_NoTerm_BasicPlan_StandardShipping_Test extends B
 		getRogersPlanConfigPage().clkRadioButtonNoTerm();
 		getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
-		getRogersPlanConfigPage().clkBasicTab();
-		getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc05NACByodSS.getDataOptionIndex());
+		//getRogersPlanConfigPage().clkBasicTab();
+		//getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc05NACByodSS.getDataOptionIndex());
+		getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
 		getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data protection selected");
@@ -153,7 +154,7 @@ public class RogersBFA_TC02_NAC_NoTerm_BasicPlan_StandardShipping_Test extends B
 		String contactEmailReviewPage = getRogersReviewOrderPage().getContactEmail();
 		reporter.hardAssert(emailCreateProfile.equals(contactEmailReviewPage), "Contact email in Order Review Page matches as entered in Create Profile stepper", "Contact email in Order Review Page not matches as entered in Create Profile stepper");
 		reporter.reportLogPassWithScreenshot("Order Review Page : Contact Details");
-		getRogersReviewOrderPage().clkFinancingConsentCheckbox();
+		//getRogersReviewOrderPage().clkFinancingConsentCheckbox();
 		getRogersReviewOrderPage().clkAgreementConsentCheckbox();
 		//getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
 		reporter.reportLogPassWithScreenshot("Order Review Page: T&C");

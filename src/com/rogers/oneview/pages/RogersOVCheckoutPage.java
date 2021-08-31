@@ -416,6 +416,32 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.cta.submit']")
 	WebElement submitButton;
 
+	@FindBy(xpath = "//h1[@translate='global.label.OrderReview']")
+	WebElement orderReview;
+
+	@FindBy(xpath = "//td[contains(text(),'K4X')]")
+	WebElement appliedCouponExists;
+
+	@FindBy(xpath = "//rch-campaign-table/descendant::h3[contains(text(), 'Total savings applied before taxes') or contains(text(), 'Économies totales applicables avant taxes') ]")
+	WebElement totalSavingAppliedExists;
+
+	@FindBy(xpath = "//th[@translate='global.label.campaignTable.savings']")
+	WebElement savingsExists;
+
+	@FindBy(xpath = "//input[@formcontrolname='emailAddressField']")
+	WebElement txtEmailShipping;
+
+	@FindBy(xpath = "//div[@data-test='delivery-information']//ds-form-field")
+	WebElement shippingEmailFormField;
+
+	/**
+	 * Verify Savings exists
+	 * @author aditi.jain
+	 */
+	public boolean verifySavingsExist() {
+		return getReusableActionsInstance().isElementVisible(savingsExists, 30);
+	}
+
 	/**
 	 * Set expiry month and year of credit card
 	 * @author aditi.jain
@@ -437,6 +463,14 @@ public class RogersOVCheckoutPage extends BasePageClass {
 		getReusableActionsInstance().clickWhenReady(cvvCode);
 		cardCVV.clear();
 		cardCVV.sendKeys(cvv);
+	}
+
+	/**
+	 * Verify Order Review Page
+	 * @author aditi.jain
+	 */
+	public boolean verifyOrderReviewPage() {
+		return getReusableActionsInstance().isElementVisible(orderReview, 60);
 	}
 
 	/**
@@ -1692,5 +1726,26 @@ public class RogersOVCheckoutPage extends BasePageClass {
 				return true;
 			} else return false;
 		} else return false;
+	}
+
+	/**
+	 * To verify applied coupons appear
+	 *
+	 * @return True or False
+	 * @author aditi.jain
+	 */
+	public boolean doesAppliedCouponExist() {
+		return (getReusableActionsInstance().isElementVisible(totalSavingAppliedExists, 15) && getReusableActionsInstance().isElementVisible(appliedCouponExists, 15));
+	}
+
+	/**
+	 * This method enters the value in email address field in shipping page
+	 * @author praveen.kumar7
+	 */
+	public void setEmailShippingPage() {
+		if (getReusableActionsInstance().isElementVisible(shippingEmailFormField, 20)) {
+			getReusableActionsInstance().getWhenReady(txtEmailShipping, 20).click();
+			getReusableActionsInstance().getWhenReady(txtEmailShipping,10).sendKeys(FormFiller.generateEmail());
+		}
 	}
 }

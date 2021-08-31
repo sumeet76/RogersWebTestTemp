@@ -21,6 +21,12 @@ public class ContactDetails {
 	private String paymentOption;
 	private String contactID3PPortIn;
 	private String contactIDSAIPortIn;
+	private String contactIDSAITMP;
+	private String contactIDSAIISSTMP;
+	private String contactID_STB_ISS;
+
+
+	private String contactID_STB_3P;
 
 	public ContactDetails() {
 		
@@ -270,6 +276,48 @@ public class ContactDetails {
 	 */
 	public void setContactID3PPortIn(String contactID3PPortIn) {
 		this.contactID3PPortIn = contactID3PPortIn;
+	}
+
+	public String getContactIDSAITMP() {
+		return contactIDSAITMP;
+	}
+
+	/**
+	 * @param contactIDSAITMP for SAI TMP
+	 */
+	public void setContactIDSAITMP(String contactIDSAITMP) {
+		this.contactIDSAITMP = contactIDSAITMP;
+	}
+
+	public String getContactIDSAIISSTMP() {
+		return contactIDSAIISSTMP;
+	}
+
+	/**
+	 * @param contactIDSAIISSTMP for SAI+ISS TMP
+	 */
+	public void setContactIDSAIISSTMP(String contactIDSAIISSTMP) {
+		this.contactIDSAIISSTMP = contactIDSAIISSTMP;
+	}
+
+	public String getContactID_STB_ISS() {
+		return contactID_STB_ISS;
+	}
+
+	/**
+	 * @param contactID_STB_ISS for ISS STB
+	 */
+	public void setContactID_STB_ISS(String contactID_STB_ISS) {
+		this.contactID_STB_ISS = contactID_STB_ISS;
+	}
+	public String getContactID_STB_3P() {
+		return contactID_STB_3P;
+	}
+	/**
+	 * @param contactID_STB_3P for 3P STB
+	 */
+	public void setContactID_STB_3P(String contactID_STB_3P) {
+		this.contactID_STB_3P = contactID_STB_3P;
 	}
 
 }

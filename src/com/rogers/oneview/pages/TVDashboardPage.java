@@ -83,29 +83,29 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "(//div[@class='col-12 exchange-channels-grid'])[1]//i[@class='rch-icon-search' and @_ngcontent-c33='']")
 	WebElement icnSearchChannelToRemove;
 
-//	@FindBy(xpath = "(//div[@class='exchange-container x-out']//button[@role='button'])[1] | (//h4[@translate='global.dashboard.tv.manageChannelsAndThemePacks.vpAlacartes']/parent::div/following-sibling::div/descendant::span[text()='Remove'])[1]")
-	@FindBy(xpath = "(//h4[@translate='global.dashboard.tv.manageChannelsAndThemePacks.vpAlacartes']/parent::div/following-sibling::div/descendant::span[text()='Remove'])[1]")
+	@FindBy(xpath = "(//h4[@translate='global.dashboard.tv.manageChannelsAndThemePacks.vpAlacartes']/parent::div/following-sibling::div/descendant::span[text()='Remove'])[1] | (//rch-channel/descendant::rch-channel-logo/descendant::div)[1]")
 	WebElement btnFirstChannelToRemove;
 
-	@FindBy(xpath = "(//div[@class='exchange-container x-out']//button[@role='button'])[3]")
+	@FindBy(xpath = "(//div[@class='exchange-container x-out']//button[@role='button'])[3] | (//rch-channel/descendant::rch-channel-logo/descendant::div)[3]")
 	WebElement btnSecondChannelToRemove;
 
-	@FindBy(xpath = "//span[text()='Sélectionner' or text()='Select']/ancestor::button")
+	@FindBy(xpath = "//span[text()='Sélectionner' or text()='Select']/ancestor::button | //span[@translate='global.cta.select']/ancestor::button")
 	WebElement btnSelectChannel;
 
 	@FindBy(xpath = "(//div[@class='col-12 exchange-channels-grid'])[2]//i[@class='rch-icon-search' and @_ngcontent-c33='']")
 	WebElement icnSearchChannelToAdd;
 
-	@FindBy(xpath = "(//div[@class='exchange-container x-in']//button[@role='button'])[1]")
+	@FindBy(xpath = "(//div[@class='exchange-container x-in']//button[@role='button'])[1] | ((//div[@class='swapCountLimit'])[2]/descendant::rch-channel/descendant::rch-channel-logo/descendant::div)[1]")
 	WebElement btnFirstChannelToAdd;
 
-	@FindBy(xpath = "(//div[@class='exchange-container x-in']//button[@role='button'])[3]")
+	@FindBy(xpath = "(//div[@class='exchange-container x-in']//button[@role='button'])[3] | ((//div[@class='swapCountLimit'])[2]/descendant::rch-channel/descendant::rch-channel-logo/descendant::div)[3]")
 	WebElement btnSecondChannelToAdd;
 
 	@FindBy(xpath = "//span[text()='Confirmer l’échange' or text()='Confirm exchange']/ancestor::button")
 	WebElement btnConfirmExchange;
 
-	@FindBy(xpath = "//span[text()='Exchange Flex Channels' or text()='Échanger chaînes flexibles']/ancestor::button")
+	@FindBy(xpath = "//span[@translate='global.dashboard.tv.exchangeFlexChannels']/ancestor::button")
+//	@FindBy(xpath = "//span[text()='Exchange Flex Channels' or text()='Échanger chaînes flexibles']/ancestor::button")
 	WebElement btnExchangeFlexChannels;
 
 	@FindBy(xpath = "//*[@translate='global.swap.exchangeChannels']/parent::div/parent::div/parent::div")
@@ -472,10 +472,11 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clickExchangeFlexChannels() {
-		WebElement btn=getReusableActionsInstance().getWhenReady(btnExchangeFlexChannels,80);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
-		getReusableActionsInstance().getWhenReady(btnExchangeFlexChannels, 60).click();
-		getReusableActionsInstance().waitForElementVisibility(btnFirstChannelToRemove, 120);
+		getReusableActionsInstance().clickWhenReady(btnExchangeFlexChannels, 60);
+//		WebElement btn=getReusableActionsInstance().getWhenReady(btnExchangeFlexChannels,80);
+//		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+//		getReusableActionsInstance().getWhenReady(btnExchangeFlexChannels, 60).click();
+//		getReusableActionsInstance().waitForElementVisibility(btnFirstChannelToRemove, 120);
 		}
 	
 	/**

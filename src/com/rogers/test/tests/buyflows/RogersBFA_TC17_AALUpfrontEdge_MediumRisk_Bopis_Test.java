@@ -24,7 +24,7 @@ public class RogersBFA_TC17_AALUpfrontEdge_MediumRisk_Bopis_Test extends BaseTes
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","AALBF","AALRUN"})
+    @Test(groups = {"RegressionBFA","AALBFA"})
     public void rogersAalTermBopisTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
@@ -53,6 +53,7 @@ public class RogersBFA_TC17_AALUpfrontEdge_MediumRisk_Bopis_Test extends BaseTes
         getRogersDeviceCataloguePage().clickAddALineButtonOnModal();
         //reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvaluationPopupPresent(), "Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
         //reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed", "Credit Evaluation Text not disaplayed on Modal");
+        getRogersCheckoutPage().clkAcceptButton();
         reporter.hardAssert(getRogersDeviceCataloguePage().verifySharedNonSharedModalPresent(), "Shared/Nonshared modal displayed", "Shared/Nonshared modal not displayed");
         reporter.reportLogWithScreenshot("Shared/Nonshared modal popup");
         String aalSharingType = TestDataHandler.tc17AALShareTermBopis.getSharingType();
@@ -74,12 +75,12 @@ public class RogersBFA_TC17_AALUpfrontEdge_MediumRisk_Bopis_Test extends BaseTes
         //-------------------------------------Plan config page---------------------------------------------
         reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
-        reporter.hardAssert(getRogersPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
+        //reporter.hardAssert(getRogersPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
         reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
         getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc17AALShareTermBopis.getDeviceCostIndex()));
         reporter.reportLogPassWithScreenshot("Device cost option selected");
         getRogersPlanConfigPage().clickShowMoreDetails();
-        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc17AALShareTermBopis.getDataOptionIndex()));
+        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc17AALShareTermBopis.getDataOptionIndex()),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Data option selected");
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc17AALShareTermBopis.getTalkOptionIndex())),
                 "Talk option selected and Addons page in expanded state","Addons page not in expanded state");
@@ -121,23 +122,26 @@ public class RogersBFA_TC17_AALUpfrontEdge_MediumRisk_Bopis_Test extends BaseTes
         getRogersReviewOrderPage().clkAllAgreementConsentCheckbox(isSelectedDeviceTier);
         getRogersReviewOrderPage().clkBopisConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
-        if (getRogersOrderReviewPage().isPaymentRequired()) {
-            getRogersOrderReviewPage().clkContinue();
-            getRogersPaymentPage().setCreditCardDetails(TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getNumber(),
-                    TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getExpiryMonth(),
-                    TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getExpiryYear(),
-                    TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getCVV());
-            reporter.reportLogWithScreenshot("Rogers Payment Page");
-            getRogersPaymentPage().clkSubmit();
-        } else {
-            getRogersReviewOrderPage().clkSubmitOrderBtn();
-            reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
-            reporter.hardAssert(getRogersOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
-            reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");
-            reporter.hardAssert(getRogersOrderConfirmationPage().verifyBopisContentDisplayed(),
-                    "Express pickup details displayed and device image displayed", "Express pickup details and device details not displayed");
-            reporter.reportLogWithScreenshot("BOPIS contents displayed in order confirmation page");
-        }
+        getRogersReviewOrderPage().clkSubmitOrderBtn();
+        //---------------------One Time Payment page------------------------------//
+        reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),
+                "Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
+        getRogersOneTimePaymentPage().setNameonCard();
+        getRogersOneTimePaymentPage().switchToCreditCardIFrame();
+        getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc01NACTermNpotgSS.getCreditCardDetailsOTP());
+        getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
+        getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc01NACTermNpotgSS.getExpiryDateOTP());
+        getRogersOneTimePaymentPage().setCVV();
+        reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
+        getRogersOneTimePaymentPage().clkSubmitOrderBtn();
+        //************Order Confirmation Page****************//
+        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
+        reporter.hardAssert(getRogersOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
+        reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");
+        reporter.hardAssert(getRogersOrderConfirmationPage().verifyBopisContentDisplayed(),
+                "Express pickup details displayed and device image displayed", "Express pickup details and device details not displayed");
+        reporter.reportLogWithScreenshot("BOPIS contents displayed in order confirmation page");
+        //--------------------------------------------------DB Validation-----------------------------------------------
 
         Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
                 .executeDBQuery("select * from (select es.BAN,es.SUBSCRIBER_NO,s.SUB_STATUS,s.PAYEE_IND,es.RV_AMOUNT,es.MONTHLY_INSTALLMENT_AMT," +

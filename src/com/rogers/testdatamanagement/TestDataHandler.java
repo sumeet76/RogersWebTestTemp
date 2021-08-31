@@ -102,6 +102,7 @@ public class TestDataHandler {
 	public static AccountData tc90_Legacy1PTVtoIgnite2P;
 	public static AccountData tc92_2L7ContractType3PBulkTenant;
 	public static AccountData tc93_FWACappedPlan;
+	public static AccountData tc98_RogersSHM_NB;
 	public static AccountData tc57_sHMSignedInInternetBuy;
 	public static AccountData tc51_igniteSmartStream;
 	public static AccountData tc31_SolarisInternetAccountWithUsageAndPackageUpgrade;
@@ -124,6 +125,8 @@ public class TestDataHandler {
 	public static AccountData TC023_TVPackageDowngrade;
 	public static AccountData TC026_TVPackageUpgrade;
 	public static AccountData TC028_InternetPackageDowngrade;
+	public static AccountData tupeloDowngradeTest;
+	public static AccountData tupeloUpgradeTest;
 	public static AccountData TC032_SAI_AddingSmartStream;
 	public static AccountData TC030_Internet_PackageUpgrade;
 	public static RedesignRpotgData tc01NACTermNpotgSS;
@@ -144,6 +147,13 @@ public class TestDataHandler {
 	public static LoginDetails bfaOneViewLogin;
 	public static AALData tc07AAL;
 	public static PPCData tc08PPC;
+	public static PPCData tc24PPCSLNonSEDTTPlan;
+	public static PPCData tc25PPCMLNonSESubsidyPlan;
+	public static PPCData tc26PPCMLNonSESharedGroupDTTPlan;
+	public static PPCData tc27PPCSLSEBYODPlan;
+	public static PPCData tc28PPCMLSESubsidyPlanToDTTPLan;
+	public static PPCData tc29PPCMLSEAdditionalLineDTTPlan;
+	public static PPCData tc30PPCSLNonSEFinToTTPlan;
 	public static HUPData tc09HupPpcPotgSharedML;
 	public static HUPData tc10HUPAdditionalLine;
 	public static HUPData tc11HUPNpotgML;
@@ -177,6 +187,7 @@ public class TestDataHandler {
 	public static AccountData solarisAccount;
 	public static AccountData solarisTV;
 	public static ContactData anonymousData;
+	public static ContactData nacTMP;
 	public static MigrationData migrationData;
 	public static MigrationData migrationDataToSAI;
 	public static MigrationData migrationData1PTo2P;
@@ -187,6 +198,14 @@ public class TestDataHandler {
 	public static MigrationData addChannelImmediate;
 	public static MigrationData addThemepackImmediate;
 	public static MigrationData addChannelAndThempackImmediate;
+	public static MigrationData targetedMigration1PInternetToSAI;
+	public static MigrationData targetedMigration1PInternetToSAIISS;
+	public static MigrationData targetedMigration1PInternetTo2P;
+	public static MigrationData targetedMigration1PInternetTo3P;
+	public static MigrationData targetedMigration2PInternetAndTVTo2P;
+	public static MigrationData targetedMigration2PInternetAndTVTo3P;
+	public static MigrationData targetedMigration2PInternetAndTVToSAI;
+	public static MigrationData targetedMigration2PInternetAndTVToSAIISS;
 	public static PaymentDetails ovPaymentInfo;
 	public static AccountData tc60;
 	public static RedesignConfig redesignConfig;
@@ -304,6 +323,7 @@ public class TestDataHandler {
 		solarisConsumerGWPRhpShm = YamlHandler.getCableAccountData("solarisConsumerGWPRhpShm");
 		tc29_IgniteServiceabilityAddressNB=YamlHandler.getCableAccountData("TC29_IgniteServiceabilityAddressNB");
 		tc92_2L7ContractType3PBulkTenant=YamlHandler.getCableAccountData("TC92_2L7ContractType3PBulkTenant");
+		tc98_RogersSHM_NB=YamlHandler.getCableAccountData("TC98_RogersSHM_NB");
 		//Legacy Internet test data
 		tc46_legacyInternetAccount = YamlHandler.getCableAccountData("TC46_LegacyInternetAccount");
 		tc62_wirelessSignedInInternetBuy = YamlHandler.getCableAccountData("TC62_WirelessSignedInInternetBuy");
@@ -473,6 +493,13 @@ public class TestDataHandler {
 		tc21AALBYODBopisShipping = YamlHandler.getAALdata("tc21AALBYODBopis");
 		tc22AALBYODStandardShipping = YamlHandler.getAALdata("tc22AALBYODStdShipping");
 		tc23AALTermMLNonSEBasicPlanStdShipping = YamlHandler.getAALdata("tc23AALTermMLNonSEBasicPlanStdShipping");
+		tc24PPCSLNonSEDTTPlan = YamlHandler.getPPCdata("tc24PPCSLNonSEDTTPlan");
+		tc25PPCMLNonSESubsidyPlan = YamlHandler.getPPCdata("tc25PPCMLNonSESubsidyPlan");
+		tc26PPCMLNonSESharedGroupDTTPlan = YamlHandler.getPPCdata("tc26PPCMLNonSESharedGroupDTTPlan");
+		tc27PPCSLSEBYODPlan = YamlHandler.getPPCdata("tc27PPCSLSEBYODPlan");
+		tc28PPCMLSESubsidyPlanToDTTPLan = YamlHandler.getPPCdata("tc28PPCMLSESubsidyPlanToDTTPLan");
+		tc29PPCMLSEAdditionalLineDTTPlan = YamlHandler.getPPCdata("tc29PPCMLSEAdditionalLineDTTPlan");
+		tc30PPCSLNonSEFinToTTPlan = YamlHandler.getPPCdata("tc30PPCSLNonSEFinToTTPlan");
 	}
 	
 	private static void buyFlowsOneViewDataInit() throws FileNotFoundException {
@@ -510,6 +537,7 @@ public class TestDataHandler {
 		solarisAccount = YamlHandler.getOVAccountData("SolarisAccount");
 		solarisTV = YamlHandler.getOVAccountData("SolarisTV");
 		anonymousData = YamlHandler.getContactData("AnonymousData");
+		nacTMP = YamlHandler.getContactData("NAC_TMP");
 		migrationData = YamlHandler.getMigrationData("MigrationData");
 		migrationDataToSAI = YamlHandler.getMigrationData("MigrationData1PToSAI");
 		migrationDataToISS = YamlHandler.getMigrationData("MigrationData1PToISS");
@@ -523,8 +551,18 @@ public class TestDataHandler {
 		TC023_TVPackageDowngrade= YamlHandler.getOVAccountData("TC_023_TV_PackageDowngrade");
 		TC026_TVPackageUpgrade= YamlHandler.getOVAccountData("TC026_TVPackageUpgrade");
 		TC028_InternetPackageDowngrade= YamlHandler.getOVAccountData("TC_028_Internet_PackageDowngrade");
+		tupeloDowngradeTest= YamlHandler.getOVAccountData("1460_Tupelo_Internet_Downgrade");
+		tupeloUpgradeTest= YamlHandler.getOVAccountData("1464_Tupelo_Internet_Upgrade");
 		TC032_SAI_AddingSmartStream =YamlHandler.getOVAccountData("TC32_SAI_AddingSmartstream");
 		TC030_Internet_PackageUpgrade =YamlHandler.getOVAccountData("TC_030_Internet_PackageUpgrade");
 		RHPManage_AddOns =YamlHandler.getOVAccountData("RHPManageAddon");
+		targetedMigration1PInternetToSAI=YamlHandler.getMigrationData("1545_TargetedMigrationFlow_1P_Internet_to_SAITest");
+		targetedMigration1PInternetToSAIISS=YamlHandler.getMigrationData("1546_TargetedMigrationFlow_1P_Internet_to_SAIISS");
+		targetedMigration1PInternetTo2P=YamlHandler.getMigrationData("1547_TargetedMigrationFlow_1P_Internet_to_2P");
+		targetedMigration1PInternetTo3P= YamlHandler.getMigrationData("1548_TargetedMigrationFlow_1P_Internet_to_3P");
+		targetedMigration2PInternetAndTVTo3P=YamlHandler.getMigrationData("1556_TargetedMigrationFlow_2P_InternetAndTV_to_3P");
+		targetedMigration2PInternetAndTVTo2P=YamlHandler.getMigrationData("1555_TargetedMigrationFlow_2P_InternetToTV_to_2P");
+		targetedMigration2PInternetAndTVToSAI = YamlHandler.getMigrationData(("1553_TargetedMigrationFlow_2P_InternetAndTV_to_SAI"));
+		targetedMigration2PInternetAndTVToSAIISS= YamlHandler.getMigrationData("1554_TargetedMigrationFlow_2P_InternetAndTV_to_SAIISS");
 	}
 }
