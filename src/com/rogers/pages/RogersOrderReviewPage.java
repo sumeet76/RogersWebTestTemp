@@ -66,6 +66,9 @@ public class RogersOrderReviewPage extends BasePageClass {
 	//div[@id='ds-checkbox-id-0-label-container']
 	//label[@for='tos_consent']
 
+	@FindBy(xpath = "//span[contains(text(),'18yearsofage')][1]")
+	WebElement clkCheckboxAcceptInstallContent;
+
 	@FindAll({
 	@FindBy(xpath = "//span[@class='checkout-authorize-copy']"),
 			@FindBy(xpath = "//label[@class='ds-checkboxLabel d-inline-flex align-items-start']")})
@@ -271,6 +274,15 @@ public class RogersOrderReviewPage extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(lnkAgreementToEnd);
 		getReusableActionsInstance().getWhenReady(clkChangeAcceptCheckboxUpdate, 30);
 		getReusableActionsInstance().executeJavaScriptClick(clkChangeAcceptCheckboxUpdate);
+	}
+	/**
+	 * Click on the Consent check box on the order review page
+	 * @author nandhini.ventakachal
+	 */
+	public void clkAcceptenceCheckboxInstalltionContent()
+	{
+		getReusableActionsInstance().getWhenReady(clkCheckboxAcceptInstallContent, 90);
+		getReusableActionsInstance().executeJavaScriptClick(clkCheckboxAcceptInstallContent);
 	}
 
 	/**

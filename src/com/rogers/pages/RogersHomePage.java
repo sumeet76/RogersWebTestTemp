@@ -260,7 +260,7 @@ public class RogersHomePage extends BasePageClass {
 	WebElement subnavIgniteInternet;
 
 	@FindAll({
-	@FindBy(xpath = "//dsa-subnav-desktop//a[@title='View links to TV & Streaming information pages']"),
+	@FindBy(xpath = "//li[@role='menuitem']/dsa-subnav-link/a[contains(@title,'TV and Streaming')]"),
 	@FindBy(xpath = "//span[contains(text(),'TV & Streaming') or contains(text(),'Télé et Diffusion en continu')]/ancestor::li[@role='menuitem']//ds-icon[@name='right']")})
 	WebElement subnavIgniteSmartStream;
 

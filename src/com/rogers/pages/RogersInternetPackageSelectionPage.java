@@ -1,7 +1,6 @@
 package com.rogers.pages;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -37,6 +36,23 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//input[@class='checkoutButton']")
 	WebElement btnCheckout;
 
+	@FindBy(xpath = "//span[text()='Take the quiz']")
+	WebElement btnTakeQuiz;
+	@FindBy(xpath = "//input[@id='dsQ1A2']/following::span[contains(text(),'Netflix')]")
+	WebElement clkUsualInterentUsage;
+	@FindBy(xpath = "//span[text()=' Continue ']")
+	WebElement clkbtnContinue;
+	@FindBy(xpath = "//span[text()=' 2-3 ']")
+	WebElement clkNoOfPPLUsedInternet;
+	@FindBy(xpath = "//span[text()=' 1-5 ']")
+	WebElement clkNoOFDeviceConnectedToInternet;
+	@FindBy(xpath = "//span[text()=' Yes ']")
+	WebElement clkAddSmartStreamAddon;
+	@FindBy(xpath = "//span[text()=' < Back to all packages ']")
+	WebElement clkbtnBackToAllPackages;
+	@FindBy(xpath = "//h2[text()='Here’s the package we recommend for you']")
+	WebElement VerifyRecommendedBannertitle;
+
 	@FindBy(xpath = "//a[@title='View internet bundles available to you']/span")
 	WebElement btnSmartStream;
 	//div//a[@title='View internet bundles available to you']
@@ -55,7 +71,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::span[@role='text']")
 	WebElement btnInternet500uPackage;
 
-	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 150u']/ancestor::span[@role='text']")
+	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 150u']/preceding::span[text()='Add to cart']")
 	WebElement btnSmartStreamPackage;
 
 	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::span[@role='text']")
@@ -64,7 +80,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::div[@class='internet-bundle-tile']//div[@class='ds-checkbox__box my-12 rds-icon-check']")
 	WebElement chkSmartStream;
 
-	@FindBy(xpath = "//button[contains(@class,'getPromoCodeBtn')]")
+	@FindBy(xpath = "//span[text()='Have a promo code?']")
 	WebElement btnPromoCode;
 
 	@FindBy(xpath = "//div[@class='expanded']//input[contains(@id,'ds-form-input-id-')]")
@@ -161,6 +177,50 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnInternet500uPackage, 90).click();
 	}
 
+	public void clkTakeQuiz()
+	{
+		getReusableActionsInstance().waitForElementVisibility(btnTakeQuiz, 90);
+		getReusableActionsInstance().executeJavaScriptClick(btnTakeQuiz);
+	}
+	public void clkInternetUsage()
+	{
+		getReusableActionsInstance().waitForElementVisibility(clkUsualInterentUsage, 90);
+		getReusableActionsInstance().executeJavaScriptClick(clkUsualInterentUsage);
+	}
+	public void clkContinueQuiz()
+	{
+		getReusableActionsInstance().waitForElementVisibility(clkbtnContinue, 90);
+		getReusableActionsInstance().executeJavaScriptClick(clkbtnContinue);
+	}
+	public void clkPPLUsedInteret()
+	{
+		getReusableActionsInstance().waitForElementVisibility(clkNoOfPPLUsedInternet, 90);
+		getReusableActionsInstance().executeJavaScriptClick(clkNoOfPPLUsedInternet);
+	}
+
+	public void clkDeviceConnectedToInteret()
+	{
+		getReusableActionsInstance().waitForElementVisibility(clkNoOFDeviceConnectedToInternet, 90);
+		getReusableActionsInstance().executeJavaScriptClick(clkNoOFDeviceConnectedToInternet);
+	}
+
+	public void clkAddSmartStream()
+	{
+		getReusableActionsInstance().waitForElementVisibility(clkAddSmartStreamAddon, 90);
+		getReusableActionsInstance().executeJavaScriptClick(clkAddSmartStreamAddon);
+	}
+
+	public void clkBackToPackagesPage()
+	{
+		getReusableActionsInstance().waitForElementVisibility(clkbtnBackToAllPackages, 90);
+		getReusableActionsInstance().executeJavaScriptClick(clkbtnBackToAllPackages);
+	}
+
+	public boolean VerifyRecommendedBanner()
+	{
+		getReusableActionsInstance().waitForElementVisibility(VerifyRecommendedBannertitle, 90);
+		return getReusableActionsInstance().isElementVisible(VerifyRecommendedBannertitle,30);
+	}
 	public void clkSmartStreamPackage() {
 		getReusableActionsInstance().getWhenReady(btnSmartStreamPackage, 90).click();
 	}
@@ -244,7 +304,8 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void setIgniteAddressLookup(String strPromoCode) {
-		getReusableActionsInstance().waitForElementVisibility(txaPromoCodeContainer, 20);
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().waitForElementVisibility(txaPromoCodeContainer, 60);
 		getReusableActionsInstance().getWhenReady(txaPromoCodeContainer, 3).click();
 		getReusableActionsInstance().getWhenReady(txtPromoCodeFormInput, 3).clear();
 		getReusableActionsInstance().getWhenReady(txtPromoCodeFormInput, 5).sendKeys(strPromoCode);
