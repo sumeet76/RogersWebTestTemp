@@ -102,6 +102,7 @@ public class TestDataHandler {
 	public static AccountData tc92_2L7ContractType3PBulkTenant;
 	public static AccountData tc93_FWACappedPlan;
 	public static AccountData tc98_RogersSHM_NB;
+	public static AccountData tc102_IPTVAccount;
 	public static AccountData tc57_sHMSignedInInternetBuy;
 	public static AccountData tc51_igniteSmartStream;
 	public static AccountData tc31_SolarisInternetAccountWithUsageAndPackageUpgrade;
@@ -323,6 +324,8 @@ public class TestDataHandler {
 		tc29_IgniteServiceabilityAddressNB=YamlHandler.getCableAccountData("TC29_IgniteServiceabilityAddressNB");
 		tc92_2L7ContractType3PBulkTenant=YamlHandler.getCableAccountData("TC92_2L7ContractType3PBulkTenant");
 		tc98_RogersSHM_NB=YamlHandler.getCableAccountData("TC98_RogersSHM_NB");
+		tc102_IPTVAccount=YamlHandler.getCableAccountData("TC102_IPTVAccount");
+
 		//Legacy Internet test data
 		tc46_legacyInternetAccount = YamlHandler.getCableAccountData("TC46_LegacyInternetAccount");
 		tc62_wirelessSignedInInternetBuy = YamlHandler.getCableAccountData("TC62_WirelessSignedInInternetBuy");
