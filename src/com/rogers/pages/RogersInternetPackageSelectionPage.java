@@ -104,6 +104,36 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Ontario']//span[@class='m-navLink__chevron rds-icon-expand']")
 	WebElement lnkProvince;
 
+	@FindBy(xpath = "//*[text()='Take the quiz']")
+	WebElement btnquiz;
+
+	@FindBy(xpath = "//*[text()=' Web browsing and email ']")
+	WebElement btnWebEmail;
+
+	@FindBy(xpath = "//*[text()=' Working from home (e.g. Teams, Skype, Zoom) ']")
+	WebElement btnWorkHome;
+
+	@FindBy(xpath = "//*[text()=' Continue ']")
+	WebElement btnDSTContinue;
+
+	@FindBy(xpath = "//*[text()=' 2-3 ']")
+	WebElement btnInternetCount;
+
+	@FindBy(xpath = "//*[text()=' 1-5 ']")
+	WebElement btnInternetDevice;
+
+	@FindBy(xpath = "//button[@aria-label='BEST FITIgnite Internet 150u']")
+	WebElement VerifyBestFit;
+
+	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
+	WebElement btnDSTClose;
+
+	@FindBy(xpath = "//*[text()='Here’s the package we recommend for you']")
+	WebElement VerifyYourBestFit;
+
+	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 150u']/preceding::span[text()='Add to cart']")
+	WebElement btnBestAdd;
+
 	/**
 	 * selects the Internet package if it visible and ready if not click on the next arrow to get the desired package
 	 * @param strPackageNameEn Internet package to be selected 
@@ -170,14 +200,16 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	}
 	
 	public void clkInternetPackage() {
+
 		getReusableActionsInstance().getWhenReady(btnInternetPackage, 90).click();
 	}
 
 	public void clkInternet500uPackage() {
+
 		getReusableActionsInstance().getWhenReady(btnInternet500uPackage, 90).click();
 	}
 
-	public void clkTakeQuiz()
+	public void clkTakQuiz()
 	{
 		getReusableActionsInstance().waitForElementVisibility(btnTakeQuiz, 90);
 		getReusableActionsInstance().executeJavaScriptClick(btnTakeQuiz);
@@ -221,6 +253,47 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(VerifyRecommendedBannertitle, 90);
 		return getReusableActionsInstance().isElementVisible(VerifyRecommendedBannertitle,30);
 	}
+
+	public void clkTakeQuiz() {
+		getReusableActionsInstance().getWhenReady(btnquiz, 90).click();
+	}
+
+	public void clkWebEmail() {
+		getReusableActionsInstance().getWhenReady(btnWebEmail, 90).click();
+	}
+
+	public void clkWorkHome() {
+		getReusableActionsInstance().getWhenReady(btnWorkHome, 90).click();
+	}
+
+	public void clkDSTContinue() {
+		getReusableActionsInstance().getWhenReady(btnDSTContinue, 90).click();
+	}
+
+	public void clkInternetCount() {
+		getReusableActionsInstance().getWhenReady(btnInternetCount, 90).click();
+	}
+
+	public void clkInternetDevice() {
+		getReusableActionsInstance().getWhenReady(btnInternetDevice, 90).click();
+	}
+
+	public void VerifyBestFit() {
+		getReusableActionsInstance().getWhenReady(VerifyBestFit, 90).isDisplayed();
+	}
+
+	public void clkDSTClose() {
+		getReusableActionsInstance().getWhenReady(btnDSTClose, 90).click();
+	}
+
+	public void VerifyYourBestFit() {
+		getReusableActionsInstance().getWhenReady(VerifyYourBestFit, 90).isDisplayed();
+	}
+
+	public void clkBestAdd() {
+		getReusableActionsInstance().getWhenReady(btnBestAdd, 2000).click();
+	}
+
 	public void clkSmartStreamPackage() {
 		getReusableActionsInstance().getWhenReady(btnSmartStreamPackage, 90).click();
 	}
