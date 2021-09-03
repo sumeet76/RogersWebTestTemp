@@ -10,6 +10,7 @@ public class TestDataHandler {
 	public static Config ssConfig;
 	public static PaymentDetails paymentInfo;
 	public static Config bfaConfig;
+	public static DBConnection bdConnection;
 	public static PaymentDetails bfaPaymentInfo;
 	public static PaymentDetails chPaymentInfo;	
 	public static AccountData tc013132;
@@ -391,6 +392,7 @@ public class TestDataHandler {
 		}
 	
 	private static void selfserveDataInit() throws FileNotFoundException {
+		bdConnection = YamlHandler.getDBConnection();
     	ssConfig =  YamlHandler.getSSConfig();
     	//sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/selfserve/SauceSettings.yml");
     	paymentInfo = YamlHandler.getSSPaymentDetails();

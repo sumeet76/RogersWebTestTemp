@@ -35,7 +35,7 @@ public class RogersSS_TC_036_WirelessPostpaidOverviewViewBillTest extends BaseTe
         getRogersAccountOverviewPage().clickViewYourBill();
 		reporter.reportLogWithScreenshot("Billing and payment page.");
 		if (!getRogersBillingPage().verifyIfAccountHasNoBill()) {
-			getRogersBillingPage().switchToBillViewIframe();
+			getRogersBillingPage(). switchToBillViewIframe();
 	        reporter.hardAssert(getRogersBillingPage().verifyBillingAndPaymentPageLoadIframe(),
 	        						"Billing page loaded.",
 	        						"Billing page load Error. Refer screenshot");

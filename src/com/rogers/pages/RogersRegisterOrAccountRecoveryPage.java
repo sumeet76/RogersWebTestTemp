@@ -115,7 +115,7 @@ public class RogersRegisterOrAccountRecoveryPage extends BasePageClass {
 	@FindBy(xpath = "//input[@formcontrolname='dob']")
 	WebElement txtDOB;
 
-	@FindBy(xpath = "//ds-code-input/div/div[1]/input")
+	@FindBy(xpath = "//ds-code-input/div/div[2]/input") //div[1]
 	WebElement inputCode;
 
 	@FindBy(xpath = "//span[text()='Create a new MyRogers password for ' or text()='Create a new My Account password for: ' or contains(text(),'ez un nouveau mot de passe MonRogers pour')]/following-sibling::span")
@@ -295,7 +295,7 @@ public class RogersRegisterOrAccountRecoveryPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isPasswordSuccessfullySet() {		
-		return getReusableActionsInstance().isElementVisible(lblYourPasswordHasBeenReset);
+		return getReusableActionsInstance().isElementVisible(lblYourPasswordHasBeenReset,30);
 	}
 	
 	/**

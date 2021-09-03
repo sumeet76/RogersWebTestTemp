@@ -1117,6 +1117,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		// buffer static wait added for pageload
 		getReusableActionsInstance().staticWait(4000);
 		getReusableActionsInstance().waitForElementVisibility(lblAutoPayment, 50);
+		getReusableActionsInstance().staticWait(2000);
 		return (getReusableActionsInstance().isElementVisible(lblAutoPayment,20)
 			 && getReusableActionsInstance().isElementVisible(imgCC,20));
 	}

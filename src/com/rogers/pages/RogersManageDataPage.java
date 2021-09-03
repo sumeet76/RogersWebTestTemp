@@ -60,8 +60,10 @@ public class RogersManageDataPage extends BasePageClass {
 	
 	@FindBy(xpath = "//p[text()=' Total Data ' or contains(text(),'Données totales')]")
 	WebElement headerTotalDataViewDataDetails;
-	
-	@FindBy(xpath = "//span[text()=' shareable max speed data ' or contains(text(),'de données à vitesse maximale à partager')]/ancestor::p")
+
+	@FindAll({
+			@FindBy(xpath = "//span[text()=' shareable max speed data ' or contains(text(),'de données à vitesse maximale à partager')]/ancestor::p"),
+			@FindBy(xpath = "//span[text()=' shareable high speed data ' or contains(text(),'de données à vitesse haute à partager')]/ancestor::p")})
 	WebElement lblTotalDataMessageInViewDetails;
 
 	@FindBy(xpath = "//p[text()=' Data added to your plan 'or contains(text(),'Données ajoutées à votre forfait')]/ancestor::div[@class='row']//table[contains(@class,'top-ups-details-table')]//tr//a[@title='Cancel this add-on' or @title='Annuler cette option']")

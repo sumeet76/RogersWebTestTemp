@@ -30,7 +30,7 @@ public class RogersSS_TC_06_ValidateRecoverPasswordUsingSMSVerificationCode exte
 		reporter.reportLogWithScreenshot("Rogers Launch page");
     	getRogersHomePage().clkSignIn();
     	reporter.reportLogWithScreenshot("Sign In Overlay");
-		getRogersLoginPage().switchToSignInIFrame();
+		//getRogersLoginPage().switchToSignInIFrame();
 		getRogersLoginPage().clkForgotPasswordIframe();
 		reporter.reportLogWithScreenshot("Forgot password link is clicked.");
 		//getRogersRecoverPassOrNamePage().clkBtnPassword();
@@ -51,7 +51,7 @@ public class RogersSS_TC_06_ValidateRecoverPasswordUsingSMSVerificationCode exte
 			//switch to working test tab.
 			getDriver().switchTo().window(strTestingTab);
 			reporter.reportLogWithScreenshot("Set code");
-			getRegisterOrAccountRecoveryPage().switchToSetCodeIframe();
+			//getRegisterOrAccountRecoveryPage().switchToSetCodeIframe();
 			getRegisterOrAccountRecoveryPage().setVerificationCode(strCode);
 			getRegisterOrAccountRecoveryPage().clkBtnContinue();
 			getRegisterOrAccountRecoveryPage().setNewPassword(strPassword);

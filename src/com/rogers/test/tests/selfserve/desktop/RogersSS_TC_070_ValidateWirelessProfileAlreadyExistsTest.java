@@ -22,7 +22,7 @@ public class RogersSS_TC_070_ValidateWirelessProfileAlreadyExistsTest extends Ba
                 	String strBan = TestDataHandler.tc060809.getAccountDetails().getBan();
                 	String strPostalCode = TestDataHandler.tc060809.getAccountDetails().getPostalcode();
                 	String strDOB =  TestDataHandler.tc060809.getAccountDetails().getDob();
-            		getRogersLoginPage().switchToSignInIFrame();
+            		//getRogersLoginPage().switchToSignInIFrame();
             		try {
             			getRogersLoginPage().clickRegister();            		
             		reporter.reportLogWithScreenshot("Wireless Or Resedential Services");

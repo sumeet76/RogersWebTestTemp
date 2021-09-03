@@ -232,20 +232,28 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	
 	@FindBy (xpath = "//ds-modal[contains(@class,'talkTextDetailsModal')]")
 	WebElement dsModalTalkTextDetail;
-	
-	@FindBy (xpath = "//div[@class='talk-text-card talk-usage']")
+
+	@FindAll({
+			@FindBy (xpath = "//div[@class='talk-text-card talk-usage']"),
+			@FindBy(xpath = "//div[contains(@class,'talk-text-card talk-usage')]")})
 	WebElement lblTalkUsage;
 
-	@FindBy(xpath = "//div[@class='talk-text-card text-usage']")
+	@FindAll({
+			@FindBy(xpath = "//div[@class='talk-text-card text-usage']"),
+			@FindBy(xpath = "//div[contains(@class,'talk-text-card text-usage')]")})
 	WebElement lblTextUsage;	
 
 	@FindBy(xpath = "//rss-talk-text[@class='lib-talk-text__holder']")
 	WebElement divTalkAndTextContainer;
 
-	@FindBy(xpath = "//div[@class='talk-text-card talk-usage']//div[@class='talkText_units']")
+	@FindAll({
+			@FindBy(xpath = "//div[@class='talk-text-card talk-usage']//div[@class='talkText_units']"),
+			@FindBy(xpath = "//div[contains(@class,'talk-text-card talk-usage')]//div[contains(@class,'talkText_units')]")})
 	WebElement txtNumericValueTalk;
-	
-	@FindBy(xpath = "//div[@class='talk-text-card text-usage']//div[@class='talkText_units']")
+
+	@FindAll({
+			@FindBy(xpath = "//div[@class='talk-text-card text-usage']//div[@class='talkText_units']"),
+			@FindBy(xpath = "//div[contains(@class,'talk-text-card text-usage')]//div[contains(@class,'talkText_units')]")})
 	WebElement txtNumericValueText;
 
 	@FindBy(xpath = "//div[@class='cdk-overlay-container']//button[@title='Close' or @title='Fermer']")
@@ -480,7 +488,9 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//a[@title='Change the Data Manager for this account' or @title='Changer le gestionnaire de données pour ce compte']")
 	WebElement btnChangeDataManager;
 
-	@FindBy(xpath = "//span[@translate='fdmModule.fdm.dataManager']")
+	@FindAll({
+			@FindBy(xpath = "//span[@translate='fdmModule.fdm.dataManager']"),
+			@FindBy(xpath = "//span[contains(@translate,'fdmModule.dataManager.dataManager')]")})
 	WebElement btnDataManagerCTN;
 
 	private By lblMyPlanDetails;
@@ -659,7 +669,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	public void clkBtnSwitchOffMyService() {
 //		getReusableActionsInstance().waitForElementTobeClickable(btnSwitchOffService, 10);
 //		getReusableActionsInstance().javascriptScrollByVisibleElement(btnSwitchOffService);
-		getReusableActionsInstance().getWhenReady(btnSwitchOffService, 20).click();
+		getReusableActionsInstance().getWhenReady(btnSwitchOffService, 40).click();
 
 	}
 	

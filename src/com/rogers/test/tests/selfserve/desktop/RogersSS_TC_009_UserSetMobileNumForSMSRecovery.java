@@ -64,7 +64,7 @@ public class RogersSS_TC_009_UserSetMobileNumForSMSRecovery extends BaseTestClas
     		
 			String strVerifyCode = getEnsVerifications().getVerifyCode(strRecoveryNumber);
 			getDriver().switchTo().window(strTestingTab);
-			getRogersProfileAndSettingsPage().switchToSetRecoveryNumIFrame();
+			//getRogersProfileAndSettingsPage().switchToSetRecoveryNumIFrame();
 			getRogersProfileAndSettingsPage().setVerifyCodeIframe(strVerifyCode);
 			reporter.reportLogWithScreenshot("Verify code is entered.");
 			getRogersProfileAndSettingsPage().clkBtnVerifyMeIframe();
