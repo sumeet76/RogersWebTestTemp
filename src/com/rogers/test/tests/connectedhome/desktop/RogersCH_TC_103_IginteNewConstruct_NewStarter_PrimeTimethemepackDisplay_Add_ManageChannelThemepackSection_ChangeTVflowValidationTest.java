@@ -49,7 +49,7 @@ import java.util.Map;
 
 public class RogersCH_TC_103_IginteNewConstruct_NewStarter_PrimeTimethemepackDisplay_Add_ManageChannelThemepackSection_ChangeTVflowValidationTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
+    @Test(groups = {"RegressionCH",""})
 	    public void checkBuyStarterTVOffer() {
 			reporter.reportLogWithScreenshot("Launched the Easy Login Page");
 	    	getRogersHomePage().clkTVBundle();

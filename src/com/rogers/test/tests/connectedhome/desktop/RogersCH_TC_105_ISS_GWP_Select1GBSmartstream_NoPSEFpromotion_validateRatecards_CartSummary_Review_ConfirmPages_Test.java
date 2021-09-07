@@ -34,7 +34,7 @@ import java.util.Map;
 
 public class RogersCH_TC_105_ISS_GWP_Select1GBSmartstream_NoPSEFpromotion_validateRatecards_CartSummary_Review_ConfirmPages_Test extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","SmartStreamCH"})
+    @Test(groups = {"RegressionCH",""})
     public void checkServiceabilitycheckRemovedClickOnLearnMoreOnISSbannerSAIOfferPageAddresShouldbeSticky() {
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
         getRogersHomePage().clkEasyInternet();

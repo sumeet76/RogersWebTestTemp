@@ -49,7 +49,7 @@ import java.util.Map;
 
 public class RogersCH_TC_106_IginteTV_DoublePlayHeroBannerOnLearnPageValidationTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
+    @Test(groups = {"RegressionCH",""})
     public void checkBuyDigitalTVOffer() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	getRogersHomePage().clkTVBundle();
