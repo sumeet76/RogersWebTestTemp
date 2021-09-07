@@ -49,7 +49,7 @@ import java.util.Map;
 
 public class RogersCH_TC_104_Iginte3P_NAC_SelectPremier1GBTVbundle_ValidatePSEFpromotionGWP_AtRatecard_CartSummary_Review_ConfirmPagesTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
+    @Test(groups = {"RegressionCH",""})
     public void checkBuyIgniteTVOffer() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	getRogersHomePage().clkTVBundle();

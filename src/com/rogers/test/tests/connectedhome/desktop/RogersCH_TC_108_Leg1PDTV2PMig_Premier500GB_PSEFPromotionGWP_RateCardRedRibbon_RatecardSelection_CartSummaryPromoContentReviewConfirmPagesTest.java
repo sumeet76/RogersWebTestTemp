@@ -51,7 +51,7 @@ import java.util.Map;
 
 public class RogersCH_TC_108_Leg1PDTV2PMig_Premier500GB_PSEFPromotionGWP_RateCardRedRibbon_RatecardSelection_CartSummaryPromoContentReviewConfirmPagesTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
+    @Test(groups = {"RegressionCH",""})
 	public void checkTVPackageUpgradeTest() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();

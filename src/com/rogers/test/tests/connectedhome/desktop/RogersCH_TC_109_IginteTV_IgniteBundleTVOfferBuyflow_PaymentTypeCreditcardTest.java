@@ -49,7 +49,7 @@ import java.util.Map;
 
 public class RogersCH_TC_109_IginteTV_IgniteBundleTVOfferBuyflow_PaymentTypeCreditcardTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
+    @Test(groups = {"RegressionCH",""})
 	    public void checkBuyStarterTVOffer() {
 			reporter.reportLogWithScreenshot("Launched the Easy Login Page");
 	    	getRogersHomePage().clkTVBundle();
