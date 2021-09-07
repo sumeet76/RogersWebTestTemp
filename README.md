@@ -1,5 +1,5 @@
 # RogersWebTestAutomation
-Belongs to Rogers Digital QA Test Automation
+Test Automation for Rogers.com
 [Under Construction]
 How to Launch Tests
 
