@@ -29,7 +29,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_102_IPTV_UserLoginAndRedirectionTest extends BaseTestClass {
 
-	 @Test(groups = {"SanityCH","RegressionCH","IgniteTVDashboardCH"})
+	 @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
     public void checkTVDashboard() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
