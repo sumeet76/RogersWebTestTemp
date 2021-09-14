@@ -136,6 +136,9 @@ public class RogersChoosePhonePage extends BasePageClass {
 	@FindBy(xpath = "//button[@title='Select' or @title='Continue' or @title='Continuer' or @title='Ship to home' or @title='Expédier à la maison']")
 	WebElement continueButton;
 
+	@FindBy(xpath = "(//button[contains(@class,'ds-button ds-corners ds-pointer')])[3]")
+	WebElement continueBtnHupCtnSelectionModal;
+
 	/**
 	 * Clicks on the 'Details' button on the first available device
 	 * @author rajesh.varalli1
@@ -494,5 +497,22 @@ public class RogersChoosePhonePage extends BasePageClass {
 		if (getReusableActionsInstance().isElementVisible(continueButton))
 			getReusableActionsInstance().clickWhenReady(continueButton);
 		getReusableActionsInstance().staticWait(3000);
+	}
+
+	/**
+	 * This method will select the required CTN from the list
+	 * @param ctnNumber ctn number to be selected
+	 * @author praveen.kumar7
+	 */
+	public void selectCTN(String ctnNumber) {
+		getReusableActionsInstance().clickWhenReady(By.xpath("//ds-modal-container//input[@value='"+ctnNumber+"']/following-sibling::span[@class='dsa-radio__checkmark']") , 30);
+	}
+
+	/**
+	 * This method will click on the continue button in the ctn selection modal during HUP flow
+	 * @author praveen.kumar7
+	 */
+	public void clkContinueBtnHupCtnSelectionModal() {
+		getReusableActionsInstance().clickWhenReady(continueBtnHupCtnSelectionModal);
 	}
 }

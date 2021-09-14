@@ -1,5 +1,6 @@
 package com.rogers.oneview.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -67,6 +68,9 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	@FindBy(xpath = "//h4[contains(.,'customer type') or contains(.,'type de client')]/following-sibling::div//t[contains(.,'Rogers')]")
 	WebElement btnRPPCusType;
 
+	@FindBy(xpath = "//ds-modal-container")
+	WebElement modalContainer;
+
 
 	/**
 	 * Validates whether Wireless page has loaded successfully
@@ -131,11 +135,14 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	public void setCustomerType(String className) {
 		if(className.toUpperCase().contains("SOHO")) {
 			getReusableActionsInstance().clickWhenReady(btnSohoCusType);
+			getReusableActionsInstance().waitForElementVisibility(modalContainer,30);
 		}
 		else if(className.toUpperCase().contains("RPP")) {
 			getReusableActionsInstance().clickWhenReady(btnRPPCusType);
+			getReusableActionsInstance().waitForElementVisibility(modalContainer,30);
 		}
 		else getReusableActionsInstance().clickWhenReady(btnConsumerCusType);
+		getReusableActionsInstance().waitForElementVisibility(modalContainer,30);
 	}
 
 }

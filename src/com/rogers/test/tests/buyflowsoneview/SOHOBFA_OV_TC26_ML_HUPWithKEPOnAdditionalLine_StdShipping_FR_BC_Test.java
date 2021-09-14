@@ -31,6 +31,10 @@ public class SOHOBFA_OV_TC26_ML_HUPWithKEPOnAdditionalLine_StdShipping_FR_BC_Tes
 		reporter.reportLogWithScreenshot("Device upgrade button clicked");
 		getRogersOVWirelessDetailsPage().setCustomerType(this.getClass().getSimpleName());
 		//----------------------------------------Device Catalog & Config page-------------------------------------------
+		reporter.hardAssert(getRogersOVChoosePhonePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
+		reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
+		getRogersOVChoosePhonePage().selectCTN(TestDataHandler.buyFlowsOVtestCase25.getCtn());
+		getRogersOVChoosePhonePage().clkContinueBtnHupCtnSelectionModal();
 		String deviceName = TestDataHandler.buyFlowsOVtestCase26.getDeviceName();
 		reporter.hardAssert(getRogersOVChoosePhonePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
 		getRogersOVChoosePhonePage().clickDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase26.getDeviceName());
@@ -40,12 +44,10 @@ public class SOHOBFA_OV_TC26_ML_HUPWithKEPOnAdditionalLine_StdShipping_FR_BC_Tes
 				"BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
 		reporter.hardAssert(getRogersOVPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
 		reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
+		getRogersOVPlanConfigPage().setCheckBoxKeepMyCurrentPlan();
 		getRogersOVPlanConfigPage().clkPreCartDeviceCostContinueButtonForNac();
 		reporter.reportLogPassWithScreenshot("Device cost option selected");
 		getRogersOVPlanConfigPage().clickContinueOnModalToDoWithOldPhone();
-		getRogersOVPlanConfigPage().clickShowMoreDetails();
-		getRogersOVPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersOVPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.buyFlowsOVtestCase26.getDataOptionIndex()));
-		reporter.reportLogPassWithScreenshot("Data option selected");
 		getRogersOVPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		getRogersOVPlanConfigPage().clickPreCartAddonsContinueButton();
 		getRogersOVPlanConfigPage().clickCartSummaryContinueButton();
