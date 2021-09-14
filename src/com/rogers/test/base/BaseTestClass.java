@@ -723,9 +723,11 @@ public class BaseTestClass {
                 if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("NAC_BYOD")) {
                     getDriver().get(strUrl + "/phones/bring-your-own-device?flowType=byod" + "?setLanguage=" + language + "&?province=" + "ON");
                     captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
-                }else if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("NAC") || currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("_CT_")){
+                }else if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("NAC") && !(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("SOHO"))){
                     getDriver().get(strUrl + "/phones/" + "?setLanguage=" + language + "&?province=" + "ON");
                     captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
+                }else if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("SOHO") && currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("NAC")){
+                    getDriver().get(strUrl + "/phones/" + "?type=soho");
                 }else{
                     getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language + "&?province=" + "ON");
                     captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);

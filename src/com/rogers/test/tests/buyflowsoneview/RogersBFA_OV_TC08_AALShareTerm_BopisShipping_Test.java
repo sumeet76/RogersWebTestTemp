@@ -18,13 +18,10 @@ public class RogersBFA_OV_TC08_AALShareTerm_BopisShipping_Test extends BaseTestC
 
 	@Test(groups = {"RegressionBFA","RegressionOVBFA","OVSanityBFA","OVAALBFA"})
 	public void aALSingleLineShareTermBopisShippingFlow() {
-		reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
-		reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");
-		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
-		reporter.reportLogWithScreenshot("Rogers OV environment selected" + TestDataHandler.bfaOneViewConfig.getEnvironmentName());
-		//getAccountOverViewPage().enterDealerCodeDialogue();
-		//getAccountOverViewPage().clkSubmitBtnDealerCodeDialogue();
+		getEnvironmentSelectionPage().launchOneView(TestDataHandler.buyFlowsOVtestCase08.getBanNo(), TestDataHandler.buyFlowsOVtestCase08.getContactID());
 		reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
+		reporter.reportLogWithScreenshot("Rogers Account overview page");
+		getAccountOverViewPage().clkCloseBtnAssignDataManager();
 		reporter.reportLogWithScreenshot("Rogers Account overview page");
 		getAccountOverViewPage().setSkipNotification();
 		getAccountOverViewPage().selectAddAWirelessLineButton();
@@ -48,7 +45,7 @@ public class RogersBFA_OV_TC08_AALShareTerm_BopisShipping_Test extends BaseTestC
 		//-------------------------------------Plan config page---------------------------------------------
 		reporter.softAssert(getRogersOVPlanConfigPage().verifyBreadCrumb(deviceName),
 				"BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
-		reporter.hardAssert(getRogersOVPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
+		//reporter.hardAssert(getRogersOVPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
 		reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
 		getRogersOVPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersOVPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.buyFlowsOVtestCase08.getDeviceCostIndex()));
 		//getRogersOVPlanConfigPage().clickPreCartDeviceCostContinueButton();
@@ -117,7 +114,7 @@ public class RogersBFA_OV_TC08_AALShareTerm_BopisShipping_Test extends BaseTestC
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		startOVSession(System.getProperty("QaOVUrl"),strBrowser, strLanguage,RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim(), TestDataHandler.buyFlowsOVtestCase08.getContactID(),TestDataHandler.buyFlowsOVtestCase08.getBanNo(),TestDataHandler.bfaOneViewConfig.getUsrID(), TestDataHandler.bfaOneViewConfig.getLoginID(),  method);
+		startOVSession(System.getProperty("OVUrl"),strBrowser, strLanguage,RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim(),"", "","", "", method);
 	}
 
 	@AfterMethod(alwaysRun = true)

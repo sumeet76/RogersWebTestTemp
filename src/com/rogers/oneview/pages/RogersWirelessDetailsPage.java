@@ -16,8 +16,10 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindAll({@FindBy(xpath = "//h2[contains(text(),'My Wireless Usage')]"),
-			@FindBy(xpath = "//t[contains(text(),'My Wireless')]")})
+	@FindAll({
+			@FindBy(xpath = "//h2[contains(text(),'My Wireless Usage')]"),
+			@FindBy(xpath = "//t[contains(text(),'My Wireless') or contains(.,'Mon forfait')]")
+	})
 	WebElement lblMyWlsUsage;
 
 	@FindBy(xpath = "//a[@class='my-line-change-number']")
@@ -49,16 +51,22 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	WebElement lnkChangeCurrentPlan;
 	
 	//@FindBy(xpath = "//span[@class='plan-cta-text']")
-	
+
 	@FindAll({
-			@FindBy(xpath = "(//div[contains(@class,'upgrade-button')])[2]//button[1]"),
-		@FindBy(xpath = "//button[@title='Changer mon appareil pour un nouveau' or @title='Upgrade my device to a new one']"),
-		@FindBy(xpath = "//div[@class='device-details']//button[@class='upgrade-button no-bg']")
+			@FindBy(xpath = "//button[contains(@class,'upgrade-button') and (contains(.,'Upgrade') or contains(.,'Rehausser'))]"),
+			@FindBy(xpath = "//t[contains(.,'Upgrade') or contains(.,'Rehausser')]/ancestor::button")
 	})
 	WebElement btnUpgradeMyDevice;
 
 	@FindBy(xpath = "//h4[contains(.,'customer type') or contains(.,'type de client')]/following-sibling::div//t[contains(.,'Consumer') or contains(.,'Consommateur')]")
 	WebElement btnConsumerCusType;
+
+	@FindBy(xpath = "//h4[contains(.,'customer type') or contains(.,'type de client')]/following-sibling::div//t[contains(.,'SOHO') or contains(.,'Petites')]")
+	WebElement btnSohoCusType;
+
+	@FindBy(xpath = "//h4[contains(.,'customer type') or contains(.,'type de client')]/following-sibling::div//t[contains(.,'Rogers')]")
+	WebElement btnRPPCusType;
+
 
 	/**
 	 * Validates whether Wireless page has loaded successfully
@@ -116,11 +124,18 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	}
 
 	/**
-	 * This method selects the consumer customer type in dashboard page
+	 * This method selects the customer type in the customer type modal
+	 * @param className Name of the class
 	 * @author praveen.kumar7
 	 */
-	public void setCustomerType() {
-		getReusableActionsInstance().clickIfAvailable(btnConsumerCusType,20);
+	public void setCustomerType(String className) {
+		if(className.toUpperCase().contains("SOHO")) {
+			getReusableActionsInstance().clickWhenReady(btnSohoCusType);
+		}
+		else if(className.toUpperCase().contains("RPP")) {
+			getReusableActionsInstance().clickWhenReady(btnRPPCusType);
+		}
+		else getReusableActionsInstance().clickWhenReady(btnConsumerCusType);
 	}
 
 }

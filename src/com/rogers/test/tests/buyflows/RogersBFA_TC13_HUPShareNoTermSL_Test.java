@@ -73,9 +73,8 @@ public class RogersBFA_TC13_HUPShareNoTermSL_Test extends BaseTestClass{
             reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                     "Order Review Page Title is not Present");
             reporter.reportLogPass("Order Review Page");
-            getRogersReviewOrderPage().clkFinancingConsentCheckbox();
             getRogersReviewOrderPage().clkAgreementConsentCheckbox();
-            //getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
+            getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
             reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
             if(getRogersOrderReviewPage().isPaymentRequired()) {
                 getRogersOrderReviewPage().clkContinue();

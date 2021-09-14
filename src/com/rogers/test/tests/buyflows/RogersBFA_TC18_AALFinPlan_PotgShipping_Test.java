@@ -66,10 +66,10 @@ public class RogersBFA_TC18_AALFinPlan_PotgShipping_Test extends BaseTestClass {
         reporter.reportLogWithScreenshot("Existing Customer Modal window Popup");
         reporter.hardAssert(getRogersDeviceCataloguePage().verifyAddALineButtonOnModal(), "Add a line button displayed", "Add a line button not displayed");
         getRogersDeviceCataloguePage().clickAddALineButtonOnModal();
-        /*reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvaluationPopupPresent(),
+        reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvaluationPopupPresent(),
                 "Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
-        reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvalTextOnModalPresent(),
-                "Credit Evaluation Text Displayed", "Credit Evaluation Text not disaplayed on Modal");*/
+        //reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvalTextOnModalPresent(),
+                //"Credit Evaluation Text Displayed", "Credit Evaluation Text not disaplayed on Modal");
         reporter.hardAssert(getRogersDeviceCataloguePage().verifySharedNonSharedModalPresent(),
                 "Shared/Nonshared modal displayed", "Shared/Nonshared modal not displayed");
         reporter.reportLogWithScreenshot("Shared/Nonshared modal popup");

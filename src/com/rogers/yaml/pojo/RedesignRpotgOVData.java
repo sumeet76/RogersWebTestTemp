@@ -43,6 +43,8 @@ public class RedesignRpotgOVData {
 	public String banNo;
 	public String tokenNumber;
 	public String sharingType;
+	public String businessNumber;
+	public String companySize;
 
 	/**
 	 * @return the contactID
@@ -432,4 +434,33 @@ public class RedesignRpotgOVData {
 	public void setSharingType(String sharingType) {
 		this.sharingType = sharingType;
 	}
+
+	/**
+	 * @return the businessNumber
+	 */
+	public String getBusinessNumber() {
+		return businessNumber;
+	}
+
+	/**
+	 * @param businessNumber business number to set
+	 */
+	public void setBusinessNumber(String businessNumber) {
+		this.businessNumber = businessNumber;
+	}
+
+	/**
+	 * @return the companySize
+	 */
+	public String getCompanySize() {
+		return companySize;
+	}
+
+	/**
+	 * @param companySize company size to set
+	 */
+	public void setCompanySize(String companySize) {
+		this.companySize = companySize;
+	}
+
 }

@@ -20,13 +20,13 @@ public class NacDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@class,'customer-name-address')]")
 	WebElement newCustomerTitle;
 
-	@FindBy(xpath = "//p[contains(text(),'Consumer') or contains(text(),'Consommateur')]")
-	WebElement customerButton;
+	@FindBy(xpath = "//p[contains(text(),'Consumer') or contains(text(),'Consommateur')]/..")
+	WebElement consumerBtn;
 
-	@FindBy(xpath = "//p[contains(text(),'SoHo') or contains(text(),'Petites entreprises/bureaux à domicile')]")
-	WebElement soHoButton;
+	@FindBy(xpath = "//p[contains(text(),'SoHo') or contains(text(),'Petites entreprises/bureaux à domicile')]/..")
+	WebElement sohoBtn;
 
-	@FindBy(xpath = "//p[contains(text(),'Wireless') or contains(text(),'Sans-fil')]")
+	@FindBy(xpath = "//p[contains(text(),'Wireless') or contains(text(),'Sans-fil')]/..")
 	WebElement wirelessButton;
 
 	@FindBy(xpath = "//div[contains(@class,'header dealer-code')]")
@@ -89,7 +89,15 @@ public class NacDashboardPage extends BasePageClass {
 	 * @author Sidhartha.Vadrevu
 	 */	
 	public void clkCustomerButton() {
-		getReusableActionsInstance().clickWhenReady(customerButton,10);
+		getReusableActionsInstance().clickWhenReady(consumerBtn,10);
+	}
+
+	/**
+	 * This method clicks on SOHO button
+	 * @author praveen.kumar7
+	 */
+	public void clkSohoBtn() {
+		getReusableActionsInstance().clickWhenReady(sohoBtn,10);
 	}
 
 	/**

@@ -115,6 +115,7 @@ public class RogersOneTimePaymentPage extends BasePageClass {
      */
 
     public void setNameonCard() {
+        getReusableActionsInstance().javascriptScrollToTopOfPage();
         getReusableActionsInstance().clickWhenReady(nameOnCard);
         getReusableActionsInstance().getWhenReady(inputNameOnCard,3).sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
     }

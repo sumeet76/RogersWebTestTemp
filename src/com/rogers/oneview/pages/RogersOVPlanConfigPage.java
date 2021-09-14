@@ -210,6 +210,9 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     })
     WebElement outboundFieldAccordion;
 
+    @FindBy(xpath = "//p[contains(.,'Non-Share') or contains(.,'Sans partage')]/ancestor::button")
+    WebElement nonSharePlanTab;
+
     /**
      * Select Device Protection Header on Plan config page
      */
@@ -236,7 +239,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clickViewMoreOptions() {
-        getReusableActionsInstance().clickIfAvailable(viewMoreOptions);
+        getReusableActionsInstance().clickIfAvailable(viewMoreOptions,10);
     }
 
     /**
@@ -1042,6 +1045,19 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     }
 
     /**
+     * This method verifies if SOHO customer type is displaying properly in Header
+     * @return true, if Customer type in header is displayed correctly, else false
+     * @param customerType type of the customer
+     * @author praveen.kumar7
+     */
+    public boolean verifyCustomerTypeInHeader(String customerType) {
+        if(getReusableActionsInstance().isElementVisible(By.xpath("//*[@class='ov-nac-header']//p[contains(.,'"+customerType.toUpperCase()+" REGULAR')]"))) {
+            return true;
+        }
+        else return false;
+    }
+
+    /**
      * Verifies if Plan config page is loaded successfully
      * @return True if plan config page is loaded, else false
      * @author Praveen.Kumar7
@@ -1059,9 +1075,21 @@ public class RogersOVPlanConfigPage extends BasePageClass {
         getReusableActionsInstance().clickWhenReady(outboundAccordion,30);
     }
 
+    /**
+     * This method clicks on Outbound field accordion in data stepper
+     * @author praveen.kumar7
+     */
     public void clickOutBoundFieldAccordion() {
         getReusableActionsInstance().scrollToElement(outboundFieldAccordion);
         getReusableActionsInstance().clickWhenReady(outboundFieldAccordion,30);
+    }
+
+    /**
+     * This method clicks on Non share plan tab in data stepper
+     * @author praveen.kumar7
+     */
+    public void clkNonShareTab() {
+        getReusableActionsInstance().clickWhenReady(nonSharePlanTab);
     }
 
 }

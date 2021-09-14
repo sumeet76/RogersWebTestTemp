@@ -27,24 +27,6 @@ public class RogersBFA_TC04_NAC_TermBopisTest extends BaseTestClass {
 	public void rogersNACTermBopisTest() throws InterruptedException {
 
 		// **************************Device catalog page*****************************************
-
-		/*reporter.softAssert(getRogersDeviceCataloguePage().isRpotgBannerPresent(),
-				"RPOTG Banner is present in the Device Catalog Page, verified by promo text",
-				"RPOTG Banner is not present in the Device Catalog Page, verified by promo text");
-		getRogersDeviceCataloguePage().clickRpotgBannerLearnMore();
-		reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed(), "RPOTG Learn More Modal is displayed",
-				"Learn More Modal is not present");
-		reporter.reportLogPassWithScreenshot("RPOTG Learn More Model");
-		getRogersDeviceCataloguePage().clickCloseButtonOnModal();
-		getRogersDeviceCataloguePage().clickCheckEligibilityRpotgBanner();
-		reporter.reportLogPassWithScreenshot("RPOTG Check Eligibility Banner");
-		getRogersDeviceCataloguePage().validateRpotgPostalCode(TestDataHandler.tc04NACTermBopis.getPostalCode());
-		getRogersDeviceCataloguePage().clickCheckBtn();
-		reporter.reportLogPassWithScreenshot("RPOTG: Postal Code & Check Eligibility Success");
-		getRogersDeviceCataloguePage().clickContinueBtn();
-		String postalCode = getRogersDeviceCataloguePage().verifyeligiblePostalCodeinBanner();
-		reporter.hardAssert(postalCode.contains(TestDataHandler.tc04NACTermBopis.getPostalCode()),
-				"RPOTG Banner has the eligible postal code displayed", "RPOTG Banner not displayed in banner");*/
 		getRogersDeviceCataloguePage().setProvince("Ontario");
 		reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		String deviceName = TestDataHandler.tc04NACTermBopis.getDeviceName();
@@ -58,13 +40,8 @@ public class RogersBFA_TC04_NAC_TermBopisTest extends BaseTestClass {
 				"Get Started button not able to click");
 
 		// ***************************Device config page************************************
-		System.out.println(getRogersDeviceConfigPage().verifyeligiblePostalCodeinBanner());
-		System.out.println(TestDataHandler.tc04NACTermBopis.getPostalCode());
-		/*reporter.softAssert(
-				getRogersDeviceConfigPage().verifyeligiblePostalCodeinBanner()
-						.contains(TestDataHandler.tc04NACTermBopis.getPostalCode()),
-				"Eligible postal code verified in Device Catalog page Banner is carried on to Device Config Page Banner as expected",
-				"Postal Code not matching");*/
+		/*System.out.println(getRogersDeviceConfigPage().verifyeligiblePostalCodeinBanner());
+		System.out.println(TestDataHandler.tc04NACTermBopis.getPostalCode());*/
 		String rpotgLabelDeviceConfig = getRogersDeviceConfigPage().getRpotgLabelDeviceConfigPage();
 		reporter.reportLogWithScreenshot(
 				"RPOTG Promo Label and subcopy verified in Device Config Page as" + "-->" + rpotgLabelDeviceConfig);
@@ -92,17 +69,11 @@ public class RogersBFA_TC04_NAC_TermBopisTest extends BaseTestClass {
 		// ****************************Plan config page***************************************
 		System.out.print(getRogersPlanConfigPage().verifyeligiblePostalCodeinBanner());
 		System.out.println(TestDataHandler.tc04NACTermBopis.getPostalCode());
-		/*reporter.softAssert(
-				getRogersPlanConfigPage().verifyeligiblePostalCodeinBanner()
-						.contains(TestDataHandler.tc04NACTermBopis.getPostalCode()),
-				"Eligible postal code verified in Device Catalog & Device Config page POTG Banner is carried on to Plan Config Page Banner as expected",
-				"Postal code not matching in Plan Config page");*/
 		String rpotgLabelPlanConfig = getRogersPlanConfigPage().getRpotgLabelPlanConfigPage();
 		reporter.reportLogWithScreenshot(
 				"RPOTG Label and subcopy verified in Plan Config Page verified as" + "--->" + rpotgLabelPlanConfig);
 		reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
 				"BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
-		//reporter.hardAssert(getRogersPlanConfigPage().verifyDefaultPrice(fullPriceValueCataloguePage),"Default  price is same as it is shown in device catalogue & Config page page","Default price is not same as it is shown in device catalogue page");
 		getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
 		reporter.reportLogPassWithScreenshot("Device cost option selected");
 		getRogersPlanConfigPage().clickShowMoreDetails();

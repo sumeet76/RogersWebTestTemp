@@ -134,7 +134,6 @@ public class RogersChoosePhonePage extends BasePageClass {
 	WebElement modalContinueButton;
 
 	@FindBy(xpath = "//button[@title='Select' or @title='Continue' or @title='Continuer' or @title='Ship to home' or @title='Expédier à la maison']")
-	public
 	WebElement continueButton;
 
 	/**

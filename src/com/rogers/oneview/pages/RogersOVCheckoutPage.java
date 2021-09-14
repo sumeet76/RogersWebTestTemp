@@ -63,6 +63,24 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//input[@formcontrolname='lastName']")
 	WebElement inputLastName;
 
+	@FindBy(xpath = "//ds-form-field[@data-test='personal-info-business-name']//div[@class='ds-formField__wrapper']")
+	WebElement businessNameCreateProfile;
+
+	@FindBy(xpath = "//input[@formcontrolname='companyName']")
+	WebElement inputBusinessName;
+
+	@FindBy(xpath = "//ds-form-field[@data-test='personal-info-business-number']//div[@class='ds-formField__wrapper']")
+	WebElement businessNumberCreateProfile;
+
+	@FindBy(xpath = "//input[@formcontrolname='businessNumber']")
+	WebElement inputBusinessNumber;
+
+	@FindBy(xpath = "//ds-form-field[@data-test='personal-info-company-size']//div[contains(@class,'ds-formField__inputContainer')]")
+	WebElement companySizeCreateProfile;
+
+	@FindBy(xpath = "//input[@formcontrolname='companySize']")
+	WebElement inputCompanySize;
+
 	@FindBy(xpath = "//input[contains(@formcontrolname,'contact')]/parent::div")
 	WebElement contactNumberCreateProfile;
 
@@ -659,6 +677,34 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	}
 
 	/**
+	 * This method enters value for Business name field
+	 * @author praveen.kumar7
+	 */
+	public void setBusinessName() {
+		getReusableActionsInstance().clickWhenReady(businessNameCreateProfile,10);
+		getReusableActionsInstance().getWhenReady(inputBusinessName,3).sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
+	}
+
+	/**
+	 * This method enters value for Business number field
+	 * @param businessNumber business number to be entered in textfield
+	 * @author praveen.kumar7
+	 */
+	public void setBusinessNumber(String businessNumber) {
+		getReusableActionsInstance().clickWhenReady(businessNumberCreateProfile,10);
+		getReusableActionsInstance().getWhenReady(inputBusinessNumber).sendKeys(businessNumber);
+	}
+
+	/**
+	 * This method enters value for company size field
+	 * @author praveen.kumar7
+	 */
+	public void setCompanySize(String companySize) {
+		getReusableActionsInstance().clickWhenReady(companySizeCreateProfile);
+		getReusableActionsInstance().getWhenReady(inputCompanySize,3).sendKeys(companySize);
+	}
+
+	/**
 	 * Enter the contact number on the Create Profile stepper, Contact number field
 	 *
 	 * @param contactNumber from yml file
@@ -862,7 +908,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 		clkNoThanks();
 		getReusableActionsInstance().javascriptScrollByVisibleElement(creditEvaluationTitle);
 		getReusableActionsInstance().clickWhenReady(inputMonthDOB);
-		getReusableActionsInstance().selectWhenReady(inputMonthDOB, strMonth);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(inputMonthDOB, strMonth);
 	}
 
 	/**

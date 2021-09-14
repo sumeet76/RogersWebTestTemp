@@ -146,12 +146,7 @@ public class RogersBFA_TC01_NAC_TermNpotgSS_HighRisk_EN_Test extends BaseTestCla
       //***************Order Review Page*************//
         reporter.softAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(),"Order Review Page Title Present","Order Review Page Title is not Present");
         reporter.reportLogPass("Order Review Page");
-        /*String totalMonthlyFeesReviewPage=getRogersReviewOrderPage().getMonthlyFeeAfterTax();
-        reporter.hardAssert(totalMonthlyFees.equals(totalMonthlyFeesReviewPage),"Total Monthly Fee after tax matches with checkout page","Total Monthly Fee after tax not matches with checkout page");
-        String oneTimeFeesReviewPage=getRogersReviewOrderPage().getOneTimeFeeAfterTax();
-        reporter.hardAssert(oneTimeFeesReviewPage.contains(TestDataHandler.tc01NACTermNpotgSS.getDepositAmount()),
-                "Security deposit amount is displayed correctly in one time fees section","Security deposit amount is not displayed correctly in one time fees section");
-        String puchaseIncludeReviewPage=getRogersReviewOrderPage().getPurchaseIncludesText();
+        /*String puchaseIncludeReviewPage=getRogersReviewOrderPage().getPurchaseIncludesText();
         reporter.reportLogPassWithScreenshot("Order Review Page"+"1.Monthly Fees"+totalMonthlyFeesReviewPage+"2. OnetimeFees:"+oneTimeFeesReviewPage+"3.Purchase Include :"+puchaseIncludeReviewPage);
         String contactNameReviewPage=getRogersReviewOrderPage().getContactName();
         reporter.hardAssert(fullNameCreateProfile.equals(contactNameReviewPage),"Contact Name in Order Review Page matches as entered in Create Profile stepper","Contact Name in Order Review Page not matches as entered in Create Profile stepper");
