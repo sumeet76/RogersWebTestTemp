@@ -1520,6 +1520,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	 */
 
 	public boolean clkBillingAddress() {
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
 		getReusableActionsInstance().waitForElementTobeClickable(billingAddressShipping, 30);
 		getReusableActionsInstance().scrollToElement(billingAddressShipping);
 		getReusableActionsInstance().clickWhenReady(billingAddressShipping, 30);

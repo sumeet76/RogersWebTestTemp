@@ -43,7 +43,8 @@ public class SOHOBFA_OV_TC23_NAC_BYOD_NonShareFinancingPlan_Bopis_ON_Test extend
         reporter.reportLogPassWithScreenshot("Shipping address entered successfully");
         getNacDashboardPage().clkBringYourOwnPhoneButton();
         //-------------------------------------PLAN CONFIG PAGE-------------------------------------------------
-        getRogersOVPlanConfigPage().verifyCustomerTypeInHeader("BUSINESS");
+        reporter.hardAssert(getRogersOVPlanConfigPage().verifyCustomerTypeInHeader("BUSINESS"),
+                "Customer type in header is displayed correctly", "Customer type in header is not displayed correctly");
         reporter.hardAssert(getRogersOVPlanConfigPage().verifyPlanConfigPageLoaded(),
                 "Plan config page loaded successfully", "Plan config page not loaded");
         reporter.reportLogWithScreenshot("Outbound plan accordion expanded");

@@ -49,12 +49,12 @@ public class SOHOBFA_OV_TC24_AALTERMNonShareNoTerm_StdShipping_QC_Test extends B
 		getRogersOVChoosePhonePage().clickDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase10.getDeviceName());
 		getRogersOVChoosePhonePage().clickContinueButton();
 		//-------------------------------------Plan config page---------------------------------------------
+		reporter.hardAssert(getRogersOVPlanConfigPage().verifyCustomerTypeInHeader("BUSINESS"),
+				"Customer type in header is displayed correctly", "Customer type in header is not displayed correctly");
 		reporter.softAssert(getRogersOVPlanConfigPage().verifyBreadCrumb(deviceName),
 				"BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
 		reporter.hardAssert(getRogersOVPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
 		reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
-		//getRogersOVPlanConfigPage().clickViewMoreOptions();
-		//getRogersOVPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersOVPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.buyFlowsOVtestCase10.getDeviceCostIndex()));
 		getRogersOVPlanConfigPage().clkRadioButtonNoTerm();
 		getRogersOVPlanConfigPage().clkPreCartDeviceCostContinueButtonForNac();
 		reporter.reportLogPassWithScreenshot("Device cost option selected");

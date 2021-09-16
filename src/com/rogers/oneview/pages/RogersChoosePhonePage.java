@@ -486,7 +486,8 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 * @author saurav.goyal
 	 */
 	public boolean isModalDisplayed() {
-		return getReusableActionsInstance().isElementVisible(modalContainer,30);
+		getReusableActionsInstance().waitForElementVisibility(modalContainer,40);
+		return getReusableActionsInstance().isElementVisible(modalContainer);
 	}
 
 	/***

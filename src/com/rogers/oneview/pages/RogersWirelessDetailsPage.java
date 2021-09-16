@@ -135,14 +135,11 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	public void setCustomerType(String className) {
 		if(className.toUpperCase().contains("SOHO")) {
 			getReusableActionsInstance().clickWhenReady(btnSohoCusType);
-			getReusableActionsInstance().waitForElementVisibility(modalContainer,30);
 		}
 		else if(className.toUpperCase().contains("RPP")) {
 			getReusableActionsInstance().clickWhenReady(btnRPPCusType);
-			getReusableActionsInstance().waitForElementVisibility(modalContainer,30);
 		}
 		else getReusableActionsInstance().clickWhenReady(btnConsumerCusType);
-		getReusableActionsInstance().waitForElementVisibility(modalContainer,30);
 	}
 
 }

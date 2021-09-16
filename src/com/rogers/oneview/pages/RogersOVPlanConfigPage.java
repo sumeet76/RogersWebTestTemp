@@ -213,6 +213,10 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//p[contains(.,'Non-Share') or contains(.,'Sans partage')]/ancestor::button")
     WebElement nonSharePlanTab;
 
+    @FindBy(xpath = "//p[@data-test='ov-header-customer-type']")
+    WebElement custTypeInHeader;
+
+
     /**
      * Select Device Protection Header on Plan config page
      */
@@ -797,10 +801,12 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clkAdditionalLineOptions() {
-        getReusableActionsInstance().clickWhenReady(checkBoxAdditionalLineOPtion, 30);
-        getReusableActionsInstance().clickWhenReady(btnAddToCart);
-        getReusableActionsInstance().scrollToElement(btnProceedToCheckout);
-        getReusableActionsInstance().clickWhenReady(btnProceedToCheckout, 30);
+        if(getReusableActionsInstance().isElementVisible(checkBoxAdditionalLineOPtion)) {
+            getReusableActionsInstance().clickWhenReady(checkBoxAdditionalLineOPtion, 30);
+            getReusableActionsInstance().clickWhenReady(btnAddToCart);
+            getReusableActionsInstance().scrollToElement(btnProceedToCheckout);
+            getReusableActionsInstance().clickWhenReady(btnProceedToCheckout, 30);
+        }
     }
 
     /**
@@ -1045,13 +1051,14 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     }
 
     /**
-     * This method verifies if SOHO customer type is displaying properly in Header
+     * This method verifies if customer type is displaying properly in Header
      * @return true, if Customer type in header is displayed correctly, else false
-     * @param customerType type of the customer
+     * @param accountType type of the customer
      * @author praveen.kumar7
      */
-    public boolean verifyCustomerTypeInHeader(String customerType) {
-        if(getReusableActionsInstance().isElementVisible(By.xpath("//*[@class='ov-nac-header']//p[contains(.,'"+customerType.toUpperCase()+" REGULAR')]"))) {
+    public boolean verifyCustomerTypeInHeader(String accountType) {
+        String customerTypeInHeader = getReusableActionsInstance().getWhenReady(custTypeInHeader).getText().trim();
+        if(customerTypeInHeader.toUpperCase().contains(accountType)) {
             return true;
         }
         else return false;
