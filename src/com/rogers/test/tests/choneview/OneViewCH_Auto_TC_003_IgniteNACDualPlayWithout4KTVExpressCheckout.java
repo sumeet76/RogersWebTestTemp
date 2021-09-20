@@ -11,7 +11,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_TC_003_IgniteNACDualPlayWithout4KTVExpressCheckout extends BaseTestClass{
+public class OneViewCH_Auto_TC_003_IgniteNACDualPlayWithout4KTVExpressCheckout extends BaseTestClass{
 	 @Test (groups = {"RegressionCHOV","SanityCHOV"})
 	    public void endToEndFlowAnonymousCustomerTriplePlayTest(){
 			getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));

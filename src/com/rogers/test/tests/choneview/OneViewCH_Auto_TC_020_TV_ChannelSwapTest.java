@@ -15,7 +15,7 @@ import com.rogers.test.base.BaseTestClass;
 import com.rogers.testdatamanagement.TestDataHandler;
 
 
-public class OneViewCH_TC_020_TV_ChannelSwapTest extends BaseTestClass {
+public class OneViewCH_Auto_TC_020_TV_ChannelSwapTest extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV","SanityCHOV","SanityCHOVTemp"})
     public void checkChannelSwapTest() {
 		//getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));

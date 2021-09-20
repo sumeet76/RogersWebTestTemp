@@ -16,7 +16,7 @@ import com.rogers.test.base.BaseTestClass;
 import com.rogers.testdatamanagement.TestDataHandler;
 
 
-public class OneViewCH_TC_018b_Internet_HeaderFooterUsageTest extends BaseTestClass {
+public class OneViewCH_Auto_TC_018b_Internet_HeaderFooterUsageTest extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
     public void checkInternetHeaderFooterAndUsage() {
 		//getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));

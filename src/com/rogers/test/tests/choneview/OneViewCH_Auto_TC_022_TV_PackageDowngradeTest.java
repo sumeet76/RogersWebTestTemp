@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_TC_022_TV_PackageDowngradeTest extends BaseTestClass {
+public class OneViewCH_Auto_TC_022_TV_PackageDowngradeTest extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV","SanityCHOV"})
     public void checkTVPackageDowngrade() {
 		//getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));

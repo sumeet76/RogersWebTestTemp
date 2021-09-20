@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 
 
 
-public class OneViewCH_TC_004_MigrationTriplePlayON extends BaseTestClass {
+public class OneViewCH_Auto_TC_004_MigrationTriplePlayON extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
     public void endToEndMigrationTriplePlayTest(){
 		//getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
