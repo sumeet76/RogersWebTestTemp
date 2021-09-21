@@ -14,8 +14,11 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_1416_TC01_E2E_NAC_SAI_ISS_TMP_Test extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
-    public void oneViewCH_1408_TC01_E2E_NAC_2P_TMP_Test(){
+    public void oneViewCH_Auto_1416_TC01_E2E_NAC_SAI_ISS_TMP_Test(){
+		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+		reporter.reportLogWithScreenshot("address");
+
 		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
@@ -25,9 +28,12 @@ public class OneViewCH_Auto_1416_TC01_E2E_NAC_SAI_ISS_TMP_Test extends BaseTestC
 		getRogersIgniteBundlesPage().clkSmartStream();
 		reporter.reportLogWithScreenshot("Smart Stream - SAI ISS Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
+		reporter.reportLogWithScreenshot("loading offers");
+
 		String promoCode = getRogersIgniteCampaignPage().getPromoCode();
 		System.out.println("promoCode :: " +  promoCode);
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
+		reporter.reportLogWithScreenshot("added to cart");
 		getRogersIgniteBundlesPage().noPortInPopup();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
 		reporter.reportLogWithScreenshot("Product in cart");
@@ -43,13 +49,12 @@ public class OneViewCH_Auto_1416_TC01_E2E_NAC_SAI_ISS_TMP_Test extends BaseTestC
 		getRogersIgniteBundlesPage().clkCheckOut();
 		reporter.reportLogWithScreenshot("Cart Summary");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+		reporter.reportLogWithScreenshot("campaign");
 
 		getRogersIgniteCampaignPage().clickCampaignTab();
 		getRogersIgniteCampaignPage().enterCoupon(promoCode);
 		getRogersIgniteCampaignPage().clickApplyCoupon();
-		getRogersIgniteCampaignPage().verifyCouponRemoveLink();
-		getRogersIgniteCampaignPage().clickCouponAlert();
-
+		reporter.reportLogWithScreenshot("campaign coupon applied");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		getRogersIgniteBundlesPage().customerWishtoContinue();
 		reporter.hardAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
@@ -60,6 +65,8 @@ public class OneViewCH_Auto_1416_TC01_E2E_NAC_SAI_ISS_TMP_Test extends BaseTestC
 		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
 		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
 		getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
+		reporter.reportLogWithScreenshot("evaluation form filled");
+
 		getCreditCheckPage().clkAuthorize();
 		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
 		reporter.reportLogWithScreenshot("Credit Check Information");
@@ -69,14 +76,16 @@ public class OneViewCH_Auto_1416_TC01_E2E_NAC_SAI_ISS_TMP_Test extends BaseTestC
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
 		getCreditCheckPage().clickInPersonDelivery();
+		reporter.reportLogWithScreenshot("in person delivery");
 		getPaymentOptionsPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
 		getCreditCheckPage().clickDigitalFrontline();
+		reporter.reportLogWithScreenshot("digitalfrontline");
 		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-
+		reporter.reportLogWithScreenshot("card details entered");
 		getPaymentOptionsPage().clkContinue();
 		reporter.hardAssert(getRogersOVCheckoutPage().verifyOrderReviewPage(),"Order Review header exists","Order Review header did not display");
 		reporter.reportLogWithScreenshot("Order Review Page");

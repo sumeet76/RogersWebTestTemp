@@ -14,8 +14,10 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_1435_TC01_E2E_NAC_2P_Test extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
-    public void oneViewCH_1435_TC01_EndtoEndFlowAnonymousCustomerDoublePlayTest(){
-		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+    public void oneViewCH_Auto_1435_TC01_E2E_NAC_2P_Test(){
+        reporter.reportLogWithScreenshot("oneview env");
+        getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+        reporter.reportLogWithScreenshot("address");
 		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
 		reporter.reportLogWithScreenshot("Service Availability");
@@ -26,9 +28,11 @@ public class OneViewCH_Auto_1435_TC01_E2E_NAC_2P_Test extends BaseTestClass {
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
 		reporter.reportLogWithScreenshot("Double Play Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
-//		getRogersIgniteBundlesPage().clkAddtoCart(TestDataHandler.anonymousData.getplanEng(),TestDataHandler.anonymousData.getplanFr());
+        reporter.reportLogWithScreenshot("offers loading");
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
-		getRogersIgniteBundlesPage().noPortInPopup();
+        reporter.reportLogWithScreenshot("added to cart");
+
+        getRogersIgniteBundlesPage().noPortInPopup();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
 		reporter.reportLogWithScreenshot("Product in cart");
 		getRogersIgniteBundlesPage().clkCollapse();
@@ -37,14 +41,16 @@ public class OneViewCH_Auto_1435_TC01_E2E_NAC_2P_Test extends BaseTestClass {
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContentPopup();
-		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyPersonalizeYourChannels(),"Personalize You Channel displayed","Personalize You Channel did not Displayed");
 		getRogersIgniteBundlesPage().clkCheckOut();
 		reporter.reportLogWithScreenshot("Cart Summary");
+		getRogersIgniteBundlesPage().fourKTVPopup();
+		getRogersIgniteBundlesPage().fourKContentPopup();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
-		getRogersIgniteBundlesPage().customerWishtoContinue();
+        reporter.reportLogWithScreenshot("continue from cart summary");
+        getRogersIgniteBundlesPage().customerWishtoContinue();
 		reporter.hardAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
         reporter.reportLogWithScreenshot("Customer Profile");
 		getCustomerProfilePage().clkContinue();
@@ -53,7 +59,8 @@ public class OneViewCH_Auto_1435_TC01_E2E_NAC_2P_Test extends BaseTestClass {
 		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
 		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
 		getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
-		getCreditCheckPage().clkAuthorize();
+        reporter.reportLogWithScreenshot("evaluation form filled");
+        getCreditCheckPage().clkAuthorize();
 		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
 		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
@@ -61,16 +68,21 @@ public class OneViewCH_Auto_1435_TC01_E2E_NAC_2P_Test extends BaseTestClass {
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
+        reporter.reportLogWithScreenshot("in person delivery");
 		getCreditCheckPage().clickInPersonDelivery();
 		getPaymentOptionsPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
+        reporter.reportLogWithScreenshot("verify billing and payments");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
 		getCreditCheckPage().clickDigitalFrontline();
+        reporter.reportLogWithScreenshot("front line");
 		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
+        reporter.reportLogWithScreenshot("card details entered");
 //		getPaymentOptionsPage().clkContinue();
 //		getRogersOVCheckoutPage().clkSubmit();
+//        reporter.reportLogWithScreenshot("submit order");
 //		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
 

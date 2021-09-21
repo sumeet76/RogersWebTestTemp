@@ -18,7 +18,7 @@ import utils.FormFiller;
 
 
 
-public class OneViewCH_TC_025_EndtoEndFlowAnonymousCustomerTriplePlayTest extends BaseTestClass {
+public class OneViewCH_Auto_TC_025_EndtoEndFlowAnonymousCustomerTriplePlayTest extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV","SanityCHOV"})
     public void endToEndFlowAnonymousCustomerTriplePlayTest(){
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));

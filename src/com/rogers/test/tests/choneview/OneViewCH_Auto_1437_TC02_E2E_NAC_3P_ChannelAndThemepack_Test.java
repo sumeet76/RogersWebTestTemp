@@ -11,9 +11,9 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_Test extends BaseTestClass {
+public class OneViewCH_Auto_1437_TC02_E2E_NAC_3P_ChannelAndThemepack_Test extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV","SanityCHOV"})
-    public void oneViewCH_Auto_1437_TC01_E2E_NAC_3P_Test(){
+    public void oneViewCH_Auto_1437_TC02_E2E_NAC_3P_ChannelAndThemepack_Test(){
 			reporter.reportLogWithScreenshot("oneview env");
 			getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 			reporter.reportLogWithScreenshot("address");
@@ -40,6 +40,18 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_Test extends BaseTestClass {
 			getRogersIgniteBundlesPage().fourKTVPopup();
 			getRogersIgniteBundlesPage().fourKContinue();
 			reporter.reportLogWithScreenshot("continue to exchange later");
+			getRogersIgniteBundlesPage().clickExchangeLater();
+			getTVDashboardPage().clickAddChannel();
+			reporter.reportLogWithScreenshot("add channel");
+			getTVDashboardPage().clickThemepacksTab();
+			getTVDashboardPage().addThemepack();
+			reporter.reportLogWithScreenshot("add themepack");
+			getCustomerProfilePage().clkContinue();
+			reporter.reportLogWithScreenshot("continue to calling package");
+			getTVDashboardPage().addToCartCallingPackage();
+			reporter.reportLogWithScreenshot("add calling card");
+			getCustomerProfilePage().clkContinue();
+			reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 			getRogersIgniteBundlesPage().clkCheckOut();
 			reporter.reportLogWithScreenshot("Cart Summary");
 			getRogersIgniteBundlesPage().fourKTVPopup();

@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_TC_030_Internet_PackageUpgrade_NextBillingCycleTest extends BaseTestClass {
+public class OneViewCH_Auto_TC_030_Internet_PackageUpgrade_NextBillingCycleTest extends BaseTestClass {
     @Test(groups = {"Baseline","ChangePackage"})
     public void checkTVPackageDowngrade() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));

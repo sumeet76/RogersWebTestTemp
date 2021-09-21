@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_1639_TC01_E2E_Migration_3P_KeepSameNumber_Test extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
-    public void oneViewCH_1639_TC01_E2EMigrationFlow3PKeepSameNumberTest(){
+    public void oneViewCH_Auto_1639_TC01_E2E_Migration_3P_KeepSameNumber_Test(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData3PSameNumber.getAccountNo(), TestDataHandler.migrationData3PSameNumber.getContactID());
 
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
