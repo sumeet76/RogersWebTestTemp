@@ -11,11 +11,12 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_1543_TC01_Add_Channels_Immediate_Test extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
-    public void oneViewCH_1543_TC01_AddChannelsImmediate(){
+    public void oneViewCH_Auto_1543_TC01_Add_Channels_Immediate_Test(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.addChannelImmediate.getAccountNo(), TestDataHandler.addChannelImmediate.getContactID());
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		getAccountOverViewPage().clickIgniteTVBadge();
+		reporter.reportLogWithScreenshot("TV Ignite clicked");
 		getAccountOverViewPage().selectBundleChangeIfPresent();
 		reporter.hardAssert(getAccountOverViewPage().verifyTVOrChannelHeader(),"TV or Channel header displayed","TV or Channel header did not Displayed");
 		reporter.reportLogWithScreenshot("Ignite TV widget selected");
@@ -23,9 +24,13 @@ public class OneViewCH_Auto_1543_TC01_Add_Channels_Immediate_Test extends BaseTe
 		reporter.hardAssert(getAccountOverViewPage().verifyCustomerFollowingsHeader(),"Customer followings displayed","Customer followings did not Displayed");
 		reporter.reportLogWithScreenshot("Customer followed channels and themepacks");
 		getTVDashboardPage().clickChannelTab();
+		reporter.reportLogWithScreenshot("Ignite TV widget selected");
 		getTVDashboardPage().clickAddChannel();
+		reporter.reportLogWithScreenshot("add channel");
 		getTVDashboardPage().clickContinueForPackage();
+		reporter.reportLogWithScreenshot("continue");
 		getTVDashboardPage().immediateDateChangeOption();
+		reporter.reportLogWithScreenshot("date change option");
 		getTVDashboardPage().clickCancel();
 //		getRogersOVOrderReviewPage().clickSubmitToManageThemepackOrChannel();
 //		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");

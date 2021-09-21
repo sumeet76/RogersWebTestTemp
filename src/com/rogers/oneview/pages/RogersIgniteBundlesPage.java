@@ -362,14 +362,16 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void fourKContentPopup() {	
+		if(getReusableActionsInstance().isElementVisible(continueFor4K))
 			getReusableActionsInstance().clickWhenReady(continueFor4K,120);
-			}
+	}
 	/**
 	 * CLick Yes if 4K pop up Appears
 	 * @author chinnarao.vattam
 	 */	
-	public void fourKTVPopup() {	
-		getReusableActionsInstance().clickWhenReady(yesFor4K,120);
+	public void fourKTVPopup() {
+		if(getReusableActionsInstance().isElementVisible(yesFor4K))
+			getReusableActionsInstance().clickWhenReady(yesFor4K,120);
 	}
 	/**
 	 * Click Checkout for channels Exchange
@@ -395,7 +397,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void fourKContinue() {
-		getReusableActionsInstance().clickWhenReady(fourKContinue, 30);
+		if(getReusableActionsInstance().isElementVisible(fourKContinue, 45))
+			getReusableActionsInstance().clickWhenReady(fourKContinue, 30);
 	}
 
 	/**
@@ -573,7 +576,7 @@ public void activateHomePhoneltrPopUp() {
 	 * @author Aditi.jain
 	 */
 	public boolean verifyMonthlyFeesInCollapsible() {
-		return getReusableActionsInstance().isElementVisible(monthFeesInCollapse,45);
+		return getReusableActionsInstance().isElementVisible(monthFeesInCollapse,90);
 	}
 
 	/**
@@ -591,7 +594,7 @@ public void activateHomePhoneltrPopUp() {
 	 * @author Aditi.jain
 	 */
 	public boolean verifyCartSummaryHeader() {
-		return getReusableActionsInstance().isElementVisible(cartSummaryHeader,45);
+		return getReusableActionsInstance().isElementVisible(cartSummaryHeader,60);
 	}
 
 	/**

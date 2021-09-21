@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_1624_TC01_E2E_Migration_1P_RHP_To_3P_Test extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
-    public void oneViewCH_1624_TC01_E2EMigrationFlow1P_RHPTo3PTest(){
+    public void oneViewCH_Auto_1624_TC01_E2E_Migration_1P_RHP_To_3P_Test(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData1PRHPTo3P.getAccountNo(), TestDataHandler.migrationData1PRHPTo3P.getContactID());
 
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
@@ -28,7 +28,6 @@ public class OneViewCH_Auto_1624_TC01_E2E_Migration_1P_RHP_To_3P_Test extends Ba
 		getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
 		reporter.reportLogWithScreenshot("3p selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
-//		getRogersIgniteBundlesPage().clkAddtoCart(TestDataHandler.anonymousData.getplanEng(),TestDataHandler.anonymousData.getplanFr());
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 
 		getRogersIgniteBundlesPage().clkKeepNumberbtn();

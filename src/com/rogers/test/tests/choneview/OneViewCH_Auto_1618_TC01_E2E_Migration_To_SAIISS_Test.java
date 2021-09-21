@@ -14,12 +14,14 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_1618_TC01_E2E_Migration_To_SAIISS_Test extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
-    public void oneViewCH_1618_TC01_EndtoEndMigrationFlowSAIISSTest(){
+    public void oneViewCH_Auto_1618_TC01_E2E_Migration_To_SAIISS_Test(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationDataToISS.getAccountNo(), TestDataHandler.migrationDataToISS.getContactID());
 
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
+		reporter.reportLogWithScreenshot("click ignite");
 		getAccountOverViewPage().clickIgnite();
+		reporter.reportLogWithScreenshot("use this address");
 		getRogersIgniteBundlesPage().clkUsethisAddress();
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
@@ -27,9 +29,12 @@ public class OneViewCH_Auto_1618_TC01_E2E_Migration_To_SAIISS_Test extends BaseT
 		getRogersIgniteBundlesPage().clkSmartStream();
 		reporter.reportLogWithScreenshot("Smart Stream - SAI ISS Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
+		reporter.reportLogWithScreenshot("load offers");
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
+		reporter.reportLogWithScreenshot("add to cart");
 		getRogersIgniteBundlesPage().clkCollapse();
 		getRogersIgniteBundlesPage().clkCheckOut();
+		reporter.reportLogWithScreenshot("review terms and condition");
 		getRogersIgniteBundlesPage().reviewTermsAndCondition();
 		getRogersIgniteBundlesPage().clkContinue();
 
