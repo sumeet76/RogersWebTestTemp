@@ -31,31 +31,40 @@ public class OneViewCH_Auto_1437_TC02_E2E_NAC_3P_ChannelAndThemepack_Test extend
 			getRogersIgniteBundlesPage().clickFirstAddToCart();
 			reporter.reportLogWithScreenshot("Added to Cart");
 			getRogersIgniteBundlesPage().noPortInPopup();
+
+			getRogersIgniteBundlesPage().fourKTVPopup();
+			getRogersIgniteBundlesPage().fourKContinue();
+
+
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
 			reporter.reportLogWithScreenshot("Product in cart");
 			getRogersIgniteBundlesPage().clkCollapse();
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 			reporter.reportLogWithScreenshot("Product Added");
 			getRogersIgniteBundlesPage().clkContinue();
-			getRogersIgniteBundlesPage().fourKTVPopup();
-			getRogersIgniteBundlesPage().fourKContinue();
 			reporter.reportLogWithScreenshot("continue to exchange later");
 			getRogersIgniteBundlesPage().clickExchangeLater();
+
 			getTVDashboardPage().clickAddChannel();
 			reporter.reportLogWithScreenshot("add channel");
+
+
 			getTVDashboardPage().clickThemepacksTab();
+			getRogersIgniteBundlesPage().fourKTVPopup();
+			getRogersIgniteBundlesPage().fourKContinue();
 			getTVDashboardPage().addThemepack();
 			reporter.reportLogWithScreenshot("add themepack");
 			getCustomerProfilePage().clkContinue();
 			reporter.reportLogWithScreenshot("continue to calling package");
+			getRogersIgniteBundlesPage().fourKTVPopup();
+			getRogersIgniteBundlesPage().fourKContentPopup();
 			getTVDashboardPage().addToCartCallingPackage();
+
 			reporter.reportLogWithScreenshot("add calling card");
 			getCustomerProfilePage().clkContinue();
 			reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 			getRogersIgniteBundlesPage().clkCheckOut();
 			reporter.reportLogWithScreenshot("Cart Summary");
-			getRogersIgniteBundlesPage().fourKTVPopup();
-			getRogersIgniteBundlesPage().fourKContinue();
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 			reporter.reportLogWithScreenshot("checkout to cart summary");
 			getRogersIgniteBundlesPage().clkCheckOutforCartSummary();

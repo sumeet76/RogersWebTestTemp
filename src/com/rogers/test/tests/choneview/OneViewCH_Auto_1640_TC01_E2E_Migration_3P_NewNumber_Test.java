@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
 public class OneViewCH_Auto_1640_TC01_E2E_Migration_3P_NewNumber_Test extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
     public void oneViewCH_Auto_1640_TC01_E2E_Migration_3P_NewNumber_Test(){
-		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData.getAccountNo(), TestDataHandler.migrationData.getContactID());
+		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData3PSameNumber.getAccountNo(), TestDataHandler.migrationData3PSameNumber.getContactID());
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		getAccountOverViewPage().clickIgnite();
@@ -25,14 +25,39 @@ public class OneViewCH_Auto_1640_TC01_E2E_Migration_3P_NewNumber_Test extends Ba
 		getRogersIgniteBundlesPage().clkTVCheckbox();
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
 		getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
-		reporter.reportLogWithScreenshot("Smart Stream - SAI ISS Selected");
+		reporter.reportLogWithScreenshot("Triple play Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
+		reporter.reportLogWithScreenshot("Add to cart");
+
+		getRogersIgniteBundlesPage().noPortInPopup();
+		getRogersIgniteBundlesPage().clkContinue();
+		getRogersIgniteBundlesPage().reviewTermsAndCondition();
+		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
+
+
+
+		getRogersIgniteBundlesPage().clickExchangeLater();
+		//add channel themepack
+		getCustomerProfilePage().clkContinue();
+		getRogersIgniteBundlesPage().fourKTVPopup();
+		getRogersIgniteBundlesPage().contiue4KContent();
+		//add calling package
+		getCustomerProfilePage().clkContinue();
+
+
+
+
+
+
+
 		getRogersIgniteBundlesPage().clkChooseNewNumberbtn();
+		reporter.reportLogWithScreenshot("New Number selected");
 		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
 		getRogersIgniteBundlesPage().clkContinue();
+		reporter.reportLogWithScreenshot("review terms and condition");
 		getRogersIgniteBundlesPage().reviewTermsAndCondition();
 		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 		getRogersIgniteBundlesPage().fourKTVPopup();
