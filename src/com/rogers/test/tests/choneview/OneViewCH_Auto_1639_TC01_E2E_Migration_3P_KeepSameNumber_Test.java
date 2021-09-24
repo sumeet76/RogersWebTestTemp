@@ -28,34 +28,34 @@ public class OneViewCH_Auto_1639_TC01_E2E_Migration_3P_KeepSameNumber_Test exten
 		getRogersIgniteBundlesPage().clkTVCheckbox();
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
 		getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
-		reporter.reportLogWithScreenshot("Smart Stream - SAI ISS Selected");
+		reporter.reportLogWithScreenshot("Triple play Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
+		reporter.reportLogWithScreenshot("load offers");
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
-		getRogersIgniteBundlesPage().clkKeepNumberbtn();
-		getRogersIgniteBundlesPage().clkCollapse();
-		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
-		reporter.reportLogWithScreenshot("Product Added");
+		reporter.reportLogWithScreenshot("added to cart");
+
+		getRogersIgniteBundlesPage().noPortInPopup();
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().reviewTermsAndCondition();
 		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
+
+		getRogersIgniteBundlesPage().clickExchangeLater();
+		reporter.reportLogWithScreenshot("Add channel themepack view");
+		getCustomerProfilePage().clkContinue();
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().contiue4KContent();
-		getRogersIgniteBundlesPage().clickExchangeLater();
-		getTVDashboardPage().clickAddChannel();
-		getTVDashboardPage().clickThemepacksTab();
-		getTVDashboardPage().addThemepack();
-		getTVDashboardPage().clickAddOnIfPresent();
+		reporter.reportLogWithScreenshot("Add calling package");
 		getCustomerProfilePage().clkContinue();
-		getTVDashboardPage().addToCartCallingPackage();
-		getCustomerProfilePage().clkContinue();
-		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
+
+		reporter.reportLogWithScreenshot("Cart Summary View");
 		getRogersIgniteBundlesPage().clkCheckOut();
-		reporter.reportLogWithScreenshot("Cart Summary");
+		reporter.reportLogWithScreenshot("Customer wish to continue");
 		getRogersIgniteBundlesPage().customerWishtoContinue();
 		reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
 		reporter.reportLogWithScreenshot("Customer Profile");
 		getCreditCheckPage().goToPageBottom();
 		getCustomerProfilePage().clkContinue();
+
 		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
 		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
 		getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
@@ -63,16 +63,12 @@ public class OneViewCH_Auto_1639_TC01_E2E_Migration_3P_KeepSameNumber_Test exten
 		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
 		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
-//		getHomePhoneSelectionPage().clkGeneratePhoneNo();
-//		reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
-//		reporter.reportLogWithScreenshot("Phone Number Selected");
+
 		getCreditCheckPage().goToPageBottom();
 		getPaymentOptionsPage().clkContinue();
 		getCreditCheckPage().continueConfirmation();
 		getCreditCheckPage().goToPageBottom();
 		getPaymentOptionsPage().clkContinue();
-
-
 
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();

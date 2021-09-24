@@ -255,7 +255,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void noPortInPopup() {
-		getReusableActionsInstance().clickWhenReady(noPortInServices,30);
+		getReusableActionsInstance().clickWhenReady(noPortInServices,60);
 	}
 
 	/**
@@ -279,6 +279,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().clickAndHoldFor(searchResult, 333);//.clickWhenReady(searchResult);
 		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().clickWhenReady(checkAvailabilitybtn);
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().clickIfAvailable(continueButton);
 	}
 
@@ -379,7 +380,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */	
 	public void clkCheckOut() {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().waitForElementVisibility(checkOutFromCartSummary, 30);
+		getReusableActionsInstance().waitForElementVisibility(checkOutFromCartSummary, 45);
 		getReusableActionsInstance().getWhenReady(checkOutFromCartSummary,30).sendKeys(Keys.ENTER);
 
 	}

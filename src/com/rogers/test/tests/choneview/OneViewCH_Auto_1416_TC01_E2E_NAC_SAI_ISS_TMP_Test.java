@@ -40,10 +40,10 @@ public class OneViewCH_Auto_1416_TC01_E2E_NAC_SAI_ISS_TMP_Test extends BaseTestC
 		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
-		getRogersIgniteBundlesPage().clkContinue();
-		getRogersIgniteBundlesPage().fourKTVPopup();
-		getRogersIgniteBundlesPage().fourKContentPopup();
-		getRogersIgniteBundlesPage().clkCollapse();
+//		getRogersIgniteBundlesPage().clkContinue();
+//		getRogersIgniteBundlesPage().fourKTVPopup();
+//		getRogersIgniteBundlesPage().fourKContentPopup();
+//		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyPersonalizeYourChannels(),"Personalize You Channel displayed","Personalize You Channel did not Displayed");
 		getRogersIgniteBundlesPage().clkCheckOut();
@@ -86,12 +86,12 @@ public class OneViewCH_Auto_1416_TC01_E2E_NAC_SAI_ISS_TMP_Test extends BaseTestC
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		reporter.reportLogWithScreenshot("card details entered");
-		getPaymentOptionsPage().clkContinue();
-		reporter.hardAssert(getRogersOVCheckoutPage().verifyOrderReviewPage(),"Order Review header exists","Order Review header did not display");
-		reporter.reportLogWithScreenshot("Order Review Page");
-		reporter.hardAssert(getRogersOVCheckoutPage().verifySavingsExist(),"Savings section exists","Savings section does not exists");
-		getRogersOVCheckoutPage().clkSubmit();
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//		getPaymentOptionsPage().clkContinue();
+//		reporter.hardAssert(getRogersOVCheckoutPage().verifyOrderReviewPage(),"Order Review header exists","Order Review header did not display");
+//		reporter.reportLogWithScreenshot("Order Review Page");
+//		reporter.hardAssert(getRogersOVCheckoutPage().verifySavingsExist(),"Savings section exists","Savings section does not exists");
+//		getRogersOVCheckoutPage().clkSubmit();
+//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
     }
 
