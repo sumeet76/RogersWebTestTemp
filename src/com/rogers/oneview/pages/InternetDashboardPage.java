@@ -302,7 +302,6 @@ public class InternetDashboardPage  extends BasePageClass {
 			if (getReusableActionsInstance().isElementVisible(btnContnue, 5)) {
 				clickContinue();
 			}
-			System.out.println(smartstreamTitle + "[" + i + "]");
 
 			WebElement smartStreamElement = getReusableActionsInstance().getWhenReady(By.xpath("(" + smartstreamTitle + ")" + "[" + i + "]"));
 
@@ -310,10 +309,7 @@ public class InternetDashboardPage  extends BasePageClass {
 			String planToSelect = titles[titles.length - 1];
 
 			if (!planToSelect.equalsIgnoreCase(currentTitleLastWord)) {
-				System.out.println(i);
 				int index = i / 2 + 1;
-				System.out.println("(" + smartstreamSelect + ")" + "[" + index + "]");
-
 				WebElement selectISS = getReusableActionsInstance().getWhenReady(By.xpath("(" + smartstreamSelect + ")" + "[" + index + "]"));
 				getReusableActionsInstance().scrollToElement(selectISS);
 				getReusableActionsInstance().executeJavaScriptClick(selectISS);

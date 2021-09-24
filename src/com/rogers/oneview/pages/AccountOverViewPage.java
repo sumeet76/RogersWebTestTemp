@@ -37,7 +37,7 @@ public class AccountOverViewPage  extends BasePageClass {
 //	@FindBy(xpath = "//t[contains(text(),'Ignite')]/ancestor::a")})
 
 
-	@FindBy(xpath = "//app-service-badge-tv-care/descendant::div[@class='service-detail service-address'] | //div[@class='service-badge tv active-ind IPTV'] | //div[@class='service-badge tv active-ind DigitalTV']")
+	@FindBy(xpath = "//app-service-badge-tv-care/descendant::div[@class='service-detail service-address'] | //div[@class='IPTV active-ind service-badge tv'] | //div[@class='service-badge tv active-ind DigitalTV']")
 	WebElement btnGetIgniteTVBadge;
 
 	@FindBy(xpath = "//*[@translate='ute.rogers.account.balance.total_balance' or text()='Total balance' or text()='Total du solde'  or text()='Total Balance']")
