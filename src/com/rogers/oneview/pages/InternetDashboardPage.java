@@ -7,12 +7,14 @@ import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
 
+import java.util.List;
+
 public class InternetDashboardPage  extends BasePageClass {
 
 	public InternetDashboardPage(WebDriver driver) {
 		super(driver);
 	}
-	@FindBy(xpath = "//button[@class='a-btnPrimary ng-star-inserted']")
+	@FindBy(xpath = "//button[@class='a-btnPrimary ng-star-inserted'] | //span[text()='Continuer' or text()='Continue']/ancestor::button")
 	WebElement btnContnue;
 
 	@FindBy(xpath = "//div[@class='nsm-dialog success nsm-dialog-open']//preceding::i[@class='rch-icon']")
@@ -81,6 +83,15 @@ public class InternetDashboardPage  extends BasePageClass {
 
 	@FindBy(xpath="//span[contains(text(),'Continue') or contains(text(),'Continuer')]/ancestor::button")
 	WebElement btnContinueAddingStream;
+
+
+	@FindBy(xpath="//div[@class='text-body text-bold text-uppercase']")
+	WebElement currentSmartStream;
+
+	String smartstreamTitle = "//div[@class='smartStream-tile__bundle-name']";
+	String smartstreamSelect = "//span[@translate='global.cta.select']/ancestor::button";
+
+
 
 
 
@@ -270,6 +281,58 @@ public class InternetDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,select.getLocation().y-300);
 		getReusableActionsInstance().getWhenReady(btnAddSmartStream, 120).click();
 	}
+
+
+
+
+
+
+	/*Choose the different plan
+	 * @author aditi.jain
+	 * */
+	public void clickSelectSmartStreamChangeTier() {
+
+		WebElement element = getReusableActionsInstance().getWhenReady(currentSmartStream);
+		String[] currentTitle = element.getText().split(" ");
+		String currentTitleLastWord = currentTitle[currentTitle.length - 1];
+
+		List<WebElement> allSmartStreams = getDriver().findElements(By.xpath(smartstreamTitle));
+		for (int i = 1; i <= allSmartStreams.size(); i++) {
+			getReusableActionsInstance().staticWait(2000);
+			if (getReusableActionsInstance().isElementVisible(btnContnue, 5)) {
+				clickContinue();
+			}
+			System.out.println(smartstreamTitle + "[" + i + "]");
+
+			WebElement smartStreamElement = getReusableActionsInstance().getWhenReady(By.xpath("(" + smartstreamTitle + ")" + "[" + i + "]"));
+
+			String[] titles = smartStreamElement.getText().split(" ");
+			String planToSelect = titles[titles.length - 1];
+
+			if (!planToSelect.equalsIgnoreCase(currentTitleLastWord)) {
+				System.out.println(i);
+				int index = i / 2 + 1;
+				System.out.println("(" + smartstreamSelect + ")" + "[" + index + "]");
+
+				WebElement selectISS = getReusableActionsInstance().getWhenReady(By.xpath("(" + smartstreamSelect + ")" + "[" + index + "]"));
+				getReusableActionsInstance().scrollToElement(selectISS);
+				getReusableActionsInstance().executeJavaScriptClick(selectISS);
+				break;
+
+			} else {
+				i++;
+			}
+
+
+		}
+	}
+
+
+
+
+
+
+
     /*Choose the first avaialble smart stream package
     * @author suganya P
     * */

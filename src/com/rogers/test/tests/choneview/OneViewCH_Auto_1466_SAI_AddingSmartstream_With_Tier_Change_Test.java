@@ -10,18 +10,18 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_TC32_SAI_AddingSmartstream_WithoutTierChangeTest extends BaseTestClass {
+public class OneViewCH_Auto_1466_SAI_AddingSmartstream_With_Tier_Change_Test extends BaseTestClass {
     @Test(groups = {"Baseline","ChangePackage"})
     public void checkAddSmartStream() {
-        //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC032_SAI_AddingSmartStream.accountDetails.getBan(),TestDataHandler.TC032_SAI_AddingSmartStream.getContactID());
         reporter.reportLogWithScreenshot("Launched the account overview page");
         getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         getInternetDashboardPage().clickAddSmartStream();
         reporter.reportLogWithScreenshot("Add SmartStream is clicked");
-        getInternetDashboardPage().clickSelectSmartStream();
-        //getTVDashboardPage().selectTVPackage(TestDataHandler.TC023_TVPackageDowngrade.accountDetails.getDowngradePlanEn(),TestDataHandler.TC023_TVPackageDowngrade.accountDetails.getDowngradePlanFr());
+        getInternetDashboardPage().clickSelectSmartStreamChangeTier();
+        reporter.reportLogWithScreenshot("Continue with smart stream selection");
+
         reporter.reportLogWithScreenshot("Smart Stream option selected");
         getInternetDashboardPage().clickContinueAddingStream();
         reporter.reportLogWithScreenshot("Continue clicked on Adding Stream pop up");
