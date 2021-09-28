@@ -210,6 +210,19 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     })
     WebElement outboundFieldAccordion;
 
+    @FindBy(xpath = "//p[contains(.,'Non-Share') or contains(.,'Sans partage')]/ancestor::button")
+    WebElement nonSharePlanTab;
+
+    @FindBy(xpath = "//p[@data-test='ov-header-customer-type']")
+    WebElement custTypeInHeader;
+
+    @FindBy(xpath = "//ds-modal[@data-test='clm-modal']")
+    WebElement creditLimitExceededModal;
+
+    @FindBy(xpath = "//ds-modal//p[contains(.,' about to exceed your credit limit') or contains(.,'point de dépasser votre limite de crédit')]")
+    WebElement clmExceededTxtInModal;
+
+
     /**
      * Select Device Protection Header on Plan config page
      */
@@ -236,7 +249,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clickViewMoreOptions() {
-        getReusableActionsInstance().clickIfAvailable(viewMoreOptions);
+        getReusableActionsInstance().clickIfAvailable(viewMoreOptions,10);
     }
 
     /**
@@ -394,6 +407,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clkRadioButtonNoTerm() {
+        getReusableActionsInstance().waitForElementVisibility(noTermRadioBtn,30);
         getReusableActionsInstance().scrollToElement(noTermRadioBtn);
         getReusableActionsInstance().clickWhenReady(noTermRadioBtn,30);
     }
@@ -794,10 +808,12 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clkAdditionalLineOptions() {
-        getReusableActionsInstance().clickWhenReady(checkBoxAdditionalLineOPtion, 30);
-        getReusableActionsInstance().clickWhenReady(btnAddToCart);
-        getReusableActionsInstance().scrollToElement(btnProceedToCheckout);
-        getReusableActionsInstance().clickWhenReady(btnProceedToCheckout, 30);
+        if(getReusableActionsInstance().isElementVisible(checkBoxAdditionalLineOPtion)) {
+            getReusableActionsInstance().clickWhenReady(checkBoxAdditionalLineOPtion, 30);
+            getReusableActionsInstance().clickWhenReady(btnAddToCart);
+            getReusableActionsInstance().scrollToElement(btnProceedToCheckout);
+            getReusableActionsInstance().clickWhenReady(btnProceedToCheckout, 30);
+        }
     }
 
     /**
@@ -1042,6 +1058,20 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     }
 
     /**
+     * This method verifies if customer type is displaying properly in Header
+     * @return true, if Customer type in header is displayed correctly, else false
+     * @param accountType type of the customer
+     * @author praveen.kumar7
+     */
+    public boolean verifyCustomerTypeInHeader(String accountType) {
+        String customerTypeInHeader = getReusableActionsInstance().getWhenReady(custTypeInHeader).getText().trim();
+        if(customerTypeInHeader.toUpperCase().contains(accountType)) {
+            return true;
+        }
+        else return false;
+    }
+
+    /**
      * Verifies if Plan config page is loaded successfully
      * @return True if plan config page is loaded, else false
      * @author Praveen.Kumar7
@@ -1059,9 +1089,39 @@ public class RogersOVPlanConfigPage extends BasePageClass {
         getReusableActionsInstance().clickWhenReady(outboundAccordion,30);
     }
 
+    /**
+     * This method clicks on Outbound field accordion in data stepper
+     * @author praveen.kumar7
+     */
     public void clickOutBoundFieldAccordion() {
         getReusableActionsInstance().scrollToElement(outboundFieldAccordion);
         getReusableActionsInstance().clickWhenReady(outboundFieldAccordion,30);
+    }
+
+    /**
+     * This method clicks on Non share plan tab in data stepper
+     * @author praveen.kumar7
+     */
+    public void clkNonShareTab() {
+        getReusableActionsInstance().clickWhenReady(nonSharePlanTab);
+    }
+
+    /**
+     * This method verifies if Credit Limit Exceeded modal is present
+     * @return boolean true if modal is present, else false
+     * @author praveen.kumar7
+     */
+    public boolean verifyCLMExceededModalPresent() {
+        return getReusableActionsInstance().isElementVisible(creditLimitExceededModal);
+    }
+
+    /**
+     * This method verifies if Credit Limit Exceeded info is present is modal
+     * @return boolean true if clm info is present in modal, else false
+     * @author praveen.kumar7
+     */
+    public boolean verifyCLMExceededTxtInModal() {
+        return getReusableActionsInstance().isElementVisible(creditLimitExceededModal,10);
     }
 
 }

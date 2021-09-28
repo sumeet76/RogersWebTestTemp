@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  * @author praveen.kumar7
  */
 
-public class RogersBFA_TC22_AAL_BYOD_NonShareStdShipping_Test extends BaseTestClass {
+public class SOHOBFA_TC32_AAL_BYOD_NonShare_StdShipping_MBAccount_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -24,7 +24,7 @@ public class RogersBFA_TC22_AAL_BYOD_NonShareStdShipping_Test extends BaseTestCl
     }
 
     @Test(groups = {"RegressionBFA","AALBFA"})
-    public void rogersAalByodNonShareStdShippingTest() {
+    public void sohoAalByodNonShareStdShippingMBTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
@@ -35,7 +35,7 @@ public class RogersBFA_TC22_AAL_BYOD_NonShareStdShipping_Test extends BaseTestCl
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
-        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
+        //reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");
         getDriver().get(System.getProperty("AWSUrl")+"?flowType=aal");
         //------------------------------------Device Catalog page--------------------------------------------

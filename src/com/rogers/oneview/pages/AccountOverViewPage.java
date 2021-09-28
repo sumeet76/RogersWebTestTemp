@@ -61,10 +61,12 @@ public class AccountOverViewPage  extends BasePageClass {
 	WebElement btnSubmitOneViewDialogue;
 
 	@FindAll({
+			@FindBy(xpath = "//div[contains(@class,'other-services')]//t[contains(.,'Wireless') or contains(.,'Sans-fil')]"),
 			@FindBy(xpath = "//t[contains(text(),'Add new wireless line')]"),
 			@FindBy(xpath = "//t[contains(text(),'Add a line')]")
 	})
 	WebElement addNewWirelessLineButton;
+
 	@FindAll({
 			@FindBy(xpath = "//button[contains(text(),'View all alerts') or contains(text(), 'Voir toutes les alertes')]"),
 			@FindBy(xpath = "//div[@class='agent-notifications-popup ng-star-inserted']")
@@ -89,6 +91,8 @@ public class AccountOverViewPage  extends BasePageClass {
 	@FindBy(xpath = "//h3[@translate='global.dashboard.tv.customerHasTheFollowing']")
 	WebElement customerFollowingHeader;
 
+	@FindBy(xpath = "//a[@id='language-changed']")
+	WebElement linkFrench;
 
 	/**
 	 * Validate if either TV or channel header is visible
@@ -194,7 +198,7 @@ public class AccountOverViewPage  extends BasePageClass {
 	 */
 	public void clkCloseBtnAssignDataManager() {
 		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().clickIfAvailable(btnOneViewDataManagerDialogue,30);
+		getReusableActionsInstance().clickIfAvailable(btnOneViewDataManagerDialogue);
 	}
 
 	/**
@@ -317,6 +321,15 @@ public class AccountOverViewPage  extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().waitForElementVisibility(addNewWirelessLineButton);
 		getReusableActionsInstance().clickWhenReady(addNewWirelessLineButton,45);
+	}
+
+	/**
+	 * This method clicks on French link at the bottom of the screen
+	 * @author praveen.kumar7
+	 */
+	public void setLanguageFrench() {
+		//getReusableActionsInstance().clickWhenReady(infoBalanceLable);
+		getReusableActionsInstance().executeJavaScriptClick(linkFrench);
 	}
 }
 

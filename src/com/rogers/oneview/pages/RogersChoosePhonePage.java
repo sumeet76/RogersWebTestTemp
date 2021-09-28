@@ -134,8 +134,10 @@ public class RogersChoosePhonePage extends BasePageClass {
 	WebElement modalContinueButton;
 
 	@FindBy(xpath = "//button[@title='Select' or @title='Continue' or @title='Continuer' or @title='Ship to home' or @title='Expédier à la maison']")
-	public
 	WebElement continueButton;
+
+	@FindBy(xpath = "(//button[contains(@class,'ds-button ds-corners ds-pointer')])[3]")
+	WebElement continueBtnHupCtnSelectionModal;
 
 	/**
 	 * Clicks on the 'Details' button on the first available device
@@ -417,6 +419,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 * @author saurav.goyal
 	 */
 	public boolean verifyDeviceTileCTAButton(String deviceName) {
+		getReusableActionsInstance().waitForElementVisibility(getReusableActionsInstance().getWhenReady(By.xpath("(//a[contains(@title,'View details')])[1]")),60);
 		if (deviceName.equalsIgnoreCase("Bring Your Own Device")) {
 			return getReusableActionsInstance().isElementVisible(btnBringYourOwnDeviceViewDetails,20);
 		} else {
@@ -484,7 +487,8 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 * @author saurav.goyal
 	 */
 	public boolean isModalDisplayed() {
-		return getReusableActionsInstance().isElementVisible(modalContainer,30);
+		getReusableActionsInstance().waitForElementVisibility(modalContainer,40);
+		return getReusableActionsInstance().isElementVisible(modalContainer);
 	}
 
 	/***
@@ -495,5 +499,22 @@ public class RogersChoosePhonePage extends BasePageClass {
 		if (getReusableActionsInstance().isElementVisible(continueButton))
 			getReusableActionsInstance().clickWhenReady(continueButton);
 		getReusableActionsInstance().staticWait(3000);
+	}
+
+	/**
+	 * This method will select the required CTN from the list
+	 * @param ctnNumber ctn number to be selected
+	 * @author praveen.kumar7
+	 */
+	public void selectCTN(String ctnNumber) {
+		getReusableActionsInstance().clickWhenReady(By.xpath("//ds-modal-container//input[@value='"+ctnNumber+"']/following-sibling::span[@class='dsa-radio__checkmark']") , 30);
+	}
+
+	/**
+	 * This method will click on the continue button in the ctn selection modal during HUP flow
+	 * @author praveen.kumar7
+	 */
+	public void clkContinueBtnHupCtnSelectionModal() {
+		getReusableActionsInstance().clickWhenReady(continueBtnHupCtnSelectionModal);
 	}
 }

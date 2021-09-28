@@ -18,12 +18,7 @@ public class RogersBFA_OV_TC07_PPCSingleLine_Test extends BaseTestClass {
 
     @Test(groups = {"RegressionBFA","RegressionOVBFA","PPCOvBFA"})
     public void ppcSingleLineFlowTest() {
-        reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
-        reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");
-		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
-        reporter.reportLogWithScreenshot("Rogers OV environment selected" + TestDataHandler.bfaOneViewConfig.getEnvironmentName());
-        //getAccountOverViewPage().enterDealerCodeDialogue();
-        //getAccountOverViewPage().clkSubmitBtnDealerCodeDialogue();
+        getEnvironmentSelectionPage().launchOneView(TestDataHandler.buyFlowsOVtestCase07.getBanNo(), TestDataHandler.buyFlowsOVtestCase07.getContactID());
         reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page");
         reporter.hardAssert(getAccountOverViewPage().verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase07.getCtn()), "Select CTN Passed", "Select CTN Failed");
@@ -66,10 +61,10 @@ public class RogersBFA_OV_TC07_PPCSingleLine_Test extends BaseTestClass {
         reporter.reportLogWithScreenshot("Order Confirmation page");
    }
 
-	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
-	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		startOVSession(System.getProperty("QaOVUrl"),strBrowser, strLanguage, RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim() , TestDataHandler.buyFlowsOVtestCase07.getContactID(),TestDataHandler.buyFlowsOVtestCase07.getBanNo(),TestDataHandler.bfaOneViewConfig.getUsrID(), TestDataHandler.bfaOneViewConfig.getLoginID(),  method);
-  	}
+    @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
+    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+        startOVSession(System.getProperty("OVUrl"),strBrowser, strLanguage,RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim(),"", "","", "", method);
+    }
     
 	@AfterMethod(alwaysRun = true)
     public void afterTest() {

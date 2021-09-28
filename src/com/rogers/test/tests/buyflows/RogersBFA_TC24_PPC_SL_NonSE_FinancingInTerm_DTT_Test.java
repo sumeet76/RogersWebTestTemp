@@ -52,6 +52,7 @@ public class RogersBFA_TC24_PPC_SL_NonSE_FinancingInTerm_DTT_Test extends BaseTe
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         reporter.reportLogWithScreenshot("Addons option selected");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
+        getRogersPlanConfigPage().clkContinueOnExistingAddonModal();
         //--------------------------------------Review Order Page-------------------------------------------------------
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                 "Order Review Page Title is not Present");

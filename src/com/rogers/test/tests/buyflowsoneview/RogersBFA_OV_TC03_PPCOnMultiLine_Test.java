@@ -18,12 +18,7 @@ public class RogersBFA_OV_TC03_PPCOnMultiLine_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","RegressionOVBFA","PPCOvBFA"})
 	public void ppcOnMultiLineFlowTest() {
-		reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
-		reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");
-		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
-		reporter.reportLogWithScreenshot("Rogers OV environment selected" + TestDataHandler.bfaOneViewConfig.getEnvironmentName());
-		//getAccountOverViewPage().enterDealerCodeDialogue();
-		//getAccountOverViewPage().clkSubmitBtnDealerCodeDialogue();
+		getEnvironmentSelectionPage().launchOneView(TestDataHandler.buyFlowsOVtestCase03.getBanNo(), TestDataHandler.buyFlowsOVtestCase03.getContactID());
 		reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
 		reporter.reportLogWithScreenshot("Account Overview page");
 		getAccountOverViewPage().setSkipNotification();
@@ -75,7 +70,7 @@ public class RogersBFA_OV_TC03_PPCOnMultiLine_Test extends BaseTestClass {
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		startOVSession(System.getProperty("QaOVUrl"),strBrowser, strLanguage,RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim(), TestDataHandler.buyFlowsOVtestCase03.getContactID(),TestDataHandler.buyFlowsOVtestCase03.getBanNo(),TestDataHandler.bfaOneViewConfig.getUsrID(), TestDataHandler.bfaOneViewConfig.getLoginID(),  method);
+		startOVSession(System.getProperty("OVUrl"),strBrowser, strLanguage,RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim(),"", "","", "", method);
 	}
 
 	@AfterMethod(alwaysRun = true)

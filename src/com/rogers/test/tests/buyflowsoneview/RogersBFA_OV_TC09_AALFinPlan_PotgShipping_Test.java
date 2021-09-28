@@ -21,6 +21,7 @@ public class RogersBFA_OV_TC09_AALFinPlan_PotgShipping_Test extends BaseTestClas
 
 	@Test(groups = {"RegressionBFA","RegressionOVBFA","OVAALBFA"})
 	public void aALSingleLineFinPlanPOTGShippingFlow() {
+		getEnvironmentSelectionPage().launchOneView(TestDataHandler.buyFlowsOVtestCase09.getBanNo(), TestDataHandler.buyFlowsOVtestCase09.getContactID());
 		reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
 		reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");
 		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());

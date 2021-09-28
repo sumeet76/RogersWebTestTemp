@@ -17,10 +17,10 @@ import java.lang.reflect.Method;
  * TC01-OV-AAL_Singleline Account_Validate if user is able to place an order in HUP flow and choose a different plan_EN
  * @author Saurav.Goyal
  */
-public class RogersBFA_OV_TC10_AALNonShareNoTerm_QCProv_SS_Test extends BaseTestClass {
+public class SOHOBFA_OV_TC24_AALTERMNonShareNoTerm_StdShipping_QC_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","RegressionOVBFA","OVAALBFA"})
-	public void aALNonShareNoTermQCStandardShippingFlow() {
+	@Test(groups = {"RegressionBFA","RegressionOVBFA","OVSOHOAALBFA"})
+	public void sohoAALTERMNonShareNoTermQCStdShippingFlow() {
 		reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
 		reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");
 		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
@@ -49,12 +49,12 @@ public class RogersBFA_OV_TC10_AALNonShareNoTerm_QCProv_SS_Test extends BaseTest
 		getRogersOVChoosePhonePage().clickDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase10.getDeviceName());
 		getRogersOVChoosePhonePage().clickContinueButton();
 		//-------------------------------------Plan config page---------------------------------------------
+		reporter.hardAssert(getRogersOVPlanConfigPage().verifyCustomerTypeInHeader("BUSINESS"),
+				"Customer type in header is displayed correctly", "Customer type in header is not displayed correctly");
 		reporter.softAssert(getRogersOVPlanConfigPage().verifyBreadCrumb(deviceName),
 				"BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
 		reporter.hardAssert(getRogersOVPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
 		reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
-		//getRogersOVPlanConfigPage().clickViewMoreOptions();
-		//getRogersOVPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersOVPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.buyFlowsOVtestCase10.getDeviceCostIndex()));
 		getRogersOVPlanConfigPage().clkRadioButtonNoTerm();
 		getRogersOVPlanConfigPage().clkPreCartDeviceCostContinueButtonForNac();
 		reporter.reportLogPassWithScreenshot("Device cost option selected");

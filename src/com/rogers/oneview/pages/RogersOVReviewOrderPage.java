@@ -78,6 +78,12 @@ public class RogersOVReviewOrderPage extends BasePageClass {
     @FindBy(xpath = "(//div[contains(@class,'dsa-orderTable__totalRow')])[2]//div[contains(@class,'ds-price__amountDollars')]")
     WebElement oneTimeFeeAmt;
 
+    @FindBy(xpath = "//p[contains(.,'Shipping') or contains(.,'Adresse de facturation')]//a[@href='/phones/checkout?step=5&mode=edit']")
+    WebElement linkShipAddressEdit;
+
+    @FindBy(xpath = "(//p[contains(.,'Shipping') or contains(.,'Adresse de facturation')]/following-sibling::p)[1]")
+    WebElement txtShipAddress;
+
 
 
     /**
@@ -293,6 +299,27 @@ public class RogersOVReviewOrderPage extends BasePageClass {
     public void clkSubmitOrderBtn() {
         getReusableActionsInstance().clickWhenReady(submitOrderBtn,5);
         getReusableActionsInstance().staticWait(9000);
+    }
+
+    /**
+     * This method clicks on Shipping address Edit link in review order page
+     * @author praveen.kumar7
+     */
+    public void clkEditShippingAddress() {
+        getReusableActionsInstance().clickWhenVisible(linkShipAddressEdit,10);
+    }
+
+    /**
+     * This method verifies if shipping address is displayed properly in review order page
+     * @param newShippingAddress
+     * @return true if shipping address matches, else false
+     * @author praveen.kumar7
+     */
+    public boolean verifyShippingAddress(String newShippingAddress) {
+        if(newShippingAddress.contains(getReusableActionsInstance().getWhenReady(txtShipAddress).getText().trim())) {
+            return true;
+        }
+        else return false;
     }
 
 }

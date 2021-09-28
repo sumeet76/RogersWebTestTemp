@@ -2,6 +2,7 @@ package com.rogers.testdatamanagement;
 
 import com.rogers.yaml.pojo.*;
 import org.testng.ITestNGMethod;
+import org.yaml.snakeyaml.Yaml;
 
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -145,6 +146,17 @@ public class TestDataHandler {
 	public static RedesignRpotgOVData buyFlowsOVtestCase20;
 	public static RedesignRpotgOVData buyFlowsOVtestCase21;
 	public static RedesignRpotgOVData buyFlowsOVtestCase22;
+	public static RedesignRpotgOVData tc23SOHONACBYODNonShareBopis;
+	public static HUPData buyFlowsOVtestCase25;
+	public static HUPData buyFlowsOVtestCase26;
+	public static HUPData buyFlowsOVtestCase27;
+	public static HUPData buyFlowsOVtestCase28;
+	public static HUPData buyFlowsOVtestCase29;
+	public static HUPData buyFlowsOVtestCase30;
+	public static HUPData buyFlowsOVtestCase31;
+	public static HUPData buyFlowsOVtestCase32;
+	public static HUPData buyFlowsOVtestCase33;
+	public static HUPData buyFlowsOVtestCase34;
 	public static LoginDetails bfaOneViewLogin;
 	public static AALData tc07AAL;
 	public static PPCData tc08PPC;
@@ -155,6 +167,7 @@ public class TestDataHandler {
 	public static PPCData tc28PPCMLSESubsidyPlanToDTTPLan;
 	public static PPCData tc29PPCMLSEAdditionalLineDTTPlan;
 	public static PPCData tc30PPCSLNonSEFinToTTPlan;
+	public static RedesignRpotgData tc31SOHONACTermMediumRiskUEOptionPOTG;
 	public static HUPData tc09HupPpcPotgSharedML;
 	public static HUPData tc10HUPAdditionalLine;
 	public static HUPData tc11HUPNpotgML;
@@ -506,6 +519,7 @@ public class TestDataHandler {
 		tc28PPCMLSESubsidyPlanToDTTPLan = YamlHandler.getPPCdata("tc28PPCMLSESubsidyPlanToDTTPLan");
 		tc29PPCMLSEAdditionalLineDTTPlan = YamlHandler.getPPCdata("tc29PPCMLSEAdditionalLineDTTPlan");
 		tc30PPCSLNonSEFinToTTPlan = YamlHandler.getPPCdata("tc30PPCSLNonSEFinToTTPlan");
+		tc31SOHONACTermMediumRiskUEOptionPOTG = YamlHandler.getRedesignNACData("tc31SOHONACTermMediumRiskUEOptionPOTG");
 	}
 	
 	private static void buyFlowsOneViewDataInit() throws FileNotFoundException {
@@ -534,6 +548,18 @@ public class TestDataHandler {
 		buyFlowsOVtestCase20 = YamlHandler.getRedesignOVNACData("tc20OVNACOutboundBasicPhoneTTPlanMB");
 		buyFlowsOVtestCase21 = YamlHandler.getRedesignOVNACData("tc21OVNACCableCustomerPassportAndSIN");
 		buyFlowsOVtestCase22 = YamlHandler.getRedesignOVNACData("tc21OVNACFieldSalesNACToAALNoTermStandardShipping");
+		tc23SOHONACBYODNonShareBopis = YamlHandler.getRedesignOVNACData("tc23SOHONACBYODNonShareBopis");
+		buyFlowsOVtestCase25 = YamlHandler.getHUPdataOneView("tc25OVSOHOHUPWithPPCOnMainLinePOTG");
+		buyFlowsOVtestCase26 = YamlHandler.getHUPdataOneView("tc26OVSOHOHUPWithKEPOnAdditionalLineStdShip");
+		buyFlowsOVtestCase27 = YamlHandler.getHUPdataOneView("tc27_OVConsumerHUPWithPPC_OnMainLine_POTG");
+		buyFlowsOVtestCase28 = YamlHandler.getHUPdataOneView("tc28_OVConsumerHUPWithPPC_OnAdditionalLine_MR_StdShip_FR");
+		buyFlowsOVtestCase29 = YamlHandler.getHUPdataOneView("tc29_OVConsumerHUPWithKEP_OnAdditionalLine_POTG");
+		buyFlowsOVtestCase30 = YamlHandler.getHUPdataOneView("tc30_OVConsumerHUPWithPPC_FraudulentAddressValidation");
+		buyFlowsOVtestCase31 = YamlHandler.getHUPdataOneView("tc31_OVConsumerHUPWithPPC_EditShipAddrInReviewPage");
+		buyFlowsOVtestCase32 = YamlHandler.getHUPdataOneView("tc32_OVConsumerHUPWithPPC_OutboundPlan_BOPIS");
+		buyFlowsOVtestCase33 = YamlHandler.getHUPdataOneView("tc33_OVConsumerHUP_CLAExceededValidation");
+		buyFlowsOVtestCase34 = YamlHandler.getHUPdataOneView("tc34_OVConsumerHUP_ML_QCProv");
+
 		bfaOneViewLogin = YamlHandler.getBFAOneViewLoginDetails();
 	}
 	

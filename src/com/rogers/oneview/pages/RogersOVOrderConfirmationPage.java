@@ -66,11 +66,10 @@ public class RogersOVOrderConfirmationPage  extends BasePageClass {
 	 * @return true if 'Order Confirmation' header displayed; else false
 	 * @author rajesh.varalli1
 	 */
-	public boolean verifyBANOrderConfirmationPage() {
+	public boolean verifyBANOrderConfirmationPage(String banNo) {
 		getReusableActionsInstance().staticWait(5000);
-		String BAN = TestDataHandler.buyFlowsOVtestCase08.getBanNo();
-		String Ban = BANOrderConfirmation.getText();
-		if (Ban.equalsIgnoreCase(BAN)) {
+		String Ban = BANOrderConfirmation.getText().trim();
+		if (Ban.equalsIgnoreCase(banNo)) {
 			return true;
 		} else {
 			return false;
