@@ -252,8 +252,9 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clkRadioButtonNoTerm() {
+        getReusableActionsInstance().waitForElementVisibility(txtFinancingOptions,30);
         getReusableActionsInstance().scrollToElement(txtFinancingOptions);
-        getReusableActionsInstance().clickWhenVisible(noTermRadioBtn,30);
+        getReusableActionsInstance().clickWhenVisible(noTermRadioBtn);
     }
 
     /**
@@ -752,10 +753,12 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void selectAdditionalLinePlanOptions() {
-        getReusableActionsInstance().clickWhenReady(checkBoxAdditionalLineOPtion, 30);
-        getReusableActionsInstance().clickWhenReady(btnAddToCart);
-        getReusableActionsInstance().scrollToElement(btnProceedToCheckout);
-        getReusableActionsInstance().clickWhenReady(btnProceedToCheckout, 30);
+        if(getReusableActionsInstance().isElementVisible(checkBoxAdditionalLineOPtion)) {
+            getReusableActionsInstance().clickWhenReady(checkBoxAdditionalLineOPtion, 30);
+            getReusableActionsInstance().clickWhenReady(btnAddToCart);
+            getReusableActionsInstance().scrollToElement(btnProceedToCheckout);
+            getReusableActionsInstance().clickWhenReady(btnProceedToCheckout, 30);
+        }
     }
 
     /**
@@ -1133,7 +1136,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     public void selectPlanType(String planType) {
         getReusableActionsInstance().clickWhenVisible(By.xpath("//dsa-selection[contains(@data-test,'stepper-1-edit-step-selection-option-')]//label[@aria-label='"+planType+"']"));
         getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton);
-        getReusableActionsInstance().staticWait(13000);
+        getReusableActionsInstance().staticWait(16000);
     }
 
     /**

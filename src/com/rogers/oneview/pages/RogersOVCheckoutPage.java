@@ -452,6 +452,15 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//div[@data-test='delivery-information']//ds-form-field")
 	WebElement shippingEmailFormField;
 
+	@FindBy(xpath = "//ds-radio-button[@data-test='from-value-different-shipping']/label")
+	WebElement radioBtnNewAddress;
+
+	@FindBy(xpath = "(//*[@data-test='shipping-delivery-address']//input)[1]")
+	WebElement inputNewAddress;
+
+	@FindBy(xpath = "(//*[@data-test='shipping-delivery-address']//ds-form-field)[1]")
+	WebElement newAddressFormField;
+
 	/**
 	 * Verify Savings exists
 	 * @author aditi.jain
@@ -1591,6 +1600,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	 */
 
 	public void clkDeliveryMethod(String deliveryMethod) {
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
 		getReusableActionsInstance().staticWait(2000);
 		if (deliveryMethod.equalsIgnoreCase("EXPRESS")) {
 			getReusableActionsInstance().staticWait(5000);
@@ -1795,4 +1805,27 @@ public class RogersOVCheckoutPage extends BasePageClass {
 			getReusableActionsInstance().getWhenReady(txtEmailShipping,10).sendKeys(FormFiller.generateEmail());
 		}
 	}
+
+	/**
+	 * To click on the Billing Address radio button in the Shipping stepper
+	 * @author praveen.kumar7
+	 */
+	public void clkNewAddress() {
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
+		getReusableActionsInstance().waitForElementTobeClickable(radioBtnNewAddress,20);
+		getReusableActionsInstance().clickWhenReady(radioBtnNewAddress, 30);
+	}
+
+	/**
+	 * This method enters new address in Enter new address field
+	 * @param newShippingAddrress to enter
+	 * @author praveen.kumar7
+	 */
+	public void enterNewAddress(String newShippingAddrress) {
+		getReusableActionsInstance().clickWhenVisible(newAddressFormField);
+		getReusableActionsInstance().getWhenReady(inputNewAddress).sendKeys(newShippingAddrress);
+		getReusableActionsInstance().clickIfAvailable(By.xpath("(//ul[@role='listbox']//li)[1]"),10);
+		getReusableActionsInstance().staticWait(5000);
+	}
+
 }

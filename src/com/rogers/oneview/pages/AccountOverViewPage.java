@@ -328,8 +328,8 @@ public class AccountOverViewPage  extends BasePageClass {
 	 * @author praveen.kumar7
 	 */
 	public void setLanguageFrench() {
-		getReusableActionsInstance().clickWhenReady(infoBalanceLable);
-		getReusableActionsInstance().clickWhenReady(linkFrench);
+		//getReusableActionsInstance().clickWhenReady(infoBalanceLable);
+		getReusableActionsInstance().executeJavaScriptClick(linkFrench);
 	}
 }
 

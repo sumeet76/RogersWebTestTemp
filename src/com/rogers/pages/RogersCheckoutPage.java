@@ -810,7 +810,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 	public boolean verifyDownPaymentAmt(String expectedDownPayment) {
 		//if(riskClass.toUpperCase().contains("HIGH")) {
-			String actualDownPayment = getReusableActionsInstance().getWhenReady(downPaymentAmt, 20).getText().trim();
+			String actualDownPayment = getReusableActionsInstance().getWhenReady(downPaymentAmt, 20).getText().trim().replace("$", "");
 			if(actualDownPayment.contains(expectedDownPayment) || actualDownPayment.replace(",", ".").contains(expectedDownPayment)) {
 				return true;
 			} else return false;

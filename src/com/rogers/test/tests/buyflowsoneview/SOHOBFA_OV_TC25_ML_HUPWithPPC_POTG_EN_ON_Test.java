@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * TC01-OV-AAL_Singleline Account_Validate if user is able to place an order in HUP flow and choose a different plan_EN
- * @author Saurav.Goyal
+ * TC25-SOHO_OVHUP - ML Account_Validate if user is able to place a HUP order with PPC on main line by selecting POTG shhupping_EN
+ * @author praveen.kumar7
  */
 public class SOHOBFA_OV_TC25_ML_HUPWithPPC_POTG_EN_ON_Test extends BaseTestClass {
 

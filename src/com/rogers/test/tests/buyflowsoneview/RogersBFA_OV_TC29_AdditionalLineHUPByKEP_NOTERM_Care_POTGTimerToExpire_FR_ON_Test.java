@@ -11,55 +11,40 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * TC26-SOHO_OVHUP - ML Account_Validate if user is able to place a HUP order by keeping current plan on additional line by selecting Std Shipping_EN_BC
+ * TC29-Consuumer_OV_ML Account_Validate if user is able to place a HUP order by keeping current planand Validate POTG timer expiry in review order page_FR_ON
  * @author praveen.kumar7
  */
-public class SOHOBFA_OV_TC26_ML_HUPWithKEPOnAdditionalLine_StdShipping_FR_BC_Test extends BaseTestClass {
+public class RogersBFA_OV_TC29_AdditionalLineHUPByKEP_NOTERM_Care_POTGTimerToExpire_FR_ON_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","RegressionOVBFA","OVSOHOAALBFA"})
-	public void sohoHUPWithKEPOnAdditionalLineStdShippingFRFlow() {
-		getEnvironmentSelectionPage().launchOneView(TestDataHandler.buyFlowsOVtestCase26.getBanNo(), TestDataHandler.buyFlowsOVtestCase26.getContactID());
+	@Test(groups = {"RegressionBFA","RegressionOVBFA","OVHUPBFA"})
+	public void rogersHUPWithPPCOnAdditionalLine_NOTERM_POTGTimerExpiry_FR_Test() {
+		getEnvironmentSelectionPage().launchOneView(TestDataHandler.buyFlowsOVtestCase29.getBanNo(), TestDataHandler.buyFlowsOVtestCase29.getContactID());
 		reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
 		reporter.reportLogWithScreenshot("Rogers Account overview page");
+		reporter.hardAssert(getAccountOverViewPage().verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase29.getCtn()),"CTN Found","CTN Not Found");
+		getAccountOverViewPage().clkCloseBtnAssignDataManager();
 		getAccountOverViewPage().setLanguageFrench();
-		reporter.hardAssert(getAccountOverViewPage().verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase26.getCtn()),"CTN Found","CTN Not Found");
 		getAccountOverViewPage().clkCloseBtnAssignDataManager();
 		//----------------------------------------------Dashboard page--------------------------------------------------
 		reporter.hardAssert(getRogersOVWirelessDetailsPage().verifyWirelessPageLoad() ,"Wireless page loaded" , "Wireless page not loaded");
 		reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
 		getRogersOVWirelessDetailsPage().clkUpgradeMyDevice();
 		reporter.reportLogWithScreenshot("Device upgrade button clicked");
-		getRogersOVWirelessDetailsPage().setCustomerType(this.getClass().getSimpleName());
+		//getRogersOVWirelessDetailsPage().setCustomerType(this.getClass().getSimpleName());
 		//----------------------------------------Device Catalog & Config page-------------------------------------------
-		reporter.hardAssert(getRogersOVChoosePhonePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
-		reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
-		getRogersOVChoosePhonePage().selectCTN(TestDataHandler.buyFlowsOVtestCase25.getCtn());
-		getRogersOVChoosePhonePage().clkContinueBtnHupCtnSelectionModal();
-		String deviceName = TestDataHandler.buyFlowsOVtestCase26.getDeviceName();
-		reporter.hardAssert(getRogersOVChoosePhonePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
-		getRogersOVChoosePhonePage().clickDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase26.getDeviceName());
+		reporter.hardAssert(getRogersOVChoosePhonePage().verifyDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase29.getDeviceName()), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
+		getRogersOVChoosePhonePage().clickDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase29.getDeviceName());
 		getRogersOVChoosePhonePage().clickContinueButton();
-		//---------------------------------------------Plan config page-------------------------------------------------
-		reporter.hardAssert(getRogersOVPlanConfigPage().verifyCustomerTypeInHeader("BUSINESS"),
-				"Customer type in header is displayed correctly", "Customer type in header is not displayed correctly");
-		reporter.softAssert(getRogersOVPlanConfigPage().verifyBreadCrumb(deviceName),
-				"BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
-		reporter.hardAssert(getRogersOVPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
-		reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
-		getRogersOVPlanConfigPage().setCheckBoxKeepMyCurrentPlan();
+		//---------------------------------------------Plan config page--------------------------------------------------
+		getRogersOVPlanConfigPage().clkRadioButtonNoTerm();
 		getRogersOVPlanConfigPage().clkPreCartDeviceCostContinueButtonForNac();
 		reporter.reportLogPassWithScreenshot("Device cost option selected");
 		getRogersOVPlanConfigPage().clickContinueOnModalToDoWithOldPhone();
-		getRogersOVPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		getRogersOVPlanConfigPage().clickPreCartAddonsContinueButton();
 		getRogersOVPlanConfigPage().clickCartSummaryContinueButton();
-		getRogersOVPlanConfigPage().clkAdditionalLineOptions();
 		//---------------------------------------------Checkout pages---------------------------------------------------
-		reporter.hardAssert(getRogersOVCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
-				"Billing Address is not selected");
-		getRogersOVCheckoutPage().clkDeliveryMethod("STANDARD");
-		reporter.reportLogPassWithScreenshot("Standard Delivery selected");
-		//reporter.hardAssert(getRogersOVCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");
+		getRogersOVCheckoutPage().clkDeliveryMethod("PRO");
+		reporter.reportLogPassWithScreenshot("Standard shipping option selected");
 		getRogersOVCheckoutPage().clkContinueBtnShipping();
 		reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
 		getRogersOVCheckoutPage().clksubmitBtnCheckoutPage();
@@ -69,7 +54,6 @@ public class SOHOBFA_OV_TC26_ML_HUPWithKEPOnAdditionalLine_StdShipping_FR_BC_Tes
 				"Order Review Page Title is not Present");
 		reporter.reportLogPassWithScreenshot("Order Review Page");
 		getRogersOVReviewOrderPage().clkPointsToMentionCheckbox();
-		getRogersOVReviewOrderPage().clkEmailConsentCheckbox();
 		reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
 		getRogersOVReviewOrderPage().clkSubmitOrderBtn();
 		reporter.reportLogWithScreenshot("Submit Order Button Pressed");
@@ -85,7 +69,7 @@ public class SOHOBFA_OV_TC26_ML_HUPWithKEPOnAdditionalLine_StdShipping_FR_BC_Tes
 		}
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
 		//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyBANOrderConfirmationPage(TestDataHandler.buyFlowsOVtestCase26.getBanNo()), "BAN displayed is the same as the given BAN", "BAN displayed isn't the same as the given BAN");
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyBANOrderConfirmationPage(TestDataHandler.buyFlowsOVtestCase29.getBanNo()), "BAN displayed is the same as the given BAN", "BAN displayed isn't the same as the given BAN");
 		reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");
 	}
 

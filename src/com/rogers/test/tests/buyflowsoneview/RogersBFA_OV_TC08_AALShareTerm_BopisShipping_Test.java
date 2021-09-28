@@ -92,7 +92,7 @@ public class RogersBFA_OV_TC08_AALShareTerm_BopisShipping_Test extends BaseTestC
 				"Order Review Page Title is not Present");
 		reporter.reportLogPassWithScreenshot("Order Review Page");
 		getRogersOVReviewOrderPage().clkPointsToMentionCheckbox();
-		getRogersOVReviewOrderPage().clkEmailConsentCheckbox();
+		getRogersOVReviewOrderPage().clkBopisConsentCheckbox();
 		reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
 		getRogersOVReviewOrderPage().clkSubmitOrderBtn();
 		reporter.reportLogWithScreenshot("Submit Order Button Pressed");
