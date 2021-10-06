@@ -23,6 +23,10 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Your first ID option')]/ancestor::span//following-sibling::select")
 	WebElement iD;
 
+
+	@FindBy(xpath = "//div[@class='rch-payment-options']/descendant::rch-dropdown/descendant::select | //div[@class='rch-payment-options']/descendant::select | //select[@id='ds-form-input-id-0']")
+	WebElement paymentOption;
+
 	@FindBy(xpath = "//div[@translate='chc.label.creditCheckMessageForTenure']")
 	WebElement noIDRequired;
 
@@ -165,7 +169,7 @@ public class CreditCheckPage  extends BasePageClass {
 			getReusableActionsInstance().javascriptScrollByVisibleElement(secondID);
 			getReusableActionsInstance().selectWhenReady(secondID, 3);
 			getReusableActionsInstance().javascriptScrollByVisibleElement(passportContainer);
-			getReusableActionsInstance().clickWhenReady(passportContainer);
+			getReusableActionsInstance().executeJavaScriptClick(passportContainer);
 			getReusableActionsInstance().javascriptScrollByVisibleElement(passportInput);
 			getReusableActionsInstance().enterText(passportInput, passportNo, 30);
 			getReusableActionsInstance().javascriptScrollByVisibleElement(passportExpiryYear);
@@ -270,6 +274,24 @@ public class CreditCheckPage  extends BasePageClass {
 	 */
 	public boolean verifyCreditEvaluationHeader() {
 		return getReusableActionsInstance().isElementVisible(creditEvaluationHeader,45);
+	}
+
+
+
+
+
+
+
+
+	/**
+	 * Select Payment Option
+	 * @param provinc is the Province to set
+	 * @author aditi.jain
+	 */
+	public void selectPaymentOption(int index) {
+			getReusableActionsInstance().waitForElementVisibility(paymentOption, 45);
+			getReusableActionsInstance().scrollToElement(paymentOption);
+			getReusableActionsInstance().selectWhenReady(paymentOption, index);
 	}
 }
 
