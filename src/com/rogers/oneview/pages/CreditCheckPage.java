@@ -201,7 +201,7 @@ public class CreditCheckPage  extends BasePageClass {
 			getReusableActionsInstance().javascriptScrollByVisibleElement(licenseExpiryDay);
 			getReusableActionsInstance().selectWhenReadyByVisibleText(licenseExpiryDay, idExpiryDay);
 			getReusableActionsInstance().javascriptScrollByVisibleElement(licenseNoContainer);
-			getReusableActionsInstance().clickWhenReady(licenseNoContainer);
+			getReusableActionsInstance().executeJavaScriptClick(licenseNoContainer);
 			getReusableActionsInstance().javascriptScrollByVisibleElement(licenseNoInput);
 			getReusableActionsInstance().enterText(licenseNoInput, licenseNo, 30);
 		}
