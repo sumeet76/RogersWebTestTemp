@@ -47,7 +47,7 @@ public class OneViewCH_Auto_1415_TC01_E2E_NAC_SAI_TMP_Test extends BaseTestClass
 		getRogersIgniteCampaignPage().clickApplyCoupon();
 		reporter.reportLogWithScreenshot("apply coupon");
 		getRogersIgniteCampaignPage().verifyCouponRemoveLink();
-		getRogersIgniteCampaignPage().clickCouponAlert();
+		getRogersIgniteCampaignPage().closeCouponAlert();
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		reporter.reportLogWithScreenshot("cart summary checkout");
 		getRogersIgniteBundlesPage().customerWishtoContinue();

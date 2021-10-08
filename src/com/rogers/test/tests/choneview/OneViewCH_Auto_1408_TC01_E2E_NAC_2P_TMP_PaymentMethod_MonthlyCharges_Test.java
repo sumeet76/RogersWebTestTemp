@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_1408_TC01_E2E_NAC_2P_TMP_Test extends BaseTestClass {
+public class OneViewCH_Auto_1408_TC01_E2E_NAC_2P_TMP_PaymentMethod_MonthlyCharges_Test extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
     public void oneViewCH_Auto_1408_TC01_E2E_NAC_2P_TMP_Test(){
 		reporter.reportLogWithScreenshot("oneview env");
@@ -33,7 +33,6 @@ public class OneViewCH_Auto_1408_TC01_E2E_NAC_2P_TMP_Test extends BaseTestClass 
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		reporter.reportLogWithScreenshot("Add To Cart");
 		getRogersIgniteBundlesPage().noPortInPopup();
-//		reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
 		reporter.reportLogWithScreenshot("Product in cart");
 		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
@@ -46,6 +45,7 @@ public class OneViewCH_Auto_1408_TC01_E2E_NAC_2P_TMP_Test extends BaseTestClass 
 		getRogersIgniteBundlesPage().clkCheckOut();
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContentPopup();
+
 		reporter.reportLogWithScreenshot("Cart Summary");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		reporter.reportLogWithScreenshot("Campaign code");
@@ -82,17 +82,10 @@ public class OneViewCH_Auto_1408_TC01_E2E_NAC_2P_TMP_Test extends BaseTestClass 
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		reporter.reportLogWithScreenshot("billing options");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
-		reporter.reportLogWithScreenshot("digital frontline");
-		getCreditCheckPage().clickDigitalFrontline();
-		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-		reporter.reportLogWithScreenshot("card number");
-		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-		reporter.reportLogWithScreenshot("card month and year");
-		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-		reporter.reportLogWithScreenshot("payment details");
-
-//		getPaymentOptionsPage().clkContinue();
-//		reporter.reportLogWithScreenshot("Order Review Page");
+		getCreditCheckPage().selectPaymentOption(1);
+		reporter.reportLogWithScreenshot("Monthly charges");
+		getPaymentOptionsPage().clkContinue();
+		//		reporter.reportLogWithScreenshot("Order Review Page");
 //		reporter.hardAssert(getRogersOVCheckoutPage().verifySavingsExist(),"Savings section exists","Savings section does not exists");
 //		getRogersOVCheckoutPage().clkSubmit();
 //		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");

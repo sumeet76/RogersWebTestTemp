@@ -67,8 +67,8 @@ public class RogersIgniteCampaignPage extends BasePageClass{
 	 * click close Coupon Alert Box
 	 * @author aditi.jain
 	 */
-	public void clickCouponAlert() {
-		getReusableActionsInstance().clickWhenReady(closeCouponAlertBox,30);
+	public void closeCouponAlert() {
+		getReusableActionsInstance().executeJavaScriptClick(closeCouponAlertBox);
 	}
 	/**
 	 * click Apply coupon

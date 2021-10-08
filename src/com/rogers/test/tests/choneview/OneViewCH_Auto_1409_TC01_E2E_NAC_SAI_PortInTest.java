@@ -83,7 +83,6 @@ public class OneViewCH_Auto_1409_TC01_E2E_NAC_SAI_PortInTest extends BaseTestCla
 //		getPaymentOptionsPage().clkContinue();
 //		reporter.reportLogWithScreenshot("submit order");
 //		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
 
     }
