@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_1543_TC01_Add_Channels_Immediate_Test extends BaseTestClass {
+	public class OneViewCH_Auto_1543_TC01_Add_Channels_Immediate_Test extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
     public void oneViewCH_Auto_1543_TC01_Add_Channels_Immediate_Test(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.addChannelImmediate.getAccountNo(), TestDataHandler.addChannelImmediate.getContactID());

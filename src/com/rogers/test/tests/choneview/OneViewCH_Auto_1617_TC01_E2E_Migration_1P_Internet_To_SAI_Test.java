@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_1617_TC01_E2E_Migration_To_SAI_Test extends BaseTestClass {
+public class OneViewCH_Auto_1617_TC01_E2E_Migration_1P_Internet_To_SAI_Test extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
     public void oneViewCH_Auto_1617_TC01_E2E_Migration_To_SAI_Test(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationDataToSAI.getAccountNo(), TestDataHandler.migrationDataToSAI.getContactID() );
