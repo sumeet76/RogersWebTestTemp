@@ -29,8 +29,8 @@ public class OneViewCH_Auto_1417_TC01_E2E_NAC_3P_TMP_Test extends BaseTestClass 
 		reporter.reportLogWithScreenshot("Triple play selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		reporter.reportLogWithScreenshot("loading offers");
-		String promoCode = getRogersIgniteCampaignPage().getPromoCode();
-		System.out.println("promoCode :: " +  promoCode);
+//		String promoCode = getRogersIgniteCampaignPage().getPromoCode();
+//		System.out.println("promoCode :: " +  promoCode);
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		reporter.reportLogWithScreenshot("added first to cart");
 		getRogersIgniteBundlesPage().noPortInPopup();
@@ -43,18 +43,28 @@ public class OneViewCH_Auto_1417_TC01_E2E_NAC_3P_TMP_Test extends BaseTestClass 
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContinue();
 		getRogersIgniteBundlesPage().clkCollapse();
+
+
+
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		getRogersIgniteBundlesPage().clkCheckOut();
+
+		getRogersIgniteBundlesPage().fourKTVPopup();
+		getRogersIgniteBundlesPage().fourKContinue();
+
+
+
 		reporter.reportLogWithScreenshot("campaign");
 		getRogersIgniteCampaignPage().clickCampaignTab();
-		getRogersIgniteCampaignPage().enterCoupon(promoCode);
+		getRogersIgniteCampaignPage().enterCoupon("K13");
 
-		reporter.reportLogWithScreenshot("entered promo");
+
 		getRogersIgniteCampaignPage().clickApplyCoupon();
-
-		reporter.reportLogWithScreenshot("coupon applied");
+		reporter.reportLogWithScreenshot("apply coupon");
 		getRogersIgniteCampaignPage().verifyCouponRemoveLink();
+		reporter.reportLogWithScreenshot("close coupon alert");
 		getRogersIgniteCampaignPage().closeCouponAlert();
+
 		reporter.reportLogWithScreenshot("Cart Summary");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
@@ -99,12 +109,9 @@ public class OneViewCH_Auto_1417_TC01_E2E_NAC_3P_TMP_Test extends BaseTestClass 
 		reporter.reportLogWithScreenshot("added cart details");
 
 //		getPaymentOptionsPage().clkContinue();
-//		reporter.hardAssert(getRogersOVCheckoutPage().verifyOrderReviewPage(),"Order Review header exists","Order Review header did not display");
 //		reporter.reportLogWithScreenshot("Order Review Page");
-//		reporter.hardAssert(getRogersOVCheckoutPage().verifySavingsExist(),"Savings section exists","Savings section does not exists");
 //		reporter.reportLogWithScreenshot("submit order");
 //		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
     }
 
