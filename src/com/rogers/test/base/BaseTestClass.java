@@ -3,6 +3,7 @@ package com.rogers.test.base;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.rogers.oneview.pages.*;
+import com.rogers.ovr.pages.ChampLoginPage;
 import com.rogers.pages.RogersBuildPlanPage;
 import com.rogers.pages.RogersChooseAddonsPage;
 import com.rogers.pages.RogersChoosePhonePage;
@@ -170,6 +171,7 @@ public class BaseTestClass {
     protected static final ThreadLocal<RogersHomePageServiceability> RogersHomePageServiceabilityThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersSecurityPackagesPage> RogersSecurityPackagesPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersOVInstallationPage> RogersOVInstallationPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<ChampLoginPage> ChampLoginPageThreadLocal = new ThreadLocal<>();
 
     public static RogersPSEFPage getRogersPSEFPage() {
         return RogersPSEFPageThreadLocal.get();
@@ -636,6 +638,10 @@ public class BaseTestClass {
 
     public static RogersFinanceAccessoriesPage getRogersFinanceAccessoriesPagePage() {
         return RogersFinanceAccessoriesPagePageThreadLocal.get();
+    }
+
+    public static ChampLoginPage getChampLoginPage() {
+        return ChampLoginPageThreadLocal.get();
     }
 
 
