@@ -373,9 +373,10 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author aditi.jain
 	 */
 	public void clickYesContinueIfPresent() {
-		getReusableActionsInstance().staticWait(3000);
-		getReusableActionsInstance().waitForElementVisibility(yesToContinue, 30);
-		getReusableActionsInstance().getWhenReady(yesToContinue).click();
+		if(getReusableActionsInstance().isElementVisible(yesToContinue, 30)) {
+			getReusableActionsInstance().getWhenReady(yesToContinue).click();
+		}
+
 	}
 	/**
 	 * Clicks continue on change TV package
