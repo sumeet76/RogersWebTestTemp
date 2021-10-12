@@ -43,6 +43,7 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'URIEmailer', test_URIEmailer
 	systemProperty 'PageLoadStrategy', test_PageLoadStrategy
 	systemProperty 'CookieFetcherMapping', test_CookieFetcherMapping
+	systemProperty 'OVRURL', test_ovr
 
 	useTestNG(){
 		parallel = test_parallel
@@ -81,6 +82,7 @@ task "localTest"(type: Test) {
 	systemProperty 'URIEmailer', test_URIEmailer
 	systemProperty 'PageLoadStrategy', test_PageLoadStrategy
 	systemProperty 'CookieFetcherMapping', test_CookieFetcherMapping
+	systemProperty 'OVRURL', test_ovr
 
 	systemProperties(System.getProperties())
 	outputs.upToDateWhen { false }  // Always run tests

@@ -2,13 +2,9 @@ package com.rogers.ovr.pages;
 
 
 import com.rogers.pages.base.BasePageClass;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
-
-import java.util.Locale;
 
 public class ChampLoginPage extends BasePageClass {
 
@@ -19,10 +15,18 @@ public class ChampLoginPage extends BasePageClass {
     WebElement btnext;
     @FindBy(id = "userNameInput")
     WebElement txtusername;
-    @FindBy(id = "passwordInput")
-    WebElement txtpassword;
     @FindBy(id = "submitButton")
     WebElement signinbutton;
+
+
+    //Gmail Login Page
+    @FindBy(xpath = "//span[text()='Next']")
+    WebElement googleBtnNext;
+    @FindBy(xpath = "//span[text()='Next']")
+    WebElement googleBtnLogin;
+    @FindBy(xpath = "//div[@id='password']//input")
+    WebElement txtPassword;
+
 
     //UniLoginPage
     @FindBy(xpath = "//*[@id='dsa-accordion-panel-0-body-0']/div/raap-dealer-code-auth/section/form/ds-form-field/div/div[1]")
@@ -85,13 +89,15 @@ public class ChampLoginPage extends BasePageClass {
         super(driver);
     }
 
-    public void logintoChamp(String email, String password) throws InterruptedException {
+    public void logIntoChamp(String email, String password) throws InterruptedException {
 
         getReusableActionsInstance().getWhenVisible(txtemail).sendKeys(email);
         getReusableActionsInstance().getWhenVisible(btnext).click();
-        getReusableActionsInstance().getWhenVisible(txtpassword).sendKeys(password);
-        getReusableActionsInstance().getWhenVisible(signinbutton).click();
-        getDriver().navigate().refresh();
+        //gmail login page
+        getReusableActionsInstance().getWhenVisible(googleBtnNext).click();
+        getReusableActionsInstance().getWhenVisible(txtPassword).sendKeys(password);
+        getReusableActionsInstance().getWhenVisible(googleBtnLogin).click();
+        
         Thread.sleep(5000);
     }
 
