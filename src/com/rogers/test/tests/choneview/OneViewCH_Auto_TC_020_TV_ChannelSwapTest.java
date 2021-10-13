@@ -16,7 +16,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 
 public class OneViewCH_Auto_TC_020_TV_ChannelSwapTest extends BaseTestClass {
-	@Test (groups = {"RegressionCHOV","SanityCHOV","SanityCHOVTemp"})
+	@Test (groups = {"RChannelsandThemepacks","RegressionCHOV","SanityCHOV","SanityCHOVTemp"})
     public void checkChannelSwapTest() {
 		//getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.solarisTV.accountDetails.getBan(), TestDataHandler.solarisTV.getContactID());

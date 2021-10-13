@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_TC32_SAI_AddingSmartstream_WithoutTierChangeTest extends BaseTestClass {
-    @Test(groups = {"Baseline","ChangePackage"})
+    @Test(groups = {"RAddingISS","Baseline","ChangePackage"})
     public void checkAddSmartStream() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC032_SAI_AddingSmartStream.accountDetails.getBan(),TestDataHandler.TC032_SAI_AddingSmartStream.getContactID());

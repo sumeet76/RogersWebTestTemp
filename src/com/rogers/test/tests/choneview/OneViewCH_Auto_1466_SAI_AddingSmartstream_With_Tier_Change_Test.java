@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_1466_SAI_AddingSmartstream_With_Tier_Change_Test extends BaseTestClass {
-    @Test(groups = {"Baseline","ChangePackage"})
+    @Test(groups = {"RAddingISS","Baseline","ChangePackage"})
     public void checkAddSmartStream() {
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC032_SAI_AddingSmartStream.accountDetails.getBan(),TestDataHandler.TC032_SAI_AddingSmartStream.getContactID());
         reporter.reportLogWithScreenshot("Launched the account overview page");

@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 
 public class OneViewCH_Auto_1619_TC01_E2E_Migration_1P_Internet_To_2P_Test extends BaseTestClass {
-	@Test (groups = {"RegressionCHOV"})
+	@Test (groups = {"RMigration","RegressionCHOV"})
     public void oneViewCH_Auto_1619_TC01_E2E_Migration_To_2P_Test(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData1PTo2P.getAccountNo(), TestDataHandler.migrationData1PTo2P.getContactID());
 
