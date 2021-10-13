@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_TC_028_Internet_PackageDowngrade_NextBillingCycleTest extends BaseTestClass {
-    @Test(groups = {"Baseline","ChangePackage"})
+    @Test(groups = {"RChangeInternet","Baseline","ChangePackage"})
     public void checkTVPackageDowngrade() {
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getBan(),TestDataHandler.TC028_InternetPackageDowngrade.getContactID());
         getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));

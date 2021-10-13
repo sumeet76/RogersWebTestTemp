@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_1464_Tupelo_Internet_Upgrade_Immediate_Test extends BaseTestClass {
-    @Test(groups = {"RegressionCHOV"})
+    @Test(groups = {"RChangeInternet","RegressionCHOV"})
     public void oneViewCH_1464_Tupelo_Internet_Upgrade_ImmediateTest() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView( TestDataHandler.tupeloUpgradeTest.accountDetails.getBan(),TestDataHandler.tupeloUpgradeTest.getContactID());

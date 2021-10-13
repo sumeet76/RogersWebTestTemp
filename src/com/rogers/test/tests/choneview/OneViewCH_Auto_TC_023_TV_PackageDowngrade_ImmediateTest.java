@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_TC_023_TV_PackageDowngrade_ImmediateTest extends BaseTestClass {
-    @Test(groups = {"Baseline","ChangePackage"})
+    @Test(groups = {"RChangeTv","Baseline","ChangePackage"})
     public void checkTVPackageDowngrade() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC023_TVPackageDowngrade.accountDetails.getBan(),TestDataHandler.TC023_TVPackageDowngrade.getContactID());
