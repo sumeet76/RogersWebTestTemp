@@ -71,7 +71,6 @@ public class OneViewCH_Auto_1618_TC01_E2E_Migration_1P_Internet_To_SAIISS_Test e
 //		getPaymentOptionsPage().clkContinue();
 //		reporter.reportLogWithScreenshot("submit order");
 //		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
 
     }

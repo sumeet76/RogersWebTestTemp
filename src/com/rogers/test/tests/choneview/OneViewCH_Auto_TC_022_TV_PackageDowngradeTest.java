@@ -36,8 +36,8 @@ public class OneViewCH_Auto_TC_022_TV_PackageDowngradeTest extends BaseTestClass
 		reporter.reportLogWithScreenshot("Continue clicked on 4k channels pack");
 		getTVDashboardPage().clickContinueOnSelectDateChange();
 		reporter.softAssert(getRogersOVOrderReviewPage().verifyMonthlyCharges(),"Monthly Charges Displayed","Failed to Navigate to Monthly Charges Page");
-		getRogersOVOrderReviewPage().clkSubmit();
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//		getRogersOVOrderReviewPage().clkSubmit();
+//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
     }
 
