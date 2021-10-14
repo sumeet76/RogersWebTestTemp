@@ -38,19 +38,19 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_ExchangeNow_Test extends BaseTe
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
 		getRogersIgniteBundlesPage().clkContinue();
-
-		//EXCHANGE NOW
-
+		reporter.reportLogWithScreenshot("Exchange Options");
 		getRogersIgniteExchangePage().clickExchangeNow();
+		reporter.reportLogWithScreenshot("Exchange Now");
 		getRogersIgniteExchangePage().verifyChannelToSwapHeader();
 		getRogersIgniteExchangePage().selectFirstChannelToRemove();
+		reporter.reportLogWithScreenshot("first channel selected");
 		getRogersIgniteExchangePage().clickSelectButton();
+		reporter.reportLogWithScreenshot("button select");
 		getRogersIgniteExchangePage().selectFirstChannelToAdd();
+		reporter.reportLogWithScreenshot("first channel to Add");
 		getRogersIgniteExchangePage().clickSelectButton();
+		reporter.reportLogWithScreenshot("Channel Swapped");
 		getRogersIgniteExchangePage().clkContinue();
-
-
-
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContentPopup();
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
