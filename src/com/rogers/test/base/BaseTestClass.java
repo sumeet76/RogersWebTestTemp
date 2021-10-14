@@ -783,7 +783,7 @@ public class BaseTestClass {
 
             case "ovr":
                 getDriver().get(strUrl);
-                setImplicitWait(getDriver(), 30);
+                setImplicitWait(getDriver(), 10);
                 break;
 
             default:
@@ -1199,6 +1199,8 @@ public class BaseTestClass {
                 CheckAvailabilityPageThreadLocal.set(new com.rogers.ovr.pages.CheckAvailabilityPage(getDriver()));
                 BundleBuilderPageThreadLocal.set(new com.rogers.ovr.pages.BundleBuilderPage(getDriver()));
                 LNPEligibilityPageThreadLocal.set(new com.rogers.ovr.pages.LNPEligibilityPage(getDriver()));
+                CustomerProfilePageThreadLocal.set(new CustomerProfilePage(getDriver()));
+                CreditCheckPageThreadLocal.set(new CreditCheckPage(getDriver()));
                 break;
 
 

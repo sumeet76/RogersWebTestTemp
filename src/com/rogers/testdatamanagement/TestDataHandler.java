@@ -271,6 +271,8 @@ public class TestDataHandler {
 	public static AccountData tc138;
 	public static AccountData tc139;
 	public static AccountData RHPManage_AddOns;
+	public static OvrReusableData ovrReusableData;
+	public static OvrConfigData ovrConfigData;
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
  		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
@@ -304,6 +306,11 @@ public class TestDataHandler {
 		}
 		if(strTestMethodName.contains("search.")||strTestMethodName.contains("serviceability.")) {
 			//No yaml data files to initialize
+			match = true;
+		}
+		if(strTestMethodName.contains("ovr.")){
+			//OVR Data files
+			ovrDataInit();
 			match = true;
 		}
 		if (!match) {
@@ -599,5 +606,10 @@ public class TestDataHandler {
 		targetedMigration2PInternetAndTVTo2P=YamlHandler.getMigrationData("1555_TargetedMigrationFlow_2P_InternetToTV_to_2P");
 		targetedMigration2PInternetAndTVToSAI = YamlHandler.getMigrationData(("1553_TargetedMigrationFlow_2P_InternetAndTV_to_SAI"));
 		targetedMigration2PInternetAndTVToSAIISS= YamlHandler.getMigrationData("1554_TargetedMigrationFlow_2P_InternetAndTV_to_SAIISS");
+	}
+
+	private static void ovrDataInit() throws FileNotFoundException {
+		ovrConfigData= YamlHandler.getOvrConfigData();
+		ovrReusableData=YamlHandler.getOvrReusableData();
 	}
 }

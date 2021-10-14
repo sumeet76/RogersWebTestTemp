@@ -30,11 +30,12 @@ public class UniLoginPage extends BasePageClass {
      * @author Vikas.gorla
      */
     public void searchWithDealerCode(String dealerCode) {
+        if(getReusableActionsInstance().isElementVisible(btnaccept,15))
+        {getReusableActionsInstance().clickWhenVisible(btnaccept);}
         getReusableActionsInstance().getWhenVisible(eledealercode).click();
         getReusableActionsInstance().getWhenVisible(txtdealercode, 30).sendKeys(dealerCode);
         getReusableActionsInstance().getWhenVisible(btnSubmit).click();
-        if(getReusableActionsInstance().isElementVisible(btnaccept,15))
-        {getReusableActionsInstance().clickWhenVisible(btnaccept);}
+
     }
 
     public void selectSSPEnv(String env){

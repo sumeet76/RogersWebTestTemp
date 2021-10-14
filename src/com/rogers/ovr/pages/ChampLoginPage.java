@@ -15,17 +15,12 @@ public class ChampLoginPage extends BasePageClass {
     WebElement btnext;
     @FindBy(id = "userNameInput")
     WebElement txtusername;
-    @FindBy(id = "submitButton")
+    @FindBy(id = "idSIButton9")
     WebElement signinbutton;
-
-
-    //Gmail Login Page
-    @FindBy(xpath = "//span[text()='Next']")
-    WebElement googleBtnNext;
-    @FindBy(xpath = "//span[text()='Next']")
-    WebElement googleBtnLogin;
-    @FindBy(xpath = "//div[@id='password']//input")
+    @FindBy(xpath = "//input[@type='password']")
     WebElement txtPassword;
+    @FindBy(id= "idBtn_Back")
+    WebElement staySignedInNO;
 
 
     //UniLoginPage
@@ -93,12 +88,14 @@ public class ChampLoginPage extends BasePageClass {
 
         getReusableActionsInstance().getWhenVisible(txtemail).sendKeys(email);
         getReusableActionsInstance().getWhenVisible(btnext).click();
-        //gmail login page
-        getReusableActionsInstance().getWhenVisible(googleBtnNext).click();
         getReusableActionsInstance().getWhenVisible(txtPassword).sendKeys(password);
-        getReusableActionsInstance().getWhenVisible(googleBtnLogin).click();
-        
-        Thread.sleep(5000);
+        getReusableActionsInstance().getWhenVisible(signinbutton).click();
+        if(getReusableActionsInstance().isElementVisible(staySignedInNO, 10)){
+            getReusableActionsInstance().getWhenVisible(staySignedInNO).click();
+        }
+
+
+        Thread.sleep(3000);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.rogers.ovr.pages;
 
 import com.rogers.pages.base.BasePageClass;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -67,7 +68,7 @@ public class BundleBuilderPage extends BasePageClass {
 
 
 
-    @FindBy(xpath = "//*[contains(@id,'ds-modal-container')]//ds-checkbox/label/div[1]")
+    @FindBy(xpath = "//span[text()='I have reviewed all the Points to Mention with the customer.']")
     WebElement chkbox_pointstomention;
 
 
@@ -115,13 +116,13 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath = "//*[text()='Yes, continue']")
     WebElement btnyescontinue;
 
-    @FindBy(id = "ds-form-input-id-0")
+    @FindBy(xpath = "//span[text()='Year']/parent::ds-input-label/parent::label/parent::span/following-sibling::select")
     WebElement select_year;
 
 
-    @FindBy(id = "ds-form-input-id-1")
+    @FindBy(xpath = "//span[text()='Month']/parent::ds-input-label/parent::label/parent::span/following-sibling::select")
     WebElement select_month;
-    @FindBy(id = "ds-form-input-id-2")
+    @FindBy(id = "(/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[3] or //span[text()='Day']/parent::ds-input-label/parent::label/parent::span/following-sibling::select")
     WebElement select_day;
 
     @FindBy(id = "ds-form-input-id-3")
@@ -235,7 +236,7 @@ public class BundleBuilderPage extends BasePageClass {
         // Thread.sleep(20000);
 
     }
-    public void expandpointsToMentionAndContinue() throws InterruptedException {
+    public void expandPointsToMentionAndContinue() throws InterruptedException {
         for(WebElement ele:btnsexpand_pointsTomention) {
             getReusableActionsInstance().getWhenVisible(ele).click();
             Thread.sleep(5000);
@@ -328,22 +329,14 @@ public class BundleBuilderPage extends BasePageClass {
         Thread.sleep(15000);
         scrollAndclickcontinue();
     }
-    public void enterdateOfBirth() throws InterruptedException {
-        getReusableActionsInstance().javascriptScrollToBottomOfPage();
-        Thread.sleep(15000);
-        getReusableActionsInstance().clickWhenReady(select_year);
-        getReusableActionsInstance().selectWhenReadyByVisibleText(select_year,"1960");
-        getReusableActionsInstance().selectWhenReadyByVisibleText(select_month,"March");
-        //  Thread.sleep(5000);
-        getReusableActionsInstance().selectWhenReadyByVisibleText(select_day,"7");
-        // Thread.sleep(5000);
-        // scrollAndclickcontinue();
-        // WebDriverWait wait = new WebDriverWait(getDriver(),10000);
-        // Thread.sleep(10000);
+    public void enterdateOfBirth(String yearofBirth,String monthofBirth,String dayofBirth) {
+        getReusableActionsInstance().selectWhenReadyByVisibleText(select_year,yearofBirth);
+        getReusableActionsInstance().selectWhenReady(select_month,Integer.parseInt(monthofBirth));
+        getReusableActionsInstance().selectWhenReadyByVisibleText(select_day, dayofBirth);
     }
     public void creditevaluationAndContinue() throws InterruptedException {
         getReusableActionsInstance().executeJavaScriptClick(btncontinue);
-        Thread.sleep(10000);
+        Thread.sleep(2000);
 
     }
 
@@ -372,7 +365,7 @@ public class BundleBuilderPage extends BasePageClass {
         getReusableActionsInstance().javascriptScrollToBottomOfPage();
         //  getReusableActionsInstance().scrollToElementAndClick(chckbox_installtion);
         getReusableActionsInstance().scrollToElementAndClick(btncontinue);
-        Thread.sleep(10000);
+        Thread.sleep(2000);
 
 
     }
@@ -387,7 +380,7 @@ public class BundleBuilderPage extends BasePageClass {
         getReusableActionsInstance().javascriptScrollToBottomOfPage();
         getReusableActionsInstance().getWhenReady(btncontinue,120);
         getReusableActionsInstance().executeJavaScriptClick(btncontinue);
-        Thread.sleep(10000);
+        Thread.sleep(2000);
     }
     @FindBy(id ="ds-checkbox-id-1")
     WebElement chckbox_signinAgreement;
