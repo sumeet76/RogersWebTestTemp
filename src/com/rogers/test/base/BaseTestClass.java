@@ -135,6 +135,7 @@ public class BaseTestClass {
     protected static final ThreadLocal<RogersInternetUsageOVPage> RogersInternetUsageOVPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<HomePhonedashboard> HomePhonedashboardThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersIgniteBundlesPage> RogersIgniteBundlesPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<RogersIgniteExchangePage> RogersIgniteExchangePageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersIgniteCampaignPage> RogersIgniteCampaignPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<CustomerProfilePage> CustomerProfilePageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<CreditCheckPage> CreditCheckPageThreadLocal = new ThreadLocal<>();
@@ -480,6 +481,11 @@ public class BaseTestClass {
 
     public static RogersIgniteBundlesPage getRogersIgniteBundlesPage() {
         return RogersIgniteBundlesPageThreadLocal.get();
+    }
+
+
+    public static RogersIgniteExchangePage getRogersIgniteExchangePage() {
+        return RogersIgniteExchangePageThreadLocal.get();
     }
 
     public static RogersIgniteCampaignPage getRogersIgniteCampaignPage() {
@@ -1086,6 +1092,7 @@ public class BaseTestClass {
                 RogersInternetUsagePageThreadLocal.set(new RogersInternetUsagePage(getDriver()));
                 HomePhonedashboardThreadLocal.set(new HomePhonedashboard(getDriver()));
                 RogersIgniteBundlesPageThreadLocal.set(new RogersIgniteBundlesPage(getDriver()));
+                RogersIgniteExchangePageThreadLocal.set(new RogersIgniteExchangePage(getDriver()));
                 RogersIgniteCampaignPageThreadLocal.set(new RogersIgniteCampaignPage(getDriver()));
                 CustomerProfilePageThreadLocal.set(new CustomerProfilePage(getDriver()));
                 CreditCheckPageThreadLocal.set(new CreditCheckPage(getDriver()));
