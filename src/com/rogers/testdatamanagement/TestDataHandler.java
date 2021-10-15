@@ -223,6 +223,8 @@ public class TestDataHandler {
 	public static MigrationData targetedMigration2PInternetAndTVTo3P;
 	public static MigrationData targetedMigration2PInternetAndTVToSAI;
 	public static MigrationData targetedMigration2PInternetAndTVToSAIISS;
+	public static MigrationData targetedMigration3PtoSAIISS;
+	public static MigrationData targetedMigration_3P_to_2P;
 	public static PaymentDetails ovPaymentInfo;
 	public static AccountData tc60;
 	public static RedesignConfig redesignConfig;
@@ -599,5 +601,7 @@ public class TestDataHandler {
 		targetedMigration2PInternetAndTVTo2P=YamlHandler.getMigrationData("1555_TargetedMigrationFlow_2P_InternetToTV_to_2P");
 		targetedMigration2PInternetAndTVToSAI = YamlHandler.getMigrationData(("1553_TargetedMigrationFlow_2P_InternetAndTV_to_SAI"));
 		targetedMigration2PInternetAndTVToSAIISS= YamlHandler.getMigrationData("1554_TargetedMigrationFlow_2P_InternetAndTV_to_SAIISS");
+		targetedMigration3PtoSAIISS=YamlHandler.getMigrationData("1565_TC01_TargetedMigration_3P_to_SAIISS");
+		targetedMigration_3P_to_2P=YamlHandler.getMigrationData("1566_TC01_TargetedMigration_3P_to_2P");
 	}
 }
