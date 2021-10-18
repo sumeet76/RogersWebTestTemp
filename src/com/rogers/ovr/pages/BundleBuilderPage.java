@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.FormFiller;
 
 import java.util.List;
 
@@ -60,6 +61,15 @@ public class BundleBuilderPage extends BasePageClass {
     WebElement btncontinue;
     @FindBy(xpath = "//*[contains(@id,'ds-modal-container')]//button/span/span/span")
     WebElement btncontinueonPointsToMention;
+
+    @FindBy(xpath = "//span[contains(text(),'Professional Install')]")
+    WebElement igniteProfessionalInstall;
+
+    @FindBy(xpath = "//span[text()='Continue']")
+    WebElement continueInstallation;
+
+    @FindBy(xpath = "//span[contains(text(),'Continue') or contains(text(),'Continue')]/ancestor::button")
+    WebElement continueBillingAndPayment;
 
 
 
@@ -122,7 +132,7 @@ public class BundleBuilderPage extends BasePageClass {
 
     @FindBy(xpath = "//span[text()='Month']/parent::ds-input-label/parent::label/parent::span/following-sibling::select")
     WebElement select_month;
-    @FindBy(id = "(/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[3] or //span[text()='Day']/parent::ds-input-label/parent::label/parent::span/following-sibling::select")
+    @FindBy(xpath = "//span[text()='Day']/parent::ds-input-label/parent::label/parent::span/following-sibling::select")
     WebElement select_day;
 
     @FindBy(id = "ds-form-input-id-3")
@@ -142,7 +152,23 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath = "//*[@name='View details']")
     WebElement btnInfo;
 
+    @FindBy(xpath ="//div[@class='appointment-content']")
+    WebElement txtEnroute;
 
+    @FindBy(xpath = "//input[@formcontrolname='enrouteMobileNumber']/ancestor::div[contains(@class,'ds-formField__inputContainer')]")
+    WebElement txtContainerMobile;
+
+    @FindBy(xpath = "//input[@formcontrolname='enrouteEmail']/ancestor::div[contains(@class,'ds-formField__inputContainer')]")
+    WebElement txtContainerEmail;
+
+    @FindBy(xpath ="//input[@formcontrolname='enrouteMobileNumber']")
+    WebElement txtMobielNumber;
+
+    @FindBy(xpath ="//input[@formcontrolname='enrouteEmail']")
+    WebElement txtEmail;
+
+    @FindBy(xpath ="//input[@id='26']/ancestor::label[contains(@class,'ds-radioLabel')]//div[@class='ds-radioButton__outerCircle my-12']")
+    WebElement rdoTechInstallSlot;
 
 
 
@@ -329,10 +355,16 @@ public class BundleBuilderPage extends BasePageClass {
         Thread.sleep(15000);
         scrollAndclickcontinue();
     }
-    public void enterdateOfBirth(String yearofBirth,String monthofBirth,String dayofBirth) {
+    public void enterdateOfBirth(String yearofBirth,String monthofBirth,String dayofBirth) throws InterruptedException {
         getReusableActionsInstance().selectWhenReadyByVisibleText(select_year,yearofBirth);
         getReusableActionsInstance().selectWhenReady(select_month,Integer.parseInt(monthofBirth));
         getReusableActionsInstance().selectWhenReadyByVisibleText(select_day, dayofBirth);
+
+    }
+
+    public void selectExpressProInstall() {
+        getReusableActionsInstance().waitForElementVisibility(igniteProfessionalInstall, 15);
+        getReusableActionsInstance().clickWhenReady(igniteProfessionalInstall);
     }
     public void creditevaluationAndContinue() throws InterruptedException {
         getReusableActionsInstance().executeJavaScriptClick(btncontinue);
@@ -391,7 +423,43 @@ public class BundleBuilderPage extends BasePageClass {
         Thread.sleep(10000);
     }
 
+    /**
+     * Set dynamic mobile number on the Order Summary Page
+     * @author Sameer.Ahuja
+     */
+    public void setMobileNumber() {
+        String strPhoneNumber = FormFiller.generatePhoneNumber();
+        String strEmail = FormFiller.generateEmail();
+        if(getReusableActionsInstance().isElementVisible(txtEnroute,90)) {
+            getReusableActionsInstance().javascriptScrollToBottomOfPage();
+            getReusableActionsInstance().waitForElementVisibility(txtContainerMobile, 20);
+            getReusableActionsInstance().getWhenReady(txtContainerMobile, 10).click();
+            getReusableActionsInstance().getWhenReady(txtMobielNumber, 10).clear();
+            getReusableActionsInstance().getWhenReady(txtMobielNumber, 3).sendKeys(strPhoneNumber);
+            getReusableActionsInstance().waitForElementVisibility(txtContainerEmail, 30);
+            getReusableActionsInstance().getWhenReady(txtContainerEmail, 10).click();
+            getReusableActionsInstance().getWhenReady(txtEmail, 10).clear();
+            getReusableActionsInstance().getWhenReady(txtEmail, 10).sendKeys(strEmail);
+        }
+    }
 
+    /**
+     * Select the slot from the available list of slots from installation page
+     * @author Sameer.Ahuja
+     */
+    public void clkTechInstallSlot() {
+        getReusableActionsInstance().waitForElementVisibility(rdoTechInstallSlot, 180);
+        getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+        getReusableActionsInstance().getWhenReady(rdoTechInstallSlot, 180).click();
+    }
 
+    public void clkContinueInstallation() {
+        getReusableActionsInstance().clickWhenReady(continueInstallation);
+    }
 
+    public void clkContinueBillingAndPayment() throws InterruptedException {
+        Thread.sleep(5000);
+        getReusableActionsInstance().waitForElementVisibility(continueBillingAndPayment, 60);
+        getReusableActionsInstance().clickWhenReady(continueBillingAndPayment);
+    }
 }

@@ -94,8 +94,6 @@ public class ChampLoginPage extends BasePageClass {
             getReusableActionsInstance().getWhenVisible(staySignedInNO).click();
         }
 
-
-        Thread.sleep(3000);
     }
 
 }
