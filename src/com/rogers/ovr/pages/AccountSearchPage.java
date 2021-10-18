@@ -18,7 +18,7 @@ public class AccountSearchPage extends BasePageClass {
     WebElement btnSearch;
 
 
-    @FindBy(id = "viewUTEMyRogersLink1")
+    @FindBy(xpath = "//table[contains(@class, 'searchResults')]//tr[2]//select")
     WebElement drpdwnPlsSelect;
 
     @FindBy(xpath = "//*[text()='CONTINUE']")
