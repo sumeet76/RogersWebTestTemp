@@ -173,6 +173,9 @@ public class BaseTestClass {
     protected static final ThreadLocal<RogersOVInstallationPage> RogersOVInstallationPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<ChampLoginPage> ChampLoginPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<UniLoginPage> UniLoginPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<OVROrderReviewPage> OVROrderReviewPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<OVRAgreementPage> OVRAgreementPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<OVROrderConfirmationPage> OVROrderConfirmationPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<AccountSearchPage> AccountSearchPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<OvrDashboardPage> OvrDashboardPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<CheckAvailabilityPage> CheckAvailabilityPageThreadLocal = new ThreadLocal<>();
@@ -673,6 +676,12 @@ public class BaseTestClass {
     public static LNPEligibilityPage getLNPEligibilityPage() {
         return LNPEligibilityPageThreadLocal.get();
     }
+
+    public static OVROrderReviewPage getOVROrderReviewPage() {return OVROrderReviewPageThreadLocal.get();}
+
+    public  static OVRAgreementPage getOVRAgreementPage() {return  OVRAgreementPageThreadLocal.get();}
+
+    public static OVROrderConfirmationPage getOVROrderConfirmationPage() {return  OVROrderConfirmationPageThreadLocal.get();}
 
 
 
@@ -1201,6 +1210,10 @@ public class BaseTestClass {
                 LNPEligibilityPageThreadLocal.set(new com.rogers.ovr.pages.LNPEligibilityPage(getDriver()));
                 CustomerProfilePageThreadLocal.set(new CustomerProfilePage(getDriver()));
                 CreditCheckPageThreadLocal.set(new CreditCheckPage(getDriver()));
+                RogersTechInstallPageThreadLocal.set(new RogersTechInstallPage(getDriver()));
+                OVROrderReviewPageThreadLocal.set(new OVROrderReviewPage(getDriver()));
+                OVRAgreementPageThreadLocal.set(new OVRAgreementPage(getDriver()));
+                OVROrderConfirmationPageThreadLocal.set(new OVROrderConfirmationPage(getDriver()));
                 break;
 
 
