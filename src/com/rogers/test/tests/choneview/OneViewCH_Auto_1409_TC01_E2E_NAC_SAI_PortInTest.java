@@ -80,9 +80,10 @@ public class OneViewCH_Auto_1409_TC01_E2E_NAC_SAI_PortInTest extends BaseTestCla
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		reporter.reportLogWithScreenshot("payment details entered");
-//		getPaymentOptionsPage().clkContinue();
-//		reporter.reportLogWithScreenshot("submit order");
-//		getRogersOVCheckoutPage().clkSubmit();
+		getPaymentOptionsPage().clkContinue();
+		reporter.reportLogWithScreenshot("submit order");
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
 
     }
