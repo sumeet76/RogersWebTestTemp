@@ -11,7 +11,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P__Without4KTVExpressCheckout_Test extends BaseTestClass{
+public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_Without4KTVExpressCheckout_Test extends BaseTestClass{
 	 @Test (groups = {"RNAC","RegressionCHOV","SanityCHOV"})
 	    public void endToEndFlowAnonymousCustomerTriplePlayTest(){
 		 reporter.reportLogWithScreenshot("oneview env");
