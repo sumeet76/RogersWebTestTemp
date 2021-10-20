@@ -171,7 +171,7 @@ public class CreditCheckPage  extends BasePageClass {
 			getReusableActionsInstance().javascriptScrollByVisibleElement(passportContainer);
 			getReusableActionsInstance().executeJavaScriptClick(passportContainer);
 			getReusableActionsInstance().javascriptScrollByVisibleElement(passportInput);
-			getReusableActionsInstance().enterText(passportInput, passportNo, 30);
+			getReusableActionsInstance().enterText(passportInput, passportNo, 45);
 			getReusableActionsInstance().javascriptScrollByVisibleElement(passportExpiryYear);
 			getReusableActionsInstance().selectWhenReadyByVisibleText(passportExpiryYear, expiryYear);
 			getReusableActionsInstance().javascriptScrollByVisibleElement(passportExpiryMonth);
