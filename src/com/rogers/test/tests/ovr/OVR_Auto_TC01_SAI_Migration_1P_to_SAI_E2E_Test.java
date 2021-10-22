@@ -19,7 +19,7 @@ public class OVR_Auto_TC01_SAI_Migration_1P_to_SAI_E2E_Test extends BaseTestClas
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
@@ -36,22 +36,31 @@ public class OVR_Auto_TC01_SAI_Migration_1P_to_SAI_E2E_Test extends BaseTestClas
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
         getCheckAvailabilityPage().useThisAddress();
         reporter.reportLogWithScreenshot("Service Availability");
-        getBundleBuilderPage().selectInternet();
-        reporter.reportLogWithScreenshot("Internet Bundle Selected");
-        getBundleBuilderPage().clickloadoffers();
-        getBundleBuilderPage().selectFirstAddToCart();
-        reporter.reportLogWithScreenshot("Product Added to Cart");
-        getBundleBuilderPage().clickCheckout();
-        getBundleBuilderPage().expandPointsToMentionAndContinue();
-        getBundleBuilderPage().clickCheckout();
-        getBundleBuilderPage().selectyescontinue();
+
+        getRogersIgniteBundlesPage().clkInternetCheckbox();
+        reporter.reportLogWithScreenshot("Internet Selected");
+        getRogersIgniteBundlesPage().clkLoadOffers();
+        getRogersIgniteBundlesPage().clickFirstAddToCart();
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
+        reporter.reportLogWithScreenshot("Product Added");
+        getRogersIgniteBundlesPage().clkContinue();
+        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+        reporter.reportLogWithScreenshot("Points to mention pop-up");
+        getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
+        getRogersIgniteBundlesPage().clkContinue();
+        reporter.reportLogWithScreenshot("Cart Summary");
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+        getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
+
+        reporter.reportLogWithScreenshot("wish to continue");
+        getRogersIgniteBundlesPage().customerWishtoContinue();
+        //reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
         reporter.reportLogWithScreenshot("Customer Profile");
         getCustomerProfilePage().clkContinue();
 
         getBundleBuilderPage().enterdateOfBirth(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
         getBundleBuilderPage().creditevaluationAndContinue();
-        reporter.reportLogWithScreenshot("Launched theinstall page");
-
+        reporter.reportLogWithScreenshot("Launched the install page");
         getBundleBuilderPage().selectExpressProInstall();
         getBundleBuilderPage().clkTechInstallSlot();
         getBundleBuilderPage().setMobileNumber();
@@ -62,7 +71,7 @@ public class OVR_Auto_TC01_SAI_Migration_1P_to_SAI_E2E_Test extends BaseTestClas
         reporter.reportLogWithScreenshot("Order Review Page");
         reporter.softAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
         reporter.softAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
-        getOVROrderReviewPage().clkContinue();
+        //getOVROrderReviewPage().clkContinue();
         reporter.reportLogWithScreenshot("Sign Agreement Page");
         getOVRAgreementPage().signAgreement();
         getOVRAgreementPage().clkAgreementCheckbox();
