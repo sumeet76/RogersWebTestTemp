@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 
 public class OneViewCH_Auto_1435_TC01_E2E_NAC_2P_Test extends BaseTestClass {
-	@Test (groups = {"RegressionCHOV"})
+	@Test (groups = {"RNAC","RegressionCHOV"})
     public void oneViewCH_Auto_1435_TC01_E2E_NAC_2P_Test(){
         reporter.reportLogWithScreenshot("oneview env");
         getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
@@ -79,10 +79,10 @@ public class OneViewCH_Auto_1435_TC01_E2E_NAC_2P_Test extends BaseTestClass {
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
         reporter.reportLogWithScreenshot("card details entered");
-//		getPaymentOptionsPage().clkContinue();
-//		getRogersOVCheckoutPage().clkSubmit();
-//        reporter.reportLogWithScreenshot("submit order");
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		getPaymentOptionsPage().clkContinue();
+		getRogersOVCheckoutPage().clkSubmit();
+        reporter.reportLogWithScreenshot("submit order");
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
 
     }

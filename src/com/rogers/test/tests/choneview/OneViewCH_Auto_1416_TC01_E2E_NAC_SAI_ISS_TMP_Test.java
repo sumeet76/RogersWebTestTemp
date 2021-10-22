@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 
 public class OneViewCH_Auto_1416_TC01_E2E_NAC_SAI_ISS_TMP_Test extends BaseTestClass {
-	@Test (groups = {"RegressionCHOV"})
+	@Test (groups = {"RNAC","RegressionCHOV"})
     public void oneViewCH_Auto_1416_TC01_E2E_NAC_SAI_ISS_TMP_Test(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
@@ -30,8 +30,6 @@ public class OneViewCH_Auto_1416_TC01_E2E_NAC_SAI_ISS_TMP_Test extends BaseTestC
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		reporter.reportLogWithScreenshot("loading offers");
 
-		String promoCode = getRogersIgniteCampaignPage().getPromoCode();
-		System.out.println("promoCode :: " +  promoCode);
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		reporter.reportLogWithScreenshot("added to cart");
 		getRogersIgniteBundlesPage().noPortInPopup();
@@ -40,21 +38,20 @@ public class OneViewCH_Auto_1416_TC01_E2E_NAC_SAI_ISS_TMP_Test extends BaseTestC
 		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
-//		getRogersIgniteBundlesPage().clkContinue();
-//		getRogersIgniteBundlesPage().fourKTVPopup();
-//		getRogersIgniteBundlesPage().fourKContentPopup();
-//		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
-		reporter.hardAssert(getRogersIgniteBundlesPage().verifyPersonalizeYourChannels(),"Personalize You Channel displayed","Personalize You Channel did not Displayed");
 		getRogersIgniteBundlesPage().clkCheckOut();
 		reporter.reportLogWithScreenshot("Cart Summary");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
-		reporter.reportLogWithScreenshot("campaign");
 
+		reporter.reportLogWithScreenshot("campaign");
 		getRogersIgniteCampaignPage().clickCampaignTab();
-		getRogersIgniteCampaignPage().enterCoupon(promoCode);
+		getRogersIgniteCampaignPage().enterCoupon("K5U");
 		getRogersIgniteCampaignPage().clickApplyCoupon();
 		reporter.reportLogWithScreenshot("campaign coupon applied");
+		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(),"Remove Coupon option exist","Remove Coupon does not exist");
+		getRogersIgniteCampaignPage().closeCouponAlert();
+		reporter.reportLogWithScreenshot("close code window");
+
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		getRogersIgniteBundlesPage().customerWishtoContinue();
 		reporter.hardAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
@@ -86,12 +83,10 @@ public class OneViewCH_Auto_1416_TC01_E2E_NAC_SAI_ISS_TMP_Test extends BaseTestC
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		reporter.reportLogWithScreenshot("card details entered");
-//		getPaymentOptionsPage().clkContinue();
-//		reporter.hardAssert(getRogersOVCheckoutPage().verifyOrderReviewPage(),"Order Review header exists","Order Review header did not display");
-//		reporter.reportLogWithScreenshot("Order Review Page");
-//		reporter.hardAssert(getRogersOVCheckoutPage().verifySavingsExist(),"Savings section exists","Savings section does not exists");
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		getPaymentOptionsPage().clkContinue();
+		reporter.reportLogWithScreenshot("Order Review Page");
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
     }
 

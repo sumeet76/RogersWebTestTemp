@@ -11,9 +11,9 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_Test extends BaseTestClass {
+public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_PreauthorizedChequing_Test extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV","SanityCHOV"})
-    public void oneViewCH_Auto_1437_TC01_E2E_NAC_3P_Test(){
+    public void oneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_PreauthorizedChequing_Test(){
 			reporter.reportLogWithScreenshot("oneview env");
 			getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 			reporter.reportLogWithScreenshot("address");
@@ -75,15 +75,22 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_Test extends BaseTestClass {
 			reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 			getCreditCheckPage().verifyBillingAndPaymentOption();
 			getCreditCheckPage().clickDigitalFrontline();
-			reporter.reportLogWithScreenshot("digital frontline");
-			getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-			getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-			getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-			reporter.reportLogWithScreenshot("Payment screen");
-			getPaymentOptionsPage().clkContinue();
-			reporter.reportLogWithScreenshot("submit order");
-			getRogersOVCheckoutPage().clkSubmit();
-			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+
+
+			getCreditCheckPage().selectPaymentOption(2);
+			reporter.reportLogWithScreenshot("Pre-authorized Chequing");
+			getRogersOVCheckoutPage().enterTransitNumber("00333");
+			reporter.reportLogWithScreenshot("Transit number");
+			getRogersOVCheckoutPage().enterInstitutionNumber("003");
+			reporter.reportLogWithScreenshot("Institution Number");
+			getRogersOVCheckoutPage().enterAccountNumber("1234003");
+			reporter.reportLogWithScreenshot("Account Number");
+
+
+//			getPaymentOptionsPage().clkContinue();
+//			reporter.reportLogWithScreenshot("submit order");
+//			getRogersOVCheckoutPage().clkSubmit();
+//			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 			reporter.reportLogWithScreenshot("Order Placed");
 		
     }

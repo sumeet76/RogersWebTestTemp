@@ -17,25 +17,34 @@ public class OneViewCH_Auto_1537_TC01_TV_Channel_Themepack_Immediate_Downgrade_T
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData.getAccountNo(),TestDataHandler.migrationData.getContactID() );
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
+		reporter.reportLogWithScreenshot("deal code");
 		getAccountOverViewPage().clickIgniteTVBadge();
+		reporter.reportLogWithScreenshot("TV Batch");
 		getAccountOverViewPage().selectBundleChangeIfPresent();
+		reporter.reportLogWithScreenshot("Select Bundle");
 		reporter.hardAssert(getAccountOverViewPage().verifyTVOrChannelHeader(),"TV or Channel header displayed","TV or Channel header did not Displayed");
 		reporter.reportLogWithScreenshot("Ignite TV widget selected");
 		getTVDashboardPage().clickManageChannelsAndThemepacks();
-		reporter.hardAssert(getAccountOverViewPage().verifyCustomerFollowingsHeader(),"Customer followings displayed","Customer followings did not Displayed");
-		reporter.reportLogWithScreenshot("Customer followed channels and themepacks");
+//		reporter.hardAssert(getAccountOverViewPage().verifyCustomerFollowingsHeader(),"Customer followings displayed","Customer followings did not Displayed");
+		reporter.reportLogWithScreenshot("Manage channels and themepacks");
 		getTVDashboardPage().clickFirstChannelToRemove();
+		reporter.reportLogWithScreenshot("first channel remove");
 		getTVDashboardPage().clickYourChanges();
+		reporter.reportLogWithScreenshot("collapse");
 		getTVDashboardPage().getAllChannelAndThemepacks();
+		reporter.reportLogWithScreenshot("all channels and themepacks");
 		getTVDashboardPage().clickAddChannel();
+		reporter.reportLogWithScreenshot("add channel");
 		getTVDashboardPage().clickYourChanges();
+		reporter.reportLogWithScreenshot("Collapse");
 		getTVDashboardPage().clickContinueChannelsAndThemePacks();
+		reporter.reportLogWithScreenshot("Continue channels and themepacks");
 		getTVDashboardPage().immediateDateChangeOption();
+		reporter.reportLogWithScreenshot("Immediate date");
 		getTVDashboardPage().continueFromChangeDate();
+		reporter.reportLogWithScreenshot("Continue");
 
 //		getRogersOVOrderReviewPage().clickSubmitToManageThemepackOrChannel();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
 		reporter.reportLogWithScreenshot("Order Confirmation page");
 
 

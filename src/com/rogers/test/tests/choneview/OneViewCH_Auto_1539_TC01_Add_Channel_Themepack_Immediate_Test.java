@@ -11,32 +11,41 @@ import java.lang.reflect.Method;
 
 
 public class OneViewCH_Auto_1539_TC01_Add_Channel_Themepack_Immediate_Test extends BaseTestClass {
-	@Test (groups = {"RegressionCHOV"})
+	@Test (groups = {"RChannelsandThemepacks","RegressionCHOV"})
     public void oneViewCH_1539_TC01_AddChannelAndThemepackImmediate(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.addChannelAndThempackImmediate.getAccountNo(), TestDataHandler.addChannelAndThempackImmediate.getContactID());
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
+		reporter.reportLogWithScreenshot("TV Badge");
 		getAccountOverViewPage().clickIgniteTVBadge();
+		reporter.reportLogWithScreenshot("select bundle");
 		getAccountOverViewPage().selectBundleChangeIfPresent();
 		reporter.hardAssert(getAccountOverViewPage().verifyTVOrChannelHeader(),"TV or Channel header displayed","TV or Channel header did not Displayed");
 		reporter.reportLogWithScreenshot("Ignite TV widget selected");
 		getTVDashboardPage().clickManageChannelsAndThemepacks();
-		reporter.hardAssert(getAccountOverViewPage().verifyCustomerFollowingsHeader(),"Customer followings displayed","Customer followings did not Displayed");
 		reporter.reportLogWithScreenshot("Customer followed channels and themepacks");
 		getTVDashboardPage().clickChannelTab();
+		reporter.reportLogWithScreenshot("Channal tab");
 		getTVDashboardPage().clickAddChannel();
+		reporter.reportLogWithScreenshot("Add channel");
 		getTVDashboardPage().clickYourChanges();
+		reporter.reportLogWithScreenshot("collapse");
 		getTVDashboardPage().clickManageChannelsAndThemepacks();
+		reporter.reportLogWithScreenshot("manage channel and themepack tab");
 		getTVDashboardPage().clickThemepacksTab();
+		reporter.reportLogWithScreenshot("themepack tab");
 		getTVDashboardPage().addThemepack();
+		reporter.reportLogWithScreenshot("themepack added");
 		getTVDashboardPage().clickYourChanges();
+		reporter.reportLogWithScreenshot("collapse");
 		getTVDashboardPage().clickYesContinueIfPresent();
 		getTVDashboardPage().clickContinueForPackage();
+		reporter.reportLogWithScreenshot("continue");
 		getTVDashboardPage().immediateDateChangeOption();
+		reporter.reportLogWithScreenshot("manage channel and themepack tab");
 		getTVDashboardPage().clickCancel();
+		reporter.reportLogWithScreenshot("ready to submit");
 //		getRogersOVOrderReviewPage().clickSubmitToManageThemepackOrChannel();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
 		reporter.reportLogWithScreenshot("Order Confirmation page");
     }
 

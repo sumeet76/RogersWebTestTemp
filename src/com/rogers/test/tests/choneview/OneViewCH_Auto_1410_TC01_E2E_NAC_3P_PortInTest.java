@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 
 public class OneViewCH_Auto_1410_TC01_E2E_NAC_3P_PortInTest extends BaseTestClass {
-	@Test (groups = {"RegressionCHOV"})
+	@Test (groups = {"RNAC","RegressionCHOV"})
     public void oneViewCH_Auto_1410_TC01_E2E_NAC_3P_PortInTest(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
@@ -40,12 +40,15 @@ public class OneViewCH_Auto_1410_TC01_E2E_NAC_3P_PortInTest extends BaseTestClas
 		getRogersIgniteBundlesPage().fourKContinue();
 //		getRogersIgniteBundlesPage().clkCollapse();
 		getRogersIgniteBundlesPage().clkCheckOut();
-		reporter.hardAssert(getRogersIgniteBundlesPage().headerPortInService(),"Port in Service Header exist","Failed");
+		getRogersIgniteBundlesPage().fourKTVPopup();
+		getRogersIgniteBundlesPage().fourKContinue();
 		reporter.reportLogWithScreenshot("Port In Service");
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
 		reporter.reportLogWithScreenshot("portin");
 		getRogersIgniteBundlesPage().clkContinueFor3PPortIn();
+		reporter.reportLogWithScreenshot("Port In initiated");
 		getRogersIgniteBundlesPage().setProvider("BELL ONTARIO");
+		reporter.reportLogWithScreenshot("provider");
 		getRogersIgniteBundlesPage().enterAccountNumber("1122334455");
 		reporter.reportLogWithScreenshot("portin details");
 		getRogersIgniteBundlesPage().contiueFromPortIn();
@@ -92,10 +95,10 @@ public class OneViewCH_Auto_1410_TC01_E2E_NAC_3P_PortInTest extends BaseTestClas
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		reporter.reportLogWithScreenshot("entered payment info");
-//		getPaymentOptionsPage().clkContinue();
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.reportLogWithScreenshot("submit payment");
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		getPaymentOptionsPage().clkContinue();
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.reportLogWithScreenshot("submit payment");
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
 
     }

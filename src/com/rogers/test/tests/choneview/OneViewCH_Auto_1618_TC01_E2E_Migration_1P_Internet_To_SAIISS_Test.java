@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_1618_TC01_E2E_Migration_To_SAIISS_Test extends BaseTestClass {
-	@Test (groups = {"RegressionCHOV"})
+public class OneViewCH_Auto_1618_TC01_E2E_Migration_1P_Internet_To_SAIISS_Test extends BaseTestClass {
+	@Test (groups = {"RMigration","RegressionCHOV"})
     public void oneViewCH_Auto_1618_TC01_E2E_Migration_To_SAIISS_Test(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationDataToISS.getAccountNo(), TestDataHandler.migrationDataToISS.getContactID());
 
@@ -71,7 +71,6 @@ public class OneViewCH_Auto_1618_TC01_E2E_Migration_To_SAIISS_Test extends BaseT
 //		getPaymentOptionsPage().clkContinue();
 //		reporter.reportLogWithScreenshot("submit order");
 //		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
 
     }

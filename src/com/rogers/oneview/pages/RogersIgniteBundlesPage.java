@@ -41,7 +41,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath="//span[contains(text(),'reviewed the customer’s add-ons') or contains(text(),'revue les options du client')]")
 	WebElement reviewAddons;
 
-	@FindBy (xpath = "//input[@id='ds-checkbox-id-1']/following-sibling::div")
+	@FindBy (xpath = "//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' Internet ']")
 	WebElement internetCheckbox;
 
 	@FindBy(xpath = "//input[@id='ds-checkbox-id-3']/following-sibling::div")
@@ -61,6 +61,11 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 	@FindBy(xpath = "//span[text()='Yes, they do' or text()='Oui, il en a un']/ancestor::button")
 	WebElement yesFor4K;
+
+
+	@FindBy(xpath = "//span[contains(text(), 'No, they')]/ancestor::button")
+	WebElement noFor4K;
+
 
 	@FindBy(xpath = "//p[text()='The following 4K content is available to the customer:']/parent::div//span[text()='Continuer' or text()='Continue']/ancestor::button  | //rch-tv4k-modal/descendant::span[@translate='global.cta.continue']/ancestor::button")
 	WebElement continueFor4K;
@@ -373,6 +378,15 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	public void fourKTVPopup() {
 		if(getReusableActionsInstance().isElementVisible(yesFor4K))
 			getReusableActionsInstance().clickWhenReady(yesFor4K,120);
+	}
+
+	/**
+	 * CLick No if 4K pop up Appears
+	 * @author Aditi.jain
+	 */
+	public void noTo4KTVPopup() {
+		if(getReusableActionsInstance().isElementVisible(noFor4K))
+			getReusableActionsInstance().clickWhenReady(noFor4K,120);
 	}
 	/**
 	 * Click Checkout for channels Exchange

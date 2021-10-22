@@ -16,19 +16,23 @@ public class OneViewCH_Auto_1544_TC01_Add_Themepack_Immediate_Test extends BaseT
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.addThemepackImmediate.getAccountNo(), TestDataHandler.addThemepackImmediate.getContactID());
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
+		reporter.reportLogWithScreenshot("Enter dealer code");
 		getAccountOverViewPage().clickIgniteTVBadge();
+		reporter.reportLogWithScreenshot("TV Ignite Badge");
 		getTVDashboardPage().clickManageChannelsAndThemepacks();
-		reporter.hardAssert(getAccountOverViewPage().verifyCustomerFollowingsHeader(),"Customer followings displayed","Customer followings did not Displayed");
+//		reporter.hardAssert(getAccountOverViewPage().verifyCustomerFollowingsHeader(),"Customer followings displayed","Customer followings did not Displayed");
 		reporter.reportLogWithScreenshot("Customer followed channels and themepacks");
 		getTVDashboardPage().clickThemepacksTab();
+		reporter.reportLogWithScreenshot("Themepack tab");
 		getTVDashboardPage().addThemepack();
 		getTVDashboardPage().clickYesContinueIfPresent();
+		reporter.reportLogWithScreenshot("continue for package");
 		getTVDashboardPage().clickContinueForPackage();
+		reporter.reportLogWithScreenshot("immediate date");
 		getTVDashboardPage().immediateDateChangeOption();
+		reporter.reportLogWithScreenshot("Collapse");
 		getTVDashboardPage().clickCancel();
 //		getRogersOVOrderReviewPage().clickSubmitToManageThemepackOrChannel();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
 		reporter.reportLogWithScreenshot("Order Confirmation page");
 	}
 

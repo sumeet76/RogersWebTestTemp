@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_1437_TC02_E2E_NAC_3P_ChannelAndThemepack_Test extends BaseTestClass {
-	@Test (groups = {"RegressionCHOV","SanityCHOV"})
+	@Test (groups = {"RNAC","RegressionCHOV","SanityCHOV"})
     public void oneViewCH_Auto_1437_TC02_E2E_NAC_3P_ChannelAndThemepack_Test(){
 			reporter.reportLogWithScreenshot("oneview env");
 			getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
@@ -65,7 +65,7 @@ public class OneViewCH_Auto_1437_TC02_E2E_NAC_3P_ChannelAndThemepack_Test extend
 			reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 			getRogersIgniteBundlesPage().clkCheckOut();
 			reporter.reportLogWithScreenshot("Cart Summary");
-			reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+//			reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 			reporter.reportLogWithScreenshot("checkout to cart summary");
 			getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 			getRogersIgniteBundlesPage().customerWishtoContinue();
@@ -101,10 +101,10 @@ public class OneViewCH_Auto_1437_TC02_E2E_NAC_3P_ChannelAndThemepack_Test extend
 			getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 			getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 			reporter.reportLogWithScreenshot("Payment screen");
-//			getPaymentOptionsPage().clkContinue();
-//			reporter.reportLogWithScreenshot("submit order");
-//			getRogersOVCheckoutPage().clkSubmit();
-//			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+			getPaymentOptionsPage().clkContinue();
+			reporter.reportLogWithScreenshot("submit order");
+			getRogersOVCheckoutPage().clkSubmit();
+			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 			reporter.reportLogWithScreenshot("Order Placed");
 		
     }

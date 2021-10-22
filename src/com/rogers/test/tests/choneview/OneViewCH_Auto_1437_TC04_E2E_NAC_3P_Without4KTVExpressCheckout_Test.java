@@ -11,7 +11,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_Test extends BaseTestClass {
+public class OneViewCH_Auto_1437_TC04_E2E_NAC_3P_Without4KTVExpressCheckout_Test extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV","SanityCHOV"})
     public void oneViewCH_Auto_1437_TC01_E2E_NAC_3P_Test(){
 			reporter.reportLogWithScreenshot("oneview env");
@@ -37,13 +37,12 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_Test extends BaseTestClass {
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 			reporter.reportLogWithScreenshot("Product Added");
 			getRogersIgniteBundlesPage().clkContinue();
-			getRogersIgniteBundlesPage().fourKTVPopup();
-			getRogersIgniteBundlesPage().fourKContinue();
+			getRogersIgniteBundlesPage().noTo4KTVPopup();
+
 			reporter.reportLogWithScreenshot("continue to exchange later");
 			getRogersIgniteBundlesPage().clkCheckOut();
 			reporter.reportLogWithScreenshot("Cart Summary");
-			getRogersIgniteBundlesPage().fourKTVPopup();
-			getRogersIgniteBundlesPage().fourKContinue();
+			getRogersIgniteBundlesPage().noTo4KTVPopup();
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 			reporter.reportLogWithScreenshot("checkout to cart summary");
 			getRogersIgniteBundlesPage().clkCheckOutforCartSummary();

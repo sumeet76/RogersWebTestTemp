@@ -425,6 +425,15 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='input_container']/child::ds-form-field/child::div/child::div/child::div/child::input")
 	WebElement token;
 
+	@FindBy(xpath = "//input[@id='transit-code']")
+	WebElement transitNumber;
+
+	@FindBy(xpath = "//input[@id='bank-code']")
+	WebElement institutionCode;
+
+	@FindBy(xpath = "//input[@id='account-number']")
+	WebElement accountNumber;
+
 	@FindBy(xpath = "//div[@class='rch-payment-options']/child::div/child::div/child::rch-pre-authorized-credit-card/child::div/child::div/child::rch-credit-card/child::rch-expiry-date-credit-card/child::div/child::div/following-sibling::div/following-sibling::div//child::ds-form-field/child::div/child::div/child::select")
 	WebElement cardExpiryYear;
 
@@ -508,6 +517,35 @@ public class RogersOVCheckoutPage extends BasePageClass {
 		token.clear();
 		token.sendKeys(ccdNumber);
 	}
+
+
+	/**
+	 * Enter transit number
+	 * @author aditi.jain
+	 */
+	public void enterTransitNumber(String value){
+		transitNumber.clear();
+		transitNumber.sendKeys(value);
+	}
+
+	/**
+	 * Enter institution number
+	 * @author aditi.jain
+	 */
+	public void enterInstitutionNumber(String institutionNumber){
+		institutionCode.clear();
+		institutionCode.sendKeys(institutionNumber);
+	}
+
+	/**
+	 * Enter account number
+	 * @author aditi.jain
+	 */
+	public void enterAccountNumber(String value){
+		accountNumber.clear();
+		accountNumber.sendKeys(value);
+	}
+
 
 	/**
 	 * To get the Title of post checkout page

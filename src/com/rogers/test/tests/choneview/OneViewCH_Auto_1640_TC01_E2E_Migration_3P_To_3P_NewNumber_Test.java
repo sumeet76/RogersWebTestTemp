@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_1640_TC01_E2E_Migration_3P_NewNumber_Test extends BaseTestClass {
-	@Test (groups = {"RegressionCHOV"})
+public class OneViewCH_Auto_1640_TC01_E2E_Migration_3P_To_3P_NewNumber_Test extends BaseTestClass {
+	@Test (groups = {"RMigration","RegressionCHOV"})
     public void oneViewCH_Auto_1640_TC01_E2E_Migration_3P_NewNumber_Test(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData3PSameNumber.getAccountNo(), TestDataHandler.migrationData3PSameNumber.getContactID());
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
