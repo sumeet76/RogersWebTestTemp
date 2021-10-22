@@ -170,6 +170,8 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath ="//input[@id='26']/ancestor::label[contains(@class,'ds-radioLabel')]//div[@class='ds-radioButton__outerCircle my-12']")
     WebElement rdoTechInstallSlot;
 
+    @FindBy(xpath = "//div[text()='Customer current']//following-sibling::div")
+    WebElement currentPlanSection;
 
 
     public void openFooter() throws InterruptedException {
@@ -265,7 +267,7 @@ public class BundleBuilderPage extends BasePageClass {
     public void expandPointsToMentionAndContinue() throws InterruptedException {
         for(WebElement ele:btnsexpand_pointsTomention) {
             getReusableActionsInstance().getWhenVisible(ele).click();
-            Thread.sleep(5000);
+            //Thread.sleep(5000);
         }
         getReusableActionsInstance().getWhenVisible(chkbox_pointstomention).click();
         getReusableActionsInstance().clickWhenReady(btncontinueonPointsToMention);
@@ -461,5 +463,9 @@ public class BundleBuilderPage extends BasePageClass {
         Thread.sleep(5000);
         getReusableActionsInstance().waitForElementVisibility(continueBillingAndPayment, 60);
         getReusableActionsInstance().clickWhenReady(continueBillingAndPayment);
+    }
+
+    public boolean verifyCustomerCurrentPlan(){
+        return getReusableActionsInstance().isElementVisible(currentPlanSection, 5);
     }
 }
