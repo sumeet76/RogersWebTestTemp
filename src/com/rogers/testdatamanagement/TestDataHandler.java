@@ -272,6 +272,7 @@ public class TestDataHandler {
 	public static AccountData tc139;
 	public static AccountData RHPManage_AddOns;
 	public static OvrReusableData ovrReusableData;
+	public static OvrReusableData ovrMigrationData2PInternetAndTvTo2P;
 	public static OvrConfigData ovrConfigData;
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
@@ -610,6 +611,7 @@ public class TestDataHandler {
 
 	private static void ovrDataInit() throws FileNotFoundException {
 		ovrConfigData= YamlHandler.getOvrConfigData();
-		ovrReusableData=YamlHandler.getOvrReusableData();
+		ovrReusableData=YamlHandler.getOvrReusableData("ReUsabledata");
+		ovrMigrationData2PInternetAndTvTo2P=YamlHandler.getOvrReusableData("Migration_Data_2P");
 	}
 }

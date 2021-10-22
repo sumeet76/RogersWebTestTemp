@@ -320,11 +320,11 @@ public class YamlHandler {
 		return ovrConfigData;
 	}
 
-	public static OvrReusableData getOvrReusableData() throws FileNotFoundException {
+	public static OvrReusableData getOvrReusableData(String dataFileName) throws FileNotFoundException {
 		Yaml yaml = new Yaml(new Constructor(OvrReusableData.class));
 		InputStream inputStream;
 
-		inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/ovr/ReUsabledata.yml"));
+		inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/ovr/" + dataFileName + ".yml"));
 		OvrReusableData ovrReusableData = yaml.load(inputStream);
 		return ovrReusableData;
 	}
