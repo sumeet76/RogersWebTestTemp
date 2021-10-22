@@ -17,6 +17,9 @@ public class AccountSearchPage extends BasePageClass {
     @FindBy(id = "searchCustomerBtn")
     WebElement btnSearch;
 
+    @FindBy(xpath = "//button[contains(text(),'Accept')]")
+    WebElement acceptNoticeBtn;
+
 
     @FindBy(xpath = "//table[contains(@class, 'searchResults')]//tr[2]//select")
     WebElement drpdwnPlsSelect;
@@ -25,6 +28,9 @@ public class AccountSearchPage extends BasePageClass {
     WebElement btncontnu_customerAuthen;
 
     public void searchForAccountAndSelectEnv(String banNumber,String postalCode,String env) {
+        if(getReusableActionsInstance().isElementVisible(acceptNoticeBtn, 5)){
+            getReusableActionsInstance().clickWhenReady(acceptNoticeBtn);
+        }
         searchForAccount(banNumber,postalCode);
         selectEnvInAccntSearchPage(env);
     }
