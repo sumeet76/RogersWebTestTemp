@@ -25,6 +25,15 @@ public class UniLoginPage extends BasePageClass {
 
     String sspbtn_xpath = "//span[contains(text(),'SSP Rogers SSP_ENV')]";
 
+    @FindBy(xpath = "//input[@value='Next']")
+    WebElement corpLoginNextBtn;
+
+    @FindBy(xpath = "//a[text()='Skip setup']")
+    WebElement corpLoginSkip2faSetup;
+
+    @FindBy(id= "idBtn_Back")
+    WebElement staySignedInNO;
+
     /**
      * Login to unilogin page by entering dealer code
      * @author Vikas.gorla
@@ -50,6 +59,21 @@ public class UniLoginPage extends BasePageClass {
         getReusableActionsInstance().getWhenVisible(By.xpath(sspbtn_xpath)).click();
         getReusableActionsInstance().switchToNewWindow();
 
+
+    }
+
+    public void selectCorpSSPEnvAndSwitchWindow(String env){
+        sspbtn_xpath = sspbtn_xpath.replace("SSP_ENV", env);
+        getReusableActionsInstance().getWhenVisible(By.xpath(sspbtn_xpath)).click();
+        getReusableActionsInstance().switchToNewWindow();
+
+        if(getReusableActionsInstance().isElementVisible(corpLoginNextBtn)){
+            getReusableActionsInstance().getWhenVisible(corpLoginNextBtn).click();
+            getReusableActionsInstance().getWhenVisible(corpLoginSkip2faSetup).click();
+            if(getReusableActionsInstance().isElementVisible(staySignedInNO, 10)){
+                getReusableActionsInstance().getWhenVisible(staySignedInNO).click();
+            }
+        }
 
     }
 
