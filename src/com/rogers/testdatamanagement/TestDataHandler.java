@@ -617,5 +617,6 @@ public class TestDataHandler {
 		ovrConfigData= YamlHandler.getOvrConfigData();
 		ovrReusableData=YamlHandler.getOvrReusableData("ReUsabledata");
 		ovrMigrationData2PInternetAndTvTo2P=YamlHandler.getOvrReusableData("Migration_Data_2P");
+		anonymousData = YamlHandler.getContactData("AnonymousData");
 	}
 }

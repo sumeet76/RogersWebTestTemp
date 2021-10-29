@@ -18,7 +18,7 @@ public class OVR_Auto_TC06_Buyflow_Anonymous_NAC_SAI_E2E_Dealer_ON_EN_Test exten
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
@@ -34,6 +34,7 @@ public class OVR_Auto_TC06_Buyflow_Anonymous_NAC_SAI_E2E_Dealer_ON_EN_Test exten
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
 
         reporter.reportLogWithScreenshot("Address Availability popup");
+        System.out.println(TestDataHandler.anonymousData.contactDetails.getAddress());
         getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
