@@ -68,7 +68,7 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath = "//span[text()='Continue']")
     WebElement continueInstallation;
 
-    @FindBy(xpath = "//span[contains(text(),'Continue') or contains(text(),'Continue')]/ancestor::button")
+    @FindBy(xpath = "//span[text()='Continue']/ancestor::button")
     WebElement continueBillingAndPayment;
 
 
@@ -123,8 +123,11 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath = "//*[text()='Checkout']")
     WebElement btncheckout;
 
-    @FindBy(xpath = "//*[text()='Yes, continue']")
+    @FindBy(xpath = "//span[text()='Oui, continuer' or text()='Yes, continue']/ancestor::button")
     WebElement btnyescontinue;
+
+    @FindBy(xpath = "//span[text()='No, continue']/ancestor::button")
+    WebElement btnNoContinue;
 
     @FindBy(xpath = "//span[text()='Year']/parent::ds-input-label/parent::label/parent::span/following-sibling::select")
     WebElement select_year;
@@ -172,6 +175,12 @@ public class BundleBuilderPage extends BasePageClass {
 
     @FindBy(xpath = "//div[text()='Customer current']//following-sibling::div")
     WebElement currentPlanSection;
+
+    @FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
+    WebElement popupCloseBtn;
+
+    @FindBy(xpath = "//h1[contains(text(),'Billing and Payment')]")
+    WebElement billingAndPaymentH1;
 
 
     public void openFooter() throws InterruptedException {
@@ -338,8 +347,18 @@ public class BundleBuilderPage extends BasePageClass {
 
     }
     public void selectyescontinue() throws InterruptedException {
-        getReusableActionsInstance().getWhenVisible(btnyescontinue).click();
-        Thread.sleep(10000);
+
+        getReusableActionsInstance().waitForElementStaleness(btnyescontinue, 5);
+        getReusableActionsInstance().moveToElementAndClick(btnyescontinue, 3);
+        Thread.sleep(3000);
+        if(getReusableActionsInstance().isElementVisible(popupCloseBtn)){
+            getReusableActionsInstance().clickWhenReady(popupCloseBtn, 3);
+            getReusableActionsInstance().clickWhenReady(btncheckout, 3);
+            //Click "Yes, Continue again"
+            getReusableActionsInstance().waitForElementTobeClickable(btnyescontinue, 5);
+            getReusableActionsInstance().moveToElementAndClick(btnyescontinue, 3);
+        }
+
     }
 
    /*public void enterAccountNumberAndPin() throws InterruptedException {
@@ -365,8 +384,9 @@ public class BundleBuilderPage extends BasePageClass {
     }
 
     public void selectExpressProInstall() {
-        getReusableActionsInstance().waitForElementVisibility(igniteProfessionalInstall, 15);
-        getReusableActionsInstance().clickWhenReady(igniteProfessionalInstall);
+        getReusableActionsInstance().waitForElementVisibility(igniteProfessionalInstall, 60);
+        getReusableActionsInstance().javascriptScrollByVisibleElement(igniteProfessionalInstall);
+        getReusableActionsInstance().executeJavaScriptClick(igniteProfessionalInstall);
     }
     public void creditevaluationAndContinue() throws InterruptedException {
         getReusableActionsInstance().executeJavaScriptClick(btncontinue);
@@ -460,9 +480,17 @@ public class BundleBuilderPage extends BasePageClass {
     }
 
     public void clkContinueBillingAndPayment() throws InterruptedException {
-        Thread.sleep(5000);
-        getReusableActionsInstance().waitForElementVisibility(continueBillingAndPayment, 60);
-        getReusableActionsInstance().clickWhenReady(continueBillingAndPayment);
+        if(getReusableActionsInstance().isElementVisible(billingAndPaymentH1, 60)){
+            getReusableActionsInstance().javascriptScrollByVisibleElement(continueBillingAndPayment);
+            getReusableActionsInstance().clickWhenReady(continueBillingAndPayment);
+        }
+
+
+        if(getReusableActionsInstance().isElementVisible(popupCloseBtn)){
+            getReusableActionsInstance().clickWhenReady(popupCloseBtn, 3);
+            getReusableActionsInstance().clickWhenReady(continueBillingAndPayment, 3);
+
+        }
     }
 
     public boolean verifyCustomerCurrentPlan(){
