@@ -24,11 +24,11 @@ public class OVR_Auto_TC02_Migration_2P_to_2P_Port_IN_Internet_E2E_Corp_ON_EN_Te
 
     @Test(groups = {"OVR", "RegressionOVR"})
     public void ovr_Auto_TC02_Migration_2P_to_2P_Port_IN_Internet_E2E_Corp_ON_EN_Test() throws InterruptedException {
-        getChampLoginPage().logIntoChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
+        getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspdealercode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
-        getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
+        getUniLoginPage().selectCorpSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
         getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.ovrMigrationData2PInternetAndTvTo2P.getBanNumber(), TestDataHandler.ovrMigrationData2PInternetAndTvTo2P.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("search for account and select environment ");
@@ -55,6 +55,8 @@ public class OVR_Auto_TC02_Migration_2P_to_2P_Port_IN_Internet_E2E_Corp_ON_EN_Te
         reporter.reportLogWithScreenshot("Channel Personalization page");
         getRogersIgniteBundlesPage().clickExchangeLater();
         reporter.reportLogWithScreenshot("Channels and theme packs page");
+        getRogersIgniteBundlesPage().clickReviewAddons();
+        reporter.reportLogWithScreenshot("Reviewed customer's add ons");
         getRogersIgniteBundlesPage().clkContinue();
         getRogersIgniteBundlesPage().fourKTVPopup();
         getRogersIgniteBundlesPage().contiue4KContent();
@@ -72,11 +74,11 @@ public class OVR_Auto_TC02_Migration_2P_to_2P_Port_IN_Internet_E2E_Corp_ON_EN_Te
 
         reporter.reportLogWithScreenshot("wish to continue");
         getRogersIgniteBundlesPage().customerWishtoContinue();
-        //reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
         reporter.reportLogWithScreenshot("Customer Profile");
         getCustomerProfilePage().clkContinue();
 
         getBundleBuilderPage().enterdateOfBirth(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
+        reporter.reportLogWithScreenshot("Credit Evaluation Page");
         getBundleBuilderPage().creditevaluationAndContinue();
         reporter.reportLogWithScreenshot("Launched the install options  page");
         getBundleBuilderPage().selectExpressProInstall();
@@ -89,7 +91,7 @@ public class OVR_Auto_TC02_Migration_2P_to_2P_Port_IN_Internet_E2E_Corp_ON_EN_Te
         reporter.reportLogWithScreenshot("Order Review Page");
         reporter.softAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
         reporter.softAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
-        //getOVROrderReviewPage().clkContinue();
+        getOVROrderReviewPage().clkContinue();
         reporter.reportLogWithScreenshot("Sign Agreement Page");
         getOVRAgreementPage().signAgreement();
         getOVRAgreementPage().clkAgreementCheckbox();
