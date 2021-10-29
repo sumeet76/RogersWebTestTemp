@@ -23,14 +23,15 @@ public class OneViewCH_Auto_1642_TC01_RHP_ManageAddons_AddAddons_Immediate_Test 
         reporter.reportLogWithScreenshot("Manage Addon button is clicked");
         getHomePhoneAddonsPage().chooseAddon(TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameEn(),TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameFr());
         reporter.reportLogWithScreenshot("Addons selected for addition");
+        getTVDashboardPage().clickYourChanges();
         getHomePhoneAddonsPage().clickConfirmButton();
         reporter.reportLogWithScreenshot("Select the billing cycle");
         getHomePhoneAddonsPage().clickImmediateBill();
         reporter.reportLogWithScreenshot("Immediate bill check box is selected");
         getHomePhoneAddonsPage().clickContinueOnSelectDateChange();
         reporter.reportLogWithScreenshot("Continue clicked in select date popup");
-//        getRogersOVOrderReviewPage().clkSubmit();
-//        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        getRogersOVOrderReviewPage().clkSubmit();
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
     }
 

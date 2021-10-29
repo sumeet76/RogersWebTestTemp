@@ -171,7 +171,12 @@ public class BaseTestClass {
     protected static final ThreadLocal<RogersHomePageServiceability> RogersHomePageServiceabilityThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersSecurityPackagesPage> RogersSecurityPackagesPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersOVInstallationPage> RogersOVInstallationPageThreadLocal = new ThreadLocal<>();
+    protected  static final  ThreadLocal<CallerInformationPage>CallerInformationPageThreadLocal = new ThreadLocal<>();
 
+    public static CallerInformationPage getCallerInformationPage()
+    {
+        return CallerInformationPageThreadLocal.get();
+    }
     public static RogersPSEFPage getRogersPSEFPage() {
         return RogersPSEFPageThreadLocal.get();
     }
@@ -1120,6 +1125,7 @@ public class BaseTestClass {
                 RogersOVCheckoutPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVCheckoutPage(getDriver()));
                 RogersOVReviewOrderPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVReviewOrderPage(getDriver()));
                 RogersOVOneTimePaymentPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVOneTimePaymentPage(getDriver()));
+                CallerInformationPageThreadLocal.set(new com.rogers.oneview.pages.CallerInformationPage(getDriver()));
                 break;
 
             case "redesignrogers":

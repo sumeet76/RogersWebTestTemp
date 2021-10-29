@@ -207,6 +207,14 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-selected-key='0']//select[contains(@id,'ds-form-input-id') and contains(@class,'select')])[1]")
 	WebElement additionalIgniteTVBoxes;
 
+	@FindBy(xpath="//p[text()='Ignite Home Phone Setup']")
+	WebElement homePhoneSetUp;
+
+	@FindBy(xpath="//span[contains(@translate,'showIgniteHomePhoneSetupModal') and text()='Yes, keep number']")
+	WebElement keepNumber;
+
+	@FindBy(xpath="//span[contains(@translate,'showIgniteHomePhoneSetupModal') and text()='No, select new number']")
+	WebElement newNumber;
 	/**
 	 * Click Load Offers button
 	 * @author aditi.jain
@@ -698,5 +706,28 @@ public void activateHomePhoneltrPopUp() {
 	public void clickReviewAddons() {
 		if (getReusableActionsInstance().isElementVisible(reviewAddons,30))
 		getReusableActionsInstance().clickWhenReady(reviewAddons);
+	}
+	/* To verify the Ignite Home Phone Setup check box
+	* @suganya p
+	*/
+	public boolean verifyIgniteHomePhoneSetup()
+	{
+		return getReusableActionsInstance().isElementVisible(homePhoneSetUp,60);
+	}
+	/*To Select the keep number in Home phone setup
+	* @suganya p
+	*/
+	public void clickKeepNumber()
+	{
+		getReusableActionsInstance().getWhenReady(keepNumber,30).click();
+	}
+
+	/*
+	* To select new nuber option in Home Phone Setup
+	* @suganya p
+	*/
+	public void clickNewNumber()
+	{
+		getReusableActionsInstance().getWhenReady(newNumber,30).click();
 	}
 }
