@@ -34,50 +34,56 @@ public class OVR_Auto_TC01_SAI_Migration_1P_to_SAI_E2E_Test extends BaseTestClas
         reporter.reportLogWithScreenshot("search for account and select environment ");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
+        reporter.reportLogWithScreenshot("Address Availability popup");
         getCheckAvailabilityPage().useThisAddress();
-        reporter.reportLogWithScreenshot("Service Availability");
+        reporter.reportLogWithScreenshot("Service Availability Page");
 
+        reporter.reportLogWithScreenshot("Ignite Bundles Page");
         getRogersIgniteBundlesPage().clkInternetCheckbox();
         reporter.reportLogWithScreenshot("Internet Selected");
         getRogersIgniteBundlesPage().clkLoadOffers();
         getRogersIgniteBundlesPage().clickFirstAddToCart();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
-        getRogersIgniteBundlesPage().clkContinue();
+        getBundleBuilderPage().clickCheckout();
         getRogersIgniteBundlesPage().reviewTermsAndCondition();
         reporter.reportLogWithScreenshot("Points to mention pop-up");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
-        getRogersIgniteBundlesPage().clkContinue();
-        reporter.reportLogWithScreenshot("Cart Summary");
+        reporter.reportLogWithScreenshot("Cart Summary Page");
+        getBundleBuilderPage().clickCheckout();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 
+        getBundleBuilderPage().selectyescontinue();
         reporter.reportLogWithScreenshot("wish to continue");
-        getRogersIgniteBundlesPage().customerWishtoContinue();
-        //reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
         reporter.reportLogWithScreenshot("Customer Profile");
         getCustomerProfilePage().clkContinue();
 
         getBundleBuilderPage().enterdateOfBirth(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
+        reporter.reportLogWithScreenshot("Credit Evaluation Page");
         getBundleBuilderPage().creditevaluationAndContinue();
+
         reporter.reportLogWithScreenshot("Launched the install page");
         getBundleBuilderPage().selectExpressProInstall();
         getBundleBuilderPage().clkTechInstallSlot();
+        reporter.reportLogWithScreenshot("Select tech install slot");
         getBundleBuilderPage().setMobileNumber();
         reporter.reportLogWithScreenshot("tech install details");
         getBundleBuilderPage().clkContinueInstallation();
-        reporter.reportLogWithScreenshot("Billing and Payment Details");
+
         getBundleBuilderPage().clkContinueBillingAndPayment();
-        reporter.reportLogWithScreenshot("Order Review Page");
+        //getRogersIgniteBundlesPage().clkContinue();
+        reporter.reportLogWithScreenshot("Billing and Payment Details");
         reporter.softAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
+        reporter.reportLogWithScreenshot("Order Review Page");
         reporter.softAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
-        //getOVROrderReviewPage().clkContinue();
+        getOVROrderReviewPage().clkContinue();
         reporter.reportLogWithScreenshot("Sign Agreement Page");
         getOVRAgreementPage().signAgreement();
         getOVRAgreementPage().clkAgreementCheckbox();
         getOVRAgreementPage().clkCompleteOrder();
-        reporter.reportLogWithScreenshot("Order Confirmation Page");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderConfirmation(), "Order Confirmation displayed", "Order not Confirmed");
+        reporter.reportLogWithScreenshot("Order Confirmation Page");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
