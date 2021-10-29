@@ -24,6 +24,9 @@ public class AccountSearchPage extends BasePageClass {
     @FindBy(xpath = "//table[contains(@class, 'searchResults')]//tr[2]//select")
     WebElement drpdwnPlsSelect;
 
+    @FindBy(xpath = "//*[text()='New Ignite Customer']//following::div//select")
+    WebElement newCustomerDropDown;
+
     @FindBy(xpath = "//*[text()='CONTINUE']")
     WebElement btncontnu_customerAuthen;
 
@@ -44,6 +47,10 @@ public class AccountSearchPage extends BasePageClass {
         getReusableActionsInstance().getWhenVisible(txtpostalcode).sendKeys(postalCode);
         getReusableActionsInstance().getWhenVisible(btnSearch).click();
 
+    }
+
+    public void selectNewCustomerEnv(String env){
+        getReusableActionsInstance().selectWhenReady(newCustomerDropDown, env, 5);
     }
 
 }
