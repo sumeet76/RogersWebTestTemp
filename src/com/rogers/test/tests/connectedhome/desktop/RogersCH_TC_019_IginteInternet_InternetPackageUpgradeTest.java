@@ -61,7 +61,7 @@ public class RogersCH_TC_019_IginteInternet_InternetPackageUpgradeTest extends B
         reporter.reportLogWithScreenshot("Launched the Interent packages page");
         getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getAccountDetails().getUpgradePlanFr());
         reporter.reportLogWithScreenshot("Launched the agreement page");
-        //getRogersInternetDashboardPage().clkInternetChangeOK();
+        getRogersInternetDashboardPage().clkInternetChangeOK();
 		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");
 		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
