@@ -24,8 +24,9 @@ public class OVROrderReviewPage extends BasePageClass {
     WebElement continueBtn;
 
     public void clkContinue(){
-        getReusableActionsInstance().javascriptScrollToBottomOfPage();
-        getReusableActionsInstance().clickWhenReady(continueBtn);
+        getReusableActionsInstance().waitForElementTobeClickable(continueBtn, 10);
+        getReusableActionsInstance().javascriptScrollByVisibleElement(continueBtn);
+        getReusableActionsInstance().executeJavaScriptClick(continueBtn);
     }
 
     public boolean verifyOneTimeFees(){
