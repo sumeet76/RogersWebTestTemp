@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * TC01-OV-HUP with PPC_Multiline Account_Validate if user is able to place an order in HUP flow and choose a different plan_EN
- * @author Saurav.Goyal
+ * TC14-OV-NAC TERM_Validate if user is able to place a NAC order by selecting NOTERM option and outbound plan with standard shipping_EN
+ * @author praveen.kumar7
  */
 public class RogersBFA_OV_TC14_NACOutboundNoTermStandardShipping_Test extends BaseTestClass {
 
@@ -33,12 +33,12 @@ public class RogersBFA_OV_TC14_NACOutboundNoTermStandardShipping_Test extends Ba
 		getNacDashboardPage().setDelearCode();
 		reporter.reportLogWithScreenshot("Active Wireless Service Modal");
 		getNacDashboardPage().fillShippingAddressField(TestDataHandler.buyFlowsOVtestCase14.getShippingAddress());
-		getNacDashboardPage().fillApartmentField(TestDataHandler.buyFlowsOVtestCase14.getApartment());
+		//getNacDashboardPage().fillApartmentField(TestDataHandler.buyFlowsOVtestCase14.getApartment());
 		//reporter.hardAssert(getNacDashboardPage().verifyPOTGAddressEligibility(), "Address is Eligible for POTG", "Address is not Eligible for POTG");
 		//reporter.reportLogWithScreenshot("POTG address is selected");
 		getNacDashboardPage().clkGetANewPhoneButton();
 		//-------------------------------------Choose Phone page---------------------------------------------
-		reporter.hardAssert(getRogersOVChoosePhonePage().verifyDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase14.getDeviceName()), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
+		//reporter.hardAssert(getRogersOVChoosePhonePage().verifyDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase14.getDeviceName()), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
 		String deviceName = TestDataHandler.buyFlowsOVtestCase14.getDeviceName();
 		reporter.hardAssert(getRogersOVChoosePhonePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
 		getRogersOVChoosePhonePage().clickDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase14.getDeviceName());
@@ -114,10 +114,10 @@ public class RogersBFA_OV_TC14_NACOutboundNoTermStandardShipping_Test extends Ba
 		getRogersOVCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.buyFlowsOVtestCase14.getPaymentMethod());
 		getRogersOVCheckoutPage().clkBillingContinueButton();
 		// ***************Shipping Stepper*************//
-		reporter.hardAssert(getRogersOVCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
-				"Billing Address is not selected");
+		//reporter.hardAssert(getRogersOVCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
+		//"Billing Address is not selected");
 		getRogersOVCheckoutPage().clkDeliveryMethod("STANDARD");
-		reporter.reportLogPassWithScreenshot("Standard Delivery selected");
+		reporter.reportLogPassWithScreenshot("Std Shipping selected");
 		getRogersOVCheckoutPage().clkContinueBtnShipping();
 		reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
 		getRogersOVCheckoutPage().clksubmitBtnCheckoutPage();

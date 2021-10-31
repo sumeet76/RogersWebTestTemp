@@ -13,10 +13,10 @@ package com.rogers.test.tests.buyflows;
 /**
  * TC14 - Regression - HUP-E2E-SL Shared(Fin)-Validate the HUP by selecting Keep current plan _Chrome_EN_ON
  */
-public class RogersBFA_TC14_HUPShareKeepCurrentPlanTermML_Test extends BaseTestClass{
+public class RogersBFA_TC14_HUPMLBySelectingFinDevice_MultipleFinAccessories_NB_Test extends BaseTestClass{
 
     @Test(groups = {"RegressionBFA","HUPBFA"})
-    public void rogersHUPShareKeepCurrentPlanTermMLTest() {
+    public void rogersHUPMLFinDeviceMultiplAccessories_NB_Test() {
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
         getRogersHomePage().clkSignIn();
@@ -45,26 +45,38 @@ public class RogersBFA_TC14_HUPShareKeepCurrentPlanTermML_Test extends BaseTestC
         reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
                 "Continue button on the device config page is present",
                 "Continue button on the device config page is not present");
-        getRogersDeviceConfigPage().clickContinueButton();
-        reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
-                "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
-        getRogersPlanConfigPage().setCheckBoxKeepMyCurrentPlan();
-        reporter.reportLogPassWithScreenshot("Checkbox for keep my current plan selected");
+        //-----------------------------------Accessories selection------------------------------
+        reporter.hardAssert(getRogersDeviceConfigPage().verifyAddAccessoriesOption(),"Accessories option is displayed", "Accessories option is not displayed");
+        getRogersDeviceConfigPage().clkAddAccessoriesOption();
+        reporter.reportLogWithScreenshot("Accessories displayed successfully");
+        getRogersDeviceConfigPage().addAccessoriesToCart(TestDataHandler.tc14HUPShareKeepCurrentPlanTermML.getAccessoriesCount(),
+                TestDataHandler.tc14HUPShareKeepCurrentPlanTermML.getAccessory1(),TestDataHandler.tc14HUPShareKeepCurrentPlanTermML.getAccessory2());
+        reporter.reportLogPassWithScreenshot("Accessories selected successfully");
+        getRogersDeviceConfigPage().clkContinueAccessories();
+        //--------------------------------------Plan config page----------------------------------
+        reporter.hardAssert(getRogersPlanConfigPage().verifyPlanConfigPage(),
+                "Plan config page loaded successfully", "Plan config page not loaded");
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
         getRogersPlanConfigPage().clickContinueOnModalToDoWithOldPhone();
         getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page data option selected");
-            /*getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
-            reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
-            getRogersPlanConfigPage().skipBPOOffer();*/
+        getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
+        reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
+        getRogersPlanConfigPage().skipBPOOffer();
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
-        reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
+        reporter.reportLogPassWithScreenshot("Addons option selected and Landed in Accessories Cost selection stepper");
+        getRogersPlanConfigPage().clkContinueAccessoriesCostSelection();
+        getRogersPlanConfigPage().skipBPOOffer();
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
+        getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
+        //---------------------------------------Checkout pages--------------------------------------------
         reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                 "Billing Address is not selected");
         getRogersCheckoutPage().clkDeliveryMethod("standard");
         reporter.reportLogPass("Standard Delivery selected");
+        reporter.hardAssert(getRogersCheckoutPage().verifyAccessoriesShippingMessage(),
+                "Accessory shipping message is displayed", "Accessory shipping message is not displayed");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPass("Clicked continue button in shipping stepper");
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
@@ -76,6 +88,7 @@ public class RogersBFA_TC14_HUPShareKeepCurrentPlanTermML_Test extends BaseTestC
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
         getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
         getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
+        getRogersReviewOrderPage().clkAccessoriesFinancingAgreementCheckBox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         if(getRogersOrderReviewPage().isPaymentRequired()) {
             getRogersOrderReviewPage().clkContinue();

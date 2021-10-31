@@ -14,8 +14,8 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * TC01-OV-AAL_Singleline Account_Validate if user is able to place an order in HUP flow and choose a different plan_EN
- * @author Saurav.Goyal
+ * TC24-SOHO-AAL_Singleline Nonshare Account_Validate AAL flow by selecting NOTERM option and std shipping for QC province_EN
+ * @author praveen.kumar7
  */
 public class SOHOBFA_OV_TC24_AALTERMNonShareNoTerm_StdShipping_QC_Test extends BaseTestClass {
 

@@ -155,8 +155,8 @@ public class RogersBFA_TC04_NAC_TermBopisTest extends BaseTestClass {
 		// ***************Billing & Payment Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(), "Billing Options Title Displayed",
 				"Billing Options Title Not Present");
-		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(),
-				"Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not disaplayed");
+		/*reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(),
+				"Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not disaplayed");*/
 		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc04NACTermBopis.getPaymentMethod());
 		getRogersCheckoutPage().clkBillingContinueButton();
 		// ***************Shipping Stepper*************//

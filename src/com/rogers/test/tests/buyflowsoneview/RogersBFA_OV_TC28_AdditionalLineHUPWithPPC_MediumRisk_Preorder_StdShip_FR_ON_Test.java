@@ -28,7 +28,7 @@ public class RogersBFA_OV_TC28_AdditionalLineHUPWithPPC_MediumRisk_Preorder_StdS
 		//----------------------------------------------Dashboard page--------------------------------------------------
 		getRogersOVWirelessDetailsPage().clkUpgradeMyDevice();
 		reporter.reportLogWithScreenshot("Device upgrade button clicked");
-		getRogersOVWirelessDetailsPage().setCustomerType(this.getClass().getSimpleName());
+		//getRogersOVWirelessDetailsPage().setCustomerType(this.getClass().getSimpleName());
 		//----------------------------------------Device Catalog & Config page-------------------------------------------
 		/*reporter.hardAssert(getRogersOVChoosePhonePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
 		reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
@@ -37,6 +37,7 @@ public class RogersBFA_OV_TC28_AdditionalLineHUPWithPPC_MediumRisk_Preorder_StdS
 		String deviceName = TestDataHandler.buyFlowsOVtestCase28.getDeviceName();
 		reporter.hardAssert(getRogersOVChoosePhonePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
 		getRogersOVChoosePhonePage().clickDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase28.getDeviceName());
+		reporter.reportLogWithScreenshot("Device Config page loaded successfully");
 		getRogersOVChoosePhonePage().clickContinueButton();
 		//---------------------------------------------Plan config page-------------------------------------------------
 		reporter.hardAssert(getRogersOVPlanConfigPage().verifyCustomerTypeInHeader("CONSUMER"),
@@ -53,6 +54,7 @@ public class RogersBFA_OV_TC28_AdditionalLineHUPWithPPC_MediumRisk_Preorder_StdS
 		reporter.reportLogPassWithScreenshot("Data option selected");
 		getRogersOVPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		getRogersOVPlanConfigPage().clickPreCartAddonsContinueButton();
+		reporter.reportLogWithScreenshot("Clicked continue button in addons stepper");
 		getRogersOVPlanConfigPage().clickCartSummaryContinueButton();
 		getRogersOVPlanConfigPage().clkAdditionalLineOptions();
 		//---------------------------------------------Checkout pages---------------------------------------------------

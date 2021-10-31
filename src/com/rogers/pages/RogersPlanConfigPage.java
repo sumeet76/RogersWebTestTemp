@@ -30,17 +30,17 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[@data-test='stepper-2-edit-step-continue-button']/preceding-sibling::button")
     WebElement showMoreDetails;
 
-    @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-1-edit-step-selection-option-')]//label[1]")
+    @FindBy(xpath = "//ds-selection[contains(@data-test,'stepper-1-edit-step-selection-option-')]//label[1]")
     List<WebElement> noOfDeviceTiers;
 
     @FindAll({
-            @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-infinite-')]//label[1]"),
-            @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-')]//label[1]"),
-            @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-talkAndText-')]")
+            @FindBy(xpath = "//ds-selection[contains(@data-test,'stepper-2-edit-step-selection-option-infinite-')]//label[1]"),
+            @FindBy(xpath = "//ds-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-')]//label[1]"),
+            @FindBy(xpath = "//ds-selection[contains(@data-test,'stepper-2-edit-step-selection-option-talkAndText-')]")
     })
     List<WebElement> noofDataOptions;
 
-    @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-3-edit-step-selection-option-')]//label[1]")
+    @FindBy(xpath = "//ds-selection[contains(@data-test,'stepper-3-edit-step-selection-option-')]//label[1]")
     List<WebElement> noOfTalkOptions;
 
     @FindBy(xpath = "//span[text()='Monthly device financing payment' or text()='Paiement mensualité']")
@@ -220,6 +220,21 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[@data-test='addons-removal-modal-button-primary']")
     WebElement btnExistingAddonModalContinue;
 
+    @FindBy(xpath = "//input[@value='FIN_DATA_TALK_TEXT']/..")
+    WebElement labelDTTPlanType;
+
+    @FindBy(xpath = "//input[@value='FIN_TALK_TEXT']/..")
+    WebElement labelTTPlanType;
+
+    @FindBy(xpath = "//input[@value='NOTERM']/..")
+    WebElement labelNotermPlanType;
+
+    @FindBy(xpath = "//button[contains(@class,'dsa-cartSummary')]")
+    WebElement btnCartSummaryDropDown;
+
+    @FindBy(xpath = "//button[@data-test='stepper-5-edit-step-continue-button']")
+    WebElement btnContinueAccessoriesCost;
+
 
     /**
      * Select Device Protection Header on Plan config page
@@ -280,16 +295,16 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public String createXpathWithInputData(String dC_DO_TO,int stepper) {
         if (stepper == 1) {
-            return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
+            return xpathDcDoTo = "//ds-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
         }
         else if (stepper == 2) {
-            return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-infinite-" + dC_DO_TO + "')]//label[1]";
+            return xpathDcDoTo = "//ds-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-infinite-" + dC_DO_TO + "')]//label[1]";
         }
         else if(stepper == 3) {
-            return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
+            return xpathDcDoTo = "//ds-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
         }
         else {
-            return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
+            return xpathDcDoTo = "//ds-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
         }
     }
 
@@ -419,7 +434,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void selectBasicPlanAndClkContinueBtn(String dataOptionIndex) {
-        getReusableActionsInstance().clickWhenVisible(By.xpath("//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-basic-"+dataOptionIndex+"')]//label"),20);
+        getReusableActionsInstance().clickWhenVisible(By.xpath("//ds-selection[contains(@data-test,'stepper-2-edit-step-selection-option-basic-"+dataOptionIndex+"')]//label"),20);
         getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton,20);
     }
 
@@ -429,7 +444,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void selectBasicIndividualPlanAndClkContinueBtn(String dataOptionIndex) {
-        getReusableActionsInstance().clickWhenVisible(By.xpath("//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-"+dataOptionIndex+"')]//label"),20);
+        getReusableActionsInstance().clickWhenVisible(By.xpath("//ds-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-"+dataOptionIndex+"')]//label"),20);
         getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton,20);
     }
 
@@ -589,6 +604,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clickPreCartDeviceCostContinueButton() {
+        getReusableActionsInstance().waitForElementVisibility(btnCartSummaryDropDown,30);
         getReusableActionsInstance().clickWhenReady(preCartDeviceCostContinueButton);
         getReusableActionsInstance().clickIfAvailable(btnContinueOnModalToDoWithOldPhone, 10);
     }
@@ -788,7 +804,8 @@ public class RogersPlanConfigPage extends BasePageClass {
             getReusableActionsInstance().clickWhenVisible(By.xpath("(//ul[@class='dropdown-menu-plan']//li)[1]"));
         }
         getReusableActionsInstance().clickIfAvailable(talkDropDown);
-        getReusableActionsInstance().selectWhenReady(talkDropDown,1);
+        getReusableActionsInstance().staticWait(5000);
+        getReusableActionsInstance().selectWhenReady(talkDropDown,0);
     }
 
     /**
@@ -1134,7 +1151,16 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void selectPlanType(String planType) {
-        getReusableActionsInstance().clickWhenVisible(By.xpath("//dsa-selection[contains(@data-test,'stepper-1-edit-step-selection-option-')]//label[@aria-label='"+planType+"']"));
+        if(planType.equalsIgnoreCase("Financing")) {
+            getReusableActionsInstance().clickWhenVisible(labelDTTPlanType);
+        }
+        else if(planType.equalsIgnoreCase("TALKTEXTFIN")) {
+            getReusableActionsInstance().clickWhenVisible(labelTTPlanType);
+        }
+        else if(planType.equalsIgnoreCase("NOTERM")) {
+            getReusableActionsInstance().clickWhenVisible(labelNotermPlanType);
+        }
+        //getReusableActionsInstance().clickWhenVisible(By.xpath("//dsa-selection[contains(@data-test,'stepper-1-edit-step-selection-option-')]//label[@aria-label='"+planType+"']"));
         getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton);
         getReusableActionsInstance().staticWait(16000);
     }
@@ -1161,6 +1187,23 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public void clkContinueOnExistingAddonModal() {
         getReusableActionsInstance().clickIfAvailable(btnExistingAddonModalContinue);
+    }
+
+    /**
+     * This method verifies if plan config page loaded successfully or not
+     * @return true if plan config page laoaded, else false
+     * @author praveen.kumar7
+     */
+    public boolean verifyPlanConfigPage() {
+      return getReusableActionsInstance().isElementVisible(btnCartSummaryDropDown,30);
+    }
+
+    /**
+     * This method clicks on continue button in accessories cost selection stepper
+     * @author praveen.kumar7
+     */
+    public void clkContinueAccessoriesCostSelection() {
+        getReusableActionsInstance().clickWhenVisible(btnContinueAccessoriesCost);
     }
 
 }

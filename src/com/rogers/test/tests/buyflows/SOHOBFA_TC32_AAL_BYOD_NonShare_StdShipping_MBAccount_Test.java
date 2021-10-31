@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * TC22 - Rogers Add a line with by selecting Non share option and Standard shipping - E2E
+ * TC32 - SOHO Add a line with by selecting Non share option and Standard shipping - E2E
  * @author praveen.kumar7
  */
 
@@ -23,7 +23,7 @@ public class SOHOBFA_TC32_AAL_BYOD_NonShare_StdShipping_MBAccount_Test extends B
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","AALBFA"})
+    @Test(groups = {"RegressionBFA","AALBFA","SOHOBFA"})
     public void sohoAalByodNonShareStdShippingMBTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");

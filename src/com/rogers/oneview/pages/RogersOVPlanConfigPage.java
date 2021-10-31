@@ -33,7 +33,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[contains(@title,'Plan') or contains(@title,'Show Retention Plans')]")
     WebElement showRetPlans;
 
-    @FindBy(xpath = "//button[contains(@title,'Show Outbound Plans')]")
+    @FindBy(xpath = "//button[@data-test='outbound-expander-button']")
     WebElement showOutPlans;
 
     @FindBy(xpath = "//button[contains(@title,'Retention')]//span/span[contains(text(),' Show Retention Plans ')]")
@@ -49,8 +49,8 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     List<WebElement> noOfDeviceTiers;
 
     @FindAll({
-            @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-infinite-')]//label[1]"),
-            @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-')]//label[1]")
+            @FindBy(xpath = "//ds-selection[contains(@data-test,'stepper-2-edit-step-selection-option-infinite-')]//label[1]"),
+            @FindBy(xpath = "//ds-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-')]//label[1]")
     })
     List<WebElement> noofDataOptions;
 
@@ -111,7 +111,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//ds-step[@id='stepper-addons']//div[@class='d-flex flex-row-reverse']//button")
     WebElement preCartSummaryContinueButtonAddOns;
 
-    @FindBy(xpath = "//button[@data-test='build-plan-checkout-flow-button']/span")
+    @FindBy(xpath = "//button[@data-test='build-plan-checkout-flow-button']")
     WebElement continueButtonOnCartSummary;
 
     @FindBy(xpath = "//button[contains(@data-test,'bpo-offer-modal') or @id='get-bpo-offer-button']")
@@ -288,16 +288,16 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      */
     public String createXpathWithInputData(String dC_DO_TO,int stepper) {
         if (stepper == 1) {
-            return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
+            return xpathDcDoTo = "//ds-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
         }
         else if (stepper == 2) {
-            return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-infinite-" + dC_DO_TO + "')]//label[1]";
+            return xpathDcDoTo = "//ds-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-infinite-" + dC_DO_TO + "')]//label[1]";
         }
         else if(stepper == 3) {
-            return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
+            return xpathDcDoTo = "//ds-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
         }
         else {
-            return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
+            return xpathDcDoTo = "//ds-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
         }
     }
 
@@ -501,7 +501,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
             getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton, 30);
         }
         else {
-            getReusableActionsInstance().clickWhenVisible(By.xpath("//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-" + dataOptionIndex + "')]//label[1]"),40);
+            getReusableActionsInstance().clickWhenVisible(By.xpath("//ds-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-" + dataOptionIndex + "')]//label[1]"),40);
             getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton,40);
         }
     }
@@ -1064,6 +1064,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public boolean verifyCustomerTypeInHeader(String accountType) {
+        getReusableActionsInstance().waitForElementVisibility(custTypeInHeader,30);
         String customerTypeInHeader = getReusableActionsInstance().getWhenReady(custTypeInHeader).getText().trim();
         if(customerTypeInHeader.toUpperCase().contains(accountType)) {
             return true;

@@ -21,12 +21,7 @@ public class RogersBFA_OV_TC11_AALShareTerm_TabletDevice_Test extends BaseTestCl
 
 	@Test(groups = {"RegressionBFA","RegressionOVBFA","OVAALBFA"})
 	public void aALTabletShareTermStandardShippingFlow() {
-		reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
-		reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");
-		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
-		reporter.reportLogWithScreenshot("Rogers OV environment selected" + TestDataHandler.bfaOneViewConfig.getEnvironmentName());
-		//getAccountOverViewPage().enterDealerCodeDialogue();
-		//getAccountOverViewPage().clkSubmitBtnDealerCodeDialogue();
+		getEnvironmentSelectionPage().launchOneView(TestDataHandler.buyFlowsOVtestCase11.getBanNo(), TestDataHandler.buyFlowsOVtestCase11.getContactID());
 		reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
 		reporter.reportLogWithScreenshot("Rogers Account overview page");
 		getAccountOverViewPage().setSkipNotification();
@@ -126,7 +121,7 @@ public class RogersBFA_OV_TC11_AALShareTerm_TabletDevice_Test extends BaseTestCl
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		startOVSession(System.getProperty("QaOVUrl"),strBrowser, strLanguage,RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim(), TestDataHandler.buyFlowsOVtestCase11.getContactID(),TestDataHandler.buyFlowsOVtestCase11.getBanNo(),TestDataHandler.bfaOneViewConfig.getUsrID(), TestDataHandler.bfaOneViewConfig.getLoginID(),  method);
+		startOVSession(System.getProperty("OVUrl"),strBrowser, strLanguage,RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim(),"", "","", "", method);
 	}
 
 /*	@AfterMethod(alwaysRun = true)

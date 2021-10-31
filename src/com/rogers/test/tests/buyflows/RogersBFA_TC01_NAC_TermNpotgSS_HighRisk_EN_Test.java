@@ -21,7 +21,7 @@ public class RogersBFA_TC01_NAC_TermNpotgSS_HighRisk_EN_Test extends BaseTestCla
   
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.buyflows, method);
 	}
 
     @Test(groups = {"RegressionBFA","NACBFA"})

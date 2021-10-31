@@ -139,6 +139,10 @@ public class RogersChoosePhonePage extends BasePageClass {
 	@FindBy(xpath = "(//button[contains(@class,'ds-button ds-corners ds-pointer')])[3]")
 	WebElement continueBtnHupCtnSelectionModal;
 
+	@FindBy(xpath = "//div[@id='filters']")
+	WebElement deviceFilters;
+
+
 	/**
 	 * Clicks on the 'Details' button on the first available device
 	 * @author rajesh.varalli1
@@ -419,7 +423,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 * @author saurav.goyal
 	 */
 	public boolean verifyDeviceTileCTAButton(String deviceName) {
-		getReusableActionsInstance().waitForElementVisibility(getReusableActionsInstance().getWhenReady(By.xpath("(//a[contains(@title,'View details')])[1]")),60);
+		getReusableActionsInstance().waitForElementVisibility(deviceFilters,60);
 		if (deviceName.equalsIgnoreCase("Bring Your Own Device")) {
 			return getReusableActionsInstance().isElementVisible(btnBringYourOwnDeviceViewDetails,20);
 		} else {

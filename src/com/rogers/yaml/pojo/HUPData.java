@@ -14,6 +14,10 @@ public class HUPData {
 	private String creditCardDetails;
 	private String expiryDate;
 	private String dataOptionIndex;
+	private String newAddress;
+	private String accessoriesCount;
+	private String accessory1;
+	private String accessory2;
 
 	public String getCreditCardDetails() {
 		return creditCardDetails;
@@ -148,6 +152,54 @@ public class HUPData {
 	 */
 	public void setdataOptionIndex(String dataOptionIndex) {
 		this.dataOptionIndex = dataOptionIndex;
+	}
+	/**
+	 * @return the newAddress
+	 */
+	public String getNewAddress() {
+		return newAddress;
+	}
+	/**
+	 * @param newAddress the newAddress to set
+	 */
+	public void setNewAddress(String newAddress) {
+		this.newAddress = newAddress;
+	}
+	/**
+	 * @return the accessories count
+	 */
+	public String getAccessoriesCount() {
+		return accessoriesCount;
+	}
+	/**
+	 * @param accessoriesCount to set
+	 */
+	public void setAccessoriesCount(String accessoriesCount) {
+		this.accessoriesCount = accessoriesCount;
+	}
+	/**
+	 * @return accessory1 to select
+	 */
+	public String getAccessory1() {
+		return accessory1;
+	}
+	/**
+	 * @param accessory1 to set
+	 */
+	public void setAccessory1(String accessory1) {
+		this.accessory1 = accessory1;
+	}
+	/**
+	 * @return accessory2 to select
+	 */
+	public String getAccessory2() {
+		return accessory2;
+	}
+	/**
+	 * @param accessory2 to set
+	 */
+	public void setAccessory2(String accessory2) {
+		this.accessory2 = accessory2;
 	}
 
 }

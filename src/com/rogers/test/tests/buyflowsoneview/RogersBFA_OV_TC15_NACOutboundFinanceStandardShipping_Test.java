@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * TC01-OV-HUP with PPC_Multiline Account_Validate if user is able to place an order in HUP flow and choose a different plan_EN
- * @author Saurav.Goyal
+ * TC15-OV-NAC TERM_Validate if user is able to place a NAC order by selecting financing outbound plan and standard shipping_EN
+ * @author praveen.kumar7
  */
 public class RogersBFA_OV_TC15_NACOutboundFinanceStandardShipping_Test extends BaseTestClass {
 
@@ -34,7 +34,7 @@ public class RogersBFA_OV_TC15_NACOutboundFinanceStandardShipping_Test extends B
 		//getAccountOverViewPage().enterDealerCodeDialogue();
 		//getAccountOverViewPage().clkSubmitBtnDealerCodeDialogue();
 		getNacDashboardPage().setDelearCode();
-		getNacDashboardPage().fillShippingAddressField(TestDataHandler.buyFlowsOVtestCase15.getShippingAddress());
+		//getNacDashboardPage().fillShippingAddressField(TestDataHandler.buyFlowsOVtestCase15.getShippingAddress());
 		getNacDashboardPage().fillApartmentField(TestDataHandler.buyFlowsOVtestCase15.getApartment());
 		//reporter.hardAssert(getNacDashboardPage().verifyPOTGAddressEligibility(), "Address is Eligible for POTG", "Address is not Eligible for POTG");
 		//reporter.reportLogWithScreenshot("POTG address is selected");
