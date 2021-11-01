@@ -57,11 +57,10 @@ public class OneViewCH_Auto_1417_TC01_E2E_NAC_3P_TMP_Test extends BaseTestClass 
 		reporter.reportLogWithScreenshot("campaign");
 		getRogersIgniteCampaignPage().clickCampaignTab();
 		getRogersIgniteCampaignPage().enterCoupon("K13");
-
-
+		reporter.reportLogWithScreenshot("Campaign code entered");
 		getRogersIgniteCampaignPage().clickApplyCoupon();
-		reporter.reportLogWithScreenshot("apply coupon");
-		getRogersIgniteCampaignPage().verifyCouponRemoveLink();
+		reporter.reportLogWithScreenshot("Campaign code applied");
+		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
 		reporter.reportLogWithScreenshot("close coupon alert");
 		getRogersIgniteCampaignPage().closeCouponAlert();
 
