@@ -45,7 +45,7 @@ public class OneViewCH_Auto_1416_TC01_E2E_NAC_SAI_ISS_TMP_Test extends BaseTestC
 
 		reporter.reportLogWithScreenshot("campaign");
 		getRogersIgniteCampaignPage().clickCampaignTab();
-		getRogersIgniteCampaignPage().enterCoupon("K5U");
+		getRogersIgniteCampaignPage().enterCoupon("KW8");
 		getRogersIgniteCampaignPage().clickApplyCoupon();
 		reporter.reportLogWithScreenshot("campaign coupon applied");
 		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(),"Remove Coupon option exist","Remove Coupon does not exist");
