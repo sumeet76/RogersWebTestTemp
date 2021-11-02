@@ -58,7 +58,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]")
 	WebElement clkChangeAcceptCheckboxMigration;
 
-	@FindBy(xpath = "//span[@translate='global.cta.submit']")
+	@FindBy(xpath = "//span[text()='Submit']")
 	WebElement clkSubmit;
 	
 	@FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]")
