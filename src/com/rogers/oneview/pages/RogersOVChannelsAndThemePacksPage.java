@@ -86,5 +86,12 @@ public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 		getReusableActionsInstance().clickWhenReady(minicartContinue,120);
 		getReusableActionsInstance().waitForElementVisibility(btnContinueOn4kTv,120);
 	}
+	/**
+	 * Click Continue in Minicart
+	 * @author Amit Goswami
+	 */
+	public void clkbtnContinueOn4ktv(){
+		getReusableActionsInstance().clickWhenReady(btnContinueOn4kTv);
+	}
 }
 
