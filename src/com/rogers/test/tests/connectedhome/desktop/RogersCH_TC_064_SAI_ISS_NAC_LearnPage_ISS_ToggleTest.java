@@ -36,7 +36,7 @@ public class RogersCH_TC_064_SAI_ISS_NAC_LearnPage_ISS_ToggleTest extends BaseTe
 
     @Test(groups = {"RegressionCH","SmartStreamCH"})
     public void checkIssNacLearnPageToggleONTest() {
-        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming?env=qa?env=qa");
+        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming?env=qa");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
         String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
