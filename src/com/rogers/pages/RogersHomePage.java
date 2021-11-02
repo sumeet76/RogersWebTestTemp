@@ -241,12 +241,12 @@ public class RogersHomePage extends BasePageClass {
 	})
 	WebElement lnkInternetAvailability;
 
-	@FindAll({@FindBy(xpath = "//a[@title='View internet bundles available to you']/span")})
+	@FindAll({@FindBy(xpath = "//span[text()='Check availability']")})
 	WebElement lnkInternetwithSSAvailability;
 
 	@FindAll({
 	//@FindBy(xpath = "//span[@class='mb-0 flex-grow-1 text-title-4']"),
-	@FindBy(xpath = "//p[@class='text-title-4 mb-0 py-16']")})
+	@FindBy(xpath = "//div[@class='dsa-hero-billboard__ctas d-flex flex-wrap justify-content-center justify-content-md-start mt-8 ng-star-inserted']")})
 	WebElement txtInternetBuyPage;
   //@FindBy(xpath = "//h1[contains(text(),'Internet')]")
 

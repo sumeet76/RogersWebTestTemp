@@ -94,7 +94,7 @@ public class RogersTechInstallPage extends BasePageClass {
 
 
 	@FindAll({
-	@FindBy(xpath ="//a[@aria-describedby='ariaClickToContinue']"),
+	@FindBy(xpath ="//span[text()='Confirm']"),
 	@FindBy(xpath ="//span[@translate='global.checkout.fulfillment.confirm']/ancestor::a")})
 	WebElement btnTechInstallContinue;
 //button[@aria-label='Click here to continue']
