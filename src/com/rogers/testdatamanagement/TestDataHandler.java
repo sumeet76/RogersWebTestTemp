@@ -276,7 +276,7 @@ public class TestDataHandler {
 	public static AccountData tc138;
 	public static AccountData tc139;
 	public static AccountData RHPManage_AddOns;
-	public static AccountData InternetDashboardSupportLinks;
+	public static  AccountData RemoveThemepack1544Tc03;
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
  		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
@@ -595,7 +595,6 @@ public class TestDataHandler {
 		TC032_SAI_AddingSmartStream =YamlHandler.getOVAccountData("TC32_SAI_AddingSmartstream");
 		TC030_Internet_PackageUpgrade =YamlHandler.getOVAccountData("TC_030_Internet_PackageUpgrade");
 		RHPManage_AddOns =YamlHandler.getOVAccountData("RHPManageAddon");
-		InternetDashboardSupportLinks= YamlHandler.getOVAccountData("InternetDashboardSupportLinks");
 		targetedMigration1PInternetToSAI=YamlHandler.getMigrationData("1545_TargetedMigrationFlow_1P_Internet_to_SAITest");
 		targetedMigration1PInternetToSAIISS=YamlHandler.getMigrationData("1546_TargetedMigrationFlow_1P_Internet_to_SAIISS");
 		targetedMigration1PInternetTo2P=YamlHandler.getMigrationData("1547_TargetedMigrationFlow_1P_Internet_to_2P");
@@ -611,5 +610,6 @@ public class TestDataHandler {
 		targetedMigration_3P_to_2P=YamlHandler.getMigrationData("1566_TC01_TargetedMigration_3P_to_2P");
 		targetedMigration_3P_to_3P_same_numb=YamlHandler.getMigrationData("1567_TC01_TargetedMigration_3P_to_3P_same_numb");
 		targetedMigration_3P_to_3P_change_numb=YamlHandler.getMigrationData("1568_TC01_TargetedMigration_3P_to_3P_change_numb");
+		RemoveThemepack1544Tc03=YamlHandler.getOVAccountData("1544_TC03_RemoveThemepackImmediate");
 	}
 }

@@ -125,13 +125,13 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//button[@aria-label='BEST FITIgnite Internet 150u']")
 	WebElement VerifyBestFit;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
 	WebElement btnDSTClose;
 
 	@FindBy(xpath = "//*[text()='Here’s the package we recommend for you']")
 	WebElement VerifyYourBestFit;
 
-	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 150u']/preceding::span[text()='Add to cart']")
+	@FindBy(xpath = "//a[@aria-label='Add Ignite Internet 150u to your cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
 	WebElement btnBestAdd;
 
 	/**

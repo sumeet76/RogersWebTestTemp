@@ -55,7 +55,7 @@ public class RogersCH_TC_016_ExistingSolarisInternetCX_enableVA_Livechat_Interne
     	reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersInternetDashboardPage().clkSolarisInternetBadge();
         getRogersInternetDashboardPage().clkInternetPopup();
-        reporter.hardAssert(getRogersInternetDashboardPage().verifyInternetPage(),"Launched the internet dashboard Page","Internet dashboard Page dosen't launched");
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyInternet(),"Launched the internet dashboard Page","Internet dashboard Page dosen't launched");
         reporter.hardAssert(getRogersInternetDashboardPage().verifyVAButton(),"VA button is present","VA button is not present");
         getRogersInternetDashboardPage().clkVAButton();
         getRogersInternetDashboardPage().switchToVAIFrame();
