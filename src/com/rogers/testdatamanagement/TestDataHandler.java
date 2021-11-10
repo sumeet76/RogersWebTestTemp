@@ -276,6 +276,7 @@ public class TestDataHandler {
 	public static AccountData tc138;
 	public static AccountData tc139;
 	public static AccountData RHPManage_AddOns;
+	public static AccountData InternetDashboardSupportLinks;
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
  		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
@@ -594,6 +595,7 @@ public class TestDataHandler {
 		TC032_SAI_AddingSmartStream =YamlHandler.getOVAccountData("TC32_SAI_AddingSmartstream");
 		TC030_Internet_PackageUpgrade =YamlHandler.getOVAccountData("TC_030_Internet_PackageUpgrade");
 		RHPManage_AddOns =YamlHandler.getOVAccountData("RHPManageAddon");
+		InternetDashboardSupportLinks= YamlHandler.getOVAccountData("InternetDashboardSupportLinks");
 		targetedMigration1PInternetToSAI=YamlHandler.getMigrationData("1545_TargetedMigrationFlow_1P_Internet_to_SAITest");
 		targetedMigration1PInternetToSAIISS=YamlHandler.getMigrationData("1546_TargetedMigrationFlow_1P_Internet_to_SAIISS");
 		targetedMigration1PInternetTo2P=YamlHandler.getMigrationData("1547_TargetedMigrationFlow_1P_Internet_to_2P");
