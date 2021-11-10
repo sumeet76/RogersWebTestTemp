@@ -402,7 +402,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void immediateDateChangeOption() {
-		getReusableActionsInstance().waitForElementVisibility(immediateDateChange, 120);
+		getReusableActionsInstance().waitForElementVisibility(immediateDateChange, 90);
 		getReusableActionsInstance().getWhenReady(immediateDateChange, 45).click();
 	}
 	/**
@@ -826,8 +826,8 @@ public class TVDashboardPage  extends BasePageClass {
 	/*To check for the existing themepacks
 	* @suganya p*/
 	public boolean verifyExistingThemepack()
-	{
-		getReusableActionsInstance().waitForElementVisibility(existingThemepackSection, 120);
+	{getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().waitForElementVisibility(existingThemepackSection, 90);
 		return getReusableActionsInstance().isElementVisible(existingThemepackSection);
 	}
 	/*To get the count of added number of themepacks
@@ -858,9 +858,9 @@ public class TVDashboardPage  extends BasePageClass {
 		By removeThemepack = By.xpath("//div[contains(text(),'"+themepackNameEn+"') or contains(text(),'"+themepackNameFr+"')]/parent::div//button/span");
 	//getReusableActionsInstance().clickWhenReady(removeThemepack,120);
 
-		WebElement btn=getReusableActionsInstance().getWhenReady(removeThemepack,120);
+		WebElement btn=getReusableActionsInstance().getWhenReady(removeThemepack,60);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
-		getReusableActionsInstance().getWhenReady(removeThemepack, 120).click();
+		getReusableActionsInstance().getWhenReady(removeThemepack, 90).click();
 	}
 
 	/*To verify the your change section and expanding it if not

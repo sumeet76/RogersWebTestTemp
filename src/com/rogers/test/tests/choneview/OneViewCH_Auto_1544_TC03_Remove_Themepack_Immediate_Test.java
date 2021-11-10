@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_1544_TC03_Remove_Themepack_Immediate_Test extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
-    public void oneViewCH_1544_TC01_AddThemepackImmediate(){
+    public void OneViewCH_1544_TC01_AddThemepackImmediate(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.RemoveThemepack1544Tc03.getAccountDetails().getBan(), TestDataHandler.RemoveThemepack1544Tc03.getContactID());
 		reporter.reportLogWithScreenshot("Account Overview page has Launched");
 		reporter.reportLogWithScreenshot("TV Ignite Badge");
