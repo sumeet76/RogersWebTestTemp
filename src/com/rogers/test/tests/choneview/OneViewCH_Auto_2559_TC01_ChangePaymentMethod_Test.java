@@ -16,19 +16,21 @@ public class OneViewCH_Auto_2559_TC01_ChangePaymentMethod_Test extends BaseTestC
     public void oneViewCH_Auto_2559_TC01_ChangePaymentMethod(){
         //Launch one view
         reporter.reportLogWithScreenshot("One view is launched");
-        getEnvironmentSelectionPage().launchOneView(TestDataHandler.Change_Payment_Method.getAccountDetails().getBan(),TestDataHandler.Change_Payment_Method.getContactID());
+        getEnvironmentSelectionPage().launchOneView(TestDataHandler.ChangePaymentMethod.getAccountDetails().getBan(),TestDataHandler.ChangePaymentMethod.getContactID());
         getAccountOverViewPage().clickBillinglink();
-        reporter.hardAssert(getAccountOverViewPage().verifybillingpage(),"Billing Page is Displayed","Billing Page failed to load");
+        reporter.hardAssert(getAccountOverViewPage().verifyBillingPage(),"Billing Page is Displayed","Billing Page failed to load");
         getAccountOverViewPage().clkAutoPayLink();
         reporter.reportLogWithScreenshot("Set-up Automatic payment Popup is displayed.");
         reporter.reportLogWithScreenshot("payment method of the card is selected");
-        getAccountOverViewPage().SlctPymntMthd();
-        getAccountOverViewPage().DgtlFrtlnbtn();
-        getAccountOverViewPage().tokenfieldfiller();
+        getAccountOverViewPage().selectPaymentMethod();
+        reporter.reportLogWithScreenshot("Payment method is Selected");
+        getAccountOverViewPage().digtalFrontlinebtn();
+        reporter.reportLogWithScreenshot("Digital Frontline radio button is clicked");
+        getAccountOverViewPage().tokenFieldFiller();
         reporter.reportLogWithScreenshot("Token number is input");
         getAccountOverViewPage().SetCard(FormFiller.generateMonth(),FormFiller.generateExpiryYear());
-        getAccountOverViewPage().securityfiledfiller(FormFiller.generateCVVNumber());
-       // reporter.hardAssert(getAccountOverViewPage(
+        reporter.reportLogWithScreenshot("Card details arte input");
+        getAccountOverViewPage().securityFieldFiller(FormFiller.generateCVVNumber());
         reporter.reportLogWithScreenshot("test passed");
 
     }

@@ -424,7 +424,7 @@ public class AccountOverViewPage extends BasePageClass {
      *
      * @author Amit.Goswami1
      */
-    public void SlctPymntMthd() {
+    public void selectPaymentMethod() {
         getReusableActionsInstance().clickWhenReady(PymntmethodBllngPage);
     }
 
@@ -433,7 +433,7 @@ public class AccountOverViewPage extends BasePageClass {
      *
      * @author Amit.Goswami1
      */
-    public void DgtlFrtlnbtn() {
+    public void digtalFrontlinebtn() {
         getReusableActionsInstance().clickWhenReady(DtlFrntlnrdiobtn);
     }
 
@@ -455,7 +455,7 @@ public class AccountOverViewPage extends BasePageClass {
      *
      * @author Amit.Goswami1
      **/
-    public void tokenfieldfiller() {
+    public void tokenFieldFiller() {
         getReusableActionsInstance().getWhenReady(TokenField).sendKeys("9429335453334010");
     }
 
@@ -465,7 +465,7 @@ public class AccountOverViewPage extends BasePageClass {
      * @author Amit.Goswami1
      **/
 
-    public void securityfiledfiller(String cvv) {
+    public void securityFieldFiller(String cvv) {
         //getReusableActionsInstance().javascriptScrollByVisibleElement(SecurityCodeField);
         // getReusableActionsInstance().getWhenReady(SecurityCodeField,45);
         getReusableActionsInstance().enterText(SecurityCodeField, cvv, 45);
@@ -486,12 +486,12 @@ public class AccountOverViewPage extends BasePageClass {
      *
      * @author Amit.Goswami1
      */
-    public void clickonBillingdropdown() {
+    public void clickonBillingDropDown() {
         getReusableActionsInstance().javascriptScrollByVisibleElement(BillingDropDownbutton);
         getReusableActionsInstance().clickWhenReady(BillingDropDownbutton);
     }
 
-    public void clickpaperbilling() {
+    public void clickPaperBilling() {
         getReusableActionsInstance().clickWhenReady(ChangetoPaperBilling);
     }
 
@@ -500,7 +500,7 @@ public class AccountOverViewPage extends BasePageClass {
      *
      * @author Amit.Goswami1
      */
-    public void clickonlinebilling() {
+    public void clickOnlineBilling() {
         //getReusableActionsInstance().waitForElementVisibility(ChangetoOnlineBilling);
         getReusableActionsInstance().clickWhenReady(ChangetoOnlineBilling, 20);
         // getReusableActionsInstance().executeJavaScriptClick(ChangetoOnlineBilling);
@@ -511,7 +511,7 @@ public class AccountOverViewPage extends BasePageClass {
      *
      * @author Amit.Goswami1
      */
-    public boolean verifyProfilepage() {
+    public boolean verifyProfilePage() {
        return getReusableActionsInstance().isElementVisible(ProfilePageHeader);
     }
 
@@ -520,7 +520,7 @@ public class AccountOverViewPage extends BasePageClass {
      *
      * @author Amit.Goswami1
      */
-    public boolean verifybillingpage(){
+    public boolean verifyBillingPage(){
         return getReusableActionsInstance().isElementVisible(MakePaymentbtn);
     }
 
