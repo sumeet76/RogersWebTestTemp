@@ -278,7 +278,7 @@ public class TestDataHandler {
 	public static AccountData RHPManage_AddOns;
 	public static  AccountData RemoveThemepack1544Tc03;
 	public static AccountData InternetDashboardSupportLinks;
-	public static AccountData Change_Payment_Method;
+	public static AccountData ChangePaymentMethod;
 
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
@@ -615,7 +615,7 @@ public class TestDataHandler {
 		targetedMigration_3P_to_3P_same_numb=YamlHandler.getMigrationData("1567_TC01_TargetedMigration_3P_to_3P_same_numb");
 		targetedMigration_3P_to_3P_change_numb=YamlHandler.getMigrationData("1568_TC01_TargetedMigration_3P_to_3P_change_numb");
 		RemoveThemepack1544Tc03=YamlHandler.getOVAccountData("1544_TC03_RemoveThemepackImmediate");
-		Change_Payment_Method=YamlHandler.getOVAccountData("Change_Payment_Method");
+		ChangePaymentMethod=YamlHandler.getOVAccountData("Change_Payment_Method");
 
 	}
 }
