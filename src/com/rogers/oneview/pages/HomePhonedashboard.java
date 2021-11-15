@@ -60,7 +60,7 @@ public class HomePhonedashboard  extends BasePageClass {
 	@FindBy(xpath = "//div[@class='tippy-tooltip ds-theme']")
 	WebElement imageOnlineManager;
 
-	@FindBy(xpath = "//h2[text() ='You can add the following add-ons:']")
+	@FindBy(xpath = "//h2[text() ='You can add the following add-ons:' or text() = 'Vous pouvez ajouter les options suivantes :']")
 	WebElement textAfterClickingOnManageAddOns;
 
 	@FindBy(xpath = "//div[@class ='cdk-overlay-pane ds-modalWindow']")
@@ -174,7 +174,7 @@ public class HomePhonedashboard  extends BasePageClass {
 	 */
 
 	public void clickCancel() {
-		getReusableActionsInstance().getWhenReady(cancel,120).click();
+		getReusableActionsInstance().getWhenReady(cancel,60).click();
 	}
 
 	/**
@@ -183,9 +183,9 @@ public class HomePhonedashboard  extends BasePageClass {
 	 */
 
 	public void clickOnlineManagerI() {
-		WebElement btn = getReusableActionsInstance().getWhenReady(onlineManagerI, 120);
+		WebElement btn = getReusableActionsInstance().getWhenReady(onlineManagerI, 60);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
-		getReusableActionsInstance().clickWhenReady(onlineManagerI, 120);
+		getReusableActionsInstance().clickWhenReady(onlineManagerI, 60);
 	}
 
 	/**
@@ -194,7 +194,7 @@ public class HomePhonedashboard  extends BasePageClass {
 	 */
 
 	public boolean verifyOnlineManagerImage () {
-		return getReusableActionsInstance().isElementVisible(imageOnlineManager,120);
+		return getReusableActionsInstance().isElementVisible(imageOnlineManager,60);
 	}
 
 	/**
@@ -203,7 +203,7 @@ public class HomePhonedashboard  extends BasePageClass {
 	 */
 
 	public boolean verifyText() {
-		return getReusableActionsInstance().isElementVisible(textAfterClickingOnManageAddOns,120);
+		return getReusableActionsInstance().isElementVisible(textAfterClickingOnManageAddOns,60);
 	}
 
 	/**
@@ -212,7 +212,7 @@ public class HomePhonedashboard  extends BasePageClass {
 	 */
 
 	public boolean verifyResetVoicemailPasswordImage () {
-		return getReusableActionsInstance().isElementVisible(imageResetVoicemailPassword,120);
+		return getReusableActionsInstance().isElementVisible(imageResetVoicemailPassword,60);
 	}
 
 	}
