@@ -51,6 +51,20 @@ public class HomePhonedashboard  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Yes, reset password' or text()='Oui, réinitialiser le mot de passe']/ancestor::button")
 	WebElement btnYesResetPassword;
 
+	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
+	WebElement cancel;
+
+	@FindBy(xpath = "//span[@class='ds-icon rds-icon-info']")
+	WebElement onlineManagerI;
+
+	@FindBy(xpath = "//div[@class='tippy-tooltip ds-theme']")
+	WebElement imageOnlineManager;
+
+	@FindBy(xpath = "//h2[text() ='You can add the following add-ons:']")
+	WebElement textAfterClickingOnManageAddOns;
+
+	@FindBy(xpath = "//div[@class ='cdk-overlay-pane ds-modalWindow']")
+	WebElement imageResetVoicemailPassword;
 
 	/**
 	 * Click Yes,reset password button on the pop up "Reset Voicemail Password"
@@ -153,7 +167,55 @@ public class HomePhonedashboard  extends BasePageClass {
 	public void goToPageMid() {		
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();;
 	}
+
+	/**
+	 * Click on cancel
+	 * @author Sonika.Maheshwari
+	 */
+
+	public void clickCancel() {
+		getReusableActionsInstance().getWhenReady(cancel,120).click();
+	}
+
+	/**
+	 * Click on Online Manager i
+	 * @author Sonika.Maheshwari
+	 */
+
+	public void clickOnlineManagerI() {
+		WebElement btn = getReusableActionsInstance().getWhenReady(onlineManagerI, 120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
+		getReusableActionsInstance().clickWhenReady(onlineManagerI, 120);
+	}
+
+	/**
+	 * Verify Online Manager i image availability
+	 * @author Sonika.Maheshwari
+	 */
+
+	public boolean verifyOnlineManagerImage () {
+		return getReusableActionsInstance().isElementVisible(imageOnlineManager,120);
+	}
+
+	/**
+	 * Verify text availability when Manage Add Ons is clicked
+	 * @author Sonika.Maheshwari
+	 */
+
+	public boolean verifyText() {
+		return getReusableActionsInstance().isElementVisible(textAfterClickingOnManageAddOns,120);
+	}
+
+	/**
+	 * Verify Reset Voicemail Password image availability
+	 * @author Sonika.Maheshwari
+	 */
+
+	public boolean verifyResetVoicemailPasswordImage () {
+		return getReusableActionsInstance().isElementVisible(imageResetVoicemailPassword,120);
+	}
+
+	}
 	
-	
-}
+
 
