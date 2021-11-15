@@ -12,7 +12,7 @@ public class DashboardProfilePage extends BasePageClass {
         super(driver);
     }
 
-    @FindBy(xpath = "//t[text()='Create new profile']")
+    @FindBy(xpath = "//t[text()='Create new profile' or text()='Créer un nouveau profil']")
     WebElement newAccountLink;
 
     @FindBy(xpath = "//input[@id='email']")
@@ -21,7 +21,7 @@ public class DashboardProfilePage extends BasePageClass {
     @FindBy(xpath = "//input[@id='confirm-email']")
     WebElement txtConfirmEmail;
 
-    @FindBy(xpath = "//*[text()='Create']")
+    @FindBy(xpath = "//*[text()='Create' or text()='Créer']")
     WebElement btnCreate;
 
     @FindBy(xpath = "//button[@class='sm red']")
