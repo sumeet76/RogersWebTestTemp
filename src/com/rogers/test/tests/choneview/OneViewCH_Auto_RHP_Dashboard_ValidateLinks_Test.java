@@ -16,7 +16,7 @@ public class OneViewCH_Auto_RHP_Dashboard_ValidateLinks_Test extends BaseTestCla
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.RHPManage_AddOns.accountDetails.getBan(), TestDataHandler.RHPManage_AddOns.getContactID());
         reporter.reportLogWithScreenshot("Launched account dashboard page");
         getAccountOverViewPage().selectHomePhoneBadge();
-        reporter.reportLogWithScreenshot("Launched Home Phone dashboard page");
+        reporter.reportLogWithScreenshot("Launch Home Phone dashboard page");
 
         getHomePhonedashboard().clickResetVoiceMail();
         reporter.reportLogWithScreenshot("Clicked on Reset Voicemail");
