@@ -279,6 +279,7 @@ public class TestDataHandler {
 	public static  AccountData RemoveThemepack1544Tc03;
 	public static AccountData InternetDashboardSupportLinks;
 	public static AccountData ChangePaymentMethod;
+	public static AccountData User_New_Profile_Creation;
 
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
@@ -616,6 +617,6 @@ public class TestDataHandler {
 		targetedMigration_3P_to_3P_change_numb=YamlHandler.getMigrationData("1568_TC01_TargetedMigration_3P_to_3P_change_numb");
 		RemoveThemepack1544Tc03=YamlHandler.getOVAccountData("1544_TC03_RemoveThemepackImmediate");
 		ChangePaymentMethod=YamlHandler.getOVAccountData("Change_Payment_Method");
-
+		User_New_Profile_Creation= YamlHandler.getOVAccountData("User_New_Profile_Creation");
 	}
 }

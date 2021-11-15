@@ -172,6 +172,7 @@ public class BaseTestClass {
     protected static final ThreadLocal<RogersSecurityPackagesPage> RogersSecurityPackagesPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersOVInstallationPage> RogersOVInstallationPageThreadLocal = new ThreadLocal<>();
     protected  static final  ThreadLocal<CallerInformationPage>CallerInformationPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<DashboardProfilePage>DASHBOARD_PROFILE_PAGE_THREAD_LOCAL= new ThreadLocal<>();
 
     public static CallerInformationPage getCallerInformationPage()
     {
@@ -648,7 +649,9 @@ public class BaseTestClass {
     public static RogersFinanceAccessoriesPage getRogersFinanceAccessoriesPagePage() {
         return RogersFinanceAccessoriesPagePageThreadLocal.get();
     }
-
+    public static DashboardProfilePage getDashboardProfilePage() {
+        return DASHBOARD_PROFILE_PAGE_THREAD_LOCAL.get();
+    }
 
 
     public Map<String, String> getRunParameters() {
@@ -1099,6 +1102,7 @@ public class BaseTestClass {
                 RogersIgniteBundlesPageThreadLocal.set(new RogersIgniteBundlesPage(getDriver()));
                 RogersIgniteExchangePageThreadLocal.set(new RogersIgniteExchangePage(getDriver()));
                 RogersIgniteCampaignPageThreadLocal.set(new RogersIgniteCampaignPage(getDriver()));
+                DASHBOARD_PROFILE_PAGE_THREAD_LOCAL.set(new DashboardProfilePage(getDriver()));
                 CustomerProfilePageThreadLocal.set(new CustomerProfilePage(getDriver()));
                 CreditCheckPageThreadLocal.set(new CreditCheckPage(getDriver()));
                 HomePhoneSelectionPageThreadLocal.set(new HomePhoneSelectionPage(getDriver()));
