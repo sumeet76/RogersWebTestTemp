@@ -31,7 +31,8 @@ public class DashboardProfilePage extends BasePageClass {
     public void clickCreateNewProfileLink() {
         getReusableActionsInstance().isElementVisible(newAccountLink, 60);
         //getReusableActionsInstance().scrollToElementAndClick(newAccountLink);
-        getReusableActionsInstance().clickIfAvailable(newAccountLink, 45);
+        //newAccountLink.click();
+        getReusableActionsInstance().clickWhenReady(newAccountLink);
 
     }
 
