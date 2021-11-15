@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class TVDashboardPage  extends BasePageClass {
@@ -245,7 +245,18 @@ public class TVDashboardPage  extends BasePageClass {
 	String existingChannels = "(//h4[@translate='global.dashboard.tv.manageChannelsAndThemePacks.vpAlacartes']/parent::div/following-sibling::div/descendant::span[text()='Remove'])";
 	String existingThemepacks = "(//h4[@translate='global.dashboard.tv.manageChannelsAndThemePacks.vpThemepacks']/parent::div/following-sibling::div/descendant::span[text()='Remove'])";
 
+	@FindAll({
+	@FindBy(xpath="//div[@class='add-remove-themepack__name']")})
+	List<WebElement> existingThemepackNames;
 
+	@FindBy(xpath="//h4[contains(@translate,'manageChannelsAndThemePacks.vpThemepacks')]")
+	WebElement existingThemepackSection;
+
+	@FindBy(xpath="//div[@class='cart-removed-list']//div[@class='add-remove-themepack__name']")
+	WebElement removedItems;
+
+	@FindBy(xpath="//span[contains(@translate,'global.cta.continue')]")
+	WebElement yourChangeContinue;
 	/**
 	 * Get list of all channels and themepacks and remove them one by one
 	 * @author Aditi.jain
@@ -391,7 +402,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void immediateDateChangeOption() {
-		getReusableActionsInstance().waitForElementVisibility(immediateDateChange, 60);
+		getReusableActionsInstance().waitForElementVisibility(immediateDateChange, 90);
 		getReusableActionsInstance().getWhenReady(immediateDateChange, 45).click();
 	}
 	/**
@@ -811,5 +822,67 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(continueChannlesAndThemePacks,60).click();
 
 	}
+
+	/*To check for the existing themepacks
+	* @suganya p*/
+	public boolean verifyExistingThemepack()
+	{getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().waitForElementVisibility(existingThemepackSection, 90);
+		return getReusableActionsInstance().isElementVisible(existingThemepackSection);
+	}
+	/*To get the count of added number of themepacks
+	* @suganya p*/
+	public int getExistingThemepackCount()
+	{
+		return existingThemepackNames.size();
+	}
+
+	/*To list the names of existing themepacks
+	* @suganya p*/
+	public List getExistingThemepackNames()
+	{
+		List packnames= new LinkedList();
+
+		for(int i=0;i<existingThemepackNames.size();i++) {
+			WebElement themepack = existingThemepackNames.get(i);
+			packnames.add(i, themepack.getText());
+		}
+		return packnames;
+		}
+
+
+	/*To remove the specifed themepack
+	* @suganya p*/
+	public void removeThemepack(String themepackNameEn,String themepackNameFr)
+	{
+		By removeThemepack = By.xpath("//div[contains(text(),'"+themepackNameEn+"') or contains(text(),'"+themepackNameFr+"')]/parent::div//button/span");
+	//getReusableActionsInstance().clickWhenReady(removeThemepack,120);
+
+		WebElement btn=getReusableActionsInstance().getWhenReady(removeThemepack,60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		getReusableActionsInstance().getWhenReady(removeThemepack, 90).click();
+	}
+
+	/*To verify the your change section and expanding it if not
+	* @author suganya p*/
+	public boolean verifyYourChangeSection()
+	{
+		return getReusableActionsInstance().isElementVisible(yourChanges,30);
+	}
+	/*To click on continue in the your chnage section
+	* @author suganya p*/
+	public void yourChangeContinue()
+	{
+		if(getReusableActionsInstance().isElementVisible(removedItems,30))
+		{
+			getReusableActionsInstance().clickWhenReady(yourChangeContinue);
+		}
+		else
+		{
+			getReusableActionsInstance().clickWhenReady(yourChanges);
+			getReusableActionsInstance().clickWhenReady(yourChangeContinue,30);
+		}
+	}
+
 }
 

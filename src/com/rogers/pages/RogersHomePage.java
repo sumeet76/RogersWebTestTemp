@@ -241,12 +241,12 @@ public class RogersHomePage extends BasePageClass {
 	})
 	WebElement lnkInternetAvailability;
 
-	@FindAll({@FindBy(xpath = "//a[@title='View internet bundles available to you']/span")})
+	@FindAll({@FindBy(xpath = "//span[text()='Check availability']")})
 	WebElement lnkInternetwithSSAvailability;
 
 	@FindAll({
 	//@FindBy(xpath = "//span[@class='mb-0 flex-grow-1 text-title-4']"),
-	@FindBy(xpath = "//p[@class='text-title-4 mb-0 py-16']")})
+	@FindBy(xpath = "//div[@class='dsa-hero-billboard__ctas d-flex flex-wrap justify-content-center justify-content-md-start mt-8 ng-star-inserted']")})
 	WebElement txtInternetBuyPage;
   //@FindBy(xpath = "//h1[contains(text(),'Internet')]")
 
@@ -260,8 +260,8 @@ public class RogersHomePage extends BasePageClass {
 	WebElement subnavIgniteInternet;
 
 	@FindAll({
-	@FindBy(xpath = "//li[@role='menuitem']/dsa-subnav-link/a[contains(@title,'TV and Streaming')]"),
-	@FindBy(xpath = "//span[contains(text(),'TV & Streaming') or contains(text(),'Télé et Diffusion en continu')]/ancestor::li[@role='menuitem']//ds-icon[@name='right']")})
+	@FindBy(xpath = "//li[@role='menuitem']/dsa-subnav-link/a[contains(@title,'View links to TV & Streaming information pages')]"),
+	@FindBy(xpath = "//span[text()='TV & Streaming Bundles']/ancestor::li[@role='menuitem']")})
 	WebElement subnavIgniteSmartStream;
 
 	@FindAll({

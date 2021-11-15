@@ -65,7 +65,7 @@ public class RogersCH_TC_100_DST_SAI_NAC_ValidateDSTdisplayofRecommendedBanner_P
         getRogersInternetPackageSelectionPage().clkDSTClose();
         getRogersInternetPackageSelectionPage().VerifyYourBestFit();
         reporter.reportLogWithScreenshot("Recommended pack is displayed on top of all");
-        //getRogersInternetPackageSelectionPage().clkBestAdd();
+        getRogersInternetPackageSelectionPage().clkBestAdd();
         reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
         //getRogersHomePage().clkOnlyInternet();
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();

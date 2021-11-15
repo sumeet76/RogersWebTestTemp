@@ -50,7 +50,7 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	@FindBy(xpath = "//input[contains(@class,'ds-input') and contains(@id,'ds-form-input-id-')]")
 	WebElement txtCVV;
 
-	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex position-relative ds-bgcolor-white ds-borders ds-brcolor-slate ds-corners']")
 	WebElement txtContainerCVV;
 	
 

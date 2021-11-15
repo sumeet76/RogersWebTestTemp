@@ -63,7 +63,39 @@ public class AccountDetails {
 	private String birthCertNumber;
 	private String deferredCancelCTN;
 	private String immediateCancelCTN;
+	private String themepackNameEn;
+	private String themepackNameFr;
 
+	/*
+	* @retrun themepackNameEn
+    */
+	public String getThemepackNameEn()
+	{
+		return themepackNameEn;
+	}
+    /*
+    * @param themepackNameEn the themepackNameEn to set
+    */
+	public void setThemepackNameEn(String themepackNameEn)
+	{
+		this.themepackNameEn=themepackNameEn;
+	}
+
+	/*
+	 * @retrun themepackNameFr
+	 */
+	public String getThemepackNameFr()
+	{
+		return themepackNameFr;
+	}
+
+	 /*
+	 * @param themepackNameFr the themepackNameFr to set
+	 */
+	public void setThemepackNameFr(String themepackNameFr)
+	{
+		this.themepackNameFr=themepackNameFr;
+	}
 
 	/**
 	 * @return the addOnNameEn
