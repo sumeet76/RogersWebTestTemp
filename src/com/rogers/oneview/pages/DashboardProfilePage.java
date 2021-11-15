@@ -29,6 +29,7 @@ public class DashboardProfilePage extends BasePageClass {
 
 
     public void clickCreateNewProfileLink() {
+        getReusableActionsInstance().staticWait(5000);
         getReusableActionsInstance().isElementVisible(newAccountLink, 60);
         //getReusableActionsInstance().scrollToElementAndClick(newAccountLink);
         //newAccountLink.click();
@@ -37,14 +38,14 @@ public class DashboardProfilePage extends BasePageClass {
     }
 
     public void enterNewEmailAddressForProfile(String newEmailAddress) {
-        getReusableActionsInstance().isElementVisible(txtNewEmailAddress, 60);
+        getReusableActionsInstance().isElementVisible(txtNewEmailAddress, 30);
         //getReusableActionsInstance().scrollToElementAndClick(txtNewEmailAddress);
         getReusableActionsInstance().executeJavaScriptClick(txtNewEmailAddress);
         txtNewEmailAddress.sendKeys(newEmailAddress);
     }
 
     public void enterConfirmEmailForProfile(String confirmEmailAddress) {
-        getReusableActionsInstance().isElementVisible(txtNewEmailAddress, 60);
+        getReusableActionsInstance().isElementVisible(txtNewEmailAddress, 30);
         //getReusableActionsInstance().scrollToElementAndClick(confirmEmailAddress);
         getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
         txtConfirmEmail.sendKeys(confirmEmailAddress);
