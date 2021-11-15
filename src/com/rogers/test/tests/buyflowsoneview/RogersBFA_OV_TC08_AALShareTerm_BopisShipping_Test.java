@@ -24,6 +24,7 @@ public class RogersBFA_OV_TC08_AALShareTerm_BopisShipping_Test extends BaseTestC
 		getAccountOverViewPage().clkCloseBtnAssignDataManager();
 		reporter.reportLogWithScreenshot("Rogers Account overview page");
 		getAccountOverViewPage().setSkipNotification();
+		getAccountOverViewPage().changeFidoDealerToRogers();
 		getAccountOverViewPage().selectAddAWirelessLineButton();
 		reporter.reportLogWithScreenshot("Add a Wireless Line Button is Selected");
 		reporter.hardAssert(getRogersOVChoosePhonePage().checkAcceptAndContinueOnCreditEvalModal() , "Credit Evaluation modal with credit information displayed","Credit Evaluation modal doesn't contain credit info");

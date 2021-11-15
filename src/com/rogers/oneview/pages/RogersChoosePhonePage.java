@@ -284,7 +284,7 @@ public class RogersChoosePhonePage extends BasePageClass {
 	 * @author sidhartha.vadrevu
 	 */
 	public boolean checkAcceptAndContinueOnCreditEvalModal() {
-		getReusableActionsInstance().waitForElementVisibility(acceptAndContinueOnCreditEvalModal,30);
+		getReusableActionsInstance().waitForElementVisibility(acceptAndContinueOnCreditEvalModal,40);
 		return getReusableActionsInstance().isElementVisible(acceptAndContinueOnCreditEvalModal);
 	}
 

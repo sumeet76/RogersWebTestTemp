@@ -25,6 +25,7 @@ public class RogersBFA_OV_TC11_AALShareTerm_TabletDevice_Test extends BaseTestCl
 		reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
 		reporter.reportLogWithScreenshot("Rogers Account overview page");
 		getAccountOverViewPage().setSkipNotification();
+		getAccountOverViewPage().changeFidoDealerToRogers();
 		getAccountOverViewPage().selectAddAWirelessLineButton();
 		reporter.reportLogWithScreenshot("Add a Wireless Line Button is Selected");
 		reporter.hardAssert(getRogersOVChoosePhonePage().checkAcceptAndContinueOnCreditEvalModal() , "Credit Evaluation modal with credit information displayed","Credit Evaluation modal doesn't contain credit info");

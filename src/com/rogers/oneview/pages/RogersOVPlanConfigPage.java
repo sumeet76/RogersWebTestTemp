@@ -174,7 +174,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//ds-modal//button[contains(@title,'Continue')]")
     WebElement btnContinueOnModalToDoWithOldPhone;
 
-    @FindBy(xpath = "//div[@class='dsa-layout container']//ds-checkbox")
+    @FindBy(xpath = "//div[@class='dsa-layout container']//ds-checkbox//label")
     WebElement checkBoxAdditionalLineOPtion;
 
     @FindBy(xpath = "//button[@data-test='add-to-cart-btn']")
@@ -221,6 +221,9 @@ public class RogersOVPlanConfigPage extends BasePageClass {
 
     @FindBy(xpath = "//ds-modal//p[contains(.,' about to exceed your credit limit') or contains(.,'point de dépasser votre limite de crédit')]")
     WebElement clmExceededTxtInModal;
+
+    @FindBy(xpath = "//button[@data-test='addons-removal-modal-button-primary']")
+    WebElement btnExistingAddonModalContinue;
 
 
     /**
@@ -808,7 +811,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clkAdditionalLineOptions() {
-        if(getReusableActionsInstance().isElementVisible(checkBoxAdditionalLineOPtion)) {
+        if(getReusableActionsInstance().isElementVisible(checkBoxAdditionalLineOPtion,30)) {
             getReusableActionsInstance().clickWhenReady(checkBoxAdditionalLineOPtion, 30);
             getReusableActionsInstance().clickWhenReady(btnAddToCart);
             getReusableActionsInstance().scrollToElement(btnProceedToCheckout);
@@ -1064,7 +1067,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public boolean verifyCustomerTypeInHeader(String accountType) {
-        getReusableActionsInstance().waitForElementVisibility(custTypeInHeader,30);
+        getReusableActionsInstance().waitForElementVisibility(custTypeInHeader,60);
         String customerTypeInHeader = getReusableActionsInstance().getWhenReady(custTypeInHeader).getText().trim();
         if(customerTypeInHeader.toUpperCase().contains(accountType)) {
             return true;
@@ -1123,6 +1126,14 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      */
     public boolean verifyCLMExceededTxtInModal() {
         return getReusableActionsInstance().isElementVisible(creditLimitExceededModal,10);
+    }
+
+    /**
+     * This method clicks on continue button in addon removal modal if present
+     * @author praveen.kumar7
+     */
+    public void clkContinueOnExistingAddonModal() {
+        getReusableActionsInstance().clickIfAvailable(btnExistingAddonModalContinue);
     }
 
 }

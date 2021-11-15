@@ -69,7 +69,7 @@ public class SOHOBFA_TC31_NAC_Term_MediumRisk_UE_PotgShipping_EN_Test extends Ba
 				"RPOTG Label and subcopy verified in Plan Config Page verified as" + "--->" + rpotgLabelPlanConfig);
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
 				"BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
-		getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(TestDataHandler.tc31SOHONACTermMediumRiskUEOptionPOTG.getdeviceCostIndex());
+		getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(TestDataHandler.tc31SOHONACTermMediumRiskUEOptionPOTG.getDeviceCostIndex());
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
 		getRogersPlanConfigPage().clickShowMoreDetails();
 		getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(TestDataHandler.tc31SOHONACTermMediumRiskUEOptionPOTG.getDataOptionIndex(),this.getClass().getSimpleName());
@@ -130,7 +130,7 @@ public class SOHOBFA_TC31_NAC_Term_MediumRisk_UE_PotgShipping_EN_Test extends Ba
 		getRogersCheckoutPage().clkCreditAuthorizationChkBox();
 		getRogersCheckoutPage().clkCreditEvalContinue();
 		reporter.reportLogWithScreenshot("Credit Evaluation processing popup");
-		reporter.hardAssert(getRogersCheckoutPage().verifyClaDownPaymentModalPresent(),
+		/*reporter.hardAssert(getRogersCheckoutPage().verifyClaDownPaymentModalPresent(),
 				"CLA and Security deposit modal is displayed", "Cla and Security Deposit Modal is not dislayed");
 		reporter.softAssert(getRogersCheckoutPage().verifyDownPaymentTextPresent(),
 				"Down payment info dislayed in modal", "Down payment info not dislayed in modal");
@@ -138,7 +138,7 @@ public class SOHOBFA_TC31_NAC_Term_MediumRisk_UE_PotgShipping_EN_Test extends Ba
 		String expectedDownPayment = getRogersCheckoutPage().setDownPayment(TestDataHandler.tc31SOHONACTermMediumRiskUEOptionPOTG.getRiskClass(),deviceCost);
 		reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment),
 				"Downpayment amount is displayed correctly", "Downpayment amount is not displayed correctly");
-		getRogersCheckoutPage().clkAcceptButton();
+		getRogersCheckoutPage().clkAcceptButton();*/
 		reporter.hardAssert(getRogersCheckoutPage().isIdentificationLabel(), "Credit Evaluation Successful",
 				"Credit Evaluation Identification Label not disaplayed");
 

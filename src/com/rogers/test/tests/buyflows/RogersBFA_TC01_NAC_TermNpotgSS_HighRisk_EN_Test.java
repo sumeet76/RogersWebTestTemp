@@ -41,7 +41,7 @@ public class RogersBFA_TC01_NAC_TermNpotgSS_HighRisk_EN_Test extends BaseTestCla
         getRogersDeviceConfigPage().clickContinueButton();
         //############################Plan config page###############################
         //reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName), "BreadCrumb on Plan config page is working fine","BreadCrumb is not working fine");
-        //getRogersPlanConfigPage().clkDownPaymentChkBox();
+        getRogersPlanConfigPage().clkDownPaymentChkBox();
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         getRogersPlanConfigPage().clickShowMoreDetails();
         getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc04NACTermBopis.getDataOptionIndex()),this.getClass().getSimpleName());

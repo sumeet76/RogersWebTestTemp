@@ -359,7 +359,7 @@ public class RogersPlanConfigPage extends BasePageClass {
             getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton, 30);
         }
         else {
-            getReusableActionsInstance().clickWhenVisible(By.xpath("//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-" + dataOptionIndex + "')]//label[1]"),40);
+            getReusableActionsInstance().clickWhenVisible(By.xpath("//ds-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-" + dataOptionIndex + "')]//label[1]"),40);
             getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton,40);
         }
     }
@@ -649,6 +649,7 @@ public class RogersPlanConfigPage extends BasePageClass {
         getReusableActionsInstance().executeJavaScriptClick(setLastName);
         getReusableActionsInstance().getWhenReady(setLastName,5).sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
         getReusableActionsInstance().clickWhenReady(continueCallerID, 30);
+        clickGetBPOOffer();
     }
 
     /**

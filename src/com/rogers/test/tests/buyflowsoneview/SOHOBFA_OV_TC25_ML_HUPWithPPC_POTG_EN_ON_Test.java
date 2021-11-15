@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
  */
 public class SOHOBFA_OV_TC25_ML_HUPWithPPC_POTG_EN_ON_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","RegressionOVBFA","SOHOBFA"})
+	@Test(groups = {"RegressionBFA","RegressionOVBFA","SOHOBFA","OVSanityBFA"})
 	public void sohoHUPWithPPCMultiLinePOTGShippingENFlow() {
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.buyFlowsOVtestCase25.getBanNo(), TestDataHandler.buyFlowsOVtestCase25.getContactID());
 		reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
@@ -26,6 +26,7 @@ public class SOHOBFA_OV_TC25_ML_HUPWithPPC_POTG_EN_ON_Test extends BaseTestClass
 		//----------------------------------------------Dashboard page--------------------------------------------------
 		reporter.hardAssert(getRogersOVWirelessDetailsPage().verifyWirelessPageLoad() ,"Wireless page loaded" , "Wireless page not loaded");
 		reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
+		getAccountOverViewPage().changeFidoDealerToRogers();
 		getRogersOVWirelessDetailsPage().clkUpgradeMyDevice();
 		reporter.reportLogWithScreenshot("Device upgrade button clicked");
 		//getRogersOVWirelessDetailsPage().setCustomerType(this.getClass().getSimpleName());
@@ -56,6 +57,7 @@ public class SOHOBFA_OV_TC25_ML_HUPWithPPC_POTG_EN_ON_Test extends BaseTestClass
 		getRogersOVPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Talk option selected and addons option in expanded state");
 		getRogersOVPlanConfigPage().clickPreCartAddonsContinueButton();
+		reporter.reportLogWithScreenshot("Addons option selected");
 		getRogersOVPlanConfigPage().clickCartSummaryContinueButton();
 		getRogersOVPlanConfigPage().clkAdditionalLineOptions();
 		//---------------------------------------------Checkout pages---------------------------------------------------

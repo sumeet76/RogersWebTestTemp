@@ -21,6 +21,7 @@ public class RogersBFA_OV_TC28_AdditionalLineHUPWithPPC_MediumRisk_Preorder_StdS
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.buyFlowsOVtestCase28.getBanNo(), TestDataHandler.buyFlowsOVtestCase28.getContactID());
 		reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
 		reporter.reportLogWithScreenshot("Rogers Account overview page");
+		getAccountOverViewPage().changeFidoDealerToRogers();
 		reporter.hardAssert(getAccountOverViewPage().verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase28.getCtn()),"CTN Found","CTN Not Found");
 		getAccountOverViewPage().clkCloseBtnAssignDataManager();
 		getAccountOverViewPage().setLanguageFrench();
@@ -66,6 +67,7 @@ public class RogersBFA_OV_TC28_AdditionalLineHUPWithPPC_MediumRisk_Preorder_StdS
 		reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
 		getRogersOVCheckoutPage().clksubmitBtnCheckoutPage();
 		reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary");
+		getRogersOVPlanConfigPage().clkContinueOnExistingAddonModal();
 		//--------------------------------------Review Order Page-------------------------------------------------------
 		reporter.hardAssert(getRogersOVReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
 				"Order Review Page Title is not Present");

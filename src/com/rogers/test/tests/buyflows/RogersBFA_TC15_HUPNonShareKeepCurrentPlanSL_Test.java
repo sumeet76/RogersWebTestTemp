@@ -46,7 +46,7 @@ public class RogersBFA_TC15_HUPNonShareKeepCurrentPlanSL_Test extends BaseTestCl
                     "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
             getRogersPlanConfigPage().setCheckBoxKeepMyCurrentPlan();
             reporter.reportLogPassWithScreenshot("Checkbox for keep my current plan selected");
-            //getRogersPlanConfigPage().clkDownPaymentChkBox();
+            getRogersPlanConfigPage().clkDownPaymentChkBox();
             getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
             reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
             getRogersPlanConfigPage().clickContinueOnModalToDoWithOldPhone();
@@ -61,12 +61,13 @@ public class RogersBFA_TC15_HUPNonShareKeepCurrentPlanSL_Test extends BaseTestCl
             reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                     "Billing Address is not selected");
             reporter.reportLogPassWithScreenshot("On Checkout page");
-            getRogersCheckoutPage().clkDeliveryMethod("standard");
-            reporter.reportLogPass("Standard Delivery selected");
+            getRogersCheckoutPage().clkDeliveryMethod("PRO");
+            reporter.reportLogPassWithScreenshot("Pro on the go Delivery selected");
+            reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");
             getRogersCheckoutPage().clkContinueBtnShipping();
             reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
             getRogersCheckoutPage().clksubmitBtnCheckoutPage();
-            reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary");
+            reporter.reportLogPass("Clicked submit button below cart summary");
             reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                     "Order Review Page Title is not Present");
             reporter.reportLogPass("Order Review Page");
@@ -76,7 +77,7 @@ public class RogersBFA_TC15_HUPNonShareKeepCurrentPlanSL_Test extends BaseTestCl
             getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
             reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
             getRogersOrderReviewPage().clkSubmitOrder();
-            /*reporter.reportLogWithScreenshot("Rogers Payment Page");
+            reporter.reportLogWithScreenshot("Rogers Payment Page");
             reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),"Payment page displayed successfully","Payment page did not display");
             getRogersOneTimePaymentPage().setNameonCard();
             getRogersOneTimePaymentPage().switchToCreditCardIFrame();
@@ -85,7 +86,7 @@ public class RogersBFA_TC15_HUPNonShareKeepCurrentPlanSL_Test extends BaseTestCl
             getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc19AALNoTermStandardShipping.getExpiryDateOTP());
             getRogersOneTimePaymentPage().setCVV();
             reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
-            getRogersOneTimePaymentPage().clkSubmitOrderBtn();*/
+            getRogersOneTimePaymentPage().clkSubmitOrderBtn();
             reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
             reporter.hardAssert(getRogersOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
             reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");

@@ -20,7 +20,7 @@ public class RogersBFA_TC14_HUPMLBySelectingFinDevice_MultipleFinAccessories_NB_
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
         getRogersHomePage().clkSignIn();
-        //getRogersLoginPage().switchToSignInIFrame();
+        getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc14HUPShareKeepCurrentPlanTermML.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc14HUPShareKeepCurrentPlanTermML.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
@@ -37,11 +37,11 @@ public class RogersBFA_TC14_HUPMLBySelectingFinDevice_MultipleFinAccessories_NB_
         reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed(), "Modal element is present on the screen",
                 "Modal element is not present on the screen");
         getRogersDeviceCataloguePage().clickUpgradeMyPhoneButtonOnModal();
-        reporter.reportLogWithScreenshot("Upgrade button clicked on Modal window Popup");
+        /*reporter.reportLogWithScreenshot("Upgrade button clicked on Modal window Popup");
         getRogersDeviceCataloguePage().isModalDisplayed();
         reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
         getRogersDeviceCataloguePage().selectCTN(TestDataHandler.tc14HUPShareKeepCurrentPlanTermML.getCtn());
-        getRogersDeviceCataloguePage().clickContinueBtn();
+        getRogersDeviceCataloguePage().clickContinueBtn();*/
         reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
                 "Continue button on the device config page is present",
                 "Continue button on the device config page is not present");

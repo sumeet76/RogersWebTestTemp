@@ -483,7 +483,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
             getReusableActionsInstance().clickWhenVisible(By.xpath("//ds-icon[contains(@class,'ds-popover__icon')]"));
             String upfrontEdgeAmt = getReusableActionsInstance().getWhenReady(upfrontAmtTxt).getText().trim();
             getReusableActionsInstance().javascriptScrollToTopOfPage();
-            getReusableActionsInstance().clickWhenVisible(By.xpath("//button[contains(@class,'close')]//ds-icon[@name='close']"),10);
+            getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(By.xpath("//button[contains(@class,'close')]//ds-icon[@name='close']"),10));
             return upfrontEdgeAmt.substring(2, upfrontEdgeAmt.indexOf("."));
         }
     }
