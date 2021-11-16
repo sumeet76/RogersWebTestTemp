@@ -92,13 +92,18 @@ public class RogersCH_TC_031_IginteTV_BuySolarisDoublePlayChangeInstallationDate
 		reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the create profile page");
 		getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
-        
-        reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
-	/*	getRogersTechInstallPage().selSelffinstallDateAndTime();
-		getRogersTechInstallPage().setMobielNumber();*/
-        getRogersTechInstallPage().clkTechInstalConsent();
-        reporter.reportLogWithScreenshot("tech install details");
-        getRogersTechInstallPage().clkTechInstallContinue();
+
+		reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
+		reporter.reportLogWithScreenshot("Launched the tech install page");
+		//getRogersTechInstallPage().clkTechInstalConsent();
+		getRogersTechInstallPage().clkProInstallUpgradeNo();
+		reporter.reportLogWithScreenshot("tech install details");
+		getRogersTechInstallPage().clkTechInstallContinueSelf();
+		reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(),"SetUp page has Launched","SetUp page has not Launched");
+		getRogersTechInstallPage().clkTechInstallContinue();
+       /*getRogersTechInstallPage().clkTechInstalConsent();
+       reporter.reportLogWithScreenshot("tech install details");
+       getRogersTechInstallPage().clkTechInstallContinue();*/
     reporter.reportLogWithScreenshot("Launched the order review page");
 	reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
 	reporter.reportLogWithScreenshot("Launched the order review page");

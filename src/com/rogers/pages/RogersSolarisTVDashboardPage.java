@@ -39,7 +39,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	WebElement lstChannelList;
 	//div[@class='channel-list-block']
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
 	WebElement popupCloseChannel;
 	//button[@class='closeModalBtn']
 
