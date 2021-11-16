@@ -24,8 +24,8 @@ public class OneViewCH_Auto_RHP_Dashboard_ValidateLinks_Test extends BaseTestCla
         getHomePhonedashboard().clickCancel();
         reporter.reportLogWithScreenshot("Closing Reset Voicemail Password image");
 
-        getHomePhonedashboard().clickOnlineManagerI();
-        reporter.reportLogWithScreenshot("Clicked on Online Manager i");
+        getHomePhonedashboard().clickOnlineManagerInfo();
+        reporter.reportLogWithScreenshot("Clicked on Online Manager Info");
         reporter.hardAssert(getHomePhonedashboard().verifyOnlineManagerImage(),"Online Manager i link works","Online Manager i link is not working");
         getHomePhonedashboard().clickCancel();
         reporter.reportLogWithScreenshot("Closing online manager image");

@@ -55,7 +55,7 @@ public class HomePhonedashboard  extends BasePageClass {
 	WebElement cancel;
 
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-info']")
-	WebElement onlineManagerI;
+	WebElement onlineManagerInfo;
 
 	@FindBy(xpath = "//div[@class='tippy-tooltip ds-theme']")
 	WebElement imageOnlineManager;
@@ -182,10 +182,10 @@ public class HomePhonedashboard  extends BasePageClass {
 	 * @author Sonika.Maheshwari
 	 */
 
-	public void clickOnlineManagerI() {
-		WebElement btn = getReusableActionsInstance().getWhenReady(onlineManagerI, 60);
+	public void clickOnlineManagerInfo() {
+		WebElement btn = getReusableActionsInstance().getWhenReady(onlineManagerInfo, 60);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
-		getReusableActionsInstance().clickWhenReady(onlineManagerI, 60);
+		getReusableActionsInstance().clickWhenReady(onlineManagerInfo, 60);
 	}
 
 	/**
