@@ -24,9 +24,10 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='col-md-12 loading']")
 	WebElement loaderTVdashboard;
 	
-	@FindBy(xpath = "//span[@translate='global.dashboard.tv.viewFlexChannels']")
+	@FindBy(xpath = "//span[text()='View my channel lineup']")
 	WebElement lnkViewMyChannelLineup;
     //ins[@usertype-translate='global.dashboard.tv.viewMyChannelLineup']
+	//span[@translate='global.dashboard.tv.viewFlexChannels']
 
 	@FindBy(xpath = "//span[@translate='global.modals.viewMyChannelsModal.viewAsPdf']")
 	WebElement lnkViewAsPDF;
@@ -43,9 +44,10 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	WebElement popupCloseChannel;
 	//button[@class='closeModalBtn']
 
-	@FindBy(xpath = "//span[@translate='global.dashboard.tv.viewLineup']")
+	@FindBy(xpath = "//span[text()='View my Flex Channels']")
 	WebElement lnkViewfelxChannels;
 	//ins[@usertype-translate='global.dashboard.tv.viewMyFlexChannels']
+	//span[@translate='global.dashboard.tv.viewLineup']
 
 	@FindBy(xpath = "//button[contains(@aria-label,'Change TV package') or  contains(@aria-label,'Modifier le forfait Télé')]")
 	WebElement btnChangeTVPackage;
@@ -59,11 +61,11 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	WebElement popupChangeTVPackage;
 	//ins[@translate='global.cta.bysContinue']
 
-	@FindBy(xpath = "//div[@class='popup-modal-component']//span[@class='ds-icon rds-icon-check-circle ds-color-success']")
+	@FindBy(xpath = "//div[@class='popup-modal-body ']")
 	WebElement popupContatUS;
 	//div[@class='live-support']
 
-	@FindBy(xpath = "//span[@translate='global.dashboard.tv.exchangeFlexChannels']")
+	@FindBy(xpath = "//span[@ng-reflect-translate='global.dashboard.tv.exchangeFl']")
 	WebElement lnkChangeFlexChannels;
 
 	@FindBy(xpath = "//input[@id='searchFilter_swapout']")
