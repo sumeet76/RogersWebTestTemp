@@ -257,6 +257,10 @@ public class TVDashboardPage  extends BasePageClass {
 
 	@FindBy(xpath="//span[contains(@translate,'global.cta.continue')]")
 	WebElement yourChangeContinue;
+
+	@FindBy(xpath = "(//span[@translate='global.cta.select'])[1]")
+	WebElement selectFirstChannel;
+
 	/**
 	 * Get list of all channels and themepacks and remove them one by one
 	 * @author Aditi.jain
@@ -883,6 +887,16 @@ public class TVDashboardPage  extends BasePageClass {
 			getReusableActionsInstance().clickWhenReady(yourChangeContinue,30);
 		}
 	}
+
+	/*
+	 * Select first TV package
+	 * @author aditi.jain
+	 * */
+	public void selectFirstTVPackage() {
+		getReusableActionsInstance().waitForElementVisibility(selectFirstChannel, 45);
+		getReusableActionsInstance().executeJavaScriptClick(selectFirstChannel);
+	}
+
 
 }
 
