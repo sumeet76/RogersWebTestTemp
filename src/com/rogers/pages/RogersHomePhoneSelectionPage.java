@@ -27,7 +27,7 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement loaderPhoneNumberPage;
 
-	@FindBy(xpath = "//span[@id='ariaPickNewNumber']//ancestor::a//span[@role='text']")
+	@FindBy(xpath = "//a[@aria-label='Skip the steps above and pick a new number instead.']//ancestor::a//span[@role='text']")
 	WebElement btnSkipforNewNumber;
 	//span[contains(text(),'new number') or contains(text(),'Je veux choisir un nouveau')]//ancestor::button
 

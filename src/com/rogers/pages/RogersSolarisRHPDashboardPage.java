@@ -40,7 +40,7 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Need help? Chat with a Rogers agent.']")
 	WebElement lnkLiveChatOnRHPDashboard;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
+	@FindBy(xpath = "//button[@aria-label='Cancel']")
 	WebElement btnCancelResetVoicemailpswd;
 
 	/**
