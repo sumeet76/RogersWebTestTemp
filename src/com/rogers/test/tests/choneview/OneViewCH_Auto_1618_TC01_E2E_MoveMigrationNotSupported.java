@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_1618_TC01_E2E_MoveMigrationNotSupported extends BaseTestClass {
 	@Test (groups = {"RMigration","RegressionCHOV"})
-    public void oneViewCH_Auto_1618_TC01_E2E_Migration_To_SAIISS_Test(){
+    public void oneViewCH_Auto_1618_TC01_E2E_MoveMigrationNotSupported(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData.getaccountNoMigrationNotSupported(), TestDataHandler.migrationData.getContactIDMigrationNotSupported());
 
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");

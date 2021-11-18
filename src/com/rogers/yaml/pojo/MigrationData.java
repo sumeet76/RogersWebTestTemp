@@ -12,6 +12,8 @@ public class MigrationData {
 	public String contactID2PToISSTMP;
 	public String accountNoMigrationNotSupported;
 	public String contactIDMigrationNotSupported;
+	public String swapAccountNo;
+	public String swapContactID;
 
 	/**
 	 * @return the AccountNo
@@ -170,4 +172,33 @@ public class MigrationData {
 	public void setContactIDMigrationNotSupported(String contactIDMigrationNotSupported) {
 		this.contactIDMigrationNotSupported = contactIDMigrationNotSupported;
 	}
+
+	/**
+	 * @return the swapAccountNo
+	 */
+	public String getswapAccountNo() {
+		return swapAccountNo;
+	}
+
+	/**
+	 * @param swapAccountNo the accountNo to set
+	 */
+	public void swapAccountNo(String swapAccountNo) {
+		this.swapAccountNo = swapAccountNo;
+	}
+
+	/**
+	 * @return the swapContactID
+	 */
+	public String getswapContactID() {
+		return swapContactID;
+	}
+
+	/**
+	 * @param swapContactID the contactID to set
+	 */
+	public void swapContactID(String swapContactID) {
+		this.swapContactID = swapContactID;
+	}
+
 }

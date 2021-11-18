@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 public class OneViewCH_Auto_1539_TC02_Swap_Channels_And_Add_Channel_Themepack_Immediate_Test extends BaseTestClass {
 	@Test (groups = {"RChannelsandThemepacks","RegressionCHOV"})
     public void oneViewCH_1539_TC01_AddChannelAndThemepackImmediate() {
-		getEnvironmentSelectionPage().launchOneView(TestDataHandler.addChannelAndThempackImmediate.getAccountNo(), TestDataHandler.addChannelAndThempackImmediate.getContactID());
+		getEnvironmentSelectionPage().launchOneView(TestDataHandler.addChannelAndThempackImmediate.getswapAccountNo(), TestDataHandler.addChannelAndThempackImmediate.getswapContactID());
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		reporter.reportLogWithScreenshot("TV Badge");
