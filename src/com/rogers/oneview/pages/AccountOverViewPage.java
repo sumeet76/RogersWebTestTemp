@@ -62,6 +62,9 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//input[@id='security-code']")
     WebElement SecurityCodeField;
 
+    @FindBy(xpath = "//a[contains(text(),'Learn more about Wall-to-Wall Wi-Fi')]")
+    WebElement LearnMoreAboutWallWiFiLink;
+
     @FindBy(xpath = "//t[contains(text(),'Continue')]/ancestor::button")
     WebElement CntinuebtnBillingpagepopup;
 
@@ -471,7 +474,7 @@ public class AccountOverViewPage extends BasePageClass {
     }
 
     /**
-     * This method fills in the token Number in the token number ield
+     * This method fills in the token Number in the token number Field
      *
      * @author Amit.Goswami1
      **/
@@ -502,7 +505,7 @@ public class AccountOverViewPage extends BasePageClass {
     }
 
     /**
-     * This method clicks on the Profile link
+     * This method clicks on the Billing Drop Down link
      *
      * @author Amit.Goswami1
      */
@@ -516,16 +519,17 @@ public class AccountOverViewPage extends BasePageClass {
     }
 
     /**
-     * This method clicks on the Profile link
+     * This method clicks on the online Billing link
      *
      * @author Amit.Goswami1
      */
     public void clickOnlineBilling() {
-        //getReusableActionsInstance().waitForElementVisibility(ChangetoOnlineBilling);
-        getReusableActionsInstance().clickWhenReady(ChangetoOnlineBilling, 20);
-        // getReusableActionsInstance().executeJavaScriptClick(ChangetoOnlineBilling);
-    }
-
+    if(getReusableActionsInstance().isElementVisible(ChangetoPaperBilling)){
+        getReusableActionsInstance().clickWhenReady(ChangetoPaperBilling,30);
+}     else{
+     getReusableActionsInstance().clickWhenReady(ChangetoOnlineBilling,30);
+}
+}
     /**
      * This method verifies the Profile Page is displayed
      *
@@ -544,7 +548,11 @@ public class AccountOverViewPage extends BasePageClass {
         return getReusableActionsInstance().isElementVisible(MakePaymentbtn);
     }
 
-
+    public void clickWallWifiLink(){
+       // getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+       // getReusableActionsInstance().staticWait(3000);
+        getReusableActionsInstance().clickWhenReady(LearnMoreAboutWallWiFiLink,45);
+    }
 
 
 
