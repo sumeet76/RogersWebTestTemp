@@ -66,6 +66,8 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath="(//span[text()='Sélectionner' or text()='Select']/ancestor::button)[1]")
 	WebElement firstLowestPackage;
 
+
+
 	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button")
 	WebElement btnContnueReset;
 
@@ -91,6 +93,24 @@ public class InternetDashboardPage  extends BasePageClass {
 	String smartstreamTitle = "//div[@class='smartStream-tile__bundle-name']";
 	String smartstreamSelect = "//span[@translate='global.cta.select']/ancestor::button";
 
+	@FindBy(xpath = "//p[contains(text(),'Immediately')]/parent::div/preceding-sibling::div")
+	WebElement rdImmediate;
+
+	//@FindBy(xpath = "//button[contains(@class, 'expander ds-color-black ds-button ')]")
+	@FindBy(xpath = "//*[text()='More details about this bundle']")
+	WebElement expandMoreDetails;
+
+	@FindBy(xpath = "//button[contains(@class, 'expander ds-color-black pl-16 ds-button ')]")
+	WebElement expandSeeFullDetails;
+
+	@FindBy(xpath = "//div[text()='Ignite TV Flex 10']/following::*[text()='150 Mbps'][1]/preceding::ds-selection[1]")
+	WebElement downloadSpeed;
+
+	@FindBy(xpath="(//span[text()='Sélectionner' or text()='Select']/ancestor::button)[4]")
+	WebElement igniteTVPremiumPackage;
+
+	@FindBy(xpath = "(//span[text()='Sélectionner' or text()='Select']/ancestor::button)[2]")
+	WebElement igniteTvFlex10;
 
 
 
@@ -99,29 +119,29 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * Verify the result
 	 * @return true if link is visible, else false
 	 * @author chinnarao.vattam
-	 */	
+	 */
 	public boolean verifLlnkLearnMoreWallToWallWifi() {
 		getReusableActionsInstance().waitForElementVisibility(lnkLearnMoreWallToWallWifi, 120);
 		WebElement btn=getReusableActionsInstance().getWhenReady(lnkLearnMoreWallToWallWifi,120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-100);
 		return getReusableActionsInstance().isElementVisible(lnkLearnMoreWallToWallWifi,120);
 	}
-	
+
 	/**
 	 * Verify the result
 	 * @return true if link is visible, else false
 	 * @author chinnarao.vattam
-	 */	
-	public boolean verifyLnkUnderstandingWifi() {		
+	 */
+	public boolean verifyLnkUnderstandingWifi() {
 		return getReusableActionsInstance().isElementVisible(lnkUnderstandingWifi,120);
 	}
-	
+
 	/**
 	 * Verify the result
 	 * @return true if link is visible, else false
 	 * @author chinnarao.vattam
-	 */	
-	public boolean verifyLnkTipsForPlacingEero() {		
+	 */
+	public boolean verifyLnkTipsForPlacingEero() {
 		return getReusableActionsInstance().isElementVisible(lnkTipsForPlacingEero,120);
 	}
 
@@ -130,31 +150,31 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * Verify the result
 	 * @return true if link is visible, else false
 	 * @author chinnarao.vattam
-	 */	
-	public boolean verifyLnkTestInternetSpeed() {		
+	 */
+	public boolean verifyLnkTestInternetSpeed() {
 		return getReusableActionsInstance().isElementVisible(lnkTestInternetSpeed,120);
 	}
-	
-	
+
+
 	/**
 	 * Verify the result
 	 * @return true if link is visible, else false
 	 * @author chinnarao.vattam
-	 */	
-	public boolean verifyLnkHowToOptimizeSpeed() {		
+	 */
+	public boolean verifyLnkHowToOptimizeSpeed() {
 		return getReusableActionsInstance().isElementVisible(lnkHowToOptimizeSpeed,120);
 	}
-	
+
 	/**
 	 * Verify the result
 	 * @return true if link is visible, else false
 	 * @author chinnarao.vattam
-	 */	
-	public boolean verifyLnkGoToSupportSection() {		
+	 */
+	public boolean verifyLnkGoToSupportSection() {
 		return getReusableActionsInstance().isElementVisible(lnkGoToSupportSection,120);
 	}
 
-	
+
 	/**
 	 * Click the view usage and alerts button
 	 * @author chinnarao.vattam
@@ -163,7 +183,7 @@ public class InternetDashboardPage  extends BasePageClass {
 		WebElement btn=getReusableActionsInstance().getWhenReady(btnUsageAndAlerts,120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
 		getReusableActionsInstance().clickWhenReady(btnUsageAndAlerts,45);
-		}
+	}
 
 	/**
 	 * Click the back to overview button which brings the account overview page up
@@ -171,111 +191,111 @@ public class InternetDashboardPage  extends BasePageClass {
 	 */
 	public void clickBacktoAccountOverview() {
 		getReusableActionsInstance().getWhenReady(btnBackToAccountOverview,120).click();
-		}
+	}
 
 	/**
 	 *click continue for the ongoing activity on Internet dashboard page
 	 * @author chinnarao.vattam
 	 */
 	public void clickContinue() {
-		getReusableActionsInstance().getWhenReady(btnContnue,120).click();
-		}
-	
+		getReusableActionsInstance().getWhenReady(btnContnue,30).click();
+	}
+
 	/**
 	 * Verify the result
 	 * @return true if operation is successful, else false
 	 * @author chinnarao.vattam
-	 */	
+	 */
 	public boolean verifySuccess() {
 		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFinger, 120);
 		return getReusableActionsInstance().isElementVisible(imgSuccess);
 	}
-	
+
 	/**
 	 * Click "Ok" on success popup
 	 * @author chinnarao.vattam
 	 */
 	public void clickSuccessOk() {
 		getReusableActionsInstance().getWhenReady(btnSuccessOk, 120).click();
-		}
-	
+	}
+
 	/**
 	 * Verify the header availability
 	 * @return true if header is available on TV DashboardPage, else false
 	 * @author chinnarao.vattam
-	 */	
-	public boolean verifyHeader() {	
+	 */
+	public boolean verifyHeader() {
 		getReusableActionsInstance().waitForElementVisibility(icnHeader,120);
 		return getReusableActionsInstance().isElementVisible(icnHeader);
 	}
-	
+
 	/**
 	 * Verify the footer availability
 	 * @return true if footer is available on TV DashboardPage, else false
 	 * @author chinnarao.vattam
-	 */	
+	 */
 	public boolean verifyFooter() {
-		
+
 		return getReusableActionsInstance().isElementVisible(icnFooter,120);
 	}
-	
+
 	/**
 	 * Go to Page bottom
 	 * @author chinnarao.vattam
-	 */	
-	public void goToPageBottom() {		
+	 */
+	public void goToPageBottom() {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 	}
-	
-	
+
+
 	/**
 	 * Go to Page bottom
 	 * @author chinnarao.vattam
-	 */	
-	public void goToPageMid() {		
+	 */
+	public void goToPageMid() {
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();;
 	}
-    /*
-    * Clicks on change Internet package button
-    * @author suganya P
-    * */
+	/*
+	 * Clicks on change Internet package button
+	 * @author suganya P
+	 * */
 	public void clickChangeInternetPackage() {
 		WebElement select = getReusableActionsInstance().getWhenReady(btnChangeInternetPackage, 120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, select.getLocation().y - 300);
 		getReusableActionsInstance().getWhenReady(btnChangeInternetPackage, 120).click();
 	}
-    /*
-    * Selects the first lowest internet package
-    * @author suganya P
-    * */
+	/*
+	 * Selects the first lowest internet package
+	 * @author suganya P
+	 * */
 	public void selectFirstLowestPackage() {
 		WebElement btn = getReusableActionsInstance().getWhenReady(firstLowestPackage, 60);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
 		getReusableActionsInstance().getWhenReady(firstLowestPackage, 60).click();
 	}
 	/*
-	* Clicks continue on change Internet package
-	* @author suganay P
-	* */
+	 * Clicks continue on change Internet package
+	 * @author suganay P
+	 * */
 	public void clickContinueChangeInternetPackage() {
 		getReusableActionsInstance().getWhenReady(btnContnueReset, 90).click();
 	}
-    /*
-    * Click on continue in Select billing date pop up
-    * @author suganya P
-    * */
+	/*
+	 * Click on continue in Select billing date pop up
+	 * @author suganya P
+	 * */
 	public void clickContinueOnSelectDateChange() {
 		getReusableActionsInstance().getWhenReady(btnContinueChangeDate,60).click();
 	}
 	/*Selects the Immediate Billing option
-	* @author suganya p
-	* */
+	 * @author suganya p
+	 * */
 	public void clickImmediateBill() {
 		getReusableActionsInstance().getWhenReady(btnImmediateBill,60).click();
 	}
-    /*Clicks on add smart stream button
-    * @author suganya p
-    * */
+	/*Clicks on add smart stream button
+	 * @author suganya p
+	 * */
 	public void clickAddSmartStream() {
 		WebElement select=getReusableActionsInstance().getWhenReady(btnAddSmartStream, 120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,select.getLocation().y-300);
@@ -321,31 +341,28 @@ public class InternetDashboardPage  extends BasePageClass {
 
 
 		}
+
+
 	}
 
 
-
-
-
-
-
-    /*Choose the first avaialble smart stream package
-    * @author suganya P
-    * */
+	/*Choose the first avaialble smart stream package
+	 * @author suganya P
+	 * */
 	public void clickSelectSmartStream() {
 		WebElement btn=getReusableActionsInstance().getWhenReady(btnSmartStreamSelect, 60);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
 		getReusableActionsInstance().getWhenReady(btnSmartStreamSelect,60).click(); }
-    /*
-    * clicks continue on the Smart Stream
-    * @author suganya p
-    * */
+	/*
+	 * clicks continue on the Smart Stream
+	 * @author suganya p
+	 * */
 	public void clickContinueAddingStream() {
 		getReusableActionsInstance().getWhenReady(btnContinueAddingStream,60).click();
 	}
 	/* Selects the internet package based on the inputted package name
-	* @autho suganya P
-	* */
+	 * @autho suganya P
+	 * */
 	public void selectInternetPackage(String strUpgradePlanEn, String strUpgradePlanFr) {
 		By packageNameLocator = By.xpath("//p[contains(text(),'"+strUpgradePlanEn+"') or contains(text(),'"+strUpgradePlanFr+"')]/ancestor::div[@class='internet-tile__body']//span[contains(text(),'Select')]/ancestor::button");
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 20);
@@ -353,5 +370,48 @@ public class InternetDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(pkg);
 	}
 
+	/*
+	 * Selects the first lowest internet package
+	 * @author jasmeen k
+	 * */
+	public void selectIgniteTVPremiumPackage() {
+		WebElement btn = getReusableActionsInstance().getWhenReady(igniteTVPremiumPackage, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
+		getReusableActionsInstance().getWhenReady(igniteTVPremiumPackage, 60).click();
 	}
+
+	public void selectIgniteTVFlex10() {
+		WebElement btn = getReusableActionsInstance().getWhenReady(igniteTvFlex10, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
+		getReusableActionsInstance().getWhenReady(igniteTvFlex10, 60).click();
+	}
+
+	public void selectRadioImmediate()
+	{
+		getReusableActionsInstance().isElementVisible(rdImmediate, 60);
+		getReusableActionsInstance().scrollToElementAndClick(rdImmediate);
+		getReusableActionsInstance().clickWhenReady(rdImmediate,60);
+	}
+
+	/*public void selectMoreDetails()
+	{
+		getReusableActionsInstance().isElementVisible(expandMoreDetails, 60);
+		getReusableActionsInstance().scrollToElementAndClick(expandMoreDetails);
+		getReusableActionsInstance().clickIfAvailable(expandMoreDetails,60);
+	}*/
+	/*public void selectSeeFullDetails()
+	{
+		getReusableActionsInstance().isElementVisible(expandSeeFullDetails, 60);
+		getReusableActionsInstance().scrollToElementAndClick(expandSeeFullDetails);
+		getReusableActionsInstance().clickIfAvailable(expandSeeFullDetails,60);
+	}*/
+
+	public void selectDownloadSpeed()
+	{
+		getReusableActionsInstance().isElementVisible(downloadSpeed, 60);
+		getReusableActionsInstance().scrollToElementAndClick(downloadSpeed);
+		getReusableActionsInstance().clickIfAvailable(downloadSpeed,60);
+	}
+
+}
 
