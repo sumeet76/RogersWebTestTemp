@@ -370,15 +370,12 @@ public class InternetDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(pkg);
 	}
 
-	/*
-	 * Selects the first lowest internet package
-	 * @author jasmeen k
-	 * */
-	public void selectIgniteTVPremiumPackage() {
-		WebElement btn = getReusableActionsInstance().getWhenReady(igniteTVPremiumPackage, 60);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
-		getReusableActionsInstance().getWhenReady(igniteTVPremiumPackage, 60).click();
+
+	public void clickWalltoWallWifiLink(){
+		getReusableActionsInstance().clickWhenReady(lnkLearnMoreWallToWallWifi);
 	}
+
+
 
 	public void selectIgniteTVFlex10() {
 		WebElement btn = getReusableActionsInstance().getWhenReady(igniteTvFlex10, 60);
