@@ -353,5 +353,9 @@ public class InternetDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(pkg);
 	}
 
+	public void clickWalltoWallWifiLink(){
+		getReusableActionsInstance().clickWhenReady(lnkLearnMoreWallToWallWifi);
+	}
+
 	}
 
