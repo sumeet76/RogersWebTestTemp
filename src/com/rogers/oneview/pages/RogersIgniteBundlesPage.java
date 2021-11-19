@@ -215,6 +215,35 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 	@FindBy(xpath="//span[contains(@translate,'showIgniteHomePhoneSetupModal') and text()='No, select new number']")
 	WebElement newNumber;
+
+
+	@FindBy(xpath = "//span[@translate='global.cta.otherAddress']")
+	WebElement otherAddress;
+
+
+	@FindBy(xpath = "//div[@translate='global.modals.serviceability.moveMigration']")
+	WebElement moveMigration;
+
+
+	@FindBy(xpath = "//input[contains(@id, 'canada-post-address-complete')]")
+	WebElement enterNewAddress;
+
+	@FindBy(xpath = "//span[@translate='global.cta.checkAvailability']/ancestor::button")
+	WebElement availabilityButton;
+
+//	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::button")
+//	WebElement continueButton;
+
+	@FindBy(xpath = "//span[@translate='global.cta.yes']/ancestor::button")
+	WebElement yesButton;
+
+	@FindBy(xpath = "//div[@translate='global.modals.serviceability.moveMigrationNotSupported']")
+	WebElement verifyMoveMigrationNotSupported;
+
+	@FindBy(xpath = "//*[@id='ds-modal-container-1']/descendant::div[@class='input-search']")
+	WebElement adddressInputContainer;
+
+
 	/**
 	 * Click Load Offers button
 	 * @author aditi.jain
@@ -316,6 +345,17 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().clickWhenReady(checkAvailabilitybtn);
 		getReusableActionsInstance().clickIfAvailable(continueButton);
+	}
+
+
+	/**
+	 * scroll to continue button
+	 * @author aditi.jain
+	 */
+	public void scrollToContinue() {
+		getReusableActionsInstance().staticWait(2000);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().scrollToElement(continueButton);
 	}
 	/**
 	 * Verify the service availability message
@@ -730,4 +770,63 @@ public void activateHomePhoneltrPopUp() {
 	{
 		getReusableActionsInstance().getWhenReady(newNumber,30).click();
 	}
+
+	/**
+	 * click Apply coupon
+	 * @author aditi.jain
+	 */
+	public void clickOtherAddress() {
+		getReusableActionsInstance().clickWhenReady(otherAddress,30);
+	}
+
+	/**
+	 * Verify Credit Check Information is correct
+	 * @return true if Continue Button in Enable else return False
+	 * @author chinnarao.vattam
+	 *
+	 */
+	public boolean verifyMoveMigration() {
+		return getReusableActionsInstance().isElementVisible(moveMigration,30);
+	}
+
+	/**
+	 * click Apply coupon
+	 * @author aditi.jain
+	 */
+	public void enterNewAddress(String address) {
+
+		getReusableActionsInstance().clickWhenReady(adddressInputContainer,45);
+		getReusableActionsInstance().enterText(enterNewAddress,(address+Keys.BACK_SPACE),60);
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().clickAndHoldFor(searchResult, 333);//.clickWhenReady(searchResult);
+		getReusableActionsInstance().staticWait(10000);
+	}
+
+
+	/**
+	 * Verify Credit Check Information is correct
+	 * @return true if Continue Button in Enable else return False
+	 * @author aditi.jain
+	 *
+	 */
+	public boolean verifyMoveMigrationNotSupported() {
+		return getReusableActionsInstance().isElementVisible(verifyMoveMigrationNotSupported);
+	}
+	/**
+	 * * click Apply coupon
+	 * @author aditi.jain
+	 */
+	public void clickYes() {
+		getReusableActionsInstance().clickWhenReady(yesButton,30);
+	}
+
+
+	/**
+	 * click Apply coupon
+	 * @author aditi.jain
+	 */
+	public void clickAvailability() {
+		getReusableActionsInstance().clickWhenReady(availabilityButton,30);
+	}
+
 }

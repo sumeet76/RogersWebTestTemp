@@ -258,17 +258,8 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath="//span[contains(@translate,'global.cta.continue')]")
 	WebElement yourChangeContinue;
 
-	@FindBy(xpath = "//span[contains(text(),'View my Flex Channels')]")
-	WebElement ViewMyFlexChannelsLink;
-
-	@FindBy(xpath = "//ds-popover[@ng-reflect-content='Cloud Storage records and save']")
-	WebElement CloudStorageBubble;
-
-	@FindBy(xpath = "//ds-popover[@ng-reflect-content='The Download & Go feature of t']")
-	WebElement DownloadGoBubble;
-
-	@FindBy(xpath = "//span[contains(text(),'Reset purchase PIN')]")
-	WebElement ResetPurchasePin;
+	@FindBy(xpath = "(//span[@translate='global.cta.select'])[1]")
+	WebElement selectFirstChannel;
 
 	/**
 	 * Get list of all channels and themepacks and remove them one by one
@@ -897,27 +888,15 @@ public class TVDashboardPage  extends BasePageClass {
 		}
 	}
 
-	public void clickViewMyFlexChannelsLink(){
-
-		getReusableActionsInstance().clickWhenReady(ViewMyFlexChannelsLink);
+	/*
+	 * Select first TV package
+	 * @author aditi.jain
+	 * */
+	public void selectFirstTVPackage() {
+		getReusableActionsInstance().waitForElementVisibility(selectFirstChannel, 45);
+		getReusableActionsInstance().executeJavaScriptClick(selectFirstChannel);
 	}
 
-	public void clickCloudStorageBubble(){
-		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().clickWhenReady(CloudStorageBubble,10);
-	}
-
-	public void clickDownloadGoBubble(){
-		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().clickWhenReady(DownloadGoBubble,10);
-	}
-
-	public void clickResetPurchasePin(){
-		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().clickWhenReady(ResetPurchasePin,10);
-
-	}
 
 }
 
