@@ -124,6 +124,7 @@ public class TestDataHandler {
 	public static AccountData solarisConsumerGWPRhp;
 	public static AccountData solarisConsumerGWPRhpShm;
 	public static AccountData solarisHTOMigrationSignIn;
+	public static AccountData ChangeTvViaServiceability;
 	public static AccountData TC023_TVPackageDowngrade;
 	public static AccountData TC026_TVPackageUpgrade;
 	public static AccountData TC028_InternetPackageDowngrade;
@@ -618,5 +619,6 @@ public class TestDataHandler {
 		RemoveThemepack1544Tc03=YamlHandler.getOVAccountData("1544_TC03_RemoveThemepackImmediate");
 		ChangePaymentMethod=YamlHandler.getOVAccountData("Change_Payment_Method");
 		User_New_Profile_Creation= YamlHandler.getOVAccountData("User_New_Profile_Creation");
+		ChangeTvViaServiceability=YamlHandler.getOVAccountData("ChangeTvViaServiceability");
 	}
 }
