@@ -19,7 +19,7 @@ public class OVR_Auto_TC01_SAI_Migration_1P_to_SAI_E2E_Test extends BaseTestClas
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
@@ -72,7 +72,6 @@ public class OVR_Auto_TC01_SAI_Migration_1P_to_SAI_E2E_Test extends BaseTestClas
         getBundleBuilderPage().clkContinueInstallation();
 
         getBundleBuilderPage().clkContinueBillingAndPayment();
-        //getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Billing and Payment Details");
         reporter.softAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
         reporter.reportLogWithScreenshot("Order Review Page");
@@ -80,10 +79,11 @@ public class OVR_Auto_TC01_SAI_Migration_1P_to_SAI_E2E_Test extends BaseTestClas
         getOVROrderReviewPage().clkContinue();
         reporter.reportLogWithScreenshot("Sign Agreement Page");
         getOVRAgreementPage().signAgreement();
+        reporter.reportLogWithScreenshot("Back to Agreement Page");
         getOVRAgreementPage().clkAgreementCheckbox();
         getOVRAgreementPage().clkCompleteOrder();
-        reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderConfirmation(), "Order Confirmation displayed", "Order not Confirmed");
         reporter.reportLogWithScreenshot("Order Confirmation Page");
+        reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderConfirmation(), "Order Confirmation displayed", "Order not Confirmed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
