@@ -83,15 +83,15 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	@FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]")
 	WebElement chkConsent;
 
-	@FindBy(xpath = "//span[contains(@translate,'global.cta.continue')]/ancestor::a")
+	@FindBy(xpath = "//span[text()='Continue']")
 	WebElement btnCreditCheckSubmit;
 	//button[@class='ute-btn-primary']
 	//button[contains(@class,'-primary -large')]
 	
-	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex position-relative ds-bgcolor-white ds-borders ds-brcolor-slate ds-corners']")
 	WebElement txtContainer;
 	
-	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
+	@FindBy(xpath = "//div[@class='passport-component']//div[@class='ds-formField__inputContainer d-flex position-relative ds-bgcolor-white ds-borders ds-brcolor-slate ds-corners']")
 	WebElement txtContainerPasportNumber;
 
 	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
