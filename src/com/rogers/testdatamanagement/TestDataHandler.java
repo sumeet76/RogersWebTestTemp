@@ -2,7 +2,6 @@ package com.rogers.testdatamanagement;
 
 import com.rogers.yaml.pojo.*;
 import org.testng.ITestNGMethod;
-import org.yaml.snakeyaml.Yaml;
 
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -279,6 +278,8 @@ public class TestDataHandler {
 	public static AccountData RHPManage_AddOns;
 	public static OvrReusableData ovrReusableData;
 	public static OvrReusableData ovrMigrationData2PInternetAndTvTo2P;
+	public static OvrReusableData ovrWirelessNacATL;
+	public static  OvrReusableData ovrWirelessNacON;
 	public static OvrConfigData ovrConfigData;
 	public static  AccountData RemoveThemepack1544Tc03;
 	public static AccountData InternetDashboardSupportLinks;
@@ -633,7 +634,9 @@ public class TestDataHandler {
 	private static void ovrDataInit() throws FileNotFoundException {
 		ovrConfigData= YamlHandler.getOvrConfigData();
 		ovrReusableData=YamlHandler.getOvrReusableData("ReUsabledata");
-		ovrMigrationData2PInternetAndTvTo2P=YamlHandler.getOvrReusableData("Migration_Data_2P");
+		ovrMigrationData2PInternetAndTvTo2P=YamlHandler.getOvrReusableData("Migration_Data_2P_to_2P_PortIn_Internet");
+		ovrWirelessNacATL = YamlHandler.getOvrReusableData("WirelessCX_NAC_ATL");
+		ovrWirelessNacON = YamlHandler.getOvrReusableData("WirelessCX_NAC_ON");
 		anonymousData = YamlHandler.getContactData("AnonymousData");
 	}
 }
