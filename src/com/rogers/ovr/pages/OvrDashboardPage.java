@@ -12,11 +12,19 @@ public class OvrDashboardPage extends BasePageClass {
     }
 
 
-    @FindBy(xpath = "//app-dashboard/div[2]/div/div[2]/a/span")
+    @FindBy(xpath = "//t[text()='Get Ignite' or text()='Obtenir Élan']/ancestor::a")
     WebElement lnkIgnite;
 
+    @FindBy(xpath = "//a[contains(text(),'Français') and @id='language-changed']")
+    WebElement changeLangToFR;
+
     public void clickIgniteLink() {
+        getReusableActionsInstance().waitForElementVisibility(lnkIgnite);
         getReusableActionsInstance().javascriptScrollByVisibleElement(lnkIgnite);
         getReusableActionsInstance().getWhenVisible(lnkIgnite).click();
+    }
+
+    public void changeLangToFR(){
+        getReusableActionsInstance().clickWhenReady(changeLangToFR);
     }
 }
