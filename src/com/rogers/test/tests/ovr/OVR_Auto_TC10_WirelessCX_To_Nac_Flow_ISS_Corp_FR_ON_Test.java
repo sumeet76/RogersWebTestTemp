@@ -18,7 +18,7 @@ public class OVR_Auto_TC10_WirelessCX_To_Nac_Flow_ISS_Corp_FR_ON_Test extends Ba
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
     @Test(groups = {"OVR", "RegressionOVR"})
     public void ovr_Auto_TC10_WirelessCX_To_Nac_Flow_ISS_Corp_FR_ON_Test() throws InterruptedException {

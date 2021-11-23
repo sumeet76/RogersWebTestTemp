@@ -82,6 +82,7 @@ public class OVR_Auto_TC02_Migration_2P_to_2P_Port_IN_Internet_E2E_Corp_ON_EN_Te
         getBundleBuilderPage().creditevaluationAndContinue();
         reporter.reportLogWithScreenshot("Launched the install options  page");
         getBundleBuilderPage().selectExpressProInstall();
+        reporter.reportLogWithScreenshot("Install Options");
         getBundleBuilderPage().clkTechInstallSlot();
         getBundleBuilderPage().setMobileNumber();
         reporter.reportLogWithScreenshot("tech install details");
@@ -93,14 +94,16 @@ public class OVR_Auto_TC02_Migration_2P_to_2P_Port_IN_Internet_E2E_Corp_ON_EN_Te
         reporter.softAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
         getOVROrderReviewPage().clkContinue();
         reporter.reportLogWithScreenshot("Sign Agreement Page");
+        reporter.softAssert(getOVRAgreementPage().verifySignAgreementPage(), "Agreement page displayed", "Agreement page not displayed");
         getOVRAgreementPage().signAgreement();
+        reporter.reportLogWithScreenshot("Back to Agreement Page");
         getOVRAgreementPage().clkAgreementCheckbox();
         getOVRAgreementPage().clkCompleteOrder();
         reporter.reportLogWithScreenshot("Order Confirmation Page");
-        reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderConfirmation(), "Order Confirmation displayed", "Order not Confirmed");
-        reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
-        reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
-        reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
+        reporter.softAssert(getOVROrderConfirmationPage().verifyOrderConfirmation(), "Order Confirmation displayed", "Order not Confirmed");
+        reporter.softAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
+        reporter.softAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
+        reporter.softAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
 
     }
 

@@ -18,7 +18,7 @@ public class OVR_Auto_TC11_WirelessCX_Nac_Flow_2P_TV_INT_PORTIN_Dealer_EN_ATL_Te
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
