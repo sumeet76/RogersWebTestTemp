@@ -1234,6 +1234,7 @@ public class BaseTestClass {
                 OVRAgreementPageThreadLocal.set(new OVRAgreementPage(getDriver()));
                 OVROrderConfirmationPageThreadLocal.set(new OVROrderConfirmationPage(getDriver()));
                 RogersIgniteBundlesPageThreadLocal.set(new RogersIgniteBundlesPage(getDriver()));
+                RogersOVCheckoutPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVCheckoutPage(getDriver()));
                 break;
 
 
