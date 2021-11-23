@@ -57,7 +57,7 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath = "//*[text()='No']")
     WebElement btnNo_portinservices;
 
-    @FindBy(xpath = "//*[text()='Continue']")
+    @FindBy(xpath = "//span[text()='Continue']/ancestor::button")
     WebElement btncontinue;
     @FindBy(xpath = "//*[contains(@id,'ds-modal-container')]//button/span/span/span")
     WebElement btncontinueonPointsToMention;
@@ -182,6 +182,12 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath = "//h1[contains(text(),'Billing and Payment')]")
     WebElement billingAndPaymentH1;
 
+    @FindBy(xpath = "//h3[text()='Payment Options']//parent::div//following-sibling::div//child::select[1]")
+    WebElement drpSelectBillingPaymentMethod;
+
+    @FindBy(xpath = "//span[contains(text(),'Select the services') or contains(text(),'Sélectionnez les services demandés par le client')]")
+    WebElement lblSelectServiceBundles;
+
 
     public void openFooter() throws InterruptedException {
         getReusableActionsInstance().getWhenVisible(lnkExpandFooter).click();
@@ -254,15 +260,8 @@ public class BundleBuilderPage extends BasePageClass {
         getReusableActionsInstance().getWhenVisible(btnNo_portinservices).click();
     }
     public void scrollAndclickcontinue() throws InterruptedException {
-        //  WebDriverWait wait = new WebDriverWait(getDriver(),3000);
-        //   Thread.sleep(15000);
-        //  wait.until(ExpectedConditions.elementToBeClickable(liveChatIcon));
-        //  liveChatIcon.click();
-        getReusableActionsInstance().javascriptScrollToBottomOfPage();
-        getReusableActionsInstance().scrollToElementAndClick(btncontinue);
-        getReusableActionsInstance().executeJavaScriptClick(btncontinue);
-        //getReusableActionsInstance().clickWhenReady(btncontinue,120);
-        Thread.sleep(10000);
+        getReusableActionsInstance().javascriptScrollByVisibleElement(btncontinue);
+        getReusableActionsInstance().clickWhenReady(btncontinue);
 
     }
 
@@ -479,6 +478,14 @@ public class BundleBuilderPage extends BasePageClass {
         getReusableActionsInstance().clickWhenReady(continueInstallation);
     }
 
+    public boolean verifyBillingAndPaymentPage(){
+        return getReusableActionsInstance().isElementVisible(billingAndPaymentH1, 60);
+    }
+
+    public boolean verifyBundleBuilderPage(){
+        return getReusableActionsInstance().isElementVisible(lblSelectServiceBundles, 5);
+    }
+
     public void clkContinueBillingAndPayment() throws InterruptedException {
         if(getReusableActionsInstance().isElementVisible(billingAndPaymentH1, 60)){
             getReusableActionsInstance().javascriptScrollByVisibleElement(continueBillingAndPayment);
@@ -491,6 +498,9 @@ public class BundleBuilderPage extends BasePageClass {
             getReusableActionsInstance().clickWhenReady(continueBillingAndPayment, 3);
 
         }
+    }
+    public void setDrpSelectBillingPaymentMethod(String paymentMethod){
+        getReusableActionsInstance().selectWhenReadyByVisibleText(drpSelectBillingPaymentMethod, paymentMethod);
     }
 
     public boolean verifyCustomerCurrentPlan(){
