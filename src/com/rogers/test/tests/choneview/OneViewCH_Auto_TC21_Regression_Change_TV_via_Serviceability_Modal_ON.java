@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_TC21_Regression_Change_TV_via_Serviceability_Modal_ON extends BaseTestClass {
     @Test
-    public void checkTVPackageDowngrade() {
+    public void OneViewCH_Auto_TC21_Regression_Change_TV_via_Serviceability_Modal_ON {
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.ChangeTvViaServiceability.accountDetails.getBan(),TestDataHandler.ChangeTvViaServiceability.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
         getAccountOverViewPage().enterDealerCodeDialogue();
