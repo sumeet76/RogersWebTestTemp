@@ -8,6 +8,14 @@ public class ContactData {
 	public String planFr;
 	public CreditCardDetails creditCardDetails;
 	public String coupon;
+	public TokenDetails tokenDetails;
+
+	/** @return the tokenDetails */
+	public TokenDetails getTokenDetails() {
+		return tokenDetails;}
+	/** @param tokenDetails the tokenDetails to set */
+	public void setTokenDetails(TokenDetails tokenDetails) {
+		this.tokenDetails = tokenDetails;}
 
 	/**
 	 * @return the plan in English for SAI flow

@@ -24,11 +24,18 @@ public class ContactDetails {
 	private String contactIDSAITMP;
 	private String contactIDSAIISSTMP;
 	private String contactID_STB_ISS;
-
-
 	private String contactID_STB_3P;
 	private String email;
 	private String confirmEmail;
+	private String paymentAmount;
+
+	public String getPaymentAmount() {return paymentAmount;}
+
+	public void setPaymentAmount(String paymentAmount) {
+		this.paymentAmount = paymentAmount;
+	}
+
+
 
 	public ContactDetails() {
 		

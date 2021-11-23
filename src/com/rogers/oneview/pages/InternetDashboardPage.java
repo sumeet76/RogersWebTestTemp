@@ -103,7 +103,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@class, 'expander ds-color-black pl-16 ds-button ')]")
 	WebElement expandSeeFullDetails;
 
-	@FindBy(xpath = "//div[text()='Ignite TV Flex 10']/following::*[text()='150 Mbps'][1]/preceding::ds-selection[1]")
+	@FindBy(xpath = "//div[text() ='Ignite TV Flex 10']/following::*[text()='1 Gbps'][1]/parent::span/parent::span")
 	WebElement downloadSpeed;
 
 	@FindBy(xpath="(//span[text()='Sélectionner' or text()='Select']/ancestor::button)[4]")
@@ -378,6 +378,7 @@ public class InternetDashboardPage  extends BasePageClass {
 
 
 	public void selectIgniteTVFlex10() {
+		getReusableActionsInstance().staticWait(5000);
 		WebElement btn = getReusableActionsInstance().getWhenReady(igniteTvFlex10, 60);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
 		getReusableActionsInstance().getWhenReady(igniteTvFlex10, 60).click();
