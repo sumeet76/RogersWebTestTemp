@@ -11,13 +11,13 @@ public class CreditCheckPage  extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[1]")
+	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[1] | (//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[1]")
 	WebElement year;
 
-	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[2]")
+	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[2] | (//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[2]")
 	WebElement month;
 
-	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[3]")
+	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[3] | (//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[3]")
 	WebElement date;
 
 	@FindBy(xpath = "//span[contains(text(),'Your first ID option')]/ancestor::span//following-sibling::select")
@@ -33,13 +33,13 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Select Province')]/ancestor::span//following-sibling::select")
 	WebElement province;
 
-	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[1]")
+	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[1] | (//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[1]")
 	WebElement licenseExpiryYear;
 
-	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[3]")
+	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[3] | (//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[3]")
 	WebElement licenseExpiryDay;
 
-	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[2]")
+	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[2] | (//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[2]")
 	WebElement licenseExpiryMonth;
 
 	@FindBy(xpath = "//span[contains(text(),'License Number')]/ancestor::span/parent::div")
