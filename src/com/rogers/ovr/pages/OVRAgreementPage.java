@@ -23,9 +23,17 @@ public class OVRAgreementPage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(),'Complete Order')]/ancestor::button")
     WebElement completeOrderBtn;
 
+    @FindBy(xpath = "//h1[text()='Sign Agreements']")
+    WebElement signAgreementH1;
+
+    public boolean verifySignAgreementPage() throws InterruptedException {
+        return getReusableActionsInstance().isElementVisible(signAgreementH1, 60);
+    }
+
     public void signAgreement() {
+        getReusableActionsInstance().waitForElementTobeClickable(signAgreementBtn, 120);
         getReusableActionsInstance().javascriptScrollToBottomOfPage();
-        getReusableActionsInstance().clickWhenReady(signAgreementBtn);
+        getReusableActionsInstance().executeJavaScriptClick(signAgreementBtn);
         String currentWindow = getDriver().getWindowHandle();
 
         getReusableActionsInstance().switchToNewWindow();

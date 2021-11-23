@@ -27,7 +27,7 @@ public class OVROrderConfirmationPage extends BasePageClass {
     @FindBy(xpath = "//*[text()='Monthly charges']/ancestor::button")
     WebElement monthlyCharges;
 
-    public boolean verifyOrderConfirmation() {
+    public boolean verifyOrderConfirmation() throws InterruptedException {
         getReusableActionsInstance().waitForElementVisibility(orderConfirmation, 15);
         return getReusableActionsInstance().isElementVisible(orderConfirmation);
     }
