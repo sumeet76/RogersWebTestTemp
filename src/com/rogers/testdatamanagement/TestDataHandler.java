@@ -622,4 +622,7 @@ public class TestDataHandler {
 		ChangePaymentMethod=YamlHandler.getOVAccountData("Change_Payment_Method");
 		User_New_Profile_Creation= YamlHandler.getOVAccountData("User_New_Profile_Creation");
 		ChangeTvViaServiceability=YamlHandler.getOVAccountData("ChangeTvViaServiceability");
-		
+		Make_a_Payment_EN= YamlHandler.getOVAccountData("Make_a_Payment_EN");
+		Oasys_Gap_Closure_Change_Internet_via_Serviceability_Model= YamlHandler.getOVAccountData("Oasys_Gap_Closure_Change_Internet_via_Serviceability_Model");
+	}
+}
