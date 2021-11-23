@@ -124,6 +124,7 @@ public class TestDataHandler {
 	public static AccountData solarisConsumerGWPRhp;
 	public static AccountData solarisConsumerGWPRhpShm;
 	public static AccountData solarisHTOMigrationSignIn;
+	public static AccountData ChangeTvViaServiceability;
 	public static AccountData TC023_TVPackageDowngrade;
 	public static AccountData TC026_TVPackageUpgrade;
 	public static AccountData TC028_InternetPackageDowngrade;
@@ -211,6 +212,7 @@ public class TestDataHandler {
 	public static MigrationData migrationData1PRHPTo3P;
 	public static MigrationData addChannelImmediate;
 	public static MigrationData addThemepackImmediate;
+	public static MigrationData addRemoveThemepackImmediate;
 	public static MigrationData addChannelAndThempackImmediate;
 	public static MigrationData targetedMigration1PInternetToSAI;
 	public static MigrationData targetedMigration1PInternetToSAIISS;
@@ -225,6 +227,8 @@ public class TestDataHandler {
 	public static MigrationData targetedMigration2PInternetAndTVToSAIISS;
 	public static MigrationData targetedMigration3PtoSAIISS;
 	public static MigrationData targetedMigration_3P_to_2P;
+	public static MigrationData targetedMigration_3P_to_3P_same_numb;
+	public static MigrationData targetedMigration_3P_to_3P_change_numb;
 	public static PaymentDetails ovPaymentInfo;
 	public static AccountData tc60;
 	public static RedesignConfig redesignConfig;
@@ -276,6 +280,11 @@ public class TestDataHandler {
 	public static OvrReusableData ovrReusableData;
 	public static OvrReusableData ovrMigrationData2PInternetAndTvTo2P;
 	public static OvrConfigData ovrConfigData;
+	public static  AccountData RemoveThemepack1544Tc03;
+	public static AccountData InternetDashboardSupportLinks;
+	public static AccountData ChangePaymentMethod;
+	public static AccountData User_New_Profile_Creation;
+
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
  		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
@@ -589,6 +598,7 @@ public class TestDataHandler {
 		migrationData1PRHPTo3P = YamlHandler.getMigrationData("MigrationData1P_RHP_To3P");
 		addChannelImmediate = YamlHandler.getMigrationData("1543_AddChannelsImmediate");
 		addThemepackImmediate = YamlHandler.getMigrationData("1544_AddThemepackImmediate");
+		addRemoveThemepackImmediate = YamlHandler.getMigrationData("1541_AddRemoveThemepackUpgradeImmediate");
 		addChannelAndThempackImmediate = YamlHandler.getMigrationData("1539_AddChannelandThemepackImmediate");
 		TC023_TVPackageDowngrade= YamlHandler.getOVAccountData("TC_023_TV_PackageDowngrade");
 		TC026_TVPackageUpgrade= YamlHandler.getOVAccountData("TC026_TVPackageUpgrade");
@@ -598,6 +608,7 @@ public class TestDataHandler {
 		TC032_SAI_AddingSmartStream =YamlHandler.getOVAccountData("TC32_SAI_AddingSmartstream");
 		TC030_Internet_PackageUpgrade =YamlHandler.getOVAccountData("TC_030_Internet_PackageUpgrade");
 		RHPManage_AddOns =YamlHandler.getOVAccountData("RHPManageAddon");
+		InternetDashboardSupportLinks=YamlHandler.getOVAccountData("InternetDashboardSupportLinks");
 		targetedMigration1PInternetToSAI=YamlHandler.getMigrationData("1545_TargetedMigrationFlow_1P_Internet_to_SAITest");
 		targetedMigration1PInternetToSAIISS=YamlHandler.getMigrationData("1546_TargetedMigrationFlow_1P_Internet_to_SAIISS");
 		targetedMigration1PInternetTo2P=YamlHandler.getMigrationData("1547_TargetedMigrationFlow_1P_Internet_to_2P");
@@ -611,6 +622,12 @@ public class TestDataHandler {
 		targetedMigration2PInternetAndTVToSAIISS= YamlHandler.getMigrationData("1554_TargetedMigrationFlow_2P_InternetAndTV_to_SAIISS");
 		targetedMigration3PtoSAIISS=YamlHandler.getMigrationData("1565_TC01_TargetedMigration_3P_to_SAIISS");
 		targetedMigration_3P_to_2P=YamlHandler.getMigrationData("1566_TC01_TargetedMigration_3P_to_2P");
+		targetedMigration_3P_to_3P_same_numb=YamlHandler.getMigrationData("1567_TC01_TargetedMigration_3P_to_3P_same_numb");
+		targetedMigration_3P_to_3P_change_numb=YamlHandler.getMigrationData("1568_TC01_TargetedMigration_3P_to_3P_change_numb");
+		RemoveThemepack1544Tc03=YamlHandler.getOVAccountData("1544_TC03_RemoveThemepackImmediate");
+		ChangePaymentMethod=YamlHandler.getOVAccountData("Change_Payment_Method");
+		User_New_Profile_Creation= YamlHandler.getOVAccountData("User_New_Profile_Creation");
+		ChangeTvViaServiceability=YamlHandler.getOVAccountData("ChangeTvViaServiceability");
 	}
 
 	private static void ovrDataInit() throws FileNotFoundException {

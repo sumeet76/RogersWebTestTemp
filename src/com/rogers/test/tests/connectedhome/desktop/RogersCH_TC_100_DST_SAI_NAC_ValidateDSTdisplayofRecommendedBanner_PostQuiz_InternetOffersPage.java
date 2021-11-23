@@ -65,7 +65,7 @@ public class RogersCH_TC_100_DST_SAI_NAC_ValidateDSTdisplayofRecommendedBanner_P
         getRogersInternetPackageSelectionPage().clkDSTClose();
         getRogersInternetPackageSelectionPage().VerifyYourBestFit();
         reporter.reportLogWithScreenshot("Recommended pack is displayed on top of all");
-        //getRogersInternetPackageSelectionPage().clkBestAdd();
+        getRogersInternetPackageSelectionPage().clkBestAdd();
         reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
         //getRogersHomePage().clkOnlyInternet();
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
@@ -101,11 +101,15 @@ public class RogersCH_TC_100_DST_SAI_NAC_ValidateDSTdisplayofRecommendedBanner_P
 
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
-        reporter.hardAssert(getRogersTechInstallPage().verifyIgniteExpressSetup(),"Ignite Express Setup is present","Ignite Express Setup is not present");
-        reporter.hardAssert(getRogersTechInstallPage().clktxtIgniteExpressSetupCost(),"Ignite Express Setup Cost verified","Ignite Express Setup Cost verification is failed");
-        getRogersTechInstallPage().clkTechInstalConsent();
+        //getRogersTechInstallPage().clkTechInstalConsent();
+        getRogersTechInstallPage().clkProInstallUpgradeNo();
         reporter.reportLogWithScreenshot("tech install details");
+        getRogersTechInstallPage().clkTechInstallContinueSelf();
+        reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(),"SetUp page has Launched","SetUp page has not Launched");
         getRogersTechInstallPage().clkTechInstallContinue();
+       /*getRogersTechInstallPage().clkTechInstalConsent();
+       reporter.reportLogWithScreenshot("tech install details");
+       getRogersTechInstallPage().clkTechInstallContinue();*/
 
         reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");

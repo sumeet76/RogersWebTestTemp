@@ -88,14 +88,34 @@ public class RogersTechInstallPage extends BasePageClass {
 
 	@FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]")
 	WebElement chkTechInstalConsent;
-	
+
+	@FindAll({
+	//@FindBy(xpath = "//label[@for='ds-radio-input-id-5']//div[@class='ds-radioButton__innerCircle']"),
+			@FindBy(xpath = "//span[@translate='global.checkout.fulfillment.withProInstallUpgradeNo']")
+	})
+	WebElement chkNoThanks;
+
+	@FindBy(xpath ="//span[@translate='global.checkout.fulfillment.withProInstallUpgradeYes']")
+	WebElement clkProInstallUpgradeYes;
+
+
+	@FindBy(xpath ="//span[@translate='global.checkout.fulfillment.withProInstallUpgradeNo']")
+	WebElement clkProInstallUpgradeNo;
+
+	@FindBy(xpath ="//span[@translate='global.checkout.fulfillment.courierSetup']")
+	WebElement txtSetUp;
+
+	@FindBy(xpath = "//span[text()='Continue']")
+	WebElement chkcontinue;
+
 	@FindBy(xpath ="//label[@for='ds-checkbox-id-0']")
 	WebElement chkTechInstalConsentExistingCustomer;
 
 
 	@FindAll({
-	@FindBy(xpath ="//a[@aria-describedby='ariaClickToContinue']"),
-	@FindBy(xpath ="//span[@translate='global.checkout.fulfillment.confirm']/ancestor::a")})
+	@FindBy(xpath ="//span[text()='Continue']")
+	//@FindBy(xpath ="//span[@translate='global.checkout.fulfillment.confirm']/ancestor::a")
+	})
 	WebElement btnTechInstallContinue;
 //button[@aria-label='Click here to continue']
 
@@ -140,7 +160,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath ="//label[@for='tech-install-option']//span[@class='ute-icon-check']")
 	WebElement chkPersonalizedInstall;
 	
-	@FindBy(xpath ="//h2[@translate='global.checkout.fulfillment.title']")
+	@FindBy(xpath ="//h1[text()='Setup options']")
 	WebElement txtTechInstalpage;
 
 	@FindAll({
@@ -653,7 +673,35 @@ public class RogersTechInstallPage extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(chkTechInstalConsent);
 		getReusableActionsInstance().executeJavaScriptClick(chkTechInstalConsent);
 	}
-	
+	/**
+	 * Click the continue button to continue the TechInstall on installation page
+	 * @author dharani.up
+	 */
+	public void clkProInstallUpgradeYes() {
+		getReusableActionsInstance().waitForElementTobeClickable(clkProInstallUpgradeYes, 60);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().getWhenReady(clkProInstallUpgradeYes, 30).click();
+	}
+
+	/**
+	 * Click the continue button to continue the TechInstall on installation page
+	 * @author dharani.up
+	 */
+	public void clkProInstallUpgradeNo() {
+		getReusableActionsInstance().waitForElementTobeClickable(clkProInstallUpgradeNo, 60);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().getWhenReady(clkProInstallUpgradeNo, 30).click();
+	}
+	/**
+	 * To verify the launch of Technical  Install Page
+	 * @return true if the TechInstallSlot ratio has available, else false
+	 * @author dharani.up
+	 */
+	public boolean verifyTechInstallSetUp() {
+		getReusableActionsInstance().waitForElementVisibility(txtSetUp, 60);
+		return	getReusableActionsInstance().isElementVisible(txtSetUp, 20);
+	}
+
 	/**
 	 * To Click the Technical Install Consent check box
 	 * @author chinnarao.vattam

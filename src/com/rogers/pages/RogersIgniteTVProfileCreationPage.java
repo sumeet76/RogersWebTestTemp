@@ -32,20 +32,23 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 
 	@FindAll({
 	//@FindBy(xpath = "//input[contains(@a11ydescription,'First Name')]"),
-	//@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'First Name')]"),
-	@FindBy(xpath = "//input[contains(@aria-label,'First Name')]")})
+	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'First Name')]"),
+	//@FindBy(xpath = "//input[contains(@aria-label,'First Name')]")
+	})
 	WebElement txtFirstName;
 
 	@FindAll({
 	//@FindBy(xpath = "//input[contains(@a11ydescription,'Last Name')]"),
-	//@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'Last Name')]"),
-	@FindBy(xpath = "//input[contains(@aria-label,'Last Name')]")})
+	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'Last Name')]"),
+	//@FindBy(xpath = "//input[contains(@aria-label,'Last Name')]")
+	})
 	WebElement txtLastName;
 
 	@FindAll({
 	//@FindBy(xpath = "//input[contains(@a11ydescription,'your phone number')]"),
-	//@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'your phone number')]"),
-	@FindBy(xpath = "//input[contains(@aria-label,'your phone number')]")})
+	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'your phone number')]"),
+	//@FindBy(xpath = "//input[contains(@aria-label,'your phone number')]")
+	})
 	WebElement btnPhone;
 
 	@FindBy(xpath = "//span[@translate='global.cta.cancel']")

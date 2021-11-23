@@ -57,13 +57,13 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	WebElement popUpInternetPopup;
 
 	//@FindBy(xpath = "//span[@id='ariaChangeWifiPassword']/ancestor::span[@role='text']")
-	@FindBy(xpath = "//a[@aria-label='Change your WiFi password. The link will open a new tab in your browser.']//span[@class='ds-icon rds-icon-open-new']")
+	@FindBy(xpath = "//a[@aria-label='Change your WiFi password. The link will open a new tab in your browser.']//span[@class='ds-icon d-inline-flex rds-icon-open-new']")
 	WebElement btnWifiPassword;
 
 	@FindBy(xpath = "//div[@id='terms-conditions']")
 	WebElement infoAgreement;
 	
-	@FindBy(xpath = "//span[text()='Add it now']")
+	@FindBy(xpath = "//span[text()='Continue']")
 	WebElement btnInternetChangeOK;
 
 

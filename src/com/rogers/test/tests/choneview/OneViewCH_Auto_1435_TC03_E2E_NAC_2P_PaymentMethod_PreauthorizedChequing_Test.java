@@ -85,10 +85,10 @@ public class OneViewCH_Auto_1435_TC03_E2E_NAC_2P_PaymentMethod_PreauthorizedCheq
 		getRogersOVCheckoutPage().enterAccountNumber("1234003");
 		reporter.reportLogWithScreenshot("Account Number");
 
-//		getPaymentOptionsPage().clkContinue();
-//		getRogersOVCheckoutPage().clkSubmit();
-//        reporter.reportLogWithScreenshot("submit order");
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		getPaymentOptionsPage().clkContinue();
+		getRogersOVCheckoutPage().clkSubmit();
+        reporter.reportLogWithScreenshot("submit order");
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
 
     }

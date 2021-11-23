@@ -11,6 +11,20 @@ public class AccountData {
 	public String name;
 	private String dealerCode;
 	private String contactID;
+	private String accountNo;
+
+	public String getAddress() {return address;}
+
+	public void setAddress(String address) {this.address = address;}
+
+	private String address;
+
+	public String getAccountNo() {return accountNo;}
+
+	public void setAccountNo(String accountNo) {this.accountNo = accountNo;}
+
+
+
 	//private String dbQuery;
 
 	/**

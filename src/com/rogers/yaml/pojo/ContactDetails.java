@@ -27,6 +27,8 @@ public class ContactDetails {
 
 
 	private String contactID_STB_3P;
+	private String email;
+	private String confirmEmail;
 
 	public ContactDetails() {
 		
@@ -319,5 +321,23 @@ public class ContactDetails {
 	public void setContactID_STB_3P(String contactID_STB_3P) {
 		this.contactID_STB_3P = contactID_STB_3P;
 	}
+
+	/**
+	 * @return the Email for New Profile Account
+	 */
+	public String getEmail() {return email;}
+	/**
+	 * @param  email for New Profile Account to set
+	 */
+	public void setEmail(String email) {this.email = email;}
+
+	/**
+	 * @return the confirmEmail for new Profile
+	 */
+	public String getConfirmEmail() {return confirmEmail;}
+	/**
+	 * @param  confirmEmail for new Profile
+	 */
+	public void setConfirmEmail(String confirmEmail) {this.confirmEmail = confirmEmail;}
 
 }

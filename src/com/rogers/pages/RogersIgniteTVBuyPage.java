@@ -29,12 +29,12 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	@FindAll({
 	@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Starter']/ancestor::a"),
-	@FindBy(xpath = "//div[@class='bundle-tile-row']//span[@id='allowedFlowAddToCart_Rogers Ignite Starter']/ancestor::a")})
+	@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Starter Bundle to cart']//span[text()='Add to cart']")})
 	WebElement btnSolarisStarterPackage;
 
 	@FindAll({
    @FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Premier']/ancestor::a"),
-	@FindBy(xpath = "//div[@class='bundle-tile-price']//a[@aria-describedby='allowedFlowAddToCart_Rogers Ignite Premier']")})
+	@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Premier Bundle to cart']//span[text()='Add to cart']")})
 	WebElement btnSolarisPremierPackage;
 
 	@FindBy(xpath = "//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Flex 5']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']")
@@ -111,6 +111,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	@FindBy(xpath = "//ds-radio-button[@aria-label='Select Yes']//div[contains(@id,'ds-radio-input')]")
 	WebElement rdo4KTV;
+
+	@FindBy(xpath = "//ds-radio-button[@aria-label='Select No']//div[contains(@id,'ds-radio-input')]")
+	WebElement rdo4KTVNo;
 
 	@FindBy(xpath = "//div[@class='mr-8 d-inline-block' and contains(text(),'Total')]")
 	WebElement txtTotalChannels;
@@ -653,6 +656,16 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(rdo4KTV, 120);
 		getReusableActionsInstance().scrollToElement(rdo4KTV);
 		getReusableActionsInstance().getWhenReady(rdo4KTV,30).click();
+		//getReusableActionsInstance().executeJavaScriptClick(rdo4KTV);
+	}
+	/**
+	 * Click 4K TV radio button on Ignite-bundles/tv-internet page
+	 * @author dharani.up
+	 */
+	public void set4KTVNo() {
+		getReusableActionsInstance().getWhenReady(rdo4KTVNo, 120);
+		getReusableActionsInstance().scrollToElement(rdo4KTVNo);
+		getReusableActionsInstance().getWhenReady(rdo4KTVNo,30).click();
 		//getReusableActionsInstance().executeJavaScriptClick(rdo4KTV);
 	}
 	
