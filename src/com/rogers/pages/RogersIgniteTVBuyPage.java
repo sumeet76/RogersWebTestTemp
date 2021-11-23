@@ -112,6 +112,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//ds-radio-button[@aria-label='Select Yes']//div[contains(@id,'ds-radio-input')]")
 	WebElement rdo4KTV;
 
+	@FindBy(xpath = "//ds-radio-button[@aria-label='Select No']//div[contains(@id,'ds-radio-input')]")
+	WebElement rdo4KTVNo;
+
 	@FindBy(xpath = "//div[@class='mr-8 d-inline-block' and contains(text(),'Total')]")
 	WebElement txtTotalChannels;
 
@@ -653,6 +656,16 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(rdo4KTV, 120);
 		getReusableActionsInstance().scrollToElement(rdo4KTV);
 		getReusableActionsInstance().getWhenReady(rdo4KTV,30).click();
+		//getReusableActionsInstance().executeJavaScriptClick(rdo4KTV);
+	}
+	/**
+	 * Click 4K TV radio button on Ignite-bundles/tv-internet page
+	 * @author dharani.up
+	 */
+	public void set4KTVNo() {
+		getReusableActionsInstance().getWhenReady(rdo4KTVNo, 120);
+		getReusableActionsInstance().scrollToElement(rdo4KTVNo);
+		getReusableActionsInstance().getWhenReady(rdo4KTVNo,30).click();
 		//getReusableActionsInstance().executeJavaScriptClick(rdo4KTV);
 	}
 	
