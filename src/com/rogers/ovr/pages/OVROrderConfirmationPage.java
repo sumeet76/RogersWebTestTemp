@@ -18,13 +18,13 @@ public class OVROrderConfirmationPage extends BasePageClass {
     @FindBy(xpath = "//*[text()='Thanks! We received the order.' or text()='Merci!  Nous avons reçu la commande.  ']")
     WebElement orderConfirmation;
 
-    @FindBy(xpath = "//p[contains(text(),'order number is')]")
+    @FindBy(xpath = "//p[contains(text(),'order number is') or contains(text(),'Le numéro de commande est le')]")
     WebElement orderNumberLbl;
 
-    @FindBy(xpath = "//*[text()='One-Time Fees and Credits' or text()='Frais et crédits uniques']/ancestor::button")
+    @FindBy(xpath = "//h2[@translate='global.label.oneTimeHeader']/ancestor::button")
     WebElement oneTimeFees;
 
-    @FindBy(xpath = "//*[text()='Monthly charges']/ancestor::button")
+    @FindBy(xpath = "//h2[@translate='global.label.monthlyBill']/ancestor::button")
     WebElement monthlyCharges;
 
     public boolean verifyOrderConfirmation() throws InterruptedException {

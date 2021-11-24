@@ -17,10 +17,10 @@ public class OVROrderReviewPage extends BasePageClass {
     @FindBy(xpath = "//*[text()='One-Time Fees and Credits' or text()='Frais et crédits uniques']/ancestor::button")
     WebElement oneTimeFees;
 
-    @FindBy(xpath = "//*[text()='Monthly charges']/ancestor::button")
+    @FindBy(xpath = "//*[text()='Monthly charges' or text()='Frais mensuels']/ancestor::button")
     WebElement monthlyCharges;
 
-    @FindBy(xpath = "//span[text()='Continue']")
+    @FindBy(xpath = "//span[text()='Continue' or text()='Continuer']")
     WebElement continueBtn;
 
     public void clkContinue(){

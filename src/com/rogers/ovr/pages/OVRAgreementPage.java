@@ -14,19 +14,19 @@ public class OVRAgreementPage extends BasePageClass {
     public OVRAgreementPage(WebDriver driver) {
         super(driver);
     }
-    @FindBy(xpath = "//span[contains(text(),'Sign Agreement')]/ancestor::button")
+    @FindBy(xpath = "//span[@translate='global.checkout.orderAgreement.signAgreement']/ancestor::button")
     WebElement signAgreementBtn;
 
-    @FindBy(xpath = "//span[contains(text(),'Customer has read and agrees to the ')]")
+    @FindBy(xpath = "//span[contains(text(),'Customer has read and agrees to the') or contains(text(),'Le client a lu et accepté')]")
     WebElement agreementCheckbox;
 
-    @FindBy(xpath = "//span[contains(text(),'Complete Order')]/ancestor::button")
+    @FindBy(xpath = "//span[@translate='global.cta.completeOrder']/ancestor::button")
     WebElement completeOrderBtn;
 
-    @FindBy(xpath = "//h1[text()='Sign Agreements']")
+    @FindBy(xpath = "//h1[text()='Sign Agreements' or text()='Signature des ententes']")
     WebElement signAgreementH1;
 
-    public boolean verifySignAgreementPage() throws InterruptedException {
+    public boolean verifySignAgreementPage() {
         return getReusableActionsInstance().isElementVisible(signAgreementH1, 60);
     }
 
