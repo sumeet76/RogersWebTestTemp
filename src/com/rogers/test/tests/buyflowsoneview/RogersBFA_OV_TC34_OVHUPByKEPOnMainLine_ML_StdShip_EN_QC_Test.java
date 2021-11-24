@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_OV_TC34_OVHUPByKEPOnMainLine_ML_StdShip_EN_QC_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","RegressionOVBFA","OVH"})
+	@Test(groups = {"RegressionBFA","RegressionOVBFA","OVHUPBFA"})
 	public void rogersHUPOnMainLine_QCProv_Test() {
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.buyFlowsOVtestCase34.getBanNo(), TestDataHandler.buyFlowsOVtestCase34.getContactID());
 		reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
@@ -28,7 +28,7 @@ public class RogersBFA_OV_TC34_OVHUPByKEPOnMainLine_ML_StdShip_EN_QC_Test extend
 		reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
 		getRogersOVWirelessDetailsPage().clkUpgradeMyDevice();
 		reporter.reportLogWithScreenshot("Device upgrade button clicked");
-		getRogersOVWirelessDetailsPage().setCustomerType(this.getClass().getSimpleName());
+		//getRogersOVWirelessDetailsPage().setCustomerType(this.getClass().getSimpleName());
 		//----------------------------------------Device Catalog & Config page-------------------------------------------
 		/*reporter.hardAssert(getRogersOVChoosePhonePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
 		reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");

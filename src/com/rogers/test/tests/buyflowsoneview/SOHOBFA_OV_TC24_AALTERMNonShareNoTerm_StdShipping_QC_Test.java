@@ -14,19 +14,14 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * TC01-OV-AAL_Singleline Account_Validate if user is able to place an order in HUP flow and choose a different plan_EN
- * @author Saurav.Goyal
+ * TC24-SOHO-AAL_Singleline Nonshare Account_Validate AAL flow by selecting NOTERM option and std shipping for QC province_EN
+ * @author praveen.kumar7
  */
 public class SOHOBFA_OV_TC24_AALTERMNonShareNoTerm_StdShipping_QC_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","RegressionOVBFA","OVSOHOAALBFA"})
+	@Test(groups = {"RegressionBFA","RegressionOVBFA","SOHOBFA"})
 	public void sohoAALTERMNonShareNoTermQCStdShippingFlow() {
-		reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
-		reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");
-		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
-		reporter.reportLogWithScreenshot("Rogers OV environment selected" + TestDataHandler.bfaOneViewConfig.getEnvironmentName());
-		//getAccountOverViewPage().enterDealerCodeDialogue();
-		//getAccountOverViewPage().clkSubmitBtnDealerCodeDialogue();
+		getEnvironmentSelectionPage().launchOneView(TestDataHandler.buyFlowsOVtestCase10.getBanNo(), TestDataHandler.buyFlowsOVtestCase10.getContactID());
 		reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
 		reporter.reportLogWithScreenshot("Rogers Account overview page");
 		getAccountOverViewPage().setSkipNotification();
@@ -127,7 +122,7 @@ public class SOHOBFA_OV_TC24_AALTERMNonShareNoTerm_StdShipping_QC_Test extends B
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		startOVSession(System.getProperty("QaOVUrl"),strBrowser, strLanguage,RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim(), TestDataHandler.buyFlowsOVtestCase10.getContactID(),TestDataHandler.buyFlowsOVtestCase10.getBanNo(),TestDataHandler.bfaOneViewConfig.getUsrID(), TestDataHandler.bfaOneViewConfig.getLoginID(),  method);
+		startOVSession(System.getProperty("OVUrl"),strBrowser, strLanguage,RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim(),"", "","", "", method);
 	}
 
 /*	@AfterMethod(alwaysRun = true)

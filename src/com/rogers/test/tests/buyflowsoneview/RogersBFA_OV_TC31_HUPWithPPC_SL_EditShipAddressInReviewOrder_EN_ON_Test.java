@@ -28,7 +28,7 @@ public class RogersBFA_OV_TC31_HUPWithPPC_SL_EditShipAddressInReviewOrder_EN_ON_
 		reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
 		getRogersOVWirelessDetailsPage().clkUpgradeMyDevice();
 		reporter.reportLogWithScreenshot("Device upgrade button clicked");
-		getRogersOVWirelessDetailsPage().setCustomerType(this.getClass().getSimpleName());
+		//getRogersOVWirelessDetailsPage().setCustomerType(this.getClass().getSimpleName());
 		//----------------------------------------Device Catalog & Config page-------------------------------------------
 		String deviceName = TestDataHandler.buyFlowsOVtestCase31.getDeviceName();
 		reporter.hardAssert(getRogersOVChoosePhonePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");

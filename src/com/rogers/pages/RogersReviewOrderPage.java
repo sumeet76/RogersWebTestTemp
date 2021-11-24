@@ -69,6 +69,9 @@ public class RogersReviewOrderPage extends BasePageClass {
     @FindBy(xpath ="//ds-checkbox[@data-test='bopis-consent']")
     WebElement chBopisConsent;
 
+    @FindBy(xpath = "//input[@name='accessoriesFinancingConsent']/..")
+    WebElement chAccessoriesConsent;
+
     @FindBy(xpath ="//button[@title='Submit order - test1' or @title='Soumettre la commande']")
     WebElement submitOrderBtn;
 
@@ -236,6 +239,14 @@ public class RogersReviewOrderPage extends BasePageClass {
      */
     public void clkBopisConsentCheckbox() {
         getReusableActionsInstance().clickWhenReady(chBopisConsent,5);
+    }
+
+    /**
+     * Clicks on the 'Accessories financing consent' checkbox
+     * @author praveen.kumar7
+     */
+    public void clkAccessoriesFinancingAgreementCheckBox() {
+        getReusableActionsInstance().clickWhenVisible(chAccessoriesConsent,5);
     }
 
     /**

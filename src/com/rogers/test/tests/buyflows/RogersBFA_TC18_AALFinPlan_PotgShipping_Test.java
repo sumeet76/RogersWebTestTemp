@@ -98,7 +98,7 @@ public class RogersBFA_TC18_AALFinPlan_PotgShipping_Test extends BaseTestClass {
         //reporter.hardAssert(getRogersPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
         reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
         //getRogersPlanConfigPage().clickViewMoreOptions();
-        //getRogersPlanConfigPage().clkDownPaymentChkBox();
+        getRogersPlanConfigPage().clkDownPaymentChkBox();
         getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc18AALFinPlanPotgShipping.getDeviceCostIndex()));
         reporter.reportLogPassWithScreenshot("Device cost option selected");
         getRogersPlanConfigPage().clickShowMoreDetails();
@@ -144,7 +144,7 @@ public class RogersBFA_TC18_AALFinPlan_PotgShipping_Test extends BaseTestClass {
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         getRogersOrderReviewPage().clkSubmitOrder();
         //----------------------------------OTP Page------------------------------------------------
-        /*reporter.reportLogWithScreenshot("Rogers Payment Page");
+        reporter.reportLogWithScreenshot("Rogers Payment Page");
         reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),"Payment page displayed successfully","Payment page did not display");
         getRogersOneTimePaymentPage().setNameonCard();
         getRogersOneTimePaymentPage().switchToCreditCardIFrame();
@@ -153,7 +153,7 @@ public class RogersBFA_TC18_AALFinPlan_PotgShipping_Test extends BaseTestClass {
         getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc18AALFinPlanPotgShipping.getExpiryDateOTP());
         getRogersOneTimePaymentPage().setCVV();
         reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
-        getRogersOneTimePaymentPage().clkSubmitOrderBtn();*/
+        getRogersOneTimePaymentPage().clkSubmitOrderBtn();
         //---------------------------Order Confirmation Page--------------------------------------
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(),
                 "Order Confirmation page loaded", "Order Confirmation Error");

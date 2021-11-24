@@ -123,8 +123,10 @@ public class RogersWirelessDetailsPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkUpgradeMyDevice() {
+		getReusableActionsInstance().javascriptScrollByVisibleElement(lblMyWlsUsage);
 		getReusableActionsInstance().waitForElementVisibility(btnUpgradeMyDevice , 30);
-		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(btnUpgradeMyDevice));
+		getReusableActionsInstance().executeJavaScriptClick(btnUpgradeMyDevice);
+		getReusableActionsInstance().waitForElementInvisibilityNOException(btnUpgradeMyDevice,30);
 	}
 
 	/**

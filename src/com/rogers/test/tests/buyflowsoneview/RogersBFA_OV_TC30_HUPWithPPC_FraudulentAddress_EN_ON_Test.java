@@ -29,7 +29,7 @@ public class RogersBFA_OV_TC30_HUPWithPPC_FraudulentAddress_EN_ON_Test extends B
 		reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
 		getRogersOVWirelessDetailsPage().clkUpgradeMyDevice();
 		reporter.reportLogWithScreenshot("Device upgrade button clicked");
-		getRogersOVWirelessDetailsPage().setCustomerType(this.getClass().getSimpleName());
+		//getRogersOVWirelessDetailsPage().setCustomerType(this.getClass().getSimpleName());
 		//----------------------------------------Device Catalog & Config page-------------------------------------------
 		String deviceName = TestDataHandler.buyFlowsOVtestCase30.getDeviceName();
 		reporter.hardAssert(getRogersOVChoosePhonePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
@@ -49,9 +49,12 @@ public class RogersBFA_OV_TC30_HUPWithPPC_FraudulentAddress_EN_ON_Test extends B
 		//---------------------------------------------Checkout pages---------------------------------------------------
 		reporter.hardAssert(getRogersOVCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
 				"Billing Address is not selected");
-		getRogersOVCheckoutPage().clkDeliveryMethod("PRO");
+		getRogersOVCheckoutPage().clkNewAddress();
+		getRogersOVCheckoutPage().enterNewAddress(TestDataHandler.buyFlowsOVtestCase30.getNewAddress());
+		//getRogersOVCheckoutPage().clkDeliveryMethod("STANDARD");
 		reporter.reportLogPassWithScreenshot("Standard shipping option selected");
 		getRogersOVCheckoutPage().clkContinueBtnShipping();
+		reporter.hardAssert(getRogersOVCheckoutPage().verifyNFDBErrorMsg(), "NFDB error message is verified successfully", "NFDB error message is not verified successfully");
 		reporter.reportLogPassWithScreenshot("Customer is blocked due to fraudulent address");
 	}
 

@@ -21,15 +21,11 @@ public class RogersBFA_OV_TC12_AAL_BYOD_BopisShipping_Test extends BaseTestClass
 
 	@Test(groups = {"RegressionBFA","RegressionOVBFA","OVAALBFA"})
 	public void aALBYODBopisShippingFlow() {
-		reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
-		reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");
-		getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
-		reporter.reportLogWithScreenshot("Rogers OV environment selected" + TestDataHandler.bfaOneViewConfig.getEnvironmentName());
-		//getAccountOverViewPage().enterDealerCodeDialogue();
-		//getAccountOverViewPage().clkSubmitBtnDealerCodeDialogue();
+		getEnvironmentSelectionPage().launchOneView(TestDataHandler.buyFlowsOVtestCase12.getBanNo(), TestDataHandler.buyFlowsOVtestCase12.getContactID());
 		reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
 		reporter.reportLogWithScreenshot("Rogers Account overview page");
 		getAccountOverViewPage().setSkipNotification();
+		getAccountOverViewPage().changeFidoDealerToRogers();
 		getAccountOverViewPage().selectAddAWirelessLineButton();
 		reporter.reportLogWithScreenshot("Add a Wireless Line Button is Selected");
 		reporter.hardAssert(getRogersOVChoosePhonePage().checkAcceptAndContinueOnCreditEvalModal() , "Credit Evaluation modal with credit information displayed","Credit Evaluation modal doesn't contain credit info");
@@ -121,7 +117,7 @@ public class RogersBFA_OV_TC12_AAL_BYOD_BopisShipping_Test extends BaseTestClass
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		startOVSession(System.getProperty("QaOVUrl"),strBrowser, strLanguage,RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim(), TestDataHandler.buyFlowsOVtestCase12.getContactID(),TestDataHandler.buyFlowsOVtestCase12.getBanNo(),TestDataHandler.bfaOneViewConfig.getUsrID(), TestDataHandler.bfaOneViewConfig.getLoginID(),  method);
+		startOVSession(System.getProperty("OVUrl"),strBrowser, strLanguage,RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim(),"", "","", "", method);
 	}
 
 /*	@AfterMethod(alwaysRun = true)
