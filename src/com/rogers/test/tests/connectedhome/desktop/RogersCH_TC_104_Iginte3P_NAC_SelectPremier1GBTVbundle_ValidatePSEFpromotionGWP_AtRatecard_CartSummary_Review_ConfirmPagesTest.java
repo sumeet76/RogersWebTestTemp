@@ -120,15 +120,17 @@ public class RogersCH_TC_104_Iginte3P_NAC_SelectPremier1GBTVbundle_ValidatePSEFp
         getRogersHomePhoneSelectionPage().clkPhoneNumberGenerator();
         getRogersHomePhoneSelectionPage().clkContinueHomePhoneSelection();
 
-       reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
-       reporter.reportLogWithScreenshot("Launched the tech install page");
-       //getRogersTechInstallPage().clkPersonalizedInstall();
-      /* getRogersTechInstallPage().selSelffinstallDateAndTime();
-       reporter.reportLogWithScreenshot("Launched the tech install page");
-       getRogersTechInstallPage().setMobielNumber();*/
-       getRogersTechInstallPage().clkTechInstalConsent();
+        reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the tech install page");
+        //getRogersTechInstallPage().clkTechInstalConsent();
+        getRogersTechInstallPage().clkProInstallUpgradeNo();
+        reporter.reportLogWithScreenshot("tech install details");
+        getRogersTechInstallPage().clkTechInstallContinueSelf();
+        reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(),"SetUp page has Launched","SetUp page has not Launched");
+        getRogersTechInstallPage().clkTechInstallContinue();
+       /*getRogersTechInstallPage().clkTechInstalConsent();
        reporter.reportLogWithScreenshot("tech install details");
-       getRogersTechInstallPage().clkTechInstallContinue();
+       getRogersTechInstallPage().clkTechInstallContinue();*/
        
         reporter.hardAssert( getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
