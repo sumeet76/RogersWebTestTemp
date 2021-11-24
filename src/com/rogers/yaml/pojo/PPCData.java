@@ -12,6 +12,7 @@ public class PPCData {
 	private String dataOptionIndex;
 	private String talkOptionIndex;
 	private String ctn2;
+	private String passcode;
 	
 	public String getBanNo() {
 		return banNo;
@@ -121,6 +122,14 @@ public class PPCData {
 	 */
 	public void setCtn2(String ctn2) {
 		this.ctn2 = ctn2;
+	}
+
+	public String getPasscode() {
+		return passcode;
+	}
+
+	public void setPasscode(String passcode) {
+		this.passcode = passcode;
 	}
 
 

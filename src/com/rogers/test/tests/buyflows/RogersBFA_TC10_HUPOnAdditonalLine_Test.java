@@ -78,6 +78,7 @@ public class RogersBFA_TC10_HUPOnAdditonalLine_Test extends BaseTestClass {
         reporter.reportLogPass("Clicked continue button in shipping stepper");
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         reporter.reportLogPass("Clicked submit button below cart summary");
+        getRogersPlanConfigPage().clkContinueOnExistingAddonModal();
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                 "Order Review Page Title is not Present");
         reporter.reportLogPass("Order Review Page");

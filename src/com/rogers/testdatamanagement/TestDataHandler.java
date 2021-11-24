@@ -138,6 +138,7 @@ public class TestDataHandler {
 	public static RedesignRpotgData tc04NACTermBopis;
 	public static RedesignRpotgData tc05NACByodSS;
 	public static RedesignRpotgData tc06NACByodTermBopis;
+	public static RedesignRpotgData tc33RPPNACTermPotgShipping;
 	public static RedesignRpotgOVData buyFlowsOVtestCase14;
 	public static RedesignRpotgOVData buyFlowsOVtestCase15;
 	public static RedesignRpotgOVData buyFlowsOVtestCase16;
@@ -168,6 +169,9 @@ public class TestDataHandler {
 	public static PPCData tc28PPCMLSESubsidyPlanToDTTPLan;
 	public static PPCData tc29PPCMLSEAdditionalLineDTTPlan;
 	public static PPCData tc30PPCSLNonSEFinToTTPlan;
+	public static PPCData tc35RPP_PPC_SL_FinToBYOD_DowngradeFee;
+	public static PPCData tc36RPP_PPC_ML_SE_SelectingDTTPlanOnMainLine;
+	public static PPCData tc37RPP_PPC_ML_SE_BYODToBYODPlanOnAdditionalLine;
 	public static RedesignRpotgData tc31SOHONACTermMediumRiskUEOptionPOTG;
 	public static HUPData tc09HupPpcPotgSharedML;
 	public static HUPData tc10HUPAdditionalLine;
@@ -184,6 +188,7 @@ public class TestDataHandler {
 	public static AALData tc21AALBYODBopisShipping;
 	public static AALData tc22AALBYODStandardShipping;
 	public static AALData tc23AALTermMLNonSEBasicPlanStdShipping;
+	public static AALData tc34RPPAALBYODStdShipping;
 	public static HUPData buyFlowsOVtestCase01;
 	public static HUPData buyFlowsOVtestCase02;
 	public static HUPData buyFlowsOVtestCase05;
@@ -531,6 +536,11 @@ public class TestDataHandler {
 		tc29PPCMLSEAdditionalLineDTTPlan = YamlHandler.getPPCdata("tc29PPCMLSEAdditionalLineDTTPlan");
 		tc30PPCSLNonSEFinToTTPlan = YamlHandler.getPPCdata("tc30PPCSLNonSEFinToTTPlan");
 		tc31SOHONACTermMediumRiskUEOptionPOTG = YamlHandler.getRedesignNACData("tc31SOHONACTermMediumRiskUEOptionPOTG");
+		tc33RPPNACTermPotgShipping = YamlHandler.getRedesignNACData("tc33RPPNACTermPotgShipping");
+		tc34RPPAALBYODStdShipping = YamlHandler.getAALdata("tc34RPPAALBYODStdShipping");
+		tc35RPP_PPC_SL_FinToBYOD_DowngradeFee = YamlHandler.getPPCdata("tc35RPP_PPC_SL_FinToBYOD_DowngradeFee");
+		tc36RPP_PPC_ML_SE_SelectingDTTPlanOnMainLine = YamlHandler.getPPCdata("tc36RPP_PPC_ML_SE_SelectingDTTPlanOnMainLine");
+		tc37RPP_PPC_ML_SE_BYODToBYODPlanOnAdditionalLine = YamlHandler.getPPCdata("tc37RPP_PPC_ML_SE_BYODToBYODPlanOnAdditionalLine");
 	}
 	
 	private static void buyFlowsOneViewDataInit() throws FileNotFoundException {
