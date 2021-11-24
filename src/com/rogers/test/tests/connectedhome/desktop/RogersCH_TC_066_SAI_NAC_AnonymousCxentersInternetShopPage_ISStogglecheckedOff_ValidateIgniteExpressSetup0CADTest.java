@@ -83,13 +83,24 @@ public class RogersCH_TC_066_SAI_NAC_AnonymousCxentersInternetShopPage_ISStoggle
         reporter.reportLogWithScreenshot("Passport Details");
         getRogersInternetCreditCheckPage().clkCreditConsentSubmit();
 
-        reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
+        /*reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
         reporter.hardAssert(getRogersTechInstallPage().verifyIgniteExpressSetup(),"Ignite Express Setup is present","Ignite Express Setup is not present");
         reporter.hardAssert(getRogersTechInstallPage().clktxtIgniteExpressSetupCost(),"Ignite Express Setup Cost verified","Ignite Express Setup Cost verification is failed");
         getRogersTechInstallPage().clkTechInstalConsent();
         reporter.reportLogWithScreenshot("tech install details");
+        getRogersTechInstallPage().clkTechInstallContinue();*/
+        reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the tech install page");
+        //getRogersTechInstallPage().clkTechInstalConsent();
+        getRogersTechInstallPage().clkProInstallUpgradeNo();
+        reporter.reportLogWithScreenshot("tech install details");
+        getRogersTechInstallPage().clkTechInstallContinueSelf();
+        reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(),"SetUp page has Launched","SetUp page has not Launched");
         getRogersTechInstallPage().clkTechInstallContinue();
+       /*getRogersTechInstallPage().clkTechInstalConsent();
+       reporter.reportLogWithScreenshot("tech install details");
+       getRogersTechInstallPage().clkTechInstallContinue();*/
 
         reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");

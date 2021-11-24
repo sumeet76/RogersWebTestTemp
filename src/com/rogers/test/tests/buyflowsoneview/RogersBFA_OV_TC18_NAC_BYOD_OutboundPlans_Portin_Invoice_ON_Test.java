@@ -44,6 +44,7 @@ public class RogersBFA_OV_TC18_NAC_BYOD_OutboundPlans_Portin_Invoice_ON_Test ext
         //getAccountOverViewPage().clkSubmitBtnDealerCodeDialogue();
         reporter.hardAssert(getNacDashboardPage().verifyNewCustomerDashboard(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Rogers OV NAC Dashboard page");
+        getAccountOverViewPage().changeFidoDealerToRogers();
         getNacDashboardPage().clkCustomerButton();
         reporter.reportLogWithScreenshot("Services under customer button");
         getNacDashboardPage().clkWirelessButton();
@@ -121,6 +122,7 @@ public class RogersBFA_OV_TC18_NAC_BYOD_OutboundPlans_Portin_Invoice_ON_Test ext
                 "Order Review Page Title is not Present");
         reporter.reportLogPassWithScreenshot("Order Review Page");
         getRogersOVReviewOrderPage().clkPointsToMentionCheckbox();
+        getRogersOVReviewOrderPage().clkBopisConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         getRogersOVReviewOrderPage().clkSubmitOrderBtn();
         reporter.reportLogWithScreenshot("Submit Order Button Pressed");

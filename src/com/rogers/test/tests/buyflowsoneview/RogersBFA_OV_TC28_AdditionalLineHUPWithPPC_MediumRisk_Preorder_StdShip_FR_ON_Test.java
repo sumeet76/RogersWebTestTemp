@@ -21,6 +21,7 @@ public class RogersBFA_OV_TC28_AdditionalLineHUPWithPPC_MediumRisk_Preorder_StdS
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.buyFlowsOVtestCase28.getBanNo(), TestDataHandler.buyFlowsOVtestCase28.getContactID());
 		reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
 		reporter.reportLogWithScreenshot("Rogers Account overview page");
+		getAccountOverViewPage().changeFidoDealerToRogers();
 		reporter.hardAssert(getAccountOverViewPage().verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase28.getCtn()),"CTN Found","CTN Not Found");
 		getAccountOverViewPage().clkCloseBtnAssignDataManager();
 		getAccountOverViewPage().setLanguageFrench();
@@ -28,7 +29,7 @@ public class RogersBFA_OV_TC28_AdditionalLineHUPWithPPC_MediumRisk_Preorder_StdS
 		//----------------------------------------------Dashboard page--------------------------------------------------
 		getRogersOVWirelessDetailsPage().clkUpgradeMyDevice();
 		reporter.reportLogWithScreenshot("Device upgrade button clicked");
-		getRogersOVWirelessDetailsPage().setCustomerType(this.getClass().getSimpleName());
+		//getRogersOVWirelessDetailsPage().setCustomerType(this.getClass().getSimpleName());
 		//----------------------------------------Device Catalog & Config page-------------------------------------------
 		/*reporter.hardAssert(getRogersOVChoosePhonePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
 		reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
@@ -37,6 +38,7 @@ public class RogersBFA_OV_TC28_AdditionalLineHUPWithPPC_MediumRisk_Preorder_StdS
 		String deviceName = TestDataHandler.buyFlowsOVtestCase28.getDeviceName();
 		reporter.hardAssert(getRogersOVChoosePhonePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
 		getRogersOVChoosePhonePage().clickDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase28.getDeviceName());
+		reporter.reportLogWithScreenshot("Device Config page loaded successfully");
 		getRogersOVChoosePhonePage().clickContinueButton();
 		//---------------------------------------------Plan config page-------------------------------------------------
 		reporter.hardAssert(getRogersOVPlanConfigPage().verifyCustomerTypeInHeader("CONSUMER"),
@@ -53,17 +55,17 @@ public class RogersBFA_OV_TC28_AdditionalLineHUPWithPPC_MediumRisk_Preorder_StdS
 		reporter.reportLogPassWithScreenshot("Data option selected");
 		getRogersOVPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		getRogersOVPlanConfigPage().clickPreCartAddonsContinueButton();
+		reporter.reportLogWithScreenshot("Clicked continue button in addons stepper");
 		getRogersOVPlanConfigPage().clickCartSummaryContinueButton();
 		getRogersOVPlanConfigPage().clkAdditionalLineOptions();
 		//---------------------------------------------Checkout pages---------------------------------------------------
-		reporter.hardAssert(getRogersOVCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
-				"Billing Address is not selected");
 		getRogersOVCheckoutPage().clkDeliveryMethod("STANDARD");
 		reporter.reportLogPassWithScreenshot("Standar shipping option selected");
 		getRogersOVCheckoutPage().clkContinueBtnShipping();
 		reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
 		getRogersOVCheckoutPage().clksubmitBtnCheckoutPage();
 		reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary");
+		getRogersOVPlanConfigPage().clkContinueOnExistingAddonModal();
 		//--------------------------------------Review Order Page-------------------------------------------------------
 		reporter.hardAssert(getRogersOVReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
 				"Order Review Page Title is not Present");

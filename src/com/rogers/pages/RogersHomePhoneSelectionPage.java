@@ -33,8 +33,9 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 
 	@FindBy(xpath = "//label[@for='number-1']")
 	WebElement rdoChosePhoneNumber;
-	
-	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::a")
+
+	@FindBy(xpath = "//a[@aria-label='Click here to continue to the next step']")
+	//FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::a")
 	WebElement btnContinueHomePhoneSelection;
 
 	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -tertiary -large ng-star-inserted']")

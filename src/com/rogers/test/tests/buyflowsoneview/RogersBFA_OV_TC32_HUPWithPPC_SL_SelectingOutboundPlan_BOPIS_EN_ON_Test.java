@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_OV_TC32_HUPWithPPC_SL_SelectingOutboundPlan_BOPIS_EN_ON_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","RegressionOVBFA","OVH"})
+	@Test(groups = {"RegressionBFA","RegressionOVBFA","OVHUPBFA"})
 	public void rogersHUPWithPPC_Outbound_Bopis_EN_Test() {
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.buyFlowsOVtestCase32.getBanNo(), TestDataHandler.buyFlowsOVtestCase32.getContactID());
 		reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
@@ -28,7 +28,7 @@ public class RogersBFA_OV_TC32_HUPWithPPC_SL_SelectingOutboundPlan_BOPIS_EN_ON_T
 		reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
 		getRogersOVWirelessDetailsPage().clkUpgradeMyDevice();
 		reporter.reportLogWithScreenshot("Device upgrade button clicked");
-		getRogersOVWirelessDetailsPage().setCustomerType(this.getClass().getSimpleName());
+		//getRogersOVWirelessDetailsPage().setCustomerType(this.getClass().getSimpleName());
 		//----------------------------------------Device Catalog & Config page-------------------------------------------
 		String deviceName = TestDataHandler.buyFlowsOVtestCase32.getDeviceName();
 		reporter.hardAssert(getRogersOVChoosePhonePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
@@ -69,7 +69,7 @@ public class RogersBFA_OV_TC32_HUPWithPPC_SL_SelectingOutboundPlan_BOPIS_EN_ON_T
 				"Order Review Page Title is not Present");
 		reporter.reportLogPassWithScreenshot("Order Review Page");
 		getRogersOVReviewOrderPage().clkPointsToMentionCheckbox();
-		getRogersOVReviewOrderPage().clkEmailConsentCheckbox();
+		getRogersOVReviewOrderPage().clkBopisConsentCheckbox();
 		reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
 		getRogersOVReviewOrderPage().clkSubmitOrderBtn();
 		reporter.reportLogWithScreenshot("Submit Order Button Pressed");

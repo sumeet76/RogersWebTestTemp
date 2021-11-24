@@ -78,11 +78,14 @@ public class RogersOVReviewOrderPage extends BasePageClass {
     @FindBy(xpath = "(//div[contains(@class,'dsa-orderTable__totalRow')])[2]//div[contains(@class,'ds-price__amountDollars')]")
     WebElement oneTimeFeeAmt;
 
-    @FindBy(xpath = "//p[contains(.,'Shipping') or contains(.,'Adresse de facturation')]//a[@href='/phones/checkout?step=5&mode=edit']")
+    @FindBy(xpath = "//p[contains(.,'Shipping') or contains(.,'Adresse de facturation')]//a[@class='link']")
     WebElement linkShipAddressEdit;
 
     @FindBy(xpath = "(//p[contains(.,'Shipping') or contains(.,'Adresse de facturation')]/following-sibling::p)[1]")
     WebElement txtShipAddress;
+
+    @FindBy(xpath = "//ds-modal//a")
+    WebElement btnGoBack;
 
 
 
@@ -320,6 +323,15 @@ public class RogersOVReviewOrderPage extends BasePageClass {
             return true;
         }
         else return false;
+    }
+
+    /**
+     * This method clicks on Go Back button once POTG timer expires
+     * @author praveen.kumar7
+     */
+    public void clkGoBackInPOTGTimer() {
+        getReusableActionsInstance().waitForElementVisibility(btnGoBack,240);
+        getReusableActionsInstance().clickWhenReady(btnGoBack);
     }
 
 }

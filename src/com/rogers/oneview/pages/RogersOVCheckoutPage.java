@@ -470,6 +470,10 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "(//*[@data-test='shipping-delivery-address']//ds-form-field)[1]")
 	WebElement newAddressFormField;
 
+	@FindBy(xpath = "//div[@data-test='modal-credit-evaluation-fraud']")
+	WebElement nfdbFraudPopup;
+
+
 	/**
 	 * Verify Savings exists
 	 * @author aditi.jain
@@ -1864,6 +1868,15 @@ public class RogersOVCheckoutPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(inputNewAddress).sendKeys(newShippingAddrress);
 		getReusableActionsInstance().clickIfAvailable(By.xpath("(//ul[@role='listbox']//li)[1]"),10);
 		getReusableActionsInstance().staticWait(5000);
+	}
+
+	/**
+	 * This method verifies if NFDB popup is displayed
+	 * @return true if popup displayed, else false
+	 * @author praveen.kumar7
+	 */
+	public boolean verifyNFDBErrorMsg() {
+		return getReusableActionsInstance().isElementVisible(nfdbFraudPopup);
 	}
 
 }

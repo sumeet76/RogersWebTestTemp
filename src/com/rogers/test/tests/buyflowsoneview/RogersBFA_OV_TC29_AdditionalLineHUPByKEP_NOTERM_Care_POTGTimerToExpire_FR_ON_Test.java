@@ -34,6 +34,7 @@ public class RogersBFA_OV_TC29_AdditionalLineHUPByKEP_NOTERM_Care_POTGTimerToExp
 		//----------------------------------------Device Catalog & Config page-------------------------------------------
 		reporter.hardAssert(getRogersOVChoosePhonePage().verifyDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase29.getDeviceName()), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
 		getRogersOVChoosePhonePage().clickDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase29.getDeviceName());
+		reporter.reportLogWithScreenshot("Device config page loaded successfully");
 		getRogersOVChoosePhonePage().clickContinueButton();
 		//---------------------------------------------Plan config page--------------------------------------------------
 		getRogersOVPlanConfigPage().clkRadioButtonNoTerm();
@@ -41,6 +42,7 @@ public class RogersBFA_OV_TC29_AdditionalLineHUPByKEP_NOTERM_Care_POTGTimerToExp
 		reporter.reportLogPassWithScreenshot("Device cost option selected");
 		getRogersOVPlanConfigPage().clickContinueOnModalToDoWithOldPhone();
 		getRogersOVPlanConfigPage().clickPreCartAddonsContinueButton();
+		reporter.reportLogPassWithScreenshot("Addons option selected");
 		getRogersOVPlanConfigPage().clickCartSummaryContinueButton();
 		//---------------------------------------------Checkout pages---------------------------------------------------
 		getRogersOVCheckoutPage().clkDeliveryMethod("PRO");
@@ -52,7 +54,17 @@ public class RogersBFA_OV_TC29_AdditionalLineHUPByKEP_NOTERM_Care_POTGTimerToExp
 		//--------------------------------------Review Order Page-------------------------------------------------------
 		reporter.hardAssert(getRogersOVReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
 				"Order Review Page Title is not Present");
-		reporter.reportLogPassWithScreenshot("Order Review Page");
+		getRogersOVReviewOrderPage().getContactNumber();
+		getRogersOVReviewOrderPage().getContactEmail();
+		getRogersOVReviewOrderPage().getMonthlyFeeAfterTax();
+		getRogersOVReviewOrderPage().clkPointsToMentionCheckbox();
+		getRogersOVReviewOrderPage().clkGoBackInPOTGTimer();
+		getRogersOVCheckoutPage().clkContinueBtnShipping();
+		reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper after POTG timer expiry");
+		getRogersOVCheckoutPage().clksubmitBtnCheckoutPage();
+		reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary after POTG timer expiry");
+		reporter.hardAssert(getRogersOVReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
+				"Order Review Page Title is not Present");
 		getRogersOVReviewOrderPage().clkPointsToMentionCheckbox();
 		reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
 		getRogersOVReviewOrderPage().clkSubmitOrderBtn();

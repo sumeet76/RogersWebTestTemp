@@ -53,14 +53,15 @@ public class RogersBFA_TC11_HUPNpotg_ML_NonShare_BasicPlan_Test extends BaseTest
         getRogersDeviceConfigPage().clickContinueButton();
         reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
-        getRogersPlanConfigPage().clkRadioButtonNoTerm();
+        //getRogersPlanConfigPage().clkRadioButtonNoTerm();
+        getRogersPlanConfigPage().setCheckBoxKeepMyCurrentPlan();
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
-        getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
-        /*getRogersPlanConfigPage().clkBasicTab();
-        getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc11HUPNpotgML.getDataOptionIndex());*/
+        /*getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
+        getRogersPlanConfigPage().clkBasicTab();
+        getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc11HUPNpotgML.getDataOptionIndex());
         reporter.reportLogPassWithScreenshot("Plan config page data option selected");
-        getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
+        getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();*/
         reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
         getRogersPlanConfigPage().skipBPOOffer();
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
@@ -80,7 +81,7 @@ public class RogersBFA_TC11_HUPNpotg_ML_NonShare_BasicPlan_Test extends BaseTest
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                 "Order Review Page Title is not Present");
         reporter.reportLogPassWithScreenshot("Order Review Page");
-        getRogersReviewOrderPage().clkFinancingConsentCheckbox();
+        //getRogersReviewOrderPage().clkFinancingConsentCheckbox();
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
         getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");

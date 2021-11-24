@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
  */
 public class SOHOBFA_OV_TC25_ML_HUPWithPPC_POTG_EN_ON_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","RegressionOVBFA","OVSOHOAALBFA"})
+	@Test(groups = {"RegressionBFA","RegressionOVBFA","SOHOBFA","OVSanityBFA"})
 	public void sohoHUPWithPPCMultiLinePOTGShippingENFlow() {
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.buyFlowsOVtestCase25.getBanNo(), TestDataHandler.buyFlowsOVtestCase25.getContactID());
 		reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
@@ -26,14 +26,17 @@ public class SOHOBFA_OV_TC25_ML_HUPWithPPC_POTG_EN_ON_Test extends BaseTestClass
 		//----------------------------------------------Dashboard page--------------------------------------------------
 		reporter.hardAssert(getRogersOVWirelessDetailsPage().verifyWirelessPageLoad() ,"Wireless page loaded" , "Wireless page not loaded");
 		reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
+		getAccountOverViewPage().changeFidoDealerToRogers();
 		getRogersOVWirelessDetailsPage().clkUpgradeMyDevice();
 		reporter.reportLogWithScreenshot("Device upgrade button clicked");
-		getRogersOVWirelessDetailsPage().setCustomerType(this.getClass().getSimpleName());
+		//getRogersOVWirelessDetailsPage().setCustomerType(this.getClass().getSimpleName());
 		//----------------------------------------Device Catalog & Config page-------------------------------------------
-		reporter.hardAssert(getRogersOVChoosePhonePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
+		/*reporter.hardAssert(getRogersOVChoosePhonePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
 		reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
 		getRogersOVChoosePhonePage().selectCTN(TestDataHandler.buyFlowsOVtestCase25.getCtn());
-		getRogersOVChoosePhonePage().clkContinueBtnHupCtnSelectionModal();
+		getRogersOVChoosePhonePage().clkContinueBtnHupCtnSelectionModal();*/
+		reporter.hardAssert(getRogersOVPlanConfigPage().verifyCustomerTypeInHeader("BUSINESS"),
+				"Customer type in header is displayed correctly", "Customer type in header is not displayed correctly");
 		String deviceName = TestDataHandler.buyFlowsOVtestCase25.getDeviceName();
 		reporter.hardAssert(getRogersOVChoosePhonePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
 		getRogersOVChoosePhonePage().clickDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase25.getDeviceName());
@@ -52,12 +55,13 @@ public class SOHOBFA_OV_TC25_ML_HUPWithPPC_POTG_EN_ON_Test extends BaseTestClass
 		getRogersOVPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersOVPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.buyFlowsOVtestCase25.getDataOptionIndex()));
 		reporter.reportLogPassWithScreenshot("Data option selected");
 		getRogersOVPlanConfigPage().clickPreCartTalkOptionContinueButton();
+		reporter.reportLogPassWithScreenshot("Talk option selected and addons option in expanded state");
 		getRogersOVPlanConfigPage().clickPreCartAddonsContinueButton();
+		reporter.reportLogWithScreenshot("Addons option selected");
 		getRogersOVPlanConfigPage().clickCartSummaryContinueButton();
 		getRogersOVPlanConfigPage().clkAdditionalLineOptions();
 		//---------------------------------------------Checkout pages---------------------------------------------------
-		reporter.hardAssert(getRogersOVCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
-				"Billing Address is not selected");
+		//reporter.hardAssert(getRogersOVCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ", "Billing Address is not selected");
 		getRogersOVCheckoutPage().clkDeliveryMethod("PRO");
 		reporter.reportLogPassWithScreenshot("POTG option selected");
 		reporter.hardAssert(getRogersOVCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");

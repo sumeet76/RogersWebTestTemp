@@ -29,21 +29,17 @@ public class RogersBFA_OV_TC21_NAC_CableCustomer_MediumRisk_POTG_PassportAndSIN_
 
     @BeforeMethod(alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-        startOVSession(System.getProperty("QaOVUrl"),strBrowser, strLanguage,RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim(), TestDataHandler.buyFlowsOVtestCase08.getContactID(),TestDataHandler.buyFlowsOVtestCase21.getBanNo(),TestDataHandler.bfaOneViewConfig.getUsrID(), TestDataHandler.bfaOneViewConfig.getLoginID(),  method);
+        startOVSession(System.getProperty("OVUrl"),strBrowser, strLanguage,RogersEnums.GroupName.buyflowsoneview.toString().toLowerCase().trim(),"", "","", "", method);
     }
 
     @Test(groups = {"RegressionBFA","RegressionOVBFA","OVNACBFA"})
     public void ovNacCableCustomerMediumRiskPotgONTest() {
-
-        reporter.hardAssert(getEnvironmentSelectionPage().presenceOfTheGoButton(), "Rogers OV environment selection page displayed" , "Rogers OV environment selection page not displayed");
-        reporter.reportLogWithScreenshot("Rogers OV environment selection page loaded");
-        getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
-        reporter.reportLogWithScreenshot("Rogers OV environment selected" + TestDataHandler.bfaOneViewConfig.getEnvironmentName());
+        getEnvironmentSelectionPage().launchOneView(TestDataHandler.buyFlowsOVtestCase21.getBanNo(), TestDataHandler.buyFlowsOVtestCase21.getContactID());
         reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Rogers Account overview page");
         getAccountOverViewPage().setSkipNotification();
         getNacDashboardPage().selectFrenchLanguage();
-        getAccountOverViewPage().clkWirelessLink();
+        getAccountOverViewPage().selectAddAWirelessLineButton();
         //-------------------------------------NAC Dashboard page---------------------------------------------
         reporter.reportLogWithScreenshot("Active Wireless Service Modal");
         getNacDashboardPage().clkGetANewPhoneButton();
@@ -114,8 +110,8 @@ public class RogersBFA_OV_TC21_NAC_CableCustomer_MediumRisk_POTG_PassportAndSIN_
         reporter.reportLogWithScreenshot("Invoice option is selected");
         getRogersOVCheckoutPage().clkBillingContinueButton();
         //----------------------------------------------Shipping Stepper----------------------------------------------------------
-        reporter.hardAssert(getRogersOVCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
-                "Billing Address is not selected");
+        /*reporter.hardAssert(getRogersOVCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
+                "Billing Address is not selected");*/
         getRogersOVCheckoutPage().clkDeliveryMethod("PRO");
         reporter.reportLogPassWithScreenshot("Pro on the go Delivery selected");
         reporter.hardAssert(getRogersOVCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");

@@ -116,8 +116,8 @@ public class RogersBFA_OV_TC22_NAC_FieldSalesNACNoTermToAALNoTermStandardShippin
 		getRogersOVCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.buyFlowsOVtestCase22.getPaymentMethod());
 		getRogersOVCheckoutPage().clkBillingContinueButton();
 		// ***************Shipping Stepper*************//
-		reporter.hardAssert(getRogersOVCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
-				"Billing Address is not selected");
+		/*reporter.hardAssert(getRogersOVCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
+				"Billing Address is not selected");*/
 		getRogersOVCheckoutPage().clkDeliveryMethod("STANDARD");
 		reporter.reportLogPassWithScreenshot("Standard Delivery selected");
 		getRogersOVCheckoutPage().clkContinueBtnShipping();
