@@ -30,7 +30,7 @@ public class  RogersOVOrderConfirmationPage  extends BasePageClass {
 	@FindBy(xpath = "//span[(@class='text-bold')]")
 	WebElement BANOrderConfirmation;
 
-	@FindBy(xpath = "//span[contains(text(),'Add a line ')]")
+	@FindBy(xpath = "//a[@role='link' and not(@data-test='ov-account-overview')]")
 	WebElement aalButtonOrderConfirmation;
 	
 	/**
@@ -81,7 +81,7 @@ public class  RogersOVOrderConfirmationPage  extends BasePageClass {
 	 * @author sidhartha.vadrevu
 	 */
 	public void clickAddALineOrderConfirmation() {
-		getReusableActionsInstance().scrollToElement(aalButtonOrderConfirmation);
+		//getReusableActionsInstance().scrollToElement(aalButtonOrderConfirmation);
 		getReusableActionsInstance().executeJavaScriptClick(aalButtonOrderConfirmation);
 	}
 }

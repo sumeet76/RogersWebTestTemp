@@ -34,25 +34,25 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//h2[@data-test='personal-info-title']")
 	WebElement createProfileTitle;
 
-	@FindBy(xpath = "(//div[contains(.,'E-mail Address')])[11]")
+	@FindBy(xpath = "//input[@formcontrolname='emailAddress']/ancestor::ds-form-field")
 	WebElement emailCreateProfile;
 
-	@FindBy(xpath = "//input[@id='email' or (contains(@formcontrolname,'email') and  not(contains(@formcontrolname,'Confirm')))]")
+	@FindBy(xpath = "//input[@formcontrolname='emailAddress']")
 	WebElement inputEmail;
 
-	@FindBy(xpath = "(//div[contains(.,'Confirm E-mail Address')])[11]")
+	@FindBy(xpath = "//input[@formcontrolname='emailAddressConfirm']/ancestor::ds-form-field")
 	WebElement confirmEmailCreateProfile;
 
-	@FindBy(xpath = "//input[@id='confirmEmail' or @id='cemail' or contains(@formcontrolname,'Confirm') or contains(@formcontrolname,'confirm')]")
+	@FindBy(xpath = "//input[@formcontrolname='emailAddressConfirm']")
 	WebElement inputConfirmEmail;
 
-	@FindBy(xpath = "(//div[contains(.,'First Name')])[11]")
+	@FindBy(xpath = "//input[@formcontrolname='firstName']/ancestor::ds-form-field")
 	WebElement firstNameCreateProfile;
 
 	@FindBy(xpath = "//input[@formcontrolname='firstName']")
 	WebElement inputFirstName;
 
-	@FindBy(xpath = "(//div[contains(.,'Last Name')])[11]")
+	@FindBy(xpath = "//input[@formcontrolname='lastName']/ancestor::ds-form-field")
 	WebElement lastNameCreateProfile;
 
 	@FindBy(xpath = "//input[@formcontrolname='lastName']")
@@ -76,21 +76,21 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//input[@formcontrolname='companySize']")
 	WebElement inputCompanySize;
 
-	@FindBy(xpath = "(//div[contains(.,'Contact Number')])[11]")
+	@FindBy(xpath = "//input[@formcontrolname='contactNumber']/ancestor::ds-form-field")
 	WebElement contactNumberCreateProfile;
 
-	@FindBy(xpath = "//input[contains(@formcontrolname,'contact')]")
+	@FindBy(xpath = "//input[@formcontrolname='contactNumber']")
 	WebElement inputContactNumber;
 
-	@FindBy(xpath = "(//div[contains(.,'Billing Address')])[13]")
+	@FindBy(xpath = "//div[@class='auto-suggest']//ds-form-field")
 	WebElement billingAddressCreateProfile;
 
-	@FindBy(xpath = "(//div[contains(.,'Billing Address')])[13]//input[contains(@id,'ds-form-input-id')]")
+	@FindBy(xpath = "//div[@class='auto-suggest']//input")
 	WebElement inputBillingAddress;
 
 	@FindAll({
 			@FindBy(xpath = "(//ds-auto-complete//li)[1]"),
-			@FindBy(xpath = "//r-address-auto-complete[@data-test='personal-info-address']//li[@class='ng-star-inserted'][1]")
+			@FindBy(xpath = "//ul[@role='listbox']//li[last()]")
 	})
 	WebElement billingAddressSelection;
 
@@ -340,6 +340,11 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//div[@data-test='delivery-information']//ds-form-field")
 	WebElement shippingEmailFormField;
 
+	@FindBy(xpath="//input[@id='firstName' or @id='fname' or @formcontrolname='firstName']/parent::div")
+	WebElement txtFirstName;
+
+	@FindBy(xpath = "//span[contains(.,'Good News') or contains(.,'Bonne nouvelle')]")
+	WebElement txtGoodNewsAccessoryShipMsg;
 	
 	
 	/**
@@ -548,10 +553,14 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public String setBillingAddressCreateProfile(String billingAddress) {
+		getReusableActionsInstance().javascriptScrollByVisibleElement(txtFirstName);
 		getReusableActionsInstance().clickWhenReady(billingAddressCreateProfile);
 		inputBillingAddress.sendKeys(billingAddress);
-		getReusableActionsInstance().waitForElementVisibility(billingAddressSelection,20);
+		//getReusableActionsInstance().waitForElementVisibility(billingAddressSelection,20);
 		getReusableActionsInstance().executeJavaScriptClick(billingAddressSelection);
+		if(getReusableActionsInstance().isElementVisible(billingAddressSelection,10)) {
+			getReusableActionsInstance().executeJavaScriptClick(billingAddressSelection);
+		}
 		return getReusableActionsInstance().getWhenReady(inputBillingAddress,20).getAttribute("value");
 	}
 
@@ -601,7 +610,7 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public void clkImNotRombotCheckbox() {
 		getReusableActionsInstance().waitForPageLoad();
-		getReusableActionsInstance().scrollToElement(radioCheckboxCreateProfile);
+		//getReusableActionsInstance().scrollToElement(radioCheckboxCreateProfile);
 		getReusableActionsInstance().clickWhenReady(radioCheckboxCreateProfile,10);
 	}
 
@@ -1265,5 +1274,14 @@ public class RogersCheckoutPage extends BasePageClass {
 			getReusableActionsInstance().getWhenReady(txtEmailShipping, 20).click();
 			getReusableActionsInstance().getWhenReady(txtEmailShipping,10).sendKeys(FormFiller.generateEmail());
 		}
+	}
+
+	/**
+	 * This method verifies if accessory shipping good news message is displayed
+	 * @return true if Accessory good news msg is displayed, else false
+	 * @author praveen.kumar7
+	 */
+	public boolean verifyAccessoriesShippingMessage(){
+		return getReusableActionsInstance().isElementVisible(txtGoodNewsAccessoryShipMsg);
 	}
 }

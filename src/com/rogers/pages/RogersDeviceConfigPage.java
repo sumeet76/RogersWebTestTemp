@@ -85,6 +85,12 @@ public class RogersDeviceConfigPage extends BasePageClass {
     @FindBy(xpath = "//span[@class='d-block' and (contains(.,'Upfront') or contains(.,'Voie'))]/following::div[1]")
     WebElement upfrontAmtTxt;
 
+    @FindBy(xpath = "//p[contains(.,'Add Accessories') or contains(.,'Ajoutez des accessoires')]/..")
+    WebElement addAccessoriesOption;
+
+    @FindBy(xpath = "//button[@id='continue-accessory-button']")
+    WebElement btnContinueAccessories;
+
 
     /***
      * This method will check the presence of continue button and will return true if present else false
@@ -477,9 +483,55 @@ public class RogersDeviceConfigPage extends BasePageClass {
             getReusableActionsInstance().clickWhenVisible(By.xpath("//ds-icon[contains(@class,'ds-popover__icon')]"));
             String upfrontEdgeAmt = getReusableActionsInstance().getWhenReady(upfrontAmtTxt).getText().trim();
             getReusableActionsInstance().javascriptScrollToTopOfPage();
-            getReusableActionsInstance().clickWhenVisible(By.xpath("//button[contains(@class,'close')]//ds-icon[@name='close']"),10);
+            getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(By.xpath("//button[contains(@class,'close')]//ds-icon[@name='close']"),10));
             return upfrontEdgeAmt.substring(2, upfrontEdgeAmt.indexOf("."));
         }
+    }
+
+    /**
+     * This method verifies if accessories option is displayed
+     * @return true if Add accessories option is displayed, else false
+     * @author praveen.kumar7
+     */
+    public boolean verifyAddAccessoriesOption() {
+        return getReusableActionsInstance().isElementVisible(addAccessoriesOption);
+    }
+
+    /**
+     * This method clicks on Add accessories option
+     * @author praveen.kumar7
+     */
+    public void clkAddAccessoriesOption() {
+        getReusableActionsInstance().clickWhenVisible(addAccessoriesOption);
+    }
+
+    /**
+     * This method add the accessories to the cart
+     * @param accessoryCount
+     * @param accessory1
+     * @param accessory2
+     * @author praveen.kumar7
+     */
+    public void addAccessoriesToCart(String accessoryCount, String accessory1, String accessory2) {
+        if(accessoryCount.equalsIgnoreCase("MULTIPLE")) {
+            //getReusableActionsInstance().clickWhenVisible(By.xpath("//p[contains(.,'"+accessory1+"')]/../following-sibling::div//button[@title='Add']"));
+            getReusableActionsInstance().clickWhenVisible(By.xpath("//p[contains(.,'"+accessory1+"')]/../following-sibling::div//button[@data-test='add-to-cart']"));
+            getReusableActionsInstance().clickWhenVisible(By.xpath("//p[contains(.,'"+accessory2+"')]/../following-sibling::div//button[@data-test='add-to-cart']"));
+            getReusableActionsInstance().javascriptScrollToTopOfPage();
+            getReusableActionsInstance().clickWhenVisible(By.xpath("//span[contains(.,'"+accessory1+"')]/../following-sibling::div//button[@title='Add']"));
+        }
+        else {
+            getReusableActionsInstance().clickWhenVisible(By.xpath("//p[contains(.,'"+accessory1+"')]/../following-sibling::div//button[@data-test='add-to-cart']"));
+        }
+    }
+
+    /**
+     * This method clicks on continue button after selecting accessories
+     * @author praveen.kumar7
+     */
+    public void clkContinueAccessories() {
+        getReusableActionsInstance().clickWhenVisible(btnContinueAccessories);
+
     }
 
 

@@ -43,6 +43,7 @@ public class RogersBFA_OV_TC19_NAC_ValidateOutboundCustomerWithMultipleADMSFDisc
         getNacDashboardPage().selectFrenchLanguage();
         reporter.hardAssert(getNacDashboardPage().verifyNewCustomerDashboard(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Rogers OV NAC Dashboard page");
+        getAccountOverViewPage().changeFidoDealerToRogers();
         getNacDashboardPage().clkCustomerButton();
         reporter.reportLogWithScreenshot("Services under customer button");
         getNacDashboardPage().clkWirelessButton();
@@ -120,8 +121,6 @@ public class RogersBFA_OV_TC19_NAC_ValidateOutboundCustomerWithMultipleADMSFDisc
         reporter.reportLogWithScreenshot("Invoice option is selected");
         getRogersOVCheckoutPage().clkBillingContinueButton();
         //----------------------------------------------Shipping Stepper----------------------------------------------------------
-        reporter.hardAssert(getRogersOVCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
-                "Billing Address is not selected");
         getRogersOVCheckoutPage().clkDeliveryMethod("STANDARD");
         reporter.reportLogPassWithScreenshot("Standard Delivery selected");
         getRogersOVCheckoutPage().clkContinueBtnShipping();

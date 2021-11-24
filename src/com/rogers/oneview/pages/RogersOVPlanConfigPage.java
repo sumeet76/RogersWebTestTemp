@@ -33,7 +33,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[contains(@title,'Plan') or contains(@title,'Show Retention Plans')]")
     WebElement showRetPlans;
 
-    @FindBy(xpath = "//button[contains(@title,'Show Outbound Plans')]")
+    @FindBy(xpath = "//button[@data-test='outbound-expander-button']")
     WebElement showOutPlans;
 
     @FindBy(xpath = "//button[contains(@title,'Retention')]//span/span[contains(text(),' Show Retention Plans ')]")
@@ -49,12 +49,12 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     List<WebElement> noOfDeviceTiers;
 
     @FindAll({
-            @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-infinite-')]//label[1]"),
-            @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-')]//label[1]")
+            @FindBy(xpath = "//ds-selection[contains(@data-test,'stepper-2-edit-step-selection-option-infinite-')]//label[1]"),
+            @FindBy(xpath = "//ds-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-')]//label[1]")
     })
     List<WebElement> noofDataOptions;
 
-    @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-')]//label[1]")
+    @FindBy(xpath = "//ds-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-')]//label[1]")
     List<WebElement> noOfTTPlans;
 
     @FindBy(xpath = "//div[contains(@data-test,'outbound')]")
@@ -111,7 +111,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//ds-step[@id='stepper-addons']//div[@class='d-flex flex-row-reverse']//button")
     WebElement preCartSummaryContinueButtonAddOns;
 
-    @FindBy(xpath = "//button[@data-test='build-plan-checkout-flow-button']/span")
+    @FindBy(xpath = "//button[@data-test='build-plan-checkout-flow-button']")
     WebElement continueButtonOnCartSummary;
 
     @FindBy(xpath = "//button[contains(@data-test,'bpo-offer-modal') or @id='get-bpo-offer-button']")
@@ -174,7 +174,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//ds-modal//button[contains(@title,'Continue')]")
     WebElement btnContinueOnModalToDoWithOldPhone;
 
-    @FindBy(xpath = "//div[@class='dsa-layout container']//ds-checkbox")
+    @FindBy(xpath = "//div[@class='dsa-layout container']//ds-checkbox//label")
     WebElement checkBoxAdditionalLineOPtion;
 
     @FindBy(xpath = "//button[@data-test='add-to-cart-btn']")
@@ -183,17 +183,17 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[@data-test='continue-btn']")
     WebElement btnProceedToCheckout;
 
-    @FindBy(xpath = "//input[@id='ds-form-input-id-0']/parent::div//input")
-    WebElement inputFirstName;
+    @FindBy(xpath = "//ds-form-field[@data-test='caller-id-first-name']")
+    WebElement frmCallerIdFirstName;
 
-    @FindBy(xpath = "//input[@id='ds-form-input-id-0']/parent::div")
-    WebElement inputFirstNameDiv;
+    @FindBy(xpath = "//input[@formcontrolname='firstName']")
+    WebElement setFirstName;
 
-    @FindBy(xpath = "//input[@id='ds-form-input-id-1']/parent::div//input")
-    WebElement inputLastName;
+    @FindBy(xpath = "//ds-form-field[@data-test='caller-id-last-name']")
+    WebElement frmCallerIdLastName;
 
-    @FindBy(xpath = "//input[@id='ds-form-input-id-1']/parent::div")
-    WebElement inputLastNameDiv;
+    @FindBy(xpath = "//input[@formcontrolname='lastName']")
+    WebElement setLastName;
 
     @FindBy(xpath = "//button[@data-test='stepper-5-edit-step-continue-button']")
     WebElement callerIDContinue;
@@ -221,6 +221,9 @@ public class RogersOVPlanConfigPage extends BasePageClass {
 
     @FindBy(xpath = "//ds-modal//p[contains(.,' about to exceed your credit limit') or contains(.,'point de dépasser votre limite de crédit')]")
     WebElement clmExceededTxtInModal;
+
+    @FindBy(xpath = "//button[@data-test='addons-removal-modal-button-primary']")
+    WebElement btnExistingAddonModalContinue;
 
 
     /**
@@ -288,16 +291,16 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      */
     public String createXpathWithInputData(String dC_DO_TO,int stepper) {
         if (stepper == 1) {
-            return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
+            return xpathDcDoTo = "//ds-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
         }
         else if (stepper == 2) {
-            return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-infinite-" + dC_DO_TO + "')]//label[1]";
+            return xpathDcDoTo = "//ds-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-infinite-" + dC_DO_TO + "')]//label[1]";
         }
         else if(stepper == 3) {
-            return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
+            return xpathDcDoTo = "//ds-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
         }
         else {
-            return xpathDcDoTo = "//dsa-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
+            return xpathDcDoTo = "//ds-selection[contains(@data-test,'stepper-" + stepper + "-edit-step-selection-option-" + dC_DO_TO + "')]//label[1]";
         }
     }
 
@@ -501,7 +504,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
             getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton, 30);
         }
         else {
-            getReusableActionsInstance().clickWhenVisible(By.xpath("//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-" + dataOptionIndex + "')]//label[1]"),40);
+            getReusableActionsInstance().clickWhenVisible(By.xpath("//ds-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-" + dataOptionIndex + "')]//label[1]"),40);
             getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton,40);
         }
     }
@@ -808,7 +811,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clkAdditionalLineOptions() {
-        if(getReusableActionsInstance().isElementVisible(checkBoxAdditionalLineOPtion)) {
+        if(getReusableActionsInstance().isElementVisible(checkBoxAdditionalLineOPtion,30)) {
             getReusableActionsInstance().clickWhenReady(checkBoxAdditionalLineOPtion, 30);
             getReusableActionsInstance().clickWhenReady(btnAddToCart);
             getReusableActionsInstance().scrollToElement(btnProceedToCheckout);
@@ -1024,8 +1027,8 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      */
     public void enterFirstName() {
         String strFirstName = FormFiller.generateRandomName();
-        getReusableActionsInstance().getWhenReady(inputFirstNameDiv, 30).click();
-        inputFirstName.sendKeys(strFirstName);
+        getReusableActionsInstance().getWhenReady(frmCallerIdFirstName, 30).click();
+        setFirstName.sendKeys(strFirstName);
     }
 
     /**
@@ -1033,10 +1036,10 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * @author Saurav.Goyal
      */
     public void enterSecondName() {
-        getReusableActionsInstance().waitForElementVisibility(inputLastNameDiv, 5);
+        getReusableActionsInstance().waitForElementVisibility(frmCallerIdLastName, 5);
         String strLastName = FormFiller.generateRandomName();
-        getReusableActionsInstance().getWhenReady(inputLastNameDiv, 30).click();
-        inputLastName.sendKeys(strLastName);
+        getReusableActionsInstance().getWhenReady(frmCallerIdLastName, 30).click();
+        setLastName.sendKeys(strLastName);
     }
 
     /**
@@ -1064,6 +1067,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public boolean verifyCustomerTypeInHeader(String accountType) {
+        getReusableActionsInstance().waitForElementVisibility(custTypeInHeader,60);
         String customerTypeInHeader = getReusableActionsInstance().getWhenReady(custTypeInHeader).getText().trim();
         if(customerTypeInHeader.toUpperCase().contains(accountType)) {
             return true;
@@ -1085,8 +1089,9 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * @author Praveen.Kumar7
      */
     public void clickOutBoundAccordion() {
-        getReusableActionsInstance().scrollToElement(outboundAccordion);
+        //getReusableActionsInstance().scrollToElement(outboundAccordion);
         getReusableActionsInstance().clickWhenReady(outboundAccordion,30);
+        getReusableActionsInstance().javascriptScrollToTopOfPage();
     }
 
     /**
@@ -1094,8 +1099,9 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clickOutBoundFieldAccordion() {
-        getReusableActionsInstance().scrollToElement(outboundFieldAccordion);
+        //getReusableActionsInstance().scrollToElement(outboundFieldAccordion);
         getReusableActionsInstance().clickWhenReady(outboundFieldAccordion,30);
+        getReusableActionsInstance().javascriptScrollToTopOfPage();
     }
 
     /**
@@ -1122,6 +1128,14 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      */
     public boolean verifyCLMExceededTxtInModal() {
         return getReusableActionsInstance().isElementVisible(creditLimitExceededModal,10);
+    }
+
+    /**
+     * This method clicks on continue button in addon removal modal if present
+     * @author praveen.kumar7
+     */
+    public void clkContinueOnExistingAddonModal() {
+        getReusableActionsInstance().clickIfAvailable(btnExistingAddonModalContinue);
     }
 
 }

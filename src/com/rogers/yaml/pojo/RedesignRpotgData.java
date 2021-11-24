@@ -27,6 +27,7 @@ public class RedesignRpotgData {
 	private String riskClass;
 	private String companySize;
 	private String businessNumber;
+	private String passcode;
 
 	public String getCreditCardDetailsOTP() {
 		return creditCardDetailsOTP;
@@ -204,11 +205,11 @@ public class RedesignRpotgData {
 		this.dataOptionIndex = dataOptionIndex;
 	}
 
-	public String getdeviceCostIndex() {
+	public String getDeviceCostIndex() {
 		return deviceCostIndex;
 	}
 
-	public void setdeviceCostIndex(String deviceCostIndex) {
+	public void setDeviceCostIndex(String deviceCostIndex) {
 		this.deviceCostIndex = deviceCostIndex;
 	}
 
@@ -231,5 +232,14 @@ public class RedesignRpotgData {
 	public void setBusinessNumber(String businessNumber) {
 		this.businessNumber = businessNumber;
 	}
+
+	public String getPasscode() {
+		return passcode;
+	}
+
+	public void setPasscode(String passcode) {
+		this.passcode = passcode;
+	}
+
 
 }

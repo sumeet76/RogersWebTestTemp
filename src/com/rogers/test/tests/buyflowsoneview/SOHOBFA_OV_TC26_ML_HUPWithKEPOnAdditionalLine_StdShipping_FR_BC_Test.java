@@ -16,26 +16,29 @@ import java.lang.reflect.Method;
  */
 public class SOHOBFA_OV_TC26_ML_HUPWithKEPOnAdditionalLine_StdShipping_FR_BC_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","RegressionOVBFA","OVSOHOAALBFA"})
+	@Test(groups = {"RegressionBFA","RegressionOVBFA","SOHOBFA"})
 	public void sohoHUPWithKEPOnAdditionalLineStdShippingFRFlow() {
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.buyFlowsOVtestCase26.getBanNo(), TestDataHandler.buyFlowsOVtestCase26.getContactID());
 		reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
 		reporter.reportLogWithScreenshot("Rogers Account overview page");
-		getAccountOverViewPage().setLanguageFrench();
 		reporter.hardAssert(getAccountOverViewPage().verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase26.getCtn()),"CTN Found","CTN Not Found");
+		getAccountOverViewPage().clkCloseBtnAssignDataManager();
+		getAccountOverViewPage().setLanguageFrench();
 		getAccountOverViewPage().clkCloseBtnAssignDataManager();
 		//----------------------------------------------Dashboard page--------------------------------------------------
 		reporter.hardAssert(getRogersOVWirelessDetailsPage().verifyWirelessPageLoad() ,"Wireless page loaded" , "Wireless page not loaded");
 		reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
 		getRogersOVWirelessDetailsPage().clkUpgradeMyDevice();
 		reporter.reportLogWithScreenshot("Device upgrade button clicked");
-		getRogersOVWirelessDetailsPage().setCustomerType(this.getClass().getSimpleName());
+		//getRogersOVWirelessDetailsPage().setCustomerType(this.getClass().getSimpleName());
 		//----------------------------------------Device Catalog & Config page-------------------------------------------
-		reporter.hardAssert(getRogersOVChoosePhonePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
+		/*reporter.hardAssert(getRogersOVChoosePhonePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
 		reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
 		getRogersOVChoosePhonePage().selectCTN(TestDataHandler.buyFlowsOVtestCase25.getCtn());
-		getRogersOVChoosePhonePage().clkContinueBtnHupCtnSelectionModal();
+		getRogersOVChoosePhonePage().clkContinueBtnHupCtnSelectionModal();*/
 		String deviceName = TestDataHandler.buyFlowsOVtestCase26.getDeviceName();
+		reporter.hardAssert(getRogersOVPlanConfigPage().verifyCustomerTypeInHeader("BUSINESS"),
+				"Customer type in header is displayed correctly", "Customer type in header is not displayed correctly");
 		reporter.hardAssert(getRogersOVChoosePhonePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
 		getRogersOVChoosePhonePage().clickDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase26.getDeviceName());
 		getRogersOVChoosePhonePage().clickContinueButton();
@@ -51,12 +54,12 @@ public class SOHOBFA_OV_TC26_ML_HUPWithKEPOnAdditionalLine_StdShipping_FR_BC_Tes
 		reporter.reportLogPassWithScreenshot("Device cost option selected");
 		getRogersOVPlanConfigPage().clickContinueOnModalToDoWithOldPhone();
 		getRogersOVPlanConfigPage().clickPreCartTalkOptionContinueButton();
+		reporter.reportLogWithScreenshot("Addons option selected");
 		getRogersOVPlanConfigPage().clickPreCartAddonsContinueButton();
 		getRogersOVPlanConfigPage().clickCartSummaryContinueButton();
 		getRogersOVPlanConfigPage().clkAdditionalLineOptions();
 		//---------------------------------------------Checkout pages---------------------------------------------------
-		reporter.hardAssert(getRogersOVCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
-				"Billing Address is not selected");
+		//reporter.hardAssert(getRogersOVCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ", "Billing Address is not selected");
 		getRogersOVCheckoutPage().clkDeliveryMethod("STANDARD");
 		reporter.reportLogPassWithScreenshot("Standard Delivery selected");
 		//reporter.hardAssert(getRogersOVCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");

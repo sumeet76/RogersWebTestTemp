@@ -155,6 +155,13 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath="//span[@translate='global.cta.continue']")
     WebElement clickContinue;
 
+    @FindBy(xpath = "//span[@class='dealer-code']")
+    WebElement lnkDealerCode;
+
+    @FindBy(xpath = "//input[@id='impersonate-code']")
+    WebElement inputDealerCode;
+
+
     /**
      * Validate if either TV or channel header is visible
      *
@@ -426,7 +433,20 @@ public class AccountOverViewPage extends BasePageClass {
     public void selectAddAWirelessLineButton() {
         getReusableActionsInstance().javascriptScrollToBottomOfPage();
         getReusableActionsInstance().waitForElementVisibility(addNewWirelessLineButton);
-        getReusableActionsInstance().clickWhenReady(addNewWirelessLineButton, 45);
+        getReusableActionsInstance().clickWhenReady(addNewWirelessLineButton,45);
+    }
+
+    /*
+     * This method verifies if the dealer code is related to Fido, If so it changes it to Rogers dealer code
+     * @author praveen.kumar7
+     */
+    public void changeFidoDealerToRogers() {
+        if(getReusableActionsInstance().getWhenReady(lnkDealerCode).getText().trim().startsWith("F")) {
+            getReusableActionsInstance().executeJavaScriptClick(lnkDealerCode);
+            getReusableActionsInstance().clickWhenReady(inputDealerCode);
+            getReusableActionsInstance().getWhenReady(inputDealerCode).sendKeys("0MAAA");
+            getReusableActionsInstance().clickWhenReady(By.xpath("//input[@id='impersonate-code']/following::button[1]"));
+        }
     }
 
     /**
