@@ -143,11 +143,23 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//a[@id='language-changed']")
     WebElement linkFrench;
 
-	@FindBy(xpath = "//span[@class='dealer-code']")
-	WebElement lnkDealerCode;
+    @FindBy(xpath="//input[@id='ds-radio-input-id-2']//parent::label//div")
+    WebElement secondAddress;
 
-	@FindBy(xpath = "//input[@id='impersonate-code']")
-	WebElement inputDealerCode;
+    @FindBy(xpath="//p[@translate='global.modals.serviceability.bundleToChange']")
+    WebElement bundleSection;
+
+    @FindBy(xpath="//ds-radio-button[@ng-reflect-value='tv']//div")
+    WebElement tvCheckbox;
+
+    @FindBy(xpath="//span[@translate='global.cta.continue']")
+    WebElement clickContinue;
+
+    @FindBy(xpath = "//span[@class='dealer-code']")
+    WebElement lnkDealerCode;
+
+    @FindBy(xpath = "//input[@id='impersonate-code']")
+    WebElement inputDealerCode;
 
 
     /**
@@ -196,8 +208,8 @@ public class AccountOverViewPage extends BasePageClass {
      */
     public void enterDealerCodeDialogue() {
         if (getReusableActionsInstance().isElementVisible(delearCodeOneViewDialogue)) {
-            getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 50).sendKeys("0MAAA");
-            getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue, 30);
+            getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 30).sendKeys("0MAAA");
+            getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue, 10);
         }
 
     }
@@ -215,6 +227,21 @@ public class AccountOverViewPage extends BasePageClass {
         }
     }
 
+    /* To Select the second address in the serviceability modal if available
+    *  @suganya p
+    */
+    public void clickSecondAddressIfPresent()
+    {
+
+        if (verifyBundleChangeSection());
+        else
+        {
+            getReusableActionsInstance().isElementVisible(secondAddress,10);
+            getReusableActionsInstance().clickIfAvailable(secondAddress);
+        }
+
+
+    }
     /**
      * Selects the Get Ignite TV Badge on the account dashbaord
      *
@@ -390,6 +417,14 @@ public class AccountOverViewPage extends BasePageClass {
         return getReusableActionsInstance().isElementVisible(infoBalanceLable, 60);
     }
 
+    /*
+    * To verify the bundle change section in the serviceability modal
+    * @author suganya p
+    */
+    public boolean verifyBundleChangeSection()
+    {
+    return getReusableActionsInstance().isElementVisible(bundleSection,20);
+    }
     /**
      * Selects the Add a Wireless Line Button on the account dashbaord
      *
@@ -422,6 +457,23 @@ public class AccountOverViewPage extends BasePageClass {
     public void setLanguageFrench() {
         //getReusableActionsInstance().clickWhenReady(infoBalanceLable);
         getReusableActionsInstance().executeJavaScriptClick(linkFrench);
+    }
+
+    /*
+    * To select the tv check box in serviceability modal
+    * @author suganya p
+    */
+    public void clickTVCheckbox()
+    {
+        getReusableActionsInstance().executeJavaScriptClick(tvCheckbox);
+    }
+
+    /*To click continue in the serviceabilty modal
+    * @author suganya p
+    */
+    public void clickContinue()
+    {
+        getReusableActionsInstance().clickWhenReady(clickContinue,30);
     }
 
     /**
