@@ -18,7 +18,7 @@ public class OVR_Auto_TC10_WirelessCX_To_Nac_Flow_ISS_Corp_FR_ON_Test extends Ba
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
     @Test(groups = {"OVR", "RegressionOVR"})
     public void ovr_Auto_TC10_WirelessCX_To_Nac_Flow_ISS_Corp_FR_ON_Test() throws InterruptedException {
@@ -66,24 +66,34 @@ public class OVR_Auto_TC10_WirelessCX_To_Nac_Flow_ISS_Corp_FR_ON_Test extends Ba
         reporter.softAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Eval Page displayed", "Credit Eval Page not displayed");
         getCreditCheckPage().setDOB(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
         reporter.reportLogWithScreenshot("Credit Check DOB entered");
+        getCreditCheckPage().setDriversLicense("Ontario",FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
+        reporter.reportLogWithScreenshot("Drivers License Details entered in FR");
+        getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
+        reporter.reportLogWithScreenshot("Passport details entered in FR");
+        reporter.reportLogWithScreenshot("credit form completed");
+        getCreditCheckPage().clkAuthorize();
+        reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
+        reporter.reportLogWithScreenshot("Credit Check Information");
+
+
         //getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Launched the install options  page");
-        getCreditCheckPage().verifyInstallationOption();
-        getCreditCheckPage().goToPageBottom();
-        reporter.reportLogWithScreenshot("in-person deliver");
-        getCreditCheckPage().clickInPersonDelivery();
+        getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Install Options");
+        getBundleBuilderPage().clkTechInstallSlot();
         getBundleBuilderPage().setMobileNumber();
         reporter.reportLogWithScreenshot("tech install details");
         getBundleBuilderPage().clkContinueInstallation();
-        reporter.reportLogWithScreenshot("Billing and Payment Details");
+        reporter.reportLogWithScreenshot("Billing and Payment page");
+        reporter.hardAssert(getBundleBuilderPage().verifyBillingAndPaymentPage(), "Billing and Payment page displayed", "Billing and payment page not displayed");
+        getBundleBuilderPage().setDrpSelectBillingPaymentMethod("Monthly charges");
         getBundleBuilderPage().clkContinueBillingAndPayment();
         reporter.reportLogWithScreenshot("Order Review Page");
         reporter.softAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
         reporter.softAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
         getOVROrderReviewPage().clkContinue();
         reporter.reportLogWithScreenshot("Sign Agreement Page");
-        reporter.softAssert(getOVRAgreementPage().verifySignAgreementPage(), "Agreement page displayed", "Agreement page not displayed");
+        reporter.hardAssert(getOVRAgreementPage().verifySignAgreementPage(), "Agreement page displayed", "Agreement page not displayed");
         getOVRAgreementPage().signAgreement();
         reporter.reportLogWithScreenshot("Back to Agreement Page");
         getOVRAgreementPage().clkAgreementCheckbox();
@@ -93,7 +103,6 @@ public class OVR_Auto_TC10_WirelessCX_To_Nac_Flow_ISS_Corp_FR_ON_Test extends Ba
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
-
 
     }
 }
