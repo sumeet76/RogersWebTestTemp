@@ -76,10 +76,16 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[@data-test='stepper-4-edit-step-continue-button']")
     WebElement preCartAddonsContinueButton;
 
-    @FindBy(xpath = "(//input[contains(@id,'ds-form-input-id')])[1]")
+    @FindBy(xpath = "//ds-form-field[@data-test='caller-id-first-name']")
+    WebElement frmCallerIdFirstName;
+
+    @FindBy(xpath = "//input[@formcontrolname='firstName']")
     WebElement setFirstName;
 
-    @FindBy(xpath = "(//input[contains(@id,'ds-form-input-id')])[2]")
+    @FindBy(xpath = "//ds-form-field[@data-test='caller-id-last-name']")
+    WebElement frmCallerIdLastName;
+
+    @FindBy(xpath = "//input[@formcontrolname='lastName']")
     WebElement setLastName;
 
     @FindBy(xpath = "//button[contains(@data-test,'stepper-5')]")
@@ -645,9 +651,9 @@ public class RogersPlanConfigPage extends BasePageClass {
     public void setUserNameCallerID() {
         getReusableActionsInstance().staticWait(3000);
         getReusableActionsInstance().executeJavaScriptClick(setFirstName);
-        getReusableActionsInstance().getWhenReady(setFirstName,5).sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
+        setFirstName.sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
         getReusableActionsInstance().executeJavaScriptClick(setLastName);
-        getReusableActionsInstance().getWhenReady(setLastName,5).sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
+        setLastName.sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
         getReusableActionsInstance().clickWhenReady(continueCallerID, 30);
         clickGetBPOOffer();
     }

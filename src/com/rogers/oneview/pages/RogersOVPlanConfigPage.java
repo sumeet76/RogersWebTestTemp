@@ -54,7 +54,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     })
     List<WebElement> noofDataOptions;
 
-    @FindBy(xpath = "//dsa-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-')]//label[1]")
+    @FindBy(xpath = "//ds-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-')]//label[1]")
     List<WebElement> noOfTTPlans;
 
     @FindBy(xpath = "//div[contains(@data-test,'outbound')]")
@@ -183,17 +183,17 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[@data-test='continue-btn']")
     WebElement btnProceedToCheckout;
 
-    @FindBy(xpath = "//input[@id='ds-form-input-id-0']/parent::div//input")
-    WebElement inputFirstName;
+    @FindBy(xpath = "//ds-form-field[@data-test='caller-id-first-name']")
+    WebElement frmCallerIdFirstName;
 
-    @FindBy(xpath = "//input[@id='ds-form-input-id-0']/parent::div")
-    WebElement inputFirstNameDiv;
+    @FindBy(xpath = "//input[@formcontrolname='firstName']")
+    WebElement setFirstName;
 
-    @FindBy(xpath = "//input[@id='ds-form-input-id-1']/parent::div//input")
-    WebElement inputLastName;
+    @FindBy(xpath = "//ds-form-field[@data-test='caller-id-last-name']")
+    WebElement frmCallerIdLastName;
 
-    @FindBy(xpath = "//input[@id='ds-form-input-id-1']/parent::div")
-    WebElement inputLastNameDiv;
+    @FindBy(xpath = "//input[@formcontrolname='lastName']")
+    WebElement setLastName;
 
     @FindBy(xpath = "//button[@data-test='stepper-5-edit-step-continue-button']")
     WebElement callerIDContinue;
@@ -1027,8 +1027,8 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      */
     public void enterFirstName() {
         String strFirstName = FormFiller.generateRandomName();
-        getReusableActionsInstance().getWhenReady(inputFirstNameDiv, 30).click();
-        inputFirstName.sendKeys(strFirstName);
+        getReusableActionsInstance().getWhenReady(frmCallerIdFirstName, 30).click();
+        setFirstName.sendKeys(strFirstName);
     }
 
     /**
@@ -1036,10 +1036,10 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * @author Saurav.Goyal
      */
     public void enterSecondName() {
-        getReusableActionsInstance().waitForElementVisibility(inputLastNameDiv, 5);
+        getReusableActionsInstance().waitForElementVisibility(frmCallerIdLastName, 5);
         String strLastName = FormFiller.generateRandomName();
-        getReusableActionsInstance().getWhenReady(inputLastNameDiv, 30).click();
-        inputLastName.sendKeys(strLastName);
+        getReusableActionsInstance().getWhenReady(frmCallerIdLastName, 30).click();
+        setLastName.sendKeys(strLastName);
     }
 
     /**
@@ -1089,8 +1089,9 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * @author Praveen.Kumar7
      */
     public void clickOutBoundAccordion() {
-        getReusableActionsInstance().scrollToElement(outboundAccordion);
+        //getReusableActionsInstance().scrollToElement(outboundAccordion);
         getReusableActionsInstance().clickWhenReady(outboundAccordion,30);
+        getReusableActionsInstance().javascriptScrollToTopOfPage();
     }
 
     /**
@@ -1098,8 +1099,9 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clickOutBoundFieldAccordion() {
-        getReusableActionsInstance().scrollToElement(outboundFieldAccordion);
+        //getReusableActionsInstance().scrollToElement(outboundFieldAccordion);
         getReusableActionsInstance().clickWhenReady(outboundFieldAccordion,30);
+        getReusableActionsInstance().javascriptScrollToTopOfPage();
     }
 
     /**

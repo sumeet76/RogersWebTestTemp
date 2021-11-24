@@ -56,8 +56,6 @@ public class RogersBFA_OV_TC27_HUPWithPPCOnMainLine_BackOrder_POTG_RetAndCare_EN
 		getRogersOVPlanConfigPage().clickCartSummaryContinueButton();
 		getRogersOVPlanConfigPage().clkAdditionalLineOptions();
 		//---------------------------------------------Checkout pages---------------------------------------------------
-		reporter.hardAssert(getRogersOVCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
-				"Billing Address is not selected");
 		getRogersOVCheckoutPage().clkDeliveryMethod("PRO");
 		reporter.reportLogPassWithScreenshot("POTG option selected");
 		reporter.hardAssert(getRogersOVCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");

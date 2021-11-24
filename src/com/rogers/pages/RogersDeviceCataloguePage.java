@@ -134,7 +134,19 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     
     @FindBy(xpath = "//span[contains(@class,'m-navLink__chevron')]/parent::a[@role='button']")
     WebElement provinceDropDown;
-    
+
+    @FindBy(xpath = "//ds-form-field[@data-test='rpp-passcode']")
+    WebElement frmFieldRppPasscode;
+
+    @FindBy(xpath = "//input[@formcontrolname='passCode']")
+    WebElement inputRppPasscode;
+
+    @FindBy(xpath = "//button[@data-test='RPP']")
+    WebElement btnContinuePasscodeModal;
+
+    @FindBy(xpath = "//p[contains(.,'New customer') or contains(.,'Nouveau client')]")
+    WebElement txtNewCustomerInExistingCustModal;
+
     
     /**
      * To verify the Home page
@@ -783,4 +795,41 @@ public class RogersDeviceCataloguePage extends BasePageClass {
         getReusableActionsInstance().clickWhenReady(provinceDropDown, 10);
         getReusableActionsInstance().clickWhenReady(By.xpath("//span[contains(@class,'m-navLink__chevron')]/parent::a[@role='button']/following-sibling::ul//a[@title='"+province+"']"),10);
     }
+
+    /**
+     * This method verifies if the passcode modal is displayed or not
+     * @return true if passcode modal is displayed, else false
+     * @author praveen.kumar7
+     */
+    public boolean verifyRppPasscodeModal() {
+       return getReusableActionsInstance().isElementVisible(frmFieldRppPasscode);
+    }
+
+    /**
+     * This method enters passcode in text field
+     * @param passcode to enter in text field
+     * @author praveen.kumar7
+     */
+    public void enterPasscodeInPasscodeModal(String passcode) {
+        getReusableActionsInstance().clickWhenReady(frmFieldRppPasscode);
+        getReusableActionsInstance().getWhenReady(inputRppPasscode).sendKeys(passcode);
+    }
+
+    /**
+     * This method clicks on continue button in passcode validation modal
+     * @author praveen.kumar7
+     */
+    public void clkContinueBtnPassCodeMoodal() {
+        getReusableActionsInstance().clickWhenReady(btnContinuePasscodeModal,10);
+    }
+
+    /**
+     * This method verifies if new or existing customer modal is displayed
+     * @return true if new or existing customer modal is displayed else false
+     * @author praveen.kumar7
+     */
+    public boolean verifyPasscode() {
+       return getReusableActionsInstance().isElementVisible(txtNewCustomerInExistingCustModal);
+    }
+
 }

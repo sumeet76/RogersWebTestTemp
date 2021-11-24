@@ -52,9 +52,9 @@ public class RogersBFA_TC12_HUPNonShareNoTermSL_Test extends BaseTestClass{
             getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
             reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
             getRogersPlanConfigPage().clickContinueOnModalToDoWithOldPhone();
-            getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
+            /*getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
             reporter.reportLogPassWithScreenshot("Plan config page data option selected");
-            getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
+            getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();*/
             reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
             getRogersPlanConfigPage().skipBPOOffer();
             getRogersPlanConfigPage().clickPreCartAddonsContinueButton();

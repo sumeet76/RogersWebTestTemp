@@ -35,9 +35,9 @@ public class RogersBFA_OV_TC16_NAC_FieldSalesUpfrontEdgeExpressShipping_Test ext
 		getNacDashboardPage().clkWirelessButton();
 		reporter.reportLogWithScreenshot("Active Wireless Service Modal");
 		getNacDashboardPage().fillShippingAddressField(TestDataHandler.buyFlowsOVtestCase16.getShippingAddress());
-		getNacDashboardPage().fillApartmentField(TestDataHandler.buyFlowsOVtestCase16.getApartment());
+		/*getNacDashboardPage().fillApartmentField(TestDataHandler.buyFlowsOVtestCase16.getApartment());
 		reporter.hardAssert(getNacDashboardPage().verifyPOTGAddressEligibility(), "Address is Eligible for POTG", "Address is not Eligible for POTG");
-		reporter.reportLogWithScreenshot("POTG address is selected");
+		reporter.reportLogWithScreenshot("POTG address is selected");*/
 		getNacDashboardPage().clkGetANewPhoneButton();
 		//-------------------------------------Choose Phone page---------------------------------------------
 		reporter.hardAssert(getRogersOVChoosePhonePage().verifyDeviceTileCTAButton(TestDataHandler.buyFlowsOVtestCase16.getDeviceName()), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
@@ -119,8 +119,6 @@ public class RogersBFA_OV_TC16_NAC_FieldSalesUpfrontEdgeExpressShipping_Test ext
 		getRogersOVCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.buyFlowsOVtestCase16.getPaymentMethod());
 		getRogersOVCheckoutPage().clkBillingContinueButton();
 		// ***************Shipping Stepper*************//
-		reporter.hardAssert(getRogersOVCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
-				"Billing Address is not selected");
 		getRogersOVCheckoutPage().clkDeliveryMethod("PRO");
 		reporter.reportLogPassWithScreenshot("Pro on the go Delivery selected");
 		reporter.hardAssert(getRogersOVCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");

@@ -75,6 +75,7 @@ public class RogersBFA_TC15_HUPNonShareKeepCurrentPlanSL_Test extends BaseTestCl
             getRogersReviewOrderPage().clkAgreementConsentCheckbox();
             getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
             getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
+            getRogersReviewOrderPage().clkEmailConsentCheckbox();
             reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
             getRogersOrderReviewPage().clkSubmitOrder();
             reporter.reportLogWithScreenshot("Rogers Payment Page");

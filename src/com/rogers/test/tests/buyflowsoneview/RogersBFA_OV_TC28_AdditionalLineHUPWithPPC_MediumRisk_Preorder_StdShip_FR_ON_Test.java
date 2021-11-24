@@ -59,8 +59,6 @@ public class RogersBFA_OV_TC28_AdditionalLineHUPWithPPC_MediumRisk_Preorder_StdS
 		getRogersOVPlanConfigPage().clickCartSummaryContinueButton();
 		getRogersOVPlanConfigPage().clkAdditionalLineOptions();
 		//---------------------------------------------Checkout pages---------------------------------------------------
-		reporter.hardAssert(getRogersOVCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
-				"Billing Address is not selected");
 		getRogersOVCheckoutPage().clkDeliveryMethod("STANDARD");
 		reporter.reportLogPassWithScreenshot("Standar shipping option selected");
 		getRogersOVCheckoutPage().clkContinueBtnShipping();

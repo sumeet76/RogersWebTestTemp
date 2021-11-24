@@ -27,6 +27,7 @@ public class RogersBFA_OV_TC15_NACOutboundFinanceStandardShipping_Test extends B
 		//getAccountOverViewPage().clkSubmitBtnDealerCodeDialogue();
 		reporter.hardAssert(getNacDashboardPage().verifyNewCustomerDashboard(), "Login Successful", "Login Failed");
 		reporter.reportLogWithScreenshot("Rogers OV NAC Dashboard page");
+		getAccountOverViewPage().changeFidoDealerToRogers();
 		getNacDashboardPage().clkCustomerButton();
 		reporter.reportLogWithScreenshot("Services under customer button");
 		getNacDashboardPage().clkWirelessButton();
@@ -34,8 +35,8 @@ public class RogersBFA_OV_TC15_NACOutboundFinanceStandardShipping_Test extends B
 		//getAccountOverViewPage().enterDealerCodeDialogue();
 		//getAccountOverViewPage().clkSubmitBtnDealerCodeDialogue();
 		getNacDashboardPage().setDelearCode();
-		//getNacDashboardPage().fillShippingAddressField(TestDataHandler.buyFlowsOVtestCase15.getShippingAddress());
-		getNacDashboardPage().fillApartmentField(TestDataHandler.buyFlowsOVtestCase15.getApartment());
+		getNacDashboardPage().fillShippingAddressField(TestDataHandler.buyFlowsOVtestCase15.getShippingAddress());
+		//getNacDashboardPage().fillApartmentField(TestDataHandler.buyFlowsOVtestCase15.getApartment());
 		//reporter.hardAssert(getNacDashboardPage().verifyPOTGAddressEligibility(), "Address is Eligible for POTG", "Address is not Eligible for POTG");
 		//reporter.reportLogWithScreenshot("POTG address is selected");
 		getNacDashboardPage().clkGetANewPhoneButton();
@@ -120,8 +121,6 @@ public class RogersBFA_OV_TC15_NACOutboundFinanceStandardShipping_Test extends B
 		getRogersOVCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.buyFlowsOVtestCase15.getPaymentMethod());
 		getRogersOVCheckoutPage().clkBillingContinueButton();
 		// ***************Shipping Stepper*************//
-		reporter.hardAssert(getRogersOVCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
-				"Billing Address is not selected");
 		getRogersOVCheckoutPage().clkDeliveryMethod("STANDARD");
 		reporter.reportLogPassWithScreenshot("Standard Delivery selected");
 		getRogersOVCheckoutPage().clkContinueBtnShipping();
