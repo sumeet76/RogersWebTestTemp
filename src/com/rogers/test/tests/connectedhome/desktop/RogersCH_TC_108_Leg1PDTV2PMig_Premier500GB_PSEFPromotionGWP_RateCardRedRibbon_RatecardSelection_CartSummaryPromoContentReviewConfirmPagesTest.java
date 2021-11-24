@@ -110,10 +110,17 @@ public class RogersCH_TC_108_Leg1PDTV2PMig_Premier500GB_PSEFPromotionGWP_RateCar
 		reporter.reportLogWithScreenshot("Passport Details");
 		getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
 
-        reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the tech install page");
-        getRogersTechInstallPage().clkTechInstalConsent();
-        getRogersTechInstallPage().clkTechInstallContinue();
+		reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
+		reporter.reportLogWithScreenshot("Launched the tech install page");
+		//getRogersTechInstallPage().clkTechInstalConsent();
+		getRogersTechInstallPage().clkProInstallUpgradeNo();
+		reporter.reportLogWithScreenshot("tech install details");
+		getRogersTechInstallPage().clkTechInstallContinueSelf();
+		reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(),"SetUp page has Launched","SetUp page has not Launched");
+		getRogersTechInstallPage().clkTechInstallContinue();
+       /*getRogersTechInstallPage().clkTechInstalConsent();
+       reporter.reportLogWithScreenshot("tech install details");
+       getRogersTechInstallPage().clkTechInstallContinue();*/
         reporter.reportLogWithScreenshot("Launched the payment options page");
 
         getRogersPaymentOptionsPage().clkPaymentConfirm();
