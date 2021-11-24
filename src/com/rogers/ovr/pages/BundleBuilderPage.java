@@ -62,13 +62,13 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath = "//*[contains(@id,'ds-modal-container')]//button/span/span/span")
     WebElement btncontinueonPointsToMention;
 
-    @FindBy(xpath = "//span[contains(text(),'Professional Install')]")
+    @FindBy(xpath = "//span[contains(text(),'Professional Install') or contains(text(),'Installation professionnelle')]")
     WebElement igniteProfessionalInstall;
 
-    @FindBy(xpath = "//span[text()='Continue']")
+    @FindBy(xpath = "//span[text()='Continue' or text()='Continuer']")
     WebElement continueInstallation;
 
-    @FindBy(xpath = "//span[text()='Continue']/ancestor::button")
+    @FindBy(xpath = "//span[text()='Continue' or text()='Continuer']/ancestor::button")
     WebElement continueBillingAndPayment;
 
 
@@ -170,7 +170,7 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath ="//input[@formcontrolname='enrouteEmail']")
     WebElement txtEmail;
 
-    @FindBy(xpath ="//input[@id='26']/ancestor::label[contains(@class,'ds-radioLabel')]//div[@class='ds-radioButton__outerCircle my-12']")
+    @FindBy(xpath ="//input[@id='2']/ancestor::label[contains(@class,'ds-radioLabel')]//div[@class='ds-radioButton__outerCircle my-12']")
     WebElement rdoTechInstallSlot;
 
     @FindBy(xpath = "//div[text()='Customer current']//following-sibling::div")
@@ -179,10 +179,10 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
     WebElement popupCloseBtn;
 
-    @FindBy(xpath = "//h1[contains(text(),'Billing and Payment')]")
+    @FindBy(xpath = "//h1[contains(text(),'Billing and Payment') or contains(text(),'Options de facturation et de paiement')]")
     WebElement billingAndPaymentH1;
 
-    @FindBy(xpath = "//h3[text()='Payment Options']//parent::div//following-sibling::div//child::select[1]")
+    @FindBy(xpath = "//h3[@translate='global.label.paymentOptionsBilling']//parent::div//following-sibling::div//child::select[1]")
     WebElement drpSelectBillingPaymentMethod;
 
     @FindBy(xpath = "//span[contains(text(),'Select the services') or contains(text(),'Sélectionnez les services demandés par le client')]")
