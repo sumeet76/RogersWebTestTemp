@@ -23,7 +23,7 @@ public class RogersBFA_TC23_AAL_TERM_MLNonShare_BasicPlan_StdShipping_Test exten
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","AALBFA"})
+    @Test(groups = {"RegressionBFA","AALBFA","RegressionOnlineBFA"})
     public void rogersAalTermMLNonSEBasicPlanSSTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
@@ -73,6 +73,7 @@ public class RogersBFA_TC23_AAL_TERM_MLNonShare_BasicPlan_StdShipping_Test exten
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc23AALTermMLNonSEBasicPlanStdShipping.getTalkOptionIndex())),
                 "Talk option selected and Addons page in expanded state","Addons page not in expanded state");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
+        getRogersPlanConfigPage().clkContinueDeviceProtection();
         getRogersPlanConfigPage().setUserNameCallerID();
         reporter.reportLogWithScreenshot("CalledID details entered");
         String monthlyFeesAmountWithTax = getRogersPlanConfigPage().getMonthlyFeesAmount();

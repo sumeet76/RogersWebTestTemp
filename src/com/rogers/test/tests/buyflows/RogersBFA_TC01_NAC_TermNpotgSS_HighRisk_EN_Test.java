@@ -24,7 +24,7 @@ public class RogersBFA_TC01_NAC_TermNpotgSS_HighRisk_EN_Test extends BaseTestCla
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.buyflows, method);
 	}
 
-    @Test(groups = {"RegressionBFA","NACBFA"})
+    @Test(groups = {"RegressionBFA","NACBFA","RegressionOnlineBFA"})
     public void rogersNACTermNpotgSSTest() throws InterruptedException {
     	 //**************************Device catalog page****************************************
         reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
@@ -50,6 +50,7 @@ public class RogersBFA_TC01_NAC_TermNpotgSS_HighRisk_EN_Test extends BaseTestCla
         reporter.reportLogPassWithScreenshot("Plan config page data protection selected");
         //getRogersPlanConfigPage().clickOptionInDataProtection(deviceName);
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
+        getRogersPlanConfigPage().clkContinueDeviceProtection();
         reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
         /*String monthlyFeesAmount = getRogersPlanConfigPage().getMonthlyFeesAmount();
         String oneTimeFeesAmount = getRogersPlanConfigPage().getOneTimeFeesAmount();

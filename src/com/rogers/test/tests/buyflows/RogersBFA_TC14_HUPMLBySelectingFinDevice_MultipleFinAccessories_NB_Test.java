@@ -15,7 +15,7 @@ package com.rogers.test.tests.buyflows;
  */
 public class RogersBFA_TC14_HUPMLBySelectingFinDevice_MultipleFinAccessories_NB_Test extends BaseTestClass{
 
-    @Test(groups = {"RegressionBFA","HUPBFA"})
+    @Test(groups = {"RegressionBFA","HUPBFA","RegressionOnlineBFA"})
     public void rogersHUPMLFinDeviceMultiplAccessories_NB_Test() {
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
@@ -65,6 +65,7 @@ public class RogersBFA_TC14_HUPMLBySelectingFinDevice_MultipleFinAccessories_NB_
         reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
         getRogersPlanConfigPage().skipBPOOffer();
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
+        getRogersPlanConfigPage().clkContinueDeviceProtection();
         reporter.reportLogPassWithScreenshot("Addons option selected and Landed in Accessories Cost selection stepper");
         getRogersPlanConfigPage().clkContinueAccessoriesCostSelection();
         getRogersPlanConfigPage().skipBPOOffer();

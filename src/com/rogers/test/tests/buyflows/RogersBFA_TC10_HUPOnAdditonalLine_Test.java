@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_TC10_HUPOnAdditonalLine_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","HUPBFA"})
+	@Test(groups = {"RegressionBFA","HUPBFA","RegressionOnlineBFA"})
     public void rogersHUPOnAdditonalLineTest() {
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
@@ -39,16 +39,6 @@ public class RogersBFA_TC10_HUPOnAdditonalLine_Test extends BaseTestClass {
                 "Modal element is not present on the screen");
         getRogersDeviceCataloguePage().clickUpgradeMyPhoneButtonOnModal();
         reporter.reportLogWithScreenshot("Upgrade button clicked on Modal window Popup");
-        /*
-        getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc10HUPAdditionalLine.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc10HUPAdditionalLine.getPassword());
-        reporter.reportLogWithScreenshot("Rogers Login Page");
-        getRogersLoginPage().clkSignInIFrame();
-        reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
-        //getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
-         */
         reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
         reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
         getRogersDeviceCataloguePage().selectCTN(TestDataHandler.tc10HUPAdditionalLine.getCtn());
@@ -69,6 +59,7 @@ public class RogersBFA_TC10_HUPOnAdditonalLine_Test extends BaseTestClass {
         getRogersPlanConfigPage().skipBPOOffer();
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
+        getRogersPlanConfigPage().clkContinueDeviceProtection();
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                 "Billing Address is not selected");

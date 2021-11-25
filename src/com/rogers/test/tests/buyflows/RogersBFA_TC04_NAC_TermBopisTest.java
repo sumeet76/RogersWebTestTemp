@@ -23,7 +23,7 @@ public class RogersBFA_TC04_NAC_TermBopisTest extends BaseTestClass {
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-	@Test(groups = {"RegressionBFA","NACBFA","SanityBFA"})
+	@Test(groups = {"RegressionBFA","NACBFA","SanityBFA","RegressionOnlineBFA"})
 	public void rogersNACTermBopisTest() throws InterruptedException {
 
 		// **************************Device catalog page*****************************************
@@ -51,6 +51,7 @@ public class RogersBFA_TC04_NAC_TermBopisTest extends BaseTestClass {
 		reporter.reportLogPassWithScreenshot("Plan config page data protection selected");
 		getRogersPlanConfigPage().skipBPOOffer();
 		getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
+		getRogersPlanConfigPage().clkContinueDeviceProtection();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
 		String monthlyFeesAmount = getRogersPlanConfigPage().getMonthlyFeesAmount();
 		String oneTimeFeesAmount = getRogersPlanConfigPage().getOneTimeFeesAmount();

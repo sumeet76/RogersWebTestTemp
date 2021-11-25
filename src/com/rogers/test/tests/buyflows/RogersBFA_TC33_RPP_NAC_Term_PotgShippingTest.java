@@ -23,7 +23,7 @@ public class RogersBFA_TC33_RPP_NAC_Term_PotgShippingTest extends BaseTestClass 
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-	@Test(groups = {"RegressionBFA","NACBFA"})
+	@Test(groups = {"RegressionBFA","NACBFA","RegressionOnlineBFA"})
 	public void rogersRPPNACTermPotgShippingTest() throws InterruptedException {
 		// **************************Device catalog page*****************************************
 		getDriver().get(System.getProperty("AWSUrl")+"/?type=rpp");
@@ -52,6 +52,7 @@ public class RogersBFA_TC33_RPP_NAC_Term_PotgShippingTest extends BaseTestClass 
 		reporter.reportLogPassWithScreenshot("Plan config page data protection selected");
 		getRogersPlanConfigPage().skipBPOOffer();
 		getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
+		getRogersPlanConfigPage().clkContinueDeviceProtection();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
 		// ***************Create Profile Stepper*************//

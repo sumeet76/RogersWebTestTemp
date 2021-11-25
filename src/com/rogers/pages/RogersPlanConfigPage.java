@@ -241,6 +241,9 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[@data-test='stepper-5-edit-step-continue-button']")
     WebElement btnContinueAccessoriesCost;
 
+    @FindBy(xpath = "//button[@title='Continue']")
+    WebElement btnContinueDeviceProtection;
+
 
     /**
      * Select Device Protection Header on Plan config page
@@ -1211,6 +1214,14 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public void clkContinueAccessoriesCostSelection() {
         getReusableActionsInstance().clickWhenVisible(btnContinueAccessoriesCost);
+    }
+
+    /**
+     * This method clicks on continue button in device protection modal if present
+     * @author praveen.kumar7
+     */
+    public void clkContinueDeviceProtection() {
+        getReusableActionsInstance().clickIfAvailable(btnContinueDeviceProtection,5);
     }
 
 }

@@ -27,7 +27,7 @@ public class RogersBFA_TC05_NAC_BYOD_BasicPlan_SS_Test extends BaseTestClass {
 		closeSession();
 	}
 
-	@Test(groups = {"RegressionBFA","NACBFA"})
+	@Test(groups = {"RegressionBFA","NACBFA","RegressionOnlineBFA"})
 	public void rogersNacByodSSTest() throws InterruptedException {
 		//############################Plan config page###############################
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(), "BreadCrumb on Plan config page is displaying fine","BreadCrumb is not displaying fine");

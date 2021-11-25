@@ -23,7 +23,7 @@ public class RogersBFA_TC30_PPC_SL_NonSE_FinancingOutTerm_TTPlan_Test extends Ba
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","PPCBFA"})
+    @Test(groups = {"RegressionBFA","PPCBFA","RegressionOnlineBFA"})
     public void rogersPPC_TC30_SLSE_FinancingOutTerm_TTPlanTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
