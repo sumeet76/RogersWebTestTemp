@@ -23,7 +23,7 @@ public class RogersBFA_TC24_PPC_SL_NonSE_FinancingInTerm_DTT_Test extends BaseTe
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","SanityBFA","PPCBFA"})
+    @Test(groups = {"RegressionBFA","SanityBFA","PPCBFA","RegressionOnlineBFA"})
     public void rogersPPC_TC24_SLNonSE_FINInTerm_DTTPlanTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");

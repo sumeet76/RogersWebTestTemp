@@ -24,7 +24,7 @@ public class SOHOBFA_TC31_NAC_Term_MediumRisk_UE_PotgShipping_EN_Test extends Ba
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.buyflows, method);
 	}
 
-	@Test(groups = {"RegressionBFA","SOHONACBFA","SOHOBFA"})
+	@Test(groups = {"RegressionBFA","SOHONACBFA","SOHOBFA","RegressionOnlineBFA"})
 	public void sohoNACTermMediumRiskPotgTest() throws InterruptedException {
 		// **************************Device catalog page*****************************************
 		reporter.softAssert(getRogersDeviceCataloguePage().isRpotgBannerPresent(),
@@ -78,6 +78,7 @@ public class SOHOBFA_TC31_NAC_Term_MediumRisk_UE_PotgShipping_EN_Test extends Ba
 		reporter.reportLogPassWithScreenshot("Plan config page data protection selected");
 		getRogersPlanConfigPage().skipBPOOffer();
 		getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
+		getRogersPlanConfigPage().clkContinueDeviceProtection();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
 		// ***************Create Profile Stepper*************//
