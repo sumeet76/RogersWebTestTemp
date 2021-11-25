@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_TC13_HUPShareNoTermSL_Test extends BaseTestClass{
 
-        @Test(groups = {"RegressionBFA","SanityBFA","HUPBFA"})
+        @Test(groups = {"RegressionBFA","SanityBFA","HUPBFA","RegressionOnlineBFA"})
         public void rogersHUPShareKeepCurrentPlanNoTermSLTest() {
             reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
             reporter.reportLogWithScreenshot("Home Page");
@@ -43,9 +43,9 @@ public class RogersBFA_TC13_HUPShareNoTermSL_Test extends BaseTestClass{
                     "Continue button on the device config page is present",
                     "Continue button on the device config page is not present");
             getRogersDeviceConfigPage().clickContinueButton();
-            reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
+            /*reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
                     "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
-            /*getRogersPlanConfigPage().setCheckBoxKeepMyCurrentPlan();
+            getRogersPlanConfigPage().setCheckBoxKeepMyCurrentPlan();
             reporter.reportLogPassWithScreenshot("Checkbox for keep my current plan selected");*/
             getRogersPlanConfigPage().clkRadioButtonNoTerm();
             //getRogersPlanConfigPage().selectNoTermDeviceDeviceCost();
@@ -60,6 +60,7 @@ public class RogersBFA_TC13_HUPShareNoTermSL_Test extends BaseTestClass{
             reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
             getRogersPlanConfigPage().skipBPOOffer();
             getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
+            getRogersPlanConfigPage().clkContinueDeviceProtection();
             reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
             getRogersPlanConfigPage().clickCartSummaryContinueButton();
             reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",

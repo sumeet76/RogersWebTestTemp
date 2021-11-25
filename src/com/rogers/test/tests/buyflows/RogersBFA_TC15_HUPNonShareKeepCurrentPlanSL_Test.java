@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_TC15_HUPNonShareKeepCurrentPlanSL_Test extends BaseTestClass{
 
-        @Test(groups = {"RegressionBFA","HUPBFA"})
+        @Test(groups = {"RegressionBFA","HUPBFA","RegressionOnlineBFA"})
         public void rogersHUPNonShareKeepCurrentPlanSLTest() {
             reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
             reporter.reportLogWithScreenshot("Home Page");
@@ -56,6 +56,7 @@ public class RogersBFA_TC15_HUPNonShareKeepCurrentPlanSL_Test extends BaseTestCl
             reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
             getRogersPlanConfigPage().skipBPOOffer();*/
             getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
+            getRogersPlanConfigPage().clkContinueDeviceProtection();
             reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
             getRogersPlanConfigPage().clickCartSummaryContinueButton();
             reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",

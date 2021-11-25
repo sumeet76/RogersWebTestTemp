@@ -23,7 +23,7 @@ public class RogersBFA_TC34_RPP_AAL_BYOD_StdShipping_Test extends BaseTestClass 
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","AALBFA"})
+    @Test(groups = {"RegressionBFA","AALBFA","RegressionOnlineBFA"})
     public void rogersRPPAalByodStdShipTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
