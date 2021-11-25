@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_TC11_HUPNpotg_ML_NonShare_BasicPlan_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","HUPBFA"})
+	@Test(groups = {"RegressionBFA","HUPBFA","RegressionOnlineBFA"})
     public void rogersHUPNpotgMLTest() {
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
@@ -65,6 +65,7 @@ public class RogersBFA_TC11_HUPNpotg_ML_NonShare_BasicPlan_Test extends BaseTest
         reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
         getRogersPlanConfigPage().skipBPOOffer();
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
+        getRogersPlanConfigPage().clkContinueDeviceProtection();
         reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         reporter.reportLogWithScreenshot("Clicked on Proceed to checkout button in plan builder");

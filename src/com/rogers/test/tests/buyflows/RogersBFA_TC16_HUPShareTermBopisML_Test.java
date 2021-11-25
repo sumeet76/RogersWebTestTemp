@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  */
 class RogersBFA_TC16_HUPShareTermBopisML_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","HUPBFA"})
+	@Test(groups = {"RegressionBFA","HUPBFA","RegressionOnlineBFA"})
     public void rogersHUPShareTermBopisMLTest() {
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
@@ -39,16 +39,6 @@ class RogersBFA_TC16_HUPShareTermBopisML_Test extends BaseTestClass {
         reporter.reportLogWithScreenshot("Modal window Popup");
         getRogersDeviceCataloguePage().clickUpgradeMyPhoneButtonOnModal();
         reporter.reportLogWithScreenshot("Upgrade button clicked on Modal window Popup");
-        /*
-        getRogersLoginPage().switchToSignInIFrame();
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc16HUPNonShareTermBopisSL.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16HUPNonShareTermBopisSL.getPassword());
-		reporter.reportLogWithScreenshot("Rogers Login Page");
-		getRogersLoginPage().clkSignInIFrame();
-		reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
-		//getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
-         */
         reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
         reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
         getRogersDeviceCataloguePage().selectCTN(TestDataHandler.tc16HUPShareTermBopisML.getCtn());
@@ -69,6 +59,7 @@ class RogersBFA_TC16_HUPShareTermBopisML_Test extends BaseTestClass {
         reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
         getRogersPlanConfigPage().skipBPOOffer();
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
+        getRogersPlanConfigPage().clkContinueDeviceProtection();
         reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         reporter.reportLogWithScreenshot("Clicked on Proceed to checkout button in plan builder");

@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
 
 public class RogersBFA_TC20_AALShareTerm_TabletDevice_Test extends BaseTestClass {
 
-    @Test(groups = {"RegressionBFA","AALBFA"})
+    @Test(groups = {"RegressionBFA","AALBFA","RegressionOnlineBFA"})
     public void rogersAalTabletTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
@@ -64,6 +64,7 @@ public class RogersBFA_TC20_AALShareTerm_TabletDevice_Test extends BaseTestClass
         //getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc20AALTermTablet.getDeviceCostIndex()));
         reporter.hardAssert(getRogersPlanConfigPage().verifyTabletDataTalkOptionSelected(),"Data and Talk option selected successfully","Data and Talk option not selected");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
+        getRogersPlanConfigPage().clkContinueDeviceProtection();
         getRogersPlanConfigPage().clkCallerIDContinueBtnForTablet();
         reporter.reportLogWithScreenshot("CalledID details entered");
         String monthlyFeesAmountWithTax = getRogersPlanConfigPage().getMonthlyFeesAmount();

@@ -24,7 +24,7 @@ public class RogersBFA_TC02_NAC_NoTerm_BasicPlan_StandardShipping_Test extends B
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-	@Test(groups = {"RegressionBFA","NACBFA"})
+	@Test(groups = {"RegressionBFA","NACBFA","RegressionOnlineBFA"})
 	public void rogersNACNoTermStandardShippingTest() throws InterruptedException {
 
 		// **************************Device catalog page*****************************************
@@ -54,6 +54,7 @@ public class RogersBFA_TC02_NAC_NoTerm_BasicPlan_StandardShipping_Test extends B
 		reporter.reportLogPassWithScreenshot("Plan config page data protection selected");
 		getRogersPlanConfigPage().skipBPOOffer();
 		getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
+		getRogersPlanConfigPage().clkContinueDeviceProtection();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
 		String monthlyFeesAmount = getRogersPlanConfigPage().getMonthlyFeesAmount();
 		String oneTimeFeesAmount = getRogersPlanConfigPage().getOneTimeFeesAmount();

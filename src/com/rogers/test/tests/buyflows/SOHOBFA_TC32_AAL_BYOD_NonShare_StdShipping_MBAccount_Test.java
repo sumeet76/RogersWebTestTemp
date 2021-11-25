@@ -23,7 +23,7 @@ public class SOHOBFA_TC32_AAL_BYOD_NonShare_StdShipping_MBAccount_Test extends B
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","AALBFA","SOHOBFA"})
+    @Test(groups = {"RegressionBFA","AALBFA","SOHOBFA","RegressionOnlineBFA"})
     public void sohoAalByodNonShareStdShippingMBTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
