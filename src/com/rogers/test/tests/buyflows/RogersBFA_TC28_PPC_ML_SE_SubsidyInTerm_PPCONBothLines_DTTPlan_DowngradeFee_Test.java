@@ -23,7 +23,7 @@ public class RogersBFA_TC28_PPC_ML_SE_SubsidyInTerm_PPCONBothLines_DTTPlan_Downg
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","PPCBFA"})
+    @Test(groups = {"RegressionBFA","PPCBFA","RegressionOnlineBFA"})
     public void rogersPPC_TC28_MLSE_SubsidyInTerm_PPCONBothLines_DTTPlanTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
