@@ -78,7 +78,6 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath = "//h2[@translate='global.checkout.fulfillment.installationOption']")
 	WebElement installationOption;
 
-
 	@FindAll({
 			@FindBy(xpath ="//div[@class='ds-checkbox__box my-12']"),
 			@FindBy(xpath = "//div[@id='ds-checkbox-id-2-label-container']")
@@ -102,6 +101,21 @@ public class CreditCheckPage  extends BasePageClass {
 
 	@FindBy(xpath = "//span[contains(text(),'Credit Evaluation') or contains(text(),'Évaluation de crédit')]")
 	WebElement creditEvaluationHeader;
+
+	@FindBy(xpath = "//span[@translate='chc.label.internationalId']")
+	WebElement internationalIdRadioBtn;
+
+	@FindBy(xpath = "//span[contains(text(),'Permit Number')]/ancestor::span//following-sibling::div/child::input")
+	WebElement permitInput;
+
+	@FindBy(xpath = "(//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-work-study-permit/descendant::select)[1]")
+	WebElement permitExpiryYear;
+
+	@FindBy(xpath = "(//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-work-study-permit/descendant::select)[2]")
+	WebElement permitExpiryMonth;
+
+	@FindBy(xpath = "(//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-work-study-permit/descendant::select)[3]")
+	WebElement permitExpiryDate;
 
 	/**
 	 * Validates that the 'Installation Option(s)' is displayed
@@ -292,6 +306,44 @@ public class CreditCheckPage  extends BasePageClass {
 			getReusableActionsInstance().waitForElementVisibility(paymentOption, 45);
 			getReusableActionsInstance().scrollToElement(paymentOption);
 			getReusableActionsInstance().selectWhenReady(paymentOption, index);
+	}
+
+	/**
+	 * Selects International ID on Credit Eval Page for OVR and fills out ID details
+	 * @param permitNumber is Study/Work permit number to set
+	 * @param permitExpYear is permit expiry year to set
+	 * @param permitExpMonth is permit expiry month to set
+	 * @param permitExpDate is permit expiry date to set
+	 * @param passportNo is passport number to set
+	 * @param passportExpYear is passport expiry year to set
+	 * @param passportExpMonth is passport expiry month to set
+	 * @param passportExpDate is passport expiry date to set
+	 * @author Sameer.Ahuja
+	 */
+	public void selectInternationalID(String permitNumber,String permitExpYear, String permitExpMonth, String permitExpDate,
+									  String passportNo, String passportExpYear, String passportExpMonth, String passportExpDate){
+		if(getReusableActionsInstance().isElementVisible(internationalIdRadioBtn)){
+			getReusableActionsInstance().clickWhenReady(internationalIdRadioBtn);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(permitInput);
+			getReusableActionsInstance().executeJavaScriptClick(permitInput);
+			getReusableActionsInstance().enterText(permitInput, permitNumber, 30);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(permitExpiryYear);
+			getReusableActionsInstance().selectWhenReadyByVisibleText(permitExpiryYear, permitExpYear);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(permitExpiryMonth);
+			getReusableActionsInstance().selectWhenReady(permitExpiryMonth, Integer.parseInt(permitExpMonth));
+			getReusableActionsInstance().javascriptScrollByVisibleElement(permitExpiryDate);
+			getReusableActionsInstance().selectWhenReadyByVisibleText(permitExpiryDate, permitExpDate);
+
+			getReusableActionsInstance().javascriptScrollByVisibleElement(passportInput);
+			getReusableActionsInstance().executeJavaScriptClick(passportInput);
+			getReusableActionsInstance().enterText(passportInput, passportNo, 45);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(passportExpiryYear);
+			getReusableActionsInstance().selectWhenReadyByVisibleText(passportExpiryYear, passportExpYear);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(passportExpiryMonth);
+			getReusableActionsInstance().selectWhenReady(passportExpiryMonth, Integer.parseInt(passportExpMonth));
+			getReusableActionsInstance().javascriptScrollByVisibleElement(passportExpiryDay);
+			getReusableActionsInstance().selectWhenReadyByVisibleText(passportExpiryDay, passportExpDate);
+		}
 	}
 }
 
