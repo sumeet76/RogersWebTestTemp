@@ -170,7 +170,7 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath ="//input[@formcontrolname='enrouteEmail']")
     WebElement txtEmail;
 
-    @FindBy(xpath ="//input[@id='2']/ancestor::label[contains(@class,'ds-radioLabel')]//div[@class='ds-radioButton__outerCircle my-12']")
+    @FindBy(xpath ="//input[@id='4']/ancestor::label[contains(@class,'ds-radioLabel')]//div[@class='ds-radioButton__outerCircle my-12']")
     WebElement rdoTechInstallSlot;
 
     @FindBy(xpath = "//div[text()='Customer current']//following-sibling::div")
@@ -187,6 +187,9 @@ public class BundleBuilderPage extends BasePageClass {
 
     @FindBy(xpath = "//span[contains(text(),'Select the services') or contains(text(),'Sélectionnez les services demandés par le client')]")
     WebElement lblSelectServiceBundles;
+
+    @FindBy(xpath = "(//span[@title='Rogers']/ancestor::div[2]//child::span)[2]")
+    WebElement ovrSessionTimer;
 
 
     public void openFooter() throws InterruptedException {
@@ -505,5 +508,9 @@ public class BundleBuilderPage extends BasePageClass {
 
     public boolean verifyCustomerCurrentPlan(){
         return getReusableActionsInstance().isElementVisible(currentPlanSection, 5);
+    }
+
+    public boolean verifyOvrSessionTimer(){
+        return getReusableActionsInstance().isElementVisible(ovrSessionTimer, 20);
     }
 }

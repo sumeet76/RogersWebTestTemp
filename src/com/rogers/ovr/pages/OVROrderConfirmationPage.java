@@ -27,6 +27,20 @@ public class OVROrderConfirmationPage extends BasePageClass {
     @FindBy(xpath = "//h2[@translate='global.label.monthlyBill']/ancestor::button")
     WebElement monthlyCharges;
 
+    @FindBy(xpath = "//span[@translate='global.label.backToOverView']/ancestor::button")
+    WebElement backToOverviewPageBtn;
+
+    @FindBy(xpath = "//span[text()='Continue']/ancestor::button")
+    WebElement continueToOverviewBtn;
+
+    @FindBy(xpath = "//p[contains(text(),'Leave this page')]")
+    WebElement leavePagePopup;
+
+    @FindBy(xpath = "//a[contains(text(),'Overview')]")
+    WebElement overviewPageMenu;
+
+    String ovrOverviewPageUrlEN = "https://qa06-cfa.rogers.com/web/a/dashboard/overview?lang=en&userType=dealer&prov=ON";
+
     public boolean verifyOrderConfirmation() throws InterruptedException {
         getReusableActionsInstance().waitForElementVisibility(orderConfirmation, 15);
         return getReusableActionsInstance().isElementVisible(orderConfirmation);
@@ -45,5 +59,16 @@ public class OVROrderConfirmationPage extends BasePageClass {
         getReusableActionsInstance().waitForElementVisibility(monthlyCharges, 15);
         return getReusableActionsInstance().isElementVisible(monthlyCharges);
     }
+
+    public void clkBackToOverview(){
+        getReusableActionsInstance().clickWhenReady(backToOverviewPageBtn);
+        getReusableActionsInstance().waitForElementVisibility(leavePagePopup, 45);
+        getReusableActionsInstance().clickWhenReady(continueToOverviewBtn);
+    }
+
+    public boolean verifyOverviewPage(){
+        return getReusableActionsInstance().isElementVisible(overviewPageMenu, 120) && getReusableActionsInstance().verifyUrls(ovrOverviewPageUrlEN);
+    }
+
 
 }
