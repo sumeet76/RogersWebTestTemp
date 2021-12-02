@@ -113,11 +113,11 @@ public class RogersTechInstallPage extends BasePageClass {
 
 
 	@FindAll({
-	@FindBy(xpath ="//span[text()='Continue']")
-	//@FindBy(xpath ="//span[@translate='global.checkout.fulfillment.confirm']/ancestor::a")
+			@FindBy(xpath ="//a[@aria-label='Click here to continue']"),
+			@FindBy(xpath ="//span[text()='Continue']")
 	})
 	WebElement btnTechInstallContinue;
-//button[@aria-label='Click here to continue']
+//span[@translate='global.checkout.fulfillment.confirm']/ancestor::a
 
 
 	@FindBy(xpath ="//span[@id='ariaClickToContinue']/ancestor::a")
@@ -159,8 +159,10 @@ public class RogersTechInstallPage extends BasePageClass {
 	
 	@FindBy(xpath ="//label[@for='tech-install-option']//span[@class='ute-icon-check']")
 	WebElement chkPersonalizedInstall;
-	
-	@FindBy(xpath ="//h1[text()='Setup options']")
+
+	@FindAll({
+			@FindBy(xpath ="//h2[@translate='global.checkout.fulfillment.title']"),
+			@FindBy(xpath ="//h1[text()='Setup options']")})
 	WebElement txtTechInstalpage;
 
 	@FindAll({
