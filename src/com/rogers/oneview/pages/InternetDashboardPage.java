@@ -66,6 +66,9 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath="(//span[text()='Sélectionner' or text()='Select']/ancestor::button)[1]")
 	WebElement firstLowestPackage;
 
+	@FindBy(xpath="//div[text() ='Ignite TV Flex 20 + Sports']/ancestor::div[4]/ancestor::div[3]/child::div[2]/preceding::*[text()='Select'][1]")
+	WebElement btnIgnite10Select;
+
 
 
 	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button")
@@ -103,14 +106,15 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@class, 'expander ds-color-black pl-16 ds-button ')]")
 	WebElement expandSeeFullDetails;
 
-	@FindBy(xpath = "//div[text() ='Ignite TV Flex 10']/following::*[text()='1 Gbps'][1]/parent::span/parent::span")
+	@FindBy(xpath = "//div[text() ='Ignite TV Flex 10']/following::*[text()='150 Mbps'][1]/parent::span/parent::span")
+	//@FindBy(xpath = "//input[@id='ds-radio-input-id-9']")
 	WebElement downloadSpeed;
 
 	@FindBy(xpath="(//span[text()='Sélectionner' or text()='Select']/ancestor::button)[4]")
 	WebElement igniteTVPremiumPackage;
 
-	@FindBy(xpath = "(//span[text()='Sélectionner' or text()='Select']/ancestor::button)[2]")
-	WebElement igniteTvFlex10;
+	//@FindBy(xpath = "(//span[text()='Sélectionner' or text()='Select']/ancestor::button)[2]")
+	//WebElement igniteTvFlex10;
 
 
 
@@ -273,6 +277,12 @@ public class InternetDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
 		getReusableActionsInstance().getWhenReady(firstLowestPackage, 60).click();
 	}
+
+	public void selectButtonIgnite10() {
+		WebElement btn = getReusableActionsInstance().getWhenReady(btnIgnite10Select, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
+		getReusableActionsInstance().getWhenReady(btnIgnite10Select, 60).click();
+	}
 	/*
 	 * Clicks continue on change Internet package
 	 * @author suganay P
@@ -291,7 +301,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author suganya p
 	 * */
 	public void clickImmediateBill() {
-		getReusableActionsInstance().getWhenReady(btnImmediateBill,60).click();
+		getReusableActionsInstance().getWhenReady(btnImmediateBill,120).click();
 	}
 	/*Clicks on add smart stream button
 	 * @author suganya p
@@ -377,12 +387,12 @@ public class InternetDashboardPage  extends BasePageClass {
 
 
 
-	public void selectIgniteTVFlex10() {
+/*	public void selectIgniteTVFlex10() {
 		getReusableActionsInstance().staticWait(5000);
-		WebElement btn = getReusableActionsInstance().getWhenReady(igniteTvFlex10, 60);
+		WebElement btn = getReusableActionsInstance().getWhenReady(btnIgniteTvFlex10, 60);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
 		getReusableActionsInstance().getWhenReady(igniteTvFlex10, 60).click();
-	}
+	}*/
 
 	public void selectRadioImmediate()
 	{
@@ -407,9 +417,54 @@ public class InternetDashboardPage  extends BasePageClass {
 	public void selectDownloadSpeed()
 	{
 		getReusableActionsInstance().isElementVisible(downloadSpeed, 60);
-		getReusableActionsInstance().scrollToElementAndClick(downloadSpeed);
-		getReusableActionsInstance().clickIfAvailable(downloadSpeed,60);
+		//getReusableActionsInstance().scrollToElementAndClick(downloadSpeed);
+		getReusableActionsInstance().clickWhenReady(downloadSpeed,60);
 	}
+
+
+	//***********
+	@FindBy(xpath="//span[contains(text(),'Current bundle')]/following-sibling::span")
+	WebElement currentBundle;
+
+	public void selectPlanUnderSameTvPackage(String internetPlan) {
+		getReusableActionsInstance().staticWait(6000); /*To get the current tv bundle name and select the internet plan variation under the same tv bundle*/
+		String tvPackage= currentBundle.getText();
+		By planNameLocator = By.xpath("//div[contains(text(),'"+tvPackage.substring(10)+"')]/ancestor::div[@class='bundle-tile__body__row']/following-sibling::div//span[text()='"+internetPlan+"']");
+		getReusableActionsInstance().getWhenReady(planNameLocator, 120);
+		WebElement pkg = getDriver().findElement(planNameLocator);
+		getReusableActionsInstance().executeJavaScriptClick(pkg); /*To click on Select button*/
+		By selectLocator = By.xpath("//div[contains(text(),'"+tvPackage.substring(10)+"')]/ancestor::div[contains(@class,'bundle-tile__table')]/following-sibling::div//span[@translate='global.cta.select']");
+		getReusableActionsInstance().getWhenReady(selectLocator, 20);
+		WebElement button = getDriver().findElement(selectLocator);
+		getReusableActionsInstance().executeJavaScriptClick(button);
+	}
+
+	/*
+	 * Selects the internet plan variation form corresponding tv package
+	 * @author suganya P
+	 * */
+	public void selectPlanUnderTvPackage(String tvPackage,String internetPlan) {
+		getReusableActionsInstance().staticWait(6000);
+
+
+
+		/*To click on internet plan*/
+		By planNameLocator = By.xpath("//div[contains(text(),'"+tvPackage+"')]/ancestor::div[@class='bundle-tile__body__row']/following-sibling::div//span[text()='"+internetPlan+"']");
+		getReusableActionsInstance().getWhenReady(planNameLocator, 120);
+		WebElement pkg = getDriver().findElement(planNameLocator);
+		getReusableActionsInstance().executeJavaScriptClick(pkg);
+
+
+
+		/*To click on Select button*/
+		By selectLocator = By.xpath("//div[contains(text(),'"+tvPackage+"')]/ancestor::div[contains(@class,'bundle-tile__table')]/following-sibling::div//span[@translate='global.cta.select']");
+		getReusableActionsInstance().getWhenReady(selectLocator, 20);
+		WebElement button = getDriver().findElement(selectLocator);
+		getReusableActionsInstance().executeJavaScriptClick(button);
+	}
+
+
+
 
 }
 
