@@ -20,10 +20,33 @@ public class OneViewCH_Auto_TC_029_Internet_PackageDowngrade_ImmediateTest exten
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         getInternetDashboardPage().clickChangeInternetPackage();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
-        getInternetDashboardPage().selectFirstLowestPackage();
+        getInternetDashboardPage().selectPlanUnderTvPackage(TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getInternetBundle(),TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getDowngradePlanEn());
+       // getInternetDashboardPage().selectFirstLowestPackage();
+        //getInternetDashboardPage().selectDownloadSpeed();
+       // getInternetDashboardPage().selectPlanUnderSameTvPackage("150");
+       // getInternetDashboardPage().selectButtonIgnite10();
+       // reporter.reportLogWithScreenshot("First lowest package clicked");
+        //getInternetDashboardPage().selectPlanUnderSameTvPackage("150");
         reporter.reportLogWithScreenshot("Lowest Internet Package selected");
+        getInternetDashboardPage().clickContinueChangeInternetPackage();
         reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
-        getInternetDashboardPage().clickImmediateBill();
+        /*For Flex Channels - Exchange Later*/
+       /* getTVDashboardPage().clickExchangeLater();
+        reporter.reportLogWithScreenshot("Exchange later is selected");
+
+
+
+        /*Channels and Theme Packs*/
+       /* getTVDashboardPage().clickContinueChannelsAndThemePacks();
+        getTVDashboardPage().clickContinueOn4kTv();
+        reporter.reportLogWithScreenshot("Continue clicked on 4k TV dailog");
+        getTVDashboardPage().clickContinue4kChannelPack();
+        reporter.reportLogWithScreenshot("Continue clicked on 4k channels pack");*/
+
+
+
+        /*Billing option to be selected*/
+        getInternetDashboardPage().selectRadioImmediate();
         reporter.reportLogWithScreenshot("Immediate option is selected for billing cycle");
         getInternetDashboardPage().clickContinueOnSelectDateChange();
         reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
