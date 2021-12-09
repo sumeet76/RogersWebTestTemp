@@ -43,7 +43,9 @@ public class OneViewCH_Auto_1408_TC01_E2E_NAC_2P_TMP_PaymentMethod_MonthlyCharge
 		getRogersIgniteBundlesPage().fourKContentPopup();
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyPersonalizeYourChannels(),"Personalize You Channel displayed","Personalize You Channel did not Displayed");
-		getRogersIgniteBundlesPage().clkCheckOut();
+
+		getRogersIgniteBundlesPage().clkExpressCheckOut();
+
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContentPopup();
 
@@ -51,7 +53,7 @@ public class OneViewCH_Auto_1408_TC01_E2E_NAC_2P_TMP_PaymentMethod_MonthlyCharge
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		reporter.reportLogWithScreenshot("Campaign code");
 		getRogersIgniteCampaignPage().clickCampaignTab();
-		getRogersIgniteCampaignPage().enterCoupon("K5X");
+		getRogersIgniteCampaignPage().enterCoupon("K13");
 		reporter.reportLogWithScreenshot("Campaign code entered");
 		getRogersIgniteCampaignPage().clickApplyCoupon();
 		reporter.reportLogWithScreenshot("Campaign code applied");
@@ -86,17 +88,17 @@ public class OneViewCH_Auto_1408_TC01_E2E_NAC_2P_TMP_PaymentMethod_MonthlyCharge
 		getCreditCheckPage().selectPaymentOption(1);
 		reporter.reportLogWithScreenshot("Monthly charges");
 		getPaymentOptionsPage().clkContinue();
-		//		reporter.reportLogWithScreenshot("Order Review Page");
+				reporter.reportLogWithScreenshot("Order Review Page");
 //		reporter.hardAssert(getRogersOVCheckoutPage().verifySavingsExist(),"Savings section exists","Savings section does not exists");
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
     }
 
 	@BeforeMethod (alwaysRun=true)
 	@Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.nacTMP.contactDetails.getContactIDforDualPlay(), "", System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.nacTMP.contactDetails. getContactID2PPayMonthlyCharges(), "", System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
 	}
 
 	@AfterMethod(alwaysRun = true)

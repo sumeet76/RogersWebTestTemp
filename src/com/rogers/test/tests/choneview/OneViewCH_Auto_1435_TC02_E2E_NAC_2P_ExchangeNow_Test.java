@@ -54,7 +54,13 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_ExchangeNow_Test extends BaseTe
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContentPopup();
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
-		getRogersIgniteBundlesPage().clkCheckOut();
+//		getRogersIgniteBundlesPage().clkCheckOut();
+
+//		getRogersIgniteBundlesPage().clkContinue();
+		getRogersIgniteBundlesPage().clkExpressCheckOut();
+
+
+
 		reporter.reportLogWithScreenshot("Cart Summary");
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContentPopup();
@@ -101,7 +107,7 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_ExchangeNow_Test extends BaseTe
 	@BeforeMethod (alwaysRun=true)
 	@Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.anonymousData.contactDetails.getContactIDforDualPlay(), "", System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.anonymousData.contactDetails.getContactID2PExchangeNow(), "", System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
 	}
 
 	@AfterMethod(alwaysRun = true)

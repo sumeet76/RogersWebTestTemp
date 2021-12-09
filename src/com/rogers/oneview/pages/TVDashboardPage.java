@@ -300,9 +300,10 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void addToCartCallingPackage() {
-		getReusableActionsInstance().waitForElementVisibility(callingAddToCart, 120);
-		getReusableActionsInstance().javascriptScrollByVisibleElement(callingAddToCart);
-		getReusableActionsInstance().getWhenReady(callingAddToCart, 120).click();
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().waitForElementVisibility(callingAddToCart, 60);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().executeJavaScriptClick(callingAddToCart);
 	}
 	/**
 	 * Click Add Themepack

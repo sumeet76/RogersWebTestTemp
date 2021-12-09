@@ -25,11 +25,15 @@ public class OneViewCH_Auto_1435_TC01_E2E_NAC_2P_Test extends BaseTestClass {
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
 		reporter.reportLogWithScreenshot("Select Services Customer Wants");
 		getRogersIgniteBundlesPage().clkTVCheckbox();
+
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
+
 		reporter.reportLogWithScreenshot("Double Play Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
+
         reporter.reportLogWithScreenshot("offers loading");
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
+
         reporter.reportLogWithScreenshot("added to cart");
 
         getRogersIgniteBundlesPage().noPortInPopup();
@@ -39,11 +43,17 @@ public class OneViewCH_Auto_1435_TC01_E2E_NAC_2P_Test extends BaseTestClass {
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
 		getRogersIgniteBundlesPage().clkContinue();
+
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContentPopup();
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyPersonalizeYourChannels(),"Personalize You Channel displayed","Personalize You Channel did not Displayed");
-		getRogersIgniteBundlesPage().clkCheckOut();
+//		getRogersIgniteBundlesPage().clkCheckOut();
+
+//		getRogersIgniteBundlesPage().clkContinue();
+		getRogersIgniteBundlesPage().clkExpressCheckOut();
+
+
 		reporter.reportLogWithScreenshot("Cart Summary");
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContentPopup();
@@ -53,6 +63,7 @@ public class OneViewCH_Auto_1435_TC01_E2E_NAC_2P_Test extends BaseTestClass {
         getRogersIgniteBundlesPage().customerWishtoContinue();
 		reporter.hardAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
         reporter.reportLogWithScreenshot("Customer Profile");
+
 		getCustomerProfilePage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(),"Credit Evaluation Displayed","Credit Evaluation did not Displayed");
 		reporter.reportLogWithScreenshot("Credit Evaluation screen loaded");
@@ -68,6 +79,7 @@ public class OneViewCH_Auto_1435_TC01_E2E_NAC_2P_Test extends BaseTestClass {
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
         reporter.reportLogWithScreenshot("in person delivery");
+
 		getCreditCheckPage().clickInPersonDelivery();
 		getPaymentOptionsPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
@@ -75,15 +87,16 @@ public class OneViewCH_Auto_1435_TC01_E2E_NAC_2P_Test extends BaseTestClass {
 		getCreditCheckPage().verifyBillingAndPaymentOption();
 		getCreditCheckPage().clickDigitalFrontline();
         reporter.reportLogWithScreenshot("front line");
+
 		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
         reporter.reportLogWithScreenshot("card details entered");
-//		getPaymentOptionsPage().clkContinue();
-//		getRogersOVCheckoutPage().clkSubmit();
-//        reporter.reportLogWithScreenshot("submit order");
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//		reporter.reportLogWithScreenshot("Order Placed");
+		getPaymentOptionsPage().clkContinue();
+		getRogersOVCheckoutPage().clkSubmit();
+        reporter.reportLogWithScreenshot("submit order");
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.reportLogWithScreenshot("Order Placed");
 
     }
 
