@@ -31,11 +31,18 @@ public class ContactDetails {
 	private String contactIDSAIISSPayMonthlyCharges;
 	private String contactID2PExchangeNow;
 	private String contactIDISSPortIn;
-
-
 	private String contactID_STB_3P;
 	private String email;
 	private String confirmEmail;
+	private String paymentAmount;
+
+	public String getPaymentAmount() {return paymentAmount;}
+
+	public void setPaymentAmount(String paymentAmount) {
+		this.paymentAmount = paymentAmount;
+	}
+
+
 
 
 	private String contactID2PProfInstall;

@@ -449,7 +449,8 @@ public class TVDashboardPage  extends BasePageClass {
 	 */
 	public void clickSelectLowestTVPackage() {
 		WebElement btn=getReusableActionsInstance().getWhenReady(btnSelectLowestTvPackage, 60);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		//getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(btnSelectLowestTvPackage);
 		getReusableActionsInstance().getWhenReady(btnSelectLowestTvPackage, 60).click();
 				}
 	/*
@@ -830,7 +831,9 @@ public class TVDashboardPage  extends BasePageClass {
 	* @author suganya p
 	* */
 	public void clickExchangeLater() {
-		getReusableActionsInstance().getWhenReady(exchangeLater,60).click();
+		getReusableActionsInstance().isElementVisible(exchangeLater, 120);
+		getReusableActionsInstance().scrollToElementAndClick(exchangeLater);
+		getReusableActionsInstance().clickWhenReady(exchangeLater,60);
 
 	}
 	/*

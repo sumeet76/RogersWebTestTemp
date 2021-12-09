@@ -11,8 +11,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_TC_022_TV_PackageDowngradeTest extends BaseTestClass {
 	@Test (groups = {"RChangeTv","RegressionCHOV","SanityCHOV"})
-    public void checkTVPackageDowngrade() {
-		//getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+	public void checkTVPackageDowngrade() {
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC023_TVPackageDowngrade.getAccountDetails().getBan(), TestDataHandler.TC023_TVPackageDowngrade.getContactID());
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		reporter.reportLogWithScreenshot("Launched the account dashboard page");
@@ -20,26 +19,26 @@ public class OneViewCH_Auto_TC_022_TV_PackageDowngradeTest extends BaseTestClass
 		reporter.reportLogWithScreenshot("Launched the TV dashboard page");
 		getTVDashboardPage().clickChangeTvPackage();
 		reporter.reportLogWithScreenshot("Changed TV Package clicked");
-		getTVDashboardPage().clickSelectLowestTVPackage();
+		//getTVDashboardPage().selectTVPackage(TestDataHandler.TC023_TVPackageDowngrade.getAccountDetails().getDowngradePlanEn(),TestDataHandler.TC023_TVPackageDowngrade.getAccountDetails().getDowngradePlanFr());
 		reporter.reportLogWithScreenshot("Lowest TV Package selected");
 
 		//For Flex Channels - Exchange Later
-        getTVDashboardPage().clickContinueChangeTVPackage();
-        reporter.reportLogWithScreenshot("Continue clicked on change TV Package");
-        getTVDashboardPage().clickExchangeLater();
-        reporter.reportLogWithScreenshot("Exchange later is selected");
+		getTVDashboardPage().clickContinueChangeTVPackage();
+		reporter.reportLogWithScreenshot("Continue clicked on change TV Package");
+		getTVDashboardPage().clickExchangeLater();
+		reporter.reportLogWithScreenshot("Exchange later is selected");
 
 		getTVDashboardPage().clickContinueChannelsAndThemePacks();
 		getTVDashboardPage().clickContinueOn4kTv();
-		reporter.reportLogWithScreenshot("Continue clicked on 4k TV dailog"); 
+		reporter.reportLogWithScreenshot("Continue clicked on 4k TV dailog");
 		getTVDashboardPage().clickContinue4kChannelPack();
 		reporter.reportLogWithScreenshot("Continue clicked on 4k channels pack");
 		getTVDashboardPage().clickContinueOnSelectDateChange();
 		reporter.softAssert(getRogersOVOrderReviewPage().verifyMonthlyCharges(),"Monthly Charges Displayed","Failed to Navigate to Monthly Charges Page");
-//		getRogersOVOrderReviewPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		reporter.reportLogWithScreenshot("Order Placed");
-    }
+		//getRogersOVOrderReviewPage().clkSubmit();
+		//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		//reporter.reportLogWithScreenshot("Order Placed");
+	}
 
 	@BeforeMethod (alwaysRun=true)
 	@Parameters({"strBrowser", "strLanguage"})
@@ -51,9 +50,7 @@ public class OneViewCH_Auto_TC_022_TV_PackageDowngradeTest extends BaseTestClass
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }
-
-

@@ -44,9 +44,6 @@ public class OneViewCH_Auto_1416_TC01_E2E_NAC_SAI_ISS_TMP_Test extends BaseTestC
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clkExpressCheckOut();
 
-
-
-
 		reporter.reportLogWithScreenshot("Cart Summary");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 

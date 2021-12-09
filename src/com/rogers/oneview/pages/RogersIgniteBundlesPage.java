@@ -35,7 +35,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[text()='This address is serviceable!' or text()='Cette adresse peut être desservie!']")
 	WebElement serviceavailableMessage;
 
-	@FindBy(xpath = "//input[@id='ds-checkbox-id-0']/following-sibling::div")
+	@FindBy(xpath = "//input[@id='ds-checkbox-id-3']/following-sibling::div//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' TV ']")
 	WebElement tvCheckbox;
 
 	@FindBy(xpath="//span[@translate='global.cta.reviewAddonsLink'] | //span[contains(text(),'reviewed the customer’s add-ons') or contains(text(),'revue les options du client')]")
@@ -44,7 +44,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy (xpath = "//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' Internet ']")
 	WebElement internetCheckbox;
 
-	@FindBy(xpath = "//input[@id='ds-checkbox-id-3']/following-sibling::div")
+	@FindBy(xpath = "//input[@id='ds-checkbox-id-3']/following-sibling::div//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' Home Phone ']")
 	WebElement homePhoneCheckbox;
 
 	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[1]")
@@ -250,6 +250,13 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	WebElement adddressInputContainer;
 
 
+	@FindBy(xpath="//span[@translate='global.cta.continue']/ancestor::button")
+	WebElement continueButtonServiceable;
+
+	@FindBy(xpath="(//span[@translate='global.cta.continue']/ancestor::button)[2]")
+	WebElement continueButtonPTM;
+
+
 	/**
 	 * Click Load Offers button
 	 * @author aditi.jain
@@ -378,9 +385,11 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkContinue() {
+
 		getReusableActionsInstance().waitForElementVisibility(continueButton);
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);
 //		getReusableActionsInstance().clickWhenReady(continueButton,120);
+
 	}
 
 
@@ -468,17 +477,6 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	}
 
 	/**
-	 * Click Checkout for channels Exchange
-	 * @author chinnarao.vattam
-	 */
-	public void clkExpressCheckOut() {
-		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().waitForElementVisibility(expressCheckout, 45);
-		getReusableActionsInstance().executeJavaScriptClick(expressCheckout);
-//		getReusableActionsInstance().getWhenReady(expressCheckout,30).sendKeys(Keys.ENTER);
-
-	}
-	/**
 	 * Click Checkout for Cart Summary
 	 * @author chinnarao.vattam
 	 */	
@@ -537,6 +535,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	public void clkTVCheckbox() {
 		getReusableActionsInstance().waitForElementVisibility(tvCheckbox, 120);
 		getReusableActionsInstance().executeJavaScriptClick(tvCheckbox);
+
 	}
 	/**
 	 * Click Internet checkbox
@@ -878,4 +877,34 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().clickWhenReady(availabilityButton,30);
 	}
 
+	/**
+	 * Click Checkout for channels Exchange
+	 * @author chinnarao.vattam
+	 */
+	public void clkExpressCheckOut() {
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().waitForElementVisibility(expressCheckout, 45);
+		getReusableActionsInstance().executeJavaScriptClick(expressCheckout);
+//    getReusableActionsInstance().getWhenReady(expressCheckout,30).sendKeys(Keys.ENTER);
+	}
+
+	public void clkContinueServiceable()
+	{
+		getReusableActionsInstance().staticWait(2000);
+		getReusableActionsInstance().getWhenReady(continueButtonServiceable,30).click();
+	}
+	public void clkContinuePTM()
+	{
+		getReusableActionsInstance().clickWhenReady(continueButtonPTM,120);
+	}
+	public void clkContinueInternetAddon()
+	{
+		getReusableActionsInstance().staticWait(10000);
+		getReusableActionsInstance().staticWait(9000);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().getWhenReady(continueButton,60);
+		getReusableActionsInstance().executeJavaScriptClick(continueButton);
+	}
 }
+
+
