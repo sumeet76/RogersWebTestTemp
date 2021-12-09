@@ -20,9 +20,10 @@ public class OneViewCH_Auto_1624_TC01_E2E_Migration_1P_RHP_To_3P_Test extends Ba
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		getAccountOverViewPage().clickIgnite();
-		getRogersIgniteBundlesPage().clkUsethisAddress();
-		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
+		//getRogersIgniteBundlesPage().clkUsethisAddress();
+		reporter.reportLogWithScreenshot("Service Availability");
+		getRogersIgniteBundlesPage().clkContinueServiceable();
 		getRogersIgniteBundlesPage().clkTVCheckbox();
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
 		getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
@@ -34,18 +35,28 @@ public class OneViewCH_Auto_1624_TC01_E2E_Migration_1P_RHP_To_3P_Test extends Ba
 		reporter.reportLogWithScreenshot("keep number");
 		getRogersIgniteBundlesPage().noPortInPopup();
 		getRogersIgniteBundlesPage().clkCollapse();
+		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
+		reporter.reportLogWithScreenshot("Product Added");
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("review terms and condition");
 		getRogersIgniteBundlesPage().reviewTermsAndCondition();
-		reporter.reportLogWithScreenshot("point to mention");
+		reporter.reportLogWithScreenshot("Points to mention");
 		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
+/* getRogersIgniteBundlesPage().fourKTVPopup();
+   getRogersIgniteBundlesPage().contiue4KContent();*/
+		getRogersIgniteBundlesPage().clickExchangeLater();
+		reporter.reportLogWithScreenshot("add channel");
+   /*getTVDashboardPage().clickAddChannel();
+   reporter.reportLogWithScreenshot("Tab themepack");
+   getTVDashboardPage().clickThemepacksTab();
+   reporter.reportLogWithScreenshot("add themepack");
+   getTVDashboardPage().addThemepack();*/
+		getCustomerProfilePage().clkContinue();
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().contiue4KContent();
-		reporter.reportLogWithScreenshot("Exchange later");
-		getRogersIgniteBundlesPage().clickExchangeLater();
-		getCustomerProfilePage().clkContinue();
-		getCustomerProfilePage().clkContinue();
-		reporter.reportLogWithScreenshot("CheckOut for Cart Summary");
+		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
+		getRogersIgniteBundlesPage().clkContinueInternetAddon();
+		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clkCheckOut();
 		reporter.reportLogWithScreenshot("Cart Summary");
 		getRogersIgniteBundlesPage().customerWishtoContinue();
@@ -85,9 +96,9 @@ public class OneViewCH_Auto_1624_TC01_E2E_Migration_1P_RHP_To_3P_Test extends Ba
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		reporter.reportLogWithScreenshot("entered card details");
 
-		//getPaymentOptionsPage().clkContinue();
-		//getPaymentOptionsPage().clkContinue();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		getPaymentOptionsPage().clkContinue();
+		getPaymentOptionsPage().clkContinue();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
 
     }
@@ -100,7 +111,7 @@ public class OneViewCH_Auto_1624_TC01_E2E_Migration_1P_RHP_To_3P_Test extends Ba
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }

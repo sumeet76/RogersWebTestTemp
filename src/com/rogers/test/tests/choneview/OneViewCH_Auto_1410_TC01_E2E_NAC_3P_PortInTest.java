@@ -39,7 +39,12 @@ public class OneViewCH_Auto_1410_TC01_E2E_NAC_3P_PortInTest extends BaseTestClas
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContinue();
 //		getRogersIgniteBundlesPage().clkCollapse();
-		getRogersIgniteBundlesPage().clkCheckOut();
+//		getRogersIgniteBundlesPage().clkCheckOut();
+
+//		getRogersIgniteBundlesPage().clkContinue();
+		getRogersIgniteBundlesPage().clkExpressCheckOut();
+
+
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContinue();
 		reporter.reportLogWithScreenshot("Port In Service");

@@ -40,7 +40,7 @@ public class OneViewCH_Auto_1437_TC04_E2E_NAC_3P_Without4KTVExpressCheckout_Test
 			getRogersIgniteBundlesPage().noTo4KTVPopup();
 
 			reporter.reportLogWithScreenshot("continue to exchange later");
-			getRogersIgniteBundlesPage().clkCheckOut();
+			getRogersIgniteBundlesPage().clkExpressCheckOut();
 			reporter.reportLogWithScreenshot("Cart Summary");
 			getRogersIgniteBundlesPage().noTo4KTVPopup();
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
