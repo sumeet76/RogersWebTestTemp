@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import com.rogers.pages.base.BasePageClass;
+import utils.FormFiller;
 
 public class CreditCheckPage  extends BasePageClass {
 
@@ -71,7 +72,11 @@ public class CreditCheckPage  extends BasePageClass {
 	
 	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button[@ng-reflect-disabled='false']")
 	WebElement continueButton;
-	
+
+	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button")
+	WebElement continueButtonFromInstallOption;
+
+
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-expand']/ancestor::button")
 	WebElement collapse;
 
@@ -103,10 +108,48 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Credit Evaluation') or contains(text(),'Évaluation de crédit')]")
 	WebElement creditEvaluationHeader;
 
+
+
+
+	@FindBy(xpath ="//span[contains(text(),'professional') or contains(text(),'Professional') or contains(text(),'Installation professionnelle')]")
+	WebElement installationProfessional;
+
+	@FindBy(xpath ="(//ds-radio-button[@ng-reflect-disabled='false']/descendant::input[@name='dateTime'])[1]")
+	WebElement firstEnabledDateTime;
+
+	@FindBy(xpath ="//input[@formControlName='enrouteMobileNumber']")
+	WebElement mobileNumber;
+
+
+	@FindBy(xpath ="//input[@formcontrolname='enrouteMobileNumber']/ancestor::div[@class='input_container']")
+	WebElement mobileNumberContainer;
+
+
+	@FindBy(xpath ="//input[@formcontrolname='enrouteEmail']/ancestor::div[@class='input_container']")
+	WebElement emailAddressContainer;
+
+
+	@FindBy(xpath ="//input[@formControlName='enrouteEmail']")
+	WebElement emailMailAddress;
+
+	@FindBy(xpath ="//span[contains(text(),'Delivery by Appointment')]")
+	WebElement deliveryByAppointment;
+
+
+
+
+	@FindBy(xpath ="//input[@formControlName='specialInstructions']")
+	WebElement specialInstructions;
+
+
+
+
+
+
 	/**
-	 * Validates that the 'Installation Option(s)' is displayed
-	 * @author aditi.jain
-	 */
+             * Validates that the 'Installation Option(s)' is displayed
+             * @author aditi.jain
+             */
 	public boolean verifyInstallationOption() {
 		return getReusableActionsInstance().isElementVisible(installationOption,60);
 	}
@@ -221,6 +264,16 @@ public class CreditCheckPage  extends BasePageClass {
 	public void clkContinue() {	
 		getReusableActionsInstance().clickWhenReady(continueButton);
 	}
+
+
+	/**
+	 * Click Continue Button after Credit Information Entered
+	 * @author aditi.jain
+	 */
+	public void clkContinueInstallationOption() {
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().clickWhenReady(continueButtonFromInstallOption, 10);
+	}
 	/**
 	 * Click "No, continue" button to negate cancellation
 	 * @author aditi.jain
@@ -277,21 +330,53 @@ public class CreditCheckPage  extends BasePageClass {
 	}
 
 
-
-
-
-
-
-
 	/**
 	 * Select Payment Option
-	 * @param provinc is the Province to set
 	 * @author aditi.jain
 	 */
 	public void selectPaymentOption(int index) {
 			getReusableActionsInstance().waitForElementVisibility(paymentOption, 45);
 			getReusableActionsInstance().scrollToElement(paymentOption);
 			getReusableActionsInstance().selectWhenReady(paymentOption, index);
+	}
+
+
+	public void selectProfessionalInstallation() {
+		getReusableActionsInstance().waitForElementVisibility(installationProfessional);
+		getReusableActionsInstance().executeJavaScriptClick(installationProfessional);
+	}
+
+
+	public void clickDateTimeRadioButton() {
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().scrollToElement(firstEnabledDateTime);
+		getReusableActionsInstance().executeJavaScriptClick(firstEnabledDateTime);
+	}
+	public void enterTextMobileNumber() {
+		getReusableActionsInstance().scrollToElement(mobileNumberContainer);
+		getReusableActionsInstance().executeJavaScriptClick(mobileNumberContainer);
+		mobileNumber.clear();
+		mobileNumber.sendKeys("4156542244");
+	}
+
+	public void enterEmailMailAddress () {
+		getReusableActionsInstance().scrollToElement(emailAddressContainer);
+		getReusableActionsInstance().executeJavaScriptClick(emailAddressContainer);
+		emailMailAddress.clear();
+		emailMailAddress.sendKeys("ADI@GMAIL.COM");
+	}
+
+	public void selectDeliveryByAppointment() {
+		getReusableActionsInstance().waitForElementVisibility(deliveryByAppointment);
+		getReusableActionsInstance().executeJavaScriptClick(deliveryByAppointment);
+	}
+
+
+	public void enterSpecialInstructions() {
+		getReusableActionsInstance().scrollToElement(specialInstructions);
+		getReusableActionsInstance().executeJavaScriptClick(specialInstructions);
+		specialInstructions.clear();
+		specialInstructions.sendKeys("test");
 	}
 }
 

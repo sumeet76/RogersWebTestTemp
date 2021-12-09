@@ -58,12 +58,19 @@ public class OneViewCH_Auto_1437_TC02_E2E_NAC_3P_ChannelAndThemepack_Test extend
 			reporter.reportLogWithScreenshot("continue to calling package");
 			getRogersIgniteBundlesPage().fourKTVPopup();
 			getRogersIgniteBundlesPage().fourKContentPopup();
+			reporter.reportLogWithScreenshot("Internet Addons");
+			getCustomerProfilePage().goToTheBottom();
+			getCustomerProfilePage().clkContinue();
+			reporter.reportLogWithScreenshot("Calling cart - Add to cart");
 			getTVDashboardPage().addToCartCallingPackage();
 
 			reporter.reportLogWithScreenshot("add calling card");
 			getCustomerProfilePage().clkContinue();
 			reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
-			getRogersIgniteBundlesPage().clkCheckOut();
+
+//		    getRogersIgniteBundlesPage().clkExpressCheckOut();
+
+
 			reporter.reportLogWithScreenshot("Cart Summary");
 //			reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 			reporter.reportLogWithScreenshot("checkout to cart summary");
