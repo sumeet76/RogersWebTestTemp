@@ -45,7 +45,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//input[@id='email' or (contains(@formcontrolname,'email') and  not(contains(@formcontrolname,'Confirm')))]")
 	WebElement inputEmail;
 
-	@FindBy(xpath = "(//div[contains(.,'Confirm E-mail Address')])[11]")
+	@FindBy(xpath = "(//div[contains(.,'Confirm E-mail Address')])[11] | //input[@name='confirmEmail']/parent::div")
 	WebElement confirmEmailCreateProfile;
 
 	@FindBy(xpath = "//input[@id='confirmEmail' or @id='cemail' or contains(@formcontrolname,'Confirm') or contains(@formcontrolname,'confirm')]")
