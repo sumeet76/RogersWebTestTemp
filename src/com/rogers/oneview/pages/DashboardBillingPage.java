@@ -1,7 +1,6 @@
 package com.rogers.oneview.pages;
 
 import com.rogers.pages.base.BasePageClass;
-import javafx.scene.chart.ScatterChart;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
