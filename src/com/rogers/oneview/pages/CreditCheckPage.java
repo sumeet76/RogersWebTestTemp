@@ -12,16 +12,16 @@ public class CreditCheckPage  extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[1]")
+	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[1] | (//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[1]")
 	WebElement year;
 
-	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[2]")
+	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[2] | (//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[2]")
 	WebElement month;
 
-	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[3]")
+	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[3] | (//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[3]")
 	WebElement date;
 
-	@FindBy(xpath = "//span[contains(text(),'Your first ID option')]/ancestor::span//following-sibling::select")
+	@FindBy(xpath = "//span[contains(text(),'Your first ID option') or contains(text(), 'Votre première pièce d’identité')]/ancestor::span//following-sibling::select")
 	WebElement iD;
 
 
@@ -31,40 +31,40 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath = "//div[@translate='chc.label.creditCheckMessageForTenure']")
 	WebElement noIDRequired;
 
-	@FindBy(xpath = "//span[contains(text(),'Select Province')]/ancestor::span//following-sibling::select")
+	@FindBy(xpath = "//span[contains(text(),'Select Province') or contains(text(),'Sélectionner une province')]/ancestor::span//following-sibling::select")
 	WebElement province;
 
-	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[1]")
+	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[1] | (//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[1]")
 	WebElement licenseExpiryYear;
 
-	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[3]")
+	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[3] | (//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[3]")
 	WebElement licenseExpiryDay;
 
-	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[2]")
+	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[2] | (//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[2]")
 	WebElement licenseExpiryMonth;
 
-	@FindBy(xpath = "//span[contains(text(),'License Number')]/ancestor::span/parent::div")
+	@FindBy(xpath = "//span[contains(text(),'License Number') or contains(text(),'Numéro du permis')]/ancestor::span/parent::div")
 	WebElement licenseNoContainer;
 
-	@FindBy(xpath = "//span[contains(text(),'License Number')]/ancestor::span//following-sibling::div/child::input")
+	@FindBy(xpath = "//span[contains(text(),'License Number') or contains(text(),'Numéro du permis')]/ancestor::span//following-sibling::div/child::input")
 	WebElement licenseNoInput;
 
-	@FindBy(xpath = "//span[contains(text(),'Your second ID option')]/ancestor::span//following-sibling::select")
+	@FindBy(xpath = "//span[contains(text(),'Your second ID option') or contains(text(),'Deuxieme piece d’identite')]/ancestor::span//following-sibling::select")
 	WebElement secondID;
 
 	@FindBy(xpath = "//span[contains(text(),'Second ID') or contains(text(),'Deuxième pièce')]/parent::div/parent::div//input/parent::div")
 	WebElement passportContainer;
 
-	@FindBy(xpath = "//span[contains(text(),'Passport number')]/ancestor::span//following-sibling::div/child::input")
+	@FindBy(xpath = "//span[contains(text(),'Passport number') or contains(text(),'Numéro de passeport')]/ancestor::span//following-sibling::div/child::input")
 	WebElement passportInput;
 
-	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-passport/descendant::select)[1]")
+	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-passport/descendant::select)[1] | (//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-passport/descendant::select)[1]")
 	WebElement passportExpiryYear;
 
-	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-passport/descendant::select)[2]")
+	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-passport/descendant::select)[2] | (//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-passport/descendant::select)[2]")
 	WebElement passportExpiryMonth;
 
-	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-passport/descendant::select)[3]")
+	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-passport/descendant::select)[3] | (//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-passport/descendant::select)[3]")
 	WebElement passportExpiryDay;
 
 	@FindBy(xpath = "//span[contains(text(),'The customer authorizes') or contains(text(),'Le client autorise Rogers à obtenir des renseignements')]/parent::div/ancestor::ds-checkbox//div[1]")
@@ -82,7 +82,6 @@ public class CreditCheckPage  extends BasePageClass {
 
 	@FindBy(xpath = "//h2[@translate='global.checkout.fulfillment.installationOption']")
 	WebElement installationOption;
-
 
 	@FindAll({
 			@FindBy(xpath ="//div[@class='ds-checkbox__box my-12']"),
@@ -108,8 +107,20 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Credit Evaluation') or contains(text(),'Évaluation de crédit')]")
 	WebElement creditEvaluationHeader;
 
+	@FindBy(xpath = "//span[@translate='chc.label.internationalId']")
+	WebElement internationalIdRadioBtn;
 
+	@FindBy(xpath = "//span[contains(text(),'Permit Number')]/ancestor::span//following-sibling::div/child::input")
+	WebElement permitInput;
 
+	@FindBy(xpath = "(//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-work-study-permit/descendant::select)[1]")
+	WebElement permitExpiryYear;
+
+	@FindBy(xpath = "(//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-work-study-permit/descendant::select)[2]")
+	WebElement permitExpiryMonth;
+
+	@FindBy(xpath = "(//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-work-study-permit/descendant::select)[3]")
+	WebElement permitExpiryDate;
 
 	@FindBy(xpath ="//span[contains(text(),'professional') or contains(text(),'Professional') or contains(text(),'Installation professionnelle')]")
 	WebElement installationProfessional;
@@ -135,15 +146,8 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath ="//span[contains(text(),'Delivery by Appointment')]")
 	WebElement deliveryByAppointment;
 
-
-
-
 	@FindBy(xpath ="//input[@formControlName='specialInstructions']")
 	WebElement specialInstructions;
-
-
-
-
 
 
 	/**
@@ -340,6 +344,43 @@ public class CreditCheckPage  extends BasePageClass {
 			getReusableActionsInstance().selectWhenReady(paymentOption, index);
 	}
 
+	/**
+	 * Selects International ID on Credit Eval Page for OVR and fills out ID details
+	 * @param permitNumber is Study/Work permit number to set
+	 * @param permitExpYear is permit expiry year to set
+	 * @param permitExpMonth is permit expiry month to set
+	 * @param permitExpDate is permit expiry date to set
+	 * @param passportNo is passport number to set
+	 * @param passportExpYear is passport expiry year to set
+	 * @param passportExpMonth is passport expiry month to set
+	 * @param passportExpDate is passport expiry date to set
+	 * @author Sameer.Ahuja
+	 */
+	public void selectInternationalID(String permitNumber,String permitExpYear, String permitExpMonth, String permitExpDate,
+									  String passportNo, String passportExpYear, String passportExpMonth, String passportExpDate) {
+		if (getReusableActionsInstance().isElementVisible(internationalIdRadioBtn)) {
+			getReusableActionsInstance().clickWhenReady(internationalIdRadioBtn);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(permitInput);
+			getReusableActionsInstance().executeJavaScriptClick(permitInput);
+			getReusableActionsInstance().enterText(permitInput, permitNumber, 30);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(permitExpiryYear);
+			getReusableActionsInstance().selectWhenReadyByVisibleText(permitExpiryYear, permitExpYear);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(permitExpiryMonth);
+			getReusableActionsInstance().selectWhenReady(permitExpiryMonth, Integer.parseInt(permitExpMonth));
+			getReusableActionsInstance().javascriptScrollByVisibleElement(permitExpiryDate);
+			getReusableActionsInstance().selectWhenReadyByVisibleText(permitExpiryDate, permitExpDate);
+
+			getReusableActionsInstance().javascriptScrollByVisibleElement(passportInput);
+			getReusableActionsInstance().executeJavaScriptClick(passportInput);
+			getReusableActionsInstance().enterText(passportInput, passportNo, 45);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(passportExpiryYear);
+			getReusableActionsInstance().selectWhenReadyByVisibleText(passportExpiryYear, passportExpYear);
+			getReusableActionsInstance().javascriptScrollByVisibleElement(passportExpiryMonth);
+			getReusableActionsInstance().selectWhenReady(passportExpiryMonth, Integer.parseInt(passportExpMonth));
+			getReusableActionsInstance().javascriptScrollByVisibleElement(passportExpiryDay);
+			getReusableActionsInstance().selectWhenReadyByVisibleText(passportExpiryDay, passportExpDate);
+		}
+	}
 
 	public void selectProfessionalInstallation() {
 		getReusableActionsInstance().waitForElementVisibility(installationProfessional);

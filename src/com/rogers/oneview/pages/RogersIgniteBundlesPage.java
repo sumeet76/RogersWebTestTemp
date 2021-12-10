@@ -76,7 +76,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[@translate='global.cta.checkout']/ancestor::button | //span[contains(text(), 'Checkout') or contains(text(), 'Passer à la caisse')]" )
 	WebElement checkOutFromCartSummary;
 
-	@FindBy(xpath = "//span[contains(text(), 'Express')]/ancestor::button" )
+
+	@FindBy(xpath = "//span[contains(text(), 'Express') or contains(text(), 'Paiement')]/ancestor::button" )
 	WebElement expressCheckout;
 
 
@@ -474,6 +475,16 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().waitForElementVisibility(checkOutFromCartSummary, 45);
 		getReusableActionsInstance().getWhenReady(checkOutFromCartSummary,30).sendKeys(Keys.ENTER);
 
+	}
+
+	/**
+	 * Click Express Checkout in OVR
+	 * @author Sameer.Ahuja
+	 */
+	public void clkExpressCheckout() {
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().waitForElementVisibility(expressCheckout, 45);
+		getReusableActionsInstance().getWhenReady(expressCheckout,30).sendKeys(Keys.ENTER);
 	}
 
 	/**

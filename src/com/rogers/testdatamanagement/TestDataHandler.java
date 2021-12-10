@@ -2,7 +2,6 @@ package com.rogers.testdatamanagement;
 
 import com.rogers.yaml.pojo.*;
 import org.testng.ITestNGMethod;
-import org.yaml.snakeyaml.Yaml;
 
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -282,6 +281,11 @@ public class TestDataHandler {
 	public static AccountData tc138;
 	public static AccountData tc139;
 	public static AccountData RHPManage_AddOns;
+	public static OvrReusableData ovrReusableData;
+	public static OvrReusableData ovrMigrationData2PInternetAndTvTo2P;
+	public static OvrReusableData ovrWirelessNacATL;
+	public static  OvrReusableData ovrWirelessNacON;
+	public static OvrConfigData ovrConfigData;
 	public static  AccountData RemoveThemepack1544Tc03;
 	public static AccountData InternetDashboardSupportLinks;
 	public static AccountData ChangePaymentMethod;
@@ -322,6 +326,11 @@ public class TestDataHandler {
 		}
 		if(strTestMethodName.contains("search.")||strTestMethodName.contains("serviceability.")) {
 			//No yaml data files to initialize
+			match = true;
+		}
+		if(strTestMethodName.contains("ovr.")){
+			//OVR Data files
+			ovrDataInit();
 			match = true;
 		}
 		if (!match) {
@@ -634,5 +643,14 @@ public class TestDataHandler {
 		ChangeTvViaServiceability=YamlHandler.getOVAccountData("ChangeTvViaServiceability");
 		Make_a_Payment_EN= YamlHandler.getOVAccountData("Make_a_Payment_EN");
 		Oasys_Gap_Closure_Change_Internet_via_Serviceability_Model= YamlHandler.getOVAccountData("Oasys_Gap_Closure_Change_Internet_via_Serviceability_Model");
+	}
+
+	private static void ovrDataInit() throws FileNotFoundException {
+		ovrConfigData= YamlHandler.getOvrConfigData();
+		ovrReusableData=YamlHandler.getOvrReusableData("ReUsabledata");
+		ovrMigrationData2PInternetAndTvTo2P=YamlHandler.getOvrReusableData("Migration_Data_2P_to_2P_PortIn_Internet");
+		ovrWirelessNacATL = YamlHandler.getOvrReusableData("WirelessCX_NAC_ATL");
+		ovrWirelessNacON = YamlHandler.getOvrReusableData("WirelessCX_NAC_ON");
+		anonymousData = YamlHandler.getContactData("AnonymousData");
 	}
 }
