@@ -22,13 +22,18 @@ public class TokenDetails {
 	private String expiryMonth5;
 	private String expiryYear5;
 	private String cvv5;
+	private String number;
 
+
+
+	public String getNumber() {return number;}
 	public String getNumber1(){return number1;}
 	public String getNumber2(){return number2;}
 	public String getNumber3(){return number3;}
 	public String getNumber4(){return number4;}
 	public String getNumber5(){return number5;}
 
+	public void setNumber(String number) {this.number = number;}
 	public void setNumber1(String number1){
 		this.number1=number1;
 	}
@@ -42,6 +47,7 @@ public class TokenDetails {
 	public void setNumber5(String number5){
 		this.number5=number5;
 	}
+
 
 	public String getExpiryMonth1(){
 		return expiryMonth1;

@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import com.rogers.pages.base.BasePageClass;
 
-public class RogersOVOrderConfirmationPage  extends BasePageClass {
+public class  RogersOVOrderConfirmationPage  extends BasePageClass {
 
 	public RogersOVOrderConfirmationPage(WebDriver driver) {
 		super(driver);

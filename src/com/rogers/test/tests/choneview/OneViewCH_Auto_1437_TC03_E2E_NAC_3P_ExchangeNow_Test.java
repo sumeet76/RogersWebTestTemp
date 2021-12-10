@@ -57,7 +57,10 @@ public class OneViewCH_Auto_1437_TC03_E2E_NAC_3P_ExchangeNow_Test extends BaseTe
 			getRogersIgniteBundlesPage().fourKTVPopup();
 			getRogersIgniteBundlesPage().fourKContinue();
 			reporter.reportLogWithScreenshot("continue to exchange later");
-			getRogersIgniteBundlesPage().clkCheckOut();
+			getRogersIgniteBundlesPage().clkExpressCheckOut();
+
+
+
 			reporter.reportLogWithScreenshot("Cart Summary");
 			getRogersIgniteBundlesPage().fourKTVPopup();
 			getRogersIgniteBundlesPage().fourKContinue();

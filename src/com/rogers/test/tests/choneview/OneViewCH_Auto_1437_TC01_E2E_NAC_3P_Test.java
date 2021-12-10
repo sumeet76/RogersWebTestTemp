@@ -37,10 +37,11 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_Test extends BaseTestClass {
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 			reporter.reportLogWithScreenshot("Product Added");
 			getRogersIgniteBundlesPage().clkContinue();
+
 			getRogersIgniteBundlesPage().fourKTVPopup();
 			getRogersIgniteBundlesPage().fourKContinue();
 			reporter.reportLogWithScreenshot("continue to exchange later");
-			getRogersIgniteBundlesPage().clkCheckOut();
+			getRogersIgniteBundlesPage().clkExpressCheckOut();
 			reporter.reportLogWithScreenshot("Cart Summary");
 			getRogersIgniteBundlesPage().fourKTVPopup();
 			getRogersIgniteBundlesPage().fourKContinue();
@@ -80,10 +81,10 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_Test extends BaseTestClass {
 			getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 			getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 			reporter.reportLogWithScreenshot("Payment screen");
-//			getPaymentOptionsPage().clkContinue();
-//			reporter.reportLogWithScreenshot("submit order");
-//			getRogersOVCheckoutPage().clkSubmit();
-//			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+getPaymentOptionsPage().clkContinue();
+	reporter.reportLogWithScreenshot("submit order");
+			getRogersOVCheckoutPage().clkSubmit();
+			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 			reporter.reportLogWithScreenshot("Order Placed");
 		
     }

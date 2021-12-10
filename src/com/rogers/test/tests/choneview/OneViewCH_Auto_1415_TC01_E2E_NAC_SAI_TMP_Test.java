@@ -34,7 +34,14 @@ public class OneViewCH_Auto_1415_TC01_E2E_NAC_SAI_TMP_Test extends BaseTestClass
 		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
-		getRogersIgniteBundlesPage().clkCheckOut();
+//		getRogersIgniteBundlesPage().clkCheckOut();
+
+		getRogersIgniteBundlesPage().clkContinue();
+		getRogersIgniteBundlesPage().clkExpressCheckOut();
+
+
+
+
 		reporter.reportLogWithScreenshot("Cart Summary");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 
