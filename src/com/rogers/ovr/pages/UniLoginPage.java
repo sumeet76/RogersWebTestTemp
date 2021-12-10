@@ -12,27 +12,30 @@ public class UniLoginPage extends BasePageClass {
         super(driver);
     }
 
-    @FindBy(xpath = "//*[@id='dsa-accordion-panel-0-body-0']/div/raap-dealer-code-auth/section/form/ds-form-field/div/div[1]")
+    @FindBy(xpath = "//span[text()='Entrer code de concessionnaire' or text()='Enter dealer code']//ancestor::span[1]//parent::div")
     WebElement eledealercode;
 
-    @FindBy(id = "ds-form-input-id-0")
+    @FindBy(xpath = "//span[text()='Entrer code de concessionnaire' or text()='Enter dealer code']//ancestor::span[1]//preceding-sibling::input")
     WebElement txtdealercode;
 
-    @FindBy(xpath = "//*[text()=' Submit ']")
+    @FindBy(xpath = "//span[text()=' Soumettre ' or text()=' Submit ']")
     WebElement btnSubmit;
     @FindBy(xpath ="//*[text()=' Accept / Accepter ']" )
     WebElement btnaccept;
 
-    String sspbtn_xpath = "//span[contains(text(),'SSP Rogers SSP_ENV')]";
+    String sspbtn_xpath = "//span[contains(text(),'SSP Rogers SSP_ENV') or contains(text(),'PVS Rogers SSP_ENV')]";
 
-    @FindBy(xpath = "//input[@value='Next']")
+    @FindBy(xpath = "//input[@value='Next' or @value='suivante']")
     WebElement corpLoginNextBtn;
 
-    @FindBy(xpath = "//a[text()='Skip setup']")
+    @FindBy(xpath = "//a[contains(text(),'Skip setup') or contains(text(),'sauter')]")
     WebElement corpLoginSkip2faSetup;
 
     @FindBy(id= "idBtn_Back")
     WebElement staySignedInNO;
+
+    @FindBy(xpath = "//a[contains(text(),'FR')]")
+    WebElement frenchLanguageBtn;
 
     /**
      * Login to unilogin page by entering dealer code
@@ -75,6 +78,12 @@ public class UniLoginPage extends BasePageClass {
             }
         }
 
+    }
+
+    public void changeChampToFR(){
+        if(getReusableActionsInstance().isElementVisible(btnaccept,5))
+        {getReusableActionsInstance().clickWhenVisible(btnaccept);}
+        getReusableActionsInstance().clickWhenReady(frenchLanguageBtn);
     }
 
 }

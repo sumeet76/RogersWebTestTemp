@@ -17,7 +17,7 @@ public class AccountSearchPage extends BasePageClass {
     @FindBy(id = "searchCustomerBtn")
     WebElement btnSearch;
 
-    @FindBy(xpath = "//button[contains(text(),'Accept') or contains(text(),'J'accepte')]")
+    @FindBy(xpath = "//button[contains(text(),'Accept') or contains(text(),'Accepter')]")
     WebElement acceptNoticeBtn;
 
 
@@ -34,11 +34,14 @@ public class AccountSearchPage extends BasePageClass {
     WebElement frenchLanguageBtn;
 
     public void changelanguageToFR(){
+        if(getReusableActionsInstance().isElementVisible(acceptNoticeBtn, 10)){
+            getReusableActionsInstance().clickWhenReady(acceptNoticeBtn);
+        }
         getReusableActionsInstance().clickWhenReady(frenchLanguageBtn);
     }
 
     public void searchForAccountAndSelectEnv(String banNumber,String postalCode,String env) {
-        if(getReusableActionsInstance().isElementVisible(acceptNoticeBtn, 5)){
+        if(getReusableActionsInstance().isElementVisible(acceptNoticeBtn, 10)){
             getReusableActionsInstance().clickWhenReady(acceptNoticeBtn);
         }
         searchForAccount(banNumber,postalCode);

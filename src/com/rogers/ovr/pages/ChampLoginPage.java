@@ -21,13 +21,13 @@ public class ChampLoginPage extends BasePageClass {
     @FindBy(id= "idBtn_Back")
     WebElement staySignedInNO;
 
-    @FindBy(xpath = "//span[text()='Sign in']")
+    @FindBy(xpath = "//span[contains(text(),'Sign in') or contains(text(),'identifier')]")
     WebElement corpSignInBtn;
 
-    @FindBy(xpath = "//input[@value='Next']")
+    @FindBy(xpath = "//input[@value='Next' or @value='suivante']")
     WebElement corpLoginNextBtn;
 
-    @FindBy(xpath = "//a[text()='Skip setup']")
+    @FindBy(xpath = "//a[contains(text(),'Skip setup') or contains(text(),'sauter')]")
     WebElement corpLoginSkip2faSetup;
 
 

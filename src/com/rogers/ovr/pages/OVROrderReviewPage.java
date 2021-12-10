@@ -34,6 +34,7 @@ public class OVROrderReviewPage extends BasePageClass {
     }
 
     public boolean verifyMonthlyCharges(){
+        getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyCharges);
         return getReusableActionsInstance().isElementVisible(monthlyCharges, 10);
     }
 }
