@@ -37,19 +37,23 @@ public class OneViewCH_Auto_1413_TC01_E2E_NAC_3P_STBs_Test extends BaseTestClass
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 			reporter.reportLogWithScreenshot("Product Added");
 			getRogersIgniteBundlesPage().clkContinue();
-			reporter.reportLogWithScreenshot("continue");
-			getRogersIgniteBundlesPage().fourKTVPopup();
-			getRogersIgniteBundlesPage().fourKContinue();
+//			reporter.reportLogWithScreenshot("continue");
+//			getRogersIgniteBundlesPage().fourKTVPopup();
+//			getRogersIgniteBundlesPage().fourKContinue();
+
+
+
 			reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
-			getRogersIgniteBundlesPage().clkCheckOut();
-			reporter.reportLogWithScreenshot("Cart Summary");
+		    getRogersIgniteBundlesPage().clkExpressCheckOut();
+		    reporter.reportLogWithScreenshot("Cart Summary");
 			getRogersIgniteBundlesPage().fourKTVPopup();
 			getRogersIgniteBundlesPage().fourKContinue();
+			reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"cart summary header found","cart summary header not found");
+
 			getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
-			reporter.reportLogWithScreenshot("CheckOut cart summary");
+			reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
 			getRogersIgniteBundlesPage().customerWishtoContinue();
 
-			reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
 			reporter.reportLogWithScreenshot("Customer Profile");
 			getCustomerProfilePage().clkContinue();
 			reporter.reportLogWithScreenshot("Evaluation form");

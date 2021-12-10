@@ -49,7 +49,7 @@ public class OneViewCH_Auto_TC01_TV_Dashboard_ValidateLinks_Test  extends BaseTe
         reporter.reportLogWithScreenshot("Clicked Ok");
         getTVDashboardPage().clickResetParentalControl();
         getTVDashboardPage().clickContinueReset();
-        reporter.reportLogWithScreenshot("Clicked Continue on Reset Parental Controls");
+       reporter.reportLogWithScreenshot("Clicked Continue on Reset Parental Controls");
         getTVDashboardPage().clickOK();
         reporter.reportLogWithScreenshot("Test Passed");
 

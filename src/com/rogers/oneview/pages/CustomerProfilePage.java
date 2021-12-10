@@ -37,7 +37,14 @@ public class CustomerProfilePage  extends BasePageClass {
 	public void clkContinue() {	
 		getReusableActionsInstance().getWhenReady(continueButton,120).sendKeys(Keys.ENTER);
 		
-	}	
-		
-	
+	}
+
+	/**
+	 * go to the bottom
+	 * @author aditi.jain
+	 */
+	public void goToTheBottom() {
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+
+	}
 }

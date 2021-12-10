@@ -47,7 +47,11 @@ public class OneViewCH_Auto_1417_TC01_E2E_NAC_3P_TMP_Test extends BaseTestClass 
 
 
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
-		getRogersIgniteBundlesPage().clkCheckOut();
+//		getRogersIgniteBundlesPage().clkCheckOut();
+
+//		getRogersIgniteBundlesPage().clkContinue();
+		getRogersIgniteBundlesPage().clkExpressCheckOut();
+
 
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContinue();
@@ -109,7 +113,6 @@ public class OneViewCH_Auto_1417_TC01_E2E_NAC_3P_TMP_Test extends BaseTestClass 
 
 		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("Order Review Page");
-		reporter.reportLogWithScreenshot("submit order");
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");

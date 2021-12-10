@@ -23,7 +23,7 @@ public class OneViewCH_Auto_TC_026_TV_PackageUpgrade_ImmediateTest extends BaseT
         reporter.reportLogWithScreenshot("Launched the TV dashboard page");
         getTVDashboardPage().clickChangeTvPackage();
         reporter.reportLogWithScreenshot("Changed TV Package clicked");
-        getTVDashboardPage().selectTVPackage(TestDataHandler.TC026_TVPackageUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.TC023_TVPackageDowngrade.accountDetails.getUpgradePlanFr());
+        //getTVDashboardPage().selectTVPackage(TestDataHandler.TC026_TVPackageUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.TC023_TVPackageDowngrade.accountDetails.getUpgradePlanFr());
         reporter.reportLogWithScreenshot("Upgrade TV Package selected");
 
         /*For Flex Channels - Exchange Later*/
@@ -43,7 +43,7 @@ public class OneViewCH_Auto_TC_026_TV_PackageUpgrade_ImmediateTest extends BaseT
         reporter.softAssert(getRogersOVOrderReviewPage().verifyMonthlyCharges(),"Monthly Charges Displayed","Failed to Navigate to Monthly Charges Page");
 //        getRogersOVOrderReviewPage().clkSubmit();
 //        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+       // reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)
@@ -60,5 +60,3 @@ public class OneViewCH_Auto_TC_026_TV_PackageUpgrade_ImmediateTest extends BaseT
     }
 
 }
-
-

@@ -24,12 +24,40 @@ public class ContactDetails {
 	private String contactIDSAITMP;
 	private String contactIDSAIISSTMP;
 	private String contactID_STB_ISS;
-
-
+	private String contactIDISSProfInstall;
+	private String contactIDISSDeliveryByAppt;
+	private String contactID2PPayMonthlyCharges;
+	private String contactIDSAIPayMonthlyCharges;
+	private String contactIDSAIISSPayMonthlyCharges;
+	private String contactID2PExchangeNow;
+	private String contactIDISSPortIn;
 	private String contactID_STB_3P;
 	private String email;
 	private String confirmEmail;
+	private String paymentAmount;
 
+	public String getPaymentAmount() {return paymentAmount;}
+
+	public void setPaymentAmount(String paymentAmount) {
+		this.paymentAmount = paymentAmount;
+	}
+
+
+
+
+	private String contactID2PProfInstall;
+	private String contactID2PDeliveryByAppt;
+	private String contactID3PProfInstall;
+	private String contactID3PDeliveryByAppt;
+	private String contactIDSAIProfInstall;
+	private String contactIDSAIDeliveryByAppt;
+	private String contactID2PAddOnExpressCheckout;
+	private String contactID3PAddOnExpressCheckout;
+	private String contactIDSAIAddOnExpressCheckout;
+	private String contactIDSAIISSAddOnExpressCheckout;
+
+
+			;
 	public ContactDetails() {
 		
 	}
@@ -339,5 +367,201 @@ public class ContactDetails {
 	 * @param  confirmEmail for new Profile
 	 */
 	public void setConfirmEmail(String confirmEmail) {this.confirmEmail = confirmEmail;}
+
+
+
+	/**
+	 * @param contactIDISSProfInstall
+	 */
+	public void setContactIDISSProfInstall (String contactIDISSProfInstall) {
+		this.contactIDISSProfInstall = contactIDISSProfInstall;
+	}
+
+	public String getContactIDISSProfInstall() {
+		return contactIDISSProfInstall;
+	}
+
+
+	/**
+	 * @param contactIDISSDeliveryByAppt
+	 */
+	public void setContactIDISSDeliveryByAppt (String contactIDISSDeliveryByAppt) {
+		this.contactIDISSDeliveryByAppt= contactIDISSDeliveryByAppt;
+	}
+
+	public String getContactIDISSDeliveryByAppt() {
+		return contactIDISSDeliveryByAppt;
+	}
+
+
+	/**
+	 * @param contactID2PPayMonthlyCharges
+	 */
+	public void setContactID2PPayMonthlyCharges (String contactID2PPayMonthlyCharges) {
+		this.contactID2PPayMonthlyCharges= contactID2PPayMonthlyCharges;
+	}
+
+	public String getContactID2PPayMonthlyCharges() {
+		return contactID2PPayMonthlyCharges;
+	}
+
+
+	/**
+	 * @param contactIDSAIPayMonthlyCharges
+	 */
+	public void setContactIDSAIPayMonthlyCharges (String contactIDSAIPayMonthlyCharges) {
+		this.contactIDSAIPayMonthlyCharges= contactIDSAIPayMonthlyCharges;
+	}
+
+	public String getContactIDSAIPayMonthlyCharges() {
+		return contactIDSAIPayMonthlyCharges;
+	}
+
+
+
+	/**
+	 * @param contactIDSAIISSPayMonthlyCharges
+	 */
+	public void setContactIDSAIISSPayMonthlyCharges (String contactIDSAIISSPayMonthlyCharges) {
+		this.contactIDSAIISSPayMonthlyCharges= contactIDSAIISSPayMonthlyCharges;
+	}
+
+	public String getContactIDSAIISSPayMonthlyCharges() {
+		return contactIDSAIISSPayMonthlyCharges;
+	}
+
+
+	/**
+	 * @param contactID2PExchangeNow
+	 */
+	public void setContactID2PExchangeNow (String contactID2PExchangeNow) {
+		this.contactID2PExchangeNow= contactID2PExchangeNow;
+	}
+
+	public String getContactID2PExchangeNow() {
+		return contactID2PExchangeNow;
+	}
+
+
+
+	/**
+	 * @param contactIDISSPortIn
+	 */
+	public void setContactIDISSPortIn (String contactIDISSPortIn) {
+		this.contactIDISSPortIn= contactIDISSPortIn;
+	}
+
+	public String getContactIDISSPortIn() {
+		return contactIDISSPortIn;
+	}
+
+	/**
+	 * @param contactID2PProfInstall
+	 */
+	public void setContactID2PProfInstall (String contactID2PProfInstall) {
+		this.contactID2PProfInstall= contactID2PProfInstall;
+	}
+
+	public String getContactID2PProfInstall() {
+		return contactID2PProfInstall;
+	}
+
+
+	/**
+	 * @param contactID3PProfInstall
+	 */
+	public void setContactID3PProfInstall (String contactID3PProfInstall) {
+		this.contactID3PProfInstall= contactID3PProfInstall;
+	}
+
+	public String getContactID3PProfInstall() {
+		return contactID3PProfInstall;
+	}
+
+
+	/**
+	 * @param contactIDSAIProfInstall
+	 */
+	public void setContactIDSAIProfInstall (String contactIDSAIProfInstall) {
+		this.contactIDSAIProfInstall= contactIDSAIProfInstall;
+	}
+
+	public String getContactIDSAIProfInstall() {
+		return contactIDSAIProfInstall;
+	}
+
+
+	/**
+	 * @param contactID2PDeliveryByAppt
+	 */
+	public void setContactID2PDeliveryByAppt (String contactID2PDeliveryByAppt) {
+		this.contactID2PDeliveryByAppt= contactID2PDeliveryByAppt;
+	}
+
+	public String getContactID2PDeliveryByAppt() {
+		return contactID2PDeliveryByAppt;
+	}
+
+	/**
+	 * @param contactID3PDeliveryByAppt
+	 */
+	public void setContactID3PDeliveryByAppt (String contactID3PDeliveryByAppt) {
+		this.contactID3PDeliveryByAppt= contactID3PDeliveryByAppt;
+	}
+
+	public String getContactID3PDeliveryByAppt() {
+		return contactID3PDeliveryByAppt;
+	}
+	/**
+	 * @param contactIDSAIDeliveryByAppt
+	 */
+	public void setContactIDSAIDeliveryByAppt (String contactIDSAIDeliveryByAppt) {
+		this.contactIDSAIDeliveryByAppt= contactIDSAIDeliveryByAppt;
+	}
+
+	public String getContactIDSAIDeliveryByAppt() {
+		return contactIDSAIDeliveryByAppt;
+	}
+
+	/**
+	 * @param contactID2PAddOnExpressCheckout
+	 */
+	public void setContactID2PAddOnExpressCheckout (String contactID2PAddOnExpressCheckout) {
+		this.contactID2PAddOnExpressCheckout= contactID2PAddOnExpressCheckout;
+	}
+
+	public String getContactID2PAddOnExpressCheckout() {
+		return contactID2PAddOnExpressCheckout;
+	}
+	/**
+	 * @param contactID3PAddOnExpressCheckout
+	 */
+	public void setContactID3PAddOnExpressCheckout (String contactID3PAddOnExpressCheckout) {
+		this.contactID3PAddOnExpressCheckout= contactID3PAddOnExpressCheckout;
+	}
+
+	public String getContactID3PAddOnExpressCheckout() {
+		return contactID3PAddOnExpressCheckout;
+	}
+	/**
+	 * @param contactIDSAIAddOnExpressCheckout
+	 */
+	public void setContactIDSAIAddOnExpressCheckout(String contactIDSAIAddOnExpressCheckout) {
+		this.contactIDSAIAddOnExpressCheckout= contactIDSAIAddOnExpressCheckout;
+	}
+
+	public String getContactIDSAIAddOnExpressCheckout() {
+		return contactIDSAIAddOnExpressCheckout;
+	}
+	/**
+	 * @param contactIDSAIISSAddOnExpressCheckout
+	 */
+	public void setContactIDSAIISSAddOnExpressCheckout(String contactIDSAIISSAddOnExpressCheckout) {
+		this.contactIDSAIISSAddOnExpressCheckout= contactIDSAIISSAddOnExpressCheckout;
+	}
+
+	public String getContactIDSAIISSAddOnExpressCheckout() {
+		return contactIDSAIISSAddOnExpressCheckout;
+	}
 
 }

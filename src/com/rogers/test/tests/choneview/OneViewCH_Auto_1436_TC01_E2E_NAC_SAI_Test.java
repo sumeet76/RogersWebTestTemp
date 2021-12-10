@@ -38,12 +38,18 @@ public class OneViewCH_Auto_1436_TC01_E2E_NAC_SAI_Test extends BaseTestClass {
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
-		getRogersIgniteBundlesPage().clkCheckOut();
+//		getRogersIgniteBundlesPage().clkCheckOut();
+
+		getRogersIgniteBundlesPage().clkContinue();
+		getRogersIgniteBundlesPage().clkExpressCheckOut();
+
+
+
 		reporter.reportLogWithScreenshot("Cart Summary");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		getRogersIgniteBundlesPage().customerWishtoContinue();
-        reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
-        reporter.reportLogWithScreenshot("Customer Profile");
+		reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
+		reporter.reportLogWithScreenshot("Customer Profile");
 		getCustomerProfilePage().clkContinue();
 		reporter.reportLogWithScreenshot("credit eval form");
 		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
