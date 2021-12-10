@@ -186,7 +186,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	WebElement depositAmt;
 
 	@FindAll({
-		@FindBy(xpath = "//p[contains(.,'Total')]/following::p[1]"),
+		@FindBy(xpath = "//p[@data-test='modal-credit-evaluation-deposit']/following-sibling::div[@class='d-flex']//div[contains(@class,'text-right')]//p[2]"),
 		@FindBy(xpath = "//div[contains(@class,'ds-price__amountDollars')]")
 	})
 	WebElement downPaymentAmt;
@@ -707,6 +707,7 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public void selectYearDropdownOption(String strYear) {
 		getReusableActionsInstance().staticWait(8000);
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
 		getReusableActionsInstance().moveToElementAndClick(inputYearDOB,10);
 		getReusableActionsInstance().selectWhenReady(inputYearDOB, strYear);
 
@@ -1059,8 +1060,8 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public void clkBillingContinueButton() {
 		getReusableActionsInstance().waitForElementTobeClickable(btnBillingContinueButton , 10);
-		getReusableActionsInstance().scrollToElement(btnBillingContinueButton);
-		getReusableActionsInstance().getWhenReady(btnBillingContinueButton,30).click();
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
+		getReusableActionsInstance().clickWhenVisible(btnBillingContinueButton,30);
 		getReusableActionsInstance().staticWait(3000);
 	}
 

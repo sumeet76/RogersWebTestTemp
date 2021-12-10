@@ -225,6 +225,9 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[@data-test='addons-removal-modal-button-primary']")
     WebElement btnExistingAddonModalContinue;
 
+    @FindBy(xpath = "//button[@title='Continue']")
+    WebElement btnContinueDeviceProtection;
+
 
     /**
      * Select Device Protection Header on Plan config page
@@ -1136,6 +1139,22 @@ public class RogersOVPlanConfigPage extends BasePageClass {
      */
     public void clkContinueOnExistingAddonModal() {
         getReusableActionsInstance().clickIfAvailable(btnExistingAddonModalContinue);
+    }
+
+    /**
+     * This method clicks on continue button in device protection modal if present
+     * @author praveen.kumar7
+     */
+    public void clkContinueDeviceProtection() {
+        getReusableActionsInstance().clickIfAvailable(btnContinueDeviceProtection,5);
+    }
+
+    /**
+     * This method clicks on continue button in caller ID stepper
+     * @author praveen.kumar7
+     */
+    public void clkContinueBtnCallerId() {
+        getReusableActionsInstance().clickWhenVisible(callerIDContinue);
     }
 
 }

@@ -129,10 +129,13 @@ public class RogersBFA_OV_TC21_NAC_CableCustomer_MediumRisk_POTG_PassportAndSIN_
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         getRogersOVReviewOrderPage().clkSubmitOrderBtn();
         reporter.reportLogWithScreenshot("Submit Order Button Pressed");
-        if(isPaymentRequired) {
+        if(getRogersOVOrderReviewPage().isPaymentRequired()) {
             //getRogersOVOrderReviewPage().clkContinue();
             getRogersOVOneTimePaymentPage().clkPreAuthorizedCreditCardTokenButton();
-            getRogersOVCheckoutPage().setPreAuthCreditTokenNumber(TestDataHandler.buyFlowsOVtestCase21.getTokenNumber());
+            getRogersOVOneTimePaymentPage().setNameonCard();
+            getRogersOVOneTimePaymentPage().setTokenDetails(TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getNumber1(),
+                    TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getExpiryMonth1(),
+                    TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getExpiryYear1());
             reporter.reportLogWithScreenshot("Rogers Payment Page");
             getRogersOVPaymentPage().clkSubmit();
         }

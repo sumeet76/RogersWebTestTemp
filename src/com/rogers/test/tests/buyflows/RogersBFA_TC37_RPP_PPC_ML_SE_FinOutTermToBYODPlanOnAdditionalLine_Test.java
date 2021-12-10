@@ -41,6 +41,7 @@ public class RogersBFA_TC37_RPP_PPC_ML_SE_FinOutTermToBYODPlanOnAdditionalLine_T
         reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
         reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
         getRogersDeviceCataloguePage().selectCTN(TestDataHandler.tc37RPP_PPC_ML_SE_BYODToBYODPlanOnAdditionalLine.getCtn());
+        getRogersDeviceCataloguePage().clkContinueBtnPPCShareNonShareModal();
         //--------------------------------------------Plan Config page----------------------------------------------
         reporter.hardAssert(getRogersPlanConfigPage().verifyPPCPlanConfigPage(),"PPC Build plan page is loaded successfully","PPC build plan page is not loaded");
         getRogersPlanConfigPage().clkChangePlan();

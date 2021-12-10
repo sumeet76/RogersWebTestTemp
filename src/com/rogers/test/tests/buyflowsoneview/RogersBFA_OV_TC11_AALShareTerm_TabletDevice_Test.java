@@ -61,7 +61,8 @@ public class RogersBFA_OV_TC11_AALShareTerm_TabletDevice_Test extends BaseTestCl
 		//reporter.hardAssert(getRogersOVPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersOVPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.buyFlowsOVtestCase11.getTalkOptionIndex())),
 				//"Talk option selected and Addons page in expanded state","Addons page not in expanded state");
 		getRogersOVPlanConfigPage().clickPreCartAddonsContinueButton();
-		getRogersOVPlanConfigPage().clkContinueCallerID();
+		getRogersOVPlanConfigPage().clkContinueDeviceProtection();
+		getRogersOVPlanConfigPage().clkContinueBtnCallerId();
 		//String monthlyFeesAmountWithTax = getRogersOVPlanConfigPage().getMonthlyFeesAmount();
 		//String oneTimeFeesAmountWithTax = getRogersOVPlanConfigPage().getOneTimeFeesAmount();
 		//reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees " + monthlyFeesAmountWithTax + "2. oneTimeFee " + oneTimeFeesAmountWithTax);
