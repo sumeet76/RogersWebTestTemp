@@ -18,6 +18,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 public class RogersBFA_OV_TC04_PPCMultiLineKeepingSamePlanOnAdditionalLine_Test extends BaseTestClass {
     @Test(groups = {"RegressionBFA","RegressionOVBFA","PPCOvBFA"})
     public void ppcOnMultiLineKeepingSamePlanOnAdditionalLineFlowTest() {
+        getEnvironmentSelectionPage().enterEmpNoAndName(TestDataHandler.bfaOneViewConfig.getUsrID(),TestDataHandler.bfaOneViewConfig.getLoginID());
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.buyFlowsOVtestCase04.getBanNo(), TestDataHandler.buyFlowsOVtestCase04.getContactID());
         reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page");

@@ -413,7 +413,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//P[@data-test='timeslot-appointment']")
 	WebElement lblAppointmentTime;
 
-	@FindBy(xpath = "(//table[contains(@data-test,'ov-credit-eval')]//td)[2]")
+	@FindBy(xpath = "//table[contains(@data-test,'ov-credit-eval')]//th[contains(.,'Downpayment')]/following-sibling::td")
 	WebElement downPaymentAmt;
 
 	@FindBy(xpath = "//rch-security-code//ds-form-field")
@@ -1058,20 +1058,29 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	/**
 	 * Enter the Pre Authorized Credit Card Token Number on the Credit Evaluation Stepper , SecondaryID Pre Authorized Credit Card Token NumberField
-	 *
 	 * @param strTokenNumber from Yaml file
 	 * @author Sidhartha.Vadrevu
 	 */
-
 	public void setPreAuthCreditTokenNumber(String strTokenNumber) {
+		txtInputTokenNumber.click();
+		txtInputTokenNumber.sendKeys(strTokenNumber);
+		getReusableActionsInstance().staticWait(3000);
+		txtExpiryDate.click();
+		getReusableActionsInstance().getWhenReady(txtDateOfExpiry, 10).sendKeys("1223");
+	}
+
+	/**
+	 * This method enters the Pre Authorized CC Token Number on the Credit Evaluation Stepper , SecondaryID Pre Authorized Credit Card Token NumberField
+	 * @param strTokenNumber to enter in Token number field
+	 * @author praveen.kumar7
+	 */
+	public void setPreAuthCreditTokenNumberBillingAndOTPPage(String strTokenNumber) {
 		getReusableActionsInstance().clickWhenReady(nameOnTheCard);
 		getReusableActionsInstance().getWhenReady(inputNameOnTheCard, 3).sendKeys(FormFiller.generateRandomName() + FormFiller.generateRandomName());
 		txtInputTokenNumber.click();
 		txtInputTokenNumber.sendKeys(strTokenNumber);
 		getReusableActionsInstance().staticWait(3000);
 		txtExpiryDate.click();
-		//String strCCExpMonth = TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getExpiryMonth3();
-		//String strCCExpYear = TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getExpiryYear3();
 		getReusableActionsInstance().getWhenReady(txtDateOfExpiry, 10).sendKeys("1223");
 		String strCVV = FormFiller.generateCVVNumber();
 		getReusableActionsInstance().waitForElementVisibility(txtContainerCVV, 50);
@@ -1481,7 +1490,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 		new Select(getDriver().findElement(By.xpath("//select[@data-test='select-payment-option']"))).selectByVisibleText(strPaymentMethod);
 		if (strPaymentMethod.equalsIgnoreCase("Pre-authorized Credit Card - Token") || strPaymentMethod.equalsIgnoreCase("Pre-authorized Credit Card - Token-fr")) {
 			strTokenNumber = TestDataHandler.bfaOneViewPaymentInfo.getTokenDetails().getNumber3();
-			setPreAuthCreditTokenNumber(strTokenNumber);
+			setPreAuthCreditTokenNumberBillingAndOTPPage(strTokenNumber);
 		}
 /*		getReusableActionsInstance().scrollToElementAndClick(drpSelectPaymentMethod);
 		getReusableActionsInstance().selectWhenReady(drpSelectPaymentMethod, strPaymentMethod);*/

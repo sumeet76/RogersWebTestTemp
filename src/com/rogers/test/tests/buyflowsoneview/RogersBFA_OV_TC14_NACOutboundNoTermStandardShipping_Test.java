@@ -60,6 +60,7 @@ public class RogersBFA_OV_TC14_NACOutboundNoTermStandardShipping_Test extends Ba
 		reporter.hardAssert(getRogersOVPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersOVPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.buyFlowsOVtestCase14.getTalkOptionIndex())),
 				"Talk option selected and Addons page in expanded state","Addons page not in expanded state");
 		getRogersOVPlanConfigPage().clickPreCartAddonsContinueButton();
+		getRogersOVPlanConfigPage().clkContinueDeviceProtection();
 		getRogersOVPlanConfigPage().clickCartSummaryContinueButton();
 		//############################CheckoutPage############################//
 		//***************Create Profile Stepper*************//

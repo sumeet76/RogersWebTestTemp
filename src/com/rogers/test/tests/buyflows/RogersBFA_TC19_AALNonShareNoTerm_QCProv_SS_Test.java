@@ -54,8 +54,6 @@ public class RogersBFA_TC19_AALNonShareNoTerm_QCProv_SS_Test extends BaseTestCla
         reporter.reportLogPassWithScreenshot("Device config page displayed");
         getRogersDeviceConfigPage().clickContinueButton();
         //-------------------------------------Plan config page----------------------------------------------
-        reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
-                "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
         reporter.hardAssert(getRogersPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
         reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
         getRogersPlanConfigPage().clkRadioButtonNoTerm();

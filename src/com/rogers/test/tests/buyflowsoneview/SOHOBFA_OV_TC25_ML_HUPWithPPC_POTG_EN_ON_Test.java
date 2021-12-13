@@ -58,6 +58,7 @@ public class SOHOBFA_OV_TC25_ML_HUPWithPPC_POTG_EN_ON_Test extends BaseTestClass
 		reporter.reportLogPassWithScreenshot("Talk option selected and addons option in expanded state");
 		getRogersOVPlanConfigPage().clickPreCartAddonsContinueButton();
 		reporter.reportLogWithScreenshot("Addons option selected");
+		getRogersOVPlanConfigPage().clkContinueDeviceProtection();
 		getRogersOVPlanConfigPage().clickCartSummaryContinueButton();
 		getRogersOVPlanConfigPage().clkAdditionalLineOptions();
 		//---------------------------------------------Checkout pages---------------------------------------------------

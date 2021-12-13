@@ -66,8 +66,8 @@ public class RogersBFA_TC23_AAL_TERM_MLNonShare_BasicPlan_StdShipping_Test exten
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         //getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc23AALTermMLNonSEBasicPlanStdShipping.getDeviceCostIndex()));
         reporter.reportLogPassWithScreenshot("Device cost option selected");
-        //getRogersPlanConfigPage().clkBasicTab();
-        //getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc23AALTermMLNonSEBasicPlanStdShipping.getDataOptionIndex());
+        getRogersPlanConfigPage().clkBasicTab();
+        getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc23AALTermMLNonSEBasicPlanStdShipping.getDataOptionIndex());
         getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
         reporter.reportLogPassWithScreenshot("Data option selected");
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc23AALTermMLNonSEBasicPlanStdShipping.getTalkOptionIndex())),

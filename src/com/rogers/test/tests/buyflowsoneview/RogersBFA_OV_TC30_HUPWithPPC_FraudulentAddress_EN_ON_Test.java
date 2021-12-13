@@ -24,6 +24,7 @@ public class RogersBFA_OV_TC30_HUPWithPPC_FraudulentAddress_EN_ON_Test extends B
 		reporter.hardAssert(getAccountOverViewPage().verifyAndClickWirelessCTN(TestDataHandler.buyFlowsOVtestCase30.getCtn()),"CTN Found","CTN Not Found");
 		getAccountOverViewPage().clkCloseBtnAssignDataManager();
 		getAccountOverViewPage().setLanguageFrench();
+		getAccountOverViewPage().clkCloseBtnAssignDataManager();
 		//----------------------------------------------Dashboard page--------------------------------------------------
 		reporter.hardAssert(getRogersOVWirelessDetailsPage().verifyWirelessPageLoad() ,"Wireless page loaded" , "Wireless page not loaded");
 		reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
