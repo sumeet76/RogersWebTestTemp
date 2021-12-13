@@ -28,7 +28,8 @@ public class RogersEnums {
 		redesignrogers,
 		buyflowsoneview,
 		search,
-		serviceability
+		serviceability,
+		ovr
 		  } ;
     
     public enum SauceCapabilities{
