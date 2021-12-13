@@ -3,6 +3,7 @@ package com.rogers.test.base;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.rogers.oneview.pages.*;
+import com.rogers.ovr.pages.*;
 import com.rogers.pages.RogersBuildPlanPage;
 import com.rogers.pages.RogersChooseAddonsPage;
 import com.rogers.pages.RogersChoosePhonePage;
@@ -171,6 +172,16 @@ public class BaseTestClass {
     protected static final ThreadLocal<RogersHomePageServiceability> RogersHomePageServiceabilityThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersSecurityPackagesPage> RogersSecurityPackagesPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersOVInstallationPage> RogersOVInstallationPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<ChampLoginPage> ChampLoginPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<UniLoginPage> UniLoginPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<OVROrderReviewPage> OVROrderReviewPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<OVRAgreementPage> OVRAgreementPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<OVROrderConfirmationPage> OVROrderConfirmationPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<AccountSearchPage> AccountSearchPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<OvrDashboardPage> OvrDashboardPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<CheckAvailabilityPage> CheckAvailabilityPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<BundleBuilderPage>BundleBuilderPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<LNPEligibilityPage>LNPEligibilityPageThreadLocal = new ThreadLocal<>();
     protected  static final  ThreadLocal<CallerInformationPage>CallerInformationPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<DashboardProfilePage>DASHBOARD_PROFILE_PAGE_THREAD_LOCAL= new ThreadLocal<>();
     protected static final ThreadLocal<DashboardBillingPage>DASHBOARD_BILLING_PAGE_THREAD_LOCAL= new ThreadLocal<>();
@@ -650,12 +661,48 @@ public class BaseTestClass {
     public static RogersFinanceAccessoriesPage getRogersFinanceAccessoriesPagePage() {
         return RogersFinanceAccessoriesPagePageThreadLocal.get();
     }
+
+    public static ChampLoginPage getChampLoginPage() {
+        return ChampLoginPageThreadLocal.get();
+    }
+
+    public static UniLoginPage getUniLoginPage() {
+        return UniLoginPageThreadLocal.get();
+    }
+
+    public static AccountSearchPage getAccountSearchPage() {
+        return AccountSearchPageThreadLocal.get();
+    }
+
+    public static OvrDashboardPage getOvrDashboardPage() {
+        return OvrDashboardPageThreadLocal.get();
+    }
+
+    public static CheckAvailabilityPage getCheckAvailabilityPage() {
+        return CheckAvailabilityPageThreadLocal.get();
+    }
+
+    public static BundleBuilderPage getBundleBuilderPage() {
+        return BundleBuilderPageThreadLocal.get();
+    }
+
+    public static LNPEligibilityPage getLNPEligibilityPage() {
+        return LNPEligibilityPageThreadLocal.get();
+    }
+
+    public static OVROrderReviewPage getOVROrderReviewPage() {return OVROrderReviewPageThreadLocal.get();}
+
+    public  static OVRAgreementPage getOVRAgreementPage() {return  OVRAgreementPageThreadLocal.get();}
+
+    public static OVROrderConfirmationPage getOVROrderConfirmationPage() {return  OVROrderConfirmationPageThreadLocal.get();}
+
     public static DashboardProfilePage getDashboardProfilePage() {
         return DASHBOARD_PROFILE_PAGE_THREAD_LOCAL.get();
     }
     public static DashboardBillingPage getDashboardBillingPage() {
         return DASHBOARD_BILLING_PAGE_THREAD_LOCAL.get();
     }
+
 
 
     public Map<String, String> getRunParameters() {
@@ -761,6 +808,11 @@ public class BaseTestClass {
             case "search":
                 getDriver().get(strUrl + "&language=" + System.getProperty("Language").toLowerCase());
                 setImplicitWait(getDriver(), 30);
+                break;
+
+            case "ovr":
+                getDriver().get(strUrl);
+                setImplicitWait(getDriver(), 10);
                 break;
 
             default:
@@ -1171,6 +1223,24 @@ public class BaseTestClass {
             case "serviceability":
 
                 RogersHomePageServiceabilityThreadLocal.set(new RogersHomePageServiceability(getDriver()));
+
+            case "ovr":
+                ChampLoginPageThreadLocal.set(new com.rogers.ovr.pages.ChampLoginPage(getDriver()));
+                UniLoginPageThreadLocal.set(new com.rogers.ovr.pages.UniLoginPage(getDriver()));
+                AccountSearchPageThreadLocal.set(new com.rogers.ovr.pages.AccountSearchPage(getDriver()));
+                OvrDashboardPageThreadLocal.set(new com.rogers.ovr.pages.OvrDashboardPage(getDriver()));
+                CheckAvailabilityPageThreadLocal.set(new com.rogers.ovr.pages.CheckAvailabilityPage(getDriver()));
+                BundleBuilderPageThreadLocal.set(new com.rogers.ovr.pages.BundleBuilderPage(getDriver()));
+                LNPEligibilityPageThreadLocal.set(new com.rogers.ovr.pages.LNPEligibilityPage(getDriver()));
+                CustomerProfilePageThreadLocal.set(new CustomerProfilePage(getDriver()));
+                CreditCheckPageThreadLocal.set(new CreditCheckPage(getDriver()));
+                RogersTechInstallPageThreadLocal.set(new RogersTechInstallPage(getDriver()));
+                OVROrderReviewPageThreadLocal.set(new OVROrderReviewPage(getDriver()));
+                OVRAgreementPageThreadLocal.set(new OVRAgreementPage(getDriver()));
+                OVROrderConfirmationPageThreadLocal.set(new OVROrderConfirmationPage(getDriver()));
+                RogersIgniteBundlesPageThreadLocal.set(new RogersIgniteBundlesPage(getDriver()));
+                RogersOVCheckoutPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVCheckoutPage(getDriver()));
+                break;
 
 
             default:

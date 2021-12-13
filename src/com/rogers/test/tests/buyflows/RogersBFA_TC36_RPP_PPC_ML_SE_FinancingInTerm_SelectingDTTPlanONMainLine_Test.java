@@ -41,6 +41,7 @@ public class RogersBFA_TC36_RPP_PPC_ML_SE_FinancingInTerm_SelectingDTTPlanONMain
         reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
         reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
         getRogersDeviceCataloguePage().selectCTN(TestDataHandler.tc36RPP_PPC_ML_SE_SelectingDTTPlanOnMainLine.getCtn());
+        getRogersDeviceCataloguePage().clkContinueBtnPPCShareNonShareModal();
         //--------------------------------------------Plan Config page----------------------------------------------
         reporter.hardAssert(getRogersPlanConfigPage().verifyPPCPlanConfigPage(),"PPC Build plan page is loaded successfully","PPC build plan page is not loaded");
         getRogersPlanConfigPage().clkChangePlan();

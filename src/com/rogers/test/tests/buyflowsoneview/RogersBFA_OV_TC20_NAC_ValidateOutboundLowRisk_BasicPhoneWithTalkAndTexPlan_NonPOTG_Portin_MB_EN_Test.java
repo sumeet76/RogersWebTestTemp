@@ -110,11 +110,11 @@ public class RogersBFA_OV_TC20_NAC_ValidateOutboundLowRisk_BasicPhoneWithTalkAnd
         reporter.reportLogWithScreenshot(portinSuccessMessage);
         getRogersOVCheckoutPage().clkContinueBtnPorinStepper();
         //---------------------------------------------Billing & Payment Stepper------------------------------------------------
-        reporter.softAssert(getRogersOVCheckoutPage().isBillingOptionsTitleDisplayed(), "Billing Options Title Displayed", "Billing Options Title Not Present");
+        reporter.softAssert(getRogersOVCheckoutPage().isBillingOptionsTitleDisplayed(), "Billing Options Title Displayed",
+                "Billing Options Title Not Present");
         reporter.softAssert(getRogersOVCheckoutPage().isPaymentMethodDropdownPresent(),
                 "Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not disaplayed");
-        getRogersOVCheckoutPage().selectPayWithExistingCard();
-        reporter.reportLogWithScreenshot("CC option is selected");
+        getRogersOVCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.buyFlowsOVtestCase20.getPaymentMethod());
         getRogersOVCheckoutPage().clkBillingContinueButton();
         //----------------------------------------------Shipping Stepper----------------------------------------------------------
         getRogersOVCheckoutPage().clkDeliveryMethod("STANDARD");

@@ -59,6 +59,7 @@ public class RogersBFA_OV_TC08_AALShareTerm_BopisShipping_Test extends BaseTestC
 		reporter.hardAssert(getRogersOVPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersOVPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.buyFlowsOVtestCase08.getTalkOptionIndex())),
 				"Talk option selected and Addons page in expanded state","Addons page not in expanded state");
 		getRogersOVPlanConfigPage().clickPreCartAddonsContinueButton();
+		getRogersOVPlanConfigPage().clkContinueDeviceProtection();
 		getRogersOVPlanConfigPage().clkContinueCallerID();
 		//String monthlyFeesAmountWithTax = getRogersOVPlanConfigPage().getMonthlyFeesAmount();
 		//String oneTimeFeesAmountWithTax = getRogersOVPlanConfigPage().getOneTimeFeesAmount();
