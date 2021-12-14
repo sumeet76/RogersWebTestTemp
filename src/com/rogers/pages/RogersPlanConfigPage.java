@@ -244,6 +244,9 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[@title='Continue']")
     WebElement btnContinueDeviceProtection;
 
+    @FindBy(xpath = "//p[@data-test='stepper-2-edit-step-label']")
+    WebElement txtSelectDataOption;
+
 
     /**
      * Select Device Protection Header on Plan config page
@@ -1172,6 +1175,7 @@ public class RogersPlanConfigPage extends BasePageClass {
         }
         //getReusableActionsInstance().clickWhenVisible(By.xpath("//dsa-selection[contains(@data-test,'stepper-1-edit-step-selection-option-')]//label[@aria-label='"+planType+"']"));
         getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton);
+        getReusableActionsInstance().waitForElementVisibility(txtSelectDataOption);
         getReusableActionsInstance().staticWait(16000);
     }
 

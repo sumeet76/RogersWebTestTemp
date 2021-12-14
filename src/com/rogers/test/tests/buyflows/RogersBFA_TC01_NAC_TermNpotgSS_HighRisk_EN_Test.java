@@ -21,7 +21,7 @@ public class RogersBFA_TC01_NAC_TermNpotgSS_HighRisk_EN_Test extends BaseTestCla
   
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.buyflows, method);
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
     @Test(groups = {"RegressionBFA","NACBFA","RegressionOnlineBFA"})
@@ -107,11 +107,11 @@ public class RogersBFA_TC01_NAC_TermNpotgSS_HighRisk_EN_Test extends BaseTestCla
         reporter.softAssert(getRogersCheckoutPage().isCreditEvalPopupPresent(),"Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
         //reporter.softAssert(getRogersCheckoutPage().isCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed","Credit Evaluation Text not disaplayed on Modal");
         reporter.reportLogWithScreenshot("Credit Evaluation processing popup");
-        reporter.hardAssert(getRogersCheckoutPage().verifyClaDownPaymentModalPresent(),
+        /*reporter.hardAssert(getRogersCheckoutPage().verifyClaDownPaymentModalPresent(),
                 "CLA and Security deposit modal is displayed", "Cla and Security Deposit Modal is not dislayed");
         reporter.softAssert(getRogersCheckoutPage().verifyDownPaymentTextPresent(),
                 "Down payment info dislayed in modal", "Down payment info not dislayed in modal");
-        reporter.reportLogWithScreenshot("CLA/Down payment Modal");
+        reporter.reportLogWithScreenshot("CLA/Down payment Modal");*/
         String expectedDownPayment = getRogersCheckoutPage().setDownPayment(TestDataHandler.tc01NACTermNpotgSS.getRiskClass(),deviceCost);
         reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment),
                "Downpayment amount is displayed correctly", "Downpayment amoount is not displayed correctly");

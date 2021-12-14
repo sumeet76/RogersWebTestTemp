@@ -45,7 +45,7 @@ public class RogersBFA_TC30_PPC_SL_NonSE_FinancingOutTerm_TTPlan_Test extends Ba
         getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc30PPCSLNonSEFinToTTPlan.getNewPlanType());
         reporter.reportLogPassWithScreenshot("Plan Type is selected successfully");
         //getRogersPlanConfigPage().clickShowMoreDetails();
-        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc30PPCSLNonSEFinToTTPlan.getDataOptionIndex()),this.getClass().getSimpleName());
+        //getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc30PPCSLNonSEFinToTTPlan.getDataOptionIndex()),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Data option selected");
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc30PPCSLNonSEFinToTTPlan.getTalkOptionIndex())),
                 "Talk option selected and Addons page in expanded state","Addons page not in expanded state");

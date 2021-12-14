@@ -21,7 +21,7 @@ public class SOHOBFA_TC31_NAC_Term_MediumRisk_UE_PotgShipping_EN_Test extends Ba
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.buyflows, method);
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
 	@Test(groups = {"RegressionBFA","SOHONACBFA","SOHOBFA","RegressionOnlineBFA"})
@@ -135,11 +135,11 @@ public class SOHOBFA_TC31_NAC_Term_MediumRisk_UE_PotgShipping_EN_Test extends Ba
 				"CLA and Security deposit modal is displayed", "Cla and Security Deposit Modal is not dislayed");
 		reporter.softAssert(getRogersCheckoutPage().verifyDownPaymentTextPresent(),
 				"Down payment info dislayed in modal", "Down payment info not dislayed in modal");
-		reporter.reportLogWithScreenshot("CLA/Down payment Modal");
+		reporter.reportLogWithScreenshot("CLA/Down payment Modal");*/
 		String expectedDownPayment = getRogersCheckoutPage().setDownPayment(TestDataHandler.tc31SOHONACTermMediumRiskUEOptionPOTG.getRiskClass(),deviceCost);
 		reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment),
 				"Downpayment amount is displayed correctly", "Downpayment amount is not displayed correctly");
-		getRogersCheckoutPage().clkAcceptButton();*/
+		getRogersCheckoutPage().clkAcceptButton();
 		reporter.hardAssert(getRogersCheckoutPage().isIdentificationLabel(), "Credit Evaluation Successful",
 				"Credit Evaluation Identification Label not disaplayed");
 

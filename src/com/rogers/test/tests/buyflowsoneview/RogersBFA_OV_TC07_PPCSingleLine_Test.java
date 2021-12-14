@@ -18,6 +18,7 @@ public class RogersBFA_OV_TC07_PPCSingleLine_Test extends BaseTestClass {
 
     @Test(groups = {"RegressionBFA","RegressionOVBFA","PPCOvBFA"})
     public void ppcSingleLineFlowTest() {
+        getEnvironmentSelectionPage().enterEmpNoAndName(TestDataHandler.bfaOneViewConfig.getUsrID(),TestDataHandler.bfaOneViewConfig.getLoginID());
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.buyFlowsOVtestCase07.getBanNo(), TestDataHandler.buyFlowsOVtestCase07.getContactID());
         reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page");
