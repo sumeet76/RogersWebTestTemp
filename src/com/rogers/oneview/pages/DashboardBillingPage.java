@@ -34,13 +34,13 @@ public class DashboardBillingPage extends BasePageClass {
     @FindBy(xpath = "//section[@class='signup']//input")
     WebElement chkSignUp;
 
-    @FindBy(xpath = "//*[text()='Continue']")
+    @FindBy(xpath = "//*[text()='Continue' or text()='Continuer']")
     WebElement clkContinueForPayment;
 
-    @FindBy(xpath = "//*[text()='Pay Now']")
+    @FindBy(xpath = "//*[text()='Pay Now' or text()='Payez maintenant']")
     WebElement payNow;
 
-    @FindBy(xpath = "//*[text()='Done']")
+    @FindBy(xpath = "//*[text()='Done' or text()='Terminé']")
     WebElement clkDoneButton;
 
 
