@@ -55,9 +55,10 @@ public class ContactDetails {
 	private String contactID3PAddOnExpressCheckout;
 	private String contactIDSAIAddOnExpressCheckout;
 	private String contactIDSAIISSAddOnExpressCheckout;
+	private String phoneNo;
 
 
-			;
+	;
 	public ContactDetails() {
 		
 	}
@@ -563,5 +564,14 @@ public class ContactDetails {
 	public String getContactIDSAIISSAddOnExpressCheckout() {
 		return contactIDSAIISSAddOnExpressCheckout;
 	}
+	/**
+	 * @param phoneNo
+	 */
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo= phoneNo;
+	}
 
+	public String getPhoneNo() {
+		return phoneNo;
+	}
 }
