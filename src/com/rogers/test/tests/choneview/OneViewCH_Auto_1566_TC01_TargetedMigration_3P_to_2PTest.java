@@ -24,13 +24,13 @@ public class OneViewCH_Auto_1566_TC01_TargetedMigration_3P_to_2PTest extends Bas
 
 //                RogersIgniteBundlePage
         getRogersIgniteBundlesPage().clkContinue();
-        getRogersIgniteBundlesPage().clkUsethisAddress();
+       // getRogersIgniteBundlesPage().clkUsethisAddress();
         reporter.reportLogWithScreenshot("Service Availability-Success window");
         getRogersIgniteBundlesPage().clkContinue();
         getRogersIgniteBundlesPage().verifyRecommendedOffers();
         reporter.reportLogWithScreenshot("Targeted offer for the customer is displayed under the recommended offer section");
-        getRogersIgniteBundlesPage().clkTVCheckbox();
         getRogersIgniteBundlesPage().clkInternetCheckbox();
+        getRogersIgniteBundlesPage().clkTVCheckbox();
         reporter.reportLogWithScreenshot("Internet & TV checkboxes are Selected");
         getRogersIgniteBundlesPage().clkLoadOffers();
         getRogersIgniteBundlesPage().clkAddToCartForBestOffer();
@@ -38,10 +38,15 @@ public class OneViewCH_Auto_1566_TC01_TargetedMigration_3P_to_2PTest extends Bas
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(), "Product Added to Cart", "Failed");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
+        reporter.reportLogWithScreenshot("Clicked Continue");
         getRogersIgniteBundlesPage().reviewTermsAndCondition();
+        reporter.reportLogWithScreenshot("Clicked review add ons");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
+        reporter.reportLogWithScreenshot("Navigated Points to Mention");
         getRogersIgniteBundlesPage().clickExchangeLater();
+        reporter.reportLogWithScreenshot("Clicked Exchange later");
         getRogersIgniteBundlesPage().clickReviewAddons();
+        reporter.reportLogWithScreenshot("");
         getRogersOVChannelsAndThemePacksPage().clkContinue();
         getRogersOVChannelsAndThemePacksPage().clkbtnContinueOn4ktv();
         getRogersIgniteBundlesPage().fourKContinue();
@@ -58,8 +63,10 @@ public class OneViewCH_Auto_1566_TC01_TargetedMigration_3P_to_2PTest extends Bas
         reporter.softAssert(getCreditCheckPage().verifyCreditInfo(), "Credit Check Information Entered", "Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
+        reporter.reportLogWithScreenshot("Continue button is clicked");
         getCreditCheckPage().goToPageBottom();
         getCreditCheckPage().clickInPersonDelivery();
+        reporter.reportLogWithScreenshot("In Person Delivery is Selected");
         getPaymentOptionsPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(), "Billing And Payment Options displayed", "Billing And Payment Options did not display");
         getCreditCheckPage().verifyBillingAndPaymentOption();
