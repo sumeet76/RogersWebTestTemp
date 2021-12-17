@@ -70,7 +70,7 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_3P_ProfessionalInstallation_test e
 //		getCreditCheckPage().clickDateTimeRadioButton();
 		reporter.reportLogWithScreenshot(".enter Text Mobile Number");
 
-		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
 		reporter.reportLogWithScreenshot(".enter Email Mail Address");
 		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
 		reporter.reportLogWithScreenshot(".enter Special Instructions");

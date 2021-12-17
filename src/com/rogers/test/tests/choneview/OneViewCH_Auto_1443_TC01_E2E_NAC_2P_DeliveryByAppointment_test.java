@@ -64,9 +64,8 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_2P_DeliveryByAppointment_test exte
 		getFulfillmentPage().clkFirstAvailableAppointment();
 //		getCreditCheckPage().clickDateTimeRadioButton();
 		reporter.reportLogWithScreenshot(".enter Text Mobile Number");
-		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
 		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
-		getCreditCheckPage().enterEmailMailAddress("rogers@gmail.com");
 		reporter.reportLogWithScreenshot(".enter Special Instructions");
 		getCreditCheckPage().enterSpecialInstructions();
 		getCreditCheckPage().clkContinueInstallationOption();
