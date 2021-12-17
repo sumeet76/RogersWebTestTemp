@@ -18,6 +18,7 @@ public class TVDashboardPage  extends BasePageClass {
 	public TVDashboardPage(WebDriver driver) {
 		super(driver);
 	}
+
 	@FindBy(xpath = "//span[@ng-reflect-translate='global.dashboard.tv.resetParen']/ancestor::button")
 	WebElement btnResetParentalControl;
 
@@ -135,7 +136,7 @@ public class TVDashboardPage  extends BasePageClass {
 	WebElement lowestTvPackage;
 
 
-	@FindBy(xpath = "(//div[@class='tv-bundle-offer'])[2]")
+	@FindBy(xpath = "(//span[@ng-reflect-translate='global.cta.select' ]/ancestor::button)[2]")
 	WebElement secondLowestTvPackage;
 
 	@FindBy(xpath = "(//div[@class='internet-tile__body'])[1]//span[text()='Select' or text()='Sélectionner']/ancestor::button")
@@ -165,7 +166,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "(//span[text()='Continuer' or text()='Continue']/ancestor::button)[2]")
 	WebElement btnContinueOn4kChannelPack;
 
-	@FindBy(xpath = "//div[contains(@id,'ds-radio-input-id-1-label-container')]/preceding-sibling::div[contains(@class,'ds-radioButton')]")
+	@FindBy(xpath = "(//div[@class='ds-radioButton__outerCircle my-12'])[2]")
 	WebElement btnImmediateBill;
 
 	@FindBy(xpath = "//div[@class='button-set set-end-to-end']//button[@translate='global.cta.submit']")
@@ -177,10 +178,13 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//div[@class='mini-cart-ss']//span[text()='Continuer' or text()='Continue']/ancestor::button[@ng-reflect-disabled='false']")
 	WebElement minicartContinue;
 
-	@FindBy(xpath="//span[contains(text(),'Exchange later') or contains(text(),'Échanger plus tard')]/ancestor::button")
+	@FindBy(xpath = "//span[contains(text(),'Exchange later') or contains(text(),'Échanger plus tard')]/ancestor::button")
 	WebElement exchangeLater;
 
-	@FindBy(xpath="//span[@ng-reflect-translate='global.cta.continue']/ancestor::button")
+	@FindBy(xpath = "//button[@rchtrackclickevent='exchangeLater']")
+	WebElement ExchangeLaterBtn;
+
+	@FindBy(xpath = "//span[@ng-reflect-translate='global.cta.continue']/ancestor::button")
 	WebElement continueChannlesAndThemePacks;
 
 	@FindBy(xpath = "//span[@translate='global.dashboard.tv.manageChannelsAndThemePacks.buttonName']")
@@ -246,16 +250,16 @@ public class TVDashboardPage  extends BasePageClass {
 	String existingThemepacks = "(//h4[@translate='global.dashboard.tv.manageChannelsAndThemePacks.vpThemepacks']/parent::div/following-sibling::div/descendant::span[text()='Remove'])";
 
 	@FindAll({
-	@FindBy(xpath="//div[@class='add-remove-themepack__name']")})
+			@FindBy(xpath = "//div[@class='add-remove-themepack__name']")})
 	List<WebElement> existingThemepackNames;
 
-	@FindBy(xpath="//h4[contains(@translate,'manageChannelsAndThemePacks.vpThemepacks')]")
+	@FindBy(xpath = "//h4[contains(@translate,'manageChannelsAndThemePacks.vpThemepacks')]")
 	WebElement existingThemepackSection;
 
-	@FindBy(xpath="//div[@class='cart-removed-list']//div[@class='add-remove-themepack__name']")
+	@FindBy(xpath = "//div[@class='cart-removed-list']//div[@class='add-remove-themepack__name']")
 	WebElement removedItems;
 
-	@FindBy(xpath="//span[contains(@translate,'global.cta.continue')]")
+	@FindBy(xpath = "//span[contains(@translate,'global.cta.continue')]")
 	WebElement yourChangeContinue;
 
 	@FindBy(xpath = "(//span[@translate='global.cta.select'])[1]")
@@ -274,29 +278,30 @@ public class TVDashboardPage  extends BasePageClass {
 	WebElement ResetPurchasePin;
 
 
-
 	/**
 	 * Get list of all channels and themepacks and remove them one by one
+	 *
 	 * @author Aditi.jain
 	 */
 	public void getAllChannelAndThemepacks() {
-		WebElement banner =getReusableActionsInstance().getWhenReady(existingPackages, 180);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0,banner.getLocation().y-300);
+		WebElement banner = getReusableActionsInstance().getWhenReady(existingPackages, 180);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, banner.getLocation().y - 300);
 
 		List<WebElement> allExistingChannels = getDriver().findElements(By.xpath(existingChannels));
 		List<WebElement> allExistingThemepacks = getDriver().findElements(By.xpath(existingThemepacks));
-		for (int i=0; i<allExistingChannels.size(); i++) {
-			WebElement channel = getReusableActionsInstance().getWhenReady(By.xpath(existingChannels +"[1]"));
+		for (int i = 0; i < allExistingChannels.size(); i++) {
+			WebElement channel = getReusableActionsInstance().getWhenReady(By.xpath(existingChannels + "[1]"));
 			getReusableActionsInstance().executeJavaScriptClick(channel);
 		}
-		for (int i=0; i<allExistingThemepacks.size(); i++) {
-			WebElement themepack = getReusableActionsInstance().getWhenReady(By.xpath(existingThemepacks +"[1]"));
+		for (int i = 0; i < allExistingThemepacks.size(); i++) {
+			WebElement themepack = getReusableActionsInstance().getWhenReady(By.xpath(existingThemepacks + "[1]"));
 			getReusableActionsInstance().executeJavaScriptClick(themepack);
 		}
 	}
 
 	/**
 	 * Click Add to Cart for calling package
+	 *
 	 * @author Aditi.jain
 	 */
 	public void addToCartCallingPackage() {
@@ -305,24 +310,27 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().executeJavaScriptClick(callingAddToCart);
 	}
+
 	/**
 	 * Click Add Themepack
+	 *
 	 * @author Aditi.jain
 	 */
 	public void addThemepack() {
 		getReusableActionsInstance().waitForElementVisibility(addThemepack, 300);
 		getReusableActionsInstance().executeJavaScriptClick(addThemepack);
-		if(getReusableActionsInstance().isElementVisible(yesToContinue, 120)){
+		if (getReusableActionsInstance().isElementVisible(yesToContinue, 120)) {
 			getReusableActionsInstance().clickWhenReady(yesToContinue);
 		}
 	}
 
 	/**
 	 * click AddOn notification if available
+	 *
 	 * @author Aditi.jain
 	 */
 	public void clickAddOnIfPresent() {
-		if(getReusableActionsInstance().isElementVisible(reviewAddOns, 120)){
+		if (getReusableActionsInstance().isElementVisible(reviewAddOns, 120)) {
 			getReusableActionsInstance().waitForElementVisibility(addOnLink, 120);
 			getReusableActionsInstance().executeJavaScriptClick(addOnLink);
 		}
@@ -330,6 +338,7 @@ public class TVDashboardPage  extends BasePageClass {
 
 	/**
 	 * To click Manage channels and themeparks
+	 *
 	 * @author Aditi.jain
 	 */
 	public void clickManageChannelsAndThemepacks() {
@@ -344,10 +353,11 @@ public class TVDashboardPage  extends BasePageClass {
 
 	/**
 	 * To click Click Channel Tab
+	 *
 	 * @author Aditi.jain
 	 */
 	public void clickThemepacksTab() {
-		if(getReusableActionsInstance().isElementVisible(cancel)){
+		if (getReusableActionsInstance().isElementVisible(cancel)) {
 			clickCancel();
 		}
 		getReusableActionsInstance().waitForElementVisibility(themePacksTab, 45);
@@ -358,6 +368,7 @@ public class TVDashboardPage  extends BasePageClass {
 
 	/**
 	 * Click Continue from date change
+	 *
 	 * @author Aditi.jain
 	 */
 	public void continueFromChangeDate() {
@@ -365,8 +376,10 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(continueChangeDate);
 
 	}
+
 	/**
 	 * To click Click Channel Tab
+	 *
 	 * @author Aditi.jain
 	 */
 	public void clickChannelTab() {
@@ -378,11 +391,12 @@ public class TVDashboardPage  extends BasePageClass {
 
 	/**
 	 * To click add channel
+	 *
 	 * @author Aditi.jain
 	 */
 	public void clickAddChannel() {
-		WebElement bTn=getReusableActionsInstance().getWhenReady(addChannel, 90);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0,bTn.getLocation().y-300);
+		WebElement bTn = getReusableActionsInstance().getWhenReady(addChannel, 90);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, bTn.getLocation().y - 300);
 		getReusableActionsInstance().getWhenReady(addChannel, 60).click();
 		getReusableActionsInstance().staticWait(3000);
 	}
@@ -390,6 +404,7 @@ public class TVDashboardPage  extends BasePageClass {
 
 	/**
 	 * continue making more selections
+	 *
 	 * @author aditi.jain
 	 */
 	public void clickYourChanges() {
@@ -400,40 +415,49 @@ public class TVDashboardPage  extends BasePageClass {
 
 	/**
 	 * Clicks continue on change TV package
+	 *
 	 * @author aditi.jain
 	 */
 	public void clickYesContinueIfPresent() {
-		if(getReusableActionsInstance().isElementVisible(yesToContinue, 30)) {
+		if (getReusableActionsInstance().isElementVisible(yesToContinue, 30)) {
 			getReusableActionsInstance().getWhenReady(yesToContinue).click();
 		}
 
 	}
+
 	/**
 	 * Clicks continue on change TV package
+	 *
 	 * @author chinnarao.vattam
 	 */
 	public void clickContinueForPackage() {
 		getReusableActionsInstance().waitForElementVisibility(btnContnueReset, 60);
 		getReusableActionsInstance().getWhenReady(btnContnueReset, 30).click();
 	}
+
 	/**
 	 * Click immediate date change
+	 *
 	 * @author Aditi.jain
 	 */
 	public void immediateDateChangeOption() {
 		getReusableActionsInstance().waitForElementVisibility(immediateDateChange, 90);
 		getReusableActionsInstance().getWhenReady(immediateDateChange, 45).click();
 	}
+
 	/**
 	 * Click conitnue to add channel
+	 *
 	 * @author Aditi.jain
 	 */
 	public void clickCancel() {
 		getReusableActionsInstance().waitForElementVisibility(cancel);
 		getReusableActionsInstance().getWhenReady(cancel, 60).click();
 	}
+
 	/**
 	 * Clicks submit button for changing the TV package
+	 *
 	 * @return true if the element is visible, else false
 	 * @author chinnarao.vattam
 	 */
@@ -445,62 +469,72 @@ public class TVDashboardPage  extends BasePageClass {
 
 	/**
 	 * Clicks select the lowest TV package available
+	 *
 	 * @author chinnarao.vattam
 	 */
 	public void clickSelectLowestTVPackage() {
-		WebElement btn=getReusableActionsInstance().getWhenReady(btnSelectLowestTvPackage, 60);
+		WebElement btn = getReusableActionsInstance().getWhenReady(btnSelectLowestTvPackage, 60);
 		//getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(btnSelectLowestTvPackage);
 		getReusableActionsInstance().getWhenReady(btnSelectLowestTvPackage, 60).click();
-				}
+	}
+
 	/*
-	* To Select the TV package based on the inputted package name
-	* @author suganya P
-	* */
+	 * To Select the TV package based on the inputted package name
+	 * @author suganya P
+	 * */
 	public void selectTVPackage(String strPackageNameEn, String strPackageNameFr) {
-		getReusableActionsInstance().waitForElementVisibility(btnSelectChannel, 90);
-		By packageNameLocator = By.xpath("//span[contains(text(),'"+strPackageNameEn+"')or contains(text(),'"+strPackageNameFr+"')]/parent::div/following-sibling::div[@class='internet-tile__body']//span[text()='Select'or text()='Sélectionner']/ancestor::button");
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().staticWait(5000);
+		//getReusableActionsInstance().waitForElementVisibility(btnSelectChannel, 90);
+		By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/parent::div/following-sibling::div[@class='internet-tile__body']//span[text()='Select'or text()='Sélectionner']/ancestor::button");
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 20);
-			WebElement pkg = getDriver().findElement(packageNameLocator);
-			getReusableActionsInstance().executeJavaScriptClick(pkg);
-		}
+		WebElement pkg = getDriver().findElement(packageNameLocator);
+		getReusableActionsInstance().executeJavaScriptClick(pkg);
+	}
+
 	/**
 	 * Clicks continue on change TV package
+	 *
 	 * @author chinnarao.vattam
 	 */
 	public void clickContinueChangeTVPackage() {
 		getReusableActionsInstance().getWhenReady(btnContnueReset, 90).click();
-		}
-	
+	}
+
 	/**
 	 * Clicks continue on change TV package
+	 *
 	 * @author chinnarao.vattam
 	 */
 	public void clickContinue4kChannelPack() {
-		getReusableActionsInstance().getWhenReady(btnContinueOn4kChannelPack,60).click();
-		getReusableActionsInstance().waitForElementVisibility(btnContinueChangeDate,120);
-		}
-	
+		getReusableActionsInstance().getWhenReady(btnContinueOn4kChannelPack, 60).click();
+		getReusableActionsInstance().waitForElementVisibility(btnContinueChangeDate, 120);
+	}
+
 	/**
 	 * Clicks continue on change TV package
+	 *
 	 * @author chinnarao.vattam
 	 */
 	public void clickContinueOn4kTv() {
-		if(getReusableActionsInstance().isElementVisible(btnContinueOn4kTv,120))
-		getReusableActionsInstance().getWhenReady(btnContinueOn4kTv,60).click();
-		}
-	
+		if (getReusableActionsInstance().isElementVisible(btnContinueOn4kTv, 120))
+			getReusableActionsInstance().getWhenReady(btnContinueOn4kTv, 60).click();
+	}
+
 	/**
 	 * Clicks continue on change TV package
+	 *
 	 * @author chinnarao.vattam
 	 */
 	public void clickContinueOnSelectDateChange() {
-		getReusableActionsInstance().waitForElementVisibility(btnContinueChangeDate,60);
-		getReusableActionsInstance().getWhenReady(btnContinueChangeDate,20).click();
-	   }
+		getReusableActionsInstance().waitForElementVisibility(btnContinueChangeDate, 60);
+		getReusableActionsInstance().getWhenReady(btnContinueChangeDate, 20).click();
+	}
 
 	/**
 	 * Clicks Exchange flex channels button
+	 *
 	 * @author chinnarao.vattam
 	 */
 	public void clickExchangeFlexChannels() {
@@ -509,113 +543,126 @@ public class TVDashboardPage  extends BasePageClass {
 //		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
 //		getReusableActionsInstance().getWhenReady(btnExchangeFlexChannels, 60).click();
 //		getReusableActionsInstance().waitForElementVisibility(btnFirstChannelToRemove, 120);
-		}
-	
+	}
+
 	/**
 	 * Clicks search icon on the channels to remove section
+	 *
 	 * @author chinnarao.vattam
 	 */
 	public void clickSearchChannelToRemove() {
-		getReusableActionsInstance().waitForElementVisibility(icnSearchChannelToRemove,20);
+		getReusableActionsInstance().waitForElementVisibility(icnSearchChannelToRemove, 20);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(exchangeFlexChannelContainer);
 		getReusableActionsInstance().getWhenReady(icnSearchChannelToRemove, 30).click();
-		
-		}
+
+	}
 
 	/**
 	 * Clicks first channel available in the list to be removed
+	 *
 	 * @author chinnarao.vattam
 	 */
 	public void clickFirstChannelToRemove() {
-		WebElement bTn=getReusableActionsInstance().getWhenReady(btnFirstChannelToRemove, 60);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0,bTn.getLocation().y-300);
+		WebElement bTn = getReusableActionsInstance().getWhenReady(btnFirstChannelToRemove, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, bTn.getLocation().y - 300);
 		getReusableActionsInstance().getWhenReady(btnFirstChannelToRemove, 60).click();
-		}
+	}
+
 	/**
 	 * Clicks Second channel available in the list to be removed
+	 *
 	 * @author chinnarao.vattam
 	 */
 	public void clickSecondChannelToRemove() {
-		WebElement bTn=getReusableActionsInstance().getWhenReady(btnSecondChannelToRemove, 60);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0,bTn.getLocation().y-300);
+		WebElement bTn = getReusableActionsInstance().getWhenReady(btnSecondChannelToRemove, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, bTn.getLocation().y - 300);
 		getReusableActionsInstance().getWhenReady(btnSecondChannelToRemove, 60).click();
-		}
+	}
+
 	/**
 	 * Clicks select button on the channel to remove section
+	 *
 	 * @author chinnarao.vattam
 	 */
 	public void clickSelectChannelRemove() {
-		WebElement select=getReusableActionsInstance().getWhenReady(btnSelectChannel, 60);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0,select.getLocation().y-300);
+		WebElement select = getReusableActionsInstance().getWhenReady(btnSelectChannel, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, select.getLocation().y - 300);
 		getReusableActionsInstance().getWhenReady(btnSelectChannel, 60).click();
-		}
-	
+	}
+
 	/**
 	 * Clicks Change TV Package  button on the TV dashboard
+	 *
 	 * @author chinnarao.vattam
 	 */
 	public void clickChangeTvPackage() {
-		WebElement select=getReusableActionsInstance().getWhenReady(btnChangeTvPackage, 120);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0,select.getLocation().y-300);
+		WebElement select = getReusableActionsInstance().getWhenReady(btnChangeTvPackage, 120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, select.getLocation().y - 300);
 		getReusableActionsInstance().getWhenReady(btnChangeTvPackage, 120).click();
-		}
-	
-	
+	}
+
+
 	/**
 	 * Clicks select button on the channel to Add section
+	 *
 	 * @author chinnarao.vattam
 	 */
 	public void clickSelectChannelAdd() {
-		WebElement select=getReusableActionsInstance().getWhenReady(btnSelectChannel,120);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0,select.getLocation().y-300);
+		WebElement select = getReusableActionsInstance().getWhenReady(btnSelectChannel, 120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, select.getLocation().y - 300);
 		getReusableActionsInstance().getWhenReady(btnSelectChannel, 120).click();
-		}
+	}
 
 
 	/**
 	 * Clicks search icon on the channels to add section
+	 *
 	 * @author chinnarao.vattam
 	 */
 	public void clickSearchChannelToAdd() {
-		getReusableActionsInstance().waitForElementVisibility(icnSearchChannelToAdd,120);
+		getReusableActionsInstance().waitForElementVisibility(icnSearchChannelToAdd, 120);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(exchangeFlexChannelContainer);
 		getReusableActionsInstance().getWhenReady(icnSearchChannelToAdd, 120).click();
-		
-		}
-	
+
+	}
+
 	/**
 	 * Clicks first channel available in the list to be added
+	 *
 	 * @author chinnarao.vattam
 	 */
 	public void clickFirstChannelToAdd() {
-		WebElement select=getReusableActionsInstance().getWhenReady(btnFirstChannelToAdd, 120);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0,select.getLocation().y-300);
+		WebElement select = getReusableActionsInstance().getWhenReady(btnFirstChannelToAdd, 120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, select.getLocation().y - 300);
 		getReusableActionsInstance().getWhenReady(btnFirstChannelToAdd, 120).click();
-		}
+	}
 
 	/**
 	 * Clicks Second channel available in the list to be added
+	 *
 	 * @author chinnarao.vattam
 	 */
 	public void clickSecondChannelToAdd() {
-		WebElement select=getReusableActionsInstance().getWhenReady(btnSecondChannelToAdd, 120);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0,select.getLocation().y-300);
+		WebElement select = getReusableActionsInstance().getWhenReady(btnSecondChannelToAdd, 120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, select.getLocation().y - 300);
 		getReusableActionsInstance().getWhenReady(btnSecondChannelToAdd, 120).click();
-		}
-	
+	}
+
 	/**
-	 * Clicks Confirm Exchange buttton 
-	 * @param   strBrowser is the browser to be run 
+	 * Clicks Confirm Exchange buttton
+	 *
+	 * @param strBrowser is the browser to be run
 	 * @author chinnarao.vattam
 	 */
 	public void clickConfirmExchange(String strBrowser) {
-		WebElement select=getReusableActionsInstance().getWhenReady(btnConfirmExchange, 120);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0,select.getLocation().y-300);
+		WebElement select = getReusableActionsInstance().getWhenReady(btnConfirmExchange, 120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, select.getLocation().y - 300);
 		getReusableActionsInstance().getWhenReady(btnConfirmExchange, 120).click();
 	}
 
 	/**
 	 * Verifies if the Exchange flex channels section is loaded correctly or not
+	 *
 	 * @return true if the element is visible, else false
 	 * @author chinnarao.vattam
 	 */
@@ -623,108 +670,119 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().waitForElementInvisibility(popUpFlexChannelLoader, 120);
 		getReusableActionsInstance().getWhenReady(icnSearchChannelToRemove, 120);
 		return getReusableActionsInstance().isElementVisible(icnSearchChannelToRemove, 120);
-		}
+	}
 
 	/**
 	 * Verify the result
+	 *
 	 * @return true if link is visible, else false
 	 * @author chinnarao.vattam
-	 */	
+	 */
 	public boolean verifyLnkUsingVoiceCommands() {
 		getReusableActionsInstance().waitForElementVisibility(lnkUsingVoiceCommands, 120);
 		return getReusableActionsInstance().isElementVisible(lnkUsingVoiceCommands);
 	}
-	
+
 	/**
 	 * Clicks back to overview button which brings user back to account overview page
+	 *
 	 * @author chinnarao.vattam
 	 */
 	public void clickBacktoAccountOverview() {
 		getReusableActionsInstance().getWhenReady(btnBackToAccountOverview, 120).click();
-		}
-	
+	}
+
 	/**
-	 * Clicks view channel line up button 
+	 * Clicks view channel line up button
+	 *
 	 * @author chinnarao.vattam
 	 */
 	public void clickViewChannelLineUp() {
-		WebElement btn=getReusableActionsInstance().getWhenReady(btnViewChannelLineUp,120);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
-		getReusableActionsInstance().clickWhenReady(btnViewChannelLineUp,120);
-	//	getReusableActionsInstance().getWhenReady(btnViewChannelLineUp, 60).click();
-		}
+		WebElement btn = getReusableActionsInstance().getWhenReady(btnViewChannelLineUp, 120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
+		getReusableActionsInstance().clickWhenReady(btnViewChannelLineUp, 120);
+		//	getReusableActionsInstance().getWhenReady(btnViewChannelLineUp, 60).click();
+	}
 
 	/**
-	 * Clicks view pdf on channel line up 
+	 * Clicks view pdf on channel line up
+	 *
 	 * @author chinnarao.vattam
 	 */
 	public void clickViewPdf() {
-		String handle=getDriver().getWindowHandle();
+		String handle = getDriver().getWindowHandle();
 		getReusableActionsInstance().getWhenReady(icnViewPdf, 120).click();
 		getReusableActionsInstance().staticWait(8000);
 		getReusableActionsInstance().switchToNewWindow(handle);
 		getReusableActionsInstance().staticWait(6000);
-		}
-	
+	}
+
 	/**
 	 * Verify the presence of view pdf on channel line up
+	 *
 	 * @return true if the element is visible, else false
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyViewPdf() {
 		return getReusableActionsInstance().isElementVisible(icnViewPdf, 120);
-		
-		}
+
+	}
 
 	/**
 	 * Click the parental Control button to reset
+	 *
 	 * @author Chinnarao.Vattam
 	 */
 	public void clickResetParentalControl() {
-		WebElement btn=getReusableActionsInstance().getWhenReady(btnResetParentalControl,240);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		WebElement btn = getReusableActionsInstance().getWhenReady(btnResetParentalControl, 240);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
 		getReusableActionsInstance().getWhenReady(btnResetParentalControl, 120).click();
-		}	
+	}
 
 	/**
 	 * Verify the rest success
+	 *
 	 * @return true if reset is successful, else false
 	 * @author Chinnarao.Vattam
-	 */	
-	public boolean verifyResetSuccess() {	
-		return getReusableActionsInstance().isElementVisible(imgSuccess,120);
+	 */
+	public boolean verifyResetSuccess() {
+		return getReusableActionsInstance().isElementVisible(imgSuccess, 120);
 	}
-	
+
 	/**
 	 * Click "Ok" on success popup
+	 *
 	 * @author Chinnarao.Vattam
 	 */
 	public void clickSuccessOk() {
 		getReusableActionsInstance().getWhenReady(btnSuccessOk, 120).click();
-		}
-	
+	}
+
 	/**
 	 * Verify the header availability
+	 *
 	 * @return true if header is available on TV DashboardPage, else false
 	 * @author chinnarao.vattam
-	 */	
-	public boolean verifyHeader() {	
-		getReusableActionsInstance().waitForElementVisibility(icnHeader,120);
+	 */
+	public boolean verifyHeader() {
+		getReusableActionsInstance().waitForElementVisibility(icnHeader, 120);
 		return getReusableActionsInstance().isElementVisible(icnHeader);
 	}
-	
+
 	/**
 	 * Verify the footer availability
+	 *
 	 * @return true if footer is available on TV DashboardPage, else false
 	 * @author chinnarao.vattam
-	 */	
+	 */
 	public boolean verifyFooter() {
-		
-		return getReusableActionsInstance().isElementVisible(icnFooter,120);
+
+		return getReusableActionsInstance().isElementVisible(icnFooter, 120);
 	}
-	
+
 	/**
 	 * submit the parental Control for reset
+	 *
 	 * @author Chinnarao.Vattam
 	 */
 	public void clickRestartSetupbox() {
@@ -733,10 +791,11 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(btnRestartSetupbox);
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 		getReusableActionsInstance().getWhenReady(btnRestartSetupbox, 120).click();
-		}
-	
+	}
+
 	/**
 	 * submit the parental Control for reset
+	 *
 	 * @author chinnarao.vattam
 	 */
 	public void clickCustForgotPurchasePin() {
@@ -745,198 +804,217 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(icnCustForgotPurchasePin);
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 		getReusableActionsInstance().getWhenReady(icnCustForgotPurchasePin, 120).click();
-		}
-	
+	}
+
 	/**
 	 * submit the parental Control for reset
+	 *
 	 * @author Chinnarao.Vattam
 	 */
-	
+
 	public void clickContinueReset() {
 		getReusableActionsInstance().getWhenReady(btnContnueReset, 120).click();
-			}
+	}
+
 	/**
 	 * click OK Button
+	 *
 	 * @author chinnarao.vattam
 	 */
-	
+
 	public void clickOK() {
 		getReusableActionsInstance().getWhenReady(btnOk, 120).click();
-			}
-		
+	}
+
 	/**
 	 * Verify the result
+	 *
 	 * @return true if link is visible, else false
 	 * @author chinnarao.vattam
-	 */	
+	 */
 	public boolean verifyLnkIntroToAppsOnIgniteTv() {
 		getReusableActionsInstance().waitForElementVisibility(lnkIntroToAppsOnIgniteTv, 120);
 		return getReusableActionsInstance().isElementVisible(lnkIntroToAppsOnIgniteTv);
 	}
-	
+
 	/**
 	 * Verify the result
+	 *
 	 * @return true if link is visible, else false
 	 * @author chinnarao.vattam
-	 */	
+	 */
 	public boolean verifyLnkFAQOnPowerSaver() {
 		getReusableActionsInstance().waitForElementVisibility(lnkFAQOnPowerSaver, 120);
 		return getReusableActionsInstance().isElementVisible(lnkFAQOnPowerSaver);
 	}
-	
+
 	/**
 	 * Verify the result
+	 *
 	 * @return true if link is visible, else false
 	 * @author chinnarao.vattam
-	 */	
+	 */
 	public boolean verifyLnkIgniteTvErrCode() {
 		getReusableActionsInstance().waitForElementVisibility(lnkIgniteTvErrCode, 120);
 		return getReusableActionsInstance().isElementVisible(lnkIgniteTvErrCode);
 	}
-	
+
 	/**
 	 * Verify the result
+	 *
 	 * @return true if link is visible, else false
 	 * @author chinnarao.vattam
-	 */	
+	 */
 	public boolean verifyLnkGoToSupportSection() {
 		getReusableActionsInstance().waitForElementVisibility(lnkGoToSupportSection, 120);
 		return getReusableActionsInstance().isElementVisible(lnkGoToSupportSection);
 	}
-	
+
 	/**
 	 * Go to Page bottom
+	 *
 	 * @author chinnarao.vattam
-	 */	
-	public void goToPageBottom() {		
+	 */
+	public void goToPageBottom() {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 	}
 
 	/**
 	 * Go to Page bottom
+	 *
 	 * @author chinnarao.vattam
-	 */	
-	public void goToPageMid() {		
-		getReusableActionsInstance().javascriptScrollToMiddleOfPage();;
-	}
-	/*
-	*To select immediate billing option
-	* @author suganya.p
-	* */
-	public void clickImmediateBill() {
-		getReusableActionsInstance().getWhenReady(btnImmediateBill,60).click();
-	}
-	/*
-	* To select Exchange later in channel personalisation page
-	* @author suganya p
-	* */
-	public void clickExchangeLater() {
-		getReusableActionsInstance().isElementVisible(exchangeLater, 120);
-		getReusableActionsInstance().scrollToElementAndClick(exchangeLater);
-		getReusableActionsInstance().clickWhenReady(exchangeLater,60);
-
-	}
-	/*
-	* To click on Continue in Channels and Theme pack page
-	* @author suganya P
-	* */
-	public void clickContinueChannelsAndThemePacks() {
-		getReusableActionsInstance().getWhenReady(continueChannlesAndThemePacks,60).click();
-
-	}
-
-	/*To check for the existing themepacks
-	* @suganya p*/
-	public boolean verifyExistingThemepack()
-	{getReusableActionsInstance().staticWait(3000);
-		getReusableActionsInstance().waitForElementVisibility(existingThemepackSection, 90);
-		return getReusableActionsInstance().isElementVisible(existingThemepackSection);
-	}
-	/*To get the count of added number of themepacks
-	* @suganya p*/
-	public int getExistingThemepackCount()
-	{
-		return existingThemepackNames.size();
-	}
-
-	/*To list the names of existing themepacks
-	* @suganya p*/
-	public List getExistingThemepackNames()
-	{
-		List packnames= new LinkedList();
-
-		for(int i=0;i<existingThemepackNames.size();i++) {
-			WebElement themepack = existingThemepackNames.get(i);
-			packnames.add(i, themepack.getText());
-		}
-		return packnames;
-		}
-
-
-	/*To remove the specifed themepack
-	* @suganya p*/
-	public void removeThemepack(String themepackNameEn,String themepackNameFr)
-	{
-		By removeThemepack = By.xpath("//div[contains(text(),'"+themepackNameEn+"') or contains(text(),'"+themepackNameFr+"')]/parent::div//button/span");
-	//getReusableActionsInstance().clickWhenReady(removeThemepack,120);
-
-		WebElement btn=getReusableActionsInstance().getWhenReady(removeThemepack,60);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
-		getReusableActionsInstance().getWhenReady(removeThemepack, 90).click();
-	}
-
-	/*To verify the your change section and expanding it if not
-	* @author suganya p*/
-	public boolean verifyYourChangeSection()
-	{
-		return getReusableActionsInstance().isElementVisible(yourChanges,30);
-	}
-	/*To click on continue in the your chnage section
-	* @author suganya p*/
-	public void yourChangeContinue()
-	{
-		if(getReusableActionsInstance().isElementVisible(removedItems,30))
-		{
-			getReusableActionsInstance().clickWhenReady(yourChangeContinue);
-		}
-		else
-		{
-			getReusableActionsInstance().clickWhenReady(yourChanges);
-			getReusableActionsInstance().clickWhenReady(yourChangeContinue,30);
-		}
+	 */
+	public void goToPageMid() {
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		;
 	}
 
 	/*
-	 * Select first TV package
-	 * @author aditi.jain
+	 *To select immediate billing option
+	 * @author suganya.p
 	 * */
-	public void selectFirstTVPackage() {
-		getReusableActionsInstance().waitForElementVisibility(selectFirstChannel, 45);
-		getReusableActionsInstance().executeJavaScriptClick(selectFirstChannel);
+	public void clickImmediateBill() {
+		getReusableActionsInstance().getWhenReady(btnImmediateBill, 60).click();
 	}
 
-	public void clickViewMyFlexChannelsLink(){
-		getReusableActionsInstance().clickWhenReady(ViewMyFlexChannelsLink);
+	/*
+	 * To select Exchange later in channel personalisation page
+	 * @author suganya p
+	 * */
+	public void clickExchangeLater() {
+		//getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().getWhenReady(exchangeLater,30);
+		//getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		//getReusableActionsInstance().javascriptScrollByVisibleElement(exchangeLater);
+		//getReusableActionsInstance().isElementVisible(exchangeLater, 120);
+		//getReusableActionsInstance().scrollToElementAndClick(exchangeLater);
+		getReusableActionsInstance().executeJavaScriptClick(exchangeLater);
+	}
+		/*
+		 * To click on Continue in Channels and Theme pack page
+		 * @author suganya P
+		 * */
+		public void clickContinueChannelsAndThemePacks () {
+			getReusableActionsInstance().getWhenReady(continueChannlesAndThemePacks, 60).click();
+
+		}
+
+		/*To check for the existing themepacks
+		 * @suganya p*/
+		public boolean verifyExistingThemepack ()
+		{
+			getReusableActionsInstance().staticWait(3000);
+			getReusableActionsInstance().waitForElementVisibility(existingThemepackSection, 90);
+			return getReusableActionsInstance().isElementVisible(existingThemepackSection);
+		}
+		/*To get the count of added number of themepacks
+		 * @suganya p*/
+		public int getExistingThemepackCount ()
+		{
+			return existingThemepackNames.size();
+		}
+
+		/*To list the names of existing themepacks
+		 * @suganya p*/
+		public List getExistingThemepackNames ()
+		{
+			List packnames = new LinkedList();
+
+			for (int i = 0; i < existingThemepackNames.size(); i++) {
+				WebElement themepack = existingThemepackNames.get(i);
+				packnames.add(i, themepack.getText());
+			}
+			return packnames;
+		}
+
+
+		/*To remove the specifed themepack
+		 * @suganya p*/
+		public void removeThemepack (String themepackNameEn, String themepackNameFr)
+		{
+			By removeThemepack = By.xpath("//div[contains(text(),'" + themepackNameEn + "') or contains(text(),'" + themepackNameFr + "')]/parent::div//button/span");
+			//getReusableActionsInstance().clickWhenReady(removeThemepack,120);
+
+			WebElement btn = getReusableActionsInstance().getWhenReady(removeThemepack, 60);
+			getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
+			getReusableActionsInstance().getWhenReady(removeThemepack, 90).click();
+		}
+
+		/*To verify the your change section and expanding it if not
+		 * @author suganya p*/
+		public boolean verifyYourChangeSection ()
+		{
+			return getReusableActionsInstance().isElementVisible(yourChanges, 30);
+		}
+		/*To click on continue in the your chnage section
+		 * @author suganya p*/
+		public void yourChangeContinue ()
+		{
+			if (getReusableActionsInstance().isElementVisible(removedItems, 30)) {
+				getReusableActionsInstance().clickWhenReady(yourChangeContinue);
+			} else {
+				getReusableActionsInstance().clickWhenReady(yourChanges);
+				getReusableActionsInstance().clickWhenReady(yourChangeContinue, 30);
+			}
+		}
+
+		/*
+		 * Select first TV package
+		 * @author aditi.jain
+		 * */
+		public void selectFirstTVPackage () {
+			getReusableActionsInstance().waitForElementVisibility(selectFirstChannel, 45);
+			getReusableActionsInstance().executeJavaScriptClick(selectFirstChannel);
+		}
+
+		public void clickViewMyFlexChannelsLink () {
+			getReusableActionsInstance().clickWhenReady(ViewMyFlexChannelsLink);
+		}
+
+		public void clickCloudStorageBubble () {
+			getReusableActionsInstance().staticWait(5000);
+			getReusableActionsInstance().clickWhenReady(CloudStorageBubble);
+		}
+
+		public void clickDownloadGoBubble () {
+			getReusableActionsInstance().staticWait(5000);
+			getReusableActionsInstance().clickWhenReady(DownloadGoBubble);
+
+		}
+
+		public void clickResetPurchasePin () {
+			getReusableActionsInstance().staticWait(10000);
+			getReusableActionsInstance().javascriptScrollToBottomOfPage();
+			getReusableActionsInstance().clickWhenReady(ResetPurchasePin);
+
+		}
+		public void clickSecondLowestpackage () {
+			//getReusableActionsInstance().staticWait(10000);
+			getReusableActionsInstance().getWhenReady(secondLowestTvPackage, 30);
+			getReusableActionsInstance().executeJavaScriptClick(secondLowestTvPackage);
+		}
+
+
 	}
 
-	public void clickCloudStorageBubble(){
-		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().clickWhenReady(CloudStorageBubble);
-	}
-
-	public void clickDownloadGoBubble(){
-		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().clickWhenReady(DownloadGoBubble);
-
-	}
-
-	public void clickResetPurchasePin(){
-		getReusableActionsInstance().staticWait(10000);
-		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().clickWhenReady(ResetPurchasePin);
-
-	}
-
-
-}
 
