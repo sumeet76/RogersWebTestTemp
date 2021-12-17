@@ -257,6 +257,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath="(//span[@translate='global.cta.continue']/ancestor::button)[2]")
 	WebElement continueButtonPTM;
 
+	@FindBy(xpath = "//span[@translate='global.cta.addToCart']/ancestor::button")
+	WebElement addOnAddToCart;
+
 
 	/**
 	 * Click Load Offers button
@@ -915,6 +918,13 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().getWhenReady(continueButton,60);
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);
+	}
+
+	/* click Apply coupon
+	 * @author aditi.jain
+	 */
+	public void clickAddOnAddToCart() {
+		getReusableActionsInstance().clickWhenReady(addOnAddToCart,30);
 	}
 }
 
