@@ -931,7 +931,7 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 	public void clickResetPurchasePin(){
-		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().clickWhenReady(ResetPurchasePin);
 

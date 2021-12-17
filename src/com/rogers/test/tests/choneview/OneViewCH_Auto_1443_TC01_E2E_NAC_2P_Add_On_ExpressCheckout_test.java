@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_1443_TC01_E2E_NAC_2P_Add_On_ExpressCheckout_test extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
-    public void oneViewCH_Auto_1443_TC01_E2E_NAC_2P_Add_On_ExpressCheckout_test(){
+	public void oneViewCH_Auto_1443_TC01_E2E_NAC_2P_Add_On_ExpressCheckout_test(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("address");
@@ -25,17 +25,12 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_2P_Add_On_ExpressCheckout_test ext
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
 		reporter.reportLogWithScreenshot("Select Services Customer Wants");
 		getRogersIgniteBundlesPage().clkTVCheckbox();
-
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
-
 		reporter.reportLogWithScreenshot("Double Play Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
-
 		reporter.reportLogWithScreenshot("offers loading");
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
-
 		reporter.reportLogWithScreenshot("added to cart");
-
 		getRogersIgniteBundlesPage().noPortInPopup();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
 		reporter.reportLogWithScreenshot("Product in cart");
@@ -43,17 +38,27 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_2P_Add_On_ExpressCheckout_test ext
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
 		getRogersIgniteBundlesPage().clkContinue();
-
+		reporter.reportLogWithScreenshot("Exchange Options");
+		getRogersIgniteExchangePage().clickExchangeNow();
+		reporter.reportLogWithScreenshot("Exchange Now");
+		getRogersIgniteExchangePage().verifyChannelToSwapHeader();
+		getRogersIgniteExchangePage().selectFirstChannelToRemove();
+		reporter.reportLogWithScreenshot("first channel selected");
+		getRogersIgniteExchangePage().clickSelectButton();
+		reporter.reportLogWithScreenshot("button select");
+		getRogersIgniteExchangePage().selectFirstChannelToAdd();
+		reporter.reportLogWithScreenshot("first channel to Add");
+		getRogersIgniteExchangePage().clickSelectButton();
+		reporter.reportLogWithScreenshot("Channel Swapped");
+		getRogersIgniteExchangePage().clkContinue();
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContentPopup();
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
-		reporter.hardAssert(getRogersIgniteBundlesPage().verifyPersonalizeYourChannels(),"Personalize You Channel displayed","Personalize You Channel did not Displayed");
-//		getRogersIgniteBundlesPage().clkCheckOut();
-
-//		getRogersIgniteBundlesPage().clkContinue();
-		getRogersIgniteBundlesPage().clkExpressCheckOut();
-
-
+		getRogersIgniteExchangePage().clkContinue();
+		getRogersIgniteBundlesPage().fourKTVPopup();
+		getRogersIgniteBundlesPage().fourKContentPopup();
+		getRogersIgniteBundlesPage().clickAddOnAddToCart();
+		getCustomerProfilePage().clkContinue();
 		reporter.reportLogWithScreenshot("Cart Summary");
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContentPopup();
@@ -63,7 +68,6 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_2P_Add_On_ExpressCheckout_test ext
 		getRogersIgniteBundlesPage().customerWishtoContinue();
 		reporter.hardAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
 		reporter.reportLogWithScreenshot("Customer Profile");
-
 		getCustomerProfilePage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(),"Credit Evaluation Displayed","Credit Evaluation did not Displayed");
 		reporter.reportLogWithScreenshot("Credit Evaluation screen loaded");
@@ -79,7 +83,6 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_2P_Add_On_ExpressCheckout_test ext
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("in person delivery");
-
 		getCreditCheckPage().clickInPersonDelivery();
 		getPaymentOptionsPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
@@ -87,10 +90,9 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_2P_Add_On_ExpressCheckout_test ext
 		getCreditCheckPage().verifyBillingAndPaymentOption();
 		getCreditCheckPage().clickDigitalFrontline();
 		reporter.reportLogWithScreenshot("front line");
-
 		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-//		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
+		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 //		reporter.reportLogWithScreenshot("card details entered");
 //		getPaymentOptionsPage().clkContinue();
 //		getRogersOVCheckoutPage().clkSubmit();
@@ -98,7 +100,7 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_2P_Add_On_ExpressCheckout_test ext
 //		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 //		reporter.reportLogWithScreenshot("Order Placed");
 
-    }
+	}
 
 	@BeforeMethod (alwaysRun=true)
 	@Parameters({"strBrowser", "strLanguage"})

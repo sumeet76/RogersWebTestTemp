@@ -393,18 +393,18 @@ public class CreditCheckPage  extends BasePageClass {
 		getReusableActionsInstance().scrollToElement(firstEnabledDateTime);
 		getReusableActionsInstance().executeJavaScriptClick(firstEnabledDateTime);
 	}
-	public void enterTextMobileNumber() {
+	public void enterTextMobileNumber(String phoneNumber) {
 		getReusableActionsInstance().scrollToElement(mobileNumberContainer);
 		getReusableActionsInstance().executeJavaScriptClick(mobileNumberContainer);
 		mobileNumber.clear();
-		mobileNumber.sendKeys("4156542244");
+		mobileNumber.sendKeys(phoneNumber);
 	}
 
-	public void enterEmailMailAddress () {
+	public void enterEmailMailAddress (String emailAddress) {
 		getReusableActionsInstance().scrollToElement(emailAddressContainer);
 		getReusableActionsInstance().executeJavaScriptClick(emailAddressContainer);
 		emailMailAddress.clear();
-		emailMailAddress.sendKeys("ADI@GMAIL.COM");
+		emailMailAddress.sendKeys("emailAddress");
 	}
 
 	public void selectDeliveryByAppointment() {

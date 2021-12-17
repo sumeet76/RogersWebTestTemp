@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAI_Add_On_ExpressCheckout_test extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
-    public void oneViewCH_Auto_1443_TC01_E2E_NAC_SAI_Add_On_ExpressCheckout_test(){
+	public void oneViewCH_Auto_1443_TC01_E2E_NAC_SAI_Add_On_ExpressCheckout_test(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("address");
@@ -38,13 +38,13 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAI_Add_On_ExpressCheckout_test ex
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
-//		getRogersIgniteBundlesPage().clkCheckOut();
-
-		getRogersIgniteBundlesPage().clkContinue();
-		getRogersIgniteBundlesPage().clkExpressCheckOut();
-
-
-
+		reporter.reportLogWithScreenshot("Channel Swapped");
+		getRogersIgniteExchangePage().clkContinue();
+		reporter.reportLogWithScreenshot("click Continue");
+		getRogersIgniteBundlesPage().clickAddOnAddToCart();
+		reporter.reportLogWithScreenshot("click Add On Add To Cart");
+		getCustomerProfilePage().clkContinue();
+		reporter.reportLogWithScreenshot("click Continue");
 		reporter.reportLogWithScreenshot("Cart Summary");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		getRogersIgniteBundlesPage().customerWishtoContinue();
@@ -75,12 +75,12 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAI_Add_On_ExpressCheckout_test ex
 		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-		reporter.reportLogWithScreenshot("entered billing details");
-		getPaymentOptionsPage().clkContinue();
-		reporter.reportLogWithScreenshot("submit order");
-		getRogersOVCheckoutPage().clkSubmit();
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		reporter.reportLogWithScreenshot("Order Placed");
+//		reporter.reportLogWithScreenshot("entered billing details");
+//		getPaymentOptionsPage().clkContinue();
+//		reporter.reportLogWithScreenshot("submit order");
+//		getRogersOVCheckoutPage().clkSubmit();
+//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//		reporter.reportLogWithScreenshot("Order Placed");
 
 	}
 
