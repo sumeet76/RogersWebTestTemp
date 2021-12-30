@@ -68,22 +68,22 @@ public class HomePhonedashboard  extends BasePageClass {
 	@FindBy(xpath="//span[text()='Change Call Display Name']")
 	WebElement ChangeCallDisplayName;
 
-	@FindBy(xpath="//p[text()=\"Change Call Display Name\"]")
+	@FindBy(xpath="//p[text()='Change Call Display Name']")
 	WebElement displayNamePopUp;
 
-	@FindBy(xpath="//strong[text()=\"Current Call Display Name:\"]/following-sibling::span")
+	@FindBy(xpath="//strong[text()='Current Call Display Name:']/following-sibling::span")
 	WebElement currentCallerName;
 
 	@FindBy(xpath="//input[@id=\"ds-form-input-id-0\"]")
 	WebElement changeCallerFirstName;
 
-	@FindBy(xpath = "//input[@id=\"ds-form-input-id-1\"]")
+	@FindBy(xpath = "//input[@id='ds-form-input-id-1']")
 	WebElement changeCallerSecondName;
 
-	@FindBy(xpath = "//span[@translate=\"global.cta.submit\"]")
+	@FindBy(xpath = "//span[@translate='global.cta.submit']")
 	WebElement changeCallerNameSubmit;
 
-	@FindBy(xpath="//span[text()=\"Back to dashboard\"]")
+	@FindBy(xpath="//span[text()='Back to dashboard']")
 	WebElement btnBackToDashboard;
 
 	@FindBy(xpath="//p[text()=\"Pending Order\"]")
