@@ -1,6 +1,5 @@
 package com.rogers.oneview.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -66,6 +65,30 @@ public class HomePhonedashboard  extends BasePageClass {
 	@FindBy(xpath = "//div[@class ='cdk-overlay-pane ds-modalWindow']")
 	WebElement imageResetVoicemailPassword;
 
+	@FindBy(xpath="//span[text()='Change Call Display Name']")
+	WebElement ChangeCallDisplayName;
+
+	@FindBy(xpath="//p[text()=\"Change Call Display Name\"]")
+	WebElement displayNamePopUp;
+
+	@FindBy(xpath="//strong[text()=\"Current Call Display Name:\"]/following-sibling::span")
+	WebElement currentCallerName;
+
+	@FindBy(xpath="//input[@id=\"ds-form-input-id-0\"]")
+	WebElement changeCallerFirstName;
+
+	@FindBy(xpath = "//input[@id=\"ds-form-input-id-1\"]")
+	WebElement changeCallerSecondName;
+
+	@FindBy(xpath = "//span[@translate=\"global.cta.submit\"]")
+	WebElement changeCallerNameSubmit;
+
+	@FindBy(xpath="//span[text()=\"Back to dashboard\"]")
+	WebElement btnBackToDashboard;
+
+	@FindBy(xpath="//p[text()=\"Pending Order\"]")
+	WebElement pendingOrder;
+
 	/**
 	 * Click Yes,reset password button on the pop up "Reset Voicemail Password"
 	 * @author Chinnarao.Vattam
@@ -105,6 +128,19 @@ public class HomePhonedashboard  extends BasePageClass {
 	public void clickBacktoAccountOverview() {
 		getReusableActionsInstance().getWhenReady(btnBackToAccountOverview,120).click();
 		}
+
+		/*To click on Change call display Name
+		* @author suganya p*/
+		public void clickChangeCallDisplayName() {
+			getReusableActionsInstance().isElementVisible(ChangeCallDisplayName,90);
+			getReusableActionsInstance().executeJavaScriptClick(ChangeCallDisplayName);
+		}
+
+	public boolean verifyChangeCallNameDisplayPopUp() {
+		getReusableActionsInstance().waitForElementVisibility(displayNamePopUp, 15);
+		return getReusableActionsInstance().isElementVisible(displayNamePopUp);
+	}
+
 
 	/**
 	 *click continue for the ongoing activity on Internet dashboard page
@@ -213,6 +249,54 @@ public class HomePhonedashboard  extends BasePageClass {
 
 	public boolean verifyResetVoicemailPasswordImage () {
 		return getReusableActionsInstance().isElementVisible(imageResetVoicemailPassword,60);
+	}
+
+	/*To get the current caller name
+	@author suganya p
+	*/
+	public String currentCallerName()
+	{
+		String callerName;
+		callerName= currentCallerName.getText();
+		return  callerName;
+	}
+
+	/*To enter the forst name and second name in the change caller name dailog box
+	* @suganya p
+	*/
+	public void enterCallername(String fName, String sName)
+	{
+		getReusableActionsInstance().executeJavaScriptClick(changeCallerFirstName);
+		changeCallerFirstName.sendKeys(fName);
+		getReusableActionsInstance().executeJavaScriptClick(changeCallerSecondName);
+		changeCallerSecondName.sendKeys(sName);
+	}
+
+	/*To click on submit in change caller name dailog box
+	@author suganya p
+    */
+	public void clickSubmit()
+	{
+		getReusableActionsInstance().clickWhenReady(changeCallerNameSubmit,30);
+	}
+
+	/*To clic on back to dashboard page
+	@author suganya P
+	*/
+	public void clickBackToDashboard()
+	{
+		getReusableActionsInstance().clickWhenReady(btnBackToDashboard,30);
+		/*Adding static wait as the order will take some time to close in backend*/
+		getReusableActionsInstance().staticWait(20000);
+	}
+
+	/*To verofy the pending order pop up
+	@author suganya p
+    */
+	public boolean verifyPendingOrder()
+	{
+		getReusableActionsInstance().isElementVisible(pendingOrder,30);
+		return true;
 	}
 
 	}
