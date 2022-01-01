@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_1539_TC01_Add_Channel_Themepack_Immediate_Test extends BaseTestClass {
 	@Test (groups = {"RChannelsandThemepacks","RegressionCHOV"})
-    public void oneViewCH_1539_TC01_AddChannelAndThemepackImmediate(){
+	public void oneViewCH_1539_TC01_AddChannelAndThemepackImmediate(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.addChannelAndThempackImmediate.getAccountNo(), TestDataHandler.addChannelAndThempackImmediate.getContactID());
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
@@ -34,20 +34,30 @@ public class OneViewCH_Auto_1539_TC01_Add_Channel_Themepack_Immediate_Test exten
 		reporter.reportLogWithScreenshot("manage channel and themepack tab");
 		getTVDashboardPage().clickThemepacksTab();
 		reporter.reportLogWithScreenshot("themepack tab");
-		getTVDashboardPage().addThemepack();
+
+		getTVDashboardPage().clickThemepackTabFromBundle();
 		reporter.reportLogWithScreenshot("themepack added");
+		getTVDashboardPage().addThemepack();
+		reporter.reportLogWithScreenshot("4k popup");
+		getRogersIgniteBundlesPage().fourKTVPopup();
+		reporter.reportLogWithScreenshot("4k continue");
+		getRogersIgniteBundlesPage().fourKContinue();
+//		reporter.reportLogWithScreenshot("4k content continue");
+//		getRogersIgniteBundlesPage().fourKContentContinue();
+
 		getTVDashboardPage().clickYourChanges();
 		reporter.reportLogWithScreenshot("collapse");
 		getTVDashboardPage().clickYesContinueIfPresent();
 		getTVDashboardPage().clickContinueForPackage();
 		reporter.reportLogWithScreenshot("continue");
 		getTVDashboardPage().immediateDateChangeOption();
-		reporter.reportLogWithScreenshot("manage channel and themepack tab");
-		getTVDashboardPage().clickCancel();
-		reporter.reportLogWithScreenshot("ready to submit");
-//		getRogersOVOrderReviewPage().clickSubmitToManageThemepackOrChannel();
-		reporter.reportLogWithScreenshot("Order Confirmation page");
-    }
+////		reporter.reportLogWithScreenshot("manage channel and themepack tab");
+////		getTVDashboardPage().clickCancel();
+////		reporter.reportLogWithScreenshot("ready to submit");
+////		getRogersOVOrderReviewPage().clickSubmitToManageThemepackOrChannel();
+//		reporter.reportLogWithScreenshot("Order Confirmation page");
+
+	}
 
 	@BeforeMethod (alwaysRun=true)
 	@Parameters({"strBrowser", "strLanguage"})

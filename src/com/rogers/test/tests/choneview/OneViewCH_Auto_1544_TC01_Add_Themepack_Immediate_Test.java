@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_1544_TC01_Add_Themepack_Immediate_Test extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
-    public void oneViewCH_1544_TC01_AddThemepackImmediate(){
+	public void oneViewCH_1544_TC01_AddThemepackImmediate(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.addThemepackImmediate.getAccountNo(), TestDataHandler.addThemepackImmediate.getContactID());
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
@@ -24,16 +24,25 @@ public class OneViewCH_Auto_1544_TC01_Add_Themepack_Immediate_Test extends BaseT
 		reporter.reportLogWithScreenshot("Customer followed channels and themepacks");
 		getTVDashboardPage().clickThemepacksTab();
 		reporter.reportLogWithScreenshot("Themepack tab");
+
+		getTVDashboardPage().clickThemepackTabFromBundle();
+		reporter.reportLogWithScreenshot("themepack added");
 		getTVDashboardPage().addThemepack();
+		reporter.reportLogWithScreenshot("4k popup");
+		getRogersIgniteBundlesPage().fourKTVPopup();
+		reporter.reportLogWithScreenshot("4k continue");
+		getRogersIgniteBundlesPage().fourKContinue();
+
+
 		getTVDashboardPage().clickYesContinueIfPresent();
 		reporter.reportLogWithScreenshot("continue for package");
 		getTVDashboardPage().clickContinueForPackage();
 		reporter.reportLogWithScreenshot("immediate date");
 		getTVDashboardPage().immediateDateChangeOption();
-		reporter.reportLogWithScreenshot("Collapse");
-		getTVDashboardPage().clickCancel();
-//		getRogersOVOrderReviewPage().clickSubmitToManageThemepackOrChannel();
-		reporter.reportLogWithScreenshot("Order Confirmation page");
+//		reporter.reportLogWithScreenshot("Collapse");
+//		getTVDashboardPage().clickCancel();
+////		getRogersOVOrderReviewPage().clickSubmitToManageThemepackOrChannel();
+//		reporter.reportLogWithScreenshot("Order Confirmation page");
 	}
 
 	@BeforeMethod (alwaysRun=true)
