@@ -950,6 +950,18 @@ public void activateHomePhoneltrPopUp() {
 			getReusableActionsInstance().executeJavaScriptClick(fourKContentContinue);
 	}
 
+	/*TO add pods in the internet addons page
+	@suganya p
+	*/
+	public void addPods(int amount)
+	{
+		By podsLocator = By.xpath("//div[text()=' "+amount+" ']/ancestor::div[@class='internet-tile__pricing']/following-sibling::div//span[@translate='global.cta.addToCart']");
+		getReusableActionsInstance().getWhenReady(podsLocator, 20);
+		WebElement addToCart = getDriver().findElement(podsLocator);
+		getReusableActionsInstance().executeJavaScriptClick(addToCart);
+	}
+
+
 }
 
 
