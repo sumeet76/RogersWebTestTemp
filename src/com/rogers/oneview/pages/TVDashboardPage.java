@@ -277,6 +277,9 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Reset purchase PIN')]")
 	WebElement ResetPurchasePin;
 
+	@FindBy(xpath = "//button[@rchtrackclickevent='themepacks']")
+	WebElement addThemepackFromBundle;
+
 
 	/**
 	 * Get list of all channels and themepacks and remove them one by one
@@ -803,7 +806,7 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().javascriptScrollByVisibleElement(icnCustForgotPurchasePin);
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
-		getReusableActionsInstance().getWhenReady(icnCustForgotPurchasePin, 120).click();
+		getReusableActionsInstance().executeJavaScriptClick(icnCustForgotPurchasePin);
 	}
 
 	/**
@@ -1014,7 +1017,14 @@ public class TVDashboardPage  extends BasePageClass {
 			getReusableActionsInstance().executeJavaScriptClick(secondLowestTvPackage);
 		}
 
-
+	/**
+	 * Click Add Themepack
+	 * @author Aditi.jain
+	 */
+	public void clickThemepackTabFromBundle() {
+		getReusableActionsInstance().waitForElementVisibility(addThemepackFromBundle, 300);
+		getReusableActionsInstance().executeJavaScriptClick(addThemepackFromBundle);
+	}
 	}
 
 

@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_1539_TC02_Swap_Channels_And_Add_Channel_Themepack_Immediate_Test extends BaseTestClass {
 	@Test (groups = {"RChannelsandThemepacks","RegressionCHOV"})
-    public void oneViewCH_1539_TC01_AddChannelAndThemepackImmediate() {
+	public void oneViewCH_1539_TC01_AddChannelAndThemepackImmediate() {
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.addChannelAndThempackImmediate.getswapAccountNo(), TestDataHandler.addChannelAndThempackImmediate.getswapContactID());
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
@@ -49,37 +49,32 @@ public class OneViewCH_Auto_1539_TC02_Swap_Channels_And_Add_Channel_Themepack_Im
 		getTVDashboardPage().clickAddChannel();
 		reporter.reportLogWithScreenshot("add channel");
 		getTVDashboardPage().clickThemepacksTab();
-		reporter.reportLogWithScreenshot("4k popup");
-		getRogersIgniteBundlesPage().fourKTVPopup();
-		reporter.reportLogWithScreenshot("continue");
-		getRogersIgniteBundlesPage().fourKContinue();
+
+		reporter.reportLogWithScreenshot("themepack tab from bundle");
+		getTVDashboardPage().clickThemepackTabFromBundle();
 		reporter.reportLogWithScreenshot("themepack options");
 		getTVDashboardPage().addThemepack();
-		reporter.reportLogWithScreenshot("add themepack");
+
+		reporter.reportLogWithScreenshot("Continue");
 		getCustomerProfilePage().clkContinue();
 
 
-		reporter.reportLogWithScreenshot("continue");
-		getTVDashboardPage().immediateDateChangeOption();
-		reporter.reportLogWithScreenshot("manage channel and themepack tab");
-		getTVDashboardPage().clickCancel();
-		reporter.reportLogWithScreenshot("ready to submit");
-//		getRogersOVOrderReviewPage().clickSubmitToManageThemepackOrChannel();
-		reporter.reportLogWithScreenshot("Order Confirmation page");
-
-
-//		getCaptcha_bypass_handlers().hashCode();
-//		getCreditCheckPage().goToPageBottom();
-//		getAccountOverViewPage().clickIgnite();
-//		getBrowserdriver().setDriver(getDriver());
-//		getCustomerProfilePage().clkContinue();
-//		getCallerInformationPage().clickContinue();
-//		getCaptcha_bypass_handlers().captchaBypassURLIgniteAnonymousBuyFlows("");
-//		getBrowserdriver().driverInit();
+		reporter.reportLogWithScreenshot("4k popup");
+		getRogersIgniteBundlesPage().fourKTVPopup();
+		reporter.reportLogWithScreenshot("4k continue");
+		getRogersIgniteBundlesPage().fourKContinue();
+		reporter.reportLogWithScreenshot("4k content continue");
+		getRogersIgniteBundlesPage().fourKContentContinue();
 
 
 
-
+//		reporter.reportLogWithScreenshot("continue");
+//		getTVDashboardPage().immediateDateChangeOption();
+//		reporter.reportLogWithScreenshot("manage channel and themepack tab");
+//		getTVDashboardPage().clickCancel();
+//		reporter.reportLogWithScreenshot("ready to submit");
+////		getRogersOVOrderReviewPage().clickSubmitToManageThemepackOrChannel();
+//		reporter.reportLogWithScreenshot("Order Confirmation page");
 
 
 	}
