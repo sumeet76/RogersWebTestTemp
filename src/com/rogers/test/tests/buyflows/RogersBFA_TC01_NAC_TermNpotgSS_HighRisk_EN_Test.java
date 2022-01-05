@@ -44,7 +44,7 @@ public class RogersBFA_TC01_NAC_TermNpotgSS_HighRisk_EN_Test extends BaseTestCla
         getRogersPlanConfigPage().clkDownPaymentChkBox();
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         getRogersPlanConfigPage().clickShowMoreDetails();
-        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc04NACTermBopis.getDataOptionIndex()),this.getClass().getSimpleName());
+        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc01NACTermNpotgSS.getDataOptionIndex()),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
         getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page data protection selected");
@@ -145,7 +145,7 @@ public class RogersBFA_TC01_NAC_TermNpotgSS_HighRisk_EN_Test extends BaseTestCla
         reporter.reportLogPassWithScreenshot("Continue button clicked from Billing Options Stepper");
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
       //***************Order Review Page*************//
-        reporter.softAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(),"Order Review Page Title Present","Order Review Page Title is not Present");
+        reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(),"Order Review Page Title Present","Order Review Page Title is not Present");
         reporter.reportLogPass("Order Review Page");
         /*String puchaseIncludeReviewPage=getRogersReviewOrderPage().getPurchaseIncludesText();
         reporter.reportLogPassWithScreenshot("Order Review Page"+"1.Monthly Fees"+totalMonthlyFeesReviewPage+"2. OnetimeFees:"+oneTimeFeesReviewPage+"3.Purchase Include :"+puchaseIncludeReviewPage);

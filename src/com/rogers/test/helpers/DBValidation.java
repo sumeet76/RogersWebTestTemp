@@ -37,7 +37,7 @@ public class DBValidation extends BaseTestClass{
             connect.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            getReporter().reportLog("Exception occurred while executing the Query, please " +
+            reporter.reportLog("Exception occurred while executing the Query, please " +
                     "check the query" + e.getMessage());
         }
 

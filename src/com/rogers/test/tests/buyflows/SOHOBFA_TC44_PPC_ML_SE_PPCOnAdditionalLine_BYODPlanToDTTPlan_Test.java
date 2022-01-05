@@ -11,11 +11,11 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * TC29 - Existing Multi line Shared NOTERM account_Price plan change on additional line by selecting Data,Talk & Text plan
+ * TC44 - SOHOPPC - Existing Multi line Shared NOTERM account_Price plan change on additional line by selecting Data,Talk & Text plan
  * @author praveen.kumar7
  */
 
-public class RogersBFA_TC29_PPC_ML_SE_FinancingOutTerm_PPCOnAdditionalLine_DTTPlan_Test extends BaseTestClass {
+public class SOHOBFA_TC44_PPC_ML_SE_PPCOnAdditionalLine_BYODPlanToDTTPlan_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -23,15 +23,15 @@ public class RogersBFA_TC29_PPC_ML_SE_FinancingOutTerm_PPCOnAdditionalLine_DTTPl
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","PPCBFA","RegressionOnlineBFA"})
-    public void rogersPPC_TC29_MLSE_FinancingOutTerm_PPCONAdditioinalLines_DTTPlanTest() {
+    @Test(groups = {"RegressionBFA","PPCBF","RegressionOnlineBFA"})
+    public void sohoPPC_TC44_ML_SE_BYODPlanToDTTPlanOnAdditionalLine() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
         getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc29PPCMLSEAdditionalLineDTTPlan.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc29PPCMLSEAdditionalLineDTTPlan.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc44_SOHOPPC_ML_BYODPlanToDTTPlanOnAdditionalLine.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc44_SOHOPPC_ML_BYODPlanToDTTPlanOnAdditionalLine.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
@@ -40,18 +40,18 @@ public class RogersBFA_TC29_PPC_ML_SE_FinancingOutTerm_PPCOnAdditionalLine_DTTPl
         getDriver().get(System.getProperty("AWSUrl")+"/build-plan?flowType=ppc");
         reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
         reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
-        getRogersDeviceCataloguePage().selectCTN(TestDataHandler.tc29PPCMLSEAdditionalLineDTTPlan.getCtn());
+        getRogersDeviceCataloguePage().selectCTN(TestDataHandler.tc44_SOHOPPC_ML_BYODPlanToDTTPlanOnAdditionalLine.getCtn());
         getRogersDeviceCataloguePage().clkContinueBtnPPCShareNonShareModal();
         //--------------------------------------------Plan Config page----------------------------------------------
         reporter.hardAssert(getRogersPlanConfigPage().verifyPPCPlanConfigPage(),"PPC Build plan page is loaded successfully","PPC build plan page is not loaded");
         getRogersPlanConfigPage().clkChangePlan();
         reporter.reportLogWithScreenshot("Clicked on Change Plan");
-        getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc29PPCMLSEAdditionalLineDTTPlan.getNewPlanType(),this.getClass().getSimpleName());
+        getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc44_SOHOPPC_ML_BYODPlanToDTTPlanOnAdditionalLine.getNewPlanType(),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Plan Type is selected successfully");
         getRogersPlanConfigPage().clickShowMoreDetails();
-        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc29PPCMLSEAdditionalLineDTTPlan.getDataOptionIndex()),this.getClass().getSimpleName());
+        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc44_SOHOPPC_ML_BYODPlanToDTTPlanOnAdditionalLine.getDataOptionIndex()),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Data option selected");
-        reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc29PPCMLSEAdditionalLineDTTPlan.getTalkOptionIndex())),
+        reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc44_SOHOPPC_ML_BYODPlanToDTTPlanOnAdditionalLine.getTalkOptionIndex())),
                 "Talk option selected and Addons page in expanded state","Addons page not in expanded state");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         reporter.reportLogWithScreenshot("Addons option selected");
@@ -60,7 +60,7 @@ public class RogersBFA_TC29_PPC_ML_SE_FinancingOutTerm_PPCOnAdditionalLine_DTTPl
                 "Additional line option page is displayed", "Additional line option page is not disaplayed");
         getRogersPlanConfigPage().changePlanForAdditionalLine("FIN_DATA_TALK_TEXT","1");
         reporter.reportLogWithScreenshot("Additional line data and talk selected");
-        getRogersPlanConfigPage().clkAddToCartAndProceedToCheckout(this.getClass().getSimpleName(), TestDataHandler.tc29PPCMLSEAdditionalLineDTTPlan.getNewPlanType());**/
+        getRogersPlanConfigPage().clkAddToCartAndProceedToCheckout(this.getClass().getSimpleName(), TestDataHandler.tc44_SOHOPPC_ML_BYODPlanToDTTPlanOnAdditionalLine.getNewPlanType());**/
         //-----------------------------------------Review Order Page----------------------------------------------------
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present", "Order Review Page Title is not Present");
         reporter.reportLogPassWithScreenshot("Order Review Page");

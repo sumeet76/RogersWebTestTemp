@@ -56,7 +56,7 @@ public class RogersBFA_TC26_PPC_ML_NonSE_FinancingInTerm_CreatingSharedGroup_DTT
         reporter.hardAssert(getRogersPlanConfigPage().verifyPPCPlanConfigPage(),"PPC Build plan page is loaded successfully","PPC build plan page is not loaded");
         getRogersPlanConfigPage().clkChangePlan();
         reporter.reportLogWithScreenshot("Clicked on Change Plan");
-        getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc26PPCMLNonSESharedGroupDTTPlan.getNewPlanType());
+        getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc26PPCMLNonSESharedGroupDTTPlan.getNewPlanType(),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Plan Type is selected successfully");
         getRogersPlanConfigPage().clickShowMoreDetails();
         getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc26PPCMLNonSESharedGroupDTTPlan.getDataOptionIndex()),this.getClass().getSimpleName());

@@ -53,8 +53,9 @@ class RogersBFA_TC16_HUPShareTermBopisML_Test extends BaseTestClass {
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
         getRogersPlanConfigPage().clickContinueOnModalToDoWithOldPhone();
-        getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
-        reporter.reportLogPassWithScreenshot("Plan config page data option selected");
+        getRogersPlanConfigPage().clickShowMoreDetails();
+        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc16HUPShareTermBopisML.getDataOptionIndex()),this.getClass().getSimpleName());
+        reporter.reportLogPassWithScreenshot("Data option selected");
         getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
         getRogersPlanConfigPage().skipBPOOffer();

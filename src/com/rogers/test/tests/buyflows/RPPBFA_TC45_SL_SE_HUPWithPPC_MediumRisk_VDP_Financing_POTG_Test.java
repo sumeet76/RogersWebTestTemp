@@ -11,83 +11,89 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * TC13 - Regression - HUP-E2E-SL Shared(Noterm)-Validate the HUP flow selecting the Noterm_Chrome_EN_ON
+ * TC45 - Regression - RPP HUP-E2E-Single Line_ Medium Risk Shared Account-Validate the HUP with PPC by selecting Financing plan and POTG shipping_Chrome_EN_ON
+ * @author praveen.kumar7
  */
-public class RogersBFA_TC13_HUPShareNoTermSL_Test extends BaseTestClass{
+public class RPPBFA_TC45_SL_SE_HUPWithPPC_MediumRisk_VDP_Financing_POTG_Test extends BaseTestClass{
 
-        @Test(groups = {"RegressionBFA","SanityBFA","HUPBFA","RegressionOnlineBFA"})
-        public void rogersHUPShareKeepCurrentPlanNoTermSLTest() {
+        @Test(groups = {"RegressionBFA","RPPHUPBFA","RegressionOnlineBFA"})
+        public void rppHUP_tc45_SE_MediumRisk_HUPWithPPC_VDP_POTG_Test() {
+
             reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
             reporter.reportLogWithScreenshot("Home Page");
             getRogersHomePage().clkSignIn();
             //getRogersLoginPage().switchToSignInIFrame();
-            getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc13HUPShareNoTermSL.getUsername());
-            getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc13HUPShareNoTermSL.getPassword());
+            getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc45_RPP_HUPWithPPC_SL_SE_MediumRisk_Financing_VDP_POTG.getUsername());
+            getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc45_RPP_HUPWithPPC_SL_SE_MediumRisk_Financing_VDP_POTG.getPassword());
             reporter.reportLogWithScreenshot("Login Page");
             getRogersLoginPage().clkSignInIFrame();
             reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
-            //getRogersLoginPage().clkSkipIFrame();
+            getRogersLoginPage().clkSkipIFrame();
             getRogersLoginPage().switchOutOfSignInIFrame();
             reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
             reporter.reportLogWithScreenshot("Account Overview page");
             getDriver().get(System.getProperty("AWSUrl"));
-            String deviceName = TestDataHandler.tc13HUPShareNoTermSL.getDeviceName();
-            reporter.reportLogWithScreenshot("Moving to device catalogue page");
-            reporter.hardAssert(getRogersDeviceCataloguePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
+            String deviceName = TestDataHandler.tc45_RPP_HUPWithPPC_SL_SE_MediumRisk_Financing_VDP_POTG.getDeviceName();
+            reporter.hardAssert(getRogersDeviceCataloguePage().verifyDeviceTileCTAButton(deviceName),
+                    "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
             getRogersDeviceCataloguePage().clickDeviceTileCTAButton(deviceName);
             reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed(), "Modal element is present on the screen",
                     "Modal element is not present on the screen");
             getRogersDeviceCataloguePage().clickUpgradeMyPhoneButtonOnModal();
             reporter.reportLogWithScreenshot("Upgrade button clicked on Modal window Popup");
+
             reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
-                    "Continue button on the device config page is present",
-                    "Continue button on the device config page is not present");
+                    "Continue button on the device config page is present", "Continue button on the device config page is not present");
             getRogersDeviceConfigPage().clickContinueButton();
 
-            getRogersPlanConfigPage().clkRadioButtonNoTerm();
-            reporter.reportLogPassWithScreenshot("No term selected");
+            reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
+                    "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
+            getRogersPlanConfigPage().clkDownPaymentChkBox();
+            reporter.reportLogPassWithScreenshot("VDP checkbox is selected");
             getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
             reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
             getRogersPlanConfigPage().clickContinueOnModalToDoWithOldPhone();
-            reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
+            getRogersPlanConfigPage().clickShowMoreDetails();
+            getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc45_RPP_HUPWithPPC_SL_SE_MediumRisk_Financing_VDP_POTG.getDataOptionIndex()),this.getClass().getSimpleName());
+            reporter.reportLogPassWithScreenshot("Plan config page data option selected");
+            getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
             getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
             getRogersPlanConfigPage().clkContinueDeviceProtection();
             reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
             getRogersPlanConfigPage().clickCartSummaryContinueButton();
 
-            getRogersCheckoutPage().clkDeliveryMethod("standard");
-            reporter.reportLogPass("Standard Delivery selected");
+            reporter.reportLogPassWithScreenshot("On Checkout page");
+            getRogersCheckoutPage().clkDeliveryMethod("PRO");
+            reporter.reportLogPassWithScreenshot("Pro on the go Delivery selected");
+            reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");
             getRogersCheckoutPage().clkContinueBtnShipping();
-            reporter.reportLogPass("Clicked continue button in shipping stepper");
+            reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
             getRogersCheckoutPage().clksubmitBtnCheckoutPage();
             reporter.reportLogPass("Clicked submit button below cart summary");
+            getRogersPlanConfigPage().clkContinueOnExistingAddonModal();
+
             reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                     "Order Review Page Title is not Present");
             reporter.reportLogPass("Order Review Page");
+            getRogersReviewOrderPage().clkFinancingConsentCheckbox();
             getRogersReviewOrderPage().clkAgreementConsentCheckbox();
+            getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
             getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
+            getRogersReviewOrderPage().clkEmailConsentCheckbox();
             reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
-            if(getRogersOrderReviewPage().isPaymentRequired()) {
-                getRogersOrderReviewPage().clkContinue();
-                getRogersPaymentPage().setCreditCardDetails(TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getNumber(),
-                        TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getExpiryMonth(),
-                        TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getExpiryYear(),
-                        TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getCVV());
-                reporter.reportLogWithScreenshot("Rogers Payment Page");
-                getRogersPaymentPage().clkSubmit();
-            } else {
-                getRogersOrderReviewPage().clkSubmitOrder();
-            }
-            reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),
-                    "Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
+            getRogersOrderReviewPage().clkSubmitOrder();
+
+            reporter.reportLogWithScreenshot("Rogers Payment Page");
+            reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),"Payment page displayed successfully","Payment page did not display");
             getRogersOneTimePaymentPage().setNameonCard();
             getRogersOneTimePaymentPage().switchToCreditCardIFrame();
-            getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc13HUPShareNoTermSL.getCreditCardDetails());
+            getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc45_RPP_HUPWithPPC_SL_SE_MediumRisk_Financing_VDP_POTG.getCcNumberOTP());
             getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
-            getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc13HUPShareNoTermSL.getExpiryDate());
+            getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc45_RPP_HUPWithPPC_SL_SE_MediumRisk_Financing_VDP_POTG.getExpiryDateOTP());
             getRogersOneTimePaymentPage().setCVV();
             reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
             getRogersOneTimePaymentPage().clkSubmitOrderBtn();
+
             reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
             reporter.hardAssert(getRogersOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
             reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");
@@ -104,5 +110,4 @@ public class RogersBFA_TC13_HUPShareNoTermSL_Test extends BaseTestClass{
     public void afterTest() {
         closeSession();
     }
-
     }

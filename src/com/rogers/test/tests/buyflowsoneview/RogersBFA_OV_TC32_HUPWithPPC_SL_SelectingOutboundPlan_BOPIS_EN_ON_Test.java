@@ -49,6 +49,8 @@ public class RogersBFA_OV_TC32_HUPWithPPC_SL_SelectingOutboundPlan_BOPIS_EN_ON_T
 		reporter.reportLogPassWithScreenshot("Data option selected");
 		getRogersOVPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		getRogersOVPlanConfigPage().clickPreCartAddonsContinueButton();
+		reporter.reportLogWithScreenshot("Addons selected");
+		getRogersOVPlanConfigPage().clkContinueDeviceProtection();
 		getRogersOVPlanConfigPage().clickCartSummaryContinueButton();
 		getRogersOVPlanConfigPage().clkAdditionalLineOptions();
 		//---------------------------------------------Checkout pages---------------------------------------------------

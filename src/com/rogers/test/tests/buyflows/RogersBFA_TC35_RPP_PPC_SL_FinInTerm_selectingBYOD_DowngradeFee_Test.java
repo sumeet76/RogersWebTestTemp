@@ -46,7 +46,7 @@ public class RogersBFA_TC35_RPP_PPC_SL_FinInTerm_selectingBYOD_DowngradeFee_Test
         reporter.hardAssert(getRogersPlanConfigPage().verifyPPCPlanConfigPage(),"PPC Build plan page is loaded successfully","PPC build plan page is not loaded");
         getRogersPlanConfigPage().clkChangePlan();
         reporter.reportLogWithScreenshot("Clicked on Change Plan");
-        getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc35RPP_PPC_SL_FinToBYOD_DowngradeFee.getNewPlanType());
+        getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc35RPP_PPC_SL_FinToBYOD_DowngradeFee.getNewPlanType(),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Downgrade fee popup displayed");
         getRogersPlanConfigPage().verifyDowngradeFeeModalAndClkContinue();
         getRogersPlanConfigPage().clickShowMoreDetails();

@@ -42,7 +42,7 @@ public class RogersBFA_TC27_PPC_SL_SE_FinancingInTerm_SelectingBYODPlan_Downgrad
         reporter.hardAssert(getRogersPlanConfigPage().verifyPPCPlanConfigPage(),"PPC Build plan page is loaded successfully","PPC build plan page is not loaded");
         getRogersPlanConfigPage().clkChangePlan();
         reporter.reportLogWithScreenshot("Clicked on Change Plan");
-        getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc27PPCSLSEBYODPlan.getNewPlanType());
+        getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc27PPCSLSEBYODPlan.getNewPlanType(),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Plan Type is selected successfully");
         getRogersPlanConfigPage().verifyDowngradeFeeModalAndClkContinue();
         getRogersPlanConfigPage().clickShowMoreDetails();

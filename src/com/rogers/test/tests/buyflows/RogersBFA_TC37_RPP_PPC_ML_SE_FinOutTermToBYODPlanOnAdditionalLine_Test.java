@@ -46,7 +46,7 @@ public class RogersBFA_TC37_RPP_PPC_ML_SE_FinOutTermToBYODPlanOnAdditionalLine_T
         reporter.hardAssert(getRogersPlanConfigPage().verifyPPCPlanConfigPage(),"PPC Build plan page is loaded successfully","PPC build plan page is not loaded");
         getRogersPlanConfigPage().clkChangePlan();
         reporter.reportLogWithScreenshot("Clicked on Change Plan");
-        getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc37RPP_PPC_ML_SE_BYODToBYODPlanOnAdditionalLine.getNewPlanType());
+        getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc37RPP_PPC_ML_SE_BYODToBYODPlanOnAdditionalLine.getNewPlanType(),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Plan Type is selected successfully");
         getRogersPlanConfigPage().clickShowMoreDetails();
         getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc37RPP_PPC_ML_SE_BYODToBYODPlanOnAdditionalLine.getDataOptionIndex()),this.getClass().getSimpleName());

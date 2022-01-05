@@ -23,8 +23,11 @@ public class RogersChoosePlanPage extends BasePageClass {
 	@FindBy(xpath = "//span[text()='No Tab' or text()='Flex']//ancestor::a")
 	WebElement lnkNoTab;
 	
-	@FindBy(xpath = "//span[@translate='_select']/parent::button")
+	@FindBy(xpath = "//button[@class='btn btn-select']")
 	List<WebElement> btnSelect;
+
+	@FindBy(xpath = "//button[@class='btn btn-select']/ancestor::div[@class='plan-section']//span[@class='ng-binding']")
+	List<WebElement> planSocCodes;
 	
 	@FindBy(xpath = "//div[contains(@class,'new-customer')]/a")
 	WebElement lnkBuyOnline;
@@ -191,9 +194,21 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * Clicks on the 'Get Plan' button on the first available plan tile
 	 * @author rajesh.varalli1
 	 */
-	public void selectFirstAvailablePlan() {
-		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(btnSelect.get(1), 30));
-		getReusableActionsInstance().staticWait(3000);
+	public void selectFirstAvailablePlan(String dataOptionIndex) {
+		getReusableActionsInstance().scrollToElement(btnSelect.get(Integer.parseInt(dataOptionIndex)+1));
+		if(planSocCodes.get(Integer.parseInt(dataOptionIndex)).getText().trim().startsWith("RPP")) {
+			int updatedDataOptionIndex = Integer.parseInt(dataOptionIndex)-1;
+			if(planSocCodes.get(updatedDataOptionIndex).getText().trim().startsWith("RPP")) {
+				updatedDataOptionIndex = Integer.parseInt(dataOptionIndex)+1;
+				getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(btnSelect.get(updatedDataOptionIndex), 30));
+			}
+			else {
+				getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(btnSelect.get(updatedDataOptionIndex), 30));
+			}
+		}
+		else {
+			getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(btnSelect.get(Integer.parseInt(dataOptionIndex)), 30));
+		}
 	}
 	
 	/**
@@ -273,6 +288,8 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkCheckout() {
+		getReusableActionsInstance().waitForElementTobeClickable(btnCheckout,60);
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().clickWhenReady(btnCheckout, 30);
 		getReusableActionsInstance().clickIfAvailable(rdoSelectTodaysDate, 30);
 		getReusableActionsInstance().clickIfAvailable(By.xpath("//div[@class='billingDateButtonClass inlineBlockClass']"));
@@ -347,11 +364,11 @@ public class RogersChoosePlanPage extends BasePageClass {
 	 * Handles the PPC for dependent additional lines by choosing the first price plan
 	 * @author rajesh.varalli1
 	 */
-	public void handleAdditionalLinesPlanChange() {
+	public void handleAdditionalLinesPlanChange() {/*
 		for (int index = 0; index < lnkAdditionalLinesTabs.size(); index++) {
 			getReusableActionsInstance().clickWhenReady(lnkAdditionalLinesTabs.get(index));
 			selectFirstAvailablePlan();
-		}
+		}*/
 	}
 	
 	/**
