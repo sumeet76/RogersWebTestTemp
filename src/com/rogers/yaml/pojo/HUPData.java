@@ -18,6 +18,8 @@ public class HUPData {
 	private String accessoriesCount;
 	private String accessory1;
 	private String accessory2;
+	private String ccNumberOTP;
+	private String expiryDateOTP;
 
 	public String getCreditCardDetails() {
 		return creditCardDetails;
@@ -200,6 +202,30 @@ public class HUPData {
 	 */
 	public void setAccessory2(String accessory2) {
 		this.accessory2 = accessory2;
+	}
+	/**
+	 * @return the ccNumberOTP
+	 */
+	public String getCcNumberOTP() {
+		return ccNumberOTP;
+	}
+	/**
+	 * @param ccNumberOTP the ccNumberOTP to set
+	 */
+	public void setCcNumberOTP(String ccNumberOTP) {
+		this.ccNumberOTP = ccNumberOTP;
+	}
+	/**
+	 * @return the expiryDateOTP
+	 */
+	public String getExpiryDateOTP() {
+		return expiryDateOTP;
+	}
+	/**
+	 * @param expiryDateOTP the ccNumberOTP to set
+	 */
+	public void setExpiryDateOTP(String expiryDateOTP) {
+		this.expiryDateOTP = expiryDateOTP;
 	}
 
 }

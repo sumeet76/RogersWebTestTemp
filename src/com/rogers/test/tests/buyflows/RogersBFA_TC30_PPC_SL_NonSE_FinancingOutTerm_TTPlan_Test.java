@@ -42,7 +42,7 @@ public class RogersBFA_TC30_PPC_SL_NonSE_FinancingOutTerm_TTPlan_Test extends Ba
         reporter.hardAssert(getRogersPlanConfigPage().verifyPPCPlanConfigPage(),"PPC Build plan page is loaded successfully","PPC build plan page is not loaded");
         getRogersPlanConfigPage().clkChangePlan();
         reporter.reportLogWithScreenshot("Clicked on Change Plan");
-        getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc30PPCSLNonSEFinToTTPlan.getNewPlanType());
+        getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc30PPCSLNonSEFinToTTPlan.getNewPlanType(),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Plan Type is selected successfully");
         //getRogersPlanConfigPage().clickShowMoreDetails();
         //getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc30PPCSLNonSEFinToTTPlan.getDataOptionIndex()),this.getClass().getSimpleName());

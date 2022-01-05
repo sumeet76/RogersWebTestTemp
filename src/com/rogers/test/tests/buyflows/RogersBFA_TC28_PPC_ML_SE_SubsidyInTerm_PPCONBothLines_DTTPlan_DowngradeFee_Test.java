@@ -46,7 +46,7 @@ public class RogersBFA_TC28_PPC_ML_SE_SubsidyInTerm_PPCONBothLines_DTTPlan_Downg
         reporter.hardAssert(getRogersPlanConfigPage().verifyPPCPlanConfigPage(),"PPC Build plan page is loaded successfully","PPC build plan page is not loaded");
         getRogersPlanConfigPage().clkChangePlan();
         reporter.reportLogWithScreenshot("Clicked on Change Plan");
-        getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc28PPCMLSESubsidyPlanToDTTPLan.getNewPlanType());
+        getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc28PPCMLSESubsidyPlanToDTTPLan.getNewPlanType(),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Plan Type is selected successfully");
         getRogersPlanConfigPage().verifyDowngradeFeeModalAndClkContinue();
         getRogersPlanConfigPage().clickShowMoreDetails();

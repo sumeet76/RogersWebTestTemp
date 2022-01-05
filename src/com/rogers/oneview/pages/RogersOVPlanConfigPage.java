@@ -225,7 +225,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[@data-test='addons-removal-modal-button-primary']")
     WebElement btnExistingAddonModalContinue;
 
-    @FindBy(xpath = "//button[@title='Continue']")
+    @FindBy(xpath = "//button[contains(@title,'Add Premium')]/preceding-sibling::button")
     WebElement btnContinueDeviceProtection;
 
 
@@ -804,6 +804,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
         getReusableActionsInstance().javascriptScrollByVisibleElement(getReusableActionsInstance().getWhenReady(By.xpath("//p[contains(.,'Data option')]")));
         getReusableActionsInstance().staticWait(3000);
         getReusableActionsInstance().executeJavaScriptClick(continueButtonOnCartSummary);
+        getReusableActionsInstance().waitForElementInvisibilityNOException(continueButtonOnCartSummary,40);
         //clickGetBPOOffer();
 //        getReusableActionsInstance().waitForElementTobeClickable(continueButtonOnCartSummary, 10);
         //getReusableActionsInstance().clickWhenReady(continueButtonOnCartSummary);
@@ -1104,6 +1105,7 @@ public class RogersOVPlanConfigPage extends BasePageClass {
     public void clickOutBoundFieldAccordion() {
         //getReusableActionsInstance().scrollToElement(outboundFieldAccordion);
         getReusableActionsInstance().clickWhenReady(outboundFieldAccordion,30);
+        getReusableActionsInstance().staticWait(3000);
         getReusableActionsInstance().javascriptScrollToTopOfPage();
     }
 

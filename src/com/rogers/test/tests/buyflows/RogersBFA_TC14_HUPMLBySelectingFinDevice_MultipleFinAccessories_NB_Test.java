@@ -59,8 +59,9 @@ public class RogersBFA_TC14_HUPMLBySelectingFinDevice_MultipleFinAccessories_NB_
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
         getRogersPlanConfigPage().clickContinueOnModalToDoWithOldPhone();
-        getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
-        reporter.reportLogPassWithScreenshot("Plan config page data option selected");
+        getRogersPlanConfigPage().clickShowMoreDetails();
+        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc14HUPShareKeepCurrentPlanTermML.getDataOptionIndex()),this.getClass().getSimpleName());
+        reporter.reportLogPassWithScreenshot("Data option selected");
         getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
         getRogersPlanConfigPage().skipBPOOffer();

@@ -52,8 +52,9 @@ public class RogersBFA_TC10_HUPOnAdditonalLine_Test extends BaseTestClass {
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
-        getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
-        reporter.reportLogPassWithScreenshot("Plan config page data option selected");
+        getRogersPlanConfigPage().clickShowMoreDetails();
+        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc10HUPAdditionalLine.getDataOptionIndex()),this.getClass().getSimpleName());
+        reporter.reportLogPassWithScreenshot("Data option selected");
         getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
         getRogersPlanConfigPage().skipBPOOffer();
@@ -61,9 +62,7 @@ public class RogersBFA_TC10_HUPOnAdditonalLine_Test extends BaseTestClass {
         reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
         getRogersPlanConfigPage().clkContinueDeviceProtection();
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
-        reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
-                "Billing Address is not selected");
-        getRogersCheckoutPage().clkDeliveryMethodStandard();
+        getRogersCheckoutPage().clkDeliveryMethod("STANDARD");
         reporter.reportLogPass("Standard Delivery selected");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPass("Clicked continue button in shipping stepper");

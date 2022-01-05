@@ -35,14 +35,13 @@ public class RogersBFA_OV_TC03_PPCOnMultiLine_Test extends BaseTestClass {
 		getRogersOVChangeSharePlanPage().clickEditButton();
 		reporter.hardAssert(getRogersOVChoosePlanPage().verifyChoosePlanPage() ,"Choose Plan page loaded" , "Choose Plan page not loaded" );
 		reporter.reportLogWithScreenshot("Choose Plan page loaded");
-		getRogersOVChoosePlanPage().clkSharedLineOne();
 		getRogersOVChoosePlanPage().selectPlanCategory(TestDataHandler.buyFlowsOVtestCase03.getNewPlanCategory());
-		getRogersOVChoosePlanPage().selectFirstAvailablePlan();
+		getRogersOVChoosePlanPage().selectFirstAvailablePlan(TestDataHandler.buyFlowsOVtestCase03.getDataOptionIndex());
 		getRogersOVChoosePlanPage().verifyAndClickDowngradeFeeContinue();
 		reporter.reportLogWithScreenshot("Shared line one plan changed");
 		getRogersOVChoosePlanPage().clkSharedLineTwo();
 		getRogersOVChoosePlanPage().selectPlanCategory(TestDataHandler.buyFlowsOVtestCase03.getNewPlanCategory());
-		getRogersOVChoosePlanPage().selectFirstAvailablePlan();
+		getRogersOVChoosePlanPage().selectFirstAvailablePlan(TestDataHandler.buyFlowsOVtestCase03.getDataOptionIndex());
 		getRogersOVChoosePlanPage().verifyAndClickDowngradeFeeContinue();
 		reporter.reportLogWithScreenshot("Shared line two plan changed");
 		getRogersOVChoosePlanPage().clkCheckout();

@@ -16,7 +16,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
  * @author Saurav.Goyal
  */
 public class RogersBFA_OV_TC04_PPCMultiLineKeepingSamePlanOnAdditionalLine_Test extends BaseTestClass {
-    @Test(groups = {"RegressionBFA","RegressionOVBFA","PPCOvBFA"})
+    @Test(groups = {"RegressionBFA","RegressionOVBFA","PPCOvBF"})
     public void ppcOnMultiLineKeepingSamePlanOnAdditionalLineFlowTest() {
         getEnvironmentSelectionPage().enterEmpNoAndName(TestDataHandler.bfaOneViewConfig.getUsrID(),TestDataHandler.bfaOneViewConfig.getLoginID());
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.buyFlowsOVtestCase04.getBanNo(), TestDataHandler.buyFlowsOVtestCase04.getContactID());
@@ -36,7 +36,7 @@ public class RogersBFA_OV_TC04_PPCMultiLineKeepingSamePlanOnAdditionalLine_Test 
         reporter.reportLogWithScreenshot("Choose Plan page loaded");
         getRogersOVChoosePlanPage().clkSharedLineOne();
         getRogersOVChoosePlanPage().selectPlanCategory(TestDataHandler.buyFlowsOVtestCase04.getNewPlanCategory());
-        getRogersOVChoosePlanPage().selectFirstAvailablePlan();
+        getRogersOVChoosePlanPage().selectFirstAvailablePlan(TestDataHandler.buyFlowsOVtestCase04.getDataOptionIndex());
         getRogersOVChoosePlanPage().verifyAndClickDowngradeFeeContinue();
         reporter.reportLogWithScreenshot("Shared line one plan changed");
         getRogersOVChoosePlanPage().clkCheckout();
