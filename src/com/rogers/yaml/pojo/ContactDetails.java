@@ -56,6 +56,10 @@ public class ContactDetails {
 	private String contactIDSAIAddOnExpressCheckout;
 	private String contactIDSAIISSAddOnExpressCheckout;
 	private String phoneNo;
+	private String contactIDInternetSmartHomeMonitoring;
+	private String contactIDInternetHomePhoneSmartHomeMonitoring;
+	private String contactIDInternetSmartStremSmartHomeMonitoring;
+	private String contactIDTVInternetSmartHomeMonitoring;
 
 
 	;
@@ -573,5 +577,45 @@ public class ContactDetails {
 
 	public String getPhoneNo() {
 		return phoneNo;
+	}
+	/**
+	 * @param contactIDInternetSmartHomeMonitoring
+	 */
+	public void setContactIDInternetSmartHomeMonitoring(String contactIDInternetSmartHomeMonitoring) {
+		this.contactIDInternetSmartHomeMonitoring= contactIDInternetSmartHomeMonitoring;
+	}
+
+	public String getContactIDInternetSmartHomeMonitoring() {
+		return contactIDInternetSmartHomeMonitoring;
+	}
+	/**
+	 * @param contactIDInternetHomePhoneSmartHomeMonitoring
+	 */
+	public void setContactIDInternetHomePhoneSmartHomeMonitoring(String contactIDInternetHomePhoneSmartHomeMonitoring) {
+		this.contactIDInternetHomePhoneSmartHomeMonitoring= contactIDInternetHomePhoneSmartHomeMonitoring;
+	}
+
+	public String getContactIDInternetHomePhoneSmartHomeMonitoring() {
+		return contactIDInternetHomePhoneSmartHomeMonitoring;
+	}
+	/**
+	 * @param contactIDInternetSmartStremSmartHomeMonitoring
+	 */
+	public void setContactIDInternetSmartStremSmartHomeMonitoring(String contactIDInternetSmartStremSmartHomeMonitoring) {
+		this.contactIDInternetSmartStremSmartHomeMonitoring= contactIDInternetSmartStremSmartHomeMonitoring;
+	}
+
+	public String getContactIDInternetSmartStremSmartHomeMonitoring() {
+		return contactIDInternetSmartStremSmartHomeMonitoring;
+	}
+	/**
+	 * @param contactIDTVInternetSmartHomeMonitoring
+	 */
+	public void setContactIDTVInternetSmartHomeMonitoring(String contactIDTVInternetSmartHomeMonitoring) {
+		this.contactIDTVInternetSmartHomeMonitoring= contactIDTVInternetSmartHomeMonitoring;
+	}
+
+	public String getContactIDTVInternetSmartHomeMonitoring() {
+		return contactIDTVInternetSmartHomeMonitoring;
 	}
 }

@@ -50,7 +50,7 @@ public class RogersBFA_TC25_PPC_ML_NonSE_SubsidyInTerm_FormerSubsidyPlans_Test e
         reporter.hardAssert(getRogersPlanConfigPage().verifyPPCPlanConfigPage(),"PPC Build plan page is loaded successfully","PPC build plan page is not loaded");
         getRogersPlanConfigPage().clkChangePlan();
         reporter.reportLogWithScreenshot("Clicked on Change Plan");
-        getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc25PPCMLNonSESubsidyPlan.getNewPlanType());
+        getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc25PPCMLNonSESubsidyPlan.getNewPlanType(),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Plan Type is selected successfully");
         getRogersPlanConfigPage().clkIndividualTab();
         getRogersPlanConfigPage().clickShowMoreDetails();

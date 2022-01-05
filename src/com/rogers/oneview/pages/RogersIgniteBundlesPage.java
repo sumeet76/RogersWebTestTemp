@@ -260,6 +260,12 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[@translate='global.cta.addToCart']/ancestor::button")
 	WebElement addOnAddToCart;
 
+	@FindBy(xpath="//div[text()=' Smart Home Monitoring ' or text()=' Système de domotique ']")
+	WebElement smartHomeMonitoring ;
+
+	@FindBy(xpath = "//ds-modal[@ng-reflect-heading='4K Content']/descendant::span[@translate='global.cta.continue']")
+	WebElement fourKContentContinue;
+
 
 	/**
 	 * Click Load Offers button
@@ -926,6 +932,36 @@ public void activateHomePhoneltrPopUp() {
 	public void clickAddOnAddToCart() {
 		getReusableActionsInstance().clickWhenReady(addOnAddToCart,30);
 	}
+	/**
+	 * Click smartHomeMonitoring to Expand in Points to Mention
+	 * @author aditi.jain
+	 */
+	public void clickSmartHomeMonitoring() {
+		getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoring, 10);
+		getReusableActionsInstance().executeJavaScriptClick(smartHomeMonitoring);
+	}
+
+	/**
+	 * CLick Continue for four K Content
+	 * @author aditi.jain
+	 */
+	public void fourKContentContinue() {
+		if(getReusableActionsInstance().isElementVisible(fourKContentContinue, 180))
+			getReusableActionsInstance().executeJavaScriptClick(fourKContentContinue);
+	}
+
+	/*TO add pods in the internet addons page
+	@suganya p
+	*/
+	public void addPods(int amount)
+	{
+		By podsLocator = By.xpath("//div[text()=' "+amount+" ']/ancestor::div[@class='internet-tile__pricing']/following-sibling::div//span[@translate='global.cta.addToCart']");
+		getReusableActionsInstance().getWhenReady(podsLocator, 20);
+		WebElement addToCart = getDriver().findElement(podsLocator);
+		getReusableActionsInstance().executeJavaScriptClick(addToCart);
+	}
+
+
 }
 
 

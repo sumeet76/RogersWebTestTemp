@@ -46,7 +46,7 @@ public class RogersBFA_TC36_RPP_PPC_ML_SE_FinancingInTerm_SelectingDTTPlanONMain
         reporter.hardAssert(getRogersPlanConfigPage().verifyPPCPlanConfigPage(),"PPC Build plan page is loaded successfully","PPC build plan page is not loaded");
         getRogersPlanConfigPage().clkChangePlan();
         reporter.reportLogWithScreenshot("Clicked on Change Plan");
-        getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc36RPP_PPC_ML_SE_SelectingDTTPlanOnMainLine.getNewPlanType());
+        getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc36RPP_PPC_ML_SE_SelectingDTTPlanOnMainLine.getNewPlanType(),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Plan Type is selected successfully");
         getRogersPlanConfigPage().clickShowMoreDetails();
         getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc36RPP_PPC_ML_SE_SelectingDTTPlanOnMainLine.getDataOptionIndex()),this.getClass().getSimpleName());

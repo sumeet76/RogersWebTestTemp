@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.FormFiller;
 
 import java.util.ArrayList;
@@ -241,12 +242,14 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[@data-test='stepper-5-edit-step-continue-button']")
     WebElement btnContinueAccessoriesCost;
 
-    @FindBy(xpath = "//button[@title='Continue']")
+    @FindBy(xpath = "//button[contains(@title,'Add Premium')]/preceding-sibling::button")
     WebElement btnContinueDeviceProtection;
 
     @FindBy(xpath = "//p[@data-test='stepper-2-edit-step-label']")
     WebElement txtSelectDataOption;
 
+    @FindBy(xpath = "//div[@id='ds-stepper-id-1-completedContent-2']")
+    WebElement completedDataOptionStepper;
 
     /**
      * Select Device Protection Header on Plan config page
@@ -428,11 +431,15 @@ public class RogersPlanConfigPage extends BasePageClass {
                 getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton, 20);
             } else {
                 getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo), 20));
-                if (className.toUpperCase().contains("_PPC_")) {
-                    getReusableActionsInstance().staticWait(13000);
-                    getReusableActionsInstance().clickIfAvailable(btnDowngradeFeeModalConitnue, 5);
+                if (className.toUpperCase().contains("_PPC_") && className.toUpperCase().contains("DOWNGRADE")) {
+                    getReusableActionsInstance().waitForElementTobeClickable(btnDowngradeFeeModalConitnue, 40);
+                    getReusableActionsInstance().clickWhenReady(btnDowngradeFeeModalConitnue, 5);
                 }
-                getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton, 20);
+                else if(className.toUpperCase().contains("_PPC_")) {
+                    getReusableActionsInstance().waitForElementTobeClickable(preCartDataOtionContinueButton, 40);
+                    getReusableActionsInstance().staticWait(2000);
+                }
+                getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton);
             }
         }
         else {
@@ -616,7 +623,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clickPreCartDeviceCostContinueButton() {
-        getReusableActionsInstance().waitForElementVisibility(btnCartSummaryDropDown,30);
+        getReusableActionsInstance().waitForElementVisibility(btnCartSummaryDropDown,50);
         getReusableActionsInstance().clickWhenReady(preCartDeviceCostContinueButton);
         getReusableActionsInstance().clickIfAvailable(btnContinueOnModalToDoWithOldPhone, 10);
     }
@@ -772,9 +779,7 @@ public class RogersPlanConfigPage extends BasePageClass {
         clickGetBPOOffer();
         getReusableActionsInstance().javascriptScrollByVisibleElement(continueButtonOnCartSummary);
         getReusableActionsInstance().executeJavaScriptClick(continueButtonOnCartSummary);
-        clickGetBPOOffer();
-//        getReusableActionsInstance().waitForElementTobeClickable(continueButtonOnCartSummary, 10);
-//        getReusableActionsInstance().clickWhenReady(continueButtonOnCartSummary);
+        getReusableActionsInstance().waitForElementInvisibilityNOException(continueButtonOnCartSummary,60);
     }
 
     /**
@@ -831,6 +836,7 @@ public class RogersPlanConfigPage extends BasePageClass {
         if(className.toUpperCase().contains("SUBSIDY") && newPlanType.equalsIgnoreCase("FINANCING")) {
             getReusableActionsInstance().staticWait(15000);
         }
+        getReusableActionsInstance().waitForElementTobeClickable(btnProceedToCheckout,30);
         getReusableActionsInstance().clickWhenReady(btnProceedToCheckout);
     }
 
@@ -1163,20 +1169,35 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @param planType plan type to be selected
      * @author praveen.kumar7
      */
-    public void selectPlanType(String planType) {
-        if(planType.equalsIgnoreCase("Financing")) {
-            getReusableActionsInstance().clickWhenVisible(labelDTTPlanType);
+    public void selectPlanType(String planType, String className) {
+        switch (planType.toUpperCase()) {
+            case "FINANCING":
+                getReusableActionsInstance().clickWhenVisible(labelDTTPlanType);
+                break;
+            case "TALKTEXTFIN":
+                getReusableActionsInstance().clickWhenVisible(labelTTPlanType);
+                break;
+            case "NOTERM":
+                getReusableActionsInstance().clickWhenVisible(labelNotermPlanType);
+                break;
+            default:
+                System.out.println("Invalid plan type - Default plan type is preselected");
         }
-        else if(planType.equalsIgnoreCase("TALKTEXTFIN")) {
-            getReusableActionsInstance().clickWhenVisible(labelTTPlanType);
-        }
-        else if(planType.equalsIgnoreCase("NOTERM")) {
-            getReusableActionsInstance().clickWhenVisible(labelNotermPlanType);
-        }
-        //getReusableActionsInstance().clickWhenVisible(By.xpath("//dsa-selection[contains(@data-test,'stepper-1-edit-step-selection-option-')]//label[@aria-label='"+planType+"']"));
         getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton);
-        getReusableActionsInstance().waitForElementVisibility(txtSelectDataOption);
-        getReusableActionsInstance().staticWait(16000);
+        if(!planType.equalsIgnoreCase("TALKTEXTFIN")) {
+            if(className.toUpperCase().contains("DOWNGRADE")) {
+                getReusableActionsInstance().waitForElementTobeClickable(btnDowngradeFeeModalConitnue,40);
+            }
+            else {
+                getReusableActionsInstance().waitForElementVisibility(txtSelectDataOption,40);
+                getReusableActionsInstance().waitForElementTobeClickable(preCartDataOtionContinueButton, 40);
+                getReusableActionsInstance().staticWait(4000);
+            }
+        }
+        else if(planType.equalsIgnoreCase("TALKTEXTFIN") && getReusableActionsInstance().isElementVisible(completedDataOptionStepper)) {
+            getReusableActionsInstance().waitForElementTobeClickable(preCartTalkOptionContinueButton,20);
+        }
+        else getReusableActionsInstance().waitForElementTobeClickable(preCartDataOtionContinueButton,30);
     }
 
     /**

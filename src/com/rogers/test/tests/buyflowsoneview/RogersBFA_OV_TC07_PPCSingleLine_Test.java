@@ -36,7 +36,7 @@ public class RogersBFA_OV_TC07_PPCSingleLine_Test extends BaseTestClass {
         getRogersOVChoosePlanPage().selectPlanCategory(TestDataHandler.buyFlowsOVtestCase07.getNewPlanCategory());
         getRogersOVChoosePlanPage().selectPlanType("Infinite");
         reporter.reportLogWithScreenshot("Plan category and plan type selected");
-        getRogersOVChoosePlanPage().selectFirstAvailablePlan();
+        getRogersOVChoosePlanPage().selectFirstAvailablePlan(TestDataHandler.buyFlowsOVtestCase07.getDataOptionIndex());
         getRogersOVChoosePlanPage().verifyAndClickDowngradeFeeContinue();
         reporter.reportLogWithScreenshot("New Plan selected");
          getRogersOVChoosePlanPage().clkCheckout();

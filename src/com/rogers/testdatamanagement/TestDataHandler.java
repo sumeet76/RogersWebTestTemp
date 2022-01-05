@@ -138,6 +138,7 @@ public class TestDataHandler {
 	public static RedesignRpotgData tc05NACByodSS;
 	public static RedesignRpotgData tc06NACByodTermBopis;
 	public static RedesignRpotgData tc33RPPNACTermPotgShipping;
+	public static RedesignRpotgData tc48_RPPNACByod_StdShipping_QCProvince;
 	public static RedesignRpotgOVData buyFlowsOVtestCase14;
 	public static RedesignRpotgOVData buyFlowsOVtestCase15;
 	public static RedesignRpotgOVData buyFlowsOVtestCase16;
@@ -171,6 +172,9 @@ public class TestDataHandler {
 	public static PPCData tc35RPP_PPC_SL_FinToBYOD_DowngradeFee;
 	public static PPCData tc36RPP_PPC_ML_SE_SelectingDTTPlanOnMainLine;
 	public static PPCData tc37RPP_PPC_ML_SE_BYODToBYODPlanOnAdditionalLine;
+	public static PPCData tc42_SOHOPPC_SL_NS_TTPlanToDTTPlan;
+	public static PPCData tc43_SOHOPPC_ML_SE_DTTPlanToBYODOnMainLine_DownGradeFee;
+	public static PPCData tc44_SOHOPPC_ML_BYODPlanToDTTPlanOnAdditionalLine;
 	public static RedesignRpotgData tc31SOHONACTermMediumRiskUEOptionPOTG;
 	public static HUPData tc09HupPpcPotgSharedML;
 	public static HUPData tc10HUPAdditionalLine;
@@ -180,6 +184,13 @@ public class TestDataHandler {
 	public static HUPData tc14HUPShareKeepCurrentPlanTermML;
 	public static HUPData tc15HUPNonShareKeepCurrentPlanSL;
 	public static HUPData tc16HUPShareTermBopisML;
+	public static HUPData tc38_SOHOHUP_MediumRisk_KeepCurrentPlan_Bopis;
+	public static HUPData tc39_SOHOHUP_ML_SE_HUPWithPPCOnMainLine_VDP_POTG;
+	public static HUPData tc40_SOHOHUP_ML_SE_HUPWithPPCOnAdditionalLine_StdShip;
+	public static HUPData tc41_SOHOHUP_SL_HUP_NOTERM_KEP_StdShip;
+	public static HUPData tc45_RPP_HUPWithPPC_SL_SE_MediumRisk_Financing_VDP_POTG;
+	public static HUPData tc46_RPPHUP_ML_SE_HUPOnAdditionalLineByKEP_BOPIS;
+	public static HUPData tc47_RPPHUP_ML_HUP_NOTERM_KEPOnMainLine_StdShip;
 	public static AALData tc17AALShareTermBopis;
 	public static AALData tc18AALFinPlanPotgShipping;
 	public static AALData tc19AALNoTermStandardShipping;
@@ -188,6 +199,7 @@ public class TestDataHandler {
 	public static AALData tc22AALBYODStandardShipping;
 	public static AALData tc23AALTermMLNonSEBasicPlanStdShipping;
 	public static AALData tc34RPPAALBYODStdShipping;
+	public static AALData tc49_RPP_AALTERM_VDP_UpfronEdge_BOPIS;
 	public static HUPData buyFlowsOVtestCase01;
 	public static HUPData buyFlowsOVtestCase02;
 	public static HUPData buyFlowsOVtestCase05;
@@ -553,6 +565,18 @@ public class TestDataHandler {
 		tc35RPP_PPC_SL_FinToBYOD_DowngradeFee = YamlHandler.getPPCdata("tc35RPP_PPC_SL_FinToBYOD_DowngradeFee");
 		tc36RPP_PPC_ML_SE_SelectingDTTPlanOnMainLine = YamlHandler.getPPCdata("tc36RPP_PPC_ML_SE_SelectingDTTPlanOnMainLine");
 		tc37RPP_PPC_ML_SE_BYODToBYODPlanOnAdditionalLine = YamlHandler.getPPCdata("tc37RPP_PPC_ML_SE_BYODToBYODPlanOnAdditionalLine");
+		tc38_SOHOHUP_MediumRisk_KeepCurrentPlan_Bopis = YamlHandler.getHUPdata("tc38_SOHOHUP_MediumRisk_KeepCurrentPlan_Bopis");
+		tc39_SOHOHUP_ML_SE_HUPWithPPCOnMainLine_VDP_POTG = YamlHandler.getHUPdata("tc39_SOHOHUP_ML_SE_HUPWithPPCOnMainLine_VDP_POTG");
+		tc40_SOHOHUP_ML_SE_HUPWithPPCOnAdditionalLine_StdShip = YamlHandler.getHUPdata("tc40_SOHOHUP_ML_SE_HUPWithPPCOnAdditionalLine_StdShip");
+		tc41_SOHOHUP_SL_HUP_NOTERM_KEP_StdShip = YamlHandler.getHUPdata("tc41_SOHOHUP_SL_HUP_NOTERM_KEP_StdShip");
+		tc42_SOHOPPC_SL_NS_TTPlanToDTTPlan = YamlHandler.getPPCdata("tc42_SOHOPPC_SL_NS_TTPlanToDTTPlan");
+		tc43_SOHOPPC_ML_SE_DTTPlanToBYODOnMainLine_DownGradeFee = YamlHandler.getPPCdata("tc43_SOHOPPC_ML_SE_DTTPlanToBYODOnMainLine_DownGradeFee");
+		tc44_SOHOPPC_ML_BYODPlanToDTTPlanOnAdditionalLine = YamlHandler.getPPCdata("tc44_SOHOPPC_ML_BYODPlanToDTTPlanOnAdditionalLine");
+		tc45_RPP_HUPWithPPC_SL_SE_MediumRisk_Financing_VDP_POTG = YamlHandler.getHUPdata("tc45_RPP_HUPWithPPC_SL_SE_MediumRisk_Financing_VDP_POTG");
+		tc46_RPPHUP_ML_SE_HUPOnAdditionalLineByKEP_BOPIS = YamlHandler.getHUPdata("tc46_RPPHUP_ML_SE_HUPOnAdditionalLineByKEP_BOPIS");
+		tc47_RPPHUP_ML_HUP_NOTERM_KEPOnMainLine_StdShip = YamlHandler.getHUPdata("tc47_RPPHUP_ML_HUP_NOTERM_KEPOnMainLine_StdShip");
+		tc48_RPPNACByod_StdShipping_QCProvince = YamlHandler.getRedesignNACData("tc48_RPPNACByod_StdShipping_QCProvince");
+		tc49_RPP_AALTERM_VDP_UpfronEdge_BOPIS = YamlHandler.getAALdata("tc49_RPP_AALTERM_VDP_UpfronEdge_BOPIS");
 	}
 	
 	private static void buyFlowsOneViewDataInit() throws FileNotFoundException {

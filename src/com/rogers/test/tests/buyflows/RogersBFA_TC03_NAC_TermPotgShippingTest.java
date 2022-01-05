@@ -72,7 +72,7 @@ public class RogersBFA_TC03_NAC_TermPotgShippingTest extends BaseTestClass {
 				"BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
 		getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
-		getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
+		getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc03NACTermPotgShipping.getDataOptionIndex()),this.getClass().getSimpleName());
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
 		getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data protection selected");
@@ -157,11 +157,6 @@ public class RogersBFA_TC03_NAC_TermPotgShippingTest extends BaseTestClass {
 		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc03NACTermPotgShipping.getPaymentMethod());
 		getRogersCheckoutPage().clkBillingContinueButton();
 		// ***************Shipping Stepper*************//
-		reporter.softAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ", "Billing Address is not selected");
-		String addressShippingStepper = getRogersCheckoutPage().getShippingAddress();
-		System.out.println(billingAddressCreateProfile+"and"+addressShippingStepper);
-		//check below softassert
-		//reporter.softAssert(billingAddressCreateProfile.equals(addressShippingStepper), "Address in Shipping Stepper matches as entered in Create Profile stepper", "Address in Shipping Stepper not matches as entered in Create Profile stepper");
 		getRogersCheckoutPage().clkDeliveryMethod("PRO");
 		reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel() ,"Appointment label available", "Appointment label not available");
 		getRogersCheckoutPage().clkContinueBtnShipping();

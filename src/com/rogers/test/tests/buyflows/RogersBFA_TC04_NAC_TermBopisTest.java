@@ -49,7 +49,6 @@ public class RogersBFA_TC04_NAC_TermBopisTest extends BaseTestClass {
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
 		getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data protection selected");
-		getRogersPlanConfigPage().skipBPOOffer();
 		getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
 		getRogersPlanConfigPage().clkContinueDeviceProtection();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
