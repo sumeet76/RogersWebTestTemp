@@ -32,12 +32,16 @@ public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 
 	@FindBy(xpath = "//span[text()='Yes, they do' or text()='Oui, il en a un']/ancestor::button")
 	WebElement btnContinueOn4kTv;
+
+
 	/**
 	 * Click Exchange Later btn
 	 * @author chinnarao.vattam
 	 */
 	public void clkexchangeLater() {
-		getReusableActionsInstance().clickWhenReady(exchangeLaterbtn);
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().clickWhenReady(exchangeLaterbtn,30);
 	}
 	/**
 	 * Click Collapse(Down Arrow)
@@ -93,5 +97,8 @@ public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 	public void clkbtnContinueOn4ktv(){
 		getReusableActionsInstance().clickWhenReady(btnContinueOn4kTv);
 	}
+
+
+
 }
 

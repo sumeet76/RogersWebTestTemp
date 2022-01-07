@@ -14,7 +14,7 @@ public class OneViewCH_Auto_TC_028_Internet_PackageDowngrade_NextBillingCycleTes
     @Test(groups = {"RChangeInternet","Baseline","ChangePackage"})
     public void checkTVPackageDowngrade() {
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getBan(),TestDataHandler.TC028_InternetPackageDowngrade.getContactID());
-        getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+       // getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
         getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
@@ -24,6 +24,11 @@ public class OneViewCH_Auto_TC_028_Internet_PackageDowngrade_NextBillingCycleTes
         reporter.reportLogWithScreenshot("Lowest Internet Package selected");
         getInternetDashboardPage().clickContinueChangeInternetPackage();
         reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
+       // getInternetDashboardPage().ScrollTOBottom();
+        getInternetDashboardPage().clickExchangeLaterButton();
+        getInternetDashboardPage().clickContinue();
+        getRogersIgniteBundlesPage().fourKTVPopup();
+        getRogersIgniteBundlesPage().contiue4KContent();
         getInternetDashboardPage().clickContinueOnSelectDateChange();
         reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
 //        getRogersOVOrderReviewPage().clkSubmit();

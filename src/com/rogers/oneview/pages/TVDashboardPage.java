@@ -106,7 +106,6 @@ public class TVDashboardPage  extends BasePageClass {
 	WebElement btnConfirmExchange;
 
 	@FindBy(xpath = "//span[@translate='global.dashboard.tv.exchangeFlexChannels']/ancestor::button")
-//	@FindBy(xpath = "//span[text()='Exchange Flex Channels' or text()='Échanger chaînes flexibles']/ancestor::button")
 	WebElement btnExchangeFlexChannels;
 
 	@FindBy(xpath = "//*[@translate='global.swap.exchangeChannels']/parent::div/parent::div/parent::div")
@@ -139,7 +138,8 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "(//span[@ng-reflect-translate='global.cta.select' ]/ancestor::button)[2]")
 	WebElement secondLowestTvPackage;
 
-	@FindBy(xpath = "(//div[@class='internet-tile__body'])[1]//span[text()='Select' or text()='Sélectionner']/ancestor::button")
+	//@FindBy(xpath = "(/div[@class='internet-tile__body'])[1]//span[text()='Select' or text()='Sélectionner']/ancestor::button")
+	@FindBy(xpath = "(//span[contains(text(),'Select')]/ancestor::button)[1]")
 	WebElement btnSelectLowestTvPackage;
 
 
@@ -215,6 +215,8 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//ds-modal[@identifier='planChangeDateModal']/descendant::span[@translate='global.cta.continue']")
 	WebElement continueChangeDate;
 
+	@FindBy(xpath = "//span[text()='Exchange Flex Channels' or text()='Échanger chaînes flexibles']/ancestor::button")
+	WebElement ExchangeFlexChannels;
 
 	@FindAll({
 			@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks']"),
@@ -478,7 +480,7 @@ public class TVDashboardPage  extends BasePageClass {
 	public void clickSelectLowestTVPackage() {
 		WebElement btn = getReusableActionsInstance().getWhenReady(btnSelectLowestTvPackage, 60);
 		//getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
-		getReusableActionsInstance().javascriptScrollByVisibleElement(btnSelectLowestTvPackage);
+		//getReusableActionsInstance().javascriptScrollByVisibleElement(btnSelectLowestTvPackage);
 		getReusableActionsInstance().getWhenReady(btnSelectLowestTvPackage, 60).click();
 	}
 
@@ -491,7 +493,7 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().staticWait(5000);
 		//getReusableActionsInstance().waitForElementVisibility(btnSelectChannel, 90);
 		By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/parent::div/following-sibling::div[@class='internet-tile__body']//span[text()='Select'or text()='Sélectionner']/ancestor::button");
-		getReusableActionsInstance().getWhenReady(packageNameLocator, 20);
+		getReusableActionsInstance().getWhenReady(packageNameLocator, 30);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
 		getReusableActionsInstance().executeJavaScriptClick(pkg);
 	}
@@ -541,6 +543,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clickExchangeFlexChannels() {
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().clickWhenReady(btnExchangeFlexChannels, 60);
 //		WebElement btn=getReusableActionsInstance().getWhenReady(btnExchangeFlexChannels,80);
 //		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
@@ -554,7 +557,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clickSearchChannelToRemove() {
-		getReusableActionsInstance().waitForElementVisibility(icnSearchChannelToRemove, 20);
+		getReusableActionsInstance().waitForElementVisibility(icnSearchChannelToRemove, 30);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(exchangeFlexChannelContainer);
 		getReusableActionsInstance().getWhenReady(icnSearchChannelToRemove, 30).click();
 
@@ -566,7 +569,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clickFirstChannelToRemove() {
-		WebElement bTn = getReusableActionsInstance().getWhenReady(btnFirstChannelToRemove, 60);
+		WebElement bTn = getReusableActionsInstance().getWhenReady(btnFirstChannelToRemove, 120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, bTn.getLocation().y - 300);
 		getReusableActionsInstance().getWhenReady(btnFirstChannelToRemove, 60).click();
 	}
@@ -1017,6 +1020,11 @@ public class TVDashboardPage  extends BasePageClass {
 			getReusableActionsInstance().executeJavaScriptClick(secondLowestTvPackage);
 		}
 
+		public void SelectLowestPackage(){
+			getReusableActionsInstance().getWhenReady(btnSelectLowestTvPackage);
+			getReusableActionsInstance().executeJavaScriptClick(btnSelectLowestTvPackage);
+		}
+
 	/**
 	 * Click Add Themepack
 	 * @author Aditi.jain
@@ -1025,6 +1033,17 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(addThemepackFromBundle, 300);
 		getReusableActionsInstance().executeJavaScriptClick(addThemepackFromBundle);
 	}
+
+	public void ScrolltoConfirmExchangeBtn(){
+		getReusableActionsInstance().scrollToElement(btnConfirmExchange);
 	}
+
+	public void clkExchangeFlexChannels(){
+		//getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().getWhenReady(ExchangeFlexChannels,30);
+		getReusableActionsInstance().executeJavaScriptClick(ExchangeFlexChannels);
+	}
+}
+
 
 
