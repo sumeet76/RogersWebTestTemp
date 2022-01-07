@@ -93,12 +93,12 @@ public class OneViewCH_Auto_1413_TC01_E2E_NAC_3P_STBs_Test extends BaseTestClass
 			getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 			reporter.reportLogWithScreenshot("year and Month");
 			getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-			reporter.reportLogWithScreenshot("card details entered");
-			getPaymentOptionsPage().clkContinue();
-			reporter.reportLogWithScreenshot("submit order");
-			getRogersOVCheckoutPage().clkSubmit();
-			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-			reporter.reportLogWithScreenshot("Order Placed");
+//			reporter.reportLogWithScreenshot("card details entered");
+//			getPaymentOptionsPage().clkContinue();
+//			reporter.reportLogWithScreenshot("submit order");
+//			getRogersOVCheckoutPage().clkSubmit();
+//			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//			reporter.reportLogWithScreenshot("Order Placed");
 		
     }
 

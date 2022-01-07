@@ -110,12 +110,12 @@ public class OneViewCH_Auto_1417_TC01_E2E_NAC_3P_TMP_Test extends BaseTestClass 
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		reporter.reportLogWithScreenshot("added cart details");
-
-		getPaymentOptionsPage().clkContinue();
-		reporter.reportLogWithScreenshot("Order Review Page");
-		getRogersOVCheckoutPage().clkSubmit();
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		reporter.reportLogWithScreenshot("Order Placed");
+//
+//		getPaymentOptionsPage().clkContinue();
+//		reporter.reportLogWithScreenshot("Order Review Page");
+//		getRogersOVCheckoutPage().clkSubmit();
+//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//		reporter.reportLogWithScreenshot("Order Placed");
     }
 
 	@BeforeMethod (alwaysRun=true)

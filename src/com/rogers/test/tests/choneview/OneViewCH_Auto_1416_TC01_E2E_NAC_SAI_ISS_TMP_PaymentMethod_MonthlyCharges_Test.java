@@ -84,12 +84,12 @@ public class OneViewCH_Auto_1416_TC01_E2E_NAC_SAI_ISS_TMP_PaymentMethod_MonthlyC
 		getCreditCheckPage().verifyBillingAndPaymentOption();
 		reporter.reportLogWithScreenshot("Billing and payment");
 		getCreditCheckPage().selectPaymentOption(1);
-		reporter.reportLogWithScreenshot("Monthly charges");
-		getPaymentOptionsPage().clkContinue();
-        reporter.reportLogWithScreenshot("submit order");
-        getRogersOVCheckoutPage().clkSubmit();
-        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+//		reporter.reportLogWithScreenshot("Monthly charges");
+//		getPaymentOptionsPage().clkContinue();
+//        reporter.reportLogWithScreenshot("submit order");
+//        getRogersOVCheckoutPage().clkSubmit();
+//        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//        reporter.reportLogWithScreenshot("Order Placed");
     }
 
 	@BeforeMethod (alwaysRun=true)

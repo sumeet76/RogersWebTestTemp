@@ -88,13 +88,13 @@ public class OneViewCH_Auto_1408_TC01_E2E_NAC_2P_TMP_PaymentMethod_MonthlyCharge
 		getCreditCheckPage().verifyBillingAndPaymentOption();
 		getCreditCheckPage().selectPaymentOption(1);
 		reporter.reportLogWithScreenshot("Monthly charges");
-		getPaymentOptionsPage().clkContinue();
-
-				reporter.reportLogWithScreenshot("Order Review Page");
-//		reporter.hardAssert(getRogersOVCheckoutPage().verifySavingsExist(),"Savings section exists","Savings section does not exists");
-	getRogersOVCheckoutPage().clkSubmit();
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		reporter.reportLogWithScreenshot("Order Placed");
+//		getPaymentOptionsPage().clkContinue();
+//
+//				reporter.reportLogWithScreenshot("Order Review Page");
+////		reporter.hardAssert(getRogersOVCheckoutPage().verifySavingsExist(),"Savings section exists","Savings section does not exists");
+//	getRogersOVCheckoutPage().clkSubmit();
+//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//		reporter.reportLogWithScreenshot("Order Placed");
 	}
 
 
