@@ -69,7 +69,8 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath="//div[text() ='Ignite TV Flex 20 + Sports']/ancestor::div[4]/ancestor::div[3]/child::div[2]/preceding::*[text()='Select'][1]")
 	WebElement btnIgnite10Select;
 
-
+	@FindBy(xpath = "//span[contains(text(),'Exchange later')]/ancestor::button")
+	WebElement ExchangeLaterBtn;
 
 	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button")
 	WebElement btnContnueReset;
@@ -463,6 +464,15 @@ public class InternetDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(button);
 	}
 
+		public void ScrollTOBottom(){
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		}
+
+		public void clickExchangeLaterButton(){
+		getReusableActionsInstance().getWhenReady(ExchangeLaterBtn,60);
+		getReusableActionsInstance().executeJavaScriptClick(ExchangeLaterBtn);
+
+		}
 
 
 

@@ -588,6 +588,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkexchangeLater() {
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().clickWhenReady(exchangeLaterbtn,120);
 	}	
 	/**
