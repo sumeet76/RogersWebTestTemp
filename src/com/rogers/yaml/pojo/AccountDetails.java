@@ -19,6 +19,8 @@ public class AccountDetails {
 	private String newpassword;
 	private String addOnNameEn;
 	private String addOnNameFr;
+	private String addOnNameEn01;
+	private String addOnNameFr01;
 	private String type;
 	private String upgradePlan;
 	private String downgradePlanEn;
@@ -194,6 +196,17 @@ public class AccountDetails {
 	public void setImeiNumber(String imeiNumber) {
 		this.imeiNumber = imeiNumber;
 	}
+
+	public String getAddOnNameEn01() {
+		return addOnNameEn01;
+	}
+
+	public void setAddOnNameEn01(String addOnNameEn01){this.addOnNameEn01=addOnNameEn01;}
+
+	public String getAddOnNameFr01(){return addOnNameFr01;}
+
+	public void setAddOnNameFr01(String addOnNameFr01){this.addOnNameFr01=addOnNameFr01;}
+
 	public AccountDetails() {
 		
 	}
