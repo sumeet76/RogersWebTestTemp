@@ -98,7 +98,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public boolean verifyContinueButton() {
-        getReusableActionsInstance().waitForElementTobeClickable(continueButton,40);
+        getReusableActionsInstance().waitForElementTobeClickable(continueButton,60);
         if (getReusableActionsInstance().isElementVisible(continueButton)) {
             getReusableActionsInstance().scrollToElement(continueButton);
             return true;
