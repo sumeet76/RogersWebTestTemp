@@ -326,8 +326,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	WebElement viewAnotherOption;
 
 	@FindAll({
-			@FindBy(xpath = "//div[contains(@class,'button-container')]//button[contains(.,'No')]"),
-			@FindBy(xpath = "(//span[text()='No, thanks']//ancestor::div[@tabindex='0'])[1]")
+			@FindBy(xpath = "(//div[contains(@class,'button-container')]//button)[2]"),
+			@FindBy(xpath = "//div[contains(@class,'button-container')]//button[contains(.,'No')]")
 	})
 	WebElement btnNoThanks;
 
@@ -348,7 +348,9 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	@FindBy(xpath = "//span[contains(.,'Good News') or contains(.,'Bonne nouvelle')]")
 	WebElement txtGoodNewsAccessoryShipMsg;
-	
+
+	@FindBy(xpath = "(//div[contains(@class,'button-container')]//button)[2]")
+	WebElement btnNoThanksVertical;
 	
 	/**
 	 * To get the Title of post checkout page
@@ -1287,5 +1289,13 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 	public boolean verifyAccessoriesShippingMessage(){
 		return getReusableActionsInstance().isElementVisible(txtGoodNewsAccessoryShipMsg);
+	}
+
+	/**
+	 * This method clicks on No Thanks button in survey modal if available
+	 * @author praveen.kumar7
+	 */
+	public void clkBtnNoThanks() {
+		getReusableActionsInstance().clickIfAvailable(btnNoThanksVertical,5);
 	}
 }
