@@ -29,9 +29,9 @@ public class OneViewCH_Auto_1466_TC01_SAI_AddingSmartstream_With_Tier_Change_Tes
         reporter.reportLogWithScreenshot("Activation Check box selecetd successfully");
         getRogersOVInstallationPage().clickContinue();
         reporter.reportLogWithScreenshot("Continue clicked");
-//        getRogersOVOrderReviewPage().clkSubmit();
-//        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+////        getRogersOVOrderReviewPage().clkSubmit();
+////        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//        reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)

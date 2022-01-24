@@ -64,6 +64,7 @@ public class RogersBFA_OV_TC16_NAC_FieldSalesUpfrontEdgeExpressShipping_Test ext
 		reporter.hardAssert(getRogersOVPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersOVPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.buyFlowsOVtestCase16.getTalkOptionIndex())),
 				"Talk option selected and Addons page in expanded state","Addons page not in expanded state");
 		getRogersOVPlanConfigPage().clickPreCartAddonsContinueButton();
+		getRogersOVPlanConfigPage().clkContinueDeviceProtection();
 		getRogersOVPlanConfigPage().clickCartSummaryContinueButton();
 		//############################CheckoutPage############################//
 		//***************Create Profile Stepper*************//

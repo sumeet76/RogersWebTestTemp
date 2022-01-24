@@ -55,9 +55,14 @@ public class ContactDetails {
 	private String contactID3PAddOnExpressCheckout;
 	private String contactIDSAIAddOnExpressCheckout;
 	private String contactIDSAIISSAddOnExpressCheckout;
+	private String phoneNo;
+	private String contactIDInternetSmartHomeMonitoring;
+	private String contactIDInternetHomePhoneSmartHomeMonitoring;
+	private String contactIDInternetSmartStremSmartHomeMonitoring;
+	private String contactIDTVInternetSmartHomeMonitoring;
 
 
-			;
+	;
 	public ContactDetails() {
 		
 	}
@@ -563,5 +568,54 @@ public class ContactDetails {
 	public String getContactIDSAIISSAddOnExpressCheckout() {
 		return contactIDSAIISSAddOnExpressCheckout;
 	}
+	/**
+	 * @param phoneNo
+	 */
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo= phoneNo;
+	}
 
+	public String getPhoneNo() {
+		return phoneNo;
+	}
+	/**
+	 * @param contactIDInternetSmartHomeMonitoring
+	 */
+	public void setContactIDInternetSmartHomeMonitoring(String contactIDInternetSmartHomeMonitoring) {
+		this.contactIDInternetSmartHomeMonitoring= contactIDInternetSmartHomeMonitoring;
+	}
+
+	public String getContactIDInternetSmartHomeMonitoring() {
+		return contactIDInternetSmartHomeMonitoring;
+	}
+	/**
+	 * @param contactIDInternetHomePhoneSmartHomeMonitoring
+	 */
+	public void setContactIDInternetHomePhoneSmartHomeMonitoring(String contactIDInternetHomePhoneSmartHomeMonitoring) {
+		this.contactIDInternetHomePhoneSmartHomeMonitoring= contactIDInternetHomePhoneSmartHomeMonitoring;
+	}
+
+	public String getContactIDInternetHomePhoneSmartHomeMonitoring() {
+		return contactIDInternetHomePhoneSmartHomeMonitoring;
+	}
+	/**
+	 * @param contactIDInternetSmartStremSmartHomeMonitoring
+	 */
+	public void setContactIDInternetSmartStremSmartHomeMonitoring(String contactIDInternetSmartStremSmartHomeMonitoring) {
+		this.contactIDInternetSmartStremSmartHomeMonitoring= contactIDInternetSmartStremSmartHomeMonitoring;
+	}
+
+	public String getContactIDInternetSmartStremSmartHomeMonitoring() {
+		return contactIDInternetSmartStremSmartHomeMonitoring;
+	}
+	/**
+	 * @param contactIDTVInternetSmartHomeMonitoring
+	 */
+	public void setContactIDTVInternetSmartHomeMonitoring(String contactIDTVInternetSmartHomeMonitoring) {
+		this.contactIDTVInternetSmartHomeMonitoring= contactIDTVInternetSmartHomeMonitoring;
+	}
+
+	public String getContactIDTVInternetSmartHomeMonitoring() {
+		return contactIDTVInternetSmartHomeMonitoring;
+	}
 }

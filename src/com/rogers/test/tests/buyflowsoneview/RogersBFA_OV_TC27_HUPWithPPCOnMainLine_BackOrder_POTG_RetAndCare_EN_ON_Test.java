@@ -26,6 +26,7 @@ public class RogersBFA_OV_TC27_HUPWithPPCOnMainLine_BackOrder_POTG_RetAndCare_EN
 		//----------------------------------------------Dashboard page--------------------------------------------------
 		reporter.hardAssert(getRogersOVWirelessDetailsPage().verifyWirelessPageLoad() ,"Wireless page loaded" , "Wireless page not loaded");
 		reporter.reportLogWithScreenshot("Rogers Wireless Dashboard Page");
+		getAccountOverViewPage().changeFidoDealerToRogers();
 		getRogersOVWirelessDetailsPage().clkUpgradeMyDevice();
 		reporter.reportLogWithScreenshot("Device upgrade button clicked");
 		//getRogersOVWirelessDetailsPage().setCustomerType(this.getClass().getSimpleName());
@@ -48,7 +49,7 @@ public class RogersBFA_OV_TC27_HUPWithPPCOnMainLine_BackOrder_POTG_RetAndCare_EN
 		getRogersOVPlanConfigPage().clkPreCartDeviceCostContinueButtonForNac();
 		reporter.reportLogPassWithScreenshot("Device cost option selected");
 		getRogersOVPlanConfigPage().clickContinueOnModalToDoWithOldPhone();
-		getRogersOVPlanConfigPage().clickShowMoreDetails();
+		//getRogersOVPlanConfigPage().clickShowMoreDetails();
 		getRogersOVPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersOVPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.buyFlowsOVtestCase27.getDataOptionIndex()));
 		reporter.reportLogPassWithScreenshot("Data option selected");
 		getRogersOVPlanConfigPage().clickPreCartTalkOptionContinueButton();

@@ -23,7 +23,8 @@ public class OneViewCH_Auto_TC_026_TV_PackageUpgrade_ImmediateTest extends BaseT
         reporter.reportLogWithScreenshot("Launched the TV dashboard page");
         getTVDashboardPage().clickChangeTvPackage();
         reporter.reportLogWithScreenshot("Changed TV Package clicked");
-        //getTVDashboardPage().selectTVPackage(TestDataHandler.TC026_TVPackageUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.TC023_TVPackageDowngrade.accountDetails.getUpgradePlanFr());
+       // getTVDashboardPage().selectTVPackage(TestDataHandler.TC026_TVPackageUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.TC026_TVPackageUpgrade.accountDetails.getUpgradePlanFr());
+        getTVDashboardPage().clickSecondLowestpackage();
         reporter.reportLogWithScreenshot("Upgrade TV Package selected");
 
         /*For Flex Channels - Exchange Later*/

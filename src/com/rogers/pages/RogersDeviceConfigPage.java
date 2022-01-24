@@ -98,11 +98,13 @@ public class RogersDeviceConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public boolean verifyContinueButton() {
-        if (getReusableActionsInstance().isElementVisible(continueButton))
+        getReusableActionsInstance().waitForElementTobeClickable(continueButton,60);
+        if (getReusableActionsInstance().isElementVisible(continueButton)) {
+            getReusableActionsInstance().scrollToElement(continueButton);
             return true;
+        }
         else
             return false;
-
     }
 
     public boolean verifyIsDeviceUpfrontEligible() {
@@ -515,6 +517,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
     public void addAccessoriesToCart(String accessoryCount, String accessory1, String accessory2) {
         if(accessoryCount.equalsIgnoreCase("MULTIPLE")) {
             //getReusableActionsInstance().clickWhenVisible(By.xpath("//p[contains(.,'"+accessory1+"')]/../following-sibling::div//button[@title='Add']"));
+            //getReusableActionsInstance().clickWhenVisible(By.xpath("//button[@id='ds-tabs-0-tab-2']"));
             getReusableActionsInstance().clickWhenVisible(By.xpath("//p[contains(.,'"+accessory1+"')]/../following-sibling::div//button[@data-test='add-to-cart']"));
             getReusableActionsInstance().clickWhenVisible(By.xpath("//p[contains(.,'"+accessory2+"')]/../following-sibling::div//button[@data-test='add-to-cart']"));
             getReusableActionsInstance().javascriptScrollToTopOfPage();

@@ -279,7 +279,14 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[contains(text(),'Numéro de compte') or contains(text(),'Account Number')]/following::div[1]")
 	WebElement inputPortInAccountNumberContainer;
 
+	@FindBy(xpath = "//span[@translate='global.cta.addToCart']/ancestor::button")
+	WebElement addOnAddToCart;
 
+	@FindBy(xpath="//div[text()=' Smart Home Monitoring ' or text()=' Système de domotique ']")
+	WebElement smartHomeMonitoring ;
+
+	@FindBy(xpath = "//ds-modal[@ng-reflect-heading='4K Content']/descendant::span[@translate='global.cta.continue']")
+	WebElement fourKContentContinue;
 
 	/**
 	 * Click Load Offers button
@@ -612,6 +619,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkexchangeLater() {
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().clickWhenReady(exchangeLaterbtn,120);
 	}	
 	/**
@@ -950,6 +958,42 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);
 	}
 
+	/* click Apply coupon
+	 * @author aditi.jain
+	 */
+	public void clickAddOnAddToCart() {
+		getReusableActionsInstance().clickWhenReady(addOnAddToCart,30);
+	}
+	/**
+	 * Click smartHomeMonitoring to Expand in Points to Mention
+	 * @author aditi.jain
+	 */
+	public void clickSmartHomeMonitoring() {
+		getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoring, 10);
+		getReusableActionsInstance().executeJavaScriptClick(smartHomeMonitoring);
+	}
+
+	/**
+	 * CLick Continue for four K Content
+	 * @author aditi.jain
+	 */
+	public void fourKContentContinue() {
+		if(getReusableActionsInstance().isElementVisible(fourKContentContinue, 180))
+			getReusableActionsInstance().executeJavaScriptClick(fourKContentContinue);
+	}
+
+	/*TO add pods in the internet addons page
+	@suganya p
+	*/
+	public void addPods(int amount)
+	{
+		By podsLocator = By.xpath("//div[text()=' "+amount+" ']/ancestor::div[@class='internet-tile__pricing']/following-sibling::div//span[@translate='global.cta.addToCart']");
+		getReusableActionsInstance().getWhenReady(podsLocator, 20);
+		WebElement addToCart = getDriver().findElement(podsLocator);
+		getReusableActionsInstance().executeJavaScriptClick(addToCart);
+	}
+
+
 	/**
 	 * Click No button on Move Migration pop up.
 	 * @author Sameer.Ahuja
@@ -1006,6 +1050,7 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().waitForElementTobeClickable(continueButtonHomePhonePortIn, 10);
 		getReusableActionsInstance().clickWhenReady(continueButtonHomePhonePortIn);
 	}
+
 }
 
 

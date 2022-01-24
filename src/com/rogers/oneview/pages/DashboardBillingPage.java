@@ -1,7 +1,6 @@
 package com.rogers.oneview.pages;
 
 import com.rogers.pages.base.BasePageClass;
-import javafx.scene.chart.ScatterChart;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,6 +34,14 @@ public class DashboardBillingPage extends BasePageClass {
     @FindBy(xpath = "//section[@class='signup']//input")
     WebElement chkSignUp;
 
+    @FindBy(xpath = "//*[text()='Continue' or text()='Continuer']")
+    WebElement clkContinueForPayment;
+
+    @FindBy(xpath = "//*[text()='Pay Now' or text()='Payez maintenant']")
+    WebElement payNow;
+
+    @FindBy(xpath = "//*[text()='Done' or text()='Terminé']")
+    WebElement clkDoneButton;
 
 
     public void clickMakePayment() {
@@ -59,15 +66,18 @@ public class DashboardBillingPage extends BasePageClass {
         getReusableActionsInstance().isElementVisible(rdDigitalFrontLine, 60);
         //getReusableActionsInstance().scrollToElementAndClick(rdDigitalFrontLine);
         getReusableActionsInstance().clickWhenReady(rdDigitalFrontLine);
-        rdDigitalFrontLine.sendKeys(Keys.TAB);
+        //rdDigitalFrontLine.sendKeys(Keys.TAB);
     }
 
-    public void SelectTokenNumber(String tokenNo)
+    public void SelectTokenNumber(String tokenNO)
     {
-        //  getReusableActionsInstance().isElementVisible(tokenNo, 60);
+        getReusableActionsInstance().isElementVisible(txtTokenNumber, 60);
         //getReusableActionsInstance().scrollToElementAndClick(TokenNo);
-        //getReusableActionsInstance().clickWhenReady(txtTokenNumber);
-        securityCode.sendKeys(tokenNo);
+        getReusableActionsInstance().clickWhenReady(txtTokenNumber);
+        txtTokenNumber.sendKeys(tokenNO);
+
+        getReusableActionsInstance().staticWait(5000);
+
     }
 
     public void selectExpiryMonth(){
@@ -91,5 +101,21 @@ public class DashboardBillingPage extends BasePageClass {
         getReusableActionsInstance().isElementVisible(chkSignUp, 60);
         //getReusableActionsInstance().scrollToElementAndClick(chkSignUp);
         getReusableActionsInstance().clickWhenReady(chkSignUp);
+    }
+    public void continuePayment(){
+        getReusableActionsInstance().isElementVisible(clkContinueForPayment, 60);
+        getReusableActionsInstance().scrollToElementAndClick(clkContinueForPayment);
+        //getReusableActionsInstance().clickWhenReady(clkContinueForPayment);
+    }
+
+    public void clickPayNow(){
+        getReusableActionsInstance().isElementVisible(payNow, 60);
+        getReusableActionsInstance().scrollToElementAndClick(payNow);
+        //getReusableActionsInstance().clickWhenReady(payNow);
+    }
+    public void clickDone(){
+        getReusableActionsInstance().isElementVisible(clkDoneButton, 60);
+        getReusableActionsInstance().scrollToElementAndClick(clkDoneButton);
+        //getReusableActionsInstance().clickWhenReady(clkDoneButton);
     }
 }

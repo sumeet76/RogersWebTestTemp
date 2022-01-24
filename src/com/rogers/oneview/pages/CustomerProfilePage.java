@@ -35,8 +35,9 @@ public class CustomerProfilePage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */	
 	public void clkContinue() {	
-		getReusableActionsInstance().getWhenReady(continueButton,120).sendKeys(Keys.ENTER);
-		
+		//getReusableActionsInstance().getWhenReady(continueButton,120).sendKeys(Keys.ENTER);
+		getReusableActionsInstance().getWhenReady(continueButton,60);
+		getReusableActionsInstance().executeJavaScriptClick(continueButton);
 	}
 
 	/**

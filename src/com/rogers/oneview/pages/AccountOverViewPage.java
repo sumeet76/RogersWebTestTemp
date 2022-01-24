@@ -433,7 +433,7 @@ public class AccountOverViewPage extends BasePageClass {
     public void selectAddAWirelessLineButton() {
         getReusableActionsInstance().javascriptScrollToBottomOfPage();
         getReusableActionsInstance().waitForElementVisibility(addNewWirelessLineButton);
-        getReusableActionsInstance().clickWhenReady(addNewWirelessLineButton,45);
+        getReusableActionsInstance().executeJavaScriptClick(addNewWirelessLineButton);
     }
 
     /*
@@ -446,6 +446,8 @@ public class AccountOverViewPage extends BasePageClass {
             getReusableActionsInstance().clickWhenReady(inputDealerCode);
             getReusableActionsInstance().getWhenReady(inputDealerCode).sendKeys("0MAAA");
             getReusableActionsInstance().clickWhenReady(By.xpath("//input[@id='impersonate-code']/following::button[1]"));
+            getReusableActionsInstance().waitForElementInvisibilityNOException(inputDealerCode,10);
+            getReusableActionsInstance().staticWait(2000);
         }
     }
 

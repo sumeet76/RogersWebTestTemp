@@ -45,6 +45,12 @@ public class EnvironmentSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement launch;
 
+	@FindBy(xpath = "//input[@formcontrolname='employeeNumber']")
+	WebElement inputEmpNo;
+
+	@FindBy(xpath = "//input[@formcontrolname='sub']")
+	WebElement inputEmpName;
+
 
 	/**
 	 * Enter user roles
@@ -166,4 +172,20 @@ public class EnvironmentSelectionPage extends BasePageClass {
 	public boolean presenceOfTheGoButton() {
 		return getReusableActionsInstance().isElementVisible(btnGo, 30);
 	}
+
+	/**
+	 * This method enters value of employee number and employee name
+	 * @param empNo to set
+	 * @param empName to set
+	 * @author praveen.kumar7
+	 */
+	public void enterEmpNoAndName(String empNo,String empName) {
+		getReusableActionsInstance().waitForElementVisibility(inputEmpNo, 60);
+		getReusableActionsInstance().getWhenReady(inputEmpNo, 10).click();
+		getReusableActionsInstance().getWhenReady(inputEmpNo).sendKeys(empNo);
+		getReusableActionsInstance().getWhenReady(inputEmpName, 10).click();
+		getReusableActionsInstance().getWhenReady(inputEmpName).sendKeys(empName);
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
+	}
+
 }

@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_ProfessionalInstallation_test extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
-    public void oneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_ProfessionalInstallation_test(){
+	public void oneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_ProfessionalInstallation_test(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("address");
@@ -22,7 +22,9 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_ProfessionalInstallation_te
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
+		reporter.reportLogWithScreenshot("click Continue(");
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
+		reporter.reportLogWithScreenshot("click Internet Checkbox");
 		getRogersIgniteBundlesPage().clkSmartStream();
 		reporter.reportLogWithScreenshot("Smart Stream - SAI ISS Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
@@ -30,27 +32,28 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_ProfessionalInstallation_te
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		reporter.reportLogWithScreenshot("added to cart");
 		getRogersIgniteBundlesPage().noPortInPopup();
+		reporter.reportLogWithScreenshot("no Port In Popup");
 		getRogersIgniteBundlesPage().clkCollapse();
+		reporter.reportLogWithScreenshot("click Collapse");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
-
+		reporter.reportLogWithScreenshot("click Continue");
 		getRogersIgniteBundlesPage().clkContinue();
-
 		getRogersIgniteBundlesPage().clkExpressCheckOut();
 		reporter.reportLogWithScreenshot("cart summary checkout");
 		getRogersIgniteBundlesPage().clkCheckOut();
-
-
-
 		reporter.reportLogWithScreenshot("Cart Summary");
 //		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		reporter.reportLogWithScreenshot("cart summary checkout");
 		getRogersIgniteBundlesPage().customerWishtoContinue();
-        reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
+		reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
 		getCustomerProfilePage().clkContinue();
 		reporter.reportLogWithScreenshot("evaluation form");
 		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
+		reporter.reportLogWithScreenshot("set DOB");
 		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
+		reporter.reportLogWithScreenshot("set Drivers License");
 		getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
+		reporter.reportLogWithScreenshot("set Passport");
 		reporter.reportLogWithScreenshot("evaluation form filled");
 		getCreditCheckPage().clkAuthorize();
 		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
@@ -59,28 +62,18 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_ProfessionalInstallation_te
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
-
-
-
-
-
-
-
-
+		reporter.reportLogWithScreenshot("go To Page Bottom");
 		reporter.reportLogWithScreenshot("professional installation");
 		getCreditCheckPage().selectProfessionalInstallation();
-		reporter.reportLogWithScreenshot("clickDateTimeRadioButton");
-		getCreditCheckPage().clickDateTimeRadioButton();
-		reporter.reportLogWithScreenshot(".enterTextMobileNumber");
-		getCreditCheckPage().enterTextMobileNumber();
-		reporter.reportLogWithScreenshot(".enterEmailMailAddress");
-		getCreditCheckPage().enterEmailMailAddress();
-		reporter.reportLogWithScreenshot(".enterSpecialInstructions");
+		reporter.reportLogWithScreenshot("click Date Time Radio Button");
+		getFulfillmentPage().clkFirstAvailableAppointment();
+//		getCreditCheckPage().clickDateTimeRadioButton();
+		reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+		reporter.reportLogWithScreenshot(".enter Email Mail Address");
+		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+		reporter.reportLogWithScreenshot(".enter Special Instructions");
 		getCreditCheckPage().enterSpecialInstructions();
-
-
-
-
 		getPaymentOptionsPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		reporter.reportLogWithScreenshot("billing and payment");
@@ -88,7 +81,9 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_ProfessionalInstallation_te
 		getCreditCheckPage().clickDigitalFrontline();
 		reporter.reportLogWithScreenshot("digital front line");
 		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
+		reporter.reportLogWithScreenshot("enter Card Token");
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
+		reporter.reportLogWithScreenshot("set Card Expiry Month And Year");
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 //		reporter.reportLogWithScreenshot("payment details entered");
 //		getPaymentOptionsPage().clkContinue();
@@ -96,7 +91,7 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_ProfessionalInstallation_te
 //		getRogersOVCheckoutPage().clkSubmit();
 //		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 
-    }
+	}
 
 	@BeforeMethod (alwaysRun=true)
 	@Parameters({"strBrowser", "strLanguage"})
