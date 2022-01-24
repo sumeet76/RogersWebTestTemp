@@ -17,7 +17,7 @@ public class OVR_Auto_TC02_Migration_2P_to_2P_Port_IN_Internet_E2E_Corp_ON_EN_Te
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
@@ -67,7 +67,7 @@ public class OVR_Auto_TC02_Migration_2P_to_2P_Port_IN_Internet_E2E_Corp_ON_EN_Te
         getRogersIgniteBundlesPage().contiue4KContent();
         reporter.reportLogWithScreenshot("continue to port in page");
 
-        reporter.hardAssert(getRogersIgniteBundlesPage().headerPortInService(),"Port in Service Header exist","Failed");
+        reporter.softAssert(getRogersIgniteBundlesPage().headerPortInService(), "Port in page loaded", "Port in page error");
         reporter.reportLogWithScreenshot("Port In Service page");
         getRogersIgniteBundlesPage().setProvider("BELL ONTARIO");
         getRogersIgniteBundlesPage().enterAccountNumber("1122334455");
@@ -93,7 +93,9 @@ public class OVR_Auto_TC02_Migration_2P_to_2P_Port_IN_Internet_E2E_Corp_ON_EN_Te
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Install page");
 
-        reporter.reportLogWithScreenshot("Launched the install options  page");
+        reporter.reportLogWithScreenshot("Continue to install options  page");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationOption(), "Installation Page loaded","Installation Page not loaded");
+        reporter.reportLogWithScreenshot("Installation Page");
         getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Select Express Pro install");
         getBundleBuilderPage().clkTechInstallSlot();

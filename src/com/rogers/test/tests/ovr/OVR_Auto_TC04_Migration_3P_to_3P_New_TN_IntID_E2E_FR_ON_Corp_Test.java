@@ -19,7 +19,7 @@ public class OVR_Auto_TC04_Migration_3P_to_3P_New_TN_IntID_E2E_FR_ON_Corp_Test e
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-         //closeSession();
+         closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
@@ -134,9 +134,9 @@ public class OVR_Auto_TC04_Migration_3P_to_3P_New_TN_IntID_E2E_FR_ON_Corp_Test e
         getOVRAgreementPage().clkCompleteOrder();
         reporter.reportLogWithScreenshot("Order Confirmation Page");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderConfirmation(), "Order Confirmation displayed", "Order not Confirmed");
-//        reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
-//        reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
-//        reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
+        reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
+        reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
+        reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
 
     }
 }

@@ -62,15 +62,19 @@ public class OVR_Auto_TC06_Buyflow_Anonymous_NAC_SAI_IntID_BackToOverview_E2E_De
         reporter.reportLogWithScreenshot("wish to continue");
         getRogersIgniteBundlesPage().customerWishtoContinue();
 
+        reporter.reportLogWithScreenshot("continue to Customer Profile Page");
         String email = getRogersOVCheckoutPage().setEmailCreateProfile();
         getRogersOVCheckoutPage().confirmEmailCreateProfile(email);
+        reporter.reportLogWithScreenshot("Email entered for customer Profile");
         getRogersOVCheckoutPage().setFirstNameCreateProfile();
         getRogersOVCheckoutPage().setLastNameCreateProfile();
+        reporter.reportLogWithScreenshot("First and Last name entered for customer Profile");
         getRogersOVCheckoutPage().setContactNumberCreateProfile("1010000061");
-        reporter.reportLogPassWithScreenshot("Create Profile Page details Entered till ContactNumber");
+        reporter.reportLogPassWithScreenshot("Create Profile Page details");
         getBundleBuilderPage().scrollAndclickContinue();
         reporter.reportLogWithScreenshot("Continue to credit Check page");
 
+        reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Check Page loaded", "Credit Check Page not loaded");
         getCreditCheckPage().setDOB(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
         reporter.reportLogWithScreenshot("Credit Evaluation Page");
         getCreditCheckPage().selectInternationalID(FormFiller.generateRandomNumber(9), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay(),
@@ -80,10 +84,13 @@ public class OVR_Auto_TC06_Buyflow_Anonymous_NAC_SAI_IntID_BackToOverview_E2E_De
         reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
-        reporter.reportLogWithScreenshot("Launched the install options  page");
+        reporter.reportLogWithScreenshot("Continue to install options  page");
+        getCreditCheckPage().verifyInstallationOption();
+        reporter.reportLogWithScreenshot("Installation Page");
         getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Install Options");
         getBundleBuilderPage().clkTechInstallSlot();
+        reporter.reportLogWithScreenshot("Time Slot selected");
         getBundleBuilderPage().setMobileNumber();
         reporter.reportLogWithScreenshot("tech install details");
         getBundleBuilderPage().clkContinueInstallation();

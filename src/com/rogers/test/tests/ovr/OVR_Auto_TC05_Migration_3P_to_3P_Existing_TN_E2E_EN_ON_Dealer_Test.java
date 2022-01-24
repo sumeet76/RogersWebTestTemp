@@ -19,7 +19,7 @@ public class OVR_Auto_TC05_Migration_3P_to_3P_Existing_TN_E2E_EN_ON_Dealer_Test 
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
