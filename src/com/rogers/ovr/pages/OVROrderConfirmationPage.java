@@ -15,16 +15,16 @@ public class OVROrderConfirmationPage extends BasePageClass {
         super(driver);
     }
 
-    @FindBy(xpath = "//*[text()='Thanks! We received the order.' or text()='Merci!  Nous avons reçu la commande.  ']")
+    @FindBy(xpath = "//div[@translate='global.label.receivedTheOrder']")
     WebElement orderConfirmation;
 
     @FindBy(xpath = "//p[contains(text(),'order number is') or contains(text(),'Le numéro de commande est le')]")
     WebElement orderNumberLbl;
 
-    @FindBy(xpath = "//h2[@translate='global.label.oneTimeHeader']/ancestor::button")
+    @FindBy(xpath = "//h2[@translate='global.label.oneTimeHeader']")
     WebElement oneTimeFees;
 
-    @FindBy(xpath = "//h2[@translate='global.label.monthlyBill']/ancestor::button")
+    @FindBy(xpath = "//h2[@translate='global.label.monthlyBill']")
     WebElement monthlyCharges;
 
     @FindBy(xpath = "//span[@translate='global.label.backToOverView']/ancestor::button")
@@ -39,22 +39,26 @@ public class OVROrderConfirmationPage extends BasePageClass {
     @FindBy(xpath = "//a[contains(text(),'Overview') or contains(text(),'Survol du compte')]")
     WebElement overviewPageMenu;
 
+    @FindBy(xpath = "//t[text()='Get Ignite' or text()='Obtenir Élan']/ancestor::a")
+    WebElement lnkIgnite;
+
+
     public boolean verifyOrderConfirmation() throws InterruptedException {
-        getReusableActionsInstance().waitForElementVisibility(orderConfirmation, 15);
+        getReusableActionsInstance().waitForElementVisibility(orderConfirmation, 120);
         return getReusableActionsInstance().isElementVisible(orderConfirmation);
     }
 
     public boolean verifyOrderNumberPresent() {
-        getReusableActionsInstance().waitForElementVisibility(orderNumberLbl, 15);
+        getReusableActionsInstance().waitForElementVisibility(orderNumberLbl, 120);
         return getReusableActionsInstance().isElementVisible(orderNumberLbl);
     }
 
     public boolean verifyOneTimeFees() {
-        getReusableActionsInstance().waitForElementVisibility(oneTimeFees, 15);
+        getReusableActionsInstance().waitForElementVisibility(oneTimeFees, 120);
         return getReusableActionsInstance().isElementVisible(oneTimeFees);
     }
     public boolean verifyMonthlyCharges() {
-        getReusableActionsInstance().waitForElementVisibility(monthlyCharges, 15);
+        getReusableActionsInstance().waitForElementVisibility(monthlyCharges, 120);
         getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyCharges);
         return getReusableActionsInstance().isElementVisible(monthlyCharges);
     }

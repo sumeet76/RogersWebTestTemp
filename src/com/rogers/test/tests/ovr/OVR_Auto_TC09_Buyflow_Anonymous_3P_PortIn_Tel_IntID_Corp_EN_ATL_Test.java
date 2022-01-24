@@ -109,7 +109,7 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Tel_IntID_Corp_EN_ATL_Tes
         reporter.reportLogWithScreenshot("First and Last name entered for customer Profile");
         getRogersOVCheckoutPage().setContactNumberCreateProfile("1010000061");
         reporter.reportLogPassWithScreenshot("Create Profile Page details");
-        getBundleBuilderPage().scrollAndclickContinue();
+        getBundleBuilderPage().scrollAndClickContinue();
         reporter.reportLogWithScreenshot("Continue to credit Check page");
 
         reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Check Page loaded", "Credit Check Page not loaded");

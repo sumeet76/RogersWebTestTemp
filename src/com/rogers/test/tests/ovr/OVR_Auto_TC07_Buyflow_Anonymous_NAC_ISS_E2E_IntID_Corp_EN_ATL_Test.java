@@ -75,7 +75,7 @@ public class OVR_Auto_TC07_Buyflow_Anonymous_NAC_ISS_E2E_IntID_Corp_EN_ATL_Test 
         reporter.reportLogWithScreenshot("First and Last name entered for customer Profile");
         getRogersOVCheckoutPage().setContactNumberCreateProfile("1010000061");
         reporter.reportLogPassWithScreenshot("Create Profile Page details");
-        getBundleBuilderPage().scrollAndclickContinue();
+        getBundleBuilderPage().scrollAndClickContinue();
         reporter.reportLogWithScreenshot("Continue to credit Check page");
 
         reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Check Page loaded", "Credit Check Page not loaded");

@@ -30,6 +30,12 @@ public class ChampLoginPage extends BasePageClass {
     @FindBy(xpath = "//a[contains(text(),'Skip setup') or contains(text(),'sauter')]")
     WebElement corpLoginSkip2faSetup;
 
+    @FindBy(xpath ="//*[text()=' Accept / Accepter ']" )
+    WebElement btnaccept;
+
+    @FindBy(xpath = "//a[contains(text(),'FR')]")
+    WebElement frenchLanguageBtn;
+
 
     public ChampLoginPage(WebDriver driver) {
         super(driver);
@@ -58,6 +64,12 @@ public class ChampLoginPage extends BasePageClass {
         if(getReusableActionsInstance().isElementVisible(staySignedInNO, 10)){
             getReusableActionsInstance().getWhenVisible(staySignedInNO).click();
         }
+    }
+
+    public void changeChampToFR(){
+        if(getReusableActionsInstance().isElementVisible(btnaccept,5))
+        {getReusableActionsInstance().clickWhenVisible(btnaccept);}
+        getReusableActionsInstance().clickWhenReady(frenchLanguageBtn);
     }
 
 }
