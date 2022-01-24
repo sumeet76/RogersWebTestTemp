@@ -32,10 +32,10 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button")
 	WebElement continueButton;
 
-	@FindBy(xpath = "//div[text()='This address is serviceable!' or text()='Cette adresse peut être desservie!']")
+	@FindBy(xpath = "//div[contains(text(),'This address is serviceable') or contains(text(),'Cette adresse peut être desservie')]")
 	WebElement serviceavailableMessage;
 
-	@FindBy(xpath = "//input[@id='ds-checkbox-id-3']/following-sibling::div//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' TV ']")
+	@FindBy(xpath = "//input[@id='ds-checkbox-id-3']/following-sibling::div//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' TV ' or text()=' Télé ']")
 	WebElement tvCheckbox;
 
 	@FindBy(xpath="//span[@translate='global.cta.reviewAddonsLink'] | //span[contains(text(),'reviewed the customer’s add-ons') or contains(text(),'revue les options du client')]")
@@ -44,7 +44,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy (xpath = "//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' Internet ']")
 	WebElement internetCheckbox;
 
-	@FindBy(xpath = "//input[@id='ds-checkbox-id-3']/following-sibling::div//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' Home Phone ']")
+	@FindBy(xpath = "//input[@id='ds-checkbox-id-3']/following-sibling::div//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' Home Phone ' or text()=' Téléphonie résidentielle ']")
 	WebElement homePhoneCheckbox;
 
 	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[1]")
@@ -178,7 +178,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//h1[@translate='global.label.cartSummary']")
 	WebElement cartSummaryHeader;
 
-	@FindBy(xpath = "//span[contains(text(),'Account Number')]/ancestor::span//following-sibling::div/child::input")
+	@FindBy(xpath = "//span[contains(text(),'Account Number') or contains(text(),'Numéro de compte')]/ancestor::span//following-sibling::div/child::input")
 	WebElement inputAccountNumber;
 
 	@FindBy(xpath = "//span/following-sibling::select")
@@ -244,6 +244,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[@translate='global.cta.yes']/ancestor::button")
 	WebElement yesButton;
 
+
 	@FindBy(xpath = "//div[@translate='global.modals.serviceability.moveMigrationNotSupported']")
 	WebElement verifyMoveMigrationNotSupported;
 
@@ -256,6 +257,28 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 	@FindBy(xpath="(//span[@translate='global.cta.continue']/ancestor::button)[2]")
 	WebElement continueButtonPTM;
+
+	@FindBy(xpath = "//p[contains(text(),'Entrez le numéro') or contains(text(),'Enter number')]/parent::div/child::div/descendant::input")
+	WebElement inputHomePhoneNumberPortIn;
+
+	@FindBy(xpath = "(//*/parent::div/parent::div//input/parent::div)[3]")
+	WebElement inputHomePhoneNumberPortInContainer;
+
+	@FindBy(xpath = "//span[@translate='global.cta.checkEligibility']/ancestor::button")
+	WebElement checkHomePhoneNumberEligibilityButton;
+
+	@FindBy(xpath = "//span[@translate='global.cta.no']/ancestor::button")
+	WebElement noButton;
+
+	@FindBy(xpath = "//rch-service-provider-selector/descendant::span[@translate='global.cta.continue']/ancestor::button")
+	WebElement continueButtonHomePhoneServiceProvider;
+
+	@FindBy(xpath = "//rch-home-phone-port-in-step/descendant::span[@translate='global.cta.continue']/ancestor::button")
+	WebElement continueButtonHomePhonePortIn;
+
+	@FindBy(xpath = "//span[contains(text(),'Numéro de compte') or contains(text(),'Account Number')]/following::div[1]")
+	WebElement inputPortInAccountNumberContainer;
+
 
 
 	/**
@@ -307,6 +330,16 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().staticWait(5000);
 	}
 
+	/**
+	 * Selects the given number of additional ignite TV boxes
+	 * @author sameer.ahuja
+	 * @param noOfBoxes No of boxes to select.
+	 */
+	public void selectAdditionalIgniteTVBoxes(String noOfBoxes) {
+		getReusableActionsInstance().getWhenReady(additionalIgniteTVBoxes,30);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(additionalIgniteTVBoxes, noOfBoxes);
+		getReusableActionsInstance().staticWait(5000);
+	}
 
 	/**
 	 * Port-in not supported Pop UP
@@ -915,6 +948,63 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().getWhenReady(continueButton,60);
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);
+	}
+
+	/**
+	 * Click No button on Move Migration pop up.
+	 * @author Sameer.Ahuja
+	 */
+	public void clickNo(){
+		getReusableActionsInstance().clickWhenReady(noButton, 10);
+	}
+
+	/**
+	 * Continue from Home Phone service provider form for Home-Phone Port-In
+	 * @author Sameer.Ahuja
+	 */
+	public void clkContinueFromHomePhoneServiceProvider(){
+		getReusableActionsInstance().scrollToElement(continueButtonHomePhoneServiceProvider);
+		getReusableActionsInstance().waitForElementTobeClickable(continueButtonHomePhoneServiceProvider, 10);
+		getReusableActionsInstance().clickWhenReady(continueButtonHomePhoneServiceProvider);
+	}
+
+	/**
+	 * Enters account number for Home Phone account for Home Phone Port in.
+	 * @param accountNumber Account number to entered
+	 * @author sameer.ahuja
+	 */
+	public void enterHomePhoneAccountNumber(String accountNumber){
+		getReusableActionsInstance().javascriptScrollByVisibleElement(inputPortInAccountNumberContainer);
+		getReusableActionsInstance().clickWhenReady(inputPortInAccountNumberContainer);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(inputAccountNumber);
+		getReusableActionsInstance().enterText(inputAccountNumber, accountNumber, 30);
+	}
+
+	/**
+	 * Enters the 10 digit home phone number to be used for port in
+	 * @param phoneNumber 10 digit home phone number
+	 * @author sameer.ahuja
+	 */
+	public void enterHomePhoneNumberPortIn(String phoneNumber){
+		getReusableActionsInstance().javascriptScrollByVisibleElement(inputHomePhoneNumberPortInContainer);
+		getReusableActionsInstance().clickWhenReady(inputHomePhoneNumberPortInContainer);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(inputHomePhoneNumberPortIn);
+		getReusableActionsInstance().getWhenReady(inputHomePhoneNumberPortIn,3).sendKeys(phoneNumber.substring(0,3));
+		getReusableActionsInstance().getWhenReady(inputHomePhoneNumberPortIn,3).sendKeys(phoneNumber.substring(3,6));
+		getReusableActionsInstance().getWhenReady(inputHomePhoneNumberPortIn,3).sendKeys(phoneNumber.substring(6));
+
+		getReusableActionsInstance().waitForElementTobeClickable(checkHomePhoneNumberEligibilityButton, 10);
+		getReusableActionsInstance().clickWhenReady(checkHomePhoneNumberEligibilityButton);
+	}
+
+	/**
+	 * Continue from Home Phone Port In Phone Number details
+	 * @author Sameer.Ahuja
+	 */
+	public void clkContinueFromHomePhonePortIn(){
+		getReusableActionsInstance().scrollToElement(continueButtonHomePhonePortIn);
+		getReusableActionsInstance().waitForElementTobeClickable(continueButtonHomePhonePortIn, 10);
+		getReusableActionsInstance().clickWhenReady(continueButtonHomePhonePortIn);
 	}
 }
 
