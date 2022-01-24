@@ -283,9 +283,14 @@ public class TestDataHandler {
 	public static AccountData RHPManage_AddOns;
 	public static OvrReusableData ovrReusableData;
 	public static OvrReusableData ovrMigrationData2PInternetAndTvTo2P;
+	public static OvrReusableData ovrMigrationData3PTo3PATL;
+	public static OvrReusableData ovrMigrationData3PTo3PON;
 	public static OvrReusableData ovrWirelessNacATL;
 	public static  OvrReusableData ovrWirelessNacON;
+	public static OvrReusableData ovrMigrationData1pINTtoISSATL;
 	public static OvrConfigData ovrConfigData;
+	public static OvrReusableData legacy1PtoNac3pNewAddress;
+	public static OvrReusableData existingIgniteCx3pON;
 	public static  AccountData RemoveThemepack1544Tc03;
 	public static AccountData InternetDashboardSupportLinks;
 	public static AccountData ChangePaymentMethod;
@@ -652,5 +657,10 @@ public class TestDataHandler {
 		ovrWirelessNacATL = YamlHandler.getOvrReusableData("WirelessCX_NAC_ATL");
 		ovrWirelessNacON = YamlHandler.getOvrReusableData("WirelessCX_NAC_ON");
 		anonymousData = YamlHandler.getContactData("AnonymousData");
+		ovrMigrationData1pINTtoISSATL = YamlHandler.getOvrReusableData("Migration_Data_1pINT_to_ISS_ATL");
+		ovrMigrationData3PTo3PATL = YamlHandler.getOvrReusableData("Migration_Data_3P_to_3P_ATL");
+		ovrMigrationData3PTo3PON = YamlHandler.getOvrReusableData("Migration_Data_3P_to_3P_ON");
+		legacy1PtoNac3pNewAddress = YamlHandler.getOvrReusableData("Legacy_1pINT_to_NAC_3p_NewAddress");
+		existingIgniteCx3pON = YamlHandler.getOvrReusableData("Existing_Ignite_Cx_3P_ON");
 	}
 }
