@@ -38,17 +38,24 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_Without4KTVExpressCheckout_Test
 		 reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		 reporter.reportLogWithScreenshot("Product Added");
 		 getRogersIgniteBundlesPage().clkContinue();
+
+		 getRogersIgniteBundlesPage().fourKTVPopup();
+		 getRogersIgniteBundlesPage().fourKContentPopup();
 		 reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		 reporter.hardAssert(getRogersIgniteBundlesPage().verifyPersonalizeYourChannels(),"Personalize You Channel displayed","Personalize You Channel did not Displayed");
-		 getRogersIgniteBundlesPage().clkCheckOut();
+		 getRogersIgniteBundlesPage().clkExpressCheckOut();
+
 		 reporter.reportLogWithScreenshot("Cart Summary");
-		 getRogersIgniteBundlesPage().noTo4KTVPopup();
+		 getRogersIgniteBundlesPage().fourKTVPopup();
+		 getRogersIgniteBundlesPage().fourKContentPopup();
 		 reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		 getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		 reporter.reportLogWithScreenshot("continue from cart summary");
 		 getRogersIgniteBundlesPage().customerWishtoContinue();
 		 reporter.hardAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
 		 reporter.reportLogWithScreenshot("Customer Profile");
+
+
 		 getCustomerProfilePage().clkContinue();
 		 reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(),"Credit Evaluation Displayed","Credit Evaluation did not Displayed");
 		 reporter.reportLogWithScreenshot("Credit Evaluation screen loaded");
@@ -74,12 +81,12 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_Without4KTVExpressCheckout_Test
 		 getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
 		 getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		 getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-//		 reporter.reportLogWithScreenshot("card details entered");
-//		 getPaymentOptionsPage().clkContinue();
-//		 getRogersOVCheckoutPage().clkSubmit();
-//		 reporter.reportLogWithScreenshot("submit order");
-//		 reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//		 reporter.reportLogWithScreenshot("Order Placed");
+		 reporter.reportLogWithScreenshot("card details entered");
+		 getPaymentOptionsPage().clkContinue();
+		 getRogersOVCheckoutPage().clkSubmit();
+		 reporter.reportLogWithScreenshot("submit order");
+		 reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		 reporter.reportLogWithScreenshot("Order Placed");
 			
 	    }
 

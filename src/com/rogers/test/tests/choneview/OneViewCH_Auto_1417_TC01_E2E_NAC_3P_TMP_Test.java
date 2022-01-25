@@ -31,8 +31,9 @@ public class OneViewCH_Auto_1417_TC01_E2E_NAC_3P_TMP_Test extends BaseTestClass 
 		reporter.reportLogWithScreenshot("loading offers");
 //		String promoCode = getRogersIgniteCampaignPage().getPromoCode();
 //		System.out.println("promoCode :: " +  promoCode);
-		getRogersIgniteBundlesPage().clickFirstAddToCart();
-		reporter.reportLogWithScreenshot("added first to cart");
+		//getRogersIgniteBundlesPage().clickFirstAddToCart();
+
+		reporter.reportLogWithScreenshot("added to cart");
 		getRogersIgniteBundlesPage().noPortInPopup();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
 		reporter.reportLogWithScreenshot("Product in cart");
@@ -40,27 +41,26 @@ public class OneViewCH_Auto_1417_TC01_E2E_NAC_3P_TMP_Test extends BaseTestClass 
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
 		getRogersIgniteBundlesPage().clkContinue();
+		getRogersIgniteBundlesPage().clkExpressCheckOut();
+
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContinue();
-		getRogersIgniteBundlesPage().clkCollapse();
-
-
-
+//		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 //		getRogersIgniteBundlesPage().clkCheckOut();
 
 //		getRogersIgniteBundlesPage().clkContinue();
-		getRogersIgniteBundlesPage().clkExpressCheckOut();
+//		getRogersIgniteBundlesPage().clkExpressCheckOut();
 
 
-		getRogersIgniteBundlesPage().fourKTVPopup();
-		getRogersIgniteBundlesPage().fourKContinue();
+//		getRogersIgniteBundlesPage().fourKTVPopup();
+//		getRogersIgniteBundlesPage().fourKContinue();
 
 
 
 		reporter.reportLogWithScreenshot("campaign");
 		getRogersIgniteCampaignPage().clickCampaignTab();
-		getRogersIgniteCampaignPage().enterCoupon("K13");
+		getRogersIgniteCampaignPage().enterCoupon("K1D");
 		reporter.reportLogWithScreenshot("Campaign code entered");
 		getRogersIgniteCampaignPage().clickApplyCoupon();
 		reporter.reportLogWithScreenshot("Campaign code applied");
@@ -89,10 +89,10 @@ public class OneViewCH_Auto_1417_TC01_E2E_NAC_3P_TMP_Test extends BaseTestClass 
 		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
 		getHomePhoneSelectionPage().clkGeneratePhoneNo();
-		reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
+//		reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
 		reporter.reportLogWithScreenshot("Phone Number Selected");
 		getCreditCheckPage().goToPageBottom();
-		getCreditCheckPage().clkContinue();
+		getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
@@ -110,12 +110,12 @@ public class OneViewCH_Auto_1417_TC01_E2E_NAC_3P_TMP_Test extends BaseTestClass 
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		reporter.reportLogWithScreenshot("added cart details");
-//
-//		getPaymentOptionsPage().clkContinue();
-//		reporter.reportLogWithScreenshot("Order Review Page");
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//		reporter.reportLogWithScreenshot("Order Placed");
+
+		getPaymentOptionsPage().clkContinue();
+		reporter.reportLogWithScreenshot("Order Review Page");
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.reportLogWithScreenshot("Order Placed");
     }
 
 	@BeforeMethod (alwaysRun=true)

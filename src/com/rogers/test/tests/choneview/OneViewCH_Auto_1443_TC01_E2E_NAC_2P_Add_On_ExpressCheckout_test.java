@@ -40,6 +40,9 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_2P_Add_On_ExpressCheckout_test ext
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("Exchange Options");
 		getRogersIgniteExchangePage().clickExchangeNow();
+
+
+
 		reporter.reportLogWithScreenshot("Exchange Now");
 		getRogersIgniteExchangePage().verifyChannelToSwapHeader();
 		getRogersIgniteExchangePage().selectFirstChannelToRemove();

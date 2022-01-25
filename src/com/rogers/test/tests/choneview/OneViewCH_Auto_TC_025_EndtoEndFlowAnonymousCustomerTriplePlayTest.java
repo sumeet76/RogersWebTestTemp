@@ -67,8 +67,8 @@ public class OneViewCH_Auto_TC_025_EndtoEndFlowAnonymousCustomerTriplePlayTest e
 		//getHomePhoneSelectionPage().enterDLFirstName("Harp");
 		//getHomePhoneSelectionPage().enterDLLastName("Gill");
 	//	getHomePhoneSelectionPage().clkUpdateDirectoryListing();
-		reporter.softAssert(getHomePhoneSelectionPage().verifyNumber(),"Phone Number Selected","Phone Number Selection Failed");
-		getHomePhoneSelectionPage().clkContinue();
+//		reporter.softAssert(getHomePhoneSelectionPage().verifyNumber(),"Phone Number Selected","Phone Number Selection Failed");
+		getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
 		getFulfillmentPage().clkFirstAvailableAppointment();
 		reporter.reportLogWithScreenshot("Appointment Selected");
 		getFulfillmentPage().clkContinue();

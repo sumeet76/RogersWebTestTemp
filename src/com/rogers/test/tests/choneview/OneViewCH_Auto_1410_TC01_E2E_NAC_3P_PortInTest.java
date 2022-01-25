@@ -36,17 +36,20 @@ public class OneViewCH_Auto_1410_TC01_E2E_NAC_3P_PortInTest extends BaseTestClas
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
 		getRogersIgniteBundlesPage().clkContinue();
+
+		getRogersIgniteBundlesPage().clkExpressCheckOut();
+
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContinue();
 //		getRogersIgniteBundlesPage().clkCollapse();
 //		getRogersIgniteBundlesPage().clkCheckOut();
 
 //		getRogersIgniteBundlesPage().clkContinue();
-		getRogersIgniteBundlesPage().clkExpressCheckOut();
+//		getRogersIgniteBundlesPage().clkExpressCheckOut();
 
 
-		getRogersIgniteBundlesPage().fourKTVPopup();
-		getRogersIgniteBundlesPage().fourKContinue();
+//		getRogersIgniteBundlesPage().fourKTVPopup();
+//		getRogersIgniteBundlesPage().fourKContinue();
 		reporter.reportLogWithScreenshot("Port In Service");
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
 		reporter.reportLogWithScreenshot("portin");
@@ -79,11 +82,11 @@ public class OneViewCH_Auto_1410_TC01_E2E_NAC_3P_PortInTest extends BaseTestClas
 		getCreditCheckPage().clkContinue();
 		reporter.reportLogWithScreenshot("generate phone number");
 		getHomePhoneSelectionPage().clkGeneratePhoneNo();
-		reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
+//		reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
 		reporter.reportLogWithScreenshot("Phone Number Selected");
 		getCreditCheckPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("continue");
-		getCreditCheckPage().clkContinue();
+		getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
@@ -99,12 +102,12 @@ public class OneViewCH_Auto_1410_TC01_E2E_NAC_3P_PortInTest extends BaseTestClas
 		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-//		reporter.reportLogWithScreenshot("entered payment info");
-//		getPaymentOptionsPage().clkContinue();
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.reportLogWithScreenshot("submit payment");
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//		reporter.reportLogWithScreenshot("Order Placed");
+		reporter.reportLogWithScreenshot("entered payment info");
+		getPaymentOptionsPage().clkContinue();
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.reportLogWithScreenshot("submit payment");
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.reportLogWithScreenshot("Order Placed");
 
     }
 

@@ -38,6 +38,13 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_ExchangeNow_Test extends BaseTe
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
 		getRogersIgniteBundlesPage().clkContinue();
+
+
+
+
+
+
+
 		reporter.reportLogWithScreenshot("Exchange Options");
 		getRogersIgniteExchangePage().clickExchangeNow();
 		reporter.reportLogWithScreenshot("Exchange Now");
@@ -90,14 +97,20 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_ExchangeNow_Test extends BaseTe
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         reporter.reportLogWithScreenshot("verify billing and payments");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
-//		getCreditCheckPage().clickDigitalFrontline();
-//        reporter.reportLogWithScreenshot("front line");
-//		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-//		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-//		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-////        OneViewCH_Auto_1435_TC02_E2E_NAC_2P_ExchangeNow_Test
+		getCreditCheckPage().clickDigitalFrontline();
+        reporter.reportLogWithScreenshot("front line");
+		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
+		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
+		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
+		reporter.reportLogWithScreenshot("Payment screen");
+		getPaymentOptionsPage().clkContinue();
+		reporter.reportLogWithScreenshot("submit order");
+		getRogersOVCheckoutPage().clkSubmit();
+//			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.reportLogWithScreenshot("Order Placed");
 
-    }
+
+	}
 
 	@BeforeMethod (alwaysRun=true)
 	@Parameters({"strBrowser", "strLanguage"})
