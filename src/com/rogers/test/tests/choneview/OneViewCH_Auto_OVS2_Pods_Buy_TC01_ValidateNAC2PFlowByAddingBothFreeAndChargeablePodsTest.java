@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 public class OneViewCH_Auto_OVS2_Pods_Buy_TC01_ValidateNAC2PFlowByAddingBothFreeAndChargeablePodsTest extends BaseTestClass {
 
     @Test
-    public void OneViewCH_Auto_OVS2_Pods_Buy_TC01_ValidateNAC2PFlowByAddingBothFreeAndChargeablePodsTest (){
+    public void oneViewCH_Auto_OVS2_Pods_Buy_TC01_ValidateNAC2PFlowByAddingBothFreeAndChargeablePodsTest (){
         reporter.reportLogWithScreenshot("oneview env");
         getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         reporter.reportLogWithScreenshot("address");
@@ -38,30 +38,25 @@ public class OneViewCH_Auto_OVS2_Pods_Buy_TC01_ValidateNAC2PFlowByAddingBothFree
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
-
         getRogersIgniteBundlesPage().clickExchangeLater();
         getRogersIgniteBundlesPage().clkContinue();
         getRogersIgniteBundlesPage().fourKTVPopup();
         getRogersIgniteBundlesPage().fourKContentPopup();
         reporter.reportLogWithScreenshot("Lands in Internet Addons page");
-
         /*To Add the chargeable Pods*/
         getRogersIgniteBundlesPage().addPods(5);
         reporter.reportLogWithScreenshot("Chargable internet add on is added to the cart");
-
         /*To Add the free pods in the internt addons page*/
         getRogersIgniteBundlesPage().addPods(0);
         reporter.reportLogWithScreenshot("Free internet add on is added to the cart");
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
         reporter.reportLogWithScreenshot("Cart Summary");
-
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         reporter.reportLogWithScreenshot("continue from cart summary");
         getRogersIgniteBundlesPage().customerWishtoContinue();
         reporter.hardAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
         reporter.reportLogWithScreenshot("Customer Profile");
-
         getCustomerProfilePage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(),"Credit Evaluation Displayed","Credit Evaluation did not Displayed");
         reporter.reportLogWithScreenshot("Credit Evaluation screen loaded");
@@ -77,7 +72,6 @@ public class OneViewCH_Auto_OVS2_Pods_Buy_TC01_ValidateNAC2PFlowByAddingBothFree
         getCreditCheckPage().verifyInstallationOption();
         getCreditCheckPage().goToPageBottom();
         reporter.reportLogWithScreenshot("in person delivery");
-
         getCreditCheckPage().clickInPersonDelivery();
         getPaymentOptionsPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
@@ -85,16 +79,15 @@ public class OneViewCH_Auto_OVS2_Pods_Buy_TC01_ValidateNAC2PFlowByAddingBothFree
         getCreditCheckPage().verifyBillingAndPaymentOption();
         getCreditCheckPage().clickDigitalFrontline();
         reporter.reportLogWithScreenshot("front line");
-
         getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
         getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-//		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-//        reporter.reportLogWithScreenshot("card details entered");
-//		getPaymentOptionsPage().clkContinue();
-//		getRogersOVCheckoutPage().clkSubmit();
-//        reporter.reportLogWithScreenshot("submit order");
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//		reporter.reportLogWithScreenshot("Order Placed");
+		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
+        reporter.reportLogWithScreenshot("card details entered");
+		getPaymentOptionsPage().clkContinue();
+		getRogersOVCheckoutPage().clkSubmit();
+        reporter.reportLogWithScreenshot("submit order");
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.reportLogWithScreenshot("Order Placed");
 
     }
 

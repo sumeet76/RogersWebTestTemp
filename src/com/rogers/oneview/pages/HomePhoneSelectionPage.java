@@ -11,6 +11,10 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 		super(driver);
 	}
 
+
+	@FindBy(xpath = "//div[@class='button-set']/descendant::span[@translate='global.cta.continue']")
+	WebElement continueOnGeneratePhone;
+
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement generatePhoneNumber;
 
@@ -94,4 +98,15 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
 		return getReusableActionsInstance().isElementVisible(selectedPhoneNo);
 	}
+
+	/**
+	 * Click Continue Button after Credit Information Entered
+	 * @author chinnarao.vattam
+	 */
+	public void clkContinueOnGeneratePhone() {
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().executeJavaScriptClick(continueOnGeneratePhone);
+//		getReusableActionsInstance().clickWhenReady(continueOnGeneratePhone);
+	}
+
 }

@@ -43,7 +43,6 @@ public class OneViewCH_Auto_1436_TC01_E2E_NAC_Internet_SmartHomeMonitoring_Test 
 		getRogersIgniteBundlesPage().clkExpressCheckOut();
 		reporter.reportLogWithScreenshot("Cart Summary");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
-
 		getRogersIgniteBundlesPage().customerWishtoContinue();
 		reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
 		reporter.reportLogWithScreenshot("Customer Profile");

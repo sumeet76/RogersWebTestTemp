@@ -130,11 +130,11 @@ public class OneViewCH_Auto_1551_TC01_TargetedMigration_1P_TV_to_3PTest extends 
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
-        reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
+//        reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
         reporter.reportLogWithScreenshot("Phone Number Selected");
         getCreditCheckPage().goToPageBottom();
         reporter.reportLogWithScreenshot("go To Page Bottom");
-        getCreditCheckPage().clkContinue();
+        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         reporter.reportLogWithScreenshot("click Continue");
         getCreditCheckPage().verifyInstallationOption();
         reporter.reportLogWithScreenshot("verify Installation Option");

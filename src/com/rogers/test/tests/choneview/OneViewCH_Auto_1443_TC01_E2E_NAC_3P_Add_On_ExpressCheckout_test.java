@@ -91,10 +91,10 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_3P_Add_On_ExpressCheckout_test ext
 		getCreditCheckPage().clkContinue();
 		reporter.reportLogWithScreenshot("Phone Number Generate");
 		getHomePhoneSelectionPage().clkGeneratePhoneNo();
-		reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
+//		reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
 		reporter.reportLogWithScreenshot("Phone Number Selected");
 		getCreditCheckPage().goToPageBottom();
-		getCreditCheckPage().clkContinue();
+		getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
