@@ -3,6 +3,7 @@ package com.rogers.oneview.pages;
 import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 public class RogersOVReviewOrderPage extends BasePageClass {
@@ -72,7 +73,9 @@ public class RogersOVReviewOrderPage extends BasePageClass {
     @FindBy(xpath ="//ds-checkbox[@data-test='bopis-consent']")
     WebElement chBopisConsent;
 
-    @FindBy(xpath ="//button[@title='Submit order - test1' or @title='Soumettre la commande']")
+    @FindAll({
+            @FindBy(xpath = "//button[@data-test='continue-btn']"),
+            @FindBy(xpath = "//button[@data-dtname='reviewOrder-submit']")})
     WebElement submitOrderBtn;
 
     @FindBy(xpath = "(//div[contains(@class,'dsa-orderTable__totalRow')])[2]//div[contains(@class,'ds-price__amountDollars')]")

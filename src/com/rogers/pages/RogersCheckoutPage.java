@@ -324,8 +324,11 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	@FindBy(xpath = "//ds-accordion-panel[@data-test='shipping-delivery-options']//button")
 	WebElement viewAnotherOption;
-	
-	@FindBy(xpath = "(//span[text()='No, thanks']//ancestor::div[@tabindex='0'])[1]")
+
+	@FindAll({
+			@FindBy(xpath = "//div[contains(@class,'button-container')]//button[contains(.,'No')]"),
+			@FindBy(xpath = "(//span[text()='No, thanks']//ancestor::div[@tabindex='0'])[1]")
+	})
 	WebElement btnNoThanks;
 
 	@FindBy(xpath = "//P[@data-test='timeslot-appointment']")

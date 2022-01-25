@@ -3,6 +3,7 @@ package com.rogers.pages;
 import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 public class RogersReviewOrderPage extends BasePageClass {
@@ -72,7 +73,10 @@ public class RogersReviewOrderPage extends BasePageClass {
     @FindBy(xpath = "//input[@name='accessoriesFinancingConsent']/..")
     WebElement chAccessoriesConsent;
 
-    @FindBy(xpath ="//button[@title='Submit order - test1' or @title='Soumettre la commande']")
+    @FindAll({
+            @FindBy(xpath = "//button[@title='Submit order - test1' or @title='Soumettre la commande']"),
+            @FindBy(xpath = "//a[contains(@data-test,'cancel')]/preceding-sibling::button")
+    })
     WebElement submitOrderBtn;
 
 
