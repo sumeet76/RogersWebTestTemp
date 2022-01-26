@@ -37,10 +37,8 @@ public class OneViewCH_Auto_1415_TC01_E2E_NAC_SAI_TMP_PaymentMethod_MonthlyCharg
 		reporter.reportLogWithScreenshot("Product Added");
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clkExpressCheckOut();
-
 		reporter.reportLogWithScreenshot("Cart Summary");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
-
 		getRogersIgniteCampaignPage().clickCampaignTab();
 		reporter.reportLogWithScreenshot("load offers");
 		getRogersIgniteCampaignPage().enterCoupon("KW8");
@@ -79,7 +77,6 @@ public class OneViewCH_Auto_1415_TC01_E2E_NAC_SAI_TMP_PaymentMethod_MonthlyCharg
 		getPaymentOptionsPage().clkContinue();
         reporter.reportLogWithScreenshot("submit order");
 		getRogersOVCheckoutPage().clkSubmit();
-//        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
     }
 

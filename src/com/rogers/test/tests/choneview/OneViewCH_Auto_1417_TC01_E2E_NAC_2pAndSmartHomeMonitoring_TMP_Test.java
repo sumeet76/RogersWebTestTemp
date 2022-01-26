@@ -25,13 +25,10 @@ public class OneViewCH_Auto_1417_TC01_E2E_NAC_2pAndSmartHomeMonitoring_TMP_Test 
 		reporter.reportLogWithScreenshot("Select Services Customer Wants");
 	    getRogersIgniteBundlesPage().clkTVCheckbox();
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
-//
 		getRogersIgniteBundlesPage().clickSmartHomeMonitoring();
 		reporter.reportLogWithScreenshot("Triple play selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		reporter.reportLogWithScreenshot("loading offers");
-//		String promoCode = getRogersIgniteCampaignPage().getPromoCode();
-//		System.out.println("promoCode :: " +  promoCode);
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		reporter.reportLogWithScreenshot("added first to cart");
 		getRogersIgniteBundlesPage().noPortInPopup();
@@ -42,55 +39,37 @@ public class OneViewCH_Auto_1417_TC01_E2E_NAC_2pAndSmartHomeMonitoring_TMP_Test 
 		reporter.reportLogWithScreenshot("Product Added");
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clkExpressCheckOut();
-
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContinue();
 		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
-//		getRogersIgniteBundlesPage().clkCheckOut();
-
-//		getRogersIgniteBundlesPage().clkContinue();
-//		getRogersIgniteBundlesPage().clkExpressCheckOut();
-
-
-//		getRogersIgniteBundlesPage().fourKTVPopup();
-//		getRogersIgniteBundlesPage().fourKContinue();
-
-
-
 		reporter.reportLogWithScreenshot("campaign");
 		getRogersIgniteCampaignPage().clickCampaignTab();
 		getRogersIgniteCampaignPage().enterCoupon("K1D");
 		reporter.reportLogWithScreenshot("Campaign code entered");
 		getRogersIgniteCampaignPage().clickApplyCoupon();
 		reporter.reportLogWithScreenshot("Campaign code applied");
-//		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
 		reporter.reportLogWithScreenshot("close coupon alert");
 		getRogersIgniteCampaignPage().closeCouponAlert();
-
 		reporter.reportLogWithScreenshot("Cart Summary");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
-
 		reporter.reportLogWithScreenshot("customer wish to continue");
 		getRogersIgniteBundlesPage().customerWishtoContinue();
 		reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
 		reporter.reportLogWithScreenshot("Customer Profile");
 		getCustomerProfilePage().clkContinue();
-
 		reporter.reportLogWithScreenshot("credit evaluation form");
 		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
 		reporter.reportLogWithScreenshot("set DOB");
 		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
 		getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
-
 		reporter.reportLogWithScreenshot("filled evaluation form");
 		getCreditCheckPage().clkAuthorize();
 		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
 		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
 		getHomePhoneSelectionPage().clkGeneratePhoneNo();
-//		reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
 		reporter.reportLogWithScreenshot("Phone Number Selected");
 		getCreditCheckPage().goToPageBottom();
 		getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
@@ -98,7 +77,6 @@ public class OneViewCH_Auto_1417_TC01_E2E_NAC_2pAndSmartHomeMonitoring_TMP_Test 
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
-
 		reporter.reportLogWithScreenshot("in-person delivery");
 		getCreditCheckPage().clickInPersonDelivery();
 		getPaymentOptionsPage().clkContinue();

@@ -18,7 +18,6 @@ public class OneViewCH_Auto_1416_TC01_E2E_NAC_SAI_ISS_TMP_Test extends BaseTestC
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("address");
-
 		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
@@ -29,7 +28,6 @@ public class OneViewCH_Auto_1416_TC01_E2E_NAC_SAI_ISS_TMP_Test extends BaseTestC
 		reporter.reportLogWithScreenshot("Smart Stream - SAI ISS Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		reporter.reportLogWithScreenshot("loading offers");
-
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		reporter.reportLogWithScreenshot("added to cart");
 		getRogersIgniteBundlesPage().noPortInPopup();
@@ -39,14 +37,10 @@ public class OneViewCH_Auto_1416_TC01_E2E_NAC_SAI_ISS_TMP_Test extends BaseTestC
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
-//		getRogersIgniteBundlesPage().clkCheckOut();
-
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clkExpressCheckOut();
-
 		reporter.reportLogWithScreenshot("Cart Summary");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
-
 		reporter.reportLogWithScreenshot("campaign");
 		getRogersIgniteCampaignPage().clickCampaignTab();
 		getRogersIgniteCampaignPage().enterCoupon("KW8");
@@ -55,7 +49,6 @@ public class OneViewCH_Auto_1416_TC01_E2E_NAC_SAI_ISS_TMP_Test extends BaseTestC
 		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(),"Remove Coupon option exist","Remove Coupon does not exist");
 		getRogersIgniteCampaignPage().closeCouponAlert();
 		reporter.reportLogWithScreenshot("close code window");
-
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		getRogersIgniteBundlesPage().customerWishtoContinue();
 		reporter.hardAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
@@ -67,12 +60,10 @@ public class OneViewCH_Auto_1416_TC01_E2E_NAC_SAI_ISS_TMP_Test extends BaseTestC
 		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
 		getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
 		reporter.reportLogWithScreenshot("evaluation form filled");
-
 		getCreditCheckPage().clkAuthorize();
 		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
 		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
-//		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();

@@ -61,7 +61,6 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_PreauthorizedCheq
 			getCreditCheckPage().clkContinue();
 			reporter.reportLogWithScreenshot("Phone Number Generate");
 			getHomePhoneSelectionPage().clkGeneratePhoneNo();
-//			reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
 			reporter.reportLogWithScreenshot("Phone Number Selected");
 			getCreditCheckPage().goToPageBottom();
 		    getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
@@ -75,8 +74,6 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_PreauthorizedCheq
 			reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 			getCreditCheckPage().verifyBillingAndPaymentOption();
 			getCreditCheckPage().clickDigitalFrontline();
-
-
 			getCreditCheckPage().selectPaymentOption(2);
 			reporter.reportLogWithScreenshot("Pre-authorized Chequing");
 			getRogersOVCheckoutPage().enterTransitNumber("00333");
@@ -85,8 +82,6 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_PreauthorizedCheq
 			reporter.reportLogWithScreenshot("Institution Number");
 			getRogersOVCheckoutPage().enterAccountNumber("1234003");
 			reporter.reportLogWithScreenshot("Account Number");
-
-
 //			getPaymentOptionsPage().clkContinue();
 //			reporter.reportLogWithScreenshot("submit order");
 //			getRogersOVCheckoutPage().clkSubmit();

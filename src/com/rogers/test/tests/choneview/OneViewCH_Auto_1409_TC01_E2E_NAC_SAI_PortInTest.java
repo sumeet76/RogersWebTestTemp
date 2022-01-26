@@ -36,12 +36,8 @@ public class OneViewCH_Auto_1409_TC01_E2E_NAC_SAI_PortInTest extends BaseTestCla
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
-//		getRogersIgniteBundlesPage().clkCheckOut();
-
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clkExpressCheckOut();
-
-
 		reporter.hardAssert(getRogersIgniteBundlesPage().headerPortInService(),"Port in Service Header exist","Failed");
 		reporter.reportLogWithScreenshot("Port In Service");
 		getRogersIgniteBundlesPage().setProvider("BELL ONTARIO");
@@ -53,7 +49,6 @@ public class OneViewCH_Auto_1409_TC01_E2E_NAC_SAI_PortInTest extends BaseTestCla
 		reporter.reportLogWithScreenshot("Cart Summary");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
-
 		reporter.reportLogWithScreenshot("wish to continue");
 		getRogersIgniteBundlesPage().customerWishtoContinue();
         reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
@@ -68,7 +63,6 @@ public class OneViewCH_Auto_1409_TC01_E2E_NAC_SAI_PortInTest extends BaseTestCla
 		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
 		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
-//		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();

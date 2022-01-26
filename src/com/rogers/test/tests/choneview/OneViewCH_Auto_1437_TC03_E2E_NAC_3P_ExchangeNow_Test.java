@@ -37,8 +37,6 @@ public class OneViewCH_Auto_1437_TC03_E2E_NAC_3P_ExchangeNow_Test extends BaseTe
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 			reporter.reportLogWithScreenshot("Product Added");
 			getRogersIgniteBundlesPage().clkContinue();
-
-
 			reporter.reportLogWithScreenshot("Exchange Options");
 			getRogersIgniteExchangePage().clickExchangeNow();
 			reporter.reportLogWithScreenshot("Exchange Now");
@@ -52,15 +50,10 @@ public class OneViewCH_Auto_1437_TC03_E2E_NAC_3P_ExchangeNow_Test extends BaseTe
 			getRogersIgniteExchangePage().clickSelectButton();
 			reporter.reportLogWithScreenshot("Channel Swapped");
 			getRogersIgniteExchangePage().clkContinue();
-
-
 			getRogersIgniteBundlesPage().fourKTVPopup();
 			getRogersIgniteBundlesPage().fourKContinue();
 			reporter.reportLogWithScreenshot("continue to exchange later");
 			getRogersIgniteBundlesPage().clkExpressCheckOut();
-
-
-
 			reporter.reportLogWithScreenshot("Cart Summary");
 			getRogersIgniteBundlesPage().fourKTVPopup();
 			getRogersIgniteBundlesPage().fourKContinue();
@@ -81,7 +74,6 @@ public class OneViewCH_Auto_1437_TC03_E2E_NAC_3P_ExchangeNow_Test extends BaseTe
 			getCreditCheckPage().clkContinue();
 			reporter.reportLogWithScreenshot("Phone Number Generate");
 			getHomePhoneSelectionPage().clkGeneratePhoneNo();
-//			reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
 			reporter.reportLogWithScreenshot("Phone Number Selected");
 			getCreditCheckPage().goToPageBottom();
 		    getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
@@ -103,7 +95,6 @@ public class OneViewCH_Auto_1437_TC03_E2E_NAC_3P_ExchangeNow_Test extends BaseTe
 			getPaymentOptionsPage().clkContinue();
 			reporter.reportLogWithScreenshot("submit order");
 			getRogersOVCheckoutPage().clkSubmit();
-//			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 			reporter.reportLogWithScreenshot("Order Placed");
 		
     }

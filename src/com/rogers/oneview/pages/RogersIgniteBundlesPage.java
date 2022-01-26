@@ -211,7 +211,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath="//ds-icon[@ng-reflect-name='chevron-right']/ancestor::button")
 	WebElement selectBestOffer;
 
-//	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-selected-key='0']//select[contains(@id,'ds-form-input-id') and contains(@class,'select')])[1]")
+
 	@FindBy(xpath = "(//select[contains(@id,'ds-form-input-id') and contains(@class,'select')])[1]")
 	WebElement additionalIgniteTVBoxes;
 
@@ -239,8 +239,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[@translate='global.cta.checkAvailability']/ancestor::button")
 	WebElement availabilityButton;
 
-//	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::button")
-//	WebElement continueButton;
+
 
 	@FindBy(xpath = "//span[@translate='global.cta.yes']/ancestor::button")
 	WebElement yesButton;
@@ -448,11 +447,6 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @param planFr is the Plam Name in French
 	 * @author chinnarao.vattam
 	 */
-//	public void clkAddtoCart(String planEn,String planFr) {
-//		getReusableActionsInstance().getWhenReady(By.xpath("//div[text()='"+planEn+"' or text()='"+planFr+"']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button"),120).sendKeys(Keys.ENTER);
-//	}
-//	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[1]")
-//	WebElement addToCart;
 
 	/**
 	 * Verify the Product is Added to Cart

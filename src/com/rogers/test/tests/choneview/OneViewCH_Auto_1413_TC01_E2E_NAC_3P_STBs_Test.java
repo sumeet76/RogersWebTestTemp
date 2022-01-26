@@ -37,23 +37,15 @@ public class OneViewCH_Auto_1413_TC01_E2E_NAC_3P_STBs_Test extends BaseTestClass
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 			reporter.reportLogWithScreenshot("Product Added");
 			getRogersIgniteBundlesPage().clkContinue();
-//			reporter.reportLogWithScreenshot("continue");
-//			getRogersIgniteBundlesPage().fourKTVPopup();
-//			getRogersIgniteBundlesPage().fourKContinue();
-
-
-
 			reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		    getRogersIgniteBundlesPage().clkExpressCheckOut();
 		    reporter.reportLogWithScreenshot("Cart Summary");
 			getRogersIgniteBundlesPage().fourKTVPopup();
 			getRogersIgniteBundlesPage().fourKContinue();
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"cart summary header found","cart summary header not found");
-
 			getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 			reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
 			getRogersIgniteBundlesPage().customerWishtoContinue();
-
 			reporter.reportLogWithScreenshot("Customer Profile");
 			getCustomerProfilePage().clkContinue();
 			reporter.reportLogWithScreenshot("Evaluation form");
@@ -69,7 +61,6 @@ public class OneViewCH_Auto_1413_TC01_E2E_NAC_3P_STBs_Test extends BaseTestClass
 			getCreditCheckPage().clkContinue();
 			reporter.reportLogWithScreenshot("Generate phone");
 			getHomePhoneSelectionPage().clkGeneratePhoneNo();
-//			reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
 			reporter.reportLogWithScreenshot("Phone Number Selected");
 			getCreditCheckPage().goToPageBottom();
 			reporter.reportLogWithScreenshot("Page bottom");
@@ -87,7 +78,6 @@ public class OneViewCH_Auto_1413_TC01_E2E_NAC_3P_STBs_Test extends BaseTestClass
 			reporter.reportLogWithScreenshot("front line");
 			getCreditCheckPage().clickDigitalFrontline();
 			reporter.reportLogWithScreenshot("card details");
-
 			getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
 			reporter.reportLogWithScreenshot("Token Number");
 			getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
@@ -97,7 +87,6 @@ public class OneViewCH_Auto_1413_TC01_E2E_NAC_3P_STBs_Test extends BaseTestClass
 			getPaymentOptionsPage().clkContinue();
 			reporter.reportLogWithScreenshot("submit order");
 			getRogersOVCheckoutPage().clkSubmit();
-//			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 			reporter.reportLogWithScreenshot("Order Placed");
 		
     }

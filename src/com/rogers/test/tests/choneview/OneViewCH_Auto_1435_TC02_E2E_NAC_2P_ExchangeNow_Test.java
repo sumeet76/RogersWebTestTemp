@@ -38,13 +38,6 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_ExchangeNow_Test extends BaseTe
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
 		getRogersIgniteBundlesPage().clkContinue();
-
-
-
-
-
-
-
 		reporter.reportLogWithScreenshot("Exchange Options");
 		getRogersIgniteExchangePage().clickExchangeNow();
 		reporter.reportLogWithScreenshot("Exchange Now");
@@ -61,13 +54,7 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_ExchangeNow_Test extends BaseTe
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContentPopup();
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
-//		getRogersIgniteBundlesPage().clkCheckOut();
-
-//		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clkExpressCheckOut();
-
-
-
 		reporter.reportLogWithScreenshot("Cart Summary");
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContentPopup();
@@ -106,7 +93,6 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_ExchangeNow_Test extends BaseTe
 		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("submit order");
 		getRogersOVCheckoutPage().clkSubmit();
-//			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
 
 
