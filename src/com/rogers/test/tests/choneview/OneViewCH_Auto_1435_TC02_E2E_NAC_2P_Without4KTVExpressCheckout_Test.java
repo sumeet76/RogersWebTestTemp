@@ -30,7 +30,6 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_Without4KTVExpressCheckout_Test
 		 reporter.reportLogWithScreenshot("offers loading");
 		 getRogersIgniteBundlesPage().clickFirstAddToCart();
 		 reporter.reportLogWithScreenshot("added to cart");
-
 		 getRogersIgniteBundlesPage().noPortInPopup();
 		 reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
 		 reporter.reportLogWithScreenshot("Product in cart");
@@ -38,13 +37,11 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_Without4KTVExpressCheckout_Test
 		 reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		 reporter.reportLogWithScreenshot("Product Added");
 		 getRogersIgniteBundlesPage().clkContinue();
-
 		 getRogersIgniteBundlesPage().fourKTVPopup();
 		 getRogersIgniteBundlesPage().fourKContentPopup();
 		 reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		 reporter.hardAssert(getRogersIgniteBundlesPage().verifyPersonalizeYourChannels(),"Personalize You Channel displayed","Personalize You Channel did not Displayed");
 		 getRogersIgniteBundlesPage().clkExpressCheckOut();
-
 		 reporter.reportLogWithScreenshot("Cart Summary");
 		 getRogersIgniteBundlesPage().fourKTVPopup();
 		 getRogersIgniteBundlesPage().fourKContentPopup();
@@ -54,8 +51,6 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_Without4KTVExpressCheckout_Test
 		 getRogersIgniteBundlesPage().customerWishtoContinue();
 		 reporter.hardAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
 		 reporter.reportLogWithScreenshot("Customer Profile");
-
-
 		 getCustomerProfilePage().clkContinue();
 		 reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(),"Credit Evaluation Displayed","Credit Evaluation did not Displayed");
 		 reporter.reportLogWithScreenshot("Credit Evaluation screen loaded");

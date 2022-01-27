@@ -38,7 +38,6 @@ public class OneViewCH_Auto_1437_TC04_E2E_NAC_3P_Without4KTVExpressCheckout_Test
 			reporter.reportLogWithScreenshot("Product Added");
 			getRogersIgniteBundlesPage().clkContinue();
 			getRogersIgniteBundlesPage().noTo4KTVPopup();
-
 			reporter.reportLogWithScreenshot("continue to exchange later");
 			getRogersIgniteBundlesPage().clkExpressCheckOut();
 			reporter.reportLogWithScreenshot("Cart Summary");
@@ -61,7 +60,6 @@ public class OneViewCH_Auto_1437_TC04_E2E_NAC_3P_Without4KTVExpressCheckout_Test
 			getCreditCheckPage().clkContinue();
 			reporter.reportLogWithScreenshot("Phone Number Generate");
 			getHomePhoneSelectionPage().clkGeneratePhoneNo();
-//			reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
 			reporter.reportLogWithScreenshot("Phone Number Selected");
 			getCreditCheckPage().goToPageBottom();
 		    getHomePhoneSelectionPage().clkContinueOnGeneratePhone();

@@ -106,7 +106,7 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	public void clkContinueOnGeneratePhone() {
 		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().executeJavaScriptClick(continueOnGeneratePhone);
-//		getReusableActionsInstance().clickWhenReady(continueOnGeneratePhone);
+
 	}
 
 }
