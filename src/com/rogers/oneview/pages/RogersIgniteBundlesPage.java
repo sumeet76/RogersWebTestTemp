@@ -514,8 +514,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().scrollToElement(checkOut);
 		getReusableActionsInstance().getWhenReady(checkOut,120).sendKeys(Keys.ENTER);
-//		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-//		getReusableActionsInstance().executeJavaScriptClick(checkOut);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().executeJavaScriptClick(checkOut);
 	}
 
 	/**
