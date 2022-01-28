@@ -23,7 +23,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[@class='pcaautocomplete pcatext' and not(contains(@style,'none'))]")
 	WebElement searchResult;
 
-	@FindBy(xpath = "//button[@ng-reflect-rch-track-click-event='checkServiceability']")
+	@FindBy(xpath = "//button[@rchtrackclickevent='checkServiceability'] | //button[@ng-reflect-rch-track-click-event='checkServiceability']")
 	WebElement checkAvailabilitybtn;
 
 	@FindBy(xpath = "(//*[@id='ds-modal-container-0']/ds-modal/div[2]/div[1]/div/div/div/div/div)[1] | //*[@id='ds-modal-container-0']/ds-modal/div[2]/div[1]/div/div[2]/div/div/rch-pca-address-lookup/div/ds-form-field/div/div[1] | //*[@id='ds-modal-container-0']/ds-modal/descendant::div[@class='input-search']")
@@ -211,7 +211,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath="//ds-icon[@ng-reflect-name='chevron-right']/ancestor::button")
 	WebElement selectBestOffer;
 
-	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-selected-key='0']//select[contains(@id,'ds-form-input-id') and contains(@class,'select')])[1]")
+
+	@FindBy(xpath = "(//select[contains(@id,'ds-form-input-id') and contains(@class,'select')])[1]")
 	WebElement additionalIgniteTVBoxes;
 
 	@FindBy(xpath="//p[text()='Ignite Home Phone Setup']")
@@ -238,8 +239,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[@translate='global.cta.checkAvailability']/ancestor::button")
 	WebElement availabilityButton;
 
-//	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::button")
-//	WebElement continueButton;
+
 
 	@FindBy(xpath = "//span[@translate='global.cta.yes']/ancestor::button")
 	WebElement yesButton;
@@ -469,6 +469,16 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
 		btn.click();
 	}
+
+
+
+	/**
+	 * Click Add to Cart for Selected Product
+	 * @param planEn is the Plam Name in English
+	 * @param planFr is the Plam Name in French
+	 * @author chinnarao.vattam
+	 */
+
 	/**
 	 * Verify the Product is Added to Cart
 	 * @return true if Product is added, else false
@@ -503,7 +513,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author Aditi.jain
 	 */
 	public void noTo4KTVPopup() {
-		if(getReusableActionsInstance().isElementVisible(noFor4K))
+		if(getReusableActionsInstance().isElementVisible(noFor4K, 5))
 			getReusableActionsInstance().clickWhenReady(noFor4K,120);
 	}
 	/**
@@ -535,8 +545,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().scrollToElement(checkOut);
 		getReusableActionsInstance().getWhenReady(checkOut,120).sendKeys(Keys.ENTER);
-//		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-//		getReusableActionsInstance().executeJavaScriptClick(checkOut);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().executeJavaScriptClick(checkOut);
 	}
 
 	/**

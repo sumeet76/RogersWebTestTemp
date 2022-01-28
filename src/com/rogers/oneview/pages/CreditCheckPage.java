@@ -12,13 +12,16 @@ public class CreditCheckPage  extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[1] | (//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[1]")
+
+	@FindBy(xpath = "(//rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[1]")
 	WebElement year;
 
-	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[2] | (//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[2]")
+
+	@FindBy(xpath = "(//rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[2]")
 	WebElement month;
 
-	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[3] | (//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[3]")
+
+	@FindBy(xpath = "(//rch-dob/child::rch-date-selection/descendant::ds-form-field/descendant::select)[3]")
 	WebElement date;
 
 	@FindBy(xpath = "//span[contains(text(),'Your first ID option') or contains(text(), 'Votre première pièce d’identité')]/ancestor::span//following-sibling::select")
@@ -34,13 +37,16 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Select Province') or contains(text(),'Sélectionner une province')]/ancestor::span//following-sibling::select")
 	WebElement province;
 
-	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[1] | (//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[1]")
+
+	@FindBy(xpath = "(//rch-drivers-license/child::rch-date-selection/descendant::select)[1]")
 	WebElement licenseExpiryYear;
 
-	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[3] | (//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[3]")
+
+	@FindBy(xpath = "(//rch-drivers-license/child::rch-date-selection/descendant::select)[3]")
 	WebElement licenseExpiryDay;
 
-	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[2] | (//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-drivers-license/child::rch-date-selection/descendant::select)[2]")
+
+	@FindBy(xpath = "(//rch-drivers-license/child::rch-date-selection/descendant::select)[2]")
 	WebElement licenseExpiryMonth;
 
 	@FindBy(xpath = "//span[contains(text(),'License Number') or contains(text(),'Numéro du permis')]/ancestor::span/parent::div")
@@ -58,20 +64,24 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Passport number') or contains(text(),'Numéro de passeport')]/ancestor::span//following-sibling::div/child::input")
 	WebElement passportInput;
 
-	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-passport/descendant::select)[1] | (//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-passport/descendant::select)[1]")
+
+	@FindBy(xpath = "(//rch-passport/descendant::select)[1]")
 	WebElement passportExpiryYear;
 
-	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-passport/descendant::select)[2] | (//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-passport/descendant::select)[2]")
+
+	@FindBy(xpath = "(//rch-passport/descendant::select)[2]")
 	WebElement passportExpiryMonth;
 
-	@FindBy(xpath = "(//div[@class='container-md credit-check']/descendant::rch-passport/descendant::select)[3] | (//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-passport/descendant::select)[3]")
+
+	@FindBy(xpath = "(//rch-passport/descendant::select)[3]")
 	WebElement passportExpiryDay;
 
 	@FindBy(xpath = "//span[contains(text(),'The customer authorizes') or contains(text(),'Le client autorise Rogers à obtenir des renseignements')]/parent::div/ancestor::ds-checkbox//div[1]")
 	WebElement authorizecheckbox;
 	
-	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button[@ng-reflect-disabled='false']")
+	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button | //span[text()='Continuer' or text()='Continue']/ancestor::button[@ng-reflect-disabled='false']")
 	WebElement continueButton;
+
 
 	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button")
 	WebElement continueButtonFromInstallOption;
@@ -198,7 +208,8 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @param dayofBirth is the Birth day to set
 	 * @author chinnarao.vattam
 	 */	
-	public void setDOB(String yearofBirth,String monthofBirth,String dayofBirth) {	
+	public void setDOB(String yearofBirth,String monthofBirth,String dayofBirth) {
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().selectWhenReadyByVisibleText(year, yearofBirth);
 		getReusableActionsInstance().selectWhenReady(month,Integer.parseInt(monthofBirth));
 		getReusableActionsInstance().selectWhenReadyByVisibleText(date, dayofBirth);
@@ -268,6 +279,7 @@ public class CreditCheckPage  extends BasePageClass {
 	public void clkContinue() {	
 		getReusableActionsInstance().clickWhenReady(continueButton);
 	}
+
 
 
 	/**

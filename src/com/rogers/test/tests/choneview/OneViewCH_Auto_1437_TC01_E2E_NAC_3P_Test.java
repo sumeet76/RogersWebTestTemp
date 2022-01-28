@@ -25,6 +25,7 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_Test extends BaseTestClass {
 			getRogersIgniteBundlesPage().clkTVCheckbox();
 			getRogersIgniteBundlesPage().clkInternetCheckbox();
 			getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
+
 			reporter.reportLogWithScreenshot("Triple Play Selected");
 			getRogersIgniteBundlesPage().clkLoadOffers();
 			reporter.reportLogWithScreenshot("load offers");
@@ -37,15 +38,15 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_Test extends BaseTestClass {
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 			reporter.reportLogWithScreenshot("Product Added");
 			getRogersIgniteBundlesPage().clkContinue();
-
+		    getRogersIgniteBundlesPage().clkExpressCheckOut();
 			getRogersIgniteBundlesPage().fourKTVPopup();
 			getRogersIgniteBundlesPage().fourKContinue();
 			reporter.reportLogWithScreenshot("continue to exchange later");
-			getRogersIgniteBundlesPage().clkExpressCheckOut();
-			reporter.reportLogWithScreenshot("Cart Summary");
-			getRogersIgniteBundlesPage().fourKTVPopup();
-			getRogersIgniteBundlesPage().fourKContinue();
-			reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+//			getRogersIgniteBundlesPage().clkExpressCheckOut();
+//			reporter.reportLogWithScreenshot("Cart Summary");
+//			getRogersIgniteBundlesPage().fourKTVPopup();
+//			getRogersIgniteBundlesPage().fourKContinue();
+//			reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 			reporter.reportLogWithScreenshot("checkout to cart summary");
 			getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 			getRogersIgniteBundlesPage().customerWishtoContinue();
@@ -62,10 +63,9 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_Test extends BaseTestClass {
 			getCreditCheckPage().clkContinue();
 			reporter.reportLogWithScreenshot("Phone Number Generate");
 			getHomePhoneSelectionPage().clkGeneratePhoneNo();
-			reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
 			reporter.reportLogWithScreenshot("Phone Number Selected");
 			getCreditCheckPage().goToPageBottom();
-			getCreditCheckPage().clkContinue();
+		    getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
 			reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 			reporter.reportLogWithScreenshot("Installation options");
 			getCreditCheckPage().verifyInstallationOption();

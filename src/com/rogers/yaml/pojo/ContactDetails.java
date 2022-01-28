@@ -60,7 +60,9 @@ public class ContactDetails {
 	private String contactIDInternetHomePhoneSmartHomeMonitoring;
 	private String contactIDInternetSmartStremSmartHomeMonitoring;
 	private String contactIDTVInternetSmartHomeMonitoring;
-
+	private String contactID2pAndSmartHomeMonitoringTMP;
+	private String contactID3pAndSmartHomeMonitoringTMP;
+	private String contactIDSAIAndSmartHomeMonitoringTMP;
 
 	;
 	public ContactDetails() {
@@ -617,5 +619,35 @@ public class ContactDetails {
 
 	public String getContactIDTVInternetSmartHomeMonitoring() {
 		return contactIDTVInternetSmartHomeMonitoring;
+	}
+	/**
+	 * @param contactID2pAndSmartHomeMonitoringTMP
+	 */
+	public void setContactID2pAndSmartHomeMonitoringTMP(String contactID2pAndSmartHomeMonitoringTMP) {
+		this.contactID2pAndSmartHomeMonitoringTMP= contactID2pAndSmartHomeMonitoringTMP;
+	}
+
+	public String getContactID2pAndSmartHomeMonitoringTMP() {
+		return contactID2pAndSmartHomeMonitoringTMP;
+	}
+	/**
+	 * @param contactID3pAndSmartHomeMonitoringTMP
+	 */
+	public void setContactID3pAndSmartHomeMonitoringTMP(String contactID3pAndSmartHomeMonitoringTMP) {
+		this.contactID3pAndSmartHomeMonitoringTMP= contactID3pAndSmartHomeMonitoringTMP;
+	}
+
+	public String getContactID3pAndSmartHomeMonitoringTMP() {
+		return contactID3pAndSmartHomeMonitoringTMP;
+	}
+	/**
+	 * @param contactIDSAIAndSmartHomeMonitoringTMP
+	 */
+	public void setContactIDSAIAndSmartHomeMonitoringTMP(String contactIDSAIAndSmartHomeMonitoringTMP) {
+		this.contactIDSAIAndSmartHomeMonitoringTMP= contactIDSAIAndSmartHomeMonitoringTMP;
+	}
+
+	public String getContactIDSAIAndSmartHomeMonitoringTMP() {
+		return contactIDSAIAndSmartHomeMonitoringTMP;
 	}
 }

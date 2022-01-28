@@ -31,11 +31,8 @@ public class OneViewCH_Auto_1437_TC02_E2E_NAC_3P_ChannelAndThemepack_Test extend
 			getRogersIgniteBundlesPage().clickFirstAddToCart();
 			reporter.reportLogWithScreenshot("Added to Cart");
 			getRogersIgniteBundlesPage().noPortInPopup();
-
 			getRogersIgniteBundlesPage().fourKTVPopup();
 			getRogersIgniteBundlesPage().fourKContinue();
-
-
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
 			reporter.reportLogWithScreenshot("Product in cart");
 			getRogersIgniteBundlesPage().clkCollapse();
@@ -44,11 +41,8 @@ public class OneViewCH_Auto_1437_TC02_E2E_NAC_3P_ChannelAndThemepack_Test extend
 			getRogersIgniteBundlesPage().clkContinue();
 			reporter.reportLogWithScreenshot("continue to exchange later");
 			getRogersIgniteBundlesPage().clickExchangeLater();
-
 			getTVDashboardPage().clickAddChannel();
 			reporter.reportLogWithScreenshot("add channel");
-
-
 			getTVDashboardPage().clickThemepacksTab();
 			getRogersIgniteBundlesPage().fourKTVPopup();
 			getRogersIgniteBundlesPage().fourKContinue();
@@ -63,14 +57,9 @@ public class OneViewCH_Auto_1437_TC02_E2E_NAC_3P_ChannelAndThemepack_Test extend
 			getCustomerProfilePage().clkContinue();
 			reporter.reportLogWithScreenshot("Calling cart - Add to cart");
 			getTVDashboardPage().addToCartCallingPackage();
-
 			reporter.reportLogWithScreenshot("add calling card");
 			getCustomerProfilePage().clkContinue();
 			reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
-
-//		    getRogersIgniteBundlesPage().clkExpressCheckOut();
-
-
 			reporter.reportLogWithScreenshot("Cart Summary");
 //			reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 			reporter.reportLogWithScreenshot("checkout to cart summary");
@@ -89,10 +78,9 @@ public class OneViewCH_Auto_1437_TC02_E2E_NAC_3P_ChannelAndThemepack_Test extend
 			getCreditCheckPage().clkContinue();
 			reporter.reportLogWithScreenshot("Phone Number Generate");
 			getHomePhoneSelectionPage().clkGeneratePhoneNo();
-			reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
 			reporter.reportLogWithScreenshot("Phone Number Selected");
 			getCreditCheckPage().goToPageBottom();
-			getCreditCheckPage().clkContinue();
+		    getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
 			reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 			reporter.reportLogWithScreenshot("Installation options");
 			getCreditCheckPage().verifyInstallationOption();

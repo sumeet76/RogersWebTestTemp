@@ -64,10 +64,10 @@ public class OneViewCH_Auto_1548_TC01_TargetedMigration_1P_Internet_to_3P_Test e
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
-        reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
+//        reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
         reporter.reportLogWithScreenshot("Phone Number Selected");
         getCreditCheckPage().goToPageBottom();
-        getCreditCheckPage().clkContinue();
+        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         getCreditCheckPage().verifyInstallationOption();
         getCreditCheckPage().goToPageBottom();
         getCreditCheckPage().clickInPersonDelivery();

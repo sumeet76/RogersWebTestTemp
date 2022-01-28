@@ -61,14 +61,11 @@ public class OneViewCH_Auto_1436_TC01_E2E_NAC_TV_Internet_HomePhone_SmartHomeMon
 		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
 		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
-
 		reporter.reportLogWithScreenshot("Phone Number Generate");
 		getHomePhoneSelectionPage().clkGeneratePhoneNo();
-		reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
 		reporter.reportLogWithScreenshot("Phone Number Selected");
 		getCreditCheckPage().goToPageBottom();
-		getCreditCheckPage().clkContinue();
-		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
+		getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();

@@ -67,7 +67,7 @@ public class OneViewCH_Auto_1568_TC01_TargetedMigration_3P_to_3P_change_numbTest
         getCreditCheckPage().clkContinue();
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         getHomePhoneSelectionPage().verifySelectedNumber();
-        getHomePhoneSelectionPage().clkContinue();
+        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         getCreditCheckPage().clickInPersonDelivery();
         getPaymentOptionsPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
