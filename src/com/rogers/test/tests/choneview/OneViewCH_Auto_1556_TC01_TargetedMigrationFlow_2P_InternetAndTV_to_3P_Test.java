@@ -33,7 +33,6 @@ public class OneViewCH_Auto_1556_TC01_TargetedMigrationFlow_2P_InternetAndTV_to_
         //reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
 //		//getRogersIgniteBundlesPage().clkAddtoCart(TestDataHandler.anonymousData.getplanEng(),TestDataHandler.anonymousData.getplanFr());
         // getRogersIgniteBundlesPage().clickFirstAddToCart(TestDataHandler.anonymousData.getPlanEngSAI());
-
         getRogersIgniteBundlesPage().noPortInPopup();
         getRogersIgniteBundlesPage().clkCollapse();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
@@ -51,13 +50,10 @@ public class OneViewCH_Auto_1556_TC01_TargetedMigrationFlow_2P_InternetAndTV_to_
         getCustomerProfilePage().clkContinue();
         reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
         getRogersIgniteBundlesPage().clkCheckOut();
-
         reporter.reportLogWithScreenshot("Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         getRogersIgniteBundlesPage().customerWishtoContinue();
-
-
         reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
         reporter.reportLogWithScreenshot("Customer Profile");
         getCustomerProfilePage().clkContinue();
@@ -69,10 +65,9 @@ public class OneViewCH_Auto_1556_TC01_TargetedMigrationFlow_2P_InternetAndTV_to_
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
-        reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
         reporter.reportLogWithScreenshot("Phone Number Selected");
         getCreditCheckPage().goToPageBottom();
-        getCreditCheckPage().clkContinue();
+        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         getCreditCheckPage().verifyInstallationOption();
         getCreditCheckPage().goToPageBottom();
         getCreditCheckPage().clickInPersonDelivery();

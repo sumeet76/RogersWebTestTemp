@@ -32,20 +32,14 @@ public class OneViewCH_Auto_OVS2_Pods_Buy_TC02_ValidateNACISSFlowByAddingBothFre
         getRogersIgniteBundlesPage().clkCollapse();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         getRogersIgniteBundlesPage().clkContinue();
-
         reporter.reportLogWithScreenshot("Lands in Internet Addons page");
-
         /*To Add the chargeable Pods*/
         getRogersIgniteBundlesPage().addPods(5);
         reporter.reportLogWithScreenshot("Chargable internet add on is added to the cart");
-
         /*To Add the free pods in the internt addons page*/
         getRogersIgniteBundlesPage().addPods(0);
         reporter.reportLogWithScreenshot("Free internet add on is added to the cart");
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
-
-
-
         reporter.reportLogWithScreenshot("Cart Summary");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         reporter.reportLogWithScreenshot("cart summary checkout");
@@ -75,11 +69,11 @@ public class OneViewCH_Auto_OVS2_Pods_Buy_TC02_ValidateNACISSFlowByAddingBothFre
         getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
         getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
         getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-//		reporter.reportLogWithScreenshot("payment details entered");
-//		getPaymentOptionsPage().clkContinue();
-//		reporter.reportLogWithScreenshot("sumbit order");
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.reportLogWithScreenshot("payment details entered");
+		getPaymentOptionsPage().clkContinue();
+		reporter.reportLogWithScreenshot("sumbit order");
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 
     }
 

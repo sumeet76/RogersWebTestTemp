@@ -31,14 +31,12 @@ public class OneViewCH_Auto_1620_TC01_E2E_Migration_1P_Internet_To_3P_Test exten
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		reporter.reportLogWithScreenshot("added to cart");
-
 		getRogersIgniteBundlesPage().noPortInPopup();
 		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("review terms and condition");
-
 		getRogersIgniteBundlesPage().reviewTermsAndCondition();
 		reporter.reportLogWithScreenshot("points to mention");
 		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
@@ -73,10 +71,9 @@ public class OneViewCH_Auto_1620_TC01_E2E_Migration_1P_Internet_To_3P_Test exten
 		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
 		getHomePhoneSelectionPage().clkGeneratePhoneNo();
-		reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
 		reporter.reportLogWithScreenshot("Phone Number Selected");
 		getCreditCheckPage().goToPageBottom();
-		getCreditCheckPage().clkContinue();
+		getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
 		getCreditCheckPage().verifyInstallationOption();
 		reporter.reportLogWithScreenshot("installation options");
 		getCreditCheckPage().goToPageBottom();
@@ -87,12 +84,10 @@ public class OneViewCH_Auto_1620_TC01_E2E_Migration_1P_Internet_To_3P_Test exten
 		reporter.reportLogWithScreenshot("Billing and payment");
 		getCreditCheckPage().clickDigitalFrontline();
 		reporter.reportLogWithScreenshot("Front line");
-
 		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		reporter.reportLogWithScreenshot("Entered card detail");
-
 //		getPaymentOptionsPage().clkContinue();
 //		reporter.reportLogWithScreenshot("Submit order");
 //		getRogersOVCheckoutPage().clkSubmit();

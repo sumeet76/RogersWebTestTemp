@@ -30,7 +30,6 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_Without4KTVExpressCheckout_Test
 		 reporter.reportLogWithScreenshot("offers loading");
 		 getRogersIgniteBundlesPage().clickFirstAddToCart();
 		 reporter.reportLogWithScreenshot("added to cart");
-
 		 getRogersIgniteBundlesPage().noPortInPopup();
 		 reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
 		 reporter.reportLogWithScreenshot("Product in cart");
@@ -38,11 +37,14 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_Without4KTVExpressCheckout_Test
 		 reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		 reporter.reportLogWithScreenshot("Product Added");
 		 getRogersIgniteBundlesPage().clkContinue();
+		 getRogersIgniteBundlesPage().fourKTVPopup();
+		 getRogersIgniteBundlesPage().fourKContentPopup();
 		 reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		 reporter.hardAssert(getRogersIgniteBundlesPage().verifyPersonalizeYourChannels(),"Personalize You Channel displayed","Personalize You Channel did not Displayed");
-		 getRogersIgniteBundlesPage().clkCheckOut();
+		 getRogersIgniteBundlesPage().clkExpressCheckOut();
 		 reporter.reportLogWithScreenshot("Cart Summary");
-		 getRogersIgniteBundlesPage().noTo4KTVPopup();
+		 getRogersIgniteBundlesPage().fourKTVPopup();
+		 getRogersIgniteBundlesPage().fourKContentPopup();
 		 reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		 getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		 reporter.reportLogWithScreenshot("continue from cart summary");

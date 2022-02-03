@@ -32,13 +32,8 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_Test extends BaseTestClass 
 		getRogersIgniteBundlesPage().noPortInPopup();
 		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
-//		getRogersIgniteBundlesPage().clkCheckOut();
-
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clkExpressCheckOut();
-
-
-
 		reporter.reportLogWithScreenshot("Cart Summary");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		reporter.reportLogWithScreenshot("cart summary checkout");
@@ -68,7 +63,7 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_Test extends BaseTestClass 
 		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-//		reporter.reportLogWithScreenshot("payment details entered");
+		reporter.reportLogWithScreenshot("payment details entered");
 //		getPaymentOptionsPage().clkContinue();
 //		reporter.reportLogWithScreenshot("sumbit order");
 //		getRogersOVCheckoutPage().clkSubmit();

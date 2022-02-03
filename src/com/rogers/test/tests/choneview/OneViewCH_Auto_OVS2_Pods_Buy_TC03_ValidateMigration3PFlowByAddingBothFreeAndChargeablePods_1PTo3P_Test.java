@@ -29,14 +29,12 @@ public class OneViewCH_Auto_OVS2_Pods_Buy_TC03_ValidateMigration3PFlowByAddingBo
        getRogersIgniteBundlesPage().clkLoadOffers();
        getRogersIgniteBundlesPage().clickFirstAddToCart();
        reporter.reportLogWithScreenshot("added to cart");
-
        getRogersIgniteBundlesPage().noPortInPopup();
        getRogersIgniteBundlesPage().clkCollapse();
        reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
        reporter.reportLogWithScreenshot("Product Added");
        getRogersIgniteBundlesPage().clkContinue();
        reporter.reportLogWithScreenshot("review terms and condition");
-
        getRogersIgniteBundlesPage().reviewTermsAndCondition();
        reporter.reportLogWithScreenshot("points to mention");
        getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
@@ -46,18 +44,15 @@ public class OneViewCH_Auto_OVS2_Pods_Buy_TC03_ValidateMigration3PFlowByAddingBo
        getRogersIgniteBundlesPage().contiue4KContent();
        getCustomerProfilePage().clkContinue();
        reporter.reportLogWithScreenshot("Lands in Internet Addons page");
-
        /*To Add the chargeable Pods*/
        getRogersIgniteBundlesPage().addPods(5);
        reporter.reportLogWithScreenshot("Chargable internet add on is added to the cart");
-
        /*To Add the free pods in the internt addons page*/
        getRogersIgniteBundlesPage().addPods(0);
        reporter.reportLogWithScreenshot("Free internet add on is added to the cart");
        getRogersIgniteBundlesPage().clkContinueInternetAddon();
        getRogersIgniteBundlesPage().clkContinue();
        reporter.reportLogWithScreenshot("Cart Summary");
-
        getRogersIgniteBundlesPage().clkCheckOut();
        reporter.reportLogWithScreenshot("Cart Summary");
        reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
@@ -74,10 +69,9 @@ public class OneViewCH_Auto_OVS2_Pods_Buy_TC03_ValidateMigration3PFlowByAddingBo
        reporter.reportLogWithScreenshot("Credit Check Information");
        getCreditCheckPage().clkContinue();
        getHomePhoneSelectionPage().clkGeneratePhoneNo();
-       reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
        reporter.reportLogWithScreenshot("Phone Number Selected");
        getCreditCheckPage().goToPageBottom();
-       getCreditCheckPage().clkContinue();
+       getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
        getCreditCheckPage().verifyInstallationOption();
        reporter.reportLogWithScreenshot("installation options");
        getCreditCheckPage().goToPageBottom();
@@ -88,12 +82,10 @@ public class OneViewCH_Auto_OVS2_Pods_Buy_TC03_ValidateMigration3PFlowByAddingBo
        reporter.reportLogWithScreenshot("Billing and payment");
        getCreditCheckPage().clickDigitalFrontline();
        reporter.reportLogWithScreenshot("Front line");
-
        getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
        getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
        getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
        reporter.reportLogWithScreenshot("Entered card detail");
-
 //		getPaymentOptionsPage().clkContinue();
 //		reporter.reportLogWithScreenshot("Submit order");
 //		getRogersOVCheckoutPage().clkSubmit();

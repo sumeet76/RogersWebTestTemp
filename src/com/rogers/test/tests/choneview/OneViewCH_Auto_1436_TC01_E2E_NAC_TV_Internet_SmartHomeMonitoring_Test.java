@@ -44,14 +44,10 @@ public class OneViewCH_Auto_1436_TC01_E2E_NAC_TV_Internet_SmartHomeMonitoring_Te
 		getRogersIgniteBundlesPage().clkExpressCheckOut();
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContentPopup();
-
-//		getRogersIgniteBundlesPage().clkContinue();
-
 		reporter.reportLogWithScreenshot("Cart Summary");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		reporter.reportLogWithScreenshot("Customer wish to continue");
 		getRogersIgniteBundlesPage().clkCheckOut();
-
 		getRogersIgniteBundlesPage().customerWishtoContinue();
 		reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
 		reporter.reportLogWithScreenshot("Customer Profile");
@@ -65,7 +61,6 @@ public class OneViewCH_Auto_1436_TC01_E2E_NAC_TV_Internet_SmartHomeMonitoring_Te
 		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
 		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
-		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
