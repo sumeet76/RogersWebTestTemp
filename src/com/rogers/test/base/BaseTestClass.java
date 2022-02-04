@@ -1,7 +1,5 @@
 package com.rogers.test.base;
 
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
 import com.rogers.oneview.pages.*;
 import com.rogers.ovr.pages.*;
 import com.rogers.pages.RogersBuildPlanPage;
@@ -21,6 +19,7 @@ import com.rogers.test.helpers.RogersEnums;
 import com.rogers.test.helpers.RogersEnums.SauceCapabilities;
 import com.rogers.testdatamanagement.TestDataHandler;
 import extentreport.ExtentTestManager;
+import extentreport.ExtentListener;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -62,8 +61,6 @@ public class BaseTestClass {
 
     ;// Operating systems.
 
-    public static ExtentReports report;
-    public static ExtentTest logger;
     public Reporter reporter;
     public static DBValidation dbConnection;
     protected static final ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
@@ -215,14 +212,6 @@ public class BaseTestClass {
 
     public static DBValidation getDbConnection(){
         return new DBValidation();
-    }
-
-    public static ExtentReports getReport() {
-        return report;
-    }
-
-    public static ExtentTest getLogger() {
-        return logger;
     }
 
     public Reporter getReporter() {
@@ -728,6 +717,7 @@ public class BaseTestClass {
             sauceParameters = initializeSauceParamsMap(browser);
         }
         webDriverThreadLocal.set(browserdriver.driverInit(browser, sauceParameters, currentTestMethodName, strGroupName));
+        ExtentListener.setDriver(getDriver());
         System.out.println(strUrl + "----------------------------------------------------------------------------");
         captcha_bypass_handlers = new CaptchaBypassHandlers(getDriver());
         switch (strGroupName.toLowerCase().trim()) {
@@ -914,6 +904,7 @@ public class BaseTestClass {
             sauceParameters = initializeSauceParamsMap(browser);
         }
         webDriverThreadLocal.set(browserdriver.driverInit(browser, sauceParameters, currentTestMethodName, strGroupName));
+        ExtentListener.setDriver(getDriver());
         System.out.println(strUrl + "----------------------------------------------------------------------------");
         captcha_bypass_handlers = new CaptchaBypassHandlers(getDriver());
         captcha_bypass_handlers.chOnewviewFlows(strUrl, strAccNo, strLoginID, strLanID, language, browser, currentTestMethodName, strContactID);
@@ -940,6 +931,7 @@ public class BaseTestClass {
             sauceParameters = initializeSauceParamsMap(browser);
         }
         webDriverThreadLocal.set(browserdriver.driverInit(browser, sauceParameters, currentTestMethodName, strGroupName));
+        ExtentListener.setDriver(getDriver());
         System.out.println(strUrl + "----------------------------------------------------------------------------");
         captcha_bypass_handlers = new CaptchaBypassHandlers(getDriver());
         captcha_bypass_handlers.chOnewviewNACFlows(strUrl, strLoginID, strLanID, language, browser, currentTestMethodName, strContactID);
