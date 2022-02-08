@@ -10,7 +10,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVR_Auto_TC19_NAC_2P_TV_INT_Add_Pods_Free_and_Paid_E2E_Dealer_EN_ON_Test extends BaseTestClass {
+public class OVR_Auto_TC24_NAC_ISS_Add_Pods_Free_and_Paid_E2E_Corp_ATL_EN_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
@@ -22,50 +22,44 @@ public class OVR_Auto_TC19_NAC_2P_TV_INT_Add_Pods_Free_and_Paid_E2E_Dealer_EN_ON
         //closeSession();
     }
 
-    @Test(groups = {"OVR", "RegressionOVR","Nac Flow"})
-    public void ovr_Auto_TC19_NAC_2P_TV_INT_Add_Pods_Free_and_Paid_E2E_Dealer_EN_ON_Test() throws InterruptedException {
-        getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
+    @Test(groups = {"OVR", "RegressionOVR"})
+    public void ovr_Auto_NAC_ISS_Add_Pods_Free_and_Paid_E2E_Corp_ATL_EN_Test() {
+        getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
-        reporter.reportLogWithScreenshot("Changed Champ page to French");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
-        getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
+        getUniLoginPage().selectCorpSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
         reporter.reportLogWithScreenshot("Account Search Page");
         getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
-
         reporter.reportLogWithScreenshot("Address Availability popup");
-        getCheckAvailabilityPage().checkAvailability("642 ABANA RD. MISSISSAUGA, ON L5A1H4", "chrome");
-        reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
+        getCheckAvailabilityPage().checkAvailability("12294-247 AIRPORT HEIGHTS DR. ST. JOHN'S, NL A1A4X3", "chrome");
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"This address is serviceable","This Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
         reporter.reportLogWithScreenshot("Select Services Customer Wants");
         reporter.hardAssert(getBundleBuilderPage().verifyOvrSessionTimer(), "Ovr Session Timer Present", "Ovr Session timer not present");
         reporter.hardAssert(getBundleBuilderPage().verifyBundleBuilderPage(), "Bundle Builder page is displayed", "Bundle Builder page is not displayed");
+        reporter.reportLogWithScreenshot("Bundle Builder Page");
         getRogersIgniteBundlesPage().clkInternetCheckbox();
-        reporter.reportLogWithScreenshot("Internet Selected");
-        getRogersIgniteBundlesPage().clkTVCheckbox();
-        reporter.reportLogWithScreenshot("TV Check box selected");
+        reporter.reportLogWithScreenshot("SAI Selected");
+        getRogersIgniteBundlesPage().clkSmartStream();
+        reporter.reportLogWithScreenshot("Smart Stream Selected");
         getRogersIgniteBundlesPage().clkLoadOffers();
+        reporter.reportLogWithScreenshot("Load offers");
         getRogersIgniteBundlesPage().clickFirstAddToCart();
         reporter.reportLogWithScreenshot("added to cart");
         getRogersIgniteBundlesPage().noPortInPopup();
         reporter.reportLogWithScreenshot("No to PortIn Popup");
-
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
+        reporter.reportLogWithScreenshot("Product in cart");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
+        reporter.reportLogWithScreenshot("CheckOut internet and ISS bundle");
         getRogersIgniteBundlesPage().clkContinue();
-        reporter.reportLogWithScreenshot("Channel Personalization page");
-        getRogersIgniteBundlesPage().clickExchangeLater();
-        reporter.reportLogWithScreenshot("Channels and theme packs page");
-        getRogersIgniteBundlesPage().clkContinue();
-        reporter.reportLogWithScreenshot("Continue to 4k tv popup");
-        getRogersIgniteBundlesPage().fourKTVPopup();
-        reporter.reportLogWithScreenshot("4k tv popup");
-        getRogersIgniteBundlesPage().contiue4KContent();
-        reporter.reportLogWithScreenshot("Continue to Internet Add ons page");
+        reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
 
         reporter.reportLogWithScreenshot("Lands in Internet Addons page");
         /*To Add the chargeable Pods*/
@@ -84,8 +78,8 @@ public class OVR_Auto_TC19_NAC_2P_TV_INT_Add_Pods_Free_and_Paid_E2E_Dealer_EN_ON
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         reporter.reportLogWithScreenshot("wish to continue");
         getRogersIgniteBundlesPage().customerWishtoContinue();
-        reporter.reportLogWithScreenshot("Customer Profile Page");
 
+        reporter.reportLogWithScreenshot("continue to Customer Profile Page");
         String email = getRogersOVCheckoutPage().setEmailCreateProfile();
         getRogersOVCheckoutPage().confirmEmailCreateProfile(email);
         reporter.reportLogWithScreenshot("Email entered for customer Profile");
@@ -107,13 +101,14 @@ public class OVR_Auto_TC19_NAC_2P_TV_INT_Add_Pods_Free_and_Paid_E2E_Dealer_EN_ON
         reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
+
         reporter.reportLogWithScreenshot("Continue to install options  page");
         getCreditCheckPage().verifyInstallationOption();
         reporter.reportLogWithScreenshot("Installation Page");
         getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Install Options");
         getBundleBuilderPage().clkTechInstallSlot();
-        reporter.reportLogWithScreenshot("Time Slot selected");
+        reporter.reportLogWithScreenshot("Select a time slot");
         getBundleBuilderPage().setMobileNumber();
         reporter.reportLogWithScreenshot("tech install details");
         getBundleBuilderPage().clkContinueInstallation();
