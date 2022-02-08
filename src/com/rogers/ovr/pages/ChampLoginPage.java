@@ -41,7 +41,7 @@ public class ChampLoginPage extends BasePageClass {
         super(driver);
     }
 
-    public void logIntoChamp(String email, String password) throws InterruptedException {
+    public void logIntoChamp(String email, String password) {
 
         getReusableActionsInstance().getWhenVisible(txtEmail).sendKeys(email);
         getReusableActionsInstance().getWhenVisible(btnNext).click();
@@ -53,14 +53,15 @@ public class ChampLoginPage extends BasePageClass {
 
     }
 
-    public void logIntoCorpChamp(String email, String password) throws InterruptedException {
+    public void logIntoCorpChamp(String email, String password) {
 
         getReusableActionsInstance().getWhenVisible(txtEmail).sendKeys(email);
         getReusableActionsInstance().getWhenVisible(btnNext).click();
+        getReusableActionsInstance().waitForElementStaleness(txtPassword, 5);
         getReusableActionsInstance().getWhenVisible(txtPassword).sendKeys(password);
         getReusableActionsInstance().getWhenVisible(corpSignInBtn).click();
-        getReusableActionsInstance().getWhenVisible(corpLoginNextBtn).click();
-        getReusableActionsInstance().getWhenVisible(corpLoginSkip2faSetup).click();
+//        getReusableActionsInstance().getWhenVisible(corpLoginNextBtn).click();
+//        getReusableActionsInstance().getWhenVisible(corpLoginSkip2faSetup).click();
         if(getReusableActionsInstance().isElementVisible(staySignedInNO, 10)){
             getReusableActionsInstance().getWhenVisible(staySignedInNO).click();
         }

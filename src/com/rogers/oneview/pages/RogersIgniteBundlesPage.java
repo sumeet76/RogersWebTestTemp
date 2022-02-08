@@ -1,10 +1,12 @@
 package com.rogers.oneview.pages;
 
+import com.rogers.test.listeners.TestListener;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
+import org.testng.TestNGException;
 
 import java.util.List;
 
@@ -287,6 +289,15 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 	@FindBy(xpath = "//ds-modal[@ng-reflect-heading='4K Content']/descendant::span[@translate='global.cta.continue']")
 	WebElement fourKContentContinue;
+
+	@FindBy(xpath = "//h2[@translate='global.label.monthlyBill']//ancestor::button")
+	WebElement monthlyChargesExpandButton;
+
+	@FindBy(xpath = "//span[@translate='global.label.internetAddOns.header']")
+	WebElement internetAddOnsCharges;
+
+	@FindBy(xpath = "//h2[@translate='global.label.monthlyBill']")
+	WebElement monthlyCharges;
 
 	/**
 	 * Click Load Offers button
@@ -1002,6 +1013,17 @@ public void activateHomePhoneltrPopUp() {
 		WebElement addToCart = getDriver().findElement(podsLocator);
 		getReusableActionsInstance().executeJavaScriptClick(addToCart);
 	}
+	/**
+	 * Adds Additional pods after the first pods is added to cart.
+	 * @param podsPrice is the price of pod to be added.($0 or $5)
+	 * @author Sameer.ahuja
+	 */
+	public void addAdditionalPods(int podsPrice){
+		By addPodsLocator = By.xpath("//div[text()=' "+podsPrice+" ']/ancestor::div[@class='internet-tile__pricing']/following-sibling::div/child::div//ds-icon[@name='plus']/ancestor::button");
+		getReusableActionsInstance().getWhenReady(addPodsLocator, 30);
+		WebElement addPodsButton = getDriver().findElement(addPodsLocator);
+		getReusableActionsInstance().executeJavaScriptClick(addPodsButton);
+	}
 
 
 	/**
@@ -1059,6 +1081,18 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().scrollToElement(continueButtonHomePhonePortIn);
 		getReusableActionsInstance().waitForElementTobeClickable(continueButtonHomePhonePortIn, 10);
 		getReusableActionsInstance().clickWhenReady(continueButtonHomePhonePortIn);
+	}
+
+	/**
+	 * Expands the Monthly charges on cart Summary page and validates Internet add ons are present
+	 * @return True if Internet Add on charges are present in monthly charges.
+	 * @author Sameer.Ahuja
+	 */
+	public boolean validateInternetAddOnsInCartSummary(){
+		getReusableActionsInstance().getWhenReady(monthlyCharges, 10);
+		getReusableActionsInstance().clickWhenReady(monthlyChargesExpandButton);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(internetAddOnsCharges);
+		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges, 10);
 	}
 
 }

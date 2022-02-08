@@ -19,14 +19,14 @@ public class OVR_Auto_TC07_Buyflow_Anonymous_NAC_ISS_E2E_IntID_Corp_EN_ATL_Test 
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC07_Buyflow_Anonymous_NAC_ISS_E2E_IntID_Corp_EN_ATL_Test() throws InterruptedException {
+    public void ovr_Auto_TC07_Buyflow_Anonymous_NAC_ISS_E2E_IntID_Corp_EN_ATL_Test() {
         getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
-        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspdealercode());
+        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
         getUniLoginPage().selectCorpSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
@@ -58,6 +58,8 @@ public class OVR_Auto_TC07_Buyflow_Anonymous_NAC_ISS_E2E_IntID_Corp_EN_ATL_Test 
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
         reporter.reportLogWithScreenshot("CheckOut internet and ISS bundle");
+        getRogersIgniteBundlesPage().clkContinue();
+        reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
         getRogersIgniteBundlesPage().clkExpressCheckout();
         reporter.reportLogWithScreenshot("Continue to Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");

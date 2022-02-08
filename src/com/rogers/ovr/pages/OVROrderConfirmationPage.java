@@ -43,22 +43,22 @@ public class OVROrderConfirmationPage extends BasePageClass {
     WebElement lnkIgnite;
 
 
-    public boolean verifyOrderConfirmation() throws InterruptedException {
-        getReusableActionsInstance().waitForElementVisibility(orderConfirmation, 120);
+    public boolean verifyOrderConfirmation(){
+        getReusableActionsInstance().waitForElementVisibility(orderConfirmation, 30);
         return getReusableActionsInstance().isElementVisible(orderConfirmation);
     }
 
     public boolean verifyOrderNumberPresent() {
-        getReusableActionsInstance().waitForElementVisibility(orderNumberLbl, 120);
+        getReusableActionsInstance().waitForElementVisibility(orderNumberLbl, 30);
         return getReusableActionsInstance().isElementVisible(orderNumberLbl);
     }
 
     public boolean verifyOneTimeFees() {
-        getReusableActionsInstance().waitForElementVisibility(oneTimeFees, 120);
+        getReusableActionsInstance().waitForElementVisibility(oneTimeFees, 30);
         return getReusableActionsInstance().isElementVisible(oneTimeFees);
     }
     public boolean verifyMonthlyCharges() {
-        getReusableActionsInstance().waitForElementVisibility(monthlyCharges, 120);
+        getReusableActionsInstance().waitForElementVisibility(monthlyCharges, 30);
         getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyCharges);
         return getReusableActionsInstance().isElementVisible(monthlyCharges);
     }
@@ -70,7 +70,7 @@ public class OVROrderConfirmationPage extends BasePageClass {
     }
 
     public boolean verifyOverviewPage(){
-        return getReusableActionsInstance().isElementVisible(overviewPageMenu, 120);
+        return getReusableActionsInstance().isElementVisible(lnkIgnite, 120);
     }
 
 

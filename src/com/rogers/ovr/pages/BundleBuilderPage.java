@@ -67,7 +67,7 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath ="//input[@formcontrolname='enrouteEmail']")
     WebElement txtEmail;
 
-    @FindBy(xpath ="//input[@id='9']/ancestor::label[contains(@class,'ds-radioLabel')]//div[@class='ds-radioButton__outerCircle my-12']")
+    @FindBy(xpath ="//input[@id='12']/ancestor::label[contains(@class,'ds-radioLabel')]//div[@class='ds-radioButton__outerCircle my-12']")
     WebElement rdoTechInstallSlot;
 
     @FindBy(xpath = "//div[text()='Customer current' or text()='Offre actuelle du client']//following-sibling::div")
@@ -199,12 +199,12 @@ public class BundleBuilderPage extends BasePageClass {
         return getReusableActionsInstance().isElementVisible(lblSelectServiceBundles, 5);
     }
 
-    public void clkContinueBillingAndPayment() throws InterruptedException {
+    public void clkContinueBillingAndPayment() {
         if(getReusableActionsInstance().isElementVisible(billingAndPaymentH1, 60)){
             getReusableActionsInstance().javascriptScrollByVisibleElement(continueBillingAndPayment);
-            getReusableActionsInstance().clickWhenReady(continueBillingAndPayment);
+            getReusableActionsInstance().clickWhenReady(continueBillingAndPayment, 15);
         }
-        if(getReusableActionsInstance().isElementVisible(popupCloseBtn)){
+        if(getReusableActionsInstance().isElementVisible(popupCloseBtn, 5)){
             getReusableActionsInstance().clickWhenReady(popupCloseBtn, 3);
             getReusableActionsInstance().clickWhenReady(continueBillingAndPayment, 3);
 

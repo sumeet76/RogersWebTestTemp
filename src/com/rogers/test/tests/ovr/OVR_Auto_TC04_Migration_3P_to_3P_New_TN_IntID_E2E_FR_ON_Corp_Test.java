@@ -19,7 +19,7 @@ public class OVR_Auto_TC04_Migration_3P_to_3P_New_TN_IntID_E2E_FR_ON_Corp_Test e
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-         closeSession();
+         //closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
@@ -28,7 +28,7 @@ public class OVR_Auto_TC04_Migration_3P_to_3P_New_TN_IntID_E2E_FR_ON_Corp_Test e
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getChampLoginPage().changeChampToFR();
         reporter.reportLogWithScreenshot("Changed Champ page to French");
-        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspdealercode());
+        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
         getUniLoginPage().selectCorpSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
@@ -76,6 +76,8 @@ public class OVR_Auto_TC04_Migration_3P_to_3P_New_TN_IntID_E2E_FR_ON_Corp_Test e
         getRogersIgniteBundlesPage().fourKTVPopup();
         reporter.reportLogWithScreenshot("4k Content Popup");
         getRogersIgniteBundlesPage().contiue4KContent();
+        reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
+        getRogersIgniteBundlesPage().clkContinue();
 
         getHomePhoneAddonsPage().chooseAddon(TestDataHandler.ovrMigrationData3PTo3PON.getAddOnPlan(),TestDataHandler.ovrMigrationData3PTo3PON.getAddOnPlanFr());
         reporter.reportLogWithScreenshot("Addons selected for addition");

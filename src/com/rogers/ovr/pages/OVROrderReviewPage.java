@@ -14,14 +14,23 @@ public class OVROrderReviewPage extends BasePageClass {
     public OVROrderReviewPage(WebDriver driver) {
         super(driver);
     }
-    @FindBy(xpath = "//*[text()='One-Time Fees and Credits' or text()='Frais et crédits uniques']/ancestor::button")
+    @FindBy(xpath = "//h2[@translate='global.label.oneTimeHeader']")
     WebElement oneTimeFees;
 
-    @FindBy(xpath = "//*[text()='Monthly charges' or text()='Frais mensuels']/ancestor::button")
+    @FindBy(xpath = "//h2[@translate='global.label.monthlyBill' or text()='Monthly Charges']")
     WebElement monthlyCharges;
 
-    @FindBy(xpath = "//span[text()='Continue' or text()='Continuer']")
+    @FindBy(xpath = "//h2[@translate='global.label.monthlyBill']//ancestor::button")
+    WebElement monthlyChargesExpandButton;
+
+    @FindBy(xpath = "//span[@translate='global.label.internetAddOns.header']")
+    WebElement internetAddOnsCharges;
+
+    @FindBy(xpath = "//span[@translate='global.cta.continue']")
     WebElement continueBtn;
+
+    @FindBy(xpath = "//h1[@translate='global.label.OrderReview']")
+    WebElement orderReviewPageHeader;
 
     public void clkContinue(){
         getReusableActionsInstance().waitForElementTobeClickable(continueBtn, 10);
@@ -29,12 +38,27 @@ public class OVROrderReviewPage extends BasePageClass {
         getReusableActionsInstance().executeJavaScriptClick(continueBtn);
     }
 
+    public boolean verifyOrderoverviewHeader(){
+        return getReusableActionsInstance().isElementVisible(orderReviewPageHeader,60);
+    }
+
     public boolean verifyOneTimeFees(){
-        return getReusableActionsInstance().isElementVisible(oneTimeFees, 10);
+        return getReusableActionsInstance().isElementVisible(oneTimeFees, 15);
     }
 
     public boolean verifyMonthlyCharges(){
+        //getReusableActionsInstance().waitForElementVisibility(monthlyCharges,20);
         getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyCharges);
-        return getReusableActionsInstance().isElementVisible(monthlyCharges, 10);
+        return getReusableActionsInstance().isElementVisible(monthlyCharges,15);
+    }
+
+    /**
+     * Verifies Internet Add ons Charges present in Monthly charges.
+     * @return true if Internet Add ons are present in Monthly charges
+     * @author Sameer.Ahuja
+     */
+    public boolean verifyInternetAddOns(){
+        getReusableActionsInstance().javascriptScrollByVisibleElement(internetAddOnsCharges);
+        return getReusableActionsInstance().isElementVisible(internetAddOnsCharges, 10);
     }
 }

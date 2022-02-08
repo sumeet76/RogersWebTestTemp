@@ -19,14 +19,14 @@ public class OVR_Auto_TC12_Legacy_1pINT_to_NAC_3P_CheckAnotherAddress_IntID_Deal
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
     public void ovr_Auto_TC12_Legacy_1pINT_to_NAC_3P_CheckAnotherAddress_IntID_Dealer_EN_ON() throws InterruptedException {
         getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
-        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspdealercode());
+        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
         getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
@@ -72,6 +72,9 @@ public class OVR_Auto_TC12_Legacy_1pINT_to_NAC_3P_CheckAnotherAddress_IntID_Deal
         getRogersIgniteBundlesPage().fourKTVPopup();
         reporter.reportLogWithScreenshot("4k Content Popup");
         getRogersIgniteBundlesPage().contiue4KContent();
+        reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
+        getRogersIgniteBundlesPage().clkContinue();
+        reporter.reportLogWithScreenshot("continue to Home Phone add ons");
 
         getHomePhoneAddonsPage().chooseAddon(TestDataHandler.legacy1PtoNac3pNewAddress.getAddOnPlan(),TestDataHandler.legacy1PtoNac3pNewAddress.getAddOnPlanFr());
         reporter.reportLogWithScreenshot("Addons selected for addition");

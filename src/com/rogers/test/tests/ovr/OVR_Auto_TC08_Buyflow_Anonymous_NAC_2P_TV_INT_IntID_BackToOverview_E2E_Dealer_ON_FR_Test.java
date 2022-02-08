@@ -28,7 +28,7 @@ public class OVR_Auto_TC08_Buyflow_Anonymous_NAC_2P_TV_INT_IntID_BackToOverview_
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getChampLoginPage().changeChampToFR();
         reporter.reportLogWithScreenshot("Changed Champ page to French");
-        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspdealercode());
+        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
         getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
@@ -58,6 +58,7 @@ public class OVR_Auto_TC08_Buyflow_Anonymous_NAC_2P_TV_INT_IntID_BackToOverview_
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
+
         reporter.reportLogWithScreenshot("Channel Personalization page");
         getRogersIgniteBundlesPage().clickExchangeLater();
         reporter.reportLogWithScreenshot("Channels and theme packs page");
@@ -66,8 +67,10 @@ public class OVR_Auto_TC08_Buyflow_Anonymous_NAC_2P_TV_INT_IntID_BackToOverview_
         getRogersIgniteBundlesPage().fourKTVPopup();
         reporter.reportLogWithScreenshot("4k tv popup");
         getRogersIgniteBundlesPage().contiue4KContent();
-        reporter.reportLogWithScreenshot("Continue to Cart Summary");
 
+        reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
+        getRogersIgniteBundlesPage().clkExpressCheckout();
+        reporter.reportLogWithScreenshot("Continue to Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         reporter.reportLogWithScreenshot("wish to continue");

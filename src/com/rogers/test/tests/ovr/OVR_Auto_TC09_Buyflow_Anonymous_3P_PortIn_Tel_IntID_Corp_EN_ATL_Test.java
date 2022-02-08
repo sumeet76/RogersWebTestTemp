@@ -19,15 +19,14 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Tel_IntID_Corp_EN_ATL_Tes
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
     @Test(groups = {"OVR", "RegressionOVR"})
     public void ovr_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Tel_IntID_Corp_EN_ATL_Test() throws InterruptedException {
+        //getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
-        //getChampLoginPage().changeChampToFR();
-        reporter.reportLogWithScreenshot("Changed Champ page to French");
-        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspdealercode());
+        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
         getUniLoginPage().selectCorpSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
@@ -35,7 +34,8 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Tel_IntID_Corp_EN_ATL_Tes
         getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
         reporter.reportLogWithScreenshot("Address Availability popup");
-        getCheckAvailabilityPage().checkAvailability("642 ABANA RD. MISSISSAUGA, ON L5A 1H4", "chrome");
+        getCheckAvailabilityPage().checkAvailability("642 ABANA RD. MISSISSAUGA, ON L5A1H4", "chrome");
+        //getCheckAvailabilityPage().checkAvailability("1191 Addison Dr, LONDON ON N5V 2N8", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
@@ -72,6 +72,9 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Tel_IntID_Corp_EN_ATL_Tes
         reporter.reportLogWithScreenshot("4k tv popup");
         getRogersIgniteBundlesPage().contiue4KContent();
         reporter.reportLogWithScreenshot("4k Content popup");
+        reporter.reportLogWithScreenshot("Continue to Internet Add ons page");
+        getRogersIgniteBundlesPage().clkContinue();
+        reporter.reportLogWithScreenshot("Continue to Home phone Add ons page");
 
         getHomePhoneAddonsPage().chooseAddon(TestDataHandler.ovrMigrationData3PTo3PATL.getAddOnPlan(),TestDataHandler.ovrMigrationData3PTo3PATL.getAddOnPlanFr());
         reporter.reportLogWithScreenshot("Addons selected for addition");
@@ -84,11 +87,11 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Tel_IntID_Corp_EN_ATL_Tes
         reporter.reportLogWithScreenshot("Home phone for Port IN");
         getRogersIgniteBundlesPage().clkContinueFor3PPortIn();
         reporter.reportLogWithScreenshot("Continue to HomePhone PortIn details");
-        getRogersIgniteBundlesPage().enterHomePhoneAccountNumber("1122334455");
+        getRogersIgniteBundlesPage().enterHomePhoneAccountNumber("6742892");
         reporter.reportLogWithScreenshot("Account number for Port In");
         getRogersIgniteBundlesPage().clkContinueFromHomePhoneServiceProvider();
         reporter.reportLogWithScreenshot("Continue to HomePhone Number PortIn");
-        getRogersIgniteBundlesPage().enterHomePhoneNumberPortIn("9052763498");
+        getRogersIgniteBundlesPage().enterHomePhoneNumberPortIn("9052760500");
         reporter.reportLogWithScreenshot("Port In details filled out");
         getRogersIgniteBundlesPage().clkContinueFromHomePhonePortIn();
         reporter.reportLogWithScreenshot("Port In form filled out for HomePhone details");
@@ -132,7 +135,7 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Tel_IntID_Corp_EN_ATL_Tes
         reporter.reportLogWithScreenshot("Continue to install options  page");
         getCreditCheckPage().verifyInstallationOption();
         reporter.reportLogWithScreenshot("Installation Page");
-        getBundleBuilderPage().selectDeliveryByAppointmentInstall();
+        getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Install Options");
         getBundleBuilderPage().clkTechInstallSlot();
         reporter.reportLogWithScreenshot("Time Slot selected");

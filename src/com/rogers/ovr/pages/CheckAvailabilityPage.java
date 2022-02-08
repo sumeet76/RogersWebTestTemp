@@ -40,10 +40,13 @@ public class CheckAvailabilityPage extends BasePageClass {
     @FindBy(xpath = "//p[contains(text(),'Multiple addresses found') or contains(text(),'Plusieurs adresses trouvées')]//parent::div//following::div//descendant::li[2]")
     WebElement multipleAddressRadioBtn;
 
+    @FindBy(xpath = "//span[@translate='global.cta.otherAddress']")
+    WebElement otherAddressRadioButton;
+
 
 
     public void useThisAddress() {
-        getReusableActionsInstance().getWhenVisible(btnUseThisAddress).click();
+        getReusableActionsInstance().getWhenVisible(btnContinue).click();
         if(getReusableActionsInstance().isElementVisible(lblMultipleAddressesFound, 5)){
             getReusableActionsInstance().selectWhenReady(multipleAddressDropdown,2,  5);
         }
@@ -65,7 +68,7 @@ public class CheckAvailabilityPage extends BasePageClass {
      * @author sameer.ahuja
      */
     public void checkAvailability(String address,String browser) {
-        getReusableActionsInstance().clickWhenReady(inputContainer,120);
+        getReusableActionsInstance().clickWhenReady(inputContainer,60);
         if(browser.equals("chrome")) {
             getReusableActionsInstance().enterText(addressInput,address+ Keys.BACK_SPACE,120);
             getReusableActionsInstance().staticWait(8000);
@@ -81,6 +84,12 @@ public class CheckAvailabilityPage extends BasePageClass {
             getReusableActionsInstance().selectWhenReady(multipleAddressDropdown, 2);
         }
         getReusableActionsInstance().clickIfAvailable(btnContinue);
+    }
+
+    public void checkAvailabilityAtOtherAddress(String address, String browser){
+        getReusableActionsInstance().getWhenReady(otherAddressRadioButton, 15);
+        getReusableActionsInstance().clickWhenReady(otherAddressRadioButton);
+        checkAvailability(address, browser);
     }
 
 }
