@@ -18,20 +18,23 @@ public class OneViewCH_Auto_TC32_SAI_AddingSmartstream_WithoutTierChangeTest ext
         reporter.reportLogWithScreenshot("Launched the account overview page");
         getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
-        getInternetDashboardPage().clickAddSmartStream();
+        getInternetDashboardPage().clickChangePackageButton();
         reporter.reportLogWithScreenshot("Add SmartStream is clicked");
-        getInternetDashboardPage().clickSelectSmartStream();
-        //getTVDashboardPage().selectTVPackage(TestDataHandler.TC023_TVPackageDowngrade.accountDetails.getDowngradePlanEn(),TestDataHandler.TC023_TVPackageDowngrade.accountDetails.getDowngradePlanFr());
+        getInternetDashboardPage().clickCheckBoxSmartStream();
         reporter.reportLogWithScreenshot("Smart Stream option selected");
+        getInternetDashboardPage().clickLoadOffers();
+        reporter.reportLogWithScreenshot("Load offers button clicked");
+        getInternetDashboardPage().selectButtonAddSmartStream();
+        reporter.reportLogWithScreenshot(" Smart Stream Selected");
         getInternetDashboardPage().clickContinueAddingStream();
         reporter.reportLogWithScreenshot("Continue clicked on Adding Stream pop up");
         getRogersOVInstallationPage().clickInstallationCheckBox();
         reporter.reportLogWithScreenshot("Activation Check box selecetd successfully");
-        getRogersOVInstallationPage().clickContinue();
-        reporter.reportLogWithScreenshot("Continue clicked");
+     //  getRogersOVInstallationPage().clickContinue();
+     //   reporter.reportLogWithScreenshot("Continue clicked");
 //        getRogersOVOrderReviewPage().clkSubmit();
 //        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+     //   reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)
