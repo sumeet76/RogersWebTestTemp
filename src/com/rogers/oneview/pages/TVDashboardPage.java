@@ -202,7 +202,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "(//label[@class='ds-radioLabel d-inline-flex align-items-start'])[2]")
 	WebElement immediateDateChange;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
 	WebElement cancel;
 
 	@FindBy(xpath = "//span[@translate='global.label.reviewAddons']")
@@ -707,7 +707,7 @@ public class TVDashboardPage  extends BasePageClass {
 		WebElement btn = getReusableActionsInstance().getWhenReady(btnViewChannelLineUp, 120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
 		getReusableActionsInstance().clickWhenReady(btnViewChannelLineUp, 120);
-		//	getReusableActionsInstance().getWhenReady(btnViewChannelLineUp, 60).click();
+//			getReusableActionsInstance().getWhenReady(btnViewChannelLineUp, 60).click();
 	}
 
 	/**
