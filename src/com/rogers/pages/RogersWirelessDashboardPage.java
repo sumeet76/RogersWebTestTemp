@@ -146,8 +146,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//ins[@translate='plans.btnText']"),
 	@FindBy(xpath = "//button/span[@translate='internet_change']")})
 	WebElement btnChangePlan;
-	
-	@FindBy(xpath = "//span[@translate='mppc_entry_1_change_current_plan']")
+
+	@FindBy(xpath = "//div[@class='wireless-plan-holder']//button")
 	WebElement lnkChangeCurrentPlan;
 	
 	@FindBy(xpath = "//div[@role='button']/span[contains(@translate,'device_upgrade')]")
@@ -314,8 +314,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		@FindBy (xpath = "//div[@class='card-price-info']//span[@class='cents']")
 	})
 	WebElement devicePriceCents;
-	
-	@FindBy (xpath = "//span[contains(text(),'Changer mon appareil') or contains(text(),'Upgrade my device')]")
+
+	@FindBy (xpath = "//div[@class='device-title-section']/following-sibling::div//button")
 	WebElement lnkUpgradeMyDevice;
 	
 	@FindBy (xpath = "//div[@id='deviceSection']")
@@ -1128,7 +1128,8 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clickMakeChangesToCurrentPlan() {
-		getReusableActionsInstance().clickIfAvailable(lnkChangeCurrentPlan);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(getReusableActionsInstance().getWhenReady(By.xpath("//div[contains(@class,'tabs_lists container')]")));
+		getReusableActionsInstance().getWhenReady(lnkChangeCurrentPlan, 30).click();
 	}
 	
 	/**
@@ -1652,6 +1653,7 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkLinkUpgradeMyDevice() {
+		getReusableActionsInstance().javascriptScrollByVisibleElement(getReusableActionsInstance().getWhenReady(By.xpath("//div[@class='tabs_lists container']")));
 		getReusableActionsInstance().getWhenReady(lnkUpgradeMyDevice, 30).click();
 	}
 	

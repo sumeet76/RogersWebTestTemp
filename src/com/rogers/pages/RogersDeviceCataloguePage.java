@@ -275,7 +275,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
     public String createXpathForCTAButton(String deviceName) {
         xpathDeviceName = createXpathWithDeviceName(deviceName);
-        String ctaButtonXpath = xpathDeviceName + "/ancestor::div[@class='dsa-nacTile__top']//following-sibling::div//span[contains(@class,'ds-button__copy')]";
+        String ctaButtonXpath = xpathDeviceName + "/ancestor::div[@class='dsa-nacTile__top']//following-sibling::div//following-sibling::div//a";
         return ctaButtonXpath;
     }
 
@@ -285,7 +285,9 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author saurav.goyal
      */
     public void clickDeviceTileCTAButton(String deviceName) {
-        getReusableActionsInstance().clickWhenVisible(By.xpath(createXpathForCTAButton(deviceName)), 30);
+        WebElement deviceCtaButton = getReusableActionsInstance().getWhenReady(By.xpath(createXpathForCTAButton(deviceName)));
+        getReusableActionsInstance().scrollToElement(deviceCtaButton);
+        getReusableActionsInstance().clickWhenReady(deviceCtaButton,30);
     }
 
     /**
