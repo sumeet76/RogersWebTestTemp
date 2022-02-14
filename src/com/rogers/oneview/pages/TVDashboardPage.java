@@ -19,7 +19,7 @@ public class TVDashboardPage  extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//span[@ng-reflect-translate='global.dashboard.tv.resetParen']/ancestor::button")
+	@FindBy(xpath = "//button[@title='Reset Parental Controls & PIN']")
 	WebElement btnResetParentalControl;
 
 	@FindBy(xpath = "//span[@ng-reflect-translate='global.dashboard.tv.resetOnDem']")
@@ -47,7 +47,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='OK']/ancestor::button")
 	WebElement btnOk;
 
-	@FindBy(xpath = "//span[@ng-reflect-translate='global.dashboard.tv.restartWir']")
+	@FindBy(xpath = "//button[@title='Restart box(es)']")
 	WebElement btnRestartSetupbox;
 
 	@FindBy(xpath = "//i[@class='li-loader']")
@@ -270,13 +270,13 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'View my Flex Channels')]")
 	WebElement ViewMyFlexChannelsLink;
 
-	@FindBy(xpath = "//ds-popover[@ng-reflect-content='Cloud Storage records and save']")
+	@FindBy(xpath = "//label[@translate='global.dashboard.tv.whatIsCloudStorage']/parent::div/ds-popover")
 	WebElement CloudStorageBubble;
 
-	@FindBy(xpath = "//ds-popover[@ng-reflect-content='The Download & Go feature of t']")
+	@FindBy(xpath = "//label[@translate='global.dashboard.tv.whatIsDownloadAndGo']/parent::div/ds-popover")
 	WebElement DownloadGoBubble;
 
-	@FindBy(xpath = "//span[contains(text(),'Reset purchase PIN')]")
+	@FindBy(xpath = "//button[@title='Reset purchase PIN']")
 	WebElement ResetPurchasePin;
 
 	@FindBy(xpath = "//button[@rchtrackclickevent='themepacks']")
@@ -706,8 +706,8 @@ public class TVDashboardPage  extends BasePageClass {
 	public void clickViewChannelLineUp() {
 		WebElement btn = getReusableActionsInstance().getWhenReady(btnViewChannelLineUp, 120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
-		getReusableActionsInstance().clickWhenReady(btnViewChannelLineUp, 120);
-//			getReusableActionsInstance().getWhenReady(btnViewChannelLineUp, 60).click();
+//		getReusableActionsInstance().clickWhenReady(btnViewChannelLineUp, 120);
+			getReusableActionsInstance().getWhenReady(btnViewChannelLineUp, 60).click();
 	}
 
 	/**
