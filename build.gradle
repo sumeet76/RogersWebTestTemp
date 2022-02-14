@@ -33,7 +33,7 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'QaOVUrl', test_qaOVURL
 	systemProperty 'OVUrl', test_OVUrl
 	systemProperty 'AWSUrl', test_awsURL
-	systemProperty 'AWSBYODUrl', test_awsBYODURL
+	systemProperty 'AWSPRODUrl', test_awsPRODURL
 	systemProperty 'Browser', test_browser
 	systemProperty 'Language', test_language
 	systemProperty 'DbEnvUrl', test_DbEnvUrl
@@ -72,7 +72,7 @@ task "localTest"(type: Test) {
 	systemProperty 'QaOVUrl', test_qaOVURL
 	systemProperty 'OVUrl', test_OVUrl
 	systemProperty 'AWSUrl', test_awsURL
-	systemProperty 'AWSBYODUrl', test_awsBYODURL
+	systemProperty 'AWSPRODUrl', test_awsPRODURL
 	systemProperty 'Browser', test_browser
 	systemProperty 'Language', test_language
 	systemProperty 'DbEnvUrl', test_DbEnvUrl

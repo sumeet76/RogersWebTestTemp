@@ -783,6 +783,9 @@ public class BaseTestClass {
                     captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 }else if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("SOHO") && currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("NAC")){
                     getDriver().get(strUrl + "/phones/" + "?type=soho");
+                }else if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("BFA_PROD")) {
+                    getDriver().get(strUrl);
+                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 }else{
                     getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language + "&?province=" + "ON");
                     captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
@@ -1137,6 +1140,7 @@ public class BaseTestClass {
                 RogersPlanConfigPageThreadLocal.set(new RogersPlanConfigPage(getDriver()));
                 RogersCheckoutPageThreadLocal.set(new RogersCheckoutPage(getDriver()));
                 RogersReviewOrderPageThreadLocal.set(new RogersReviewOrderPage(getDriver()));
+                RogersWirelessDashboardPageThreadLocal.set(new RogersWirelessDashboardPage(getDriver()));
                 break;
 
             case "connectedhome_oneview":

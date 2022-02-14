@@ -90,10 +90,11 @@ public class CaptchaBypassHandlers {
 	 * @param strUrl                     string of test url
 	 */
 	public String generateCookieRegistrationURL(String strUrl) {
-		String strCookieRegistrationURL=null;
 		String cookieEnv = envMapping(strUrl);
-		strCookieRegistrationURL = cookieEnv + ".qa01.eks.rogers.com/api/recaptcha/v1/user/recaptchaBypass/register";
-		return strCookieRegistrationURL;
+		if(!strUrl.contains("www.rogers.com")) {
+			return cookieEnv + ".qa01.eks.rogers.com/api/recaptcha/v1/user/recaptchaBypass/register";
+		}
+		return cookieEnv + ".eks.rogers.com/api/recaptcha/v1/user/recaptchaBypass/register";
 	}
 
 	/**
@@ -101,10 +102,11 @@ public class CaptchaBypassHandlers {
 	 * @param strUrl                     string of test url
 	 */
 	public String generateCookieFetchURL(String strUrl) {
-		String strCookieFetchURL=null;
 		String cookieEnv = envMapping(strUrl);
-		strCookieFetchURL = cookieEnv + ".qa01.eks.rogers.com/api/recaptcha/v1/user/recaptchaBypass/login";
-		return strCookieFetchURL;
+		if(!strUrl.contains("www.rogers.com")) {
+			return cookieEnv + ".qa01.eks.rogers.com/api/recaptcha/v1/user/recaptchaBypass/login";
+		}
+		return cookieEnv + ".eks.rogers.com/api/recaptcha/v1/user/recaptchaBypass/login";
 	}
 
 	/**
@@ -122,7 +124,10 @@ public class CaptchaBypassHandlers {
 			cookieEnv = "https://ute4";
 		} else if (strUrl.contains("qa4.")) {
 			cookieEnv = "https://ute2";
-		} else {
+		} else if (strUrl.contains("www.rogers.com")) {
+			cookieEnv = "https://ute1.prod01";
+		}
+		else {
 			cookieEnv = System.getProperty("CookieFetcherMapping");
 		}
 		return cookieEnv;

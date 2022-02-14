@@ -327,7 +327,7 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	@FindAll({
 			@FindBy(xpath = "(//div[contains(@class,'button-container')]//button)[2]"),
-			@FindBy(xpath = "//div[contains(@class,'button-container')]//button[contains(.,'No')]")
+			@FindBy(xpath = "//div[contains(@class,'button-container')]//button[contains(.,'No,')]")
 	})
 	WebElement btnNoThanks;
 
@@ -493,9 +493,15 @@ public class RogersCheckoutPage extends BasePageClass {
 		return getReusableActionsInstance().getWhenReady(inputLastName,20).getAttribute("value");
 	}
 
-	
+	/**
+	 * This method clicks on No Thanks button in survey modal if available
+	 * @author praveen.kumar7
+	 */
 	public void clkNoThanks() {
-		getReusableActionsInstance().clickIfAvailable(btnNoThanks,8);
+		if((getReusableActionsInstance().isElementVisible(btnNoThanksVertical,5)) ||
+				(getReusableActionsInstance().isElementVisible(By.xpath("//div[contains(@class,'button-container')]//button[contains(.,'No,')]"),5))) {
+			getReusableActionsInstance().executeJavaScriptClick(btnNoThanks);
+		}
 	}
 	/**
 	 * Enter the lastName on the Create Profile stepper, Last Name field
