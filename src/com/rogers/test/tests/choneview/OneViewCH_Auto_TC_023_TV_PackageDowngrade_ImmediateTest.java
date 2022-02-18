@@ -23,11 +23,16 @@ public class OneViewCH_Auto_TC_023_TV_PackageDowngrade_ImmediateTest extends Bas
         reporter.reportLogWithScreenshot("Launched the TV dashboard page");
         getTVDashboardPage().clickChangeTvPackage();
         reporter.reportLogWithScreenshot("Changed TV Package clicked");
-        getTVDashboardPage().clickSelectLowestTVPackage();
-        //getTVDashboardPage().selectTVPackage(TestDataHandler.TC023_TVPackageDowngrade.accountDetails.getDowngradePlanEn(),TestDataHandler.TC023_TVPackageDowngrade.accountDetails.getDowngradePlanFr());
+        getTVDashboardPage().selectTVPackage(TestDataHandler.TC023_TVPackageDowngrade.accountDetails.getDowngradePlanEn(),TestDataHandler.TC023_TVPackageDowngrade.accountDetails.getDowngradePlanFr());
         reporter.reportLogWithScreenshot("Lowest TV Package selected");
+
+        //For Flex Channels - Exchange Later
         getTVDashboardPage().clickContinueChangeTVPackage();
         reporter.reportLogWithScreenshot("Continue clicked on change TV Package");
+        getTVDashboardPage().clickExchangeLater();
+        reporter.reportLogWithScreenshot("Exchange later is selected");
+
+        getTVDashboardPage().clickContinueChannelsAndThemePacks();
         getTVDashboardPage().clickContinueOn4kTv();
         reporter.reportLogWithScreenshot("Continue clicked on 4k TV dailog");
         getTVDashboardPage().clickContinue4kChannelPack();
@@ -51,7 +56,7 @@ public class OneViewCH_Auto_TC_023_TV_PackageDowngrade_ImmediateTest extends Bas
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
 }

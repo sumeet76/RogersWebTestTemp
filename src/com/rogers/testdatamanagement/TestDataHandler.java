@@ -173,6 +173,7 @@ public class TestDataHandler {
 	public static PPCData tc44_SOHO_PPC_SL_NS_TTPlanToDTTPlan;
 	public static PPCData tc45_SOHO_PPC_ML_SE_DTTPlanToBYODOnMainLine_DownGradeFee;
 	public static PPCData tc46_SOHO_PPC_ML_BYODPlanToDTTPlanOnAdditionalLine;
+	public static PPCData BFA_ProdTest_tc06_PPC_FinancingPlan;
 	public static RedesignRpotgData tc38_SOHO_NACTermMediumRiskUEOptionPOTG;
 	public static HUPData tc07HupPpcPotgSharedML;
 	public static HUPData tc08HUPAdditionalLine;
@@ -189,6 +190,7 @@ public class TestDataHandler {
 	public static HUPData tc35_RPP_HUPWithPPC_SL_SE_MediumRisk_Financing_VDP_POTG;
 	public static HUPData tc36_RPP_HUP_ML_SE_HUPOnAdditionalLineByKEP_BOPIS;
 	public static HUPData tc37_RPP_HUP_ML_HUP_NOTERM_KEPOnMainLine_StdShip;
+	public static HUPData BFA_ProdTest_tc05_HUPWithPPC_StdShipping;
 	public static AALData tc15AALShareTermBopis;
 	public static AALData tc16AALFinPlanPotgShipping;
 	public static AALData tc17AALNoTermStandardShipping;
@@ -198,6 +200,9 @@ public class TestDataHandler {
 	public static AALData tc20AALTermMLNonSEBasicPlanStdShipping;
 	public static AALData tc30_RPP_AALTERM_VDP_UpfronEdge_BOPIS;
 	public static AALData tc31_RPP_AALBYODStdShipping;
+	public static AALData BFA_ProdTest_tc02_AALTERM_FinancingPlanPotg;
+	public static AALData BFA_ProdTest_tc03_AALBYOD_StdShipping;
+	public static AALData BFA_ProdTest_tc04_AALTERM_Tablet_StdShipping;
 	public static HUPData buyFlowsOVtestCase01;
 	public static HUPData buyFlowsOVtestCase02;
 	public static HUPData buyFlowsOVtestCase05;
@@ -574,7 +579,11 @@ public class TestDataHandler {
 		tc44_SOHO_PPC_SL_NS_TTPlanToDTTPlan = YamlHandler.getPPCdata("tc44_SOHO_PPC_SL_NS_TTPlanToDTTPlan");
 		tc45_SOHO_PPC_ML_SE_DTTPlanToBYODOnMainLine_DownGradeFee = YamlHandler.getPPCdata("tc45_SOHO_PPC_ML_SE_DTTPlanToBYODOnMainLine_DownGradeFee");
 		tc46_SOHO_PPC_ML_BYODPlanToDTTPlanOnAdditionalLine = YamlHandler.getPPCdata("tc46_SOHO_PPC_ML_BYODPlanToDTTPlanOnAdditionalLine");
-
+		BFA_ProdTest_tc02_AALTERM_FinancingPlanPotg = YamlHandler.getAALdata("BFA_ProdTest_tc02_AALTERM_FinancingPlanPotg");
+		BFA_ProdTest_tc03_AALBYOD_StdShipping = YamlHandler.getAALdata("BFA_ProdTest_tc03_AALBYOD_StdShipping");
+		BFA_ProdTest_tc04_AALTERM_Tablet_StdShipping = YamlHandler.getAALdata("BFA_ProdTest_tc04_AALTERM_Tablet_StdShipping");
+		BFA_ProdTest_tc05_HUPWithPPC_StdShipping = YamlHandler.getHUPdata("BFA_ProdTest_tc05_HUPWithPPC_StdShipping");
+		BFA_ProdTest_tc06_PPC_FinancingPlan = YamlHandler.getPPCdata("BFA_ProdTest_tc06_PPC_FinancingPlan");
 	}
 	
 	private static void buyFlowsOneViewDataInit() throws FileNotFoundException {

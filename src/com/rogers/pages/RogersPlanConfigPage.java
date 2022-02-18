@@ -101,7 +101,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//ds-step[@id='stepper-addons']//div[@class='d-flex flex-row-reverse']//button")
     WebElement preCartSummaryContinueButtonAddOns;
 
-    @FindBy(xpath = "//button[@data-test='build-plan-checkout-flow-button']/span")
+    @FindBy(xpath = "//button[@data-test='build-plan-checkout-flow-button']")
     WebElement continueButtonOnCartSummary;
 
     @FindBy(xpath = "//button[contains(@data-test,'bpo-offer-modal') or @id='get-bpo-offer-button']")
@@ -165,7 +165,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     WebElement btnContinueOnModalToDoWithOldPhone;
 
     @FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]/parent::ds-checkbox")
-    WebElement checkBoxAdditionalLineOPtion;
+    List<WebElement> checkBoxAdditionalLineOPtion;
 
     @FindBy(xpath = "//button[contains(@data-test,'add-to-cart')]")
     WebElement btnAddToCart;
@@ -787,11 +787,14 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void selectAdditionalLinePlanOptions() {
-        if(getReusableActionsInstance().isElementVisible(checkBoxAdditionalLineOPtion)) {
-            getReusableActionsInstance().clickWhenReady(checkBoxAdditionalLineOPtion, 30);
+        if(getReusableActionsInstance().isElementVisible(checkBoxAdditionalLineOPtion.get(0),40)) {
+            getReusableActionsInstance().waitForElementTobeClickable(checkBoxAdditionalLineOPtion.get(0),40);
+            for(WebElement ctnCheckBox : checkBoxAdditionalLineOPtion) {
+                getReusableActionsInstance().clickWhenReady(ctnCheckBox);
+            }
             getReusableActionsInstance().clickWhenReady(btnAddToCart);
             getReusableActionsInstance().scrollToElement(btnProceedToCheckout);
-            getReusableActionsInstance().clickWhenReady(btnProceedToCheckout, 30);
+            getReusableActionsInstance().clickWhenReady(btnProceedToCheckout);
         }
     }
 
@@ -1221,7 +1224,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clkContinueOnExistingAddonModal() {
-        getReusableActionsInstance().clickIfAvailable(btnExistingAddonModalContinue);
+        getReusableActionsInstance().clickIfAvailable(btnExistingAddonModalContinue,10);
     }
 
     /**

@@ -45,7 +45,7 @@ pipeline {
         string(name: 'DbEnvUrl', defaultValue: "", description: "Give env as sft02 , sft04 or sft06")
         string(name: 'SearchUrl', defaultValue: "", description: "Search URL Link")
         string(name: 'QaOVUrl', defaultValue: "", description: "QA OV URL Link")
-        string(name: 'AWSBYODUrl', defaultValue: "", description: "BFA AWS BYOD URL")
+        string(name: 'AWSPRODUrl', defaultValue: "", description: "BFA AWS PROD URL")
         string(name: 'AWSUrl', defaultValue: "", description: "BFA AWS URL")
         string(name: 'OneViewEnv', defaultValue: "", description: "One View Env")
     }
@@ -116,8 +116,8 @@ pipeline {
                             if(!params.AWSUrl.isEmpty()){
                                 urlLink = urlLink + "-Ptest_awsURL=${params.AWSUrl}";
                             }
-                            if(!params.AWSBYODUrl.isEmpty()){
-                                urlLink = urlLink + "-Ptest_awsBYODURL=${params.AWSBYODUrl}";
+                            if(!params.AWSPRODUrl.isEmpty()){
+                                urlLink = urlLink + "-Ptest_awsPRODURL=${params.AWSPRODUrl}";
                             }
                             if(!params.SearchUrl.isEmpty()){
                                 urlLink = urlLink + "-Ptest_searchURL=${params.SearchUrl}";
