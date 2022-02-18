@@ -61,7 +61,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	WebElement popupChangeTVPackage;
 	//ins[@translate='global.cta.bysContinue']
 
-	@FindBy(xpath = "//div[@class='popup-modal-body ']")
+	@FindBy(xpath = "//span[@id='ariaPopupHeader']")
 	WebElement popupContatUS;
 	//div[@class='live-support']
 
