@@ -61,11 +61,11 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	WebElement popupChangeTVPackage;
 	//ins[@translate='global.cta.bysContinue']
 
-	@FindBy(xpath = "//div[@class='popup-modal-body ']")
+	@FindBy(xpath = "//span[@id='ariaPopupHeader']")
 	WebElement popupContatUS;
 	//div[@class='live-support']
 
-	@FindBy(xpath = "//span[@ng-reflect-translate='global.dashboard.tv.exchangeFl']")
+	@FindBy(xpath = "//a[@id='ctaExchangeFlex']")
 	WebElement lnkChangeFlexChannels;
 
 	@FindBy(xpath = "//input[@id='searchFilter_swapout']")

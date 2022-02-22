@@ -19,7 +19,7 @@ public class OneViewCH_Auto_TC_022_TV_PackageDowngradeTest extends BaseTestClass
 		reporter.reportLogWithScreenshot("Launched the TV dashboard page");
 		getTVDashboardPage().clickChangeTvPackage();
 		reporter.reportLogWithScreenshot("Changed TV Package clicked");
-		//getTVDashboardPage().selectTVPackage(TestDataHandler.TC023_TVPackageDowngrade.getAccountDetails().getDowngradePlanEn(),TestDataHandler.TC023_TVPackageDowngrade.getAccountDetails().getDowngradePlanFr());
+		getTVDashboardPage().selectTVPackage(TestDataHandler.TC023_TVPackageDowngrade.getAccountDetails().getDowngradePlanEn(),TestDataHandler.TC023_TVPackageDowngrade.getAccountDetails().getDowngradePlanFr());
 		reporter.reportLogWithScreenshot("Lowest TV Package selected");
 
 		//For Flex Channels - Exchange Later

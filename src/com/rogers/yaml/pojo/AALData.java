@@ -19,6 +19,7 @@ public class AALData {
 	private String nameOnCard;
 	private String cvvNumber;
 	private String riskClass;
+	private String ban;
 
 
 	/**
@@ -222,6 +223,17 @@ public class AALData {
 	public void setRiskClass(String riskClass) {
 		this.riskClass = riskClass;
 	}
-
+	/**
+	 * @return ban
+	 */
+	public String getBan() {
+		return ban;
+	}
+	/**
+	 * @param ban to select
+	 */
+	public void setBan(String ban) {
+		this.ban = ban;
+	}
 
 }

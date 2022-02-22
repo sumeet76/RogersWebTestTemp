@@ -157,6 +157,12 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large']")
 	WebElement btnUseThisAddress;
 
+	@FindBy(xpath = "//div[@class='ds-radioButton__outerCircle my-12']")
+	WebElement rdoAddressOnFile;
+
+	@FindBy(xpath = "//div[@class='ng-star-inserted']/button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']/span")
+	WebElement btnUseAddress;
+
 	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']/span")
 	WebElement btnIgniteAddressLookupSubmit;
 
@@ -245,8 +251,8 @@ public class RogersHomePage extends BasePageClass {
 	WebElement lnkInternetwithSSAvailability;
 
 	@FindAll({
-	//@FindBy(xpath = "//span[@class='mb-0 flex-grow-1 text-title-4']"),
-	@FindBy(xpath = "//div[@class='dsa-hero-billboard__ctas d-flex flex-wrap justify-content-center justify-content-md-start mt-8 ng-star-inserted']")})
+			@FindBy(xpath = "//span[@class='mb-0 flex-grow-1 text-title-4']"),@FindBy(xpath = "//h1[@class='dsa-billboard__copyHeading mb-16 mb-md-24 ng-star-inserted']"),
+			@FindBy(xpath = "//div[@class='dsa-hero-billboard__ctas d-flex flex-wrap justify-content-center justify-content-md-start mt-8 ng-star-inserted']")})
 	WebElement txtInternetBuyPage;
   //@FindBy(xpath = "//h1[contains(text(),'Internet')]")
 
@@ -1004,7 +1010,23 @@ public class RogersHomePage extends BasePageClass {
 	public void clkUseThisAddress() {
 		getReusableActionsInstance().getWhenReady(btnUseThisAddress, 90).click();
 		}
-	
+
+	/**
+	 * Click on the existing address radio button
+	 * @author Manpreet.Kaur3
+	 */
+	public void selectAddressOnFile() {
+		getReusableActionsInstance().clickWhenVisible(rdoAddressOnFile, 30);
+	}
+
+	/**
+	 * Click on the Use address button
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkUseAddress() {
+		getReusableActionsInstance().getWhenReady(btnUseAddress, 90).click();
+	}
+
 	/**
 	 * Click the hamburger from the top right corner on the page 
 	 * @author ning.xue
