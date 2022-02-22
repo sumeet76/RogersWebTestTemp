@@ -24,7 +24,7 @@ public class OneViewCH_Auto_1642_TC01_RHP_ManageAddons_AddAddons_Immediate_Test 
         getHomePhoneAddonsPage().chooseAddon(TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameEn(),TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameFr());
         reporter.reportLogWithScreenshot("Addons selected for addition");
         getTVDashboardPage().clickYourChanges();
-        getHomePhoneAddonsPage().clickConfirmButton();
+        getHomePhoneAddonsPage().clickButtonContinue();
         reporter.reportLogWithScreenshot("Select the billing cycle");
         getHomePhoneAddonsPage().clickImmediateBill();
         reporter.reportLogWithScreenshot("Immediate bill check box is selected");
