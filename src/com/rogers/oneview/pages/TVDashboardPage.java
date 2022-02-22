@@ -282,7 +282,8 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@title='Reset purchase PIN']")
 	WebElement ResetPurchasePin;
 
-	@FindBy(xpath = "//span[contains(text(),'Reset purchase PIN') or contains(text(),'Réinitialisez le NIP d’achat')]")
+	//@FindBy(xpath = "//span[contains(text(),'Reset purchase PIN') or contains(text(),'Réinitialisez le NIP d’achat')]")
+	@FindBy(xpath = "//span[contains(text(),'Reset purchase PIN') or contains(text(),'Réinitialisez le NIP d’achat')]/ancestor::button")
 	WebElement resetPurchasePin;
 
 	@FindBy(xpath = "//button[@rchtrackclickevent='themepacks']")
@@ -1013,8 +1014,9 @@ public class TVDashboardPage  extends BasePageClass {
 		}
 
 		public void clickResetPurchasePin () {
-			getReusableActionsInstance().staticWait(3000);
-			getReusableActionsInstance().javascriptScrollToBottomOfPage();
+			//getReusableActionsInstance().staticWait(3000);
+			getReusableActionsInstance().getWhenReady(resetPurchasePin, 60);
+			//getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y -900);
 			getReusableActionsInstance().clickWhenReady(resetPurchasePin);
 
 		}
