@@ -47,7 +47,7 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	@FindBy(xpath = "//button[@translate='global.dashboard.tv.exchangeFlexChannels.modalCTA']")
 	WebElement btnConfirmSelectedChannel;
 	
-	@FindBy(xpath = "//div[contains(@class,'desktop')]//button[@aria-describedby='ariaExchangeChannelsPage' ]/span")
+	@FindBy(xpath = "(//a[@aria-label='Confirm channel exchange and continue']/span)[2]")
 	WebElement btnConfirmSwapDesktop;
 
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-chevron-up']/ancestor::button")
@@ -59,10 +59,10 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	@FindBy(xpath = "//ds-icon[@ng-reflect-color='success']/ancestor::div//span[@class='ds-icon rds-icon-right']/ancestor::a/span")
 	WebElement btnContinueSwap;	
 
-	@FindBy(xpath = "//ds-icon[@ng-reflect-color='success']")
+	@FindBy(xpath = "//span[contains(@class,'ds-color-success')]")
 	WebElement icnSuccess;
 
-	@FindBy(xpath = "//ds-icon[@ng-reflect-color='success']/ancestor::div//span[@class='ds-icon rds-icon-right']")
+	@FindBy(xpath = "//a[@aria-label='Return to Dashboard']/span")
 	WebElement btnReturnToDashbaord;
 
 	@FindBy(xpath = "//div[@class='channel-list ng-star-inserted']")
@@ -327,9 +327,9 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 
 	public List<WebElement> uncheckTVChannels() {
 		List<WebElement> availableChannels = getDriver().findElements(
-				By.xpath("//rch-selector[@ng-reflect-selected='false']//span[contains(@id,'aria-checkbox-id')]//ancestor::button//input/.."));
+				By.xpath("//rch-selector/div[@class='selector-component']/label[contains(@for,'ds-checkbox-input-id')]/input/.."));
 		for(int iuncheck=0;iuncheck<3;iuncheck++) {
-			List<WebElement> selected = getDriver().findElements(By.xpath("//rch-selector[@ng-reflect-selected='true']//input/.. | "+"//span[@translate='global.dashboard.tv.exchangeFlexChannels.logoSelected']/.."));
+			List<WebElement> selected = getDriver().findElements(By.xpath("//rch-selector/div[@class='selector-component -selected']/label[contains(@for,'ds-checkbox-input-id')]/input/.."));
 			Collections.reverse(selected);
 			getReusableActionsInstance().clickIfAvailable(selected.get(0),45);
 		}
@@ -338,12 +338,11 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 
 	public void checkTVChannels(List<WebElement> channels){
 		int counter =0;
-		Collections.reverse(channels);
 		for (WebElement channel: channels ) {
 			if(counter<4){
 				getActionsInstance().moveToElement(channel).click().build().perform();
 				counter++;
-				getReusableActionsInstance().getWhenReady(channel, 30).sendKeys(Keys.TAB);
+				getReusableActionsInstance().getWhenReady(channel, 45).sendKeys(Keys.TAB);
 			}
 		}
 	}
