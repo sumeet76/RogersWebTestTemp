@@ -314,7 +314,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//p[contains(@class,'dsa-alert') and (contains(text(),'You’ve exceeded your credit limit and your services are now suspended') or contains(text(),'Vous avez dépassé votre limite de crédit et vos services sont suspendus'))]")
 	WebElement lblCreditLimitExceeded;
 
-	@FindBy(xpath = "//rss-subscription-details//span[contains(text(),'Add a') or contains(text(),'Ajout d')]")
+	@FindBy(xpath = "//span[contains(text(),'Add a') or contains(text(),'Ajout d')]/ancestor::div[contains(@class,'subscription-detail')]/child::a")
 	WebElement lnkAddALine;
 
 	@FindBy(xpath = "//*[text()='Choose a plan to add your new line to' or text()='Choisir un forfait auquel ajouter votre nouvelle ligne']")
@@ -886,10 +886,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyAndClickShareEverythingCTN(String strCTN) {
-		strCTN = strCTN.replace("-", "").replace(" ", "");
-		strCTN = strCTN.substring(0, 3) + "-" + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);
-		String strCTNXpath = "//div[contains(@class,'sharedWireless')]//div[contains(text(),'" + strCTN +"')]/parent::div/button";
-		
+		strCTN = strCTN.replace(" ", "");
+		strCTN = strCTN.substring(0, 3) + " " + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);
+		String strCTNXpath = "//span[contains(@class,'subscription-number')][text()='"+strCTN+"']/ancestor::a";
+
 		if(getReusableActionsInstance().isElementVisible(By.xpath(strCTNXpath))) {
 			getReusableActionsInstance().executeJavaScriptClick(getDriver().findElement(By.xpath(strCTNXpath)));
 			return true;
