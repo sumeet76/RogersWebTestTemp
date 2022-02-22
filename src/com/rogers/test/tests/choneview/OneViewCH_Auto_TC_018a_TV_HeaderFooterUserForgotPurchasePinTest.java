@@ -22,7 +22,7 @@ public class OneViewCH_Auto_TC_018a_TV_HeaderFooterUserForgotPurchasePinTest ext
 	@Test (groups = {"RegressionCHOV","SanityCHOV","SanityCHOVTemp"})
     public void checkUserForgotPurchasePin() {
     			//getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
-		getEnvironmentSelectionPage().launchOneView(TestDataHandler.igniteTVParentalcontrols.accountDetails.getBan(),TestDataHandler.solarisTV.getContactID());
+				getEnvironmentSelectionPage().launchOneView(TestDataHandler.igniteTVParentalcontrols.accountDetails.getBan(),TestDataHandler.solarisTV.getContactID());
     			reporter.reportLogWithScreenshot("Launched the account dashboard page");
     			getAccountOverViewPage().selectTVBadage();
     			reporter.reportLogWithScreenshot("Launched the TV dashboard page");
@@ -30,15 +30,15 @@ public class OneViewCH_Auto_TC_018a_TV_HeaderFooterUserForgotPurchasePinTest ext
     			reporter.reportLogWithScreenshot("Header available on TV Dashboard page");
     			reporter.softAssert(getTVDashboardPage().verifyFooter(),"Footer is available","Verification of Header failed");
     			reporter.reportLogWithScreenshot("Footer available on TV Dashboard page");
-    			getTVDashboardPage().clickCustForgotPurchasePin();
-//				getTVDashboardPage().clickResetPurchasePin();
-//    			reporter.reportLogWithScreenshot("Customer forgot purchase pin button clicked");
-//    			getTVDashboardPage().clickContinueReset();
-//    			reporter.reportLogWithScreenshot("Continue clicked");
-//    			//reporter.softAssert(getTVDashboardPage().verifyResetSuccess(),"Customer forgot purchase pin validation passed","Customer forgot purchase pin validation passed");
-//    			reporter.reportLogWithScreenshot("Customer forgot purchase pin successfull");
-//    			//getTVDashboardPage().clickSuccessOk();
-//    			reporter.reportLogWithScreenshot("Ok clicked after success");
+    			//getTVDashboardPage().clickCustForgotPurchasePin();
+				getTVDashboardPage().clickResetPurchasePin();
+    			reporter.reportLogWithScreenshot("Customer forgot purchase pin button clicked");
+    			getTVDashboardPage().clickContinueReset();
+    			reporter.reportLogWithScreenshot("Continue clicked");
+    			reporter.softAssert(getTVDashboardPage().verifyResetSuccess(),"Customer forgot purchase pin validation passed","Customer forgot purchase pin validation passed");
+    			reporter.reportLogWithScreenshot("Customer forgot purchase pin successfull");
+    			getTVDashboardPage().clickSuccessOk();
+    			reporter.reportLogWithScreenshot("Ok clicked after success");
     }
 
 	@BeforeMethod (alwaysRun=true)

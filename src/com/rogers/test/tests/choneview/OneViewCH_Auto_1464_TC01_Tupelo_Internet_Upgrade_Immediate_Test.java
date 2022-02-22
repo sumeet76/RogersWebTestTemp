@@ -20,16 +20,16 @@ public class OneViewCH_Auto_1464_TC01_Tupelo_Internet_Upgrade_Immediate_Test ext
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         getInternetDashboardPage().clickChangeInternetPackage();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
-        getInternetDashboardPage().selectInternetPackage(TestDataHandler.tupeloUpgradeTest.accountDetails.getUpgradePlanEn(),TestDataHandler.tupeloUpgradeTest.accountDetails.getUpgradePlanFr());
+        getInternetDashboardPage().selectButtonAddSmartStream();
         reporter.reportLogWithScreenshot("Internet Package selected for upgrade");
-        /*getInternetDashboardPage().clickContinueChangeInternetPackage();
-        reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");*/
+        getInternetDashboardPage().clickContinueChangeInternetPackage();
+        reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
         getInternetDashboardPage().clickImmediateBill();
         reporter.reportLogWithScreenshot("Immediate option is selected for billing cycle");
         getInternetDashboardPage().clickContinueOnSelectDateChange();
         reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
-//        getRogersOVOrderReviewPage().clkSubmit();
-//        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        getRogersOVOrderReviewPage().clkSubmit();
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
     }
 

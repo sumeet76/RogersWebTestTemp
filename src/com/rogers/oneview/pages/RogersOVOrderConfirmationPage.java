@@ -12,7 +12,8 @@ public class  RogersOVOrderConfirmationPage  extends BasePageClass {
 		super(driver);
 	}
 	
-	@FindBy(xpath = "//*[text()='Thanks! We received the order.' or text()='Merci!  Nous avons reçu la commande.  ']")
+	//@FindBy(xpath = "//*[text()='Thanks! We received the order.' or text()='Merci!  Nous avons reçu la commande.']")
+	@FindBy(xpath = "//*[text()='We received the order.']")
 	WebElement orderConfirmation;
 	
 	@FindAll({
@@ -38,7 +39,8 @@ public class  RogersOVOrderConfirmationPage  extends BasePageClass {
 	 * @return true if Confirmation Message appeared, else false
 	 * @author chinnarao.vattam
 	 */	
-	public boolean verifyOrder() {	
+	public boolean verifyOrder() {
+		getReusableActionsInstance().staticWait(5000);
 		return getReusableActionsInstance().isElementVisible(orderConfirmation,120);
 	}
 	

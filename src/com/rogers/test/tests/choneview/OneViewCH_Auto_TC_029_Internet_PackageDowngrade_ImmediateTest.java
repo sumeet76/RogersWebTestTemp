@@ -21,37 +21,17 @@ public class OneViewCH_Auto_TC_029_Internet_PackageDowngrade_ImmediateTest exten
         getInternetDashboardPage().clickChangeInternetPackage();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
         getInternetDashboardPage().selectPlanUnderTvPackage(TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getInternetBundle(),TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getDowngradePlanEn());
-       // getInternetDashboardPage().selectFirstLowestPackage();
-        //getInternetDashboardPage().selectDownloadSpeed();
-       // getInternetDashboardPage().selectPlanUnderSameTvPackage("150");
-       // getInternetDashboardPage().selectButtonIgnite10();
-       // reporter.reportLogWithScreenshot("First lowest package clicked");
-        //getInternetDashboardPage().selectPlanUnderSameTvPackage("150");
         reporter.reportLogWithScreenshot("Lowest Internet Package selected");
         getInternetDashboardPage().clickContinueChangeInternetPackage();
         reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
-        /*For Flex Channels - Exchange Later*/
-       /* getTVDashboardPage().clickExchangeLater();
-        reporter.reportLogWithScreenshot("Exchange later is selected");
-
-
-
-        /*Channels and Theme Packs*/
-       /* getTVDashboardPage().clickContinueChannelsAndThemePacks();
-        getTVDashboardPage().clickContinueOn4kTv();
-        reporter.reportLogWithScreenshot("Continue clicked on 4k TV dailog");
-        getTVDashboardPage().clickContinue4kChannelPack();
-        reporter.reportLogWithScreenshot("Continue clicked on 4k channels pack");*/
-
-
 
         /*Billing option to be selected*/
         getInternetDashboardPage().selectRadioImmediate();
         reporter.reportLogWithScreenshot("Immediate option is selected for billing cycle");
         getInternetDashboardPage().clickContinueOnSelectDateChange();
         reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
-       // getRogersOVOrderReviewPage().clkSubmit();
-        //reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        getRogersOVOrderReviewPage().clkSubmit();
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
     }
 

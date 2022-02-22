@@ -20,15 +20,16 @@ public class OneViewCH_Auto_1460_TC01_Tupelo_Internet_Downgrade_Immediate_Test e
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         getInternetDashboardPage().clickChangeInternetPackage();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
-        getInternetDashboardPage().selectFirstLowestPackage();
+        getInternetDashboardPage().selectButtonAddSmartStream();
         reporter.reportLogWithScreenshot("Lowest Internet Package selected");
+        getInternetDashboardPage().clickContinueChangeInternetPackage();
         reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
         getInternetDashboardPage().clickImmediateBill();
         reporter.reportLogWithScreenshot("Immediate option is selected for billing cycle");
         getInternetDashboardPage().clickContinueOnSelectDateChange();
         reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
-//        getRogersOVOrderReviewPage().clkSubmit();
-//        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        getRogersOVOrderReviewPage().clkSubmit();
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
     }
 
@@ -42,7 +43,7 @@ public class OneViewCH_Auto_1460_TC01_Tupelo_Internet_Downgrade_Immediate_Test e
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
 }
