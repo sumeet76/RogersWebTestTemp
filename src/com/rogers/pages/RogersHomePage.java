@@ -157,6 +157,12 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large']")
 	WebElement btnUseThisAddress;
 
+	@FindBy(xpath = "//div[@class='ds-radioButton__outerCircle my-12']")
+	WebElement rdoAddressOnFile;
+
+	@FindBy(xpath = "//div[@class='ng-star-inserted']/button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']/span")
+	WebElement btnUseAddress;
+
 	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']/span")
 	WebElement btnIgniteAddressLookupSubmit;
 
@@ -1004,7 +1010,23 @@ public class RogersHomePage extends BasePageClass {
 	public void clkUseThisAddress() {
 		getReusableActionsInstance().getWhenReady(btnUseThisAddress, 90).click();
 		}
-	
+
+	/**
+	 * Click on the existing address radio button
+	 * @author Manpreet.Kaur3
+	 */
+	public void selectAddressOnFile() {
+		getReusableActionsInstance().clickWhenVisible(rdoAddressOnFile, 30);
+	}
+
+	/**
+	 * Click on the Use address button
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkUseAddress() {
+		getReusableActionsInstance().getWhenReady(btnUseAddress, 90).click();
+	}
+
 	/**
 	 * Click the hamburger from the top right corner on the page 
 	 * @author ning.xue
