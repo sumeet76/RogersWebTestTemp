@@ -15,6 +15,12 @@ public class RogersDigitalTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='tv_package_change']")
 	WebElement btnChangeMyPackage;
 
+	@FindBy(xpath = "//span[@translate='tv_add_channels_supportPhoneNumber']")
+	WebElement txtSupportPhoneNumber;
+
+	@FindBy(xpath = "//div[@class='col-xs-12 col-sm-4 col-md-3 col-lg-3']/div/div[@class='plan-cta']")
+	WebElement divPackageBlock;
+
 	@FindBy(xpath = "//span[@translate='tv_change_bonus_channel']")
 	WebElement btnChangeBonusChannel;
 	
@@ -33,7 +39,7 @@ public class RogersDigitalTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='view-my-channels']/div/a")
 	WebElement lnkViewMyChannels;
 
-	
+
 	
 	/**
 	 * To verify the change package button on the legacy TV dash board
@@ -42,6 +48,24 @@ public class RogersDigitalTVDashboardPage extends BasePageClass {
 	 */	
 	public boolean verifyChangeMyPackage() {
 		return getReusableActionsInstance().isElementVisible(btnChangeMyPackage,60);
+	}
+
+	/**
+	 *	To verify whether Package Block is present or not on the TV dashboard
+	 * @return true, if Package Block is present on Digital TV Dashboard Page
+	 * @author manpreet.kaur3
+	 */
+	public boolean isPackageBlock() {
+		return getReusableActionsInstance().isElementVisible(divPackageBlock,45);
+	}
+
+	/**
+	 *	To verify the Chat Block on the TV dashboard
+	 * @return true, if support call number is visible on Digital TV Dashboard Page
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyChatBlock() {
+		return getReusableActionsInstance().isElementVisible(txtSupportPhoneNumber,60);
 	}
 
 	public boolean verifyChangeMyPackageMobile() {
