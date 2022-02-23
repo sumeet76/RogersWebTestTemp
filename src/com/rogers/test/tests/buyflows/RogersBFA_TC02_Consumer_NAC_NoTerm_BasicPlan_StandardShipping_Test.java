@@ -24,7 +24,7 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_StandardShipping_Test 
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-	@Test(groups = {"RegressionBFA","NACBFA","RegressionOnlineBFA"})
+	@Test(groups = {"RegressionBFA","NACBFA"})
 	public void rogersNACNoTermStandardShippingTest() throws InterruptedException {
 
 		// **************************Device catalog page*****************************************
@@ -93,6 +93,7 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_StandardShipping_Test 
 		// ***************Credit Evaluation Stepper***********//
 		reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(), "CreditEvaluation Title verified", "CreditEvaluation Title not present");
 		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc02NACNoTermStandardShipping.getDateOfBirthYear());
+		getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc02NACNoTermStandardShipping.getDateOfBirthMonth());
 		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc02NACNoTermStandardShipping.getDateOfBirthDay());
 		getRogersCheckoutPage().switchToCreditCardIFrame();
@@ -117,6 +118,7 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_StandardShipping_Test 
 		reporter.softAssert(getRogersCheckoutPage().isChooseNumberTabsDisplayed(), "Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
 		getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc02NACNoTermStandardShipping.getCityName());
 		reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
+		getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().clkChosePhoneNumber();
 		reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
 		reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");

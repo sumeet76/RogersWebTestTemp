@@ -23,7 +23,7 @@ public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_Test extends BaseTes
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","AALBFA","RegressionOnlineBFA"})
+    @Test(groups = {"RegressionBFA","AALBFA","SanityBFA"})
     public void rogersAalByodBopisTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
@@ -60,6 +60,7 @@ public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_Test extends BaseTes
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc19AALBYODBopisShipping.getTalkOptionIndex())),
                 "Talk option selected and Addons page in expanded state","Addons page not in expanded state");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
+        getRogersPlanConfigPage().clkContinueDeviceProtection();
         getRogersPlanConfigPage().setUserNameCallerID();
         reporter.reportLogWithScreenshot("CalledID details entered");
         String monthlyFeesAmountWithTax = getRogersPlanConfigPage().getMonthlyFeesAmount();

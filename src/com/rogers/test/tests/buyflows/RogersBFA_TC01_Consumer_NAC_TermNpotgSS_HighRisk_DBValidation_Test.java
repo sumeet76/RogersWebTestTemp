@@ -24,7 +24,7 @@ public class RogersBFA_TC01_Consumer_NAC_TermNpotgSS_HighRisk_DBValidation_Test 
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-    @Test(groups = {"RegressionBFA","NACBFA","RegressionOnlineBFA"})
+    @Test(groups = {"RegressionBFA","NACBFA"})
     public void rogersNACTermNpotgSSTest() throws InterruptedException {
     	 //**************************Device catalog page****************************************
         reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
@@ -92,6 +92,7 @@ public class RogersBFA_TC01_Consumer_NAC_TermNpotgSS_HighRisk_DBValidation_Test 
         reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(),"CreditEvaluation Title verified","CreditEvaluation Title not present");
 		//getRogersCheckoutPage().setDateOfBirth(TestDataHandler.redesignRpotgData.getDateOfBirth());
 		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc01NACTermNpotgSS.getDateOfBirthYear());
+		getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc01NACTermNpotgSS.getDateOfBirthMonth());
 		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc01NACTermNpotgSS.getDateOfBirthDay());
         getRogersCheckoutPage().switchToCreditCardIFrame();
@@ -123,6 +124,7 @@ public class RogersBFA_TC01_Consumer_NAC_TermNpotgSS_HighRisk_DBValidation_Test 
         reporter.softAssert(getRogersCheckoutPage().isChooseNumberTabsDisplayed(),"Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
         getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc01NACTermNpotgSS.getCityName());
         reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully" );
+        getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clkChosePhoneNumber();
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
         reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed","Find More Available Number Button not disaplayed");

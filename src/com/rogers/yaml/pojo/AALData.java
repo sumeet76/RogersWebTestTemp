@@ -20,8 +20,7 @@ public class AALData {
 	private String cvvNumber;
 	private String riskClass;
 	private String ban;
-
-
+	private String promoCode;
 	/**
 	 * @return the postalCode
 	 */
@@ -235,5 +234,14 @@ public class AALData {
 	public void setBan(String ban) {
 		this.ban = ban;
 	}
-
+	/**
+	 * @return the Promo Code
+	 */
+	public String getPromoCode() {return promoCode;}
+	/**
+	 * @param promoCode Promocode to set
+	 */
+	public void setPromoCode(String promoCode){
+		this.promoCode = promoCode;
+	}
 }
