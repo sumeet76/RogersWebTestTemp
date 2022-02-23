@@ -39,6 +39,9 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 	@FindBy(xpath="//span[@translate='global.cta.confirm']/ancestor::button")
 	WebElement confirmButton;
 
+	@FindBy(xpath= "//span[text()='Continue']")
+	WebElement btnContinue;
+
 	@FindBy(xpath="(//div[@class='ds-radioButton__outerCircle my-12'])[2]")
 	WebElement IncompatibleRadioBTn2;
 
@@ -87,6 +90,11 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 	public void clickConfirmButton()
 	{
 		getReusableActionsInstance().getWhenReady(confirmButton,60).click();
+	}
+
+	public void clickButtonContinue()
+	{
+		getReusableActionsInstance().getWhenReady(btnContinue,60).click();
 	}
 
 

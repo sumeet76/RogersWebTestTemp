@@ -22,7 +22,7 @@ public class OneViewCH_Auto_1641_TC01_RHP_ManageAddons_RemoveAddOns_NextBill_Tes
         getHomePhonedashboard().clickManageAddOns();
         getHomePhoneAddonsPage().removeAddon(TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameEn(),TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameFr());
         reporter.reportLogWithScreenshot("Remove addon button is selected");
-        getHomePhoneAddonsPage().clickConfirmButton();
+        getHomePhoneAddonsPage().clickButtonContinue();
         reporter.reportLogWithScreenshot("Billing selection pop up appears");
         getHomePhoneAddonsPage().clickContinueOnSelectDateChange();
         reporter.reportLogWithScreenshot("Continue clicked in select date popup for next billing cycle");
