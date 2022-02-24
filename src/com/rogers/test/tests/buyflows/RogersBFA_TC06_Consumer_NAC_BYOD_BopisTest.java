@@ -23,15 +23,15 @@ public class RogersBFA_TC06_Consumer_NAC_BYOD_BopisTest extends BaseTestClass {
 	}
 
 	//https://rcom5.qa01.eks.rogers.com/phones/bring-your-own-device?flowType=byod
-	@Test(groups = {"RegressionBFA","NACBFA","RegressionOnlineBFA"})
+	@Test(groups = {"RegressionBFA","NACBFA"})
 	public void rogersNACBYODBopisTest() throws InterruptedException {
 //############################Plan config page###############################
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(), "BreadCrumb on Plan config page is displaying fine","BreadCrumb is not displaying fine");
 		getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
-		getRogersPlanConfigPage().clickPreCartSummaryContinueButtonTalkOptions();
+		getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
-		getRogersPlanConfigPage().clickGetBPOOffer();
+		//getRogersPlanConfigPage().clickGetBPOOffer();
 		getRogersPlanConfigPage().clickPreCartSummaryContinueButtonAddOns();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on your addon's");
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
@@ -88,6 +88,7 @@ public class RogersBFA_TC06_Consumer_NAC_BYOD_BopisTest extends BaseTestClass {
 		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(),"Billing Options Title Displayed","Billing Options Title Not Present");
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed","Select Payment Method Dropdown not disaplayed");
 		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc06NACByodTermBopis.getPaymentMethod());
+		getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().clkBillingContinueButton();
 		//***************Shipping Options Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().clkBillingAddress(),"Billing Address radio button is selected ","Billing Address is not selected");

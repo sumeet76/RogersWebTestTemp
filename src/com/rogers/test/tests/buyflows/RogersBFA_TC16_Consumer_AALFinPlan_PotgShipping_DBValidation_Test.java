@@ -23,7 +23,7 @@ public class RogersBFA_TC16_Consumer_AALFinPlan_PotgShipping_DBValidation_Test e
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","SanityBFA","AALBFA","RegressionOnlineBFA"})
+    @Test(groups = {"RegressionBFA","SanityBFA","AALBFA"})
     public void rogersAalFinPlanPotgTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
@@ -118,6 +118,7 @@ public class RogersBFA_TC16_Consumer_AALFinPlan_PotgShipping_DBValidation_Test e
         //---------------------------------------Checkout pages---------------------------------------------------------
         reporter.softAssert(getRogersCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed", "Choose a Number Title not disaplayed");
         reporter.softAssert(getRogersCheckoutPage().isChooseNumberTabsDisplayed(), "Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
+        getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc16AALFinPlanPotgShipping.getCtnCity());
         reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
         getRogersCheckoutPage().clkChosePhoneNumber();

@@ -23,7 +23,7 @@ public class RogersBFA_TC04_Consumer_NAC_TermBopisTest extends BaseTestClass {
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-	@Test(groups = {"RegressionBFA","NACBFA","SanityBFA","RegressionOnlineBFA"})
+	@Test(groups = {"RegressionBFA","NACBFA","SanityBFA"})
 	public void rogersNACTermBopisTest() throws InterruptedException {
 
 		// **************************Device catalog page*****************************************
@@ -114,7 +114,7 @@ public class RogersBFA_TC04_Consumer_NAC_TermBopisTest extends BaseTestClass {
 		reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(),
 				"Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");
 		getRogersCheckoutPage().clkChooseNumberbutton();
-
+		getRogersCheckoutPage().clkNoThanks();
 		// ***************Billing & Payment Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(), "Billing Options Title Displayed",
 				"Billing Options Title Not Present");

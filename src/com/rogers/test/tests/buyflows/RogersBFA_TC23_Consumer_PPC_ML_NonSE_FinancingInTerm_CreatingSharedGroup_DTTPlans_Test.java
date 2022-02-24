@@ -23,7 +23,7 @@ public class RogersBFA_TC23_Consumer_PPC_ML_NonSE_FinancingInTerm_CreatingShared
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","PPCBFA","RegressionOnlineBFA"})
+    @Test(groups = {"RegressionBFA","PPCBFA"})
     public void rogersPPC_TC23_MLNonSE_FinancingInTerm_CreateSharedGroupDTTPlanTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
