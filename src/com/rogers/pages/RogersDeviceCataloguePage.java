@@ -57,7 +57,10 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "(//span[contains(.,'Check eligibility') or contains(.,'Disponibilité')])[2]")
     WebElement checkEligibilityRpotgBanner;
 
-    @FindBy(xpath="//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+    @FindAll({
+            @FindBy(xpath = "//div[contains(@class,'ds-formField__wrapper')]/ancestor::ds-form-field"),
+            @FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+    })
     WebElement postalCodeRpotgBanner;
 
     @FindBy(xpath = "//input[contains(@id,'ds-form-input-id')]")

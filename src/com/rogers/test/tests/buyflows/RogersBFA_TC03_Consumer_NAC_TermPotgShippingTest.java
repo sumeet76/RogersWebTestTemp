@@ -25,7 +25,7 @@ public class RogersBFA_TC03_Consumer_NAC_TermPotgShippingTest extends BaseTestCl
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-	@Test(groups = {"RegressionBFA","NACBFA","RegressionOnlineBFA"})
+	@Test(groups = {"RegressionBFA","NACBFA"})
 	public void rogersNACTermPotgShippingTest() throws InterruptedException {
 		// **************************Device catalog page*****************************************
 		reporter.softAssert(getRogersDeviceCataloguePage().isRpotgBannerPresent(),
@@ -70,6 +70,15 @@ public class RogersBFA_TC03_Consumer_NAC_TermPotgShippingTest extends BaseTestCl
 				"RPOTG Label and subcopy verified in Plan Config Page verified as" + "--->" + rpotgLabelPlanConfig);
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
 				"BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
+		// ***************************Promo Section************************************
+		getRogersPlanConfigPage().clkPromoSection();
+		reporter.reportLogWithScreenshot("Promo Section Displayed");
+		getRogersPlanConfigPage().setPromoCode(TestDataHandler.tc03NACTermPotgShipping.getPromoCode());
+		reporter.reportLogWithScreenshot("Promo Code Entered");
+		getRogersPlanConfigPage().clkCheckPromoBtn();
+		reporter.hardAssert(getRogersPlanConfigPage().verifyPromoSuccessMsg(), "Promo Code Applied Successfully", "Promo Code Not Applied");
+		reporter.hardAssert(getRogersPlanConfigPage().verifyPromoDuration(), "Discount Value and Duration displayed", "Promo Code Not Applied");
+		// ***************************Plan config page************************************
 		getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
 		getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc03NACTermPotgShipping.getDataOptionIndex()),this.getClass().getSimpleName());
@@ -84,6 +93,7 @@ public class RogersBFA_TC03_Consumer_NAC_TermPotgShippingTest extends BaseTestCl
 		String oneTimeFeesAmount = getRogersPlanConfigPage().getOneTimeFeesAmount();
 		reporter.reportLogPassWithScreenshot(
 				"Cart summary: Monthly & OneTimeFees" + monthlyFeesAmount + "&" + oneTimeFeesAmount);
+		reporter.hardAssert(getRogersPlanConfigPage().verifyCartLineItem(),"Promo Code and Discount amount Line Item displayed","Promo code line item not displayed");
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
 		// ***************Create Profile Stepper*************//
 		reporter.hardAssert(getRogersCheckoutPage().verifyCreateProfileTitle(), "Create profile Title Present", "Create profile Title not present");
@@ -124,6 +134,7 @@ public class RogersBFA_TC03_Consumer_NAC_TermPotgShippingTest extends BaseTestCl
 		reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(), "CreditEvaluation Title verified",
 				"CreditEvaluation Title not present");
 		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc03NACTermPotgShipping.getDateOfBirthYear());
+		getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc03NACTermPotgShipping.getDateOfBirthMonth());
 		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc03NACTermPotgShipping.getDateOfBirthDay());
 		getRogersCheckoutPage().switchToCreditCardIFrame();

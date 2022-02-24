@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
 
 public class RogersBFA_TC17_Consumer_AALNonShareNoTerm_QCProv_SS_Test extends BaseTestClass{
 
-    @Test(groups = {"RegressionBFA","AALBFA","RegressionOnlineBFA"})
+    @Test(groups = {"RegressionBFA","AALBFA"})
     public void rogersAalNonShareNoTermQCProvTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");

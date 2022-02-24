@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_TC07_Consumer_HUPWithPPC_OnMainLine_VDP_Potg_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","HUPBFA","RegressionOnlineBFA"})
+	@Test(groups = {"RegressionBFA","HUPBFA"})
     public void rogersHupPpcPotgMLTest() {
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");

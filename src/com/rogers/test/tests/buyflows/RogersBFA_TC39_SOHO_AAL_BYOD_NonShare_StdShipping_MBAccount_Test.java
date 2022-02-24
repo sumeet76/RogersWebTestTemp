@@ -23,7 +23,7 @@ public class RogersBFA_TC39_SOHO_AAL_BYOD_NonShare_StdShipping_MBAccount_Test ex
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","AALBFA","SOHOBFA","RegressionOnlineBFA"})
+    @Test(groups = {"RegressionBFA","AALBFA","SOHOBFA"})
     public void sohoAalByodNonShareStdShippingMBTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
@@ -54,18 +54,28 @@ public class RogersBFA_TC39_SOHO_AAL_BYOD_NonShare_StdShipping_MBAccount_Test ex
         reporter.softAssert(getRogersPlanConfigPage().verifyAalByodBreadCrumb(),
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
         reporter.hardAssert(getRogersPlanConfigPage().verifyByodSelectedDeviceSection(), "Plan Config loaded", "Plan config page not loaded");
-        //getRogersPlanConfigPage().clkBasicTab();
+        // ***************************Promo Section************************************
+        getRogersPlanConfigPage().clkPromoSection();
+        reporter.reportLogWithScreenshot("Promo Section Displayed");
+        getRogersPlanConfigPage().setPromoCode(TestDataHandler.tc39_SOHO_AALBYODStandardShipping.getPromoCode());
+        reporter.reportLogWithScreenshot("Promo Code Entered");
+        getRogersPlanConfigPage().clkCheckPromoBtn();
+        reporter.hardAssert(getRogersPlanConfigPage().verifyPromoSuccessMsg(), "Promo Code Applied Successfully", "Promo Code Not Applied");
+        reporter.hardAssert(getRogersPlanConfigPage().verifyPromoDuration(), "Discount Value and Duration displayed", "Promo Code Not Applied");
+		//getRogersPlanConfigPage().clkBasicTab();
         //getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc05NACByodSS.getDataOptionIndex());
         getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
         reporter.reportLogPassWithScreenshot("Data option selected");
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc39_SOHO_AALBYODStandardShipping.getTalkOptionIndex())),
                 "Talk option selected and Addons page in expanded state","Addons page not in expanded state");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
+        getRogersPlanConfigPage().clkContinueDeviceProtection();
         getRogersPlanConfigPage().setUserNameCallerID();
         reporter.reportLogWithScreenshot("CalledID details entered");
         String monthlyFeesAmountWithTax = getRogersPlanConfigPage().getMonthlyFeesAmount();
         String oneTimeFeesAmountWithTax = getRogersPlanConfigPage().getOneTimeFeesAmount();
         reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees " + monthlyFeesAmountWithTax + "2. oneTimeFee " + oneTimeFeesAmountWithTax);
+        getReporter().hardAssert(getRogersPlanConfigPage().verifyCartLineItem(),"Promo Code and Discount amount Line Item displayed","Promo code line item not displayed");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         //---------------------------------------Checkout pages---------------------------------------------------------
         reporter.softAssert(getRogersCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed", "Choose a Number Title not disaplayed");

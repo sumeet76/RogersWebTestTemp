@@ -23,7 +23,7 @@ public class RogersBFA_TC20_Consumer_AAL_TERM_MLNonShare_BasicPlan_StdShipping_T
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","AALBFA","RegressionOnlineBFA"})
+    @Test(groups = {"RegressionBFA","AALBFA"})
     public void rogersAalTermMLNonSEBasicPlanSSTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
