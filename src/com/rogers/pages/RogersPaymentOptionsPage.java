@@ -16,7 +16,7 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	@FindBy(xpath = "//h2[@translate='global.checkout.billingAndPayment.title']")
 	WebElement txtPaymentpage;
 	
-	@FindBy(xpath = "//select[contains(@class,'-select') and contains(@id,'ds-form-input-id-')]")
+	@FindBy(xpath = "(//select[contains(@class,'-select') and contains(@id,'ds-form-input-id-')])[1]")
 	WebElement ddlPaymentMode;
 	
 	@FindBy(xpath = "//input[@id='transit-code']")
@@ -50,14 +50,14 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	@FindBy(xpath = "//input[contains(@class,'ds-input') and contains(@id,'ds-form-input-id-')]")
 	WebElement txtCVV;
 
-	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex position-relative ds-bgcolor-white ds-borders ds-brcolor-slate ds-corners']")
+	@FindBy(xpath = "//input[contains(@class,'ds-input') and contains(@id,'ds-form-input-id-')]/..")
 	WebElement txtContainerCVV;
 	
 
-	@FindBy(xpath = "//rch-dropdown[@ng-reflect-selected-key='0']//select[contains(@id,'ds-form-input-id') and contains(@class,'select')]")
+	@FindBy(xpath = "(//select[contains(@class,'-select') and contains(@id,'ds-form-input-id-')])[2]")
 	WebElement ddlExpiryMonth;
 
-	@FindBy(xpath = "//rch-dropdown[@ng-reflect-selected-key='2020']//select[contains(@id,'ds-form-input-id') and contains(@class,'select')]")
+	@FindBy(xpath = "(//select[contains(@class,'-select') and contains(@id,'ds-form-input-id-')])[3]")
 	WebElement ddlExpiryYear;
 	
 	@FindBy(xpath = "//span[@translate='global.cta.continue']")
