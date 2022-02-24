@@ -41,19 +41,19 @@ public class RogersInternetProfilePage extends BasePageClass {
 	@FindAll({
 	//@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and contains(@a11ydescription,'First Name')]"),
 	//@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @ng-reflect-a11y-description='Please enter your First Name.']"),
-	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @ng-reflect-a11y-description='Please enter your First Name.']")})
+	@FindBy(xpath = "(//input[contains(@id,'ds-form-input-id-')])[3]")})
 	WebElement txtFirstName;
 
 	@FindAll({
 	//@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and contains(@a11ydescription,'Last Name')]"),
 	//@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @ng-reflect-a11y-description='Please enter your Last Name.']")}),
-	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @ng-reflect-a11y-description='Please enter your Last Name.']")})
+	@FindBy(xpath = "(//input[contains(@id,'ds-form-input-id-')])[4]")})
 	WebElement txtLastName;
 
 	@FindAll({
 	//@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and contains(@a11ydescription,'Please enter your phone number')]"),
 	//@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @a11ydescription='Please enter your phone number']")}),
-	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and contains(@ng-reflect-a11y-description,'Please enter your phone number')]")})
+	@FindBy(xpath = "(//input[contains(@id,'ds-form-input-id-')])[5]")})
 	WebElement btnPhone;
 		
 	@FindBy(xpath = "//span[@translate='global.cta.continue']")

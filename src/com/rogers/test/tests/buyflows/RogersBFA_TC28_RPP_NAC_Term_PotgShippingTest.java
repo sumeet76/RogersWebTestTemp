@@ -23,7 +23,7 @@ public class RogersBFA_TC28_RPP_NAC_Term_PotgShippingTest extends BaseTestClass 
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-	@Test(groups = {"RegressionBFA","NACBFA","RegressionOnlineBFA"})
+	@Test(groups = {"RegressionBFA","NACBFA"})
 	public void rogersRPPNACTermPotgShippingTest() throws InterruptedException {
 		// **************************Device catalog page*****************************************
 		getDriver().get(System.getProperty("AWSUrl")+"/?type=rpp");
@@ -41,6 +41,14 @@ public class RogersBFA_TC28_RPP_NAC_Term_PotgShippingTest extends BaseTestClass 
 		// ***************************Device config page************************************
 		reporter.reportLogWithScreenshot("Device Config page");
 		getRogersDeviceConfigPage().clickContinueButton();
+		// ***************************Promo Section************************************
+		getRogersPlanConfigPage().clkPromoSection();
+		reporter.reportLogWithScreenshot("Promo Section Displayed");
+		getRogersPlanConfigPage().setPromoCode(TestDataHandler.tc28_RPP_NACTermPotgShipping.getPromoCode());
+		reporter.reportLogWithScreenshot("Promo Code Entered");
+		getRogersPlanConfigPage().clkCheckPromoBtn();
+		reporter.hardAssert(getRogersPlanConfigPage().verifyPromoSuccessMsg(), "Promo Code Applied Successfully", "Promo Code Not Applied");
+		reporter.hardAssert(getRogersPlanConfigPage().verifyPromoDuration(), "Discount Value and Duration displayed", "Promo Code Not Applied");
 		// ****************************Plan config page***************************************
 		getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc28_RPP_NACTermPotgShipping.getDeviceCostIndex()));
 		reporter.reportLogPassWithScreenshot("Device cost option selected");
@@ -54,6 +62,7 @@ public class RogersBFA_TC28_RPP_NAC_Term_PotgShippingTest extends BaseTestClass 
 		getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
 		getRogersPlanConfigPage().clkContinueDeviceProtection();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
+		getReporter().hardAssert(getRogersPlanConfigPage().verifyCartLineItem(),"Promo Code and Discount amount Line Item displayed","Promo code line item not displayed");
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
 		// ***************Create Profile Stepper*************//
 		reporter.hardAssert(getRogersCheckoutPage().verifyCreateProfileTitle(), "Create profile Title Present", "Create profile Title not present");

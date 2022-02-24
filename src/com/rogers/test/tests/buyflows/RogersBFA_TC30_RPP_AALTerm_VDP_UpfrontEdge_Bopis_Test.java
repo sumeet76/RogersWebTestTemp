@@ -24,7 +24,7 @@ public class RogersBFA_TC30_RPP_AALTerm_VDP_UpfrontEdge_Bopis_Test extends BaseT
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","RPPTEST","RegressionOnlineBFA"})
+    @Test(groups = {"RegressionBFA","RPPTEST"})
     public void tc30_RPP_AALTerm_VDP_UpfronEdge_BopisTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");

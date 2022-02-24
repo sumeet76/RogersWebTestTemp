@@ -47,7 +47,11 @@ public class RogersCH_TC_043_DigitalTV_ValidateTVDashboardTest extends BaseTestC
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersAccountOverviewPage().clkTVBadge();
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
-		reporter.hardAssert(getRogersDigitalTVDashboardPage().verifyChangeMyPackage(),"Verifed the TV dashboard","TV dashboard Verification has failed");
+		if(getRogersDigitalTVDashboardPage().isPackageBlock()) {
+			reporter.hardAssert(getRogersDigitalTVDashboardPage().verifyChangeMyPackage(), "Verifed the TV dashboard", "TV dashboard Verification has failed");
+		} else {
+			reporter.hardAssert(getRogersDigitalTVDashboardPage().verifyChatBlock(), "Verifed the TV dashboard with Support/Chat Block", "TV dashboard Verification has failed");
+		}
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
     	}
 

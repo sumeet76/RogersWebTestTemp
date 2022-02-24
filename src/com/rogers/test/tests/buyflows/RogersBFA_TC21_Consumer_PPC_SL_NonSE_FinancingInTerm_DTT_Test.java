@@ -23,7 +23,7 @@ public class RogersBFA_TC21_Consumer_PPC_SL_NonSE_FinancingInTerm_DTT_Test exten
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","SanityBFA","PPCBFA","RegressionOnlineBFA"})
+    @Test(groups = {"RegressionBFA","SanityBFA","PPCBFA"})
     public void rogersPPC_TC21_SLNonSE_FINInTerm_DTTPlanTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");

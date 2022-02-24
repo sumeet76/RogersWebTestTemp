@@ -27,7 +27,7 @@ public class RogersBFA_TC05_Consumer_NAC_BYOD_BasicPlan_SS_Test extends BaseTest
 		closeSession();
 	}
 
-	@Test(groups = {"RegressionBFA","NACBFA","RegressionOnlineBFA"})
+	@Test(groups = {"RegressionBFA","NACBFA"})
 	public void rogersNacByodSSTest() throws InterruptedException {
 		//############################Plan config page###############################
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(), "BreadCrumb on Plan config page is displaying fine","BreadCrumb is not displaying fine");
@@ -35,7 +35,7 @@ public class RogersBFA_TC05_Consumer_NAC_BYOD_BasicPlan_SS_Test extends BaseTest
 		//getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc05NACByodSS.getDataOptionIndex());
 		getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
-		getRogersPlanConfigPage().clickPreCartSummaryContinueButtonTalkOptions();
+		getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
 		getRogersPlanConfigPage().clickGetBPOOffer();
 		getRogersPlanConfigPage().clickPreCartSummaryContinueButtonAddOns();
@@ -91,9 +91,11 @@ public class RogersBFA_TC05_Consumer_NAC_BYOD_BasicPlan_SS_Test extends BaseTest
 		reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(),"Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
 		reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
 		// ***************Billing & Payment Stepper*************//
+		getRogersCheckoutPage().clkNoThanks();
 		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(),"Billing Options Title Displayed","Billing Options Title Not Present");
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed","Select Payment Method Dropdown not disaplayed");
 		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc05NACByodSS.getPaymentMethod());
+		getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().clkBillingContinueButton();
 		//***************Shipping Options Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().clkBillingAddress(),"Billing Address radio button is selected ","Billing Address is not selected");
