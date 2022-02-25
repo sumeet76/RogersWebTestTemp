@@ -317,7 +317,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public void clickShowMoreDetails() {
         if(getReusableActionsInstance().isElementVisible(showMoreDetails,20)) {
-            if (getReusableActionsInstance().getWhenReady(showMoreDetails).getAttribute("title").contains("Hide More Details")) {
+            if (getReusableActionsInstance().getWhenReady(showMoreDetails).getAttribute("title").contains("View fewer plan options")) {
                 System.out.println("Show more details accordion already in expanded state");
             } else {
                 getReusableActionsInstance().clickWhenVisible(showMoreDetails, 20);
