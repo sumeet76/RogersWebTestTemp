@@ -75,6 +75,7 @@ public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_Test extends BaseTes
         getRogersCheckoutPage().clkChosePhoneNumber();
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
         reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");
+        getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clkChooseNumberbutton();
         reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(), "Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
         reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");

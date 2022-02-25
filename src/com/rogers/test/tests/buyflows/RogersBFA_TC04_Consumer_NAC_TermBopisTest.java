@@ -109,6 +109,7 @@ public class RogersBFA_TC04_Consumer_NAC_TermBopisTest extends BaseTestClass {
 				"Select a New Number/Use Existing Number Tab not disaplayed");
 		getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc04NACTermBopis.getCityName());
 		reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
+		getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().clkChosePhoneNumber();
 		reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
 		reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(),
