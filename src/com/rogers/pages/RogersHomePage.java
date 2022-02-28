@@ -242,7 +242,7 @@ public class RogersHomePage extends BasePageClass {
 	WebElement lnkViewNavigationMobile;
 
 	@FindAll({
-	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet ']"),
+	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet ']//span[contains(text(),'Check availability')]"),
 	//@FindBy(xpath = "//a[@title='View internet bundles available to you']/span")
 	})
 	WebElement lnkInternetAvailability;
@@ -1062,9 +1062,16 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkInternetAvailability() {
-		getReusableActionsInstance().waitForElementVisibility(lnkInternetAvailability,120);
+		getReusableActionsInstance().waitForElementVisibility(lnkInternetAvailability,30);
 		//getReusableActionsInstance().getWhenReady(lnkInternetAvailability,30).click();
-		//getReusableActionsInstance().clickIfAvailable(lnkInternetAvailability,30);
+		getReusableActionsInstance().clickIfAvailable(lnkInternetAvailability,30);
+	}
+	/**
+	 * Click the InternetAvailability link Internet on the page
+	 * @author manpreet.kaur3
+	 */
+	public void clkInternetAvailabilityMobile() {
+		getReusableActionsInstance().waitForElementVisibility(lnkInternetAvailability,30);
 		getReusableActionsInstance().executeJavaScriptClick(lnkInternetAvailability);
 	}
 	

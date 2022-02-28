@@ -88,7 +88,6 @@ public class RogersTechInstallPage extends BasePageClass {
 
 	@FindBy(xpath = "//span[@translate='global.checkout.fulfillment.withProInstallUpgradeNo']/parent::div/preceding-sibling::div")
 	WebElement chkTechInstalConsent;
-	//label[contains(@class,'ds-checkboxLabel')]
 
 
 	@FindAll({
