@@ -498,7 +498,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author praveen.kumar7
 	 */
 	public void clkNoThanks() {
-		if((getReusableActionsInstance().isElementVisible(btnNoThanksVertical,5)) ||
+		if((getReusableActionsInstance().isElementVisible(btnNoThanksVertical,8)) ||
 				(getReusableActionsInstance().isElementVisible(By.xpath("//div[contains(@class,'button-container')]//button[contains(.,'No,')]"),5))) {
 			getReusableActionsInstance().executeJavaScriptClick(btnNoThanks);
 		}
