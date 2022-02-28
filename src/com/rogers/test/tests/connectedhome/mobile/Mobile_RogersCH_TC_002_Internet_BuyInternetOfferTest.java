@@ -49,7 +49,7 @@ public class Mobile_RogersCH_TC_002_Internet_BuyInternetOfferTest extends BaseTe
         getRogersInternetPackageSelectionPage().clkInternetBuyContinueMobile();
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
-        getRogersInternetProfilePage().setEmail();
+        getRogersInternetProfilePage().setEmailMobile();
         getRogersInternetProfilePage().setFirstname();
         getRogersInternetProfilePage().setLastName();
         getRogersInternetProfilePage().setPhone();
