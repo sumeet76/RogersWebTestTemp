@@ -1063,8 +1063,9 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public void clkInternetAvailability() {
 		getReusableActionsInstance().waitForElementVisibility(lnkInternetAvailability,120);
-		getReusableActionsInstance().getWhenReady(lnkInternetAvailability,30).click();
-		getReusableActionsInstance().clickIfAvailable(lnkInternetAvailability,30);
+		//getReusableActionsInstance().getWhenReady(lnkInternetAvailability,30).click();
+		//getReusableActionsInstance().clickIfAvailable(lnkInternetAvailability,30);
+		getReusableActionsInstance().executeJavaScriptClick(lnkInternetAvailability);
 	}
 	
 }

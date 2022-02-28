@@ -115,7 +115,8 @@ public class RogersInternetProfilePage extends BasePageClass {
 	public void setEmail() {
 		String strEmail = FormFiller.generateEmail();
 		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail,20);
-		getReusableActionsInstance().getWhenReady(txtContainerEmail,10).click();
+		//getReusableActionsInstance().getWhenReady(txtContainerEmail,10).click();
+		getReusableActionsInstance().executeJavaScriptClick(txtContainerEmail);
 		getReusableActionsInstance().getWhenReady(txtEmail, 30).clear();
 		getReusableActionsInstance().getWhenReady(txtEmail,10).sendKeys(strEmail);
 		getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
