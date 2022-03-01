@@ -9,8 +9,8 @@ import org.openqa.selenium.support.FindBy;
 import com.rogers.pages.base.BasePageClass;
 
 import utils.FormFiller;
-
 public class RogersIgniteTVProfileCreationPage extends BasePageClass {
+
 
 	public RogersIgniteTVProfileCreationPage(WebDriver driver) {
 		super(driver);
@@ -96,11 +96,13 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	public void setEmailMobile() {
 		String strEmail = FormFiller.generateEmail();
 		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail,90);
-		getReusableActionsInstance().getWhenReady(txtContainerEmail,10).click();
+		//getReusableActionsInstance().getWhenReady(txtContainerEmail,10).click();--original
+		getReusableActionsInstance().getWhenReady(txtContainerEmail,10).getLocation();
         getReusableActionsInstance().executeJavaScriptClick(txtEmail);
         txtEmail.clear();
         txtEmail.sendKeys(strEmail);
-        getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
+       getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
+
         txtConfirmEmail.clear();
         txtConfirmEmail.sendKeys(strEmail); 
 	}

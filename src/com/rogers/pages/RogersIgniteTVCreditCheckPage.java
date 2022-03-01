@@ -442,7 +442,9 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 		String strPasportNumber = FormFiller.generatePassportNumber();
 		getReusableActionsInstance().waitForElementVisibility(txtContainerPasportNumber,30);
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
-		getReusableActionsInstance().getWhenReady(txtContainerPasportNumber,10).click();
+		//getReusableActionsInstance().getWhenReady(txtContainerPasportNumber,10).click(); ---original
+		getReusableActionsInstance().getWhenReady(txtContainerPasportNumber,10).getLocation();
+		getReusableActionsInstance().executeJavaScriptClick(txtContainerPasportNumber);
 		getReusableActionsInstance().getWhenReady(txtPasportNumber, 30).clear();
 		getReusableActionsInstance().getWhenReady(txtPasportNumber, 3).sendKeys(strPasportNumber);
 	}

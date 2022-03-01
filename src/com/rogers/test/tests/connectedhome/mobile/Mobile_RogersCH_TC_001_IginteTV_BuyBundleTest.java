@@ -121,8 +121,11 @@ public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass
         //getRogersTechInstallPage().selSelffinstallDateAndTime();
         //reporter.reportLogWithScreenshot("Launched the tech install page");
         //getRogersTechInstallPage().setMobielNumber();
+        getRogersTechInstallPage().clkProInstallUpgradeNo();
+        reporter.reportLogWithScreenshot("tech install details");
         getRogersTechInstallPage().clkTechInstalConsent();
         reporter.reportLogWithScreenshot("tech install details");
+        reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(),"SetUp page has Launched","SetUp page has not Launched");
         getRogersTechInstallPage().clkTechInstallContinueMobile();
 
         reporter.hardAssert( getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
