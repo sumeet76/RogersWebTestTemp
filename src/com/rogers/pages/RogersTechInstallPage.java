@@ -86,8 +86,9 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath ="//input[@formcontrolname='enrouteEmail']")   
 	WebElement txtEmailExistingCustomer;
 
-	@FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]")
+	@FindBy(xpath = "//span[@translate='global.checkout.fulfillment.withProInstallUpgradeNo']/parent::div/preceding-sibling::div")
 	WebElement chkTechInstalConsent;
+
 
 	@FindAll({
 	//@FindBy(xpath = "//label[@for='ds-radio-input-id-5']//div[@class='ds-radioButton__innerCircle']"),

@@ -105,7 +105,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "//div[@class='m-buttonSet']")
     WebElement resetAllFiltersbutton;
 
-    @FindBy(xpath = "//p[contains(@class,'dsa-info__contentHeader align-self-center text')]")
+    @FindBy(xpath = "//p[contains(@class,'dsa-info__contentHeader align-self-center')]")
     WebElement rpotgBannerText;
 
     @FindBy(xpath = "//button[@title='Check' or @title='Vérifier']")
