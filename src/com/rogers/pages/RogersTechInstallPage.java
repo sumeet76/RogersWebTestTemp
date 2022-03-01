@@ -86,7 +86,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath ="//input[@formcontrolname='enrouteEmail']")   
 	WebElement txtEmailExistingCustomer;
 
-	@FindBy(xpath = "//span[@translate='global.checkout.fulfillment.withProInstallUpgradeNo']/parent::div/preceding-sibling::div")
+	@FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]")
 	WebElement chkTechInstalConsent;
 
 
@@ -100,7 +100,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	WebElement clkProInstallUpgradeYes;
 
 
-	@FindBy(xpath ="//span[@translate='global.checkout.fulfillment.withProInstallUpgradeNo']")
+	@FindBy(xpath ="//span[@translate='global.checkout.fulfillment.withProInstallUpgradeNo']/parent::div/preceding-sibling::div")
 	WebElement clkProInstallUpgradeNo;
 
 	@FindBy(xpath ="//span[@translate='global.checkout.fulfillment.courierSetup']")
