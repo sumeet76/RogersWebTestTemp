@@ -33,7 +33,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='View my channel lineup' or text()='Voir ma liste de chaînes']/ancestor::button")
 	WebElement btnViewChannelLineUp;
 
-	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button | (//rch-conflict-modals/descendant::span[@ng-reflect-translate='global.modals.conflictWarnings'])[1]")
+	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button | (//rch-conflict-modals/descendant::span[@ng-reflect-translate='global.modals.conflictWarnings'])")
 	WebElement btnContnueReset;
 
 	@FindBy(xpath = "//div[@class='ds-modal__header d-flex align-items-start']")
@@ -272,14 +272,14 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'View my Flex Channels')]")
 	WebElement ViewMyFlexChannelsLink;
 
-	@FindBy(xpath = "//label[@translate='global.dashboard.tv.whatIsCloudStorage']/parent::div/ds-popover")
+	@FindBy(xpath = "//label[text()='What is Cloud Storage?']/parent::div/ds-popover")
 	WebElement CloudStorageBubble;
 
-	@FindBy(xpath = "//label[@translate='global.dashboard.tv.whatIsDownloadAndGo']/parent::div/ds-popover")
+	@FindBy(xpath = "//label[text()='What is Download & Go?']/parent::div/ds-popover")
 	WebElement DownloadGoBubble;
 
 
-	@FindBy(xpath = "//button[@title='Reset purchase PIN']")
+	@FindBy(xpath = "//button[@title='Reset purchase PIN']/span")
 	WebElement ResetPurchasePin;
 
 	//@FindBy(xpath = "//span[contains(text(),'Reset purchase PIN') or contains(text(),'Réinitialisez le NIP d’achat')]")
@@ -1015,9 +1015,10 @@ public class TVDashboardPage  extends BasePageClass {
 
 		public void clickResetPurchasePin () {
 			//getReusableActionsInstance().staticWait(3000);
-			getReusableActionsInstance().getWhenReady(resetPurchasePin, 60);
+			getReusableActionsInstance().getWhenReady(ResetPurchasePin, 60);
 			//getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y -900);
-			getReusableActionsInstance().clickWhenReady(resetPurchasePin);
+			//getReusableActionsInstance().clickWhenReady(ResetPurchasePin);
+			getReusableActionsInstance().executeJavaScriptClick(ResetPurchasePin);
 
 		}
 		public void clickSecondLowestpackage () {

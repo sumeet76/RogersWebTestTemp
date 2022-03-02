@@ -22,9 +22,14 @@ public class OneViewCH_Auto_TC01_InternetDashboard_Validate_Support_Links extend
         getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("Wall Wifi Link is Displayed");
         getInternetDashboardPage().goToPageBottom();
-        reporter.hardAssert(getInternetDashboardPage().verifLlnkLearnMoreWallToWallWifi(),"Link is Displayed", "Link is not displayed");
-        getInternetDashboardPage().clickWalltoWallWifiLink();
-        reporter.reportLogWithScreenshot("Wall to Wall Wifi link is Clicked");
+        if(getInternetDashboardPage().verifLlnkLearnMoreWallToWallWifi()) {
+            reporter.hardAssert(getInternetDashboardPage().verifLlnkLearnMoreWallToWallWifi(), "Link is Displayed", "Link is not displayed");
+            getInternetDashboardPage().clickWalltoWallWifiLink();
+            reporter.reportLogWithScreenshot("Wall to Wall Wifi link is Clicked");
+        } else {
+            reporter.reportLogWithScreenshot("Wall to Wall Wifi link is not available");
+        }
+
 
     }
     @BeforeMethod(alwaysRun=true)

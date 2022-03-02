@@ -385,7 +385,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @autho suganya P
 	 * */
 	public void selectInternetPackage(String strUpgradePlanEn, String strUpgradePlanFr) {
-		By packageNameLocator = By.xpath("//p[contains(text(),'"+strUpgradePlanEn+"') or contains(text(),'"+strUpgradePlanFr+"')]/ancestor::div[@class='internet-tile__body']//span[contains(text(),'Select')]/ancestor::button");
+		By packageNameLocator = By.xpath("//span[contains(text(),'"+strUpgradePlanEn+"') or contains(text(),'"+strUpgradePlanFr+"')]/ancestor::div[@class='bundle-tile__main']//span[contains(text(),'Select')]/ancestor::button");
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 20);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
 		getReusableActionsInstance().executeJavaScriptClick(pkg);

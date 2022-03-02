@@ -39,7 +39,7 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 	@FindBy(xpath = "//p[text()='Select Change Date' or text()='Sélectionner la date du changement' ]/ancestor::div//span[text()='Continue' or text()='Continuer']")
 	WebElement btnContinueChangeDate;
 
-	@FindBy(xpath="//span[@translate='global.cta.confirm']/ancestor::button")
+	@FindBy(xpath="//span[@translate='global.cta.continue']/ancestor::button")
 	WebElement confirmButton;
 
 	@FindBy(xpath= "//span[text()='Continue']")

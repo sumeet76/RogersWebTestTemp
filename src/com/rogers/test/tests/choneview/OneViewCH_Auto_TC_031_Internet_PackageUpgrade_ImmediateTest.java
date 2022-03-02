@@ -22,8 +22,8 @@ public class OneViewCH_Auto_TC_031_Internet_PackageUpgrade_ImmediateTest extends
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
         getInternetDashboardPage().selectInternetPackage(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradePlanFr());
         reporter.reportLogWithScreenshot("Internet Package selected for upgrade");
-        /*getInternetDashboardPage().clickContinueChangeInternetPackage();
-        reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");*/
+        getInternetDashboardPage().clickContinueChangeInternetPackage();
+        reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
         getInternetDashboardPage().clickImmediateBill();
         reporter.reportLogWithScreenshot("Immediate option is selected for billing cycle");
         getInternetDashboardPage().clickContinueOnSelectDateChange();

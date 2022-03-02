@@ -79,7 +79,7 @@ public class AccountOverViewPage extends BasePageClass {
 
     @FindAll({
             @FindBy(xpath = "//t[text()='Ignite Home Phone']"),
-            @FindBy(xpath = "//span[@class='ute-icon-home-phone']")})
+            @FindBy(xpath = "//span[@class='icon rui-icon-home-phone']")})
     WebElement btnHomePhoneBadge;
 
     //	@FindBy(xpath = "//t[contains(text(),'Ignite')]/ancestor::a")})
@@ -134,8 +134,11 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(),'OK')]")
     WebElement OK;
 
-    @FindBy(xpath = "//h2[@ng-reflect-translate='global.label.noOfChannels']")
+    @FindBy(xpath = "//h2[contains(text(),'Channels') or contains(text(), 'Chaînes')]")
     WebElement tvOrChannelHeader;
+
+//    @FindBy(xpath = "//h2[@ng-reflect-translate='global.label.noOfChannels']")
+//    WebElement tvOrChannelHeader;
 
     @FindBy(xpath = "//h3[@translate='global.dashboard.tv.customerHasTheFollowing']")
     WebElement customerFollowingHeader;
