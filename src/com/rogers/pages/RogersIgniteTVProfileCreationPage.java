@@ -96,7 +96,7 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	public void setEmailMobile() {
 		String strEmail = FormFiller.generateEmail();
 		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail,90);
-		//getReusableActionsInstance().getWhenReady(txtContainerEmail,10).click();--original
+		//getReusableActionsInstance().getWhenReady(txtContainerEmail,10).click();
 		getReusableActionsInstance().getWhenReady(txtContainerEmail,10).getLocation();
         getReusableActionsInstance().executeJavaScriptClick(txtEmail);
         txtEmail.clear();
