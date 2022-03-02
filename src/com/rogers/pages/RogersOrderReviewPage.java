@@ -92,7 +92,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	WebElement clkSubmitUpdateMobile;
 
 
-	@FindBy(xpath = "//span[@translate='global.cta.submit']")
+	@FindBy(xpath = "//span[contains(@translate,'global.cta.submit')]")
 	WebElement clkSubmitUpdateInternet;
 	//span[@translate='global.cta.submit']/ancestor::a
 
