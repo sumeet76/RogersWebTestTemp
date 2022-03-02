@@ -28,6 +28,7 @@ public class RedesignRpotgData {
 	private String companySize;
 	private String businessNumber;
 	private String passcode;
+	private String promoCode;
 
 	public String getCreditCardDetailsOTP() {
 		return creditCardDetailsOTP;
@@ -240,6 +241,15 @@ public class RedesignRpotgData {
 	public void setPasscode(String passcode) {
 		this.passcode = passcode;
 	}
-
+	/**
+	 * @return the Promo Code
+	 */
+	public String getPromoCode() {return promoCode;}
+	/**
+	 * @param promoCode Promocode to set
+	 */
+	public void setPromoCode(String promoCode){
+		this.promoCode = promoCode;
+	}
 
 }

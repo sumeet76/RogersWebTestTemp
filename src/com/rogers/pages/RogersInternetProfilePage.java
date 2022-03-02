@@ -122,6 +122,20 @@ public class RogersInternetProfilePage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(txtConfirmEmail, 10).clear();
 		getReusableActionsInstance().getWhenReady(txtConfirmEmail,3).sendKeys(strEmail);
 	}
+	/**
+	 * Set dynamic email and confirm email on profile page
+	 * @author manpreet.kaur3
+	 */
+	public void setEmailMobile() {
+		String strEmail = FormFiller.generateEmail();
+		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail,20);
+		getReusableActionsInstance().executeJavaScriptClick(txtContainerEmail);
+		getReusableActionsInstance().getWhenReady(txtEmail, 30).clear();
+		getReusableActionsInstance().getWhenReady(txtEmail,10).sendKeys(strEmail);
+		getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
+		getReusableActionsInstance().getWhenReady(txtConfirmEmail, 10).clear();
+		getReusableActionsInstance().getWhenReady(txtConfirmEmail,3).sendKeys(strEmail);
+	}
 
 	/**
 	 * Set dynamic first name on profile page

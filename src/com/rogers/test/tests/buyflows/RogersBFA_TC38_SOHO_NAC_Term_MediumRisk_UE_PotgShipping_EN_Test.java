@@ -24,7 +24,7 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_PotgShipping_EN_Test ext
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-	@Test(groups = {"RegressionBFA","SOHONACBFA","SOHOBFA","RegressionOnlineBFA"})
+	@Test(groups = {"RegressionBFA","SOHONACBFA","SOHOBFA"})
 	public void sohoNACTermMediumRiskPotgTest() throws InterruptedException {
 		// **************************Device catalog page*****************************************
 		reporter.softAssert(getRogersDeviceCataloguePage().isRpotgBannerPresent(),

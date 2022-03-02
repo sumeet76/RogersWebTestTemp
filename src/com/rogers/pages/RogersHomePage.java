@@ -157,6 +157,12 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large']")
 	WebElement btnUseThisAddress;
 
+	@FindBy(xpath = "//div[@class='ds-radioButton__outerCircle my-12']")
+	WebElement rdoAddressOnFile;
+
+	@FindBy(xpath = "//div[@class='ng-star-inserted']/button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']/span")
+	WebElement btnUseAddress;
+
 	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']/span")
 	WebElement btnIgniteAddressLookupSubmit;
 
@@ -236,7 +242,7 @@ public class RogersHomePage extends BasePageClass {
 	WebElement lnkViewNavigationMobile;
 
 	@FindAll({
-	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet ']"),
+	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet ']//span[contains(text(),'Check availability')]"),
 	//@FindBy(xpath = "//a[@title='View internet bundles available to you']/span")
 	})
 	WebElement lnkInternetAvailability;
@@ -245,6 +251,7 @@ public class RogersHomePage extends BasePageClass {
 	WebElement lnkInternetwithSSAvailability;
 
 	@FindAll({
+			@FindBy(xpath = "//h1[@class='dsa-billboard__copyHeading mb-16 mb-md-24 ng-star-inserted']"),
 			@FindBy(xpath = "//span[@class='mb-0 flex-grow-1 text-title-4']"),@FindBy(xpath = "//h1[@class='dsa-billboard__copyHeading mb-16 mb-md-24 ng-star-inserted']"),
 			@FindBy(xpath = "//div[@class='dsa-hero-billboard__ctas d-flex flex-wrap justify-content-center justify-content-md-start mt-8 ng-star-inserted']")})
 	WebElement txtInternetBuyPage;
@@ -1004,7 +1011,23 @@ public class RogersHomePage extends BasePageClass {
 	public void clkUseThisAddress() {
 		getReusableActionsInstance().getWhenReady(btnUseThisAddress, 90).click();
 		}
-	
+
+	/**
+	 * Click on the existing address radio button
+	 * @author Manpreet.Kaur3
+	 */
+	public void selectAddressOnFile() {
+		getReusableActionsInstance().clickWhenVisible(rdoAddressOnFile, 30);
+	}
+
+	/**
+	 * Click on the Use address button
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkUseAddress() {
+		getReusableActionsInstance().getWhenReady(btnUseAddress, 90).click();
+	}
+
 	/**
 	 * Click the hamburger from the top right corner on the page 
 	 * @author ning.xue
@@ -1040,9 +1063,17 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkInternetAvailability() {
-		getReusableActionsInstance().waitForElementVisibility(lnkInternetAvailability,120);
-		getReusableActionsInstance().getWhenReady(lnkInternetAvailability,30).click();
+		getReusableActionsInstance().waitForElementVisibility(lnkInternetAvailability,30);
+		//getReusableActionsInstance().getWhenReady(lnkInternetAvailability,30).click();
 		getReusableActionsInstance().clickIfAvailable(lnkInternetAvailability,30);
+	}
+	/**
+	 * Click the InternetAvailability link Internet on the page
+	 * @author manpreet.kaur3
+	 */
+	public void clkInternetAvailabilityMobile() {
+		getReusableActionsInstance().waitForElementVisibility(lnkInternetAvailability,30);
+		getReusableActionsInstance().executeJavaScriptClick(lnkInternetAvailability);
 	}
 	
 }
