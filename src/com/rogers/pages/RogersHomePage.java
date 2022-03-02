@@ -251,6 +251,7 @@ public class RogersHomePage extends BasePageClass {
 	WebElement lnkInternetwithSSAvailability;
 
 	@FindAll({
+			@FindBy(xpath = "//h1[@class='dsa-billboard__copyHeading mb-16 mb-md-24 ng-star-inserted']"),
 			@FindBy(xpath = "//span[@class='mb-0 flex-grow-1 text-title-4']"),@FindBy(xpath = "//h1[@class='dsa-billboard__copyHeading mb-16 mb-md-24 ng-star-inserted']"),
 			@FindBy(xpath = "//div[@class='dsa-hero-billboard__ctas d-flex flex-wrap justify-content-center justify-content-md-start mt-8 ng-star-inserted']")})
 	WebElement txtInternetBuyPage;
