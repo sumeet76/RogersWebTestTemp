@@ -696,6 +696,15 @@ public class RogersTechInstallPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(clkProInstallUpgradeNo, 30).click();
 	}
 	/**
+	 * Click the No Upgrade button on installation page
+	 * @author manpreet.kaur3
+	 */
+	public void clkProInstallUpgradeNoMobile() {
+		getReusableActionsInstance().waitForElementVisibility(clkProInstallUpgradeNo, 60);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(clkProInstallUpgradeNo);
+		getReusableActionsInstance().executeJavaScriptClick(clkProInstallUpgradeNo);
+	}
+	/**
 	 * To verify the launch of Technical  Install Page
 	 * @return true if the TechInstallSlot ratio has available, else false
 	 * @author dharani.up
