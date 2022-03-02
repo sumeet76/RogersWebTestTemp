@@ -80,7 +80,7 @@ public class Mobile_RogersCH_TC_002_Internet_BuyInternetOfferTest extends BaseTe
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
         //getRogersTechInstallPage().clkTechInstalConsent();
-        getRogersTechInstallPage().clkProInstallUpgradeNo();
+        getRogersTechInstallPage().clkProInstallUpgradeNoMobile();
         reporter.reportLogWithScreenshot("tech install details");
         getRogersTechInstallPage().clkTechInstallContinueMobile();
         getRogersTechInstallPage().clkTechInstallContinue();
