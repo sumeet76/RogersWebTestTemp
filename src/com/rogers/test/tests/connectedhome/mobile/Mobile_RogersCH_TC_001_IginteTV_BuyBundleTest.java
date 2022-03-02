@@ -117,7 +117,7 @@ public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass
 
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
-        getRogersTechInstallPage().clkProInstallUpgradeNo();
+        getRogersTechInstallPage().clkProInstallUpgradeNoMobile();
         reporter.reportLogWithScreenshot("tech install details");
         getRogersTechInstallPage().clkTechInstallContinueMobile();
         getRogersTechInstallPage().clkTechInstallContinue();
