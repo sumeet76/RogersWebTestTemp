@@ -39,6 +39,10 @@ public class Mobile_RogersCH_TC_005_IginteTV_TVPackageUpgradeTest extends BaseTe
         reporter.reportLogWithScreenshot("Home Page");
     	getRogersHomePage().clkSignInMobile();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
+        if (getRogersLoginPage().isOverlayContainerDisplayed()) {
+            reporter.reportLogWithScreenshot("Select Continue in browser.");
+            getRogersLoginPage().clkContinueInBrowser();
+        }
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
@@ -74,7 +78,7 @@ public class Mobile_RogersCH_TC_005_IginteTV_TVPackageUpgradeTest extends BaseTe
         getRogersOrderReviewPage().clkSubmitUpdateMobile();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmation(),"Update order completed","Update order Failed");
-        reporter.reportLogWithScreenshot("Verified the Confirmation page");
+        reporter.reportLogWithScreenshot("Verified the Confirmation page"); 
     	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
