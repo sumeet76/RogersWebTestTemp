@@ -124,7 +124,17 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(txtConfirmEmail, 3).sendKeys(strEmail);
 
 	}
+	public void setEmail(String strEmail) {
+		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail, 90);
+		getReusableActionsInstance().getWhenReady(txtContainerEmail, 10).click();
+		getReusableActionsInstance().clickWhenReady(txtEmail);
+		txtEmail.clear();
+		txtEmail.sendKeys(strEmail);
+		getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
+		txtConfirmEmail.clear();
+		txtConfirmEmail.sendKeys(strEmail);
 
+	}
 	/**
 	 * Set dynamic first name on profile page
 	 * @author Chinnarao.Vattam
