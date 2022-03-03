@@ -444,8 +444,6 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(txtContainerPasportNumber,10).click();
 		txtPasportNumber.clear();
 		txtPasportNumber.sendKeys(strPasportNumber);
-		//getReusableActionsInstance().javascriptScrollToMiddleOfPage();
-		//getReusableActionsInstance().getWhenReady(txtContainerPasportNumber,10).click();
 
 	}
 

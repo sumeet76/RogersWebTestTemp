@@ -25,9 +25,9 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
 	WebElement txtContainerConfirmEmail;
 	
-		@FindBy(xpath = "//input[@name='email']")
+	@FindBy(xpath = "//input[@name='email']")
 	WebElement txtEmail;
-		//input[@id='ds-form-input-id-14']
+	//input[@id='ds-form-input-id-14']
 		
 	@FindBy(xpath = "//input[@name='confirmEmail']")
 	WebElement txtConfirmEmail;
@@ -103,7 +103,6 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(txtEmail, 30).clear();
 		getReusableActionsInstance().getWhenReady(txtEmail,10).sendKeys(strEmail);
 		getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
-		//getReusableActionsInstance().getWhenReady(txtConfirmEmail,10).click();
 		getReusableActionsInstance().getWhenReady(txtConfirmEmail, 10).clear();
 		getReusableActionsInstance().getWhenReady(txtConfirmEmail,3).sendKeys(strEmail);
 	}
@@ -119,11 +118,13 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(txtEmail, 30).clear();
 		getReusableActionsInstance().getWhenReady(txtEmail, 10).sendKeys(strEmail);
 		getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
-		//getReusableActionsInstance().getWhenReady(txtConfirmEmail,10).click();
 		getReusableActionsInstance().getWhenReady(txtConfirmEmail, 10).clear();
 		getReusableActionsInstance().getWhenReady(txtConfirmEmail, 3).sendKeys(strEmail);
-
 	}
+	/**
+	 * Set dynamic email and confirm email on profile page
+	 * @author Chinnarao.Vattam
+	 */
 	public void setEmail(String strEmail) {
 		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail, 90);
 		getReusableActionsInstance().getWhenReady(txtContainerEmail, 10).click();

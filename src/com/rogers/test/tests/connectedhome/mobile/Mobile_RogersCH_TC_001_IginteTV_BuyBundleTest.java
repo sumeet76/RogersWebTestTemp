@@ -68,12 +68,6 @@ public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass
         //getRogersIgniteTVBuyPage().clkHomephoneMobile();
         getRogersIgniteTVBuyPage().selectSolarisStarterPackageMobile();
 
-      /*  reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        getRogersHomePhoneSelectionPage().clkSkipforNewNumberMobile();
-        reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
-        getRogersIgniteTVBuyPage().clkHomePhoneMobile();*/
-
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
         getRogersIgniteTVBuyPage().set4KTVMobile();
@@ -110,21 +104,13 @@ public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass
         reporter.reportLogWithScreenshot("Passport Details");
         getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmitMobile();
 
-   /*     reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPhoneNumberPage(),"Ignite page has Launched","Ignite page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        getRogersHomePhoneSelectionPage().clkPhoneNumberGenerator();
-        getRogersHomePhoneSelectionPage().clkContinueHomePhoneMobile();*/
-
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
         getRogersTechInstallPage().clkProInstallUpgradeNoMobile();
         reporter.reportLogWithScreenshot("tech install details");
         getRogersTechInstallPage().clkTechInstallContinueMobile();
         getRogersTechInstallPage().clkTechInstallContinue();
-        //getRogersTechInstallPage().clkPersonalizedInstall();
-        //getRogersTechInstallPage().selSelffinstallDateAndTime();
-        //reporter.reportLogWithScreenshot("Launched the tech install page");
-        //getRogersTechInstallPage().setMobielNumber();
+
 
         reporter.hardAssert( getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
