@@ -75,10 +75,10 @@ public class Mobile_RogersCH_TC_005_IginteTV_TVPackageUpgradeTest extends BaseTe
 		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");;
         getRogersOrderReviewPage().clkAcceptenceCheckboxUpdateTVMobile();
         reporter.reportLogWithScreenshot("Agreement details");
-      /*  getRogersOrderReviewPage().clkSubmitUpdateMobile();
+        getRogersOrderReviewPage().clkSubmitUpdateMobile();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmation(),"Update order completed","Update order Failed");
-        reporter.reportLogWithScreenshot("Verified the Confirmation page"); */
+        reporter.reportLogWithScreenshot("Verified the Confirmation page"); 
     	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
