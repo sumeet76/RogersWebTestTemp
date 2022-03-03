@@ -31,6 +31,11 @@ public class Mobile_RogersCH_TC_007_LegacyInternet_ValidateInternetUsageTest ext
         reporter.reportLogWithScreenshot("Home Page");
     	getRogersHomePage().clkSignInMobile();    	
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
+		if (getRogersLoginPage().isOverlayContainerDisplayed()) {
+			reporter.reportLogWithScreenshot("Select Continue in browser.");
+			getRogersLoginPage().clkContinueInBrowser();
+		}
+		reporter.reportLogWithScreenshot("Continue in Browser Selected");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc46_legacyInternetAccount.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc46_legacyInternetAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");

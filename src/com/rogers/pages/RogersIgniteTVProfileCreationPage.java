@@ -21,10 +21,13 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	
 	@FindBy(xpath = "(//div[contains(@class,'ds-formField__inputContainer')])[1]")
 	WebElement txtContainerEmail;
+
+	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
+	WebElement txtContainerConfirmEmail;
 	
-		@FindBy(xpath = "//input[@name='email']")
+	@FindBy(xpath = "//input[@name='email']")
 	WebElement txtEmail;
-		//input[@id='ds-form-input-id-14']
+	//input[@id='ds-form-input-id-14']
 		
 	@FindBy(xpath = "//input[@name='confirmEmail']")
 	WebElement txtConfirmEmail;
@@ -95,16 +98,13 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 */
 	public void setEmailMobile() {
 		String strEmail = FormFiller.generateEmail();
-		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail,90);
-		//getReusableActionsInstance().getWhenReady(txtContainerEmail,10).click();--original
-		getReusableActionsInstance().getWhenReady(txtContainerEmail,10).getLocation();
-        getReusableActionsInstance().executeJavaScriptClick(txtEmail);
-        txtEmail.clear();
-        txtEmail.sendKeys(strEmail);
-       getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
-
-        txtConfirmEmail.clear();
-        txtConfirmEmail.sendKeys(strEmail); 
+		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail,20);
+		getReusableActionsInstance().executeJavaScriptClick(txtContainerEmail);
+		getReusableActionsInstance().getWhenReady(txtEmail, 30).clear();
+		getReusableActionsInstance().getWhenReady(txtEmail,10).sendKeys(strEmail);
+		getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
+		getReusableActionsInstance().getWhenReady(txtConfirmEmail, 10).clear();
+		getReusableActionsInstance().getWhenReady(txtConfirmEmail,3).sendKeys(strEmail);
 	}
 
 	/**
@@ -113,31 +113,29 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 */
 	public void setEmail() {
 		String strEmail = FormFiller.generateEmail();
-		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail,90);
-		getReusableActionsInstance().getWhenReady(txtContainerEmail,10).click();
-		getReusableActionsInstance().clickWhenReady(txtEmail);
-		txtEmail.clear();
-		txtEmail.sendKeys(strEmail);
+		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail, 20);
+		getReusableActionsInstance().getWhenReady(txtContainerEmail, 10).click();
+		getReusableActionsInstance().getWhenReady(txtEmail, 30).clear();
+		getReusableActionsInstance().getWhenReady(txtEmail, 10).sendKeys(strEmail);
 		getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
-		txtConfirmEmail.clear();
-		txtConfirmEmail.sendKeys(strEmail);
+		getReusableActionsInstance().getWhenReady(txtConfirmEmail, 10).clear();
+		getReusableActionsInstance().getWhenReady(txtConfirmEmail, 3).sendKeys(strEmail);
 	}
-
 	/**
 	 * Set dynamic email and confirm email on profile page
 	 * @author Chinnarao.Vattam
 	 */
 	public void setEmail(String strEmail) {
-		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail,90);
-		getReusableActionsInstance().getWhenReady(txtContainerEmail,10).click();
+		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail, 90);
+		getReusableActionsInstance().getWhenReady(txtContainerEmail, 10).click();
 		getReusableActionsInstance().clickWhenReady(txtEmail);
 		txtEmail.clear();
 		txtEmail.sendKeys(strEmail);
 		getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
 		txtConfirmEmail.clear();
 		txtConfirmEmail.sendKeys(strEmail);
-	}
 
+	}
 	/**
 	 * Set dynamic first name on profile page
 	 * @author Chinnarao.Vattam

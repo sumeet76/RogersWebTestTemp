@@ -86,7 +86,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath ="//input[@formcontrolname='enrouteEmail']")   
 	WebElement txtEmailExistingCustomer;
 
-	@FindBy(xpath = "//span[@translate='global.checkout.fulfillment.withProInstallUpgradeNo']/parent::div/preceding-sibling::div")
+	@FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]")
 	WebElement chkTechInstalConsent;
 
 
@@ -100,7 +100,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	WebElement clkProInstallUpgradeYes;
 
 
-	@FindBy(xpath ="//span[@translate='global.checkout.fulfillment.withProInstallUpgradeNo']")
+	@FindBy(xpath ="//span[@translate='global.checkout.fulfillment.withProInstallUpgradeNo']/parent::div/preceding-sibling::div")
 	WebElement clkProInstallUpgradeNo;
 
 	@FindBy(xpath ="//span[@translate='global.checkout.fulfillment.courierSetup']")
@@ -694,6 +694,15 @@ public class RogersTechInstallPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementTobeClickable(clkProInstallUpgradeNo, 60);
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 		getReusableActionsInstance().getWhenReady(clkProInstallUpgradeNo, 30).click();
+	}
+	/**
+	 * Click the No Upgrade button on installation page
+	 * @author manpreet.kaur3
+	 */
+	public void clkProInstallUpgradeNoMobile() {
+		getReusableActionsInstance().waitForElementVisibility(clkProInstallUpgradeNo, 60);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(clkProInstallUpgradeNo);
+		getReusableActionsInstance().executeJavaScriptClick(clkProInstallUpgradeNo);
 	}
 	/**
 	 * To verify the launch of Technical  Install Page

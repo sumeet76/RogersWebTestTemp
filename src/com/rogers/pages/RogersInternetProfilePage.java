@@ -119,7 +119,6 @@ public class RogersInternetProfilePage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(txtEmail, 30).clear();
 		getReusableActionsInstance().getWhenReady(txtEmail,10).sendKeys(strEmail);
 		getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
-		getReusableActionsInstance().getWhenReady(txtConfirmEmail,10).click();
 		getReusableActionsInstance().getWhenReady(txtConfirmEmail, 10).clear();
 		getReusableActionsInstance().getWhenReady(txtConfirmEmail,3).sendKeys(strEmail);
 	}
@@ -134,7 +133,6 @@ public class RogersInternetProfilePage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(txtEmail, 30).clear();
 		getReusableActionsInstance().getWhenReady(txtEmail,10).sendKeys(strEmail);
 		getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
-		getReusableActionsInstance().getWhenReady(txtConfirmEmail,10).click();
 		getReusableActionsInstance().getWhenReady(txtConfirmEmail, 10).clear();
 		getReusableActionsInstance().getWhenReady(txtConfirmEmail,3).sendKeys(strEmail);
 	}
