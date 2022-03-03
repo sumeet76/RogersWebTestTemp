@@ -13,7 +13,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//span[@translate='global.cta.continue']")
+	@FindBy(xpath = "//button[@aria-label='Continue']/span/span")
 	WebElement btnContinueFromThemepacks;
 	//ins[@translate='global.cta.continue']
 
