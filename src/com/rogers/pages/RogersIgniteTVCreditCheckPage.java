@@ -441,10 +441,10 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	public void setPassportNumberMobile() {
 		String strPasportNumber = FormFiller.generatePassportNumber();
 		getReusableActionsInstance().waitForElementVisibility(txtContainerPasportNumber,30);
-		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 		getReusableActionsInstance().getWhenReady(txtContainerPasportNumber,10).click();
-		getReusableActionsInstance().getWhenReady(txtPasportNumber, 30).clear();
-		getReusableActionsInstance().getWhenReady(txtPasportNumber, 3).sendKeys(strPasportNumber);
+		txtPasportNumber.clear();
+		txtPasportNumber.sendKeys(strPasportNumber);
+
 	}
 
 	/**

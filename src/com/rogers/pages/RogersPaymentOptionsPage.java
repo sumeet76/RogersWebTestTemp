@@ -57,7 +57,7 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	@FindBy(xpath = "//rch-dropdown[@ng-reflect-selected-key='0']//select[contains(@id,'ds-form-input-id') and contains(@class,'select')]")
 	WebElement ddlExpiryMonth;
 
-	@FindBy(xpath = "//rch-dropdown[@ng-reflect-selected-key='2020']//select[contains(@id,'ds-form-input-id') and contains(@class,'select')]")
+	@FindBy(xpath = "//rch-dropdown[@ng-reflect-selected-key='2021']//select[contains(@id,'ds-form-input-id') and contains(@class,'select')]")
 	WebElement ddlExpiryYear;
 	
 	@FindBy(xpath = "//span[@translate='global.cta.continue']")
