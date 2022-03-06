@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  * @author praveen.kumar7
  */
 
-public class RogersBFA_TC16_Consumer_AALFinPlan_PotgShipping_DBValidation_Test extends BaseTestClass {
+public class RogersBFA_TC16_Consumer_AALFinPlan_PotgShipping_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -81,7 +81,7 @@ public class RogersBFA_TC16_Consumer_AALFinPlan_PotgShipping_DBValidation_Test e
         reporter.softAssert(getRogersDeviceConfigPage().verifyeligiblePostalCodeinBanner().contains(TestDataHandler.tc16AALFinPlanPotgShipping.getPostalCode()),
                 "Eligible postal code verified in Device Catalog page Banner is carried on to Device Config Page Banner as expected",
                 "Postal Code not matching");
-        getRogersDeviceConfigPage().selectDeviceColor(TestDataHandler.tc16AALFinPlanPotgShipping.getDeviceColor());
+        //getRogersDeviceConfigPage().selectDeviceColor(TestDataHandler.tc16AALFinPlanPotgShipping.getDeviceColor());
         reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
                 "Continue button on the device config page is present",
                 "Continue button on the device config page is not present");
@@ -127,6 +127,7 @@ public class RogersBFA_TC16_Consumer_AALFinPlan_PotgShipping_DBValidation_Test e
         getRogersCheckoutPage().clkChooseNumberbutton();
         reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(), "Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
         reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
+        getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clkDeliveryMethod("PRO");
         reporter.reportLogPassWithScreenshot("Pro on the go Delivery selected");
         reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");

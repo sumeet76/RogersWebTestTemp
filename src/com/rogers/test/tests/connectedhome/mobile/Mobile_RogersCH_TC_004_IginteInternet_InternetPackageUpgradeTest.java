@@ -40,6 +40,11 @@ public class Mobile_RogersCH_TC_004_IginteInternet_InternetPackageUpgradeTest ex
         reporter.reportLogWithScreenshot("Home Page");
     	getRogersHomePage().clkSignInMobile();    	
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
+        if (getRogersLoginPage().isOverlayContainerDisplayed()) {
+            reporter.reportLogWithScreenshot("Select Continue in browser.");
+            getRogersLoginPage().clkContinueInBrowser();
+        }
+        reporter.reportLogWithScreenshot("Continue in Browser Selected");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tcm04_SolarisInternetAccount.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tcm04_SolarisInternetAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
@@ -48,6 +53,11 @@ public class Mobile_RogersCH_TC_004_IginteInternet_InternetPackageUpgradeTest ex
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
+            reporter.reportLogWithScreenshot("Select an account.");
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tcm04_SolarisInternetAccount.getAccountDetails().getBan());
+        }
+        reporter.reportLogWithScreenshot("Account Selected");
     	reporter.hardAssert(getRogersAccountOverviewPage().verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersInternetDashboardPage().clkInternetBadgeMobile();
@@ -58,6 +68,11 @@ public class Mobile_RogersCH_TC_004_IginteInternet_InternetPackageUpgradeTest ex
         getRogersInternetDashboardPage().selectSolarisInternetPackageMobile(TestDataHandler.tcm04_SolarisInternetAccount.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getAccountDetails().getUpgradePlanFr());
         reporter.reportLogWithScreenshot("Launched the agreement page");
         getRogersInternetDashboardPage().clkInternetChangeOK();
+        if(getRogersInternetDashboardPage().verifySmartStreamHeader()){
+            reporter.reportLogWithScreenshot("Verified the smart stream modal");
+            getRogersInternetDashboardPage().clkOnNoThanks();
+        }
+        getRogersInternetDashboardPage().clkContinueToChangeInternetPackage();
 		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");
 		

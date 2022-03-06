@@ -34,7 +34,7 @@ public class Mobile_RogersCH_TC_002_Internet_BuyInternetOfferTest extends BaseTe
     	getRogersHomePage().clkEasyInternet() ;
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
-        getRogersHomePage().clkInternetAvailability();
+        getRogersHomePage().clkInternetAvailabilityMobile();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
@@ -47,10 +47,9 @@ public class Mobile_RogersCH_TC_002_Internet_BuyInternetOfferTest extends BaseTe
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         //getRogersHomePage().clkOnlyInternet();
         getRogersInternetPackageSelectionPage().clkInternetBuyContinueMobile();
-
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
-        getRogersInternetProfilePage().setEmail();
+        getRogersInternetProfilePage().setEmailMobile();
         getRogersInternetProfilePage().setFirstname();
         getRogersInternetProfilePage().setLastName();
         getRogersInternetProfilePage().setPhone();
@@ -80,9 +79,11 @@ public class Mobile_RogersCH_TC_002_Internet_BuyInternetOfferTest extends BaseTe
 
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
-        getRogersTechInstallPage().clkTechInstalConsent();
+        //getRogersTechInstallPage().clkTechInstalConsent();
+        getRogersTechInstallPage().clkProInstallUpgradeNoMobile();
         reporter.reportLogWithScreenshot("tech install details");
         getRogersTechInstallPage().clkTechInstallContinueMobile();
+        getRogersTechInstallPage().clkTechInstallContinue();
 
         reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
@@ -90,7 +91,7 @@ public class Mobile_RogersCH_TC_002_Internet_BuyInternetOfferTest extends BaseTe
         getRogersPaymentOptionsPage().switchToCreditCardIFrame();
         getRogersPaymentOptionsPage().setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
         getRogersPaymentOptionsPage().switchOutOfCreditCardIFrame();
-        getRogersPaymentOptionsPage().setCVV();
+        getRogersPaymentOptionsPage().setCVVMobile();
         getRogersPaymentOptionsPage().selectExpiryMonth();
         getRogersPaymentOptionsPage().selectExpiryYear();
         reporter.reportLogWithScreenshot("Payment options Details");
@@ -111,7 +112,6 @@ public class Mobile_RogersCH_TC_002_Internet_BuyInternetOfferTest extends BaseTe
         /**
          * DB Validations in the subscriber table
          */
-
         Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
                 .executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from billing_account where BAN='" + ban + "'", false);
 

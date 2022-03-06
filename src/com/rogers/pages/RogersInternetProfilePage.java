@@ -41,19 +41,19 @@ public class RogersInternetProfilePage extends BasePageClass {
 	@FindAll({
 	//@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and contains(@a11ydescription,'First Name')]"),
 	//@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @ng-reflect-a11y-description='Please enter your First Name.']"),
-	@FindBy(xpath = "(//input[contains(@id,'ds-form-input-id-')])[3]")})
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @ng-reflect-a11y-description='Please enter your First Name.']")})
 	WebElement txtFirstName;
 
 	@FindAll({
 	//@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and contains(@a11ydescription,'Last Name')]"),
 	//@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @ng-reflect-a11y-description='Please enter your Last Name.']")}),
-	@FindBy(xpath = "(//input[contains(@id,'ds-form-input-id-')])[4]")})
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @ng-reflect-a11y-description='Please enter your Last Name.']")})
 	WebElement txtLastName;
 
 	@FindAll({
 	//@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and contains(@a11ydescription,'Please enter your phone number')]"),
 	//@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and @a11ydescription='Please enter your phone number']")}),
-	@FindBy(xpath = "(//input[contains(@id,'ds-form-input-id-')])[5]")})
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-') and contains(@ng-reflect-a11y-description,'Please enter your phone number')]")})
 	WebElement btnPhone;
 		
 	@FindBy(xpath = "//span[@translate='global.cta.continue']")
@@ -116,6 +116,20 @@ public class RogersInternetProfilePage extends BasePageClass {
 		String strEmail = FormFiller.generateEmail();
 		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail,20);
 		getReusableActionsInstance().getWhenReady(txtContainerEmail,10).click();
+		getReusableActionsInstance().getWhenReady(txtEmail, 30).clear();
+		getReusableActionsInstance().getWhenReady(txtEmail,10).sendKeys(strEmail);
+		getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
+		getReusableActionsInstance().getWhenReady(txtConfirmEmail, 10).clear();
+		getReusableActionsInstance().getWhenReady(txtConfirmEmail,3).sendKeys(strEmail);
+	}
+	/**
+	 * Set dynamic email and confirm email on profile page
+	 * @author manpreet.kaur3
+	 */
+	public void setEmailMobile() {
+		String strEmail = FormFiller.generateEmail();
+		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail,20);
+		getReusableActionsInstance().executeJavaScriptClick(txtContainerEmail);
 		getReusableActionsInstance().getWhenReady(txtEmail, 30).clear();
 		getReusableActionsInstance().getWhenReady(txtEmail,10).sendKeys(strEmail);
 		getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);

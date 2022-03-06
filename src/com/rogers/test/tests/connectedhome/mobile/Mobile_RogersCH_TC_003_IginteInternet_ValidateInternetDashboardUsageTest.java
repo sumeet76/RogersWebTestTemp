@@ -36,6 +36,11 @@ public class Mobile_RogersCH_TC_003_IginteInternet_ValidateInternetDashboardUsag
         reporter.reportLogWithScreenshot("Home Page");
     	getRogersHomePage().clkSignInMobile();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
+        if (getRogersLoginPage().isOverlayContainerDisplayed()) {
+            reporter.reportLogWithScreenshot("Select Continue in browser.");
+            getRogersLoginPage().clkContinueInBrowser();
+        }
+        reporter.reportLogWithScreenshot("Continue in Browser Selected");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc15_SolarisInternetAccountWithUsage.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc15_SolarisInternetAccountWithUsage.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
