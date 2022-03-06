@@ -136,9 +136,9 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifLlnkLearnMoreWallToWallWifi() {
-		getReusableActionsInstance().waitForElementVisibility(lnkLearnMoreWallToWallWifi, 120);
-		WebElement btn=getReusableActionsInstance().getWhenReady(lnkLearnMoreWallToWallWifi,120);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-100);
+//		getReusableActionsInstance().waitForElementVisibility(lnkLearnMoreWallToWallWifi, 120);
+//		WebElement btn=getReusableActionsInstance().getWhenReady(lnkLearnMoreWallToWallWifi,120);
+//		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-100);
 		return getReusableActionsInstance().isElementVisible(lnkLearnMoreWallToWallWifi,120);
 	}
 
