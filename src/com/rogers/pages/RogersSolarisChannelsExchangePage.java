@@ -53,7 +53,8 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-chevron-up']/ancestor::button")
 	WebElement btnOpenConfirmSwap;
 
-	@FindBy(xpath = "//div[contains(@class,'mobile')]//button[@aria-describedby='ariaExchangeChannelsPage' ]/span")
+	//@FindBy(xpath = "//div[contains(@class,'mobile')]//button[@aria-describedby='ariaExchangeChannelsPage' ]/span")
+	@FindBy(xpath = "//div[contains(@class,'mobile')]//button[@aria-label='Confirm channel exchange and continue' ]/span")
 	WebElement btnConfirmSwapMobile;
 
 	@FindBy(xpath = "//ds-icon[@ng-reflect-color='success']/ancestor::div//span[@class='ds-icon rds-icon-right']/ancestor::a/span")
@@ -78,7 +79,7 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	WebElement btnAddChannel;
 
 	@FindBy(xpath = "//button[contains(@class,'d-inline-block -secondary -large')]")
-		WebElement btnAddChannelDifferentLogic;
+	WebElement btnAddChannelDifferentLogic;
 
 	/**
 	 * Click the Change FlexChannels link on solaris TV dashboard page
@@ -203,7 +204,8 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void swapChannelInMobile(String strInChannel) {
-		By imgChannelIn = By.xpath("//span[contains(text(),'"+ strInChannel+"')]/ancestor::div[@class='channel-chip']//span[@class='ds-icon rds-icon-info-circle ds-color-aqua']");
+		//By imgChannelIn = By.xpath("//span[contains(text(),'"+ strInChannel+"')]/ancestor::div[@class='channel-chip']//span[@class='ds-icon rds-icon-info-circle ds-color-aqua']");
+		By imgChannelIn = By.xpath("//span[contains(text(),'"+ strInChannel+"')]/ancestor::div[@class='channel-chip']//span[@class='ds-icon d-inline-flex rds-icon-info-circle ds-color-aqua']");
 		WebElement imgChannel=getDriver().findElement(imgChannelIn);
 		getReusableActionsInstance().getWhenReady(imgChannel, 30);
 		getReusableActionsInstance().executeJavaScriptClick(imgChannel);
@@ -225,7 +227,8 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void swapChannelOutMobile(String strOutChannel) {
-		By imgChannelOut = By.xpath("//span[contains(text(),'"+ strOutChannel+"')]/ancestor::div[@class='channel-chip']//span[@class='ds-icon rds-icon-info-circle ds-color-aqua']");
+		//By imgChannelOut = By.xpath("//span[contains(text(),'"+ strOutChannel+"')]/ancestor::div[@class='channel-chip']//span[@class='ds-icon rds-icon-info-circle ds-color-aqua']");
+		By imgChannelOut = By.xpath("//span[contains(text(),'"+ strOutChannel+"')]/ancestor::div[@class='channel-chip']//span[@class='ds-icon d-inline-flex rds-icon-info-circle ds-color-aqua']");
 		WebElement ChannelOut=getDriver().findElement(imgChannelOut);
 		getReusableActionsInstance().getWhenReady(ChannelOut, 30);
 		getReusableActionsInstance().executeJavaScriptClick(ChannelOut );
