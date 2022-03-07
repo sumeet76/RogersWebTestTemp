@@ -70,7 +70,8 @@ pipeline {
         FTP_PASSWORD = credentials('FTP_PASSWORD')
         ENS_USERNAME= credentials('ENS_USERNAME')
         ENS_PASSWORD= credentials('ENS_PASSWORD')
-        XRAY_PROD_CRED = credentials('XRAY_PROD_CRED')
+        XRAY_PROD_CRED_USR = credentials('XRAY_PROD_CRED_USR')
+        XRAY_PROD_CRED_PSW = credentials('XRAY_PROD_CRED_PSW')
     }
     stages {
         stage('Run CI?') {
