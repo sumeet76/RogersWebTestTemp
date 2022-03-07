@@ -48,6 +48,7 @@ pipeline {
         string(name: 'AWSPRODUrl', defaultValue: "", description: "BFA AWS PROD URL")
         string(name: 'AWSUrl', defaultValue: "", description: "BFA AWS URL")
         string(name: 'OneViewEnv', defaultValue: "", description: "One View Env")
+        string(name: 'XrayImportFlag', defaultValue: "false", description: "Flag to check whether results need to be imported in Xray")
     }
 
     triggers {
@@ -69,6 +70,7 @@ pipeline {
         FTP_PASSWORD = credentials('FTP_PASSWORD')
         ENS_USERNAME= credentials('ENS_USERNAME')
         ENS_PASSWORD= credentials('ENS_PASSWORD')
+        XRAY_PROD_CRED = credentials('XRAY_PROD_CRED')
     }
     stages {
         stage('Run CI?') {
@@ -152,10 +154,12 @@ pipeline {
                                 netstorage-upload.sh /mnt/ns/nskey.pem ./report Digital-QE/
                                 """
                                 REPORT_URL = "${REPORT_URL}" + "/report/" + destinationFolder + "/results.html"
+
+                                if (params.XrayImportFlag == 'true') {
+                                                                   sh("curl -H 'Accept-Charset: utf-8' -H 'Content-Type: multipart/form-data' -u $XRAY_PROD_CRED_USR:$XRAY_PROD_CRED_PSW -F 'file=@build/testngOutput/testng-results.xml''https://reqcentral.com/rest/raven/1.0/import/execution/testng?projectKey=RTM&testPlanKey=RTM-95676&testExecKey=RTM-95678'")
+                                                                }
                             }
-                        if (params.XrayImportFlag == 'true') {
-                                   sh("curl -H 'Accept-Charset: utf-8' -H 'Content-Type: multipart/form-data' -u $XRAY_PROD_CRED_USR:$XRAY_PROD_CRED_PSW -F 'file=@build/testngOutput/testng-results.xml''https://reqcentral.com/rest/raven/1.0/import/execution/testng?projectKey=RTM&testPlanKey=RTM-95676&testExecKey=RTM-95678'")
-                                }
+
                         }
                     }
                 }

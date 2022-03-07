@@ -44,6 +44,7 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'PageLoadStrategy', test_PageLoadStrategy
 	systemProperty 'CookieFetcherMapping', test_CookieFetcherMapping
 	systemProperty 'OVRURL', test_ovr
+	systemProperty 'XrayImportFlag', xray_import_flag
 
 	useTestNG(){
 		outputDirectory = file("$project.buildDir//testngOutput")
@@ -84,7 +85,7 @@ task "localTest"(type: Test) {
 	systemProperty 'PageLoadStrategy', test_PageLoadStrategy
 	systemProperty 'CookieFetcherMapping', test_CookieFetcherMapping
 	systemProperty 'OVRURL', test_ovr
-
+	systemProperty 'XrayImportFlag', xray_import_flag
 	systemProperties(System.getProperties())
 	outputs.upToDateWhen { false }  // Always run tests
 
@@ -141,7 +142,6 @@ sourceSets {
 
 }
 
-
 jar {
 	enabled = true
 	manifest {
@@ -149,8 +149,6 @@ jar {
 	}
 
 }
-
-
 
 configurations {
 	published
