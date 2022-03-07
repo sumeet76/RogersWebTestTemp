@@ -154,10 +154,6 @@ pipeline {
                                 """
                                 REPORT_URL = "${REPORT_URL}" + "/report/" + destinationFolder + "/results.html"
 
-                                if (params.XrayImportFlag == 'true') {
-                                printf "Execute Shellscript for XARY - REST api"
-                                      sh("curl -H 'Accept-Charset: utf-8' -H 'Content-Type: multipart/form-data' -u $XRAY_PROD_CRED_USR:$XRAY_PROD_CRED_PSW -F 'file=@build/testngOutput/testng-results.xml' 'https://reqcentral.com/rest/raven/1.0/import/execution/testng?projectKey=RTM&testPlanKey=RTM-95676&testExecKey=RTM-95678'")
-                                }
                             }
 
                         }
@@ -166,6 +162,16 @@ pipeline {
 
 
             }
+        }
+    }
+
+    post{
+        script{
+        echo "Upload execution results to JIRA"
+          if (params.XrayImportFlag == 'true') {
+          echo "Upload execution results to JIRA"
+             sh("curl -H 'Accept-Charset: utf-8' -H 'Content-Type: multipart/form-data' -u $XRAY_PROD_CRED_USR:$XRAY_PROD_CRED_PSW -F 'file=@build/testngOutput/testng-results.xml' 'https://reqcentral.com/rest/raven/1.0/import/execution/testng?projectKey=RTM&testPlanKey=RTM-95676&testExecKey=RTM-95678'")
+          }
         }
     }
 
