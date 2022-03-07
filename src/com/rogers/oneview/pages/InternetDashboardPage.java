@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
+import utils.Reporter;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	public InternetDashboardPage(WebDriver driver) {
 		super(driver);
 	}
+
 	@FindBy(xpath = "//button[@class='a-btnPrimary ng-star-inserted'] | //span[text()='Continuer' or text()='Continue']/ancestor::button")
 	WebElement btnContnue;
 
@@ -23,6 +25,8 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@class='a-btnPrimary ng-star-inserted']")
 	WebElement btnSuccessOk;
 
+	@FindBy(xpath = "//div[contains(text(), 'Ignite TV Premier')]/ancestor::div[@class='bundle-tile-wrapper']/descendant::div[@class='bundle-price__cta -group text-right']")
+	WebElement packageName;
 
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement popupLoadingFinger;
@@ -108,17 +112,34 @@ public class InternetDashboardPage  extends BasePageClass {
 	WebElement expandSeeFullDetails;
 
 	@FindBy(xpath = "//div[text() ='Ignite TV Flex 10']/following::*[text()='150 Mbps'][1]/parent::span/parent::span")
-	//@FindBy(xpath = "//input[@id='ds-radio-input-id-9']")
 	WebElement downloadSpeed;
 
 	@FindBy(xpath="(//span[text()='Sélectionner' or text()='Select']/ancestor::button)[4]")
 	WebElement igniteTVPremiumPackage;
 
-	//@FindBy(xpath = "(//span[text()='Sélectionner' or text()='Select']/ancestor::button)[2]")
-	//WebElement igniteTvFlex10;
+	@FindBy(xpath="//span[@translate='global.dashboard.internet.pods.addPods']/ancestor::button")
+	WebElement addPodsButton;
+
+	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)[1]")
+	WebElement addPodToCart;
+
+	@FindBy(xpath="//span[@class='ds-icon d-inline-flex rds-icon-plus']/ancestor::button")
+	WebElement plusButtonToAddPod;
+
+	@FindBy(xpath="//span[@class='ds-icon d-inline-flex rds-icon-minus']/ancestor::button")
+	WebElement minusButtonToRemovePod;
 
 	@FindBy(xpath = "//span[text()='Change package' or text()='Changer de forfait']")
 	WebElement changePackageBtn;
+
+	@FindBy(xpath="//p[contains(text(), 'Reached maximum')]")
+	WebElement maximumLimitReached;
+
+	@FindBy(xpath="//span[@translate='global.cta.continue']/ancestor::button")
+	WebElement continueButton;
+
+	@FindBy(xpath="//span[contains(text(),'The customer understands that someone 18 years of age or older must be present to receive the equipment delivery') or contains(text(),'Le client convient qu’une personne d’au moins 18 ans doit être présente pour recevoir l’équipement')]")
+	WebElement customerUnderstandCheckbox;
 
 	@FindBy(xpath = "//*[text()=' SmartStream ']/preceding-sibling::div[@class='ds-checkbox__box my-12']")
 	WebElement chkBtnSmartStreamSelect;
@@ -299,7 +320,9 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author suganay P
 	 * */
 	public void clickContinueChangeInternetPackage() {
-		getReusableActionsInstance().getWhenReady(btnContnueReset, 90).click();
+//		getReusableActionsInstance().getWhenReady(btnContnueReset, 90).click();
+		getReusableActionsInstance().waitForElementVisibility(btnContnueReset, 30);
+		getReusableActionsInstance().executeJavaScriptClick(btnContnueReset);
 	}
 	/*
 	 * Click on continue in Select billing date pop up
@@ -386,7 +409,9 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * */
 	public void selectInternetPackage(String strUpgradePlanEn, String strUpgradePlanFr) {
 		By packageNameLocator = By.xpath("//p[contains(text(),'"+strUpgradePlanEn+"') or contains(text(),'"+strUpgradePlanFr+"')]/ancestor::div[@class='internet-tile__body']//span[contains(text(),'Select')]/ancestor::button");
-		getReusableActionsInstance().getWhenReady(packageNameLocator, 20);
+
+
+		getReusableActionsInstance().getWhenReady(packageNameLocator, 30);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
 		getReusableActionsInstance().executeJavaScriptClick(pkg);
 	}
@@ -505,6 +530,90 @@ public class InternetDashboardPage  extends BasePageClass {
 		WebElement btn=getReusableActionsInstance().getWhenReady(btnSelectSmartStream, 60);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
 		getReusableActionsInstance().getWhenReady(btnSelectSmartStream,60).click(); }
+
+	/*
+	 * clicks  Select button
+	 * @author aditi.jain
+	 * */
+	public void clickSelectbutton() {
+//		getReusableActionsInstance().getWhenReady(packageName,60).click();
+		getReusableActionsInstance().waitForElementVisibility(packageName, 30);
+		getReusableActionsInstance().executeJavaScriptClick(packageName);
+	}
+
+
+	/*
+	 * clicks  Select button
+	 * @author aditi.jain
+	 * */
+	public void clickAddPodsButton() {
+		getReusableActionsInstance().waitForElementVisibility(addPodsButton, 30);
+		getReusableActionsInstance().scrollToElement(addPodsButton);
+		getReusableActionsInstance().executeJavaScriptClick(addPodsButton);
+	}
+
+	/*
+	 * clicks  Select button
+	 * @author aditi.jain
+	 * */
+	public void clickAddToCartForPods() {
+		getReusableActionsInstance().scrollToElement(addPodToCart);
+		getReusableActionsInstance().waitForElementVisibility(addPodToCart, 30);
+		getReusableActionsInstance().executeJavaScriptClick(addPodToCart);
+	}
+
+	/*
+	 * clicks  Select button
+	 * @author aditi.jain
+	 * */
+	public void clickContinueButton() {
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().waitForElementVisibility(continueButton, 30);
+		getReusableActionsInstance().executeJavaScriptClick(continueButton);
+	}
+
+	/*
+	 * clicks  Select button
+	 * @author aditi.jain
+	 * */
+	public void clickCustomerUnderstandCheckbox() {
+		getReusableActionsInstance().scrollToElement(customerUnderstandCheckbox);
+		getReusableActionsInstance().waitForElementVisibility(customerUnderstandCheckbox, 30);
+		getReusableActionsInstance().executeJavaScriptClick(customerUnderstandCheckbox);
+	}
+
+	/*
+	 * clicks  Select button
+	 * @author aditi.jain
+	 * */
+	public void clickPlusToAddPod() {
+		getReusableActionsInstance().scrollToElement(plusButtonToAddPod);
+
+		while(!getReusableActionsInstance().isElementVisible(maximumLimitReached, 5)){
+			getReusableActionsInstance().waitForElementVisibility(plusButtonToAddPod, 45);
+			getReusableActionsInstance().executeJavaScriptClick(plusButtonToAddPod);
+		}
+	}
+
+
+	/*
+	 * clicks  Select button
+	 * @author aditi.jain
+	 * */
+	public boolean verifyMaximumLimitReached() {
+		return getReusableActionsInstance().isElementVisible(maximumLimitReached);
+	}
+
+
+	/*
+	 * clicks  Select button
+	 * @author aditi.jain
+	 * */
+	public void clickMinusToRemovePod() {
+		getReusableActionsInstance().scrollToElement(plusButtonToAddPod);
+		getReusableActionsInstance().waitForElementVisibility(plusButtonToAddPod, 45);
+		getReusableActionsInstance().executeJavaScriptClick(plusButtonToAddPod);
+	}
 
 
 

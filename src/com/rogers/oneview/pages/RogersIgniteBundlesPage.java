@@ -50,7 +50,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[1]")
 	WebElement addToCart;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.addToCart'])[1]")
+	@FindBy(xpath = "(//span[@translate='global.cta.addToCart'])[2]")
 	WebElement firstAddToCart;
 
 	@FindBy(xpath = "//span[text()='No, continue' or text()='Non, continuer']/ancestor::button")
@@ -155,6 +155,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 	@FindBy(xpath = "//button[@rchtrackclickevent='exchangeLater']")
 	WebElement exchangeLater;
+
+
 
 	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']")
 	WebElement reviewTermsAndCondition;

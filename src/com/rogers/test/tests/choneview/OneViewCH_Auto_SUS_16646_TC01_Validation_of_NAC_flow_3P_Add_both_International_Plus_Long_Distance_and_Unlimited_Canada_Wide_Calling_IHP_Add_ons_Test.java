@@ -96,8 +96,8 @@ public class OneViewCH_Auto_SUS_16646_TC01_Validation_of_NAC_flow_3P_Add_both_In
         getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
         reporter.reportLogWithScreenshot("set Card Expiry Month And Year");
         getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-        reporter.reportLogWithScreenshot("payment details entered");
-		getPaymentOptionsPage().clkContinue();
+//        reporter.reportLogWithScreenshot("payment details entered");
+//		getPaymentOptionsPage().clkContinue();
 //		reporter.reportLogWithScreenshot("sumbit order");
 //		getRogersOVCheckoutPage().clkSubmit();
 //		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");

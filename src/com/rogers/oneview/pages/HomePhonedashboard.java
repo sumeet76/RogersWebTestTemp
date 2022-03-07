@@ -96,6 +96,7 @@ public class HomePhonedashboard  extends BasePageClass {
 	public void clickYesResetPassword() {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(btnYesResetPassword);
 		getReusableActionsInstance().getWhenReady(btnYesResetPassword,120).click();
+		getReusableActionsInstance().staticWait(60000);
 
 	}
 
@@ -119,6 +120,7 @@ public class HomePhonedashboard  extends BasePageClass {
 		WebElement btn=getReusableActionsInstance().getWhenReady(btnResetVoiceMail,120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
 		getReusableActionsInstance().clickWhenReady(btnResetVoiceMail,120);
+		getReusableActionsInstance().staticWait(60000);
 }
 
 	/**

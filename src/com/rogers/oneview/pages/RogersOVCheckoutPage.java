@@ -1769,6 +1769,8 @@ public class RogersOVCheckoutPage extends BasePageClass {
 		getReusableActionsInstance().staticWait(120000);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().clickWhenReady(submitButton);
+		getReusableActionsInstance().staticWait(60000);
+
 	}
 	/**
 	 * To verify Billing Details in the Billing Payment option stepper
