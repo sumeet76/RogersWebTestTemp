@@ -46,6 +46,7 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'OVRURL', test_ovr
 
 	useTestNG(){
+		outputDirectory = file("$project.buildDir//testngOutput")
 		parallel = test_parallel
 		threadCount = test_threadCount as int
 		Set listeners = [ "extentreport.ExtentListener" , "com.rogers.test.listeners.AnnotationTransformer"]
@@ -88,6 +89,7 @@ task "localTest"(type: Test) {
 	outputs.upToDateWhen { false }  // Always run tests
 
 	useTestNG() {
+		outputDirectory = file("$project.buildDir//testngOutput")
 		parallel = test_parallel
 		threadCount = test_threadCount as int
 		Set listeners = [ "extentreport.ExtentListener" , "com.rogers.test.listeners.AnnotationTransformer"]
