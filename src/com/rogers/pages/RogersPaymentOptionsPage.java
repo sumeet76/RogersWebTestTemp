@@ -50,14 +50,14 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	@FindBy(xpath = "//input[contains(@class,'ds-input') and contains(@id,'ds-form-input-id-')]")
 	WebElement txtCVV;
 
-	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex position-relative ds-bgcolor-white ds-borders ng-tns-c73-72 ds-corners ds-brcolor-slate']")
+	@FindBy(xpath = "//input[contains(@class,'ds-input') and contains(@id,'ds-form-input-id-')]/..")
 	WebElement txtContainerCVV;
 	
 
-	@FindBy(xpath = "//rch-dropdown//select[contains(@id,'ds-form-input-id-39') and contains(@class,'select')]")
+	@FindBy(xpath = "(//select[contains(@class,'-select') and contains(@id,'ds-form-input-id-')])[2]")
 	WebElement ddlExpiryMonth;
 
-	@FindBy(xpath = "//rch-dropdown//select[contains(@id,'ds-form-input-id-40') and contains(@class,'select')]")
+	@FindBy(xpath = "(//select[contains(@class,'-select') and contains(@id,'ds-form-input-id-')])[3]")
 	WebElement ddlExpiryYear;
 	
 	@FindBy(xpath = "//span[@translate='global.cta.continue']")
