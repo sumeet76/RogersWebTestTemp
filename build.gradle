@@ -48,6 +48,7 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 
 	useTestNG(){
 		outputDirectory = file("$project.buildDir//testngOutput")
+		useDefaultListeners = true
 		parallel = test_parallel
 		threadCount = test_threadCount as int
 		Set listeners = [ "extentreport.ExtentListener" , "com.rogers.test.listeners.AnnotationTransformer"]
@@ -91,6 +92,7 @@ task "localTest"(type: Test) {
 
 	useTestNG() {
 		outputDirectory = file("$project.buildDir//testngOutput")
+		useDefaultListeners = true
 		parallel = test_parallel
 		threadCount = test_threadCount as int
 		Set listeners = [ "extentreport.ExtentListener" , "com.rogers.test.listeners.AnnotationTransformer"]
