@@ -16,9 +16,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindAll({
-			@FindBy(xpath = "//p[contains(text(),'SPECIAL OFFER')]"),
-			@FindBy(xpath = "//p[contains(@class,'dsa-billboard__overline')]")})
+	@FindBy(xpath = "//p[contains(@class,'dsa-billboard__overline')]")
 	WebElement txtSpecialOffer;
 
 
