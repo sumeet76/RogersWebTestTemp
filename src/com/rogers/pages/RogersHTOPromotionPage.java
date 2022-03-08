@@ -32,7 +32,10 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	@FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]")
 	WebElement chkUpgrade;
 
-	@FindBy(xpath = "//a[contains(@class,'upgrade-today')]/span")
+	@FindBy(xpath ="//div[@class='ng-star-inserted overlay nsm-overlay-open']")
+	WebElement overlayPromoPage;
+
+	@FindBy(xpath = "//a[contains(@class,'upgrade-today')]/span/span")
 	WebElement btnReviewYourUpgrade;
 
 	@FindBy(xpath = "//div[@class='bundle-offer-details']")
@@ -93,7 +96,11 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void clickReviewYourUpgrade() {
-		getReusableActionsInstance().clickWhenReady(btnReviewYourUpgrade, 40);
+		if(getReusableActionsInstance().isElementVisible(overlayPromoPage,2))
+		{
+			getReusableActionsInstance().waitForElementInvisibility(overlayPromoPage,5);
+		}
+		getReusableActionsInstance().getWhenReady(btnReviewYourUpgrade, 60).click();
 	}
 
 	/**
