@@ -309,7 +309,11 @@ public class TestDataHandler {
 	public static AccountData User_New_Profile_Creation;
 	public static AccountData Make_a_Payment_EN;
 	public static AccountData Oasys_Gap_Closure_Change_Internet_via_Serviceability_Model;
-
+	public static AccountData IgniteOffersChangeTV_INTpackage;
+	public static AccountData ViewBill;
+	public static AccountData IgniteOffers_SAI_Adding_ISS;
+	public static AccountData IPTVDasboad_MulitplsSTB;
+	public static AccountData Chargeable_pods;
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
  		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
@@ -677,6 +681,11 @@ public class TestDataHandler {
 		ChangeTvViaServiceability=YamlHandler.getOVAccountData("ChangeTvViaServiceability");
 		Make_a_Payment_EN= YamlHandler.getOVAccountData("Make_a_Payment_EN");
 		Oasys_Gap_Closure_Change_Internet_via_Serviceability_Model= YamlHandler.getOVAccountData("Oasys_Gap_Closure_Change_Internet_via_Serviceability_Model");
+		IgniteOffersChangeTV_INTpackage= YamlHandler.getOVAccountData("Ignite0ffersChangeTV_INTpackage");
+		IgniteOffers_SAI_Adding_ISS= YamlHandler.getOVAccountData("IgniteOffers_SAI_Adding_ISS");
+		IPTVDasboad_MulitplsSTB= YamlHandler.getOVAccountData("IPTVDasboad_MulitplsSTB");
+		ViewBill= YamlHandler.getOVAccountData("ViewBill");
+		Chargeable_pods= YamlHandler.getOVAccountData("Chargeable_pods");
 	}
 
 	private static void ovrDataInit() throws FileNotFoundException {
