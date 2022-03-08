@@ -35,12 +35,6 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	@FindBy(xpath = "//a[contains(@class,'upgrade-today')]/span")
 	WebElement btnReviewYourUpgrade;
 
-
-//div[contains(@class,'current-bundle')]/h3[contains(text(),'Includes')]
-//div[contains(@class,'-promo-details-plan-')]
-//div[@class='bundle-offer-details__content__price']//div[@class='ds-price'] == $204.99 /mo*
-//div[@class='bundle-offer-details__content__price']//div[@class='ds-price__amountDollars text-semi ng-star-inserted'] == 204
-
 	@FindBy(xpath = "//div[@class='bundle-offer-details']")
 	WebElement divOfferBundleContainer;
 
@@ -55,9 +49,6 @@ public class RogersHTOPromotionPage extends BasePageClass {
 
 	@FindBy(xpath = "//button[@aria-label='Close this pop-up']/span")
 	WebElement btnCloseThisPopup;
-
-
-
 
 	/**
 	 * To verify the Home page

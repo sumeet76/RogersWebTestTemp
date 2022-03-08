@@ -75,6 +75,7 @@ public class RogersCH_TC_110_SAI_SAIHTO_Validate$0ExpressSetupFee_CourierFulfilm
         reporter.hardAssert(getRogersAccountOverviewPage().verifySpecialOfferBadge(),"Special Offer Recommendation Badge Available","Special Offer Recommendation Badge not available");
         getRogersAccountOverviewPage().clkSpecialOfferBadge();
         reporter.reportLogWithScreenshot("Clicked on the Special Offer Recommendation Bagde");
+
         reporter.hardAssert(getRogersHTOPRomotionPage().verifyPromotionPage(),"Promotion Page Available","Promotion Page not available");
         reporter.reportLogWithScreenshot("On Promotion Page");
         reporter.hardAssert(getRogersHTOPRomotionPage().verifyCurrentBundle(),"Old Bundle details Available","Old Bundle details not Available");
@@ -93,6 +94,33 @@ public class RogersCH_TC_110_SAI_SAIHTO_Validate$0ExpressSetupFee_CourierFulfilm
         reporter.reportLogWithScreenshot("Clicked on the Upgrade checkbox");
         getRogersHTOPRomotionPage().clickReviewYourUpgrade();
         reporter.reportLogWithScreenshot("Clicked on Review Your Upgrade button");
+
+        reporter.hardAssert(getRogersOrderReviewPage().verifyTargetedOfferOrderReviewPage(),"Order Review Page has launched","Order Review Page has not launched");
+        reporter.reportLogWithScreenshot("Launched the order review page");
+
+        reporter.hardAssert(getRogersOrderReviewPage().verifyOneTimeChargeToBeZero(),"One-Time charge is $0.00","One-Time charge is not $0.00");
+        reporter.reportLogWithScreenshot("reviewed One-Time charge to be $0.00");
+
+        getRogersOrderReviewPage().clkShowPriceBreakdown();
+        reporter.reportLogWithScreenshot("Expand the Show Price Breakdown button under One-Time Charges block");
+        reporter.hardAssert(getRogersOrderReviewPage().verifyFulfillmentType(),"Fulfillment Type is Courier Delivery","Fulfillment Type is not Courier Delivery");
+        reporter.reportLogWithScreenshot(" Verfified Fulfillment Type to be Courier Delivery");
+
+        reporter.hardAssert(getRogersOrderReviewPage().verifyInstallationDetailsHeader(),"Installation Details is present","Installation Details not present");
+        reporter.reportLogWithScreenshot(" Verfified installation details header");
+
+        getRogersOrderReviewPage().clkActivationCheckbox();
+        reporter.reportLogWithScreenshot(" Clicked on Activation Checkbox");
+
+        reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
+
+        getRogersOrderReviewPage().clkAgreementCheckbox();
+        reporter.reportLogWithScreenshot("Agreement details");
+     /*   getRogersOrderReviewPage().clkSubmit();
+        reporter.reportLogWithScreenshot("Launched the Confirmation page");
+
+        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
+        reporter.reportLogWithScreenshot("Launched the Confirmation page"); */
     }
 
     @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
