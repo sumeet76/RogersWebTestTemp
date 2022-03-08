@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
 
 
 public class OneViewCH_Auto_1544_TC01_Add_Themepack_Immediate_Test extends BaseTestClass {
-	@Test (groups = {"RegressionCHOV"})
+	@Test (groups = {"AprilSanity", "RegressionCHOV"})
 	public void oneViewCH_1544_TC01_AddThemepackImmediate(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.addThemepackImmediate.getAccountNo(), TestDataHandler.addThemepackImmediate.getContactID());
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
