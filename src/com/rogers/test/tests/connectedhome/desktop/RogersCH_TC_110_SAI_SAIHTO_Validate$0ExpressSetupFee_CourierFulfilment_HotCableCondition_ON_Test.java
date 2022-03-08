@@ -93,9 +93,6 @@ public class RogersCH_TC_110_SAI_SAIHTO_Validate$0ExpressSetupFee_CourierFulfilm
         reporter.reportLogWithScreenshot("Clicked on the Upgrade checkbox");
         getRogersHTOPRomotionPage().clickReviewYourUpgrade();
         reporter.reportLogWithScreenshot("Clicked on Review Your Upgrade button");
-
-
-
     }
 
     @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
