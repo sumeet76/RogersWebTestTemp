@@ -33,7 +33,7 @@ import java.util.Map;
  * 12. Click on review your upgrade
  * 13. Verify Order Review header
  * 14. Verify One-Time charges and credits be $0
- * 15. Verify Installation details - Ignite Express Setup Header
+ * 15. Verify Installation details - Ignite Express Setup Header, fulfilment type: courier delivery, tech install for 3p
  * 16. Click on Learn more about Courier Delivery link
  * 17. Click close Ignite Express Setup popup
  * 18. Use Service Address
@@ -67,15 +67,32 @@ public class RogersCH_TC_110_SAI_SAIHTO_Validate$0ExpressSetupFee_CourierFulfilm
             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc110_StandaloneInternetAccount.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account Selected");
-       /** if modal title //h2[@translate='EOP.NEW_OFFER_NOTIFICATION.sai.header']
-        * click close //button[@data-dtname='x-close-ignite migration-alert']/span
-        * or click view my offer //button[@translate='EOP.CTAS.takeMeThere.label']
-        **/
+        if (getRogersAccountOverviewPage().isNewOfferModalDisplayed()) {
+            reporter.reportLogWithScreenshot("New Offer Modal Popup");
+            getRogersAccountOverviewPage().clkCloseNewOfferModalPopup();
+        }
+        reporter.reportLogWithScreenshot("New Offer Modal Popup closed");
         reporter.hardAssert(getRogersAccountOverviewPage().verifySpecialOfferBadge(),"Special Offer Recommendation Badge Available","Special Offer Recommendation Badge not available");
         getRogersAccountOverviewPage().clkSpecialOfferBadge();
         reporter.reportLogWithScreenshot("Clicked on the Special Offer Recommendation Bagde");
-        getDriver().findElement(By.xpath("//p[contains(@class,'dsa-billboard__overline')]")).getText();
+        reporter.hardAssert(getRogersHTOPRomotionPage().verifyPromotionPage(),"Promotion Page Available","Promotion Page not available");
         reporter.reportLogWithScreenshot("On Promotion Page");
+        reporter.hardAssert(getRogersHTOPRomotionPage().verifyCurrentBundle(),"Old Bundle details Available","Old Bundle details not Available");
+        reporter.reportLogWithScreenshot("Verified Old bundle Details");
+        reporter.hardAssert(getRogersHTOPRomotionPage().verifyOfferBundle(),"New Bundle details Available","New Bundle details not Available");
+        reporter.reportLogWithScreenshot("Verified New bundle Details");
+        getRogersHTOPRomotionPage().clickLearnMore();
+        reporter.reportLogWithScreenshot("Clicked on Learn More Link");
+        getRogersHTOPRomotionPage().clickViewNextFeature();
+        reporter.reportLogWithScreenshot("Clicked on View Next Feature Button");
+        getRogersHTOPRomotionPage().clickViewPreviousFeature();
+        reporter.reportLogWithScreenshot("Clicked on View Previous Feature Button");
+        getRogersHTOPRomotionPage().clickClosePopup();
+        reporter.reportLogWithScreenshot("Clicked on Close Button");
+        getRogersHTOPRomotionPage().clickIWantThisUpgrade();
+        reporter.reportLogWithScreenshot("Clicked on the Upgrade checkbox");
+        getRogersHTOPRomotionPage().clickReviewYourUpgrade();
+        reporter.reportLogWithScreenshot("Clicked on Review Your Upgrade button");
 
 
 

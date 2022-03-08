@@ -136,6 +136,12 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[@ng-show='loadingImg']")
 	WebElement imgLoadingFingers;
+
+	@FindBy(xpath = "//h2[@translate='EOP.NEW_OFFER_NOTIFICATION.sai.header']")
+	WebElement headerOfferNotificationModal;
+
+	@FindBy(xpath = "//button[@data-dtname='x-close-ignite migration-alert']/span")
+	WebElement btnCloseOfferModal;
 	
 	@FindAll({
         @FindBy(xpath = "//a[text()='Profile & Settings' or contains(text(),'Profil et param')]"),
@@ -157,7 +163,6 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='ute-secondLevelNav-bar-m']//button//span[@data-translate='ute.common.label.overview']"),
 	@FindBy(xpath = "//button[contains(text(),'Overview') or contains(text(),'Survol')]")})
 	WebElement btnOverViewMobile;
-	
 				
 	@FindAll({
 	@FindBy(xpath = "//div[@class='ute-secondLevelNav-bar-m']//button//span[@data-translate='ute.common.label.billAndPayment']"),
@@ -2311,5 +2316,13 @@ public boolean verifyPTPWidgetIsDisplayed() {
 			}
 		}
 		return  found;
+	}
+
+	public void clkCloseNewOfferModalPopup() {
+		getReusableActionsInstance().clickWhenReady(btnCloseOfferModal, 30);
+	}
+
+	public boolean isNewOfferModalDisplayed() {
+		return getReusableActionsInstance().isElementVisible(headerOfferNotificationModal, 40);
 	}
 }
