@@ -39,6 +39,11 @@ public class Mobile_RogersCH_TC_006_IginteTV_TVChannelsSwapTest extends BaseTest
      reporter.reportLogWithScreenshot("Home Page");
      getRogersHomePage().clkSignInMobile();
      reporter.reportLogWithScreenshot("Launched the SignIn popup");
+     if (getRogersLoginPage().isOverlayContainerDisplayed()) {
+      reporter.reportLogWithScreenshot("Select Continue in browser.");
+      getRogersLoginPage().clkContinueInBrowser();
+     }
+     reporter.reportLogWithScreenshot("Continue in Browser Selected");
     getRogersLoginPage().setUsernameIFrame(TestDataHandler.tcm06_IgniteTVAccount.getUsername());
     getRogersLoginPage().setPasswordIFrame(TestDataHandler.tcm06_IgniteTVAccount.getPassword());
     reporter.reportLogWithScreenshot("Enter the account credentails");

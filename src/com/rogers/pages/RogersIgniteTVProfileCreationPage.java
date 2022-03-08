@@ -9,8 +9,8 @@ import org.openqa.selenium.support.FindBy;
 import com.rogers.pages.base.BasePageClass;
 
 import utils.FormFiller;
-
 public class RogersIgniteTVProfileCreationPage extends BasePageClass {
+
 
 	public RogersIgniteTVProfileCreationPage(WebDriver driver) {
 		super(driver);
@@ -21,33 +21,35 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	
 	@FindBy(xpath = "(//div[contains(@class,'ds-formField__inputContainer')])[1]")
 	WebElement txtContainerEmail;
+
+	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
+	WebElement txtContainerConfirmEmail;
 	
-		@FindBy(xpath = "//input[@name='email']")
+	@FindBy(xpath = "//input[@name='email']")
 	WebElement txtEmail;
-		//input[@id='ds-form-input-id-14']
 		
 	@FindBy(xpath = "//input[@name='confirmEmail']")
 	WebElement txtConfirmEmail;
-	//input[@id='ds-form-input-id-15']
 
 	@FindAll({
 	//@FindBy(xpath = "//input[contains(@a11ydescription,'First Name')]"),
-	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'First Name')]"),
-	//@FindBy(xpath = "//input[contains(@aria-label,'First Name')]")
+	//@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'First Name')]"),
+	@FindBy(xpath = "(//ds-form-field[@rchapiexposer='customerDetails.firstName']/descendant::input[contains(@id,'ds-form-input-id-')])[1]")
+
 	})
 	WebElement txtFirstName;
 
 	@FindAll({
 	//@FindBy(xpath = "//input[contains(@a11ydescription,'Last Name')]"),
-	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'Last Name')]"),
-	//@FindBy(xpath = "//input[contains(@aria-label,'Last Name')]")
+	//@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'Last Name')]"),
+	@FindBy(xpath = "(//ds-form-field[@rchapiexposer='customerDetails.firstName']/descendant::input[contains(@id,'ds-form-input-id-')])[2]")
 	})
 	WebElement txtLastName;
 
 	@FindAll({
 	//@FindBy(xpath = "//input[contains(@a11ydescription,'your phone number')]"),
 	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'your phone number')]"),
-	//@FindBy(xpath = "//input[contains(@aria-label,'your phone number')]")
+	@FindBy(xpath = "//div[contains(text(),'phone')]//preceding::input[contains(@id,'ds-form-input-id-')][1]")
 	})
 	WebElement btnPhone;
 
@@ -95,14 +97,13 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 */
 	public void setEmailMobile() {
 		String strEmail = FormFiller.generateEmail();
-		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail,90);
-		getReusableActionsInstance().getWhenReady(txtContainerEmail,10).click();
-        getReusableActionsInstance().executeJavaScriptClick(txtEmail);
-        txtEmail.clear();
-        txtEmail.sendKeys(strEmail);
-        getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
-        txtConfirmEmail.clear();
-        txtConfirmEmail.sendKeys(strEmail); 
+		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail,20);
+		getReusableActionsInstance().executeJavaScriptClick(txtContainerEmail);
+		getReusableActionsInstance().getWhenReady(txtEmail, 30).clear();
+		getReusableActionsInstance().getWhenReady(txtEmail,10).sendKeys(strEmail);
+		getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
+		getReusableActionsInstance().getWhenReady(txtConfirmEmail, 10).clear();
+		getReusableActionsInstance().getWhenReady(txtConfirmEmail,3).sendKeys(strEmail);
 	}
 
 	/**
@@ -111,31 +112,29 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 */
 	public void setEmail() {
 		String strEmail = FormFiller.generateEmail();
-		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail,90);
-		getReusableActionsInstance().getWhenReady(txtContainerEmail,10).click();
-		getReusableActionsInstance().clickWhenReady(txtEmail);
-		txtEmail.clear();
-		txtEmail.sendKeys(strEmail);
+		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail, 20);
+		getReusableActionsInstance().getWhenReady(txtContainerEmail, 10).click();
+		getReusableActionsInstance().getWhenReady(txtEmail, 30).clear();
+		getReusableActionsInstance().getWhenReady(txtEmail, 10).sendKeys(strEmail);
 		getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
-		txtConfirmEmail.clear();
-		txtConfirmEmail.sendKeys(strEmail);
+		getReusableActionsInstance().getWhenReady(txtConfirmEmail, 10).clear();
+		getReusableActionsInstance().getWhenReady(txtConfirmEmail, 3).sendKeys(strEmail);
 	}
-
 	/**
 	 * Set dynamic email and confirm email on profile page
 	 * @author Chinnarao.Vattam
 	 */
 	public void setEmail(String strEmail) {
-		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail,90);
-		getReusableActionsInstance().getWhenReady(txtContainerEmail,10).click();
+		getReusableActionsInstance().waitForElementVisibility(txtContainerEmail, 90);
+		getReusableActionsInstance().getWhenReady(txtContainerEmail, 10).click();
 		getReusableActionsInstance().clickWhenReady(txtEmail);
 		txtEmail.clear();
 		txtEmail.sendKeys(strEmail);
 		getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
 		txtConfirmEmail.clear();
 		txtConfirmEmail.sendKeys(strEmail);
-	}
 
+	}
 	/**
 	 * Set dynamic first name on profile page
 	 * @author Chinnarao.Vattam

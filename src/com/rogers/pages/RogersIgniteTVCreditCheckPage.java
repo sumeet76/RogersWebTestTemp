@@ -15,44 +15,44 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 		super(driver);
 	}
 	
-	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.year']//select[contains(@id,'ds-form-input-id-')]")
+	@FindBy(xpath = "(//rch-dropdown/div[@class='dropdown-component']//select[contains(@id,'ds-form-input-id-')])[1]")
 	WebElement ddlCreditCheckYear;
 
-	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.month']//select[contains(@id,'ds-form-input-id-')]")
+	@FindBy(xpath = "(//rch-dropdown/div[@class='dropdown-component']//select[contains(@id,'ds-form-input-id-')])[2]")
 	WebElement ddlCreditCheckMonth;
 	
 	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.month']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlCreditCheckMonthMigration;
 	
-	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.day']//select[contains(@id,'ds-form-input-id-')]")
+	@FindBy(xpath = "(//rch-dropdown/div[@class='dropdown-component']//select[contains(@id,'ds-form-input-id-')])[3]")
 	WebElement ddlCreditCheckDay;
 	
 	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.day']//select[contains(@id,'ds-form-input-id-')]")
 	WebElement ddlCreditCheckDayMigration;
 	
-	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.firstIdOp']//select[contains(@id,'ds-form-input-id-')]")
+	@FindBy(xpath = "(//rch-dropdown/div[@class='dropdown-component']//select[contains(@id,'ds-form-input-id-')])[4]")
 	WebElement ddlFirstID;
 	
-	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.enterYour']//select[contains(@id,'ds-form-input-id-')]")
+	@FindBy(xpath = "(//rch-dropdown/div[@class='dropdown-component']//select[contains(@id,'ds-form-input-id-')])[5]")
 	WebElement ddlProvince;
 		
-	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.driving_l']//select[contains(@id,'ds-form-input-id-')])[1]")
+	@FindBy(xpath = "(//rch-dropdown/div[@class='dropdown-component']//select[contains(@id,'ds-form-input-id-')])[6]")
 	WebElement ddlExpiryYear;
 	
-	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.driving_l']//select[contains(@id,'ds-form-input-id-')])[2]")
+	@FindBy(xpath = "(//rch-dropdown/div[@class='dropdown-component']//select[contains(@id,'ds-form-input-id-')])[7]")
 	WebElement ddlExpiryMonth;
 
-	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.driving_l']//select[contains(@id,'ds-form-input-id-')])[3]")
+	@FindBy(xpath = "(//rch-dropdown/div[@class='dropdown-component']//select[contains(@id,'ds-form-input-id-')])[8]")
 	WebElement ddlExpiryDay;
 		
-	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'Please enter your driver')]")
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-')]")
 	WebElement txtLicenseNumber;
 	//input[contains(@aria-label,'license number') or  contains(@aria-label,'de licence')]
 
-	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.secondIdO']//select[contains(@id,'ds-form-input-id-')]")
+	@FindBy(xpath = "(//rch-dropdown/div[@class='dropdown-component']//select[contains(@id,'ds-form-input-id-')])[9]")
 	WebElement ddlSecondIdOption;
 	
-	@FindBy(xpath = "//input[@ng-reflect-a11y-description='Please enter your passport num']")
+	@FindBy(xpath = "//div[@class='passport-component']//input[contains(@id,'ds-form-input-id-')]")
 	WebElement txtPasportNumber;
 	//div[@class='passport-component']//input[@aria-label='Please enter your passport number']
 
@@ -71,13 +71,13 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	@FindBy(xpath = "//ds-modal//input[contains(@id,'canada-post-address-complete')]")
 	WebElement TxtReskRuleaddress;
 
-	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.passport_']//select[contains(@id,'ds-form-input-id-')])[1]")
+	@FindBy(xpath = "(//rch-dropdown/div[@class='dropdown-component']//select[contains(@id,'ds-form-input-id-')])[10]")
 	WebElement ddlPassportExpiryYear;
 		
-	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.passport_']//select[contains(@id,'ds-form-input-id-')])[2]")
+	@FindBy(xpath = "(//rch-dropdown/div[@class='dropdown-component']//select[contains(@id,'ds-form-input-id-')])[11]")
 	WebElement ddlPassportExpiryMonth;
 	
-	@FindBy(xpath = "(//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.passport_']//select[contains(@id,'ds-form-input-id-')])[3]")
+	@FindBy(xpath = "(//rch-dropdown/div[@class='dropdown-component']//select[contains(@id,'ds-form-input-id-')])[12]")
 	WebElement ddlPassportExpiryDay;
 		
 	@FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]")
@@ -88,10 +88,10 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	//button[@class='ute-btn-primary']
 	//button[contains(@class,'-primary -large')]
 	
-	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex position-relative ds-bgcolor-white ds-borders ds-brcolor-slate ds-corners']")
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-')]/..")
 	WebElement txtContainer;
 	
-	@FindBy(xpath = "//div[@class='passport-component']//div[@class='ds-formField__inputContainer d-flex position-relative ds-bgcolor-white ds-borders ds-brcolor-slate ds-corners']")
+	@FindBy(xpath = "//div[@class='passport-component']//input[contains(@id,'ds-form-input-id-')]/..")
 	WebElement txtContainerPasportNumber;
 
 	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
@@ -441,10 +441,10 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	public void setPassportNumberMobile() {
 		String strPasportNumber = FormFiller.generatePassportNumber();
 		getReusableActionsInstance().waitForElementVisibility(txtContainerPasportNumber,30);
-		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 		getReusableActionsInstance().getWhenReady(txtContainerPasportNumber,10).click();
-		getReusableActionsInstance().getWhenReady(txtPasportNumber, 30).clear();
-		getReusableActionsInstance().getWhenReady(txtPasportNumber, 3).sendKeys(strPasportNumber);
+		txtPasportNumber.clear();
+		txtPasportNumber.sendKeys(strPasportNumber);
+
 	}
 
 	/**
