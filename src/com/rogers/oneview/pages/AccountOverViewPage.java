@@ -611,6 +611,8 @@ public class AccountOverViewPage extends BasePageClass {
         getReusableActionsInstance().clickWhenReady(LearnMoreAboutWallWiFiLink,45);
     }
 
-
+    public void goToPageBottom() {
+        getReusableActionsInstance().javascriptScrollToBottomOfPage();
+    }
 
 }
