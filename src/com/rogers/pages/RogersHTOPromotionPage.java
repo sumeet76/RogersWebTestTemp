@@ -35,7 +35,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	@FindBy(xpath ="//div[@class='ng-star-inserted overlay nsm-overlay-open']")
 	WebElement overlayPromoPage;
 
-	@FindBy(xpath = "//a[contains(@class,'upgrade-today')]/span/span")
+	@FindBy(xpath = "//a[contains(@class,'upgrade-today')]/span")
 	WebElement btnReviewYourUpgrade;
 
 	@FindBy(xpath = "//div[@class='bundle-offer-details']")
@@ -89,6 +89,8 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 */
 	public void clickIWantThisUpgrade() {
 		getReusableActionsInstance().clickIfAvailable(chkUpgrade, 40);
+		getReusableActionsInstance().waitForElementInvisibilityNOException(overlayPromoPage,10);
+		getReusableActionsInstance().staticWait(2000);
 	}
 
 	/**
@@ -96,10 +98,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void clickReviewYourUpgrade() {
-		if(getReusableActionsInstance().isElementVisible(overlayPromoPage,2))
-		{
-			getReusableActionsInstance().waitForElementInvisibility(overlayPromoPage,5);
-		}
+		getReusableActionsInstance().waitForElementVisibility(btnReviewYourUpgrade, 30);
 		getReusableActionsInstance().getWhenReady(btnReviewYourUpgrade, 60).click();
 	}
 
@@ -133,6 +132,18 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 */
 	public void clickClosePopup() {
 		getReusableActionsInstance().clickWhenReady(btnCloseThisPopup, 30);
+	}
+
+	/**
+	 * To verify the Offer is displayed right on order review page
+	 * @return true if it matches the offer price on promotion page, else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyBundleOfferPrice(String offerPrice, String customPrice) {
+		if(offerPrice.equals(customPrice)){
+			return true;
+		}
+		return false;
 	}
 }
 

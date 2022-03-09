@@ -52,7 +52,7 @@ public class RogersCH_TC_110_SAI_SAIHTO_Validate$0ExpressSetupFee_CourierFulfilm
 
     @Test(groups = {"RegressionCH",""})
     public void checkTargetedOfferForSAI() {
-        getRogersHomePage().clkSignIn();
+       // getRogersHomePage().clkSignIn();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc110_StandaloneInternetAccount.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc110_StandaloneInternetAccount.getPassword());
@@ -82,6 +82,10 @@ public class RogersCH_TC_110_SAI_SAIHTO_Validate$0ExpressSetupFee_CourierFulfilm
         reporter.reportLogWithScreenshot("Verified Old bundle Details");
         reporter.hardAssert(getRogersHTOPRomotionPage().verifyOfferBundle(),"New Bundle details Available","New Bundle details not Available");
         reporter.reportLogWithScreenshot("Verified New bundle Details");
+
+        String offerPrice = getRogersOrderReviewPage().getOfferPrice();
+        System.out.println(offerPrice);
+
         getRogersHTOPRomotionPage().clickLearnMore();
         reporter.reportLogWithScreenshot("Clicked on Learn More Link");
         getRogersHTOPRomotionPage().clickViewNextFeature();
@@ -98,6 +102,11 @@ public class RogersCH_TC_110_SAI_SAIHTO_Validate$0ExpressSetupFee_CourierFulfilm
         reporter.hardAssert(getRogersOrderReviewPage().verifyTargetedOfferOrderReviewPage(),"Order Review Page has launched","Order Review Page has not launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
 
+        String customPrice = getRogersOrderReviewPage().getCustomPrice();
+        System.out.println(customPrice);
+
+        reporter.hardAssert(getRogersHTOPRomotionPage().verifyBundleOfferPrice(offerPrice, customPrice),"Price match","Price unmatch");
+        reporter.reportLogWithScreenshot("Price match on Order review page with promo page");
         reporter.hardAssert(getRogersOrderReviewPage().verifyOneTimeChargeToBeZero(),"One-Time charge is $0.00","One-Time charge is not $0.00");
         reporter.reportLogWithScreenshot("reviewed One-Time charge to be $0.00");
 

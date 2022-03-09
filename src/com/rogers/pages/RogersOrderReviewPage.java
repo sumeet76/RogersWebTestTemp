@@ -181,7 +181,11 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//ds-checkbox[@formcontrolname='agreeCondition']/label")
 	WebElement chkAgreement;
 
+	@FindBy(xpath = "//div[@class= 'row custom-note']//ds-price[@class='custom-price']//div[contains(@class,'ds-price__amountDollars')]")
+	WebElement lblCustomPrice;
 
+	@FindBy(xpath = "//div[@class='bundle-offer-details__content__price']//div[@class='ds-price__amountDollars text-semi ng-star-inserted']")
+	WebElement lblOfferPrice;
 
 
 
@@ -541,7 +545,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public boolean verifyTargetedOfferOrderReviewPage() {
-		getReusableActionsInstance().waitForElementVisibility(lblOrderReview, 90);
+		getReusableActionsInstance().waitForElementVisibility(lblOrderReview, 120);
 		return getReusableActionsInstance().isElementVisible(lblOrderReview);
 	}
 
@@ -600,5 +604,21 @@ public class RogersOrderReviewPage extends BasePageClass {
 
 		getReusableActionsInstance().getWhenReady(chkTerms, 60).click();
 		getReusableActionsInstance().getWhenReady(chkAgreement, 60).click();
+	}
+
+	/**
+	 * Get the custom price for HTO offer
+	 * @author Manpreet.kaur3
+	 */
+	public String getCustomPrice() {
+		return getReusableActionsInstance().getWhenVisible(lblCustomPrice, 30).getText();
+	}
+
+	/**
+	 * Get the bundle offer price for HTO offer
+	 * @author Manpreet.kaur3
+	 */
+	public String getOfferPrice() {
+		return getReusableActionsInstance().getWhenVisible(lblOfferPrice, 30).getText();
 	}
 }
