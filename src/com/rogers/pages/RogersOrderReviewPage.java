@@ -155,9 +155,40 @@ public class RogersOrderReviewPage extends BasePageClass {
 	WebElement popupLoadingFingersInternet;	
 	
 	@FindBy(xpath = "//Span[@checkout-res='checkout_review_order']")
-	WebElement lblReviewYourorder;	
-	
-	
+	WebElement lblReviewYourorder;
+
+	@FindBy(xpath = "//h1[@translate='global.targetedOffer.label.orderReview']")
+	WebElement lblOrderReview;
+
+	@FindBy(xpath = "//section[@class='review__section -pt28 apply-tile']//ds-price[@class='custom-price ng-star-inserted']/div[@aria-label='$0.00']")
+	WebElement lblZeroOneTimeCharge;
+
+	@FindBy(xpath = "//section[@class='review__section -pt28 apply-tile']//button[@aria-label='Show breakdown for One-time charges']")
+	WebElement btnShowPriceBreakdown;
+
+	@FindBy(xpath = "//section[@class='review__section -pt28 apply-tile']//div[@class='d-flex align-items-center']/div[contains(text(),'Courier Delivery')]")
+	WebElement lblFulfillmentType;
+
+	@FindBy(xpath = "//h2[@class='identity-install ng-star-inserted']")
+	WebElement lblInstallationDetails;
+
+	@FindBy(xpath = "//ds-checkbox[@formcontrolname='agreeCondition1']/label")
+	WebElement chkActivation;
+
+	@FindBy(xpath = "//ds-checkbox[@formcontrolname='termsAndConditionsRead']/label")
+	WebElement chkTerms;
+
+	@FindBy(xpath = "//ds-checkbox[@formcontrolname='agreeCondition']/label")
+	WebElement chkAgreement;
+
+	@FindBy(xpath = "//div[@class= 'row custom-note']//ds-price[@class='custom-price']//div[contains(@class,'ds-price__amountDollars')]")
+	WebElement lblCustomPrice;
+
+	@FindBy(xpath = "//div[@class='bundle-offer-details__content__price']//div[@class='ds-price__amountDollars text-semi ng-star-inserted']")
+	WebElement lblOfferPrice;
+
+
+
 	/**
 	 * To verify the Rogers order review Page load
 	 * @author Saurav.Goyal
@@ -165,8 +196,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	public void verifyOrderReviewPageLoadedSuccessfully() {
 		getReusableActionsInstance().waitForElementVisibility(lblReviewYourorder, 60);
 	}
-	
-	
+
     /**
      * To click on the chevron on the payment page
      * @author Saurav.Goyal
@@ -509,4 +539,86 @@ public class RogersOrderReviewPage extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(lblPaymentStep, 30);
 	}
 
+	/**
+	 * To verify the Rogers Targeted Offer order review Page load
+	 * @return true if Order Review label is there, else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyTargetedOfferOrderReviewPage() {
+		getReusableActionsInstance().waitForElementVisibility(lblOrderReview, 120);
+		return getReusableActionsInstance().isElementVisible(lblOrderReview);
+	}
+
+	/**
+	 * To verify the Rogers Targeted Offer One-Time Charge is $0.00
+	 * @return true if one-time charge is zero, else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyOneTimeChargeToBeZero() {
+		return getReusableActionsInstance().isElementVisible(lblZeroOneTimeCharge, 30);
+	}
+
+	/**
+	 * To click on Show Price Breakdown button under One-Time Charge block
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkShowPriceBreakdown() {
+		getReusableActionsInstance().clickIfAvailable(btnShowPriceBreakdown, 30);
+	}
+
+	/**
+	 * To verify the fulfillment type to be courier delivery
+	 * @return true if fulfillment type is courier delivery, else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyFulfillmentType() {
+		return getReusableActionsInstance().isElementVisible(lblFulfillmentType, 30);
+	}
+
+	/**
+	 * To verify the Installation Details header
+	 * @return true if installation details header is present, else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyInstallationDetailsHeader() {
+		return getReusableActionsInstance().isElementVisible(lblInstallationDetails, 30);
+	}
+
+	/**
+	 * To click on Activation Checkbox on the order review page
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkActivationCheckbox() {
+		getReusableActionsInstance().getWhenReady(chkActivation, 40).click();
+	}
+
+	/**
+	 * Click on the Terms & Agreement check box on the order review page
+	 * @author Manpreet.kaur3
+	 */
+	public void clkAgreementCheckbox() {
+		getReusableActionsInstance().waitForElementVisibility(lnkAgreementPrivacyPolicy, 30);
+		getReusableActionsInstance().getWhenReady(lnkAgreementPrivacyPolicy, 10).click();
+		getReusableActionsInstance().getWhenVisible(lnkAgreementToEnd, 30);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(lnkAgreementToEnd);
+
+		getReusableActionsInstance().getWhenReady(chkTerms, 60).click();
+		getReusableActionsInstance().getWhenReady(chkAgreement, 60).click();
+	}
+
+	/**
+	 * Get the custom price for HTO offer
+	 * @author Manpreet.kaur3
+	 */
+	public String getCustomPrice() {
+		return getReusableActionsInstance().getWhenVisible(lblCustomPrice, 30).getText();
+	}
+
+	/**
+	 * Get the bundle offer price for HTO offer
+	 * @author Manpreet.kaur3
+	 */
+	public String getOfferPrice() {
+		return getReusableActionsInstance().getWhenVisible(lblOfferPrice, 30).getText();
+	}
 }
