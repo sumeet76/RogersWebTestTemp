@@ -43,8 +43,8 @@ import java.util.Map;
  * 22. Click Acceptable Use Policy checkbox
  * 23. Click I understand checkbox
  * 24. Click on Submit button
- * 25. Verify Order Summary header
- * 26. DB validation
+ * 25. Verify Order Confirmation Page
+ * 26. Get Ban
  *
  **/
 
@@ -125,12 +125,17 @@ public class RogersCH_TC_110_SAI_SAIHTO_Validate$0ExpressSetupFee_CourierFulfilm
 
         getRogersOrderReviewPage().clkAgreementCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
-     /*   getRogersOrderReviewPage().clkSubmit();
+        getRogersOrderReviewPage().clkSubmit();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
 
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
-        reporter.reportLogWithScreenshot("Launched the Confirmation page"); */
+        reporter.reportLogWithScreenshot("Launched the Confirmation page");
+
+        String ban = getRogersOrderConfirmationPage().getBAN();
+        System.out.println("BAN from the portal : " + ban);
+        
     }
+
 
     @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
     //login flow
