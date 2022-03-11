@@ -10,7 +10,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVR_Auto_TC01_SAI_Migration_1P_to_SAI_E2E_Test extends BaseTestClass {
+public class OVR_Auto_TC26_MIG_1P_INT_to_1P_INT_Add_Pods_Free_and_Paid_E2E_Corp_ON_FR_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
@@ -23,20 +23,25 @@ public class OVR_Auto_TC01_SAI_Migration_1P_to_SAI_E2E_Test extends BaseTestClas
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_tc_01_SAI_Migration_1P_to_SAI_E2E_Test() throws InterruptedException {
-        getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
+    public void ovr_Auto_TC26_MIG_1P_INT_to_1P_INT_Add_Pods_Free_and_Paid_E2E_Corp_ON_FR_Test() {
+        getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
+        getChampLoginPage().changeChampToFR();
+        reporter.reportLogWithScreenshot("Changed Champ page to French");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
-        getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
+        getUniLoginPage().selectCorpSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
         getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.ovrReusableData.getBanNumber(), TestDataHandler.ovrReusableData.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("search for account and select environment ");
+        getOvrDashboardPage().changeLangToFR();
+        reporter.reportLogWithScreenshot("Ignite language Changed to French");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
         reporter.reportLogWithScreenshot("Address Availability popup");
         getCheckAvailabilityPage().useThisAddress();
         reporter.reportLogWithScreenshot("Service Availability Page");
+        reporter.hardAssert(getBundleBuilderPage().verifyCustomerCurrentPlan(),"Current plan is displayed", "Current Plan is not displayed");
         reporter.hardAssert(getBundleBuilderPage().verifyOvrSessionTimer(), "Ovr Session Timer Present", "Ovr Session timer not present");
         reporter.hardAssert(getBundleBuilderPage().verifyBundleBuilderPage(), "Bundle Builder page is displayed", "Bundle Builder page is not displayed");
         reporter.reportLogWithScreenshot("Bundle Builder Page");
@@ -52,17 +57,27 @@ public class OVR_Auto_TC01_SAI_Migration_1P_to_SAI_E2E_Test extends BaseTestClas
         reporter.reportLogWithScreenshot("Continue with internet bundle");
         getRogersIgniteBundlesPage().clkContinue();
 
-
-        //getRogersIgniteBundlesPage().clkExpressCheckout();
         reporter.reportLogWithScreenshot("Points to mention pop-up");
         getRogersIgniteBundlesPage().reviewTermsAndCondition();
         reporter.reportLogWithScreenshot("Review Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
+
+        //Internet Add-Ons page.
         reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
-        getRogersIgniteBundlesPage().clkContinue();
+        reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet Add Ons Page loaded","Internet Add Ons Page not loaded");
+        /*To Add the chargeable Pods*/
+        getRogersIgniteBundlesPage().addPods(5);
+        reporter.reportLogWithScreenshot("Chargeable internet add on Pod is added to the cart");
+        getRogersIgniteBundlesPage().addAdditionalPods(5);
+        /*To Add the free pods in the internet addons page*/
+        getRogersIgniteBundlesPage().addPods(0);
+        reporter.reportLogWithScreenshot("Free internet add on Pod is added to the cart");
+        //getRogersIgniteBundlesPage().addAdditionalPods(0);
+        getRogersIgniteBundlesPage().clkContinueInternetAddon();
         reporter.reportLogWithScreenshot("Continue to Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
-        reporter.reportLogWithScreenshot("Cart Summary page");
+        //validation for pods
+        reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsInCartSummary(),"Internet AddOns present in cart summary", "Internet AddOns not present in cart summary");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 
         reporter.reportLogWithScreenshot("wish to continue");
@@ -71,10 +86,16 @@ public class OVR_Auto_TC01_SAI_Migration_1P_to_SAI_E2E_Test extends BaseTestClas
         getCustomerProfilePage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Credit Check Page");
 
-        reporter.softAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Eval Page displayed", "Credit Eval Page not displayed");
-        reporter.reportLogWithScreenshot("Credit Check Page");
+        reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Check Page loaded", "Credit Check Page not loaded");
         getCreditCheckPage().setDOB(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
-        reporter.reportLogWithScreenshot("Credit Check DOB entered");
+        reporter.reportLogWithScreenshot("Credit Evaluation DOB set");
+        getCreditCheckPage().selectInternationalID(FormFiller.generateRandomNumber(9), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay(),
+                FormFiller.generatePassportNumber(), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
+        reporter.reportLogWithScreenshot("credit form completed");
+        getCreditCheckPage().clkAuthorize();
+        reporter.reportLogWithScreenshot("Credit Check Authorized");
+        reporter.hardAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
+        reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Install page");
 
@@ -89,8 +110,8 @@ public class OVR_Auto_TC01_SAI_Migration_1P_to_SAI_E2E_Test extends BaseTestClas
         reporter.reportLogWithScreenshot("Billing and Payment page");
         getBundleBuilderPage().clkContinueBillingAndPayment();
         reporter.reportLogWithScreenshot("Continue to review page");
-        reporter.softAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
-        reporter.softAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
+        reporter.hardAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
+        reporter.hardAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
         reporter.reportLogWithScreenshot("Order Review Page");
         getOVROrderReviewPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Sign Agreement Page");
@@ -108,5 +129,4 @@ public class OVR_Auto_TC01_SAI_Migration_1P_to_SAI_E2E_Test extends BaseTestClas
         reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
 
     }
-
 }

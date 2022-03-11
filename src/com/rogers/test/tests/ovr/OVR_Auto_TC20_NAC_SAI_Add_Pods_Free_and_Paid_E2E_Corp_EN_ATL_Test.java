@@ -66,12 +66,12 @@ public class OVR_Auto_TC20_NAC_SAI_Add_Pods_Free_and_Paid_E2E_Corp_EN_ATL_Test e
         /*To Add the free pods in the internet addons page*/
         getRogersIgniteBundlesPage().addPods(0);
         reporter.reportLogWithScreenshot("Free internet add on Pod is added to the cart");
-        getRogersIgniteBundlesPage().addAdditionalPods(0);
+        //getRogersIgniteBundlesPage().addAdditionalPods(0);
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
         reporter.reportLogWithScreenshot("Continue to Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         //validation for pods
-        reporter.softAssert(getRogersIgniteBundlesPage().validateInternetAddOnsInCartSummary(),"Internet AddOns present in cart summary", "Internet AddOns not present in cart summary");
+        reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsInCartSummary(),"Internet AddOns present in cart summary", "Internet AddOns not present in cart summary");
         reporter.reportLogWithScreenshot("Cart Summary page");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         reporter.reportLogWithScreenshot("wish to continue");
@@ -89,7 +89,7 @@ public class OVR_Auto_TC20_NAC_SAI_Add_Pods_Free_and_Paid_E2E_Corp_EN_ATL_Test e
         getBundleBuilderPage().scrollAndClickContinue();
         reporter.reportLogWithScreenshot("Continue to credit Check page");
 
-        reporter.softAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Eval Page displayed", "Credit Eval Page not displayed");
+        reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Eval Page displayed", "Credit Eval Page not displayed");
         reporter.reportLogWithScreenshot("Credit Check Page");
         getCreditCheckPage().setDOB(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
         reporter.reportLogWithScreenshot("Credit Check DOB entered");
@@ -98,7 +98,7 @@ public class OVR_Auto_TC20_NAC_SAI_Add_Pods_Free_and_Paid_E2E_Corp_EN_ATL_Test e
         reporter.reportLogWithScreenshot("credit form completed");
         getCreditCheckPage().clkAuthorize();
         reporter.reportLogWithScreenshot("Credit Check authorized");
-        reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
+        reporter.hardAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to install options  page");
@@ -117,9 +117,9 @@ public class OVR_Auto_TC20_NAC_SAI_Add_Pods_Free_and_Paid_E2E_Corp_EN_ATL_Test e
         reporter.reportLogWithScreenshot("Monthly billing selected");
         getBundleBuilderPage().clkContinueBillingAndPayment();
         reporter.reportLogWithScreenshot("Continue to Order Review Page");
-        reporter.softAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
-        reporter.softAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
-        reporter.softAssert(getOVROrderReviewPage().verifyInternetAddOns(),"Internet AddOns present in cart summary", "Internet AddOns not present in cart summary");
+        reporter.hardAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
+        reporter.hardAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
+        reporter.hardAssert(getOVROrderReviewPage().verifyInternetAddOns(),"Internet AddOns present in cart summary", "Internet AddOns not present in cart summary");
         reporter.reportLogWithScreenshot("Order review Page");
         getOVROrderReviewPage().clkContinue();
         reporter.reportLogWithScreenshot("Sign Agreement Page");
@@ -134,6 +134,6 @@ public class OVR_Auto_TC20_NAC_SAI_Add_Pods_Free_and_Paid_E2E_Corp_EN_ATL_Test e
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
-        reporter.softAssert(getOVROrderReviewPage().verifyInternetAddOns(),"Internet AddOns present in cart summary", "Internet AddOns not present in cart summary");
+        reporter.hardAssert(getOVROrderReviewPage().verifyInternetAddOns(),"Internet AddOns present in cart summary", "Internet AddOns not present in cart summary");
     }
 }

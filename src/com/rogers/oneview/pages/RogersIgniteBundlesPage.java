@@ -1,6 +1,6 @@
 package com.rogers.oneview.pages;
 
-import com.rogers.test.listeners.TestListener;
+//import com.rogers.test.listeners.TestListener;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -298,6 +298,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 	@FindBy(xpath = "//h2[@translate='global.label.monthlyBill']")
 	WebElement monthlyCharges;
+
+
 
 	/**
 	 * Click Load Offers button
@@ -1040,7 +1042,7 @@ public void activateHomePhoneltrPopUp() {
 	 */
 	public void clkContinueFromHomePhoneServiceProvider(){
 		getReusableActionsInstance().scrollToElement(continueButtonHomePhoneServiceProvider);
-		getReusableActionsInstance().waitForElementTobeClickable(continueButtonHomePhoneServiceProvider, 10);
+		getReusableActionsInstance().waitForElementTobeClickable(continueButtonHomePhoneServiceProvider, 60);
 		getReusableActionsInstance().clickWhenReady(continueButtonHomePhoneServiceProvider);
 	}
 
@@ -1093,6 +1095,10 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().clickWhenReady(monthlyChargesExpandButton);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(internetAddOnsCharges);
 		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges, 10);
+	}
+
+	public boolean validateInternetAddOnsHeader(){
+		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges,60);
 	}
 
 }

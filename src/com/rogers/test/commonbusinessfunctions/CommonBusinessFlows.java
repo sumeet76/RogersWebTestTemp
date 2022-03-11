@@ -8,9 +8,9 @@ import com.rogers.test.base.BaseTestClass;
 import java.util.HashMap;
 
 
-@Listeners ({com.rogers.test.listeners.TestListener.class ,
+@Listeners ({extentreport.ExtentListener.class ,
 	com.rogers.test.listeners.AnnotationTransformer.class ,
-	com.rogers.test.listeners.TestListener.class })
+		extentreport.ExtentListener.class })
 
 
 public class CommonBusinessFlows {

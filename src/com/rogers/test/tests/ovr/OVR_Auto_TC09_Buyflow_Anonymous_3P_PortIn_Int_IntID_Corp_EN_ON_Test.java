@@ -10,7 +10,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Tel_IntID_Corp_EN_ATL_Test extends BaseTestClass {
+public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ON_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
@@ -19,11 +19,10 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Tel_IntID_Corp_EN_ATL_Tes
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Tel_IntID_Corp_EN_ATL_Test() throws InterruptedException {
-        //getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
+    public void ovr_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ON_Test() throws InterruptedException {
         getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
@@ -35,8 +34,7 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Tel_IntID_Corp_EN_ATL_Tes
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
         reporter.reportLogWithScreenshot("Address Availability popup");
         getCheckAvailabilityPage().checkAvailability("642 ABANA RD. MISSISSAUGA, ON L5A1H4", "chrome");
-        //getCheckAvailabilityPage().checkAvailability("1191 Addison Dr, LONDON ON N5V 2N8", "chrome");
-        reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
 
@@ -72,7 +70,9 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Tel_IntID_Corp_EN_ATL_Tes
         reporter.reportLogWithScreenshot("4k tv popup");
         getRogersIgniteBundlesPage().contiue4KContent();
         reporter.reportLogWithScreenshot("4k Content popup");
-        reporter.reportLogWithScreenshot("Continue to Internet Add ons page");
+
+        reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
+        reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet Add Ons Page loaded","Internet Add Ons Page not loaded");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Home phone Add ons page");
 
@@ -83,20 +83,32 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Tel_IntID_Corp_EN_ATL_Tes
 
         reporter.hardAssert(getRogersIgniteBundlesPage().headerPortInService(),"Port in Service Header exist","Failed");
         reporter.reportLogWithScreenshot("Port In Service");
-        getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
-        reporter.reportLogWithScreenshot("Home phone for Port IN");
+        getRogersIgniteBundlesPage().clkInternetCheckbox();
         getRogersIgniteBundlesPage().clkContinueFor3PPortIn();
-        reporter.reportLogWithScreenshot("Continue to HomePhone PortIn details");
-        getRogersIgniteBundlesPage().enterHomePhoneAccountNumber("6742892");
-        reporter.reportLogWithScreenshot("Account number for Port In");
-        getRogersIgniteBundlesPage().clkContinueFromHomePhoneServiceProvider();
-        reporter.reportLogWithScreenshot("Continue to HomePhone Number PortIn");
-        getRogersIgniteBundlesPage().enterHomePhoneNumberPortIn("9052760500");
-        reporter.reportLogWithScreenshot("Port In details filled out");
-        getRogersIgniteBundlesPage().clkContinueFromHomePhonePortIn();
-        reporter.reportLogWithScreenshot("Port In form filled out for HomePhone details");
+        getRogersIgniteBundlesPage().setProvider("BELL ONTARIO");
+        getRogersIgniteBundlesPage().enterAccountNumber("1122334455");
+        reporter.reportLogWithScreenshot("Port In form completed");
+        getRogersIgniteBundlesPage().contiueFromPortIn();
+        reporter.reportLogWithScreenshot("Continue from port in");
+
         reporter.reportLogWithScreenshot("Port In completed");
         getRogersIgniteBundlesPage().contiueToCartSummary();
+
+
+//        getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
+//        reporter.reportLogWithScreenshot("Home phone for Port IN");
+//        getRogersIgniteBundlesPage().clkContinueFor3PPortIn();
+//        reporter.reportLogWithScreenshot("Continue to HomePhone PortIn details");
+//        getRogersIgniteBundlesPage().enterHomePhoneAccountNumber("6742342");
+//        reporter.reportLogWithScreenshot("Account number for Port In");
+//        getRogersIgniteBundlesPage().clkContinueFromHomePhoneServiceProvider();
+//        reporter.reportLogWithScreenshot("Continue to HomePhone Number PortIn");
+//        getRogersIgniteBundlesPage().enterHomePhoneNumberPortIn("9055025919");
+//        reporter.reportLogWithScreenshot("Port In details filled out");
+//        getRogersIgniteBundlesPage().clkContinueFromHomePhonePortIn();
+//        reporter.reportLogWithScreenshot("Port In form filled out for HomePhone details");
+//        reporter.reportLogWithScreenshot("Port In completed");
+//        getRogersIgniteBundlesPage().contiueToCartSummary();
 
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
@@ -123,14 +135,20 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Tel_IntID_Corp_EN_ATL_Tes
         reporter.reportLogWithScreenshot("credit form completed");
         getCreditCheckPage().clkAuthorize();
         reporter.reportLogWithScreenshot("Credit Check Authorized");
-        reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
+        reporter.hardAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
 
-        reporter.reportLogWithScreenshot("Continue to Caller Info Review Page");
-        reporter.softAssert(getCallerInformationPage().callerInfoPageLoad(), "Caller Info Review Page loaded", "Caller Info Review Page not loaded");
-        reporter.reportLogWithScreenshot("Continue from Caller Info Review Page");
-        getCallerInformationPage().clickContinue();
+//        reporter.reportLogWithScreenshot("Continue to Caller Info Review Page");
+//        reporter.softAssert(getCallerInformationPage().callerInfoPageLoad(), "Caller Info Review Page loaded", "Caller Info Review Page not loaded");
+//        reporter.reportLogWithScreenshot("Continue from Caller Info Review Page");
+//        getCallerInformationPage().clickContinue();
+        reporter.reportLogWithScreenshot("Continue to Home Phone Selection Page");
+        getHomePhoneSelectionPage().clkGeneratePhoneNo();
+        reporter.hardAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
+        reporter.reportLogWithScreenshot("Phone Number Selected");
+        reporter.hardAssert(getHomePhoneSelectionPage().verifyNumber(),"Phone Number Selected","Phone Number Selection Failed");
+        getHomePhoneSelectionPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
         getCreditCheckPage().verifyInstallationOption();
@@ -148,8 +166,8 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Tel_IntID_Corp_EN_ATL_Tes
         reporter.reportLogWithScreenshot("Monthly billing selected");
         getBundleBuilderPage().clkContinueBillingAndPayment();
         reporter.reportLogWithScreenshot("Continue to Order Review Page");
-        reporter.softAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
-        reporter.softAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
+        reporter.hardAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
+        reporter.hardAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
         reporter.reportLogWithScreenshot("Order review Page");
         getOVROrderReviewPage().clkContinue();
         reporter.reportLogWithScreenshot("Sign Agreement Page");

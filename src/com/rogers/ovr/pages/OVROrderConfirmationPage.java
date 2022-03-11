@@ -44,21 +44,21 @@ public class OVROrderConfirmationPage extends BasePageClass {
 
 
     public boolean verifyOrderConfirmation(){
-        getReusableActionsInstance().waitForElementVisibility(orderConfirmation, 30);
+        getReusableActionsInstance().waitForElementVisibility(orderConfirmation, 60);
         return getReusableActionsInstance().isElementVisible(orderConfirmation);
     }
 
     public boolean verifyOrderNumberPresent() {
-        getReusableActionsInstance().waitForElementVisibility(orderNumberLbl, 30);
+        getReusableActionsInstance().waitForElementVisibility(orderNumberLbl, 60);
         return getReusableActionsInstance().isElementVisible(orderNumberLbl);
     }
 
     public boolean verifyOneTimeFees() {
-        getReusableActionsInstance().waitForElementVisibility(oneTimeFees, 30);
+        getReusableActionsInstance().waitForElementVisibility(oneTimeFees, 60);
         return getReusableActionsInstance().isElementVisible(oneTimeFees);
     }
     public boolean verifyMonthlyCharges() {
-        getReusableActionsInstance().waitForElementVisibility(monthlyCharges, 30);
+        getReusableActionsInstance().waitForElementVisibility(monthlyCharges, 60);
         getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyCharges);
         return getReusableActionsInstance().isElementVisible(monthlyCharges);
     }

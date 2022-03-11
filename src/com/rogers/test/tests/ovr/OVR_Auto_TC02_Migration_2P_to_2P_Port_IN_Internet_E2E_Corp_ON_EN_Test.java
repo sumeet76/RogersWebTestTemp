@@ -21,7 +21,7 @@ public class OVR_Auto_TC02_Migration_2P_to_2P_Port_IN_Internet_E2E_Corp_ON_EN_Te
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC02_Migration_2P_to_2P_Port_IN_Internet_E2E_Corp_ON_EN_Test() throws InterruptedException {
+    public void ovr_Auto_TC02_Migration_2P_to_2P_Port_IN_Internet_E2E_Corp_ON_EN_Test() {
         getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
@@ -66,11 +66,13 @@ public class OVR_Auto_TC02_Migration_2P_to_2P_Port_IN_Internet_E2E_Corp_ON_EN_Te
         getRogersIgniteBundlesPage().fourKTVPopup();
         reporter.reportLogWithScreenshot("4k content modal");
         getRogersIgniteBundlesPage().contiue4KContent();
+
         reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
+        reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet Add Ons Page loaded","Internet Add Ons Page not loaded");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("continue to port in page");
 
-        reporter.softAssert(getRogersIgniteBundlesPage().headerPortInService(), "Port in page loaded", "Port in page error");
+        reporter.hardAssert(getRogersIgniteBundlesPage().headerPortInService(), "Port in page loaded", "Port in page error");
         reporter.reportLogWithScreenshot("Port In Service page");
         getRogersIgniteBundlesPage().setProvider("BELL ONTARIO");
         getRogersIgniteBundlesPage().enterAccountNumber("1122334455");
@@ -89,10 +91,17 @@ public class OVR_Auto_TC02_Migration_2P_to_2P_Port_IN_Internet_E2E_Corp_ON_EN_Te
         getCustomerProfilePage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Credit Check Page");
 
-        reporter.softAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Eval Page displayed", "Credit Eval Page not displayed");
+        reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Eval Page displayed", "Credit Eval Page not displayed");
         reporter.reportLogWithScreenshot("Credit Check Page");
         getCreditCheckPage().setDOB(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
         reporter.reportLogWithScreenshot("Credit Check DOB entered");
+        getCreditCheckPage().selectInternationalID(FormFiller.generateRandomNumber(9), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay(),
+                FormFiller.generatePassportNumber(), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
+        reporter.reportLogWithScreenshot("credit form completed");
+        getCreditCheckPage().clkAuthorize();
+        reporter.reportLogWithScreenshot("Credit Check Authorized");
+        reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
+        reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Install page");
 
@@ -111,11 +120,11 @@ public class OVR_Auto_TC02_Migration_2P_to_2P_Port_IN_Internet_E2E_Corp_ON_EN_Te
         reporter.reportLogWithScreenshot("Billing and Payment Page");
         getBundleBuilderPage().clkContinueBillingAndPayment();
         reporter.reportLogWithScreenshot("Order Review Page");
-        reporter.softAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
-        reporter.softAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
+        reporter.hardAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
+        reporter.hardAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
         getOVROrderReviewPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Sign Agreement Page");
-        reporter.softAssert(getOVRAgreementPage().verifySignAgreementPage(), "Agreement page displayed", "Agreement page not displayed");
+        reporter.hardAssert(getOVRAgreementPage().verifySignAgreementPage(), "Agreement page displayed", "Agreement page not displayed");
         reporter.reportLogWithScreenshot("Sign Agreement Page");
         getOVRAgreementPage().signAgreement();
         reporter.reportLogWithScreenshot("Back to Agreement Page");
@@ -123,10 +132,10 @@ public class OVR_Auto_TC02_Migration_2P_to_2P_Port_IN_Internet_E2E_Corp_ON_EN_Te
         reporter.reportLogWithScreenshot("Agreement Checkbox clicked");
         getOVRAgreementPage().clkCompleteOrder();
         reporter.reportLogWithScreenshot("Order Confirmation Page");
-        reporter.softAssert(getOVROrderConfirmationPage().verifyOrderConfirmation(), "Order Confirmation displayed", "Order not Confirmed");
-        reporter.softAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
-        reporter.softAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
-        reporter.softAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
+        reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderConfirmation(), "Order Confirmation displayed", "Order not Confirmed");
+        reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
+        reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
+        reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
 
     }
 

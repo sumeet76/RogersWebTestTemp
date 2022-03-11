@@ -19,7 +19,7 @@ public class OVR_Auto_TC12_Legacy_1pINT_to_NAC_3P_CheckAnotherAddress_IntID_Deal
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
@@ -37,11 +37,10 @@ public class OVR_Auto_TC12_Legacy_1pINT_to_NAC_3P_CheckAnotherAddress_IntID_Deal
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
 
         reporter.reportLogWithScreenshot("Address Availability popup");
-        getCheckAvailabilityPage().checkAvailability("642 ABANA RD. MISSISSAUGA, ON L5A1H4", "chrome");
+        getCheckAvailabilityPage().checkAvailabilityAtOtherAddress("642 ABANA RD. MISSISSAUGA, ON L5A 1H4", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyMoveMigration(),"Move Migration displayed","Move Migration did not display");
         getRogersIgniteBundlesPage().clickNo();
         reporter.reportLogWithScreenshot("Click No on move migration popup");
-
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
         reporter.reportLogWithScreenshot("Select Services Customer Wants");
         reporter.hardAssert(getBundleBuilderPage().verifyOvrSessionTimer(), "Ovr Session Timer Present", "Ovr Session timer not present");
@@ -73,6 +72,7 @@ public class OVR_Auto_TC12_Legacy_1pINT_to_NAC_3P_CheckAnotherAddress_IntID_Deal
         reporter.reportLogWithScreenshot("4k Content Popup");
         getRogersIgniteBundlesPage().contiue4KContent();
         reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
+        reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet Add Ons Page loaded","Internet Add Ons Page not loaded");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("continue to Home Phone add ons");
 
@@ -86,7 +86,7 @@ public class OVR_Auto_TC12_Legacy_1pINT_to_NAC_3P_CheckAnotherAddress_IntID_Deal
         reporter.reportLogWithScreenshot("wish to continue");
         getRogersIgniteBundlesPage().customerWishtoContinue();
         reporter.reportLogWithScreenshot("Customer Profile Page");
-        getCustomerProfilePage().clkContinue();
+        getBundleBuilderPage().scrollAndClickContinue();
         reporter.reportLogWithScreenshot("Continue to Credit Check Page");
         reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Check Page loaded", "Credit Check Page not loaded");
         getCreditCheckPage().setDOB(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
@@ -101,9 +101,9 @@ public class OVR_Auto_TC12_Legacy_1pINT_to_NAC_3P_CheckAnotherAddress_IntID_Deal
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Home Phone Selection Page");
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
-        reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
+        reporter.hardAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
         reporter.reportLogWithScreenshot("Phone Number Selected");
-        reporter.softAssert(getHomePhoneSelectionPage().verifyNumber(),"Phone Number Selected","Phone Number Selection Failed");
+        reporter.hardAssert(getHomePhoneSelectionPage().verifyNumber(),"Phone Number Selected","Phone Number Selection Failed");
         getHomePhoneSelectionPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
@@ -120,8 +120,10 @@ public class OVR_Auto_TC12_Legacy_1pINT_to_NAC_3P_CheckAnotherAddress_IntID_Deal
         reporter.hardAssert(getBundleBuilderPage().verifyBillingAndPaymentPage(), "Billing and Payment page displayed", "Billing and payment page not displayed");
         getBundleBuilderPage().clkContinueBillingAndPayment();
         reporter.reportLogWithScreenshot("Continue to Order Review Page");
-        reporter.softAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
-        reporter.softAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
+
+        reporter.hardAssert(getOVROrderReviewPage().verifyOrderoverviewHeader(),"Order review page loaded","Order review page not loaded");
+        reporter.hardAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
+        reporter.hardAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
         reporter.reportLogWithScreenshot("Order review Page");
         getOVROrderReviewPage().clkContinue();
         reporter.reportLogWithScreenshot("Sign Agreement Page");

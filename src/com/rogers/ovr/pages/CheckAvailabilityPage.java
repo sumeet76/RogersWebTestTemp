@@ -28,7 +28,8 @@ public class CheckAvailabilityPage extends BasePageClass {
     @FindBy(xpath = "//button[@ng-reflect-rch-track-click-event='checkServiceability']")
     WebElement checkAvailabilityBtn;
 
-    @FindBy(xpath = "//*[@id='ds-modal-container-0']/ds-modal/descendant::div[@class='input-search']")
+    //@FindBy(xpath = "//*[@id='ds-modal-container-0']/ds-modal/descendant::div[@class='input-search']")
+    @FindBy(xpath = "//rch-pca-address-lookup//child::input[contains(@id,'canada-post-address-complete')]//parent::div")
     WebElement inputContainer;
 
     @FindBy(xpath = "//input[contains(@id,'canada-post-address-complete')]")
@@ -44,9 +45,8 @@ public class CheckAvailabilityPage extends BasePageClass {
     WebElement otherAddressRadioButton;
 
 
-
     public void useThisAddress() {
-        getReusableActionsInstance().getWhenVisible(btnContinue).click();
+        getReusableActionsInstance().getWhenVisible(btnContinue, 60).click();
         if(getReusableActionsInstance().isElementVisible(lblMultipleAddressesFound, 5)){
             getReusableActionsInstance().selectWhenReady(multipleAddressDropdown,2,  5);
         }

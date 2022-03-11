@@ -51,7 +51,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//input[@id='confirmEmail' or @id='cemail' or contains(@formcontrolname,'Confirm') or contains(@formcontrolname,'confirm')]")
 	WebElement inputConfirmEmail;
 
-	@FindBy(xpath = "//input[@formcontrolname='lastName']/parent::div")
+	@FindBy(xpath = "//input[@formcontrolname='firstName']/parent::div")
 	WebElement firstNameCreateProfile;
 
 	@FindBy(xpath = "//input[@formcontrolname='firstName']")
@@ -675,8 +675,10 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	 */
 
 	public String setFirstNameCreateProfile() {
-
-		getReusableActionsInstance().clickWhenReady(firstNameCreateProfile, 20);
+		getReusableActionsInstance().getWhenReady(firstNameCreateProfile,15);
+		getReusableActionsInstance().scrollToElementAndClick(firstNameCreateProfile);
+		//getReusableActionsInstance().javascriptScrollByVisibleElement(firstNameCreateProfile);
+		//getReusableActionsInstance().clickWhenReady(firstNameCreateProfile, 20);
 		inputFirstName.sendKeys(FormFiller.generateRandomName() + FormFiller.generateRandomName());
 		return getReusableActionsInstance().getWhenReady(inputFirstName, 20).getAttribute("value");
 	}
@@ -722,7 +724,8 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	 */
 
 	public String setLastNameCreateProfile() {
-		getReusableActionsInstance().clickWhenReady(lastNameCreateProfile);
+		getReusableActionsInstance().getWhenReady(lastNameCreateProfile,5);
+		getReusableActionsInstance().scrollToElementAndClick(lastNameCreateProfile);
 		inputLastName.sendKeys(FormFiller.generateRandomName() + FormFiller.generateRandomName());
 		return getReusableActionsInstance().getWhenReady(inputLastName, 20).getAttribute("value");
 	}
@@ -764,6 +767,9 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	 */
 
 	public String setContactNumberCreateProfile(String contactNumber) {
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().getWhenReady(contactNumberCreateProfile);
+		getReusableActionsInstance().scrollToElement(contactNumberCreateProfile);
 		getReusableActionsInstance().clickWhenReady(contactNumberCreateProfile);
 		getReusableActionsInstance().getWhenReady(inputContactNumber, 3).sendKeys(contactNumber);
 		return getReusableActionsInstance().getWhenReady(inputContactNumber, 20).getAttribute("value").trim();

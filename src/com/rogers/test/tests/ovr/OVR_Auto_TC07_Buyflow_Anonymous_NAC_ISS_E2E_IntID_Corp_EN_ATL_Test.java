@@ -19,10 +19,10 @@ public class OVR_Auto_TC07_Buyflow_Anonymous_NAC_ISS_E2E_IntID_Corp_EN_ATL_Test 
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
-    @Test(groups = {"OVR", "RegressionOVR"})
+    @Test(groups = {"OVR", "RegressionOVR", "OVR_Sanity"})
     public void ovr_Auto_TC07_Buyflow_Anonymous_NAC_ISS_E2E_IntID_Corp_EN_ATL_Test() {
         getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
@@ -44,7 +44,7 @@ public class OVR_Auto_TC07_Buyflow_Anonymous_NAC_ISS_E2E_IntID_Corp_EN_ATL_Test 
         reporter.hardAssert(getBundleBuilderPage().verifyBundleBuilderPage(), "Bundle Builder page is displayed", "Bundle Builder page is not displayed");
         reporter.reportLogWithScreenshot("Bundle Builder Page");
         getRogersIgniteBundlesPage().clkInternetCheckbox();
-        reporter.reportLogWithScreenshot("SAI Selected");
+        reporter.reportLogWithScreenshot("Internet Selected");
         getRogersIgniteBundlesPage().clkSmartStream();
         reporter.reportLogWithScreenshot("Smart Stream Selected");
         getRogersIgniteBundlesPage().clkLoadOffers();
@@ -59,8 +59,10 @@ public class OVR_Auto_TC07_Buyflow_Anonymous_NAC_ISS_E2E_IntID_Corp_EN_ATL_Test 
         reporter.reportLogWithScreenshot("Product Added");
         reporter.reportLogWithScreenshot("CheckOut internet and ISS bundle");
         getRogersIgniteBundlesPage().clkContinue();
+
         reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
-        getRogersIgniteBundlesPage().clkExpressCheckout();
+        reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet Add Ons Page loaded","Internet Add Ons Page not loaded");
+        getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         reporter.reportLogWithScreenshot("Cart Summary page");
@@ -87,7 +89,7 @@ public class OVR_Auto_TC07_Buyflow_Anonymous_NAC_ISS_E2E_IntID_Corp_EN_ATL_Test 
                 FormFiller.generatePassportNumber(), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
         reporter.reportLogWithScreenshot("credit form completed");
         getCreditCheckPage().clkAuthorize();
-        reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
+        reporter.hardAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
 
@@ -107,8 +109,8 @@ public class OVR_Auto_TC07_Buyflow_Anonymous_NAC_ISS_E2E_IntID_Corp_EN_ATL_Test 
         reporter.reportLogWithScreenshot("Monthly billing selected");
         getBundleBuilderPage().clkContinueBillingAndPayment();
         reporter.reportLogWithScreenshot("Continue to Order Review Page");
-        reporter.softAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
-        reporter.softAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
+        reporter.hardAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
+        reporter.hardAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
         reporter.reportLogWithScreenshot("Order review Page");
         getOVROrderReviewPage().clkContinue();
         reporter.reportLogWithScreenshot("Sign Agreement Page");

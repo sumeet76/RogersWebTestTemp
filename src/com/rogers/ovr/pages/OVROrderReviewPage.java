@@ -39,17 +39,17 @@ public class OVROrderReviewPage extends BasePageClass {
     }
 
     public boolean verifyOrderoverviewHeader(){
-        return getReusableActionsInstance().isElementVisible(orderReviewPageHeader,60);
+        return getReusableActionsInstance().isElementVisible(orderReviewPageHeader,100);
     }
 
     public boolean verifyOneTimeFees(){
-        return getReusableActionsInstance().isElementVisible(oneTimeFees, 15);
+        return getReusableActionsInstance().isElementVisible(oneTimeFees, 60);
     }
 
     public boolean verifyMonthlyCharges(){
         //getReusableActionsInstance().waitForElementVisibility(monthlyCharges,20);
         getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyCharges);
-        return getReusableActionsInstance().isElementVisible(monthlyCharges,15);
+        return getReusableActionsInstance().isElementVisible(monthlyCharges,60);
     }
 
     /**

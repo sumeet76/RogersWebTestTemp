@@ -67,8 +67,11 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath ="//input[@formcontrolname='enrouteEmail']")
     WebElement txtEmail;
 
-    @FindBy(xpath ="//input[@id='12']/ancestor::label[contains(@class,'ds-radioLabel')]//div[@class='ds-radioButton__outerCircle my-12']")
+    @FindBy(xpath ="//input[@id='8']/ancestor::label[contains(@class,'ds-radioLabel')]//div[@class='ds-radioButton__outerCircle my-12']")
     WebElement rdoTechInstallSlot;
+
+    @FindBy(xpath ="//input[@id='12']/ancestor::label[contains(@class,'ds-radioLabel')]//div[@class='ds-radioButton__outerCircle my-12']")
+    WebElement rdoTechInstallSlot12;
 
     @FindBy(xpath = "//div[text()='Customer current' or text()='Offre actuelle du client']//following-sibling::div")
     WebElement currentPlanSection;
@@ -184,7 +187,9 @@ public class BundleBuilderPage extends BasePageClass {
     public void clkTechInstallSlot() {
         getReusableActionsInstance().waitForElementVisibility(rdoTechInstallSlot, 180);
         getReusableActionsInstance().javascriptScrollToMiddleOfPage();
-        getReusableActionsInstance().getWhenReady(rdoTechInstallSlot, 180).click();
+        getReusableActionsInstance().scrollToElement(rdoTechInstallSlot);
+        //getReusableActionsInstance().javascriptScrollByVisibleElement(rdoTechInstallSlot);
+        getReusableActionsInstance().getWhenReady(rdoTechInstallSlot12).click();
     }
 
     public void clkContinueInstallation() {
@@ -196,7 +201,7 @@ public class BundleBuilderPage extends BasePageClass {
     }
 
     public boolean verifyBundleBuilderPage(){
-        return getReusableActionsInstance().isElementVisible(lblSelectServiceBundles, 5);
+        return getReusableActionsInstance().isElementVisible(lblSelectServiceBundles, 60);
     }
 
     public void clkContinueBillingAndPayment() {
@@ -219,7 +224,7 @@ public class BundleBuilderPage extends BasePageClass {
     }
 
     public boolean verifyOvrSessionTimer(){
-        return getReusableActionsInstance().isElementVisible(ovrSessionTimer, 30);
+        return getReusableActionsInstance().isElementVisible(ovrSessionTimer, 60);
     }
 
     public boolean verifyStoredPaymentCardPresent(){
