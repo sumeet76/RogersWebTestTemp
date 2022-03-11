@@ -43,6 +43,7 @@ public class TestDataHandler {
 	public static AccountData tc7681;
 	public static AccountData tc82;
 	public static AccountData tc80;
+	public static AccountData tc110_StandaloneInternetAccount;
 	public static AccountData tc43_44_digitalTVAccount;
 	public static AccountData tc16_17_18_19_SolarisInternetAccount;
 	public static AccountData tc01_02_03_IgniteTVAccount;
@@ -300,9 +301,17 @@ public class TestDataHandler {
 	public static AccountData SUS_16553_TC01_Validation_of_Exchange_Flex_Channels_Existing_Customer;
 	public static OvrReusableData ovrReusableData;
 	public static OvrReusableData ovrMigrationData2PInternetAndTvTo2P;
+	public static OvrReusableData ovrMigrationData3PTo3PATL;
+	public static OvrReusableData ovrMigrationData3PTo3PON;
 	public static OvrReusableData ovrWirelessNacATL;
 	public static  OvrReusableData ovrWirelessNacON;
+	public static OvrReusableData ovrMigrationData1pINTtoISSATL;
 	public static OvrConfigData ovrConfigData;
+	public static OvrReusableData legacy1PtoNac3pNewAddress;
+	public static OvrReusableData existingIgniteCxToNac3pON;
+	public static OvrReusableData existingIgnite3PtoNac2pON;
+	public static OvrReusableData ovrMigrationData1Pto2PAddPods;
+	public static OvrReusableData ovrMigrationData1pINTto2pTVINTAddPods;
 	public static  AccountData RemoveThemepack1544Tc03;
 	public static AccountData InternetDashboardSupportLinks;
 	public static AccountData ChangePaymentMethod;
@@ -395,6 +404,7 @@ public class TestDataHandler {
 		tc58_saiAccountForIgniteBundleBuy = YamlHandler.getCableAccountData("TC58_SaiAccountForIgniteBundleBuy");
 		tc59_saiforIgniteBundle = YamlHandler.getCableAccountData("TC59_SAIforIgniteBundle");
 		tc82_Legacy1PtoIgnite2P= YamlHandler.getCableAccountData("TC82_Legacy1PtoIgnite2P");
+		tc110_StandaloneInternetAccount = YamlHandler.getCableAccountData("TC110_StandaloneInternetAccount");
 		tc83_Legacy2PtoIgnite2P= YamlHandler.getCableAccountData("TC83_Legacy2PtoIgnite2P");
 		tc87_NativeTNcourierFulfilmentHot= YamlHandler.getCableAccountData("TC87_NativeTNcourierFulfilmentHot");
 		tc88_Legacy2PTVIntToIgnite3P= YamlHandler.getCableAccountData("TC88_Legacy2PTVIntToIgnite3P");
@@ -689,5 +699,13 @@ public class TestDataHandler {
 		ovrWirelessNacATL = YamlHandler.getOvrReusableData("WirelessCX_NAC_ATL");
 		ovrWirelessNacON = YamlHandler.getOvrReusableData("WirelessCX_NAC_ON");
 		anonymousData = YamlHandler.getContactData("AnonymousData");
+		ovrMigrationData1pINTtoISSATL = YamlHandler.getOvrReusableData("Migration_Data_1pINT_to_ISS");
+		ovrMigrationData3PTo3PATL = YamlHandler.getOvrReusableData("Migration_Data_3P_to_3P_ATL");
+		ovrMigrationData3PTo3PON = YamlHandler.getOvrReusableData("Migration_Data_3P_to_3P_ON");
+		legacy1PtoNac3pNewAddress = YamlHandler.getOvrReusableData("Legacy_1pINT_to_NAC_3p_NewAddress");
+		existingIgniteCxToNac3pON = YamlHandler.getOvrReusableData("Existing_Ignite_Cx_to_3P_ON");
+		ovrMigrationData1Pto2PAddPods = YamlHandler.getOvrReusableData("Migration_Data_1P_to_2P_Add_Pods");
+		existingIgnite3PtoNac2pON = YamlHandler.getOvrReusableData("ExistingIgnite_3PCx_to_Nac_3P_ON");
+		ovrMigrationData1pINTto2pTVINTAddPods = YamlHandler.getOvrReusableData("TC25_Mig_Data_1P_INT_to_2P_TV_INT_AddPods");
 	}
 }

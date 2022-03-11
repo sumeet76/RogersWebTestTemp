@@ -2,12 +2,23 @@ package com.rogers.yaml.pojo;
 
 public class OvrConfigData {
     private String sspEnvironment;
-    private String sspdealercode;
-    public String getSspdealercode() {
-        return sspdealercode;
+    private String sspDealerCode;
+    private String ovrQaEnvironment;
+
+    public String getSspIgniteDealerCode() {
+        return sspIgniteDealerCode;
     }
-    public void setSspdealercode(String sspdealercode) {
-        this.sspdealercode = sspdealercode;
+
+    public void setSspIgniteDealerCode(String sspIgniteDealerCode) {
+        this.sspIgniteDealerCode = sspIgniteDealerCode;
+    }
+
+    private String sspIgniteDealerCode;
+    public String getSspDealerCode() {
+        return sspDealerCode;
+    }
+    public void setSspDealerCode(String sspDealerCode) {
+        this.sspDealerCode = sspDealerCode;
     }
     public String getOvrQaEnvironment() {
         return ovrQaEnvironment;
@@ -15,7 +26,7 @@ public class OvrConfigData {
     public void setOvrQaEnvironment(String ovrQaEnvironment) {
         this.ovrQaEnvironment = ovrQaEnvironment;
     }
-    private String ovrQaEnvironment;
+
     public String getSspEnvironment() {
         return sspEnvironment;
     }

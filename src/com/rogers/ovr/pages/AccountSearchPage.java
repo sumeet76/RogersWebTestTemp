@@ -45,9 +45,9 @@ public class AccountSearchPage extends BasePageClass {
             getReusableActionsInstance().clickWhenReady(acceptNoticeBtn);
         }
         searchForAccount(banNumber,postalCode);
-        selectEnvInAccntSearchPage(env);
+        selectEnvInAccountSearchPage(env);
     }
-    public void selectEnvInAccntSearchPage(String env){
+    public void selectEnvInAccountSearchPage(String env){
         getReusableActionsInstance().selectWhenReady(drpdwnPlsSelect, env);
         getReusableActionsInstance().getWhenVisible(btncontnu_customerAuthen).click();
     }
@@ -60,6 +60,9 @@ public class AccountSearchPage extends BasePageClass {
     }
 
     public void selectNewCustomerEnv(String env){
+        if(getReusableActionsInstance().isElementVisible(acceptNoticeBtn, 5)){
+            getReusableActionsInstance().clickWhenReady(acceptNoticeBtn);
+        }
         getReusableActionsInstance().selectWhenReady(newCustomerDropDown, env, 5);
     }
 
