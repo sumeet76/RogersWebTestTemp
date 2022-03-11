@@ -12,7 +12,7 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 		super(driver);
 	}
 	
-	 @FindBy(xpath = "//h1[@id='bfa-page-title' and text()='Order Confirmation']")
+	 @FindBy(xpath = "//h1[@id='bfa-page-title' and contains(text(),'Order Confirmation - QA')]")
 	 WebElement orderConfirmationTitle;
 	 
 	 @FindBy(xpath="//p[@class='text-title-6 mb-40 ng-star-inserted']")

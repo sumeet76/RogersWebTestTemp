@@ -23,7 +23,7 @@ public class RogersBFA_TC24_Consumer_PPC_SL_SE_FinancingInTerm_SelectingBYODPlan
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","PPCBFA","RegressionOnlineBFA"})
+    @Test(groups = {"RegressionBFA","PPCBFA"})
     public void rogersPPC_TC24_SLSE_FINInTerm_BYODPlan_DowngradeFeeTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");

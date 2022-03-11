@@ -117,7 +117,17 @@ public class InternetDashboardPage  extends BasePageClass {
 	//@FindBy(xpath = "(//span[text()='Sélectionner' or text()='Select']/ancestor::button)[2]")
 	//WebElement igniteTvFlex10;
 
+	@FindBy(xpath = "//span[text()='Change package' or text()='Changer de forfait']")
+	WebElement changePackageBtn;
 
+	@FindBy(xpath = "//*[text()=' SmartStream ']/preceding-sibling::div[@class='ds-checkbox__box my-12']")
+	WebElement chkBtnSmartStreamSelect;
+
+	@FindBy(xpath = "//span[text()='Load offers' or text()='Charger les offres']")
+	WebElement btnLoadOffers;
+
+	@FindBy(xpath = "//span[text()='Ignite 1Gbps Ultd + SmartStream']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[3]/child::button")
+	WebElement btnSelectSmartStream;
 
 
 	/**
@@ -473,6 +483,28 @@ public class InternetDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(ExchangeLaterBtn);
 
 		}
+
+	public void clickChangePackageButton() {
+		getReusableActionsInstance().getWhenReady(changePackageBtn, 60);
+		getReusableActionsInstance().executeJavaScriptClick(changePackageBtn);
+
+	}
+
+	public void clickCheckBoxSmartStream() {
+		WebElement btn = getReusableActionsInstance().getWhenReady(chkBtnSmartStreamSelect, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
+		getReusableActionsInstance().getWhenReady(chkBtnSmartStreamSelect, 60).click();
+	}
+
+	public void clickLoadOffers() {
+		getReusableActionsInstance().getWhenReady(btnLoadOffers, 60);
+		getReusableActionsInstance().executeJavaScriptClick(btnLoadOffers);
+
+	}
+	public void selectButtonAddSmartStream() {
+		WebElement btn=getReusableActionsInstance().getWhenReady(btnSelectSmartStream, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		getReusableActionsInstance().getWhenReady(btnSelectSmartStream,60).click(); }
 
 
 

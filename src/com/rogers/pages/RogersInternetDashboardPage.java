@@ -132,6 +132,14 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@id='va-chat-canned-responses4']")
 	WebElement optsInternetIssues;
 
+	@FindBy(xpath = "//h1[@class='smart-stream-opt-in-modal__header']")
+	WebElement headerSmartStreamModal;
+
+	@FindBy(xpath = "//a[contains(@aria-label,'Reject')]/span")
+	WebElement btnNoThanks;
+
+	@FindBy(xpath = "//a[contains(@aria-label,'continue')]/span/span")
+	WebElement btnContinue;
 
 	/**
 	 * Verify the Internet usage on the Internet dash board page
@@ -488,7 +496,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public void selectSolarisInternetPackageMobile(String strPackageNameEn,String strPackageNameFr) {
 		getReusableActionsInstance().staticWait(3000);
-		By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='change-internet-bundle-tile__row']//button[contains(@aria-label,'Add Rogers Ignite')]/span");
+		By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='change-internet-sai-tile__row']//button[contains(@aria-label,'Add Ignite Internet')]/span");
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 90);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
 		getReusableActionsInstance().executeJavaScriptClick(pkg);
@@ -551,4 +559,28 @@ public class RogersInternetDashboardPage extends BasePageClass {
 		By packageNameLocator = By.xpath("//span[contains(normalize-space(text()),'" + strPackageName+ "') or contains(normalize-space(text()),'Élan Internet 150i')]/ancestor::div[@class='owl-item active']//ins[@translate='global.cta.select']");
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 90).click();
 	}
+
+	/**
+	 * Verify Smart Stream Modal
+	 * @retun true if smart stream modal present
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifySmartStreamHeader() {
+		return getReusableActionsInstance().isElementVisible(headerSmartStreamModal,30);
+	}
+
+	/**
+	 * Close Smart Stream Modal
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkOnNoThanks() {
+		getReusableActionsInstance().waitForElementVisibility(btnNoThanks, 30);
+		getReusableActionsInstance().getWhenReady(btnNoThanks, 20).click();
+
+	}
+
+    public void clkContinueToChangeInternetPackage() {
+		getReusableActionsInstance().waitForElementVisibility(btnContinue, 20);
+		getReusableActionsInstance().getWhenReady(btnContinue, 20).click();
+    }
 }

@@ -57,7 +57,10 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "(//span[contains(.,'Check eligibility') or contains(.,'Disponibilité')])[2]")
     WebElement checkEligibilityRpotgBanner;
 
-    @FindBy(xpath="//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+    @FindAll({
+            @FindBy(xpath = "//div[contains(@class,'ds-formField__wrapper')]/ancestor::ds-form-field"),
+            @FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+    })
     WebElement postalCodeRpotgBanner;
 
     @FindBy(xpath = "//input[contains(@id,'ds-form-input-id')]")
@@ -102,7 +105,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "//div[@class='m-buttonSet']")
     WebElement resetAllFiltersbutton;
 
-    @FindBy(xpath = "//p[contains(@class,'dsa-info__contentHeader align-self-center text')]")
+    @FindBy(xpath = "//p[contains(@class,'dsa-info__contentHeader align-self-center')]")
     WebElement rpotgBannerText;
 
     @FindBy(xpath = "//button[@title='Check' or @title='Vérifier']")
@@ -275,7 +278,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
     public String createXpathForCTAButton(String deviceName) {
         xpathDeviceName = createXpathWithDeviceName(deviceName);
-        String ctaButtonXpath = xpathDeviceName + "/ancestor::div[@class='dsa-nacTile__top']//following-sibling::div//span[contains(@class,'ds-button__copy')]";
+        String ctaButtonXpath = xpathDeviceName + "/ancestor::div[@class='dsa-nacTile__top']//following-sibling::div//following-sibling::div//a";
         return ctaButtonXpath;
     }
 
@@ -285,7 +288,9 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author saurav.goyal
      */
     public void clickDeviceTileCTAButton(String deviceName) {
-        getReusableActionsInstance().clickWhenVisible(By.xpath(createXpathForCTAButton(deviceName)), 30);
+        WebElement deviceCtaButton = getReusableActionsInstance().getWhenReady(By.xpath(createXpathForCTAButton(deviceName)));
+        getReusableActionsInstance().scrollToElement(deviceCtaButton);
+        getReusableActionsInstance().clickWhenReady(deviceCtaButton,30);
     }
 
     /**

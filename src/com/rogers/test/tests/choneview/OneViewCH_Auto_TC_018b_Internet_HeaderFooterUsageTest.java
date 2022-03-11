@@ -28,7 +28,7 @@ public class OneViewCH_Auto_TC_018b_Internet_HeaderFooterUsageTest extends BaseT
 		reporter.reportLogWithScreenshot("Header available on Internet Dashboard page");
 		reporter.softAssert(getInternetDashboardPage().verifyFooter(),"Footer is available","Verification of Header failed");
 		reporter.reportLogWithScreenshot("Footer available on Internet Dashboard page");
-		reporter.softAssert(getInternetDashboardPage().verifLlnkLearnMoreWallToWallWifi(),"Learn more about wall to wall wifi Link is available","Learn more about wall to wall wifi Link is not available");
+		//reporter.softAssert(getInternetDashboardPage().verifLlnkLearnMoreWallToWallWifi(),"Learn more about wall to wall wifi Link is available","Learn more about wall to wall wifi Link is not available");
 		getInternetDashboardPage().clickbtnUsageAndAlerts();
 		reporter.reportLogWithScreenshot("Internet usage page launched");
 		reporter.softAssert(getRogersInternetUsageOVPage().verifyDailyBreakdownTable(System.getProperty("Browser")),"Verification for break down table passed","Verification for breakdown table failed");
@@ -51,7 +51,7 @@ public class OneViewCH_Auto_TC_018b_Internet_HeaderFooterUsageTest extends BaseT
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest(ITestResult res) {
-		closeSession();
+		//closeSession();
 	}
 
 }

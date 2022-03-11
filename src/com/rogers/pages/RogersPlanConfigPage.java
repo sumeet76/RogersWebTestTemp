@@ -98,10 +98,10 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//div[contains(@class,'ds-step__hide ng-trigger ng-trigger-bodyExpansion ds-step__show')]//button[contains(@class,'primary -large')]")
     WebElement preCartSummaryContinueButtonTalkOptions;
 
-    @FindBy(xpath = "//ds-step[@id='stepper-addons']//div[@class='d-flex flex-row-reverse']//button")
+    @FindBy(xpath = "//ds-step[@id='stepper-addons']//div[contains(@class,'d-flex flex-row-reverse')]//button")
     WebElement preCartSummaryContinueButtonAddOns;
 
-    @FindBy(xpath = "//button[@data-test='build-plan-checkout-flow-button']/span")
+    @FindBy(xpath = "//button[@data-test='build-plan-checkout-flow-button']")
     WebElement continueButtonOnCartSummary;
 
     @FindBy(xpath = "//button[contains(@data-test,'bpo-offer-modal') or @id='get-bpo-offer-button']")
@@ -137,7 +137,10 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//div[@class='dsa-dataBlock']//div[contains(text(), 'upfront savings') or contains(text(),'sur le montant initial')]")
     WebElement tierLabel;
 
-    @FindBy(xpath = "//span[contains(text(),'Appareils') or contains(text(),'Devices')]")
+    @FindAll({
+            @FindBy(xpath = "//span[contains(text(),' Téléphones ') or contains(text(),' Phones Preview - QA1 ')]"),
+            @FindBy(xpath = "//span[contains(text(),'Appareils') or contains(text(),'Devices')]")
+    })
     WebElement devicesInBreadCrumb;
 
     @FindBy(xpath = "//span[contains(text(),'Créer forfait') or contains(text(),'Build Plan')]")
@@ -165,7 +168,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     WebElement btnContinueOnModalToDoWithOldPhone;
 
     @FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]/parent::ds-checkbox")
-    WebElement checkBoxAdditionalLineOPtion;
+    List<WebElement> checkBoxAdditionalLineOPtion;
 
     @FindBy(xpath = "//button[contains(@data-test,'add-to-cart')]")
     WebElement btnAddToCart;
@@ -251,6 +254,27 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//div[@id='ds-stepper-id-1-completedContent-2']")
     WebElement completedDataOptionStepper;
 
+    @FindBy(xpath = "//span[contains(text(),'Have a promo code') or contains(text(),'code promotionnel')]")
+    WebElement promoSection;
+
+    @FindBy(xpath = "//div[contains(@class,'ds-formField__wrapper')]/ancestor::ds-form-field")
+    WebElement promoCodeField;
+
+    @FindBy(xpath = "//input[contains(@class,'ds-input') and contains(@id,'ds-form-input-id')]")
+    WebElement txtPromoCode;
+
+    @FindBy(xpath = "//button[contains(@data-test,'promo-button-check') and contains(text(),'Check') or contains(text(),'Vérifier')]")
+    WebElement btnCheckPromo;
+
+    @FindBy(xpath = "//span[contains(@class,'text-body') and contains(text(),'added to cart') or contains(text(),' ajouté au panier')]")
+    WebElement promoCodeSuccessMsg;
+
+    @FindBy(xpath = "//span[contains(@class,'text-body') and contains(text(),'with promo code') or contains(text(),'avec le code promotionnel')]")
+    WebElement promoCodeDuration;
+
+    @FindBy(xpath = "//span[contains(text(),'Promo code:') or contains(text(),'Code promotionnel :')]//ancestor::div[contains(@class,'dsa-orderTable__row')]")
+    WebElement promoCartLineItem;
+
     /**
      * Select Device Protection Header on Plan config page
      */
@@ -293,7 +317,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public void clickShowMoreDetails() {
         if(getReusableActionsInstance().isElementVisible(showMoreDetails,20)) {
-            if (getReusableActionsInstance().getWhenReady(showMoreDetails).getAttribute("title").contains("Hide More Details")) {
+            if (getReusableActionsInstance().getWhenReady(showMoreDetails).getAttribute("title").contains("View fewer plan options")) {
                 System.out.println("Show more details accordion already in expanded state");
             } else {
                 getReusableActionsInstance().clickWhenVisible(showMoreDetails, 20);
@@ -776,7 +800,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void clickCartSummaryContinueButton() {
-        clickGetBPOOffer();
+        //clickGetBPOOffer();
         getReusableActionsInstance().javascriptScrollByVisibleElement(continueButtonOnCartSummary);
         getReusableActionsInstance().executeJavaScriptClick(continueButtonOnCartSummary);
         getReusableActionsInstance().waitForElementInvisibilityNOException(continueButtonOnCartSummary,60);
@@ -787,11 +811,14 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void selectAdditionalLinePlanOptions() {
-        if(getReusableActionsInstance().isElementVisible(checkBoxAdditionalLineOPtion)) {
-            getReusableActionsInstance().clickWhenReady(checkBoxAdditionalLineOPtion, 30);
+        if(getReusableActionsInstance().isElementVisible(checkBoxAdditionalLineOPtion.get(0),40)) {
+            getReusableActionsInstance().waitForElementTobeClickable(checkBoxAdditionalLineOPtion.get(0),40);
+            for(WebElement ctnCheckBox : checkBoxAdditionalLineOPtion) {
+                getReusableActionsInstance().clickWhenReady(ctnCheckBox);
+            }
             getReusableActionsInstance().clickWhenReady(btnAddToCart);
             getReusableActionsInstance().scrollToElement(btnProceedToCheckout);
-            getReusableActionsInstance().clickWhenReady(btnProceedToCheckout, 30);
+            getReusableActionsInstance().clickWhenReady(btnProceedToCheckout);
         }
     }
 
@@ -1221,7 +1248,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clkContinueOnExistingAddonModal() {
-        getReusableActionsInstance().clickIfAvailable(btnExistingAddonModalContinue);
+        getReusableActionsInstance().clickIfAvailable(btnExistingAddonModalContinue,10);
     }
 
     /**
@@ -1247,6 +1274,62 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public void clkContinueDeviceProtection() {
         getReusableActionsInstance().clickIfAvailable(btnContinueDeviceProtection,5);
+    }
+
+    /**
+     * Clicks on the 'Promo Section' to enter Promo code
+     * @author Subash.Nedunchezhian
+     */
+    public void clkPromoSection() {
+        getReusableActionsInstance().waitForElementVisibility(promoSection, 20);
+        getReusableActionsInstance().clickWhenVisible(promoSection);
+    }
+
+    /**
+     * Enter the Promo code on Promo Input Field
+     * @param promoCode Promo code from yaml file
+     * @author Subash.Nedunchezhian
+     */
+    public void setPromoCode(String promoCode) {
+        getReusableActionsInstance().getWhenReady(promoCodeField, 60).click();
+        getReusableActionsInstance().getWhenReady(txtPromoCode,20).sendKeys(promoCode);
+    }
+
+    /**
+     * Clicks on the 'Check' button to verify the Promo code
+     * @author Subash.Nedunchezhian
+     */
+    public void clkCheckPromoBtn(){
+        getReusableActionsInstance().waitForElementVisibility(btnCheckPromo);
+        getReusableActionsInstance().clickWhenReady(btnCheckPromo);
+    }
+
+    /**
+     * Validates the Success message of the Promotion
+     * @return true if the 'PromoCode added to Cart' message displayed; else false
+     * @author Subash.Nedunchezhian
+     */
+    public boolean verifyPromoSuccessMsg() {
+        return getReusableActionsInstance().isElementVisible(promoCodeSuccessMsg, 60);
+    }
+
+    /**
+     * Validates the Line Item of the Promotion in cart summary
+     * @return true if the Promo code and discount amount line item displayed; else false
+     * @author Subash.Nedunchezhian
+     */
+    public boolean verifyCartLineItem(){
+        getReusableActionsInstance().javascriptScrollByVisibleElement(promoCartLineItem);
+        return getReusableActionsInstance().isElementVisible(promoCartLineItem);
+    }
+
+    /**
+     * Validates the Discount Value and Duration of the Promotion
+     * @return true if the 'Discount Value and Duration' message displayed; else false
+     * @author Subash.Nedunchezhian
+     */
+    public boolean verifyPromoDuration(){
+        return getReusableActionsInstance().isElementVisible(promoCodeDuration);
     }
 
 }

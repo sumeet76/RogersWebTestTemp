@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  * @author praveen.kumar7
  */
 
-public class RogersBFA_TC16_Consumer_AALFinPlan_PotgShipping_DBValidation_Test extends BaseTestClass {
+public class RogersBFA_TC16_Consumer_AALFinPlan_PotgShipping_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -23,7 +23,7 @@ public class RogersBFA_TC16_Consumer_AALFinPlan_PotgShipping_DBValidation_Test e
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","SanityBFA","AALBFA","RegressionOnlineBFA"})
+    @Test(groups = {"RegressionBFA","SanityBFA","AALBFA"})
     public void rogersAalFinPlanPotgTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
@@ -81,7 +81,7 @@ public class RogersBFA_TC16_Consumer_AALFinPlan_PotgShipping_DBValidation_Test e
         reporter.softAssert(getRogersDeviceConfigPage().verifyeligiblePostalCodeinBanner().contains(TestDataHandler.tc16AALFinPlanPotgShipping.getPostalCode()),
                 "Eligible postal code verified in Device Catalog page Banner is carried on to Device Config Page Banner as expected",
                 "Postal Code not matching");
-        getRogersDeviceConfigPage().selectDeviceColor(TestDataHandler.tc16AALFinPlanPotgShipping.getDeviceColor());
+        //getRogersDeviceConfigPage().selectDeviceColor(TestDataHandler.tc16AALFinPlanPotgShipping.getDeviceColor());
         reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
                 "Continue button on the device config page is present",
                 "Continue button on the device config page is not present");
@@ -118,6 +118,7 @@ public class RogersBFA_TC16_Consumer_AALFinPlan_PotgShipping_DBValidation_Test e
         //---------------------------------------Checkout pages---------------------------------------------------------
         reporter.softAssert(getRogersCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed", "Choose a Number Title not disaplayed");
         reporter.softAssert(getRogersCheckoutPage().isChooseNumberTabsDisplayed(), "Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
+        getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc16AALFinPlanPotgShipping.getCtnCity());
         reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
         getRogersCheckoutPage().clkChosePhoneNumber();
@@ -126,6 +127,7 @@ public class RogersBFA_TC16_Consumer_AALFinPlan_PotgShipping_DBValidation_Test e
         getRogersCheckoutPage().clkChooseNumberbutton();
         reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(), "Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
         reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
+        getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clkDeliveryMethod("PRO");
         reporter.reportLogPassWithScreenshot("Pro on the go Delivery selected");
         reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");

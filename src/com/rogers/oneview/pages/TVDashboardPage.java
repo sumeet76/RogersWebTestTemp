@@ -19,7 +19,7 @@ public class TVDashboardPage  extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//span[@ng-reflect-translate='global.dashboard.tv.resetParen']/ancestor::button")
+	@FindBy(xpath = "//span[text()='Reset Parental Controls & PIN' or text()='Réinitialiser le contrôle parental et le NIP']")
 	WebElement btnResetParentalControl;
 
 	@FindBy(xpath = "//span[@ng-reflect-translate='global.dashboard.tv.resetOnDem']")
@@ -47,7 +47,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='OK']/ancestor::button")
 	WebElement btnOk;
 
-	@FindBy(xpath = "//span[@ng-reflect-translate='global.dashboard.tv.restartWir']")
+	@FindBy(xpath = "//span[text()='Restart box(es)' or text()='Redémarrer les terminaux numériques']")
 	WebElement btnRestartSetupbox;
 
 	@FindBy(xpath = "//i[@class='li-loader']")
@@ -184,7 +184,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@rchtrackclickevent='exchangeLater']")
 	WebElement ExchangeLaterBtn;
 
-	@FindBy(xpath = "//span[@ng-reflect-translate='global.cta.continue']/ancestor::button")
+	@FindBy(xpath = "//span[text()='Continue' or text()='Continuer']")
 	WebElement continueChannlesAndThemePacks;
 
 	@FindBy(xpath = "//span[@translate='global.dashboard.tv.manageChannelsAndThemePacks.buttonName']")
@@ -276,8 +276,8 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//ds-popover[@ng-reflect-content='The Download & Go feature of t']")
 	WebElement DownloadGoBubble;
 
-	@FindBy(xpath = "//span[contains(text(),'Reset purchase PIN')]")
-	WebElement ResetPurchasePin;
+	@FindBy(xpath = "//span[contains(text(),'Reset purchase PIN') or contains(text(),'Réinitialisez le NIP d’achat')]/ancestor::button")
+	WebElement resetPurchasePin;
 
 	@FindBy(xpath = "//button[@rchtrackclickevent='themepacks']")
 	WebElement addThemepackFromBundle;
@@ -492,7 +492,8 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 		getReusableActionsInstance().staticWait(5000);
 		//getReusableActionsInstance().waitForElementVisibility(btnSelectChannel, 90);
-		By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/parent::div/following-sibling::div[@class='internet-tile__body']//span[text()='Select'or text()='Sélectionner']/ancestor::button");
+		//By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/parent::div/following-sibling::div[@class='internet-tile__body']//span[text()='Select'or text()='Sélectionner']/ancestor::button");
+		By packageNameLocator = By.xpath("//div[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/ancestor::div[3]/following-sibling::div/rch-bundle-price/child::div/child::div[3]/child::button");
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 30);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
 		getReusableActionsInstance().executeJavaScriptClick(pkg);
@@ -909,11 +910,8 @@ public class TVDashboardPage  extends BasePageClass {
 	 * */
 	public void clickExchangeLater() {
 		//getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().getWhenReady(exchangeLater,30);
-		//getReusableActionsInstance().javascriptScrollToMiddleOfPage();
-		//getReusableActionsInstance().javascriptScrollByVisibleElement(exchangeLater);
-		//getReusableActionsInstance().isElementVisible(exchangeLater, 120);
-		//getReusableActionsInstance().scrollToElementAndClick(exchangeLater);
+		WebElement btn = getReusableActionsInstance().getWhenReady(exchangeLater, 240);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
 		getReusableActionsInstance().executeJavaScriptClick(exchangeLater);
 	}
 		/*
@@ -1009,9 +1007,10 @@ public class TVDashboardPage  extends BasePageClass {
 		}
 
 		public void clickResetPurchasePin () {
-			getReusableActionsInstance().staticWait(10000);
-			getReusableActionsInstance().javascriptScrollToBottomOfPage();
-			getReusableActionsInstance().clickWhenReady(ResetPurchasePin);
+			//getReusableActionsInstance().staticWait(3000);
+			getReusableActionsInstance().getWhenReady(resetPurchasePin, 60);
+			//getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y -900);
+			getReusableActionsInstance().clickWhenReady(resetPurchasePin);
 
 		}
 		public void clickSecondLowestpackage () {

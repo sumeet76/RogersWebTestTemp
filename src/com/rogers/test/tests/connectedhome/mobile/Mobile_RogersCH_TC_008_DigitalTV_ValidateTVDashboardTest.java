@@ -33,6 +33,11 @@ public class Mobile_RogersCH_TC_008_DigitalTV_ValidateTVDashboardTest extends Ba
         reporter.reportLogWithScreenshot("Home Page");
     	getRogersHomePage().clkSignInMobile();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
+		if (getRogersLoginPage().isOverlayContainerDisplayed()) {
+			reporter.reportLogWithScreenshot("Select Continue in browser.");
+			getRogersLoginPage().clkContinueInBrowser();
+		}
+		reporter.reportLogWithScreenshot("Continue in Browser Selected");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc43_44_digitalTVAccount.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc43_44_digitalTVAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
@@ -45,7 +50,11 @@ public class Mobile_RogersCH_TC_008_DigitalTV_ValidateTVDashboardTest extends Ba
         reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersAccountOverviewPage().clkTVBadgeMobile();
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
-		reporter.hardAssert(getRogersDigitalTVDashboardPage().verifyChangeMyPackageMobile(),"Verifed the TV dashboard","TV dashboard Verification has failed");
+		if(getRogersDigitalTVDashboardPage().isPackageBlock()) {
+			reporter.hardAssert(getRogersDigitalTVDashboardPage().verifyChangeMyPackageMobile(),"Verifed the TV dashboard","TV dashboard Verification has failed");
+		} else {
+			reporter.hardAssert(getRogersDigitalTVDashboardPage().verifyChatBlock(), "Verifed the TV dashboard with Support/Chat Block", "TV dashboard Verification has failed");
+		}
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
     	}
 

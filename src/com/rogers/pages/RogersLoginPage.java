@@ -70,6 +70,13 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Forgot password ' or contains(text(),'Mot de passe oubli')]")
 	WebElement lnkForgotPassword;
 
+	@FindBy(xpath = "//div[contains(@class,'cdk-overlay-pane ds-modalWindow')]")
+	WebElement overlayContainer;
+
+	@FindBy(xpath = "//a[@title='Continue in browser']/span/span")
+	WebElement btnContinueInBrowser;
+
+
 	/**
 	 * To switch to the iframe
 	 * @author chinnarao.vattam
@@ -91,7 +98,22 @@ public class RogersLoginPage extends BasePageClass {
 				 || getReusableActionsInstance().isElementVisible(lblPassword)
 				 || getReusableActionsInstance().isElementVisible(txtPassword));
 	 }
-	
+	/**
+	 * Check if the overlay container to continue in browser is display or not
+	 * @return true if it display, otherwise false.
+	 * @author manpreet.kaur3
+	 */
+	public Boolean isOverlayContainerDisplayed() {
+		return getReusableActionsInstance().isElementVisible(overlayContainer);
+	}
+	/**
+	 * To Click Continue in browser button on login page
+	 * @author manpreet.kaur3
+	 */
+	public void clkContinueInBrowser() {
+		getReusableActionsInstance().waitForElementVisibility(btnContinueInBrowser, 30);
+		getReusableActionsInstance().clickWhenReady(btnContinueInBrowser);
+	}
 	/**
 	 * Enter the user name on Sign in frame
 	 * @param strUsername user name to be login

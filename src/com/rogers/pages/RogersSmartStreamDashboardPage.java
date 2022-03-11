@@ -11,16 +11,16 @@ public class RogersSmartStreamDashboardPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//a[@href='/customer/support/article/using-voice-commands']//span[@class='-mr4']")
+	@FindBy(xpath = "//a[@href='/customer/support/article/using-voice-commands']")
 	WebElement lnkUsingVoiceCommands;
 	
-	@FindBy(xpath = "//a[@href='/customer/support/article/using-apps-on-ignite-tv']//span[@class='-mr4']")
+	@FindBy(xpath = "//a[@href='/customer/support/article/using-apps-on-ignite-tv']")
 	WebElement lnkUsingAppsOnIgniteTv;
 	
-	@FindBy(xpath = "//a[@href='/customer/support/article/ignite-tv-power-saver']//span[@class='-mr4']")
+	@FindBy(xpath = "//a[@href='/customer/support/article/ignite-tv-power-saver']")
 	WebElement lnkIgniteTvPowerSaver;
 	
-	@FindBy(xpath = "//a[@href='/customer/support/article/ignite-tv-error-codes']//span[@class='-mr4']")
+	@FindBy(xpath = "//a[@href='/customer/support/article/ignite-tv-error-codes']")
 	WebElement lnkIgniteTvErrorCodes;
 	
 	@FindBy(xpath = "//a[@href='/consumer/support/tv/IgniteTV']")

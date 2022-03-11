@@ -136,6 +136,12 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[@ng-show='loadingImg']")
 	WebElement imgLoadingFingers;
+
+	@FindBy(xpath = "//h2[@translate='EOP.NEW_OFFER_NOTIFICATION.sai.header']")
+	WebElement headerOfferNotificationModal;
+
+	@FindBy(xpath = "//button[@data-dtname='x-close-ignite migration-alert']/span")
+	WebElement btnCloseOfferModal;
 	
 	@FindAll({
         @FindBy(xpath = "//a[text()='Profile & Settings' or contains(text(),'Profil et param')]"),
@@ -157,7 +163,6 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='ute-secondLevelNav-bar-m']//button//span[@data-translate='ute.common.label.overview']"),
 	@FindBy(xpath = "//button[contains(text(),'Overview') or contains(text(),'Survol')]")})
 	WebElement btnOverViewMobile;
-	
 				
 	@FindAll({
 	@FindBy(xpath = "//div[@class='ute-secondLevelNav-bar-m']//button//span[@data-translate='ute.common.label.billAndPayment']"),
@@ -314,7 +319,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//p[contains(@class,'dsa-alert') and (contains(text(),'You’ve exceeded your credit limit and your services are now suspended') or contains(text(),'Vous avez dépassé votre limite de crédit et vos services sont suspendus'))]")
 	WebElement lblCreditLimitExceeded;
 
-	@FindBy(xpath = "//rss-subscription-details//span[contains(text(),'Add a') or contains(text(),'Ajout d')]")
+	@FindBy(xpath = "//span[contains(text(),'Add a') or contains(text(),'Ajout d')]/ancestor::div[contains(@class,'subscription-detail')]/child::a")
 	WebElement lnkAddALine;
 
 	@FindBy(xpath = "//*[text()='Choose a plan to add your new line to' or text()='Choisir un forfait auquel ajouter votre nouvelle ligne']")
@@ -498,6 +503,12 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	@FindBy (xpath = "//span[contains(text(),'Payment History') or contains(text(),'Historique de paiement')]")
 	WebElement lnkPaymentHistory;
+
+	@FindBy(xpath = "//img[@class='star']")
+	WebElement imgSpecialOfferBadge;
+
+	@FindBy(xpath = "//span[@translate='EOP.CTAS.PROMOTION_OFFER_BADGE.LABEL']")
+	WebElement lblSpecialOfferBadge;
 
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement popLoader;
@@ -886,10 +897,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean verifyAndClickShareEverythingCTN(String strCTN) {
-		strCTN = strCTN.replace("-", "").replace(" ", "");
-		strCTN = strCTN.substring(0, 3) + "-" + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);
-		String strCTNXpath = "//div[contains(@class,'sharedWireless')]//div[contains(text(),'" + strCTN +"')]/parent::div/button";
-		
+		strCTN = strCTN.replace(" ", "");
+		strCTN = strCTN.substring(0, 3) + " " + strCTN.substring(3, 6) + "-" + strCTN.subSequence(6, 10);
+		String strCTNXpath = "//span[contains(@class,'subscription-number')][text()='"+strCTN+"']/ancestor::a";
+
 		if(getReusableActionsInstance().isElementVisible(By.xpath(strCTNXpath))) {
 			getReusableActionsInstance().executeJavaScriptClick(getDriver().findElement(By.xpath(strCTNXpath)));
 			return true;
@@ -2149,6 +2160,22 @@ public boolean verifyPTPWidgetIsDisplayed() {
 
 	}
 
+	/**
+	 * Verifies if special promotion offer badge is present or not.
+	 * return true if star img is visible
+	 * @author Manpreet.kaur3
+	 */
+	public boolean verifySpecialOfferBadge() {
+		return getReusableActionsInstance().isElementVisible(imgSpecialOfferBadge, 20);
+	}
+
+	/**
+	 * Clicks on the special promotion offer badge.
+	 * @author Manpreet.kaur3
+	 */
+	public void clkSpecialOfferBadge() {
+		getReusableActionsInstance().getWhenReady(lblSpecialOfferBadge).click();
+	}
 
 	/**
 	 * clicks the drop and and checks to see if the account show in Menu UsageAndService drop down on account overview page.
@@ -2289,5 +2316,13 @@ public boolean verifyPTPWidgetIsDisplayed() {
 			}
 		}
 		return  found;
+	}
+
+	public void clkCloseNewOfferModalPopup() {
+		getReusableActionsInstance().clickWhenReady(btnCloseOfferModal, 30);
+	}
+
+	public boolean isNewOfferModalDisplayed() {
+		return getReusableActionsInstance().isElementVisible(headerOfferNotificationModal, 40);
 	}
 }

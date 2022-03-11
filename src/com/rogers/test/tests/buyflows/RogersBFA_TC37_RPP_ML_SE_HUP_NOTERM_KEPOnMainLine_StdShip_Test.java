@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_TC37_RPP_ML_SE_HUP_NOTERM_KEPOnMainLine_StdShip_Test extends BaseTestClass{
 
-        @Test(groups = {"RegressionBFA","RPPHUPBFA","RegressionOnlineBFA"})
+        @Test(groups = {"RegressionBFA","RPPHUPBFA"})
         public void rppHUP_tc37_ML_SE_HUP_NOTERM_KEPOnMainLine_StdShip_Test() {
             reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
             reporter.reportLogWithScreenshot("Home Page");
