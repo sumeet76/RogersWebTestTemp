@@ -309,7 +309,8 @@ public class TestDataHandler {
 	public static AccountData User_New_Profile_Creation;
 	public static AccountData Make_a_Payment_EN;
 	public static AccountData Oasys_Gap_Closure_Change_Internet_via_Serviceability_Model;
-
+	public static AccountData Ignite_Mapped_Offers_2p;
+	public static AccountData Ignite_Mapped_Offers_3p;
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
  		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
@@ -677,6 +678,8 @@ public class TestDataHandler {
 		ChangeTvViaServiceability=YamlHandler.getOVAccountData("ChangeTvViaServiceability");
 		Make_a_Payment_EN= YamlHandler.getOVAccountData("Make_a_Payment_EN");
 		Oasys_Gap_Closure_Change_Internet_via_Serviceability_Model= YamlHandler.getOVAccountData("Oasys_Gap_Closure_Change_Internet_via_Serviceability_Model");
+		Ignite_Mapped_Offers_2p= YamlHandler.getOVAccountData("IgniteMappedOffers2p");
+		Ignite_Mapped_Offers_3p= YamlHandler.getOVAccountData("IgniteMappedOffers3p");
 	}
 
 	private static void ovrDataInit() throws FileNotFoundException {
