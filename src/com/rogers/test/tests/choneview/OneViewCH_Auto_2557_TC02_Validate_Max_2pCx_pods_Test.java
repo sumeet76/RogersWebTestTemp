@@ -10,36 +10,37 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_2557_TC02_Validate_Chargeable_Pods_Test extends BaseTestClass {
+public class OneViewCH_Auto_2557_TC02_Validate_Max_2pCx_pods_Test extends BaseTestClass {
     @Test (groups = {"Regression"})
-    public void oneViewCH_Auto_2557_TC02_Validate_Chargeable_Pods_Test() {
+    public void oneViewCH_Auto_2557_TC02_Validate_Max_2pCx_pods_Test() {
         reporter.reportLogWithScreenshot("One view is launched");
-        getEnvironmentSelectionPage().launchOneView(TestDataHandler.Chargeable_pods.getAccountNo(),TestDataHandler.Chargeable_pods.getContactID());
+        getEnvironmentSelectionPage().launchOneView(TestDataHandler.Max2pCx_Pods.getAccountNo(),TestDataHandler.Max2pCx_Pods.getContactID());
         getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("select Internet Badge");
-
+        reporter.hardAssert(getInternetDashboardPage().verifyIgniteWiFiPod(),"Ignite WiFi Pod appeared","Ignite WiFi Pod did not appeared");
+        reporter.hardAssert(getInternetDashboardPage().verifyRemovePods(),"Remove Pods appeared","Remove Pods did not appeared");
         getInternetDashboardPage().clickAddPodsButton();
         reporter.reportLogWithScreenshot("click AddPods Button ");
-
         getInternetDashboardPage().clickAddToCartForPods();
         reporter.reportLogWithScreenshot("click Add To Cart For Pods");
-
         getInternetDashboardPage().clickPlusToAddPod();
         reporter.reportLogWithScreenshot("click Plus To Add Pod");
-
         reporter.hardAssert(getInternetDashboardPage().verifyMaximumLimitReached(),"maximum limit reached appeared","maximum limit reached did not appeared");
-
-        getInternetDashboardPage().clickMinusToRemovePod();
-        reporter.reportLogWithScreenshot("click Minus To Remove Pod");
-
+        reporter.hardAssert(getInternetDashboardPage().verifyRestricted(),"Restricted appeared","Restricted did not appeared");
+        getInternetDashboardPage().clickAddToCartForPods();
+        reporter.reportLogWithScreenshot("click Add To Cart For Pods");
+        reporter.hardAssert(getInternetDashboardPage().verifySecondMaximumLimitReached(),"Second maximum limit reached appeared","Second maximum limit reached did not appeared");
         getInternetDashboardPage().clickContinueButton();
         reporter.reportLogWithScreenshot("click Continue Button");
-
+        reporter.hardAssert(getInternetDashboardPage().verifyInstallationOption(),"InstallationOption appeared","InstallationOption did not appeared");
         getInternetDashboardPage().clickCustomerUnderstandCheckbox();
         reporter.reportLogWithScreenshot("click Customer Understand Checkbox");
+        getInternetDashboardPage().clickContinueButton();
+        reporter.reportLogWithScreenshot("click Continue Button");
+        reporter.hardAssert(getInternetDashboardPage().verifyOrderReview(),"OrderReview appeared","OrderReview did not appeared");
 
-        getRogersOVOrderReviewPage().clickSubmitOrder();
-        reporter.reportLogWithScreenshot("click Submit Order");
+//        getRogersOVOrderReviewPage().clickSubmitOrder();
+//        reporter.reportLogWithScreenshot("click Submit Order");
 
     }
 

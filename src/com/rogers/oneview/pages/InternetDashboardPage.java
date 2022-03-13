@@ -123,6 +123,9 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)[1]")
 	WebElement addPodToCart;
 
+	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)[2]")
+	WebElement addRestrictedPodToCart;
+
 	@FindBy(xpath="//span[@class='ds-icon d-inline-flex rds-icon-plus']/ancestor::button")
 	WebElement plusButtonToAddPod;
 
@@ -134,6 +137,10 @@ public class InternetDashboardPage  extends BasePageClass {
 
 	@FindBy(xpath="//p[contains(text(), 'Reached maximum')]")
 	WebElement maximumLimitReached;
+
+	@FindBy(xpath="(//p[contains(text(), 'Reached maximum')])[2]")
+	WebElement secondMaximumLimitReached;
+
 
 	@FindBy(xpath="//span[@translate='global.cta.continue']/ancestor::button")
 	WebElement continueButton;
@@ -150,6 +157,19 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Ignite 1Gbps Ultd + SmartStream']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[3]/child::button")
 	WebElement btnSelectSmartStream;
 
+	@FindBy(xpath = "//p[@translate='global.dashboard.internet.pods.alertRemovePodsTitle']")
+	WebElement RemovePods;
+
+
+	@FindBy(xpath = "//span[contains(text(), 'Customer has Ignite WiFi Pod')]")
+	WebElement  IgniteWiFiPod;
+
+	@FindBy(xpath = "//span[@translate='global.label.internetAddOns.banner']")
+	WebElement  Restricted;
+	@FindBy(xpath = "//h2[@translate='global.checkout.fulfillment.installationOption']")
+	WebElement  installationOption;
+	@FindBy(xpath = "//h1[@translate='global.label.OrderReview']")
+	WebElement  OrderReview;
 
 	/**
 	 * Verify the result
@@ -543,7 +563,7 @@ public class InternetDashboardPage  extends BasePageClass {
 
 
 	/*
-	 * clicks  Select button
+	 * clicks  Add Pods Button
 	 * @author aditi.jain
 	 * */
 	public void clickAddPodsButton() {
@@ -553,7 +573,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	}
 
 	/*
-	 * clicks  Select button
+	 * clicks  Add To Cart For Pods
 	 * @author aditi.jain
 	 * */
 	public void clickAddToCartForPods() {
@@ -563,7 +583,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	}
 
 	/*
-	 * clicks  Select button
+	 * clicks  Continue Button
 	 * @author aditi.jain
 	 * */
 	public void clickContinueButton() {
@@ -573,7 +593,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	}
 
 	/*
-	 * clicks  Select button
+	 * clicks  Customer Understand Checkbox
 	 * @author aditi.jain
 	 * */
 	public void clickCustomerUnderstandCheckbox() {
@@ -583,7 +603,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	}
 
 	/*
-	 * clicks  Select button
+	 * clicks  Plus To Add Pod
 	 * @author aditi.jain
 	 * */
 	public void clickPlusToAddPod() {
@@ -597,7 +617,7 @@ public class InternetDashboardPage  extends BasePageClass {
 
 
 	/*
-	 * clicks  Select button
+	 * verify Maximum Limit Reached
 	 * @author aditi.jain
 	 * */
 	public boolean verifyMaximumLimitReached() {
@@ -606,7 +626,7 @@ public class InternetDashboardPage  extends BasePageClass {
 
 
 	/*
-	 * clicks  Select button
+	 * clicks  Minus To Remove Pod
 	 * @author aditi.jain
 	 * */
 	public void clickMinusToRemovePod() {
@@ -615,7 +635,86 @@ public class InternetDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(plusButtonToAddPod);
 	}
 
+	/*
+	 * clicks  Add To Cart For Restricted Pods
+	 * @author aditi.jain
+	 * */
+	public void clickAddToCartForRestrictedPods() {
+		getReusableActionsInstance().scrollToElement(addRestrictedPodToCart);
+		getReusableActionsInstance().waitForElementVisibility(addRestrictedPodToCart, 45);
+		getReusableActionsInstance().executeJavaScriptClick(addRestrictedPodToCart);
+	}
+	/*
+	 * verify Remove Pods
+	 * @author aditi.jain
+	 * */
+	public boolean verifyRemovePods() {
+		getReusableActionsInstance().waitForElementVisibility(RemovePods, 30);
+		return getReusableActionsInstance().isElementVisible(RemovePods);
 
+	}
+
+	/*
+	 * verify Remove Pods
+	 * @author aditi.jain
+	 * */
+	public boolean verifyRemovePodsNotAppear() {
+		getReusableActionsInstance().waitForElementVisibility(RemovePods, 15);
+		return !getReusableActionsInstance().isElementVisible(RemovePods);
+
+	}
+	/*
+	 * verify Ignite WiFi Pod
+	 * @author aditi.jain
+	 * */
+	public boolean verifyIgniteWiFiPod() {
+		getReusableActionsInstance().waitForElementVisibility(IgniteWiFiPod, 30);
+		return getReusableActionsInstance().isElementVisible(IgniteWiFiPod);
+	}
+	/*
+	 * verify second Maximum Limit Reached
+	 * @author aditi.jain
+	 * */
+	public boolean verifySecondMaximumLimitReached() {
+		return getReusableActionsInstance().isElementVisible(secondMaximumLimitReached);
+	}
+	/*
+	 * verify  Restricted
+	 * @author aditi.jain
+	 * */
+	public boolean verifyRestricted() {
+		getReusableActionsInstance().waitForElementVisibility( Restricted, 30);
+		return getReusableActionsInstance().isElementVisible( Restricted);
+	}
+
+	/*
+	 * verify  Restricted
+	 * @author aditi.jain
+	 * */
+	public boolean verifyRestrictedDoesNotAppear() {
+//		getReusableActionsInstance().waitForElementInvisibility( Restricted, 15);
+		if(getReusableActionsInstance().isElementVisible(Restricted,30)){
+			return false;
+		} else {
+			return true;
+		}
+	}
+	/*
+	 * verify  installationOption
+	 * @author aditi.jain
+	 * */
+	public boolean verifyInstallationOption() {
+		getReusableActionsInstance().waitForElementVisibility( installationOption, 30);
+		return getReusableActionsInstance().isElementVisible( installationOption);
+	}
+	/*
+	 * verify  Order Review
+	 * @author aditi.jain
+	 * */
+	public boolean verifyOrderReview() {
+		getReusableActionsInstance().waitForElementVisibility( OrderReview, 30);
+		return getReusableActionsInstance().isElementVisible( OrderReview);
+	}
 
 }
 

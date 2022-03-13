@@ -16,9 +16,16 @@ public class OneViewCH_Auto_2557_TC02_View_Bill_Test extends BaseTestClass {
         reporter.reportLogWithScreenshot("One view is launched");
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.ViewBill.getAccountNo(),TestDataHandler.ViewBill.getContactID());
         getAccountOverViewPage().clickBillinglink();
-        reporter.hardAssert(getAccountOverViewPage().verifyProfilePage(),"Profile page is displaye","profile Page is not displayed");
+//        reporter.hardAssert(getAccountOverViewPage().verifyProfilePage(),"Profile page is displaye","profile Page is not displayed");
         reporter.reportLogWithScreenshot("Billing link is opened");
-        getRogersAccountOverviewPage().scrollToBottomOfPage();
+        getAccountOverViewPage().scrollToViewBill();
+        reporter.hardAssert(getAccountOverViewPage().verifyRequiredMessage(),"Header displayed","Header not displayed");
+        reporter.hardAssert(getAccountOverViewPage().verifyBillAmount(),"Bill amount is displaye","Bill amount is not displayed");
+        reporter.hardAssert(getAccountOverViewPage().verifyWelcomeText(),"Welcome text is displaye","Welcome text is not displayed");
+        reporter.hardAssert(getAccountOverViewPage().verifyBillMessage(),"Bill message is displaye","Bill message is not displayed");
+        reporter.hardAssert(getAccountOverViewPage().verifyProductDisplayed(),"Product is displaye","Product is not displayed");
+        reporter.hardAssert(getAccountOverViewPage().verifyAccountMessages(),"Account message is displaye","Account message is not displayed");
+
         reporter.reportLogWithScreenshot("Test Passed");
     }
 

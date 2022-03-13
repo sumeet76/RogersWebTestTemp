@@ -212,12 +212,23 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//input[@id='impersonate-code']")
     WebElement inputDealerCode;
 
+    @FindBy(xpath = "(//span[@ng-bind-html='message.message'])[1]")
+    WebElement requiredmessage;
 
+    @FindBy(xpath = "//span[@class='bb-amount ng-scope amount-xl']")
+    WebElement billamount;
 
+    @FindBy(xpath = "//div[@ng-class='message.textClass']")
+    WebElement welcometext;
 
+    @FindBy(xpath = "//div[@ng-bind-html='$ctrl.data.header.message']")
+    WebElement billmessage;
 
+    @FindBy(xpath = "//div[@class='product-header']")
+    WebElement product;
 
-
+    @FindBy(xpath = "//div[@id='bb-bs-bill-messages']")
+    WebElement accountMessages;
 
     /**
      * Validate if either TV or channel header is visible
@@ -828,6 +839,72 @@ public class AccountOverViewPage extends BasePageClass {
         return getReusableActionsInstance().isElementVisible(NewtvDetails,30);
 
 
+    }
+    /**
+     * verify  required message
+     * @return true if available, else false
+     * @author Aditi.jain
+     */
+    public boolean verifyRequiredMessage() {
+        return getReusableActionsInstance().isElementVisible(requiredmessage,30);
+
+
+    }
+    /**
+     * verify  Bill Amount
+     * @return true if available, else false
+     * @author Aditi.jain
+     */
+    public boolean verifyBillAmount() {
+        return getReusableActionsInstance().isElementVisible(billamount,30);
+
+
+    }
+    /**
+     * verify  welcome text
+     * @return true if available, else false
+     * @author Aditi.jain
+     */
+    public boolean verifyWelcomeText() {
+        return getReusableActionsInstance().isElementVisible(welcometext,30);
+    }
+
+
+    /**
+     * verify bill message
+     * @return true if available, else false
+     * @author Aditi.jain
+     */
+    public boolean verifyBillMessage() {
+        return getReusableActionsInstance().isElementVisible(billmessage,30);
+    }
+    /**
+     * verify product
+     * @return true if available, else false
+     * @author Aditi.jain
+     */
+    public boolean verifyProductDisplayed() {
+        return getReusableActionsInstance().isElementVisible(product, 30);
+    }
+
+
+    /**
+     * verify accountMessages
+     * @return true if available, else false
+     * @author Aditi.jain
+     */
+    public boolean verifyAccountMessages() {
+        return getReusableActionsInstance().isElementVisible(accountMessages, 30);
+    }
+
+    /**
+     * verify accountMessages
+     * @return true if available, else false
+     * @author Aditi.jain
+     */
+    public void scrollToViewBill() {
+        getReusableActionsInstance().waitForPageLoad();
+        getReusableActionsInstance().scrollToElement(requiredmessage);
     }
 
 

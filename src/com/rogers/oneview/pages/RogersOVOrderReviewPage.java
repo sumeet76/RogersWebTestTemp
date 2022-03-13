@@ -186,9 +186,9 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	 * @author Aditi.Jain
 	 */
 	public void clickSubmitOrder() {
-		getReusableActionsInstance().waitForElementVisibility(submitButton, 60);
+		getReusableActionsInstance().waitForElementVisibility(submitOrder, 60);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().executeJavaScriptClick(submitButton);
+		getReusableActionsInstance().executeJavaScriptClick(submitOrder);
 		getReusableActionsInstance().staticWait(10000);
 	}
 
