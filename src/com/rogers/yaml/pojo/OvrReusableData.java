@@ -15,4 +15,17 @@ public class OvrReusableData {
     }
     private   String banNumber;
     private   String postalCode;
+    private   String addOnPlan;
+    private String addOnPlanFr;
+    public String getAddOnPlan() {return this.addOnPlan; }
+    public void setAddOnPlan(String AddOnPlan) {this.addOnPlan = AddOnPlan;}
+
+    public String getAddOnPlanFr() {
+        return addOnPlanFr;
+    }
+
+    public void setAddOnPlanFr(String addOnPlanFr) {
+        this.addOnPlanFr = addOnPlanFr;
+    }
+
 }

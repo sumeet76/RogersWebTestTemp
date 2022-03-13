@@ -65,6 +65,7 @@ public class BaseTestClass {
     public static DBValidation dbConnection;
     protected static final ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersHomePage> RogersHomePageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<RogersHTOPromotionPage> RogersHTOPromotionPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersLoginPage> RogersLoginPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersAccountOverviewPage> RogersAccountOverviewPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersProfileAndSettingsPage> RogersProfileAndSettingsPageThreadLocal = new ThreadLocal<>();
@@ -220,6 +221,10 @@ public class BaseTestClass {
 
     public static RogersHomePage getRogersHomePage() {
         return RogersHomePageThreadLocal.get();
+    }
+
+    public static RogersHTOPromotionPage getRogersHTOPRomotionPage() {
+        return RogersHTOPromotionPageThreadLocal.get();
     }
 
     public static RogersLoginPage getRogersLoginPage() {
@@ -1084,6 +1089,7 @@ public class BaseTestClass {
             case "connectedhome_login":
 
                 RogersHomePageThreadLocal.set(new RogersHomePage(getDriver()));
+                RogersHTOPromotionPageThreadLocal.set(new RogersHTOPromotionPage(getDriver()));
                 RogersBuyPageThreadLocal.set(new RogersBuyPage(getDriver()));
                 RogersLoginPageThreadLocal.set(new RogersLoginPage(getDriver()));
                 RogersAccountOverviewPageThreadLocal.set(new RogersAccountOverviewPage(getDriver()));
@@ -1236,6 +1242,9 @@ public class BaseTestClass {
                 OVROrderConfirmationPageThreadLocal.set(new OVROrderConfirmationPage(getDriver()));
                 RogersIgniteBundlesPageThreadLocal.set(new RogersIgniteBundlesPage(getDriver()));
                 RogersOVCheckoutPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVCheckoutPage(getDriver()));
+                HomePhoneAddonsPageThreadLocal.set(new HomePhoneAddonsPage(getDriver()));
+                HomePhoneSelectionPageThreadLocal.set(new HomePhoneSelectionPage(getDriver()));
+                CallerInformationPageThreadLocal.set(new com.rogers.oneview.pages.CallerInformationPage(getDriver()));
                 break;
 
 
