@@ -777,11 +777,11 @@ public class AccountOverViewPage extends BasePageClass {
 	@author Aditi.Jain
     */
     public void clickSubmit()
-    { getReusableActionsInstance().waitForElementVisibility(changeCallerNameSubmit ,60);
+    {
+        getReusableActionsInstance().waitForElementVisibility(changeCallerNameSubmit ,60);
         getReusableActionsInstance().javascriptScrollToBottomOfPage();
         getReusableActionsInstance().clickWhenReady(changeCallerNameSubmit,30);
-
-        getReusableActionsInstance().staticWait(500000000);
+        getReusableActionsInstance().staticWait(5000);
     }
     /**
      * Click Authorization Checkbox
