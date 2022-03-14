@@ -5,6 +5,7 @@ import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
+import org.openqa.selenium.Alert;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 import utils.FormFiller;
@@ -16,7 +17,6 @@ import java.lang.reflect.Method;
 public class OneViewCH_Auto_1408_TC01_E2E_NAC_2P_TMP_PaymentMethod_MonthlyCharges_Test extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
 	public void oneViewCH_Auto_1408_TC01_E2E_NAC_2P_TMP_PaymentMethod_MonthlyCharges_Test(){
-
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("address");
