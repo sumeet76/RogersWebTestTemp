@@ -63,6 +63,12 @@ public class ContactDetails {
 	private String contactID2pAndSmartHomeMonitoringTMP;
 	private String contactID3pAndSmartHomeMonitoringTMP;
 	private String contactIDSAIAndSmartHomeMonitoringTMP;
+	private String contactID3PChannelAndThemepack;
+	private String contactID2PWithout4KTVExpressCheckout;
+	private String contactID3PExchangeNow;
+	private String contactID2PFlowByAddingBothFreeAndChargeablePods;
+	private String contactIDISSFlowByAddingBothFreeAndChargeablePods;
+	private String contactIDSAIFlowByAddingBothFreeAndChargeablePods;
 
 	;
 	public ContactDetails() {
@@ -650,4 +656,66 @@ public class ContactDetails {
 	public String getContactIDSAIAndSmartHomeMonitoringTMP() {
 		return contactIDSAIAndSmartHomeMonitoringTMP;
 	}
+	/**
+	 * @param contactID3PChannelAndThemepack
+	 */
+	public void setContactID3PChannelAndThemepack(String contactID3PChannelAndThemepack) {
+		this.contactID3PChannelAndThemepack= contactID3PChannelAndThemepack;
+	}
+
+	public String getContactID3PChannelAndThemepack() {
+		return contactID3PChannelAndThemepack;
+	}
+
+	/**
+	 * @param contactID2PWithout4KTVExpressCheckout
+	 */
+	public void setContactID2PWithout4KTVExpressCheckout(String contactID2PWithout4KTVExpressCheckout) {
+		this.contactID2PWithout4KTVExpressCheckout= contactID2PWithout4KTVExpressCheckout;
+	}
+
+	public String getContactID2PWithout4KTVExpressCheckout() {
+		return contactID2PWithout4KTVExpressCheckout;
+	}
+	/**
+	 * @param contactID3PExchangeNow
+	 */
+	public void setContactID3PExchangeNow(String contactID3PExchangeNow) {
+		this.contactID3PExchangeNow= contactID3PExchangeNow;
+	}
+
+	public String getContactID3PExchangeNow() {
+		return contactID3PExchangeNow;
+	}
+	/**
+	 * @param contactID2PFlowByAddingBothFreeAndChargeablePods
+	 */
+	public void setContactID2PFlowByAddingBothFreeAndChargeablePods(String contactID2PFlowByAddingBothFreeAndChargeablePods) {
+		this.contactID2PFlowByAddingBothFreeAndChargeablePods= contactID2PFlowByAddingBothFreeAndChargeablePods;
+	}
+
+	public String getContactID2PFlowByAddingBothFreeAndChargeablePods() {
+		return contactID2PFlowByAddingBothFreeAndChargeablePods;
+	}
+	/**
+	 * @param contactIDISSFlowByAddingBothFreeAndChargeablePods
+	 */
+	public void setContactIDISSFlowByAddingBothFreeAndChargeablePods(String contactIDISSFlowByAddingBothFreeAndChargeablePods) {
+		this.contactIDISSFlowByAddingBothFreeAndChargeablePods= contactIDISSFlowByAddingBothFreeAndChargeablePods;
+	}
+
+	public String getContactIDISSFlowByAddingBothFreeAndChargeablePods() {
+		return contactIDISSFlowByAddingBothFreeAndChargeablePods;
+	}
+	/**
+	 * @param contactIDSAIFlowByAddingBothFreeAndChargeablePods
+	 */
+	public void setContactIDSAIFlowByAddingBothFreeAndChargeablePods(String contactIDSAIFlowByAddingBothFreeAndChargeablePods) {
+		this.contactIDSAIFlowByAddingBothFreeAndChargeablePods= contactIDSAIFlowByAddingBothFreeAndChargeablePods;
+	}
+
+	public String getContactIDSAIFlowByAddingBothFreeAndChargeablePods() {
+		return contactIDSAIFlowByAddingBothFreeAndChargeablePods;
+	}
+
 }

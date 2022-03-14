@@ -318,7 +318,15 @@ public class TestDataHandler {
 	public static AccountData User_New_Profile_Creation;
 	public static AccountData Make_a_Payment_EN;
 	public static AccountData Oasys_Gap_Closure_Change_Internet_via_Serviceability_Model;
-
+	public static AccountData ViewBill;
+	public static AccountData IPTVDasboad_MulitplsSTB;
+	public static AccountData IgniteOffers_SAI_Adding_ISS;
+	public static AccountData IgniteOffersChangeTV_INTpackage;
+	public static AccountData Chargeable_pods;
+	public static AccountData SAI_ISSCxPods;
+	public static AccountData MaxSAI_Cx_Pods;
+	public static AccountData Max2pCx_Pods;
+	public static AccountData Max3pCx_Pods;
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
  		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
@@ -687,6 +695,15 @@ public class TestDataHandler {
 		ChangeTvViaServiceability=YamlHandler.getOVAccountData("ChangeTvViaServiceability");
 		Make_a_Payment_EN= YamlHandler.getOVAccountData("Make_a_Payment_EN");
 		Oasys_Gap_Closure_Change_Internet_via_Serviceability_Model= YamlHandler.getOVAccountData("Oasys_Gap_Closure_Change_Internet_via_Serviceability_Model");
+		ViewBill= YamlHandler.getOVAccountData("ViewBill");
+		IPTVDasboad_MulitplsSTB= YamlHandler.getOVAccountData("IPTVDasboad_MulitplsSTB");
+		IgniteOffers_SAI_Adding_ISS= YamlHandler.getOVAccountData("IgniteOffers_SAI_Adding_ISS");
+		IgniteOffersChangeTV_INTpackage= YamlHandler.getOVAccountData("Ignite0ffersChangeTV_INTpackage");
+		Chargeable_pods= YamlHandler.getOVAccountData("Chargeable_pods");
+		SAI_ISSCxPods= YamlHandler.getOVAccountData("SAI_ISSCxPods");
+		MaxSAI_Cx_Pods= YamlHandler.getOVAccountData("MaxSAICx_Pods");
+		Max2pCx_Pods= YamlHandler.getOVAccountData("Max2pCx_Pods");
+		Max3pCx_Pods= YamlHandler.getOVAccountData("Max3pCx_Pods");
 	}
 
 	private static void ovrDataInit() throws FileNotFoundException {
