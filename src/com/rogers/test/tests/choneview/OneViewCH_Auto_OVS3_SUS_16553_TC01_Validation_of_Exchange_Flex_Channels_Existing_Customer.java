@@ -39,8 +39,6 @@ public class OneViewCH_Auto_OVS3_SUS_16553_TC01_Validation_of_Exchange_Flex_Chan
        // getTVDashboardPage().clickContinueChannelsAndThemePacks();
         //getTVDashboardPage().clickSuccessOk();
 
-
-
     }
     @BeforeMethod(alwaysRun=true)
     @Parameters({"strBrowser","strLanguage"})
