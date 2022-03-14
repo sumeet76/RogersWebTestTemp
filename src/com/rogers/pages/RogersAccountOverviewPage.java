@@ -136,6 +136,12 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[@ng-show='loadingImg']")
 	WebElement imgLoadingFingers;
+
+	@FindBy(xpath = "//h2[@translate='EOP.NEW_OFFER_NOTIFICATION.sai.header']")
+	WebElement headerOfferNotificationModal;
+
+	@FindBy(xpath = "//button[@data-dtname='x-close-ignite migration-alert']/span")
+	WebElement btnCloseOfferModal;
 	
 	@FindAll({
         @FindBy(xpath = "//a[text()='Profile & Settings' or contains(text(),'Profil et param')]"),
@@ -157,7 +163,6 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='ute-secondLevelNav-bar-m']//button//span[@data-translate='ute.common.label.overview']"),
 	@FindBy(xpath = "//button[contains(text(),'Overview') or contains(text(),'Survol')]")})
 	WebElement btnOverViewMobile;
-	
 				
 	@FindAll({
 	@FindBy(xpath = "//div[@class='ute-secondLevelNav-bar-m']//button//span[@data-translate='ute.common.label.billAndPayment']"),
@@ -498,6 +503,12 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	@FindBy (xpath = "//span[contains(text(),'Payment History') or contains(text(),'Historique de paiement')]")
 	WebElement lnkPaymentHistory;
+
+	@FindBy(xpath = "//img[@class='star']")
+	WebElement imgSpecialOfferBadge;
+
+	@FindBy(xpath = "//span[@translate='EOP.CTAS.PROMOTION_OFFER_BADGE.LABEL']")
+	WebElement lblSpecialOfferBadge;
 
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement popLoader;
@@ -2149,6 +2160,22 @@ public boolean verifyPTPWidgetIsDisplayed() {
 
 	}
 
+	/**
+	 * Verifies if special promotion offer badge is present or not.
+	 * return true if star img is visible
+	 * @author Manpreet.kaur3
+	 */
+	public boolean verifySpecialOfferBadge() {
+		return getReusableActionsInstance().isElementVisible(imgSpecialOfferBadge, 20);
+	}
+
+	/**
+	 * Clicks on the special promotion offer badge.
+	 * @author Manpreet.kaur3
+	 */
+	public void clkSpecialOfferBadge() {
+		getReusableActionsInstance().getWhenReady(lblSpecialOfferBadge).click();
+	}
 
 	/**
 	 * clicks the drop and and checks to see if the account show in Menu UsageAndService drop down on account overview page.
@@ -2289,5 +2316,13 @@ public boolean verifyPTPWidgetIsDisplayed() {
 			}
 		}
 		return  found;
+	}
+
+	public void clkCloseNewOfferModalPopup() {
+		getReusableActionsInstance().clickWhenReady(btnCloseOfferModal, 30);
+	}
+
+	public boolean isNewOfferModalDisplayed() {
+		return getReusableActionsInstance().isElementVisible(headerOfferNotificationModal, 40);
 	}
 }
