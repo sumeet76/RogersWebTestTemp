@@ -67,6 +67,15 @@ public class AccountDetails {
 	private String immediateCancelCTN;
 	private String themepackNameEn;
 	private String themepackNameFr;
+	private String targetedOfferEn;
+	private String targetedOfferFr;
+
+
+
+
+
+
+
 
 	/*
 	* @retrun themepackNameEn
@@ -823,4 +832,28 @@ public class AccountDetails {
 		this.swapOutChannelFour = swapOutChannelFour;
 	}
 
+	/**
+	 *
+	 * @return the targetedOffer
+	 */
+	public String getTargetedOfferEn() {return targetedOfferEn;}
+
+	/**
+	 *
+	 * @param targetedOfferEn the targetedOfferEn to set
+	 */
+	public void setTargetedOfferEn(String targetedOfferEn) {this.targetedOfferEn = targetedOfferEn;
+	}
+
+	/**
+	 *
+	 * @return the targetedOfferFr
+	 */
+	public String getTargetedOfferFr() {return targetedOfferFr;}
+
+	/**
+	 *
+	 * @param targetedOfferFr the targetedOfferFr to set
+	 */
+	public void setTargetedOfferFr(String targetedOfferFr) {this.targetedOfferFr = targetedOfferFr;}
 }
