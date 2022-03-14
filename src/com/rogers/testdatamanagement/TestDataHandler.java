@@ -698,10 +698,6 @@ public class TestDataHandler {
 		ChangeTvViaServiceability=YamlHandler.getOVAccountData("ChangeTvViaServiceability");
 		Make_a_Payment_EN= YamlHandler.getOVAccountData("Make_a_Payment_EN");
 		Oasys_Gap_Closure_Change_Internet_via_Serviceability_Model= YamlHandler.getOVAccountData("Oasys_Gap_Closure_Change_Internet_via_Serviceability_Model");
-<<<<<<< HEAD
-		Ignite_Mapped_Offers_2p= YamlHandler.getOVAccountData("IgniteMappedOffers2p");
-		Ignite_Mapped_Offers_3p= YamlHandler.getOVAccountData("IgniteMappedOffers3p");
-=======
 		ViewBill= YamlHandler.getOVAccountData("ViewBill");
 		IPTVDasboad_MulitplsSTB= YamlHandler.getOVAccountData("IPTVDasboad_MulitplsSTB");
 		IgniteOffers_SAI_Adding_ISS= YamlHandler.getOVAccountData("IgniteOffers_SAI_Adding_ISS");
@@ -711,7 +707,9 @@ public class TestDataHandler {
 		MaxSAI_Cx_Pods= YamlHandler.getOVAccountData("MaxSAICx_Pods");
 		Max2pCx_Pods= YamlHandler.getOVAccountData("Max2pCx_Pods");
 		Max3pCx_Pods= YamlHandler.getOVAccountData("Max3pCx_Pods");
->>>>>>> d51a67d31460329805a40957b3f2a257e5eb2410
+		Ignite_Mapped_Offers_2p= YamlHandler.getOVAccountData("IgniteMappedOffers2p");
+		Ignite_Mapped_Offers_3p= YamlHandler.getOVAccountData("IgniteMappedOffers3p");
+
 	}
 
 	private static void ovrDataInit() throws FileNotFoundException {
