@@ -107,7 +107,7 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().waitForElementVisibility(submitButton, 60);
 		getReusableActionsInstance().executeJavaScriptClick(submitButton);
-		getReusableActionsInstance().staticWait(60000);
+		getReusableActionsInstance().staticWait(10000);
 	}
 	/**
 	 * Verify Monthly Charges Appear
