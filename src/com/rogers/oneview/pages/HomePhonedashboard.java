@@ -312,6 +312,21 @@ public class HomePhonedashboard  extends BasePageClass {
 
 
 	}
+
+	public boolean verifyResetVoicemailPassword()
+	{
+		return getReusableActionsInstance().isElementVisible(btnResetVoiceMail, 20);
+	}
+
+	public boolean verifyChangeCallDisplay()
+	{
+		return getReusableActionsInstance().isElementVisible(ChangeCallDisplayName, 20);
+	}
+
+	public boolean verifyManageAddOns()
+	{
+		return getReusableActionsInstance().isElementVisible(manageAddOns, 20);
+	}
 	}
 	
 

@@ -315,6 +315,9 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button")
 	WebElement continueBottomOfPage;
 
+	@FindBy(xpath = "//span[text()='View my channel lineup' or text()='Voir ma liste de chaînes']")
+	WebElement viewMyChannelLineUpLink;
+
 	/**
 	 * Get list of all channels and themepacks and remove them one by one
 	 *
@@ -387,6 +390,7 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(manageChannelsAndThemeparks, 60);
 		getReusableActionsInstance().executeJavaScriptClick(manageChannelsAndThemeparks);
 	}
+
 
 	/**
 	 * To click Click Channel Tab
@@ -1076,13 +1080,17 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 	public void clickViewOffers() {
-		getReusableActionsInstance().waitForElementVisibility(viewOffer, 300);
+		getReusableActionsInstance().waitForElementVisibility(viewOffer, 30);
 		getReusableActionsInstance().executeJavaScriptClick(viewOffer);
 	}
 
 	public void selectRecommendedOffer() {
-		getReusableActionsInstance().waitForElementVisibility(recommendedOffer, 300);
+		getReusableActionsInstance().waitForElementVisibility(recommendedOffer, 30);
 		getReusableActionsInstance().executeJavaScriptClick(recommendedOffer);
+	}
+
+	public boolean verifyRecommendedOffer() {
+		return getReusableActionsInstance().isElementVisible(recommendedOffer, 120);
 	}
 
 	public void clickViewDetails(String strPackageNameEn, String strPackageNameFr) {
@@ -1096,19 +1104,19 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(pkg);
 	}
 	public void clickCloseButton() {
-		getReusableActionsInstance().waitForElementVisibility(closeButton, 300);
+		getReusableActionsInstance().waitForElementVisibility(closeButton, 30);
 		getReusableActionsInstance().executeJavaScriptClick(closeButton);
 	}
 
 	public void clickExchangeNow() {
-		getReusableActionsInstance().waitForElementVisibility(exchangeNow, 300);
+		getReusableActionsInstance().waitForElementVisibility(exchangeNow, 30);
 		getReusableActionsInstance().executeJavaScriptClick(exchangeNow);
 	}
 
 	public void clickRemoveChannel() {
 		WebElement btn = getReusableActionsInstance().getWhenReady(removeChannel, 30);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 100);
-		getReusableActionsInstance().waitForElementVisibility(removeChannel, 300);
+		getReusableActionsInstance().waitForElementVisibility(removeChannel, 30);
 		getReusableActionsInstance().executeJavaScriptClick(removeChannel);
 
 
@@ -1117,7 +1125,7 @@ public class TVDashboardPage  extends BasePageClass {
 	public void clickAddChannelBtn() {
 		WebElement btn = getReusableActionsInstance().getWhenReady(addChannelBtn, 30);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 100);
-		getReusableActionsInstance().waitForElementVisibility(addChannelBtn, 300);
+		getReusableActionsInstance().waitForElementVisibility(addChannelBtn, 30);
 		getReusableActionsInstance().executeJavaScriptClick(addChannelBtn);
 
 
@@ -1125,14 +1133,14 @@ public class TVDashboardPage  extends BasePageClass {
 
 	public void clickSelectChannel() {
 		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().waitForElementVisibility(selectChannel, 300);
+		getReusableActionsInstance().waitForElementVisibility(selectChannel, 30);
 		getReusableActionsInstance().executeJavaScriptClick(selectChannel);
 
 
 	}
 
 	public void clickReviewedAllIssuesWithCustomer() {
-		getReusableActionsInstance().waitForElementVisibility(reviewedIssuesWithCustomer, 300);
+		getReusableActionsInstance().waitForElementVisibility(reviewedIssuesWithCustomer, 30);
 		getReusableActionsInstance().executeJavaScriptClick(reviewedIssuesWithCustomer);
 
 
@@ -1147,8 +1155,44 @@ public class TVDashboardPage  extends BasePageClass {
 
 	public void clickContinueBottomOfPage() {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().waitForElementVisibility(continueBottomOfPage, 300);
+		getReusableActionsInstance().waitForElementVisibility(continueBottomOfPage, 30);
 		getReusableActionsInstance().executeJavaScriptClick(continueBottomOfPage);
+
+
+	}
+
+	public boolean verifyManageChannelsAndThemePacks() {
+			return getReusableActionsInstance().isElementVisible(manageChannelsAndThemeparks , 30);
+		}
+
+	public boolean verifyExchangeFlexChannels() {
+		return getReusableActionsInstance().isElementVisible(btnExchangeFlexChannels , 30);
+	}
+
+	public boolean verifyChangeTvPackage() {
+		return getReusableActionsInstance().isElementVisible(btnChangeTvPackage, 30);
+	}
+
+	public boolean verifyRestartSetUpBox() {
+		return getReusableActionsInstance().isElementVisible(btnRestartSetupbox, 30);
+	}
+
+	public boolean verifyResetPurchasePin() {
+		return getReusableActionsInstance().isElementVisible(resetPurchasePin, 30);
+	}
+
+	public boolean verifyResetParentalControl() {
+		return getReusableActionsInstance().isElementVisible(btnResetParentalControl, 30);
+	}
+
+	public boolean verifyViewMyFlexChannelsLink() {
+		return getReusableActionsInstance().isElementVisible(viewMyChannelLineUpLink, 30);
+	}
+
+	public boolean verifyViewMyChannelLineUpLink() {
+		return getReusableActionsInstance().isElementVisible(viewMyChannelLineUpLink, 30);
+	}
+
 
 
 	}
@@ -1156,7 +1200,7 @@ public class TVDashboardPage  extends BasePageClass {
 
 
 
-}
+
 
 
 
