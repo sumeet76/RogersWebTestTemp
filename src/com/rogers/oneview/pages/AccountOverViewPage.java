@@ -1,14 +1,12 @@
 package com.rogers.oneview.pages;
 
 import com.rogers.pages.base.BasePageClass;
-import com.rogers.testdatamanagement.TestDataHandler;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-import utils.FormFiller;
 
 public class AccountOverViewPage extends BasePageClass {
 
@@ -22,6 +20,56 @@ public class AccountOverViewPage extends BasePageClass {
             @FindBy(xpath = "//agent-notifications/div[contains(@class,'blocker')]"),
     })
     WebElement skipNotification;
+    @FindBy(xpath = "//span[contains(text(), 'View offers') or contains(text(), 'Voir les offres')]")
+    WebElement viewOffers;
+
+    @FindBy(xpath = "//button[@aria-label='Select']")
+    WebElement selectRecommendedOffer;
+
+    @FindBy(xpath = "(//span[@translate='global.cta.select'])[1]")
+    WebElement selectExclusiveOffer;
+
+    @FindBy(xpath = "//span[contains(text(),'The customer authorizes') or contains(text(),'Le client autorise Rogers à obtenir des renseignements')]/parent::div/ancestor::ds-checkbox//div[1]")
+    WebElement authorizecheckbox;
+
+    @FindBy(xpath = "//h2[@translate='global.label.reviewYourOrder']")
+    WebElement ReviewYourOrder;
+
+    @FindBy(xpath = "//rch-popup-modal/descendant::span[text()='Yes' or text()='Oui']/ancestor::button")
+    WebElement yesPortInServices;
+
+    @FindBy(xpath = "//span[contains(text(), 'Continue')]")
+    WebElement ContinueChangePackage;
+
+    @FindBy(xpath = "//span[text()='Yes, they do' or text()='Oui, il en a un']/ancestor::button")
+    WebElement yesFor4K;
+
+    @FindBy(xpath = "//*[@id=\"ds-modal-container-7\"]/rch-tv4k-modal/ds-modal/div[2]/div[2]/div[2]/div/button")
+    WebElement fourKContinue;
+
+    @FindBy(xpath = "//button[@rchtrackclickevent='exchangeLater']")
+    WebElement ExchangeLaterBtn;
+
+    @FindBy(xpath = "//div[@translate='global.selfServe.reviewConfirm.previousPackage']")
+    WebElement previousPackage;
+
+    @FindBy(xpath = "(//span[@translate='global.selfServe.reviewConfirm.tvDetails'])[1]")
+    WebElement tvDetails;
+
+    @FindBy(xpath = "//div[@translate='global.selfServe.reviewConfirm.newPackage']")
+    WebElement newPackage;
+
+    @FindBy(xpath = "(//span[@translate='global.selfServe.reviewConfirm.tvDetails'])[2]")
+    WebElement NewtvDetails;
+
+    @FindBy(xpath = "//span[@translate='global.cta.submit']")
+    WebElement changeCallerNameSubmit;
+
+    @FindBy(xpath = "//span[@translate='global.dashboard.tv.notIncludedWithBundleWithoutPrice']")
+    WebElement displayedMulitplsSTB;
+
+    @FindBy(xpath = "//span[@translate='global.dashboard.tv.includedWithOnlyDefaultBundle']")
+    WebElement IgniteTVBox;
 
     @FindBy(xpath = "//div[contains(@class,'IPTV')]")
     WebElement btnTVBadge;
@@ -156,7 +204,10 @@ public class AccountOverViewPage extends BasePageClass {
     WebElement tvCheckbox;
 
     @FindBy(xpath="//span[@translate='global.cta.continue']")
-    WebElement clickContinue;
+    WebElement continueButton;
+
+    @FindBy(xpath="//ds-modal[@identifier='planChangeDateModal']/descendant::span[@translate='global.cta.continue']")
+    WebElement SelectChangeContinue;
 
     @FindBy(xpath = "//span[@class='dealer-code']")
     WebElement lnkDealerCode;
@@ -164,6 +215,23 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//input[@id='impersonate-code']")
     WebElement inputDealerCode;
 
+    @FindBy(xpath = "(//span[@ng-bind-html='message.message'])[1]")
+    WebElement requiredmessage;
+
+    @FindBy(xpath = "//span[@class='bb-amount ng-scope amount-xl']")
+    WebElement billamount;
+
+    @FindBy(xpath = "//div[@ng-class='message.textClass']")
+    WebElement welcometext;
+
+    @FindBy(xpath = "//div[@ng-bind-html='$ctrl.data.header.message']")
+    WebElement billmessage;
+
+    @FindBy(xpath = "//div[@class='product-header']")
+    WebElement product;
+
+    @FindBy(xpath = "//div[@id='bb-bs-bill-messages']")
+    WebElement accountMessages;
 
     /**
      * Validate if either TV or channel header is visible
@@ -474,11 +542,20 @@ public class AccountOverViewPage extends BasePageClass {
     }
 
     /*To click continue in the serviceabilty modal
-    * @author suganya p
+    * @author aditi.jain
     */
     public void clickContinue()
     {
-        getReusableActionsInstance().clickWhenReady(clickContinue,30);
+        getReusableActionsInstance().waitForElementVisibility(continueButton);
+        getReusableActionsInstance().executeJavaScriptClick(continueButton);
+    }
+    /*To click continue in the serviceabilty modal
+     * @author aditi.jain
+     */
+    public void clickSelectChangeContinue()
+    {
+        getReusableActionsInstance().waitForElementVisibility(SelectChangeContinue);
+        getReusableActionsInstance().executeJavaScriptClick(SelectChangeContinue);
     }
 
     /**
@@ -610,9 +687,237 @@ public class AccountOverViewPage extends BasePageClass {
        // getReusableActionsInstance().staticWait(3000);
         getReusableActionsInstance().clickWhenReady(LearnMoreAboutWallWiFiLink,45);
     }
+    /**
+     * This method verifies the displayed Mulitpls STB
+     *
+     * @author  Aditi.jain
+     */
+    public boolean verifydisplayedMulitplsSTB() {
+        getReusableActionsInstance().waitForPageLoad();
+        getReusableActionsInstance().waitForElementVisibility(displayedMulitplsSTB, 120);
+        getReusableActionsInstance().javascriptScrollToBottomOfPage();
+        return getReusableActionsInstance().isElementVisible(displayedMulitplsSTB);
+    }
+    /**
+     * This method verifies the IgniteTVBox is displayed
+     *
+     * @author  Aditi.jain
+     */
+    public boolean clickIgniteTVBox() {
+        return getReusableActionsInstance().isElementVisible(IgniteTVBox);
+    }
+    /**
+     * This method click View Offers
+     *
+     * @author Aditi.jain
+     */
+    public void clickViewOffers() {
+        getReusableActionsInstance().clickWhenReady(viewOffers, 30);
+    }
+
+    /**
+     * This method click View Offers
+     *
+     * @author Jarmanjeet.Batth
+     */
 
     public void goToPageBottom() {
         getReusableActionsInstance().javascriptScrollToBottomOfPage();
+    }
+
+    /**
+     * This method  select Recommended Offer
+     *
+     * @author Aditi.jain
+     */
+    public void selectRecommendedOffer() {
+        getReusableActionsInstance().waitForElementVisibility(selectRecommendedOffer,60);
+        getReusableActionsInstance().executeJavaScriptClick(selectRecommendedOffer);
+    }
+
+
+    /**
+     * This method  select First Exclusive Offer
+     *
+     * @author Aditi.jain
+     */
+    public void selectFirstExclusiveOffer() {
+        getReusableActionsInstance().waitForElementVisibility(selectExclusiveOffer,60);
+        getReusableActionsInstance().executeJavaScriptClick(selectExclusiveOffer);
+    }
+
+    /**
+     * click exchange later button
+     * @author Aditi.Jain
+     */
+    public void clickContinueChangePackage() {
+        getReusableActionsInstance().clickWhenReady( ContinueChangePackage,60);
+    }
+
+    /**
+     * Port-in opted as yes
+     * @author aditi.jain
+     */
+    public void yesPortInPopup() {
+        getReusableActionsInstance().clickWhenReady(yesPortInServices,30);
+    }
+    /**
+     * CLick Yes if 4K pop up Appears
+     * @author chinnarao.vattam
+     */
+    public void fourKTVPopup() {
+        if(getReusableActionsInstance().isElementVisible(yesFor4K))
+            getReusableActionsInstance().clickWhenReady(yesFor4K,120);}
+
+    /**
+     * CLick Continue for four K
+     * @author aditi.jain
+     */
+    public void fourKContinue() {
+        if(getReusableActionsInstance().isElementVisible(fourKContinue, 45))
+            getReusableActionsInstance().clickWhenReady(fourKContinue, 30);}
+
+    /**
+     * click exchange later button
+     * @author Aditi.Jain
+     */
+    public void clickExchangeLater() {
+        getReusableActionsInstance().waitForElementVisibility( ExchangeLaterBtn,60);
+        getReusableActionsInstance().executeJavaScriptClick( ExchangeLaterBtn);}
+
+
+    /*To click on submit in change caller name dailog box
+	@author Aditi.Jain
+    */
+    public void clickSubmit()
+    {
+        getReusableActionsInstance().waitForElementVisibility(changeCallerNameSubmit ,60);
+        getReusableActionsInstance().javascriptScrollToBottomOfPage();
+        getReusableActionsInstance().clickWhenReady(changeCallerNameSubmit,30);
+        getReusableActionsInstance().staticWait(5000);
+    }
+    /**
+     * Click Authorization Checkbox
+     * @author chinnarao.vattam
+     */
+    public void clkAuthorize() {
+        if(!getReusableActionsInstance().isElementVisible(authorizecheckbox))
+            getReusableActionsInstance().clickWhenReady(authorizecheckbox);}
+    /**
+     * verify Review Your Order
+     * @return true if available, else false
+     * @author Aditi.jain
+     */
+    public boolean verifyReviewYourOrder() {
+        return getReusableActionsInstance().isElementVisible(ReviewYourOrder, 60);
+    }
+
+        /**
+         * verify Previous Package
+         * @return true if available, else false
+         * @author Aditi.jain
+         */
+        public boolean verifyPreviousPackage() {
+            return getReusableActionsInstance().isElementVisible(previousPackage,30);
+
+
+        }
+
+    /**
+     * verify Tv Details
+     * @return true if available, else false
+     * @author Aditi.jain
+     */
+    public boolean verifyTvDetails() {
+        return getReusableActionsInstance().isElementVisible(tvDetails,30);
+
+
+    }
+    /**
+     * verify New Package
+     * @return true if available, else false
+     * @author Aditi.jain
+     */
+    public boolean verifyNewPackage() {
+        return getReusableActionsInstance().isElementVisible(newPackage,30);
+
+
+    }
+    /**
+     * verify  NEW Tv Details
+     * @return true if available, else false
+     * @author Aditi.jain
+     */
+    public boolean verifyNewTvDetails() {
+        return getReusableActionsInstance().isElementVisible(NewtvDetails,30);
+
+
+    }
+    /**
+     * verify  required message
+     * @return true if available, else false
+     * @author Aditi.jain
+     */
+    public boolean verifyRequiredMessage() {
+        return getReusableActionsInstance().isElementVisible(requiredmessage,30);
+
+
+    }
+    /**
+     * verify  Bill Amount
+     * @return true if available, else false
+     * @author Aditi.jain
+     */
+    public boolean verifyBillAmount() {
+        return getReusableActionsInstance().isElementVisible(billamount,30);
+
+
+    }
+    /**
+     * verify  welcome text
+     * @return true if available, else false
+     * @author Aditi.jain
+     */
+    public boolean verifyWelcomeText() {
+        return getReusableActionsInstance().isElementVisible(welcometext,30);
+    }
+
+
+    /**
+     * verify bill message
+     * @return true if available, else false
+     * @author Aditi.jain
+     */
+    public boolean verifyBillMessage() {
+        return getReusableActionsInstance().isElementVisible(billmessage,30);
+    }
+    /**
+     * verify product
+     * @return true if available, else false
+     * @author Aditi.jain
+     */
+    public boolean verifyProductDisplayed() {
+        return getReusableActionsInstance().isElementVisible(product, 30);
+    }
+
+
+    /**
+     * verify accountMessages
+     * @return true if available, else false
+     * @author Aditi.jain
+     */
+    public boolean verifyAccountMessages() {
+        return getReusableActionsInstance().isElementVisible(accountMessages, 30);
+    }
+
+    /**
+     * verify accountMessages
+     * @return true if available, else false
+     * @author Aditi.jain
+     */
+    public void scrollToViewBill() {
+        getReusableActionsInstance().waitForPageLoad();
+        getReusableActionsInstance().scrollToElement(requiredmessage);
     }
 
 }

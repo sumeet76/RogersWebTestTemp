@@ -34,8 +34,6 @@ public class UniLoginPage extends BasePageClass {
     @FindBy(id= "idBtn_Back")
     WebElement staySignedInNO;
 
-    @FindBy(xpath = "//a[contains(text(),'FR')]")
-    WebElement frenchLanguageBtn;
 
     /**
      * Login to unilogin page by entering dealer code
@@ -79,11 +77,4 @@ public class UniLoginPage extends BasePageClass {
         }
 
     }
-
-    public void changeChampToFR(){
-        if(getReusableActionsInstance().isElementVisible(btnaccept,5))
-        {getReusableActionsInstance().clickWhenVisible(btnaccept);}
-        getReusableActionsInstance().clickWhenReady(frenchLanguageBtn);
-    }
-
 }

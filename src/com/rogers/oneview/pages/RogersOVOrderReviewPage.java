@@ -21,7 +21,7 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	@FindBy(xpath = "//*[text()='One-Time Fees and Credits' or text()='Frais et crédits uniques']/ancestor::button")
 	WebElement oneTimeFees;
 	
-	@FindBy(xpath = "//span[text()='Submit' or text()='Soumettre']/ancestor::button | //span[@translate='global.cta.submit']/ancestor::button")
+	@FindBy(xpath = "//span[@translate='global.cta.submit']/ancestor::button | //span[text()='Submit' or text()='Soumettre']/ancestor::button")
 	WebElement submitButton;
 	
 	@FindBy(xpath = "//span[text()='Campaign Codes' or text()='Codes de campagne']/ancestor::button")
@@ -70,6 +70,8 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@checkout-res='checkout_submit_order']/parent::button")
 	WebElement btnSubmitOrder;
 
+	@FindBy(xpath = "//span[@translate='global.cta.submit']/ancestor::button")
+	WebElement submitOrder;
 
 	/**
 	 * Verify order review page is loaded properly
@@ -105,6 +107,7 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().waitForElementVisibility(submitButton, 120);
 		getReusableActionsInstance().executeJavaScriptClick(submitButton);
+		getReusableActionsInstance().staticWait(10000);
 	}
 	/**
 	 * Verify Monthly Charges Appear
@@ -182,10 +185,12 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	 * Click Submit Button for Channel/ThemePack change
 	 * @author Aditi.Jain
 	 */
-	public void clickSubmitToManageThemepackOrChannel() {
-		getReusableActionsInstance().waitForElementVisibility(submitButton, 300);
+	public void clickSubmitOrder() {
+		getReusableActionsInstance().waitForElementVisibility(submitOrder, 60);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().executeJavaScriptClick(submitButton);
+		getReusableActionsInstance().executeJavaScriptClick(submitOrder);
+		getReusableActionsInstance().staticWait(10000);
 	}
+
 }
 
