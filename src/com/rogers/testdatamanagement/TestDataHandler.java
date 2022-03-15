@@ -329,6 +329,9 @@ public class TestDataHandler {
 	public static AccountData Max3pCx_Pods;
 	public static AccountData Ignite_Mapped_Offers_2p;
 	public static AccountData Ignite_Mapped_Offers_3p;
+	public static AccountData Tv_Dashboard_Validation;
+	public static AccountData Internet_Dashboard_Validation;
+	public static AccountData RHP_Dashboard_Validation;
 
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
@@ -709,6 +712,9 @@ public class TestDataHandler {
 		Max3pCx_Pods= YamlHandler.getOVAccountData("Max3pCx_Pods");
 		Ignite_Mapped_Offers_2p= YamlHandler.getOVAccountData("IgniteMappedOffers2p");
 		Ignite_Mapped_Offers_3p= YamlHandler.getOVAccountData("IgniteMappedOffers3p");
+		Tv_Dashboard_Validation=YamlHandler.getOVAccountData("TvDashboardValidation");
+		Internet_Dashboard_Validation=YamlHandler.getOVAccountData("InternetDashboardValidation");
+		RHP_Dashboard_Validation=YamlHandler.getOVAccountData("RHPDashboardValidation");
 
 	}
 

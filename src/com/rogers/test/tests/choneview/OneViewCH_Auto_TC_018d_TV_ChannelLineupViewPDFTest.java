@@ -27,10 +27,10 @@ public class OneViewCH_Auto_TC_018d_TV_ChannelLineupViewPDFTest extends BaseTest
 		getAccountOverViewPage().selectTVBadage();
 		reporter.reportLogWithScreenshot("Lanched the HomePhone dashboard page ");
 		getTVDashboardPage().clickViewChannelLineUp();
-//		reporter.hardAssert(getTVDashboardPage().verifyViewPdf(),"Channel Line up displays view PDF button","View PDF button on channel line up not available- Test failed");
-//		reporter.reportLogWithScreenshot("Channel Line up Launched and view pdf button available");
-//		getTVDashboardPage().clickViewPdf();
-//		reporter.reportLogWithScreenshot("PDF view clicked");
+		reporter.hardAssert(getTVDashboardPage().verifyViewPdf(),"Channel Line up displays view PDF button","View PDF button on channel line up not available- Test failed");
+		reporter.reportLogWithScreenshot("Channel Line up Launched and view pdf button available");
+		getTVDashboardPage().clickViewPdf();
+		reporter.reportLogWithScreenshot("PDF view clicked");
     }
 
 	@BeforeMethod (alwaysRun=true)
