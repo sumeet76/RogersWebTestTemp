@@ -220,11 +220,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Exchange Flex Channels' or text()='Échanger chaînes flexibles']/ancestor::button")
 	WebElement ExchangeFlexChannels;
 
-	@FindAll({
-			@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks']"),
-			@FindBy(xpath = "//span[contains(text(),'Theme Packs') or contains(text(), 'Forfaits à thème')]/ancestor::button"),
-			@FindBy(xpath="//button[@class='a-tablet']"),
-	})
+	@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks'] | //span[contains(text(),'Theme Packs') or contains(text(), 'Forfaits à thème')]/ancestor::button | //button[@class='a-tablet']")
 	WebElement themePacksTab;
 
 	@FindBy(xpath = "//div[@class='themepack-detail channels-container']/descendant::span[@translate='global.cta.add']")
@@ -302,11 +298,6 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//*[text()='Exchange now']/ancestor::button")
 	WebElement exchangeNow;
 
-	 @FindBy(xpath = "//button[@id='cl-65619']")
- 	WebElement removeChannel;
-
-	@FindBy(xpath = "//button[@id='cl-76222']")
-	WebElement addChannelBtn;
 
 	@FindBy(xpath = "//*[text()='Select']")
 	WebElement selectChannel;
@@ -323,6 +314,12 @@ public class TVDashboardPage  extends BasePageClass {
 
 	@FindBy(xpath = "//span[text()='View my channel lineup' or text()='Voir ma liste de chaînes']")
 	WebElement viewMyChannelLineUpLink;
+
+	@FindBy(xpath = "//button[@id='cl-65619']")
+	WebElement removeChannel;
+
+	@FindBy(xpath = "//button[@id='cl-76222']")
+	WebElement addChannelBtn;
 
 	/**
 	 * Get list of all channels and themepacks and remove them one by one
@@ -1050,10 +1047,10 @@ public class TVDashboardPage  extends BasePageClass {
 
 		public void clickResetPurchasePin () {
 
-			getReusableActionsInstance().waitForElementVisibility(resetPurchasePin, 240);
+			getReusableActionsInstance().waitForElementVisibility(resetPurchasePin, 30);
 			getReusableActionsInstance().javascriptScrollToBottomOfPage();
 			getReusableActionsInstance().javascriptScrollByVisibleElement(resetPurchasePin);
-			getReusableActionsInstance().getWhenReady(resetPurchasePin, 120).click();
+			getReusableActionsInstance().getWhenReady(resetPurchasePin, 30).click();
 		}
 		public void clickSecondLowestpackage () {
 			//getReusableActionsInstance().staticWait(10000);
@@ -1096,7 +1093,7 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 	public boolean verifyRecommendedOffer() {
-		return getReusableActionsInstance().isElementVisible(recommendedOffer, 120);
+		return getReusableActionsInstance().isElementVisible(recommendedOffer, 30);
 	}
 
 	public void clickViewDetails(String strPackageNameEn, String strPackageNameFr) {
@@ -1119,23 +1116,6 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(exchangeNow);
 	}
 
-	public void clickRemoveChannel() {
-		WebElement btn = getReusableActionsInstance().getWhenReady(removeChannel, 30);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 100);
-		getReusableActionsInstance().waitForElementVisibility(removeChannel, 30);
-		getReusableActionsInstance().executeJavaScriptClick(removeChannel);
-
-
-	}
-
-	public void clickAddChannelBtn() {
-		WebElement btn = getReusableActionsInstance().getWhenReady(addChannelBtn, 30);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 100);
-		getReusableActionsInstance().waitForElementVisibility(addChannelBtn, 30);
-		getReusableActionsInstance().executeJavaScriptClick(addChannelBtn);
-
-
-	}
 
 	public void clickSelectChannel() {
 		getReusableActionsInstance().staticWait(5000);
@@ -1198,11 +1178,26 @@ public class TVDashboardPage  extends BasePageClass {
 	public boolean verifyViewMyChannelLineUpLink() {
 		return getReusableActionsInstance().isElementVisible(viewMyChannelLineUpLink, 30);
 	}
-
+	public void clickRemoveChannel() {
+		WebElement btn = getReusableActionsInstance().getWhenReady(removeChannel, 30);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 100);
+		getReusableActionsInstance().waitForElementVisibility(removeChannel, 30);
+		getReusableActionsInstance().executeJavaScriptClick(removeChannel);
 
 
 	}
 
+	public void clickAddChannelBtn() {
+		WebElement btn = getReusableActionsInstance().getWhenReady(addChannelBtn, 30);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 100);
+		getReusableActionsInstance().waitForElementVisibility(addChannelBtn, 30);
+		getReusableActionsInstance().executeJavaScriptClick(addChannelBtn);
+
+
+	}
+
+
+	}
 
 
 

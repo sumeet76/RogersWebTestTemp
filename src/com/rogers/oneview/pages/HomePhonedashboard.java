@@ -307,7 +307,7 @@ public class HomePhonedashboard  extends BasePageClass {
 	}
 	public void clickOnlineManagerPopUp() {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().waitForElementVisibility(onlineManager, 300);
+		getReusableActionsInstance().waitForElementVisibility(onlineManager, 30);
 		getReusableActionsInstance().executeJavaScriptClick(onlineManager);
 
 

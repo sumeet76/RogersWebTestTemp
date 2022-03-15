@@ -4,6 +4,8 @@ import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
@@ -21,6 +23,7 @@ public class OneViewCH_Auto_17997__Code_Refactor_TC01_ValidateIgniteMappedOffers
         reporter.reportLogWithScreenshot("ManageChannels and Theme Packs button clicked");
         getTVDashboardPage().clickViewOffers();
         reporter.reportLogWithScreenshot("view offers link clicked");
+        reporter.hardAssert(getTVDashboardPage().verifyRecommendedOffer(),"Recommended offer available ","no Recommended offer displayed");
         getTVDashboardPage().selectRecommendedOffer();
         reporter.reportLogWithScreenshot("Recommended offer selected");
         getTVDashboardPage().clickViewDetails(TestDataHandler.Ignite_Mapped_Offers_2p.getAccountDetails().getTargetedOfferEn(),TestDataHandler.Ignite_Mapped_Offers_2p.getAccountDetails().getTargetedOfferFr());
@@ -56,8 +59,9 @@ public class OneViewCH_Auto_17997__Code_Refactor_TC01_ValidateIgniteMappedOffers
         getTVDashboardPage().clickContinueOnSelectDateChange();
         reporter.reportLogWithScreenshot("click continue");
         //getRogersOVOrderReviewPage().clkSubmit();
-       // reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         //reporter.reportLogWithScreenshot("Order Placed");
+        
 
 
 
