@@ -681,7 +681,7 @@ public class TestDataHandler {
 		ChangeTvViaServiceability=YamlHandler.getOVAccountData("ChangeTvViaServiceability");
 		Make_a_Payment_EN= YamlHandler.getOVAccountData("Make_a_Payment_EN");
 		Oasys_Gap_Closure_Change_Internet_via_Serviceability_Model= YamlHandler.getOVAccountData("Oasys_Gap_Closure_Change_Internet_via_Serviceability_Model");
-		IgniteOffersChangeTV_INTpackage= YamlHandler.getOVAccountData("IgniteOffersChangeTV_INTpackage");
+		IgniteOffersChangeTV_INTpackage= YamlHandler.getOVAccountData("IgniteOffersChangeTV_INTpackage_test");
 		IgniteOffers_SAI_Adding_ISS= YamlHandler.getOVAccountData("IgniteOffers_SAI_Adding_ISS");
 		IPTVDasboad_MulitplsSTB= YamlHandler.getOVAccountData("IPTVDasboad_MulitplsSTB");
 		ViewBill= YamlHandler.getOVAccountData("ViewBill");
