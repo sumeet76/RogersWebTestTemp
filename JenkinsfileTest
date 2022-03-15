@@ -75,7 +75,6 @@ pipeline {
             when { expression { shouldRun() } }
             stages {
 
-
                 stage('Environment Variables') {
                     steps { sh 'env | sort' }
                 }
@@ -96,6 +95,7 @@ pipeline {
 
                 stage('Regression Tests') {
                     steps {
+                    sh 'git submodule update --init --recursive'
                         script {
                             readProp = readProperties file: 'gradle.properties';
                             String urlLink="";
