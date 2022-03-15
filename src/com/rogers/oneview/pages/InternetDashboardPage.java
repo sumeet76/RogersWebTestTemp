@@ -177,9 +177,9 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifLlnkLearnMoreWallToWallWifi() {
-		getReusableActionsInstance().waitForElementVisibility(lnkLearnMoreWallToWallWifi, 120);
-		WebElement btn=getReusableActionsInstance().getWhenReady(lnkLearnMoreWallToWallWifi,120);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-100);
+//		getReusableActionsInstance().waitForElementVisibility(lnkLearnMoreWallToWallWifi, 120);
+//		WebElement btn=getReusableActionsInstance().getWhenReady(lnkLearnMoreWallToWallWifi,120);
+//		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-100);
 		return getReusableActionsInstance().isElementVisible(lnkLearnMoreWallToWallWifi,120);
 	}
 
@@ -428,10 +428,10 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @autho suganya P
 	 * */
 	public void selectInternetPackage(String strUpgradePlanEn, String strUpgradePlanFr) {
+
 		By packageNameLocator = By.xpath("//p[contains(text(),'"+strUpgradePlanEn+"') or contains(text(),'"+strUpgradePlanFr+"')]/ancestor::div[@class='internet-tile__body']//span[contains(text(),'Select')]/ancestor::button");
-
-
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 30);
+
 		WebElement pkg = getDriver().findElement(packageNameLocator);
 		getReusableActionsInstance().executeJavaScriptClick(pkg);
 	}

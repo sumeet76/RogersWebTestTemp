@@ -50,10 +50,10 @@ public class HomePhonedashboard  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Yes, reset password' or text()='Oui, réinitialiser le mot de passe']/ancestor::button")
 	WebElement btnYesResetPassword;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
 	WebElement cancel;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-info']")
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-info']")
 	WebElement onlineManagerInfo;
 
 	@FindBy(xpath = "//div[@class='tippy-tooltip ds-theme']")
