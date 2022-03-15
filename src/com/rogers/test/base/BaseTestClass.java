@@ -1242,6 +1242,9 @@ public class BaseTestClass {
                 OVROrderConfirmationPageThreadLocal.set(new OVROrderConfirmationPage(getDriver()));
                 RogersIgniteBundlesPageThreadLocal.set(new RogersIgniteBundlesPage(getDriver()));
                 RogersOVCheckoutPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVCheckoutPage(getDriver()));
+                HomePhoneAddonsPageThreadLocal.set(new HomePhoneAddonsPage(getDriver()));
+                HomePhoneSelectionPageThreadLocal.set(new HomePhoneSelectionPage(getDriver()));
+                CallerInformationPageThreadLocal.set(new com.rogers.oneview.pages.CallerInformationPage(getDriver()));
                 break;
 
 

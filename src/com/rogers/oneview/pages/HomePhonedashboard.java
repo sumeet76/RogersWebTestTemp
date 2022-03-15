@@ -50,10 +50,10 @@ public class HomePhonedashboard  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Yes, reset password' or text()='Oui, réinitialiser le mot de passe']/ancestor::button")
 	WebElement btnYesResetPassword;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
 	WebElement cancel;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-info']")
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-info']")
 	WebElement onlineManagerInfo;
 
 	@FindBy(xpath = "//div[@class='tippy-tooltip ds-theme']")
@@ -96,6 +96,7 @@ public class HomePhonedashboard  extends BasePageClass {
 	public void clickYesResetPassword() {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(btnYesResetPassword);
 		getReusableActionsInstance().getWhenReady(btnYesResetPassword,120).click();
+		getReusableActionsInstance().staticWait(6000);
 
 	}
 
@@ -119,6 +120,7 @@ public class HomePhonedashboard  extends BasePageClass {
 		WebElement btn=getReusableActionsInstance().getWhenReady(btnResetVoiceMail,120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
 		getReusableActionsInstance().clickWhenReady(btnResetVoiceMail,120);
+		getReusableActionsInstance().staticWait(6000);
 }
 
 	/**

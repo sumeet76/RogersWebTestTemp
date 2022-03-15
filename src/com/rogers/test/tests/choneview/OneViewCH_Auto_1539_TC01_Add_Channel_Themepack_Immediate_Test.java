@@ -17,6 +17,7 @@ public class OneViewCH_Auto_1539_TC01_Add_Channel_Themepack_Immediate_Test exten
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		reporter.reportLogWithScreenshot("TV Badge");
+		getAccountOverViewPage().goToPageBottom();
 		getAccountOverViewPage().clickIgniteTVBadge();
 		reporter.reportLogWithScreenshot("select bundle");
 		getAccountOverViewPage().selectBundleChangeIfPresent();
@@ -51,10 +52,11 @@ public class OneViewCH_Auto_1539_TC01_Add_Channel_Themepack_Immediate_Test exten
 		getTVDashboardPage().clickContinueForPackage();
 		reporter.reportLogWithScreenshot("continue");
 		getTVDashboardPage().immediateDateChangeOption();
-////		reporter.reportLogWithScreenshot("manage channel and themepack tab");
-////		getTVDashboardPage().clickCancel();
-////		reporter.reportLogWithScreenshot("ready to submit");
-////		getRogersOVOrderReviewPage().clickSubmitToManageThemepackOrChannel();
+		reporter.reportLogWithScreenshot("manage channel and themepack tab");
+//		getTVDashboardPage().clickCancel();
+//		getTVDashboardPage().clickContinueOnSelectDateChange();
+//		reporter.reportLogWithScreenshot("ready to submit");
+//		getRogersOVOrderReviewPage().clickSubmitToManageThemepackOrChannel();
 //		reporter.reportLogWithScreenshot("Order Confirmation page");
 
 	}

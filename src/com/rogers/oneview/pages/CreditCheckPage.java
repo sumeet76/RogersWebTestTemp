@@ -120,7 +120,7 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='chc.label.internationalId']")
 	WebElement internationalIdRadioBtn;
 
-	@FindBy(xpath = "//span[contains(text(),'Permit Number')]/ancestor::span//following-sibling::div/child::input")
+	@FindBy(xpath = "//span[contains(text(),'Permit Number') or contains(text(),'Numéro du permis')]/ancestor::span//following-sibling::div/child::input")
 	WebElement permitInput;
 
 	@FindBy(xpath = "(//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-work-study-permit/descendant::select)[1]")
@@ -165,7 +165,7 @@ public class CreditCheckPage  extends BasePageClass {
              * @author aditi.jain
              */
 	public boolean verifyInstallationOption() {
-		return getReusableActionsInstance().isElementVisible(installationOption,60);
+		return getReusableActionsInstance().isElementVisible(installationOption,100);
 	}
 
 	/**

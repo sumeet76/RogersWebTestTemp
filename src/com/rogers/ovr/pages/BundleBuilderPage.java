@@ -1,6 +1,7 @@
 package com.rogers.ovr.pages;
 
 import com.rogers.pages.base.BasePageClass;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -66,10 +67,13 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath ="//input[@formcontrolname='enrouteEmail']")
     WebElement txtEmail;
 
-    @FindBy(xpath ="//input[@id='9']/ancestor::label[contains(@class,'ds-radioLabel')]//div[@class='ds-radioButton__outerCircle my-12']")
+    @FindBy(xpath ="//input[@id='8']/ancestor::label[contains(@class,'ds-radioLabel')]//div[@class='ds-radioButton__outerCircle my-12']")
     WebElement rdoTechInstallSlot;
 
-    @FindBy(xpath = "//div[text()='Customer current']//following-sibling::div")
+    @FindBy(xpath ="//input[@id='12']/ancestor::label[contains(@class,'ds-radioLabel')]//div[@class='ds-radioButton__outerCircle my-12']")
+    WebElement rdoTechInstallSlot12;
+
+    @FindBy(xpath = "//div[text()='Customer current' or text()='Offre actuelle du client']//following-sibling::div")
     WebElement currentPlanSection;
 
     @FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
@@ -89,6 +93,12 @@ public class BundleBuilderPage extends BasePageClass {
 
     @FindBy(xpath = "//span[text()='Continue' or text()='Continuer']/ancestor::button")
     WebElement continueBtn;
+
+    @FindBy(xpath = "//span[contains(text(),'Delivery by Appointment') or contains(text(),'Livraison par rendez-vous')]")
+    WebElement deliveryByAppointmentInstall;
+
+    @FindBy(xpath = "//h3[@translate='global.label.paymentOptionsBilling']/parent::div/following-sibling::div/descendant::span[2]")
+    WebElement storedPaymentCardLabel;
 
 
 
@@ -113,10 +123,9 @@ public class BundleBuilderPage extends BasePageClass {
         openLNPEligibilityPage();
 
     }
-    public void scrollAndclickContinue() {
+    public void scrollAndClickContinue() {
         getReusableActionsInstance().javascriptScrollByVisibleElement(continueBtn);
         getReusableActionsInstance().clickWhenReady(continueBtn);
-
     }
 
 
@@ -146,6 +155,11 @@ public class BundleBuilderPage extends BasePageClass {
         getReusableActionsInstance().executeJavaScriptClick(igniteProfessionalInstall);
     }
 
+    public void selectDeliveryByAppointmentInstall() {
+        getReusableActionsInstance().waitForElementVisibility(deliveryByAppointmentInstall, 60);
+        getReusableActionsInstance().javascriptScrollByVisibleElement(deliveryByAppointmentInstall);
+        getReusableActionsInstance().executeJavaScriptClick(deliveryByAppointmentInstall);
+    }
     /**
      * Set dynamic mobile number on the Order Summary Page
      * @author Sameer.Ahuja
@@ -173,7 +187,9 @@ public class BundleBuilderPage extends BasePageClass {
     public void clkTechInstallSlot() {
         getReusableActionsInstance().waitForElementVisibility(rdoTechInstallSlot, 180);
         getReusableActionsInstance().javascriptScrollToMiddleOfPage();
-        getReusableActionsInstance().getWhenReady(rdoTechInstallSlot, 180).click();
+        getReusableActionsInstance().scrollToElement(rdoTechInstallSlot);
+        //getReusableActionsInstance().javascriptScrollByVisibleElement(rdoTechInstallSlot);
+        getReusableActionsInstance().getWhenReady(rdoTechInstallSlot12).click();
     }
 
     public void clkContinueInstallation() {
@@ -185,15 +201,15 @@ public class BundleBuilderPage extends BasePageClass {
     }
 
     public boolean verifyBundleBuilderPage(){
-        return getReusableActionsInstance().isElementVisible(lblSelectServiceBundles, 5);
+        return getReusableActionsInstance().isElementVisible(lblSelectServiceBundles, 60);
     }
 
-    public void clkContinueBillingAndPayment() throws InterruptedException {
+    public void clkContinueBillingAndPayment() {
         if(getReusableActionsInstance().isElementVisible(billingAndPaymentH1, 60)){
             getReusableActionsInstance().javascriptScrollByVisibleElement(continueBillingAndPayment);
-            getReusableActionsInstance().clickWhenReady(continueBillingAndPayment);
+            getReusableActionsInstance().clickWhenReady(continueBillingAndPayment, 15);
         }
-        if(getReusableActionsInstance().isElementVisible(popupCloseBtn)){
+        if(getReusableActionsInstance().isElementVisible(popupCloseBtn, 5)){
             getReusableActionsInstance().clickWhenReady(popupCloseBtn, 3);
             getReusableActionsInstance().clickWhenReady(continueBillingAndPayment, 3);
 
@@ -208,6 +224,10 @@ public class BundleBuilderPage extends BasePageClass {
     }
 
     public boolean verifyOvrSessionTimer(){
-        return getReusableActionsInstance().isElementVisible(ovrSessionTimer, 30);
+        return getReusableActionsInstance().isElementVisible(ovrSessionTimer, 60);
+    }
+
+    public boolean verifyStoredPaymentCardPresent(){
+        return getReusableActionsInstance().isElementVisible(storedPaymentCardLabel, 60);
     }
 }

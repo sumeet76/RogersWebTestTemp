@@ -32,7 +32,7 @@ public class OneViewCH_Auto_RHP_Dashboard_ValidateLinks_Test extends BaseTestCla
 
         getHomePhonedashboard().clickManageAddOns();
         reporter.reportLogWithScreenshot("Clicked on Manage Add-Ons");
-        //reporter.hardAssert(getHomePhonedashboard().verifyText(),"Manage Add Ons link works", "Manage Add Ons link is not working");
+        reporter.hardAssert(getHomePhonedashboard().verifyText(),"Manage Add Ons link works", "Manage Add Ons link is not working");
     }
 
         @BeforeMethod(alwaysRun=true)
