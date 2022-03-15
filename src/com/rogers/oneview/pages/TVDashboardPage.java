@@ -19,6 +19,7 @@ public class TVDashboardPage  extends BasePageClass {
 		super(driver);
 	}
 
+
 	@FindBy(xpath = "//span[text()='Reset Parental Controls & PIN' or text()='Réinitialiser le contrôle parental et le NIP']")
 	WebElement btnResetParentalControl;
 
@@ -32,7 +33,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='View my channel lineup' or text()='Voir ma liste de chaînes']/ancestor::button")
 	WebElement btnViewChannelLineUp;
 
-	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button | (//rch-conflict-modals/descendant::span[@ng-reflect-translate='global.modals.conflictWarnings'])[1]")
+	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button | (//rch-conflict-modals/descendant::span[@ng-reflect-translate='global.modals.conflictWarnings'])")
 	WebElement btnContnueReset;
 
 	@FindBy(xpath = "//div[@class='ds-modal__header d-flex align-items-start']")
@@ -46,6 +47,7 @@ public class TVDashboardPage  extends BasePageClass {
 
 	@FindBy(xpath = "//span[text()='OK']/ancestor::button")
 	WebElement btnOk;
+
 
 	@FindBy(xpath = "//span[text()='Restart box(es)' or text()='Redémarrer les terminaux numériques']")
 	WebElement btnRestartSetupbox;
@@ -202,7 +204,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "(//label[@class='ds-radioLabel d-inline-flex align-items-start'])[2]")
 	WebElement immediateDateChange;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
 	WebElement cancel;
 
 	@FindBy(xpath = "//span[@translate='global.label.reviewAddons']")
@@ -271,13 +273,17 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'View my Flex Channels')]")
 	WebElement ViewMyFlexChannelsLink;
 
-	@FindBy(xpath = "//ds-popover[@ng-reflect-content='Cloud Storage records and save']")
+	@FindBy(xpath = "//label[text()='What is Cloud Storage?']/parent::div/ds-popover")
 	WebElement CloudStorageBubble;
 
-	@FindBy(xpath = "//ds-popover[@ng-reflect-content='The Download & Go feature of t']")
+	@FindBy(xpath = "//label[text()='What is Download & Go?']/parent::div/ds-popover")
 	WebElement DownloadGoBubble;
 
-	@FindBy(xpath = "//span[contains(text(),'Reset purchase PIN') or contains(text(),'Réinitialisez le NIP d’achat')]")
+	@FindBy(xpath = "//button[@title='Reset purchase PIN']/span")
+	WebElement ResetPurchasePin;
+
+	//@FindBy(xpath = "//span[contains(text(),'Reset purchase PIN') or contains(text(),'Réinitialisez le NIP d’achat')]")
+	@FindBy(xpath = "//span[contains(text(),'Reset purchase PIN') or contains(text(),'Réinitialisez le NIP d’achat')]/ancestor::button")
 	WebElement resetPurchasePin;
 
 	@FindBy(xpath = "//button[@rchtrackclickevent='themepacks']")
@@ -743,8 +749,8 @@ public class TVDashboardPage  extends BasePageClass {
 	public void clickViewChannelLineUp() {
 		WebElement btn = getReusableActionsInstance().getWhenReady(btnViewChannelLineUp, 120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
-		getReusableActionsInstance().clickWhenReady(btnViewChannelLineUp, 120);
-		//	getReusableActionsInstance().getWhenReady(btnViewChannelLineUp, 60).click();
+//		getReusableActionsInstance().clickWhenReady(btnViewChannelLineUp, 120);
+			getReusableActionsInstance().getWhenReady(btnViewChannelLineUp, 60).click();
 	}
 
 	/**
@@ -1043,11 +1049,11 @@ public class TVDashboardPage  extends BasePageClass {
 		}
 
 		public void clickResetPurchasePin () {
+
 			getReusableActionsInstance().waitForElementVisibility(resetPurchasePin, 240);
 			getReusableActionsInstance().javascriptScrollToBottomOfPage();
 			getReusableActionsInstance().javascriptScrollByVisibleElement(resetPurchasePin);
 			getReusableActionsInstance().getWhenReady(resetPurchasePin, 120).click();
-
 		}
 		public void clickSecondLowestpackage () {
 			//getReusableActionsInstance().staticWait(10000);

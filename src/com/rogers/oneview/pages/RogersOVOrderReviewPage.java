@@ -105,7 +105,7 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	 */	
 	public void clkSubmit() {	
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().waitForElementVisibility(submitButton, 60);
+		getReusableActionsInstance().waitForElementVisibility(submitButton, 120);
 		getReusableActionsInstance().executeJavaScriptClick(submitButton);
 		getReusableActionsInstance().staticWait(10000);
 	}
