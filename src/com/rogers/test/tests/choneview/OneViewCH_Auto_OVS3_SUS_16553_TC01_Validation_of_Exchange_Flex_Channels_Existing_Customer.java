@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_OVS3_SUS_16553_TC01_Validation_of_Exchange_Flex_Channels_Existing_Customer extends BaseTestClass {
-    @Test
+    @Test (groups = {"AprilSanity","RegressionCHOV"})
     public void oneViewCH_Auto_OVS3_SUS_16553_TC01_Validation_of_Exchange_Flex_Channels_Existing_Customer(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.SUS_16553_TC01_Validation_of_Exchange_Flex_Channels_Existing_Customer.accountDetails.getBan(), TestDataHandler.SUS_16553_TC01_Validation_of_Exchange_Flex_Channels_Existing_Customer.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
