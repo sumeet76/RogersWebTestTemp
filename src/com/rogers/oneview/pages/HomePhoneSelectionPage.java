@@ -11,12 +11,21 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 		super(driver);
 	}
 
-
-	@FindBy(xpath = "//div[@class='button-set']/descendant::span[@translate='global.cta.continue']")
+	@FindBy(xpath = "(//span[@translate='global.cta.continue' and contains(text(),'Continue') or contains(text(),'Continuer')])[1]")
 	WebElement continueOnGeneratePhone;
 
-	@FindBy(xpath = "//button[@type='submit']")
+	@FindBy(xpath = "(//span[@translate='global.cta.continue' and contains(text(),'Continue') or contains(text(),'Continuer')])[2]")
+	WebElement continueOnCallDisplayName;
+
+	@FindBy(xpath = "(//span[@translate='global.cta.continue' and contains(text(),'Continue') or contains(text(),'Continuer')])[3]")
+	WebElement continueOnDirectoryListing;
+
+	@FindBy(xpath = "//span[@class='ng-star-inserted' and contains(text(),'Générer plus de numéros') or contains(text(),'Generate phone numbers')]")
 	WebElement generatePhoneNumber;
+
+
+	@FindBy(xpath = "//div[@class='button-set']/descendant::span[@translate='global.cta.continue']")
+	WebElement finalcontinueOnGeneratePhone;
 
 	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button[@ng-reflect-disabled='false']")
 	WebElement continueButton;
@@ -76,7 +85,8 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */	
 	public void clkContinue() {	
-		getReusableActionsInstance().getWhenReady(continueButton).sendKeys(Keys.ENTER);;
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().executeJavaScriptClick(finalcontinueOnGeneratePhone);
 	}
 	
 	
@@ -108,5 +118,17 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(continueOnGeneratePhone);
 
 	}
+
+	public void clickOnContinueCallDisplay(){
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().executeJavaScriptClick(continueOnCallDisplayName);
+	}
+	public void clickContinueDirectoryListing(){
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().executeJavaScriptClick(continueOnDirectoryListing);
+	}
+
+
+
 
 }
