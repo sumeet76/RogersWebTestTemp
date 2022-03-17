@@ -19,6 +19,15 @@ public class CustomerProfilePage  extends BasePageClass {
 	
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-expand']/ancestor::button")
 	WebElement collapse;
+
+	@FindBy(xpath = "//span[contains(text(),'Yes, cancel')]")
+	WebElement YesCancelButton;
+
+	@FindBy(xpath = "//span[contains(text(),'No, continue')]")
+	WebElement NoContinue;
+
+	@FindBy(xpath = "//p[@class='ds-modal__heading mb-24 text-title-3' and contains(text(),'Are you sure you want to cancel?')]")
+	WebElement AreYouSureToCancelModal;
 	
 	/**
 	 * Verify the Customer Profile Page is Displayed
@@ -47,5 +56,23 @@ public class CustomerProfilePage  extends BasePageClass {
 	public void goToTheBottom() {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 
+	}
+
+	public void clickBackButton(){
+		getReusableActionsInstance().backToPreviousPage();
+	}
+
+
+	public void clickYesCancelButton(){
+		getReusableActionsInstance().staticWait(2000);
+		getReusableActionsInstance().clickWhenReady(YesCancelButton);
+	}
+
+	public void clickNoContinue(){
+		getReusableActionsInstance().clickWhenReady(NoContinue);
+	}
+
+	public boolean verifyAreYouSureModal(){
+		return getReusableActionsInstance().isElementVisible(AreYouSureToCancelModal,60);
 	}
 }
