@@ -40,7 +40,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//div[@class='second-level-nav__cta']//button[@class='b-linkCta']")
 	WebElement btnBackToAccountOverview;
 
-	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large']")
+	@FindBy(xpath = "//span[text()='View your usage and alerts' or text()='Consulter votre historique d’utilisation et vos avis' ]")
 	WebElement btnUsageAndAlerts;
 
 	@FindBy(xpath = "//a[@href='https://www.rogers.com/consumer/internet/mesh-whole-home-wifi-network?ipn=1']")
@@ -716,5 +716,19 @@ public class InternetDashboardPage  extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible( OrderReview);
 	}
 
+	public boolean verifyUsageAndAlerts() {
+		getReusableActionsInstance().waitForElementVisibility( btnUsageAndAlerts, 30);
+		return getReusableActionsInstance().isElementVisible( btnUsageAndAlerts);
+	}
+
+	public boolean verifyChangePackageButton() {
+		getReusableActionsInstance().waitForElementVisibility( changePackageBtn, 30);
+		return getReusableActionsInstance().isElementVisible( changePackageBtn);
+	}
+
+	public boolean verifyAddPodsButton() {
+		getReusableActionsInstance().waitForElementVisibility( addPodsButton, 30);
+		return getReusableActionsInstance().isElementVisible( addPodsButton);
+	}
 }
 

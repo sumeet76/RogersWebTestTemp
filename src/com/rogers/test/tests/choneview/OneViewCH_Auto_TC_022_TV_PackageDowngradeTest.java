@@ -50,7 +50,7 @@ public class OneViewCH_Auto_TC_022_TV_PackageDowngradeTest extends BaseTestClass
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 }
