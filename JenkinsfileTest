@@ -75,7 +75,6 @@ pipeline {
             when { expression { shouldRun() } }
             stages {
 
-
                 stage('Environment Variables') {
                     steps { sh 'env | sort' }
                 }
