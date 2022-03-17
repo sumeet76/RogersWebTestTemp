@@ -44,6 +44,7 @@ public class TestDataHandler {
 	public static AccountData tc82;
 	public static AccountData tc80;
 	public static AccountData tc110_StandaloneInternetAccount;
+	public static AccountData tc111_Legacy1PtoIgnite2P;
 	public static AccountData tc43_44_digitalTVAccount;
 	public static AccountData tc16_17_18_19_SolarisInternetAccount;
 	public static AccountData tc01_02_03_IgniteTVAccount;
@@ -417,6 +418,7 @@ public class TestDataHandler {
 		tc58_saiAccountForIgniteBundleBuy = YamlHandler.getCableAccountData("TC58_SaiAccountForIgniteBundleBuy");
 		tc59_saiforIgniteBundle = YamlHandler.getCableAccountData("TC59_SAIforIgniteBundle");
 		tc82_Legacy1PtoIgnite2P= YamlHandler.getCableAccountData("TC82_Legacy1PtoIgnite2P");
+		tc111_Legacy1PtoIgnite2P= YamlHandler.getCableAccountData("TC111_Legacy1PtoIgnite2P");
 		tc110_StandaloneInternetAccount = YamlHandler.getCableAccountData("TC110_StandaloneInternetAccount");
 		tc83_Legacy2PtoIgnite2P= YamlHandler.getCableAccountData("TC83_Legacy2PtoIgnite2P");
 		tc87_NativeTNcourierFulfilmentHot= YamlHandler.getCableAccountData("TC87_NativeTNcourierFulfilmentHot");
