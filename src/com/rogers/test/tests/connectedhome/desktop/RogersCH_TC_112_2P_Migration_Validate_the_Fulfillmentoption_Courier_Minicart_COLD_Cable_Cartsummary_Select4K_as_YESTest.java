@@ -162,10 +162,10 @@ public class RogersCH_TC_112_2P_Migration_Validate_the_Fulfillmentoption_Courier
 		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
-/*
+
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
 		closeSession();
-	} */
+	}
 
 }
