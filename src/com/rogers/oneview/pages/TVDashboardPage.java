@@ -220,10 +220,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Exchange Flex Channels' or text()='Échanger chaînes flexibles']/ancestor::button")
 	WebElement ExchangeFlexChannels;
 
-	@FindAll({
-			@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks']"),
-			@FindBy(xpath = "//span[contains(text(),'Theme Packs') or contains(text(), 'Forfaits à thème')]/ancestor::button")
-	})
+	@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks'] | //span[contains(text(),'Theme Packs') or contains(text(), 'Forfaits à thème')]/ancestor::button | //button[@class='a-tablet']")
 	WebElement themePacksTab;
 
 	@FindBy(xpath = "//div[@class='themepack-detail channels-container']/descendant::span[@translate='global.cta.add']")
@@ -278,7 +275,6 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//label[text()='What is Download & Go?']/parent::div/ds-popover")
 	WebElement DownloadGoBubble;
 
-
 	@FindBy(xpath = "//button[@title='Reset purchase PIN']/span")
 	WebElement ResetPurchasePin;
 
@@ -289,6 +285,41 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@rchtrackclickevent='themepacks']")
 	WebElement addThemepackFromBundle;
 
+
+	@FindBy(xpath = "//*[text()='View offers']")
+	WebElement viewOffer;
+
+	@FindBy(xpath = "//*[text()='BEST']/following::*[text()='Select']/ancestor::button")
+	WebElement recommendedOffer;
+
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']/ancestor::button")
+	WebElement closeButton;
+
+	@FindBy(xpath = "//*[text()='Exchange now']/ancestor::button")
+	WebElement exchangeNow;
+
+
+	@FindBy(xpath = "//*[text()='Select']")
+	WebElement selectChannel;
+
+	@FindBy(xpath = "//*[text()=' I have reviewed all issues with the customer. ']/ancestor::button")
+	WebElement reviewedIssuesWithCustomer;
+
+
+	@FindBy(xpath = "//*[text()='No, they don’t']")
+	WebElement noTheyDontBtn;
+
+	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button")
+	WebElement continueBottomOfPage;
+
+	@FindBy(xpath = "//span[text()='View my channel lineup' or text()='Voir ma liste de chaînes']")
+	WebElement viewMyChannelLineUpLink;
+
+	@FindBy(xpath = "//button[@id='cl-65619']")
+	WebElement removeChannel;
+
+	@FindBy(xpath = "//button[@id='cl-76222']")
+	WebElement addChannelBtn;
 
 	/**
 	 * Get list of all channels and themepacks and remove them one by one
@@ -362,6 +393,7 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(manageChannelsAndThemeparks, 60);
 		getReusableActionsInstance().executeJavaScriptClick(manageChannelsAndThemeparks);
 	}
+
 
 	/**
 	 * To click Click Channel Tab
@@ -496,8 +528,8 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author suganya P
 	 * */
 	public void selectTVPackage(String strPackageNameEn, String strPackageNameFr) {
-		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
-		getReusableActionsInstance().staticWait(5000);
+		//getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		//getReusableActionsInstance().staticWait(5000);
 		//getReusableActionsInstance().waitForElementVisibility(btnSelectChannel, 90);
 		//By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/parent::div/following-sibling::div[@class='internet-tile__body']//span[text()='Select'or text()='Sélectionner']/ancestor::button");
 		By packageNameLocator = By.xpath("//div[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/ancestor::div[3]/following-sibling::div/rch-bundle-price/child::div/child::div[3]/child::button");
@@ -1014,12 +1046,11 @@ public class TVDashboardPage  extends BasePageClass {
 		}
 
 		public void clickResetPurchasePin () {
-			//getReusableActionsInstance().staticWait(3000);
-			getReusableActionsInstance().getWhenReady(ResetPurchasePin, 60);
-			//getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y -900);
-			//getReusableActionsInstance().clickWhenReady(ResetPurchasePin);
-			getReusableActionsInstance().executeJavaScriptClick(ResetPurchasePin);
 
+			getReusableActionsInstance().waitForElementVisibility(resetPurchasePin, 30);
+			getReusableActionsInstance().javascriptScrollToBottomOfPage();
+			getReusableActionsInstance().javascriptScrollByVisibleElement(resetPurchasePin);
+			getReusableActionsInstance().getWhenReady(resetPurchasePin, 30).click();
 		}
 		public void clickSecondLowestpackage () {
 			//getReusableActionsInstance().staticWait(10000);
@@ -1050,7 +1081,128 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(ExchangeFlexChannels,30);
 		getReusableActionsInstance().executeJavaScriptClick(ExchangeFlexChannels);
 	}
-}
+
+	public void clickViewOffers() {
+		getReusableActionsInstance().waitForElementVisibility(viewOffer, 30);
+		getReusableActionsInstance().executeJavaScriptClick(viewOffer);
+	}
+
+	public void selectRecommendedOffer() {
+		getReusableActionsInstance().waitForElementVisibility(recommendedOffer, 30);
+		getReusableActionsInstance().executeJavaScriptClick(recommendedOffer);
+	}
+
+	public boolean verifyRecommendedOffer() {
+		return getReusableActionsInstance().isElementVisible(recommendedOffer, 30);
+	}
+
+	public void clickViewDetails(String strPackageNameEn, String strPackageNameFr) {
+		//getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		//getReusableActionsInstance().staticWait(5000);
+		//getReusableActionsInstance().waitForElementVisibility(btnSelectChannel, 90);
+		By packageNameLocator = By.xpath("//div[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/ancestor::div[3]/following-sibling::div/rch-bundle-price/child::div/child::div[3]/child::button/parent::div/following-sibling::div");
+		WebElement btn = getReusableActionsInstance().getWhenReady(packageNameLocator, 30);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
+		WebElement pkg = getDriver().findElement(packageNameLocator);
+		getReusableActionsInstance().executeJavaScriptClick(pkg);
+	}
+	public void clickCloseButton() {
+		getReusableActionsInstance().waitForElementVisibility(closeButton, 30);
+		getReusableActionsInstance().executeJavaScriptClick(closeButton);
+	}
+
+	public void clickExchangeNow() {
+		getReusableActionsInstance().waitForElementVisibility(exchangeNow, 30);
+		getReusableActionsInstance().executeJavaScriptClick(exchangeNow);
+	}
+
+
+	public void clickSelectChannel() {
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().waitForElementVisibility(selectChannel, 30);
+		getReusableActionsInstance().executeJavaScriptClick(selectChannel);
+
+
+	}
+
+	public void clickReviewedAllIssuesWithCustomer() {
+		getReusableActionsInstance().waitForElementVisibility(reviewedIssuesWithCustomer, 30);
+		getReusableActionsInstance().executeJavaScriptClick(reviewedIssuesWithCustomer);
+
+
+	}
+
+	public void clickNoTheyDont() {
+		//getReusableActionsInstance().waitForElementVisibility(noTheyDontBtn, 20);
+		getReusableActionsInstance().clickWhenReady(noTheyDontBtn);
+
+
+	}
+
+	public void clickContinueBottomOfPage() {
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().waitForElementVisibility(continueBottomOfPage, 30);
+		getReusableActionsInstance().executeJavaScriptClick(continueBottomOfPage);
+
+
+	}
+
+	public boolean verifyManageChannelsAndThemePacks() {
+			return getReusableActionsInstance().isElementVisible(manageChannelsAndThemeparks , 30);
+		}
+
+	public boolean verifyExchangeFlexChannels() {
+		return getReusableActionsInstance().isElementVisible(btnExchangeFlexChannels , 30);
+	}
+
+	public boolean verifyChangeTvPackage() {
+		return getReusableActionsInstance().isElementVisible(btnChangeTvPackage, 30);
+	}
+
+	public boolean verifyRestartSetUpBox() {
+		return getReusableActionsInstance().isElementVisible(btnRestartSetupbox, 30);
+	}
+
+	public boolean verifyResetPurchasePin() {
+		return getReusableActionsInstance().isElementVisible(resetPurchasePin, 30);
+	}
+
+	public boolean verifyResetParentalControl() {
+		return getReusableActionsInstance().isElementVisible(btnResetParentalControl, 30);
+	}
+
+	public boolean verifyViewMyFlexChannelsLink() {
+		return getReusableActionsInstance().isElementVisible(viewMyChannelLineUpLink, 30);
+	}
+
+	public boolean verifyViewMyChannelLineUpLink() {
+		return getReusableActionsInstance().isElementVisible(viewMyChannelLineUpLink, 30);
+	}
+	public void clickRemoveChannel() {
+		WebElement btn = getReusableActionsInstance().getWhenReady(removeChannel, 30);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 100);
+		getReusableActionsInstance().waitForElementVisibility(removeChannel, 30);
+		getReusableActionsInstance().executeJavaScriptClick(removeChannel);
+
+
+	}
+
+	public void clickAddChannelBtn() {
+		WebElement btn = getReusableActionsInstance().getWhenReady(addChannelBtn, 30);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 100);
+		getReusableActionsInstance().waitForElementVisibility(addChannelBtn, 30);
+		getReusableActionsInstance().executeJavaScriptClick(addChannelBtn);
+
+
+	}
+
+
+	}
+
+
+
+
+
 
 
 

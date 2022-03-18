@@ -44,6 +44,7 @@ public class TestDataHandler {
 	public static AccountData tc82;
 	public static AccountData tc80;
 	public static AccountData tc110_StandaloneInternetAccount;
+	public static AccountData tc111_Legacy1PtoIgnite2P;
 	public static AccountData tc43_44_digitalTVAccount;
 	public static AccountData tc16_17_18_19_SolarisInternetAccount;
 	public static AccountData tc01_02_03_IgniteTVAccount;
@@ -97,6 +98,7 @@ public class TestDataHandler {
 	public static AccountData tc76_Legact2Pto3PIgniteBasementHousePortinHot;
 	public static AccountData tc82_Legacy1PtoIgnite2P;
 	public static AccountData tc83_Legacy2PtoIgnite2P;
+	public static AccountData tc112_Legacy2PtoIgnite2PMigration;
 	public static AccountData tc87_NativeTNcourierFulfilmentHot;
 	public static AccountData tc88_Legacy2PTVIntToIgnite3P;
 	public static AccountData tc89_Legacy3pToIgnite3P;
@@ -329,6 +331,12 @@ public class TestDataHandler {
 	public static AccountData MaxSAI_Cx_Pods;
 	public static AccountData Max2pCx_Pods;
 	public static AccountData Max3pCx_Pods;
+	public static AccountData Ignite_Mapped_Offers_2p;
+	public static AccountData Ignite_Mapped_Offers_3p;
+	public static AccountData Tv_Dashboard_Validation;
+	public static AccountData Internet_Dashboard_Validation;
+	public static AccountData RHP_Dashboard_Validation;
+
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
  		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
@@ -413,8 +421,10 @@ public class TestDataHandler {
 		tc58_saiAccountForIgniteBundleBuy = YamlHandler.getCableAccountData("TC58_SaiAccountForIgniteBundleBuy");
 		tc59_saiforIgniteBundle = YamlHandler.getCableAccountData("TC59_SAIforIgniteBundle");
 		tc82_Legacy1PtoIgnite2P= YamlHandler.getCableAccountData("TC82_Legacy1PtoIgnite2P");
+		tc111_Legacy1PtoIgnite2P= YamlHandler.getCableAccountData("TC111_Legacy1PtoIgnite2P");
 		tc110_StandaloneInternetAccount = YamlHandler.getCableAccountData("TC110_StandaloneInternetAccount");
 		tc83_Legacy2PtoIgnite2P= YamlHandler.getCableAccountData("TC83_Legacy2PtoIgnite2P");
+		tc112_Legacy2PtoIgnite2PMigration= YamlHandler.getCableAccountData("TC112_Legacy2PtoIgnite2PMigration");
 		tc87_NativeTNcourierFulfilmentHot= YamlHandler.getCableAccountData("TC87_NativeTNcourierFulfilmentHot");
 		tc88_Legacy2PTVIntToIgnite3P= YamlHandler.getCableAccountData("TC88_Legacy2PTVIntToIgnite3P");
 		tc89_Legacy3pToIgnite3P= YamlHandler.getCableAccountData("TC89_Legacy3pToIgnite3P");
@@ -706,8 +716,17 @@ public class TestDataHandler {
 		MaxSAI_Cx_Pods= YamlHandler.getOVAccountData("MaxSAICx_Pods");
 		Max2pCx_Pods= YamlHandler.getOVAccountData("Max2pCx_Pods");
 		Max3pCx_Pods= YamlHandler.getOVAccountData("Max3pCx_Pods");
+<<<<<<< HEAD
 		Validation_of_Things_to_know_copy_Directory_Listing_Home_Phone_Personalisation=YamlHandler.getMigrationData("Validation_of_Things_to_know_copy_Directory_Listing_Home_Phone_Personalisation");
 		ValidationofNotificationAlertBackbutton=YamlHandler.getMigrationData("Validation_of_Notification_Alert_Back_Button_on_Migration_Flow");
+=======
+		Ignite_Mapped_Offers_2p= YamlHandler.getOVAccountData("IgniteMappedOffers2p");
+		Ignite_Mapped_Offers_3p= YamlHandler.getOVAccountData("IgniteMappedOffers3p");
+		Tv_Dashboard_Validation=YamlHandler.getOVAccountData("TvDashboardValidation");
+		Internet_Dashboard_Validation=YamlHandler.getOVAccountData("InternetDashboardValidation");
+		RHP_Dashboard_Validation=YamlHandler.getOVAccountData("RHPDashboardValidation");
+
+>>>>>>> 102073190ac68f2c46132a47941719ffadcb7bee
 	}
 
 	private static void ovrDataInit() throws FileNotFoundException {
