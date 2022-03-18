@@ -65,12 +65,22 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 
 	@FindBy(xpath = "//ul[@class='number-select-list']/li[1]")
 	WebElement selectedPhoneNo;
+
+	@FindBy(xpath = "//li[contains(text(),'You may use ampersands, hyphens and spaces but not at the beginning or end of a name')] or //li[contains(text(),'Vous pouvez utiliser des perluètes, des traits d’union et des espaces, mais pas au début ni à la fin d’un nom')]")
+	WebElement thingsToKnowFirstName;
+
+	@FindBy(xpath = "//li[contains(text(),'You may use hyphens, apostrophes and spaces but not at the beginning or end of a name')]  or //li[contains(text(),'Vous pouvez utiliser des traits d’union, des apostrophes et des espaces, mais pas au début ni à la fin d’un nom')]")
+	WebElement thingsToKnowLastName;
+
+
 	/**
 	 * Click Generate Phone Number Button  
 	 * @author chinnarao.vattam
 	 */	
 	public void clkGeneratePhoneNo() {
-		getReusableActionsInstance().getWhenReady(generatePhoneNumber,60).sendKeys(Keys.ENTER);
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().getWhenReady(generatePhoneNumber,60);
+		getReusableActionsInstance().clickWhenReady(generatePhoneNumber);
 	}
 	/**
 	 * Verify the Phone Number is Selected
@@ -126,6 +136,15 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	public void clickContinueDirectoryListing(){
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().executeJavaScriptClick(continueOnDirectoryListing);
+	}
+
+	public boolean verifythingsToKnowFirstname(){
+		getReusableActionsInstance().staticWait(5000);
+		 return getReusableActionsInstance().isElementVisible(thingsToKnowFirstName,60);
+	}
+
+	public boolean verifyThingsToKnowLastName(){
+		return getReusableActionsInstance().isElementVisible(thingsToKnowLastName);
 	}
 
 

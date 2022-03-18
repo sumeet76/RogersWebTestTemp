@@ -40,9 +40,9 @@ public class OneViewCH_Auto_Validation_of_Things_to_know_copy_Directory_Listing_
         getRogersIgniteBundlesPage().reviewTermsAndCondition();
         reporter.reportLogWithScreenshot("points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
-        reporter.reportLogWithScreenshot("Exchange later");
-        getRogersIgniteBundlesPage().clickExchangeLater();
-        reporter.reportLogWithScreenshot("After Exchange later");
+    //    reporter.reportLogWithScreenshot("Exchange later");
+    //    getRogersIgniteBundlesPage().clickExchangeLater();
+    //    reporter.reportLogWithScreenshot("After Exchange later");
         getCustomerProfilePage().clkContinue();
         reporter.reportLogWithScreenshot("continue is clicked");
         getRogersIgniteBundlesPage().fourKTVPopup();
@@ -71,6 +71,8 @@ public class OneViewCH_Auto_Validation_of_Things_to_know_copy_Directory_Listing_
         reporter.reportLogWithScreenshot("Phone Number Selected");
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         getHomePhoneSelectionPage().clickOnContinueCallDisplay();
+        getHomePhoneSelectionPage().verifythingsToKnowFirstname();
+        getHomePhoneSelectionPage().verifyThingsToKnowLastName();
         getHomePhoneSelectionPage().clickContinueDirectoryListing();
         getHomePhoneSelectionPage().clkContinue();
 
