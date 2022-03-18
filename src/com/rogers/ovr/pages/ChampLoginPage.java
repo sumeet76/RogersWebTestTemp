@@ -30,15 +30,22 @@ public class ChampLoginPage extends BasePageClass {
     @FindBy(xpath = "//a[contains(text(),'Skip setup') or contains(text(),'sauter')]")
     WebElement corpLoginSkip2faSetup;
 
+    @FindBy(xpath ="//*[text()=' Accept / Accepter ']" )
+    WebElement btnaccept;
+
+    @FindBy(xpath = "//a[contains(text(),'FR')]")
+    WebElement frenchLanguageBtn;
+
 
     public ChampLoginPage(WebDriver driver) {
         super(driver);
     }
 
-    public void logIntoChamp(String email, String password) throws InterruptedException {
+    public void logIntoChamp(String email, String password) {
 
         getReusableActionsInstance().getWhenVisible(txtEmail).sendKeys(email);
         getReusableActionsInstance().getWhenVisible(btnNext).click();
+        getReusableActionsInstance().waitForElementStaleness(txtPassword, 5);
         getReusableActionsInstance().getWhenVisible(txtPassword).sendKeys(password);
         getReusableActionsInstance().getWhenVisible(signInButton).click();
         if(getReusableActionsInstance().isElementVisible(staySignedInNO, 10)){
@@ -47,17 +54,24 @@ public class ChampLoginPage extends BasePageClass {
 
     }
 
-    public void logIntoCorpChamp(String email, String password) throws InterruptedException {
+    public void logIntoCorpChamp(String email, String password) {
 
         getReusableActionsInstance().getWhenVisible(txtEmail).sendKeys(email);
         getReusableActionsInstance().getWhenVisible(btnNext).click();
+        getReusableActionsInstance().waitForElementStaleness(txtPassword, 5);
         getReusableActionsInstance().getWhenVisible(txtPassword).sendKeys(password);
         getReusableActionsInstance().getWhenVisible(corpSignInBtn).click();
-        getReusableActionsInstance().getWhenVisible(corpLoginNextBtn).click();
-        getReusableActionsInstance().getWhenVisible(corpLoginSkip2faSetup).click();
+//        getReusableActionsInstance().getWhenVisible(corpLoginNextBtn).click();
+//        getReusableActionsInstance().getWhenVisible(corpLoginSkip2faSetup).click();
         if(getReusableActionsInstance().isElementVisible(staySignedInNO, 10)){
             getReusableActionsInstance().getWhenVisible(staySignedInNO).click();
         }
+    }
+
+    public void changeChampToFR(){
+        if(getReusableActionsInstance().isElementVisible(btnaccept,5))
+        {getReusableActionsInstance().clickWhenVisible(btnaccept);}
+        getReusableActionsInstance().clickWhenReady(frenchLanguageBtn);
     }
 
 }

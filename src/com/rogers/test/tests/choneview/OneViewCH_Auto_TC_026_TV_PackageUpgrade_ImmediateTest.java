@@ -41,9 +41,9 @@ public class OneViewCH_Auto_TC_026_TV_PackageUpgrade_ImmediateTest extends BaseT
         reporter.reportLogWithScreenshot("Immediate Billing Cycle Selected");
         getTVDashboardPage().clickContinueOnSelectDateChange();
         reporter.softAssert(getRogersOVOrderReviewPage().verifyMonthlyCharges(),"Monthly Charges Displayed","Failed to Navigate to Monthly Charges Page");
-//        getRogersOVOrderReviewPage().clkSubmit();
+        getRogersOVOrderReviewPage().clkSubmit();
 //        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-       // reporter.reportLogWithScreenshot("Order Placed");
+        reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)
