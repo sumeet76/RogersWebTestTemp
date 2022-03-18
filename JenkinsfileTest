@@ -171,7 +171,7 @@ pipeline {
            script{
            if (params.XrayImportFlag == 'true') {
                echo "Upload execution results to JIRA"
-               final def (String response, int code) = sh(script : "curl -H 'Accept-Charset: utf-8' -H 'Content-Type: multipart/form-data' -u $XRAY_PROD_CRED_USR:$XRAY_PROD_CRED_PSW -F 'file=@build/testngOutput/testng-results.xml' 'https://reqcentral.com/rest/raven/1.0/import/execution/testng?projectKey=RTM&testPlanKey=RTM-93250&testExecKey=RTM-93251'", returnStdout: true).trim().tokenize("\n")
+               final def (String response, int code) = sh(script : "curl -s -w '\\n%{response_code}' -H 'Accept-Charset: utf-8' -H 'Content-Type: multipart/form-data' -u $XRAY_PROD_CRED_USR:$XRAY_PROD_CRED_PSW -F 'file=@build/testngOutput/testng-results.xml' 'https://reqcentral.com/rest/raven/1.0/import/execution/testng?projectKey=RTM&testPlanKey=RTM-93250&testExecKey=RTM-93251'", returnStdout: true).trim().tokenize("\n")
                 echo "X-RAY JIRA API response status code: $code"
                 }
            }
