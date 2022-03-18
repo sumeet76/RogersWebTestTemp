@@ -134,7 +134,8 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
 	
-	@FindBy(xpath = "//input[@name='preferredDatesFirst']")
+	//@FindBy(xpath = "//input[@name='preferredDatesFirst']")
+	@FindBy(xpath = "//input[@id='preferredDate']")
 	WebElement prefferedDates;
 	
 	@FindBy(xpath = "//i[@class='glyphicon glyphicon-chevron-right']")
@@ -188,6 +189,9 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath ="//input[@id='backupDate']")
 	WebElement txtEndDateNew;
 
+	@FindBy(xpath="//a[@aria-describedby='ariaClickToContinue']//span[contains(text(),'Continue')]")
+	WebElement btnTechContinue;
+
 	/**
 	 * To click on the chevron on the tech Install page
 	 * @author Saurav.Goyal
@@ -222,7 +226,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @param date which date to be entered
 	 */
 	public void selectPrefferedDates(String date) {
-		getReusableActionsInstance().getWhenReady(prefferedDates, 180).sendKeys(date);;
+		getReusableActionsInstance().getWhenReady(prefferedDates, 180).sendKeys(date);
 	}
 
 	/**
@@ -763,6 +767,15 @@ public class RogersTechInstallPage extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(btnTechInstallContinue);
 		getReusableActionsInstance().waitForElementVisibility(btnTechInstallContinue, 60);
 		getReusableActionsInstance().executeJavaScriptClick(btnTechInstallContinue);
+	}
+	/**
+	 * Click on the Continue button to continue on the Schedule your appointmnet page
+	 * @author shubhangi.verma
+	 */
+	public void clkTechContinue(){
+		getReusableActionsInstance().waitForElementTobeClickable(btnTechContinue, 90);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().getWhenReady(btnTechContinue, 30).click();
 	}
 
 }
