@@ -17,6 +17,7 @@ public class OneViewCH_Auto_1544_TC01_Add_Themepack_Immediate_Test extends BaseT
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		reporter.reportLogWithScreenshot("Enter dealer code");
+		getAccountOverViewPage().goToPageBottom();
 		getAccountOverViewPage().clickIgniteTVBadge();
 		reporter.reportLogWithScreenshot("TV Ignite Badge");
 		getTVDashboardPage().clickManageChannelsAndThemepacks();
@@ -57,5 +58,3 @@ public class OneViewCH_Auto_1544_TC01_Add_Themepack_Immediate_Test extends BaseT
 	}
 
 }
-
-

@@ -27,30 +27,29 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	
 	@FindBy(xpath = "//input[@name='email']")
 	WebElement txtEmail;
-	//input[@id='ds-form-input-id-14']
 		
 	@FindBy(xpath = "//input[@name='confirmEmail']")
 	WebElement txtConfirmEmail;
-	//input[@id='ds-form-input-id-15']
 
 	@FindAll({
 	//@FindBy(xpath = "//input[contains(@a11ydescription,'First Name')]"),
-	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'First Name')]"),
-	//@FindBy(xpath = "//input[contains(@aria-label,'First Name')]")
+	//@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'First Name')]"),
+	@FindBy(xpath = "(//ds-form-field[@rchapiexposer='customerDetails.firstName']/descendant::input[contains(@id,'ds-form-input-id-')])[1]")
+
 	})
 	WebElement txtFirstName;
 
 	@FindAll({
 	//@FindBy(xpath = "//input[contains(@a11ydescription,'Last Name')]"),
-	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'Last Name')]"),
-	//@FindBy(xpath = "//input[contains(@aria-label,'Last Name')]")
+	//@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'Last Name')]"),
+	@FindBy(xpath = "(//ds-form-field[@rchapiexposer='customerDetails.firstName']/descendant::input[contains(@id,'ds-form-input-id-')])[2]")
 	})
 	WebElement txtLastName;
 
 	@FindAll({
 	//@FindBy(xpath = "//input[contains(@a11ydescription,'your phone number')]"),
 	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'your phone number')]"),
-	//@FindBy(xpath = "//input[contains(@aria-label,'your phone number')]")
+	@FindBy(xpath = "//div[contains(text(),'phone')]//preceding::input[contains(@id,'ds-form-input-id-')][1]")
 	})
 	WebElement btnPhone;
 

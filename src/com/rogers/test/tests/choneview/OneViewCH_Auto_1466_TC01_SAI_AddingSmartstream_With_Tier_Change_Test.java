@@ -17,20 +17,29 @@ public class OneViewCH_Auto_1466_TC01_SAI_AddingSmartstream_With_Tier_Change_Tes
         reporter.reportLogWithScreenshot("Launched the account overview page");
         getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
-        getInternetDashboardPage().clickAddSmartStream();
-        reporter.reportLogWithScreenshot("Add SmartStream is clicked");
-        getInternetDashboardPage().clickSelectSmartStreamChangeTier();
-        reporter.reportLogWithScreenshot("Continue with smart stream selection");
+        getInternetDashboardPage().clickChangeInternetPackage();
+        reporter.reportLogWithScreenshot("Change Internet Package clicked");
+        getInternetDashboardPage().clickCheckBoxSmartStream();
+        reporter.reportLogWithScreenshot("Smart Stream option selected");
+        getInternetDashboardPage().clickLoadOffers();
+        reporter.reportLogWithScreenshot("Load offers button clicked");
+//        getInternetDashboardPage().clickAddSmartStream();
+//        reporter.reportLogWithScreenshot("Add SmartStream is clicked");
+//        getInternetDashboardPage().clickSelectSmartStreamChangeTier();
+//        reporter.reportLogWithScreenshot("Continue with smart stream selection");
+        getInternetDashboardPage().selectButtonAddSmartStream();
+        reporter.reportLogWithScreenshot(" Smart Stream Selected");
 
         reporter.reportLogWithScreenshot("Smart Stream option selected");
         getInternetDashboardPage().clickContinueAddingStream();
         reporter.reportLogWithScreenshot("Continue clicked on Adding Stream pop up");
         getRogersOVInstallationPage().clickInstallationCheckBox();
-        reporter.reportLogWithScreenshot("Activation Check box selecetd successfully");
+        reporter.reportLogWithScreenshot("Activation Check box selected successfully");
         getRogersOVInstallationPage().clickContinue();
         reporter.reportLogWithScreenshot("Continue clicked");
-////        getRogersOVOrderReviewPage().clkSubmit();
-////        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+
+//        getRogersOVOrderReviewPage().clkSubmit();
+//        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 //        reporter.reportLogWithScreenshot("Order Placed");
     }
 

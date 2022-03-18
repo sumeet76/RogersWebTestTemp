@@ -36,19 +36,15 @@ public class OneViewCH_Auto_2557_TC02_IgniteMappedOffer_Change_TV_internet_Packa
         getAccountOverViewPage().clickSelectChangeContinue();
         reporter.reportLogWithScreenshot("click Continue");
         reporter.hardAssert(getAccountOverViewPage().verifyReviewYourOrder(), "Review Your Order displayed", "Review Your Order did not displayed");
-        reporter.hardAssert(getAccountOverViewPage().verifyPreviousPackage(), "Review Your Order displayed ", "Review Your Order did not displayed");
-        reporter.hardAssert(getAccountOverViewPage().verifyTvDetails(), "Review Your Order displayed", "Review Your Order did not displayed");
-        reporter.hardAssert(getAccountOverViewPage().verifyNewPackage(), "Review Your Order displayed", "Review Your Order did not displayed");
-        reporter.hardAssert(getAccountOverViewPage().verifyNewTvDetails(), "Review Your Order displayed", "Review Your Order did not displayed");
+
+        reporter.hardAssert(getAccountOverViewPage().verifyPreviousPackage(), "Previous Package displayed ", "Previous Package did not displayed");
+        reporter.hardAssert(getAccountOverViewPage().verifyTvDetails(), "Tv Details displayed", "Tv Details did not displayed");
+        reporter.hardAssert(getAccountOverViewPage().verifyNewPackage(), "New Package displayed", "New Package did not displayed");
+        reporter.hardAssert(getAccountOverViewPage().verifyNewTvDetails(), "New Tv Details displayed", "New Tv Details did not displayed");
         reporter.reportLogWithScreenshot("Is Order Review Page Title Present");
 //        getAccountOverViewPage().clickSubmit();
 //        reporter.reportLogWithScreenshot("click Submit");
-//		reporter.reportLogWithScreenshot("Order Confirmation page");
-
-
-
-
-
+		reporter.reportLogWithScreenshot("Order Confirmation page");
 
     }
 

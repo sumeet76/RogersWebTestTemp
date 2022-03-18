@@ -20,6 +20,9 @@ public class OVRAgreementPage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(),'Customer has read and agrees to the') or contains(text(),'Le client a lu et accepté')]")
     WebElement agreementCheckbox;
 
+    @FindBy(xpath = "//h3[@translate='global.checkout.orderAgreement.additionalAgreements.label']")
+    WebElement additionalAgreementsH3;
+
     @FindBy(xpath = "//span[@translate='global.cta.completeOrder']/ancestor::button")
     WebElement completeOrderBtn;
 
@@ -42,11 +45,12 @@ public class OVRAgreementPage extends BasePageClass {
     }
 
     public void clkAgreementCheckbox() {
-        getReusableActionsInstance().javascriptScrollToBottomOfPage();
+        getReusableActionsInstance().javascriptScrollByVisibleElement(additionalAgreementsH3);
         getReusableActionsInstance().clickWhenReady(agreementCheckbox);
     }
 
     public void clkCompleteOrder() {
+        getReusableActionsInstance().javascriptScrollToBottomOfPage();
         getReusableActionsInstance().clickWhenReady(completeOrderBtn);
     }
 }

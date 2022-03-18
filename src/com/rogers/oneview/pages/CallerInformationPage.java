@@ -15,7 +15,7 @@ public class CallerInformationPage extends BasePageClass {
         super(driver);
     }
 
-    @FindBy(xpath="//span[contains(text(),'Caller Information Review')]")
+    @FindBy(xpath="//span[contains(text(),'Caller Information Review') or contains(text(),'Examen des informations sur')]")
     WebElement callerInfoVerify;
 
     @FindBy(xpath="//span[@translate='global.cta.continue']")

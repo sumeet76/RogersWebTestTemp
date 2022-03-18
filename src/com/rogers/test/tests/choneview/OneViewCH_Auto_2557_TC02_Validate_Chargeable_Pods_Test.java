@@ -17,6 +17,7 @@ public class OneViewCH_Auto_2557_TC02_Validate_Chargeable_Pods_Test extends Base
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.Chargeable_pods.getAccountNo(),TestDataHandler.Chargeable_pods.getContactID());
         getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("select Internet Badge");
+<<<<<<< HEAD
         getAccountOverViewPage().clickViewOffers();
         reporter.reportLogWithScreenshot("click View Offers");
         getAccountOverViewPage().selectRecommendedOffer();
@@ -50,6 +51,31 @@ public class OneViewCH_Auto_2557_TC02_Validate_Chargeable_Pods_Test extends Base
 
 
 
+=======
+
+        getInternetDashboardPage().clickAddPodsButton();
+        reporter.reportLogWithScreenshot("click AddPods Button ");
+
+        getInternetDashboardPage().clickAddToCartForPods();
+        reporter.reportLogWithScreenshot("click Add To Cart For Pods");
+
+        getInternetDashboardPage().clickPlusToAddPod();
+        reporter.reportLogWithScreenshot("click Plus To Add Pod");
+
+        reporter.hardAssert(getInternetDashboardPage().verifyMaximumLimitReached(),"maximum limit reached appeared","maximum limit reached did not appeared");
+
+        getInternetDashboardPage().clickMinusToRemovePod();
+        reporter.reportLogWithScreenshot("click Minus To Remove Pod");
+
+        getInternetDashboardPage().clickContinueButton();
+        reporter.reportLogWithScreenshot("click Continue Button");
+
+        getInternetDashboardPage().clickCustomerUnderstandCheckbox();
+        reporter.reportLogWithScreenshot("click Customer Understand Checkbox");
+
+        getRogersOVOrderReviewPage().clickSubmitOrder();
+        reporter.reportLogWithScreenshot("click Submit Order");
+>>>>>>> master
 
     }
 

@@ -43,7 +43,7 @@ public class OneViewCH_Auto_1460_TC01_Tupelo_Internet_Downgrade_Immediate_Test e
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
 }

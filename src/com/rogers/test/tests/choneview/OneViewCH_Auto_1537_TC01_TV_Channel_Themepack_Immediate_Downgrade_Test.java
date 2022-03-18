@@ -29,14 +29,14 @@ public class OneViewCH_Auto_1537_TC01_TV_Channel_Themepack_Immediate_Downgrade_T
 		reporter.reportLogWithScreenshot("Manage channels and themepacks");
 		getTVDashboardPage().clickFirstChannelToRemove();
 		reporter.reportLogWithScreenshot("first channel remove");
-		getTVDashboardPage().clickYourChanges();
-		reporter.reportLogWithScreenshot("collapse");
-		getTVDashboardPage().getAllChannelAndThemepacks();
-		reporter.reportLogWithScreenshot("all channels and themepacks");
+//		getTVDashboardPage().clickYourChanges();
+//		reporter.reportLogWithScreenshot("collapse");
+//		getTVDashboardPage().getAllChannelAndThemepacks();
+//		reporter.reportLogWithScreenshot("all channels and themepacks");
 		getTVDashboardPage().clickAddChannel();
 		reporter.reportLogWithScreenshot("add channel");
-		getTVDashboardPage().clickYourChanges();
-		reporter.reportLogWithScreenshot("Collapse");
+//		getTVDashboardPage().clickYourChanges();
+//		reporter.reportLogWithScreenshot("Collapse");
 		getTVDashboardPage().clickContinueChannelsAndThemePacks();
 		reporter.reportLogWithScreenshot("Continue channels and themepacks");
 		getTVDashboardPage().immediateDateChangeOption();
@@ -45,9 +45,7 @@ public class OneViewCH_Auto_1537_TC01_TV_Channel_Themepack_Immediate_Downgrade_T
 		reporter.reportLogWithScreenshot("Continue");
 
 //		getRogersOVOrderReviewPage().clickSubmitToManageThemepackOrChannel();
-		reporter.reportLogWithScreenshot("Order Confirmation page");
-
-
+//		reporter.reportLogWithScreenshot("Order Confirmation page");
 	}
 
 	@BeforeMethod (alwaysRun=true)
