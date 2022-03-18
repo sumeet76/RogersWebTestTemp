@@ -220,9 +220,9 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@class,'ds-modal')]//button[@variant='tertiary']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']")
 	WebElement btnNoThanks;
 	
-	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -tertiary -large ng-star-inserted']")
+	@FindBy(xpath = "//button[@aria-label='No, thanks – close this window']/span")
 	WebElement btnNoThnx;
-	
+
 	@FindBy(xpath = "//button[@class='btn btn-lg btn-red']")
 	WebElement btnAddNow;
 	
