@@ -298,14 +298,6 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath ="//input[contains(@id,'messageForExistingNumber')]//following-sibling::label")
 	WebElement rdoKeepExistingPhoneNumber;
 
-	@FindBy(xpath="//button[@class='ds-modal__closeButton ds-button ds-corners ds-pointer text-center mw-100 -icon d-inline-flex justify-content-center align-items-center -large ng-star-inserted']/span")
-	WebElement btnClosePopupModal;
-
-	@FindBy(xpath = "//rch-popup-modal[@class='ng-star-inserted']/div[@class='popup-modal-component']")
-	WebElement divPopupContainer;
-
-	@FindBy(xpath = "//button[contains(@class,'ds-modal__closeButton')]/span")
-	WebElement btnClosePopUp;
 
 	/**
 	 * Click Starter package button for anonymous customer
@@ -1181,30 +1173,5 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	public boolean verifyFlex5PackageCost() {
 		return	getReusableActionsInstance().isElementVisible(txtFlex5PackageCost,30);
 	}
-
-	/**
-	 * To Click on Close Window Button
-	 * @author Shubhangi.Verma
-	 */
-	public void clkClosePopUp(){
-		getReusableActionsInstance().clickWhenReady(btnClosePopUp,30);
-	}
-	/**
-	 * @return true if popup container available else return false
-	 * @author Shubhangi.Verma
-	 */
-	public boolean verifyPopupModal() {
-		return getReusableActionsInstance().isElementVisible(divPopupContainer,30);
-	}
-	/**
-	 * To close on PopUp
-	 * @author Shubhangi.Verma
-	 */
-	public void clickClosePopupModal() {
-		getReusableActionsInstance().getWhenReady(btnClosePopupModal,30).click();
-	}
-
-
-
 
 }
