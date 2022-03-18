@@ -79,7 +79,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//ins[@translate='global.cta.continue']")
 	WebElement btnContinue;
 
-	@FindBy(xpath = "//ds-checkbox[@ng-reflect-name=\"homephone\"]//div[contains(@class,'ds-checkbox__box')]")
+	@FindBy(xpath = "//span[contains(text(),'HomePhone')]/parent::div")
 	WebElement checkboxHomephone;
 
 	@FindBy(xpath = "//h2[@id='channels-tab']")
