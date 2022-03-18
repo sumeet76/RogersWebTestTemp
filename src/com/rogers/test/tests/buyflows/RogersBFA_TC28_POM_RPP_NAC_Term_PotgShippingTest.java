@@ -16,14 +16,14 @@ import java.lang.reflect.Method;
  * TC28 - Regression - RPP Customer [RNAC TERM] - Perform Rogers Net New Activation - POTG Shipping(Finance plan with POTG)_E2E
  */
 
-public class RogersBFA_TC28_RPP_NAC_Term_PotgShippingTest extends BaseTestClass {
+public class RogersBFA_TC28_POM_RPP_NAC_Term_PotgShippingTest extends BaseTestClass {
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-	@Test(groups = {"RegressionBFA","NACBFA"})
+	@Test(groups = {"RegressionBFA","NACBFA","POM"})
 	public void rogersRPPNACTermPotgShippingTest() throws InterruptedException {
 		// **************************Device catalog page*****************************************
 		getDriver().get(System.getProperty("AWSUrl")+"/?type=rpp");

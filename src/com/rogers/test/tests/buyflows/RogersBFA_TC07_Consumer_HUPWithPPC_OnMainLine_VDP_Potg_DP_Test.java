@@ -15,9 +15,9 @@ import java.lang.reflect.Method;
  * @author rajesh.varalli1
  *
  */
-public class RogersBFA_TC07_Consumer_HUPWithPPC_OnMainLine_VDP_Potg_Test extends BaseTestClass {
+public class RogersBFA_TC07_Consumer_HUPWithPPC_OnMainLine_VDP_Potg_DP_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","HUPBFA"})
+	@Test(groups = {"RegressionBFA","HUPBFA","DP"})
     public void rogersHupPpcPotgMLTest() {
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
@@ -61,9 +61,13 @@ public class RogersBFA_TC07_Consumer_HUPWithPPC_OnMainLine_VDP_Potg_Test extends
         reporter.reportLogPassWithScreenshot("Data option selected");
         getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
+        getRogersPlanConfigPage().selectDeviceProtectionAddon();
+        reporter.reportLogPassWithScreenshot("Device Protection Addon is selected");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
-        getRogersPlanConfigPage().clkContinueDeviceProtection();
-        reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
+        reporter.reportLogPassWithScreenshot("Plan config page Add-ons Continue button clicked");
+        reporter.hardAssert(getRogersPlanConfigPage().verifyDPCartLineItem(),"DP Addon added to cart","DP Addon not added to cart");
+        String dpAddon = getRogersPlanConfigPage().getDeviceProtectionAddon();
+        reporter.reportLogPassWithScreenshot("Device Protection - " +dpAddon);
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
         reporter.reportLogPassWithScreenshot("On Checkout page");
@@ -78,6 +82,9 @@ public class RogersBFA_TC07_Consumer_HUPWithPPC_OnMainLine_VDP_Potg_Test extends
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                 "Order Review Page Title is not Present");
         reporter.reportLogPassWithScreenshot("Order Review Page");
+        reporter.hardAssert(getRogersReviewOrderPage().verifyDPCartLineItem(),"DP Addon added to cart","DP Addon not added to cart");
+        String deviceProtectionAddon = getRogersReviewOrderPage().getDeviceProtectionAddon();
+        getReporter().reportLogPassWithScreenshot("Device Protection - " +deviceProtectionAddon);
         getRogersReviewOrderPage().clkFinancingConsentCheckbox();
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
         getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
