@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * This class contains the test method to verify the upgarde flow for Legacy TV to IgniteTV for Rogers.com  
  * 
- * @author chinnarao.vattam
+ * @author Shubhangi.Verma
  * 
  * Test steps:
  *
@@ -54,8 +54,6 @@ public class RogersCH_TC_112_2P_Migration_Validate_the_Fulfillmentoption_Courier
     @Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
 	public void checkTVPackageUpgradeTest() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
-		//getRogersHomePage().clkSignIn();
-		//getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc112_Legacy2PtoIgnite2PMigration.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc112_Legacy2PtoIgnite2PMigration.getPassword());
@@ -69,27 +67,24 @@ public class RogersCH_TC_112_2P_Migration_Validate_the_Fulfillmentoption_Courier
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page"); 
 		 getRogersHomePage().clkExistingCustomerShop();
-		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+		reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the IgniteTV");
 		 //getRogersHomePage().clkIgniteTVExistingCustomer();
 		getDriver().get(System.getProperty("QaUrl")+"/web/consumer/ignite-bundles/tv-internet");
     	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	getRogersHomePage().clkNoThnx();
     	getRogersHomePage().clkServiceability();
+
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 		getRogersHomePage().selectAddressOnFile();
         getRogersHomePage().clkUseAddress();
-        //getRogersHomePage().clkUseThisAddress();
+
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
         getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
+
         reporter.reportLogWithScreenshot("Launched the information popup");
         getRogersIgniteTVBuyPage().clkIUnderstand();
-        //getRogersIgniteTVBuyPage().clkClosePopUp();
-		if(getRogersIgniteTVBuyPage().verifyPopupModal()) {
-			reporter.reportLogWithScreenshot("Live chat Popup modal");
-			getRogersIgniteTVBuyPage().clickClosePopupModal();
-			reporter.reportLogWithScreenshot("Clicked on Close This PopUp");
-		}
+
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
         getRogersIgniteTVBuyPage().set4KTV();
@@ -97,6 +92,7 @@ public class RogersCH_TC_112_2P_Migration_Validate_the_Fulfillmentoption_Courier
         getRogersIgniteTVBuyPage().clkCheckout();
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
+
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
         getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomer(TestDataHandler.tc112_Legacy2PtoIgnite2PMigration.getAccountDetails().getYear());
         getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomerMigration(TestDataHandler.tc112_Legacy2PtoIgnite2PMigration.getAccountDetails().getMonth());
@@ -123,12 +119,14 @@ public class RogersCH_TC_112_2P_Migration_Validate_the_Fulfillmentoption_Courier
         getRogersTechInstallPage().clkProInstallUpgradeYes();
         reporter.reportLogWithScreenshot("Click on ProInstallUpgradeYes");
 		getRogersTechInstallPage().clkTechContinue();
+
 		reporter.reportLogWithScreenshot("Launched the Schedule Appointment Page");
 		getRogersTechInstallPage().selectPrefferedDates("String Date");
 		getRogersTechInstallPage().selectPreferredTimeSlot();
 		getRogersTechInstallPage().setContactNumber();
 		getRogersTechInstallPage().clkTechInstalConsent();
         getRogersTechInstallPage().clkTechInstallContinue();
+
         reporter.reportLogWithScreenshot("Launched the payment options page");
         getRogersPaymentOptionsPage().clkPaymentConfirm();
 
@@ -141,10 +139,10 @@ public class RogersCH_TC_112_2P_Migration_Validate_the_Fulfillmentoption_Courier
         
         getRogersOrderReviewPage().clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
-      //  getRogersOrderReviewPage().clkSubmit();
-       // reporter.reportLogWithScreenshot("Launched the Confirmation page");
-       // reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
-       // reporter.reportLogWithScreenshot("Launched the Confirmation page");
+        getRogersOrderReviewPage().clkSubmit();
+        reporter.reportLogWithScreenshot("Launched the Confirmation page");
+        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
+        reporter.reportLogWithScreenshot("Launched the Confirmation page");
 		String ban = getRogersOrderConfirmationPage().getBAN();
 		System.out.println("BAN from the portal : " + ban);
 		/**
@@ -164,10 +162,10 @@ public class RogersCH_TC_112_2P_Migration_Validate_the_Fulfillmentoption_Courier
 		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
-
+/*
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
 		closeSession();
-	}
+	} */
 
 }
