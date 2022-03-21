@@ -54,7 +54,7 @@ pipeline {
         parameterizedCron(env.BRANCH_NAME == 'OVC-April-Sanity' ?'''
                     # leave spaces where you want them around the parameters. They'll be trimmed.
                     # we let the build run with the default name
-                    30 12 * * 1-5 %Browser=saucechrome;Language=en;Groups=AprilSanity;ThreadCount=2;TestProfile=ConnectedHome
+                    * 13 * * 1-5 %Browser=saucechrome;Language=en;Groups=AprilSanity;ThreadCount=2;TestProfile=ConnectedHome
                 ''':'')
     }
 
