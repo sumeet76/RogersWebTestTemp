@@ -26,9 +26,9 @@ public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_Test extends BaseTes
     @Test(groups = {"RegressionBFA","AALBFA","SanityBFA"})
     public void rogersAalByodBopisTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
-        reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
-        getRogersHomePage().clkSignIn();
+        //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc19AALBYODBopisShipping.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc19AALBYODBopisShipping.getPassword());

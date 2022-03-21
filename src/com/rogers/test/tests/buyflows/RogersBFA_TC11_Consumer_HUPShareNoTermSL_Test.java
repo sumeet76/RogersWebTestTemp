@@ -17,9 +17,9 @@ public class RogersBFA_TC11_Consumer_HUPShareNoTermSL_Test extends BaseTestClass
 
         @Test(groups = {"RegressionBFA","SanityBFA","HUPBFA"})
         public void rogersHUPShareKeepCurrentPlanNoTermSLTest() {
-            reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+            //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
             reporter.reportLogWithScreenshot("Home Page");
-            getRogersHomePage().clkSignIn();
+            //getRogersHomePage().clkSignIn();
             //getRogersLoginPage().switchToSignInIFrame();
             getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc11HUPShareNoTermSL.getUsername());
             getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc11HUPShareNoTermSL.getPassword());
