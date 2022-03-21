@@ -14,7 +14,8 @@ public class HomePhonedashboard  extends BasePageClass {
 	@FindBy(xpath = "//button[@class='a-btnPrimary ng-star-inserted']")
 	WebElement btnContnue;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-check-circle']")
+	//@FindBy(xpath = "//span[@class='ds-icon rds-icon-check-circle']")
+	@FindBy(xpath = "//p[text()='Success!']")
 	WebElement imgSuccess;
 
 	@FindBy(xpath = "//button[@class='a-btnPrimary ng-star-inserted']")
@@ -88,6 +89,10 @@ public class HomePhonedashboard  extends BasePageClass {
 
 	@FindBy(xpath="//p[text()=\"Pending Order\"]")
 	WebElement pendingOrder;
+
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-info']")
+	WebElement onlineManager;
+
 
 	/**
 	 * Click Yes,reset password button on the pop up "Reset Voicemail Password"
@@ -300,7 +305,28 @@ public class HomePhonedashboard  extends BasePageClass {
 		getReusableActionsInstance().isElementVisible(pendingOrder,30);
 		return true;
 	}
+	public void clickOnlineManagerPopUp() {
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().waitForElementVisibility(onlineManager, 30);
+		getReusableActionsInstance().executeJavaScriptClick(onlineManager);
 
+
+	}
+
+	public boolean verifyResetVoicemailPassword()
+	{
+		return getReusableActionsInstance().isElementVisible(btnResetVoiceMail, 20);
+	}
+
+	public boolean verifyChangeCallDisplay()
+	{
+		return getReusableActionsInstance().isElementVisible(ChangeCallDisplayName, 20);
+	}
+
+	public boolean verifyManageAddOns()
+	{
+		return getReusableActionsInstance().isElementVisible(manageAddOns, 20);
+	}
 	}
 	
 

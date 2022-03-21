@@ -15,7 +15,7 @@ import com.rogers.test.base.BaseTestClass;
 import com.rogers.testdatamanagement.TestDataHandler;
 
 
-public class OneViewCH_Auto_TC_020_TV_ChannelSwapTest extends BaseTestClass {
+public class 	OneViewCH_Auto_TC_020_TV_ChannelSwapTest extends BaseTestClass {
 	@Test (groups = {"RChannelsandThemepacks","RegressionCHOV","SanityCHOV","SanityCHOVTemp"})
     public void checkChannelSwapTest() {
 		//getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
@@ -45,13 +45,13 @@ public class OneViewCH_Auto_TC_020_TV_ChannelSwapTest extends BaseTestClass {
 		reporter.reportLogWithScreenshot("Second Channel on the add list clicked");
 		getTVDashboardPage().clickSelectChannelAdd();
 		reporter.reportLogWithScreenshot("Select button clicked");
-		//getTVDashboardPage().clickConfirmExchange(System.getProperty("Browser"));
-//		reporter.reportLogWithScreenshot("Confirm Exchange button clicked");
-//		getTVDashboardPage().clickOK();
-//		reporter.reportLogWithScreenshot("Clicked Ok on the exhange channel pop up");
-//		reporter.hardAssert(getTVDashboardPage().verifyResetSuccess(),"Channel exchange completed successfully- Passed","Channel exchange not completed - Failed");
-//        reporter.reportLogWithScreenshot("Swap channel success");
-//		getTVDashboardPage().clickSuccessOk() ;
+		getTVDashboardPage().clickConfirmExchange(System.getProperty("Browser"));
+		reporter.reportLogWithScreenshot("Confirm Exchange button clicked");
+		getTVDashboardPage().clickOK();
+		reporter.reportLogWithScreenshot("Clicked Ok on the exhange channel pop up");
+		reporter.hardAssert(getTVDashboardPage().verifyResetSuccess(),"Channel exchange completed successfully- Passed","Channel exchange not completed - Failed");
+        reporter.reportLogWithScreenshot("Swap channel success");
+		getTVDashboardPage().clickSuccessOk() ;
 		
     }
 

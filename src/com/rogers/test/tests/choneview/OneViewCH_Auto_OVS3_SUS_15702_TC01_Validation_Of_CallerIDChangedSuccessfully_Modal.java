@@ -23,7 +23,7 @@ public class OneViewCH_Auto_OVS3_SUS_15702_TC01_Validation_Of_CallerIDChangedSuc
         getHomePhonedashboard().clickChangeCallDisplayName();
         reporter.hardAssert(getHomePhonedashboard().verifyChangeCallNameDisplayPopUp(),"Pop Up Displayed","Pop up not loaded");
         reporter.reportLogWithScreenshot("The current caller name is "+ getHomePhonedashboard().currentCallerName());
-        getHomePhonedashboard().enterCallername("name","name2");
+        getHomePhonedashboard().enterCallername("bbbdb","duhh");
         reporter.reportLogWithScreenshot("The new caller name are entered");
         getHomePhonedashboard().clickSubmit();
         reporter.reportLogWithScreenshot("The call display name changed successfully");
@@ -50,6 +50,6 @@ public class OneViewCH_Auto_OVS3_SUS_15702_TC01_Validation_Of_CallerIDChangedSuc
     @AfterMethod(alwaysRun=true)
     public void afterTest(){
 
-        closeSession();
+        //closeSession();
     }
 }
