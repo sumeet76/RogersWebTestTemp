@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  * @author praveen.kumar7
  */
 
-public class RogersBFA_TC39_SOHO_AAL_BYOD_NonShare_StdShipping_MBAccount_Test extends BaseTestClass {
+public class RogersBFA_TC39_POM_SOHO_AAL_BYOD_NonShare_StdShipping_MBAccount_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -23,7 +23,7 @@ public class RogersBFA_TC39_SOHO_AAL_BYOD_NonShare_StdShipping_MBAccount_Test ex
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","AALBFA","SOHOBFA"})
+    @Test(groups = {"RegressionBFA","AALBFA","SOHOBFA","POM"})
     public void sohoAalByodNonShareStdShippingMBTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");

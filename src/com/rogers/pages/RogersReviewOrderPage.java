@@ -16,7 +16,7 @@ public class RogersReviewOrderPage extends BasePageClass {
         super(driver);
     }
 
-    @FindBy(xpath = "//h1[@id='bfa-page-title'][text()='Review Your Order' or contains(text(),'Vérifiez votre')]")
+    @FindBy(xpath = "//h1[@id='bfa-page-title'][contains(text(),'Review Your Order') or contains(text(),'Vérifiez votre')]")
     WebElement orderReviewPageTitle;
 
     @FindBy(xpath="(//div[contains(@class,'totalRow d-flex align-items-center')])[1]")
@@ -79,7 +79,8 @@ public class RogersReviewOrderPage extends BasePageClass {
     })
     WebElement submitOrderBtn;
 
-
+    @FindBy(xpath = "//span[contains(text(),'Protect supér appareil') or contains(text(),'Prem Device Protection')]//ancestor::div[contains(@class,'dsa-orderTable__row')]")
+    WebElement dpAddonCarLineItem;
 
     /**
      * To Verify the Title of Order Review Page is Present
@@ -283,4 +284,21 @@ public class RogersReviewOrderPage extends BasePageClass {
         getReusableActionsInstance().staticWait(9000);
     }
 
+    /**
+     * This method verifies the Device Protection Add-on added to Cart
+     * @return True if Device Protection Line Item is displayed in Cart summary; else false
+     * @author Subash.Nedunchezhian
+     */
+    public boolean verifyDPCartLineItem(){
+        getReusableActionsInstance().javascriptScrollByVisibleElement(dpAddonCarLineItem);
+        return getReusableActionsInstance().isElementVisible(dpAddonCarLineItem);
+    }
+    /**
+     * This method will get the Device Protection Addon amount from the cart summary
+     * @return String having Device Protection Addon and amount
+     * @author subash.nedunchezhian
+     */
+    public String getDeviceProtectionAddon() {
+        return dpAddonCarLineItem.getText().replaceAll("\\n", "");
+    }
 }
