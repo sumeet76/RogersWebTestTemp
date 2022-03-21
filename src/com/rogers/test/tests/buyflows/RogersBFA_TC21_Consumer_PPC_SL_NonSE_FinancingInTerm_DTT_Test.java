@@ -26,9 +26,9 @@ public class RogersBFA_TC21_Consumer_PPC_SL_NonSE_FinancingInTerm_DTT_Test exten
     @Test(groups = {"RegressionBFA","SanityBFA","PPCBFA"})
     public void rogersPPC_TC21_SLNonSE_FINInTerm_DTTPlanTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
-        reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
-        getRogersHomePage().clkSignIn();
+        //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc21PPCSLNonSEDTTPlan.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc21PPCSLNonSEDTTPlan.getPassword());
