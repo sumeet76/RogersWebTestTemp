@@ -18,7 +18,7 @@ public class OneViewCH_Auto_TC_027_TV_PackageUpgrade_NextBillingCycleTest extend
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
         getAccountOverViewPage().selectTVBadage();
         reporter.reportLogWithScreenshot("Launched the TV dashboard page");
-        getTVDashboardPage().clickChangeTvPackage();
+        getTVDashboardPage().clickChangePackage();
         reporter.reportLogWithScreenshot("Changed TV Package clicked");
         getTVDashboardPage().selectTVPackage(TestDataHandler.TC026_TVPackageUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.TC023_TVPackageDowngrade.accountDetails.getUpgradePlanFr());
         reporter.reportLogWithScreenshot("Upgrade TV Package selected");
