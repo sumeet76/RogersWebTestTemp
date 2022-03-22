@@ -29,7 +29,7 @@ public class OneViewCH_Auto_TC21_Regression_Change_TV_via_Serviceability_Modal_O
         reporter.hardAssert(getTVDashboardPage().verifyHeader(),"TV Dashboard launched successfully","Tv dashboard not launched successfully");
         reporter.reportLogWithScreenshot("Tv Dashboard page");
 
-        getTVDashboardPage().clickChangeTvPackage();
+        getTVDashboardPage().clickChangePackage();
         reporter.reportLogWithScreenshot("Changed TV Package clicked");
         getTVDashboardPage().selectFirstTVPackage();
         reporter.reportLogWithScreenshot("TV Package selected");
