@@ -19,10 +19,10 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	@FindBy(xpath = "//h2[@translate='global.checkout.profile.createProfile']")
 	WebElement txtProfile;
 	
-	@FindBy(xpath = "(//div[contains(@class,'ds-formField__inputContainer')])[1]")
+	@FindBy(xpath = "//input[@name='email']/ancestor::div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement txtContainerEmail;
 
-	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
+	@FindBy(xpath = "//input[@name='confirmEmail']/ancestor::div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement txtContainerConfirmEmail;
 	
 	@FindBy(xpath = "//input[@name='email']")
@@ -34,7 +34,7 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	@FindAll({
 	//@FindBy(xpath = "//input[contains(@a11ydescription,'First Name')]"),
 	//@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'First Name')]"),
-	@FindBy(xpath = "(//ds-form-field[@rchapiexposer='customerDetails.firstName']/descendant::input[contains(@id,'ds-form-input-id-')])[1]")
+	@FindBy(xpath = "//span[@translate='global.checkout.profile.firstNameHeader']/parent::div/descendant::ds-form-field[@rchapiexposer='customerDetails.firstName']//input")
 
 	})
 	WebElement txtFirstName;
@@ -42,14 +42,14 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	@FindAll({
 	//@FindBy(xpath = "//input[contains(@a11ydescription,'Last Name')]"),
 	//@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'Last Name')]"),
-	@FindBy(xpath = "(//ds-form-field[@rchapiexposer='customerDetails.firstName']/descendant::input[contains(@id,'ds-form-input-id-')])[2]")
+	@FindBy(xpath = "//span[@translate='global.checkout.profile.lastNameHeader']/parent::div/descendant::ds-form-field[@rchapiexposer='customerDetails.firstName']//input")
 	})
 	WebElement txtLastName;
 
 	@FindAll({
 	//@FindBy(xpath = "//input[contains(@a11ydescription,'your phone number')]"),
 	@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'your phone number')]"),
-	@FindBy(xpath = "//div[contains(text(),'phone')]//preceding::input[contains(@id,'ds-form-input-id-')][1]")
+	@FindBy(xpath = "//span[@translate='global.checkout.profile.phoneHeader']//parent::div/following-sibling::div//input")
 	})
 	WebElement btnPhone;
 
