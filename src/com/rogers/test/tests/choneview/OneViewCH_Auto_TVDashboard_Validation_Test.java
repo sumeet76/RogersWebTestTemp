@@ -10,9 +10,9 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_TV_Dashboard_Validation_Test extends BaseTestClass {
+public class OneViewCH_Auto_TVDashboard_Validation_Test extends BaseTestClass {
     @Test(groups = {"RegressionCHOV", "SanityCHOV", "SanityCHOVTemp"})
-    public void oneViewCH_Auto_TV_Dashboard_Validation_Test() {
+    public void oneViewCH_Auto_TVDashboard_Validation_Test(){
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.Tv_Dashboard_Validation.accountDetails.getBan(), TestDataHandler.Tv_Dashboard_Validation.getContactID());
         reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(),"Login Successful","Login Failed");
@@ -35,10 +35,22 @@ public class OneViewCH_Auto_TV_Dashboard_Validation_Test extends BaseTestClass {
         reporter.reportLogWithScreenshot("Change TV package button displayed ");
         reporter.hardAssert(getTVDashboardPage().verifyRestartSetUpBox(), "Restart Setup Box link Available","Restart Setup Box link not Available");
         reporter.reportLogWithScreenshot("Restart setup box link displayed");
+        getTVDashboardPage().clickRestartSetupbox();
+        reporter.reportLogWithScreenshot("Restart setup box link clicked");
+        getTVDashboardPage().clickCancel();
+        reporter.reportLogWithScreenshot("Closing Restart setup box");
         reporter.hardAssert(getTVDashboardPage().verifyResetPurchasePin(), "Reset Purchase pin Available","Reset Purchase pin not Available");
         reporter.reportLogWithScreenshot("Reset purchase pin displayed");
+        getTVDashboardPage().clickResetPurchasePin();
+        reporter.reportLogWithScreenshot("Reset purchase pin clicked");
+        getTVDashboardPage().clickCancel();
+        reporter.reportLogWithScreenshot("Closing Reset Parent control");
         reporter.hardAssert(getTVDashboardPage().verifyResetParentalControl(), "Reset Parental Control & pin Available","Reset Parental Control & pin not Available");
         reporter.reportLogWithScreenshot("Reset Parent control link displayed");
+        getTVDashboardPage().clickResetParentalControl();
+        reporter.reportLogWithScreenshot("Reset Parent control clicked");
+        getTVDashboardPage().clickCancel();
+        reporter.reportLogWithScreenshot("Closing Reset Parent control");
 
 
 

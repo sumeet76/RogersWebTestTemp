@@ -4,8 +4,6 @@ import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
-import org.openqa.selenium.By;
-import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
@@ -13,10 +11,11 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * TC03 - Regression - [RNAC TERM] - Perform Rogers Net New Activation - TERM with POTG Shipping(Finance plan with POTG)_E2E
+ * TC38 - SOHO Medium Risk Customer_New Activation_Upfront edge option with POTG Shipping
+ * @author praveen.kumar7
  */
 
-public class RogersBFA_TC03_Consumer_NAC_TermPotgShippingTest extends BaseTestClass {
+public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_PotgShipping_DP_EN_Test extends BaseTestClass {
 	String deviceName;
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
@@ -25,8 +24,8 @@ public class RogersBFA_TC03_Consumer_NAC_TermPotgShippingTest extends BaseTestCl
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-	@Test(groups = {"RegressionBFA","NACBFA"})
-	public void rogersNACTermPotgShippingTest() throws InterruptedException {
+	@Test(groups = {"RegressionBFA","SOHONACBFA","SOHOBFA","DP"})
+	public void sohoNACTermMediumRiskPotgTest() throws InterruptedException {
 		// **************************Device catalog page*****************************************
 		reporter.softAssert(getRogersDeviceCataloguePage().isRpotgBannerPresent(),
 				"RPOTG Banner is present in the Device Catalog Page, verified by promo text",
@@ -38,14 +37,14 @@ public class RogersBFA_TC03_Consumer_NAC_TermPotgShippingTest extends BaseTestCl
 		getRogersDeviceCataloguePage().clickCloseButtonOnModal();
 		getRogersDeviceCataloguePage().clickCheckEligibilityRpotgBanner();
 		reporter.reportLogPassWithScreenshot("RPOTG Check Eligibility Banner");
-		getRogersDeviceCataloguePage().validateRpotgPostalCode(TestDataHandler.tc03NACTermPotgShipping.getPostalCode());
+		getRogersDeviceCataloguePage().validateRpotgPostalCode(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getPostalCode());
 		getRogersDeviceCataloguePage().clickCheckBtn();
 		reporter.reportLogPassWithScreenshot("RPOTG: Postal Code & Check Eligibility Success");
 		getRogersDeviceCataloguePage().clickContinueBtn();
 		String postalCode = getRogersDeviceCataloguePage().verifyeligiblePostalCodeinBanner();
-		reporter.hardAssert(postalCode.contains(TestDataHandler.tc03NACTermPotgShipping.getPostalCode()),
+		reporter.hardAssert(postalCode.contains(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getPostalCode()),
 				"RPOTG Banner has the eligible postal code displayed", "RPOTG Banner not displayed in banner");
-		String deviceName = TestDataHandler.tc03NACTermPotgShipping.getDeviceName();
+		String deviceName = TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getDeviceName();
 		getRogersDeviceCataloguePage().clickDeviceTileCTAButton(deviceName);
 		reporter.softAssert(getRogersDeviceCataloguePage().isModalDisplayed(), "Modal element is present on the screen",
 				"Modal element is not present on the screen");
@@ -57,43 +56,34 @@ public class RogersBFA_TC03_Consumer_NAC_TermPotgShippingTest extends BaseTestCl
 
 		// ***************************Device config page************************************
 		System.out.println(getRogersDeviceConfigPage().verifyeligiblePostalCodeinBanner());
-		System.out.println(TestDataHandler.tc03NACTermPotgShipping.getPostalCode());
-		reporter.softAssert(getRogersDeviceConfigPage().verifyeligiblePostalCodeinBanner().contains(TestDataHandler.tc03NACTermPotgShipping.getPostalCode()),
+		System.out.println(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getPostalCode());
+		reporter.softAssert(getRogersDeviceConfigPage().verifyeligiblePostalCodeinBanner().contains(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getPostalCode()),
 				"Eligible postal code verified in Device Catalog page Banner is carried on to Device Config Page Banner as expected",
 				"Postal Code not matching");
-		reporter.hardAssert(getRogersDeviceConfigPage().verifyBreadCrumb(), "BreadCrumb on Phone config page is working fine", "BreadCrumb is not working fine");
+		String deviceCost = getRogersDeviceConfigPage().getDeviceFullPrice(this.getClass().getSimpleName());
+		getRogersDeviceConfigPage().selectDeviceProtectionAddon();
+		reporter.reportLogPassWithScreenshot("Device Protection Addon is selected in Device Config Page");
 		getRogersDeviceConfigPage().clickContinueButton();
 		// ****************************Plan config page***************************************
-		reporter.softAssert(getRogersDeviceConfigPage().verifyeligiblePostalCodeinBanner().contains(TestDataHandler.tc03NACTermPotgShipping.getPostalCode()), "Eligible postal code verified in Device Catalog & Device Config page POTG Banner is carried on to Plan Config Page Banner as expected", "Postal code not matching in Plan Config page");
+		reporter.softAssert(getRogersDeviceConfigPage().verifyeligiblePostalCodeinBanner().contains(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getPostalCode()), "Eligible postal code verified in Device Catalog & Device Config page POTG Banner is carried on to Plan Config Page Banner as expected", "Postal code not matching in Plan Config page");
 		String rpotgLabelPlanConfig = getRogersPlanConfigPage().getRpotgLabelPlanConfigPage();
 		reporter.reportLogWithScreenshot(
 				"RPOTG Label and subcopy verified in Plan Config Page verified as" + "--->" + rpotgLabelPlanConfig);
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
 				"BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
-		// ***************************Promo Section************************************
-		getRogersPlanConfigPage().clkPromoSection();
-		reporter.reportLogWithScreenshot("Promo Section Displayed");
-		getRogersPlanConfigPage().setPromoCode(TestDataHandler.tc03NACTermPotgShipping.getPromoCode());
-		reporter.reportLogWithScreenshot("Promo Code Entered");
-		getRogersPlanConfigPage().clkCheckPromoBtn();
-		reporter.hardAssert(getRogersPlanConfigPage().verifyPromoSuccessMsg(), "Promo Code Applied Successfully", "Promo Code Not Applied");
-		reporter.hardAssert(getRogersPlanConfigPage().verifyPromoDuration(), "Discount Value and Duration displayed", "Promo Code Not Applied");
-		// ***************************Plan config page************************************
-		getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
+		getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getDeviceCostIndex());
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
-		getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc03NACTermPotgShipping.getDataOptionIndex()),this.getClass().getSimpleName());
+		getRogersPlanConfigPage().clickShowMoreDetails();
+		getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getDataOptionIndex(),this.getClass().getSimpleName());
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
 		getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
-		reporter.reportLogPassWithScreenshot("Plan config page data protection selected");
 		getRogersPlanConfigPage().skipBPOOffer();
+		reporter.reportLogPassWithScreenshot("Device Protection Addon is already selected in Device Config Page");
 		getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
-		getRogersPlanConfigPage().clkContinueDeviceProtection();
-		reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
-		String monthlyFeesAmount = getRogersPlanConfigPage().getMonthlyFeesAmount();
-		String oneTimeFeesAmount = getRogersPlanConfigPage().getOneTimeFeesAmount();
-		reporter.reportLogPassWithScreenshot(
-				"Cart summary: Monthly & OneTimeFees" + monthlyFeesAmount + "&" + oneTimeFeesAmount);
-		reporter.hardAssert(getRogersPlanConfigPage().verifyCartLineItem(),"Promo Code and Discount amount Line Item displayed","Promo code line item not displayed");
+		reporter.reportLogPassWithScreenshot("Plan config page Add-ons Continue button clicked");
+		reporter.hardAssert(getRogersPlanConfigPage().verifyDPCartLineItem(),"DP Addon added to cart","DP Addon not added to cart");
+		String dpAddon = getRogersPlanConfigPage().getDeviceProtectionAddon();
+		reporter.reportLogPassWithScreenshot("Device Protection - " +dpAddon);
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
 		// ***************Create Profile Stepper*************//
 		reporter.hardAssert(getRogersCheckoutPage().verifyCreateProfileTitle(), "Create profile Title Present", "Create profile Title not present");
@@ -108,16 +98,14 @@ public class RogersBFA_TC03_Consumer_NAC_TermPotgShippingTest extends BaseTestCl
 				//"RPOTG label not availble in Purchase Includes section");
 		String emailCreateProfile = getRogersCheckoutPage().setEmailCreateProfile();
 		getRogersCheckoutPage().confirmEmailCreateProfile(emailCreateProfile);
-		String firstName = getRogersCheckoutPage().setFirstNameCreateProfile();
-		String lastName = getRogersCheckoutPage().setLastNameCreateProfile();
-//		String firstName = rogers_checkout_page.setFirstNameCreateProfilepage("smisamvulamani");
-//		String lastName = rogers_checkout_page.setLastNameCreateProfilepage("marichale");
-		String fullNameCreateProfile = firstName + " " + lastName;
-		String contactNumberCreateProfile = TestDataHandler.tc03NACTermPotgShipping.getContactNumber();
-		getRogersCheckoutPage().setContactNumberCreateProfile(contactNumberCreateProfile);
+		getRogersCheckoutPage().setFirstNameCreateProfile();
+		getRogersCheckoutPage().setLastNameCreateProfile();
+		getRogersCheckoutPage().setBusinessName();
+		getRogersCheckoutPage().setBusinessNumber(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getBusinessNumber());
+		getRogersCheckoutPage().setContactNumberCreateProfile(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getContactNumber());
+		getRogersCheckoutPage().setCompanySize(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getCompanySize());
 		reporter.reportLogPassWithScreenshot("Create Profile Page details Entered till ContactNumber");
-		String billingAddressCreateProfile = TestDataHandler.tc03NACTermPotgShipping.getBillingAddress();
-		getRogersCheckoutPage().setBillingAddressCreateProfile(billingAddressCreateProfile);
+		getRogersCheckoutPage().setBillingAddressCreateProfile(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getBillingAddress());
 		getRogersCheckoutPage().getRpotgSuccessMessage();
 		reporter.reportLogPassWithScreenshot(
 				"Billing Address entered is eligible for RPOTG - Success message validated");
@@ -133,28 +121,36 @@ public class RogersBFA_TC03_Consumer_NAC_TermPotgShippingTest extends BaseTestCl
 		// ***************Credit Evaluation Stepper***********//
 		reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(), "CreditEvaluation Title verified",
 				"CreditEvaluation Title not present");
-		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc03NACTermPotgShipping.getDateOfBirthYear());
-		getRogersCheckoutPage().clkNoThanks();
-		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc03NACTermPotgShipping.getDateOfBirthMonth());
-		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc03NACTermPotgShipping.getDateOfBirthDay());
+		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getDateOfBirthYear());
+		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getDateOfBirthMonth());
+		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getDateOfBirthDay());
 		getRogersCheckoutPage().switchToCreditCardIFrame();
-		getRogersCheckoutPage().setCreditCardNumberIFrame(TestDataHandler.tc03NACTermPotgShipping.getCreditCardDetails());
+		getRogersCheckoutPage().setCreditCardNumberIFrame(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getCreditCardDetails());
 		reporter.reportLogPassWithScreenshot("DOB & Credit Card Details Entered Successfully");
 		getRogersCheckoutPage().switchOutOfCreditCardIFrame();
-		getRogersCheckoutPage().setExpiryDate(TestDataHandler.tc03NACTermPotgShipping.getExpiryDate());
-		getRogersCheckoutPage().selectDropdownOption(TestDataHandler.tc03NACTermPotgShipping.getDropdownOption());
-		getRogersCheckoutPage().setPassportNumber(TestDataHandler.tc03NACTermPotgShipping.getPassportNumber());
+		getRogersCheckoutPage().setExpiryDate(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getExpiryDate());
+		getRogersCheckoutPage().selectDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getDropdownOption());
+		getRogersCheckoutPage().setPassportNumber(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getPassportNumber());
 		reporter.reportLogPassWithScreenshot("PassportNumber Entered Successfully");
 		getRogersCheckoutPage().clkCreditAuthorizationChkBox();
 		getRogersCheckoutPage().clkCreditEvalContinue();
 		reporter.reportLogWithScreenshot("Credit Evaluation processing popup");
+		/*reporter.hardAssert(getRogersCheckoutPage().verifyClaDownPaymentModalPresent(),
+				"CLA and Security deposit modal is displayed", "Cla and Security Deposit Modal is not dislayed");
+		reporter.softAssert(getRogersCheckoutPage().verifyDownPaymentTextPresent(),
+				"Down payment info dislayed in modal", "Down payment info not dislayed in modal");
+		reporter.reportLogWithScreenshot("CLA/Down payment Modal");*/
+		String expectedDownPayment = getRogersCheckoutPage().setDownPayment(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getRiskClass(),deviceCost);
+		reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment),
+				"Downpayment amount is displayed correctly", "Downpayment amount is not displayed correctly");
+		getRogersCheckoutPage().clkAcceptButton();
 		reporter.hardAssert(getRogersCheckoutPage().isIdentificationLabel(), "Credit Evaluation Successful",
 				"Credit Evaluation Identification Label not disaplayed");
 
 		// ***************Choose a Number Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed", "Choose a Number Title not disaplayed");
 		reporter.softAssert(getRogersCheckoutPage().isChooseNumberTabsDisplayed(), "Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
-		getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc03NACTermPotgShipping.getCityName());
+		getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getCityName());
 		reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
 		getRogersCheckoutPage().clkChosePhoneNumber();
 		reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
@@ -165,9 +161,11 @@ public class RogersBFA_TC03_Consumer_NAC_TermPotgShippingTest extends BaseTestCl
 		// ***************Billing & Payment Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(), "Billing Options Title Displayed", "Billing Options Title Not Present");
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not disaplayed");
-		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc03NACTermPotgShipping.getPaymentMethod());
+		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getPaymentMethod());
 		getRogersCheckoutPage().clkBillingContinueButton();
 		// ***************Shipping Stepper*************//
+		reporter.softAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ", "Billing Address is not selected");
+		String addressShippingStepper = getRogersCheckoutPage().getShippingAddress();
 		getRogersCheckoutPage().clkDeliveryMethod("PRO");
 		reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel() ,"Appointment label available", "Appointment label not available");
 		getRogersCheckoutPage().clkContinueBtnShipping();
@@ -177,19 +175,12 @@ public class RogersBFA_TC03_Consumer_NAC_TermPotgShippingTest extends BaseTestCl
 		// ***************Order Review Page****************************************************
 		reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present", "Order Review Page Title is not Present");
 		reporter.reportLogPass("Order Review Page");
-		String totalMonthlyFeesReviewPage = getRogersReviewOrderPage().getMonthlyFeeAfterTax();
-		reporter.hardAssert(totalMonthlyFees.equals(totalMonthlyFeesReviewPage), "Total Monthly Fee after tax matches with checkout page", "Total Monthly Fee after tax not matches with checkout page");
-		String oneTimeFeesReviewPage = getRogersReviewOrderPage().getOneTimeFeeAfterTax();
-		reporter.hardAssert(oneTimeFee.equals(oneTimeFeesReviewPage), "Total One time fee after tax matches with checkout page", "Total One time fee after tax not matches with checkout page");
-		String puchaseIncludeReviewPage = getRogersReviewOrderPage().getPurchaseIncludesText();
-		reporter.reportLogPassWithScreenshot("Order Review Page" + "1.Monthly Fees" + totalMonthlyFeesReviewPage + "2. OnetimeFees:" + oneTimeFeesReviewPage + "3.Purchase Include :" + puchaseIncludeReviewPage);
-		String contactNameReviewPage = getRogersReviewOrderPage().getContactName();
-		reporter.hardAssert(fullNameCreateProfile.equals(contactNameReviewPage), "Contact Name in Order Review Page matches as entered in Create Profile stepper", "Contact Name in Order Review Page not matches as entered in Create Profile stepper");
-		String contactNumberReviewPage = getRogersReviewOrderPage().getContactNumber();
-		reporter.softAssert(contactNumberCreateProfile.equals(contactNumberReviewPage), "Contact Number Matched", "Contact Number not matching");
 		String contactEmailReviewPage = getRogersReviewOrderPage().getContactEmail();
 		reporter.hardAssert(emailCreateProfile.equals(contactEmailReviewPage), "Contact email in Order Review Page matches as entered in Create Profile stepper", "Contact email in Order Review Page not matches as entered in Create Profile stepper");
 		reporter.reportLogPassWithScreenshot("Order Review Page : Contact Details");
+		reporter.hardAssert(getRogersReviewOrderPage().verifyDPCartLineItem(),"DP Addon added to cart","DP Addon not added to cart");
+		String deviceProtectionAddon = getRogersReviewOrderPage().getDeviceProtectionAddon();
+		getReporter().reportLogPassWithScreenshot("Device Protection - " +deviceProtectionAddon);
 		getRogersReviewOrderPage().clkFinancingConsentCheckbox();
 		getRogersReviewOrderPage().clkAgreementConsentCheckbox();
 		getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
@@ -197,6 +188,18 @@ public class RogersBFA_TC03_Consumer_NAC_TermPotgShippingTest extends BaseTestCl
 		getRogersReviewOrderPage().clkEmailConsentCheckbox();
 		reporter.reportLogPass("Email Communication consent box checked");
 		getRogersReviewOrderPage().clkSubmitOrderBtn();
+		//---------------------One Time Payment page------------------------------//
+		reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),
+				"Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
+		getRogersOneTimePaymentPage().setNameonCard();
+		getRogersOneTimePaymentPage().switchToCreditCardIFrame();
+		getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getCreditCardDetailsOTP());
+		getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
+		getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getExpiryDateOTP());
+		getRogersOneTimePaymentPage().setCVV();
+		reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
+
+		getRogersOneTimePaymentPage().clkSubmitOrderBtn();
 		// ************Order Confirmation Page***************************************************
 
 		reporter.hardAssert(getRogersNACOrderConfirmationPage().isOrderConfirmationTitlePresent(),
@@ -214,18 +217,6 @@ public class RogersBFA_TC03_Consumer_NAC_TermPotgShippingTest extends BaseTestCl
 		reporter.reportLogWithScreenshot("Appointment Address Details" + "-->" + appointmentAddress);
 		reporter.hardAssert(getRogersNACOrderConfirmationPage().verifyDeviceImage(),
 				"Device Image Present in Confirmation Page", "Device Image not present");
-		String totalMonthlyFeesConfirmationPage = getRogersNACOrderConfirmationPage().getMonthlyFeeAfterTax();
-		reporter.hardAssert(totalMonthlyFees.equals(totalMonthlyFeesConfirmationPage),
-				"Total Monthly Fee after tax matches with checkout page",
-				"Total Monthly Fee after tax not matches with checkout page");
-		String oneTimeFeesConfirmationPage = getRogersNACOrderConfirmationPage().getOneTimeFeeAfterTax();
-		reporter.hardAssert(oneTimeFee.equals(oneTimeFeesConfirmationPage),
-				"Total One time fee after tax matches with checkout page",
-				"Total One time fee after tax not matches with checkout page");
-		String purchaseIncludesConfrimation = getRogersNACOrderConfirmationPage().getPurchaseIncludesText();
-		reporter.hardAssert(purchaseIncludesConfrimation.equals(puchaseIncludeReviewPage),
-				"Purchase includes Matches in ORder Confirmation page", "Purchase Includes Not Matching");
-		reporter.reportLogPassWithScreenshot("Purchase includes captured as" + "-->" + purchaseIncludesConfrimation);
 	}
 
 	@AfterMethod(alwaysRun = true)

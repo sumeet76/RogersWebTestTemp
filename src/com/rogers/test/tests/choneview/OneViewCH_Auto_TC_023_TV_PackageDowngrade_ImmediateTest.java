@@ -21,7 +21,7 @@ public class OneViewCH_Auto_TC_023_TV_PackageDowngrade_ImmediateTest extends Bas
         getAccountOverViewPage().setSkipNotification();*/
         getAccountOverViewPage().selectTVBadage();
         reporter.reportLogWithScreenshot("Launched the TV dashboard page");
-        getTVDashboardPage().clickChangeTvPackage();
+        getTVDashboardPage().clickChangePackage();
         reporter.reportLogWithScreenshot("Changed TV Package clicked");
         getTVDashboardPage().selectTVPackage(TestDataHandler.TC023_TVPackageDowngrade.accountDetails.getDowngradePlanEn(),TestDataHandler.TC023_TVPackageDowngrade.accountDetails.getDowngradePlanFr());
         reporter.reportLogWithScreenshot("Lowest TV Package selected");
