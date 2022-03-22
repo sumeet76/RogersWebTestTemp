@@ -16,7 +16,7 @@ import java.util.Map;
  * @author praveen.kumar7
  */
 
-public class RogersBFA_TC15_Consumer_AALUpfrontEdge_MediumRisk_Bopis_Test extends BaseTestClass {
+public class RogersBFA_TC15_POM_Consumer_AALUpfrontEdge_MediumRisk_Bopis_DP_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -24,7 +24,7 @@ public class RogersBFA_TC15_Consumer_AALUpfrontEdge_MediumRisk_Bopis_Test extend
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","AALBFA"})
+    @Test(groups = {"RegressionBFA","AALBFA","POM","DP"})
     public void rogersAalTermBopisTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
@@ -93,8 +93,12 @@ public class RogersBFA_TC15_Consumer_AALUpfrontEdge_MediumRisk_Bopis_Test extend
         reporter.reportLogPassWithScreenshot("Data option selected");
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc15AALShareTermBopis.getTalkOptionIndex())),
                 "Talk option selected and Addons page in expanded state","Addons page not in expanded state");
+        getRogersPlanConfigPage().selectDeviceProtectionAddon();
+        reporter.reportLogPassWithScreenshot("Device Protection Addon is selected");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
-        getRogersPlanConfigPage().clkContinueDeviceProtection();
+        reporter.hardAssert(getRogersPlanConfigPage().verifyDPCartLineItem(),"DP Addon added to cart","DP Addon not added to cart");
+        String dpAddon = getRogersPlanConfigPage().getDeviceProtectionAddon();
+        reporter.reportLogPassWithScreenshot("Device Protection - " +dpAddon);
         getRogersPlanConfigPage().setUserNameCallerID();
         reporter.reportLogWithScreenshot("CalledID details entered");
         String monthlyFeesAmountWithTax = getRogersPlanConfigPage().getMonthlyFeesAmount();
@@ -130,6 +134,9 @@ public class RogersBFA_TC15_Consumer_AALUpfrontEdge_MediumRisk_Bopis_Test extend
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                 "Order Review Page Title is not Present");
         reporter.reportLogPassWithScreenshot("Order Review Page");
+        reporter.hardAssert(getRogersReviewOrderPage().verifyDPCartLineItem(),"DP Addon added to cart","DP Addon not added to cart");
+        String deviceProtectionAddon = getRogersReviewOrderPage().getDeviceProtectionAddon();
+        getReporter().reportLogPassWithScreenshot("Device Protection - " +deviceProtectionAddon);
         getRogersReviewOrderPage().clkAllAgreementConsentCheckbox(isSelectedDeviceTier);
         getRogersReviewOrderPage().clkBopisConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
