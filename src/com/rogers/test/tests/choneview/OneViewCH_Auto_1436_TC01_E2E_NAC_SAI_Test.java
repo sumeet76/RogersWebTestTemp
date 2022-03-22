@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 
 public class OneViewCH_Auto_1436_TC01_E2E_NAC_SAI_Test extends BaseTestClass {
-	@Test (groups = {"AprilSanity","RegressionCHOV"})
+	@Test (groups = {"RegressionCHOV"})
     public void oneViewCH_Auto_1436_TC01_E2E_NAC_SAI_Test(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
