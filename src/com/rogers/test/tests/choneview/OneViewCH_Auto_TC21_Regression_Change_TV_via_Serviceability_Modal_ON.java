@@ -15,7 +15,7 @@ public class OneViewCH_Auto_TC21_Regression_Change_TV_via_Serviceability_Modal_O
 
     public void OneViewCH_Auto_TC21_Regression_Change_TV_via_Serviceability_Modal_ON() {
 
-        getEnvironmentSelectionPage().launchOneView(TestDataHandler.ChangeTvViaServiceability.accountDetails.getBan(),TestDataHandler.ChangeTvViaServiceability.getContactID());
+        /*getEnvironmentSelectionPage().launchOneView(TestDataHandler.ChangeTvViaServiceability.accountDetails.getBan(),TestDataHandler.ChangeTvViaServiceability.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
         getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().setSkipNotification();
@@ -32,10 +32,10 @@ public class OneViewCH_Auto_TC21_Regression_Change_TV_via_Serviceability_Modal_O
         getTVDashboardPage().clickChangeTvPackage();
         reporter.reportLogWithScreenshot("Changed TV Package clicked");
         getTVDashboardPage().selectFirstTVPackage();
-        reporter.reportLogWithScreenshot("TV Package selected");
+        reporter.reportLogWithScreenshot("TV Package selected");*/
 
         /*For Flex Channels - Exchange Later*/
-        getTVDashboardPage().clickContinueChangeTVPackage();
+        /*getTVDashboardPage().clickContinueChangeTVPackage();
         reporter.reportLogWithScreenshot("Continue clicked on change TV Package");
         getTVDashboardPage().clickExchangeLater();
         reporter.reportLogWithScreenshot("Exchange later is selected");
@@ -51,6 +51,33 @@ public class OneViewCH_Auto_TC21_Regression_Change_TV_via_Serviceability_Modal_O
         reporter.softAssert(getRogersOVOrderReviewPage().verifyMonthlyCharges(),"Monthly Charges Displayed","Failed to Navigate to Monthly Charges Page");
 //        getRogersOVOrderReviewPage().clkSubmit();
 //        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.reportLogWithScreenshot("Order Placed");*/
+
+        getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC023_TVPackageDowngrade.getAccountDetails().getBan(), TestDataHandler.TC023_TVPackageDowngrade.getContactID());
+        reporter.reportLogWithScreenshot("OneView Interface has Launched");
+        reporter.reportLogWithScreenshot("Launched the account dashboard page");
+        getAccountOverViewPage().selectTVBadage();
+        reporter.reportLogWithScreenshot("Launched the TV dashboard page");
+        getTVDashboardPage().clickChangePackage();
+        reporter.reportLogWithScreenshot("Changed TV Package clicked");
+        getTVDashboardPage().selectTVPackage(TestDataHandler.TC023_TVPackageDowngrade.getAccountDetails().getDowngradePlanEn(),TestDataHandler.TC023_TVPackageDowngrade.getAccountDetails().getDowngradePlanFr());
+        reporter.reportLogWithScreenshot("Lowest TV Package selected");
+
+        //For Flex Channels - Exchange Later
+        getTVDashboardPage().clickContinueChangeTVPackage();
+        reporter.reportLogWithScreenshot("Continue clicked on change TV Package");
+        getTVDashboardPage().clickExchangeLater();
+        reporter.reportLogWithScreenshot("Exchange later is selected");
+
+        getTVDashboardPage().clickContinueChannelsAndThemePacks();
+        getTVDashboardPage().clickContinueOn4kTv();
+        reporter.reportLogWithScreenshot("Continue clicked on 4k TV dailog");
+        getTVDashboardPage().clickContinue4kChannelPack();
+        reporter.reportLogWithScreenshot("Continue clicked on 4k channels pack");
+        getTVDashboardPage().clickContinueOnSelectDateChange();
+        reporter.softAssert(getRogersOVOrderReviewPage().verifyMonthlyCharges(),"Monthly Charges Displayed","Failed to Navigate to Monthly Charges Page");
+        getRogersOVOrderReviewPage().clkSubmit();
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrderConfirmationPageLoad(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
     }
 
