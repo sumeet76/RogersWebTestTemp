@@ -2,6 +2,7 @@ package com.rogers.pages;
 
 import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -196,6 +197,9 @@ public class RogersTechInstallPage extends BasePageClass {
 
 	@FindBy(xpath="//a[@aria-describedby='ariaClickToContinue']//span[contains(text(),'Continue')]")
 	WebElement btnTechContinue;
+
+	@FindBy(xpath = "//button[@aria-label='Click to open calendar']/span")
+	WebElement btnOpenCalendar;
 
 	/**
 	 * To click on the chevron on the tech Install page
@@ -455,6 +459,7 @@ public class RogersTechInstallPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(txtContactNumber, 20);
 		getReusableActionsInstance().getWhenReady(txtContactNumber, 20).click();
 		getReusableActionsInstance().getWhenReady(txtContactNumber, 20).clear();
+		getReusableActionsInstance().getWhenReady(txtContainerContactNumber, 10).click();
 		getReusableActionsInstance().getWhenReady(txtContactNumber, 30).sendKeys(strPhoneNumber);
 	}
 
@@ -800,4 +805,10 @@ public class RogersTechInstallPage extends BasePageClass {
 		String strDate = dateFormat.format(date);
 		return strDate;
 	}
+
+    public void selectPrefferedDate() {
+		getReusableActionsInstance().waitForElementVisibility(btnOpenCalendar, 120);
+		getActionsInstance().moveToElement(btnOpenCalendar).click().sendKeys(Keys.ARROW_RIGHT).sendKeys(Keys.ARROW_RIGHT).sendKeys(Keys.ENTER).build().perform();
+
+    }
 }
