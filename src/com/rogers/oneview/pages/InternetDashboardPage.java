@@ -61,7 +61,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//a[@href='/consumer/support/internet/IgniteInternet']")
 	WebElement lnkGoToSupportSection;
 
-	@FindBy(xpath="//span[(contains(text(),'Change internet package') or contains(text(),'Changer de forfait Internet')) or @translate='global.dashboard.common.changeInternetPackage']/ancestor::button")
+	@FindBy(xpath="//span[(contains(text(),'Change internet package') or contains(text(),'Changer de forfait Internet')) or @translate='global.dashboard.common.changePackage']/ancestor::button")
 	WebElement btnChangeInternetPackage;
 
 	@FindBy(xpath = "//span[text()='Sélectionner' or text()='Select']/ancestor::button")
