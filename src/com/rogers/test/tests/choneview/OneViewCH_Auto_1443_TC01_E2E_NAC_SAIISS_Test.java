@@ -63,14 +63,14 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_Test extends BaseTestClass 
 		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-		reporter.reportLogWithScreenshot("payment details entered");
-
-		getPaymentOptionsPage().clkContinue();
-		reporter.reportLogWithScreenshot("sumbit order");
-		getRogersOVCheckoutPage().clkSubmit();
-
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		reporter.reportLogWithScreenshot("Order Placed");
+//		reporter.reportLogWithScreenshot("payment details entered");
+//
+//		getPaymentOptionsPage().clkContinue();
+//		reporter.reportLogWithScreenshot("sumbit order");
+//		getRogersOVCheckoutPage().clkSubmit();
+//
+////		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//		reporter.reportLogWithScreenshot("Order Placed");
 
     }
 
