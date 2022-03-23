@@ -64,7 +64,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//input[@formcontrolname='companyName']")
 	WebElement inputBusinessName;
 
-	@FindBy(xpath = "//ds-form-field[@data-test='personal-info-business-number']//div[@class='ds-formField__wrapper']")
+	@FindBy(xpath = "//ds-form-field[@data-test='personal-info-business-number']//div[contains(@class,'ds-formField__wrapper')]")
 	WebElement businessNumberCreateProfile;
 
 	@FindBy(xpath = "//input[@formcontrolname='businessNumber']")
@@ -351,7 +351,7 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	@FindBy(xpath = "(//div[contains(@class,'button-container')]//button)[2]")
 	WebElement btnNoThanksVertical;
-	
+
 	/**
 	 * To get the Title of post checkout page
 	 * @return checkoutTitle
@@ -1302,6 +1302,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author praveen.kumar7
 	 */
 	public void clkBtnNoThanks() {
-		getReusableActionsInstance().clickIfAvailable(btnNoThanksVertical,5);
+		getReusableActionsInstance().clickIfAvailable(btnNoThanksVertical, 5);
 	}
 }
+

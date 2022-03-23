@@ -16,7 +16,7 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	@FindBy(xpath = "//h2[@translate='global.checkout.billingAndPayment.title']")
 	WebElement txtPaymentpage;
 	
-	@FindBy(xpath = "//select[contains(@class,'-select') and contains(@id,'ds-form-input-id-')]")
+	@FindBy(xpath = "//label[@translate='global.accessibility.selectPaymentOptions']/parent::div//select")
 	WebElement ddlPaymentMode;
 	
 	@FindBy(xpath = "//input[@id='transit-code']")
@@ -47,17 +47,16 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	@FindBy(xpath = "//input[@class='semafonemandatory']")
 	WebElement txtCardNumber;
 	
-	@FindBy(xpath = "//input[contains(@class,'ds-input') and contains(@id,'ds-form-input-id-')]")
+	@FindBy(xpath = "//div[@class='security-code-component']//input")
 	WebElement txtCVV;
 
-	@FindBy(xpath = "//input[contains(@class,'ds-input') and contains(@id,'ds-form-input-id-')]/..")
+	@FindBy(xpath = "//div[@class='security-code-component']//input/..")
 	WebElement txtContainerCVV;
-	
 
-	@FindBy(xpath = "(//select[contains(@class,'-select') and contains(@id,'ds-form-input-id-')])[2]")
+	@FindBy(xpath = "//div[@class='row expire-date']//select/option[text()='Mois' or text()='Month']/..")
 	WebElement ddlExpiryMonth;
 
-	@FindBy(xpath = "(//select[contains(@class,'-select') and contains(@id,'ds-form-input-id-')])[3]")
+	@FindBy(xpath = "//div[@class='row expire-date']//select/option[text()='Année' or text()='Year']/..")
 	WebElement ddlExpiryYear;
 	
 	@FindBy(xpath = "//span[@translate='global.cta.continue']")

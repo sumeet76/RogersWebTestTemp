@@ -91,6 +91,8 @@ public class RogersDeviceConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[@id='continue-accessory-button']")
     WebElement btnContinueAccessories;
 
+    @FindBy(xpath = "//div[contains(@class,'ds-checkboxLabel')]//parent::label[contains(@title,'Prem Device Protection') or contains(@title,'Protect supér appareil ')]")
+    WebElement deviceProtectionAddon;
 
     /***
      * This method will check the presence of continue button and will return true if present else false
@@ -537,5 +539,12 @@ public class RogersDeviceConfigPage extends BasePageClass {
 
     }
 
+    /**
+     * This method clicks on Device Protection Tab in Add-ons stepper
+     * @author Subash.Nedunchezhian
+     */
+    public void selectDeviceProtectionAddon(){
+        getReusableActionsInstance().clickWhenReady(deviceProtectionAddon,20);
+    }
 
 }
