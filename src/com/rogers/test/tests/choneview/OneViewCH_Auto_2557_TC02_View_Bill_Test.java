@@ -18,7 +18,8 @@ public class OneViewCH_Auto_2557_TC02_View_Bill_Test extends BaseTestClass {
         getAccountOverViewPage().clickBillinglink();
 //        reporter.hardAssert(getAccountOverViewPage().verifyProfilePage(),"Profile page is displaye","profile Page is not displayed");
         reporter.reportLogWithScreenshot("Billing link is opened");
-        getAccountOverViewPage().scrollToViewBill();
+//        getAccountOverViewPage().scrollToViewBill();
+        reporter.reportLogWithScreenshot("scroll To View Bill");
         reporter.hardAssert(getAccountOverViewPage().verifyRequiredMessage(),"Header displayed","Header not displayed");
         reporter.hardAssert(getAccountOverViewPage().verifyBillAmount(),"Bill amount is displaye","Bill amount is not displayed");
         reporter.hardAssert(getAccountOverViewPage().verifyWelcomeText(),"Welcome text is displaye","Welcome text is not displayed");
