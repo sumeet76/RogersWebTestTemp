@@ -11,10 +11,10 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class CH_R422_OV_Regression_TC13_Validation_of_manage_RHP_Addons_ON_EN extends BaseTestClass {
+public class CH_R422_OV_Regression_TC10_Validation_of_Change_IPTV_and_change_package_for_SATV_ON_FR extends BaseTestClass {
 
     @Test(groups = {"RegressionCHOV"})
-    public void CH_R422_OV_Regression_TC13_Validation_of_manage_RHP_Addons_ON_EN() {
+    public void CH_R422_OV_Regression_TC10_Validation_of_Change_IPTV_and_change_package_for_SATV_ON_FR() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.RHPManage_AddOns.accountDetails.getBan(),TestDataHandler.RHPManage_AddOns.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
@@ -43,7 +43,7 @@ public class CH_R422_OV_Regression_TC13_Validation_of_manage_RHP_Addons_ON_EN ex
 
     @AfterMethod(alwaysRun = true)
     public void afterTest(ITestResult res) {
-        //closeSession();
+        closeSession();
     }
 
 }
