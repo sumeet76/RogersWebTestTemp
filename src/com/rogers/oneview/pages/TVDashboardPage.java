@@ -220,7 +220,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Exchange Flex Channels' or text()='Échanger chaînes flexibles']/ancestor::button")
 	WebElement ExchangeFlexChannels;
 
-	@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks'] | //span[contains(text(),'Theme Packs') or contains(text(), 'Forfaits à thème')]/ancestor::button | //button[@class='a-tablet']")
+	@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks'] | //button[contains(text(),'Theme Packs') or contains(text(), 'Forfaits à thème')]/ancestor::button | //button[@class='a-tablet']")
 	WebElement themePacksTab;
 
 	@FindBy(xpath = "//div[@class='themepack-detail channels-container']/descendant::span[@translate='global.cta.add']")
@@ -401,9 +401,9 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void clickThemepacksTab() {
-		if (getReusableActionsInstance().isElementVisible(cancel)) {
-			clickCancel();
-		}
+//		if (getReusableActionsInstance().isElementVisible(cancel)) {
+//			clickCancel();
+//		}
 		getReusableActionsInstance().waitForElementVisibility(themePacksTab, 45);
 		getReusableActionsInstance().scrollToElement(themePacksTab);
 		getReusableActionsInstance().executeJavaScriptClick(themePacksTab);
@@ -555,6 +555,16 @@ public class TVDashboardPage  extends BasePageClass {
 	public void clickContinue4kChannelPack() {
 		getReusableActionsInstance().getWhenReady(btnContinueOn4kChannelPack, 60).click();
 		getReusableActionsInstance().waitForElementVisibility(btnContinueChangeDate, 120);
+	}
+
+	/**
+	 * Clicks continue on change TV package
+	 *
+	 * @author jarmanjeet.batth
+	 */
+
+	public void clickContinueToCancelOrder(){
+		getReusableActionsInstance().getWhenReady(btnContinueOn4kChannelPack, 60).click();
 	}
 
 	/**
