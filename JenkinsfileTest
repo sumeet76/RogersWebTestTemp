@@ -49,6 +49,8 @@ pipeline {
         string(name: 'AWSUrl', defaultValue: "", description: "BFA AWS URL")
         string(name: 'OneViewEnv', defaultValue: "OVO-QA04", description: "One View Env")
         string(name: 'XrayImportFlag', defaultValue: "false", description: "Flag to check whether results need to be imported in Xray")
+        string(name: 'TestPlanKey', defaultValue: "", description: "Test plan to update the test results in JIRA")
+        string(name: 'TestExecutionKey', defaultValue: "", description: "Test plan to update the test results in JIRA")
     }
 
     triggers {
@@ -166,10 +168,9 @@ pipeline {
 
         always{
            script{
-           if (params.XrayImportFlag == 'true') {
+           if (params.XrayImportFlag == 'true' && params.TestPlanKey != null && params.TestExecutionKey != null) {
                echo "Upload execution results to JIRA"
-               final def (String response, int code) = sh(script : "curl -H 'Accept-Charset: utf-8' -H 'Content-Type: multipart/form-data' -u $XRAY_PROD_CRED_USR:$XRAY_PROD_CRED_PSW -F 'file=@build/testngOutput/testng-results.xml' 'https://reqcentral.com/rest/raven/1.0/import/execution/testng?projectKey=RTM&testPlanKey=RTM-93250&testExecKey=RTM-93251'", returnStdout: true).trim().tokenize("\n")
-                echo "X-RAY JIRA API response status code: $code"
+               sh(script : "curl -H 'Accept-Charset: utf-8' -H 'Content-Type: multipart/form-data' -u $XRAY_PROD_CRED_USR:$XRAY_PROD_CRED_PSW -F 'file=@build/testngOutput/testng-results.xml' 'https://reqcentral.com/rest/raven/1.0/import/execution/testng?projectKey=RTM&testPlanKey=${params.TestPlanKey}&testExecKey=${params.TestExecutionKey}'", returnStdout: true).trim().tokenize("\n")
                 }
            }
         }
