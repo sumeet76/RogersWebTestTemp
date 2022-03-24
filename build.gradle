@@ -45,6 +45,8 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'CookieFetcherMapping', test_CookieFetcherMapping
 	systemProperty 'OVRURL', test_ovr
 	systemProperty 'XrayImportFlag', xray_import_flag
+	systemProperty 'TestPlanKey',test_plan_key
+	systemProperty 'TestExecutionKey',test_execution_key
 
 	useTestNG(){
 		outputDirectory = file("$project.buildDir//testngOutput")
