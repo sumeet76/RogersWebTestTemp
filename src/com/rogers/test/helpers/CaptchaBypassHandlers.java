@@ -155,7 +155,6 @@ public class CaptchaBypassHandlers {
 	 */
 	public void chOnewviewFlows(String strUrl, String strAccNo,  String strLoginID, String strLanID, String strLanguage,String strBrowser,  Method currentTestMethodName ,String strContactID) throws IOException {
 		String oneViewUrl="";
-
 		if (strLoginID.isEmpty())
 			//oneViewUrl = "https://dev-entry-oneview.rogers.com/#/";
 		     oneViewUrl=strUrl;
@@ -163,7 +162,7 @@ public class CaptchaBypassHandlers {
 			oneViewUrl = CaptchaBypassHandlers.urlOneViewExistingCustomer(strUrl, strLoginID, strLanID, strAccNo, strLanguage);
 		else
 			oneViewUrl = CaptchaBypassHandlers.ChOVNACUrl(strUrl, strLoginID, strLanID, strAccNo, strLanguage, strContactID);
-		//System.out.println(oneViewUrl + "----------------------------------------------------------------------------"); Commented to avoid displaying user credentials in the console.
+		System.out.println(oneViewUrl + "----------------------------------------------------------------------------");
 		getDriver().get(oneViewUrl);
 	}
 
@@ -204,13 +203,10 @@ public class CaptchaBypassHandlers {
 	}
 
 	public static String ChOVNACUrl(String strUrl, String strLoginID, String strLanID, String strAccNo, String strLanguage, String strContactID) {
-		// Old query param //String queryParam = "LoginId="+strLoginID+"64&UserRole=CSR,Oneview Pilot-1,Oneview BRT-1,R76,BT User,R33,R45,R21,R75,R77,R180,R182,R252,R47,R52,R54,R55,R65,R68,R75,R77,R246,Telesales,R188,R252,R261,R167,R306,R307,R304,R311,BRT Authorized CSR-3,BRT Authorized CSR-4,Ignite Learning Lab Additive Role&IntID=&Target=UTE&TimeStamp=2021-10-16T11:29:45.4412-04:00&Lang="+strLanguage+"&AppId=CRM&li="+strLanID+"&AccNo=&ContactID="+strContactID+"&targetURL=IgniteNAC";
-		String queryParam = "LoginId="+strLoginID+"&UserRole=R76,BT%20User,R21,R75,R77,R180,R182,R185,R246,R252,R261,R167,R306,R307,R304,R309,R311,R310&IntID=&AccNo=&Target=UTE&TimeStamp=2022-03-08T12:31:05.275Z&Lang=en&CustType=&CustSubType=&AppId=CRM&CTN=&targetURL=IgniteNAC&connid=&ContactID="+ strContactID;
-		String updatedUrl = strUrl.replace("https://","https://"+System.getenv("ovusername")+":"+System.getenv("ovpassword")+"@");
-		String oneViewUrl = updatedUrl + queryParam;
+		String queryParam = "LoginId="+strLoginID+"64&UserRole=CSR,Oneview Pilot-1,Oneview BRT-1,R76,BT User,R33,R45,R21,R75,R77,R180,R182,R252,R47,R52,R54,R55,R65,R68,R75,R77,R246,Telesales,R188,R252,R261,R167,R306,R307,R304,R311,BRT Authorized CSR-3,BRT Authorized CSR-4,Ignite Learning Lab Additive Role&IntID=&Target=UTE&TimeStamp=2022-03-16T11:29:45.4412-04:00&Lang="+strLanguage+"&AppId=CRM&li="+strLanID+"&AccNo=&ContactID="+strContactID+"&targetURL=IgniteNAC";
+		String oneViewUrl = strUrl + queryParam;
 		return oneViewUrl;
 	}
-
 
 	
 }

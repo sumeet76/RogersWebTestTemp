@@ -15,7 +15,7 @@ import com.rogers.test.base.BaseTestClass;
 import com.rogers.testdatamanagement.TestDataHandler;
 
 public class OneViewCH_Auto_TC_017_TV_ResetParentalControlsAndRestartBoxTest extends BaseTestClass {
-	@Test (groups = {"RegressionCHOV","SanityCHOV","SanityCHOVTemp"})
+	@Test (groups = {"RegressionCHOV","SanityCHOV"})
     public void checkIgniteTVResetPINandResetParentalControlsTest() {
 		//getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.igniteTVParentalcontrols.accountDetails.getBan(),TestDataHandler.igniteTVParentalcontrols.getContactID());
@@ -34,9 +34,10 @@ public class OneViewCH_Auto_TC_017_TV_ResetParentalControlsAndRestartBoxTest ext
 		reporter.reportLogWithScreenshot("Restart Setupbox popup has launched");		
 		getTVDashboardPage().clickContinueReset();
 		reporter.reportLogWithScreenshot("Reset Success popup has launched");
-//        reporter.hardAssert(getTVDashboardPage().verifyResetSuccess(),"Verification of reset success","Reset has  is Failed");
+//		reporter.hardAssert(getTVDashboardPage().verifyResetSuccess(),"Verification of reset success","Reset has  is Failed");
 //        reporter.reportLogWithScreenshot("reset success");
 //		getTVDashboardPage().clickSuccessOk() ;
+
     }
 
 	@BeforeMethod (alwaysRun=true)
@@ -48,7 +49,7 @@ public class OneViewCH_Auto_TC_017_TV_ResetParentalControlsAndRestartBoxTest ext
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }

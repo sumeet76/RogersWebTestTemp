@@ -37,7 +37,7 @@ public class RogersIgniteCampaignPage extends BasePageClass{
 	@FindBy(xpath = "//span[@translate='global.checkout.campaign.remove']")
 	WebElement couponRemoveLink;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close'] | //span[@class='ds-icon rds-icon-close']")
 	WebElement closeCouponAlertBox;
 
 	@FindBy(xpath = "(//div[@ng-reflect-name='backPocketOffersGroup']//div[@class='promotion-table__col3 py-12'])[1]")
@@ -68,6 +68,7 @@ public class RogersIgniteCampaignPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void closeCouponAlert() {
+		getReusableActionsInstance().waitForElementVisibility(closeCouponAlertBox);
 		getReusableActionsInstance().executeJavaScriptClick(closeCouponAlertBox);
 	}
 	/**
@@ -87,8 +88,12 @@ public class RogersIgniteCampaignPage extends BasePageClass{
 	 */
 	public void enterCoupon(String couponInputValue) {
 		getReusableActionsInstance().staticWait(3000);
-		getReusableActionsInstance().executeJavaScriptClick(couponInput);
-		getReusableActionsInstance().getWhenReady(couponInput,5).sendKeys(couponInputValue);
+		getReusableActionsInstance().getWhenReady(couponInputContainer, 60).click();
+		getReusableActionsInstance().getWhenReady(couponInput, 10).clear();
+		getReusableActionsInstance().getWhenReady(couponInput, 10).sendKeys(couponInputValue);
+
+//		getReusableActionsInstance().clickWhenReady(couponInputContainer,30);
+//		getReusableActionsInstance().getWhenReady(couponInput,35).sendKeys(couponInputValue);
 	}
 
 

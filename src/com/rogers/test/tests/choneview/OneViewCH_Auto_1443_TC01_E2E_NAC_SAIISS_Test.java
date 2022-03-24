@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 
 public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_Test extends BaseTestClass {
-	@Test (groups = {"RNAC","RegressionCHOV"})
+	@Test (groups = {"AprilSanity","RegressionCHOV"})
     public void oneViewCH_Auto_1443_TC01_E2E_NAC_SmartStream_SAIISS_Test(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
@@ -63,11 +63,14 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_Test extends BaseTestClass 
 		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-		reporter.reportLogWithScreenshot("payment details entered");
+//		reporter.reportLogWithScreenshot("payment details entered");
+//
 //		getPaymentOptionsPage().clkContinue();
 //		reporter.reportLogWithScreenshot("sumbit order");
 //		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//
+////		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//		reporter.reportLogWithScreenshot("Order Placed");
 
     }
 

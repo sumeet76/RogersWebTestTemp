@@ -23,13 +23,13 @@ public class OneViewCH_Auto_1643_TC01_RHP_ManageAddons_AddAddons_NextBill_Test e
         getHomePhoneAddonsPage().chooseAddon(TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameEn(),TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameFr());
         reporter.reportLogWithScreenshot("Addons selected for addition");
         getTVDashboardPage().clickYourChanges();
-        getHomePhoneAddonsPage().clickConfirmButton();
-        reporter.reportLogWithScreenshot("Select the billing cycle");
-        getHomePhoneAddonsPage().clickContinueOnSelectDateChange();
-        reporter.reportLogWithScreenshot("Continue clicked in select date popup for next billing cycle");
-        getRogersOVOrderReviewPage().clkSubmit();
-       reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+//        getHomePhoneAddonsPage().clickConfirmButton();
+//        reporter.reportLogWithScreenshot("Select the billing cycle");
+//        getHomePhoneAddonsPage().clickContinueOnSelectDateChange();
+//        reporter.reportLogWithScreenshot("Continue clicked in select date popup for next billing cycle");
+//        getRogersOVOrderReviewPage().clkSubmit();
+//       reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//        reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)

@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_Test extends BaseTestClass {
-	@Test (groups = {"RegressionCHOV","SanityCHOV"})
+	@Test (groups = {"AprilSanity","SanityCHOV"})
     public void oneViewCH_Auto_1437_TC01_E2E_NAC_3P_Test(){
 			reporter.reportLogWithScreenshot("oneview env");
 			getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
@@ -25,7 +25,6 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_Test extends BaseTestClass {
 			getRogersIgniteBundlesPage().clkTVCheckbox();
 			getRogersIgniteBundlesPage().clkInternetCheckbox();
 			getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
-
 			reporter.reportLogWithScreenshot("Triple Play Selected");
 			getRogersIgniteBundlesPage().clkLoadOffers();
 			reporter.reportLogWithScreenshot("load offers");
@@ -35,7 +34,7 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_Test extends BaseTestClass {
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
 			reporter.reportLogWithScreenshot("Product in cart");
 			getRogersIgniteBundlesPage().clkCollapse();
-			reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
+//			reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 			reporter.reportLogWithScreenshot("Product Added");
 			getRogersIgniteBundlesPage().clkContinue();
 		    getRogersIgniteBundlesPage().clkExpressCheckOut();
@@ -80,11 +79,11 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_Test extends BaseTestClass {
 			getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
 			getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 			getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-//			reporter.reportLogWithScreenshot("Payment screen");
+			reporter.reportLogWithScreenshot("Payment screen");
 //            getPaymentOptionsPage().clkContinue();
 //	        reporter.reportLogWithScreenshot("submit order");
 //			getRogersOVCheckoutPage().clkSubmit();
-//			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+////			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 //			reporter.reportLogWithScreenshot("Order Placed");
 		
     }

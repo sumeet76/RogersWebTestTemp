@@ -57,7 +57,7 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 			includeGroups test_groupName
 			System.out.println("**************************************"+test_groupName)
 		}
-		
+
 	}
 
 }
@@ -102,7 +102,7 @@ task "localTest"(type: Test) {
 			includeGroups test_groupName
 			System.out.println("**************************************"+test_groupName)
 		}
-		
+
 	}
 
 }
@@ -161,7 +161,7 @@ compileJava {
 }
 
 compileTestJava {
-   options.encoding = 'UTF-8'
+	options.encoding = 'UTF-8'
 }
 
 task sourceJar(type: Jar) {

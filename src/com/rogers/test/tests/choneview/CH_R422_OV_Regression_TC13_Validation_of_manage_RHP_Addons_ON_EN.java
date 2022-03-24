@@ -31,6 +31,7 @@ public class CH_R422_OV_Regression_TC13_Validation_of_manage_RHP_Addons_ON_EN ex
         //getRogersOVOrderReviewPage().clkSubmit();
         //reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         // reporter.reportLogWithScreenshot("Order Placed");
+
     }
     @BeforeMethod(alwaysRun=true)
     @Parameters({"strBrowser", "strLanguage"})

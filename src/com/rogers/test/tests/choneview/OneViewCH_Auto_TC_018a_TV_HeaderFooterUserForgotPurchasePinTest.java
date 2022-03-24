@@ -19,7 +19,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 
 public class OneViewCH_Auto_TC_018a_TV_HeaderFooterUserForgotPurchasePinTest extends BaseTestClass {
-	@Test (groups = {"RegressionCHOV","SanityCHOV","SanityCHOVTemp"})
+	@Test (groups = {"RegressionCHOV","SanityCHOV"})
     public void checkUserForgotPurchasePin() {
     			//getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 				getEnvironmentSelectionPage().launchOneView(TestDataHandler.igniteTVParentalcontrols.accountDetails.getBan(),TestDataHandler.solarisTV.getContactID());
@@ -37,8 +37,8 @@ public class OneViewCH_Auto_TC_018a_TV_HeaderFooterUserForgotPurchasePinTest ext
     			reporter.reportLogWithScreenshot("Continue clicked");
     			reporter.softAssert(getTVDashboardPage().verifyResetSuccess(),"Customer forgot purchase pin validation passed","Customer forgot purchase pin validation passed");
     			reporter.reportLogWithScreenshot("Customer forgot purchase pin successfull");
-    			getTVDashboardPage().clickSuccessOk();
-    			reporter.reportLogWithScreenshot("Ok clicked after success");
+//    			getTVDashboardPage().clickSuccessOk();
+//    			reporter.reportLogWithScreenshot("Ok clicked after success");
     }
 
 	@BeforeMethod (alwaysRun=true)

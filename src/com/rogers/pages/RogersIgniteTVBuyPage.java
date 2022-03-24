@@ -79,7 +79,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//ins[@translate='global.cta.continue']")
 	WebElement btnContinue;
 
-	@FindBy(xpath = "//ds-checkbox[@ng-reflect-name=\"homephone\"]//div[contains(@class,'ds-checkbox__box')]")
+	@FindBy(xpath = "//span[contains(text(),'HomePhone')]/parent::div")
 	WebElement checkboxHomephone;
 
 	@FindBy(xpath = "//h2[@id='channels-tab']")
@@ -106,7 +106,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::a")
 	WebElement btnHomePhoneContinue;
 
-	@FindBy(xpath = "//h1[@class='cart-summary__header']")
+	//@FindBy(xpath = "//h1[@class='cart-summary__header']")
+	@FindBy(xpath ="//div/h1[@class='cart-summary__header']")
 	WebElement txtCartSummary;
 
 	@FindBy(xpath = "//ds-radio-button[@aria-label='Select Yes']//div[contains(@id,'ds-radio-input')]")
@@ -296,7 +297,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	
 	@FindBy(xpath ="//input[contains(@id,'messageForExistingNumber')]//following-sibling::label")
 	WebElement rdoKeepExistingPhoneNumber;
-	
+
+
 	/**
 	 * Click Starter package button for anonymous customer
 	 * @param	bundleName : name of the bundle package
@@ -366,7 +368,6 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(bnrPriceIncreaseThemeCopy, 120);
 		return	getReusableActionsInstance().isElementVisible(bnrPriceIncreaseThemeCopy);
 	}
-
 	/**
 	 * To click on the chevron of your cart
 	 * @author Chinnarao.vattam
@@ -1172,11 +1173,5 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	public boolean verifyFlex5PackageCost() {
 		return	getReusableActionsInstance().isElementVisible(txtFlex5PackageCost,30);
 	}
-;
-;
-;
-;
-;
-;
-;
+
 }
