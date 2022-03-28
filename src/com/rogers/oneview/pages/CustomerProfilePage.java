@@ -14,7 +14,7 @@ public class CustomerProfilePage  extends BasePageClass {
 	@FindBy(xpath = "//h1[text()='Profil client' or text()='Customer Profile']")
 	WebElement customerProfile;
 	
-	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button")
+	@FindBy(xpath = "//span[@translate='global.cta.continue' and contains(text(),'Continue') ]")
 	WebElement continueButton;
 	
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-expand']/ancestor::button")
@@ -45,8 +45,9 @@ public class CustomerProfilePage  extends BasePageClass {
 	 */	
 	public void clkContinue() {	
 		//getReusableActionsInstance().getWhenReady(continueButton,120).sendKeys(Keys.ENTER);
-		//getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().getWhenReady(continueButton,60);
+		getReusableActionsInstance().staticWait(5000);
+	//	getReusableActionsInstance().clickWhenReady(continueButton,60);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);
 	}
 

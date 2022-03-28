@@ -68,31 +68,11 @@ public class OneViewCH_Auto_Validation_of_Things_to_know_copy_Directory_Listing_
         reporter.reportLogWithScreenshot("Phone Number Selected");
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         getHomePhoneSelectionPage().clickOnContinueCallDisplay();
-        reporter.hardAssert(getHomePhoneSelectionPage().verifythingsToKnowFirstname(),"Updated copy of things to know is displayed","Failed");
+        getHomePhoneSelectionPage().verifythingsToKnowFirstname();
+        reporter.reportLogWithScreenshot("Things to know Updated copy");
         getHomePhoneSelectionPage().verifyThingsToKnowLastName();
-        getHomePhoneSelectionPage().clickContinueDirectoryListing();
-        getHomePhoneSelectionPage().clkContinue();
-    //    reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
-        reporter.reportLogWithScreenshot("Installation options");
-        getCreditCheckPage().verifyInstallationOption();
-        getCreditCheckPage().goToPageBottom();
-        reporter.reportLogWithScreenshot("in person delivery");
-        getCreditCheckPage().clickInPersonDelivery();
-        getPaymentOptionsPage().clkContinue();
-        reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
-        getCreditCheckPage().verifyBillingAndPaymentOption();
-        reporter.reportLogWithScreenshot("billing and payment");
-        getCreditCheckPage().clickDigitalFrontline();
-        reporter.reportLogWithScreenshot("front line");
-        getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-        getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-        getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-        reporter.reportLogWithScreenshot("entered billing details");
-        getPaymentOptionsPage().clkContinue();
-        reporter.reportLogWithScreenshot("submit order");
-//        getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+        reporter.reportLogWithScreenshot("Things to know updated copy");
+
 
 
 

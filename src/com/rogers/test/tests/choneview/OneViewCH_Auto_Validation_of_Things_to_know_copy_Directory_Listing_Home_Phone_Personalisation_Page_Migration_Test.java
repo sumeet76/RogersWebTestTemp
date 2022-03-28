@@ -41,8 +41,8 @@ public class OneViewCH_Auto_Validation_of_Things_to_know_copy_Directory_Listing_
         reporter.reportLogWithScreenshot("points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
     //    reporter.reportLogWithScreenshot("Exchange later");
-    //    getRogersIgniteBundlesPage().clickExchangeLater();
-    //    reporter.reportLogWithScreenshot("After Exchange later");
+          getRogersIgniteBundlesPage().clickExchangeLater();
+        reporter.reportLogWithScreenshot("After Exchange later");
         getCustomerProfilePage().clkContinue();
         reporter.reportLogWithScreenshot("continue is clicked");
         getRogersIgniteBundlesPage().fourKTVPopup();
@@ -70,11 +70,14 @@ public class OneViewCH_Auto_Validation_of_Things_to_know_copy_Directory_Listing_
      //   getHomePhoneSelectionPage().verifySelectedNumber();
         reporter.reportLogWithScreenshot("Phone Number Selected");
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        reporter.reportLogWithScreenshot("");
         getHomePhoneSelectionPage().clickOnContinueCallDisplay();
         getHomePhoneSelectionPage().verifythingsToKnowFirstname();
+        reporter.reportLogWithScreenshot("Things to know Copy is displayed");
         getHomePhoneSelectionPage().verifyThingsToKnowLastName();
+        reporter.reportLogWithScreenshot("things to know copy is displayed");
         getHomePhoneSelectionPage().clickContinueDirectoryListing();
-        getHomePhoneSelectionPage().clkContinue();
+     //  getHomePhoneSelectionPage().clkContinue();
 
 
 

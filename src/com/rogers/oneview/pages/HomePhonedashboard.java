@@ -93,6 +93,9 @@ public class HomePhonedashboard  extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-info']")
 	WebElement onlineManager;
 
+	@FindBy(xpath = "//span [@class='btn-font' and contains(text(),'Remove') or text()='Retirer']")
+	WebElement removeUnlistedNumberAddon;
+
 
 	/**
 	 * Click Yes,reset password button on the pop up "Reset Voicemail Password"
@@ -321,6 +324,12 @@ public class HomePhonedashboard  extends BasePageClass {
 	public boolean verifyChangeCallDisplay()
 	{
 		return getReusableActionsInstance().isElementVisible(ChangeCallDisplayName, 20);
+	}
+
+	public void removeUnlistedNumberAddOn(){
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().executeJavaScriptClick(removeUnlistedNumberAddon);
 	}
 
 	public boolean verifyManageAddOns()

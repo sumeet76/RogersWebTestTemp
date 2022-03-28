@@ -71,9 +71,17 @@ public class OneViewCH_Auto_Validation_of_Things_to_know_copy_Directory_Listing_
         //   getHomePhoneSelectionPage().verifySelectedNumber();
         reporter.reportLogWithScreenshot("Phone Number Selected");
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        reporter.reportLogWithScreenshot("Continue on the Generate phone numbers section is clicked");
         getHomePhoneSelectionPage().clickOnContinueCallDisplay();
-        getHomePhoneSelectionPage().clickContinueDirectoryListing();
-        getHomePhoneSelectionPage().clkContinue();
+        reporter.reportLogWithScreenshot("Continue on Call display name section is clicked");
+        getHomePhoneSelectionPage().verifythingsToKnowFirstname();
+        reporter.reportLogWithScreenshot("Things to know Copy is displayed");
+        getHomePhoneSelectionPage().verifyThingsToKnowLastName();
+        reporter.reportLogWithScreenshot("things to know copy is displayed");
+    //    getHomePhoneSelectionPage().clickContinueDirectoryListing();
+    //    getHomePhoneSelectionPage().clkContinue();
+    //    getHomePhoneSelectionPage().clickContinueDirectoryListing();
+    //    getHomePhoneSelectionPage().clkContinue();
     }
 
     @BeforeMethod(alwaysRun=true)

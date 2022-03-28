@@ -20,7 +20,7 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	@FindBy(xpath = "(//span[@translate='global.cta.continue' and contains(text(),'Continue') or contains(text(),'Continuer')])[3]")
 	WebElement continueOnDirectoryListing;
 
-	@FindBy(xpath = "//span[@class='ng-star-inserted' and contains(text(),'Générer plus de numéros') or contains(text(),'Generate phone numbers')]")
+	@FindBy(xpath = "//span[@class='ng-star-inserted' and contains(text(),'Générer les numéros de téléphone') or contains(text(),'Generate phone numbers')]")
 	WebElement generatePhoneNumber;
 
 
