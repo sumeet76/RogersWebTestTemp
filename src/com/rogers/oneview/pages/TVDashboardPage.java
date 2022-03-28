@@ -127,8 +127,8 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//h3[@ng-reflect-translate='global.dashboard.tv.recordAndS']")
 	WebElement txtRecordAndSave;
 
-	@FindBy(xpath = "//span[text()='Change TV package' or text()='Modifier le forfait Télé']/ancestor::button")
-	WebElement btnChangeTvPackage;
+	@FindBy(xpath = "//span[text()='Change package' or text()='Changer de forfait']/ancestor::button")
+	WebElement btnChangePackage;
 
 	@FindBy(xpath = "//span[@translate='global.dashboard.tv.changeTVPackage']")
 	WebElement btnManageChannelAndThemePack;
@@ -204,7 +204,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "(//label[@class='ds-radioLabel d-inline-flex align-items-start'])[2]")
 	WebElement immediateDateChange;
 
-	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
+	@FindBy(xpath = "//span[text()='Cancel' or text()='Annuler']/ancestor::button")
 	WebElement cancel;
 
 	@FindBy(xpath = "//span[@translate='global.label.reviewAddons']")
@@ -641,10 +641,10 @@ public class TVDashboardPage  extends BasePageClass {
 	 *
 	 * @author chinnarao.vattam
 	 */
-	public void clickChangeTvPackage() {
-		WebElement select = getReusableActionsInstance().getWhenReady(btnChangeTvPackage, 120);
+	public void clickChangePackage() {
+		WebElement select = getReusableActionsInstance().getWhenReady(btnChangePackage, 120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, select.getLocation().y - 300);
-		getReusableActionsInstance().getWhenReady(btnChangeTvPackage, 120).click();
+		getReusableActionsInstance().getWhenReady(btnChangePackage, 120).click();
 	}
 
 
@@ -1156,7 +1156,7 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 	public boolean verifyChangeTvPackage() {
-		return getReusableActionsInstance().isElementVisible(btnChangeTvPackage, 30);
+		return getReusableActionsInstance().isElementVisible(btnChangePackage, 30);
 	}
 
 	public boolean verifyRestartSetUpBox() {

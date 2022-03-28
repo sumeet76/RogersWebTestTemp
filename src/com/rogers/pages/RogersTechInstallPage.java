@@ -2,13 +2,17 @@ package com.rogers.pages;
 
 import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import utils.FormFiller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * @author chinnarao.vattam
@@ -133,8 +137,10 @@ public class RogersTechInstallPage extends BasePageClass {
 
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
-	
-	//@FindBy(xpath = "//input[@name='preferredDatesFirst']")
+
+	@FindBy(xpath = "//input[@id='preferredDate']/ancestor::div[contains(@class,'ds-formField__inputContainer')]")
+	WebElement txtContainerPreferredDate;
+
 	@FindBy(xpath = "//input[@id='preferredDate']")
 	WebElement prefferedDates;
 	
@@ -192,6 +198,9 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath="//a[@aria-describedby='ariaClickToContinue']//span[contains(text(),'Continue')]")
 	WebElement btnTechContinue;
 
+	@FindBy(xpath = "//button[@aria-label='Click to open calendar']/span")
+	WebElement btnOpenCalendar;
+
 	/**
 	 * To click on the chevron on the tech Install page
 	 * @author Saurav.Goyal
@@ -226,6 +235,8 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @param date which date to be entered
 	 */
 	public void selectPrefferedDates(String date) {
+		getReusableActionsInstance().waitForElementVisibility(txtContainerPreferredDate, 90);
+		getReusableActionsInstance().getWhenReady(txtContainerPreferredDate, 20).click();
 		getReusableActionsInstance().getWhenReady(prefferedDates, 180).sendKeys(date);
 	}
 
@@ -448,6 +459,7 @@ public class RogersTechInstallPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(txtContactNumber, 20);
 		getReusableActionsInstance().getWhenReady(txtContactNumber, 20).click();
 		getReusableActionsInstance().getWhenReady(txtContactNumber, 20).clear();
+		getReusableActionsInstance().getWhenReady(txtContainerContactNumber, 10).click();
 		getReusableActionsInstance().getWhenReady(txtContactNumber, 30).sendKeys(strPhoneNumber);
 	}
 
@@ -778,4 +790,25 @@ public class RogersTechInstallPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnTechContinue, 30).click();
 	}
 
+	/**
+	 *  Generate the preferred date on fulfilment page
+	 *  @author Manpreet.Kaur3
+	 *  @return String date
+	 */
+	public String generateDate() {
+		Date date = new Date();
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		c.add(Calendar.DATE, 1);
+		date = c.getTime();
+		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		String strDate = dateFormat.format(date);
+		return strDate;
+	}
+
+    public void selectPrefferedDate() {
+		getReusableActionsInstance().waitForElementVisibility(btnOpenCalendar, 120);
+		getActionsInstance().moveToElement(btnOpenCalendar).click().sendKeys(Keys.ARROW_RIGHT).sendKeys(Keys.ARROW_RIGHT).sendKeys(Keys.ENTER).build().perform();
+
+    }
 }

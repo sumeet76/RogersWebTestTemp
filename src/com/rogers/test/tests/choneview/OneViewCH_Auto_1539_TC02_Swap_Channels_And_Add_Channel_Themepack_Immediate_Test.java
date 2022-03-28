@@ -23,7 +23,7 @@ public class OneViewCH_Auto_1539_TC02_Swap_Channels_And_Add_Channel_Themepack_Im
 		reporter.hardAssert(getAccountOverViewPage().verifyTVOrChannelHeader(), "TV or Channel header displayed", "TV or Channel header did not Displayed");
 
 		reporter.reportLogWithScreenshot("Launched the TV dashboard page");
-		getTVDashboardPage().clickChangeTvPackage();
+		getTVDashboardPage().clickChangePackage();
 		reporter.reportLogWithScreenshot("Changed TV Package clicked");
 		getTVDashboardPage().selectFirstTVPackage();
 		reporter.reportLogWithScreenshot("Upgrade TV Package selected");

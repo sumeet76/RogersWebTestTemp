@@ -42,13 +42,13 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	WebElement clkUsualInterentUsage;
 	@FindBy(xpath = "//span[text()=' Continue ']")
 	WebElement clkbtnContinue;
-	@FindBy(xpath = "//span[text()=' 2-3 ']")
+	@FindBy(xpath = "//span[text()=' 1 ']")
 	WebElement clkNoOfPPLUsedInternet;
 	@FindBy(xpath = "//span[text()=' 1-5 ']")
 	WebElement clkNoOFDeviceConnectedToInternet;
 	@FindBy(xpath = "//span[text()=' Yes ']")
 	WebElement clkAddSmartStreamAddon;
-	@FindBy(xpath = "//span[text()=' < Back to all packages ']")
+	@FindBy(xpath="//span[contains(text(),'Back to all pack')]")
 	WebElement clkbtnBackToAllPackages;
 	@FindBy(xpath = "//h2[text()='Here’s the package we recommend for you']")
 	WebElement VerifyRecommendedBannertitle;
@@ -61,11 +61,18 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//a[contains(@title,'View internet bundles available to you')]")
 	WebElement lnkSmartStream;
 
+	@FindBy(xpath = "//span[text()='Yes']")
+	WebElement btnyes;
+
 	@FindBy(xpath = "//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Continue']/..")
 	WebElement btnInternetBuyContinue;
 	
 	@FindBy(xpath = "//a[@aria-label='Add Ignite Internet 150u to your cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
 	WebElement btnInternetPackage;
+
+	@FindBy(xpath = "//span[contains(text(),'Yes')]")
+	WebElement btnUnderstand;
+
 	//button[@aria-label='Add Ignite Internet 500u to your cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']
 
 	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::span[@role='text']")
@@ -92,7 +99,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Check') or contains(text(),'Chèque')]/ancestor::button")
 	WebElement btnPromoCodeCheck;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-warning-circle ds-color-error']")
+	@FindBy(xpath = "//span[contains(text(),'promo code is invalid')]")
 	WebElement imgInvalidPromoCodeError;
 
 	@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='Newfoundland and Labrador']")
@@ -200,7 +207,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	}
 	
 	public void clkInternetPackage() {
-
+		
 		getReusableActionsInstance().getWhenReady(btnInternetPackage, 90).click();
 	}
 

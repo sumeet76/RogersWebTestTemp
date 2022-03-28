@@ -16,37 +16,37 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//rch-dropdown/div//select[contains(@id,'ds-form-input-id-')][1]")
+	@FindBy(xpath = "//rch-date-selection[@section='DOB']//select/option[text()='Année' or text()='Year']/..")
 	WebElement ddlCreditCheckYear;
 
-	@FindBy(xpath = "//span[contains(text(),'month')]//following::select[contains(@id,'ds-form-input-id-')][1]")
+	@FindBy(xpath = "//rch-date-selection[@section='DOB']//select/option[text()='Mois' or text()='Month']/..")
 	WebElement ddlCreditCheckMonth;
 
-	@FindBy(xpath = "//span[contains(text(),'day')]//following::select[contains(@id,'ds-form-input-id-')][1]")
+	@FindBy(xpath = "//rch-date-selection[@section='DOB']//select/option[text()='Jour' or text()='Day']/..")
 	WebElement ddlCreditCheckDay;
 
-	@FindBy(xpath = "//span[contains(text(),'first')]//following::select[contains(@id,'ds-form-input-id-')][1]")
+	@FindBy(xpath = "//rch-dropdown[@accessibilitycontext='global.accessibility.firstIdOption']//select")
 	WebElement ddlFirstID;
 
-	@FindBy(xpath = "//span[contains(text(),'province')]//following::select[contains(@id,'ds-form-input-id-')][1]")
+	@FindBy(xpath = "//rch-dropdown[@accessibilitycontext='global.accessibility.enterYourProvince']//select")
 	WebElement ddlProvince;
 
-	@FindBy(xpath = "//span[contains(text(),'expiry year')]//following::select[contains(@id,'ds-form-input-id-')][1]")
+	@FindBy(xpath = "//rch-date-selection[@section='Driving License']//select/option[text()='Année' or text()='Year']/..")
 	WebElement ddlExpiryYear;
 
-	@FindBy(xpath = "//span[contains(text(),'expiry month')]//following::select[contains(@id,'ds-form-input-id-')][1]")
+	@FindBy(xpath = "//rch-date-selection[@section='Driving License']//select/option[text()='Mois' or text()='Month']/..")
 	WebElement ddlExpiryMonth;
 
-	@FindBy(xpath = "//span[contains(text(),'expiry date')]//following::select[contains(@id,'ds-form-input-id-')][1]")
+	@FindBy(xpath = "//rch-date-selection[@section='Driving License']//select/option[text()='Jour' or text()='Day']/..")
 	WebElement ddlExpiryDay;
 
-	@FindBy(xpath = "//div[contains(text(),'license')]/preceding::input[1]")
+	@FindBy(xpath = "//div[@class='input_container']//input")
 	WebElement txtLicenseNumber;
 
-	@FindBy(xpath = "//span[contains(text(),'second')]//following::select[contains(@id,'ds-form-input-id-')][1]")
+	@FindBy(xpath = "//rch-dropdown[@accessibilitycontext='global.accessibility.secondIdOption']//select")
 	WebElement ddlSecondIdOption;
 
-	@FindBy(xpath = "//div[contains(text(),'passport')]/preceding::input[1]")
+	@FindBy(xpath = "//div[@class='passport-component']//input")
 	WebElement txtPasportNumber;
 
 	@FindBy(xpath = "//span[contains(text(),'expiry date')]//following::select[contains(@id,'ds-form-input-id-')][3]")
@@ -69,10 +69,10 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	WebElement btnCreditCheckSubmit;
 	//button[contains(@class,'-primary -large')]
 
-	@FindBy(xpath = "//div[contains(text(),'license')]//preceding::div[contains(@class,'_inputContainer')][1]")
+	@FindBy(xpath = "//div[@class='input_container']//input/..")
 	WebElement txtContainer;
 	
-	@FindBy(xpath = "//div[contains(text(),'passport')]//preceding::div[contains(@class,'_inputContainer')][1]")
+	@FindBy(xpath = "//div[@class='passport-component']//input/..")
 	WebElement txtContainerPasportNumber;
 				
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
