@@ -861,7 +861,8 @@ public class AccountOverViewPage extends BasePageClass {
      * @author Aditi.jain
      */
     public boolean verifyRequiredMessage() {
-        return getReusableActionsInstance().isElementVisible(requiredmessage,30);
+        getReusableActionsInstance().staticWait(6000);
+        return getReusableActionsInstance().isElementVisible(requiredmessage,60);
 
 
     }
@@ -910,16 +911,18 @@ public class AccountOverViewPage extends BasePageClass {
      */
     public boolean verifyAccountMessages() {
         return getReusableActionsInstance().isElementVisible(accountMessages, 30);
+
     }
 
     /**
-     * verify accountMessages
+     * verify scroll To View Bill
      * @return true if available, else false
      * @author Aditi.jain
      */
     public void scrollToViewBill() {
         getReusableActionsInstance().waitForPageLoad();
-        getReusableActionsInstance().scrollToElement(requiredmessage);
+        getReusableActionsInstance().javascriptScrollToBottomOfPage();
+//        getReusableActionsInstance().scrollToElement(requiredmessage);
     }
 
     public boolean verifyInternetBadge(){
