@@ -103,14 +103,14 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 
 	@FindBy(xpath = "//h4[contains(normalize-space(.),'Ignite Flex 10') or contains(normalize-space(.),'Élan Flex 10')]")
 	WebElement txtIgniteFlex10;
-	
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-check-circle ds-color-success']")
+
+	@FindBy(xpath="//span[contains(@class,'color-success')]")
 	WebElement successMessageParentalControlAndPinReset;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-check-circle ds-color-success']")
+	@FindBy(xpath="//span[contains(@class,'color-success')]")
 	WebElement successRefreshYourIgniteTVBox;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-check-circle ds-color-success']")
+	@FindBy(xpath="//span[contains(@class,'color-success')]")
 	WebElement successResetPurchasePIN;
 
 	@FindBy(xpath = "//span[contains(text(),'OK')]")
