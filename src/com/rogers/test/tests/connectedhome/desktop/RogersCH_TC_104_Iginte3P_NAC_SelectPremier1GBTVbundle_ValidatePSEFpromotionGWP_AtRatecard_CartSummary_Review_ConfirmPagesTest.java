@@ -235,12 +235,11 @@ public class RogersCH_TC_104_Iginte3P_NAC_SelectPremier1GBTVbundle_ValidatePSEFp
 
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
-        //getRogersTechInstallPage().clkPersonalizedInstall();
-      /* getRogersTechInstallPage().selSelffinstallDateAndTime();
-       reporter.reportLogWithScreenshot("Launched the tech install page");
-       getRogersTechInstallPage().setMobielNumber();*/
-        getRogersTechInstallPage().clkTechInstalConsent();
+        //getRogersTechInstallPage().clkTechInstalConsent();
+        getRogersTechInstallPage().clkProInstallUpgradeNo();
         reporter.reportLogWithScreenshot("tech install details");
+        getRogersTechInstallPage().clkTechInstallContinueSelf();
+        reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(),"SetUp page has Launched","SetUp page has not Launched");
         getRogersTechInstallPage().clkTechInstallContinue();
 
         reporter.hardAssert( getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
