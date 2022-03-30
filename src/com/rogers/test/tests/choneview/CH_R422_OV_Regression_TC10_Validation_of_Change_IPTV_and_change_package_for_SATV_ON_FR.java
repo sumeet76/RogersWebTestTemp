@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 public class CH_R422_OV_Regression_TC10_Validation_of_Change_IPTV_and_change_package_for_SATV_ON_FR extends BaseTestClass {
 
-    @Test(groups = {"RegressionCHOV"})
+    @Test(groups = {"RegressionCHOV"}, description = "Validate the Bundles API")
     public void CH_R422_OV_Regression_TC10_Validation_of_Change_IPTV_and_change_package_for_SATV_ON_FR() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.RHPManage_AddOns.accountDetails.getBan(),TestDataHandler.RHPManage_AddOns.getContactID());

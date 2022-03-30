@@ -50,10 +50,10 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 
 	useTestNG(){
 		outputDirectory = file("$project.buildDir//testngOutput")
-		useDefaultListeners = true
+
 		parallel = test_parallel
 		threadCount = test_threadCount as int
-		Set listeners = [ "extentreport.ExtentListener" , "com.rogers.test.listeners.AnnotationTransformer"]
+		Set listeners = [ "extentreport.ExtentListener" , "com.rogers.test.listeners.AnnotationTransformer","org.testng.reporters.XMLReporter:generateTestResultAttributes=true"]
 		setListeners(listeners)
 		if (project.hasProperty('test_groupName')){
 			includeGroups test_groupName
@@ -99,7 +99,7 @@ task "localTest"(type: Test) {
 		useDefaultListeners = true
 		parallel = test_parallel
 		threadCount = test_threadCount as int
-		Set listeners = [ "extentreport.ExtentListener" , "com.rogers.test.listeners.AnnotationTransformer"]
+		Set listeners = [ "extentreport.ExtentListener" , "com.rogers.test.listeners.AnnotationTransformer","com.rogers.test.listeners.XrayListener"]
 		setListeners(listeners)
 
 		if (project.hasProperty('test_groupName')){
@@ -132,6 +132,7 @@ dependencies {
 	api 'org.yaml:snakeyaml:1.24'
 	//implementation group: 'com.oracle.database.jdbc', name: 'ojdbc8', version: '21.1.0.0'
 	api 'com.oracle.database.jdbc:ojdbc8:21.1.0.0'
+
 }
 
 group = 'com.rogers'

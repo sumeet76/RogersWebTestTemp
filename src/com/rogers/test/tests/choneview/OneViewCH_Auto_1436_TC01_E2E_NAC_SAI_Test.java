@@ -2,6 +2,7 @@ package com.rogers.test.tests.choneview;
 
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
+import com.rogers.test.listeners.Xray;
 import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
@@ -13,7 +14,9 @@ import java.lang.reflect.Method;
 
 
 public class OneViewCH_Auto_1436_TC01_E2E_NAC_SAI_Test extends BaseTestClass {
-	@Test (groups = {"RegressionCHOV"})
+
+	@Xray (labels = "Test XRay labels ---- 000000")
+	@Test (groups = {"RegressionCHOV"},description = "SAI NAC - Xray jira")
     public void oneViewCH_Auto_1436_TC01_E2E_NAC_SAI_Test(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
