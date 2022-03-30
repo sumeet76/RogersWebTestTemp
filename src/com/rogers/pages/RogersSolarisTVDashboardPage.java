@@ -36,6 +36,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//embed[@id='plugin']")
 	WebElement lnkPDFPage;
 
+	@FindBy(xpath = "//span[text()='FR']")
+	WebElement lnkFR;
+
 	@FindBy(xpath = "//div[@class='channels-container']")
 	WebElement lstChannelList;
 	//div[@class='channel-list-block']
@@ -245,7 +248,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkTVBadge() {
-		getReusableActionsInstance().getWhenReady(btnSolaristvBadge,90).click();
+		getReusableActionsInstance().getWhenReady(btnSolaristvBadge,40).click();
 	}
 
 	/**
@@ -721,5 +724,11 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		return false;
 	}
 
-
+	/**
+	 * Select FR as language preference
+	 * @author manpreet.kaur3
+	 */
+	public void clkFR() {
+		getReusableActionsInstance().clickIfAvailable(lnkFR, 30);
+	}
 }

@@ -33,8 +33,8 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_113_IgniteTV_TVPackageDowngrade_FR_Test extends BaseTestClass {
 
-    @Test(groups = {"SanityCH","RegressionCH","TVPlanUpgardeCH"})
-    public void checkSolarisTVPackageUpgrade() 
+    @Test(groups = {"SanityCH","RegressionCH"})
+    public void checkSolarisTVPackageDowngrade()
     {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc04_07_SolarisTVAccount.getUsername());
@@ -42,10 +42,13 @@ public class RogersCH_TC_113_IgniteTV_TVPackageDowngrade_FR_Test extends BaseTes
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getBan());
-        reporter.reportLogWithScreenshot("Launched the Account Page");
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
+            reporter.reportLogWithScreenshot("Select an account.");
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getBan());
+        }
+        reporter.reportLogWithScreenshot("Account Selected");
+        getRogersSolarisTVDashboardPage().clkFR();
+        reporter.reportLogWithScreenshot("Launched the Account Page FR");
         getRogersSolarisTVDashboardPage().clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         getRogersSolarisTVDashboardPage().clkChangeTVPackage();
