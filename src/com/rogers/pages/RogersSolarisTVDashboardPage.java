@@ -17,7 +17,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 
 		
 	@FindAll({
-        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'TV')]"),
+        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'TV') or  contains(text(),'Télé')]"),
         @FindBy(xpath = "//span[@class='ds-icon rds-icon-tv' or @class='ds-icon d-inline-flex rds-icon-tv']")})
 	WebElement btnSolaristvBadge;
 	
@@ -35,6 +35,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//embed[@id='plugin']")
 	WebElement lnkPDFPage;
+
+	@FindBy(xpath = "//span[text()='FR']")
+	WebElement lnkFR;
 
 	@FindBy(xpath = "//div[@class='channels-container']")
 	WebElement lstChannelList;
@@ -60,6 +63,24 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Continue')]/ancestor::a/span")
 	WebElement popupChangeTVPackage;
 	//ins[@translate='global.cta.bysContinue']
+
+	@FindBy(xpath = "//span[text()='Want to change your TV package?' or text()='Vous voulez changer votre forfait télé?']")
+	WebElement headerChangepkg;
+
+	@FindBy(xpath = "//div[@class='popup-modal-body__content']")
+	WebElement txtContactUsPopupModal;
+
+	@FindBy(xpath = "//ds-icon[@name='call']/span[@role='img']")
+	WebElement imgBookACallBack;
+
+	@FindBy(xpath = "//span[text()='Book a call back' or text()='Fixer une heure de rappel']")
+	WebElement lnkBookACallBack;
+
+	@FindBy(xpath = "//ds-icon[@name='text']/span[@role='img']")
+	WebElement imgLiveChat;
+
+	@FindBy(xpath = "//span[contains(@bcKey, 'loggedIn')]/descendant::span[text()='Live Chat']")
+	WebElement lnkLiveChat;
 
 	@FindBy(xpath = "//span[@id='ariaPopupHeader']")
 	WebElement popupContatUS;
@@ -103,14 +124,14 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 
 	@FindBy(xpath = "//h4[contains(normalize-space(.),'Ignite Flex 10') or contains(normalize-space(.),'Élan Flex 10')]")
 	WebElement txtIgniteFlex10;
-	
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-check-circle ds-color-success']")
+
+	@FindBy(xpath="//span[contains(@class,'color-success')]")
 	WebElement successMessageParentalControlAndPinReset;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-check-circle ds-color-success']")
+	@FindBy(xpath="//span[contains(@class,'color-success')]")
 	WebElement successRefreshYourIgniteTVBox;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-check-circle ds-color-success']")
+	@FindBy(xpath="//span[contains(@class,'color-success')]")
 	WebElement successResetPurchasePIN;
 
 	@FindBy(xpath = "//span[contains(text(),'OK')]")
@@ -227,7 +248,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkTVBadge() {
-		getReusableActionsInstance().getWhenReady(btnSolaristvBadge,90).click();
+		getReusableActionsInstance().getWhenReady(btnSolaristvBadge,40).click();
 	}
 
 	/**
@@ -417,7 +438,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
-		By packageNameLocator = By.xpath("//h3[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'tv-bundle-tile__row')]//span[contains(text(),'Select')]");
+		By packageNameLocator = By.xpath("//h3[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'tv-bundle-tile__row')]//span[contains(text(),'Select') or contains(text(), 'Sélectionner')]");
 		if(getReusableActionsInstance().isElementVisible(packageNameLocator,60))
 		{		
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 20);
@@ -456,7 +477,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifycontatUSPopUp() {		
-		return getReusableActionsInstance().isElementVisible(popupContatUS, 90);
+		return getReusableActionsInstance().isElementVisible(popupContatUS, 50);
 	}
 
 	/**
@@ -642,4 +663,72 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(lblBoxSettings);
 	}
 
+	/**
+	 * Verifies if Change Package Header is present
+	 * @return true if Header is present else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyChangePackagePopupHeader() {
+		return getReusableActionsInstance().isElementVisible(headerChangepkg, 20);
+	}
+
+	/**
+	 * Gets the Change Package - Contact Us Modal content
+	 * @return true if Actual copy is matching the desired copy, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyContactUsModalContent() {
+		String contactUsContentDesired = "Great! Contact us or book a call back – we’ll help you with all the details.";
+		String contactUsContentActual = getReusableActionsInstance().getWhenReady(txtContactUsPopupModal, 20).getText();
+		if(contactUsContentActual.equals(contactUsContentDesired)){
+			return true;
+		}
+
+	return false;
+	}
+
+	/**
+	 * Verifies if Book a call back link is present
+	 * @return true if Book a call back link is present else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyBookACallBack() {
+		getReusableActionsInstance().waitForElementVisibility(imgBookACallBack, 10);
+		return getReusableActionsInstance().isElementVisible(lnkBookACallBack, 20);
+
+	}
+
+	/**
+	 * Verifies if Live Chat link is present
+	 * @return true if Live Chat link is present else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyLiveChat() {
+		getReusableActionsInstance().waitForElementVisibility(imgLiveChat, 10);
+		return getReusableActionsInstance().isElementVisible(lnkLiveChat, 20);
+	}
+
+
+	/**
+	 * Gets the Change Package - Contact Us Modal content
+	 * @return true if Actual copy is matching the desired copy, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyContactUsModalContentFR() {
+		String contactUsContentDesired = "Super! Communiquez avec nous ou choisissez une heure de rappel et nous réglerons les détails avec vous.";
+		String contactUsContentActual = getReusableActionsInstance().getWhenReady(txtContactUsPopupModal, 20).getText();
+		if(contactUsContentActual.equals(contactUsContentDesired)){
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Select FR as language preference
+	 * @author manpreet.kaur3
+	 */
+	public void clkFR() {
+		getReusableActionsInstance().clickIfAvailable(lnkFR, 30);
+	}
 }
