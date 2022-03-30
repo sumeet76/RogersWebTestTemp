@@ -14,24 +14,21 @@ import java.lang.reflect.Method;
 
 
 /**
- * This class contains the test method to verify the solaris TV package upgarde flow for Rogers.com   
+ * This class contains the test method to verify the solaris TV package downgrade flow for Rogers.com
  * 
- * @author chinnarao.vattam
+ * @author manpreet.kaur3
  * 
  * Test steps:
  *
  *1. Launch the Rogers.com url.
  *2. Log into rogers.com url with valid credentials.
  *3. Click on a TV account
- *4. Click on chage package button
- *5. Choose a tv package whose price is higher than the current package and click on Submit
- *6. Scroll down to the last in the page and Click on Checkout
- *7. Enter appropriate Contact details
- *8. Pick a date time in step 2 - Most Convenient Time for us to call
- *9. Click on Continue
- *10. Go to Agreement section section,  scroll down all the way,  and click on "I have read………." check box
- *11. Click on Submit
- *
+ *4. Click on change package button
+ *5. Choose a tv package whose price is lower than the current package and click on Select
+ *6. Verify the Contact Us Popup
+ *7. Verify the contact us header
+ *8. Verify the content of contact us popup
+ *9. Verify the book a call link
  **/
 
 public class RogersCH_TC_113_IgniteTV_TVPackageDowngrade_FR_Test extends BaseTestClass {
@@ -58,8 +55,9 @@ public class RogersCH_TC_113_IgniteTV_TVPackageDowngrade_FR_Test extends BaseTes
         reporter.reportLogWithScreenshot("Launched the customer care popup");
         reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangePackagePopupHeader(),"Verified the Change Package Popup Header","Change Package Popup Header is not verified");
         reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyContactUsModalContentFR(),"Verified the contact us modal content", "Contact us Modal content is not matching");
-
-    	}
+        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyBookACallBack(),"Verified the Book a call back link","Book a call back link not verified");
+        reporter.reportLogWithScreenshot("Verified the customer care popup content");
+    }
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
