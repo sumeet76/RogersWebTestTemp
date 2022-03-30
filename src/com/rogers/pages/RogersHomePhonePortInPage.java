@@ -18,14 +18,14 @@ public class RogersHomePhonePortInPage extends BasePageClass {
 
 	
 	
-	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	@FindBy(xpath = "//input[@name='phoneNumberIHP']/..")
 	WebElement txtHomePhoneNumberFormcontainer;
 
 	@FindBy(xpath = "//input[@name='phoneNumberIHP']")
 	WebElement txtHomePhoneNumber;
 
 	@FindAll({
-	@FindBy(xpath = "//span[@id='ariaContinuePortIn']/ancestor::span[@role='text']"),
+	@FindBy(xpath = "//button[@aria-label='Check if your number is eligible to transfer over.']/span"),
 	@FindBy(xpath = "//button[@ng-reflect-variant='primary']//span[@class='ds-button__wrapper d-flex justify-content-center align-items-center']")})
 	WebElement btnPhoneNumberEligibiltyCheck;
 
@@ -34,29 +34,35 @@ public class RogersHomePhonePortInPage extends BasePageClass {
 	WebElement btnConfirmPhone;
 	
 	
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-check-circle ds-color-success']")
+	@FindBy(xpath = "//span[contains(@class,'ds-color-success')]")
 	WebElement imgPhoneNumberVerificationSuccess;	
 
 
-	@FindBy(xpath ="//input[contains(@aria-label,'Enter your first name here')]")
+	@FindBy(xpath ="//input[@formcontrolname = 'firstName']")
 	WebElement txtFirstName;
 
-	@FindBy(xpath ="//input[contains(@aria-label,'Enter your last name here')]")
+	@FindBy(xpath ="//input[@formcontrolname = 'lastName']")
 	WebElement txtLastName;
-	
+
+	@FindBy(xpath ="//input[@formcontrolname = 'firstName']/..")
+	WebElement txtFirstNameContainer;
+
+	@FindBy(xpath ="//input[@formcontrolname = 'lastName']/..")
+	WebElement txtLastNameContainer;
+
 	@FindBy(xpath ="//input[contains(@id,'canada-post-address-complete-')]")
 	WebElement txtInvoiceAddress;
 
-	@FindBy(xpath ="//input[contains(@aria-label,'Enter your current phone provider here')]")
+	@FindBy(xpath ="//input[@formcontrolname = 'currentPhoneProvider']")
 	WebElement txtCurrentPhoneNumber;
 	
-	@FindBy(xpath = "//input[contains(@aria-label,'Enter your current phone provider here')]/ancestor::div[contains(@class,'ds-formField__inputContainer')]")
+	@FindBy(xpath = "//input[@formcontrolname = 'currentPhoneProvider']/..")
 	WebElement txtCurrentPhoneNumberContainer;
 
-	@FindBy(xpath = "//select[contains(@aria-label,'Open list of account options')]")
+	@FindBy(xpath = "//select[@formcontrolname = 'accountSelectOption']")
 	WebElement ddlAccountNumberOrIMEI;
 		
-	@FindBy(xpath = "//div[contains(@class,'ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white -select')]")
+	@FindBy(xpath = "//select[@formcontrolname = 'accountSelectOption']/..")
 	WebElement selIMEIContainer;
 
 	@FindBy(xpath = "//input[@name='imei']/ancestor::div[contains(@class,'ds-formField__inputContainer')]")
@@ -119,9 +125,10 @@ public class RogersHomePhonePortInPage extends BasePageClass {
 	public void setFirstName() {
 		String strName = FormFiller.generateRandomName();
 		String strFname="Rogersaa" + strName;
-		getReusableActionsInstance().waitForElementVisibility(imgPhoneNumberVerificationSuccess, 30);
-		getReusableActionsInstance().executeJavaScriptClick(txtFirstName);
-		getReusableActionsInstance().getWhenReady(txtFirstName, 10).sendKeys(strFname);
+		//getReusableActionsInstance().waitForElementVisibility(imgPhoneNumberVerificationSuccess, 30);
+		//getReusableActionsInstance().executeJavaScriptClick(txtFirstName);
+		getReusableActionsInstance().getWhenReady(txtFirstNameContainer, 5).click();
+		getReusableActionsInstance().getWhenReady(txtFirstName, 5).sendKeys(strFname);
 	}
 	
 	/**
@@ -131,8 +138,9 @@ public class RogersHomePhonePortInPage extends BasePageClass {
 	public void setLastName() {
 		String strName = FormFiller.generateRandomName();
 		String strLname="Automation" + strName;
-		getReusableActionsInstance().executeJavaScriptClick(txtLastName);
-		getReusableActionsInstance().getWhenReady(txtLastName, 3).sendKeys(strLname);
+		//getReusableActionsInstance().executeJavaScriptClick(txtLastName);
+		getReusableActionsInstance().getWhenReady(txtLastNameContainer, 5).click();
+		getReusableActionsInstance().getWhenReady(txtLastName, 5).sendKeys(strLname);
 	}
 	
 	/**
@@ -170,7 +178,6 @@ public class RogersHomePhonePortInPage extends BasePageClass {
 	 */
 	public void selIMEI() {
 		getReusableActionsInstance().getWhenReady(selIMEIContainer, 30);
-		//getReusableActionsInstance().waitForElementVisibility(ddlAccountNumberOrIMEI,120);
 		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlAccountNumberOrIMEI, "IMEI");
 	}
 	

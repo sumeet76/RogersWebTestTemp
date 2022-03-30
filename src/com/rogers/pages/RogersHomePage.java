@@ -107,7 +107,6 @@ public class RogersHomePage extends BasePageClass {
 
 	@FindAll({
 			@FindBy(xpath = "//a[contains(@title,'See available bundles') or  contains(@title,'Voir les offres groupées')]"),
-			//@FindBy(xpath = "//a[contains(@title,'See bundles with Ignite TV and Internet') or  contains(@title,'Voir les offres groupées avec la Télé Élan et Élan Internet')]"),
 			@FindBy(xpath = "//a[contains(@title,'View Ignite TV + Internet bundles available to you') or  contains(@title,'Voir les offres groupées Télé Élan + Internet qui vous sont proposées')]")})
 	WebElement btnServiceability;
 
