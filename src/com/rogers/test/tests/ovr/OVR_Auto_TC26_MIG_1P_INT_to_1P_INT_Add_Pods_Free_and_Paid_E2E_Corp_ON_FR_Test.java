@@ -32,7 +32,7 @@ public class OVR_Auto_TC26_MIG_1P_INT_to_1P_INT_Add_Pods_Free_and_Paid_E2E_Corp_
         reporter.reportLogWithScreenshot("Searching with dealer code");
         getUniLoginPage().selectCorpSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
-        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.ovrReusableData.getBanNumber(), TestDataHandler.ovrReusableData.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
+        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_26_Ovr_Mig_Data_1pINT_to_1pINT_AddPods.getBanNumber(), TestDataHandler.tc_26_Ovr_Mig_Data_1pINT_to_1pINT_AddPods.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("search for account and select environment ");
         getOvrDashboardPage().changeLangToFR();
         reporter.reportLogWithScreenshot("Ignite language Changed to French");
@@ -112,6 +112,7 @@ public class OVR_Auto_TC26_MIG_1P_INT_to_1P_INT_Add_Pods_Free_and_Paid_E2E_Corp_
         reporter.reportLogWithScreenshot("Continue to review page");
         reporter.hardAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
         reporter.hardAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
+        reporter.hardAssert(getOVROrderReviewPage().verifyInternetAddOns(),"Internet AddOns present in cart summary", "Internet AddOns not present in cart summary");
         reporter.reportLogWithScreenshot("Order Review Page");
         getOVROrderReviewPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Sign Agreement Page");
@@ -127,6 +128,6 @@ public class OVR_Auto_TC26_MIG_1P_INT_to_1P_INT_Add_Pods_Free_and_Paid_E2E_Corp_
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
-
+        reporter.hardAssert(getOVROrderReviewPage().verifyInternetAddOns(),"Internet AddOns present in order confirmation", "Internet AddOns not present in order confirmation");
     }
 }

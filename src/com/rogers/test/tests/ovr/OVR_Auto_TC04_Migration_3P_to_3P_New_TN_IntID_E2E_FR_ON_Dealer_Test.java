@@ -37,7 +37,7 @@ public class OVR_Auto_TC04_Migration_3P_to_3P_New_TN_IntID_E2E_FR_ON_Dealer_Test
         getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.ovrMigrationData3PTo3PON.getBanNumber(), TestDataHandler.ovrMigrationData3PTo3PON.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("search for account and select environment ");
         getOvrDashboardPage().changeLangToFR();
-        reporter.reportLogWithScreenshot("Ignite language Changed to French");
+        reporter.reportLogWithScreenshot("Dashboard language Changed to French");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
         getCheckAvailabilityPage().useThisAddress();

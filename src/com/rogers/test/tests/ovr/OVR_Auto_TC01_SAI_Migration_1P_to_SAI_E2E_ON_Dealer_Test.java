@@ -19,7 +19,7 @@ public class OVR_Auto_TC01_SAI_Migration_1P_to_SAI_E2E_ON_Dealer_Test extends Ba
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
