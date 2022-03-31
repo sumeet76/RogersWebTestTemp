@@ -32,10 +32,10 @@ import java.lang.reflect.Method;
  *12. Click on Continue
  *13. In 2) Credit Evaluation page, enter the required info on Credit Check:
  *14. Click Submit
- *15. Select a time in Choose your Date and Time 
+ *15. Select a time in Choose your Date and Time
  *16. Enter any valid Mobile number and email address
  *17. Click on Confirm
- *18. Validate minicart 
+ *18. Validate minicart
  *19. Select Pre-Authorized credit card option from type of payment dropdown.
  *20. Enter valid Credit Card number details in Credit Card related fields.
  *21. Click on Continue.
@@ -77,12 +77,14 @@ public class RogersCH_TC_096_IgniteTV_3P_NAC_PortIn_ValidateDatefieldEntryFulfil
         reporter.reportLogWithScreenshot("Port-in details set");
         getRogersHomePhonePortInPage().selIMEI();
         getRogersHomePhonePortInPage().setAccountNumberOrIMEI(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getImei()) ;
-        getRogersHomePhonePortInPage().clkPhoneNumberEligibiltyCheck();
+        getRogersIgniteTVBuyPage().clkHomePhoneAddOn();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
-        getRogersIgniteTVBuyPage().clkHomePhone();
 
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyHomePhoneAddOnPage(),"Launched the Home phone add-on page","Home phone add-on page has not launched");
+        getRogersIgniteTVBuyPage().clkHomePhone();
         reporter.reportLogWithScreenshot("Launched the cart summary page");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
+
         getRogersIgniteTVBuyPage().set4KTV();
         reporter.reportLogWithScreenshot("4k TV selected");
         getRogersIgniteTVBuyPage().clkCheckout();

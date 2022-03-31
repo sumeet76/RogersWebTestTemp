@@ -13,7 +13,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//button[@aria-label='Continue']/span/span")
+	@FindBy(xpath="//span[text()='Continue']")
 	WebElement btnContinueFromThemepacks;
 	//ins[@translate='global.cta.continue']
 
@@ -44,7 +44,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='channel-list-row']//button[@class='ute-btn-primary ute-sm ute-short']//ins")
 	WebElement addChannelToCart1;
 
-	@FindBy(xpath = "//span[contains(text(),'FAITHTV') or contains(text(),'Baby TV')]/ancestor::tr//span[@translate='global.cta.add']")
+	@FindBy(xpath = "//span[contains(text(),'FAITHTV') or contains(text(),'Baby TV')]/ancestor::tr//span[@translate='global.cta.add']/..")
 	WebElement addChannelToCart;
 	//Baby TV
 
@@ -76,16 +76,16 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	
 	@FindBy(xpath = "//button[@id='add-themepack-button']")
 	List<WebElement> addThemePackListOnManageChannelsAndThemePacks;
-	
-	@FindBy(xpath = "//h3[@class='themepack-detail__header']//span[contains(text(),'Hollywood Suite')]/ancestor::div[@class='themepack-detail channels-container']//span[@translate='global.cta.add']/ancestor::button")
+
+	@FindBy(xpath="//button[contains(@aria-label,'Hollywood Suite')]")
 	WebElement addThemePackClassicTVThemePacks;
 	//h3[@class='themepack-detail__header']//span[contains(text(),'Classic TV & Movies')]/ancestor::div[@class='themepack-detail channels-container']//span[@translate='global.cta.add']/ancestor::button
 
-	@FindBy(xpath = "//h3[@class='themepack-detail__header']//span[contains(text(),'Sports Lite')]/ancestor::div[@class='themepack-detail channels-container']//span[@translate='global.cta.add']/ancestor::button")
+	@FindBy(xpath="//button[contains(@aria-label,'Prime Time Pack')]")
 	WebElement addThemePackClassicTVThemePacks4plus1;
 	//h3[@class='header-1 font-regular margin-0' and contains(text(),'Super Sports Pack (TP)')]/ancestor::div[@class='row theme-header']//button[@id='add-themepack-button']
 	
-	@FindBy(xpath = "//span[@translate='global.modals.conflictWarnings.themepackToFlexWarning.primaryButton']")
+	@FindBy(xpath = "//span[contains(text(),'Confirm')]")
 	WebElement yesContinueOnExistingChannelAlert;
 	//button[@class='ute-btn-primary ute-md']
 
