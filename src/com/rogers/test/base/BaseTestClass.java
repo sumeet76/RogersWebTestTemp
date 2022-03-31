@@ -20,24 +20,33 @@ import com.rogers.test.helpers.RogersEnums.SauceCapabilities;
 import com.rogers.testdatamanagement.TestDataHandler;
 import extentreport.ExtentTestManager;
 import extentreport.ExtentListener;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeSuite;
 import utils.AppiumServerJava;
 import utils.BrowserDrivers;
 import utils.Reporter;
+
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -944,6 +953,47 @@ public class BaseTestClass {
         captcha_bypass_handlers = new CaptchaBypassHandlers(getDriver());
         captcha_bypass_handlers.chOnewviewNACFlows(strUrl, strLoginID, strLanID, language, browser, currentTestMethodName, strContactID);
         setImplicitWait(getDriver(), 10);
+        init(strGroupName);
+    }
+
+    public void startOVRStgSession(String strUrl, String strBrowser, String strLanguage, RogersEnums.GroupName enumGroupName, Method currentTestMethodName) throws ClientProtocolException, IOException {
+        RunParameters = getExecutionParameters(strBrowser, strLanguage);
+        String browser = RunParameters.get("Browser").toLowerCase();
+        String language = RunParameters.get("Language").toLowerCase();
+        String strGroupName = enumGroupName.toString().toLowerCase().trim();
+        if (browser.contains("sauce")) {
+            sauceParameters = initializeSauceParamsMap(browser);
+        }
+
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
+        options.setAcceptInsecureCerts(true);
+        options.addArguments("--start-maximized");
+        //options.addArguments("--incognito");
+        options.addExtensions(new File("C:/Users/sameer.ahuja/Downloads/extension.crx"));
+
+        if (!(System.getProperty("PageLoadStrategy") == null || System.getProperty("PageLoadStrategy").isEmpty())) {
+            options.setPageLoadStrategy(PageLoadStrategy.valueOf(System.getProperty("PageLoadStrategy")));
+        }
+
+        WebDriver webDriver = new ChromeDriver(options);
+        webDriverThreadLocal.set(webDriver);
+        ExtentListener.setDriver(webDriver);
+        // set the context on the extension so the localStorage can be accessed
+        webDriver.get("chrome-extension://idgpnmonknjnojddfkpgkljpfnnfcklj/_generated_background_page.html");
+        //JS Script to add http request headers in modheader plugin
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) webDriver;
+        jsExecutor.executeScript(
+                "localStorage.setItem('profiles', JSON.stringify([{  title: 'Selenium', hideComment: true, appendMode: '', headers: [                        \n" +
+                        "               {enabled: true, name: 'env', value: 'stg', comment: ''},\n" +
+                        "             ],                          \n" +
+                        "             respHeaders: [],\n" +
+                        "             filters: []\n" +
+                        "          }]));"
+
+        );
+        webDriver.get(strUrl);
+        System.out.println(strUrl + "----------------------------------------------------------------------------");
         init(strGroupName);
     }
 
