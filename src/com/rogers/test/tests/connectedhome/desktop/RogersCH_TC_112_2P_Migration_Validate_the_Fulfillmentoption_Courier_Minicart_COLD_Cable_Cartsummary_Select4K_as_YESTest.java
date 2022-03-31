@@ -121,7 +121,7 @@ public class RogersCH_TC_112_2P_Migration_Validate_the_Fulfillmentoption_Courier
 		getRogersTechInstallPage().clkTechContinue();
 
 		reporter.reportLogWithScreenshot("Launched the Schedule Appointment Page");
-		getRogersTechInstallPage().selectPrefferedDates("String Date");
+		getRogersTechInstallPage().selectPrefferedDate();
 		getRogersTechInstallPage().selectPreferredTimeSlot();
 		getRogersTechInstallPage().setContactNumber();
 		getRogersTechInstallPage().clkTechInstalConsent();

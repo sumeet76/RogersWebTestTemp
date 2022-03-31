@@ -176,7 +176,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[contains(@id,'main-continue-button')]")
     WebElement btnProceedToCheckout;
 
-    @FindBy(xpath = "//p[contains(.,'Basic Plans') or contains(.,'De base')]/ancestor::button")
+    @FindBy(xpath = "//p[contains(.,'Basic') or contains(.,'De base')]/ancestor::button")
     WebElement btnBasicPlan;
 
     @FindBy(xpath = "//p[contains(@data-test,'stepper-2-completed')]/following-sibling::div//p")
@@ -212,7 +212,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[@data-test='ppc-choosePrimaryLine-modal-Continue']")
     WebElement btnSelectPrimaryLineModalContinue;
 
-    @FindBy(xpath = "//h1[contains(.,'Select Plan Options') or contains(.,'Sélectionner un forfait')]")
+    @FindBy(xpath = "//h1[contains(.,'additional lines') or contains(.,'Sélectionner un forfait')]")
     WebElement titleAdditionalLinePage;
 
     @FindBy(xpath = "//select[@data-test='additional-plan-types-option']")
@@ -274,6 +274,15 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     @FindBy(xpath = "//span[contains(text(),'Promo code:') or contains(text(),'Code promotionnel :')]//ancestor::div[contains(@class,'dsa-orderTable__row')]")
     WebElement promoCartLineItem;
+
+    @FindBy(xpath = "//button[contains(@class,'ds-tablet')]//p[contains(text(),'Device Protection') or contains(text(),'Protection de l’appareil')]")
+    WebElement deviceProtectionAddonTab;
+
+    @FindBy(xpath = "//div[contains(@class,'ds-checkboxLabel')]//parent::label[contains(@title,'Prem Device Protection') or contains(@title,'Protect supér appareil ')]")
+    WebElement deviceProtectionAddon;
+
+    @FindBy(xpath = "//span[contains(text(),'Protect supér appareil') or contains(text(),'Prem Device Protection')]//ancestor::div[contains(@class,'dsa-orderTable__row')]")
+    WebElement dpAddonCarLineItem;
 
     /**
      * Select Device Protection Header on Plan config page
@@ -1332,4 +1341,31 @@ public class RogersPlanConfigPage extends BasePageClass {
         return getReusableActionsInstance().isElementVisible(promoCodeDuration);
     }
 
+    /**
+     * This method clicks on Device Protection Tab in Add-ons stepper
+     * @author Subash.Nedunchezhian
+     */
+    public void selectDeviceProtectionAddon(){
+        getReusableActionsInstance().executeJavaScriptClick(deviceProtectionAddonTab);
+        getReusableActionsInstance().clickWhenReady(deviceProtectionAddon,10);
+    }
+
+    /**
+     * This method verifies the Device Protection Add-on added to Cart
+     * @return True if Device Protection Line Item is displayed in Cart summary; else false
+     * @author Subash.Nedunchezhian
+     */
+    public boolean verifyDPCartLineItem(){
+        getReusableActionsInstance().javascriptScrollByVisibleElement(dpAddonCarLineItem);
+        return getReusableActionsInstance().isElementVisible(dpAddonCarLineItem);
+    }
+
+    /**
+     * This method will get the Device Protection Addon amount from the cart summary
+     * @return String having Device Protection Addon and amount
+     * @author subash.nedunchezhian
+     */
+    public String getDeviceProtectionAddon() {
+        return dpAddonCarLineItem.getText().replaceAll("\\n", "");
+    }
 }

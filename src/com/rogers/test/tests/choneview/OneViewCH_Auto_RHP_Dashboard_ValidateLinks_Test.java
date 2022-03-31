@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 public class OneViewCH_Auto_RHP_Dashboard_ValidateLinks_Test extends BaseTestClass {
     @Test (groups = {"Regression", "AprilSanity"})
     public void oneViewCH_Auto_RHP_Dashboard_ValidateLinks_Test() {
-        getEnvironmentSelectionPage().launchOneView(TestDataHandler.RHPManage_AddOns.accountDetails.getBan(), TestDataHandler.RHPManage_AddOns.getContactID());
+        getEnvironmentSelectionPage().launchOneView(TestDataHandler.RHP_Dashboard_Validation.accountDetails.getBan(), TestDataHandler.RHPManage_AddOns.getContactID());
         reporter.reportLogWithScreenshot("Launched account dashboard page");
         getAccountOverViewPage().selectHomePhoneBadge();
         reporter.reportLogWithScreenshot("Launch Home Phone dashboard page");
