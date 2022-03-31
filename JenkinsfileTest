@@ -174,13 +174,12 @@ pipeline {
                                           "key": "RTM"
                                       },
                                       "summary": "''' + env.BUILD_TAG + '''",
-                                      "description": "''' + REPORT_URL + '''"
+                                      "description": "''' + REPORT_URL + '''",
                                       "customfield_21635": ["RTM-112530"]
                                   }
                               }'''
             def testInfoImport = '''{
                                   "fields": {
-
                                       "project": {
                                           "key": "RTM"
                                       },
