@@ -96,6 +96,12 @@ public class HomePhonedashboard  extends BasePageClass {
 	@FindBy(xpath = "//span [@class='btn-font' and contains(text(),'Remove') or text()='Retirer']")
 	WebElement removeUnlistedNumberAddon;
 
+	@FindBy(xpath = "//div[@class='ng-star-inserted']//h3[contains(text(),'Removed Items')]")
+	WebElement removedItemsHeader;
+
+	@FindBy(xpath = "//span[contains(@translate,'global.cta.continue') or contains(text(),'Continuer')]")
+	WebElement continueYourChange;
+
 
 	/**
 	 * Click Yes,reset password button on the pop up "Reset Voicemail Password"
@@ -332,10 +338,16 @@ public class HomePhonedashboard  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(removeUnlistedNumberAddon);
 	}
 
-	public boolean verifyManageAddOns()
-	{
+	public boolean verifyManageAddOns() {
 		return getReusableActionsInstance().isElementVisible(manageAddOns, 20);
 	}
+
+	public void yourChangeContinue(){
+		if (getReusableActionsInstance().isElementVisible(removedItemsHeader,60)){
+			getReusableActionsInstance().clickWhenReady(continueYourChange);
+		}
+	}
+
 	}
 	
 

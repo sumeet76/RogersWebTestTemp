@@ -716,17 +716,16 @@ public class TestDataHandler {
 		MaxSAI_Cx_Pods= YamlHandler.getOVAccountData("MaxSAICx_Pods");
 		Max2pCx_Pods= YamlHandler.getOVAccountData("Max2pCx_Pods");
 		Max3pCx_Pods= YamlHandler.getOVAccountData("Max3pCx_Pods");
-<<<<<<< HEAD
-		Validation_of_Things_to_know_copy_Directory_Listing_Home_Phone_Personalisation=YamlHandler.getMigrationData("Validation_of_Things_to_know_copy_Directory_Listing_Home_Phone_Personalisation");
-		ValidationofNotificationAlertBackbutton=YamlHandler.getMigrationData("Validation_of_Notification_Alert_Back_Button_on_Migration_Flow");
-=======
+
 		Ignite_Mapped_Offers_2p= YamlHandler.getOVAccountData("IgniteMappedOffers2p");
 		Ignite_Mapped_Offers_3p= YamlHandler.getOVAccountData("IgniteMappedOffers3p");
 		Tv_Dashboard_Validation=YamlHandler.getOVAccountData("TvDashboardValidation");
 		Internet_Dashboard_Validation=YamlHandler.getOVAccountData("InternetDashboardValidation");
 		RHP_Dashboard_Validation=YamlHandler.getOVAccountData("RHPDashboardValidation");
+		Validation_of_Things_to_know_copy_Directory_Listing_Home_Phone_Personalisation=YamlHandler.getMigrationData("Validation_of_Things_to_know_copy_Directory_Listing_Home_Phone_Personalisation");
+		ValidationofNotificationAlertBackbutton=YamlHandler.getMigrationData("Validation_of_Notification_Alert_Back_Button_on_Migration_Flow");
 
->>>>>>> 102073190ac68f2c46132a47941719ffadcb7bee
+
 	}
 
 	private static void ovrDataInit() throws FileNotFoundException {
