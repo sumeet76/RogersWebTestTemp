@@ -183,7 +183,7 @@ pipeline {
                                       "project": {
                                           "key": "RTM"
                                       },
-                                      "description": "Latest report url : "+"''' + REPORT_URL + '''"
+                                      "description": "''' + REPORT_URL + '''",
                                       "customfield_26619": {
                                           "id": "52538"
                                       },
