@@ -177,7 +177,10 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//h1[@translate='global.label.personalizeYourChannels']")
 	WebElement personalizeYourChannels;
 
-	@FindBy(xpath = "//h1[@translate='global.label.cartSummary']")
+	@FindAll({
+			@FindBy(xpath = "//h1[@translate='global.label.cartSummary']"),
+			@FindBy(xpath = "//div[@translate='global.label.cartSummary']")
+	})
 	WebElement cartSummaryHeader;
 
 	@FindBy(xpath = "//span[contains(text(),'Account Number') or contains(text(),'Numéro de compte')]/ancestor::span//following-sibling::div/child::input")
@@ -298,6 +301,12 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 	@FindBy(xpath = "//h2[@translate='global.label.monthlyBill']")
 	WebElement monthlyCharges;
+
+	@FindBy(xpath = "//h1[contains(text(),'Options du Système de domotique Rogers') or contains(text(),'Smart Home Monitoring Add-ons')]")
+	WebElement smartHomeAddOnsPageH1;
+
+	@FindBy(xpath = "(//span[text()='Smoke & Fire Sensor' or text()='Détecteur de fumée et d’incendie']//parent::div/parent::div/parent::div//child::button)[1]")
+	WebElement smartHomeMonitoringAddOn;
 
 
 
@@ -432,7 +441,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public boolean verifyServiceAvailabilityMessage() {	
-		return getReusableActionsInstance().isElementVisible(serviceavailableMessage,120);
+		return getReusableActionsInstance().isElementVisible(serviceavailableMessage,60);
 	}
 	/**
 	 * Click Continue Button after Address availability
@@ -1021,7 +1030,7 @@ public void activateHomePhoneltrPopUp() {
 	 * @author Sameer.ahuja
 	 */
 	public void addAdditionalPods(int podsPrice){
-		By addPodsLocator = By.xpath("//div[text()=' "+podsPrice+" ']/ancestor::div[@class='internet-tile__pricing']/following-sibling::div/child::div//ds-icon[@name='plus']/ancestor::button");
+		By addPodsLocator = By.xpath("//div[text()=' "+podsPrice+" ']/ancestor::div[@class='internet-tile__pricing']/following-sibling::div/descendant::span[text()=' + ']/ancestor::button");
 		getReusableActionsInstance().getWhenReady(addPodsLocator, 30);
 		WebElement addPodsButton = getDriver().findElement(addPodsLocator);
 		getReusableActionsInstance().executeJavaScriptClick(addPodsButton);
@@ -1101,6 +1110,14 @@ public void activateHomePhoneltrPopUp() {
 		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges,60);
 	}
 
+	public boolean validateSmartHomeAddOnsHeader() {
+		return getReusableActionsInstance().isElementVisible(smartHomeAddOnsPageH1, 30);
+	}
+
+	public void addSHMAddOn(){
+		getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoringAddOn);
+		getReusableActionsInstance().scrollToElementAndClick(smartHomeMonitoringAddOn);
+	}
 }
 
 

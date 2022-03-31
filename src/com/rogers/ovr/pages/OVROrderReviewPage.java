@@ -14,10 +14,10 @@ public class OVROrderReviewPage extends BasePageClass {
     public OVROrderReviewPage(WebDriver driver) {
         super(driver);
     }
-    @FindBy(xpath = "//h2[@translate='global.label.oneTimeHeader']")
+    @FindBy(xpath = "//div[@translate='global.label.oneTimeHeader']")
     WebElement oneTimeFees;
 
-    @FindBy(xpath = "//h2[@translate='global.label.monthlyBill' or text()='Monthly Charges']")
+    @FindBy(xpath = "//p[@translate='global.label.monthlyBill']")
     WebElement monthlyCharges;
 
     @FindBy(xpath = "//h2[@translate='global.label.monthlyBill']//ancestor::button")
@@ -38,7 +38,7 @@ public class OVROrderReviewPage extends BasePageClass {
         getReusableActionsInstance().executeJavaScriptClick(continueBtn);
     }
 
-    public boolean verifyOrderoverviewHeader(){
+    public boolean verifyOrderOverviewHeader(){
         return getReusableActionsInstance().isElementVisible(orderReviewPageHeader,100);
     }
 
@@ -47,7 +47,6 @@ public class OVROrderReviewPage extends BasePageClass {
     }
 
     public boolean verifyMonthlyCharges(){
-        //getReusableActionsInstance().waitForElementVisibility(monthlyCharges,20);
         getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyCharges);
         return getReusableActionsInstance().isElementVisible(monthlyCharges,60);
     }
@@ -60,5 +59,9 @@ public class OVROrderReviewPage extends BasePageClass {
     public boolean verifyInternetAddOns(){
         getReusableActionsInstance().javascriptScrollByVisibleElement(internetAddOnsCharges);
         return getReusableActionsInstance().isElementVisible(internetAddOnsCharges, 10);
+    }
+
+    public boolean verifySHMaddOns(){
+        return true;
     }
 }

@@ -5,6 +5,8 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.FormFiller;
 
 /**
@@ -124,8 +126,9 @@ public class BundleBuilderPage extends BasePageClass {
 
     }
     public void scrollAndClickContinue() {
+        getReusableActionsInstance().javascriptScrollToBottomOfPage();
         getReusableActionsInstance().javascriptScrollByVisibleElement(continueBtn);
-        getReusableActionsInstance().clickWhenReady(continueBtn);
+        getReusableActionsInstance().clickWhenReady(continueBtn, 5);
     }
 
 
@@ -220,7 +223,7 @@ public class BundleBuilderPage extends BasePageClass {
     }
 
     public boolean verifyCustomerCurrentPlan(){
-        return getReusableActionsInstance().isElementVisible(currentPlanSection, 5);
+        return getReusableActionsInstance().isElementVisible(currentPlanSection, 60);
     }
 
     public boolean verifyOvrSessionTimer(){

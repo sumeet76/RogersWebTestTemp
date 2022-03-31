@@ -663,7 +663,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 	 */
 
 	public void confirmEmailCreateProfile(String confirmEmail) {
-		getReusableActionsInstance().clickWhenReady(confirmEmailCreateProfile);
+		getReusableActionsInstance().clickWhenReady(confirmEmailCreateProfile,30);
 		getReusableActionsInstance().getWhenReady(inputConfirmEmail, 3).sendKeys(confirmEmail);
 	}
 
