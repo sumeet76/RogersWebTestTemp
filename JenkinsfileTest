@@ -168,7 +168,41 @@ pipeline {
 
         always{
            script{
+            def testExecInfo = '''{
+                                  "fields": {
+                                      "project": {
+                                          "key": "RTM"
+                                      },
+                                      "summary": "''' + env.BUILD_TAG + '''",
+                                      "description": "''' + REPORT_URL + '''"
+                                      "customfield_21635": ["RTM-112530"],
+
+                                  }
+                              }'''
+            def testInfoImport = '''{
+                                  "fields": {
+
+                                      "project": {
+                                          "key": "RTM"
+                                      },
+                                      "description": "Latest report url : "+"''' + REPORT_URL + '''"
+                                      "customfield_26619": {
+                                          "id": "52538"
+                                      },
+                                      "customfield_21608": {
+                                          "self": "https://reqcentral.com/rest/api/2/customFieldOption/53215",
+                                          "value": "Auto",
+                                          "id": "53215",
+                                          "disabled": false
+                                      },
+                                      "priority": {
+                                          "id": "10011"
+                                      }
+                                  }
+                              }'''
            if (params.XrayImportFlag == 'true' && params.TestPlanKey != null && params.TestExecutionKey != null) {
+               echo "Create Execution record / New Testcase in JIRA"
+               sh("curl -H 'Accept-Charset: utf-8' -H 'Content-Type: multipart/form-data' -u $XRAY_PROD_CRED_USR:$XRAY_PROD_CRED_PSW -F 'file=@build/testngOutput/testng-results.xml' -F info='${testExecInfo}' -F testInfo='${testInfoImport}' 'https://reqcentral.com/rest/raven/1.0/import/execution/testng/multipart'")
                echo "Upload execution results to JIRA"
                sh(script : "curl -H 'Accept-Charset: utf-8' -H 'Content-Type: multipart/form-data' -u $XRAY_PROD_CRED_USR:$XRAY_PROD_CRED_PSW -F 'file=@build/testngOutput/testng-results.xml' 'https://reqcentral.com/rest/raven/1.0/import/execution/testng?projectKey=RTM&testPlanKey=${params.TestPlanKey}&testExecKey=${params.TestExecutionKey}'", returnStdout: true).trim().tokenize("\n")
                 }

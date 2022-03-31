@@ -54,12 +54,12 @@ public class XrayListener implements IInvokedMethodListener, ITestListener  {
 
     public void onTestSuccess(ITestResult result) {
         // TODO Auto-generated method stub
-
+        result.setAttribute("customfield_26619","Regression");
     }
 
     public void onTestFailure(ITestResult result) {
         // TODO Auto-generated method stub
-
+        result.setAttribute("customfield_26619","Regression");
     }
 
     public void onTestSkipped(ITestResult result) {
