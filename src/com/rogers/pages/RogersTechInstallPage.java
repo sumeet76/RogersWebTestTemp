@@ -70,7 +70,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	WebElement txtMobielNumberExistingCustomer;	
 		
 		
-	@FindBy(xpath ="//input[@id='preferredDate']//following::span[contains(@class,'rds-icon-calendar')][1]")
+	@FindBy(xpath ="//input[@id='preferredDate']//following::span[contains(@class,'rds-icon-calendar')]")
 	WebElement imgStartingTechInstallSlot;
 			
 	@FindBy(xpath ="//input[@id='backupDate']//following::span[contains(@class,'rds-icon-calendar')]")
